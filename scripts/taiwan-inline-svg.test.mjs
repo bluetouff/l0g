@@ -89,6 +89,18 @@ const targets = [
     pattern: /<svg\b[^>]*aria-labelledby="cn-en-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
     checkInternalBounds: true,
   },
+  {
+    page: 'dist/posts/asie-dollar-stress-test-trois-risques/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="ats8-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/en/analysis/asia-dollar-stress-test-three-risks/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="ats8-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
 ];
 
 function numberAttribute(tag, name, fallback = 0) {

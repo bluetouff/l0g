@@ -1,0 +1,113 @@
+---
+import {calculate,DEFAULTS,LIMITS} from '../lib/asia-dollar-stress.mjs';
+interface Props {lang?:'fr'|'en'}
+const {lang='fr'}=Astro.props;
+const fr=lang==='fr';
+const r=calculate();
+type InputKey=keyof typeof DEFAULTS;
+type ResultKey=keyof typeof r;
+const id=`asia-triple-${lang}`;
+const fmt=(n:number)=>new Intl.NumberFormat(fr?'fr-FR':'en-GB',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
+const c=fr?{
+ eyebrow:'LABORATOIRE · SCÉNARIOS HYPOTHÉTIQUES',title:'Le prix baisse. Quand faut-il payer ?',
+ intro:'Un portefeuille de 100 unités d’obligations en dollars, auquel s’ajoute une réserve de cash en monnaie locale. Modifiez les chocs et observez séparément la valeur et la trésorerie à cinq jours.',
+ fixed:'Portefeuille fictif : 70 % de Treasuries, 30 % de crédit. Duration de taux : 7 ; sensibilité du crédit aux spreads : 6. Change initial normalisé à 1. Aucun pays ni assureur n’est calibré ici.',
+ presets:['Change seul','Chocs combinés','Dollar en hausse','Gain encaissé trop tard'],
+ inputs:'Vos hypothèses',advanced:'Calendrier et conditions d’exécution',
+ labels:{fx:'Dollar contre monnaie locale',rate:'Taux obligataires américains',spread:'Spreads du crédit',hedge:'Principal initial couvert',cash:'Cash local disponible',outflow:'Sorties nettes hors marges',otherMargin:'Autres besoins de collatéral',available:'Gain du hedge disponible à temps',discount:'Décote supplémentaire de vente',maturity:'Hedges arrivant à échéance',noRoll:'Part échue non renouvelée'},
+ hints:{fx:'−10 % : un dollar achète 10 % de monnaie locale en moins.',rate:'100 pb = hausse de 1 point de pourcentage des rendements.',spread:'Prime supplémentaire, appliquée uniquement aux 30 % de crédit.',hedge:'Le notionnel reste fixé au montant initial pendant le choc.',cash:'Unités locales par 100 unités d’obligations initiales.',outflow:'Prestations, rachats et autres paiements, nets des entrées ordinaires.',otherMargin:'Exclut le paiement du hedge de change déjà calculé.',available:'Gain effectivement reçu et réutilisable avant les paiements.',discount:'Par rapport au prix de marché déjà stressé, hors spread déjà compté.',maturity:'Part du notionnel couvert échue dans la fenêtre de cinq jours.',noRoll:'Échéances brutes en dollars, sans conversion automatique en cash net.'},
+ value:'Variation du portefeuille couvert',gap:'Manque de cash avant vente',sale:'Perte additionnelle de vente',
+ units:'Unités locales pour 100 unités initiales',breakdown:'Le calcul, ligne par ligne',
+ rows:{rateEffect:'Effet des taux, au change initial',creditEffect:'Effet du spread, au change initial',fxEffect:'Change sur les obligations revalorisées',hedgePnl:'Gain (+) ou perte (−) du hedge',resources:'Cash et gains utilisables',needs:'Paiements à effectuer',saleFairValue:'Titres à céder, valeur de marché stressée',pnlAfterSale:'Variation après décote de vente'},
+ due:'Notionnel à échéance',unrolled:'Dont non renouvelé',usd:'unités USD',
+ rollNote:'Un principal à livrer n’est ni une perte ni le besoin net de financement. Il reste à résoudre par le calendrier des deux devises, les flux opposés et les contrats. Il n’entre pas dans le manque de cash calculé au-dessus.',
+ method:'Hypothèses et limites du calcul',
+ methodText:'Prix USD ≈ 100 × (1 − 7 × choc de taux − 0,30 × 6 × choc de spread), chocs en décimal. Valeur locale = prix USD × (1 + variation du dollar). Hedge = −100 × part couverte × variation du dollar. Cash manquant = max(0 ; sorties + autres marges + perte du hedge payable − cash − gain réutilisable). Une perte du hedge est supposée payable intégralement dans la fenêtre ; la disponibilité de ses gains se règle séparément. Vente nécessaire = cash manquant / (1 − décote), limitée aux obligations disponibles.',
+ limit:'Approximation de premier ordre : ni coupons, carry, convexité, défaut, réévaluation des points de terme, passifs d’assurance, impôts, ni impact de marché endogène. La conversion des paiements en monnaie locale et la vente sont supposées exécutables à temps. Le gain indisponible reste une créance. Le coût d’un renouvellement et le financement net du principal échu restent hors calcul. Aucun ratio de solvabilité n’est produit.',
+ reset:'Réinitialiser',noscript:'JavaScript désactivé : les résultats ci-dessous correspondent au scénario combiné décrit dans l’article.',foot:'Calcul effectué dans votre navigateur. Aucune donnée envoyée.',
+} : {
+ eyebrow:'LAB · HYPOTHETICAL SCENARIOS',title:'Prices fall. When does cash leave?',
+ intro:'A 100-unit US dollar bond portfolio, plus a local-currency cash buffer. Change the shocks to separate the market outcome from the five-day cash requirement.',
+ fixed:'Illustrative portfolio: 70% Treasuries, 30% credit. Rate duration: 7; credit spread duration: 6. Initial exchange rate normalised to 1. These are not country or insurer estimates.',
+ presets:['FX only','Combined shocks','Stronger dollar','Hedge cash arrives late'],
+ inputs:'Your assumptions',advanced:'Timing and execution',
+ labels:{fx:'Dollar against local currency',rate:'US bond yields',spread:'Credit spreads',hedge:'Initial principal hedged',cash:'Available local cash',outflow:'Net outflows excluding margin',otherMargin:'Other collateral needs',available:'Hedge gain available in time',discount:'Additional sale discount',maturity:'Hedges maturing in the window',noRoll:'Maturing share not rolled'},
+ hints:{fx:'−10%: one dollar buys 10% less local currency.',rate:'100bp = a 1 percentage point rise in yields.',spread:'Extra premium, applied only to the 30% credit allocation.',hedge:'Notional stays fixed at its initial size during the shock.',cash:'Local units per initial 100-unit bond sleeve.',outflow:'Benefits, surrenders and other payments, net of ordinary inflows.',otherMargin:'Excludes the FX-hedge payment already calculated.',available:'Cash received and reusable before payments fall due.',discount:'Against the already stressed price; excludes the spread loss.',maturity:'Share of hedged notional maturing over five days.',noRoll:'Gross dollar maturities, not automatically a net cash need.'},
+ value:'Hedged portfolio change',gap:'Cash shortfall before sales',sale:'Additional loss on sale',
+ units:'Local-currency units per initial 100',breakdown:'Reconcile the numbers',
+ rows:{rateEffect:'Rate effect at initial exchange rate',creditEffect:'Spread effect at initial exchange rate',fxEffect:'FX on the repriced bonds',hedgePnl:'Hedge gain (+) or loss (−)',resources:'Cash plus usable hedge receipts',needs:'Payments due',saleFairValue:'Bonds to sell at stressed fair value',pnlAfterSale:'Change after the sale discount'},
+ due:'Notional maturing',unrolled:'Of which not rolled',usd:'USD units',
+ rollNote:'Principal due is neither a loss nor a net funding requirement. It must be resolved using both currency legs, offsetting flows and contract terms. It is not added to the cash shortfall above.',
+ method:'Calculation assumptions and limits',
+ methodText:'USD price ≈ 100 × (1 − 7 × yield shock − 0.30 × 6 × spread shock), with shocks in decimals. Local value = USD price × (1 + dollar move). Hedge = −100 × hedged share × dollar move. Cash gap = max(0, outflows + other margin + payable hedge loss − cash − reusable hedge gain). Any hedge loss is assumed payable in full within the window; usable gains are set separately. Required sale = cash gap / (1 − discount), capped at available bonds.',
+ limit:'First-order approximation: no coupons, carry, convexity, default, forward-points repricing, insurance liabilities, tax or endogenous market impact. Cash conversion and sales are assumed feasible before the deadline. An unavailable gain remains a receivable. Rollover pricing and the net funding of maturing principal are outside the calculation. No solvency ratio is produced.',
+ reset:'Reset',noscript:'JavaScript is disabled: the figures below show the combined scenario discussed in the article.',foot:'Calculated in your browser. No data is sent.',
+};
+const primary:InputKey[]=['fx','rate','spread','hedge','cash','outflow','otherMargin'];
+const advanced:InputKey[]=['available','discount','maturity','noRoll'];
+const rows=Object.entries(c.rows) as [ResultKey,string][];
+const unit=(k:InputKey)=>['rate','spread'].includes(k)?(fr?'pb':'bp'):['cash','outflow','otherMargin'].includes(k)?'u.':'%';
+---
+<section class="ats" data-asia-triple data-lang={lang} id={id} aria-labelledby={`${id}-title`}>
+ <header><p class="ats-eyebrow">{c.eyebrow}</p><h3 id={`${id}-title`}>{c.title}</h3><p>{c.intro}</p></header>
+ <p class="ats-fixed">{c.fixed}</p>
+ <div class="ats-presets" aria-label={fr?'Scénarios':'Scenarios'}>{['fxOnly','combined','dollarUp','delayed'].map((key,i)=><button type="button" data-preset={key} aria-pressed={key==='combined'}>{c.presets[i]}</button>)}</div>
+ <noscript><p>{c.noscript}</p></noscript>
+ <div class="ats-grid">
+ <form aria-label={c.inputs}>
+  <fieldset><legend>{c.inputs}</legend>{primary.map(k=><div class="ats-control"><label for={`${id}-${k}`}><span>{c.labels[k]}</span><output data-input-output={k} for={`${id}-${k}`}>{DEFAULTS[k]} {unit(k)}</output></label><input id={`${id}-${k}`} name={k} type="range" min={LIMITS[k][0]} max={LIMITS[k][1]} step={['rate','spread'].includes(k)?10:1} value={DEFAULTS[k]} data-unit={unit(k)} aria-describedby={`${id}-${k}-hint`}/><small id={`${id}-${k}-hint`}>{c.hints[k]}</small></div>)}</fieldset>
+  <details><summary>{c.advanced}</summary>{advanced.map(k=><div class="ats-control"><label for={`${id}-${k}`}><span>{c.labels[k]}</span><output data-input-output={k} for={`${id}-${k}`}>{DEFAULTS[k]} {unit(k)}</output></label><input id={`${id}-${k}`} name={k} type="range" min={LIMITS[k][0]} max={LIMITS[k][1]} step="1" value={DEFAULTS[k]} data-unit={unit(k)} aria-describedby={`${id}-${k}-hint`}/><small id={`${id}-${k}-hint`}>{c.hints[k]}</small></div>)}</details>
+  <button class="ats-reset" type="reset">{c.reset}</button>
+ </form>
+ <div class="ats-results">
+  <div class="ats-metrics" aria-live="polite" aria-atomic="true"><div><span>{c.value}</span><strong data-result="pnl">{fmt(r.pnl)}</strong></div><div><span>{c.gap}</span><strong data-result="gap">{fmt(r.gap)}</strong></div><div><span>{c.sale}</span><strong data-result="saleLoss">{fmt(r.saleLoss)}</strong></div></div>
+  <p class="ats-unit">{c.units}</p>
+  <h4>{c.breakdown}</h4><dl class="ats-ledger">{rows.map(([k,label])=><div><dt>{label}</dt><dd data-result={k}>{fmt(r[k])}</dd></div>)}</dl>
+  <div class="ats-roll"><h4>{c.due}</h4><p><strong data-result="dueUsd">{fmt(r.dueUsd)}</strong> {c.usd}</p><p>{c.unrolled} : <b data-result="noRollUsd">{fmt(r.noRollUsd)}</b> {c.usd}</p><small>{c.rollNote}</small></div>
+ </div></div>
+ <details class="ats-method"><summary>{c.method}</summary><p>{c.methodText}</p><p>{c.limit}</p></details>
+ <p class="ats-foot">{c.foot}</p>
+</section>
+<script>
+import {calculate,DEFAULTS,PRESETS} from '../lib/asia-dollar-stress.mjs';
+function initAsiaTriple(){
+ document.querySelectorAll<HTMLElement>('[data-asia-triple]').forEach(root=>{
+  if(root.dataset.ready) return;
+  const formElement=root.querySelector<HTMLFormElement>('form');
+  if(!formElement) return;
+  const form=formElement;
+  root.dataset.ready='true';
+  const nf=new Intl.NumberFormat(root.dataset.lang==='fr'?'fr-FR':'en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+  function render(){
+   const values:Record<string,number>={};
+   form.querySelectorAll<HTMLInputElement>('input[name]').forEach(el=>{
+    values[el.name]=Number(el.value);
+    const output=root.querySelector<HTMLOutputElement>(`[data-input-output="${el.name}"]`);
+    if(output) output.textContent=`${el.value} ${el.dataset.unit}`;
+   });
+   const result=calculate(values) as Record<string,number>;
+   root.querySelectorAll<HTMLElement>('[data-result]').forEach(el=>{
+    const key=el.dataset.result;
+    if(key && Number.isFinite(result[key])) el.textContent=nf.format(result[key]);
+   });
+  }
+  function set(values:Readonly<Record<string,number>>){form.querySelectorAll<HTMLInputElement>('input[name]').forEach(el=>{el.value=String(values[el.name]);});render();}
+  form.addEventListener('submit',e=>e.preventDefault());
+  form.addEventListener('input',()=>{root.querySelectorAll('[data-preset]').forEach(b=>b.setAttribute('aria-pressed','false'));render();});
+  form.addEventListener('reset',e=>{e.preventDefault();set(DEFAULTS);root.querySelectorAll<HTMLElement>('[data-preset]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.preset==='combined')));});
+  root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach(button=>button.addEventListener('click',()=>{
+   const preset=button.dataset.preset as keyof typeof PRESETS | undefined;
+   if(!preset) return;
+   set(PRESETS[preset]);
+   root.querySelectorAll('[data-preset]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  }));
+ });
+}
+initAsiaTriple();
+document.addEventListener('astro:page-load',initAsiaTriple);
+</script>
+<style>
+.ats{--bg:#0c0d10;--panel:#14171d;--ink:#f5f6f8;--muted:#b4bbc7;--line:#343b49;--mint:#5eead4;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:clamp(18px,4vw,32px);margin:36px 0;font:16px/1.6 system-ui,sans-serif;color-scheme:dark;overflow-wrap:anywhere}
+.ats *{box-sizing:border-box}.ats header p{color:var(--muted)}.ats .ats-eyebrow{font:11px/1.7 ui-monospace,monospace;letter-spacing:.12em;color:var(--mint);margin:0 0 10px}.ats h3{font-size:clamp(24px,3vw,32px);line-height:1.2;letter-spacing:-.035em;margin:0 0 16px}.ats h4{font-size:16px;margin:20px 0 12px}.ats p{margin:10px 0}.ats-fixed{font-size:13px;padding:15px;background:var(--panel);border-left:3px solid var(--mint);color:var(--muted)}
+.ats-presets{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}.ats button{font:inherit;font-size:13px;cursor:pointer;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:10px 13px;background:var(--panel);min-height:44px}.ats button[aria-pressed=true]{border-color:var(--mint);color:var(--mint);background:#132d2b}.ats :is(button,input,summary):focus-visible{outline:3px solid #f5b13d;outline-offset:4px}.ats-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:30px}.ats fieldset{padding:0;border:0;margin:0;min-width:0}.ats legend{font-weight:700;margin-bottom:16px}.ats-control{margin-bottom:18px}.ats-control label{display:flex;justify-content:space-between;gap:12px;font-size:14px;line-height:1.4}.ats-control output{color:var(--mint);font-variant-numeric:tabular-nums;white-space:nowrap}.ats-control input{width:100%;margin:8px 0 4px;accent-color:var(--mint);min-height:28px}.ats small{display:block;font-size:12px;line-height:1.55;color:var(--muted)}.ats summary{cursor:pointer;font-size:14px;padding:12px 0;color:var(--mint);min-height:44px}.ats details{border-top:1px solid var(--line)}.ats details[open] summary{margin-bottom:10px}.ats .ats-reset{margin-top:12px}.ats-metrics{display:grid;gap:12px}.ats-metrics>div{padding:16px 18px;background:var(--panel);border:1px solid var(--line);border-radius:10px}.ats-metrics span{display:block;font-size:13px;color:var(--muted)}.ats-metrics strong{font:600 34px/1.5 ui-monospace,monospace;letter-spacing:-.04em}.ats-metrics>div:first-child strong{color:#ff86ab}.ats-metrics>div:nth-child(2) strong{color:#f5b13d}.ats-metrics>div:last-child strong{color:var(--ink)}.ats .ats-unit{font-size:11px;color:var(--muted)}.ats-ledger{font-size:12px;margin:0}.ats-ledger>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;padding:9px 0;border-bottom:1px solid var(--line)}.ats-ledger dt{color:var(--muted)}.ats-ledger dd{margin:0;font:13px/1.6 ui-monospace,monospace;white-space:nowrap}.ats-roll{margin-top:22px;border:1px solid #3c5076;border-radius:10px;background:#121d30;padding:16px}.ats-roll h4{margin:0 0 10px}.ats-roll>p{font-size:14px}.ats-roll strong{font:600 28px ui-monospace,monospace;color:#9dbbff}.ats-method{margin-top:24px}.ats-method p{font-size:13px;color:var(--muted)}.ats .ats-foot{font-size:11px;color:var(--muted);margin:14px 0 0}@media(max-width:700px){.ats-grid{grid-template-columns:1fr;gap:20px}.ats-metrics{grid-template-columns:1fr}.ats{margin:24px 0}.ats-presets button{flex:1 1 42%}}
+</style>

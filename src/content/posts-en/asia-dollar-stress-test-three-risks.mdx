@@ -1,0 +1,334 @@
+---
+title: "Stress test: when three risks collide"
+seoTitle: "Asia dollar stress test: bonds, FX hedges and cash | l0g"
+ogTitle: "When dollar risk becomes a cash problem"
+ogImage: "/illustrations/news/asia-dollar-triple-stress-v1.jpg"
+description: "Falling bond prices, a weaker dollar and urgent payments: an interactive stress test of the risks facing Asian investment portfolios."
+pubDate: 2026-09-05T15:26:00+02:00
+updatedDate: 2026-09-05T15:26:00+02:00
+tags: ["Asia", "dollar", "insurance", "currency risk", "bonds", "liquidity", "stress test", "financial stability"]
+draft: false
+sourceArticle: "asie-dollar-stress-test-trois-risques"
+sourceUpdatedDate: 2026-09-05T15:26:00+02:00
+---
+
+import AsiaDollarTripleStress from '../../components/AsiaDollarTripleStress.astro';
+
+*A US bond loses value. The dollar falls. A payment comes due before the currency hedge delivers its cash. None of these events, taken alone, describes a financial crisis. Together, they can force a long-term investor to sell at the wrong time. The final instalment of **The Asian dollar loop** turns the investigation into a stress test: an exercise in finding the point where an investment loss becomes an immediate funding problem.*
+
+Consider an insurer that owes policyholders local currency but owns dollar bonds. It hedges part of the currency exposure. What happens if US bond yields rise, the dollar weakens and cash outflows accelerate?
+
+The answer requires two ledgers. One records the market value of the bonds and the hedge. The other records money arriving and leaving. A gain in the first ledger may arrive too late to fund the second.
+
+The documentary cutoff is **5 September 2026**. Each factual reference below retains its own observation period. The simulator uses **explicit l0g assumptions**, selected to make the mechanics visible. They are not Asian averages, insurer estimates or market forecasts.
+
+## The investigation reaches the edge of the public data
+
+The [US Treasury's annual holdings survey](https://www.treasury.gov/resource-center/data-chart-center/tic/Documents/shl2025r.pdf), Table A5, attributes **$9.834 trillion of US securities to Asian residents at 30 June 2025**. That includes $4.504 trillion of equities and related instruments, compared with $3.284 trillion of long-term Treasuries. The [final report was released on 30 April 2026](https://home.treasury.gov/news/press-releases/sb0482). The geographical aggregate does not reveal the holders' liabilities or currency derivatives.
+
+Putting a single haircut on that total would not stress-test Asia's financial system. Equities, government bonds, corporate credit and mortgage securities respond differently. Reserve managers, pension funds and insurers also have different funding structures. A residence-based securities survey cannot substitute for consolidated balance sheets.
+
+National publications supply additional pieces. Taiwan's central bank, in its [May 2026 financial stability report, pages 68 and 69](https://www.cbc.gov.tw/dl-227216-d7012267389b4bb0b2b6b29276d86c70.html), describes the currency mismatch between life insurers' assets and policies, its impact on 2025 earnings and the limits of measures that smooth reported results. That establishes an exposure. It does not disclose a daily schedule of collateral and contractual maturities.
+
+The [Bank of Japan's report of 21 April 2026](https://www.boj.or.jp/en/research/brp/fsr/data/fsr260421a.pdf) supplies a material counterweight. For the relevant sample, securities still carried substantial net valuation gains at end-December 2025, despite mounting losses on yen bonds. Equity gains mattered. Looking only at the losing asset class would have distorted the balance-sheet picture.
+
+China requires a different boundary. [SAFE's publication of 1 July 2026](https://www.safe.gov.cn/ningbo/2026/0701/2598.html), covering end-March, separates external assets into direct investment, portfolio holdings, derivatives, other investment and reserves. This Chinese government source measures the official international investment position. Its categories cannot be treated as the portfolio of one enormous insurer.
+
+We can reconstruct the transmission mechanisms. We have not found a consistent public dataset that combines, for each jurisdiction, the timing of hedges, collateral and payments by currency and counterparty. The simulator respects that limit. It starts with an invented 100-unit portfolio whose assumptions are visible throughout.
+
+## April 2025 reveals a partial combination
+
+A simultaneous decline in US assets and the dollar is not a combination devised solely to make a stress scenario look alarming. In a [post dated 13 April 2026](https://www.banque-france.fr/en/publications-and-statistics/publications/are-foreign-investors-more-cautious-over-us-dollar), the Banque de France revisits the initial falls in US equities, Treasuries and the dollar following the April 2025 tariff announcements. The currency cushion foreign investors had sometimes relied on weakened.
+
+A [BIS Bulletin published on 20 June 2025](https://www.bis.org/publications/bulletin-105-us-dollars-slide-april-2025-role-fx-hedging) identifies increased hedging as a likely contributor to dollar weakness in April and May 2025. Investors can retain their securities while selling more dollars forward. Exchange rates can therefore move without an equivalent liquidation of bonds. Intraday evidence points to an Asian contribution; it does not identify every seller.
+
+One finding limits how far that precedent can be taken. In their [8 December 2025 review](https://www.bis.org/publications/global-fx-markets-when-hedging-takes-centre-stage), BIS authors report **no signs of dollar funding strains in April 2025**. Dealers were able to absorb some opposing flows internally.
+
+A falling dollar, falling bonds and an urgent cash need form a scenario worth examining. April 2025 does not establish that the entire chain has already played out. The third risk needs an additional assumption: a payment deadline, unavailable refinancing or delayed receipts.
+
+## Three risks act on different things
+
+**Market risk** changes the price of an asset. A fixed-rate bond keeps paying the same coupons when newly issued bonds offer higher yields. Its price falls to compete. The [SEC explains that even a US government guarantee does not remove this sensitivity](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-86). A promise to make contractual payments is not a guarantee of the resale price.
+
+**Currency risk** depends on what the investor owes. One hundred dollars translates into a different amount of yen, won or Taiwan dollars after an exchange-rate move. A currency hedge locks in an exchange rate on a specified amount. Its value must be read alongside the assets it protects.
+
+**Liquidity risk** concerns the ability to obtain money in the required currency before a deadline. An asset payable in ten years cannot, by itself, settle tomorrow's bill. Even a marketable security brings questions about the sale price, settlement date and transfer of proceeds.
+
+Credit cuts across these categories. If investors require more compensation to lend to a company, its **credit spread**, the extra yield over a benchmark, widens. The bond loses market value. An actual default is a separate event, and is not simulated here.
+
+<figure class="infographic" style="margin:2.5rem 0;padding:0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 720" role="img" aria-labelledby="ats8-transmission-en-title ats8-transmission-en-desc" lang="en" style="display:block;width:100%;height:auto;background:#0c0d10;border-radius:12px;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">
+<title id="ats8-transmission-en-title">Three channels, two ledgers</title>
+<desc id="ats8-transmission-en-desc">FX and yields affect portfolio value. Payments and hedge timing affect cash. A cash deficit may force a sale.</desc>
+<defs>
+<marker id="ats8-transmission-en-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#b4bbc7"/>
+</marker>
+</defs>
+<rect width="760" height="720" rx="12" fill="#0c0d10"/>
+<text x="32" y="48" fill="#5eead4" font-size="16" font-weight="700" text-anchor="start">l0g / 08</text>
+<text x="32" y="90" fill="#f5f6f8" font-size="28" font-weight="700" text-anchor="start">Three channels, two ledgers</text>
+<rect x="32" y="124" width="216" height="134" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="50" y="156" fill="#5eead4" font-size="16" font-weight="700" text-anchor="start">EXCHANGE RATE</text>
+<text x="50" y="196" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">Dollar weaker</text>
+<text x="50" y="226" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">or stronger</text>
+<rect x="272" y="124" width="216" height="134" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="290" y="156" fill="#ff86ab" font-size="16" font-weight="700" text-anchor="start">BONDS</text>
+<text x="290" y="196" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">Higher yields</text>
+<text x="290" y="226" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">Wider spreads</text>
+<rect x="512" y="124" width="216" height="134" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="530" y="156" fill="#f5b13d" font-size="16" font-weight="700" text-anchor="start">PAYMENTS</text>
+<text x="530" y="196" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">Outflows due</text>
+<text x="530" y="226" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">Collateral call</text>
+<path d="M 140 258 L 140 304" fill="none" stroke="#b4bbc7" stroke-width="2" marker-end="url(#ats8-transmission-en-arrow)"/>
+<path d="M 380 258 L 380 280 L 274 280 L 274 304" fill="none" stroke="#b4bbc7" stroke-width="2" marker-end="url(#ats8-transmission-en-arrow)"/>
+<path d="M 620 258 L 620 304" fill="none" stroke="#b4bbc7" stroke-width="2" marker-end="url(#ats8-transmission-en-arrow)"/>
+<rect x="32" y="312" width="336" height="164" rx="10" fill="#161a22" stroke="#343b49"/>
+<rect x="392" y="312" width="336" height="164" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="52" y="349" fill="#ff86ab" font-size="17" font-weight="700" text-anchor="start">VALUE LEDGER</text>
+<text x="52" y="391" fill="#b4bbc7" font-size="23" font-weight="400" text-anchor="start">Bond prices</text>
+<text x="52" y="421" fill="#b4bbc7" font-size="23" font-weight="400" text-anchor="start">+ hedge value</text>
+<text x="412" y="349" fill="#f5b13d" font-size="17" font-weight="700" text-anchor="start">CASH LEDGER</text>
+<text x="412" y="391" fill="#b4bbc7" font-size="22" font-weight="400" text-anchor="start">Money available</text>
+<text x="412" y="421" fill="#b4bbc7" font-size="22" font-weight="400" text-anchor="start">before due dates</text>
+<path d="M 560 476 L 560 514" fill="none" stroke="#b4bbc7" stroke-width="2" marker-end="url(#ats8-transmission-en-arrow)"/>
+<rect x="32" y="524" width="696" height="132" rx="10" fill="#201c16" stroke="#80602e"/>
+<text x="54" y="563" fill="#f5f6f8" font-size="23" font-weight="700" text-anchor="start">If payments exceed available cash…</text>
+<text x="54" y="603" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">Borrow, sell assets or obtain fresh funds.</text>
+<text x="54" y="633" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">An urgent sale can add an execution loss.</text>
+<text x="32" y="693" fill="#b4bbc7" font-size="15" font-weight="400" text-anchor="start">l0g diagram · conditional mechanism · 5 September 2026</text>
+</svg>
+<figcaption style="font-size:0.875rem;line-height:1.65;margin-top:1rem">The three channels do not imply a single outcome. Hedges connect the two ledgers, but their value and cash flows can move at different times. Conditional l0g diagram, 5 September 2026.</figcaption>
+</figure>
+
+The three risks need not reinforce one another. A stronger dollar can cushion falling bond prices for an unhedged investor. Higher domestic discount rates can reduce the present value of some insurance obligations. Prompt payment of a hedge gain can prevent an asset sale. A useful stress test must allow these offsets to work.
+
+## Start with 100 and show the arithmetic
+
+Our investor owns a **100-unit dollar bond portfolio**: 70 units of Treasuries and 30 of corporate credit. The initial exchange rate is normalised to one local-currency unit per dollar. The bonds therefore also start at 100 in local currency. A separate local cash buffer is added to this sleeve and is excluded from the denominator used for portfolio returns.
+
+**Modified duration** measures a bond's price sensitivity to a small change in yield. A duration of 7 implies an approximate 7% price decline for a 1 percentage point rise in yield, before allowing for convexity. Maturity tells you when principal is repaid. Duration describes sensitivity; the two are not interchangeable.
+
+We assume a rate duration of 7 across the bond sleeve and a spread duration of 6 for the credit allocation. US benchmark yields rise **100 basis points**, or 1 percentage point. The spread on the 30% credit allocation widens another 100 basis points.
+
+The first-order calculation is straightforward:
+
+- benchmark yield effect: 100 × 7 × 1% = **7 units lost**;
+- additional spread effect: 30 × 6 × 1% = **1.8 units lost**;
+- remaining dollar bond value: 100 − 7 − 1.8 = **91.2**.
+
+The spread shock is added to the benchmark yield shock. It is not added to a corporate yield change that already includes the same spread movement. Otherwise the model would count it twice.
+
+Now let the dollar buy **10% less local currency**. The exchange rate falls from 1 to 0.90. The 91.2 dollars are worth **82.08 local units**, an unhedged loss of **17.92%**.
+
+Adding 8.8% and 10% would produce 18.8%, the wrong answer. The exchange-rate change applies to bonds whose dollar price has already fallen. The effects multiply: 0.912 × 0.90 = 0.8208. The 0.88 percentage point cross term reduces the loss relative to simple addition.
+
+The exchange-rate convention matters too. A 10% fall in the dollar against the local currency is equivalent to an approximately **11.11% rise in the local currency measured in dollars**: 1 / 0.90 − 1. The simulator's FX control always measures the dollar in local-currency terms.
+
+## A short-dollar hedge gains when the dollar falls
+
+The investor hedges 70% of the initial principal by taking the economic equivalent of a forward sale of 70 dollars. The calculation strips out forward points, discounting and carry to isolate the spot effect on an existing hedge. The hedge is not rebalanced during the shock.
+
+When the dollar falls from 1 to 0.90, the hedge gains **7 local units**. Bonds plus hedge are worth 82.08 + 7 = **89.08**. The loss falls to **10.92%**.
+
+The hedge has done its job. It was never designed to protect the bonds against higher yields or wider credit spreads.
+
+<figure class="infographic" style="margin:2.5rem 0;padding:0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 722" role="img" aria-labelledby="ats8-valeur-en-title ats8-valeur-en-desc" lang="en" style="display:block;width:100%;height:auto;background:#0c0d10;border-radius:12px;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">
+<title id="ats8-valeur-en-title">Bond and hedge values</title>
+<desc id="ats8-valeur-en-desc">Starting value 100. After yield and spread shocks: 91.20. After dollar decline: 82.08. Including hedge gain of 7: 89.08. Total loss 10.92.</desc>
+<defs>
+<marker id="ats8-valeur-en-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#b4bbc7"/>
+</marker>
+</defs>
+<rect width="760" height="722" rx="12" fill="#0c0d10"/>
+<text x="32" y="45" fill="#5eead4" font-size="16" font-weight="700" text-anchor="start">l0g / 08</text>
+<text x="32" y="86" fill="#f5f6f8" font-size="28" font-weight="700" text-anchor="start">Bond and hedge values</text>
+<text x="32" y="119" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">Combined scenario · local units · initial value 100</text>
+<line x1="224.0" y1="158" x2="224.0" y2="455" stroke="#343b49" stroke-width="1"/>
+<text x="224.0" y="481" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="middle">0</text>
+<line x1="344.0" y1="158" x2="344.0" y2="455" stroke="#343b49" stroke-width="1"/>
+<text x="344.0" y="481" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="middle">25</text>
+<line x1="464.0" y1="158" x2="464.0" y2="455" stroke="#343b49" stroke-width="1"/>
+<text x="464.0" y="481" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="middle">50</text>
+<line x1="584.0" y1="158" x2="584.0" y2="455" stroke="#343b49" stroke-width="1"/>
+<text x="584.0" y="481" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="middle">75</text>
+<line x1="704.0" y1="158" x2="704.0" y2="455" stroke="#343b49" stroke-width="1"/>
+<text x="704.0" y="481" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="middle">100</text>
+<text x="32" y="188" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">At the start</text>
+<rect x="224" y="164" width="480.0" height="47" rx="2" fill="#bcc4d2" stroke="#bcc4d2"/>
+<text x="692.0" y="196" fill="#0c0d10" font-size="22" font-weight="700" text-anchor="end">100.00</text>
+<text x="32" y="266" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">After yields</text>
+<text x="32" y="291" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">and spreads</text>
+<rect x="224" y="242" width="437.76" height="47" rx="2" fill="#ff86ab" stroke="#ff86ab"/>
+<text x="649.76" y="274" fill="#0c0d10" font-size="22" font-weight="700" text-anchor="end">91.20</text>
+<text x="32" y="344" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">After FX</text>
+<text x="32" y="369" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">before hedge</text>
+<rect x="224" y="320" width="393.984" height="47" rx="2" fill="#ff86ab" stroke="#ff86ab"/>
+<text x="605.9839999999999" y="352" fill="#0c0d10" font-size="22" font-weight="700" text-anchor="end">82.08</text>
+<text x="32" y="422" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">Including the</text>
+<text x="32" y="447" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">hedge gain</text>
+<rect x="224" y="398" width="427.584" height="47" rx="2" fill="#5eead4" stroke="#5eead4"/>
+<text x="639.5840000000001" y="430" fill="#0c0d10" font-size="22" font-weight="700" text-anchor="end">89.08</text>
+<rect x="32" y="518" width="696" height="116" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="54" y="555" fill="#f5f6f8" font-size="25" font-weight="700" text-anchor="start">Total change: −10.92%</text>
+<text x="54" y="591" fill="#b4bbc7" font-size="22" font-weight="400" text-anchor="start">−7.00 − 1.80 − 9.12 + 7.00 = −10.92</text>
+<text x="32" y="675" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="start">l0g calculations · assumptions, not market observations.</text>
+<text x="32" y="699" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="start">Yields +100bp; spread +100bp; dollar −10%; hedge 70%.</text>
+</svg>
+<figcaption style="font-size:0.875rem;line-height:1.65;margin-top:1rem">l0g assumptions: rate duration 7, credit weight 30%, spread duration 6, yields and spreads up 100bp, dollar down 10%, 70% of initial principal hedged. FX applies to the repriced bonds. The cash buffer is outside this sleeve. Instantaneous first-order shock, excluding carry and convexity.</figcaption>
+</figure>
+
+The notional remains fixed at 70 dollars. It is not reset to 70% of the new 91.2-dollar bond value. A manager rebalancing the hedge as prices move would generate different returns, transactions and cash flows.
+
+Hedging all 100 units of initial principal would leave a combined loss of **7.92%** in this example. It would eliminate the loss from a pure currency shock with unchanged bond prices. In the combined shock, however, the hedge exceeds the reduced 91.2-dollar bond value. The resulting overhedge affects the outcome. A principal hedge does not continuously match the portfolio's market value.
+
+A real forward valuation would use post-shock forward exchange rates and discount curves. Higher long-term US bond yields do not automatically imply an identical rise in the short-term rates relevant to a short hedge. The approximation keeps those variables distinct rather than inventing a swap quote.
+
+## A seven-unit gain may remain unavailable tomorrow
+
+Move to the cash ledger. We use a **five-day window**, with some payments assumed due before some receipts arrive. This is not a day-by-day simulation. The availability control summarises the timing mismatch.
+
+The investor has 5 local units of cash and 8 units of net outflows excluding margin: benefits, surrenders or other payments after ordinary inflows. Other positions require 2 additional units of collateral. That input is independent of the currency shock and **excludes any FX-hedge payment already calculated**.
+
+The currency hedge has gained 7, but only **25%** of that gain is assumed received and reusable before payments fall due. That supplies 1.75 units. The rest remains a receivable or unavailable collateral, depending on the contracts. It has not vanished.
+
+Resources total 5 + 1.75 = **6.75**, against **10 due**. The cash shortfall is **3.25**.
+
+This is not a margin call inflicted on this investor by a falling dollar. Its short-dollar hedge is gaining. The problem lies in payment timing, other obligations and the terms governing receipt and reuse of collateral.
+
+The [Financial Stability Board's final recommendations of 10 December 2024](https://www.fsb.org/2024/12/liquidity-preparedness-for-margin-and-collateral-calls-final-report/) address precisely the preparation of non-bank participants for margin and collateral demands. Collateral reduces counterparty credit risk. Mobilising it quickly can create a funding constraint for the party required to provide it.
+
+<figure class="infographic" style="margin:2.5rem 0;padding:0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 700" role="img" aria-labelledby="ats8-tresorerie-en-title ats8-tresorerie-en-desc" lang="en" style="display:block;width:100%;height:auto;background:#0c0d10;border-radius:12px;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">
+<title id="ats8-tresorerie-en-title">Cash available before payments</title>
+<desc id="ats8-tresorerie-en-desc">Resources: 5 cash plus 1.75 usable hedge receipts, total 6.75. Needs: 8 outflows plus 2 collateral, total 10. Shortfall: 3.25.</desc>
+<defs>
+<marker id="ats8-tresorerie-en-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#b4bbc7"/>
+</marker>
+</defs>
+<rect width="760" height="700" rx="12" fill="#0c0d10"/>
+<text x="32" y="45" fill="#5eead4" font-size="16" font-weight="700" text-anchor="start">l0g / 08</text>
+<text x="32" y="86" fill="#f5f6f8" font-size="28" font-weight="700" text-anchor="start">Cash available before payments</text>
+<text x="32" y="119" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">Combined scenario · five-day window · local units</text>
+<rect x="32" y="156" width="336" height="292" rx="10" fill="#161a22" stroke="#343b49"/>
+<rect x="392" y="156" width="336" height="292" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="54" y="193" fill="#5eead4" font-size="17" font-weight="700" text-anchor="start">RESOURCES</text>
+<text x="414" y="193" fill="#f5b13d" font-size="17" font-weight="700" text-anchor="start">PAYMENTS DUE</text>
+<text x="54" y="263" fill="#f5f6f8" font-size="52" font-weight="700" text-anchor="start">6.75</text>
+<text x="414" y="263" fill="#f5f6f8" font-size="52" font-weight="700" text-anchor="start">10.00</text>
+<text x="54" y="315" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">5.00 · starting cash</text>
+<text x="54" y="345" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">1.75 · usable hedge</text>
+<text x="414" y="315" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">8.00 · net outflows</text>
+<text x="414" y="345" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">2.00 · other collateral</text>
+<text x="54" y="398" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">Only 25% of the</text>
+<text x="54" y="423" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">7-unit hedge gain.</text>
+<text x="414" y="398" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">No payment of an FX</text>
+<text x="414" y="423" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">hedge loss in this case.</text>
+<rect x="32" y="477" width="696" height="127" rx="10" fill="#201c16" stroke="#80602e"/>
+<text x="54" y="518" fill="#f5b13d" font-size="17" font-weight="700" text-anchor="start">SHORTFALL BEFORE SALES</text>
+<text x="54" y="572" fill="#f5f6f8" font-size="42" font-weight="700" text-anchor="start">3.25</text>
+<text x="216" y="569" fill="#b4bbc7" font-size="27" font-weight="400" text-anchor="start">10.00 − 6.75</text>
+<text x="32" y="646" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="start">l0g calculations · assumptions, not an insurer estimate.</text>
+<text x="32" y="671" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="start">Unavailable hedge gains remain receivables, not losses.</text>
+</svg>
+<figcaption style="font-size:0.875rem;line-height:1.65;margin-top:1rem">Five-day l0g assumptions, in local units per initial 100-unit bond sleeve. Resources: 5 + 25% × 7 = 6.75. Needs: 8 + 2 = 10. The 3.25 gap is a cash shortfall before sales, not an additional portfolio loss.</figcaption>
+</figure>
+
+If the entire hedge gain were available in time, resources would reach 12 and payments would be covered. If none arrived before the deadline, the gap would be 5. **The market loss would remain 10.92 in all three cases.** Only cash availability changes.
+
+This also explains why surrender payments cannot simply be deducted as a second investment loss. Paying a policyholder uses cash but may extinguish a corresponding liability. Posting collateral is not inherently a permanent expense. Additional economic damage can arise if obtaining cash requires a discounted sale or expensive funding.
+
+## The stronger dollar can require more cash
+
+Reverse only the currency shock. Starting from the same original portfolio, let the dollar **rise 10%**. After the rate and spread shocks the bonds still hold a dollar value of 91.2, now equivalent to **100.32 local units**. The short-dollar hedge loses **7**. Bonds plus hedge are worth 93.32, a loss of **6.68%**.
+
+That is a less adverse market outcome. It can still be a more demanding cash outcome.
+
+Assume the full 7-unit hedge loss is payable within five days. This is a stress convention, not a universal term of FX contracts. The investor now needs 8 for net outflows, 2 for other collateral and 7 for the hedge: 17 in total. With 5 in cash, the shortfall is **12**.
+
+| Independent scenario | Bonds plus hedge: change in value | Cash gap before sales |
+| --- | ---: | ---: |
+| Dollar −10%; yields and spreads +100bp; 25% of hedge gain usable | −10.92 | 3.25 |
+| Same shocks; hedge receipts unavailable before the deadline | −10.92 | 5.00 |
+| Dollar +10%; yields and spreads +100bp; hedge loss payable | −6.68 | 12.00 |
+
+*l0g assumptions. Local units per initial 100-unit bond sleeve; starting cash 5; non-margin net outflows 8; other collateral needs 2; initial hedge ratio 70%. Each row starts from the same portfolio. They are not successive days in a single path.*
+
+A smaller loss can therefore require more immediate funding. An insurer can correctly identify the economic protection provided by its hedge and still underestimate the means of payment required to maintain it.
+
+## Twenty-eight dollars to roll measure a gross maturity
+
+Hedges have their own maturity dates. Suppose **40% of the 70-dollar hedge** matures inside the window. That is 28 dollars of contracts to address. If one-quarter of that maturing amount cannot be rolled, **7 dollars of principal reaches maturity without a replacement contract**.
+
+That is a useful exposure measure. It is neither a 7-dollar loss nor necessarily a 7-dollar net funding requirement.
+
+An FX swap exchanges currencies on an initial date and reverses the exchange later. Depending on the arrangement, an investor may need to deliver dollars well before its bonds repay principal. It might replace the swap, borrow dollars, sell assets or draw on incoming payments. The opposite currency leg must also be incorporated.
+
+Adding only the principal amounts ignores offsetting legs, contractual netting and payments already arranged. Conversely, an accounting offset does not establish that both currencies arrive in the right order at the right custodian.
+
+On [15 June 2026 the BIS published a new assessment of FX settlement risk](https://www.bis.org/publications/uncovering-fx-settlement-risk-new-measures-2025-bis-triennial-survey), using April 2025 observations. It distinguishes methods that eliminate the risk of delivering one currency without receiving the other from methods that only mitigate it. Methodological changes prevent direct comparison with the 2019 and 2022 surveys.
+
+The tool therefore **shows gross maturities separately**. They are not automatically included in the cash shortfall. Calculating that would require both currency schedules and the actual contracts. Rollover pricing is also excluded: an annualised increase in hedging cost cannot be turned into an immediate payment without specifying the period and settlement terms.
+
+## An urgent sale adds a specific loss
+
+Return to the 3.25-unit cash gap in the combined scenario. The investor can sell bonds whose stressed market value already reflects the changes in benchmark yields, spreads and the exchange rate.
+
+We assume a further **2% execution discount** against that stressed value. This represents an urgent-sale concession, separate from the credit spread loss already included. To raise 3.25, the investor must sell bonds with a stressed fair value of 3.25 / 0.98 = **3.3163 units**. The additional loss is **0.0663**, not 3.3163.
+
+Most of the loss existed before the sale. Selling crystallises it; the extra execution discount adds damage. Charging the entire decline again at disposal would double-count it.
+
+After the sale discount, the covered bond sleeve has lost approximately **10.99 units**. Ordinary payments and collateral postings are not added as investment expenses. The tool does not attempt to calculate the insurer's full accounting profit.
+
+Systemic risk begins one level above this individual calculation. If several institutions sell the same bonds at the same time, execution prices may deteriorate further. If all their plans assume banks will absorb the assets or extend funding, dealer capacity becomes a shared constraint. That feedback is plausible, but our fixed discount does not estimate it.
+
+The [Bank of England's exploratory exercise, published on 29 November 2024](https://www.bankofengland.co.uk/financial-stability/boe-system-wide-exploratory-scenario-exercise/boe-swes-exercise-final-report), compared the intended reactions of different types of financial firms. It demonstrates why their expectations of each other matter. Its findings concern UK markets under a hypothetical scenario. They do not calibrate Asian losses.
+
+## The simulator explores conditional assumptions
+
+<AsiaDollarTripleStress lang="en" />
+
+Start with “FX only”. A 70% principal hedge reduces the loss from a 10% dollar decline to 3 units on the original bond sleeve. Then add the yield and spread shocks. Finally compare the stronger-dollar case with delayed hedge receipts. Investment performance and the need to sell stop moving together.
+
+Cash parameters are local-currency units per initial 100-unit bond sleeve. They are not insurance surrender rates, because the model does not contain the policy liability base. A five-day window does not assign a five-day crisis probability either.
+
+The sale is assumed to settle, and its proceeds to be convertible, before the payment deadline. If that assumption fails, actual payment capacity is lower than the post-sale calculation suggests. An operational liquidity assessment would maintain separate ledgers by currency, settlement location and value date.
+
+## Liabilities can absorb part of the shock
+
+An insolvency diagnosis would also require valuing the institution's obligations. A long-dated liability promises future payments. If the appropriate discount rate rises, their present value may fall, partly offsetting a rate-driven asset loss.
+
+Take a second illustration, separate from the tool: a local-currency liability of 90 with modified duration 10. A parallel 0.5 percentage point increase in its discount rate reduces its present value by approximately **4.5** at first order. In that simplified setting, the liability change offsets part of the covered asset loss of 10.92.
+
+But a US yield is not the discount rate for a promise denominated in won or yen. The domestic shock must be specified independently. A proper valuation also requires guarantees, participation features, surrender options, regulatory curves and accounting classifications. The [IFRS Foundation's official description of IFRS 17](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-17-insurance-contracts/) explains that insurance contract measurement combines discounted future cash flows with other components. A standalone bond sleeve cannot reproduce that calculation.
+
+Nor does a 4.5-unit reduction in the present value of liabilities put 4.5 units of cash into a bank account. An economic improvement on the liability side can coexist with a liquidity problem. Policyholders exercising surrender rights can also accelerate payments a static model had treated as distant.
+
+Mortgage securities introduce another complication on the asset side. Higher rates can discourage refinancing, slowing prepayments and extending the effective life of the investment. The [Federal Reserve Bank of New York explains this convexity mechanism](https://libertystreeteconomics.newyorkfed.org/2014/03/convexity-event-risks-in-a-rising-interest-rate-environment/). Our fixed-duration illustration does not model it: the portfolio contains neither MBS nor securitisation tranches.
+
+## Buffers work only if they reach the investor
+
+The strongest objection to a contagion narrative is the system's ability to absorb losses. Stable liabilities, recurring receipts, liquid assets and genuinely available credit lines can let an institution withstand a shock without selling urgently. Higher yields also improve the terms on which future cash flows can be reinvested, provided the institution has time.
+
+A weaker dollar is not adverse for everyone. The [BIS Bulletin of 13 October 2025](https://www.bis.org/publications/bulletin-114-financial-channel-implications-weaker-dollar-emerging-market-economies) describes how it can ease financial conditions in emerging economies, including through borrowers' balance sheets. A dollar asset and a dollar liability carry opposite currency exposures.
+
+Official facilities can supply liquidity as well. The [Federal Reserve describes its standing dollar swap arrangements with several central banks, including the Bank of Japan](https://www.federalreserve.gov/monetarypolicy/central-bank-liquidity-swaps.htm). Its [FIMA repo facility](https://www.federalreserve.gov/monetarypolicy/fima-repo-facility-faqs.htm) gives approved foreign monetary authorities a temporary source of dollars against Treasuries, providing an alternative to outright market sales.
+
+Those are intervention channels, not automatic credit lines for every Asian insurer. The money must still travel from the central bank through intermediaries to the final holder, subject to eligibility, collateral and timing. Large national reserves do not establish that every institution can immediately obtain the currency it needs.
+
+## The next decisive document is a payment schedule
+
+After examining national balance sheets, US securities and the machinery of currency hedging, the remaining blind spot is no longer simply the size of “Asian money”. It is whether the payments line up.
+
+Turning this exercise into an institutional test requires a maturity schedule connecting securities, derivatives and liabilities. How much must be paid before the next receipts? In which currency? How much incoming collateral can be reused? Which credit lines are legally committed, and by which banks? Are the assets intended for sale already pledged?
+
+Collective reactions matter just as much. Does one institution's plan depend on selling to a counterparty that also expects to sell? Do several investors rely on the same dollar provider? Has the same collateral been assigned to competing uses that cannot all be met? Answers to those questions would change the diagnosis more than another national total rounded to the nearest billion.
+
+The evidence establishes currency and maturity mismatches and the role of hedges in managing them. It supports conditional calculations built on disclosed assumptions. It neither dates a breaking point nor establishes that an Asian liquidation is inevitable.
+
+The threshold worth watching is specific: **resources actually available before the deadline fall below payments due**. On one side of that threshold, an institution may have time to absorb a bad investment year. On the other, its options narrow even while its assets retain substantial value. That is where the three risks meet.
+
+*This concludes The Asian dollar loop. Revisit [Korean currency hedging](/en/analysis/south-korea-price-perfect-fx-hedge/), [swaps and their intermediaries](/en/analysis/asia-invisible-dollar-hedging-machine/), [Asia's holdings of US securities](/en/analysis/what-asia-really-buys-in-america/) and [China's external balance sheets](/en/analysis/china-dollar-risk-reserves-banks-balance-sheets/). Primary sources are linked throughout; the simulator includes its calculation method and limitations.*

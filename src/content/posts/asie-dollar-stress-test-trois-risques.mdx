@@ -1,0 +1,336 @@
+---
+title: "Stress test : quand trois risques se rencontrent"
+seoTitle: "Asie : dollar, obligations et liquidité sous stress | l0g"
+ogTitle: "Dollar, obligations, liquidité : le choc combiné"
+ogImage: "/illustrations/news/asia-dollar-triple-stress-v1.jpg"
+description: "Dollar en baisse, obligations dévalorisées, paiements urgents : un stress test interactif pour comprendre les risques des portefeuilles asiatiques."
+pubDate: 2026-09-05T15:26:00+02:00
+updatedDate: 2026-09-05T15:26:00+02:00
+tags: ["Asie", "dollar", "assurance", "risque de change", "obligations", "liquidité", "stress test", "stabilité financière"]
+draft: false
+quickTake:
+  fact: "Les sources documentent séparément les actifs, les couvertures et les tensions de marché, mais pas le calendrier consolidé des paiements de chaque institution."
+  importance: "Un portefeuille peut limiter sa perte de valeur tout en exigeant davantage de cash. Le sens du dollar change aussi le sens des paiements du hedge."
+  uncertainty: "Les simulations sont des cas pédagogiques : elles ne mesurent ni les pertes probables de l’Asie, ni la solvabilité d’un assureur."
+---
+
+import AsiaDollarTripleStress from '../../components/AsiaDollarTripleStress.astro';
+
+*Une obligation américaine perd de la valeur. Le dollar baisse. Un paiement arrive avant que la couverture ait versé son gain. Aucun de ces événements ne suffit à décrire une crise. Leur rencontre peut pourtant obliger un investisseur de long terme à vendre au pire moment. Pour clore **La boucle du dollar asiatique**, nous avons construit un stress test qui fait apparaître cette frontière : celle qui sépare une perte supportable dans le temps d’une somme impossible à réunir à temps.*
+
+Le scénario tient en une question très concrète. Un assureur qui promet des paiements en monnaie locale possède des obligations en dollars. Il en protège une partie contre le change. Que lui reste-t-il si le rendement exigé sur ces obligations augmente, si le dollar se déprécie et si ses sorties de trésorerie accélèrent ?
+
+Il faut ouvrir deux comptes. Le premier enregistre la valeur des titres et de la couverture. Le second suit les encaissements et les décaissements. Un gain dans le premier peut arriver trop tard pour remplir le second.
+
+La collecte a été arrêtée au **5 septembre 2026**. Les faits ci-dessous portent sur les périodes indiquées par chaque source. Les paramètres du simulateur sont, eux, des **hypothèses l0g**, choisies pour rendre le mécanisme lisible. Aucun n’est présenté comme une moyenne asiatique ou une prévision de marché.
+
+## L’enquête aboutit à une limite de données
+
+Le [rapport annuel du Trésor américain](https://www.treasury.gov/resource-center/data-chart-center/tic/Documents/shl2025r.pdf), tableau A5, attribue aux résidents d’Asie **9 834 milliards de dollars de titres américains au 30 juin 2025**. Il comprend notamment 4 504 milliards d’actions et instruments assimilés, contre 3 284 milliards de Treasuries à long terme. Le [rapport final a été publié le 30 avril 2026](https://home.treasury.gov/news/press-releases/sb0482). Cet encours géographique ne livre ni les passifs des détenteurs, ni leurs dérivés de couverture.
+
+Appliquer une baisse uniforme à cet agrégat ne produirait donc pas un stress test du système financier asiatique. Une action, un Treasury, un crédit d’entreprise et un titre hypothécaire n’ont pas la même sensibilité. Un gestionnaire de réserves, un fonds de pension et un assureur ne financent pas leurs actifs avec les mêmes engagements. La statistique de résidence ne remplace pas un bilan consolidé.
+
+Les documents nationaux donnent des pièces supplémentaires. Dans son [rapport de mai 2026, pages 68 et 69](https://www.cbc.gov.tw/dl-227216-d7012267389b4bb0b2b6b29276d86c70.html), la banque centrale taïwanaise décrit le décalage entre les devises des actifs et des polices des assureurs-vie, ainsi que son effet sur les résultats de 2025. Elle relève aussi les limites des mécanismes destinés à lisser les résultats. Cela documente une exposition ; cela ne fournit pas le fichier quotidien des marges et des échéances.
+
+La [Banque du Japon, dans son rapport du 21 avril 2026](https://www.boj.or.jp/en/research/brp/fsr/data/fsr260421a.pdf), apporte un contrepoids utile : pour l’échantillon concerné, les gains nets de valorisation sur titres restaient substantiels à fin décembre 2025, malgré l’augmentation des moins-values sur obligations en yens. Les gains sur actions comptaient. Lire uniquement la poche qui perdait aurait déformé le bilan.
+
+Enfin, la [publication de SAFE du 1er juillet 2026](https://www.safe.gov.cn/ningbo/2026/0701/2598.html), portant sur fin mars, ventile les actifs extérieurs chinois entre investissement direct, portefeuille, dérivés, autres investissements et réserves. Cette source gouvernementale chinoise mesure une position extérieure officielle. Elle ne permet pas de traiter toutes ces catégories comme les placements d’un même assureur.
+
+Les documents suffisent à reconstruire les mécanismes. Nous n’avons pas trouvé de données publiques homogènes permettant d’attribuer à chaque pays un calendrier complet, par devise et par contrepartie, des couvertures, du collatéral et des sorties exigibles. Le simulateur s’arrête à cette limite. Il utilise un portefeuille fictif de 100 unités, dont chaque hypothèse est visible.
+
+## En avril 2025, une combinaison partielle apparaît
+
+La baisse simultanée des titres américains et du dollar n’est pas une combinaison inventée pour noircir le tableau. La [Banque de France, le 13 avril 2026](https://www.banque-france.fr/en/publications-and-statistics/publications/are-foreign-investors-more-cautious-over-us-dollar), revient sur les turbulences déclenchées par les annonces tarifaires d’avril 2025 : le recul initial des actions, des obligations du Trésor et du dollar a affaibli la protection que la monnaie américaine pouvait apporter à un investisseur étranger.
+
+Un [Bulletin de la BIS du 20 juin 2025](https://www.bis.org/publications/bulletin-105-us-dollars-slide-april-2025-role-fx-hedging) identifie un rôle vraisemblable des ajustements de couverture dans la baisse du dollar d’avril et mai 2025. Des investisseurs peuvent conserver leurs titres et vendre davantage de dollars à terme. Le change bouge alors sans qu’une liquidation équivalente d’obligations soit nécessaire. Les indices horaires suggèrent une contribution asiatique ; ils n’identifient pas chaque vendeur.
+
+Une vérification change toutefois la portée du précédent. Dans leur [analyse publiée le 8 décembre 2025](https://www.bis.org/publications/global-fx-markets-when-hedging-takes-centre-stage), les auteurs de la BIS ne constatent **pas de signes de tension sur le financement en dollars en avril 2025**. Les intermédiaires ont notamment pu absorber une partie des flux opposés.
+
+Nous pouvons donc tester une baisse du dollar et des obligations accompagnée d’un besoin de cash. Nous ne pouvons pas raconter que le précédent de 2025 aurait déjà démontré l’enchaînement complet. Le troisième risque exige une hypothèse supplémentaire : un paiement urgent, un financement non reconduit ou un encaissement retardé.
+
+## Trois risques, trois objets différents
+
+Le **risque de marché** apparaît quand le prix d’un actif change. Une obligation à taux fixe promet les mêmes coupons alors que les nouvelles émissions offrent un meilleur rendement. Son prix baisse pour redevenir compétitif. La [SEC rappelle que cette sensibilité existe aussi pour les obligations garanties par l’État américain](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-86). La garantie des paiements ne garantit pas le prix de revente.
+
+Le **risque de change** dépend de la monnaie dans laquelle l’investisseur doit payer. Cent dollars ne représentent pas la même somme en yens, en wons ou en dollars taïwanais après une variation du cours. Une couverture, ou *hedge*, permet de fixer à l’avance le change sur un montant déterminé. Son effet doit être rapproché de celui des actifs.
+
+Le **risque de liquidité** porte sur la possibilité de réunir une somme, dans la bonne devise, avant une échéance. La richesse disponible dans dix ans n’est pas une réponse à un paiement exigible demain. Et la liquidité d’un titre dépend aussi de son prix de vente, du délai de règlement et de la capacité à transférer le produit.
+
+Le crédit traverse cette séparation. Si les investisseurs réclament une rémunération supplémentaire pour prêter à une entreprise, son **spread**, l’écart de rendement par rapport à une référence souveraine, s’élargit. Le titre perd de la valeur. Un défaut effectif constitue encore un autre événement : notre outil ne le simule pas.
+
+<figure class="infographic" style="margin:2.5rem 0;padding:0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 720" role="img" aria-labelledby="ats8-transmission-fr-title ats8-transmission-fr-desc" lang="fr" style="display:block;width:100%;height:auto;background:#0c0d10;border-radius:12px;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">
+<title id="ats8-transmission-fr-title">Trois canaux, deux comptes à suivre</title>
+<desc id="ats8-transmission-fr-desc">Le change et les taux affectent la valeur du portefeuille. Les paiements et le calendrier de la couverture affectent le cash. Un déficit de cash peut imposer une vente.</desc>
+<defs>
+<marker id="ats8-transmission-fr-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#b4bbc7"/>
+</marker>
+</defs>
+<rect width="760" height="720" rx="12" fill="#0c0d10"/>
+<text x="32" y="48" fill="#5eead4" font-size="16" font-weight="700" text-anchor="start">l0g / 08</text>
+<text x="32" y="90" fill="#f5f6f8" font-size="28" font-weight="700" text-anchor="start">Trois canaux, deux comptes à suivre</text>
+<rect x="32" y="124" width="216" height="134" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="50" y="156" fill="#5eead4" font-size="16" font-weight="700" text-anchor="start">CHANGE</text>
+<text x="50" y="196" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">Dollar en baisse</text>
+<text x="50" y="226" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">ou en hausse</text>
+<rect x="272" y="124" width="216" height="134" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="290" y="156" fill="#ff86ab" font-size="16" font-weight="700" text-anchor="start">OBLIGATIONS</text>
+<text x="290" y="196" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">Taux en hausse</text>
+<text x="290" y="226" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">Spread élargi</text>
+<rect x="512" y="124" width="216" height="134" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="530" y="156" fill="#f5b13d" font-size="16" font-weight="700" text-anchor="start">PAIEMENTS</text>
+<text x="530" y="196" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">Sorties dues</text>
+<text x="530" y="226" fill="#b4bbc7" font-size="19" font-weight="400" text-anchor="start">Appel de marge</text>
+<path d="M 140 258 L 140 304" fill="none" stroke="#b4bbc7" stroke-width="2" marker-end="url(#ats8-transmission-fr-arrow)"/>
+<path d="M 380 258 L 380 280 L 274 280 L 274 304" fill="none" stroke="#b4bbc7" stroke-width="2" marker-end="url(#ats8-transmission-fr-arrow)"/>
+<path d="M 620 258 L 620 304" fill="none" stroke="#b4bbc7" stroke-width="2" marker-end="url(#ats8-transmission-fr-arrow)"/>
+<rect x="32" y="312" width="336" height="164" rx="10" fill="#161a22" stroke="#343b49"/>
+<rect x="392" y="312" width="336" height="164" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="52" y="349" fill="#ff86ab" font-size="17" font-weight="700" text-anchor="start">COMPTE DE VALEUR</text>
+<text x="52" y="391" fill="#b4bbc7" font-size="23" font-weight="400" text-anchor="start">Prix des obligations</text>
+<text x="52" y="421" fill="#b4bbc7" font-size="23" font-weight="400" text-anchor="start">+ valeur du hedge</text>
+<text x="412" y="349" fill="#f5b13d" font-size="17" font-weight="700" text-anchor="start">COMPTE DE CASH</text>
+<text x="412" y="391" fill="#b4bbc7" font-size="22" font-weight="400" text-anchor="start">Sommes disponibles</text>
+<text x="412" y="421" fill="#b4bbc7" font-size="22" font-weight="400" text-anchor="start">avant les échéances</text>
+<path d="M 560 476 L 560 514" fill="none" stroke="#b4bbc7" stroke-width="2" marker-end="url(#ats8-transmission-fr-arrow)"/>
+<rect x="32" y="524" width="696" height="132" rx="10" fill="#201c16" stroke="#80602e"/>
+<text x="54" y="563" fill="#f5f6f8" font-size="23" font-weight="700" text-anchor="start">Si les paiements dépassent le cash disponible…</text>
+<text x="54" y="603" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">Emprunter, vendre ou obtenir un apport.</text>
+<text x="54" y="633" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">Une vente urgente peut ajouter une perte.</text>
+<text x="32" y="693" fill="#b4bbc7" font-size="15" font-weight="400" text-anchor="start">Schéma l0g · mécanisme conditionnel · 5 septembre 2026</text>
+</svg>
+<figcaption style="font-size:0.875rem;line-height:1.65;margin-top:1rem">Les trois canaux ne produisent pas un signe unique. La couverture relie les deux comptes, mais sa valeur et son cash peuvent évoluer à des dates différentes. Schéma conditionnel l0g, établi le 5 septembre 2026.</figcaption>
+</figure>
+
+Ces risques n’ont aucune obligation de se renforcer à chaque instant. Un dollar plus fort peut amortir une baisse des titres pour un investisseur non couvert. Une hausse des taux domestiques peut réduire la valeur actuelle de certains engagements d’assurance. Un gain de couverture encaissé rapidement peut éviter une vente. Un bon stress test doit laisser fonctionner ces amortisseurs.
+
+## Un portefeuille de 100 permet de voir les erreurs
+
+Notre investisseur détient **100 unités d’obligations en dollars**, réparties entre 70 unités de Treasuries et 30 de crédit. Le taux de change initial vaut, par convention, une unité locale pour un dollar. Le montant de la poche obligataire vaut donc aussi 100 en monnaie locale au départ. Une réserve de cash local s’y ajoute ; elle n’est pas incluse dans le dénominateur des performances.
+
+La **duration modifiée** mesure la sensibilité du prix à une petite variation du rendement. Une duration de 7 signifie qu’une hausse de rendement de 1 point de pourcentage fait perdre approximativement 7 % au titre, avant correction de convexité. La maturité est une date de remboursement ; la duration est une sensibilité. Elles ne sont pas interchangeables.
+
+Nous fixons la duration de taux de toute la poche à 7, et la sensibilité au spread de la poche de crédit à 6. Le scénario applique une hausse de **100 points de base**, soit 1 point de pourcentage, aux rendements de référence américains. Il ajoute 100 points de base au spread des seuls 30 % de crédit.
+
+Le calcul de premier ordre est alors transparent :
+
+- effet du taux de référence : 100 × 7 × 1 % = **7 unités de perte** ;
+- effet supplémentaire du spread : 30 × 6 × 1 % = **1,8 unité de perte** ;
+- valeur obligataire après ces deux effets : 100 − 7 − 1,8 = **91,2 dollars**.
+
+Le spread s’ajoute au taux de référence, pas à un rendement d’entreprise qui contiendrait déjà ce spread. Cette distinction évite de compter deux fois le même mouvement.
+
+Supposons ensuite que le dollar achète **10 % de monnaie locale en moins**. Le taux de change passe de 1 à 0,90. Les 91,2 dollars valent désormais **82,08 unités locales**. La perte non couverte atteint **17,92 %**.
+
+Ce n’est pas 8,8 % + 10 % = 18,8 %. Le change s’applique à un actif dont le prix a déjà baissé. Les effets se multiplient : 0,912 × 0,90 = 0,8208. La différence de 0,88 point est le terme croisé. Elle évite ici une surestimation de la perte.
+
+Il faut également préciser la cotation. Un dollar qui perd 10 % contre la monnaie locale correspond à une monnaie locale qui gagne environ **11,11 % en dollars**, puisque 1 / 0,90 − 1 = 11,11 %. Le curseur du simulateur porte toujours sur la valeur du dollar en monnaie locale.
+
+## La couverture gagne quand le dollar baisse
+
+L’investisseur a couvert 70 % du principal initial : il est économiquement vendeur à terme de 70 dollars. Dans notre simplification, les points de terme, l’actualisation et le coût de portage sont neutralisés. Nous isolons l’effet du choc de change sur une couverture existante, sans la réajuster pendant le choc.
+
+Si le dollar passe de 1 à 0,90, cette couverture affiche **7 unités locales de gain**. Le portefeuille obligataire et sa couverture valent ensemble 82,08 + 7 = **89,08**. La perte est ramenée à **10,92 %**.
+
+Le hedge fonctionne. Il n’a jamais promis de protéger le prix des obligations contre la hausse des taux ou du spread.
+
+<figure class="infographic" style="margin:2.5rem 0;padding:0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 722" role="img" aria-labelledby="ats8-valeur-fr-title ats8-valeur-fr-desc" lang="fr" style="display:block;width:100%;height:auto;background:#0c0d10;border-radius:12px;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">
+<title id="ats8-valeur-fr-title">Obligations et couverture : valeurs</title>
+<desc id="ats8-valeur-fr-desc">Base 100. Obligations après taux et spread : 91,20. Après baisse du dollar : 82,08. Avec gain de couverture de 7 : 89,08. Perte totale 10,92.</desc>
+<defs>
+<marker id="ats8-valeur-fr-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#b4bbc7"/>
+</marker>
+</defs>
+<rect width="760" height="722" rx="12" fill="#0c0d10"/>
+<text x="32" y="45" fill="#5eead4" font-size="16" font-weight="700" text-anchor="start">l0g / 08</text>
+<text x="32" y="86" fill="#f5f6f8" font-size="28" font-weight="700" text-anchor="start">Obligations et couverture : valeurs</text>
+<text x="32" y="119" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">Scénario combiné · unités locales · valeur initiale 100</text>
+<line x1="224.0" y1="158" x2="224.0" y2="455" stroke="#343b49" stroke-width="1"/>
+<text x="224.0" y="481" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="middle">0</text>
+<line x1="344.0" y1="158" x2="344.0" y2="455" stroke="#343b49" stroke-width="1"/>
+<text x="344.0" y="481" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="middle">25</text>
+<line x1="464.0" y1="158" x2="464.0" y2="455" stroke="#343b49" stroke-width="1"/>
+<text x="464.0" y="481" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="middle">50</text>
+<line x1="584.0" y1="158" x2="584.0" y2="455" stroke="#343b49" stroke-width="1"/>
+<text x="584.0" y="481" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="middle">75</text>
+<line x1="704.0" y1="158" x2="704.0" y2="455" stroke="#343b49" stroke-width="1"/>
+<text x="704.0" y="481" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="middle">100</text>
+<text x="32" y="188" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">Au départ</text>
+<rect x="224" y="164" width="480.0" height="47" rx="2" fill="#bcc4d2" stroke="#bcc4d2"/>
+<text x="692.0" y="196" fill="#0c0d10" font-size="22" font-weight="700" text-anchor="end">100,00</text>
+<text x="32" y="266" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">Après taux</text>
+<text x="32" y="291" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">et spread</text>
+<rect x="224" y="242" width="437.76" height="47" rx="2" fill="#ff86ab" stroke="#ff86ab"/>
+<text x="649.76" y="274" fill="#0c0d10" font-size="22" font-weight="700" text-anchor="end">91,20</text>
+<text x="32" y="344" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">Après change</text>
+<text x="32" y="369" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">sans hedge</text>
+<rect x="224" y="320" width="393.984" height="47" rx="2" fill="#ff86ab" stroke="#ff86ab"/>
+<text x="605.9839999999999" y="352" fill="#0c0d10" font-size="22" font-weight="700" text-anchor="end">82,08</text>
+<text x="32" y="422" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">Avec le gain</text>
+<text x="32" y="447" fill="#f5f6f8" font-size="19" font-weight="400" text-anchor="start">du hedge</text>
+<rect x="224" y="398" width="427.584" height="47" rx="2" fill="#5eead4" stroke="#5eead4"/>
+<text x="639.5840000000001" y="430" fill="#0c0d10" font-size="22" font-weight="700" text-anchor="end">89,08</text>
+<rect x="32" y="518" width="696" height="116" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="54" y="555" fill="#f5f6f8" font-size="25" font-weight="700" text-anchor="start">Variation totale : −10,92 %</text>
+<text x="54" y="591" fill="#b4bbc7" font-size="22" font-weight="400" text-anchor="start">−7,00 − 1,80 − 9,12 + 7,00 = −10,92</text>
+<text x="32" y="675" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="start">Calculs l0g · hypothèses, pas données de marché.</text>
+<text x="32" y="699" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="start">Taux +100 pb ; spread +100 pb ; dollar −10 % ; hedge 70 %.</text>
+</svg>
+<figcaption style="font-size:0.875rem;line-height:1.65;margin-top:1rem">Hypothèses l0g : duration de taux 7, poche crédit 30 %, duration de spread 6, hausse des taux et du spread de 100 pb, dollar en baisse de 10 %, principal initial couvert à 70 %. Le change s’applique aux obligations déjà revalorisées. La réserve de cash est hors de cette poche. Calcul de choc instantané, sans carry ni convexité.</figcaption>
+</figure>
+
+Le détail importe : la couverture reste fixée à 70 dollars, et non à 70 % de la nouvelle valeur de 91,2 dollars. Un gestionnaire qui rééquilibrerait la couverture au fil de la baisse obtiendrait un autre résultat. Il modifierait aussi ses transactions et son calendrier de cash.
+
+Avec une couverture intégrale des 100 unités de principal initial, la perte combinée serait ici de **7,92 %**. Elle serait nulle pour un pur choc de change sans variation des obligations. Dans le choc combiné, le hedge couvre davantage que la valeur obligataire devenue 91,2 : cet excès de couverture participe au résultat. Une protection de principal n’est pas une couverture dynamique parfaite de la valeur de marché.
+
+Pour un vrai forward, il faudrait utiliser les taux à terme et les courbes d’actualisation après le choc. Une hausse des rendements obligataires longs ne se transmet pas mécaniquement, point pour point, aux taux courts qui déterminent le prix d’une couverture courte. Notre approximation sépare ces objets au lieu d’inventer un prix de swap.
+
+## Un gain de 7 peut rester indisponible demain
+
+Passons au second compte. Nous retenons une fenêtre de **cinq jours**, avec des paiements supposés exigibles avant certains encaissements. Ce n’est pas une simulation quotidienne : le curseur de disponibilité résume ce décalage de calendrier.
+
+L’investisseur possède 5 unités de cash local. Il doit effectuer 8 unités de paiements nets hors marges : prestations, rachats ou autres sorties, après déduction des entrées ordinaires. D’autres positions exigent 2 unités de collatéral supplémentaire. Ce dernier paramètre est indépendant du change et **exclut la marge du hedge déjà calculée**.
+
+Le hedge a gagné 7. Nous supposons toutefois que **25 % seulement** de ce gain est reçu et réutilisable avant les paiements. Cela représente 1,75 unité. Le reste demeure une créance ou du collatéral indisponible à cette échéance, selon les contrats. Il n’est pas perdu.
+
+L’investisseur dispose de 5 + 1,75 = **6,75 unités**, face à **10 unités à payer**. Le manque atteint **3,25**.
+
+Ce résultat ne repose pas sur un appel de marge provoqué par la baisse du dollar chez cet investisseur. Sa position vendeuse de dollars gagne. Le problème vient de l’ordre des flux, des autres paiements et des règles qui permettent ou empêchent de réutiliser les encaissements.
+
+Le [Financial Stability Board, dans ses recommandations finales du 10 décembre 2024](https://www.fsb.org/2024/12/liquidity-preparedness-for-margin-and-collateral-calls-final-report/), demande précisément de tester la préparation des acteurs non bancaires aux besoins de marge et de collatéral. Le collatéral protège contre le défaut d’une contrepartie ; sa mobilisation rapide peut créer une contrainte de trésorerie chez celui qui le fournit.
+
+<figure class="infographic" style="margin:2.5rem 0;padding:0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 700" role="img" aria-labelledby="ats8-tresorerie-fr-title ats8-tresorerie-fr-desc" lang="fr" style="display:block;width:100%;height:auto;background:#0c0d10;border-radius:12px;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">
+<title id="ats8-tresorerie-fr-title">Trésorerie avant les paiements</title>
+<desc id="ats8-tresorerie-fr-desc">Ressources : 5 de cash et 1,75 de gain de couverture réutilisable, total 6,75. Besoins : 8 de sorties et 2 de collatéral, total 10. Il manque 3,25.</desc>
+<defs>
+<marker id="ats8-tresorerie-fr-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#b4bbc7"/>
+</marker>
+</defs>
+<rect width="760" height="700" rx="12" fill="#0c0d10"/>
+<text x="32" y="45" fill="#5eead4" font-size="16" font-weight="700" text-anchor="start">l0g / 08</text>
+<text x="32" y="86" fill="#f5f6f8" font-size="28" font-weight="700" text-anchor="start">Trésorerie avant les paiements</text>
+<text x="32" y="119" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">Scénario combiné · fenêtre de cinq jours · unités locales</text>
+<rect x="32" y="156" width="336" height="292" rx="10" fill="#161a22" stroke="#343b49"/>
+<rect x="392" y="156" width="336" height="292" rx="10" fill="#161a22" stroke="#343b49"/>
+<text x="54" y="193" fill="#5eead4" font-size="17" font-weight="700" text-anchor="start">RESSOURCES</text>
+<text x="414" y="193" fill="#f5b13d" font-size="17" font-weight="700" text-anchor="start">À PAYER</text>
+<text x="54" y="263" fill="#f5f6f8" font-size="52" font-weight="700" text-anchor="start">6,75</text>
+<text x="414" y="263" fill="#f5f6f8" font-size="52" font-weight="700" text-anchor="start">10,00</text>
+<text x="54" y="315" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">5,00 · cash initial</text>
+<text x="54" y="345" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">1,75 · gain utilisable</text>
+<text x="414" y="315" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">8,00 · sorties nettes</text>
+<text x="414" y="345" fill="#b4bbc7" font-size="21" font-weight="400" text-anchor="start">2,00 · autre collatéral</text>
+<text x="54" y="398" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">25 % seulement du gain</text>
+<text x="54" y="423" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">de couverture de 7.</text>
+<text x="414" y="398" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">Aucun paiement de perte</text>
+<text x="414" y="423" fill="#b4bbc7" font-size="18" font-weight="400" text-anchor="start">sur le hedge dans ce cas.</text>
+<rect x="32" y="477" width="696" height="127" rx="10" fill="#201c16" stroke="#80602e"/>
+<text x="54" y="518" fill="#f5b13d" font-size="17" font-weight="700" text-anchor="start">MANQUE AVANT VENTE</text>
+<text x="54" y="572" fill="#f5f6f8" font-size="42" font-weight="700" text-anchor="start">3,25</text>
+<text x="216" y="569" fill="#b4bbc7" font-size="27" font-weight="400" text-anchor="start">10,00 − 6,75</text>
+<text x="32" y="646" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="start">Calculs l0g · hypothèses, pas photographie d’un assureur.</text>
+<text x="32" y="671" fill="#b4bbc7" font-size="16" font-weight="400" text-anchor="start">Le gain non disponible reste une créance ; il n’est pas perdu.</text>
+</svg>
+<figcaption style="font-size:0.875rem;line-height:1.65;margin-top:1rem">Hypothèses l0g sur cinq jours, exprimées en unités locales pour 100 unités d’obligations initiales. Ressources : 5 + 25 % × 7 = 6,75. Besoins : 8 + 2 = 10. Le manque de 3,25 est un besoin de trésorerie avant vente, pas une perte additionnelle de portefeuille.</figcaption>
+</figure>
+
+Si tout le gain de couverture était disponible à temps, les ressources atteindraient 12 et les paiements seraient couverts. Si aucun gain n’arrivait avant l’échéance, il manquerait 5. **La perte de marché resterait de 10,92 dans les trois cas.** Seule la trésorerie changerait.
+
+Cette distinction interdit aussi de soustraire les rachats du résultat comme une seconde perte. Payer un assuré réduit du cash et peut éteindre une dette envers lui. Un dépôt de collatéral n’est pas, par nature, une charge définitive. Le coût économique supplémentaire apparaît notamment si la recherche de cash impose une vente avec une décote ou un financement coûteux.
+
+## Le dollar fort peut être le scénario le plus exigeant en cash
+
+Inversons uniquement le choc de change. À partir du même point de départ, le dollar **monte de 10 %**. Les obligations valent toujours 91,2 dollars après le choc de taux et de crédit, soit **100,32 unités locales**. La couverture vendeuse de dollars perd cette fois **7**. L’ensemble vaut 93,32 : la perte se limite à **6,68 %**.
+
+Pour l’actif, cette trajectoire est moins défavorable. Pour la caisse, elle peut l’être davantage.
+
+Nous supposons dans ce cas que la perte de 7 sur le hedge doit être payée intégralement dans les cinq jours. C’est une convention de stress, pas une clause universelle des contrats de change. Avec 8 de sorties, 2 d’autres appels de collatéral et 7 de paiement du hedge, les besoins atteignent 17. Face aux 5 de cash, le manque est de **12**.
+
+| Scénario indépendant | Variation obligations + hedge | Manque de cash avant vente |
+| --- | ---: | ---: |
+| Dollar −10 %, taux et spread +100 pb ; gain disponible à 25 % | −10,92 | 3,25 |
+| Même choc, gain de couverture indisponible à temps | −10,92 | 5,00 |
+| Dollar +10 %, taux et spread +100 pb ; perte du hedge payable | −6,68 | 12,00 |
+
+*Hypothèses l0g. Unités locales pour 100 unités d’obligations initiales ; cash initial : 5 ; sorties hors marges : 8 ; autres besoins de collatéral : 2 ; couverture initiale : 70 %. Les lignes ne constituent pas une succession de jours. Elles repartent du même portefeuille.*
+
+Une perte plus faible peut donc s’accompagner d’un besoin de financement plus important. Un assureur peut avoir raison sur la protection économique de son bilan et manquer malgré tout de moyens de paiement immédiatement mobilisables.
+
+## Vingt-huit dollars à renouveler mesurent une échéance brute
+
+Les couvertures ont leurs propres échéances. Supposons que **40 % des 70 dollars couverts** arrivent à terme pendant la fenêtre : il faut traiter 28 dollars de contrats. Si un quart de cette fraction ne peut pas être renouvelé, **7 dollars de principal arrivent à échéance sans renouvellement**.
+
+Le nombre est utile. Il ne mesure pas une perte de 7 et ne prouve pas un besoin net de financement de 7.
+
+Un swap de change échange des devises à une première date puis inverse l’échange à une seconde. Selon le montage, l’investisseur peut devoir livrer des dollars alors que son actif obligataire ne rembourse que plus tard. Il peut chercher un nouveau contrat, emprunter les dollars, vendre des titres ou utiliser des flux déjà disponibles. Le paiement dans l’autre devise doit aussi être intégré.
+
+Une addition des seuls principaux omettrait les jambes opposées, la compensation contractuelle et les paiements déjà organisés. À l’inverse, une compensation comptable ne garantit pas que les deux devises arrivent dans le bon ordre chez le bon dépositaire.
+
+La [BIS a publié le 15 juin 2026 une nouvelle mesure du risque de règlement de change](https://www.bis.org/publications/uncovering-fx-settlement-risk-new-measures-2025-bis-triennial-survey), à partir d’avril 2025. Elle distingue les méthodes qui éliminent le risque de livrer une devise sans recevoir l’autre de celles qui le réduisent seulement. Elle avertit que le changement de méthode empêche une comparaison directe avec les enquêtes de 2019 et 2022.
+
+Dans l’outil, les échéances brutes restent donc **affichées séparément**. Elles n’alimentent pas automatiquement le manque de cash. Il faudrait connaître le calendrier des deux monnaies et les contrats pour le calculer. Le coût de renouvellement est également hors simulation : une hausse de coût annualisée ne doit pas être transformée en décaissement instantané sans préciser la période et les modalités de règlement.
+
+## La vente forcée ajoute une perte identifiable
+
+Reprenons les 3,25 unités manquantes du scénario combiné. L’investisseur peut vendre des obligations. Le prix stressé a déjà subi la hausse des taux, du spread et le changement de devise.
+
+Nous ajoutons une **décote d’exécution de 2 %** par rapport à ce prix : une hypothèse de vente urgente, distincte du spread de crédit déjà compté. Pour encaisser 3,25, il faut céder des titres représentant 3,25 / 0,98 = **3,3163 unités de valeur de marché**. La perte additionnelle est de **0,0663 unité**, et non de 3,3163.
+
+Le gros de la moins-value existait avant la vente. La vente la réalise ; la décote d’urgence ajoute un coût. Cette séparation empêche de compter la baisse du titre une première fois dans le portefeuille puis une seconde fois intégralement dans la cession.
+
+La variation totale de la poche couverte, après cette décote, atteint environ **−10,99**. Les sorties ordinaires et les dépôts de marge n’y sont pas ajoutés comme des charges. L’outil n’essaie pas de calculer le résultat comptable complet de l’assureur.
+
+Le passage au risque systémique se situe un étage plus loin. Si plusieurs institutions cherchent simultanément à vendre les mêmes obligations, leurs prix d’exécution peuvent se dégrader. Si leurs plans supposent tous que les banques absorberont les ventes ou prolongeront le crédit, la capacité des intermédiaires devient déterminante. Cette boucle est un mécanisme plausible ; elle n’est pas estimée par notre décote fixe.
+
+L’[exercice exploratoire de la Banque d’Angleterre, publié le 29 novembre 2024](https://www.bankofengland.co.uk/financial-stability/boe-system-wide-exploratory-scenario-exercise/boe-swes-exercise-final-report), a précisément confronté les réactions envisagées par plusieurs catégories d’acteurs. Il montre l’intérêt de tester leurs attentes réciproques. Ses résultats portent sur les marchés britanniques et un scénario hypothétique. Ils ne constituent pas une calibration des pertes asiatiques.
+
+## Le simulateur explore des hypothèses conditionnelles
+
+<AsiaDollarTripleStress lang="fr" />
+
+Commencez par « Change seul ». La couverture de 70 % réduit la perte d’un dollar en baisse de 10 % à 3 unités sur la poche initiale. Passez ensuite aux chocs combinés. Enfin, comparez le dollar en hausse et le gain reçu trop tard. Le montant de la perte et la nécessité de vendre cessent de raconter la même histoire.
+
+Les paramètres de cash sont exprimés en unités locales pour 100 unités d’obligations initiales. Ils ne constituent pas des taux de rachat de contrats d’assurance : le montant des passifs n’est pas renseigné. La fenêtre de cinq jours ne donne pas non plus une probabilité de crise à cinq jours.
+
+La vente est supposée réglée et son produit convertible avant l’échéance. Si cette hypothèse ne tient pas, la capacité de paiement réelle est inférieure à celle affichée après vente. Un bilan opérationnel complet devrait séparer les comptes par monnaie, lieu de règlement et date de valeur.
+
+## Les passifs peuvent amortir le choc
+
+Un diagnostic d’insolvabilité exigerait de valoriser aussi les engagements de l’institution. Une dette très longue promet des paiements futurs. Lorsque le taux approprié pour les actualiser monte, leur valeur actuelle peut diminuer. Le choc de taux sur les actifs peut alors être partiellement compensé au passif.
+
+Prenons un second exemple, distinct de l’outil : un passif local de 90, de duration modifiée 10. Une hausse parallèle de 0,5 point de son taux d’actualisation réduit sa valeur d’environ **4,5** au premier ordre. Dans ce cadre simplifié, elle compenserait une partie des 10,92 de perte de l’actif couvert.
+
+Mais le taux américain n’est pas le taux d’actualisation d’une promesse en wons ou en yens. Le choc domestique doit être renseigné séparément. Il faudrait aussi connaître les garanties, la participation aux bénéfices, les options de rachat, les taux réglementaires et la classification comptable. La [présentation officielle d’IFRS 17](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-17-insurance-contracts/) rappelle que l’évaluation des contrats combine des flux futurs actualisés et d’autres composantes. Un simple portefeuille obligataire ne suffit pas à la reproduire.
+
+Cette réduction de valeur actuelle ne verse pourtant pas 4,5 de cash sur un compte. Une amélioration économique du passif et une contrainte de liquidité peuvent coexister. Un assuré qui exerce une option de rachat peut également accélérer une promesse que le modèle imaginait lointaine.
+
+Les titres hypothécaires ajoutent une difficulté du côté des actifs. Si les emprunteurs refinancent moins lorsque les taux montent, les remboursements anticipés ralentissent et la durée effective de l’investissement peut s’allonger. La [Federal Reserve Bank of New York décrit cette mécanique de convexité](https://libertystreeteconomics.newyorkfed.org/2014/03/convexity-event-risks-in-a-rising-interest-rate-environment/). Notre duration fixe ne la reproduit pas : l’outil ne contient ni MBS, ni tranche de titrisation.
+
+## Les protections doivent atteindre le détenteur
+
+Le meilleur contre-argument à un scénario de contagion tient à la capacité d’absorption. Des passifs stables, des encaissements réguliers, un portefeuille liquide et des lignes de financement réellement mobilisables peuvent permettre de traverser un choc sans vendre dans l’urgence. Une hausse des rendements améliore aussi les conditions auxquelles les flux futurs seront réinvestis, si l’institution dispose du temps nécessaire.
+
+Le dollar faible n’est pas défavorable à tous. Les [auteurs du Bulletin BIS du 13 octobre 2025](https://www.bis.org/publications/bulletin-114-financial-channel-implications-weaker-dollar-emerging-market-economies) rappellent qu’il peut desserrer les conditions financières des économies émergentes, notamment à travers les bilans des emprunteurs. Une créance en dollars et une dette en dollars ne portent pas le même signe de risque.
+
+Des dispositifs officiels peuvent aussi fournir de la liquidité. La [Réserve fédérale décrit ses accords permanents de swaps avec plusieurs banques centrales, dont la Banque du Japon](https://www.federalreserve.gov/monetarypolicy/central-bank-liquidity-swaps.htm). Le [mécanisme FIMA repo](https://www.federalreserve.gov/monetarypolicy/fima-repo-facility-faqs.htm) offre aux autorités monétaires étrangères approuvées un moyen temporaire d’obtenir des dollars contre des Treasuries, sans vente définitive sur le marché.
+
+Ce sont des capacités d’intervention. Elles ne constituent pas une ligne de crédit automatique pour chaque assureur asiatique. Il reste un trajet entre la banque centrale, les banques commerciales et le détenteur final, avec des conditions d’accès, du collatéral et des délais. Une réserve nationale abondante ne permet pas de présumer que toute institution reçoit instantanément la devise dont elle a besoin.
+
+## Le prochain document décisif sera un calendrier
+
+Après les bilans, les actifs américains et l’infrastructure des couvertures, le principal angle mort n’est plus la taille brute de « l’argent asiatique ». C’est la concordance des paiements.
+
+Pour transformer cet exercice en test institutionnel, il faudrait obtenir un échéancier croisant les titres, les dérivés et les engagements. Combien faut-il payer avant les prochains encaissements ? Dans quelle devise ? Quelle part du collatéral reçu peut être réutilisée ? Quelles lignes de crédit sont juridiquement engagées, et par quelles banques ? Les actifs vendables sont-ils déjà gagés ?
+
+Une autre question concerne les réactions collectives. Le plan de chaque établissement prévoit-il de vendre à une contrepartie qui, elle aussi, prévoit de vendre ? Le fournisseur de dollars attendu est-il le même chez tous les investisseurs ? Les mêmes garanties ont-elles été promises à plusieurs usages incompatibles ? Ces réponses changeraient beaucoup plus notre diagnostic qu’un nouveau total national arrondi au milliard.
+
+L’enquête permet d’établir l’existence des décalages de devise et de maturité, ainsi que le rôle des couvertures dans leur gestion. Elle permet de calculer des pertes conditionnelles sur des hypothèses exposées. Elle ne permet ni de dater une rupture, ni d’affirmer qu’une liquidation asiatique est inévitable.
+
+La frontière à surveiller est précise : **le moment où les ressources effectivement mobilisables avant l’échéance deviennent inférieures aux paiements exigibles**. Avant cette frontière, une institution peut disposer du temps nécessaire pour absorber une mauvaise année. Après, ses choix se rétrécissent, même si ses placements ont encore de la valeur. C’est là que les trois risques se rencontrent.
+
+*Ce volet clôt La boucle du dollar asiatique. Pour retrouver les mécanismes : [les couvertures coréennes](/posts/coree-du-sud-prix-couverture-parfaite/), [les swaps et leurs intermédiaires](/posts/asie-usine-invisible-couverture-dollar/), [les actifs américains détenus en Asie](/posts/asie-actifs-americains-treasuries-mbs-credit/) et [les bilans extérieurs chinois](/posts/chine-risque-dollar-bilan-reserves-banques/). Les sources primaires sont liées au fil de l’article ; la méthode et les limites du calcul restent accessibles dans le simulateur.*
