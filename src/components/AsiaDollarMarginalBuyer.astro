@@ -1,0 +1,94 @@
+---
+import {defaults, simulatePurchases} from '../lib/asia-dollar-purchases.mjs';
+interface Props { lang?: 'fr'|'en'; }
+const {lang='fr'}=Astro.props;
+const fr=lang==='fr';
+type ControlKey='stock'|'newMoney'|'allocation'|'reinvest';
+type Control=readonly [ControlKey,string,string,number,number,number];
+const controls:readonly Control[]=fr?[
+ ['stock','Portefeuille initial','Md $',100,2000,50],['newMoney','Argent nouveau annuel prévu','Md $',0,100,5],['allocation','Part de cet argent encore investie','%',0,100,5],['reinvest','Part des échéances réinvestie','%',0,100,5]
+]:[
+ ['stock','Opening portfolio','USD bn',100,2000,50],['newMoney','Planned annual new money','USD bn',0,100,5],['allocation','Share of new money still invested','%',0,100,5],['reinvest','Share of maturities reinvested','%',0,100,5]
+];
+const t=fr?{
+ eye:'LABORATOIRE / LE PROCHAIN ACHAT',title:'Garder le portefeuille, réduire les achats',dek:'Réglez l’argent nouveau et le réinvestissement des échéances. Tous les montants sont fictifs, en milliards de dollars.',
+ advanced:'Échéances et horizon',maturity:'Capital initial remboursé chaque année',years:'Horizon',yearUnit:'ans',
+ presets:['Poursuivre','Geler l’argent nouveau','Réinvestir une moitié','Ne plus rien acheter'],reset:'Réinitialiser',
+ metrics:['Achats bruts par an','Flux net par an','Stock final','Achats cumulés en moins'],
+ comparison:'Face à la poursuite du programme initial',table:['Année','Poursuite','Scénario','Achats en moins'],zero:'Départ',
+ note:'Aucune vente avant échéance. Les remboursements annuels portent sur le portefeuille initial ; les nouveaux titres arrivent à maturité après l’horizon choisi. Prix, change, coupons et défauts sont exclus.',
+ equation:'Achats = échéances réinvesties + argent nouveau alloué. Flux net = achats − remboursements.',
+ meaning:'Les achats en moins mesurent le recul de cette demande face au programme initial. Ils ne sont ni une perte de valeur ni une prévision de hausse des taux.',
+ nojs:'JavaScript est désactivé : le cas initial reste lisible ci-dessous. Activez-le pour modifier les hypothèses.',
+ flow:'Lecture annuelle',mature:'Remboursements',roll:'Dont réinvestis',fresh:'Argent nouveau alloué'
+}:{
+ eye:'LAB / THE NEXT PURCHASE',title:'Keep the portfolio. Cut the purchases.',dek:'Change new allocations and maturity reinvestment. All amounts are hypothetical, in USD billions.',
+ advanced:'Maturities and horizon',maturity:'Opening principal repaid each year',years:'Horizon',yearUnit:'years',
+ presets:['Keep adding','Freeze new money','Reinvest one half','Stop all purchases'],reset:'Reset',
+ metrics:['Gross purchases per year','Net flow per year','Closing stock','Cumulative purchases forgone'],
+ comparison:'Relative to continuing the original programme',table:['Year','Keep adding','Scenario','Purchases forgone'],zero:'Start',
+ note:'No sales before maturity. Annual redemptions come from the opening portfolio; newly purchased bonds mature beyond the chosen horizon. Prices, FX, coupons and defaults are excluded.',
+ equation:'Purchases = reinvested maturities + allocated new money. Net flow = purchases − redemptions.',
+ meaning:'Purchases forgone measure the reduction in this demand against the original programme. They are neither a valuation loss nor a forecast of higher yields.',
+ nojs:'JavaScript is disabled: the initial case remains readable below. Enable it to change the assumptions.',
+ flow:'Annual flows',mature:'Redemptions',roll:'Of which reinvested',fresh:'Allocated new money'
+};
+const result=simulatePurchases();
+const fmt=(n:number)=>new Intl.NumberFormat(fr?'fr-FR':'en-US',{maximumFractionDigits:1}).format(Math.abs(n)<1e-9?0:n);
+const names=['purchases','annualNet','closing','cumulativeForgone'] as const;
+const id='ad9-tool-'+lang;
+---
+<section class="amb" data-marginal-buyer data-lang={lang} aria-labelledby={id}>
+ <p class="amb-eye">{t.eye}</p><h3 id={id}>{t.title}</h3><p class="amb-dek">{t.dek}</p>
+ <div class="amb-presets" aria-label={fr?'Cas illustratifs':'Illustrative cases'}>{t.presets.map((label,i)=><button type="button" data-preset={i} aria-pressed={i===1?'true':'false'} disabled>{label}</button>)}</div>
+ <form class="amb-form">
+  <fieldset disabled><legend class="amb-sr">{fr?'Hypothèses du scénario':'Scenario assumptions'}</legend>
+  <div class="amb-controls">{controls.map(([name,label,unit,min,max,step])=><label><span>{label}</span><span class="amb-input-value"><output data-input-output={name}>{fmt(defaults[name])}</output> {unit}</span><input type="range" name={name} min={min} max={max} step={step} value={defaults[name]} /></label>)}</div>
+  <details><summary>{t.advanced}</summary><div class="amb-controls">
+   <label><span>{t.maturity}</span><span class="amb-input-value"><output data-input-output="maturity">{defaults.maturity}</output> %</span><input type="range" name="maturity" min="0" max="20" step="1" value={defaults.maturity}/></label>
+   <label><span>{t.years}</span><span class="amb-input-value"><output data-input-output="years">{defaults.years}</output> {t.yearUnit}</span><input type="range" name="years" min="1" max="5" step="1" value={defaults.years}/></label>
+  </div></details>
+  <button class="amb-reset" type="reset">{t.reset}</button></fieldset>
+ </form>
+ <noscript><p class="amb-nojs">{t.nojs}</p></noscript>
+ <div class="amb-metrics" aria-live="polite" aria-atomic="true">{names.map((key,i)=><div><p>{t.metrics[i]}</p><strong data-result={key}>{fmt(result[key])}</strong><span>{fr?'Md $':'USD bn'}</span></div>)}</div>
+ <p class="amb-comparison">{t.comparison}</p>
+ <div class="amb-flows"><p>{t.flow}</p><dl><div><dt>{t.mature}</dt><dd data-result="maturities">{fmt(result.maturities)}</dd></div><div><dt>{t.roll}</dt><dd data-result="rolled">{fmt(result.rolled)}</dd></div><div><dt>{t.fresh}</dt><dd data-result="newAllocated">{fmt(result.newAllocated)}</dd></div></dl></div>
+ <table><caption class="amb-sr">{fr?'Trajectoire des stocks et des achats manquants, en milliards de dollars':'Stocks and purchases forgone, in USD billions'}</caption><thead><tr>{t.table.map(x=><th scope="col">{x}</th>)}</tr></thead><tbody>{result.schedule.map(r=><tr><th scope="row">{r.year===0?t.zero:r.year}</th><td>{fmt(r.baseline)}</td><td>{fmt(r.scenario)}</td><td>{fmt(r.forgone)}</td></tr>)}</tbody></table>
+ <p class="amb-equation">{t.equation}</p><p class="amb-meaning">{t.meaning}</p><p class="amb-note">{t.note}</p>
+</section>
+<script>
+import {defaults, simulatePurchases} from '../lib/asia-dollar-purchases.mjs';
+type InputKey=keyof typeof defaults;
+type ResultKey='purchases'|'annualNet'|'closing'|'cumulativeForgone'|'maturities'|'rolled'|'newAllocated';
+function initMarginalBuyers(){
+ document.querySelectorAll<HTMLElement>('[data-marginal-buyer]:not([data-ready])').forEach(root=>{
+  const fr=root.dataset.lang==='fr';
+  const format=new Intl.NumberFormat(fr?'fr-FR':'en-US',{maximumFractionDigits:1});
+  const fmt=(n:number)=>format.format(Math.abs(n)<1e-9?0:n);
+  const form=root.querySelector('form')!;
+  const presetButtons=[...root.querySelectorAll<HTMLButtonElement>('[data-preset]')];
+  const inputs=[...form.querySelectorAll<HTMLInputElement>('input')];
+  const fieldset=form.querySelector('fieldset')!;
+  function update(){
+   const params=Object.fromEntries(inputs.map(i=>[i.name,Number(i.value)]));
+   const r=simulatePurchases(params);
+   inputs.forEach(i=>{root.querySelector(`[data-input-output="${i.name}"]`)!.textContent=fmt(Number(i.value));});
+   root.querySelectorAll<HTMLElement>('[data-result]').forEach(el=>{const key=el.dataset.result as ResultKey|undefined;if(key)el.textContent=fmt(r[key]);});
+   const tbody=root.querySelector('tbody')!;tbody.replaceChildren(...r.schedule.map(row=>{
+    const tr=document.createElement('tr');[row.year===0?(fr?'Départ':'Start'):String(row.year),fmt(row.baseline),fmt(row.scenario),fmt(row.forgone)].forEach((v,i)=>{const td=document.createElement(i===0?'th':'td');if(i===0)td.setAttribute('scope','row');td.textContent=v;tr.append(td)});return tr;
+   }));
+   const pairs=[[100,100],[0,100],[0,50],[0,0]];
+   presetButtons.forEach((b,i)=>b.setAttribute('aria-pressed',String(params.allocation===pairs[i][0]&&params.reinvest===pairs[i][1])));
+  }
+  form.addEventListener('input',update);
+  form.addEventListener('reset',event=>{event.preventDefault();inputs.forEach(i=>{i.value=String(defaults[i.name as InputKey]);});update();});
+  presetButtons.forEach((b,i)=>{b.disabled=false;b.addEventListener('click',()=>{const pair=[[100,100],[0,100],[0,50],[0,0]][i];form.querySelector<HTMLInputElement>('[name="allocation"]')!.value=String(pair[0]);form.querySelector<HTMLInputElement>('[name="reinvest"]')!.value=String(pair[1]);update();});});
+  fieldset.disabled=false;update();root.dataset.ready='true';
+ });
+}
+initMarginalBuyers();document.addEventListener('astro:page-load',initMarginalBuyers);
+</script>
+<style>
+.amb{margin:3rem 0;padding:28px;border:1px solid #343b49;border-radius:16px;background:#14171d;color:#f5f6f8;font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;box-sizing:border-box}.amb *{box-sizing:border-box}.amb-eye{font:11px/1.6 ui-monospace,monospace;letter-spacing:.12em;color:#5eead4;margin:0 0 12px}.amb h3{font-size:29px;letter-spacing:-.035em;line-height:1.2;margin:0 0 15px}.amb-dek{color:#b4bbc7;margin:0 0 24px;font-size:16px}.amb-presets{display:flex;flex-wrap:wrap;gap:8px}.amb button{font:inherit;cursor:pointer;border:1px solid #465164;background:#202734;color:#f5f6f8;border-radius:7px;padding:10px 13px;line-height:1.35}.amb button:hover{border-color:#5eead4}.amb button[aria-pressed=true]{border-color:#5eead4;background:#143d39;color:#bdf9ef}.amb button:disabled{opacity:.6;cursor:default}.amb :focus-visible{outline:3px solid #9dbbff;outline-offset:4px}.amb fieldset{border:0;padding:0;margin:24px 0}.amb-controls{display:grid;grid-template-columns:1fr 1fr;gap:25px 24px}.amb label{display:flex;flex-direction:column;gap:5px;color:#e0e5ed;font-size:14px}.amb-input-value{font:600 22px/1.5 ui-monospace,monospace;color:#5eead4}.amb input{width:100%;accent-color:#5eead4;min-height:32px;margin:5px 0 0;cursor:pointer}.amb details{border-top:1px solid #343b49;margin-top:23px;padding-top:14px}.amb summary{cursor:pointer;color:#b4bbc7;font-size:14px}.amb details .amb-controls{margin-top:20px}.amb-reset{margin-top:18px;padding:6px 10px!important;font-size:13px!important;background:transparent!important}.amb-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}.amb-metrics>div{background:#0c0d10;border:1px solid #343b49;border-radius:10px;padding:17px;min-width:0}.amb-metrics p{font-size:13px;color:#b4bbc7;line-height:1.4;margin:0;min-height:36px}.amb-metrics strong{display:block;font:600 clamp(27px,4vw,38px)/1.4 ui-monospace,monospace;color:#f5f6f8;overflow-wrap:anywhere}.amb-metrics>div:last-child strong{color:#f5b13d}.amb-metrics span{font-size:12px;color:#b4bbc7}.amb-comparison{font-size:12px;color:#b4bbc7;margin:10px 0 20px}.amb-flows{border-top:1px solid #343b49;padding-top:15px;margin:20px 0}.amb-flows>p{font-size:13px;font-weight:600;margin:0 0 10px}.amb dl{margin:0}.amb dl>div{display:flex;justify-content:space-between;gap:16px;font-size:13px;color:#b4bbc7;padding:3px 0}.amb dd{margin:0;font-family:ui-monospace,monospace;color:#f5f6f8}.amb table{width:100%;border-collapse:collapse;table-layout:fixed;margin:18px 0;font-size:13px;line-height:1.4}.amb th,.amb td{width:25%!important;padding:10px 6px;text-align:right;border-bottom:1px solid #343b49;overflow-wrap:anywhere}.amb th:first-child{text-align:left}.amb thead th{font-weight:500;color:#b4bbc7;background:transparent}.amb td{font-family:ui-monospace,monospace}.amb-equation{font-size:13px;color:#5eead4;margin:20px 0 12px}.amb-meaning{font-size:14px;color:#d4dae4;margin:12px 0}.amb-note,.amb-nojs{font-size:12px;color:#b4bbc7;margin:12px 0 0}.amb-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:560px){.amb{padding:18px 14px;border-radius:12px}.amb h3{font-size:25px}.amb-controls{grid-template-columns:1fr;gap:16px}.amb-metrics{gap:8px}.amb-metrics>div{padding:12px 9px}.amb-metrics p{min-height:54px}.amb th,.amb td{font-size:11px;padding:9px 3px}.amb-presets button{font-size:13px;padding:9px}.amb dd{flex-shrink:0}}
+</style>

@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {simulatePurchases as sim} from '../src/lib/asia-dollar-purchases.mjs';
+const close=(a,b)=>assert.ok(Math.abs(a-b)<1e-8,`${a} != ${b}`);
+test('Freeze new money: a stable stock still removes 60 of demand over three years',()=>{const r=sim();assert.equal(r.purchases,40);assert.equal(r.annualNet,0);assert.equal(r.closing,400);assert.equal(r.baselineClosing,460);assert.equal(r.cumulativeForgone,60)});
+test('Keep adding: original programme and scenario coincide',()=>{const r=sim({allocation:100});assert.equal(r.purchases,60);assert.equal(r.closing,460);assert.equal(r.cumulativeForgone,0)});
+test('Half reinvestment: runoff with no active sale',()=>{const r=sim({reinvest:50});assert.equal(r.purchases,20);assert.equal(r.annualNet,-20);assert.equal(r.closing,340);assert.equal(r.cumulativeForgone,120);assert.equal(r.activeSales,0)});
+test('No purchases: principal runs off, rather than being sold',()=>{const r=sim({reinvest:0});assert.equal(r.purchases,0);assert.equal(r.closing,280);assert.equal(r.cumulativeForgone,180)});
+test('No maturity and no new money: nothing changes',()=>{const r=sim({maturity:0,newMoney:0,years:5,reinvest:0});assert.equal(r.closing,400);assert.equal(r.cumulativeForgone,0)});
+test('Maximum original maturities exhaust original principal only at year five',()=>{const r=sim({maturity:20,reinvest:0,years:5});assert.equal(r.closing,0);assert.equal(r.cumulativeForgone,500)});
+test('Portfolio gap equals cumulative purchases forgone under the common maturity schedule',()=>{for(const stock of [100,450,2000])for(const maturity of [0,7,20])for(const reinvest of [0,35,100])for(const allocation of [0,45,100]){const r=sim({stock,maturity,reinvest,allocation,newMoney:35,years:5});r.schedule.forEach(row=>{close(row.baseline-row.scenario,row.forgone);assert.ok(row.scenario>=-1e-8)});close(r.annualNet+r.maturities,r.purchases);}});
+test('Larger reinvestment reduces purchases forgone, with all other inputs fixed',()=>{const a=sim({reinvest:30}),b=sim({reinvest:80});assert.ok(b.closing>a.closing);assert.ok(b.cumulativeForgone<a.cumulativeForgone)});
+test('Invalid and non-finite inputs fail instead of returning plausible-looking output',()=>{for(const p of [{stock:0},{maturity:21},{reinvest:101},{allocation:-1},{newMoney:NaN},{years:6},{years:2.5},{stock:'400'}])assert.throws(()=>sim(p),RangeError)});

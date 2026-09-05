@@ -5,6 +5,8 @@ import { join } from 'node:path';
 import test from 'node:test';
 
 import './asia-dollar-hedge-model.test.mjs';
+import './asia-dollar-stress.test.mjs';
+import './asia-dollar-purchases.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
@@ -99,6 +101,18 @@ const targets = [
     page: 'dist/en/analysis/asia-dollar-stress-test-three-risks/index.html',
     count: 3,
     pattern: /<svg\b[^>]*aria-labelledby="ats8-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/posts/asie-dollar-cesser-acheter/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="ad9-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/en/analysis/asia-dollar-stop-buying/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="ad9-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
     checkInternalBounds: true,
   },
 ];
