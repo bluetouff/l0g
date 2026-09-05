@@ -1,5 +1,6 @@
 ---
 title: "How to Read the Dot Plot and the SEP: Interpreting the Fed’s Projections"
+seoTitle: "How to read the Fed dot plot and SEP | l0g"
 description: "A reference guide to the Federal Reserve dot plot and Summary of Economic Projections: what the dots really show, why they are neither a plan nor a forecast but a median of individual views on appropriate policy, how to read the central tendency, the neutral rate and the gap with market pricing. With the June 2026 SEP, the first under Warsh, where the 2026 median flipped from an implied cut to an implied hike."
 summary: "The dot plot is the cluster of rate projections in the Fed’s Summary of Economic Projections, published four times a year. Each FOMC participant marks the policy rate they judge appropriate for each year-end and the longer run. It is not a plan or promise, but a set of anonymous, individual, conditional views that can shift sharply from one quarter to the next."
 pubDate: 2026-07-08T18:00:00+02:00
@@ -17,7 +18,7 @@ draft: false
 
 The Summary of Economic Projections is published by the Fed four times a year, in March, June, September and December, alongside the monetary-policy decision. It gathers each FOMC participant’s projections for four variables: real GDP growth, unemployment, headline PCE inflation and core PCE inflation, plus the policy rate each participant judges appropriate. The projections cover the current year, the following two years and the longer run.
 
-The dot plot is the most watched part of the document. Each dot represents, for a given year-end, the federal funds rate a participant judges appropriate, rounded to the nearest eighth of a point. One governance detail changes the whole reading: nineteen participants project—seven governors and twelve Reserve Bank presidents—while only twelve vote in a given year. All dots therefore carry equal weight in the median, whether they come from a voter or not, and none is named. You cannot know which dot belongs to the chair.
+The dot plot is the most watched part of the document. Each dot represents, for a given year-end, the federal funds rate a participant judges appropriate, rounded to the nearest eighth of a point. One governance detail changes the whole reading: nineteen participants project, comprising seven governors and twelve Reserve Bank presidents, while only twelve vote in a given year. All dots therefore carry equal weight in the median, whether they come from a voter or not, and none is named. You cannot know which dot belongs to the chair.
 
 The Fed publishes three readings for each variable. The median is the middle point once projections are ranked. The central tendency excludes the three highest and three lowest values. The range keeps everything. Markets obsess over the median, but the distance between those three readings shows whether the committee is united or divided.
 

@@ -8,7 +8,7 @@ import { createInterface } from 'node:readline';
 import { fileURLToPath } from 'node:url';
 import { isInternalL0gUserAgent } from '../mcp-server/usage-telemetry.mjs';
 
-export const HUMAN_TRAFFIC_SCHEMA_VERSION = '1.0.0';
+export const HUMAN_TRAFFIC_SCHEMA_VERSION = '1.1.0';
 export const HUMAN_TRAFFIC_RETENTION_DAYS = 91;
 export const HUMAN_TRAFFIC_MINIMUM_COHORT = 5;
 
@@ -26,6 +26,17 @@ const CRAWLER_USER_AGENT = new RegExp([
   'ia_archiver', 'archive\\.org_bot', 'uptimerobot', 'pingdom', 'statuscake',
   'headlesschrome', 'lighthouse',
 ].join('|'), 'i');
+const SOCIAL_PREVIEW_USER_AGENT = /twitterbot|facebookexternalhit|facebot|linkedinbot|linkedinapp|whatsapp|telegrambot|discordbot|slackbot|skypeuripreview|pinterestbot/i;
+const SCAN_PATH = /(?:^|\/)(?:\.env(?:\.|$)|\.git(?:\/|$)|wp-admin(?:\/|$)|wp-login\.php$|xmlrpc\.php$|phpmyadmin(?:\/|$)|adminer(?:\.php|\/|$)|vendor\/phpunit(?:\/|$)|cgi-bin(?:\/|$)|actuator(?:\/|$)|boaform(?:\/|$))|\.php(?:\/|$)/i;
+const MACHINE_SURFACE_PATH = /^(?:\/api(?:\/|$)|\/\.well-known\/(?:mcp|oauth-|openid-)|\/(?:api\/mcp(?:\/compact)?|compact)\/\.well-known\/|\/(?:agents|server|openapi)\.json$)/i;
+export const TRAFFIC_CLASSES = Object.freeze([
+  'human_html',
+  'mcp_api',
+  'social_previews',
+  'known_crawlers',
+  'scans',
+  'other',
+]);
 const EXCLUDED_PREFIXES = [
   '/api',
   '/_astro',
@@ -94,13 +105,56 @@ function referrerDomain(value) {
   }
 }
 
-export function parseHumanHtmlRequest(line) {
+function parseApacheRequest(line) {
   const match = APACHE_COMBINED.exec(line);
   if (!match) return null;
   const [, rawDate, method, target, rawStatus, referrer, userAgent] = match;
-  if (method !== 'GET' || Number(rawStatus) !== 200) return null;
-  if (!userAgent || userAgent === '-' || CRAWLER_USER_AGENT.test(userAgent) || isInternalL0gUserAgent(userAgent)) return null;
   const day = dayFromApacheDate(rawDate);
+  let url;
+  try {
+    url = new URL(target, 'https://l0g.fr');
+  } catch {
+    return null;
+  }
+  if (!day || url.origin !== 'https://l0g.fr') return null;
+  return {
+    day,
+    method,
+    target,
+    path: url.pathname.replace(/\/{2,}/g, '/'),
+    status: Number(rawStatus),
+    referrer,
+    userAgent,
+  };
+}
+
+export function classifyTrafficRequest(line) {
+  const request = parseApacheRequest(line);
+  if (!request) return null;
+  const { path, userAgent } = request;
+  let category = 'other';
+  if (MACHINE_SURFACE_PATH.test(path)) category = 'mcp_api';
+  else if (SOCIAL_PREVIEW_USER_AGENT.test(userAgent)) category = 'social_previews';
+  else if (SCAN_PATH.test(path)) category = 'scans';
+  else if (CRAWLER_USER_AGENT.test(userAgent) || isInternalL0gUserAgent(userAgent)) category = 'known_crawlers';
+  else if (request.method === 'GET' && request.status === 200 && normalizeDocumentPath(request.target)) category = 'human_html';
+  return { day: request.day, category };
+}
+
+export function parseHumanHtmlRequest(line) {
+  const request = parseApacheRequest(line);
+  if (!request) return null;
+  const { day, method, target, path, status, referrer, userAgent } = request;
+  if (method !== 'GET' || status !== 200) return null;
+  if (
+    !userAgent
+    || userAgent === '-'
+    || MACHINE_SURFACE_PATH.test(path)
+    || SCAN_PATH.test(path)
+    || SOCIAL_PREVIEW_USER_AGENT.test(userAgent)
+    || CRAWLER_USER_AGENT.test(userAgent)
+    || isInternalL0gUserAgent(userAgent)
+  ) return null;
   const page = normalizeDocumentPath(target);
   if (!day || !page) return null;
   return { day, page, referrer: referrerDomain(referrer) };
@@ -131,10 +185,19 @@ export function createHumanTrafficAccumulator(
   cutoff.setUTCDate(cutoff.getUTCDate() - (retentionDays - 1));
   const cutoffDay = cutoff.toISOString().slice(0, 10);
   const days = new Map();
+  const trafficDays = new Map();
   return {
     add(line) {
+      const classified = classifyTrafficRequest(line);
+      if (!classified || classified.day < cutoffDay) return;
+      let trafficDay = trafficDays.get(classified.day);
+      if (!trafficDay) {
+        trafficDay = Object.fromEntries(TRAFFIC_CLASSES.map((category) => [category, 0]));
+        trafficDays.set(classified.day, trafficDay);
+      }
+      trafficDay[classified.category] += 1;
       const request = parseHumanHtmlRequest(line);
-      if (!request || request.day < cutoffDay) return;
+      if (!request) return;
       let day = days.get(request.day);
       if (!day) {
         day = { count: 0, pages: new Map(), referrers: new Map() };
@@ -154,6 +217,22 @@ export function createHumanTrafficAccumulator(
           pages: sortedRows(day.pages, 'page', minimumCohort),
           referrers: sortedRows(day.referrers, 'domain', minimumCohort),
         }));
+      const classDaily = [...trafficDays.entries()]
+        .sort(([left], [right]) => left.localeCompare(right))
+        .map(([date, requests]) => ({ date, requests }));
+      const classTotals = Object.fromEntries(TRAFFIC_CLASSES.map((category) => [
+        category,
+        classDaily.reduce((sum, day) => sum + day.requests[category], 0),
+      ]));
+      const through = classDaily.at(-1)?.date ?? now.toISOString().slice(0, 10);
+      const rollingStart = new Date(`${through}T00:00:00Z`);
+      rollingStart.setUTCDate(rollingStart.getUTCDate() - 6);
+      const from = rollingStart.toISOString().slice(0, 10);
+      const rollingRows = classDaily.filter(({ date }) => date >= from && date <= through);
+      const rollingRequests = Object.fromEntries(TRAFFIC_CLASSES.map((category) => {
+        const count = rollingRows.reduce((sum, day) => sum + day.requests[category], 0);
+        return [category, count >= minimumCohort ? count : null];
+      }));
 
       return {
         schema_version: HUMAN_TRAFFIC_SCHEMA_VERSION,
@@ -171,8 +250,23 @@ export function createHumanTrafficAccumulator(
           days_published: daily.length,
         },
         daily,
+        traffic_classes: {
+          unit: 'requêtes HTTP Apache, sans déduplication par personne ni adresse',
+          precedence: ['mcp_api', 'social_previews', 'scans', 'known_crawlers', 'human_html', 'other'],
+          totals: classTotals,
+          rolling_7_days: { from, through, requests: rollingRequests },
+          definitions: {
+            human_html: 'GET 200 d’un document HTML, après exclusion des surfaces machine et user-agents automatisés connus.',
+            mcp_api: 'Requête vers /api, les transports MCP ou leurs documents de découverte.',
+            social_previews: 'Requête issue d’un user-agent de carte ou de prévisualisation sociale connu.',
+            known_crawlers: 'Requête issue d’un robot, crawler, moniteur ou user-agent interne l0g connu.',
+            scans: 'Requête vers un chemin caractéristique de sondes automatisées opportunistes.',
+            other: 'Assets, redirections, erreurs ordinaires et trafic non classé ailleurs.',
+          },
+        },
         limitations: [
           'Un GET HTML est une lecture servie, pas une personne unique.',
+          'Les classes techniques comptent des requêtes et ne doivent jamais être additionnées aux lectures HTML pour produire une audience.',
           'Les navigateurs qui masquent le référent sont classés en accès direct.',
           'Les robots non déclarés ou aux user-agents nouveaux peuvent subsister jusqu’à mise à jour de la liste.',
           'Les jours, pages et domaines sous k=5 ne sont pas publiés.',

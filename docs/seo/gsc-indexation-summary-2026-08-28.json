@@ -1,0 +1,97 @@
+{
+  "pages": 1251,
+  "sitemap_urls": 739,
+  "sitemap_undesirable": [],
+  "undesirable_internal_destinations": [],
+  "strategic_inlinks": [
+    {
+      "route": "/en/guides/read-h41-fed-balance-sheet/",
+      "inlinks": 16,
+      "depth": 1
+    },
+    {
+      "route": "/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/",
+      "inlinks": 5,
+      "depth": 1
+    },
+    {
+      "route": "/en/analysis/realt-liquidation-token-without-the-deed/",
+      "inlinks": 9,
+      "depth": 2
+    },
+    {
+      "route": "/en/analysis/kospi-concentrated-liquidation-samsung-sk-hynix/",
+      "inlinks": 6,
+      "depth": 1
+    }
+  ],
+  "cohort": {
+    "rows": 176,
+    "decisions": {
+      "a_indexer": 93,
+      "inconnue": 18,
+      "noindex_voulu": 55,
+      "redirection": 8,
+      "supprimee_410": 2
+    },
+    "gsc_statuses": {
+      "Bloquée en raison d’un autre problème de type 4xx": 2,
+      "Bloquée en raison d’une interdiction d’accès (403)": 2,
+      "Détectée, actuellement non indexée": 86,
+      "Explorée, actuellement non indexée": 66,
+      "Introuvable (404)": 19,
+      "Page en double sans URL canonique sélectionnée par l’utilisateur": 1
+    },
+    "by_status": {
+      "Bloquée en raison d’un autre problème de type 4xx": {
+        "rows": 2,
+        "decisions": {
+          "noindex_voulu": 2
+        }
+      },
+      "Bloquée en raison d’une interdiction d’accès (403)": {
+        "rows": 2,
+        "decisions": {
+          "noindex_voulu": 1,
+          "redirection": 1
+        }
+      },
+      "Détectée, actuellement non indexée": {
+        "rows": 86,
+        "decisions": {
+          "a_indexer": 86
+        }
+      },
+      "Explorée, actuellement non indexée": {
+        "rows": 66,
+        "decisions": {
+          "a_indexer": 7,
+          "inconnue": 12,
+          "noindex_voulu": 47
+        }
+      },
+      "Introuvable (404)": {
+        "rows": 19,
+        "decisions": {
+          "inconnue": 5,
+          "noindex_voulu": 5,
+          "redirection": 7,
+          "supprimee_410": 2
+        }
+      },
+      "Page en double sans URL canonique sélectionnée par l’utilisateur": {
+        "rows": 1,
+        "decisions": {
+          "inconnue": 1
+        }
+      }
+    },
+    "indexable_quality": {
+      "zero_inlinks": [],
+      "deeper_than_three_or_unreachable": [
+        "https://l0g.fr/12/",
+        "https://l0g.fr/13/"
+      ]
+    }
+  }
+}

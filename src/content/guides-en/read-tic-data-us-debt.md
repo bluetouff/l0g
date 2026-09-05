@@ -1,5 +1,6 @@
 ---
 title: "How to Read TIC Data: who really finances U.S. debt"
+seoTitle: "How to read US TIC data: foreign Treasury holdings | l0g"
 description: "A reference guide to Treasury International Capital data: what monthly flows and the Major Foreign Holders table measure, why Japan ranks ahead of the UK and China, and above all the custody bias that assigns Treasuries to the custodian country rather than the true owner. Belgium, Luxembourg, the Caymans, undercounted basis-trade hedge funds and the declining official share: what the data shows and distorts."
 summary: "TIC data are the U.S. Treasury's cross-border securities data. They show foreign holdings and flows into U.S. assets, including Treasuries. They are indispensable for reading who finances U.S. debt, but they are custody-based: securities are assigned to the country of the custodian, not necessarily to the final owner."
 pubDate: 2026-06-30T11:00:00+02:00

@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "baseline": "1716103592a1807b20b36f90c84319c0733be595",
+  "measured_at": "2026-09-04",
+  "method": "Fichiers source contenant le chemin canonique littéral; le build ajoute aussi les index et paginations.",
+  "pages": [
+    {
+      "route": "/en/guides/read-h41-fed-balance-sheet/",
+      "before": 12,
+      "after": 13,
+      "added": ["src/pages/en/index.astro"]
+    },
+    {
+      "route": "/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/",
+      "before": 1,
+      "after": 2,
+      "added": ["src/pages/en/index.astro"]
+    },
+    {
+      "route": "/en/analysis/realt-liquidation-token-without-the-deed/",
+      "before": 1,
+      "after": 3,
+      "added": ["src/content/guides-en/read-on-chain-data.md", "src/content/posts-en/pontes-ecb-private-blockchain-tokenised-settlement.mdx"]
+    },
+    {
+      "route": "/en/analysis/kospi-concentrated-liquidation-samsung-sk-hynix/",
+      "before": 0,
+      "after": 2,
+      "added": ["src/content/posts-en/chip-relapse-bear-market-record-profits.md", "src/content/posts-en/how-american-is-americas-ai-boom.md"]
+    },
+    {
+      "route": "/publications/votre-identite-dans-un-telephone/",
+      "before": 1,
+      "after": 4,
+      "added": ["src/content/posts/votre-identite-dans-un-telephone-1-la-carte-d-identite-qui-devient-un-service.md", "src/content/posts/votre-identite-dans-un-telephone-4-votre-age-devient-une-autorisation.md", "src/content/posts/votre-identite-dans-un-telephone-8-votre-identite-doit-vous-laisser-un-recu.mdx"]
+    }
+  ],
+  "cohort_crawled_note": "Les 66 URL GSC ont été auditées. La publication Votre identité dans un téléphone était la seule page éditoriale indexable du cohort avec un seul lien entrant; elle reçoit trois liens contextuels supplémentaires."
+}

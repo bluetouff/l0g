@@ -65,7 +65,21 @@ grep -Fq 'RedirectMatch 301 "^/contact-us/?$" "/contact/"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'RedirectMatch 301 "^/en/contact-us/?$" "/en/contact/"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/posts/?$" "/"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'RedirectMatch 301 "^/sitemap\.xml$" "/sitemap-index.xml"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/glossaire/(?:nfp/)?lire-le-rapport-emploi-nfp/?$" "/guides/lire-le-rapport-emploi-nfp/"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/glossaire/(?:(?:fomc|sep)/)?lire-le-dot-plot-sep/?$" "/guides/lire-le-dot-plot-sep/"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/glossaire/m2/m2-masse-monetaire-risk-on/?$" "/guides/m2-masse-monetaire-risk-on/"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/glossaire/core-cpi/lire-le-cpi-inflation-us/?$" "/guides/lire-le-cpi-inflation-us/"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/og/le-grand-peage-de-la-facture-1-le-portail-ampute\.png$" "/illustrations/news/e-invoicing-toll-1-v2.jpg"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/og/le-grand-peage-de-la-facture-3-le-prix-du-gratuit\.png$" "/illustrations/news/e-invoicing-toll-3-v1.jpg"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'RewriteRule "^/?(?:api/mcp(?:/compact)?/|compact/)?\.well-known/mcp/?$" "/.well-known/mcp.json" [R=308,L,NE]' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
@@ -83,11 +97,25 @@ grep -Fq 'probe_status "contact EN" 200 https://l0g.fr/en/contact/' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'probe_status "ancien contact" 301 https://l0g.fr/contact-us/' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'probe_status "ancien index posts" 301 https://l0g.fr/posts/' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'probe_status "alias sitemap" 301 https://l0g.fr/sitemap.xml' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'probe_status "ancien lien glossaire NFP" 301 https://l0g.fr/glossaire/nfp/lire-le-rapport-emploi-nfp' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'probe_status "ancien lien glossaire dot plot" 301 https://l0g.fr/glossaire/fomc/lire-le-dot-plot-sep' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'probe_status "ancien lien glossaire M2" 301 https://l0g.fr/glossaire/m2/m2-masse-monetaire-risk-on' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'probe_status "ancien lien glossaire CPI" 301 https://l0g.fr/glossaire/core-cpi/lire-le-cpi-inflation-us' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'probe_status "découverte MCP racine" 308 https://l0g.fr/.well-known/mcp' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'probe_status "découverte MCP API" 308 https://l0g.fr/api/mcp/.well-known/mcp' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'probe_status "ancienne carte Grand Péage 1" 301 https://l0g.fr/og/le-grand-peage-de-la-facture-1-le-portail-ampute.png' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'probe_status "ancienne carte Grand Péage 3" 301 https://l0g.fr/og/le-grand-peage-de-la-facture-3-le-prix-du-gratuit.png' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'probe_status "ancienne route matières premières" 410 https://l0g.fr/hard-commodities/' \
   "${ROOT}/deploy/activate-apache-vhost.sh"

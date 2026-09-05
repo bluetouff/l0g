@@ -1,0 +1,58 @@
+{
+  "pages": 1251,
+  "sitemap_urls": 739,
+  "sitemap_undesirable": [],
+  "undesirable_internal_destinations": [],
+  "strategic_inlinks": [
+    {
+      "route": "/en/guides/read-h41-fed-balance-sheet/",
+      "inlinks": 16,
+      "depth": 1
+    },
+    {
+      "route": "/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/",
+      "inlinks": 5,
+      "depth": 1
+    },
+    {
+      "route": "/en/analysis/realt-liquidation-token-without-the-deed/",
+      "inlinks": 9,
+      "depth": 2
+    },
+    {
+      "route": "/en/analysis/kospi-concentrated-liquidation-samsung-sk-hynix/",
+      "inlinks": 6,
+      "depth": 1
+    }
+  ],
+  "cohort": {
+    "rows": 15,
+    "decisions": {
+      "noindex_voulu": 1,
+      "redirection": 14
+    },
+    "gsc_statuses": {
+      "Autre page avec balise canonique correcte": 3,
+      "Page avec redirection": 12
+    },
+    "by_status": {
+      "Autre page avec balise canonique correcte": {
+        "rows": 3,
+        "decisions": {
+          "noindex_voulu": 1,
+          "redirection": 2
+        }
+      },
+      "Page avec redirection": {
+        "rows": 12,
+        "decisions": {
+          "redirection": 12
+        }
+      }
+    },
+    "indexable_quality": {
+      "zero_inlinks": [],
+      "deeper_than_three_or_unreachable": []
+    }
+  }
+}

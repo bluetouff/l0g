@@ -12,6 +12,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, extname } from 'node:path';
 import { scanHtmlElements } from '../src/lib/html-utils.ts';
+import { auditBuiltSite } from './audit-indexation-cohort.mjs';
 
 const DIST = 'dist';
 const SITE_ORIGIN = 'https://l0g.fr';
@@ -145,4 +146,15 @@ if (broken.length > 0) {
   throw new Error(`${broken.length} lien(s) interne(s) cassé(s) dans dist/.`);
 }
 
-console.log(`Liens internes OK : ${checked} liens vérifiés sur ${htmlFiles.length} pages, aucun cassé.`);
+const indexability = await auditBuiltSite(DIST);
+if (indexability.sitemapUndesirable.length || indexability.undesirableInternalDestinations.length) {
+  for (const item of indexability.sitemapUndesirable) {
+    console.error(`Sitemap indésirable: ${item.route} (${item.reasons.join(', ')})`);
+  }
+  for (const item of indexability.undesirableInternalDestinations) {
+    console.error(`Destination interne indésirable: ${item.from} -> ${item.to} (${item.reasons.join(', ')})`);
+  }
+  throw new Error('Le sitemap ou le maillage pousse une destination non canonique.');
+}
+
+console.log(`Liens internes et indexabilité OK : ${checked} liens sur ${htmlFiles.length} pages, aucune destination cassée ou non canonique.`);

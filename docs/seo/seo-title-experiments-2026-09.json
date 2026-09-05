@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "export": {
+    "file": "l0g.fr-Performance-on-Search-2026-09-04.zip",
+    "window": "Les 3 derniers mois",
+    "exported_at": "2026-09-04",
+    "page_query_join_available": false,
+    "post_recrawl_impressions_available": false
+  },
+  "policy": {
+    "frozen_through": "2026-09-20",
+    "minimum_post_recrawl_impressions": 150,
+    "preferred_post_recrawl_impressions": 300,
+    "decision_dimensions": ["position", "country", "device"],
+    "single_variable_changes": true
+  },
+  "experiments": [
+    {
+      "id": "h41",
+      "content_id": "guides-en/read-h41-fed-balance-sheet",
+      "route": "/en/guides/read-h41-fed-balance-sheet/",
+      "seo_title": "Fed H.4.1: what bank reserves really show | l0g",
+      "aggregate_impressions": 1017,
+      "status": "frozen"
+    },
+    {
+      "id": "nvidia-500bn",
+      "content_id": "posts-en/nvidia-the-500-billion-that-does-not-exist-yet",
+      "route": "/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/",
+      "seo_title": "Nvidia $500bn AI financing: what is committed? | l0g",
+      "aggregate_impressions": 587,
+      "status": "frozen"
+    },
+    {
+      "id": "realt-liquidation",
+      "content_id": "posts-en/realt-liquidation-token-without-the-deed",
+      "route": "/en/analysis/realt-liquidation-token-without-the-deed/",
+      "seo_title": "RealT liquidation: $2.72m raised, 39 deeds unchanged | l0g",
+      "aggregate_impressions": 431,
+      "status": "frozen"
+    },
+    {
+      "id": "kospi-concentration",
+      "content_id": "posts-en/kospi-concentrated-liquidation-samsung-sk-hynix",
+      "route": "/en/analysis/kospi-concentrated-liquidation-samsung-sk-hynix/",
+      "seo_title": "KOSPI: Samsung and SK Hynix reached 52% of the index | l0g",
+      "aggregate_impressions": 215,
+      "status": "frozen"
+    },
+    {
+      "id": "digital-euro-stress",
+      "content_id": "posts-en/digital-euro-2-699-billion-anatomy-stress-test",
+      "route": "/en/analysis/digital-euro-2-699-billion-anatomy-stress-test/",
+      "seo_title": "Digital euro: inside the ECB's €699bn stress test | l0g",
+      "aggregate_impressions": 126,
+      "status": "frozen"
+    },
+    {
+      "id": "ai-bis",
+      "content_id": "posts-en/ai-boom-bis-financial-fragility",
+      "route": "/en/analysis/ai-boom-bis-financial-fragility/",
+      "seo_title": "AI boom: BIS flags $1tn capex and credit risk | l0g",
+      "aggregate_impressions": 206,
+      "status": "frozen"
+    },
+    {
+      "id": "held-to-maturity",
+      "content_id": "posts-en/held-to-maturity",
+      "route": "/en/analysis/held-to-maturity/",
+      "seo_title": "Held-to-maturity: $214bn of unrealized bank losses | l0g",
+      "aggregate_impressions": 108,
+      "status": "frozen"
+    },
+    {
+      "id": "basis-trade-fed",
+      "content_id": "posts-en/the-fed-on-the-basis-trade",
+      "route": "/en/analysis/the-fed-on-the-basis-trade/",
+      "seo_title": "Treasury basis trade: $830bn as returns shrink | l0g",
+      "aggregate_impressions": 103,
+      "status": "frozen"
+    }
+  ]
+}

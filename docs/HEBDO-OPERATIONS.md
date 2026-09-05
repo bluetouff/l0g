@@ -75,6 +75,31 @@ npm run test:ci-policy
 npm run build
 ```
 
+## Reporting d’audience
+
+La mesure d’audience hebdomadaire a une seule source : le rapport public
+`/api/v1/human-traffic.json`. La ligne principale est le nombre de GET 200 de
+documents HTML classés humains. Elle doit être nommée « lectures HTML humaines »,
+jamais « visiteurs uniques », car aucune personne, IP, session ou empreinte
+persistante n’est suivie.
+
+Le même rapport ventile séparément les requêtes MCP/API, les prévisualisations
+sociales, les robots connus, les scans opportunistes et les autres requêtes. Ces
+classes servent à l’exploitation et à la distribution. Elles ne sont pas une
+audience et ne doivent pas être additionnées aux lectures HTML.
+
+Produire le tableau sur une fenêtre calendaire close :
+
+```sh
+node scripts/weekly-audience-report.mjs \
+  --input human-traffic.json \
+  --format markdown
+```
+
+GoAccess reste utile pour diagnostiquer les erreurs HTTP, les crawlers, les
+référents et le volume serveur. Son compteur de visiteurs ne doit plus figurer
+comme métrique d’audience dans un rapport commercial ou hebdomadaire.
+
 ## Reprise après incident
 
 Si une édition manque, lancer manuellement `weekly-edition` depuis GitHub Actions. Le générateur rattrape toutes les échéances absentes dans l'ordre, puis déclenche la release normale.

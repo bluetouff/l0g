@@ -20,7 +20,7 @@ quickTake:
 
 *Derrière le « oui » ou le « non » se trouvent une source de données, un émetteur, une application, des journaux, un vérificateur, une décision automatisée et parfois une facture par contrôle. Si une preuve erronée bloque un achat, un compte, un pari, un contrat ou un service payé, la question de vie privée devient un risque financier.*
 
-*Quatrième volet de l’enquête **Votre identité dans un téléphone**. Le premier suivait [les données et les traces de France Identité](/posts/votre-identite-dans-un-telephone-1-la-carte-d-identite-qui-devient-un-service/). Le deuxième mesurait [le coût pratique des alternatives](/posts/votre-identite-dans-un-telephone-2-facultative-mais-a-quel-prix/). Le troisième examinait [la chaîne contractuelle qui fabrique l’identité souveraine](/posts/votre-identite-dans-un-telephone-3-l-identite-souveraine-sous-contrat/).*
+*Quatrième volet de l’enquête **Votre identité dans un téléphone**. Le premier suivait [les données et les traces de France Identité](/posts/votre-identite-dans-un-telephone-1-la-carte-d-identite-qui-devient-un-service/). Le deuxième mesurait [le coût pratique des alternatives](/posts/votre-identite-dans-un-telephone-2-facultative-mais-a-quel-prix/). Le troisième examinait [la chaîne contractuelle qui fabrique l’identité souveraine](/posts/votre-identite-dans-un-telephone-3-l-identite-souveraine-sous-contrat/). [L’édition complète rassemble la série, les infographies et les téléchargements](/publications/votre-identite-dans-un-telephone/).*
 
 *English version: [Age becomes an access credential](/en/analysis/your-identity-in-your-phone-4-age-becomes-an-access-credential/).*
 

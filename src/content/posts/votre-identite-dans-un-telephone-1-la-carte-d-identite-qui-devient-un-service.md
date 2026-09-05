@@ -18,7 +18,7 @@ quickTake:
 
 *France Titres revendique plus de 4,5 millions d’utilisateurs. Le futur portefeuille européen doit étendre le dispositif aux attestations, aux signatures, à la banque, aux télécoms, au voyage et aux paiements. Avant ce changement d’échelle, une question simple mérite une réponse précise : lorsqu’un citoyen prouve qui il est, quelles données circulent, lesquelles restent, et pendant combien de temps ?*
 
-*Premier volet de l’enquête **Votre identité dans un téléphone**.*
+*Premier volet de l’enquête **Votre identité dans un téléphone**. [L’édition complète réunit les huit volets et leurs formats téléchargeables](/publications/votre-identite-dans-un-telephone/).*
 
 *English version: [When an ID card becomes a service](/en/analysis/your-identity-in-your-phone-1-when-an-id-card-becomes-a-service/).*
 

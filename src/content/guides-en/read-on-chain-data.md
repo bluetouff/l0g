@@ -53,7 +53,7 @@ TVL has three traps. First, it rises when token prices rise, even without new ca
 
 This is the core issue. A blockchain shows all transactions, but it does not show identity.
 
-An address is not a person. Address clustering depends on probabilistic heuristics. Exchange clusters can contain tens of millions of addresses and grow constantly. Entity labels are not facts; they are provider inferences.
+An address is not a person. Address clustering depends on probabilistic heuristics. Exchange clusters can contain tens of millions of addresses and grow constantly. Entity labels are not facts; they are provider inferences. A token balance also does not prove that the off-chain asset or legal title exists: the [RealT liquidation case](/en/analysis/realt-liquidation-token-without-the-deed/) shows why the legal bridge must be checked separately.
 
 Most trading also remains off-chain. A spot trade inside a centralised exchange updates an internal ledger, not the public blockchain. The chain sees deposits and withdrawals, not the internal order book. Reading only on-chain data is like watching a building's entrances and exits without seeing what happens inside.
 

@@ -3,8 +3,13 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import {
   buildHumanTrafficReport,
+  classifyTrafficRequest,
   parseHumanHtmlRequest,
 } from './human-traffic-report.mjs';
+import {
+  buildWeeklyAudienceTable,
+  weeklyAudienceMarkdown,
+} from './weekly-audience-report.mjs';
 
 const root = new URL('../', import.meta.url);
 
@@ -29,9 +34,12 @@ test('ne conserve que les GET 200 de documents HTML humains', () => {
   assert.equal(parseHumanHtmlRequest(log({ method: 'POST' })), null);
   assert.equal(parseHumanHtmlRequest(log({ status: 301 })), null);
   assert.equal(parseHumanHtmlRequest(log({ path: '/api/mcp/compact' })), null);
+  assert.equal(parseHumanHtmlRequest(log({ path: '/wp-admin/' })), null);
   assert.equal(parseHumanHtmlRequest(log({ path: '/rss.xml' })), null);
   assert.equal(parseHumanHtmlRequest(log({ path: '/_astro/app.abc.js' })), null);
   assert.equal(parseHumanHtmlRequest(log({ userAgent: 'Googlebot/2.1' })), null);
+  assert.equal(parseHumanHtmlRequest(log({ userAgent: 'WhatsApp/2.26' })), null);
+  assert.equal(parseHumanHtmlRequest(log({ userAgent: 'SkypeUriPreview/1.0' })), null);
   assert.equal(parseHumanHtmlRequest(log({ userAgent: 'l0g-health-probe/1' })), null);
 });
 
@@ -46,6 +54,16 @@ test('normalise la page et réduit le référent au domaine', () => {
   });
   assert.equal(parseHumanHtmlRequest(log({ referrer: '-' }))?.referrer, '(direct)');
   assert.equal(parseHumanHtmlRequest(log({ referrer: 'mailto:test@example.test' }))?.referrer, '(unknown)');
+});
+
+test('sépare strictement audience, MCP/API, previews, crawlers et scans', () => {
+  assert.equal(classifyTrafficRequest(log())?.category, 'human_html');
+  assert.equal(classifyTrafficRequest(log({ method: 'POST', path: '/api/mcp' }))?.category, 'mcp_api');
+  assert.equal(classifyTrafficRequest(log({ path: '/og/card.png', userAgent: 'Twitterbot/1.0' }))?.category, 'social_previews');
+  assert.equal(classifyTrafficRequest(log({ userAgent: 'WhatsApp/2.26' }))?.category, 'social_previews');
+  assert.equal(classifyTrafficRequest(log({ path: '/wp-login.php' }))?.category, 'scans');
+  assert.equal(classifyTrafficRequest(log({ userAgent: 'Googlebot/2.1' }))?.category, 'known_crawlers');
+  assert.equal(classifyTrafficRequest(log({ path: '/favicon.svg' }))?.category, 'other');
 });
 
 test('agrège par jour, page et domaine avec k supérieur ou égal à cinq', () => {
@@ -70,6 +88,30 @@ test('agrège par jour, page et domaine avec k supérieur ou égal à cinq', () 
     referrers: [{ domain: 'google.com', count: 5 }],
   }]);
   assert.doesNotMatch(serialized, /203\.0\.113|198\.51\.100|small\.example|private\/path/);
+  assert.deepEqual(report.traffic_classes.totals, {
+    human_html: 9,
+    mcp_api: 0,
+    social_previews: 0,
+    known_crawlers: 1,
+    scans: 0,
+    other: 0,
+  });
+});
+
+test('produit le tableau hebdomadaire depuis human-traffic sans métrique GoAccess unique', () => {
+  const lines = [];
+  for (let day = 24; day <= 30; day += 1) {
+    for (let index = 0; index < 5; index += 1) lines.push(log({ date: `${day}/Jul/2026:12:00:00 +0200` }));
+    lines.push(log({ date: `${day}/Jul/2026:12:00:00 +0200`, method: 'POST', path: '/api/mcp' }));
+  }
+  const report = buildHumanTrafficReport(lines, { now: new Date('2026-07-30T20:00:00Z') });
+  const table = buildWeeklyAudienceTable(report, { through: '2026-07-30' });
+  const markdown = weeklyAudienceMarkdown(table);
+
+  assert.equal(table.audience_metric.value, 35);
+  assert.equal(table.operations.mcp_api, 7);
+  assert.match(markdown, /Lectures HTML humaines \| 35/);
+  assert.doesNotMatch(markdown, /visiteurs uniques|unique visitors|GoAccess/i);
 });
 
 test('masque un jour entier sous k et coupe la rétention', () => {

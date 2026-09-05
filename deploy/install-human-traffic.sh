@@ -82,7 +82,8 @@ systemctl start l0g-human-traffic.service
   const fs = require("node:fs");
   const path = "/var/www/l0g-data/human-traffic.json";
   const report = JSON.parse(fs.readFileSync(path, "utf8"));
-  if (report.schema_version !== "1.0.0" || report.minimum_public_cohort !== 5 || !Array.isArray(report.daily)) process.exit(1);
+  if (report.schema_version !== "1.1.0" || report.minimum_public_cohort !== 5 || !Array.isArray(report.daily)) process.exit(1);
+  if (!report.traffic_classes || !report.traffic_classes.rolling_7_days) process.exit(1);
 '
 systemctl enable --now l0g-human-traffic.timer
 systemctl is-active --quiet l0g-human-traffic.timer

@@ -1,5 +1,6 @@
 ---
 title: "How to Read CPI: U.S. Inflation, Measure by Measure"
+seoTitle: "How to read U.S. CPI inflation data | l0g"
 description: "A reference guide to the Consumer Price Index: what the BLS actually measures, how the basket is built, why shelter accounts for about a third of it, the difference between headline, core and supercore inflation, the traps between raw and seasonally adjusted data, level and change, and why the Fed targets PCE rather than CPI. With May 2026 as a case study, when energy drove the headline."
 summary: "The CPI, or Consumer Price Index, is the consumer price index published monthly by the BLS. It measures the average change in prices for a fixed basket of goods and services bought by U.S. urban households. It is the inflation gauge markets watch most closely, but the Fed targets PCE, and reading it properly requires separating headline from core, raw from seasonally adjusted data, and level from change."
 pubDate: 2026-07-08T16:30:00+02:00

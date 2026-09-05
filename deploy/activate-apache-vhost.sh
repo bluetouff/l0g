@@ -200,9 +200,16 @@ probe_status "trafic humain" 200 https://l0g.fr/api/v1/human-traffic.json
 probe_status "contact FR" 200 https://l0g.fr/contact/
 probe_status "contact EN" 200 https://l0g.fr/en/contact/
 probe_status "ancien contact" 301 https://l0g.fr/contact-us/
+probe_status "ancien index posts" 301 https://l0g.fr/posts/
 probe_status "alias sitemap" 301 https://l0g.fr/sitemap.xml
+probe_status "ancien lien glossaire NFP" 301 https://l0g.fr/glossaire/nfp/lire-le-rapport-emploi-nfp
+probe_status "ancien lien glossaire dot plot" 301 https://l0g.fr/glossaire/fomc/lire-le-dot-plot-sep
+probe_status "ancien lien glossaire M2" 301 https://l0g.fr/glossaire/m2/m2-masse-monetaire-risk-on
+probe_status "ancien lien glossaire CPI" 301 https://l0g.fr/glossaire/core-cpi/lire-le-cpi-inflation-us
 probe_status "découverte MCP racine" 308 https://l0g.fr/.well-known/mcp
 probe_status "découverte MCP API" 308 https://l0g.fr/api/mcp/.well-known/mcp
+probe_status "ancienne carte Grand Péage 1" 301 https://l0g.fr/og/le-grand-peage-de-la-facture-1-le-portail-ampute.png
+probe_status "ancienne carte Grand Péage 3" 301 https://l0g.fr/og/le-grand-peage-de-la-facture-3-le-prix-du-gratuit.png
 probe_status "ancienne route BTC" 301 https://l0g.fr/btc/
 probe_status "ancienne route USD" 301 https://l0g.fr/usd/
 probe_status "ancienne route marchés US" 301 https://l0g.fr/marches-us/

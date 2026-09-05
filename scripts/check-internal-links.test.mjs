@@ -13,10 +13,11 @@ function fixture(t, html, files = []) {
   const dist = join(root, 'dist');
   mkdirSync(dist, { recursive: true });
   writeFileSync(join(dist, 'index.html'), html);
-  for (const file of files) {
+  for (const entry of files) {
+    const [file, content] = Array.isArray(entry) ? entry : [entry, 'fixture'];
     const target = join(dist, file);
     mkdirSync(join(target, '..'), { recursive: true });
-    writeFileSync(target, 'fixture');
+    writeFileSync(target, content);
   }
   t.after(() => rmSync(root, { recursive: true, force: true }));
   return root;
@@ -45,5 +46,23 @@ test('les images og:image et twitter:image présentes passent', (t) => {
   const result = runChecker(cwd);
 
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /aucun cassé/);
+  assert.match(result.stdout, /aucune destination cassée ou non canonique/);
+});
+
+test('un lien interne vers une redirection connue fait échouer le contrôle', (t) => {
+  const cwd = fixture(t, '<a href="/contact-us/">contact</a>', [['contact-us/index.html', '<html><body>ancienne route</body></html>']]);
+  const result = runChecker(cwd);
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /Destination interne indésirable.*contact-us/u);
+});
+
+test('une URL noindex dans le sitemap fait échouer le contrôle', (t) => {
+  const cwd = fixture(t, '<html><head><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://l0g.fr/"></head></html>', [
+    ['sitemap-0.xml', '<urlset><url><loc>https://l0g.fr/</loc></url></urlset>'],
+  ]);
+  const result = runChecker(cwd);
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /Sitemap indésirable.*noindex/u);
 });

@@ -50,6 +50,15 @@ for (const entry of entries) {
   assert(!effectiveTitles.has(uniquenessKey), `Title SEO dupliqué: ${entry.id} et ${effectiveTitles.get(uniquenessKey)}`);
   effectiveTitles.set(uniquenessKey, entry.id);
 }
+const titleExperiments = JSON.parse(readFileSync(new URL('../docs/seo/seo-title-experiments-2026-09.json', import.meta.url), 'utf8'));
+assert.equal(titleExperiments.export.page_query_join_available, false, 'Le registre ne doit pas inventer une jointure page-requête');
+assert.equal(titleExperiments.export.post_recrawl_impressions_available, false, 'Les impressions cumulées ne doivent pas être présentées comme post-recrawl');
+for (const experiment of titleExperiments.experiments) {
+  if (experiment.status !== 'frozen') continue;
+  const entry = entries.find(({ id }) => id === experiment.content_id);
+  assert(entry, `Contenu du test SEO absent: ${experiment.content_id}`);
+  assert.equal(entry.data.seoTitle, experiment.seo_title, `Title gelé modifié avant décision: ${experiment.id}`);
+}
 assert.equal(
   buildSeoMetadata('H1 éditorial', 'Description', { seoTitle: 'Titre SEO exact | l0g' }).fullTitle,
   'Titre SEO exact | l0g',

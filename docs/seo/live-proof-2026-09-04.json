@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "checked_at": "2026-09-04T13:17:48.739Z",
+  "site": "https://l0g.fr",
+  "source_commit": "1716103592a1807b20b36f90c84319c0733be595",
+  "ok": true,
+  "oauth_policy": "404 volontaire: serveur MCP public sans OAuth",
+  "results": [
+    {
+      "path": "/sitemap.xml",
+      "status": 301,
+      "location": "https://l0g.fr/sitemap-index.xml",
+      "content_type": "text/html; charset=iso-8859-1",
+      "server_date": "Fri, 04 Sep 2026 13:17:48 GMT",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "path": "/sitemap-index.xml",
+      "status": 200,
+      "location": null,
+      "content_type": "application/xml",
+      "server_date": "Fri, 04 Sep 2026 13:17:48 GMT",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "path": "/contact/",
+      "status": 200,
+      "location": null,
+      "content_type": "text/html",
+      "server_date": "Fri, 04 Sep 2026 13:17:48 GMT",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "path": "/en/contact/",
+      "status": 200,
+      "location": null,
+      "content_type": "text/html",
+      "server_date": "Fri, 04 Sep 2026 13:17:48 GMT",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "path": "/.well-known/mcp",
+      "status": 308,
+      "location": "https://l0g.fr/.well-known/mcp.json",
+      "content_type": "text/html; charset=iso-8859-1",
+      "server_date": "Fri, 04 Sep 2026 13:17:48 GMT",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "path": "/.well-known/mcp.json",
+      "status": 200,
+      "location": null,
+      "content_type": "application/json; charset=utf-8",
+      "server_date": "Fri, 04 Sep 2026 13:17:48 GMT",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "path": "/.well-known/oauth-protected-resource",
+      "status": 404,
+      "location": null,
+      "content_type": "application/json; charset=utf-8",
+      "server_date": "Fri, 04 Sep 2026 13:17:48 GMT",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "path": "/.well-known/oauth-authorization-server",
+      "status": 404,
+      "location": null,
+      "content_type": "application/json; charset=utf-8",
+      "server_date": "Fri, 04 Sep 2026 13:17:48 GMT",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "path": "/favicon.ico",
+      "status": 200,
+      "location": null,
+      "content_type": "image/vnd.microsoft.icon",
+      "server_date": "Fri, 04 Sep 2026 13:17:48 GMT",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "path": "/apple-touch-icon.png",
+      "status": 200,
+      "location": null,
+      "content_type": "image/png",
+      "server_date": "Fri, 04 Sep 2026 13:17:48 GMT",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "path": "/apple-touch-icon-precomposed.png",
+      "status": 200,
+      "location": null,
+      "content_type": "image/png",
+      "server_date": "Fri, 04 Sep 2026 13:17:48 GMT",
+      "ok": true,
+      "errors": []
+    }
+  ]
+}

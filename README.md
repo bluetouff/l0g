@@ -50,7 +50,8 @@ et par les dashboards :
 - `/api/v1/toolset-manifest.json` : versions et empreintes anti-dérive des contrats
   d'outils MCP complet et compact.
 - `/api/v1/human-traffic.json` : GET HTML humains agrégés par jour, page et
-  domaine référent, sans identifiant persistant et avec seuil k=5.
+  domaine référent, plus une ventilation séparée MCP/API, previews, robots et
+  scans ; sans identifiant persistant et avec seuil k=5.
 - `/llms.txt` et `/llms-full.txt` : cartes textuelles pour agents et RAG.
 
 Les détails de calcul et les limites de modèle sont dans
