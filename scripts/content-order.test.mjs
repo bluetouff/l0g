@@ -35,6 +35,34 @@ test("le classement de publication compare les instants et départage les égali
 
 const source = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 
+function frontmatterDate(path, field) {
+  const match = source(path).match(new RegExp(`^${field}: ['\"]([^'\"]+)['\"]$`, "m"));
+  assert.ok(match, `${path}: ${field} absent`);
+  return match[1];
+}
+
+test("l’analyse moteurs conserve son instant de publication exact en FR et EN", () => {
+  const frPath = "src/content/posts/moteurs-avion-penurie-maintenance-location.md";
+  const enPath = "src/content/posts-en/aircraft-engine-shortage-maintenance-leasing.md";
+  const previousFrPath = "src/content/posts/dechets-aluminium-europe-exportations-recyclage.md";
+
+  const frPublication = frontmatterDate(frPath, "pubDate");
+  const frUpdate = frontmatterDate(frPath, "updatedDate");
+  const enPublication = frontmatterDate(enPath, "pubDate");
+  const enUpdate = frontmatterDate(enPath, "updatedDate");
+  const sourceUpdate = frontmatterDate(enPath, "sourceUpdatedDate");
+
+  assert.match(frPublication, /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/);
+  assert.equal(enPublication, frPublication);
+  assert.equal(frUpdate, frPublication);
+  assert.equal(enUpdate, frUpdate);
+  assert.equal(sourceUpdate, frUpdate);
+  assert.ok(
+    Date.parse(frPublication) > Date.parse(frontmatterDate(previousFrPath, "pubDate")),
+    "l’analyse moteurs doit rester postérieure à l’analyse aluminium publiée le même jour",
+  );
+});
+
 test("les index FR et EN classent par publication et transmettent les deux dates", () => {
   for (const path of ["src/pages/[...page].astro", "src/pages/en/analysis/index.astro", "src/pages/en/analysis/page/[page].astro"]) {
     const text = source(path);

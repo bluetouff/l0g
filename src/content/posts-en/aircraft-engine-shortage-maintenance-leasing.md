@@ -5,12 +5,12 @@ ogTitle: 'Aircraft engines: who gets paid when planes cannot fly?'
 ogImage: '/illustrations/news/aircraft-engine-shortage-leasing-v1.jpg'
 description: 'Spare engines, repair shops and compensation: follow the cost of grounded aircraft through lessor
   accounts, manufacturer liabilities and a leasing calculator.'
-pubDate: '2026-09-06'
-updatedDate: '2026-09-06'
+pubDate: '2026-09-06T11:34:19+02:00'
+updatedDate: '2026-09-06T11:34:19+02:00'
 tags: [Aviation, Industry, Risk, Finance]
 draft: false
 sourceArticle: moteurs-avion-penurie-maintenance-location
-sourceUpdatedDate: '2026-09-06'
+sourceUpdatedDate: '2026-09-06T11:34:19+02:00'
 ---
 
 A grounded aircraft does not stop costing money. It stops earning the revenue that was meant to cover some of those costs. When an engine is unavailable, leasing a replacement may get the aircraft flying again. What the airline is buying is not simply a piece of machinery. It is access to flying days it would otherwise lose.

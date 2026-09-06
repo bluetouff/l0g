@@ -5,8 +5,8 @@ ogTitle: 'Moteurs d’avion : qui gagne quand les avions restent au sol ?'
 ogImage: '/illustrations/news/aircraft-engine-shortage-leasing-v1.jpg'
 description: 'Moteurs de remplacement, ateliers et indemnités : enquête sur les coûts des avions immobilisés, les
   comptes des loueurs et les limites de la rente de pénurie.'
-pubDate: '2026-09-06'
-updatedDate: '2026-09-06'
+pubDate: '2026-09-06T11:34:19+02:00'
+updatedDate: '2026-09-06T11:34:19+02:00'
 tags: [Aéronautique, Industrie, Risques, Finance]
 draft: false
 quickTake:
