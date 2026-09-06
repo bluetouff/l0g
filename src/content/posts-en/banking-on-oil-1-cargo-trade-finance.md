@@ -5,11 +5,11 @@ ogTitle: Who pays for an oil cargo before you do?
 description: From the Sienna court case to Trafigura’s accounts, an investigation into the credit, collateral and cash that finance the oil trade.
 ogImage: '/illustrations/news/oil-cargo-trade-finance-v1.jpg'
 pubDate: '2026-09-06T23:19:45+02:00'
-updatedDate: '2026-09-06T23:19:45+02:00'
+updatedDate: '2026-09-07T00:08:22+02:00'
 tags: ['Oil', 'Commodities', 'Trade finance', 'Banking on Oil']
 draft: false
 sourceArticle: les-banquiers-du-baril-1-financement-cargaison-petrole
-sourceUpdatedDate: '2026-09-06T23:19:45+02:00'
+sourceUpdatedDate: '2026-09-07T00:08:22+02:00'
 ---
 
 *Banking on Oil : Part 1*
@@ -33,6 +33,17 @@ For this transaction, the documents needed to obtain payment were a commercial i
 Repayment was meant to follow a different timetable. Gulf and UniCredit intended the cargo to be sold on to bank-approved buyers. Those buyers were to **pay UniCredit directly, 90 days from the date of their invoices**. That is not 90 days from loading, nor necessarily 90 days from the bank’s payment to BP. <sup><a href="https://www.quadrantchambers.com/sites/default/files/2023-05/unicredit_bank_a.g._v_euronav_n.v._-_court_of_appeal_judgment.pdf#page=5" title="UniCredit Bank A.G. v Euronav N.V. : [2023] EWCA Civ 471 : Paragraph 13" aria-label="UniCredit Bank A.G. v Euronav N.V. : [2023] EWCA Civ 471 : Paragraph 13">[1]</a></sup>
 
 The economic service is straightforward. BP can collect its money before Gulf receives the proceeds of its onward sales. UniCredit carries credit exposure in the meantime: the possibility that the financing will not be repaid as agreed. Buyer approval, payment routing and security over the cargo are ways to contain that exposure. <sup><a href="https://www.quadrantchambers.com/sites/default/files/2023-05/unicredit_bank_a.g._v_euronav_n.v._-_court_of_appeal_judgment.pdf#page=5" title="UniCredit Bank A.G. v Euronav N.V. : [2023] EWCA Civ 471 : Paragraphs 12–17" aria-label="UniCredit Bank A.G. v Euronav N.V. : [2023] EWCA Civ 471 : Paragraphs 12–17">[1]</a></sup>
+
+<style>
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#f5f7f3"]{fill:var(--color-surface,#121419)}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#e6eee7"]{fill:var(--color-surface-2,#171a20)}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#18352e"]{fill:var(--color-paper,#e7e9ee)}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) rect[fill="#18352e"]{fill:var(--color-signal,#5eead4)}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#28634f"]{fill:var(--color-signal,#5eead4)}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#475c54"]{fill:var(--color-muted,#8b909b)}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#ffffff"]{fill:var(--color-ink,#0c0d10)}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) :is([stroke="#d4dfd6"],[stroke="#475c54"]){stroke:var(--color-line-strong,#47505c)}
+</style>
 
 <figure style="margin:2.3em 0;max-width:100%">
 <svg xmlns="http://www.w3.org/2000/svg" id="bdb1-en-timeline" viewBox="0 0 480 862" width="480" height="862" role="img" aria-labelledby="bdb1-en-timeline-title bdb1-en-timeline-desc" lang="en" style="display:block;width:100%;max-width:480px;height:auto;margin:0 auto;isolation:isolate" font-family="Arial, Helvetica, sans-serif"><title id="bdb1-en-timeline-title">The Sienna timetable</title><desc id="bdb1-en-timeline-desc">2020. 19 February: loading at Rotterdam and bill of lading signed. 12 March: UniCredit issues the letter of credit. 2 April: BP paid for 80,000 tonnes. 26 April to 2 May: ship-to-ship discharge at Sohar without production of the original bill. 13 August: the original endorsed by BP reaches the bank. Not a time-proportional scale. Source: Court of Appeal judgment of 4 May 2023, paragraphs 10 to 21.</desc><rect x="0" y="0" width="480" height="862" rx="16" fill="#f5f7f3"/><text x="24" y="39" font-size="22" font-weight="700" fill="#28634f" text-anchor="start">01 / SIENNA</text><text x="24" y="82" font-size="28" font-weight="700" fill="#18352e" text-anchor="start">The Sienna timetable</text><text x="24" y="122" font-size="22" font-weight="400" fill="#475c54" text-anchor="start">2020 • Documented events</text><path d="M44 179 V671" fill="none" stroke="#d4dfd6" stroke-width="3"/><circle cx="44" cy="179" r="7" fill="#28634f"/><text x="76" y="185" font-size="25" font-weight="700" fill="#18352e" text-anchor="start">19 February</text><text x="76" y="220" font-size="22" font-weight="400" fill="#18352e"><tspan x="76" dy="0">Loading at Rotterdam;</tspan><tspan x="76" dy="28">bill of lading signed.</tspan></text><circle cx="44" cy="302" r="7" fill="#28634f"/><text x="76" y="308" font-size="25" font-weight="700" fill="#18352e" text-anchor="start">12 March</text><text x="76" y="343" font-size="22" font-weight="400" fill="#18352e"><tspan x="76" dy="0">UniCredit issues the</tspan><tspan x="76" dy="28">letter of credit for Gulf.</tspan></text><circle cx="44" cy="425" r="7" fill="#28634f"/><text x="76" y="431" font-size="25" font-weight="700" fill="#18352e" text-anchor="start">2 April</text><text x="76" y="466" font-size="22" font-weight="400" fill="#18352e"><tspan x="76" dy="0">BP is paid for</tspan><tspan x="76" dy="28">80,000 tonnes of fuel oil.</tspan></text><circle cx="44" cy="548" r="7" fill="#28634f"/><text x="76" y="554" font-size="25" font-weight="700" fill="#18352e" text-anchor="start">26 April – 2 May</text><text x="76" y="589" font-size="22" font-weight="400" fill="#18352e"><tspan x="76" dy="0">Ship-to-ship discharge at</tspan><tspan x="76" dy="28">Sohar without the original.</tspan></text><circle cx="44" cy="671" r="7" fill="#28634f"/><text x="76" y="677" font-size="25" font-weight="700" fill="#18352e" text-anchor="start">13 August</text><text x="76" y="712" font-size="22" font-weight="400" fill="#18352e"><tspan x="76" dy="0">The original, endorsed by BP,</tspan><tspan x="76" dy="28">reaches UniCredit.</tspan></text><path d="M24 774 H456" fill="none" stroke="#d4dfd6"/><text x="24" y="807" font-size="22" font-weight="400" fill="#475c54"><tspan x="24" dy="0">Chronological order;</tspan><tspan x="24" dy="28">spacing is not proportional.</tspan></text></svg>
