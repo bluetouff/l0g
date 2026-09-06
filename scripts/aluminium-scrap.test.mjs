@@ -95,6 +95,7 @@ test('the standalone calculator remains local, bilingual and injection-resistant
   const css = readFileSync(join(ROOT, 'public/outils/aluminium-scrap/calculator.css'), 'utf8');
 
   assert.match(html, /<meta name="robots" content="noindex,follow">/u);
+  assert.match(html, /<link rel="canonical" href="https:\/\/l0g\.fr\/outils\/aluminium-scrap\/">/u);
   assert.match(html, /http-equiv="Content-Security-Policy"/u);
   assert.match(html, /script-src-attr 'none'/u);
   assert.match(html, /<h1 data-t="title">Du déchet retenu au métal recyclé\.<\/h1>/u);
@@ -103,7 +104,7 @@ test('the standalone calculator remains local, bilingual and injection-resistant
   assert.match(client, /URLSearchParams\(location\.search\).*lang/u);
   assert.match(client, /\.textContent/u);
   assert.doesNotMatch(client, /innerHTML|outerHTML|insertAdjacentHTML|document\.write|\beval\s*\(|new Function|fetch\s*\(|XMLHttpRequest|localStorage|sessionStorage|document\.cookie/u);
-  assert.doesNotMatch(html, /<(?:script|link)\b[^>]+(?:src|href)="(?:https?:)?\/\//iu);
+  assert.doesNotMatch(html, /<script\b[^>]+src="(?:https?:)?\/\/|<link\b[^>]+rel="stylesheet"[^>]+href="(?:https?:)?\/\//iu);
   assert.match(css, /@media\s*\(max-width:/u);
   assert.match(css, /\*\{box-sizing:border-box\}/u);
   assert.match(css, /form,\.results,\.method\{min-width:0/u);
