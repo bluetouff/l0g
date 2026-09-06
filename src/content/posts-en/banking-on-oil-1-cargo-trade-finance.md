@@ -35,14 +35,14 @@ Repayment was meant to follow a different timetable. Gulf and UniCredit intended
 The economic service is straightforward. BP can collect its money before Gulf receives the proceeds of its onward sales. UniCredit carries credit exposure in the meantime: the possibility that the financing will not be repaid as agreed. Buyer approval, payment routing and security over the cargo are ways to contain that exposure. <sup><a href="https://www.quadrantchambers.com/sites/default/files/2023-05/unicredit_bank_a.g._v_euronav_n.v._-_court_of_appeal_judgment.pdf#page=5" title="UniCredit Bank A.G. v Euronav N.V. : [2023] EWCA Civ 471 : Paragraphs 12–17" aria-label="UniCredit Bank A.G. v Euronav N.V. : [2023] EWCA Civ 471 : Paragraphs 12–17">[1]</a></sup>
 
 <style>
-:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#f5f7f3"]{fill:var(--color-surface,#121419)}
-:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#e6eee7"]{fill:var(--color-surface-2,#171a20)}
-:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#18352e"]{fill:var(--color-paper,#e7e9ee)}
-:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) rect[fill="#18352e"]{fill:var(--color-signal,#5eead4)}
-:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#28634f"]{fill:var(--color-signal,#5eead4)}
-:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#475c54"]{fill:var(--color-muted,#8b909b)}
-:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#ffffff"]{fill:var(--color-ink,#0c0d10)}
-:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) :is([stroke="#d4dfd6"],[stroke="#475c54"]){stroke:var(--color-line-strong,#47505c)}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#f5f7f3"]{fill:#121419}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#e6eee7"]{fill:#171a20}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#18352e"]{fill:#e7e9ee}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) rect[fill="#18352e"]{fill:#5eead4}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#28634f"]{fill:#5eead4}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#475c54"]{fill:#8b909b}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) [fill="#ffffff"]{fill:#0c0d10}
+:is(#bdb1-en-timeline,#bdb1-en-cash,#bdb1-en-liquidity) :is([stroke="#d4dfd6"],[stroke="#475c54"]){stroke:#47505c}
 </style>
 
 <figure style="margin:2.3em 0;max-width:100%">
