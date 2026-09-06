@@ -243,6 +243,7 @@ export function createHumanTrafficAccumulator(
           numerator: 'GET HTTP 200 de documents HTML uniquement.',
           exclusions: 'Crawlers connus, user-agents internes l0g, feeds, assets, API/MCP, statistiques et fichiers machine.',
           dimensions: 'Agrégation par jour, page canonique et domaine référent seulement.',
+          coverage: 'Recalcul à partir des journaux encore disponibles. retention_days est un plafond de sélection, pas un historique garanti ; les agrégats antérieurs ne sont pas cumulés.',
           privacy: 'Aucune IP, cookie, session, empreinte, chemin de référent ni identifiant persistant n’est conservé.',
         },
         totals: {

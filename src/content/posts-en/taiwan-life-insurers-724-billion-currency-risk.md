@@ -1,5 +1,6 @@
 ---
 title: "Taiwan Life Insurers: The Currency Risk Behind $724 Billion"
+seoTitle: "Taiwan life insurers: $724bn abroad and FX risk | l0g"
 description: "Taiwan’s life insurers held $724bn in foreign investments at end-2025. An analysis of the TWD mismatch, hedging costs and the 2026 regulatory reforms."
 pubDate: 2026-08-29T18:00:00+02:00
 updatedDate: 2026-08-29T18:00:00+02:00

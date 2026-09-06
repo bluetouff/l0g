@@ -75,9 +75,9 @@ const updated = '2 août 2026';
         <ul class="leak-sub">
           <li><strong class="text-bright">Base légale :</strong> intérêt légitime de l'opérateur à sécuriser, maintenir et mesurer son service ;</li>
           <li><strong class="text-bright">Destinataire :</strong> Olivier Laurelli, dans le cadre de l'administration du serveur ;</li>
-          <li><strong class="text-bright">Durée :</strong> 14 jours, puis suppression automatique par rotation ;</li>
+          <li><strong class="text-bright">Durée :</strong> journal courant et 14 archives en rotation quotidienne ; suppression automatique des archives les plus anciennes ;</li>
           <li><strong class="text-bright">Mesure :</strong> adresses IP masquées avant la production des statistiques ; aucun profil individuel.</li>
-          <li><strong class="text-bright">KPI humain :</strong> agrégation sur 91 jours par date, page et domaine référent seulement ; aucune IP, chemin de référent, session ou chaîne user-agent n’est recopié dans ce rapport ; les jours, pages et domaines sous cinq GET HTML ne sont pas publiés.</li>
+          <li><strong class="text-bright">KPI humain :</strong> agrégation par date, page et domaine référent seulement, recalculée à partir des journaux encore disponibles. Le plafond de sélection de 91 jours ne garantit pas 91 jours d’historique : la rotation des journaux limite la couverture effective et les anciens agrégats ne sont pas cumulés. Aucune IP, chemin de référent, session ou chaîne user-agent n’est recopié dans ce rapport ; les jours, pages et domaines sous cinq GET HTML ne sont pas publiés.</li>
         </ul>
       </article>
 

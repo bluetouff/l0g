@@ -1,0 +1,534 @@
+{
+  "checked_at": "2026-09-06T18:24:39.623358+00:00",
+  "base_source_sha": "fc2cad6c27eab82ad177a692675cbfeaa48b9106",
+  "scope": "Contrôle ponctuel en lecture seule, avant publication des nouveaux correctifs.",
+  "http": [
+    {
+      "path": "/source.env",
+      "status": "HTTP/2 200 ",
+      "type": null,
+      "bytes": 218
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": "HTTP/2 301 ",
+      "type": "text/html; charset=iso-8859-1",
+      "bytes": 280,
+      "location": "https://l0g.fr/sitemap-index.xml"
+    },
+    {
+      "path": "/sitemap-index.xml",
+      "status": "HTTP/2 200 ",
+      "type": "application/xml",
+      "bytes": 220
+    },
+    {
+      "path": "/sitemap-0.xml",
+      "status": "HTTP/2 200 ",
+      "type": "application/xml",
+      "bytes": 91062
+    },
+    {
+      "path": "/contact/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 53294,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/contact/",
+        "og:title": "Contacter l0g · l0g.fr",
+        "og:image": "https://l0g.fr/og-default.png",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/og-default.png"
+      },
+      "title": "Contacter l0g · l0g.fr",
+      "h1": "Contacter l0g"
+    },
+    {
+      "path": "/contact-us",
+      "status": "HTTP/2 301 ",
+      "type": "text/html; charset=iso-8859-1",
+      "bytes": 271,
+      "location": "https://l0g.fr/contact/"
+    },
+    {
+      "path": "/en/contact/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 24003,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/en/contact/",
+        "og:title": "Contact l0g · l0g.fr",
+        "og:image": "https://l0g.fr/og-default.png",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/og-default.png"
+      },
+      "title": "Contact l0g · l0g.fr",
+      "h1": "Contact l0g"
+    },
+    {
+      "path": "/favicon.ico",
+      "status": "HTTP/2 200 ",
+      "type": "image/vnd.microsoft.icon",
+      "bytes": 782
+    },
+    {
+      "path": "/apple-touch-icon.png",
+      "status": "HTTP/2 200 ",
+      "type": "image/png",
+      "bytes": 4547
+    },
+    {
+      "path": "/apple-touch-icon-precomposed.png",
+      "status": "HTTP/2 200 ",
+      "type": "image/png",
+      "bytes": 4547
+    },
+    {
+      "path": "/.well-known/mcp.json",
+      "status": "HTTP/2 200 ",
+      "type": "application/json; charset=utf-8",
+      "bytes": 841
+    },
+    {
+      "path": "/.well-known/agent-card.json",
+      "status": "HTTP/2 404 ",
+      "type": "text/html",
+      "bytes": 42393
+    },
+    {
+      "path": "/.well-known/agent.json",
+      "status": "HTTP/2 404 ",
+      "type": "text/html",
+      "bytes": 42393
+    },
+    {
+      "path": "/agents.json",
+      "status": "HTTP/2 200 ",
+      "type": "application/json",
+      "bytes": 8747
+    },
+    {
+      "path": "/glama.json",
+      "status": "HTTP/2 404 ",
+      "type": "text/html",
+      "bytes": 42393
+    },
+    {
+      "path": "/api/mcp/.well-known/mcp",
+      "status": "HTTP/2 308 ",
+      "type": "text/html; charset=iso-8859-1",
+      "bytes": 285,
+      "location": "https://l0g.fr/.well-known/mcp.json"
+    },
+    {
+      "path": "/api/mcp/.well-known/oauth-protected-resource",
+      "status": "HTTP/2 404 ",
+      "type": "application/json; charset=utf-8",
+      "bytes": 21
+    },
+    {
+      "path": "/api/mcp/.well-known/oauth-authorization-server",
+      "status": "HTTP/2 404 ",
+      "type": "application/json; charset=utf-8",
+      "bytes": 21
+    },
+    {
+      "path": "/api/mcp/usage",
+      "status": "HTTP/2 200 ",
+      "type": "application/json; charset=utf-8",
+      "bytes": 58869
+    },
+    {
+      "path": "/api/v1/human-traffic.json",
+      "status": "HTTP/2 200 ",
+      "type": "application/json",
+      "bytes": 56724
+    },
+    {
+      "path": "/?src=x",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 198014,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/",
+        "og:title": "l0g : les angles morts de la finance · l0g.fr",
+        "og:image": "https://l0g.fr/og-home.png",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/og-home.png"
+      },
+      "title": "l0g : les angles morts de la finance · l0g.fr",
+      "h1": "l0g : les angles morts de la finance"
+    },
+    {
+      "path": "/en/guides/read-h41-fed-balance-sheet/?src=x",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 33574,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+        "og:title": "Fed H.4.1: what bank reserves really show | l0g",
+        "og:image": "https://l0g.fr/og/read-h41-fed-balance-sheet.png",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/og/read-h41-fed-balance-sheet.png"
+      },
+      "title": "Fed H.4.1: what bank reserves really show | l0g",
+      "h1": "How to Read H.4.1: the Fed Balance Sheet, Line by Line"
+    },
+    {
+      "path": "/en/analysis/us-productivity-real-pay-lags/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 42108,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/en/analysis/us-productivity-real-pay-lags/",
+        "og:title": "US Productivity Q2 Revised: +1.4%, Real Pay −3.3% | l0g",
+        "og:image": "https://l0g.fr/og/us-productivity-real-pay-lags.png",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/og/us-productivity-real-pay-lags.png"
+      },
+      "title": "US Productivity Q2 Revised: +1.4%, Real Pay −3.3% | l0g",
+      "h1": "US Productivity Q2 Revised: Real Pay Still Lags"
+    },
+    {
+      "path": "/en/analysis/taiwan-life-insurers-724-billion-currency-risk/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 73584,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/en/analysis/taiwan-life-insurers-724-billion-currency-risk/",
+        "og:title": "Taiwan Life Insurers: The Currency Risk Behind… · l0g.fr",
+        "og:image": "https://l0g.fr/illustrations/news/taiwan-life-insurers-fx-risk-v1.jpg",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/illustrations/news/taiwan-life-insurers-fx-risk-v1.jpg"
+      },
+      "title": "Taiwan Life Insurers: The Currency Risk Behind… · l0g.fr",
+      "h1": "Taiwan Life Insurers: The Currency Risk Behind $724 Billion"
+    },
+    {
+      "path": "/en/guides/read-central-bank-fx-reserves-cofer/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 35174,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/en/guides/read-central-bank-fx-reserves-cofer/",
+        "og:title": "How to Read Central Bank FX Reserves (COFER and… · l0g.fr",
+        "og:image": "https://l0g.fr/og/read-central-bank-fx-reserves-cofer.png",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/og/read-central-bank-fx-reserves-cofer.png"
+      },
+      "title": "How to Read Central Bank FX Reserves (COFER and… · l0g.fr",
+      "h1": "How to Read Central Bank FX Reserves (COFER and the gold share)"
+    },
+    {
+      "path": "/en/start/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 14669,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/en/start/",
+        "og:title": "l0g in English: macro, credit and financial risk | l0g",
+        "og:image": "https://l0g.fr/og-default.png",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/og-default.png"
+      },
+      "title": "l0g in English: macro, credit and financial risk | l0g",
+      "h1": "Start using l0g"
+    },
+    {
+      "path": "/og/le-grand-peage-de-la-facture-1-le-portail-ampute.png",
+      "status": "HTTP/2 404 ",
+      "type": "text/html",
+      "bytes": 42393
+    },
+    {
+      "path": "/og/le-grand-peage-de-la-facture-3-le-prix-du-gratuit.png",
+      "status": "HTTP/2 404 ",
+      "type": "text/html",
+      "bytes": 42393
+    },
+    {
+      "path": "/posts/le-grand-peage-de-la-facture-1-le-portail-ampute/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 142245,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/posts/le-grand-peage-de-la-facture-1-le-portail-ampute/",
+        "og:title": "Le portail amputé : comment Bercy a supprimé le guichet gratuit",
+        "og:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-1-v2.jpg",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-1-v2.jpg"
+      },
+      "title": "Facture électronique : le portail public gratuit abandonné | l0g",
+      "h1": "Le grand péage de la facture, 1/5 : le portail amputé"
+    },
+    {
+      "path": "/posts/le-grand-peage-de-la-facture-2-147-plateformes-combien-de-tuyaux/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 138732,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/posts/le-grand-peage-de-la-facture-2-147-plateformes-combien-de-tuyaux/",
+        "og:title": "148 plateformes agréées, combien de tuyaux derrière les marques ?",
+        "og:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-2-v1.jpg",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-2-v1.jpg"
+      },
+      "title": "Facture électronique : 148 plateformes, combien de moteurs ? | l0g",
+      "h1": "Le grand péage de la facture, 2/5 : 148 plateformes, combien de tuyaux ?"
+    },
+    {
+      "path": "/posts/le-grand-peage-de-la-facture-3-le-prix-du-gratuit/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 177440,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/posts/le-grand-peage-de-la-facture-3-le-prix-du-gratuit/",
+        "og:title": "Le prix du gratuit",
+        "og:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-3-v1.jpg",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-3-v1.jpg"
+      },
+      "title": "Facture électronique : ce que valent les offres à 0 € | l0g",
+      "h1": "Le grand péage de la facture, 3/5 : le prix du gratuit"
+    },
+    {
+      "path": "/posts/le-grand-peage-de-la-facture-4-qui-lit-vos-factures/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 168198,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/posts/le-grand-peage-de-la-facture-4-qui-lit-vos-factures/",
+        "og:title": "Qui lit vos factures ?",
+        "og:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-4-v1.jpg",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-4-v1.jpg"
+      },
+      "title": "Facture électronique : qui voit vraiment vos données ? | l0g",
+      "h1": "Le grand péage de la facture, 4/5 : qui lit vos factures ?"
+    },
+    {
+      "path": "/posts/le-grand-peage-de-la-facture-5-le-jour-ou-le-tuyau-casse/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 138523,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/posts/le-grand-peage-de-la-facture-5-le-jour-ou-le-tuyau-casse/",
+        "og:title": "Le jour où le tuyau casse",
+        "og:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-5-v1.jpg",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-5-v1.jpg"
+      },
+      "title": "Facture électronique : les preuves de résilience manquantes | l0g",
+      "h1": "Le grand péage de la facture, 5/5 : le jour où le tuyau casse"
+    },
+    {
+      "path": "/en/analysis/the-great-e-invoicing-toll-1-the-severed-public-portal/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 68162,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/en/analysis/the-great-e-invoicing-toll-1-the-severed-public-portal/",
+        "og:title": "The severed portal: how France removed the free gateway",
+        "og:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-1-v2.jpg",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-1-v2.jpg"
+      },
+      "title": "France e-invoicing: the free public portal was dropped | l0g",
+      "h1": "The great e-invoicing toll, 1/5: the severed public portal"
+    },
+    {
+      "path": "/en/analysis/the-great-e-invoicing-toll-2-147-platforms-how-many-pipes/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 62429,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/en/analysis/the-great-e-invoicing-toll-2-147-platforms-how-many-pipes/",
+        "og:title": "148 approved platforms, but how many pipes behind the brands?",
+        "og:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-2-v1.jpg",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-2-v1.jpg"
+      },
+      "title": "French e-invoicing: 148 platforms, how many engines? | l0g",
+      "h1": "The great e-invoicing toll, 2/5: 148 platforms, how many pipes?"
+    },
+    {
+      "path": "/en/analysis/the-great-e-invoicing-toll-3-the-price-of-free/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 96956,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/en/analysis/the-great-e-invoicing-toll-3-the-price-of-free/",
+        "og:title": "The price of free",
+        "og:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-3-v1.jpg",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-3-v1.jpg"
+      },
+      "title": "French e-invoicing: what zero-euro offers really mean | l0g",
+      "h1": "The great e-invoicing toll, 3/5: the price of free"
+    },
+    {
+      "path": "/en/analysis/the-great-e-invoicing-toll-4-who-reads-your-invoices/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 85773,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/en/analysis/the-great-e-invoicing-toll-4-who-reads-your-invoices/",
+        "og:title": "Who reads your invoices?",
+        "og:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-4-v1.jpg",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-4-v1.jpg"
+      },
+      "title": "French e-invoicing: who can see your data? | l0g",
+      "h1": "The great e-invoicing toll, 4/5: who reads your invoices?"
+    },
+    {
+      "path": "/en/analysis/the-great-e-invoicing-toll-5-when-the-pipe-breaks/",
+      "status": "HTTP/2 200 ",
+      "type": "text/html",
+      "bytes": 61919,
+      "metadata": {
+        "generator": "Astro v7.2.10",
+        "robots": "index,follow",
+        "canonical": "https://l0g.fr/en/analysis/the-great-e-invoicing-toll-5-when-the-pipe-breaks/",
+        "og:title": "When the e-invoicing pipe breaks",
+        "og:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-5-v1.jpg",
+        "twitter:card": "summary_large_image",
+        "twitter:image": "https://l0g.fr/illustrations/news/e-invoicing-toll-5-v1.jpg"
+      },
+      "title": "French e-invoicing: the missing resilience evidence | l0g",
+      "h1": "The great e-invoicing toll, 5/5: when the pipe breaks"
+    },
+    {
+      "path": "https://l0g.fr/illustrations/news/e-invoicing-toll-1-v2.jpg",
+      "status": "HTTP/2 200 ",
+      "type": "image/jpeg",
+      "bytes": 242825
+    },
+    {
+      "path": "https://l0g.fr/illustrations/news/e-invoicing-toll-2-v1.jpg",
+      "status": "HTTP/2 200 ",
+      "type": "image/jpeg",
+      "bytes": 332374
+    },
+    {
+      "path": "https://l0g.fr/illustrations/news/e-invoicing-toll-3-v1.jpg",
+      "status": "HTTP/2 200 ",
+      "type": "image/jpeg",
+      "bytes": 256294
+    },
+    {
+      "path": "https://l0g.fr/illustrations/news/e-invoicing-toll-4-v1.jpg",
+      "status": "HTTP/2 200 ",
+      "type": "image/jpeg",
+      "bytes": 229534
+    },
+    {
+      "path": "https://l0g.fr/illustrations/news/e-invoicing-toll-5-v1.jpg",
+      "status": "HTTP/2 200 ",
+      "type": "image/jpeg",
+      "bytes": 266919
+    },
+    {
+      "path": "https://l0g.fr/illustrations/news/taiwan-life-insurers-fx-risk-v1.jpg",
+      "status": "HTTP/2 200 ",
+      "type": "image/jpeg",
+      "bytes": 23686
+    },
+    {
+      "path": "https://l0g.fr/og-default.png",
+      "status": "HTTP/2 200 ",
+      "type": "image/png",
+      "bytes": 28533
+    },
+    {
+      "path": "https://l0g.fr/og-home.png",
+      "status": "HTTP/2 200 ",
+      "type": "image/png",
+      "bytes": 45201
+    },
+    {
+      "path": "https://l0g.fr/og/read-central-bank-fx-reserves-cofer.png",
+      "status": "HTTP/2 200 ",
+      "type": "image/png",
+      "bytes": 30020
+    },
+    {
+      "path": "https://l0g.fr/og/read-h41-fed-balance-sheet.png",
+      "status": "HTTP/2 200 ",
+      "type": "image/png",
+      "bytes": 27516
+    },
+    {
+      "path": "https://l0g.fr/og/us-productivity-real-pay-lags.png",
+      "status": "HTTP/2 200 ",
+      "type": "image/png",
+      "bytes": 26923
+    }
+  ],
+  "server_read_only": {
+    "legacy_social_redirects_present": false,
+    "access_log_format": "combined",
+    "log_rotation": "daily",
+    "rotations": 14,
+    "human_traffic_schema": "1.0.0"
+  },
+  "mcp_anonymous_resource_reads": [
+    {
+      "endpoint": "/api/mcp/compact",
+      "resource": "l0g://mcp/server",
+      "success": true,
+      "version": "1.24.3"
+    },
+    {
+      "endpoint": "/api/mcp",
+      "resource": "l0g://mcp/server",
+      "success": true,
+      "version": "1.24.3"
+    }
+  ],
+  "image_dimensions": {
+    "apple_touch_icons": "180x180",
+    "e_invoicing_parts_1_to_5": "1200x630"
+  },
+  "human_traffic_report": {
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-06T00:24:40.162Z",
+    "html_gets": 53938,
+    "days_published": 15,
+    "unit": "GET HTML filtrés, sans déduplication par personne"
+  }
+}
