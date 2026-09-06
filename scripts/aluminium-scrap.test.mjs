@@ -95,6 +95,8 @@ test('the standalone calculator remains local, bilingual and injection-resistant
   const css = readFileSync(join(ROOT, 'public/outils/aluminium-scrap/calculator.css'), 'utf8');
 
   assert.match(html, /<meta name="robots" content="noindex,follow">/u);
+  assert.match(html, /http-equiv="Content-Security-Policy"/u);
+  assert.match(html, /script-src-attr 'none'/u);
   assert.match(html, /<h1 data-t="title">Du déchet retenu au métal recyclé\.<\/h1>/u);
   assert.match(client, /title:'From retained scrap to recycled metal\.'/u);
   assert.ok(html.indexOf('scenario.js') < html.indexOf('calculator.js'));
