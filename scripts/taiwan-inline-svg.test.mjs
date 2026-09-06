@@ -10,6 +10,7 @@ import './asia-dollar-hedge-model.test.mjs';
 import './asia-dollar-stress.test.mjs';
 import './asia-dollar-purchases.test.mjs';
 import './aircraft-engine-tool.test.mjs';
+import './cocoa-financing-tool.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
@@ -128,6 +129,18 @@ const targets = [
     page: 'dist/en/analysis/aircraft-engine-shortage-maintenance-leasing/index.html',
     count: 3,
     pattern: /<svg\b[^>]*aria-labelledby="engine-[^"]+-en-title engine-[^"]+-en-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/posts/cacao-ghana-financement-tresorerie/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="cocoa-[^"]+-fr-title cocoa-[^"]+-fr-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/en/analysis/ghana-cocoa-financing-cash-crisis/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="cocoa-[^"]+-en-title cocoa-[^"]+-en-desc"[^>]*>[\s\S]*?<\/svg>/gu,
     checkInternalBounds: true,
   },
 ];
