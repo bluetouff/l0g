@@ -90,6 +90,7 @@ jobs:
           git diff --exit-code -- \
             server.json mcp-server/server.mjs mcp-server/usage-telemetry.mjs \
             mcp-server/schemas/signal-freshness.mjs \
+            mcp-server/release-cache.mjs mcp-server/evidence-graph-index.mjs \
             mcp-server/package.json mcp-server/package-lock.json \
             mcp-server/deploy/l0g-mcp.service mcp-server/deploy/verify-release.mjs \
             src/lib/agent-prompts.mjs src/config/agent-contract.mjs \

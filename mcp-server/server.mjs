@@ -30,6 +30,8 @@ import { agentPrompts, renderAgentPrompt } from '../src/lib/agent-prompts.mjs';
 import { MCP_PROTOCOL_VERSION, MCP_VERSION } from '../src/config/agent-contract.mjs';
 import { SignalFreshnessSchema } from './schemas/signal-freshness.mjs';
 import { createMcpUsageStore } from './usage-telemetry.mjs';
+import { createReleaseCache } from './release-cache.mjs';
+import { evidenceGraphIndex } from './evidence-graph-index.mjs';
 
 const NODE_MAJOR = Number.parseInt(process.versions.node.split('.')[0], 10);
 if (!Number.isInteger(NODE_MAJOR) || NODE_MAJOR < 22) {
@@ -150,26 +152,6 @@ setInterval(() => {
 }, 5 * RATE_WIN).unref();
 
 // --- cache des données du site ---
-let cache = {
-  dataDir: null,
-  agent: null,
-  openapi: null,
-  catalog: null,
-  searchIndex: null,
-  claims: null,
-  sources: null,
-  freshness: null,
-  integrity: null,
-  changes: null,
-  riskDiff: null,
-  blackBox: null,
-  evidenceGraph: null,
-  risk: null,
-  debtRisk: null,
-  signalHistory: null,
-  riskEvents: null,
-  confluence: null,
-};
 let searchIndexCache = {
   dataDir: null,
   index: null,
@@ -187,12 +169,7 @@ async function readJson(baseDir, rel) {
 async function readText(baseDir, rel) {
   return readFile(join(baseDir, rel), 'utf-8');
 }
-export async function loadData() {
-  const dataDir = await resolveDataDir();
-  // Les releases sont immuables et `current` bascule atomiquement vers un nouveau
-  // répertoire réel. Tant que realpath(DATA_DIR) ne change pas, relire et parser
-  // plusieurs mégaoctets toutes les 60 s ne peut produire aucune donnée plus fraîche.
-  if (cache.catalog && cache.dataDir === dataDir) return cache;
+export const loadData = createReleaseCache(resolveDataDir, async (dataDir) => {
   const agent = await readJson(dataDir, 'agents.json');
   const openapi = await readJson(dataDir, 'openapi.json');
   const catalog = await readJson(dataDir, 'api/v1/catalog.json');
@@ -231,9 +208,8 @@ export async function loadData() {
   try {
     confluence = await readJson(dataDir, 'confluence.json');
   } catch { /* confluence optionnelle */ }
-  cache = { dataDir, agent, openapi, catalog, searchIndex, claims, sources, freshness, integrity, changes, riskDiff, blackBox, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence };
-  return cache;
-}
+  return { dataDir, agent, openapi, catalog, searchIndex, claims, sources, freshness, integrity, changes, riskDiff, blackBox, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence };
+});
 
 // --- helpers ---
 const norm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -1403,8 +1379,7 @@ export function buildServer(data, options = {}) {
     };
   }
 
-  const graphNodesById = new Map((evidenceGraph.nodes || []).map((node) => [node.id, node]));
-  const graphEdges = evidenceGraph.edges || [];
+  const graphIndex = evidenceGraphIndex(evidenceGraph);
 
   function graphSection(scope, policy, nodes, edges, limit) {
     const limitedNodes = nodes.slice(0, limit);
@@ -1426,11 +1401,11 @@ export function buildServer(data, options = {}) {
   }
 
   function graphNodesFromIds(ids) {
-    return [...ids].map((id) => graphNodesById.get(id)).filter(Boolean);
+    return [...ids].map((id) => graphIndex.node(id)).filter(Boolean);
   }
 
   function claimArticleEdge(claimId) {
-    return graphEdges.find((edge) => edge.type === 'contains' && edge.to === claimId);
+    return graphIndex.to(claimId, 'contains')[0];
   }
 
   function addEdgeToScope(edge, ids, edgeMap) {
@@ -1454,18 +1429,18 @@ export function buildServer(data, options = {}) {
         anchors.articles.add(contains.from);
       }
 
-      for (const cites of graphEdges.filter((edge) => edge.type === 'cites' && edge.from === claimId)) {
+      for (const cites of graphIndex.from(claimId, 'cites')) {
         addEdgeToScope(cites, ids, edgeMap);
         anchors.references.add(cites.to);
 
-        for (const hostedBy of graphEdges.filter((edge) => edge.type === 'hostedBy' && edge.from === cites.to)) {
+        for (const hostedBy of graphIndex.from(cites.to, 'hostedBy')) {
           addEdgeToScope(hostedBy, ids, edgeMap);
           anchors.hosts.add(hostedBy.to);
         }
-        for (const sourceMatch of graphEdges.filter((edge) => edge.type === 'matchesPrimarySource' && edge.from === cites.to)) {
+        for (const sourceMatch of graphIndex.from(cites.to, 'matchesPrimarySource')) {
           addEdgeToScope(sourceMatch, ids, edgeMap);
           anchors.primarySources.add(sourceMatch.to);
-          for (const dataset of graphEdges.filter((edge) => edge.type === 'providesDataset' && edge.from === sourceMatch.to)) {
+          for (const dataset of graphIndex.from(sourceMatch.to, 'providesDataset')) {
             addEdgeToScope(dataset, ids, edgeMap);
             anchors.datasets.add(dataset.to);
           }
@@ -1491,7 +1466,7 @@ export function buildServer(data, options = {}) {
     const excludedClaims = anchors.claims || new Set();
     const excludedArticles = anchors.articles || new Set();
     const addRelatedClaimPath = (referenceEdge, anchorEdge) => {
-      for (const cites of graphEdges.filter((edge) => edge.type === 'cites' && edge.to === referenceEdge.from)) {
+      for (const cites of graphIndex.to(referenceEdge.from, 'cites')) {
         if (excludedClaims.has(cites.from)) continue;
         const contains = claimArticleEdge(cites.from);
         if (contains && excludedArticles.has(contains.from)) continue;
@@ -1502,13 +1477,13 @@ export function buildServer(data, options = {}) {
     };
 
     for (const hostId of anchors.hosts || []) {
-      for (const hostedBy of graphEdges.filter((edge) => edge.type === 'hostedBy' && edge.to === hostId)) {
+      for (const hostedBy of graphIndex.to(hostId, 'hostedBy')) {
         if ((anchors.references || new Set()).has(hostedBy.from)) continue;
         addRelatedClaimPath(hostedBy, hostedBy);
       }
     }
     for (const sourceId of anchors.primarySources || []) {
-      for (const sourceMatch of graphEdges.filter((edge) => edge.type === 'matchesPrimarySource' && edge.to === sourceId)) {
+      for (const sourceMatch of graphIndex.to(sourceId, 'matchesPrimarySource')) {
         if ((anchors.references || new Set()).has(sourceMatch.from)) continue;
         addRelatedClaimPath(sourceMatch, sourceMatch);
       }

@@ -50,6 +50,8 @@ const requiredFiles = [
   'mcp-server/server.mjs',
   'mcp-server/schemas/signal-freshness.mjs',
   'mcp-server/usage-telemetry.mjs',
+  'mcp-server/release-cache.mjs',
+  'mcp-server/evidence-graph-index.mjs',
   'mcp-server/package.json',
   'mcp-server/package-lock.json',
   'mcp-server/deploy/l0g-mcp.service',

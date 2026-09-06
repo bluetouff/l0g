@@ -1,0 +1,116 @@
+{
+  "baselineSha": "e39c2405a0561b6493ed32eaac9878adc108a17c",
+  "searchIndexSha256": "2fd2cf45d9aa4d7a64db88a4eadca6d5e1d1eac981ea3c30f206b94d87c44f4a",
+  "runs": [
+    {
+      "variant": "before",
+      "trial": 1,
+      "node": "v26.0.0",
+      "concurrentReaders": 8,
+      "distinctSnapshots": 8,
+      "coldLoadMs": 482.66695899999996,
+      "rssMiB": 598.234375
+    },
+    {
+      "variant": "after",
+      "trial": 1,
+      "node": "v26.0.0",
+      "concurrentReaders": 8,
+      "distinctSnapshots": 1,
+      "coldLoadMs": 59.269499999999994,
+      "rssMiB": 128.125
+    },
+    {
+      "variant": "before",
+      "trial": 2,
+      "node": "v26.0.0",
+      "concurrentReaders": 8,
+      "distinctSnapshots": 8,
+      "coldLoadMs": 419.5475,
+      "rssMiB": 680.90625
+    },
+    {
+      "variant": "after",
+      "trial": 2,
+      "node": "v26.0.0",
+      "concurrentReaders": 8,
+      "distinctSnapshots": 1,
+      "coldLoadMs": 51.4695,
+      "rssMiB": 167.203125
+    },
+    {
+      "variant": "before",
+      "trial": 3,
+      "node": "v26.0.0",
+      "concurrentReaders": 8,
+      "distinctSnapshots": 8,
+      "coldLoadMs": 353.645958,
+      "rssMiB": 673.28125
+    },
+    {
+      "variant": "after",
+      "trial": 3,
+      "node": "v26.0.0",
+      "concurrentReaders": 8,
+      "distinctSnapshots": 1,
+      "coldLoadMs": 48.038124999999994,
+      "rssMiB": 166.828125
+    }
+  ],
+  "medians": {
+    "before": {
+      "distinctSnapshots": 8,
+      "coldLoadMs": 419.5475,
+      "rssMiB": 673.28125
+    },
+    "after": {
+      "distinctSnapshots": 1,
+      "coldLoadMs": 51.4695,
+      "rssMiB": 166.828125
+    }
+  },
+  "date": "2026-09-06",
+  "status": "local validation prior to mcp-v1.24.4 publication",
+  "scope": "macOS, Node 26.0.0, 8 concurrent loadData calls in a fresh process per trial; three alternating before/after trials; RSS at completion, not peak memory or production capacity",
+  "graphComparison": {
+    "equalResponses": 664,
+    "articles": 219,
+    "beforeMedianMs": 8.237750000000233,
+    "afterMedianMs": 4.988916999998764,
+    "beforeP95Ms": 43.36200000000008,
+    "afterP95Ms": 40.03095799999937,
+    "transport": "in-memory SDK, graph calls on one server, no network",
+    "scope": "Separate built corpus, 219 article graphs at limits 1/30/200 plus unknown article and four general/research requests; no HTTP overhead"
+  },
+  "validation": {
+    "cacheAndGraphTests": 9,
+    "equivalentMcpResponses": 664,
+    "agentBench": {
+      "passed": 44,
+      "total": 44
+    },
+    "astroCheck": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "isolatedBuildPages": 1260,
+    "auditedHtmlFiles": 1286,
+    "internalLinksChecked": 65017,
+    "brokenInternalLinks": 0,
+    "homeBytes": 197940,
+    "homeGzipLevel9Bytes": 31864,
+    "inlineHomeCssBytes": 108067,
+    "httpRefusals": [
+      421,
+      403,
+      415,
+      400,
+      413,
+      429
+    ],
+    "packagedModulesTamperRejected": [
+      "release-cache.mjs",
+      "evidence-graph-index.mjs"
+    ]
+  }
+}
