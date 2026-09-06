@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Comprendre comment le prix de revente d'une voiture peut changer sa décote mensuelle. Outil pédagogique gratuit, sans données de marché."
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <link rel="canonical" href="https://l0g.fr/outils/leasing-decote/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="l0g" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="Le laboratoire de la décote" />
+    <meta
+      property="og:description"
+      content="Faites varier prix d’achat, revente attendue et durée pour isoler la décote mensuelle d’un leasing."
+    />
+    <meta property="og:url" content="https://l0g.fr/outils/leasing-decote/" />
+    <meta
+      property="og:image"
+      content="https://l0g.fr/illustrations/news/car-leasing-residual-value-v1.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Une voiture neuve et son reflet vieilli sous une courbe de valeur descendante"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Le laboratoire de la décote" />
+    <meta
+      name="twitter:description"
+      content="Un simulateur local pour comprendre le rôle du prix de revente dans un leasing."
+    />
+    <meta
+      name="twitter:image"
+      content="https://l0g.fr/illustrations/news/car-leasing-residual-value-v1.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Une voiture neuve et son reflet vieilli sous une courbe de valeur descendante"
+    />
+    <title>Le laboratoire de la décote · l0g</title>
+    <link rel="stylesheet" href="./tool.css" />
+  </head>
+  <body>
+    <main data-lease-tool data-offline="false">
+      <header class="masthead">
+        <div class="logo">l<span>0</span>g</div>
+        <nav>
+          <a
+            href="/posts/leasing-auto-prix-revente-mensualite/"
+            data-back
+            data-i18n="back"
+            >Lire l’article</a
+          ><button type="button" data-lang data-i18n="switchLang">
+            Read in English</button
+          ><button type="button" data-theme-button data-i18n="theme">
+            Clair / sombre
+          </button>
+        </nav>
+      </header>
+      <p class="flag" data-i18n="flag">EXEMPLES FICTIFS · PAS UN DEVIS</p>
+      <h1 data-i18n="title">Le laboratoire de la décote</h1>
+      <p class="subtitle" data-i18n="subtitle">
+        Le prix du neuf ne suffit pas. Faites varier la revente pour isoler la
+        perte de valeur à couvrir chaque mois.
+      </p>
+      <p class="instruction" data-i18n="instruction">
+        Deux scénarios, une même durée. Les valeurs de départ sont inventées et
+        ne représentent aucune offre commerciale.
+      </p>
+      <form novalidate>
+        <div class="grid-inputs">
+          <fieldset>
+            <legend data-i18n="first">A · Référence</legend>
+            <label for="purchaseA"
+              ><span data-i18n="purchase">Prix payé par le loueur (€)</span
+              ><input
+                id="purchaseA"
+                name="purchaseA"
+                type="number"
+                min="1"
+                max="1000000"
+                step="1"
+                value="30000"
+                inputmode="decimal"
+                required /></label
+            ><label for="resaleA"
+              ><span data-i18n="resale">Revente attendue (€)</span
+              ><input
+                id="resaleA"
+                name="resaleA"
+                type="number"
+                min="0"
+                max="1000000"
+                step="1"
+                value="18000"
+                inputmode="decimal"
+                required
+            /></label>
+          </fieldset>
+          <fieldset>
+            <legend data-i18n="second">B · Simulation</legend>
+            <label for="purchaseB"
+              ><span data-i18n="purchase">Prix payé par le loueur (€)</span
+              ><input
+                id="purchaseB"
+                name="purchaseB"
+                type="number"
+                min="1"
+                max="1000000"
+                step="1"
+                value="27000"
+                inputmode="decimal"
+                required /></label
+            ><label for="resaleB"
+              ><span data-i18n="resale">Revente attendue (€)</span
+              ><input
+                id="resaleB"
+                name="resaleB"
+                type="number"
+                min="0"
+                max="1000000"
+                step="1"
+                value="12000"
+                inputmode="decimal"
+                required
+            /></label>
+          </fieldset>
+        </div>
+        <label class="term" for="months"
+          ><span data-i18n="months">Durée commune (mois)</span
+          ><input
+            id="months"
+            name="months"
+            type="number"
+            min="1"
+            max="120"
+            step="1"
+            value="36"
+            inputmode="numeric"
+            required
+        /></label>
+        <div class="presets">
+          <p data-i18n="presetLabel">Reprendre un cas de l’article</p>
+          <div class="preset-buttons">
+            <button type="button" data-preset="18000" data-i18n="presetPrice">
+              Seul l’achat baisse</button
+            ><button type="button" data-preset="15000" data-i18n="presetSame">
+              Les baisses se compensent</button
+            ><button
+              type="button"
+              data-preset="12000"
+              data-i18n="presetReverse"
+            >
+              La revente baisse davantage</button
+            ><button type="button" data-reset data-i18n="reset">
+              Réinitialiser
+            </button>
+          </div>
+        </div>
+      </form>
+      <p class="error" data-error role="status" hidden></p>
+      <section
+        class="results"
+        data-results
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <h2 data-i18n="result">Le calcul de la décote</h2>
+        <div class="result-grid">
+          <div class="result-card">
+            <span data-i18n="aResult">A · Décote par mois</span
+            ><strong data-output="monthlyA">333,33 €</strong
+            ><small data-unit>par mois</small>
+          </div>
+          <div class="result-card">
+            <span data-i18n="bResult">B · Décote par mois</span
+            ><strong data-output="monthlyB">416,67 €</strong
+            ><small data-unit>par mois</small>
+          </div>
+          <div class="result-card">
+            <span data-i18n="difference">Écart mensuel B − A</span
+            ><strong data-output="delta">+83,33 €</strong
+            ><small data-unit>par mois</small>
+          </div>
+        </div>
+        <p class="interpretation" data-output="interpretation">
+          B exige davantage chaque mois pour couvrir la décote.
+        </p>
+        <div class="totals">
+          <p>
+            <span data-i18n="totalA">Décote totale A</span> :
+            <strong data-output="totalA">12 000,00 €</strong>
+          </p>
+          <p>
+            <span data-i18n="totalB">Décote totale B</span> :
+            <strong data-output="totalB">15 000,00 €</strong>
+          </p>
+        </div>
+        <div class="threshold">
+          <h3 data-i18n="threshold">Revente B pour égaler A</h3>
+          <strong data-output="threshold">15 000,00 €</strong>
+          <p data-output="thresholdNote">
+            À ce prix de revente B, la décote mensuelle serait la même que dans
+            A.
+          </p>
+        </div>
+        <p class="sensitivity">
+          <span data-i18n="sensitivity"
+            >Une revente attendue plus basse de 1 000 € ajoute</span
+          >
+          <strong data-output="per1000">27,78 €</strong>
+          <span data-unit>par mois</span>
+          <span data-i18n="sensitivityEnd"
+            >à la décote mensuelle, au même prix d’achat et sur cette
+            durée.</span
+          >
+        </p>
+      </section>
+      <p class="limits" data-i18n="limits">
+        Le modèle isole (achat − revente) ÷ mois. Il exclut versement initial,
+        coût du financement, taxes, frais de revente ou de restitution, services
+        et marge. La revente est une hypothèse, pas une garantie ni
+        nécessairement le prix d’une option d’achat.
+      </p>
+      <details>
+        <summary data-i18n="methodTitle">
+          Pourquoi aucun taux d’intérêt ?
+        </summary>
+        <p data-i18n="method">
+          Pour rendre visible un mécanisme précis. Ce résultat n’est pas une
+          estimation du loyer qui vous serait proposé. Tous les montants doivent
+          utiliser la même base fiscale ; aucune taxe n’est calculée. Le modèle
+          n’inclut pas les cas où la voiture prend de la valeur.
+        </p>
+      </details>
+      <noscript
+        ><p>
+          JavaScript est nécessaire pour modifier les hypothèses. Les résultats
+          affichés correspondent uniquement au scénario de départ : 30 000 / 18
+          000 € et 27 000 / 12 000 €, sur 36 mois. JavaScript is required to
+          change the assumptions; displayed results show the default scenario
+          only.
+        </p></noscript
+      >
+      <footer>
+        <p data-i18n="sourceLabel">
+          Mécanisme : CFPB, Regulation M (§ 1013.4). Repères français : Service
+          Public, LOA / LLD.
+        </p>
+        <p>
+          <a
+            href="https://www.consumerfinance.gov/rules-policy/regulations/1013/4/"
+            >CFPB · § 1013.4</a
+          >
+          ·
+          <a
+            href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2437"
+            >Service Public · LOA / LLD</a
+          >
+        </p>
+        <p data-i18n="privacy">
+          Calcul local. Aucun compte, aucune API, aucun stockage et aucun envoi
+          de vos saisies.
+        </p>
+        <p>l0g · 06.09.2026</p>
+      </footer>
+    </main>
+    <script src="./model.js"></script>
+    <script src="./tool-ui.js"></script>
+  </body>
+</html>
