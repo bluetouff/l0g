@@ -3,7 +3,7 @@
   'use strict';
   const translations = {
     en: {
-      rounding:'Display rounded to 0.1 tonne; calculations retain full precision. Rounded components may differ slightly from the displayed total.', source_sortcas:'European Commission / CORDIS: SortCAS', theme:'Light / dark', eyebrow:'COMMODITIES / EDUCATIONAL MODEL', title:'Retained does not mean recycled.',
+      rounding:'Display rounded to 0.1 tonne; calculations retain full precision. Rounded components may differ slightly from the displayed total.', source_sortcas:'European Commission / CORDIS: SortCAS', theme:'Light / dark', eyebrow:'COMMODITIES / EDUCATIONAL MODEL', title:'From retained scrap to recycled metal.',
       dek:'A border measure can change where scrap goes. It does not create the right grade, an available furnace or a customer.',
       notice:'Every prefilled number is hypothetical. This is neither a forecast nor an estimate of the impact of an EU measure.',
       presets:'Three hypothetical starting points', preset_capacity:'Capacity constraint', preset_quality:'Quality constraint', preset_aligned:'Aligned chain',
