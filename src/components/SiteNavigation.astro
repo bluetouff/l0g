@@ -1,4 +1,5 @@
 ---
+import NavigationSymbols from './NavigationSymbols.astro';
 import NavigationIcon, { type NavigationIconName } from './NavigationIcon.astro';
 
 interface Props {
@@ -104,6 +105,7 @@ function isActive(item: NavItem): boolean {
 ---
 
 <div class="site-navigation">
+  <NavigationSymbols />
   <nav class="desktop-nav" aria-label="Navigation principale">
     {primary.map((item) => (
       <a href={item.href} class="nav-tab nav-primary" aria-current={isActive(item) ? 'page' : undefined}>
