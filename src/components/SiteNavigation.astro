@@ -1,5 +1,5 @@
 ---
-import L0gGlyph, { type GlyphName } from './L0gGlyph.astro';
+import NavigationIcon, { type NavigationIconName } from './NavigationIcon.astro';
 
 interface Props {
   path: string;
@@ -14,18 +14,18 @@ type NavItem = {
   label: string;
   description?: string;
   matches?: string[];
-  glyph?: GlyphName;
+  glyph?: NavigationIconName;
 };
 
-const primary: NavItem[] = [
-  { href: '/', label: 'Lire', matches: ['/', '/maintenant', '/posts', '/sujet', '/sujets', '/hebdo', '/publications'] },
-  { href: '/demarrer/', label: 'Comprendre', matches: ['/demarrer', '/guides', '/glossaire', '/outils'] },
-  { href: '/radar/', label: 'Observer', matches: ['/radar', '/dashboards', '/confluence', '/risk-diff', '/series'] },
-  { href: '/methodologie/', label: 'Vérifier', matches: ['/methodologie', '/sources', '/preuves', '/backtests', '/protocole-editorial'] },
-  { href: '/soutenir/', label: 'Soutenir', matches: ['/soutenir'] },
+const primary: Array<NavItem & { glyph: NavigationIconName }> = [
+  { href: '/', label: 'Lire', glyph: 'read', matches: ['/', '/maintenant', '/posts', '/sujet', '/sujets', '/hebdo', '/publications'] },
+  { href: '/demarrer/', label: 'Comprendre', glyph: 'understand', matches: ['/demarrer', '/guides', '/glossaire', '/outils'] },
+  { href: '/radar/', label: 'Observer', glyph: 'observe', matches: ['/radar', '/dashboards', '/confluence', '/risk-diff', '/series'] },
+  { href: '/methodologie/', label: 'Vérifier', glyph: 'verify', matches: ['/methodologie', '/sources', '/preuves', '/backtests', '/protocole-editorial'] },
+  { href: '/soutenir/', label: 'Soutenir', glyph: 'support', matches: ['/soutenir'] },
 ];
 
-const groups: Array<{ label: string; glyph: GlyphName; items: NavItem[] }> = [
+const groups: Array<{ label: string; glyph: NavigationIconName; items: NavItem[] }> = [
   {
     label: 'Lire',
     glyph: 'read',
@@ -81,7 +81,7 @@ const developerItems: NavItem[] = [
 ];
 
 const utilityItems: NavItem[] = [
-  { href: '/soutenir/', label: 'Soutenir' },
+  { href: '/soutenir/', label: 'Soutenir', glyph: 'support' },
   { href: '/demarrer/#fonctionnalites', label: 'Toutes les fonctionnalités' },
   { href: '/about/', label: 'À propos' },
   { href: '/status/', label: 'Statut' },
@@ -106,7 +106,8 @@ function isActive(item: NavItem): boolean {
 <div class="site-navigation">
   <nav class="desktop-nav" aria-label="Navigation principale">
     {primary.map((item) => (
-      <a href={item.href} class="nav-tab" aria-current={isActive(item) ? 'page' : undefined}>
+      <a href={item.href} class="nav-tab nav-primary" aria-current={isActive(item) ? 'page' : undefined}>
+        <NavigationIcon name={item.glyph} />
         <span>{item.label}</span>
       </a>
     ))}
@@ -129,7 +130,7 @@ function isActive(item: NavItem): boolean {
         <div class="nav-groups">
           {groups.map((group) => (
             <section>
-              <h2><L0gGlyph name={group.glyph} size="sm" /><span>{group.label}</span></h2>
+              <h2><NavigationIcon name={group.glyph} compact /><span>{group.label}</span></h2>
               {group.items.map((item) => (
                 <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
                   <strong>{item.label}</strong>
@@ -175,7 +176,7 @@ function isActive(item: NavItem): boolean {
       <div class="mobile-panel">
         {groups.map((group) => (
           <section>
-            <h2><L0gGlyph name={group.glyph} size="sm" /><span>{group.label}</span></h2>
+            <h2><NavigationIcon name={group.glyph} compact /><span>{group.label}</span></h2>
             <div>
               {group.items.map((item) => (
                 <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
@@ -195,7 +196,12 @@ function isActive(item: NavItem): boolean {
         <section class="mobile-utility">
           <h2>Accès directs</h2>
           <div>
-            {mobileUtilityItems.map((item) => <a href={item.href}>{item.label}</a>)}
+            {mobileUtilityItems.map((item) => (
+              <a href={item.href}>
+                {item.glyph && <NavigationIcon name={item.glyph} compact />}
+                {item.label}
+              </a>
+            ))}
           </div>
         </section>
       </div>
@@ -256,8 +262,9 @@ function isActive(item: NavItem): boolean {
   .site-navigation { position: relative; z-index: 30; }
   .desktop-nav {
     display: none;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) auto auto;
     align-items: stretch;
-    gap: 1.25rem;
+    gap: clamp(0.8rem, 1.6vw, 1.4rem);
     margin-top: 1.45rem;
     border-bottom: 1px solid var(--color-line);
   }
@@ -281,6 +288,21 @@ function isActive(item: NavItem): boolean {
   .nav-explorer[open] > summary {
     color: var(--color-bright);
     border-bottom-color: var(--color-signal);
+  }
+  .nav-primary {
+    min-height: 4.25rem;
+    justify-content: center;
+    gap: 0.6rem;
+    padding-block: 0.7rem;
+    letter-spacing: 0.065em;
+    white-space: nowrap;
+    text-shadow: none;
+  }
+  .site-navigation a:focus-visible,
+  .site-navigation summary:focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 4px;
+    border-radius: 4px;
   }
   .nav-search { gap: 0.4rem; margin-left: auto; color: var(--color-signal); }
   .nav-search svg,
@@ -520,6 +542,7 @@ function isActive(item: NavItem): boolean {
   .mobile-panel a:hover { background: color-mix(in srgb, var(--color-signal) 8%, transparent); }
   .mobile-panel strong { color: var(--color-bright); font-size: 0.88rem; }
   .mobile-panel span { color: var(--color-muted); font-size: 0.75rem; line-height: 1.35; }
+  .mobile-panel h2 > span { color: var(--color-signal); font-size: inherit; }
   .mobile-developer,
   .mobile-utility { border-top: 1px solid var(--color-line); padding-top: 1rem; }
   .mobile-developer div,
@@ -538,12 +561,24 @@ function isActive(item: NavItem): boolean {
     border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-line));
     color: var(--color-accent);
   }
+  .mobile-panel .mobile-utility a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
 
+  @media (min-width: 980px) and (max-width: 1099px) {
+    .desktop-nav { gap: 0.75rem; }
+    .nav-primary { gap: 0.45rem; font-size: 0.76rem; letter-spacing: 0.04em; }
+    .nav-search { font-size: 0.74rem; letter-spacing: 0.04em; }
+  }
   @media (min-width: 980px) {
-    .desktop-nav { display: flex; }
+    .desktop-nav { display: grid; }
     .mobile-nav { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
+    .nav-tab,
+    .nav-explorer > summary,
     .nav-explorer > summary b,
     .mobile-menu > summary b { transition: none; }
   }
