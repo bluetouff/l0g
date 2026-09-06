@@ -1262,5 +1262,332 @@
       "windowStart": "2026-08-23T08:30:00+02:00",
       "windowEnd": "2026-08-30T08:30:00+02:00"
     }
+  },
+  {
+    "issue": 6,
+    "slug": "2026-09-06",
+    "publishedAt": "2026-09-06T08:30:00+02:00",
+    "title": "L’Hebdo du 6 septembre. Qui a mis de la géopolitique dans mon ballon d’anniversaire ?",
+    "description": "Édition automatisée du 6 septembre : 19 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Qui a mis de la géopolitique dans mon ballon d’anniversaire ?",
+      "href": "/posts/helium-geopolitique-ballon-anniversaire/",
+      "update": "Du gaz qatari aux aimants d’IRM, l’hélium raconte une mondialisation de cuves, de contrats et de délais. Enquête, infographies et laboratoire logistique."
+    },
+    "lead": "Le Qatar représentait environ un tiers de la production mondiale d’hélium estimée pour 2025.",
+    "number": {
+      "value": "19",
+      "label": "analyses publiées du 30 août à 08 h 30 au 6 septembre à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "Une livraison dépend aussi de la purification, des conteneurs disponibles et de leur temps de retour.",
+    "test": "Les annonces de dommages de mars 2026 ne donnent pas un taux de production actuel ni les stocks de chaque client.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "19 analyses publiées en sept jours",
+      "subtitle": "du 30 août à 08 h 30 au 6 septembre à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-09-06",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "COMPTER, PAS CLASSER",
+      "points": [
+        {
+          "label": "dim 30/08",
+          "shortLabel": "dim 30/08",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-08-30",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 31/08",
+          "shortLabel": "lun 31/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-31",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 01/09",
+          "shortLabel": "mar 01/09",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-09-01",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 02/09",
+          "shortLabel": "mer 02/09",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-09-02",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 03/09",
+          "shortLabel": "jeu 03/09",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-09-03",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 04/09",
+          "shortLabel": "ven 04/09",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-09-04",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 05/09",
+          "shortLabel": "sam 05/09",
+          "value": 5,
+          "valueLabel": "5",
+          "nature": "analyses publiées",
+          "scope": "2026-09-05",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 06/09",
+          "shortLabel": "dim 06/09",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-09-06",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Le Qatar représentait environ un tiers de la production mondiale d’hélium estimée pour 2025.",
+    "linkedin": "19 analyses publiées sur l0g du 30 août à 08 h 30 au 6 septembre à 08 h 30.\n\nFocus structuré : Qui a mis de la géopolitique dans mon ballon d’anniversaire ?.\n\nLe Qatar représentait environ un tiers de la production mondiale d’hélium estimée pour 2025.\n\nPourquoi le lire : Une livraison dépend aussi de la purification, des conteneurs disponibles et de leur temps de retour.\n\nLimite à garder : Les annonces de dommages de mars 2026 ne donnent pas un taux de production actuel ni les stocks de chaque client.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-09-06/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 6 septembre compte 19 analyses publiées. Focus : Qui a mis de la géopolitique dans mon ballon d’anniversaire ?.",
+      "2/5 Le Qatar représentait environ un tiers de la production mondiale d’hélium estimée pour 2025.",
+      "3/5 Pourquoi le lire : Une livraison dépend aussi de la purification, des conteneurs disponibles et de leur temps de retour.",
+      "4/5 Limite : Les annonces de dommages de mars 2026 ne donnent pas un taux de production actuel ni les stocks de chaque client.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-09-06/"
+    ],
+    "sources": [
+      {
+        "label": "Qui a mis de la géopolitique dans mon ballon d’anniversaire ?",
+        "href": "/posts/helium-geopolitique-ballon-anniversaire/",
+        "role": "Analyse publiée le 5 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Et si l’Asie achetait moins ?",
+        "href": "/posts/asie-dollar-cesser-acheter/",
+        "role": "Analyse publiée le 5 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Stress test : quand trois risques se rencontrent",
+        "href": "/posts/asie-dollar-stress-test-trois-risques/",
+        "role": "Analyse publiée le 5 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Chine : le risque dollar se répartit entre plusieurs bilans",
+        "href": "/posts/chine-risque-dollar-bilan-reserves-banques/",
+        "role": "Analyse publiée le 5 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Ce que l’Asie achète réellement en Amérique",
+        "href": "/posts/asie-actifs-americains-treasuries-mbs-credit/",
+        "role": "Analyse publiée le 5 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’usine invisible qui protège l’Asie du dollar",
+        "href": "/posts/asie-usine-invisible-couverture-dollar/",
+        "role": "Analyse publiée le 4 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Corée du Sud : le prix de la couverture parfaite",
+        "href": "/posts/coree-du-sud-prix-couverture-parfaite/",
+        "role": "Analyse publiée le 4 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Japon : la fin de l’argent gratuit entre dans le bilan des assureurs-vie",
+        "href": "/posts/japon-fin-argent-gratuit-bilans-assureurs-vie/",
+        "role": "Analyse publiée le 4 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Facturation électronique : l’AIFE a laissé 878 adresses visibles",
+        "href": "/posts/facturation-electronique-mail-cyber-aife-878-adresses/",
+        "role": "Analyse publiée le 4 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le maïs européen regarde vers l’Atlantique",
+        "href": "/posts/mais-europe-recolte-importations-ukraine-etats-unis/",
+        "role": "Analyse publiée le 3 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le blé entre Ormuz et le Bosphore",
+        "href": "/posts/ble-entre-ormuz-et-bosphore/",
+        "role": "Analyse publiée le 3 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Votre IA va bientôt dépenser votre argent",
+        "href": "/posts/votre-ia-va-depenser-votre-argent/",
+        "role": "Analyse publiée le 2 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Les États ont raccourci la mèche",
+        "href": "/posts/etats-raccourci-meche-refinancement/",
+        "role": "Analyse publiée le 2 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Combien de temps vit un serveur d’IA ?",
+        "href": "/posts/combien-de-temps-vit-serveur-ia/",
+        "role": "Analyse publiée le 1 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "PJM : quand 7 892 MW prévus déplacent 7,3 milliards de dollars",
+        "href": "/posts/pjm-prevision-electrique-7-milliards/",
+        "role": "Analyse publiée le 1 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Coton : le risque se déplace des prix vers les marges",
+        "href": "/posts/coton-risque-prix-marges-ormuz/",
+        "role": "Analyse publiée le 31 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’Inde paie son pétrole avec du code",
+        "href": "/posts/inde-paie-petrole-code/",
+        "role": "Analyse publiée le 31 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le renminbi tisse sa zone monétaire en Asie",
+        "href": "/posts/renminbi-zone-monetaire-asie/",
+        "role": "Analyse publiée le 31 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Jeonse en Corée du Sud : quand le locataire finance son propriétaire",
+        "href": "/posts/jeonse-coree-du-sud-credit-cache-logement/",
+        "role": "Analyse publiée le 30 août 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Qui a mis de la géopolitique dans mon ballon d’anniversaire ?",
+        "href": "/posts/helium-geopolitique-ballon-anniversaire/",
+        "publishedAt": "2026-09-05T20:46:05.000Z"
+      },
+      {
+        "title": "Et si l’Asie achetait moins ?",
+        "href": "/posts/asie-dollar-cesser-acheter/",
+        "publishedAt": "2026-09-05T14:45:00.000Z"
+      },
+      {
+        "title": "Stress test : quand trois risques se rencontrent",
+        "href": "/posts/asie-dollar-stress-test-trois-risques/",
+        "publishedAt": "2026-09-05T13:26:00.000Z"
+      },
+      {
+        "title": "Chine : le risque dollar se répartit entre plusieurs bilans",
+        "href": "/posts/chine-risque-dollar-bilan-reserves-banques/",
+        "publishedAt": "2026-09-05T08:30:00.000Z"
+      },
+      {
+        "title": "Ce que l’Asie achète réellement en Amérique",
+        "href": "/posts/asie-actifs-americains-treasuries-mbs-credit/",
+        "publishedAt": "2026-09-05T06:00:00.000Z"
+      },
+      {
+        "title": "L’usine invisible qui protège l’Asie du dollar",
+        "href": "/posts/asie-usine-invisible-couverture-dollar/",
+        "publishedAt": "2026-09-04T18:30:00.000Z"
+      },
+      {
+        "title": "Corée du Sud : le prix de la couverture parfaite",
+        "href": "/posts/coree-du-sud-prix-couverture-parfaite/",
+        "publishedAt": "2026-09-04T14:30:00.000Z"
+      },
+      {
+        "title": "Japon : la fin de l’argent gratuit entre dans le bilan des assureurs-vie",
+        "href": "/posts/japon-fin-argent-gratuit-bilans-assureurs-vie/",
+        "publishedAt": "2026-09-04T10:00:00.000Z"
+      },
+      {
+        "title": "Facturation électronique : l’AIFE a laissé 878 adresses visibles",
+        "href": "/posts/facturation-electronique-mail-cyber-aife-878-adresses/",
+        "publishedAt": "2026-09-04T07:00:00.000Z"
+      },
+      {
+        "title": "Le maïs européen regarde vers l’Atlantique",
+        "href": "/posts/mais-europe-recolte-importations-ukraine-etats-unis/",
+        "publishedAt": "2026-09-03T07:00:00.000Z"
+      },
+      {
+        "title": "Le blé entre Ormuz et le Bosphore",
+        "href": "/posts/ble-entre-ormuz-et-bosphore/",
+        "publishedAt": "2026-09-03T06:39:00.000Z"
+      },
+      {
+        "title": "Votre IA va bientôt dépenser votre argent",
+        "href": "/posts/votre-ia-va-depenser-votre-argent/",
+        "publishedAt": "2026-09-02T10:30:00.000Z"
+      },
+      {
+        "title": "Les États ont raccourci la mèche",
+        "href": "/posts/etats-raccourci-meche-refinancement/",
+        "publishedAt": "2026-09-02T06:30:00.000Z"
+      },
+      {
+        "title": "Combien de temps vit un serveur d’IA ?",
+        "href": "/posts/combien-de-temps-vit-serveur-ia/",
+        "publishedAt": "2026-09-01T14:00:00.000Z"
+      },
+      {
+        "title": "PJM : quand 7 892 MW prévus déplacent 7,3 milliards de dollars",
+        "href": "/posts/pjm-prevision-electrique-7-milliards/",
+        "publishedAt": "2026-09-01T09:23:00.000Z"
+      },
+      {
+        "title": "Coton : le risque se déplace des prix vers les marges",
+        "href": "/posts/coton-risque-prix-marges-ormuz/",
+        "publishedAt": "2026-08-31T15:06:06.000Z"
+      },
+      {
+        "title": "L’Inde paie son pétrole avec du code",
+        "href": "/posts/inde-paie-petrole-code/",
+        "publishedAt": "2026-08-31T12:00:06.000Z"
+      },
+      {
+        "title": "Le renminbi tisse sa zone monétaire en Asie",
+        "href": "/posts/renminbi-zone-monetaire-asie/",
+        "publishedAt": "2026-08-31T07:50:00.000Z"
+      },
+      {
+        "title": "Jeonse en Corée du Sud : quand le locataire finance son propriétaire",
+        "href": "/posts/jeonse-coree-du-sud-credit-cache-logement/",
+        "publishedAt": "2026-08-30T08:30:00.000Z"
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-09-06T07:04:47.455Z",
+      "windowStart": "2026-08-30T08:30:00+02:00",
+      "windowEnd": "2026-09-06T08:30:00+02:00"
+    }
   }
 ]
