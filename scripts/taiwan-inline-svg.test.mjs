@@ -9,6 +9,7 @@ import { toText } from 'hast-util-to-text';
 import './asia-dollar-hedge-model.test.mjs';
 import './asia-dollar-stress.test.mjs';
 import './asia-dollar-purchases.test.mjs';
+import './aircraft-engine-tool.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
@@ -115,6 +116,18 @@ const targets = [
     page: 'dist/en/analysis/asia-dollar-stop-buying/index.html',
     count: 3,
     pattern: /<svg\b[^>]*aria-labelledby="ad9-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/posts/moteurs-avion-penurie-maintenance-location/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="engine-[^"]+-fr-title engine-[^"]+-fr-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/en/analysis/aircraft-engine-shortage-maintenance-leasing/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="engine-[^"]+-en-title engine-[^"]+-en-desc"[^>]*>[\s\S]*?<\/svg>/gu,
     checkInternalBounds: true,
   },
 ];
