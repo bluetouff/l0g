@@ -138,6 +138,18 @@ const targets = [
     checkInternalBounds: true,
   },
   {
+    page: 'dist/posts/trump-sanctions-russie-iran-concessions/index.html',
+    count: 4,
+    pattern: /<svg\b[^>]*aria-labelledby="sanctions-fr-[^"]+-title sanctions-fr-[^"]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/en/analysis/trump-sanctions-russia-iran-concessions/index.html',
+    count: 4,
+    pattern: /<svg\b[^>]*aria-labelledby="sanctions-en-[^"]+-title sanctions-en-[^"]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
     page: 'dist/en/analysis/ghana-cocoa-financing-cash-crisis/index.html',
     count: 3,
     pattern: /<svg\b[^>]*aria-labelledby="cocoa-[^"]+-en-title cocoa-[^"]+-en-desc"[^>]*>[\s\S]*?<\/svg>/gu,
