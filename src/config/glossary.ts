@@ -183,6 +183,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Debasement trade', nom: 'Pari sur la dévalorisation', def: "Stratégie consistant à fuir la monnaie fiduciaire et la dette souveraine vers des actifs à offre limitée, or, argent et bitcoin, en réponse à des déficits durables et à la crainte d'une érosion de la valeur de la monnaie. À distinguer du signal structurel de diversification des réserves : le pari tactique peut se retourner brutalement quand les taux réels remontent, alors que la dédollarisation des banques centrales se poursuit à son propre rythme." },
       { sigle: 'Immunité souveraine', nom: 'Sovereign immunity', def: "Principe de droit international coutumier qui protège les biens d'un État, en particulier les réserves de sa banque centrale, contre les mesures d'exécution d'un autre État. Au cœur du débat sur les avoirs russes immobilisés : l'immobilisation est jugée compatible avec ce principe par les institutions européennes, la confiscation du principal beaucoup plus contestée." },
       { sigle: 'TIC', nom: 'Treasury International Capital', def: "Système de relevés du Trésor américain mesurant les détentions et flux transfrontaliers de titres américains. Source de référence sur les détenteurs étrangers de Treasuries, mais sur une base de conservation qui attribue les titres au pays du dépositaire, pas au détenteur final.", guide: 'lire-les-donnees-tic' },
+      { sigle: 'HS', nom: 'Système harmonisé (Harmonized System)', def: "Nomenclature internationale des marchandises administrée par l'Organisation mondiale des douanes. Ses six premiers chiffres servent de base commune aux statistiques et tarifs douaniers. Un code HS classe une marchandise, mais ne prouve ni sa qualité, ni sa composition précise, ni son usage final.", guide: '/posts/dechets-aluminium-europe-exportations-recyclage/' },
       { sigle: 'MFH', nom: 'Major Foreign Holders', def: "Table mensuelle du TIC classant les pays par stock de Treasuries détenus. Japon, Royaume-Uni et Chine en tête fin 2025, mais gonflée par les centres de garde (Belgique, Luxembourg, Caïmans, Irlande).", guide: 'lire-les-donnees-tic' },
       { sigle: 'Biais de conservation', nom: 'Custodial bias', def: "Limite majeure des données TIC : un titre est attribué au pays où il est conservé, non à celui de son propriétaire réel. Gonfle les places de garde et masque les vrais détenteurs ; l'enquête annuelle de référence le corrige en partie.", guide: 'lire-les-donnees-tic' },
       { sigle: 'Eurodollar', nom: 'Dollar offshore', def: "Dollar détenu ou prêté hors du système bancaire américain, sans lien avec la monnaie euro. Couche internationale du dollar, née dans les années 1950-1960, largement hors du champ direct de la Fed. Le crédit dollar aux non-banques hors US atteignait 14 300 milliards de dollars fin 2025." },
@@ -564,7 +565,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-02';
+export const glossaryUpdatedIso = '2026-09-06';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);

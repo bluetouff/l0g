@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<meta name="description" content="Comprendre pourquoi retenir des déchets d’aluminium ne suffit pas à produire du métal. Scénarios fictifs, calculs locaux, sans données de marché.">
+<title>Déchets d’aluminium : simulateur de débouchés | l0g</title>
+<link rel="stylesheet" href="calculator.css">
+<script defer src="scenario.js"></script>
+<script defer src="calculator.js"></script>
+</head>
+<body>
+<main>
+<nav aria-label="Navigation"><a class="brand" href="https://l0g.fr">l<span>0</span>g<span>.</span></a><div class="nav-actions"><button id="language" type="button" lang="en">English</button><button id="theme" type="button" data-t="theme">Clair / sombre</button></div></nav>
+<header><div class="eyebrow" data-t="eyebrow">MATIÈRES PREMIÈRES / MODÈLE PÉDAGOGIQUE</div><h1 data-t="title">Retenu ne veut pas dire recyclé.</h1><p class="dek" data-t="dek">Une frontière peut changer la destination d’un déchet. Elle ne crée ni sa qualité, ni un four disponible, ni un client.</p><p class="notice" data-t="notice">Tous les chiffres préremplis sont fictifs. Ce calcul n’est ni une prévision, ni une estimation de l’effet d’une mesure européenne.</p></header>
+<noscript><p class="notice">JavaScript est désactivé. Exemple fictif : 100 000 t entrantes, 70 % compatibles, 60 000 t de capacité, 80 000 t de débouchés équivalents et rendement de 90 % donnent 54 000 t de métal, 6 000 t de résidus et 40 000 t à réorienter. Aucun chiffre n’est une observation de marché.</p></noscript>
+<section aria-labelledby="presets-title"><h2 id="presets-title" data-t="presets">Trois points de départ fictifs</h2><div class="presets"><button type="button" data-preset="capacity" aria-pressed="true" data-t="preset_capacity">Capacité limitante</button><button type="button" data-preset="quality" aria-pressed="false" data-t="preset_quality">Qualité limitante</button><button type="button" data-preset="aligned" aria-pressed="false" data-t="preset_aligned">Chaîne alignée</button></div></section>
+<div class="layout">
+<form id="scenario" novalidate aria-labelledby="inputs-title">
+<h2 id="inputs-title" data-t="inputs">Vos hypothèses pour une année</h2>
+<p class="small" data-t="units">Capacité et débouchés : volumes supplémentaires, nets des engagements existants, exprimés en tonnes de déchets entrants équivalentes.</p>
+<div class="field"><label for="q" data-t="q_label">Déchets à orienter vers ce circuit (t)</label><input type="number" inputmode="decimal" id="q" name="q" min="0" max="100000000" step="1" value="100000" required aria-describedby="q_help"><p id="q_help" data-t="q_help">Ce volume est une hypothèse. Il ne représente pas le champ du futur règlement.</p></div>
+<div class="field"><label for="a" data-t="a_label">Part compatible après tri (%)</label><input type="number" inputmode="decimal" id="a" name="a" min="0" max="100" step="0.1" value="70" required aria-describedby="a_help"><p id="a_help" data-t="a_help">Part du flux utilisable dans la chaîne étudiée, selon les qualités et les procédés retenus.</p></div>
+<div class="field"><label for="c" data-t="c_label">Capacité supplémentaire de traitement (t)</label><input type="number" inputmode="decimal" id="c" name="c" min="0" max="100000000" step="1" value="60000" required aria-describedby="c_help"><p id="c_help" data-t="c_help">Plafond d’entrée dans les installations, pas capacité de production de métal fini.</p></div>
+<div class="field"><label for="d" data-t="d_label">Débouchés commerciaux équivalents (t)</label><input type="number" inputmode="decimal" id="d" name="d" min="0" max="100000000" step="1" value="80000" required aria-describedby="d_help"><p id="d_help" data-t="d_help">Volume entrant que les commandes peuvent soutenir au rendement choisi. À réviser si le rendement change.</p></div>
+<div class="field"><label for="y" data-t="y_label">Rendement de récupération du circuit (%)</label><input type="number" inputmode="decimal" id="y" name="y" min="0" max="100" step="0.1" value="90" required aria-describedby="y_help"><p id="y_help" data-t="y_help">Part de la matière traitée qui ressort comme métal. Les résidus peuvent avoir d’autres voies de valorisation.</p></div>
+<p id="error" class="error" role="alert" hidden></p>
+<button type="reset" class="reset" data-t="reset">Réinitialiser l’exemple</button>
+</form>
+<section class="results" aria-labelledby="results-title">
+<h2 id="results-title" data-t="results">Bilan de matière du circuit</h2>
+<p id="binding" class="binding" aria-live="polite"></p>
+<div id="result-content">
+<div class="main-result"><span data-t="metal">Métal récupéré</span><output id="metal">54 000</output><span class="unit" data-t="tonnes">tonnes</span><p id="share"></p></div>
+<svg id="balance-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 58" role="img" aria-labelledby="balance-title balance-desc"><title id="balance-title">Répartition de la matière entrante</title><desc id="balance-desc">Scénario fictif : métal, résidus du circuit et matière à réorienter.</desc><defs><pattern id="residue-pattern" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="var(--surface)"/><path d="M-1 1L1 -1M0 6L6 0M5 7L7 5" stroke="var(--amber)" stroke-width="1.5"/></pattern></defs><rect id="bar-metal" x="1" y="12" width="214.92" height="32" fill="var(--signal)"/><rect id="bar-residual" x="215.92" y="12" width="23.88" height="32" fill="url(#residue-pattern)"/><rect id="bar-unassigned" x="239.8" y="12" width="159.2" height="32" fill="none" stroke="var(--muted)"/><rect x="1" y="12" width="398" height="32" fill="none" stroke="var(--line-strong)"/></svg>
+<div class="result-grid"><div class="metric"><span data-t="treated">Déchets traités</span><strong><output id="treated">60 000</output> t</strong></div><div class="metric"><span data-t="compatible">Déchets compatibles</span><strong><output id="compatible">70 000</output> t</strong></div><div class="metric residual"><span data-t="residual">Résidus / fractions non récupérées</span><strong><output id="residual">6 000</output> t</strong></div><div class="metric unassigned"><span data-t="unassigned">Matière encore à orienter</span><strong><output id="unassigned">40 000</output> t</strong></div></div>
+<p class="small" data-t="legend">Graphique : aplat = métal ; hachures = résidus ; contour = matière à réorienter. Les résidus et la matière à réorienter ne sont pas nécessairement perdus.</p>
+<p class="equation" id="balance-equation"></p><p class="small" data-t="rounding">Affichage arrondi à 0,1 tonne ; le calcul conserve les décimales. La somme des arrondis peut légèrement différer du total affiché.</p>
+</div>
+<p class="small" data-t="boundary">Le métal affiché n’est pas un gain net de production mondiale. Le modèle ne calcule ni prix, ni émissions, ni réorientation internationale, ni évolution de la collecte.</p>
+</section>
+</div>
+<section class="method" aria-labelledby="method-title"><h2 id="method-title" data-t="method">Ce que calcule l’outil</h2><p data-t="formula1">Flux compatible = volume entrant × part compatible.</p><p data-t="formula2">Flux traité = minimum du flux compatible, de la capacité et des débouchés.</p><p data-t="formula3">Métal = flux traité × rendement. Résidus = traité − métal. Matière à orienter = entrant − traité.</p><p data-t="limits">Hypothèses : une seule période, pas de report de stock calculé, pas de mélange d’alliages modélisé. Le tri est résumé dans une part compatible. Les capacités et débouchés doivent concerner le même circuit. Ces simplifications ne remplacent pas un bilan industriel détaillé.</p><p class="small" data-t="context">Contexte documentaire : la Commission européenne et les fédérations décrivent des contraintes de qualité et de débouchés. Aucun coefficient du modèle n’est calibré sur leurs données.</p><p class="source-links"><a href="https://cordis.europa.eu/project/id/101066062" rel="noopener noreferrer" data-t="source_sortcas">Commission européenne / CORDIS : SortCAS</a> · <a href="https://wits.worldbank.org/trade/comtrade/en/country/EUN/year/2024/tradeflow/Exports/partner/ALL/product/760200" rel="noopener noreferrer">WITS / UN Comtrade : 2024</a></p></section>
+<footer><p data-t="privacy">Calculs locaux, sans compte, sans cookie, sans traceur et sans requête à une API. Les liens documentaires externes ne sont ouverts que sur votre action.</p><p>l0g.fr · <span data-t="version">Version du 6 septembre 2026</span></p></footer>
+</main>
+</body>
+</html>
