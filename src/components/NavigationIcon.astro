@@ -16,11 +16,8 @@ const { name, compact = false } = Astro.props;
 <style is:global>
   .navigation-icon {
     --icon-accent: var(--color-signal);
-    --navigation-icon-tint: color-mix(in srgb, var(--icon-accent) 7%, transparent);
-    display: inline-flex;
+    display: block;
     flex: none;
-    align-items: center;
-    justify-content: center;
     width: 2.4rem;
     height: 2.4rem;
     padding: 0.3rem;
