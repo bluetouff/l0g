@@ -65,3 +65,69 @@ test('classe les origines historiques sans confondre URL et route', async (t) =>
   assert.equal(cohort[3].present_sitemap_build, 'non');
   assert.equal(cohort[3].canonical_build, '');
 });
+
+test('extrait le texte avec les règles HTML, y compris les fins de script atypiques', async (t) => {
+  const dist = await fixture(t);
+  const cases = [
+    '<p>Texte visible</p><script>mots caches</script >',
+    '<p>Texte visible</p><SCRIPT>mots caches</SCRIPT/>',
+    '<p>Texte visible</p><script>mots caches</script attribut=valeur>',
+    '<p>Texte visible</p><script>mots caches',
+    '<p>Texte visible</p><script>avant</style>encore cache</script>',
+    '<p>Texte visible</p><style>mots caches</style >',
+    '<p>Texte visible</p><svg><svg><text>cache</text></svg><text>cache aussi</text></svg>',
+    '<p>Texte visible</p><!-- mots caches --!>',
+  ];
+  for (const body of cases) {
+    await writeFile(join(dist, 'article/index.html'), `<title>Article</title>${body}`);
+    const page = (await auditBuiltSite(dist)).pages.get('/article/');
+    assert.equal(page.word_count, 3, body);
+    assert.equal(page.title, 'Article');
+  }
+});
+
+test('préserve le texte encodé et les métadonnées sans reconstruire de balises', async (t) => {
+  const dist = await fixture(t);
+  await writeFile(join(dist, 'article/index.html'), `<html lang="fr"><head>
+    <title>A &amp; B &lt;script&gt; &lt;script</title>
+    <link rel="canonical" href="https://l0g.fr/article/">
+    <meta name="robots" content="index,follow">
+    <meta property="article:published_time" content="2026-08-28T10:00:00Z">
+    </head><body><p>Cr&#233;dit &amp; d&#233;p&#244;ts</p>
+    <script>const fake = '<meta name="robots" content="noindex"><a href="/faux/">';</script/>
+    <a href="/r&#233;el/">Lien</a>
+    <svg><a href="/article/">Lien graphique</a></svg></body></html>`);
+  const page = (await auditBuiltSite(dist)).pages.get('/article/');
+  assert.equal(page.title, 'A & B <script> <script');
+  assert.equal(page.word_count, 9);
+  assert.equal(page.canonical, '/article/');
+  assert.equal(page.lang, 'fr');
+  assert.equal(page.publication_date, '2026-08-28T10:00:00Z');
+  assert.equal(page.noindex, false);
+  assert.equal(page.redirect, false);
+  assert.deepEqual(page.links, ['/r%C3%A9el/', '/article/']);
+});
+
+test('reconnaît seulement les vraies métadonnées de redirection', async (t) => {
+  const dist = await fixture(t);
+  for (const [html, expected] of [
+    ['<!-- <meta http-equiv="refresh"> --><p>Texte</p>', false],
+    ['<script>const fake = \'<meta http-equiv="refresh">\';</script >', false],
+    ['<META CONTENT="0;url=/" HTTP-EQUIV="refr&#101;sh">', true],
+  ]) {
+    await writeFile(join(dist, 'article/index.html'), html);
+    assert.equal((await auditBuiltSite(dist)).pages.get('/article/').redirect, expected, html);
+  }
+});
+
+test('les liens SVG participent au contrôle des destinations, sans compter leurs titres', async (t) => {
+  const dist = await fixture(t);
+  await writeFile(join(dist, 'article/index.html'), '<link rel="canonical" href="https://l0g.fr/">');
+  await writeFile(join(dist, 'index.html'), '<p>Texte visible</p><svg><title>Titre graphique</title><a href="/article/"><text>Lien graphique</text></a></svg>');
+  const site = await auditBuiltSite(dist);
+  assert.equal(site.pages.get('/').title, '');
+  assert.equal(site.pages.get('/').word_count, 2);
+  assert.equal(site.inlinks.get('/article/').size, 1);
+  assert.equal(site.depths.get('/article/'), 1);
+  assert.deepEqual(site.undesirableInternalDestinations, [{ from: '/', to: '/article/', reasons: ['canonical:/'] }]);
+});

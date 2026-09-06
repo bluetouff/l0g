@@ -3,7 +3,8 @@
 import { readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import { extname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { scanHtmlElements } from '../src/lib/html-utils.ts';
+import { fromHtml } from 'hast-util-from-html';
+import { toText } from 'hast-util-to-text';
 import { glossaryRedirects } from '../src/config/glossary-redirects.mjs';
 import { legacySurfaceRedirects } from '../src/config/legacy-surface-redirects.mjs';
 
@@ -119,43 +120,56 @@ function internalRoute(raw, baseRoute) {
 }
 
 function pageMetadata(html, route) {
-  const elements = scanHtmlElements(html);
+  const tree = fromHtml(html);
+  const pending = [...tree.children].reverse();
+  const graphics = [];
   const links = new Set();
   let canonical = null;
   let robots = '';
   let lang = '';
   let publicationDate = '';
-  for (const element of elements) {
-    if (element.name === 'html') lang = element.attributes.get('lang') ?? '';
-    if (element.name === 'a') {
-      const target = internalRoute(element.attributes.get('href'), route);
+  let title = '';
+  let redirect = false;
+  while (pending.length) {
+    const element = pending.pop();
+    if (element.type !== 'element') continue;
+    if (element.tagName === 'svg') graphics.push(element);
+    pending.push(...element.children.slice().reverse());
+    const attributes = element.properties;
+    if (element.tagName === 'html') lang = attributes.lang ?? '';
+    if (element.tagName === 'head') {
+      const documentTitle = element.children.find((child) => child.type === 'element' && child.tagName === 'title');
+      if (documentTitle) title = toText(documentTitle).replace(/\s+/g, ' ').trim();
+    }
+    if (element.tagName === 'a') {
+      const target = internalRoute(attributes.href, route);
       if (target) links.add(target);
     }
-    if (element.name === 'link' && /\bcanonical\b/i.test(element.attributes.get('rel') ?? '')) {
-      canonical = normalizeRoute(element.attributes.get('href') ?? '');
+    if (element.tagName === 'link' && /\bcanonical\b/i.test((attributes.rel ?? []).join(' '))) {
+      canonical = normalizeRoute(attributes.href ?? '');
     }
-    if (element.name === 'meta' && /^(?:robots|googlebot)$/i.test(element.attributes.get('name') ?? '')) {
-      robots += ` ${(element.attributes.get('content') ?? '').toLowerCase()}`;
+    if (element.tagName === 'meta' && /^(?:robots|googlebot)$/i.test(attributes.name ?? '')) {
+      robots += ` ${(attributes.content ?? '').toLowerCase()}`;
+    }
+    if (element.tagName === 'meta' && /^refresh$/i.test((attributes.httpEquiv ?? []).join(' '))) {
+      redirect = true;
     }
     if (
-      element.name === 'meta'
-      && /^(?:article:published_time|datepublished)$/i.test(element.attributes.get('property') ?? element.attributes.get('name') ?? '')
-    ) publicationDate ||= element.attributes.get('content') ?? '';
+      element.tagName === 'meta'
+      && /^(?:article:published_time|datepublished)$/i.test(attributes.property ?? attributes.name ?? '')
+    ) publicationDate ||= attributes.content ?? '';
   }
-  const title = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1]?.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() ?? '';
   publicationDate ||= html.match(/"datePublished"\s*:\s*"([^"]+)"/i)?.[1] ?? '';
-  const text = html
-    .replace(/<(?:script|style|svg)\b[\s\S]*?<\/(?:script|style|svg)>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&(?:[a-z]+|#\d+|#x[0-9a-f]+);/gi, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+  // Exclude SVG labels from the word count after collecting their links.
+  for (const graphic of graphics) graphic.children = [];
+  // Extract text once; never reparse it as HTML. Keep the title in the metric.
+  const text = `${title} ${toText(tree)}`.replace(/\s+/g, ' ').trim();
   return {
     route,
     canonical,
     lang,
     noindex: /\bnoindex\b/.test(robots),
-    redirect: /<meta\s+[^>]*http-equiv=["']?refresh\b/i.test(html),
+    redirect,
     title,
     word_count: text ? text.split(' ').length : 0,
     publication_date: publicationDate,
