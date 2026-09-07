@@ -162,6 +162,20 @@ const targets = [
     checkInternalBounds: true,
   },
   {
+    page: 'dist/posts/les-banquiers-du-baril-5-vitol-raffineries-terminaux-engen/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb5-fr-fig[0-9]+-title bdb5-fr-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+  },
+  {
+    page: 'dist/en/analysis/banking-on-oil-5-vitol-refineries-terminals-engen/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb5-en-fig[0-9]+-title bdb5-en-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+  },
+  {
     page: 'dist/en/analysis/ghana-cocoa-financing-cash-crisis/index.html',
     count: 3,
     pattern: /<svg\b[^>]*aria-labelledby="cocoa-[^"]+-en-title cocoa-[^"]+-en-desc"[^>]*>[\s\S]*?<\/svg>/gu,
@@ -240,7 +254,7 @@ function assertApproximateInternalBounds(svg, page, svgIndex) {
   }
 }
 
-for (const { page, count, pattern, jeonseLocale, checkInternalBounds } of targets) {
+for (const { page, count, pattern, jeonseLocale, checkInternalBounds, requireDarkBackground } of targets) {
   test(`${page} keeps every infographic inside the SVG namespace`, () => {
     const html = readFileSync(join(ROOT, page), 'utf8');
     const infographics = html.match(pattern) ?? [];
@@ -252,6 +266,14 @@ for (const { page, count, pattern, jeonseLocale, checkInternalBounds } of target
         /<(?:p|div|h[1-6]|ul|ol|li)\b/iu,
         `${page}: HTML element injected into inline SVG ${index + 1}`,
       );
+      if (requireDarkBackground) {
+        assert.match(svg, /--b5-bg:#0b0d10/iu, `${page}: inline SVG ${index + 1} must keep the l0g dark background`);
+        assert.doesNotMatch(
+          svg,
+          /prefers-color-scheme|--b5-bg:#(?:fff|ffffff)/iu,
+          `${page}: inline SVG ${index + 1} must not switch to a white background`,
+        );
+      }
       if (checkInternalBounds) assertApproximateInternalBounds(svg, page, index);
     }
 
