@@ -287,6 +287,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'PCDR', nom: 'Private Credit Default Rate', def: "Indice de Fitch mesurant le taux de défaut sur environ 1 200 emprunteurs du middle market dans le crédit privé. Mesure élargie du défaut, plus complète que le seul défaut de paiement." },
       { sigle: 'PMR', nom: 'Privately Monitored Rating', def: "Composante de l'univers Fitch portant sur les plus gros emprunteurs sous LBO notés en privé. Son taux de défaut est structurellement plus élevé que l'indice large PCDR." },
       { sigle: 'LME', nom: 'Liability Management Exercise', def: "Gestion de passif hors tribunal (échange de dette, extension de maturité, rachat sous le pair) qui permet d'éviter ou de repousser un défaut formel. Devenue le mode dominant de traitement de la détresse : en 2025-2026, ces restructurations forment l'essentiel de l'activité de défaut, masquant un stress que le taux de défaut classique sous-estime.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
+      { sigle: 'Cash sweep', nom: 'Affectation accélérée de trésorerie', def: "Clause contractuelle qui dirige tout ou partie d'un excédent de trésorerie ou de recettes défini vers un remboursement anticipé de la dette. Elle réduit plus vite l'encours lorsque les conditions prévues sont réunies, sans signifier que toutes les recettes reviennent au créancier : le périmètre, les seuils et le taux d'affectation dépendent du contrat.", guide: '/posts/les-banquiers-du-baril-3-tchad-glencore-dette-petrole/' },
       { sigle: 'LBO', nom: 'Leveraged Buyout', def: "Rachat d'entreprise financé majoritairement par de la dette, remboursée par les flux de trésorerie de la cible." },
       { sigle: 'CLO', nom: 'Collateralized Loan Obligation', def: "Véhicule de titrisation qui regroupe des centaines de prêts à effet de levier et émet des tranches de risque échelonné, de la plus sûre (AAA) à la plus risquée (equity). Premier acheteur du marché des prêts à effet de levier, activement géré. À ne pas confondre avec le CDO adossé aux crédits subprime de 2008.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
       { sigle: 'Prêt à effet de levier', nom: 'Leveraged loan', def: "Prêt bancaire syndiqué consenti à une entreprise déjà endettée, sous la catégorie investissement, à taux variable indexé sur le SOFR. Sert à financer rachats (LBO), acquisitions et refinancements. Senior et garanti, mais de plus en plus dépourvu de clauses de protection (cov-lite).", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
@@ -570,7 +571,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-06';
+export const glossaryUpdatedIso = '2026-09-07';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
