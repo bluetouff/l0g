@@ -150,6 +150,18 @@ const targets = [
     checkInternalBounds: true,
   },
   {
+    page: 'dist/posts/les-banquiers-du-baril-4-trafigura-platts-prix-fioul/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bb4-fr-[^"]+-title bb4-fr-[^"]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/en/analysis/banking-on-oil-4-trafigura-platts-fuel-oil-benchmark/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bb4-en-[^"]+-title bb4-en-[^"]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
     page: 'dist/en/analysis/ghana-cocoa-financing-cash-crisis/index.html',
     count: 3,
     pattern: /<svg\b[^>]*aria-labelledby="cocoa-[^"]+-en-title cocoa-[^"]+-en-desc"[^>]*>[\s\S]*?<\/svg>/gu,
