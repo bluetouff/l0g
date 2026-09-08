@@ -208,6 +208,22 @@ const targets = [
     darkBackgroundToken: '--color-surface:#0b0d10',
   },
   {
+    page: 'dist/posts/les-banquiers-du-baril-8-credit-livraisons-petrole/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb8-fr-fig[0-9]+-title bdb8-fr-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
+    page: 'dist/en/analysis/banking-on-oil-8-credit-squeeze-oil-supplies/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb8-en-fig[0-9]+-title bdb8-en-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
     page: 'dist/en/analysis/ghana-cocoa-financing-cash-crisis/index.html',
     count: 3,
     pattern: /<svg\b[^>]*aria-labelledby="cocoa-[^"]+-en-title cocoa-[^"]+-en-desc"[^>]*>[\s\S]*?<\/svg>/gu,
