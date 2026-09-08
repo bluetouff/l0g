@@ -129,8 +129,16 @@ for (const file of htmlFiles) {
     });
   for (const dataset of jsonLd.filter((item) => item['@type'] === 'Dataset')) {
     assert(
+      dataset.creator?.['@type'] === 'Organization',
+      `${name}: creator du Dataset doit être une Organization explicite`
+    );
+    assert(
       dataset.creator?.['@id'] === 'https://l0g.fr/#org',
-      `${name}: creator du Dataset absent ou incohérent`
+      `${name}: identifiant creator du Dataset absent ou incohérent`
+    );
+    assert(
+      dataset.creator?.name === 'l0g',
+      `${name}: nom du creator du Dataset absent ou incohérent`
     );
   }
 
@@ -417,8 +425,10 @@ for (const slug of signalSlugs) {
   const dataset = page?.jsonLd.find((item) => item['@type'] === 'Dataset');
   assert(Boolean(dataset), `${slug}: Dataset JSON-LD absent`);
   assert(
-    dataset?.creator?.['@id'] === 'https://l0g.fr/#org',
-    `${slug}: creator du Dataset absent ou incohérent`
+    dataset?.creator?.['@type'] === 'Organization'
+      && dataset?.creator?.['@id'] === 'https://l0g.fr/#org'
+      && dataset?.creator?.name === 'l0g',
+    `${slug}: creator du Dataset doit être une Organization l0g explicite`
   );
   const svg = await readFile(join(root, 'api/v1/signals', slug, 'chart.svg'), 'utf8');
   assert(svg.includes('<svg') && svg.includes('width="1200"') && svg.includes('height="630"'), `${slug}: SVG réutilisable invalide`);

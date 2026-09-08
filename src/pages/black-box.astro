@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { serializeInlineScriptData } from '../lib/security.ts';
 import TrustBar from '../components/TrustBar.astro';
+import { datasetCreatorEntity } from '../config/entities.ts';
 import { sortGuides, sortPosts } from '../lib/agent-surface.ts';
 import { buildBlackBoxSurface } from '../lib/black-box.ts';
 
@@ -59,7 +60,7 @@ const jsonLd = {
   inLanguage: 'fr',
   license: 'https://creativecommons.org/licenses/by/4.0/',
   isAccessibleForFree: true,
-  creator: { '@id': `${site}/#org` },
+  creator: datasetCreatorEntity,
   temporalCoverage: `${recorder.coverage.firstFrameDate ?? ''}/${recorder.coverage.lastFrameDate ?? ''}`,
   distribution: [
     {

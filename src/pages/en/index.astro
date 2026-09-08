@@ -18,7 +18,7 @@ const primaryCards = [
     title: `${guideCount} English guides`,
     text: 'Durable guides on macro plumbing, credit, public filings, crypto regulation, commodities and risk signals.',
     stat: `${guideCount}`,
-    statLabel: 'translated guides',
+    statLabel: 'reference guides',
   },
   {
     href: '/en/methodology/',
@@ -41,9 +41,10 @@ const primaryCards = [
 const routes = [
   { href: '/en/publications/', label: 'Publications', text: 'Free long-form editions that preserve sources, structure and correction paths.' },
   ...(analysisCount > 0
-    ? [{ href: '/en/analysis/', label: `${analysisCount} analysis pieces`, text: 'Sourced, antithesis-tested essays on AI finance, credit plumbing and systemic risk.' }]
+    ? [{ href: '/en/analysis/', label: `${analysisCount} analysis pieces`, text: 'Sourced investigations of macro, credit, technology, policy and systemic risk.' }]
     : []),
-  { href: '/en/start/', label: 'Start here', text: 'A fast orientation page for non-French readers.' },
+  { href: '/en/asia/', label: 'Asia in the global system', text: 'Japan, Korea, China, Taiwan and Hong Kong through their global transmission channels.' },
+  { href: '/en/start/', label: 'Start here', text: 'Choose a reading path by question, market or mechanism.' },
   { href: '/en/tour/', label: 'Guided tour', text: 'A visual map of the site and its risk surfaces.' },
   { href: '/en/about/', label: 'About', text: 'What l0g is, what it refuses, and why it exists.' },
   { href: '/en/sources/', label: 'Sources', text: 'Primary-source hierarchy and public datasets.' },
@@ -60,9 +61,9 @@ const machine = [
 
 const trails = [
   ['Macro & central banks', '/en/guides/read-h41-fed-balance-sheet/', '/en/guides/read-ecb-balance-sheet-target2/', '/en/analysis/warsh-and-the-fed-balance-sheet/'],
+  ['Credit & market plumbing', '/en/guides/read-corporate-debt/', '/en/guides/read-repo-market-sofr/', '/en/analysis/private-credit-risk-begins-where-data-ends/'],
   ['Technology & capital', '/en/guides/how-to-read-10-k-sec/', '/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/', '/en/analysis/ai-boom-bis-financial-fragility/'],
-  ['Read the corpus', '/en/guides/', '/en/glossary/', '/llms-full.txt'],
-  ['Use the data', '/en/api/', '/en/agent-surface/', '/en/mcp/'],
+  ['Asia in the global system', '/en/asia/', '/en/analysis/renminbi-monetary-zone-asia/', '/en/analysis/kospi-concentrated-liquidation-samsung-sk-hynix/'],
 ];
 
 const jsonLd = {
@@ -70,15 +71,17 @@ const jsonLd = {
   '@type': 'WebPage',
   '@id': `${SITE}/en/#webpage`,
   name: 'l0g in English',
-  description: 'English entry points for l0g.fr: investigations, publications, reference guides, methodology, sources, API, MCP, glossary and risk replay surfaces.',
+  description: 'Independent English financial analysis from l0g on macro, credit, market plumbing, technology, public policy and systemic risk, backed by open evidence.',
   inLanguage: 'en',
   isPartOf: { '@id': `${SITE}/#website` },
 };
 ---
 
 <EnglishLayout
-  title="l0g in English"
-  description="English entry points for l0g.fr: investigations, publications, reference guides, methodology, sources, API, MCP, glossary and risk replay surfaces."
+  title="Independent financial analysis in English"
+  seoTitle="Global macro, credit and systemic risk analysis | l0g"
+  ogTitle="Independent financial analysis, backed by open evidence"
+  description="Independent English financial analysis on macro, credit, market plumbing, technology, public policy and systemic risk, backed by open evidence."
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
 
@@ -86,17 +89,17 @@ const jsonLd = {
     <div class="en-hero-copy">
       <p class="mono-label glow" style="color: var(--color-signal)">$ open /en</p>
       <h1 class="en-title font-display glow">
-        <span class="title-line">Risk intelligence,</span>{' '}
-        <span class="title-line gradient-word">translated</span>{' '}
-        <span class="title-line">where it matters.</span>
+        <span class="title-line">Financial risk,</span>{' '}
+        <span class="title-line gradient-word">opened up</span>{' '}
+        <span class="title-line">and traced to its sources.</span>
       </h1>
       <p class="en-lede">
-        l0g is a French, open-source risk-intelligence project that maps financial opacity with public data, primary sources and machine-readable evidence. This English layer includes selected investigations, free publications, guides, methods, sources, APIs, MCP and replayable risk surfaces.
+        l0g is an independent French publication with a growing English edition. It investigates macro, credit, market plumbing, technology and public policy with primary sources, explicit uncertainty and machine-readable evidence.
       </p>
       <div class="en-hero-actions" data-pagefind-ignore>
-        <a href="/en/guides/" class="en-cta primary">read the guides</a>
-        <a href="/en/api/" class="en-cta">use the API</a>
-        <a href="/en/tour/" class="en-cta ghost">take the tour</a>
+        <a href="/en/analysis/" class="en-cta primary">read the analysis</a>
+        <a href="/en/asia/" class="en-cta">follow Asia's global links</a>
+        <a href="/en/start/" class="en-cta ghost">choose a reading path</a>
       </div>
     </div>
 
@@ -104,8 +107,8 @@ const jsonLd = {
       <div class="terminal-card">
         <div class="terminal-top"><span></span><span></span><span></span></div>
         <pre><code>{`$ l0g --english
-surface: partial, explicit, curated
-corpus: ${guideCount} reference guides
+surface: independent editorial edition
+corpus: ${analysisCount} analyses · ${guideCount} guides
 method: primary sources > narrative
 data: json · ndjson · csv · mcp
 tracking: none
@@ -117,6 +120,7 @@ status: readable by humans and agents`}</code></pre>
   </section>
 
   <section class="signal-strip" aria-label="English layer metrics" data-pagefind-ignore>
+    <span><strong>{analysisCount}</strong> analyses</span>
     <span><strong>{guideCount}</strong> guides</span>
     <span><strong>API</strong> JSON / NDJSON / CSV</span>
     <span><strong>MCP</strong> read-only server</span>
@@ -145,7 +149,7 @@ status: readable by humans and agents`}</code></pre>
       <p class="mono-label glow" style="color: var(--color-signal)">// reading paths</p>
       <h2 id="paths-title">Choose the door that matches the job.</h2>
       <p>
-        The English section is not a machine-translated mirror of the French site. It is a curated access layer for readers, analysts and agents who need the reusable parts first.
+        Start with an investigation, a durable guide, an Asia-to-global transmission path or the underlying data. English editions are selected and edited for an international reader, with the French source linked whenever one exists.
       </p>
     </div>
     <div class="route-grid">
@@ -178,7 +182,7 @@ status: readable by humans and agents`}</code></pre>
 
   <section class="en-section trail-panel" aria-labelledby="trail-title">
     <p class="mono-label glow" style="color: var(--color-signal)">// suggested flows</p>
-    <h2 id="trail-title">Four useful flows.</h2>
+    <h2 id="trail-title">Four editorial reading paths.</h2>
     <div class="trail-grid">
       {trails.map(([title, a, b, c]) => (
         <article class="trail-card">
@@ -192,10 +196,10 @@ status: readable by humans and agents`}</code></pre>
   </section>
 
   <section class="en-section final-cta" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// caveat</p>
-    <h2>English as a full editorial layer.</h2>
+    <p class="mono-label glow" style="color: var(--color-signal)">// one publication, two languages</p>
+    <h2>An English edition with its own editorial promise.</h2>
     <p>
-      The original journal remains French. The English layer is curated around selected investigations, durable publications, guides, methods, sources and machine-readable surfaces.
+      The French corpus remains broader. The English edition concentrates on investigations, guides and public evidence that travel across borders without flattening their context.
     </p>
     <div class="en-hero-actions">
       <a href="/" class="en-cta ghost">go to the French site</a>

@@ -27,8 +27,10 @@ const canonical = new URL('/en/analysis/', Astro.site).toString();
 ---
 
 <EnglishGuidesLayout
-  title="English analysis"
-  description="English versions of selected l0g analysis pieces: sourced, evidence-graded essays on AI finance, credit plumbing, shadow banking and the machinery of systemic risk."
+  title="Financial analysis in English"
+  seoTitle="English financial analysis: macro, credit and risk | l0g"
+  ogTitle="Financial risk, traced through evidence and balance sheets"
+  description="Independent English l0g analysis of macro, credit, technology, public policy, market plumbing and the machinery of systemic risk."
   canonical={canonical}
 >
   <section class="rise border-b border-dashed border-line pb-10">
@@ -37,11 +39,14 @@ const canonical = new URL('/en/analysis/', Astro.site).toString();
       English <span style="color: var(--color-accent)">analysis</span>
     </h1>
     <p class="mt-5 max-w-xl text-muted">
-      Selected l0g analysis pieces translated from the French corpus: sourced, antithesis-tested essays
-      on the plumbing of finance and systemic risk. This English section is intentionally curated, not exhaustive:
-      the rest of l0g.fr remains primarily French.
+      Sourced, adversarially reviewed investigations into the plumbing of finance and systemic risk. English editions are selected and edited for an international audience, with the French source linked when one exists.
       {total} {total === 1 ? 'piece is' : 'pieces are'} currently available in English.
     </p>
+    <div class="analysis-entry-links" data-pagefind-ignore>
+      <a href="/en/start/">choose a reading path</a>
+      <a href="/en/asia/">follow Asia through the global system</a>
+      <a href="/en/guides/">open the reference guides</a>
+    </div>
   </section>
 
   {
@@ -52,3 +57,9 @@ const canonical = new URL('/en/analysis/', Astro.site).toString();
     )
   }
 </EnglishGuidesLayout>
+
+<style>
+  .analysis-entry-links { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.25rem; }
+  .analysis-entry-links a { display: inline-flex; align-items: center; min-height: 2.15rem; padding: .45rem .7rem; border: 1px solid var(--color-line); border-radius: 999px; color: var(--color-signal); font-family: var(--font-mono); font-size: .68rem; text-decoration: none; }
+  .analysis-entry-links a:hover { border-color: var(--color-signal); color: var(--color-bright); }
+</style>

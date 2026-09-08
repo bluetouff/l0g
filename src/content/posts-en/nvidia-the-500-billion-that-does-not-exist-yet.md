@@ -1,14 +1,57 @@
 ---
 title: "Nvidia: the $500 billion that does not exist yet"
 seoTitle: "Nvidia $500bn AI financing: what is committed? | l0g"
-description: "The six memorandums left amounts and terms undisclosed. Trace debt, equity, existing vehicles and Nvidia's possible $125bn backstop."
+description: "Nvidia follow-up: up to $105bn in guarantees for an OpenAI campus, disclosed conditions and redacted terms, alongside the original financing investigation."
 pubDate: 2026-08-11T14:50:00+02:00
-updatedDate: 2026-08-11T14:50:00+02:00
+updatedDate: 2026-09-08T13:10:04+02:00
 sourceArticle: "nvidia-500-milliards-qui-n-existent-pas-encore"
-sourceUpdatedDate: 2026-08-11T14:50:00+02:00
+sourceUpdatedDate: 2026-09-08T13:10:04+02:00
 tags: ["nvidia", "artificial intelligence", "data centers", "private credit", "infrastructure", "investigation"]
 draft: false
 ---
+
+<section class="prose" id="september-2026-follow-up" aria-labelledby="nvidia-follow-up-title" style="border:1px solid var(--color-line);border-top:3px solid var(--color-signal);border-radius:4px 4px 12px 12px;padding:clamp(1rem,3vw,1.5rem);background:var(--color-surface);scroll-margin-top:2rem">
+<p class="mono-label">Document follow-up · <time datetime="2026-09-08">8 September 2026</time></p>
+<h2 id="nvidia-follow-up-title" style="margin-top:0.8rem">Nvidia: the terms behind $105 billion in guarantees</h2>
+
+**11 August: the question.** The [original investigation](#original-analysis) asked how Nvidia would share the risk of financing AI infrastructure. Subsequent filings add a specific transaction to that inquiry.
+
+**17 August: the commitment.** Nvidia disclosed residual-value guarantees capped at **$105 billion** for an SB Energy campus in Ohio, leased to an OpenAI affiliate. Following certain tenant defaults, payment depends in part on proceeds recovered through a replacement lease or sale. Nvidia can also assume the lease. [SEC, Form 8-K, Item 1.01](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000069/nvda-20260817.htm)
+
+**26 August: the terms.** An exhibit to the quarterly report provides a form of guarantee. The detailed covered-loss formula and certain parameters remain redacted. [SEC, Exhibit 10.1](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda2027q2ex101.htm)
+
+<figure class="infographic" style="max-width:360px;margin-inline:auto;padding-bottom:0.75rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" role="img" aria-labelledby="nvidia-guarantee-title nvidia-guarantee-desc" style="width:100%;height:auto;display:block;font-family:var(--font-read)">
+<title id="nvidia-guarantee-title">The Ohio campus: rent and credit support</title>
+<desc id="nvidia-guarantee-desc">OpenAI leases the campus from SB Energy. Nvidia conditionally guarantees certain default risks. The initial $105 billion cap covers the campus guarantees and is not an estimated loss. Source: Nvidia SEC filing, 17 August 2026.</desc>
+<rect x="20" y="16" width="320" height="78" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line)"/>
+<text x="180" y="47" text-anchor="middle" fill="var(--color-bright)" font-size="23" font-weight="700">OpenAI</text>
+<text x="180" y="76" text-anchor="middle" fill="var(--color-prose)" font-size="18">Campus tenant</text>
+<path d="M180 100V137m-6-7 6 7 6-7" fill="none" stroke="var(--color-signal)" stroke-width="2"/>
+<text x="199" y="124" fill="var(--color-prose)" font-size="17">Rent</text>
+<rect x="20" y="144" width="320" height="78" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line)"/>
+<text x="180" y="175" text-anchor="middle" fill="var(--color-bright)" font-size="23" font-weight="700">SB Energy</text>
+<text x="180" y="204" text-anchor="middle" fill="var(--color-prose)" font-size="18">Landlord</text>
+<path d="M180 264V230m-6 7 6-7 6 7" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="199" y="252" fill="var(--color-prose)" font-size="17">Guarantee</text>
+<rect x="20" y="272" width="320" height="88" rx="10" fill="var(--color-surface-2)" stroke="var(--color-accent)"/>
+<text x="180" y="305" text-anchor="middle" fill="var(--color-bright)" font-size="23" font-weight="700">Nvidia</text>
+<text x="180" y="337" text-anchor="middle" fill="var(--color-prose)" font-size="18">Initial cap: $105bn</text>
+</svg>
+<figcaption>Roles shown subject to contractual conditions. Source: <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000069/nvda-20260817.htm">Nvidia, 17 August 2026</a>.</figcaption>
+</figure>
+
+**Our reading.** The supplier accepts exposure to certain defaults by its customer. Guarantees take effect in phases as leases commence, subject to conditions. The cap is neither an immediate cash payment nor an estimated loss. [Nvidia, quarterly report, Note 10](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm)
+
+**The limit.** These filings do not establish that the $500 billion has been mobilised or that this transaction is equivalent to the potential $125 billion backstop discussed on 11 August. The next checks concern the remaining redacted terms and the conditions for the campus to enter service.
+
+The cash reference has also changed: Nvidia reported **$56.6 billion** in cash, cash equivalents and marketable debt securities at 26 July, compared with **$50.3 billion** a quarter earlier. The original article’s balance-sheet comparisons remain historical. [Nvidia, CFO commentary, 26 August](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm)
+
+</section>
+
+<h2 id="original-analysis">Original analysis of 11 August 2026</h2>
+
+> The text below preserves the evidence available on 11 August, its dated figures and the questions then outstanding. The follow-up above does not update every programme run by the six partners.
 
 On 10 August 2026, Nvidia announced a plan to mobilise more than $500 billion for artificial-intelligence infrastructure. The chipmaker attached six names that gave the number immediate weight: Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs and KKR.
 

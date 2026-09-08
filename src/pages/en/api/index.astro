@@ -1,6 +1,7 @@
 ---
 import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import { AGENT_VERSION } from '../../../config/agent-contract.mjs';
+import { datasetCreatorEntity } from '../../../config/entities.ts';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const enUrl = `${SITE}/en/api/`;
@@ -51,7 +52,7 @@ const datasetLd = {
   inLanguage: 'en',
   license: 'https://creativecommons.org/licenses/by/4.0/',
   isAccessibleForFree: true,
-  creator: { '@id': `${SITE}/#org` },
+  creator: datasetCreatorEntity,
   keywords: ['Agent Surface', 'public API', 'risk intelligence', 'Risk Diff', 'Black Box Recorder', 'US debt', 'signals history', 'evidence graph'],
 };
 ---

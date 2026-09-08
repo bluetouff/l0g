@@ -52,6 +52,7 @@ const nav = [
   { href: '/en/tour/', label: 'tour', active: Astro.url.pathname.startsWith('/en/tour'), show: hasPage('src/pages/en/tour/index.astro') },
   { href: '/en/guides/', label: 'guides', active: Astro.url.pathname.startsWith('/en/guides'), show: hasPage('src/pages/en/guides/index.astro') },
   { href: '/en/analysis/', label: 'analysis', active: Astro.url.pathname.startsWith('/en/analysis'), show: hasPage('src/pages/en/analysis/index.astro') },
+  { href: '/en/asia/', label: 'asia', active: Astro.url.pathname.startsWith('/en/asia'), show: hasPage('src/pages/en/asia/index.astro') },
   { href: '/en/tools/', label: 'tools', active: Astro.url.pathname.startsWith('/en/tools'), show: hasPage('src/pages/en/tools/index.astro') },
   { href: '/en/publications/', label: 'publications', active: Astro.url.pathname.startsWith('/en/publications'), show: hasPage('src/pages/en/publications/index.astro') },
   { href: '/en/methodology/', label: 'method', active: Astro.url.pathname.startsWith('/en/methodology'), show: hasPage('src/pages/en/methodology/index.astro') },
@@ -66,6 +67,7 @@ const nav = [
 const footerLinks = [
   { href: '/en/guides/', label: 'guides', show: hasPage('src/pages/en/guides/index.astro') },
   { href: '/en/analysis/', label: 'analysis', show: hasPage('src/pages/en/analysis/index.astro') },
+  { href: '/en/asia/', label: 'asia in the global system', show: hasPage('src/pages/en/asia/index.astro') },
   { href: '/en/tools/', label: 'analysis tools', show: hasPage('src/pages/en/tools/index.astro') },
   { href: '/en/publications/', label: 'publications', show: hasPage('src/pages/en/publications/index.astro') },
   { href: '/en/methodology/', label: 'methodology', show: hasPage('src/pages/en/methodology/index.astro') },
@@ -172,9 +174,9 @@ const siteJsonLd = {
     <footer class="site-footer en-footer">
       <div class="footer-grad" aria-hidden="true"></div>
       <div class="footer-inner mx-auto max-w-6xl px-5">
-        <p class="mono-label">// l0g English layer</p>
+        <p class="mono-label">// l0g English edition</p>
         <p class="en-footer-text">
-          l0g.fr is primarily published in French. The English layer exposes the durable, reusable parts of the project: reference guides, methodology, sources, machine-readable APIs and selected risk tools.
+          Independent financial analysis, reference guides and public evidence for international readers. The French corpus remains broader, and every adapted English edition links back to its source.
         </p>
         <p class="en-footer-links">
           {footerLinks.map((link, index) => (

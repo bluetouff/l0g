@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
+import { datasetCreatorEntity } from '../../config/entities.ts';
 import {
   buildSignalSeriesSurface,
   signalSeriesRegistry,
@@ -49,7 +50,7 @@ const jsonLd = {
   inLanguage: 'fr',
   isAccessibleForFree: true,
   license: 'https://creativecommons.org/licenses/by/4.0/',
-  creator: { '@id': 'https://l0g.fr/#org' },
+  creator: datasetCreatorEntity,
   temporalCoverage: series.coverage.firstSeriesDate && series.coverage.lastSeriesDate
     ? `${series.coverage.firstSeriesDate}/${series.coverage.lastSeriesDate}`
     : undefined,
