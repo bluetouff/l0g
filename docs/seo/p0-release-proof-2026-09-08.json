@@ -1,0 +1,745 @@
+{
+  "checked_at": "2026-09-08T16:18:57.601Z",
+  "source_commit": "ec9fee42d154e8200e9928134e7545f5264fae62",
+  "source_env": "L0G_RELEASE_SCHEMA=1\nL0G_RELEASE_REPOSITORY=bluetouff/l0g\nL0G_RELEASE_SOURCE_REF=refs/heads/main\nL0G_RELEASE_SOURCE_SHA=ec9fee42d154e8200e9928134e7545f5264fae62\nL0G_RELEASE_RUN_ID=34249030489\nL0G_RELEASE_RUN_ATTEMPT=1\n",
+  "html": [
+    {
+      "path": "/en/analysis/sintra-2026-ecb-hike-warsh-tokenisation/",
+      "sha256": "d9c4189c02f0133af424cf534cd62f6f95f4dd00874ed30d116d2d4c07f841ee",
+      "new_links": 1,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/en/analysis/ten-trillion-asleep/",
+      "sha256": "206a022b010c779aaa524c7fbe0aa0024c3147b5939ba1969f6a73864e1efd38",
+      "new_links": 1,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/en/analysis/the-great-e-invoicing-toll-1-the-severed-public-portal/",
+      "sha256": "64cc6159b58c189f5778dfddfd7222f3cade3acf21750104abcd0bacbdab8791",
+      "new_links": 1,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/en/analysis/warsh-first-fomc/",
+      "sha256": "8aaab223de30e1ec8ddf2e993f22b81ce662ae095a67da66b1ddb73a2bc4259e",
+      "new_links": 1,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/en/analysis/your-identity-in-your-phone-4-age-becomes-an-access-credential/",
+      "sha256": "67b0d8e7766510213eeb2bc4b7407e99c428a639297b770089e7fe27c7147e8a",
+      "new_links": 1,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/en/asia/",
+      "sha256": "c33fa8c077e8171fafa8d962887a1141628411dfbe2dd844332b8969140b694f",
+      "new_links": 4,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/en/guides/read-oil-market/",
+      "sha256": "bcbd8a182408c4622a9d1300f2da0faf2c6fa5171722ac2a5570e4a931726c09",
+      "new_links": 1,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/en/guides/read-private-credit-risk/",
+      "sha256": "ab69b677c493603e378164903841a078701dff76c0356a1b5000478fbc1bc191",
+      "new_links": 1,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/en/start/",
+      "sha256": "b12a5ba77e4ec6eaa578c603bca85fcc3314b75c6d3cb637b33a9730b538a92f",
+      "new_links": 8,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/guides/analyser-credit-prive/",
+      "sha256": "1e777510c104a308504ee2c6438b59d4c5cda5a1d8146aef60fc092f4c825d56",
+      "new_links": 1,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/guides/lire-le-dollar-dxy-cross-currency-basis/",
+      "sha256": "3260b32a21a5465d84dc3ff6105ba59a2ca5470c897680799cae5ff56eac65bc",
+      "new_links": 2,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/guides/lire-le-rapport-emploi-nfp/",
+      "sha256": "644512b8bbefff93ce7e8fa0f0873098a72d6a4b850c7cf578eab28fa38f8a00",
+      "new_links": 1,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/guides/lire-les-donnees-tic/",
+      "sha256": "119238af51acbee02a8b2112e8a6e48da89bb6dbb3873f6ad6019115b2d6c4f0",
+      "new_links": 2,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/eau-electricite/",
+      "sha256": "0f3b062315f56ec7af2204a12babaa06f19dee635035914e2af96d407cec569d",
+      "new_links": 0,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/en/publications/water-electricity/",
+      "sha256": "b155e29e2580f3e0ba35c245547e710da0345c4978f561bab308d4d1e5d69363",
+      "new_links": 0,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/euro-numerique/",
+      "sha256": "7e8c52cbc218d55a671560c972910345c065e03e67aba0e82c9bbce96b1223a3",
+      "new_links": 0,
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/en/publications/digital-euro/",
+      "sha256": "07824b60bdc1ef2f876ce7fc5afec2502b8f410c0a95c92c58dda11ce099a518",
+      "new_links": 0,
+      "equals_attested_archive": true
+    }
+  ],
+  "new_links": 25,
+  "images": [
+    {
+      "path": "/publications/eau-electricite-cover-320.webp",
+      "bytes": 21178,
+      "width": 320,
+      "height": 512,
+      "sha256": "897d8fc32c1186ee74f57f0c68fe7f8b4c6d12b5b1b39b41fc0dc6427332f56e",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/eau-electricite-cover-640.webp",
+      "bytes": 64196,
+      "width": 640,
+      "height": 1024,
+      "sha256": "dad4be6d753d13a41d343ed8dcca386790c5f03fc7ee6ab8c1e9b4db75f5b17c",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/eau-electricite-cover-960.webp",
+      "bytes": 117238,
+      "width": 960,
+      "height": 1536,
+      "sha256": "b0314e21e327eb7eb657c9b2175b926e31961474afe1695e3dfc0d4af3215405",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/eau-electricite-cover.jpg",
+      "bytes": 230426,
+      "width": 1200,
+      "height": 1920,
+      "sha256": "3336c7b19647d95e3f2274877b29c2e1f4ccdc00191e788d8fc8535a42596055",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/eau-electricite-cover-social.jpg",
+      "bytes": 39675,
+      "width": 1200,
+      "height": 630,
+      "sha256": "3753fbf29de3fb0c84bf7c2fa3ac7f9755b4b1bf3a8c31c1015eb39b7d34984d",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/water-electricity-cover-320.webp",
+      "bytes": 20896,
+      "width": 320,
+      "height": 512,
+      "sha256": "7623e6afd296f4cd86c221f9077ffc471ad80c53311c2b9807f89a23c66992f5",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/water-electricity-cover-640.webp",
+      "bytes": 63928,
+      "width": 640,
+      "height": 1024,
+      "sha256": "18ffc0b3c0b745091de9230758e2ff9d6309d021e1c85a0bbb186e5d67d83723",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/water-electricity-cover-960.webp",
+      "bytes": 116920,
+      "width": 960,
+      "height": 1536,
+      "sha256": "1b3917f22a23120c3f4035a7250164c88ccd02e9f6d28345fdfbd94d8b25463b",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/water-electricity-cover.jpg",
+      "bytes": 229493,
+      "width": 1200,
+      "height": 1920,
+      "sha256": "9bdf4251719134494e52b9d4c93a44a38c328986cba35d84506bf088d121ab93",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/water-electricity-cover-social.jpg",
+      "bytes": 39674,
+      "width": 1200,
+      "height": 630,
+      "sha256": "691d7c8cb51cdf3873d738b35275a07dd9273c9f2d9e68e43c79f3a9ea0441eb",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/euro-numerique-cover-320.webp",
+      "bytes": 19398,
+      "width": 320,
+      "height": 512,
+      "sha256": "0a15ac7807e70f4d28702e2baa15652de3e332b1038a6ddfb5c9e4914ecc9379",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/euro-numerique-cover-640.webp",
+      "bytes": 61204,
+      "width": 640,
+      "height": 1024,
+      "sha256": "629960fb59a28392bab94ab16138e26273df6660d436ed6e08056b878fbaf423",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/euro-numerique-cover-960.webp",
+      "bytes": 108304,
+      "width": 960,
+      "height": 1536,
+      "sha256": "1245b84de11fe8edc00b2d8096ebf9c0fd99836a07ecbd2e30f0295c1af99d45",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/euro-numerique-cover.jpg",
+      "bytes": 214676,
+      "width": 1200,
+      "height": 1920,
+      "sha256": "a56fe51188f4e572d46e0cbed376e6ee082918dcfc0a0b9f76d2d84724f63800",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/euro-numerique-cover-social.jpg",
+      "bytes": 37488,
+      "width": 1200,
+      "height": 630,
+      "sha256": "746cb28633e599d74dd6ff76871a1a9aa486d8b72bf61af9155ed60f71f487a9",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/digital-euro-cover-320.webp",
+      "bytes": 18298,
+      "width": 320,
+      "height": 512,
+      "sha256": "4dbd577106569e32f3fe77ad89385d1ca754f39921cf8e083f5cb1a9c80f1a22",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/digital-euro-cover-640.webp",
+      "bytes": 59220,
+      "width": 640,
+      "height": 1024,
+      "sha256": "4a9d532cd4b99d2626338df4bc5622ce88f12df0217fb0202a79074ce0b87dcd",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/digital-euro-cover-960.webp",
+      "bytes": 105264,
+      "width": 960,
+      "height": 1536,
+      "sha256": "b8bc1266140ad00ab499571692254100b9fa8dff20694dec4dd324e0a9728ca6",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/digital-euro-cover.jpg",
+      "bytes": 208811,
+      "width": 1200,
+      "height": 1920,
+      "sha256": "efaa11512b6d0dcf86a0e0214f62f124dbd9673a1f4e5010c4a96e14bc47a9db",
+      "equals_attested_archive": true
+    },
+    {
+      "path": "/publications/digital-euro-cover-social.jpg",
+      "bytes": 35439,
+      "width": 1200,
+      "height": 630,
+      "sha256": "7a07b9a0d74655f9dbb0c10fd9562f904725c7771b8447c7402e4c4ac7932df2",
+      "equals_attested_archive": true
+    }
+  ],
+  "ok": true,
+  "validation": {
+    "build": "https://github.com/bluetouff/l0g/actions/runs/34249030489",
+    "codeql": "https://github.com/bluetouff/l0g/actions/runs/34249030520",
+    "both_success": true,
+    "attestation": "gh attestation verify with exact source digest, refs/heads/main, repository build workflow and denial of self-hosted runners: exit 0",
+    "rendered_pages": 18,
+    "viewport_widths": [
+      390,
+      1280
+    ],
+    "document_overflows": 0,
+    "cover_failures": 0,
+    "lcp_lab": {
+      "scope": "Single laboratory navigation, Chromium desktop engine at 390px, no network throttling; not CrUX or a before/after performance estimate. The reported LCP candidate is recorded without assuming the cover must be selected; image loading and rendering are verified separately.",
+      "rows": [
+        {
+          "route": "/publications/eau-electricite/",
+          "last": {
+            "start": 316,
+            "size": 4818,
+            "tag": "SPAN",
+            "url": "",
+            "loading": null,
+            "fetchpriority": null
+          },
+          "entries": [
+            {
+              "start": 316,
+              "size": 4818,
+              "tag": "SPAN",
+              "url": "",
+              "loading": null,
+              "fetchpriority": null
+            }
+          ]
+        },
+        {
+          "route": "/en/publications/water-electricity/",
+          "last": {
+            "start": 240,
+            "size": 4818,
+            "tag": "SPAN",
+            "url": "",
+            "loading": null,
+            "fetchpriority": null
+          },
+          "entries": [
+            {
+              "start": 240,
+              "size": 4818,
+              "tag": "SPAN",
+              "url": "",
+              "loading": null,
+              "fetchpriority": null
+            }
+          ]
+        },
+        {
+          "route": "/publications/euro-numerique/",
+          "last": {
+            "start": 188,
+            "size": 4818,
+            "tag": "SPAN",
+            "url": "",
+            "loading": null,
+            "fetchpriority": null
+          },
+          "entries": [
+            {
+              "start": 188,
+              "size": 4818,
+              "tag": "SPAN",
+              "url": "",
+              "loading": null,
+              "fetchpriority": null
+            }
+          ]
+        },
+        {
+          "route": "/en/publications/digital-euro/",
+          "last": {
+            "start": 180,
+            "size": 4818,
+            "tag": "SPAN",
+            "url": "",
+            "loading": null,
+            "fetchpriority": null
+          },
+          "entries": [
+            {
+              "start": 180,
+              "size": 4818,
+              "tag": "SPAN",
+              "url": "",
+              "loading": null,
+              "fetchpriority": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "http_probes": {
+    "schema_version": "1.0.0",
+    "checked_at": "2026-09-08T16:18:58.161Z",
+    "site": "https://l0g.fr",
+    "source_commit": "ec9fee42d154e8200e9928134e7545f5264fae62",
+    "ok": true,
+    "oauth_policy": "404 volontaire: serveur MCP public sans OAuth",
+    "results": [
+      {
+        "path": "/posts",
+        "status": 301,
+        "location": "https://l0g.fr/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/posts/",
+        "status": 301,
+        "location": "https://l0g.fr/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/nfp/lire-le-rapport-emploi-nfp",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-rapport-emploi-nfp/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/nfp/lire-le-rapport-emploi-nfp/",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-rapport-emploi-nfp/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/lire-le-rapport-emploi-nfp",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-rapport-emploi-nfp/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/lire-le-rapport-emploi-nfp/",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-rapport-emploi-nfp/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/fomc/lire-le-dot-plot-sep",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-dot-plot-sep/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/fomc/lire-le-dot-plot-sep/",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-dot-plot-sep/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/sep/lire-le-dot-plot-sep",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-dot-plot-sep/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/sep/lire-le-dot-plot-sep/",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-dot-plot-sep/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/lire-le-dot-plot-sep",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-dot-plot-sep/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/lire-le-dot-plot-sep/",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-dot-plot-sep/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/m2/m2-masse-monetaire-risk-on",
+        "status": 301,
+        "location": "https://l0g.fr/guides/m2-masse-monetaire-risk-on/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/m2/m2-masse-monetaire-risk-on/",
+        "status": 301,
+        "location": "https://l0g.fr/guides/m2-masse-monetaire-risk-on/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/core-cpi/lire-le-cpi-inflation-us",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-cpi-inflation-us/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/glossaire/core-cpi/lire-le-cpi-inflation-us/",
+        "status": 301,
+        "location": "https://l0g.fr/guides/lire-le-cpi-inflation-us/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/",
+        "status": 200,
+        "location": null,
+        "content_type": "text/html",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/guides/lire-le-rapport-emploi-nfp/",
+        "status": 200,
+        "location": null,
+        "content_type": "text/html",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/guides/lire-le-dot-plot-sep/",
+        "status": 200,
+        "location": null,
+        "content_type": "text/html",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/guides/m2-masse-monetaire-risk-on/",
+        "status": 200,
+        "location": null,
+        "content_type": "text/html",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/guides/lire-le-cpi-inflation-us/",
+        "status": 200,
+        "location": null,
+        "content_type": "text/html",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/og/le-grand-peage-de-la-facture-1-le-portail-ampute.png",
+        "status": 301,
+        "location": "https://l0g.fr/illustrations/news/e-invoicing-toll-1-v2.jpg",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/og/le-grand-peage-de-la-facture-3-le-prix-du-gratuit.png",
+        "status": 301,
+        "location": "https://l0g.fr/illustrations/news/e-invoicing-toll-3-v1.jpg",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/illustrations/news/e-invoicing-toll-1-v2.jpg",
+        "status": 200,
+        "location": null,
+        "content_type": "image/jpeg",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/illustrations/news/e-invoicing-toll-3-v1.jpg",
+        "status": 200,
+        "location": null,
+        "content_type": "image/jpeg",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/sitemap.xml",
+        "status": 301,
+        "location": "https://l0g.fr/sitemap-index.xml",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/sitemap-index.xml",
+        "status": 200,
+        "location": null,
+        "content_type": "application/xml",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/contact/",
+        "status": 200,
+        "location": null,
+        "content_type": "text/html",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/en/contact/",
+        "status": 200,
+        "location": null,
+        "content_type": "text/html",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/contact-us",
+        "status": 301,
+        "location": "https://l0g.fr/contact/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/en/contact-us",
+        "status": 301,
+        "location": "https://l0g.fr/en/contact/",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/.well-known/mcp",
+        "status": 308,
+        "location": "https://l0g.fr/.well-known/mcp.json",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/api/mcp/.well-known/mcp",
+        "status": 308,
+        "location": "https://l0g.fr/.well-known/mcp.json",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/api/mcp/compact/.well-known/mcp",
+        "status": 308,
+        "location": "https://l0g.fr/.well-known/mcp.json",
+        "content_type": "text/html; charset=iso-8859-1",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/.well-known/mcp.json",
+        "status": 200,
+        "location": null,
+        "content_type": "application/json; charset=utf-8",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/.well-known/oauth-protected-resource",
+        "status": 404,
+        "location": null,
+        "content_type": "application/json; charset=utf-8",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/.well-known/oauth-authorization-server",
+        "status": 404,
+        "location": null,
+        "content_type": "application/json; charset=utf-8",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/favicon.ico",
+        "status": 200,
+        "location": null,
+        "content_type": "image/vnd.microsoft.icon",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/apple-touch-icon.png",
+        "status": 200,
+        "location": null,
+        "content_type": "image/png",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "path": "/apple-touch-icon-precomposed.png",
+        "status": 200,
+        "location": null,
+        "content_type": "image/png",
+        "server_date": "Tue, 08 Sep 2026 16:18:58 GMT",
+        "ok": true,
+        "errors": []
+      }
+    ]
+  }
+}

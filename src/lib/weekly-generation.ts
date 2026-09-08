@@ -240,7 +240,7 @@ export function createAutomatedWeeklyEdition({
       sourceLabel: 'l0g.fr, métadonnées éditoriales publiques',
       sourceUrl: 'https://l0g.fr/',
       csvValueColumn: 'published_analyses',
-      calloutLabel: 'COMPTER, PAS CLASSER',
+      calloutLabel: 'LA SEMAINE EN CHIFFRES',
       points: chartPoints(selected, windowStartDate, editionDate),
     },
     quote: focusFact,

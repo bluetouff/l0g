@@ -10,6 +10,7 @@ const root = fileURLToPath(rootUrl);
 const failures = [];
 const pages = new Map();
 const publicationCovers = new Map([
+  ['publications/les-banquiers-du-baril/index.html', 'les-banquiers-du-baril'],
   ['publications/eau-electricite/index.html', 'eau-electricite'],
   ['en/publications/water-electricity/index.html', 'water-electricity'],
   ['publications/euro-numerique/index.html', 'euro-numerique'],

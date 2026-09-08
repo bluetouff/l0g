@@ -135,5 +135,5 @@ test('the dedicated page and catalog expose five optimized editorial images', as
   assert.match(page, /Ces illustrations éditoriales sont conceptuelles/u);
   assert.match(page, /identite-telephone-og\.jpg/u);
   assert.match(spotlight, /identite-telephone-chaine\.webp/u);
-  assert.match(catalog, /identite-telephone-og\.jpg/u);
+  assert.match(catalog, /publication="digital-identity"/u, 'the identity edition remains discoverable when a newer book becomes the catalog cover');
 });

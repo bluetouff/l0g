@@ -157,7 +157,8 @@ test('le SVG, le CSV et les textes sont générés depuis la même édition', ()
   const thread = buildWeeklyThreadText(edition);
 
   assert.match(svg, new RegExp(`<svg[^>]+viewBox="0 0 ${dimensions.width} ${dimensions.height}"`));
-  assert.match(svg, /COMPTER, PAS CLASSER/);
+  assert.match(svg, /LA SEMAINE EN CHIFFRES/);
+  assert.doesNotMatch(svg, /COMPTER, PAS CLASSER/);
   assert.match(svg, /Source :/);
   assert.match(svg, /CC BY 4\.0/);
   assert.doesNotMatch(svg, /<(?:script|image|foreignObject)\b/i);

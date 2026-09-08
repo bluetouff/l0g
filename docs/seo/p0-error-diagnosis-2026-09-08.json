@@ -1,0 +1,103 @@
+{
+  "from": "2026-08-25T00:00:00+02:00",
+  "through": "2026-09-08T12:47:52+02:00",
+  "files_read": 15,
+  "line_counts": {
+    "other_status": 359190,
+    "selected": 1337,
+    "outside_window": 6161
+  },
+  "status_counts": {
+    "400": 1331,
+    "500": 5,
+    "502": 1
+  },
+  "shape_counts": {
+    "http_request": 1337
+  },
+  "privacy": "IP, identités Apache, référents, queries et corps bruts exclus. UA expurgé.",
+  "coverage": "Journaux encore présents uniquement ; aucun historique reconstitué.",
+  "collected_at": "2026-09-08T16:20:27.046502+00:00",
+  "redacted_access_report_sha256": "dc2f95e51fb9cd0dbf37d63a6d4ec338c22f88f2fe375ab878426ce9b876d37e",
+  "http_400_families": {
+    "mcp_post": 377,
+    "css_gradient_as_url": 929,
+    "path_traversal_probe": 22,
+    "root_post": 3
+  },
+  "server_errors": [
+    {
+      "time": "2026-09-01T18:21:26+02:00",
+      "status": 500,
+      "method": "POST",
+      "protocol": "HTTP/2.0",
+      "path_without_query": "/api/mcp",
+      "user_agent_redacted": "Deno/2.7.5",
+      "request_shape": "http_request",
+      "request_sha256": null,
+      "cause": "requires_error_log_correlation"
+    },
+    {
+      "time": "2026-09-01T18:21:26+02:00",
+      "status": 502,
+      "method": "POST",
+      "protocol": "HTTP/2.0",
+      "path_without_query": "/api/mcp",
+      "user_agent_redacted": "Deno/2.7.5",
+      "request_shape": "http_request",
+      "request_sha256": null,
+      "cause": "requires_error_log_correlation"
+    },
+    {
+      "time": "2026-09-02T05:47:09+02:00",
+      "status": 500,
+      "method": "POST",
+      "protocol": "HTTP/1.1",
+      "path_without_query": "/",
+      "user_agent_redacted": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/[ip-redacted] Safari/537.36",
+      "request_shape": "http_request",
+      "request_sha256": null,
+      "cause": "requires_error_log_correlation"
+    },
+    {
+      "time": "2026-09-05T13:50:50+02:00",
+      "status": 500,
+      "method": "POST",
+      "protocol": "HTTP/2.0",
+      "path_without_query": "/api/mcp",
+      "user_agent_redacted": "curl/7.88.1",
+      "request_shape": "http_request",
+      "request_sha256": null,
+      "cause": "requires_error_log_correlation"
+    },
+    {
+      "time": "2026-09-05T19:24:20+02:00",
+      "status": 500,
+      "method": "POST",
+      "protocol": "HTTP/1.1",
+      "path_without_query": "/",
+      "user_agent_redacted": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/[ip-redacted] Safari/537.36",
+      "request_shape": "http_request",
+      "request_sha256": null,
+      "cause": "requires_error_log_correlation"
+    },
+    {
+      "time": "2026-09-07T01:22:54+02:00",
+      "status": 500,
+      "method": "POST",
+      "protocol": "HTTP/1.1",
+      "path_without_query": "/",
+      "user_agent_redacted": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/[ip-redacted] Safari/537.36",
+      "request_shape": "http_request",
+      "request_sha256": null,
+      "cause": "requires_error_log_correlation"
+    }
+  ],
+  "interpretation": {
+    "css_gradient_as_url": "HTTP GET targets contain CSS gradients; these are not editorial URLs. Initiating software cannot be identified from a declared user-agent.",
+    "mcp_post": "API transport responses; request bodies and application error codes are not present in access logs. Exact reason is unproven.",
+    "path_traversal_probe": "Non-editorial paths attempt to traverse directories toward environment files; do not attribute the actor from the user-agent.",
+    "root_post": "Three POST / responses follow three POST / status 500 responses; cause awaits error-log correlation.",
+    "server_errors": "Each response is linked to a request, but classification as application incident or probe-induced error awaits the error log."
+  }
+}
