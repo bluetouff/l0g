@@ -1,0 +1,363 @@
+{
+  "pages": 1312,
+  "sitemap_urls": 786,
+  "sitemap_undesirable": [],
+  "undesirable_internal_destinations": [],
+  "strategic_inlinks": [
+    {
+      "route": "/en/guides/read-h41-fed-balance-sheet/",
+      "inlinks": 16,
+      "depth": 1
+    },
+    {
+      "route": "/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/",
+      "inlinks": 5,
+      "depth": 1
+    },
+    {
+      "route": "/en/analysis/realt-liquidation-token-without-the-deed/",
+      "inlinks": 9,
+      "depth": 2
+    },
+    {
+      "route": "/en/analysis/kospi-concentrated-liquidation-samsung-sk-hynix/",
+      "inlinks": 6,
+      "depth": 1
+    }
+  ],
+  "cohort": {
+    "rows": 154,
+    "decisions": {
+      "a_indexer": 67,
+      "noindex_voulu": 59,
+      "inconnue": 18,
+      "redirection": 8,
+      "supprimee_410": 2
+    },
+    "gsc_statuses": {
+      "Bloquée en raison d’un autre problème de type 4xx": 2,
+      "Bloquée en raison d’une interdiction d’accès (403)": 2,
+      "Détectée, actuellement non indexée": 47,
+      "Explorée, actuellement non indexée": 84,
+      "Introuvable (404)": 19
+    },
+    "by_status": {
+      "Bloquée en raison d’un autre problème de type 4xx": {
+        "rows": 2,
+        "decisions": {
+          "noindex_voulu": 2
+        }
+      },
+      "Bloquée en raison d’une interdiction d’accès (403)": {
+        "rows": 2,
+        "decisions": {
+          "noindex_voulu": 1,
+          "redirection": 1
+        }
+      },
+      "Détectée, actuellement non indexée": {
+        "rows": 47,
+        "decisions": {
+          "a_indexer": 47
+        }
+      },
+      "Explorée, actuellement non indexée": {
+        "rows": 84,
+        "decisions": {
+          "a_indexer": 20,
+          "noindex_voulu": 51,
+          "inconnue": 13
+        }
+      },
+      "Introuvable (404)": {
+        "rows": 19,
+        "decisions": {
+          "redirection": 7,
+          "supprimee_410": 2,
+          "inconnue": 5,
+          "noindex_voulu": 5
+        }
+      }
+    },
+    "indexable_quality": {
+      "zero_inlinks": [],
+      "deeper_than_three_or_unreachable": [
+        "https://l0g.fr/13/"
+      ]
+    }
+  },
+  "reconciliation": {
+    "previous_rows": 176,
+    "current_rows": 154,
+    "overlap": 124,
+    "transitions": {
+      "nouvelle_dans_les_exemples": 30,
+      "statut_change": 9,
+      "statut_inchange": 115
+    },
+    "absent_from_current_examples": [
+      {
+        "url": "https://l0g.fr/12/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/chip-relapse-bear-market-record-profits/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/digital-euro-1-the-euro-that-changes-its-debtor/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/digital-euro-4-programmable-money-legal-boundary/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/digital-euro-6-who-controls-the-machine/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/do-strip-clubs-really-predict-recessions/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/india-sugar-ethanol-e20/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/iran-how-far-can-bessent-close-the-dollar/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/private-credit-risk-begins-where-data-ends/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/synthetic-patient-medicare-advantage/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/the-average-consumer-does-not-exist/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/the-balance-sheet-apollo-does-not-consolidate/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/the-great-e-invoicing-toll-3-the-price-of-free/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/the-guarantee-nobody-signed/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/the-lender-of-next-to-last-resort/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/the-missing-ledger/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/two-trillion-dollars-in-hundred-dollar-bills/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/us-gdp-private-demand-q2-2026/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/who-bought-4-billion-french-mortgages/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/yen-163412-net-short-contracts-before-shock/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/zombie-funds-private-valuations/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/glossary/cat-nat/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/glossary/cet1/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/glossary/niveau-3/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/glossary/reassurance/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/glossary/sanctions-secondaires/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/guides/read-sovereign-cds/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/publications/digital-euro/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/publications/great-e-invoicing-toll/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/publications/water-electricity/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/en/tools/who-can-see-my-e-invoice/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/guides/lire-les-cds-souverains/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/guides/lire-une-titrisation-de-credit-a-la-consommation/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/hebdo/2026-08-02-atlas-athene/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/outils/devis-adaptation-refroidissement/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/outils/qui-peut-voir-ma-facture/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/posts/bilan-apollo-non-consolide/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/posts/credit-prive-risque-trou-donnees/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/posts/fissure-consommateur-americain-economie-en-k/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/posts/le-peage-du-tresor-acces-clearing-obligatoire/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/posts/risque-europeen-supervision-nationale-fonds/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/posts/synapse-baas-grand-livre-manquant/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/posts/warsh-fed-sans-guidance-cout-incertitude-fomc-juillet-2026/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/posts/yen-163412-contrats-vendeurs-avant-choc/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/publications/eau-electricite/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/publications/euro-numerique/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/sources/dgfip-legifrance/",
+        "statut_precedent": "Détectée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/posts/pontes-bce-blockchain-privee-reglement-tokenise/",
+        "statut_precedent": "Explorée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/publications/votre-identite-dans-un-telephone/",
+        "statut_precedent": "Explorée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/posts/votre-identite-dans-un-telephone-8-votre-identite-doit-vous-laisser-un-recu/",
+        "statut_precedent": "Explorée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://l0g.fr/posts/cash-pas-cash-coussin-liquidite-fonds-obligataires/",
+        "statut_precedent": "Explorée, actuellement non indexée",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      },
+      {
+        "url": "https://crypto.l0g.fr/",
+        "statut_precedent": "Page en double sans URL canonique sélectionnée par l’utilisateur",
+        "decision": "absente_des_exemples_actuels_etat_final_non_prouve"
+      }
+    ],
+    "caveat": "Absence des listes et changement de statut observé ne prouvent ni indexation finale ni effet causal des corrections."
+  },
+  "reviewed_external_decisions": "Trois URL de service traitées après sondes HTTP ; les inconnues restantes appartiennent au sous-domaine crypto."
+}

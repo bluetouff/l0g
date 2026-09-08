@@ -95,6 +95,8 @@ Restent les salaires et les heures, souvent négligés. En mai, le salaire horai
 
 ## Lire le rapport en pratique
 
+L’emploi intérimaire permet aussi de tester ce qu’on attend d’un indicateur avancé. Notre enquête sur [les indicateurs de récession, des strip-clubs à l’intérim](/posts/strip-clubs-annoncent-ils-recessions/) compare les séries disponibles, les tests historiques et leurs faux positifs.
+
 Tout est public et gratuit sur le site du BLS, le premier vendredi du mois à 8 h 30 heure de l'Est ; le rapport de juin 2026 paraît le 2 juillet. Le BLS publie même une table indiquant quelles variations de l'enquête ménages sont statistiquement significatives, un réflexe sain avant de réagir. La méthode de lecture tient en quelques principes. Ne jamais lire le NFP sans sa marge d'erreur ni sans les révisions des deux mois précédents. Croiser les deux enquêtes plutôt que d'en isoler une. Lire le chômage avec la participation. Et surtout, suivre la tendance sur plusieurs mois plutôt que le chiffre du vendredi, car c'est la tendance, pas la surprise, qui survit aux révisions.
 
 Deux mises en garde sur la fiabilité. La donnée d'octobre 2025 de l'enquête ménages n'a pas pu être collectée à cause de la fermeture partielle des administrations, un trou qui se lit encore dans les séries. Et le contexte institutionnel s'est tendu : à l'été 2025, après des chiffres décevants et de fortes révisions à la baisse, la direction du BLS a été remaniée, ce qui a nourri un débat sur l'indépendance de la statistique publique. Aucune de ces réserves n'invalide la donnée, mais toutes invitent à la lire pour ce qu'elle est, une estimation perfectible, et non un verdict.

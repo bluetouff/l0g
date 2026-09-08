@@ -14,7 +14,7 @@ import { buildSignalHistorySurface, type SignalObservation } from './signal-hist
 
 type RiskSourceInput = {
   source?: string;
-  latestDate?: string;
+  latestDate?: string | null;
   metrics?: number;
   maxRisk?: number;
 };

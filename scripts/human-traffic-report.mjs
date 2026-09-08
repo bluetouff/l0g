@@ -137,7 +137,7 @@ export function classifyTrafficRequest(line) {
   else if (SOCIAL_PREVIEW_USER_AGENT.test(userAgent)) category = 'social_previews';
   else if (SCAN_PATH.test(path)) category = 'scans';
   else if (CRAWLER_USER_AGENT.test(userAgent) || isInternalL0gUserAgent(userAgent)) category = 'known_crawlers';
-  else if (request.method === 'GET' && request.status === 200 && normalizeDocumentPath(request.target)) category = 'human_html';
+  else if (userAgent && userAgent !== '-' && request.method === 'GET' && request.status === 200 && normalizeDocumentPath(request.target)) category = 'human_html';
   return { day: request.day, category };
 }
 
@@ -233,6 +233,19 @@ export function createHumanTrafficAccumulator(
         const count = rollingRows.reduce((sum, day) => sum + day.requests[category], 0);
         return [category, count >= minimumCohort ? count : null];
       }));
+      const channels = { google: 0, x: 0, direct: 0, other: 0 };
+      for (const [date, day] of days) {
+        if (date < from || date > through) continue;
+        for (const [domain, count] of day.referrers) {
+          const channel = /^(?:[a-z0-9-]+\.)?google\.(?:com|[a-z]{2}|co\.[a-z]{2}|com\.[a-z]{2})$/.test(domain) ? 'google'
+            : ['t.co', 'x.com', 'twitter.com', 'mobile.twitter.com'].includes(domain) ? 'x'
+              : domain === '(direct)' ? 'direct' : 'other';
+          channels[channel] += count;
+        }
+      }
+      const humanReferrers = Object.fromEntries(Object.entries(channels).map(([channel, count]) => [
+        channel, count >= minimumCohort ? count : null,
+      ]));
 
       return {
         schema_version: HUMAN_TRAFFIC_SCHEMA_VERSION,
@@ -255,7 +268,12 @@ export function createHumanTrafficAccumulator(
           unit: 'requêtes HTTP Apache, sans déduplication par personne ni adresse',
           precedence: ['mcp_api', 'social_previews', 'scans', 'known_crawlers', 'human_html', 'other'],
           totals: classTotals,
-          rolling_7_days: { from, through, requests: rollingRequests },
+          rolling_7_days: {
+            from, through, requests: rollingRequests,
+            human_referrers: humanReferrers,
+            days_observed: rollingRows.length,
+            coverage: 'Dates des journaux Apache disponibles ; la dernière journée peut être partielle. Aucune complétude historique garantie.',
+          },
           definitions: {
             human_html: 'GET 200 d’un document HTML, après exclusion des surfaces machine et user-agents automatisés connus.',
             mcp_api: 'Requête vers /api, les transports MCP ou leurs documents de découverte.',

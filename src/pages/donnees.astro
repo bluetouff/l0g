@@ -8,6 +8,7 @@ import TrustBar from '../components/TrustBar.astro';
 import { glossaryEntries } from '../config/glossary.ts';
 import { methodologyPages } from '../config/methodology.ts';
 import { AGENT_VERSION } from '../config/agent-contract.mjs';
+import { datasetCreatorEntity } from '../config/entities.ts';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -270,7 +271,7 @@ const jsonLd = {
     dateModified: dataset.updated?.toISOString(),
     isAccessibleForFree: true,
     license: 'https://creativecommons.org/licenses/by/4.0/',
-    creator: { '@id': `${site}/#org` },
+    creator: datasetCreatorEntity,
   })),
 };
 const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');

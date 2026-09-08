@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { serializeInlineScriptData } from '../../lib/security.ts';
 import { AGENT_VERSION } from '../../config/agent-contract.mjs';
+import { datasetCreatorEntity } from '../../config/entities.ts';
 
 // --- Structured data : l'API publique decrite comme jeu de donnees citable ---
 const ASITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -23,7 +24,7 @@ const datasetLd = {
   inLanguage: 'fr',
   license: 'https://creativecommons.org/licenses/by/4.0/',
   isAccessibleForFree: true,
-  creator: { '@id': `${ASITE}/#org` },
+  creator: datasetCreatorEntity,
   keywords: ['Agent Surface', 'API publique', 'risk intelligence', 'Risk Diff', 'Black Box Recorder', 'dette US', 'signals history', 'evidence graph'],
   distribution: [
     {

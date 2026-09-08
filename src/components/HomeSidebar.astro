@@ -1,5 +1,4 @@
 ---
-import L0gGlyph from './L0gGlyph.astro';
 import PaCheckCard from './PaCheckCard.astro';
 import SupportCard from './SupportCard.astro';
 import WatchCard from './WatchCard.astro';
@@ -12,31 +11,16 @@ import WatchCard from './WatchCard.astro';
 
   <WatchCard />
 
-  <a href="/maintenant/" class="now-card">
-    <span class="now-card-top">
-      <span class="now-orbit" aria-hidden="true"><i></i><b></b></span>
-      <small>// point quotidien</small>
-    </span>
-    <strong>Maintenant</strong>
-    <p>Les mouvements récents, leur importance et les prochaines vérifications.</p>
-    <span class="now-card-cta">Ouvrir <i aria-hidden="true">›</i></span>
-  </a>
-
-  <section class="start-card">
-    <div class="start-top">
-      <p class="eyebrow">// nouveau ici ?</p>
-      <L0gGlyph name="understand" />
-    </div>
-    <h2>Comprendre les mécanismes essentiels.</h2>
-    <p>
-      Choisissez votre besoin : comprendre une notion, suivre un risque,
-      vérifier un chiffre ou retrouver une analyse.
-    </p>
-    <a href="/demarrer/">Découvrir l0g <span aria-hidden="true">›</span></a>
-  </section>
-
   <section class="side-shortcuts">
     <h2>// raccourcis</h2>
+    <a href="/maintenant/">
+      <strong>Maintenant</strong>
+      <span>Les mouvements récents et les prochaines vérifications</span>
+    </a>
+    <a href="/demarrer/">
+      <strong>Découvrir l0g</strong>
+      <span>Comprendre, suivre un risque ou vérifier un chiffre</span>
+    </a>
     <a href="/sujets/">
       <strong>Sujets suivis</strong>
       <span>Les dossiers dans la durée</span>
@@ -50,156 +34,13 @@ import WatchCard from './WatchCard.astro';
 
 <style>
   .home-sidebar { display: grid; gap: 1.5rem; }
-  .home-sidebar > section > h2,
-  .eyebrow {
+  .home-sidebar > section > h2 {
     margin-bottom: 0.7rem;
     color: var(--color-signal);
     font-family: var(--font-mono);
     font-size: 0.68rem;
     font-weight: 600;
     letter-spacing: 0.11em;
-    text-transform: uppercase;
-  }
-  .now-card {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--color-amber) 42%, var(--color-line));
-    border-radius: 14px 4px 14px 14px;
-    padding: 1rem;
-    background:
-      radial-gradient(90% 110% at 0 0, color-mix(in srgb, var(--color-amber) 9%, transparent), transparent 72%),
-      var(--surface-elevated);
-    box-shadow: inset 0 1px 0 var(--edge-highlight);
-  }
-  .now-card::after {
-    content: '';
-    position: absolute;
-    right: -2.6rem;
-    bottom: -3.2rem;
-    width: 8rem;
-    height: 8rem;
-    border: 1px dashed color-mix(in srgb, var(--color-signal) 25%, transparent);
-    border-radius: 50%;
-  }
-  .now-card-top {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-  }
-  .now-card-top small {
-    color: var(--color-amber);
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    font-weight: 650;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-  }
-  .now-orbit {
-    position: relative;
-    display: grid;
-    width: 2rem;
-    height: 2rem;
-    flex: none;
-    place-items: center;
-    border: 1px solid color-mix(in srgb, var(--color-amber) 55%, var(--color-line));
-    border-radius: 50%;
-  }
-  .now-orbit i {
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: 50%;
-    background: var(--color-amber);
-    box-shadow: 0 0 14px var(--color-amber);
-  }
-  .now-orbit b {
-    position: absolute;
-    inset: 0.28rem;
-    border: 1px dashed color-mix(in srgb, var(--color-signal) 45%, transparent);
-    border-radius: 50%;
-  }
-  .now-card > strong {
-    display: block;
-    margin-top: 0.7rem;
-    color: var(--color-bright);
-    font-family: var(--font-display);
-    font-size: 1.18rem;
-  }
-  .now-card > p {
-    max-width: 14rem;
-    margin-top: 0.4rem;
-    color: var(--color-muted);
-    font-size: 0.76rem;
-    line-height: 1.5;
-  }
-  .now-card-cta {
-    position: relative;
-    z-index: 1;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    margin-top: 0.8rem;
-    color: var(--color-signal);
-    font-family: var(--font-mono);
-    font-size: 0.64rem;
-    font-weight: 650;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .now-card-cta i { color: var(--color-amber); font-size: 0.9rem; font-style: normal; }
-  .now-card:hover { border-color: color-mix(in srgb, var(--color-amber) 72%, var(--color-line)); }
-  .now-card:hover > strong { color: var(--color-amber); }
-  .start-card {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--color-signal) 35%, var(--color-line));
-    border-radius: 14px 4px 14px 14px;
-    padding: 1.1rem;
-    background:
-      radial-gradient(100% 120% at 0 0, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent 70%),
-      var(--surface-elevated);
-    box-shadow: inset 0 1px 0 var(--edge-highlight), 0 16px 45px color-mix(in srgb, #000 14%, transparent);
-  }
-  .start-card::after {
-    content: '';
-    position: absolute;
-    top: -1px;
-    right: -1px;
-    width: 0.75rem;
-    height: 0.75rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-signal) 45%, var(--color-line));
-    border-left: 1px solid color-mix(in srgb, var(--color-signal) 45%, var(--color-line));
-    background: var(--color-ink);
-  }
-  .start-top {
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    gap: 0.75rem;
-  }
-  .start-card .eyebrow { margin-bottom: 0.45rem; }
-  .start-card h2 {
-    color: var(--color-bright);
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    line-height: 1.2;
-  }
-  .start-card p:not(.eyebrow) {
-    margin-top: 0.65rem;
-    color: var(--color-muted);
-    font-size: 0.82rem;
-    line-height: 1.55;
-  }
-  .start-card a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    margin-top: 0.9rem;
-    color: var(--color-signal);
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
   .side-shortcuts { display: grid; gap: 0.45rem; }
@@ -214,4 +55,5 @@ import WatchCard from './WatchCard.astro';
   .side-shortcuts strong { color: var(--color-paper); font-size: 0.86rem; }
   .side-shortcuts span { margin-top: 0.12rem; color: var(--color-muted); font-size: 0.72rem; }
   .side-shortcuts a:hover strong { color: var(--color-signal); }
+  .side-shortcuts a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
 </style>

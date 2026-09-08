@@ -1,16 +1,59 @@
 ---
 title: "Nvidia : les 500 milliards qui n'existent pas encore"
 seoTitle: "Nvidia : audit des 500 milliards de dollars de financements | l0g"
-description: "Nvidia veut mobiliser plus de 500 milliards de dollars. L'audit des six partenaires révèle surtout des objectifs, de la dette, des co-investisseurs et des plateformes déjà en place."
+description: "Suivi de l’enquête Nvidia : 105 milliards de dollars de garanties pour un campus loué à OpenAI, conditions publiées et paramètres encore masqués."
 pubDate: 2026-08-11T14:50:00+02:00
-updatedDate: 2026-08-11T14:50:00+02:00
+updatedDate: 2026-09-08T13:10:04+02:00
 tags: ["nvidia", "intelligence artificielle", "data centers", "crédit privé", "infrastructure", "enquête"]
 draft: false
 quickTake:
-  fact: "Nvidia a signé six protocoles d'accord visant à mobiliser plus de 500 milliards de dollars de capitaux tiers, sans publier d'engagement individuel ni de calendrier."
-  importance: "Le groupe cherche à transformer le financement de son écosystème de compute en une infrastructure distribuable aux investisseurs institutionnels."
-  uncertainty: "La définition du capital mobilisé, la part réellement nouvelle et les conditions du backstop potentiel de 125 milliards restent inconnues."
+  fact: "Depuis l’analyse du 11 août, Nvidia a déclaré des garanties plafonnées à 105 milliards de dollars pour un campus de SB Energy loué à une filiale d’OpenAI."
+  importance: "Le suivi relie la question initiale du partage du risque aux conditions publiées dans les dépôts SEC des 17 et 26 août 2026."
+  uncertainty: "Le plafond est conditionnel. Il ne mesure ni une perte estimée, ni des capitaux levés. Le modèle de garantie publié masque encore certains paramètres."
 ---
+
+<section class="prose" id="suivi-septembre-2026" aria-labelledby="nvidia-suivi-titre" style="border:1px solid var(--color-line);border-top:3px solid var(--color-signal);border-radius:4px 4px 12px 12px;padding:clamp(1rem,3vw,1.5rem);background:var(--color-surface);scroll-margin-top:2rem">
+<p class="mono-label">Suivi documentaire · <time datetime="2026-09-08">8 septembre 2026</time></p>
+<h2 id="nvidia-suivi-titre" style="margin-top:0.8rem">Nvidia : les clauses derrière 105 milliards de garanties</h2>
+
+**11 août : la question.** L’[analyse initiale](#analyse-initiale) demandait comment Nvidia partagerait le risque du financement de l’IA. Les documents suivants ajoutent un cas précis à cette enquête.
+
+**17 août : l’engagement.** Nvidia déclare des garanties de valeur résiduelle plafonnées à **105 milliards de dollars** pour un campus de SB Energy dans l’Ohio, loué à une filiale d’OpenAI. En cas de certains défauts du locataire, le paiement dépend notamment des sommes récupérées par relocation ou vente. Nvidia peut aussi reprendre le bail. [SEC, formulaire 8-K, rubrique 1.01](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000069/nvda-20260817.htm)
+
+**26 août : les clauses.** L’annexe au rapport trimestriel publie un modèle de garantie. La formule détaillée de la perte couverte et certains paramètres restent masqués. [SEC, annexe 10.1](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda2027q2ex101.htm)
+
+<figure class="infographic" style="max-width:360px;margin-inline:auto;padding-bottom:0.75rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" role="img" aria-labelledby="nvidia-garantie-title nvidia-garantie-desc" style="width:100%;height:auto;display:block;font-family:var(--font-read)">
+<title id="nvidia-garantie-title">Le campus de l’Ohio : loyers et garantie</title>
+<desc id="nvidia-garantie-desc">OpenAI est locataire de SB Energy. Nvidia garantit sous conditions certains risques de défaut. Le plafond initial de 105 milliards de dollars concerne les garanties du campus, sans représenter une perte estimée. Source : Nvidia, dépôt SEC du 17 août 2026.</desc>
+<rect x="20" y="16" width="320" height="78" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line)"/>
+<text x="180" y="47" text-anchor="middle" fill="var(--color-bright)" font-size="23" font-weight="700">OpenAI</text>
+<text x="180" y="76" text-anchor="middle" fill="var(--color-prose)" font-size="18">Locataire du campus</text>
+<path d="M180 100V137m-6-7 6 7 6-7" fill="none" stroke="var(--color-signal)" stroke-width="2"/>
+<text x="199" y="124" fill="var(--color-prose)" font-size="17">Loyers</text>
+<rect x="20" y="144" width="320" height="78" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line)"/>
+<text x="180" y="175" text-anchor="middle" fill="var(--color-bright)" font-size="23" font-weight="700">SB Energy</text>
+<text x="180" y="204" text-anchor="middle" fill="var(--color-prose)" font-size="18">Bailleur</text>
+<path d="M180 264V230m-6 7 6-7 6 7" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="199" y="252" fill="var(--color-prose)" font-size="17">Garantie</text>
+<rect x="20" y="272" width="320" height="88" rx="10" fill="var(--color-surface-2)" stroke="var(--color-accent)"/>
+<text x="180" y="305" text-anchor="middle" fill="var(--color-bright)" font-size="23" font-weight="700">Nvidia</text>
+<text x="180" y="337" text-anchor="middle" fill="var(--color-prose)" font-size="18">Plafond initial : 105 Md$</text>
+</svg>
+<figcaption>Schéma des rôles, sous conditions contractuelles. Source : <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000069/nvda-20260817.htm">Nvidia, 17 août 2026</a>.</figcaption>
+</figure>
+
+**Notre lecture.** Le fournisseur accepte une exposition à certains défauts de son client. La garantie devient effective par étapes avec le démarrage des baux, sous conditions. Le plafond ne représente ni un versement immédiat ni une perte estimée. [Nvidia, rapport trimestriel, note 10](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm)
+
+**La limite.** Ces pièces ne démontrent pas que les 500 milliards ont été mobilisés et ne permettent pas d’assimiler automatiquement cette opération au soutien potentiel de 125 milliards évoqué le 11 août. Le prochain contrôle portera sur les paramètres contractuels encore masqués et les conditions de mise en service.
+
+Le repère de trésorerie a également évolué : Nvidia déclare **56,6 milliards de dollars** de trésorerie, équivalents et titres de dette négociables au 26 juillet, contre **50,3 milliards** au trimestre précédent. Les comparaisons de bilan du texte initial restent historiques. [Nvidia, commentaire de la direction financière du 26 août](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm)
+
+</section>
+
+<h2 id="analyse-initiale">Analyse initiale du 11 août 2026</h2>
+
+> Le texte ci-dessous conserve son état documentaire du 11 août, ses chiffres datés et ses questions ouvertes à cette date. Le suivi ci-dessus n’actualise pas l’ensemble des programmes des six partenaires.
 
 Le 10 août 2026, Nvidia a annoncé vouloir mobiliser plus de 500 milliards de dollars pour financer des infrastructures d'intelligence artificielle. Le constructeur de puces a associé à ce chiffre six noms capables de lui donner immédiatement de la consistance : Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs et KKR.
 

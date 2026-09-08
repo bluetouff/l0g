@@ -6,6 +6,7 @@ import ArticleHeroImage from '../../../components/ArticleHeroImage.astro';
 import SupportCard from '../../../components/SupportCard.astro';
 import WatchCard from '../../../components/WatchCard.astro';
 import { authorEntity, organizationEntity } from '../../../config/entities.ts';
+import { isAsiaAnalysis } from '../../../config/english-reading-paths.ts';
 import { readingTime } from '../../../lib/reading-time.ts';
 import { isTranslationStale } from '../../../lib/agent-surface.ts';
 
@@ -46,6 +47,7 @@ const primaryImage = {
 const frUrl = sourcePost ? new URL(`/posts/${sourcePost.id}/`, Astro.site).toString() : new URL('/', Astro.site).toString();
 const sourceUpdated = sourcePost ? (sourcePost.data.updatedDate ?? sourcePost.data.pubDate) : post.data.sourceUpdatedDate;
 const translationIsStale = sourcePost && isTranslationStale(sourceUpdated, post.data.sourceUpdatedDate);
+const belongsToAsiaPath = isAsiaAnalysis(post.id, post.data.tags);
 
 const alternateLinks = [
   { hreflang: 'en', href: url },
@@ -155,6 +157,14 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
         <p class="stale-note" data-pagefind-ignore>
           Translation freshness warning: the French source was revised after this English version.
         </p>
+      )}
+
+      {belongsToAsiaPath && (
+        <a class="context-path" href="/en/asia/">
+          <span>// reading path</span>
+          <strong>Asia in the global financial system</strong>
+          <em>Follow the rates, currencies, credit and capital flows around this analysis.</em>
+        </a>
       )}
 
       <div class="post-rule" aria-hidden="true"></div>
@@ -298,6 +308,20 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     color: var(--color-signal);
     background: color-mix(in srgb, var(--color-signal) 8%, transparent);
   }
+  .context-path {
+    display: grid;
+    gap: .28rem;
+    margin-top: 1rem;
+    padding: .8rem .9rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 38%, transparent);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-accent) 6%, transparent);
+    text-decoration: none;
+  }
+  .context-path:hover { border-color: var(--color-accent); }
+  .context-path span { color: var(--color-accent); font-family: var(--font-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .06em; }
+  .context-path strong { color: var(--color-bright); line-height: 1.35; }
+  .context-path em { color: var(--color-muted); font-size: .84rem; font-style: normal; line-height: 1.45; }
   .stale-note {
     margin-top: 1rem;
     padding: 0.85rem 1rem;

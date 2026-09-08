@@ -11,7 +11,11 @@
     "frozen_through": "2026-09-20",
     "minimum_post_recrawl_impressions": 150,
     "preferred_post_recrawl_impressions": 300,
-    "decision_dimensions": ["position", "country", "device"],
+    "decision_dimensions": [
+      "position",
+      "country",
+      "device"
+    ],
     "single_variable_changes": true
   },
   "experiments": [
@@ -79,5 +83,83 @@
       "aggregate_impressions": 103,
       "status": "frozen"
     }
-  ]
+  ],
+  "measurement_followup": {
+    "export_due": "2026-09-12",
+    "review_due": "2026-09-20",
+    "earliest_title_edit": "2026-09-21",
+    "automation_id": "p2-l0g-relev-s-gsc-et-titres",
+    "joint_dimensions": [
+      "date",
+      "page",
+      "query",
+      "country",
+      "device"
+    ],
+    "data_state": "final",
+    "post_recrawl_rule": "Première journée entière après une réexploration prouvée postérieure au déploiement étudié. Ne pas assimiler date de publication et date de crawl.",
+    "confounders": [
+      "Maillage enrichi le 8 septembre : /en/start/, parcours Asie et guides.",
+      "Nvidia : suivi éditorial ajouté avant le relevé ; pas un test de titre isolé.",
+      "Productivité : révision factuelle ; distinguer modification du contenu et effet du titre."
+    ],
+    "pages": [
+      {
+        "id": "h41",
+        "route": "/en/guides/read-h41-fed-balance-sheet/",
+        "observed_title": "Fed H.4.1: what bank reserves really show | l0g",
+        "recrawled_after_release_at": null,
+        "post_recrawl_impressions": null,
+        "decision": "maintenir_en_attente_de_mesure"
+      },
+      {
+        "id": "nvidia-500bn",
+        "route": "/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/",
+        "observed_title": "Nvidia $500bn AI financing: what is committed? | l0g",
+        "recrawled_after_release_at": null,
+        "post_recrawl_impressions": null,
+        "decision": "maintenir_en_attente_de_mesure"
+      },
+      {
+        "id": "realt-liquidation",
+        "route": "/en/analysis/realt-liquidation-token-without-the-deed/",
+        "observed_title": "RealT liquidation: $2.72m raised, 39 deeds unchanged | l0g",
+        "recrawled_after_release_at": null,
+        "post_recrawl_impressions": null,
+        "decision": "maintenir_en_attente_de_mesure"
+      },
+      {
+        "id": "productivity",
+        "route": "/en/analysis/us-productivity-real-pay-lags/",
+        "observed_title": "US Productivity Q2 Revised: +1.4%, Real Pay −3.3% | l0g",
+        "recrawled_after_release_at": null,
+        "post_recrawl_impressions": null,
+        "decision": "maintenir_en_attente_de_mesure"
+      },
+      {
+        "id": "cofer",
+        "route": "/en/guides/read-central-bank-fx-reserves-cofer/",
+        "observed_title": "COFER: reading central bank FX reserves | l0g",
+        "recrawled_after_release_at": null,
+        "post_recrawl_impressions": null,
+        "decision": "maintenir_en_attente_de_mesure"
+      },
+      {
+        "id": "taiwan",
+        "route": "/en/analysis/taiwan-life-insurers-724-billion-currency-risk/",
+        "observed_title": "Taiwan life insurers: $724bn abroad and FX risk | l0g",
+        "recrawled_after_release_at": null,
+        "post_recrawl_impressions": null,
+        "decision": "maintenir_en_attente_de_mesure"
+      },
+      {
+        "id": "start",
+        "route": "/en/start/",
+        "observed_title": "l0g in English: macro, credit and financial risk | l0g",
+        "recrawled_after_release_at": null,
+        "post_recrawl_impressions": null,
+        "decision": "maintenir_en_attente_de_mesure"
+      }
+    ]
+  }
 }

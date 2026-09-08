@@ -7,32 +7,98 @@ const hasApi = existsSync(new URL('../api/index.astro', import.meta.url));
 const hasMcp = existsSync(new URL('../mcp/index.astro', import.meta.url));
 const hasAgentSurface = existsSync(new URL('../agent-surface/index.astro', import.meta.url));
 const steps = [
-  ['1', 'Read the reference guides', '/en/guides/', 'Start with the English guides if you want durable primers on macro, markets, SEC filings, crypto regulation and systemic risk.'],
-  ['2', 'Check the methodology', '/en/methodology/', 'Use the methodology page to understand scoring, signal families, limits, uncertainty and the anti-precision doctrine.'],
-  ['3', 'Inspect the source doctrine', '/en/sources/', 'l0g gives priority to official data, filings, central banks, regulators and transparent primary datasets.'],
-  ['4', 'Use machine-readable access', hasApi ? '/en/api/' : '/api/', 'The API exposes JSON, NDJSON, OpenAPI, evidence graph, risk snapshots and signal history for reproducible workflows.'],
-  ['5', 'Connect an agent', hasMcp ? '/en/mcp/' : '/mcp/', 'The MCP server and Agent Surface let agents query claims, sources, changes, freshness and article text without scraping HTML.'],
+  ['1', 'Read the latest investigations', '/en/analysis/', 'Start with sourced reporting on macro, credit, technology, policy and the machinery that transmits risk across markets.'],
+  ['2', 'Choose a durable reference guide', '/en/guides/', 'Use the guides when you need to read a balance sheet, a public dataset, a market instrument or a regulatory text.'],
+  ['3', 'Follow Asia through the global system', '/en/asia/', 'Trace Japan, Korea, China, Taiwan and Hong Kong through currencies, credit, commodities and global portfolios.'],
+  ['4', 'Audit the evidence', '/en/methodology/', 'Check the methodology, source hierarchy, uncertainty and correction paths behind the editorial work.'],
+  ['5', 'Reuse the public data', hasApi ? '/en/api/' : '/api/', 'Query JSON, NDJSON, the evidence graph, risk snapshots and signal history for reproducible workflows.'],
+];
+
+const tracks = [
+  {
+    label: 'macro & central banks',
+    title: 'Read liquidity before the headline',
+    text: 'Fed and ECB balance sheets, Treasury funding, inflation, currencies and the transmission of monetary policy.',
+    href: '/en/guides/read-h41-fed-balance-sheet/',
+    link: 'open the Fed H.4.1 guide',
+    related: [
+      ['/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/', 'How less Fed guidance changes the reading of policy'],
+      ['/en/guides/read-the-balance-of-payments/', 'Separate cross-border flows from asset stocks'],
+    ],
+  },
+  {
+    label: 'credit & market plumbing',
+    title: 'Find where the risk sits',
+    text: 'Private credit, repo, collateral, insurers, securitisation and the contracts that move losses between balance sheets.',
+    href: '/en/guides/read-private-credit-risk/',
+    link: 'read the private-credit guide',
+    related: [
+      ['/en/analysis/european-risk-national-fund-supervision/', 'Trace fund risk across national supervisors'],
+      ['/en/analysis/private-credit-clo-warehouse-banks/', 'Follow the bank financing before a CLO is issued'],
+    ],
+  },
+  {
+    label: 'technology & capital',
+    title: 'Separate the investment from the promise',
+    text: 'AI infrastructure, semiconductor constraints, financing structures, capex and the public filings behind the narrative.',
+    href: '/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/',
+    link: 'trace Nvidia\'s $500bn claim',
+    related: [
+      ['/en/analysis/pjm-electricity-forecast-7-billion/', 'Read the electricity demand forecast behind capacity spending'],
+      ['/en/analysis/model-pump-price-of-adequacy/', 'Compare a power-system model with a plant’s physical constraint'],
+    ],
+  },
+  {
+    label: 'Asia & global transmission',
+    title: 'Follow the balance sheet across borders',
+    text: 'Yen funding, Korean concentration, RMB settlement, property credit and Asian insurers as parts of a global system.',
+    href: '/en/asia/',
+    link: 'choose an Asia transmission path',
+    related: [
+      ['/en/analysis/asia-invisible-dollar-hedging-machine/', 'Follow the funding behind dollar hedges'],
+      ['/en/analysis/south-korea-price-perfect-fx-hedge/', 'Examine the cost of a complete currency hedge'],
+    ],
+  },
 ];
 ---
 
 <EnglishGuidesLayout
-  title="Start here"
+  title="Start with l0g"
   seoTitle="l0g in English: macro, credit and financial risk | l0g"
-  description="Start with l0g's English analysis, guides, methods and open data on macro, credit, market plumbing, crypto regulation and financial risk."
+  ogTitle="Start with a question, then follow the evidence"
+  description="Choose an English l0g reading path across macro, credit, technology, Asia and systemic risk, then inspect the sources and public data."
   alternateLinks={[{ hreflang: 'en', href: `${site}/en/start/` }]}
 >
   <section class="rise start-hero">
     <p class="mono-label glow" style="color: var(--color-signal)">$ cat start.md</p>
     <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-tight tracking-wider glow">
-      Start using <span style="color: var(--color-accent)">l0g</span>
+      Start with a question. <span style="color: var(--color-accent)">Follow the evidence.</span>
     </h1>
     <p class="mt-5 max-w-2xl text-paper text-lg leading-8">
-      l0g is a risk-intelligence site focused on macro, opaque finance, credit, market plumbing, crypto regulation and public data.
-      It remains primarily French, but its stable reference layer is now available in English.
+      l0g is an independent publication about macro, opaque finance, credit, market plumbing, technology, public policy and systemic risk. Its English edition combines investigations, reference guides and open data for readers who want the mechanism as well as the outcome.
     </p>
   </section>
 
-  <section class="flow-list rise" aria-label="Suggested path">
+  <section class="track-section rise" aria-labelledby="track-title">
+    <p class="mono-label" style="color: var(--color-accent)">// choose a reading path</p>
+    <h2 id="track-title">Four doors into the same financial system.</h2>
+    <div class="track-grid">
+      {tracks.map((track) => (
+        <article class="track-card">
+          <span>{track.label}</span>
+          <h3>{track.title}</h3>
+          <p>{track.text}</p>
+          <a href={track.href}>{track.link} →</a>
+          <ul class="track-related">{track.related.map(([href, label]) => <li><a href={href}>{label} →</a></li>)}</ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="flow-section rise" aria-labelledby="flow-title">
+    <p class="mono-label" style="color: var(--color-signal)">// first visit</p>
+    <h2 id="flow-title">A practical route through the publication.</h2>
+    <div class="flow-list" aria-label="Suggested path">
     {steps.map(([n, title, href, desc]) => (
       <a class="flow-card" href={href}>
         <span class="flow-num">{n}</span>
@@ -42,21 +108,33 @@ const steps = [
         </span>
       </a>
     ))}
+    </div>
   </section>
 
   <section class="note rise">
-    <p class="mono-label glow" style="color: var(--color-signal)">// what remains French-only</p>
+    <p class="mono-label glow" style="color: var(--color-signal)">// editorial scope</p>
     <p>
-      Most news articles, topic hubs and some dashboards are still published in French. The English section is not a promise of full internationalization;
-      it is a clean entrance to the pages that are meant to be durable, citable and reusable.
+      The French corpus remains broader. English editions are selected and edited for an international audience, with the French source linked when one exists. The selection is global: Asia is a strong reading path, not the publication's only centre of gravity.
     </p>
-    {hasAgentSurface && <p class="mt-3">For agent workflows, start with <a href="/en/agent-surface/" class="link-term">Agent Surface</a>.</p>}
+    {hasAgentSurface && hasMcp && <p class="mt-3">For agent workflows, start with <a href="/en/agent-surface/" class="link-term">Agent Surface</a> or connect to the <a href="/en/mcp/" class="link-term">read-only MCP server</a>.</p>}
   </section>
 </EnglishGuidesLayout>
 
 <style>
   .start-hero { padding-bottom: 2rem; border-bottom: 1px dashed var(--color-line); }
-  .flow-list { display: grid; gap: 0.85rem; margin-top: 2.5rem; max-width: 58rem; }
+  .track-section,
+  .flow-section { margin-top: clamp(2.8rem, 7vw, 5rem); }
+  .track-section > h2,
+  .flow-section > h2 { margin-top: .45rem; max-width: 50rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.6rem, 3.2vw, 2.35rem); line-height: 1.1; }
+  .track-grid { display: grid; gap: .85rem; margin-top: 1.25rem; }
+  .track-card { min-width: 0; padding: 1.1rem; border: 1px solid var(--color-line); border-radius: 12px; background: color-mix(in srgb, var(--color-surface) 58%, transparent); }
+  .track-card > span { color: var(--color-accent); font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; }
+  .track-card h3 { margin-top: .45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.2rem; line-height: 1.2; }
+  .track-card p { margin-top: .6rem; color: var(--color-muted); line-height: 1.55; }
+  .track-card a { display: inline-block; margin-top: .8rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .74rem; }
+  .track-related { margin: .5rem 0 0; padding-left: 1rem; list-style: disc; color: var(--color-muted); }
+  .track-related a { margin-top: .45rem; line-height: 1.6; }
+  .flow-list { display: grid; gap: 0.85rem; margin-top: 1.25rem; max-width: 58rem; }
   .flow-card { display: grid; grid-template-columns: 2.3rem 1fr; gap: 0.9rem; align-items: start; border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 60%, transparent); text-decoration: none; }
   .flow-card:hover { border-color: color-mix(in srgb, var(--color-signal) 55%, transparent); background: color-mix(in srgb, var(--color-signal) 7%, transparent); }
   .flow-num { display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--color-signal) 55%, transparent); color: var(--color-signal); font-family: var(--font-mono); }
@@ -64,4 +142,7 @@ const steps = [
   .flow-body strong { color: var(--color-bright); }
   .flow-body span { color: var(--color-muted); line-height: 1.55; }
   .note { margin-top: 2.5rem; max-width: 52rem; border-left: 2px solid var(--color-signal); padding-left: 1rem; color: var(--color-muted); line-height: 1.7; }
+  @media (min-width: 720px) {
+    .track-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
 </style>

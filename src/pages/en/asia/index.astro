@@ -1,0 +1,264 @@
+---
+import { getCollection } from 'astro:content';
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { asiaReadingPaths } from '../../../config/english-reading-paths.ts';
+import { sortPostsByLatestDate } from '../../../lib/content-order.mjs';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const canonical = `${SITE}/en/asia/`;
+
+const posts = await getCollection('postsEn', ({ data }) => !data.draft);
+const guides = await getCollection('guidesEn', ({ data }) => !data.draft);
+const postsById = new Map(posts.map((post) => [post.id, post]));
+const guidesById = new Map(guides.map((guide) => [guide.id, guide]));
+
+const paths = asiaReadingPaths.map((path) => ({
+  ...path,
+  analyses: path.analysisIds.map((id) => {
+    const post = postsById.get(id);
+    if (!post) throw new Error(`Missing English analysis in Asia reading path: ${id}`);
+    return post;
+  }),
+  guides: path.guideIds.map((id) => {
+    const guide = guidesById.get(id);
+    if (!guide) throw new Error(`Missing English guide in Asia reading path: ${id}`);
+    return guide;
+  }),
+}));
+
+const latest = sortPostsByLatestDate(
+  Array.from(new Set(paths.flatMap((path) => path.analyses))),
+).slice(0, 5);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${canonical}#collection`,
+  url: canonical,
+  name: 'Asia in the global financial system',
+  description: 'English l0g analysis of how Japan, South Korea, China, Taiwan and Hong Kong transmit financial risk through currencies, credit, commodities and global portfolios.',
+  inLanguage: 'en',
+  isPartOf: { '@id': `${SITE}/#website` },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: latest.map((post, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: post.data.title,
+      url: `${SITE}/en/analysis/${post.id}/`,
+    })),
+  },
+};
+
+const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+
+<EnglishGuidesLayout
+  title="Asia in the global financial system"
+  seoTitle="Asia financial risk: Japan, Korea, China and the yen | l0g"
+  ogTitle="Asia is part of the global balance sheet"
+  description="Trace financial risk from Japan, South Korea, China, Taiwan and Hong Kong into currencies, credit, commodities and global portfolios."
+  canonical={canonical}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
+
+  <section class="asia-hero rise" data-pagefind-body>
+    <div>
+      <p class="mono-label" style="color: var(--color-signal)">$ trace asia --through global-finance</p>
+      <h1>Asia is part of the <span>global balance sheet.</span></h1>
+      <p class="asia-lede">
+        This is a reading path through the mechanisms that connect Asian savings, currencies, credit and industrial capacity to the rest of the financial system. It is one lens inside l0g's wider coverage of macro, markets, technology, public policy and systemic risk.
+      </p>
+      <div class="asia-actions" data-pagefind-ignore>
+        <a class="asia-cta primary" href="#paths">choose a transmission path</a>
+        <a class="asia-cta" href="/en/analysis/">all English analysis</a>
+      </div>
+    </div>
+    <aside aria-label="Scope of this reading path">
+      <span>4 transmission paths</span>
+      <strong>Tokyo · Seoul · Beijing · Taipei · Hong Kong</strong>
+      <p>Rates, currencies, credit, insurers, commodities and market structure.</p>
+      <small>Primary sources first · uncertainty kept visible · no investment advice</small>
+    </aside>
+  </section>
+
+  <section class="asia-section latest-section" aria-labelledby="latest-asia-title">
+    <div class="section-head">
+      <div>
+        <p class="mono-label" style="color: var(--color-accent)">// latest investigations</p>
+        <h2 id="latest-asia-title">Begin with what changed most recently.</h2>
+      </div>
+      <a href="/en/rss.xml" class="section-link">English RSS →</a>
+    </div>
+    <div class="latest-grid">
+      {latest.map((post, index) => (
+        <a class:list={['latest-card', { lead: index === 0 }]} href={`/en/analysis/${post.id}/`}>
+          <span class="latest-index">0{index + 1}</span>
+          <div>
+            <small>{fmt(post.data.updatedDate ?? post.data.pubDate)} · {post.data.tags.slice(0, 2).join(' · ')}</small>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="paths" class="asia-section" aria-labelledby="paths-asia-title">
+    <div class="section-head">
+      <div>
+        <p class="mono-label" style="color: var(--color-signal)">// four ways into the system</p>
+        <h2 id="paths-asia-title">Follow the links across financial systems.</h2>
+      </div>
+    </div>
+
+    <div class="path-grid">
+      {paths.map((path, index) => (
+        <article class="path-card" id={path.id}>
+          <header>
+            <span class="path-number">0{index + 1}</span>
+            <p class="mono-label">// {path.eyebrow}</p>
+            <h3>{path.title}</h3>
+            <p>{path.description}</p>
+          </header>
+          <div class="transmission">
+            <span>transmission</span>
+            <code>{path.transmission}</code>
+          </div>
+          <div class="path-links">
+            <strong>Analysis</strong>
+            {path.analyses.map((post) => (
+              <a href={`/en/analysis/${post.id}/`}>{post.data.title}<span aria-hidden="true">↗</span></a>
+            ))}
+          </div>
+          <div class="path-links guides">
+            <strong>Reading tools</strong>
+            {path.guides.map((guide) => (
+              <a href={`/en/guides/${guide.id}/`}>{guide.data.title}<span aria-hidden="true">→</span></a>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="asia-section system-panel" aria-labelledby="system-title">
+    <div>
+      <p class="mono-label" style="color: var(--color-amber)">// keep the whole system in view</p>
+      <h2 id="system-title">The regional story is only useful when it explains a global mechanism.</h2>
+      <p>
+        A Japanese yield changes the price of funding elsewhere. Korean chip concentration reaches global technology portfolios. Chinese property and RMB settlement alter trade, collateral and commodity demand. Taiwanese insurers connect domestic savings to dollar bonds. That is why this page sits beside, not above, l0g's global coverage.
+      </p>
+    </div>
+    <nav aria-label="Continue beyond the Asia reading path">
+      <a href="/en/start/"><strong>Start with l0g</strong><span>Choose another route through the publication.</span></a>
+      <a href="/en/guides/"><strong>Reference guides</strong><span>Read the instruments behind the mechanisms.</span></a>
+      <a href="/en/analysis/"><strong>All analysis</strong><span>Macro, credit, technology, policy and systemic risk.</span></a>
+    </nav>
+  </section>
+</EnglishGuidesLayout>
+
+<style>
+  .asia-hero {
+    display: grid;
+    gap: clamp(1.4rem, 4vw, 3rem);
+    align-items: end;
+    padding: clamp(1.4rem, 5vw, 3.5rem);
+    border: 1px solid transparent;
+    border-radius: 24px;
+    background:
+      linear-gradient(var(--color-ink), var(--color-ink)) padding-box,
+      linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 60%, transparent), color-mix(in srgb, var(--color-accent) 32%, transparent), color-mix(in srgb, var(--color-amber) 35%, transparent)) border-box;
+    overflow: hidden;
+  }
+  .asia-hero > div,
+  .asia-hero > aside { min-width: 0; }
+  .asia-hero h1 {
+    max-width: 48rem;
+    margin: 0.75rem 0 0;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(2.15rem, 6.2vw, 4.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+  .asia-hero h1 span {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    color: var(--color-signal);
+  }
+  .asia-lede {
+    max-width: 47rem;
+    margin-top: 1.35rem;
+    color: var(--color-paper);
+    font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+    line-height: 1.72;
+  }
+  .asia-hero aside {
+    display: grid;
+    gap: 0.65rem;
+    padding: 1.1rem;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 34%, transparent);
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
+  }
+  .asia-hero aside span,
+  .asia-hero aside small { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; }
+  .asia-hero aside strong { color: var(--color-bright); font-size: 1.05rem; line-height: 1.45; }
+  .asia-hero aside p { color: var(--color-paper); line-height: 1.55; }
+  .asia-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
+  .asia-cta { display: inline-flex; min-height: 2.6rem; align-items: center; justify-content: center; padding: 0.65rem 0.95rem; border: 1px solid var(--color-line); border-radius: 8px; color: var(--color-paper); font-family: var(--font-mono); font-size: 0.74rem; text-decoration: none; }
+  .asia-cta:hover { border-color: var(--color-signal); color: var(--color-bright); }
+  .asia-cta.primary { border-color: var(--color-signal); background: color-mix(in srgb, var(--color-signal) 13%, transparent); color: var(--color-signal); }
+  .asia-section { margin-top: clamp(3rem, 8vw, 6rem); scroll-margin-top: 1rem; }
+  .section-head { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; justify-content: space-between; margin-bottom: 1.3rem; }
+  .section-head h2,
+  .system-panel h2 { margin-top: 0.45rem; max-width: 48rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.7rem, 3.5vw, 2.55rem); line-height: 1.08; }
+  .section-link { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.75rem; }
+  .latest-grid { display: grid; gap: 0.8rem; }
+  .latest-card { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: 0.9rem; padding: 1rem; border: 1px solid var(--color-line); border-radius: 12px; background: color-mix(in srgb, var(--color-surface) 62%, transparent); text-decoration: none; }
+  .latest-card:hover { border-color: color-mix(in srgb, var(--color-accent) 62%, transparent); transform: translateY(-1px); }
+  .latest-index { color: var(--color-accent); font-family: var(--font-mono); }
+  .latest-card small { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .latest-card h3 { margin-top: 0.35rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.08rem; line-height: 1.25; }
+  .latest-card p { margin-top: 0.45rem; color: var(--color-muted); font-size: 0.9rem; line-height: 1.55; }
+  .path-grid { display: grid; gap: 1rem; }
+  .path-card { min-width: 0; padding: clamp(1.1rem, 3vw, 1.55rem); border: 1px solid var(--color-line); border-radius: 16px; background: color-mix(in srgb, var(--color-surface) 56%, transparent); }
+  .path-card header { position: relative; padding-right: 3rem; }
+  .path-number { position: absolute; top: 0; right: 0; color: color-mix(in srgb, var(--color-signal) 48%, transparent); font-family: var(--font-display); font-size: 1.8rem; }
+  .path-card h3 { margin-top: 0.45rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.3rem, 2.3vw, 1.75rem); line-height: 1.15; }
+  .path-card header > p:last-child { margin-top: 0.7rem; color: var(--color-muted); line-height: 1.6; }
+  .transmission { display: grid; gap: 0.35rem; margin-top: 1rem; padding: 0.7rem 0.8rem; border-left: 2px solid var(--color-signal); background: color-mix(in srgb, var(--color-signal) 6%, transparent); }
+  .transmission span,
+  .path-links > strong { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.07em; }
+  .transmission code { color: var(--color-signal); white-space: normal; overflow-wrap: anywhere; }
+  .path-links { display: grid; gap: 0.45rem; margin-top: 1.1rem; }
+  .path-links a { display: flex; gap: 0.8rem; justify-content: space-between; color: var(--color-paper); line-height: 1.4; text-decoration: none; }
+  .path-links a:hover { color: var(--color-bright); }
+  .path-links a span { flex: 0 0 auto; color: var(--color-accent); }
+  .path-links.guides { padding-top: 0.85rem; border-top: 1px dashed var(--color-line); }
+  .path-links.guides a { color: var(--color-signal); }
+  .system-panel { display: grid; gap: 1.4rem; padding: clamp(1.25rem, 4vw, 2.4rem); border: 1px solid color-mix(in srgb, var(--color-amber) 38%, transparent); border-radius: 18px; background: color-mix(in srgb, var(--color-amber) 5%, var(--color-ink)); }
+  .system-panel > div > p:last-child { max-width: 48rem; margin-top: 1rem; color: var(--color-muted); line-height: 1.7; }
+  .system-panel nav { display: grid; gap: 0.65rem; }
+  .system-panel nav a { display: grid; gap: 0.2rem; padding: 0.8rem; border: 1px solid var(--color-line); border-radius: 10px; text-decoration: none; }
+  .system-panel nav a:hover { border-color: var(--color-amber); }
+  .system-panel nav strong { color: var(--color-bright); }
+  .system-panel nav span { color: var(--color-muted); font-size: 0.85rem; line-height: 1.45; }
+  @media (min-width: 760px) {
+    .asia-hero { grid-template-columns: minmax(0, 1.65fr) minmax(15rem, 0.72fr); }
+    .latest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .latest-card.lead { grid-column: 1 / -1; padding: 1.3rem; }
+    .latest-card.lead h3 { font-size: 1.35rem; }
+    .path-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .system-panel { grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.72fr); align-items: start; }
+  }
+  @media (max-width: 520px) {
+    .asia-hero { padding: 1.15rem; border-radius: 18px; }
+    .asia-hero h1 { font-size: clamp(2rem, 12vw, 3.15rem); overflow-wrap: anywhere; }
+    .asia-cta { width: 100%; }
+    .path-card header { padding-right: 2.25rem; }
+    .latest-card p { display: none; }
+  }
+</style>

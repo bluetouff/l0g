@@ -28,6 +28,16 @@ export const organizationEntity = {
   sameAs: ['https://github.com/bluetouff/l0g'],
 };
 
+// Google Dataset Search requires creator to carry an explicit Person or
+// Organization type in the Dataset object itself. Keep the stable entity ID,
+// but expose the broader Organization type expected by that contract.
+export const datasetCreatorEntity = {
+  '@type': 'Organization',
+  '@id': ORGANIZATION_ID,
+  name: 'l0g',
+  url: `${SITE_URL}/`,
+};
+
 export const authorEntity = {
   '@type': 'Person',
   '@id': AUTHOR_ID,

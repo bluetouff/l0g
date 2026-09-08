@@ -162,6 +162,68 @@ const targets = [
     checkInternalBounds: true,
   },
   {
+    page: 'dist/posts/les-banquiers-du-baril-5-vitol-raffineries-terminaux-engen/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb5-fr-fig[0-9]+-title bdb5-fr-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+  },
+  {
+    page: 'dist/en/analysis/banking-on-oil-5-vitol-refineries-terminals-engen/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb5-en-fig[0-9]+-title bdb5-en-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+  },
+  {
+    page: 'dist/posts/les-banquiers-du-baril-6-trafigura-nickel-fantome/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb6-fr-fig[0-9]+-title bdb6-fr-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
+    page: 'dist/en/analysis/banking-on-oil-6-trafigura-nickel-fraud/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb6-en-fig[0-9]+-title bdb6-en-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
+    page: 'dist/posts/les-banquiers-du-baril-7-trafigura-petrobras-corruption/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb7-fr-fig[0-9]+-title bdb7-fr-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
+    page: 'dist/en/analysis/banking-on-oil-7-trafigura-petrobras-bribery/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb7-en-fig[0-9]+-title bdb7-en-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
+    page: 'dist/posts/les-banquiers-du-baril-8-credit-livraisons-petrole/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb8-fr-fig[0-9]+-title bdb8-fr-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
+    page: 'dist/en/analysis/banking-on-oil-8-credit-squeeze-oil-supplies/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb8-en-fig[0-9]+-title bdb8-en-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
     page: 'dist/en/analysis/ghana-cocoa-financing-cash-crisis/index.html',
     count: 3,
     pattern: /<svg\b[^>]*aria-labelledby="cocoa-[^"]+-en-title cocoa-[^"]+-en-desc"[^>]*>[\s\S]*?<\/svg>/gu,
@@ -240,7 +302,7 @@ function assertApproximateInternalBounds(svg, page, svgIndex) {
   }
 }
 
-for (const { page, count, pattern, jeonseLocale, checkInternalBounds } of targets) {
+for (const { page, count, pattern, jeonseLocale, checkInternalBounds, requireDarkBackground, darkBackgroundToken = '--b5-bg:#0b0d10' } of targets) {
   test(`${page} keeps every infographic inside the SVG namespace`, () => {
     const html = readFileSync(join(ROOT, page), 'utf8');
     const infographics = html.match(pattern) ?? [];
@@ -252,6 +314,14 @@ for (const { page, count, pattern, jeonseLocale, checkInternalBounds } of target
         /<(?:p|div|h[1-6]|ul|ol|li)\b/iu,
         `${page}: HTML element injected into inline SVG ${index + 1}`,
       );
+      if (requireDarkBackground) {
+        assert.ok(svg.includes(darkBackgroundToken), `${page}: inline SVG ${index + 1} must keep the l0g dark background`);
+        assert.doesNotMatch(
+          svg,
+          /prefers-color-scheme|--b5-bg:#(?:fff|ffffff)/iu,
+          `${page}: inline SVG ${index + 1} must not switch to a white background`,
+        );
+      }
       if (checkInternalBounds) assertApproximateInternalBounds(svg, page, index);
     }
 

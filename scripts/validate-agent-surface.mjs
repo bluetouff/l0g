@@ -68,6 +68,19 @@ function validateOpenapiArtifacts() {
   for (const [name, schema] of Object.entries(openapi.components?.schemas || {})) {
     ajv.addSchema(schema, `#/components/schemas/${name}`);
   }
+  // An undated source stays visible as null; the contract must never require
+  // inventing an observation date or silently dropping the source.
+  const validateProvenanceSource = ajv.getSchema('#/components/schemas/RiskSignalProvenanceSource');
+  assert(validateProvenanceSource, 'schema de source de provenance absent');
+  const sourceFixture = { source: 'Fixture', latestDate: '2026-09-08', metrics: 1, maxRisk: 0 };
+  assert(validateProvenanceSource(sourceFixture), 'une source datée doit être valide');
+  assert(validateProvenanceSource({ ...sourceFixture, latestDate: null }), 'une date absente doit rester null');
+  for (const invalid of [0, true, {}, []]) {
+    assert(!validateProvenanceSource({ ...sourceFixture, latestDate: invalid }), 'type de date invalide accepté');
+  }
+  const { latestDate: _omittedDate, ...missingDate } = sourceFixture;
+  assert(!validateProvenanceSource(missingDate), 'le champ latestDate doit rester obligatoire');
+  assert(!validateProvenanceSource({ ...sourceFixture, unexpected: true }), 'les champs non documentés doivent rester refusés');
   const artifacts = [
     ['AgentManifest', 'dist/agents.json'],
     ['Catalog', 'dist/api/v1/catalog.json'],
