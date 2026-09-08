@@ -1,0 +1,129 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../../config/entities.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+import { oilPublication as book, oilChapters } from '../../config/oil-publication.mjs';
+
+const bytes = readFileSync(new URL('../../../public/publications/les-banquiers-du-baril-l0g.epub', import.meta.url));
+const size = `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(bytes.length / 1024)} Ko`;
+const sha256 = createHash('sha256').update(bytes).digest('hex');
+const description = 'Huit enquêtes sur le financement du pétrole, les banques, les cargaisons et le pouvoir des négociants. Édition EPUB gratuite avec 24 infographies.';
+const pageUrl = `${SITE_URL}${book.path}`;
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Book', '@id': `${pageUrl}#book`,
+  name: book.title, description, author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID },
+  datePublished: book.date, dateModified: book.date, inLanguage: 'fr',
+  bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true,
+  url: pageUrl, image: `${SITE_URL}${book.cover}`, license: 'https://creativecommons.org/licenses/by/4.0/',
+  hasPart: oilChapters.map((chapter) => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.route}` })),
+  associatedMedia: { '@type': 'MediaObject', contentUrl: `${SITE_URL}${book.epub}`, encodingFormat: 'application/epub+zip', contentSize: `${bytes.length} bytes`, sha256 },
+};
+---
+
+<BaseLayout title={book.title} seoTitle="Financement du pétrole : Les banquiers du baril, EPUB | l0g"
+  ogTitle="Les banquiers du baril : huit enquêtes réunies en un livre" description={description}
+  lang="fr" ogLocale="fr_FR" sidebar={false} ogImage={book.social}
+  ogImageAlt="Couverture des Banquiers du baril : un pétrolier et un terminal reliés à un registre financier"
+  alternateLinks={[{ hreflang: 'fr', href: pageUrl }, { hreflang: 'x-default', href: pageUrl }]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <article class="oil-book rise" data-pagefind-body>
+    <section class="book-hero" aria-labelledby="book-title">
+      <div class="cover-stage">
+        <div class="book-shell">
+          <span class="book-spine" aria-hidden="true">l0g · septembre 2026</span>
+          <img src={book.cover} srcset={[320, 640, 960].map((w) => `${book.cover.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
+            sizes="(max-width: 360px) 80vw, (max-width: 780px) 304px, 360px"
+            width="1024" height="1638" alt="Couverture de Les banquiers du baril"
+            loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+        <p class="cover-caption">Édition française · <time datetime={book.date}>8 septembre 2026</time></p>
+      </div>
+      <div class="hero-copy">
+        <p class="mono-label">// publication l0g · enquête</p>
+        <h1 id="book-title">Les banquiers <span>du baril</span></h1>
+        <p class="hero-deck">{book.subtitle}.</p>
+        <p class="hero-lede">Du prêt bancaire au terminal pétrolier, huit enquêtes suivent l’argent qui permet d’acheter, de transporter et de livrer une cargaison. Un livre pour comprendre les acteurs, les contrats et les dépendances du négoce.</p>
+        <div class="hero-actions">
+          <a class="download-action" href={book.epub} download="Les-banquiers-du-baril-l0g.epub">Télécharger l’EPUB <small>Gratuit · {size}</small></a>
+          <a class="contents-action" href="#sommaire">Parcourir les huit enquêtes <span aria-hidden="true">↓</span></a>
+        </div>
+        <ul class="edition-facts" aria-label="Contenu de l’édition">
+          <li>8 enquêtes</li><li>24 infographies</li><li>Introduction originale</li><li>Sources cliquables</li>
+        </ul>
+        <p class="edition-note">EPUB 3 · lecture hors ligne · CC BY 4.0</p>
+      </div>
+    </section>
+
+    <section class="reading-section" aria-labelledby="intro-title">
+      <div class="section-heading"><p class="mono-label">01 / introduction</p><h2 id="intro-title">Suivre l’argent du pétrole</h2></div>
+      <div class="introduction">{book.introduction.map((paragraph) => <p>{paragraph}</p>)}</div>
+    </section>
+
+    <section id="sommaire" class="reading-section" aria-labelledby="contents-title">
+      <div class="section-heading"><p class="mono-label">02 / les huit enquêtes</p><h2 id="contents-title">De la cargaison à la chaîne de crédit</h2><p>Chaque chapitre reste aussi disponible sur le site, avec ses sources et ses éventuelles mises à jour.</p></div>
+      <ol class="chapter-list">
+        {oilChapters.map((chapter) => <li><a href={chapter.route}><span class="chapter-number" aria-hidden="true">{String(chapter.number).padStart(2, '0')}</span><div><h3>{chapter.title}</h3><p>{chapter.summary}</p></div><span class="chapter-arrow" aria-hidden="true">↗</span></a></li>)}
+      </ol>
+    </section>
+
+    <section class="reading-section" aria-labelledby="edition-title">
+      <div class="section-heading"><p class="mono-label">03 / l’édition numérique</p><h2 id="edition-title">Emporter l’enquête</h2></div>
+      <div class="edition-details">
+        <h3>Une lecture continue</h3><p>Le texte se redistribue selon la taille de l’écran. Le sommaire relie les chapitres et leurs sections. Les 24 infographies sont intégrées au livre, avec leur fond sombre et une description alternative. Leur agrandissement dépend de l’application de lecture.</p>
+        <h3>Les sources accompagnent les textes</h3><p>Les articles sont ceux publiés du 6 au 8 septembre 2026. Leurs notes et références sont conservées. Les liens entre les huit enquêtes fonctionnent dans le livre ; les documents externes s’ouvrent avec une connexion.</p>
+        <h3>Une édition librement partageable</h3><p>L’EPUB n’embarque aucun script, police distante ni outil de suivi. Il peut être partagé selon les termes de la <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">licence CC BY 4.0</a>.</p>
+        <p class="art-note">La couverture a été créée avec une assistance d’intelligence artificielle. C’est une illustration conceptuelle : elle ne représente aucune entreprise, installation ou transaction réelle. Le registre dessiné ne fournit aucune donnée de l’enquête.</p>
+        <details><summary>Informations sur le fichier</summary><dl><dt>Format</dt><dd>EPUB 3 · français · {size}</dd><dt>Édition</dt><dd>8 septembre 2026</dd><dt>Empreinte SHA-256</dt><dd><code>{sha256}</code></dd></dl></details>
+        <a class="download-action final-download" href={book.epub} download="Les-banquiers-du-baril-l0g.epub">Télécharger le livre <small>EPUB gratuit · {size}</small></a>
+        <p><a href="/publications/">Toutes les publications l0g <span aria-hidden="true">›</span></a></p>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .oil-book { max-width: 1120px; margin: 0 auto; min-width: 0; }
+  .book-hero { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; padding: clamp(1.5rem, 4vw, 3.5rem) 0 4rem; }
+  .cover-stage { display: grid; justify-items: center; min-width: 0; padding: 1rem; background: radial-gradient(ellipse, rgba(245,177,61,.13), transparent 70%); }
+  .book-shell { position: relative; width: min(100%, 360px); border: 1px solid #4b4230; border-radius: 2px 7px 7px 2px; box-shadow: 12px 20px 50px #0007; }
+  .book-shell img { width: 100%; height: auto; display: block; border-radius: inherit; }
+  .book-spine { position: absolute; inset: 0 auto 0 -11px; width: 11px; overflow: hidden; font: 7px var(--font-mono); writing-mode: vertical-rl; text-align: center; color: #d5bc84; background: #24221b; border-radius: 3px 0 0 3px; }
+  .cover-caption { margin-top: 1.3rem; font: .7rem/1.6 var(--font-mono); color: var(--color-muted); text-align: center; }
+  .mono-label { color: var(--color-amber); font: .72rem/1.6 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; }
+  h1 { margin: .7rem 0 1.2rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); line-height: 1.05; letter-spacing: -.045em; color: var(--color-bright); }
+  h1 span { display: block; color: var(--color-amber); }
+  .hero-deck { font-size: clamp(1.08rem, 2vw, 1.4rem); line-height: 1.4; color: var(--color-bright); }
+  .hero-lede { color: var(--color-paper); font-size: 1rem; line-height: 1.8; margin: 1.3rem 0; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; margin: 1.7rem 0; }
+  .download-action { display: inline-flex; flex-direction: column; padding: .95rem 1.3rem; border-radius: 7px; background: var(--color-amber); color: #111318; text-decoration: none; font-weight: 750; line-height: 1.5; text-align: center; }
+  .download-action small { font: .72rem/1.6 var(--font-mono); font-weight: 500; }
+  .contents-action { font-size: .84rem; color: var(--color-signal); }
+  .edition-facts { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 1.5rem 0 .7rem; }
+  .edition-facts li { padding: .4rem .65rem; border: 1px solid var(--color-line); border-radius: 4px; font: .7rem/1.5 var(--font-mono); }
+  .edition-note { font: .72rem/1.7 var(--font-mono); color: var(--color-muted); }
+  .reading-section { border-top: 1px solid var(--color-line); padding: 3rem 0; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: clamp(1.5rem, 4vw, 4rem); scroll-margin-top: 6rem; }
+  .section-heading h2 { font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.2; letter-spacing: -.025em; margin: .7rem 0 1rem; }
+  .section-heading > p:last-child { color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  .introduction p, .edition-details p { line-height: 1.85; margin: 0 0 1.2rem; }
+  .introduction p:first-child { color: var(--color-bright); font-size: 1.1rem; }
+  .chapter-list { list-style: none; padding: 0; margin: 0; }
+  .chapter-list li { border-bottom: 1px solid var(--color-line); }
+  .chapter-list a { display: grid; grid-template-columns: 2rem minmax(0, 1fr) 1rem; gap: .7rem; padding: 1.15rem 0; color: inherit; text-decoration: none; }
+  .chapter-list li:first-child a { padding-top: 0; }
+  .chapter-number { color: var(--color-amber); font: .9rem/1.6 var(--font-mono); }
+  .chapter-list h3 { font-size: 1rem; line-height: 1.5; margin: 0; }
+  .chapter-list p { margin: .45rem 0 0; color: var(--color-muted); font-size: .86rem; line-height: 1.65; }
+  .chapter-arrow { color: var(--color-signal); }
+  .chapter-list a:hover h3 { color: var(--color-amber); }
+  .edition-details h3 { margin: 0 0 .6rem; font-size: 1.1rem; }
+  .edition-details h3:not(:first-child) { margin-top: 1.9rem; }
+  .edition-details .art-note { font-size: .8rem; color: var(--color-muted); }
+  details { padding: 1rem 0; border-block: 1px solid var(--color-line); font-size: .85rem; }
+  summary { cursor: pointer; color: var(--color-signal); }
+  dt { font-weight: 700; margin-top: .8rem; } dd { margin: .35rem 0 0; } code { overflow-wrap: anywhere; font-size: .75rem; }
+  .final-download { margin: 1.6rem 0; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 5px; }
+  @media (max-width: 780px) { .book-hero, .reading-section { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; } .book-shell { max-width: 304px; } .book-hero { padding-bottom: 2rem; } .reading-section { padding-block: 2rem; } }
+</style>

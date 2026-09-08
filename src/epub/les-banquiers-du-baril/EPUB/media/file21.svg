@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="bdb8-svg" viewBox="0 0 420 840" style="width:100%;height:auto;background:#0b0d10" focusable="false" role="img" aria-labelledby="bdb8-fr-fig1-title bdb8-fr-fig1-desc" data-figure="1"><rect x="0" y="0" width="420" height="840" fill="#0b0d10"/>
+<title id="bdb8-fr-fig1-title">Volume finançable sous trois hypothèses</title>
+<desc id="bdb8-fr-fig1-desc">Modèle fictif : budget de 80 millions de dollars. À 80 dollars par baril et 40 jours de délai, 25 000 barils par jour. À 120 dollars et 40 jours, 16 667. À 120 dollars et 60 jours, 11 111. Valeurs arrondies, pas des observations de marché.</desc>
+<text x="24" y="38" text-anchor="start" font-size="20" style="font-family:ui-monospace,monospace;font-size:20px;font-weight:600;fill:#5eead4">01 / FINANCEMENT</text>
+<text x="24" y="76" text-anchor="start" font-size="25" style="font-family:system-ui,sans-serif;font-size:25px;font-weight:650;fill:#f5f6f8">Budget constant : 80 M$</text>
+<text x="24" y="109" text-anchor="start" font-size="20" style="font-family:system-ui,sans-serif;font-size:20px;font-weight:400;fill:#f5b13d">Exemple fictif · régime stabilisé</text>
+<text x="24" y="147" text-anchor="start" font-size="21" style="font-family:system-ui,sans-serif;font-size:21px;font-weight:500;fill:#e7e9ee">Volume quotidien finançable</text>
+<text x="24" y="175" text-anchor="start" font-size="20" style="font-family:system-ui,sans-serif;font-size:20px;font-weight:400;fill:#a9adb7">Barils par jour</text>
+<text x="24" y="220" text-anchor="start" font-size="21" style="font-family:system-ui,sans-serif;font-size:21px;font-weight:550;fill:#f5f6f8">80 $/baril · délai 40 jours</text>
+<rect x="28" y="244" width="360" height="28" rx="0" style="fill:#171a20;" />
+<rect x="28" y="244" width="360.0" height="28" rx="0" style="fill:#5eead4;" />
+<text x="24" y="310" text-anchor="start" font-size="27" style="font-family:ui-monospace,monospace;font-size:27px;font-weight:650;fill:#5eead4">25 000</text>
+<text x="396" y="309" text-anchor="end" font-size="20" style="font-family:system-ui,sans-serif;font-size:20px;font-weight:400;fill:#a9adb7">Référence</text>
+<text x="24" y="349" text-anchor="start" font-size="21" style="font-family:system-ui,sans-serif;font-size:21px;font-weight:550;fill:#f5f6f8">120 $/baril · délai 40 jours</text>
+<rect x="28" y="373" width="360" height="28" rx="0" style="fill:#171a20;" />
+<rect x="28" y="373" width="240.0" height="28" rx="0" style="fill:#5eead4;" />
+<text x="24" y="439" text-anchor="start" font-size="27" style="font-family:ui-monospace,monospace;font-size:27px;font-weight:650;fill:#5eead4">16 667</text>
+<text x="396" y="438" text-anchor="end" font-size="20" style="font-family:system-ui,sans-serif;font-size:20px;font-weight:400;fill:#a9adb7">−33,3 % vs référence</text>
+<text x="24" y="478" text-anchor="start" font-size="21" style="font-family:system-ui,sans-serif;font-size:21px;font-weight:550;fill:#f5f6f8">120 $/baril · délai 60 jours</text>
+<rect x="28" y="502" width="360" height="28" rx="0" style="fill:#171a20;" />
+<rect x="28" y="502" width="160.0" height="28" rx="0" style="fill:#5eead4;" />
+<text x="24" y="568" text-anchor="start" font-size="27" style="font-family:ui-monospace,monospace;font-size:27px;font-weight:650;fill:#5eead4">11 111</text>
+<text x="396" y="567" text-anchor="end" font-size="20" style="font-family:system-ui,sans-serif;font-size:20px;font-weight:400;fill:#a9adb7">−55,6 % vs référence</text>
+<line x1="28" y1="607" x2="388" y2="607" style="stroke:#424751;stroke-width:1.3"/>
+<line x1="28" y1="602" x2="28" y2="612" style="stroke:#424751;stroke-width:1.3"/>
+<text x="28" y="640" text-anchor="start" font-size="20" style="font-family:ui-monospace,monospace;font-size:20px;font-weight:400;fill:#a9adb7">0</text>
+<line x1="208" y1="602" x2="208" y2="612" style="stroke:#424751;stroke-width:1.3"/>
+<text x="208" y="640" text-anchor="middle" font-size="20" style="font-family:ui-monospace,monospace;font-size:20px;font-weight:400;fill:#a9adb7">12 500</text>
+<line x1="388" y1="602" x2="388" y2="612" style="stroke:#424751;stroke-width:1.3"/>
+<text x="388" y="640" text-anchor="end" font-size="20" style="font-family:ui-monospace,monospace;font-size:20px;font-weight:400;fill:#a9adb7">25 000</text>
+<line x1="24" y1="669" x2="396" y2="669" style="stroke:#424751;stroke-width:1.3"/>
+<text x="24" y="704" text-anchor="start" font-size="20" style="font-family:system-ui,sans-serif;font-size:20px;font-weight:400;fill:#a9adb7">Délai = paiement de l’achat</text>
+<text x="24" y="732" text-anchor="start" font-size="20" style="font-family:system-ui,sans-serif;font-size:20px;font-weight:400;fill:#a9adb7">→ récupération du coût d’achat.</text>
+<text x="24" y="778" text-anchor="start" font-size="20" style="font-family:system-ui,sans-serif;font-size:20px;font-weight:400;fill:#a9adb7">Hors fret, intérêts, garanties</text>
+<text x="24" y="806" text-anchor="start" font-size="20" style="font-family:system-ui,sans-serif;font-size:20px;font-weight:400;fill:#a9adb7">et crédit fournisseur.</text>
+</svg>

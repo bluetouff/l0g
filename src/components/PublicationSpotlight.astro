@@ -5,19 +5,20 @@ import { join } from 'node:path';
 interface Props {
   headingLevel?: 'h2' | 'h3';
   lang?: 'fr' | 'en';
-  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity' | 'e-invoicing' | 'digital-identity';
+  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity' | 'e-invoicing' | 'digital-identity' | 'oil-trading';
   showAllPublicationsLink?: boolean;
 }
 
 const { headingLevel = 'h2', lang = 'fr', publication = 'epstein', showAllPublicationsLink = false } = Astro.props;
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
+const isOil = !isEnglish && publication === 'oil-trading';
 const isAuditer = !isEnglish && publication === 'auditer-opacite';
 const isDigitalIdentity = !isEnglish && publication === 'digital-identity';
 const isDigitalEuro = publication === 'digital-euro';
 const isWaterElectricity = publication === 'water-electricity';
 const isEInvoicing = publication === 'e-invoicing';
-const publicationUrl = isDigitalIdentity
+const publicationUrl = isOil ? '/publications/les-banquiers-du-baril/' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone/'
   : isEInvoicing
   ? isEnglish ? '/en/publications/great-e-invoicing-toll/' : '/publications/grand-peage-facture/'
@@ -30,7 +31,7 @@ const publicationUrl = isDigitalIdentity
   : isEnglish
     ? '/en/publications/epsteins-money/'
     : '/publications/l-argent-d-epstein/';
-const epubFile = isDigitalIdentity
+const epubFile = isOil ? 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
   ? 'votre-identite-dans-un-telephone-enquete-l0g.epub'
   : isEInvoicing
   ? isEnglish ? 'great-e-invoicing-toll-investigation-l0g.epub' : 'grand-peage-facture-enquete-l0g.epub'
@@ -44,7 +45,7 @@ const epubFile = isDigitalIdentity
     ? 'epsteins-money-l0g.epub'
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
-const coverUrl = isDigitalIdentity
+const coverUrl = isOil ? '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone-cover.jpg'
   : isEInvoicing
   ? isEnglish ? '/publications/great-e-invoicing-toll-cover.png' : '/publications/grand-peage-facture-cover.png'
@@ -60,7 +61,16 @@ const coverUrl = isDigitalIdentity
 const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
-const copy = isDigitalIdentity
+const copy = isOil
+  ? {
+      coverLabel: 'Découvrir Les banquiers du baril', coverAlt: 'Couverture des Banquiers du baril',
+      meta: '// enquête illustrée · septembre 2026',
+      titleLead: 'Les banquiers', titleAccent: 'du baril', deck: 'Crédit, cargaisons et pouvoir pétrolier.',
+      description: 'Huit enquêtes sur les banques, le financement des cargaisons, les infrastructures et les risques du négoce. Une introduction originale et les sources accompagnent la lecture.',
+      factsLabel: 'Contenu de l’édition', facts: [{ value: '8', label: 'enquêtes' }, { value: '24', label: 'infographies' }, { value: formattedSize, label: 'téléchargement' }, { value: 'CC BY 4.0', label: 'licence' }],
+      discover: 'Découvrir le livre', downloadLabel: 'Télécharger l’EPUB', fileName: 'Les-banquiers-du-baril-l0g.epub',
+    }
+  : isDigitalIdentity
   ? {
       coverLabel: 'Découvrir Votre identité dans un téléphone',
       coverAlt: 'Couverture de Votre identité dans un téléphone',
@@ -200,8 +210,8 @@ const copy = isDigitalIdentity
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
-      srcset={isWaterElectricity || isDigitalEuro ? [320, 640, 960].map((width) => `${coverUrl.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ") : undefined}
-      sizes={isWaterElectricity || isDigitalEuro ? "(max-width: 640px) 140px, 200px" : undefined}
+      srcset={isOil || isWaterElectricity || isDigitalEuro ? [320, 640, 960].map((width) => `${coverUrl.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ") : undefined}
+      sizes={isOil || isWaterElectricity || isDigitalEuro ? "(max-width: 640px) 140px, 200px" : undefined}
       width="1024"
       height="1638"
       alt={copy.coverAlt}
