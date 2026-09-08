@@ -207,6 +207,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     accent: 'var(--color-accent)',
     entries: [
       { sigle: 'BFR', nom: 'Besoin en fonds de roulement', def: "Trésorerie immobilisée par le cycle d'exploitation : stocks et créances clients, diminués des dettes fournisseurs et autres ressources d'exploitation. Une activité rentable peut manquer de liquidités si elle paie ses achats longtemps avant d'encaisser ses ventes.", guide: '/posts/cacao-ghana-financement-tresorerie/' },
+      { sigle: 'Arriérés de paiement', nom: 'Obligations échues et impayées', def: "Sommes dues dont la date de paiement applicable est dépassée. Pour une commande publique, il faut distinguer la livraison, la validation de la facture, son échéance et son règlement. Une créance en attente de validation ne peut pas être assimilée automatiquement à un arriéré reconnu.", guide: '/posts/senegal-arrieres-etat-entreprises-creancieres/' },
+      { sigle: 'Affacturage', nom: 'Financement et gestion de créances clients', def: "Contrat par lequel une entreprise confie ses créances clients à un établissement spécialisé, qui peut les financer et en gérer le recouvrement contre rémunération. Le montant avancé, les frais et la prise en charge du risque de non-paiement dépendent du contrat.", guide: '/posts/senegal-arrieres-etat-entreprises-creancieres/' },
       { sigle: 'Trade finance', nom: 'Financement du commerce international', def: "Ensemble des crédits, engagements bancaires et garanties qui permettent de financer l'intervalle entre l'achat, le transport et l'encaissement d'une marchandise. Le contrat détermine qui avance les fonds, quels documents déclenchent le paiement et quels actifs ou recettes garantissent le prêteur.", guide: '/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/' },
       { sigle: 'LC', nom: 'Lettre de crédit documentaire', def: "Engagement conditionnel d'une banque à payer un vendeur si les documents prévus sont présentés conformément aux termes convenus. Son émission et le décaissement sont deux étapes distinctes ; une lettre de crédit standby sert généralement de garantie de paiement en cas de défaillance.", guide: '/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/' },
       { sigle: 'Connaissement', nom: 'Bill of lading', def: "Document de transport émis lors du chargement. Selon sa forme et le droit applicable, il atteste la réception de la marchandise, contient ou constate le contrat de transport et permet de faire valoir des droits à la livraison. Il ne se réduit ni à un reçu ni, dans tous les cas, à un titre de propriété.", guide: '/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/' },
@@ -817,6 +819,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'arrieres-de-paiement': {
+    intuition: 'Un fournisseur a livré et la date de règlement est passée : sa trésorerie finance désormais le retard de son client.',
+    sources: [{ label: 'Flynn et Pessoa, FMI, 2014', href: 'https://www.imf.org/-/media/websites/imf/imported-full-text-pdf/external/pubs/ft/tnm/2014/_tnm1403.pdf', detail: 'Définition des obligations échues et stratégie de règlement.', kind: 'source' }],
+    related: ['bfr', 'affacturage'],
+  },
+  'affacturage': {
+    intuition: 'Mobiliser une facture avant son règlement procure une avance dont le coût et les garanties restent contractuels.',
+    sources: [{ label: 'BCEAO / COFEB', href: 'https://cofeb.bceao.int/actualite/webinaires-conjoints-bceao-afreximbank-fci-sur-le-theme-affacturage-et-financement-des', detail: 'Présentation institutionnelle de l’affacturage.', kind: 'source' }],
+    related: ['bfr', 'arrieres-de-paiement'],
+  },
   'prime-de-terme': {
     intuition: "La prime de terme isole la rémunération demandée pour porter la duration, une fois retirée la trajectoire attendue des taux courts.",
     formula: 'rendement long ≈ moyenne des taux courts anticipés + prime de terme',

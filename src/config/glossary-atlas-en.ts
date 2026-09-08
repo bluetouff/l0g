@@ -203,6 +203,34 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'arrieres-de-paiement',
+    sigle: 'Payment arrears',
+    nom: 'Overdue payment obligations',
+    def: 'Amounts due that remain unpaid after the applicable deadline. For public procurement, delivery, invoice validation, the due date and settlement are separate stages. A claim awaiting validation cannot automatically be counted as recognised arrears.',
+    guide: '/en/analysis/senegal-government-arrears-suppliers-cash-flow/',
+    sectionTitle: 'Private credit & markets',
+    accent: 'var(--color-accent)',
+    atlas: {
+      intuition: 'Once the payment deadline passes, the supplier’s cash finances its customer’s delay.',
+      sources: [{ label: 'Flynn and Pessoa, IMF, 2014', href: 'https://www.imf.org/-/media/websites/imf/imported-full-text-pdf/external/pubs/ft/tnm/2014/_tnm1403.pdf', detail: 'Definitions and arrears-clearance strategies.', kind: 'source' }],
+      related: ['affacturage'],
+    },
+  },
+  {
+    slug: 'affacturage',
+    sigle: 'Factoring',
+    nom: 'Receivables finance and collection',
+    def: 'A contract under which a business entrusts its receivables to a specialist institution that may provide financing and manage collection for a fee. The advance, charges and allocation of non-payment risk depend on the contract.',
+    guide: '/en/analysis/senegal-government-arrears-suppliers-cash-flow/',
+    sectionTitle: 'Private credit & markets',
+    accent: 'var(--color-accent)',
+    atlas: {
+      intuition: 'Turning an invoice into an advance brings forward cash while creating contractual costs and conditions.',
+      sources: [{ label: 'BCEAO / COFEB', href: 'https://cofeb.bceao.int/actualite/webinaires-conjoints-bceao-afreximbank-fci-sur-le-theme-affacturage-et-financement-des', detail: 'Institutional explanation of factoring.', kind: 'source' }],
+      related: ['arrieres-de-paiement'],
+    },
+  },
+  {
     slug: 'cat-nat',
     sigle: 'Cat Nat',
     nom: 'France’s statutory natural-catastrophe insurance scheme',

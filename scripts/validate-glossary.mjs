@@ -27,9 +27,14 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 501, 'Le corpus doit conserver ses 501 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 50, 'Le graphe Atlas doit conserver ses 50 nœuds');
-assert.equal(glossaryAtlasEdgeCount, 338, 'Le graphe Atlas doit conserver ses 338 relations');
+assert.equal(glossaryEntries.length, 503, 'Le corpus doit conserver ses 503 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 52, 'Le graphe Atlas doit conserver ses 52 nœuds');
+assert.equal(glossaryAtlasEdgeCount, 342, 'Le graphe Atlas doit conserver ses 342 relations');
+for (const slug of ['arrieres-de-paiement', 'affacturage']) {
+  const entry = glossaryEntries.find((candidate) => candidate.slug === slug);
+  assert(entry?.atlas?.sources?.length, slug + ' doit conserver sa source institutionnelle');
+  assert.equal(entry.guide, '/posts/senegal-arrieres-etat-entreprises-creancieres/');
+}
 assert.equal(glossaryReferenceCandidateSlugs.length, 70, 'La sélection éditoriale doit contenir 70 notions rares');
 assert.equal(new Set(glossaryReferenceCandidateSlugs).size, glossaryReferenceCandidateSlugs.length, 'La sélection contient un slug dupliqué');
 assert.equal(glossaryReferenceCandidates.length, glossaryReferenceCandidateSlugs.length, 'Chaque candidate doit correspondre à une entrée du glossaire');

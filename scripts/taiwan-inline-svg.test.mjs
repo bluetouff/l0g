@@ -15,6 +15,17 @@ import './cocoa-financing-tool.test.mjs';
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/senegal-arrieres-etat-entreprises-creancieres/index.html',
+    'dist/en/analysis/senegal-government-arrears-suppliers-cash-flow/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="sn26-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   {
     page: 'dist/posts/taiwan-724-milliards-assureurs-vie-risque-change/index.html',
     count: 5,
@@ -239,6 +250,31 @@ function numberAttribute(tag, name, fallback = 0) {
 function stringAttribute(tag, name, fallback = '') {
   return tag.match(new RegExp(`\\b${name}="([^"]+)"`, 'u'))?.[1] ?? fallback;
 }
+
+test('Senegal infographics preserve their zero baselines, units and calculated bar widths', () => {
+  const expectedWidths = [
+    [372, 372 * 0.495, 372, 372 * 2406 / 5425],
+    [372, 372 * (100 * 0.12 * 90 / 360) / 12, 372, 372 * (100 * 0.12 * 180 / 360) / 12, 372, 372],
+    [372, 372 * 6.7 / 8, 372, 372 * 2.2 / 8],
+  ];
+  for (const target of targets.filter(({ page }) => page.includes('senegal-'))) {
+    const html = readFileSync(join(ROOT, target.page), 'utf8');
+    assert.match(html, /\.prose \.sn26-figure>svg\{[^}]*max-width:560px/u, 'The compact figure rule must override the global prose SVG rule');
+    const svgs = html.match(target.pattern) ?? [];
+    assert.equal(svgs.length, 3);
+    for (const [index, svg] of svgs.entries()) {
+      const rectangles = [...svg.matchAll(/<rect\b[^>]*>/gu)].map(([tag]) => tag);
+      assert.equal(rectangles.length, expectedWidths[index].length);
+      for (const [bar, tag] of rectangles.entries()) {
+        assert.equal(numberAttribute(tag, 'x'), 24, 'All bars must share the zero baseline');
+        assert.ok(Math.abs(numberAttribute(tag, 'width') - expectedWidths[index][bar]) < 0.001);
+        assert.ok(numberAttribute(tag, 'x') + numberAttribute(tag, 'width') <= 396);
+      }
+      assert.match(svg, /width:100%;height:auto/u);
+      assert.doesNotMatch(svg, /var\(--color-/u, 'Chart colors must stay dark-theme-safe');
+    }
+  }
+});
 
 function visibleText(value) {
   return toText(fromHtml(value.trim(), { fragment: true }));
