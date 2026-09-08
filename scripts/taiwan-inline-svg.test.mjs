@@ -192,6 +192,22 @@ const targets = [
     darkBackgroundToken: '--color-surface:#0b0d10',
   },
   {
+    page: 'dist/posts/les-banquiers-du-baril-7-trafigura-petrobras-corruption/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb7-fr-fig[0-9]+-title bdb7-fr-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
+    page: 'dist/en/analysis/banking-on-oil-7-trafigura-petrobras-bribery/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb7-en-fig[0-9]+-title bdb7-en-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
     page: 'dist/en/analysis/ghana-cocoa-financing-cash-crisis/index.html',
     count: 3,
     pattern: /<svg\b[^>]*aria-labelledby="cocoa-[^"]+-en-title cocoa-[^"]+-en-desc"[^>]*>[\s\S]*?<\/svg>/gu,
