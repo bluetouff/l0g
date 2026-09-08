@@ -62,6 +62,28 @@ export function standaloneSvg(svg) {
   return resolved.replace(/(<svg\b[^>]*>)/u, `$1<rect x="${box[1]}" y="${box[2]}" width="${box[3]}" height="${box[4]}" fill="#0b0d10"/>`);
 }
 
+export async function renderOilMarkdown(markdown) {
+  // SVGs are already protected by placeholders. Remove website presentation
+  // from parsed nodes so deleting source text cannot assemble new HTML tags.
+  function removeWebsitePresentation() {
+    function clean(node) {
+      if (node.properties) {
+        delete node.properties.style;
+        delete node.properties.tabIndex;
+      }
+      if (node.children) {
+        node.children = node.children.filter((child) => child.type !== 'element' || child.tagName !== 'style');
+        node.children.forEach(clean);
+      }
+      if (node.content) clean(node.content);
+    }
+    return clean;
+  }
+  return String(await unified().use(remarkParse).use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true }).use(rehypeRaw)
+    .use(removeWebsitePresentation).use(rehypeStringify).process(markdown));
+}
+
 export async function generateOilEpub() {
   for (const directory of [TEXT, MEDIA, join(EPUB, 'styles'), join(SOURCE, 'META-INF')]) mkdirSync(directory, { recursive: true });
   for (const file of ['mimetype', 'META-INF/container.xml', 'META-INF/com.apple.ibooks.display-options.xml']) copyFileSync(join(TEMPLATE, file), join(SOURCE, file));
@@ -90,9 +112,9 @@ export async function generateOilEpub() {
       const token = `<div data-oil-figure="${figures.length}"></div>`;
       figures.push(standaloneSvg(svg));
       return token;
-    }).replace(/<style\b[^>]*>[\s\S]*?<\/style>/gu, '');
+    });
     if (figures.length !== 3) throw new Error(`${article.slug}: expected three figures`);
-    let html = String(await unified().use(remarkParse).use(remarkGfm).use(remarkRehype, { allowDangerousHtml: true }).use(rehypeRaw).use(rehypeStringify).process(markdown));
+    let html = await renderOilMarkdown(markdown);
     figures.forEach((svg, index) => {
       const token = `<div data-oil-figure="${index}"></div>`;
       if (!html.includes(token)) throw new Error(`${article.slug}: missing figure ${index}`);
@@ -100,8 +122,7 @@ export async function generateOilEpub() {
     });
     const extracted = extractInfographics(html, article.number, offset, MEDIA);
     offset = extracted.next;
-    // Website-only wrappers remain semantically harmless; their inline styles do not travel.
-    html = extracted.html.replace(/\sstyle="[^"]*"/gu, '').replace(/\stabindex="[^"]*"/gu, '');
+    html = extracted.html;
     html = html.replace(/href="https:\/\/l0g\.fr(\/posts\/les-banquiers-du-baril-[^"]+)"/gu, 'href="$1"');
     const sectioned = sectionHeadings(normalizeVoidElements(rewriteLinks(html, chapterByRoute)), article.number);
     const date = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'Europe/Paris' }).format(new Date(meta.pubDate));

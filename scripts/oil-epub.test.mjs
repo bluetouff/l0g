@@ -5,15 +5,51 @@ import { dirname, join, relative, resolve } from 'node:path';
 import test from 'node:test';
 import { XMLValidator } from 'fast-xml-parser';
 import { parseFrontmatter } from '@astrojs/markdown-remark';
+import { fromHtml } from 'hast-util-from-html';
 import sharp from 'sharp';
 import { oilPublication as book, oilChapters } from '../src/config/oil-publication.mjs';
-import { standaloneSvg } from './generate-oil-epub.mjs';
+import { renderOilMarkdown, standaloneSvg } from './generate-oil-epub.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const SOURCE = join(ROOT, 'src/epub/les-banquiers-du-baril');
 const EPUB = join(ROOT, 'public', book.epub);
 const files = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? files(join(dir, e.name)) : [join(dir, e.name)]);
 const textual = () => files(SOURCE).filter((p) => /\.(css|ncx|opf|svg|xhtml|xml)$/u.test(p));
+
+test('oil Markdown removes parsed website styles without reassembling markup', async () => {
+  const inputs = [
+    '<sty<style>discard</style>le>body{display:none}</style><p>Fin</p>',
+    '<STYLE media="all">body{display:none}</STYLE><p>Fin</p>',
+    '<style>body{display:none}</style ><p>Fin</p>',
+    '<p>Fin</p><style>body{display:none}',
+    '<template><style>body{display:none}</style><p style="color:red" tabindex="0">Fin</p></template>',
+    '<div STYLE=color:red TABINDEX=0><p style=\'display:none\'>Fin</p></div>',
+  ];
+  function inspect(node) {
+    assert.notEqual(node.tagName, 'style');
+    assert.equal(node.properties?.style, undefined);
+    assert.equal(node.properties?.tabIndex, undefined);
+    node.children?.forEach(inspect);
+    if (node.content) inspect(node.content);
+  }
+  for (const input of inputs) {
+    const html = await renderOilMarkdown(input);
+    inspect(fromHtml(html, { fragment: true }));
+    assert.match(html, /Fin/u);
+  }
+});
+
+test('oil Markdown preserves prose, source links, literal markup and figure placeholders', async () => {
+  const html = await renderOilMarkdown('## Réserves & pétrole\n\n[Source](/posts/source/#s1) et `<style>exemple</style>`.\n\n&lt;style&gt;texte&lt;/style&gt;\n\n<div data-oil-figure="0"></div>\n\n<p title="<style>littéral</style>">Texte</p>\n\n| Unité | Valeur |\n| --- | --- |\n| Baril | 1 |');
+  assert.match(html, /<h2>Réserves &#x26; pétrole<\/h2>/u);
+  assert.match(html, /href="\/posts\/source\/#s1"/u);
+  assert.match(html, /<code>&#x3C;style>exemple&#x3C;\/style><\/code>/u);
+  assert.match(html, /&#x3C;style>texte&#x3C;\/style>/u);
+  assert.match(html, /<div data-oil-figure="0"><\/div>/u);
+  assert.match(html, /<table>/u);
+  const tree = fromHtml(html, { fragment: true });
+  assert.equal(tree.children.find((node) => node.properties?.title)?.properties.title, '<style>littéral</style>');
+});
 
 test('oil EPUB has a valid container and packages exactly its versioned sources', () => {
   const entries = execFileSync('unzip', ['-Z1', EPUB], { encoding: 'utf8' }).trim().split('\n');
