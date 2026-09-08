@@ -13,7 +13,7 @@
       "date_publication": "",
       "route": "/questions/difference-facture-electronique-e-reporting/",
       "decision": "a_indexer",
-      "raison_decision": "Page de question PA Check en 200 ; hors build l0g, audit éditorial et maillage à réaliser dans PA Check.",
+      "raison_decision": "Page PA Check en 200, canonical propre, indexable, sitemap et maillage public vérifiés ; hors build l0g. Voir pa-priority-proof-2026-09-08.json.",
       "present_build": "non",
       "present_sitemap_build": "non",
       "canonical_build": "",
@@ -27,12 +27,29 @@
       "statut_gsc_precedent": "",
       "transition_observee": "nouvelle_dans_les_exemples",
       "http_live": "200",
-      "limite_live": "",
+      "limite_live": "Graphe limité aux 186 HTML du sitemap PA Check ; canonical Google non disponible.",
       "priority_scope": "autre_depot",
       "new_incoming_pages": [],
       "lead": null,
       "duplicate_leads": [],
-      "lead_sha256": null
+      "lead_sha256": null,
+      "external_live_review": {
+        "proof": "pa-priority-proof-2026-09-08.json",
+        "http_status": 200,
+        "canonical": "https://pa.l0g.fr/questions/difference-facture-electronique-e-reporting/",
+        "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+        "in_sitemap": true,
+        "depth_from_own_home": 2,
+        "incoming_pages": [
+          "https://pa.l0g.fr/questions/"
+        ],
+        "lead": {
+          "kind": "last paragraph of .answer-intro",
+          "text": "Les deux obligations utilisent les plateformes agréées, mais elles ne couvrent pas les mêmes opérations.",
+          "exact_duplicates": [],
+          "comparison_pages": 25
+        }
+      }
     },
     {
       "url": "https://l0g.fr/7/",
