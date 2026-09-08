@@ -7,6 +7,11 @@ const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
   {
+    source: join(ROOT, 'src/epub/banking-on-oil'),
+    output: join(ROOT, 'public/publications/banking-on-oil-l0g.epub'),
+    fixedTime: new Date('2026-09-08T20:23:06Z'),
+  },
+  {
     source: join(ROOT, 'src/epub/les-banquiers-du-baril'),
     output: join(ROOT, 'public/publications/les-banquiers-du-baril-l0g.epub'),
     fixedTime: new Date('2026-09-08T18:55:23Z'),

@@ -7,14 +7,12 @@ import { XMLValidator } from 'fast-xml-parser';
 import { parseFrontmatter } from '@astrojs/markdown-remark';
 import { fromHtml } from 'hast-util-from-html';
 import sharp from 'sharp';
-import { oilPublication as book, oilChapters } from '../src/config/oil-publication.mjs';
-import { renderOilMarkdown, standaloneSvg } from './generate-oil-epub.mjs';
+import { oilPublication, oilChapters as frenchChapters } from '../src/config/oil-publication.mjs';
+import { oilPublicationEn, oilChaptersEn } from '../src/config/oil-publication-en.mjs';
+import { generateOilEpub, renderOilMarkdown, standaloneSvg } from './generate-oil-epub.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
-const SOURCE = join(ROOT, 'src/epub/les-banquiers-du-baril');
-const EPUB = join(ROOT, 'public', book.epub);
 const files = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? files(join(dir, e.name)) : [join(dir, e.name)]);
-const textual = () => files(SOURCE).filter((p) => /\.(css|ncx|opf|svg|xhtml|xml)$/u.test(p));
 
 test('oil Markdown removes parsed website styles without reassembling markup', async () => {
   const inputs = [
@@ -51,7 +49,18 @@ test('oil Markdown preserves prose, source links, literal markup and figure plac
   assert.equal(tree.children.find((node) => node.properties?.title)?.properties.title, '<style>littéral</style>');
 });
 
-test('oil EPUB has a valid container and packages exactly its versioned sources', () => {
+test('oil generator rejects unsupported languages before writing files', async () => {
+  await assert.rejects(generateOilEpub('de'), /Unsupported oil edition language/u);
+});
+
+for (const { book, oilChapters, lang, directory, pageFile } of [
+  { book: oilPublication, oilChapters: frenchChapters, lang: 'fr', directory: 'les-banquiers-du-baril', pageFile: 'src/pages/publications/les-banquiers-du-baril.astro' },
+  { book: oilPublicationEn, oilChapters: oilChaptersEn, lang: 'en', directory: 'banking-on-oil', pageFile: 'src/pages/en/publications/banking-on-oil.astro' },
+]) {
+const SOURCE = join(ROOT, 'src/epub', directory);
+const EPUB = join(ROOT, 'public', book.epub);
+const textual = () => files(SOURCE).filter((p) => /\.(css|ncx|opf|svg|xhtml|xml)$/u.test(p));
+test(`${lang}: oil EPUB has a valid container and packages exactly its versioned sources`, () => {
   const entries = execFileSync('unzip', ['-Z1', EPUB], { encoding: 'utf8' }).trim().split('\n');
   assert.equal(entries[0], 'mimetype');
   assert.equal(execFileSync('unzip', ['-p', EPUB, 'mimetype'], { encoding: 'utf8' }), 'application/epub+zip');
@@ -62,24 +71,36 @@ test('oil EPUB has a valid container and packages exactly its versioned sources'
   for (const path of textual().filter((p) => !p.endsWith('.css'))) assert.equal(XMLValidator.validate(readFileSync(path, 'utf8')), true, path);
 });
 
-test('oil edition retains all eight titles, sources, figures and internal destinations', () => {
+test(`${lang}: oil edition retains all eight titles, sources, figures and internal destinations`, async () => {
   for (const chapter of oilChapters) {
-    const source = readFileSync(join(ROOT, 'src/content/posts', `${chapter.slug}.md`), 'utf8');
+    const source = readFileSync(join(ROOT, lang === 'fr' ? 'src/content/posts' : 'src/content/posts-en', `${chapter.slug}.md`), 'utf8');
     const { frontmatter } = parseFrontmatter(source);
     assert.equal(chapter.title, frontmatter.title);
     const html = readFileSync(join(SOURCE, 'EPUB/text', chapter.chapter), 'utf8');
     assert.equal((html.match(/<h1\b/gu) ?? []).length, 1, `${chapter.slug}: one chapter heading`);
     assert.equal((html.match(/class="infographic-image"/gu) ?? []).length, 3);
     assert.equal((html.match(/class="infographic-image" alt="[^"]+"/gu) ?? []).length, 3);
-    for (const [, id] of source.matchAll(/\bid="([^"]+)"/gu)) {
-      if (/^(?:s\d|bdb\d+-fr-s\d)/u.test(id)) assert.ok(html.includes(`id="${id}"`), `Source anchor lost: ${id}`);
-    }
+    const prose = source.replace(/<svg\b[\s\S]*?<\/svg>/gu, '');
+    for (const [, id] of prose.matchAll(/\bid="([^"]+)"/gu)) assert.ok(html.includes(`id="${id}"`), `Source anchor lost: ${id}`);
+    const hrefs = (tree) => {
+      const found = [];
+      const visit = (node) => { if (node.tagName === 'a') found.push(node.properties.href); node.children?.forEach(visit); };
+      visit(tree);
+      return found;
+    };
+    const expected = hrefs(fromHtml(await renderOilMarkdown(prose.replace(/^---\n[\s\S]*?\n---\n/u, '')), { fragment: true }));
+    const actual = hrefs(fromHtml(html, { fragment: true }));
+    for (const href of expected.filter((href) => /^https?:/u.test(href) && !href.startsWith('https://l0g.fr/'))) assert.ok(actual.includes(href), `External source lost: ${href}`);
+    assert.match(html, new RegExp(`<html[^>]+lang="${lang}"`, 'u'));
     assert.doesNotMatch(html, /<(?:svg|text|rect|path|style)\b|\sstyle="/iu);
   }
   const opf = readFileSync(join(SOURCE, 'EPUB/content.opf'), 'utf8');
   assert.equal((opf.match(/media-type="image\/svg\+xml"/gu) ?? []).length, 24);
   assert.equal((opf.match(/<itemref\b/gu) ?? []).length, 13);
-  assert.match(readFileSync(join(SOURCE, 'EPUB/text/ch001.xhtml'), 'utf8'), /Suivre l’argent du pétrole/u);
+  assert.ok(readFileSync(join(SOURCE, 'EPUB/text/ch001.xhtml'), 'utf8').includes(lang === 'fr' ? 'Suivre l’argent du pétrole' : 'Following the money in oil'));
+  assert.ok(opf.includes(`<dc:language>${lang}</dc:language>`));
+  assert.ok(opf.includes(book.title));
+  assert.ok(opf.includes(book.modified));
   assert.match(opf, /2026-09-08/u);
   for (const path of textual().filter((p) => !/\.(?:css|svg)$/u.test(p))) {
     for (const [, reference] of readFileSync(path, 'utf8').matchAll(/\b(?:href|src)="([^"]+)"/gu)) {
@@ -94,7 +115,7 @@ test('oil edition retains all eight titles, sources, figures and internal destin
   }
 });
 
-test('oil EPUB is passive, self-contained and its SVG canvas remains dark', () => {
+test(`${lang}: oil EPUB is passive, self-contained and its SVG canvas remains dark`, () => {
   for (const path of textual()) {
     const value = readFileSync(path, 'utf8');
     assert.doesNotMatch(value, /<(?:script|iframe|object|embed|foreignObject|form)\b|\son\w+\s*=|javascript:|data:text\/html|@import|\u2014/iu, path);
@@ -115,7 +136,7 @@ test('oil EPUB is passive, self-contained and its SVG canvas remains dark', () =
   assert.throws(() => standaloneSvg('<svg viewBox="0 0 1 1" style="fill:url(https://example.com/a.svg)"/>'), /forbidden/u);
 });
 
-test('oil cover, responsive variants, social card and publication page are connected', async () => {
+test(`${lang}: oil cover, responsive variants, social card and publication page are connected`, async () => {
   const cover = await sharp(join(ROOT, 'public', book.cover)).metadata();
   assert.equal(cover.width, 1024); assert.equal(cover.height, 1638);
   assert.ok(statSync(join(ROOT, 'public', book.cover)).size < 256_000);
@@ -126,12 +147,23 @@ test('oil cover, responsive variants, social card and publication page are conne
     assert.equal((await sharp(path).metadata()).width, width);
     assert.ok(statSync(path).size < 256_000);
   }
-  const page = readFileSync(join(ROOT, 'src/pages/publications/les-banquiers-du-baril.astro'), 'utf8');
+  const page = readFileSync(join(ROOT, pageFile), 'utf8');
   assert.match(page, /'@type': 'Book'/u);
   assert.match(page, /createHash\('sha256'\)/u);
   assert.match(page, /serializeInlineScriptData\(jsonLd\)/u);
   assert.match(page, /seoTitle=/u); assert.match(page, /ogTitle=/u);
-  assert.match(readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8'), /publication="oil-trading"/u);
-  assert.match(readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8'), /les-banquiers-du-baril-cover-social\.jpg/u);
+  const index = readFileSync(join(ROOT, lang === 'fr' ? 'src/pages/publications/index.astro' : 'src/pages/en/publications/index.astro'), 'utf8');
+  assert.match(index, /publication="oil-trading"/u);
+  assert.ok(index.includes(book.social));
+  assert.match(page, /hreflang: 'fr'/u);
+  assert.match(page, /hreflang: 'en'/u);
+  if (lang === 'en') {
+    assert.match(page, /translationOfWork/u);
+    const opf = readFileSync(join(SOURCE, 'EPUB/content.opf'), 'utf8');
+    assert.doesNotMatch(opf, /2e744d8f-3968-43b8-84ec-c6d8ed931fac/u, 'The English book needs its own identifier');
+    assert.match(readFileSync(join(SOURCE, 'EPUB/text/title_page.xhtml'), 'utf8'), /English edition/u);
+  }
   for (const p of book.introduction) assert.doesNotMatch(p, /\u2014/u);
 });
+
+}

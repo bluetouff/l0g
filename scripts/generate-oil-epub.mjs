@@ -8,18 +8,13 @@ import remarkRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw';
 import rehypeStringify from 'rehype-stringify';
 import sharp from 'sharp';
-import { oilPublication as book, oilChapters as articles } from '../src/config/oil-publication.mjs';
+import { oilPublication, oilChapters } from '../src/config/oil-publication.mjs';
+import { oilPublicationEn, oilChaptersEn } from '../src/config/oil-publication-en.mjs';
 import { escapeXml as xml, extractInfographics, normalizeVoidElements, rewriteLinks, sectionHeadings, xhtmlDocument } from './generate-e-invoicing-epub-lib.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
-const SOURCE = join(ROOT, 'src/epub/les-banquiers-du-baril');
-const EPUB = join(SOURCE, 'EPUB');
-const MEDIA = join(EPUB, 'media');
-const TEXT = join(EPUB, 'text');
 const TEMPLATE = join(ROOT, 'src/epub/l-argent-d-epstein');
 const SITE = 'https://l0g.fr';
-const ID = 'urn:uuid:2e744d8f-3968-43b8-84ec-c6d8ed931fac';
-const config = { lang: 'fr' };
 const paragraphs = (items) => items.map((p) => `<p>${xml(p)}</p>`).join('\n');
 
 // Resolve the controlled article palette before packaging standalone images.
@@ -31,7 +26,7 @@ export function standaloneSvg(svg) {
   }
   // Episode 1 applies its dark palette from article-level CSS. Bake that exact
   // mapping into the three standalone figures instead of depending on the page.
-  if (/id="bdb1-fr-/u.test(svg)) {
+  if (/id="bdb1-(?:fr|en)-/u.test(svg)) {
     const fills = { '#f5f7f3': '#121419', '#e6eee7': '#171a20', '#18352e': '#e7e9ee', '#28634f': '#5eead4', '#475c54': '#8b909b', '#ffffff': '#0c0d10' };
     svg = svg.replace(/<rect\b[^>]*>/gu, (tag) => tag.replace('fill="#18352e"', 'fill="#5eead4"'))
       .replace(/fill="(#[a-f0-9]+)"/gu, (attribute, color) => fills[color] ? `fill="${fills[color]}"` : attribute)
@@ -84,12 +79,26 @@ export async function renderOilMarkdown(markdown) {
     .use(removeWebsitePresentation).use(rehypeStringify).process(markdown));
 }
 
-export async function generateOilEpub() {
+export async function generateOilEpub(lang = 'fr') {
+  if (!['fr', 'en'].includes(lang)) throw new Error('Unsupported oil edition language');
+  const isEn = lang === 'en';
+  const tr = (fr, en) => isEn ? en : fr;
+  const book = isEn ? oilPublicationEn : oilPublication;
+  const articles = isEn ? oilChaptersEn : oilChapters;
+  const SOURCE = join(ROOT, 'src/epub', tr('les-banquiers-du-baril', 'banking-on-oil'));
+  const EPUB = join(SOURCE, 'EPUB');
+  const MEDIA = join(EPUB, 'media');
+  const TEXT = join(EPUB, 'text');
+  const ID = isEn ? 'urn:uuid:230a4d06-edaa-43e8-ae46-d3bb10f4859e' : 'urn:uuid:2e744d8f-3968-43b8-84ec-c6d8ed931fac';
+  const config = { lang };
+  const introTitle = tr('Introduction : suivre l’argent du pétrole', 'Introduction: following the money in oil');
+  const introHeading = tr('Suivre l’argent du pétrole', 'Following the money in oil');
+  const aboutTitle = tr('À propos de cette édition', 'About this edition');
   for (const directory of [TEXT, MEDIA, join(EPUB, 'styles'), join(SOURCE, 'META-INF')]) mkdirSync(directory, { recursive: true });
   for (const file of ['mimetype', 'META-INF/container.xml', 'META-INF/com.apple.ibooks.display-options.xml']) copyFileSync(join(TEMPLATE, file), join(SOURCE, file));
   const css = readFileSync(join(TEMPLATE, 'EPUB/styles/stylesheet1.css'), 'utf8');
   writeFileSync(join(EPUB, 'styles/stylesheet1.css'), `${css}\n.infographic-image { width: 100%; background: #0b0d10; }\n.chapter-meta, .edition-note { font-size: .85em; color: #555c66; }\n`);
-  const master = join(ROOT, 'src/epub-assets/les-banquiers-du-baril-cover.png');
+  const master = join(ROOT, 'src/epub-assets', tr('les-banquiers-du-baril-cover.png', 'banking-on-oil-cover.png'));
   const cover = await sharp(master).resize(1024, 1638, { fit: 'fill' }).jpeg({ quality: 82, mozjpeg: true }).toBuffer();
   writeFileSync(join(MEDIA, 'cover.jpg'), cover);
   writeFileSync(join(ROOT, 'public', book.cover), cover);
@@ -97,14 +106,14 @@ export async function generateOilEpub() {
     await sharp(master).resize({ width }).webp({ quality: 84 }).toFile(join(ROOT, 'public', book.cover.replace('.jpg', `-${width}.webp`)));
   }
   await sharp(master).resize(1200, 630, { fit: 'contain', background: '#080c10' }).jpeg({ quality: 85, mozjpeg: true }).toFile(join(ROOT, 'public', book.social));
-  writeFileSync(join(TEXT, 'cover.xhtml'), xhtmlDocument(config, { title: 'Couverture', bodyType: 'frontmatter cover', body: `<img src="../media/cover.jpg" alt="Couverture de ${xml(book.title)}" />` }));
-  writeFileSync(join(TEXT, 'title_page.xhtml'), xhtmlDocument(config, { title: book.title, bodyType: 'frontmatter', body: `<section class="titlepage" epub:type="titlepage"><h1>${xml(book.title)}</h1><p class="subtitle">${xml(book.subtitle)}</p><p class="author">l0g</p><p>8 septembre 2026</p><p>Édition française · huit enquêtes · vingt-quatre infographies</p><p>Creative Commons Attribution 4.0 International</p></section>` }));
+  writeFileSync(join(TEXT, 'cover.xhtml'), xhtmlDocument(config, { title: tr('Couverture', 'Cover'), bodyType: 'frontmatter cover', body: `<img src="../media/cover.jpg" alt="${xml(tr('Couverture de ', 'Cover of ') + book.title)}" />` }));
+  writeFileSync(join(TEXT, 'title_page.xhtml'), xhtmlDocument(config, { title: book.title, bodyType: 'frontmatter', body: `<section class="titlepage" epub:type="titlepage"><h1>${xml(book.title)}</h1><p class="subtitle">${xml(book.subtitle)}</p><p class="author">l0g</p><p>${tr('8 septembre 2026', '8 September 2026')}</p><p>${tr('Édition française · huit enquêtes · vingt-quatre infographies', 'English edition · eight investigations · twenty-four infographics')}</p><p>Creative Commons Attribution 4.0 International</p></section>` }));
 
   const chapterByRoute = new Map(articles.map((a) => [a.route, `${a.chapter}#article-${a.number}`]));
   const rendered = [];
   let offset = 0;
   for (const article of articles) {
-    const source = readFileSync(join(ROOT, 'src/content/posts', `${article.slug}.md`), 'utf8');
+    const source = readFileSync(join(ROOT, tr('src/content/posts', 'src/content/posts-en'), `${article.slug}.md`), 'utf8');
     const { frontmatter: meta } = parseFrontmatter(source);
     if (meta.title !== article.title || !meta.description) throw new Error(`Oil publication metadata drift: ${article.slug}`);
     const figures = [];
@@ -123,31 +132,34 @@ export async function generateOilEpub() {
     const extracted = extractInfographics(html, article.number, offset, MEDIA);
     offset = extracted.next;
     html = extracted.html;
-    html = html.replace(/href="https:\/\/l0g\.fr(\/posts\/les-banquiers-du-baril-[^"]+)"/gu, 'href="$1"');
+    html = html.replace(/href="https:\/\/l0g\.fr(\/(?:posts\/les-banquiers-du-baril-|en\/analysis\/banking-on-oil-)[^"]+)"/gu, 'href="$1"');
     const sectioned = sectionHeadings(normalizeVoidElements(rewriteLinks(html, chapterByRoute)), article.number);
-    const date = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'Europe/Paris' }).format(new Date(meta.pubDate));
-    const body = `<section id="article-${article.number}" class="article-chapter"><p class="chapter-kicker">Volet ${article.number} sur 8</p><h1>${xml(meta.title)}</h1><p class="chapter-dek">${xml(meta.description)}</p><p class="chapter-meta">Publié le ${xml(date)} · <a href="${SITE}${article.route}">Version en ligne</a></p>${sectioned.html}</section>`;
+    const date = new Intl.DateTimeFormat(tr('fr-FR', 'en-GB'), { dateStyle: 'long', timeZone: 'Europe/Paris' }).format(new Date(meta.pubDate));
+    const body = `<section id="article-${article.number}" class="article-chapter"><p class="chapter-kicker">${tr('Volet', 'Part')} ${article.number} ${tr('sur', 'of')} 8</p><h1>${xml(meta.title)}</h1><p class="chapter-dek">${xml(meta.description)}</p><p class="chapter-meta">${tr('Publié le', 'Published')} ${xml(date)} · <a href="${SITE}${article.route}">${tr('Version en ligne', 'Read online')}</a></p>${sectioned.html}</section>`;
     writeFileSync(join(TEXT, article.chapter), xhtmlDocument(config, { title: article.title, body }));
     rendered.push({ ...article, headings: sectioned.headings });
   }
   if (offset !== 24) throw new Error(`Expected 24 infographics, found ${offset}`);
-  writeFileSync(join(TEXT, 'ch001.xhtml'), xhtmlDocument(config, { title: 'Introduction : suivre l’argent du pétrole', body: `<section id="introduction" epub:type="introduction"><p class="chapter-kicker">Introduction</p><h1>Suivre l’argent du pétrole</h1>${paragraphs(book.introduction)}<h2>Parcours de lecture</h2><ol>${articles.map((a) => `<li><a href="${a.chapter}#article-${a.number}">${xml(a.title)}</a> : ${xml(a.summary)}</li>`).join('')}</ol></section>` }));
-  writeFileSync(join(TEXT, 'ch010.xhtml'), xhtmlDocument(config, { title: 'À propos de cette édition', body: `<section id="edition"><h1>À propos de cette édition</h1><p>Cette édition française du 8 septembre 2026 rassemble les huit articles de la série Les banquiers du baril, avec une introduction originale et 24 infographies. Les chapitres conservent leurs sources, leurs réserves et leurs dates. Les liens vers les autres volets ouvrent le chapitre correspondant dans le livre ; les autres liens nécessitent une connexion.</p><p>La couverture est une illustration conceptuelle générée avec une assistance d’intelligence artificielle. Le navire, le terminal et le registre représentés ne décrivent aucune installation, société ou transaction réelle. Les chiffres décoratifs du registre ne sont pas des données de l’enquête.</p><p>Le texte et les graphiques sont lisibles hors ligne. Aucun script, police distante ou ressource de suivi n’est embarqué. Les descriptions alternatives accompagnent les graphiques. Le rendu et les possibilités d’agrandissement dépendent de la liseuse.</p><h2>Articles d’origine</h2><ol>${articles.map((a) => `<li><a href="${SITE}${a.route}">${xml(a.title)}</a></li>`).join('')}</ol><p>Retrouvez les éventuelles corrections sur <a href="${SITE}${book.path}">la page de l’édition</a>.</p><p>Publication l0g · <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">Creative Commons Attribution 4.0 International</a>.</p></section>` }));
+  writeFileSync(join(TEXT, 'ch001.xhtml'), xhtmlDocument(config, { title: introTitle, body: `<section id="introduction" epub:type="introduction"><p class="chapter-kicker">Introduction</p><h1>${xml(introHeading)}</h1>${paragraphs(book.introduction)}<h2>${tr('Parcours de lecture', 'Reading order')}</h2><ol>${articles.map((a) => `<li><a href="${a.chapter}#article-${a.number}">${xml(a.title)}</a>${tr(' : ', ': ')}${xml(a.summary)}</li>`).join('')}</ol></section>` }));
+  writeFileSync(join(TEXT, 'ch010.xhtml'), xhtmlDocument(config, { title: aboutTitle, body: `<section id="edition"><h1>${xml(aboutTitle)}</h1><p>${xml(tr("Cette édition française du 8 septembre 2026 rassemble les huit articles de la série Les banquiers du baril, avec une introduction originale et 24 infographies. Les chapitres conservent leurs sources, leurs réserves et leurs dates. Les liens vers les autres volets ouvrent le chapitre correspondant dans le livre ; les autres liens nécessitent une connexion.", "This English edition of 8 September 2026 brings together the eight Banking on Oil articles, with an original introduction and 24 infographics. The chapters retain their sources, qualifications and dates. Links to other parts open the corresponding chapter in the book; other links require an internet connection."))}</p><p>${xml(tr("La couverture est une illustration conceptuelle générée avec une assistance d’intelligence artificielle. Le navire, le terminal et le registre représentés ne décrivent aucune installation, société ou transaction réelle. Les chiffres décoratifs du registre ne sont pas des données de l’enquête.", "The cover is a conceptual illustration created with AI assistance. Its vessel, terminal and ledger do not depict a real facility, company or transaction. Decorative figures in the ledger are not data from the investigation."))}</p><p>${xml(tr("Le texte et les graphiques sont lisibles hors ligne. Aucun script, police distante ou ressource de suivi n’est embarqué. Les descriptions alternatives accompagnent les graphiques. Le rendu et les possibilités d’agrandissement dépendent de la liseuse.", "Text and graphics can be read offline. No scripts, remote fonts or tracking resources are included. The graphics have text alternatives. Rendering and image enlargement depend on the reading application."))}</p><h2>${tr('Articles d’origine', 'Original articles')}</h2><ol>${articles.map((a) => `<li><a href="${SITE}${a.route}">${xml(a.title)}</a></li>`).join('')}</ol><p>${tr('Retrouvez les éventuelles corrections sur', 'Find subsequent corrections on')} <a href="${SITE}${book.path}">${tr('la page de l’édition', 'the edition page')}</a>.</p><p>${tr('Publication l0g', 'Published by l0g')} · <a href="https://creativecommons.org/licenses/by/4.0/${tr('deed.fr', '')}">Creative Commons Attribution 4.0 International</a>.</p></section>` }));
 
-  const nav = [{ title: 'Introduction : suivre l’argent du pétrole', href: 'text/ch001.xhtml' }, ...rendered.map((a) => ({ title: `${a.number}. ${a.title}`, href: `text/${a.chapter}`, children: a.headings.map((h) => ({ title: h.label, href: `text/${a.chapter}#${h.id}` })) })), { title: 'À propos de cette édition', href: 'text/ch010.xhtml' }];
+  const nav = [{ title: introTitle, href: 'text/ch001.xhtml' }, ...rendered.map((a) => ({ title: `${a.number}. ${a.title}`, href: `text/${a.chapter}`, children: a.headings.map((h) => ({ title: h.label, href: `text/${a.chapter}#${h.id}` })) })), { title: aboutTitle, href: 'text/ch010.xhtml' }];
   const navList = (entries) => `<ol>${entries.map((e) => `<li><a href="${e.href}">${xml(e.title)}</a>${e.children ? navList(e.children) : ''}</li>`).join('')}</ol>`;
-  writeFileSync(join(EPUB, 'nav.xhtml'), xhtmlDocument(config, { title: 'Sommaire', bodyType: 'frontmatter', body: `<nav epub:type="toc" id="toc"><h1>Sommaire</h1>${navList(nav)}</nav>` }).replace('../styles/stylesheet1.css', 'styles/stylesheet1.css'));
+  writeFileSync(join(EPUB, 'nav.xhtml'), xhtmlDocument(config, { title: tr('Sommaire', 'Contents'), bodyType: 'frontmatter', body: `<nav epub:type="toc" id="toc"><h1>${tr('Sommaire', 'Contents')}</h1>${navList(nav)}</nav>` }).replace('../styles/stylesheet1.css', 'styles/stylesheet1.css'));
   let playOrder = 0;
   const ncxPoints = (entries) => entries.map((e) => { const order = ++playOrder; return `<navPoint id="nav-${order}" playOrder="${order}"><navLabel><text>${xml(e.title)}</text></navLabel><content src="${e.href}"/>${e.children ? ncxPoints(e.children) : ''}</navPoint>`; }).join('');
   const points = ncxPoints(nav);
-  writeFileSync(join(EPUB, 'toc.ncx'), `<?xml version="1.0" encoding="UTF-8"?><ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="fr"><head><meta name="dtb:uid" content="${ID}"/><meta name="dtb:depth" content="2"/><meta name="dtb:totalPageCount" content="0"/><meta name="dtb:maxPageNumber" content="0"/></head><docTitle><text>${xml(book.title)}</text></docTitle><navMap>${points}</navMap></ncx>`);
+  writeFileSync(join(EPUB, 'toc.ncx'), `<?xml version="1.0" encoding="UTF-8"?><ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="${lang}"><head><meta name="dtb:uid" content="${ID}"/><meta name="dtb:depth" content="2"/><meta name="dtb:totalPageCount" content="0"/><meta name="dtb:maxPageNumber" content="0"/></head><docTitle><text>${xml(book.title)}</text></docTitle><navMap>${points}</navMap></ncx>`);
   const chapters = Array.from({ length: 10 }, (_, i) => `ch${String(i + 1).padStart(3, '0')}`);
   writeFileSync(join(EPUB, 'content.opf'), `<?xml version="1.0" encoding="UTF-8"?>
-<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="book-id" xml:lang="fr" prefix="schema: http://schema.org/">
-<metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="book-id">${ID}</dc:identifier><dc:title>${xml(book.title)}</dc:title><dc:language>fr</dc:language><dc:creator>l0g</dc:creator><dc:publisher>l0g.fr</dc:publisher><dc:date>${book.date}</dc:date><dc:description>${xml(book.subtitle)}. Huit enquêtes et vingt-quatre infographies.</dc:description><dc:source>${SITE}${book.path}</dc:source><dc:rights>Creative Commons Attribution 4.0 International</dc:rights><meta property="dcterms:modified">${book.modified}</meta><meta name="cover" content="cover-image"/><meta property="schema:accessMode">textual</meta><meta property="schema:accessMode">visual</meta><meta property="schema:accessibilityFeature">alternativeText</meta><meta property="schema:accessibilityFeature">readingOrder</meta><meta property="schema:accessibilityFeature">structuralNavigation</meta><meta property="schema:accessibilityFeature">tableOfContents</meta><meta property="schema:accessibilityHazard">none</meta><meta property="schema:accessibilitySummary">Texte redistribuable, sommaire hiérarchisé, sources cliquables et descriptions alternatives pour les 24 infographies. L’agrandissement des images dépend de la liseuse.</meta></metadata>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="book-id" xml:lang="${lang}" prefix="schema: http://schema.org/">
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="book-id">${ID}</dc:identifier><dc:title>${xml(book.title)}</dc:title><dc:language>${lang}</dc:language><dc:creator>l0g</dc:creator><dc:publisher>l0g.fr</dc:publisher><dc:date>${book.date}</dc:date><dc:description>${xml(book.subtitle)}. ${tr('Huit enquêtes et vingt-quatre infographies.', 'Eight investigations and twenty-four infographics.')}</dc:description><dc:source>${SITE}${book.path}</dc:source><dc:rights>Creative Commons Attribution 4.0 International</dc:rights><meta property="dcterms:modified">${book.modified}</meta><meta name="cover" content="cover-image"/><meta property="schema:accessMode">textual</meta><meta property="schema:accessMode">visual</meta><meta property="schema:accessibilityFeature">alternativeText</meta><meta property="schema:accessibilityFeature">readingOrder</meta><meta property="schema:accessibilityFeature">structuralNavigation</meta><meta property="schema:accessibilityFeature">tableOfContents</meta><meta property="schema:accessibilityHazard">none</meta><meta property="schema:accessibilitySummary">${xml(tr('Texte redistribuable, sommaire hiérarchisé, sources cliquables et descriptions alternatives pour les 24 infographies. L’agrandissement des images dépend de la liseuse.', 'Reflowable text, a hierarchical table of contents, clickable sources and text alternatives for all 24 infographics. Image enlargement depends on the reading application.'))}</meta></metadata>
 <manifest><item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/><item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/><item id="css" href="styles/stylesheet1.css" media-type="text/css"/><item id="cover-image" href="media/cover.jpg" media-type="image/jpeg" properties="cover-image"/><item id="cover" href="text/cover.xhtml" media-type="application/xhtml+xml"/><item id="title" href="text/title_page.xhtml" media-type="application/xhtml+xml"/>${chapters.map((id) => `<item id="${id}" href="text/${id}.xhtml" media-type="application/xhtml+xml"/>`).join('')}${Array.from({ length: 24 }, (_, i) => `<item id="fig-${i}" href="media/file${i}.svg" media-type="image/svg+xml"/>`).join('')}</manifest>
 <spine toc="ncx"><itemref idref="cover"/><itemref idref="title"/><itemref idref="nav"/>${chapters.map((id) => `<itemref idref="${id}"/>`).join('')}</spine></package>`);
-  console.log('Les banquiers du baril : introduction, 8 enquêtes et 24 infographies générées.');
+  console.log(`${book.title}: introduction, 8 chapters and 24 infographics generated (${lang}).`);
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === new URL(import.meta.url).pathname) await generateOilEpub();
+if (process.argv[1] && resolve(process.argv[1]) === new URL(import.meta.url).pathname) {
+  await generateOilEpub('fr');
+  await generateOilEpub('en');
+}

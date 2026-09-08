@@ -12,13 +12,13 @@ interface Props {
 const { headingLevel = 'h2', lang = 'fr', publication = 'epstein', showAllPublicationsLink = false } = Astro.props;
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
-const isOil = !isEnglish && publication === 'oil-trading';
+const isOil = publication === 'oil-trading';
 const isAuditer = !isEnglish && publication === 'auditer-opacite';
 const isDigitalIdentity = !isEnglish && publication === 'digital-identity';
 const isDigitalEuro = publication === 'digital-euro';
 const isWaterElectricity = publication === 'water-electricity';
 const isEInvoicing = publication === 'e-invoicing';
-const publicationUrl = isOil ? '/publications/les-banquiers-du-baril/' : isDigitalIdentity
+const publicationUrl = isOil ? isEnglish ? '/en/publications/banking-on-oil/' : '/publications/les-banquiers-du-baril/' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone/'
   : isEInvoicing
   ? isEnglish ? '/en/publications/great-e-invoicing-toll/' : '/publications/grand-peage-facture/'
@@ -31,7 +31,7 @@ const publicationUrl = isOil ? '/publications/les-banquiers-du-baril/' : isDigit
   : isEnglish
     ? '/en/publications/epsteins-money/'
     : '/publications/l-argent-d-epstein/';
-const epubFile = isOil ? 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
+const epubFile = isOil ? isEnglish ? 'banking-on-oil-l0g.epub' : 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
   ? 'votre-identite-dans-un-telephone-enquete-l0g.epub'
   : isEInvoicing
   ? isEnglish ? 'great-e-invoicing-toll-investigation-l0g.epub' : 'grand-peage-facture-enquete-l0g.epub'
@@ -45,7 +45,7 @@ const epubFile = isOil ? 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
     ? 'epsteins-money-l0g.epub'
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
-const coverUrl = isOil ? '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
+const coverUrl = isOil ? isEnglish ? '/publications/banking-on-oil-cover.jpg' : '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone-cover.jpg'
   : isEInvoicing
   ? isEnglish ? '/publications/great-e-invoicing-toll-cover.png' : '/publications/grand-peage-facture-cover.png'
@@ -62,7 +62,16 @@ const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
 const copy = isOil
-  ? {
+  ? isEnglish
+    ? {
+      coverLabel: 'Discover Banking on Oil', coverAlt: 'Cover of Banking on Oil',
+      meta: '// illustrated investigation · September 2026',
+      titleLead: 'Banking', titleAccent: 'on Oil', deck: 'Credit, cargoes and the power of oil.',
+      description: 'Eight investigations into banks, cargo finance, infrastructure and trading risks, with an original introduction and source references throughout.',
+      factsLabel: 'Edition contents', facts: [{ value: '8', label: 'investigations' }, { value: '24', label: 'infographics' }, { value: formattedSize, label: 'download' }, { value: 'CC BY 4.0', label: 'licence' }],
+      discover: 'Explore the book', downloadLabel: 'Download the EPUB', fileName: 'Banking-on-Oil-l0g.epub',
+    }
+    : {
       coverLabel: 'Découvrir Les banquiers du baril', coverAlt: 'Couverture des Banquiers du baril',
       meta: '// enquête illustrée · septembre 2026',
       titleLead: 'Les banquiers', titleAccent: 'du baril', deck: 'Crédit, cargaisons et pouvoir pétrolier.',

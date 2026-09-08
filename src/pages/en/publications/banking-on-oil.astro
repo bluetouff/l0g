@@ -1,89 +1,90 @@
 ---
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../../config/entities.ts';
-import { serializeInlineScriptData } from '../../lib/security.ts';
-import { oilPublication as book, oilChapters } from '../../config/oil-publication.mjs';
+import { join } from 'node:path';
+import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../../../config/entities.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+import { oilPublicationEn as book, oilChaptersEn as oilChapters } from '../../../config/oil-publication-en.mjs';
 
-const bytes = readFileSync(new URL('../../../public/publications/les-banquiers-du-baril-l0g.epub', import.meta.url));
-const size = `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(bytes.length / 1024)} Ko`;
+const bytes = readFileSync(join(process.cwd(), 'public/publications/banking-on-oil-l0g.epub'));
+const size = `${new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 }).format(bytes.length / 1024)} KB`;
 const sha256 = createHash('sha256').update(bytes).digest('hex');
-const description = 'Huit enquêtes sur le financement du pétrole, les banques, les cargaisons et le pouvoir des négociants. Édition EPUB gratuite avec 24 infographies.';
+const description = 'Eight investigations into oil finance, banks, cargoes and commodity traders. Free English EPUB with an introduction and 24 infographics.';
 const pageUrl = `${SITE_URL}${book.path}`;
 const jsonLd = {
   '@context': 'https://schema.org', '@type': 'Book', '@id': `${pageUrl}#book`,
   name: book.title, description, author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID },
-  datePublished: book.date, dateModified: book.date, inLanguage: 'fr',
+  datePublished: book.date, dateModified: book.date, inLanguage: 'en',
   bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true,
   url: pageUrl, image: `${SITE_URL}${book.cover}`, license: 'https://creativecommons.org/licenses/by/4.0/',
   hasPart: oilChapters.map((chapter) => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.route}` })),
   associatedMedia: { '@type': 'MediaObject', contentUrl: `${SITE_URL}${book.epub}`, encodingFormat: 'application/epub+zip', contentSize: `${bytes.length} bytes`, sha256 },
-  workTranslation: { '@type': 'Book', '@id': `${SITE_URL}/en/publications/banking-on-oil/#book`, inLanguage: 'en' },
+  translationOfWork: { '@type': 'Book', '@id': `${SITE_URL}/publications/les-banquiers-du-baril/#book`, inLanguage: 'fr' },
 };
 ---
 
-<BaseLayout title={book.title} seoTitle="Financement du pétrole : Les banquiers du baril, EPUB | l0g"
-  ogTitle="Les banquiers du baril : huit enquêtes réunies en un livre" description={description}
-  lang="fr" ogLocale="fr_FR" sidebar={false} ogImage={book.social}
-  ogImageAlt="Couverture des Banquiers du baril : un pétrolier et un terminal reliés à un registre financier"
-  alternateLinks={[{ hreflang: 'fr', href: pageUrl }, { hreflang: 'en', href: `${SITE_URL}/en/publications/banking-on-oil/` }, { hreflang: 'x-default', href: pageUrl }]}>
+<EnglishLayout title={book.title} seoTitle="Oil trade finance: Banking on Oil, free EPUB | l0g"
+  ogTitle="Banking on Oil: eight investigations in one book" description={description}
+  canonical={pageUrl} ogImage={book.social}
+  ogImageAlt="Banking on Oil cover: a tanker and terminal connected to a financial ledger"
+  alternateLinks={[{ hreflang: 'en', href: pageUrl }, { hreflang: 'fr', href: `${SITE_URL}/publications/les-banquiers-du-baril/` }, { hreflang: 'x-default', href: `${SITE_URL}/publications/les-banquiers-du-baril/` }]}>
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
   <article class="oil-book rise" data-pagefind-body>
     <section class="book-hero" aria-labelledby="book-title">
       <div class="cover-stage">
         <div class="book-shell">
-          <span class="book-spine" aria-hidden="true">l0g · septembre 2026</span>
+          <span class="book-spine" aria-hidden="true">l0g · September 2026</span>
           <img src={book.cover} srcset={[320, 640, 960].map((w) => `${book.cover.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
             sizes="(max-width: 360px) 80vw, (max-width: 780px) 304px, 360px"
-            width="1024" height="1638" alt="Couverture de Les banquiers du baril"
+            width="1024" height="1638" alt="Cover of Banking on Oil"
             loading="eager" fetchpriority="high" decoding="async" />
         </div>
-        <p class="cover-caption">Édition française · <time datetime={book.date}>8 septembre 2026</time></p>
+        <p class="cover-caption">English edition · <time datetime={book.date}>8 September 2026</time></p>
       </div>
       <div class="hero-copy">
-        <p class="mono-label">// publication l0g · enquête</p>
-        <h1 id="book-title">Les banquiers <span>du baril</span></h1>
+        <p class="mono-label">// l0g publication · investigation</p>
+        <h1 id="book-title">Banking <span>on Oil</span></h1>
         <p class="hero-deck">{book.subtitle}.</p>
-        <p class="hero-lede">Du prêt bancaire au terminal pétrolier, huit enquêtes suivent l’argent qui permet d’acheter, de transporter et de livrer une cargaison. Un livre pour comprendre les acteurs, les contrats et les dépendances du négoce.</p>
+        <p class="hero-lede">From a bank loan to an oil terminal, eight investigations follow the money that buys, transports and delivers a cargo. A book about the firms, contracts and dependencies behind commodity trading.</p>
         <div class="hero-actions">
-          <a class="download-action" href={book.epub} download="Les-banquiers-du-baril-l0g.epub">Télécharger l’EPUB <small>Gratuit · {size}</small></a>
-          <a class="contents-action" href="#sommaire">Parcourir les huit enquêtes <span aria-hidden="true">↓</span></a>
+          <a class="download-action" href={book.epub} download="Banking-on-Oil-l0g.epub">Download the EPUB <small>Free · {size}</small></a>
+          <a class="contents-action" href="#contents">Explore the eight investigations <span aria-hidden="true">↓</span></a>
         </div>
-        <ul class="edition-facts" aria-label="Contenu de l’édition">
-          <li>8 enquêtes</li><li>24 infographies</li><li>Introduction originale</li><li>Sources cliquables</li>
+        <ul class="edition-facts" aria-label="Edition contents">
+          <li>8 investigations</li><li>24 infographics</li><li>Original introduction</li><li>Clickable sources</li>
         </ul>
-        <p class="edition-note">EPUB 3 · lecture hors ligne · CC BY 4.0</p>
-        <p class="edition-note"><a href="/en/publications/banking-on-oil/" lang="en" hreflang="en">Read the English edition: Banking on Oil</a></p>
+        <p class="edition-note">EPUB 3 · offline reading · CC BY 4.0</p>
+        <p class="edition-note"><a href="/publications/les-banquiers-du-baril/" lang="fr" hreflang="fr">Lire la présentation française</a></p>
       </div>
     </section>
 
     <section class="reading-section" aria-labelledby="intro-title">
-      <div class="section-heading"><p class="mono-label">01 / introduction</p><h2 id="intro-title">Suivre l’argent du pétrole</h2></div>
+      <div class="section-heading"><p class="mono-label">01 / introduction</p><h2 id="intro-title">Following the money in oil</h2></div>
       <div class="introduction">{book.introduction.map((paragraph) => <p>{paragraph}</p>)}</div>
     </section>
 
-    <section id="sommaire" class="reading-section" aria-labelledby="contents-title">
-      <div class="section-heading"><p class="mono-label">02 / les huit enquêtes</p><h2 id="contents-title">De la cargaison à la chaîne de crédit</h2><p>Chaque chapitre reste aussi disponible sur le site, avec ses sources et ses éventuelles mises à jour.</p></div>
+    <section id="contents" class="reading-section" aria-labelledby="contents-title">
+      <div class="section-heading"><p class="mono-label">02 / the eight investigations</p><h2 id="contents-title">From the cargo to the credit chain</h2><p>Every chapter is also available online, with its sources and any subsequent updates.</p></div>
       <ol class="chapter-list">
         {oilChapters.map((chapter) => <li><a href={chapter.route}><span class="chapter-number" aria-hidden="true">{String(chapter.number).padStart(2, '0')}</span><div><h3>{chapter.title}</h3><p>{chapter.summary}</p></div><span class="chapter-arrow" aria-hidden="true">↗</span></a></li>)}
       </ol>
     </section>
 
     <section class="reading-section" aria-labelledby="edition-title">
-      <div class="section-heading"><p class="mono-label">03 / l’édition numérique</p><h2 id="edition-title">Emporter l’enquête</h2></div>
+      <div class="section-heading"><p class="mono-label">03 / the digital edition</p><h2 id="edition-title">Take the investigation with you</h2></div>
       <div class="edition-details">
-        <h3>Une lecture continue</h3><p>Le texte se redistribue selon la taille de l’écran. Le sommaire relie les chapitres et leurs sections. Les 24 infographies sont intégrées au livre, avec leur fond sombre et une description alternative. Leur agrandissement dépend de l’application de lecture.</p>
-        <h3>Les sources accompagnent les textes</h3><p>Les articles sont ceux publiés du 6 au 8 septembre 2026. Leurs notes et références sont conservées. Les liens entre les huit enquêtes fonctionnent dans le livre ; les documents externes s’ouvrent avec une connexion.</p>
-        <h3>Une édition librement partageable</h3><p>L’EPUB n’embarque aucun script, police distante ni outil de suivi. Il peut être partagé selon les termes de la <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">licence CC BY 4.0</a>.</p>
-        <p class="art-note">La couverture a été créée avec une assistance d’intelligence artificielle. C’est une illustration conceptuelle : elle ne représente aucune entreprise, installation ou transaction réelle. Le registre dessiné ne fournit aucune donnée de l’enquête.</p>
-        <details><summary>Informations sur le fichier</summary><dl><dt>Format</dt><dd>EPUB 3 · français · {size}</dd><dt>Édition</dt><dd>8 septembre 2026</dd><dt>Empreinte SHA-256</dt><dd><code>{sha256}</code></dd></dl></details>
-        <a class="download-action final-download" href={book.epub} download="Les-banquiers-du-baril-l0g.epub">Télécharger le livre <small>EPUB gratuit · {size}</small></a>
-        <p><a href="/publications/">Toutes les publications l0g <span aria-hidden="true">›</span></a></p>
+        <h3>A continuous reading experience</h3><p>The text reflows to fit your screen. The contents link to chapters and their sections. All 24 infographics are included, with dark backgrounds and text alternatives. Image enlargement depends on the reading application.</p>
+        <h3>Sources stay with the text</h3><p>These are the English articles published from 6 to 8 September 2026, with their notes and references preserved. Links between the eight investigations work within the book; external documents require an internet connection.</p>
+        <h3>An edition you can share</h3><p>The EPUB contains no scripts, remote fonts or tracking tools. You can share it under the <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 licence</a>.</p>
+        <p class="art-note">The cover was created with AI assistance. It is a conceptual illustration, depicting no real company, facility or transaction. Its ledger contains no data from the investigation.</p>
+        <details><summary>File information</summary><dl><dt>Format</dt><dd>EPUB 3 · English · {size}</dd><dt>Edition</dt><dd>8 September 2026</dd><dt>SHA-256 checksum</dt><dd><code>{sha256}</code></dd></dl></details>
+        <a class="download-action final-download" href={book.epub} download="Banking-on-Oil-l0g.epub">Download the book <small>Free EPUB · {size}</small></a>
+        <p><a href="/en/publications/">All l0g publications <span aria-hidden="true">›</span></a></p>
       </div>
     </section>
   </article>
-</BaseLayout>
+</EnglishLayout>
 
 <style>
   .oil-book { max-width: 1120px; margin: 0 auto; min-width: 0; }
