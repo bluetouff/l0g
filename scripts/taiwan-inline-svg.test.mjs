@@ -176,6 +176,22 @@ const targets = [
     requireDarkBackground: true,
   },
   {
+    page: 'dist/posts/les-banquiers-du-baril-6-trafigura-nickel-fantome/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb6-fr-fig[0-9]+-title bdb6-fr-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
+    page: 'dist/en/analysis/banking-on-oil-6-trafigura-nickel-fraud/index.html',
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="bdb6-en-fig[0-9]+-title bdb6-en-fig[0-9]+-desc"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: '--color-surface:#0b0d10',
+  },
+  {
     page: 'dist/en/analysis/ghana-cocoa-financing-cash-crisis/index.html',
     count: 3,
     pattern: /<svg\b[^>]*aria-labelledby="cocoa-[^"]+-en-title cocoa-[^"]+-en-desc"[^>]*>[\s\S]*?<\/svg>/gu,
@@ -254,7 +270,7 @@ function assertApproximateInternalBounds(svg, page, svgIndex) {
   }
 }
 
-for (const { page, count, pattern, jeonseLocale, checkInternalBounds, requireDarkBackground } of targets) {
+for (const { page, count, pattern, jeonseLocale, checkInternalBounds, requireDarkBackground, darkBackgroundToken = '--b5-bg:#0b0d10' } of targets) {
   test(`${page} keeps every infographic inside the SVG namespace`, () => {
     const html = readFileSync(join(ROOT, page), 'utf8');
     const infographics = html.match(pattern) ?? [];
@@ -267,7 +283,7 @@ for (const { page, count, pattern, jeonseLocale, checkInternalBounds, requireDar
         `${page}: HTML element injected into inline SVG ${index + 1}`,
       );
       if (requireDarkBackground) {
-        assert.match(svg, /--b5-bg:#0b0d10/iu, `${page}: inline SVG ${index + 1} must keep the l0g dark background`);
+        assert.ok(svg.includes(darkBackgroundToken), `${page}: inline SVG ${index + 1} must keep the l0g dark background`);
         assert.doesNotMatch(
           svg,
           /prefers-color-scheme|--b5-bg:#(?:fff|ffffff)/iu,
