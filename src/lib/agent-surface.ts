@@ -3111,7 +3111,7 @@ export function buildOpenApiContract() {
           additionalProperties: false,
           properties: {
             source: { type: 'string' },
-            latestDate: { type: 'string' },
+            latestDate: { type: ['string', 'null'] },
             metrics: { type: 'integer' },
             maxRisk: { type: 'number' },
           },
