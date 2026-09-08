@@ -322,6 +322,8 @@ Measuring those costs does not deny the social cost of exposing children to porn
 
 ## The toll on a yes/no
 
+The same question appears in our investigation of [who can charge for an identity proof](/en/analysis/your-identity-in-your-phone-6-your-identity-is-free-the-proof-may-be-billed/): a free user journey does not disclose the contracts behind the verification.
+
 Age assurance can be free to the end user while still being charged to the site, merchant or issuer.
 
 Several vendors publish their own price lists:

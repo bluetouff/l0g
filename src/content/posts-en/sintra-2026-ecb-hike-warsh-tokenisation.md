@@ -21,7 +21,7 @@ On 11 June, the ECB raised its three key rates by 25 basis points: deposit facil
 Headline HICP for May came in at 3.2% year on year, the highest since September 2023, the core at 2.5%. The Eurosystem projections published with the decision assume average inflation of 3.0% in 2026, 2.3% in 2027 and 2.0% in 2028, and growth of 0.8%, 1.2% then 1.5%. Euro-area GDP contracted 0.2% in the first quarter of 2026. Economists cited by Euronews raise a risk of stagflation.
 
 <figure>
-<svg viewBox="0 0 720 320" width="100%" role="img" aria-label="ECB deposit-rate trajectory: eight cuts from 2024 to 2025 then a hike in June 2026" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace">
+<svg viewBox="0 0 720 320" width="100%" role="img" aria-label="ECB deposit-rate trajectory: eight cuts from 2024 to 2025 then a hike in June 2026" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace" style="width:100%;height:auto">
 <text x="20" y="26" fill="#5eead4" font-size="17">ECB deposit rate: eight cuts, then one hike</text>
 <line x1="90" y1="60" x2="90" y2="250" stroke="#8b909b" stroke-opacity="0.35" stroke-width="1"/>
 <line x1="90" y1="250" x2="660" y2="250" stroke="#8b909b" stroke-opacity="0.35" stroke-width="1"/>
@@ -51,7 +51,7 @@ On the sidelines of the forum, Alexander Demarco, acting governor of the Central
 
 On 1 July, Kevin Warsh took part in his first international panel as Fed chair, Jerome Powell's term having ended this year, alongside Christine Lagarde, Andrew Bailey (Bank of England) and Tiff Macklem (Bank of Canada). According to CNBC's live coverage, Warsh said prices remain too high and that price stability remains the primary objective, while saying he is open to the possible disinflationary effects of AI. He asserted that the Fed's independence would not change, whatever the pressure exerted by Donald Trump.
 
-Warsh embraces a communication style at odds with the Powell era: fewer public remarks, no forward guidance. CNBC reports, citing Bank of America, twelve interventions by Fed officials since the June meeting, against an average of about twenty-three over the same window since 2022. The frame of his doctrine had been set at his [first FOMC](/en/analysis/warsh-first-fomc/) and his [battle over the balance sheet](/en/analysis/warsh-and-the-fed-balance-sheet/); on the US side, inflation is tracked in [the return of US inflation](/en/analysis/us-inflation-comeback/).
+Warsh embraces a communication style at odds with the Powell era: fewer public remarks, [no forward guidance](/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/). CNBC reports, citing Bank of America, twelve interventions by Fed officials since the June meeting, against an average of about twenty-three over the same window since 2022. The frame of his doctrine had been set at his [first FOMC](/en/analysis/warsh-first-fomc/) and his [battle over the balance sheet](/en/analysis/warsh-and-the-fed-balance-sheet/); on the US side, inflation is tracked in [the return of US inflation](/en/analysis/us-inflation-comeback/).
 
 ## The tokenisation session: Project Hangang
 
@@ -60,7 +60,7 @@ The session on tokenisation, chaired by Piero Cipollone (ECB), rested on a paper
 According to this paper, Hangang is an implementation of the unified ledger formalised by the BIS in 2023: a single programmable platform where tokenised central-bank money (wCBDC), tokenised commercial-bank deposits and tokenised assets, government bonds for example, coexist. The test gathered about 80,000 users and 12,000 selected merchants, from April to June 2025. The figure of "7 banks representing 80% of banking assets", present in some summaries, does not appear in the paper and is not repeated here.
 
 <figure>
-<svg viewBox="0 0 720 340" width="100%" role="img" aria-label="Architecture of the unified ledger: three tokenised building blocks on a programmable platform, with the steps collapsing into an atomic settlement" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace">
+<svg viewBox="0 0 720 340" width="100%" role="img" aria-label="Architecture of the unified ledger: three tokenised building blocks on a programmable platform, with the steps collapsing into an atomic settlement" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace" style="width:100%;height:auto">
 <text x="20" y="26" fill="#5eead4" font-size="17">The unified ledger: three blocks, one settlement</text>
 <rect x="40" y="52" width="640" height="96" rx="8" fill="none" stroke="#8b909b" stroke-opacity="0.5" stroke-width="1"/>
 <text x="52" y="72" fill="#8b909b" font-size="12">single programmable platform</text>
@@ -94,7 +94,7 @@ The paper describes two design choices. First, consensus: Hangang runs on proof 
 Second, the "burn-and-issue" mechanism: in an interbank transfer, a smart contract executes in a single transaction the destruction of the tokenised deposits at the issuing bank, the transfer of wCBDC between the two banks, then their re-issuance at the receiving bank; if a step fails, everything is cancelled. According to the paper, this mechanism preserves the singleness of money: a deposit remains the liability of a single bank and the payment goes at par. The paper contrasts this model with the [stablecoin](/en/glossary/stablecoin/), where the token is transferred as is and the holder bears a claim on the issuer, whose value can deviate from par depending on the issuer's solvency and risk appetite. The case of dollar stablecoins is treated in our work on the sovereign tolling of the Strait of Hormuz in [USDT](/en/glossary/usdt/) on Tron.
 
 <figure>
-<svg viewBox="0 0 720 300" width="100%" role="img" aria-label="Comparison between a tokenised deposit under burn-and-issue and a stablecoin under simple transfer according to the Hangang paper" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace">
+<svg viewBox="0 0 720 300" width="100%" role="img" aria-label="Comparison between a tokenised deposit under burn-and-issue and a stablecoin under simple transfer according to the Hangang paper" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace" style="width:100%;height:auto">
 <text x="20" y="26" fill="#5eead4" font-size="17">Tokenised deposit and stablecoin: two structures</text>
 <rect x="30" y="48" width="320" height="210" rx="8" fill="none" stroke="#5eead4" stroke-opacity="0.6" stroke-width="1.5"/>
 <text x="48" y="74" fill="#5eead4" font-size="14">Tokenised deposit (burn-and-issue)</text>

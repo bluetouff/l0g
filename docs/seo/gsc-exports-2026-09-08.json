@@ -1,0 +1,38 @@
+{
+  "export_generated_at": "2026-09-08T15:41:53.255518+00:00",
+  "property": "sc-domain:l0g.fr",
+  "gsc_displayed_last_update": "2026-09-04",
+  "observed_on": "2026-09-08",
+  "scope": "Toutes les pages connues",
+  "exports": {
+    "gsc-crawled-2026-09-08.csv": {
+      "rows": 84,
+      "sha256": "a25f390ba333c36d3b10b53ae1d90549f14c420a7fced0f48977e9252a6fd27e",
+      "source": "GSC CSV download"
+    },
+    "gsc-detected-2026-09-08.csv": {
+      "rows": 47,
+      "sha256": "f17d3fd8cdcf88a89590b1ebafc218e59e52db8a1220d47e5a9b73a1b2758eb8",
+      "source": "GSC visible table, all rows displayed"
+    },
+    "gsc-404-2026-09-08.csv": {
+      "rows": 19,
+      "sha256": "ec9b9f74b463463e0f9b64b05a42b990c5e8b5c51b4c12530b01927427b04927",
+      "source": "GSC visible table, all rows displayed"
+    },
+    "gsc-4xx-403-2026-09-08.csv": {
+      "rows": 4,
+      "sha256": "5a5efc74494e41c45d9e25a2f4b0cf266b76f1968cb997708a488f2a729bbbf3",
+      "source": "GSC visible table, all rows displayed"
+    }
+  },
+  "original_csv_zip_sha256": "8658bf468fc69bb57b9926faca24affa3c5e08c805ec0bbfdf95bafd47b38209",
+  "notes": [
+    "Les tableaux 404 et 4xx/403 ont été relus intégralement : mêmes URL et dates que le registre précédent.",
+    "Dernière exploration vide pour les détectées : GSC affiche Sans objet.",
+    "Le canonical choisi par Google est absent de ces exports ; il reste vide.",
+    "Une URL absente de ces exemples ne prouve pas son indexation.",
+    "Certaines dates de crawl affichées vont au 5 septembre malgré la date de mise à jour affichée au 4. Valeurs conservées telles quelles.",
+    "Les quatre CSV normalisent les en-têtes et les fins de ligne LF ; les empreintes ci-dessus portent sur ces fichiers, celle de l’archive sur le téléchargement original."
+  ]
+}

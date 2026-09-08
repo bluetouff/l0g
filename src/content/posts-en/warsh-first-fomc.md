@@ -27,7 +27,7 @@ Like all the March, June, September and December meetings, this one comes with t
 In March, the median of the 19 participants placed the policy rate at 3.4% at the end of 2026, a single cut of 25 basis points, then another in 2027 to finish at 3.125%, a level also used for the longer run, the highest since 2016. The same grid saw PCE inflation at 2.7% at the end of 2026, growth of 2.4% and unemployment at 4.4%. A detail that matters: 16 of the 19 members already saw upside risks to core inflation.
 
 <figure>
-<svg viewBox="0 0 720 360" width="100%" role="img" aria-label="March 2026 dot plot: policy-rate projections for end 2026" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace">
+<svg viewBox="0 0 720 360" width="100%" role="img" aria-label="March 2026 dot plot: policy-rate projections for end 2026" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace" style="width:100%;height:auto">
 <text x="20" y="26" fill="#5eead4" font-size="17">March 2026 dot plot: the end-2026 rate as seen by the 19 members</text>
 <text x="700" y="48" text-anchor="end" fill="#ff4d87" font-size="13">median: one cut, to 3.4%</text>
 <line x1="100" y1="56" x2="100" y2="300" stroke="#8b909b" stroke-opacity="0.35" stroke-width="1"/>
@@ -65,7 +65,7 @@ Three months later, inflation has accelerated and markets have broken from that 
 While the Fed temporises, the bond market has ruled. The 10-year, the benchmark of the federal state's borrowing cost, trades around 4.45% on 15 June, after rising to nearly 4.7% at the height of the war, when it traded below 4% before the conflict. The 30-year touched 5.2% in mid-May, its highest since 2007. The 2-year, more sensitive to Fed policy, hovers around 4.05%.
 
 <figure>
-<svg viewBox="0 0 720 300" width="100%" role="img" aria-label="US Treasury yields in mid-June 2026" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace">
+<svg viewBox="0 0 720 300" width="100%" role="img" aria-label="US Treasury yields in mid-June 2026" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace" style="width:100%;height:auto">
 <text x="20" y="26" fill="#5eead4" font-size="17">The bond market has already moved (US Treasury yields, 15 June 2026)</text>
 <line x1="120" y1="50" x2="120" y2="200" stroke="#8b909b" stroke-opacity="0.4" stroke-width="1"/>
 <g font-size="14">
@@ -96,7 +96,7 @@ The problem, for the bond market, is exactly there. Accelerating quantitative ti
 
 ## Warsh's options
 
-The rate status quo is locked. The real choice is on the trajectory, and no option is comfortable. Keeping the cut in the dots means holding a dovish bias that inflation at 4.2% makes hard to defend, and that the market no longer believes. Removing it, or even leaning toward a hike, means aligning with the data, but tightening on an economy where households' real income is already falling and long-term unemployment is rising. Communicating less, as Warsh claims with his "messier meetings" and his retreat on forward guidance, means making each word heavier, therefore the market more nervous. And opening the balance-sheet project means pulling the riskiest lever for long rates already under strain.
+The rate status quo is locked. The real choice is on the trajectory, and no option is comfortable. Keeping the cut in the dots means holding a dovish bias that inflation at 4.2% makes hard to defend, and that the market no longer believes. Removing it, or even leaning toward a hike, means aligning with the data, but tightening on an economy where households' real income is already falling and long-term unemployment is rising. Communicating less, as Warsh claims with his "messier meetings" and [his retreat on forward guidance](/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/), means making each word heavier, therefore the market more nervous. And opening the balance-sheet project means pulling the riskiest lever for long rates already under strain.
 
 The bind is real. Warsh cannot cut without capitulating on inflation, cannot hike without hitting an already-weakened demand, and cannot shrink the balance sheet without lifting the long end he does not control. His first FOMC is less a decision than a positioning. To watch tonight: the 2026 median, the dispersion of the dots and any dissents, in both directions, and the slightest word on the balance sheet. A Duke University survey conducted in early June among former Fed officials gave half of them for a probable hike in 2026. The wildcard is called Hormuz: if the peace deal holds and oil recedes, the energy shock empties, the heart of Warsh's problem loosens, and the token cut becomes sustainable again. Otherwise, today's status quo will only have been the easy part.
 

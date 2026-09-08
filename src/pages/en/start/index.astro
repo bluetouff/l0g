@@ -21,6 +21,10 @@ const tracks = [
     text: 'Fed and ECB balance sheets, Treasury funding, inflation, currencies and the transmission of monetary policy.',
     href: '/en/guides/read-h41-fed-balance-sheet/',
     link: 'open the Fed H.4.1 guide',
+    related: [
+      ['/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/', 'How less Fed guidance changes the reading of policy'],
+      ['/en/guides/read-the-balance-of-payments/', 'Separate cross-border flows from asset stocks'],
+    ],
   },
   {
     label: 'credit & market plumbing',
@@ -28,6 +32,10 @@ const tracks = [
     text: 'Private credit, repo, collateral, insurers, securitisation and the contracts that move losses between balance sheets.',
     href: '/en/guides/read-private-credit-risk/',
     link: 'read the private-credit guide',
+    related: [
+      ['/en/analysis/european-risk-national-fund-supervision/', 'Trace fund risk across national supervisors'],
+      ['/en/analysis/private-credit-clo-warehouse-banks/', 'Follow the bank financing before a CLO is issued'],
+    ],
   },
   {
     label: 'technology & capital',
@@ -35,6 +43,10 @@ const tracks = [
     text: 'AI infrastructure, semiconductor constraints, financing structures, capex and the public filings behind the narrative.',
     href: '/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/',
     link: 'trace Nvidia\'s $500bn claim',
+    related: [
+      ['/en/analysis/pjm-electricity-forecast-7-billion/', 'Read the electricity demand forecast behind capacity spending'],
+      ['/en/analysis/model-pump-price-of-adequacy/', 'Compare a power-system model with a plant’s physical constraint'],
+    ],
   },
   {
     label: 'Asia & global transmission',
@@ -42,6 +54,10 @@ const tracks = [
     text: 'Yen funding, Korean concentration, RMB settlement, property credit and Asian insurers as parts of a global system.',
     href: '/en/asia/',
     link: 'choose an Asia transmission path',
+    related: [
+      ['/en/analysis/asia-invisible-dollar-hedging-machine/', 'Follow the funding behind dollar hedges'],
+      ['/en/analysis/south-korea-price-perfect-fx-hedge/', 'Examine the cost of a complete currency hedge'],
+    ],
   },
 ];
 ---
@@ -73,6 +89,7 @@ const tracks = [
           <h3>{track.title}</h3>
           <p>{track.text}</p>
           <a href={track.href}>{track.link} →</a>
+          <ul class="track-related">{track.related.map(([href, label]) => <li><a href={href}>{label} →</a></li>)}</ul>
         </article>
       ))}
     </div>
@@ -115,6 +132,8 @@ const tracks = [
   .track-card h3 { margin-top: .45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.2rem; line-height: 1.2; }
   .track-card p { margin-top: .6rem; color: var(--color-muted); line-height: 1.55; }
   .track-card a { display: inline-block; margin-top: .8rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .74rem; }
+  .track-related { margin: .5rem 0 0; padding-left: 1rem; list-style: disc; color: var(--color-muted); }
+  .track-related a { margin-top: .45rem; line-height: 1.6; }
   .flow-list { display: grid; gap: 0.85rem; margin-top: 1.25rem; max-width: 58rem; }
   .flow-card { display: grid; grid-template-columns: 2.3rem 1fr; gap: 0.9rem; align-items: start; border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 60%, transparent); text-decoration: none; }
   .flow-card:hover { border-color: color-mix(in srgb, var(--color-signal) 55%, transparent); background: color-mix(in srgb, var(--color-signal) 7%, transparent); }

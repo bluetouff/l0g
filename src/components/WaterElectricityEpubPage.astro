@@ -11,7 +11,7 @@ const isFr = lang === 'fr';
 const pagePath = isFr ? '/publications/eau-electricite/' : '/en/publications/water-electricity/';
 const alternatePath = isFr ? '/en/publications/water-electricity/' : '/publications/eau-electricite/';
 const epubPath = isFr ? '/publications/eau-electricite-europe-l0g.epub' : '/publications/water-electricity-europe-l0g.epub';
-const coverPath = isFr ? '/publications/eau-electricite-cover.png' : '/publications/water-electricity-cover.png';
+const coverPath = isFr ? '/publications/eau-electricite-cover.jpg' : '/publications/water-electricity-cover.jpg';
 const epubFile = isFr ? '../../../public/publications/eau-electricite-europe-l0g.epub' : '../../../public/publications/water-electricity-europe-l0g.epub';
 const epubBytes = readFileSync(new URL(epubFile, import.meta.url));
 const epubSize = `${new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 1 }).format(epubBytes.length / 1024 / 1024)} MB`;
@@ -101,7 +101,7 @@ const bookJsonLd = {
     { hreflang: 'en', href: `${SITE_URL}/en/publications/water-electricity/` },
     { hreflang: 'x-default', href: `${SITE_URL}/publications/eau-electricite/` },
   ]}
-  ogImage={coverPath}
+  ogImage={coverPath.replace('.jpg', '-social.jpg')}
   ogImageAlt={isFr ? 'Couverture de L’eau derrière l’électricité' : 'Cover of The Water Behind Electricity'}
 >
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(bookJsonLd)} />
@@ -114,10 +114,13 @@ const bookJsonLd = {
           <span class="book-spine" aria-hidden="true">l0g · {isFr ? 'enquête' : 'investigation'} · 2026</span>
           <img
             src={coverPath}
+            srcset={[320, 640, 960].map((width) => `${coverPath.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ")}
+            sizes="(max-width: 360px) 80vw, 304px"
             width="1600"
             height="2560"
             alt={isFr ? 'Couverture de L’eau derrière l’électricité, enquête en sources ouvertes' : 'Cover of The Water Behind Electricity, an open-source investigation'}
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
             decoding="async"
           />
         </div>

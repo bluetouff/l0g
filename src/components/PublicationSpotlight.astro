@@ -49,9 +49,9 @@ const coverUrl = isDigitalIdentity
   : isEInvoicing
   ? isEnglish ? '/publications/great-e-invoicing-toll-cover.png' : '/publications/grand-peage-facture-cover.png'
   : isWaterElectricity
-  ? isEnglish ? '/publications/water-electricity-cover.png' : '/publications/eau-electricite-cover.png'
+  ? isEnglish ? '/publications/water-electricity-cover.jpg' : '/publications/eau-electricite-cover.jpg'
   : isDigitalEuro
-  ? isEnglish ? '/publications/digital-euro-cover.png' : '/publications/euro-numerique-cover.png'
+  ? isEnglish ? '/publications/digital-euro-cover.jpg' : '/publications/euro-numerique-cover.jpg'
   : isAuditer
   ? '/publications/auditer-l-opacite-cover.jpg'
   : isEnglish
@@ -200,6 +200,8 @@ const copy = isDigitalIdentity
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
+      srcset={isWaterElectricity || isDigitalEuro ? [320, 640, 960].map((width) => `${coverUrl.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ") : undefined}
+      sizes={isWaterElectricity || isDigitalEuro ? "(max-width: 640px) 140px, 200px" : undefined}
       width="1024"
       height="1638"
       alt={copy.coverAlt}

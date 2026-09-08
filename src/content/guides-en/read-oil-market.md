@@ -78,6 +78,8 @@ Oil has a rich, mostly free data calendar.
 
 ## Reading oil in practice
 
+The route from energy costs to food imports needs its own evidence. Our investigation of [wheat between Hormuz and the Bosphorus](/en/analysis/wheat-between-hormuz-and-the-bosphorus/) separates grain availability, fertilizer costs, freight and currency exposure.
+
 Oil is not one number. The price level gives mood. Brent-WTI gives geography. The futures curve gives tightness or surplus. Spare capacity gives fragility. Inventories give near-term direction. Together, they say what the headline does not.
 
 The 2026 Hormuz shock shows the system. Brent moved toward **$80**, with stress scenarios above **$100** if the Strait remained closed, while the curve shifted into backwardation. De-escalation and OPEC+ supply then pulled the barrel toward **$71** by early July. The energy shock also fed directly into U.S. inflation, as explained in the [CPI guide](/en/guides/read-cpi-inflation-us/).

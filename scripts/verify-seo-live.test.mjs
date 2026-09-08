@@ -16,6 +16,8 @@ test('le contrat live couvre les entrées SEO, contact, MCP, OAuth et icônes', 
   const paths = SEO_LIVE_PROBES.map(({ path }) => path);
   for (const path of [
     '/sitemap.xml',
+    '/og/le-grand-peage-de-la-facture-1-le-portail-ampute.png',
+    '/og/le-grand-peage-de-la-facture-3-le-prix-du-gratuit.png',
     '/contact/',
     '/en/contact/',
     '/.well-known/mcp',
@@ -38,7 +40,7 @@ function mockFetch(sourceBody) {
     assert.equal(options.redirect, 'manual');
     const probe = SEO_LIVE_PROBES.find(({ path }) => url === `https://l0g.fr${path}`);
     assert.ok(probe, url);
-    const contentType = probe.path.endsWith('.xml') ? 'application/xml'
+    const contentType = probe.path.endsWith('.jpg') ? 'image/jpeg' : probe.path.endsWith('.xml') ? 'application/xml'
       : probe.path.includes('.well-known') ? 'application/json'
         : probe.path.endsWith('.ico') || probe.path.endsWith('.png') ? 'image/png' : 'text/html';
     return new Response(null, { status: probe.status, headers: {

@@ -64,6 +64,30 @@ test('sépare strictement audience, MCP/API, previews, crawlers et scans', () =>
   assert.equal(classifyTrafficRequest(log({ path: '/wp-login.php' }))?.category, 'scans');
   assert.equal(classifyTrafficRequest(log({ userAgent: 'Googlebot/2.1' }))?.category, 'known_crawlers');
   assert.equal(classifyTrafficRequest(log({ path: '/favicon.svg' }))?.category, 'other');
+  for (const userAgent of ['', '-']) {
+    assert.equal(classifyTrafficRequest(log({ userAgent }))?.category, 'other');
+    assert.equal(parseHumanHtmlRequest(log({ userAgent })), null);
+  }
+});
+
+test('les canaux hebdomadaires agrègent avant k sans confondre Google et un domaine usurpé', () => {
+  const lines = [];
+  for (let day = 24; day <= 30; day += 1) {
+    for (const referrer of ['https://google.fr/search', 'https://t.co/example', '-', 'https://google.com.evil.test/']) {
+      lines.push(log({ date: `${day}/Jul/2026:12:00:00 +0200`, referrer }));
+    }
+  }
+  const report = buildHumanTrafficReport(lines, { now: new Date('2026-07-30T20:00:00Z') });
+  assert.deepEqual(report.daily, []); // every day is below k, each weekly channel is publishable
+  assert.deepEqual(report.traffic_classes.rolling_7_days.human_referrers, { google: 7, x: 7, direct: 7, other: 7 });
+  assert.equal(report.traffic_classes.rolling_7_days.requests.human_html, 28);
+  assert.equal(report.traffic_classes.rolling_7_days.days_observed, 7);
+  const table = buildWeeklyAudienceTable(report);
+  assert.equal(table.acquisition.google, 7);
+  assert.match(weeklyAudienceMarkdown(table), /Google \| 7/);
+  delete report.traffic_classes.rolling_7_days.human_referrers;
+  assert.equal(buildWeeklyAudienceTable(report).acquisition, null);
+  assert.match(weeklyAudienceMarkdown(buildWeeklyAudienceTable(report)), /Indisponible/);
 });
 
 test('agrège par jour, page et domaine avec k supérieur ou égal à cinq', () => {

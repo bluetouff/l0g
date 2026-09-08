@@ -63,6 +63,8 @@ Private credit should also be read against public [credit spreads](/en/guides/re
 
 ## The systemic question
 
+The location of supervision matters alongside the fund wrapper. Our analysis of [European fund risk under national supervision](/en/analysis/european-risk-national-fund-supervision/) follows that institutional boundary.
+
 Is private credit the next crisis? The honest answer is debated. The cautious camp points to opacity, NAV leverage, growing bank-fund interconnections and retail distribution. The reassuring camp notes long capital lock-ups, moderate fund-level leverage and generally stable borrower fundamentals.
 
 The l0g reading is more about slow repricing than sudden apocalypse: a gradual recognition of losses, plus liquidity stress where semi-liquid vehicles meet impatient investors. Regulators agree the topic matters; the ECB and Bank of England have both built exploratory private-market stress scenarios.

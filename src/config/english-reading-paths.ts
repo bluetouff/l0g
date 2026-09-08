@@ -20,6 +20,7 @@ export const asiaReadingPaths: readonly EnglishReadingPath[] = [
       'japan-fiscal-dominance-honebuto-shock-boj-cornered',
       'the-yen-carry-trade',
       'dollar-yen-intervention-carry-unwind',
+      'japan-end-free-money-life-insurer-balance-sheets',
     ],
     guideIds: ['read-the-carry-trade', 'read-dollar-dxy-cross-currency-basis'],
   },
@@ -33,6 +34,7 @@ export const asiaReadingPaths: readonly EnglishReadingPath[] = [
       'south-korea-jeonse-hidden-housing-credit',
       'kospi-concentrated-liquidation-samsung-sk-hynix',
       'semiconductors-a-stack-of-constraints',
+      'south-korea-price-perfect-fx-hedge',
     ],
     guideIds: ['read-credit-ratings'],
   },
@@ -59,8 +61,9 @@ export const asiaReadingPaths: readonly EnglishReadingPath[] = [
     analysisIds: [
       'taiwan-life-insurers-724-billion-currency-risk',
       'hong-kong-life-insurance-china-tax-enforcement',
+      'asia-invisible-dollar-hedging-machine',
     ],
-    guideIds: ['read-life-insurer-health', 'read-dollar-dxy-cross-currency-basis'],
+    guideIds: ['read-life-insurer-health', 'read-dollar-dxy-cross-currency-basis', 'read-the-balance-of-payments'],
   },
 ] as const;
 

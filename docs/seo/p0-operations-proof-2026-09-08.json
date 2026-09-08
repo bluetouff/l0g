@@ -1,0 +1,59 @@
+{
+  "checked_at": "2026-09-08T15:59:13.299Z",
+  "activation_evidence": "Administrator command output: eight package hashes verified, collector installed, Apache Syntax OK, hardened vhost activated with backup. Installed file hashes and timer checked through the existing SSH session.",
+  "installed_sha256_by_repository_path": {
+    "scripts/human-traffic-report.mjs": "f65b6efd48fd5bbf622dd5d7e1282004e84a8a7b9845cd6943c0f7e23c6f14c8",
+    "deploy/l0g.fr.apache.conf": "9e7b78856041b03125c1eba12559b9f0896dd58b53ec42330844b9b9e7b4f0f1"
+  },
+  "timer": {
+    "active_state": "active",
+    "unit_file_state": "enabled"
+  },
+  "http_probes": {
+    "file": "p0-live-proof-2026-09-08.json",
+    "passed": 40,
+    "failed": 0
+  },
+  "audience": {
+    "source": "https://l0g.fr/api/v1/human-traffic.json",
+    "response_sha256": "a98423c1b20ad0305252534f08f66a270d9d1b7a85c53c20ab23a96b47b695ff",
+    "schema_version": "1.1.0",
+    "generated_at": "2026-09-08T15:57:44.153Z",
+    "minimum_public_cohort": 5,
+    "measurement": {
+      "numerator": "GET HTTP 200 de documents HTML uniquement.",
+      "exclusions": "Crawlers connus, user-agents internes l0g, feeds, assets, API/MCP, statistiques et fichiers machine.",
+      "dimensions": "Agrégation par jour, page canonique et domaine référent seulement.",
+      "coverage": "Recalcul à partir des journaux encore disponibles. retention_days est un plafond de sélection, pas un historique garanti ; les agrégats antérieurs ne sont pas cumulés.",
+      "privacy": "Aucune IP, cookie, session, empreinte, chemin de référent ni identifiant persistant n’est conservé."
+    },
+    "rolling_7_days": {
+      "from": "2026-09-02",
+      "through": "2026-09-08",
+      "requests": {
+        "human_html": 24264,
+        "mcp_api": 40831,
+        "social_previews": 3411,
+        "known_crawlers": 17274,
+        "scans": 2237,
+        "other": 79977
+      },
+      "human_referrers": {
+        "google": 1320,
+        "x": 3818,
+        "direct": 15141,
+        "other": 3985
+      },
+      "days_observed": 7,
+      "coverage": "Dates des journaux Apache disponibles ; la dernière journée peut être partielle. Aucune complétude historique garantie."
+    },
+    "limitations": [
+      "Un GET HTML est une lecture servie, pas une personne unique.",
+      "Les classes techniques comptent des requêtes et ne doivent jamais être additionnées aux lectures HTML pour produire une audience.",
+      "Les navigateurs qui masquent le référent sont classés en accès direct.",
+      "Les robots non déclarés ou aux user-agents nouveaux peuvent subsister jusqu’à mise à jour de la liste.",
+      "Les jours, pages et domaines sous k=5 ne sont pas publiés."
+    ]
+  },
+  "error_diagnostic": "Awaiting administrator execution; no 400/5xx cause asserted."
+}

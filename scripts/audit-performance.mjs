@@ -9,6 +9,12 @@ const rootUrl = new URL('../dist/', import.meta.url);
 const root = fileURLToPath(rootUrl);
 const failures = [];
 const pages = new Map();
+const publicationCovers = new Map([
+  ['publications/eau-electricite/index.html', 'eau-electricite'],
+  ['en/publications/water-electricity/index.html', 'water-electricity'],
+  ['publications/euro-numerique/index.html', 'euro-numerique'],
+  ['en/publications/digital-euro/index.html', 'digital-euro'],
+]);
 
 function decodeHtml(value) {
   const named = new Map([
@@ -92,13 +98,36 @@ for (const file of htmlFiles) {
   }
 
   const elements = scanHtmlElements(html);
+  const cover = publicationCovers.get(name);
+  let priorityCovers = 0;
   for (const image of elements.filter((element) => element.name === 'img')) {
     assert(image.attributes.has('alt'), `${name}: image sans alt`);
     assert(Number(image.attributes.get('width')) > 0, `${name}: image sans largeur intrinsèque`);
     assert(Number(image.attributes.get('height')) > 0, `${name}: image sans hauteur intrinsèque`);
-    assert(image.attributes.get('loading') === 'lazy', `${name}: image sans loading=lazy`);
+    const isCover = cover && image.attributes.get('src') === `/publications/${cover}-cover.jpg`;
+    if (isCover) {
+      priorityCovers += 1;
+      assert(image.attributes.get('loading') === 'eager' && image.attributes.get('fetchpriority') === 'high', `${name}: couverture LCP non prioritaire`);
+      assert(image.attributes.has('sizes'), `${name}: couverture sans tailles responsives`);
+      for (const width of [320, 640, 960]) {
+        const path = `/publications/${cover}-cover-${width}.webp`;
+        assert(image.attributes.get('srcset')?.includes(`${path} ${width}w`), `${name}: variante ${width} absente`);
+        assert((await readFile(join(root, path))).length < 500_000, `${name}: variante ${width} hors budget`);
+      }
+      assert((await readFile(join(root, `/publications/${cover}-cover.jpg`))).length < 500_000, `${name}: couverture sociale hors budget`);
+      assert((await readFile(join(root, `/publications/${cover}-cover-social.jpg`))).length < 500_000, `${name}: carte sociale hors budget`);
+      const socialPath = `https://l0g.fr/publications/${cover}-cover-social.jpg`;
+      for (const field of ['og:image', 'twitter:image']) {
+        assert(elements.some((element) => element.name === 'meta'
+          && (element.attributes.get('property') ?? element.attributes.get('name')) === field
+          && element.attributes.get('content') === socialPath), `${name}: ${field} ne pointe pas vers la carte sans recadrage`);
+      }
+    } else {
+      assert(image.attributes.get('loading') === 'lazy', `${name}: image sans loading=lazy`);
+    }
     assert(image.attributes.get('decoding') === 'async', `${name}: image sans decoding=async`);
   }
+  if (cover) assert(priorityCovers === 1, `${name}: exactement une couverture prioritaire attendue`);
   const title = decodeHtml(html.match(/<title>([^<]+)<\/title>/)?.[1]?.trim());
   const description = decodeHtml(elements.find((element) =>
     element.name === 'meta' && element.attributes.get('name') === 'description'

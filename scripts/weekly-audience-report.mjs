@@ -47,6 +47,9 @@ export function buildWeeklyAudienceTable(report, { through } = {}) {
       scans: requests.scans,
       other: requests.other,
     },
+    acquisition: rolling.human_referrers ?? null,
+    coverage: rolling.coverage ?? 'Complétude des sept journées non fournie par ce rapport.',
+    days_observed: rolling.days_observed ?? null,
     suppression: `Les valeurs inférieures à k=${minimum} sont nulles.`,
     forbidden_interpretation: 'Les classes techniques ne sont pas une audience et ne doivent pas être additionnées aux lectures HTML.',
   };
@@ -65,6 +68,13 @@ export function weeklyAudienceMarkdown(table) {
     `| ${LABELS.known_crawlers} | ${value(table.operations.known_crawlers)} | Indexation et automatisation |`,
     `| ${LABELS.scans} | ${value(table.operations.scans)} | Sécurité et bruit |`,
     `| ${LABELS.other} | ${value(table.operations.other)} | Assets, redirections, erreurs et non-classé |`,
+    '',
+    '| Référent des lectures HTML filtrées | Lectures |',
+    '| --- | ---: |',
+    ...Object.entries({ google: 'Google', x: 'X', direct: 'Direct ou référent masqué', other: 'Autres référents' }).map(([key, label]) =>
+      `| ${label} | ${table.acquisition ? value(table.acquisition[key] ?? null) : 'Indisponible dans ce rapport'} |`),
+    '',
+    `${table.coverage} Les canaux sont calculés avant suppression des petits effectifs ; ils ne sont pas reconstitués depuis les domaines publiés.`,
     '',
     `Source : ${table.source}. ${table.forbidden_interpretation}`,
     '',

@@ -1,0 +1,1241 @@
+{
+  "baseline_source_commit": "03d0875a8e032e53d538dfcf0c1a06b50d98ebef",
+  "generated_at": "2026-09-08T15:48:32.223Z",
+  "method": "Liens entrants = pages distinctes, navigation comprise. Profondeur = distance depuis les hubs. Unicité textuelle du premier paragraphe, sinon description, sur les HTML du build ; pas preuve de qualité ni de plagiat.",
+  "priority": [
+    {
+      "url": "https://pa.l0g.fr/questions/difference-facture-electronique-e-reporting/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-01",
+      "canonical_utilisateur": "",
+      "canonical_google": "",
+      "sitemap": "non",
+      "date_publication": "",
+      "route": "/questions/difference-facture-electronique-e-reporting/",
+      "decision": "a_indexer",
+      "raison_decision": "Page de question PA Check en 200 ; hors build l0g, audit éditorial et maillage à réaliser dans PA Check.",
+      "present_build": "non",
+      "present_sitemap_build": "non",
+      "canonical_build": "",
+      "robots_build": "",
+      "langue_build": "",
+      "mots_build": "",
+      "inlinks_build": "0",
+      "profondeur_hub": "",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / pa.l0g.fr",
+      "statut_gsc_precedent": "",
+      "transition_observee": "nouvelle_dans_les_exemples",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "autre_depot",
+      "new_incoming_pages": [],
+      "lead": null,
+      "duplicate_leads": [],
+      "lead_sha256": null
+    },
+    {
+      "url": "https://l0g.fr/7/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-07-21",
+      "canonical_utilisateur": "https://l0g.fr/7/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "",
+      "route": "/7/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/7/",
+      "robots_build": "index",
+      "langue_build": "fr",
+      "mots_build": "855",
+      "inlinks_build": "2",
+      "profondeur_hub": "3",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Explorée, actuellement non indexée",
+      "transition_observee": "statut_inchange",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "pagination",
+      "new_incoming_pages": [],
+      "lead": {
+        "text": "Archives des analyses l0g sur la finance, la macroéconomie, le crédit et les risques systémiques, page 7 sur 23.",
+        "kind": "meta_description_faute_de_chapo_identifie"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "3119076fe4eca4d9e0a7499febba5b4228f3a3d93871ef889bbafc0e83ff1f53"
+    },
+    {
+      "url": "https://l0g.fr/22/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-05",
+      "canonical_utilisateur": "https://l0g.fr/22/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "",
+      "route": "/22/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/22/",
+      "robots_build": "index",
+      "langue_build": "fr",
+      "mots_build": "953",
+      "inlinks_build": "3",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "",
+      "transition_observee": "nouvelle_dans_les_exemples",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "pagination",
+      "new_incoming_pages": [],
+      "lead": {
+        "text": "Archives des analyses l0g sur la finance, la macroéconomie, le crédit et les risques systémiques, page 22 sur 23.",
+        "kind": "meta_description_faute_de_chapo_identifie"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "7088fd8ed4353d6b1aea1ec35e8582c495c2fe199c5b35582147addc5f9c29e5"
+    },
+    {
+      "url": "https://l0g.fr/en/tools/e-invoicing-platform-cost/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-05",
+      "canonical_utilisateur": "https://l0g.fr/en/tools/e-invoicing-platform-cost/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "",
+      "route": "/en/tools/e-invoicing-platform-cost/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/en/tools/e-invoicing-platform-cost/",
+      "robots_build": "index",
+      "langue_build": "en",
+      "mots_build": "1181",
+      "inlinks_build": "4",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Détectée, actuellement non indexée",
+      "transition_observee": "statut_change",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/en/analysis/the-great-e-invoicing-toll-1-the-severed-public-portal/"
+      ],
+      "lead": {
+        "text": "Estimate the public direct cost over 36 months from volumes, users, customers and integration needs. Unknown prices remain unknown.",
+        "kind": "meta_description_faute_de_chapo_identifie"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "fad046a5e58ff257093bac1663925938c3aa1f3b670f66f6d191db7ea4d3636c"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/wheat-between-hormuz-and-the-bosphorus/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-04",
+      "canonical_utilisateur": "https://l0g.fr/en/analysis/wheat-between-hormuz-and-the-bosphorus/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-09-03T06:39:00.000Z",
+      "route": "/en/analysis/wheat-between-hormuz-and-the-bosphorus/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/en/analysis/wheat-between-hormuz-and-the-bosphorus/",
+      "robots_build": "index",
+      "langue_build": "en",
+      "mots_build": "4889",
+      "inlinks_build": "4",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "",
+      "transition_observee": "nouvelle_dans_les_exemples",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/en/guides/read-oil-market/"
+      ],
+      "lead": {
+        "text": "Data cut-off: 3 September 2026, 07:15 Paris time. Wheat production and stock figures are USDA projections for the 2026/27 marketing year, released on 12 August. FAO’s latest monthly wheat-price movement covers July and was published on 7 August. The World Bank fertilizer movement published on 2 September covers August.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "d7723e84097b0dfcd3e4f4823718856caf7bdcb6b705b549ffb47f55d6891634"
+    },
+    {
+      "url": "https://l0g.fr/posts/strip-clubs-annoncent-ils-recessions/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-04",
+      "canonical_utilisateur": "https://l0g.fr/posts/strip-clubs-annoncent-ils-recessions/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-08-02T11:20:00.000Z",
+      "route": "/posts/strip-clubs-annoncent-ils-recessions/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/posts/strip-clubs-annoncent-ils-recessions/",
+      "robots_build": "index",
+      "langue_build": "fr",
+      "mots_build": "2978",
+      "inlinks_build": "5",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Détectée, actuellement non indexée",
+      "transition_observee": "statut_change",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/guides/lire-le-rapport-emploi-nfp/"
+      ],
+      "lead": {
+        "text": "Non, les strip-clubs ne disposent pas d’un détecteur secret de récession. L’intuition derrière le « Stripper Index » est pourtant raisonnable : une dépense de loisir facultative peut reculer dès que les clients se sentent moins riches. Une étude texane confirme même que les revenus des clubs ont évolué avec l’économie locale avant et pendant la crise de 2008. Mais aucun travail trouvé ne montre que les pourboires ou la fréquentation des clubs anticipent régulièrement les récessions américaines. Le signal le plus sérieux de cette drôle de sélection vient d’un endroit beaucoup moins éclairé au néon : les agences d’intérim.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "a3de9e528c1b46da8cbfe2143b3ad8a081ebccd7ea4963b67f093632c5b7aa9c"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/your-identity-in-your-phone-6-your-identity-is-free-the-proof-may-be-billed/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-08-31",
+      "canonical_utilisateur": "https://l0g.fr/en/analysis/your-identity-in-your-phone-6-your-identity-is-free-the-proof-may-be-billed/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-08-28T18:34:00.000Z",
+      "route": "/en/analysis/your-identity-in-your-phone-6-your-identity-is-free-the-proof-may-be-billed/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/en/analysis/your-identity-in-your-phone-6-your-identity-is-free-the-proof-may-be-billed/",
+      "robots_build": "index",
+      "langue_build": "en",
+      "mots_build": "4001",
+      "inlinks_build": "5",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "",
+      "transition_observee": "nouvelle_dans_les_exemples",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/en/analysis/your-identity-in-your-phone-4-age-becomes-an-access-credential/"
+      ],
+      "lead": {
+        "text": "The citizen clicks a free button. The online service receives an identity at substantial or high assurance level. Nothing appears on the user’s bank statement. Yet the official FranceConnect+ documentation already describes a possible commercial relationship: a private service contracts with private identity providers, usage may be billed according to consumption, and DINUM supplies the relevant volumes.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "44f9ebd9751f3c815581515d8f35e478bb8df02a4cd86f4afe0b21d5336c0fec"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-05",
+      "canonical_utilisateur": "https://l0g.fr/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-07-29T23:20:00.000Z",
+      "route": "/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/",
+      "robots_build": "index",
+      "langue_build": "en",
+      "mots_build": "2237",
+      "inlinks_build": "6",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Détectée, actuellement non indexée",
+      "transition_observee": "statut_change",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/en/analysis/sintra-2026-ecb-hike-warsh-tokenisation/",
+        "/en/analysis/warsh-first-fomc/",
+        "/en/start/"
+      ],
+      "lead": {
+        "text": "The Federal Reserve did not raise its policy rate on July 29. Financial conditions nevertheless tightened between its last two meetings, especially at longer maturities. Kevin Warsh sees this partly as the desirable result of a central bank that guides markets less. The proposition is coherent, but not yet demonstrated. With three members now calling for a hike, reduced guidance may also make the reaction function of a divided committee harder to read.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "97f513bfd9e3bb7089c1a160edfa34faf29a31b6cc415a3356bb19b774d9adcd"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/european-risk-national-fund-supervision/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-05",
+      "canonical_utilisateur": "https://l0g.fr/en/analysis/european-risk-national-fund-supervision/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-08-01T20:50:00.000Z",
+      "route": "/en/analysis/european-risk-national-fund-supervision/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/en/analysis/european-risk-national-fund-supervision/",
+      "robots_build": "index",
+      "langue_build": "en",
+      "mots_build": "1913",
+      "inlinks_build": "6",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Détectée, actuellement non indexée",
+      "transition_observee": "statut_change",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/en/analysis/ten-trillion-asleep/",
+        "/en/guides/read-private-credit-risk/",
+        "/en/start/"
+      ],
+      "lead": {
+        "text": "The problem is not an absence of supervisors. An Irish fund answers to the Central Bank of Ireland, a Luxembourg manager to the CSSF, ESMA promotes supervisory convergence and the ESRB monitors systemic risk. The problem emerges when the vehicle, manager, investor and threatened market fall under different countries. Each authority may then see an accurate slice of the case without any one of them necessarily holding both the complete map and the power to act on every link. The UK liability-driven investment crisis of 2022 made that fragmentation visible.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "1240d9b5aeeec56e39c3faf02439406a31ed1e12ae706baacf7f6f1e301d5617"
+    },
+    {
+      "url": "https://l0g.fr/en/glossary/ofac/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-04",
+      "canonical_utilisateur": "https://l0g.fr/en/glossary/ofac/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "",
+      "route": "/en/glossary/ofac/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/en/glossary/ofac/",
+      "robots_build": "index",
+      "langue_build": "en",
+      "mots_build": "304",
+      "inlinks_build": "6",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Détectée, actuellement non indexée",
+      "transition_observee": "statut_change",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [],
+      "lead": {
+        "text": "OFAC (Office of Foreign Assets Control): The US Treasury office that administers and enforces economic sanctions, including asset blocking and the SDN…",
+        "kind": "meta_description_faute_de_chapo_identifie"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "c6b2bfed3b1851708a555fdfe14b81a8fc392dbdfa5879473a171eb7f08ca9c1"
+    },
+    {
+      "url": "https://l0g.fr/posts/rechute-des-puces-bear-market-profits-records/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-04",
+      "canonical_utilisateur": "https://l0g.fr/posts/rechute-des-puces-bear-market-profits-records/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-07-17T18:43:00.000Z",
+      "route": "/posts/rechute-des-puces-bear-market-profits-records/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/posts/rechute-des-puces-bear-market-profits-records/",
+      "robots_build": "index",
+      "langue_build": "fr",
+      "mots_build": "3793",
+      "inlinks_build": "6",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Détectée, actuellement non indexée",
+      "transition_observee": "statut_change",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [],
+      "lead": {
+        "text": "Vendredi en séance, l’indice Philadelphia des semi-conducteurs, le SOX, abandonnait jusqu’à 5,7 %, portant sa chute à plus de 20 % depuis son record de fin juin, le seuil technique du marché baissier, après une envolée de 105 % entre son point bas de mars et son sommet. La veille, TSMC, l’usine du monde de l’IA, avait publié un chiffre d’affaires trimestriel record de 40,2 milliards de dollars, en hausse de 33,7 % sur un an, et un bénéfice par action en hausse de 77,4 %, son huitième trimestre consécutif au-dessus des attentes. Le titre a baissé quand même. Voilà la singularité de cette correction, et la raison de s’y arrêter : les profits ne flanchent pas, les estimations montent, et le marché paie pourtant de moins en moins cher chaque dollar de bénéfice. Ce qui se dégonfle n’est pas le E du PER, c’est le P : un derating, au sens propre.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "50504f16818b4480315668bd472e9d6e6d26064874aac184609592261915eea8"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/model-pump-price-of-adequacy/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-05",
+      "canonical_utilisateur": "https://l0g.fr/en/analysis/model-pump-price-of-adequacy/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-08-21T09:20:00.000Z",
+      "route": "/en/analysis/model-pump-price-of-adequacy/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/en/analysis/model-pump-price-of-adequacy/",
+      "robots_build": "index",
+      "langue_build": "en",
+      "mots_build": "2798",
+      "inlinks_build": "7",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Détectée, actuellement non indexée",
+      "transition_observee": "statut_change",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/en/start/"
+      ],
+      "lead": {
+        "text": "On 30 July 2026, the operator of Paks published one sentence that captures the limit of any continental model. The Danube was still carrying enough water to cool the plant. Yet the level at the pump intakes had fallen too low for normal operation. The European system still saw gigawatts, imports and reserves. The pump saw centimetres.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "40317282ac9c01368ff6eef26d5bb03470ce19584c9ecb882f234381919bf6d9"
+    },
+    {
+      "url": "https://l0g.fr/posts/asie-dollar-stress-test-trois-risques/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-05",
+      "canonical_utilisateur": "https://l0g.fr/posts/asie-dollar-stress-test-trois-risques/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-09-05T13:26:00.000Z",
+      "route": "/posts/asie-dollar-stress-test-trois-risques/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/posts/asie-dollar-stress-test-trois-risques/",
+      "robots_build": "index",
+      "langue_build": "fr",
+      "mots_build": "6315",
+      "inlinks_build": "8",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "",
+      "transition_observee": "nouvelle_dans_les_exemples",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/guides/lire-le-dollar-dxy-cross-currency-basis/"
+      ],
+      "lead": {
+        "text": "Une obligation américaine perd de la valeur. Le dollar baisse. Un paiement arrive avant que la couverture ait versé son gain. Aucun de ces événements ne suffit à décrire une crise. Leur rencontre peut pourtant obliger un investisseur de long terme à vendre au pire moment. Dans La boucle du dollar asiatique, nous avons construit un stress test qui fait apparaître cette frontière : celle qui sépare une perte supportable dans le temps d’une somme impossible à réunir à temps.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "b6ac34c904771b4f897e37c183f7ec91957b9f5d91880e55a24fbb890f5a9994"
+    },
+    {
+      "url": "https://l0g.fr/en/guides/read-the-balance-of-payments/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-05",
+      "canonical_utilisateur": "https://l0g.fr/en/guides/read-the-balance-of-payments/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-07-28T08:25:00.000Z",
+      "route": "/en/guides/read-the-balance-of-payments/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/en/guides/read-the-balance-of-payments/",
+      "robots_build": "index",
+      "langue_build": "en",
+      "mots_build": "1298",
+      "inlinks_build": "8",
+      "profondeur_hub": "1",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Détectée, actuellement non indexée",
+      "transition_observee": "statut_change",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/en/asia/",
+        "/en/start/"
+      ],
+      "lead": {
+        "text": "The balance of payments is one of the rare places in economics where an accounting identity cannot lie. It records everything a country exchanges with the rest of the world, goods, services, income and capital, and these flows balance by construction. Its lesson is brutal and often misunderstood: a country that buys more from the world than it sells must, in the same motion, borrow the difference from it. The trade deficit and the capital inflow are two sides of the same coin. Reading the balance of payments means grasping that mechanism, and what it says about how an economy is financed. This guide runs through it, with the US accounts of 2026 as the backdrop.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "7dba4eb0c248b4ffbfe11b8f02eb1e29fd6b7a215c568b76dcdb35d0cfee3133"
+    },
+    {
+      "url": "https://l0g.fr/posts/chine-risque-dollar-bilan-reserves-banques/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-05",
+      "canonical_utilisateur": "https://l0g.fr/posts/chine-risque-dollar-bilan-reserves-banques/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-09-05T08:30:00.000Z",
+      "route": "/posts/chine-risque-dollar-bilan-reserves-banques/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/posts/chine-risque-dollar-bilan-reserves-banques/",
+      "robots_build": "index",
+      "langue_build": "fr",
+      "mots_build": "5931",
+      "inlinks_build": "8",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "",
+      "transition_observee": "nouvelle_dans_les_exemples",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/guides/lire-les-donnees-tic/"
+      ],
+      "lead": {
+        "text": "À fin mars 2026, les résidents chinois possédaient 11 975,7 milliards de dollars d’actifs financiers extérieurs. Ils devaient 7 969,6 milliards au reste du monde. Le solde officiel atteignait 4 006,0 milliards. Ces chiffres placent la Chine parmi les plus grands créanciers nets de la planète. Ils ne disent pourtant pas où se trouve le risque dollar. Pour le trouver, il faut ouvrir plusieurs bilans : celui des réserves, des banques, du fonds souverain, des assureurs, des entreprises et des investisseurs enregistrés dans les places offshore.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "900ac6b3b668d3ee22684145239995cfb1482fc984a8638315e6e228efcb690b"
+    },
+    {
+      "url": "https://l0g.fr/posts/risque-inflationniste-2026/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-08-10",
+      "canonical_utilisateur": "https://l0g.fr/posts/risque-inflationniste-2026/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-06-12T00:00:00.000Z",
+      "route": "/posts/risque-inflationniste-2026/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/posts/risque-inflationniste-2026/",
+      "robots_build": "index",
+      "langue_build": "fr",
+      "mots_build": "3124",
+      "inlinks_build": "8",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Explorée, actuellement non indexée",
+      "transition_observee": "statut_inchange",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [],
+      "lead": {
+        "text": "L’inflation, que l’on croyait sur une trajectoire de désinflation durable vers les cibles des banques centrales (2 % pour la Fed et l’ECB), a connu un rebond marqué au printemps 2026. Porté par un choc géopolitique majeur, le conflit Iran/Israël et les perturbations du détroit d’Hormuz, les données de mai 2026 confirment une accélération des prix à la consommation, tant aux États-Unis qu’en zone euro. Les prévisions sont systématiquement révisées à la hausse. Ce phénomène, qualifié de « contagion silencieuse » des pressions énergétiques vers le cœur de l’inflation (core), pose un risque tangible pour le reste de l’année 2026 et au-delà.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "ce2caa24d2ebb1affbc9b5a89215d3c0112195745973a50eee088c217c3e5aec"
+    },
+    {
+      "url": "https://l0g.fr/posts/asie-actifs-americains-treasuries-mbs-credit/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-05",
+      "canonical_utilisateur": "https://l0g.fr/posts/asie-actifs-americains-treasuries-mbs-credit/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-09-05T06:00:00.000Z",
+      "route": "/posts/asie-actifs-americains-treasuries-mbs-credit/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/posts/asie-actifs-americains-treasuries-mbs-credit/",
+      "robots_build": "index",
+      "langue_build": "fr",
+      "mots_build": "5013",
+      "inlinks_build": "10",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "",
+      "transition_observee": "nouvelle_dans_les_exemples",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/guides/lire-le-dollar-dxy-cross-currency-basis/",
+        "/guides/lire-les-donnees-tic/"
+      ],
+      "lead": {
+        "text": "Au 30 juin 2025, les résidents asiatiques détenaient 9 834 milliards de dollars de titres américains selon la table A5 du rapport Treasury International Capital. Le chiffre contient 4 504 milliards d’actions et de parts de fonds, 3 284 milliards de Treasuries à long terme, 741 milliards de dette d’agence, 848 milliards de dette d’entreprise et 458 milliards de dette à court terme. Les composantes arrondies totalisent 9 835 milliards. Le total publié reste 9 834. Cette différence d’un milliard n’est pas un mystère financier, seulement l’effet de l’arrondi. L’anomalie intéressante est ailleurs : dans ce relevé, la catégorie statistique des actions et parts de fonds dépasse la dette fédérale.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "b0b4a26d2d50d7b36370ba84973d6dc4063a4c899f9ab54e2327e63fc456d117"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/how-much-is-one-centimetre-of-danube-worth/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-09-05",
+      "canonical_utilisateur": "https://l0g.fr/en/analysis/how-much-is-one-centimetre-of-danube-worth/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-08-20T11:28:00.000Z",
+      "route": "/en/analysis/how-much-is-one-centimetre-of-danube-worth/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/en/analysis/how-much-is-one-centimetre-of-danube-worth/",
+      "robots_build": "index",
+      "langue_build": "en",
+      "mots_build": "3405",
+      "inlinks_build": "11",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Détectée, actuellement non indexée",
+      "transition_observee": "statut_change",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [],
+      "lead": {
+        "text": "On 30 July 2026, Hungary’s Paks nuclear plant published a counter-intuitive statement. The Danube still contained enough water to cool all four units. Yet the plant was preparing to shut them down. The problem was not the river’s total volume, but a matter of centimetres: the water surface had fallen below the suction inlets of pumps used during normal operation. To preserve its megawatts, Hungary would soon try to raise the Danube locally. In Romania, the military blasted a rock formation and prepared four material-loaded barges to redirect water towards Cernavodă. Europe was not merely short of water. It was discovering that electricity can depend on the precise geometry of a river.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "d69dd62c0776dc8ae2d36307054409516af7172f4d7201537bfb22f806e971f3"
+    },
+    {
+      "url": "https://l0g.fr/posts/credit-prive-juin-2026-defaut-record-gating/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-08-02",
+      "canonical_utilisateur": "https://l0g.fr/posts/credit-prive-juin-2026-defaut-record-gating/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-06-17T07:30:00.000Z",
+      "route": "/posts/credit-prive-juin-2026-defaut-record-gating/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/posts/credit-prive-juin-2026-defaut-record-gating/",
+      "robots_build": "index",
+      "langue_build": "fr",
+      "mots_build": "3985",
+      "inlinks_build": "18",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "Explorée, actuellement non indexée",
+      "transition_observee": "statut_inchange",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [
+        "/guides/analyser-credit-prive/"
+      ],
+      "lead": {
+        "text": "Le chiffre de couverture tient en une ligne : le défaut est à son plus haut depuis que l’indicateur existe. L’information utile est ailleurs, dans l’écart entre les chiffres affichés et les chiffres tus.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "238117aa76e7c6b8457a76761b50990d0b0325ab470d6f667d689a7fbb9ee13f"
+    },
+    {
+      "url": "https://l0g.fr/posts/basis-trade-treasuries-levier/",
+      "statut_gsc": "Explorée, actuellement non indexée",
+      "derniere_exploration": "2026-08-30",
+      "canonical_utilisateur": "https://l0g.fr/posts/basis-trade-treasuries-levier/",
+      "canonical_google": "",
+      "sitemap": "oui",
+      "date_publication": "2026-06-23T13:00:00.000Z",
+      "route": "/posts/basis-trade-treasuries-levier/",
+      "decision": "a_indexer",
+      "raison_decision": "page 200 indexable avec canonical propre dans le build",
+      "present_build": "oui",
+      "present_sitemap_build": "oui",
+      "canonical_build": "https://l0g.fr/posts/basis-trade-treasuries-levier/",
+      "robots_build": "index",
+      "langue_build": "fr",
+      "mots_build": "2601",
+      "inlinks_build": "21",
+      "profondeur_hub": "2",
+      "titles_dupliques": "",
+      "responsable": "bluetouff / l0g.fr",
+      "statut_gsc_precedent": "",
+      "transition_observee": "nouvelle_dans_les_exemples",
+      "http_live": "200",
+      "limite_live": "",
+      "priority_scope": "contenu_editorial",
+      "new_incoming_pages": [],
+      "lead": {
+        "text": "Il existe un arbitrage qui, à lui seul, relie le marché repo, les contrats à terme sur Treasuries et la stabilité du marché de la dette américaine. On l’appelle le basis trade. En temps normal, il rapproche les prix du comptant et des futures, et fournit de la liquidité à un marché de 29 000 milliards de dollars. En cas de stress, le même mécanisme se retourne : son levier élevé force des débouclages, qui amplifient la chute. Il a contribué à la débâcle des Treasuries de mars 2020, et sa taille n’a cessé de croître depuis. Suite directe de notre article sur le repo et le collatéral, voici l’anatomie d’un trade que les régulateurs surveillent comme le lait sur le feu.",
+        "kind": "premier_paragraphe_prose_ou_post_lede"
+      },
+      "duplicate_leads": [],
+      "lead_sha256": "1060744d6c6bd74dab440fc317585941b65b4a8fefb9369d0e566e253634229d"
+    }
+  ],
+  "discovered": [
+    {
+      "url": "https://l0g.fr/13/",
+      "inlinks": "2",
+      "depth": "8",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/13/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/asia-invisible-dollar-hedging-machine/",
+      "inlinks": "7",
+      "depth": "1",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/asia-invisible-dollar-hedging-machine/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/collateral-that-cannot-leave-the-building/",
+      "inlinks": "2",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/collateral-that-cannot-leave-the-building/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/cotton-risk-prices-margins-hormuz/",
+      "inlinks": "2",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/cotton-risk-prices-margins-hormuz/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/digital-euro-3-as-private-as-cash/",
+      "inlinks": "10",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/digital-euro-3-as-private-as-cash/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/digital-euro-5-price-of-sovereignty/",
+      "inlinks": "7",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/digital-euro-5-price-of-sovereignty/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/dollar-yen-intervention-carry-unwind/",
+      "inlinks": "9",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/dollar-yen-intervention-carry-unwind/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/energy-rating-enters-bank-balance-sheet/",
+      "inlinks": "2",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/energy-rating-enters-bank-balance-sheet/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/europe-corn-deficit-trade-map/",
+      "inlinks": "2",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/europe-corn-deficit-trade-map/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/france-e-invoicing-aife-cyber-email-878-addresses/",
+      "inlinks": "2",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/france-e-invoicing-aife-cyber-email-878-addresses/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/india-pays-for-oil-with-code/",
+      "inlinks": "2",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/india-pays-for-oil-with-code/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/japan-end-free-money-life-insurer-balance-sheets/",
+      "inlinks": "6",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/japan-end-free-money-life-insurer-balance-sheets/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/jpmorgan-market-surveillance-black-box/",
+      "inlinks": "3",
+      "depth": "3",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/jpmorgan-market-surveillance-black-box/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/page/11/",
+      "inlinks": "3",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/page/11/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/page/8/",
+      "inlinks": "5",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/page/8/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/pjm-electricity-forecast-7-billion/",
+      "inlinks": "3",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/pjm-electricity-forecast-7-billion/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/private-credit-clo-warehouse-banks/",
+      "inlinks": "3",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/private-credit-clo-warehouse-banks/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/south-korea-price-perfect-fx-hedge/",
+      "inlinks": "8",
+      "depth": "1",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/south-korea-price-perfect-fx-hedge/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/the-extra-degree-thermal-discharges-nuclear/",
+      "inlinks": "8",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/the-extra-degree-thermal-discharges-nuclear/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/the-great-e-invoicing-toll-4-who-reads-your-invoices/",
+      "inlinks": "7",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/the-great-e-invoicing-toll-4-who-reads-your-invoices/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/wet-megawatt-europe-water-electricity/",
+      "inlinks": "9",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/wet-megawatt-europe-water-electricity/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/when-climate-turns-state-into-reinsurer/",
+      "inlinks": "4",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/when-climate-turns-state-into-reinsurer/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/when-gold-rises-so-does-debt/",
+      "inlinks": "2",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/when-gold-rises-so-does-debt/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/why-the-fed-can-make-money-without-printing-but-can-lose-too/",
+      "inlinks": "3",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/why-the-fed-can-make-money-without-printing-but-can-lose-too/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/your-identity-in-your-phone-3-sovereignty-under-contract/",
+      "inlinks": "7",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/analysis/your-identity-in-your-phone-3-sovereignty-under-contract/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/contact/",
+      "inlinks": "3",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/contact/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/glossary/pseudonymisation/",
+      "inlinks": "6",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/glossary/pseudonymisation/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/guides/read-a-consumer-credit-securitisation-abs/",
+      "inlinks": "4",
+      "depth": "1",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/guides/read-a-consumer-credit-securitisation-abs/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/guides/read-on-chain-data/",
+      "inlinks": "10",
+      "depth": "1",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/guides/read-on-chain-data/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/guides/read-private-credit-risk/",
+      "inlinks": "24",
+      "depth": "1",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/guides/read-private-credit-risk/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/support/",
+      "inlinks": "381",
+      "depth": "1",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/support/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/tools/cooling-adaptation-quote/",
+      "inlinks": "3",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/tools/cooling-adaptation-quote/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/tools/reservoir-arbitrator/",
+      "inlinks": "3",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/tools/reservoir-arbitrator/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/tools/thermal-discharge-thresholds/",
+      "inlinks": "3",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/tools/thermal-discharge-thresholds/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/tools/wet-megawatt-counter/",
+      "inlinks": "3",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/tools/wet-megawatt-counter/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/en/tools/who-asks-for-what/",
+      "inlinks": "2",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/en/tools/who-asks-for-what/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/glossaire/megawatt-humide/",
+      "inlinks": "43",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/glossaire/megawatt-humide/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/glossaire/slar/",
+      "inlinks": "3",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/glossaire/slar/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/glossaire/valeur-d-usage-de-l-eau/",
+      "inlinks": "4",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/glossaire/valeur-d-usage-de-l-eau/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/maintenant/",
+      "inlinks": "905",
+      "depth": "1",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/maintenant/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/outils/qui-demande-quoi/",
+      "inlinks": "2",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/outils/qui-demande-quoi/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/posts/euroclear-chambre-forte-opaque-avoirs-russes/",
+      "inlinks": "9",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/posts/euroclear-chambre-forte-opaque-avoirs-russes/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/posts/fhlb-preteur-avant-dernier-ressort/",
+      "inlinks": "7",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/posts/fhlb-preteur-avant-dernier-ressort/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/publications/auditer-l-opacite/",
+      "inlinks": "1",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/publications/auditer-l-opacite/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/radar/",
+      "inlinks": "905",
+      "depth": "1",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/radar/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/series/",
+      "inlinks": "907",
+      "depth": "1",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/series/",
+      "robots": "index",
+      "http": "200"
+    },
+    {
+      "url": "https://l0g.fr/sources/congress-govinfo-cbo/",
+      "inlinks": "27",
+      "depth": "2",
+      "sitemap": "oui",
+      "canonical": "https://l0g.fr/sources/congress-govinfo-cbo/",
+      "robots": "index",
+      "http": "200"
+    }
+  ],
+  "added_links": [
+    {
+      "from": "/en/analysis/sintra-2026-ecb-hike-warsh-tokenisation/",
+      "to": "/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/"
+    },
+    {
+      "from": "/en/analysis/ten-trillion-asleep/",
+      "to": "/en/analysis/european-risk-national-fund-supervision/"
+    },
+    {
+      "from": "/en/analysis/the-great-e-invoicing-toll-1-the-severed-public-portal/",
+      "to": "/en/tools/e-invoicing-platform-cost/"
+    },
+    {
+      "from": "/en/analysis/warsh-first-fomc/",
+      "to": "/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/"
+    },
+    {
+      "from": "/en/analysis/your-identity-in-your-phone-4-age-becomes-an-access-credential/",
+      "to": "/en/analysis/your-identity-in-your-phone-6-your-identity-is-free-the-proof-may-be-billed/"
+    },
+    {
+      "from": "/en/asia/",
+      "to": "/en/analysis/asia-invisible-dollar-hedging-machine/"
+    },
+    {
+      "from": "/en/asia/",
+      "to": "/en/analysis/south-korea-price-perfect-fx-hedge/"
+    },
+    {
+      "from": "/en/asia/",
+      "to": "/en/analysis/japan-end-free-money-life-insurer-balance-sheets/"
+    },
+    {
+      "from": "/en/asia/",
+      "to": "/en/guides/read-the-balance-of-payments/"
+    },
+    {
+      "from": "/en/guides/read-oil-market/",
+      "to": "/en/analysis/wheat-between-hormuz-and-the-bosphorus/"
+    },
+    {
+      "from": "/en/guides/read-private-credit-risk/",
+      "to": "/en/analysis/european-risk-national-fund-supervision/"
+    },
+    {
+      "from": "/en/start/",
+      "to": "/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/"
+    },
+    {
+      "from": "/en/start/",
+      "to": "/en/guides/read-the-balance-of-payments/"
+    },
+    {
+      "from": "/en/start/",
+      "to": "/en/analysis/european-risk-national-fund-supervision/"
+    },
+    {
+      "from": "/en/start/",
+      "to": "/en/analysis/private-credit-clo-warehouse-banks/"
+    },
+    {
+      "from": "/en/start/",
+      "to": "/en/analysis/pjm-electricity-forecast-7-billion/"
+    },
+    {
+      "from": "/en/start/",
+      "to": "/en/analysis/model-pump-price-of-adequacy/"
+    },
+    {
+      "from": "/en/start/",
+      "to": "/en/analysis/asia-invisible-dollar-hedging-machine/"
+    },
+    {
+      "from": "/en/start/",
+      "to": "/en/analysis/south-korea-price-perfect-fx-hedge/"
+    },
+    {
+      "from": "/guides/analyser-credit-prive/",
+      "to": "/posts/credit-prive-juin-2026-defaut-record-gating/"
+    },
+    {
+      "from": "/guides/lire-le-dollar-dxy-cross-currency-basis/",
+      "to": "/posts/asie-dollar-stress-test-trois-risques/"
+    },
+    {
+      "from": "/guides/lire-le-dollar-dxy-cross-currency-basis/",
+      "to": "/posts/asie-actifs-americains-treasuries-mbs-credit/"
+    },
+    {
+      "from": "/guides/lire-le-rapport-emploi-nfp/",
+      "to": "/posts/strip-clubs-annoncent-ils-recessions/"
+    },
+    {
+      "from": "/guides/lire-les-donnees-tic/",
+      "to": "/posts/asie-actifs-americains-treasuries-mbs-credit/"
+    },
+    {
+      "from": "/guides/lire-les-donnees-tic/",
+      "to": "/posts/chine-risque-dollar-bilan-reserves-banques/"
+    }
+  ]
+}
