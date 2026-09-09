@@ -16,8 +16,11 @@ ARCHIVE_NAME="l0g-site.tar.gz"
 BUNDLE_NAME="${ARCHIVE_NAME}.sigstore.jsonl"
 CHECKSUM_NAME="${ARCHIVE_NAME}.sha256"
 COORDINATES_NAME="source.env"
+PARTS_NAME="${ARCHIVE_NAME}.parts.sha256"
+PART_BYTES=94371840
+MAX_PARTS=16
 
-for command in cmp git tar gzip sha256sum flock "$GH_BIN"; do
+for command in cmp git tar gzip sha256sum flock wc cat "$GH_BIN"; do
   command -v "$command" >/dev/null 2>&1 || {
     echo "Commande requise absente: $command" >&2
     exit 1
@@ -89,8 +92,8 @@ ARCHIVE="${CHECKOUT}/${ARCHIVE_NAME}"
 BUNDLE="${CHECKOUT}/${BUNDLE_NAME}"
 CHECKSUM="${CHECKOUT}/${CHECKSUM_NAME}"
 COORDINATES="${CHECKOUT}/${COORDINATES_NAME}"
-for file in "$ARCHIVE" "$BUNDLE" "$CHECKSUM" "$COORDINATES"; do
-  [ -f "$file" ] || {
+for file in "$BUNDLE" "$CHECKSUM" "$COORDINATES"; do
+  [ -f "$file" ] && [ ! -L "$file" ] || {
     echo "Artefact built incomplet: ${file##*/}" >&2
     exit 1
   }
@@ -130,6 +133,50 @@ if [ "$SOURCE_SHA" != "$REMOTE_SOURCE_SHA" ]; then
   exit 1
 fi
 
+# The transport manifest is untrusted. Only bounded, sequential basenames are
+# accepted; nothing is sourced or executed from the checkout. Attestation of
+# the reassembled archive remains mandatory before listing or extracting it.
+PARTS_MANIFEST="${CHECKOUT}/${PARTS_NAME}"
+shopt -s nullglob
+PART_FILES=("${CHECKOUT}/${ARCHIVE_NAME}".part-*)
+shopt -u nullglob
+if [ -e "$PARTS_MANIFEST" ] || [ -L "$PARTS_MANIFEST" ]; then
+  if [ -e "$ARCHIVE" ] || [ -L "$ARCHIVE" ] || \
+     [ ! -f "$PARTS_MANIFEST" ] || [ -L "$PARTS_MANIFEST" ] || \
+     [ "$(wc -c <"$PARTS_MANIFEST")" -gt 4096 ]; then
+    echo "Transport statique ambigu ou manifeste invalide" >&2; exit 1
+  fi
+  PARTS=()
+  while IFS= read -r line || [ -n "$line" ]; do
+    index="${#PARTS[@]}"
+    if [ "$index" -ge "$MAX_PARTS" ] || \
+       [[ ! "$line" =~ ^[0-9a-f]{64}\ \ l0g-site\.tar\.gz\.part-[0-9]{3}$ ]]; then
+      echo "Ligne de manifeste statique invalide" >&2; exit 1
+    fi
+    printf -v expected_name '%s.part-%03d' "$ARCHIVE_NAME" "$index"
+    part_name="${line#*  }"
+    part="${CHECKOUT}/${part_name}"
+    if [ "$part_name" != "$expected_name" ] || [ ! -f "$part" ] || [ -L "$part" ]; then
+      echo "Fragment statique manquant, mal ordonné ou non régulier" >&2; exit 1
+    fi
+    part_size="$(wc -c <"$part")"
+    if [ "$part_size" -le 0 ] || [ "$part_size" -gt "$PART_BYTES" ]; then
+      echo "Taille de fragment statique invalide" >&2; exit 1
+    fi
+    PARTS+=("$part")
+  done <"$PARTS_MANIFEST"
+  if [ "${#PARTS[@]}" -eq 0 ] || [ "${#PARTS[@]}" -ne "${#PART_FILES[@]}" ]; then
+    echo "Liste de fragments statiques incomplète" >&2; exit 1
+  fi
+  (cd "$CHECKOUT" && sha256sum -c "$PARTS_NAME")
+  ARCHIVE="${TMP}/${ARCHIVE_NAME}"
+  cat "${PARTS[@]}" >"$ARCHIVE"
+else
+  if [ ! -f "$ARCHIVE" ] || [ -L "$ARCHIVE" ] || [ "${#PART_FILES[@]}" -ne 0 ]; then
+    echo "Archive statique absente ou transport incomplet" >&2; exit 1
+  fi
+fi
+
 checksum_line="$(cat "$CHECKSUM")"
 checksum_digest="${checksum_line%%  *}"
 checksum_name="${checksum_line#*  }"
@@ -137,7 +184,7 @@ if [[ ! "$checksum_digest" =~ ^[0-9a-f]{64}$ ]] || [ "$checksum_name" != "$ARCHI
   echo "Format de checksum statique inattendu" >&2
   exit 1
 fi
-(cd "$CHECKOUT" && sha256sum -c "$CHECKSUM_NAME")
+printf '%s  %s\n' "$checksum_digest" "$ARCHIVE" | sha256sum -c -
 
 "$GH_BIN" attestation verify "$ARCHIVE" \
   --bundle "$BUNDLE" \

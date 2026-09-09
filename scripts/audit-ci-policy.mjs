@@ -61,6 +61,12 @@ requireCondition(!weekly.includes('pull_request_target:'), 'le cron Hebdo ne doi
 requireCondition(rootPackage.scripts?.['weekly:update']?.includes('generate-weekly-editions.mjs --write'), 'le script weekly:update doit rester explicite');
 
 const build = workflows.get('build.yml') || '';
+requireCondition(
+  build.includes('bash deploy/prepare-static-transport.sh release publish')
+    && build.includes('release/l0g-site.tar.gz')
+    && build.includes('release/l0g-site.tar.gz.sigstore.jsonl'),
+  'le transport doit fragmenter la release sans remplacer l’attestation de l’archive entière',
+);
 requireCondition(build.includes('branches: [main]'), 'le build doit rester lié à main');
 requireCondition(build.includes('pull_request:'), 'le vrai build doit valider les pull requests avant fusion');
 requireCondition(build.includes('workflow_dispatch:'), 'le build manuel doit rester disponible');

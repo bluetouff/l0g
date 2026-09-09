@@ -221,13 +221,18 @@ L'index des contrats, runbooks et versions maintenues se trouve dans
 1. `git push` sur `main`.
 2. GitHub Actions construit `dist/`, crée une archive déterministe de toute la
    sortie, puis l'atteste avec GitHub OIDC et Sigstore.
-3. La branche `built` contient uniquement l'archive, son SHA-256, le bundle
-   d'attestation et les coordonnées du commit source de `main`.
+3. La branche `built` transporte l'archive en fragments numérotés de 90 Mio
+   au maximum, avec leurs SHA-256, le SHA-256 de l'archive entière, le bundle
+   d'attestation et les coordonnées du commit source de `main`. Le découpage
+   évite la limite de taille par fichier GitHub sans modifier l'archive signée.
 4. Le timer systemd poll `built` toutes les 2 min.
    Avant toute bascule, il exige
    que le clone corresponde au HEAD distant de `built`, que le SHA source
-   corresponde au HEAD distant de `main`, et que `gh attestation verify`
-   confirme l'archive, le workflow signataire, la ref et le commit source.
+   corresponde au HEAD distant de `main`. Le worker contrôle les noms,
+   l'ordre, le nombre (16 au maximum), la taille et le SHA-256 des fragments,
+   puis reconstitue l'archive dans son répertoire temporaire privé. Il exige
+   ensuite que le SHA-256 global et `gh attestation verify`
+   confirment l'archive, le workflow signataire, la ref et le commit source.
 5. L'archive est contrôlée contre les traversées de chemin et les liens, extraite
    dans une release isolée, puis le symlink servi par Apache est basculé
    atomiquement.
@@ -277,6 +282,14 @@ unités, le symlink courant et les marqueurs si l'activation échoue :
 ```bash
 sudo deploy/activate-worker.sh
 ```
+
+La première publication utilisant les fragments exige l'installation de cette
+version de `deploy/deploy.sh` sur le serveur. L'ancien worker refuse ce nouveau
+transport et conserve la version en ligne ; il ne doit pas être contourné.
+Le nouveau worker accepte aussi les anciennes archives monolithiques. Toute
+absence, altération ou ambiguïté dans les fragments empêche la bascule. Les
+signatures, l'identité du workflow, le commit source et les protections
+d'extraction restent vérifiés sur l'archive entière.
 
 Si la version Debian de `gh` ne fournit pas `attestation verify`, suivre le bloc
 d'installation depuis le dépôt officiel GitHub dans

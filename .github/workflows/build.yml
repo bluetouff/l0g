@@ -251,8 +251,7 @@ jobs:
         run: |
           # `built` est uniquement un transport de release. Le serveur n'active
           # jamais un arbre statique Git non attesté, seulement l'archive vérifiée.
-          mkdir -p publish
-          cp -a release/. publish/
+          bash deploy/prepare-static-transport.sh release publish
           cd publish
           git init -q
           git config user.name "github-actions[bot]"

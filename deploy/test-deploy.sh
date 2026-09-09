@@ -6,6 +6,7 @@ TMP="$(mktemp -d)"
 trap 'rm -rf -- "$TMP"' EXIT
 
 bash -n "${ROOT}/deploy/deploy.sh" "${ROOT}/deploy/activate-worker.sh" \
+  "${ROOT}/deploy/prepare-static-transport.sh" \
   "${ROOT}/deploy/activate-apache-vhost.sh" "${ROOT}/deploy/install-human-traffic.sh" \
   "${ROOT}/deploy/repair-zen-backup-manifest.sh"
 
@@ -165,7 +166,9 @@ publish_artifact() {
   local body="$1"
   local preserve_bundle="${2:-false}"
   local embed_coordinates="${3:-true}"
+  local transport="${4:-legacy}"
   local site="${TMP}/site"
+  rm -f -- "${BUILT}/l0g-site.tar.gz".part-* "${BUILT}/l0g-site.tar.gz.parts.sha256"
   rm -rf -- "$site"
   mkdir -p "$site"
   printf '%s\n' "$body" >"${site}/index.html"
@@ -187,6 +190,12 @@ publish_artifact() {
       printf 'digest=%s\n' "$(sha256sum "${BUILT}/l0g-site.tar.gz" | awk '{print $1}')"
       printf 'source=%s\n' "$SOURCE_SHA"
     } >"${BUILT}/l0g-site.tar.gz.sigstore.jsonl"
+  fi
+  if [ "$transport" = chunks ]; then
+    # Small parts exercise assembly without making every negative fixture 90 MiB.
+    split -b 200 -d -a 3 "${BUILT}/l0g-site.tar.gz" "${BUILT}/l0g-site.tar.gz.part-"
+    (cd "$BUILT" && sha256sum l0g-site.tar.gz.part-* >l0g-site.tar.gz.parts.sha256)
+    rm -- "${BUILT}/l0g-site.tar.gz"
   fi
   git -C "$BUILT" add -A
   git -C "$BUILT" commit -q -m "build ${SOURCE_SHA}"
@@ -263,4 +272,70 @@ fi
 [ "$(cat "${BASE}/current/index.html")" = stable ]
 [ "$(cat "${BASE}/.last_built_sha")" = "$FIRST_BUILT" ]
 
-printf '{"ok":true,"validActivation":true,"missingProvenanceActivation":false,"tamperedActivation":false}\n'
+publish_artifact stable-chunks false true chunks
+L0G_DEPLOY_REPO="file://${REMOTE}" \
+L0G_DEPLOY_BASE="$BASE" \
+L0G_DEPLOY_GH_BIN="$FAKE_GH" \
+PATH="${TMP}/bin:${PATH}" \
+  bash "${ROOT}/deploy/deploy.sh"
+[ "$(cat "${BASE}/current/index.html")" = stable-chunks ]
+cmp -s "${BUILT}/source.env" "${BASE}/current/source.env"
+CHUNK_BUILT="$(cat "${BASE}/.last_built_sha")"
+CHUNK_CURRENT="$(readlink "${BASE}/current")"
+
+for failure in missing altered altered-hashes-updated reordered duplicate traversal symlink extra empty oversized-manifest ambiguous no-manifest oversized-part too-many-parts invalid-signature; do
+  publish_artifact "rejected-${failure}" false true chunks
+  case "$failure" in
+    missing) rm -- "${BUILT}/l0g-site.tar.gz.part-000" ;;
+    altered) printf 'changed' >>"${BUILT}/l0g-site.tar.gz.part-000" ;;
+    altered-hashes-updated)
+      printf 'changed' >>"${BUILT}/l0g-site.tar.gz.part-000"
+      (cd "$BUILT" && sha256sum l0g-site.tar.gz.part-* >l0g-site.tar.gz.parts.sha256)
+      ;;
+    reordered) awk '{ lines[NR] = $0 } END { for (i = NR; i > 0; i--) print lines[i] }' \
+      "${BUILT}/l0g-site.tar.gz.parts.sha256" >"${TMP}/reversed"; cp "${TMP}/reversed" "${BUILT}/l0g-site.tar.gz.parts.sha256" ;;
+    duplicate) head -n 1 "${BUILT}/l0g-site.tar.gz.parts.sha256" >>"${BUILT}/l0g-site.tar.gz.parts.sha256" ;;
+    traversal) printf '%064d  ../source.env\n' 0 >"${BUILT}/l0g-site.tar.gz.parts.sha256" ;;
+    symlink) rm -- "${BUILT}/l0g-site.tar.gz.part-000"; ln -s source.env "${BUILT}/l0g-site.tar.gz.part-000" ;;
+    extra) printf 'extra' >"${BUILT}/l0g-site.tar.gz.part-999" ;;
+    empty) : >"${BUILT}/l0g-site.tar.gz.parts.sha256" ;;
+    oversized-manifest) printf '%05000d' 0 >"${BUILT}/l0g-site.tar.gz.parts.sha256" ;;
+    ambiguous) printf 'ambiguous' >"${BUILT}/l0g-site.tar.gz" ;;
+    no-manifest) rm -- "${BUILT}/l0g-site.tar.gz.parts.sha256" ;;
+    oversized-part) dd if=/dev/zero of="${BUILT}/l0g-site.tar.gz.part-000" bs=1 count=0 seek=94371841 2>/dev/null ;;
+    too-many-parts)
+      rm -- "${BUILT}/l0g-site.tar.gz".part-*
+      for ((i=0; i<17; i++)); do
+        printf -v part_name 'l0g-site.tar.gz.part-%03d' "$i"
+        printf 'a' >"${BUILT}/${part_name}"
+      done
+      (cd "$BUILT" && sha256sum l0g-site.tar.gz.part-* >l0g-site.tar.gz.parts.sha256)
+      ;;
+    invalid-signature) printf 'digest=invalid\nsource=%s\n' "$SOURCE_SHA" >"${BUILT}/l0g-site.tar.gz.sigstore.jsonl" ;;
+  esac
+  git -C "$BUILT" add -A
+  git -C "$BUILT" commit -q -m "invalid ${failure}"
+  git -C "$BUILT" push -q origin built
+  if L0G_DEPLOY_REPO="file://${REMOTE}" \
+     L0G_DEPLOY_BASE="$BASE" \
+     L0G_DEPLOY_GH_BIN="$FAKE_GH" \
+     PATH="${TMP}/bin:${PATH}" \
+       bash "${ROOT}/deploy/deploy.sh" >"${TMP}/negative.log" 2>&1; then
+    echo "Le transport invalide aurait dû être refusé: $failure" >&2; exit 1
+  fi
+  [ "$(cat "${BASE}/current/index.html")" = stable-chunks ]
+  [ "$(readlink "${BASE}/current")" = "$CHUNK_CURRENT" ]
+  [ "$(cat "${BASE}/.last_built_sha")" = "$CHUNK_BUILT" ]
+  [ "$(cat "${BASE}/.last_source_sha")" = "$SOURCE_SHA" ]
+done
+
+# The updated worker must still accept the previous transport for rollback.
+publish_artifact stable-legacy-again
+L0G_DEPLOY_REPO="file://${REMOTE}" \
+L0G_DEPLOY_BASE="$BASE" \
+L0G_DEPLOY_GH_BIN="$FAKE_GH" \
+PATH="${TMP}/bin:${PATH}" \
+  bash "${ROOT}/deploy/deploy.sh"
+[ "$(cat "${BASE}/current/index.html")" = stable-legacy-again ]
+node --test "${ROOT}/scripts/static-transport.test.mjs"
+printf '{"ok":true,"legacyActivation":true,"chunkActivation":true,"invalidTransportsRefused":15,"rollbackCompatibility":true}\n'
