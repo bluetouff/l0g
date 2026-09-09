@@ -11,10 +11,22 @@ import './asia-dollar-stress.test.mjs';
 import './asia-dollar-purchases.test.mjs';
 import './aircraft-engine-tool.test.mjs';
 import './cocoa-financing-tool.test.mjs';
+import './openai-rating-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/openai-note-credit-garantie-nvidia-ipo/index.html',
+    'dist/en/analysis/openai-credit-rating-nvidia-guarantee-ipo/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="ai26-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/senegal-arrieres-etat-entreprises-creancieres/index.html',
     'dist/en/analysis/senegal-government-arrears-suppliers-cash-flow/index.html',

@@ -28,8 +28,13 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
 assert.equal(glossaryEntries.length, 503, 'Le corpus doit conserver ses 503 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 52, 'Le graphe Atlas doit conserver ses 52 nœuds');
-assert.equal(glossaryAtlasEdgeCount, 342, 'Le graphe Atlas doit conserver ses 342 relations');
+assert.equal(glossaryAtlasEntries.length, 54, 'Le graphe Atlas doit conserver ses 54 nœuds');
+assert.equal(glossaryAtlasEdgeCount, 344, 'Le graphe Atlas doit conserver ses 344 relations');
+for (const slug of ['investment-grade', 'vrg']) {
+  const entry = glossaryEntries.find((candidate) => candidate.slug === slug);
+  assert(entry?.atlas?.sources?.length, slug + ' doit conserver sa source primaire');
+  assert.equal(entry.guide, '/posts/openai-note-credit-garantie-nvidia-ipo/');
+}
 for (const slug of ['arrieres-de-paiement', 'affacturage']) {
   const entry = glossaryEntries.find((candidate) => candidate.slug === slug);
   assert(entry?.atlas?.sources?.length, slug + ' doit conserver sa source institutionnelle');

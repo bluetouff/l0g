@@ -280,7 +280,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Base CDS-obligataire', nom: 'CDS-bond basis', def: "Écart entre la prime du CDS et le spread de crédit de l'obligation du même émetteur. Une base négative (CDS moins cher que l'obligation) signale des frictions de financement ou d'arbitrage ; sa dérive prévient parfois avant le prix au comptant. Outil de lecture croisée du risque souverain ou d'entreprise." },
       { sigle: 'Spread de crédit', nom: 'Credit spread', def: "Écart de rendement entre une obligation d'entreprise et une obligation d'État de même maturité. Prix du risque de crédit : il s'écarte quand le marché exige davantage pour prêter à un émetteur privé, se resserre quand l'appétit pour le risque revient.", guide: '/guides/lire-les-spreads-de-credit/' },
       { sigle: 'OAS', nom: 'Option-Adjusted Spread', def: "Écart de rendement d'une obligation par rapport à la courbe des Treasuries, corrigé de la valeur des options incorporées au titre (clause de remboursement anticipé). Mesure de référence du spread de crédit, comparable d'un titre à l'autre. Les indices ICE BofA sont la source la plus suivie.", guide: '/guides/lire-les-spreads-de-credit/' },
-      { sigle: 'Investment grade', nom: 'Catégorie investissement', def: "Émetteurs les mieux notés, de AAA à BBB-. Dette jugée de qualité, à faible probabilité de défaut, éligible à de nombreux portefeuilles réglementés. En dessous commence le high yield." },
+      { sigle: 'Investment grade', nom: 'Catégorie investissement', def: "Catégorie de notes attribuées à un émetteur ou à une dette dont le risque de défaut est jugé relativement faible. Dans l’échelle illustrée par la SEC, elle commence à BBB−. Les symboles dépendent de l’agence. Une note reste une appréciation révisable : elle ne garantit ni remboursement ni valeur de revente et ne révèle pas le seuil prévu dans un contrat particulier.", guide: '/posts/openai-note-credit-garantie-nvidia-ipo/' },
       { sigle: 'High yield', nom: 'Haut rendement', def: "Dette d'émetteurs notés sous BBB- (BB, B, CCC et moins), dite à haut rendement ou spéculative. Rémunère un risque de défaut plus élevé ; son spread est l'un des baromètres les plus suivis du stress de crédit." },
       { sigle: 'CDX', nom: 'Indice de CDS', def: "Indice regroupant un panier de credit default swaps (CDX.NA.IG pour l'investment grade, CDX.NA.HY pour le high yield). Instrument synthétique et liquide, il se négocie en continu et bouge souvent plus vite que le marché comptant des obligations." },
       { sigle: 'NRSRO', nom: 'Nationally Recognized Statistical Rating Organization', def: "Agence de notation agréée par la SEC pour que ses notes servent à des fins réglementaires. S&P, Moody's et Fitch, les trois principales, concentrent environ 95 % du marché mondial. Leur modèle dominant, l'émetteur-payeur, où l'entité notée paie sa propre note, porte un conflit d'intérêts structurel.", guide: '/guides/lire-une-notation-de-credit/' },
@@ -328,7 +328,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Mur de maturités', nom: 'Maturity wall', def: "Concentration, sur une période courte, d'un grand volume de dette arrivant à échéance et devant être refinancée. Dangereux quand ce refinancement se fait à des taux bien plus élevés qu'à l'origine, comme pour l'immobilier commercial américain en 2026-2027." },
       { sigle: 'CDO', nom: 'Collateralized Debt Obligation', def: "Ancêtre et cousin du CLO, mais adossé à des crédits hypothécaires, souvent subprime, dans les années 2000. Son effondrement en 2008, aggravé par des tranches re-titrisées et corrélées, en a fait un symbole de la crise. Le CLO, adossé à des prêts d'entreprise diversifiés, a mieux résisté.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
       { sigle: 'SPV', nom: 'Special Purpose Vehicle', def: "Véhicule ad hoc créé pour isoler un actif ou un financement. Sert par exemple à acheter du matériel puis à le louer, en gardant la dette hors du bilan de l'utilisateur." },
-      { sigle: 'VRG', nom: 'Valeur résiduelle garantie', def: "Engagement par lequel le locataire d'un actif (data center, GPU, avion) garantit au prêteur une valeur plancher de cet actif à la fin du bail : si la revente rapporte moins, il comble l'écart. La garantie rend le montage finançable et le sort du bilan du locataire, mais transfère le risque de dépréciation au garant, sans le supprimer. Pièce centrale des financements d'infrastructure IA adossés au matériel." },
+      { sigle: 'VRG', nom: 'Valeur résiduelle garantie', def: "Protection contractuelle fondée sur une valeur minimale convenue pour un actif ou un bail. Le garant, qui peut être le locataire ou un tiers, couvre un écart défini après application des conditions et des récupérations prévues. Le bénéficiaire, le déclencheur, le plafond et les possibilités de sortie dépendent du contrat. La garantie ne suffit pas, à elle seule, à déterminer le traitement comptable du financement.", guide: '/posts/openai-note-credit-garantie-nvidia-ipo/' },
       { sigle: 'Rate base', nom: "Base d'actifs régulée", def: "Valeur des actifs d'une utility sur laquelle le régulateur l'autorise à percevoir un rendement. Lorsqu'une ligne, une sous-station ou une centrale entre dans cette base, son amortissement et le rendement autorisé sont récupérés dans les tarifs. Le traitement d'un ouvrage construit pour une charge qui ne vient pas détermine donc si le coût reste au client, aux actionnaires ou aux autres abonnés." },
       { sigle: 'Actif échoué', nom: 'Stranded asset', def: "Actif construit ou financé dont l'usage ou les revenus deviennent insuffisants avant le remboursement complet. Pour un data center abandonné, il peut s'agir d'une ligne ou d'une sous-station difficile à réaffecter. L'actif ne disparaît pas : le contrat et la décision du régulateur déterminent qui absorbe le coût non récupéré." },
       { sigle: 'Take-or-pay', nom: 'Engagement minimal de paiement', def: "Clause obligeant un client à payer une quantité ou une capacité minimale réservée, même s'il ne la consomme pas. Dans les tarifs électriques des grandes charges, elle protège le réseau contre un projet retardé ou annulé, à condition de couvrir les bons ouvrages, la bonne durée et une contrepartie solvable." },
@@ -576,7 +576,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-07';
+export const glossaryUpdatedIso = '2026-09-09';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -819,6 +819,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'investment-grade': {
+    intuition: 'La note classe un risque de crédit ; le contrat détermine les conséquences attachées à cette note.',
+    sources: [{ label: 'SEC, Investor.gov', href: 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated-8', detail: 'Échelles, périmètre et limites des notes de crédit.', kind: 'source' }],
+    related: ['vrg'],
+  },
+  vrg: {
+    intuition: 'Un plafond de garantie indique une limite contractuelle. Le paiement éventuel dépend du déclencheur, des recours et de la valeur récupérée.',
+    sources: [{ label: 'Nvidia, SEC, annexe 10.1', href: 'https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda2027q2ex101.htm', detail: 'Exemple de garantie fournie par un tiers : définitions, recours et extinction, sections 1, 12 et 13.', kind: 'source' }],
+    related: ['investment-grade'],
+  },
   'arrieres-de-paiement': {
     intuition: 'Un fournisseur a livré et la date de règlement est passée : sa trésorerie finance désormais le retard de son client.',
     sources: [{ label: 'Flynn et Pessoa, FMI, 2014', href: 'https://www.imf.org/-/media/websites/imf/imported-full-text-pdf/external/pubs/ft/tnm/2014/_tnm1403.pdf', detail: 'Définition des obligations échues et stratégie de règlement.', kind: 'source' }],

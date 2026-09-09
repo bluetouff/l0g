@@ -203,6 +203,32 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'investment-grade',
+    sigle: 'Investment grade',
+    nom: 'Credit rating category',
+    def: 'A category of issuer or debt ratings associated with relatively low assessed default risk. In the scale illustrated by the SEC, it starts at BBB−. Symbols vary by agency. A rating can change and guarantees neither repayment nor resale value. It does not reveal the threshold specified in a particular contract.',
+    guide: '/en/analysis/openai-credit-rating-nvidia-guarantee-ipo/',
+    ...privateCreditSection,
+    atlas: {
+      intuition: 'The rating assesses credit risk; the contract determines the consequences attached to it.',
+      sources: [{ label: 'SEC, Investor.gov', href: 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated-8', detail: 'Credit rating scales, scope and limitations.', kind: 'source' }],
+      related: ['vrg'],
+    },
+  },
+  {
+    slug: 'vrg',
+    sigle: 'RVG',
+    nom: 'Residual value guarantee',
+    def: 'Contractual protection based on an agreed minimum value for an asset or lease. The guarantor, which may be the tenant or a third party, covers a defined shortfall after applying contractual conditions and recoveries. The beneficiary, trigger, cap and termination terms vary by agreement. A guarantee alone does not determine the accounting treatment of the financing.',
+    guide: '/en/analysis/openai-credit-rating-nvidia-guarantee-ipo/',
+    ...privateCreditSection,
+    atlas: {
+      intuition: 'A guarantee cap is a contractual limit. An eventual payment depends on the trigger, remedies and recoveries.',
+      sources: [{ label: 'Nvidia, SEC, Exhibit 10.1', href: 'https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda2027q2ex101.htm', detail: 'A third-party guarantee: definitions, remedies and termination in sections 1, 12 and 13.', kind: 'source' }],
+      related: ['investment-grade'],
+    },
+  },
+  {
     slug: 'arrieres-de-paiement',
     sigle: 'Payment arrears',
     nom: 'Overdue payment obligations',
