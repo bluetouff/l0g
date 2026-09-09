@@ -44,6 +44,8 @@ const lockedVersions = (sourceLock, name) => Object.entries(sourceLock.packages 
   .filter(Boolean);
 const astroVersion = lockedVersion('astro');
 const yamlVersion = lockedVersion('js-yaml');
+const yamlVersions = [...lockedVersions(lock, 'js-yaml'), ...lockedVersions(mcpLock, 'js-yaml')];
+const svgoVersions = [...lockedVersions(lock, 'svgo'), ...lockedVersions(mcpLock, 'svgo')];
 const mcpSdkVersion = mcpLock.packages?.['node_modules/@modelcontextprotocol/sdk']?.version || '';
 const honoVersions = lockedVersions(mcpLock, '@hono/node-server');
 const fastUriVersions = [
@@ -54,8 +56,11 @@ const fastUriVersions = [
 if (!atLeast(astroVersion, '7.1.0')) {
   fail(`Astro ${astroVersion || 'absent'} reste dans la plage GHSA-4g3v-8h47-v7g6`);
 }
-if (!atLeast(yamlVersion, '4.3.0')) {
-  fail(`js-yaml ${yamlVersion || 'absent'} reste dans la plage GHSA-52cp-r559-cp3m`);
+if (!yamlVersions.length || yamlVersions.some((version) => !atLeast(version, '4.3.2'))) {
+  fail(`js-yaml doit rester corrigé dans tous les lockfiles, minimum 4.3.2 pour GHSA-2883-xcg3-v3hh (${yamlVersions.join(', ') || 'absent'})`);
+}
+if (!svgoVersions.length || svgoVersions.some((version) => !atLeast(version, '4.1.0'))) {
+  fail(`svgo doit rester corrigé dans tous les lockfiles, minimum 4.1.0 pour GHSA-4vpr-x523-8j87 et GHSA-w27v-7q3p-w38r (${svgoVersions.join(', ') || 'absent'})`);
 }
 if (!atLeast(mcpSdkVersion, '1.30.0')) {
   fail(`SDK MCP ${mcpSdkVersion || 'absent'} antérieur à la version maintenue attendue 1.30.0`);
