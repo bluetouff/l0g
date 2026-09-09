@@ -203,6 +203,21 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'fima',
+    sigle: 'FIMA',
+    nom: 'Foreign and International Monetary Authorities Repo Facility',
+    def: 'A Federal Reserve facility through which approved foreign and international monetary authorities temporarily obtain dollars against Treasuries held at the New York Fed. Repos last overnight or seven calendar days: dollars plus interest must be repaid to recover the securities. This funding of official reserves is distinct from private foreign-currency borrowing.',
+    guide: '/en/analysis/bessent-yen-us-debt-fima-buybacks/',
+    ...macroSection,
+    atlas: {
+      intuition: 'Mobilising reserve securities provides short-term dollars and leaves a repayment deadline.',
+      sources: [
+        { label: 'Fed, FIMA Repo Facility FAQs', href: 'https://www.federalreserve.gov/monetarypolicy/fima-repo-facility-faqs.htm', detail: 'Approved access, maturities, pricing and repayment.', kind: 'source' },
+        { label: 'Japan Ministry of Finance, 3 August 2026', href: 'https://www.mof.go.jp/english/public_relations/statement/others/20260803073000.html', detail: 'An intention to use FIMA in future, without a documented specific draw.', kind: 'source' },
+      ],
+    },
+  },
+  {
     slug: 'tfff',
     sigle: 'TFFF',
     nom: 'Tropical Forest Forever Facility',

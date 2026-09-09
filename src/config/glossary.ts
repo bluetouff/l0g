@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'FIMA', nom: 'Foreign and International Monetary Authorities Repo Facility', def: "Facilité de la Fed permettant aux autorités monétaires étrangères et internationales agréées d’obtenir temporairement des dollars contre leurs Treasuries conservés à la Fed de New York. La pension livrée dure une nuit ou sept jours calendaires : les dollars et intérêts doivent être remboursés pour reprendre les titres. Ce financement de réserves publiques reste distinct des emprunts privés en devises.", guide: '/posts/bessent-yen-dette-americaine-fima-rachats/' },
       { sigle: 'TFFF', nom: 'Tropical Forest Forever Facility', def: "Dispositif destiné à rémunérer la conservation des forêts tropicales. Son fonds d’investissement distinct, le TFIF, doit placer les capitaux et lui transférer les ressources distribuables. La charte adoptée le 22 juillet 2026 conditionne les paiements forestiers aux ressources disponibles et réserve au moins 20 % de l’allocation de chaque pays aux peuples autochtones et communautés locales.", guide: '/posts/tfff-forets-bresil-fonds-obligations-risques/' },
       { sigle: 'CPI', nom: 'Consumer Price Index', def: "Indice des prix à la consommation américain, publié chaque mois par le BLS. Mesure la variation d'un panier fixe de biens et services des ménages urbains. Le plus suivi des marchés, mais la Fed cible le PCE. Équivalent de l'IPC français.", guide: 'lire-le-cpi-inflation-us' },
       { sigle: 'IPC', nom: 'Indice des prix à la consommation', def: "Mesure française et européenne de l'inflation vécue par les ménages. Pendant du CPI américain." },
@@ -820,6 +821,13 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  fima: {
+    intuition: 'Mobiliser des réserves obligataires procure des dollars à court terme et laisse une échéance de remboursement.',
+    sources: [
+      { label: 'Fed, FIMA Repo Facility FAQs', href: 'https://www.federalreserve.gov/monetarypolicy/fima-repo-facility-faqs.htm', detail: 'Accès approuvé, maturités, tarification et remboursement.', kind: 'source' },
+      { label: 'Ministère japonais des Finances, 3 août 2026', href: 'https://www.mof.go.jp/english/public_relations/statement/others/20260803073000.html', detail: 'Intention d’utiliser FIMA à l’avenir, sans tirage précis documenté.', kind: 'source' },
+    ],
+  },
   tfff: {
     intuition: 'Le capital est investi dans le TFIF ; les paiements aux pays forestiers passent par le TFFF et dépendent des ressources distribuables.',
     sources: [
