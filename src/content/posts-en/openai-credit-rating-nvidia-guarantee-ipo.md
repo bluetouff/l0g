@@ -29,7 +29,7 @@ sourceUpdatedDate: '2026-09-09T10:16:02+02:00'
 
 <p class="ai26-kicker">AI finance · Credit ratings · Guarantees</p>
 
-A line in Nvidia’s publicly filed guarantee template offers the chipmaker a way out. Its support automatically terminates if the tenant or the tenant’s parent obtains a specified credit rating. The rating itself has been redacted: `[***]`. Investors can see how the release works, but not the threshold that unlocks it. <sup class="ai26-ref"><a href="#ai26-en-s2" aria-label="Source 2">[2]</a></sup>
+An OpenAI subsidiary is due to lease a future data-centre campus in Ohio. Nvidia has agreed to cover certain losses if that company stops paying, subject to the contract’s conditions. <sup class="ai26-ref"><a href="#ai26-en-s1" aria-label="Source 1">[1]</a></sup> That protection ends if the subsidiary or its parent obtains the credit rating required by the contract. A credit rating assesses a company’s ability to pay its debts. Nvidia has kept the required rating confidential: the public document shows `[***]` in its place. <sup class="ai26-ref"><a href="#ai26-en-s2" aria-label="Source 2">[2]</a><a href="#ai26-en-s5" aria-label="Source 5">[5]</a></sup>
 
 That gives an unusually concrete meaning to a report published by the *Financial Times* on **8 September 2026**. Bankers advising OpenAI and Anthropic are seeking [investment-grade ratings](/en/glossary/investment-grade/) after the companies’ potential initial public offerings, arguing that fresh capital would strengthen their finances. The report describes discussions, not rating decisions. <sup class="ai26-ref"><a href="#ai26-en-s4" aria-label="Source 4">[4]</a></sup>
 

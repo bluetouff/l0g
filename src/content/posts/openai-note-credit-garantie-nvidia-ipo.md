@@ -34,7 +34,7 @@ quickTake:
 
 <p class="ai26-kicker">Financement de l’IA · Notation · Garanties</p>
 
-Dans le modèle de garantie que Nvidia a déposé à la SEC, une ligne tient en quelques mots. Si le locataire ou sa société mère obtient une certaine note de crédit, le soutien du fabricant de puces prend automatiquement fin. Le seuil, lui, est remplacé par `[***]`. Le lecteur connaît le mécanisme ; il ne connaît pas la note qui permet de l’actionner. <sup class="ai26-ref"><a href="#ai26-fr-s2" aria-label="Source 2">[2]</a></sup>
+Une filiale d’OpenAI doit louer un futur campus de centres de données dans l’Ohio. Nvidia a accepté de couvrir certaines pertes si cette filiale ne paie plus, dans les conditions prévues au contrat. <sup class="ai26-ref"><a href="#ai26-fr-s1" aria-label="Source 1">[1]</a></sup> Cette protection s’arrête si la filiale ou sa société mère obtient la note de crédit exigée par le contrat. Une note de crédit évalue la capacité d’une entreprise à payer ses dettes. Le niveau requis reste confidentiel : Nvidia l’a masqué dans le document public par `[***]`. <sup class="ai26-ref"><a href="#ai26-fr-s2" aria-label="Source 2">[2]</a><a href="#ai26-fr-s5" aria-label="Source 5">[5]</a></sup>
 
 Ce détail donne une portée particulière à l’information publiée le **8 septembre 2026** par le *Financial Times* : les banquiers d’OpenAI et d’Anthropic cherchent à obtenir une notation de [catégorie investissement](/glossaire/investment-grade/) après leurs éventuelles introductions en Bourse. L’argument avancé est qu’un apport de capital renforcerait leur situation financière. Le reportage décrit des discussions, pas des notes attribuées. <sup class="ai26-ref"><a href="#ai26-fr-s4" aria-label="Source 4">[4]</a></sup>
 
