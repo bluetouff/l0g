@@ -12,12 +12,13 @@ const digest = (value) => createHash('sha256').update(value).digest('hex');
 
 test('transport splits an archive above 100 MiB without changing its signed bytes or metadata', () => {
   const root = mkdtempSync(join(tmpdir(), 'l0g-static-transport-'));
+  let fd;
   try {
     const archive = join(root, 'l0g-site.tar.gz');
-    const fd = openSync(archive, 'wx');
+    // Keep one exclusively created file open for both reads and resizes.
+    fd = openSync(archive, 'wx+');
     ftruncateSync(fd, 101 * 1024 * 1024);
-    closeSync(fd);
-    const original = readFileSync(archive);
+    const original = readFileSync(fd);
     const checksum = `${digest(original)}  l0g-site.tar.gz\n`;
     writeFileSync(join(root, 'l0g-site.tar.gz.sha256'), checksum);
     writeFileSync(join(root, 'l0g-site.tar.gz.sigstore.jsonl'), 'signed-whole-archive-fixture\n');
@@ -40,11 +41,13 @@ test('transport splits an archive above 100 MiB without changing its signed byte
     assert.notEqual(spawnSync('bash', [script, root, output]).status, 0, 'Never overwrite a transport directory');
     symlinkSync(root, join(root, 'alias'));
     assert.notEqual(spawnSync('bash', [script, root, join(root, 'alias')]).status, 0);
-    const largeFd = openSync(archive, 'r+');
-    ftruncateSync(largeFd, 90 * 1024 * 1024 * 16 + 1);
-    closeSync(largeFd);
+    ftruncateSync(fd, 90 * 1024 * 1024 * 16 + 1);
     assert.notEqual(spawnSync('bash', [script, root, join(root, 'too-large')]).status, 0);
   } finally {
-    rmSync(root, { recursive: true, force: true });
+    try {
+      if (fd !== undefined) closeSync(fd);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
   }
 });
