@@ -48,6 +48,7 @@ const yamlVersions = [...lockedVersions(lock, 'js-yaml'), ...lockedVersions(mcpL
 const svgoVersions = [...lockedVersions(lock, 'svgo'), ...lockedVersions(mcpLock, 'svgo')];
 const mcpSdkVersion = mcpLock.packages?.['node_modules/@modelcontextprotocol/sdk']?.version || '';
 const honoVersions = lockedVersions(mcpLock, '@hono/node-server');
+const honoFrameworkVersions = [...lockedVersions(lock, 'hono'), ...lockedVersions(mcpLock, 'hono')];
 const fastUriVersions = [
   ...lockedVersions(lock, 'fast-uri'),
   ...lockedVersions(mcpLock, 'fast-uri'),
@@ -91,6 +92,9 @@ if (!honoVersions.length || honoVersions.some((version) => {
 }
 if (mcpPackage.overrides?.['@hono/node-server'] !== honoVersions[0]) {
   fail(`override @hono/node-server non aligné sur le lockfile MCP (${mcpPackage.overrides?.['@hono/node-server'] || 'absent'} / ${honoVersions[0] || 'absent'})`);
+}
+if (!honoFrameworkVersions.length || honoFrameworkVersions.some((version) => !atLeast(version, '4.13.5'))) {
+  fail(`Hono doit rester corrigé dans tous les lockfiles, minimum 4.13.5 pour GHSA-gqvv-2mrq-wpjv, GHSA-g6gw-c38x-mqfc et GHSA-crvj-82cr-hjcx (${honoFrameworkVersions.join(', ') || 'absent'})`);
 }
 if (!fastUriVersions.length || fastUriVersions.some((version) => !atLeast(version, '3.1.4'))) {
   fail(`fast-uri doit rester corrigé dans tous les lockfiles (${fastUriVersions.join(', ') || 'absent'})`);

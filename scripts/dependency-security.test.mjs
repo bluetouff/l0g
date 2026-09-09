@@ -10,8 +10,8 @@ const sanitize = (body) => optimize(
   { plugins: ['removeScripts'] },
 ).data;
 
-test('security floors cover every YAML and SVGO copy in both dependency trees', () => {
-  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0] };
+test('security floors cover every YAML, SVGO and Hono copy in both dependency trees', () => {
+  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5] };
   const seen = new Set();
   for (const path of ['../package-lock.json', '../mcp-server/package-lock.json']) {
     const lock = JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
@@ -26,7 +26,7 @@ test('security floors cover every YAML and SVGO copy in both dependency trees', 
       }
     }
   }
-  assert.equal(seen.size, 2);
+  assert.equal(seen.size, 3);
 });
 
 test('YAML counts empty merge sources toward its configured budget', () => {

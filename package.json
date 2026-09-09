@@ -45,7 +45,7 @@
     "test:wheat-import-tool": "node --experimental-strip-types --test scripts/wheat-import-stress.test.mjs",
     "test:corn-balance-tool": "node --experimental-strip-types --test scripts/european-corn-balance-stress.test.mjs",
     "test:signal-chart": "node --experimental-strip-types --test scripts/signal-chart.test.mjs",
-    "test:security": "node --experimental-strip-types --test scripts/html-utils.test.mjs scripts/audit-indexation-cohort.test.mjs scripts/verify-seo-live.test.mjs scripts/dependency-security.test.mjs && node --experimental-strip-types scripts/audit-security.mjs",
+    "test:security": "node --experimental-strip-types --test scripts/html-utils.test.mjs scripts/audit-indexation-cohort.test.mjs scripts/verify-seo-live.test.mjs scripts/dependency-security.test.mjs mcp-server/hono-security.test.mjs && node --experimental-strip-types scripts/audit-security.mjs",
     "test:secrets": "node scripts/audit-secrets.mjs",
     "test:dependencies": "node scripts/test-dependencies.mjs",
     "test:mcp-cache": "node --test mcp-server/release-cache.test.mjs mcp-server/evidence-graph-index.test.mjs",
