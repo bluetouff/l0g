@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'TFFF', nom: 'Tropical Forest Forever Facility', def: "Dispositif destiné à rémunérer la conservation des forêts tropicales. Son fonds d’investissement distinct, le TFIF, doit placer les capitaux et lui transférer les ressources distribuables. La charte adoptée le 22 juillet 2026 conditionne les paiements forestiers aux ressources disponibles et réserve au moins 20 % de l’allocation de chaque pays aux peuples autochtones et communautés locales.", guide: '/posts/tfff-forets-bresil-fonds-obligations-risques/' },
       { sigle: 'CPI', nom: 'Consumer Price Index', def: "Indice des prix à la consommation américain, publié chaque mois par le BLS. Mesure la variation d'un panier fixe de biens et services des ménages urbains. Le plus suivi des marchés, mais la Fed cible le PCE. Équivalent de l'IPC français.", guide: 'lire-le-cpi-inflation-us' },
       { sigle: 'IPC', nom: 'Indice des prix à la consommation', def: "Mesure française et européenne de l'inflation vécue par les ménages. Pendant du CPI américain." },
       { sigle: 'Core CPI', nom: 'Inflation sous-jacente', def: "CPI hors alimentation et énergie, les deux postes les plus volatils. Isole la tendance de fond des prix, suivie de près par la Fed et les marchés pour juger de la persistance de l'inflation.", guide: 'lire-le-cpi-inflation-us' },
@@ -819,6 +820,13 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  tfff: {
+    intuition: 'Le capital est investi dans le TFIF ; les paiements aux pays forestiers passent par le TFFF et dépendent des ressources distribuables.',
+    sources: [
+      { label: 'TFFF, charte adoptée le 22 juillet 2026', href: 'https://tfff.earth/wp-content/uploads/2026/09/2026-07-17-TFFF-Facility-Charter.pdf', detail: 'Sections I et VII : ressources disponibles, allocation minimale et relation avec le TFIF.', kind: 'source' },
+      { label: 'Banque mondiale, présentation du TFFF', href: 'https://fiftrustee.worldbank.org/en/about/unit/dfi/fiftrustee/fund-detail/tfff', detail: 'Deux entités distinctes pour investir et distribuer les revenus.', kind: 'source' },
+    ],
+  },
   'investment-grade': {
     intuition: 'La note classe un risque de crédit ; le contrat détermine les conséquences attachées à cette note.',
     sources: [{ label: 'SEC, Investor.gov', href: 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated-8', detail: 'Échelles, périmètre et limites des notes de crédit.', kind: 'source' }],

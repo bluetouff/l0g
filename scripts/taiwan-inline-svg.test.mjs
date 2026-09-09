@@ -12,10 +12,22 @@ import './asia-dollar-purchases.test.mjs';
 import './aircraft-engine-tool.test.mjs';
 import './cocoa-financing-tool.test.mjs';
 import './openai-rating-infographics.test.mjs';
+import './tfff-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/tfff-forets-bresil-fonds-obligations-risques/index.html',
+    'dist/en/analysis/tfff-brazil-forest-fund-bond-market-risk/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="tfff26-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/openai-note-credit-garantie-nvidia-ipo/index.html',
     'dist/en/analysis/openai-credit-rating-nvidia-guarantee-ipo/index.html',

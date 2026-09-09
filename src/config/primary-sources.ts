@@ -27,8 +27,8 @@ export interface PrimarySourceInstitution {
   related: PrimarySourceLink[];
 }
 
-export const primarySourcesUpdated = '5 septembre 2026';
-export const primarySourcesUpdatedIso = '2026-09-05';
+export const primarySourcesUpdated = '9 septembre 2026';
+export const primarySourcesUpdatedIso = '2026-09-09';
 
 export const primaryInstitutions: PrimarySourceInstitution[] = [
   {
@@ -75,6 +75,13 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
         cadence: 'Mise à jour SEC',
         delay: 'Variable',
         url: 'https://www.sec.gov/files/company_tickers.json',
+      },
+      {
+        name: 'Investor.gov',
+        role: 'Bulletins pédagogiques de la SEC sur les instruments financiers et leurs risques.',
+        cadence: 'Selon publication',
+        delay: 'Date du bulletin à vérifier',
+        url: 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-86',
       },
     ],
     limits: [
@@ -877,6 +884,13 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
         url: 'https://databank.worldbank.org/source/world-development-indicators',
       },
       {
+        name: 'Financial Intermediary Funds : TFFF',
+        role: 'Présentation du TFFF et du rôle de trustee de la Banque mondiale, distinct du fonds d’investissement TFIF.',
+        cadence: 'Selon mise à jour institutionnelle',
+        delay: 'Date de consultation à conserver',
+        url: 'https://fiftrustee.worldbank.org/en/about/unit/dfi/fiftrustee/fund-detail/tfff',
+      },
+      {
         name: 'OECD Data Explorer',
         role: 'Statistiques OCDE : productivité, comptes nationaux, emploi, prix, commerce et dette.',
         cadence: 'Selon série',
@@ -888,6 +902,7 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
       'Les séries peuvent provenir de sources nationales avec révisions et ruptures méthodologiques.',
       'Les délais sont parfois longs pour les pays émergents.',
       'Les comparaisons internationales exigent de vérifier unité, année de base et parité de pouvoir d’achat.',
+      'Une présentation de fonds décrit le dispositif et le rôle institutionnel ; elle ne garantit ni ses rendements ni ses paiements futurs.',
     ],
     verification: [
       'Citer code indicateur, pays, période et unité.',

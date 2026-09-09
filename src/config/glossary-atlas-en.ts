@@ -203,6 +203,21 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'tfff',
+    sigle: 'TFFF',
+    nom: 'Tropical Forest Forever Facility',
+    def: 'A facility intended to reward tropical forest conservation. A separate investment fund, TFIF, would invest capital and transfer distributable resources to it. The charter adopted on 22 July 2026 makes forest payments conditional on available resources and reserves at least 20% of each country’s allocation for Indigenous Peoples and local communities.',
+    guide: '/en/analysis/tfff-brazil-forest-fund-bond-market-risk/',
+    ...macroSection,
+    atlas: {
+      intuition: 'TFIF invests the capital; TFFF passes available income to eligible forest countries.',
+      sources: [
+        { label: 'TFFF, charter adopted on 22 July 2026', href: 'https://tfff.earth/wp-content/uploads/2026/09/2026-07-17-TFFF-Facility-Charter.pdf', detail: 'Sections I and VII: resources, minimum allocation and the relationship with TFIF.', kind: 'source' },
+        { label: 'World Bank, TFFF overview', href: 'https://fiftrustee.worldbank.org/en/about/unit/dfi/fiftrustee/fund-detail/tfff', detail: 'Separate investment and payment entities.', kind: 'source' },
+      ],
+    },
+  },
+  {
     slug: 'investment-grade',
     sigle: 'Investment grade',
     nom: 'Credit rating category',
