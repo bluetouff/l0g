@@ -203,6 +203,32 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'sterilisation-monetaire',
+    sigle: 'Monetary sterilisation',
+    nom: 'Offsetting an intervention’s liquidity effect',
+    def: 'A central bank operation that offsets the effect of an intervention on banking-system liquidity. After buying foreign currency or gold with domestic currency, the bank can absorb the liquidity created, for example by issuing interest-bearing securities. The interest paid is a cost separate from the result of the initial purchase.',
+    guide: '/en/analysis/ghana-goldbod-gold-dollar-trade-public-cost/',
+    ...macroSection,
+    atlas: {
+      intuition: 'Buying reserves and absorbing the liquidity created are separate operations with separate costs.',
+      sources: [{ label: 'IMF, Bank of Ghana gold purchases', href: 'https://www.imf.org/-/media/files/publications/selected-issues-papers/2026/english/sipea2026084.pdf#page=12', detail: 'Paragraphs 13 and 15: programme losses and reserve sterilisation costs.', kind: 'source' }],
+      related: ['activite-quasi-budgetaire'],
+    },
+  },
+  {
+    slug: 'activite-quasi-budgetaire',
+    sigle: 'Quasi-fiscal activity',
+    nom: 'Public-policy intervention outside the central government budget',
+    def: 'An intervention by a central bank or public institution with effects comparable to government spending, a subsidy or revenue, but recorded outside the central government budget. Moving it into that budget can make the cost more visible without automatically eliminating it.',
+    guide: '/en/analysis/ghana-goldbod-gold-dollar-trade-public-cost/',
+    ...macroSection,
+    atlas: {
+      intuition: 'Moving a policy expense between public institutions changes who records it, while its public cost can remain.',
+      sources: [{ label: 'IMF, Ghana, country report 26/212', href: 'https://www.imf.org/-/media/files/publications/cr/2026/english/1ghaea2026001.pdf#page=41', detail: 'Paragraph 81: transfer of central-bank quasi-fiscal risks and their public funding.', kind: 'source' }],
+      related: ['sterilisation-monetaire'],
+    },
+  },
+  {
     slug: 'equivalent-subvention',
     sigle: 'Grant equivalent',
     nom: 'Monetary value of an aid benefit',

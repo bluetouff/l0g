@@ -30,6 +30,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Stérilisation monétaire', nom: 'Monetary sterilisation', def: "Opération par laquelle une banque centrale compense l’effet d’une intervention sur la liquidité bancaire. Après un achat de devises ou d’or payé en monnaie locale, elle peut retirer la liquidité créée, notamment en émettant des titres rémunérés. Les intérêts versés constituent un coût distinct du résultat de l’achat initial.", guide: '/posts/ghana-or-cedi-goldbod-cout-devises/' },
+      { sigle: 'Activité quasi budgétaire', nom: 'Quasi-fiscal activity', def: "Intervention d’une banque centrale ou d’un organisme public qui produit des effets comparables à une dépense, une subvention ou une recette de l’État, tout en étant comptabilisée hors du budget de l’administration centrale. Transférer cette activité au budget rend son coût plus visible sans le supprimer automatiquement.", guide: '/posts/ghana-or-cedi-goldbod-cout-devises/' },
       { sigle: 'Équivalent-subvention', nom: 'Grant equivalent', def: "Valeur monétaire de l’avantage accordé par une aide, notamment un prêt à taux favorable ou une garantie sous-tarifée. Pour un prêt, elle dépend de l’écart avec des conditions de financement comparables et de l’actualisation des flux. Elle se distingue du capital prêté, du risque couvert et de la perte finalement supportée par le prêteur.", guide: '/posts/aides-entreprises-211-milliards-chiffre-trompeur/' },
       { sigle: 'Dépense fiscale', nom: 'Tax expenditure', def: "Disposition qui réduit les recettes fiscales par rapport à une norme de référence. Son chiffrage dépend de cette norme et des données disponibles. Le gain budgétaire d’une suppression peut différer du coût affiché, car les bénéficiaires adaptent leur comportement et les dispositifs interagissent.", guide: '/posts/aides-entreprises-211-milliards-chiffre-trompeur/' },
       { sigle: 'FIMA', nom: 'Foreign and International Monetary Authorities Repo Facility', def: "Facilité de la Fed permettant aux autorités monétaires étrangères et internationales agréées d’obtenir temporairement des dollars contre leurs Treasuries conservés à la Fed de New York. La pension livrée dure une nuit ou sept jours calendaires : les dollars et intérêts doivent être remboursés pour reprendre les titres. Ce financement de réserves publiques reste distinct des emprunts privés en devises.", guide: '/posts/bessent-yen-dette-americaine-fima-rachats/' },
@@ -823,6 +825,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'sterilisation-monetaire': {
+    intuition: 'Acheter des réserves et retirer la liquidité créée sont deux opérations dont les coûts doivent être distingués.',
+    sources: [{ label: 'FMI, achats d’or de la Banque du Ghana', href: 'https://www.imf.org/-/media/files/publications/selected-issues-papers/2026/english/sipea2026084.pdf#page=12', detail: 'Paragraphes 13 et 15 : pertes du programme et coût de stérilisation des réserves.', kind: 'source' }],
+    related: ['activite-quasi-budgetaire'],
+  },
+  'activite-quasi-budgetaire': {
+    intuition: 'Le compte qui porte une dépense publique peut changer alors que son coût pour la collectivité demeure.',
+    sources: [{ label: 'FMI, Ghana, rapport-pays 26/212', href: 'https://www.imf.org/-/media/files/publications/cr/2026/english/1ghaea2026001.pdf#page=41', detail: 'Paragraphe 81 : sortie des risques quasi budgétaires du bilan de la banque centrale et prise en charge publique.', kind: 'source' }],
+    related: ['sterilisation-monetaire'],
+  },
   'equivalent-subvention': {
     intuition: 'Comparer le prix d’un financement public à des conditions de marché comparables permet de valoriser l’avantage accordé.',
     sources: [{ label: 'HCSP, aides aux entreprises, juillet 2026', href: 'https://www.strategie-plan.gouv.fr/files/files/Publications/2026/2026-07-16%20-%20Rapport%20Aides%20aux%20entreprises/HCSP-2026-RAPPORT-AIDES-ENTREPRISES.pdf#page=29', detail: 'Périmètres et traitement des interventions financières en équivalent-subvention.', kind: 'source' }],
