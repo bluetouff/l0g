@@ -16,10 +16,22 @@ import './tfff-infographics.test.mjs';
 import './bessent-yen-infographics.test.mjs';
 import './business-aid-infographics.test.mjs';
 import './ghana-gold-infographics.test.mjs';
+import './copper-stock-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/cuivre-stocks-americains-cout-attente-douaniere/index.html',
+    'dist/en/analysis/copper-us-stockpile-carrying-cost-tariff-uncertainty/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="custock26-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/ghana-or-cedi-goldbod-cout-devises/index.html',
     'dist/en/analysis/ghana-goldbod-gold-dollar-trade-public-cost/index.html',

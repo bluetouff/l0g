@@ -203,6 +203,32 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'warrant-d-entrepot',
+    sigle: 'Warehouse warrant',
+    nom: 'Title to metal held in an approved warehouse',
+    def: 'A document representing ownership of metal in an approved warehouse. On COMEX, the electronic warrant transfers title when a futures contract is delivered. The recipient can leave the metal in storage or request physical withdrawal under the applicable rules. Changing ownership can leave the copper where it is.',
+    guide: '/en/analysis/copper-us-stockpile-carrying-cost-tariff-uncertainty/',
+    ...clearingSection,
+    atlas: {
+      intuition: 'Copper can change owners before it leaves the warehouse.',
+      sources: [{ label: 'CME, base metals delivery', href: 'https://www.cmegroup.com/education/courses/introduction-to-base-metals/what-is-the-base-metals-delivery-process', detail: 'Electronic title, transfer and the recipient’s options after delivery.', kind: 'source' }],
+      related: ['cout-de-portage'],
+    },
+  },
+  {
+    slug: 'cout-de-portage',
+    sigle: 'Carrying cost',
+    nom: 'Cost of holding an asset over time',
+    def: 'The cost of holding an asset for a given period. For metal inventory, this may include funding, storage and insurance. Calculations depend on quantity, duration, units and contractual terms. The opportunity cost of equity funding differs from interest actually charged; physical withdrawal fees depend on the metal being removed.',
+    guide: '/en/analysis/copper-us-stockpile-carrying-cost-tariff-uncertainty/',
+    ...clearingSection,
+    atlas: {
+      intuition: 'Capital remains committed and storage charges accumulate while an inventory position is held.',
+      sources: [{ label: 'CME, Glendale warehouse, September 2026', href: 'https://www.cmegroup.com/notices/market-regulation/2026/09/mkr09-03-26.html', detail: 'Copper storage and withdrawal charges; financing terms depend on the holder.', kind: 'source' }],
+      related: ['warrant-d-entrepot'],
+    },
+  },
+  {
     slug: 'sterilisation-monetaire',
     sigle: 'Monetary sterilisation',
     nom: 'Offsetting an intervention’s liquidity effect',

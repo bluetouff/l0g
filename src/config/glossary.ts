@@ -432,6 +432,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Énergie & géopolitique',
     accent: 'var(--color-amber)',
     entries: [
+      { sigle: 'Warrant d’entrepôt', nom: 'Warehouse warrant', def: "Titre représentatif d’un métal stocké dans un entrepôt agréé. Sur COMEX, ce document électronique permet de transférer la propriété lors de la livraison d’un contrat à terme. Le nouveau détenteur peut conserver le métal en stockage ou en demander le retrait physique, selon les règles applicables. Le transfert du titre peut laisser le métal sur place.", guide: '/posts/cuivre-stocks-americains-cout-attente-douaniere/' },
+      { sigle: 'Coût de portage', nom: 'Carrying cost', def: "Coût de conservation d’un actif pendant une durée donnée. Pour un stock de métal, il peut comprendre le financement, l’entreposage et l’assurance. Son calcul dépend de la quantité, de la durée, des unités et des contrats. Le coût d’opportunité des fonds propres se distingue des intérêts facturés ; les frais de sortie physique dépendent du retrait effectif.", guide: '/posts/cuivre-stocks-americains-cout-attente-douaniere/' },
       { sigle: 'Adéquation électrique', nom: 'Resource adequacy', def: "Capacité d’un système électrique à couvrir la demande avec la production, le stockage, les échanges et les flexibilités disponibles. Une évaluation d’adéquation mesure un risque de déficit énergétique ; elle ne démontre pas l’absence de congestion locale, de tension opérationnelle ou de coût élevé.", guide: '/posts/modele-pompe-prix-adequation/' },
       { sigle: 'LOLE', nom: 'Loss of Load Expectation', def: "Nombre attendu d’heures pendant lesquelles les ressources disponibles pourraient ne pas couvrir la demande sur la période étudiée. Il s’agit d’une espérance probabiliste, pas d’une prévision du nombre réel d’heures de coupure.", guide: '/posts/modele-pompe-prix-adequation/' },
       { sigle: 'LOLP', nom: 'Loss of Load Probability', def: "Probabilité qu’une situation de déficit de ressources survienne dans un pas de temps ou une période donnée, selon la convention du modèle. Elle ne mesure ni la taille du déficit ni ses conséquences physiques locales.", guide: '/posts/modele-pompe-prix-adequation/' },
@@ -825,6 +827,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'warrant-d-entrepot': {
+    intuition: 'La propriété du cuivre peut changer avant que le métal quitte son entrepôt.',
+    sources: [{ label: 'CME, livraison des métaux de base', href: 'https://www.cmegroup.com/education/courses/introduction-to-base-metals/what-is-the-base-metals-delivery-process', detail: 'Titre électronique, transfert et options du détenteur après livraison.', kind: 'source' }],
+    related: ['cout-de-portage'],
+  },
+  'cout-de-portage': {
+    intuition: 'L’immobilisation du capital et les frais de conservation augmentent avec la durée de détention.',
+    sources: [{ label: 'CME, entrepôt de Glendale, septembre 2026', href: 'https://www.cmegroup.com/notices/market-regulation/2026/09/mkr09-03-26.html', detail: 'Barème d’entreposage et de sortie du cuivre ; le financement dépend du détenteur.', kind: 'source' }],
+    related: ['warrant-d-entrepot'],
+  },
   'sterilisation-monetaire': {
     intuition: 'Acheter des réserves et retirer la liquidité créée sont deux opérations dont les coûts doivent être distingués.',
     sources: [{ label: 'FMI, achats d’or de la Banque du Ghana', href: 'https://www.imf.org/-/media/files/publications/selected-issues-papers/2026/english/sipea2026084.pdf#page=12', detail: 'Paragraphes 13 et 15 : pertes du programme et coût de stérilisation des réserves.', kind: 'source' }],
