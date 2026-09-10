@@ -30,6 +30,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Équivalent-subvention', nom: 'Grant equivalent', def: "Valeur monétaire de l’avantage accordé par une aide, notamment un prêt à taux favorable ou une garantie sous-tarifée. Pour un prêt, elle dépend de l’écart avec des conditions de financement comparables et de l’actualisation des flux. Elle se distingue du capital prêté, du risque couvert et de la perte finalement supportée par le prêteur.", guide: '/posts/aides-entreprises-211-milliards-chiffre-trompeur/' },
+      { sigle: 'Dépense fiscale', nom: 'Tax expenditure', def: "Disposition qui réduit les recettes fiscales par rapport à une norme de référence. Son chiffrage dépend de cette norme et des données disponibles. Le gain budgétaire d’une suppression peut différer du coût affiché, car les bénéficiaires adaptent leur comportement et les dispositifs interagissent.", guide: '/posts/aides-entreprises-211-milliards-chiffre-trompeur/' },
       { sigle: 'FIMA', nom: 'Foreign and International Monetary Authorities Repo Facility', def: "Facilité de la Fed permettant aux autorités monétaires étrangères et internationales agréées d’obtenir temporairement des dollars contre leurs Treasuries conservés à la Fed de New York. La pension livrée dure une nuit ou sept jours calendaires : les dollars et intérêts doivent être remboursés pour reprendre les titres. Ce financement de réserves publiques reste distinct des emprunts privés en devises.", guide: '/posts/bessent-yen-dette-americaine-fima-rachats/' },
       { sigle: 'TFFF', nom: 'Tropical Forest Forever Facility', def: "Dispositif destiné à rémunérer la conservation des forêts tropicales. Son fonds d’investissement distinct, le TFIF, doit placer les capitaux et lui transférer les ressources distribuables. La charte adoptée le 22 juillet 2026 conditionne les paiements forestiers aux ressources disponibles et réserve au moins 20 % de l’allocation de chaque pays aux peuples autochtones et communautés locales.", guide: '/posts/tfff-forets-bresil-fonds-obligations-risques/' },
       { sigle: 'CPI', nom: 'Consumer Price Index', def: "Indice des prix à la consommation américain, publié chaque mois par le BLS. Mesure la variation d'un panier fixe de biens et services des ménages urbains. Le plus suivi des marchés, mais la Fed cible le PCE. Équivalent de l'IPC français.", guide: 'lire-le-cpi-inflation-us' },
@@ -821,6 +823,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'equivalent-subvention': {
+    intuition: 'Comparer le prix d’un financement public à des conditions de marché comparables permet de valoriser l’avantage accordé.',
+    sources: [{ label: 'HCSP, aides aux entreprises, juillet 2026', href: 'https://www.strategie-plan.gouv.fr/files/files/Publications/2026/2026-07-16%20-%20Rapport%20Aides%20aux%20entreprises/HCSP-2026-RAPPORT-AIDES-ENTREPRISES.pdf#page=29', detail: 'Périmètres et traitement des interventions financières en équivalent-subvention.', kind: 'source' }],
+    related: ['depense-fiscale'],
+  },
+  'depense-fiscale': {
+    intuition: 'Le coût d’une dérogation fiscale se calcule par rapport à une règle explicite et reste distinct du rendement d’une réforme.',
+    sources: [{ label: 'PLF 2025, Voies et moyens, tome II', href: 'https://www2.assemblee-nationale.fr/static/17/Annexes-DL/PLF-2025/Voies_et_moyens_Tome_2_2025.pdf#page=35', detail: 'Norme fiscale, effets comportementaux et interactions entre mesures.', kind: 'source' }],
+    related: ['equivalent-subvention'],
+  },
   fima: {
     intuition: 'Mobiliser des réserves obligataires procure des dollars à court terme et laisse une échéance de remboursement.',
     sources: [

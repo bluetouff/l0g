@@ -14,10 +14,22 @@ import './cocoa-financing-tool.test.mjs';
 import './openai-rating-infographics.test.mjs';
 import './tfff-infographics.test.mjs';
 import './bessent-yen-infographics.test.mjs';
+import './business-aid-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/aides-entreprises-211-milliards-chiffre-trompeur/index.html',
+    'dist/en/analysis/france-211-billion-business-aid-misleading-figure/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="aid26-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/bessent-yen-dette-americaine-fima-rachats/index.html',
     'dist/en/analysis/bessent-yen-us-debt-fima-buybacks/index.html',

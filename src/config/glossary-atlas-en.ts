@@ -203,6 +203,32 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'equivalent-subvention',
+    sigle: 'Grant equivalent',
+    nom: 'Monetary value of an aid benefit',
+    def: 'The monetary value of the advantage provided by support, such as a loan on favourable terms or an underpriced guarantee. For a loan, it depends on the difference from comparable financing terms and the discounting of cash flows. It differs from the principal lent, the exposure guaranteed and the lender’s eventual loss.',
+    guide: '/en/analysis/france-211-billion-business-aid-misleading-figure/',
+    ...macroSection,
+    atlas: {
+      intuition: 'Comparing public financing with appropriate market terms puts a value on the benefit received.',
+      sources: [{ label: 'HCSP, business support, July 2026', href: 'https://www.strategie-plan.gouv.fr/files/files/Publications/2026/2026-07-16%20-%20Rapport%20Aides%20aux%20entreprises/HCSP-2026-RAPPORT-AIDES-ENTREPRISES.pdf#page=29', detail: 'Reference scopes and the grant-equivalent treatment of financial support.', kind: 'source' }],
+      related: ['depense-fiscale'],
+    },
+  },
+  {
+    slug: 'depense-fiscale',
+    sigle: 'Tax expenditure',
+    nom: 'Revenue forgone against a tax benchmark',
+    def: 'A provision that reduces tax revenue relative to a reference tax system. Its estimated cost depends on that benchmark and the available data. Removing it may raise a different amount because taxpayers change their behaviour and tax provisions interact.',
+    guide: '/en/analysis/france-211-billion-business-aid-misleading-figure/',
+    ...macroSection,
+    atlas: {
+      intuition: 'Costing a tax concession requires an explicit benchmark; estimating a reform also requires behavioural effects.',
+      sources: [{ label: 'France, 2025 draft budget, revenue assessment, volume II', href: 'https://www2.assemblee-nationale.fr/static/17/Annexes-DL/PLF-2025/Voies_et_moyens_Tome_2_2025.pdf#page=35', detail: 'Tax benchmarks, behavioural effects and interactions between measures.', kind: 'source' }],
+      related: ['equivalent-subvention'],
+    },
+  },
+  {
     slug: 'fima',
     sigle: 'FIMA',
     nom: 'Foreign and International Monetary Authorities Repo Facility',
