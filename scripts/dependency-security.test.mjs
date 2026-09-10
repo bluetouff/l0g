@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import test from 'node:test';
 import yaml from 'js-yaml';
 import { optimize } from 'svgo';
@@ -10,8 +11,8 @@ const sanitize = (body) => optimize(
   { plugins: ['removeScripts'] },
 ).data;
 
-test('security floors cover every YAML, SVGO and Hono copy in both dependency trees', () => {
-  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5] };
+test('security floors cover every YAML, SVGO, Hono and TOML copy in both dependency trees', () => {
+  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1] };
   const seen = new Set();
   for (const path of ['../package-lock.json', '../mcp-server/package-lock.json']) {
     const lock = JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
@@ -26,7 +27,21 @@ test('security floors cover every YAML, SVGO and Hono copy in both dependency tr
       }
     }
   }
-  assert.equal(seen.size, 3);
+  assert.equal(seen.size, 4);
+});
+
+test('TOML rejects truncated structures promptly and preserves ordinary documents', () => {
+  // Run in a separate, time-limited process so a parser regression cannot hang CI.
+  const result = spawnSync(process.execPath, ['--input-type=module', '-e', `
+    import assert from 'node:assert/strict';
+    import { parse, TomlError } from 'smol-toml';
+    assert.deepEqual(parse('title = "Article"\\nvalues = [1, 2]\\n'), { title: 'Article', values: [1, 2] });
+    for (const input of ['values = [1 # unfinished', 'value = { item = 1 # unfinished']) {
+      assert.throws(() => parse(input), TomlError);
+    }
+  `], { cwd: new URL('../', import.meta.url), timeout: 3000, encoding: 'utf8', maxBuffer: 64 * 1024 });
+  assert.ifError(result.error);
+  assert.equal(result.status, 0, result.stderr);
 });
 
 test('YAML counts empty merge sources toward its configured budget', () => {
