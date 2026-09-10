@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { XMLValidator } from 'fast-xml-parser';
-import { glossaryEntries } from '../src/config/glossary.ts';
+import { glossaryEntries, glossaryUpdatedIso } from '../src/config/glossary.ts';
 import { glossaryAtlasEn } from '../src/config/glossary-atlas-en.ts';
 
 const articles = [
@@ -87,6 +87,7 @@ test('Ghana bars reproduce reported allocations, revenue shares and fictional FX
 });
 
 test('Ghana glossary concepts have linked FR and EN source-backed definitions', () => {
+  assert.ok(glossaryUpdatedIso >= '2026-09-10', 'Glossary revision must include the new definitions');
   for (const entries of [glossaryEntries, glossaryAtlasEn]) {
     for (const slug of ['sterilisation-monetaire', 'activite-quasi-budgetaire']) {
       const entry = entries.find((e) => e.slug === slug);
