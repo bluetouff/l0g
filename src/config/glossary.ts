@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Incidence fiscale', nom: 'Tax incidence', def: "Répartition économique finale de la charge d’un impôt entre les agents. Elle peut différer de l’identité du redevable légal qui verse la taxe. Pour un droit de douane, les ajustements de prix et de marges peuvent répartir la charge entre fournisseurs, importateurs et clients. Cette répartition dépend des conditions du marché et doit être estimée.", guide: '/posts/trump-5000-dollars-dividende-promesse-dette/' },
       { sigle: 'Stérilisation monétaire', nom: 'Monetary sterilisation', def: "Opération par laquelle une banque centrale compense l’effet d’une intervention sur la liquidité bancaire. Après un achat de devises ou d’or payé en monnaie locale, elle peut retirer la liquidité créée, notamment en émettant des titres rémunérés. Les intérêts versés constituent un coût distinct du résultat de l’achat initial.", guide: '/posts/ghana-or-cedi-goldbod-cout-devises/' },
       { sigle: 'Activité quasi budgétaire', nom: 'Quasi-fiscal activity', def: "Intervention d’une banque centrale ou d’un organisme public qui produit des effets comparables à une dépense, une subvention ou une recette de l’État, tout en étant comptabilisée hors du budget de l’administration centrale. Transférer cette activité au budget rend son coût plus visible sans le supprimer automatiquement.", guide: '/posts/ghana-or-cedi-goldbod-cout-devises/' },
       { sigle: 'Équivalent-subvention', nom: 'Grant equivalent', def: "Valeur monétaire de l’avantage accordé par une aide, notamment un prêt à taux favorable ou une garantie sous-tarifée. Pour un prêt, elle dépend de l’écart avec des conditions de financement comparables et de l’actualisation des flux. Elle se distingue du capital prêté, du risque couvert et de la perte finalement supportée par le prêteur.", guide: '/posts/aides-entreprises-211-milliards-chiffre-trompeur/' },
@@ -584,7 +585,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-10';
+export const glossaryUpdatedIso = '2026-09-11';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -831,6 +832,13 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: 'La propriété du cuivre peut changer avant que le métal quitte son entrepôt.',
     sources: [{ label: 'CME, livraison des métaux de base', href: 'https://www.cmegroup.com/education/courses/introduction-to-base-metals/what-is-the-base-metals-delivery-process', detail: 'Titre électronique, transfert et options du détenteur après livraison.', kind: 'source' }],
     related: ['cout-de-portage'],
+  },
+  'incidence-fiscale': {
+    intuition: 'La personne qui verse une taxe et celles qui en supportent le coût peuvent être différentes.',
+    sources: [
+      { label: '19 CFR § 141.1', href: 'https://www.law.cornell.edu/cfr/text/19/141.1', detail: 'Obligation douanière de l’importateur.', kind: 'source' },
+      { label: 'Réserve fédérale, transmission des droits de douane', href: 'https://www.federalreserve.gov/econres/notes/feds-notes/detecting-tariff-effects-on-consumer-prices-in-real-time-part-II-20260408.html', detail: 'Estimation des effets des changements tarifaires sur les prix à la consommation.', kind: 'source' },
+    ],
   },
   'cout-de-portage': {
     intuition: 'L’immobilisation du capital et les frais de conservation augmentent avec la durée de détention.',

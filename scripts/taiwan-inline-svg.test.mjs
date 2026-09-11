@@ -17,10 +17,22 @@ import './bessent-yen-infographics.test.mjs';
 import './business-aid-infographics.test.mjs';
 import './ghana-gold-infographics.test.mjs';
 import './copper-stock-infographics.test.mjs';
+import './trump-dividend-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/trump-5000-dollars-dividende-promesse-dette/index.html',
+    'dist/en/analysis/trump-5000-election-dividend-no-surplus/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="t5000-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/cuivre-stocks-americains-cout-attente-douaniere/index.html',
     'dist/en/analysis/copper-us-stockpile-carrying-cost-tariff-uncertainty/index.html',

@@ -203,6 +203,21 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'incidence-fiscale',
+    sigle: 'Tax incidence',
+    nom: 'The economic distribution of a tax burden',
+    def: 'The ultimate economic distribution of a tax burden across participants. It may differ from the identity of the legally liable payer. For a tariff, price and margin adjustments can distribute the burden among suppliers, importers and customers. That distribution depends on market conditions and must be estimated.',
+    guide: '/en/analysis/trump-5000-election-dividend-no-surplus/',
+    ...macroSection,
+    atlas: {
+      intuition: 'The party remitting a tax and those bearing its economic cost can be different.',
+      sources: [
+        { label: '19 CFR § 141.1', href: 'https://www.law.cornell.edu/cfr/text/19/141.1', detail: 'The importer’s customs obligation.', kind: 'source' },
+        { label: 'Federal Reserve, tariff pass-through', href: 'https://www.federalreserve.gov/econres/notes/feds-notes/detecting-tariff-effects-on-consumer-prices-in-real-time-part-II-20260408.html', detail: 'Estimated consumer-price effects of tariff changes.', kind: 'source' },
+      ],
+    },
+  },
+  {
     slug: 'warrant-d-entrepot',
     sigle: 'Warehouse warrant',
     nom: 'Title to metal held in an approved warehouse',
