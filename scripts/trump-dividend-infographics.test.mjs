@@ -99,7 +99,7 @@ test('Tax incidence glossary keeps bilingual definitions and primary sources', (
     const entry = entries.find((e) => e.slug === 'incidence-fiscale');
     assert(entry);
     assert.equal(entry.atlas.sources.length, 2);
-    assert.match(entry.atlas.sources[0].href, /law\.cornell\.edu\/cfr\/text\/19\/141\.1$/);
-    assert.match(entry.atlas.sources[1].href, /federalreserve\.gov/);
+    assert.equal(entry.atlas.sources[0].href, 'https://www.law.cornell.edu/cfr/text/19/141.1');
+    assert.equal(entry.atlas.sources[1].href, 'https://www.federalreserve.gov/econres/notes/feds-notes/detecting-tariff-effects-on-consumer-prices-in-real-time-part-II-20260408.html');
   }
 });
