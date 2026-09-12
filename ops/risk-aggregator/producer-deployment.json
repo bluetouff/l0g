@@ -84,19 +84,19 @@
     },
     "debt": {
       "repository": "https://github.com/bluetouff/debt-risk-radar",
-      "revision": "6eb31855a8922025439826e01c412c952b327750",
+      "revision": "668c2a9961f9bf956dd6eef7d2cda5e995f5b163",
       "files": [
         {
           "path": "/opt/debt-risk-radar/latest_export.py",
-          "sha256": "ee78b1580aa063e48dbc78a757edb8b27be6c657478406c08b7d28908a3881c0"
+          "sha256": "91d845c17dd4abac73d440975b8792dc4d5514131c99d4e64f80682f117ba971"
         },
         {
           "path": "/opt/debt-risk-radar/catalog.py",
-          "sha256": "a34b3aed78aab61415a93144ba06c60e1697aa4fb4437264567e7483d4caa324"
+          "sha256": "ce69ba2c99035c0d5a2b05705ca209d1732719b820427fc816daaa4773468965"
         },
         {
           "path": "/opt/debt-risk-radar/data.py",
-          "sha256": "36fbfeb0fd2e602af59dba7a1b2e3e54a456ba33ef091b60b36abc228c4e7dfc"
+          "sha256": "712fd12fae005fba193084c6f22cc57f0c3c733db483d811a9d87a1fd1ad46e4"
         }
       ]
     }
