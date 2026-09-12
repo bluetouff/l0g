@@ -182,6 +182,8 @@ That cash requirement is not automatically a final economic loss. A hedge can wo
 
 The distinction matters to the wider market. A sale prompted by a financing constraint need not signal that the seller thinks copper has become abundant. Conversely, a company with secure funding can continue holding metal through a temporary price decline. Inventory behaviour reflects balance-sheet conditions as well as views about demand.
 
+A related policy question arises in [Europe’s aluminium scrap market](/en/analysis/eu-aluminium-scrap-export-restrictions-recycling/): retaining metal within a jurisdiction can affect collectors and industrial buyers differently.
+
 ## The owner’s options as tariff expectations change
 
 A policy clarification that undermined the tariff trade could reduce the appeal of keeping copper in the United States. It would not automatically determine its next destination. A holder would still compare a local sale, a warrant sale to another investor, delivery to a plant and possible re-export.

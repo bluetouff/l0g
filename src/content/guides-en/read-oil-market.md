@@ -23,6 +23,8 @@ This geography explains why the two prices differ. The **Brent-WTI spread** refl
 
 Asia has another reference: **Dubai/Oman**, a heavier, sourer crude used for Gulf cargoes to the East. [OPEC](/en/glossary/opep/) also publishes its own reference basket. Reading a quote means first asking which benchmark you are looking at.
 
+Access to buyers and payment channels is another part of physical availability. Our [analysis of US sanctions on Iran](/en/analysis/iran-how-far-can-bessent-close-the-dollar/) distinguishes legal powers, actual designations and the pressure on foreign counterparties.
+
 ## Paper price and physical barrels
 
 The price on screens is not the price of a barrel changing hands on a dock. It is formed first in futures markets: Brent on ICE in London, WTI on NYMEX/CME in New York. Paper volume vastly exceeds physical delivery, and that is where liquidity, hedging and speculative positioning concentrate.

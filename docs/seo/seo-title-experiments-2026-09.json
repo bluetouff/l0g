@@ -101,7 +101,8 @@
     "confounders": [
       "Maillage enrichi le 8 septembre : /en/start/, parcours Asie et guides.",
       "Nvidia : suivi éditorial ajouté avant le relevé ; pas un test de titre isolé.",
-      "Productivité : révision factuelle ; distinguer modification du contenu et effet du titre."
+      "Productivité : révision factuelle ; distinguer modification du contenu et effet du titre.",
+      "Maillage contextuel EN préparé le 12 septembre : dix relations entre pages dans huit contenus, avant publication. Dater sa mise en production séparément."
     ],
     "pages": [
       {
@@ -110,7 +111,12 @@
         "observed_title": "Fed H.4.1: what bank reserves really show | l0g",
         "recrawled_after_release_at": null,
         "post_recrawl_impressions": null,
-        "decision": "maintenir_en_attente_de_mesure"
+        "decision": "maintenir_en_attente_de_mesure",
+        "last_inspected_on": "2026-09-12",
+        "last_crawl_displayed": "17 août 2026, 02:44:22",
+        "crawl_timezone_displayed": null,
+        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+        "recrawl_status": "last_displayed_crawl_predates_title_change"
       },
       {
         "id": "nvidia-500bn",
@@ -118,7 +124,12 @@
         "observed_title": "Nvidia $500bn AI financing: what is committed? | l0g",
         "recrawled_after_release_at": null,
         "post_recrawl_impressions": null,
-        "decision": "maintenir_en_attente_de_mesure"
+        "decision": "maintenir_en_attente_de_mesure",
+        "last_inspected_on": "2026-09-12",
+        "last_crawl_displayed": "12 août 2026, 03:42:44",
+        "crawl_timezone_displayed": null,
+        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+        "recrawl_status": "last_displayed_crawl_predates_title_change"
       },
       {
         "id": "realt-liquidation",
@@ -126,7 +137,12 @@
         "observed_title": "RealT liquidation: $2.72m raised, 39 deeds unchanged | l0g",
         "recrawled_after_release_at": null,
         "post_recrawl_impressions": null,
-        "decision": "maintenir_en_attente_de_mesure"
+        "decision": "maintenir_en_attente_de_mesure",
+        "last_inspected_on": "2026-09-12",
+        "last_crawl_displayed": "28 août 2026, 19:42:58",
+        "crawl_timezone_displayed": null,
+        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+        "recrawl_status": "last_displayed_crawl_predates_title_change"
       },
       {
         "id": "productivity",
@@ -134,7 +150,12 @@
         "observed_title": "US Productivity Q2 Revised: +1.4%, Real Pay −3.3% | l0g",
         "recrawled_after_release_at": null,
         "post_recrawl_impressions": null,
-        "decision": "maintenir_en_attente_de_mesure"
+        "decision": "maintenir_en_attente_de_mesure",
+        "last_inspected_on": "2026-09-12",
+        "last_crawl_displayed": "23 août 2026, 22:24:56",
+        "crawl_timezone_displayed": null,
+        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+        "recrawl_status": "last_displayed_crawl_predates_title_change"
       },
       {
         "id": "cofer",
@@ -142,7 +163,12 @@
         "observed_title": "COFER: reading central bank FX reserves | l0g",
         "recrawled_after_release_at": null,
         "post_recrawl_impressions": null,
-        "decision": "maintenir_en_attente_de_mesure"
+        "decision": "maintenir_en_attente_de_mesure",
+        "last_inspected_on": "2026-09-12",
+        "last_crawl_displayed": "26 août 2026, 13:09:11",
+        "crawl_timezone_displayed": null,
+        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+        "recrawl_status": "last_displayed_crawl_predates_title_change"
       },
       {
         "id": "taiwan",
@@ -150,7 +176,12 @@
         "observed_title": "Taiwan life insurers: $724bn abroad and FX risk | l0g",
         "recrawled_after_release_at": null,
         "post_recrawl_impressions": null,
-        "decision": "maintenir_en_attente_de_mesure"
+        "decision": "maintenir_en_attente_de_mesure",
+        "last_inspected_on": "2026-09-12",
+        "last_crawl_displayed": "30 août 2026, 00:35:02",
+        "crawl_timezone_displayed": null,
+        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+        "recrawl_status": "last_displayed_crawl_predates_title_change"
       },
       {
         "id": "start",
@@ -158,8 +189,49 @@
         "observed_title": "l0g in English: macro, credit and financial risk | l0g",
         "recrawled_after_release_at": null,
         "post_recrawl_impressions": null,
-        "decision": "maintenir_en_attente_de_mesure"
+        "decision": "maintenir_en_attente_de_mesure",
+        "last_inspected_on": "2026-09-12",
+        "last_crawl_displayed": "30 août 2026, 10:52:06",
+        "crawl_timezone_displayed": null,
+        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+        "recrawl_status": "last_displayed_crawl_predates_title_change"
+      },
+      {
+        "id": "bessent",
+        "route": "/en/analysis/bessent-yield-threshold-30-year-treasury/",
+        "observed_title": "Treasury buybacks: why $4bn is not a Bessent put | l0g",
+        "recrawled_after_release_at": null,
+        "post_recrawl_impressions": null,
+        "decision": "maintenir_en_attente_de_mesure",
+        "last_inspected_on": "2026-09-12",
+        "last_crawl_displayed": "23 août 2026, 04:55:17",
+        "crawl_timezone_displayed": null,
+        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+        "recrawl_status": "last_displayed_crawl_predates_title_change"
+      },
+      {
+        "id": "ai-bis",
+        "route": "/en/analysis/ai-boom-bis-financial-fragility/",
+        "observed_title": "AI boom: BIS flags $1tn capex and credit risk | l0g",
+        "recrawled_after_release_at": null,
+        "post_recrawl_impressions": 20,
+        "decision": "maintenir_en_attente_de_mesure",
+        "last_inspected_on": "2026-09-12",
+        "last_crawl_displayed": "8 sept. 2026, 15:59:49",
+        "crawl_timezone_displayed": null,
+        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+        "crawled_title_verified": true,
+        "post_recrawl_window": {
+          "start": "2026-09-09",
+          "end": "2026-09-09",
+          "clicks": 0,
+          "position_displayed": 6.8,
+          "source": "GSC exact page and exact date; cached HTML title verified"
+        },
+        "recrawl_status": "confirmed_title_in_crawled_html"
       }
-    ]
+    ],
+    "last_collection_on": "2026-09-12",
+    "collection_method": "Rendered GSC tables with actual exact-page, country and device filters; period aggregates, not a daily API join."
   }
 }

@@ -70,6 +70,8 @@ My assessment: Japanese intervention is likely if the pace of depreciation reacc
 
 The Treasuries channel also deserves attention. Japan remains a major creditor of the United States according to the [US Treasury TIC](https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.html) data. If defending the yen forces sales of dollars or changes the currency hedges of Japanese investors, the effect can transmit to US yields, and thus to global liquidity. This is the same world described in our guide on [net liquidity](/en/guides/read-net-liquidity-tga-rrp/): FX, Treasuries and market funding are not three separate subjects.
 
+For the positioning evidence, our [dated reading of short-yen futures](/en/analysis/yen-163412-net-short-contracts-before-shock/) separates a crowded trade from proof that it has unwound.
+
 A sober conclusion: a weak yen helps Japanese exporters, but a yen that breaks too fast becomes a global market risk. Intervention can calm the spot. It can also trigger what it seeks to avoid: a disorderly exit from the carry.
 
 ---

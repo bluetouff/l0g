@@ -1,0 +1,61 @@
+{
+  "status": "local_not_deployed",
+  "method": "Distinct English content files containing the exact destination; navigation and template links excluded.",
+  "targets": [
+    {
+      "target": "/en/analysis/wheat-between-hormuz-and-the-bosphorus/",
+      "contextual_source_pages": [
+        "src/content/guides-en/read-oil-market.md",
+        "src/content/posts-en/europe-corn-deficit-trade-map.mdx",
+        "src/content/posts-en/copper-shortage-hormuz-el-nino.md"
+      ],
+      "count": 3
+    },
+    {
+      "target": "/en/analysis/eu-aluminium-scrap-export-restrictions-recycling/",
+      "contextual_source_pages": [
+        "src/content/guides-en/read-copper-market.md",
+        "src/content/posts-en/copper-us-stockpile-carrying-cost-tariff-uncertainty.md",
+        "src/content/posts-en/copper-shortage-hormuz-el-nino.md"
+      ],
+      "count": 3
+    },
+    {
+      "target": "/en/analysis/iran-how-far-can-bessent-close-the-dollar/",
+      "contextual_source_pages": [
+        "src/content/guides-en/read-dollar-dxy-cross-currency-basis.mdx",
+        "src/content/guides-en/read-oil-market.md",
+        "src/content/posts-en/trump-sanctions-russia-iran-concessions.mdx"
+      ],
+      "count": 3
+    },
+    {
+      "target": "/en/analysis/yen-163412-net-short-contracts-before-shock/",
+      "contextual_source_pages": [
+        "src/content/guides-en/read-cftc-cot-report.md",
+        "src/content/guides-en/read-the-carry-trade.md",
+        "src/content/posts-en/dollar-yen-intervention-carry-unwind.md"
+      ],
+      "count": 3
+    },
+    {
+      "target": "/en/analysis/the-yen-carry-trade/",
+      "contextual_source_pages": [
+        "src/content/guides-en/read-the-carry-trade.md",
+        "src/content/posts-en/japan-fiscal-dominance-honebuto-shock-boj-cornered.md",
+        "src/content/posts-en/yen-163412-net-short-contracts-before-shock.md"
+      ],
+      "count": 3
+    },
+    {
+      "target": "/en/guides/read-us-employment-report-nfp/",
+      "contextual_source_pages": [
+        "src/content/guides-en/read-the-ny-fed-household-debt-report.mdx",
+        "src/content/guides-en/read-jolts-report.mdx",
+        "src/content/posts-en/do-strip-clubs-really-predict-recessions.md",
+        "src/content/posts-en/the-dollar-rebound.md"
+      ],
+      "count": 4
+    }
+  ]
+}

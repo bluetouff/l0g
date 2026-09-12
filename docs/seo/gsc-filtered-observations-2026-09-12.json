@@ -1,0 +1,1032 @@
+{
+  "schema_version": "1.0.0",
+  "observed_on": "2026-09-12",
+  "method": "Complete rendered GSC tables transcribed from the authorized internal browser; not a native CSV/API export.",
+  "property": "sc-domain:l0g.fr",
+  "search_type": "web",
+  "period_start": "2026-09-04",
+  "period_end": "2026-09-09",
+  "performance_date_timezone": "America/Los_Angeles",
+  "page_capture_window_utc": [
+    "2026-09-12T13:26:17.266Z",
+    "2026-09-12T13:29:47.167Z"
+  ],
+  "precision": "Clicks and impressions are integers; CTR is recomputed from those counts; position retains the UI rounding.",
+  "limitations": [
+    "Page, country and device filters were actually applied together. Global marginal exports were not joined.",
+    "Google warns that filtered totals and tables can be incomplete. Zero/no data is a reported filtered state, not proof of no exposure.",
+    "ALL denotes an aggregate across a dimension, not a country or device value.",
+    "Queries omitted by Google remain unknown. No inference of a query from a page topic.",
+    "Period aggregates have period_start/period_end; no synthetic daily rows are generated.",
+    "Inspection dates preserve the displayed clock. Its timezone is not displayed; no UTC conversion is asserted."
+  ],
+  "pages": [
+    {
+      "id": "h41",
+      "route": "/en/guides/read-h41-fed-balance-sheet/",
+      "role": "priority",
+      "source_url_all": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fguides%2Fread-h41-fed-balance-sheet%2F",
+      "source_url_us_desktop": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fguides%2Fread-h41-fed-balance-sheet%2F&country=usa&device=DESKTOP",
+      "all": {
+        "clicks": 0,
+        "impressions": 213,
+        "ctr": 0.0,
+        "position_displayed": 8.5,
+        "queries": [
+          {
+            "query": "h.4.1",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 5.0
+          }
+        ],
+        "visible_query_impressions": 1,
+        "all_visible_rows_captured": true
+      },
+      "us_desktop": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": null,
+        "position_displayed": null,
+        "queries": [],
+        "all_visible_rows_captured": true,
+        "empty_state": "Aucune donnée"
+      },
+      "inspection": {
+        "last_crawl_displayed": "17 août 2026, 02:44:22",
+        "timezone_displayed": null,
+        "indexed": true,
+        "google_canonical": "inspected_url"
+      },
+      "post_recrawl_impressions": null
+    },
+    {
+      "id": "cofer",
+      "route": "/en/guides/read-central-bank-fx-reserves-cofer/",
+      "role": "priority",
+      "source_url_all": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fguides%2Fread-central-bank-fx-reserves-cofer%2F",
+      "source_url_us_desktop": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fguides%2Fread-central-bank-fx-reserves-cofer%2F&country=usa&device=DESKTOP",
+      "all": {
+        "clicks": 0,
+        "impressions": 343,
+        "ctr": 0.0,
+        "position_displayed": 8.1,
+        "queries": [
+          {
+            "query": "%imf cofer us dollar share global foreign exchange reserves 2025",
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0.0,
+            "position_displayed": 3.8
+          },
+          {
+            "query": "%imf cofer us dollar share global reserves 2026",
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0.0,
+            "position_displayed": 5.3
+          },
+          {
+            "query": "us dollar share of global foreign exchange reserves 2025 imf cofer",
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0.0,
+            "position_displayed": 3.5
+          },
+          {
+            "query": "imf cofer us dollar share global foreign exchange reserves 2025",
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0.0,
+            "position_displayed": 5.0
+          },
+          {
+            "query": "imf cofer dollar share global foreign exchange reserves 2025",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 4.0
+          },
+          {
+            "query": "imf cofer dollar share reserves latest 2025",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 5.0
+          },
+          {
+            "query": "imf cofer us dollar share global reserves 2025",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 5.0
+          },
+          {
+            "query": "cofer",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 9.0
+          },
+          {
+            "query": "imf cofer us dollar share allocated foreign exchange reserves latest 2026",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 9.0
+          },
+          {
+            "query": "what is cofer",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 10.0
+          },
+          {
+            "query": "imf cofer",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 16.0
+          }
+        ],
+        "visible_query_impressions": 19,
+        "all_visible_rows_captured": true
+      },
+      "us_desktop": {
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0.0,
+        "position_displayed": 4.3,
+        "queries": [
+          {
+            "query": "%imf cofer us dollar share global foreign exchange reserves 2025",
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0.0,
+            "position_displayed": 3.8
+          },
+          {
+            "query": "imf cofer us dollar share global foreign exchange reserves 2025",
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0.0,
+            "position_displayed": 5.0
+          },
+          {
+            "query": "imf cofer dollar share reserves latest 2025",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 5.0
+          },
+          {
+            "query": "imf cofer us dollar share global reserves 2025",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 5.0
+          }
+        ],
+        "all_visible_rows_captured": true,
+        "empty_state": null
+      },
+      "inspection": {
+        "last_crawl_displayed": "26 août 2026, 13:09:11",
+        "timezone_displayed": null,
+        "indexed": true,
+        "google_canonical": "inspected_url"
+      },
+      "post_recrawl_impressions": null
+    },
+    {
+      "id": "bessent",
+      "route": "/en/analysis/bessent-yield-threshold-30-year-treasury/",
+      "role": "priority",
+      "source_url_all": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Fbessent-yield-threshold-30-year-treasury%2F",
+      "source_url_us_desktop": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Fbessent-yield-threshold-30-year-treasury%2F&country=usa&device=DESKTOP",
+      "all": {
+        "clicks": 0,
+        "impressions": 223,
+        "ctr": 0.0,
+        "position_displayed": 5.7,
+        "queries": [
+          {
+            "query": "site.treasurydirect.gov \"buybacks\" \"financed\"",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 4.0
+          }
+        ],
+        "visible_query_impressions": 1,
+        "all_visible_rows_captured": true
+      },
+      "us_desktop": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": null,
+        "position_displayed": null,
+        "queries": [],
+        "all_visible_rows_captured": true,
+        "empty_state": "Aucune donnée"
+      },
+      "inspection": {
+        "last_crawl_displayed": "23 août 2026, 04:55:17",
+        "timezone_displayed": null,
+        "indexed": true,
+        "google_canonical": "inspected_url"
+      },
+      "post_recrawl_impressions": null
+    },
+    {
+      "id": "productivity",
+      "route": "/en/analysis/us-productivity-real-pay-lags/",
+      "role": "priority",
+      "source_url_all": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Fus-productivity-real-pay-lags%2F",
+      "source_url_us_desktop": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Fus-productivity-real-pay-lags%2F&country=usa&device=DESKTOP",
+      "all": {
+        "clicks": 0,
+        "impressions": 52,
+        "ctr": 0.0,
+        "position_displayed": 6.9,
+        "queries": [],
+        "visible_query_impressions": 0,
+        "all_visible_rows_captured": true
+      },
+      "us_desktop": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": null,
+        "position_displayed": null,
+        "queries": [],
+        "all_visible_rows_captured": true,
+        "empty_state": "Aucune donnée"
+      },
+      "inspection": {
+        "last_crawl_displayed": "23 août 2026, 22:24:56",
+        "timezone_displayed": null,
+        "indexed": true,
+        "google_canonical": "inspected_url"
+      },
+      "post_recrawl_impressions": null
+    },
+    {
+      "id": "nvidia",
+      "route": "/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/",
+      "role": "priority",
+      "source_url_all": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Fnvidia-the-500-billion-that-does-not-exist-yet%2F",
+      "source_url_us_desktop": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Fnvidia-the-500-billion-that-does-not-exist-yet%2F&country=usa&device=DESKTOP",
+      "all": {
+        "clicks": 0,
+        "impressions": 40,
+        "ctr": 0.0,
+        "position_displayed": 6.7,
+        "queries": [],
+        "visible_query_impressions": 0,
+        "all_visible_rows_captured": true
+      },
+      "us_desktop": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": null,
+        "position_displayed": null,
+        "queries": [],
+        "all_visible_rows_captured": true,
+        "empty_state": "Aucune donnée"
+      },
+      "inspection": {
+        "last_crawl_displayed": "12 août 2026, 03:42:44",
+        "timezone_displayed": null,
+        "indexed": true,
+        "google_canonical": "inspected_url"
+      },
+      "post_recrawl_impressions": null
+    },
+    {
+      "id": "ai-bis",
+      "route": "/en/analysis/ai-boom-bis-financial-fragility/",
+      "role": "priority",
+      "source_url_all": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Fai-boom-bis-financial-fragility%2F",
+      "source_url_us_desktop": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Fai-boom-bis-financial-fragility%2F&country=usa&device=DESKTOP",
+      "all": {
+        "clicks": 0,
+        "impressions": 129,
+        "ctr": 0.0,
+        "position_displayed": 6.8,
+        "queries": [
+          {
+            "query": "site.bis.org \"financing the ai boom\"",
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0.0,
+            "position_displayed": 10.0
+          },
+          {
+            "query": "bis circular financing",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 8.0
+          }
+        ],
+        "visible_query_impressions": 3,
+        "all_visible_rows_captured": true
+      },
+      "us_desktop": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": null,
+        "position_displayed": null,
+        "queries": [],
+        "all_visible_rows_captured": true,
+        "empty_state": "Aucune donnée"
+      },
+      "inspection": {
+        "last_crawl_displayed": "8 sept. 2026, 15:59:49",
+        "timezone_displayed": null,
+        "indexed": true,
+        "google_canonical": "inspected_url",
+        "crawled_title": "AI boom: BIS flags $1tn capex and credit risk | l0g"
+      },
+      "post_recrawl_impressions": 20,
+      "post_recrawl_window": {
+        "start": "2026-09-09",
+        "end": "2026-09-09",
+        "clicks": 0,
+        "position_displayed": 6.8,
+        "source": "GSC exact page and exact date; cached HTML title verified"
+      }
+    },
+    {
+      "id": "taiwan",
+      "route": "/en/analysis/taiwan-life-insurers-724-billion-currency-risk/",
+      "role": "priority",
+      "source_url_all": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Ftaiwan-life-insurers-724-billion-currency-risk%2F",
+      "source_url_us_desktop": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Ftaiwan-life-insurers-724-billion-currency-risk%2F&country=usa&device=DESKTOP",
+      "all": {
+        "clicks": 2,
+        "impressions": 199,
+        "ctr": 0.010050251256281407,
+        "position_displayed": 7.0,
+        "queries": [
+          {
+            "query": "in november 2025, the taiwan life insurance industry association submitted its proposal to the regulator, the fsc, on changes to the accounting treatment of fx gains and losses. the association submitted four",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 26.0
+          }
+        ],
+        "visible_query_impressions": 1,
+        "all_visible_rows_captured": true
+      },
+      "us_desktop": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 26.0,
+        "queries": [
+          {
+            "query": "in november 2025, the taiwan life insurance industry association submitted its proposal to the regulator, the fsc, on changes to the accounting treatment of fx gains and losses. the association submitted four",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 26.0
+          }
+        ],
+        "all_visible_rows_captured": true,
+        "empty_state": null
+      },
+      "inspection": {
+        "last_crawl_displayed": "30 août 2026, 00:35:02",
+        "timezone_displayed": null,
+        "indexed": true,
+        "google_canonical": "inspected_url"
+      },
+      "post_recrawl_impressions": null
+    },
+    {
+      "id": "realt",
+      "route": "/en/analysis/realt-liquidation-token-without-the-deed/",
+      "role": "priority",
+      "source_url_all": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Frealt-liquidation-token-without-the-deed%2F",
+      "source_url_us_desktop": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Frealt-liquidation-token-without-the-deed%2F&country=usa&device=DESKTOP",
+      "all": {
+        "clicks": 2,
+        "impressions": 191,
+        "ctr": 0.010471204188481676,
+        "position_displayed": 6.4,
+        "queries": [
+          {
+            "query": "realt liquidation",
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0.0,
+            "position_displayed": 8.0
+          },
+          {
+            "query": "delomel realt",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 9.0
+          }
+        ],
+        "visible_query_impressions": 3,
+        "all_visible_rows_captured": true
+      },
+      "us_desktop": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": null,
+        "position_displayed": null,
+        "queries": [],
+        "all_visible_rows_captured": true,
+        "empty_state": "Aucune donnée"
+      },
+      "inspection": {
+        "last_crawl_displayed": "28 août 2026, 19:42:58",
+        "timezone_displayed": null,
+        "indexed": true,
+        "google_canonical": "inspected_url"
+      },
+      "post_recrawl_impressions": null
+    },
+    {
+      "id": "start",
+      "route": "/en/start/",
+      "role": "priority",
+      "source_url_all": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fstart%2F",
+      "source_url_us_desktop": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fstart%2F&country=usa&device=DESKTOP",
+      "all": {
+        "clicks": 1,
+        "impressions": 70,
+        "ctr": 0.014285714285714285,
+        "position_displayed": 3.7,
+        "queries": [
+          {
+            "query": "l0g",
+            "clicks": 1,
+            "impressions": 64,
+            "ctr": 0.015625,
+            "position_displayed": 3.6
+          },
+          {
+            "query": "c'est fiable ?",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 3.0
+          },
+          {
+            "query": "l0g.fr",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 6.0
+          }
+        ],
+        "visible_query_impressions": 66,
+        "all_visible_rows_captured": true
+      },
+      "us_desktop": {
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0.0,
+        "position_displayed": 3.7,
+        "queries": [
+          {
+            "query": "l0g",
+            "clicks": 0,
+            "impressions": 6,
+            "ctr": 0.0,
+            "position_displayed": 3.3
+          },
+          {
+            "query": "l0g.fr",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 6.0
+          }
+        ],
+        "all_visible_rows_captured": true,
+        "empty_state": null
+      },
+      "inspection": {
+        "last_crawl_displayed": "30 août 2026, 10:52:06",
+        "timezone_displayed": null,
+        "indexed": true,
+        "google_canonical": "inspected_url"
+      },
+      "post_recrawl_impressions": null
+    },
+    {
+      "id": "softbank",
+      "route": "/en/analysis/softbank-openai-liquidity-risk/",
+      "role": "comparator",
+      "source_url_all": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Fsoftbank-openai-liquidity-risk%2F",
+      "source_url_us_desktop": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&page=%21https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Fsoftbank-openai-liquidity-risk%2F&country=usa&device=DESKTOP",
+      "all": {
+        "clicks": 2,
+        "impressions": 149,
+        "ctr": 0.013422818791946308,
+        "position_displayed": 6.0,
+        "queries": [
+          {
+            "query": "svf ii tsubaki (de) llc",
+            "clicks": 1,
+            "impressions": 6,
+            "ctr": 0.16666666666666666,
+            "position_displayed": 3.2
+          }
+        ],
+        "visible_query_impressions": 6,
+        "all_visible_rows_captured": true
+      },
+      "us_desktop": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 4.0,
+        "queries": [
+          {
+            "query": "svf ii tsubaki (de) llc",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0.0,
+            "position_displayed": 4.0
+          }
+        ],
+        "all_visible_rows_captured": true,
+        "empty_state": null
+      },
+      "inspection": {
+        "last_crawl_displayed": "10 sept. 2026, 14:18:19",
+        "timezone_displayed": null,
+        "indexed": true,
+        "google_canonical": "inspected_url"
+      },
+      "post_recrawl_impressions": null
+    }
+  ],
+  "english_us_desktop": {
+    "captured_at": "2026-09-12T13:29:47.167Z",
+    "source_url": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260904&end_date=20260909&country=usa&device=DESKTOP&page=%2Ahttps%3A%2F%2Fl0g.fr%2Fen%2F",
+    "clicks": 0,
+    "impressions": 73,
+    "ctr": 0.0,
+    "position_displayed": 16.0,
+    "pages": [
+      {
+        "page": "https://l0g.fr/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/",
+        "clicks": 0,
+        "impressions": 14,
+        "ctr": 0.0,
+        "position_displayed": 6.9
+      },
+      {
+        "page": "https://l0g.fr/en/guides/read-central-bank-fx-reserves-cofer/",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0.0,
+        "position_displayed": 4.3
+      },
+      {
+        "page": "https://l0g.fr/en/",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0.0,
+        "position_displayed": 3.1
+      },
+      {
+        "page": "https://l0g.fr/en/start/",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0.0,
+        "position_displayed": 3.7
+      },
+      {
+        "page": "https://l0g.fr/en/methodology/",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0.0,
+        "position_displayed": 9.8
+      },
+      {
+        "page": "https://l0g.fr/en/analysis/iran-how-far-can-bessent-close-the-dollar/",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0.0,
+        "position_displayed": 10.0
+      },
+      {
+        "page": "https://l0g.fr/en/glossary/cat-nat/",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0.0,
+        "position_displayed": 34.3
+      },
+      {
+        "page": "https://l0g.fr/en/glossary/sanctions-secondaires/",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0.0,
+        "position_displayed": 74.5
+      },
+      {
+        "page": "https://l0g.fr/en/analysis/the-treasury-toll-access-to-mandatory-clearing/",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0.0,
+        "position_displayed": 5.5
+      },
+      {
+        "page": "https://l0g.fr/en/guides/read-sovereign-cds/",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0.0,
+        "position_displayed": 38.0
+      },
+      {
+        "page": "https://l0g.fr/en/guides/read-cftc-cot-report/",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0.0,
+        "position_displayed": 75.0
+      },
+      {
+        "page": "https://l0g.fr/en/analysis/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 2.0
+      },
+      {
+        "page": "https://l0g.fr/en/about/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 3.0
+      },
+      {
+        "page": "https://l0g.fr/en/analysis/softbank-openai-liquidity-risk/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 4.0
+      },
+      {
+        "page": "https://l0g.fr/en/press-resources/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 4.0
+      },
+      {
+        "page": "https://l0g.fr/en/sources/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 5.0
+      },
+      {
+        "page": "https://l0g.fr/en/api/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 7.0
+      },
+      {
+        "page": "https://l0g.fr/en/editorial-protocol/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 8.0
+      },
+      {
+        "page": "https://l0g.fr/en/tools/cooling-adaptation-quote/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 8.0
+      },
+      {
+        "page": "https://l0g.fr/en/analysis/us-gdp-private-demand-q2-2026/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 11.0
+      },
+      {
+        "page": "https://l0g.fr/en/guides/read-bank-stress-tests/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 20.0
+      },
+      {
+        "page": "https://l0g.fr/en/analysis/taiwan-life-insurers-724-billion-currency-risk/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 26.0
+      },
+      {
+        "page": "https://l0g.fr/en/glossary/cet1/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 44.0
+      },
+      {
+        "page": "https://l0g.fr/en/analysis/chip-relapse-bear-market-record-profits/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 81.0
+      }
+    ],
+    "queries": [
+      {
+        "query": "l0g",
+        "clicks": 0,
+        "impressions": 16,
+        "ctr": 0.0,
+        "position_displayed": 5.1
+      },
+      {
+        "query": "site.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
+        "clicks": 0,
+        "impressions": 11,
+        "ctr": 0.0,
+        "position_displayed": 6.4
+      },
+      {
+        "query": "l0g.fr",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0.0,
+        "position_displayed": 5.0
+      },
+      {
+        "query": "%imf cofer us dollar share global foreign exchange reserves 2025",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0.0,
+        "position_displayed": 3.8
+      },
+      {
+        "query": "latest 24 hours ofac sanctions iran vessels tankers maritime september 2026",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0.0,
+        "position_displayed": 10.0
+      },
+      {
+        "query": "secondary sanctions",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0.0,
+        "position_displayed": 72.7
+      },
+      {
+        "query": "imf cofer us dollar share global foreign exchange reserves 2025",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0.0,
+        "position_displayed": 5.0
+      },
+      {
+        "query": "+site.federalreserve.gov monetarypolicy fomccalendars 2026 september 15 16",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0.0,
+        "position_displayed": 10.0
+      },
+      {
+        "query": "catnat",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0.0,
+        "position_displayed": 10.0
+      },
+      {
+        "query": "nat cat api",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0.0,
+        "position_displayed": 58.5
+      },
+      {
+        "query": "understanding cftc data",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0.0,
+        "position_displayed": 75.0
+      },
+      {
+        "query": "svf ii tsubaki (de) llc",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 4.0
+      },
+      {
+        "query": "central clearing treasuries",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 5.0
+      },
+      {
+        "query": "imf cofer dollar share reserves latest 2025",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 5.0
+      },
+      {
+        "query": "imf cofer us dollar share global reserves 2025",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 5.0
+      },
+      {
+        "query": "central clearing of treasuries",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 6.0
+      },
+      {
+        "query": "+\"daily treasury par yield curve rates\" september 2026",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 7.0
+      },
+      {
+        "query": "cooling tower cost calculator",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 8.0
+      },
+      {
+        "query": "%site.bea.gov july 2026 personal income outlays pce august 2026",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 11.0
+      },
+      {
+        "query": "dfast vs ccar difference",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 20.0
+      },
+      {
+        "query": "in november 2025, the taiwan life insurance industry association submitted its proposal to the regulator, the fsc, on changes to the accounting treatment of fx gains and losses. the association submitted four",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 26.0
+      },
+      {
+        "query": "sovereign cds",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 38.0
+      },
+      {
+        "query": "sovereign cds spreads",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 38.0
+      },
+      {
+        "query": "cet ratio",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 44.0
+      },
+      {
+        "query": "secondary sanction",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 80.0
+      },
+      {
+        "query": "sell excess semiconductors",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0.0,
+        "position_displayed": 81.0
+      }
+    ],
+    "all_visible_rows_captured": true,
+    "page_query_join_available_for_all_segment_pages": false
+  },
+  "weekly_brand": {
+    "pattern": "(?i)(\\bl0g(\\.fr)?\\b|olivier\\s+laurelli|bluetouff)",
+    "scope": "l0g editorial brand; PA Check and other product brands are not included.",
+    "query_rows_complete": false,
+    "totals_source": "GSC filtered chart, not a sum of the first ten rows",
+    "weeks": [
+      {
+        "period_start": "2026-08-27",
+        "period_end": "2026-09-02",
+        "brand": {
+          "clicks": 11,
+          "impressions": 129,
+          "ctr": 0.08527131782945736,
+          "position_displayed": 6.2
+        },
+        "visible_nonbrand": {
+          "clicks": 5,
+          "impressions": 438,
+          "ctr": 0.01141552511415525,
+          "position_displayed": 45.2
+        },
+        "unclassified": {
+          "clicks": 37,
+          "impressions": 3803,
+          "ctr": 0.009729161188535366,
+          "position_displayed": null
+        },
+        "unfiltered": {
+          "clicks": 53,
+          "impressions": 4370,
+          "ctr": 0.012128146453089244,
+          "position_displayed": null
+        },
+        "source_urls": {
+          "brand": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260827&end_date=20260902&query=~%28%3Fi%29%28%5Cbl0g%28%5C.fr%29%3F%5Cb%7Colivier%5Cs%2Blaurelli%7Cbluetouff%29",
+          "nonbrand": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260827&end_date=20260902&query=_%28%3Fi%29%28%5Cbl0g%28%5C.fr%29%3F%5Cb%7Colivier%5Cs%2Blaurelli%7Cbluetouff%29"
+        }
+      },
+      {
+        "period_start": "2026-09-03",
+        "period_end": "2026-09-09",
+        "brand": {
+          "clicks": 23,
+          "impressions": 153,
+          "ctr": 0.1503267973856209,
+          "position_displayed": 3.6
+        },
+        "visible_nonbrand": {
+          "clicks": 4,
+          "impressions": 681,
+          "ctr": 0.005873715124816446,
+          "position_displayed": 47.0
+        },
+        "unclassified": {
+          "clicks": 56,
+          "impressions": 6597,
+          "ctr": 0.00848870698802486,
+          "position_displayed": null
+        },
+        "unfiltered": {
+          "clicks": 83,
+          "impressions": 7431,
+          "ctr": 0.011169425380164176,
+          "position_displayed": null
+        },
+        "source_urls": {
+          "brand": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260903&end_date=20260909&query=~%28%3Fi%29%28%5Cbl0g%28%5C.fr%29%3F%5Cb%7Colivier%5Cs%2Blaurelli%7Cbluetouff%29",
+          "nonbrand": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&start_date=20260903&end_date=20260909&query=_%28%3Fi%29%28%5Cbl0g%28%5C.fr%29%3F%5Cb%7Colivier%5Cs%2Blaurelli%7Cbluetouff%29"
+        }
+      }
+    ]
+  },
+  "baseline_reconciliation": {
+    "baseline_file": "l0g.fr-Performance-on-Search-2026-09-05(1).zip",
+    "baseline_sha256": "d93ec25336c93ee34e74b69f8a3e835790f79ec01c621420a5ab3bbebd3af499",
+    "latest_file": "l0g.fr-Performance-on-Search-2026-09-12.zip",
+    "latest_sha256": "956e09da35a7c36a9fe3f4231ce8c28a660aa5f3ec2428287ca4cc68adf976b9",
+    "identical_common_days": 44,
+    "added_days": 6,
+    "added_clicks": 67,
+    "added_impressions": 6181,
+    "query_keys_entering": 157,
+    "query_keys_leaving": 157,
+    "query_snapshot_impression_difference": 528,
+    "query_snapshot_difference_is_period_coverage": false,
+    "one_percent_scenario": {
+      "analyses_impressions": 3186,
+      "guides_impressions": 1078,
+      "observed_clicks": 9,
+      "hypothetical_clicks": 42.64,
+      "hypothetical_additional_clicks": 33.64
+    }
+  }
+}

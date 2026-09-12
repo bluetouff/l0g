@@ -111,6 +111,8 @@ Beyond China, global electrification sets a floor of structural demand. Grids to
 <figcaption>An electric car holds about <strong>three to four times</strong> more copper than a combustion model, and grids and renewables need still more. Electrification installs a structural demand that the cycle alone no longer dictates. Sources: IEA, Copper Alliance.</figcaption>
 </figure>
 
+The economics of secondary metal deserve their own reading: our analysis of [European aluminium scrap and export restrictions](/en/analysis/eu-aluminium-scrap-export-restrictions-recycling/) examines alloy quality and the interests of collectors and remelters.
+
 One analyst's caveat, so as not to slip into the tale of the inevitable super-cycle. A high price calls forth responses: substitution of copper by aluminium in some uses, more recycling, efficiency. And a severe global recession would sink cyclical demand far faster than electrification supports it. The deficit is likely, it is not guaranteed, and shortage forecasts have often been wrong in the past.
 
 ## Reading the copper market in practice

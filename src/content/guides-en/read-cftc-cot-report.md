@@ -25,7 +25,7 @@ A market is included only if **20** or more traders hold positions above the CFT
 
 COT follows a strict rhythm. Positions are recorded as of Tuesday evening. Reporting firms send them to the CFTC on Wednesday morning. The CFTC checks and publishes them on Friday at **3:30 p.m.** New York time. There is therefore a **three-day** lag between the snapshot and publication. The CFTC publishes no intra-week update.
 
-That lag has a direct consequence: in a fast market, real positioning may already have changed when the report comes out. COT is a background-reading tool, suited to swing and position horizons, never an intraday trigger. Confusing it with real-time data is the first mistake.
+That lag has a direct consequence: in a fast market, real positioning may already have changed when the report comes out. COT is a background-reading tool, suited to swing and position horizons, never an intraday trigger. Confusing it with real-time data is the first mistake. Our [dated yen-positioning case study](/en/analysis/yen-163412-net-short-contracts-before-shock/) shows why the observation date must be separated from the publication date.
 
 ## The four reports, and which one to read
 
@@ -39,7 +39,7 @@ The practical rule is simple. For a commodity, read the Disaggregated report and
 
 ## The categories that carry signal
 
-In the Disaggregated report, there are four main boxes. Producers, merchants, processors and users are physical actors—miners, refiners, merchants—who hedge. Swap dealers are banks facilitating client trades, often for hedging on behalf of others. Managed Money covers hedge funds, commodity trading advisors and third-party managers. Other Reportables gathers other large participants, such as some pension funds or corporate treasuries.
+In the Disaggregated report, there are four main boxes. Producers, merchants, processors and users are physical actors (miners, refiners, merchants) who hedge. Swap dealers are banks facilitating client trades, often for hedging on behalf of others. Managed Money covers hedge funds, commodity trading advisors and third-party managers. Other Reportables gathers other large participants, such as some pension funds or corporate treasuries.
 
 In TFF, the same logic applies to financial markets. Dealers and intermediaries are market makers, usually banks. Asset managers and institutional investors cover pension funds, insurers and mutual funds. Leveraged Funds are hedge funds and leveraged managers. Other Reportables are the rest of the large-reporting universe. If you want to follow directional speculative money, Leveraged Funds are the bucket.
 
@@ -51,7 +51,7 @@ That nuance matters. An industrial company classified as commercial can also tak
 
 ## Reading a positioning extreme
 
-The most common analytical use is to watch extremes. The idea is that hedgers, or commercials, tend to lean against the move when the market drifts far from fundamental value, while speculative money—Managed Money or Leveraged Funds—crowds into trends until saturation. A speculative net position at a historical extreme is then read as a crowded market, vulnerable to reversal once buyers or sellers are exhausted.
+The most common analytical use is to watch extremes. The idea is that hedgers, or commercials, tend to lean against the move when the market drifts far from fundamental value, while speculative money (Managed Money or Leveraged Funds) crowds into trends until saturation. A speculative net position at a historical extreme is then read as a crowded market, vulnerable to reversal once buyers or sellers are exhausted.
 
 This framework has real contextual value, but it is not a timing signal. An extreme can stay extreme and become even more extreme before it unwinds. Serious reading looks not at the raw level alone but at the weekly change and at the position within a long historical range, through percentiles or z-scores. COT locates pressure. It does not give the hour of reversal. It is a positioning compass, not a stopwatch.
 

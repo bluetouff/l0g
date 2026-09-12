@@ -59,6 +59,23 @@ for (const experiment of titleExperiments.experiments) {
   assert(entry, `Contenu du test SEO absent: ${experiment.content_id}`);
   assert.equal(entry.data.seoTitle, experiment.seo_title, `Title gelé modifié avant décision: ${experiment.id}`);
 }
+for (const page of titleExperiments.measurement_followup.pages) {
+  if (page.decision !== 'maintenir_en_attente_de_mesure') continue;
+  let currentTitle;
+  if (page.route === '/en/start/') {
+    const source = readFileSync(new URL('../src/pages/en/start/index.astro', import.meta.url), 'utf8');
+    currentTitle = source.match(/\bseoTitle="([^"]+)"/)?.[1];
+  } else {
+    const match = page.route.match(/^\/en\/(analysis|guides)\/([^/]+)\/$/);
+    assert(match, `Route du suivi SEO non reconnue: ${page.route}`);
+    const contentId = `${match[1] === 'analysis' ? 'posts-en' : 'guides-en'}/${match[2]}`;
+    const entry = entries.find(({ id }) => id === contentId);
+    assert(entry, `Contenu du suivi SEO absent: ${contentId}`);
+    currentTitle = buildSeoMetadata(entry.data.title, entry.data.description, { seoTitle: entry.data.seoTitle }).fullTitle;
+  }
+  assert(page.observed_title, `Title de référence absent du suivi: ${page.id}`);
+  assert.equal(currentTitle, page.observed_title, `Title suivi modifié avant décision: ${page.id}`);
+}
 assert.equal(
   buildSeoMetadata('H1 éditorial', 'Description', { seoTitle: 'Titre SEO exact | l0g' }).fullTitle,
   'Titre SEO exact | l0g',

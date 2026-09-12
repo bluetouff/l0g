@@ -70,11 +70,15 @@ The link with copper runs through geography. According to the [USGS](https://pub
   <text x="42" y="302" fill="#8b909b" font-family="monospace" font-size="11">Reading: Hormuz acts on inputs and logistics; El Nino acts on mining operational risk.</text>
 </svg>
 
+The agricultural transmission differs from the mining channel: [wheat between Hormuz and the Bosphorus](/en/analysis/wheat-between-hormuz-and-the-bosphorus/) distinguishes risks to cargoes from risks to fertiliser and future harvests.
+
 ## Rigid demand, limited substitution
 
 On the demand side, copper remains hard to replace in power grids, transformers, motors, data centres, vehicles and construction. The [IEA](https://www.iea.org/reports/global-critical-minerals-outlook-2025) already places it at the heart of the energy transition and electrical infrastructure. The [WSJ](https://www.wsj.com/finance/commodities-futures/copper-price-forecast-to-rise-as-supply-cushion-dwindles-c6f8c815) noted in late 2025 that electrification, renewables, electric vehicles and data centres were supporting the price even as mining accidents reduced the supply cushion. The [WSJ of 26 June](https://www.wsj.com/business/basic-materials-roundup-market-talk-3bf465ef) also reports that Maybank raised its long-term copper assumption to **$9,260 a tonne**, a sign that high prices are no longer treated as a mere spike.
 
 One must nonetheless stay cool. The ICSG does not yet show a world refined deficit over the first four months of 2026. End-of-period refined copper stocks rise to **2.108 million tonnes** in April, against **1.373 million** a year earlier. The real stress is therefore less in the instantaneous accounting balance than in the stacking of fragilities: falling mine output, more expensive acid, Hormuz freight, El Niño risk, rigid electrical demand.
+
+For a separate case on recycling and substitution, our [European aluminium scrap analysis](/en/analysis/eu-aluminium-scrap-export-restrictions-recycling/) examines how the quality and destination of secondary metal affect its availability to industry.
 
 ## The working scenario
 
