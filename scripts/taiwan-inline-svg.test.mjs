@@ -20,10 +20,22 @@ import './copper-stock-infographics.test.mjs';
 import './trump-dividend-infographics.test.mjs';
 import './tariff-refund-infographics.test.mjs';
 import './sulfur-infographics.test.mjs';
+import './tungsten-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/tungstene-stocks-tresorerie-kennametal/index.html',
+    'dist/en/analysis/tungsten-inventory-cash-flow-kennametal/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="tungsten-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/soufre-crise-golfe-engrais-nickel/index.html',
     'dist/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/index.html',

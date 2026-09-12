@@ -203,6 +203,18 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'lifo',
+    sigle: 'LIFO',
+    nom: 'Last in, first out',
+    def: "An inventory accounting method that assigns the costs of the most recent purchases to cost of sales first. It describes a cost-flow assumption, without dictating the physical order in which goods leave a warehouse. A valuation difference between methods is not a cash reserve.",
+    guide: '/en/analysis/tungsten-inventory-cash-flow-kennametal/',
+    sectionTitle: 'Private credit & markets',
+    accent: 'var(--color-accent)',
+    atlas: {
+      sources: [{ label: 'Kennametal, 2026 10-K', href: 'https://www.sec.gov/Archives/edgar/data/55242/000162828026056143/kmt-20260630.htm', detail: 'Notes 2 and 7: accounting policies and the reconciliation from current cost to carrying value.', kind: 'source' }],
+    },
+  },
+  {
     slug: 'hpal',
     sigle: 'HPAL',
     nom: 'High Pressure Acid Leaching',
