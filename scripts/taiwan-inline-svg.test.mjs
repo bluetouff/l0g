@@ -18,10 +18,22 @@ import './business-aid-infographics.test.mjs';
 import './ghana-gold-infographics.test.mjs';
 import './copper-stock-infographics.test.mjs';
 import './trump-dividend-infographics.test.mjs';
+import './tariff-refund-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/droits-douane-milliards-rembourses-consommateurs/index.html',
+    'dist/en/analysis/tariff-refunds-who-keeps-the-money/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="refunds-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/trump-5000-dollars-dividende-promesse-dette/index.html',
     'dist/en/analysis/trump-5000-election-dividend-no-surplus/index.html',

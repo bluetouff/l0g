@@ -521,7 +521,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'OFAC', nom: 'Office of Foreign Assets Control', def: "Bureau du Trésor américain chargé d'appliquer les sanctions économiques (gel d'avoirs, listes noires).", guide: '/guides/ofac-sdn-list/' },
       { sigle: 'SDN List', nom: 'Specially Designated Nationals and Blocked Persons List', def: "Liste de l'OFAC recensant les personnes et entités avec lesquelles tout ressortissant américain a interdiction de traiter, et dont les avoirs sous juridiction américaine sont gelés.", guide: '/guides/ofac-sdn-list/' },
       { sigle: 'Sanctions secondaires', nom: 'Pression américaine sur une personne étrangère', def: "Mesures qui placent une personne ou une banque non américaine devant un choix : cesser certaines opérations avec une cible sanctionnée ou perdre un accès important aux États-Unis, notamment aux comptes correspondants en dollars. Elles ne créent pas une interdiction universelle ; elles utilisent l'accès au marché et au système financier américains comme moyen de contrainte.", guide: '/posts/iran-jusqu-ou-bessent-peut-fermer-le-dollar/' },
-      { sigle: 'IEEPA', nom: 'International Emergency Economic Powers Act', def: "Loi américaine de 1977 servant de base juridique à de nombreuses sanctions. En 2024-2025, les tribunaux ont jugé qu'elle ne permet pas de sanctionner des contrats intelligents immuables (affaire Tornado Cash)." },
+      { sigle: 'IEEPA', nom: 'International Emergency Economic Powers Act', def: "Loi américaine de 1977 accordant au président des pouvoirs économiques d’urgence face à certaines menaces d’origine étrangère. Elle sert notamment de base à des sanctions et à des restrictions sur les transactions. Le 20 février 2026, la Cour suprême a jugé qu’elle n’autorise pas le président à imposer des droits de douane. Cette décision porte sur l’IEEPA, pas sur toutes les autres bases légales des tarifs américains." },
       { sigle: 'Contrôle export', nom: 'Export control', def: "Restriction administrative imposée à l'exportation de biens, logiciels ou technologies sensibles. Dans les semi-conducteurs, il vise notamment les puces de calcul avancé, les équipements de fabrication, les logiciels de conception et certains usages militaires ou de supercalcul." },
       { sigle: '13F', nom: 'Formulaire 13F', def: "Déclaration trimestrielle imposée par la SEC aux gérants institutionnels exerçant un pouvoir de décision sur plus de 100 millions de dollars de titres américains éligibles. Liste leurs positions longues, avec jusqu'à 45 jours de retard.", guide: '/guides/analyser-13f-sec/' },
       { sigle: 'Form 4', nom: 'Statement of Changes in Beneficial Ownership', def: "Déclaration SEC des transactions d'initiés (dirigeants, administrateurs, actionnaires à plus de 10 %), à déposer dans les deux jours ouvrés. Donnée directionnelle et bien plus fraîche que le 13F.", guide: '/guides/analyser-form-4-sec/' },
@@ -585,7 +585,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-11';
+export const glossaryUpdatedIso = '2026-09-12';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -828,6 +828,10 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'ieepa': {
+    intuition: 'Le pouvoir d’urgence économique reste limité par l’autorité que le Congrès a effectivement accordée.',
+    sources: [{ label: 'Cour suprême, Learning Resources v. Trump', href: 'https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf', detail: 'Arrêt du 20 février 2026 : l’IEEPA n’autorise pas les droits de douane présidentiels.', kind: 'source' }],
+  },
   'warrant-d-entrepot': {
     intuition: 'La propriété du cuivre peut changer avant que le métal quitte son entrepôt.',
     sources: [{ label: 'CME, livraison des métaux de base', href: 'https://www.cmegroup.com/education/courses/introduction-to-base-metals/what-is-the-base-metals-delivery-process', detail: 'Titre électronique, transfert et options du détenteur après livraison.', kind: 'source' }],

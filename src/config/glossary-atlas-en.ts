@@ -203,6 +203,17 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'ieepa',
+    sigle: 'IEEPA',
+    nom: 'International Emergency Economic Powers Act',
+    def: 'A 1977 US law granting the president emergency economic powers in response to certain foreign-origin threats. It provides authority for sanctions and transaction restrictions. On February 20, 2026, the Supreme Court held that IEEPA does not authorize the president to impose tariffs. The ruling concerns IEEPA, not every other statutory basis for US tariffs.',
+    ...macroSection,
+    atlas: {
+      intuition: 'Emergency economic powers remain limited by the authority Congress has actually granted.',
+      sources: [{ label: 'Supreme Court, Learning Resources v. Trump', href: 'https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf', detail: 'February 20, 2026 holding on presidential tariff authority under IEEPA.', kind: 'source' }],
+    },
+  },
+  {
     slug: 'incidence-fiscale',
     sigle: 'Tax incidence',
     nom: 'The economic distribution of a tax burden',
