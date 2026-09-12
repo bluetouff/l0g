@@ -257,6 +257,10 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'LME metals', nom: 'London Metal Exchange', def: "Bourse londonienne des métaux industriels. Son contrat cuivre sert de référence mondiale pour le prix physique et financier du cuivre." },
       { sigle: 'ICSG', nom: 'International Copper Study Group', def: "Organisation intergouvernementale qui publie les statistiques mondiales de production, d'usage, de stocks et de prix du cuivre." },
       { sigle: 'SX-EW', nom: 'Solvent Extraction Electrowinning', def: "Procédé hydrométallurgique d'extraction du cuivre : le minerai est lixivié, souvent avec de l'acide sulfurique, puis le métal est récupéré par électrolyse." },
+      { sigle: 'HPAL', nom: 'High Pressure Acid Leaching', def: "Lixiviation acide sous haute pression : traitement de certains minerais oxydés de nickel à l’acide sulfurique, sous haute température et pression, pour récupérer les métaux en solution. Le traitement produit ensuite un intermédiaire à raffiner. La disponibilité de l’acide et les caractéristiques du minerai conditionnent le fonctionnement de l’installation.", guide: '/posts/soufre-crise-golfe-engrais-nickel/' },
+      { sigle: 'MHP', nom: 'Mixed Hydroxide Precipitate', def: "Précipité d’hydroxydes contenant notamment du nickel et du cobalt, obtenu dans certaines chaînes hydrométallurgiques. Cet intermédiaire peut être raffiné pour produire des matériaux destinés aux batteries. Son tonnage doit être distingué du poids de nickel contenu et de celui du nickel pur.", guide: '/posts/soufre-crise-golfe-engrais-nickel/' },
+      { sigle: 'CFR', nom: 'Cost and Freight', def: "Incoterm maritime dans lequel le vendeur paie le transport jusqu’au port de destination désigné. Le risque est transféré à l’acheteur lors de la mise à bord au port d’expédition. Le vendeur n’a pas d’obligation d’assurance au titre du CFR. Un prix CFR ne couvre pas automatiquement les coûts d’acheminement jusqu’à l’usine.", guide: '/posts/soufre-crise-golfe-engrais-nickel/' },
+      { sigle: 'C1', nom: 'Cash cost C1', def: "Indicateur de coût opérationnel utilisé dans l’industrie minière, généralement exprimé par unité de métal et net de crédits de coproduits. Il faut vérifier la définition publiée, les postes inclus et le dénominateur. Chez Kamoa-Kakula, le C1 est une mesure non IFRS par livre de cuivre payable produite ; il ne représente pas le coût complet de l’investissement.", guide: '/posts/soufre-crise-golfe-engrais-nickel/' },
       { sigle: 'LBMA', nom: 'London Bullion Market Association', def: "Association qui coordonne le marché de gré à gré de l'or et de l'argent à Londres, cœur du marché physique mondial (livraison « loco London »). Le LBMA Gold Price, fixé deux fois par jour par enchère électronique administrée par ICE, est la référence mondiale du cours de l'or.", guide: '/guides/lire-le-marche-de-l-or/' },
       { sigle: 'Comex', nom: 'Commodity Exchange (New York)', def: "Bourse à terme new-yorkaise où se traitent les contrats sur l'or et les métaux. N'ancre pas le physique mais l'amplifie : ses positions à effet de levier dépassent de loin l'or livrable, et son prix transmet les anticipations.", guide: '/guides/lire-le-marche-de-l-or/' },
       { sigle: 'London Metal Exchange', nom: 'LME (métaux)', def: "Bourse des métaux de base de Londres, référence mondiale du prix du cuivre, de l'aluminium et des autres métaux industriels. Elle cote un prix comptant et un prix à trois mois, et gère un réseau d'entrepôts dont les stocks servent de baromètre de tension physique. À ne pas confondre avec l'autre sigle LME, la gestion de passif.", guide: '/guides/lire-le-marche-du-cuivre/' },
@@ -828,6 +832,24 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  hpal: {
+    intuition: 'La disponibilité du minerai et celle du réactif conditionnent ensemble la production.',
+    sources: [{ label: 'Sumitomo Metal Mining, HPAL', href: 'https://www.smm.co.jp/en/glossary/', detail: 'Lixiviation des minerais oxydés à l’acide sulfurique sous haute pression et température.', kind: 'source' }],
+    related: ['mhp'],
+  },
+  mhp: {
+    intuition: 'Une tonne de produit intermédiaire contient plusieurs composants ; elle ne vaut pas une tonne de nickel pur.',
+    sources: [{ label: 'Halmahera Persada Lygend, produits', href: 'https://hpalnickel.com/about/komoditi', detail: 'MHP comme produit intermédiaire de la voie HPAL, en amont des sulfates de nickel et de cobalt.', kind: 'source' }],
+    related: ['hpal'],
+  },
+  cfr: {
+    intuition: 'Le vendeur paie le fret jusqu’au port convenu, tandis que le risque est transféré dès la mise à bord.',
+    sources: [{ label: 'ICC Academy, CFR et CIF', href: 'https://academy.iccwbo.org/incoterms/article/incoterms-2020-cfr-or-cif/', detail: 'Répartition du fret, des risques et de l’assurance dans les Incoterms 2020.', kind: 'source' }],
+  },
+  c1: {
+    intuition: 'Un crédit de coproduit peut réduire le coût publié ; son périmètre doit être lu avant toute comparaison.',
+    sources: [{ label: 'Ivanhoe Mines, résultats T2 2026', href: 'https://www.ivanhoemines.com/news-stories/news-release/ivanhoe-mines-issues-2026-second-quarter-financial-results-overview-of-operations-and-exploration-activities/', detail: 'Tableau C1 par livre de cuivre payable produite et définition de cette mesure non IFRS.', kind: 'source' }],
+  },
   'ieepa': {
     intuition: 'Le pouvoir d’urgence économique reste limité par l’autorité que le Congrès a effectivement accordée.',
     sources: [{ label: 'Cour suprême, Learning Resources v. Trump', href: 'https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf', detail: 'Arrêt du 20 février 2026 : l’IEEPA n’autorise pas les droits de douane présidentiels.', kind: 'source' }],

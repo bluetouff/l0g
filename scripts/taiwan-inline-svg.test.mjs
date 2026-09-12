@@ -19,10 +19,22 @@ import './ghana-gold-infographics.test.mjs';
 import './copper-stock-infographics.test.mjs';
 import './trump-dividend-infographics.test.mjs';
 import './tariff-refund-infographics.test.mjs';
+import './sulfur-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/soufre-crise-golfe-engrais-nickel/index.html',
+    'dist/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="sulfur-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/droits-douane-milliards-rembourses-consommateurs/index.html',
     'dist/en/analysis/tariff-refunds-who-keeps-the-money/index.html',

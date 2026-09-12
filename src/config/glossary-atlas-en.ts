@@ -203,6 +203,56 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'hpal',
+    sigle: 'HPAL',
+    nom: 'High Pressure Acid Leaching',
+    def: "High-pressure acid leaching treats selected nickel oxide ores with sulfuric acid at high temperature and pressure to dissolve the metals. Further processing yields an intermediate for refining. Reagent supply and ore characteristics affect plant operation.",
+    guide: '/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/',
+    sectionTitle: 'Industry and commodities',
+    accent: 'var(--color-amber)',
+    atlas: {
+      sources: [{ label: "Sumitomo Metal Mining, HPAL", href: 'https://www.smm.co.jp/en/glossary/', kind: 'source' }],
+      related: ['mhp'],
+    },
+  },
+  {
+    slug: 'mhp',
+    sigle: 'MHP',
+    nom: 'Mixed Hydroxide Precipitate',
+    def: "A hydroxide precipitate containing nickel and cobalt, produced by selected hydrometallurgical routes. The intermediate can be refined into battery materials. Tonnes of MHP differ from tonnes of contained nickel and from tonnes of pure nickel.",
+    guide: '/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/',
+    sectionTitle: 'Industry and commodities',
+    accent: 'var(--color-amber)',
+    atlas: {
+      sources: [{ label: "Halmahera Persada Lygend, products", href: 'https://hpalnickel.com/about/komoditi', kind: 'source' }],
+      related: ['hpal'],
+    },
+  },
+  {
+    slug: 'cfr',
+    sigle: 'CFR',
+    nom: 'Cost and Freight',
+    def: "A maritime Incoterm under which the seller pays freight to the named destination port. Risk transfers to the buyer when the goods are placed on board at the port of shipment. CFR imposes no insurance obligation on the seller and does not automatically cover delivery to a plant.",
+    guide: '/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/',
+    sectionTitle: 'Industry and commodities',
+    accent: 'var(--color-amber)',
+    atlas: {
+      sources: [{ label: "ICC Academy, CFR and CIF", href: 'https://academy.iccwbo.org/incoterms/article/incoterms-2020-cfr-or-cif/', kind: 'source' }],
+    },
+  },
+  {
+    slug: 'c1',
+    sigle: 'C1',
+    nom: 'Cash cost C1',
+    def: "A mining-industry operating-cost measure, generally stated per unit of metal and net of by-product credits. Always check the reported definition, included costs and denominator. At Kamoa-Kakula it is a non-IFRS measure per payable pound of copper produced, distinct from the full cost of the investment.",
+    guide: '/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/',
+    sectionTitle: 'Industry and commodities',
+    accent: 'var(--color-amber)',
+    atlas: {
+      sources: [{ label: "Ivanhoe Mines, Q2 2026 results", href: 'https://www.ivanhoemines.com/news-stories/news-release/ivanhoe-mines-issues-2026-second-quarter-financial-results-overview-of-operations-and-exploration-activities/', kind: 'source' }],
+    },
+  },
+  {
     slug: 'ieepa',
     sigle: 'IEEPA',
     nom: 'International Emergency Economic Powers Act',
