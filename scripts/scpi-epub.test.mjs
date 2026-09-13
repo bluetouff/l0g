@@ -27,8 +27,10 @@ test('SCPI reader conversion expands boxes and matches exact internal origins', 
   const value = prepareReadingHtml('<details><summary>Exercice</summary><p>Réponse</p></details><h2>Titre</h2><a href="https://l0g.fr/posts/a/#source">interne</a><a href="https://l0g.fr.example.org/posts/a/">externe</a>', routes, 1);
   assert.doesNotMatch(value.html, /<details|<summary/u);
   assert.match(value.html, /class="reading-box-title"/u);
-  assert.match(value.html, /ch002.xhtml#source/u);
-  assert.match(value.html, /https:\/\/l0g.fr.example.org\/posts\/a\//u);
+  const hrefs = elements(fromHtml(value.html, { fragment: true }))
+    .filter((node) => node.tagName === 'a')
+    .map((node) => node.properties.href);
+  assert.deepEqual(hrefs, ['ch002.xhtml#source', 'https://l0g.fr.example.org/posts/a/']);
   assert.equal(value.headings[0].id, 'c1-titre');
 });
 
