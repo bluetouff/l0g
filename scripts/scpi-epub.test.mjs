@@ -20,6 +20,8 @@ test('SCPI editions reject unsupported languages before writing', async () => {
   await assert.rejects(generateScpiEpub('../outside'), /Unsupported/u);
   assert.notEqual(scpiEditions.fr.id, scpiEditions.en.id);
   assert.equal(scpiEditions.fr.title, 'La liquidité fantôme des SCPI');
+  const component = readFileSync(join(ROOT, 'src/components/ScpiPublication.astro'), 'utf8');
+  assert.match(component, /\.download-action\s*\{[^}]*color:\s*var\(--color-ink\)/u);
 });
 
 test('SCPI reader conversion expands boxes and matches exact internal origins', () => {
