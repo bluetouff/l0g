@@ -194,7 +194,7 @@ For each vehicle, four disclosures would make the assessment more robust: the nu
 
 Another tempting shortcut should be avoided: dividing today’s backlog by last month’s trading volume to announce an exit date. That assumes, among other things, that buying demand, prices and execution priority remain consistent with the projection. In an order-matching market, each seller’s price matters. A quotient is not a commitment to execute an order.
 
-**A new register changes what the indicator measures.** Assessing exit opportunities requires following completed sales and the cash returned to holders. The 31% decline leaves that question open; it cannot establish widespread insolvency either. The next instalment will examine the prices at which units actually find buyers.
+**A new register changes what the indicator measures.** Assessing exit opportunities requires following completed sales and the cash returned to holders. The 31% decline leaves that question open; it cannot establish widespread insolvency either. The [second instalment examines the prices at which units actually find buyers](/en/analysis/french-scpi-resale-prices-liquidity-discounts/).
 
 For further reading, our analysis of [semi-liquid private-credit funds and redemption gates](/en/analysis/semi-liquid-private-credit-gating/) examines other exit arrangements. Those funds have different contracts and regulatory rules from SCPI vehicles.
 

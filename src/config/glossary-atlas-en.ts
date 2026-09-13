@@ -203,6 +203,18 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'valeur-de-realisation', sigle: 'Realisation value', nom: 'Appraisal-based net assets of a French SCPI',
+    def: "The estimated market value of a SCPI’s properties plus its other assets, net of liabilities. It is a dated valuation reference, not a standing offer to buy investors’ units or a guarantee of a quick exit.",
+    guide: '/en/analysis/french-scpi-resale-prices-liquidity-discounts/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: { sources: [{ label: 'HSBC REIM, Élysées Pierre offering document', href: 'https://www.reim.hsbc.fr/-/media/files/attachments/reim/bibliotheque-de-documents/ep-documentation-reglementaire/note-information-elysees-pierre', detail: 'Page 9: definitions of realisation and reconstitution values. French-language source.', kind: 'source' }], related: ['scpi', 'valeur-de-reconstitution'] },
+  },
+  {
+    slug: 'valeur-de-reconstitution', sigle: 'Reconstitution value', nom: 'Theoretical cost of rebuilding a French SCPI portfolio',
+    def: "Realisation value plus the costs of recreating the SCPI’s portfolio, including acquisition costs and the subscription commission. It provides a reference for issuing new units; it is not a floor under resale prices for existing units.",
+    guide: '/en/analysis/french-scpi-resale-prices-liquidity-discounts/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: { sources: [{ label: 'HSBC REIM, Élysées Pierre offering document', href: 'https://www.reim.hsbc.fr/-/media/files/attachments/reim/bibliotheque-de-documents/ep-documentation-reglementaire/note-information-elysees-pierre', detail: 'Page 9: reconstitution costs and subscription pricing. French-language source.', kind: 'source' }], related: ['scpi', 'valeur-de-realisation'] },
+  },
+  {
     slug: 'scpi',
     sigle: 'SCPI',
     nom: 'French unlisted property investment vehicle',
@@ -211,6 +223,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     sectionTitle: 'Private credit & markets',
     accent: 'var(--color-accent)',
     atlas: {
+      articles: [{ label: 'French SCPI funds: the price of getting out', href: '/en/analysis/french-scpi-resale-prices-liquidity-discounts/', detail: 'Executed prices, fees, volumes and valuation references.', kind: 'article' }],
+      related: ['valeur-de-realisation', 'valeur-de-reconstitution'],
       sources: [
         { label: 'AMF, investing in an SCPI', href: 'https://www.amf-france.org/fr/espace-epargnants/comprendre-les-produits-financiers/placements-collectifs/scpi-un-autre-moyen-dinvestir-dans-limmobilier', detail: 'Unlisted property investment and liquidity risk. French-language source.', kind: 'source' },
         { label: 'AMF, redemptions and sell orders', href: 'https://www.amf-france.org/fr/le-mediateur/journal-de-bord-du-mediateur/dossiers-du-mois/scpi-contrairement-aux-ordres-de-vente-des-parts-les-demandes-de-retrait-sont-sans-duree-de-validite', detail: 'Direct holdings, request lifetimes and suspending variable capital. French-language source.', kind: 'source' },

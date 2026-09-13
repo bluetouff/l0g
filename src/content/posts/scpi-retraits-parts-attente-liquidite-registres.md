@@ -196,7 +196,7 @@ Pour chaque véhicule, quatre informations rendraient le diagnostic beaucoup plu
 
 Il faudrait aussi éviter une fausse précision très tentante : diviser le stock actuel par le nombre de parts vendues le mois dernier pour annoncer une date de sortie. Ce calcul suppose notamment que le rythme des achats, les prix et l’ordre de traitement restent compatibles avec cette projection. Sur un marché par confrontation, le prix demandé par chaque vendeur compte. Un quotient n’est pas un engagement d’exécution.
 
-**Le passage à un nouveau registre change ce que l’on mesure.** Pour apprécier les possibilités de sortie, il faut suivre les ventes réalisées et l’argent revenu aux détenteurs. La baisse de 31 % laisse cette question ouverte ; elle ne permet pas davantage de conclure à une insolvabilité générale. Le prochain volet examinera les prix auxquels les parts trouvent effectivement preneur.
+**Le passage à un nouveau registre change ce que l’on mesure.** Pour apprécier les possibilités de sortie, il faut suivre les ventes réalisées et l’argent revenu aux détenteurs. La baisse de 31 % laisse cette question ouverte ; elle ne permet pas davantage de conclure à une insolvabilité générale. Le [deuxième volet examine les prix auxquels les parts trouvent effectivement preneur](/posts/scpi-prix-revente-decote-marche-secondaire/).
 
 Pour prolonger la lecture : notre analyse des [fonds de crédit privé semi-liquides et des limites aux rachats](/posts/private-credit-semi-liquide-gating-hlend-2026/) aborde d’autres règles de sortie. Leurs contrats et leur cadre réglementaire restent distincts de ceux des SCPI.
 

@@ -22,10 +22,22 @@ import './tariff-refund-infographics.test.mjs';
 import './sulfur-infographics.test.mjs';
 import './tungsten-infographics.test.mjs';
 import './scpi-exit-infographics.test.mjs';
+import './scpi-resale-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/scpi-prix-revente-decote-marche-secondaire/index.html',
+    'dist/en/analysis/french-scpi-resale-prices-liquidity-discounts/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="scpi2-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/scpi-retraits-parts-attente-liquidite-registres/index.html',
     'dist/en/analysis/french-scpi-exit-queues-liquidity-register-reset/index.html',

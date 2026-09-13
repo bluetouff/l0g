@@ -214,6 +214,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     accent: 'var(--color-accent)',
     entries: [
       { sigle: 'SCPI', nom: 'Société civile de placement immobilier', def: "Placement collectif non coté permettant de détenir des parts d’un patrimoine immobilier locatif géré par une société de gestion. Les revenus, le capital et la possibilité de revendre rapidement ne sont pas garantis. Pour les parts détenues en direct, les conditions de sortie dépendent notamment du fonctionnement à capital variable ou du marché secondaire organisé.", guide: '/posts/scpi-retraits-parts-attente-liquidite-registres/' },
+      { sigle: 'Valeur de réalisation', nom: 'Actif net estimé d’une SCPI', def: "Somme de la valeur vénale estimée des immeubles et de la valeur nette des autres actifs de la SCPI, après prise en compte du passif. Elle fournit une référence patrimoniale à une date donnée. Elle ne garantit ni un prix de revente ni un délai de sortie pour les parts.", guide: '/posts/scpi-prix-revente-decote-marche-secondaire/' },
+      { sigle: 'Valeur de reconstitution', nom: 'Coût théorique de reconstitution d’une SCPI', def: "Valeur de réalisation augmentée des frais nécessaires pour reconstituer le patrimoine de la SCPI, notamment les frais d’acquisition et la commission de souscription. Elle sert de référence au prix de souscription. Elle ne constitue pas un plancher pour les transactions sur les parts existantes.", guide: '/posts/scpi-prix-revente-decote-marche-secondaire/' },
       { sigle: 'LIFO', nom: 'Dernier entré, premier sorti', def: "Méthode de valorisation des stocks qui affecte en priorité les coûts des achats les plus récents au coût des ventes. Elle décrit un ordre comptable, sans imposer l’ordre physique des sorties d’entrepôt. L’écart avec une autre méthode de valorisation ne constitue pas une réserve de trésorerie.", guide: '/posts/tungstene-stocks-tresorerie-kennametal/' },
       { sigle: 'BFR', nom: 'Besoin en fonds de roulement', def: "Trésorerie immobilisée par le cycle d'exploitation : stocks et créances clients, diminués des dettes fournisseurs et autres ressources d'exploitation. Une activité rentable peut manquer de liquidités si elle paie ses achats longtemps avant d'encaisser ses ventes.", guide: '/posts/cacao-ghana-financement-tresorerie/' },
       { sigle: 'Arriérés de paiement', nom: 'Obligations échues et impayées', def: "Sommes dues dont la date de paiement applicable est dépassée. Pour une commande publique, il faut distinguer la livraison, la validation de la facture, son échéance et son règlement. Une créance en attente de validation ne peut pas être assimilée automatiquement à un arriéré reconnu.", guide: '/posts/senegal-arrieres-etat-entreprises-creancieres/' },
@@ -836,10 +838,20 @@ const treasuryRelated = [
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   scpi: {
     intuition: 'Le versement de revenus et la possibilité de revendre ses parts sont deux dimensions distinctes du placement.',
+    articles: [{ label: 'SCPI : le prix de la sortie', href: '/posts/scpi-prix-revente-decote-marche-secondaire/', detail: 'Prix exécutés, frais, volumes et références patrimoniales.', kind: 'article' }],
+    related: ['valeur-de-realisation', 'valeur-de-reconstitution'],
     sources: [
       { label: 'AMF, investir dans une SCPI', href: 'https://www.amf-france.org/fr/espace-epargnants/comprendre-les-produits-financiers/placements-collectifs/scpi-un-autre-moyen-dinvestir-dans-limmobilier', detail: 'Placement immobilier non coté et risque de liquidité.', kind: 'source' },
       { label: 'AMF, retrait et ordre de vente', href: 'https://www.amf-france.org/fr/le-mediateur/journal-de-bord-du-mediateur/dossiers-du-mois/scpi-contrairement-aux-ordres-de-vente-des-parts-les-demandes-de-retrait-sont-sans-duree-de-validite', detail: 'Détention directe, durée des demandes et suspension de la variabilité du capital.', kind: 'source' },
     ],
+  },
+  'valeur-de-realisation': {
+    sources: [{ label: 'HSBC REIM, note Élysées Pierre', href: 'https://www.reim.hsbc.fr/-/media/files/attachments/reim/bibliotheque-de-documents/ep-documentation-reglementaire/note-information-elysees-pierre', detail: 'Page 9 : définitions des valeurs de réalisation et de reconstitution.', kind: 'source' }],
+    related: ['scpi', 'valeur-de-reconstitution'],
+  },
+  'valeur-de-reconstitution': {
+    sources: [{ label: 'HSBC REIM, note Élysées Pierre', href: 'https://www.reim.hsbc.fr/-/media/files/attachments/reim/bibliotheque-de-documents/ep-documentation-reglementaire/note-information-elysees-pierre', detail: 'Page 9 : frais de reconstitution et lien avec le prix de souscription.', kind: 'source' }],
+    related: ['scpi', 'valeur-de-realisation'],
   },
   lifo: {
     intuition: 'Le coût enregistré dans le résultat et le paiement d’un stock de remplacement suivent des calendriers différents.',
