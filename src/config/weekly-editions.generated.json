@@ -1589,5 +1589,382 @@
       "windowStart": "2026-08-30T08:30:00+02:00",
       "windowEnd": "2026-09-06T08:30:00+02:00"
     }
+  },
+  {
+    "issue": 7,
+    "slug": "2026-09-13",
+    "publishedAt": "2026-09-13T08:30:00+02:00",
+    "title": "L’Hebdo du 13 septembre. Tungstène : le coût financier de la bataille des stocks",
+    "description": "Édition automatisée du 13 septembre : 24 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Tungstène : le coût financier de la bataille des stocks",
+      "href": "/posts/tungstene-stocks-tresorerie-kennametal/",
+      "update": "Le tungstène gonfle les marges de Kennametal et son besoin de financement. Stocks, avances fournisseurs et crédit : enquête dans les comptes."
+    },
+    "lead": "Sur l’exercice clos le 30 juin 2026, Kennametal déclare 342,4 M$ de résultat net attribuable mais −4,0 M$ de flux de trésorerie d’exploitation.",
+    "number": {
+      "value": "24",
+      "label": "analyses publiées du 6 septembre à 08 h 30 au 13 septembre à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "Le coût des stocks et les avances aux fournisseurs absorbent des ressources avant l’encaissement des ventes ; une marge plus élevée ne garantit pas davantage de cash.",
+    "test": "Les volumes physiques détaillés ne sont pas publiés. Le décalage prix-coûts est estimé par la direction et les tirages bancaires postérieurs aux données publiées ne sont pas reconstitués.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "24 analyses publiées en sept jours",
+      "subtitle": "du 6 septembre à 08 h 30 au 13 septembre à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-09-13",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "LA SEMAINE EN CHIFFRES",
+      "points": [
+        {
+          "label": "dim 06/09",
+          "shortLabel": "dim 06/09",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-09-06",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 07/09",
+          "shortLabel": "lun 07/09",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-09-07",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 08/09",
+          "shortLabel": "mar 08/09",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-09-08",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 09/09",
+          "shortLabel": "mer 09/09",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-09-09",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 10/09",
+          "shortLabel": "jeu 10/09",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-09-10",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 11/09",
+          "shortLabel": "ven 11/09",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-09-11",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 12/09",
+          "shortLabel": "sam 12/09",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-09-12",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 13/09",
+          "shortLabel": "dim 13/09",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-09-13",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Sur l’exercice clos le 30 juin 2026, Kennametal déclare 342,4 M$ de résultat net attribuable mais −4,0 M$ de flux de trésorerie d’exploitation.",
+    "linkedin": "24 analyses publiées sur l0g du 6 septembre à 08 h 30 au 13 septembre à 08 h 30.\n\nFocus structuré : Tungstène : le coût financier de la bataille des stocks.\n\nSur l’exercice clos le 30 juin 2026, Kennametal déclare 342,4 M$ de résultat net attribuable mais −4,0 M$ de flux de trésorerie d’exploitation.\n\nPourquoi le lire : Le coût des stocks et les avances aux fournisseurs absorbent des ressources avant l’encaissement des ventes ; une marge plus élevée ne garantit pas davantage de cash.\n\nLimite à garder : Les volumes physiques détaillés ne sont pas publiés. Le décalage prix-coûts est estimé par la direction et les tirages bancaires postérieurs aux données publiées ne sont pas reconstitués.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-09-13/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 13 septembre compte 24 analyses publiées. Focus : Tungstène : le coût financier de la bataille des stocks.",
+      "2/5 Sur l’exercice clos le 30 juin 2026, Kennametal déclare 342,4 M$ de résultat net attribuable mais −4,0 M$ de flux de trésorerie d’exploitation.",
+      "3/5 Pourquoi le lire : Le coût des stocks et les avances aux fournisseurs absorbent des ressources avant l’encaissement des ventes ; une marge plus élevée ne garantit pas davantage de cash.",
+      "4/5 Limite : Les volumes physiques détaillés ne sont pas publiés. Le décalage prix-coûts est estimé par la direction et les tirages bancaires postérieurs aux données publiées ne sont pas reconstitués.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-09-13/"
+    ],
+    "sources": [
+      {
+        "label": "Tungstène : le coût financier de la bataille des stocks",
+        "href": "/posts/tungstene-stocks-tresorerie-kennametal/",
+        "role": "Analyse publiée le 12 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Soufre : les engrais et le nickel pris dans la crise du Golfe",
+        "href": "/posts/soufre-crise-golfe-engrais-nickel/",
+        "role": "Analyse publiée le 12 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Droits de douane : qui garde les milliards remboursés ?",
+        "href": "/posts/droits-douane-milliards-rembourses-consommateurs/",
+        "role": "Analyse publiée le 12 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Trump promet 5 000 dollars : qui paierait la facture ?",
+        "href": "/posts/trump-5000-dollars-dividende-promesse-dette/",
+        "role": "Analyse publiée le 11 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cuivre : la facture du stockage américain",
+        "href": "/posts/cuivre-stocks-americains-cout-attente-douaniere/",
+        "role": "Analyse publiée le 10 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Ghana : combien coûte l’or qui soutient le cedi ?",
+        "href": "/posts/ghana-or-cedi-goldbod-cout-devises/",
+        "role": "Analyse publiée le 10 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Aides aux entreprises : le chiffre trompeur des 211 milliards",
+        "href": "/posts/aides-entreprises-211-milliards-chiffre-trompeur/",
+        "role": "Analyse publiée le 10 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Bessent face aux marchés : le yen et la dette américaine",
+        "href": "/posts/bessent-yen-dette-americaine-fima-rachats/",
+        "role": "Analyse publiée le 9 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Forêts tropicales : le pari obligataire à 125 milliards du Brésil",
+        "href": "/posts/tfff-forets-bresil-fonds-obligations-risques/",
+        "role": "Analyse publiée le 9 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "OpenAI : la note de crédit qui pourrait libérer Nvidia",
+        "href": "/posts/openai-note-credit-garantie-nvidia-ipo/",
+        "role": "Analyse publiée le 9 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Sénégal : les entreprises devenues créancières forcées de l’État",
+        "href": "/posts/senegal-arrieres-etat-entreprises-creancieres/",
+        "role": "Analyse publiée le 8 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Pétrole : une crise de crédit peut-elle bloquer les livraisons ?",
+        "href": "/posts/les-banquiers-du-baril-8-credit-livraisons-petrole/",
+        "role": "Analyse publiée le 8 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Trafigura–Petrobras : la corruption dans les contrats pétroliers",
+        "href": "/posts/les-banquiers-du-baril-7-trafigura-petrobras-corruption/",
+        "role": "Analyse publiée le 7 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Trafigura : le nickel fantôme",
+        "href": "/posts/les-banquiers-du-baril-6-trafigura-nickel-fantome/",
+        "role": "Analyse publiée le 7 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Vitol : raffineries, terminaux et stations au service du négoce",
+        "href": "/posts/les-banquiers-du-baril-5-vitol-raffineries-terminaux-engen/",
+        "role": "Analyse publiée le 7 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Trafigura : dans la fabrique du prix du fioul",
+        "href": "/posts/les-banquiers-du-baril-4-trafigura-platts-prix-fioul/",
+        "role": "Analyse publiée le 7 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Tchad–Glencore : le pétrole promis aux créanciers",
+        "href": "/posts/les-banquiers-du-baril-3-tchad-glencore-dette-petrole/",
+        "role": "Analyse publiée le 7 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Trafigura : les banques derrière le commerce du pétrole",
+        "href": "/posts/les-banquiers-du-baril-2-banques-financement-trafigura/",
+        "role": "Analyse publiée le 7 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Pétrole : qui paie la cargaison avant vous ?",
+        "href": "/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/",
+        "role": "Analyse publiée le 6 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Leasing auto : pourquoi une voiture moins chère peut coûter plus par mois",
+        "href": "/posts/leasing-auto-prix-revente-mensualite/",
+        "role": "Analyse publiée le 6 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Russie et Iran : la portée des concessions de Trump",
+        "href": "/posts/trump-sanctions-russie-iran-concessions/",
+        "role": "Analyse publiée le 6 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cacao au Ghana : qui finance l’attente des planteurs ?",
+        "href": "/posts/cacao-ghana-financement-tresorerie/",
+        "role": "Analyse publiée le 6 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Moteurs d’avion : qui gagne quand les avions restent au sol ?",
+        "href": "/posts/moteurs-avion-penurie-maintenance-location/",
+        "role": "Analyse publiée le 6 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Déchets d’aluminium : qui gagne quand l’Europe retient ses exportations ?",
+        "href": "/posts/dechets-aluminium-europe-exportations-recyclage/",
+        "role": "Analyse publiée le 6 septembre 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Tungstène : le coût financier de la bataille des stocks",
+        "href": "/posts/tungstene-stocks-tresorerie-kennametal/",
+        "publishedAt": "2026-09-12T20:30:00.000Z"
+      },
+      {
+        "title": "Soufre : les engrais et le nickel pris dans la crise du Golfe",
+        "href": "/posts/soufre-crise-golfe-engrais-nickel/",
+        "publishedAt": "2026-09-12T17:47:00.000Z"
+      },
+      {
+        "title": "Droits de douane : qui garde les milliards remboursés ?",
+        "href": "/posts/droits-douane-milliards-rembourses-consommateurs/",
+        "publishedAt": "2026-09-12T16:11:01.000Z"
+      },
+      {
+        "title": "Trump promet 5 000 dollars : qui paierait la facture ?",
+        "href": "/posts/trump-5000-dollars-dividende-promesse-dette/",
+        "publishedAt": "2026-09-11T06:43:13.000Z"
+      },
+      {
+        "title": "Cuivre : la facture du stockage américain",
+        "href": "/posts/cuivre-stocks-americains-cout-attente-douaniere/",
+        "publishedAt": "2026-09-10T17:56:00.000Z"
+      },
+      {
+        "title": "Ghana : combien coûte l’or qui soutient le cedi ?",
+        "href": "/posts/ghana-or-cedi-goldbod-cout-devises/",
+        "publishedAt": "2026-09-10T16:06:59.000Z"
+      },
+      {
+        "title": "Aides aux entreprises : le chiffre trompeur des 211 milliards",
+        "href": "/posts/aides-entreprises-211-milliards-chiffre-trompeur/",
+        "publishedAt": "2026-09-10T13:25:44.000Z"
+      },
+      {
+        "title": "Bessent face aux marchés : le yen et la dette américaine",
+        "href": "/posts/bessent-yen-dette-americaine-fima-rachats/",
+        "publishedAt": "2026-09-09T15:52:06.000Z"
+      },
+      {
+        "title": "Forêts tropicales : le pari obligataire à 125 milliards du Brésil",
+        "href": "/posts/tfff-forets-bresil-fonds-obligations-risques/",
+        "publishedAt": "2026-09-09T11:52:57.000Z"
+      },
+      {
+        "title": "OpenAI : la note de crédit qui pourrait libérer Nvidia",
+        "href": "/posts/openai-note-credit-garantie-nvidia-ipo/",
+        "publishedAt": "2026-09-09T08:16:02.000Z"
+      },
+      {
+        "title": "Sénégal : les entreprises devenues créancières forcées de l’État",
+        "href": "/posts/senegal-arrieres-etat-entreprises-creancieres/",
+        "publishedAt": "2026-09-08T19:29:38.000Z"
+      },
+      {
+        "title": "Pétrole : une crise de crédit peut-elle bloquer les livraisons ?",
+        "href": "/posts/les-banquiers-du-baril-8-credit-livraisons-petrole/",
+        "publishedAt": "2026-09-08T11:43:50.000Z"
+      },
+      {
+        "title": "Trafigura–Petrobras : la corruption dans les contrats pétroliers",
+        "href": "/posts/les-banquiers-du-baril-7-trafigura-petrobras-corruption/",
+        "publishedAt": "2026-09-07T21:59:00.000Z"
+      },
+      {
+        "title": "Trafigura : le nickel fantôme",
+        "href": "/posts/les-banquiers-du-baril-6-trafigura-nickel-fantome/",
+        "publishedAt": "2026-09-07T08:33:56.000Z"
+      },
+      {
+        "title": "Vitol : raffineries, terminaux et stations au service du négoce",
+        "href": "/posts/les-banquiers-du-baril-5-vitol-raffineries-terminaux-engen/",
+        "publishedAt": "2026-09-07T08:06:31.000Z"
+      },
+      {
+        "title": "Trafigura : dans la fabrique du prix du fioul",
+        "href": "/posts/les-banquiers-du-baril-4-trafigura-platts-prix-fioul/",
+        "publishedAt": "2026-09-07T01:01:50.000Z"
+      },
+      {
+        "title": "Tchad–Glencore : le pétrole promis aux créanciers",
+        "href": "/posts/les-banquiers-du-baril-3-tchad-glencore-dette-petrole/",
+        "publishedAt": "2026-09-07T00:26:07.000Z"
+      },
+      {
+        "title": "Trafigura : les banques derrière le commerce du pétrole",
+        "href": "/posts/les-banquiers-du-baril-2-banques-financement-trafigura/",
+        "publishedAt": "2026-09-06T22:39:11.000Z"
+      },
+      {
+        "title": "Pétrole : qui paie la cargaison avant vous ?",
+        "href": "/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/",
+        "publishedAt": "2026-09-06T21:19:45.000Z"
+      },
+      {
+        "title": "Leasing auto : pourquoi une voiture moins chère peut coûter plus par mois",
+        "href": "/posts/leasing-auto-prix-revente-mensualite/",
+        "publishedAt": "2026-09-06T18:22:35.000Z"
+      },
+      {
+        "title": "Russie et Iran : la portée des concessions de Trump",
+        "href": "/posts/trump-sanctions-russie-iran-concessions/",
+        "publishedAt": "2026-09-06T13:08:48.000Z"
+      },
+      {
+        "title": "Cacao au Ghana : qui finance l’attente des planteurs ?",
+        "href": "/posts/cacao-ghana-financement-tresorerie/",
+        "publishedAt": "2026-09-06T10:51:06.000Z"
+      },
+      {
+        "title": "Moteurs d’avion : qui gagne quand les avions restent au sol ?",
+        "href": "/posts/moteurs-avion-penurie-maintenance-location/",
+        "publishedAt": "2026-09-06T09:34:19.000Z"
+      },
+      {
+        "title": "Déchets d’aluminium : qui gagne quand l’Europe retient ses exportations ?",
+        "href": "/posts/dechets-aluminium-europe-exportations-recyclage/",
+        "publishedAt": "2026-09-06T06:43:54.000Z"
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-09-13T06:56:11.225Z",
+      "windowStart": "2026-09-06T08:30:00+02:00",
+      "windowEnd": "2026-09-13T08:30:00+02:00"
+    }
   }
 ]

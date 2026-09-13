@@ -203,6 +203,21 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'scpi',
+    sigle: 'SCPI',
+    nom: 'French unlisted property investment vehicle',
+    def: "A société civile de placement immobilier pools investors’ money in a managed portfolio of rental property. Its units are unlisted; income, capital and a quick resale are not guaranteed. For directly held units, exit conditions depend on the vehicle’s variable-capital arrangements or its organised secondary market.",
+    guide: '/en/analysis/french-scpi-exit-queues-liquidity-register-reset/',
+    sectionTitle: 'Private credit & markets',
+    accent: 'var(--color-accent)',
+    atlas: {
+      sources: [
+        { label: 'AMF, investing in an SCPI', href: 'https://www.amf-france.org/fr/espace-epargnants/comprendre-les-produits-financiers/placements-collectifs/scpi-un-autre-moyen-dinvestir-dans-limmobilier', detail: 'Unlisted property investment and liquidity risk. French-language source.', kind: 'source' },
+        { label: 'AMF, redemptions and sell orders', href: 'https://www.amf-france.org/fr/le-mediateur/journal-de-bord-du-mediateur/dossiers-du-mois/scpi-contrairement-aux-ordres-de-vente-des-parts-les-demandes-de-retrait-sont-sans-duree-de-validite', detail: 'Direct holdings, request lifetimes and suspending variable capital. French-language source.', kind: 'source' },
+      ],
+    },
+  },
+  {
     slug: 'lifo',
     sigle: 'LIFO',
     nom: 'Last in, first out',

@@ -21,10 +21,22 @@ import './trump-dividend-infographics.test.mjs';
 import './tariff-refund-infographics.test.mjs';
 import './sulfur-infographics.test.mjs';
 import './tungsten-infographics.test.mjs';
+import './scpi-exit-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/scpi-retraits-parts-attente-liquidite-registres/index.html',
+    'dist/en/analysis/french-scpi-exit-queues-liquidity-register-reset/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="scpi-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/tungstene-stocks-tresorerie-kennametal/index.html',
     'dist/en/analysis/tungsten-inventory-cash-flow-kennametal/index.html',

@@ -175,6 +175,23 @@ test('le SVG, le CSV et les textes sont générés depuis la même édition', ()
   assert.match(buildWeeklyCsv(manual), /value_usd_billions/);
 });
 
+test('le graphique hebdomadaire conserve une largeur nulle pour une valeur nulle', () => {
+  const edition = latestWeeklyEdition();
+  const fixture = {
+    ...edition,
+    chart: {
+      ...edition.chart,
+      points: [0, 1, 6].map((value) => ({
+        ...edition.chart.points[0], value, valueLabel: String(value),
+      })),
+    },
+  };
+  const widths = (svg) => [...svg.matchAll(/<rect x="370"[^>]*width="(\d+)"[^>]*opacity="0\.86"/g)].map((match) => Number(match[1]));
+  assert.deepEqual(widths(buildWeeklyChartSvg(fixture)), [0, 120, 720]);
+  fixture.chart.points = fixture.chart.points.map((point) => ({ ...point, value: 0, valueLabel: '0' }));
+  assert.deepEqual(widths(buildWeeklyChartSvg(fixture)), [0, 0, 0]);
+});
+
 test('les CTA, les archives et les formats journalistes couvrent toutes les surfaces', async () => {
   const [home, article, now, press, archive, issue, feed] = await Promise.all([
     source('src/pages/[...page].astro'),

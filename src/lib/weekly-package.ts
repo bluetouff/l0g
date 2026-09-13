@@ -73,7 +73,7 @@ export function buildWeeklyChartSvg(edition: WeeklyEdition) {
   const colors = { signal: '#5eead4', accent: '#ff4d87', amber: '#f5b13d' } as const;
   const bars = edition.chart.points.map((point, index) => {
     const y = 170 + index * rowStep;
-    const barWidth = Math.max(8, Math.round((point.value / max) * chartWidth));
+    const barWidth = point.value === 0 ? 0 : Math.max(8, Math.round((point.value / max) * chartWidth));
     const color = colors[point.tone];
     return `<g>
       <text x="62" y="${y + 15}" fill="#d6d9df" font-size="${rowStep < 60 ? 17 : 20}">${escapeXml(point.shortLabel)}</text>

@@ -213,6 +213,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: 'var(--color-accent)',
     entries: [
+      { sigle: 'SCPI', nom: 'Société civile de placement immobilier', def: "Placement collectif non coté permettant de détenir des parts d’un patrimoine immobilier locatif géré par une société de gestion. Les revenus, le capital et la possibilité de revendre rapidement ne sont pas garantis. Pour les parts détenues en direct, les conditions de sortie dépendent notamment du fonctionnement à capital variable ou du marché secondaire organisé.", guide: '/posts/scpi-retraits-parts-attente-liquidite-registres/' },
       { sigle: 'LIFO', nom: 'Dernier entré, premier sorti', def: "Méthode de valorisation des stocks qui affecte en priorité les coûts des achats les plus récents au coût des ventes. Elle décrit un ordre comptable, sans imposer l’ordre physique des sorties d’entrepôt. L’écart avec une autre méthode de valorisation ne constitue pas une réserve de trésorerie.", guide: '/posts/tungstene-stocks-tresorerie-kennametal/' },
       { sigle: 'BFR', nom: 'Besoin en fonds de roulement', def: "Trésorerie immobilisée par le cycle d'exploitation : stocks et créances clients, diminués des dettes fournisseurs et autres ressources d'exploitation. Une activité rentable peut manquer de liquidités si elle paie ses achats longtemps avant d'encaisser ses ventes.", guide: '/posts/cacao-ghana-financement-tresorerie/' },
       { sigle: 'Arriérés de paiement', nom: 'Obligations échues et impayées', def: "Sommes dues dont la date de paiement applicable est dépassée. Pour une commande publique, il faut distinguer la livraison, la validation de la facture, son échéance et son règlement. Une créance en attente de validation ne peut pas être assimilée automatiquement à un arriéré reconnu.", guide: '/posts/senegal-arrieres-etat-entreprises-creancieres/' },
@@ -590,7 +591,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-12';
+export const glossaryUpdatedIso = '2026-09-13';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -833,6 +834,13 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  scpi: {
+    intuition: 'Le versement de revenus et la possibilité de revendre ses parts sont deux dimensions distinctes du placement.',
+    sources: [
+      { label: 'AMF, investir dans une SCPI', href: 'https://www.amf-france.org/fr/espace-epargnants/comprendre-les-produits-financiers/placements-collectifs/scpi-un-autre-moyen-dinvestir-dans-limmobilier', detail: 'Placement immobilier non coté et risque de liquidité.', kind: 'source' },
+      { label: 'AMF, retrait et ordre de vente', href: 'https://www.amf-france.org/fr/le-mediateur/journal-de-bord-du-mediateur/dossiers-du-mois/scpi-contrairement-aux-ordres-de-vente-des-parts-les-demandes-de-retrait-sont-sans-duree-de-validite', detail: 'Détention directe, durée des demandes et suspension de la variabilité du capital.', kind: 'source' },
+    ],
+  },
   lifo: {
     intuition: 'Le coût enregistré dans le résultat et le paiement d’un stock de remplacement suivent des calendriers différents.',
     sources: [{ label: 'Kennametal, 10-K 2026', href: 'https://www.sec.gov/Archives/edgar/data/55242/000162828026056143/kmt-20260630.htm', detail: 'Notes 2 et 7 : méthodes de valorisation et rapprochement entre coût courant et stocks au bilan.', kind: 'source' }],
