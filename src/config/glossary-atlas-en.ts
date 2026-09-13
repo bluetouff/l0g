@@ -203,6 +203,24 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'tof', sigle: "TOF", nom: "Financial occupancy rate",
+    def: "An SCPI measure comparing billed rent and certain convention-based rental values with potential rental income. It includes rent-free premises, early access for future tenants and specified vacant or refurbishment categories under the ASPIM method. Weighted by rent, it measures neither occupied floor area nor cash collected.",
+    guide: '/en/analysis/french-scpi-office-vacancy-rent-free-incentives/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: { sources: [{ label: "ASPIM, méthode de calcul des données financières, octobre 2025", href: "https://www.pierrepapier.fr/wp-content/uploads/2025/10/2025_10_Modalites-de-calcul-et-de-publication.pdf", detail: "Pages 2–4, TOF definition. Original French document on the PierrePapier public mirror.", kind: 'source' }], related: ["scpi","franchise-de-loyer"] },
+  },
+  {
+    slug: 'franchise-de-loyer', sigle: "Rent-free period", nom: "Contractual rental concession",
+    def: "A period during which rent is not due under the lease terms. It may help a tenant move in and delay receipts while premises are already occupied. It is distinct from arrears and reduces average rental income over the lease term. Other service charges depend on the contract.",
+    guide: '/en/analysis/french-scpi-office-vacancy-rent-free-incentives/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: { sources: [{ label: "ImmoStat, définitions des indicateurs", href: "https://www.immostat.com/infos-marches/", detail: "Incentives: free rent, works contributions, stepped rents and early access. French-language methodology.", kind: 'source' }], related: ["tof","loyer-facial"] },
+  },
+  {
+    slug: 'loyer-facial', sigle: "Headline rent", nom: "Contractual rent before incentives",
+    def: "The rent stated in the lease before negotiated incentives such as free months or landlord fit-out contributions. Relating it to cash receipts requires the incentive package, firm term, preceding vacancy and other costs. It is not, by itself, net property income.",
+    guide: '/en/analysis/french-scpi-office-vacancy-rent-free-incentives/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: { sources: [{ label: "ImmoStat, définitions des indicateurs", href: "https://www.immostat.com/infos-marches/", detail: "Incentives divided by cumulative headline rent over the firm lease term. French-language methodology.", kind: 'source' }], related: ["franchise-de-loyer","scpi"] },
+  },
+  {
     slug: 'taux-de-distribution', sigle: "Distribution yield", nom: "Income reporting measure for French SCPI funds",
     def: "Annual gross distribution per unit, including exceptional payouts and taxes paid for the investor under the ASPIM methodology, divided by the reference price. Variable-capital funds use the subscription price on 1 January; fixed-capital funds use the preceding year’s transaction-weighted average buyer price. It excludes changes in capital value and is not final personal after-tax income.",
     guide: '/en/analysis/french-scpi-yields-income-dividends-reserves/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',

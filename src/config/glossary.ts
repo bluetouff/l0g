@@ -214,6 +214,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
     accent: 'var(--color-accent)',
     entries: [
       { sigle: 'SCPI', nom: 'Société civile de placement immobilier', def: "Placement collectif non coté permettant de détenir des parts d’un patrimoine immobilier locatif géré par une société de gestion. Les revenus, le capital et la possibilité de revendre rapidement ne sont pas garantis. Pour les parts détenues en direct, les conditions de sortie dépendent notamment du fonctionnement à capital variable ou du marché secondaire organisé.", guide: '/posts/scpi-retraits-parts-attente-liquidite-registres/' },
+      { sigle: "TOF", nom: "Taux d’occupation financier", def: "Indicateur des SCPI rapportant les loyers facturés et certaines valeurs locatives conventionnelles au revenu locatif potentiel. Il inclut notamment les locaux sous franchise, ceux mis à disposition d’un futur locataire et certaines vacances ou restructurations prévues par la méthode ASPIM. Pondéré par les loyers, il ne mesure ni la part physique des surfaces occupées ni les sommes encaissées.", guide: '/posts/scpi-bureaux-vacance-franchises-loyers-travaux/' },
+      { sigle: "Franchise de loyer", nom: "Période de loyer gratuit prévue au bail", def: "Concession contractuelle pendant laquelle aucun loyer n’est exigible selon les modalités du bail. Elle peut accompagner l’installation d’un locataire et retarder les recettes alors que les locaux sont déjà occupés. Elle se distingue d’un impayé et réduit le revenu moyen sur la durée du bail. Les autres charges dépendent du contrat.", guide: '/posts/scpi-bureaux-vacance-franchises-loyers-travaux/' },
+      { sigle: "Loyer facial", nom: "Loyer inscrit au contrat avant concessions", def: "Montant de loyer prévu au bail avant prise en compte des avantages négociés, comme une franchise ou une participation du bailleur aux aménagements. Le rapporter aux encaissements demande de connaître ces concessions, la durée ferme, la vacance préalable et les autres coûts. Il ne constitue pas à lui seul un revenu net immobilier.", guide: '/posts/scpi-bureaux-vacance-franchises-loyers-travaux/' },
       { sigle: "Taux de distribution", nom: "Indicateur de revenu des SCPI", def: "Dividende annuel brut par part, incluant les distributions exceptionnelles et la fiscalité payée pour l’associé selon la convention ASPIM, rapporté au prix de référence. À capital variable, ce prix est celui de souscription au 1er janvier de l’année ; à capital fixe, le prix acquéreur moyen pondéré de l’année précédente. Ce ratio exclut la variation du capital et ne représente pas le revenu net après toute fiscalité personnelle.", guide: '/posts/scpi-rendement-dividendes-reserves-revenus/' },
       { sigle: "Report à nouveau", nom: "Résultats conservés et reportés aux exercices suivants", def: "Dans le contexte d’une SCPI, bénéfices d’exercices antérieurs conservés pour soutenir, au besoin, les distributions futures. Le report à nouveau est un poste de capitaux propres. Il faut suivre son origine et ses mouvements, y compris un éventuel prélèvement sur les primes d’émission. Son montant ne garantit pas l’existence d’une trésorerie libre équivalente.", guide: '/posts/scpi-rendement-dividendes-reserves-revenus/' },
       { sigle: 'Valeur de réalisation', nom: 'Actif net estimé d’une SCPI', def: "Somme de la valeur vénale estimée des immeubles et de la valeur nette des autres actifs de la SCPI, après prise en compte du passif. Elle fournit une référence patrimoniale à une date donnée. Elle ne garantit ni un prix de revente ni un délai de sortie pour les parts.", guide: '/posts/scpi-prix-revente-decote-marche-secondaire/' },
@@ -838,6 +841,18 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'tof': {
+    sources: [{ label: "ASPIM, méthode de calcul des données financières, octobre 2025", href: "https://www.pierrepapier.fr/wp-content/uploads/2025/10/2025_10_Modalites-de-calcul-et-de-publication.pdf", detail: "Pages 2–4, définition du TOF. Document original sur le miroir public PierrePapier.", kind: 'source' }],
+    related: ["scpi","franchise-de-loyer"],
+  },
+  'franchise-de-loyer': {
+    sources: [{ label: "ImmoStat, définitions des indicateurs", href: "https://www.immostat.com/infos-marches/", detail: "Mesures d’accompagnement : franchises, travaux, loyers progressifs et accès anticipé.", kind: 'source' }],
+    related: ["tof","loyer-facial"],
+  },
+  'loyer-facial': {
+    sources: [{ label: "ImmoStat, définitions des indicateurs", href: "https://www.immostat.com/infos-marches/", detail: "Taux d’accompagnement rapporté au loyer facial cumulé de la durée ferme.", kind: 'source' }],
+    related: ["franchise-de-loyer","scpi"],
+  },
   'taux-de-distribution': {
     sources: [{ label: "BNP Paribas AM, taux de distribution et PGA", href: "https://reim.bnpparibas-am.com/fr-fr/faq/scpi-vos-questions/indicateurs-de-performance/quappelle-t-le-taux-de-distribution-quelle", detail: "Définitions professionnelles du taux de distribution et de la performance globale annuelle.", kind: 'source' }],
     related: ['scpi', 'report-a-nouveau'],

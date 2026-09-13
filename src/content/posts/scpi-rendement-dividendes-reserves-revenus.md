@@ -257,6 +257,8 @@ Le risque se précise lorsque le revenu récurrent s'affaiblit et que les compl�
 
 **Pour un associé, un rendement en hausse n'est donc pas la fin de l'examen. La question suivante est très concrète : combien d'euros viennent des résultats de l'année, et sur quoi repose le reste ?**
 
+Le [quatrième volet examine la vacance, les franchises de loyer et les travaux](/posts/scpi-bureaux-vacance-franchises-loyers-travaux/), pour suivre les revenus des immeubles jusqu’à leur encaissement.
+
 ## Limites et sources
 
 Les données sont arrêtées au 13 septembre 2026. Les comptes annuels, bulletins et communications des gestionnaires sont des sources primaires intéressées, non des confirmations indépendantes de leurs perspectives. Les calculs de l0g sont explicités. Les versements sont ceux déclarés par les gestionnaires. Les données de l'ASPIM et de l'IEIF sont des agrégats déclaratifs du secteur, susceptibles de révision. ([Notice de l'étude ASPIM](https://www.aspim.fr/actualites/cahier-les-fonds-immobiliers-grand-public-au-1er-trimestre-2025-2/))

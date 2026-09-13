@@ -253,6 +253,8 @@ The risk becomes more acute when recurring income weakens while the supplements 
 
 **For the holder, a rising yield is a reason to keep reading. How many euros came from the year's earnings, and what supported the rest?**
 
+The [fourth instalment examines vacancy, rent-free periods and refurbishment](/en/analysis/french-scpi-office-vacancy-rent-free-incentives/), following property income through to cash collection.
+
 ## Limits and sources
 
 The research cut-off is 13 September 2026. Annual reports, periodic bulletins and manager communications are interested primary sources, not independent confirmation of management forecasts. l0g's calculations are explained. Payments are those reported by the managers. ASPIM and IEIF publish industry-reported aggregates that can be revised. ([ASPIM study notice](https://www.aspim.fr/actualites/cahier-les-fonds-immobiliers-grand-public-au-1er-trimestre-2025-2/))
