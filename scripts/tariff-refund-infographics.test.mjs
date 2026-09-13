@@ -3,7 +3,6 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { XMLValidator } from 'fast-xml-parser';
 import { fromHtml } from 'hast-util-from-html';
-import { toText } from 'hast-util-to-text';
 import { glossaryEntries, glossaryUpdatedIso } from '../src/config/glossary.ts';
 import { glossaryAtlasEn } from '../src/config/glossary-atlas-en.ts';
 
@@ -12,7 +11,14 @@ const articles = [
   '../src/content/posts-en/tariff-refunds-who-keeps-the-money.md',
 ].map((path) => readFileSync(new URL(path, import.meta.url), 'utf8'));
 const attr = (tag, name) => Number(tag.match(new RegExp('\\b' + name + '="([^"]+)"'))?.[1]);
-const chartText = (svg) => toText(fromHtml(svg, { fragment: true }));
+const chartText = (svg) => {
+  const textContent = (node) => {
+    if (node.type === 'text') return node.value;
+    const text = (node.children ?? []).map(textContent).join('');
+    return ['title', 'desc', 'text'].includes(node.tagName) ? ` ${text} ` : text;
+  };
+  return textContent(fromHtml(svg, { fragment: true })).trim();
+};
 
 test('Tariff refund publication retains bilingual scope, dates and passive markup', () => {
   const dates = articles.map((s) => s.match(/^pubDate: '([^']+)'$/m)?.[1]);
@@ -107,6 +113,8 @@ test('Refund chart numbers are read from parsed text, including character refere
     '<svg><text>&#53;&#49;</text></svg>',
     '<svg><text>93&#46;6</text></svg>',
     '<svg><text><tspan>93</tspan><tspan>,6</tspan></text></svg>',
+    '<svg aria-labelledby="chart-title"><title id="chart-title">51</title><text>800</text></svg>',
+    '<svg aria-describedby="chart-description"><desc id="chart-description">93&#46;6</desc><text>749</text></svg>',
   ]) {
     assert.match(chartText(svg), /\b51\b|93[,.]6/);
   }
