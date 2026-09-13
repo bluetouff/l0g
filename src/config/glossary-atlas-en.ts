@@ -203,6 +203,18 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'taux-de-distribution', sigle: "Distribution yield", nom: "Income reporting measure for French SCPI funds",
+    def: "Annual gross distribution per unit, including exceptional payouts and taxes paid for the investor under the ASPIM methodology, divided by the reference price. Variable-capital funds use the subscription price on 1 January; fixed-capital funds use the preceding year’s transaction-weighted average buyer price. It excludes changes in capital value and is not final personal after-tax income.",
+    guide: '/en/analysis/french-scpi-yields-income-dividends-reserves/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: { sources: [{ label: "BNP Paribas AM, taux de distribution et PGA", href: "https://reim.bnpparibas-am.com/fr-fr/faq/scpi-vos-questions/indicateurs-de-performance/quappelle-t-le-taux-de-distribution-quelle", detail: "Professional definitions of distribution yield and overall annual performance. French-language source.", kind: 'source' }], related: ['scpi', 'report-a-nouveau'] },
+  },
+  {
+    slug: 'report-a-nouveau', sigle: "Report à nouveau", nom: "Profit or loss carried forward",
+    def: "In the context of an SCPI, profits from earlier years retained to support future distributions if needed. This is an equity account. Its origin and movements matter, including any transfer from issue premiums. The balance does not guarantee an equivalent amount of available cash.",
+    guide: '/en/analysis/french-scpi-yields-income-dividends-reserves/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: { sources: [{ label: "Praemia REIM, Primopierre, rapport annuel 2025", href: "https://www.praemiareim.fr/documents/14836074/14836290/Primopierre%2BRapport%2BAnnuel%2B2025.pdf/32234cef-d9b6-60b3-9ad5-08bfa8420b37", detail: "Pages 46, 72 and 77: retained earnings, proposed allocation and definition. French-language source.", kind: 'source' }], related: ['scpi', 'taux-de-distribution'] },
+  },
+  {
     slug: 'valeur-de-realisation', sigle: 'Realisation value', nom: 'Appraisal-based net assets of a French SCPI',
     def: "The estimated market value of a SCPI’s properties plus its other assets, net of liabilities. It is a dated valuation reference, not a standing offer to buy investors’ units or a guarantee of a quick exit.",
     guide: '/en/analysis/french-scpi-resale-prices-liquidity-discounts/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',

@@ -214,6 +214,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     accent: 'var(--color-accent)',
     entries: [
       { sigle: 'SCPI', nom: 'Société civile de placement immobilier', def: "Placement collectif non coté permettant de détenir des parts d’un patrimoine immobilier locatif géré par une société de gestion. Les revenus, le capital et la possibilité de revendre rapidement ne sont pas garantis. Pour les parts détenues en direct, les conditions de sortie dépendent notamment du fonctionnement à capital variable ou du marché secondaire organisé.", guide: '/posts/scpi-retraits-parts-attente-liquidite-registres/' },
+      { sigle: "Taux de distribution", nom: "Indicateur de revenu des SCPI", def: "Dividende annuel brut par part, incluant les distributions exceptionnelles et la fiscalité payée pour l’associé selon la convention ASPIM, rapporté au prix de référence. À capital variable, ce prix est celui de souscription au 1er janvier de l’année ; à capital fixe, le prix acquéreur moyen pondéré de l’année précédente. Ce ratio exclut la variation du capital et ne représente pas le revenu net après toute fiscalité personnelle.", guide: '/posts/scpi-rendement-dividendes-reserves-revenus/' },
+      { sigle: "Report à nouveau", nom: "Résultats conservés et reportés aux exercices suivants", def: "Dans le contexte d’une SCPI, bénéfices d’exercices antérieurs conservés pour soutenir, au besoin, les distributions futures. Le report à nouveau est un poste de capitaux propres. Il faut suivre son origine et ses mouvements, y compris un éventuel prélèvement sur les primes d’émission. Son montant ne garantit pas l’existence d’une trésorerie libre équivalente.", guide: '/posts/scpi-rendement-dividendes-reserves-revenus/' },
       { sigle: 'Valeur de réalisation', nom: 'Actif net estimé d’une SCPI', def: "Somme de la valeur vénale estimée des immeubles et de la valeur nette des autres actifs de la SCPI, après prise en compte du passif. Elle fournit une référence patrimoniale à une date donnée. Elle ne garantit ni un prix de revente ni un délai de sortie pour les parts.", guide: '/posts/scpi-prix-revente-decote-marche-secondaire/' },
       { sigle: 'Valeur de reconstitution', nom: 'Coût théorique de reconstitution d’une SCPI', def: "Valeur de réalisation augmentée des frais nécessaires pour reconstituer le patrimoine de la SCPI, notamment les frais d’acquisition et la commission de souscription. Elle sert de référence au prix de souscription. Elle ne constitue pas un plancher pour les transactions sur les parts existantes.", guide: '/posts/scpi-prix-revente-decote-marche-secondaire/' },
       { sigle: 'LIFO', nom: 'Dernier entré, premier sorti', def: "Méthode de valorisation des stocks qui affecte en priorité les coûts des achats les plus récents au coût des ventes. Elle décrit un ordre comptable, sans imposer l’ordre physique des sorties d’entrepôt. L’écart avec une autre méthode de valorisation ne constitue pas une réserve de trésorerie.", guide: '/posts/tungstene-stocks-tresorerie-kennametal/' },
@@ -836,6 +838,14 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'taux-de-distribution': {
+    sources: [{ label: "BNP Paribas AM, taux de distribution et PGA", href: "https://reim.bnpparibas-am.com/fr-fr/faq/scpi-vos-questions/indicateurs-de-performance/quappelle-t-le-taux-de-distribution-quelle", detail: "Définitions professionnelles du taux de distribution et de la performance globale annuelle.", kind: 'source' }],
+    related: ['scpi', 'report-a-nouveau'],
+  },
+  'report-a-nouveau': {
+    sources: [{ label: "Praemia REIM, Primopierre, rapport annuel 2025", href: "https://www.praemiareim.fr/documents/14836074/14836290/Primopierre%2BRapport%2BAnnuel%2B2025.pdf/32234cef-d9b6-60b3-9ad5-08bfa8420b37", detail: "Pages 46, 72 et 77 : constitution du report à nouveau, affectation proposée et définition.", kind: 'source' }],
+    related: ['scpi', 'taux-de-distribution'],
+  },
   scpi: {
     intuition: 'Le versement de revenus et la possibilité de revendre ses parts sont deux dimensions distinctes du placement.',
     articles: [{ label: 'SCPI : le prix de la sortie', href: '/posts/scpi-prix-revente-decote-marche-secondaire/', detail: 'Prix exécutés, frais, volumes et références patrimoniales.', kind: 'article' }],

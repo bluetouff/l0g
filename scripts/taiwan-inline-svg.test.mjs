@@ -23,10 +23,22 @@ import './sulfur-infographics.test.mjs';
 import './tungsten-infographics.test.mjs';
 import './scpi-exit-infographics.test.mjs';
 import './scpi-resale-infographics.test.mjs';
+import './scpi-distribution-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/scpi-rendement-dividendes-reserves-revenus/index.html',
+    'dist/en/analysis/french-scpi-yields-income-dividends-reserves/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="scpi3-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/scpi-prix-revente-decote-marche-secondaire/index.html',
     'dist/en/analysis/french-scpi-resale-prices-liquidity-discounts/index.html',

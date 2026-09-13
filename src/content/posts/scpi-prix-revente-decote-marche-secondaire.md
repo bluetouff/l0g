@@ -260,7 +260,7 @@ Ces flux montrent que certaines SCPI continuent d’attirer des capitaux. Une so
 
 Les transactions examinées s’écartent fortement de certaines références affichées et portent sur des quantités limitées. Elles ne permettent ni de fixer un prix de liquidation de toutes les parts, ni d’attribuer une cause unique à chaque décote. **Le signal d’alerte est suffisamment concret sans cette extrapolation : un montant patrimonial affiché ne dit pas combien un associé peut récupérer, pour combien de parts, ni à quelle date.**
 
-Le prochain volet examinera les distributions : le pourcentage de rendement affiché, le revenu réellement reçu et leur évolution ne racontent pas toujours la même histoire.
+Le [troisième volet examine les distributions](/posts/scpi-rendement-dividendes-reserves-revenus/) : le pourcentage de rendement affiché, le revenu réellement reçu et leur évolution ne racontent pas toujours la même histoire.
 
 ## Sources
 

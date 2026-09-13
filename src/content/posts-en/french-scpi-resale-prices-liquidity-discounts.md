@@ -257,7 +257,7 @@ Those flows provide a useful counterweight to the selected cases, not an answer 
 
 The investigation establishes substantial gaps between some published reference values and transactions in limited quantities. It does not establish the liquidation price of every unit, or a single cause for every discount. **The warning is concrete enough without that extrapolation: a published asset value does not tell an investor how much cash can be recovered, for how many units, or on what date.**
 
-Part three will examine distributions: a quoted yield, the income actually received and the change in that income are different measures.
+[Part three examines distributions](/en/analysis/french-scpi-yields-income-dividends-reserves/): a quoted yield, the income actually received and the change in that income are different measures.
 
 ## Sources
 
