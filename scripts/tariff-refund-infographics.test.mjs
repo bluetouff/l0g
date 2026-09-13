@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { XMLValidator } from 'fast-xml-parser';
+import { fromHtml } from 'hast-util-from-html';
 import { glossaryEntries, glossaryUpdatedIso } from '../src/config/glossary.ts';
 import { glossaryAtlasEn } from '../src/config/glossary-atlas-en.ts';
 
@@ -10,6 +11,14 @@ const articles = [
   '../src/content/posts-en/tariff-refunds-who-keeps-the-money.md',
 ].map((path) => readFileSync(new URL(path, import.meta.url), 'utf8'));
 const attr = (tag, name) => Number(tag.match(new RegExp('\\b' + name + '="([^"]+)"'))?.[1]);
+const chartText = (svg) => {
+  const textContent = (node) => {
+    if (node.type === 'text') return node.value;
+    const text = (node.children ?? []).map(textContent).join('');
+    return ['title', 'desc', 'text'].includes(node.tagName) ? ` ${text} ` : text;
+  };
+  return textContent(fromHtml(svg, { fragment: true })).trim();
+};
 
 test('Tariff refund publication retains bilingual scope, dates and passive markup', () => {
   const dates = articles.map((s) => s.match(/^pubDate: '([^']+)'$/m)?.[1]);
@@ -94,8 +103,22 @@ test('Refund arithmetic preserves units and the hypothetical scenario', () => {
     assert.match(svgs[2], /31 mai 2026|May 31, 2026/);
     assert.match(svgs[2], /800/);
     assert.match(svgs[2], /749/);
-    assert.doesNotMatch(svgs[2].replace(/<[^>]+>/g, ''), /\b51\b|93[,.]6/);
+    assert.doesNotMatch(chartText(svgs[2]), /\b51\b|93[,.]6/);
   }
+});
+
+test('Refund chart numbers are read from parsed text, including character references', () => {
+  assert.equal(chartText('<svg viewBox="0 0 51 94"><text data-note="0 > 51">800 &amp; 749</text></svg>'), '800 & 749');
+  for (const svg of [
+    '<svg><text>&#53;&#49;</text></svg>',
+    '<svg><text>93&#46;6</text></svg>',
+    '<svg><text><tspan>93</tspan><tspan>,6</tspan></text></svg>',
+    '<svg aria-labelledby="chart-title"><title id="chart-title">51</title><text>800</text></svg>',
+    '<svg aria-describedby="chart-description"><desc id="chart-description">93&#46;6</desc><text>749</text></svg>',
+  ]) {
+    assert.match(chartText(svg), /\b51\b|93[,.]6/);
+  }
+  assert.equal(chartText('<svg><text>&amp;#53;</text></svg>'), '&#53;');
 });
 
 test('IEEPA glossary keeps bilingual scope and the controlling judgment', () => {
