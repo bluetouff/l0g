@@ -104,7 +104,7 @@ test('LIFO is defined and sourced in both glossaries', () => {
   for (const entries of [glossaryEntries, glossaryAtlasEn]) {
     const entry = entries.find((e) => e.slug === 'lifo');
     assert(entry);
-    assert.match(entry.atlas.sources[0].href, /^https:\/\/www.sec.gov\/Archives\/edgar\//);
+    assert.equal(entry.atlas.sources[0].href, 'https://www.sec.gov/Archives/edgar/data/55242/000162828026056143/kmt-20260630.htm');
     assert.match(entry.guide, /tungst/);
   }
 });

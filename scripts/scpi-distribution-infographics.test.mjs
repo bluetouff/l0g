@@ -113,12 +113,15 @@ test('SCPI numerical claims reconcile without annualising half-year payouts', ()
 
 test('FR and EN glossary definitions retain their primary sources', () => {
   for (const entries of [glossaryEntries, glossaryAtlasEn]) {
-    for (const slug of ['taux-de-distribution', 'report-a-nouveau']) {
+    for (const [slug, href] of [
+      ['taux-de-distribution', 'https://reim.bnpparibas-am.com/fr-fr/faq/scpi-vos-questions/indicateurs-de-performance/quappelle-t-le-taux-de-distribution-quelle'],
+      ['report-a-nouveau', 'https://www.praemiareim.fr/documents/14836074/14836290/Primopierre%2BRapport%2BAnnuel%2B2025.pdf/32234cef-d9b6-60b3-9ad5-08bfa8420b37'],
+    ]) {
       const entry = entries.find((e) => e.slug === slug);
       assert(entry?.atlas?.sources?.length);
       assert.match(entry.guide, /scpi-/);
       assert(entry.atlas.related.includes('scpi'));
-      assert.match(entry.atlas.sources[0].href, /^https:\/\/(?:reim.bnpparibas-am.com|www.praemiareim.fr)\//);
+      assert.equal(entry.atlas.sources[0].href, href);
     }
   }
 });

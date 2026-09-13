@@ -106,8 +106,10 @@ test('SCPI is defined with AMF sources in both glossaries', () => {
   for (const entries of [glossaryEntries, glossaryAtlasEn]) {
     const entry = entries.find((e) => e.slug === 'scpi');
     assert(entry);
-    assert.equal(entry.atlas.sources.length, 2);
-    for (const source of entry.atlas.sources) assert.match(source.href, /^https:\/\/www.amf-france.org\//);
+    assert.deepEqual(entry.atlas.sources.map((source) => source.href), [
+      'https://www.amf-france.org/fr/espace-epargnants/comprendre-les-produits-financiers/placements-collectifs/scpi-un-autre-moyen-dinvestir-dans-limmobilier',
+      'https://www.amf-france.org/fr/le-mediateur/journal-de-bord-du-mediateur/dossiers-du-mois/scpi-contrairement-aux-ordres-de-vente-des-parts-les-demandes-de-retrait-sont-sans-duree-de-validite',
+    ]);
     assert.match(entry.guide, /scpi-/);
     assert.match(entry.def, /non coté|unlisted/);
   }
