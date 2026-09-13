@@ -26,10 +26,22 @@ import './scpi-resale-infographics.test.mjs';
 import './scpi-distribution-infographics.test.mjs';
 import './scpi-office-income-infographics.test.mjs';
 import './scpi-debt-infographics.test.mjs';
+import './scpi-insurance-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/scpi-assurance-vie-banques-contagion/index.html',
+    'dist/en/analysis/scpi-life-insurance-banks-contagion/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="scpi6-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/scpi-dette-cessions-refinancement/index.html',
     'dist/en/analysis/french-scpi-debt-property-sales-refinancing/index.html',

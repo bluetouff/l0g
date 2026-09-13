@@ -27,9 +27,9 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 527, 'Le corpus doit conserver ses 527 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 79, 'Le graphe Atlas doit conserver ses 79 nœuds');
-assert.equal(glossaryAtlasEdgeCount, 372, 'Le graphe Atlas doit conserver ses 372 relations');
+assert.equal(glossaryEntries.length, 529, 'Le corpus doit conserver ses 529 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 81, 'Le graphe Atlas doit conserver ses 81 nœuds');
+assert.equal(glossaryAtlasEdgeCount, 376, 'Le graphe Atlas doit conserver ses 376 relations');
 for (const slug of ['investment-grade', 'vrg']) {
   const entry = glossaryEntries.find((candidate) => candidate.slug === slug);
   assert(entry?.atlas?.sources?.length, slug + ' doit conserver sa source primaire');

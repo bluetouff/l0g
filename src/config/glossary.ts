@@ -213,6 +213,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: 'var(--color-accent)',
     entries: [
+      { sigle: 'Unité de compte', nom: 'Support d’investissement d’un contrat d’assurance-vie', def: "Mode d’expression d’un engagement d’assurance dont la valeur en euros suit celle d’un support financier ou immobilier. L’assureur s’engage sur un nombre d’unités ; le risque de variation de leur valeur revient à l’assuré, sous réserve de garanties particulières du contrat. Le calendrier de paiement du rachat et la liquidité du fonds sous-jacent sont deux questions distinctes.", guide: '/posts/scpi-assurance-vie-banques-contagion/' },
+      { sigle: 'Niveau 3 IFRS 9', nom: 'Actif financier déprécié pour risque de crédit', def: "Catégorie d’actifs financiers pour lesquels une dépréciation liée au risque de crédit est constatée. La part d’un portefeuille classée en niveau 3 mesure l’encours concerné ; elle ne donne pas le montant définitivement perdu. Les provisions, les garanties et les recouvrements doivent être examinés séparément.", guide: '/posts/scpi-assurance-vie-banques-contagion/' },
       { sigle: 'Levier AIFM', nom: 'Exposition rapportée à la valeur nette du fonds', def: "Mesure de l’exposition d’un fonds d’investissement alternatif rapportée à sa valeur nette d’inventaire. Les méthodes brute et de l’engagement comportent des retraitements propres : il faut identifier la méthode et le périmètre publiés. Une baisse de la valeur nette peut augmenter le ratio sans nouvel emprunt. Un dépassement du plafond du fonds doit être distingué d’une échéance bancaire impayée.", guide: '/posts/scpi-dette-cessions-refinancement/' },
       { sigle: 'RDAE', nom: 'Ratio de dettes et autres engagements', def: "Indicateur professionnel des SCPI rapportant les dettes et les autres engagements payables à terme à la valeur de réalisation augmentée de ces mêmes obligations. Sa lecture demande le périmètre retenu, notamment les participations, et la date des valeurs utilisées. Il diffère d’un ratio calculé sur les coûts d’acquisition et ne constitue pas, à lui seul, un test de crédit bancaire.", guide: '/posts/scpi-dette-cessions-refinancement/' },
       { sigle: 'SCPI', nom: 'Société civile de placement immobilier', def: "Placement collectif non coté permettant de détenir des parts d’un patrimoine immobilier locatif géré par une société de gestion. Les revenus, le capital et la possibilité de revendre rapidement ne sont pas garantis. Pour les parts détenues en direct, les conditions de sortie dépendent notamment du fonctionnement à capital variable ou du marché secondaire organisé.", guide: '/posts/scpi-retraits-parts-attente-liquidite-registres/' },
@@ -843,6 +845,14 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'unite-de-compte': {
+    sources: [{ label: 'ABE Infoservice', href: 'https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-avant-de-souscrire-beneficier-dun-conseil-adapte-comprendre-et-comparer-les', detail: 'Engagement en unités de compte et risque de perte en capital.', kind: 'source' }],
+    related: ['scpi', 'niveau-3-ifrs-9'],
+  },
+  'niveau-3-ifrs-9': {
+    sources: [{ label: 'ACPR, Analyses et synthèses n°184', href: 'https://acpr.banque-france.fr/system/files/2026-07/20260724_AS184_financement_immobilier_commercial_2025.pdf', detail: 'Pages 16 et 25 : actifs de niveau 3, provisionnement et classification IFRS 9.', kind: 'source' }],
+    related: ['cet1', 'unite-de-compte'],
+  },
   'levier-aifm': {
     sources: [{ label: 'La Française REM, LF Grand Paris Patrimoine, rapport annuel 2025', href: 'https://doc.la-francaise.com/documents/rapport-annuel-lf-grand-paris-patrimoine-2025', detail: 'Page 16 et note 1 : exposition, valeur nette et méthode brute. Définition publiée par le gestionnaire.', kind: 'source' }, { label: 'LF Grand Paris Patrimoine, note d’information de juin 2026', href: 'https://www.moniwan.fr/documents/note-information-et-statuts-lf-grand-paris-patrimoine', detail: 'Section 3.2, p. 9 du PDF : limite et prise en compte des sociétés contrôlées.', kind: 'source' }],
     related: ['scpi', 'rdae'],

@@ -233,6 +233,8 @@ Les documents consultés décrivent une affectation des cessions aux créanciers
 
 Dans la série : [les registres de retrait](/posts/scpi-retraits-parts-attente-liquidite-registres/), [les prix de revente](/posts/scpi-prix-revente-decote-marche-secondaire/), [le rendement et les euros](/posts/scpi-rendement-dividendes-reserves-revenus/), [la facture des locaux vides](/posts/scpi-bureaux-vacance-franchises-loyers-travaux/).
 
+La série se poursuit avec [SCPI : qui porte les pertes ?](/posts/scpi-assurance-vie-banques-contagion/), consacré aux liens entre les fonds, l’assurance-vie et les banques.
+
 ## Sources et méthode
 
 Les situations comptables portent sur le 31 décembre 2025 ou le 30 juin 2026, selon les passages ; elles ne sont pas présentées comme des bilans au jour de publication. Les ratios ne sont comparés dans le temps qu’à définition identique. Les montants de la dette en filiales sont en quote-part de détention, et les promesses de vente ne sont pas comptabilisées comme des encaissements. Les dates de mise en ligne non confirmées restent inconnues.

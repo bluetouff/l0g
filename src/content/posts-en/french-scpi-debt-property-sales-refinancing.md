@@ -231,6 +231,8 @@ Our documents establish that Primopierre allocates disposal proceeds to creditor
 
 Earlier instalments: [withdrawal registers](/en/analysis/french-scpi-exit-queues-liquidity-register-reset/), [resale prices](/en/analysis/french-scpi-resale-prices-liquidity-discounts/), [yields and income](/en/analysis/french-scpi-yields-income-dividends-reserves/), and [the cost of empty offices](/en/analysis/french-scpi-office-vacancy-rent-free-incentives/).
 
+Continue the series with [SCPI funds: who bears the losses?](/en/analysis/scpi-life-insurance-banks-contagion/), tracing the links between property funds, life insurance and banks.
+
 ## Sources and method
 
 Balance-sheet observations refer to 31 December 2025 or 30 June 2026 as stated, not to the publication date of this article. Time comparisons use the same defined ratio. Subsidiary borrowings are ownership-weighted; preliminary sale agreements are not cash receipts. Exact release dates that could not be confirmed remain unspecified.

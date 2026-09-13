@@ -203,6 +203,18 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'unite-de-compte', sigle: 'Unit-linked option', nom: 'Investment-linked life insurance benefit',
+    def: "A life insurance obligation expressed in units whose euro value tracks a financial or property investment. The insurer commits to a number of units; the policyholder bears changes in unit value, subject to any additional contractual guarantees. The policy surrender timetable and the underlying fund’s liquidity are separate questions.",
+    guide: '/en/analysis/scpi-life-insurance-banks-contagion/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: { sources: [{ label: 'ABE Infoservice', href: 'https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-avant-de-souscrire-beneficier-dun-conseil-adapte-comprendre-et-comparer-les', detail: 'Unit-linked commitments and capital-loss risk. French source.', kind: 'source' }], related: ['scpi', 'niveau-3-ifrs-9'] },
+  },
+  {
+    slug: 'niveau-3-ifrs-9', sigle: 'IFRS 9 Stage 3', nom: 'Credit-impaired financial asset',
+    def: "A category of financial assets with recognised credit impairment. The share of a portfolio classified as Stage 3 measures the affected exposure, not the amount irretrievably lost. Provisions, collateral and recoveries need to be examined separately.",
+    guide: '/en/analysis/scpi-life-insurance-banks-contagion/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: { sources: [{ label: 'ACPR, Analyses et synthèses No 184', href: 'https://acpr.banque-france.fr/system/files/2026-07/20260724_AS184_financement_immobilier_commercial_2025.pdf', detail: 'Pages 16 and 25: Stage 3 exposures, provisions and IFRS 9 classification. French source.', kind: 'source' }], related: ['cet1', 'unite-de-compte'] },
+  },
+  {
     slug: 'levier-aifm', sigle: 'AIFM leverage', nom: 'Fund exposure relative to net asset value',
     def: "An alternative investment fund’s exposure divided by its net asset value. The gross and commitment methods have their own adjustments, so the method and scope must be identified. A fall in net value can raise the ratio without additional borrowing. Exceeding a fund’s leverage ceiling is distinct from missing a bank-loan payment.",
     guide: '/en/analysis/french-scpi-debt-property-sales-refinancing/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
