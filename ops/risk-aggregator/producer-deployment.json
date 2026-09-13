@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-09-12",
+  "verifiedAt": "2026-09-13",
   "producers": {
     "us": {
       "repository": "https://github.com/bluetouff/macro_dashboard",
@@ -30,7 +30,7 @@
     },
     "eu": {
       "repository": "https://github.com/bluetouff/euro-macro-dashboard",
-      "revision": "db930fe5e25b6d8ad7881534b857928ba4d54ec9",
+      "revision": "8609ef71f9ef5b3f5df79b287e1ec6437ef0d515",
       "files": [
         {
           "path": "/opt/euromacro/build_snapshot.py",
