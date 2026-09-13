@@ -217,6 +217,8 @@ The documents reviewed establish rental pressure in some vehicles. They do not s
 
 **The risk to track is the gap between an announced letting and sustainable available income.** When vacancy persists, concessions defer rent and works absorb cash, the owner must finance the interval. The next instalment examines the debt side: which obligations fall due during that gap, and what resources are available to meet them?
 
+Next in the series: [French SCPI funds: when debt sets the timetable](/en/analysis/french-scpi-debt-property-sales-refinancing/), on property disposals, subsidiary borrowing and repayment dates.
+
 ## Sources and method
 
 Research cut-off: **13 September 2026**. Regional market data are not extrapolated to all SCPI portfolios, which may have a wider geographic reach. Annual, half-year and quarterly measures retain their own reference periods. Managers’ publications and Gecina’s results are interested primary sources; we have not inspected the underlying individual leases, invoices or bank receipts. This is not personalised investment advice.

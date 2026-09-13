@@ -221,6 +221,8 @@ Les documents étudiés montrent une tension locative réelle dans certains véh
 
 **Le risque à suivre est le décalage entre une location annoncée et un revenu durablement disponible.** Quand la vacance dure, que les concessions retardent les loyers et que les travaux mobilisent du cash, le propriétaire doit financer l’intervalle. La question suivante sera celle de la dette : quelles échéances tombent pendant cette période, et avec quelles ressources les honorer ?
 
+La suite de la série : [SCPI : la dette impose son calendrier](/posts/scpi-dette-cessions-refinancement/), sur les cessions, le financement des filiales et les échéances à rembourser.
+
 ## Sources et méthode
 
 Enquête documentaire arrêtée au **13 septembre 2026**. Les statistiques régionales ne sont pas extrapolées à tous les patrimoines de SCPI, souvent plus larges géographiquement. Les indicateurs annuels, semestriels et trimestriels gardent leurs périodes propres. Les publications de gestionnaires et de Gecina sont des sources primaires intéressées ; nous n’avons pas contrôlé leurs baux, factures ou encaissements individuels. L’étude ne constitue pas un conseil personnalisé d’investissement.

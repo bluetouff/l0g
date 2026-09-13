@@ -25,10 +25,22 @@ import './scpi-exit-infographics.test.mjs';
 import './scpi-resale-infographics.test.mjs';
 import './scpi-distribution-infographics.test.mjs';
 import './scpi-office-income-infographics.test.mjs';
+import './scpi-debt-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
+  ...[
+    'dist/posts/scpi-dette-cessions-refinancement/index.html',
+    'dist/en/analysis/french-scpi-debt-property-sales-refinancing/index.html',
+  ].map((page) => ({
+    page,
+    count: 3,
+    pattern: /<svg\b[^>]*aria-labelledby="scpi5-(?:fr|en)-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+    requireDarkBackground: true,
+    darkBackgroundToken: 'background:#0b0d10',
+  })),
   ...[
     'dist/posts/scpi-bureaux-vacance-franchises-loyers-travaux/index.html',
     'dist/en/analysis/french-scpi-office-vacancy-rent-free-incentives/index.html',

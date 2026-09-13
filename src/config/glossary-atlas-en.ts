@@ -203,6 +203,18 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'levier-aifm', sigle: 'AIFM leverage', nom: 'Fund exposure relative to net asset value',
+    def: "An alternative investment fund’s exposure divided by its net asset value. The gross and commitment methods have their own adjustments, so the method and scope must be identified. A fall in net value can raise the ratio without additional borrowing. Exceeding a fund’s leverage ceiling is distinct from missing a bank-loan payment.",
+    guide: '/en/analysis/french-scpi-debt-property-sales-refinancing/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: { sources: [{ label: 'La Française REM, LF Grand Paris Patrimoine, 2025 annual report', href: 'https://doc.la-francaise.com/documents/rapport-annuel-lf-grand-paris-patrimoine-2025', detail: 'Page 16 and note 1: exposure, net asset value and gross method. Manager’s definition, French source.', kind: 'source' }, { label: 'LF Grand Paris Patrimoine, June 2026 information memorandum', href: 'https://www.moniwan.fr/documents/note-information-et-statuts-lf-grand-paris-patrimoine', detail: 'Section 3.2, PDF p. 9: limit and inclusion of controlled companies. French source.', kind: 'source' }], related: ['scpi', 'rdae'] },
+  },
+  {
+    slug: 'rdae', sigle: 'RDAE', nom: 'Debt and other commitments ratio',
+    def: "A professional SCPI measure dividing debt and other deferred-payment commitments by realisation value plus those same obligations. Interpretation requires the disclosed scope, including any indirect holdings, and the valuation date. It differs from a ratio based on acquisition costs and is not, by itself, a bank-loan covenant test.",
+    guide: '/en/analysis/french-scpi-debt-property-sales-refinancing/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: { sources: [{ label: 'La Française REM, LF Grand Paris Patrimoine, 2025 annual report', href: 'https://doc.la-francaise.com/documents/rapport-annuel-lf-grand-paris-patrimoine-2025', detail: 'Page 16: ASPIM denominator and acquisition-cost comparison. French source.', kind: 'source' }], related: ['scpi', 'levier-aifm'] },
+  },
+  {
     slug: 'tof', sigle: "TOF", nom: "Financial occupancy rate",
     def: "An SCPI measure comparing billed rent and certain convention-based rental values with potential rental income. It includes rent-free premises, early access for future tenants and specified vacant or refurbishment categories under the ASPIM method. Weighted by rent, it measures neither occupied floor area nor cash collected.",
     guide: '/en/analysis/french-scpi-office-vacancy-rent-free-incentives/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',

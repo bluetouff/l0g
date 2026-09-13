@@ -213,6 +213,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: 'var(--color-accent)',
     entries: [
+      { sigle: 'Levier AIFM', nom: 'Exposition rapportée à la valeur nette du fonds', def: "Mesure de l’exposition d’un fonds d’investissement alternatif rapportée à sa valeur nette d’inventaire. Les méthodes brute et de l’engagement comportent des retraitements propres : il faut identifier la méthode et le périmètre publiés. Une baisse de la valeur nette peut augmenter le ratio sans nouvel emprunt. Un dépassement du plafond du fonds doit être distingué d’une échéance bancaire impayée.", guide: '/posts/scpi-dette-cessions-refinancement/' },
+      { sigle: 'RDAE', nom: 'Ratio de dettes et autres engagements', def: "Indicateur professionnel des SCPI rapportant les dettes et les autres engagements payables à terme à la valeur de réalisation augmentée de ces mêmes obligations. Sa lecture demande le périmètre retenu, notamment les participations, et la date des valeurs utilisées. Il diffère d’un ratio calculé sur les coûts d’acquisition et ne constitue pas, à lui seul, un test de crédit bancaire.", guide: '/posts/scpi-dette-cessions-refinancement/' },
       { sigle: 'SCPI', nom: 'Société civile de placement immobilier', def: "Placement collectif non coté permettant de détenir des parts d’un patrimoine immobilier locatif géré par une société de gestion. Les revenus, le capital et la possibilité de revendre rapidement ne sont pas garantis. Pour les parts détenues en direct, les conditions de sortie dépendent notamment du fonctionnement à capital variable ou du marché secondaire organisé.", guide: '/posts/scpi-retraits-parts-attente-liquidite-registres/' },
       { sigle: "TOF", nom: "Taux d’occupation financier", def: "Indicateur des SCPI rapportant les loyers facturés et certaines valeurs locatives conventionnelles au revenu locatif potentiel. Il inclut notamment les locaux sous franchise, ceux mis à disposition d’un futur locataire et certaines vacances ou restructurations prévues par la méthode ASPIM. Pondéré par les loyers, il ne mesure ni la part physique des surfaces occupées ni les sommes encaissées.", guide: '/posts/scpi-bureaux-vacance-franchises-loyers-travaux/' },
       { sigle: "Franchise de loyer", nom: "Période de loyer gratuit prévue au bail", def: "Concession contractuelle pendant laquelle aucun loyer n’est exigible selon les modalités du bail. Elle peut accompagner l’installation d’un locataire et retarder les recettes alors que les locaux sont déjà occupés. Elle se distingue d’un impayé et réduit le revenu moyen sur la durée du bail. Les autres charges dépendent du contrat.", guide: '/posts/scpi-bureaux-vacance-franchises-loyers-travaux/' },
@@ -841,6 +843,14 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'levier-aifm': {
+    sources: [{ label: 'La Française REM, LF Grand Paris Patrimoine, rapport annuel 2025', href: 'https://doc.la-francaise.com/documents/rapport-annuel-lf-grand-paris-patrimoine-2025', detail: 'Page 16 et note 1 : exposition, valeur nette et méthode brute. Définition publiée par le gestionnaire.', kind: 'source' }, { label: 'LF Grand Paris Patrimoine, note d’information de juin 2026', href: 'https://www.moniwan.fr/documents/note-information-et-statuts-lf-grand-paris-patrimoine', detail: 'Section 3.2, p. 9 du PDF : limite et prise en compte des sociétés contrôlées.', kind: 'source' }],
+    related: ['scpi', 'rdae'],
+  },
+  rdae: {
+    sources: [{ label: 'La Française REM, LF Grand Paris Patrimoine, rapport annuel 2025', href: 'https://doc.la-francaise.com/documents/rapport-annuel-lf-grand-paris-patrimoine-2025', detail: 'Page 16 : formule ASPIM et distinction avec la base de coût d’acquisition.', kind: 'source' }],
+    related: ['scpi', 'levier-aifm'],
+  },
   'tof': {
     sources: [{ label: "ASPIM, méthode de calcul des données financières, octobre 2025", href: "https://www.pierrepapier.fr/wp-content/uploads/2025/10/2025_10_Modalites-de-calcul-et-de-publication.pdf", detail: "Pages 2–4, définition du TOF. Document original sur le miroir public PierrePapier.", kind: 'source' }],
     related: ["scpi","franchise-de-loyer"],
