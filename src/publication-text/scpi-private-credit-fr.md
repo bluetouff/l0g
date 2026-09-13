@@ -1,0 +1,37 @@
+Une demande de sortie laissée en attente pose une question simple : où trouver l’argent pour payer ? Après six chapitres consacrés aux SCPI, on reconnaît cette question dans les débats sur le crédit privé. Le rapprochement mérite d’être tenté. Il demande de partir des contrats, avant de comparer les symptômes.
+
+## Deux façons de financer l’économie
+
+La SCPI donne accès à un patrimoine immobilier locatif. Dans le périmètre retenu par le Conseil de stabilité financière (FSB), le *private credit* désigne le prêt direct négocié entre des entreprises de taille intermédiaire et des prêteurs non bancaires. Le fonds immobilier porte la valeur des bâtiments et leur exploitation ; le fonds de crédit porte des créances sur ses emprunteurs. [AMF, présentation des SCPI](https://www.amf-france.org/fr/espace-epargnants/comprendre-les-produits-financiers/placements-collectifs/scpi-comment-bien-sinformer) ; [FSB, 6 mai 2026, pp. 1 et 3](https://www.fsb.org/uploads/P060526.pdf).
+
+Ce point de départ empêche un raccourci. Le départ d’un locataire et la difficulté d’une entreprise à rembourser son prêt n’atteignent pas le même actif. Dans le crédit, les garanties et le rang de la créance comptent aussi : être remboursé avant un autre créancier change l’exposition à une perte. Les chercheurs Cai et Haque décrivent les rangs et garanties de ces prêts, variables selon les stratégies. On ne peut donc reprendre une décote de SCPI pour chiffrer la perte d’un portefeuille de crédit. [Cai et Haque, février 2024, définition du crédit privé](https://www.federalreserve.gov/econres/notes/feds-notes/private-credit-characteristics-and-risks-20240223.html).
+
+## Qui finance le départ ?
+
+Le parallèle le plus solide concerne les placements qui proposent une sortie alors que leurs actifs demandent du temps pour être cédés. Dans une SCPI à capital variable, le retrait peut attendre une nouvelle souscription. Sur un marché secondaire, un acheteur reprend les parts : cette transaction ne prélève pas, par elle-même, son prix sur la trésorerie des immeubles. Le premier chapitre décrit ces circuits. [Médiateur de l’AMF, 3 février 2025](https://www.amf-france.org/fr/le-mediateur/journal-de-bord-du-mediateur/dossiers-du-mois/scpi-contrairement-aux-ordres-de-vente-des-parts-les-demandes-de-retrait-sont-sans-duree-de-validite).
+
+Le crédit privé comprend historiquement des fonds fermés, dont le capital est engagé pour une longue durée, ainsi que des véhicules offrant des rachats périodiques. C’est surtout avec ces derniers, souvent qualifiés de *semi-liquides*, que la comparaison des sorties devient utile. Leurs plafonds de rachat encadrent l’argent qui peut quitter le fonds ; ils ne rendent pas les prêts instantanément négociables. [FSB, pp. 7–8 et 31](https://www.fsb.org/uploads/P060526.pdf).
+
+En avril 2026, le FMI soulignait précisément le rôle de ces plafonds dans la limitation du risque systémique. Cette appréciation était datée et ne garantissait aucun retrait individuel. Dans son rapport de juillet, la Banque d’Angleterre relevait encore des demandes élevées et des limitations dans plusieurs fonds destinés à une clientèle de particuliers. Un dispositif peut donc protéger la gestion collective tout en laissant un investisseur attendre. [FMI, conférence du 14 avril](https://www.imf.org/en/news/articles/2026/04/15/tr-04142026-press-briefing-transcript-global-financial-stability-report-spring-meetings-2026) ; [Banque d’Angleterre, juillet 2026, synthèse](https://www.bankofengland.co.uk/financial-stability-report/2026/july-2026).
+
+Pour comparer deux produits, la bonne question devient : qui apporte les espèces au sortant, selon quelle règle ? La réponse peut être un nouvel investisseur, le fonds ou, dans un contrat d’assurance-vie, l’assureur selon ses engagements. Ce sont des circuits distincts. Leur ressemblance visuelle sur un relevé n’établit aucune équivalence juridique.
+
+## La valeur rencontre le marché
+
+Les expertises immobilières et les transactions sur les parts ont leurs dates et leurs méthodes, comme le montre le deuxième chapitre. Une difficulté voisine existe dans les marchés privés : la FCA britannique rappelle que l’absence d’échanges fréquents oblige à recourir à des estimations. Sa revue de mars 2025 relevait des lacunes dans les procédures de réévaluation après un événement important. Elle examinait les pratiques, sans certifier les valeurs de chaque actif. [FCA, sections 1.2–1.3 et 2.5](https://www.fca.org.uk/publications/multi-firm-reviews/private-market-valuation-practices).
+
+L’enseignement commun est une question de lecture : à quand remonte l’estimation, que suppose-t-elle, et quel prix une transaction révèle-t-elle ? Une valorisation peu changeante peut refléter un actif stable ou une information actualisée lentement. Sa seule régularité ne permet pas de trancher. Les auteurs d’un bulletin publié par la BRI expliquent aussi que des véhicules cotés peuvent apporter des signaux de prix au crédit privé, y compris des décotes durables sur la valeur nette. Il s’agit de leur analyse, pas d’une règle applicable aux SCPI. [Aldasoro, Doerr et Todorov, juillet 2025](https://www.bis.org/publications/bulletin-106-retail-investors-private-credit).
+
+## La banque reste dans le paysage
+
+Le cinquième chapitre a suivi le remboursement des prêts immobiliers. Dans le crédit privé, la banque peut financer le prêteur lui-même. Une étude de chercheurs de la Réserve fédérale publiée en août 2026 examine cette chaîne aux États-Unis : banque, *Business Development Company* (BDC, véhicule d’investissement prêteur), puis entreprise. Elle montre que le coût du financement bancaire intervient dans celui du crédit privé. Sa portée est celle du marché étudié, et ses conclusions sont celles des auteurs. [Haque et Wang, sections 7–8](https://www.federalreserve.gov/econres/notes/feds-notes/the-price-of-bank-funding-behind-private-credit-evidence-from-business-development-companies-20260807.html).
+
+Dans les deux cas, il devient utile de chercher la dette à chaque étage. Cela ne permet pas d’additionner toutes les expositions comme autant de pertes indépendantes. Une ligne bancaire disponible, un prêt utilisé et une moins-value sur des parts désignent des engagements différents. Il faut ensuite examiner les échéances, les garanties et les ressources de chaque emprunteur.
+
+## Ce que le rapprochement apporte
+
+La comparaison ne produit ni un classement des deux placements ni le scénario d’une crise commune. Elle fournit un parcours : lire le contrat de sortie, retrouver l’origine de la trésorerie, dater la valorisation, puis suivre les engagements de financement. Les chapitres sur les revenus et les immeubles restent indispensables pour comprendre les SCPI ; l’examen des emprunteurs et des contrats de prêt joue un autre rôle dans le crédit privé.
+
+Ces ressemblances de mécanismes sont une lecture de l0g fondée sur les documents cités. Nous n’avons établi ni corrélation chiffrée des pertes, ni équivalence des règles de rachat, ni contagion observée entre les SCPI étudiées et les fonds de crédit privé. Savoir pourquoi l’argent peut prendre du temps à revenir est déjà une comparaison utile. Il reste à lire le contrat qui organise cette attente.
+
+*Chapitre original arrêté au 13 septembre 2026. Sources primaires institutionnelles citées dans le texte ; les publications de chercheurs sont attribuées à leurs auteurs. Aucune recommandation personnelle d’investissement.*

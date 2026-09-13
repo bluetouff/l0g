@@ -263,8 +263,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     atlas: { sources: [{ label: 'HSBC REIM, Élysées Pierre offering document', href: 'https://www.reim.hsbc.fr/-/media/files/attachments/reim/bibliotheque-de-documents/ep-documentation-reglementaire/note-information-elysees-pierre', detail: 'Page 9: definitions of realisation and reconstitution values. French-language source.', kind: 'source' }], related: ['scpi', 'valeur-de-reconstitution'] },
   },
   {
-    slug: 'valeur-de-reconstitution', sigle: 'Reconstitution value', nom: 'Theoretical cost of rebuilding a French SCPI portfolio',
-    def: "Realisation value plus the costs of recreating the SCPI’s portfolio, including acquisition costs and the subscription commission. It provides a reference for issuing new units; it is not a floor under resale prices for existing units.",
+    slug: 'valeur-de-reconstitution', sigle: 'Reconstitution value', nom: 'Theoretical cost of acquiring an equivalent French SCPI portfolio',
+    def: "Realisation value plus the costs of acquiring an equivalent property portfolio, including acquisition costs and the subscription commission. This concerns transactions, not the physical reconstruction of buildings. It provides a reference for issuing new units; it is not a floor under resale prices for existing units.",
     guide: '/en/analysis/french-scpi-resale-prices-liquidity-discounts/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
     atlas: { sources: [{ label: 'HSBC REIM, Élysées Pierre offering document', href: 'https://www.reim.hsbc.fr/-/media/files/attachments/reim/bibliotheque-de-documents/ep-documentation-reglementaire/note-information-elysees-pierre', detail: 'Page 9: reconstitution costs and subscription pricing. French-language source.', kind: 'source' }], related: ['scpi', 'valeur-de-realisation'] },
   },

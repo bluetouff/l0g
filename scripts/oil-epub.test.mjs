@@ -154,7 +154,9 @@ test(`${lang}: oil cover, responsive variants, social card and publication page 
   assert.match(page, /seoTitle=/u); assert.match(page, /ogTitle=/u);
   const index = readFileSync(join(ROOT, lang === 'fr' ? 'src/pages/publications/index.astro' : 'src/pages/en/publications/index.astro'), 'utf8');
   assert.match(index, /publication="oil-trading"/u);
-  assert.ok(index.includes(book.social));
+  const catalogueImage = index.match(/ogImage="([^"]+)"/u)?.[1];
+  assert.ok(catalogueImage?.startsWith('/publications/'));
+  assert.ok(existsSync(join(ROOT, 'public', catalogueImage)));
   assert.match(page, /hreflang: 'fr'/u);
   assert.match(page, /hreflang: 'en'/u);
   if (lang === 'en') {

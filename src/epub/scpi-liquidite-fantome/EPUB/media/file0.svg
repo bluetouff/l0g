@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 760" role="img" aria-labelledby="scpi-fr-1-title scpi-fr-1-desc" focusable="false" lang="fr" style="display:block;width:100%;height:auto;background:#0b0d10" font-family="ui-monospace,monospace"><rect x="0" y="0" width="520" height="760" fill="#0b0d10"/>
+<title id="scpi-fr-1-title">Du retrait à la vente entre investisseurs</title>
+<desc id="scpi-fr-1-desc">Schéma simplifié des parts détenues en direct. La suspension annule les anciennes demandes et impose un nouvel ordre de vente. Les fonds de remboursement et cessions de gré à gré sont expliqués dans le texte.</desc>
+<rect width="520" height="760" rx="12" fill="#0b0d10" />
+<text x="26" y="39" fill="#5eead4" font-size="18" font-weight="700">l0g / SCPI / 01</text>
+<text x="26" y="83" fill="#e7e9ee" font-size="28" font-weight="700">Deux circuits de sortie</text>
+<rect data-panel="compensation" x="20" y="116" width="480" height="230" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="151" fill="#5eead4" font-size="20" font-weight="700">1 / RETRAIT À CAPITAL VARIABLE</text>
+<text x="40" y="195" fill="#e7e9ee" font-size="22" font-weight="700">Nouvelle souscription</text>
+<line x1="50" y1="212" x2="50" y2="235" stroke="#5eead4" stroke-width="2" />
+<text x="40" y="270" fill="#e7e9ee" font-size="22">Contrepartie au retrait</text>
+<text x="40" y="312" fill="#b7bdc8" font-size="20">Attente si les entrées manquent</text>
+<rect data-panel="secondary" x="20" y="367" width="480" height="260" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="403" fill="#ff4d87" font-size="20" font-weight="700">2 / APRÈS SUSPENSION</text>
+<text x="40" y="446" fill="#e7e9ee" font-size="22" font-weight="700">Ancienne demande annulée</text>
+<text x="40" y="482" fill="#e7e9ee" font-size="22">Nouvel ordre de vente</text>
+<line x1="50" y1="497" x2="50" y2="516" stroke="#ff4d87" stroke-width="2" />
+<text x="40" y="552" fill="#e7e9ee" font-size="22" font-weight="700">Acheteur + prix compatibles</text>
+<text x="40" y="596" fill="#b7bdc8" font-size="20">Cession entre investisseurs</text>
+<text x="26" y="671" fill="#e7e9ee" font-size="21">Les parts restent au détenteur</text>
+<text x="26" y="704" fill="#e7e9ee" font-size="21">tant qu’elles ne sont pas cédées.</text>
+<text x="26" y="739" fill="#b7bdc8" font-size="18">Schéma simplifié • AMF / Praemia</text>
+</svg>

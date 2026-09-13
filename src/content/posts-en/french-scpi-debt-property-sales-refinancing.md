@@ -22,7 +22,7 @@ The first four instalments examined withdrawal queues, resale prices, distributi
 
 ## Investor liquidity and property cash flow
 
-A [SCPI](/en/glossary/scpi/) is a French property-investment vehicle holding real estate directly or through property companies. Investors own units in the vehicle. Selling them requires a buyer or an available redemption mechanism. LF Grand Paris Patrimoine’s information memorandum distinguishes subscription-matched withdrawals, a possible redemption fund and sales of units to another investor. [Information memorandum, introduction and exit arrangements](https://www.moniwan.fr/documents/note-information-et-statuts-lf-grand-paris-patrimoine)
+A [SCPI](/en/glossary/scpi/), short for *société civile de placement immobilier*, is an unlisted French investment vehicle holding rental property directly or through property companies. Investors own units in the vehicle. Selling them requires a buyer or an available redemption mechanism. LF Grand Paris Patrimoine’s information memorandum distinguishes subscription-matched withdrawals, a possible redemption fund and sales of units to another investor. [Information memorandum, introduction and exit arrangements](https://www.moniwan.fr/documents/note-information-et-statuts-lf-grand-paris-patrimoine)
 
 That distinction matters for the secondary markets discussed in part two. An investor buying existing units provides the money needed to pay the seller, after applicable transaction costs. The trade does not, by itself, inject new equity into the fund to repay its property loans. Better trading conditions can help individual investors leave while leaving the property-financing problem largely untouched. [Information memorandum, chapter 2](https://www.moniwan.fr/documents/note-information-et-statuts-lf-grand-paris-patrimoine)
 
@@ -217,7 +217,7 @@ Immorente also reports nine completed second-quarter disposals generating **€1
 
 For a fund-specific investigation, four reconciliations would be the priority: debt and maturities by borrower; financial covenants and the latest test results; signed sales and net cash received; income lost and financing costs saved. A single fundraising, distribution or leverage figure cannot substitute for them.
 
-## The warning is about a shrinking choice of timing
+## Less freedom to choose when to sell
 
 The cases examined call for a fund-by-fund assessment. ASPIM and IEIF report an average debt-and-commitments ratio of **18.3% for 2025**, against **18.4% in 2024**. The Banque de France still judged commercial-property credit risk contained in its June 2026 stability report. Neither the sector average nor that dated assessment certifies the position of an individual SCPI. [ASPIM, 15 May 2026 release](https://www.aspim.fr/actualites/collecte-et-performance-des-fonds-immobiliers-grand-public-au-premier-trimestre-2026-et-principaux-indicateurs-des-scpi-en-2025/); [Banque de France, report published 24 June](https://www.banque-france.fr/fr/publications-et-statistiques/publications/rapport-sur-la-stabilite-financiere-juin-2026)
 

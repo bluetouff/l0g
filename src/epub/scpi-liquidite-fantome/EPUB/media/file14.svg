@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 840" role="img" aria-labelledby="scpi5-fr-3-title scpi5-fr-3-desc" focusable="false" lang="fr" style="display:block;width:100%;height:auto;background:#0b0d10;font-family:ui-monospace,monospace"><rect x="0" y="0" width="520" height="840" fill="#0b0d10"/>
+<title id="scpi5-fr-3-title">Vendre et rembourser</title><desc id="scpi5-fr-3-desc">Exemple entièrement fictif, en millions d’euros. Les actifs passent de 100 à 80 après réévaluation, puis à 60 après une vente de 20 affectée à la dette. La dette vaut successivement 40, 40, 20 ; la valeur nette 60, 40, 40. Un revenu annuel net immobilier perdu de 1,2, avec 0,8 d’intérêts économisés, donne un solde annuel diminué de 0,4.</desc>
+<rect x="0" y="0" width="520" height="840" fill="#0b0d10"/>
+<text x="28" y="38" font-size="20" fill="#5eead4" text-anchor="start">l0g / SCPI / 05</text>
+<text x="28" y="83" font-size="26" fill="#f5f5f7" text-anchor="start">Vendre et rembourser</text>
+<text x="28" y="119" font-size="22" fill="#aab3c2" text-anchor="start">Exemple entièrement fictif</text>
+<text x="28" y="155" font-size="20" fill="#aab3c2" text-anchor="start">Actifs = dette + valeur nette · M€</text>
+<text x="28" y="193" font-size="20" fill="#aab3c2" text-anchor="start">0</text>
+<text x="260" y="193" font-size="20" fill="#aab3c2" text-anchor="middle">50</text>
+<text x="492" y="193" font-size="20" fill="#aab3c2" text-anchor="end">100</text>
+<line x1="28" y1="205" x2="492" y2="205" stroke="#475569"/>
+<text x="28" y="235" font-size="22" fill="#f5f5f7" text-anchor="start">Départ : actifs 100</text>
+<text x="28" y="275" font-size="20" fill="#ff4d87" text-anchor="start">Dette 40</text>
+<text x="492" y="275" font-size="20" fill="#5eead4" text-anchor="end">Valeur nette 60</text>
+<rect x="28" y="296" width="464" height="26" fill="#18202b"/>
+<rect data-bar="true" data-part="debt" x="28" y="296" width="185.6" height="26" fill="#ff4d87"/>
+<rect data-bar="true" data-part="net" x="213.6" y="296" width="278.4" height="26" fill="#5eead4"/>
+<text x="28" y="377" font-size="22" fill="#f5f5f7" text-anchor="start">Réévaluation : actifs 80</text>
+<text x="28" y="417" font-size="20" fill="#ff4d87" text-anchor="start">Dette 40</text>
+<text x="492" y="417" font-size="20" fill="#5eead4" text-anchor="end">Valeur nette 40</text>
+<rect x="28" y="438" width="464" height="26" fill="#18202b"/>
+<rect data-bar="true" data-part="debt" x="28" y="438" width="185.6" height="26" fill="#ff4d87"/>
+<rect data-bar="true" data-part="net" x="213.6" y="438" width="185.6" height="26" fill="#5eead4"/>
+<text x="28" y="519" font-size="22" fill="#f5f5f7" text-anchor="start">Après vente : actifs 60</text>
+<text x="28" y="559" font-size="20" fill="#ff4d87" text-anchor="start">Dette 20</text>
+<text x="492" y="559" font-size="20" fill="#5eead4" text-anchor="end">Valeur nette 40</text>
+<rect x="28" y="580" width="464" height="26" fill="#18202b"/>
+<rect data-bar="true" data-part="debt" x="28" y="580" width="92.8" height="26" fill="#ff4d87"/>
+<rect data-bar="true" data-part="net" x="120.8" y="580" width="185.6" height="26" fill="#5eead4"/>
+<text x="28" y="650" font-size="20" fill="#aab3c2" text-anchor="start">La vente rembourse 20 de dette.</text>
+<text x="28" y="688" font-size="22" fill="#5eead4" text-anchor="start">La valeur nette reste à 40.</text>
+<text x="28" y="733" font-size="20" fill="#aab3c2" text-anchor="start">Revenu net perdu : 1,2 par an</text>
+<text x="28" y="769" font-size="20" fill="#aab3c2" text-anchor="start">Intérêts économisés : 0,8 par an</text>
+<text x="28" y="810" font-size="24" fill="#f5b13d" text-anchor="start">Solde annuel : −0,4 M€</text>
+</svg>

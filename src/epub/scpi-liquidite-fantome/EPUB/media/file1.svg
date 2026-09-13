@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 760" role="img" aria-labelledby="scpi-fr-2-title scpi-fr-2-desc" focusable="false" lang="fr" style="display:block;width:100%;height:auto;background:#0b0d10" font-family="ui-monospace,monospace"><rect x="0" y="0" width="520" height="760" fill="#0b0d10"/>
+<title id="scpi-fr-2-title">Décomposition de la baisse nationale en valeur</title>
+<desc id="scpi-fr-2-desc">Variation du 31 décembre 2025 au 30 juin 2026. En millions d’euros, environ −1 200 pour onze SCPI ayant suspendu la variabilité, +330 pour les SCPI restées à capital variable et −870 au total. Ces variations ne mesurent pas des remboursements.</desc>
+<rect width="520" height="760" rx="12" fill="#0b0d10" />
+<text x="26" y="39" fill="#5eead4" font-size="18" font-weight="700">l0g / SCPI / 01</text>
+<text x="26" y="83" fill="#e7e9ee" font-size="30" font-weight="700">La baisse en valeur</text>
+<text x="26" y="121" fill="#e7e9ee" font-size="22">Au premier semestre 2026</text>
+<text x="26" y="156" fill="#b7bdc8" font-size="19">31/12/2025 → 30/06/2026</text>
+<rect data-panel="suspended" x="20" y="184" width="480" height="132" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="216" fill="#b7bdc8" font-size="20">11 SCPI : variabilité suspendue</text>
+<text x="40" y="264" fill="#ff4d87" font-size="43" font-weight="700">−1 200 M€</text>
+<text x="40" y="303" fill="#e7e9ee" font-size="20">Réinscriptions et nouveaux prix</text>
+<rect data-panel="variable" x="20" y="338" width="480" height="123" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="373" fill="#b7bdc8" font-size="20">SCPI restées à capital variable</text>
+<text x="40" y="432" fill="#f5b13d" font-size="43" font-weight="700">+330 M€</text>
+<rect data-panel="total" x="20" y="483" width="480" height="123" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="518" fill="#b7bdc8" font-size="21">Variation totale publiée</text>
+<text x="40" y="578" fill="#5eead4" font-size="43" font-weight="700">−870 M€</text>
+<text x="26" y="650" fill="#e7e9ee" font-size="21">Montants approximatifs.</text>
+<text x="26" y="683" fill="#e7e9ee" font-size="20">Indicateur sensible aux registres</text>
+<text x="26" y="714" fill="#e7e9ee" font-size="20">et aux prix de valorisation.</text>
+<text x="26" y="744" fill="#b7bdc8" font-size="18">Source : ASPIM / IEIF, 5 août 2026</text>
+</svg>

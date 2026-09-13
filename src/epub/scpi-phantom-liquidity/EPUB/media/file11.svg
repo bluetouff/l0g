@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 682" role="img" aria-labelledby="scpi4-en-3-title scpi4-en-3-desc" focusable="false" lang="en" style="display:block;width:100%;height:auto;background:#0b0d10;font-family:ui-monospace,monospace"><rect x="0" y="0" width="520" height="682" fill="#0b0d10"/>
+<title id="scpi4-en-3-title">One lease, three readings</title><desc id="scpi4-en-3-desc">Fictional example: 1,000 square metres, €300 headline rent per square metre per year, six firm years. Twelve free months inside the lease and a €150,000 fit-out allowance leave €225 annualised over the lease. Adding a six-month void before the lease gives €207.69 over 78 months. Other expenses, tax, financing, indexation and discounting are excluded.</desc>
+<rect x="0" y="0" width="520" height="682" fill="#0b0d10"/>
+<text x="28" y="38" font-size="20" fill="#5eead4" text-anchor="start">l0g / SCPI / 04</text>
+<text x="28" y="83" font-size="26" fill="#f5f5f7" text-anchor="start">One lease, three readings</text>
+<text x="28" y="119" font-size="22" fill="#f5b13d" text-anchor="start">FICTIONAL EXAMPLE · €/m²/year</text>
+<text x="28" y="155" font-size="20" fill="#aab3c2" text-anchor="start">Average flows before other costs</text>
+<text x="28" y="193" font-size="20" fill="#aab3c2" text-anchor="start">0</text>
+<text x="260" y="193" font-size="20" fill="#aab3c2" text-anchor="middle">150</text>
+<text x="492" y="193" font-size="20" fill="#aab3c2" text-anchor="end">300</text>
+<line x1="28" y1="205" x2="492" y2="205" stroke="#475569"/>
+<text x="28" y="236" font-size="22" fill="#f5f5f7" text-anchor="start">No incentives · 72 months</text>
+<text x="492" y="273" font-size="26" fill="#5eead4" text-anchor="end">300</text>
+<rect x="28" y="287" width="464" height="20" fill="#1b2430"/>
+<rect data-bar="true" x="28" y="287" width="464.000000" height="20" fill="#5eead4"/>
+<text x="28" y="332" font-size="22" fill="#f5f5f7" text-anchor="start">Free rent + fit-out · 72 months</text>
+<text x="492" y="369" font-size="26" fill="#f5b13d" text-anchor="end">225</text>
+<rect x="28" y="383" width="464" height="20" fill="#1b2430"/>
+<rect data-bar="true" x="28" y="383" width="348.000000" height="20" fill="#f5b13d"/>
+<text x="28" y="428" font-size="22" fill="#f5f5f7" text-anchor="start">Adding the void · 78 months</text>
+<text x="492" y="465" font-size="26" fill="#ff4d87" text-anchor="end">207.69</text>
+<rect x="28" y="479" width="464" height="20" fill="#1b2430"/>
+<rect data-bar="true" x="28" y="479" width="321.230769" height="20" fill="#ff4d87"/>
+<text x="28" y="546" font-size="20" fill="#aab3c2" text-anchor="start">Six-year lease at €300/m²/year</text>
+<text x="28" y="580" font-size="20" fill="#aab3c2" text-anchor="start">12 free months inside the lease</text>
+<text x="28" y="614" font-size="20" fill="#aab3c2" text-anchor="start">€150,000 fit-out contribution</text>
+<text x="28" y="648" font-size="20" fill="#aab3c2" text-anchor="start">l0g calculation · fictional inputs</text>
+</svg>

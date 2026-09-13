@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 750" role="img" aria-labelledby="scpi2-fr-auction-title scpi2-fr-auction-desc" focusable="false" lang="fr" style="display:block;width:100%;height:auto;background:#0b0d10"><rect x="0" y="0" width="520" height="750" fill="#0b0d10"/>
+<title id="scpi2-fr-auction-title">Exemple fictif : prix maximisant les échanges</title>
+<desc id="scpi2-fr-auction-desc">Au prix de 40 euros, 100 parts sont échangeables ; à 50 euros, 250 ; à 60 euros, 80. Le maximum est à 50 euros pour 250 parts sur 600 proposées. Les prix sont fictifs et les frais exclus.</desc>
+<rect width="520" height="750" fill="#0b0d10" />
+<g font-family="ui-monospace,SFMono-Regular,Consolas,monospace">
+<text x="26" y="38" font-size="20" fill="#5eead4" text-anchor="start" font-weight="700">l0g / SCPI / 02</text>
+<text x="26" y="87" font-size="30" fill="#f5f5f7" text-anchor="start" font-weight="700">Le prix issu des ordres</text>
+<text x="26" y="130" font-size="22" fill="#aab3c2" text-anchor="start">Exemple fictif, frais exclus</text>
+<text x="26" y="181" font-size="24" fill="#f5f5f7" text-anchor="start">Parts échangeables</text>
+<text x="26" y="251" font-size="24" fill="#f5f5f7" text-anchor="start">40 €</text>
+<text x="494" y="225" font-size="26" fill="#aab3c2" text-anchor="end" font-weight="700">100</text>
+<rect data-bar="true" x="154" y="238" width="106.667" height="22" fill="#aab3c2" />
+<text x="26" y="345" font-size="24" fill="#f5f5f7" text-anchor="start">50 €</text>
+<text x="494" y="319" font-size="26" fill="#5eead4" text-anchor="end" font-weight="700">250</text>
+<rect data-bar="true" x="154" y="332" width="266.667" height="22" fill="#5eead4" />
+<text x="26" y="439" font-size="24" fill="#f5f5f7" text-anchor="start">60 €</text>
+<text x="494" y="413" font-size="26" fill="#aab3c2" text-anchor="end" font-weight="700">80</text>
+<rect data-bar="true" x="154" y="426" width="85.333" height="22" fill="#aab3c2" />
+<line x1="154" y1="488" x2="474" y2="488" stroke="#334155" />
+<text x="154" y="526" font-size="22" fill="#aab3c2" text-anchor="middle">0</text>
+<text x="314" y="526" font-size="22" fill="#aab3c2" text-anchor="middle">150</text>
+<text x="474" y="526" font-size="22" fill="#aab3c2" text-anchor="middle">300</text>
+<text x="26" y="587" font-size="27" fill="#5eead4" text-anchor="start" font-weight="700">À 50 € : 250 parts vendues</text>
+<text x="26" y="632" font-size="24" fill="#f5f5f7" text-anchor="start">350 parts restent à vendre</text>
+<text x="26" y="678" font-size="22" fill="#aab3c2" text-anchor="start">Sur 600 parts proposées</text>
+<text x="26" y="723" font-size="20" fill="#aab3c2" text-anchor="start">AMF 422-213 • Calculs l0g</text>
+</g>
+</svg>

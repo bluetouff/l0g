@@ -49,7 +49,7 @@ The [first part of this investigation](/en/analysis/french-scpi-exit-queues-liqu
 <text x="26" y="720" font-size="20" fill="#aab3c2" text-anchor="start">Euros per unit, seller side</text>
 </g>
 </svg>
-<figcaption>Élysées Pierre, August 2026. Euros per unit on the seller side; bars start at zero. The €516.06 withdrawal price applies from 3 August. The 18 August auction traded 120 units at €300 net to sellers (€327.60 to buyers). Calculated gap: 300 / 516.06 − 1. Two exit mechanisms, not a historical return. Source: <a href="https://www.reim.hsbc.fr/fr/elysees-pierre/elysees-pierre-details">HSBC REIM</a>.</figcaption>
+<figcaption>Élysées Pierre, August 2026. Euros per unit on the seller side; bars start at zero. The €516.06 withdrawal price applies from 3 August. The 18 August auction traded 120 units at €300 net to sellers (€327.60 cost to buyers). Calculated gap: 300 / 516.06 − 1. Two exit mechanisms, not a historical return. Source: <a href="https://www.reim.hsbc.fr/fr/elysees-pierre/elysees-pierre-details">HSBC REIM</a>.</figcaption>
 </figure>
 
 ## One unit, several very different prices
@@ -58,13 +58,13 @@ A **[SCPI](/en/glossary/scpi/)**, short for *société civile de placement immob
 
 The **subscription price** applies when new units are issued. In the usual variable-capital arrangement, the **withdrawal price** applies to an exit through the fund’s withdrawal mechanism. A **secondary-market sale** transfers existing units to another investor, through orders matched under the vehicle’s rules. Élysées Pierre describes both primary and secondary routes: the existence of its periodic auction does not mean its variable-capital mechanism has been suspended. ([Élysées Pierre offering document, pages 9 and 13–15](https://www.reim.hsbc.fr/-/media/files/attachments/reim/bibliotheque-de-documents/ep-documentation-reglementaire/note-information-elysees-pierre))
 
-The **[realisation value](/en/glossary/valeur-de-realisation/)** is an appraisal-based measure of net assets: the estimated market value of the properties plus other assets, net of liabilities. The **[reconstitution value](/en/glossary/valeur-de-reconstitution/)** adds the costs of rebuilding the portfolio. Neither is a standing bid for every investor’s units. ([Élysées Pierre offering document, page 9](https://www.reim.hsbc.fr/-/media/files/attachments/reim/bibliotheque-de-documents/ep-documentation-reglementaire/note-information-elysees-pierre))
+The **[realisation value](/en/glossary/valeur-de-realisation/)** is an appraisal-based measure of net assets: the estimated market value of the properties plus other assets, net of liabilities. The **[reconstitution value](/en/glossary/valeur-de-reconstitution/)** adds the costs and duties needed to acquire an equivalent property portfolio. Neither is a standing bid for every investor’s units. ([Élysées Pierre offering document, page 9](https://www.reim.hsbc.fr/-/media/files/attachments/reim/bibliotheque-de-documents/ep-documentation-reglementaire/note-information-elysees-pierre))
 
 Nor do the rules governing the subscription price create a floor under resales. Article L. 214-94 of France’s Monetary and Financial Code requires a subscription price more than 10% away from reconstitution value to be justified and notified to the AMF. It is not a promise that another investor will buy at that level. ([Légifrance](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027810949))
 
 These figures can usefully be compared. Treating them as interchangeable, however, produces misleading claims about losses and bargains.
 
-## Four trades, with the quantities left in
+## Four trades and their volumes
 
 The following observations come from the managers’ published trading histories. **They are selected case studies, not a representative sample of the SCPI market.** The funds differ, as do the trading dates. ([HSBC REIM](https://www.reim.hsbc.fr/fr/elysees-pierre/elysees-pierre-details), [Praemia REIM](https://www.praemiareim.fr/fr/scpi-primopierre), [La Française: LF Grand Paris Patrimoine](https://www.lafrancaise-am-partenaires.com/Produit/SCPI/FicheProduit/lf-grand-paris-patrimoine), [La Française: Crédit Mutuel Pierre 1](https://www.lafrancaise-am-partenaires.com/Produit/SCPI/FicheProduit/credit-mutuel-pierre-1))
 
@@ -79,7 +79,7 @@ The following observations come from the managers’ published trading histories
 
 </div>
 
-*Nominal euros per unit. “Net seller” follows the manager’s market convention, not an individual investor’s after-tax return. The buyer price includes the charges reported in the trading history. Volumes count units, not people. *
+*Nominal euros per unit. “Net seller” follows the manager’s market convention, not an individual investor’s after-tax return. The buyer price includes the charges reported in the trading history. Volumes count units, not people.*
 
 One tempting shortcut is to compare an old purchase price, including entry costs, with a recent net sale price and call the difference the investment’s “performance”. A total-return calculation would also need the distributions received, the dates and the actual costs incurred. This table does not reconstruct any individual holding period.
 
@@ -237,7 +237,7 @@ Several explanations are compatible with such a gap. A buyer may demand compensa
 
 **The collected evidence does not identify how much of the discount comes from each factor.** Describing the whole gap as a “liquidity discount” would turn an observed price into an explanation that is more precise than the evidence allows. Neither the sellers’ personal circumstances nor the buyers’ reasoning is public.
 
-The opposite claim : that this is merely an order-book phenomenon with no deterioration in the assets : also fails. LF Grand Paris Patrimoine reports a **14.0% like-for-like decline in appraised property values** between December 2025 and June 2026. Its **realisation value per unit fell 24.9% to €130.31** over that period. The bulletin explains the amplification through liabilities and other net balance-sheet items. Those are the manager’s figures and interpretation, not an independent reappraisal by l0g. ([Bulletin, pages 3–5](https://doc.la-francaise.com/documents/bulletin-trimestriel-lf-grand-paris-patrimoine-30062026))
+Property appraisals also show deterioration in some portfolios. LF Grand Paris Patrimoine reports a **14.0% like-for-like decline in appraised property values** between December 2025 and June 2026. Its **realisation value per unit fell 24.9% to €130.31** over that period. The bulletin explains the amplification through liabilities and other net balance-sheet items. Those are the manager’s figures and interpretation, not an independent reappraisal by l0g. ([Bulletin, pages 3–5](https://doc.la-francaise.com/documents/bulletin-trimestriel-lf-grand-paris-patrimoine-30062026))
 
 A stripped-down, hypothetical balance sheet illustrates the principle. Properties worth 100, funded with debt of 40, leave 60 for investors. If the properties fall to 80 while debt stays at 40, only 40 remains. Property values have fallen 20%, but net assets have fallen by one-third. A unit’s underlying value can therefore decline faster than the buildings’ value, even before resale conditions enter the calculation.
 

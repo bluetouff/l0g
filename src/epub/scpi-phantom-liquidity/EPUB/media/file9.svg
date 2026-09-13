@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 778" role="img" aria-labelledby="scpi4-en-1-title scpi4-en-1-desc" focusable="false" lang="en" style="display:block;width:100%;height:auto;background:#0b0d10;font-family:ui-monospace,monospace"><rect x="0" y="0" width="520" height="778" fill="#0b0d10"/>
+<title id="scpi4-en-1-title">Primopierre: occupancy</title><desc id="scpi4-en-1-desc">The 73.3%, 6.7% and 1.7% components count towards financial occupancy of 81.7%. The 18.3% of vacant space marketed for letting does not. These are rental weights, not floor-area shares or cash receipts.</desc>
+<rect x="0" y="0" width="520" height="778" fill="#0b0d10"/>
+<text x="28" y="38" font-size="20" fill="#5eead4" text-anchor="start">l0g / SCPI / 04</text>
+<text x="28" y="83" font-size="26" fill="#f5f5f7" text-anchor="start">Primopierre: occupancy</text>
+<text x="28" y="119" font-size="22" fill="#aab3c2" text-anchor="start">Financial occupancy · Q2 2026</text>
+<text x="28" y="155" font-size="20" fill="#aab3c2" text-anchor="start">Share of potential rental income</text>
+<text x="28" y="193" font-size="20" fill="#aab3c2" text-anchor="start">0</text>
+<text x="260" y="193" font-size="20" fill="#aab3c2" text-anchor="middle">50</text>
+<text x="492" y="193" font-size="20" fill="#aab3c2" text-anchor="end">100</text>
+<line x1="28" y1="205" x2="492" y2="205" stroke="#475569"/>
+<text x="28" y="236" font-size="22" fill="#f5f5f7" text-anchor="start">Occupied premises</text>
+<text x="492" y="273" font-size="26" fill="#5eead4" text-anchor="end">73.3%</text>
+<rect x="28" y="287" width="464" height="20" fill="#1b2430"/>
+<rect data-bar="true" x="28" y="287" width="340.112000" height="20" fill="#5eead4"/>
+<text x="28" y="332" font-size="22" fill="#f5f5f7" text-anchor="start">Rent-free / early access</text>
+<text x="492" y="369" font-size="26" fill="#f5b13d" text-anchor="end">6.7%</text>
+<rect x="28" y="383" width="464" height="20" fill="#1b2430"/>
+<rect data-bar="true" x="28" y="383" width="31.088000" height="20" fill="#f5b13d"/>
+<text x="28" y="428" font-size="22" fill="#f5f5f7" text-anchor="start">Vacant, under sale agreement</text>
+<text x="492" y="465" font-size="26" fill="#a4a7ff" text-anchor="end">1.7%</text>
+<rect x="28" y="479" width="464" height="20" fill="#1b2430"/>
+<rect data-bar="true" x="28" y="479" width="7.888000" height="20" fill="#a4a7ff"/>
+<text x="28" y="524" font-size="22" fill="#f5f5f7" text-anchor="start">Vacant, marketed for letting</text>
+<text x="492" y="561" font-size="26" fill="#ff4d87" text-anchor="end">18.3%</text>
+<rect x="28" y="575" width="464" height="20" fill="#1b2430"/>
+<rect data-bar="true" x="28" y="575" width="84.912000" height="20" fill="#ff4d87"/>
+<text x="28" y="642" font-size="20" fill="#aab3c2" text-anchor="start">73.3 + 6.7 + 1.7 = 81.7%</text>
+<text x="28" y="676" font-size="20" fill="#aab3c2" text-anchor="start">TOF: weighted by rental income</text>
+<text x="28" y="710" font-size="20" fill="#aab3c2" text-anchor="start">Cash collection is a separate test.</text>
+<text x="28" y="744" font-size="20" fill="#aab3c2" text-anchor="start">Source: Praemia · Q2 2026, p. 4</text>
+</svg>

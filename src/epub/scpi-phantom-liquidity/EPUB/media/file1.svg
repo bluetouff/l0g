@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 760" role="img" aria-labelledby="scpi-en-2-title scpi-en-2-desc" focusable="false" lang="en" style="display:block;width:100%;height:auto;background:#0b0d10" font-family="ui-monospace,monospace"><rect x="0" y="0" width="520" height="760" fill="#0b0d10"/>
+<title id="scpi-en-2-title">Decomposing the decline in the national backlog value</title>
+<desc id="scpi-en-2-desc">Change from 31 December 2025 to 30 June 2026, in millions of euros. Approximately −1,200 for eleven SCPI funds that suspended variable capital, +330 for the funds that retained it, and −870 in total. These changes do not measure repayments.</desc>
+<rect width="520" height="760" rx="12" fill="#0b0d10" />
+<text x="26" y="39" fill="#5eead4" font-size="18" font-weight="700">l0g / SCPI / 01</text>
+<text x="26" y="83" fill="#e7e9ee" font-size="30" font-weight="700">The decline in value</text>
+<text x="26" y="121" fill="#e7e9ee" font-size="22">First half of 2026</text>
+<text x="26" y="156" fill="#b7bdc8" font-size="19">31 Dec 2025 → 30 Jun 2026</text>
+<rect data-panel="suspended" x="20" y="184" width="480" height="132" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="216" fill="#b7bdc8" font-size="19">11 funds: variable capital suspended</text>
+<text x="40" y="264" fill="#ff4d87" font-size="43" font-weight="700">−€1,200m</text>
+<text x="40" y="303" fill="#e7e9ee" font-size="19">Fresh registrations and new prices</text>
+<rect data-panel="variable" x="20" y="338" width="480" height="123" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="373" fill="#b7bdc8" font-size="19">Funds that retained variable capital</text>
+<text x="40" y="432" fill="#f5b13d" font-size="43" font-weight="700">+€330m</text>
+<rect data-panel="total" x="20" y="483" width="480" height="123" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="518" fill="#b7bdc8" font-size="21">Total reported change</text>
+<text x="40" y="578" fill="#5eead4" font-size="43" font-weight="700">−€870m</text>
+<text x="26" y="650" fill="#e7e9ee" font-size="21">Approximate amounts.</text>
+<text x="26" y="683" fill="#e7e9ee" font-size="20">Sensitive to register changes</text>
+<text x="26" y="714" fill="#e7e9ee" font-size="20">and the prices used for valuation.</text>
+<text x="26" y="744" fill="#b7bdc8" font-size="18">Source: ASPIM / IEIF, 5 Aug 2026</text>
+</svg>

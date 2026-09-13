@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 760" role="img" aria-labelledby="scpi-en-3-title scpi-en-3-desc" focusable="false" lang="en" style="display:block;width:100%;height:auto;background:#0b0d10" font-family="ui-monospace,monospace"><rect x="0" y="0" width="520" height="760" fill="#0b0d10"/>
+<title id="scpi-en-3-title">Primopierre: registers and trading volumes</title>
+<desc id="scpi-en-3-desc">2,190,372 units awaiting redemption at 31 December 2025; 146,937 units awaiting sale at 30 June 2026. Both stocks include confirmed and unconfirmed requests. Gross organised-market volume of 6,907 units from March to June 2026, excluding private transfers. These figures do not track original applicants individually.</desc>
+<rect width="520" height="760" rx="12" fill="#0b0d10" />
+<text x="26" y="39" fill="#5eead4" font-size="18" font-weight="700">l0g / SCPI / 01</text>
+<text x="26" y="82" fill="#e7e9ee" font-size="30" font-weight="700">Primopierre</text>
+<text x="26" y="117" fill="#b7bdc8" font-size="22">Registers and transactions</text>
+<rect data-panel="old" x="20" y="144" width="480" height="154" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="174" fill="#b7bdc8" font-size="20">31 Dec 2025 • Old register</text>
+<text x="40" y="226" fill="#ff4d87" font-size="42" font-weight="700">2,190,372</text>
+<text x="40" y="266" fill="#e7e9ee" font-size="21">Units awaiting redemption</text>
+<text x="40" y="291" fill="#b7bdc8" font-size="18">Confirmed and unconfirmed</text>
+<rect data-panel="new" x="20" y="320" width="480" height="154" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="350" fill="#b7bdc8" font-size="20">30 Jun 2026 • New register</text>
+<text x="40" y="402" fill="#f5b13d" font-size="42" font-weight="700">146,937</text>
+<text x="40" y="442" fill="#e7e9ee" font-size="21">Units awaiting sale</text>
+<text x="40" y="467" fill="#b7bdc8" font-size="18">Confirmed and unconfirmed</text>
+<rect data-panel="trades" x="20" y="496" width="480" height="154" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="526" fill="#b7bdc8" font-size="20">March–June 2026 • Gross flow</text>
+<text x="40" y="578" fill="#5eead4" font-size="42" font-weight="700">6,907</text>
+<text x="40" y="618" fill="#e7e9ee" font-size="19">Units traded on the organised market</text>
+<text x="40" y="643" fill="#b7bdc8" font-size="18">Private transfers excluded</text>
+<text x="26" y="691" fill="#e7e9ee" font-size="21" font-weight="700">Two stocks and a separate flow.</text>
+<text x="26" y="720" fill="#b7bdc8" font-size="19">Original sellers: incomplete tracking.</text>
+<text x="26" y="747" fill="#b7bdc8" font-size="18">Praemia REIM • Calculation: l0g</text>
+</svg>

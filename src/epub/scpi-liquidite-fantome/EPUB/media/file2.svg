@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 760" role="img" aria-labelledby="scpi-fr-3-title scpi-fr-3-desc" focusable="false" lang="fr" style="display:block;width:100%;height:auto;background:#0b0d10" font-family="ui-monospace,monospace"><rect x="0" y="0" width="520" height="760" fill="#0b0d10"/>
+<title id="scpi-fr-3-title">Primopierre : registres et transactions</title>
+<desc id="scpi-fr-3-desc">2 190 372 parts en attente de retrait au 31 décembre 2025, 146 937 parts en attente de cession au 30 juin 2026. Les deux stocks incluent les demandes confirmées et non confirmées. Flux brut de 6 907 parts échangées de mars à juin 2026 sur le marché organisé, hors gré à gré. Aucun suivi des anciennes demandes individuellement.</desc>
+<rect width="520" height="760" rx="12" fill="#0b0d10" />
+<text x="26" y="39" fill="#5eead4" font-size="18" font-weight="700">l0g / SCPI / 01</text>
+<text x="26" y="82" fill="#e7e9ee" font-size="30" font-weight="700">Primopierre</text>
+<text x="26" y="117" fill="#b7bdc8" font-size="22">Registres et transactions</text>
+<rect data-panel="old" x="20" y="144" width="480" height="154" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="174" fill="#b7bdc8" font-size="20">31/12/2025 • Ancien registre</text>
+<text x="40" y="226" fill="#ff4d87" font-size="42" font-weight="700">2 190 372</text>
+<text x="40" y="266" fill="#e7e9ee" font-size="21">Parts en attente de retrait</text>
+<text x="40" y="291" fill="#b7bdc8" font-size="18">Confirmées et non confirmées</text>
+<rect data-panel="new" x="20" y="320" width="480" height="154" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="350" fill="#b7bdc8" font-size="20">30/06/2026 • Nouveau registre</text>
+<text x="40" y="402" fill="#f5b13d" font-size="42" font-weight="700">146 937</text>
+<text x="40" y="442" fill="#e7e9ee" font-size="21">Parts en attente de cession</text>
+<text x="40" y="467" fill="#b7bdc8" font-size="18">Confirmées et non confirmées</text>
+<rect data-panel="trades" x="20" y="496" width="480" height="154" rx="10" fill="#171a20" stroke="#343944" />
+<text x="40" y="526" fill="#b7bdc8" font-size="20">Mars à juin 2026 • Flux brut</text>
+<text x="40" y="578" fill="#5eead4" font-size="42" font-weight="700">6 907</text>
+<text x="40" y="618" fill="#e7e9ee" font-size="20">Parts échangées, marché organisé</text>
+<text x="40" y="643" fill="#b7bdc8" font-size="18">Hors cessions de gré à gré</text>
+<text x="26" y="691" fill="#e7e9ee" font-size="21" font-weight="700">Deux stocks et un flux distincts.</text>
+<text x="26" y="720" fill="#b7bdc8" font-size="19">Anciens vendeurs : suivi incomplet.</text>
+<text x="26" y="747" fill="#b7bdc8" font-size="18">Praemia REIM • Calcul : l0g</text>
+</svg>

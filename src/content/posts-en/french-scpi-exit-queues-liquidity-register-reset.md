@@ -12,7 +12,7 @@ sourceArticle: scpi-retraits-parts-attente-liquidite-registres
 sourceUpdatedDate: '2026-09-13T08:56:09+02:00'
 ---
 
-*SCPI: measuring the risk, Part 1 of 6. Documentary research cut off on 13 September 2026. National statistics refer to 30 June 2026.*
+*SCPI: measuring the risk, Part 1 of 6. Research cut-off: 13 September 2026. National statistics refer to 30 June 2026.*
 
 **An investor’s exit request can disappear from a register without the investor receiving any cash.** Primopierre’s change of trading arrangements provides a concrete example. Existing redemption requests are cancelled, and holders who still wish to sell must submit a fresh sell order. Until their units are transferred, they continue to own them. ([Praemia REIM][S06])
 
@@ -26,7 +26,7 @@ A **[SCPI](/en/glossary/scpi/)**, short for *société civile de placement immob
 
 Under the usual variable-capital arrangement, money from new subscriptions can provide the counterpart to outgoing investors’ redemption requests. Requests are processed according to their place in the register and the applicable conditions. A backlog develops when incoming demand is insufficient. ([AMF, February 2025][S05])
 
-There can be other routes. A redemption reserve, if established and funded, may support withdrawals within its rules. A holder can also arrange a privately negotiated transfer. Primopierre’s offering document describes these options; neither amounts to an unlimited pool of available cash. ([Offering document, pages 16–20][S09])
+There can be other routes. A dedicated redemption fund (*fonds de remboursement*), if established and funded, may support withdrawals within its rules. A holder can also arrange a privately negotiated transfer. Primopierre’s offering document describes these options; neither amounts to an unlimited pool of available cash. ([Offering document, pages 16–20][S09])
 
 Income and liquidity answer different questions. A distribution shows that a payment has been made to a holder. It does not establish that somebody would buy the holding. An investor may therefore discover the importance of illiquidity when cash is needed, before any loss has been realised through a sale.
 
@@ -56,7 +56,7 @@ Suspending variable capital changes the route out. The manager organises a secon
 <text x="26" y="704" fill="#e7e9ee" font-size="21">until the units are transferred.</text>
 <text x="26" y="739" fill="#b7bdc8" font-size="18">Simplified • AMF / Praemia REIM</text>
 </svg>
-<figcaption>Matched redemptions and secondary-market transfers are different exit arrangements. Simplified diagram; redemption reserves and private transfers are discussed in the text. Sources: <a href="https://www.amf-france.org/fr/le-mediateur/journal-de-bord-du-mediateur/dossiers-du-mois/scpi-contrairement-aux-ordres-de-vente-des-parts-les-demandes-de-retrait-sont-sans-duree-de-validite">AMF</a> and <a href="https://www.praemiareim.fr/fr/scpi-primopierre">Praemia REIM</a>.</figcaption>
+<figcaption>Matched redemptions and secondary-market transfers are different exit arrangements. Simplified diagram; redemption funds and private transfers are discussed in the text. Sources: <a href="https://www.amf-france.org/fr/le-mediateur/journal-de-bord-du-mediateur/dossiers-du-mois/scpi-contrairement-aux-ordres-de-vente-des-parts-les-demandes-de-retrait-sont-sans-duree-de-validite">AMF</a> and <a href="https://www.praemiareim.fr/fr/scpi-primopierre">Praemia REIM</a>.</figcaption>
 </figure>
 
 ## Two opposing movements sit behind the national decline
@@ -92,7 +92,7 @@ The end-2025 release put the pending stock at **approximately €2.8 billion**. 
 
 The first number is not €1.2 billion paid back to departing investors. It combines changes to the registers with the re-entry of units at prices observed in secondary trading. The release does not isolate precisely how much comes from quantities being re-registered and how much from prices. ([ASPIM / IEIF][S01])
 
-Rounding also matters. Subtracting the headline stocks of €2.8 billion and €1.9 billion yields €900 million, rather than the reported change of roughly €870 million. These are not sufficiently precise inputs for a reconciliation to the last euro. The published figures do not provide an exact reconciliation.
+Rounding also matters. Subtracting the headline stocks of €2.8 billion and €1.9 billion yields €900 million, rather than the reported change of roughly €870 million. These are not sufficiently precise inputs for a reconciliation to the last euro.
 
 ASPIM itself cautions against treating the total decline as evidence of a general improvement in liquidity. The qualification is in the original release. The risk is that a headline reproduces the percentage without the explanation. ([ASPIM / IEIF][S01])
 

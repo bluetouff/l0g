@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 856" role="img" aria-labelledby="scpi2-fr-history-title scpi2-fr-history-desc" focusable="false" lang="fr" style="display:block;width:100%;height:auto;background:#0b0d10"><rect x="0" y="0" width="520" height="856" fill="#0b0d10"/>
+<title id="scpi2-fr-history-title">Primopierre : prix net vendeur et volumes des six confrontations</title>
+<desc id="scpi2-fr-history-desc">26 mars : 45 euros, 171 parts ; 30 avril : 40 euros, 1 756 ; 28 mai : 40 euros, 2 021 ; 25 juin : 40 euros, 2 959 ; 30 juillet : 38,71 euros, 1 637 ; 27 août : 36 euros, 1 747. Toutes les dates sont en 2026. Prix et quantités propres à chaque confrontation.</desc>
+<rect width="520" height="856" fill="#0b0d10" />
+<g font-family="ui-monospace,SFMono-Regular,Consolas,monospace">
+<text x="26" y="38" font-size="20" fill="#5eead4" text-anchor="start" font-weight="700">l0g / SCPI / 02</text>
+<text x="26" y="87" font-size="30" fill="#f5f5f7" text-anchor="start" font-weight="700">Six prix observés</text>
+<text x="26" y="129" font-size="22" fill="#aab3c2" text-anchor="start">Primopierre, mars–août 2026</text>
+<text x="26" y="171" font-size="20" fill="#aab3c2" text-anchor="start">Date</text>
+<text x="154" y="171" font-size="20" fill="#aab3c2" text-anchor="middle">0</text>
+<text x="314" y="171" font-size="20" fill="#aab3c2" text-anchor="middle">25</text>
+<text x="474" y="171" font-size="20" fill="#aab3c2" text-anchor="middle">50</text>
+<line x1="154" y1="188" x2="474" y2="188" stroke="#334155" />
+<line x1="154" y1="188" x2="154" y2="682" stroke="#334155" />
+<text x="26" y="242" font-size="21" fill="#f5f5f7" text-anchor="start">26/03</text>
+<text x="494" y="221" font-size="24" fill="#5eead4" text-anchor="end" font-weight="700">45,00</text>
+<rect data-bar="true" x="154" y="232" width="288" height="22" fill="#5eead4" />
+<text x="154" y="287" font-size="22" fill="#aab3c2" text-anchor="start">171 parts</text>
+<text x="26" y="324" font-size="21" fill="#f5f5f7" text-anchor="start">30/04</text>
+<text x="494" y="303" font-size="24" fill="#5eead4" text-anchor="end" font-weight="700">40,00</text>
+<rect data-bar="true" x="154" y="314" width="256" height="22" fill="#5eead4" />
+<text x="154" y="369" font-size="22" fill="#aab3c2" text-anchor="start">1 756 parts</text>
+<text x="26" y="406" font-size="21" fill="#f5f5f7" text-anchor="start">28/05</text>
+<text x="494" y="385" font-size="24" fill="#5eead4" text-anchor="end" font-weight="700">40,00</text>
+<rect data-bar="true" x="154" y="396" width="256" height="22" fill="#5eead4" />
+<text x="154" y="451" font-size="22" fill="#aab3c2" text-anchor="start">2 021 parts</text>
+<text x="26" y="488" font-size="21" fill="#f5f5f7" text-anchor="start">25/06</text>
+<text x="494" y="467" font-size="24" fill="#5eead4" text-anchor="end" font-weight="700">40,00</text>
+<rect data-bar="true" x="154" y="478" width="256" height="22" fill="#5eead4" />
+<text x="154" y="533" font-size="22" fill="#aab3c2" text-anchor="start">2 959 parts</text>
+<text x="26" y="570" font-size="21" fill="#f5f5f7" text-anchor="start">30/07</text>
+<text x="494" y="549" font-size="24" fill="#5eead4" text-anchor="end" font-weight="700">38,71</text>
+<rect data-bar="true" x="154" y="560" width="247.744" height="22" fill="#5eead4" />
+<text x="154" y="615" font-size="22" fill="#aab3c2" text-anchor="start">1 637 parts</text>
+<text x="26" y="652" font-size="21" fill="#f5f5f7" text-anchor="start">27/08</text>
+<text x="494" y="631" font-size="24" fill="#ff4d87" text-anchor="end" font-weight="700">36,00</text>
+<rect data-bar="true" x="154" y="642" width="230.4" height="22" fill="#ff4d87" />
+<text x="154" y="697" font-size="22" fill="#aab3c2" text-anchor="start">1 747 parts</text>
+<text x="26" y="751" font-size="23" fill="#f5f5f7" text-anchor="start">Prix net vendeur en €/part</text>
+<text x="26" y="790" font-size="22" fill="#f5f5f7" text-anchor="start">Volume de chaque séance</text>
+<text x="26" y="829" font-size="20" fill="#aab3c2" text-anchor="start">Source : Praemia REIM</text>
+</g>
+</svg>

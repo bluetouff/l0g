@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 856" role="img" aria-labelledby="scpi2-en-history-title scpi2-en-history-desc" focusable="false" lang="en" style="display:block;width:100%;height:auto;background:#0b0d10"><rect x="0" y="0" width="520" height="856" fill="#0b0d10"/>
+<title id="scpi2-en-history-title">Primopierre: net seller prices and volumes at six auctions</title>
+<desc id="scpi2-en-history-desc">26 March: 45 euros, 171 units; 30 April: 40 euros, 1,756; 28 May: 40 euros, 2,021; 25 June: 40 euros, 2,959; 30 July: 38.71 euros, 1,637; 27 August: 36 euros, 1,747. All dates in 2026. Prices and quantities apply to each auction.</desc>
+<rect width="520" height="856" fill="#0b0d10" />
+<g font-family="ui-monospace,SFMono-Regular,Consolas,monospace">
+<text x="26" y="38" font-size="20" fill="#5eead4" text-anchor="start" font-weight="700">l0g / SCPI / 02</text>
+<text x="26" y="87" font-size="30" fill="#f5f5f7" text-anchor="start" font-weight="700">Six observed prices</text>
+<text x="26" y="129" font-size="22" fill="#aab3c2" text-anchor="start">Primopierre, Mar–Aug 2026</text>
+<text x="26" y="171" font-size="20" fill="#aab3c2" text-anchor="start">Date</text>
+<text x="154" y="171" font-size="20" fill="#aab3c2" text-anchor="middle">0</text>
+<text x="314" y="171" font-size="20" fill="#aab3c2" text-anchor="middle">25</text>
+<text x="474" y="171" font-size="20" fill="#aab3c2" text-anchor="middle">50</text>
+<line x1="154" y1="188" x2="474" y2="188" stroke="#334155" />
+<line x1="154" y1="188" x2="154" y2="682" stroke="#334155" />
+<text x="26" y="242" font-size="21" fill="#f5f5f7" text-anchor="start">26 Mar</text>
+<text x="494" y="221" font-size="24" fill="#5eead4" text-anchor="end" font-weight="700">45.00</text>
+<rect data-bar="true" x="154" y="232" width="288" height="22" fill="#5eead4" />
+<text x="154" y="287" font-size="22" fill="#aab3c2" text-anchor="start">171 units</text>
+<text x="26" y="324" font-size="21" fill="#f5f5f7" text-anchor="start">30 Apr</text>
+<text x="494" y="303" font-size="24" fill="#5eead4" text-anchor="end" font-weight="700">40.00</text>
+<rect data-bar="true" x="154" y="314" width="256" height="22" fill="#5eead4" />
+<text x="154" y="369" font-size="22" fill="#aab3c2" text-anchor="start">1,756 units</text>
+<text x="26" y="406" font-size="21" fill="#f5f5f7" text-anchor="start">28 May</text>
+<text x="494" y="385" font-size="24" fill="#5eead4" text-anchor="end" font-weight="700">40.00</text>
+<rect data-bar="true" x="154" y="396" width="256" height="22" fill="#5eead4" />
+<text x="154" y="451" font-size="22" fill="#aab3c2" text-anchor="start">2,021 units</text>
+<text x="26" y="488" font-size="21" fill="#f5f5f7" text-anchor="start">25 Jun</text>
+<text x="494" y="467" font-size="24" fill="#5eead4" text-anchor="end" font-weight="700">40.00</text>
+<rect data-bar="true" x="154" y="478" width="256" height="22" fill="#5eead4" />
+<text x="154" y="533" font-size="22" fill="#aab3c2" text-anchor="start">2,959 units</text>
+<text x="26" y="570" font-size="21" fill="#f5f5f7" text-anchor="start">30 Jul</text>
+<text x="494" y="549" font-size="24" fill="#5eead4" text-anchor="end" font-weight="700">38.71</text>
+<rect data-bar="true" x="154" y="560" width="247.744" height="22" fill="#5eead4" />
+<text x="154" y="615" font-size="22" fill="#aab3c2" text-anchor="start">1,637 units</text>
+<text x="26" y="652" font-size="21" fill="#f5f5f7" text-anchor="start">27 Aug</text>
+<text x="494" y="631" font-size="24" fill="#ff4d87" text-anchor="end" font-weight="700">36.00</text>
+<rect data-bar="true" x="154" y="642" width="230.4" height="22" fill="#ff4d87" />
+<text x="154" y="697" font-size="22" fill="#aab3c2" text-anchor="start">1,747 units</text>
+<text x="26" y="751" font-size="23" fill="#f5f5f7" text-anchor="start">Net seller price, €/unit</text>
+<text x="26" y="790" font-size="22" fill="#f5f5f7" text-anchor="start">Volume for each auction</text>
+<text x="26" y="829" font-size="20" fill="#aab3c2" text-anchor="start">Source: Praemia REIM</text>
+</g>
+</svg>

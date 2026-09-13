@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 810" role="img" aria-labelledby="scpi3-fr-denominator-title scpi3-fr-denominator-desc" focusable="false" lang="fr" style="display:block;width:100%;height:auto;background:#0b0d10"><rect x="0" y="0" width="520" height="810" fill="#0b0d10"/>
+<title id="scpi3-fr-denominator-title">Primopierre, dividende et taux publié</title>
+<desc id="scpi3-fr-denominator-desc">Primopierre 2024 : dividende brut 6,38 euros, prix de référence 180 euros, taux 3,54 %. En 2025 : 4,56 euros, 126 euros, 3,62 %. Dividende moins 28,5 %, référence moins 30 %.</desc>
+<rect width="520" height="810" fill="#0b0d10" />
+<g font-family="ui-monospace,SFMono-Regular,Consolas,monospace">
+<text x="28" y="38" fill="#5eead4" font-size="20" font-weight="700" text-anchor="start">l0g / SCPI / 03</text>
+<text x="28" y="87" fill="#e7e9ee" font-size="34" font-weight="700" text-anchor="start">Primopierre</text>
+<text x="28" y="129" fill="#b7bdc8" font-size="28" font-weight="400" text-anchor="start">2024 → 2025</text>
+<text x="28" y="183" fill="#e7e9ee" font-size="27" font-weight="700" text-anchor="start">Dividende brut annuel</text>
+<text x="28" y="221" fill="#b7bdc8" font-size="22" font-weight="400" text-anchor="start">Euros par part</text>
+<text x="28" y="269" fill="#e7e9ee" font-size="25" font-weight="400" text-anchor="start">2024</text>
+<text x="492" y="269" fill="#5eead4" font-size="31" font-weight="700" text-anchor="end">6,38 €</text>
+<rect data-bar="true" x="28" y="287" width="422.903" height="25" fill="#5eead4" />
+<text x="28" y="360" fill="#e7e9ee" font-size="25" font-weight="400" text-anchor="start">2025</text>
+<text x="492" y="360" fill="#ff4d87" font-size="31" font-weight="700" text-anchor="end">4,56 €</text>
+<rect data-bar="true" x="28" y="378" width="302.263" height="25" fill="#ff4d87" />
+<line x1="28" y1="428" x2="492" y2="428" stroke="#343944" stroke-width="1" />
+<line x1="28.0" y1="423" x2="28.0" y2="433" stroke="#343944" stroke-width="1" />
+<text x="28.0" y="460" fill="#b7bdc8" font-size="20" font-weight="400" text-anchor="start">0</text>
+<line x1="260.0" y1="423" x2="260.0" y2="433" stroke="#343944" stroke-width="1" />
+<text x="260.0" y="460" fill="#b7bdc8" font-size="20" font-weight="400" text-anchor="middle">3,5</text>
+<line x1="492.0" y1="423" x2="492.0" y2="433" stroke="#343944" stroke-width="1" />
+<text x="492.0" y="460" fill="#b7bdc8" font-size="20" font-weight="400" text-anchor="end">7 €</text>
+<text x="28" y="515" fill="#ff4d87" font-size="29" font-weight="700" text-anchor="start">−28,5 % de dividende brut</text>
+<line x1="28" y1="548" x2="492" y2="548" stroke="#343944" stroke-width="1" />
+<text x="28" y="592" fill="#e7e9ee" font-size="25" font-weight="400" text-anchor="start">Taux publié</text>
+<text x="28" y="640" fill="#5eead4" font-size="35" font-weight="700" text-anchor="start">3,54 % → 3,62 %</text>
+<text x="28" y="692" fill="#b7bdc8" font-size="23" font-weight="400" text-anchor="start">Prix de référence : 180 → 126 €</text>
+<text x="28" y="727" fill="#b7bdc8" font-size="23" font-weight="400" text-anchor="start">−30 % au dénominateur</text>
+<text x="28" y="781" fill="#b7bdc8" font-size="21" font-weight="400" text-anchor="start">Praemia REIM • rapport 2025, p. 28</text>
+</g>
+</svg>

@@ -227,6 +227,8 @@ La série s’achève donc sur une distinction pratique. L’épargnant peut dé
 
 ## Méthode et sources
 
+Les six analyses sont réunies dans [La liquidité fantôme des SCPI](/publications/scpi-liquidite-fantome/), un EPUB gratuit avec une introduction, une conclusion et un chapitre inédit sur les mécanismes comparables du crédit privé.
+
 Cette enquête utilise les publications des gestionnaires, de l’ASPIM, de l’AMF, de l’ACPR, de la Banque de France, de la BCE et les textes applicables à l’assurance. Les appréciations des gestionnaires sont attribuées ; elles ne constituent pas une vérification indépendante de leurs portefeuilles. Aucun entretien ni demande de commentaire n’a été réalisé. Les situations pédagogiques sont fictives. Le texte n’est pas une recommandation d’achat ou de vente.
 
 Les observations n’ont pas toutes la même date : données bancaires de décembre 2025, flux du premier semestre 2026, allocation Capimmo de juillet, documents consultés jusqu’au 13 septembre. Les fiches AMF ont été consultées dans leur texte indexé, l’accès direct étant bloqué. Le texte de L131-4 a été relu sur Légifrance ; la version affichée est en vigueur depuis le 11 décembre 2016. Les PDF de Praemia, de l’ACPR et de la Banque de France ont été contrôlés directement.

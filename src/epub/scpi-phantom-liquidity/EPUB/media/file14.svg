@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 840" role="img" aria-labelledby="scpi5-en-3-title scpi5-en-3-desc" focusable="false" lang="en" style="display:block;width:100%;height:auto;background:#0b0d10;font-family:ui-monospace,monospace"><rect x="0" y="0" width="520" height="840" fill="#0b0d10"/>
+<title id="scpi5-en-3-title">Selling and repaying</title><desc id="scpi5-en-3-desc">Entirely fictional example in €m. Property falls from 100 to 80 after revaluation, then to 60 after a sale of 20 applied to debt. Debt is 40, 40, then 20; net value is 60, 40, then 40. Losing annual net property income of 1.2 and saving interest of 0.8 reduces the annual balance by 0.4.</desc>
+<rect x="0" y="0" width="520" height="840" fill="#0b0d10"/>
+<text x="28" y="38" font-size="20" fill="#5eead4" text-anchor="start">l0g / SCPI / 05</text>
+<text x="28" y="83" font-size="26" fill="#f5f5f7" text-anchor="start">Selling and repaying</text>
+<text x="28" y="119" font-size="22" fill="#aab3c2" text-anchor="start">Entirely fictional example</text>
+<text x="28" y="155" font-size="20" fill="#aab3c2" text-anchor="start">Property = debt + net value · €m</text>
+<text x="28" y="193" font-size="20" fill="#aab3c2" text-anchor="start">0</text>
+<text x="260" y="193" font-size="20" fill="#aab3c2" text-anchor="middle">50</text>
+<text x="492" y="193" font-size="20" fill="#aab3c2" text-anchor="end">100</text>
+<line x1="28" y1="205" x2="492" y2="205" stroke="#475569"/>
+<text x="28" y="235" font-size="22" fill="#f5f5f7" text-anchor="start">Start: property 100</text>
+<text x="28" y="275" font-size="20" fill="#ff4d87" text-anchor="start">Debt 40</text>
+<text x="492" y="275" font-size="20" fill="#5eead4" text-anchor="end">Net value 60</text>
+<rect x="28" y="296" width="464" height="26" fill="#18202b"/>
+<rect data-bar="true" data-part="debt" x="28" y="296" width="185.6" height="26" fill="#ff4d87"/>
+<rect data-bar="true" data-part="net" x="213.6" y="296" width="278.4" height="26" fill="#5eead4"/>
+<text x="28" y="377" font-size="22" fill="#f5f5f7" text-anchor="start">Revalued: property 80</text>
+<text x="28" y="417" font-size="20" fill="#ff4d87" text-anchor="start">Debt 40</text>
+<text x="492" y="417" font-size="20" fill="#5eead4" text-anchor="end">Net value 40</text>
+<rect x="28" y="438" width="464" height="26" fill="#18202b"/>
+<rect data-bar="true" data-part="debt" x="28" y="438" width="185.6" height="26" fill="#ff4d87"/>
+<rect data-bar="true" data-part="net" x="213.6" y="438" width="185.6" height="26" fill="#5eead4"/>
+<text x="28" y="519" font-size="22" fill="#f5f5f7" text-anchor="start">After sale: property 60</text>
+<text x="28" y="559" font-size="20" fill="#ff4d87" text-anchor="start">Debt 20</text>
+<text x="492" y="559" font-size="20" fill="#5eead4" text-anchor="end">Net value 40</text>
+<rect x="28" y="580" width="464" height="26" fill="#18202b"/>
+<rect data-bar="true" data-part="debt" x="28" y="580" width="92.8" height="26" fill="#ff4d87"/>
+<rect data-bar="true" data-part="net" x="120.8" y="580" width="185.6" height="26" fill="#5eead4"/>
+<text x="28" y="650" font-size="20" fill="#aab3c2" text-anchor="start">Sale proceeds repay 20 of debt.</text>
+<text x="28" y="688" font-size="22" fill="#5eead4" text-anchor="start">Net value remains at 40.</text>
+<text x="28" y="733" font-size="20" fill="#aab3c2" text-anchor="start">Net income lost: 1.2 a year</text>
+<text x="28" y="769" font-size="20" fill="#aab3c2" text-anchor="start">Interest saved: 0.8 a year</text>
+<text x="28" y="810" font-size="24" fill="#f5b13d" text-anchor="start">Annual change: −€0.4m</text>
+</svg>

@@ -22,7 +22,7 @@ The final instalment follows those promises. **The first question is who bears t
 
 ## How an SCPI reaches a life insurance policy
 
-An [SCPI](/en/glossary/scpi/) is an unlisted French property investment company that holds real estate for its investors. A saver can own its units directly. Alternatively, a life insurance policy may offer a [unit-linked investment option](/en/glossary/unite-de-compte/) backed by a civil company, often called an SC or SCI, which in turn owns properties and fund units. The AMF explains that these companies can hold SCPIs, OPCI property funds and other civil companies. A policyholder investing through such an option does not become a member of the underlying civil company. [Source: AMF](https://www.amf-france.org/fr/espace-epargnants/comprendre-les-produits-financiers/placements-collectifs/immobilier-scpi-opci/placements-collectifs-investir-dans-une-societe-civile-detenant-de-limmobilier)
+A [SCPI](/en/glossary/scpi/), short for *société civile de placement immobilier*, is an unlisted French property investment company that holds rental property for its investors. A saver can own its units directly. Alternatively, a life insurance policy may offer a [unit-linked investment option](/en/glossary/unite-de-compte/) backed by a civil company, often called an SC or SCI, which in turn owns properties and fund units. The AMF explains that these companies can hold SCPIs, OPCI property funds and other civil companies. A policyholder investing through such an option does not become a member of the underlying civil company. [Source: AMF](https://www.amf-france.org/fr/espace-epargnants/comprendre-les-produits-financiers/placements-collectifs/immobilier-scpi-opci/placements-collectifs-investir-dans-une-societe-civile-detenant-de-limmobilier)
 
 There is no universal chain. A policy may offer an SCPI-backed option without an intermediate SCI. A civil company may own buildings directly. Capimmo’s own product description sets out several ownership routes, including investments in funds managed by Praemia. Each portfolio needs to be traced rather than forced into a single diagram of the industry. [Source: Praemia](https://www.praemiareim.fr/fr/sci-capimmo)
 
@@ -61,11 +61,11 @@ A policy statement presents an investment value. Explaining how it moved may req
 
 ## What the insurer commits to paying
 
-French *assurance-vie* can serve as an investment wrapper. For a unit-linked option, the policy’s euro value moves with the underlying investment. The insurer’s commitment concerns the number of units, not a fixed euro value. Market risk therefore sits with the policyholder, subject to any additional contractual guarantees. The word “insurance” does not protect the capital in every investment option. [Source: ABE Infoservice](https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-avant-de-souscrire-beneficier-dun-conseil-adapte-comprendre-et-comparer-les)
+French *assurance-vie* is a life insurance contract also used to hold savings and investments. The policy can contain different investment options, each with its own risks. For a unit-linked option, the policy’s euro value moves with the underlying investment. The insurer’s commitment concerns the number of units, not a fixed euro value. Market risk therefore sits with the policyholder, subject to any additional contractual guarantees. The word “insurance” does not protect the capital in every investment option. [Source: ABE Infoservice](https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-avant-de-souscrire-beneficier-dun-conseil-adapte-comprendre-et-comparer-les)
 
 Capimmo’s product page makes both points: it attributes liquidity to the insurer while warning that capital is not protected and that property can be difficult to sell. Both features matter when reading the policy. [Source: product presentation and risks](https://www.praemiareim.fr/fr/sci-capimmo)
 
-The distinction becomes operational when the saver requests a payment. **Surrendering a policy and redeeming the fund units held behind it are different transactions.** ABE Infoservice explains the general rule: the insurer has at most two months after receiving all the necessary documents to pay a surrender request. The contract may promise a shorter period. That rule is not a promise that the underlying properties can be sold within two months. [Source: ABE Infoservice](https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-si-vous-avez-conclu-un-contrat-dassurance-vie)
+The distinction becomes operational when the saver requests a payment. **Withdrawing money from a policy, known as a partial or full surrender, and redeeming the fund units held behind it are different transactions.** ABE Infoservice explains the general rule: the insurer has at most two months after receiving all the necessary documents to pay a surrender request. The contract may promise a shorter period. That rule is not a promise that the underlying properties can be sold within two months. [Source: ABE Infoservice](https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-si-vous-avez-conclu-un-contrat-dassurance-vie)
 
 The insurer may consequently have to pay before the underlying fund has redeemed its own units. The intervening cash requirement is a liquidity problem. It may be manageable for a diversified insurer. Measuring it requires the payments actually due, available liquid assets and the relevant obligations. Applying a property-price decline to the insurer’s entire balance sheet would mix different risks.
 
@@ -217,7 +217,7 @@ The strongest counterweight to a claim of generalised crisis remains the Banque 
 
 The documents establish that **the manager describes a valuation effect running from Primopierre into a life-insurance investment vehicle**. They also allow broad bank property exposure to be distinguished from SCPI lending. They do not establish a consolidated SCPI-related loss for insurers and banks, or show that a systemic crisis is underway. [Sources: Capimmo and ACPR](https://www.praemiareim.fr/documents/14836074/29090339/Praemia_REPORTING_TRIMESTRIEL_Capimmo_T2_2026%2BVDEF.pdf/49194fe7-e2ae-d612-7008-5962c4ac06a6) [ACPR](https://acpr.banque-france.fr/system/files/2026-07/20260724_AS184_financement_immobilier_commercial_2025.pdf)
 
-The central missing input is a complete reconciliation of holdings by insurer: quantities, valuation conventions and allocation between unit-linked obligations, euro funds and own-account investments. That would need to be matched with payments due, restrictions actually in force and the bank financing associated with the relevant vehicles and subsidiaries. **We did not find that consolidated table in the public sources used.** This does not imply that supervisors lack it.
+The central missing input is a complete reconciliation of holdings by insurer: quantities, valuation conventions and allocation between unit-linked obligations, euro-denominated insurance funds with contractual guarantees, and own-account investments. That would need to be matched with payments due, restrictions actually in force and the bank financing associated with the relevant vehicles and subsidiaries. **We did not find that consolidated table in the public sources used.** This does not imply that supervisors lack it.
 
 The most useful future evidence will be completed and settled property sales, fulfilled and outstanding withdrawal requests, usable reserves, payment dates and identifiable credit deterioration. Another cut in a unit price cannot substitute for those observations.
 
@@ -225,13 +225,15 @@ The series ends with a practical distinction. A saver can suffer a loss without 
 
 ## Method and sources
 
+The six analyses are collected in [The Phantom Liquidity of SCPI Funds](/en/publications/scpi-phantom-liquidity/), a free EPUB with an introduction, a conclusion and an additional chapter comparing specific mechanisms with private credit.
+
 This investigation uses manager disclosures, ASPIM statistics, AMF and ACPR publications, Banque de France and ECB analysis, and insurance legislation. Manager assessments are attributed and do not constitute independent verification of their holdings. No interviews or requests for comment were conducted. The worked examples are fictional. This article is not a recommendation to buy or sell.
 
 Observation dates differ: December 2025 banking exposures, first-half 2026 fund flows, Capimmo’s July allocation and documents consulted through 13 September. The AMF explainers were read in indexed text because direct access was blocked. Article L131-4 was checked on Légifrance; the displayed version has been in force since 11 December 2016. The Praemia, ACPR and Banque de France PDFs were checked directly.
 
 ## The complete series
 
-1. [French SCPI funds: the misleading fall in exit queues](/en/analysis/french-scpi-exit-queues-liquidity-register-reset/)
+1. [French SCPI funds: what lies behind the fall in exit queues](/en/analysis/french-scpi-exit-queues-liquidity-register-reset/)
 2. [French SCPI funds: the price of getting out](/en/analysis/french-scpi-resale-prices-liquidity-discounts/)
 3. [SCPI: the income behind the yield](/en/analysis/french-scpi-yields-income-dividends-reserves/)
 4. [French office SCPI funds: the cost of empty space](/en/analysis/french-scpi-office-vacancy-rent-free-incentives/)

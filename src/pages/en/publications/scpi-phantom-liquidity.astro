@@ -1,0 +1,35 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import Layout from '../../../layouts/EnglishGuidesLayout.astro';
+import ScpiPublication from '../../../components/ScpiPublication.astro';
+import { scpiEditions } from '../../../config/scpi-publication.mjs';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../../../config/entities.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+const book = scpiEditions.en;
+const bytes = readFileSync(join(process.cwd(), 'public', book.epub));
+const size = `${new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 }).format(bytes.length / 1024)} KB`;
+const sha256 = createHash('sha256').update(bytes).digest('hex');
+const description = 'Understand French unlisted property funds (SCPIs): six analyses, 18 infographics and a sourced comparison with private credit in a free EPUB.';
+const pageUrl = `${SITE_URL}${book.path}`;
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Book', '@id': `${pageUrl}#book`,
+  name: book.title, description, author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID },
+  datePublished: book.date, dateModified: book.modified, inLanguage: 'en',
+  bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true,
+  url: pageUrl, image: `${SITE_URL}${book.cover}`, license: 'https://creativecommons.org/licenses/by/4.0/',
+  hasPart: [...book.chapters.map((chapter) => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.route}` })),
+    { '@type': 'Chapter', name: book.bonusTitle, url: `${pageUrl}#private-credit` }],
+  associatedMedia: { '@type': 'MediaObject', contentUrl: `${SITE_URL}${book.epub}`, encodingFormat: 'application/epub+zip', contentSize: `${bytes.length} bytes`, sha256 },
+  translationOfWork: { '@type': 'Book', '@id': `${SITE_URL}${scpiEditions.fr.path}#book`, inLanguage: 'fr' },
+};
+---
+<Layout title={book.title} seoTitle="French SCPI property funds: free liquidity-risk EPUB | l0g"
+  ogTitle="The Phantom Liquidity of SCPI Funds: the complete book" description={description}
+  canonical={pageUrl} ogImage={book.social}
+  ogImageAlt="Cover: an imaginary office building crossed by a turquoise line"
+  alternateLinks={[{ hreflang: 'fr', href: `${SITE_URL}${scpiEditions.fr.path}` }, { hreflang: 'en', href: `${SITE_URL}${scpiEditions.en.path}` }, { hreflang: 'x-default', href: `${SITE_URL}${scpiEditions.fr.path}` }]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <ScpiPublication lang="en" size={size} sha256={sha256} />
+</Layout>

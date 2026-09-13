@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 746" role="img" aria-labelledby="scpi2-fr-prices-title scpi2-fr-prices-desc" focusable="false" lang="fr" style="display:block;width:100%;height:auto;background:#0b0d10"><rect x="0" y="0" width="520" height="746" fill="#0b0d10"/>
+<title id="scpi2-fr-prices-title">Élysées Pierre : référence de retrait et prix de transaction</title>
+<desc id="scpi2-fr-prices-desc">Prix de retrait applicable depuis le 3 août 2026 : 516,06 euros. Net vendeur à la confrontation du 18 août : 300 euros pour 120 parts. Écart calculé : moins 41,9 %. Deux mécanismes, pas une baisse du cours sur quinze jours.</desc>
+<rect width="520" height="746" fill="#0b0d10" />
+<g font-family="ui-monospace,SFMono-Regular,Consolas,monospace">
+<text x="26" y="38" font-size="20" fill="#5eead4" text-anchor="start" font-weight="700">l0g / SCPI / 02</text>
+<text x="26" y="88" font-size="30" fill="#f5f5f7" text-anchor="start" font-weight="700">Deux voies de sortie</text>
+<text x="26" y="133" font-size="22" fill="#aab3c2" text-anchor="start">Élysées Pierre, août 2026</text>
+<text x="26" y="205" font-size="24" fill="#f5f5f7" text-anchor="start">Retrait depuis le 3 août</text>
+<text x="26" y="259" font-size="44" fill="#5eead4" text-anchor="start" font-weight="700">516,06 €</text>
+<rect data-bar="true" x="26" y="285" width="402.527" height="22" fill="#5eead4" />
+<text x="26" y="350" font-size="24" fill="#f5f5f7" text-anchor="start">Vente du 18 août</text>
+<text x="26" y="404" font-size="44" fill="#ff4d87" text-anchor="start" font-weight="700">300,00 €</text>
+<rect data-bar="true" x="26" y="430" width="234" height="22" fill="#ff4d87" />
+<line x1="26" y1="482" x2="494" y2="482" stroke="#334155" />
+<line x1="26" y1="477" x2="26" y2="487" stroke="#334155" />
+<text x="26" y="515" font-size="22" fill="#aab3c2" text-anchor="start">0</text>
+<line x1="260" y1="477" x2="260" y2="487" stroke="#334155" />
+<text x="260" y="515" font-size="22" fill="#aab3c2" text-anchor="middle">300</text>
+<line x1="494" y1="477" x2="494" y2="487" stroke="#334155" />
+<text x="494" y="515" font-size="22" fill="#aab3c2" text-anchor="end">600</text>
+<text x="26" y="563" font-size="27" fill="#f5f5f7" text-anchor="start" font-weight="700">120 parts échangées</text>
+<text x="26" y="607" font-size="32" fill="#ff4d87" text-anchor="start" font-weight="700">Écart : −41,9 %</text>
+<text x="26" y="650" font-size="22" fill="#f5f5f7" text-anchor="start">Délai de sortie non garanti</text>
+<text x="26" y="690" font-size="20" fill="#aab3c2" text-anchor="start">Source : HSBC REIM</text>
+<text x="26" y="720" font-size="20" fill="#aab3c2" text-anchor="start">Euros par part, net vendeur</text>
+</g>
+</svg>

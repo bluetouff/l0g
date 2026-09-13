@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 790" role="img" aria-labelledby="scpi6-en-3-title scpi6-en-3-desc" focusable="false" lang="en" style="display:block;width:100%;height:auto;background:#0b0d10;font-family:ui-monospace,monospace"><rect x="0" y="0" width="520" height="790" fill="#0b0d10"/>
+<title id="scpi6-en-3-title">One loss at several layers</title><desc id="scpi6-en-3-desc">Fictional assumption: debt-free property value falls from €100m to €80m. A civil company owns the entire SCPI and an insurer owns that company to back unit-linked rights. The same €20m write-down appears in three valuations. The bars must not be added.</desc>
+<rect x="0" y="0" width="520" height="790" fill="#0b0d10"/>
+<text x="28" y="38" font-size="20" fill="#5eead4" text-anchor="start">l0g / SCPI / 06</text>
+<text x="28" y="83" font-size="26" fill="#f5f5f7" text-anchor="start">One loss at several layers</text>
+<text x="28" y="126" font-size="22" fill="#f5b13d" text-anchor="start">Entirely fictional example</text>
+<text x="28" y="166" font-size="20" fill="#aab3c2" text-anchor="start">Amounts in millions of euros</text>
+<text x="28" y="207" font-size="20" fill="#5eead4" text-anchor="start">Remaining value: 80</text>
+<text x="28" y="242" font-size="20" fill="#ff4d87" text-anchor="start">Write-down: 20</text>
+<text x="28" y="296" font-size="22" fill="#f5f5f7" text-anchor="start">SCPI property value</text>
+<text x="28" y="334" font-size="20" fill="#5eead4" text-anchor="start">80</text>
+<text x="492" y="334" font-size="20" fill="#ff4d87" text-anchor="end">20</text>
+<rect data-bar="true" x="28" y="348" width="371.2" height="26" fill="#5eead4"/>
+<rect data-bar="true" x="399.2" y="348" width="92.8" height="26" fill="#ff4d87"/>
+<text x="28" y="406" font-size="22" fill="#f5f5f7" text-anchor="start">Civil company’s holding</text>
+<text x="28" y="444" font-size="20" fill="#5eead4" text-anchor="start">80</text>
+<text x="492" y="444" font-size="20" fill="#ff4d87" text-anchor="end">20</text>
+<rect data-bar="true" x="28" y="458" width="371.2" height="26" fill="#5eead4"/>
+<rect data-bar="true" x="399.2" y="458" width="92.8" height="26" fill="#ff4d87"/>
+<text x="28" y="516" font-size="22" fill="#f5f5f7" text-anchor="start">Unit-linked policy rights</text>
+<text x="28" y="554" font-size="20" fill="#5eead4" text-anchor="start">80</text>
+<text x="492" y="554" font-size="20" fill="#ff4d87" text-anchor="end">20</text>
+<rect data-bar="true" x="28" y="568" width="371.2" height="26" fill="#5eead4"/>
+<rect data-bar="true" x="399.2" y="568" width="92.8" height="26" fill="#ff4d87"/>
+<text x="28" y="635" font-size="20" fill="#aab3c2" text-anchor="start">0</text>
+<text x="260" y="635" font-size="20" fill="#aab3c2" text-anchor="middle">50</text>
+<text x="492" y="635" font-size="20" fill="#aab3c2" text-anchor="end">100</text>
+<text x="28" y="683" font-size="22" fill="#f5b13d" text-anchor="start">One underlying €20m write-down.</text>
+<text x="28" y="727" font-size="20" fill="#aab3c2" text-anchor="start">Full ownership at every layer.</text>
+<text x="28" y="762" font-size="20" fill="#aab3c2" text-anchor="start">No debt, fees or extra guarantees.</text>
+</svg>
