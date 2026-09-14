@@ -115,6 +115,7 @@ for (const path of paths) {
     assert.match(source, /13[.,]5/u);
     assert(select(tree(source), 'a').some(n => n.properties.href === fedWatch));
     assert.doesNotMatch(source, /Reuters|\[\[S\d+\]\]|@@FIG|—/u);
+    assert.doesNotMatch(source, /&amp;type=/u, 'source URLs must also survive metadata extraction');
   });
 }
 test('Fed figures reject revised values, extrapolation and active content', () => {
@@ -145,5 +146,17 @@ for (const path of ['dist/posts/fed-hausses-taux-longs-prime-terme/index.html', 
     assert.equal(svgs.length, 2);
     svgs.forEach(verifySafety);
     verifySeries(svgs[0]);
+    const json = select(tree(read(path)), 'script')
+      .filter(n => n.properties.type === 'application/ld+json')
+      .map(n => JSON.parse(content(n)));
+    const urls = value => typeof value === 'string' && value.startsWith('https://') ? [value]
+      : Array.isArray(value) ? value.flatMap(urls)
+        : value && typeof value === 'object' ? Object.values(value).flatMap(urls) : [];
+    for (const url of json.flatMap(urls)) {
+      const parsed = new URL(url);
+      if (parsed.origin !== 'https://home.treasury.gov' || parsed.pathname !== '/resource-center/data-chart-center/interest-rates/TextView') continue;
+      assert.equal(parsed.searchParams.get('type'), 'daily_treasury_yield_curve');
+      assert(!parsed.searchParams.has('amp;type'));
+    }
   });
 }
