@@ -313,7 +313,9 @@ function confluenceFallback(previous, reason) {
 
 function updateRiskSnapshot(risk, latest) {
   const overall = assertNumber(
-    latest?.score?.current_stress ?? latest?.score?.overall,
+    Object.hasOwn(latest?.score || {}, 'current_stress')
+      ? latest.score.current_stress
+      : latest?.score?.overall,
     'score.current_stress',
   );
   const rounded = Math.round(overall);
@@ -439,18 +441,33 @@ try {
 } catch (error) {
   const reason = `Debt Risk Radar indisponible au build: ${safeError(error)}`;
   console.warn(reason);
+  // Le score agrégé et la provenance locale peuvent dater de publications
+  // différentes. Un repli reprend la paire précédente, jamais leur mélange.
+  const previousDebt = previous.indices?.find((item) => item.key === 'debt');
+  const previousDebtProvenance = previous.provenance?.debt;
+  if (!Number.isFinite(previousDebt?.value)
+    || !Number.isFinite(previousDebtProvenance?.scoreRaw)
+    || previousDebt.value !== previousDebtProvenance?.scoreRounded) {
+    throw new Error('Debt Risk Radar: aucune paire valeur/provenance cohérente pour le repli.');
+  }
+  const fallbackDebt = {
+    ...markFallback(previousDebt, 'debt', reason),
+    backtestUsable: false,
+  };
   const index = (risk.indices || []).findIndex((item) => item.key === 'debt');
-  if (index >= 0) risk.indices[index] = markFallback(risk.indices[index], 'debt', reason);
-  if (risk.provenance?.debt) {
-    risk.provenance.debt = {
-      ...risk.provenance.debt,
+  if (index >= 0) risk.indices[index] = fallbackDebt;
+  else risk.indices.push(fallbackDebt);
+  risk.provenance = {
+    ...(risk.provenance || {}),
+    debt: {
+      ...previousDebtProvenance,
       sourceStatus: 'fallback',
       qualityStatus: 'degraded',
       fallbackUsed: true,
       fallbackReason: reason,
       lastAttemptAt: attemptedAt,
-    };
-  }
+    },
+  };
 }
 
 const updated = updateSummary(risk);

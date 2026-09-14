@@ -23,7 +23,7 @@
     "test:risk-producers": "node --test scripts/risk-producer-audit.test.mjs scripts/risk-deployment.test.mjs",
     "test:agent-surface": "node scripts/validate-agent-surface.mjs",
     "test:agent-bench": "node mcp-server/agent-bench.mjs",
-    "test:risk-snapshot": "node scripts/validate-risk-snapshot.mjs",
+    "test:risk-snapshot": "node --test scripts/risk-snapshot-fallback.test.mjs && node scripts/validate-risk-snapshot.mjs",
     "test:internal-links": "node --experimental-strip-types --test scripts/check-internal-links.test.mjs && node --experimental-strip-types scripts/check-internal-links.mjs",
     "test:pagination": "node --experimental-strip-types --test scripts/analysis-pagination.test.mjs",
     "test:typography": "node --experimental-strip-types scripts/audit-inline-link-spacing.mjs",
