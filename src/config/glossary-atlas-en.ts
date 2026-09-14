@@ -203,6 +203,27 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'ia-de-frontiere', sigle: 'Frontier AI', nom: 'AI models at the leading edge of capabilities',
+    def: 'A term for AI models among the most capable available. In a safety-policy discussion, its scope depends on the capabilities and risks being considered. The criteria used by a particular policy or regulation, and the date to which they apply, therefore need to be specified.',
+    guide: '/en/analysis/pacing-ai-frontier-capital-politics/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: {
+      sources: [
+        { label: 'Dario Amodei, We Must Pace the Frontier', href: 'https://darioamodei.com/post/we-must-pace-the-frontier', detail: 'Personal proposal for coordination among the leading AI labs, September 12, 2026.', kind: 'source' },
+        { label: 'OpenAI, The AI policy window is open', href: 'https://openai.com/index/ai-policy-window/', detail: 'Proposed obligations proportionate to capabilities and risks, distinguished from how weights are distributed, September 9, 2026.', kind: 'source' },
+      ],
+      related: ['modele-a-poids-ouverts'],
+    },
+  },
+  {
+    slug: 'modele-a-poids-ouverts', sigle: 'Open-weight model', nom: 'AI model distributed with its learned parameters',
+    def: 'An AI model whose weights, the parameters learned during training, are made available so that others can run or adapt it. Permitted uses depend on the licence. Open weights describe a distribution arrangement; they do not by themselves determine how capable the model is.',
+    guide: '/en/analysis/pacing-ai-frontier-capital-politics/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: {
+      sources: [{ label: 'OpenAI, The AI policy window is open', href: 'https://openai.com/index/ai-policy-window/', detail: 'Distinguishes frontier capabilities from open-weight distribution, including deployment on local infrastructure, September 9, 2026.', kind: 'source' }],
+      related: ['ia-de-frontiere'],
+    },
+  },
+  {
     slug: 'unite-de-compte', sigle: 'Unit-linked option', nom: 'Investment-linked life insurance benefit',
     def: "A life insurance obligation expressed in units whose euro value tracks a financial or property investment. The insurer commits to a number of units; the policyholder bears changes in unit value, subject to any additional contractual guarantees. The policy surrender timetable and the underlying fund’s liquidity are separate questions.",
     guide: '/en/analysis/scpi-life-insurance-banks-contagion/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',

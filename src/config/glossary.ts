@@ -296,6 +296,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'BNPL', nom: 'Buy now, pay later', def: "Paiement fractionné « acheter maintenant, payer plus tard », souvent en quatre échéances sans intérêt affiché. Crédit à la consommation peu déclaré aux bureaux de crédit, d'où le surnom de dette fantôme : il échappe en partie aux statistiques d'endettement des ménages tout en pesant sur leur trésorerie." },
       { sigle: 'Économie en K', nom: 'K-shaped economy', def: "Configuration où les trajectoires économiques divergent selon le revenu : le haut de la distribution prospère et soutient la consommation pendant que le bas décroche sous l'effet de l'inflation et du coût du crédit. Rend la moyenne agrégée trompeuse, car elle masque deux réalités opposées." },
       { sigle: 'AIMA', nom: 'Alternative Investment Management Association', def: "Association professionnelle mondiale des gérants d'actifs alternatifs (hedge funds, crédit privé)." },
+      { sigle: 'IA de frontière', nom: 'Frontier AI', def: "Expression qui désigne les modèles d’intelligence artificielle parmi les plus avancés en capacités. Dans un débat sur la sécurité, le périmètre dépend des capacités et des risques examinés. Il faut donc préciser les critères retenus par une politique ou un texte réglementaire, ainsi que leur date.", guide: '/posts/freiner-frontiere-ia-capital-politique/' },
+      { sigle: 'Modèle à poids ouverts', nom: 'Open-weight model', def: "Modèle d’intelligence artificielle dont les poids, les paramètres appris pendant l’entraînement, sont mis à disposition pour permettre à des tiers de l’exécuter ou de l’adapter. Les usages autorisés dépendent de la licence. L’ouverture des poids décrit un mode de distribution et ne détermine pas, à elle seule, le niveau de capacité du modèle.", guide: '/posts/freiner-frontiere-ia-capital-politique/' },
       { sigle: 'Hyperscaler', nom: 'Géant du cloud', def: "Très grand opérateur d'infrastructure informatique en nuage, comme Microsoft, Google, Amazon ou Oracle, qui construit et exploite des centres de données à grande échelle. Au cœur du boom d'investissement dans l'IA." },
       { sigle: 'Capex', nom: "Dépenses d'investissement", def: "Capital expenditures : dépenses engagées pour acquérir ou construire des actifs durables, centres de données, serveurs, équipements. Le boom de l'IA se mesure d'abord à l'explosion de ces dépenses." },
       { sigle: 'Semi-conducteur', nom: 'Semiconductor', def: "Composant électronique gravé dans un matériau conducteur contrôlé, le plus souvent du silicium. Il sert de brique de base aux processeurs, mémoires, capteurs, équipements industriels, véhicules, télécoms et systèmes de défense." },
@@ -602,7 +604,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-13';
+export const glossaryUpdatedIso = '2026-09-14';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -845,6 +847,17 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'ia-de-frontiere': {
+    sources: [
+      { label: 'Dario Amodei, We Must Pace the Frontier', href: 'https://darioamodei.com/post/we-must-pace-the-frontier', detail: 'Proposition personnelle de coordination des laboratoires développant les capacités les plus avancées, 12 septembre 2026.', kind: 'source' },
+      { label: 'OpenAI, The AI policy window is open', href: 'https://openai.com/index/ai-policy-window/', detail: 'Proposition de règles proportionnées aux capacités et aux risques, distinctes du mode de distribution des poids, 9 septembre 2026.', kind: 'source' },
+    ],
+    related: ['modele-a-poids-ouverts'],
+  },
+  'modele-a-poids-ouverts': {
+    sources: [{ label: 'OpenAI, The AI policy window is open', href: 'https://openai.com/index/ai-policy-window/', detail: 'Distinction entre capacités de frontière et modèles à poids ouverts, notamment pour le déploiement local, 9 septembre 2026.', kind: 'source' }],
+    related: ['ia-de-frontiere'],
+  },
   'unite-de-compte': {
     sources: [{ label: 'ABE Infoservice', href: 'https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-avant-de-souscrire-beneficier-dun-conseil-adapte-comprendre-et-comparer-les', detail: 'Engagement en unités de compte et risque de perte en capital.', kind: 'source' }],
     related: ['scpi', 'niveau-3-ifrs-9'],
