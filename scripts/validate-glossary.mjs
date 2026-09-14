@@ -13,6 +13,7 @@ import {
   glossaryReferenceWordCount,
 } from '../src/config/glossary-reference-fr.ts';
 import { glossaryRedirects } from '../src/config/glossary-redirects.mjs';
+import { glossaryAtlasEnBySlug } from '../src/config/glossary-atlas-en.ts';
 import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossary-matching.mjs';
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
@@ -27,9 +28,19 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 529, 'Le corpus doit conserver ses 529 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 81, 'Le graphe Atlas doit conserver ses 81 nœuds');
-assert.equal(glossaryAtlasEdgeCount, 376, 'Le graphe Atlas doit conserver ses 376 relations');
+assert.equal(glossaryEntries.length, 531, 'Le corpus doit conserver ses 531 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 83, 'Le graphe Atlas doit conserver ses 83 nœuds');
+assert.equal(glossaryAtlasEdgeCount, 378, 'Le graphe Atlas doit conserver ses 378 relations');
+for (const slug of ['ia-de-frontiere', 'modele-a-poids-ouverts']) {
+  const fr = glossaryEntries.find((entry) => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr && en, `${slug} doit avoir une définition FR et EN`);
+  assert.equal(fr.guide, '/posts/freiner-frontiere-ia-capital-politique/');
+  assert.equal(en.guide, '/en/analysis/pacing-ai-frontier-capital-politics/');
+  assert.deepEqual(fr.atlas?.sources?.map((source) => source.href), en.atlas.sources?.map((source) => source.href), `${slug} doit conserver les mêmes sources primaires en FR et EN`);
+  assert(fr.atlas?.sources?.some((source) => source.href === 'https://openai.com/index/ai-policy-window/'), `${slug} doit citer la source primaire de politique IA`);
+  for (const entry of [fr, en]) assert(!entry.def.includes('—'), `${slug} doit respecter la charte éditoriale`);
+}
 for (const slug of ['investment-grade', 'vrg']) {
   const entry = glossaryEntries.find((candidate) => candidate.slug === slug);
   assert(entry?.atlas?.sources?.length, slug + ' doit conserver sa source primaire');

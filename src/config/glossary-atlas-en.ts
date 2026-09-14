@@ -203,6 +203,27 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'ia-de-frontiere', sigle: 'Frontier AI', nom: 'AI models at the leading edge of capabilities',
+    def: 'A term for AI models among the most capable available. In a safety-policy discussion, its scope depends on the capabilities and risks being considered. The criteria used by a particular policy or regulation, and the date to which they apply, therefore need to be specified.',
+    guide: '/en/analysis/pacing-ai-frontier-capital-politics/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: {
+      sources: [
+        { label: 'Dario Amodei, We Must Pace the Frontier', href: 'https://darioamodei.com/post/we-must-pace-the-frontier', detail: 'Personal proposal for coordination among the leading AI labs, September 12, 2026.', kind: 'source' },
+        { label: 'OpenAI, The AI policy window is open', href: 'https://openai.com/index/ai-policy-window/', detail: 'Proposed obligations proportionate to capabilities and risks, distinguished from how weights are distributed, September 9, 2026.', kind: 'source' },
+      ],
+      related: ['modele-a-poids-ouverts'],
+    },
+  },
+  {
+    slug: 'modele-a-poids-ouverts', sigle: 'Open-weight model', nom: 'AI model distributed with its learned parameters',
+    def: 'An AI model whose weights, the parameters learned during training, are made available so that others can run or adapt it. Permitted uses depend on the licence. Open weights describe a distribution arrangement; they do not by themselves determine how capable the model is.',
+    guide: '/en/analysis/pacing-ai-frontier-capital-politics/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    atlas: {
+      sources: [{ label: 'OpenAI, The AI policy window is open', href: 'https://openai.com/index/ai-policy-window/', detail: 'Distinguishes frontier capabilities from open-weight distribution, including deployment on local infrastructure, September 9, 2026.', kind: 'source' }],
+      related: ['ia-de-frontiere'],
+    },
+  },
+  {
     slug: 'unite-de-compte', sigle: 'Unit-linked option', nom: 'Investment-linked life insurance benefit',
     def: "A life insurance obligation expressed in units whose euro value tracks a financial or property investment. The insurer commits to a number of units; the policyholder bears changes in unit value, subject to any additional contractual guarantees. The policy surrender timetable and the underlying fund’s liquidity are separate questions.",
     guide: '/en/analysis/scpi-life-insurance-banks-contagion/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
@@ -690,16 +711,17 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'prime-de-terme',
     sigle: 'Term premium',
     nom: 'Compensation for holding duration',
-    def: "The extra yield an investor demands for holding a long bond rather than rolling short-term placements, compensating for rate, inflation and debt-supply risk. Estimated by the New York Fed's ACM model. Negative or nil for a decade, it turned positive again in 2026, still short of its long-run historical average.",
+    def: "The gap between a long bond's yield and the expected return from rolling short-term investments over the same horizon. This compensation for interest-rate risk is estimated with models such as ACM and Kim–Wright, whose results can differ and be revised. It can be negative when investors value the bond's hedging properties. The yield-curve slope does not measure it directly.",
     guide: '/en/guides/read-us-treasuries-market/',
     ...macroSection,
     atlas: {
-      intuition: 'The term premium isolates the pay demanded for carrying duration, once the expected path of short rates is stripped out.',
+      intuition: 'A model splits a long yield into the expected path of short rates and compensation for duration risk. That split is an estimate, with uncertainty.',
       formula: 'long yield ≈ average expected short rates + term premium',
       whyNow: 'When long-debt supply grows, QT removes the public buyer and foreign demand shifts, an expected fall in short rates can coexist with a rising long yield.',
-      articles: usDebtArticles,
+      articles: [{ label: 'Can a Fed hike lower long-term yields?', href: '/en/analysis/fed-rate-hikes-long-yields-term-premium/', detail: 'Expectations, the term premium and Treasury buybacks.', kind: 'article' }, ...usDebtArticles],
       guides: usDebtGuides,
       ...shared,
+      sources: [{ label: 'Federal Reserve, Kim–Wright model', href: 'https://www.federalreserve.gov/data/three-factor-nominal-term-structure-model.htm', detail: 'Methodology, limitations and revisions to term-premium estimates.', kind: 'source' }, ...shared.sources],
       related: ['duration', 'move', 'adjudication', 'bid-to-cover', 'primary-dealer', 'courbe-des-taux', 'repo', 'basis-trade', 'tga'],
     },
   },

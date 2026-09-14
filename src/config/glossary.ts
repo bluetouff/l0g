@@ -57,7 +57,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'HBM', nom: 'High Bandwidth Memory', def: "Mémoire DRAM empilée à très large bande passante, placée près d'un accélérateur pour nourrir le calcul en données. Dans l'IA, elle transforme la mémoire en goulet de packaging et d'approvisionnement." },
       { sigle: 'Packaging avancé', nom: 'Advanced packaging', def: "Ensemble des techniques d'assemblage qui rapprochent plusieurs puces, mémoires et interconnexions dans un même module. Il devient critique quand la performance dépend autant du déplacement des données que du calcul brut." },
       { sigle: 'Fabless', nom: 'Concepteur sans usine', def: "Modèle d'entreprise qui conçoit des puces mais confie leur fabrication à une fonderie. Il sépare la propriété intellectuelle et le logiciel de la charge industrielle des fabs." },
-      { sigle: 'Prime de terme', nom: 'Term premium', def: "Supplément de rendement qu'un investisseur exige pour détenir une obligation longue plutôt que d'enchaîner des placements courts, en compensation du risque de taux, d'inflation et d'offre de dette. Estimée par le modèle ACM de la Fed de New York. Négative ou nulle pendant une décennie, elle est repassée en positif en 2026, sans atteindre sa moyenne historique de long terme.", guide: '/guides/lire-le-marche-des-treasuries/' },
+      { sigle: 'Prime de terme', nom: 'Term premium', def: "Écart entre le rendement d'une obligation longue et celui attendu d'une succession de placements courts sur le même horizon. Cette rémunération du risque de taux est estimée par des modèles, notamment ACM et Kim–Wright, dont les résultats peuvent différer et être révisés. Elle peut être négative si l'obligation offre une protection recherchée. La pente de la courbe ne la mesure pas directement.", guide: '/guides/lire-le-marche-des-treasuries/' },
       { sigle: 'Duration', nom: 'Sensibilité aux taux', def: "Mesure de la sensibilité du prix d'une obligation à une variation de taux. Plus la duration est élevée, plus une hausse de rendement détruit de valeur de marché. Elle transforme une tension sur les taux longs en risque de bilan pour les porteurs de dette longue.", guide: '/guides/lire-le-marche-des-treasuries/' },
       { sigle: 'Treasury buyback', nom: 'Rachat de dette par le Trésor américain', def: "Opération par laquelle le Trésor rachète sur le marché secondaire des titres déjà émis. Un rachat de soutien à la liquidité vise surtout d’anciennes souches moins négociées ; un rachat de gestion de trésorerie sert à lisser l’encaisse et les émissions. Le titre racheté est retiré, mais la dette nette ne baisse pas automatiquement puisque le décaissement doit être financé. Ce n’est pas un QE de la Réserve fédérale.", guide: '/posts/bessent-put-treasury-buybacks-taux-longs/' },
       { sigle: 'RMP', nom: 'Reserve management purchases', def: "Achats de titres courts par une banque centrale pour fournir les réserves nécessaires au règlement interbancaire et piloter les taux au jour le jour. À la Fed, ces achats sont dimensionnés selon la demande de réserves et ne visent pas à réduire les taux longs : ils se distinguent donc du QE.", guide: '/posts/defaut-souverain-qui-paie-vraiment/' },
@@ -296,6 +296,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'BNPL', nom: 'Buy now, pay later', def: "Paiement fractionné « acheter maintenant, payer plus tard », souvent en quatre échéances sans intérêt affiché. Crédit à la consommation peu déclaré aux bureaux de crédit, d'où le surnom de dette fantôme : il échappe en partie aux statistiques d'endettement des ménages tout en pesant sur leur trésorerie." },
       { sigle: 'Économie en K', nom: 'K-shaped economy', def: "Configuration où les trajectoires économiques divergent selon le revenu : le haut de la distribution prospère et soutient la consommation pendant que le bas décroche sous l'effet de l'inflation et du coût du crédit. Rend la moyenne agrégée trompeuse, car elle masque deux réalités opposées." },
       { sigle: 'AIMA', nom: 'Alternative Investment Management Association', def: "Association professionnelle mondiale des gérants d'actifs alternatifs (hedge funds, crédit privé)." },
+      { sigle: 'IA de frontière', nom: 'Frontier AI', def: "Expression qui désigne les modèles d’intelligence artificielle parmi les plus avancés en capacités. Dans un débat sur la sécurité, le périmètre dépend des capacités et des risques examinés. Il faut donc préciser les critères retenus par une politique ou un texte réglementaire, ainsi que leur date.", guide: '/posts/freiner-frontiere-ia-capital-politique/' },
+      { sigle: 'Modèle à poids ouverts', nom: 'Open-weight model', def: "Modèle d’intelligence artificielle dont les poids, les paramètres appris pendant l’entraînement, sont mis à disposition pour permettre à des tiers de l’exécuter ou de l’adapter. Les usages autorisés dépendent de la licence. L’ouverture des poids décrit un mode de distribution et ne détermine pas, à elle seule, le niveau de capacité du modèle.", guide: '/posts/freiner-frontiere-ia-capital-politique/' },
       { sigle: 'Hyperscaler', nom: 'Géant du cloud', def: "Très grand opérateur d'infrastructure informatique en nuage, comme Microsoft, Google, Amazon ou Oracle, qui construit et exploite des centres de données à grande échelle. Au cœur du boom d'investissement dans l'IA." },
       { sigle: 'Capex', nom: "Dépenses d'investissement", def: "Capital expenditures : dépenses engagées pour acquérir ou construire des actifs durables, centres de données, serveurs, équipements. Le boom de l'IA se mesure d'abord à l'explosion de ces dépenses." },
       { sigle: 'Semi-conducteur', nom: 'Semiconductor', def: "Composant électronique gravé dans un matériau conducteur contrôlé, le plus souvent du silicium. Il sert de brique de base aux processeurs, mémoires, capteurs, équipements industriels, véhicules, télécoms et systèmes de défense." },
@@ -602,7 +604,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-13';
+export const glossaryUpdatedIso = '2026-09-14';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -845,6 +847,17 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'ia-de-frontiere': {
+    sources: [
+      { label: 'Dario Amodei, We Must Pace the Frontier', href: 'https://darioamodei.com/post/we-must-pace-the-frontier', detail: 'Proposition personnelle de coordination des laboratoires développant les capacités les plus avancées, 12 septembre 2026.', kind: 'source' },
+      { label: 'OpenAI, The AI policy window is open', href: 'https://openai.com/index/ai-policy-window/', detail: 'Proposition de règles proportionnées aux capacités et aux risques, distinctes du mode de distribution des poids, 9 septembre 2026.', kind: 'source' },
+    ],
+    related: ['modele-a-poids-ouverts'],
+  },
+  'modele-a-poids-ouverts': {
+    sources: [{ label: 'OpenAI, The AI policy window is open', href: 'https://openai.com/index/ai-policy-window/', detail: 'Distinction entre capacités de frontière et modèles à poids ouverts, notamment pour le déploiement local, 9 septembre 2026.', kind: 'source' }],
+    related: ['ia-de-frontiere'],
+  },
   'unite-de-compte': {
     sources: [{ label: 'ABE Infoservice', href: 'https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-avant-de-souscrire-beneficier-dun-conseil-adapte-comprendre-et-comparer-les', detail: 'Engagement en unités de compte et risque de perte en capital.', kind: 'source' }],
     related: ['scpi', 'niveau-3-ifrs-9'],
@@ -996,14 +1009,14 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['bfr', 'arrieres-de-paiement'],
   },
   'prime-de-terme': {
-    intuition: "La prime de terme isole la rémunération demandée pour porter la duration, une fois retirée la trajectoire attendue des taux courts.",
+    intuition: "Un modèle sépare le rendement long entre trajectoire attendue des taux courts et rémunération du risque de duration. Cette séparation est estimée, donc incertaine.",
     formula: 'rendement long ≈ moyenne des taux courts anticipés + prime de terme',
     whyNow: "Quand l'offre de dette longue augmente, que le QT réduit l'acheteur public et que la demande étrangère se déplace, une baisse attendue des taux courts peut coexister avec une remontée du rendement long.",
-    articles: treasuryArticles,
+    articles: [{ label: 'Une hausse de la Fed peut-elle faire baisser les taux longs ?', href: '/posts/fed-hausses-taux-longs-prime-terme/', detail: 'Anticipations, prime de terme et rachats du Trésor.', kind: 'article' }, ...treasuryArticles],
     guides: treasuryGuides,
     datasets: treasuryDatasets,
     signals: treasurySignals,
-    sources: treasurySources,
+    sources: [{ label: 'Federal Reserve, modèle Kim–Wright', href: 'https://www.federalreserve.gov/data/three-factor-nominal-term-structure-model.htm', detail: 'Méthode, limites et révisions des estimations de prime de terme.', kind: 'source' }, ...treasurySources],
     related: treasuryRelated,
   },
   duration: {
