@@ -37,16 +37,36 @@ const totalCents = frozen.flatMap(row => row.cents).reduce((a, b) => a + b, 0);
 assert.equal(totalCents, 6119236759);
 assert.equal(3715 + 44349, 48064); // Hundredths of USD millions, two paragraph-49 periods.
 
+function primaryDomainSet(domains) {
+  assert(Array.isArray(domains), 'primary domains must be an array');
+  assert(domains.every(domain => typeof domain === 'string'), 'primary domains must be strings');
+  return new Set(domains);
+}
+
 test('DOJ and FATF are recognised as primary publishers with explicit institutional limits', () => {
+  const primaryDomains = primaryDomainSet(editorialSourceDomainTiers.primary);
   for (const [slug, host] of [['doj-justice-americaine', 'justice.gov'], ['gafi-fatf', 'fatf-gafi.org']]) {
     assert(primaryInstitutionBySlug.get(slug).limits.length >= 2);
-    assert(editorialSourceDomainTiers.primary.includes(host));
-    assert(!editorialSourceDomainTiers.primary.includes(`${host}.invalid`));
+    assert(primaryDomains.has(host));
+    assert(!primaryDomains.has(`${host}.invalid`));
     assert.equal(new URL(primaryInstitutionBySlug.get(slug).url).hostname.replace(/^www\./u, ''), host);
   }
   // Interested-party corporate statements remain distinct from institutional sources.
-  assert(!editorialSourceDomainTiers.primary.includes('binance.com'));
-  assert(!editorialSourceDomainTiers.primary.includes('tether.to'));
+  assert(!primaryDomains.has('binance.com'));
+  assert(!primaryDomains.has('tether.to'));
+});
+
+test('primary-domain membership rejects malformed catalogues and matches complete entries', () => {
+  for (const invalid of ['justice.gov', null, {}, [42], ['justice.gov', null]]) {
+    assert.throws(() => primaryDomainSet(invalid));
+  }
+  const valid = primaryDomainSet(['justice.gov', 'fatf-gafi.org']);
+  assert(valid.has('justice.gov'));
+  assert(valid.has('fatf-gafi.org'));
+  for (const impostor of ['justice.gov.invalid', 'fakejustice.gov', 'justice.gov@invalid.test', 'https://justice.gov/']) {
+    assert(!valid.has(impostor));
+  }
+  assert(!primaryDomainSet(['justice.gov.invalid']).has('justice.gov'));
 });
 
 const tags = new Set(['svg', 'title', 'desc', 'g', 'rect', 'text', 'line', 'polyline']);
