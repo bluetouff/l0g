@@ -27,10 +27,63 @@ export interface PrimarySourceInstitution {
   related: PrimarySourceLink[];
 }
 
-export const primarySourcesUpdated = '9 septembre 2026';
-export const primarySourcesUpdatedIso = '2026-09-09';
+export const primarySourcesUpdated = '15 septembre 2026';
+export const primarySourcesUpdatedIso = '2026-09-15';
 
 export const primaryInstitutions: PrimarySourceInstitution[] = [
+  {
+    slug: 'doj-justice-americaine',
+    name: 'Department of Justice et parquets fédéraux américains',
+    shortName: 'DOJ',
+    category: 'justice, sanctions et criminalité financière',
+    accent: 'var(--color-topic-blue)',
+    url: 'https://www.justice.gov/',
+    description: 'Communiqués des autorités de poursuite et documents judiciaires originaux rendus publics par le ministère américain de la Justice.',
+    why: 'Le DOJ permet de retrouver une plainte, ses montants, ses bases juridiques et la procédure annoncée, avec la position du parquet clairement identifiée.',
+    readFor: ['Lire le document judiciaire joint au communiqué.', 'Distinguer gel, saisie, demande de confiscation et jugement.'],
+    datasets: [
+      {
+        name: 'USAO SDNY : USDT et ventes de pétrole iranien',
+        role: 'Annonce du dépôt de la plainte civile concernant environ 61 millions de dollars en USDT.',
+        cadence: 'Événementielle',
+        delay: 'Publication du 14 septembre 2026',
+        url: 'https://www.justice.gov/usao-sdny/pr/us-attorney-seeks-forfeiture-61-million-cryptocurrency-iranian-militarys-black-market',
+      },
+      {
+        name: 'Plainte 1:26-cv-08010, document 1',
+        role: 'Pièce de 25 pages : mécanisme de saisie prévu, réseau allégué, virements, soldes et dates de gel.',
+        cadence: 'Document daté',
+        delay: 'Dépôt du 14 septembre 2026',
+        url: 'https://www.justice.gov/usao-sdny/media/1461216/dl',
+      },
+    ],
+    limits: ['Une plainte expose les allégations d’une partie et ne vaut pas jugement.', 'Un mécanisme décrit au futur ne confirme pas à lui seul son exécution technique.'],
+    verification: ['Conserver numéro d’affaire, date, page et paragraphe.', 'Recueillir les réponses des acteurs concernés et identifier leurs intérêts.', 'Vérifier les actes ultérieurs avant de qualifier une confiscation de définitive.'],
+    related: [{ label: 'Pétrole iranien et USDT', href: '/posts/petrole-iranien-usdt-tether-saisie/' }],
+  },
+  {
+    slug: 'gafi-fatf',
+    name: 'Groupe d’action financière / Financial Action Task Force',
+    shortName: 'GAFI / FATF',
+    category: 'blanchiment, financement du terrorisme et actifs virtuels',
+    accent: 'var(--color-amber)',
+    url: 'https://www.fatf-gafi.org/',
+    description: 'Rapports et orientations du GAFI sur les risques de criminalité financière et les dispositifs de prévention.',
+    why: 'Ses publications décrivent les risques liés aux intermédiaires et aux actifs virtuels ainsi que les mesures recommandées aux juridictions et au secteur privé.',
+    readFor: ['Comprendre les contrôles techniques et de gouvernance des stablecoins.', 'Distinguer normes internationales, bonnes pratiques et droit national applicable.'],
+    datasets: [
+      {
+        name: 'Stablecoins and Unhosted Wallets',
+        role: 'Rapport ciblé sur les stablecoins, portefeuilles autonomes et transactions entre pairs.',
+        cadence: 'Rapport thématique',
+        delay: 'Publication du 3 mars 2026',
+        url: 'https://www.fatf-gafi.org/en/publications/Virtualassets/targeted-report-stablecoins-unhosted-wallets.html',
+      },
+    ],
+    limits: ['Les recommandations ne sont pas une loi mondiale directement applicable.', 'Certains chiffres repris par le GAFI proviennent de prestataires : conserver leur attribution et leur méthode.'],
+    verification: ['Dater le rapport et distinguer ses recommandations de ses études de cas.', 'Identifier les sources originales des statistiques citées.', 'Vérifier le droit de la juridiction concernée avant d’affirmer une obligation.'],
+    related: [{ label: 'Glossaire stablecoin', href: '/glossaire/stablecoin/' }, { label: 'Pétrole iranien et USDT', href: '/posts/petrole-iranien-usdt-tether-saisie/' }],
+  },
   {
     slug: 'sec-edgar',
     name: 'SEC EDGAR',

@@ -28,6 +28,7 @@ import './scpi-office-income-infographics.test.mjs';
 import './scpi-debt-infographics.test.mjs';
 import './scpi-insurance-infographics.test.mjs';
 import './fed-long-yields-infographics.test.mjs';
+import './iran-usdt-infographics.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 

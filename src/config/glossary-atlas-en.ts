@@ -1014,8 +1014,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
     slug: 'stablecoin',
     sigle: 'Stablecoin',
-    nom: 'Fiat-pegged digital token',
-    def: 'A digital token backed one-for-one by a currency (the dollar in nearly 99% of cases) and redeemable at par. Its value rests entirely on the quality and liquidity of its reserves.',
+    nom: 'Reference-value digital token',
+    def: 'A cryptoasset designed to maintain a stable value against a reference, often a currency. That target depends on its mechanism, any reserves and redemption rights. The stablecoin label alone guarantees neither a market price at par nor redemption available to every holder.',
     guide: '/en/guides/read-stablecoins-genius-act/',
     ...cryptoSection,
     atlas: {
@@ -1023,6 +1023,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       formula: 'durable parity = liquid assets + redemption right + supervision + operational trust',
       whyNow: 'Stablecoins are becoming a parallel dollar plumbing: T-bill reserves, cross-border payments, sanctions, DeFi and US regulation all intersect.',
       articles: [
+        { label: 'Iranian oil and USDT', href: '/en/analysis/iranian-oil-usdt-tether-seizure/', detail: 'Freezing, seizure and the powers Tether retains.', kind: 'article' },
         { label: 'RealT in liquidation', href: '/en/analysis/realt-liquidation-token-without-the-deed/', detail: 'Real-estate RWA, off-chain title and on-chain promise.', kind: 'article' },
         { label: 'USDT on Tron and OFAC evasion', href: '/en/analysis/iran-hormuz-tolls-usdt-tron-ofac/', detail: 'Stablecoins, sanctions and geopolitical payments.', kind: 'article' },
         { label: 'Hyperliquid and on-chain tradfi', href: '/en/analysis/hyperliquid-onchain-exchange/', detail: 'Perpetuals, DEXs and bridges to traditional assets.', kind: 'article' },
@@ -1035,6 +1036,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         { label: 'MiCA, acronym by acronym', href: '/en/guides/decode-mica-crypto-regulation/', detail: 'ARTs, EMTs, CASPs and European supervision.', kind: 'guide' },
       ],
       ...cryptoShared,
+      sources: [...cryptoShared.sources, { label: 'FATF: stablecoins and unhosted wallets', href: 'https://www.fatf-gafi.org/en/publications/Virtualassets/targeted-report-stablecoins-unhosted-wallets.html', detail: 'Risks and proportionate controls, March 3, 2026 report.', kind: 'source' }],
       related: ['usdt', 'usdc', 'genius', 'ppsi', 'rwa'],
     },
   },
@@ -1042,12 +1044,14 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'usdt',
     sigle: 'USDT',
     nom: 'Tether',
-    def: 'The largest stablecoin in circulation, meant to be worth one dollar. Issued by Tether, often at the centre of debates over reserve transparency.',
+    def: 'A stablecoin issued by Tether that targets one US dollar per token. Direct redemption through Tether is subject to eligibility, verification and minimum-amount requirements. The issuer retains freezing powers, including over tokens held in a personal wallet.',
+    guide: '/en/analysis/iranian-oil-usdt-tether-seizure/',
     ...cryptoSection,
     atlas: {
-      intuition: 'USDT concentrates the most systemic stablecoin risk: size, liquidity, trust in the reserve and offshore uses.',
-      whyNow: 'Its role in crypto payments and sanctions evasion makes it an indicator of dollar opacity, not just a trading token.',
+      intuition: 'Holding the keys to a USDT wallet leaves the token’s rules and its issuer’s powers in place.',
+      whyNow: 'The September 14, 2026 US complaint concerning funds allegedly linked to Iranian oil describes a seizure through destruction and replacement of tokens.',
       articles: [
+        { label: 'Iranian oil and USDT', href: '/en/analysis/iranian-oil-usdt-tether-seizure/', detail: 'Freezing, seizure and the powers Tether retains.', kind: 'article' },
         { label: 'USDT on Tron and OFAC evasion', href: '/en/analysis/iran-hormuz-tolls-usdt-tron-ofac/', detail: 'Stablecoins, sanctions and geopolitical payments.', kind: 'article' },
       ],
       guides: [
@@ -1055,6 +1059,10 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         { label: 'Reading on-chain data', href: '/en/guides/read-on-chain-data/', detail: 'Addresses, reserves, flows and the limits of interpretation.', kind: 'guide' },
       ],
       ...cryptoShared,
+      sources: [...cryptoShared.sources,
+        { label: 'Tether token terms', href: 'https://tether.to/en/legal/', detail: 'Sections 2 and 4.1: freezing, reserves and direct-redemption conditions.', kind: 'source' },
+        { label: 'Manhattan prosecutors’ complaint', href: 'https://www.justice.gov/usao-sdny/media/1461216/dl', detail: 'September 14, 2026, p. 3, footnote 1: planned seizure mechanism.', kind: 'source' },
+      ],
       related: ['stablecoin', 'usdc', 'ppsi', 'genius'],
     },
   },
