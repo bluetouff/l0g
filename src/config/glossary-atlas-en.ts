@@ -203,6 +203,17 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'reverse-yankee', sigle: 'Reverse Yankee', nom: 'US corporate bond issued in a foreign currency',
+    def: 'A bond issued by a US company in a foreign currency, including the euro. Its funding cost depends on the reference rate, credit spread and any currency hedge. A lower coupon in another currency does not by itself establish a funding saving.',
+    guide: '/en/analysis/ai-debt-sovereign-borrowers-credit-costs/', ...macroSection,
+    atlas: {
+      intuition: 'The issue currency changes funding terms and the investor base, while the borrower remains the same company.',
+      articles: [{ label: 'AI debt and competition for credit', href: '/en/analysis/ai-debt-sovereign-borrowers-credit-costs/', detail: 'Euro funding, hedging and portfolio choices.', kind: 'article' }],
+      sources: [{ label: 'ECB, Reverse Yankee bonds', href: 'https://www.ecb.europa.eu/press/other-publications/ire/focus/html/ecb.irebox202506_02~e5ae550b00.en.html', detail: 'Definition and hedged versus unhedged funding costs, June 2025.', kind: 'source' }],
+      related: ['duration', 'prime-de-terme'],
+    },
+  },
+  {
     slug: 'clarity', sigle: 'CLARITY', nom: 'CLARITY Act',
     def: 'Proposed US legislation that would, among other things, allocate digital-asset oversight between the SEC and CFTC. A House-passed bill, a negotiating draft and an enacted law have different legal status. A procedural vote does not itself create new obligations.',
     guide: '/en/analysis/clarity-after-the-49-50-vote/', sectionTitle: 'Institutions & regulation', accent: 'var(--color-accent)',

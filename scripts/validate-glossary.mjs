@@ -28,9 +28,19 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 532, 'Le corpus doit conserver ses 532 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 85, 'Le graphe Atlas doit conserver ses 85 nœuds');
-assert.equal(glossaryAtlasEdgeCount, 380, 'Le graphe Atlas doit conserver ses 380 relations');
+assert.equal(glossaryEntries.length, 533, 'Le corpus doit conserver ses 533 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 86, 'Le graphe Atlas doit conserver ses 86 nœuds');
+assert.equal(glossaryAtlasEdgeCount, 382, 'Le graphe Atlas doit conserver ses 382 relations');
+for (const [entry, href] of [
+  [glossaryEntries.find((item) => item.slug === 'reverse-yankee'), '/posts/dette-ia-concurrence-etats-taux-credit/'],
+  [glossaryAtlasEnBySlug.get('reverse-yankee'), '/en/analysis/ai-debt-sovereign-borrowers-credit-costs/'],
+]) {
+  assert(entry, 'Reverse Yankee doit être défini dans les deux langues');
+  assert.equal(entry.guide, href);
+  assert.deepEqual(entry.atlas?.articles?.map((item) => item.href), [href]);
+  assert.deepEqual(entry.atlas?.sources?.map((item) => item.href), ['https://www.ecb.europa.eu/press/other-publications/ire/focus/html/ecb.irebox202506_02~e5ae550b00.en.html']);
+  assert.deepEqual(entry.atlas?.related, ['duration', 'prime-de-terme']);
+}
 for (const slug of ['clarity', 'cloture']) {
   const fr = glossaryEntries.find((entry) => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);

@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Reverse Yankee', nom: 'Obligation américaine en devise étrangère', def: "Obligation émise par une entreprise américaine dans une devise étrangère, notamment l’euro. Son coût dépend du taux de référence, de la prime de crédit et, le cas échéant, de la couverture du change. Un coupon plus faible dans une autre monnaie ne suffit donc pas à établir une économie de financement.", guide: '/posts/dette-ia-concurrence-etats-taux-credit/' },
       { sigle: 'Incidence fiscale', nom: 'Tax incidence', def: "Répartition économique finale de la charge d’un impôt entre les agents. Elle peut différer de l’identité du redevable légal qui verse la taxe. Pour un droit de douane, les ajustements de prix et de marges peuvent répartir la charge entre fournisseurs, importateurs et clients. Cette répartition dépend des conditions du marché et doit être estimée.", guide: '/posts/trump-5000-dollars-dividende-promesse-dette/' },
       { sigle: 'Stérilisation monétaire', nom: 'Monetary sterilisation', def: "Opération par laquelle une banque centrale compense l’effet d’une intervention sur la liquidité bancaire. Après un achat de devises ou d’or payé en monnaie locale, elle peut retirer la liquidité créée, notamment en émettant des titres rémunérés. Les intérêts versés constituent un coût distinct du résultat de l’achat initial.", guide: '/posts/ghana-or-cedi-goldbod-cout-devises/' },
       { sigle: 'Activité quasi budgétaire', nom: 'Quasi-fiscal activity', def: "Intervention d’une banque centrale ou d’un organisme public qui produit des effets comparables à une dépense, une subvention ou une recette de l’État, tout en étant comptabilisée hors du budget de l’administration centrale. Transférer cette activité au budget rend son coût plus visible sans le supprimer automatiquement.", guide: '/posts/ghana-or-cedi-goldbod-cout-devises/' },
@@ -605,7 +606,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-14';
+export const glossaryUpdatedIso = '2026-09-16';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -848,6 +849,12 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'reverse-yankee': {
+    intuition: 'La devise d’émission change les conditions de financement et les investisseurs accessibles ; elle ne change pas l’identité du débiteur.',
+    articles: [{ label: 'Dette IA et concurrence pour le crédit', href: '/posts/dette-ia-concurrence-etats-taux-credit/', detail: 'Financement en euros, couverture et arbitrages des investisseurs.', kind: 'article' }],
+    sources: [{ label: 'BCE, Reverse Yankee bonds', href: 'https://www.ecb.europa.eu/press/other-publications/ire/focus/html/ecb.irebox202506_02~e5ae550b00.en.html', detail: 'Définition et comparaison des coûts couverts et non couverts, juin 2025.', kind: 'source' }],
+    related: ['duration', 'prime-de-terme'],
+  },
   'clarity': {
     intuition: 'Le statut parlementaire du texte détermine si ses obligations sont encore proposées ou applicables.',
     articles: [{ label: 'CLARITY après le vote 49–50', href: '/posts/clarity-apres-le-vote-49-50/', detail: 'Blocage procédural et projets SEC–CFTC.', kind: 'article' }],
