@@ -1005,7 +1005,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   'affacturage': {
     intuition: 'Mobiliser une facture avant son règlement procure une avance dont le coût et les garanties restent contractuels.',
-    sources: [{ label: 'BCEAO / COFEB', href: 'https://cofeb.bceao.int/actualite/webinaires-conjoints-bceao-afreximbank-fci-sur-le-theme-affacturage-et-financement-des', detail: 'Présentation institutionnelle de l’affacturage.', kind: 'source' }],
+    articles: [{ label: 'Radiant World : les créances contestées', href: '/posts/radiant-world-factures-contestees-financement/', detail: 'Existence de la créance, solde encore dû et droits du financeur.', kind: 'article' }],
+    sources: [{ label: 'International Trade Administration', href: 'https://www.trade.gov/report/trade-finance-guide', detail: 'Chapitre Export Factoring : achat de créances à court terme et répartition contractuelle des risques.', kind: 'source' }, { label: 'BCEAO / COFEB', href: 'https://cofeb.bceao.int/actualite/webinaires-conjoints-bceao-afreximbank-fci-sur-le-theme-affacturage-et-financement-des', detail: 'Présentation institutionnelle de l’affacturage.', kind: 'source' }],
     related: ['bfr', 'arrieres-de-paiement'],
   },
   'prime-de-terme': {

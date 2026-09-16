@@ -552,7 +552,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     accent: 'var(--color-accent)',
     atlas: {
       intuition: 'Turning an invoice into an advance brings forward cash while creating contractual costs and conditions.',
-      sources: [{ label: 'BCEAO / COFEB', href: 'https://cofeb.bceao.int/actualite/webinaires-conjoints-bceao-afreximbank-fci-sur-le-theme-affacturage-et-financement-des', detail: 'Institutional explanation of factoring.', kind: 'source' }],
+      articles: [{ label: 'Radiant World: disputed receivables', href: '/en/analysis/radiant-world-disputed-invoices-trade-finance/', detail: 'The debt, its outstanding balance and the funder’s payment rights.', kind: 'article' }],
+      sources: [{ label: 'International Trade Administration', href: 'https://www.trade.gov/report/trade-finance-guide', detail: 'Export Factoring chapter: purchasing short-term receivables and allocating risks by contract.', kind: 'source' }, { label: 'BCEAO / COFEB', href: 'https://cofeb.bceao.int/actualite/webinaires-conjoints-bceao-afreximbank-fci-sur-le-theme-affacturage-et-financement-des', detail: 'Institutional explanation of factoring.', kind: 'source' }],
       related: ['arrieres-de-paiement'],
     },
   },
