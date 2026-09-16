@@ -1,0 +1,296 @@
+---
+title: 'Crédit privé : la dette du logiciel face à l’IA'
+seoTitle: 'Crédit privé et IA : les risques de la dette du logiciel | l0g'
+ogTitle: L’IA face à la dette du logiciel
+description: L’IA peut peser sur les abonnements qui remboursent le crédit privé. Données BRI, comptes OTF et simulateur
+  pour comprendre le risque sans confondre exposition et défaut.
+tags: ["crédit privé", "intelligence artificielle", "logiciels", "BDC", "dette", "risque financier"]
+quickTake:
+  fact: La BRI estime les prêts des BDC au logiciel à environ 115 milliards de dollars à fin 2025.
+  importance: Une baisse des marges peut affecter à la fois le paiement des intérêts et la valeur récupérable de
+    l’entreprise.
+  uncertainty: Les sources étudiées ne permettent pas de chiffrer une perte agrégée du crédit privé causée par l’IA.
+pubDate: "2026-09-16T22:40:00+02:00"
+updatedDate: "2026-09-16T22:40:00+02:00"
+draft: false
+ogImage: /illustrations/news/credit-prive-logiciels-ia-v1.jpg
+---
+
+import SoftwareDebtStress from '../../components/SoftwareDebtStress.astro';
+
+*L’intelligence artificielle pourrait réussir à rendre certains logiciels moins chers et plus faciles à remplacer, tout en fragilisant les prêts qui les financent. Les données de la BRI montrent une exposition importante du crédit privé au logiciel. Elles ne démontrent pas une vague de défauts provoquée par l’IA. Pour comprendre le risque, il faut suivre l’argent d’un abonnement jusqu’au bilan du prêteur, puis distinguer ce qui a déjà été observé des scénarios encore ouverts.*
+
+Un éditeur peut conserver ses clients, continuer à vendre son produit et manquer malgré tout d’argent pour rémunérer ses créanciers. Il suffit que ses recettes baissent plus vite que ses dépenses, alors que sa dette reste en place. Le logiciel fonctionne. Le montage financier, lui, devient moins confortable.
+
+Voilà un angle mort du débat sur le financement de l’IA. Le risque ne porte pas seulement sur la rentabilité des centres de données en construction. Il concerne aussi la capacité d’entreprises déjà installées à préserver les revenus sur lesquels elles ont emprunté. **Une innovation utile pour leurs clients peut réduire les sommes disponibles pour rembourser leurs prêteurs.** C’est une possibilité économique, pas la description d’une faillite générale en cours.
+
+La photographie documentaire est arrêtée au **16 septembre 2026**. Les statistiques agrégées mobilisées portent surtout sur **fin 2025** ; l’étude de cas utilise des comptes au **30 juin 2026**, publiés le **5 août**, et une opération de financement annoncée le **4 septembre**. Ces dates ne sont pas interchangeables.
+
+## Derrière les abonnements, des milliards de prêts
+
+Une étude de la Banque des règlements internationaux publiée le **14 septembre 2026** situe à **44 %** la part des entreprises technologiques dans les encours de prêts directs américains étudiés en 2025, contre **22 % en 2010**. Son périmètre technologique est large : il ne se limite ni aux éditeurs de logiciels ni aux entreprises d’IA. <a href="https://www.bis.org/publications/qr-202609/financing-digital-economy-role-private-credit">Étude et méthodologie de la BRI</a>.
+
+Le crédit privé désigne ici des financements négociés hors des marchés obligataires publics, généralement par des prêteurs non bancaires. L’emprunteur traite avec un fonds ou un petit groupe de prêteurs, plutôt qu’avec une foule de porteurs d’obligations. Les contrats peuvent être adaptés à sa situation. Le financeur accepte en échange un actif qu’il ne pourra pas nécessairement revendre rapidement. Le FMI décrit cette organisation et ses différences avec le crédit bancaire et les marchés publics dans son <a href="https://www.imf.org/-/media/files/publications/gfsr/2024/april/english/ch2.pdf">analyse de référence d’avril 2024</a>.
+
+Pour observer les expositions au logiciel, les *business development companies*, ou **BDC**, offrent une fenêtre utile : ces sociétés américaines de financement publient des informations détaillées sur leurs placements. Certaines sont cotées, d’autres non. Elles ne représentent pas l’ensemble du crédit privé et leurs portefeuilles ne sont pas composés exclusivement de prêts directs. <a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/closed-end-funds/publicly-traded-business-development-companies-bdcs">Présentation de la SEC</a>.
+
+Un bulletin de la BRI publié le **14 juillet 2026** estime leurs prêts au logiciel à **environ 115 milliards de dollars à fin 2025**, soit à peu près **un cinquième** de leurs prêts. Ce montant mesure une exposition. Il ne constitue ni une perte attendue, ni une facture imputable à l’IA. <a href="https://www.bis.org/publications/bulletin-128-ai-disruption-private-credit-exposure-software-firms-bdcs.pdf">Bulletin no 128</a>.
+
+<figure class="infographic" style="max-width:520px;margin:2rem auto 2.75rem;padding-bottom:.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 490" role="img" aria-labelledby="swd-tech-fr-title swd-tech-fr-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border-radius:16px;font-family:system-ui,sans-serif">
+<title id="swd-tech-fr-title">Technologie et prêts directs</title>
+<desc id="swd-tech-fr-desc">Dans les encours américains étudiés par la BRI, la technologie représente 22 % en 2010 et 44 % en 2025. Catégorie plus large que le logiciel.</desc>
+<rect x="0" y="0" width="520" height="490" rx="10" fill="#0c0d10" />
+<text x="24" y="44" font-size="28" fill="#f5f6f8" text-anchor="start">Le poids de la technologie</text>
+<text x="24" y="82" font-size="24" fill="#c3ccd8" text-anchor="start">Prêts directs · États-Unis</text>
+<text x="24" y="120" font-size="24" fill="#c3ccd8" text-anchor="start">Part des encours étudiés</text>
+<text x="24" y="179" font-size="26" fill="#f5f6f8" text-anchor="start">2010</text>
+<rect x="112" y="148" width="158.4" height="48" rx="10" fill="#55ead4" />
+<text x="284" y="180" font-size="26" fill="#55ead4" text-anchor="start">22 %</text>
+<text x="24" y="277" font-size="26" fill="#f5f6f8" text-anchor="start">2025</text>
+<rect x="112" y="246" width="316.8" height="48" rx="10" fill="#7ca4ff" />
+<text x="414" y="278" font-size="26" fill="#0c0d10" text-anchor="end">44 %</text>
+<line x1="112" y1="323" x2="472" y2="323" stroke="#738497" stroke-width="2" />
+<text x="112" y="357" font-size="24" fill="#c3ccd8" text-anchor="middle">0</text>
+<text x="292" y="357" font-size="24" fill="#c3ccd8" text-anchor="middle">25</text>
+<text x="472" y="357" font-size="24" fill="#c3ccd8" text-anchor="middle">50 %</text>
+<text x="24" y="412" font-size="24" fill="#55ead4" text-anchor="start">Technologie au sens large</text>
+<text x="24" y="456" font-size="24" fill="#c3ccd8" text-anchor="start">Source : BRI · septembre 2026</text>
+</svg>
+<figcaption style="font-size:0.86em;line-height:1.6;margin-top:0.85rem"><strong>Figure 1.</strong> Parts d’encours en pourcentage, années 2010 et 2025. Périmètre américain de l’étude ; technologie au sens large. Valeurs publiées arrondies, sans interpolation. Source : <a href="https://www.bis.org/publications/qr-202609/financing-digital-economy-role-private-credit">BRI, 14 septembre 2026</a>, sur données PitchBook. Dessin l0g.</figcaption>
+</figure>
+
+Il faut résister à une tentation arithmétique : rapprocher les 44 % de technologie des quelque 20 % de logiciel et en déduire une accélération ou un écart de risque. Le premier chiffre porte sur un univers de prêts directs et une catégorie technologique étendue ; le second concerne les BDC et le logiciel. **Des dénominateurs différents ne deviennent pas comparables parce que les deux résultats portent un signe %.**
+
+## La promesse de renouvellement devient une capacité d’endettement
+
+Imaginons un logiciel de gestion facturé chaque année. Un client qui le conserve apporte une recette supplémentaire sans obliger l’éditeur à reconstruire son produit de zéro. Des contrats répartis entre de nombreux utilisateurs peuvent rendre les revenus relativement prévisibles. Cette prévisibilité aide à raisonner sur le remboursement d’un prêt.
+
+Le prêteur ne doit pourtant pas confondre plusieurs étages. Le chiffre d’affaires mesure les ventes comptabilisées. Les encaissements dépendent des factures effectivement réglées. Les revenus récurrents annualisés, souvent désignés par **ARR**, extrapolent sur un an un ensemble de contrats ou d’abonnements selon la définition retenue par l’entreprise. Ils ne sont ni un bénéfice, ni une somme déjà déposée à la banque.
+
+Après les ventes viennent les salaires, l’hébergement, la commercialisation, les dépenses nécessaires pour garder le produit compétitif. Puis les intérêts, les impôts, les investissements et les variations du besoin en fonds de roulement, c’est-à-dire notamment le décalage entre les règlements des clients et ceux des fournisseurs. Un abonnement qui se renouvelle est une bonne nouvelle. Il faut encore savoir combien il laisse après ces sorties d’argent.
+
+Cette distinction compte particulièrement lorsque le financement repose sur la valeur de l’entreprise en activité. Un <a href="https://www.nber.org/papers/w34500">document de travail du NBER, révisé en mai 2026</a>, décrit la spécialisation de prêteurs directs dans ce type de financement, notamment pour des entreprises riches en actifs immatériels. Leur métier consiste précisément à apprécier une capacité à produire des revenus, pas seulement la valeur de revente de machines.
+
+Ce choix n’est pas absurde. Une base de clients, un logiciel intégré aux procédures d’une entreprise et une équipe qui sait le faire fonctionner peuvent avoir une valeur économique réelle. Mais cette valeur dépend de la continuité de l’activité. Elle est donc sensible aux mêmes changements commerciaux que l’argent destiné à payer les intérêts.
+
+## Une garantie n’est pas un prix de revente garanti
+
+Le mot « garanti » peut donner une impression trompeuse de sécurité absolue. Une sûreté accorde au prêteur des droits sur des actifs ou sur leur produit de cession. La priorité de remboursement détermine sa place parmi les créanciers. Ni l’une ni l’autre ne fixe à l’avance le montant qui sera récupéré. Le <a href="https://www.nber.org/papers/w34500">travail du NBER sur les prêts directs</a> met justement au centre la différence entre valeur de continuation et valeur de liquidation.
+
+Prenons une entreprise dont la principale richesse est un logiciel utilisé par des milliers de clients. Un repreneur peut être prêt à payer pour ces clients, pour les contrats et pour le savoir-faire. S’il anticipe des renouvellements moins nombreux ou des tarifs durablement inférieurs, son offre baisse, même si les droits juridiques du créancier restent identiques.
+
+Le choc peut ainsi frapper deux fois le même prêt. D’abord, moins de marge réduit la capacité du débiteur à payer. Ensuite, une valeur de revente plus faible réduit le montant récupérable si une restructuration devient nécessaire. **La garantie et le revenu ne sont pas toujours deux protections indépendantes.** Dans cet exemple, ils dépendent en partie de la même clientèle.
+
+Cela ne rend pas les sûretés inutiles. Des clauses contractuelles peuvent permettre une intervention précoce ; un prêteur peut négocier un apport de capitaux, modifier les échéances ou organiser une vente. Mais la force d’un contrat et la valeur économique de ce qu’il protège doivent être examinées séparément. Le FMI souligne l’importance des modalités de financement, de la qualité du suivi et des restructurations dans son <a href="https://www.imf.org/-/media/files/publications/gfsr/2024/april/english/ch2.pdf">étude du crédit privé</a>.
+
+## L’IA n’a pas besoin de remplacer toute l’entreprise
+
+Pour tester la vulnérabilité, inutile d’imaginer la disparition soudaine de tous les logiciels. Plusieurs scénarios plus modestes suffisent.
+
+Un client pourrait utiliser moins de licences si une partie du travail est automatisée. Un concurrent pourrait proposer une fonction équivalente à un tarif inférieur. L’éditeur pourrait conserver ses utilisateurs, mais devoir inclure davantage de services dans un abonnement inchangé. Dans chaque cas, l’effet pertinent pour le prêteur est le revenu et la marge qui restent, pas le nombre de démonstrations impressionnantes produites par un modèle d’IA.
+
+Ces scénarios n’impliquent pas que les économies du client deviennent intégralement une perte pour l’éditeur. Celui-ci peut aussi réduire ses coûts, améliorer son produit, conquérir des clients ou vendre de nouvelles fonctions. Une facturation à l’usage peut remplacer une facturation par utilisateur. Le résultat dépend du pouvoir de négociation, de la concurrence et de la valeur du service rendu. Il doit être mesuré entreprise par entreprise.
+
+Le <a href="https://www.imf.org/-/media/files/publications/gfsr/2026/april/english/ch1.pdf">FMI, dans son rapport d’avril 2026</a>, mentionne des protections possibles pour les acteurs établis : données, distribution, exigences de sécurité, contraintes réglementaires et coûts de changement de fournisseur. Une démonstration technique ne suffit pas à prouver qu’un service peut remplacer un système utilisé en production.
+
+La bonne question est donc : **les gains de productivité renforcent-ils la marge de l’emprunteur, ou sont-ils surtout transférés à ses clients sous forme de baisse des prix ?** Sans réponse documentée, on dispose d’une hypothèse de risque, pas d’un diagnostic de solvabilité.
+
+<figure class="infographic" style="max-width:520px;margin:2rem auto 2.75rem;padding-bottom:.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 758" role="img" aria-labelledby="swd-mechanism-fr-title swd-mechanism-fr-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border-radius:16px;font-family:system-ui,sans-serif">
+<title id="swd-mechanism-fr-title">Les effets possibles de l’IA</title>
+<desc id="swd-mechanism-fr-desc">L’IA peut réduire les prix et les coûts. L’effet net sur la marge influence le paiement de la dette et la valeur de continuation. Schéma conceptuel, sans prévision.</desc>
+<rect x="0" y="0" width="520" height="758" rx="10" fill="#0c0d10" />
+<text x="24" y="44" font-size="28" fill="#f5f6f8" text-anchor="start">L’IA agit sur deux côtés</text>
+<text x="24" y="83" font-size="24" fill="#c3ccd8" text-anchor="start">Scénarios possibles · aucun chiffre</text>
+<g data-panel="1">
+<rect x="24" y="110" width="472" height="130" rx="10" fill="#151b24" />
+<text x="44" y="146" font-size="24" fill="#55ead4" text-anchor="start">Pression commerciale</text>
+<text x="44" y="184" font-size="24" fill="#f5f6f8" text-anchor="start">Moins de licences vendues</text>
+<text x="44" y="220" font-size="24" fill="#c3ccd8" text-anchor="start">ou des tarifs plus bas</text>
+</g>
+<g data-panel="2">
+<rect x="24" y="258" width="472" height="130" rx="10" fill="#151b24" />
+<text x="44" y="294" font-size="24" fill="#55ead4" text-anchor="start">Gains de productivité</text>
+<text x="44" y="332" font-size="24" fill="#f5f6f8" text-anchor="start">Moins de charges</text>
+<text x="44" y="368" font-size="24" fill="#c3ccd8" text-anchor="start">ou des services enrichis</text>
+</g>
+<line x1="260" y1="392" x2="260" y2="420" stroke="#738497" stroke-width="2" />
+<g data-panel="3">
+<rect x="24" y="422" width="472" height="130" rx="10" fill="#151b24" />
+<text x="44" y="458" font-size="24" fill="#55ead4" text-anchor="start">Effet net à mesurer</text>
+<text x="44" y="496" font-size="24" fill="#f5f6f8" text-anchor="start">Marge et recettes encaissées</text>
+<text x="44" y="532" font-size="24" fill="#c3ccd8" text-anchor="start">peuvent augmenter ou diminuer</text>
+</g>
+<line x1="260" y1="556" x2="260" y2="584" stroke="#738497" stroke-width="2" />
+<g data-panel="4">
+<rect x="24" y="586" width="472" height="130" rx="10" fill="#151b24" />
+<text x="44" y="622" font-size="24" fill="#55ead4" text-anchor="start">Conséquences pour le prêt</text>
+<text x="44" y="660" font-size="24" fill="#f5f6f8" text-anchor="start">Capacité de payer les intérêts</text>
+<text x="44" y="696" font-size="24" fill="#c3ccd8" text-anchor="start">et valeur de l’entreprise</text>
+</g>
+<text x="24" y="744" font-size="22" fill="#c3ccd8" text-anchor="start">Schéma l0g · mécanismes possibles</text>
+</svg>
+<figcaption style="font-size:0.86em;line-height:1.6;margin-top:0.85rem"><strong>Figure 2.</strong> Schéma analytique l0g, sans données d’entreprise ni période statistique. Les effets sur les prix et les charges doivent être mesurés conjointement ; les flèches décrivent des mécanismes possibles, pas une causalité estimée. Références : <a href="https://www.imf.org/-/media/files/publications/gfsr/2026/april/english/ch1.pdf">FMI, avril 2026</a> ; <a href="https://www.nber.org/papers/w34500">Jang et al.</a>.</figcaption>
+</figure>
+
+## Dix points de chiffre d’affaires peuvent absorber toute la marge disponible
+
+Prenons un exemple entièrement fictif, exprimé en unités monétaires. L’entreprise réalise **100 de recettes encaissées**, paie **70 de charges d’exploitation** et porte **200 de dette** à un taux annuel de **10 %**. Les intérêts sont donc de **20**. Il reste **10**, avant impôts, investissements, variations de trésorerie d’exploitation et remboursement du principal.
+
+Supposons que les recettes tombent à **90**, sans réduction des charges. L’excédent d’exploitation passe de **30 à 20**. Il couvre encore les intérêts, mais la marge résiduelle disparaît. Les recettes ont diminué de 10 % ; l’excédent avant intérêts a baissé d’un tiers. La dette, elle, n’a pas bougé.
+
+Ce point d’équilibre n’est pas un seuil universel de défaut. Une trésorerie initiale, un apport d’actionnaires ou une échéance lointaine peuvent laisser du temps. À l’inverse, les dépenses exclues de notre exemple peuvent rendre la situation plus tendue. L’exercice isole un mécanisme : une baisse limitée des ventes peut avoir un effet beaucoup plus fort sur la somme disponible après les coûts fixes et les intérêts.
+
+L’adaptation peut inverser le résultat. Avec des recettes de **90** et une baisse de **20 % des charges initiales de 70**, celles-ci reviennent à **56**. L’excédent d’exploitation atteint **34**, contre 30 au départ. Après les mêmes 20 d’intérêts, il reste **14**. Une baisse du chiffre d’affaires ne prouve donc pas, à elle seule, que le crédit se dégrade.
+
+<SoftwareDebtStress lang="fr" />
+
+Le simulateur permet de modifier séparément les recettes, les charges, le taux d’intérêt et la part des intérêts capitalisée. Il ne reproduit aucune entreprise réelle. Les charges sont supposées décaissées pendant l’année et les recettes encaissées pendant cette même période. Les intérêts sont calculés sur la dette de début d’année ; ceux qui ne sont pas payés en espèces sont ajoutés à la dette en fin d’année, sans capitalisation supplémentaire à l’intérieur de la période.
+
+## Deux lectures boursières à distinguer
+
+Le bulletin publié en juillet travaille sur un échantillon de prêts allant jusqu’au **quatrième trimestre 2025**. Ses constats de bonne tenue des prêts et de faible différenciation des spreads concernent cette fenêtre. Son graphique boursier va plus loin dans le temps et compare des **ratios cours/dividende**, pour deux groupes de 17 BDC définis par leur exposition historique au logiciel. Il ne mesure pas directement l’écart de performance récente de leurs actions. <a href="https://www.bis.org/publications/bulletin-128-ai-disruption-private-credit-exposure-software-firms-bdcs.pdf">Périmètre et graphique 3 du bulletin</a>.
+
+Un autre travail de la BRI, publié le **16 mars 2026**, observe une sous-performance des BDC les plus exposées au *software as a service*, les logiciels distribués par abonnement. Du **1er octobre 2025 au 5 mars 2026**, leur performance est inférieure d’environ **5 points de pourcentage** à celle des moins exposées. Cette fois, 37 BDC sont réparties selon une exposition supérieure ou inférieure à la médiane au troisième trimestre 2025. <a href="https://www.bis.org/publications/markets-recalibrate-amid-shifting-currents">Encadré B et note du graphique B1.C</a>.
+
+Les deux études examinent donc des indicateurs, des groupes et des fenêtres différents. Leur date de publication ne suffit pas à les départager. Nous ne pouvons ni les raccorder en une série unique, ni en déduire que tous les investisseurs seraient restés indifférents au risque logiciel jusqu’à l’été 2026.
+
+Une baisse du cours d’une BDC n’est toutefois pas un défaut chez son emprunteur. Le cours peut refléter une inquiétude sur les pertes futures, les distributions, les frais ou la liquidité du titre. La valeur nette d’actif, ou **NAV**, est une autre mesure : la valeur des actifs comptabilisés, diminuée des dettes, rapportée au nombre d’actions lorsqu’elle est publiée par action. Le prix payé en Bourse peut s’en écarter. <a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/closed-end-funds/publicly-traded-business-development-companies-bdcs">La SEC explique la structure des BDC cotées</a>.
+
+Ces signaux sont utiles précisément parce qu’ils ne disent pas la même chose. Un prix de marché réagit vite à une anticipation. Un défaut constate une rupture dans les paiements ou une autre condition contractuelle. Entre les deux, les comptes peuvent enregistrer des dépréciations ou des restructurations. Les confondre ferait passer une inquiétude pour une perte réalisée.
+
+## Dans les comptes d’OTF
+
+Blue Owl Technology Finance Corp., cotée sous le symbole **OTF**, offre un cas documenté. Il faut la distinguer de sa société de gestion et des autres véhicules Blue Owl. Ses comptes trimestriels ne constituent ni un échantillon représentatif de tout le logiciel ni un audit indépendant de chaque emprunteur.
+
+Dans sa <a href="https://www.blueowltechnologyfinance.com/investors/sec-filings/all-sec-filings/content/0001747777-26-000027/exhibit991-otfxpressrelease.htm">publication de résultats déposée avec un formulaire 8-K le 5 août 2026</a>, OTF présente les valeurs suivantes :
+
+| Indicateur | 31 mars 2026 | 30 juin 2026 |
+| --- | ---: | ---: |
+| Valeur nette d’actif par action, en dollars | 16,49 | 16,48 |
+| Placements en non-accrual, en % du portefeuille au coût | 0,3 % | 0,6 % |
+| Placements en non-accrual, en % du portefeuille à la juste valeur | 0,1 % | 0,1 % |
+
+*Données trimestrielles non auditées publiées par OTF. Les pourcentages mesurent des stocks à chaque date, pas des taux annuels de défaut. Le portefeuille comprend plusieurs catégories de placements.*
+
+Le **non-accrual** désigne une situation dans laquelle les intérêts ne sont plus comptabilisés normalement en revenus courus, notamment en raison d’incertitudes sur leur recouvrement. Le pourcentage au coût rapporte les placements concernés à leur base de coût ; celui à la juste valeur utilise leurs valeurs estimées actuelles. Un actif déjà fortement déprécié peut peser peu dans ce second ratio. Le chiffre le plus bas n’est donc pas automatiquement le plus rassurant.
+
+La quasi-stabilité de la NAV par action sur le trimestre ne suffit pas non plus à isoler la performance des prêts au logiciel. Cette valeur agrège différents placements et tient compte d’autres mouvements, dont les distributions et les rachats d’actions. Elle ne mesure pas un rendement total pour l’actionnaire.
+
+Un autre détail mérite de suivre le chemin de l’argent. Sur le deuxième trimestre, les tableaux d’OTF comptabilisent **25,224 millions de dollars d’intérêts PIK** et **17,062 millions de dividendes PIK**. Leur somme, **42,286 millions**, représente **12,5 %** des **338,032 millions de revenus de placement** du trimestre, selon notre calcul. Le dénominateur est le revenu de placement comptabilisé, pas la taille du portefeuille ni le revenu net. <a href="https://www.blueowltechnologyfinance.com/investors/sec-filings/all-sec-filings/content/0001747777-26-000027/exhibit991-otfxpressrelease.htm">Tableau des opérations, mêmes résultats</a>.
+
+Le **payment in kind**, ou PIK, permet de rémunérer un placement autrement qu’en espèces immédiatement : des intérêts peuvent s’ajouter à une créance ; des distributions peuvent prendre la forme de titres supplémentaires. Il faut distinguer ces deux catégories. Leur présence n’établit pas qu’un emprunteur est en difficulté : ce fonctionnement peut être prévu dès l’origine du contrat.
+
+Pour le prêteur, l’analyse utile consiste à demander si le PIK était prévu, s’il vient d’être négocié pour éviter un décaissement et si le montant finalement dû reste remboursable. Pour le lecteur des comptes, le principe est plus simple : **un revenu comptabilisé ne correspond pas nécessairement à de l’argent encaissé pendant le trimestre**. Cela vaut aussi pour certaines recettes hors PIK, en raison des décalages de paiement.
+
+Le scénario « Intérêts reportés » du simulateur illustre la différence. Avec 75 de recettes et 70 de charges, l’entreprise produit 5 avant intérêts. Elle en doit 20. En capitalisant 75 % de ces intérêts, elle ne décaisse que 5 et équilibre cette partie de sa trésorerie. Sa dette passe cependant de 200 à 215. La charge économique n’a pas disparu ; son règlement a été déplacé.
+
+## Plusieurs gestionnaires peuvent prêter aux mêmes entreprises
+
+Une autre concentration est moins visible qu’un simple poids sectoriel. À fin 2025, **environ 60 % des volumes de prêts des BDC au logiciel concernent des emprunteurs financés par au moins sept BDC distinctes**, selon la BRI. Le pourcentage porte sur les volumes de crédit, pas sur le nombre d’entreprises. <a href="https://www.bis.org/publications/bulletin-128-ai-disruption-private-credit-exposure-software-firms-bdcs.pdf">Graphique 4 et définition</a>.
+
+<figure class="infographic" style="max-width:520px;margin:2rem auto 2.75rem;padding-bottom:.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 680" role="img" aria-labelledby="swd-shared-fr-title swd-shared-fr-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border-radius:16px;font-family:system-ui,sans-serif">
+<title id="swd-shared-fr-title">Des emprunteurs communs</title>
+<desc id="swd-shared-fr-desc">Environ 60 % des volumes de crédit BDC au logiciel vont à des entreprises financées par sept BDC ou plus, à fin 2025. Un emprunteur fictif est relié à sept véhicules, sans montants.</desc>
+<rect x="0" y="0" width="520" height="680" rx="10" fill="#0c0d10" />
+<text x="24" y="44" font-size="28" fill="#f5f6f8" text-anchor="start">Des emprunteurs communs</text>
+<text x="24" y="112" font-size="52" fill="#55ead4" text-anchor="start">≈ 60 %</text>
+<text x="24" y="158" font-size="24" fill="#c3ccd8" text-anchor="start">des volumes de prêts au logiciel</text>
+<text x="24" y="196" font-size="24" fill="#c3ccd8" text-anchor="start">concernent des entreprises avec</text>
+<text x="24" y="234" font-size="26" fill="#f5f6f8" text-anchor="start">au moins 7 BDC prêteuses</text>
+<text x="24" y="272" font-size="24" fill="#c3ccd8" text-anchor="start">Observation : fin 2025</text>
+<g data-panel="borrower"><rect x="120" y="310" width="280" height="66" rx="10" fill="#151b24" /><text x="260" y="352" font-size="26" fill="#f5f6f8" text-anchor="middle">Un emprunteur</text></g>
+<line x1="260" y1="378" x2="50" y2="439" stroke="#738497" stroke-width="2" /><circle cx="50" cy="464" r="23" fill="#151b24" stroke="#55ead4" stroke-width="2" /><text x="50" y="473" font-size="26" fill="#55ead4" text-anchor="middle">1</text>
+<line x1="260" y1="378" x2="120" y2="439" stroke="#738497" stroke-width="2" /><circle cx="120" cy="464" r="23" fill="#151b24" stroke="#55ead4" stroke-width="2" /><text x="120" y="473" font-size="26" fill="#55ead4" text-anchor="middle">2</text>
+<line x1="260" y1="378" x2="190" y2="439" stroke="#738497" stroke-width="2" /><circle cx="190" cy="464" r="23" fill="#151b24" stroke="#55ead4" stroke-width="2" /><text x="190" y="473" font-size="26" fill="#55ead4" text-anchor="middle">3</text>
+<line x1="260" y1="378" x2="260" y2="439" stroke="#738497" stroke-width="2" /><circle cx="260" cy="464" r="23" fill="#151b24" stroke="#55ead4" stroke-width="2" /><text x="260" y="473" font-size="26" fill="#55ead4" text-anchor="middle">4</text>
+<line x1="260" y1="378" x2="330" y2="439" stroke="#738497" stroke-width="2" /><circle cx="330" cy="464" r="23" fill="#151b24" stroke="#55ead4" stroke-width="2" /><text x="330" y="473" font-size="26" fill="#55ead4" text-anchor="middle">5</text>
+<line x1="260" y1="378" x2="400" y2="439" stroke="#738497" stroke-width="2" /><circle cx="400" cy="464" r="23" fill="#151b24" stroke="#55ead4" stroke-width="2" /><text x="400" y="473" font-size="26" fill="#55ead4" text-anchor="middle">6</text>
+<line x1="260" y1="378" x2="470" y2="439" stroke="#738497" stroke-width="2" /><circle cx="470" cy="464" r="23" fill="#151b24" stroke="#55ead4" stroke-width="2" /><text x="470" y="473" font-size="26" fill="#55ead4" text-anchor="middle">7</text>
+<text x="260" y="524" font-size="24" fill="#f5f6f8" text-anchor="middle">Sept véhicules de financement</text>
+<text x="24" y="570" font-size="24" fill="#55ead4" text-anchor="start">Un choc, plusieurs bilans touchés</text>
+<text x="24" y="609" font-size="24" fill="#c3ccd8" text-anchor="start">Schéma fictif · aucune dette ajoutée</text>
+<text x="24" y="650" font-size="24" fill="#c3ccd8" text-anchor="start">Source : BRI · juillet 2026</text>
+</svg>
+<figcaption style="font-size:0.86em;line-height:1.6;margin-top:0.85rem"><strong>Figure 3.</strong> Part des volumes de prêts BDC au logiciel, à fin 2025. Le seuil est d’au moins sept BDC distinctes par emprunteur ; il ne s’agit pas de 60 % des entreprises. Source : <a href="https://www.bis.org/publications/bulletin-128-ai-disruption-private-credit-exposure-software-firms-bdcs.pdf">BRI, bulletin 128, graphique 4</a>. Relations dessinées à titre conceptuel, sans montants ni emprunteur réel.</figcaption>
+</figure>
+
+Pour l’emprunteur, plusieurs prêteurs peuvent diversifier les sources de financement. Pour un investisseur qui répartit son argent entre plusieurs véhicules, les mêmes noms peuvent réapparaître au fond des portefeuilles. Sept véhicules ne garantissent pas sept ensembles de débiteurs indépendants ; plusieurs peuvent aussi relever du même gestionnaire.
+
+Cela ne multiplie pas la dette par sept. Chaque prêteur détient une exposition déterminée ; une perte éventuelle se répartit selon les créances, les sûretés et les rangs de remboursement. Le problème est la **corrélation** : plusieurs placements peuvent être touchés par le même événement, au même moment.
+
+Il faut alors examiner les doublons, mais aussi les modèles économiques communs. Deux éditeurs différents peuvent dépendre de la même dépense de leurs clients ou du même mode de facturation. Une liste de noms diversifiée peut ainsi conserver une sensibilité commune à la baisse des prix. Nous ne disposons pas ici d’un inventaire complet permettant de mesurer cette sensibilité pour chaque investisseur.
+
+## La liquidité détermine la vitesse de transmission
+
+Une perte chez un emprunteur et une crise de liquidité chez son financeur sont deux événements différents. La structure du véhicule détermine comment le premier peut favoriser le second.
+
+Dans une BDC cotée, l’investisseur qui vend son action trouve normalement un autre acheteur sur le marché. Le véhicule ne lui rembourse pas automatiquement sa mise. Une baisse du cours n’impose donc pas, à elle seule, de vendre un prêt le lendemain. À l’inverse, certains véhicules non cotés proposent des rachats périodiques, limités et susceptibles d’être suspendus selon leurs modalités. La <a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/investor-bulletin-non-publicly-traded-business-development-companies-bdcs">SEC insiste sur ces restrictions</a> : cette liquidité ne ressemble pas à celle d’un compte bancaire.
+
+Un <a href="https://www.nber.org/papers/w35385">document de travail du NBER publié en juin 2026</a> examine la fragilité de fonds de crédit privé semi-liquides. Il montre, dans son échantillon, que des demandes de rachat répétées peuvent dépasser les liquidités disponibles et les remboursements de prêts. Des clauses plafonnant les sorties ne rendent pas les actifs immédiatement vendables.
+
+Pour comprendre l’enchaînement, imaginons un fonds dont les nouvelles souscriptions ralentissent alors que les demandes de rachat augmentent. Il peut utiliser sa trésorerie, mobiliser une ligne de financement, céder des actifs ou réduire les rachats conformément aux règles applicables. Chacune de ces réponses a un coût ou une limite. Cette situation n’est pas automatiquement provoquée par des défauts : la crainte de pertes peut suffire à modifier le comportement des investisseurs.
+
+Le levier financier ajoute un autre étage. Dans un exemple fictif, un véhicule possède 100 d’actifs, financés par 50 de dette et 50 de capitaux propres. Si les actifs perdent 10 de valeur et que la dette reste à 50, les capitaux propres tombent à 40, soit une baisse de 20 %. L’effet est arithmétique ; ce bilan simplifié ne décrit pas une BDC particulière.
+
+Les liens avec les banques et d’autres créanciers comptent aussi. L’<a href="https://www.financialresearch.gov/briefs/2026/03/12/measuring-counterparty-exposures-private-credit/">Office of Financial Research, dans une étude publiée le 12 mars 2026 à partir de données de fin 2024</a>, documente le financement reçu par les acteurs du crédit privé. Ces expositions ne sont ni des pertes constatées, ni des prêts exclusivement consacrés au logiciel. Elles identifient des canaux possibles de transmission, pas leur activation certaine.
+
+Le <a href="https://www.imf.org/-/media/files/publications/gfsr/2026/april/english/ch1.pdf">FMI, en avril 2026</a>, apporte une limite essentielle : une hausse des défauts ne suffit pas à produire de l’instabilité financière. Les échéances de financement, les demandes de retrait, les protections contractuelles et les réserves de liquidité influencent l’ampleur du choc. Il faut montrer les maillons de la chaîne avant de parler de contagion.
+
+## Les éléments qui peuvent invalider le scénario défavorable
+
+L’hypothèse la plus forte contre une dégradation généralisée est économique. Les entreprises déjà installées peuvent être les mieux placées pour intégrer l’IA, parce qu’elles possèdent les données, les relations commerciales et les procédures de distribution. Si leurs coûts baissent plus vite que leurs prix, la capacité de remboursement s’améliore. Notre exemple d’adaptation le montre sans exiger une croissance des ventes.
+
+La sélection des emprunteurs compte aussi. Un financeur peut éviter les fonctions faciles à reproduire, privilégier des contrats solides ou financer des entreprises moins endettées. Observer une exposition au logiciel ne permet pas d’attribuer la même vulnérabilité à tous les prêts. Cette diversité impose de regarder les caractéristiques des débiteurs plutôt qu’une seule étiquette sectorielle.
+
+L’accès au financement fournit un autre test. Le **4 septembre 2026**, OTF a annoncé avoir placé **150 millions de dollars de dette senior non garantie**, rémunérée à **7,60 %** et arrivant à échéance en **2032**. C’est une opération annoncée par l’émetteur, pas une évaluation indépendante de sa qualité de crédit. Elle établit néanmoins que ce véhicule a pu obtenir un financement à terme dans ces conditions. <a href="https://www.blueowltechnologyfinance.com/investors/news-events/press-releases/detail/117/blue-owl-technology-finance-corp-closes-150-million-private-placement-of-senior-unsecured-notes">Annonce de l’opération</a>.
+
+On ne peut pas en déduire que tout le secteur emprunte facilement, ni qu’un taux de 7,60 % est bon marché sans comparaison pertinente. Mais l’opération contredit, pour ce cas et cette date, le récit d’un accès aux capitaux entièrement fermé. **Une analyse du risque doit conserver les faits qui résistent à son scénario.**
+
+## Les questions que les comptes doivent permettre de trancher
+
+La prochaine étape de l’enquête n’est pas de comptabiliser les annonces d’IA. Elle consiste à rapprocher, pour les mêmes emprunteurs, les revenus, les marges, la dette et les paiements.
+
+La fidélité des clients demande une définition précise. Un taux de rétention en nombre de clients peut rester élevé alors que les recettes diminuent. Une mesure de rétention nette des revenus, qui tient compte des ventes supplémentaires et des réductions chez les clients existants, ne raconte pas la même histoire qu’une mesure excluant les ventes additionnelles. Il faut conserver la définition publiée et la même population d’une période à l’autre.
+
+Les bénéfices « ajustés » doivent ensuite être rapprochés des chiffres comptables et des encaissements. Retirer une charge du calcul d’un indicateur ne la retire pas nécessairement du compte bancaire. Une économie future annoncée peut soutenir un scénario de redressement ; elle ne doit pas être traitée comme une économie déjà réalisée.
+
+Enfin, il faut examiner l’évolution des intérêts capitalisés, des prêts restructurés, des placements en non-accrual et des valorisations, avec leurs dénominateurs. Un suivi par cohorte de prêts serait plus instructif qu’un ratio global qui change lorsque le portefeuille grossit ou vend des actifs. Pour attribuer une détérioration à l’IA, il faudrait aussi distinguer cet effet de celui des taux d’intérêt, d’un ralentissement économique ou d’un endettement initial excessif.
+
+Les documents utilisés ici établissent une exposition importante au logiciel, des inquiétudes de marché dès le début de 2026 et des mécanismes de transmission identifiables. **Ils ne permettent pas de chiffrer une perte agrégée du crédit privé causée par l’IA.** L’étude de cas OTF éclaire certains postes comptables ; elle ne remplace pas une analyse de tous ses prêts ni de ceux de ses concurrents.
+
+Le point décisif se trouve au renouvellement des contrats. Une dette a été accordée parce que des revenus semblaient suffisamment durables pour la servir. L’IA peut modifier cette durabilité, dans un sens favorable ou défavorable. C’est à la marge conservée, à l’argent effectivement reçu et à la valeur récupérable de l’entreprise qu’il faudra demander la réponse.
+
+## Sources et méthode
+
+Les graphiques sont des créations l0g à partir des valeurs publiées ou des schémas explicitement conceptuels. Aucun point annuel intermédiaire n’a été interpolé. Le simulateur utilise uniquement des hypothèses fictives et calcule localement, sans collecte de données. Le ratio PIK est obtenu par (24,969 + 0,255 + 13,657 + 3,405) / 338,032 × 100 = 12,509 %, arrondi à 12,5 %. Ces montants sont en millions de dollars ; les comptes les publient en milliers. Les publications des entreprises sont identifiées comme telles ; leurs commentaires commerciaux ne sont pas repris comme conclusions indépendantes.
+
+Pour prolonger : notre [guide du crédit privé](/guides/analyser-credit-prive/), l’analyse de [la concurrence entre dette IA et emprunts souverains](/posts/dette-ia-concurrence-etats-taux-credit/), et les définitions de [BDC](/glossaire/bdc/) et de [PIK](/glossaire/pik/).
+
+L’étude de cas utilise les résultats trimestriels non audités joints au formulaire 8-K d’OTF. Elle ne prétend pas reconstituer l’intégralité de son formulaire 10-Q ni identifier chaque emprunteur commun entre plusieurs BDC. Les échantillons BRI, les données d’OTF et les travaux sur les fonds semi-liquides restent distincts.
+
+**01. BIS / BRI**. [Financing the digital economy: the role of private credit](https://www.bis.org/publications/qr-202609/financing-digital-economy-role-private-credit). 2026-09-14. Prêts directs américains ; technologie au sens large. Les 22 % et 44 % sont des parts d’encours, pas des taux de défaut.
+
+**02. BIS / BRI**. [AI disruption in private credit: exposure to software firms in BDCs](https://www.bis.org/publications/bulletin-128-ai-disruption-private-credit-exposure-software-firms-bdcs.pdf). 2026-07-14. 115 Md$ et environ un cinquième des prêts à fin 2025 ; 60 % des volumes au logiciel concernent des emprunteurs ayant au moins sept BDC prêteuses.
+
+**03. NBER**. [The Lending Technology of Direct Lenders in Private Credit](https://www.nber.org/papers/w34500). 2025-11 ; révision 2026-05. Young Soo Jang, Dasol Kim, Amir Sufi et Xiangyu Chen. Spécialisation dans les prêts fondés sur la valeur de continuation ; document de travail.
+
+**04. BIS / BRI**. [Markets recalibrate amid shifting currents, Box B: Private credit’s software lending meets AI disruption](https://www.bis.org/publications/markets-recalibrate-amid-shifting-currents). 2026-03-16. Sous-performance d’environ 5 points des BDC à forte exposition SaaS. Périodes et mesures de marché différentes du bulletin de juillet.
+
+**05. Blue Owl Technology Finance Corp.**. [June 30, 2026 Financial Results, Exhibit 99.1 to Form 8-K](https://www.blueowltechnologyfinance.com/investors/sec-filings/all-sec-filings/content/0001747777-26-000027/exhibit991-otfxpressrelease.htm). 2026-08-05. NAV, non-accrual et revenus PIK d’OTF. Les tableaux de revenus sont en milliers de dollars. Source de l’émetteur, pas un audit indépendant des débiteurs.
+
+**06. Blue Owl Technology Finance Corp.**. [Closes $150 Million Private Placement of Senior Unsecured Notes](https://www.blueowltechnologyfinance.com/investors/news-events/press-releases/detail/117/blue-owl-technology-finance-corp-closes-150-million-private-placement-of-senior-unsecured-notes). 2026-09-04. 150 M$, coupon de 7,60 %, échéance en 2032. Montant de dette levée, pas un bénéfice ni une entrée nette de trésorerie.
+
+**07. SEC / Investor.gov**. [Publicly Traded Business Development Companies (BDCs)](https://www.investor.gov/introduction-investing/investing-basics/investment-products/closed-end-funds/publicly-traded-business-development-companies-bdcs). Consulté le 2026-09-16. Nature des véhicules cotés. Une vente d’actions sur le marché n’est pas un rachat automatique par le véhicule.
+
+**08. SEC / Investor.gov**. [Investor Bulletin: Non-Publicly Traded Business Development Companies (BDCs)](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/investor-bulletin-non-publicly-traded-business-development-companies-bdcs). 2024-12-13. Liquidité limitée des véhicules non cotés ; conditions de rachat variables et susceptibles de restrictions.
+
+**09. IMF / FMI**. [Global Financial Stability Report, April 2026, Chapter 1](https://www.imf.org/-/media/files/publications/gfsr/2026/april/english/ch1.pdf). 2026-04. Crédit privé, rachats et limites de la transmission systémique ; protections possibles des éditeurs face à l’IA.
+
+**10. NBER**. [The Fragility of Semi-Liquid Private Credit Funds](https://www.nber.org/papers/w35385). 2026-06. Chuck Fang, Itay Goldstein et Yao Zeng. Besoins de liquidité associés à des rachats périodiques répétés ; aucun résultat de simulation extrapolé à toutes les BDC.
+
+**11. Office of Financial Research**. [Measuring Counterparty Exposures to Private Credit](https://www.financialresearch.gov/briefs/2026/03/12/measuring-counterparty-exposures-private-credit/). 2026-03-12. Financements bancaires et non bancaires du crédit privé. Ces expositions ne sont pas des pertes ni des prêts exclusivement au logiciel.
+
+**12. IMF / FMI**. [The Rise and Risks of Private Credit, GFSR April 2024, Chapter 2](https://www.imf.org/-/media/files/publications/gfsr/2024/april/english/ch2.pdf). 2024-04-16. Cadre général uniquement. Aucun montant de marché de 2024 n’est présenté comme une donnée de septembre 2026.

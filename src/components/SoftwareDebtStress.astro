@@ -1,0 +1,132 @@
+---
+import { calculateSoftwareDebt, PRESETS, LIMITS } from '../lib/software-debt-stress.mjs';
+interface Props { lang?: 'fr' | 'en' }
+const { lang = 'fr' } = Astro.props;
+if (lang !== 'fr' && lang !== 'en') throw new Error('Unsupported software stress language');
+const fr = lang === 'fr';
+const keys = ['revenueDrop', 'costCut', 'rate', 'pikShare'] as const;
+const presets = ['baseline', 'pressure', 'adaptation', 'deferral'] as const;
+const ledger = ['revenue', 'costs', 'operating', 'totalInterest', 'cashInterest', 'pikInterest'] as const;
+const cards = ['cashResidual', 'endDebt', 'coverage', 'economicResidual'] as const;
+const initial = calculateSoftwareDebt(PRESETS.baseline);
+const nf = new Intl.NumberFormat(fr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 2 });
+const t = fr ? {
+  eyebrow: 'LABORATOIRE l0g · SCÉNARIOS FICTIFS', title: 'Que reste-t-il pour payer la dette ?',
+  intro: 'Base : 100 de recettes, 70 de charges et 200 de dette. Modifiez les hypothèses pour suivre les effets sur la trésorerie et la dette. Calcul local, sans collecte des saisies.',
+  presets: ['Situation initiale', 'Pression commerciale', 'Adaptation', 'Intérêts reportés'],
+  fields: ['Baisse des recettes', 'Baisse des charges initiales', 'Taux d’intérêt annuel', 'Part des intérêts capitalisée'],
+  hints: ['Pourcentage des 100 de recettes initiales.', 'Pourcentage des 70 de charges initiales.', 'Appliqué aux 200 de dette en début d’année.', 'Ajoutée à la dette en fin d’année (PIK).'],
+  ledger: ['Recettes encaissées', 'Charges payées', 'Excédent avant intérêts', 'Intérêts totaux', 'dont payés en espèces', 'dont ajoutés à la dette'],
+  cards: ['Reste après intérêts payés', 'Dette en fin d’année', 'Couverture des intérêts totaux', 'Reste après tous les intérêts'],
+  units: 'unités monétaires', times: 'fois', parameters: 'Hypothèses du scénario',
+  risk: 'L’excédent ne couvre pas tous les intérêts, y compris ceux reportés. Ce signal ne constitue pas un diagnostic de défaut.',
+  balanced: 'L’excédent couvre exactement les intérêts. Les autres sorties exclues de cet exercice restent à financer.',
+  positive: 'L’excédent couvre les intérêts dans ce modèle. Le reste ne constitue pas un flux de trésorerie disponible complet.',
+  invalid: 'Paramètres invalides. Les résultats sont indisponibles ; choisissez un scénario pour réinitialiser.',
+  limits: 'Modèle sur un an, sans impôts, investissement, variation du besoin en fonds de roulement, remboursement du principal ni trésorerie initiale. Pas de composition des intérêts en cours d’année. Les bornes des curseurs sont pédagogiques. Aucune probabilité de défaut n’est calculée.',
+  nojs: 'JavaScript désactivé : la situation initiale reste lisible. Les contrôles sont désactivés.',
+} : {
+  eyebrow: 'l0g LAB · FICTIONAL SCENARIOS', title: 'How much is left to service the debt?',
+  intro: 'Starting point: 100 in revenue, 70 in costs and 200 in debt. Change the assumptions to follow the effects on cash and debt. Calculations run locally; inputs are not collected.',
+  presets: ['Starting point', 'Commercial pressure', 'Adaptation', 'Interest deferred'],
+  fields: ['Revenue decline', 'Reduction in starting costs', 'Annual interest rate', 'Share of interest capitalised'],
+  hints: ['Percentage of the initial 100 in revenue.', 'Percentage of the initial cost base of 70.', 'Applied to opening debt of 200.', 'Added to debt at year-end (PIK).'],
+  ledger: ['Revenue collected', 'Operating costs paid', 'Surplus before interest', 'Total interest', 'of which paid in cash', 'of which added to debt'],
+  cards: ['Remainder after cash interest', 'Year-end debt', 'Total interest coverage', 'Remainder after all interest'],
+  units: 'monetary units', times: 'times', parameters: 'Scenario assumptions',
+  risk: 'The surplus does not cover all interest, including the deferred amount. This signal is not a default diagnosis.',
+  balanced: 'The surplus exactly covers interest. The other outflows excluded from this exercise still need funding.',
+  positive: 'The surplus covers interest in this model. The remainder is not a complete free-cash-flow measure.',
+  invalid: 'Invalid assumptions. Results are unavailable; select a preset to reset.',
+  limits: 'One-year model excluding taxes, capex, working-capital changes, principal repayments and opening cash. No intra-year compounding. Slider bounds are illustrative. No default probability is calculated.',
+  nojs: 'JavaScript is disabled: the starting scenario remains readable. Controls are disabled.',
+};
+---
+<section class="sds" data-software-debt data-lang={lang} data-positive={t.positive} data-balanced={t.balanced} data-risk={t.risk} data-invalid={t.invalid}>
+  <p class="sds-eyebrow">{t.eyebrow}</p><h3>{t.title}</h3><p class="sds-intro">{t.intro}</p>
+  <fieldset disabled data-fields><legend>{t.parameters}</legend>
+    <div class="sds-presets">{presets.map((key, i) => <button type="button" data-preset={key} aria-pressed={key === 'baseline'}>{t.presets[i]}</button>)}</div>
+    <div class="sds-controls">{keys.map((key, i) => <label for={`sds-${lang}-${key}`}>
+      <span class="sds-label">{t.fields[i]} <output data-input-output={key}>{nf.format(PRESETS.baseline[key])} %</output></span>
+      <input id={`sds-${lang}-${key}`} type="range" name={key} min={LIMITS[key][0]} max={LIMITS[key][1]} step={key === 'rate' ? .25 : 1} value={PRESETS.baseline[key]} aria-valuetext={`${nf.format(PRESETS.baseline[key])} %`} aria-describedby={`sds-${lang}-${key}-hint`} />
+      <span class="sds-hint" id={`sds-${lang}-${key}-hint`}>{t.hints[i]}</span>
+    </label>)}</div>
+  </fieldset>
+  <div aria-live="polite" aria-atomic="true">
+    <div data-values><dl class="sds-ledger">{ledger.map((key, i) => <div class:list={['sds-row', { 'sds-emphasis': key === 'operating', 'sds-subrow': i > 3 }]}><dt>{t.ledger[i]}</dt><dd data-result={key}>{nf.format(initial[key])}</dd></div>)}</dl>
+      <dl class="sds-cards">{cards.map((key, i) => <div class="sds-card"><dt>{t.cards[i]}</dt><dd><span data-result={key}>{nf.format(initial[key])}</span><small>{key === 'coverage' ? t.times : t.units}</small></dd></div>)}</dl>
+    </div><p class="sds-status" data-status>{t.positive}</p>
+  </div>
+  <p class="sds-limits">{t.limits}</p><noscript><p class="sds-limits">{t.nojs}</p></noscript>
+</section>
+<script>
+  import { calculateSoftwareDebt, PRESETS, LIMITS } from '../lib/software-debt-stress.mjs';
+  type Key = keyof typeof LIMITS;
+  const mount = (root: HTMLElement): void => {
+    if (root.dataset.ready === 'true') return;
+    const fields = root.querySelector<HTMLFieldSetElement>('[data-fields]');
+    const valuesNode = root.querySelector<HTMLElement>('[data-values]');
+    const status = root.querySelector<HTMLElement>('[data-status]');
+    if (!fields || !valuesNode || !status) return;
+    const inputs = [...root.querySelectorAll<HTMLInputElement>('input[type="range"]')];
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-preset]')];
+    const keys = Object.keys(LIMITS) as Key[];
+    if (inputs.length !== keys.length || keys.some(key => inputs.filter(input => input.name === key).length !== 1)) return;
+    const nf = new Intl.NumberFormat(root.dataset.lang === 'fr' ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 2 });
+    const update = (): void => {
+      const values = Object.fromEntries(inputs.map(input => [input.name, input.value.trim() === '' ? NaN : Number(input.value)])) as Record<Key, number>;
+      try {
+        const result = calculateSoftwareDebt(values);
+        for (const input of inputs) {
+          const label = `${nf.format(values[input.name as Key])} %`;
+          input.setAttribute('aria-valuetext', label);
+          input.setAttribute('aria-invalid', 'false');
+        }
+        root.querySelectorAll<HTMLOutputElement>('[data-input-output]').forEach(output => {
+          const key = output.dataset.inputOutput as Key;
+          if (Object.hasOwn(LIMITS, key)) output.textContent = `${nf.format(values[key])} %`;
+        });
+        root.querySelectorAll<HTMLElement>('[data-result]').forEach(output => {
+          const key = output.dataset.result as keyof typeof result;
+          if (!Object.hasOwn(result, key)) return;
+          const value = result[key];
+          output.textContent = nf.format(Math.abs(value) < 1e-10 ? 0 : value);
+          output.classList.toggle('sds-negative', value < -1e-10);
+        });
+        for (const button of buttons) {
+          const key = button.dataset.preset as keyof typeof PRESETS;
+          if (!Object.hasOwn(PRESETS, key)) continue;
+          button.setAttribute('aria-pressed', String(keys.every(k => PRESETS[key][k] === values[k])));
+        }
+        status.textContent = (result.economicResidual < -1e-10 ? root.dataset.risk : Math.abs(result.economicResidual) < 1e-10 ? root.dataset.balanced : root.dataset.positive) ?? '';
+        valuesNode.hidden = false;
+      } catch {
+        valuesNode.hidden = true;
+        status.textContent = root.dataset.invalid ?? '';
+        inputs.forEach(input => input.setAttribute('aria-invalid', 'true'));
+        buttons.forEach(button => button.setAttribute('aria-pressed', 'false'));
+      }
+    };
+    inputs.forEach(input => input.addEventListener('input', update));
+    buttons.forEach(button => button.addEventListener('click', () => {
+      const key = button.dataset.preset as keyof typeof PRESETS;
+      if (!Object.hasOwn(PRESETS, key)) return;
+      inputs.forEach(input => { input.value = String(PRESETS[key][input.name as Key]); });
+      update();
+    }));
+    update(); fields.disabled = false; root.dataset.ready = 'true';
+  };
+  const mountAll = (): void => document.querySelectorAll<HTMLElement>('[data-software-debt]').forEach(mount);
+  mountAll(); document.addEventListener('astro:page-load', mountAll);
+</script>
+<style>
+  .sds{background:#0c0d10;color:#f5f6f8;border:1px solid #344153;border-radius:16px;padding:clamp(16px,3vw,28px);margin:2.8rem 0;max-width:100%;font:16px/1.5 system-ui,sans-serif;color-scheme:dark}
+  .sds *{box-sizing:border-box}.sds h3{color:#f5f6f8;font-size:clamp(22px,3vw,29px);line-height:1.25;margin:10px 0 16px}.sds p{margin:0 0 16px}.sds .sds-eyebrow{color:#55ead4;font-size:12px;font-weight:700;letter-spacing:.06em}.sds .sds-intro{color:#c3ccd8;font-size:15px}
+  .sds fieldset{min-width:0;border:0;padding:0;margin:20px 0}.sds legend{font-size:14px;color:#c3ccd8;padding:0}.sds-presets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 22px}
+  .sds button{font:inherit;font-size:14px;line-height:1.3;min-height:44px;white-space:normal;border:1px solid #344153;border-radius:7px;padding:10px;color:#f5f6f8;background:#151b24;cursor:pointer}.sds button[aria-pressed="true"]{border-color:#55ead4;background:#153530;color:#d0fff5}.sds button:focus-visible,.sds input:focus-visible{outline:3px solid #55ead4;outline-offset:4px}
+  .sds-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.sds label{display:block;min-width:0}.sds-label{display:flex;align-items:flex-start;gap:10px;justify-content:space-between;font-size:14px;font-weight:650;min-height:42px}.sds-label output{flex-shrink:0;white-space:nowrap;color:#55ead4;font-variant-numeric:tabular-nums}.sds input[type="range"]{width:100%;height:32px;margin:4px 0 0;accent-color:#55ead4;display:block}.sds-hint{display:block;font-size:13px;color:#c3ccd8;margin-top:3px}
+  .sds dl{margin:0}.sds .sds-ledger{border-block:1px solid #344153;padding:12px 0;margin:22px 0}.sds-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:6px 0;font-size:14px}.sds-row dt{min-width:0}.sds-row dd{margin:0;white-space:nowrap;font-weight:650;font-variant-numeric:tabular-nums}.sds-emphasis{color:#55ead4}.sds-subrow{font-size:13px;color:#c3ccd8;padding-left:8px}.sds .sds-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:18px}.sds-card{padding:15px;background:#151b24;border-radius:9px;min-width:0}.sds-card dt{font-size:13px;color:#c3ccd8;min-height:40px}.sds-card dd{margin:6px 0 0;line-height:1.2;font-size:30px;font-variant-numeric:tabular-nums;font-weight:700}.sds-card small{display:block;font-size:12px;color:#c3ccd8;font-weight:400;margin-top:5px}.sds .sds-negative{color:#ffb4a8}.sds .sds-status{font-size:14px;border-left:3px solid #55ead4;padding:9px 0 9px 13px}.sds .sds-limits{font-size:13px;color:#c3ccd8;margin-bottom:0}.sds [hidden]{display:none}.sds noscript p{margin-top:12px}
+  @media(max-width:560px){.sds-controls{grid-template-columns:1fr;gap:18px}.sds-label{min-height:0}.sds-card{padding:12px}.sds-card dt{min-height:58px}.sds-card dd{font-size:26px}}
+  @media(max-width:360px){.sds .sds-cards{grid-template-columns:1fr}.sds-card dt{min-height:0}}
+  @media print{.sds fieldset{display:none}}
+</style>

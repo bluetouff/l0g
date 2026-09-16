@@ -32,6 +32,7 @@ import './iran-usdt-infographics.test.mjs';
 import './radiant-world-infographics.test.mjs';
 import './clarity-infographics.test.mjs';
 import './ai-debt-infographics.test.mjs';
+import './software-debt-stress.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
