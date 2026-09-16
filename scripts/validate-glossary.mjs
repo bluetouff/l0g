@@ -28,9 +28,25 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 531, 'Le corpus doit conserver ses 531 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 83, 'Le graphe Atlas doit conserver ses 83 nœuds');
-assert.equal(glossaryAtlasEdgeCount, 378, 'Le graphe Atlas doit conserver ses 378 relations');
+assert.equal(glossaryEntries.length, 532, 'Le corpus doit conserver ses 532 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 85, 'Le graphe Atlas doit conserver ses 85 nœuds');
+assert.equal(glossaryAtlasEdgeCount, 380, 'Le graphe Atlas doit conserver ses 380 relations');
+for (const slug of ['clarity', 'cloture']) {
+  const fr = glossaryEntries.find((entry) => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr && en, `${slug} doit avoir une définition FR et EN`);
+  assert.equal(fr.guide, '/posts/clarity-apres-le-vote-49-50/');
+  assert.equal(en.guide, '/en/analysis/clarity-after-the-49-50-vote/');
+  const expectedSource = slug === 'clarity'
+    ? 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm'
+    : 'https://www.rpc.senate.gov/glossary';
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas?.sources?.map((source) => source.href), [expectedSource]);
+    assert(entry.atlas?.articles?.some((article) => article.href === entry.guide));
+    assert.deepEqual(entry.atlas?.related, [slug === 'clarity' ? 'cloture' : 'clarity']);
+    assert(!entry.def.includes('—'), `${slug} doit respecter la charte éditoriale`);
+  }
+}
 for (const slug of ['ia-de-frontiere', 'modele-a-poids-ouverts']) {
   const fr = glossaryEntries.find((entry) => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);

@@ -203,6 +203,28 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'clarity', sigle: 'CLARITY', nom: 'CLARITY Act',
+    def: 'Proposed US legislation that would, among other things, allocate digital-asset oversight between the SEC and CFTC. A House-passed bill, a negotiating draft and an enacted law have different legal status. A procedural vote does not itself create new obligations.',
+    guide: '/en/analysis/clarity-after-the-49-50-vote/', sectionTitle: 'Institutions & regulation', accent: 'var(--color-accent)',
+    atlas: {
+      intuition: 'A bill’s parliamentary status determines whether its obligations are still proposals or have entered into force.',
+      articles: [{ label: 'CLARITY after the 49–50 vote', href: '/en/analysis/clarity-after-the-49-50-vote/', detail: 'The procedural setback and SEC–CFTC proposals.', kind: 'article' }],
+      sources: [{ label: 'Senate roll call 234, September 15, 2026', href: 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm', detail: 'Cloture on the motion to proceed to H.R. 3633 rejected.', kind: 'source' }],
+      related: ['cloture'],
+    },
+  },
+  {
+    slug: 'cloture', sigle: 'Cloture', nom: 'Limiting debate in the US Senate',
+    def: 'A procedure limiting Senate debate. For ordinary legislation, the general rule requires three-fifths of senators duly chosen and sworn, or 60 when all 100 seats are filled. Cloture on a motion to take up a bill remains distinct from passing the bill. Other procedures and exceptions exist.',
+    guide: '/en/analysis/clarity-after-the-49-50-vote/', sectionTitle: 'Institutions & regulation', accent: 'var(--color-accent)',
+    atlas: {
+      intuition: 'Limiting debate is a procedural stage, separate from adopting legislation.',
+      articles: [{ label: 'CLARITY after the 49–50 vote', href: '/en/analysis/clarity-after-the-49-50-vote/', detail: 'The official count and required threshold.', kind: 'article' }],
+      sources: [{ label: 'Senate Republican Policy Committee', href: 'https://www.rpc.senate.gov/glossary', detail: 'Cloture, motions to proceed and reconsideration.', kind: 'source' }],
+      related: ['clarity'],
+    },
+  },
+  {
     slug: 'ia-de-frontiere', sigle: 'Frontier AI', nom: 'AI models at the leading edge of capabilities',
     def: 'A term for AI models among the most capable available. In a safety-policy discussion, its scope depends on the capabilities and risks being considered. The criteria used by a particular policy or regulation, and the date to which they apply, therefore need to be specified.',
     guide: '/en/analysis/pacing-ai-frontier-capital-politics/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',

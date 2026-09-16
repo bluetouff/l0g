@@ -549,7 +549,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: '10-K', nom: 'Formulaire 10-K', def: "Rapport annuel d'une société cotée américaine déposé auprès de la SEC : activité, facteurs de risque, comptes audités et discussion de la direction. Le document public le plus complet sur une entreprise.", guide: '/guides/lire-le-10-k-sec/' },
       { sigle: 'EDGAR', nom: 'Electronic Data Gathering, Analysis, and Retrieval', def: "Base de données publique de la SEC où sont déposés tous les documents réglementaires (10-K, 13F, S-1)." },
       { sigle: 'BLS', nom: 'Bureau of Labor Statistics', def: "Agence statistique américaine du travail. Publie le CPI, l'emploi, et les indices de prix import/export." },
-      { sigle: 'CLARITY', nom: 'CLARITY Act', def: "Projet de loi américain visant à clarifier la répartition de la régulation crypto entre SEC et CFTC." },
+      { sigle: 'CLARITY', nom: 'CLARITY Act', def: "Projet de loi américain visant notamment à répartir les compétences sur les actifs numériques entre la SEC et la CFTC. Il faut distinguer le texte adopté par une chambre, les compromis proposés et une loi promulguée : un vote de procédure ne crée pas à lui seul de nouvelles obligations.", guide: '/posts/clarity-apres-le-vote-49-50/' },
+      { sigle: 'Clôture', nom: 'Cloture au Sénat américain', def: "Procédure limitant le débat au Sénat. Pour la législation ordinaire, la règle générale exige les trois cinquièmes des sénateurs dûment choisis et assermentés, soit 60 lorsque les 100 sièges sont pourvus. Une clôture sur la motion permettant d’examiner un projet reste distincte du vote d’adoption de ce projet. D’autres procédures et exceptions existent.", guide: '/posts/clarity-apres-le-vote-49-50/' },
       { sigle: 'GENIUS', nom: 'GENIUS Act', def: "Loi fédérale américaine sur les stablecoins de paiement, promulguée le 18 juillet 2025 : réserves intégrales, émetteurs agréés, audits.", guide: '/guides/stablecoins-genius-act/' },
       { sigle: 'NASAA', nom: 'North American Securities Administrators Association', def: "Association des régulateurs boursiers des États américains, du Canada et du Mexique." },
       { sigle: 'USAID', nom: 'U.S. Agency for International Development', def: "Agence américaine pour le développement international, en charge de l'aide étrangère." },
@@ -847,6 +848,18 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'clarity': {
+    intuition: 'Le statut parlementaire du texte détermine si ses obligations sont encore proposées ou applicables.',
+    articles: [{ label: 'CLARITY après le vote 49–50', href: '/posts/clarity-apres-le-vote-49-50/', detail: 'Blocage procédural et projets SEC–CFTC.', kind: 'article' }],
+    sources: [{ label: 'Sénat, vote 234 du 15 septembre 2026', href: 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm', detail: 'Clôture rejetée sur la motion d’examen de H.R. 3633.', kind: 'source' }],
+    related: ['cloture'],
+  },
+  'cloture': {
+    intuition: 'Obtenir la limitation du débat est une étape procédurale, distincte de l’adoption du texte.',
+    articles: [{ label: 'CLARITY après le vote 49–50', href: '/posts/clarity-apres-le-vote-49-50/', detail: 'Décompte officiel et seuil requis.', kind: 'article' }],
+    sources: [{ label: 'Senate Republican Policy Committee', href: 'https://www.rpc.senate.gov/glossary', detail: 'Cloture, motion to proceed et reconsidération.', kind: 'source' }],
+    related: ['clarity'],
+  },
   'ia-de-frontiere': {
     sources: [
       { label: 'Dario Amodei, We Must Pace the Frontier', href: 'https://darioamodei.com/post/we-must-pace-the-frontier', detail: 'Proposition personnelle de coordination des laboratoires développant les capacités les plus avancées, 12 septembre 2026.', kind: 'source' },
