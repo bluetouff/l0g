@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import dataset from '../data/engagement-atlas.json';
+import { assertAtlasDataset, atlasAt, formatAtlasDate } from '../lib/engagement-atlas.ts';
+assertAtlasDataset(dataset);
+const latest = dataset.milestones.at(-1)!;
+const initial = atlasAt(dataset, latest.date);
+const selected = initial.relations.find(item => item.id === 'nvidia-sb-guarantee')!;
+const node = (id: string) => dataset.nodes.find(item => item.id === id)!;
+const kinds = { announcement: 'Annonce des parties', contract: 'Engagement déclaré', limitation: 'Limites documentées' };
+---
+
+<BaseLayout title="Atlas des engagements" seoTitle="Atlas des engagements : explorer le financement de l’IA | l0g" description="Explorez les relations documentées entre Nvidia, OpenAI, SB Energy et AIP. Revenez sur les publications, inspectez les garanties et leurs limites." sidebar={false}>
+  <div class="atlas" data-engagement-atlas>
+    <span hidden data-atlas-data>{JSON.stringify(dataset)}</span>
+    <header class="atlas-header">
+      <p class="mono-label">// atlas des engagements · financement de l’IA</p>
+      <h1>Suivez les liens.<br /><span>Ouvrez les preuves.</span></h1>
+      <p class="atlas-intro">Qui participe au financement ? Qui garantit quoi ? Explorez les relations, puis remontez les publications pour voir ce qui change.</p>
+      <div class="atlas-entry" data-atlas-controls hidden>
+        <button type="button" data-entry="guarantee">Qui paie si OpenAI ne paie plus ? <span aria-hidden="true">↗</span></button>
+        <button type="button" data-entry="platform">Comment le rôle de Nvidia évolue-t-il ? <span aria-hidden="true">↗</span></button>
+      </div>
+    </header>
+
+    <section class="atlas-workbench" aria-labelledby="atlas-map-title">
+      <div class="atlas-toolbar">
+        <h2 id="atlas-map-title">Le réseau documenté</h2>
+        <p><span data-atlas-count>{initial.nodes.length} acteurs et structures · {initial.relations.length} relations</span></p>
+      </div>
+      <nav class="atlas-dates" data-atlas-controls hidden aria-label="Choisir une date de publication">
+        {dataset.milestones.map((milestone, index) => <button type="button" data-atlas-date={milestone.date} aria-pressed={milestone.date === latest.date ? 'true' : 'false'}><span class="date-number">0{index + 1}</span><time datetime={milestone.date}>{formatAtlasDate(milestone.date)}</time><span>{milestone.label}</span></button>)}
+      </nav>
+      <p class="atlas-change" data-atlas-change aria-live="polite">{latest.change}</p>
+      <div class="atlas-map" data-atlas-map>
+        <svg class="atlas-lines" data-atlas-lines aria-hidden="true" viewBox="0 0 1000 600" style="width:100%;height:auto"><defs><marker id="atlas-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" fill="context-stroke" /></marker></defs><g data-atlas-paths /></svg>
+        {dataset.nodes.map(item => <a href="#atlas-relations" data-atlas-node={item.id} class:list={['atlas-node', { 'atlas-hub': item.id === 'nvidia' || item.id === 'aip' }]} style={`--atlas-col:${item.column + 1};--atlas-row:${item.row + 1}`} hidden={!initial.nodes.some(visible => visible.id === item.id)}><span class="node-role">{item.role}</span><strong data-node-label>{item.label}</strong><span class="node-count" data-node-count>{initial.relations.filter(relation => relation.from === item.id || relation.to === item.id).length} relations</span></a>)}
+      </div>
+      <div class="atlas-legend"><span><i class="legend-announcement" /> Annonce</span><span><i /> Engagement</span><span><i class="legend-selected" /> Relation sélectionnée</span><span>Traits sans échelle financière</span></div>
+      <p class="atlas-boundary">La présence de Nvidia dans ces deux montages ne prouve pas qu’AIP finance le campus de SB Energy. La carte couvre les pièces listées ci-dessous.</p>
+    </section>
+
+    <section class="atlas-inspection" aria-labelledby="atlas-inspector-title">
+      <div class="atlas-relations" id="atlas-relations">
+        <div class="relation-heading"><h2>Choisir une relation</h2><button type="button" data-atlas-reset hidden>Toutes</button></div>
+        <p data-atlas-filter class="atlas-filter">Toutes les relations à cette date</p>
+        <div data-atlas-relation-list>
+          {initial.relations.map(relation => <a href={`#preuve-${relation.id}`} data-atlas-relation={relation.id} class:list={{ 'is-selected': relation.id === selected.id }}><span>{node(relation.from).label} <b aria-hidden="true">→</b> {node(relation.to).label}</span><small>{relation.observation.label}</small></a>)}
+        </div>
+      </div>
+      <article class="atlas-proof" data-atlas-proof>
+        <p class="mono-label" data-proof-kind>{kinds[selected.observation.kind]}</p>
+        <h2 id="atlas-inspector-title" data-proof-title aria-live="polite">{node(selected.from).label} → {node(selected.to).label}</h2>
+        <p class="proof-date" data-proof-date>Publication du {formatAtlasDate(selected.observation.publishedOn)} · revue le {formatAtlasDate(selected.observation.recordedOn)}</p>
+        <p class="proof-claim" data-proof-claim>{selected.observation.claim}</p>
+        <p class="proof-amount" data-proof-amount>{selected.observation.amount?.label}</p>
+        <div class="proof-limit"><h3>La limite</h3><p data-proof-limit>{selected.observation.limit}</p></div>
+        <div class="proof-watch"><h3>À vérifier ensuite</h3><p data-proof-watch>{selected.observation.watch}</p></div>
+        <div class="atlas-scenario" data-atlas-scenario hidden>
+          <button type="button" data-scenario-toggle aria-pressed="false">Explorer un défaut du locataire</button>
+          <p data-scenario-text hidden><strong>Hypothèse, aucun défaut réel représenté.</strong> Le chemin met en évidence le bail, la garantie et le recours en remboursement. Les conditions contractuelles et les récupérations restent déterminantes ; aucun montant de perte n’est calculé.</p>
+        </div>
+        <div class="proof-sources"><h3>Ouvrir les pièces</h3><ul data-proof-sources>{selected.observation.sources.map(id => { const source = dataset.sources.find(item => item.id === id)!; return <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a><p>{source.locator}</p></li>; })}</ul></div>
+        <div class="proof-share" data-atlas-controls hidden><button type="button" data-atlas-copy>Copier ce point de lecture</button><span data-copy-status role="status" /></div>
+      </article>
+    </section>
+
+    <section class="atlas-record" aria-labelledby="atlas-record-title">
+      <h2 id="atlas-record-title">Ce que cette mémoire permet de vérifier</h2>
+      <p>La chronologie est une <strong>reconstitution documentaire réalisée le {formatAtlasDate(dataset.reconstructedOn)}</strong>. Les dates de la carte désignent la publication des pièces, pas la date à laquelle l0g les aurait connues ou archivées. Une relation ancienne peut avoir évolué depuis sa dernière pièce.</p>
+      <p>Les annonces sont attribuées à leurs auteurs. Les engagements conditionnels restent distincts des paiements. L’absence d’un lien signifie qu’il n’est pas établi dans ce corpus, sans démontrer son inexistence.</p>
+      <details><summary>Lire les relations et leur historique sans la carte</summary>
+        {dataset.relations.map(relation => <section id={`preuve-${relation.id}`} data-record-relation={relation.id}><h3>{node(relation.from).label} → {node(relation.to).label}</h3>{relation.observations.map(observation => <div class="record-observation" data-record-date={observation.publishedOn}><p><time datetime={observation.publishedOn}>{formatAtlasDate(observation.publishedOn)}</time> · {kinds[observation.kind]}</p><p>{observation.claim}</p><p><strong>Limite :</strong> {observation.limit}</p><ul>{observation.sources.map(id => { const source = dataset.sources.find(item => item.id === id)!; return <li><a href={source.url}>{source.title}</a> · {source.locator}</li>; })}</ul></div>)}</section>)}
+      </details>
+      <div class="atlas-outlinks"><a href="/posts/nvidia-500-milliards-qui-n-existent-pas-encore/#suivi-septembre-2026">Lire l’enquête et son suivi →</a><a href="/api/v1/engagement-atlas.json">Réutiliser les relations et leurs sources · JSON</a><a href="/radar/">Explorer les transmissions macroéconomiques →</a></div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  import '../scripts/engagement-atlas.ts';
+</script>
+
+<style>
+  .atlas { color:var(--color-prose); }
+  .atlas-header { padding:.5rem 0 1.4rem; }
+  .atlas-header .mono-label { color:var(--color-signal); }
+  h1 { margin:1rem 0; font-family:var(--font-display); font-size:clamp(2.2rem,5vw,3.4rem); line-height:1.1; letter-spacing:-.055em; color:var(--color-bright); }
+  h1 span { color:var(--color-signal); }
+  .atlas-intro { max-width:48rem; font-family:var(--font-read); font-size:1.05rem; line-height:1.7; }
+  .atlas-entry { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.5rem; }
+  button { cursor:pointer; }
+  .atlas-entry button,.proof-share button,.atlas-scenario button,.relation-heading button { display:inline-flex; align-items:center; justify-content:space-between; gap:1rem; min-height:44px; padding:.7rem 1rem; border:1px solid var(--color-line); border-radius:5px; background:var(--color-surface-2); font-size:.8rem; color:var(--color-bright); }
+  .atlas-entry button:first-child { border-color:var(--color-signal); color:var(--color-signal); }
+  .atlas-workbench { border:1px solid var(--color-line); border-radius:14px; overflow:hidden; background:var(--color-surface); }
+  .atlas-toolbar { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:.6rem; padding:1.2rem 1.4rem; border-bottom:1px solid var(--color-line); }
+  .atlas-toolbar h2,.relation-heading h2 { font-family:var(--font-display); font-size:1rem; color:var(--color-bright); }
+  .atlas-toolbar p,.atlas-filter { font-family:var(--font-mono); font-size:.68rem; color:var(--color-muted); }
+  .atlas-dates { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); padding:1.2rem 1.4rem 0; gap:.65rem; }
+  .atlas-dates button { position:relative; display:flex; flex-direction:column; gap:.4rem; padding:.7rem .8rem; text-align:left; background:transparent; border-bottom:2px solid var(--color-line); color:var(--color-muted); min-width:0; }
+  .atlas-dates button time { font-family:var(--font-mono); font-size:.75rem; color:var(--color-bright); }
+  .atlas-dates button>span:last-child { font-size:.72rem; }
+  .date-number { font-family:var(--font-mono); font-size:.62rem; }
+  .atlas-dates button[aria-pressed="true"] { background:color-mix(in srgb,var(--color-signal) 7%,transparent); border-color:var(--color-signal); }
+  .atlas-dates button[aria-pressed="true"] .date-number { color:var(--color-signal); }
+  .atlas-change { margin:1rem 1.4rem 0; max-width:65rem; min-height:3rem; font-family:var(--font-read); line-height:1.6; font-size:.85rem; }
+  .atlas-map { position:relative; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); grid-template-rows:repeat(4,minmax(78px,auto)); column-gap:clamp(1.5rem,5vw,5.5rem); row-gap:1.4rem; padding:2rem 2.4rem; background:radial-gradient(ellipse at 55% 48%,color-mix(in srgb,var(--color-signal) 7%,transparent),transparent 64%); }
+  .atlas-lines { position:absolute; inset:0; height:100%!important; pointer-events:none; }
+  .atlas-node { position:relative; grid-column:var(--atlas-col); grid-row:var(--atlas-row); z-index:1; display:flex; flex-direction:column; justify-content:center; gap:.45rem; min-width:0; padding:.85rem .7rem; background:var(--color-surface-2); border:1px solid var(--color-line); border-radius:7px; transition:background .18s,border-color .18s; }
+  .atlas-node strong { font-family:var(--font-display); color:var(--color-bright); font-size:clamp(.8rem,1.4vw,1.05rem); overflow-wrap:anywhere; }
+  .node-role,.node-count { font-size:.64rem; color:var(--color-muted); line-height:1.4; }
+  .node-count { font-family:var(--font-mono); }
+  .atlas-hub { border-color:color-mix(in srgb,var(--color-signal) 45%,var(--color-line)); }
+  .atlas-node[data-selected="true"] { border-color:var(--color-signal); background:color-mix(in srgb,var(--color-signal) 10%,var(--color-surface-2)); }
+  .atlas-node[data-dim="true"] { border-style:dashed; }
+  .atlas-legend { display:flex; flex-wrap:wrap; gap:.75rem 1.3rem; padding:0 1.4rem 1rem; font-size:.68rem; color:var(--color-muted); }
+  .atlas-legend span { display:inline-flex; align-items:center; gap:.4rem; }
+  .atlas-legend i { width:20px; border-top:2px solid var(--color-muted); }
+  .atlas-legend .legend-announcement { border-top-style:dashed; }
+  .atlas-legend .legend-selected { border-color:var(--color-signal); }
+  .atlas-boundary { padding:1rem 1.4rem; font-size:.75rem; line-height:1.65; color:var(--color-muted); border-top:1px solid var(--color-line); }
+  .atlas-inspection { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.6fr); gap:1.5rem; margin-top:1.5rem; align-items:start; }
+  .relation-heading { display:flex; align-items:center; justify-content:space-between; gap:.5rem; }
+  .relation-heading button { font-size:.7rem; padding:.3rem .6rem; }
+  .atlas-filter { margin:.65rem 0 1rem; }
+  [data-atlas-relation-list] { display:flex; flex-direction:column; gap:.4rem; }
+  [data-atlas-relation-list] :global(a) { display:flex; flex-direction:column; gap:.4rem; padding:.8rem; border:1px solid var(--color-line); border-radius:5px; font-family:var(--font-read); }
+  [data-atlas-relation-list] :global(a span) { font-size:.82rem; color:var(--color-bright); }
+  [data-atlas-relation-list] :global(a b) { font-weight:400; color:var(--color-signal); }
+  [data-atlas-relation-list] :global(a small) { font-size:.7rem; color:var(--color-muted); }
+  [data-atlas-relation-list] :global(a.is-selected) { border-color:var(--color-signal); background:color-mix(in srgb,var(--color-signal) 6%,var(--color-surface)); }
+  .atlas-proof { padding:clamp(1rem,3vw,1.8rem); border:1px solid var(--color-line); border-top:3px solid var(--color-signal); border-radius:4px 4px 10px 10px; background:var(--color-surface); scroll-margin-top:1.5rem; }
+  .atlas-proof>.mono-label { color:var(--color-signal); font-size:.65rem; }
+  .atlas-proof h2 { font-family:var(--font-display); font-size:1.35rem; color:var(--color-bright); margin:.8rem 0; }
+  .proof-date { font-family:var(--font-mono); font-size:.65rem; color:var(--color-muted); line-height:1.7; }
+  .proof-claim { margin:1.2rem 0; font-family:var(--font-read); line-height:1.8; font-size:.94rem; }
+  .proof-amount { margin:1.2rem 0; font-family:var(--font-display); font-size:1.45rem; color:var(--color-bright); }
+  .atlas-proof h3 { margin-bottom:.4rem; color:var(--color-bright); font-size:.8rem; }
+  .proof-limit,.proof-watch { border-top:1px solid var(--color-line); padding:1rem 0; font-family:var(--font-read); font-size:.85rem; line-height:1.7; }
+  .atlas-scenario { margin:.4rem 0 1.2rem; }
+  .atlas-scenario button[aria-pressed="true"] { border-color:var(--color-accent); }
+  .atlas-scenario p { font-size:.8rem; line-height:1.7; margin-top:.8rem; }
+  .proof-sources { padding-top:1rem; border-top:1px solid var(--color-line); }
+  .proof-sources :global(li) { margin:.8rem 0; }
+  .proof-sources :global(a),.atlas-outlinks a,.atlas-record details a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; font-size:.8rem; }
+  .proof-sources :global(li p) { color:var(--color-muted); font-size:.72rem; line-height:1.6; margin-top:.4rem; }
+  .proof-share { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1rem; font-size:.75rem; }
+  .proof-share span { overflow-wrap:anywhere; max-width:100%; }
+  .atlas-record { margin:2rem 0; border-top:1px solid var(--color-line); padding-top:1.5rem; }
+  .atlas-record h2 { font-size:1.25rem; font-family:var(--font-display); color:var(--color-bright); }
+  .atlas-record>p { max-width:78ch; font-family:var(--font-read); font-size:.9rem; line-height:1.8; margin:.85rem 0; }
+  .atlas-record details { margin:1.4rem 0; border:1px solid var(--color-line); border-radius:7px; padding:1rem; }
+  .atlas-record summary { cursor:pointer; min-height:32px; font-size:.85rem; color:var(--color-bright); }
+  .atlas-record details section { border-top:1px solid var(--color-line); padding-top:1rem; margin-top:1rem; scroll-margin-top:2rem; }
+  .atlas-record h3 { color:var(--color-bright); }
+  .record-observation { font-family:var(--font-read); font-size:.85rem; line-height:1.8; margin-top:.8rem; }
+  .record-observation p,.record-observation ul { margin:.5rem 0; }
+  .record-observation time { color:var(--color-signal); }
+  .atlas-outlinks { display:flex; gap:1rem 2rem; flex-wrap:wrap; }
+  [hidden] { display:none!important; }
+  a:focus-visible,button:focus-visible,summary:focus-visible,[data-atlas-relation-list] :global(a:focus-visible) { outline:2px solid var(--color-signal); outline-offset:4px; }
+  @media(max-width:760px) { .atlas-map { grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:none; gap:.7rem; padding:1rem; }.atlas-node { grid-column:auto; grid-row:auto; min-height:88px; }.atlas-node strong { font-size:1rem; }.node-role,.node-count { font-size:.72rem; }.atlas-lines { display:none; }.atlas-inspection { grid-template-columns:minmax(0,1fr); }.atlas-dates { grid-template-columns:repeat(2,minmax(0,1fr)); padding:1rem 1rem 0; }.atlas-change { margin:1rem; }.atlas-toolbar { padding:1rem; }.atlas-entry { flex-direction:column; }.atlas-entry button { text-align:left; }.atlas-proof { order:-1; } }
+  @media(prefers-reduced-motion:reduce) { .atlas-node { transition:none; } }
+</style>

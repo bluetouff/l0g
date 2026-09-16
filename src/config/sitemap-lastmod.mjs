@@ -130,6 +130,9 @@ export function sitemapLastmod(pageUrl) {
   if (pathname === '/' || /^\/\d+\/$/.test(pathname)) {
     paths.add('src/pages/[...page].astro');
     posts.forEach((path) => paths.add(path));
+  } else if (pathname === '/atlas/') {
+    paths.add('src/data/engagement-atlas.json');
+    paths.add('src/lib/engagement-atlas.ts');
   } else if (pathname === '/guides/') {
     guides.forEach((path) => paths.add(path));
     guidesEn.forEach((path) => paths.add(path));

@@ -21,7 +21,7 @@ type NavItem = {
 const primary: Array<NavItem & { glyph: NavigationIconName }> = [
   { href: '/', label: 'Lire', glyph: 'read', matches: ['/', '/maintenant', '/posts', '/sujet', '/sujets', '/hebdo', '/publications'] },
   { href: '/demarrer/', label: 'Comprendre', glyph: 'understand', matches: ['/demarrer', '/guides', '/glossaire', '/outils'] },
-  { href: '/radar/', label: 'Observer', glyph: 'observe', matches: ['/radar', '/dashboards', '/confluence', '/risk-diff', '/series'] },
+  { href: '/radar/', label: 'Observer', glyph: 'observe', matches: ['/radar', '/atlas', '/dashboards', '/confluence', '/risk-diff', '/series'] },
   { href: '/methodologie/', label: 'Vérifier', glyph: 'verify', matches: ['/methodologie', '/sources', '/preuves', '/backtests', '/protocole-editorial'] },
   { href: '/soutenir/', label: 'Soutenir', glyph: 'support', matches: ['/soutenir'] },
 ];
@@ -54,6 +54,7 @@ const groups: Array<{ label: string; glyph: NavigationIconName; items: NavItem[]
     label: 'Observer',
     glyph: 'observe',
     items: [
+      { href: '/atlas/', label: 'Atlas des engagements', description: 'Acteurs, contrats, preuves et chronologie' },
       { href: '/radar/', label: 'Radar des transmissions', description: 'Comment le risque circule entre les systèmes' },
       { href: '/dashboards/', label: 'Tableaux de bord', description: 'Les instruments de suivi' },
       { href: '/confluence/', label: 'Signaux croisés', description: 'Confluence 13F × Form 4' },

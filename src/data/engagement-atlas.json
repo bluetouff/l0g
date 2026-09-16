@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "id": "financement-ia",
+  "title": "Les engagements derrière l’infrastructure IA",
+  "reconstructedOn": "2026-09-16",
+  "sources": [
+    {
+      "id": "aip-2024",
+      "title": "BlackRock : lancement du partenariat GAIIP",
+      "url": "https://ir.blackrock.com/news-and-events/press-releases/press-releases-details/2024/BlackRock-Global-Infrastructure-Partners-Microsoft-and-MGX-Launch-New-AI-Partnership-to-Invest-in-Data-Centers-and-Supporting-Power-Infrastructure/default.aspx",
+      "publishedOn": "2024-09-17",
+      "locator": "Communiqué, quatre premiers paragraphes : fondateurs, soutien technique de Nvidia et objectifs de financement."
+    },
+    {
+      "id": "aip-2025",
+      "title": "BlackRock : arrivée de Nvidia et xAI dans AIP",
+      "url": "https://ir.blackrock.com/news-and-events/press-releases/press-releases-details/2025/BlackRock-Global-Infrastructure-Partners-Microsoft-and-MGX-Welcome-NVIDIA-and-xAI-to-the-AI-Infrastructure-Partnership-to-Drive-Investment-in-Data-Centers-and-Enabling-Infrastructure/default.aspx",
+      "publishedOn": "2025-03-19",
+      "locator": "Communiqué, deux premiers paragraphes : nouveaux partenaires et maintien du conseil technique de Nvidia."
+    },
+    {
+      "id": "nvda-8k-20260817",
+      "title": "Nvidia : 8-K sur le campus de SB Energy",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000069/nvda-20260817.htm",
+      "publishedOn": "2026-08-17",
+      "locator": "Item 1.01, Residual Value Guaranties : parties, plafond, déclencheurs, options et indemnisation."
+    },
+    {
+      "id": "nvda-ex101-20260826",
+      "title": "Nvidia : modèle de garantie, annexe 10.1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda2027q2ex101.htm",
+      "publishedOn": "2026-08-26",
+      "locator": "Sections 1(b), 1(c), 1(d), 2 et 8 : formule masquée, actualisation, plafond et conditions."
+    }
+  ],
+  "nodes": [
+    { "id": "blackrock", "label": "BlackRock", "role": "Partenaire fondateur", "column": 0, "row": 0 },
+    { "id": "gip", "label": "GIP", "role": "Partenaire fondateur", "column": 0, "row": 1 },
+    { "id": "microsoft", "label": "Microsoft", "role": "Partenaire fondateur", "column": 0, "row": 2 },
+    { "id": "mgx", "label": "MGX", "role": "Partenaire fondateur", "column": 0, "row": 3 },
+    { "id": "aip", "label": "GAIIP / AIP", "role": "Partenariat d’infrastructure", "column": 1, "row": 1 },
+    { "id": "xai", "label": "xAI", "role": "Partenaire annoncé en 2025", "column": 1, "row": 3 },
+    { "id": "nvidia", "label": "Nvidia", "role": "Technologie et engagements", "column": 2, "row": 1 },
+    { "id": "openai-tenant", "label": "OpenAI · filiale", "role": "Locataire du campus", "column": 3, "row": 0 },
+    { "id": "sb-energy", "label": "SB Energy", "role": "Bailleur du campus", "column": 3, "row": 2 }
+  ],
+  "relations": [
+    { "id": "blackrock-aip", "from": "blackrock", "to": "aip", "observations": [{ "publishedOn": "2024-09-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire fondateur", "claim": "BlackRock annonce la création du partenariat avec GIP, Microsoft et MGX.", "limit": "La qualité de partenaire ne chiffre pas son apport individuel.", "watch": "Engagements de capital individualisés et opérations réalisées.", "sources": ["aip-2024"] }] },
+    { "id": "gip-aip", "from": "gip", "to": "aip", "observations": [{ "publishedOn": "2024-09-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire fondateur", "claim": "GIP figure parmi les fondateurs du partenariat annoncé.", "limit": "Cette relation ne mesure ni un apport individuel ni un flux de trésorerie.", "watch": "Ventilation des engagements entre partenaires.", "sources": ["aip-2024"] }] },
+    { "id": "microsoft-aip", "from": "microsoft", "to": "aip", "observations": [{ "publishedOn": "2024-09-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire fondateur", "claim": "Microsoft participe au lancement du partenariat.", "limit": "Le communiqué ne détaille pas de montant individuel pour Microsoft.", "watch": "Engagements définitifs et projets financés.", "sources": ["aip-2024"] }] },
+    { "id": "mgx-aip", "from": "mgx", "to": "aip", "observations": [{ "publishedOn": "2024-09-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire fondateur", "claim": "MGX fait partie des fondateurs annoncés.", "limit": "Aucun apport individuel n’est chiffré ici.", "watch": "Montants effectivement engagés par MGX dans ce partenariat.", "sources": ["aip-2024"] }] },
+    { "id": "nvidia-aip", "from": "nvidia", "to": "aip", "observations": [
+      { "publishedOn": "2024-09-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Soutien technique", "claim": "Nvidia doit apporter son expertise technique au partenariat.", "limit": "Ce rôle ne prouve pas un investissement financier.", "watch": "Évolution du rôle et conditions de participation.", "sources": ["aip-2024"] },
+      { "publishedOn": "2025-03-19", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire et conseil technique", "claim": "BlackRock annonce que Nvidia rejoint AIP et conserve son rôle de conseil technique.", "limit": "Le montant de sa participation n’est pas publié dans ce communiqué.", "watch": "Conditions financières définitives et apports réalisés.", "sources": ["aip-2025"] }
+    ] },
+    { "id": "xai-aip", "from": "xai", "to": "aip", "observations": [{ "publishedOn": "2025-03-19", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire annoncé", "claim": "BlackRock annonce également l’arrivée de xAI dans AIP.", "limit": "L’annonce ne chiffre pas l’apport individuel de xAI.", "watch": "Montants, conditions et opérations attribuables à xAI.", "sources": ["aip-2025"] }] },
+    { "id": "openai-sb-lease", "from": "openai-tenant", "to": "sb-energy", "observations": [{ "publishedOn": "2026-08-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "contract", "label": "Baux du campus de l’Ohio", "claim": "Nvidia désigne une filiale d’OpenAI comme locataire et SB Energy comme bailleur.", "limit": "Le lien représente les baux prévus, sans attester de loyers déjà versés.", "watch": "Début des baux et mise en service.", "sources": ["nvda-8k-20260817"] }] },
+    { "id": "nvidia-sb-guarantee", "from": "nvidia", "to": "sb-energy", "observations": [
+      { "publishedOn": "2026-08-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "contract", "label": "Garantie de valeur résiduelle", "claim": "Nvidia déclare des garanties plafonnées initialement à 105 milliards de dollars. Après certains défauts, le paiement dépend notamment des récupérations par relocation ou vente ; Nvidia dispose aussi d’options, dont la reprise du bail.", "limit": "Plafond cumulé conditionnel, sans estimation de perte. Les obligations dépendent notamment des conditions de mise à disposition des locaux.", "watch": "Modèle de garantie et conditions de démarrage des baux.", "sources": ["nvda-8k-20260817"], "amount": { "value": "105000000000", "currency": "USD", "kind": "conditional-cap", "label": "105 Md$ · plafond initial cumulé" } },
+      { "publishedOn": "2026-08-26", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "limitation", "label": "Garantie · formule partiellement masquée", "claim": "Le modèle de garantie précise les conditions et options. La formule de la perte couverte, le taux d’actualisation et certains paramètres de limitation restent masqués.", "limit": "Les éléments publics ne permettent pas de chiffrer une perte dans un scénario de défaut. Le plafond initial porte sur plusieurs garanties.", "watch": "Publication des paramètres masqués, amendements et mises en service.", "sources": ["nvda-8k-20260817", "nvda-ex101-20260826"], "amount": { "value": "105000000000", "currency": "USD", "kind": "conditional-cap", "label": "105 Md$ · plafond initial cumulé" } }
+    ] },
+    { "id": "openai-nvidia-indemnity", "from": "openai-tenant", "to": "nvidia", "observations": [{ "publishedOn": "2026-08-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "contract", "label": "Remboursement et indemnisation", "claim": "Le 8-K indique qu’OpenAI s’engage à rembourser et indemniser Nvidia pour les sommes versées au bailleur.", "limit": "Un engagement de remboursement ne garantit pas la capacité future à payer.", "watch": "Identité précise des obligés et conditions de recouvrement.", "sources": ["nvda-8k-20260817"] }] }
+  ],
+  "milestones": [
+    { "date": "2024-09-17", "label": "La plateforme", "change": "Création de GAIIP. Nvidia apporte un soutien technique ; les participations individuelles restent à préciser." },
+    { "date": "2025-03-19", "label": "Les nouveaux partenaires", "change": "Nvidia et xAI rejoignent le partenariat, désormais nommé AIP. Le rôle de Nvidia évolue." },
+    { "date": "2026-08-17", "label": "Les garanties", "change": "Un autre montage apparaît : les baux du campus de l’Ohio et la garantie de Nvidia. Ces pièces n’établissent pas qu’AIP finance ce campus." },
+    { "date": "2026-08-26", "label": "Les clauses", "change": "Le modèle contractuel ajoute des précisions, tout en laissant masqués des paramètres nécessaires au calcul de la perte couverte." }
+  ]
+}
