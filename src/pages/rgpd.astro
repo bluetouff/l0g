@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const updated = '2 août 2026';
+const updated = '16 septembre 2026';
 ---
 
 <BaseLayout
@@ -142,11 +142,31 @@ const updated = '2 août 2026';
     <ul class="nope">
       <li>l0g.fr ne dépose aucun cookie et n'intègre aucune régie publicitaire, aucun pixel de suivi ni aucun réseau social. L’Hebdo ne collecte aucune adresse et n’utilise pas de liste de diffusion. Le cookie de session strictement nécessaire de Watch est documenté dans la notice propre à ce service.</li>
       <li>La préférence de thème est enregistrée dans le stockage local du navigateur sous la clé <code class="rgpd-code">l0g-theme</code>. Elle reste sur l'appareil et peut être supprimée dans les réglages du navigateur.</li>
+      <li>La reprise de lecture conserve la position dans les analyses commencées, uniquement dans ce navigateur, sous la clé <code class="rgpd-code">l0g-reading-positions</code>. Elle retient au maximum 20 articles et ignore les positions de plus de 30 jours, supprimées au prochain accès à cette mémoire. Ces informations ne sont transmises à aucun serveur. Une révision du texte invalide la position correspondante. Vous pouvez effacer une position depuis l’article ou toutes les positions avec le bouton ci-dessous.</li>
       <li>Aucun script de mesure d'audience tiers : la fréquentation est mesurée localement à partir des journaux serveur.</li>
       <li>Les polices et la recherche sont servies par l0g ; la recherche s'exécute dans le navigateur.</li>
       <li>Aucun script, iframe, image, police ou widget tiers n'est chargé automatiquement par les pages de l0g.</li>
     </ul>
+    <button type="button" class="link-term mt-4" data-clear-reading hidden>Effacer toutes mes positions de lecture</button>
+    <p class="m-p" role="status" data-clear-reading-status></p>
   </section>
+
+  <script>
+    import { READING_STORAGE_KEY } from '../lib/reading-position.ts';
+    const button = document.querySelector<HTMLButtonElement>('[data-clear-reading]');
+    const status = document.querySelector<HTMLElement>('[data-clear-reading-status]');
+    if (button && status) {
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        try {
+          localStorage.removeItem(READING_STORAGE_KEY);
+          status.textContent = 'Toutes les positions de lecture ont été effacées sur cet appareil.';
+        } catch {
+          status.textContent = 'Le stockage est indisponible. Vous pouvez le vider dans les réglages du navigateur.';
+        }
+      });
+    }
+  </script>
 
   <section class="mt-14" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// vos droits (RGPD)</p>
