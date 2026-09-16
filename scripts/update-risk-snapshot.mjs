@@ -306,6 +306,11 @@ function confluenceFallback(previous, reason) {
       upstreamServedFromCache: null,
       edgarRefreshVerified: false,
     },
+    filingEvents: previous?.filingEvents ? {
+      ...previous.filingEvents,
+      status: 'unavailable',
+      lastAttemptAt: attemptedAt,
+    } : null,
     items: [],
     note: 'Copie statique retirée après échec de synchronisation. Consulter /confluence.json pour le contrat opérationnel vivant.',
   };

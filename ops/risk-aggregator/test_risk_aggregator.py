@@ -320,5 +320,130 @@ class AggregatorContractTest(unittest.TestCase):
             self.assertNotIn("secret", payload["fallbackReason"])
 
 
+NOW = '2026-09-16T12:00:00Z'
+LATER = '2026-09-17T12:00:00Z'
+
+
+def event(number=1):
+    accession = f'0000902664-26-{number:06d}'
+    return {'id': f'{number:032x}', 'sequence': number, 'kind': 'baseline',
+            'recorded_at': '2026-09-16T11:00:00.123456+00:00',
+            'fund': {'cik': '0001998597', 'label': 'Synthetic manager'},
+            'report_date': '2026-03-31', 'before': None, 'changed_fields': [],
+            'after': {'accession': accession, 'form': '13F-HR', 'published_on': '2026-05-12',
+                      'composition_status': 'complete', 'amendment_type': None, 'amendment_number': None,
+                      'reported_value_usd': 100.25, 'portfolio_value_usd': 100.25, 'positions': 1,
+                      'holdings_hash': 'a' * 64,
+                      'sources': [{'accession': accession, 'url': f'https://www.sec.gov/Archives/edgar/data/1998597/{accession.replace("-", "")}/'}]}}
+
+
+def page(events=None, *, head=None, more=False, stream='f' * 32):
+    events = [event()] if events is None else events
+    head = head if head is not None else (events[-1]['sequence'] if events else 1)
+    return {'version': 1, 'status': 'ok', 'scope': 'observed_13f_revisions', 'stream_id': stream,
+            'head': head, 'next_cursor': events[-1]['sequence'] if more else head, 'has_more': more,
+            'events': events, 'started_at': '2026-09-16T11:00:00Z',
+            'generated_at': NOW, 'producer_revision': 'b' * 40}
+
+
+class FilingEventsTest(unittest.TestCase):
+    def collect(self, payload, previous=None, at=NOW):
+        with patch.object(RISK, 'fetch_json', return_value=payload):
+            return RISK.collect_filing_events(previous, at)
+
+    def test_pagination_preserves_precision_provenance_and_first_seen(self):
+        with patch.object(RISK, 'fetch_json', side_effect=[page(more=True, head=2), page([event(2)])]) as fetch:
+            result = RISK.collect_filing_events({}, NOW)
+        self.assertEqual(result['status'], 'ok')
+        self.assertEqual(result['cursor'], 2)
+        self.assertEqual(fetch.call_count, 2)
+        self.assertEqual(result['events'][0]['after']['portfolio_value_usd'], 100.25)
+        self.assertEqual(result['events'][0]['recorded_at'], event()['recorded_at'])
+        later = self.collect(page([], head=2), result, LATER)
+        self.assertEqual(later['events'], result['events'])
+        self.assertEqual(later['lastSuccessAt'], LATER)
+        self.assertEqual(later['events'][0]['firstSeenAt'], NOW)
+
+    def test_malformed_and_hostile_pages_fail_closed_without_freshening_history(self):
+        original = self.collect(page())
+        cases = []
+        bad = page(); bad['events'][0]['after']['sources'][0]['url'] = 'https://www.sec.gov.evil.test/'; cases.append(bad)
+        bad = page(); bad['events'][0]['after']['portfolio_value_usd'] = float('nan'); cases.append(bad)
+        bad = page(); bad['events'][0]['after']['positions'] = True; cases.append(bad)
+        bad = page(); bad['events'][0]['after']['composition_status'] = 'missing_base'; cases.append(bad)
+        bad = page(); bad['events'][0]['recorded_at'] = '2099-01-01T00:00:00Z'; cases.append(bad)
+        bad = page(); bad['events'][0]['after']['published_on'] = '2026-02-30'; cases.append(bad)
+        bad = page(); bad['events'][0]['changed_fields'] = ['portfolio_value_usd']; cases.append(bad)
+        bad = page([], head=1); bad['has_more'] = True; cases.append(bad)
+        bad = page(); bad['producer_revision'] = 'unknown'; cases.append(bad)
+        for payload in cases:
+            with self.subTest(payload=repr(payload)[:90]):
+                result = self.collect(payload, original, LATER)
+                self.assertEqual(result['status'], 'unavailable')
+                self.assertEqual(result['events'], original['events'])
+                self.assertEqual(result['lastSuccessAt'], NOW)
+        self.assertEqual(original['events'][0]['after']['positions'], 1)
+
+    def test_restore_resets_cursor_explicitly_and_recovers(self):
+        original = self.collect(page([event(1), event(2)]))
+        for restored in (page(), page(stream='c' * 32)):
+            with self.subTest(stream=restored['stream_id']):
+                with patch.object(RISK, 'fetch_json', side_effect=[restored, restored]) as fetch:
+                    result = RISK.collect_filing_events(original, LATER)
+                self.assertEqual(result['status'], 'ok')
+                self.assertEqual(result['historyResetAt'], LATER)
+                self.assertEqual(len(result['events']), 1)
+                self.assertEqual(result['events'][0]['firstSeenAt'], NOW)
+                self.assertIn('after=0', fetch.call_args_list[-1].args[0])
+
+    def test_bounded_work_and_retention_then_resume(self):
+        pages = [page([event(n) for n in range(start, start + 100)], head=400, more=True)
+                 for start in (1, 101, 201)]
+        with patch.object(RISK, 'fetch_json', side_effect=pages) as fetch:
+            result = RISK.collect_filing_events({}, NOW)
+        self.assertEqual(fetch.call_count, 3)
+        self.assertEqual(result['status'], 'catching_up')
+        self.assertEqual(result['cursor'], 300)
+        self.assertEqual(len(result['events']), 100)
+        self.assertEqual(result['events'][0]['sequence'], 201)
+        result = self.collect(page([event(301)]), result, LATER)
+        self.assertEqual(result['status'], 'ok')
+        self.assertEqual(result['events'][0]['sequence'], 202)
+
+    def test_private_fields_are_not_republished_and_errors_do_not_leak(self):
+        payload = page()
+        payload['events'][0]['workspace'] = 'private'
+        payload['events'][0]['after']['secret'] = 'private'
+        result = self.collect(payload)
+        self.assertNotIn('private', str(result))
+        with patch.object(RISK, 'fetch_json', side_effect=RuntimeError('secret body')):
+            failure = RISK.collect_filing_events(result, LATER)
+        self.assertNotIn('secret body', str(failure))
+
+    def test_journal_and_scores_fail_independently_and_api_preserves_journal(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with patch.object(RISK, 'fetch_json', side_effect=[RuntimeError('score failure'), page()]):
+                result = RISK.build_confluence({}, NOW, str(pathlib.Path(directory) / 'confluence.json'))
+            self.assertEqual(result['sourceStatus'], 'fallback')
+            self.assertEqual(result['filingEvents']['status'], 'ok')
+            self.assertEqual(API_BUILD.build_api_json({}, result)['confluence']['filingEvents'], result['filingEvents'])
+            with patch.object(RISK, 'fetch_json', side_effect=[{'signals': [{'ticker': 'TEST', 'score': 1}]}, RuntimeError('journal failure')]):
+                result = RISK.build_confluence({}, NOW, str(pathlib.Path(directory) / 'confluence.json'))
+            self.assertEqual(result['sourceStatus'], 'ok')
+            self.assertEqual(result['filingEvents']['status'], 'unavailable')
+
+    def test_observed_amendment_keeps_both_states(self):
+        changed = event(2)
+        changed['kind'] = 'amendment_observed'
+        changed['before'] = event()['after']
+        changed['after'].update(form='13F-HR/A', amendment_type='RESTATEMENT', amendment_number=1,
+                                portfolio_value_usd=50.125, reported_value_usd=50.125)
+        changed['changed_fields'] = sorted(k for k in changed['after'] if changed['before'][k] != changed['after'][k])
+        result = self.collect(page([changed]))
+        self.assertEqual(result['status'], 'ok')
+        self.assertEqual(result['events'][0]['before']['portfolio_value_usd'], 100.25)
+        self.assertEqual(result['events'][0]['after']['portfolio_value_usd'], 50.125)
+
+
 if __name__ == "__main__":
     unittest.main()

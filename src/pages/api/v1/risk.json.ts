@@ -70,6 +70,7 @@ export const GET: APIRoute = () => {
       timelinessStatus: contractValid ? (conf.timelinessStatus ?? 'unknown') : 'unknown',
       provenanceStatus: contractValid ? (conf.provenanceStatus ?? 'partial') : 'unverified',
       freshness: contractValid ? (conf.freshness ?? null) : null,
+      filingEvents: contractValid ? (conf.filingEvents ?? null) : null,
       count: items.length,
       conviction: items.filter((i) => String(i.quadrant).toLowerCase() === 'conviction').length,
       top: top ? { ticker: top.ticker, score: top.score, quadrant: top.quadrant } : null,

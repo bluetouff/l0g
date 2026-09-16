@@ -81,6 +81,15 @@ function validateOpenapiArtifacts() {
   const { latestDate: _omittedDate, ...missingDate } = sourceFixture;
   assert(!validateProvenanceSource(missingDate), 'le champ latestDate doit rester obligatoire');
   assert(!validateProvenanceSource({ ...sourceFixture, unexpected: true }), 'les champs non documentés doivent rester refusés');
+  const validateFilingFeed = ajv.getSchema('#/components/schemas/FilingEventFeed');
+  assert(validateFilingFeed, 'schema du journal 13F absent');
+  const journalFixture = { version: 1, source: 'https://13flow.eu/api/events/filings',
+    scope: 'observed_13f_revisions', status: 'unavailable', lastAttemptAt: '2026-09-16T12:00:00Z',
+    lastSuccessAt: null, streamId: null, startedAt: null, cursor: 0, historyResetAt: null,
+    events: [], retainedLimit: 100 };
+  assert(validateFilingFeed(journalFixture), 'un journal indisponible doit rester représentable');
+  assert(!validateFilingFeed({ ...journalFixture, privateWorkspace: {} }), 'aucun champ privé non documenté');
+  assert(!validateFilingFeed({ ...journalFixture, events: [{ id: 'incomplete' }] }), 'événements incomplets refusés');
   const artifacts = [
     ['AgentManifest', 'dist/agents.json'],
     ['Catalog', 'dist/api/v1/catalog.json'],

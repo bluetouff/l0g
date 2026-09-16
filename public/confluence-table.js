@@ -1,3 +1,5 @@
+import { renderFilingEvents } from './filing-events.js';
+
 /* Tableau de confluence triable, alimenté par /confluence.json (même origine).
    Injection en textContent uniquement, couleurs issues d'une table fixe : aucun
    risque d'injection même si le JSON était hostile. Aucun appel tiers. */
@@ -135,6 +137,7 @@
   fetch('/confluence.json', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (data) {
+      renderFilingEvents(data && data.filingEvents);
       var contractValid = data && String(data.version) === '2' &&
         Array.isArray(data.items) && data.lastAttemptAt && !Number.isNaN(Date.parse(data.lastAttemptAt));
       var fallback = contractValid && (data.sourceStatus === 'fallback' || data.fallbackUsed === true);
@@ -169,6 +172,7 @@
       paint();
     })
     .catch(function () {
+      renderFilingEvents(null);
       body.textContent = '';
       var tr = document.createElement('tr');
       var td = cell('td', 'Données indisponibles.', 'px-3 py-6 text-center text-muted');

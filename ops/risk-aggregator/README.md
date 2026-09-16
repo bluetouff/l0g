@@ -45,6 +45,39 @@ alors `tip_source=eia` et les dates Brent/WTI ; l'agrégateur le traduit en
 `qualityStatus=official-delayed`, sans présenter cette valeur comme du spot
 temps réel.
 
+## Journal des déclarations 13F
+
+Le collecteur existant lit aussi `https://13flow.eu/api/events/filings` et ajoute
+`filingEvents` à `/confluence.json` ainsi qu'au bloc Confluence de l'API risque.
+Cette collecte est indépendante du score Confluence et des cinq indices.
+Aucun nouveau service, secret, appel direct à EDGAR ou dépendance n'est requis.
+
+Chaque événement conserve `recorded_at` (observation du producteur),
+`firstSeenAt` (première réception conservée dans ce miroir l0g), la date de publication SEC au jour,
+le trimestre, les états avant/après et les liens SEC contrôlés. Les états
+initiaux sont des baselines datées de l'installation, jamais un historique
+reconstruit. Les totaux restent en USD ; une chaîne incomplète n'a pas de total
+reconstitué exploitable. Ce journal de résumés n'est pas une archive complète
+position par position pour backtester.
+
+Le miroir conserve les 100 dernières observations ; la page en affiche 12.
+Le curseur reprend au prochain passage, avec au maximum trois pages de
+100 observations par exécution. `status` vaut `ok`, `catching_up` ou
+`unavailable`. Un échec conserve les observations, le curseur et la date du
+dernier succès. Un changement de flux ou un recul de sa séquence après
+restauration déclenche une nouvelle lecture depuis zéro et date
+`historyResetAt` ; la fenêtre du miroir est alors remplacée explicitement. Les événements encore
+connus gardent leur première date de réception ; les événements sortis de la
+fenêtre ne disposent plus de cette preuve locale.
+
+Ordre de mise en service : déployer le producteur 13FLOW, initialiser son
+journal via son compte d'écriture (`--record-filing-events`, sans réseau), puis
+installer l'agrégateur avec la procédure existante et publier la page l0g.
+Un ordre différent affiche un journal indisponible sans retirer les scores
+Confluence. Conserver le fichier opérationnel `confluence.json` entre releases
+pour préserver le curseur et les dates de première réception. Vérifier une
+seconde collecte : aucun doublon et aucune modification de `firstSeenAt`.
+
 ## Test
 
 ```sh

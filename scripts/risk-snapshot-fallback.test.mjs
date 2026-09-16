@@ -36,20 +36,20 @@ const availableDebt = {
   sources: [{ source: 'fixture', latest_date: '2026-09-09' }],
 };
 
-async function runSnapshot(t, { debt = { score: { current_stress: null } }, aggregateValue = aggregate, prior = previous } = {}) {
+async function runSnapshot(t, { debt = { score: { current_stress: null } }, aggregateValue = aggregate, prior = previous, priorConfluence = confluence, confluenceValue = confluence } = {}) {
   const directory = await mkdtemp(join(tmpdir(), 'l0g-debt-fallback-'));
   t.after(() => rm(directory, { recursive: true, force: true }));
   await mkdir(join(directory, 'public'));
   await mkdir(join(directory, 'src/scripts'), { recursive: true });
   const input = `${JSON.stringify(prior)}\n`;
   await writeFile(join(directory, 'public/risk.json'), input);
-  await writeFile(join(directory, 'public/confluence.json'), JSON.stringify(confluence));
+  await writeFile(join(directory, 'public/confluence.json'), JSON.stringify(priorConfluence));
   await writeFile(join(directory, 'src/scripts/risk.js'), riskClient);
   const responses = join(directory, 'responses.json');
   await writeFile(responses, JSON.stringify({
     'https://l0g.fr/risk.json': aggregateValue,
     'https://debt.l0g.fr/latest.json': debt,
-    'https://l0g.fr/confluence.json': confluence,
+    'https://l0g.fr/confluence.json': confluenceValue,
   }));
   const code = `
     import { readFileSync } from 'node:fs';
@@ -73,6 +73,7 @@ async function runSnapshot(t, { debt = { score: { current_stress: null } }, aggr
   return {
     result,
     risk: JSON.parse(output),
+    confluence: JSON.parse(await readFile(join(directory, 'public/confluence.json'), 'utf8')),
     snapshot: JSON.parse(await readFile(join(directory, 'public/debt-latest.json'), 'utf8')),
   };
 }
@@ -135,4 +136,16 @@ test('an incoherent prior pair fails before writing a new snapshot', async (t) =
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /aucune paire valeur\/provenance cohérente/);
   assert.equal(output, input);
+});
+
+
+test('a failed static refresh retains dated filing observations without refreshing their success', async (t) => {
+  const filingEvents = { version: 1, status: 'ok', cursor: 7, lastSuccessAt: '2026-09-10T10:00:00Z',
+    events: [{ id: 'synthetic-event', firstSeenAt: '2026-09-09T10:00:00Z' }] };
+  const result = await runSnapshot(t, { priorConfluence: { ...confluence, filingEvents }, confluenceValue: null });
+  assert.equal(result.result.status, 0, result.result.stderr);
+  assert.equal(result.confluence.filingEvents.status, 'unavailable');
+  assert.equal(result.confluence.filingEvents.lastSuccessAt, filingEvents.lastSuccessAt);
+  assert.equal(result.confluence.filingEvents.cursor, 7);
+  assert.deepEqual(result.confluence.filingEvents.events, filingEvents.events);
 });

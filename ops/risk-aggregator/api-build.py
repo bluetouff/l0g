@@ -81,6 +81,7 @@ def build_api_json(risk, confluence):
             "timelinessStatus": confluence.get("timelinessStatus"),
             "provenanceStatus": confluence.get("provenanceStatus"),
             "freshness": confluence.get("freshness"),
+            "filingEvents": confluence.get("filingEvents"),
             "count": len(items),
             "conviction": sum(1 for row in items if str(row.get("quadrant", "")).lower() == "conviction"),
             "top": {"ticker": top.get("ticker"), "score": top.get("score"), "quadrant": top.get("quadrant")} if top else None,

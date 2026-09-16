@@ -16,6 +16,7 @@ from __future__ import annotations
 import datetime
 import hashlib
 import json
+import math
 import os
 import re
 import subprocess
@@ -728,6 +729,176 @@ def _confluence_age(last_success_at, attempt_at):
     return max(0, round((attempt - last_success).total_seconds()))
 
 
+# A bounded mirror of the public 13F journal, independent of Confluence scores.
+FILING_EVENTS_URL = "https://13flow.eu/api/events/filings"
+FILING_EVENT_KINDS = {"baseline", "filing_observed", "amendment_observed", "data_revised"}
+FILING_COMPOSITIONS = {"complete", "missing_base", "missing_amendment", "unknown_amendment"}
+
+
+def _event_integer(value, minimum=0):
+    if type(value) is not int or not minimum <= value <= 2**53 - 1:
+        raise ValueError("invalid journal integer")
+    return value
+
+
+def _event_text(value, pattern):
+    if not isinstance(value, str) or not re.fullmatch(pattern, value):
+        raise ValueError("invalid journal identifier")
+    return value
+
+
+def _event_time(value, attempt_at):
+    # Keep the producer's precision and offset; do not normalize microseconds away.
+    if not isinstance(value, str) or len(value) > 40:
+        raise ValueError("invalid journal timestamp")
+    parsed = datetime.datetime.fromisoformat(value.replace("Z", "+00:00"))
+    attempt = datetime.datetime.fromisoformat(attempt_at.replace("Z", "+00:00"))
+    if parsed.tzinfo is None or parsed > attempt + datetime.timedelta(minutes=5):
+        raise ValueError("undated or future journal timestamp")
+    return value
+
+
+def _event_day(value, attempt_at):
+    _event_text(value, r"[0-9]{4}-[0-9]{2}-[0-9]{2}")
+    if datetime.date.fromisoformat(value) > datetime.date.fromisoformat(attempt_at[:10]):
+        raise ValueError("future filing date")
+    return value
+
+
+def _event_state(state, cik, attempt_at):
+    if not isinstance(state, dict):
+        raise ValueError("missing filing state")
+    accession = _event_text(state.get("accession"), r"[0-9]{10}-[0-9]{2}-[0-9]{6}")
+    composition = state.get("composition_status")
+    form = state.get("form")
+    amendment = state.get("amendment_type")
+    if composition not in FILING_COMPOSITIONS or form not in {"13F-HR", "13F-HR/A"}:
+        raise ValueError("unsupported filing state")
+    if amendment not in {None, "NEW HOLDINGS", "RESTATEMENT"}:
+        raise ValueError("unsupported amendment")
+    result = {"accession": accession, "form": form,
+              "published_on": _event_day(state.get("published_on"), attempt_at),
+              "composition_status": composition, "amendment_type": amendment,
+              "amendment_number": None if state.get("amendment_number") is None else _event_integer(state["amendment_number"], 1),
+              "holdings_hash": _event_text(state.get("holdings_hash"), r"[0-9a-f]{64}")}
+    for key in ("reported_value_usd", "portfolio_value_usd"):
+        value = state.get(key)
+        if value is not None and (type(value) not in (int, float) or not math.isfinite(value) or value < 0):
+            raise ValueError("invalid USD amount")
+        result[key] = value
+    positions = state.get("positions")
+    result["positions"] = None if positions is None else _event_integer(positions)
+    if composition != "complete" and (positions is not None or result["portfolio_value_usd"] is not None):
+        raise ValueError("incomplete portfolio presented as complete")
+    sources = state.get("sources")
+    if not isinstance(sources, list) or not 1 <= len(sources) <= 100:
+        raise ValueError("missing filing provenance")
+    result["sources"] = []
+    for source in sources:
+        acc = _event_text(source.get("accession"), r"[0-9]{10}-[0-9]{2}-[0-9]{6}")
+        url = f"https://www.sec.gov/Archives/edgar/data/{int(cik)}/{acc.replace('-', '')}/"
+        if source.get("url") != url:
+            raise ValueError("invalid SEC source")
+        result["sources"].append({"accession": acc, "url": url})
+    if accession not in {s["accession"] for s in result["sources"]}:
+        raise ValueError("current filing source missing")
+    return result
+
+
+def _filing_event(event, attempt_at):
+    fund = event["fund"]
+    cik = _event_text(fund.get("cik"), r"[0-9]{10}")
+    label = fund.get("label")
+    if int(cik) == 0 or not isinstance(label, str) or not 1 <= len(label) <= 200:
+        raise ValueError("invalid fund")
+    kind = event.get("kind")
+    if kind not in FILING_EVENT_KINDS:
+        raise ValueError("unsupported journal event")
+    before = _event_state(event["before"], cik, attempt_at) if event.get("before") is not None else None
+    after = _event_state(event.get("after"), cik, attempt_at)
+    if kind == "baseline" and before is not None:
+        raise ValueError("baseline cannot contain a prior observation")
+    changed = sorted(k for k in after if before is not None and before[k] != after[k])
+    if event.get("changed_fields") != changed:
+        raise ValueError("inconsistent change description")
+    return {"id": _event_text(event.get("id"), r"[0-9a-f]{32}"),
+            "sequence": _event_integer(event.get("sequence"), 1), "kind": kind,
+            "recorded_at": _event_time(event.get("recorded_at"), attempt_at),
+            "fund": {"cik": cik, "label": label},
+            "report_date": _event_day(event.get("report_date"), attempt_at),
+            "before": before, "after": after, "changed_fields": changed}
+
+
+def collect_filing_events(previous, attempt_at):
+    previous = previous if isinstance(previous, dict) else {}
+    base = {"version": 1, "source": FILING_EVENTS_URL, "scope": "observed_13f_revisions",
+            "lastAttemptAt": attempt_at, "lastSuccessAt": previous.get("lastSuccessAt"),
+            "producerRevision": previous.get("producerRevision"),
+            "upstreamGeneratedAt": previous.get("upstreamGeneratedAt"),
+            "streamId": previous.get("streamId"), "startedAt": previous.get("startedAt"),
+            "cursor": previous.get("cursor", 0), "historyResetAt": previous.get("historyResetAt"),
+            "events": previous.get("events", []), "retainedLimit": 100}
+    try:
+        cursor = _event_integer(base["cursor"])
+        retained = {}
+        for event in base["events"][-100:]:
+            checked = _filing_event(event, attempt_at)
+            checked["firstSeenAt"] = _event_time(event["firstSeenAt"], attempt_at)
+            retained[checked["id"]] = checked
+        known = dict(retained)
+        stream = base["streamId"]
+        reset_at = base["historyResetAt"]
+        result = None
+        # At most three requests per existing scheduler run, including a reset.
+        for _ in range(3):
+            page = fetch_json(f"{FILING_EVENTS_URL}?after={cursor}&limit=100")
+            if page.get("version") != 1 or page.get("status") != "ok" or page.get("scope") != base["scope"]:
+                raise ValueError("journal unavailable or not initialized")
+            page_stream = _event_text(page.get("stream_id"), r"[0-9a-f]{32}")
+            head = _event_integer(page.get("head"), 1)
+            if stream is not None and (page_stream != stream or head < cursor):
+                stream, cursor, retained, reset_at = page_stream, 0, {}, attempt_at
+                result = None
+                continue
+            stream = page_stream
+            started_at = _event_time(page.get("started_at"), attempt_at)
+            generated_at = _event_time(page.get("generated_at"), attempt_at)
+            revision = _event_text(page.get("producer_revision"), r"[0-9a-f]{40}")
+            events = page.get("events")
+            if not isinstance(events, list) or len(events) > 100 or type(page.get("has_more")) is not bool:
+                raise ValueError("invalid journal page")
+            last_sequence = cursor
+            for event in events:
+                checked = _filing_event(event, attempt_at)
+                if not last_sequence < checked["sequence"] <= head:
+                    raise ValueError("unordered journal page")
+                last_sequence = checked["sequence"]
+                existing = known.get(checked["id"])
+                if existing and any(existing[k] != checked[k] for k in checked):
+                    raise ValueError("journal event changed")
+                checked["firstSeenAt"] = existing["firstSeenAt"] if existing else attempt_at
+                retained[checked["id"]] = checked
+                known[checked["id"]] = checked
+            next_cursor = _event_integer(page.get("next_cursor"))
+            more = page["has_more"]
+            if next_cursor != (last_sequence if more else head) or (more and next_cursor <= cursor):
+                raise ValueError("journal cursor stalled")
+            cursor = next_cursor
+            result = {**base, "status": "catching_up" if more else "ok", "lastSuccessAt": attempt_at,
+                      "streamId": stream, "startedAt": started_at, "cursor": cursor,
+                      "producerRevision": revision, "upstreamGeneratedAt": generated_at,
+                      "historyResetAt": reset_at,
+                      "events": sorted(retained.values(), key=lambda e: e["sequence"])[-100:]}
+            if not more:
+                return result
+        if result is None:
+            raise ValueError("journal kept resetting")
+        return result
+    except Exception:
+        # Do not expose external exception text, response bodies or credentials.
+        return {**base, "status": "unavailable", "reason": "Journal 13FLOW indisponible ou invalide."}
+
+
 def build_confluence(previous=None, attempt_at=None, output=None):
     previous = previous if isinstance(previous, dict) else {}
     attempt_at = iso_z(attempt_at) or now_z()
@@ -814,6 +985,7 @@ def build_confluence(previous=None, attempt_at=None, output=None):
                 "datent le dernier succès l0g, pas une publication SEC EDGAR."
             ),
         }
+    payload["filingEvents"] = collect_filing_events(previous.get("filingEvents"), attempt_at)
     write_atomic(output, payload)
     return payload
 

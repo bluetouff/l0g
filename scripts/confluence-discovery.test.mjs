@@ -26,3 +26,28 @@ test('la confluence 13FLOW reste accessible sans connaître son URL', async () =
   assert.doesNotMatch(confluence, /<section data-pagefind-ignore>/);
   assert.match(confluence, /<div[^>]+data-pagefind-ignore>/);
 });
+
+
+test('les liens du journal restent sur les dépôts SEC attendus', async () => {
+  const { secSourceUrl } = await import('../public/filing-events.js');
+  const cik = '0001998597';
+  const source = { accession: '0000902664-26-000001', url: 'https://www.sec.gov/Archives/edgar/data/1998597/000090266426000001/' };
+  assert.equal(secSourceUrl(cik, source), source.url);
+  for (const url of ['javascript:alert(1)', 'https://www.sec.gov.evil.test/', '//evil.test', source.url + '?redirect=evil']) {
+    assert.equal(secSourceUrl(cik, { ...source, url }), null);
+  }
+  assert.equal(secSourceUrl('0000000000', source), null);
+  assert.equal(secSourceUrl(cik, { ...source, accession: [source.accession] }), null);
+  assert.equal(secSourceUrl(cik, null), null);
+  assert.equal(secSourceUrl('../1998597', source), null);
+  assert.equal(secSourceUrl(cik, { ...source, accession: '<img src=x onerror=alert(1)>' }), null);
+});
+
+test('un état incomplet ne produit pas un faux total exploitable', async () => {
+  const { stateSummary } = await import('../public/filing-events.js');
+  assert.match(stateSummary(null), /Aucune observation antérieure/);
+  assert.match(stateSummary({ composition_status: 'missing_base', positions: 9, portfolio_value_usd: 123 }), /total reconstitué indisponible/);
+  assert.doesNotMatch(stateSummary({ composition_status: 'missing_base', portfolio_value_usd: 123 }), /123/);
+  assert.match(stateSummary({ composition_status: 'complete', positions: 1, portfolio_value_usd: 123.125 }), /123,125 USD/);
+  assert.match(stateSummary({ composition_status: 'complete', positions: 1, portfolio_value_usd: null }), /valeur indisponible/);
+});
