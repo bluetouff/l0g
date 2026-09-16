@@ -5,25 +5,21 @@ Cette release publie le daemon distant en lecture seule dont la porte d’entré
 et référencé dans le Registry officiel sous le nom
 `io.github.bluetouff/l0g`.
 
-## Correctifs de performance 1.24.4
+## Correctifs de dépendances 1.24.5
 
-Les requêtes simultanées à froid partagent désormais le chargement du corpus de
-leur release. L'index du graphe de preuve est réutilisé entre requêtes pour éviter
-sa reconstruction et les parcours répétés de toutes les arêtes.
+Cette version active les mises à jour déjà intégrées au dépôt depuis la release
+1.24.4 : `node-html-parser` passe de 9.0.1 à 9.0.4 et `hono` de 4.12.34 à 4.13.5.
+Le parseur traite notamment la fermeture implicite des balises `dt` et `dd`.
+Les correctifs Hono sont couverts par les tests de dépendances du dépôt.
 
-Le chemin réel de la release reste vérifié à chaque lecture : une bascule ou un
-rollback prend effet sans délai de cache. Une erreur de chargement est propagée,
-sans substitution silencieuse du corpus précédent. Les serveurs et transports
-MCP restent isolés par requête ; aucune dépendance ni capacité publique ajoutée.
+Les outils, schémas, permissions et endpoints MCP restent inchangés. Zod reste
+en version 3.25.76 ; cette release ne réalise pas de migration vers Zod 4.
+Les optimisations de chargement du corpus et du graphe de preuve de la version
+1.24.4 sont conservées.
 
-La validation locale couvre la concurrence, les échecs et leur récupération,
-les bascules atomiques et l'ordre des arêtes. La comparaison du corpus a produit
-664 réponses identiques avant et après optimisation. Les nouveaux modules sont
-inclus dans les empreintes obligatoires de l'archive.
-
-Les cinq signaux attendus exposent également un état indisponible explicite
-lorsque les contrôles de fraîcheur et de provenance ne sont pas satisfaits.
-Leurs anciennes valeurs ne sont pas présentées comme des valeurs courantes.
+La publication vérifie les contrats du serveur complet et compact, Agent Bench,
+les dépendances et l’archive Linux extraite avant attestation. L’activation en
+production et l’inscription au Registry sont vérifiées séparément.
 
 ## Périmètre
 
