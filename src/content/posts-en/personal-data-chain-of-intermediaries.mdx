@@ -1,0 +1,171 @@
+---
+title: 'Personal data: the intermediaries behind our traces'
+seoTitle: 'Personal data and the chain of intermediaries | l0g'
+ogTitle: 'The trade in our digital traces (2/6): the intermediaries'
+description: 'The trade in our digital traces, part 2 of 6: Experian, LiveRamp, Gravy and Mobius reveal the roles and limits of data intermediaries.'
+pubDate: '2026-09-17T16:02:07Z'
+tags: ["personal data", "technology", "advertising", "data brokers", "LiveRamp", "Experian", "FTC", "CNIL", "investigation"]
+draft: false
+ogImage: /illustrations/news/commerce-traces-02-v1.jpg
+sourceArticle: commerce-traces-chaine-intermediaires-donnees-personnelles
+sourceUpdatedDate: '2026-09-17T16:02:07Z'
+---
+
+import CommerceTracesChainFigure from "../../components/CommerceTracesChainFigure.astro";
+
+
+*The trade in our digital traces · Part two of a six-part investigation.*
+
+**A software supplier, an audience vendor and an advertising platform can work with the same information while selling different services. Experian’s commercial terms and LiveRamp’s accounts help separate those roles. The Gravy, Mobilewalla and Mobius cases expose other boundaries. Together, the documents show why tracing the companies paid for an advertisement does not identify everyone who may have received the associated data.**
+
+Clause 11 of a set of UK commercial terms published by Experian passes an instruction from one company to another. A client asks Experian to make an audience available in an advertising environment. Experian must then instruct LiveRamp to distribute it to the selected destination. The document, dated December 2024, sets out a service with several layers. [S01](#source-1)
+
+An **audience**, in this setting, is a group of digital identifiers assembled for advertising. **Activation** makes that group usable in a system that delivers or measures a campaign. The customer may therefore be buying the ability to reach a group through another platform, rather than a downloadable file. [S01](#source-1) [S07](#source-7)
+
+LiveRamp also lists Experian in its partner directory. These documents establish different things. The listing records a publicly acknowledged relationship; the terms describe a contractual offering. Neither is a signed order from an identified advertiser, a paid invoice or evidence that a particular user’s data travelled along that route. [S01](#source-1) [S02](#source-2)
+
+That distinction guides the second instalment of this investigation. [Part one examined what pays for collection](/en/analysis/personal-data-economics-collection/). The next step is to identify the operations: who adds information, who matches identifiers, who distributes audiences and who actually licenses a use of the data?
+
+## One purchase can involve several businesses
+
+Consider a hypothetical retailer preparing to open a store. It already has a customer file. It might hire a service provider to select some customers, obtain additional information about them, and send usable identifiers to an advertising platform. It would then pay to run the ads.
+
+That example contains several distinct purchases: work on an existing file, additional information, a technical connection and advertising space. They might be billed separately or bundled. Their place in a common workflow does not mean each participant resells the complete customer database.
+
+The component embedded in an app is another part of this picture. A **software development kit**, or [SDK](/en/glossary/sdk/), might display a map, manage notifications or report software errors. It can also support advertising-related collection. France’s data protection authority, the CNIL, says the analysis must turn on what the component does and how it is configured. Supplying code does not necessarily mean receiving the information that code processes. [S03](#source-3)
+
+A broker, by contrast, commercialises access to information or rights to use it. Other intermediaries match the identifiers used by different systems, prepare customer categories or facilitate transactions between data sellers and buyers. LiveRamp’s annual report separates platform subscriptions, marketplace transactions and professional services. [S10](#source-10)
+
+The useful unit of investigation is therefore **the operation**, not a permanent label attached to a company. A business may provide a service in one relationship and sell data in another. Its legal role can also differ between processing activities, as the European Data Protection Board explains. [S04](#source-4)
+
+<CommerceTracesChainFigure lang="en" figure={1} />
+
+## Enriching a file and matching an identifier
+
+LiveRamp’s documentation provides a concrete example of **data enrichment**. Its *Third-Party Attribute Enrichment* service appends attributes supplied by data sellers to a client’s US customer file. The file is returned with the original identifiers and the selected additional columns. The service adds information the client may not have collected itself. [S06](#source-6)
+
+It does not fill in or correct the client’s names, addresses or other personally identifying fields; the documentation expressly rules that out. Its purpose is to append attributes, such as demographic information, to records that are already identified. This particular offering covers US-based customer data. It is not evidence of an identical service in France. [S06](#source-6)
+
+**Identity resolution** addresses a different problem. An email address in a customer database and an identifier in an advertising system may refer to the same person. A matching service tries to connect those representations. LiveRamp describes RampID as a pseudonymised identifier for linking information across systems, with its identity services operating at person or household level depending on the task. [S05](#source-5)
+
+Connecting two identifiers need not add a fact about someone’s interests. Adding an attribute need not give the buyer the entire source database from which it came. Both operations can be combined, but they should not be treated as interchangeable.
+
+Pseudonymisation removes or separates some directly identifying elements; it does not, by itself, establish that information is anonymous. The stated purpose of RampID is particularly relevant here: it preserves the ability to match representations across systems. LiveRamp also documents processing options within customers’ own computing environments. It would be inaccurate to describe all of these services as indiscriminate transfers of named customer files to a central server. [S05](#source-5) [S23](#source-23)
+
+An enrichment service needs to be assessed through the attributes it adds, their origin, their reliability and the uses permitted. A matching service requires scrutiny of its inputs and outputs, whether it resolves people or households, and its error rate. A product description does not measure those errors or verify the necessary permissions and, where required, upstream consent.
+
+## A listed destination is not permission for every use
+
+Experian’s terms make distribution conditional on the agreements and policies of the destination platform. That condition matters. For *Customer Match*, Google requires uploaded information to have been collected directly from customers in a **first-party** context. Experian’s terms refer to that policy for the Google destination. This requirement is specific to Customer Match; it does not describe all Google advertising products or every LiveRamp distribution route. [S01](#source-1) [S09](#source-9)
+
+A compatibility list cannot therefore establish that every named platform accepts any dataset bought from a third party. Technical connectivity, contractual scope and the eligibility of a particular dataset are separate questions. A reference to Google in commercial documentation proves neither that a campaign ran nor that Google’s rules were breached.
+
+LiveRamp’s data-buying documentation also distinguishes standard segments from segments built for a particular buyer. It says distribution alone does not trigger a charge: billing follows use at the destination under the applicable pricing model. [S07](#source-7)
+
+The buyer may be paying to use a selection in a campaign rather than to acquire a stand-alone, reusable copy of everything used to build it. That differs from enriching a file and returning it to the client. Delivery terms and licensing rights need to be read before describing a transaction as a database sale.
+
+There are published restrictions. LiveRamp’s marketplace policy prohibits some segment categories and confines others to specific arrangements. It also acknowledges that review cannot guarantee detection of every non-compliant segment and does not replace sellers’ own checks. These are documented limits on the offering, not an independent audit of every transaction. This policy also excludes data collected outside the United States: its scope should not be confused with that of Experian’s UK offering. [S08](#source-8)
+
+## The advertising chain does not identify every data recipient
+
+Real-time bidding, or [RTB](/en/glossary/rtb/), sends information to potential buyers so they can decide whether to bid. Receiving the request is not the same as buying the placement. The Mobilewalla case shows why that distinction matters. [S15](#source-15)
+
+In its final complaint dated 13 January 2025, the FTC said Mobilewalla retained information from bid requests even when it did not buy the advertising space. The regulator said the relevant exchanges’ terms prohibited that reuse. Mobilewalla disputed a number of the allegations when the settlement was first announced in December 2024, Reuters reported. The settlement whose final approval the FTC announced on 14 January 2025 prohibits collecting or retaining covered information accessed in those auctions for purposes other than participating in them. [S15](#source-15) [S16](#source-16) [S22](#source-22) [S24](#source-24)
+
+Those documents describe allegations and settlement obligations. They are not observations of Mobilewalla’s operations in September 2026.
+
+The mechanism is straightforward: information supplied to help evaluate a purchase can be retained without a purchase taking place. A map drawn solely from invoices for delivered ads would miss that recipient. This does not establish that every bidder retains the information it receives. It explains why buying ad inventory and gaining access to data need to be checked separately.
+
+The advertising industry has transparency tools of its own. **ads.txt** identifies authorised sellers of advertising inventory. **sellers.json** helps identify sellers and intermediaries. The **SupplyChain** object carried with a bid request represents the participants in the direct payment flow for the inventory. [S12](#source-12) [S13](#source-13)
+
+“Supply chain” can sound like a complete record of where the data went. The IAB Tech Lab’s documentation defines a narrower scope: systems paid a service fee but outside that payment flow may be excluded. The standards trace the business of selling placements. [S14](#source-14)
+
+**An advertising supply chain marked complete does not certify that every data recipient has been identified.** That conclusion follows from the standard’s scope. It does not, on its own, expose concealment: the tool was designed to answer a different question.
+
+<CommerceTracesChainFigure lang="en" figure={2} />
+
+## Gravy’s upstream suppliers are not all named
+
+The Gravy Analytics and Venntel case provides a view of a location-data business. According to the FTC’s complaint, the companies obtained information from suppliers that could themselves source it from other intermediaries, apps or the advertising market. The public document does not provide a named list that would allow every route to be traced back to its originating app. [S17](#source-17)
+
+The complaint then describes data moving from Gravy to Venntel. It assigns commercial customers to Gravy and public-sector customers, including government contractors, to Venntel. This is the FTC’s account of the business, not a collection of fully disclosed customer contracts. [S17](#source-17)
+
+Two lines on a map would mean different things. One would connect parent and subsidiary: the decision’s findings identify Venntel as wholly owned by Gravy. The other would represent the data transfer described in the complaint. Ownership alone would not establish the transfer. The alleged transfer would not establish its price or the existence of an intercompany invoice. [S17](#source-17)
+
+The final order was made public on 14 January 2025. The companies neither admitted nor denied the allegations, subject to the matters expressly accepted, including those necessary to establish the FTC’s jurisdiction. The order’s obligations are established; the complaint’s entire factual narrative did not thereby become admitted fact. [S17](#source-17) [S18](#source-18)
+
+Missing names must remain missing. The Mobilewalla and Gravy complaints examined for this instalment do not establish that Mobilewalla supplied Gravy. Joining them with an arrow would invent a transaction. The cases illuminate related mechanisms, not a single network whose missing connections can be filled in by inference.
+
+## What an intermediary reports as revenue
+
+Accounting offers another way to read the chain. For the **twelve months ended 31 March 2026**, LiveRamp reported worldwide revenue of **$812.9 million**, comprising **$614.4 million** in subscriptions and **$198.6 million** in *Marketplace and Other*. These are rounded US GAAP amounts from the annual filing submitted to the SEC on **21 May 2026**. They do not cover calendar 2026. Separately rounded components do not add up exactly to the reported total. [S10](#source-10) [S11](#source-11)
+
+The second category includes the marketplace, professional services and certain usage-based arrangements. It is not a stand-alone measure of data sales. More importantly, the accounting policy says LiveRamp recognises *Data Marketplace* and similar transactions **net of the amount owed to data providers**. Its obligation is to facilitate the transaction in return for a share of the gross fee. [S10](#source-10)
+
+A fictional example makes the distinction visible. A buyer pays 100 monetary units, of which 80 go to the supplier and 20 compensate the platform. With that kind of net presentation, the platform reports revenue of 20. That is not its profit: it still has expenses to cover. Adding the 100 invoice, the supplier’s 80 and the platform’s 20 to claim 200 in spending by the final buyer would count the same flow twice.
+
+These proportions are not LiveRamp’s disclosed economics. They cannot be used to reconstruct gross marketplace volume from *Marketplace and Other*. They simply explain why an intermediary’s reported revenue can be much smaller than the amount passing through it, without revealing the value of an individual person or profile.
+
+The comparison above uses the full financial year. LiveRamp subsequently reported results for the quarter ended 30 June on 5 August 2026. That release still described the announced Publicis acquisition as pending, expected to close before the end of 2026 and subject to conditions. An acquisition announcement establishes neither completion at that date nor a new transfer of data between customers. [S25](#source-25)
+
+The economic distinction becomes clearer: payment may buy access to software, additional information or the ability to use that information elsewhere. The invoice, licence and accounting policy need to be read together.
+
+## Deezer and Mobius: the boundary of a service
+
+Deezer’s relationship with Mobius belongs to a different category. The CNIL established that their contract operated from **1 December 2016 to 1 December 2020**. Mobius provided its Optimove platform to analyse Deezer customer information and recommend marketing actions. For that contractual relationship, the authority found Mobius acted as Deezer’s processor. [S19](#source-19)
+
+The decision of **11 December 2025**, announced on **19 December**, also found processing outside Deezer’s instructions: data had been copied to improve Mobius’s own services. The company argued that employees had made an unauthorised copy and that the use fell within its service relationship. The CNIL’s restricted committee rejected that justification and found a breach of Article 29 of the GDPR. [S19](#source-19) [S20](#source-20)
+
+For the map, the distinction is specific. The initial transfer served a contracted task; the disputed copy supported a purpose of the provider’s own. The decision does not establish a sale by Mobius to a broker. This processing case should not be turned into an imagined link in Gravy’s supply chain.
+
+Under EU data protection law, a **controller** determines the purposes and essential means of processing. A **processor** works on its behalf and under its instructions. An organisation can occupy one role for an activity and the other for a different activity. Contract wording helps identify the roles but does not replace examination of what actually happens. [S04](#source-4)
+
+Article 28 also provides that a processor which, in breach of the regulation, determines the purposes and means of processing is treated as a controller for that processing. That is a general rule. It should not be misreported as a reclassification made in the Mobius decision, which sanctioned the company for breaches of its obligations as a processor. [S21](#source-21) [S19](#source-19)
+
+For the customer, the distinction has practical consequences. Allowing a provider to engage another provider is not permission to resell data to an independent customer. The rules on subprocessors govern delegated work; they do not create a general right to reuse the information. [S21](#source-21)
+
+<CommerceTracesChainFigure lang="en" figure={3} />
+
+## A map has to preserve gaps in the evidence
+
+The documents reveal several ways to earn revenue from the same categories of information. Software facilitates a task, an enrichment service adds an attribute, identity services link records, a marketplace arranges access and an advertising platform delivers a campaign. Some cases reveal further uses outside the agreed service. Those differences determine both the product being billed and the controls that need to be examined. [S03](#source-3) [S05](#source-5) [S06](#source-6) [S07](#source-7) [S10](#source-10) [S19](#source-19)
+
+The map published here is deliberately disconnected. It does not track a person’s complete journey, and its links have different evidential status. An announced commercial relationship is less specific than a contractual instruction; neither proves execution. A regulator’s allegation is different from a finding in a decision.
+
+An additional intermediary does not automatically make an operation unlawful or less secure. Specialisation may help, access to raw information can be restricted, and a licence can confine use to a campaign. The documented activation services and restrictions show that these arrangements exist in commercial offerings. Whether they protect people in practice depends on the rights granted and how those rights are enforced. [S01](#source-1) [S07](#source-7) [S08](#source-8)
+
+**At each step, the decisive question is whether the intermediary is performing a task for its client or gaining the ability to exploit the information for other business.** A collection of company logos cannot answer that. Each operation needs a date, a legal entity, a defined dataset, a permitted use and, where the evidence is available, a financial consideration. That is the level at which the trade in our traces becomes verifiable.
+
+### Scope of the investigation
+
+Documentary research completed as of **17 September 2026**. Commercial offerings and policies describe the published services at the time of consultation unless a historical version is expressly identified. FTC records document allegations for their respective periods and the adopted settlements, not current technical compliance. Financial figures cover the stated accounting period. No leaked dataset, customer account or application traffic was used for this instalment. No field test is presented as completed. Individual prices, campaign orders and several upstream suppliers remain undocumented in the public materials examined.
+
+<section aria-labelledby="traces02-en-sources">
+<h2 id="traces02-en-sources">Sources and documents</h2>
+<p>Direct links to the materials used. Undated pages were consulted on 17 September 2026; a document’s version date is not evidence of a transaction on that date.</p>
+<p id="source-1"><a href="https://www.experian.co.uk/content/dam/marketing/uki/uk/en/assets/marketing-services/documents/liveramp-actionable-audience-special-terms-dec_24.pdf">S01 · Experian · LiveRamp Actionable Audience Special Terms</a>. 2024-12.</p>
+<p id="source-2"><a href="https://partner-directory.liveramp.com/partners/experian">S02 · LiveRamp · LiveRamp partner directory: Experian</a>. undated page.</p>
+<p id="source-3"><a href="https://www.cnil.fr/fr/applications-mobiles-comment-integrer-des-sdk-et-respecter-la-vie-privee-des-utilisateurs">S03 · CNIL · CNIL guidance on SDK integration and responsibilities</a>. 2025-01-21.</p>
+<p id="source-4"><a href="https://www.edpb.europa.eu/system/files/documents/2023-10/EDPB_guidelines_202007_controllerprocessor_final_en.pdf">S04 · CEPD / EDPB · EDPB Guidelines 07/2020 on controllers and processors</a>. Adopted 2021-07-07; version 2.1 corrected 2022-09-20.</p>
+<p id="source-5"><a href="https://docs.liveramp.com/identity/en/rampid-identity-resolution.html">S05 · LiveRamp · RampID Identity Resolution</a>. Updated: 2026-06-12.</p>
+<p id="source-6"><a href="https://docs.liveramp.com/connect/en/offline-data-marketplace.html">S06 · LiveRamp · Third-Party Attribute Enrichment</a>. Updated: 2025-06-04.</p>
+<p id="source-7"><a href="https://docs.liveramp.com/connect/en/getting-started-with-data-buying.html">S07 · LiveRamp · Getting Started with Data Buying</a>. Updated: 2025-12-18.</p>
+<p id="source-8"><a href="https://docs.liveramp.com/connect/en/liveramp-s-data-marketplace-data-policy.html">S08 · LiveRamp · Data Marketplace Data Policy</a>. Updated: 2026-07-16.</p>
+<p id="source-9"><a href="https://support.google.com/adspolicy/answer/6299717">S09 · Google · Customer Match policies</a>. undated page.</p>
+<p id="source-10"><a href="https://www.sec.gov/Archives/edgar/data/733269/000073326926000025/ramp-20260331.htm">S10 · LiveRamp / SEC EDGAR · LiveRamp Form 10-K, year ended 31 March 2026</a>. 2026-05-21.</p>
+<p id="source-11"><a href="https://www.sec.gov/Archives/edgar/data/733269/000073326926000025/0000733269-26-000025-index.htm">S11 · SEC EDGAR · SEC filing index, accession 0000733269-26-000025</a>. 2026-05-21.</p>
+<p id="source-12"><a href="https://iabtechlab.com/sellers-json/">S12 · IAB Tech Lab · sellers.json Supply Chain Transparency</a>. undated page.</p>
+<p id="source-13"><a href="https://github.com/InteractiveAdvertisingBureau/openrtb/blob/master/supplychainobject.md">S13 · IAB Tech Lab · OpenRTB SupplyChain object</a>. undated page.</p>
+<p id="source-14"><a href="https://iabtechlab.com/wp-content/uploads/2019/07/FAQ-for-sellers.json_supplychain-object.pdf">S14 · IAB Tech Lab · FAQ for sellers.json and SupplyChain Object</a>. 2020-09.</p>
+<p id="source-15"><a href="https://www.ftc.gov/system/files/ftc_gov/pdf/Mobilewalla-Complaint.pdf">S15 · FTC · Mobilewalla: final complaint</a>. Issued 2025-01-13.</p>
+<p id="source-16"><a href="https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-finalizes-order-banning-mobilewalla-selling-sensitive-location-data">S16 · FTC · FTC announcement of final Mobilewalla settlement</a>. 2025-01-14.</p>
+<p id="source-17"><a href="https://www.ftc.gov/system/files/ftc_gov/pdf/212_3035_-_gravy_analytics_final_consent_package_without_signatures.pdf">S17 · FTC · Gravy Analytics and Venntel: final complaint and consent order, C-4810</a>. Issued 2025-01-13; published 2025-01-14.</p>
+<p id="source-18"><a href="https://www.ftc.gov/legal-library/browse/cases-proceedings/212-3035-gravy-analytics-inc-matter">S18 · FTC · FTC Gravy Analytics case record, 212-3035</a>. undated page.</p>
+<p id="source-19"><a href="https://www.legifrance.gouv.fr/cnil/id/CNILTEXT000053048614">S19 · CNIL / Légifrance · CNIL decision SAN-2025-014: Mobius Solutions</a>. Decision: 2025-12-11; announcement: 2025-12-19.</p>
+<p id="source-20"><a href="https://www.cnil.fr/fr/violation-de-donnees-sanction-dun-million-deuros-lencontre-de-la-societe-mobius-solutions-ltd">S20 · CNIL · CNIL announcement of the Mobius sanction</a>. 2025-12-19.</p>
+<p id="source-21"><a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre4">S21 · CNIL · GDPR Chapter IV, institutional reproduction</a>. undated page.</p>
+<p id="source-22"><a href="https://www.reuters.com/technology/cybersecurity/ftc-settles-with-data-brokers-that-sold-political-pregnancy-info-2024-12-03/">S22 · Reuters · Reuters: Mobilewalla response to the FTC allegations</a>. 2024-12-03.</p>
+<p id="source-23"><a href="https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles">S23 · CNIL · CNIL explanation of anonymisation and pseudonymisation</a>. 2020-05-19.</p>
+<p id="source-24"><a href="https://www.ftc.gov/system/files/ftc_gov/pdf/Mobilewalla-D%26O.pdf">S24 · FTC · Mobilewalla: final Decision and Order, C-4811</a>. Issued 2025-01-13; published 2025-01-14.</p>
+<p id="source-25"><a href="https://www.sec.gov/Archives/edgar/data/733269/000073326926000045/a2027q1pressreleaseforedgar.htm">S25 · LiveRamp / SEC EDGAR · First-quarter fiscal 2027 results and Publicis transaction update</a>. 2026-08-05.</p>
+</section>
