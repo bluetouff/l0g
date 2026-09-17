@@ -1,0 +1,12 @@
+---
+import { renderRetirementSequence } from '../lib/retirementSequenceView.mjs';
+import '../styles/retirement-sequence.css';
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+---
+<div set:html={renderRetirementSequence(lang)} />
+<script>
+  import { mountRetirementSequence } from '../lib/retirementSequenceClient.mjs';
+  mountRetirementSequence();
+  document.addEventListener('astro:page-load', () => mountRetirementSequence());
+</script>

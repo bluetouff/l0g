@@ -214,6 +214,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: 'var(--color-accent)',
     entries: [
+      { sigle: 'Risque de séquence', nom: 'Ordre des rendements et retraits du portefeuille', def: 'Risque lié au calendrier des rendements lorsqu’un portefeuille finance des retraits. Des pertes en début de décaissement peuvent imposer la vente de davantage de parts et réduire le capital qui bénéficiera d’une reprise. Deux séries ayant le même rendement composé peuvent alors financer des revenus différents. L’effet dépend de la règle de retrait et des autres ressources disponibles.', guide: '/posts/retraite-risque-sequence-rendements/' },
       { sigle: 'Unité de compte', nom: 'Support d’investissement d’un contrat d’assurance-vie', def: "Mode d’expression d’un engagement d’assurance dont la valeur en euros suit celle d’un support financier ou immobilier. L’assureur s’engage sur un nombre d’unités ; le risque de variation de leur valeur revient à l’assuré, sous réserve de garanties particulières du contrat. Le calendrier de paiement du rachat et la liquidité du fonds sous-jacent sont deux questions distinctes.", guide: '/posts/scpi-assurance-vie-banques-contagion/' },
       { sigle: 'Niveau 3 IFRS 9', nom: 'Actif financier déprécié pour risque de crédit', def: "Catégorie d’actifs financiers pour lesquels une dépréciation liée au risque de crédit est constatée. La part d’un portefeuille classée en niveau 3 mesure l’encours concerné ; elle ne donne pas le montant définitivement perdu. Les provisions, les garanties et les recouvrements doivent être examinés séparément.", guide: '/posts/scpi-assurance-vie-banques-contagion/' },
       { sigle: 'Levier AIFM', nom: 'Exposition rapportée à la valeur nette du fonds', def: "Mesure de l’exposition d’un fonds d’investissement alternatif rapportée à sa valeur nette d’inventaire. Les méthodes brute et de l’engagement comportent des retraitements propres : il faut identifier la méthode et le périmètre publiés. Une baisse de la valeur nette peut augmenter le ratio sans nouvel emprunt. Un dépassement du plafond du fonds doit être distingué d’une échéance bancaire impayée.", guide: '/posts/scpi-dette-cessions-refinancement/' },
@@ -606,7 +607,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-16';
+export const glossaryUpdatedIso = '2026-09-17';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -849,6 +850,11 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'risque-de-sequence': {
+    intuition: 'L’ordre des rendements compte dès que des retraits changent le montant qui reste investi.',
+    articles: [{ label: 'Retraite : le piège du rendement moyen', href: '/posts/retraite-risque-sequence-rendements/', detail: 'Exemples fictifs et simulateur de décaissement.', kind: 'article' }],
+    sources: [{ label: 'Society of Actuaries, 2023', href: 'https://www.soa.org/globalassets/assets/files/resources/research-report/2023/ret-income-strat-de.pdf#page=73', detail: 'Section A.2 : risques de marché et de séquence.', kind: 'source' }],
+  },
   'reverse-yankee': {
     intuition: 'La devise d’émission change les conditions de financement et les investisseurs accessibles ; elle ne change pas l’identité du débiteur.',
     articles: [{ label: 'Dette IA et concurrence pour le crédit', href: '/posts/dette-ia-concurrence-etats-taux-credit/', detail: 'Financement en euros, couverture et arbitrages des investisseurs.', kind: 'article' }],

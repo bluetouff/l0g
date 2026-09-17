@@ -203,6 +203,16 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'risque-de-sequence', sigle: 'Sequence risk', nom: 'Sequence-of-returns risk',
+    def: 'The risk arising from the timing of investment returns when a portfolio funds withdrawals. Early losses can force the sale of more units, leaving less capital to participate in a recovery. Two sequences with the same compound return may therefore support different incomes. The effect depends on the withdrawal rule and other available resources.',
+    guide: '/en/analysis/retirement-sequence-of-returns-risk/', ...privateCreditSection,
+    atlas: {
+      intuition: 'The order of returns matters when withdrawals change how much remains invested.',
+      articles: [{ label: 'Retirement and the average-return trap', href: '/en/analysis/retirement-sequence-of-returns-risk/', detail: 'Fictional examples and an interactive withdrawal model.', kind: 'article' }],
+      sources: [{ label: 'Society of Actuaries, 2023', href: 'https://www.soa.org/globalassets/assets/files/resources/research-report/2023/ret-income-strat-de.pdf#page=73', detail: 'Section A.2: market and sequence-of-returns risks.', kind: 'source' }],
+    },
+  },
+  {
     slug: 'reverse-yankee', sigle: 'Reverse Yankee', nom: 'US corporate bond issued in a foreign currency',
     def: 'A bond issued by a US company in a foreign currency, including the euro. Its funding cost depends on the reference rate, credit spread and any currency hedge. A lower coupon in another currency does not by itself establish a funding saving.',
     guide: '/en/analysis/ai-debt-sovereign-borrowers-credit-costs/', ...macroSection,

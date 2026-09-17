@@ -28,9 +28,17 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 533, 'Le corpus doit conserver ses 533 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 86, 'Le graphe Atlas doit conserver ses 86 nœuds');
+assert.equal(glossaryEntries.length, 534, 'Le corpus doit conserver ses 534 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 87, 'Le graphe Atlas doit conserver ses 87 nœuds');
 assert.equal(glossaryAtlasEdgeCount, 382, 'Le graphe Atlas doit conserver ses 382 relations');
+for (const [entry, href] of [
+  [glossaryEntries.find(item => item.slug === 'risque-de-sequence'), '/posts/retraite-risque-sequence-rendements/'],
+  [glossaryAtlasEnBySlug.get('risque-de-sequence'), '/en/analysis/retirement-sequence-of-returns-risk/'],
+]) {
+  assert(entry); assert.equal(entry.guide, href);
+  assert.deepEqual(entry.atlas.articles.map(item => item.href), [href]);
+  assert.deepEqual(entry.atlas.sources.map(item => item.href), ['https://www.soa.org/globalassets/assets/files/resources/research-report/2023/ret-income-strat-de.pdf#page=73']);
+}
 for (const [entry, href] of [
   [glossaryEntries.find((item) => item.slug === 'reverse-yankee'), '/posts/dette-ia-concurrence-etats-taux-credit/'],
   [glossaryAtlasEnBySlug.get('reverse-yankee'), '/en/analysis/ai-debt-sovereign-borrowers-credit-costs/'],

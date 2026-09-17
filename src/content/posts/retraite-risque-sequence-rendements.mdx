@@ -1,0 +1,213 @@
+---
+title: 'Retraite : le piège du rendement moyen'
+seoTitle: 'Retraite : comprendre le risque de séquence des rendements | l0g'
+ogTitle: 'Retraite : le piège du rendement moyen'
+description: 'Pourquoi l’ordre des hausses et des baisses change la durée de votre épargne à la retraite. Exemples chiffrés, sources et simulateur de retraits.'
+pubDate: '2026-09-17T09:06:00+02:00'
+updatedDate: '2026-09-17T09:06:00+02:00'
+tags: ['retraite', 'épargne', 'pédagogie financière', 'risque', 'capitalisation']
+draft: false
+ogImage: '/illustrations/news/retraite-sequence-v1.jpg'
+quickTake:
+  fact: 'Dans notre exemple fictif, deux portefeuilles de 200 000 euros finissent à 177 500 et 182 000 euros avec les mêmes rendements dans un ordre différent.'
+  importance: 'Un rendement de long terme ne suffit pas à déterminer le revenu régulier qu’un portefeuille pourra financer.'
+  uncertainty: 'Les scénarios sont fictifs. Ils isolent le mécanisme, sans estimer une probabilité de perte ni un taux de retrait conseillé.'
+---
+
+import RetirementSequence from '../../components/RetirementSequence.astro';
+import RetirementSequenceFigure from '../../components/RetirementSequenceFigure.astro';
+
+*Deux personnes partent à la retraite avec la même épargne. Elles prévoient les mêmes retraits et leurs placements connaissent exactement les mêmes performances annuelles. Pourtant, l’une peut manquer d’argent bien avant l’autre. La différence tient à l’ordre des bonnes et des mauvaises années. Dès qu’un capital doit payer des dépenses régulières, la moyenne des rendements ne raconte plus toute l’histoire.*
+
+Imaginons une retraite dont la pension couvre une partie des dépenses. Le complément doit venir d’une épargne investie. Le projet paraît simple : conserver ses placements, prélever chaque année la somme nécessaire et laisser le reste travailler.
+
+Le problème commence lorsqu’on transforme un rendement moyen en promesse de revenu. Une performance calculée sur vingt ans n’arrive pas sous la forme de vingt versements identiques. Or le retraité, lui, doit financer ses dépenses pendant les mauvaises années aussi.
+
+Cette interaction entre le calendrier des performances et les retraits porte un nom : **le risque de séquence des rendements**. Le GAO, organisme américain d’audit public, l’expliquait déjà dans son rapport de 2011 consacré aux revenus de retraite. Ce n’est donc ni un risque nouveau ni une prévision de krach. C’est une propriété du fonctionnement d’un portefeuille dans lequel on prélève de l’argent. [GAO, passage précédant la figure 2][s1].
+
+## 200 000 euros, deux années, deux résultats
+
+Prenons deux portefeuilles fictifs de **200 000 euros**. Chacun doit verser **10 000 euros à la fin de chaque année**. On retire cette somme après la performance annuelle. Les frais, les impôts et l’inflation sont écartés pour commencer.
+
+Dans le premier scénario, le placement perd 20 %, puis gagne 25 %. Dans le second, il gagne 25 %, puis perd 20 %.
+
+| Étape | A : baisse puis hausse | B : hausse puis baisse |
+| :--- | ---: | ---: |
+| Capital de départ | 200 000 € | 200 000 € |
+| Rendement de la première année | −20 % | +25 % |
+| Capital avant le premier retrait | 160 000 € | 250 000 € |
+| Capital après le retrait de 10 000 € | 150 000 € | 240 000 € |
+| Rendement de la deuxième année | +25 % | −20 % |
+| Capital avant le second retrait | 187 500 € | 192 000 € |
+| **Capital après le second retrait** | **177 500 €** | **182 000 €** |
+
+*Source : calculs l0g, scénario fictif de deux années. Euros nominaux ; retraits en fin d’année ; aucun apport, frais, impôt ou effet d’inflation. Les 10 000 euros représentent 5 % du capital initial : ce choix sert la démonstration, pas une recommandation.*
+
+**L’ordre des rendements crée un écart de 4 500 euros.** Les deux personnes ont pourtant reçu 20 000 euros au total.
+
+Sans aucun retrait, elles auraient chacune retrouvé exactement leur capital initial : 200 000 × 0,80 × 1,25 = 200 000. Dans l’autre sens, le calcul donne le même résultat.
+
+La baisse de 20 % et la hausse de 25 % ne sont pas choisies au hasard. Elles se compensent exactement lorsqu’aucun argent ne sort. Le problème observé ne vient donc pas d’un rebond insuffisant du placement.
+
+## Les parts vendues ne participent plus au rebond
+
+Pour voir le mécanisme, remplaçons les euros par des parts. Au départ, chaque personne possède **2 000 parts à 100 euros**. C’est une autre représentation du même exemple, sans distribution séparée de dividendes.
+
+Après une baisse de 20 %, une part vaut 80 euros. Obtenir 10 000 euros oblige à en vendre **125**. Il en reste 1 875. Lorsque le prix remonte à 100 euros, ces parts valent 187 500 euros, avant le second retrait.
+
+Dans l’autre scénario, la part atteint d’abord 125 euros. Le même retrait de 10 000 euros ne nécessite que **80 parts**. Il en reste 1 920. Après la baisse, le prix revient lui aussi à 100 euros, mais le portefeuille vaut 192 000 euros.
+
+Les 45 parts de différence expliquent les 4 500 euros d’écart. La première personne n’a pas paniqué. Elle n’a pas vendu tout son portefeuille au plus mauvais moment. Elle a simplement financé la dépense prévue.
+
+**Attendre le retour des cours à leur niveau de départ ne reconstitue pas les parts déjà vendues.** Cela ne signifie pas qu’un portefeuille amputé ne peut jamais récupérer sa valeur : des gains supplémentaires pourraient y contribuer. Mais le seul retour du prix initial ne suffit plus.
+
+## Rendement composé et revenu disponible
+
+Notre exemple contient un premier piège arithmétique. La moyenne simple de −20 % et +25 % est +2,5 %. Pourtant, le placement laissé intact n’a rien gagné sur les deux années.
+
+La raison est que les pourcentages s’appliquent à des bases différentes. On perd 20 % de 200 000 euros, puis on gagne 25 % de 160 000 euros. Le **rendement annualisé composé**, qui tient compte de cette succession de multiplications, est ici de **0 %**.
+
+Employer cette mesure correcte est indispensable. Cela ne supprime toutefois pas le risque de séquence. Les deux scénarios ont la même moyenne simple, le même rendement composé et les mêmes performances individuelles. Leurs capitaux finaux diffèrent quand même, parce que les retraits s’intercalent entre les rendements.
+
+La moyenne décrit le placement sans les flux personnels. Elle ne suffit pas à décrire l’expérience d’une personne qui doit en tirer un revenu. Dans notre modèle, chaque année se résume ainsi :
+
+**Capital restant = capital précédent × (1 + rendement) − retrait.**
+
+Les multiplications seules peuvent changer d’ordre sans modifier le résultat. Dès que l’on insère des retraits entre elles, cette propriété disparaît.
+
+## Trente ans avec les mêmes performances
+
+Deux années rendent le calcul transparent. Pour observer son effet sur la durée, nous avons construit une série **entièrement fictive de trente rendements annuels**. Elle commence par −20 % et −10 %. Le scénario B reprend exactement les mêmes valeurs dans l’ordre inverse. La série complète est visible dans le simulateur et téléchargeable avec les calculs.
+
+Le capital initial reste de 200 000 euros. Le premier retrait prévu est de 10 000 euros, puis ce budget augmente de **2 % par an**, au titre d’une inflation supposée constante. Les retraits interviennent toujours en fin d’année. Aucun frais ni impôt n’est appliqué dans cette illustration.
+
+Les deux séries ont un rendement annualisé composé nominal de **6,89 %**, avant retraits. Malgré cela, les trajectoires s’écartent fortement.
+
+<RetirementSequenceFigure lang="fr" kind="capital" />
+
+Dans A, **le retrait de la 27e année ne peut plus être payé intégralement**. Le portefeuille est alors épuisé. Dans B, les trente retraits prévus sont financés et il reste environ **550 026 euros nominaux** au terme du scénario, soit **303 654 euros en pouvoir d’achat du départ** avec l’hypothèse d’inflation retenue.
+
+À partir de l’épuisement du portefeuille A, les sommes effectivement reçues ne sont évidemment plus identiques. Les deux scénarios partagent le même **programme de retraits**, pas une capacité illimitée à l’exécuter. Le simulateur plafonne chaque paiement à l’argent disponible ; il n’invente ni découvert ni pension de remplacement.
+
+Cet écart spectaculaire n’est pas une estimation de risque pour un épargnant réel. La série a été construite pour isoler le rôle du calendrier, avec deux pertes initiales dans A et de nombreuses années positives ensuite. Elle n’est ni un historique de marché, ni un échantillon représentatif, ni une distribution de probabilités. **6,89 % n’est pas un rendement attendu pour les prochaines décennies.**
+
+L’intérêt de l’exercice est plus précis : même en connaissant à l’avance le rendement composé de l’ensemble de la période, on ne connaîtrait pas encore le revenu que le portefeuille peut soutenir.
+
+<RetirementSequence lang="fr" />
+
+*Le bouton « Exemple sur 2 ans » reproduit le premier tableau. Passer les retraits à zéro permet de vérifier que les capitaux finaux redeviennent identiques. Les exportations contiennent les données de chaque année, y compris les retraits effectivement payés et les budgets non couverts.*
+
+## Pourquoi le début de la retraite compte autant
+
+Une perte précoce intervient alors qu’il reste potentiellement beaucoup de retraits à financer. Elle peut réduire la base investie longtemps avant les dernières dépenses. Les prélèvements suivants consomment alors une fraction plus importante du patrimoine restant.
+
+C’est ce cumul que décrit l’annexe sur le risque de séquence d’une étude publiée par le Society of Actuaries Research Institute en janvier 2023. Elle souligne notamment le problème des retraits fixes en pouvoir d’achat, qui pèsent plus lourd après une baisse. [Butt, Khemka, Lim et Warren, annexe A.2, pages 73 et 74][s2].
+
+Cela n’établit pas une frontière après laquelle la retraite serait financièrement sécurisée. Une baisse tardive reste dangereuse si le capital est déjà faible ou les dépenses élevées. Dans son étude originale de 1994, William Bengen insistait aussi sur la capacité d’épisodes défavorables à affecter des retraites commencées bien auparavant. [Bengen, discussion des scénarios historiques, page 4 de la réédition][s3].
+
+Le raisonnement concerne donc le calendrier des **besoins de financement**, pas seulement une date administrative de départ à la retraite.
+
+## L’inflation change le montant à retirer
+
+Un retrait constant de 10 000 euros est facile à suivre. Mais son pouvoir d’achat diminue si les prix augmentent. Pour préserver celui du premier retrait avec une inflation hypothétique de 2 % par an, le **21e retrait** doit atteindre environ **14 859 euros** : vingt revalorisations séparent le premier du vingt-et-unième.
+
+Après une baisse du portefeuille, le budget indexé peut donc continuer à monter tandis que l’épargne disponible diminue. Le ratio entre la somme à prélever et le capital restant se dégrade des deux côtés.
+
+Le simulateur distingue les euros nominaux, qui correspondent aux montants affichés sur le compte, des euros du départ, qui corrigent les capitaux finaux de l’inflation supposée. Il ne mélange pas un rendement nominal avec des dépenses artificiellement figées en pouvoir d’achat.
+
+Les frais modifient également la trajectoire. Dans l’outil, un taux annuel optionnel est prélevé après le rendement et avant le retrait. Avec un rendement brut fictif de 5 % et des frais de 1 %, le facteur net est **1,05 × 0,99**, soit **3,95 %** de rendement net, et non exactement 4 %. Cette convention pédagogique ne reproduit pas tous les modes de facturation des produits réels.
+
+## Les hypothèses historiques derrière la règle des 4 %
+
+L’étude de Bengen, publiée en octobre 1994 puis rééditée en 2004, est l’une des origines de la « règle des 4 % ». Elle examinait des retraits appliqués à des portefeuilles d’actions et d’obligations américaines, à partir de données historiques. Son repère de 4 % était lié à un objectif d’au moins trente années de financement dans les scénarios étudiés. [Bengen, pages 3 et 5 de la réédition][s3].
+
+Le chiffre décrit un **retrait initial**, ensuite ajusté à l’inflation. Il ne signifie pas que le placement rapporte 4 % garantis. Il ne signifie pas non plus qu’on retire chaque année 4 % du capital restant. Scott, Sharpe et Watson explicitent cette distinction dans leur analyse de ces stratégies. [Manuscrit d’avril 2008, pages 2 et 3][s4].
+
+Avec 200 000 euros, 4 % représentent 8 000 euros au premier retrait. Si l’inflation retenue est de 2 %, le suivant serait de 8 160 euros, quelle que soit la valeur du portefeuille, tant que celui-ci permet le paiement.
+
+Un résultat obtenu sur des données américaines ne suffit pas à déterminer le budget d’un ménage en France. Les placements, la devise des dépenses, les coûts, la fiscalité et la durée à financer doivent être précisés. Une règle historique ne devient pas une garantie contractuelle lorsqu’on remplace le symbole du dollar par celui de l’euro.
+
+## Retirer un pourcentage protège autrement
+
+Il existe une manière simple d’éviter qu’un retrait fixe ne consomme une part croissante du portefeuille : retirer chaque année **la même fraction de sa valeur disponible**, après le rendement. Mais le revenu reçu varie alors avec cette valeur.
+
+Reprenons nos deux années, sans inflation ni frais, et remplaçons les 10 000 euros fixes par un retrait annuel de **5 % du capital disponible**.
+
+Après la baisse initiale du scénario A, 5 % de 160 000 euros ne représentent plus que **8 000 euros**. Dans B, 5 % de 250 000 euros donnent **12 500 euros**. La deuxième année, le retrait est de 9 500 euros dans les deux cas.
+
+<RetirementSequenceFigure lang="fr" kind="income" />
+
+Les deux portefeuilles terminent alors avec exactement **180 500 euros**. Cette égalité n’est pas un hasard : chaque année multiplie le capital par le rendement du placement, puis par 0,95. Dans ce modèle précis, ces facteurs peuvent de nouveau changer d’ordre sans modifier le capital final.
+
+Mais A n’a versé que **17 500 euros**, contre **22 000 euros** pour B. Le risque lié au calendrier se retrouve dans les revenus effectivement disponibles. Un solde final rassurant ne prouve pas que les dépenses ont été financées.
+
+Tant que les rendements restent strictement supérieurs à −100 % et la fraction retirée inférieure à 100 %, ce modèle idéal ne tombe pas exactement à zéro en un nombre fini d’années. Il peut néanmoins produire un revenu devenu insuffisant bien avant cela. La différence entre « ne pas épuiser mathématiquement le compte » et « pouvoir vivre des versements » est essentielle.
+
+## Les protections ont des contreparties
+
+**Une réserve disponible permet de différer certaines ventes.** Si elle finance les dépenses pendant une baisse, moins de parts du portefeuille risqué doivent être cédées à ce moment-là. Mais cette réserve fait partie du patrimoine : comparer 200 000 euros entièrement investis à 200 000 euros investis auxquels on aurait ajouté 20 000 euros de liquidités fausserait l’exercice. À capital total égal, il faut regarder aussi le placement de la réserve, son rendement et les conditions de sa reconstitution. L’arithmétique ne fournit aucune durée universellement suffisante.
+
+**Une allocation moins exposée aux fluctuations peut atténuer certains chocs.** La gestion à horizon cherche justement à réduire progressivement le risque à l’approche de la retraite. L’AMF rappelle toutefois que cette gestion n’offre pas, par elle-même, une garantie du capital. Un calendrier de désensibilisation ne vaut pas engagement de verser un revenu déterminé. [AMF, fiche du 25 août 2020, section sur l’âge de départ][s5].
+
+**Une rente viagère contractualise un revenu plutôt qu’un programme de ventes.** Pour la part concernée, la personne n’a plus à vendre elle-même des actifs chaque année. En contrepartie, une rente immédiate classique réduit l’accès au capital converti ; les garanties pour les proches, l’indexation et les autres options dépendent du contrat. Les engagements dépendent aussi de la capacité de l’assureur à les honorer, comme le rappelle Investor.gov, le site pédagogique de la SEC. [Investor.gov, présentation générale des rentes][s8]. Le GAO détaille ces compromis, notamment la moindre disponibilité du capital pour une dépense imprévue. [GAO, présentation des rentes immédiates et annexe V][s1].
+
+Aucune de ces approches ne permet de conserver automatiquement le revenu maximal, toute la liquidité, une protection intégrale contre l’inflation et l’absence de risque.
+
+## Rachats programmés et revenu viager
+
+La différence est particulièrement utile pour lire une proposition commerciale. Selon ABE Infoservice, les contrats d’assurance-vie prévoient généralement, sous conditions, des rachats partiels programmés. Ils automatisent des retraits d’épargne. Les unités de compte restent, quant à elles, exposées à la variation de valeur des supports financiers. [ABE Infoservice, sections « Le rachat » et « La valorisation des contrats en unités de compte »][s6].
+
+Que le virement arrive tous les mois ne permet donc pas, à lui seul, de conclure que le revenu sera payable toute la vie. Il faut identifier l’engagement réel : un assureur promet-il une prestation contractuelle, ou un dispositif vend-il périodiquement une partie du capital ?
+
+Le contenant ne suffit pas davantage. L’AMF distingue, dans l’assurance-vie, les supports en euros assortis d’une garantie selon les conditions du contrat et les unités de compte dont le capital n’est pas garanti. Il serait trompeur d’appliquer indistinctement notre scénario de marché à tout contrat d’assurance-vie ou à toute épargne retraite. [AMF, présentation des supports, 6 avril 2022][s7].
+
+## Le chiffre à regarder avant le rendement
+
+Pour un ménage, la question de départ est la somme que le portefeuille doit réellement fournir, après les autres revenus.
+
+Dans un dernier exemple fictif, un budget annuel de 36 000 euros et des pensions de 30 000 euros laissent **6 000 euros** à financer. Avec 200 000 euros d’épargne mobilisable, cela représente **3 %** du capital initial. Si les pensions sont de 24 000 euros, le complément passe à **12 000 euros**, soit **6 %**. Les montants sont supposés comparables, nets pour le budget du ménage ; les conséquences fiscales des retraits ne sont pas modélisées.
+
+Le portefeuille peut être identique. La contrainte ne l’est pas. De même, une baisse du budget discrétionnaire n’a pas les mêmes conséquences qu’une baisse des sommes nécessaires au logement ou à l’alimentation.
+
+Comprendre le risque de séquence ne commande donc pas de renoncer à investir. Cela oblige à relier les performances aux dépenses, aux revenus déjà assurés et à la marge d’ajustement du ménage. **Pour financer une retraite, le rendement moyen doit être accompagné d’un calendrier de retraits et d’un examen des années défavorables.** La promesse à vérifier porte sur un revenu disponible dans le temps, pas seulement sur un pourcentage au bout d’une courbe.
+
+Pour approfondir : la définition du [risque de séquence](/glossaire/risque-de-sequence/), notre [guide de la volatilité](/guides/lire-la-volatilite-vix-move/) et celui de [l’inflation mesurée par les prix à la consommation](/guides/lire-le-cpi-inflation-us/).
+
+## Sources
+
+Documents consultés le **17 septembre 2026**. Les dates ci-dessous sont celles des publications, et non celles des scénarios l0g, qui sont sans période historique de référence.
+
+**[1] GAO**, *Retirement Income: Ensuring Income throughout Retirement Requires Difficult Choices*, GAO-11-400. Rapport daté du **7 juin 2011**, rendu public le **1er juillet 2011**. Localisateurs : passage précédant la figure 2 pour la séquence ; présentation des rentes immédiates et annexe V pour leurs contreparties. [Notice officielle][s1notice] ; [texte accessible][s1]. Aucune statistique démographique de 2011 n’est transposée à 2026.
+
+**[2] Adam Butt, Gaurav Khemka, William Lim et Geoff Warren**, *Primer on Retirement Income Strategy Design and Evaluation*, Society of Actuaries Research Institute, **janvier 2023**. Annexe **A.2**, pages imprimées **73 et 74**. [Étude][s2]. Les conclusions sont celles des auteurs ; nous ne reprenons ni leur série de rendements ni leurs probabilités.
+
+**[3] William P. Bengen**, *Determining Withdrawal Rates Using Historical Data*, *Journal of Financial Planning*, **octobre 1994**, réédition de **mars 2004** hébergée par la Financial Planning Association. Pages **3 à 5** du PDF pour les portefeuilles, les épisodes défavorables et le retrait initial. [Article original réédité][s3]. Il s’agit d’une étude historique américaine, pas d’une norme de retrait française actuelle.
+
+**[4] Jason S. Scott, William F. Sharpe et John G. Watson**, *The 4% Rule: At What Price?*, manuscrit daté d’**avril 2008**, hébergé à Stanford. Pages **2 et 3** : définition des retraits constants en termes réels et financement par des actifs volatils. [Manuscrit][s4]. Les affiliations à Financial Engines figurent dans le document ; aucun résultat commercial ni chiffrage d’inefficacité n’est repris ici.
+
+**[5] AMF**, *Plan d’épargne retraite : comprendre la gestion pilotée à horizon*, **25 août 2020**, section « L’âge de départ en retraite ». [Fiche officielle][s5]. Citée pour le mécanisme et l’absence de garantie, pas pour les anciens seuils réglementaires présentés dans le tableau.
+
+**[6] ABE Infoservice**, *Que faut-il savoir si vous avez conclu un contrat d’assurance vie ?*, date de publication non affichée dans le contenu consulté. Sections « Le rachat » et « La valorisation des contrats en unités de compte ». [Fiche officielle][s6].
+
+**[7] AMF**, *Investir dans une assurance-vie*, **6 avril 2022**. Section « Quel type de support choisir pour votre assurance-vie ? ». [Fiche officielle][s7]. Les conditions exactes de garantie restent celles du contrat.
+
+**[8] SEC, Investor.gov**, *Annuities*, date de publication non affichée dans le contenu consulté. Section « What are annuities? », sur les engagements et la capacité de paiement de l’assureur. [Fiche officielle][s8]. Les dispositions fiscales et juridiques américaines de cette page ne sont pas transposées à la France.
+
+**Calculs et données l0g** : [série fictive et hypothèses JSON](/data/retraite-sequence/scenarios.json) ; [trajectoires sur trente ans en CSV](/data/retraite-sequence/thirty-years.csv) ; [comparaisons sur deux ans en CSV](/data/retraite-sequence/two-years.csv) ; [version à retraits proportionnels](/data/retraite-sequence/proportional-two-years.csv). Le moteur du simulateur applique les mêmes formules que les figures.
+
+## Limites
+
+Tous les montants illustratifs résultent de scénarios fictifs. Ils ne représentent aucun placement, aucune population de retraités, aucun historique de rendement et aucune recommandation personnalisée. Les rendements sont nominaux et totaux, dividendes compris. Aucun apport ultérieur n’est modélisé. Les retraits ont lieu annuellement, après le rendement et les frais éventuels ; des retraits mensuels modifieraient les chiffres.
+
+Dans le scénario indexé, le premier budget est de 10 000 euros à la fin de l’année 1 ; les revalorisations commencent au deuxième retrait. Les capitaux exprimés en euros du départ sont déflatés sur toute la durée écoulée. Les sommes de retraits sont nominales et non actualisées. La fiscalité, les changements d’allocation, les garanties de produits, la mortalité et les revenus extérieurs au portefeuille sont exclus. La série inversée ne produit pas une probabilité de réussite. La pertinence d’une stratégie réelle dépend notamment des dépenses incompressibles, des autres ressources et des contrats détenus.
+
+[s1]: https://www.gao.gov/assets/a319390.html
+[s1notice]: https://www.gao.gov/products/gao-11-400
+[s2]: https://www.soa.org/globalassets/assets/files/resources/research-report/2023/ret-income-strat-de.pdf#page=73
+[s3]: https://www.financialplanningassociation.org/sites/default/files/2021-04/MAR04%20Determining%20Withdrawal%20Rates%20Using%20Historical%20Data.pdf
+[s4]: https://web.stanford.edu/~wfsharpe/retecon/4percent.pdf
+[s5]: https://www.amf-france.org/fr/espace-epargnants/actualites-mises-en-garde/plan-depargne-retraite-comprendre-la-gestion-pilotee-horizon
+[s6]: https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-si-vous-avez-conclu-un-contrat-dassurance-vie
+[s7]: https://www.amf-france.org/fr/espace-epargnants/comprendre-les-produits-financiers/supports-dinvestissement/assurance-vie
+
+[s8]: https://www.investor.gov/introduction-investing/investing-basics/investment-products/annuities

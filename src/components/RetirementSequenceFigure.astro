@@ -1,0 +1,11 @@
+---
+import { renderRetirementFigure } from '../lib/retirementSequenceFigures.mjs';
+interface Props { lang?: 'fr' | 'en'; kind?: 'capital' | 'income'; }
+const { lang = 'fr', kind = 'capital' } = Astro.props;
+---
+<div set:html={renderRetirementFigure(lang,kind)} />
+<style is:global>
+  .rs-figure { margin: 2.5rem auto; width: 100%; max-width: 560px; padding-bottom: 1rem; }
+  .rs-figure-art > svg { display: block; width: 100%; height: auto; }
+  .rs-figure figcaption { font: 13px/1.65 system-ui,sans-serif; margin-top: 12px; color: inherit; }
+</style>

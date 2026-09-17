@@ -1,0 +1,211 @@
+---
+title: 'Retirement: the average-return trap'
+seoTitle: 'Retirement: sequence-of-returns risk explained | l0g'
+ogTitle: 'Same returns. Different retirement income.'
+description: 'Why the order of gains and losses changes how long retirement savings last. Worked examples, primary sources and an interactive withdrawal model.'
+pubDate: '2026-09-17T09:06:00+02:00'
+updatedDate: '2026-09-17T09:06:00+02:00'
+tags: ['retirement', 'savings', 'financial literacy', 'risk', 'investing']
+draft: false
+ogImage: '/illustrations/news/retraite-sequence-v1.jpg'
+sourceArticle: 'retraite-risque-sequence-rendements'
+sourceUpdatedDate: '2026-09-17T09:06:00+02:00'
+---
+
+import RetirementSequence from '../../components/RetirementSequence.astro';
+import RetirementSequenceFigure from '../../components/RetirementSequenceFigure.astro';
+
+*Two people retire with the same savings. They plan identical withdrawals and their investments experience exactly the same annual returns. Yet one can run short of money long before the other. What changes is the order of the good and bad years. Once a portfolio has to pay regular bills, its average return no longer tells the whole story.*
+
+Imagine a household whose pension covers part of its retirement spending. The balance has to come from invested savings. The plan sounds straightforward: keep the money invested, withdraw what is needed each year and leave the rest to grow.
+
+The difficulty begins when an average investment return is treated as a promise of income. A return measured over twenty years does not arrive in twenty equal instalments. The household still has expenses during the bad years.
+
+The interaction between the timing of returns and cash withdrawals is known as **sequence-of-returns risk**. The US Government Accountability Office described it in its 2011 report on retirement income. It is neither a newly discovered threat nor a prediction of a market crash. It is a feature of drawing money from a portfolio. [GAO, discussion preceding Figure 2][s1].
+
+## €200,000, two years, two outcomes
+
+Start with two fictional portfolios, each worth **€200,000**. Both must pay out **€10,000 at the end of every year**, after that year's investment return. For now, leave out fees, taxes and inflation.
+
+In scenario A, the investment falls 20% and then rises 25%. In B, it rises 25% and then falls 20%.
+
+| Step | A: loss, then gain | B: gain, then loss |
+| :--- | ---: | ---: |
+| Starting portfolio | €200,000 | €200,000 |
+| First-year return | −20% | +25% |
+| Before the first withdrawal | €160,000 | €250,000 |
+| After withdrawing €10,000 | €150,000 | €240,000 |
+| Second-year return | +25% | −20% |
+| Before the second withdrawal | €187,500 | €192,000 |
+| **After the second withdrawal** | **€177,500** | **€182,000** |
+
+*Source: l0g calculations, fictional two-year example. Nominal euros; year-end withdrawals; no contributions, fees, taxes or inflation. The €10,000 withdrawal equals 5% of starting wealth and is used for illustration, not as a recommendation.*
+
+**Changing the order creates a €4,500 difference.** Both people have received exactly €20,000.
+
+Without withdrawals, both would have ended with their original capital: €200,000 × 0.80 × 1.25 = €200,000. Reversing those multipliers gives the same answer.
+
+The 20% loss and 25% gain were chosen deliberately. They offset one another exactly when no money leaves the investment. The difference is not caused by an inadequate market recovery.
+
+## The units sold cannot join the recovery
+
+To make the mechanism visible, think in units rather than euros. Each person initially owns **2,000 units worth €100 each**. This is another representation of the same example, with no separate dividend distribution.
+
+After a 20% fall, each unit is worth €80. Raising €10,000 requires selling **125 units**, leaving 1,875. When the price recovers to €100, those remaining units are worth €187,500 before the second withdrawal.
+
+In scenario B, the unit price first rises to €125. The same €10,000 withdrawal requires selling only **80 units**, leaving 1,920. The subsequent fall also takes the price back to €100, but the portfolio is now worth €192,000.
+
+The missing 45 units explain the €4,500 gap. The first person did not panic. They did not liquidate their entire portfolio at the market low. They simply met a planned expense.
+
+**A recovery in the unit price does not replace units already sold.** Further gains could still rebuild the portfolio's value, so this is not a claim that recovery becomes impossible. Returning to the original price, however, is no longer enough.
+
+## Compound returns and spendable income
+
+There is a separate arithmetic trap in this example. The simple average of −20% and +25% is +2.5%. Yet an untouched investment earns nothing over the two years.
+
+Percentages apply to changing amounts. The investor loses 20% of €200,000, then gains 25% of €160,000. The **compound annual growth rate**, which captures this multiplication, is **0%**.
+
+Using that correct measure matters. It does not remove sequence risk. Both scenarios have the same arithmetic average, the same compound annual return and the same individual yearly returns. Their ending portfolios still differ because withdrawals occur between those returns.
+
+An average describes investment performance without the investor's personal cash flows. It does not fully describe the experience of someone drawing an income. Each year in our model follows a simple rule:
+
+**Remaining portfolio = previous portfolio × (1 + return) − withdrawal.**
+
+Multiplications alone can be rearranged without changing the answer. Inserting withdrawals between them removes that property.
+
+## Thirty years with the same returns
+
+Two years make the calculation transparent. To show how the effect can accumulate, we constructed an **entirely fictional series of thirty annual returns**. It begins with −20% and −10%. Scenario B uses exactly the same numbers in reverse order. The full series is visible in the calculator and available alongside the calculations.
+
+Starting wealth remains €200,000. The first planned withdrawal is €10,000. The budget then rises **2% a year**, representing an assumed constant inflation rate. Withdrawals still occur at year-end. This illustration applies no fees or taxes.
+
+Both return series have a nominal compound annual growth rate of **6.89%**, before withdrawals. Their portfolio paths nevertheless diverge sharply.
+
+<RetirementSequenceFigure lang="en" kind="capital" />
+
+In A, **the withdrawal in year 27 cannot be paid in full**. The portfolio is exhausted at that point. In B, all thirty planned withdrawals are paid and approximately **€550,026 in nominal assets** remain. Under the assumed inflation path, that is **€303,654 in starting-date purchasing power**.
+
+Once A runs out of assets, the amounts actually paid are no longer identical. The two scenarios share a **withdrawal schedule**, not an unlimited ability to fulfil it. The calculator caps every payment at available funds. It does not manufacture an overdraft or a replacement pension.
+
+This striking difference is not a risk estimate for a real investor. The series was designed to isolate timing, with two initial losses in A followed by many positive years. It is not a market history, a representative sample or a probability distribution. **6.89% is not an expected return for the coming decades.**
+
+The exercise establishes something narrower: even advance knowledge of the full period's compound return would not tell us how much regular income the portfolio could sustain.
+
+<RetirementSequence lang="en" />
+
+*The “Two-year example” button reproduces the opening table. Setting withdrawals to zero verifies that ending wealth becomes identical again. CSV exports include each year's actual payments and uncovered budgets.*
+
+## Why the early years matter
+
+An early loss occurs while many withdrawals may still lie ahead. It can reduce the invested base well before the final expenses fall due. Subsequent withdrawals then consume a larger proportion of the remaining assets.
+
+The sequencing-risk appendix of a study published by the Society of Actuaries Research Institute in January 2023 describes this interaction, particularly when withdrawals are fixed in purchasing-power terms. After a loss, maintaining that spending draws down a greater share of what remains. [Butt, Khemka, Lim and Warren, Appendix A.2, printed pages 73 and 74][s2].
+
+There is no anniversary after which a retirement portfolio becomes immune. A late loss can still be damaging when assets are already low or spending is high. In his original 1994 study, William Bengen also discussed how adverse episodes could affect retirements that had begun much earlier. [Bengen, historical-scenario discussion, page 4 of the reprint][s3].
+
+The relevant timeline is therefore the schedule of **funding needs**, not simply the official retirement date.
+
+## Inflation changes the amount that must leave
+
+A fixed €10,000 annual withdrawal is easy to track. Its purchasing power falls if prices rise. To preserve the first payment's purchasing power with hypothetical inflation of 2% a year, the **21st withdrawal** would need to be approximately **€14,859**. There are twenty annual increases between the first and twenty-first payments.
+
+After a portfolio loss, an inflation-adjusted budget may therefore keep increasing while available wealth shrinks. The ratio of required spending to remaining assets deteriorates on both sides.
+
+The calculator distinguishes nominal euros, the amounts shown on an account statement, from starting-date euros, which adjust final balances for assumed inflation. It does not combine nominal investment returns with spending silently held constant in purchasing-power terms.
+
+Fees also change the path. The calculator's optional annual charge is applied after the investment return and before the withdrawal. A fictional gross return of 5% and a 1% fee produce a net multiplier of **1.05 × 0.99**, or a **3.95%** net return, not exactly 4%. This teaching convention does not reproduce every fee structure used by actual products.
+
+## The historical assumptions behind the 4% rule
+
+Bengen's study, published in October 1994 and reprinted in 2004, helped establish the “4% rule”. It examined withdrawals from US stock-and-bond portfolios using historical data. Its 4% reference point was associated with funding at least thirty years of withdrawals in the scenarios studied. [Bengen, pages 3 and 5 of the reprint][s3].
+
+The number describes an **initial withdrawal**, followed by inflation adjustments. It does not mean the investment pays a guaranteed 4% return. Nor does it mean withdrawing 4% of the remaining portfolio every year. Scott, Sharpe and Watson set out this distinction in their analysis of such strategies. [April 2008 manuscript, pages 2 and 3][s4].
+
+For a €200,000 portfolio, 4% means an initial €8,000 withdrawal. With assumed inflation of 2%, the next payment would be €8,160, regardless of the portfolio's value, provided sufficient assets remain to pay it.
+
+Historical results from US markets are not enough to set a French household's retirement budget. The investments, spending currency, costs, taxes and required horizon all need to be specified. A historical rule does not become a contractual guarantee when a dollar sign is replaced with a euro sign.
+
+## A percentage withdrawal protects something different
+
+There is a simple way to prevent a fixed cash withdrawal from consuming an ever-larger share of a shrinking portfolio: withdraw **the same fraction of available assets** each year, after returns. The resulting income, however, varies with those assets.
+
+Return to our two-year example, with no inflation or fees, and replace the fixed €10,000 payment with an annual withdrawal of **5% of available capital**.
+
+After the initial decline in A, 5% of €160,000 provides only **€8,000**. In B, 5% of €250,000 produces **€12,500**. The second-year payment is €9,500 in both scenarios.
+
+<RetirementSequenceFigure lang="en" kind="income" />
+
+Both portfolios now finish with exactly **€180,500**. This is not a coincidence. Each year multiplies the portfolio by the investment return factor and then by 0.95. Under this specific rule, those factors can once again be rearranged without changing final wealth.
+
+But A has paid out only **€17,500**, compared with **€22,000** in B. Timing risk shows up in the income actually available. A reassuring final balance does not establish that the household's spending was funded.
+
+As long as returns stay strictly above −100% and the withdrawal fraction remains below 100%, this idealised model never reaches exactly zero within a finite number of years. It can still deliver inadequate income long before that distinction becomes useful. “The account does not mathematically run dry” and “the payments cover living costs” are different outcomes.
+
+## Protection comes with trade-offs
+
+**A liquid reserve can postpone some sales.** When it pays expenses during a downturn, fewer units of the risky portfolio need to be sold at that time. But the reserve is part of total wealth. Comparing €200,000 fully invested with €200,000 invested plus an extra €20,000 in cash would not be a fair test. With equal starting wealth, the reserve's own investment return and the rules for replenishing it matter too. Arithmetic supplies no universally sufficient number of years to hold in reserve.
+
+**A less volatile allocation may soften particular shocks.** Target-date management seeks to reduce risk gradually as retirement approaches. France's AMF nevertheless stresses that this management approach does not itself guarantee the capital. A schedule for reducing investment risk is not a commitment to pay a specified income. [AMF, 25 August 2020, retirement-date section][s5].
+
+**A lifetime annuity provides a contractual income rather than a sale schedule.** For the assets converted, the retiree no longer has to sell investments personally each year. In exchange, a conventional immediate annuity reduces access to that capital. Survivor benefits, inflation protection and other options depend on the contract. Those commitments also depend on the insurer's ability to honour them, as the SEC's Investor.gov explains. [Investor.gov, annuity overview][s8]. The GAO discusses these trade-offs, including reduced access to funds for unexpected expenses. [GAO, immediate-annuity discussion and Appendix V][s1].
+
+None of these approaches automatically preserves the highest possible income, complete liquidity, full inflation protection and an absence of risk at the same time.
+
+## Scheduled withdrawals and lifetime income
+
+This distinction is useful when reading a product proposal. ABE Infoservice explains that French *assurance-vie*, a long-term savings contract issued by an insurer, generally offers scheduled partial withdrawals, subject to their terms. These automate withdrawals from savings. Unit-linked holdings within the contract remain exposed to changes in the underlying investments' value. [ABE Infoservice, withdrawal and unit-linked valuation sections][s6].
+
+A payment arriving every month does not, by itself, establish that it will remain payable for life. The actual commitment must be identified: is an insurer promising a contractual benefit, or is a mechanism periodically selling part of the investor's capital?
+
+The account wrapper is not sufficient either. The AMF distinguishes euro-denominated insurance funds with capital guarantees governed by their contract terms from unit-linked investments whose capital is not guaranteed. Applying our market scenario indiscriminately to every *assurance-vie* contract or every form of retirement saving would be misleading. [AMF, investment-support comparison, 6 April 2022][s7].
+
+## The number to establish before the return
+
+For a household, the starting question is how much the portfolio actually needs to provide after other income.
+
+In one final fictional example, annual spending of €36,000 and pension income of €30,000 leave a **€6,000** gap. With €200,000 of accessible savings, that is **3%** of starting wealth. If pension income is €24,000, the gap becomes **€12,000**, or **6%**. These are assumed to be comparable net household amounts; the tax consequences of portfolio withdrawals are not modelled.
+
+The investment portfolio could be identical. The funding requirement is not. Similarly, cutting discretionary spending has different consequences from cutting the money needed for housing or food.
+
+Understanding sequence risk does not imply giving up investing. It means connecting investment performance to spending, income already secured and the household's room to adjust. **For retirement income, an average return needs to be accompanied by a withdrawal schedule and an examination of unfavourable years.** The promise worth testing is money available when needed, not simply a percentage at the end of a chart.
+
+For further reading: [sequence-of-returns risk](/en/glossary/risque-de-sequence/), our [guide to volatility](/en/guides/read-vix-move-volatility/) and our [explanation of consumer-price inflation](/en/guides/read-cpi-inflation-us/).
+
+## Sources
+
+Documents reviewed on **17 September 2026**. The dates below refer to source publications, not the l0g scenarios, which have no historical reference period.
+
+**[1] GAO**, *Retirement Income: Ensuring Income throughout Retirement Requires Difficult Choices*, GAO-11-400. Dated **7 June 2011**, publicly released **1 July 2011**. Locators: discussion preceding Figure 2 for sequencing; immediate-annuity discussion and Appendix V for trade-offs. [Official record][s1notice]; [accessible text][s1]. No 2011 demographic statistics are presented as current.
+
+**[2] Adam Butt, Gaurav Khemka, William Lim and Geoff Warren**, *Primer on Retirement Income Strategy Design and Evaluation*, Society of Actuaries Research Institute, **January 2023**. Appendix **A.2**, printed pages **73 and 74**. [Study][s2]. Its conclusions are the authors' own. We do not reproduce its return series or probability estimates.
+
+**[3] William P. Bengen**, *Determining Withdrawal Rates Using Historical Data*, *Journal of Financial Planning*, **October 1994**, **March 2004** reprint hosted by the Financial Planning Association. PDF pages **3 to 5** cover portfolio assumptions, adverse historical episodes and the initial withdrawal. [Reprinted original][s3]. This is US historical research, not a current French withdrawal standard.
+
+**[4] Jason S. Scott, William F. Sharpe and John G. Watson**, *The 4% Rule: At What Price?*, manuscript dated **April 2008**, hosted at Stanford. Pages **2 and 3** define constant real withdrawals financed by volatile investments. [Manuscript][s4]. Financial Engines affiliations are disclosed in the document. We use neither commercial claims nor its numerical estimates of inefficiency.
+
+**[5] AMF**, *Plan d'épargne retraite : comprendre la gestion pilotée à horizon*, **25 August 2020**, retirement-date section. [Official guidance][s5]. Used for the mechanism and absence of a capital guarantee, not for the historical regulatory thresholds in its table.
+
+**[6] ABE Infoservice**, *Que faut-il savoir si vous avez conclu un contrat d'assurance vie ?*, publication date not displayed in the reviewed content. Withdrawal and unit-linked valuation sections. [Official guidance][s6].
+
+**[7] AMF**, *Investir dans une assurance-vie*, **6 April 2022**. Section comparing investment supports. [Official guidance][s7]. Actual guarantee terms remain contract-specific.
+
+**[8] SEC, Investor.gov**, *Annuities*, publication date not displayed in the reviewed content. “What are annuities?” section, on insurer commitments and claims-paying ability. [Official guidance][s8]. We do not apply the page's US tax or legal provisions to France.
+
+**l0g calculations and data:** [fictional series and assumptions, JSON](/data/retraite-sequence/scenarios.json); [thirty-year paths, CSV](/data/retraite-sequence/thirty-years.csv); [two-year comparison, CSV](/data/retraite-sequence/two-years.csv); [proportional-withdrawal comparison](/data/retraite-sequence/proportional-two-years.csv). The figures use the same calculation engine as the interactive model.
+
+## Limitations
+
+Every illustrative amount comes from a fictional scenario. None represents an actual investment, a population of retirees, a return history or personalised advice. Returns are nominal total returns, including dividends. There are no subsequent contributions. Withdrawals occur annually, after returns and any specified fees; monthly withdrawals would change the numbers.
+
+Under the indexed rule, the first budget is €10,000 at the end of year 1 and increases begin with the second payment. Final balances in starting-date euros are deflated over the entire elapsed period. Withdrawal totals are nominal and undiscounted. Taxes, allocation changes, product guarantees, mortality and income outside the portfolio are excluded. Reversing a return series does not produce a probability of success. A real strategy's suitability depends on essential spending, other resources and the contracts held, among other factors.
+
+[s1]: https://www.gao.gov/assets/a319390.html
+[s1notice]: https://www.gao.gov/products/gao-11-400
+[s2]: https://www.soa.org/globalassets/assets/files/resources/research-report/2023/ret-income-strat-de.pdf#page=73
+[s3]: https://www.financialplanningassociation.org/sites/default/files/2021-04/MAR04%20Determining%20Withdrawal%20Rates%20Using%20Historical%20Data.pdf
+[s4]: https://web.stanford.edu/~wfsharpe/retecon/4percent.pdf
+[s5]: https://www.amf-france.org/fr/espace-epargnants/actualites-mises-en-garde/plan-depargne-retraite-comprendre-la-gestion-pilotee-horizon
+[s6]: https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-si-vous-avez-conclu-un-contrat-dassurance-vie
+[s7]: https://www.amf-france.org/fr/espace-epargnants/comprendre-les-produits-financiers/supports-dinvestissement/assurance-vie
+
+[s8]: https://www.investor.gov/introduction-investing/investing-basics/investment-products/annuities
