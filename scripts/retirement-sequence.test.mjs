@@ -62,6 +62,10 @@ test('all figure markup is valid responsive XML with a dark background and legib
     visit(ast); assert.match(markup, /fill="#0c0d10"/); assert.match(markup, /width:100%;height:auto/);
   }
 });
+test('Figure width cap wins over the shared prose figure rule without clipping', () => {
+  const component = readFileSync(new URL('../src/components/RetirementSequenceFigure.astro', import.meta.url), 'utf8');
+  assert.match(component, /\.prose figure\.rs-figure\s*\{[^}]*max-width:\s*560px;[^}]*overflow:\s*visible;/);
+});
 test('Opening example: 177500 versus 182000',()=>{const {a,b}=compareSequences(two);close(a.closing,177500);close(b.closing,182000);close(a.totalPaid,20000);close(b.totalPaid,20000)});
 test('No withdrawals: the return order leaves final wealth unchanged',()=>{const {a,b}=compareSequences({...two,withdrawal:0});close(a.closing,200000);close(b.closing,200000)});
 test('Arithmetic mean 2.5%, compound mean zero',()=>{const a=runSequence(two);close(a.arithmetic,2.5);close(a.cagr,0)});
