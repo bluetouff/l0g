@@ -203,6 +203,15 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'tarification-algorithmique', sigle: 'Algorithmic pricing', nom: 'Software-assisted price setting', ...macroSection,
+    def: 'Using software rules to recommend or set prices from inputs such as costs, demand or rivals’ prices. The tool may follow fixed rules or learn from results. Algorithmic pricing does not necessarily involve personalised offers or collusion; its effects depend on the market and how the tools operate.',
+    guide: '/en/analysis/pricing-algorithms-competition/',
+    atlas: {
+      articles: [{ label: 'Automated pricing and competition', href: '/en/analysis/pricing-algorithms-competition/', kind: 'article' }],
+      sources: [{ label: 'Autorité de la concurrence and Bundeskartellamt, Algorithms and Competition', href: 'https://www.autoritedelaconcurrence.fr/sites/default/files/Algorithms_and_Competition_Working-Paper.pdf', kind: 'source' }],
+    },
+  },
+  {
     slug: 'dscr', sigle: 'DSCR', nom: 'Debt-service coverage ratio', ...privateCreditSection,
     def: 'Cash available for debt service divided by interest and principal payments due over the same period. Below 1, those cash flows do not cover the payments. Contractual definitions vary; the ratio alone measures neither collateral value nor solvency.',
     guide: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/',

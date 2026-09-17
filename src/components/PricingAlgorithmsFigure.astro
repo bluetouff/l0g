@@ -1,0 +1,242 @@
+---
+interface Props { lang: 'fr' | 'en'; figure: 1 | 2 | 3; }
+const { lang, figure } = Astro.props;
+---
+
+{lang === 'fr' && figure === 1 && (
+<figure class="pricing-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 738" width="100%" style="width:100%;height:auto" role="img" aria-labelledby="l0g-pricing-fr-1-title l0g-pricing-fr-1-desc">
+  <title id="l0g-pricing-fr-1-title">Le délai change le résultat d’une baisse</title>
+  <desc id="l0g-pricing-fr-1-desc">Sur une heure, la contribution est de 100 euros au tarif initial, de 120 euros après une baisse si le concurrent attend 60 minutes, et de 80,67 euros s’il s’aligne en une minute. Hypothèses fictives.</desc>
+  <rect width="480" height="738" rx="16" fill="#0c0e10" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="32" y="43" font-size="22" fill="#72e5df" font-weight="700" text-anchor="start">01 / SCÉNARIO FICTIF</text>
+    <text x="32" y="91" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">Le délai change</text>
+    <text x="32" y="129" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">l’intérêt d’une baisse</text>
+    <text x="32" y="174" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Même baisse : 2 centimes par litre</text>
+    <text x="32" y="209" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Contribution sur une heure</text>
+    <text x="32" y="267" font-size="23" fill="#f0f4fa" font-weight="400" text-anchor="start">Tarif inchangé</text>
+    <text x="448" y="267" font-size="29" fill="#7e94ad" font-weight="700" text-anchor="end">100,00 €</text>
+    <rect x="32" y="285" width="300" height="24" rx="3" fill="#7e94ad" />
+    <text x="32" y="363" font-size="23" fill="#f0f4fa" font-weight="400" text-anchor="start">Alignement à 60 min</text>
+    <text x="448" y="363" font-size="29" fill="#72e5df" font-weight="700" text-anchor="end">120,00 €</text>
+    <rect x="32" y="381" width="360" height="24" rx="3" fill="#72e5df" />
+    <text x="32" y="459" font-size="23" fill="#f0f4fa" font-weight="400" text-anchor="start">Alignement à 1 min</text>
+    <text x="448" y="459" font-size="29" fill="#f2c875" font-weight="700" text-anchor="end">80,67 €</text>
+    <rect x="32" y="477" width="242.0" height="24" rx="3" fill="#f2c875" />
+    <line x1="32" y1="517" x2="422" y2="517" stroke="#b8c8db" stroke-width="1.5" />
+    <line x1="32" y1="517" x2="32" y2="524" stroke="#b8c8db" stroke-width="1.5" />
+    <text x="32" y="548" font-size="22" fill="#b8c8db" font-weight="400" text-anchor="middle">0</text>
+    <line x1="182" y1="517" x2="182" y2="524" stroke="#b8c8db" stroke-width="1.5" />
+    <text x="182" y="548" font-size="22" fill="#b8c8db" font-weight="400" text-anchor="middle">50</text>
+    <line x1="332" y1="517" x2="332" y2="524" stroke="#b8c8db" stroke-width="1.5" />
+    <text x="332" y="548" font-size="22" fill="#b8c8db" font-weight="400" text-anchor="middle">100</text>
+    <line x1="422" y1="517" x2="422" y2="524" stroke="#b8c8db" stroke-width="1.5" />
+    <text x="422" y="548" font-size="22" fill="#b8c8db" font-weight="400" text-anchor="middle">130</text>
+    <rect x="24" y="581" width="432" height="105" rx="10" fill="#181d25" />
+    <text x="40" y="619" font-size="25" fill="#f0f4fa" font-weight="700" text-anchor="start">Seuil du scénario : 30 min</text>
+    <text x="40" y="655" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">pour retrouver 100 €</text>
+    <text x="32" y="718" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">l0g · Calculs fictifs · 17.09.2026</text>
+  </g>
+</svg>
+<figcaption>Figure 1. Calcul fictif sur une fenêtre fixe de 60 minutes. Contribution après le coût variable retenu, avant les autres charges. Sans alignement, le débit passe de 1 000 à 1 500 litres par heure ; après alignement, il revient à 1 000. Coûts inchangés. Source : calculs l0g, 17 septembre 2026. Ce schéma ne simule pas un équilibre de marché.</figcaption>
+</figure>
+)}
+
+{lang === 'fr' && figure === 2 && (
+<figure class="pricing-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 733" width="100%" style="width:100%;height:auto" role="img" aria-labelledby="l0g-pricing-fr-2-title l0g-pricing-fr-2-desc">
+  <title id="l0g-pricing-fr-2-title">Une hausse de 20 % de marge peut correspondre à une hausse de 1,11 % du prix</title>
+  <desc id="l0g-pricing-fr-2-desc">Le prix passe de 1,80 à 1,82 euro par litre. Le coût de référence reste à 1,70 euro. La marge unitaire passe de 0,10 à 0,12 euro : hausse de 20 %. Le prix augmente de 1,11 %. Exemple fictif.</desc>
+  <rect width="480" height="733" rx="16" fill="#0c0e10" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="32" y="43" font-size="22" fill="#72e5df" font-weight="700" text-anchor="start">02 / SCÉNARIO FICTIF</text>
+    <text x="32" y="91" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">Deux pourcentages,</text>
+    <text x="32" y="129" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">une même hausse</text>
+    <text x="32" y="174" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Montants en euros par litre</text>
+    <line x1="32" y1="196" x2="448" y2="196" stroke="#3b4b63" stroke-width="1" />
+    <text x="132" y="231" font-size="22" fill="#b8c8db" font-weight="700" text-anchor="middle">AVANT</text>
+    <text x="348" y="231" font-size="22" fill="#b8c8db" font-weight="700" text-anchor="middle">APRÈS</text>
+    <text x="240" y="268" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="middle">Prix de vente</text>
+    <text x="132" y="313" font-size="40" fill="#f0f4fa" font-weight="700" text-anchor="middle">1,80 €</text>
+    <text x="348" y="313" font-size="40" fill="#f0f4fa" font-weight="700" text-anchor="middle">1,82 €</text>
+    <text x="240" y="357" font-size="23" fill="#b8c8db" font-weight="400" text-anchor="middle">Coût de référence inchangé</text>
+    <text x="132" y="392" font-size="29" fill="#f0f4fa" font-weight="400" text-anchor="middle">1,70 €</text>
+    <text x="348" y="392" font-size="29" fill="#f0f4fa" font-weight="400" text-anchor="middle">1,70 €</text>
+    <text x="240" y="433" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="middle">Marge unitaire</text>
+    <text x="132" y="475" font-size="36" fill="#72e5df" font-weight="700" text-anchor="middle">0,10 €</text>
+    <text x="348" y="475" font-size="36" fill="#72e5df" font-weight="700" text-anchor="middle">0,12 €</text>
+    <rect x="24" y="508" width="208" height="152" rx="10" fill="#181d25" />
+    <rect x="248" y="508" width="208" height="152" rx="10" fill="#181d25" />
+    <text x="128" y="558" font-size="43" fill="#72e5df" font-weight="700" text-anchor="middle">+20 %</text>
+    <text x="352" y="558" font-size="39" fill="#f2c875" font-weight="700" text-anchor="middle">+1,11 %</text>
+    <text x="128" y="599" font-size="23" fill="#f0f4fa" font-weight="400" text-anchor="middle">Marge unitaire</text>
+    <text x="352" y="599" font-size="23" fill="#f0f4fa" font-weight="400" text-anchor="middle">Prix de vente</text>
+    <text x="128" y="635" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="middle">0,02 / 0,10</text>
+    <text x="352" y="635" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="middle">0,02 / 1,80</text>
+    <text x="32" y="695" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">l0g · Calculs fictifs · 17.09.2026</text>
+  </g>
+</svg>
+<figcaption>Figure 2. Exemple fictif en euros par litre. Le coût de référence reste à 1,70 euro. La variation de marge utilise 0,10 euro comme dénominateur ; la variation du prix utilise 1,80 euro. Il ne s’agit ni de bénéfices nets ni d’estimations de l’étude allemande. Source : calculs l0g, 17 septembre 2026.</figcaption>
+</figure>
+)}
+
+{lang === 'fr' && figure === 3 && (
+<figure class="pricing-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 863" width="100%" style="width:100%;height:auto" role="img" aria-labelledby="l0g-pricing-fr-3-title l0g-pricing-fr-3-desc">
+  <title id="l0g-pricing-fr-3-title">La moyenne dépend des litres achetés</title>
+  <desc id="l0g-pricing-fr-3-desc">Exemple fictif. Prix initial de 1,800 euro par litre. Après modification, deux plages de même durée affichent 1,70 et 1,84 euro. La moyenne simple vaut 1,770 euro. Avec 20 % des volumes dans la première plage et 80 % dans la seconde, le prix moyen acheté vaut 1,812 euro.</desc>
+  <rect width="480" height="863" rx="16" fill="#0c0e10" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="32" y="43" font-size="22" fill="#72e5df" font-weight="700" text-anchor="start">03 / SCÉNARIO FICTIF</text>
+    <text x="32" y="91" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">La moyenne dépend</text>
+    <text x="32" y="129" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">des litres achetés</text>
+    <text x="32" y="174" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Deux plages de même durée</text>
+    <rect x="24" y="198" width="432" height="66" rx="10" fill="#181d25" />
+    <text x="240" y="239" font-size="30" fill="#f0f4fa" font-weight="700" text-anchor="middle">Au départ : 1,800 €/L</text>
+    <text x="32" y="302" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Plage 1</text>
+    <text x="32" y="345" font-size="39" fill="#f0f4fa" font-weight="700" text-anchor="start">1,70 €/L</text>
+    <text x="448" y="345" font-size="25" fill="#72e5df" font-weight="700" text-anchor="end">20 % des litres</text>
+    <rect x="32" y="361" width="416" height="15" rx="4" fill="#181d25" />
+    <rect x="32" y="361" width="83.2" height="15" rx="4" fill="#72e5df" />
+    <text x="32" y="432" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Plage 2</text>
+    <text x="32" y="475" font-size="39" fill="#f0f4fa" font-weight="700" text-anchor="start">1,84 €/L</text>
+    <text x="448" y="475" font-size="25" fill="#f2c875" font-weight="700" text-anchor="end">80 % des litres</text>
+    <rect x="32" y="491" width="416" height="15" rx="4" fill="#181d25" />
+    <rect x="32" y="491" width="332.8" height="15" rx="4" fill="#f2c875" />
+    <line x1="32" y1="538" x2="448" y2="538" stroke="#3b4b63" stroke-width="1" />
+    <text x="32" y="577" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Prix affichés · moyenne simple</text>
+    <text x="32" y="623" font-size="40" fill="#72e5df" font-weight="700" text-anchor="start">1,770 €/L</text>
+    <text x="448" y="623" font-size="26" fill="#72e5df" font-weight="700" text-anchor="end">−3,0 c/L</text>
+    <text x="32" y="677" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Prix payés · pondéré par litres</text>
+    <text x="32" y="723" font-size="40" fill="#f2c875" font-weight="700" text-anchor="start">1,812 €/L</text>
+    <text x="448" y="723" font-size="26" fill="#f2c875" font-weight="700" text-anchor="end">+1,2 c/L</text>
+    <text x="32" y="780" font-size="23" fill="#b8c8db" font-weight="400" text-anchor="start">Volumes supposés fixes : 20 % / 80 %.</text>
+    <text x="32" y="834" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">l0g · Calculs fictifs · 17.09.2026</text>
+  </g>
+</svg>
+<figcaption>Figure 3. Exemple fictif : deux plages de même durée, volume total et répartition des achats inchangés. La moyenne pondérée mesure le prix par litre effectivement acheté dans ce scénario. Elle ne mesure pas la facture des automobilistes suédois. Source : calculs l0g, 17 septembre 2026.</figcaption>
+</figure>
+)}
+
+{lang === 'en' && figure === 1 && (
+<figure class="pricing-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 738" width="100%" style="width:100%;height:auto" role="img" aria-labelledby="l0g-pricing-en-1-title l0g-pricing-en-1-desc">
+  <title id="l0g-pricing-en-1-title">Matching speed changes the return on a price cut</title>
+  <desc id="l0g-pricing-en-1-desc">One-hour contribution is 100 euros at the original price, 120 euros after a cut if the rival waits 60 minutes, and 80.67 euros if it matches in one minute. Fictional assumptions.</desc>
+  <rect width="480" height="738" rx="16" fill="#0c0e10" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="32" y="43" font-size="22" fill="#72e5df" font-weight="700" text-anchor="start">01 / FICTIONAL SCENARIO</text>
+    <text x="32" y="91" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">The value of a cut</text>
+    <text x="32" y="129" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">depends on timing</text>
+    <text x="32" y="174" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Same cut: 2 cents per litre</text>
+    <text x="32" y="209" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Contribution over one hour</text>
+    <text x="32" y="267" font-size="23" fill="#f0f4fa" font-weight="400" text-anchor="start">Original price</text>
+    <text x="448" y="267" font-size="29" fill="#7e94ad" font-weight="700" text-anchor="end">€100.00</text>
+    <rect x="32" y="285" width="300" height="24" rx="3" fill="#7e94ad" />
+    <text x="32" y="363" font-size="23" fill="#f0f4fa" font-weight="400" text-anchor="start">Match after 60 min</text>
+    <text x="448" y="363" font-size="29" fill="#72e5df" font-weight="700" text-anchor="end">€120.00</text>
+    <rect x="32" y="381" width="360" height="24" rx="3" fill="#72e5df" />
+    <text x="32" y="459" font-size="23" fill="#f0f4fa" font-weight="400" text-anchor="start">Match after 1 min</text>
+    <text x="448" y="459" font-size="29" fill="#f2c875" font-weight="700" text-anchor="end">€80.67</text>
+    <rect x="32" y="477" width="242.0" height="24" rx="3" fill="#f2c875" />
+    <line x1="32" y1="517" x2="422" y2="517" stroke="#b8c8db" stroke-width="1.5" />
+    <line x1="32" y1="517" x2="32" y2="524" stroke="#b8c8db" stroke-width="1.5" />
+    <text x="32" y="548" font-size="22" fill="#b8c8db" font-weight="400" text-anchor="middle">0</text>
+    <line x1="182" y1="517" x2="182" y2="524" stroke="#b8c8db" stroke-width="1.5" />
+    <text x="182" y="548" font-size="22" fill="#b8c8db" font-weight="400" text-anchor="middle">50</text>
+    <line x1="332" y1="517" x2="332" y2="524" stroke="#b8c8db" stroke-width="1.5" />
+    <text x="332" y="548" font-size="22" fill="#b8c8db" font-weight="400" text-anchor="middle">100</text>
+    <line x1="422" y1="517" x2="422" y2="524" stroke="#b8c8db" stroke-width="1.5" />
+    <text x="422" y="548" font-size="22" fill="#b8c8db" font-weight="400" text-anchor="middle">130</text>
+    <rect x="24" y="581" width="432" height="105" rx="10" fill="#181d25" />
+    <text x="40" y="619" font-size="25" fill="#f0f4fa" font-weight="700" text-anchor="start">Scenario threshold: 30 min</text>
+    <text x="40" y="655" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">to recover the original €100</text>
+    <text x="32" y="718" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">l0g · Fictional figures · 17 Sep 2026</text>
+  </g>
+</svg>
+<figcaption>Figure 1. Fictional calculation over a fixed 60-minute window. Contribution after the assumed variable cost, before other expenses. Until the rival matches, sales rise from 1,000 to 1,500 litres per hour; they then return to 1,000. Costs are unchanged. Source: l0g calculations, 17 September 2026. This is not a market-equilibrium simulation.</figcaption>
+</figure>
+)}
+
+{lang === 'en' && figure === 2 && (
+<figure class="pricing-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 733" width="100%" style="width:100%;height:auto" role="img" aria-labelledby="l0g-pricing-en-2-title l0g-pricing-en-2-desc">
+  <title id="l0g-pricing-en-2-title">A 20% margin increase can mean a 1.11% price increase</title>
+  <desc id="l0g-pricing-en-2-desc">The price rises from 1.80 to 1.82 euros per litre. Reference cost stays at 1.70 euros. The unit margin rises from 0.10 to 0.12 euros: a 20% increase. The price increases by 1.11%. Fictional example.</desc>
+  <rect width="480" height="733" rx="16" fill="#0c0e10" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="32" y="43" font-size="22" fill="#72e5df" font-weight="700" text-anchor="start">02 / FICTIONAL SCENARIO</text>
+    <text x="32" y="91" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">Two percentages,</text>
+    <text x="32" y="129" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">one price increase</text>
+    <text x="32" y="174" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Amounts in euros per litre</text>
+    <line x1="32" y1="196" x2="448" y2="196" stroke="#3b4b63" stroke-width="1" />
+    <text x="132" y="231" font-size="22" fill="#b8c8db" font-weight="700" text-anchor="middle">BEFORE</text>
+    <text x="348" y="231" font-size="22" fill="#b8c8db" font-weight="700" text-anchor="middle">AFTER</text>
+    <text x="240" y="268" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="middle">Selling price</text>
+    <text x="132" y="313" font-size="40" fill="#f0f4fa" font-weight="700" text-anchor="middle">€1.80</text>
+    <text x="348" y="313" font-size="40" fill="#f0f4fa" font-weight="700" text-anchor="middle">€1.82</text>
+    <text x="240" y="357" font-size="23" fill="#b8c8db" font-weight="400" text-anchor="middle">Unchanged reference cost</text>
+    <text x="132" y="392" font-size="29" fill="#f0f4fa" font-weight="400" text-anchor="middle">€1.70</text>
+    <text x="348" y="392" font-size="29" fill="#f0f4fa" font-weight="400" text-anchor="middle">€1.70</text>
+    <text x="240" y="433" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="middle">Unit margin</text>
+    <text x="132" y="475" font-size="36" fill="#72e5df" font-weight="700" text-anchor="middle">€0.10</text>
+    <text x="348" y="475" font-size="36" fill="#72e5df" font-weight="700" text-anchor="middle">€0.12</text>
+    <rect x="24" y="508" width="208" height="152" rx="10" fill="#181d25" />
+    <rect x="248" y="508" width="208" height="152" rx="10" fill="#181d25" />
+    <text x="128" y="558" font-size="43" fill="#72e5df" font-weight="700" text-anchor="middle">+20%</text>
+    <text x="352" y="558" font-size="39" fill="#f2c875" font-weight="700" text-anchor="middle">+1.11%</text>
+    <text x="128" y="599" font-size="23" fill="#f0f4fa" font-weight="400" text-anchor="middle">Unit margin</text>
+    <text x="352" y="599" font-size="23" fill="#f0f4fa" font-weight="400" text-anchor="middle">Selling price</text>
+    <text x="128" y="635" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="middle">0.02 / 0.10</text>
+    <text x="352" y="635" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="middle">0.02 / 1.80</text>
+    <text x="32" y="695" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">l0g · Fictional figures · 17 Sep 2026</text>
+  </g>
+</svg>
+<figcaption>Figure 2. Fictional example in euros per litre. The reference cost remains €1.70. The margin change uses €0.10 as its denominator; the price change uses €1.80. These are neither net profits nor estimates from the German study. Source: l0g calculations, 17 September 2026.</figcaption>
+</figure>
+)}
+
+{lang === 'en' && figure === 3 && (
+<figure class="pricing-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 863" width="100%" style="width:100%;height:auto" role="img" aria-labelledby="l0g-pricing-en-3-title l0g-pricing-en-3-desc">
+  <title id="l0g-pricing-en-3-title">The average depends on when litres are bought</title>
+  <desc id="l0g-pricing-en-3-desc">Fictional example. The original price is 1.800 euros per litre. After the change, two equally long time slots have prices of 1.70 and 1.84 euros. Their simple average is 1.770 euros. With 20% of litres bought in the first slot and 80% in the second, the average price paid is 1.812 euros.</desc>
+  <rect width="480" height="863" rx="16" fill="#0c0e10" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="32" y="43" font-size="22" fill="#72e5df" font-weight="700" text-anchor="start">03 / FICTIONAL SCENARIO</text>
+    <text x="32" y="91" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">The average depends</text>
+    <text x="32" y="129" font-size="31" fill="#f0f4fa" font-weight="700" text-anchor="start">on litres purchased</text>
+    <text x="32" y="174" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Two equally long time slots</text>
+    <rect x="24" y="198" width="432" height="66" rx="10" fill="#181d25" />
+    <text x="240" y="239" font-size="30" fill="#f0f4fa" font-weight="700" text-anchor="middle">Initially: €1.800/L</text>
+    <text x="32" y="302" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Time slot 1</text>
+    <text x="32" y="345" font-size="39" fill="#f0f4fa" font-weight="700" text-anchor="start">€1.70/L</text>
+    <text x="448" y="345" font-size="25" fill="#72e5df" font-weight="700" text-anchor="end">20% of litres</text>
+    <rect x="32" y="361" width="416" height="15" rx="4" fill="#181d25" />
+    <rect x="32" y="361" width="83.2" height="15" rx="4" fill="#72e5df" />
+    <text x="32" y="432" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Time slot 2</text>
+    <text x="32" y="475" font-size="39" fill="#f0f4fa" font-weight="700" text-anchor="start">€1.84/L</text>
+    <text x="448" y="475" font-size="25" fill="#f2c875" font-weight="700" text-anchor="end">80% of litres</text>
+    <rect x="32" y="491" width="416" height="15" rx="4" fill="#181d25" />
+    <rect x="32" y="491" width="332.8" height="15" rx="4" fill="#f2c875" />
+    <line x1="32" y1="538" x2="448" y2="538" stroke="#3b4b63" stroke-width="1" />
+    <text x="32" y="577" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Average of posted prices</text>
+    <text x="32" y="623" font-size="40" fill="#72e5df" font-weight="700" text-anchor="start">€1.770/L</text>
+    <text x="448" y="623" font-size="26" fill="#72e5df" font-weight="700" text-anchor="end">−3.0 c/L</text>
+    <text x="32" y="677" font-size="24" fill="#b8c8db" font-weight="400" text-anchor="start">Volume-weighted price paid</text>
+    <text x="32" y="723" font-size="40" fill="#f2c875" font-weight="700" text-anchor="start">€1.812/L</text>
+    <text x="448" y="723" font-size="26" fill="#f2c875" font-weight="700" text-anchor="end">+1.2 c/L</text>
+    <text x="32" y="780" font-size="23" fill="#b8c8db" font-weight="400" text-anchor="start">Fixed volume shares: 20% / 80%.</text>
+    <text x="32" y="834" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">l0g · Fictional figures · 17 Sep 2026</text>
+  </g>
+</svg>
+<figcaption>Figure 3. Fictional example: two equally long time slots, unchanged total volume and fixed purchasing shares. The weighted average measures the price per litre actually bought in this scenario, not what Swedish drivers paid. Source: l0g calculations, 17 September 2026.</figcaption>
+</figure>
+)}
+
+<style>
+  .pricing-figure { width: 100%; max-width: 34rem; margin: 2.25rem auto; padding-bottom: 0.75rem; }
+  .pricing-figure > svg { display: block; width: 100%; height: auto; }
+  .pricing-figure > figcaption { margin-top: 0.9rem; font-size: 0.875rem; line-height: 1.65; color: var(--color-muted); }
+</style>

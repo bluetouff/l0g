@@ -1,0 +1,187 @@
+---
+title: 'Automated pricing: when rivals react too quickly'
+seoTitle: "Pricing algorithms: price cuts and competition | l0g"
+ogTitle: 'Automated pricing: the rival reacts too quickly'
+description: Fast price matching can weaken the incentive to cut. Evidence from German and Swedish petrol stations, with the mechanisms and limits explained.
+pubDate: 2026-09-17T11:18:27Z
+tags: ["consumption", "competition", "technology", "pricing", "AI"]
+draft: false
+ogImage: /illustrations/news/pricing-algorithms-competition-v1.jpg
+sourceArticle: prix-automatiques-concurrence-algorithmes
+sourceUpdatedDate: 2026-09-17T11:18:27Z
+---
+
+import PricingAlgorithmsFigure from '../../components/PricingAlgorithmsFigure.astro';
+
+**A price cut is more valuable when it gives a seller time to win customers before a rival responds. By shortening that window, pricing software can change the incentive to compete in the first place. Research on petrol stations reveals the mechanism, but its effects vary across markets and technologies.**
+
+A petrol station cuts its price by two cents. Its rival matches the cut a minute later. For the driver arriving at that moment, both signs carry good news: fuel is cheaper.
+
+For the station that moved first, the outcome is less clear. It has given up some margin, while its advantage over the rival has almost immediately vanished. Will making the same move tomorrow be worthwhile?
+
+This is a fictional scene. It isolates a particular problem: **a fast response can spread a price cut today while weakening the incentive to start the next one**. That outcome is not inevitable. It depends on the customers gained, costs and rivals’ response rules. Models developed by Zach Brown and Alexander MacKay nevertheless show that simple pricing rules can raise equilibrium prices even in a setting that does not rely on collusion. [1](#source-1)
+
+## The window for winning customers
+
+Start with arithmetic rather than artificial intelligence.
+
+Imagine a station selling 1,000 litres in an hour. After deducting the variable cost assumed in this exercise, each litre leaves ten cents. That hour therefore contributes €100 towards other expenses and profit. This is not net profit: fixed costs, among others, still have to be covered.
+
+The station cuts its price by two cents, reducing the contribution per litre to eight cents. Assume that, while it alone offers the lower price, its sales rate rises to 1,500 litres an hour. Once its rival matches, sales return to 1,000 litres an hour. These volumes are teaching assumptions, not estimates of drivers’ behaviour.
+
+If the rival waits a full hour, the station sells 1,500 litres with an eight-cent contribution per litre. It receives **€120**, more than it would have earned at the original price.
+
+If the rival matches after one minute, the extra customers arrive for just one-sixtieth of the hour. Total sales are about 1,008.33 litres, contributing **€80.67**. The station has cut the price on every litre sold while gaining very little volume.
+
+<PricingAlgorithmsFigure lang="en" figure={1} />
+
+The difference comes from how long the lower price attracts customers, not from the cost of the software. In this example, the advantage must last at least thirty minutes to recover the original €100 contribution. A human manager reacting just as quickly would have the same effect.
+
+There is an immediate counterargument. A lower price might permanently expand demand, build loyalty among new customers or become viable because the station’s costs fall. A rival might also choose not to match. Rapid responses do not mechanically eliminate competition.
+
+**The calculation examines a single price cut under fixed assumptions. It predicts neither the eventual market price nor an equilibrium strategy.** It explains why the duration of a commercial advantage can matter as much as its size.
+
+## Sometimes a simple rule is enough
+
+A [pricing algorithm](/en/glossary/tarification-algorithmique/) can be a straightforward set of instructions: it takes in data and applies a rule. One tool might flag a rival’s price cut and submit a proposed response for approval. Another might change the displayed price directly. Those architectures give the software different amounts of discretion.
+
+Machine learning adds another possibility: changing decisions in response to the results they produce. A program can try prices and adjust its behaviour. That does not mean it understands the market as a manager would, or necessarily seeks coordination between sellers. Its objective, available data and permitted actions matter. The 2019 joint French-German study distinguishes these types of tools and their uses. [2](#source-2)
+
+Two separate questions also need to be kept apart. Personalised pricing differentiates offers across customers. The mechanism examined here concerns responses between sellers. In our example, every driver sees the same posted price. Neither income information nor browsing history is required.
+
+Nor does the number of price changes tell us their direction. A program might make frequent, tiny cuts and occasional, larger increases. It could also pass on a fall in wholesale costs more quickly. Counting adjustments alone cannot establish the customer’s bill. Our [guide to the oil market](/en/guides/read-oil-market/) explains benchmarks, inventories and physical flows, helping separate changes in supply costs from retail pricing decisions.
+
+## The German evidence
+
+The study by Stephanie Assad, Robert Clark, Daniel Ershov and Lei Xu, published in the *Journal of Political Economy* in March 2024, uses German data from 2016 to 2018. Adoption is inferred from breaks in pricing behaviour rather than observed directly. The researchers also use adoption across a brand’s stations to address selection into the technology. They find higher margins outside monopoly markets; in markets with two or three stations, the effect appears when all adopt. [3](#source-3)
+
+Why separate an isolated station from several neighbouring ones? Software might improve pricing in two quite different ways. It could help a seller respond to its own demand. It could also alter that seller’s responses to rivals. Comparing market structures helps distinguish these explanations, although it does not produce a perfect experiment.
+
+Selection is worth spelling out. Suppose stations already facing weaker competition are precisely those buying a new tool. Observing high margins afterwards would not establish that the tool caused them. Conversely, stations under pressure might adopt software to try to rebuild margins. A simple comparison of users and non-users would again be misleading.
+
+Statistical identification attempts to deal with such problems. It still depends on assumptions: inferred adoption must be meaningful, and the variation used to isolate it must not capture another commercial change that directly explains prices. The defensible conclusion is an estimated effect in a documented setting, not a diagnosis of every European station.
+
+Germany’s rules changed on **1 April 2026**. Stations open to the public may now raise petrol and diesel prices only once a day, at noon; cuts remain possible at any time. This change came after the 2016–2018 observations. The study therefore measures neither the rule’s effects nor the impact of pricing software under the new regime. [12](#source-12)
+
+### Margins have their own denominator
+
+A second trap concerns percentages. A 20% increase in the margin per litre is not a 20% increase in the price paid.
+
+In another fictional example, a product sells for €1.80 and leaves ten cents above a reference cost of €1.70. Hold that cost constant and increase the price to €1.82. The margin becomes twelve cents. It rises by 20%, while the price rises by about 1.11%.
+
+<PricingAlgorithmsFigure lang="en" figure={2} />
+
+Both percentages describe the same change. One measures its importance to the seller; the other measures the additional payment by the buyer. Neither removes the need to examine volumes and other expenses. These illustrative figures are not the German study’s estimates.
+
+## In Sweden, the average hides the time of day
+
+Richard Friberg’s CEPR paper, published on 6 January 2025, offers a counterpoint. In Swedish data covering 2021 to 2023, the small number of stations testing AI have somewhat lower average margins, but relatively higher afternoon prices. Rule-based tools are much more widespread. [4](#source-4)
+
+The detailed report identifies AI tests at eight stations belonging to a single chain. It also stresses a key limitation: margins are not weighted by litres sold. High-frequency sales volumes for the relevant chain are unavailable for making that adjustment. [5](#source-5)
+
+That caveat changes the economic question. A station could be cheaper when hardly anybody visits and more expensive when most customers fill up. An average of posted prices would not necessarily measure the average price actually paid.
+
+Consider a third, entirely fictional example with two equally long time slots. Initially, fuel costs €1.80 per litre in both. After the pricing change, it costs €1.70 in the first slot and €1.84 in the second. The simple average is **€1.77**: it has fallen.
+
+Now assume that 20% of litres are bought in the first slot and 80% in the second, with those shares held constant. The average price per litre purchased becomes **€1.812**. It is slightly higher than the original price.
+
+<PricingAlgorithmsFigure lang="en" figure={3} />
+
+There is no arithmetic contradiction. The periods simply carry different weights. To measure what customers spend, an hour with many sales needs to count for more than a quiet hour.
+
+**This scenario does not establish that Swedish customers paid more.** It shows why an unweighted average cannot settle the question. If consumers shift purchases towards cheaper hours, the result changes again. Prices and quantities need to be observed together.
+
+The comparison with Germany remains useful, but it is not a contest between two national verdicts on AI. The studies do not examine identical tools, firms or market structures. Neither is a snapshot of petrol pricing in September 2026.
+
+## The computers in the laboratory
+
+Some research studies the programs themselves. In a computational experiment published in October 2020, Emilio Calvano, Giacomo Calzolari, Vincenzo Denicolò and Sergio Pastorello obtain prices above the competitive benchmark from learning algorithms that do not communicate. Their model can exhibit a period of punitive price cuts followed by a return to higher prices. [6](#source-6)
+
+This is simulation evidence. Researchers build an environment with known rules and observe how programs behave. It can reveal a mechanism within that environment. It does not measure how many petrol stations, hotels or online retailers employ it in the real world.
+
+The practical relevance of these experiments is itself contested. In an article published online on 9 June 2026, Arnoud den Boer, Janusz Meylahn and Maarten Pieter Schinkel highlight extremely long learning times and tightly synchronised competitors in certain results. They challenge the interpretation that these demonstrate genuinely autonomous collusion that would be viable in practice. [7](#source-7)
+
+Another study, published online in August 2025, nonetheless obtains supracompetitive prices with different programs and faster learning. [8](#source-8) The debate concerns the architectures and assumptions tested. It does not, by itself, count real-world practices.
+
+A laboratory finding therefore does not prove a commercial practice. Conversely, an absence of messages between sellers does not guarantee competitive outcomes. Rules responding to public prices already create a strategic interaction. Their effects deserve attention independently of the scenario in which AI learns to collude on its own.
+
+It would also be excessive to claim that every seller must adopt a tool before a problem can arise. A theoretical working paper by Brown and MacKay, revised in August 2026, describes settings in which a single seller can induce a rival to charge higher prices by reacting quickly and maintaining a rule over several periods. This is a model, not a measurement of how common such behaviour is. [9](#source-9)
+
+In *Pricing with Algorithms*, published in September 2026, Rohit Lamba and Sergey Zhuk also study rules that respond quickly to a rival’s price but that sellers revise only periodically. Their two-seller model produces prices above the competitive benchmark under its assumptions. This theoretical result highlights the timing of decisions; it does not measure an observed surcharge at petrol stations. [13](#source-13)
+
+## Public prices have two audiences
+
+Transparency has an immediate use: it helps people find a cheaper offer. Germany’s fuel transparency system collects price changes and passes them to consumer information services. [10](#source-10)
+
+Yet the same information can help a rival. Return to the fictional station: making its price cut more visible can attract additional customers while also alerting its neighbour sooner. The first effect strengthens the incentive to cut; the second can weaken it. Their balance depends partly on how quickly customers can switch sellers.
+
+A driver comparing prices, deciding on a detour and travelling to a station does not react like a program connected to a data feed. That does not make comparison tools useless. It means that the savings available to an informed user need to be distinguished from the system’s effect on the overall price level.
+
+The Swedish competition authority’s December 2024 report describes this tension. Better access to prices can facilitate both consumer search and sellers’ adjustments. It does not treat a general reduction in prices as an empirically established result across all the systems it examines. [11](#source-11)
+
+## Evidence beyond the price sign
+
+Two signs changing together do not identify the mechanism. Stations could face the same supply shock. They could independently respond to the same event. They could use different rules that happen to produce the same outcome at that moment.
+
+A concrete investigation would need to reconstruct relevant costs, actual prices after discounts, quantities, timing and decisions about software settings. It would also need to distinguish responses to price cuts from responses to increases. Rapid matching means something different when it sustains a lasting reduction than when it is followed by a systematic return to the previous price.
+
+The software provider raises a separate question: could competitors use it to circulate sensitive information? That mechanism differs from interaction between independent programs. The joint French-German report distinguishes these configurations, and separates legally actionable coordination from mere parallel behaviour. [2](#source-2)
+
+For France, the research presented here establishes neither a nationwide surcharge attributable to pricing software nor the share of stations involved. Directly importing foreign results would erase the differences the analysis is meant to explain.
+
+The established point is narrower, but useful: **technology that makes it easier to follow a rival can also change the expected reward from a price cut**. Assessing the effect on purchasing power requires the whole chain: pricing decisions, competitors’ responses, customers’ movements and actual spending. The speed of the sign is only the beginning. Moving from individual prices to an aggregate indicator raises a further weighting question, explored in our [guide to reading CPI inflation](/en/guides/read-cpi-inflation-us/).
+
+## Sources
+
+Sources checked on **17 September 2026**. The observation periods are stated in the article. They are not a description of market conditions on the verification date.
+
+<span id="source-1"></span>
+**1. Brown and MacKay, *Competition in Pricing Algorithms*.** *American Economic Journal: Microeconomics*, May 2023, 15(2), pp. 109-156. Abstract and article record: response rules, adjustment frequencies and equilibrium prices. [AEA publication](https://www.aeaweb.org/articles?id=10.1257/mic.20210158).
+
+<span id="source-2"></span>
+**2. Autorité de la concurrence and Bundeskartellamt, *Algorithms and Competition*.** Joint study, 6 November 2019. Sections II, III.B.1 to III.B.3 and IV.A: taxonomy, common providers, classification of conduct and evidence. [Full study](https://www.autoritedelaconcurrence.fr/sites/default/files/Algorithms_and_Competition_Working-Paper.pdf).
+
+<span id="source-3"></span>
+**3. Assad, Clark, Ershov and Xu, *Algorithmic Pricing and Competition: Empirical Evidence from the German Retail Gasoline Market*.** *Journal of Political Economy*, March 2024, 132(3), pp. 723-771; online publication on 1 February 2024. Published abstract; sections 4, 5, 6 and 7 of the accepted manuscript dated 7 June 2023. [Journal record](https://www.journals.uchicago.edu/doi/10.1086/726906); [open manuscript at UCL Discovery](https://discovery.ucl.ac.uk/id/eprint/10187765/1/draft_v15_JPE_main.pdf).
+
+<span id="source-4"></span>
+**4. Friberg, *Pricing Algorithms: A Survey of the Literature and an Examination of their Use on the Swedish Gasoline Market*.** CEPR DP19830, 6 January 2025. Public abstract; data from 2021 to 2023. [CEPR record](https://cepr.org/publications/dp19830).
+
+<span id="source-5"></span>
+**5. Friberg, supporting report on algorithmic pricing in Swedish fuel markets.** Report dated December 2024, accompanying Konkurrensverket report 2024:7, in the version available when consulted. Section 3.1, table 1, printed p. 31; discussion of weighting, p. 35 and note 56, p. 38. Observation period: 1 January 2021 to 31 August 2023. [Swedish-language report](https://www.konkurrensverket.se/globalassets/dokument/informationsmaterial/rapporter-och-broschyrer/rapportserie/rapport_2024-7_underlagsrapport.pdf).
+
+<span id="source-6"></span>
+**6. Calvano, Calzolari, Denicolò and Pastorello, *Artificial Intelligence, Algorithmic Pricing, and Collusion*.** *American Economic Review*, October 2020, 110(10), pp. 3267-3297. Abstract of the computational experiment and access to replication materials. [AEA publication](https://www.aeaweb.org/articles?id=10.1257/aer.20190623).
+
+<span id="source-7"></span>
+**7. Den Boer, Meylahn and Schinkel, *Artificial Collusion: Examining Supracompetitive Pricing by Q-Learning Algorithms*.** *Management Science*, published online on 9 June 2026. Abstract: learning conditions and practical relevance of Q-learning results. [INFORMS publication](https://pubsonline.informs.org/doi/10.1287/mnsc.2024.08557).
+
+<span id="source-8"></span>
+**8. Bhole and Surana, *Tacit Collusion by Pricing Algorithms*.** *Economic Inquiry*, 63(4), pp. 1036-1065, October 2025; first published online on 1 August 2025. Abstract of simulations involving different algorithms. [Wiley publication](https://onlinelibrary.wiley.com/doi/10.1111/ecin.70004).
+
+<span id="source-9"></span>
+**9. Brown and MacKay, *Algorithmic Coercion with Faster Pricing*.** NBER WP34070, July 2025; revision dated August 2026. Public model summary, not an empirical measure of prevalence. [NBER record](https://www.nber.org/papers/w34070).
+
+<span id="source-10"></span>
+**10. Bundeskartellamt, *Market Transparency Unit for Fuels*.** Undated institutional description: collecting prices and distributing them to consumer information services. [Official presentation](https://www.bundeskartellamt.de/EN/Tasks/markettransparencyunit_fuels/markettransparencyunit_fuels.html).
+
+<span id="source-11"></span>
+**11. Konkurrensverket, *Competition in the Road Fuel Sector*.** Report 2024:7, December 2024, English version. Summary and discussion of price-comparison systems. [Official report](https://www.konkurrensverket.se/globalassets/dokument/informationsmaterial/rapporter-och-broschyrer/rapportserie/rapport_2024-7_english.pdf).
+
+<span id="source-12"></span>
+**12. Germany, *Kraftstoffpreisanpassungsgesetz* (KPAnG).** Act dated 27 March 2026, effective 1 April 2026; sections 1 and 2. Petrol and diesel at stations open to the public, with a single daily price increase permitted at noon. [Federal legal portal](https://www.gesetze-im-internet.de/kpang/BJNR0520B0026.html).
+
+<span id="source-13"></span>
+**13. Lamba and Zhuk, *Pricing with Algorithms*.** *American Economic Review: Insights*, September 2026, 8(3), pp. 320-340. Abstract of the duopoly model, response rules and periodic revision. [AEA publication](https://www.aeaweb.org/articles?id=10.1257/aeri.20240436).
+
+## Illustration methods
+
+The three figures are **l0g teaching calculations**, dated 17 September 2026. None of their numbers comes from an actual station. In the first example, for a matching delay *t* between 0 and 60 minutes, hourly volume is `1,000 + 500 × t / 60`; contribution is that volume multiplied by `€0.08`. The break-even delay is found by setting the result equal to `€100`. Sales are treated as continuous flows, costs are unchanged and demand responds immediately. No equilibrium behaviour is simulated.
+
+In the second, the changes are `0.02 / 0.10 = 20%` for the unit margin and `0.02 / 1.80 ≈ 1.11%` for the price. In the third, both time slots have the same duration. The simple average is `(1.70 + 1.84) / 2 = €1.770`; the volume-weighted average is `1.70 × 20% + 1.84 × 80% = €1.812`. Total volume and its distribution are fixed. Monetary results are rounded for display.
+
+## Limitations
+
+The article brings together theoretical mechanisms and empirical findings with different scopes. It is not a meta-analysis, an econometric replication or an audit of commercial software. The studies’ margins are not net profits. The unweighted Swedish results cannot establish customers’ actual spending. The open German manuscript and the published article record are identified separately. Computational experiments and fictional examples do not measure the prevalence of practices. No company is presented here as having committed an infringement.
+
+Original text and illustrations: l0g, CC BY 4.0. Cited works remain subject to their respective licences.

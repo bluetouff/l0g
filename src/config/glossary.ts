@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Tarification algorithmique', nom: 'Algorithmic pricing', def: 'Utilisation de règles informatiques pour recommander ou fixer un prix à partir de données, par exemple les coûts, la demande ou les prix des concurrents. Elle peut reposer sur des règles fixes ou sur un apprentissage. Elle ne suppose ni personnalisation selon le client ni entente entre vendeurs ; ses effets dépendent du marché et du fonctionnement des outils.', guide: '/posts/prix-automatiques-concurrence-algorithmes/' },
       { sigle: 'SIEG', nom: 'Service d’intérêt économique général', def: 'Activité économique à laquelle une autorité publique impose des obligations de service public. Une compensation peut financer les coûts nets de ces obligations dans le cadre des règles européennes applicables. Son autorisation ne constate ni son versement ni la réalisation des engagements industriels.', guide: '/posts/penuries-medicaments-prix-disponibilite/' },
       { sigle: 'Principe actif', nom: 'Active pharmaceutical ingredient', def: 'Substance responsable de l’effet du médicament. Elle doit encore être transformée et conditionnée pour obtenir le produit destiné au patient. Un stock de principe actif et un stock de médicaments prêts à délivrer protègent donc des étapes différentes de l’approvisionnement.', guide: '/posts/penuries-medicaments-prix-disponibilite/' },
       { sigle: 'Reverse Yankee', nom: 'Obligation américaine en devise étrangère', def: "Obligation émise par une entreprise américaine dans une devise étrangère, notamment l’euro. Son coût dépend du taux de référence, de la prime de crédit et, le cas échéant, de la couverture du change. Un coupon plus faible dans une autre monnaie ne suffit donc pas à établir une économie de financement.", guide: '/posts/dette-ia-concurrence-etats-taux-credit/' },
@@ -854,6 +855,10 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'tarification-algorithmique': {
+    articles: [{ label: 'Prix automatiques et concurrence', href: '/posts/prix-automatiques-concurrence-algorithmes/', kind: 'article' }],
+    sources: [{ label: 'Autorité de la concurrence et Bundeskartellamt, Algorithms and Competition', href: 'https://www.autoritedelaconcurrence.fr/sites/default/files/Algorithms_and_Competition_Working-Paper.pdf', kind: 'source' }],
+  },
   dscr: {
     formula: 'DSCR = trésorerie disponible pour la dette / service de la dette sur la même période',
     articles: [{ label: 'Crux AI : les puces en garantie', href: '/posts/crux-ai-google-blackstone-banques-puces-collateral/', kind: 'article' }],

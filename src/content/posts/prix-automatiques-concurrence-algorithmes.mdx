@@ -1,0 +1,189 @@
+---
+title: 'Quand les algorithmes de prix réagissent trop vite'
+seoTitle: "Algorithmes de prix : quels effets sur la concurrence ? | l0g"
+ogTitle: 'Prix automatiques : le voisin réagit trop vite'
+description: Les logiciels de prix peuvent réduire l’intérêt de lancer une baisse. Stations-service, études allemandes et suédoises, mécanisme et limites.
+pubDate: 2026-09-17T11:18:27Z
+tags: ["consommation", "concurrence", "technologie", "prix", "IA"]
+draft: false
+ogImage: /illustrations/news/pricing-algorithms-competition-v1.jpg
+quickTake:
+  fact: Des travaux sur les stations-service montrent des effets différents selon les marchés et les outils de tarification.
+  importance: Une baisse copiée rapidement laisse moins de temps au vendeur pour gagner des clients et compenser sa marge réduite.
+  uncertainty: Ces études ne mesurent pas un surcoût national en France. Les moyennes suédoises ne sont pas pondérées par les volumes.
+---
+
+import PricingAlgorithmsFigure from '../../components/PricingAlgorithmsFigure.astro';
+
+**Une baisse de prix vaut davantage lorsqu’elle permet de gagner des clients avant la réaction du voisin. En raccourcissant ce délai, les logiciels de tarification peuvent modifier l’intérêt même de se faire concurrence. Les études sur les stations-service éclairent ce mécanisme, avec des résultats qui varient selon les marchés et les outils.**
+
+Une station baisse son prix de deux centimes. Sa concurrente s’aligne une minute plus tard. Pour l’automobiliste qui arrive à cet instant, les deux panneaux affichent une bonne nouvelle : le carburant est moins cher.
+
+Pour la station qui a pris l’initiative, le bilan est moins évident. Elle a sacrifié une partie de sa marge, mais son avantage sur sa concurrente a presque immédiatement disparu. Recommencer la même opération demain sera-t-il intéressant ?
+
+Cette scène est fictive. Elle permet d’isoler une difficulté : **une réaction rapide peut diffuser une baisse aujourd’hui tout en réduisant l’incitation à lancer la suivante**. Ce résultat n’est pas automatique. Il dépend notamment des clients gagnés, des coûts et des règles de réponse des concurrents. Les modèles de Zach Brown et Alexander MacKay montrent néanmoins que de simples règles de tarification peuvent relever les prix d’équilibre, y compris dans un cadre qui ne repose pas sur une entente. [1](#source-1)
+
+## Le temps de gagner des clients
+
+Commençons par un calcul, pas par une intelligence artificielle.
+
+Imaginons une station qui vend 1 000 litres en une heure. Une fois retranché le coût variable retenu pour l’exercice, chaque litre laisse 10 centimes. La contribution de cette heure à la couverture des autres charges et au résultat est donc de 100 euros. Ce n’est pas un bénéfice net : il reste notamment les coûts fixes.
+
+La station réduit son prix de deux centimes. Sa contribution par litre tombe à huit centimes. Nous supposons que, tant qu’elle reste seule à pratiquer le prix réduit, son débit de ventes monte à 1 500 litres par heure. Dès que sa concurrente s’aligne, ce débit revient à 1 000 litres. Ces volumes sont des hypothèses pédagogiques, pas une estimation du comportement des automobilistes.
+
+Si la concurrente attend une heure entière, la station vend 1 500 litres avec huit centimes de contribution unitaire : elle obtient **120 euros**, soit davantage qu’en conservant son ancien tarif.
+
+Si l’alignement intervient au bout d’une minute, elle ne bénéficie du supplément de clientèle que pendant un soixantième de l’heure. Elle vend alors environ 1 008,33 litres au total, pour une contribution de **80,67 euros**. Elle a réduit son prix sur tous ses litres, mais gagné très peu de volume.
+
+<PricingAlgorithmsFigure lang="fr" figure={1} />
+
+La différence vient du temps pendant lequel la baisse permet de prendre des clients, pas du coût du logiciel. Dans cet exercice, il faut conserver cet avantage pendant au moins trente minutes pour retrouver les 100 euros de départ. Un gérant humain capable de réagir aussi vite aurait le même effet.
+
+Il faut immédiatement ajouter le contre-argument. Si le prix réduit attire durablement de nouveaux acheteurs, si la station fidélise les clients gagnés ou si elle peut produire moins cher, la baisse peut rester rentable. Un concurrent peut aussi refuser de s’aligner. La réponse rapide ne supprime donc pas mécaniquement la concurrence.
+
+**Le calcul décrit l’intérêt d’une baisse isolée sous des hypothèses fixes. Il ne prédit ni le prix final du marché ni une stratégie d’équilibre.** Il explique pourquoi la durée d’un avantage commercial mérite autant d’attention que son montant.
+
+## Une règle suffit parfois
+
+Un [algorithme de prix](/glossaire/tarification-algorithmique/) peut être très simple : il reçoit des données et applique une règle. Un outil pourrait, par exemple, signaler que le voisin vient de baisser son tarif, puis soumettre un nouveau prix à validation. Un autre peut modifier directement le prix affiché. Ces deux architectures n’accordent pas le même pouvoir au logiciel.
+
+L’apprentissage automatique ajoute une possibilité : adapter les décisions à partir des résultats obtenus. L’outil peut tester des prix et modifier son comportement. Cela ne signifie pas qu’il « comprend » le marché comme un dirigeant, ni qu’il cherche nécessairement à coordonner les vendeurs. L’objectif, les données disponibles et les marges de manœuvre qui lui sont accordées comptent. L’étude franco-allemande de 2019 distingue précisément ces familles d’outils et leurs usages. [2](#source-2)
+
+Il faut aussi séparer deux questions. La tarification personnalisée consiste à différencier les offres selon les clients. Le mécanisme étudié ici concerne d’abord les réactions entre vendeurs. Dans notre exemple, le même tarif s’affiche pour tous les automobilistes ; aucune donnée sur leur salaire ou leur historique de navigation n’est nécessaire.
+
+Enfin, le nombre de modifications ne donne pas leur direction. Un programme peut baisser les prix plus souvent, mais de très peu ; les remonter rarement, mais davantage ; ou transmettre rapidement une baisse du coût d’approvisionnement. Compter les changements ne permet pas, à lui seul, de calculer la facture du client. Pour distinguer un mouvement du coût d’approvisionnement d’une décision commerciale, notre [guide du marché pétrolier](/guides/lire-le-marche-petrolier/) présente les prix de référence, les stocks et les flux physiques.
+
+## Le signal allemand
+
+L’étude de Stephanie Assad, Robert Clark, Daniel Ershov et Lei Xu, publiée dans le *Journal of Political Economy* en mars 2024, porte sur des données allemandes de 2016 à 2018. L’adoption des outils, non observée directement, est estimée à partir de ruptures dans les comportements tarifaires. Les chercheurs mobilisent aussi leur diffusion au sein des enseignes pour traiter le problème de sélection des utilisateurs. Ils trouvent des marges plus élevées hors des marchés de monopole ; dans les marchés à deux ou trois stations, l’effet apparaît lorsque toutes adoptent. [3](#source-3)
+
+Pourquoi examiner séparément une station isolée et plusieurs stations voisines ? Parce qu’un logiciel peut améliorer la tarification pour deux raisons très différentes. Il peut mieux ajuster le prix à la demande propre du vendeur. Il peut aussi changer la manière dont ce vendeur réagit aux autres. Comparer les configurations aide à départager ces explications, sans constituer une expérience parfaite.
+
+La sélection mérite une traduction concrète. Supposons que les stations déjà confrontées à une concurrence affaiblie soient précisément celles qui achètent un nouvel outil. Observer ensuite des marges élevées ne suffirait pas à démontrer que l’outil en est la cause. À l’inverse, des stations sous pression pourraient s’équiper pour tenter de restaurer leurs marges. Une simple comparaison entre utilisateurs et non-utilisateurs serait alors également trompeuse.
+
+L’identification statistique cherche à éviter ces pièges. Elle reste dépendante d’hypothèses : la mesure de l’adoption doit être pertinente et la variation utilisée pour l’isoler ne doit pas refléter un autre changement commercial qui expliquerait directement les prix. La conclusion raisonnable est un effet estimé dans un cadre documenté, pas un diagnostic posé sur chaque station européenne.
+
+Depuis le **1er avril 2026**, le cadre allemand a changé : les stations ouvertes au public ne peuvent augmenter les prix de l’essence et du gazole qu’une fois par jour, à midi ; les baisses restent possibles à tout moment. Cette règle est postérieure aux observations de 2016–2018. L’étude ne mesure donc pas ses effets ni ceux des logiciels sous ce nouveau régime. [12](#source-12)
+
+### La marge a son propre dénominateur
+
+Autre piège de lecture : une hausse de 20 % de la marge unitaire n’est pas une hausse de 20 % du prix payé.
+
+Dans un second exemple fictif, un produit est vendu 1,80 euro et laisse 10 centimes après un coût de référence de 1,70 euro. Si ce coût reste constant et que le prix passe à 1,82 euro, la marge atteint 12 centimes. Elle augmente de 20 %, tandis que le prix n’augmente que d’environ 1,11 %.
+
+<PricingAlgorithmsFigure lang="fr" figure={2} />
+
+Les deux variations décrivent la même opération. La première mesure son importance pour le vendeur, la seconde celle du supplément payé par l’acheteur. Aucune ne dispense d’examiner les volumes ou les autres charges. Ces chiffres illustratifs ne reproduisent pas les coefficients de l’étude allemande.
+
+## En Suède, la moyenne cache l’heure du plein
+
+Le document CEPR publié par Richard Friberg le 6 janvier 2025 donne un contrepoint : sur les données suédoises de 2021 à 2023, les rares stations testant l’IA présentent des marges moyennes légèrement plus faibles, mais des prix relativement plus élevés l’après-midi. Les outils fondés sur des règles sont, eux, beaucoup plus répandus. [4](#source-4)
+
+Le rapport détaillé précise que les tests d’IA concernent huit stations d’une seule enseigne. Il souligne surtout une limite : les marges ne sont pas pondérées par les litres vendus. Les volumes à haute fréquence de l’enseigne concernée ne sont pas disponibles pour effectuer cette correction. [5](#source-5)
+
+Cette réserve change la question économique. Une station peut être moins chère lorsque presque personne ne vient, et plus chère lorsque la majorité des clients font le plein. Une moyenne des prix affichés ne mesure alors pas nécessairement le prix moyen effectivement payé.
+
+Prenons un troisième exemple, entièrement fictif, avec deux plages de même durée. Avant le changement de tarification, le litre coûte 1,80 euro dans les deux plages. Après, il coûte 1,70 euro pendant la première et 1,84 euro pendant la seconde. La moyenne des deux prix est de **1,77 euro** : elle baisse.
+
+Supposons maintenant que 20 % des litres soient achetés dans la première plage et 80 % dans la seconde, proportions maintenues constantes dans l’exercice. Le prix moyen par litre acheté devient **1,812 euro**. Il augmente légèrement par rapport au tarif initial.
+
+<PricingAlgorithmsFigure lang="fr" figure={3} />
+
+Il n’y a aucune contradiction arithmétique. On ne donne simplement pas le même poids aux deux périodes. Pour mesurer la dépense des clients, une heure vendant beaucoup de litres doit peser davantage qu’une heure creuse.
+
+**Ce scénario ne démontre pas que la facture suédoise a augmenté.** Il montre pourquoi une moyenne non pondérée ne permet pas de trancher. Si les consommateurs déplacent leurs achats vers les heures moins chères, le résultat change encore : il faut observer les prix et les quantités ensemble.
+
+La comparaison avec l’Allemagne conserve donc son intérêt, mais elle n’oppose pas deux mesures strictement équivalentes. Les périodes, les outils, la diffusion de leur usage et les méthodes diffèrent. Un test limité d’IA et l’adoption de logiciels à l’échelle d’un marché local ne constituent pas le même traitement.
+
+## Les ordinateurs du laboratoire
+
+L’hypothèse d’algorithmes apprenant une coordination a aussi été étudiée directement. Dans une expérience informatique publiée en octobre 2020, Emilio Calvano, Giacomo Calzolari, Vincenzo Denicolò et Sergio Pastorello obtiennent des prix supérieurs au niveau concurrentiel avec des algorithmes d’apprentissage qui ne communiquent pas entre eux. Dans leur modèle, une phase de baisse punitive des prix peut précéder un retour à des prix plus élevés. [6](#source-6)
+
+C’est un résultat de simulation. Les chercheurs construisent un environnement dont ils connaissent les règles, puis observent le comportement des programmes. Ils peuvent ainsi montrer qu’un mécanisme existe. Ils ne mesurent pas, avec cette expérience, combien de stations, d’hôtels ou de sites marchands l’utilisent dans le monde réel.
+
+La portée pratique de ces expériences fait elle-même débat. Dans un article mis en ligne le 9 juin 2026, Arnoud den Boer, Janusz Meylahn et Maarten Pieter Schinkel soulignent que certains résultats demandent un apprentissage extrêmement long et des concurrents équipés de manière fortement synchronisée. Ils contestent leur interprétation comme preuve d’une entente véritablement autonome et viable en entreprise. [7](#source-7)
+
+Une autre étude, publiée en ligne en août 2025, obtient toutefois des prix supérieurs au niveau concurrentiel avec des programmes différents et un apprentissage plus rapide. [8](#source-8) Cette discussion porte sur les architectures et les hypothèses testées. Elle ne fournit pas, à elle seule, un comptage des pratiques réelles.
+
+Un résultat de laboratoire ne prouve donc pas une pratique commerciale. Inversement, l’absence de messages entre deux vendeurs ne garantit pas un résultat concurrentiel. Les règles de réaction à des prix publics constituent déjà une interaction stratégique ; leur effet mérite d’être examiné indépendamment du scénario d’une IA qui apprendrait seule à s’entendre.
+
+Il serait tout aussi excessif d’affirmer que tous les vendeurs doivent s’équiper pour qu’un problème apparaisse. Un travail théorique de Brown et MacKay, révisé en août 2026, décrit des configurations dans lesquelles un seul vendeur, capable de réagir rapidement et de maintenir une règle sur plusieurs périodes, peut pousser un rival à pratiquer des prix plus élevés. Il s’agit d’un document de travail, pas d’une mesure de sa fréquence dans les marchés. [9](#source-9)
+
+Dans *Pricing with Algorithms*, publié en septembre 2026, Rohit Lamba et Sergey Zhuk étudient également des règles qui réagissent vite au prix du concurrent, mais que les vendeurs ne révisent que périodiquement. Leur modèle à deux vendeurs produit des prix supérieurs au niveau concurrentiel sous les hypothèses retenues. Ce résultat théorique souligne le rôle du calendrier des décisions ; il ne mesure pas un surcoût observé à la pompe. [13](#source-13)
+
+## Des prix publics pour deux publics
+
+La transparence a une utilité immédiate : elle permet de repérer une offre moins chère. En Allemagne, le dispositif de transparence des carburants collecte les changements de prix et les transmet à des services d’information destinés aux consommateurs. [10](#source-10)
+
+Cependant, la même information peut servir à un concurrent. Revenons à notre station fictive : rendre sa baisse plus visible peut lui apporter davantage de clients, mais aussi avertir son voisin plus vite. Le premier effet renforce l’intérêt de la baisse ; le second peut le réduire. Leur bilan dépend notamment de la vitesse à laquelle les consommateurs peuvent changer de vendeur.
+
+Un automobiliste qui compare les prix, décide d’un détour puis se déplace ne réagit pas comme un programme connecté à un flux de données. Cela ne rend pas le comparateur inutile. Cela oblige à distinguer l’économie réalisée par un utilisateur bien informé de l’effet du dispositif sur le niveau général des prix.
+
+Le rapport de l’autorité suédoise de décembre 2024 expose cette tension : un meilleur accès aux prix peut faciliter à la fois la recherche des consommateurs et l’ajustement des vendeurs. Il ne présente pas la baisse générale des prix comme un résultat empiriquement acquis dans tous les dispositifs examinés. [11](#source-11)
+
+## La preuve se joue au-delà du panneau
+
+Deux panneaux qui changent ensemble ne suffisent pas à identifier le mécanisme. Les stations peuvent subir le même choc d’approvisionnement. Elles peuvent réagir séparément au même événement. Elles peuvent utiliser des règles différentes qui produisent, à cet instant, le même résultat.
+
+Dans un dossier concret, il faudrait reconstruire les coûts pertinents, les prix réellement pratiqués après remises, les volumes, les horaires et les décisions de paramétrage. Il faudrait aussi observer les réactions aux baisses séparément des réactions aux hausses. Un alignement rapide n’a pas la même portée s’il prolonge une baisse durable ou s’il est suivi d’un rétablissement systématique du prix précédent.
+
+Le fournisseur du logiciel ajoute une autre question : des concurrents peuvent-ils y faire circuler des informations sensibles ? Cela relève d’un mécanisme distinct de l’interaction entre programmes indépendants. L’étude franco-allemande distingue précisément ces configurations ; elle rappelle également que la coordination juridiquement sanctionnable doit être distinguée du simple parallélisme de comportement. [2](#source-2)
+
+Pour la France, les travaux présentés ici ne chiffrent ni un surcoût national imputable aux logiciels ni la proportion de stations concernées. Transposer directement les résultats étrangers reviendrait à escamoter les différences que l’analyse cherche justement à comprendre.
+
+Le point établi est plus circonscrit, mais utile : **la technologie qui permet de suivre un concurrent peut aussi modifier la récompense attendue d’une baisse de prix**. Pour évaluer son effet sur le pouvoir d’achat, il faut suivre l’ensemble de la chaîne : décision tarifaire, réaction des voisins, déplacement des clients, puis dépenses effectives. La vitesse du panneau n’est que le début de l’histoire. Le passage de prix individuels à un indicateur agrégé pose encore une autre question de pondération, expliquée dans notre [guide de lecture du CPI](/guides/lire-le-cpi-inflation-us/).
+
+## Sources
+
+Consultation et vérification documentaire : **17 septembre 2026**. Les périodes étudiées sont indiquées dans le texte ; elles ne constituent pas une photographie du marché à cette date.
+
+<span id="source-1"></span>
+**1. Brown et MacKay, *Competition in Pricing Algorithms*.** *American Economic Journal: Microeconomics*, mai 2023, 15(2), p. 109-156. Résumé et notice de l’article : règles de réaction, fréquences de modification et prix d’équilibre. [Publication AEA](https://www.aeaweb.org/articles?id=10.1257/mic.20210158).
+
+<span id="source-2"></span>
+**2. Autorité de la concurrence et Bundeskartellamt, *Algorithms and Competition*.** Étude conjointe, 6 novembre 2019. Sections II ; III.B.1 à III.B.3 ; IV.A. Taxonomie, fournisseurs communs, qualification des comportements et éléments de preuve. [Étude intégrale](https://www.autoritedelaconcurrence.fr/sites/default/files/Algorithms_and_Competition_Working-Paper.pdf).
+
+<span id="source-3"></span>
+**3. Assad, Clark, Ershov et Xu, *Algorithmic Pricing and Competition: Empirical Evidence from the German Retail Gasoline Market*.** *Journal of Political Economy*, mars 2024, 132(3), p. 723-771 ; mise en ligne le 1er février 2024. Résumé de la version publiée ; sections 4, 5, 6 et 7 du manuscrit accepté, daté du 7 juin 2023. [Revue](https://www.journals.uchicago.edu/doi/10.1086/726906) ; [manuscrit ouvert sur UCL Discovery](https://discovery.ucl.ac.uk/id/eprint/10187765/1/draft_v15_JPE_main.pdf).
+
+<span id="source-4"></span>
+**4. Friberg, *Pricing Algorithms: A Survey of the Literature and an Examination of their Use on the Swedish Gasoline Market*.** CEPR DP19830, 6 janvier 2025. Résumé public ; données de 2021 à 2023. [Notice CEPR](https://cepr.org/publications/dp19830).
+
+<span id="source-5"></span>
+**5. Friberg, rapport sur la tarification algorithmique des carburants en Suède.** Rapport de fond daté de décembre 2024, associé au rapport 2024:7 de Konkurrensverket, dans sa version accessible à la consultation. Section 3.1, tableau 1, p. imprimée 31 ; discussion des pondérations, p. 35 et note 56, p. 38. Période : 1er janvier 2021 au 31 août 2023. [Rapport en suédois](https://www.konkurrensverket.se/globalassets/dokument/informationsmaterial/rapporter-och-broschyrer/rapportserie/rapport_2024-7_underlagsrapport.pdf).
+
+<span id="source-6"></span>
+**6. Calvano, Calzolari, Denicolò et Pastorello, *Artificial Intelligence, Algorithmic Pricing, and Collusion*.** *American Economic Review*, octobre 2020, 110(10), p. 3267-3297. Résumé de l’expérience informatique et accès au matériel de réplication. [Publication AEA](https://www.aeaweb.org/articles?id=10.1257/aer.20190623).
+
+<span id="source-7"></span>
+**7. Den Boer, Meylahn et Schinkel, *Artificial Collusion: Examining Supracompetitive Pricing by Q-Learning Algorithms*.** *Management Science*, mise en ligne le 9 juin 2026. Résumé de l’analyse des conditions d’apprentissage et de la portée pratique des résultats avec Q-learning. [Publication INFORMS](https://pubsonline.informs.org/doi/10.1287/mnsc.2024.08557).
+
+<span id="source-8"></span>
+**8. Bhole et Surana, *Tacit Collusion by Pricing Algorithms*.** *Economic Inquiry*, 63(4), p. 1036-1065, octobre 2025 ; première publication en ligne le 1er août 2025. Résumé de simulations portant sur plusieurs algorithmes. [Publication Wiley](https://onlinelibrary.wiley.com/doi/10.1111/ecin.70004).
+
+<span id="source-9"></span>
+**9. Brown et MacKay, *Algorithmic Coercion with Faster Pricing*.** NBER WP34070, juillet 2025 ; révision indiquée en août 2026. Résumé public du modèle, sans validation empirique de sa prévalence. [Notice NBER](https://www.nber.org/papers/w34070).
+
+<span id="source-10"></span>
+**10. Bundeskartellamt, *Market Transparency Unit for Fuels*.** Page institutionnelle de présentation, non datée. Collecte et diffusion des prix aux services d’information des consommateurs. [Présentation officielle](https://www.bundeskartellamt.de/EN/Tasks/markettransparencyunit_fuels/markettransparencyunit_fuels.html).
+
+<span id="source-11"></span>
+**11. Konkurrensverket, *Competition in the Road Fuel Sector*.** Rapport 2024:7, décembre 2024, version anglaise. Résumé et analyse des dispositifs de comparaison des prix. [Rapport officiel](https://www.konkurrensverket.se/globalassets/dokument/informationsmaterial/rapporter-och-broschyrer/rapportserie/rapport_2024-7_english.pdf).
+
+<span id="source-12"></span>
+**12. Allemagne, *Kraftstoffpreisanpassungsgesetz* (KPAnG).** Loi du 27 mars 2026, entrée en vigueur le 1er avril 2026 ; § 1 et § 2. Essence et gazole dans les stations ouvertes au public, hausse autorisée une fois par jour à midi. [Texte sur le portail juridique fédéral](https://www.gesetze-im-internet.de/kpang/BJNR0520B0026.html).
+
+<span id="source-13"></span>
+**13. Lamba et Zhuk, *Pricing with Algorithms*.** *American Economic Review: Insights*, septembre 2026, 8(3), p. 320-340. Résumé du modèle de duopole, règles de réaction et révision périodique. [Publication AEA](https://www.aeaweb.org/articles?id=10.1257/aeri.20240436).
+
+## Méthode des illustrations
+
+Les trois figures sont des **calculs pédagogiques l0g**, datés du 17 septembre 2026. Leurs nombres ne proviennent d’aucune station réelle. Dans la première, pour un délai d’alignement *t* compris entre 0 et 60 minutes, le volume horaire est `1 000 + 500 × t / 60` ; la contribution est ce volume multiplié par `0,08 €`. Le seuil est obtenu en égalisant cette expression à `100 €`. Les flux sont supposés continus, les coûts inchangés et la réaction de la demande immédiate. Aucun comportement d’équilibre n’est simulé.
+
+Dans la deuxième, les variations sont `0,02 / 0,10 = 20 %` pour la marge unitaire et `0,02 / 1,80 ≈ 1,11 %` pour le prix. Dans la troisième, les deux plages ont la même durée ; la moyenne simple est `(1,70 + 1,84) / 2 = 1,770 €`, la moyenne pondérée par les volumes est `1,70 × 20 % + 1,84 × 80 % = 1,812 €`. Le volume total et sa répartition restent fixes. Les arrondis monétaires sont appliqués à l’affichage.
+
+## Limites
+
+L’article rapproche des mécanismes théoriques et des résultats empiriques de périmètres différents. Il ne constitue ni une méta-analyse, ni une réplication économétrique, ni un audit de logiciels commerciaux. Les marges des études ne sont pas des bénéfices nets. Les résultats suédois non pondérés ne permettent pas de calculer la dépense effective des consommateurs. Le manuscrit allemand ouvert et la notice de la version publiée sont identifiés séparément. Les expériences informatiques et les exemples fictifs ne mesurent pas la fréquence des pratiques. Aucune entreprise n’est présentée ici comme ayant commis une infraction.
+
+Texte et illustrations originales : l0g, CC BY 4.0. Les travaux cités restent soumis à leurs licences respectives.
