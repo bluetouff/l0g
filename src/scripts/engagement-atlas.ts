@@ -1,4 +1,4 @@
-import { assertAtlasDataset, atlasAt, atlasSelection, formatAtlasDate, type AtlasDataset } from '../lib/engagement-atlas.ts';
+import { assertAtlasDataset, atlasAt, atlasSelection, atlasSourceUrl, formatAtlasDate, type AtlasDataset } from '../lib/engagement-atlas.ts';
 
 function initAtlas(root: HTMLElement) {
   let dataset: AtlasDataset;
@@ -132,7 +132,7 @@ function initAtlas(root: HTMLElement) {
     for (const id of selected.observation.sources) {
       const source = snapshot.sources.find(item => item.id === id)!;
       const li = document.createElement('li'), a = document.createElement('a'), locator = document.createElement('p');
-      a.href = source.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = `${source.title} ↗`;
+      a.href = atlasSourceUrl(source.url); a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = `${source.title} ↗`;
       locator.textContent = source.locator; li.append(a, locator); sources.append(li);
     }
     put('[data-copy-status]', '');

@@ -30,6 +30,14 @@ const allowedOrigins = new Set([
   'https://www.sec.gov', 'https://ir.blackrock.com', 'https://www.apollo.com',
   'https://www.quadrantchambers.com', 'https://eiti.org', 'https://www.trafigura.com',
 ]);
+/** Canonical source URL shared by corpus validation and the browser link sink. */
+export function atlasSourceUrl(value: string): string {
+  text(value, 1500);
+  const url = new URL(value);
+  if (url.protocol !== 'https:' || !allowedOrigins.has(url.origin) || url.username || url.password || url.search || url.hash) throw new Error('Atlas : origine ou URL source refusée');
+  if (url.origin === 'https://www.sec.gov' && !/^\/Archives\/edgar\/data\/\d+\/\d+\/[a-zA-Z0-9._-]+\.htm$/.test(url.pathname)) throw new Error('Atlas : chemin SEC refusé');
+  return url.href;
+}
 const idPattern = /^[a-z][a-z0-9-]{0,79}$/;
 function requireValue(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(`Atlas : ${message}`);
@@ -69,10 +77,7 @@ export function assertAtlasDataset(value: unknown, allowProposals = false): asse
   for (const source of value.sources) {
     object(source); id(source.id); text(source.title, 240); text(source.locator, 400); date(source.publishedOn); text(source.url, 1500);
     keys(source, ['id', 'title', 'url', 'publishedOn', 'locator']);
-    let url: URL;
-    try { url = new URL(source.url); } catch { throw new Error('Atlas : URL source invalide'); }
-    requireValue(allowedOrigins.has(url.origin) && !url.username && !url.password && !url.search && !url.hash, 'origine ou URL source refusée');
-    requireValue(url.origin !== 'https://www.sec.gov' || /^\/Archives\/edgar\/data\/\d+\/\d+\/[a-zA-Z0-9._-]+\.htm$/.test(url.pathname), 'chemin SEC refusé');
+    atlasSourceUrl(source.url);
     sources.set(source.id, source.publishedOn);
   }
   const positions = new Set<string>();

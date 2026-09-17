@@ -1,4 +1,4 @@
-import { readFileSync, statSync } from 'node:fs';
+import { readAtlasJson } from './read-atlas-json.mjs';
 import { resolve } from 'node:path';
 import { assertAtlasDataset } from '../src/lib/engagement-atlas.ts';
 
@@ -12,8 +12,7 @@ const paths = proposal ? [args[1]] : ['src/data/engagement-atlas.json', 'src/dat
 try {
   for (const entry of paths) {
     const path = resolve(entry);
-    if (statSync(path).size > 500_000) throw new Error('Taille excessive');
-    const data = JSON.parse(readFileSync(path, 'utf8'));
+    const data = readAtlasJson(path);
     assertAtlasDataset(data, proposal);
     console.log(proposal
       ? 'Structure de proposition valide. Aucune approbation éditoriale ni écriture dans le corpus publié.'
