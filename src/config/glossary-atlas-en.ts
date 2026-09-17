@@ -203,6 +203,26 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'sieg', sigle: 'SGEI', nom: 'Service of general economic interest', ...macroSection,
+    def: 'An economic activity subject to public-service obligations assigned by a public authority. Compensation may cover the net cost of those obligations under the applicable EU rules. Approval does not establish that money has been disbursed or manufacturing commitments fulfilled.',
+    guide: '/en/analysis/drug-shortages-price-of-reliability/',
+    atlas: {
+      intuition: 'Payment covers defined obligations beyond the units sold.',
+      articles: [{ label: 'The price of reliable medicine supply', href: '/en/analysis/drug-shortages-price-of-reliability/', kind: 'article' }],
+      sources: [{ label: 'European Commission, Sanofi aid, 8 September 2026', href: 'https://germany.representation.ec.europa.eu/nachrichten-und-veranstaltungen/pressemitteilungen/kommission-genehmigt-deutsche-beihilfe-von-400-mio-euro-zur-versorgungssicherheit-bei-insulin-2026-09-08_de', kind: 'source' }],
+    },
+  },
+  {
+    slug: 'principe-actif', sigle: 'API', nom: 'Active pharmaceutical ingredient', ...macroSection,
+    def: 'The substance responsible for a medicine’s effect. Further manufacturing and packaging turn it into the product intended for the patient. Active-ingredient inventory and ready-to-dispense medicine inventory therefore protect different stages of supply.',
+    guide: '/en/analysis/drug-shortages-price-of-reliability/',
+    atlas: {
+      intuition: 'Material available upstream does not guarantee manufacturing capacity downstream.',
+      articles: [{ label: 'The price of reliable medicine supply', href: '/en/analysis/drug-shortages-price-of-reliability/', kind: 'article' }],
+      sources: [{ label: 'GAO, Drug Shortages, 2025', href: 'https://files.gao.gov/reports/GAO-25-107110/index.html', kind: 'source' }],
+    },
+  },
+  {
     slug: 'risque-de-sequence', sigle: 'Sequence risk', nom: 'Sequence-of-returns risk',
     def: 'The risk arising from the timing of investment returns when a portfolio funds withdrawals. Early losses can force the sale of more units, leaving less capital to participate in a recovery. Two sequences with the same compound return may therefore support different incomes. The effect depends on the withdrawal rule and other available resources.',
     guide: '/en/analysis/retirement-sequence-of-returns-risk/', ...privateCreditSection,

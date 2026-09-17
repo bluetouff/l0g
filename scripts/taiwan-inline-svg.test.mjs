@@ -34,6 +34,7 @@ import './clarity-infographics.test.mjs';
 import './ai-debt-infographics.test.mjs';
 import './software-debt-stress.test.mjs';
 import './retirement-sequence.test.mjs';
+import './medicine-supply.test.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 

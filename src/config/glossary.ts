@@ -30,6 +30,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'SIEG', nom: 'Service d’intérêt économique général', def: 'Activité économique à laquelle une autorité publique impose des obligations de service public. Une compensation peut financer les coûts nets de ces obligations dans le cadre des règles européennes applicables. Son autorisation ne constate ni son versement ni la réalisation des engagements industriels.', guide: '/posts/penuries-medicaments-prix-disponibilite/' },
+      { sigle: 'Principe actif', nom: 'Active pharmaceutical ingredient', def: 'Substance responsable de l’effet du médicament. Elle doit encore être transformée et conditionnée pour obtenir le produit destiné au patient. Un stock de principe actif et un stock de médicaments prêts à délivrer protègent donc des étapes différentes de l’approvisionnement.', guide: '/posts/penuries-medicaments-prix-disponibilite/' },
       { sigle: 'Reverse Yankee', nom: 'Obligation américaine en devise étrangère', def: "Obligation émise par une entreprise américaine dans une devise étrangère, notamment l’euro. Son coût dépend du taux de référence, de la prime de crédit et, le cas échéant, de la couverture du change. Un coupon plus faible dans une autre monnaie ne suffit donc pas à établir une économie de financement.", guide: '/posts/dette-ia-concurrence-etats-taux-credit/' },
       { sigle: 'Incidence fiscale', nom: 'Tax incidence', def: "Répartition économique finale de la charge d’un impôt entre les agents. Elle peut différer de l’identité du redevable légal qui verse la taxe. Pour un droit de douane, les ajustements de prix et de marges peuvent répartir la charge entre fournisseurs, importateurs et clients. Cette répartition dépend des conditions du marché et doit être estimée.", guide: '/posts/trump-5000-dollars-dividende-promesse-dette/' },
       { sigle: 'Stérilisation monétaire', nom: 'Monetary sterilisation', def: "Opération par laquelle une banque centrale compense l’effet d’une intervention sur la liquidité bancaire. Après un achat de devises ou d’or payé en monnaie locale, elle peut retirer la liquidité créée, notamment en émettant des titres rémunérés. Les intérêts versés constituent un coût distinct du résultat de l’achat initial.", guide: '/posts/ghana-or-cedi-goldbod-cout-devises/' },
@@ -850,6 +852,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'sieg': {
+    intuition: 'Le paiement rémunère des obligations définies au-delà des unités vendues.',
+    articles: [{ label: 'Le prix de la disponibilité des médicaments', href: '/posts/penuries-medicaments-prix-disponibilite/', kind: 'article' }],
+    sources: [{ label: 'Commission européenne, aide à Sanofi, 8 septembre 2026', href: 'https://germany.representation.ec.europa.eu/nachrichten-und-veranstaltungen/pressemitteilungen/kommission-genehmigt-deutsche-beihilfe-von-400-mio-euro-zur-versorgungssicherheit-bei-insulin-2026-09-08_de', kind: 'source' }],
+  },
+  'principe-actif': {
+    intuition: 'La présence de substance en amont ne garantit pas la capacité de fabrication en aval.',
+    articles: [{ label: 'Le prix de la disponibilité des médicaments', href: '/posts/penuries-medicaments-prix-disponibilite/', kind: 'article' }],
+    sources: [{ label: 'GAO, Drug Shortages, 2025', href: 'https://files.gao.gov/reports/GAO-25-107110/index.html', kind: 'source' }],
+  },
   'risque-de-sequence': {
     intuition: 'L’ordre des rendements compte dès que des retraits changent le montant qui reste investi.',
     articles: [{ label: 'Retraite : le piège du rendement moyen', href: '/posts/retraite-risque-sequence-rendements/', detail: 'Exemples fictifs et simulateur de décaissement.', kind: 'article' }],

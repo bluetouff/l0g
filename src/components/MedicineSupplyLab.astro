@@ -1,0 +1,12 @@
+---
+import { renderMedicineSupplyLab } from '../lib/medicineSupplyView.mjs';
+import '../styles/medicine-supply.css';
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+---
+<div set:html={renderMedicineSupplyLab(lang)} />
+<script>
+  import { mountMedicineSupplyLabs } from '../lib/medicineSupplyClient.mjs';
+  mountMedicineSupplyLabs();
+  document.addEventListener('astro:page-load', () => mountMedicineSupplyLabs());
+</script>

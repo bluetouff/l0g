@@ -28,8 +28,8 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 534, 'Le corpus doit conserver ses 534 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 87, 'Le graphe Atlas doit conserver ses 87 nœuds');
+assert.equal(glossaryEntries.length, 536, 'Le corpus doit conserver ses 536 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 89, 'Le graphe Atlas doit conserver ses 89 nœuds');
 assert.equal(glossaryAtlasEdgeCount, 382, 'Le graphe Atlas doit conserver ses 382 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'risque-de-sequence'), '/posts/retraite-risque-sequence-rendements/'],

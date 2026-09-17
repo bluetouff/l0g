@@ -1,0 +1,7 @@
+---
+import { renderMedicineFigure } from '../lib/medicineSupplyFigures.mjs';
+import '../styles/medicine-supply.css';
+interface Props { lang?: 'fr' | 'en'; kind?: 'chain' | 'stock' | 'commitments'; }
+const { lang = 'fr', kind = 'chain' } = Astro.props;
+---
+<div set:html={renderMedicineFigure(lang, kind)} />
