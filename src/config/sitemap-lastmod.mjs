@@ -131,20 +131,26 @@ export function sitemapLastmod(pageUrl) {
     paths.add('src/pages/[...page].astro');
     posts.forEach((path) => paths.add(path));
   } else if (pathname === '/atlas/') {
+    paths.add('src/config/atlases.ts');
+    paths.add('src/lib/atlas-legacy-links.ts');
+  } else if (pathname === '/atlas/financement-ia/') {
     paths.add('src/data/engagement-atlas.json');
     paths.add('src/lib/engagement-atlas.ts');
     paths.add('src/components/EngagementAtlas.astro');
     paths.add('src/components/AtlasNavigation.astro');
+    paths.add('src/config/atlases.ts');
   } else if (pathname === '/atlas/credit-prive/') {
     paths.add('src/data/private-credit-atlas.json');
     paths.add('src/lib/engagement-atlas.ts');
     paths.add('src/components/EngagementAtlas.astro');
     paths.add('src/components/AtlasNavigation.astro');
+    paths.add('src/config/atlases.ts');
   } else if (pathname === '/atlas/petrole/') {
     paths.add('src/data/oil-financing-atlas.json');
     paths.add('src/lib/engagement-atlas.ts');
     paths.add('src/components/EngagementAtlas.astro');
     paths.add('src/components/AtlasNavigation.astro');
+    paths.add('src/config/atlases.ts');
   } else if (pathname === '/guides/') {
     guides.forEach((path) => paths.add(path));
     guidesEn.forEach((path) => paths.add(path));

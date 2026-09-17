@@ -4,9 +4,12 @@
 
 Trois pages partagent le composant `EngagementAtlas.astro`, les contrôles de dates et la sélection des relations. Chaque atlas porte un nom thématique, repris dans le H1, les métadonnées, la navigation et le corpus JSON.
 
-- **Atlas du financement de l’IA** : `/atlas/`, corpus `src/data/engagement-atlas.json`, export `/api/v1/engagement-atlas.json`.
+- **Accueil des atlas** : `/atlas/`, galerie définie dans `src/config/atlases.ts`.
+- **Atlas du financement de l’IA** : `/atlas/financement-ia/`, corpus `src/data/engagement-atlas.json`, export `/api/v1/engagement-atlas.json`.
 - **Atlas du crédit privé** : `/atlas/credit-prive/`, corpus `src/data/private-credit-atlas.json`, export `/api/v1/private-credit-atlas.json`.
 - **Atlas du financement du pétrole** : `/atlas/petrole/`, corpus `src/data/oil-financing-atlas.json`, export `/api/v1/oil-financing-atlas.json`.
+
+Les anciens liens `/atlas/#date=…&relation=…` conservent leur sélection sur la page dédiée à l’IA. La galerie reste accessible sans JavaScript ; le transfert des anciens fragments utilise un script externe vers une destination locale fixe.
 
 Aucun calcul de contagion, de perte probable ou d’exposition de portefeuille n’est dérivé des graphes. Les URLs et liens de lecture existants de l’atlas IA sont conservés.
 
