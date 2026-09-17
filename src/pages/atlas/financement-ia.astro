@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EngagementAtlas from '../../components/EngagementAtlas.astro';
+import dataset from '../../data/engagement-atlas.json';
+---
+
+<BaseLayout title={dataset.title} seoTitle="Atlas du financement de l’IA : Nvidia, OpenAI | l0g" description="Nvidia, OpenAI, SB Energy et AIP : explorez les acteurs, les contrats et les garanties du financement de l’intelligence artificielle." ogImage="/illustrations/news/openai-credit-guarantee-v1.jpg" sidebar={false}>
+  <EngagementAtlas
+    dataset={dataset}
+    subject="financement de l’IA"
+    intro="Nvidia, OpenAI, SB Energy et AIP : qui finance les infrastructures de l’intelligence artificielle, qui garantit quoi et sous quelles conditions ? Explorez les relations documentées et leur évolution au fil des publications."
+    boundary="La présence de Nvidia dans ces deux montages n’établit pas qu’AIP finance le campus de SB Energy. La carte couvre les sources listées dans chaque fiche."
+    selectedRelation="nvidia-sb-guarantee"
+    hubs={['nvidia', 'aip']}
+    entryPoints={[
+      { label: 'Qui paie si OpenAI ne paie plus ?', relation: 'nvidia-sb-guarantee', date: dataset.milestones.at(-1)!.date, scenario: true },
+      { label: 'Comment le rôle de Nvidia évolue-t-il ?', relation: 'nvidia-aip', date: '2025-03-19' },
+    ]}
+    outlinks={[
+      { href: '/posts/nvidia-500-milliards-qui-n-existent-pas-encore/#suivi-septembre-2026', label: 'Lire l’enquête et son suivi' },
+      { href: '/api/v1/engagement-atlas.json', label: 'Réutiliser les relations et leurs sources · JSON' },
+      { href: '/radar/', label: 'Explorer les transmissions macroéconomiques' },
+    ]}
+  />
+</BaseLayout>

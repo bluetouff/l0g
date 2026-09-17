@@ -3,6 +3,18 @@ import test from 'node:test';
 import './atlas-security.test.mjs';
 import { readFileSync } from 'node:fs';
 import { assertAtlasDataset, atlasAt, atlasSelection, isAtlasDate } from '../src/lib/engagement-atlas.ts';
+import { legacyAtlasDestination } from '../src/lib/atlas-legacy-links.ts';
+
+test('legacy AI links retain the selected date, relation and scenario on the dedicated page', () => {
+  assert.equal(legacyAtlasDestination('#date=2026-08-17&relation=openai-sb-lease&scenario=default'), '/atlas/financement-ia/#date=2026-08-17&relation=openai-sb-lease&scenario=default');
+  assert.equal(legacyAtlasDestination('#preuve-nvidia-sb-guarantee'), '/atlas/financement-ia/#preuve-nvidia-sb-guarantee');
+  assert.equal(legacyAtlasDestination('#atlas-relations'), '/atlas/financement-ia/#atlas-relations');
+});
+
+test('collection fragments and untrusted redirect targets cannot change the destination', () => {
+  for (const hash of ['', '#collection', '#https://evil.example', '#relation=javascript:alert(1)', '#date=bad', '#scenario=default', '#date=' + '0'.repeat(1200)]) assert.equal(legacyAtlasDestination(hash), null);
+  assert.equal(legacyAtlasDestination('#date=2026-08-17&next=https://evil.example&token=secret'), '/atlas/financement-ia/#date=2026-08-17');
+});
 
 const source = JSON.parse(readFileSync(new URL('../src/data/engagement-atlas.json', import.meta.url), 'utf8'));
 const credit = JSON.parse(readFileSync(new URL('../src/data/private-credit-atlas.json', import.meta.url), 'utf8'));
