@@ -9,7 +9,6 @@ import PostHero from '../components/PostHero.astro';
 import RiskBand from '../components/RiskBand.astro';
 import SectionSignature from '../components/SectionSignature.astro';
 import WeeklyCta from '../components/WeeklyCta.astro';
-import NvidiaFollowUp from '../components/NvidiaFollowUp.astro';
 import { readingTime } from '../lib/reading-time.ts';
 import { accentForTags, topicLabelForTags } from '../config/topics.ts';
 
@@ -86,7 +85,6 @@ const needCards = [
     </section>
   )}
 
-  {isFirst && <NvidiaFollowUp />}
   {isFirst && <WeeklyCta variant="home" />}
 
   {!isFirst && (
