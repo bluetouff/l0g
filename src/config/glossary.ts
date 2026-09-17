@@ -216,6 +216,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: 'var(--color-accent)',
     entries: [
+      { sigle: 'DSCR', nom: 'Ratio de couverture du service de la dette', def: 'Rapport entre la trésorerie disponible pour la dette et les intérêts et remboursements de principal exigibles sur la même période. Sous 1, ces flux ne couvrent pas les paiements dus. Le calcul exact dépend du contrat ; ce ratio ne mesure ni la valeur du collatéral ni la solvabilité à lui seul.', guide: '/posts/crux-ai-google-blackstone-banques-puces-collateral/' },
+      { sigle: 'Step-in rights', nom: 'Droits de substitution des prêteurs', def: 'Droits contractuels permettant aux prêteurs, sous certaines conditions, d’intervenir dans un projet en difficulté ou de faire remplacer son exploitant. Ils peuvent préserver des contrats essentiels à l’activité. Leur portée et leur opposabilité dépendent du droit applicable et des accords signés ; un nantissement de matériel ne les crée pas automatiquement.', guide: '/posts/crux-ai-google-blackstone-banques-puces-collateral/' },
       { sigle: 'Risque de séquence', nom: 'Ordre des rendements et retraits du portefeuille', def: 'Risque lié au calendrier des rendements lorsqu’un portefeuille finance des retraits. Des pertes en début de décaissement peuvent imposer la vente de davantage de parts et réduire le capital qui bénéficiera d’une reprise. Deux séries ayant le même rendement composé peuvent alors financer des revenus différents. L’effet dépend de la règle de retrait et des autres ressources disponibles.', guide: '/posts/retraite-risque-sequence-rendements/' },
       { sigle: 'Unité de compte', nom: 'Support d’investissement d’un contrat d’assurance-vie', def: "Mode d’expression d’un engagement d’assurance dont la valeur en euros suit celle d’un support financier ou immobilier. L’assureur s’engage sur un nombre d’unités ; le risque de variation de leur valeur revient à l’assuré, sous réserve de garanties particulières du contrat. Le calendrier de paiement du rachat et la liquidité du fonds sous-jacent sont deux questions distinctes.", guide: '/posts/scpi-assurance-vie-banques-contagion/' },
       { sigle: 'Niveau 3 IFRS 9', nom: 'Actif financier déprécié pour risque de crédit', def: "Catégorie d’actifs financiers pour lesquels une dépréciation liée au risque de crédit est constatée. La part d’un portefeuille classée en niveau 3 mesure l’encours concerné ; elle ne donne pas le montant définitivement perdu. Les provisions, les garanties et les recouvrements doivent être examinés séparément.", guide: '/posts/scpi-assurance-vie-banques-contagion/' },
@@ -852,6 +854,17 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  dscr: {
+    formula: 'DSCR = trésorerie disponible pour la dette / service de la dette sur la même période',
+    articles: [{ label: 'Crux AI : les puces en garantie', href: '/posts/crux-ai-google-blackstone-banques-puces-collateral/', kind: 'article' }],
+    sources: [{ label: 'BERD, guide d’évaluation des PPP (hébergé par la Banque mondiale)', href: 'https://ppp.worldbank.org/sites/default/files/2024-07/VOLUME2-web.pdf', kind: 'source' }],
+    related: ['step-in-rights', 'ltv'],
+  },
+  'step-in-rights': {
+    articles: [{ label: 'Crux AI : les puces en garantie', href: '/posts/crux-ai-google-blackstone-banques-puces-collateral/', kind: 'article' }],
+    sources: [{ label: 'Banque mondiale, protection des prêteurs', href: 'https://ppp.worldbank.org/lender-protections-and-government-support-ppps', kind: 'source' }],
+    related: ['dscr', 'take-or-pay'],
+  },
   'sieg': {
     intuition: 'Le paiement rémunère des obligations définies au-delà des unités vendues.',
     articles: [{ label: 'Le prix de la disponibilité des médicaments', href: '/posts/penuries-medicaments-prix-disponibilite/', kind: 'article' }],

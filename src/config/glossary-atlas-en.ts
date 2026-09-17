@@ -203,6 +203,27 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'dscr', sigle: 'DSCR', nom: 'Debt-service coverage ratio', ...privateCreditSection,
+    def: 'Cash available for debt service divided by interest and principal payments due over the same period. Below 1, those cash flows do not cover the payments. Contractual definitions vary; the ratio alone measures neither collateral value nor solvency.',
+    guide: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/',
+    atlas: {
+      formula: 'DSCR = cash available for debt service / debt service over the same period',
+      articles: [{ label: 'Crux AI: chips as collateral', href: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/', kind: 'article' }],
+      sources: [{ label: 'EBRD, PPP project appraisal guidelines (hosted by the World Bank)', href: 'https://ppp.worldbank.org/sites/default/files/2024-07/VOLUME2-web.pdf', kind: 'source' }],
+      related: ['step-in-rights', 'ltv'],
+    },
+  },
+  {
+    slug: 'step-in-rights', sigle: 'Step-in rights', nom: 'Contractual lender intervention rights', ...privateCreditSection,
+    def: 'Contractual rights allowing lenders, under specified conditions, to intervene in a distressed project or arrange a replacement operator. They can preserve essential operating contracts. Their scope and enforceability depend on governing law and signed agreements; a security interest in equipment does not automatically create them.',
+    guide: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/',
+    atlas: {
+      articles: [{ label: 'Crux AI: chips as collateral', href: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/', kind: 'article' }],
+      sources: [{ label: 'World Bank, lender protections', href: 'https://ppp.worldbank.org/lender-protections-and-government-support-ppps', kind: 'source' }],
+      related: ['dscr', 'take-or-pay'],
+    },
+  },
+  {
     slug: 'sieg', sigle: 'SGEI', nom: 'Service of general economic interest', ...macroSection,
     def: 'An economic activity subject to public-service obligations assigned by a public authority. Compensation may cover the net cost of those obligations under the applicable EU rules. Approval does not establish that money has been disbursed or manufacturing commitments fulfilled.',
     guide: '/en/analysis/drug-shortages-price-of-reliability/',

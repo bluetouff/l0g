@@ -28,9 +28,24 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 536, 'Le corpus doit conserver ses 536 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 89, 'Le graphe Atlas doit conserver ses 89 nœuds');
-assert.equal(glossaryAtlasEdgeCount, 382, 'Le graphe Atlas doit conserver ses 382 relations');
+assert.equal(glossaryEntries.length, 538, 'Le corpus doit conserver ses 538 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 91, 'Le graphe Atlas doit conserver ses 91 nœuds');
+assert.equal(glossaryAtlasEdgeCount, 386, 'Le graphe Atlas doit conserver ses 386 relations');
+for (const [slug, source] of [
+  ['dscr', 'https://ppp.worldbank.org/sites/default/files/2024-07/VOLUME2-web.pdf'],
+  ['step-in-rights', 'https://ppp.worldbank.org/lender-protections-and-government-support-ppps'],
+]) {
+  const fr = glossaryEntries.find((entry) => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr && en, `${slug} doit conserver ses définitions FR/EN`);
+  assert.equal(fr.guide, '/posts/crux-ai-google-blackstone-banques-puces-collateral/');
+  assert.equal(en.guide, '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map((item) => item.href), [source]);
+    assert.equal(entry.atlas.articles[0].href, entry.guide);
+    for (const related of entry.atlas.related) assert(glossaryEntries.some((item) => item.slug === related));
+  }
+}
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'risque-de-sequence'), '/posts/retraite-risque-sequence-rendements/'],
   [glossaryAtlasEnBySlug.get('risque-de-sequence'), '/en/analysis/retirement-sequence-of-returns-risk/'],

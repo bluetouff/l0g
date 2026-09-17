@@ -1,0 +1,199 @@
+---
+title: 'Crux AI : le risque bancaire derrière les puces de Google'
+seoTitle: 'Crux AI : Google, BNP et les puces en garantie | l0g'
+ogTitle: 'Crux AI : 22 milliards de crédit et des puces en garantie'
+description: Le crédit de 22 milliards de dollars rapporté pour Crux AI relie Google, Blackstone et BNP.
+  Analyse des puces en garantie et du risque bancaire.
+pubDate: 2026-09-17T10:01:20Z
+tags: ["IA", "banques", "Google", "Blackstone", "BNP Paribas", "Crux AI", "crédit", "data centers", "énergie"]
+draft: false
+ogImage: /illustrations/news/crux-ai-credit-infrastructure-v1.jpg
+quickTake:
+  fact: Reuters rapporte un crédit de 22 milliards de dollars à Crux AI, avec BNP parmi les prêteurs et des puces
+    et contrats clients en garantie.
+  importance: La protection des créanciers dépend de la capacité à maintenir le calcul et les paiements après une
+    défaillance.
+  uncertainty: La documentation du crédit, les droits sur les sites et l’énergie ainsi que la part conservée par
+    chaque banque ne sont pas publics.
+---
+
+import CruxAiFigure from '../../components/CruxAiFigure.astro';
+
+*Google fournit les processeurs. Crux AI doit en tirer des revenus. Les banques avancent l’argent. Entre ces trois opérations, il faut encore un centre de données qui fonctionne, des clients qui paient et des contrats qui résistent à une défaillance. L’annonce d’un crédit de 22 milliards de dollars ouvre une question très concrète : que récupère réellement le prêteur lorsqu’il prend des puces en garantie ?*
+
+Le 16 septembre 2026, Reuters rapporte, en citant une source proche du dossier, un prêt de **22 milliards de dollars**, réunissant dix banques, dont BNP Paribas, à Crux AI, l’entreprise créée par Google et Blackstone. Les puces Google et les contrats clients serviraient de garanties ; une syndication est en cours et un refinancement obligataire pourrait suivre. Sur ces derniers éléments, Reuters cite Bloomberg. **Une opération envisagée ne constitue pas un refinancement réalisé.** [S01](https://www.reuters.com/world/asia-pacific/banks-provide-22-billion-chip-loan-blackstone-alphabet-cloud-venture-bloomberg-2026-09-16/)
+
+Un prêt garanti par du matériel informatique dépend de la valeur que ce matériel conserve après un défaut. Cette valeur peut diminuer si les machines perdent l’accès au site, à l’électricité, au refroidissement ou aux logiciels qui permettent de les exploiter. **Le périmètre des garanties doit donc être examiné au-delà des seuls processeurs.**
+
+Crux affirme qu’elle planifie, possède et exploite des centres de données intégrant l’alimentation électrique et le refroidissement. **La description d’une infrastructure intégrée ne précise toutefois pas les droits accordés aux prêteurs.** Le site de l’entreprise ne documente ni le périmètre des sûretés ni les conditions dans lesquelles les banques pourraient maintenir l’exploitation ou la transférer à un repreneur. [S03](https://crux.ai/)
+
+L’exposition bancaire dépend ainsi de deux capacités distinctes : celle de Crux à dégager la trésorerie nécessaire au remboursement, et celle des créanciers à récupérer une valeur suffisante en cas de défaut. Une garantie sur les équipements protège moins efficacement les prêteurs si les droits indispensables à leur exploitation ne sont pas préservés.
+
+## Google vend les équipements ; la dette doit vivre des clients
+
+Une TPU, pour *Tensor Processing Unit*, est un processeur conçu par Google pour les calculs d’intelligence artificielle. Le métier envisagé consiste à exploiter ces équipements et à vendre de la capacité de calcul. La puce est un outil de production ; le service facturé au client est le produit. [S02](https://www.blackstone.com/news/press/blackstone-announces-joint-venture-with-google-to-create-new-tpu-cloud/) [S07](https://cloud.google.com/tpu)
+
+Lors de l’annonce du partenariat, le **18 mai 2026**, Blackstone a indiqué un engagement initial de **5 milliards de dollars de fonds propres provenant de fonds qu’il gère**. Google doit fournir du matériel, des logiciels et des services. Le lancement de Crux sous son nom a été annoncé le **9 septembre**. L’objectif public est une première capacité de **500 mégawatts en 2027** : une puissance prévue, pas de l’électricité déjà consommée ni une installation déjà opérationnelle. [S02](https://www.blackstone.com/news/press/blackstone-announces-joint-venture-with-google-to-create-new-tpu-cloud/) [S04](https://www.businesswire.com/news/home/20260909928254/en/)
+
+Google participe ainsi à la création d’un débouché pour ses propres équipements. Ce lien entre fournisseur et acheteur appelle un examen des revenus attendus, mais ne suffit pas à établir une fraude ou des revenus fictifs. La viabilité du montage dépend des paiements de clients finaux capables de couvrir les dépenses d’exploitation et le service de la dette, sans recours permanent à de nouveaux financements.
+
+Les recours des prêteurs dépendent des engagements juridiques des différentes entités. Une participation de Google ne donne pas, à elle seule, un recours intégral sur le bilan d’Alphabet. De même, l’engagement de fonds gérés par Blackstone ne constitue pas une garantie illimitée de Blackstone Inc. **Les sources publiques examinées n’établissent pas l’existence d’une garantie générale de remboursement par l’un des deux groupes.** D’autres protections peuvent figurer dans la documentation privée du crédit.
+
+Les fonds propres peuvent absorber des pertes avant les créanciers. Leur protection dépend toutefois des entités qui les reçoivent, du calendrier des apports et des obligations de soutien. Additionner l’engagement en capital et le crédit annoncé ne donne ni la valeur du collatéral, c’est-à-dire des biens ou droits affectés au remboursement, ni un ratio de financement fiable.
+
+<CruxAiFigure lang="fr" kind="financement" />
+
+Cette relation fournisseur-client prolonge la question du [financement circulaire de l’IA](/posts/financement-circulaire-ia/) : il faut identifier qui apporte des recettes externes à l’ensemble.
+
+## Les droits sur le site déterminent la continuité du service
+
+La presse spécialisée décrit un éventail de montages immobiliers envisagés par Crux, de la colocation aux développements de sites. Cette description ne renseigne pas davantage sur le périmètre des sûretés. [S06](https://www.datacenterdynamics.com/en/news/google-blackstones-tpu-neocloud-named-crux-ai-hires-metas-data-center-engineering-head-alan-duong/)
+
+Dans une structure où une société détient les serveurs, une autre le bâtiment et des prestataires fournissent l’électricité et les logiciels, la sûreté consentie sur les équipements ne couvre pas automatiquement les droits immobiliers ni les contrats de service. Cette organisation hypothétique illustre la séparation possible des actifs ; elle ne décrit pas l’organigramme juridique de Crux.
+
+En cas de défaut, ces banques pourraient avoir un droit sur les machines tout en devant négocier pour les laisser fonctionner. À l’inverse, un opérateur locataire peut offrir un dossier solide si les créanciers ont des droits durables d’accès au site, de maintien des contrats et de remplacement de l’exploitant. **L’absence de propriété des murs n’est donc pas, à elle seule, un vice du financement.**
+
+Le point décisif est la continuité. Si l’opérateur cesse de payer, qui peut empêcher la résiliation du bail ? Qui conserve le raccordement et les contrats nécessaires à la fourniture d’électricité ? Qui a le droit de faire intervenir un autre exploitant ? Ces questions ne se règlent pas par le seul nantissement des processeurs.
+
+Le financement de projets connaît des outils pour cela. Des accords directs avec les parties essentielles peuvent donner aux prêteurs un délai pour remédier au défaut, puis des droits de substitution, souvent appelés *[step-in rights](/glossaire/step-in-rights/)*. Ils permettent de préserver une activité ou de la confier à un opérateur de remplacement. La Banque mondiale décrit ces mécanismes ; leur présence et leur opposabilité dans le dossier Crux restent à établir. [S13](https://ppp.worldbank.org/lender-protections-and-government-support-ppps)
+
+Posséder une centrale, disposer d’un contrat d’énergie, avoir une puissance réservée et bénéficier d’un raccordement effectivement utilisable ne répondent pas non plus à la même question. Pour juger le crédit, il faut examiner les droits opérationnels, leur durée et leur sort si l’emprunteur change. Le patrimoine global d’un partenaire ne constitue pas une réponse à la place de ces contrats.
+
+<CruxAiFigure lang="fr" kind="collateral" />
+
+## La valeur d’une puce dépend du système qui l’entoure
+
+Un créancier peut chercher à vendre l’activité en fonctionnement ou à vendre ses équipements séparément. Ces deux issues ne conduisent pas nécessairement au même prix.
+
+La documentation de Google sur Ironwood illustre la profondeur de cette dépendance : les TPU s’inscrivent dans un ensemble associant interconnexions, refroidissement liquide et logiciels. **Cet exemple d’architecture ne permet pas d’identifier la génération de puces financée chez Crux.** Il montre pourquoi une estimation de récupération doit porter sur davantage que le nombre de processeurs multiplié par leur prix d’achat. [S08](https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/)
+
+Dans une cession en fonctionnement, l’acquéreur achète la possibilité de servir les clients. Dans un démantèlement, il doit trouver un usage aux machines, obtenir les droits techniques nécessaires et supporter, selon les cas, le démontage, le transport, la réinstallation et l’interruption des recettes. Une même machine peut donc valoir moins pour un repreneur qui doit reconstruire son environnement.
+
+La valeur de revente dépend du nombre d’acquéreurs capables de reprendre les systèmes, des droits transférables, du délai de cession et des frais nécessaires à leur remise en service. Les sources examinées ne fournissent ni transactions publiques de liquidation comparables ni données suffisantes pour attribuer une décote précise au matériel de Crux. Elles ne permettent pas davantage de conclure que ces équipements seraient invendables.
+
+L’obsolescence doit être traitée avec la même discipline. Une puce ne cesse pas de fonctionner le jour où la suivante arrive. Elle peut rester intéressante pour certains calculs si son coût d’acquisition et son coût d’exploitation le permettent. Une meilleure efficacité énergétique de la génération suivante peut toutefois pousser le prix du service vers le bas, puis réduire le prix qu’un acheteur est prêt à payer pour l’ancienne. C’est une hypothèse économique à tester, pas une durée de vie universelle.
+
+Une durée d’amortissement comptable ne résout pas cette incertitude. Elle organise la répartition d’un coût dans les comptes ; elle ne garantit ni un revenu futur ni un prix de revente.
+
+## Le risque commence avant la première heure de calcul facturée
+
+Le **8 septembre**, Bloomberg a signalé des difficultés sur plusieurs sites destinés au projet, notamment autour du développement d’un site et d’équipements électriques. Ces informations reposent en partie sur des sources anonymes. Dans le même article, le dirigeant de Crux maintenait l’objectif des premiers 500 MW en 2027 et évoquait plusieurs options de sites. **Des difficultés locales rapportées ne suffisent donc pas à constater un retard de tout le programme.** [S05](https://finance.yahoo.com/technology/ai/articles/google-blackstone-venture-faces-delays-202510079.html)
+
+Une machine livrée avant que le bâtiment soit prêt peut immobiliser du capital sans produire de recettes. Un raccordement retardé peut différer le démarrage du service. Si, pendant ce temps, les intérêts s’accumulent, le financement nécessaire augmente alors que les encaissements sont repoussés.
+
+Les contrats peuvent limiter ce décalage par des livraisons conditionnelles, des tirages de dette liés à des étapes vérifiées, des apports de capital préalables ou des engagements de soutien en cas de dépassement du budget. Des réserves de trésorerie peuvent également financer l’attente. La documentation publique examinée ne précise pas les protections négociées par Crux.
+
+Un point de vigilance consiste à comparer quatre calendriers : celui de la livraison du matériel, celui de la disponibilité réelle du site, celui du premier paiement exigible du client et celui du remboursement. Le risque augmente lorsque l’un doit attendre les autres sans financement prévu pour cette attente. La Banque des règlements internationaux identifie précisément les contraintes de construction et d’énergie parmi les risques du financement de l’IA. Dans son rapport de juin 2026, l’Autorité bancaire européenne rapproche également les risques liés à l’IA, à l’énergie et au crédit privé. [S09](https://www.bis.org/publications/bulletin-120-financing-ai-boom-cash-flows-debt.pdf) [S15](https://www.eba.europa.eu/publications-and-media/publications/risk-assessment-report-june-2026)
+
+## Les puces et les contrats peuvent se dégrader ensemble
+
+Les puces et les contrats clients peuvent être exposés au même choc économique. Leur présence dans un même ensemble de garanties ne suffit donc pas à établir deux protections indépendantes.
+
+Dans un scénario de baisse des prix de location du calcul, les nouveaux contrats deviennent moins rémunérateurs et certains clients fragiles peuvent rencontrer des difficultés. Le matériel d’occasion peut simultanément perdre de la valeur parce qu’il permet de gagner moins d’argent. Le prêteur subit alors une hausse possible de **la probabilité de défaut** et de **la perte après défaut**. Ce scénario décrit un mécanisme de risque, pas une prévision sur Crux.
+
+Cette corrélation n’est pas certaine dans toutes les situations. Un contrat ferme, conclu avec un client solide, peut isoler les recettes d’une baisse des prix pendant sa durée. Un nouveau débouché peut aussi absorber l’ancienne génération de matériel. Il faut précisément vérifier la durée de cette protection et la dépendance des clients à la même vague d’investissement.
+
+La valeur d’un contrat client dépend du début de la facturation, des conditions de réception de la capacité, des pénalités, des possibilités de résiliation et de sa transférabilité. Une obligation de payer une capacité réservée même lorsqu’elle n’est pas utilisée, dite *take-or-pay*, ne règle pas nécessairement le cas d’une capacité jamais livrée ou d’un client insolvable. **Les modalités des contrats de Crux ne sont pas publiques dans les sources examinées.**
+
+La trésorerie réellement disponible pour la dette importe davantage que le revenu brut promis. Dans un exemple entièrement fictif, exprimé en unités arbitraires sur une période annuelle, l’opérateur encaisse 100, dépense 60 avant le paiement de la dette et doit verser 30 aux prêteurs. La marge restante est de 10. Si les encaissements tombent à 80 et que les autres décaissements restent à 60, il manque 10 pour servir la dette. Les recettes ont baissé de 20 %, mais la trésorerie avant dette a été divisée par deux.
+
+Le ratio de couverture du service de la dette, ou **[DSCR](/glossaire/dscr/)**, compare cette trésorerie aux intérêts et remboursements exigibles : 40 / 30 = 1,33 au départ ; 20 / 30 = 0,67 après le choc. Sous 1, les flux de la période ne suffisent plus : il faut puiser dans des réserves, obtenir un apport ou modifier les paiements. **Ces nombres ne décrivent ni le prêt ni les marges de Crux.**
+
+<CruxAiFigure lang="fr" kind="tresorerie" />
+
+La valorisation des garanties doit aussi éviter le double comptage. Additionner la valeur actuelle de toute l’activité, calculée à partir des revenus des contrats, et le prix complet des machines qui produisent ces revenus reviendrait à compter deux fois une partie de la même valeur économique. Une valorisation cohérente distingue les flux nets pendant l’exploitation et, le cas échéant, la valeur résiduelle à la fin de la période. Le montant brut d’un carnet de commandes n’est pas une somme immédiatement récupérable.
+
+La différence entre recettes promises, encaissements et refinancement est également au cœur de notre [analyse du crédit privé](/guides/analyser-credit-prive/).
+
+## Les banques portent aussi le risque de ne pas réussir à distribuer le prêt
+
+La transmission bancaire commence lorsqu’une banque prend un engagement ferme, selon ses modalités, et non uniquement lorsqu’un défaut survient. Une somme engagée mais non encore tirée n’est pas identique à un prêt déjà versé : elle peut néanmoins obliger la banque à fournir de la liquidité si les conditions prévues sont réunies.
+
+Une banque qui organise un crédit avec l’intention d’en céder une partie doit donc gérer deux horizons. Elle évalue la capacité du client à rembourser ; elle doit aussi pouvoir conserver l’engagement si les autres prêteurs se retirent ou demandent un prix moins favorable. Une distribution bloquée peut conduire à porter une exposition plus importante ou plus longue que prévu, voire à accepter une perte lors de sa cession.
+
+Dans leur déclaration du **5 décembre 2025** sur le crédit à effet de levier, l’OCC et la FDIC demandent de contrôler les prêts destinés à être conservés comme ceux destinés à être distribués, et de surveiller le refinancement. Ce texte décrit des risques de conservation et de distribution ; il n’établit pas la classification réglementaire du crédit Crux. [S14](https://www.occ.gov/news-issuances/news-releases/2025/nr-ia-2025-119.html)
+
+La syndication répartit un crédit entre plusieurs prêteurs. **Elle ne supprime pas le risque du débiteur et n’est pas, par elle-même, une titrisation.** Une éventuelle émission obligataire pourrait ensuite rembourser tout ou partie du crédit bancaire. Mais un marché obligataire futur n’est pas une réserve de liquidité déjà disponible : il faudra convaincre les investisseurs aux conditions du moment.
+
+De même, viser des investisseurs du segment *investment grade*, celui des signatures jugées de bonne qualité de crédit, ne vaut pas attribution d’une notation. Une note éventuelle devrait elle-même être lue avec sa date, son périmètre et les garanties sur lesquelles elle repose.
+
+L’exposition de **BNP Paribas** dépend de son engagement initial, des montants déjà tirés, de la part finalement conservée et de ses protections. Cette ventilation n’est pas disponible dans les sources examinées. Le montant global du crédit et le nombre de prêteurs ne permettent donc de calculer ni l’exposition individuelle de BNP ni ses pertes potentielles.
+
+Si la qualité du crédit se détériore, les conséquences bancaires peuvent passer par les provisions, une perte de cession ou une consommation accrue de capacité de bilan. L’incidence exacte dépend du traitement comptable et prudentiel, des couvertures et de l’exposition nette. Un chiffre de financement global ne mesure donc pas un montant de perte bancaire, encore moins une menace démontrée sur la solvabilité du groupe. [S14](https://www.occ.gov/news-issuances/news-releases/2025/nr-ia-2025-119.html)
+
+## Les liens financiers peuvent prolonger l’exposition après la cession
+
+Vendre effectivement une créance sans obligation de la reprendre peut réduire le risque direct de la banque. Mais l’analyse doit ensuite vérifier si elle finance aussi le fonds acquéreur, lui fournit une ligne de liquidité ou reste exposée par une autre opération. Ce sont des **canaux possibles**, pas des positions établies dans le dossier Crux.
+
+La BCE décrit ces connexions entre banques, fonds et entreprises financées dans son étude de **mai 2026** sur le crédit privé. Elle juge alors les expositions directes globalement limitées, tout en soulignant les concentrations et les répercussions possibles sur d’autres marchés. Cette appréciation sectorielle n’est ni un audit du prêt Crux ni une photographie des engagements de septembre. [S11](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202605_04~3f2135af91.en.html)
+
+La syndication peut diversifier le risque pour chaque prêteur. Elle ne diversifie pas nécessairement la cause du risque : plusieurs établissements peuvent financer des sociétés différentes qui dépendent des mêmes clients, de la même technologie ou des mêmes contraintes électriques. C’est cette concentration économique qu’il faut suivre, au-delà du nombre de noms sur la page de garde du contrat.
+
+Il faut également distinguer **une sûreté juridiquement valable** d’**une sûreté reconnue comme suffisamment protectrice dans le calcul prudentiel**. Pour certains collatéraux physiques dans l’approche prudentielle dite IRB fondation, fondée sur les notations internes avec certains paramètres imposés par le superviseur, le cadre de Bâle prévoit notamment des marchés de revente liquides, des prix publics et des réévaluations tenant compte de l’obsolescence. Cela ne permet pas de déclarer le prêt irrégulier ou d’assigner une pondération à BNP ; le régime applicable reste à déterminer. [S12](https://www.bis.org/committees/bcbs/basel-framework/standard/cre/36/inforce/2023-01-01/published/2022-12-08)
+
+## Le remboursement par l’exploitation peut limiter le risque de revente
+
+Un crédit amorti par les recettes d’exploitation peut rester solide même si la valeur du matériel diminue. Le principal restant dû baisse au fil des remboursements et les équipements apportent une protection complémentaire. L’efficacité de ce mécanisme dépend du rythme d’amortissement, de la solvabilité des clients et de la continuité du service.
+
+Il existe un précédent documentaire utile, sans identité de conditions avec Crux : dans son **10-K relatif à 2025**, CoreWeave décrit des crédits à tirages différés garantis par des actifs et des flux contractuels, puis amortis au fil de ces encaissements. Le document montre le mécanisme recherché : faire coïncider l’investissement, la livraison de capacité et le remboursement. Il ne prouve pas que Crux bénéficie des mêmes protections. [S10](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm)
+
+La baisse du coût du calcul peut aussi élargir les usages. Des contrats longs, une électricité compétitive, des réserves suffisantes et des droits d’exploitation transférables pourraient permettre de continuer à rembourser malgré une baisse du prix du matériel. À l’inverse, une dette dont le principal reste largement dû à l’échéance et dont le remboursement dépend d’un nouvel emprunt serait plus exposée à une fermeture du marché du refinancement. **Le profil d’amortissement du prêt Crux n’est pas établi par les sources publiques examinées.**
+
+L’évaluation du crédit repose sur l’articulation de ces protections : la dette doit diminuer à un rythme compatible avec les recettes attendues et la valeur récupérable des actifs. Les documents suivants permettraient d’examiner cet équilibre.
+
+## Les pièces qui manquent pour juger le crédit
+
+| Document ou donnée | Question à résoudre |
+| --- | --- |
+| Contrat de crédit et liste des garants | Qui doit rembourser, sur quel bilan, à quelles dates, avec quel recours ? |
+| Description des sûretés et accords entre créanciers | Quels actifs et droits sont effectivement couverts, avec quel rang ? |
+| Accords de site, de fourniture et de substitution | Le calcul peut-il continuer après une défaillance ou un changement d’exploitant ? |
+| Contrats clients et calendrier de livraison | Quand les paiements deviennent-ils exigibles, et dans quels cas peuvent-ils cesser ? |
+| Expertise indépendante des équipements | Quelle valeur nette reste-t-il dans une vente en fonctionnement ou un démantèlement ? |
+| Répartition finale du crédit et protections bancaires | Quelle exposition chaque prêteur conserve-t-il réellement ? |
+
+Ces éléments peuvent exister dans une documentation privée. Leur absence du dossier public interdit de noter la qualité du financement ; elle ne constitue pas la preuve de clauses défaillantes.
+
+Pour les banques, le risque de crédit dépend donc en partie de la continuité industrielle : un site accessible, une alimentation électrique, des systèmes exploitables et des clients tenus de payer. **La protection offerte par les puces repose notamment sur la possibilité de préserver ou de transférer l’activité après un défaut.**
+
+Lorsque les créanciers récupèrent les équipements sans les droits indispensables à leur utilisation, ils doivent valoriser une cession séparée et ses coûts. Lorsque ces droits sont préservés, un repreneur peut maintenir l’exploitation et les recettes associées. Faute de documentation publique sur ces droits et sur la répartition finale du crédit, le montant de 22 milliards de dollars ne permet pas, à lui seul, de mesurer les pertes potentielles des banques.
+
+---
+
+### Méthode et limites
+
+Analyse arrêtée au **17 septembre 2026**, fondée sur des sources publiques. Les caractéristiques du crédit restent des informations de presse, non une lecture du contrat signé. Les déclarations de Crux et de Blackstone sont identifiées comme telles. Le signalement de difficultés locales est confronté à la réponse de la direction. Aucune partie n’a été interrogée directement pour cet article. Aucun montant de perte, ratio de financement, prix de revente ou scénario chiffré propre à Crux n’est déduit de données manquantes. L’exemple de trésorerie est une construction pédagogique intégralement fictive.
+
+### Sources
+
+**S01 : Reuters.** [Banks provide $22 billion chip loan to Blackstone, Alphabet AI cloud venture, source says](https://www.reuters.com/world/asia-pacific/banks-provide-22-billion-chip-loan-blackstone-alphabet-cloud-venture-bloomberg-2026-09-16/) (2026-09-16). Prêt et participants rapportés ; sûretés et distribution attribuées à Bloomberg. Contrat non publié. [Reprise consultée sur MarketScreener](https://ca.marketscreener.com/news/banks-provide-22-billion-chip-loan-to-blackstone-alphabet-ai-cloud-venture-source-says-ce785bd2d08cf122).
+
+**S02 : Blackstone.** [Blackstone Announces Joint Venture with Google to Create New TPU Cloud](https://www.blackstone.com/news/press/blackstone-announces-joint-venture-with-google-to-create-new-tpu-cloud/) (2026-05-18). Engagement initial en capital de fonds gérés, partenariat et objectif de capacité. Annonce, non preuve de décaissement.
+
+**S03 : Crux AI.** [Site officiel / infrastructure intégrée](https://crux.ai/) (date non indiquée). Déclaration de propriété et d’exploitation de sites ; ne documente pas les sûretés bancaires.
+
+**S04 : Crux AI / Business Wire.** [Crux AI Launches to Deliver Dedicated AI Compute at Industrial Scale](https://www.businesswire.com/news/home/20260909928254/en/) (2026-09-09). Communiqué de lancement diffusé par Business Wire, [reprise consultée sur StreetInsider](https://www.streetinsider.com/Business%2BWire/Crux%2BAI%2BLaunches%2Bto%2BDeliver%2BDedicated%2BAI%2BCompute%2Bat%2BIndustrial%2BScale/27040870.html). Source intéressée, pas une confirmation indépendante.
+
+**S05 : Bloomberg / Yahoo Finance.** [Google, Blackstone Venture Faces Delays at Data-Center Sites](https://finance.yahoo.com/technology/ai/articles/google-blackstone-venture-faces-delays-202510079.html) (2026-09-08). Difficultés locales rapportées ; réponse de la direction maintenant son objectif. Pas de constat de retard global.
+
+**S06 : Data Center Dynamics.** [Google-Blackstone’s TPU neocloud named Crux AI, hires Meta’s data center engineering head Alan Duong](https://www.datacenterdynamics.com/en/news/google-blackstones-tpu-neocloud-named-crux-ai-hires-metas-data-center-engineering-head-alan-duong/) (2026-09-10). Diversité des modalités immobilières envisagées. Ne prouve ni la détention actuelle ni le périmètre des sûretés.
+
+**S07 : Google Cloud.** [Cloud TPU](https://cloud.google.com/tpu) (date non indiquée). Définition et fonction des TPU ; documentation du fournisseur.
+
+**S08 : Google.** [Ironwood: The first Google TPU for the age of inference](https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/) (2025-04-09). Article mis à jour le 23 avril 2025. Exemple d’architecture, pas identification des équipements Crux.
+
+**S09 : BIS / BRI.** [Financing the AI boom: from cash flows to debt : Bulletin No 120](https://www.bis.org/publications/bulletin-120-financing-ai-boom-cash-flows-debt.pdf) (2026-01-07). Risques de financement des infrastructures d’IA, notamment construction et énergie.
+
+**S10 : CoreWeave / SEC EDGAR.** [Form 10-K : exercice clos le 31 décembre 2025](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm) (exercice 2025 ; publication 2026). Section Debt Financing. Période 2025 ; publication en 2026. Précédent distinct, sans transposition des conditions à Crux.
+
+**S11 : BCE / ECB.** [Stress in global private credit markets and its implications for euro area financial stability](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202605_04~3f2135af91.en.html) (2026-05). Financial Stability Review, mai 2026. Analyse sectorielle, pas situation de BNP ou du prêt Crux en septembre.
+
+**S12 : Comité de Bâle / BCBS.** [CRE36 : IRB minimum requirements, notamment 36.143–36.144](https://www.bis.org/committees/bcbs/basel-framework/standard/cre/36/inforce/2023-01-01/published/2022-12-08) (2022-12-08). Version applicable depuis le 1er janvier 2023. Critères conditionnels, pas qualification réglementaire du prêt Crux.
+
+**S13 : Banque mondiale / World Bank.** [Lender Protections and Government Support in PPPs](https://ppp.worldbank.org/lender-protections-and-government-support-ppps) (date non indiquée). Accords directs et droits de substitution en financement de projets. Référence de mécanisme, non droit applicable à Crux.
+
+**S14 : OCC / FDIC.** [Interagency Statement on OCC and FDIC Withdrawal from the Interagency Leveraged Lending Guidance Issuances](https://www.occ.gov/news-issuances/news-releases/2025/nr-ia-2025-119.html) (2025-12-05). Principes actuels de surveillance des engagements, prêts à distribuer et refinancement ; texte de 2013 retiré par ces agences.
+
+**S15 : EBA / ABE.** [Risk Assessment Report : June 2026](https://www.eba.europa.eu/publications-and-media/publications/risk-assessment-report-june-2026) (2026-06). Section sur la convergence des risques IA, énergie et crédit privé. Cadre général, non examen du contrat Crux.
+
+*Toutes les sources ont été consultées le 17 septembre 2026. Les reprises d’un même article ou communiqué ne constituent pas des confirmations indépendantes.*
