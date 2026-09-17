@@ -64,9 +64,9 @@ test('reported annual amounts, revenue share and chart scales agree in FR/EN', (
     assert(figures[1].text.includes(number(share)));
     for (const [i, value] of annualDataRevenue.entries()) {
       assert(figures[1].text.includes(number(value)));
-      const bar = figures[1].nodes.find((node) => node.tagName === 'rect' && Number(node.properties.y) === 157 + 95 * i);
-      assert.equal(Number(bar.properties.x), 132);
-      assert.equal(Number(bar.properties.width), Math.round(value / 40 * 428 * 100) / 100);
+      const bar = figures[1].nodes.find((node) => node.tagName === 'rect' && Number(node.properties.y) === 108 + 64 * i);
+      assert.equal(Number(bar.properties.x), 90);
+      assert.equal(Number(bar.properties.width), Math.round(value / 40 * 320 * 100) / 100);
     }
     assert(figures[0].text.includes(lang ? 'Amounts are redacted' : 'Les montants sont occultés'));
     assert(figures[2].text.includes(lang ? 'does not establish a sale' : 'ne démontre pas une vente'));
