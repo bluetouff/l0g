@@ -2,9 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { XMLValidator } from 'fast-xml-parser';
+import { fromHtml } from 'hast-util-from-html';
+import sharp from 'sharp';
 import { medicineFigureSvg, renderMedicineFigure } from '../src/lib/medicineSupplyFigures.mjs';
 import {DEFAULTS,validateInputs,simulateSupply,compareSupply,csvSupply} from '../src/lib/medicineSupplyModel.mjs';
-import {renderMedicineSupplyLab,renderSupplyChart} from '../src/lib/medicineSupplyView.mjs';
+import {esc,renderMedicineSupplyLab,renderSupplyChart} from '../src/lib/medicineSupplyView.mjs';
 const near=(a,b)=>assert.ok(Math.abs(a-b)<=1e-7*Math.max(1,Math.abs(b)),`${a} != ${b}`);
 test('default baseline leaves 22,000 units unmet, first on day 24',()=>{const {baseline:q}=compareSupply();near(q.totalUnmet,22000);assert.equal(q.firstShortage,24);near(q.totalDelivered,38000);});
 test('default backup leaves 12,800 unmet, first on day 29',()=>{const {backup:q}=compareSupply();near(q.totalUnmet,12800);assert.equal(q.firstShortage,29);near(q.serviceRate,47200/60000);});
@@ -70,4 +72,39 @@ test('responsive figure breakpoint and prose override stay unclipped', () => {
   const css=readFileSync(new URL('../src/styles/medicine-supply.css',import.meta.url),'utf8');
   assert.match(css,/\.prose figure\.ms-figure\s*\{[^}]*overflow:visible/);
   assert.match(css,/@media\(max-width:780px\)/);
+});
+
+const svgNodes = node => [...(node.type === 'element' ? [node] : []), ...(node.children ?? []).flatMap(svgNodes)];
+const svgText = node => node.type === 'text' ? node.value : (node.children ?? []).map(svgText).join('');
+const measuredLabels = new Map();
+async function assertFigureGeometry(markup) {
+  const nodes=svgNodes(fromHtml(markup,{fragment:true}));
+  const panels=nodes.filter(n=>n.tagName==='rect'&&['#0b0d10','#14191f'].includes(n.properties.fill));
+  const boxes=[];
+  for(const label of nodes.filter(n=>n.tagName==='text')) {
+    const p=label.properties,x=Number(p.x),y=Number(p.y),size=Number(p.fontSize),weight=Number(p.fontWeight??400),copy=svgText(label);
+    const key=JSON.stringify([copy,size,weight]);
+    if(!measuredLabels.has(key)) {
+      // Raster metrics guard the committed geometry; browser QA also checks the actual platform font.
+      const probe=`<svg xmlns="http://www.w3.org/2000/svg" width="4096" height="256"><text x="32" y="128" font-family="system-ui,sans-serif" font-size="${size}" font-weight="${weight}" fill="white">${esc(copy)}</text></svg>`;
+      const {info}=await sharp(Buffer.from(probe)).trim().raw().toBuffer({resolveWithObject:true});
+      measuredLabels.set(key,info.width+2);
+    }
+    const width=measuredLabels.get(key),left=x-(p.textAnchor==='middle'?width/2:p.textAnchor==='end'?width:0),right=left+width;
+    const panel=panels.map(n=>({x:Number(n.properties.x??0),y:Number(n.properties.y??0),w:Number(n.properties.width),h:Number(n.properties.height)}))
+      .filter(r=>x>=r.x&&x<=r.x+r.w&&y>=r.y&&y<=r.y+r.h).sort((a,b)=>a.w*a.h-b.w*b.h)[0];
+    assert(panel,'Text must belong to a canvas or panel');
+    assert(left>=panel.x+4&&right<=panel.x+panel.w-4,`Horizontal panel overflow: ${copy}`);
+    assert(y-size>=panel.y+2&&y+size*.25<=panel.y+panel.h-2,`Vertical panel overflow: ${copy}`);
+    for(const other of boxes.filter(b=>Math.abs(b.y-y)<Math.min(size,b.size)))assert(right<=other.left-4||left>=other.right+4,`Overlapping labels: ${copy}`);
+    boxes.push({left,right,y,size});
+  }
+}
+test('FR/EN figure labels retain measured internal panel margins and separation',async()=>{
+  for(const lang of ['fr','en'])for(const kind of ['chain','stock','commitments'])for(const mobile of [false,true])await assertFigureGeometry(medicineFigureSvg(lang,kind,mobile));
+});
+test('geometry regression rejects long labels and displaced panel text',async()=>{
+  const svg=medicineFigureSvg('fr','chain',true);
+  await assert.rejects(assertFigureGeometry(svg.replace('7 laboratoires','W'.repeat(100))),/overflow/);
+  await assert.rejects(assertFigureGeometry(svg.replace('x="42" y="226"','x="370" y="226"')),/overflow/);
 });
