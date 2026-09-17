@@ -15,6 +15,7 @@ type NavItem = {
   label: string;
   description?: string;
   matches?: string[];
+  exact?: boolean;
   glyph?: NavigationIconName;
 };
 
@@ -54,7 +55,9 @@ const groups: Array<{ label: string; glyph: NavigationIconName; items: NavItem[]
     label: 'Observer',
     glyph: 'observe',
     items: [
-      { href: '/atlas/', label: 'Atlas des engagements', description: 'Acteurs, contrats, preuves et chronologie' },
+      { href: '/atlas/', label: 'Atlas du financement de l’IA', description: 'Nvidia, OpenAI, partenaires et garanties', exact: true },
+      { href: '/atlas/credit-prive/', label: 'Atlas du crédit privé', description: 'Fonds, assureurs, banques et emprunteurs', exact: true },
+      { href: '/atlas/petrole/', label: 'Atlas du financement du pétrole', description: 'Cargaisons, négociants et recettes publiques', exact: true },
       { href: '/radar/', label: 'Radar des transmissions', description: 'Comment le risque circule entre les systèmes' },
       { href: '/dashboards/', label: 'Tableaux de bord', description: 'Les instruments de suivi' },
       { href: '/confluence/', label: 'Signaux croisés', description: 'Confluence 13F × Form 4' },
@@ -96,6 +99,7 @@ const mobileUtilityItems: NavItem[] = [
 ];
 
 function isActive(item: NavItem): boolean {
+  if (item.exact) return currentPath === norm(item.href);
   const bases = item.matches ?? [item.href];
   return bases.some((base) => {
     const normalizedBase = norm(base);

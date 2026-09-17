@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EngagementAtlas from '../../components/EngagementAtlas.astro';
+import dataset from '../../data/oil-financing-atlas.json';
+---
+
+<BaseLayout
+  title={dataset.title}
+  seoTitle="Atlas du financement du pétrole : banques et négoce | l0g"
+  description="Qui finance le commerce du pétrole ? Explorez les liens entre banques, Trafigura, Glencore et le Tchad : cargaisons, crédits et recettes publiques."
+  ogImage="/illustrations/news/oil-trade-bank-finance-v1.jpg"
+  ogImageAlt="Les banques et le financement du commerce pétrolier"
+  sidebar={false}
+>
+  <EngagementAtlas
+    dataset={dataset}
+    subject="financement du pétrole"
+    intro="Qui paie le vendeur, qui avance l’argent et qui reçoit les recettes ? Suivez le financement d’une cargaison, les banques d’un négociant et le remboursement d’un prêt pétrolier au Tchad."
+    boundary="Trois cas documentés, à des périodes différentes. Les flèches représentent la relation décrite dans chaque fiche, pas toujours un versement. Les deux rôles de Glencore sont séparés : acheteur de brut et membre du groupe de créanciers. Les traits n’indiquent ni montant ni exposition actuelle."
+    selectedRelation="unicredit-bp-payment"
+    hubs={['unicredit', 'trafigura', 'escrow']}
+    entryPoints={[
+      { label: 'Qui paie la cargaison ?', relation: 'unicredit-bp-payment', date: '2023-05-04' },
+      { label: 'Qui finance Trafigura ?', relation: 'ercf-trafigura-credit', date: '2026-03-10' },
+      { label: 'Que reçoit le Trésor tchadien ?', relation: 'escrow-treasury-balance', date: '2025-12-30' },
+    ]}
+    outlinks={[
+      { href: '/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/', label: 'Le paiement d’une cargaison' },
+      { href: '/posts/les-banquiers-du-baril-2-banques-financement-trafigura/', label: 'Les banques derrière Trafigura' },
+      { href: '/posts/les-banquiers-du-baril-3-tchad-glencore-dette-petrole/', label: 'Le pétrole tchadien et la dette' },
+      { href: '/api/v1/oil-financing-atlas.json', label: 'Réutiliser les relations et leurs sources · JSON' },
+    ]}
+  >
+    <section slot="overview" class="oil-overview" aria-labelledby="oil-circuits-title">
+      <details>
+        <summary id="oil-circuits-title">Trois circuits, trois façons de lire le financement</summary>
+        <ol>
+          <li><h3>La cargaison</h3><p>Repérez le vendeur, l’emprunteur, le paiement effectué et le remboursement prévu.</p></li>
+          <li><h3>Le négociant</h3><p>Distinguez l’organisation du crédit, sa disponibilité et l’argent effectivement emprunté.</p></li>
+          <li><h3>Le pays producteur</h3><p>Suivez l’affectation des recettes avant leur arrivée au budget.</p></li>
+        </ol>
+        <p>UniCredit Bank est citée sous la forme AG dans l’affaire du Sienna et GmbH dans le financement de Trafigura. Son <a href="https://www.hypovereinsbank.de/content/dam/hypovereinsbank/ueber-uns/pdf/investor-relations/Berichte/EN/2023/20240311-Geschaeftsbericht-UCB-GmbH-2023-ENGLISCH.pdf">rapport annuel 2023, page 14</a>, documente le changement de forme juridique. Sa présence dans deux dossiers n’établit aucun financement entre leurs autres participants.</p>
+        <p>Les dates ci-dessous sont celles des publications. Chaque fiche précise la période des opérations et donne accès à l’enquête correspondante.</p>
+      </details>
+    </section>
+  </EngagementAtlas>
+</BaseLayout>
+
+<style>
+  .oil-overview { margin:1rem 0 2rem; }
+  .oil-overview details { padding:1rem; border:1px solid var(--color-line); border-radius:8px; }
+  .oil-overview summary { cursor:pointer; min-height:32px; color:var(--color-bright); font-family:var(--font-display); font-size:.95rem; }
+  .oil-overview ol { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; list-style:none; padding:0; margin:1.2rem 0; }
+  .oil-overview li { padding:1rem; border:1px solid var(--color-line); border-radius:8px; background:var(--color-surface); }
+  .oil-overview h3 { margin:0 0 .6rem; color:var(--color-bright); font-size:.95rem; }
+  .oil-overview p { max-width:85ch; margin:.7rem 0; font-family:var(--font-read); font-size:.85rem; line-height:1.7; }
+  .oil-overview a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; }
+  .oil-overview :is(a,summary):focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+  @media(max-width:760px) { .oil-overview ol { grid-template-columns:minmax(0,1fr); } }
+</style>

@@ -1,0 +1,22 @@
+---
+interface Props { current: string }
+const { current } = Astro.props;
+const atlases = [
+  { id: 'financement-ia', href: '/atlas/', label: 'Financement de l’IA' },
+  { id: 'credit-prive', href: '/atlas/credit-prive/', label: 'Crédit privé' },
+  { id: 'financement-petrole', href: '/atlas/petrole/', label: 'Financement du pétrole' },
+];
+---
+
+<nav class="atlas-navigation" aria-label="Les atlas l0g">
+  <span class="mono-label">Les atlas</span>
+  {atlases.map(atlas => <a href={atlas.href} aria-current={atlas.id === current ? 'page' : undefined}>{atlas.label}</a>)}
+</nav>
+
+<style>
+  .atlas-navigation { display:flex; align-items:center; flex-wrap:wrap; gap:.65rem 1.2rem; padding:0 0 1rem; margin-bottom:1rem; border-bottom:1px solid var(--color-line); }
+  .atlas-navigation span { font-size:.65rem; color:var(--color-muted); }
+  .atlas-navigation a { display:inline-flex; align-items:center; min-height:44px; font-size:.8rem; color:var(--color-muted); text-underline-offset:5px; }
+  .atlas-navigation a[aria-current="page"] { color:var(--color-signal); text-decoration:underline; }
+  .atlas-navigation a:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+</style>

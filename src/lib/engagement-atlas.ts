@@ -13,7 +13,7 @@ export type AtlasObservation = {
   sources: string[];
   amount?: { value: string; currency: 'USD'; kind: 'conditional-cap'; label: string };
 };
-export type AtlasRelation = { id: string; from: string; to: string; observations: AtlasObservation[] };
+export type AtlasRelation = { id: string; from: string; to: string; observations: AtlasObservation[]; reading?: { href: string; label: string } };
 export type AtlasDataset = {
   version: 1;
   id: string;
@@ -26,7 +26,10 @@ export type AtlasDataset = {
 };
 export type AtlasVisibleRelation = Omit<AtlasRelation, 'observations'> & { observation: AtlasObservation; changed: boolean };
 
-const allowedOrigins = new Set(['https://www.sec.gov', 'https://ir.blackrock.com']);
+const allowedOrigins = new Set([
+  'https://www.sec.gov', 'https://ir.blackrock.com', 'https://www.apollo.com',
+  'https://www.quadrantchambers.com', 'https://eiti.org', 'https://www.trafigura.com',
+]);
 const idPattern = /^[a-z][a-z0-9-]{0,79}$/;
 function requireValue(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(`Atlas : ${message}`);
@@ -82,7 +85,12 @@ export function assertAtlasDataset(value: unknown, allowProposals = false): asse
   const observationDates = new Set<string>();
   for (const relation of value.relations) {
     object(relation); id(relation.from); id(relation.to);
-    keys(relation, ['id', 'from', 'to', 'observations']);
+    keys(relation, ['id', 'from', 'to', 'observations', 'reading']);
+    if (relation.reading !== undefined) {
+      object(relation.reading); keys(relation.reading, ['href', 'label']);
+      text(relation.reading.label, 160);
+      requireValue(typeof relation.reading.href === 'string' && /^\/posts\/[a-z0-9-]+\/$/.test(relation.reading.href), 'lien de lecture interne invalide');
+    }
     requireValue(nodeIds.has(relation.from) && nodeIds.has(relation.to) && relation.from !== relation.to, 'relation orpheline');
     list(relation.observations, 40);
     let previous = '';
@@ -92,7 +100,7 @@ export function assertAtlasDataset(value: unknown, allowProposals = false): asse
       requireValue(observation.publishedOn > previous, 'observations non ordonnées ou dupliquées'); previous = observation.publishedOn;
       requireValue(observation.recordedOn >= observation.publishedOn && observation.recordedOn >= value.reconstructedOn, 'antidatage de la revue');
       requireValue(observation.review === 'reviewed' || (allowProposals && observation.review === 'proposed'), 'proposition non relue');
-      requireValue(['announcement', 'contract', 'limitation'].includes(String(observation.kind)), 'nature de preuve invalide');
+      requireValue(['announcement', 'contract', 'limitation'].includes(String(observation.kind)), 'type d’observation invalide');
       for (const key of ['label', 'claim', 'limit', 'watch']) text(observation[key], key === 'label' ? 100 : 1400);
       list(observation.sources, 12);
       for (const source of observation.sources) requireValue(typeof source === 'string' && sourceIds.has(source) && sources.get(source)! <= observation.publishedOn, 'source absente ou publiée dans le futur');
@@ -124,21 +132,22 @@ export function atlasAt(dataset: AtlasDataset, asOf: string) {
   const milestone = dataset.milestones.filter(item => item.date <= asOf).at(-1) ?? null;
   const relations: AtlasVisibleRelation[] = dataset.relations.flatMap(relation => {
     const observation = relation.observations.filter(item => item.review === 'reviewed' && item.publishedOn <= asOf).at(-1);
-    return observation ? [{ id: relation.id, from: relation.from, to: relation.to, observation, changed: observation.publishedOn === milestone?.date }] : [];
+    return observation ? [{ id: relation.id, from: relation.from, to: relation.to, reading: relation.reading, observation, changed: observation.publishedOn === milestone?.date }] : [];
   });
   const visibleNodeIds = new Set(relations.flatMap(item => [item.from, item.to]));
   const visibleSourceIds = new Set(relations.flatMap(item => item.observation.sources));
   return { asOf, milestone, relations, nodes: dataset.nodes.filter(item => visibleNodeIds.has(item.id)), sources: dataset.sources.filter(item => item.publishedOn <= asOf && visibleSourceIds.has(item.id)) };
 }
 
-export function atlasSelection(dataset: AtlasDataset, hash: string) {
+export function atlasSelection(dataset: AtlasDataset, hash: string, preferredRelation?: string) {
   const params = new URLSearchParams(hash.slice(0, 1200).replace(/^#/, ''));
   const requestedDate = params.get('date');
   const date = dataset.milestones.some(item => item.date === requestedDate) ? requestedDate! : dataset.milestones.at(-1)!.date;
   const snapshot = atlasAt(dataset, date);
   const relation = snapshot.relations.find(item => item.id === params.get('relation'))?.id
+    ?? snapshot.relations.find(item => item.id === preferredRelation)?.id
     ?? snapshot.relations.find(item => item.id === 'nvidia-sb-guarantee')?.id ?? snapshot.relations.at(-1)?.id ?? '';
-  return { date, relation, scenario: params.get('scenario') === 'default'
+  return { date, relation, scenario: dataset.id === 'financement-ia' && params.get('scenario') === 'default'
     && ['nvidia-sb-guarantee', 'openai-sb-lease', 'openai-nvidia-indemnity'].includes(relation)
     && snapshot.relations.some(item => item.id === 'nvidia-sb-guarantee') };
 }

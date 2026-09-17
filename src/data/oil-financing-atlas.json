@@ -1,0 +1,477 @@
+{
+  "version": 1,
+  "id": "financement-petrole",
+  "title": "Atlas du financement du pétrole",
+  "reconstructedOn": "2026-09-17",
+  "sources": [
+    {
+      "id": "sienna-judgment-2023",
+      "title": "Cour d’appel : UniCredit Bank AG contre Euronav, affaire du Sienna",
+      "url": "https://www.quadrantchambers.com/sites/default/files/2023-05/unicredit_bank_a.g._v_euronav_n.v._-_court_of_appeal_judgment.pdf",
+      "publishedOn": "2023-05-04",
+      "locator": "Arrêt [2023] EWCA Civ 471, §§ 3, 12–17 et 21 : vente, financement, paiement et remboursement. Opérations de 2020."
+    },
+    {
+      "id": "chad-eiti-2023",
+      "title": "ITIE Tchad : rapport sur l’exercice 2023",
+      "url": "https://eiti.org/document/25587",
+      "publishedOn": "2025-12-30",
+      "locator": "Publication datée du 30 décembre 2025 par l’ITIE. Pages 157–162 et 166 : ventes, compte séquestre, affectations et limites du rapprochement."
+    },
+    {
+      "id": "trafigura-facilities-2026",
+      "title": "Trafigura : crédits européens et réserve de liquidité",
+      "url": "https://www.trafigura.com/news-and-insights/press-releases/2026/trafigura-closes-usd5-8-billion-revolving-credit-facilities-and-signs-usd3-0-billion-contingent-liquidity-facility/",
+      "publishedOn": "2026-03-10",
+      "locator": "Communiqué du 10 mars 2026 : usage des facilités, échéances, coordinateurs et syndication."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "unicredit",
+      "label": "UniCredit Bank",
+      "role": "Banque · financement et coordination",
+      "column": 0,
+      "row": 1
+    },
+    {
+      "id": "bp",
+      "label": "BP Oil International",
+      "role": "Vendeur de la cargaison",
+      "column": 1,
+      "row": 0
+    },
+    {
+      "id": "gulf",
+      "label": "Gulf Petrochem",
+      "role": "Acheteur et emprunteur · Sienna",
+      "column": 1,
+      "row": 1
+    },
+    {
+      "id": "sub-buyers",
+      "label": "Acheteurs de revente",
+      "role": "Contreparties prévues par l’accord",
+      "column": 2,
+      "row": 0
+    },
+    {
+      "id": "socgen",
+      "label": "Société Générale",
+      "role": "Banque · arrangement et coordination",
+      "column": 0,
+      "row": 2
+    },
+    {
+      "id": "ercf",
+      "label": "Crédits européens",
+      "role": "Facilités syndiquées · Trafigura",
+      "column": 1,
+      "row": 2
+    },
+    {
+      "id": "liquidity",
+      "label": "Réserve de liquidité",
+      "role": "Facilité de précaution · Trafigura",
+      "column": 1,
+      "row": 3
+    },
+    {
+      "id": "trafigura",
+      "label": "Trafigura",
+      "role": "Négociant · plusieurs matières premières",
+      "column": 2,
+      "row": 2
+    },
+    {
+      "id": "sht",
+      "label": "SHT",
+      "role": "Société des hydrocarbures du Tchad",
+      "column": 0,
+      "row": 4
+    },
+    {
+      "id": "glencore",
+      "label": "Glencore Energy UK",
+      "role": "Acheteur de brut · Tchad",
+      "column": 1,
+      "row": 4
+    },
+    {
+      "id": "escrow",
+      "label": "Compte SHT · Citibank",
+      "role": "Compte séquestre des recettes",
+      "column": 2,
+      "row": 4
+    },
+    {
+      "id": "creditors",
+      "label": "Glencore et prêteurs",
+      "role": "Créanciers du préfinancement",
+      "column": 3,
+      "row": 3
+    },
+    {
+      "id": "treasury",
+      "label": "Trésor tchadien",
+      "role": "Destinataire du solde disponible",
+      "column": 3,
+      "row": 4
+    }
+  ],
+  "relations": [
+    {
+      "id": "bp-gulf-sale",
+      "from": "bp",
+      "to": "gulf",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/",
+        "label": "Lire : qui paie la cargaison avant vous ?"
+      },
+      "observations": [
+        {
+          "publishedOn": "2023-05-04",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Vente de fioul",
+          "claim": "L’arrêt décrit la vente de fioul par BP à Gulf en janvier 2020.",
+          "limit": "Ce cas ne décrit pas toute l’activité des parties.",
+          "watch": "Périmètre de la vente.",
+          "sources": [
+            "sienna-judgment-2023"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unicredit-gulf-credit",
+      "from": "unicredit",
+      "to": "gulf",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/",
+        "label": "Lire : qui paie la cargaison avant vous ?"
+      },
+      "observations": [
+        {
+          "publishedOn": "2023-05-04",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Crédit documentaire garanti",
+          "claim": "UniCredit Bank AG finance l’achat de Gulf, avec des sûretés sur les documents et la marchandise.",
+          "limit": "Ces garanties n’empêchent pas le non-remboursement constaté par l’arrêt.",
+          "watch": "Conditions des sûretés.",
+          "sources": [
+            "sienna-judgment-2023"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unicredit-bp-payment",
+      "from": "unicredit",
+      "to": "bp",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/",
+        "label": "Lire : qui paie la cargaison avant vous ?"
+      },
+      "observations": [
+        {
+          "publishedOn": "2023-05-04",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Paiement du vendeur",
+          "claim": "BP reçoit le paiement sous la lettre de crédit d’UniCredit le 2 avril 2020.",
+          "limit": "Le paiement porte sur la partie financée du chargement.",
+          "watch": "Documents de paiement.",
+          "sources": [
+            "sienna-judgment-2023"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buyers-unicredit-payment",
+      "from": "sub-buyers",
+      "to": "unicredit",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/",
+        "label": "Lire : qui paie la cargaison avant vous ?"
+      },
+      "observations": [
+        {
+          "publishedOn": "2023-05-04",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Remboursement direct prévu",
+          "claim": "Les acheteurs agréés devaient payer UniCredit directement, à 90 jours de leurs factures.",
+          "limit": "C’est le circuit prévu, pas la constatation de paiements reçus.",
+          "watch": "Exécution des règlements.",
+          "sources": [
+            "sienna-judgment-2023"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sht-glencore-sale",
+      "from": "sht",
+      "to": "glencore",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-3-tchad-glencore-dette-petrole/",
+        "label": "Lire : le pétrole tchadien et le remboursement de la dette"
+      },
+      "observations": [
+        {
+          "publishedOn": "2025-12-30",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Vente de brut",
+          "claim": "L’ITIE décrit la vente à Glencore de brut commercialisé par la SHT en 2023.",
+          "limit": "Certaines ventes publiques suivent d’autres circuits.",
+          "watch": "Périmètre des cargaisons.",
+          "sources": [
+            "chad-eiti-2023"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glencore-escrow-receipts",
+      "from": "glencore",
+      "to": "escrow",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-3-tchad-glencore-dette-petrole/",
+        "label": "Lire : le pétrole tchadien et le remboursement de la dette"
+      },
+      "observations": [
+        {
+          "publishedOn": "2025-12-30",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Encaissement des recettes",
+          "claim": "Selon l’ITIE, les recettes correspondantes alimentent le compte séquestre SHT chez Citibank.",
+          "limit": "Relevés bancaires indisponibles : les encaissements ne sont pas vérifiés indépendamment.",
+          "watch": "Rapprochement bancaire.",
+          "sources": [
+            "chad-eiti-2023"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "creditors-sht-prefinancing",
+      "from": "creditors",
+      "to": "sht",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-3-tchad-glencore-dette-petrole/",
+        "label": "Lire : le pétrole tchadien et le remboursement de la dette"
+      },
+      "observations": [
+        {
+          "publishedOn": "2025-12-30",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Préfinancements pétroliers",
+          "claim": "Le rapport retrace des préfinancements de Glencore et d’un syndicat bancaire, adossés aux recettes pétrolières.",
+          "limit": "Les parts de chaque prêteur ne sont pas établies ici.",
+          "watch": "Contrats et avenants.",
+          "sources": [
+            "chad-eiti-2023"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "escrow-creditors-service",
+      "from": "escrow",
+      "to": "creditors",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-3-tchad-glencore-dette-petrole/",
+        "label": "Lire : le pétrole tchadien et le remboursement de la dette"
+      },
+      "observations": [
+        {
+          "publishedOn": "2025-12-30",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Service de la dette",
+          "claim": "Le circuit décrit affecte les recettes aux coûts pétroliers et de transport, puis au service de la dette.",
+          "limit": "Les montants déclarés n’ont pas été rapprochés avec Glencore.",
+          "watch": "Réconciliation des paiements.",
+          "sources": [
+            "chad-eiti-2023"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "escrow-treasury-balance",
+      "from": "escrow",
+      "to": "treasury",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-3-tchad-glencore-dette-petrole/",
+        "label": "Lire : le pétrole tchadien et le remboursement de la dette"
+      },
+      "observations": [
+        {
+          "publishedOn": "2025-12-30",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Solde pour le budget",
+          "claim": "L’excédent après les affectations prioritaires peut être transféré au Trésor.",
+          "limit": "Ce circuit ne couvre pas toutes les recettes publiques.",
+          "watch": "Rapatriements effectifs.",
+          "sources": [
+            "chad-eiti-2023"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unicredit-ercf-coordination",
+      "from": "unicredit",
+      "to": "ercf",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-2-banques-financement-trafigura/",
+        "label": "Lire : les banques derrière Trafigura"
+      },
+      "observations": [
+        {
+          "publishedOn": "2026-03-10",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Coordination du financement",
+          "claim": "Trafigura désigne UniCredit Bank GmbH comme coordinateur de ses crédits européens annoncés en mars 2026.",
+          "limit": "Coordonner ne signifie pas prêter seul.",
+          "watch": "Engagements des participants.",
+          "sources": [
+            "trafigura-facilities-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "socgen-ercf-arrangement",
+      "from": "socgen",
+      "to": "ercf",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-2-banques-financement-trafigura/",
+        "label": "Lire : les banques derrière Trafigura"
+      },
+      "observations": [
+        {
+          "publishedOn": "2026-03-10",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Coarrangement bancaire",
+          "claim": "Société Générale figure parmi les arrangeurs actifs des crédits européens de Trafigura.",
+          "limit": "Sa part financière n’est pas précisée.",
+          "watch": "Répartition des engagements.",
+          "sources": [
+            "trafigura-facilities-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ercf-trafigura-credit",
+      "from": "ercf",
+      "to": "trafigura",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-2-banques-financement-trafigura/",
+        "label": "Lire : les banques derrière Trafigura"
+      },
+      "observations": [
+        {
+          "publishedOn": "2026-03-10",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Crédits renouvelables",
+          "claim": "Trafigura annonce ces facilités pour refinancer des lignes existantes et couvrir ses besoins généraux.",
+          "limit": "Les engagements ne sont ni des tirages ni un financement exclusivement pétrolier.",
+          "watch": "Utilisation des lignes.",
+          "sources": [
+            "trafigura-facilities-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "socgen-liquidity-coordination",
+      "from": "socgen",
+      "to": "liquidity",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-2-banques-financement-trafigura/",
+        "label": "Lire : les banques derrière Trafigura"
+      },
+      "observations": [
+        {
+          "publishedOn": "2026-03-10",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Coordination de la réserve",
+          "claim": "Société Générale coordonne la réserve de liquidité annoncée par Trafigura.",
+          "limit": "Plusieurs banques participent au financement.",
+          "watch": "Conditions de mobilisation.",
+          "sources": [
+            "trafigura-facilities-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "liquidity-trafigura-buffer",
+      "from": "liquidity",
+      "to": "trafigura",
+      "reading": {
+        "href": "/posts/les-banquiers-du-baril-2-banques-financement-trafigura/",
+        "label": "Lire : les banques derrière Trafigura"
+      },
+      "observations": [
+        {
+          "publishedOn": "2026-03-10",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Réserve de précaution",
+          "claim": "Trafigura annonce une réserve initialement prévue pour six mois, avec options de prolongation.",
+          "limit": "Le communiqué ne confirme ni son utilisation ni sa prolongation en septembre 2026.",
+          "watch": "Échéance et prolongations.",
+          "sources": [
+            "trafigura-facilities-2026"
+          ]
+        }
+      ]
+    }
+  ],
+  "milestones": [
+    {
+      "date": "2023-05-04",
+      "label": "La cargaison du Sienna",
+      "change": "L’arrêt publié en 2023 décrit une vente et son financement en 2020. Il distingue le paiement du vendeur du remboursement attendu de la banque."
+    },
+    {
+      "date": "2025-12-30",
+      "label": "Les recettes du Tchad",
+      "change": "Le rapport ITIE publié fin 2025 documente le circuit des recettes pétrolières de 2023. Ces relations historiques ne décrivent pas un encours actuel."
+    },
+    {
+      "date": "2026-03-10",
+      "label": "Les banques de Trafigura",
+      "change": "Le communiqué de mars 2026 ajoute des rôles bancaires et deux ensembles de facilités. La réserve de précaution conserve les conditions de l’annonce ; sa prolongation n’est pas établie ici."
+    }
+  ]
+}

@@ -1,0 +1,374 @@
+{
+  "version": 1,
+  "id": "credit-prive",
+  "title": "Atlas du crédit privé",
+  "reconstructedOn": "2026-09-17",
+  "sources": [
+    {
+      "id": "apollo-bnp-2024",
+      "title": "Apollo et BNP Paribas : partenariat avec ATLAS SP",
+      "url": "https://www.apollo.com/insights-news/pressreleases/2024/09/apollo-s-atlas-sp-and-bnp-paribas-announce-5-billion-strategic-collaboration-2949677",
+      "publishedOn": "2024-09-20",
+      "locator": "Communiqué du 20 septembre 2024, deux premiers paragraphes : propriétaires d’ATLAS SP et engagement de financement de BNP Paribas."
+    },
+    {
+      "id": "arcc-q2-2026",
+      "title": "Ares Capital : rapport trimestriel au 30 juin 2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1287750/000162828026050307/arcc-20260630.htm",
+      "publishedOn": "2026-07-29",
+      "locator": "Note 1 (gestion), note 5 (facilités), inventaire p. 10 (Hyland Software), annexes 10.1 et 10.3 (JPMorgan et BNP). Dépôt SEC du 29 juillet 2026."
+    },
+    {
+      "id": "athene-q2-2026",
+      "title": "Athene : rapport trimestriel au 30 juin 2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1527469/000152746926000056/ahl-20260630.htm",
+      "publishedOn": "2026-08-10",
+      "locator": "Note 11, Related Parties : gestion par Apollo, AAA/AAA Lux et titres émis par Atlas ou ses affiliés. Dépôt SEC du 10 août 2026."
+    },
+    {
+      "id": "apollo-q2-2026",
+      "title": "Apollo : rapport trimestriel au 30 juin 2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1858681/000185868126000040/apo-20260630.htm",
+      "publishedOn": "2026-08-10",
+      "locator": "Note 1, Organization (gestion de fonds et retraite) ; note 16, Retirement Services, rubriques AAA et Atlas (participations). Dépôt SEC du 10 août 2026."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "apollo",
+      "label": "Apollo",
+      "role": "Gérant d’actifs",
+      "column": 0,
+      "row": 0
+    },
+    {
+      "id": "bnp",
+      "label": "BNP Paribas",
+      "role": "Banque · financement",
+      "column": 0,
+      "row": 1
+    },
+    {
+      "id": "jpm",
+      "label": "JPMorgan Chase",
+      "role": "Banque · agent de crédit",
+      "column": 0,
+      "row": 3
+    },
+    {
+      "id": "ares-manager",
+      "label": "Ares Capital Management",
+      "role": "Gérant d’ARCC",
+      "column": 0,
+      "row": 4
+    },
+    {
+      "id": "apollo-funds",
+      "label": "Fonds Apollo",
+      "role": "Véhicules gérés par Apollo",
+      "column": 1,
+      "row": 0
+    },
+    {
+      "id": "athene",
+      "label": "Athene",
+      "role": "Assureur · épargne retraite",
+      "column": 1,
+      "row": 1
+    },
+    {
+      "id": "arcc",
+      "label": "Ares Capital · ARCC",
+      "role": "Société de financement cotée",
+      "column": 1,
+      "row": 3
+    },
+    {
+      "id": "aaa",
+      "label": "AAA / AAA Lux",
+      "role": "Véhicules d’investissement",
+      "column": 2,
+      "row": 0
+    },
+    {
+      "id": "afb",
+      "label": "ARCC FB Funding",
+      "role": "Filiale de financement d’ARCC",
+      "column": 2,
+      "row": 2
+    },
+    {
+      "id": "atlas-sp",
+      "label": "ATLAS SP",
+      "role": "Plateforme de crédit adossé à des actifs",
+      "column": 3,
+      "row": 1
+    },
+    {
+      "id": "hyland",
+      "label": "Hyland Software",
+      "role": "Entreprise emprunteuse",
+      "column": 3,
+      "row": 3
+    }
+  ],
+  "relations": [
+    {
+      "id": "bnp-atlas",
+      "from": "bnp",
+      "to": "atlas-sp",
+      "observations": [
+        {
+          "publishedOn": "2024-09-20",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Financement bancaire annoncé",
+          "claim": "BNP Paribas annonce un engagement de financement pour des crédits adossés à des actifs originés par Apollo et ATLAS SP.",
+          "limit": "Le communiqué décrit un engagement, sans établir les montants effectivement tirés ni leur situation actuelle.",
+          "watch": "Tirages, échéances et évolution de l’accord.",
+          "sources": [
+            "apollo-bnp-2024"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "funds-atlas",
+      "from": "apollo-funds",
+      "to": "atlas-sp",
+      "observations": [
+        {
+          "publishedOn": "2024-09-20",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Participation majoritaire annoncée",
+          "claim": "Le communiqué présente ATLAS SP comme majoritairement détenu par des fonds Apollo.",
+          "limit": "Les fonds investisseurs sont distincts du bilan du gérant Apollo. Le communiqué ne détaille pas leurs parts respectives.",
+          "watch": "Évolution de l’actionnariat.",
+          "sources": [
+            "apollo-bnp-2024"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ares-arcc",
+      "from": "ares-manager",
+      "to": "arcc",
+      "observations": [
+        {
+          "publishedOn": "2026-07-29",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Mandat de gestion",
+          "claim": "Ares Capital Management gère ARCC selon un contrat de conseil et de gestion.",
+          "limit": "Le gérant et la société de financement sont des entités distinctes.",
+          "watch": "Mandat et commissions.",
+          "sources": [
+            "arcc-q2-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jpm-arcc",
+      "from": "jpm",
+      "to": "arcc",
+      "observations": [
+        {
+          "publishedOn": "2026-07-29",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Agent d’une facilité bancaire",
+          "claim": "JPMorgan est l’agent administratif de la facilité de crédit d’ARCC citée dans l’annexe 10.1.",
+          "limit": "Cette fonction ne signifie pas que JPMorgan prête seul la totalité.",
+          "watch": "Composition du syndicat et engagements.",
+          "sources": [
+            "arcc-q2-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bnp-afb",
+      "from": "bnp",
+      "to": "afb",
+      "observations": [
+        {
+          "publishedOn": "2026-07-29",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Prêteur et agent bancaire",
+          "claim": "BNP Paribas est prêteur et agent administratif de la facilité d’ARCC FB Funding.",
+          "limit": "La facilité finance ce véhicule ; elle ne désigne pas un emprunteur final particulier.",
+          "watch": "Tirages et garanties.",
+          "sources": [
+            "arcc-q2-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arcc-afb",
+      "from": "arcc",
+      "to": "afb",
+      "observations": [
+        {
+          "publishedOn": "2026-07-29",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Capital et gestion des créances",
+          "claim": "ARCC est actionnaire et gestionnaire des créances d’ARCC FB Funding dans l’annexe 10.3.",
+          "limit": "Le véhicule emprunte distinctement de sa maison mère.",
+          "watch": "Actifs affectés au véhicule.",
+          "sources": [
+            "arcc-q2-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arcc-hyland",
+      "from": "arcc",
+      "to": "hyland",
+      "observations": [
+        {
+          "publishedOn": "2026-07-29",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Prêt senior garanti",
+          "claim": "ARCC déclare un prêt senior garanti de premier rang à Hyland Software au 30 juin 2026.",
+          "limit": "Une position détenue ne décrit pas toute la dette de Hyland.",
+          "watch": "Remboursements et prochain inventaire.",
+          "sources": [
+            "arcc-q2-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apollo-athene",
+      "from": "apollo",
+      "to": "athene",
+      "observations": [
+        {
+          "publishedOn": "2026-08-10",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Gestion du portefeuille de l’assureur",
+          "claim": "Athene indique qu’Apollo gère la quasi-totalité de ses placements au 30 juin 2026.",
+          "limit": "Ce mandat ne transforme pas les obligations de l’assureur en dettes des fonds gérés par Apollo.",
+          "watch": "Mandat, commissions et transactions entre affiliés.",
+          "sources": [
+            "athene-q2-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "athene-aaa",
+      "from": "athene",
+      "to": "aaa",
+      "observations": [
+        {
+          "publishedOn": "2026-08-10",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Participation à des véhicules d’investissement",
+          "claim": "Apollo indique qu’Athene détient et consolide AAA et AAA Lux, qui regroupent des investissements alternatifs.",
+          "limit": "Ces véhicules peuvent aussi accueillir du capital de tiers. Consolidation comptable et propriété intégrale ne sont pas synonymes.",
+          "watch": "Participations et intérêts des investisseurs tiers.",
+          "sources": [
+            "apollo-q2-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aaa-atlas",
+      "from": "aaa",
+      "to": "atlas-sp",
+      "observations": [
+        {
+          "publishedOn": "2026-08-10",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Participation indirecte au capital",
+          "claim": "La participation d’Athene au capital d’Atlas passe par ses investissements dans AAA et AAA Lux.",
+          "limit": "Cette chaîne de détention est distincte des titres Atlas détenus directement par Athene.",
+          "watch": "Évolution des participations et du périmètre.",
+          "sources": [
+            "apollo-q2-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "athene-atlas",
+      "from": "athene",
+      "to": "atlas-sp",
+      "observations": [
+        {
+          "publishedOn": "2026-08-10",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Investissement en titres",
+          "claim": "Athene déclare détenir des titres émis par Atlas ou ses affiliés, classés disponibles à la vente, au 30 juin 2026.",
+          "limit": "Ce lien regroupe les émetteurs Atlas et affiliés cités par le rapport. Il ne mesure ni une perte ni un flux nouveau.",
+          "watch": "Émetteurs, valorisation et engagements supplémentaires.",
+          "sources": [
+            "athene-q2-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apollo-funds-management",
+      "from": "apollo",
+      "to": "apollo-funds",
+      "observations": [
+        {
+          "publishedOn": "2026-08-10",
+          "recordedOn": "2026-09-17",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Gestion de fonds et véhicules",
+          "claim": "Apollo lève et gère des fonds, comptes et véhicules pour des investisseurs institutionnels et particuliers.",
+          "limit": "Le nœud regroupe des véhicules distincts. Il ne représente pas un fonds unique ni une garantie générale d’Apollo.",
+          "watch": "Périmètre des véhicules et mandats.",
+          "sources": [
+            "apollo-q2-2026"
+          ]
+        }
+      ]
+    }
+  ],
+  "milestones": [
+    {
+      "date": "2024-09-20",
+      "label": "BNP et ATLAS SP",
+      "change": "Un partenariat de financement annoncé et un actionnariat par des fonds Apollo. Cette vue restitue le communiqué de 2024."
+    },
+    {
+      "date": "2026-07-29",
+      "label": "Le circuit Ares",
+      "change": "Le rapport d’ARCC au 30 juin 2026 distingue son gérant, ses facilités bancaires, sa filiale de financement et un prêt à Hyland Software."
+    },
+    {
+      "date": "2026-08-10",
+      "label": "Le circuit assurance",
+      "change": "Les rapports d’Apollo et d’Athene au 30 juin 2026 décrivent les mandats de gestion, les participations indirectes et les titres détenus. Les liens de 2024 conservent leur date d’origine."
+    }
+  ]
+}

@@ -8,14 +8,17 @@ if (args.length && !(proposal && args.length === 2)) {
   console.error('Usage : npm run atlas:check | npm run atlas:check -- --proposal chemin.json');
   process.exit(1);
 }
-const path = resolve(proposal ? args[1] : 'src/data/engagement-atlas.json');
+const paths = proposal ? [args[1]] : ['src/data/engagement-atlas.json', 'src/data/private-credit-atlas.json', 'src/data/oil-financing-atlas.json'];
 try {
-  if (statSync(path).size > 500_000) throw new Error('Taille excessive');
-  const data = JSON.parse(readFileSync(path, 'utf8'));
-  assertAtlasDataset(data, proposal);
-  console.log(proposal
-    ? 'Structure de proposition valide. Aucune approbation éditoriale ni écriture dans le corpus publié.'
-    : `Atlas valide : ${data.nodes.length} acteurs et structures, ${data.relations.length} relations, ${data.sources.length} pièces primaires.`);
+  for (const entry of paths) {
+    const path = resolve(entry);
+    if (statSync(path).size > 500_000) throw new Error('Taille excessive');
+    const data = JSON.parse(readFileSync(path, 'utf8'));
+    assertAtlasDataset(data, proposal);
+    console.log(proposal
+      ? 'Structure de proposition valide. Aucune approbation éditoriale ni écriture dans le corpus publié.'
+      : `Atlas valide : ${data.nodes.length} acteurs et structures, ${data.relations.length} relations, ${data.sources.length} pièces primaires.`);
+  }
 } catch {
   // Input paths, source URLs and raw JSON may be private; do not print them.
   console.error('Atlas invalide : vérifier schéma, dates, sources, limites et statut de revue. Aucun fichier modifié.');

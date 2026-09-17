@@ -9,13 +9,14 @@ function initAtlas(root: HTMLElement) {
   } catch { return; } // Keep the source-backed static reading path usable.
 
   const find = <T extends Element = HTMLElement>(selector: string) => root.querySelector<T>(selector)!;
-  let state = atlasSelection(dataset, location.hash);
+  const preferredRelation = root.dataset.atlasInitialRelation;
+  let state = atlasSelection(dataset, location.hash, preferredRelation);
   let focusNode = '';
   const map = find('[data-atlas-map]');
   const svg = find<SVGSVGElement>('[data-atlas-lines]');
   const paths = find<SVGGElement>('[data-atlas-paths]');
   const relationList = find('[data-atlas-relation-list]');
-  const kindLabels = { announcement: 'Annonce des parties', contract: 'Engagement déclaré', limitation: 'Limites documentées' };
+  const kindLabels = { announcement: 'Annonce des parties', contract: 'Relation déclarée', limitation: 'Limites documentées' };
   const nodeLabel = (id: string) => id === 'aip' && state.date < '2025-03-19' ? 'GAIIP' : dataset.nodes.find(item => item.id === id)!.label;
   const put = (selector: string, text: string) => { find(selector).textContent = text; };
   const scenarioIds = new Set(['openai-sb-lease', 'nvidia-sb-guarantee', 'openai-nvidia-indemnity']);
@@ -27,7 +28,9 @@ function initAtlas(root: HTMLElement) {
     if (!bounds.width || !bounds.height) return;
     svg.setAttribute('viewBox', `0 0 ${bounds.width} ${bounds.height}`);
     const colors = getComputedStyle(root);
-    for (const relation of atlasAt(dataset, state.date).relations) {
+    const snapshot = atlasAt(dataset, state.date);
+    const firstNodeTop = Math.min(...snapshot.nodes.map(node => find(`[data-atlas-node="${node.id}"]`).getBoundingClientRect().top)) - bounds.top;
+    for (const [index, relation] of snapshot.relations.entries()) {
       const startNode = find<HTMLElement>(`[data-atlas-node="${relation.from}"]`);
       const endNode = find<HTMLElement>(`[data-atlas-node="${relation.to}"]`);
       const a = startNode.getBoundingClientRect(), b = endNode.getBoundingClientRect();
@@ -42,7 +45,15 @@ function initAtlas(root: HTMLElement) {
         const forward = b.x > a.x;
         const x1 = (forward ? a.right : a.left) - bounds.left, x2 = (forward ? b.left : b.right) - bounds.left;
         const y1 = a.y + a.height / 2 - bounds.top, y2 = b.y + b.height / 2 - bounds.top;
-        d = `M${x1},${y1} C${(x1 + x2) / 2},${y1} ${(x1 + x2) / 2},${y2} ${x2},${y2}`;
+        const columnsApart = Math.abs(nodePosition(relation.from) - nodePosition(relation.to));
+        if (columnsApart > 1) {
+          // Use the gutter above the nodes so a long link cannot imply an intermediate connection.
+          const offset = forward ? 12 : -12;
+          const rail = Math.max(6, firstNodeTop - 10 - (index % 6) * 2);
+          d = `M${x1},${y1} H${x1 + offset} V${rail} H${x2 - offset} V${y2} H${x2}`;
+        } else {
+          d = `M${x1},${y1} C${(x1 + x2) / 2},${y1} ${(x1 + x2) / 2},${y2} ${x2},${y2}`;
+        }
       }
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       const selected = state.scenario ? scenarioIds.has(relation.id) : relation.id === state.relation;
@@ -56,6 +67,8 @@ function initAtlas(root: HTMLElement) {
       paths.append(path);
     }
   }
+
+  function nodePosition(id: string) { return dataset.nodes.find(node => node.id === id)!.column; }
 
   function render(updateLocation = true) {
     const focusedRelation = document.activeElement instanceof HTMLElement ? document.activeElement.dataset.atlasRelation : undefined;
@@ -102,10 +115,19 @@ function initAtlas(root: HTMLElement) {
     for (const field of ['claim', 'limit', 'watch'] as const) put(`[data-proof-${field}]`, selected.observation[field]);
     put('[data-proof-amount]', selected.observation.amount?.label ?? '');
     find('[data-proof-amount]').hidden = !selected.observation.amount;
-    find('[data-atlas-scenario]').hidden = !scenarioIds.has(selected.id);
-    find('[data-scenario-toggle]').setAttribute('aria-pressed', String(state.scenario));
-    put('[data-scenario-toggle]', state.scenario ? 'Fermer le scénario de défaut' : 'Explorer un défaut du locataire');
-    find('[data-scenario-text]').hidden = !state.scenario;
+    const reading = find('[data-atlas-reading]');
+    reading.hidden = !selected.reading;
+    const readingLink = reading.querySelector('a')!;
+    readingLink.textContent = selected.reading?.label ?? '';
+    if (selected.reading) readingLink.setAttribute('href', selected.reading.href);
+    else readingLink.removeAttribute('href');
+    const scenario = root.querySelector<HTMLElement>('[data-atlas-scenario]');
+    if (scenario) {
+      scenario.hidden = !scenarioIds.has(selected.id);
+      find('[data-scenario-toggle]').setAttribute('aria-pressed', String(state.scenario));
+      put('[data-scenario-toggle]', state.scenario ? 'Fermer le scénario de défaut' : 'Explorer un défaut du locataire');
+      find('[data-scenario-text]').hidden = !state.scenario;
+    }
     const sources = find('[data-proof-sources]'); sources.replaceChildren();
     for (const id of selected.observation.sources) {
       const source = snapshot.sources.find(item => item.id === id)!;
@@ -139,11 +161,14 @@ function initAtlas(root: HTMLElement) {
       if (matchMedia('(max-width:760px)').matches) find('[data-atlas-proof]').scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth' });
     } else if (target.hasAttribute('data-atlas-reset')) { focusNode = ''; render();
     } else if (target.hasAttribute('data-scenario-toggle')) { state.scenario = !state.scenario; render();
-    } else if (target.dataset.entry) {
+    } else if (target.dataset.atlasEntry) {
       focusNode = '';
-      state = target.dataset.entry === 'platform'
-        ? { date: '2025-03-19', relation: 'nvidia-aip', scenario: false }
-        : { date: dataset.milestones.at(-1)!.date, relation: 'nvidia-sb-guarantee', scenario: true };
+      const params = new URLSearchParams({
+        date: target.dataset.entryDate ?? '',
+        relation: target.dataset.atlasEntry,
+        scenario: target.dataset.entryScenario ?? '',
+      });
+      state = atlasSelection(dataset, `#${params}`, preferredRelation);
       render(); find('[data-atlas-map]').scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth' });
     } else if (target.hasAttribute('data-atlas-copy')) {
       try { await navigator.clipboard.writeText(location.href); put('[data-copy-status]', 'Lien copié.'); }
@@ -152,7 +177,7 @@ function initAtlas(root: HTMLElement) {
   });
   window.addEventListener('hashchange', () => {
     if (!location.hash.startsWith('#date=')) return;
-    state = atlasSelection(dataset, location.hash); focusNode = ''; render(false);
+    state = atlasSelection(dataset, location.hash, preferredRelation); focusNode = ''; render(false);
   });
   new ResizeObserver(draw).observe(map);
   new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });

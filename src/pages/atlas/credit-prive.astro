@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EngagementAtlas from '../../components/EngagementAtlas.astro';
+import dataset from '../../data/private-credit-atlas.json';
+const latestDate = dataset.milestones.at(-1)!.date;
+---
+
+<BaseLayout title={dataset.title} seoTitle="Atlas du crédit privé : fonds, assureurs et banques | l0g" description="Explorez les circuits du crédit privé : Apollo, Athene, Ares Capital, BNP Paribas, JPMorgan et les entreprises financées. Relations, contrats et sources." sidebar={false}>
+  <EngagementAtlas
+    dataset={dataset}
+    subject="crédit privé"
+    intro="Qui apporte les capitaux, qui gère les fonds et qui emprunte ? Explorez deux circuits documentés : les prêts aux entreprises autour d’Ares Capital et le crédit adossé à des actifs autour d’Apollo et d’Athene."
+    boundary="La carte couvre une sélection de relations publiées, principalement aux États-Unis. Un même acteur peut intervenir dans plusieurs circuits : cela n’établit pas qu’une banque finance un prêt précis, ni qu’elle garantit les autres participants. ATLAS SP désigne ici une société, distincte des atlas l0g."
+    selectedRelation="arcc-hyland"
+    hubs={['arcc', 'atlas-sp', 'athene']}
+    entryPoints={[
+      { label: 'Où interviennent les banques ?', relation: 'bnp-afb', date: latestDate },
+      { label: 'Comment l’assureur investit-il ?', relation: 'athene-atlas', date: latestDate },
+      { label: 'Quelle entreprise reçoit un prêt ?', relation: 'arcc-hyland', date: latestDate },
+    ]}
+    outlinks={[
+      { href: '/posts/atlas-entrepot-credit-risque-apollo-athene/', label: 'Comprendre les entrepôts de crédit' },
+      { href: '/posts/credit-prive-clo-warehouse-banques/', label: 'Le rôle des banques dans le crédit privé' },
+      { href: '/posts/credit-prive-logiciels-ia-revenus-dette/', label: 'Crédit privé et entreprises de logiciels' },
+      { href: '/api/v1/private-credit-atlas.json', label: 'Réutiliser les relations et leurs sources · JSON' },
+    ]}
+  >
+    <section slot="overview" class="credit-overview" aria-labelledby="credit-circuits-title">
+      <details>
+      <summary id="credit-circuits-title">Comprendre les rôles dans le circuit du crédit privé</summary>
+      <p>Le crédit privé finance les entreprises en dehors du prêt bancaire traditionnel et des marchés obligataires publics. Les banques restent présentes dans le financement des intermédiaires.</p>
+      <ol class="credit-roles">
+        <li><span>Apporter des capitaux</span><h3>Investisseurs et assureurs</h3><p>Fonds de pension, assureurs et autres investisseurs allouent des capitaux. L’investissement peut passer par un fonds ou être détenu au bilan.</p></li>
+        <li><span>Choisir et gérer</span><h3>Gérants et véhicules</h3><p>Le gérant sélectionne et suit les placements. Le fonds ou la société de financement porte les actifs et peut lui-même emprunter.</p></li>
+        <li><span>Financer l’intermédiaire</span><h3>Banques</h3><p>Une ligne de crédit finance un fonds ou un véhicule. Un engagement disponible, un tirage et le rôle d’agent bancaire sont trois informations différentes.</p></li>
+        <li><span>Recevoir le financement</span><h3>Entreprises</h3><p>L’entreprise emprunteuse doit payer les intérêts et rembourser selon son contrat. La détention d’un prêt ne donne pas une vue complète de sa dette.</p></li>
+      </ol>
+      <p class="credit-sources">Repères : <a href="https://www.federalreserve.gov/econres/notes/feds-notes/private-credit-characteristics-and-risks-20240223.html">Réserve fédérale, structure du crédit privé, février 2024</a> ; <a href="https://www.federalreserve.gov/econres/notes/feds-notes/bank-lending-to-private-credit-size-characteristics-and-financial-stability-implications-20250523.html">financement bancaire des fonds, mai 2025</a>. La carte ci-dessous utilise les documents des acteurs concernés.</p>
+      <p class="credit-scope">ARCC est une <strong>BDC</strong> (Business Development Company), une société de financement américaine cotée. ATLAS SP intervient dans le crédit adossé à des actifs, un périmètre différent du prêt direct aux entreprises. Les rassembler permet de comparer les circuits, sans assimiler leurs activités.</p>
+      </details>
+    </section>
+  </EngagementAtlas>
+</BaseLayout>
+
+<style>
+  .credit-overview { margin:1rem 0 2rem; }
+  .credit-overview details { padding:1rem; border:1px solid var(--color-line); border-radius:8px; }
+  .credit-overview summary { cursor:pointer; min-height:32px; color:var(--color-bright); font-family:var(--font-display); font-size:.95rem; }
+  .credit-overview summary:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+  .credit-overview details>p { max-width:85ch; margin:.8rem 0; font-family:var(--font-read); line-height:1.7; font-size:.9rem; }
+  .credit-roles { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.8rem; margin:1.2rem 0; list-style:none; padding:0; }
+  .credit-roles li { padding:1rem; border:1px solid var(--color-line); border-radius:8px; background:var(--color-surface); }
+  .credit-roles span { font-family:var(--font-mono); font-size:.65rem; color:var(--color-signal); }
+  .credit-roles h3 { margin:.65rem 0; font-size:.92rem; color:var(--color-bright); }
+  .credit-roles p { font-family:var(--font-read); font-size:.82rem; line-height:1.65; }
+  .credit-overview .credit-sources { font-size:.75rem; color:var(--color-muted); }
+  .credit-sources a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; }
+  .credit-sources a:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+  .credit-scope { padding-left:1rem; border-left:2px solid var(--color-line); }
+  @media(max-width:900px) { .credit-roles { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media(max-width:520px) { .credit-roles { grid-template-columns:minmax(0,1fr); } }
+</style>

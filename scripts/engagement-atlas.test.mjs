@@ -4,6 +4,84 @@ import { readFileSync } from 'node:fs';
 import { assertAtlasDataset, atlasAt, atlasSelection, isAtlasDate } from '../src/lib/engagement-atlas.ts';
 
 const source = JSON.parse(readFileSync(new URL('../src/data/engagement-atlas.json', import.meta.url), 'utf8'));
+const credit = JSON.parse(readFileSync(new URL('../src/data/private-credit-atlas.json', import.meta.url), 'utf8'));
+const oil = JSON.parse(readFileSync(new URL('../src/data/oil-financing-atlas.json', import.meta.url), 'utf8'));
+
+test('oil atlas uses publication dates, not transaction years, and excludes later facilities', () => {
+  assertAtlasDataset(oil);
+  assert.equal(atlasAt(oil, '2020-04-02').relations.length, 0);
+  const sienna = atlasAt(oil, '2023-05-04');
+  assert.equal(sienna.relations.length, 4);
+  assert.deepEqual(sienna.sources.map(item => item.id), ['sienna-judgment-2023']);
+  assert.equal(sienna.nodes.some(item => item.id === 'trafigura' || item.id === 'sht'), false);
+  const chad = atlasAt(oil, '2025-12-30');
+  assert.equal(chad.relations.length, 9);
+  assert.equal(chad.sources.some(item => item.id === 'trafigura-facilities-2026'), false);
+  const latest = atlasAt(oil, '2026-03-10');
+  assert.equal(latest.relations.length, 14);
+  assert.equal(latest.relations.find(item => item.id === 'unicredit-bp-payment').observation.publishedOn, '2023-05-04');
+  assert.equal(atlasSelection(oil, '#date=2026-03-10&scenario=default', 'unicredit-bp-payment').scenario, false);
+});
+
+test('oil atlas preserves expected repayment, bank roles and the distinct escrow circuit', () => {
+  const relation = id => oil.relations.find(item => item.id === id);
+  assert.match(relation('buyers-unicredit-payment').observations[0].label, /prévu/);
+  assert.match(relation('unicredit-ercf-coordination').observations[0].label, /Coordination/);
+  assert.match(relation('liquidity-trafigura-buffer').observations[0].limit, /ni sa prolongation/);
+  assert.match(relation('glencore-escrow-receipts').observations[0].limit, /indisponibles/);
+  assert.equal(oil.relations.some(item => item.from === 'escrow' && item.to === 'sht'), false);
+  assert.equal(oil.relations.some(item => item.from === 'trafigura' && ['gulf', 'glencore', 'sht'].includes(item.to)), false);
+  assert.equal(oil.relations.every(item => item.observations.every(observation => observation.amount === undefined)), true);
+});
+
+test('oil source origins and reading links reject lookalikes, credentials and executable URLs', () => {
+  for (const origin of ['https://eiti.org', 'https://www.trafigura.com', 'https://www.quadrantchambers.com']) {
+    for (const url of [`${origin}.evil.example/document`, `${origin}@evil.example/document`, `${origin}/document?token=secret`]) {
+      const candidate = structuredClone(oil);
+      candidate.sources[0].url = url;
+      assert.throws(() => assertAtlasDataset(candidate));
+    }
+  }
+  for (const href of ['javascript:alert(1)', '//evil.example/path', '/posts/../admin/', '/posts/%2e%2e/', '/posts/article/?token=secret', '/posts/article/#fragment']) {
+    const candidate = structuredClone(oil);
+    candidate.relations[0].reading.href = href;
+    assert.throws(() => assertAtlasDataset(candidate));
+  }
+  const snapshot = atlasAt(oil, '2023-05-04');
+  assert.equal(snapshot.relations.find(item => item.id === 'unicredit-bp-payment').reading.href, '/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/');
+});
+
+test('private credit historical cuts keep later filings out of the announced partnership', () => {
+  assertAtlasDataset(credit);
+  const earlier = atlasAt(credit, '2024-09-20');
+  assert.deepEqual(earlier.relations.map(relation => relation.id), ['bnp-atlas', 'funds-atlas']);
+  assert.equal(earlier.nodes.some(node => node.id === 'arcc' || node.id === 'athene'), false);
+  assert.equal(earlier.sources.length, 1);
+  const ares = atlasAt(credit, '2026-07-29');
+  assert.equal(ares.relations.some(relation => relation.id === 'arcc-hyland'), true);
+  assert.equal(ares.relations.some(relation => relation.id === 'athene-atlas'), false);
+});
+
+test('each atlas has a valid initial relation and shared links cannot import the other scenario', () => {
+  const initial = atlasSelection(credit, '', 'arcc-hyland');
+  assert.equal(initial.relation, 'arcc-hyland');
+  assert.equal(initial.scenario, false);
+  const foreign = atlasSelection(credit, '#date=2026-08-10&relation=nvidia-sb-guarantee&scenario=default', 'arcc-hyland');
+  assert.deepEqual(foreign, { date: '2026-08-10', relation: 'arcc-hyland', scenario: false });
+  assert.equal(atlasSelection(credit, '#date=2024-09-20', 'arcc-hyland').relation, 'funds-atlas');
+});
+
+test('private credit data does not infer a bank loan to Hyland or confuse investment with management', () => {
+  assert.equal(credit.relations.some(relation => ['bnp', 'jpm'].includes(relation.from) && relation.to === 'hyland'), false);
+  assert.equal(credit.relations.some(relation => relation.from === 'ares-manager' && relation.to === 'hyland'), false);
+  assert.equal(credit.relations.find(relation => relation.id === 'ares-arcc').observations[0].label, 'Mandat de gestion');
+  assert.equal(credit.relations.every(relation => relation.observations.every(observation => observation.amount === undefined)), true);
+  for (const url of ['https://www.apollo.com.evil.example/news', 'https://www.apollo.com@evil.example/news', 'https://www.apollo.com/news?token=secret']) {
+    const candidate = structuredClone(credit);
+    candidate.sources[0].url = url;
+    assert.throws(() => assertAtlasDataset(candidate));
+  }
+});
 const copy = () => structuredClone(source);
 
 test('published corpus validates and retains exact monetary meaning', () => {
