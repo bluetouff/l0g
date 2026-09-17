@@ -1,0 +1,175 @@
+---
+title: 'Personal data: who pays for collection?'
+seoTitle: 'Personal data: the economics of collection | l0g'
+ogTitle: 'The trade in our digital traces (1/6): who funds collection?'
+description: "The trade in our digital traces, part 1 of 6: Life360 contracts, FTC records and the Mobius decision reveal how personal-data collection is funded."
+pubDate: '2026-09-17T15:08:36Z'
+tags: ["personal data", "technology", "advertising", "Life360", "FTC", "CNIL", "investigation"]
+draft: false
+ogImage: /illustrations/news/commerce-traces-01-v1.jpg
+sourceArticle: commerce-traces-economie-collecte-donnees-personnelles
+sourceUpdatedDate: '2026-09-17T15:08:36Z'
+---
+
+import CommerceTracesFigure from "../../components/CommerceTracesFigure.astro";
+
+*The trade in our digital traces · Part one of a six-part investigation.*
+
+**Personal data does not always change hands as a file sold for cash. Contracts and regulatory records reveal payments per device, advertising revenue shares, licensing arrangements and reuse inside service providers. Following the consideration exchanged helps identify when a service for its user begins supporting someone else’s business.**
+
+In Attachment D of a contract between Life360 and Placer Labs, both companies owe the other money. Placer must pay Life360. Life360 must also pay Placer. The amounts are redacted in the version filed with the US Securities and Exchange Commission. The direction of the payments is not. [1](#source-1)
+
+Life360 offers family location-sharing and safety services. Placer analyzes visits to physical locations. Their agreement, effective January 26, 2022, combines processing and analytics services with the right to commercialize aggregated data. A company can buy a tool while supplying material that helps make the tool valuable. Calling this a partnership says little about the customer-and-supplier relationships running in both directions. [1](#source-1) [3](#source-3) [4](#source-4)
+
+For an investigation into the personal-data business, that attachment is more useful than a slogan about free services. It poses questions that evidence can answer: who supplies what, who pays whom, and which uses are permitted?
+
+Two regulatory cases illuminate different arrangements. The FTC’s final order concerning Gravy Analytics and Venntel, dated January 13, 2025, addresses sensitive location data and consent, among other matters. France’s CNIL imposed a penalty on Mobius Solutions, a former advertising processor for Deezer, on December 11, 2025, announcing it on December 19. A brokerage chain and a service performed for a client are different relationships. Both records help expose uses beyond the user’s original interaction with a service. [12](#source-12) [14](#source-14)
+
+## The app supplies access
+
+A broker need not persuade consumers to install an app bearing its own name. Another publisher already has that relationship. A software development kit, or [**SDK**](/en/glossary/sdk/), lets the publisher integrate functions supplied by a third party. These may include advertising, analytics or access to particular phone resources, depending on the component and its configuration. Finding an SDK in an app therefore does not, by itself, establish either active collection or a data sale. [17](#source-17)
+
+The FTC’s complaint against X-Mode and its successor Outlogic describes a more specific incentive: developers were promised passive revenue for each device whose user allowed the kit to collect location data. The component transmitted coordinates, observation times and an advertising identifier, among other fields. The complaint also describes licenses giving third parties access to raw location data. [5](#source-5)
+
+In this arrangement, the publisher supplies collection capacity. The broker need not build the entire audience itself. Payment per device makes access commercially valuable upstream, before every eventual use of the resulting dataset is known.
+
+This still does not reveal a price. The public complaint provides no rate card from which to calculate what an individual user supposedly earns the publisher. It describes an incentive in a set of administrative allegations. The FTC announced final approval of the X-Mode/Outlogic settlement on April 12, 2024; the practices alleged should not be presented as a fresh observation of how those businesses operate today. [5](#source-5) [6](#source-6)
+
+The consideration described in the InMarket case is different. According to the FTC’s complaint, publishers integrating its SDK received a share of revenue from advertisements served in their apps. The same component transmitted location data to InMarket. The publisher’s receipts were tied to ad delivery, rather than a publicly disclosed price per geographic observation. [7](#source-7)
+
+That distinction matters when reading accounts. Advertising revenue can fund a system that collects reusable information without generating an invoice labeled data sales. Conversely, the presence of advertising does not establish that an app sells its users’ movements.
+
+## A permission prompt does not describe every purpose
+
+The explanation for collection can initially be straightforward: identify a nearby store, or display a shopping reminder at the right place. In the InMarket case, the FTC examined how the CheckPoints and ListEase apps presented their use of location. It alleged inadequate disclosure of broader advertising uses, along with insufficient checks on the notices supplied by third-party apps. [7](#source-7)
+
+The gap between the function presented to the user and subsequent uses is central to the case. Our investigation into [France Identité’s data and records](/en/analysis/your-identity-in-your-phone-1-when-an-id-card-becomes-a-service/) examines a related question in a different institutional setting.
+
+CNIL’s guidance helps separate questions that are easily conflated. Has the phone technically granted access to a resource? Has the user received the information and given any consent required for the relevant purposes? Have the companies allocated their rights and obligations? A technical permission does not automatically settle the other questions. In limited circumstances it can also capture valid consent, but it is not an open-ended authorization for future uses. [15](#source-15)
+
+InMarket disputes the FTC’s allegations concerning disclosure and consent. In its public response in May 2024, it also emphasized a business-model distinction: its advertising products use precise location, while selling or licensing the underlying coordinates was, it said, not its business. That position does not resolve the consent dispute. It does mean that a prospective prohibition on sales must not be treated as proof that such sales necessarily occurred. [9](#source-9)
+
+The FTC announced final approval of the settlement on May 1, 2024. Its terms restrict precise-location transfers and targeting based on sensitive locations, among other requirements. Its obligations, the allegations preceding it and the company’s defense are separate parts of the record. [8](#source-8)
+
+## Life360’s contract has payments going both ways
+
+The Life360–Placer agreement moves the investigation from a regulator’s account to a signed document. Its cover sheet separates services supplied to Life360 from Placer’s right to use, including to sell, aggregated data within the agreement’s restrictions. The fee attachment sets out reciprocal payments. [1](#source-1)
+
+<CommerceTracesFigure lang="en" figure={1} />
+
+Keeping those flows separate is essential. The price of a technical service is not interchangeable with consideration for a license. Adding them would create a meaningless combined revenue figure. Netting them without justification would conceal two commercial relationships. Neither the unredacted amounts nor the invoices needed to establish the balance actually settled are available in the reviewed material.
+
+The arrangement nevertheless establishes something important: access for commercial use has its own consideration, distinct from the purchase of services. The app is not serving only its user. Part of what it helps produce enters a second contract.
+
+This observation needs a date. Life360 announced an update to its Placer arrangement in August 2024, confirming that sales of aggregated data would continue. The 2022 provisions examined here are not presented as the complete terms of today’s agreement. [4](#source-4)
+
+There are also limits that a one-sided account might omit. An amendment effective June 8, 2022, prohibits providing third parties with certain aggregated results for a location involving fewer than 50 unique devices. It specifies approximate, randomized map positions and restrictions involving sensitive locations. These are concrete contractual commitments. [2](#source-2)
+
+They do not independently establish irreversible anonymization or demonstrate that every filter works as intended. But they also rule out casually describing this offering as unrestricted resale of raw individual journeys. The permitted output, prior processing and available queries matter as much as the supplier’s name.
+
+## A revenue category is not a price per person
+
+Life360’s report for fiscal 2025, filed on March 2, 2026, puts a number on an activity. Note 2 discloses **$32.7 million in data revenue**, compared with $26.6 million in 2024 and $21.6 million in 2023. The category accounted for approximately **6.7% of 2025 total revenue**, which was $489.481 million. These are full fiscal years, measured in nominal US dollars. The total is an accounting category, not the price of a single contract. [3](#source-3) [18](#source-18)
+
+<CommerceTracesFigure lang="en" figure={2} />
+
+Another line, *Other revenue*, reached $68.412 million in 2025. It combines data and partnership revenue, including advertising. Describing the whole amount as proceeds from data sales would be about 2.1 times the separately identified data-revenue figure, incorrectly including other activities. The note also describes fixed and variable payments and quarterly minimum guarantees under the data arrangement. [3](#source-3)
+
+That is the presentation used in the 2025 annual report. In its report for June 30, 2026, filed on August 10, Life360 reports advertising revenue separately and reclassifies comparative periods. A change in *Other revenue* across those two presentations would therefore not, by itself, measure a change in the data business. [20](#source-20)
+
+Revenue is neither profit nor necessarily cash received during the year. The accounting includes non-cash consideration related to warrants. Nor does the data category capture every possible economic use of information: an advertising service can depend on data while being reported elsewhere. [3](#source-3)
+
+Dividing those receipts by the app’s user count would not reveal the contract price of a personal record. That would require knowing the population covered by the agreement, the relevant activity period, exclusions, guarantees and payment formula. An average that can be calculated is not necessarily a price that has been observed.
+
+The defensible finding is narrower, but useful: a company discloses a distinct annual data-revenue stream; its accounts distinguish that activity from advertising; the detailed contract rate remains unavailable to the reader.
+
+## Losing an auction can still yield information
+
+A further route does not even require the publisher to have sold data directly to the eventual collector.
+
+To allocate certain advertising slots, an exchange sends a bid request to potential buyers. In this process, called *real-time bidding* or [RTB](/en/glossary/rtb/), information about the context and device helps participants decide what to offer. In the mechanism described by the FTC in its Mobilewalla case, that information can include precise location when available. It is distributed before the ad slot is awarded. [10](#source-10)
+
+The complaint alleges that Mobilewalla retained information even when it did not win, contrary to the exchanges’ terms. It reports the company’s estimate that approximately 60% of its consumer data came from RTB exchanges between January 1, 2018, and June 30, 2020. That percentage concerns Mobilewalla during that period, not the advertising market as a whole. [10](#source-10)
+
+This explains why following advertising payments alone can miss part of the collection process. A participant receives information to evaluate a purchase. If it retains that information for another purpose, it builds a separate asset from the advertisement it was seeking to deliver. Losing does not imply an absence of technical or access costs. It can nonetheless leave useful information without a purchase of the slot.
+
+Mobilewalla disputed some allegations in a response reported by Reuters when the proposed settlement was announced in December 2024. On January 14, 2025, the FTC announced final approval of an order prohibiting it from collecting data through RTB exchanges for purposes other than participating in the auctions. The record documents alleged past practices and accepted obligations, not an independent inspection of its systems today. [19](#source-19) [11](#source-11)
+
+The same caution applies to publishers. An app’s name appearing in a database does not prove that the app sold information directly to the database holder. The intermediaries and their agreements still need to be identified.
+
+The Gravy/Venntel complaint describes precisely such indirect sourcing: suppliers could obtain information from further suppliers, the advertising marketplace or apps. It does not establish that every upstream publisher received a payment from Gravy. The settlement also specifies that the companies neither admit nor deny the allegations, apart from the facts needed to establish the authority’s jurisdiction. [12](#source-12)
+
+## At Mobius, reuse went beyond the assignment
+
+The Deezer record describes a different relationship. CNIL’s decision identifies a contract performed from December 1, 2016, to December 1, 2020, under which Mobius Solutions processed information to supply analytics and marketing services through its Optimove platform. Deezer was the client; Mobius acted as its processor. [13](#source-13)
+
+CNIL imposed a €1 million penalty for breaches including retaining a copy involving more than 46 million users after the contract ended and reusing data to improve the provider’s own services. The user count describes the scope identified by the authority, not an active audience at the time of the penalty. [14](#source-14)
+
+<CommerceTracesFigure lang="en" figure={3} />
+
+The decision’s detail matters. Data had been copied into a development and testing environment in April 2019. Mobius argued, among other points, that general service improvements could fall within performance of the contract. CNIL found that no clause authorized that reuse without prior instructions from Deezer. It also rejected the argument that copying by three employees relieved the company of responsibility. [13](#source-13) [14](#source-14)
+
+The benefit sought here was an improved product. Achieving that would not require selling the file itself. But **the decision establishes neither a sale of Deezer’s data to a broker, nor revenue from such a sale, nor a connection to Gravy**. It does not quantify any benefit Mobius might have derived from the work. [13](#source-13)
+
+Folding this case into a location-brokerage chain would obscure its particular lesson. Information entrusted for a service can be used to develop the recipient’s own offering. Access was needed for the original assignment; the right to reuse required separate examination.
+
+## Value begins with an additional use
+
+These arrangements have different contracts and risks. Per-device payments reward access to collection. Advertising shares tie receipts to delivery. A license permits a defined use. Processing gives a provider access to serve a client, without automatically granting a right to reuse the information for itself. This distinction comes from the reviewed documents; it is not a classification of the entire industry. [1](#source-1) [5](#source-5) [7](#source-7) [13](#source-13)
+
+It suggests a straightforward economic explanation. Once access has been established, an additional use can be pursued without asking the user to begin the whole relationship again. The same observation may contribute to a service, an analysis or another product’s development. The contract partly determines who may seek that value and on what terms. Regulation sets constraints that a commercial agreement alone cannot remove.
+
+None of this makes data automatically useful or its exploitation costless. Cleaning observations, removing duplicates, maintaining tools and controlling uses require resources. Broad rights can also create compliance, security and litigation expenses. The reviewed documents do not support an estimate of average brokerage margins, much less a universal price for privacy.
+
+The strongest argument in favor of these arrangements deserves consideration. A technical service can genuinely help a publisher; advertising can finance an app; adequately protected outputs can meet an analytical need without exposing individual journeys. An investigation must therefore examine safeguards, delivered data and permitted uses rather than infer wrongdoing from the existence of a partner.
+
+These records help identify when the relationship changes. **Information entrusted to a service becomes a commercial resource for another party when that party obtains, or assumes, the ability to use it for a distinct activity.** Payment may be attached to that right, to the advertising it enables or to a service. Reuse can also seek an advantage that appears in no data-sales line.
+
+The first task is therefore to connect each use to its consideration and its evidence. Missing amounts remain missing. A processing relationship remains a processing relationship. And the permission granted to make a service work does not, by itself, describe the market that may develop behind it.
+
+## Sources and method
+
+This analysis uses public documents consulted on **September 17, 2026**: SEC-filed contracts, annual accounts, FTC complaints and settlements, CNIL’s decision and companies’ published responses. Enforcement records make particular practices visible; they are not a representative sample of all apps.
+
+Practices described in complaints are attributed to the authority alleging them. Settlement obligations are not treated as a general admission. The Mobius findings are CNIL’s; this article makes no claim about whether an appeal was filed or how it was resolved. Contractual safeguards are not presented as independently verified technical protections.
+
+No interviews, purchases of personal datasets or network-collection tests were conducted for this installment. Redacted prices have not been estimated. Diagram arrows represent documented rights, services or transfers, not quantities scaled by volume.
+
+<span id="source-1"></span><span id="source-2"></span>
+
+**1–2.** Life360–Placer: January 26, 2022 agreement, cover sheet and Attachment D; June 8, 2022 amendment, sections 2(f)(ii)–(iii). [1](https://www.sec.gov/Archives/edgar/data/1581760/000119312522172365/d328928dex1013.htm) [2](https://www.sec.gov/Archives/edgar/data/1581760/000158176024000006/exhibit1012amendmentno1tod.htm)
+
+<span id="source-3"></span><span id="source-18"></span>
+
+**3, 18.** Life360: fiscal 2025 Form 10-K, Note 2, pp. 76–77, consolidated accounts and March 2, 2026 EDGAR filing record. [3](https://www.sec.gov/Archives/edgar/data/1581760/000158176026000016/lifx-20251231.htm) [18](https://www.sec.gov/Archives/edgar/data/1581760/000158176026000016/0001581760-26-000016-index.html)
+
+<span id="source-4"></span>
+
+**4.** Life360: August 8, 2024 announcement of updated agreements, on an investor page dated August 9. Company source. [4](https://investors.life360.com/news-releases/news-release-details/life360-unlocks-new-opportunities-strategic-partners)
+
+<span id="source-5"></span><span id="source-6"></span>
+
+**5–6.** FTC: X-Mode/Outlogic complaint, paragraphs 6–13, especially 9–10; finalization announcement dated April 12, 2024. [5](https://www.ftc.gov/system/files/ftc_gov/pdf/X-Mode-Complaint.pdf) [6](https://www.ftc.gov/news-events/news/press-releases/2024/04/ftc-finalizes-order-x-mode-successor-outlogic-prohibiting-it-sharing-or-selling-sensitive-location)
+
+<span id="source-7"></span><span id="source-8"></span><span id="source-9"></span>
+
+**7–9.** FTC: InMarket complaint, paragraphs 4–5 and 12–22; final approval announced May 1, 2024. InMarket’s public May 2024 response is an interested-party source. [7](https://www.ftc.gov/system/files/ftc_gov/pdf/Complaint-InMarketMediaLLC.pdf) [8](https://www.ftc.gov/news-events/news/press-releases/2024/05/ftc-finalizes-order-inmarket-prohibiting-it-selling-or-sharing-precise-location-data) [9](https://inmarket.com/qa-with-inmarkets-ceo-todd-morris/)
+
+<span id="source-10"></span><span id="source-11"></span><span id="source-19"></span>
+
+**10–11, 19.** FTC: Mobilewalla complaint, paragraphs 7–11, and final approval announced January 14, 2025. Reuters, December 3, 2024, for the company’s response. [10](https://www.ftc.gov/system/files/ftc_gov/pdf/Mobilewalla-Complaint.pdf) [11](https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-finalizes-order-banning-mobilewalla-selling-sensitive-location-data) [19](https://www.reuters.com/technology/cybersecurity/ftc-settles-with-data-brokers-that-sold-political-pregnancy-info-2024-12-03/)
+
+<span id="source-12"></span>
+
+**12.** FTC: January 13, 2025 Gravy/Venntel package; complaint, paragraphs 8–9 and 13–19; settlement decision preamble, PDF page 15. [12](https://www.ftc.gov/system/files/ftc_gov/pdf/212_3035_-_gravy_analytics_final_consent_package_without_signatures.pdf)
+
+<span id="source-13"></span><span id="source-14"></span>
+
+**13–14.** CNIL: decision SAN-2025-014 of December 11, 2025, paragraphs 54–56, 63–65 and 72–78; December 19 announcement. [13](https://www.legifrance.gouv.fr/cnil/id/CNILTEXT000053048614) [14](https://www.cnil.fr/fr/violation-de-donnees-sanction-dun-million-deuros-lencontre-de-la-societe-mobius-solutions-ltd)
+
+<span id="source-15"></span><span id="source-16"></span><span id="source-17"></span>
+
+**15–17.** CNIL: permission guidance, January 14, 2025; amended mobile-app recommendations published April 8, 2025; SDK integration and privacy guidance. [15](https://www.cnil.fr/fr/permissions-applications-mobiles-recommandations-de-la-cnil-pour-respecter-la-vie-privee) [16](https://cnil.fr/fr/recommandations-applications-mobiles-modifiee) [17](https://cnil.fr/fr/applications-mobiles-comment-integrer-des-sdk-et-respecter-la-vie-privee-des-utilisateurs)
+<span id="source-20"></span>
+
+**20.** Life360: Form 10-Q for June 30, 2026, filed August 10, 2026, Note 2, “Reclassifications.” Advertising is reported separately and comparative periods are reclassified. [20](https://investors.life360.com/node/15261/html)

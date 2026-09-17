@@ -28,9 +28,23 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 539, 'Le corpus doit conserver ses 539 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 92, 'Le graphe Atlas doit conserver ses 92 nœuds');
+assert.equal(glossaryEntries.length, 541, 'Le corpus doit conserver ses 541 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 94, 'Le graphe Atlas doit conserver ses 94 nœuds');
 assert.equal(glossaryAtlasEdgeCount, 386, 'Le graphe Atlas doit conserver ses 386 relations');
+for (const [slug, source] of [
+  ['sdk', 'https://www.cnil.fr/fr/applications-mobiles-comment-integrer-des-sdk-et-respecter-la-vie-privee-des-utilisateurs'],
+  ['rtb', 'https://www.ftc.gov/system/files/ftc_gov/pdf/Mobilewalla-Complaint.pdf'],
+]) {
+  for (const [entry, href] of [
+    [glossaryEntries.find((item) => item.slug === slug), '/posts/commerce-traces-economie-collecte-donnees-personnelles/'],
+    [glossaryAtlasEnBySlug.get(slug), '/en/analysis/personal-data-economics-collection/'],
+  ]) {
+    assert(entry);
+    assert.equal(entry.guide, href);
+    assert.deepEqual(entry.atlas.sources.map((item) => item.href), [source]);
+    assert.deepEqual(entry.atlas.articles.map((item) => item.href), [href]);
+  }
+}
 for (const [entry, href] of [
   [glossaryEntries.find((item) => item.slug === 'tarification-algorithmique'), '/posts/prix-automatiques-concurrence-algorithmes/'],
   [glossaryAtlasEnBySlug.get('tarification-algorithmique'), '/en/analysis/pricing-algorithms-competition/'],

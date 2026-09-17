@@ -595,6 +595,14 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'SAR', nom: 'Suspicious Activity Report', def: "Déclaration confidentielle adressée par une institution financière américaine à FinCEN lorsqu'une activité atteint le seuil réglementaire de soupçon. Un SAR aide les autorités à détecter et enquêter ; il n'est ni une accusation, ni une condamnation, ni la preuve que la totalité des montants signalés est criminelle." },
     ],
   },
+  {
+    titre: 'Économie numérique & données',
+    accent: 'var(--color-signal)',
+    entries: [
+      { sigle: 'SDK', nom: 'Kit de développement logiciel', def: 'Ensemble d’outils et de composants qu’un développeur peut intégrer à une application pour ajouter des fonctions, par exemple une carte ou un affichage publicitaire. Un SDK peut accéder aux ressources autorisées à l’application selon sa configuration. Sa présence ne prouve à elle seule ni une collecte effective ni une vente de données.', guide: '/posts/commerce-traces-economie-collecte-donnees-personnelles/' },
+      { sigle: 'RTB', nom: 'Real-time bidding', def: 'Mécanisme d’enchère publicitaire en temps réel : des acheteurs reçoivent une demande contenant des informations sur une impression disponible et proposent un prix. Certaines demandes peuvent contenir des données sur l’appareil ou sa localisation. Recevoir la demande, gagner l’enchère et avoir le droit de réutiliser ses données sont des questions distinctes.', guide: '/posts/commerce-traces-economie-collecte-donnees-personnelles/' },
+    ],
+  },
 ];
 
 export interface GlossaryEntry extends GlossarySourceEntry {
@@ -855,6 +863,14 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  sdk: {
+    articles: [{ label: 'Le commerce de nos traces : qui paie la collecte ?', href: '/posts/commerce-traces-economie-collecte-donnees-personnelles/', kind: 'article' }],
+    sources: [{ label: 'CNIL, intégration des SDK et vie privée', href: 'https://www.cnil.fr/fr/applications-mobiles-comment-integrer-des-sdk-et-respecter-la-vie-privee-des-utilisateurs', kind: 'source' }],
+  },
+  rtb: {
+    articles: [{ label: 'Le commerce de nos traces : qui paie la collecte ?', href: '/posts/commerce-traces-economie-collecte-donnees-personnelles/', kind: 'article' }],
+    sources: [{ label: 'FTC, plainte Mobilewalla, paragraphes 7 à 11', href: 'https://www.ftc.gov/system/files/ftc_gov/pdf/Mobilewalla-Complaint.pdf', kind: 'source' }],
+  },
   'tarification-algorithmique': {
     articles: [{ label: 'Prix automatiques et concurrence', href: '/posts/prix-automatiques-concurrence-algorithmes/', kind: 'article' }],
     sources: [{ label: 'Autorité de la concurrence et Bundeskartellamt, Algorithms and Competition', href: 'https://www.autoritedelaconcurrence.fr/sites/default/files/Algorithms_and_Competition_Working-Paper.pdf', kind: 'source' }],

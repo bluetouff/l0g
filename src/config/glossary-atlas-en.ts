@@ -203,6 +203,24 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'sdk', sigle: 'SDK', nom: 'Software development kit', sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)',
+    def: 'Tools and components that developers can integrate into an application to add functions such as maps or advertising. Depending on its configuration, a kit may access resources available to the app. Its presence alone establishes neither active data collection nor a data sale.',
+    guide: '/en/analysis/personal-data-economics-collection/',
+    atlas: {
+      articles: [{ label: 'The trade in our digital traces: who funds collection?', href: '/en/analysis/personal-data-economics-collection/', kind: 'article' }],
+      sources: [{ label: 'CNIL, integrating SDKs while respecting privacy', href: 'https://www.cnil.fr/fr/applications-mobiles-comment-integrer-des-sdk-et-respecter-la-vie-privee-des-utilisateurs', kind: 'source' }],
+    },
+  },
+  {
+    slug: 'rtb', sigle: 'RTB', nom: 'Real-time bidding', sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)',
+    def: 'A real-time advertising auction in which buyers receive information about an available impression and submit a price. Some bid requests may contain device or location data. Receiving a request, winning an auction and having permission to reuse the information are distinct questions.',
+    guide: '/en/analysis/personal-data-economics-collection/',
+    atlas: {
+      articles: [{ label: 'The trade in our digital traces: who funds collection?', href: '/en/analysis/personal-data-economics-collection/', kind: 'article' }],
+      sources: [{ label: 'FTC, Mobilewalla complaint, paragraphs 7–11', href: 'https://www.ftc.gov/system/files/ftc_gov/pdf/Mobilewalla-Complaint.pdf', kind: 'source' }],
+    },
+  },
+  {
     slug: 'tarification-algorithmique', sigle: 'Algorithmic pricing', nom: 'Software-assisted price setting', ...macroSection,
     def: 'Using software rules to recommend or set prices from inputs such as costs, demand or rivals’ prices. The tool may follow fixed rules or learn from results. Algorithmic pricing does not necessarily involve personalised offers or collusion; its effects depend on the market and how the tools operate.',
     guide: '/en/analysis/pricing-algorithms-competition/',
