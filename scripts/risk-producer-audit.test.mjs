@@ -26,6 +26,10 @@ function fixture() {
     instrument: item.key,
     value: item.value,
     observedAt: item.observedAt,
+    seriesDate: now,
+    sourcePublishedAt: item.sourceUpdatedAt,
+    retrievedAt: now,
+    pointInTime: true,
     backtestUsable: true,
     sourceStatus: item.sourceStatus,
     qualityStatus: item.qualityStatus,
@@ -90,6 +94,19 @@ test('la surface courante ne peut plus perdre observedAt silencieusement', () =>
   assert.ok(report.errors.some((error) => error.includes('signaux courants: eu observedAt absent')));
   assert.ok(report.errors.some((error) => error.includes('signaux courants: eu non exploitable')));
   assert.ok(report.errors.some((error) => error.includes('signaux courants: eu encore en fallback')));
+});
+
+test('une republication antidatée fait échouer le moniteur même si backtestUsable est vrai', () => {
+  for (const field of ['observedAt', 'sourcePublishedAt', 'retrievedAt']) {
+    const input = fixture();
+    input.currentSignals.current.yen[field] = '2026-07-18T10:00:01Z';
+    const report = auditRiskFlow(input, now);
+    assert.equal(report.ok, false, field);
+    assert.ok(report.errors.some((error) => error.includes('yen publication antérieure')));
+  }
+  const input = fixture();
+  input.currentSignals.current.yen.pointInTime = false;
+  assert.equal(auditRiskFlow(input, now).ok, false);
 });
 
 test('une publication inchangée reste saine après un contrôle producteur récent', () => {

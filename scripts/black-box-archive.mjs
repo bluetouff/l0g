@@ -63,7 +63,7 @@ function validate() {
 }
 
 function maxIso(values) {
-  return values.filter(Boolean).sort().at(-1) || null;
+  return values.filter(Boolean).map((value) => new Date(value).toISOString()).sort().at(-1) || null;
 }
 
 function append() {
@@ -92,13 +92,19 @@ function append() {
   const observations = signalHistory.observations || [];
   const current = signalHistory.current || {};
   const signals = Object.values(current).sort((a, b) => String(a.instrument).localeCompare(String(b.instrument)));
-  const computedAt = value('computed-at', process.env.BLACK_BOX_COMPUTED_AT || new Date().toISOString());
+  const computedAt = maxIso([
+    value('computed-at', process.env.BLACK_BOX_COMPUTED_AT || new Date().toISOString()),
+    signalHistory.generated,
+    ...signals.flatMap((item) => [item.seriesDate, item.sourcePublishedAt, item.retrievedAt]),
+  ]);
   const gitSha = value('git-sha', process.env.GITHUB_SHA || 'unknown');
   if (!/^[a-f0-9]{7,64}$/i.test(gitSha)) throw new Error('gitSha doit être une empreinte Git hexadécimale');
   const date = computedAt.slice(0, 10);
   const runUrl = value('attestation', process.env.BLACK_BOX_ATTESTATION_URL || 'local-unattested');
   const idSuffix = value('id-suffix', '').replace(/[^a-zA-Z0-9-]/g, '').slice(0, 80);
-  const frameId = `${computedAt.replace(/[-:.]/g, '')}-${gitSha.slice(0, 12)}${idSuffix ? `-${idSuffix}` : ''}`;
+  // Les anciennes frames utilisaient des offsets locaux dans leur nom.
+  // Le préfixe maintient leur ordre append-only lors du passage aux dates UTC.
+  const frameId = `utc-${computedAt.replace(/[-:.]/g, '')}-${gitSha.slice(0, 12)}${idSuffix ? `-${idSuffix}` : ''}`;
   if (loadFrames().some(({ frame }) => frame.frameId === frameId)) throw new Error(`frame déjà présente: ${frameId}`);
   const frameCore = JSON.parse(JSON.stringify({
     schemaVersion: '2', frameId, date,

@@ -161,6 +161,13 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
       continue;
     }
     if (!iso(item.observedAt)) errors.push(`signaux courants: ${key} observedAt absent/invalide`);
+    const seriesDate = iso(item.seriesDate);
+    if (!seriesDate) errors.push(`signaux courants: ${key} seriesDate absent/invalide`);
+    if (item.pointInTime !== true) errors.push(`signaux courants: ${key} chronologie non vérifiée`);
+    if (seriesDate && [item.observedAt, item.sourcePublishedAt, item.retrievedAt]
+      .some((date) => iso(date) && iso(date) > seriesDate)) {
+      errors.push(`signaux courants: ${key} publication antérieure aux données sources ou à leur collecte`);
+    }
     if (item.backtestUsable !== true) errors.push(`signaux courants: ${key} non exploitable pour backtest`);
     if (item.sourceStatus === 'fallback') errors.push(`signaux courants: ${key} encore en fallback`);
   }

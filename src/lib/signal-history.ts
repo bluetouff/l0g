@@ -396,6 +396,13 @@ function normalizeObservation(
     ? String(parsed.qualityStatus) as SignalObservation['qualityStatus']
     : 'unknown';
   const observedAt = isoOrNull(parsed.observedAt);
+  const sourcePublishedAt = isoOrNull(parsed.sourcePublishedAt);
+  const retrievedAt = isoOrNull(parsed.retrievedAt);
+  const chronologyValid = [observedAt, sourcePublishedAt, retrievedAt]
+    .every((date) => !date || date <= seriesDate);
+  if (!chronologyValid) {
+    limitations.push('Publication archivée antérieure à une date source ou de collecte : point conservé pour audit mais exclu des backtests sans biais.');
+  }
   if (!observedAt) {
     limitations.push('Date économique amont absente : point conservé pour audit mais exclu des backtests sans biais.');
   }
@@ -417,8 +424,8 @@ function normalizeObservation(
     label: String(parsed.label ?? meta.label),
     seriesDate,
     observedAt,
-    sourcePublishedAt: isoOrNull(parsed.sourcePublishedAt),
-    retrievedAt: isoOrNull(parsed.retrievedAt),
+    sourcePublishedAt,
+    retrievedAt,
     computedAt,
     archivedAt,
     value: typeof parsed.value === 'number' ? parsed.value : null,
@@ -445,8 +452,8 @@ function normalizeObservation(
     qualityStatus,
     fallbackUsed: parsed.fallbackUsed === true,
     fallbackReason: parsed.fallbackReason ? String(parsed.fallbackReason) : null,
-    pointInTime: parsed.pointInTime !== false,
-    backtestUsable: Boolean(observedAt) && parsed.backtestUsable !== false,
+    pointInTime: chronologyValid && parsed.pointInTime !== false,
+    backtestUsable: chronologyValid && Boolean(observedAt) && parsed.pointInTime !== false && parsed.backtestUsable !== false,
     limitations: uniqueStrings(limitations),
   };
 }
@@ -760,7 +767,14 @@ function historyPolicy(): SignalHistoryPolicy {
 }
 
 export function buildSignalHistorySurface(): SignalSurface {
-  const computedAt = isoOrNull(SIGNAL_GENERATED_AT) ?? SIGNAL_GENERATED_AT;
+  const risk = readJson<{ generated?: string; updated?: string; indices?: RiskIndexInput[] }>('public/risk.json', { indices: [] });
+  // Une republication du même commit peut collecter de nouvelles données.
+  // Garder une date stable entre les deux builds, jamais antérieure aux entrées.
+  const computedAt = [
+    SIGNAL_GENERATED_AT, risk.generated, risk.updated,
+    ...(risk.indices ?? []).flatMap((item) => [item.sourcePublishedAt, item.sourceUpdatedAt, item.retrievedAt]),
+  ].map(isoOrNull).filter((date): date is string => Boolean(date)).sort().at(-1)
+    ?? SIGNAL_GENERATED_AT;
   const operational = readOperationalObservations(computedAt);
   const operationalMeta = readOperationalHistoryMeta();
   const observations = mergeObservations([
