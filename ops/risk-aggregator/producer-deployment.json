@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-09-16",
+  "verifiedAt": "2026-09-18",
   "producers": {
     "us": {
       "repository": "https://github.com/bluetouff/macro_dashboard",
@@ -64,11 +64,27 @@
     },
     "yen": {
       "repository": "https://github.com/bluetouff/carry-yen-monitor",
-      "revision": "fead2f0b4c2984b2df1e5bb1e047e45ce6f1afb4",
+      "revision": "25eda3da7d7147f9e8fd145e84f5c6199b7f3583",
       "files": [
         {
           "path": "/opt/yct/build_snapshot.py",
-          "sha256": "2683d2363a81011fdb91f61da890b541edc49535ac61e3c19edd4783e909e212"
+          "sha256": "a514d10858b8d0cb232842b3a783564d5e9b75d182cf391902615fede84e7319"
+        },
+        {
+          "path": "/opt/yct/yct_quality.py",
+          "sha256": "a5466f4a52703be11a155b05536ac33384c838066ab8a7c183115e90a9a0ffdc"
+        },
+        {
+          "path": "/opt/yct/verify_snapshot.py",
+          "sha256": "69055d2ee67bc638eb6a147ea27dfb62a885da6f931c512c3af2acf5a7cc932b"
+        },
+        {
+          "path": "/opt/yct/boj-policy.json",
+          "sha256": "f983418e1ca4cbe8ba19d5b159b220cde565c09c783251a242cd05eae3402d4e"
+        },
+        {
+          "path": "/opt/yct/source-calendars.json",
+          "sha256": "e31917ef1c196d028669b6a38b49a86f01ce68ceb17c278f42854d29ed77c594"
         }
       ]
     },
