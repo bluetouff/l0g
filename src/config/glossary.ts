@@ -599,6 +599,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Profilage', nom: 'Évaluation automatisée de caractéristiques personnelles', def: 'Traitement automatisé de données personnelles visant à évaluer certains aspects d’une personne, par exemple ses intérêts, son comportement ou ses déplacements. Un profil peut reposer sur des déductions et contenir des erreurs. Le profilage ne suppose pas nécessairement une décision entièrement automatisée ; une statistique collective qui ne sert pas à évaluer une personne ne suffit pas à le caractériser.', guide: '/posts/commerce-traces-fabrication-profils-donnees-personnelles/' },
+      { sigle: 'Segment d’audience', nom: 'Sélection d’identifiants selon un critère', def: 'Ensemble d’identifiants sélectionnés selon une règle, par exemple une visite observée, une caractéristique déclarée ou un intérêt inféré par un modèle. Le libellé du segment ne prouve ni la présence réelle de cette caractéristique chez chaque personne ni le droit de réutiliser les données pour tout usage.', guide: '/posts/commerce-traces-fabrication-profils-donnees-personnelles/' },
       { sigle: 'SDK', nom: 'Kit de développement logiciel', def: 'Ensemble d’outils et de composants qu’un développeur peut intégrer à une application pour ajouter des fonctions, par exemple une carte ou un affichage publicitaire. Un SDK peut accéder aux ressources autorisées à l’application selon sa configuration. Sa présence ne prouve à elle seule ni une collecte effective ni une vente de données.', guide: '/posts/commerce-traces-economie-collecte-donnees-personnelles/' },
       { sigle: 'RTB', nom: 'Real-time bidding', def: 'Mécanisme d’enchère publicitaire en temps réel : des acheteurs reçoivent une demande contenant des informations sur une impression disponible et proposent un prix. Certaines demandes peuvent contenir des données sur l’appareil ou sa localisation. Recevoir la demande, gagner l’enchère et avoir le droit de réutiliser ses données sont des questions distinctes.', guide: '/posts/commerce-traces-economie-collecte-donnees-personnelles/' },
     ],
@@ -620,7 +622,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-17';
+export const glossaryUpdatedIso = '2026-09-18';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -863,6 +865,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  profilage: {
+    articles: [{ label: 'Comment nos traces deviennent des profils à vendre', href: '/posts/commerce-traces-fabrication-profils-donnees-personnelles/', kind: 'article' }],
+    sources: [{ label: 'CNIL, profilage et décision entièrement automatisée', href: 'https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee', kind: 'source' }],
+    related: ['segment-d-audience', 'pseudonymisation'],
+  },
+  'segment-d-audience': {
+    articles: [{ label: 'Comment nos traces deviennent des profils à vendre', href: '/posts/commerce-traces-fabrication-profils-donnees-personnelles/', kind: 'article' }],
+    sources: [{ label: 'IAB Tech Lab, Data Transparency Standard', href: 'https://iabtechlab.com/standards/data-transparency-standard/', kind: 'source' }],
+    related: ['profilage', 'rtb'],
+  },
   sdk: {
     articles: [{ label: 'Le commerce de nos traces : qui paie la collecte ?', href: '/posts/commerce-traces-economie-collecte-donnees-personnelles/', kind: 'article' }],
     sources: [{ label: 'CNIL, intégration des SDK et vie privée', href: 'https://www.cnil.fr/fr/applications-mobiles-comment-integrer-des-sdk-et-respecter-la-vie-privee-des-utilisateurs', kind: 'source' }],

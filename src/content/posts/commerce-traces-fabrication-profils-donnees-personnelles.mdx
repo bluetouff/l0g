@@ -1,0 +1,179 @@
+---
+title: 'Données personnelles : comment nos traces deviennent des profils à vendre'
+seoTitle: 'Données personnelles : fabriquer des profils à vendre | l0g'
+ogTitle: 'Le commerce de nos traces (3/6) : fabriquer des profils'
+description: De Jumpshot à InMarket, les contrats et modes d’emploi révèlent comment des traces deviennent des profils
+  vendables, avec quels droits, quels prix et quelles erreurs.
+pubDate: '2026-09-18T17:02:10Z'
+tags: ["données personnelles", "publicité", "courtiers en données", "profilage", "Jumpshot", "Lotame", "InMarket", "FTC", "enquête"]
+draft: false
+ogImage: /illustrations/news/commerce-traces-03-v1.jpg
+quickTake:
+  fact: La FTC décrit un contrat Jumpshot–Lotame autorisant la modélisation et la commercialisation d’audiences
+    dérivées, avec partage de revenus.
+  importance: Une visite estimée, une intention inférée et une audience élargie ne représentent pas la même information.
+    Leur valeur dépend aussi des droits et du coût d’usage.
+  uncertainty: Le contrat signé et le taux de partage ne sont pas publics dans les pièces consultées. Les documents
+    produits ne mesurent pas la précision actuelle des fournisseurs.
+---
+
+import CommerceTracesProfileFigure from "../../components/CommerceTracesProfileFigure.astro";
+
+
+*Le commerce de nos traces · Troisième volet d’une enquête en six parties.*
+
+**Une position enregistrée par un téléphone ne contient pas une intention d’achat. Une page consultée ne livre pas une personnalité. Pour vendre ces traces sous forme de profils, il faut leur ajouter une interprétation, une règle de sélection et des droits d’usage. Les contrats et les modes d’emploi de cette industrie permettent de suivre la fabrication du produit. Ils révèlent aussi la distance qui peut séparer son étiquette des personnes qu’il prétend décrire.**
+
+En août 2018, selon la plainte de la Federal Trade Commission américaine contre Avast, sa filiale Jumpshot conclut avec Lotame un contrat autorisant ce spécialiste des données à combiner et modéliser ses informations de navigation, puis à en vendre des licences d’utilisation à ses propres clients. Jumpshot doit recevoir une part des revenus des audiences composées à partir de ces données. Le document public ne donne pas le pourcentage. [S01](#source-1)
+
+Le point de bascule économique est là : le fournisseur autorise son client à fabriquer un autre produit avec les traces reçues, puis conserve un intérêt financier dans sa commercialisation. Le revenu ne dépend plus seulement de la livraison d’un historique. Il dépend de l’usage que permettra sa transformation.
+
+**Cette relation est décrite dans une plainte, pas établie par la publication du contrat signé.** Avast conteste les allégations de la FTC. Le règlement final, inscrit au 26 juin 2024 dans la chronologie de l’autorité, ne vaut pas admission de celles-ci. Jumpshot a fermé en janvier 2020 : cet épisode ne décrit donc pas une offre encore exploitée sous ce nom. Il ne constitue pas non plus une décision de responsabilité contre Lotame. [S02](#source-2) [S03](#source-3) [S04](#source-4)
+
+Les deux premiers volets ont suivi [le financement de la collecte](/posts/commerce-traces-economie-collecte-donnees-personnelles/) et [les fonctions des intermédiaires](/posts/commerce-traces-chaine-intermediaires-donnees-personnelles/). Celui-ci ouvre le produit : quelle observation contient-il, quelle hypothèse lui a été ajoutée et quelle utilisation l’acheteur obtient-il réellement ?
+
+<CommerceTracesProfileFigure lang="fr" figure={1} />
+
+## Donner un sens commercial à un événement
+
+Le catalogue historique de Jumpshot, décrit par la FTC, distingue les recherches et les résultats sélectionnés, les événements de commerce en ligne, dont les ajouts au panier, et les transactions avec leurs caractéristiques. Plusieurs flux conservent un identifiant persistant du navigateur. Cela permet de relier des événements successifs plutôt que de les compter seulement à l’échelle d’un site. [S01, §§ 21–22](#source-1)
+
+La différence importe. Compter les consultations d’une page de chaussures produit une statistique sur cette page. Relier plusieurs consultations, une recherche et un panier au même identifiant permet de construire un parcours. On peut ensuite poser une question commerciale : ce navigateur semble-t-il associé à quelqu’un qui prépare un achat ? La question est une interprétation ; elle n’est pas contenue dans l’adresse de la page.
+
+Sur le téléphone, le premier travail consiste à convertir des signaux en visites. Foursquare décrit une couche technique qui cherche à reconnaître les arrêts et à les rattacher à des lieux, en filtrant notamment certains passages en voiture et erreurs de positionnement. C’est la méthode présentée par le fournisseur, sans mesure indépendante de ses performances dans cette enquête. [S10](#source-10)
+
+Même une localisation parfaitement mesurée ne résout pas toute l’ambiguïté. Une personne dans un magasin peut acheter, travailler, livrer un colis ou accompagner quelqu’un. Une meilleure précision géographique répond à la question du lieu ; elle ne répond pas automatiquement à celle du motif.
+
+Le dossier InMarket montre l’étape suivante. La FTC décrit la combinaison de données issues de plusieurs applications pour reconstituer les visites. Son exemple automobile associe le passage dans une concession à des attributs achetés ailleurs, tels que l’âge, le revenu ou la composition familiale, afin d’inférer un intérêt pour un type de véhicule. **La présence estimée devient un indice, puis cet indice entre dans une hypothèse d’achat.** [S05, §§ 7–9](#source-5)
+
+## Le nom du segment efface facilement les étapes du raisonnement
+
+Un [*segment d’audience*](/glossaire/segment-d-audience/) est un ensemble d’identifiants retenus selon un critère : une visite, une caractéristique déclarée, ou le résultat d’un calcul. L’acheteur peut ensuite utiliser cette sélection pour toucher un public. La norme de transparence de l’IAB Tech Lab distingue précisément plusieurs manières d’attribuer les caractéristiques : observation directe, déclaration, calcul à partir d’autres champs, inférence par des règles et modélisation. [S11](#source-11)
+
+Prenons des exemples construits pour l’explication. Une date de naissance renseignée est une donnée déclarée ; un âge calculé à partir de cette date est dérivé. Une visite répétée dans un commerce est un indice de comportement. En conclure que son visiteur possède un chien ou cherche une voiture demande un raisonnement supplémentaire. Un modèle peut enfin attribuer la même catégorie à d’autres personnes dont les signaux ressemblent à ceux du groupe de départ.
+
+Ces procédés n’ont pas la même force probante. Une déclaration peut être ancienne ou fausse. Un calcul exact peut partir d’un mauvais renseignement. Une régularité statistique peut être utile pour un groupe sans décrire correctement chacun de ses membres. La qualité dépend donc de la chaîne entière, pas seulement de la dernière opération.
+
+Une étiquette courte rend le produit facile à trouver dans un catalogue. Elle peut aussi faire disparaître, dans la lecture, les conditions qui l’ont produit. « Visiteur d’une concession au cours des trente derniers jours » et « acheteur automobile » ne promettent pas la même chose. Le premier énoncé porte sur un événement estimé ; le second sur une intention. Leur proximité commerciale ne les rend pas équivalents.
+
+<CommerceTracesProfileFigure lang="fr" figure={2} />
+
+## Agrandir une audience change parfois sa nature
+
+La documentation de Foursquare permet de voir ces choix sans accéder à des données personnelles. Son outil de création d’audiences propose une fenêtre historique, c’est-à-dire la période pendant laquelle une visite peut rendre un appareil éligible. Le guide présente une fenêtre par défaut d’un mois, ajustable. Il propose aussi un *Reach Multiplier*, qui élargit la sélection en ajoutant des appareils présentant des comportements similaires. [S08](#source-8)
+
+Les deux opérations augmentent potentiellement le nombre d’identifiants disponibles, mais pas de la même façon. Allonger la période peut faire entrer un visiteur plus ancien. L’expansion par ressemblance peut faire entrer un appareil auquel la visite recherchée n’a pas été attribuée. Dans le second cas, le produit n’est plus seulement une liste de visiteurs détectés. Il comprend une population que le modèle rapproche de ces visiteurs.
+
+Ce choix peut avoir une utilité : un commerçant ne cherche pas forcément à parler exclusivement à ses anciens clients. Il peut vouloir trouver des prospects comparables. Mais il faut conserver la distinction dans la description du produit. Sinon, une extension commerciale devient, à la lecture du nom du segment, une observation qui n’a jamais eu lieu.
+
+Un autre détail du mode d’emploi mérite attention. Foursquare explique que ses catégories de fréquence sont relatives au lieu et que les visiteurs les plus fréquents peuvent inclure des employés aussi bien que des clients fidèles. Le seuil ne signifie donc pas partout un même nombre de visites, et une fréquence élevée ne certifie pas un achat. [S09](#source-9)
+
+La durée historique ne doit pas davantage être confondue avec la mise à jour. Une liste recalculée chaque jour peut continuer à inclure des événements anciens si sa règle les accepte. Inversement, une visite récente peut attendre le prochain rafraîchissement avant d’entrer dans la sélection. L’IAB réserve deux champs différents à ces paramètres : la fenêtre d’observation et la cadence d’actualisation. [S11](#source-11)
+
+## Transformer une sélection en référence de catalogue
+
+Un public supposé intéressant ne suffit pas à constituer une marchandise utilisable. Il faut pouvoir le désigner, fixer les usages autorisés et le rendre accessible dans un environnement de campagne.
+
+Le mode d’emploi LiveRamp, modifié le 10 juillet 2026, détaille ces éléments. Le vendeur renseigne notamment le nom et la description du segment, la méthode de provenance, les paramètres tarifaires et les permissions. Les identifiants internes et externes sont distingués. Une description est requise pour les segments standards ; les segments personnalisés disposent de règles concernant les plateformes autorisées. **La catégorie devient un objet administrable : elle peut être proposée, distribuée, facturée et retirée.** [S13](#source-13)
+
+Les conditions publiques de la plateforme renvoient aussi à un contrat de données et à des conditions propres à la destination. Elles prévoient des usages déterminés, plutôt qu’un droit général de disposer de toutes les informations à toutes fins. Ces textes ne prouvent pas une opération particulière, et les clauses négociées avec chaque client ne sont pas toutes accessibles. [S21](#source-21)
+
+Le contrat Jumpshot–Lotame décrit par la FTC autorisait précisément une transformation et une commercialisation de dérivés. Il serait erroné de transposer cette faculté à chaque achat d’audience. Selon l’accord, le client peut obtenir une sélection exploitable pour sa campagne sans recevoir l’historique qui a servi à la construire, ni être autorisé à en fabriquer un catalogue concurrent.
+
+La frontière pertinente est donc celle des droits : consulter, rapprocher, cibler, produire des statistiques, enrichir un fichier ou redistribuer. Deux produits fondés sur les mêmes traces peuvent avoir des valeurs et des risques différents si ces permissions diffèrent.
+
+## Une facture à l’usage, pas un tarif par personne
+
+Dans sa documentation tarifaire modifiée le 17 août 2026, LiveRamp décrit notamment une facturation au mille impressions publicitaires, une part des dépenses média et des licences forfaitaires. Une impression correspond ici à la diffusion d’une annonce comptabilisée par le système, pas à un acheteur unique. Google précise, pour les audiences tierces de Display & Video 360, que les frais de données s’ajoutent au coût de l’espace publicitaire. [S14](#source-14) [S15](#source-15)
+
+Ce mode de facturation rémunère la possibilité d’utiliser une sélection. Une même personne peut recevoir plusieurs annonces. Le montant par mille impressions ne permet donc pas de calculer le « prix de ses données » en divisant simplement la facture par mille.
+
+Les pièces historiques montrent aussi des accords de grande taille, sans fournir un barème universel. La plainte reproduite dans le dossier final Avast décrit un contrat Omnicom de décembre 2017 dont un premier ordre de travail prévoyait des frais de production d’environ **2 millions de dollars américains par an**. Il s’agit du montant contractuel rapporté par la FTC pour un périmètre particulier, pas d’un encaissement vérifié, du tarif de Lotame ou d’une moyenne de marché. [S02, plainte § 26](#source-2)
+
+Pour évaluer une audience, l’acheteur doit comparer le surcoût de sélection à l’amélioration obtenue. Une catégorie peut être mieux ciblée et néanmoins trop chère. Elle peut aussi contenir beaucoup d’erreurs tout en augmentant assez la proportion de prospects pour présenter un intérêt économique. Ce second cas est moins intuitif.
+
+## Un classement correct à 89 % peut produire une mauvaise liste
+
+Voici un **exemple entièrement fictif**, sans données d’entreprise ni personnes réelles. Dans une population de 1 000 individus, 100 appartiennent réellement à la catégorie recherchée. Le système en repère 80 et en manque 20. Parmi les 900 autres, il classe par erreur 90 individus dans cette catégorie et écarte correctement les 810 restants.
+
+Sur l’ensemble de la population, il a donc raison dans 890 cas : 80 inclusions correctes et 810 exclusions correctes. Son taux global de classement correct atteint **89 %**.
+
+L’acheteur, lui, reçoit la sélection positive : 170 individus, dont seulement 80 correspondent réellement au critère. La proportion pertinente pour cette liste est **80 ÷ 170, soit 47,1 %**. Plus de la moitié du segment est mal classée, malgré le taux global de 89 %.
+
+Il n’y a aucune contradiction. La population comporte beaucoup plus de personnes hors cible que dans la cible. Même une erreur limitée à 10 % des personnes hors cible suffit ici à créer 90 faux positifs, davantage que les 80 prospects correctement repérés. Un taux global qui mélange inclusions et exclusions masque cette composition. Écarter tout le monde donnerait même 90 % de classements corrects, mais ne fournirait aucun prospect.
+
+<CommerceTracesProfileFigure lang="fr" figure={3} />
+
+Le calcul ne mesure aucun fournisseur réel. Il indique pourquoi une promesse de précision doit préciser son dénominateur : tous les individus examinés, les personnes sélectionnées, les visites détectées ou les rapprochements d’identifiants. Ces taux répondent à des questions différentes.
+
+La sélection conserve d’ailleurs un avantage dans cet exemple : la cible représente 47,1 % de la liste, contre 10 % de la population de départ. Pour isoler l’économie de cet avantage, ajoutons des tarifs **eux aussi fictifs** : 4 euros par mille impressions sans ciblage, plus 2 euros de frais de données avec ciblage.
+
+À fréquence d’exposition uniforme et à coût média inchangé, le coût normalisé pour mille impressions atteignant réellement la cible passe de **4 ÷ 10 % = 40 euros** à **6 ÷ (80/170) = 12,75 euros**. Ces montants portent sur des impressions, qui peuvent se répéter, pas sur mille personnes distinctes.
+
+Ce résultat ne prouve ni une vente supplémentaire ni un bénéfice publicitaire. Il ignore notamment les autres frais, la disponibilité des espaces, la valeur des prospects, les limites de répétition et les 20 personnes de la cible manquées par le système. Il montre seulement qu’une majorité d’erreurs dans une liste et un avantage économique peuvent coexister. La rentabilité effective demande une mesure supplémentaire.
+
+## Les essais de terrain imposent un point de comparaison
+
+Des travaux académiques ont précisément confronté les étiquettes vendues à des vérifications. Une publication de 2019 dans *Marketing Science*, dont le résumé est accessible au MIT, porte sur trois études de terrain, plus de 90 audiences et 19 courtiers. Elle décrit une forte hétérogénéité des performances. Ce résultat historique ne fournit pas une note valable pour les produits actuels. [S17](#source-17)
+
+Une étude publiée le **24 octobre 2023** dans *Quantitative Marketing and Economics* va plus loin sur une catégorie : les décideurs informatiques. Son terrain américain principal s’étend de septembre 2019 à avril 2020. Cinq segments de fournisseurs sont comparés à une sélection aléatoire sur le **même réseau d’éditeurs**, pas à la population américaine entière. Les comparaisons ne montrent pas d’avantage statistiquement significatif sur cette référence pour les segments regroupés ; certaines sont défavorables aux catégories modélisées. [S16, sections 3.1–3.5](#source-16)
+
+La vérification repose sur les responsabilités professionnelles déclarées par les répondants, avec les limites d’une enquête déclarative. Le travail a été réalisé avec le soutien de HP et d’une entreprise de mesure ; deux coauteurs sont affiliés à HP. Les fournisseurs testés ne sont pas identifiés individuellement. Ces éléments interdisent d’utiliser l’étude pour attribuer un taux d’erreur à InMarket, Foursquare ou à leur catalogue de 2026. [S16](#source-16)
+
+L’enseignement méthodologique est plus solide qu’un verdict global sur les courtiers. Pour savoir si une sélection apporte quelque chose, il faut mesurer la composition du public effectivement atteint et la comparer à une solution accessible sans acheter cette sélection. Une catégorie impressionnante dans un catalogue peut apporter peu si le réseau publicitaire atteint déjà naturellement beaucoup de personnes correspondantes.
+
+Une autre vérification reste distincte : toucher les bonnes personnes ne démontre pas que l’annonce les a fait acheter. Les personnes déjà proches d’une décision peuvent acheter même sans publicité. Une mesure des ventes supplémentaires doit isoler cet effet, au lieu d’attribuer automatiquement à la campagne tout achat intervenu après une exposition.
+
+## Une étiquette transparente ne certifie pas la vérité du profil
+
+Le standard de l’IAB Tech Lab fournit un vocabulaire utile, mais en limite lui-même la portée : il organise la divulgation d’informations sur la fabrication des audiences, sans attribuer une note d’efficacité ou d’exactitude au segment. La conformité à cette transparence ne vaut donc pas démonstration de performance. [S12](#source-12)
+
+Un champ illustre le risque de confusion : *audience precision level*. Dans le schéma, il désigne le niveau auquel l’audience est définie, par exemple une personne, un foyer, un appareil ou un navigateur. Ce n’est pas un pourcentage de prédictions correctes. [S11](#source-11)
+
+Le volume affiché demande la même prudence. La FAQ de Foursquare indique qu’une estimation de portée nulle peut correspondre à une sélection inférieure au minimum de **5 000 appareils** requis pour construire le segment. Elle précise que l’estimation est produite à partir d’un échantillon. Ce zéro n’établit donc pas l’absence de visiteurs. [S09](#source-9)
+
+Ces conventions ne sont pas en elles-mêmes des tromperies : les fournisseurs les expliquent. Elles montrent pourquoi l’examen du produit doit dépasser son nom et sa taille. Il faut connaître l’unité comptée, la règle d’entrée, l’ancienneté acceptée, l’usage éventuel d’une expansion et la manière dont une précision annoncée a été testée. Sans cela, deux listes portant le même titre peuvent désigner des populations très différentes.
+
+## Le profil reste une information sur quelqu’un
+
+Le regroupement en catégories ne transforme pas automatiquement les personnes en statistiques anonymes. Une sélection peut conserver des identifiants utilisables pour les atteindre individuellement. La CNIL distingue le [profilage](/glossaire/profilage/), qui évalue des aspects personnels, d’une statistique portant seulement sur un groupe. Elle rappelle également que remplacer les identifiants directs par des [pseudonymes](/glossaire/pseudonymisation/) ne suffit pas à anonymiser les données. [S18](#source-18) [S19](#source-19)
+
+Il faut donc séparer deux questions. L’audience est-elle assez exacte pour servir l’objectif de l’acheteur ? Sa fabrication et son utilisation respectent-elles les droits des personnes concernées ? Une bonne performance commerciale ne répond pas à la seconde. Une mauvaise performance ne signifie pas que le classement n’a aucune conséquence pour celui qui le subit.
+
+Les obligations du règlement InMarket, rendu public le 1er mai 2024, prennent en compte les dérivés : leur périmètre couvre notamment les produits catégorisant ou ciblant des consommateurs à partir de données de localisation sensibles, selon les définitions de l’ordonnance. L’entreprise n’admet ni ne nie les allégations, hors les éléments expressément admis. Le règlement Avast comporte lui aussi des obligations visant des produits ou algorithmes dérivés. Ces textes ne prouvent pas, à eux seuls, leur exécution complète. [S06](#source-6) [S07](#source-7) [S20](#source-20)
+
+Le contrat Jumpshot–Lotame décrit au début du dossier rend visible une manière de monétiser la transformation. Les autres documents montrent comment une observation devient une règle, puis une sélection exploitable et tarifée. Ils n’établissent pas un circuit unique reliant toutes les entreprises citées.
+
+**La question décisive, devant un profil commercial, est la solidité du passage entre le signal initial et l’affirmation vendue.** Un acheteur peut payer pour une probabilité raisonnable. Il doit pouvoir distinguer cette probabilité d’un fait observé. Et la personne classée reste concernée par l’usage de cette information, que le modèle ait vu juste ou non.
+
+---
+
+### Sources et méthode
+
+Enquête documentaire arrêtée au **18 septembre 2026**, fondée sur les procédures de la FTC, les documents publics des fournisseurs, les spécifications de l’IAB Tech Lab, la CNIL et la recherche originale citée ci-dessous. Les documents produits par des entreprises établissent leurs offres et leurs déclarations, pas leur conformité ni leur précision effective. Aucun entretien, achat de données, accès à un compte client ou test de traçage de personnes n’a été réalisé. Aucun jeu de données divulgué illicitement n’a été consulté.
+
+Le contrat Jumpshot–Lotame et l’ordre de travail Omnicom sont connus ici par leur description dans une plainte ; leurs originaux signés ne figurent pas dans les pièces consultées. Les exemples chiffrés sont synthétiques, avec hypothèses et calculs reproduits dans cet article. Pour l’article de 2019, seuls la notice et le résumé institutionnels ont été examinés. Le texte intégral de l’étude de 2023 a été consulté en HTML.
+
+<section aria-label="Références documentaires">
+<p id="source-1"><strong>S01</strong> · <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/Complaint-Avast.pdf">Avast : Complaint</a> · Federal Trade Commission</p>
+<p id="source-2"><strong>S02</strong> · <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/202_3033_-_avast_final_consent_package.pdf">Avast : Final Consent, dossier C-4805</a> · Federal Trade Commission</p>
+<p id="source-3"><strong>S03</strong> · <a href="https://www.ftc.gov/legal-library/browse/cases-proceedings/2023033-avast">Avast : chronologie du dossier 2023033</a> · Federal Trade Commission</p>
+<p id="source-4"><strong>S04</strong> · <a href="https://support.avast.com/en-gb/article/jumpshot-settlement-faqs/">Jumpshot Settlement – FAQs</a> · Avast</p>
+<p id="source-5"><strong>S05</strong> · <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/InMarketMedia-Complaint.pdf">InMarket Media : Complaint</a> · Federal Trade Commission</p>
+<p id="source-6"><strong>S06</strong> · <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/InMarketMedia-DecisionandOrder.pdf">InMarket Media : Decision and Order</a> · Federal Trade Commission</p>
+<p id="source-7"><strong>S07</strong> · <a href="https://www.ftc.gov/news-events/news/press-releases/2024/05/ftc-finalizes-order-inmarket-prohibiting-it-selling-or-sharing-precise-location-data">FTC Finalizes Order with InMarket Prohibiting It from Selling or Sharing Precise Location Data</a> · Federal Trade Commission</p>
+<p id="source-8"><strong>S08</strong> · <a href="https://docs.foursquare.com/campaign-products/docs/build-an-audience-segment">Build an Audience Segment</a> · Foursquare</p>
+<p id="source-9"><strong>S09</strong> · <a href="https://docs.foursquare.com/campaign-products/docs/audience-faq">Audience FAQ</a> · Foursquare</p>
+<p id="source-10"><strong>S10</strong> · <a href="https://foursquare.com/location-based-targeting-guide/">Location-Based Targeting: The Complete Guide to Audience &amp; Geofencing</a> · Foursquare</p>
+<p id="source-11"><strong>S11</strong> · <a href="https://iabtechlab.com/wp-content/uploads/2024/04/IAB-TL-Data-Transparency-Disclosure-Schema-1.2-Privacy-Update.pdf">Data Transparency Standard 1.2 : Disclosure Schema</a> · IAB Tech Lab</p>
+<p id="source-12"><strong>S12</strong> · <a href="https://iabtechlab.com/standards/data-transparency-standard/">The Data Transparency Standard (Data Label)</a> · IAB Tech Lab</p>
+<p id="source-13"><strong>S13</strong> · <a href="https://docs.liveramp.com/connect/en/enable-an-individual-data-marketplace-segment.html">Enable an Individual Data Marketplace Segment</a> · LiveRamp</p>
+<p id="source-14"><strong>S14</strong> · <a href="https://docs.liveramp.com/connect/en/data-marketplace-pricing-options.html">Data Marketplace Pricing Options</a> · LiveRamp</p>
+<p id="source-15"><strong>S15</strong> · <a href="https://support.google.com/displayvideo/answer/6212219?hl=en">Tips for using third-party audience lists</a> · Google, Display &amp; Video 360 Help</p>
+<p id="source-16"><strong>S16</strong> · <a href="https://link.springer.com/article/10.1007/s11129-023-09268-7">Is first- or third-party audience data more effective for reaching the “right” customers? The case of IT decision-makers</a> · N. Neumann, C. E. Tucker, K. Subramanyam, J. Marshall ; Quantitative Marketing and Economics</p>
+<p id="source-17"><strong>S17</strong> · <a href="https://dspace.mit.edu/entities/publication/aceafeb9-7657-4341-a6c0-6a3ea387792b">Frontiers: How Effective Is Third-Party Consumer Profiling? Evidence from Field Studies</a> · N. Neumann, C. E. Tucker, T. Whitfield ; Marketing Science / dépôt MIT</p>
+<p id="source-18"><strong>S18</strong> · <a href="https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee">Profilage et décision entièrement automatisée</a> · CNIL</p>
+<p id="source-19"><strong>S19</strong> · <a href="https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles">L’anonymisation de données personnelles</a> · CNIL</p>
+<p id="source-20"><strong>S20</strong> · <a href="https://www.ftc.gov/news-events/news/press-releases/2024/06/ftc-finalizes-order-avast-banning-it-selling-or-licensing-web-browsing-data-advertising-requiring-it">FTC Finalizes Order with Avast Banning it from Selling or Licensing Web Browsing Data for Advertising and Requiring it to Pay $16.5 Million</a> · Federal Trade Commission</p>
+<p id="source-21"><strong>S21</strong> · <a href="https://liveramp.com/legal/platform-terms">LiveRamp Platform Terms</a> · LiveRamp</p>
+</section>

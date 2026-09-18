@@ -1,0 +1,174 @@
+---
+title: 'Personal data: how our traces become profiles for sale'
+seoTitle: 'Personal data: how traces become saleable profiles | l0g'
+ogTitle: 'The trade in our traces (3/6): manufacturing profiles'
+description: Jumpshot, InMarket and public product manuals reveal how digital traces become commercial profiles,
+  and why permissions, prices and error rates matter.
+pubDate: '2026-09-18T17:02:10Z'
+tags: ["personal data", "advertising", "data brokers", "profiling", "Jumpshot", "Lotame", "InMarket", "FTC", "investigation"]
+draft: false
+ogImage: /illustrations/news/commerce-traces-03-v1.jpg
+sourceArticle: commerce-traces-fabrication-profils-donnees-personnelles
+sourceUpdatedDate: '2026-09-18T17:02:10Z'
+---
+
+import CommerceTracesProfileFigure from "../../components/CommerceTracesProfileFigure.astro";
+
+
+*The trade in our traces · Part three of a six-part investigation.*
+
+**A phone location does not contain a purchase intention. A visited page does not reveal a personality. Turning these signals into saleable profiles requires interpretation, a selection rule and permission to use the result. Contracts and product manuals expose that manufacturing process. They also reveal how far a commercial label can drift from the people it claims to describe.**
+
+In August 2018, according to the US Federal Trade Commission’s complaint against Avast, its subsidiary Jumpshot entered into a contract allowing data company Lotame to combine and model its browsing information, then license the results to Lotame’s own customers. Jumpshot was to receive a share of the revenue from audiences built using that information. The public document does not disclose the percentage. [S01](#source-1)
+
+This is an identifiable economic turning point. A supplier permits its customer to manufacture another product from the traces it receives, while retaining a financial interest in that product’s sale. Revenue no longer depends solely on supplying a browsing history. It also depends on what the transformation makes possible.
+
+**The relationship is described in a complaint; the signed contract itself is not published in the material reviewed.** Avast disputes the FTC’s allegations. The final settlement, listed under June 26, 2024 in the agency’s case history, does not amount to an admission of them. Jumpshot closed in January 2020, so this is not a description of a service still operating under that name. Nor is it a liability finding against Lotame. [S02](#source-2) [S03](#source-3) [S04](#source-4)
+
+The first two parts followed [the economics of collection](/en/analysis/personal-data-economics-collection/) and [the roles of intermediaries](/en/analysis/personal-data-chain-of-intermediaries/). This part examines the product itself: what has been observed, what has been inferred and what the buyer is actually entitled to do.
+
+<CommerceTracesProfileFigure lang="en" figure={1} />
+
+## Giving an event commercial meaning
+
+Jumpshot’s historical catalogue, as described by the FTC, separated searches and selected results from online shopping events, including cart additions, and transaction details. Several feeds retained a persistent browser identifier. That made it possible to connect successive events, rather than merely count them for a website as a whole. [S01, paragraphs 21–22](#source-1)
+
+The distinction matters. Counting views of a page about shoes produces a statistic about that page. Linking several views, a search and a shopping cart to the same identifier produces a journey. Someone can then ask a commercial question: does this browser appear to belong to a person preparing to buy? That question is an interpretation, not something embedded in the page’s address.
+
+With a phone, the initial task is to turn signals into visits. Foursquare describes a technical layer that identifies stops and assigns them to places, filtering out some drive-bys and positioning errors. That is the supplier’s account of its method, not an independently measured result from this investigation. [S10](#source-10)
+
+Even perfect positioning would leave part of the ambiguity intact. A person inside a shop may be buying, working, delivering a parcel or accompanying someone else. Better geographical accuracy answers the question of where. It does not automatically answer why.
+
+The InMarket case describes the next step. The FTC alleges that the company combined information from multiple apps to reconstruct visits. In its car-buying example, a dealership visit is combined with attributes purchased elsewhere, such as age, income and family composition, to infer interest in a type of vehicle. **An estimated presence becomes a clue; the clue then contributes to a buying hypothesis.** [S05, paragraphs 7–9](#source-5)
+
+## A segment’s name can conceal the reasoning behind it
+
+An [*audience segment*](/en/glossary/segment-d-audience/) is a set of identifiers selected under a rule: a visit, a declared characteristic or a calculation. Buyers can then use that selection to reach an audience. The IAB Tech Lab’s transparency standard distinguishes several ways of assigning characteristics: direct observation, declarations, derivation from other fields, rule-based inference and modelling. [S11](#source-11)
+
+Consider some examples constructed for this explanation. A date of birth entered in a form is declared information; an age calculated from that date is derived. Repeated visits to a business provide evidence of behaviour. Concluding that the visitor owns a dog or is shopping for a car requires another step. A model may then assign the same category to other people whose signals resemble those of the original group.
+
+These methods do not carry the same evidential weight. A declaration may be stale or false. A correct calculation may start from incorrect information. A statistical pattern may be useful across a group without describing every member accurately. Quality therefore depends on the entire sequence, not just the final operation.
+
+A short label makes a product easy to find in a catalogue. It can also obscure the conditions under which membership was assigned. “Dealership visitor in the past thirty days” and “car buyer” make different promises. One refers to an estimated event; the other to an intention. Their commercial proximity does not make them interchangeable.
+
+<CommerceTracesProfileFigure lang="en" figure={2} />
+
+## Expanding an audience can change what it contains
+
+Foursquare’s documentation reveals these choices without requiring access to anyone’s personal data. Its audience designer offers a lookback window: the period during which a visit can qualify a device for inclusion. The guide describes a default one-month window that can be adjusted. It also provides a *Reach Multiplier*, which expands the selection by adding devices with similar behaviour. [S08](#source-8)
+
+Both operations may make more identifiers available, but in different ways. Extending the window may bring in an older visitor. Similarity-based expansion may bring in a device that has not been assigned the qualifying visit. In the latter case, the product is no longer simply a list of detected visitors. It includes a population the model considers similar to them.
+
+That can be useful. A retailer does not necessarily want to speak only to existing customers; it may want comparable prospects. The distinction nevertheless needs to survive in the product description. Otherwise, commercial expansion can be mistaken for an observation that never occurred.
+
+Another detail in the manual deserves attention. Foursquare explains that its frequency categories are relative to each location, and that the most frequent visitors may include employees as well as loyal customers. A category therefore does not represent the same visit count everywhere, and frequent presence does not establish a purchase. [S09](#source-9)
+
+The lookback period is also different from the refresh rate. A list rebuilt every day may continue to include old events if its rule allows them. Conversely, a recent visit may have to wait for the next update before it enters the selection. The IAB standard assigns these parameters separate fields: the source lookback window and the audience refresh cadence. [S11](#source-11)
+
+## Making a selection into a catalogue item
+
+An apparently valuable audience is not yet a usable commercial product. It needs an identity, permitted uses and a way to make it available in a campaign environment.
+
+LiveRamp’s instructions, modified on July 10, 2026, spell out those elements. Sellers supply a segment name and description, sourcing information, pricing and permissions. Internal and external segment identifiers are distinguished. Standard segments require descriptions; custom segments have rules for authorised destination platforms. **The category becomes something that can be administered: offered, distributed, billed and withdrawn.** [S13](#source-13)
+
+The platform’s public terms also refer to a data contract and separate conditions at the destination. They provide for specified uses, rather than a general right to use all the information for any purpose. These documents do not establish a particular transaction, and not all negotiated customer terms are public. [S21](#source-21)
+
+The Jumpshot–Lotame contract described by the FTC expressly permitted transformation and licensing of derived products. That permission cannot be assumed for every audience purchase. Depending on the agreement, a customer may obtain a selection for a campaign without receiving the history used to build it, or permission to create a competing catalogue.
+
+The relevant boundary is therefore the scope of the rights: querying, matching, targeting, producing statistics, enriching a file or redistributing. Two products based on the same traces may have different values and risks when their permissions differ.
+
+## Charging for use does not put a price on a person
+
+In pricing documentation modified on August 17, 2026, LiveRamp describes charges per thousand advertising impressions, a share of media spending and flat-fee licences, among other arrangements. An impression here is an ad delivery recorded by the system, not a unique buyer. Google’s guidance for third-party audiences in Display & Video 360 states that data fees are added to the cost of the advertising inventory. [S14](#source-14) [S15](#source-15)
+
+This pricing compensates the ability to use a selection. The same person may receive several ads. Dividing a charge per thousand impressions by a thousand therefore does not reveal the “price of that person’s data”.
+
+Historical documents also describe larger agreements without supplying a universal rate card. The complaint reproduced in the final Avast case package describes a December 2017 Omnicom contract whose first work order called for production fees of approximately **US$2 million a year**. This is a contractual amount reported by the FTC for a specific scope of work, not independently verified cash receipts, Lotame’s price or a market average. [S02, complaint paragraph 26](#source-2)
+
+To evaluate an audience, the buyer needs to compare the selection’s extra cost with the improvement it delivers. A better-targeted category may still be too expensive. Equally, a category containing many errors may improve the concentration of prospects enough to have economic value. The latter possibility is less intuitive.
+
+## An 89% correct classifier can still produce a poor list
+
+Consider an **entirely fictional example**, involving no company data or real people. In a population of 1,000 individuals, 100 genuinely belong to the desired category. A system finds 80 and misses 20. Of the other 900, it mistakenly places 90 in the category and correctly excludes the remaining 810.
+
+Across the whole population, the system is right in 890 cases: 80 correct inclusions and 810 correct exclusions. Its overall classification accuracy is **89%**.
+
+The buyer, however, receives the positive selection: 170 individuals, only 80 of whom genuinely meet the criterion. The relevant proportion for that list is **80 ÷ 170, or 47.1%**. More than half of the segment is misclassified, despite the 89% overall accuracy.
+
+There is no contradiction. The population contains many more people outside the target than inside it. An error affecting only 10% of those outside the target still creates 90 false positives, more than the 80 correctly identified prospects. A headline rate that combines inclusions and exclusions hides this composition. Excluding everyone would even produce 90% overall accuracy, while identifying no prospects at all.
+
+<CommerceTracesProfileFigure lang="en" figure={3} />
+
+The calculation is not a measurement of any real supplier. It shows why an accuracy claim needs a denominator: everyone assessed, those selected, visits detected or identifiers matched. These rates answer different questions.
+
+The selection nevertheless retains an advantage in this example. Genuine targets make up 47.1% of the list, compared with 10% of the starting population. To isolate the economics, add **equally fictional prices**: €4 per thousand impressions without targeting, with a further €2 data fee when targeting is used.
+
+Assuming uniform exposure frequency and unchanged media pricing, the normalised cost per thousand impressions actually reaching the target falls from **€4 ÷ 10% = €40** to **€6 ÷ (80/170) = €12.75**. These figures concern impressions, which may repeat, not a thousand distinct people.
+
+The result establishes neither incremental sales nor advertising profit. It leaves out other fees, inventory availability, prospect value, frequency limits and the 20 genuine targets the system misses. It shows only that a list with a majority of incorrect members can coexist with an economic advantage. Actual profitability requires a further measurement.
+
+## Field studies need a credible benchmark
+
+Academic research has tested commercial labels against external checks. A 2019 *Marketing Science* paper, whose abstract is available through MIT, covers three field studies, more than 90 audiences and 19 data brokers. It reports substantial variation in profiling performance. That historical result does not supply a current score for the products on sale today. [S17](#source-17)
+
+A paper published on **October 24, 2023** in *Quantitative Marketing and Economics* examines one category in more detail: IT decision-makers. Its main US fieldwork ran from September 2019 to April 2020. Five supplier segments were benchmarked against random selection on the **same publisher network**, not the entire US population. The comparisons found no statistically significant advantage over that benchmark for the pooled segments; some were unfavourable to modelled categories. [S16, sections 3.1–3.5](#source-16)
+
+Validation relied on respondents’ self-reported professional responsibilities, with the limitations of survey evidence. The work received support from HP and a measurement company, and two coauthors were affiliated with HP. The tested vendors were not individually identified. These conditions rule out using the study to assign an error rate to InMarket, Foursquare or their 2026 catalogues. [S16](#source-16)
+
+The methodological lesson is stronger than any blanket verdict on data brokers. To establish whether a selection adds value, buyers need to measure the audience actually reached and compare it with an available alternative that does not require purchasing the selection. An impressive catalogue category may add little if the advertising network already reaches many people who meet the criterion.
+
+A separate question remains: reaching the right people does not establish that the ad caused them to buy. People already close to a decision may purchase without advertising. Measuring additional sales requires isolating that effect, rather than attributing every purchase following an exposure to the campaign.
+
+## A transparent label does not certify an accurate profile
+
+The IAB Tech Lab standard provides useful vocabulary but explicitly limits its own scope. It organises disclosures about how audiences are produced; it does not award the segment an effectiveness or accuracy grade. Compliance with that transparency framework is therefore not proof of performance. [S12](#source-12)
+
+One field illustrates the potential confusion: *audience precision level*. In the schema, it identifies the level at which the audience is defined, such as an individual, household, device or browser. It is not a percentage of correct predictions. [S11](#source-11)
+
+Displayed scale needs similar care. Foursquare’s FAQ says that a zero reach estimate may indicate a selection below the **5,000-device** minimum needed to build the segment. It also explains that the estimate is based on a sample. A displayed zero therefore does not establish that nobody visited. [S09](#source-9)
+
+These conventions are not inherently deceptive; the suppliers explain them. They show why examining a product requires more than its name and size. The unit counted, inclusion rule, accepted age of events, possible expansion and method used to test an accuracy claim all matter. Without those details, two identically named lists may describe very different populations.
+
+## A profile is still information about someone
+
+Grouping people into categories does not automatically turn them into anonymous statistics. A selection may retain identifiers that allow its members to be reached individually. France’s CNIL distinguishes [profiling](/en/glossary/profilage/), which assesses personal characteristics, from purely group-level statistics. It also explains that substituting [pseudonyms](/en/glossary/pseudonymisation/) for direct identifiers is not enough to anonymise data. [S18](#source-18) [S19](#source-19)
+
+Two questions therefore need separate answers. Is the audience accurate enough for the buyer’s purpose? Does its creation and use respect the rights of the people concerned? Good commercial performance does not answer the second question. Poor performance does not mean the classification has no consequences for the person subjected to it.
+
+The InMarket settlement made public on May 1, 2024 addresses derived products: its scope includes products that categorise or target consumers using sensitive location data, subject to the order’s definitions. The company neither admits nor denies the allegations, apart from matters expressly admitted. The Avast settlement also imposes obligations concerning derived products or algorithms. Neither document alone proves full compliance. [S06](#source-6) [S07](#source-7) [S20](#source-20)
+
+The Jumpshot–Lotame arrangement described at the start makes one way of monetising transformation visible. The other documents show how an observation becomes a rule, then a selection that can be used and priced. They do not establish a single supply chain connecting all the companies discussed.
+
+**The decisive question about a commercial profile is how well the original signal supports the claim being sold.** Buyers may reasonably pay for a probability. They need to be able to distinguish that probability from an observed fact. The person classified still has a stake in how the information is used, whether the model was right or wrong.
+
+---
+
+### Sources and method
+
+Documentary research closed on **September 18, 2026**, drawing on FTC proceedings, suppliers’ public documents, IAB Tech Lab specifications, CNIL guidance and the original research cited below. Company documents establish published offers and claims, not their compliance or actual accuracy. No interviews, data purchases, customer-account access or tracking tests involving people were undertaken. No illicitly disclosed personal dataset was consulted.
+
+The Jumpshot–Lotame contract and Omnicom work order are known here through their description in a complaint; signed originals were not among the materials examined. Numerical examples are synthetic, with explicit assumptions and calculations reproduced in this article. For the 2019 paper, only the institutional record and abstract were reviewed. The full text of the 2023 study was examined in HTML.
+
+<section aria-label="Documentary references">
+<p id="source-1"><strong>S01</strong> · <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/Complaint-Avast.pdf">Avast: complaint, paragraphs 19–26 and 29</a> · Federal Trade Commission</p>
+<p id="source-2"><strong>S02</strong> · <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/202_3033_-_avast_final_consent_package.pdf">Avast: final consent package, C-4805</a> · Federal Trade Commission</p>
+<p id="source-3"><strong>S03</strong> · <a href="https://www.ftc.gov/legal-library/browse/cases-proceedings/2023033-avast">Avast: FTC case history</a> · Federal Trade Commission</p>
+<p id="source-4"><strong>S04</strong> · <a href="https://support.avast.com/en-gb/article/jumpshot-settlement-faqs/">Avast: Jumpshot Settlement FAQs (company response)</a> · Avast</p>
+<p id="source-5"><strong>S05</strong> · <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/InMarketMedia-Complaint.pdf">InMarket: complaint, paragraphs 7–11</a> · Federal Trade Commission</p>
+<p id="source-6"><strong>S06</strong> · <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/InMarketMedia-DecisionandOrder.pdf">InMarket: final decision and order</a> · Federal Trade Commission</p>
+<p id="source-7"><strong>S07</strong> · <a href="https://www.ftc.gov/news-events/news/press-releases/2024/05/ftc-finalizes-order-inmarket-prohibiting-it-selling-or-sharing-precise-location-data">FTC announcement of the final InMarket order</a> · Federal Trade Commission</p>
+<p id="source-8"><strong>S08</strong> · <a href="https://docs.foursquare.com/campaign-products/docs/build-an-audience-segment">Foursquare: Build an Audience Segment</a> · Foursquare</p>
+<p id="source-9"><strong>S09</strong> · <a href="https://docs.foursquare.com/campaign-products/docs/audience-faq">Foursquare: Audience FAQ</a> · Foursquare</p>
+<p id="source-10"><strong>S10</strong> · <a href="https://foursquare.com/location-based-targeting-guide/">Foursquare: Location-Based Targeting guide</a> · Foursquare</p>
+<p id="source-11"><strong>S11</strong> · <a href="https://iabtechlab.com/wp-content/uploads/2024/04/IAB-TL-Data-Transparency-Disclosure-Schema-1.2-Privacy-Update.pdf">IAB Tech Lab: Data Transparency Standard 1.2</a> · IAB Tech Lab</p>
+<p id="source-12"><strong>S12</strong> · <a href="https://iabtechlab.com/standards/data-transparency-standard/">IAB Tech Lab: scope of the Data Label standard</a> · IAB Tech Lab</p>
+<p id="source-13"><strong>S13</strong> · <a href="https://docs.liveramp.com/connect/en/enable-an-individual-data-marketplace-segment.html">LiveRamp: Enable an Individual Data Marketplace Segment</a> · LiveRamp</p>
+<p id="source-14"><strong>S14</strong> · <a href="https://docs.liveramp.com/connect/en/data-marketplace-pricing-options.html">LiveRamp: Data Marketplace Pricing Options</a> · LiveRamp</p>
+<p id="source-15"><strong>S15</strong> · <a href="https://support.google.com/displayvideo/answer/6212219?hl=en">Google DV360: third-party audience lists and data fees</a> · Google, Display &amp; Video 360 Help</p>
+<p id="source-16"><strong>S16</strong> · <a href="https://link.springer.com/article/10.1007/s11129-023-09268-7">Neumann et al. (2023): IT decision-makers and audience data</a> · N. Neumann, C. E. Tucker, K. Subramanyam, J. Marshall</p>
+<p id="source-17"><strong>S17</strong> · <a href="https://dspace.mit.edu/entities/publication/aceafeb9-7657-4341-a6c0-6a3ea387792b">Neumann et al. (2019): third-party consumer profiling (MIT abstract)</a> · N. Neumann, C. E. Tucker, T. Whitfield</p>
+<p id="source-18"><strong>S18</strong> · <a href="https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee">CNIL: profiling and fully automated decisions</a> · CNIL</p>
+<p id="source-19"><strong>S19</strong> · <a href="https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles">CNIL: anonymisation and pseudonymisation</a> · CNIL</p>
+<p id="source-20"><strong>S20</strong> · <a href="https://www.ftc.gov/news-events/news/press-releases/2024/06/ftc-finalizes-order-avast-banning-it-selling-or-licensing-web-browsing-data-advertising-requiring-it">FTC announcement of the final Avast order</a> · Federal Trade Commission</p>
+<p id="source-21"><strong>S21</strong> · <a href="https://liveramp.com/legal/platform-terms">LiveRamp: Platform Terms, sections 4 and 6</a> · LiveRamp</p>
+</section>

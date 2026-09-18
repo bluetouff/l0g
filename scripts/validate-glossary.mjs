@@ -28,9 +28,24 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 541, 'Le corpus doit conserver ses 541 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 94, 'Le graphe Atlas doit conserver ses 94 nœuds');
-assert.equal(glossaryAtlasEdgeCount, 386, 'Le graphe Atlas doit conserver ses 386 relations');
+assert.equal(glossaryEntries.length, 543, 'Le corpus doit conserver ses 543 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 96, 'Le graphe Atlas doit conserver ses 96 nœuds');
+assert.equal(glossaryAtlasEdgeCount, 390, 'Le graphe Atlas doit conserver ses 390 relations');
+for (const [slug, source] of [
+  ['profilage', 'https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee'],
+  ['segment-d-audience', 'https://iabtechlab.com/standards/data-transparency-standard/'],
+]) {
+  for (const [entry, href] of [
+    [glossaryEntries.find((item) => item.slug === slug), '/posts/commerce-traces-fabrication-profils-donnees-personnelles/'],
+    [glossaryAtlasEnBySlug.get(slug), '/en/analysis/personal-data-traces-to-saleable-profiles/'],
+  ]) {
+    assert(entry);
+    assert.equal(entry.guide, href);
+    assert.deepEqual(entry.atlas.sources.map((item) => item.href), [source]);
+    assert.deepEqual(entry.atlas.articles.map((item) => item.href), [href]);
+    for (const related of entry.atlas.related) assert(glossaryEntries.some((item) => item.slug === related));
+  }
+}
 for (const [slug, source] of [
   ['sdk', 'https://www.cnil.fr/fr/applications-mobiles-comment-integrer-des-sdk-et-respecter-la-vie-privee-des-utilisateurs'],
   ['rtb', 'https://www.ftc.gov/system/files/ftc_gov/pdf/Mobilewalla-Complaint.pdf'],

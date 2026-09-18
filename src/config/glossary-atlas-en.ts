@@ -203,6 +203,26 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'profilage', sigle: 'Profiling', nom: 'Automated evaluation of personal characteristics', sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)',
+    def: 'Automated processing of personal data to evaluate aspects of a person, such as interests, behaviour or movements. A profile may rely on inferences and contain errors. Profiling does not necessarily lead to a fully automated decision; aggregate statistics that do not evaluate individuals are not sufficient to establish profiling.',
+    guide: '/en/analysis/personal-data-traces-to-saleable-profiles/',
+    atlas: {
+      articles: [{ label: 'How our traces become profiles for sale', href: '/en/analysis/personal-data-traces-to-saleable-profiles/', kind: 'article' }],
+      sources: [{ label: 'CNIL, profiling and fully automated decisions', href: 'https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee', kind: 'source' }],
+      related: ['segment-d-audience', 'pseudonymisation'],
+    },
+  },
+  {
+    slug: 'segment-d-audience', sigle: 'Audience segment', nom: 'Identifiers selected under a rule', sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)',
+    def: 'Identifiers selected under a rule, such as an observed visit, a declared characteristic or a modelled interest. A segment label establishes neither that every person has the characteristic nor that the data may be reused for any purpose.',
+    guide: '/en/analysis/personal-data-traces-to-saleable-profiles/',
+    atlas: {
+      articles: [{ label: 'How our traces become profiles for sale', href: '/en/analysis/personal-data-traces-to-saleable-profiles/', kind: 'article' }],
+      sources: [{ label: 'IAB Tech Lab, Data Transparency Standard', href: 'https://iabtechlab.com/standards/data-transparency-standard/', kind: 'source' }],
+      related: ['profilage', 'rtb'],
+    },
+  },
+  {
     slug: 'sdk', sigle: 'SDK', nom: 'Software development kit', sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)',
     def: 'Tools and components that developers can integrate into an application to add functions such as maps or advertising. Depending on its configuration, a kit may access resources available to the app. Its presence alone establishes neither active data collection nor a data sale.',
     guide: '/en/analysis/personal-data-economics-collection/',
