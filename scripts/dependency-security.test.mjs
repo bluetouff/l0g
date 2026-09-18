@@ -4,6 +4,7 @@ import { spawnSync } from 'node:child_process';
 import test from 'node:test';
 import yaml from 'js-yaml';
 import { optimize } from 'svgo';
+import { parse as parseDevalue, stringify as stringifyDevalue } from 'devalue';
 
 // Bounded parser checks only: no browser execution or resource-exhaustion load.
 const sanitize = (body) => optimize(
@@ -11,8 +12,8 @@ const sanitize = (body) => optimize(
   { plugins: ['removeScripts'] },
 ).data;
 
-test('security floors cover every YAML, SVGO, Hono and TOML copy in both dependency trees', () => {
-  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1] };
+test('security floors cover every YAML, SVGO, Hono, TOML and devalue copy in both dependency trees', () => {
+  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 2] };
   const seen = new Set();
   for (const path of ['../package-lock.json', '../mcp-server/package-lock.json']) {
     const lock = JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
@@ -27,7 +28,19 @@ test('security floors cover every YAML, SVGO, Hono and TOML copy in both depende
       }
     }
   }
-  assert.equal(seen.size, 4);
+  assert.equal(seen.size, 5);
+});
+
+test('devalue rejects out-of-bounds references and preserves ordinary cyclic data', () => {
+  // Tiny fixtures exercise GHSA-9rgm-9g3h-6x36 without attempting resource exhaustion.
+  for (const input of ['[[1]]', '[{"value":1}]', '[["Set",1]]']) {
+    assert.throws(() => parseDevalue(input), /Invalid input/);
+  }
+  const value = { title: 'Article', date: new Date('2026-09-18T17:02:10Z'), values: [1, 2] };
+  value.self = value;
+  const restored = parseDevalue(stringifyDevalue(value));
+  assert.deepEqual(restored, value);
+  assert.equal(restored.self, restored);
 });
 
 test('TOML rejects truncated structures promptly and preserves ordinary documents', () => {
