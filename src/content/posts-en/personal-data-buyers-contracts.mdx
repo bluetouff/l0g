@@ -1,0 +1,151 @@
+---
+title: 'Personal data: what buyers actually pay for'
+seoTitle: 'Personal data buyers: contracts, access and use | l0g'
+ogTitle: 'The trade in our traces (4/6): what buyers pay for'
+description: "GM, Omnicom, Venntel and SafeGraph: contracts and public records reveal who buys personal data, what access costs and which uses are documented."
+pubDate: '2026-09-19T06:23:25Z'
+tags: ["personal data", "data brokers", "insurance", "advertising", "GM", "LexisNexis", "Venntel", "SafeGraph", "investigation"]
+draft: false
+ogImage: /illustrations/news/commerce-traces-04-v1.jpg
+sourceArticle: commerce-traces-acheteurs-donnees-personnelles
+sourceUpdatedDate: '2026-09-19T06:23:25Z'
+---
+
+import CommerceTracesBuyersFigure from "../../components/CommerceTracesBuyersFigure.astro";
+
+*The trade in our traces · Part four of a six-part investigation.*
+
+**A browsing history can become the raw material for an advertising product. Hard-braking events can feed a score offered to insurers. Phone locations can support investigative search portals or statistics on visits to public places. Following contracts to their buyers reveals different markets, joined by a common question: which rights does the customer acquire, and which does it actually exercise?**
+
+Two companies bought driving data from General Motors. One required precise location information to be removed before delivery. The other received it, including the vehicle’s position when the ignition was switched off. Yet according to the complaint filed by California authorities on May 8, 2026, the second company did not use those coordinates to calculate its driving scores. [S01](#source-1)
+
+The buyers were Verisk and LexisNexis Risk Solutions. This contractual difference reveals more than a list of partners: **it separates what may be sold, what is delivered and what actually contributes to the buyer’s product.** The stated purpose, assessing driving behaviour, does not by itself describe the contents of the file being transferred. [S01](#source-1)
+
+After examining [how profiles are manufactured](/en/analysis/personal-data-traces-to-saleable-profiles/), this investigation follows four documented markets: insurance, advertising, government investigations and public-health statistics. The records concern mainly the United States, alongside an advertising contract covering several other countries. They are neither a global census of buyers nor a measurement of their current activity.
+
+## GM sold data to businesses that sold assessments
+
+Drivers knew OnStar, their vehicle’s connected service, and perhaps Smart Driver, a feature providing feedback about their driving. The next commercial recipient was less visible. In its final complaint, issued on January 13, 2026 and published the next day, the US Federal Trade Commission describes two agreements: a December 2016 amendment with Insurance Services Office, Inc., doing business as Verisk Analytics, and an August 2019 contract with LexisNexis Risk Solutions, Inc. [S02](#source-2) [S18](#source-18)
+
+The existence of the LexisNexis partnership was public. Its August 21, 2019 announcement described consumer-approved data sharing designed to support personalised insurance offers and potential discounts. That marketing statement documents the intended market. It does not establish that every driver understood and authorised every transfer. That is one of the issues disputed by regulators. [S03](#source-3) [S02](#source-2)
+
+The California proceedings describe the economics of sales between 2020 and 2024. The brokers received fresh observations and could offer insurers updated assessments. GM had a financial interest in keeping that information flowing. The complaint attributes **approximately $20 million nationwide to GM in connection with these sales**. This is the authorities’ cumulative figure for the arrangement, not annual revenue, profit or a payment by an identified insurer. The signed contracts and detailed payment records are not among the documents examined here. [S01](#source-1) [S07](#source-7)
+
+The observations included hard braking, rapid acceleration and driving above a speed threshold. Both arrangements linked driving information to details allowing it to be associated with a customer or vehicle. Their geographic content differed, however. California’s complaint says the Verisk contract prohibited the transmission of precise geolocation, whereas LexisNexis also received GPS coordinates. It adds that the latter were not used for driving scores, even in states that permitted driving-behaviour data to be used for insurance purposes. [S01](#source-1) [S02](#source-2)
+
+This distinction matters when drawing the chain. A single arrow labelled “GM to insurers” would wrongly imply that all recipients received every field. The immediate buyer could process observations before offering a different product to its own customers. **What the insurer bought did not necessarily contain everything its data supplier had acquired upstream.**
+
+The commercial rationale is understandable. An insurer seeks information useful for assessing risk; a supplier allows it to avoid arranging collection from the vehicle itself. But that division of labour proves neither the accuracy of each score nor its predictive value, let alone the relevance of every collected field. A contractual requirement to supply information does not establish that the information improves the result.
+
+<CommerceTracesBuyersFigure lang="en" figure={1} />
+
+## The next customer cannot simply be assumed
+
+The FTC reports cases in which consumers discovered the circulation of their data after an adverse insurance decision. Its complaint describes denials, cancellations and premium increases. These allegations identify reported cases and potential consequences. They do not establish that all increases affecting GM drivers were caused by this arrangement. [S02](#source-2)
+
+California supplies a particularly important qualification. In paragraph 19 of their complaint, the authorities state that **insurers had not ordered reports on California drivers from the brokers**. They suggest the state’s insurance rules were the likely reason. The accompanying announcement says the investigation found no premium increases caused by this arrangement for those drivers. The upstream sales were challenged without the feared pricing effect being found in that population. [S01](#source-1) [S07](#source-7)
+
+Both findings belong in the account. The absence of an identified insurance surcharge does not resolve whether consumers consented to the sale. Conversely, a disputed sale is not sufficient evidence of an individual pricing harm. Establishing that link would require the report actually consulted, the insurer’s decision and the other factors in its calculation.
+
+GM confirmed that it stopped sharing data with LexisNexis and Verisk on **March 20, 2024**. It subsequently announced the discontinuation of Smart Driver. The federal proceedings produced a final order published on January 14, 2026; the California judgment bears the judge’s signature and the date **May 12, 2026**. Both are settlements without an admission of the allegations, rather than findings establishing every fact after a contested trial. The California judgment imposes $12.75 million in civil penalties, a separate obligation from the alleged $20 million in commercial proceeds. [S04](#source-4) [S05](#source-5) [S06](#source-6) [S18](#source-18)
+
+The documents therefore identify the immediate buyers. They do not provide a complete register of insurers that subsequently paid for the data or products derived from it. A broker’s overall customer count cannot fill that gap.
+
+## Omnicom bought rights to make products for other customers
+
+Another contract gives the buyer a role beyond that of an end user. In its complaint against Avast, the FTC describes a December 2017 agreement between Avast’s subsidiary Jumpshot and advertising group Omnicom. The first work order set production fees at approximately **$2 million a year**. The public record describes a contractual rate, not a sequence of paid invoices. [S08](#source-8)
+
+In exchange, Omnicom was to receive a browsing feed covering half of Jumpshot’s user base in six countries: the United States, the United Kingdom, Mexico, Australia, Canada and Germany. That share refers to the supplier’s user base within the stated scope, not half of those countries’ internet users. The feed covered all visited domains rather than selected websites. [S08](#source-8)
+
+According to the FTC’s description, the contract also allowed Jumpshot identifiers to be matched with Neustar or LiveRamp identifiers, and permitted Omnicom to market and sublicense derived products to its customers. The buyer was acquiring a history together with rights to transform and distribute its output. Those rights help explain why a broad feed is a different product from an already-calculated traffic table. [S08](#source-8)
+
+For an advertising agency, the distinction is practical. A table might show how many visits a website receives. A sequence tied to a persistent identifier can show what happened before and after a visit. Where the contract and applicable rules allow it, matching identifiers may make that analysis usable in another environment. The chain can support measurement or targeting. Its inclusion in the granted rights does not establish that a particular campaign used it.
+
+Avast disputes the allegations and says it is not aware of Jumpshot buyers attempting to reidentify individual customers. The final settlement does not constitute an admission. Jumpshot closed in January 2020. **This is a historical agreement described by a regulator, not evidence of a current service or a finding of liability against Omnicom.** The documents also do not identify the advertisers that may have received derived products. [S09](#source-9) [S10](#source-10)
+
+## For customs officials, the bill starts with a reseller
+
+Public buyers leave a different trail: purchase orders, software schedules and statements of work. These documents can identify a product even when its developer is not the direct recipient of public funds.
+
+US order **70B04C20F00000914**, recorded in USAspending, lists **$475,944.49 in obligations** to Govplace for Venntel software. Its performance period runs from September 25, 2020 to September 14, 2021. The record identifies the prime recipient, but does not show how much that recipient was to pass on to Venntel. The obligated amount is therefore not the data supplier’s net revenue, and an award record is not a substitute for evidence of disbursement. [S12](#source-12)
+
+An earlier Customs and Border Protection file shows what the software name meant operationally. Order **70B04C19F00000802**, released in redacted form under public-records procedures, contains a statement of work for the National Targeting Center and a directorate responsible for its analytical systems. The Venntel section provides for **portal access to a global mobile-location database**, customer support and two hours of training per licence. The performance period runs from September 27, 2019 to September 25, 2020. [S11](#source-11)
+
+The portal was the operational product being purchased. An agency does not need a complete copy of a database to search its history. It can pay for the ability to query information within its access permissions and use authorised results. A software contract can therefore finance access to data held elsewhere.
+
+The same file displays a total funded award value of **$1,068,317.18**. But several items in the schedule are redacted alongside those naming Venntel. Allocating the entire amount to Venntel data would require a breakdown the public version does not supply. Unit prices and quantities are not sufficiently visible to calculate a price per seat or per person. [S11](#source-11)
+
+The redactions do not erase the evidence of the access specified. They limit the financial detail. That distinction matters when software awards are added together to estimate what an agency spent on people’s movements: a contract can include other tools, support and services.
+
+## Logs establish searches, not their outcome
+
+A contract shows what was available. Usage logs can take the inquiry further. In a report signed on **September 28, 2023**, the Department of Homeland Security’s inspector general examined the use of commercial location data during federal fiscal years 2019 and 2020. The audit identified more than **55,000 CBP queries** across those two fiscal years and more than **16,000 ICE queries**, for Immigration and Customs Enforcement, in fiscal 2020 alone. [S14](#source-14)
+
+The footnotes define the limits. Each count comes from one provider’s logs and does not cover every relevant access. Repeated searches may appear more than once, while a single query can concern several locations or identifiers. **These are not counts of people monitored, investigations or successful outcomes.** Nor can they automatically be assigned to the two Venntel orders discussed above. [S14](#source-14)
+
+The audit thus establishes use beyond a merely available capability. It also identifies weaknesses in privacy procedures and assessments. CBP, for example, had interpreted certain preliminary approvals as allowing data use while impact assessments were still being prepared. The report cites another document supporting that interpretation, but finds that use continued without an approved assessment and after the preliminary approval expired. The audit concerns controls and procedures, not the system’s cost-effectiveness or the justification for every individual search. [S14](#source-14)
+
+The account must remain dated. In an assessment dated **August 12, 2024**, CBP describes December 2018 to September 2023 as a completed evaluation period. It says it did not acquire bulk cellphone-location information, but conducted targeted queries. The agency states that it had stopped collecting new commercial telemetry data from vendors while continuing to use information retained from the earlier period. That is its official account at that date, not verification of all its tools in September 2026. [S15](#source-15)
+
+Ending commercial access and ending use of the results are therefore separate events. That distinction will be central to the next part of the series.
+
+<CommerceTracesBuyersFigure lang="en" figure={2} />
+
+## The CDC purchased mobility statistics
+
+The purchase order signed on **April 16, 2021** by the Centers for Disease Control and Prevention reflects a different public-sector demand. For **$420,000**, SafeGraph was to supply data and updates for one year, through April 15, 2022. The original contract names SafeGraph, Inc.; today’s USAspending record displays SafeGraph LLC under the same award identifier, **75D30121P10791**. These are not two separate purchases. [S16](#source-16) [S17](#source-17)
+
+Section C of the statement of work distinguishes the products. *Core Places* describes locations through addresses, coordinates and other attributes. *Weekly Patterns* supplies aggregated information about visits. *Neighborhood Patterns* groups indicators at the census-block-group level. The stated purposes include studying travel, time spent at home and visits to vaccination sites. [S16](#source-16)
+
+The document says the agency had previously used data provided in kind under agreements approaching expiration. The purchase was intended to maintain access and regular updates. This is an identifiable commercial mechanism: a resource already embedded in the buyer’s work becomes a recurring funding need. That alone does not establish a deliberate supplier strategy to lock the customer in. [S16](#source-16)
+
+The statement of work requires anonymised data that is not linked to personally identifiable information. It explicitly mentions analysis at both GPS and aggregate levels. A contractual requirement is not an independent audit of anonymisation. Nevertheless, it distinguishes the award from access to a portal for searching histories by device identifier. **The records reviewed here do not establish that the CDC bought a tool to track named individuals.** [S16](#source-16)
+
+The value sought was in population indicators. Aggregated visits can answer a public-health question without supporting the same operation as an individual history. They also raise a different quality question: do the observed phones adequately represent the population being studied? The contract calls for geographically representative coverage. It does not, by itself, establish that this was achieved or that every potential use described was carried out. [S16](#source-16)
+
+<CommerceTracesBuyersFigure lang="en" figure={3} />
+
+## A price buys a defined scope
+
+These figures cannot be added together to produce “the market for our data”. The cumulative sum attributed to GM covers successive sales to two brokers. The Omnicom figure is an annual work-order rate described in a complaint. The Govplace figure is a federal obligation to a prime recipient. The SafeGraph award covers a package of products and updates. The records provide neither the same economic unit nor the same level of accounting evidence. [S01](#source-1) [S08](#source-8) [S12](#source-12) [S16](#source-16)
+
+Contract duration can be misleading too. A separate order, **70CMSD20P00000089**, awarded directly to Venntel for ICE on June 19, 2020, records $20,000 in obligations. Its record distinguishes a current end date of June 30, 2021 from a potential end date of June 30, 2023. The history includes an administrative closeout on **November 29, 2021**, with no additional obligation. Using only 2023 would imply an extension that the record does not document. [S13](#source-13)
+
+For the buyer, value depends on what access enables: producing a score, creating a service for other customers, searching a history or updating an indicator. Identifier-matching permissions, historical depth and redistribution rights can matter as much as the number of rows delivered. The examined agreements reveal these differences in scope. They do not identify a universal price for personal information.
+
+This map therefore ends at named, qualified relationships. GM confirmed transfers to LexisNexis and Verisk; authorities describe their contracts and challenge the conditions. The FTC describes Jumpshot’s agreement with Omnicom. Public orders document planned access or deliveries for CBP, ICE and the CDC. Audited logs add evidence of actual use for certain government accesses, without establishing their effectiveness or cataloguing their individual consequences. [S04](#source-4) [S01](#source-1) [S08](#source-8) [S11](#source-11) [S13](#source-13) [S14](#source-14) [S16](#source-16)
+
+**Acquiring the ability to act on data is a commercial fact. Establishing what the buyer achieved with it requires another record.** Several of the reconstructed chains stop at that boundary.
+
+Start from the beginning: [the economics of collection, part one of the investigation](/en/analysis/personal-data-economics-collection/).
+
+## Documents and scope
+
+Research cut-off: **September 19, 2026**. Public contracts were cross-checked against award records where accessible. The private GM and Jumpshot agreements are known here through descriptions in complaints, supplemented by public company statements; signed copies and invoices were not obtained. Settlements are distinguished from audit findings and from the allegations they resolve.
+
+No company or agency was contacted for this article. The positions reported come from public documents. No individual-location dataset was purchased, no clandestinely disclosed personal data was used and no commercial service was tested. The diagrams reconstruct documentary evidence; they do not report network observations.
+
+The references below link to original documents, including government records made public by the ACLU or hosted on DocumentCloud. Redactions remain limits on what can be established, rather than gaps filled with assumptions.
+
+## Sources
+
+<section aria-label="Documentary references">
+<p id="source-1"><strong>S01</strong> · California authorities. <a href="https://oag.ca.gov/system/files/attachments/press-docs/May%208%2C%202026%20GM%20Complaint%20Court%20Stamped.pdf">People v. General Motors LLC and OnStar, LLC: Complaint</a>. May 8, 2026; §§ 12–19, printed pages 6–8.</p>
+<p id="source-2"><strong>S02</strong> · Federal Trade Commission. <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/2423052c4828gmlexisfinalcomplaint.pdf">General Motors: final complaint, C-4828</a>. Issued January 13, 2026; published January 14; §§ 38–48.</p>
+<p id="source-3"><strong>S03</strong> · LexisNexis Risk Solutions. <a href="https://risk.lexisnexis.com/about-us/press-room/press-release/20190821-gm-partnership">GM insurance data partnership announcement</a>. August 21, 2019; company description of consumer-approved sharing.</p>
+<p id="source-4"><strong>S04</strong> · General Motors. <a href="https://news.gm.com/home.detail.html/Pages/news/us/en/2024/apr/0424-driver.html">Based on customer feedback, GM is discontinuing Smart Driver</a>. April 24, 2024; company statement on ending data sharing.</p>
+<p id="source-5"><strong>S05</strong> · Federal Trade Commission. <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/2423052c4828gmlexisfinalorder.pdf">General Motors: final decision and order</a>. Published January 14, 2026; opening decision on non-admission.</p>
+<p id="source-6"><strong>S06</strong> · Superior Court of California, County of Napa. <a href="https://oag.ca.gov/system/files/attachments/press-docs/June%2030%202026%20Court%20Approved%20Amended%20Judgment%20People%20v.%20GM.pdf">People v. GM: Final Judgment and Permanent Injunction; amended Schedule A</a>. Judgment signed May 12, 2026; page 3, § 40 page 13, signature page 15, schedule page 16.</p>
+<p id="source-7"><strong>S07</strong> · California Department of Justice. <a href="https://oag.ca.gov/node/622991">General Motors privacy settlement announcement</a>. May 8, 2026; alleged nationwide proceeds and California insurance effects.</p>
+<p id="source-8"><strong>S08</strong> · Federal Trade Commission. <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/Complaint-Avast.pdf">Avast complaint</a>. February 22, 2024; § 26, printed page 7, Omnicom contract and annual fee.</p>
+<p id="source-9"><strong>S09</strong> · Federal Trade Commission. <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/202_3033_-_avast_final_consent_package.pdf">Avast final consent package</a>. June 26, 2024; opening decision and findings on Jumpshot closure.</p>
+<p id="source-10"><strong>S10</strong> · Avast. <a href="https://support.avast.com/en-ca/article/381/">Jumpshot Settlement: FAQs</a>. Updated July 11, 2024; company position, anonymisation and reidentification.</p>
+<p id="source-11"><strong>S11</strong> · U.S. Customs and Border Protection, copy published by ACLU. <a href="https://assets.aclu.org/live/uploads/2022/07/2023-10-03-CBPs-Fourth-Production-Reprocessed.pdf">Order 70B04C19F00000802: reprocessed FOIA release</a>. Order dated September 24, 2019; PDF pages 4, 6 and 8; SOW Bates 0000360 and 0000362.</p>
+<p id="source-12"><strong>S12</strong> · US Treasury, USAspending. <a href="https://www.usaspending.gov/award/CONT_AWD_70B04C20F00000914_7014_HSHQDC13D00022_7001">Govplace award 70B04C20F00000914</a>. Award data checked through the API on September 19, 2026; obligations, description and performance period.</p>
+<p id="source-13"><strong>S13</strong> · US Treasury, USAspending. <a href="https://www.usaspending.gov/award/CONT_AWD_70CMSD20P00000089_7012_-NONE-_-NONE-">ICE / Venntel award 70CMSD20P00000089</a>. Award and transaction history checked through the API on September 19, 2026; dates and P00001 closeout.</p>
+<p id="source-14"><strong>S14</strong> · DHS Office of Inspector General. <a href="https://www.oig.dhs.gov/sites/default/files/assets/2023-09/OIG-23-61-Sep23-Redacted.pdf">OIG-23-61: commercial telemetry data procurement and use</a>. Signed September 28, 2023; printed pages 5–9, footnotes 10–14 and management comments.</p>
+<p id="source-15"><strong>S15</strong> · DHS / CBP, government document published by ACLU. <a href="https://assets.aclu.org/live/uploads/2022/07/2024-09-16-Privacy-Impact-Assessment-1.pdf">DHS/CBP/PIA-080: CBP Commercial Telemetry Data Evaluation</a>. August 12, 2024; abstract page 1 and introduction pages 1–2.</p>
+<p id="source-16"><strong>S16</strong> · Centers for Disease Control and Prevention, copy on DocumentCloud. <a href="https://s3.documentcloud.org/documents/23696555/cdc-safegraph-contract.pdf">CDC–SafeGraph purchase order 75D30121P10791</a>. April 16, 2021; signed cover page 1, line items pages 3–4, C.1–C.2 page 5 and C.6 page 7.</p>
+<p id="source-17"><strong>S17</strong> · US Treasury, USAspending. <a href="https://www.usaspending.gov/award/CONT_AWD_75D30121P10791_7523_-NONE-_-NONE-">SafeGraph award 75D30121P10791</a>. Award data checked through the API on September 19, 2026; amount, recipient and dates.</p>
+<p id="source-18"><strong>S18</strong> · Federal Trade Commission. <a href="https://www.ftc.gov/legal-library/browse/cases-proceedings/2423052-general-motors-llc-et-al-matter">General Motors case timeline, matter 2423052</a>. January 14, 2026; publication of final complaint and order.</p>
+</section>
