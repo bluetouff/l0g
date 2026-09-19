@@ -28,9 +28,19 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 543, 'Le corpus doit conserver ses 543 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 96, 'Le graphe Atlas doit conserver ses 96 nœuds');
-assert.equal(glossaryAtlasEdgeCount, 390, 'Le graphe Atlas doit conserver ses 390 relations');
+assert.equal(glossaryEntries.length, 544, 'Le corpus doit conserver ses 544 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 97, 'Le graphe Atlas doit conserver ses 97 nœuds');
+assert.equal(glossaryAtlasEdgeCount, 391, 'Le graphe Atlas doit conserver ses 391 relations');
+for (const [entry, href] of [
+  [glossaryEntries.find((item) => item.slug === 'liste-repoussoir'), '/posts/commerce-traces-donnees-apres-fin-contrat/'],
+  [glossaryAtlasEnBySlug.get('liste-repoussoir'), '/en/analysis/personal-data-after-the-contract-ends/'],
+]) {
+  assert(entry);
+  assert.equal(entry.guide, href);
+  assert.deepEqual(entry.atlas.sources.map((item) => item.href), ['https://www.cnil.fr/fr/comment-utiliser-une-liste-repoussoir-pour-respecter-lopposition-la-prospection-commerciale']);
+  assert.deepEqual(entry.atlas.articles.map((item) => item.href), [href]);
+  assert.deepEqual(entry.atlas.related, ['profilage']);
+}
 for (const [slug, source] of [
   ['profilage', 'https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee'],
   ['segment-d-audience', 'https://iabtechlab.com/standards/data-transparency-standard/'],

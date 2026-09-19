@@ -1,0 +1,162 @@
+---
+interface Props { lang: "fr" | "en"; figure: 1 | 2 | 3; }
+const { lang, figure } = Astro.props;
+---
+
+{lang === "fr" && figure === 1 && (
+<figure class="commerce-exit-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 398" style="width:100%;height:auto" role="img" aria-labelledby="traces05-fr-1-title traces05-fr-1-desc" font-family="Arial, Helvetica, sans-serif">
+<title id="traces05-fr-1-title">La copie a survécu au contrat</title>
+<desc id="traces05-fr-1-desc">Chronologie Mobius–Deezer. Fin du contrat le 1er décembre 2020, notification de la violation à la CNIL le 10 novembre 2022, suppression déclarée le 1er octobre 2023. 34 mois calendaires entre la fin du contrat et cette suppression. Repères non proportionnels.</desc>
+<rect x="0" y="0" width="480" height="398" fill="#0c0e10"/>
+<text x="20" y="32" font-size="23" fill="#f0f4fa" font-weight="500" text-anchor="start">La copie a survécu au contrat</text>
+<text x="20" y="62" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Mobius / Deezer · 2020–2023</text>
+<text x="20" y="108" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">1 déc. 2020</text>
+<text x="20" y="138" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Fin du contrat</text>
+<line x1="20" y1="154" x2="460" y2="154" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="182" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">10 nov. 2022</text>
+<text x="20" y="212" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Violation notifiée à la CNIL</text>
+<line x1="20" y1="228" x2="460" y2="228" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="256" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">1 oct. 2023</text>
+<text x="20" y="286" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Suppression déclarée par Mobius</text>
+<line x1="20" y1="302" x2="460" y2="302" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="344" font-size="25" fill="#f2c875" font-weight="500" text-anchor="start">34 mois</text>
+<text x="20" y="375" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Du terme à la suppression déclarée</text>
+</svg>
+<figcaption>Chronologie issue de la décision CNIL SAN-2025-014, §§ 54 et 63–65. Durée calculée en mois calendaires ; repères espacés pour la lecture. La date d’effacement est celle déclarée par Mobius. <a href="https://www.legifrance.gouv.fr/cnil/id/CNILTEXT000053048614">S01</a></figcaption>
+</figure>
+)}
+
+{lang === "fr" && figure === 2 && (
+<figure class="commerce-exit-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 398" style="width:100%;height:auto" role="img" aria-labelledby="traces05-fr-2-title traces05-fr-2-desc" font-family="Arial, Helvetica, sans-serif">
+<title id="traces05-fr-2-title">Quatre copies, un seul retrait</title>
+<desc id="traces05-fr-2-desc">Exemple fictif. Après une suppression limitée à la base active, le profil reste dans la copie de test, l’export et la sauvegarde. Une restauration sans filtre réintroduit le profil. Ces états illustrent un mécanisme, sans données de personnes réelles.</desc>
+<rect x="0" y="0" width="480" height="398" fill="#0c0e10"/>
+<text x="20" y="32" font-size="23" fill="#f0f4fa" font-weight="500" text-anchor="start">Quatre copies, un seul retrait</text>
+<text x="20" y="62" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Exemple fictif · état du même profil</text>
+<text x="20" y="114" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Base active</text>
+<text x="460" y="114" font-size="22" fill="#72e5df" font-weight="400" text-anchor="end">Retiré</text>
+<line x1="20" y1="133" x2="460" y2="133" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="169" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Copie de test</text>
+<text x="460" y="169" font-size="22" fill="#f2c875" font-weight="400" text-anchor="end">Présent</text>
+<line x1="20" y1="188" x2="460" y2="188" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="224" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Export</text>
+<text x="460" y="224" font-size="22" fill="#f2c875" font-weight="400" text-anchor="end">Présent</text>
+<line x1="20" y1="243" x2="460" y2="243" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="279" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Sauvegarde</text>
+<text x="460" y="279" font-size="22" fill="#f2c875" font-weight="400" text-anchor="end">Présent</text>
+<line x1="20" y1="298" x2="460" y2="298" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="341" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">Restauration sans filtre</text>
+<text x="20" y="375" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">→ Le profil revient dans la base</text>
+</svg>
+<figcaption>Schéma pédagogique l0g. Le retrait doit atteindre chaque copie de travail ; la sauvegarde demande un calendrier de retrait et un filtre à la restauration. Aucun test d’un service tiers n’est représenté.</figcaption>
+</figure>
+)}
+
+{lang === "fr" && figure === 3 && (
+<figure class="commerce-exit-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 422" style="width:100%;height:auto" role="img" aria-labelledby="traces05-fr-3-title traces05-fr-3-desc" font-family="Arial, Helvetica, sans-serif">
+<title id="traces05-fr-3-title">Effacer et coordonner les retraits</title>
+<desc id="traces05-fr-3-desc">Obligations prévues par les ordonnances FTC. Avast : vingt jours à compter de la prise d’effet pour effacer chez les sociétés visées et écrire aux tiers ; attestations à la FTC. Gravy–Venntel, section VIII : dans le circuit alternatif, transmettre les instructions et les confirmations reçues au consommateur sous 90 jours après sa demande. Exceptions détaillées dans le texte.</desc>
+<rect x="0" y="0" width="480" height="422" fill="#0c0e10"/>
+<text x="20" y="32" font-size="23" fill="#f0f4fa" font-weight="500" text-anchor="start">Effacer et coordonner les retraits</text>
+<text x="20" y="62" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Ordonnances FTC · 2024 et 2025</text>
+<text x="20" y="109" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">Avast · ses propres systèmes</text>
+<text x="20" y="140" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Effacer sous 20 jours</text>
+<text x="20" y="169" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Attester auprès de la FTC</text>
+<line x1="20" y1="188" x2="460" y2="188" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="216" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">Avast · les destinataires</text>
+<text x="20" y="247" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Écrire aux tiers sous 20 jours</text>
+<text x="20" y="276" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Attester de l’envoi à la FTC</text>
+<line x1="20" y1="295" x2="460" y2="295" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="323" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">Gravy · circuit de la section VIII</text>
+<text x="20" y="354" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Sous 90 jours après la demande</text>
+<text x="20" y="383" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Instructions et retours au demandeur</text>
+<line x1="20" y1="402" x2="460" y2="402" stroke="#344352" stroke-width="1.5"/>
+</svg>
+<figcaption>Les délais Avast partent de la prise d’effet de l’ordonnance. Chez Gravy, les retours transmis comprennent les confirmations de suppression reçues. Obligations et exceptions propres à chaque décision, décrites dans l’article. <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/202_3033_-_avast_final_consent_package.pdf">S13</a> <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/212_3035_-_gravy_analytics_final_consent_package_without_signatures.pdf">S16</a></figcaption>
+</figure>
+)}
+
+{lang === "en" && figure === 1 && (
+<figure class="commerce-exit-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 398" style="width:100%;height:auto" role="img" aria-labelledby="traces05-en-1-title traces05-en-1-desc" font-family="Arial, Helvetica, sans-serif">
+<title id="traces05-en-1-title">The copy outlived the contract</title>
+<desc id="traces05-en-1-desc">Mobius–Deezer chronology. Contract ended on 1 December 2020; breach notified to CNIL on 10 November 2022; deletion reported for 1 October 2023. 34 calendar months between termination and reported deletion. Event spacing is not proportional.</desc>
+<rect x="0" y="0" width="480" height="398" fill="#0c0e10"/>
+<text x="20" y="32" font-size="23" fill="#f0f4fa" font-weight="500" text-anchor="start">The copy outlived the contract</text>
+<text x="20" y="62" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Mobius / Deezer · 2020–2023</text>
+<text x="20" y="108" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">1 Dec 2020</text>
+<text x="20" y="138" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Contract ends</text>
+<line x1="20" y1="154" x2="460" y2="154" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="182" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">10 Nov 2022</text>
+<text x="20" y="212" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Breach notified to the CNIL</text>
+<line x1="20" y1="228" x2="460" y2="228" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="256" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">1 Oct 2023</text>
+<text x="20" y="286" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Deletion reported by Mobius</text>
+<line x1="20" y1="302" x2="460" y2="302" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="344" font-size="25" fill="#f2c875" font-weight="500" text-anchor="start">34 months</text>
+<text x="20" y="375" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">From termination to reported deletion</text>
+</svg>
+<figcaption>Chronology from CNIL decision SAN-2025-014, paragraphs 54 and 63–65. Duration in calendar months; events spaced for readability. The deletion date is the one reported by Mobius. <a href="https://www.legifrance.gouv.fr/cnil/id/CNILTEXT000053048614">S01</a></figcaption>
+</figure>
+)}
+
+{lang === "en" && figure === 2 && (
+<figure class="commerce-exit-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 398" style="width:100%;height:auto" role="img" aria-labelledby="traces05-en-2-title traces05-en-2-desc" font-family="Arial, Helvetica, sans-serif">
+<title id="traces05-en-2-title">Four copies, one deletion</title>
+<desc id="traces05-en-2-desc">Fictional example. After deletion only from the live database, the profile remains in the test copy, export and backup. An unfiltered restore brings the profile back. These states illustrate a mechanism using no real personal data.</desc>
+<rect x="0" y="0" width="480" height="398" fill="#0c0e10"/>
+<text x="20" y="32" font-size="23" fill="#f0f4fa" font-weight="500" text-anchor="start">Four copies, one deletion</text>
+<text x="20" y="62" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Fictional example · one profile’s status</text>
+<text x="20" y="114" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Live database</text>
+<text x="460" y="114" font-size="22" fill="#72e5df" font-weight="400" text-anchor="end">Removed</text>
+<line x1="20" y1="133" x2="460" y2="133" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="169" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Test copy</text>
+<text x="460" y="169" font-size="22" fill="#f2c875" font-weight="400" text-anchor="end">Present</text>
+<line x1="20" y1="188" x2="460" y2="188" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="224" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Export</text>
+<text x="460" y="224" font-size="22" fill="#f2c875" font-weight="400" text-anchor="end">Present</text>
+<line x1="20" y1="243" x2="460" y2="243" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="279" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Backup</text>
+<text x="460" y="279" font-size="22" fill="#f2c875" font-weight="400" text-anchor="end">Present</text>
+<line x1="20" y1="298" x2="460" y2="298" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="341" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">Restore without filtering</text>
+<text x="20" y="375" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">→ The profile returns to the database</text>
+</svg>
+<figcaption>l0g teaching diagram. Removal must reach each working copy; the backup needs a retirement schedule and a restore filter. This is not a test of a third-party service.</figcaption>
+</figure>
+)}
+
+{lang === "en" && figure === 3 && (
+<figure class="commerce-exit-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 422" style="width:100%;height:auto" role="img" aria-labelledby="traces05-en-3-title traces05-en-3-desc" font-family="Arial, Helvetica, sans-serif">
+<title id="traces05-en-3-title">Delete and coordinate removals</title>
+<desc id="traces05-en-3-desc">Requirements in FTC orders. Avast: twenty days from the effective date to delete covered holdings and instruct third parties; certifications to the FTC. Gravy–Venntel section VIII: under the alternative process, give consumers instructions and confirmations received within 90 days after their request. Exceptions are detailed in the article.</desc>
+<rect x="0" y="0" width="480" height="422" fill="#0c0e10"/>
+<text x="20" y="32" font-size="23" fill="#f0f4fa" font-weight="500" text-anchor="start">Delete and coordinate removals</text>
+<text x="20" y="62" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">FTC orders · 2024 and 2025</text>
+<text x="20" y="109" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">Avast · its own systems</text>
+<text x="20" y="140" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Delete within 20 days</text>
+<text x="20" y="169" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Certify to the FTC</text>
+<line x1="20" y1="188" x2="460" y2="188" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="216" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">Avast · recipients</text>
+<text x="20" y="247" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Instruct third parties within 20 days</text>
+<text x="20" y="276" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Certify sending to the FTC</text>
+<line x1="20" y1="295" x2="460" y2="295" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="323" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">Gravy · section VIII process</text>
+<text x="20" y="354" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Within 90 days of the request</text>
+<text x="20" y="383" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Give requester instructions and replies</text>
+<line x1="20" y1="402" x2="460" y2="402" stroke="#344352" stroke-width="1.5"/>
+</svg>
+<figcaption>Avast deadlines run from the order’s effective date. Under the Gravy process, replies passed on include deletion confirmations received. Requirements and exceptions are specific to each order and described in the article. <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/202_3033_-_avast_final_consent_package.pdf">S13</a> <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/212_3035_-_gravy_analytics_final_consent_package_without_signatures.pdf">S16</a></figcaption>
+</figure>
+)}
+
+<style>
+  .commerce-exit-figure { width: 100%; max-width: 42rem; margin: 2rem auto; padding-bottom: 0.75rem; }
+  .commerce-exit-figure > svg { display: block; width: 100%; max-width: 27rem; height: auto; margin-inline: auto; }
+  .commerce-exit-figure > figcaption { margin-top: 1rem; font-size: 0.875rem; line-height: 1.6; color: var(--color-muted); }
+</style>

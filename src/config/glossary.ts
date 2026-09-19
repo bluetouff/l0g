@@ -599,6 +599,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Liste repoussoir', nom: 'Liste d’exclusion pour respecter une opposition', def: 'Fichier conservant les seules informations nécessaires pour éviter de solliciter à nouveau une personne opposée à la prospection. Son usage est réservé à la gestion de cette opposition, notamment pour empêcher un nouvel envoi après une réimportation de contacts.', guide: '/posts/commerce-traces-donnees-apres-fin-contrat/' },
       { sigle: 'Profilage', nom: 'Évaluation automatisée de caractéristiques personnelles', def: 'Traitement automatisé de données personnelles visant à évaluer certains aspects d’une personne, par exemple ses intérêts, son comportement ou ses déplacements. Un profil peut reposer sur des déductions et contenir des erreurs. Le profilage ne suppose pas nécessairement une décision entièrement automatisée ; une statistique collective qui ne sert pas à évaluer une personne ne suffit pas à le caractériser.', guide: '/posts/commerce-traces-fabrication-profils-donnees-personnelles/' },
       { sigle: 'Segment d’audience', nom: 'Sélection d’identifiants selon un critère', def: 'Ensemble d’identifiants sélectionnés selon une règle, par exemple une visite observée, une caractéristique déclarée ou un intérêt inféré par un modèle. Le libellé du segment ne prouve ni la présence réelle de cette caractéristique chez chaque personne ni le droit de réutiliser les données pour tout usage.', guide: '/posts/commerce-traces-fabrication-profils-donnees-personnelles/' },
       { sigle: 'SDK', nom: 'Kit de développement logiciel', def: 'Ensemble d’outils et de composants qu’un développeur peut intégrer à une application pour ajouter des fonctions, par exemple une carte ou un affichage publicitaire. Un SDK peut accéder aux ressources autorisées à l’application selon sa configuration. Sa présence ne prouve à elle seule ni une collecte effective ni une vente de données.', guide: '/posts/commerce-traces-economie-collecte-donnees-personnelles/' },
@@ -622,7 +623,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-18';
+export const glossaryUpdatedIso = '2026-09-19';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -865,6 +866,11 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'liste-repoussoir': {
+    articles: [{ label: 'Données personnelles : ce qui reste après la fin du contrat', href: '/posts/commerce-traces-donnees-apres-fin-contrat/', kind: 'article' }],
+    sources: [{ label: 'CNIL, respecter les oppositions avec une liste repoussoir', href: 'https://www.cnil.fr/fr/comment-utiliser-une-liste-repoussoir-pour-respecter-lopposition-la-prospection-commerciale', kind: 'source' }],
+    related: ['profilage'],
+  },
   profilage: {
     articles: [{ label: 'Comment nos traces deviennent des profils à vendre', href: '/posts/commerce-traces-fabrication-profils-donnees-personnelles/', kind: 'article' }],
     sources: [{ label: 'CNIL, profilage et décision entièrement automatisée', href: 'https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee', kind: 'source' }],

@@ -1,0 +1,151 @@
+---
+title: "Personal data: what remains after the contract ends"
+seoTitle: "Personal data after the contract ends | l0g"
+ogTitle: "The trade in our traces (5/6): copies after the contract ends"
+description: "Deezer and Mobius, cloud backups, LiveRamp audiences: an investigation into personal-data copies and the work of deleting them after a contract ends."
+tags: ["personal data", "data brokers", "CNIL", "FTC", "Mobius", "LiveRamp", "deletion", "investigation"]
+pubDate: "2026-09-19T09:11:41Z"
+draft: false
+ogImage: "/illustrations/news/commerce-traces-05-v1.jpg"
+sourceArticle: "commerce-traces-donnees-apres-fin-contrat"
+sourceUpdatedDate: "2026-09-19T09:11:41Z"
+---
+
+import CommerceTracesExitFigure from "../../components/CommerceTracesExitFigure.astro";
+
+*The trade in our traces · Part five of a six-part investigation.*
+
+**A contract ends, but the data may already have several lives: a test file, a backup, an advertising audience, a derived product. Removing it means finding those copies and coordinating the organisations holding them. Through Deezer and Mobius, LiveRamp and US orders targeting data brokers, this instalment explores the work that begins after the final invoice.**
+
+The contract between Deezer and Mobius Solutions ended on **1 December 2020**. The copy described in the French data protection authority’s decision remained with the provider until **1 October 2023**, the deletion date it reported. **Thirty-four months** separate those dates. In the meantime, Deezer had notified the CNIL of a data breach on 10 November 2022. [S01](#source-1)
+
+Article 6.1.5 of the contract required deletion on termination. Mobius said it had erased the data its management knew about. The remaining copy was in a non-production environment, separate from the systems running the live service. [S01](#source-1)
+
+After [buyers and their contracts](/en/analysis/personal-data-buyers-contracts/), the investigation follows the exit from the relationship. The cases cover processing services, hosting, audience distribution and sales to third parties. Each has its own obligations and technical arrangements. They share a practical question: **who takes care of the copies when the commercial relationship ends?**
+
+## The test copy outlived the service
+
+On 11 December 2025, the CNIL fined Mobius Solutions, which markets the Optimove platform, €1 million. Its announcement on 19 December referred to data relating to **more than 46 million Deezer users**, retained after the contract ended. The regulator also found reuse outside the client’s instructions and a failure to keep the required records of processing activities as a processor. [S02](#source-2)
+
+According to the defence recorded in the decision, three employees made the copy without informing management. The CNIL found that it had been created in 2019, stored in an environment belonging to Mobius and used in the course of its business. It served improvements both to the service supplied to Deezer and to Mobius’s own platform. The company remained responsible for that processing. [S01](#source-1)
+
+The benefit sought here was service development. The decision addresses that reuse and makes no finding of a sale to a data broker. This use belongs in an investigation of the economics of personal data: material entrusted for an assignment can also become a resource for the provider’s development work. CNIL guidance requires prior written authorisation and an assessment of compatibility with the original processing when a processor wants to reuse data for its own purposes. The provider then becomes the controller of that new processing. [S18](#source-18)
+
+The Mobius case also exposes a gap in the inventory. A departure procedure focused on live databases can leave test environments out of scope. Before measuring how long deletion takes, the client needs to know which systems the process actually reaches.
+
+<CommerceTracesExitFigure lang="en" figure={1} />
+
+## The agreement ends; obligations remain
+
+The GDPR distinguishes the **controller**, which decides the purposes and essential means of processing, from the **processor**, which acts on its behalf. At the end of the service, Article 28 provides for deletion or return of the data, at the controller’s choice, and deletion of existing copies unless Union or Member State law requires retention. It also covers obligations passed down to subprocessors and rights to information and audits. [S03](#source-3)
+
+Some records may remain necessary for a legal obligation or a dispute. The CNIL distinguishes **intermediate archiving**, with restricted access and a justified purpose, from active business use. A file retained for litigation should be separated from the data available to commercial teams. [S19](#source-19)
+
+The European Commission’s standard contractual clauses, adopted in June 2021, put this exit process into a contractual template. Clause 10(d) provides for certification of deletion, or return accompanied by deletion of copies. The clauses continue to apply until the data is deleted or returned. For parties using this model, closing the account leaves further work to complete. [S04](#source-4)
+
+An independent buyer is in a different legal relationship. A licence may address the survival of certain uses or products after its term, while personal-data processing still needs its own lawful basis. Individual erasure requests and notification to recipients are addressed in particular by GDPR Articles 17 and 19, subject to their conditions and exceptions. Closing an app account therefore calls for tracing recipients, their roles and the information they retain. [S03](#source-3)
+
+## Backups follow their own timetable
+
+Amazon S3 documentation describes a concrete distinction. With versioning enabled, a simple delete request without a version identifier adds a **delete marker**. An ordinary read can then return “not found” while earlier versions remain in storage. Removing them requires operations or lifecycle rules that also cover those versions. This functionality supports data recovery. [S06](#source-6)
+
+Checking deletion in that configuration therefore means examining the version history as well as the current object. This technical example concerns S3; the material reviewed does not detail Mobius’s storage architecture.
+
+Google Cloud describes staged deletion across active systems and backups. It can combine overwriting with removal of the keys needed to decrypt the data, known as **cryptographic erasure**. Backup snapshots follow their own retirement cycle. [S08](#source-8)
+
+The Google Cloud terms reviewed on 19 September 2026 set out a contractual timetable. At the end of the agreement, section 6.2 provides for a recovery period of up to **30 days**, followed by deletion as soon as reasonably practicable and within a maximum of **180 days**. Section 6.3 defers the trigger for data also covered by another agreement that is still running. These commitments include legal exceptions and product-specific variations; they are the supplier’s own terms. [S07](#source-7)
+
+Restoration adds a complication. An old backup may contain a profile removed after the snapshot was created. Bringing that backup into service requires applying the intervening deletions, or the profile can return to the live database.
+
+## Disconnecting a feed can stop audience removals
+
+LiveRamp’s *Record Sync* sends membership removals to compatible destinations when an audience changes. But **removing a segment from the distribution account stops its refreshes and deletion jobs at the destination**. The documentation describes two ways to address data already sent: distribute the segment with an empty membership list to trigger removals, or work directly with the receiving platform to remove the segment completely. [S09](#source-9)
+
+Without Record Sync, most distributions described by LiveRamp work by adding users. An identifier missing from an update then remains until the destination’s expiry window is reached. This validity period, the **time to live**, or TTL, applies to the identifier within that mechanism. Some destinations or identifier types have no automatic expiry. For existing distributions, the full benefits of Record Sync can also depend on stale identifiers expiring. [S09](#source-9) [S10](#source-10)
+
+The order of operations matters when closing a connection: membership removals need to be delivered before the channel carrying them is disabled. This follows from LiveRamp’s published functionality; we have not audited its clients’ campaigns.
+
+Individual rights requests follow a separate process. LiveRamp describes deletion within the relevant client’s databases, recording opt-outs and making requests available to active destinations. It also says that it cannot apply a buyer’s opt-outs to third-party segments already inside destination platforms, and recommends applying a suppression file before distribution. Scope therefore depends on the client, the type of request and the destination. [S11](#source-11)
+
+## Remove the copy, prevent the reimport
+
+Consider a **fictional example**: a profile appears in a live database, a test copy, an export and a backup. Deleting it only from the live database leaves the other three occurrences in place. If the backup is later restored unchanged, the profile returns to the service.
+
+Closing this example requires several operations: removing the profile from working copies, dealing with the export, governing backup retention and filtering any restore. The diagram below maps these steps. It is a teaching example constructed to explain the mechanism.
+
+<CommerceTracesExitFigure lang="en" figure={2} />
+
+A minimal record may remain useful to prevent reimport. In guidance published on 10 June 2026, the CNIL explains this principle for [**suppression lists**](/en/glossary/liste-repoussoir/) used to respect objections to direct marketing. They should keep only the information needed for that purpose. An exclusion key and a full commercial history serve very different functions. [S12](#source-12)
+
+## Derived products need an exit plan too
+
+A [profile built from personal traces](/en/analysis/personal-data-traces-to-saleable-profiles/) may become an audience, an identity mapping, a statistic or a model. Each object needs an exit rule. A profile still linkable to a person remains personal data. Genuinely anonymous statistics have a different status. CNIL guidance distinguishes anonymisation from pseudonymisation, which allows attribution using additional information. [S17](#source-17)
+
+There is an economic consequence. Where a provider can lawfully keep an anonymous result after removing the inputs, some of the value created survives. A corrective measure covering derived products can instead require the rebuilding of service capabilities.
+
+The Avast order made final in June 2024 requires deletion of Jumpshot data **and models, algorithms and software developed by Jumpshot from that data**. It includes retention exceptions, notably for legal obligations, which must be detailed to the Federal Trade Commission, the US consumer-protection agency. This remedy’s scope is specific to the case. [S13](#source-13) [S15](#source-15)
+
+Avast says it closed Jumpshot in January 2020 and disputes the FTC’s characterisation of the facts. The agreement contains no general admission of the allegations. In its FAQ, the company also says it instructed Jumpshot customers to delete the data they acquired. [S14](#source-14) [S13](#source-13)
+
+The detail of an exit clause therefore matters: does it cover only files received, or also the audiences and outputs made from them? Contractual ownership of a deliverable and permission to process the personal data it contains remain separate questions.
+
+## Avast must delete its holdings and contact recipients
+
+Section III of the Avast order sets **twenty days from its effective date** to delete the covered data and derived products held by the respondents. It requires a statement to the FTC under penalty of perjury. Within the same period, the companies must send destruction instructions to third parties that received browsing information. Those instructions cover the information, specified derivatives and analysis software. The companies must certify that they sent the instructions and submit correspondence to the regulator. [S13](#source-13)
+
+The distinction is operational: the seller acts directly on its own systems, then calls on recipients to act on theirs. Following up on replies becomes a task in its own right.
+
+The Gravy Analytics–Venntel order, finalised on **14 January 2025**, sets out that follow-up in section VIII. It offers an alternative to identifying recipients: let consumers request deletion from recipients’ commercial databases, pass on those requests, demand written confirmation and give consumers the instructions sent along with deletion confirmations received, where available, no later than **90 days after their request**. [S16](#source-16) [S20](#source-20)
+
+Section XIII also covers historical location data and derived products. It permits retention under specified conditions, including obtaining the required consent records or transforming the data under the order’s criteria to deidentify it or render it non-sensitive. The deadlines, covered objects and conditions need to be read together. [S16](#source-16)
+
+<CommerceTracesExitFigure lang="en" figure={3} />
+
+The public documents reviewed describe these obligations and company statements. Complete follow-up on deletion by former Jumpshot buyers and Gravy recipients remains outside the accessible record; some compliance exchanges may be submitted to the regulator without publication.
+
+## Know the recipients before closing the account
+
+Several layers of subprocessors can operate behind a supplier. In Opinion 22/2024, adopted on 7 October 2024, the European Data Protection Board says that the identity of all those organisations should be readily available to the controller and kept up to date. This inventory requirement applies regardless of the level of risk. [S05](#source-5)
+
+The extent of verification adapts to the circumstances. The same opinion leaves the controller to assess, case by case, whether it needs to obtain and review subprocessing contracts. The European standard clauses also provide for information and audits. [S05](#source-5) [S04](#source-4)
+
+A useful exit report can connect the destination inventory, completed operations and open exceptions: active databases purged, export removed, backup protected until a specified date, a recipient’s reply still outstanding. Logs and a restore test can help examine that scope. This proposed approach needs to fit the service and its risks, with clandestine copies and previously exfiltrated files beyond its reach.
+
+## The service price should include the exit
+
+Service revenue may end on a readily identifiable date. Closure work can continue: mapping copies, identifying derivatives, forwarding removals, tracking replies and retiring backups. These operations require staff and technical capacity after the last invoice.
+
+That creates an asymmetry: retention may preserve future usefulness for the holder, while deletion requires immediate effort and removes that option. This is an economic reading of the mechanism; the documents reviewed do not provide comparable estimates of its full costs.
+
+A contract should therefore specify at the outset who funds and carries out the exit, which environments it covers and how exceptions expire. The client is also buying the ability to unwind the relationship. **A service with a clear entry price benefits from an equally clear exit scope.**
+
+---
+
+### Sources and method
+
+Research cut-off: **19 September 2026**. Regulatory decisions, company statements and product documentation are identified separately. The private Deezer–Mobius agreement is described through the CNIL decision. Searches conducted did not identify a public decision changing that sanction; the status of any appeal remains unconfirmed. No requests for comment were sent.
+
+The second diagram is a fictional example of how a profile is copied and removed. The other figures present the Mobius chronology and requirements in the US orders. Mobius’s reported deletion concerns its own copy; the fate of any exfiltrated copies falls outside that scope.
+
+<ol class="sources">
+<li id="source-1"><span class="source-id">S01</span> · <a href="https://www.legifrance.gouv.fr/cnil/id/CNILTEXT000053048614">CNIL decision SAN-2025-014 concerning Mobius Solutions</a><span class="source-meta">CNIL / Légifrance · administrative decision following adversarial proceedings. Adopted / decided: 2025-12-11 · Published: 2025-12-19 · Accessed 2026-09-19. Paragraphs 5–8, 54–67, 72–77, 82–84 and operative provisions.</span></li>
+<li id="source-2"><span class="source-id">S02</span> · <a href="https://www.cnil.fr/fr/violation-de-donnees-sanction-dun-million-deuros-lencontre-de-la-societe-mobius-solutions-ltd">CNIL announces €1 million Mobius Solutions fine</a><span class="source-meta">CNIL · regulator press release. Adopted / decided: 2025-12-11 · Published: 2025-12-19 · Accessed 2026-09-19. Date and sections on retention, reuse and records of processing.</span></li>
+<li id="source-3"><span class="source-id">S03</span> · <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng">Regulation (EU) 2016/679: GDPR</a><span class="source-meta">European Union / EUR-Lex · legislation. Adopted / decided: 2016-04-27 · Published: 2016-05-04 · Accessed 2026-09-19. Articles 4, 5, 17, 19, 28 and 29.</span></li>
+<li id="source-4"><span class="source-id">S04</span> · <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32021D0915">Decision (EU) 2021/915: controller–processor standard clauses</a><span class="source-meta">European Commission / EUR-Lex · official standard contractual clauses. Adopted / decided: 2021-06-04 · Published: 2021-06-07 · Accessed 2026-09-19. Annex, clauses 7.6, 7.7 and 10(d).</span></li>
+<li id="source-5"><span class="source-id">S05</span> · <a href="https://www.edpb.europa.eu/system/files/2024-10/edpb_opinion_202422_relianceonprocessors-sub-processors_en.pdf">EDPB Opinion 22/2024 on reliance on processors and subprocessors</a><span class="source-meta">European Data Protection Board · institutional opinion. Adopted / decided: 2024-10-07 · Accessed 2026-09-19. Paragraphs 31–32, 52 and 65–71; executive summary.</span></li>
+<li id="source-6"><span class="source-id">S06</span> · <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeletingObjectVersions.html">Deleting object versions from a versioning-enabled bucket</a><span class="source-meta">Amazon Web Services · supplier technical documentation. Accessed 2026-09-19. Simple deletion without versionId; delete markers; noncurrent versions.</span></li>
+<li id="source-7"><span class="source-id">S07</span> · <a href="https://cloud.google.com/terms/data-processing-addendum">Cloud Data Processing Addendum</a><span class="source-meta">Google Cloud · public contractual terms. Accessed 2026-09-19. Sections 6.1–6.3; product-specific variations in Appendix 4.</span></li>
+<li id="source-8"><span class="source-id">S08</span> · <a href="https://docs.cloud.google.com/docs/security/deletion">Data deletion on Google Cloud</a><span class="source-meta">Google Cloud · supplier technical documentation. Accessed 2026-09-19. Deletion stages; live systems and backups; overwriting and cryptographic erasure.</span></li>
+<li id="source-9"><span class="source-id">S09</span> · <a href="https://docs.liveramp.com/connect/en/keep-destination-data-fresh-with-record-sync.html">Keep Destination Data Fresh with Record Sync</a><span class="source-meta">LiveRamp · supplier product documentation. Accessed 2026-09-19. How Record Sync Works; note after the TTL table; removing a segment.</span></li>
+<li id="source-10"><span class="source-id">S10</span> · <a href="https://docs.liveramp.com/connect/en/how-liveramp-refreshes-distributed-data.html">How LiveRamp Refreshes Distributed Data</a><span class="source-meta">LiveRamp · supplier product documentation. Accessed 2026-09-19. Standard distributions, removals and destination expiration.</span></li>
+<li id="source-11"><span class="source-id">S11</span> · <a href="https://docs.liveramp.com/connect/en/consumer-requests-for-opt-outs,-data-access,-or-data-deletions.html">Sending Data Subject Rights Requests</a><span class="source-meta">LiveRamp · supplier product documentation. Accessed 2026-09-19. Request scope; restrictions on third-party segments and customer accounts.</span></li>
+<li id="source-12"><span class="source-id">S12</span> · <a href="https://www.cnil.fr/fr/comment-utiliser-une-liste-repoussoir-pour-respecter-lopposition-la-prospection-commerciale">CNIL guidance on suppression lists for direct-marketing objections</a><span class="source-meta">CNIL · institutional guidance. Published: 2026-06-10 · Accessed 2026-09-19. Necessary information only; exclusive purpose of respecting objections.</span></li>
+<li id="source-13"><span class="source-id">S13</span> · <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/202_3033_-_avast_final_consent_package.pdf">Avast complaint and final decision and order</a><span class="source-meta">Federal Trade Commission · complaint and consent order. Published: 2024-06-26 · Accessed 2026-09-19. Order III.A–B, printed pages 6–7 (PDF pages 18–19); preamble.</span></li>
+<li id="source-14"><span class="source-id">S14</span> · <a href="https://support.avast.com/en-gb/article/jumpshot-settlement-faqs">Jumpshot settlement FAQs</a><span class="source-meta">Avast · company response. Accessed 2026-09-19. Closure of Jumpshot and disagreement with the allegations.</span></li>
+<li id="source-15"><span class="source-id">S15</span> · <a href="https://www.ftc.gov/legal-library/browse/cases-proceedings/2023033-avast">FTC Avast case docket</a><span class="source-meta">Federal Trade Commission · official docket. Accessed 2026-09-19. Timeline entry for the June 2024 final order.</span></li>
+<li id="source-16"><span class="source-id">S16</span> · <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/212_3035_-_gravy_analytics_final_consent_package_without_signatures.pdf">Gravy Analytics–Venntel final consent package</a><span class="source-meta">Federal Trade Commission · complaint and consent order. Published: 2025-01-14 · Accessed 2026-09-19. Order VIII, printed pages 9–10 (PDF pages 23–24); XIII, printed pages 11–12 (PDF pages 25–26).</span></li>
+<li id="source-17"><span class="source-id">S17</span> · <a href="https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles">CNIL guidance on anonymisation</a><span class="source-meta">CNIL · institutional guidance. Published: 2020-05-19 · Accessed 2026-09-19. Distinction between anonymisation and pseudonymisation.</span></li>
+<li id="source-18"><span class="source-id">S18</span> · <a href="https://www.cnil.fr/fr/sous-traitants-la-reutilisation-de-donnees-confiees-par-un-responsable-de-traitement">CNIL guidance on processors reusing entrusted data</a><span class="source-meta">CNIL · institutional guidance. Published: 2022-01-11 · Accessed 2026-09-19. Prior written authorisation, purpose, compatibility and own obligations.</span></li>
+<li id="source-19"><span class="source-id">S19</span> · <a href="https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees">CNIL guidance on retention periods</a><span class="source-meta">CNIL · institutional guidance. Published: 2026-04-02 · Accessed 2026-09-19. Active database and intermediate archiving; purposes and access controls.</span></li>
+<li id="source-20"><span class="source-id">S20</span> · <a href="https://www.ftc.gov/legal-library/browse/cases-proceedings/212-3035-gravy-analytics-inc-matter">FTC Gravy Analytics case docket</a><span class="source-meta">Federal Trade Commission · official docket. Accessed 2026-09-19. Complaint of 3 December 2024; final order of 14 January 2025.</span></li>
+</ol>

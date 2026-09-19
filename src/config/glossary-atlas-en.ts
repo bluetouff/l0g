@@ -203,6 +203,16 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'liste-repoussoir', sigle: 'Suppression list', nom: 'Exclusion list for marketing objections', sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)',
+    def: 'A file retaining only the information needed to avoid contacting someone who has objected to direct marketing. Its use is limited to respecting that objection, including preventing renewed contact after a list is imported again.',
+    guide: '/en/analysis/personal-data-after-the-contract-ends/',
+    atlas: {
+      articles: [{ label: 'Personal data: what remains after the contract ends', href: '/en/analysis/personal-data-after-the-contract-ends/', kind: 'article' }],
+      sources: [{ label: 'CNIL, suppression lists for direct-marketing objections', href: 'https://www.cnil.fr/fr/comment-utiliser-une-liste-repoussoir-pour-respecter-lopposition-la-prospection-commerciale', kind: 'source' }],
+      related: ['profilage'],
+    },
+  },
+  {
     slug: 'profilage', sigle: 'Profiling', nom: 'Automated evaluation of personal characteristics', sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)',
     def: 'Automated processing of personal data to evaluate aspects of a person, such as interests, behaviour or movements. A profile may rely on inferences and contain errors. Profiling does not necessarily lead to a fully automated decision; aggregate statistics that do not evaluate individuals are not sufficient to establish profiling.',
     guide: '/en/analysis/personal-data-traces-to-saleable-profiles/',
