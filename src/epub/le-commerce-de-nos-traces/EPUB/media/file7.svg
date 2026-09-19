@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 464" style="width:100%;height:auto" role="img" aria-labelledby="traces03-fr-fabrication-title traces03-fr-fabrication-desc" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="480" height="464" fill="#0b0d10"/>
+<title id="traces03-fr-fabrication-title">Du signal au produit</title>
+<desc id="traces03-fr-fabrication-desc">Schéma pédagogique de quatre étapes : signal enregistré, visite attribuée, intérêt inféré, sélection distribuable. Une expansion par ressemblance peut ajouter des identifiants sans visite observée. Les entreprises citées dans les sources ne sont pas représentées comme une chaîne commerciale unique.</desc>
+<rect x="0" y="0" width="480" height="464" fill="#0c0e10"/>
+<text x="20" y="32" font-size="24" fill="#f0f4fa" font-weight="500" text-anchor="start">Du signal au produit</text>
+<text x="20" y="62" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Reconstruction pédagogique</text>
+<text x="62" y="110" font-size="21" fill="#72e5df" font-weight="500" text-anchor="start">01 · SIGNAL</text>
+<text x="62" y="139" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Identifiant, lieu, heure</text>
+<line x1="32" y1="105" x2="32" y2="169" stroke="#b8c8db" stroke-width="1.5" stroke-dasharray="4 4"/><polyline points="28,163 32,169 36,163" fill="none" stroke="#b8c8db" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="62" y="186" font-size="21" fill="#72e5df" font-weight="500" text-anchor="start">02 · VISITE ATTRIBUÉE</text>
+<text x="62" y="215" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Un arrêt associé à un lieu</text>
+<line x1="32" y1="181" x2="32" y2="245" stroke="#b8c8db" stroke-width="1.5" stroke-dasharray="4 4"/><polyline points="28,239 32,245 36,239" fill="none" stroke="#b8c8db" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="62" y="262" font-size="21" fill="#f2c875" font-weight="500" text-anchor="start">03 · INTÉRÊT INFÉRÉ</text>
+<text x="62" y="291" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Une règle ou un modèle</text>
+<line x1="32" y1="257" x2="32" y2="321" stroke="#b8c8db" stroke-width="1.5" stroke-dasharray="4 4"/><polyline points="28,315 32,321 36,315" fill="none" stroke="#b8c8db" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="62" y="338" font-size="21" fill="#f2c875" font-weight="500" text-anchor="start">04 · AUDIENCE</text>
+<text x="62" y="367" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Sélection, droits et prix</text>
+<line x1="20" y1="388" x2="460" y2="388" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="419" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Extension par ressemblance :</text>
+<text x="20" y="450" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">sans visite nécessairement observée</text>
+</svg>

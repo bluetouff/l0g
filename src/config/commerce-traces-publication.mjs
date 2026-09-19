@@ -1,0 +1,45 @@
+export const commerceTracesBook = {
+  lang: 'fr', locale: 'fr-FR', date: '2026-09-19', modified: '2026-09-19T14:20:00Z',
+  id: 'urn:uuid:780a986f-3bd0-4c27-8b95-e61fb1dc9872',
+  directory: 'le-commerce-de-nos-traces',
+  title: 'Le commerce de nos traces',
+  subtitle: 'Dans les circuits des données personnelles',
+  description: 'Six analyses sur le commerce des données personnelles, réunies dans un EPUB gratuit avec 18 infographies, une introduction et une conclusion originales.',
+  path: '/publications/le-commerce-de-nos-traces/',
+  epub: '/publications/le-commerce-de-nos-traces-l0g.epub',
+  cover: '/publications/le-commerce-de-nos-traces-cover.jpg',
+  social: '/publications/le-commerce-de-nos-traces-cover-social.jpg',
+  panorama: '/publications/le-commerce-de-nos-traces-panorama.jpg',
+  figureCount: 18,
+  introductionTitle: 'Une seconde vie dans les fichiers',
+  introduction: [
+    'Nous voyons l’application ouverte sur un téléphone, la page consultée, le service demandé. Le livre commence un peu plus loin : au moment où les informations produites dans cette relation trouvent un autre usage. Une position, un identifiant ou une suite de visites peut rejoindre un fichier, être rapproché d’autres observations et entrer dans une prestation commerciale. Suivre ce parcours demande de changer plusieurs fois de point de vue.',
+    'Le premier chapitre part de la collecte et de sa rémunération. Le suivant examine les intermédiaires qui raccordent des identifiants, préparent des audiences ou rendent une information disponible ailleurs. Le troisième entre dans la fabrication du profil : les règles qui transforment des observations en catégories, les erreurs possibles et les conditions d’utilisation. À chaque étape, une entreprise peut ajouter un service et négocier des droits différents.',
+    'Viennent ensuite les acheteurs. Leur commande peut porter sur une livraison, un accès, une licence ou un travail d’analyse. Le produit acheté définit les opérations possibles, sa durée d’utilisation et parfois sa redistribution. Les contrats étudiés donnent ainsi une consistance précise à une expression très large, « acheter des données ». Ils permettent de distinguer les métiers et les usages, jusque dans des dossiers où plusieurs fournisseurs interviennent.',
+    'La fin du contrat ouvre une autre histoire. Les copies de travail, les sauvegardes et les produits dérivés imposent de suivre les informations dans le temps. Le cinquième chapitre examine cette continuité. Le dernier rejoint les sanctions et les obligations de contrôle : les revenus encore accessibles, les fichiers à traiter, les restrictions à respecter et les coûts d’une suppression suivie dans la durée.',
+    'Cette enquête s’appuie sur des contrats publiés, des comptes d’entreprises, des documents techniques, des marchés publics et des décisions de régulateurs. Chaque dossier garde sa date et son statut. Une accusation est attribuée à son auteur ; une décision, à l’autorité qui l’a rendue ; une déclaration commerciale, à l’entreprise concernée. Les cas se répondent par leurs mécanismes. Ils ne forment pas une chaîne unique reliant toutes les sociétés citées.',
+    'Réunir ces six analyses permet de lire d’un seul mouvement une économie habituellement décrite par fragments. On peut aussi entrer par une question : la rémunération de la collecte, la qualité d’un profil, l’identité d’un acheteur ou le devenir d’une copie. Les dix-huit infographies, les notes et les liens entre chapitres accompagnent cette lecture. Les sources externes restent accessibles avec une connexion. Cette édition reprend les textes publiés du 17 au 19 septembre 2026 et ajoute la présente introduction ainsi qu’une conclusion originale.',
+  ],
+  conclusionTitle: 'Reprendre le fil des usages',
+  conclusion: [
+    'Au fil de ces six chapitres, la donnée personnelle a changé plusieurs fois de fonction. Elle a servi de matière première, de point de raccordement, de critère de sélection, de contenu livré et de mémoire conservée. Le mot « donnée » reste le même ; les opérations, les contrats et les personnes qui peuvent agir sur elle changent. Cette succession explique l’intérêt de suivre les usages jusque dans leurs détails.',
+    'Un fichier prend une valeur commerciale dans un contexte. L’acheteur recherche une couverture, une fraîcheur, une profondeur historique ou la possibilité de rapprocher des identifiants. Le contrat fixe une partie de ces capacités. La qualité de la sélection intervient aussi : une catégorie vendue doit être interrogée sur sa construction, sa population et ses erreurs. Le prix payé renseigne sur une transaction déterminée. Il ne donne pas une valeur universelle à une personne.',
+    'La circulation ajoute une dimension temporelle. Une copie peut rester disponible après le départ d’un client ; un produit dérivé peut dépendre d’informations recueillies auparavant. C’est pourquoi la lecture d’un contrat gagne à inclure sa sortie dès le départ : destinataires, durées, restitutions, suppressions et traitement des sauvegardes. Les chapitres consacrés à la fin de la relation et aux règles montrent les opérations nécessaires pour suivre ces engagements.',
+    'Les décisions étudiées touchent elles aussi plusieurs endroits de cette économie. Un paiement, une restriction d’usage, le traitement d’un historique et des évaluations périodiques ont des effets différents. Leur bilan demande de conserver leurs calendriers et leurs populations. Dans le cas de DROP, par exemple, compter les personnes ayant obtenu au moins une suppression et compter les courtiers ayant déclaré traiter des demandes répond à deux questions distinctes.',
+    'Pour prolonger cette lecture, une méthode reste à portée : nommer l’acteur, identifier le produit ou l’accès, retrouver les droits accordés, puis suivre les destinataires et les échéances. Les documents manquants délimitent l’examen. Une relation commerciale publiée autorise une description précise de son périmètre ; les résultats d’une campagne, l’efficacité d’un score ou l’exécution d’un retrait demandent leurs propres observations.',
+    'Le commerce de nos traces devient ainsi plus lisible. Derrière les promesses de connaissance apparaissent des opérations et des responsabilités qui peuvent être décrites, discutées et contrôlées. L’enjeu est aussi personnel : comprendre la durée et les usages d’informations que nous avons parfois cessé de voir. Les six analyses offrent des points d’entrée pour poursuivre ce travail, dossier après dossier.',
+  ],
+};
+
+export const commerceTracesChapters = [
+  ['commerce-traces-economie-collecte-donnees-personnelles', 'L’économie de la collecte', 'Applications, accès aux données et rémunérations.', 'CommerceTracesFigure', 'Un téléphone relié à trois ensembles de plaques de verre figurant différents usages des données.'],
+  ['commerce-traces-chaine-intermediaires-donnees-personnelles', 'La chaîne des intermédiaires', 'Raccordements, fournisseurs et contrats de service.', 'CommerceTracesChainFigure', 'Des identifiants traversent des plaques de verre, à côté de connexions et de fichiers rangés.'],
+  ['commerce-traces-fabrication-profils-donnees-personnelles', 'La fabrication des profils', 'Des observations aux segments proposés à la vente.', 'CommerceTracesProfileFigure', 'Des fragments de verre triés dans des cases recomposent des silhouettes de profils.'],
+  ['commerce-traces-acheteurs-donnees-personnelles', 'Les acheteurs et leurs contrats', 'Licences, accès, livraisons et usages prévus.', 'CommerceTracesBuyersFigure', 'Une clé repose devant trois plaques représentant parcours, audiences et fichiers.'],
+  ['commerce-traces-donnees-apres-fin-contrat', 'La vie des copies après le contrat', 'Fichiers de travail, sauvegardes et suppressions.', 'CommerceTracesExitFigure', 'Une plaque de verre se désagrège tandis que ses copies subsistent derrière elle.'],
+  ['commerce-traces-prix-regle-sanctions-donnees-personnelles', 'Le prix des règles', 'Sanctions, restrictions et contrôle dans la durée.', 'CommerceTracesRulesFigure', 'Des voies de cuivre traversent une porte qui laisse passer certaines plaques de verre.'],
+].map(([slug, title, summary, component, imageAlt], index) => ({
+  slug, title, summary, component, imageAlt, number: index + 1,
+  route: `/posts/${slug}/`, chapter: `ch${String(index + 2).padStart(3, '0')}.xhtml`,
+  image: `/illustrations/news/commerce-traces-0${index + 1}-v1.jpg`,
+}));

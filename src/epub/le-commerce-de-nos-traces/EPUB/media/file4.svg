@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440" style="width:100%;height:auto" role="img" aria-labelledby="traces02-fr-perimetre-title traces02-fr-perimetre-desc" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="480" height="440" fill="#0b0d10"/>
+<title id="traces02-fr-perimetre-title">Le périmètre de la transparence publicitaire</title>
+<desc id="traces02-fr-perimetre-desc">Un circuit de paiement simplifié relie une plateforme d’achat, les vendeurs intermédiaires et l’éditeur. Des prestataires payés séparément et d’autres destinataires de données ne sont pas nécessairement recensés par ce seul circuit.</desc>
+<rect x="0" y="0" width="480" height="440" fill="#0c0e10"/>
+<text x="20" y="32" font-size="24" fill="#f0f4fa" font-weight="500" text-anchor="start">La transparence publicitaire</text>
+<text x="20" y="62" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">SupplyChain · version 1.0</text>
+<text x="20" y="106" font-size="21" fill="#72e5df" font-weight="500" text-anchor="start">Paiement de l’espace publicitaire</text>
+<text x="62" y="150" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Plateforme d’achat</text>
+<line x1="32" y1="145" x2="32" y2="180" stroke="#72e5df" stroke-width="1.5"/><polyline points="28,174 32,180 36,174" fill="none" stroke="#72e5df" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="62" y="193" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Vendeurs / intermédiaires</text>
+<line x1="32" y1="188" x2="32" y2="223" stroke="#72e5df" stroke-width="1.5"/><polyline points="28,217 32,223 36,217" fill="none" stroke="#72e5df" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="62" y="236" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Éditeur du site ou de l’app</text>
+<line x1="20" y1="259" x2="460" y2="259" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="294" font-size="22" fill="#f0f4fa" font-weight="500" text-anchor="start">Hors de ce seul périmètre</text>
+<text x="20" y="325" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Prestataires payés séparément</text>
+<text x="20" y="354" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Autres destinataires de données</text>
+<line x1="20" y1="374" x2="460" y2="374" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="407" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Une chaîne de paiement complète</text>
+<text x="20" y="433" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">ne retrace pas toutes les données.</text>
+</svg>

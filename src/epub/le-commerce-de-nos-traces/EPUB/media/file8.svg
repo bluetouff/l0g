@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 454" style="width:100%;height:auto" role="img" aria-labelledby="traces03-fr-calcul-title traces03-fr-calcul-desc" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="480" height="454" fill="#0b0d10"/>
+<title id="traces03-fr-calcul-title">89 % au total, 47,1 % dans la liste</title>
+<desc id="traces03-fr-calcul-desc">Exemple fictif de 1 000 personnes : 100 dans la cible et 900 hors cible. Parmi les personnes sélectionnées : 80 vraies positives et 90 fausses positives. Parmi les personnes écartées : 20 fausses négatives et 810 vraies négatives. 890 classements corrects sur 1 000, mais seulement 80 personnes de la cible parmi les 170 sélectionnées.</desc>
+<rect x="0" y="0" width="480" height="454" fill="#0c0e10"/>
+<text x="20" y="32" font-size="23" fill="#f0f4fa" font-weight="500" text-anchor="start">89 % au total, 47,1 % dans la liste</text>
+<text x="20" y="62" font-size="21" fill="#f2c875" font-weight="400" text-anchor="start">Exemple fictif · 1 000 personnes</text>
+<text x="260" y="108" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="middle">Cible</text>
+<text x="410" y="108" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="middle">Hors cible</text>
+<line x1="20" y1="123" x2="460" y2="123" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="159" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Sélectionnés</text>
+<text x="20" y="187" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">170</text>
+<text x="260" y="159" font-size="25" fill="#72e5df" font-weight="500" text-anchor="middle">80</text>
+<text x="410" y="159" font-size="25" fill="#f2c875" font-weight="500" text-anchor="middle">90</text>
+<text x="260" y="187" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="middle">bien inclus</text>
+<text x="410" y="187" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="middle">à tort</text>
+<line x1="20" y1="204" x2="460" y2="204" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="240" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Écartés</text>
+<text x="20" y="268" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">830</text>
+<text x="260" y="240" font-size="25" fill="#f2c875" font-weight="500" text-anchor="middle">20</text>
+<text x="410" y="240" font-size="25" fill="#72e5df" font-weight="500" text-anchor="middle">810</text>
+<text x="260" y="268" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="middle">manqués</text>
+<text x="410" y="268" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="middle">à raison</text>
+<line x1="20" y1="285" x2="460" y2="285" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="322" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Toute la population</text>
+<text x="460" y="322" font-size="25" fill="#72e5df" font-weight="500" text-anchor="end">89 %</text>
+<text x="20" y="352" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">(80 + 810) / 1 000</text>
+<text x="20" y="397" font-size="21" fill="#f0f4fa" font-weight="400" text-anchor="start">Dans la sélection</text>
+<text x="460" y="397" font-size="25" fill="#f2c875" font-weight="500" text-anchor="end">47,1 %</text>
+<text x="20" y="427" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">80 / (80 + 90)</text>
+</svg>

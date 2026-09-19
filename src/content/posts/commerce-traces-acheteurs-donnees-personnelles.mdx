@@ -1,7 +1,7 @@
 ---
-title: 'Données personnelles : ce que les acheteurs paient vraiment'
+title: 'Données personnelles : les acheteurs et leurs contrats'
 seoTitle: 'Données personnelles : les acheteurs et leurs contrats | l0g'
-ogTitle: 'Le commerce de nos traces (4/6) : ce que les acheteurs paient'
+ogTitle: 'Le commerce de nos traces (4/6) : les acheteurs et leurs contrats'
 description: "GM, Omnicom, Venntel, SafeGraph : contrats et achats publics révèlent qui paie pour nos traces, quels droits sont acquis et quels usages sont documentés."
 pubDate: '2026-09-19T06:23:25Z'
 tags: ["données personnelles", "courtiers en données", "assurance", "publicité", "GM", "LexisNexis", "Venntel", "SafeGraph", "enquête"]
@@ -10,13 +10,15 @@ ogImage: /illustrations/news/commerce-traces-04-v1.jpg
 quickTake:
   fact: 'La plainte californienne décrit deux acheteurs de données GM recevant des fichiers différents : Verisk
     excluait le GPS précis, LexisNexis le recevait sans l’utiliser pour ses notes de conduite.'
-  importance: Le contenu livré, les droits accordés et l’usage réel déterminent des produits différents. Un contrat
-    ou une dépense ne prouve pas à lui seul une conséquence pour une personne.
+  importance: Le contenu livré, les droits accordés et l’usage réel déterminent des produits différents. Les conséquences
+    individuelles demandent un suivi des décisions prises avec ces informations.
   uncertainty: Les contrats privés signés, les factures détaillées et la liste des clients finaux ne sont pas disponibles
     dans les pièces examinées. Les cas historiques ne mesurent pas l’activité actuelle du secteur.
 ---
 
 import CommerceTracesBuyersFigure from "../../components/CommerceTracesBuyersFigure.astro";
+
+<p class="edition-link"><a href="/publications/le-commerce-de-nos-traces/">Les six analyses réunies dans un EPUB gratuit : Le commerce de nos traces.</a></p>
 
 *Le commerce de nos traces · Quatrième volet d’une enquête en six parties.*
 
@@ -24,7 +26,7 @@ import CommerceTracesBuyersFigure from "../../components/CommerceTracesBuyersFig
 
 Deux entreprises achetaient des données de conduite à General Motors. L’une exigeait que la géolocalisation précise soit retirée avant la livraison. L’autre la recevait, y compris la position du véhicule lorsque le contact était coupé. Pourtant, selon la plainte déposée par les autorités californiennes le 8 mai 2026, cette seconde entreprise n’utilisait pas ces coordonnées pour calculer ses notes de conduite. [S01](#source-1)
 
-Les deux acheteurs étaient Verisk et LexisNexis Risk Solutions. Ce détail contractuel est plus instructif qu’une liste de partenaires : **il sépare ce qui peut être vendu, ce qui est livré et ce qui sert effectivement au produit du client.** Le besoin déclaré, évaluer un comportement au volant, ne décrit donc pas à lui seul le contenu du fichier transmis. [S01](#source-1)
+Les deux acheteurs étaient Verisk et LexisNexis Risk Solutions. Ce détail contractuel est plus instructif qu’une liste de partenaires : **il distingue les données commercialisables, le fichier livré et les informations effectivement utilisées dans le produit du client.** Le besoin déclaré, évaluer un comportement au volant, ne décrit donc pas à lui seul le contenu du fichier transmis. [S01](#source-1)
 
 Après avoir suivi [la fabrication des profils](/posts/commerce-traces-fabrication-profils-donnees-personnelles/), cette enquête examine quatre débouchés documentés : l’assurance, la publicité, les enquêtes des autorités et la statistique de santé publique. Les pièces concernent principalement les États-Unis, avec un contrat publicitaire couvrant aussi plusieurs autres pays. Elles ne constituent ni un recensement mondial des acheteurs ni une mesure de leur activité actuelle.
 
@@ -40,7 +42,7 @@ Les observations vendues comprenaient notamment les freinages brusques, les fort
 
 Cette différence empêche de dessiner une flèche unique « GM → assureurs » portant indistinctement tous les champs du fichier. Le premier acheteur pouvait transformer les observations avant de proposer un autre produit au client suivant. **Le produit acheté par l’assureur et les données acquises en amont par son fournisseur n’avaient pas nécessairement le même contenu.**
 
-La logique commerciale est compréhensible : un assureur cherche des informations utiles à son appréciation du risque ; le fournisseur lui évite d’organiser lui-même la collecte auprès du véhicule. Mais cette division du travail ne prouve ni la validité de chaque note, ni sa valeur prédictive, ni la pertinence de tous les champs collectés. Le fait qu’un contrat exige une donnée n’établit pas qu’elle améliore le résultat.
+La logique commerciale est compréhensible : un assureur cherche des informations utiles à son appréciation du risque ; le fournisseur lui évite d’organiser lui-même la collecte auprès du véhicule. Évaluer la qualité de chaque note demande ensuite des tests : pertinence des champs collectés, validité du classement et capacité prédictive. Le contrat décrit les informations requises, tandis que ces évaluations mesurent leur utilité.
 
 <CommerceTracesBuyersFigure lang="fr" figure={1} />
 
@@ -64,7 +66,7 @@ En contrepartie, Omnicom devait recevoir un flux de navigation couvrant la moiti
 
 Le contrat décrit par la FTC autorisait aussi le rapprochement des identifiants Jumpshot avec ceux de Neustar ou de LiveRamp, ainsi que la commercialisation sous licence de produits dérivés auprès des clients d’Omnicom. Le client achetait donc un historique et des possibilités de transformation puis de distribution. Cette latitude contribue à expliquer pourquoi un flux large n’a pas la même valeur qu’un tableau de fréquentation déjà calculé. [S08](#source-8)
 
-La distinction devient concrète pour une agence publicitaire. Un tableau peut indiquer combien de visites un site reçoit. Un parcours associé à un identifiant stable permet d’étudier ce qui précède et suit cette visite. Si le contrat et les règles applicables l’autorisent, le rapprochement avec d’autres identifiants peut ensuite rendre l’analyse utilisable dans un autre environnement. Cette chaîne peut servir à la mesure ou au ciblage ; sa présence dans les droits accordés ne prouve pas qu’une campagne donnée l’a exploitée.
+La distinction devient concrète pour une agence publicitaire. Un tableau peut indiquer combien de visites un site reçoit. Un parcours associé à un identifiant stable permet d’étudier les événements précédant et suivant cette visite. Si le contrat et les règles applicables l’autorisent, le rapprochement avec d’autres identifiants peut ensuite rendre l’analyse utilisable dans un autre environnement. Ces droits ouvrent des possibilités de mesure ou de ciblage. Leur usage dans une campagne se suit dans les documents de cette campagne.
 
 Avast conteste les allégations et affirme ne pas avoir connaissance de tentatives de réidentification individuelle par des acheteurs de Jumpshot. Le règlement final ne vaut pas admission de celles-ci. L’activité Jumpshot a fermé en janvier 2020. **Le dossier documente un accord historique décrit par le régulateur, pas une activité actuelle ni une décision de responsabilité contre Omnicom.** Il ne permet pas davantage de nommer les annonceurs qui auraient reçu les produits dérivés. [S09](#source-9) [S10](#source-10)
 
@@ -72,19 +74,19 @@ Avast conteste les allégations et affirme ne pas avoir connaissance de tentativ
 
 Les acheteurs publics laissent d’autres traces : commandes, nomenclatures de logiciels et cahiers des charges. Ces documents peuvent révéler le produit sans faire apparaître son éditeur comme bénéficiaire direct de l’argent public.
 
-La commande américaine **70B04C20F00000914**, enregistrée dans USAspending, attribue **475 944,49 dollars d’engagements** à Govplace pour du logiciel Venntel. Sa période de prestation va du 25 septembre 2020 au 14 septembre 2021. La fiche désigne le titulaire auprès duquel l’administration s’engage ; elle ne détaille pas ce que ce titulaire devait reverser à Venntel. Le montant engagé n’est donc pas le chiffre d’affaires net du fournisseur de données, et la fiche d’attribution ne remplace pas les preuves de décaissement. [S12](#source-12)
+La commande américaine **70B04C20F00000914**, enregistrée dans USAspending, attribue **475 944,49 dollars d’engagements** à Govplace pour du logiciel Venntel. Sa période de prestation va du 25 septembre 2020 au 14 septembre 2021. La fiche désigne le titulaire auprès duquel l’administration s’engage ; la part à reverser à Venntel reste hors de son détail. L’engagement, le chiffre d’affaires net du fournisseur et les décaissements correspondent à des données comptables distinctes. [S12](#source-12)
 
-Un dossier antérieur de Customs and Border Protection, l’administration américaine des douanes et de la protection des frontières, montre ce qui se trouvait derrière le nom du logiciel. La commande **70B04C19F00000802**, diffusée sous forme expurgée après une demande d’accès aux documents administratifs, contient un cahier des charges pour le National Targeting Center et une direction de ses systèmes d’analyse. La partie Venntel prévoit **un accès par portail à une base mondiale de localisation mobile**, une assistance et deux heures de formation par licence. La prestation couvre le 27 septembre 2019 au 25 septembre 2020. [S11](#source-11)
+Un dossier antérieur de Customs and Border Protection, l’administration américaine des douanes et de la protection des frontières, détaille les prestations associées au logiciel. La commande **70B04C19F00000802**, diffusée sous forme expurgée après une demande d’accès aux documents administratifs, contient un cahier des charges pour le National Targeting Center et une direction de ses systèmes d’analyse. La partie Venntel prévoit **un accès par portail à une base mondiale de localisation mobile**, une assistance et deux heures de formation par licence. La prestation couvre le 27 septembre 2019 au 25 septembre 2020. [S11](#source-11)
 
 Le portail est ici le produit opérationnel acheté. L’administration n’a pas à recevoir une copie complète de la base pour pouvoir en interroger l’historique. Elle achète la faculté d’y chercher des informations, dans le périmètre de ses accès, puis d’exploiter les résultats autorisés. Un contrat de logiciel peut ainsi financer l’accès à des données détenues ailleurs.
 
 Le même dossier affiche un total financé de **1 068 317,18 dollars**. Mais plusieurs lignes de la nomenclature sont occultées, à côté de celles mentionnant Venntel. Attribuer tout ce montant à la seule donnée Venntel supposerait une ventilation que la version publique ne fournit pas. Les prix unitaires et les quantités ne sont pas suffisamment visibles pour calculer un coût par poste ou par personne. [S11](#source-11)
 
-Ces occultations n’effacent pas la preuve de l’accès prévu. Elles en limitent la précision financière. La distinction compte particulièrement lorsqu’un article additionne des marchés de logiciels pour annoncer combien une administration aurait consacré à « acheter les déplacements » de la population : les contrats peuvent inclure d’autres outils, du support et des services.
+L’accès prévu figure dans le cahier des charges. Les occultations empêchent d’en isoler le prix. La distinction compte particulièrement lorsqu’un article additionne des marchés de logiciels pour annoncer combien une administration aurait consacré à « acheter les déplacements » de la population : les contrats peuvent inclure d’autres outils, du support et des services.
 
-## Les journaux prouvent des requêtes, pas leur résultat
+## Les journaux enregistrent les requêtes
 
-Un contrat renseigne sur ce qui était disponible. Un journal d’utilisation permet d’aller plus loin. Dans son rapport signé le **28 septembre 2023**, l’inspection générale du Department of Homeland Security examine l’usage de données commerciales de localisation pendant les exercices fédéraux 2019 et 2020. Elle relève plus de **55 000 requêtes pour CBP** sur ces deux exercices et plus de **16 000 pour ICE**, l’administration chargée de l’immigration et des douanes, sur le seul exercice 2020. [S14](#source-14)
+Un contrat décrit les services disponibles. Un journal d’utilisation permet d’aller plus loin. Dans son rapport signé le **28 septembre 2023**, l’inspection générale du Department of Homeland Security examine l’usage de données commerciales de localisation pendant les exercices fédéraux 2019 et 2020. Elle relève plus de **55 000 requêtes pour CBP** sur ces deux exercices et plus de **16 000 pour ICE**, l’administration chargée de l’immigration et des douanes, sur le seul exercice 2020. [S14](#source-14)
 
 Les notes du rapport délimitent ces chiffres. Chaque décompte provient des journaux d’un fournisseur ; ils ne couvrent pas l’ensemble des accès concernés. Des recherches répétées peuvent être comptées plusieurs fois, tandis qu’une seule requête peut porter sur plusieurs lieux ou identifiants. **Ce ne sont ni des nombres de personnes surveillées, ni des nombres d’enquêtes, ni des mesures de résultats.** Ils ne peuvent pas non plus être affectés automatiquement aux deux commandes Venntel citées plus haut. [S14](#source-14)
 
@@ -104,7 +106,7 @@ La section C du cahier des charges distingue les produits. *Core Places* décrit
 
 Le document précise que l’agence utilisait auparavant des données fournies gratuitement dans le cadre d’accords arrivant à expiration. L’achat devait maintenir cet accès et permettre des mises à jour régulières. C’est un mécanisme commercial identifiable : une ressource déjà intégrée au travail de l’acheteur devient une dépense nécessaire à sa continuité. Cela ne démontre pas, à lui seul, une stratégie délibérée d’enfermement par le fournisseur. [S16](#source-16)
 
-Le cahier des charges exige des données anonymisées et sans rattachement à des informations identifiantes. Il mentionne explicitement des analyses au niveau GPS comme au niveau agrégé. L’exigence contractuelle ne constitue pas un audit indépendant de l’anonymisation. Elle permet néanmoins de distinguer ce marché de l’accès à un portail d’interrogation d’historiques par identifiant. **Les pièces examinées ne prouvent pas que les CDC achetaient un outil pour suivre nominativement des personnes.** [S16](#source-16)
+Le cahier des charges exige des données anonymisées et sans rattachement à des informations identifiantes. Il mentionne explicitement des analyses au niveau GPS comme au niveau agrégé. L’exigence contractuelle ne constitue pas un audit indépendant de l’anonymisation. Elle permet néanmoins de distinguer ce marché de l’accès à un portail d’interrogation d’historiques par identifiant. **La commande porte sur des produits de mobilité et de fréquentation, avec une exigence d’anonymisation dont le contrôle effectif reste hors de ces pièces.** [S16](#source-16)
 
 La valeur recherchée était celle d’indicateurs de population. Une fréquentation agrégée peut répondre à une question de santé publique sans permettre la même opération qu’un historique individuel. Elle pose aussi une question différente de qualité : les téléphones observés représentent-ils correctement la population étudiée ? Le contrat demande une couverture géographique représentative ; il ne suffit pas à établir qu’elle a été obtenue, ni que chaque usage potentiel décrit a été réalisé. [S16](#source-16)
 
@@ -116,11 +118,11 @@ Ces montants ne s’additionnent pas pour former « le marché de nos données �
 
 La durée apparente peut également tromper. Une autre commande, **70CMSD20P00000089**, attribuée directement à Venntel pour ICE le 19 juin 2020, présente 20 000 dollars d’engagements. Sa fiche distingue une fin de prestation au 30 juin 2021 d’une échéance potentielle au 30 juin 2023. Elle enregistre une clôture administrative le **29 novembre 2021**, sans engagement supplémentaire. Retenir seulement 2023 créerait une prolongation que cet historique ne documente pas. [S13](#source-13)
 
-Pour l’acheteur, la valeur dépend de ce qu’il pourra faire avec l’accès : produire une note, créer un service pour d’autres clients, rechercher dans un historique ou actualiser un indicateur. La possibilité de rapprocher des identifiants, la profondeur de l’historique et les droits de redistribution peuvent compter autant que le nombre de lignes reçues. Les accords étudiés montrent ces différences de périmètre ; ils ne permettent pas d’isoler un prix universel de la donnée personnelle.
+Pour l’acheteur, la valeur dépend des usages permis par l’accès : produire une note, créer un service pour d’autres clients, rechercher dans un historique ou actualiser un indicateur. La possibilité de rapprocher des identifiants, la profondeur de l’historique et les droits de redistribution peuvent compter autant que le nombre de lignes reçues. Les accords étudiés montrent ces différences de périmètre ; ils ne permettent pas d’isoler un prix universel de la donnée personnelle.
 
-Cette carte s’arrête donc à des relations nommées et qualifiées. GM a confirmé les transmissions à LexisNexis et Verisk ; les autorités en décrivent les contrats et contestent les conditions. La FTC décrit le contrat Jumpshot–Omnicom. Les commandes publiques attestent les accès ou livraisons prévus pour CBP, ICE et les CDC. Les journaux audités ajoutent une preuve d’usage pour certains accès administratifs, sans fournir leur efficacité ni un inventaire de leurs conséquences individuelles. [S04](#source-4) [S01](#source-1) [S08](#source-8) [S11](#source-11) [S13](#source-13) [S14](#source-14) [S16](#source-16)
+Cette carte s’arrête donc à des relations nommées et qualifiées. GM a confirmé les transmissions à LexisNexis et Verisk ; les autorités en décrivent les contrats et contestent les conditions. La FTC décrit le contrat Jumpshot–Omnicom. Les commandes publiques attestent les accès ou livraisons prévus pour CBP, ICE et les CDC. Les journaux audités recensent des usages de certains accès administratifs. Leur efficacité et le détail de leurs conséquences individuelles restent hors de cet inventaire. [S04](#source-4) [S01](#source-1) [S08](#source-8) [S11](#source-11) [S13](#source-13) [S14](#source-14) [S16](#source-16)
 
-**Acheter une capacité d’action sur les données est un fait commercial. Démontrer ce que l’acheteur en a tiré demande une autre pièce.** C’est à cette frontière que s’arrêtent plusieurs des chaînes reconstituées ici.
+**L’acheteur paie pour une capacité d’action dont le contrat définit le périmètre.** Les résultats obtenus se suivent ensuite dans les produits, les décisions et les évaluations des utilisateurs.
 
 Depuis le début : [l’économie de la collecte, premier volet de l’enquête](/posts/commerce-traces-economie-collecte-donnees-personnelles/).
 

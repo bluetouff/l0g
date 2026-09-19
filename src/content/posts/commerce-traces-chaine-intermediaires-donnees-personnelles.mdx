@@ -10,10 +10,12 @@ ogImage: /illustrations/news/commerce-traces-02-v1.jpg
 quickTake:
   fact: Les conditions Experian–LiveRamp détaillent une chaîne d’activation ; les standards publicitaires ne recensent pas tous les destinataires des données.
   importance: Sous-traitance, enrichissement, rapprochement d’identifiants et accès commercial correspondent à des opérations et des droits différents.
-  uncertainty: Les offres publiées ne prouvent pas les campagnes exécutées ; plusieurs fournisseurs amont, prix et flux individuels restent non documentés.
+  uncertainty: Les campagnes exécutées, plusieurs fournisseurs amont, les prix et les flux individuels restent hors des documents disponibles.
 ---
 
 import CommerceTracesChainFigure from "../../components/CommerceTracesChainFigure.astro";
+
+<p class="edition-link"><a href="/publications/le-commerce-de-nos-traces/">Les six analyses réunies dans un EPUB gratuit : Le commerce de nos traces.</a></p>
 
 
 *Le commerce de nos traces · Deuxième volet d’une enquête en six parties.*
@@ -24,7 +26,7 @@ import CommerceTracesChainFigure from "../../components/CommerceTracesChainFigur
 
 Une **audience** est ici un ensemble d’identifiants numériques regroupés pour un usage publicitaire. Son **activation** consiste à la rendre exploitable dans l’outil qui doit diffuser ou mesurer la campagne. Le service acheté ne se résume donc pas à recevoir un fichier : il peut donner la possibilité d’atteindre un groupe de personnes dans un autre système. [S01](#source-1) [S07](#source-7)
 
-La relation entre Experian et LiveRamp est également mentionnée dans l’annuaire de partenaires de LiveRamp. Mais ces pièces ont une portée précise. L’annuaire atteste une relation affichée par les entreprises ; les conditions détaillent une offre contractuelle. Ni l’un ni les autres ne constituent un bon de commande signé par un annonceur identifié, une facture acquittée ou la preuve du passage des données d’un utilisateur donné. [S01](#source-1) [S02](#source-2)
+La relation entre Experian et LiveRamp est également mentionnée dans l’annuaire de partenaires de LiveRamp. Mais ces pièces ont une portée précise. L’annuaire atteste une relation affichée par les entreprises ; les conditions détaillent une offre contractuelle. Les commandes signées par des annonceurs identifiés, les factures acquittées et les transferts individualisés restent hors de ce périmètre documentaire. [S01](#source-1) [S02](#source-2)
 
 Cette différence fournit le point de départ de notre deuxième volet. [Le premier suivait les contreparties de la collecte](/posts/commerce-traces-economie-collecte-donnees-personnelles/). Il faut maintenant suivre les opérations : qui ajoute de l’information, qui fait correspondre les identifiants, qui distribue une audience et qui vend réellement un droit d’usage ?
 
@@ -60,7 +62,7 @@ Pour juger une opération d’enrichissement, les questions utiles portent sur l
 
 Les conditions d’Experian prévoient que l’audience soit distribuée vers une destination publicitaire, sous réserve des accords et des règles applicables à celle-ci. Cette réserve a un effet concret. Google exige, pour *Customer Match*, que les informations téléversées aient été collectées directement auprès des clients, dans un contexte dit *first-party*. Les conditions d’Experian renvoient à cette politique pour cette destination. Cette exigence propre à Customer Match ne décrit pas tous les produits publicitaires de Google ni tous les circuits de distribution de LiveRamp. [S01](#source-1) [S09](#source-9)
 
-On ne peut donc pas prendre une liste de plateformes compatibles et en déduire que toutes acceptent n’importe quel fichier acheté à un tiers. Les possibilités techniques, l’offre contractuelle et l’éligibilité d’un jeu de données constituent trois vérifications différentes. La présence du nom Google dans un document commercial ne prouve ni une campagne effectivement réalisée ni une violation de ses règles.
+On ne peut donc pas prendre une liste de plateformes compatibles et en déduire que toutes acceptent n’importe quel fichier acheté à un tiers. Les possibilités techniques, l’offre contractuelle et l’éligibilité d’un jeu de données constituent trois vérifications différentes. L’examen d’une campagne et du respect des règles de Google demanderait les documents propres à cette campagne.
 
 De son côté, LiveRamp décrit des segments standards et des segments créés pour un acheteur particulier. La documentation indique que la distribution de segments n’est pas, à elle seule, l’événement facturé : la tarification intervient lors de leur utilisation dans la plateforme de destination, selon le modèle applicable. [S07](#source-7)
 
@@ -76,7 +78,7 @@ Dans sa plainte finale du 13 janvier 2025, la FTC reproche à Mobilewalla d’av
 
 Ces documents décrivent des pratiques reprochées et des obligations issues d’un accord. Ils ne constituent pas une observation du fonctionnement de Mobilewalla en septembre 2026.
 
-Le mécanisme est néanmoins intelligible : une information peut être reçue pour évaluer une occasion d’achat, puis conservée sans achat final. Une carte fondée uniquement sur les factures des annonces effectivement diffusées manquerait ce destinataire. Cela ne prouve pas que tout destinataire conserve les informations reçues ; cela montre pourquoi l’achat d’espace et l’accès à des données doivent être vérifiés séparément.
+Le mécanisme est néanmoins intelligible : une information peut être reçue pour évaluer une occasion d’achat, puis conservée sans achat final. Une carte fondée uniquement sur les factures des annonces effectivement diffusées manquerait ce destinataire. La conservation dépend des pratiques de chaque destinataire. L’achat d’espace et l’accès aux données correspondent donc à deux opérations à examiner séparément.
 
 Le secteur publicitaire dispose justement d’outils de transparence. Le fichier **ads.txt** identifie les vendeurs autorisés d’espaces publicitaires. **sellers.json** permet de retrouver l’identité de vendeurs et d’intermédiaires. L’objet **SupplyChain**, transmis avec une demande d’enchère, représente la chaîne des intervenants dans le paiement de l’inventaire publicitaire. [S12](#source-12) [S13](#source-13)
 
@@ -92,7 +94,7 @@ Le dossier Gravy Analytics et Venntel donne accès à un circuit de commercialis
 
 La plainte décrit ensuite un transfert de Gravy vers Venntel. Elle attribue à Gravy des débouchés commerciaux et à Venntel des clients du secteur public, notamment des prestataires d’administrations. Il s’agit ici de la description portée par la FTC, et non de contrats clients dont tous les détails seraient accessibles. [S17](#source-17)
 
-Deux traits sur une carte auraient des sens différents. Le premier relierait la société mère à sa filiale : la décision constate que Venntel est détenue intégralement par Gravy. Le second représenterait le transfert de données décrit dans la plainte. Le lien capitalistique ne prouve pas, à lui seul, ce transfert ; le transfert allégué ne fournit pas davantage son prix ni l’existence d’une facture intragroupe. [S17](#source-17)
+Deux traits sur une carte auraient des sens différents. Le premier relierait la société mère à sa filiale : la décision constate que Venntel est détenue intégralement par Gravy. Le second représenterait le transfert de données décrit dans la plainte. La participation et le transfert allégué désignent deux relations distinctes. Le prix du transfert et l’existence d’une facture intragroupe restent hors des pièces citées. [S17](#source-17)
 
 L’ordonnance finale a été rendue publique le 14 janvier 2025. Les entreprises n’y admettent ni ne nient les allégations, sous réserve des éléments expressément acceptés, notamment ceux nécessaires à la compétence de la FTC. Les interdictions et obligations de l’ordonnance sont établies ; tous les récits de la plainte ne deviennent pas pour autant des faits admis. [S17](#source-17) [S18](#source-18)
 
@@ -108,7 +110,7 @@ Un exemple fictif permet de voir la différence. Un acheteur paie 100 unités mo
 
 Ces proportions ne sont pas celles publiées par LiveRamp. Elles ne permettent pas de retrouver le volume brut de sa place de marché à partir de la rubrique *Marketplace and Other*. Elles expliquent simplement pourquoi le chiffre d’affaires d’un intermédiaire peut être beaucoup plus petit que les sommes qui transitent par lui, sans que cela dise combien vaut une personne ou un profil.
 
-Les comptes annuels restent le périmètre de cette comparaison. LiveRamp a depuis publié, le 5 août 2026, les résultats du trimestre clos le 30 juin. Ce communiqué présentait encore le rachat annoncé par Publicis comme une opération en attente de réalisation, attendue avant la fin de 2026 et soumise à conditions. Une annonce de rachat ne prouve ni la réalisation de l’opération à cette date ni un nouveau transfert de données entre clients. [S25](#source-25)
+Les comptes annuels restent le périmètre de cette comparaison. LiveRamp a depuis publié, le 5 août 2026, les résultats du trimestre clos le 30 juin. Ce communiqué présentait encore le rachat annoncé par Publicis comme une opération en attente de réalisation, attendue avant la fin de 2026 et soumise à conditions. [S25](#source-25)
 
 Le mécanisme économique apparaît alors plus nettement : la rémunération peut porter sur l’accès à un outil, sur la mise à disposition d’une information ou sur la possibilité de l’utiliser ailleurs. La facture, la licence et la note comptable doivent être lues ensemble.
 
@@ -128,7 +130,7 @@ Pour un client, cette séparation a une conséquence pratique. Autoriser un pres
 
 <CommerceTracesChainFigure lang="fr" figure={3} />
 
-## Une carte doit conserver les ruptures de preuve
+## Relier les acteurs, préciser les relations
 
 Les pièces rassemblées font apparaître plusieurs façons de tirer un revenu des mêmes catégories d’informations. Un logiciel facilite une opération, un enrichisseur ajoute un renseignement, un service d’identité établit une correspondance, une place de marché organise l’accès et une plateforme publicitaire diffuse une campagne. Dans certains dossiers, des usages supplémentaires apparaissent au-delà de la prestation annoncée. Ces différences déterminent le produit facturé et les contrôles à demander. [S03](#source-3) [S05](#source-5) [S06](#source-6) [S07](#source-7) [S10](#source-10) [S19](#source-19)
 

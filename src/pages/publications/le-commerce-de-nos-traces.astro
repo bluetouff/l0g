@@ -1,0 +1,158 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import Layout from '../../layouts/BaseLayout.astro';
+import { commerceTracesBook as book, commerceTracesChapters as chapters } from '../../config/commerce-traces-publication.mjs';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../../config/entities.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const bytes = readFileSync(join(process.cwd(), 'public', book.epub));
+const size = `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(bytes.length / 1024)} Ko`;
+const sha256 = createHash('sha256').update(bytes).digest('hex');
+const pageUrl = `${SITE_URL}${book.path}`;
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Book', '@id': `${pageUrl}#book`,
+  name: book.title, description: book.description, author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID },
+  datePublished: book.date, dateModified: book.modified, inLanguage: 'fr',
+  bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true,
+  url: pageUrl, image: `${SITE_URL}${book.cover}`, license: 'https://creativecommons.org/licenses/by/4.0/',
+  hasPart: chapters.map((chapter) => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.route}` })),
+  associatedMedia: { '@type': 'MediaObject', contentUrl: `${SITE_URL}${book.epub}`, encodingFormat: 'application/epub+zip', contentSize: `${bytes.length} bytes`, sha256 },
+};
+---
+
+<Layout title={book.title} seoTitle="Le commerce de nos traces : livre EPUB gratuit | l0g"
+  ogTitle="Le commerce de nos traces : les six analyses réunies en livre"
+  description={book.description} lang="fr" ogLocale="fr_FR" sidebar={false}
+  ogImage={book.social} ogImageAlt="Couverture du Commerce de nos traces : un profil en plaques de verre relié à des fichiers"
+  alternateLinks={[{ hreflang: 'fr', href: pageUrl }, { hreflang: 'x-default', href: pageUrl }]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <article class="traces-book rise" data-pagefind-body>
+    <section class="book-hero" aria-labelledby="book-title">
+      <div class="cover-stage">
+        <div class="book-shell">
+          <span class="book-spine" aria-hidden="true">l0g · septembre 2026</span>
+          <img src={book.cover} srcset={[320, 640, 960].map(w => `${book.cover.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
+            sizes="(max-width: 360px) 80vw, (max-width: 780px) 304px, 360px" width="1024" height="1638"
+            alt="Couverture du livre Le commerce de nos traces" loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+        <p class="cover-caption">Édition française · <time datetime={book.date}>19 septembre 2026</time></p>
+      </div>
+      <div class="hero-copy">
+        <p class="mono-label">// publication l0g · données personnelles</p>
+        <h1 id="book-title">Le commerce <span>de nos traces</span></h1>
+        <p class="hero-deck">{book.subtitle}.</p>
+        <p class="hero-lede">Qui finance la collecte ? Comment une observation devient-elle un profil, puis un produit ? Qui achète cet accès, et combien de temps les copies subsistent-elles ? Six analyses suivent les données à travers les contrats, les fichiers et les règles qui organisent leur commerce.</p>
+        <div class="hero-actions">
+          <a class="download-action" href={book.epub} download>Télécharger l’EPUB <small>Gratuit · {size}</small></a>
+          <a class="contents-action" href="#sommaire">Parcourir les six chapitres <span aria-hidden="true">↓</span></a>
+        </div>
+        <ul class="edition-facts" aria-label="Contenu de l’édition">
+          <li>6 analyses intégrales</li><li>18 infographies</li><li>Introduction et conclusion originales</li>
+        </ul>
+        <p class="edition-note">EPUB 3 · lecture hors ligne · CC BY 4.0</p>
+      </div>
+    </section>
+
+    <figure class="panorama">
+      <img src={book.panorama} srcset={[640, 960, 1600].map(w => `${book.panorama.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
+        sizes="(max-width: 780px) 100vw, 1120px" width="1600" height="800" loading="lazy" decoding="async"
+        alt="Des fragments de verre traversent six stations : collecte, tri, profil, distribution, archive et retrait." />
+      <figcaption>Le parcours du livre en une illustration conceptuelle. Les dossiers étudiés conservent leurs acteurs et leurs relations propres.</figcaption>
+    </figure>
+
+    <section class="reading-section" aria-labelledby="intro-title">
+      <div class="section-heading"><p class="mono-label">01 / introduction</p><h2 id="intro-title">{book.introductionTitle}</h2></div>
+      <div class="prose-copy">{book.introduction.map(paragraph => <p>{paragraph}</p>)}</div>
+    </section>
+
+    <section id="sommaire" class="contents-section" aria-labelledby="contents-title">
+      <div class="section-heading"><p class="mono-label">02 / six étapes</p><h2 id="contents-title">De la collecte au prix des règles</h2><p>Chaque chapitre reste disponible en ligne. L’EPUB les réunit dans un même parcours, avec leurs sources et leurs illustrations.</p></div>
+      <ol class="chapter-grid">
+        {chapters.map(chapter => <li><a href={chapter.route}>
+          <img src={chapter.image} width="1200" height="630" alt={chapter.imageAlt} loading="lazy" decoding="async" />
+          <div class="chapter-copy"><span class="chapter-number">{String(chapter.number).padStart(2, '0')}</span><div><h3>{chapter.title}</h3><p>{chapter.summary}</p></div><span class="chapter-arrow" aria-hidden="true">↗</span></div>
+        </a></li>)}
+      </ol>
+    </section>
+
+    <section class="previews-section" aria-labelledby="preview-title">
+      <div class="section-heading"><p class="mono-label">03 / dans les pages du livre</p><h2 id="preview-title">Comprendre les profils, suivre les copies</h2></div>
+      <div class="preview-grid">
+        <figure><a href={chapters[2].route} aria-label="Lire le chapitre sur la fabrication des profils"><img src="/publications/commerce-traces-apercu-profils.svg" width="480" height="454" loading="lazy" decoding="async" alt="Exemple fictif : une précision globale de 89 % et seulement 47,1 % de vrais positifs dans la sélection." /></a><figcaption>Chapitre 3. Un exemple chiffré fictif distingue la précision globale du classement et la composition de la liste sélectionnée.</figcaption></figure>
+        <figure><a href={chapters[4].route} aria-label="Lire le chapitre sur les copies après le contrat"><img src="/publications/commerce-traces-apercu-copies.svg" width="480" height="398" loading="lazy" decoding="async" alt="Schéma pédagogique du retrait : copie source, copies de travail, sauvegarde et filtre lors de la restauration." /></a><figcaption>Chapitre 5. Un schéma pédagogique suit le retrait dans les copies de travail et le traitement des sauvegardes.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="reading-section" aria-labelledby="conclusion-title">
+      <div class="section-heading"><p class="mono-label">04 / conclusion</p><h2 id="conclusion-title">{book.conclusionTitle}</h2></div>
+      <div class="prose-copy">{book.conclusion.slice(0, 2).map(paragraph => <p>{paragraph}</p>)}<p class="excerpt-note">Extrait de la conclusion originale, à retrouver intégralement dans le livre.</p></div>
+    </section>
+
+    <section class="reading-section" aria-labelledby="edition-title">
+      <div class="section-heading"><p class="mono-label">05 / emporter l’enquête</p><h2 id="edition-title">Une lecture continue, sources comprises</h2></div>
+      <div class="prose-copy edition-details">
+        <p>Les six analyses publiées du 17 au 19 septembre 2026 sont réunies avec leurs notes, leurs attributions et leurs exemples explicitement fictifs. Le texte s’adapte à l’écran. Le sommaire mène aux chapitres et aux sections ; les liens entre les chapitres fonctionnent hors ligne.</p>
+        <p>Les 18 infographies et les illustrations sont intégrées au fichier. Les documents externes et le glossaire nécessitent une connexion. L’agrandissement des images dépend de la liseuse.</p>
+        <p>Le livre est gratuit, sans inscription, sous licence <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>. Aucun script, police distante ou outil de suivi n’est embarqué.</p>
+        <p class="art-note">La couverture, le panorama et les illustrations de chapitre ont été créés avec une assistance d’intelligence artificielle. Ils représentent des mécanismes de manière conceptuelle, sans figurer de fichiers réels.</p>
+        <details><summary>Informations sur le fichier</summary><dl><dt>Format</dt><dd>EPUB 3 · français · {size}</dd><dt>Édition</dt><dd>19 septembre 2026</dd><dt>SHA-256</dt><dd><code>{sha256}</code></dd></dl></details>
+        <a class="download-action final-download" href={book.epub} download>Télécharger le livre <small>EPUB gratuit · {size}</small></a>
+        <p><a href="/publications/">Toutes les publications l0g <span aria-hidden="true">›</span></a></p>
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .traces-book { max-width:1120px; margin:0 auto; min-width:0; }
+  .book-hero { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(2rem,5vw,4rem); align-items:center; padding:clamp(1.5rem,4vw,3.5rem) 0 3rem; }
+  .cover-stage { display:grid; justify-items:center; min-width:0; padding:1rem; background:radial-gradient(ellipse,rgba(94,234,212,.1),transparent 70%); }
+  .book-shell { position:relative; width:min(100%,360px); border:1px solid #365c58; border-radius:2px 7px 7px 2px; box-shadow:12px 20px 50px #0007; }
+  .book-shell img { width:100%; height:auto; display:block; border-radius:inherit; }
+  .book-spine { position:absolute; inset:0 auto 0 -11px; width:11px; overflow:hidden; font:7px var(--font-mono); writing-mode:vertical-rl; text-align:center; color:#d5bc84; background:#24221b; border-radius:3px 0 0 3px; }
+  .cover-caption { margin-top:1.3rem; font:.7rem/1.6 var(--font-mono); color:var(--color-muted); text-align:center; }
+  .mono-label { color:var(--color-amber); font:.72rem/1.6 var(--font-mono); letter-spacing:.07em; text-transform:uppercase; }
+  h1 { margin:.7rem 0 1.2rem; font-size:clamp(2.1rem,4.5vw,3.8rem); line-height:1.05; letter-spacing:-.045em; color:var(--color-bright); }
+  h1 span { display:block; color:var(--color-amber); }
+  .hero-deck { font-size:clamp(1.08rem,2vw,1.4rem); line-height:1.4; color:var(--color-bright); }
+  .hero-lede { color:var(--color-paper); font-size:1rem; line-height:1.8; margin:1.3rem 0; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:1rem 1.5rem; align-items:center; margin:1.7rem 0; }
+  .download-action { display:inline-flex; flex-direction:column; padding:.95rem 1.3rem; border-radius:7px; background:var(--color-amber); color:var(--color-ink); text-decoration:none; font-weight:750; line-height:1.5; text-align:center; }
+  .download-action small { font:.72rem/1.6 var(--font-mono); font-weight:500; }
+  .contents-action { font-size:.84rem; color:var(--color-signal); }
+  .edition-facts { list-style:none; display:flex; flex-wrap:wrap; gap:.5rem; padding:0; margin:1.5rem 0 .7rem; }
+  .edition-facts li { padding:.4rem .65rem; border:1px solid var(--color-line); border-radius:4px; font:.7rem/1.5 var(--font-mono); }
+  .edition-note { font:.72rem/1.7 var(--font-mono); color:var(--color-muted); }
+  .panorama { margin:0 0 3rem; }
+  .panorama img { width:100%; height:auto; display:block; border:1px solid var(--color-line); border-radius:8px; }
+  figcaption { color:var(--color-muted); font-size:.8rem; line-height:1.7; margin-top:.8rem; }
+  .reading-section { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr); gap:clamp(1.5rem,4vw,4rem); }
+  .reading-section, .contents-section, .previews-section { border-top:1px solid var(--color-line); padding:3rem 0; scroll-margin-top:6rem; }
+  .section-heading h2 { font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2; letter-spacing:-.025em; margin:.7rem 0 1rem; }
+  .section-heading > p:last-child { color:var(--color-muted); font-size:.9rem; line-height:1.7; max-width:46rem; }
+  .prose-copy p { line-height:1.85; margin:0 0 1.2rem; }
+  .prose-copy p:first-child { color:var(--color-bright); font-size:1.06rem; }
+  .chapter-grid { list-style:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.4rem; margin:1.7rem 0 0; padding:0; }
+  .chapter-grid li { border:1px solid var(--color-line); border-radius:7px; overflow:hidden; }
+  .chapter-grid a { display:block; height:100%; color:inherit; text-decoration:none; }
+  .chapter-grid img { display:block; width:100%; height:auto; }
+  .chapter-copy { display:grid; grid-template-columns:1.8rem minmax(0,1fr) 1rem; gap:.7rem; padding:1rem; }
+  .chapter-number { font:.8rem/1.7 var(--font-mono); color:var(--color-amber); }
+  .chapter-copy h3 { font-size:1rem; line-height:1.5; margin:0; }
+  .chapter-copy p { font-size:.85rem; line-height:1.6; margin:.4rem 0 0; color:var(--color-muted); }
+  .chapter-arrow { color:var(--color-signal); }
+  .chapter-grid a:hover h3 { color:var(--color-amber); }
+  .preview-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2rem; margin-top:1.5rem; }
+  .preview-grid figure { margin:0; min-width:0; }
+  .preview-grid img { display:block; width:100%; max-width:27rem; height:auto; margin-inline:auto; }
+  .excerpt-note, .art-note { color:var(--color-muted); font-size:.8rem; }
+  details { padding:1rem 0; border-block:1px solid var(--color-line); font-size:.85rem; }
+  summary { cursor:pointer; color:var(--color-signal); }
+  dt { font-weight:700; margin-top:.8rem; } dd { margin:.35rem 0 0; } code { overflow-wrap:anywhere; font-size:.75rem; }
+  .final-download { margin:1.6rem 0; }
+  a:focus-visible, summary:focus-visible { outline:2px solid var(--color-signal); outline-offset:5px; }
+  @media(max-width:780px) { .book-hero,.reading-section { grid-template-columns:minmax(0,1fr); gap:1.6rem; } .book-shell { max-width:304px; } .book-hero { padding-bottom:2rem; } .reading-section,.contents-section,.previews-section { padding-block:2rem; } }
+  @media(max-width:600px) { .chapter-grid,.preview-grid { grid-template-columns:minmax(0,1fr); } }
+</style>

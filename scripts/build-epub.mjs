@@ -7,6 +7,11 @@ const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
   {
+    source: join(ROOT, 'src/epub/le-commerce-de-nos-traces'),
+    output: join(ROOT, 'public/publications/le-commerce-de-nos-traces-l0g.epub'),
+    fixedTime: new Date('2026-09-19T14:20:00Z'),
+  },
+  {
     source: join(ROOT, 'src/epub/scpi-liquidite-fantome'),
     output: join(ROOT, 'public/publications/scpi-liquidite-fantome-l0g.epub'),
     fixedTime: new Date('2026-09-13T19:53:36Z'),

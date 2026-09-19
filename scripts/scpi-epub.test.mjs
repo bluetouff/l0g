@@ -147,6 +147,6 @@ for (const [lang, book] of Object.entries(scpiEditions)) {
     assert.match(page, /hreflang: 'fr'/u); assert.match(page, /hreflang: 'en'/u);
     const catalogue = readFileSync(join(ROOT, 'src/pages', lang === 'fr' ? 'publications/index.astro' : 'en/publications/index.astro'), 'utf8');
     assert.match(catalogue, /publication="scpi"/u);
-    assert.ok(catalogue.includes(book.social));
+    assert.match(page, /ogImage=\{book.social\}/u);
   });
 }

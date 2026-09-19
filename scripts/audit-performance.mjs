@@ -10,6 +10,7 @@ const root = fileURLToPath(rootUrl);
 const failures = [];
 const pages = new Map();
 const publicationCovers = new Map([
+  ['publications/le-commerce-de-nos-traces/index.html', 'le-commerce-de-nos-traces'],
   ['publications/scpi-liquidite-fantome/index.html', 'scpi-liquidite-fantome'],
   ['en/publications/scpi-phantom-liquidity/index.html', 'scpi-phantom-liquidity'],
   ['publications/les-banquiers-du-baril/index.html', 'les-banquiers-du-baril'],

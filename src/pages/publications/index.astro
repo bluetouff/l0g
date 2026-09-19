@@ -12,8 +12,8 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
     { hreflang: 'en', href: 'https://l0g.fr/en/publications/' },
     { hreflang: 'x-default', href: 'https://l0g.fr/publications/' },
   ]}
-  ogImage="/publications/scpi-liquidite-fantome-cover-social.jpg"
-  ogImageAlt="La liquidité fantôme des SCPI, la nouvelle édition numérique l0g"
+  ogImage="/publications/le-commerce-de-nos-traces-cover-social.jpg"
+  ogImageAlt="Le commerce de nos traces, la nouvelle édition numérique l0g"
 >
   <PageHero
     index="06"
@@ -25,9 +25,9 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
     glyph="read"
     accent="var(--color-amber)"
     stats={[
-      { value: 8, label: 'éditions disponibles' },
-      { value: 60, label: 'chapitres et enquêtes' },
-      { value: 8, label: 'EPUB gratuits' },
+      { value: 9, label: 'éditions disponibles' },
+      { value: 66, label: 'chapitres et enquêtes' },
+      { value: 9, label: 'EPUB gratuits' },
     ]}
   />
 
@@ -35,6 +35,7 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
     <p class="mono-label">// catalogue</p>
     <h2 id="publication-list-title">Éditions disponibles</h2>
     <div class="publication-grid">
+      <PublicationSpotlight publication="commerce-traces" />
       <PublicationSpotlight publication="scpi" />
       <PublicationSpotlight publication="oil-trading" />
       <PublicationSpotlight publication="digital-identity" />

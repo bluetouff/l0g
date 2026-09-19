@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 398" style="width:100%;height:auto" role="img" aria-labelledby="traces05-fr-2-title traces05-fr-2-desc" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="480" height="398" fill="#0b0d10"/>
+<title id="traces05-fr-2-title">Quatre copies, un seul retrait</title>
+<desc id="traces05-fr-2-desc">Exemple fictif. Après une suppression limitée à la base active, le profil reste dans la copie de test, l’export et la sauvegarde. Une restauration sans filtre réintroduit le profil. Ces états illustrent un mécanisme, sans données de personnes réelles.</desc>
+<rect x="0" y="0" width="480" height="398" fill="#0c0e10"/>
+<text x="20" y="32" font-size="23" fill="#f0f4fa" font-weight="500" text-anchor="start">Quatre copies, un seul retrait</text>
+<text x="20" y="62" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Exemple fictif · état du même profil</text>
+<text x="20" y="114" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Base active</text>
+<text x="460" y="114" font-size="22" fill="#72e5df" font-weight="400" text-anchor="end">Retiré</text>
+<line x1="20" y1="133" x2="460" y2="133" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="169" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Copie de test</text>
+<text x="460" y="169" font-size="22" fill="#f2c875" font-weight="400" text-anchor="end">Présent</text>
+<line x1="20" y1="188" x2="460" y2="188" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="224" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Export</text>
+<text x="460" y="224" font-size="22" fill="#f2c875" font-weight="400" text-anchor="end">Présent</text>
+<line x1="20" y1="243" x2="460" y2="243" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="279" font-size="22" fill="#f0f4fa" font-weight="400" text-anchor="start">Sauvegarde</text>
+<text x="460" y="279" font-size="22" fill="#f2c875" font-weight="400" text-anchor="end">Présent</text>
+<line x1="20" y1="298" x2="460" y2="298" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="341" font-size="22" fill="#72e5df" font-weight="500" text-anchor="start">Restauration sans filtre</text>
+<text x="20" y="375" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">→ Le profil revient dans la base</text>
+</svg>

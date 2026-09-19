@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="100%" style="width:100%;height:auto" role="img" aria-labelledby="traces01-fr-contrat-title traces01-fr-contrat-desc" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="480" height="360" fill="#0b0d10"/>
+<title id="traces01-fr-contrat-title">Deux paiements distincts</title>
+<desc id="traces01-fr-contrat-desc">Contrat du 26 janvier 2022. Life360 accorde à Placer un droit d’exploitation de données agrégées contre paiement. Placer fournit des services à Life360 contre un autre paiement. Les montants sont occultés.</desc>
+<rect x="0" y="0" width="480" height="360" fill="#0c0e10"/>
+<text x="20" y="32" font-size="24" fill="#f0f4fa" font-weight="500" text-anchor="start">Deux paiements distincts</text>
+<text x="20" y="62" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Accord du 26 janvier 2022</text>
+<text x="20" y="108" font-size="24" fill="#f0f4fa" font-weight="500" text-anchor="start">Life360</text>
+<text x="460" y="108" font-size="24" fill="#f0f4fa" font-weight="500" text-anchor="end">Placer</text>
+<text x="240" y="133" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="middle">Droit d’exploitation des données</text>
+<line x1="56" y1="146" x2="424" y2="146" stroke="#b8c8db" stroke-width="1.5"/><polyline points="418,142 424,146 418,150" fill="none" stroke="#b8c8db" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="240" y="185" font-size="21" fill="#72e5df" font-weight="400" text-anchor="middle">Paiement à Life360</text>
+<line x1="424" y1="198" x2="56" y2="198" stroke="#72e5df" stroke-width="1.5"/><polyline points="62,194 56,198 62,202" fill="none" stroke="#72e5df" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="240" y="247" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="middle">Services de traitement</text>
+<line x1="424" y1="260" x2="56" y2="260" stroke="#b8c8db" stroke-width="1.5"/><polyline points="62,256 56,260 62,264" fill="none" stroke="#b8c8db" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="240" y="299" font-size="21" fill="#72e5df" font-weight="400" text-anchor="middle">Paiement à Placer</text>
+<line x1="56" y1="312" x2="424" y2="312" stroke="#72e5df" stroke-width="1.5"/><polyline points="418,308 424,312 418,316" fill="none" stroke="#72e5df" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="20" y1="226" x2="460" y2="226" stroke="#344352" stroke-width="1.5"/>
+<text x="20" y="346" font-size="21" fill="#b8c8db" font-weight="400" text-anchor="start">Montants occultés dans le contrat</text>
+</svg>
