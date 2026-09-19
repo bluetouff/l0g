@@ -1,5 +1,5 @@
 ---
-title: "Données personnelles : ce qui reste après la fin du contrat"
+title: "Données personnelles : la vie des copies après le contrat"
 seoTitle: "Données personnelles : les copies après le contrat | l0g"
 ogTitle: "Le commerce de nos traces (5/6) : les copies après le contrat"
 description: "Deezer et Mobius, sauvegardes cloud, audiences LiveRamp : enquête sur les copies de données personnelles et leur suppression après la fin du contrat."
@@ -58,7 +58,7 @@ La restauration ajoute une difficulté. Une sauvegarde ancienne peut contenir un
 
 ## Dans la publicité, couper le flux peut arrêter les retraits
 
-Chez LiveRamp, *Record Sync* transmet aux destinations compatibles les retraits liés aux changements d’appartenance à une audience. Mais **retirer un segment du compte de distribution arrête ses mises à jour et ses tâches de retrait chez le destinataire**. La documentation décrit deux voies pour agir sur ce qui a déjà été envoyé : distribuer le segment avec une liste vide pour déclencher des retraits, ou travailler directement avec la plateforme destinataire pour le supprimer complètement. [S09](#source-9)
+Chez LiveRamp, *Record Sync* transmet aux destinations compatibles les retraits liés aux changements d’appartenance à une audience. Mais **retirer un segment du compte de distribution arrête ses mises à jour et ses tâches de retrait chez le destinataire**. La documentation décrit deux voies pour retirer les données déjà transmises : distribuer le segment avec une liste vide pour déclencher des retraits, ou travailler directement avec la plateforme destinataire pour le supprimer complètement. [S09](#source-9)
 
 Sans Record Sync, la plupart des distributions décrites par LiveRamp fonctionnent par ajouts. Un identifiant absent d’une mise à jour reste alors jusqu’à l’expiration prévue par la destination. Cette durée de validité, le *time to live* ou **TTL**, concerne l’identifiant dans ce mécanisme. Certaines destinations ou catégories d’identifiants n’ont pas d’expiration automatique. Pour des distributions déjà en cours, la prise d’effet complète de Record Sync peut également dépendre de l’expiration des anciens identifiants. [S09](#source-9) [S10](#source-10)
 
