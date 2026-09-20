@@ -1,0 +1,216 @@
+---
+title: 'Tokenised stocks: the credit behind the extra yield'
+seoTitle: 'Tokenised stocks: tracing vault yield and credit risk | l0g'
+description: Kraken’s xStocks Vaults borrow against tokenised securities. Tracing the extra yield, investor rights,
+  collateral and liquidation risk.
+pubDate: "2026-09-21T00:05:00+02:00"
+tags: ["tokenisation", "credit", "DeFi", "xStocks", "Kraken", "regulation"]
+draft: false
+ogImage: "/illustrations/news/tokenisation-xstocks-v1.jpg"
+sourceArticle: actions-tokenisees-xstocks-vaults-chaine-credit
+sourceUpdatedDate: "2026-09-21T00:05:00+02:00"
+---
+
+The extra return fits neatly on a product screen: up to 2% on positions linked to the S&P 500, the Nasdaq-100 or NVIDIA. On 14 September 2026, Kraken launched vaults for three xStocks: SPYx, QQQx and NVDAx. A vault pools assets in a contract that executes an investment strategy. Users retain equity-market exposure while receiving rewards in the same token. The [launch announcement](https://xstocks.com/news/xstocks-vaults-go-live-on-kraken-bringing-defi-yield-to-tokenized-equities-on-an-exchange) presents this as a natural extension of holding the asset.
+
+Underneath that familiar interface, the balance sheet changes. The tokens secure a loan, and the borrowed money is invested. **The additional return therefore depends on a separate financial activity, not simply on the businesses represented by the xStocks.** [Veda’s technical description](https://www.veda.tech/blog/veda-powers-krakens-push-into-xstocks-yield-with-sentora) sets out that transformation.
+
+The significance extends beyond Kraken. Infrastructure that makes an asset easier to transfer can also make it easier to pledge. Improvements in transfers, the strength of the underlying legal claim and the quality of the resulting credit are different questions. Progress on one does not settle the others.
+
+## Start with the legal claim
+
+SPYx references [SPDR S&P 500 ETF Trust](https://assets.backed.fi/products/sp500-xstock); QQQx references [Invesco QQQ Trust](https://assets.backed.fi/products/nasdaq-xstock); NVDAx references [NVIDIA stock](https://assets.backed.fi/products/nvidia-xstock). The first two therefore involve shares in exchange-traded funds. An ETF share and the token referencing it remain separate financial instruments.
+
+The xStocks are tracker certificates issued by Backed Assets (JE) Limited, a Jersey company. Their [legal overview](https://docs.xstocks.fi/docs/product-legal-overview) describes bearer debt instruments without voting rights in the referenced company. It provides for backing by the corresponding assets and a security agent that can act following an issuer default.
+
+The [prospectus](https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf) nevertheless limits recourse to the designated assets after enforcement costs. Collateral is not an unlimited promise of repayment.
+
+That distinction cuts both ways. An NVDAx holder has not become an NVIDIA shareholder in their own name. Nor have they acquired something devoid of legal rights. They hold a certificate whose protections and recourse depend on its contractual documents.
+
+Dividends are not simply discarded. The [dividend-reinvestment mechanism](https://docs.xstocks.fi/docs/dividends-and-stock-splits) described by xStocks passes through their economic benefit, after applicable withholding, by adjusting the token. Vault rewards are an additional component. They should not be credited with producing dividends that the certificate would already have reflected outside the vault.
+
+**Backing addresses the certificate’s collateral coverage. It does not guarantee the outcome of an investment strategy that pledges the certificate.** A property can secure a loan without making the business financed by that loan profitable. The same accounting distinction applies here, regardless of the technology used to record the asset.
+
+## The extra investment is financed with debt
+
+The announced route is specific. A Veda vault on Ink receives xStocks. Sentora transfers them to Solana through Chainlink CCIP and pledges them on Kamino. Stablecoins are borrowed and invested; rewards are converted back into xStocks. That is [Veda’s description of the architecture](https://www.veda.tech/blog/veda-powers-krakens-push-into-xstocks-yield-with-sentora), not an independently verified statement of current positions.
+
+A *stablecoin* is a token designed to maintain a stable value against a currency, in this case within a dollar-denominated strategy. Stability is an objective, not comprehensive insurance against loss.
+
+According to [Veda](https://www.veda.tech/blog/veda-powers-krakens-push-into-xstocks-yield-with-sentora), Sentora sets exposure limits and monitors collateral, liquidity and oracle conditions. An oracle supplies prices to the protocol. Risk management remains an important function even when code executes the transactions.
+
+<figure class="l0g-xstocks-figure" style="max-width:30rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 410" width="100%" role="img" aria-labelledby="l0g-xstocks-en-1-title l0g-xstocks-en-1-desc" style="width:100%;height:auto">
+<title id="l0g-xstocks-en-1-title">From a security to a credit strategy</title>
+<desc id="l0g-xstocks-en-1-desc">Provider-described flow. No scale, amounts or independently verified balances.</desc>
+<rect x="0" y="0" width="480" height="410" fill="#0c0e10"/>
+<text x="20" y="33" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">From a security to a credit strategy</text>
+<text x="20" y="89" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">01</text><text x="60" y="89" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Shares or ETF units held in custody</text><line x1="31" y1="99" x2="31" y2="121" stroke="#72e5df" stroke-width="1"/>
+<text x="20" y="140" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">02</text><text x="60" y="140" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">xStock: a separate tracker certificate</text><line x1="31" y1="150" x2="31" y2="172" stroke="#72e5df" stroke-width="1"/>
+<text x="20" y="191" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">03</text><text x="60" y="191" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Veda vault on Ink · Sentora strategy</text><line x1="31" y1="201" x2="31" y2="223" stroke="#72e5df" stroke-width="1"/>
+<text x="20" y="242" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">04</text><text x="60" y="242" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Transfer to Solana · Kamino collateral</text><line x1="31" y1="252" x2="31" y2="274" stroke="#72e5df" stroke-width="1"/>
+<text x="20" y="293" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">05</text><text x="60" y="293" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Borrowed stablecoins are invested</text><line x1="31" y1="303" x2="31" y2="325" stroke="#72e5df" stroke-width="1"/>
+<text x="20" y="344" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">06</text><text x="60" y="344" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Net rewards converted into xStocks</text><line x1="20" y1="365" x2="460" y2="365" stroke="#344352" stroke-width="1"/><text x="20" y="394" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Announced structure · September 2026</text>
+</svg>
+<figcaption>Sources: <a href="https://www.veda.tech/blog/veda-powers-krakens-push-into-xstocks-yield-with-sentora">Veda, 10 September 2026</a>; <a href="https://docs.xstocks.fi/docs/product-legal-overview">xStocks legal overview</a>. Transfers between Ink and Solana use Chainlink CCIP. This describes roles, not independently verified positions.</figcaption>
+</figure>
+
+The borrowing and the financed investment must be assessed separately. The vault borrows against xStocks. It then seeks to earn more on the borrowed money than that money costs. Treating all the income generated downstream as available to depositors would overlook the financing needed to produce it.
+
+The public pages reviewed did not establish a common-date reconciliation of the three vaults’ final investments, counterparties, debt and available cash. Protocols named in descriptions of other Earn products cannot fill that gap. **The ultimate source of each unit of yield still needs to be traced.**
+
+## An estimated rate at launch
+
+At launch, [Kraken’s support page](https://support.kraken.com/articles/xstocks-vaults) lists estimated net APYs of **2% for SPYx and QQQx and 1.8% for NVDAx**, alongside a 25% performance fee on vault earnings. APY expresses an annualised, compounded return. It remains variable; an opening estimate is not a completed year of investment performance.
+
+Consider a fictional example, using parameters that are not attributed to these vaults. A strategy holds **$10,000 of xStocks**, borrows **$3,000 at 6%** against them and invests the proceeds at **10%** for one year. Assume unchanged market values, no defaults and simple interest.
+
+The investment earns $300 and financing costs $180. That leaves $120 before the performance fee. Applying a hypothetical 25% fee to this positive difference leaves **$90, or 0.9% of the initial $10,000**. This fee base is an illustrative assumption, not a reconstruction of the actual vault accounting.
+
+<figure class="l0g-xstocks-figure" style="max-width:30rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 392" width="100%" role="img" aria-labelledby="l0g-xstocks-en-2-title l0g-xstocks-en-2-desc" style="width:100%;height:auto">
+<title id="l0g-xstocks-en-2-title">From investment income to net return</title>
+<desc id="l0g-xstocks-en-2-desc">Fictional example: 300 dollars of income minus 180 dollars of funding and 30 dollars of fees leaves 90 dollars.</desc>
+<rect x="0" y="0" width="480" height="392" fill="#0c0e10"/>
+<text x="20" y="33" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">From investment income to net return</text>
+<text x="20" y="65" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Fictional example · one year · USD</text><text x="20" y="117" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Income: $3,000 × 10%</text><text x="460" y="117" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">+$300</text><line x1="20" y1="130" x2="460" y2="130" stroke="#344352" stroke-width="1"/>
+<text x="20" y="169" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Borrowing: $3,000 × 6%</text><text x="460" y="169" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">−$180</text><line x1="20" y1="182" x2="460" y2="182" stroke="#344352" stroke-width="1"/>
+<text x="20" y="221" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Balance before fee</text><text x="460" y="221" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">$120</text><line x1="20" y1="234" x2="460" y2="234" stroke="#344352" stroke-width="1"/>
+<text x="20" y="273" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Assumed fee: $120 × 25%</text><text x="460" y="273" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">−$30</text><line x1="20" y1="286" x2="460" y2="286" stroke="#344352" stroke-width="1"/>
+<text x="20" y="325" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Net on $10,000</text><text x="460" y="325" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="end">$90 / 0.9%</text><line x1="20" y1="338" x2="460" y2="338" stroke="#344352" stroke-width="1"/><text x="20" y="377" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Simple interest · other costs excluded</text>
+</svg>
+<figcaption>l0g calculation using fictional assumptions stated in the text. The 25% fee is applied to the positive funding spread for this example only. It does not reconstruct a vault’s accounting or compounded APY.</figcaption>
+</figure>
+
+The downstream investment earns 10%, but the depositor does not earn 10% on their capital. Only the borrowed $3,000 generates that return, and it carries a financing cost. Additional expenses, execution spreads or periods spent out of the investment would reduce the result further.
+
+The arithmetic also reveals the strategy’s sensitivity. If borrowing costs rise from 6% to 9%, with everything else unchanged, the amount left after the same fee falls to **$22.50, or 0.225%** of the initial capital. If the investment return falls to 5% while borrowing still costs 6%, the spread becomes negative: **a $30 loss**, before other expenses.
+
+Neither outcome requires a hack or a default. Financing simply becomes more expensive, or the financed investment earns less. Software can execute a strategy flawlessly after its economics have deteriorated.
+
+Working backwards is instructive too. With debt equal to 40% of initial capital and the same assumed fee, a 2% simple annual net return on that capital would require an investment-versus-funding spread of about **6.67 percentage points**, before other costs. This does not estimate the actual vault parameters or reproduce their compounded APY. It identifies the information needed to explain a return: the amount borrowed, the rate spread, expenses and investment duration.
+
+## Unchanged stock exposure can coexist with a larger balance sheet
+
+The [product’s marketing page](https://www.kraken.com/pro/tokenized-equities/vaults) describes it as unleveraged. Yet the support page explicitly identifies [borrowing against xStocks as a leverage risk](https://support.kraken.com/articles/xstocks-vaults). Those descriptions need clarification about the definition being used. The distinction is more useful than a verdict based on a single word.
+
+Return to the fictional balance sheet. The strategy owns $10,000 of xStocks plus $3,000 of investments funded with borrowing. It has **$13,000 of assets, $3,000 of debt and $10,000 of net capital**. Its assets-to-capital ratio is 1.3. There is debt in the strategy. This economic balance sheet does not describe a separate personal loan taken out by the depositor.
+
+But suppose only the xStocks fall by 20%. The other investment remains worth $3,000, and the debt is unchanged. Net capital becomes **$8,000 + $3,000 − $3,000 = $8,000**. The loss is 20%, not 26%. Automatically multiplying the stock-market decline by 1.3 would be wrong: in this example, the additional assets are not additional shares.
+
+The other direction exposes the new risk. Keep the xStocks at $10,000 and let the financed investment lose 20%. Net capital becomes **$10,000 + $2,400 − $3,000 = $9,400**. The depositor loses 6% even though their stock exposure has not fallen. Interest, fees and liquidation effects are still excluded to isolate the mechanisms.
+
+<figure class="l0g-xstocks-figure" style="max-width:30rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 432" width="100%" role="img" aria-labelledby="l0g-xstocks-en-3-title l0g-xstocks-en-3-desc" style="width:100%;height:auto">
+<title id="l0g-xstocks-en-3-title">Two exposures on one balance sheet</title>
+<desc id="l0g-xstocks-en-3-desc">Net capital equals xStocks plus financed investment minus debt. Separate shocks, before interest, fees and liquidations.</desc>
+<rect x="0" y="0" width="480" height="432" fill="#0c0e10"/>
+<text x="20" y="33" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Two exposures on one balance sheet</text>
+<text x="20" y="65" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Fictional snapshots · amounts in USD</text><text x="20" y="105" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">Initial position</text><text x="20" y="137" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">$10,000 + $3,000 − $3,000</text><text x="460" y="169" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">$10,000</text><line x1="20" y1="180" x2="460" y2="180" stroke="#344352" stroke-width="1"/>
+<text x="20" y="209" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">xStocks alone fall 20%</text><text x="20" y="241" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">$8,000 + $3,000 − $3,000</text><text x="460" y="273" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">$8,000 / −20%</text><line x1="20" y1="284" x2="460" y2="284" stroke="#344352" stroke-width="1"/>
+<text x="20" y="313" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">Financed investment alone falls 20%</text><text x="20" y="345" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">$10,000 + $2,400 − $3,000</text><text x="460" y="377" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">$9,400 / −6%</text><line x1="20" y1="388" x2="460" y2="388" stroke="#344352" stroke-width="1"/><text x="20" y="418" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Net capital = assets − debt</text>
+</svg>
+<figcaption>l0g calculation, fictional independent scenarios. Only one asset changes in each shock; the other asset and debt are held constant. Before interest, fees, tax and liquidation effects.</figcaption>
+</figure>
+
+**Preserving stock-price sensitivity is not the same as preserving the original risk of loss.** A second exposure has been added to the balance sheet. Its credit quality, liquidity and correlation with the pledged assets matter, even when the account screen continues to display the familiar equity ticker.
+
+Payment in tokens creates another potential misunderstanding. Receiving 2% more tokens would not protect their holder against a price decline. If quantity rises by 2% while price falls by 20%, final value is **81.6% of initial value: an 18.4% loss**. In-kind rewards do not turn a volatile holding into guaranteed dollar income.
+
+## Debt runs on its own timetable
+
+A lender does not look only at the strategy’s overall solvency. It monitors the collateral it can actually reach. In [Kamino’s description of liquidation risk](https://kamino.com/docs/products/borrow/liquidations), the relevant boundary depends in part on debt relative to collateral value.
+
+In an unweighted illustrative calculation, a $3,000 loan against $10,000 of xStocks starts at a 30% loan-to-value ratio. If the collateral falls by 40% and debt stays constant, the ratio rises to **50%**, because the same $3,000 is now secured by $6,000. This simplified ratio sets no actual liquidation threshold for the vaults. Kamino also applies risk factors to debt values; those parameters require separate verification.
+
+It does explain why an investment elsewhere may not help quickly enough. Owning another $3,000 asset is insufficient if it cannot be mobilised before the collateral is sold. Immediate repayment capacity and total net worth are different constraints.
+
+Liquidation protects the lender. It can restore that lender’s safety while imposing an unfavourable sale or additional costs on the depositor. [FINRA describes the same basic issue](https://www.finra.org/investors/insights/securities-backed-lines-credit) in traditional securities-backed credit. Tokenisation has not invented it; it can change the speed, distribution and intermediaries through which it operates.
+
+Exiting the vault also involves several stages. The advertised return window is three days, while support documentation acknowledges [possible stress-related delays](https://support.kraken.com/articles/xstocks-vaults). Submitting a request, releasing collateral, receiving an xStock and ultimately obtaining spendable currency are separate events.
+
+[Issuer redemption](https://docs.xstocks.fi/docs/issuance-and-redemption) requires onboarding and authorised wallet addresses. The [prospectus](https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf) also describes constraints arising from underlying-market hours. A token that can circulate outside exchange hours does not thereby acquire an unconditional right to immediate conversion at its reference price.
+
+An oracle can report a price without providing a buyer willing to absorb a sale at that price. When many investors want to exit together, market depth matters more than the frequency of the price update. That is a possible stress mechanism, not an observed incident involving these three new vaults.
+
+## Custody still matters outside the blockchain
+
+The base prospectus introduces a separate issue. It permits lending the underlying securities **where a product’s Final Terms allow it**, with cash collateral substituted. The provision appears in [section 2.5.2.14, page 51](https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf). It does not establish that securities backing SPYx, QQQx or NVDAx are currently being lent. The applicable Final Terms for the three series were not authenticated in this review.
+
+An allegation of established double pledging would therefore go beyond the evidence. Potential lending of the underlying securities and pledging a certificate within the vault strategy are separate transactions. If both occurred, each would require its own analysis of collateral, counterparties and recovery times.
+
+The [4 August 2026 supplement](https://www.mfsa.mt/wp-content/uploads/2026/08/Backed-Assets-JE-Limited-Supplement-Document-dated-04-August-2026.pdf) describes omnibus custody at GTN Europe Financial Services Limited, segregated from the custodian’s own assets, and the issuer’s operational dependence on Payward. Those provisions describe arrangements for custody and services. They do not, by themselves, locate the securities backing the three vaults on 20 September.
+
+Having several companies in a legal structure does not establish operational independence. A shared technical dependency can connect different stages even where legal claims over assets remain separate.
+
+The question is where each protection ends. Segregation from a custodian’s proprietary assets serves one purpose. Control of a blockchain contract serves another. Checking either does not automatically verify the other.
+
+## Each service has its own regulatory perimeter
+
+The [CySEC register](https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/) confirms licence 342/17 for Payward Europe Digital Solutions (CY) Limited. [Kraken’s EEA terms](https://www.kraken.com/legal/eea-terms) distinguish that intermediary from the wallet service supplied by Payward Wallet LLC, which the terms describe as unregulated. An entity’s authorisation cannot simply be extended to every adjacent function in the application.
+
+Part O of those terms says assets transferred to a protocol leave the wallet, which may instead receive tokens representing the position. **Holding the wallet key is not equivalent to having freely available collateral.** The key enables exercise of the contract’s rights. It does not remove the debt that must be repaid to release pledged assets.
+
+These are the provider’s contractual characterisations, not a court’s determination of the entire arrangement or proof that every protective rule has been displaced. [ESMA’s guidance](https://www.esma.europa.eu/sites/default/files/2025-03/ESMA75453128700-1323_Guidelines_on_the_conditions_and_criteria_for_the_qualification_of_CAs_as_FIs.pdf) requires financial instruments to be assessed by their characteristics, irrespective of their technological form. The label “token” does not create a single regulatory category.
+
+## Institutional announcements concern different products
+
+September’s activity is substantial, but it should not be treated as one undifferentiated market. On [10 September, Nasdaq](https://nasdaqinc.gcs-web.com/news-releases/news-release-details/nasdaq-deepens-relationship-payward-advance-tokenized-equities) announced an agreement to invest **$100 million in Payward** and a planned **second-quarter 2027** launch for Nasdaq Equity Tokens. An investment agreement does not confirm disbursement; a launch target is not an operating market. Rights promised for those future instruments cannot be assigned retrospectively to today’s tracker certificates.
+
+On [16 September, DTCC](https://www.dtcc.com/press-releases/2026/DTCC-FundSERV-Adds-Ondo-Finance-as-First-Tokenization-Member) announced that Ondo subsidiary Oasis Pro Markets had joined Fund/SERV. This connects a firm to fund-processing and distribution infrastructure. It neither turns every Ondo token into a DTCC-approved product nor establishes how much investors have actually allocated.
+
+On [17 September, the SEC](https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment) granted temporary, conditional relief for certain tokenised-stock venues. Its [order](https://www.sec.gov/files/rules/exorders/2026/34-106402.pdf) requires equivalent rights to the corresponding conventional shares and prohibits specified borrowing, hypothecation and purchase-credit activities within its scope. Its definition excludes securities issued by a third party to provide synthetic exposure to another security. The measure therefore does not endorse xStocks certificates or EEA vaults. It does show that a regulator can accommodate new trading infrastructure while separating trading from financing functions.
+
+A useful comparison therefore keeps the object fixed: who issues the claim, what does it reference and which activities are permitted? Adding together announced investments, trading volumes and assets in unrelated products would produce an impressive headline without an intelligible balance sheet.
+
+## Transparency has to reach the final investment
+
+The strongest case for tokenisation is practical. The [BIS](https://www.bis.org/publications/aer-2025/next-generation-monetary-financial-system) describes synchronising payment with delivery of a security and automating processes that otherwise require separate reconciliations. Reducing the risk of delivering an asset without receiving its payment is a valuable improvement in its own right. It is separate from a vault’s investment return.
+
+Programmability can also improve visibility. Accessible exposure rules, transactions and positions can make a strategy easier to monitor. But that benefit must extend across the whole chain: authenticated addresses, identified assets and debt, comparable valuations and known powers to change the rules. A dashboard showing only deposits is not a statement of net risk.
+
+The [Financial Stability Board’s October 2024 report](https://www.fsb.org/2024/10/the-financial-stability-implications-of-tokenisation/) separates potential benefits from liquidity, leverage and interconnectedness vulnerabilities. That framework helps organise the questions. It does not measure the systemic importance of these products in September 2026.
+
+For xStocks Vaults, the reviewed public material establishes a financing structure and a division of responsibilities among providers. It does not establish a risk-adjusted return, because authenticated positions and quantified exit scenarios are missing. This analysis demonstrates neither realised losses, absent collateral nor an imminent crisis.
+
+The decisive evidence would reconcile pledged assets, borrowings, downstream investments and the liquid resources available for withdrawals at a common date. It would reveal how much income comes from ultimate borrowers, any incentives or other sources, rather than attributing all rewards to the referenced equity.
+
+**Tokenisation can make a security easier to transfer and finance. The extra yield then compensates a financial transaction that must be assessed on its own terms.** NVIDIA’s name or a major index identifies the starting exposure. It does not explain every risk the depositor will carry until they exit.
+
+## Further reading
+
+[Asset tokenisation](/en/glossary/tokenisation-des-actifs/) covers different legal claims and architectures. Our analysis of [Pontes and tokenised settlement](/en/analysis/pontes-ecb-private-blockchain-tokenised-settlement/) follows the payment leg. Our [Ethereum and traditional finance analysis](/en/analysis/ethereum-tradfi-infrastructure/) examines the technical dependencies.
+
+## Sources
+
+Documents reviewed **20 September 2026**. Provider material describes its own product; regulatory documents define their own scope. The references below identify the relevant sections and known dates.
+
+- **S01.** [Kraken : What are xStocks Vaults on Kraken](https://support.kraken.com/articles/xstocks-vaults) (undated page). Rewards; Fees; Risks.
+- **S02.** [Kraken Pro : xStocks Vaults: Earn Yield on Tokenized Stocks](https://www.kraken.com/pro/tokenized-equities/vaults) (undated page). Keep price exposure; Stay liquid.
+- **S03.** [xStocks / Payward : xStocks Vaults Go Live on Kraken](https://xstocks.com/news/xstocks-vaults-go-live-on-kraken-bringing-defi-yield-to-tokenized-equities-on-an-exchange) (2026-09-14).
+- **S04.** [Veda : Veda Powers Kraken’s Push into xStocks Yield with Sentora](https://www.veda.tech/blog/veda-powers-krakens-push-into-xstocks-yield-with-sentora) (2026-09-10). How it works.
+- **S06.** [xStocks : Product Legal Overview](https://docs.xstocks.fi/docs/product-legal-overview) (undated page). Legal Classification; Safeguarding & Bankruptcy Protection.
+- **S07.** [Backed Assets (JE) Limited ; copie MFSA : Base Prospectus dated 8 May 2026](https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf) (2026-05-08). §2.5.2.2-4, p.45; §2.5.2.14, p.51.
+- **S08.** [Backed Assets (JE) Limited ; copie MFSA : First Supplement dated 4 August 2026](https://www.mfsa.mt/wp-content/uploads/2026/08/Backed-Assets-JE-Limited-Supplement-Document-dated-04-August-2026.pdf) (2026-08-04). p.5/14; operative supplement, not the annex.
+- **S11.** [xStocks : Dividends and Stock Splits](https://docs.xstocks.fi/docs/dividends-and-stock-splits) (undated page).
+- **S12.** [xStocks : Issuance and Redemption](https://docs.xstocks.fi/docs/issuance-and-redemption) (undated page).
+- **S13.** [Kraken / Payward : EEA Terms of Service](https://www.kraken.com/legal/eea-terms) (undated page). entity table; Part O.
+- **S14.** [CySEC : Cypriot Investment Firms](https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/) (undated page). Payward Europe Digital Solutions (CY) Limited, 342/17.
+- **S15.** [Nasdaq : Nasdaq Deepens Relationship with Payward to Advance Tokenized Equities and Always-On Infrastructure](https://nasdaqinc.gcs-web.com/news-releases/news-release-details/nasdaq-deepens-relationship-payward-advance-tokenized-equities) (2026-09-10).
+- **S16.** [DTCC / Ondo : DTCC’s Fund/SERV Adds Ondo Finance as Its First Tokenization Member](https://www.dtcc.com/press-releases/2026/DTCC-FundSERV-Adds-Ondo-Finance-as-First-Tokenization-Member) (2026-09-16).
+- **S17.** [SEC : SEC Issues Innovation Exemption to Facilitate the Trading of Tokenized NMS Stock and Request for Comment](https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment) (2026-09-17).
+- **S18.** [SEC : Order 34-106402: temporary conditional exemptions for tokenized securities venues](https://www.sec.gov/files/rules/exorders/2026/34-106402.pdf) (2026-09-17). §II.E, II.J-K; pp.22-24, 32-33.
+- **S20.** [ESMA : Guidelines on the conditions and criteria for the qualification of crypto-assets as financial instruments](https://www.esma.europa.eu/sites/default/files/2025-03/ESMA75453128700-1323_Guidelines_on_the_conditions_and_criteria_for_the_qualification_of_CAs_as_FIs.pdf) (2025-03-19). §12, p.7.
+- **S21.** [Financial Stability Board : The Financial Stability Implications of Tokenisation](https://www.fsb.org/2024/10/the-financial-stability-implications-of-tokenisation/) (2024-10-22).
+- **S26.** [Backed Assets : SP500 xStock (SPYx)](https://assets.backed.fi/products/sp500-xstock) (2026-09-02).
+- **S27.** [Backed Assets : Nasdaq xStock (QQQx)](https://assets.backed.fi/products/nasdaq-xstock) (2026-09-02).
+- **S28.** [Backed Assets : NVIDIA xStock (NVDAx)](https://assets.backed.fi/products/nvidia-xstock) (2026-09-08).
+- **S29.** [Kamino : Liquidations](https://kamino.com/docs/products/borrow/liquidations) (undated page). What triggers liquidation.
+- **S30.** [FINRA : Securities-Backed Lines of Credit Explained](https://www.finra.org/investors/insights/securities-backed-lines-credit) (2024-01-03). What Are SBLOCs?.
+- **S31.** [Bank for International Settlements : III. The next-generation monetary and financial system](https://www.bis.org/publications/aer-2025/next-generation-monetary-financial-system) (Annual Economic Report 2025). The promise of tokenisation.
+
+## Limitations
+
+This documentary analysis is current to **20 September 2026**. Web pages may change. Statements about operations by Kraken, xStocks, Veda and Kamino come from interested parties; agreement among those statements is not independent verification of assets or liabilities. No vault contract, balance, oracle or downstream portfolio was audited onchain for this article. General prospectus permissions do not establish their use by a particular series.
+
+All numerical scenarios are fictional, dollar-denominated and exclude tax, with assumptions specified. They isolate mechanisms rather than reproduce product APYs or actual liquidation parameters. Availability, fees and rights require product- and jurisdiction-specific verification. No questions have been sent to providers and no bespoke response obtained. This article is neither individual legal advice nor an investment recommendation.
