@@ -1966,5 +1966,372 @@
       "windowStart": "2026-09-06T08:30:00+02:00",
       "windowEnd": "2026-09-13T08:30:00+02:00"
     }
+  },
+  {
+    "issue": 8,
+    "slug": "2026-09-20",
+    "publishedAt": "2026-09-20T08:30:00+02:00",
+    "title": "L’Hebdo du 20 septembre. Commerce des données : le prix des règles",
+    "description": "Édition automatisée du 20 septembre : 23 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Commerce des données : le prix des règles",
+      "href": "/posts/commerce-traces-prix-regle-sanctions-donnees-personnelles/",
+      "update": "Mobilewalla, Avast, Mobius et DROP : enquête sur les amendes, les usages interdits et les coûts de contrôle dans le commerce des données personnelles."
+    },
+    "lead": "Les restrictions de la FTC figurent dans l’accord Mobilewalla–SPACSphere. La FTC a annoncé près de 15,3 millions de dollars de paiements aux clients Avast.",
+    "number": {
+      "value": "23",
+      "label": "analyses publiées du 13 septembre à 08 h 30 au 20 septembre à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "Les règles peuvent atteindre les recettes futures, les données accumulées et les coûts de contrôle, au-delà du montant d’une amende.",
+    "test": "Les coûts complets et les résultats détaillés des contrôles restent inégalement accessibles. Le bilan DROP repose sur les retours des courtiers.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "23 analyses publiées en sept jours",
+      "subtitle": "du 13 septembre à 08 h 30 au 20 septembre à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-09-20",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "LA SEMAINE EN CHIFFRES",
+      "points": [
+        {
+          "label": "dim 13/09",
+          "shortLabel": "dim 13/09",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-09-13",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 14/09",
+          "shortLabel": "lun 14/09",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-09-14",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 15/09",
+          "shortLabel": "mar 15/09",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-09-15",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 16/09",
+          "shortLabel": "mer 16/09",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-09-16",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 17/09",
+          "shortLabel": "jeu 17/09",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-09-17",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 18/09",
+          "shortLabel": "ven 18/09",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-09-18",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 19/09",
+          "shortLabel": "sam 19/09",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-09-19",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 20/09",
+          "shortLabel": "dim 20/09",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-09-20",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Les restrictions de la FTC figurent dans l’accord Mobilewalla–SPACSphere. La FTC a annoncé près de 15,3 millions de dollars de paiements aux clients Avast.",
+    "linkedin": "23 analyses publiées sur l0g du 13 septembre à 08 h 30 au 20 septembre à 08 h 30.\n\nFocus structuré : Commerce des données : le prix des règles.\n\nLes restrictions de la FTC figurent dans l’accord Mobilewalla–SPACSphere. La FTC a annoncé près de 15,3 millions de dollars de paiements aux clients Avast.\n\nPourquoi le lire : Les règles peuvent atteindre les recettes futures, les données accumulées et les coûts de contrôle, au-delà du montant d’une amende.\n\nLimite à garder : Les coûts complets et les résultats détaillés des contrôles restent inégalement accessibles. Le bilan DROP repose sur les retours des courtiers.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-09-20/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 20 septembre compte 23 analyses publiées. Focus : Commerce des données : le prix des règles.",
+      "2/5 Les restrictions de la FTC figurent dans l’accord Mobilewalla–SPACSphere. La FTC a annoncé près de 15,3 millions de dollars de paiements aux clients Avast.",
+      "3/5 Pourquoi le lire : Les règles peuvent atteindre les recettes futures, les données accumulées et les coûts de contrôle, au-delà du montant d’une amende.",
+      "4/5 Limite : Les coûts complets et les résultats détaillés des contrôles restent inégalement accessibles. Le bilan DROP repose sur les retours des courtiers.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-09-20/"
+    ],
+    "sources": [
+      {
+        "label": "Commerce des données : le prix des règles",
+        "href": "/posts/commerce-traces-prix-regle-sanctions-donnees-personnelles/",
+        "role": "Analyse publiée le 19 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Données personnelles : la vie des copies après le contrat",
+        "href": "/posts/commerce-traces-donnees-apres-fin-contrat/",
+        "role": "Analyse publiée le 19 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Données personnelles : les acheteurs et leurs contrats",
+        "href": "/posts/commerce-traces-acheteurs-donnees-personnelles/",
+        "role": "Analyse publiée le 19 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Données personnelles : comment nos traces deviennent des profils à vendre",
+        "href": "/posts/commerce-traces-fabrication-profils-donnees-personnelles/",
+        "role": "Analyse publiée le 18 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Données personnelles : les intermédiaires derrière nos traces",
+        "href": "/posts/commerce-traces-chaine-intermediaires-donnees-personnelles/",
+        "role": "Analyse publiée le 17 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Données personnelles : qui paie pour les collecter ?",
+        "href": "/posts/commerce-traces-economie-collecte-donnees-personnelles/",
+        "role": "Analyse publiée le 17 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quand les algorithmes de prix réagissent trop vite",
+        "href": "/posts/prix-automatiques-concurrence-algorithmes/",
+        "role": "Analyse publiée le 17 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Crux AI : le risque bancaire derrière les puces de Google",
+        "href": "/posts/crux-ai-google-blackstone-banques-puces-collateral/",
+        "role": "Analyse publiée le 17 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Pénuries de médicaments : le prix d’une usine disponible",
+        "href": "/posts/penuries-medicaments-prix-disponibilite/",
+        "role": "Analyse publiée le 17 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Retraite : le piège du rendement moyen",
+        "href": "/posts/retraite-risque-sequence-rendements/",
+        "role": "Analyse publiée le 17 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Crédit privé : la dette du logiciel face à l’IA",
+        "href": "/posts/credit-prive-logiciels-ia-revenus-dette/",
+        "role": "Analyse publiée le 16 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette IA : la bataille du crédit déborde la Silicon Valley",
+        "href": "/posts/dette-ia-concurrence-etats-taux-credit/",
+        "role": "Analyse publiée le 16 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "CLARITY : les voies ouvertes après le blocage au Sénat",
+        "href": "/posts/clarity-apres-le-vote-49-50/",
+        "role": "Analyse publiée le 16 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Radiant World : le crédit à l’épreuve des factures contestées",
+        "href": "/posts/radiant-world-factures-contestees-financement/",
+        "role": "Analyse publiée le 16 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Pétrole iranien : Tether garde la main sur ses dollars",
+        "href": "/posts/petrole-iranien-usdt-tether-saisie/",
+        "role": "Analyse publiée le 15 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "La Fed peut-elle faire baisser les taux longs en remontant ses taux ?",
+        "href": "/posts/fed-hausses-taux-longs-prime-terme/",
+        "role": "Analyse publiée le 14 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "La course au freinage : sécurité, capital et politique dans l’IA",
+        "href": "/posts/freiner-frontiere-ia-capital-politique/",
+        "role": "Analyse publiée le 14 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SCPI : qui porte les pertes ?",
+        "href": "/posts/scpi-assurance-vie-banques-contagion/",
+        "role": "Analyse publiée le 13 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SCPI : la dette impose son calendrier",
+        "href": "/posts/scpi-dette-cessions-refinancement/",
+        "role": "Analyse publiée le 13 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SCPI de bureaux : la facture des locaux vides",
+        "href": "/posts/scpi-bureaux-vacance-franchises-loyers-travaux/",
+        "role": "Analyse publiée le 13 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SCPI : le rendement et les euros",
+        "href": "/posts/scpi-rendement-dividendes-reserves-revenus/",
+        "role": "Analyse publiée le 13 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SCPI : le prix de la sortie",
+        "href": "/posts/scpi-prix-revente-decote-marche-secondaire/",
+        "role": "Analyse publiée le 13 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SCPI : derrière la baisse de 31 % du montant en attente",
+        "href": "/posts/scpi-retraits-parts-attente-liquidite-registres/",
+        "role": "Analyse publiée le 13 septembre 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Commerce des données : le prix des règles",
+        "href": "/posts/commerce-traces-prix-regle-sanctions-donnees-personnelles/",
+        "publishedAt": "2026-09-19T13:39:09.000Z"
+      },
+      {
+        "title": "Données personnelles : la vie des copies après le contrat",
+        "href": "/posts/commerce-traces-donnees-apres-fin-contrat/",
+        "publishedAt": "2026-09-19T09:11:41.000Z"
+      },
+      {
+        "title": "Données personnelles : les acheteurs et leurs contrats",
+        "href": "/posts/commerce-traces-acheteurs-donnees-personnelles/",
+        "publishedAt": "2026-09-19T06:23:25.000Z"
+      },
+      {
+        "title": "Données personnelles : comment nos traces deviennent des profils à vendre",
+        "href": "/posts/commerce-traces-fabrication-profils-donnees-personnelles/",
+        "publishedAt": "2026-09-18T17:02:10.000Z"
+      },
+      {
+        "title": "Données personnelles : les intermédiaires derrière nos traces",
+        "href": "/posts/commerce-traces-chaine-intermediaires-donnees-personnelles/",
+        "publishedAt": "2026-09-17T16:02:07.000Z"
+      },
+      {
+        "title": "Données personnelles : qui paie pour les collecter ?",
+        "href": "/posts/commerce-traces-economie-collecte-donnees-personnelles/",
+        "publishedAt": "2026-09-17T15:08:36.000Z"
+      },
+      {
+        "title": "Quand les algorithmes de prix réagissent trop vite",
+        "href": "/posts/prix-automatiques-concurrence-algorithmes/",
+        "publishedAt": "2026-09-17T11:18:27.000Z"
+      },
+      {
+        "title": "Crux AI : le risque bancaire derrière les puces de Google",
+        "href": "/posts/crux-ai-google-blackstone-banques-puces-collateral/",
+        "publishedAt": "2026-09-17T10:01:20.000Z"
+      },
+      {
+        "title": "Pénuries de médicaments : le prix d’une usine disponible",
+        "href": "/posts/penuries-medicaments-prix-disponibilite/",
+        "publishedAt": "2026-09-17T08:43:02.000Z"
+      },
+      {
+        "title": "Retraite : le piège du rendement moyen",
+        "href": "/posts/retraite-risque-sequence-rendements/",
+        "publishedAt": "2026-09-17T07:06:00.000Z"
+      },
+      {
+        "title": "Crédit privé : la dette du logiciel face à l’IA",
+        "href": "/posts/credit-prive-logiciels-ia-revenus-dette/",
+        "publishedAt": "2026-09-16T20:40:00.000Z"
+      },
+      {
+        "title": "Dette IA : la bataille du crédit déborde la Silicon Valley",
+        "href": "/posts/dette-ia-concurrence-etats-taux-credit/",
+        "publishedAt": "2026-09-16T12:03:00.000Z"
+      },
+      {
+        "title": "CLARITY : les voies ouvertes après le blocage au Sénat",
+        "href": "/posts/clarity-apres-le-vote-49-50/",
+        "publishedAt": "2026-09-16T09:30:00.000Z"
+      },
+      {
+        "title": "Radiant World : le crédit à l’épreuve des factures contestées",
+        "href": "/posts/radiant-world-factures-contestees-financement/",
+        "publishedAt": "2026-09-16T07:20:00.000Z"
+      },
+      {
+        "title": "Pétrole iranien : Tether garde la main sur ses dollars",
+        "href": "/posts/petrole-iranien-usdt-tether-saisie/",
+        "publishedAt": "2026-09-15T15:34:48.000Z"
+      },
+      {
+        "title": "La Fed peut-elle faire baisser les taux longs en remontant ses taux ?",
+        "href": "/posts/fed-hausses-taux-longs-prime-terme/",
+        "publishedAt": "2026-09-14T11:17:01.997Z"
+      },
+      {
+        "title": "La course au freinage : sécurité, capital et politique dans l’IA",
+        "href": "/posts/freiner-frontiere-ia-capital-politique/",
+        "publishedAt": "2026-09-14T09:50:33.000Z"
+      },
+      {
+        "title": "SCPI : qui porte les pertes ?",
+        "href": "/posts/scpi-assurance-vie-banques-contagion/",
+        "publishedAt": "2026-09-13T18:22:00.000Z"
+      },
+      {
+        "title": "SCPI : la dette impose son calendrier",
+        "href": "/posts/scpi-dette-cessions-refinancement/",
+        "publishedAt": "2026-09-13T17:20:28.000Z"
+      },
+      {
+        "title": "SCPI de bureaux : la facture des locaux vides",
+        "href": "/posts/scpi-bureaux-vacance-franchises-loyers-travaux/",
+        "publishedAt": "2026-09-13T13:35:28.000Z"
+      },
+      {
+        "title": "SCPI : le rendement et les euros",
+        "href": "/posts/scpi-rendement-dividendes-reserves-revenus/",
+        "publishedAt": "2026-09-13T10:15:51.000Z"
+      },
+      {
+        "title": "SCPI : le prix de la sortie",
+        "href": "/posts/scpi-prix-revente-decote-marche-secondaire/",
+        "publishedAt": "2026-09-13T08:25:44.000Z"
+      },
+      {
+        "title": "SCPI : derrière la baisse de 31 % du montant en attente",
+        "href": "/posts/scpi-retraits-parts-attente-liquidite-registres/",
+        "publishedAt": "2026-09-13T06:56:09.000Z"
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-09-20T11:42:09.549Z",
+      "windowStart": "2026-09-13T08:30:00+02:00",
+      "windowEnd": "2026-09-20T08:30:00+02:00"
+    }
   }
 ]
