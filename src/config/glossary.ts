@@ -319,6 +319,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'NRSRO', nom: 'Nationally Recognized Statistical Rating Organization', def: "Agence de notation agréée par la SEC pour que ses notes servent à des fins réglementaires. S&P, Moody's et Fitch, les trois principales, concentrent environ 95 % du marché mondial. Leur modèle dominant, l'émetteur-payeur, où l'entité notée paie sa propre note, porte un conflit d'intérêts structurel.", guide: '/guides/lire-une-notation-de-credit/' },
       { sigle: 'Matrice de transition', nom: 'Rating transition matrix', def: "Tableau qui donne, pour chaque note de départ, la probabilité de migrer vers une autre note (hausse, baisse ou défaut) sur un horizon donné, en général un an. Outil central de la gestion du risque de crédit, calibré sur l'historique des notations.", guide: '/guides/lire-une-notation-de-credit/' },
       { sigle: 'Ratio de détresse', nom: 'Distress ratio', def: "Part des obligations à haut rendement dont le spread dépasse 1 000 points de base. Mesure la taille du segment déjà en difficulté ; sa montée précède généralement les vagues de défaut." },
+      { sigle: 'Risque de réinvestissement', nom: 'Reinvestment risk', def: "Risque de replacer le capital remboursé ou les revenus encaissés à des conditions moins rémunératrices. Un remboursement anticipé peut raccourcir la durée d’un prêt attractif ; le revenu futur dépend alors du délai de placement, du nouveau taux, des frais et du risque accepté.", guide: '/posts/credit-prive-emprunteurs-refinancement-revenus/' },
       { sigle: 'FSB', nom: 'Financial Stability Board', def: "Conseil de stabilité financière, qui coordonne au niveau international la surveillance des risques systémiques." },
       { sigle: 'PCDR', nom: 'Private Credit Default Rate', def: "Indice de Fitch mesurant le taux de défaut sur environ 1 200 emprunteurs du middle market dans le crédit privé. Mesure élargie du défaut, plus complète que le seul défaut de paiement." },
       { sigle: 'PMR', nom: 'Privately Monitored Rating', def: "Composante de l'univers Fitch portant sur les plus gros emprunteurs sous LBO notés en privé. Son taux de défaut est structurellement plus élevé que l'indice large PCDR." },
@@ -1239,6 +1240,14 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     signals: privateCreditSignals,
     sources: privateCreditSources,
     related: privateCreditRelated,
+  },
+  'risque-de-reinvestissement': {
+    intuition: "Récupérer son capital donne de la liquidité, puis oblige à choisir un nouveau placement. Le taux du prêt remboursé cesse de produire un revenu.",
+    formula: 'revenu sur la période = intérêts avant remboursement + revenu du capital replacé + prime éventuelle',
+    whyNow: "Le refinancement de prêts privés à une marge plus faible rend ce mécanisme visible, même à taux de référence inchangé.",
+    articles: [{ label: 'Crédit privé : les emprunteurs qui peuvent partir', href: '/posts/credit-prive-emprunteurs-refinancement-revenus/', detail: 'Mercer, revenus récurrents et emploi du capital remboursé.', kind: 'article' }],
+    sources: [{ label: 'BlackRock Credit Strategies Fund, prospectus 2024', href: 'https://www.sec.gov/Archives/edgar/data/1752019/000119312524242920/d815713d424b3.htm', detail: 'Rubriques Prepayment Risk et Reinvestment Risk, pages 13 et 88.', kind: 'source' }],
+    related: ['credit-prive', 'bdc'],
   },
   bdc: {
     intuition: "Une BDC cotée donne un prix de marché à son portefeuille. Une BDC non cotée peut offrir des rachats périodiques plafonnés ; les deux formes exposent l’investisseur à des conditions de sortie différentes.",

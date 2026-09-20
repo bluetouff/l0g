@@ -28,9 +28,19 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 544, 'Le corpus doit conserver ses 544 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 98, 'Le graphe Atlas doit conserver ses 98 nœuds');
-assert.equal(glossaryAtlasEdgeCount, 393, 'Le graphe Atlas doit conserver ses 393 relations');
+assert.equal(glossaryEntries.length, 545, 'Le corpus doit conserver ses 545 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 99, 'Le graphe Atlas doit conserver ses 99 nœuds');
+assert.equal(glossaryAtlasEdgeCount, 395, 'Le graphe Atlas doit conserver ses 395 relations');
+for (const [entry, href] of [
+  [glossaryEntries.find((item) => item.slug === 'risque-de-reinvestissement'), '/posts/credit-prive-emprunteurs-refinancement-revenus/'],
+  [glossaryAtlasEnBySlug.get('risque-de-reinvestissement'), '/en/analysis/private-credit-borrower-exits-reinvestment-risk/'],
+]) {
+  assert(entry);
+  assert.equal(entry.guide, href);
+  assert.deepEqual(entry.atlas.articles.map((item) => item.href), [href]);
+  assert.deepEqual(entry.atlas.sources.map((item) => item.href), ['https://www.sec.gov/Archives/edgar/data/1752019/000119312524242920/d815713d424b3.htm']);
+  assert.deepEqual(entry.atlas.related, ['credit-prive', 'bdc']);
+}
 for (const [entry, href] of [
   [glossaryEntries.find((item) => item.slug === 'seigneuriage'), '/posts/londres-sortie-qe-tresor-billets/'],
   [glossaryAtlasEnBySlug.get('seigneuriage'), '/en/analysis/bank-of-england-qe-exit-treasury-banknotes/'],

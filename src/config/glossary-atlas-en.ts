@@ -1811,6 +1811,22 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       related: ['yen-carry', 'boj', 'mof', 'move'],
     },
   },
+  {
+    slug: 'risque-de-reinvestissement',
+    sigle: 'Reinvestment risk',
+    nom: 'Replacing income after repayment',
+    def: 'The risk of reinvesting repaid capital or income on less rewarding terms. Early repayment can shorten the life of an attractive loan; future income then depends on the reinvestment delay, new rate, fees and risk accepted.',
+    guide: '/en/analysis/private-credit-borrower-exits-reinvestment-risk/',
+    ...privateCreditSection,
+    atlas: {
+      intuition: 'Repayment returns liquidity to the lender, who must find a new use for it. The old loan’s rate stops earning income.',
+      formula: 'period income = interest before repayment + income on reinvested capital + any premium',
+      whyNow: 'Refinancing private loans at narrower spreads makes this risk visible even when the benchmark rate is unchanged.',
+      articles: [{ label: 'Private credit: when borrowers find a cheaper exit', href: '/en/analysis/private-credit-borrower-exits-reinvestment-risk/', detail: 'Mercer, recurring income and the use of returned capital.', kind: 'article' }],
+      sources: [{ label: 'BlackRock Credit Strategies Fund, 2024 prospectus', href: 'https://www.sec.gov/Archives/edgar/data/1752019/000119312524242920/d815713d424b3.htm', detail: 'Prepayment Risk and Reinvestment Risk, pages 13 and 88.', kind: 'source' }],
+      related: ['credit-prive', 'bdc'],
+    },
+  },
 ];
 
 export const glossaryAtlasEnBySlug = new Map(glossaryAtlasEn.map((entry) => [entry.slug, entry]));
