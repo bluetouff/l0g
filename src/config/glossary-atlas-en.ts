@@ -203,6 +203,18 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'seigneuriage', sigle: 'Seigniorage', nom: 'Income from issuing money',
+    def: 'Income arising from money issuance. For central-bank banknotes, it is the income on the assets held against them, less the costs of producing, distributing and managing the notes. It depends on the assets and accounting framework, and differs from the face value of notes or the gains and losses on a QE portfolio.',
+    guide: '/en/analysis/bank-of-england-qe-exit-treasury-banknotes/',
+    ...macroSection,
+    atlas: {
+      intuition: 'Non-interest-bearing banknotes can fund income-earning assets, while issuing and managing the notes has a cost.',
+      articles: [{ label: 'The Bank of England redraws its exit from QE', href: '/en/analysis/bank-of-england-qe-exit-treasury-banknotes/', kind: 'article' }],
+      sources: [{ label: 'Bank of England: banknote backing and seigniorage', href: 'https://www.bankofengland.co.uk/bank-insights/2026/the-promise-to-pay-what-backs-banknotes', kind: 'source' }],
+      related: ['repo', 'duration'],
+    },
+  },
+  {
     slug: 'liste-repoussoir', sigle: 'Suppression list', nom: 'Exclusion list for marketing objections', sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)',
     def: 'A file retaining only the information needed to avoid contacting someone who has objected to direct marketing. Its use is limited to respecting that objection, including preventing renewed contact after a list is imported again.',
     guide: '/en/analysis/personal-data-after-the-contract-ends/',

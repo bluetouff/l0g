@@ -162,7 +162,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'QE', nom: 'Quantitative Easing', def: "Assouplissement quantitatif : achats massifs d'obligations par la banque centrale pour injecter des liquidités et peser sur les taux longs." },
       { sigle: 'H.4.1', nom: 'Factors Affecting Reserve Balances', def: "Relevé statistique hebdomadaire de la Réserve fédérale détaillant son bilan : titres détenus, prises en pension, prêts et lignes de swap à l'actif ; monnaie en circulation, compte du Trésor, prises en pension inverse et réserves bancaires au passif. Publié le jeudi à 16 h 30 heure de New York." },
       { sigle: 'Réserves bancaires', nom: 'Dépôts des institutions de dépôt à la Fed', def: "Dépôts que les banques détiennent à la Réserve fédérale, liquidité ultime de règlement. Dans le bilan de la Fed, elles sont un résidu : l'actif de la banque centrale moins la monnaie en circulation, le compte du Trésor et les prises en pension inverse." },
-      { sigle: 'Seigneuriage', nom: "Revenu tiré de l'émission monétaire", def: "Revenu économique qu'une banque centrale obtient en finançant des actifs rémunérés par des passifs monétaires peu ou non rémunérés, notamment les billets. Son résultat net dépend aussi du coût des réserves, de ses autres passifs et de ses dépenses." },
+      { sigle: 'Seigneuriage', nom: 'Revenu de l’émission monétaire', def: 'Revenu tiré de l’émission de monnaie. Pour les billets d’une banque centrale, il correspond au revenu des actifs détenus en contrepartie, diminué des coûts de production, de distribution et de gestion des billets. Son montant dépend des actifs et du cadre comptable ; il se distingue de la valeur faciale des billets et des gains ou pertes d’un portefeuille de QE.', guide: '/posts/londres-sortie-qe-tresor-billets/' },
       { sigle: 'QT', nom: 'Quantitative Tightening', def: "Resserrement quantitatif, l'inverse du QE : la banque centrale laisse filer ou vend ses obligations, retirant des liquidités du système et tendant les taux longs." },
       { sigle: 'Liquidité nette', nom: 'Net liquidity', def: "Indicateur suivi par les marchés : bilan de la Réserve fédérale diminué du compte du Trésor (TGA) et des prises en pension inversées (RRP). Proxy de la liquidité disponible, utile en tendance mais trompeur aux retournements.", guide: '/guides/liquidite-tresor-dts-tga-rrp/' },
       { sigle: 'TGA', nom: 'Treasury General Account', def: "Compte courant de l'État fédéral américain à la Réserve fédérale. Quand il gonfle (émissions de dette), il draine les réserves bancaires ; quand il baisse (dépenses), il en réinjecte." },
@@ -866,6 +866,12 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'seigneuriage': {
+    intuition: 'Les billets ne versent pas d’intérêt à leur détenteur, tandis que les actifs détenus en contrepartie procurent des revenus. Produire et gérer ces billets a aussi un coût.',
+    articles: [{ label: 'Londres réécrit la sortie du QE', href: '/posts/londres-sortie-qe-tresor-billets/', kind: 'article' }],
+    sources: [{ label: 'Banque d’Angleterre : adossement des billets et seigneuriage', href: 'https://www.bankofengland.co.uk/bank-insights/2026/the-promise-to-pay-what-backs-banknotes', kind: 'source' }],
+    related: ['repo', 'duration'],
+  },
   'liste-repoussoir': {
     articles: [{ label: 'Données personnelles : ce qui reste après la fin du contrat', href: '/posts/commerce-traces-donnees-apres-fin-contrat/', kind: 'article' }],
     sources: [{ label: 'CNIL, respecter les oppositions avec une liste repoussoir', href: 'https://www.cnil.fr/fr/comment-utiliser-une-liste-repoussoir-pour-respecter-lopposition-la-prospection-commerciale', kind: 'source' }],
