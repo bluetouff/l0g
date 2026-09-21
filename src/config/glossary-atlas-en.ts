@@ -203,6 +203,18 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'tokenisation-des-actifs', sigle: 'Asset tokenisation', nom: 'Digital representation of assets or legal claims',
+    def: 'Digital representation of an asset or a legal claim on a programmable ledger. A token may represent the security itself, a certificate issued by a third party or another contractual right. The technology can simplify transfers and settlement; rights, collateral and liquidity depend on the instrument and its legal arrangements.',
+    guide: '/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/',
+    ...cryptoSection,
+    atlas: {
+      intuition: 'A token may move quickly while still depending on an issuer, a custodian and redemption conditions.',
+      articles: [{ label: 'Tokenised stocks: the credit behind the extra yield', href: '/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/', kind: 'article' }],
+      sources: [{ label: 'BIS, the next-generation monetary and financial system', href: 'https://www.bis.org/publications/aer-2025/next-generation-monetary-financial-system', kind: 'source' }, { label: 'ESMA, qualification of crypto-assets as financial instruments', href: 'https://www.esma.europa.eu/sites/default/files/2025-03/ESMA75453128700-1323_Guidelines_on_the_conditions_and_criteria_for_the_qualification_of_CAs_as_FIs.pdf', kind: 'source' }],
+      related: ['smart-contract', 'stablecoin'],
+    },
+  },
+  {
     slug: 'seigneuriage', sigle: 'Seigniorage', nom: 'Income from issuing money',
     def: 'Income arising from money issuance. For central-bank banknotes, it is the income on the assets held against them, less the costs of producing, distributing and managing the notes. It depends on the assets and accounting framework, and differs from the face value of notes or the gains and losses on a QE portfolio.',
     guide: '/en/analysis/bank-of-england-qe-exit-treasury-banknotes/',
