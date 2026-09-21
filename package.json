@@ -123,6 +123,9 @@
     "js-yaml": "4.3.2",
     "svgo": "4.1.0",
     "vite": "$vite",
-    "volar-service-yaml": "0.0.71"
+    "volar-service-yaml": "0.0.71",
+    "satori": {
+      "fflate": "0.7.5"
+    }
   }
 }
