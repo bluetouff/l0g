@@ -1,0 +1,189 @@
+---
+import { DEFAULTS, evaluate } from '../lib/budget-2027-model.mjs';
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+const initial = evaluate(DEFAULTS);
+const locale = lang === 'en' ? 'en-GB' : 'fr-FR';
+const number = new Intl.NumberFormat(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const signed = new Intl.NumberFormat(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: 'exceptZero' });
+const fmt = (n: number, sign = false) => (sign ? signed : number).format(Math.abs(n) < 1e-9 ? 0 : n);
+---
+
+{lang === 'en' ? (
+<l0g-budget-2027 class="b27" data-lang="en" aria-labelledby="budget2027-en-title">
+<header class="b27-header"><p class="b27-kicker">l0g / local simulator</p>
+<h3 id="budget2027-en-title">Two clocks of bond-market risk</h3><p>Compare a reference market yield with a permanent shock. Public debt responds gradually; the bond price is recalculated immediately.</p>
+</header>
+<p class="b27-warning" id="budget2027-en-warning">Educational scenarios, not forecasts for France. Only the opening debt ratio uses a government projection. All other values are adjustable assumptions. The reference scenario does not reproduce the 2027 budget plan.</p>
+<noscript><p class="b27-warning">JavaScript is disabled. The results below correspond to the displayed assumptions; interactive controls require JavaScript.</p>
+</noscript>
+<fieldset data-fields disabled><legend class="b27-sr">Scenario assumptions</legend><div class="b27-inputs b27-main-inputs" aria-describedby="budget2027-en-warning"><div class="b27-field"><label for="budget2027-en-shock">Permanent yield shock <span>(basis points)</span></label>
+<input id="budget2027-en-shock" data-param="shock" type="number" min="-200" max="500" step="25" value={DEFAULTS.shock} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-en-shock-hint" /><small id="budget2027-en-shock-hint">100 basis points = 1 percentage point. Range: -200 / 500.</small>
+</div>
+<div class="b27-field"><label for="budget2027-en-growth">Annual nominal GDP growth <span>(% per year)</span></label>
+<input id="budget2027-en-growth" data-param="growth" type="number" min="-3" max="8" step="0.1" value={DEFAULTS.growth} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-en-growth-hint" /><small id="budget2027-en-growth-hint">Output and GDP prices, not real growth alone. Range: -3 / 8.</small>
+</div>
+<div class="b27-field"><label for="budget2027-en-primaryDeficit">Annual primary deficit <span>(% of GDP)</span></label>
+<input id="budget2027-en-primaryDeficit" data-param="primaryDeficit" type="number" min="-5" max="10" step="0.1" value={DEFAULTS.primaryDeficit} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-en-primaryDeficit-hint" /><small id="budget2027-en-primaryDeficit-hint">Excludes interest. Negative value = surplus. Range: -5 / 10.</small>
+</div>
+</div>
+<details class="b27-settings" data-settings><summary>Detailed assumptions: debt, average rates and bond</summary><div class="b27-inputs"><div class="b27-field"><label for="budget2027-en-debt">Opening debt <span>(% of end-2026 GDP)</span></label>
+<input id="budget2027-en-debt" data-param="debt" type="number" min="50" max="250" step="0.1" value={DEFAULTS.debt} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-en-debt-hint" /><small id="budget2027-en-debt-hint">Government forecast, not an observed outturn. Range: 50 / 250.</small>
+</div>
+<div class="b27-field"><label for="budget2027-en-effectiveRate">Initial effective stock rate <span>(% per year)</span></label>
+<input id="budget2027-en-effectiveRate" data-param="effectiveRate" type="number" min="0" max="10" step="0.1" value={DEFAULTS.effectiveRate} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-en-effectiveRate-hint" /><small id="budget2027-en-effectiveRate-hint">Assumed average cost, not the ten-year yield. Range: 0 / 10.</small>
+</div>
+<div class="b27-field"><label for="budget2027-en-marketRate">Reference market yield <span>(% per year)</span></label>
+<input id="budget2027-en-marketRate" data-param="marketRate" type="number" min="0" max="10" step="0.1" value={DEFAULTS.marketRate} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-en-marketRate-hint" /><small id="budget2027-en-marketRate-hint">Constant assumption, not a live quote. Range: 0 / 10.</small>
+</div>
+<div class="b27-field"><label for="budget2027-en-repricing">Annual stock-rate adjustment <span>(% per year)</span></label>
+<input id="budget2027-en-repricing" data-param="repricing" type="number" min="0" max="100" step="0.5" value={DEFAULTS.repricing} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-en-repricing-hint" /><small id="budget2027-en-repricing-hint">Stylised fraction, not a maturity schedule. Range: 0 / 100.</small>
+</div>
+<div class="b27-field"><label for="budget2027-en-maturity">Fictional bond maturity <span>(whole years)</span></label>
+<input id="budget2027-en-maturity" data-param="maturity" type="number" min="1" max="50" step="1" value={DEFAULTS.maturity} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-en-maturity-hint" /><small id="budget2027-en-maturity-hint">Only affects bond pricing, not public debt. Range: 1 / 50.</small>
+</div>
+<div class="b27-field"><label for="budget2027-en-coupon">Fixed bond coupon <span>(% per year)</span></label>
+<input id="budget2027-en-coupon" data-param="coupon" type="number" min="0" max="10" step="0.25" value={DEFAULTS.coupon} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-en-coupon-hint" /><small id="budget2027-en-coupon-hint">Face value 100, annual payment. Range: 0 / 10.</small>
+</div>
+</div></details>
+<button type="button" data-reset>Reset assumptions</button></fieldset>
+<p class="b27-error" data-error role="alert" hidden></p>
+<p class="b27-sr" data-status aria-live="polite" aria-atomic="true"></p>
+<div data-results>
+<div class="b27-kpis">
+<div><p>Additional debt in 2032</p>
+<strong><span data-output="gap">{fmt(initial.debtGap, true)}</span></strong><small>GDP percentage points</small>
+</div>
+<div><p>Immediate price change</p>
+<strong><span data-output="priceChange">{fmt(initial.priceChangePct, true)} %</span></strong><small>Fictional bond, same valuation date.</small>
+</div>
+<div><p>Additional interest in 2032</p>
+<strong><span data-output="interestGap">{fmt(initial.interestGap, true)}</span></strong><small>GDP percentage points</small>
+</div>
+</div>
+<p class="b27-price-detail">Before: <span data-output="priceBefore">{fmt(initial.priceBefore)}</span>; after: <span data-output="priceAfter">{fmt(initial.priceAfter)}</span>. Post-shock yield: <span data-output="shockedRate">{fmt(initial.shockedMarketRate)} %</span>.</p>
+<div class="b27-table-wrap" tabindex="0" role="region" aria-label="Simulated public debt, % of GDP. Gap in GDP percentage points."><table><caption>Simulated public debt, % of GDP. Gap in GDP percentage points.</caption>
+<thead><tr><th scope="col">Year</th>
+<th scope="col"><span class="b27-long">Reference</span><abbr class="b27-short" title="Reference">Ref.</abbr></th>
+<th scope="col"><span class="b27-long">With shock</span><abbr class="b27-short" title="With shock">Shock</abbr></th>
+<th scope="col">Gap</th>
+</tr>
+</thead>
+<tbody data-rows>
+{initial.reference.map((row, k) => (
+<tr><th scope="row">{row.year}</th>
+<td>{fmt(row.debt)}</td>
+<td>{fmt(initial.stressed[k].debt)}</td>
+<td>{fmt(initial.stressed[k].debt - row.debt, true)}</td>
+</tr>
+))}
+</tbody></table>
+</div>
+<p><strong>Total deficit stabilising the opening debt ratio: <span data-output="stabilising">{fmt(initial.stabilisingDeficit)} %</span></strong><br />At constant nominal growth, with zero stock-flow adjustment. This threshold is not a policy target.</p>
+</div>
+<details class="b27-method"><summary>Calculation assumptions and limitations</summary><p>Each year, the average stock rate moves towards the market yield by the selected fraction. Interest is applied to opening debt and the primary deficit is then added. The shock is permanent from 2027 to 2032. Growth and the primary deficit do not respond to yields. The adjustment fraction is not an actual Treasury bill or OAT maturity schedule; new borrowing during the year is not priced separately.</p>
+<p class="b27-formula">New average rate = (1 − fraction) × previous average rate + fraction × market yield</p>
+<p class="b27-formula">Interest / GDP = average rate × previous debt / (1 + nominal growth)</p>
+<p class="b27-formula">Debt / GDP = previous debt / (1 + nominal growth) + primary deficit + interest / GDP</p>
+<p>The model excludes stock-flow adjustments, inflation-linked debt, cash balances, issue premia, policy responses, defaults and forced sales. Pricing discounts annual coupons and repayment of 100 at maturity, immediately after a coupon date, using a flat yield curve. No real security identifier is used.</p>
+</details>
+<p class="b27-privacy">Calculated in your browser. This tool sends no inputs and uses no cookies or input storage.</p>
+</l0g-budget-2027>
+) : (
+<l0g-budget-2027 class="b27" data-lang="fr" aria-labelledby="budget2027-fr-title">
+<header class="b27-header"><p class="b27-kicker">l0g / simulateur local</p>
+<h3 id="budget2027-fr-title">Deux horloges du risque obligataire</h3><p>Comparez un taux de marché de référence à un choc permanent. La dette réagit progressivement ; le prix de l’obligation se recalcule immédiatement.</p>
+</header>
+<p class="b27-warning" id="budget2027-fr-warning">Scénarios pédagogiques, pas prévisions pour la France. Seule la dette de départ reprend une projection gouvernementale. Les autres valeurs sont des hypothèses modifiables. Le scénario de référence ne reproduit pas le PLF 2027.</p>
+<noscript><p class="b27-warning">JavaScript est désactivé. Les résultats ci-dessous correspondent aux hypothèses affichées ; les contrôles interactifs nécessitent JavaScript.</p>
+</noscript>
+<fieldset data-fields disabled><legend class="b27-sr">Hypothèses du scénario</legend><div class="b27-inputs b27-main-inputs" aria-describedby="budget2027-fr-warning"><div class="b27-field"><label for="budget2027-fr-shock">Choc de taux permanent <span>(points de base)</span></label>
+<input id="budget2027-fr-shock" data-param="shock" type="number" min="-200" max="500" step="25" value={DEFAULTS.shock} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-fr-shock-hint" /><small id="budget2027-fr-shock-hint">100 points de base = 1 point de pourcentage. Bornes : -200 / 500.</small>
+</div>
+<div class="b27-field"><label for="budget2027-fr-growth">Croissance nominale annuelle <span>(% par an)</span></label>
+<input id="budget2027-fr-growth" data-param="growth" type="number" min="-3" max="8" step="0.1" value={DEFAULTS.growth} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-fr-growth-hint" /><small id="budget2027-fr-growth-hint">Volume et prix du PIB, pas seulement croissance réelle. Bornes : -3 / 8.</small>
+</div>
+<div class="b27-field"><label for="budget2027-fr-primaryDeficit">Déficit primaire annuel <span>(% du PIB)</span></label>
+<input id="budget2027-fr-primaryDeficit" data-param="primaryDeficit" type="number" min="-5" max="10" step="0.1" value={DEFAULTS.primaryDeficit} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-fr-primaryDeficit-hint" /><small id="budget2027-fr-primaryDeficit-hint">Hors intérêts. Valeur négative = excédent. Bornes : -5 / 10.</small>
+</div>
+</div>
+<details class="b27-settings" data-settings><summary>Paramètres détaillés : dette, taux moyens et obligation</summary><div class="b27-inputs"><div class="b27-field"><label for="budget2027-fr-debt">Dette au départ <span>(% du PIB fin 2026)</span></label>
+<input id="budget2027-fr-debt" data-param="debt" type="number" min="50" max="250" step="0.1" value={DEFAULTS.debt} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-fr-debt-hint" /><small id="budget2027-fr-debt-hint">Prévision gouvernementale, non constatée. Bornes : 50 / 250.</small>
+</div>
+<div class="b27-field"><label for="budget2027-fr-effectiveRate">Taux moyen initial du stock <span>(% par an)</span></label>
+<input id="budget2027-fr-effectiveRate" data-param="effectiveRate" type="number" min="0" max="10" step="0.1" value={DEFAULTS.effectiveRate} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-fr-effectiveRate-hint" /><small id="budget2027-fr-effectiveRate-hint">Hypothèse de coût moyen, pas le taux à dix ans. Bornes : 0 / 10.</small>
+</div>
+<div class="b27-field"><label for="budget2027-fr-marketRate">Taux de marché de référence <span>(% par an)</span></label>
+<input id="budget2027-fr-marketRate" data-param="marketRate" type="number" min="0" max="10" step="0.1" value={DEFAULTS.marketRate} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-fr-marketRate-hint" /><small id="budget2027-fr-marketRate-hint">Hypothèse constante, sans cotation en direct. Bornes : 0 / 10.</small>
+</div>
+<div class="b27-field"><label for="budget2027-fr-repricing">Transmission annuelle au stock <span>(% par an)</span></label>
+<input id="budget2027-fr-repricing" data-param="repricing" type="number" min="0" max="100" step="0.5" value={DEFAULTS.repricing} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-fr-repricing-hint" /><small id="budget2027-fr-repricing-hint">Fraction stylisée, pas un échéancier réel. Bornes : 0 / 100.</small>
+</div>
+<div class="b27-field"><label for="budget2027-fr-maturity">Échéance de l’obligation fictive <span>(années entières)</span></label>
+<input id="budget2027-fr-maturity" data-param="maturity" type="number" min="1" max="50" step="1" value={DEFAULTS.maturity} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-fr-maturity-hint" /><small id="budget2027-fr-maturity-hint">Uniquement pour le prix, pas la dette publique. Bornes : 1 / 50.</small>
+</div>
+<div class="b27-field"><label for="budget2027-fr-coupon">Coupon fixe de l’obligation <span>(% par an)</span></label>
+<input id="budget2027-fr-coupon" data-param="coupon" type="number" min="0" max="10" step="0.25" value={DEFAULTS.coupon} inputmode="decimal" autocomplete="off" aria-describedby="budget2027-fr-coupon-hint" /><small id="budget2027-fr-coupon-hint">Nominal 100, versement annuel. Bornes : 0 / 10.</small>
+</div>
+</div></details>
+<button type="button" data-reset>Rétablir les hypothèses</button></fieldset>
+<p class="b27-error" data-error role="alert" hidden></p>
+<p class="b27-sr" data-status aria-live="polite" aria-atomic="true"></p>
+<div data-results>
+<div class="b27-kpis">
+<div><p>Surcroît de dette en 2032</p>
+<strong><span data-output="gap">{fmt(initial.debtGap, true)}</span></strong><small>points de PIB</small>
+</div>
+<div><p>Variation immédiate du prix</p>
+<strong><span data-output="priceChange">{fmt(initial.priceChangePct, true)} %</span></strong><small>Obligation fictive, même date de valorisation.</small>
+</div>
+<div><p>Surcroît d’intérêts en 2032</p>
+<strong><span data-output="interestGap">{fmt(initial.interestGap, true)}</span></strong><small>points de PIB</small>
+</div>
+</div>
+<p class="b27-price-detail">Avant : <span data-output="priceBefore">{fmt(initial.priceBefore)}</span> ; après : <span data-output="priceAfter">{fmt(initial.priceAfter)}</span>. Taux après choc : <span data-output="shockedRate">{fmt(initial.shockedMarketRate)} %</span>.</p>
+<div class="b27-table-wrap" tabindex="0" role="region" aria-label="Dette publique simulée, en % du PIB. Écart en points de PIB."><table><caption>Dette publique simulée, en % du PIB. Écart en points de PIB.</caption>
+<thead><tr><th scope="col">Année</th>
+<th scope="col"><span class="b27-long">Référence</span><abbr class="b27-short" title="Référence">Réf.</abbr></th>
+<th scope="col"><span class="b27-long">Avec choc</span><abbr class="b27-short" title="Avec choc">Choc</abbr></th>
+<th scope="col">Écart</th>
+</tr>
+</thead>
+<tbody data-rows>
+{initial.reference.map((row, k) => (
+<tr><th scope="row">{row.year}</th>
+<td>{fmt(row.debt)}</td>
+<td>{fmt(initial.stressed[k].debt)}</td>
+<td>{fmt(initial.stressed[k].debt - row.debt, true)}</td>
+</tr>
+))}
+</tbody></table>
+</div>
+<p><strong>Déficit total stabilisant la dette initiale : <span data-output="stabilising">{fmt(initial.stabilisingDeficit)} %</span></strong><br />À croissance nominale constante, sans ajustement stock-flux. Ce seuil n’est pas une cible politique.</p>
+</div>
+<details class="b27-method"><summary>Hypothèses et limites du calcul</summary><p>Chaque année, le taux moyen du stock se rapproche du taux de marché selon la fraction choisie. Les intérêts sont appliqués à la dette d’ouverture, puis le déficit primaire est ajouté. Le choc reste constant de 2027 à 2032. La croissance et le déficit primaire ne réagissent pas aux taux. La fraction de transmission ne décrit ni les BTF ni les échéances des OAT ; la dette nouvelle dans l’année n’est pas tarifée séparément.</p>
+<p class="b27-formula">Taux moyen nouveau = (1 − fraction) × taux moyen précédent + fraction × taux de marché</p>
+<p class="b27-formula">Intérêts / PIB = taux moyen × dette précédente / (1 + croissance nominale)</p>
+<p class="b27-formula">Dette / PIB = dette précédente / (1 + croissance nominale) + déficit primaire + intérêts / PIB</p>
+<p>Le modèle exclut les ajustements stock-flux, les titres indexés, les variations de trésorerie, les primes d’émission, les réactions politiques, les défauts et les ventes forcées. Le prix utilise les coupons annuels actualisés et le remboursement de 100 à l’échéance, juste après un coupon, avec une courbe plate. Aucun numéro de titre réel n’est utilisé.</p>
+</details>
+<p class="b27-privacy">Calcul dans votre navigateur. Aucun envoi, cookie ou stockage des saisies par cet outil.</p>
+</l0g-budget-2027>
+)}
+<script>
+  import '../lib/budget-2027-client';
+</script>
+
+<style>
+.b27{display:block;margin:2rem 0 2.5rem;padding:clamp(16px,3vw,28px);border:1px solid var(--b27-line);border-radius:12px;background:var(--b27-bg);color:var(--b27-fg);--b27-bg:#10151b;--b27-fg:#edf2f7;--b27-muted:#b9c6d5;--b27-line:#435266;--b27-accent:#72e5df;--b27-field:#191f28;--b27-error:#ffb5a8;font-size:15px;line-height:1.6}
+:global(html[data-theme="light"]) .b27{--b27-bg:#f5f7f9;--b27-fg:#1a2735;--b27-muted:#47566b;--b27-line:#a8b4c3;--b27-accent:#006d68;--b27-field:#fff;--b27-error:#a51e17}
+.b27 :is(p,h3,fieldset,details,table){color:inherit}.b27 p{margin:0 0 1rem}.b27 .b27-kicker{color:var(--b27-accent);font-size:12px;letter-spacing:.08em}.b27 h3{margin:0 0 12px;font-size:clamp(21px,3vw,25px);font-weight:500;line-height:1.35}.b27 .b27-warning{border-left:2px solid var(--b27-accent);padding-left:12px;color:var(--b27-muted);font-size:13px}
+.b27 fieldset{border:0;padding:0;margin:20px 0;min-width:0}.b27-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 14px}.b27-field{min-width:0}.b27 label{display:block;font-size:14px;font-weight:500;min-height:68px;line-height:1.4}.b27 label span{display:block;font-weight:400;color:var(--b27-muted);font-size:12px}.b27 input{box-sizing:border-box;display:block;width:100%;min-width:0;min-height:44px;border:1px solid var(--b27-line);border-radius:5px;padding:8px 10px;background:var(--b27-field);color:var(--b27-fg);font:inherit;font-variant-numeric:tabular-nums}.b27 input[aria-invalid="true"]{border:2px solid var(--b27-error)}.b27 small{display:block;font-size:12px;color:var(--b27-muted);line-height:1.5;margin-top:6px}.b27 details{border-block:1px solid var(--b27-line);padding:12px 0;margin:18px 0}.b27 summary{cursor:pointer;font-size:14px;font-weight:500}.b27 details[open]>summary{margin-bottom:18px}.b27 button{cursor:pointer;background:var(--b27-field);color:var(--b27-fg);border:1px solid var(--b27-line);padding:9px 14px;border-radius:5px;font:inherit;font-size:14px;min-height:44px}.b27 :is(input,button,summary,[tabindex]):focus-visible{outline:2px solid var(--b27-accent);outline-offset:3px}.b27 fieldset:disabled{opacity:.7}.b27 fieldset:disabled button{cursor:default}.b27 .b27-error{color:var(--b27-error);border:1px solid currentColor;padding:12px}
+.b27-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;border-block:1px solid var(--b27-line);padding:18px 0;margin:20px 0}.b27-kpis p{font-size:13px;min-height:42px;margin-bottom:8px}.b27-kpis strong{font-size:26px;font-weight:500;line-height:1.25;color:var(--b27-accent);font-variant-numeric:tabular-nums}.b27 .b27-price-detail{font-size:13px;color:var(--b27-muted)}.b27-table-wrap{overflow-x:auto;max-width:100%;margin:18px 0}.b27 table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums;table-layout:auto}.b27 .b27-short{display:none}.b27 caption{text-align:left;font-size:12px;color:var(--b27-muted);padding-bottom:10px}.b27 :is(th,td){border-bottom:1px solid var(--b27-line);padding:8px 5px;text-align:right;white-space:nowrap}.b27 th{font-weight:500}.b27 :is(th,td):first-child{text-align:left}.b27 .b27-formula{font-family:monospace;font-size:12px;overflow-wrap:anywhere}.b27 .b27-method{font-size:13px}.b27 .b27-privacy{font-size:12px;color:var(--b27-muted);margin-bottom:0}.b27 [hidden]{display:none!important}.b27-sr{position:absolute!important;width:1px;height:1px;padding:0!important;margin:-1px!important;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0!important}
+@media(max-width:600px){.b27-inputs{grid-template-columns:repeat(2,minmax(0,1fr))}.b27-kpis{grid-template-columns:1fr}.b27-kpis>div{display:grid;grid-template-columns:1fr auto;gap:4px 12px}.b27-kpis p{min-height:0;margin:0}.b27-kpis small{grid-column:1/-1;margin:0}.b27-kpis strong{font-size:24px}}
+@media(max-width:400px){.b27 .b27-long{display:none}.b27 .b27-short{display:inline;text-decoration:none}.b27 th{letter-spacing:0}.b27-inputs{grid-template-columns:1fr}.b27 label{min-height:0;margin-bottom:7px}.b27 :is(th,td){padding:8px 3px;font-size:12px}}
+@media print{.b27 fieldset{display:none}}
+</style>
+<style is:global>
+.b27-equation{border-left:2px solid #758a98;padding:.75rem 1rem;margin:1.5rem 0 2rem;overflow-wrap:anywhere;font-size:.95rem}.b27-equation p{margin:.4rem 0}.b27-equation strong{font-weight:500}
+</style>

@@ -1,0 +1,244 @@
+---
+title: "Budget 2027 : le prix de la dette française"
+seoTitle: "Budget 2027 : dette française et risque obligataire | l0g"
+description: "Budget 2027 : déficit, dette française et risque obligataire. Trois graphiques et un simulateur pour comprendre prix, refinancement et collatéral."
+pubDate: "2026-09-22T08:51:06Z"
+tags: ["France", "budget", "dette publique", "obligations", "BCE"]
+draft: false
+ogImage: "/illustrations/news/budget-2027-france-v1.jpg"
+quickTake: {"fact": "Le cadrage gouvernemental rapporté par l’AFP prévoit un déficit de 5 % du PIB et une dette de 121,7 % en 2027.", "importance": "Le prix des obligations réagit immédiatement ; le coût moyen de la dette se transmet progressivement aux budgets.", "uncertainty": "Le budget reste en préparation au 22 septembre 2026. Le simulateur utilise des hypothèses constantes, sans réaction de la croissance ni des politiques publiques."}
+---
+
+import Budget2027Stress from '../../components/Budget2027Stress.astro';
+
+**La France peut augmenter les prélèvements, réduire son déficit et voir sa dette continuer de monter. Le risque obligataire apparaît lorsque cette trajectoire oblige à payer davantage les prochains prêteurs, déprécie les titres déjà détenus et finit par fragiliser ceux qui les financent à crédit. Le budget et le marché ne réagissent pas à la même vitesse.**
+
+Au 22 septembre 2026, le budget 2027 reste en préparation. Sa présentation en Conseil des ministres est annoncée pour le **1er octobre**, selon le calendrier rapporté par l’AFP. Cette analyse porte sur le cadrage préparatoire et sa transmission financière. [S01](#source-1)
+
+## Des impôts plus lourds, un déficit réduit, une dette plus élevée
+
+Le cadrage gouvernemental rapporté le 19 septembre associe trois évolutions : les prélèvements obligatoires passeraient de **43,9 % à 44,2 % du PIB**, le déficit public de **5,4 % à 5,0 %**, et la dette de **119,3 % à 121,7 %** entre 2026 et 2027. La dépense publique serait ramenée à **56,9 % du PIB**, en recul de 0,2 point. Ce sont des projections, non des résultats constatés. [S01](#source-1)
+
+Le déficit mesure le besoin de financement annuel des administrations ; la dette, un stock accumulé. Un déficit plus faible continue d’alimenter ce stock. Le ratio dette/PIB dépend également de la valeur de la production nationale, son dénominateur.
+
+**Une hausse des prélèvements rapportés au PIB peut résulter de changements d’assiettes, de suppressions d’exonérations ou du rendement des recettes.** Elle ne décrit pas à elle seule l’évolution des taux d’imposition ou de la facture de chaque contribuable.
+
+Bercy attribue cette hausse agrégée à la réduction de niches fiscales et à la lutte contre la fraude. [S01](#source-1) Pour le prêteur, la question est moins l’étiquette politique de la mesure que sa recette nette, son caractère récurrent et la possibilité de l’encaisser à temps. Une recette de contrôle fiscal anticipée mérite notamment d’être distinguée d’une assiette déjà documentée.
+
+Les prélèvements obligatoires ne sont pas non plus le total des recettes publiques. L’Insee les définit comme les impôts et cotisations sociales effectives, nets des montants non recouvrables et des crédits d’impôt. [S19](#source-19) Soustraire 44,2 % de 56,9 % ne reconstitue donc pas le déficit : cette opération omet les autres recettes et les différences de périmètre.
+
+Le chiffre de **54 milliards d’euros d’effort** réclame une autre précaution. Selon la présentation détaillée par Localtis, il comprend 45 milliards de mesures nouvelles et 9 milliards de prolongements de décisions antérieures. Un effort par rapport à une trajectoire spontanée ne constitue pas nécessairement une baisse équivalente des dépenses par rapport à l’année précédente. [S02](#source-2)
+
+L’exemple est simple : une dépense qui devait passer de 100 à 106 et qui atteint finalement 103 a augmenté de 3. Elle a aussi été réduite de 3 par rapport au scénario sans mesure. Les deux phrases décrivent la même situation. Pour apprécier le budget, il faudra donc identifier le scénario de référence, les mesures récurrentes et leur calendrier d’encaissement. Une recette espérée et une recette durable ne sont pas interchangeables.
+
+## La dette monte avant même que les taux ne montent davantage
+
+Prenons une dette de départ de 119,3 % du PIB, un déficit total de 5 % du PIB et une croissance **nominale** de 2,5 %. Cette croissance est une hypothèse pédagogique, pas une prévision attribuée au gouvernement. En l’absence d’ajustement stock-flux, le calcul est :
+
+<div class="b27-equation"><p><strong>Dette finale / PIB = dette initiale / (1 + croissance nominale) + déficit total / PIB</strong></p><p>119,3 / 1,025 + 5 = <strong>121,39 % du PIB</strong></p></div>
+
+La croissance du PIB réduit le poids relatif de la dette ancienne d’environ 2,91 points. Le déficit en ajoute 5. Le ratio augmente donc de 2,09 points. Aucun emballement de taux ni défaut de paiement n’est nécessaire pour produire cette dérive.
+
+<figure class="l0g-budget-figure" style="max-width:30rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 355" width="100%" role="img" aria-labelledby="l0g-budget-fr-1-title l0g-budget-fr-1-desc" style="width:100%;height:auto">
+<title id="l0g-budget-fr-1-title">Un déficit réduit peut alourdir la dette</title>
+<desc id="l0g-budget-fr-1-desc">La croissance nominale retire 2,91 points au ratio initial de 119,30. Le déficit ajoute 5 points. Dette finale : 121,39 % du PIB.</desc>
+<rect x="0" y="0" width="480" height="355" fill="#0c0e10"/>
+<text x="20" y="36" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#f0f4fa" text-anchor="start">Un déficit réduit peut alourdir la dette</text>
+<text x="20" y="67" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Illustration annuelle · points de PIB</text>
+<text x="20" y="105" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Dette au départ</text>
+<text x="460" y="105" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">119,30</text>
+<text x="20" y="168" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Effet du PIB nominal</text>
+<text x="460" y="168" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="end">−2,91</text>
+<text x="20" y="231" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Déficit total</text>
+<text x="460" y="231" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">+5,00</text>
+<text x="20" y="303" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Dette à l’arrivée</text>
+<text x="460" y="303" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">121,39</text>
+</svg>
+<figcaption>Hypothèses : dette initiale 119,3 % du PIB, croissance nominale 2,5 %, déficit total 5 %, ajustement stock-flux nul. Dette finale = 119,3 / 1,025 + 5. Calcul l0g ; exercice distinct du cadrage 2027.</figcaption>
+</figure>
+
+Le déficit total qui stabiliserait le ratio dans cet exemple vaut **2,91 % du PIB**. Avec seulement 1,5 % de croissance nominale, il tombe à **1,76 %**. Le seuil n’est donc pas universellement fixé à 3 %. Il dépend du niveau de dette, de la croissance nominale et des opérations qui font varier le stock sans passer par le déficit.
+
+Pour reconstituer la projection gouvernementale de 121,7 %, il faudrait son PIB nominal et son tableau complet d’ajustements stock-flux. L’Insee rappelle que les mouvements d’actifs financiers et de trésorerie empêchent de déduire directement le déficit de la variation de dette. [S03](#source-3)
+
+À titre de repère, l’Insee constate une dette de **117,5 % du PIB fin mars 2026**. Cette observation trimestrielle ne doit pas être confondue avec une prévision de fin d’année. [S03](#source-3)
+
+La croissance nominale est ici essentielle. Elle combine croissance en volume et variation des prix du PIB. Ce n’est ni la seule croissance réelle, ni nécessairement celle-ci augmentée de l’inflation des prix à la consommation. La Banque de France prévoit en septembre une croissance réelle de 0,4 % en 2026 et 0,9 % en 2027 : ces chiffres ne peuvent pas être insérés tels quels dans le dénominateur du calcul précédent. [S04](#source-4)
+
+L’inflation ne constitue pas non plus un effacement gratuit. Même lorsqu’elle augmente certaines recettes et le PIB nominal, elle peut renchérir les dépenses, les émissions nouvelles et les titres indexés. Pour ces derniers, l’effet dépend de l’indice contractuel, pas simplement du déflateur du PIB. L’AFT distingue précisément les obligations indexées sur les prix français et celles indexées sur les prix de la zone euro. [S05](#source-5)
+
+## Le budget se finance par des flux beaucoup plus gros que le seul déficit
+
+Un État qui doit rembourser une obligation arrivée à échéance peut en émettre une autre. Ce refinancement ne crée pas, à lui seul, un déficit supplémentaire : il remplace une dette ancienne. Il crée néanmoins un besoin de trouver des acheteurs et de fixer un nouveau prix.
+
+Le besoin de financement comprend donc le déficit de trésorerie, les remboursements arrivant à échéance et divers mouvements financiers. Il ne faut pas additionner sans précaution un déficit de l’ensemble des administrations publiques à un programme d’émissions du seul État. Les périmètres comptables et les dates ne sont pas identiques.
+
+Le programme indicatif annoncé par l’AFT pour **2026** prévoit **310 milliards d’euros d’émissions à moyen et long terme, nettes des rachats**. Il concerne le financement du seul État, sur une année différente du cadrage 2027. [S06](#source-6)
+
+La composition du financement compte autant que son volume. Emprunter court peut réduire certains coûts immédiats, mais oblige à revenir plus souvent sur le marché. Emprunter long fixe plus longtemps un coût, au prix éventuellement d’un rendement plus élevé demandé par les investisseurs. Il n’existe pas de choix gratuit entre ces deux contraintes.
+
+Fin août, l’AFT publie une dette négociable de l’État d’environ **2 903,8 milliards d’euros**, dont **219,2 milliards à court terme**, avec une durée de vie moyenne globale de **8 ans et 142 jours**. Ce périmètre diffère de la dette de Maastricht de toutes les administrations. [S07](#source-7)
+
+Cette maturité moyenne offre du temps : les coupons fixes anciens ne se réécrivent pas à chaque séance. Elle ne signifie toutefois ni que la dette sera intégralement refinancée dans huit ans, ni qu’exactement un huitième arrive à échéance chaque année. Seul l’échéancier permet de le déterminer. Et la durée de vie moyenne n’est pas la *duration*, qui mesure la sensibilité d’un prix aux taux.
+
+## Le premier choc arrive dans le prix des obligations
+
+Le mécanisme commence par une comparaison. Un investisseur peut conserver une obligation ancienne ou acheter une nouvelle émission. Si le rendement exigé sur des flux comparables augmente, le prix de l’obligation ancienne doit baisser pour rester compétitif. Son coupon contractuel n’a pas changé ; c’est le prix payé pour recevoir ce coupon qui s’ajuste. [S08](#source-8)
+
+Une obligation fictive de nominal 100, versant un coupon annuel de 3, vaut **88,13** avec dix années restantes et un rendement exigé de 4,5 %. Si ce rendement passe immédiatement à 5,5 %, sa valeur tombe à **81,16**, soit **−7,91 %**. Avec trente années restantes, les mêmes conventions donnent **−15,75 %**. Ce sont des calculs de flux actualisés, sans défaut, frais ni temps écoulé entre les deux valorisations ; le calcul porte sur un titre fictif, distinct d’une obligation assimilable du Trésor (OAT).
+
+<figure class="l0g-budget-figure" style="max-width:30rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 390" width="100%" role="img" aria-labelledby="l0g-budget-fr-2-title l0g-budget-fr-2-desc" style="width:100%;height:auto">
+<title id="l0g-budget-fr-2-title">Le prix réagit dès la hausse des taux</title>
+<desc id="l0g-budget-fr-2-desc">Pour un rendement passant de 4,5 à 5,5 %, le prix à dix ans passe de 88,13 à 81,16, soit moins 7,91 %. À trente ans, de 75,57 à 63,67, soit moins 15,75 %.</desc>
+<rect x="0" y="0" width="480" height="390" fill="#0c0e10"/>
+<text x="20" y="36" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#f0f4fa" text-anchor="start">Le prix réagit dès la hausse des taux</text>
+<text x="20" y="68" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Obligations fictives · nominal : 100</text>
+<text x="20" y="100" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">Rendement : 4,5 %</text>
+<text x="270" y="100" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="start">Puis : 5,5 %</text>
+<text x="20" y="146" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">10 ans</text>
+<text x="460" y="146" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">-7,91 %</text>
+<rect x="20" y="161" width="387.7761" height="10" fill="#72e5df"/>
+<text x="20" y="204" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">88,13</text>
+<text x="460" y="204" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">81,16</text>
+<rect x="20" y="220" width="357.0861" height="10" fill="#f2c875"/>
+<text x="20" y="266" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">30 ans</text>
+<text x="460" y="266" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">-15,75 %</text>
+<rect x="20" y="281" width="332.4933" height="10" fill="#72e5df"/>
+<text x="20" y="324" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">75,57</text>
+<text x="460" y="324" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">63,67</text>
+<rect x="20" y="340" width="280.1288" height="10" fill="#f2c875"/>
+</svg>
+<figcaption>Même échelle de prix, de 0 à 100. Coupon annuel de 3 ; remboursement de 100. Calcul juste après coupon, sans temps écoulé, défaut ni frais. Prix obtenus par actualisation des flux annuels. Calcul l0g.</figcaption>
+</figure>
+
+**Cent points de base correspondent à un point de pourcentage de rendement**, pas à une baisse de prix de 1 %. La variation dépend de la maturité, du coupon et du rendement de départ. La duration modifiée, sensibilité du prix au rendement, donne une approximation locale : variation du prix ≈ opposé de la duration × variation du rendement. Pour un mouvement important, le calcul exact des flux évite de négliger la convexité.
+
+L’investisseur capable de conserver le titre jusqu’au remboursement n’est pas dans la même situation que celui qui doit vendre demain. Mais « aller à l’échéance » suppose l’absence de défaut et la capacité de financer l’attente ; cela ne rembourse pas magiquement un éventuel prix d’achat supérieur au pair et ne garantit pas le pouvoir d’achat. Un fonds obligataire qui renouvelle son portefeuille n’a pas nécessairement l’échéance unique d’un titre individuel. [S08](#source-8) [S09](#source-9)
+
+Pour un acheteur nouveau, un prix plus faible peut en revanche offrir un meilleur rendement. La baisse des obligations n’est donc pas synonyme de disparition de tous les acheteurs : elle peut être la condition à laquelle de nouveaux acheteurs acceptent de les financer.
+
+## Le taux français ne raconte pas uniquement le budget français
+
+Le **TEC 10** publié par l’AFT passe de **4,19 % le 1er septembre à 4,45 % le 21 septembre**, après **4,52 % les 15 et 16 septembre**. Cela représente 26 points de base de hausse entre les deux premières dates, mais 7 points de moins que le sommet observé. Cet indice à maturité constante n’est ni une cotation exécutable d’une obligation particulière, ni le taux moyen payé sur le stock de dette. [S10](#source-10)
+
+Ces observations établissent un renchérissement ; elles ne permettent pas d’attribuer chaque point de base au cadrage budgétaire. La BCE a elle-même relevé ses trois taux directeurs de 25 points de base le 10 septembre, avec effet le 16. Le taux de dépôt est passé à 2,50 %. [S11](#source-11)
+
+Pour interpréter une hausse française, il faut distinguer les anticipations de taux en euros, la rémunération du risque de durée, la prime propre à l’émetteur et les conditions de liquidité. Cette décomposition est une grille de lecture, pas quatre prix parfaitement observables que l’on pourrait additionner sans estimation.
+
+Le spread OAT-Bund compare deux rendements de même horizon. Il aide à isoler une partie du mouvement relatif français, mais il ne mesure pas une probabilité pure de défaut. Le prix allemand dépend également de sa liquidité et de la demande de titres utilisables comme garanties. Il faut comparer des données synchronisées et des échéances comparables, puis confronter ce signal aux autres dettes en euros et à la courbe des swaps. Les travaux de la BCE sur les marchés repo illustrent précisément l’importance du collatéral dans la formation des conditions de financement. [S12](#source-12)
+
+## Le second choc s’installe dans les budgets suivants
+
+Pour les finances publiques, la transmission est plus lente. Les titres à taux fixe conservent leur coupon ; les remboursements, les déficits nouveaux et le financement court exposent progressivement l’État aux conditions nouvelles. Il faut donc distinguer **le rendement demandé aujourd’hui**, **le coût moyen du stock** et **la charge d’intérêts comptabilisée pendant l’année**. [S06](#source-6) [S07](#source-7)
+
+Supposons, pour fixer les ordres de grandeur, que 300 milliards d’euros de financement soient durablement obtenus à un taux supérieur d’un point. La charge annuelle en régime plein sur ce volume serait accrue d’environ **3 milliards d’euros**. Ce n’est pas une estimation de la facture française de 2027 : les dates d’émission, les rachats, le court terme, l’indexation et les conventions comptables changent le résultat annuel.
+
+Un choc persistant se cumule à mesure que les échéances passent. **La maturité retarde la transmission au budget.** Le calendrier des remboursements permet d’en apprécier la vitesse.
+
+La dynamique complète s’écrit, en distinguant cette fois les intérêts du budget courant :
+
+<div class="b27-equation"><p><strong>d<sub>t</sub> = [(1 + i<sub>t</sub>) / (1 + g<sub>t</sub>)] × d<sub>t−1</sub> − s<sub>t</sub> + a<sub>t</sub></strong></p><p>d : dette/PIB ; i : taux effectif moyen ; g : croissance nominale ; s : excédent primaire/PIB ; a : ajustement stock-flux/PIB.</p></div>
+
+L’excédent primaire est le solde avant intérêts, positif lorsque les recettes dépassent les dépenses hors intérêts. À dette élevée, un écart durable entre coût moyen et croissance nominale impose un effort primaire plus important pour stabiliser le ratio. Cela n’exige pas que le taux de chaque OAT dépasse la croissance : c’est la relation entre le coût moyen effectif et le PIB nominal qui intervient dans l’identité.
+
+Le risque devient auto-entretenu si la hausse de la charge conduit à davantage d’emprunts, si les investisseurs demandent en retour un supplément de rendement et si le financement plus cher dégrade l’activité. Il s’agit d’une boucle possible, pas d’une loi selon laquelle chaque hausse de taux déclencherait nécessairement la suivante.
+
+<Budget2027Stress lang="fr" />
+
+Avec les hypothèses affichées, le choc permanent de 100 points de base ajoute **2,77 points de PIB de dette en 2032** par rapport à la référence ; le surcroît annuel d’intérêts atteint **0,81 point de PIB** cette année-là. Ces résultats ne sont pas une projection officielle. Le déficit primaire est maintenu constant, la croissance ne réagit pas et la transmission annuelle de 12,5 % est une convention de simulation, pas une fraction extraite de l’échéancier français.
+
+La référence elle-même dérive, parce qu’aucune correction budgétaire n’y est programmée. L’utilité de l’outil est de séparer les effets, pas de transformer six années de paramètres constants en scénario central. Mettre la transmission à zéro conserve la perte de prix de l’obligation, mais supprime l’écart budgétaire entre les deux trajectoires : c’est la différence entre les deux horloges.
+
+## Quand une moins-value devient un besoin de cash
+
+Une perte de valeur reste supportable pour certains porteurs. Elle devient plus contraignante lorsque le titre garantit un emprunt. Dans une opération de [repo](/glossaire/repo/), ou pension livrée, le financement est adossé à des titres et assorti de conditions de valorisation et de marge. Une baisse du collatéral peut conduire, selon le contrat, à devoir apporter des titres supplémentaires ou du cash. [S12](#source-12)
+
+Prenons une garantie valorisée 100, financée avec une décote de 2 % : elle permet d’emprunter 98. Si sa valeur tombe à 92 et que la décote requise passe à 5 %, la capacité de financement tombe à **87,40**. Pour conserver le financement initial avec cette seule garantie, il manque **10,60**. L’exemple combine volontairement deux chocs ; il ne prétend pas que ces décotes ont été appliquées aux OAT en septembre 2026.
+
+<figure class="l0g-budget-figure" style="max-width:30rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 350" width="100%" role="img" aria-labelledby="l0g-budget-fr-3-title l0g-budget-fr-3-desc" style="width:100%;height:auto">
+<title id="l0g-budget-fr-3-title">Une garantie finance moins de cash</title>
+<desc id="l0g-budget-fr-3-desc">Un prêt de 98 couvert par une garantie de 100 avec une décote de 2 %. Après baisse de la garantie à 92 et décote portée à 5 %, capacité de financement de 87,40. Écart : 10,60.</desc>
+<rect x="0" y="0" width="480" height="350" fill="#0c0e10"/>
+<text x="20" y="36" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#f0f4fa" text-anchor="start">Une garantie finance moins de cash</text>
+<text x="20" y="68" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Repo fictif · unités monétaires</text>
+<text x="20" y="112" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Garantie 100 · décote 2 %</text>
+<rect x="20" y="132" width="431.2000" height="10" fill="#72e5df"/>
+<text x="460" y="181" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="end">Capacité : 98,00</text>
+<text x="20" y="223" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Garantie 92 · décote 5 %</text>
+<rect x="20" y="243" width="384.5600" height="10" fill="#f2c875"/>
+<text x="460" y="292" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="end">Capacité : 87,40</text>
+<text x="20" y="330" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Besoin supplémentaire : 10,60</text>
+</svg>
+<figcaption>Deux chocs simultanés, à encours emprunté inchangé : 100 × 98 % = 98 ; 92 × 95 % = 87,40 ; écart = 10,60. Barres sur la même échelle, de 0 à 100. Aucun contrat réel ni période observée. Calcul l0g.</figcaption>
+</figure>
+
+Sans réserve de liquidité ou garantie supplémentaire, l’investisseur peut devoir réduire sa position. Une vente forcée fait pression sur les prix et peut créer de nouveaux appels de marge chez d’autres acteurs : le levier amplifie alors le besoin de liquidité.
+
+La Banque d’Angleterre a documenté cette amplification dans les fonds britanniques de gestion actif-passif en 2022. Ce précédent éclaire le mécanisme de ventes forcées ; les expositions et les contrats français demandent une analyse distincte. [S13](#source-13)
+
+La dette souveraine sert aussi de placement et de garantie aux banques. Dans un document de travail publié par la BCE, Giovanni Dell’Ariccia et ses coauteurs analysent les interactions entre détention de titres publics, garanties de l’État et activité économique. [S14](#source-14)
+
+La comptabilisation, les couvertures, la stabilité des ressources et la sensibilité des engagements déterminent l’effet d’une moins-value sur une banque ou un assureur. Le levier et les besoins de liquidité peuvent l’amplifier. L’Autorité bancaire européenne examine ainsi séparément valeurs comptables, valeurs de marché et couvertures dans son analyse de 2023. [S18](#source-18)
+
+## Le marché reste ouvert, mais à quelles conditions ?
+
+Le 17 septembre, l’AFT a adjugé **12,991 milliards d’euros d’OAT à moyen terme**, avant éventuelles offres non compétitives complémentaires. Les quatre lignes présentent des taux de couverture de **2,22 à 2,93**, et des rendements moyens de **3,59 % à 4,01 %**. Ces quatre émissions ont trouvé preneur aux conditions publiées. [S15](#source-15)
+
+La demande dépend du prix, du volume proposé et des caractéristiques des titres. Pour repérer une dégradation durable, il faut suivre plusieurs adjudications comparables, les écarts de prix, la liquidité du marché secondaire et les conditions du repo.
+
+La BCE indique par ailleurs que les portefeuilles APP et PEPP diminuent et que les remboursements de principal ne sont plus réinvestis. [S11](#source-11) Toutes choses égales par ailleurs, une absorption moindre par la banque centrale reporte davantage de titres vers les autres investisseurs. Le prix d’équilibre dépend alors de leur capacité et de leur volonté de porter ce risque.
+
+Une baisse de notation peut amplifier le mouvement si elle franchit une limite de mandat, modifie une décote ou réduit les acheteurs éligibles. Elle n’oblige pas automatiquement tous les fonds à vendre. Dans le cadre de collatéral de l’Eurosystème, l’éligibilité et les décotes dépendent de règles et de niveaux de qualité de crédit explicites : un changement de note n’est pas synonyme d’exclusion universelle. [S16](#source-16)
+
+## Les conditions d’intervention de la BCE
+
+Le *Transmission Protection Instrument*, ou TPI, vise des mouvements de marché désordonnés et injustifiés qui menacent la transmission monétaire. Son activation relève d’une appréciation du Conseil des gouverneurs, incluant notamment la situation budgétaire et la soutenabilité de la dette. Il n’existe pas de promesse publique d’intervention automatique à un spread déterminé. [S17](#source-17)
+
+Une nuance est décisive : la formulation des critères ne rend pas toute procédure de déficit excessif automatiquement éliminatoire. Elle tient également compte de l’appréciation des mesures effectivement prises en réponse aux recommandations européennes. Inversement, l’existence du TPI n’efface pas les exigences de soutenabilité. [S17](#source-17)
+
+La conséquence analytique est simple. Un investisseur ne peut pas traiter le dispositif comme une garantie inconditionnelle du prix de toutes ses OAT. Et le débat budgétaire ne peut pas se réduire à « la BCE paiera » : protéger le fonctionnement de la politique monétaire et neutraliser toute conséquence d’un déficit sont deux engagements différents.
+
+## Le test décisif sera la trajectoire après 2027
+
+Le risque ne se résume ni au franchissement d’un ratio symbolique ni à une journée de taux élevés. Une trajectoire crédible pourrait associer des recettes récurrentes, une dépense mieux maîtrisée et une croissance préservée. Elle réduirait le besoin futur de financement et la prime exigée pour porter l’incertitude. À l’inverse, remplacer des recettes durables par des opérations ponctuelles améliorerait éventuellement un exercice sans régler la suite.
+
+L’ordre et la composition des mesures comptent. Une correction qui comprime l’activité réduit aussi certaines recettes et le PIB nominal ; une correction qui protège les capacités productives peut avoir un profil différent. Sans hypothèses explicites de comportement et de multiplicateurs, il serait abusif de chiffrer ici un effet net sur la croissance. Le simulateur ne prétend pas le faire.
+
+La lecture du texte complet devra donc rapprocher le solde primaire, les hypothèses nominales, la charge d’intérêts et le futur programme de financement. Côté marché, la surveillance utile confrontera des spreads synchronisés, des adjudications comparables et les conditions de collatéral. Ni un rendement isolé ni une note d’agence ne remplace cette lecture d’ensemble.
+
+**Une dette plus chère alourdit les budgets futurs et impose dès aujourd’hui des moins-values ou des besoins de liquidité à certains créanciers.** La trajectoire après 2027 sera décisive pour contenir cette transmission.
+
+## Périmètre, méthode et limites
+
+Cette analyse est arrêtée au **22 septembre 2026** ; le dernier TEC 10 utilisé est celui du **21 septembre**. Le cadrage budgétaire est préparatoire. Aucun avis définitif du Haut Conseil des finances publiques (HCFP) sur le PLF 2027 n’a été exploité.
+
+Les sources statistiques, les projections et les calculs ont des statuts distincts. Les montants de dette de l’AFT concernent le financement négociable de l’État ; les ratios publics englobent toutes les administrations. Les exercices de dette, de prix obligataire et de repo sont des illustrations explicites, non des prévisions, cotations, expositions observées ou conseils d’investissement. Les sources et conventions détaillées ci-dessous permettent de refaire les calculs.
+
+Pour prolonger : [le marché du repo](/guides/lire-le-marche-du-repo-sofr/) et [les gilts, le levier et la Banque d’Angleterre](/posts/gilts-repo-levier-banque-angleterre/).
+
+## Sources
+
+<ol class="source-list">
+<li id="source-1"><span class="source-id">S01</span> · <a href="https://www.afp.com/fr/budget-la-dette-un-niveau-record-les-retraites-mis-contribution">Budget : la dette à un niveau record, les retraités mis à contribution</a><span class="source-meta">AFP · 2026-09-19. Cadrage gouvernemental : dette, déficit, prélèvements et dépense pour 2026 et 2027.</span></li>
+<li id="source-2"><span class="source-id">S02</span> · <a href="https://www.banquedesterritoires.fr/budget-2027-le-gouvernement-prevoit-un-effort-inedit-de-54-milliards-deuros">Budget 2027 : un effort annoncé de 54 milliards d’euros</a><span class="source-meta">Banque des Territoires / Localtis · 2026-09-18. Décomposition de l’effort annoncé le 17 septembre : 45 milliards nouveaux et 9 milliards de prolongements.</span></li>
+<li id="source-3"><span class="source-id">S03</span> · <a href="https://www.insee.fr/fr/statistiques/9010340">Dette de Maastricht au premier trimestre 2026</a><span class="source-meta">Insee · 2026-06-25. 117,5 % du PIB à fin mars ; explication des écarts entre variation de dette et déficit.</span></li>
+<li id="source-4"><span class="source-id">S04</span> · <a href="https://www.banque-france.fr/fr/publications-et-statistiques/publications/projections-macroeconomiques-intermediaires-septembre-2026">Projections macroéconomiques intermédiaires, septembre 2026</a><span class="source-meta">Banque de France · 2026-09. Croissance réelle : 0,4 % en 2026 et 0,9 % en 2027.</span></li>
+<li id="source-5"><span class="source-id">S05</span> · <a href="https://www.aft.gouv.fr/fr/oati-presentation">Présentation des OATi et des obligations indexées</a><span class="source-meta">Agence France Trésor · sans date. Distinction entre indexation sur l’inflation française et celle de la zone euro.</span></li>
+<li id="source-6"><span class="source-id">S06</span> · <a href="https://www.aft.gouv.fr/en/publications/communiques-presse/30122025-indicative-state-financing-programme-2026">Programme indicatif de financement de l’État pour 2026</a><span class="source-meta">Agence France Trésor · 2025-12-30. 310 milliards d’euros d’émissions moyen-long terme, nettes des rachats, pour 2026.</span></li>
+<li id="source-7"><span class="source-id">S07</span> · <a href="https://www.aft.gouv.fr/fr/node/452">Principaux chiffres de la dette négociable de l’État</a><span class="source-meta">Agence France Trésor · 2026-09-10. Situation au 31 août : 2 903,8 milliards, dont 219,2 à court terme ; maturité moyenne 8 ans et 142 jours.</span></li>
+<li id="source-8"><span class="source-id">S08</span> · <a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-86">Investor Bulletin: Interest Rate Risk</a><span class="source-meta">SEC / Investor.gov · 2013-06-26. Relation entre rendement, prix, coupon et maturité.</span></li>
+<li id="source-9"><span class="source-id">S09</span> · <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/bond-funds-and-income-funds">Bond Funds and Income Funds</a><span class="source-meta">SEC / Investor.gov · sans date. Un fonds obligataire comporte un risque de taux et de valeur liquidative.</span></li>
+<li id="source-10"><span class="source-id">S10</span> · <a href="https://www.aft.gouv.fr/fr/tec-10-du-jour">TEC 10 du jour</a><span class="source-meta">Agence France Trésor · 2026-09-21. 4,19 % le 1er septembre ; 4,52 % les 15-16 ; 4,45 % le 21.</span></li>
+<li id="source-11"><span class="source-id">S11</span> · <a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html">Décisions de politique monétaire</a><span class="source-meta">Banque centrale européenne · 2026-09-10. Hausse de 25 points de base ; dépôt à 2,50 % dès le 16 septembre ; fin des réinvestissements APP/PEPP confirmée.</span></li>
+<li id="source-12"><span class="source-id">S12</span> · <a href="https://www.ecb.europa.eu/press/fie/box/html/ecb.fiebox202406_04.en.html">Home bias and repo rates</a><span class="source-meta">Banque centrale européenne · 2024-06. Financement repo, collatéral souverain et corrélation entre emprunteur et garantie.</span></li>
+<li id="source-13"><span class="source-id">S13</span> · <a href="https://www.bankofengland.co.uk/financial-stability-report/2022/december-2022">Financial Stability Report, December 2022</a><span class="source-meta">Bank of England · 2022-12. Retour sur les appels de marge, les ventes et la crise de liquidité LDI de 2022.</span></li>
+<li id="source-14"><span class="source-id">S14</span> · <a href="https://www.ecb.europa.eu/pub/pdf/scpwps/ecb.wp2177.en.pdf">Managing the sovereign-bank nexus</a><span class="source-meta">Giovanni Dell’Ariccia et al. · ECB WP 2177 · 2018-09-24. pp. 2–3.</span></li>
+<li id="source-15"><span class="source-id">S15</span> · <a href="https://www.aft.gouv.fr/fr/publications/communiques-presse/17-septembre-2026-emission-oat">Adjudication de 12,991 milliards d’euros d’OAT moyen terme</a><span class="source-meta">Agence France Trésor · 2026-09-17. Montants, rendements et couvertures des quatre lignes ; règlement le 21 septembre.</span></li>
+<li id="source-16"><span class="source-id">S16</span> · <a href="https://www.ecb.europa.eu/mopo/coll/risk/ecaf/html/index.en.html">Eurosystem credit assessment framework (ECAF)</a><span class="source-meta">Banque centrale européenne · 2026-04-01. Règles d’éligibilité et niveaux de qualité de crédit pour le collatéral.</span></li>
+<li id="source-17"><span class="source-id">S17</span> · <a href="https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220721~973e6e7273.en.html">Transmission Protection Instrument</a><span class="source-meta">Banque centrale européenne · 2022-07-21. Objet du TPI, critères budgétaires, soutenabilité et appréciation du Conseil des gouverneurs.</span></li>
+<li id="source-18"><span class="source-id">S18</span> · <a href="https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-findings-ad-hoc-analysis-banks-bonds-holdings">Analyse des moins-values latentes sur les obligations des banques</a><span class="source-meta">European Banking Authority · 2023-07-28. Valeurs comptables, valeurs de marché et couvertures examinées séparément.</span></li>
+<li id="source-19"><span class="source-id">S19</span> · <a href="https://www.insee.fr/fr/metadonnees/definition/c1571">Définition des prélèvements obligatoires</a><span class="source-meta">Insee · 2024-05-30. Impôts et cotisations effectives, nets des crédits d’impôt et des montants non recouvrables.</span></li>
+</ol>
