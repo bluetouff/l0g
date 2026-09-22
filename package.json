@@ -64,7 +64,7 @@
     "test:og": "node --test scripts/og-kit.test.mjs",
     "test:news-sitemap": "node --experimental-strip-types --test scripts/news-sitemap.test.mjs",
     "test:english-reading-paths": "node --experimental-strip-types --test scripts/english-reading-paths.test.mjs",
-    "test:inline-svg": "node --test scripts/xstocks-infographics.test.mjs scripts/taiwan-inline-svg.test.mjs scripts/crux-ai-infographics.test.mjs scripts/pricing-algorithms-infographics.test.mjs scripts/commerce-traces-infographics.test.mjs scripts/commerce-traces-chain-infographics.test.mjs scripts/commerce-traces-profile-infographics.test.mjs scripts/commerce-traces-buyers-infographics.test.mjs scripts/commerce-traces-exit-infographics.test.mjs scripts/commerce-traces-rules-infographics.test.mjs scripts/boe-qe-infographics.test.mjs scripts/private-credit-refinancing-infographics.test.mjs",
+    "test:inline-svg": "node --test scripts/xstocks-infographics.test.mjs scripts/taiwan-inline-svg.test.mjs scripts/crux-ai-infographics.test.mjs scripts/pricing-algorithms-infographics.test.mjs scripts/commerce-traces-infographics.test.mjs scripts/commerce-traces-chain-infographics.test.mjs scripts/commerce-traces-profile-infographics.test.mjs scripts/commerce-traces-buyers-infographics.test.mjs scripts/commerce-traces-exit-infographics.test.mjs scripts/commerce-traces-rules-infographics.test.mjs scripts/boe-qe-infographics.test.mjs scripts/private-credit-refinancing-infographics.test.mjs scripts/ubs-capital-infographics.test.mjs",
     "test:ai-frontier": "node --test scripts/ai-frontier-infographics.test.mjs",
     "test:sitemap-lastmod": "node --test scripts/sitemap-lastmod.test.mjs",
     "test:content-order": "node --test scripts/content-order.test.mjs",

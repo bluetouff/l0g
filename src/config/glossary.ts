@@ -569,7 +569,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'FHFA', nom: 'Federal Housing Finance Agency', def: "Régulateur fédéral américain du financement du logement, créé par la loi HERA du 30 juillet 2008. Il supervise Fannie Mae, Freddie Mac et les douze Federal Home Loan Banks, et exerce depuis septembre 2008 la tutelle des deux premières. Sa double casquette de superviseur et de gestionnaire est au coeur du débat sur la sortie de tutelle.", guide: '/posts/privatisation-fannie-freddie-garantie-non-ecrite/' },
       { sigle: 'OFR', nom: 'Office of Financial Research', def: "Bureau de recherche financière rattaché au Trésor américain. Produit données et analyses sur les risques systémiques." },
       { sigle: 'Form PF', nom: 'Private Fund (formulaire de reporting SEC)', def: "Formulaire de reporting confidentiel des fonds privés à la SEC. Principale source de données réglementaires sur leur levier et leurs contreparties." },
-      { sigle: 'CET1', nom: 'Common Equity Tier 1', def: "Ratio de fonds propres durs des banques rapportés aux actifs pondérés du risque. Mesure centrale de leur solvabilité." },
+      { sigle: "CET1", nom: "Common Equity Tier 1", def: "Fonds propres réglementaires de la meilleure qualité, comprenant notamment les actions ordinaires et les bénéfices conservés, après ajustements prudentiels. Le ratio CET1 rapporte ce montant aux actifs pondérés du risque ; le capital et son ratio sont deux grandeurs distinctes.", guide: "/guides/lire-la-solidite-d-une-banque/" },
+      { sigle: "AT1", nom: "Additional Tier 1", def: "Fonds propres réglementaires additionnels de catégorie 1. Instruments subordonnés et perpétuels dont les distributions peuvent être annulées et le principal converti ou réduit selon les conditions applicables. Le Tier 1 réunit CET1 et AT1 ; leur capacité à absorber une perte dépend de mécanismes distincts.", guide: "/posts/ubs-capital-filiales-etrangeres-double-levier/" },
+      { sigle: "Double levier", nom: "Double leverage", def: "Financement du capital d’une filiale en partie par de la dette portée par sa maison mère. La filiale reçoit des fonds propres, tandis que la maison mère conserve une dette à rembourser. Une baisse de valeur de la participation peut ainsi réduire le capital de la maison mère.", guide: "/posts/ubs-capital-filiales-etrangeres-double-levier/" },
       { sigle: 'DFAST', nom: 'Dodd-Frank Act Stress Test', def: "Volet quantitatif du test de résistance annuel de la Fed, issu de la loi Dodd-Frank : la banque survivrait-elle à une récession sévère en gardant ses fonds propres au-dessus des minimums ? La Fed projette pertes, revenus et ratio CET1 sur neuf trimestres.", guide: '/guides/lire-un-stress-test-bancaire/' },
       { sigle: 'CCAR', nom: 'Comprehensive Capital Analysis and Review', def: "Volet du test de résistance de la Fed portant sur la planification du capital : la banque peut-elle verser dividendes et rachats d'actions tout en restant solide sous stress ? Adossé au DFAST, il en tire le coussin de fonds propres de stress (SCB).", guide: '/guides/lire-un-stress-test-bancaire/' },
       { sigle: 'SCB', nom: 'Stress Capital Buffer', def: "Coussin de fonds propres de stress : exigence de capital propre à chaque banque, calculée à partir du test de résistance (ponction de CET1 sous le scénario adverse, plus les dividendes prévus), avec un plancher de 2,5 %. Il détermine la marge dont dispose la banque pour rendre du capital à ses actionnaires.", guide: '/guides/lire-un-stress-test-bancaire/' },
@@ -1241,6 +1243,34 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     signals: privateCreditSignals,
     sources: privateCreditSources,
     related: privateCreditRelated,
+  },
+  at1: {
+    intuition: "Un coupon annulé conserve des liquidités ; une conversion ou une réduction du principal absorbe une perte selon les clauses prévues.",
+    articles: [{
+      label: "UBS : capital de la maison mère et filiales étrangères",
+      href: "/posts/ubs-capital-filiales-etrangeres-double-levier/",
+      kind: "article"
+    }],
+    sources: [{
+      label: "Comité de Bâle, CAP10",
+      href: "https://www.bis.org/committees/bcbs/basel-framework/standard/cap/10/inforce/2019-12-15/published/2020-06-05",
+      kind: "source"
+    }],
+    related: ["cet1", "double-levier"]
+  },
+  'double-levier': {
+    intuition: "La dette reste à rembourser par la maison mère, même si la valeur des actions de sa filiale chute.",
+    articles: [{
+      label: "UBS : capital de la maison mère et filiales étrangères",
+      href: "/posts/ubs-capital-filiales-etrangeres-double-levier/",
+      kind: "article"
+    }],
+    sources: [{
+      label: "FINMA, double leverage",
+      href: "https://www.finma.ch/en/news/2025/06/20250606-mm-finma-tbtf/",
+      kind: "source"
+    }],
+    related: ["cet1", "at1"]
   },
   'risque-de-reinvestissement': {
     intuition: "Récupérer son capital donne de la liquidité, puis oblige à choisir un nouveau placement. Le taux du prêt remboursé cesse de produire un revenu.",

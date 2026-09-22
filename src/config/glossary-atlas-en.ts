@@ -1749,8 +1749,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
     slug: 'cet1',
     sigle: 'CET1',
-    nom: 'Common Equity Tier 1 capital ratio',
-    def: 'A bank solvency ratio that compares its highest-quality loss-absorbing capital with risk-weighted assets. It shows the capital buffer available against unexpected losses, not the absence of credit losses or liquidity risk.',
+    nom: 'Common Equity Tier 1 capital',
+    def: "The highest-quality regulatory capital, including common shares and retained earnings after prudential adjustments. The CET1 ratio divides that amount by risk-weighted assets; capital and its ratio are distinct measures.",
     guide: '/en/guides/read-bank-health/',
     ...privateCreditSection,
     atlas: {
@@ -1838,6 +1838,52 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       sources: [{ label: 'BlackRock Credit Strategies Fund, 2024 prospectus', href: 'https://www.sec.gov/Archives/edgar/data/1752019/000119312524242920/d815713d424b3.htm', detail: 'Prepayment Risk and Reinvestment Risk, pages 13 and 88.', kind: 'source' }],
       related: ['credit-prive', 'bdc'],
     },
+  },
+  {
+    slug: "at1",
+    sigle: "AT1",
+    nom: "Additional Tier 1",
+    def: "Additional Tier 1 regulatory capital. Subordinated, perpetual instruments whose distributions can be cancelled and whose principal can be converted or written down under the applicable terms. Tier 1 combines CET1 and AT1, with different loss-absorption mechanisms.",
+    guide: "/en/analysis/ubs-foreign-subsidiaries-capital-double-leverage/",
+    sectionTitle: "Bank capital & regulation",
+    accent: "var(--color-topic-blue)",
+    atlas: {
+      intuition: "Cancelling a coupon retains liquidity; conversion or principal writedown absorbs losses under the instrument’s terms.",
+      articles: [{
+        label: "UBS: parent capital and foreign subsidiaries",
+        href: "/en/analysis/ubs-foreign-subsidiaries-capital-double-leverage/",
+        kind: "article"
+      }],
+      sources: [{
+        label: "Basel Committee, CAP10",
+        href: "https://www.bis.org/committees/bcbs/basel-framework/standard/cap/10/inforce/2019-12-15/published/2020-06-05",
+        kind: "source"
+      }],
+      related: ["cet1", "double-levier"]
+    }
+  },
+  {
+    slug: "double-levier",
+    sigle: "Double leverage",
+    nom: "Double leverage",
+    def: "Funding a subsidiary’s equity partly with debt issued by its parent. The subsidiary receives equity while the parent retains a repayment obligation. A fall in the investment’s value can therefore reduce the parent’s capital.",
+    guide: "/en/analysis/ubs-foreign-subsidiaries-capital-double-leverage/",
+    sectionTitle: "Bank capital & regulation",
+    accent: "var(--color-topic-blue)",
+    atlas: {
+      intuition: "The parent still owes its creditors even when its shares in a subsidiary lose value.",
+      articles: [{
+        label: "UBS: parent capital and foreign subsidiaries",
+        href: "/en/analysis/ubs-foreign-subsidiaries-capital-double-leverage/",
+        kind: "article"
+      }],
+      sources: [{
+        label: "FINMA, double leverage",
+        href: "https://www.finma.ch/en/news/2025/06/20250606-mm-finma-tbtf/",
+        kind: "source"
+      }],
+      related: ["cet1", "at1"]
+    }
   },
 ];
 
