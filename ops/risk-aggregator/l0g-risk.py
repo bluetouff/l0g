@@ -313,7 +313,27 @@ def idx_energie(src, attempt_at):
         if isinstance(row, dict) and row.get("date")
     }
     notes = [str(note)[:240] for note in (data.get("notes") or []) if note]
-    if oil_sources == ["eia"]:
+    degraded = [
+        f"{name}: {str(row.get('source_warning') or 'composant périmé ou en repli')[:240]}"
+        for name, row in series.items()
+        if isinstance(row, dict) and (
+            row.get("stale") is True
+            or row.get("quality_status") in ("stale", "cached-current", "unavailable", "invalidated")
+        )
+    ]
+    for name in ("brent", "wti"):
+        if not series.get(name):
+            degraded.append(f"{name}: composant absent")
+    delayed_notes = {
+        row.get("source_warning")
+        for row in series.values()
+        if isinstance(row, dict) and row.get("quality_status") == "official-delayed"
+    }
+    # Un retard officiel n'absorbe jamais une erreur sur un autre composant.
+    degraded.extend(note for note in notes if note not in delayed_notes)
+    if oil_sources == ["eia"] and any(
+        row.get("quality_status") == "official-delayed" for row in oil
+    ):
         item.update(
             {
                 "qualityStatus": "official-delayed",
@@ -323,8 +343,14 @@ def idx_energie(src, attempt_at):
             }
         )
         notes.insert(0, "Brent/WTI : source EIA quotidienne officielle, publication différée.")
-    if notes and item["qualityStatus"] == "nominal":
-        item["qualityStatus"] = "degraded"
+    if degraded:
+        item.update({
+            "qualityStatus": "degraded",
+            "fallbackUsed": True,
+            "fallbackLayer": "producer",
+            "fallbackReason": degraded[0],
+        })
+        notes = degraded + notes
     item["warnings"] = list(dict.fromkeys(notes))[:10]
     item["componentSources"] = {"oil": oil_sources}
     return observation_fields(item, component_dates, attempt_at)

@@ -251,10 +251,10 @@ class AggregatorContractTest(unittest.TestCase):
             "generated": "2026-07-18T10:00:00Z",
             "composite": {"score": 42.1, "regime": "normal"},
             "series": {
-                "brent": {"date": "2026-07-13", "tip_source": "eia"},
-                "wti": {"date": "2026-07-13", "tip_source": "eia"},
+                "brent": {"date": "2026-07-13", "tip_source": "eia", "quality_status": "official-delayed", "source_warning": "Brent EIA différé"},
+                "wti": {"date": "2026-07-13", "tip_source": "eia", "quality_status": "official-delayed"},
             },
-            "notes": ["OilPriceAPI HTTP 402", "Yahoo HTTP 429"],
+            "notes": ["Brent EIA différé"],
         }
         try:
             current = RISK.idx_energie(
@@ -268,7 +268,52 @@ class AggregatorContractTest(unittest.TestCase):
         self.assertEqual(current["fallbackLayer"], "producer")
         self.assertEqual(current["componentDates"]["brent"], "2026-07-13")
         self.assertEqual(current["observedAt"], "2026-07-13T00:00:00Z")
-        self.assertIn("OilPriceAPI HTTP 402", current["warnings"])
+        self.assertIn("Brent EIA différé", current["warnings"])
+
+    def test_energy_official_delay_never_masks_component_failures(self):
+        for broken in (
+            {"brent": {"stale": True}},
+            {"brent_wti_spread": {"quality_status": "stale"}},
+            {"henry_hub": {"quality_status": "cached-current", "source_warning": "EIA timeout"}},
+            {"elec_fr": {"stale": True}},
+            {"brent": None},
+        ):
+            with self.subTest(broken=broken):
+                series = {
+                    "brent": {"date": "2026-07-13", "tip_source": "eia", "quality_status": "official-delayed"},
+                    "wti": {"date": "2026-07-13", "tip_source": "eia", "quality_status": "official-delayed"},
+                }
+                for name, fields in broken.items():
+                    if fields is None:
+                        series.pop(name)
+                    else:
+                        series[name] = {**series.get(name, {}), **fields}
+                with patch.object(RISK, "fetch_json", return_value={
+                    "generated": "2026-07-18T10:00:00Z",
+                    "composite": {"score": 42.1}, "series": series,
+                }):
+                    current = RISK.idx_energie({"url": "https://energie.example/snapshot.json"}, "2026-07-18T10:05:00Z")
+                self.assertEqual(current["sourceStatus"], "ok")
+                self.assertEqual(current["qualityStatus"], "degraded")
+                self.assertEqual(current["fallbackLayer"], "producer")
+                self.assertTrue(current["fallbackUsed"])
+                self.assertIn(next(iter(broken)), current["warnings"][0])
+
+    def test_energy_nominal_oil_is_not_reported_as_delayed(self):
+        payload = {
+            "generated": "2026-07-18T10:00:00Z", "composite": {"score": 42.1},
+            "series": {name: {"date": "2026-07-17", "tip_source": "eia", "quality_status": "nominal"}
+                       for name in ("brent", "wti")},
+        }
+        with patch.object(RISK, "fetch_json", return_value=payload):
+            current = RISK.idx_energie({"url": "https://energie.example/snapshot.json"}, "2026-07-18T10:05:00Z")
+        self.assertEqual(current["qualityStatus"], "nominal")
+        self.assertFalse(current["fallbackUsed"])
+        payload["notes"] = ["CFTC indisponible"]
+        with patch.object(RISK, "fetch_json", return_value=payload):
+            current = RISK.idx_energie({"url": "https://energie.example/snapshot.json"}, "2026-07-18T10:05:00Z")
+        self.assertEqual(current["qualityStatus"], "degraded")
+        self.assertIn("CFTC indisponible", current["warnings"])
 
     def test_confluence_contract_distinguishes_retrieval_from_edgar_freshness(self):
         upstream = {

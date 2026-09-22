@@ -39,11 +39,19 @@ son dernier succès sont préservés, tandis que la nouvelle tentative est daté
 et le statut global passe à `degraded`. Aucune panne ne peut donc être masquée
 par l'horodatage d'assemblage.
 
-Le pétrole reste alimenté gratuitement par le spot quotidien officiel EIA
-quand les sources optionnelles plus rapides échouent. Le producteur expose
-alors `tip_source=eia` et les dates Brent/WTI ; l'agrégateur le traduit en
-`qualityStatus=official-delayed`, sans présenter cette valeur comme du spot
-temps réel.
+Le pétrole est alimenté par le spot quotidien officiel EIA. Un composant
+déclaré `official-delayed` conserve ce retard dans l'agrégat. Une série périmée,
+absente ou réutilisée après une erreur de collecte impose en revanche
+`qualityStatus=degraded`, avec la cause en tête des avertissements. Un retard
+EIA ne masque donc pas une panne d'un autre composant.
+
+Le contrôle public exige une collecte Brent/WTI `official-unfiltered-v1` et
+vérifie aussi la dernière date commune du spread Brent-WTI. Les dates invalides,
+futures ou âgées de plus de dix jours font échouer le contrôle. Après une mise
+à jour du producteur, renouveler les caches EIA depuis la source, actualiser le
+manifeste de révisions et d'empreintes, puis activer l'agrégateur avant la
+vérification publique. Les dates et révisions des anciennes archives restent
+inchangées.
 
 ## Journal des déclarations 13F
 

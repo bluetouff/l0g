@@ -38,7 +38,11 @@ function fixture() {
     aggregate: { version: '2', status: 'degraded', generated: now, software: { revision: 'abc123', revisionStatus: 'reported', sourceSha256: 'a'.repeat(64) }, indices: indices.map((item) => ({ ...item })) },
     eu: { generated_at: generated.eu, global_score: 41.2 },
     yen: { generated: generated.yen },
-    energy: { generated: generated.energie, composite: { score: 42.1 }, series: { brent: { label: 'Brent', date: '2026-07-13', tip_source: 'eia' }, wti: { label: 'WTI', date: '2026-07-13', tip_source: 'eia' } } },
+    energy: { generated: generated.energie, composite: { score: 42.1 }, series: {
+      brent: { label: 'Brent', date: '2026-07-13', tip_source: 'eia', source_data_policy: 'official-unfiltered-v1' },
+      wti: { label: 'WTI', date: '2026-07-13', tip_source: 'eia', source_data_policy: 'official-unfiltered-v1' },
+      brent_wti_spread: { date: '2026-07-13', stale: false },
+    } },
     debt: { generated_at: generated.debt, score: { current_stress: 54.2 } },
     confluence: {
       version: '2',
@@ -66,6 +70,55 @@ test('le repli EIA officiel est visible mais accepté', () => {
   const report = auditRiskFlow(fixture(), now);
   assert.equal(report.ok, true);
   assert.ok(report.warnings.some((warning) => warning.includes('officielle différée')));
+});
+
+test('une collecte pétrole sans preuve de suppression du filtre est bloquée', () => {
+  const input = fixture();
+  delete input.energy.series.brent.source_data_policy;
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, false);
+  assert.ok(report.errors.some((error) => error.includes('brent sans preuve de collecte EIA non filtrée')));
+});
+
+test('les dates pétrole invalides ou futures ne contournent pas la fraîcheur', () => {
+  for (const date of [undefined, 'pas-une-date', '2026-02-30', '2026-07-19']) {
+    const input = fixture();
+    input.energy.series.brent.date = date;
+    assert.equal(auditRiskFlow(input, now).ok, false, String(date));
+  }
+});
+
+test('la limite de dix jours et la date commune du spread sont contrôlées', () => {
+  const input = fixture();
+  input.energy.series.brent_wti_spread.date = '2026-07-08';
+  assert.equal(auditRiskFlow(input, now).ok, true);
+  input.energy.series.brent_wti_spread.date = '2026-07-07';
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, false);
+  assert.ok(report.errors.some((error) => error.includes('brent_wti_spread âgé de plus de 10 jours')));
+  delete input.energy.series.brent_wti_spread;
+  assert.ok(auditRiskFlow(input, now).errors.some((error) => error.includes('brent_wti_spread absent')));
+});
+
+test('un composant périmé ne peut pas être qualifié de simple retard officiel', () => {
+  const input = fixture();
+  input.energy.series.brent.stale = true;
+  let report = auditRiskFlow(input, now);
+  assert.equal(report.ok, false);
+  assert.ok(report.errors.some((error) => error.includes('brent déclaré périmé')));
+  assert.ok(report.errors.some((error) => error.includes('qualité agrégée masquant')));
+  input.aggregate.indices.find((item) => item.key === 'energie').qualityStatus = 'degraded';
+  report = auditRiskFlow(input, now);
+  assert.equal(report.ok, false);
+  assert.ok(!report.errors.some((error) => error.includes('qualité agrégée masquant')));
+});
+
+test('une qualité producteur changée après agrégation attend le prochain cycle', () => {
+  const input = fixture();
+  input.energy.series.henry_hub = { quality_status: 'cached-current' };
+  assert.ok(auditRiskFlow(input, now).errors.some((error) => error.includes('qualité agrégée masquant')));
+  input.energy.generated = '2026-07-18T10:00:03Z';
+  assert.equal(auditRiskFlow(input, now).ok, true);
 });
 
 test('un ancien score conservé par l’agrégateur fait échouer le moniteur', () => {

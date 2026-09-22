@@ -99,14 +99,34 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
     }
   }
 
-  const oilRows = [input.energy?.series?.brent, input.energy?.series?.wti].filter(Boolean);
-  if (oilRows.length !== 2) errors.push('energie: Brent/WTI absents');
-  for (const row of oilRows) {
-    if (!row.tip_source) errors.push(`energie: tip_source absent pour ${row.label || 'pétrole'}`);
-    if (!row.date) errors.push(`energie: date absente pour ${row.label || 'pétrole'}`);
-    const age = row.date ? ageHours(`${row.date}T23:59:59Z`, now) : null;
-    if (age != null && age > 10 * 24) errors.push(`energie: point pétrole âgé de plus de 10 jours (${row.date})`);
-    else if (age != null && age > 5 * 24) warnings.push(`energie: point pétrole âgé de plus de 5 jours (${row.date})`);
+  for (const key of ['brent', 'wti', 'brent_wti_spread']) {
+    const row = input.energy?.series?.[key];
+    if (!row) {
+      errors.push(`energie: ${key} absent`);
+      continue;
+    }
+    if (key !== 'brent_wti_spread') {
+      if (row.tip_source !== 'eia') errors.push(`energie: source EIA absente pour ${key}`);
+      if (row.source_data_policy !== 'official-unfiltered-v1') {
+        errors.push(`energie: ${key} sans preuve de collecte EIA non filtrée`);
+      }
+    }
+    const day = typeof row.date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(row.date)
+      ? iso(`${row.date}T00:00:00Z`) : null;
+    if (!day || day.slice(0, 10) !== row.date) {
+      errors.push(`energie: date absente/invalide pour ${key}`);
+      continue;
+    }
+    const age = ageHours(day, `${now.slice(0, 10)}T00:00:00Z`) / 24;
+    if (age < 0) errors.push(`energie: ${key} daté dans le futur (${row.date})`);
+    else if (age > 10) errors.push(`energie: ${key} âgé de plus de 10 jours (${row.date})`);
+    else if (age > 5) warnings.push(`energie: ${key} âgé de plus de 5 jours (${row.date})`);
+    if (row.stale === true || row.quality_status === 'stale') errors.push(`energie: ${key} déclaré périmé par le producteur`);
+  }
+  const degradedEnergy = Object.values(input.energy?.series || {}).some((row) =>
+    row?.stale === true || ['stale', 'cached-current', 'unavailable', 'invalidated'].includes(row?.quality_status));
+  if (degradedEnergy && byKey.get('energie')?.qualityStatus !== 'degraded' && !producerPublishedAfterAttempt.has('energie')) {
+    errors.push('energie: qualité agrégée masquant un composant dégradé');
   }
 
   const confluence = input.confluence || {};
