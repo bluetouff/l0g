@@ -1885,6 +1885,20 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       related: ["cet1", "at1"]
     }
   },
+  {
+    slug: 'cfo',
+    sigle: 'CFO',
+    nom: 'Collateralised Fund Obligation',
+    def: 'A vehicle that finances directly or indirectly held fund interests by issuing debt and equity. Fund distributions pay investors in a contractual order. Subordination allocates losses; reserves and liquidity facilities address cash-flow timing. Here CFO refers to the financing structure, rather than a company’s chief financial officer.',
+    guide: '/en/analysis/private-equity-cfo-bonds-insurers/',
+    ...privateCreditSection,
+    atlas: {
+      intuition: 'A claim can be protected against the first losses while depending on irregular distributions.',
+      articles: [{ label: 'Private equity bonds for insurers', href: '/en/analysis/private-equity-cfo-bonds-insurers/', kind: 'article' }],
+      sources: [{ label: 'Mayer Brown, CFO mechanics', href: 'https://www.mayerbrown.com/en/insights/publications/2023/08/collateralized-fund-obligations-a-growing-cdo-clo-and-fund-finance-liquidity-solution', kind: 'source' }],
+      related: ['credit-prive', 'nav-loan'],
+    },
+  },
 ];
 
 export const glossaryAtlasEnBySlug = new Map(glossaryAtlasEn.map((entry) => [entry.slug, entry]));

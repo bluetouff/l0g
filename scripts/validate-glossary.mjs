@@ -28,9 +28,9 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 548, 'Le corpus doit conserver ses 548 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 102, 'Le graphe Atlas doit conserver ses 102 nœuds');
-assert.equal(glossaryAtlasEdgeCount, 401, 'Le graphe Atlas doit conserver ses 401 relations');
+assert.equal(glossaryEntries.length, 549, 'Le corpus doit conserver ses 549 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 103, 'Le graphe Atlas doit conserver ses 103 nœuds');
+assert.equal(glossaryAtlasEdgeCount, 403, 'Le graphe Atlas doit conserver ses 403 relations');
 for (const [entry, href] of [
   [glossaryEntries.find((item) => item.slug === 'tokenisation-des-actifs'), '/posts/actions-tokenisees-xstocks-vaults-chaine-credit/'],
   [glossaryAtlasEnBySlug.get('tokenisation-des-actifs'), '/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/'],
