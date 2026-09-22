@@ -160,7 +160,7 @@ test('proposals reject executable, impersonated or credential-bearing sources an
 test('shared links select only known dates and relations and cannot enable an anachronistic scenario', () => {
   assert.deepEqual(atlasSelection(source, '#date=2024-09-17&relation=nvidia-sb-guarantee&scenario=default'), { date: '2024-09-17', relation: 'nvidia-aip', scenario: false });
   assert.deepEqual(atlasSelection(source, '#date=2026-08-17&relation=openai-sb-lease&scenario=default'), { date: '2026-08-17', relation: 'openai-sb-lease', scenario: true });
-  assert.equal(atlasSelection(source, '#date=2027-01-01&relation=%3Cscript%3E').date, '2026-08-26');
+  assert.equal(atlasSelection(source, '#date=2027-01-01&relation=%3Cscript%3E').date, '2026-09-01');
   assert.equal(atlasSelection(source, '#date=2026-08-26&relation=blackrock-aip&scenario=default').scenario, false);
   assert.equal(isAtlasDate('2026-02-30'), false);
   assert.equal(isAtlasDate('2024-02-29'), true);
@@ -170,4 +170,41 @@ test('shared links select only known dates and relations and cannot enable an an
 test('links never imply a financing contract from the shared Nvidia node', () => {
   assert.equal(source.relations.some(item => item.from === 'aip' && ['sb-energy', 'openai-tenant'].includes(item.to)), false);
   assert.equal(source.relations.some(item => item.observations.some(observation => observation.amount) && item.id !== 'nvidia-sb-guarantee'), false);
+});
+
+test('new AI investments enter on publication, separately from the lease guarantee', () => {
+  const beforeAcquisition = atlasAt(source, '2026-07-20');
+  assert.equal(beforeAcquisition.nodes.some(node => ['aligned', 'aligned-consortium'].includes(node.id)), false);
+  const acquisition = atlasAt(source, '2026-07-21');
+  assert.deepEqual(acquisition.relations.filter(relation => relation.to === 'aligned-consortium').map(relation => relation.from).sort(), ['aip', 'gip', 'mgx']);
+  assert.equal(acquisition.relations.find(relation => relation.id === 'consortium-aligned-acquisition').observation.amount, undefined);
+  assert.equal(atlasAt(source, '2026-08-31').nodes.some(node => node.id === 'se-global'), false);
+  const equity = atlasAt(source, '2026-09-01').relations.find(relation => relation.id === 'nvidia-se-global-equity');
+  assert.equal(equity.to, 'se-global');
+  assert.equal(equity.observation.amount, undefined); // Equity commitment is not a guarantee cap.
+  assert.equal(equity.observation.recordedOn, '2026-09-22');
+  assert.equal(atlasSelection(source, '#date=2026-09-01&relation=nvidia-se-global-equity&scenario=default').scenario, false);
+});
+
+test('ARCC financing evolves from announcement to closing without rewriting the earlier cut', () => {
+  assert.equal(atlasAt(credit, '2026-09-07').nodes.some(node => node.id === 'arcc-noteholders'), false);
+  const announcement = atlasAt(credit, '2026-09-14');
+  assert.equal(announcement.relations.find(relation => relation.id === 'noteholders-arcc').observation.kind, 'announcement');
+  assert.equal(announcement.sources.some(source => source.id === 'arcc-notes-close-20260915'), false);
+  const closed = atlasAt(credit, '2026-09-15').relations.find(relation => relation.id === 'noteholders-arcc');
+  assert.equal(closed.observation.kind, 'contract');
+  assert.deepEqual(closed.observation.sources, ['arcc-notes-close-20260915']);
+  assert.equal(credit.relations.some(relation => relation.from === 'arcc-noteholders' && relation.to !== 'arcc'), false);
+});
+
+test('Volare appears as a proposed funding circuit with no inferred bank guarantee or payment', () => {
+  const earlier = atlasAt(oil, '2026-09-20');
+  assert.equal(earlier.nodes.some(node => node.id.startsWith('volare')), false);
+  assert.equal(earlier.sources.some(source => source.id === 'volare-launch-20260921'), false);
+  const latest = atlasAt(oil, '2026-09-21');
+  const newRelations = latest.relations.filter(relation => relation.observation.publishedOn === '2026-09-21');
+  assert.equal(newRelations.length, 3);
+  assert.ok(newRelations.every(relation => relation.observation.kind === 'announcement' && relation.observation.amount === undefined));
+  assert.equal(oil.relations.some(relation => ['unicredit', 'socgen', 'ercf', 'liquidity'].includes(relation.from) && relation.to.startsWith('volare')), false);
+  assert.equal(atlasSelection(oil, '#date=2026-09-21&relation=investors-volare&scenario=default').scenario, false);
 });

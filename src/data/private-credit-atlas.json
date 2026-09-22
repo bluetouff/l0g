@@ -31,6 +31,20 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1858681/000185868126000040/apo-20260630.htm",
       "publishedOn": "2026-08-10",
       "locator": "Note 1, Organization (gestion de fonds et retraite) ; note 16, Retirement Services, rubriques AAA et Atlas (participations). Dépôt SEC du 10 août 2026."
+    },
+    {
+      "id": "arcc-notes-announcement-20260908",
+      "title": "Ares Capital : annonce de l’offre obligataire 2033",
+      "url": "https://arcc.ares.com/news/ares-capital-corporation-prices-public-offering-of-dollar750-million-6250percent-unsecured-notes-due-2033/163b0c8a-ae5a-4414-9a2b-f496aac4c6c1",
+      "publishedOn": "2026-09-08",
+      "locator": "Communiqué du 8 septembre : nominal, coupon, échéance, clôture attendue et emploi prévu des fonds."
+    },
+    {
+      "id": "arcc-notes-close-20260915",
+      "title": "Ares Capital : 8-K confirmant la clôture de l’émission",
+      "url": "https://www.sec.gov/Archives/edgar/data/1287750/000110465926107911/tm2625396d1_8k.htm",
+      "publishedOn": "2026-09-15",
+      "locator": "Items 1.01 et 8.01 : clôture au 15 septembre, obligations non garanties, emploi prévu du produit et contrat d’échange de taux avec JPMorgan."
     }
   ],
   "nodes": [
@@ -110,6 +124,13 @@
       "role": "Entreprise emprunteuse",
       "column": 3,
       "row": 3
+    },
+    {
+      "id": "arcc-noteholders",
+      "label": "Porteurs d’obligations ARCC",
+      "role": "Financement obligataire · échéance 2033",
+      "column": 0,
+      "row": 2
     }
   ],
   "relations": [
@@ -352,6 +373,39 @@
           ]
         }
       ]
+    },
+    {
+      "id": "noteholders-arcc",
+      "from": "arcc-noteholders",
+      "to": "arcc",
+      "observations": [
+        {
+          "publishedOn": "2026-09-08",
+          "recordedOn": "2026-09-22",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Émission annoncée · 750 M$",
+          "claim": "ARCC annonce une offre de 750 millions de dollars de nominal, au coupon annuel de 6,250 %, avec échéance le 15 septembre 2033. La clôture est attendue le 15 septembre 2026.",
+          "limit": "À cette date, la clôture reste soumise à conditions. Le nominal diffère du produit net après décote et frais.",
+          "watch": "Clôture et utilisation du produit.",
+          "sources": [
+            "arcc-notes-announcement-20260908"
+          ]
+        },
+        {
+          "publishedOn": "2026-09-15",
+          "recordedOn": "2026-09-22",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Émission clôturée · 750 M$",
+          "claim": "ARCC confirme la clôture, le 15 septembre, de l’émission de 750 millions de dollars de nominal. Ces obligations non garanties portent un coupon de 6,250 % et arrivent à échéance le 15 septembre 2033. Le produit net doit servir à rembourser des dettes sur ses facilités de crédit.",
+          "limit": "L’affectation aux remboursements reste une intention déclarée. Le coupon ne résume pas le coût après le contrat d’échange de taux conclu avec JPMorgan. Aucun prêt précis du portefeuille n’est financé par déduction.",
+          "watch": "Remboursements réalisés et effets du contrat d’échange de taux.",
+          "sources": [
+            "arcc-notes-close-20260915"
+          ]
+        }
+      ]
     }
   ],
   "milestones": [
@@ -369,6 +423,16 @@
       "date": "2026-08-10",
       "label": "Le circuit assurance",
       "change": "Les rapports d’Apollo et d’Athene au 30 juin 2026 décrivent les mandats de gestion, les participations indirectes et les titres détenus. Les liens de 2024 conservent leur date d’origine."
+    },
+    {
+      "date": "2026-09-08",
+      "label": "L’offre obligataire",
+      "change": "ARCC annonce une offre obligataire pour refinancer des dettes sur ses facilités de crédit. La réalisation n’est pas encore attestée par ce communiqué."
+    },
+    {
+      "date": "2026-09-15",
+      "label": "L’émission clôturée",
+      "change": "Le 8-K confirme la clôture de l’émission. Le financement obligataire d’ARCC apparaît à côté de ses facilités bancaires ; les remboursements effectifs restent à documenter."
     }
   ]
 }

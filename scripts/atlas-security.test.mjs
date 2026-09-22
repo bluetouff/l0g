@@ -12,6 +12,10 @@ test('atlas source links retain exact HTTPS origin and path validation at use', 
   const sec = 'https://www.sec.gov/Archives/edgar/data/1/2/a.htm';
   assert.equal(atlasSourceUrl('HTTPS://WWW.SEC.GOV:443/Archives/edgar/data/1/2/a.htm'), sec);
   assert.equal(atlasSourceUrl('https://ir.blackrock.com/news'), 'https://ir.blackrock.com/news');
+  for (const origin of ['https://aligneddc.com', 'https://arcc.ares.com']) {
+    assert.equal(atlasSourceUrl(`${origin}/news`), `${origin}/news`);
+    for (const url of [`${origin}.evil.example/news`, `${origin}@evil.example/news`, `${origin}/news?token=private`, `${origin}/news#fragment`, origin.replace('https://', 'https://user:pass@') + '/news']) assert.throws(() => atlasSourceUrl(url));
+  }
   for (const value of ['javascript:void(0)', 'JaVaScRiPt:void(0)', 'java\nscript:void(0)', 'data:text/html,test', '//www.sec.gov/x', 'http://www.sec.gov/x', 'https://www.sec.gov.evil.example/x', 'https://www.sec.gov@evil.example/x', `${sec}?token=private`, `${sec}#anchor`, 'https://www.sec.gov/admin', 'https://user:pass@ir.blackrock.com/news']) assert.throws(() => atlasSourceUrl(value));
 });
 

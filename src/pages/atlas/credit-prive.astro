@@ -11,9 +11,10 @@ const latestDate = dataset.milestones.at(-1)!.date;
     subject="crédit privé"
     intro="Qui apporte les capitaux, qui gère les fonds et qui emprunte ? Explorez deux circuits documentés : les prêts aux entreprises autour d’Ares Capital et le crédit adossé à des actifs autour d’Apollo et d’Athene."
     boundary="La carte couvre une sélection de relations publiées, principalement aux États-Unis. Un même acteur peut intervenir dans plusieurs circuits : cela n’établit pas qu’une banque finance un prêt précis, ni qu’elle garantit les autres participants. ATLAS SP désigne ici une société, distincte des atlas l0g."
-    selectedRelation="arcc-hyland"
+    selectedRelation="noteholders-arcc"
     hubs={['arcc', 'atlas-sp', 'athene']}
     entryPoints={[
+      { label: 'Comment ARCC se refinance-t-elle ?', relation: 'noteholders-arcc', date: latestDate },
       { label: 'Où interviennent les banques ?', relation: 'bnp-afb', date: latestDate },
       { label: 'Comment l’assureur investit-il ?', relation: 'athene-atlas', date: latestDate },
       { label: 'Quelle entreprise reçoit un prêt ?', relation: 'arcc-hyland', date: latestDate },

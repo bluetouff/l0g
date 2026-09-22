@@ -23,6 +23,18 @@ Les relations peuvent porter un lien `reading` vers une enquête interne, valid�
 
 ## Trois dates distinctes
 
+### Enrichissement revu le 22 septembre 2026
+
+Les trois corpus conservent leurs dates de création et leurs observations précédentes. Les ajouts portent la vraie date de revue du 22 septembre ; ils apparaissent à la date de publication de chaque pièce, même lorsqu’une opération a été signée auparavant.
+
+- IA : membres du consortium Aligned, acquisition et capital de croissance distingués, puis engagement conditionnel d’achat d’actions de Nvidia. Le contrat nomme SE Global Holdings, Inc. ; ce nœud est distinct du bailleur du campus. Le montant d’investissement n’est pas encodé comme un plafond de garantie. La publication SEC du contrat est le 1er septembre, sa signature le 17 août.
+- Crédit privé : deux observations de la même relation de financement obligataire d’ARCC, annonce du 8 septembre puis clôture confirmée par le 8-K publié le 15 septembre. L’emploi prévu du produit ne prouve pas les remboursements bancaires réalisés. Le coupon et le contrat d’échange de taux ne sont pas assimilés à un coût net calculé.
+- Pétrole : l’annonce du 21 septembre sépare actionnariat et gestion commerciale, placement envisagé et programme de flotte de Volare. Aucun prêt ou garantie bancaire vers Volare n’est inféré des facilités de Trafigura.
+
+Ces enrichissements sont réalisés à la demande. La veille automatique reste en pause ; aucune récurrence n’est nécessaire au fonctionnement des pages statiques.
+
+### Convention du corpus
+
 - `publishedOn` : date de publication de la pièce primaire, jamais la seule date de signature du contrat ni la date de fin du trimestre.
 - `recordedOn` : date réelle de lecture et de revue pour l’atlas.
 - `reconstructedOn` : création de cette reconstitution documentaire. Elle ne constitue pas une archive attestée de connaissances de l0g aux dates anciennes.
@@ -59,4 +71,4 @@ Ajouter une nouvelle origine primaire exige une modification explicite de la lis
 Le S-1 de SB Energy identifié le 16 septembre 2026 mérite une lecture :
 https://www.sec.gov/Archives/edgar/data/2133037/000162828026059639/sbenergy-sx1.htm
 
-La lecture intégrale a été bloquée durant l’édition initiale (document trop volumineux via la recherche, accès direct refusé). Aucune nouvelle relation ni donnée financière de ce S-1 n’a été intégrée. Vérifier également ses amendements avant de proposer un ajout. Cette limite ne justifie aucune extrapolation.
+La lecture intégrale a été bloquée durant l’édition initiale (document trop volumineux via la recherche, accès direct refusé). Le 22 septembre, l’annexe d’achat d’actions a été lue séparément et intégrée ; cela ne vaut pas revue intégrale du S-1. L’amendement du 4 septembre publie aussi des modèles de bail et de garantie. Leur existence ne prouve ni la réalisation de l’introduction en Bourse, ni une levée des clauses masquées. Vérifier les amendements et les conditions restantes avant tout ajout supplémentaire.

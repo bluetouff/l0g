@@ -24,6 +24,13 @@
       "url": "https://www.trafigura.com/news-and-insights/press-releases/2026/trafigura-closes-usd5-8-billion-revolving-credit-facilities-and-signs-usd3-0-billion-contingent-liquidity-facility/",
       "publishedOn": "2026-03-10",
       "locator": "Communiqué du 10 mars 2026 : usage des facilités, échéances, coordinateurs et syndication."
+    },
+    {
+      "id": "volare-launch-20260921",
+      "title": "Trafigura : lancement de Volare Shipping",
+      "url": "https://www.trafigura.com/news-and-insights/press-releases/2026/trafigura-launches-volare-shipping/",
+      "publishedOn": "2026-09-21",
+      "locator": "Communiqué du 21 septembre : actionnariat, gestion commerciale, placement envisagé, conditions de cotation et programme de navires."
     }
   ],
   "nodes": [
@@ -117,6 +124,27 @@
       "role": "Destinataire du solde disponible",
       "column": 3,
       "row": 4
+    },
+    {
+      "id": "volare-investors",
+      "label": "Investisseurs du placement",
+      "role": "Souscripteurs envisagés · Volare",
+      "column": 2,
+      "row": 1
+    },
+    {
+      "id": "volare",
+      "label": "Volare Shipping",
+      "role": "Société de transport pétrolier",
+      "column": 3,
+      "row": 2
+    },
+    {
+      "id": "volare-fleet",
+      "label": "Flotte Volare",
+      "role": "Navires en service et commandes",
+      "column": 3,
+      "row": 1
     }
   ],
   "relations": [
@@ -455,6 +483,66 @@
           ]
         }
       ]
+    },
+    {
+      "id": "trafigura-volare",
+      "from": "trafigura",
+      "to": "volare",
+      "observations": [
+        {
+          "publishedOn": "2026-09-21",
+          "recordedOn": "2026-09-22",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Actionnaire majoritaire · gestion commerciale",
+          "claim": "Trafigura annonce la création de Volare, dont elle est actionnaire majoritaire. Son activité maritime assure la gestion commerciale de la flotte.",
+          "limit": "Cette participation ne constitue pas une garantie des dettes de Volare. Le communiqué prévoit le maintien du contrôle après la cotation proposée.",
+          "watch": "Actionnariat après opération et conventions de gestion.",
+          "sources": [
+            "volare-launch-20260921"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "investors-volare",
+      "from": "volare-investors",
+      "to": "volare",
+      "observations": [
+        {
+          "publishedOn": "2026-09-21",
+          "recordedOn": "2026-09-22",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Placement envisagé · environ 500 M$",
+          "claim": "Volare envisage un placement privé d’environ 500 millions de dollars, puis une cotation sur Euronext Growth Oslo vers le 5 octobre 2026.",
+          "limit": "Placement et cotation restent conditionnels, notamment à la réussite du placement et à l’accord de la place boursière. Aucun encaissement n’est attesté ici.",
+          "watch": "Résultat du placement et admission effective.",
+          "sources": [
+            "volare-launch-20260921"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "volare-fleet-programme",
+      "from": "volare",
+      "to": "volare-fleet",
+      "observations": [
+        {
+          "publishedOn": "2026-09-21",
+          "recordedOn": "2026-09-22",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Flotte et programme de construction",
+          "claim": "Volare déclare exploiter six grands pétroliers de type VLCC et avoir huit navires en commande. Selon son dirigeant, le placement envisagé doit financer intégralement ce programme de construction.",
+          "limit": "Les navires commandés ne sont pas tous livrés. L’utilisation annoncée du placement n’est pas un paiement attesté aux chantiers.",
+          "watch": "Livraisons et financement effectivement reçu.",
+          "sources": [
+            "volare-launch-20260921"
+          ]
+        }
+      ]
     }
   ],
   "milestones": [
@@ -472,6 +560,11 @@
       "date": "2026-03-10",
       "label": "Les banques de Trafigura",
       "change": "Le communiqué de mars 2026 ajoute des rôles bancaires et deux ensembles de facilités. La réserve de précaution conserve les conditions de l’annonce ; sa prolongation n’est pas établie ici."
+    },
+    {
+      "date": "2026-09-21",
+      "label": "Le projet Volare",
+      "change": "Trafigura annonce Volare : participation au capital, gestion commerciale et placement envisagé sont distingués. Les fonds attendus pour les navires ne sont pas présentés comme déjà encaissés."
     }
   ]
 }

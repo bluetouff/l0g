@@ -31,6 +31,20 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda2027q2ex101.htm",
       "publishedOn": "2026-08-26",
       "locator": "Sections 1(b), 1(c), 1(d), 2 et 8 : formule masquée, actualisation, plafond et conditions."
+    },
+    {
+      "id": "aligned-close-20260721",
+      "title": "Aligned : acquisition finalisée par AIP, MGX et GIP",
+      "url": "https://aligneddc.com/press-release/aip-mgx-and-blackrocks-gip-close-acquisition-of-aligned-data-centers/",
+      "publishedOn": "2026-07-21",
+      "locator": "Communiqué du 21 juillet 2026, ouverture et paragraphe « In connection with the closing » : consortium, acquisition, valeur d’entreprise et capital de croissance engagé."
+    },
+    {
+      "id": "sb-equity-20260901",
+      "title": "SB Energy : accord d’achat d’actions entre SE Global Holdings et Nvidia",
+      "url": "https://www.sec.gov/Archives/edgar/data/2133037/000162828026059639/exhibit1028-sharepurchasea.htm",
+      "publishedOn": "2026-09-01",
+      "locator": "Contrat du 17 août 2026 joint au S-1 déposé le 1er septembre. Section 1(a)–(b) : actions de classe N, montant, conditions de l’introduction en Bourse et règlement."
     }
   ],
   "nodes": [
@@ -42,7 +56,28 @@
     { "id": "xai", "label": "xAI", "role": "Partenaire annoncé en 2025", "column": 1, "row": 3 },
     { "id": "nvidia", "label": "Nvidia", "role": "Technologie et engagements", "column": 2, "row": 1 },
     { "id": "openai-tenant", "label": "OpenAI · filiale", "role": "Locataire du campus", "column": 3, "row": 0 },
-    { "id": "sb-energy", "label": "SB Energy", "role": "Bailleur du campus", "column": 3, "row": 2 }
+    { "id": "sb-energy", "label": "SB Energy", "role": "Bailleur du campus", "column": 3, "row": 2 },
+    {
+      "id": "aligned-consortium",
+      "label": "Consortium Aligned",
+      "role": "AIP · MGX · GIP",
+      "column": 1,
+      "row": 2
+    },
+    {
+      "id": "aligned",
+      "label": "Aligned Data Centers",
+      "role": "Société acquise par le consortium",
+      "column": 2,
+      "row": 2
+    },
+    {
+      "id": "se-global",
+      "label": "SE Global Holdings, Inc.",
+      "role": "Émetteur dans le dossier SB Energy",
+      "column": 3,
+      "row": 3
+    }
   ],
   "relations": [
     { "id": "blackrock-aip", "from": "blackrock", "to": "aip", "observations": [{ "publishedOn": "2024-09-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire fondateur", "claim": "BlackRock annonce la création du partenariat avec GIP, Microsoft et MGX.", "limit": "La qualité de partenaire ne chiffre pas son apport individuel.", "watch": "Engagements de capital individualisés et opérations réalisées.", "sources": ["aip-2024"] }] },
@@ -59,12 +94,138 @@
       { "publishedOn": "2026-08-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "contract", "label": "Garantie de valeur résiduelle", "claim": "Nvidia déclare des garanties plafonnées initialement à 105 milliards de dollars. Après certains défauts, le paiement dépend notamment des récupérations par relocation ou vente ; Nvidia dispose aussi d’options, dont la reprise du bail.", "limit": "Plafond cumulé conditionnel, sans estimation de perte. Les obligations dépendent notamment des conditions de mise à disposition des locaux.", "watch": "Modèle de garantie et conditions de démarrage des baux.", "sources": ["nvda-8k-20260817"], "amount": { "value": "105000000000", "currency": "USD", "kind": "conditional-cap", "label": "105 Md$ · plafond initial cumulé" } },
       { "publishedOn": "2026-08-26", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "limitation", "label": "Garantie · formule partiellement masquée", "claim": "Le modèle de garantie précise les conditions et options. La formule de la perte couverte, le taux d’actualisation et certains paramètres de limitation restent masqués.", "limit": "Les éléments publics ne permettent pas de chiffrer une perte dans un scénario de défaut. Le plafond initial porte sur plusieurs garanties.", "watch": "Publication des paramètres masqués, amendements et mises en service.", "sources": ["nvda-8k-20260817", "nvda-ex101-20260826"], "amount": { "value": "105000000000", "currency": "USD", "kind": "conditional-cap", "label": "105 Md$ · plafond initial cumulé" } }
     ] },
-    { "id": "openai-nvidia-indemnity", "from": "openai-tenant", "to": "nvidia", "observations": [{ "publishedOn": "2026-08-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "contract", "label": "Remboursement et indemnisation", "claim": "Le 8-K indique qu’OpenAI s’engage à rembourser et indemniser Nvidia pour les sommes versées au bailleur.", "limit": "Un engagement de remboursement ne garantit pas la capacité future à payer.", "watch": "Identité précise des obligés et conditions de recouvrement.", "sources": ["nvda-8k-20260817"] }] }
+    { "id": "openai-nvidia-indemnity", "from": "openai-tenant", "to": "nvidia", "observations": [{ "publishedOn": "2026-08-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "contract", "label": "Remboursement et indemnisation", "claim": "Le 8-K indique qu’OpenAI s’engage à rembourser et indemniser Nvidia pour les sommes versées au bailleur.", "limit": "Un engagement de remboursement ne garantit pas la capacité future à payer.", "watch": "Identité précise des obligés et conditions de recouvrement.", "sources": ["nvda-8k-20260817"] }] },
+    {
+      "id": "aip-aligned-consortium",
+      "from": "aip",
+      "to": "aligned-consortium",
+      "observations": [
+        {
+          "publishedOn": "2026-07-21",
+          "recordedOn": "2026-09-22",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Membre du consortium",
+          "claim": "Aligned cite AIP parmi les membres du consortium acquéreur.",
+          "limit": "La part individuelle d’AIP n’est pas chiffrée.",
+          "watch": "Répartition du capital.",
+          "sources": [
+            "aligned-close-20260721"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mgx-aligned-consortium",
+      "from": "mgx",
+      "to": "aligned-consortium",
+      "observations": [
+        {
+          "publishedOn": "2026-07-21",
+          "recordedOn": "2026-09-22",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Membre du consortium",
+          "claim": "Aligned cite MGX parmi les membres du consortium acquéreur.",
+          "limit": "La part individuelle de MGX n’est pas chiffrée.",
+          "watch": "Répartition du capital.",
+          "sources": [
+            "aligned-close-20260721"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gip-aligned-consortium",
+      "from": "gip",
+      "to": "aligned-consortium",
+      "observations": [
+        {
+          "publishedOn": "2026-07-21",
+          "recordedOn": "2026-09-22",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Membre du consortium",
+          "claim": "Aligned cite GIP parmi les membres du consortium acquéreur.",
+          "limit": "La part individuelle de GIP n’est pas chiffrée.",
+          "watch": "Répartition du capital.",
+          "sources": [
+            "aligned-close-20260721"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "consortium-aligned-acquisition",
+      "from": "aligned-consortium",
+      "to": "aligned",
+      "observations": [
+        {
+          "publishedOn": "2026-07-21",
+          "recordedOn": "2026-09-22",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Acquisition finalisée et capital engagé",
+          "claim": "Aligned annonce le rachat de 100 % de son capital par le consortium, pour une valeur d’entreprise d’environ 40 milliards de dollars. Le consortium engage aussi 5 milliards de dollars pour la croissance.",
+          "limit": "La valeur d’entreprise n’est pas l’apport en fonds propres des acheteurs. Le capital de croissance engagé ne prouve pas un versement déjà effectué.",
+          "watch": "Apports réalisés et répartition dette-capital.",
+          "sources": [
+            "aligned-close-20260721"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nvidia-se-global-equity",
+      "from": "nvidia",
+      "to": "se-global",
+      "observations": [
+        {
+          "publishedOn": "2026-09-01",
+          "recordedOn": "2026-09-22",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Achat d’actions conditionnel · 1,5 Md$",
+          "claim": "Le contrat du 17 août prévoit l’achat par Nvidia de 1,5 milliard de dollars d’actions de classe N de SE Global Holdings, Inc., après une introduction en Bourse levant au moins 1,5 milliard de dollars de titres nouveaux. Ces actions sont en principe sans droit de vote.",
+          "limit": "Le règlement dépend de l’introduction et des conditions contractuelles. Cette pièce n’atteste ni sa réalisation ni un versement. L’engagement en actions reste distinct des garanties du campus.",
+          "watch": "Réalisation de l’introduction, règlement et actions effectivement émises.",
+          "sources": [
+            "sb-equity-20260901"
+          ]
+        }
+      ]
+    }
   ],
   "milestones": [
-    { "date": "2024-09-17", "label": "La plateforme", "change": "Création de GAIIP. Nvidia apporte un soutien technique ; les participations individuelles restent à préciser." },
-    { "date": "2025-03-19", "label": "Les nouveaux partenaires", "change": "Nvidia et xAI rejoignent le partenariat, désormais nommé AIP. Le rôle de Nvidia évolue." },
-    { "date": "2026-08-17", "label": "Les garanties", "change": "Un autre montage apparaît : les baux du campus de l’Ohio et la garantie de Nvidia. Ces pièces n’établissent pas qu’AIP finance ce campus." },
-    { "date": "2026-08-26", "label": "Les clauses", "change": "Le modèle contractuel ajoute des précisions, tout en laissant masqués des paramètres nécessaires au calcul de la perte couverte." }
+    {
+      "date": "2024-09-17",
+      "label": "La plateforme",
+      "change": "Création de GAIIP. Nvidia apporte un soutien technique ; les participations individuelles restent à préciser."
+    },
+    {
+      "date": "2025-03-19",
+      "label": "Les nouveaux partenaires",
+      "change": "Nvidia et xAI rejoignent le partenariat, désormais nommé AIP. Le rôle de Nvidia évolue."
+    },
+    {
+      "date": "2026-07-21",
+      "label": "L’acquisition d’Aligned",
+      "change": "AIP, MGX et GIP figurent dans le consortium qui annonce avoir acquis Aligned. La carte distingue la valeur d’entreprise du capital de croissance engagé."
+    },
+    {
+      "date": "2026-08-17",
+      "label": "Les garanties",
+      "change": "Un autre montage apparaît : les baux du campus de l’Ohio et la garantie de Nvidia. Ces pièces n’établissent pas qu’AIP finance ce campus."
+    },
+    {
+      "date": "2026-08-26",
+      "label": "Les clauses",
+      "change": "Le modèle contractuel ajoute des précisions, tout en laissant masqués des paramètres nécessaires au calcul de la perte couverte."
+    },
+    {
+      "date": "2026-09-01",
+      "label": "L’engagement en actions",
+      "change": "Une annexe du S-1 de SB Energy documente un achat d’actions conditionnel par Nvidia. Le contrat est daté d’août ; ce jalon correspond à sa publication en septembre."
+    }
   ]
 }

@@ -29,6 +29,7 @@ export type AtlasVisibleRelation = Omit<AtlasRelation, 'observations'> & { obser
 const allowedOrigins = new Set([
   'https://www.sec.gov', 'https://ir.blackrock.com', 'https://www.apollo.com',
   'https://www.quadrantchambers.com', 'https://eiti.org', 'https://www.trafigura.com',
+  'https://aligneddc.com', 'https://arcc.ares.com',
 ]);
 /** Canonical source URL shared by corpus validation and the browser link sink. */
 export function atlasSourceUrl(value: string): string {
