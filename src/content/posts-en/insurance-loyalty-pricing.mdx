@@ -1,0 +1,196 @@
+---
+title: "Insurance: when loyalty becomes a pricing input"
+seoTitle: "Insurance loyalty pricing and renewal premiums | l0g"
+description: "How the likelihood of staying can shape insurance premiums. Pricing incentives, the UK reform, FCA estimates and the rules that apply in France."
+ogTitle: "Insurance: when loyalty becomes a pricing input"
+pubDate: "2026-09-22T17:25:20Z"
+tags: ["insurance", "algorithms", "competition", "household finances", "regulation"]
+draft: false
+ogImage: "/illustrations/news/insurance-loyalty-pricing-v1.jpg"
+sourceArticle: "assurance-prix-fidelite"
+sourceUpdatedDate: "2026-09-22T17:25:20Z"
+---
+
+A renewal notice tells you what another year of insurance will cost. It does not necessarily tell you what changed in the calculation. The car, home and cover may be the same while the premium rises. Among the possible explanations is something less obvious than repair bills: the likelihood that the customer will accept the new price rather than leave. EIOPA, the European insurance supervisor, has documented the use of price sensitivity in insurance pricing. [S01](#source-1)
+
+**An insurer can try to predict two different things: how much a customer might cost to insure, and how much that customer will agree to pay.** One calculation estimates insured risk; the other anticipates the response to a quote.
+
+The issue is back on the French policy agenda. On **1 July 2026**, the French prudential supervisor, ACPR, opened a consultation on algorithmic fairness, running until **30 September**. Its discussion paper explores the boundary between justified differentiation and unfair treatment. The analysis is open for comment and does not constitute an official policy position. [S02](#source-2)
+
+## What a premium has to pay for
+
+Insurance charges today for protection whose future cost is uncertain. Pricing has to allow for expected claims, administering and distributing the policy, other expenses and the capital committed to the business. It is not simply a bill for accidents that have already happened to one customer. EIOPA distinguishes this technical assessment from subsequent commercial adjustments. [S04](#source-4)
+
+That explains why **a claim-free year does not guarantee an unchanged premium**. More expensive repairs increase an insurer’s potential liability even for a careful driver. In a review published in July 2025, the UK Financial Conduct Authority attributed most of the recent rise in motor premiums to higher claims costs, including repairs. Real cost pressures belong in the explanation, with their contribution assessed for each market. [S03](#source-3)
+
+A more specific concern arises when risk, cover and servicing costs are comparable but prices differ because customers are expected to respond differently to an offer. The question is no longer simply what it costs to provide protection. It is how the margin is allocated among customers with different willingness or ability to walk away.
+
+<figure class="l0g-loyalty-figure" style="max-width:30rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 274" width="100%" role="img" aria-labelledby="l0g-loyalty-en-1-title l0g-loyalty-en-1-desc" style="width:100%;height:auto">
+<title id="l0g-loyalty-en-1-title">Two calculations behind a quote</title><desc id="l0g-loyalty-en-1-desc">Insured risk and the expected customer response are separate inputs. Conceptual diagram, no measured data.</desc>
+<rect width="480" height="274" rx="8" fill="#0c0e10"/>
+<text x="24" y="38" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">Two calculations behind a quote</text>
+<line x1="24" y1="56" x2="456" y2="56" stroke="#b8c8db" stroke-width="1" />
+<text x="24" y="95" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">Insured risk</text>
+<text x="24" y="128" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Claims and servicing costs</text>
+<line x1="24" y1="154" x2="456" y2="154" stroke="#b8c8db" stroke-width="1" />
+<text x="24" y="195" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="start">Response to price</text>
+<text x="24" y="228" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">Likelihood of renewing</text>
+</svg>
+<figcaption>Conceptual l0g diagram; no customer data or measured proportions. EIOPA, 2022 consultation and 2023 statement, §§ 2.2 to 2.4. <a href="#source-1">[S01]</a> <a href="#source-4">[S04]</a></figcaption>
+</figure>
+
+## Putting a value on the decision to stay
+
+Consider a **wholly hypothetical example**, unrelated to any named insurer’s prices. Two customer profiles present the same insurance risk and receive identical cover. Expected annual claims and variable expenses are **€500 for each policy retained**. The insurer considers two annual prices: **€600 and €660**, excluding premium taxes. Fixed overheads, the cost of capital, subsequent years and regulatory constraints are left out.
+
+Profile A is more price-sensitive. Assume a **90% probability of renewing at €600**, falling to **50% at €660**. The lower price generates €100 before fixed overheads if the customer stays. Weight that by the renewal probability and expected contribution is **€90 for each renewal offer made**. At €660, the €160 contribution is earned only half the time, bringing the expected figure down to **€80**.
+
+For the less price-sensitive profile B, assume renewal probabilities of **95% at €600** and **90% at €660**. Expected contributions are now **€95 and €144**. Of the two prices tested, the higher one is more attractive to the insurer.
+
+**Nothing about the insured risk has changed. What changed is the chance of losing the customer.** The calculation is renewal probability × (price excluding tax − expected variable cost). A policy that is not renewed contributes zero in this example. These are neither net profits nor predictions of actual customer behaviour.
+
+<figure class="l0g-loyalty-figure" style="max-width:30rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 354" width="100%" role="img" aria-labelledby="l0g-loyalty-en-2-title l0g-loyalty-en-2-desc" style="width:100%;height:auto">
+<title id="l0g-loyalty-en-2-title">Pricing the response</title><desc id="l0g-loyalty-en-2-desc">Hypothetical annual example. Variable cost €500 per retained policy. At prices of €600 then €660, A renews with probabilities 90 then 50%, yielding expected contributions of €90 then €80; B renews at 95 then 90%, yielding €95 then €144.</desc>
+<rect width="480" height="354" rx="8" fill="#0c0e10"/>
+<text x="24" y="36" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">Pricing the response</text>
+<text x="24" y="69" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Hypothetical · cost: €500 / year</text>
+<text x="24" y="111" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Quoted price</text>
+<text x="308" y="111" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">€600</text>
+<text x="456" y="111" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">€660</text>
+<line x1="24" y1="127" x2="456" y2="127" stroke="#b8c8db" stroke-width="1" />
+<text x="24" y="163" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">A · renews</text>
+<text x="308" y="163" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">90 %</text>
+<text x="456" y="163" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">50 %</text>
+<text x="24" y="202" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">A · contribution</text>
+<text x="308" y="202" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">90</text>
+<text x="456" y="202" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">80</text>
+<text x="24" y="263" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="start">B · renews</text>
+<text x="308" y="263" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">95 %</text>
+<text x="456" y="263" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">90 %</text>
+<text x="24" y="302" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="start">B · contribution</text>
+<text x="308" y="302" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">95</text>
+<text x="456" y="302" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="end">144</text>
+<line x1="24" y1="227" x2="456" y2="227" stroke="#b8c8db" stroke-width="1" />
+<text x="24" y="337" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Contributions: € per renewal offer</text>
+</svg>
+<figcaption>l0g calculation: probability × (price − €500), over one year. A is more price-sensitive than B. Prices exclude tax; contributions precede fixed costs and capital charges. Hypothetical inputs, no measured net profit.</figcaption>
+</figure>
+
+This isolates an economic incentive. In practice, customers accepting different prices may also present different insurance risks, which a model would need to account for. And a price that maximises this simplified contribution is not necessarily permitted under distribution rules. Being able to calculate it does not establish a right to charge it.
+
+The mechanism requires neither mind-reading nor AI: our example fits into a simple pricing grid. In the example, a usable estimate of the customer’s response is enough. Even an imperfect estimate of the likelihood of staying can have commercial value separate from information about future claims.
+
+## Renewals can finance introductory offers
+
+[*Price walking*](/en/glossary/price-walking/) adds time to the calculation. An attractive opening price brings in the customer; successive renewals become opportunities to increase the margin on those who remain. EIOPA specifically targets repeated increases based on a low propensity to shop around when they do not reflect changes in risk or the service provided. [S10](#source-10)
+
+Competition can therefore be intense when a policy is first sold without protecting every subsequent renewal equally well. In a model where active shoppers leave readily, a low opening price helps win business. If some customers stop shopping later, their future payments can finance that initial discount. Loyalty becomes an anticipated revenue source rather than a saving automatically passed back to the customer.
+
+Welcome discounts can serve several commercial purposes. Assessing renewal pricing requires following the relationship over time, with risk and cover held comparable. Competitor counts and promotional offers reveal only part of that relationship.
+
+The UK identified a substantial problem before intervening. In its **28 May 2021** announcement, the FCA estimated that **six million home and motor policyholders would collectively have saved £1.2 billion in 2018** had they paid the average price for their risk. This was a historical counterfactual estimate, not money refunded to customers and not a measure of the French market in 2026. [S05](#source-5)
+
+## The UK renewal rule in force since 2022
+
+Since **1 January 2022**, UK home and motor insurance rules have required renewal quotes to be no higher than the equivalent new-business price. The comparison takes account of the policy’s **original sales channel**. A policy originally purchased through a comparison website is not necessarily benchmarked against one bought directly. [S06](#source-6)
+
+The rule does not promise the lowest quote anywhere in the market or freeze premiums for life. Risks and costs can still change. Its logic is to ask what the customer would pay as a new policyholder under the prescribed comparison, rather than allowing their tenure alone to support a higher renewal price.
+
+There is an economic trade-off. If renewals can no longer support some exceptionally aggressive introductory discounts, frequent switchers may lose access to those deals. The FCA flagged this possibility when adopting the measures. **Protecting customers who stay does not guarantee a price cut for everyone who used to move.** [S05](#source-5)
+
+The collective outcome therefore cannot be read from two average bills alone. A reform may redistribute prices across customers, reduce increases for some and leave others paying more. That redistribution is also distinct from lowering the overall price level.
+
+## Evaluating the reform using UK policies
+
+The FCA evaluation published on **22 July 2025** uses policies covering **the first quarter of 2019 to the first quarter of 2024**. It estimates an average motor price effect of **−£6.63 per policy**, with a **95% confidence interval from −£12.59 to −£0.68**. In the home insurance categories studied, the average price effect was not statistically significant. [S07](#source-7) [S08](#source-8) [S09](#source-9)
+
+The price measure is recorded at purchase or renewal, includes add-ons and fees, and **excludes UK Insurance Premium Tax, or IPT**. This is an estimated difference from a scenario without the reform, not the observed annual change on a renewal notice. The figures have not been converted into euros or restated in 2026 prices. [S09](#source-9)
+
+<figure class="l0g-loyalty-figure" style="max-width:30rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 328" width="100%" role="img" aria-labelledby="l0g-loyalty-en-3-title l0g-loyalty-en-3-desc" style="width:100%;height:auto">
+<title id="l0g-loyalty-en-3-title">The estimated UK price effect</title><desc id="l0g-loyalty-en-3-desc">FCA motor estimate: minus £6.63 per policy; 95% interval minus £12.59 to minus £0.68. Q1 2019 to Q1 2024 data, excluding IPT. Home effect not statistically significant.</desc>
+<rect width="480" height="328" rx="8" fill="#0c0e10"/>
+<text x="24" y="36" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#72e5df" text-anchor="start">The estimated UK price effect</text>
+<text x="24" y="69" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="start">Motor · £ / policy · excluding IPT</text>
+<text x="242" y="112" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" fill="#72e5df" text-anchor="middle">−6.63</text>
+<line x1="42" y1="184" x2="434" y2="184" stroke="#b8c8db" stroke-width="1" />
+<line x1="81.48" y1="151" x2="414.96000000000004" y2="151" stroke="#72e5df" stroke-width="1" />
+<line x1="81.48" y1="143" x2="81.48" y2="159" stroke="#72e5df" stroke-width="1" />
+<line x1="414.96000000000004" y1="143" x2="414.96000000000004" y2="159" stroke="#72e5df" stroke-width="1" />
+<line x1="248.36" y1="132" x2="248.36" y2="170" stroke="#72e5df" stroke-width="1" />
+<line x1="42" y1="180" x2="42" y2="188" stroke="#b8c8db" stroke-width="1" />
+<text x="42" y="212" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="middle">−14</text>
+<line x1="238" y1="180" x2="238" y2="188" stroke="#b8c8db" stroke-width="1" />
+<text x="238" y="212" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="middle">−7</text>
+<line x1="434" y1="180" x2="434" y2="188" stroke="#b8c8db" stroke-width="1" />
+<text x="434" y="212" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8c8db" text-anchor="middle">0</text>
+<text x="24" y="250" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f0f4fa" text-anchor="start">95% CI: −12.59 to −0.68</text>
+<text x="24" y="292" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#f2c875" text-anchor="start">Home: no significant price effect</text>
+</svg>
+<figcaption>FCA EP25/2, Table 5, p. 33: estimated effect relative to no reform. Q1 2019 to Q1 2024 data; study published July 2025. Published 95% interval, conditional on model assumptions. <a href="#source-8">[S08]</a> <a href="#source-9">[S09]</a></figcaption>
+</figure>
+
+To identify the effect, the authors compare price changes across policy groups that had previously been more or less exposed to price walking. This attempts to separate the rule change from common developments such as inflation. The design still relies on assumptions: an insurer can reprice several groups at once, and some firms changed practices before implementation. The annex also warns that uncertainty from an earlier estimation stage is not fully reflected in the reported standard errors. [S09](#source-9)
+
+The result concerns the pricing reform. A premium can rise yet remain below its level without intervention. The average home insurance effect remains uncertain in this study. Estimating savings available to a French customer would require French data and comparable policies.
+
+## France has not simply imported the British rule
+
+European supervisors were addressing the issue before the French consultation of 2026. In its statement published on **16 March 2023**, EIOPA judged certain repeated price increases based on customer inertia incompatible with existing distribution and product-governance requirements. The statement addresses supervisory authorities; it does not make every price difference unlawful. [S04](#source-4)
+
+In France, **Article L521-1 of the Insurance Code** requires distributors, among other things, to act in customers’ best interests and provide clear, accurate and non-misleading information. That obligation should not be presented as an automatic reproduction of the British equivalent-new-business-price rule. [S11](#source-11)
+
+Investigating a particular case requires reconstructing cover, excesses, disclosed risks, distribution costs, temporary discounts and comparison dates. The next step is to isolate the contribution of tenure or predicted customer departure to the price. Matching these inputs makes the difference between two quotes interpretable.
+
+There is another trap: an existing customer can pay less than a new entrant and still be disadvantaged relative to their insurance risk. If their expected cost is also lower, the raw premium comparison settles nothing. Equally, a higher premium may purchase better protection. The relevant benchmark is an equivalent policy, not any cheaper advertisement.
+
+## Faster algorithms do not settle the fairness question
+
+On **21 September 2026**, WTW announced a global agreement with Zurich to expand deployment of Radar across the insurer’s targeted retail markets. The supplier describes pricing and analytical capabilities, including AI. The release sets out the agreement and claimed functionality; it does not detail the variables used to set Zurich’s renewal prices. [S12](#source-12)
+
+The announcement illustrates the emphasis on pricing technology. Its role depends on the objective: improve claims estimates, reduce servicing costs, set commercial margins, or combine those functions within specified constraints. Model accuracy and the justification for its objective require separate assessments.
+
+ACPR’s discussion paper explains why removing a sensitive characteristic from the inputs may not prevent a model from reconstructing it indirectly from other information. It also explores different definitions of fairness that need not produce the same outcome. This work does not measure the prevalence of abusive practices across French insurance. [S13](#source-13)
+
+Three questions therefore need to remain separate: are the predictions reliable, are the price differences justified, and does the decision comply with the applicable rules? EIOPA’s **August 2025** opinion on AI governance emphasises the existing sectoral framework and a risk-proportionate approach. Using an external technology provider does not remove the need for that governance. [S14](#source-14)
+
+## Compare cover and ask for an explanation
+
+A useful comparison starts with **the full annual cost of equivalent protection**. Instalment charges, excesses and the scope of cover all belong in the comparison. Keeping the renewal notice, previous policy and dated quotations makes these changes easier to track.
+
+Asking for an explanation and a revised like-for-like quote may reveal room for negotiation. A discount indicates commercial flexibility. Assessing the pricing method itself requires information about the inputs and their contribution to the quote.
+
+In France, eligible personal home and motor policies can be cancelled without penalty at any time after the first year, generally taking effect **one month after notification is received**. For compulsory motor cover and tenants’ home insurance, the new insurer handles the process to preserve continuity. Starting the process is not the same as the old policy having ended. [S16](#source-16) [S17](#source-17)
+
+On personal data, the French regulator CNIL distinguishes profiling from a solely automated decision with legal or similarly significant effects. Such decisions are generally prohibited, subject to exceptions and safeguards, including human intervention in the cases specified. The applicable protections depend on the processing actually used. [S15](#source-15)
+
+Where a disagreement persists, a written complaint records the facts. The policy documents and insurer’s website identify the appropriate complaints service and mediation route, as the official ABE Infoservice guidance explains. [S18](#source-18)
+
+**Loyalty can reduce the cost of maintaining a relationship and signal a greater willingness to accept a high price.** Pricing can turn the second signal into a potential margin. UK and European interventions require scrutiny of how that information is used. Its current prevalence in France remains unmeasured here: assessing it would require examining renewal calculations and matching prices to the risks covered.
+
+Further reading: [pricing algorithms and competition](/en/analysis/pricing-algorithms-competition/).
+
+## Sources
+
+<ol class="source-list">
+<li id="source-1"><span class="source-id">S01</span> · <a href="https://www.eiopa.europa.eu/eiopa-seeks-input-supervisory-statement-differential-pricing-practices-2022-07-11_en">EIOPA seeks input on supervisory statement on differential pricing practices</a><span class="source-meta">EIOPA · 2022-07-11 · Definition of differential pricing; comparable risk and servicing costs.</span></li>
+<li id="source-2"><span class="source-id">S02</span> · <a href="https://acpr.banque-france.fr/fr/communiques-de-presse/lacpr-lance-une-consultation-publique-sur-lequite-algorithmique">L’ACPR lance une consultation publique sur l’équité algorithmique</a><span class="source-meta">ACPR · 2026-07-01 · Consultation launch and 30 September 2026 deadline; discussion-paper status.</span></li>
+<li id="source-3"><span class="source-id">S03</span> · <a href="https://www.fca.org.uk/news/press-releases/premium-hikes-driven-claims-costs-insurers-told-improve-claims-handling">Premium hikes driven by claims costs, but insurers told to improve claims handling</a><span class="source-meta">FCA · 2025-07-22 · Claims-cost review: cars, parts, labour and repair costs.</span></li>
+<li id="source-4"><span class="source-id">S04</span> · <a href="https://www.eiopa.europa.eu/document/download/1e9a8fb2-e688-4bf5-a347-ee0a1ec3aab3_en?filename=EIOPA-BoS-23-076-Supervisory-Statement-on-differential-pricing-practices_0.pdf">Supervisory statement on differential pricing practices in non-life insurance lines of business</a><span class="source-meta">EIOPA · 2023-03-16 · EIOPA-BoS-23/076, §§ 2.2 to 2.4 and 3.7 to 3.13, particularly § 3.8.</span></li>
+<li id="source-5"><span class="source-id">S05</span> · <a href="https://www.fca.org.uk/news/press-releases/fca-confirms-measures-protect-customers-loyalty-penalty-home-motor-insurance-markets">FCA confirms measures to protect customers from the loyalty penalty in home and motor insurance markets</a><span class="source-meta">FCA · 2021-05-28 · 2018 estimate: 6 million policyholders and £1.2 billion; rule starts 1 January 2022.</span></li>
+<li id="source-6"><span class="source-id">S06</span> · <a href="https://handbook.fca.org.uk/handbook/icobs6b/icobs6bs2">Handbook: ICOBS 6B.2, Setting the renewal price</a><span class="source-meta">FCA · Accessed 22 September 2026 · ICOBS 6B.2.1R and 6B.2.5R: equivalent new business price and original channel.</span></li>
+<li id="source-7"><span class="source-id">S07</span> · <a href="https://www.fca.org.uk/publications/corporate-documents/evaluation-paper-25-2-general-insurance-pricing-practices-remedies">Evaluation Paper 25/2: General insurance pricing practices remedies</a><span class="source-meta">FCA · 2025-07-22 · Publication record for EP25/2 and its technical annex.</span></li>
+<li id="source-8"><span class="source-id">S08</span> · <a href="https://www.fca.org.uk/publication/corporate/ep25-2.pdf">EP25/2: An evaluation of our General Insurance Pricing Practices remedies</a><span class="source-meta">FCA · 2025-07-22 · p. 19: period; p. 30: motor scope; Table 5 p. 33: estimate and bounds.</span></li>
+<li id="source-9"><span class="source-id">S09</span> · <a href="https://www.fca.org.uk/publication/corporate/ep25-2-annex.pdf">EP25/2 Technical annex</a><span class="source-meta">FCA · 2025-07-22 · Table 2 p. 7: price definition excluding IPT; §§ 33 to 57: method, interval and assumptions.</span></li>
+<li id="source-10"><span class="source-id">S10</span> · <a href="https://www.eiopa.europa.eu/eiopa-supervisory-statement-takes-aim-unfair-price-walking-practices-2023-03-16_en">EIOPA supervisory statement takes aim at unfair price walking practices</a><span class="source-meta">EIOPA · 2023-03-16 · Supervisory expectations on price walking and legitimate commercial discounts.</span></li>
+<li id="source-11"><span class="source-id">S11</span> · <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036920570">Code des assurances, article L521-1</a><span class="source-meta">Légifrance · 2018-10-01 · I and II: customer interests and clear, accurate, non-misleading information.</span></li>
+<li id="source-12"><span class="source-id">S12</span> · <a href="https://www.globenewswire.com/news-release/2026/09/21/3365167/0/en/wtw-announces-new-global-agreement-to-deploy-radar.html">WTW announces new global agreement to deploy Radar</a><span class="source-meta">WTW / GlobeNewswire · 2026-09-21 · Supplier announcement: global Zurich agreement for targeted retail markets.</span></li>
+<li id="source-13"><span class="source-id">S13</span> · <a href="https://acpr.banque-france.fr/system/files/2026-07/20260701_document_reflexion_equite_FR.pdf">L’équité algorithmique dans le secteur financier</a><span class="source-meta">ACPR · 2026-07-01 · pp. 2 to 3: proxies for sensitive data and competing definitions of fairness.</span></li>
+<li id="source-14"><span class="source-id">S14</span> · <a href="https://www.eiopa.europa.eu/eiopa-publishes-opinion-ai-governance-and-risk-management-2025-08-06_en">EIOPA publishes Opinion on AI governance and risk management</a><span class="source-meta">EIOPA · 2025-08-06 · Risk-proportionate AI governance under existing sectoral legislation.</span></li>
+<li id="source-15"><span class="source-id">S15</span> · <a href="https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee">Profilage et décision entièrement automatisée</a><span class="source-meta">CNIL · 2018-05-29 · Profiling, solely automated decisions, exceptions and safeguards.</span></li>
+<li id="source-16"><span class="source-id">S16</span> · <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2659">Assurance auto : résiliation du contrat</a><span class="source-meta">Service-Public.fr · Accessed 22 September 2026 · Cancellation after the first year; new insurer and one-month period.</span></li>
+<li id="source-17"><span class="source-id">S17</span> · <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F19083">Assurance habitation : résiliation du contrat</a><span class="source-meta">Service-Public.fr · Accessed 22 September 2026 · Cancellation after the first year; tenants and continuity of cover.</span></li>
+<li id="source-18"><span class="source-id">S18</span> · <a href="https://www.abe-infoservice.fr/fr/assurance/se-preparer-sassurer/quoi-faut-il-faire-attention-pendant-la-vie-dun-contrat-dassurance-et-quand-le-resilier">À quoi faut-il faire attention pendant la vie d’un contrat d’assurance et quand le résilier ?</a><span class="source-meta">ABE Infoservice · Accessed 22 September 2026 · Written complaints, insurer contact details and mediation procedures.</span></li>
+</ol>

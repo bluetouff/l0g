@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Price walking', nom: 'Hausse tarifaire liée à l’ancienneté', def: 'Pratique consistant à augmenter le prix au fil des renouvellements en fonction de la propension du client à rester ou à accepter une hausse, indépendamment de l’évolution du risque assuré ou du coût du service. En assurance, elle peut pénaliser les clients qui comparent peu. Une hausse liée au coût des sinistres relève d’un autre mécanisme.', guide: '/posts/assurance-prix-fidelite/' },
       { sigle: 'Tarification algorithmique', nom: 'Algorithmic pricing', def: 'Utilisation de règles informatiques pour recommander ou fixer un prix à partir de données, par exemple les coûts, la demande ou les prix des concurrents. Elle peut reposer sur des règles fixes ou sur un apprentissage. Elle ne suppose ni personnalisation selon le client ni entente entre vendeurs ; ses effets dépendent du marché et du fonctionnement des outils.', guide: '/posts/prix-automatiques-concurrence-algorithmes/' },
       { sigle: 'SIEG', nom: 'Service d’intérêt économique général', def: 'Activité économique à laquelle une autorité publique impose des obligations de service public. Une compensation peut financer les coûts nets de ces obligations dans le cadre des règles européennes applicables. Son autorisation ne constate ni son versement ni la réalisation des engagements industriels.', guide: '/posts/penuries-medicaments-prix-disponibilite/' },
       { sigle: 'Principe actif', nom: 'Active pharmaceutical ingredient', def: 'Substance responsable de l’effet du médicament. Elle doit encore être transformée et conditionnée pour obtenir le produit destiné au patient. Un stock de principe actif et un stock de médicaments prêts à délivrer protègent donc des étapes différentes de l’approvisionnement.', guide: '/posts/penuries-medicaments-prix-disponibilite/' },
@@ -905,6 +906,11 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   rtb: {
     articles: [{ label: 'Le commerce de nos traces : qui paie la collecte ?', href: '/posts/commerce-traces-economie-collecte-donnees-personnelles/', kind: 'article' }],
     sources: [{ label: 'FTC, plainte Mobilewalla, paragraphes 7 à 11', href: 'https://www.ftc.gov/system/files/ftc_gov/pdf/Mobilewalla-Complaint.pdf', kind: 'source' }],
+  },
+  'price-walking': {
+    articles: [{ label: 'Assurance : quand votre fidélité entre dans le prix', href: '/posts/assurance-prix-fidelite/', kind: 'article' }],
+    sources: [{ label: 'EIOPA, déclaration sur la tarification différentielle, 2023', href: 'https://www.eiopa.europa.eu/eiopa-supervisory-statement-takes-aim-unfair-price-walking-practices-2023-03-16_en', kind: 'source' }],
+    related: ['tarification-algorithmique'],
   },
   'tarification-algorithmique': {
     articles: [{ label: 'Prix automatiques et concurrence', href: '/posts/prix-automatiques-concurrence-algorithmes/', kind: 'article' }],

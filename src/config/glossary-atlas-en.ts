@@ -275,6 +275,16 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'price-walking', sigle: 'Price walking', nom: 'Tenure-based price increases', ...macroSection,
+    def: 'Raising prices over successive renewals according to a customer’s likelihood of staying or accepting an increase, independently of changes in insured risk or servicing costs. In insurance, the practice can penalise customers who rarely shop around. Increases driven by claims costs involve a different mechanism.',
+    guide: '/en/analysis/insurance-loyalty-pricing/',
+    atlas: {
+      articles: [{ label: 'Insurance: when loyalty becomes a pricing input', href: '/en/analysis/insurance-loyalty-pricing/', kind: 'article' }],
+      sources: [{ label: 'EIOPA, differential pricing statement, 2023', href: 'https://www.eiopa.europa.eu/eiopa-supervisory-statement-takes-aim-unfair-price-walking-practices-2023-03-16_en', kind: 'source' }],
+      related: ['tarification-algorithmique'],
+    },
+  },
+  {
     slug: 'tarification-algorithmique', sigle: 'Algorithmic pricing', nom: 'Software-assisted price setting', ...macroSection,
     def: 'Using software rules to recommend or set prices from inputs such as costs, demand or rivals’ prices. The tool may follow fixed rules or learn from results. Algorithmic pricing does not necessarily involve personalised offers or collusion; its effects depend on the market and how the tools operate.',
     guide: '/en/analysis/pricing-algorithms-competition/',
