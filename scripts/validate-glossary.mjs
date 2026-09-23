@@ -28,8 +28,15 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 550, 'Le corpus doit conserver ses 550 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 104, 'Le graphe Atlas doit conserver ses 104 nœuds');
+assert.equal(glossaryEntries.length, 551, 'Le corpus doit conserver ses 551 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 105, 'Le graphe Atlas doit conserver ses 105 nœuds');
+const decrement = glossaryEntries.find(entry => entry.slug === 'indice-a-decrement');
+assert(decrement?.def.includes('dividendes réinvestis'));
+assert.equal(decrement?.guide, '/posts/produits-structures-indices-decrement-risque-epargne/');
+assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.fr/system/files/2026-06/20260622_Note_ACPR-AMF_Produits%20structur%C3%A9s.pdf');
+const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
+assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
+assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
 assert.equal(glossaryAtlasEdgeCount, 404, 'Le graphe Atlas doit conserver ses 404 relations');
 for (const [entry, href] of [
   [glossaryEntries.find((item) => item.slug === 'tokenisation-des-actifs'), '/posts/actions-tokenisees-xstocks-vaults-chaine-credit/'],
