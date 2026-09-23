@@ -31,6 +31,13 @@
       "url": "https://www.trafigura.com/news-and-insights/press-releases/2026/trafigura-launches-volare-shipping/",
       "publishedOn": "2026-09-21",
       "locator": "Communiqué du 21 septembre : actionnariat, gestion commerciale, placement envisagé, conditions de cotation et programme de navires."
+    },
+    {
+      "id": "volare-placement-20260923",
+      "title": "Volare Shipping : résultat du placement privé d’environ 500 M$",
+      "url": "https://newsweb.oslobors.no/message/682895",
+      "publishedOn": "2026-09-23",
+      "locator": "Communiqué du 23 septembre, 08:17:32 ; Private Placement in summary ; Conditions for completion ; Shares, share capital and free float."
     }
   ],
   "nodes": [
@@ -501,6 +508,19 @@
           "sources": [
             "volare-launch-20260921"
           ]
+        },
+        {
+          "publishedOn": "2026-09-23",
+          "recordedOn": "2026-09-23",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Contrôle majoritaire prévu après placement",
+          "claim": "Le communiqué prévoit environ 53 % du capital pour Trafigura Volare Holdings B.V. à la cotation, en supposant l’exercice intégral de l’option d’émission supplémentaire.",
+          "limit": "Ce pourcentage est prospectif et conditionnel. Il n’atteste ni une dilution déjà réalisée ni une garantie des dettes de Volare.",
+          "watch": "Actionnariat effectif après règlement et stabilisation.",
+          "sources": [
+            "volare-placement-20260923"
+          ]
         }
       ]
     },
@@ -521,6 +541,19 @@
           "sources": [
             "volare-launch-20260921"
           ]
+        },
+        {
+          "publishedOn": "2026-09-23",
+          "recordedOn": "2026-09-23",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Placement alloué · environ 500 M$",
+          "claim": "Volare annonce l’allocation conditionnelle de 30 698 864 actions nouvelles, pour un produit brut équivalant à environ 500 millions de dollars.",
+          "limit": "Le règlement-livraison est prévu vers le 5 octobre, sous conditions dont l’accord de la Bourse. La surallocation de 15 % repose sur des actions prêtées ; l’option d’émission supplémentaire n’est pas encore exercée. Aucun encaissement n’est attesté ici.",
+          "watch": "Règlement effectif, admission et éventuel exercice de l’option.",
+          "sources": [
+            "volare-placement-20260923"
+          ]
         }
       ]
     },
@@ -540,6 +573,19 @@
           "watch": "Livraisons et financement effectivement reçu.",
           "sources": [
             "volare-launch-20260921"
+          ]
+        },
+        {
+          "publishedOn": "2026-09-23",
+          "recordedOn": "2026-09-23",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Emploi prévu du placement",
+          "claim": "Le produit net doit financer les engagements restants de construction, réduire les dettes de location, rembourser un prêt intragroupe et couvrir fonds de roulement, frais et besoins généraux.",
+          "limit": "Les fonds ne sont donc pas exclusivement destinés aux navires neufs. Cet emploi annoncé ne prouve aucun paiement aux chantiers ni remboursement réalisé.",
+          "watch": "Encaissement puis emploi effectif des fonds.",
+          "sources": [
+            "volare-placement-20260923"
           ]
         }
       ]
@@ -565,6 +611,11 @@
       "date": "2026-09-21",
       "label": "Le projet Volare",
       "change": "Trafigura annonce Volare : participation au capital, gestion commerciale et placement envisagé sont distingués. Les fonds attendus pour les navires ne sont pas présentés comme déjà encaissés."
+    },
+    {
+      "date": "2026-09-23",
+      "label": "Placement alloué, règlement attendu",
+      "change": "Volare annonce les allocations du placement. Le règlement, la cotation et l’émission supplémentaire éventuelle restent à confirmer ; les emplois prévus des fonds sont précisés."
     }
   ]
 }

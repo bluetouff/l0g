@@ -9,11 +9,11 @@ import dataset from '../../data/engagement-atlas.json';
     dataset={dataset}
     subject="financement de l’IA"
     intro="Nvidia, OpenAI, SB Energy et AIP : qui finance les infrastructures de l’intelligence artificielle, qui garantit quoi et sous quelles conditions ? Explorez les relations documentées et leur évolution au fil des publications."
-    boundary="L’acquisition d’Aligned, l’engagement en actions de Nvidia et les garanties du campus sont des opérations distinctes. Le contrat d’actions nomme SE Global Holdings, Inc., représentée séparément du bailleur SB Energy. Aucun financement d’AIP vers ce campus n’est établi ici."
-    selectedRelation="nvidia-se-global-equity"
+    boundary="Le prospectus du 21 septembre distingue le préfinancement reçu via Energy Global, LP de l’achat d’actions encore conditionnel. SE Global Holdings, Inc. y est renommée SB Energy, Inc. ; le nœud conserve son nom contractuel pour les lectures historiques. Ces opérations restent distinctes des garanties du campus. Aucun financement d’AIP vers ce campus n’est établi ici."
+    selectedRelation="nvidia-energy-global-prepayment"
     hubs={['nvidia', 'aip']}
     entryPoints={[
-      { label: 'Que prévoit l’achat d’actions de Nvidia ?', relation: 'nvidia-se-global-equity', date: '2026-09-01' },
+      { label: 'Quel argent Nvidia a-t-elle déjà versé ?', relation: 'nvidia-energy-global-prepayment', date: '2026-09-21' },
       { label: 'Qu’a acquis le consortium AIP, MGX et GIP ?', relation: 'consortium-aligned-acquisition', date: '2026-07-21' },
       { label: 'Qui paie si OpenAI ne paie plus ?', relation: 'nvidia-sb-guarantee', date: dataset.milestones.at(-1)!.date, scenario: true },
       { label: 'Comment le rôle de Nvidia évolue-t-il ?', relation: 'nvidia-aip', date: '2025-03-19' },

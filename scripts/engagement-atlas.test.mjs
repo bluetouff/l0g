@@ -160,7 +160,7 @@ test('proposals reject executable, impersonated or credential-bearing sources an
 test('shared links select only known dates and relations and cannot enable an anachronistic scenario', () => {
   assert.deepEqual(atlasSelection(source, '#date=2024-09-17&relation=nvidia-sb-guarantee&scenario=default'), { date: '2024-09-17', relation: 'nvidia-aip', scenario: false });
   assert.deepEqual(atlasSelection(source, '#date=2026-08-17&relation=openai-sb-lease&scenario=default'), { date: '2026-08-17', relation: 'openai-sb-lease', scenario: true });
-  assert.equal(atlasSelection(source, '#date=2027-01-01&relation=%3Cscript%3E').date, '2026-09-01');
+  assert.equal(atlasSelection(source, '#date=2027-01-01&relation=%3Cscript%3E').date, '2026-09-21');
   assert.equal(atlasSelection(source, '#date=2026-08-26&relation=blackrock-aip&scenario=default').scenario, false);
   assert.equal(isAtlasDate('2026-02-30'), false);
   assert.equal(isAtlasDate('2024-02-29'), true);
@@ -207,4 +207,40 @@ test('Volare appears as a proposed funding circuit with no inferred bank guarant
   assert.ok(newRelations.every(relation => relation.observation.kind === 'announcement' && relation.observation.amount === undefined));
   assert.equal(oil.relations.some(relation => ['unicredit', 'socgen', 'ercf', 'liquidity'].includes(relation.from) && relation.to.startsWith('volare')), false);
   assert.equal(atlasSelection(oil, '#date=2026-09-21&relation=investors-volare&scenario=default').scenario, false);
+});
+
+test('Nvidia prepayment enters on disclosure and follows one payment through the intermediary', () => {
+  const earlier = atlasAt(source, '2026-09-20');
+  assert.equal(earlier.nodes.some(node => node.id === 'energy-global'), false);
+  assert.equal(earlier.sources.some(item => item.id === 'sb-s1a2-20260921'), false);
+  assert.equal(earlier.relations.find(item => item.id === 'nvidia-se-global-equity').observation.publishedOn, '2026-09-01');
+  const latest = atlasAt(source, '2026-09-21');
+  const payment = latest.relations.find(item => item.id === 'nvidia-energy-global-prepayment');
+  const contribution = latest.relations.find(item => item.id === 'energy-global-se-global-contribution');
+  assert.deepEqual([payment.from, payment.to, contribution.from, contribution.to], ['nvidia', 'energy-global', 'energy-global', 'se-global']);
+  for (const relation of [payment, contribution]) {
+    assert.equal(relation.observation.recordedOn, '2026-09-23');
+    assert.equal(relation.observation.amount, undefined);
+    assert.deepEqual(relation.observation.sources, ['sb-s1a2-20260921']);
+  }
+  assert.match(contribution.observation.limit, /ne représentent pas deux investissements/);
+  assert.match(latest.relations.find(item => item.id === 'nvidia-se-global-equity').observation.limit, /n’est pas un versement déjà attesté/);
+  assert.equal(atlasSelection(source, '#date=2026-09-21&relation=nvidia-energy-global-prepayment&scenario=default').scenario, false);
+});
+
+test('Volare allocation preserves the earlier proposal and does not imply settled proceeds or bank finance', () => {
+  const before = atlasAt(oil, '2026-09-22');
+  assert.equal(before.sources.some(item => item.id === 'volare-placement-20260923'), false);
+  assert.match(before.relations.find(item => item.id === 'investors-volare').observation.label, /envisagé/);
+  const current = atlasAt(oil, '2026-09-23');
+  const changed = current.relations.filter(item => item.changed);
+  assert.deepEqual(changed.map(item => item.id), ['trafigura-volare', 'investors-volare', 'volare-fleet-programme']);
+  for (const relation of changed) {
+    assert.equal(relation.observation.kind, 'announcement');
+    assert.equal(relation.observation.recordedOn, '2026-09-23');
+    assert.equal(relation.observation.amount, undefined);
+  }
+  assert.match(changed.find(item => item.id === 'investors-volare').observation.limit, /Aucun encaissement n’est attesté/);
+  assert.match(changed.find(item => item.id === 'trafigura-volare').observation.limit, /prospectif et conditionnel/);
+  assert.equal(current.relations.filter(item => item.to === 'volare').every(item => ['trafigura', 'volare-investors'].includes(item.from)), true);
 });

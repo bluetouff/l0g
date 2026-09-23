@@ -23,6 +23,14 @@ Les relations peuvent porter un lien `reading` vers une enquête interne, valid�
 
 ## Trois dates distinctes
 
+### Enrichissement revu le 23 septembre 2026
+
+- IA : le [S-1/A du 21 septembre](https://www.sec.gov/Archives/edgar/data/2133037/000162828026062846/sbenergy-sx1a2.htm), notamment la note « NVIDIA Investment », documente un préfinancement reçu par Energy Global, LP puis apporté à la société. Les deux relations suivent le même argent. L'achat d'actions distinct reste conditionnel. Le nom historique SE Global Holdings, Inc. est conservé sur le nœud ; l'observation explique son changement de nom. Aucune réalisation de l'introduction en Bourse n'est déduite du prospectus préliminaire.
+- Pétrole : le [communiqué Volare du 23 septembre](https://newsweb.oslobors.no/message/682895) remplace le projet de placement par une allocation conditionnelle. Le règlement attendu, la surallocation par prêt de titres et l'option d'émission supplémentaire sont distingués. Le contrôle après cotation est prospectif ; les emplois prévus incluent aussi des remboursements, sans paiement attesté.
+- Crédit privé : les publications SEC récentes d'ARCC, Apollo et Athene ont été vérifiées. La présentation « Asset Risk & Stress Considerations » du 21 septembre, accessible depuis les [présentations d'Athene](https://ir.athene.com/presentations) et signalée par son [8-K](https://www.sec.gov/Archives/edgar/data/1527469/000152746926000069/ahl-20260921.htm), a été lue. Elle décrit portefeuille, gouvernance et scénarios de stress ; elle n'établit pas de modification des relations de financement retenues. Le corpus crédit privé reste inchangé.
+
+Les anciennes observations et dates de revue sont conservées. Les nouveaux états sont relus le 23 septembre, sans antidater cette revue à la date d'un versement. L'origine NewsWeb est admise seulement pour ses chemins publics `/message/<identifiant numérique>`.
+
 ### Enrichissement revu le 22 septembre 2026
 
 Les trois corpus conservent leurs dates de création et leurs observations précédentes. Les ajouts portent la vraie date de revue du 22 septembre ; ils apparaissent à la date de publication de chaque pièce, même lorsqu’une opération a été signée auparavant.
@@ -72,3 +80,5 @@ Le S-1 de SB Energy identifié le 16 septembre 2026 mérite une lecture :
 https://www.sec.gov/Archives/edgar/data/2133037/000162828026059639/sbenergy-sx1.htm
 
 La lecture intégrale a été bloquée durant l’édition initiale (document trop volumineux via la recherche, accès direct refusé). Le 22 septembre, l’annexe d’achat d’actions a été lue séparément et intégrée ; cela ne vaut pas revue intégrale du S-1. L’amendement du 4 septembre publie aussi des modèles de bail et de garantie. Leur existence ne prouve ni la réalisation de l’introduction en Bourse, ni une levée des clauses masquées. Vérifier les amendements et les conditions restantes avant tout ajout supplémentaire.
+
+Le 23 septembre, le S-1/A du 21 septembre a pu être récupéré depuis la SEC. Les passages sur le préfinancement, le placement simultané, le changement de nom et les événements postérieurs ont été relus pour l'enrichissement ci-dessus. Les prochains éléments utiles restent le règlement des contrats et la réalisation éventuelle de l'introduction, à établir par de nouvelles pièces.

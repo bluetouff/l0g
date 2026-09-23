@@ -12,6 +12,16 @@ test('atlas source links retain exact HTTPS origin and path validation at use', 
   const sec = 'https://www.sec.gov/Archives/edgar/data/1/2/a.htm';
   assert.equal(atlasSourceUrl('HTTPS://WWW.SEC.GOV:443/Archives/edgar/data/1/2/a.htm'), sec);
   assert.equal(atlasSourceUrl('https://ir.blackrock.com/news'), 'https://ir.blackrock.com/news');
+  const newsweb = 'https://newsweb.oslobors.no/message/682895';
+  assert.equal(atlasSourceUrl(newsweb), newsweb);
+  for (const url of [
+    'https://newsweb.oslobors.no.evil.example/message/682895',
+    'https://newsweb.oslobors.no@evil.example/message/682895',
+    'https://user:pass@newsweb.oslobors.no/message/682895',
+    `${newsweb}?token=private`, `${newsweb}#fragment`,
+    'https://newsweb.oslobors.no/admin', 'https://newsweb.oslobors.no/message/not-a-number',
+    `${newsweb}/extra`, 'http://newsweb.oslobors.no/message/682895',
+  ]) assert.throws(() => atlasSourceUrl(url));
   for (const origin of ['https://aligneddc.com', 'https://arcc.ares.com']) {
     assert.equal(atlasSourceUrl(`${origin}/news`), `${origin}/news`);
     for (const url of [`${origin}.evil.example/news`, `${origin}@evil.example/news`, `${origin}/news?token=private`, `${origin}/news#fragment`, origin.replace('https://', 'https://user:pass@') + '/news']) assert.throws(() => atlasSourceUrl(url));

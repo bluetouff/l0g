@@ -45,6 +45,13 @@
       "url": "https://www.sec.gov/Archives/edgar/data/2133037/000162828026059639/exhibit1028-sharepurchasea.htm",
       "publishedOn": "2026-09-01",
       "locator": "Contrat du 17 août 2026 joint au S-1 déposé le 1er septembre. Section 1(a)–(b) : actions de classe N, montant, conditions de l’introduction en Bourse et règlement."
+    },
+    {
+      "id": "sb-s1a2-20260921",
+      "title": "SB Energy : prospectus amendé S-1/A du 21 septembre 2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/2133037/000162828026062846/sbenergy-sx1a2.htm",
+      "publishedOn": "2026-09-21",
+      "locator": "Résumé, p. 21 ; Our Corporate Information, p. 26 ; Concurrent Private Placement ; note Subsequent Events, NVIDIA Investment, p. F-87."
     }
   ],
   "nodes": [
@@ -76,6 +83,13 @@
       "label": "SE Global Holdings, Inc.",
       "role": "Émetteur dans le dossier SB Energy",
       "column": 3,
+      "row": 3
+    },
+    {
+      "id": "energy-global",
+      "label": "Energy Global, LP",
+      "role": "Intermédiaire du préfinancement",
+      "column": 2,
       "row": 3
     }
   ],
@@ -192,6 +206,60 @@
           "sources": [
             "sb-equity-20260901"
           ]
+        },
+        {
+          "publishedOn": "2026-09-21",
+          "recordedOn": "2026-09-23",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Achat d’actions distinct · 1,5 Md$ conditionnels",
+          "claim": "Le prospectus maintient un achat distinct de 1,5 milliard de dollars d’actions de classe N, sans droit de vote, à la clôture de l’introduction en Bourse.",
+          "limit": "Cette seconde tranche reste soumise aux conditions du contrat, dont une introduction levant au moins 1,5 milliard de dollars. Elle n’est pas un versement déjà attesté.",
+          "watch": "Clôture du placement et règlement de cette tranche.",
+          "sources": [
+            "sb-s1a2-20260921",
+            "sb-equity-20260901"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nvidia-energy-global-prepayment",
+      "from": "nvidia",
+      "to": "energy-global",
+      "observations": [
+        {
+          "publishedOn": "2026-09-21",
+          "recordedOn": "2026-09-23",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Préfinancement reçu · 1,5 Md$",
+          "claim": "Selon le prospectus, Energy Global, LP a reçu 1,5 milliard de dollars de Nvidia le 17 août 2026 au titre d’un contrat à terme prépayé.",
+          "limit": "Le paiement précède la remise des actions. Le contrat prévoit un règlement futur en titres ou en numéraire selon les événements applicables ; il ne prouve pas une introduction en Bourse réalisée.",
+          "watch": "Règlement du contrat prépayé et titres effectivement remis.",
+          "sources": [
+            "sb-s1a2-20260921"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "energy-global-se-global-contribution",
+      "from": "energy-global",
+      "to": "se-global",
+      "observations": [
+        {
+          "publishedOn": "2026-09-21",
+          "recordedOn": "2026-09-23",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Apport du préfinancement à la société",
+          "claim": "Le prospectus indique qu’Energy Global, LP a immédiatement apporté les 1,5 milliard reçus à la société, renommée SB Energy, Inc. le 31 août 2026.",
+          "limit": "C’est le même préfinancement, transmis à la société : ces deux flèches ne représentent pas deux investissements à additionner.",
+          "watch": "Traitement comptable et règlement des obligations correspondantes.",
+          "sources": [
+            "sb-s1a2-20260921"
+          ]
         }
       ]
     }
@@ -226,6 +294,11 @@
       "date": "2026-09-01",
       "label": "L’engagement en actions",
       "change": "Une annexe du S-1 de SB Energy documente un achat d’actions conditionnel par Nvidia. Le contrat est daté d’août ; ce jalon correspond à sa publication en septembre."
+    },
+    {
+      "date": "2026-09-21",
+      "label": "Préfinancement et engagement distinct",
+      "change": "Le prospectus distingue le préfinancement de Nvidia, reçu puis apporté à la société en août, d’un achat d’actions encore conditionnel. Le même argent n’est pas compté deux fois."
     }
   ]
 }
