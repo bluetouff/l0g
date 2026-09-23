@@ -203,6 +203,15 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'indice-a-decrement', sigle: 'Decrement index', nom: 'Index with a predefined deduction', ...privateCreditSection,
+    def: 'An index that includes reinvested dividends and subtracts a predefined amount in points or a percentage, according to its methodology. A fixed number of points becomes a larger proportion of the index as its level falls. For a structured note, this level may determine gains and conditional capital protection. The decrement is not a fee directly debited from the investment.',
+    guide: '/en/analysis/structured-products-decrement-indices-savings-risk/',
+    atlas: {
+      articles: [{ label: 'Decrement indices and structured-note payouts', href: '/en/analysis/structured-products-decrement-indices-savings-risk/', kind: 'article' }],
+      sources: [{ label: 'AMF-ACPR, explanatory note on structured products, June 2026 (French)', href: 'https://acpr.banque-france.fr/system/files/2026-06/20260622_Note_ACPR-AMF_Produits%20structur%C3%A9s.pdf', kind: 'source' }],
+    },
+  },
+  {
     slug: 'tokenisation-des-actifs', sigle: 'Asset tokenisation', nom: 'Digital representation of assets or legal claims',
     def: 'Digital representation of an asset or a legal claim on a programmable ledger. A token may represent the security itself, a certificate issued by a third party or another contractual right. The technology can simplify transfers and settlement; rights, collateral and liquidity depend on the instrument and its legal arrangements.',
     guide: '/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/',

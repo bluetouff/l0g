@@ -218,6 +218,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: 'var(--color-accent)',
     entries: [
+      { sigle: 'Indice à décrément', nom: 'Decrement index', def: 'Indice intégrant les dividendes réinvestis puis une déduction prédéfinie, exprimée en points ou en pourcentage selon sa méthode. Un montant fixe en points représente une proportion croissante lorsque le niveau de l’indice baisse. Dans un produit structuré, ce niveau peut déterminer les gains et la protection conditionnelle du capital. Le décrément ne constitue pas une commission directement débitée de l’épargne.', guide: '/posts/produits-structures-indices-decrement-risque-epargne/' },
       { sigle: 'DSCR', nom: 'Ratio de couverture du service de la dette', def: 'Rapport entre la trésorerie disponible pour la dette et les intérêts et remboursements de principal exigibles sur la même période. Sous 1, ces flux ne couvrent pas les paiements dus. Le calcul exact dépend du contrat ; ce ratio ne mesure ni la valeur du collatéral ni la solvabilité à lui seul.', guide: '/posts/crux-ai-google-blackstone-banques-puces-collateral/' },
       { sigle: 'Step-in rights', nom: 'Droits de substitution des prêteurs', def: 'Droits contractuels permettant aux prêteurs, sous certaines conditions, d’intervenir dans un projet en difficulté ou de faire remplacer son exploitant. Ils peuvent préserver des contrats essentiels à l’activité. Leur portée et leur opposabilité dépendent du droit applicable et des accords signés ; un nantissement de matériel ne les crée pas automatiquement.', guide: '/posts/crux-ai-google-blackstone-banques-puces-collateral/' },
       { sigle: 'Risque de séquence', nom: 'Ordre des rendements et retraits du portefeuille', def: 'Risque lié au calendrier des rendements lorsqu’un portefeuille finance des retraits. Des pertes en début de décaissement peuvent imposer la vente de davantage de parts et réduire le capital qui bénéficiera d’une reprise. Deux séries ayant le même rendement composé peuvent alors financer des revenus différents. L’effet dépend de la règle de retrait et des autres ressources disponibles.', guide: '/posts/retraite-risque-sequence-rendements/' },
@@ -629,7 +630,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-19';
+export const glossaryUpdatedIso = '2026-09-23';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -911,6 +912,10 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     articles: [{ label: 'Assurance : quand votre fidélité entre dans le prix', href: '/posts/assurance-prix-fidelite/', kind: 'article' }],
     sources: [{ label: 'EIOPA, déclaration sur la tarification différentielle, 2023', href: 'https://www.eiopa.europa.eu/eiopa-supervisory-statement-takes-aim-unfair-price-walking-practices-2023-03-16_en', kind: 'source' }],
     related: ['tarification-algorithmique'],
+  },
+  'indice-a-decrement': {
+    articles: [{ label: 'Indices à décrément et remboursement des produits structurés', href: '/posts/produits-structures-indices-decrement-risque-epargne/', kind: 'article' }],
+    sources: [{ label: 'AMF-ACPR, note explicative sur les produits structurés, juin 2026', href: 'https://acpr.banque-france.fr/system/files/2026-06/20260622_Note_ACPR-AMF_Produits%20structur%C3%A9s.pdf', kind: 'source' }],
   },
   'tarification-algorithmique': {
     articles: [{ label: 'Prix automatiques et concurrence', href: '/posts/prix-automatiques-concurrence-algorithmes/', kind: 'article' }],

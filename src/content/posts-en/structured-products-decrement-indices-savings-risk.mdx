@@ -1,0 +1,237 @@
+---
+title: "Savings: how 50 index points change the risk behind a 10.5% target"
+seoTitle: "Decrement indices: the risks behind a 10.5% target"
+description: "A close look at Exigence 38 Spirit shows how index deductions, conditional gains, capital barriers and embedded costs determine a structured product’s payout."
+pubDate: 2026-09-23T10:16:09.014Z
+tags: ["savings", "structured products", "life insurance", "risk", "indices"]
+draft: false
+ogImage: "/illustrations/news/indices-decrement-v1.jpg"
+sourceArticle: "produits-structures-indices-decrement-risque-epargne"
+sourceUpdatedDate: 2026-09-23T10:16:09.014Z
+---
+
+A target gain of **10.5% for each year elapsed**, with conditional capital protection against a decline of up to **50%**: Exigence 38 Spirit, offered by Linxea in September 2026, appears to boil down to two percentages. Yet a third number comes into play before either of them. The index that determines the payout has **50 points deducted each year**, through daily deductions. Dividends from the underlying companies are reinvested in the calculation, then this fixed amount is subtracted. [Distributor’s presentation, “Points clés” and “Focus indice” sections](https://www.linxea.com/epargne/nos-produits-structures-2/exigence-38-spirit/).
+
+This construction is called a [**decrement index**](/en/glossary/indice-a-decrement/). It changes the benchmark against which the investment’s gain and protection thresholds are measured. Rising share prices alone therefore do not tell us how that benchmark will perform. France’s financial regulators point out that the mechanism transfers the risk of changing dividends to the investor. [AMF–ACPR explanatory note, 22 June 2026, p. 2](https://acpr.banque-france.fr/system/files/2026-06/20260622_Note_ACPR-AMF_Produits%20structur%C3%A9s.pdf#page=2).
+
+Exigence 38 Spirit provides a concrete case for following the process from the index’s composition through the fixed deduction and the thresholds to the final payment. The terms can offer valuable conditional protection. Whether they adequately compensate for the risks requires a separate valuation.
+
+*Documentary cut-off: 23 September 2026. The illustrative calculations below are neither observed performance nor forecasts. Redemption amounts exclude investment-wrapper charges, tax and exceptional events, including default by the issuer or guarantor.*
+
+## Buying a payout formula
+
+A structured note is a debt security whose payments follow predefined rules. Its holder does not directly own the reference shares. Within a French *assurance-vie* life-insurance investment wrapper, exposure is held through a unit-linked investment option: its value depends on the security, and the insurer does not guarantee that value. [AFPDB, introduction to structured products, “Principe et fonctionnement”](https://afpdb.org/produits-structures-comprendre-pour-mieux-investir/); [Exigence 38 Spirit brochure, pp. 1–2](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=1).
+
+The security’s ISIN is **FRC764210890**. Its reference index is the **Morningstar Transatlantic Select 50 Decrement 50 Point GR EUR**. This combines 25 large US companies and 25 from the euro area, with each region weighted at 50% at rebalancing. Recognising the companies is not enough to understand the investment: the precise index variant is part of its economics. [Brochure, pp. 4 and 11](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=4).
+
+EUR identifies the calculation currency. It does not, by itself, remove the currency risk attached to the US shares: the brochure states that a decline in their currency against the euro can weigh on the index. This is another influence alongside share-price movements and the decrement. [Brochure, p. 3, currency risk](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=3).
+
+The schedule distinguishes the initial fixing, planned for **23 October 2026**, the final observation on **23 October 2036**, and payment at maturity on **30 October 2036**. From October 2027, monthly observations can trigger automatic early redemption if the index is at or above its initial level. The corresponding gain is **0.875% of face value for each month elapsed**. It is paid at redemption, not distributed every month. [French Key Information Document (KID, or DIC), dated 3 July 2026, pp. 1–2, corresponding to PDF pp. 15–16](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=15).
+
+The distinction matters. Months are used to calculate a possible gain. They do not create monthly income already credited to the investor’s account. Until the redemption condition is met, time keeps passing, but the corresponding money is not available.
+
+## The deduction happens inside the index
+
+Understanding the decrement requires separating two ways of tracking the same shares. A price index follows their prices without reinvesting ordinary dividends. A total-return version includes those dividends in its performance. The decrement index starts from a return that includes these distributions, then applies its predefined deduction. The precise treatment can differ between index families; the version examined here uses **gross** dividends. [AFPDB, “Qu’est-ce qu’un indice à décrément?”](https://afpdb.org/indices-a-decrement-specificites-atouts-et-inconvenients/); [brochure, p. 4](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=4).
+
+Consider a deliberately simplified example, calculated in one step over an imaginary year. An index starts at 1,000 points. Share-price movements add 30 points and dividends add 10. Without a deduction, it ends at 1,040. Subtract 50 points and it ends at 990. **In this model, share prices have risen, but the adjusted index has lost 1%.**
+
+The 990-point result is an illustrative l0g calculation, not a simulation of Exigence 38 Spirit. The actual index applies its decrement daily to a changing path. The sequence of market movements and deductions matters: a single subtraction at year-end does not necessarily reproduce the daily calculation.
+
+<figure class="not-prose" style="max-width:680px;margin:2rem auto;padding-bottom:.75rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 380" width="100%" style="width:100%;height:auto" role="img" aria-labelledby="decrement-en-1-title decrement-en-1-desc">
+<title id="decrement-en-1-title">Inside the index</title>
+<desc id="decrement-en-1-desc">Hypothetical one-year calculation in points, in a single step: 1,000 + 30 + 10 - 50 = 990. This is not daily index replication.</desc>
+<rect x="0" y="0" width="520" height="380" rx="12" fill="#0c0e10" />
+<text x="24" y="38" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#52e0ce">Inside the index</text>
+<text x="24" y="80" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf">Explanatory example</text>
+<text x="496" y="80" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf" text-anchor="end">Points</text>
+<line x1="24" y1="95" x2="496" y2="95" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="132" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed">Starting level</text>
+<text x="496" y="132" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">1 000</text>
+<line x1="24" y1="147" x2="496" y2="147" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="178" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed">Price movements</text>
+<text x="496" y="178" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">+30</text>
+<line x1="24" y1="193" x2="496" y2="193" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="224" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed">Gross dividends</text>
+<text x="496" y="224" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">+10</text>
+<line x1="24" y1="239" x2="496" y2="239" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="270" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed">Annual deduction</text>
+<text x="496" y="270" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">−50</text>
+<line x1="24" y1="285" x2="496" y2="285" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="316" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#ffbf69">Final level</text>
+<text x="496" y="316" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#ffbf69" text-anchor="end">990</text>
+<line x1="24" y1="331" x2="496" y2="331" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="356" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf">One fictional year; one-step deduction.</text>
+</svg>
+<figcaption style="margin-top:.8rem;font-size:.875em;line-height:1.6"><strong>Illustrative l0g calculation, 23 September 2026.</strong> Unit: index points; imaginary one-year period. Assumptions: 1,000 + 30 + 10 − 50 = 990. The deduction is applied in a single step, rather than daily as in the product. Mechanism source: <a href="https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=4">brochure, p. 4</a>. This diagram is not a simulation of the index.</figcaption>
+</figure>
+
+The opposite mistake would be to assume that the 50-point deduction always comes on top of losing all dividend income. Dividends are included first. Depending on their contribution and the market’s path, the decrement can absorb some, all or more than that contribution. Comparing two indices therefore requires matching their shares, weights, currency and dividend treatment. Two charts with similar names cannot, on their own, isolate the effect of the deduction. [Linxea, “Focus indice”](https://www.linxea.com/epargne/nos-produits-structures-2/exigence-38-spirit/).
+
+## A fixed deduction weighs more as the index falls
+
+An index point measures a level; a percentage measures a ratio. A 50-point annual deduction represents 5% of a level of 1,000, but 6.25% of 800 and 10% of 500. These divisions are not estimates of future performance. They measure the fixed amount relative to the index level at a particular moment.
+
+The difference from a percentage decrement becomes apparent when the index falls. A fixed-point deduction keeps its absolute size. A proportional deduction falls in point terms along with the index. With otherwise comparable starting conditions, the fixed-point deduction therefore takes an increasingly large proportion of a falling index. [AFPDB, comparison of point-based and percentage decrements](https://afpdb.org/indices-a-decrement-specificites-atouts-et-inconvenients/).
+
+
+
+The brochure gives a dated reference: **853.01 points on 8 July 2026**, making the 50-point annual deduction equivalent to **5.86%** of that level. This is a historical level reported in the marketing document, not a quote retrieved on 23 September. The calculation is straightforward: 50 ÷ 853.01 × 100 = 5.8616%. That figure is neither an annual fee debited from the investment nor a net return. [Brochure, p. 4](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=4).
+
+At the date of this analysis, the contractual initial level for 23 October has not yet been fixed. It would therefore be premature to express the 50 points as a definitive percentage of the product’s starting level. Even after the fixing, their size relative to the current index level will continue to change.
+
+## Two thresholds can abruptly change the payment
+
+At maturity, provided no early redemption has occurred, the formula has three bands. If the index ends at **65% or more** of its initial level, the note pays **205% of face value**. From **50% inclusive to 65% exclusive**, it pays **100%**. Below **50%**, the payment equals face value multiplied by the final index level divided by its initial level. [KID, p. 1, “Remboursement à la date d’échéance”](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=15).
+
+Apply those rules to **€10,000 of face value**, assumed to have been purchased at par, meaning for €10,000. The following final levels are hypothetical. In every case, the product is assumed to have remained outstanding until maturity.
+
+At 65 on an initial base of 100, the payment is €20,500. At 64.99, it is only €10,000. A difference of **0.01 index point on this rebased scale** therefore separates payments that are **€10,500 apart**. The second case is not a loss of principal: it is the disappearance of the entire conditional gain.
+
+The second discontinuity concerns principal. At 50, the payment remains €10,000. At 49.99, it falls to €4,999. Protection applies down to the specified threshold, then ceases to cover the decline. It does not absorb the first fifty percentage points of loss.
+
+<figure class="not-prose" style="max-width:680px;margin:2rem auto;padding-bottom:.75rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 380" width="100%" style="width:100%;height:auto" role="img" aria-labelledby="decrement-en-2-title decrement-en-2-desc">
+<title id="decrement-en-2-title">Maturity payment thresholds</title>
+<desc id="decrement-en-2-desc">10,000 euros face value purchased at par, no early redemption. Final level on an initial base 100: 65 pays 20,500 euros; 64.99 and 50 pay 10,000 euros; 49.99 pays 4,999 euros. Charges and tax excluded.</desc>
+<rect x="0" y="0" width="520" height="380" rx="12" fill="#0c0e10" />
+<text x="24" y="38" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#52e0ce">Maturity payment thresholds</text>
+<text x="24" y="80" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf">Final index (initial = 100)</text>
+<text x="496" y="80" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf" text-anchor="end">Payment</text>
+<line x1="24" y1="95" x2="496" y2="95" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="132" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed">65.00</text>
+<text x="496" y="132" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">€20 500</text>
+<line x1="24" y1="147" x2="496" y2="147" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="178" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed">64.99</text>
+<text x="496" y="178" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">€10 000</text>
+<line x1="24" y1="193" x2="496" y2="193" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="224" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed">50.00</text>
+<text x="496" y="224" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">€10 000</text>
+<line x1="24" y1="239" x2="496" y2="239" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="270" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#ffbf69">49.99</text>
+<text x="496" y="270" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#ffbf69" text-anchor="end">€4 999</text>
+<line x1="24" y1="285" x2="496" y2="285" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="342" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf">€10 000 face value, held to maturity.</text>
+<text x="24" y="368" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf">Excludes charges, tax and default.</text>
+</svg>
+<figcaption style="margin-top:.8rem;font-size:.875em;line-height:1.6"><strong>Formula applied by l0g, 23 September 2026.</strong> Units: euros paid at redemption and index levels rebased to an initial 100. Hypothetical final levels at the 23 October 2036 observation; payment scheduled for 30 October 2036. Assumes no early redemption and no issuer or guarantor default. Excludes wrapper charges and tax. Source: <a href="https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=15">KID, p. 1 (PDF p. 15)</a>.</figcaption>
+</figure>
+
+A final decline of 51% therefore leaves the index at 49 and produces a payment of €4,900: **the loss is €5,100, or 51% of face value**, not 1%. All these amounts follow directly from the formula’s arithmetic, with no assumption about the probability of reaching the selected levels.
+
+These discontinuities explain why a small difference between two index levels can produce a large difference between payments. If the decrement leaves the final level just across a threshold, its effect on the payout is not proportional to the points deducted. Conversely, two different index paths can produce the same payment when they end within the same fixed-payout band.
+
+For this capital-protection mechanism, the relevant level is the **final observation**. A fall below 50 during the product’s life does not, by itself, determine the final loss. This rule must be distinguished from the price available to an investor choosing to exit before maturity. [KID, pp. 1 and 3](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=15).
+
+Recovering 100% of face value after ten years is also a gross outcome. Contract charges can reduce the amount retained, while inflation over the period can erode its purchasing power. Conditional protection of the nominal amount is not a guarantee that savings will retain their real value. [Brochure, pp. 2–3](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=2); [KID, p. 2](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=16).
+
+## Converting the headline gain into a compound rate
+
+The monthly 0.875% amounts add up. Over 120 months, they produce 105% of face value, provided the gain condition is met. That is not the same as reinvesting principal and interest at 10.5% each year.
+
+To see the difference, take **exactly ten years**, with one initial payment of €10,000 and a single final receipt of €20,500. The equivalent compound annual rate is the rate that satisfies:
+
+**10,000 × (1 + rate)¹⁰ = 20,500.**
+
+It is therefore **2.05<sup>1/10</sup> − 1 = 7.44% a year**, rounded. An imaginary investment that actually compounded at 10.5% every year for ten years would instead reach **€27,140.81**. This comparison concerns only the arithmetic of interest. It does not assume that such an investment is available at the same level of risk.
+
+<figure class="not-prose" style="max-width:680px;margin:2rem auto;padding-bottom:.75rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 380" width="100%" style="width:100%;height:auto" role="img" aria-labelledby="decrement-en-3-title decrement-en-3-desc">
+<title id="decrement-en-3-title">Equivalent compound return</title>
+<desc id="decrement-en-3-desc">Hypothetical whole years and one conditional final payment: 1 year 11,050 euros and 10.50 percent annualised; 3 years 13,150 and 9.56 percent; 5 years 15,250 and 8.81 percent; 10 years 20,500 and 7.44 percent. Charges and tax excluded.</desc>
+<rect x="0" y="0" width="520" height="380" rx="12" fill="#0c0e10" />
+<text x="24" y="38" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#52e0ce">Equivalent compound return</text>
+<text x="24" y="80" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf">Duration</text>
+<text x="308" y="80" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf" text-anchor="end">Payment</text>
+<text x="496" y="80" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf" text-anchor="end">Annual rate</text>
+<line x1="24" y1="95" x2="496" y2="95" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="132" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed">1 year</text>
+<text x="308" y="132" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">€11 050</text>
+<text x="496" y="132" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">10.50%</text>
+<line x1="24" y1="147" x2="496" y2="147" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="178" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed">3 years</text>
+<text x="308" y="178" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">€13 150</text>
+<text x="496" y="178" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">9.56%</text>
+<line x1="24" y1="193" x2="496" y2="193" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="224" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed">5 years</text>
+<text x="308" y="224" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">€15 250</text>
+<text x="496" y="224" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#e6e9ed" text-anchor="end">8.81%</text>
+<line x1="24" y1="239" x2="496" y2="239" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="270" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#ffbf69">10 years</text>
+<text x="308" y="270" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#ffbf69" text-anchor="end">€20 500</text>
+<text x="496" y="270" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#ffbf69" text-anchor="end">7.44%</text>
+<line x1="24" y1="285" x2="496" y2="285" stroke="#3b424a" stroke-width="1" />
+<text x="24" y="342" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf">One payment; initial amount: €10 000.</text>
+<text x="24" y="368" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#abb4bf">Conditional gain, before charges and tax.</text>
+</svg>
+<figcaption style="margin-top:.8rem;font-size:.875em;line-height:1.6"><strong>l0g calculations, 23 September 2026.</strong> Units: euros and compound annual rates; hypothetical durations in whole years. For n years: payment = 10,000 × (1 + 0.105 × n); rate = (1 + 0.105 × n)<sup>1/n</sup> − 1. The contractual schedule and charges are not reproduced. The gain remains conditional. Source of the additive rule: <a href="https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=15">KID, p. 1</a>.</figcaption>
+</figure>
+
+The product’s exact schedule and its wrapper charges change the result further. The brochure shows an annual net return of **6.78%** in the favourable maturity scenario, assuming **0.60% in annual charges** and using its date convention. This “net” figure does not cover tax or every charge that could apply to the contract. It should not be confused with our gross calculation over ten whole years. [Brochure, methodology p. 2 and maturity payment p. 7](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=2).
+
+Early redemption introduces another trade-off. It can return principal and the gain sooner, but it also ends the product. Reinvesting on the same terms is not guaranteed. Its headline rate therefore cannot simply be projected over ten years as though the income were contractually renewable.
+
+## Dividend risk changes hands
+
+Why construct an index this way? In a product linked to share prices, future dividends are among the inputs that must be estimated to value and hedge the financial commitments. Replacing this uncertainty with a predefined deduction makes some structures easier to arrange. The AFPDB, which represents issuers, argues that this can improve the gains offered or the conditional protection. SIX/BME makes a similar case for its own decrement indices. These are explanations from providers and industry participants with an interest in their use, not evidence that Exigence 38 Spirit offers competitive terms. [AFPDB, “Origine et finalité”](https://afpdb.org/indices-a-decrement-specificites-atouts-et-inconvenients/); [SIX/BME, introduction to IBEX decrement indices](https://www.six-group.com/en/newsroom/news/financial-information/2022/ibex-35-decrement-indices.html).
+
+The AMF and ACPR describe the other side of the transaction: the risk of dividend variation is transferred to the investor. If dividends contribute less than expected, the fixed deduction continues to weigh on the benchmark that controls gains and protection. [Explanatory note, p. 2](https://acpr.banque-france.fr/system/files/2026-06/20260622_Note_ACPR-AMF_Produits%20structur%C3%A9s.pdf#page=2).
+
+The strongest argument for the investment lies in its own formula. A final level of 65 on a base of 100 still entitles the holder to 205% of face value, even though the index has fallen. Between 50 inclusive and 65 exclusive, protection can spare the investor a substantial decline. These benefits have value. Ignoring them would mean comparing investments that do not promise the same payments.
+
+An assessment therefore needs two separate comparisons. First, isolate the decrement’s effect by comparing consistent versions of the same index. Then compare investments after applying their payout rules, costs and payment dates. A simple comparison with an equity fund cannot, on its own, establish the price of protection. It can still help show how much upside the investor gives up.
+
+## Embedded costs add another layer
+
+The marketing page presents access to the product as free of entry fees. The product’s **Key Information Document**, meanwhile, reports entry costs of **7.76%**, or **€776 in its example of a €10,000 investment**, already included in the price paid. The two statements therefore describe different layers of charging. [Linxea page, introduction](https://www.linxea.com/epargne/nos-produits-structures-2/exigence-38-spirit/); [KID, p. 3, “Composition des coûts”](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=17).
+
+A cost embedded in the price is not an additional bill presented after redemption. When applying the contractual payments to €10,000 of face value, the €776 should not be deducted again from the amounts calculated above. Cost disclosures help assess the economics of the price paid and its impact on returns. This KID table does not break the €776 down into the net margins actually retained by each intermediary.
+
+It would be equally wrong to add 7.76%, the July decrement ratio of 5.86%, and annual charges of 0.60% to manufacture a “total cost”. The first is an embedded entry cost. The second compares a fixed annual point deduction with a dated index level. The third is an assumption about wrapper charges. They share neither a calculation base nor a time period.
+
+The decrement changes the conditions for receiving payments. Embedded costs affect the product’s price and economics. Contract charges reduce the value ultimately retained. Combining them properly requires tracing the cash flows in a specific scenario, including the purchase date and price, how contract charges are collected, and the exit date.
+
+## Protection also depends on who pays
+
+The note is issued by **Citigroup Global Markets Funding Luxembourg S.C.A.**, with a payment guarantee from **Citigroup Global Markets Limited**. That guarantee covers amounts due under the formula; it does not make principal unconditionally recoverable. The KID rates the product **7 out of 7** on its summary risk indicator and mentions the possibility of total loss. This classification is not a numerical probability of loss. [KID, pp. 1–2](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=15).
+
+Even a favourable index outcome does not eliminate the risk that the party owing the money defaults. A need for cash may also force an investor to exit before the date on which conditional protection is assessed. The resale price then depends, among other things, on market conditions and credit quality. The maturity formula is not a promise to buy the note back at par. [AMF–ACPR note, p. 2](https://acpr.banque-france.fr/system/files/2026-06/20260622_Note_ACPR-AMF_Produits%20structur%C3%A9s.pdf#page=2); [brochure, p. 13, “Rachat à l’initiative de l’investisseur”](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=13).
+
+The ability to hold the product therefore matters as much as understanding its threshold. An investor who needs the money before maturity may face risks that the final-payout diagram alone does not show.
+
+## What does the investor receive in exchange?
+
+Decrement indices are not new this autumn. In their study published on **22 June 2026**, the AMF and ACPR report that the proportion of products based on these indices has, in fact, declined since 2021. They also note that the survey relies on self-reported data and covers a period of rising markets. The existence of the mechanism should not be recast as a new market invasion, nor should past product outcomes become a guarantee for new investors. [AMF–ACPR study, pp. 4–5](https://acpr.banque-france.fr/system/files/2026-06/20260622_Etude_ACPR-AMF_Produits_structures.pdf#page=4).
+
+For Exigence 38 Spirit, the documents establish the published thresholds, the fixed deduction and the scheduled payments. They do not, by themselves, demonstrate that the offered terms adequately compensate for the risks. That would require an independent valuation, explicit assumptions and comparable investments assessed on the same dates.
+
+The immediate requirement is more modest: before judging the headline rate, reconstruct the payment in each band. An investor should be able to explain why 49.99, 50 and 65 on the same initial base produce such different outcomes. **Understanding the protection starts with understanding the index and the rules that trigger it.**
+
+For a different view of timing risk, see our analysis of [retirement withdrawals and the sequence of returns](/en/analysis/retirement-sequence-of-returns-risk/). The mechanics differ, but the dates of cash flows matter in both cases.
+
+## Sources
+
+The source access date for this analysis is **23 September 2026**. Linxea and Citi documents are marketing or regulatory disclosures from parties to the product. They establish its published features, not an independent assessment of its value. The French source titles are retained below to help readers locate the documents.
+
+1. **Linxea, Exigence 38 Spirit product page.** “Points clés”, early redemption, maturity payment and “Focus indice” sections. The page advertises subscription through Linxea until 20 October 2026 at 16:00; this analysis does not verify whether an order could actually be placed. [Direct access](https://www.linxea.com/epargne/nos-produits-structures-2/exigence-38-spirit/).
+2. **Linxea, Exigence 38 Spirit brochure, referring to a preparation date of 21 July 2026.** P. 2: net-return calculations; p. 4: index and 8 July reference level; pp. 6–7: payments; p. 11: schedule, face value and subscription price; p. 13: risks and legal documents. [Combined brochure and KID PDF](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/).
+3. **Citigroup Global Markets Limited, Exigence 38 Spirit Key Information Document (DIC), produced on 3 July 2026 at 16:41 Paris time.** A separate document appended to the brochure: KID pp. 1–3, corresponding to PDF pp. 15–17. Formula and dates on p. 1; risk on p. 2; costs on p. 3. [First page of the KID](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=15).
+4. **AMF–ACPR joint unit, explanatory note on the main features of a structured product**, published on 22 June 2026, pp. 1–2. Definition, conditional protection, decrement and risks. [PDF, in French](https://acpr.banque-france.fr/system/files/2026-06/20260622_Note_ACPR-AMF_Produits%20structur%C3%A9s.pdf).
+5. **AMF–ACPR joint unit, Distribution, frais et performance des produits structurés**, June 2026, published on 22 June. P. 4: scope, self-reported data and context; p. 5: decrement indices. [PDF, in French](https://acpr.banque-france.fr/system/files/2026-06/20260622_Etude_ACPR-AMF_Produits_structures.pdf).
+6. **AFPDB, Indices à décrément : spécificités, atouts et inconvénients**, updated on 14 April 2026. An industry source with an interest in these products, used to explain the mechanism and the issuers’ argument. [Page, in French](https://afpdb.org/indices-a-decrement-specificites-atouts-et-inconvenients/).
+7. **AFPDB, Produits structurés : comprendre pour mieux investir**, updated on 14 April 2026. The nature of the security and the combination of its financial components. [Page, in French](https://afpdb.org/produits-structures-comprendre-pour-mieux-investir/).
+8. **SIX/BME, BME Launches Four New Indices Aimed At Eliminating Dividend Risk.** A provider’s explanation of decrement-index mechanics; it does not concern the specific terms of the Linxea product. [Page](https://www.six-group.com/en/newsroom/news/financial-information/2022/ibex-35-decrement-indices.html).
+9. **Morningstar, reference-index page.** Public entry point for the relevant variant. The review did not yield the daily series required for an independent reconstruction. [Index page](https://indexes.morningstar.com/indexes/details/morningstar-transatlantic-select-50-FS0000I3V3?currency=EUR&variant=TR%20Decrement%2050%20Point&tab=overview).
+
+## Limitations
+
+This documentary analysis examines the KID and brochure available at the stated date. It is not an audit of the full prospectus or Final Terms. Morningstar’s complete calculation rulebook and daily history could not be used. No performance history, average dividend yield, backtest or probability of crossing a threshold is therefore reconstructed here.
+
+The marketing page contains an inconsistent footnote referring to 15 September 2036. The final observation date used here, 23 October 2036, agrees with both the KID and the table on brochure p. 11. Availability of the offer and any subsequent document versions must be checked again before subscribing.
+
+The examples assume €10,000 of **face value purchased at par**. The brochure also provides for subscription prices below par before the initial fixing: an actual cash investment of €10,000 on another date is therefore not automatically the same as our calculation base. Illustrative returns use whole years and exclude wrapper charges and tax. Rounding is applied only for display. The first diagram deliberately applies price changes, dividends and the deduction in a single step over an imaginary year; it does not replicate the index’s daily calculation. [Brochure, p. 11](https://www.linxea.com/document/brochure-dic-exigence-38-spirit-frc764210890/#page=11).
+
+The decrement is not a fee of the same amount collected directly by an intermediary. The KID’s cost disclosures do not establish individual net margins. No probability of loss, expected return or personalised recommendation is offered.
+
+*Original l0g text, calculations and diagrams: CC BY 4.0. Third-party documents retain their respective rights.*
