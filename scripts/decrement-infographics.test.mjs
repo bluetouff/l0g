@@ -8,6 +8,13 @@ import sharp from 'sharp';
 
 const articles = ['../src/content/posts/produits-structures-indices-decrement-risque-epargne.mdx', '../src/content/posts-en/structured-products-decrement-indices-savings-risk.mdx'].map(path => readFileSync(new URL(path, import.meta.url), 'utf8'));
 const figures = articles.map(article => [...article.matchAll(/<svg\b[\s\S]*?<\/svg>/g)].map(match => match[0]));
+test('bilingual page references use full words in citation labels', () => {
+  // The sentence-based extractor can split abbreviated page references inside links.
+  // Global claim uniqueness is independently checked by test:agent-surface after build.
+  for (const article of articles) {
+    assert.doesNotMatch(article, /\[[^\]\n]*\bpp?\.\s+\d[^\]\n]*\]\(/u);
+  }
+});
 function inspect(svg) {
   assert.equal(XMLValidator.validate(svg), true);
   const nodes = [];
