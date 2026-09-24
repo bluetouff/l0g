@@ -13,7 +13,7 @@ sourceUpdatedDate: '2026-09-24'
 
 **When AI asks you to pay · Part 2**
 
-*Read [Part 1: who decides to send the reminder?](/en/analysis/ai-debt-collection-1-who-decides-reminder/).*
+*Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 3: support](/en/analysis/ai-debt-collection-3-asking-for-help/).*
 
 On 7 April 2025, Intrum reported that its Ophelos platform had increased **amicable recovery rates in the Netherlands by 25%**, while reducing the **cost to collect by 22%**. These were described as early results. The announcement did not provide a protocol that would allow a reader to reproduce the comparison. <a href="#ia2-en-s01" aria-label="Source 1">[1]</a>
 
