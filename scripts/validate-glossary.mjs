@@ -99,7 +99,12 @@ for (const [slug, source] of [
     assert(entry);
     assert.equal(entry.guide, href);
     assert.deepEqual(entry.atlas.sources.map((item) => item.href), [source]);
-    assert.deepEqual(entry.atlas.articles.map((item) => item.href), [href]);
+    const articles = slug === 'profilage'
+      ? [href, href.startsWith('/en/')
+        ? '/en/analysis/ai-debt-collection-1-who-decides-reminder/'
+        : '/posts/ia-recouvrement-1-qui-decide-relance/']
+      : [href];
+    assert.deepEqual(entry.atlas.articles.map((item) => item.href), articles);
     for (const related of entry.atlas.related) assert(glossaryEntries.some((item) => item.slug === related));
   }
 }

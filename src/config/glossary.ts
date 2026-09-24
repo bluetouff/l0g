@@ -897,7 +897,10 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['profilage'],
   },
   profilage: {
-    articles: [{ label: 'Comment nos traces deviennent des profils à vendre', href: '/posts/commerce-traces-fabrication-profils-donnees-personnelles/', kind: 'article' }],
+    articles: [
+      { label: 'Comment nos traces deviennent des profils à vendre', href: '/posts/commerce-traces-fabrication-profils-donnees-personnelles/', kind: 'article' },
+      { label: 'Recouvrement par IA : qui décide de la relance ?', href: '/posts/ia-recouvrement-1-qui-decide-relance/', kind: 'article' },
+    ],
     sources: [{ label: 'CNIL, profilage et décision entièrement automatisée', href: 'https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee', kind: 'source' }],
     related: ['segment-d-audience', 'pseudonymisation'],
   },

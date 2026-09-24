@@ -253,7 +253,10 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'Automated processing of personal data to evaluate aspects of a person, such as interests, behaviour or movements. A profile may rely on inferences and contain errors. Profiling does not necessarily lead to a fully automated decision; aggregate statistics that do not evaluate individuals are not sufficient to establish profiling.',
     guide: '/en/analysis/personal-data-traces-to-saleable-profiles/',
     atlas: {
-      articles: [{ label: 'How our traces become profiles for sale', href: '/en/analysis/personal-data-traces-to-saleable-profiles/', kind: 'article' }],
+      articles: [
+        { label: 'How our traces become profiles for sale', href: '/en/analysis/personal-data-traces-to-saleable-profiles/', kind: 'article' },
+        { label: 'AI debt collection: who decides the next step?', href: '/en/analysis/ai-debt-collection-1-who-decides-reminder/', kind: 'article' },
+      ],
       sources: [{ label: 'CNIL, profiling and fully automated decisions', href: 'https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee', kind: 'source' }],
       related: ['segment-d-audience', 'pseudonymisation'],
     },
