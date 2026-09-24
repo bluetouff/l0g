@@ -2,8 +2,8 @@
 title: 'L’IA vous demande de payer : qui décide de la relance ?'
 seoTitle: 'Recouvrement par IA : qui décide de la relance ? | l0g'
 description: 'Créancier, recouvreur, score et chatbot : une enquête documentaire sur les décisions qui précèdent la relance et les droits du débiteur en France.'
-pubDate: '2026-09-24'
-updatedDate: '2026-09-24'
+pubDate: '2026-09-24T11:04:57+02:00'
+updatedDate: '2026-09-24T11:04:57+02:00'
 tags: ['IA', 'Recouvrement', 'Données personnelles', 'Enquête']
 draft: false
 ogImage: /illustrations/news/ia-recouvrement-decisions-v1.jpg
@@ -35,33 +35,28 @@ Dans le régime général du Code civil, lorsque le débiteur n’a pas déjà c
 
 Le fournisseur de logiciel constitue encore une autre fonction. Pour attribuer les responsabilités, il faut le situer séparément : développer l’outil, configurer ses règles et détenir la créance ne sont pas des responsabilités interchangeables. Plusieurs fonctions peuvent être réunies dans un même groupe ; il faut vérifier quelle entité les exerce.
 
-<figure style="margin:2.2rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="676" viewBox="0 0 400 676" role="img" aria-labelledby="ia1-fr-fig1-title ia1-fr-fig1-desc" focusable="false" style="display:block;width:100%;max-width:480px;height:auto;margin:0 auto;">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia1-fr-fig1-title ia1-fr-fig1-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia1-fr-fig1-title">Mandat ou cession : deux situations</title>
 <desc id="ia1-fr-fig1-desc">Dans le mandat, le créancier conserve la créance et charge un recouvreur d’agir pour son compte. Dans la cession, le créancier initial transfère la créance à un nouveau créancier. Celui-ci peut aussi mandater un recouvreur. Ce sont deux situations de principe, pas deux étapes obligatoires.</desc>
-<rect width="400" height="676" rx="18" fill="#10212b" />
-<g font-family="Arial, Helvetica, sans-serif">
-<text x="26" y="38" font-size="20" font-weight="700" fill="#78e6c4">01 / MANDAT</text>
-<rect x="24" y="60" width="352" height="88" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="42" y="95" font-size="25" font-weight="700" fill="#f2f7f8">Créancier</text>
-<text x="42" y="125" font-size="21" font-weight="400" fill="#c9dde3">Conserve la créance</text>
-<path d="M 200 155 V 185 M 194 179 L 200 185 L 206 179" fill="none" stroke="#78e6c4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="24" y="196" width="352" height="88" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="42" y="231" font-size="24" font-weight="700" fill="#f2f7f8">Recouvreur mandaté</text>
-<text x="42" y="261" font-size="21" font-weight="400" fill="#c9dde3">Agit pour ce créancier</text>
-<path d="M 24 313 H 376" stroke="#567681" stroke-width="1" />
-<text x="26" y="353" font-size="20" font-weight="700" fill="#78e6c4">02 / CESSION</text>
-<rect x="24" y="375" width="352" height="70" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="42" y="418" font-size="24" font-weight="700" fill="#f2f7f8">Créancier initial</text>
-<path d="M 200 451 V 483 M 194 477 L 200 483 L 206 477" fill="none" stroke="#78e6c4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="24" y="497" width="352" height="105" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="42" y="533" font-size="24" font-weight="700" fill="#f2f7f8">Nouveau créancier</text>
-<text x="42" y="563" font-size="21" font-weight="400" fill="#c9dde3">Détient la créance cédée</text>
-<text x="26" y="635" font-size="21" font-weight="400" fill="#c9dde3">Un recouvreur peut aussi</text>
-<text x="26" y="660" font-size="21" font-weight="400" fill="#c9dde3">agir pour l’acquéreur.</text>
-</g>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">Mandat ou cession</text>
+<text x="16" y="62" font-size="14" font-weight="600" fill="var(--color-signal)">01 · MANDAT</text>
+<text x="16" y="91" font-size="16" font-weight="600" fill="var(--color-paper)">Créancier</text>
+<text x="16" y="113" font-size="16" font-weight="400" fill="var(--color-paper)">garde la créance</text>
+<text x="204" y="91" font-size="16" font-weight="600" fill="var(--color-paper)">Recouvreur</text>
+<text x="204" y="113" font-size="16" font-weight="400" fill="var(--color-paper)">agit pour lui</text>
+<line x1="169" y1="96" x2="191" y2="96" stroke="var(--color-signal)" stroke-width="1" /><line x1="186" y1="92" x2="191" y2="96" stroke="var(--color-signal)" stroke-width="1" /><line x1="186" y1="100" x2="191" y2="96" stroke="var(--color-signal)" stroke-width="1" />
+<line x1="16" y1="137" x2="344" y2="137" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="163" font-size="14" font-weight="600" fill="var(--color-amber)">02 · CESSION</text>
+<text x="16" y="192" font-size="16" font-weight="600" fill="var(--color-paper)">Créancier initial</text>
+<text x="204" y="192" font-size="16" font-weight="600" fill="var(--color-paper)">Acquéreur</text>
+<text x="204" y="214" font-size="16" font-weight="400" fill="var(--color-paper)">détient la créance</text>
+<line x1="169" y1="197" x2="191" y2="197" stroke="var(--color-signal)" stroke-width="1" /><line x1="186" y1="193" x2="191" y2="197" stroke="var(--color-signal)" stroke-width="1" /><line x1="186" y1="201" x2="191" y2="197" stroke="var(--color-signal)" stroke-width="1" />
+<text x="16" y="246" font-size="16" font-weight="400" fill="var(--color-paper)">L’acquéreur peut aussi</text>
+<text x="16" y="267" font-size="16" font-weight="400" fill="var(--color-paper)">mandater un recouvreur.</text>
 </svg>
-<figcaption style="margin-top:0.9rem;font-size:0.92em;line-height:1.6;">Schéma de principe, droit français général. Les flèches désignent un mandat (en haut) ou une cession (en bas), pas un paiement. Aucune opération particulière n’est représentée. Sources : <a href="#ia1-fr-s02" aria-label="Source 2">[2]</a> <a href="#ia1-fr-s03" aria-label="Source 3">[3]</a> <a href="#ia1-fr-s04" aria-label="Source 4">[4]</a>. Consultation : 24 septembre 2026.</figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">Schéma de principe, droit français général. Les flèches désignent un mandat (en haut) ou une cession (en bas), pas un paiement. Aucune opération particulière n’est représentée. Sources : <a href="#ia1-fr-s02" aria-label="Source 2">[2]</a> <a href="#ia1-fr-s03" aria-label="Source 3">[3]</a> <a href="#ia1-fr-s04" aria-label="Source 4">[4]</a>. Consultation : 24 septembre 2026.</figcaption>
 </figure>
 
 Cette carte des intervenants sert à poser les bonnes questions. Une erreur de facture se recherche d’abord dans les pièces qui fondent la demande. Un mandat renseigne sur les pouvoirs confiés au recouvreur. La documentation du logiciel décrit ce que son utilisateur peut automatiser. Aucun de ces documents ne remplace les autres.
@@ -92,38 +87,29 @@ Il faut notamment connaître **l’objectif que le système cherche à améliore
 
 De même, un clic ne suffit pas à établir une capacité de remboursement. Une absence de réponse peut avoir plusieurs explications. Le point à vérifier est la manière dont l’opérateur traite cette incertitude, au lieu de prendre une prédiction pour un fait individuel.
 
-<figure style="margin:2.2rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="750" viewBox="0 0 400 750" role="img" aria-labelledby="ia1-fr-fig2-title ia1-fr-fig2-desc" focusable="false" style="display:block;width:100%;max-width:480px;height:auto;margin:0 auto;">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia1-fr-fig2-title ia1-fr-fig2-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia1-fr-fig2-title">De la donnée à l’action : quatre fonctions</title>
-<desc id="ia1-fr-fig2-desc">Grille de lecture : les données du dossier peuvent alimenter une évaluation et un choix d’action. Le message peut être fixe, rédigé par un humain ou généré. Une action dans le dossier requiert les pouvoirs correspondants. Une réponse affichée ne démontre pas qu’un acte a été exécuté. Les contrôles humains peuvent intervenir à plusieurs étapes.</desc>
-<rect width="400" height="750" rx="18" fill="#10212b" />
-<g font-family="Arial, Helvetica, sans-serif">
-<rect x="22" y="20" width="356" height="142" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="40" y="50" font-size="20" font-weight="700" fill="#78e6c4">01 / DONNÉES</text>
-<text x="40" y="86" font-size="25" font-weight="700" fill="#f2f7f8">Dossier de créance</text>
-<text x="40" y="119" font-size="21" font-weight="400" fill="#c9dde3">Factures, paiements,</text>
-<text x="40" y="146" font-size="21" font-weight="400" fill="#c9dde3">échanges et corrections</text>
-<path d="M 200 171 V 194 M 194 188 L 200 194 L 206 188" fill="none" stroke="#78e6c4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="22" y="204" width="356" height="142" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="40" y="234" font-size="20" font-weight="700" fill="#78e6c4">02 / CHOIX</text>
-<text x="40" y="270" font-size="25" font-weight="700" fill="#f2f7f8">Évaluer et orienter</text>
-<text x="40" y="303" font-size="21" font-weight="400" fill="#c9dde3">Score éventuel,</text>
-<text x="40" y="330" font-size="21" font-weight="400" fill="#c9dde3">règles de traitement</text>
-<path d="M 200 355 V 378 M 194 372 L 200 378 L 206 372" fill="none" stroke="#78e6c4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="22" y="388" width="356" height="142" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="40" y="418" font-size="20" font-weight="700" fill="#78e6c4">03 / MESSAGE</text>
-<text x="40" y="454" font-size="25" font-weight="700" fill="#f2f7f8">Communiquer</text>
-<text x="40" y="487" font-size="21" font-weight="400" fill="#c9dde3">Texte fixe, humain</text>
-<text x="40" y="514" font-size="21" font-weight="400" fill="#c9dde3">ou généré par un modèle</text>
-<path d="M 200 539 V 562 M 194 556 L 200 562 L 206 556" fill="none" stroke="#78e6c4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="22" y="572" width="356" height="142" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="40" y="602" font-size="20" font-weight="700" fill="#78e6c4">04 / EXÉCUTION</text>
-<text x="40" y="638" font-size="25" font-weight="700" fill="#f2f7f8">Agir sur le dossier</text>
-<text x="40" y="671" font-size="21" font-weight="400" fill="#c9dde3">Selon les autorisations</text>
-<text x="40" y="698" font-size="21" font-weight="400" fill="#c9dde3">et les contrôles prévus</text>
-</g>
+<desc id="ia1-fr-fig2-desc">Grille de lecture : les données du dossier peuvent alimenter une évaluation et un choix d’action. Le message peut être fixe, rédigé par un humain ou généré. Une action dans le dossier requiert les pouvoirs correspondants. L’exécution doit être vérifiée dans le dossier. Les contrôles humains peuvent intervenir à plusieurs étapes.</desc>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">Du dossier à l’action</text>
+<text x="16" y="64" font-size="14" font-weight="600" fill="var(--color-signal)">01</text>
+<text x="46" y="64" font-size="16" font-weight="600" fill="var(--color-paper)">Données du dossier</text>
+<text x="16" y="87" font-size="16" font-weight="400" fill="var(--color-paper)">Factures, paiements, corrections.</text>
+<line x1="16" y1="99" x2="344" y2="99" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="122" font-size="14" font-weight="600" fill="var(--color-signal)">02</text>
+<text x="46" y="122" font-size="16" font-weight="600" fill="var(--color-paper)">Évaluation et orientation</text>
+<text x="16" y="145" font-size="16" font-weight="400" fill="var(--color-paper)">Score éventuel et règles de traitement.</text>
+<line x1="16" y1="157" x2="344" y2="157" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="180" font-size="14" font-weight="600" fill="var(--color-signal)">03</text>
+<text x="46" y="180" font-size="16" font-weight="600" fill="var(--color-paper)">Rédaction du message</text>
+<text x="16" y="203" font-size="16" font-weight="400" fill="var(--color-paper)">Texte fixe, humain ou généré.</text>
+<line x1="16" y1="215" x2="344" y2="215" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="238" font-size="14" font-weight="600" fill="var(--color-signal)">04</text>
+<text x="46" y="238" font-size="16" font-weight="600" fill="var(--color-paper)">Action sur le dossier</text>
+<text x="16" y="261" font-size="16" font-weight="400" fill="var(--color-paper)">Selon les pouvoirs et contrôles prévus.</text>
 </svg>
-<figcaption style="margin-top:0.9rem;font-size:0.92em;line-height:1.6;">Grille de lecture, non architecture certifiée : les fonctions peuvent être séparées, absentes ou contrôlées par un humain à différents niveaux. Le contenu d’un message ne prouve pas l’exécution d’une action. Synthèse l0g à partir des descriptions des opérateurs : <a href="#ia1-fr-s09" aria-label="Source 9">[9]</a> <a href="#ia1-fr-s10" aria-label="Source 10">[10]</a> <a href="#ia1-fr-s11" aria-label="Source 11">[11]</a>. Consultation : 24 septembre 2026.</figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">Grille de lecture, non architecture certifiée : les fonctions peuvent être séparées, absentes ou contrôlées par un humain à différents niveaux. L’exécution se vérifie dans le dossier. Synthèse l0g à partir des descriptions des opérateurs : <a href="#ia1-fr-s09" aria-label="Source 9">[9]</a> <a href="#ia1-fr-s10" aria-label="Source 10">[10]</a> <a href="#ia1-fr-s11" aria-label="Source 11">[11]</a>. Consultation : 24 septembre 2026.</figcaption>
 </figure>
 
 Le déploiement doit lui aussi être documenté à la bonne échelle. Dans une communication du **25 juillet 2025**, Intrum citait la France parmi les pays où Ophelos avait été mis en service. Cette annonce ne précise pas quels modules étaient actifs dans chaque portefeuille. Une présence nationale n’établit ni une généralisation de l’IA générative, ni une autonomie complète du recouvrement. <a href="#ia1-fr-s12" aria-label="Source 12">[12]</a>

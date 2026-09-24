@@ -2,13 +2,13 @@
 title: 'When AI asks you to pay: examining the performance claims'
 seoTitle: 'AI debt collection: examining the performance claims | l0g'
 description: 'An investigation into AI debt-collection claims: receipts, costs, satisfaction, comparison groups and what happens after a repayment agreement.'
-pubDate: '2026-09-24'
-updatedDate: '2026-09-24'
+pubDate: '2026-09-24T13:00:45+02:00'
+updatedDate: '2026-09-24T13:00:45+02:00'
 tags: ['AI', 'Debt collection', 'Finance', 'Investigation']
 draft: false
 ogImage: /illustrations/news/ia-recouvrement-gains-v1.jpg
 sourceArticle: ia-recouvrement-2-gains-annonces
-sourceUpdatedDate: '2026-09-24'
+sourceUpdatedDate: '2026-09-24T13:00:45+02:00'
 ---
 
 **When AI asks you to pay · Part 2**
@@ -35,34 +35,25 @@ Time matters too. Over a short horizon, a system might principally bring forward
 
 Even a closed case needs a definition. Full repayment, a commercial write-off, an upheld dispute, a transfer to another provider and the end of a collection mandate should not disappear into a single category of “resolution”. Doing so would discard the explanation at the very moment the result is counted.
 
-<figure style="margin:2.4rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" width="360" height="716" viewBox="0 0 360 716" role="img" aria-labelledby="ia2-en-fig1-title ia2-en-fig1-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="294" viewBox="0 0 360 294" role="img" aria-labelledby="ia2-en-fig1-title ia2-en-fig1-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia2-en-fig1-title">Three different measures</title>
 <desc id="ia2-en-fig1-desc">An engagement measures a response; a receipt measures money received; verified resolution concerns the outcome of an agreement or dispute. These are not mandatory stages: an upheld dispute may close a case without payment.</desc>
-<rect width="360" height="716" rx="16" fill="#10212b" />
-<g font-family="Arial, Helvetica, sans-serif">
-<text x="22" y="35" font-size="18" font-weight="700" fill="#82e4c4">01 / READING THE RESULTS</text>
-<text x="22" y="76" font-size="25" font-weight="700" fill="#f2f7f8">What is being counted</text>
-<rect x="18" y="104" width="324" height="162" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="134" font-size="18" font-weight="700" fill="#82e4c4">CONTACT</text>
-<text x="34" y="170" font-size="23" font-weight="700" fill="#f2f7f8">A response secured</text>
-<text x="34" y="202" font-size="20" font-weight="400" fill="#e6edf0">An open, a reply or</text>
-<text x="34" y="226" font-size="20" font-weight="400" fill="#e6edf0">a recorded commitment.</text>
-<rect x="18" y="285" width="324" height="162" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="315" font-size="18" font-weight="700" fill="#82e4c4">PAYMENT</text>
-<text x="34" y="351" font-size="23" font-weight="700" fill="#f2f7f8">Money received</text>
-<text x="34" y="383" font-size="20" font-weight="400" fill="#e6edf0">Receipts reconciled with</text>
-<text x="34" y="407" font-size="20" font-weight="400" fill="#e6edf0">reversals and refunds.</text>
-<rect x="18" y="466" width="324" height="162" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="496" font-size="18" font-weight="700" fill="#82e4c4">CASE OUTCOME</text>
-<text x="34" y="532" font-size="23" font-weight="700" fill="#f2f7f8">A verified resolution</text>
-<text x="34" y="564" font-size="20" font-weight="400" fill="#e6edf0">Agreement kept or dispute</text>
-<text x="34" y="588" font-size="20" font-weight="400" fill="#e6edf0">handled; outcome applied.</text>
-<text x="22" y="665" font-size="20" font-weight="400" fill="#f5d998">An unfounded demand may</text>
-<text x="22" y="692" font-size="20" font-weight="400" fill="#f5d998">be withdrawn without payment.</text>
-</g>
+<rect x="0.5" y="0.5" width="359" height="293" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">What is being counted</text>
+<text x="16" y="64" font-size="14" font-weight="600" fill="var(--color-signal)">CONTACT</text>
+<text x="16" y="87" font-size="16" font-weight="400" fill="var(--color-paper)">An open, a reply, a commitment.</text>
+<line x1="16" y1="102" x2="344" y2="102" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="124" font-size="14" font-weight="600" fill="var(--color-signal)">PAYMENT</text>
+<text x="16" y="147" font-size="16" font-weight="400" fill="var(--color-paper)">Reconcile receipts with</text>
+<text x="16" y="168" font-size="16" font-weight="400" fill="var(--color-paper)">reversals and refunds.</text>
+<line x1="16" y1="183" x2="344" y2="183" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="205" font-size="14" font-weight="600" fill="var(--color-signal)">CASE OUTCOME</text>
+<text x="16" y="228" font-size="16" font-weight="400" fill="var(--color-paper)">Agreement kept or dispute handled.</text>
+<text x="16" y="259" font-size="16" font-weight="400" fill="var(--color-paper)">An upheld dispute may close</text>
+<text x="16" y="280" font-size="16" font-weight="400" fill="var(--color-paper)">the case without payment.</text>
 </svg>
-<figcaption style="margin-top:1rem;font-size:0.94em;line-height:1.65;">l0g analytical framework, without numerical data or a mandatory sequence. An improvement must be tied to the outcome actually measured. Methodological reference: FCA review, 27 July 2026 <a href="#ia2-en-s12" aria-label="Source 12">[12]</a>.</figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">l0g analytical framework, without numerical data or a mandatory sequence. An improvement must be tied to the outcome actually measured. Methodological reference: FCA review, 27 July 2026 <a href="#ia2-en-s12" aria-label="Source 12">[12]</a>.</figcaption>
 </figure>
 
 ## Keeping the starting population in view
@@ -117,33 +108,28 @@ The preprint by Goetze, Clajus and Stricker involves **3,514 people** randomly a
 
 The appendix reveals an important design feature. The human scenario specifies a ten-minute wait, the AI scenario a ten-second wait. The human also comments that earlier contact would have been preferable; the AI thanks the person for being candid. Several features change together. <a href="#ia2-en-s05" aria-label="Source 5">[5]</a>
 
-<figure style="margin:2.4rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" width="360" height="705" viewBox="0 0 360 705" role="img" aria-labelledby="ia2-en-fig2-title ia2-en-fig2-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia2-en-fig2-title ia2-en-fig2-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia2-en-fig2-title">The experiment compares two complete scenarios</title>
 <desc id="ia2-en-fig2-desc">Participants read one of two scenarios. The human scenario specifies ten minutes of waiting and a remark about earlier contact; the AI scenario specifies ten seconds and thanks the person for being candid. The comparison changes several features at once, not only the interlocutor’s identity.</desc>
-<rect width="360" height="705" rx="16" fill="#10212b" />
-<g font-family="Arial, Helvetica, sans-serif">
-<text x="22" y="35" font-size="18" font-weight="700" fill="#82e4c4">02 / READING THE DESIGN</text>
-<text x="22" y="75" font-size="25" font-weight="700" fill="#f2f7f8">Two scenes to read</text>
-<text x="22" y="106" font-size="19" font-weight="400" fill="#e6edf0">One scenario per participant</text>
-<rect x="18" y="132" width="324" height="210" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="163" font-size="18" font-weight="700" fill="#82e4c4">HUMAN SCENARIO</text>
-<text x="34" y="208" font-size="31" font-weight="700" fill="#f2f7f8">10 minutes</text>
-<text x="34" y="238" font-size="20" font-weight="400" fill="#e6edf0">of stated waiting time</text>
-<text x="34" y="282" font-size="21" font-weight="400" fill="#e6edf0">A remark about not</text>
-<text x="34" y="310" font-size="21" font-weight="400" fill="#e6edf0">getting in touch earlier.</text>
-<rect x="18" y="360" width="324" height="210" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="391" font-size="18" font-weight="700" fill="#82e4c4">AI SCENARIO</text>
-<text x="34" y="436" font-size="31" font-weight="700" fill="#f2f7f8">10 seconds</text>
-<text x="34" y="466" font-size="20" font-weight="400" fill="#e6edf0">of stated waiting time</text>
-<text x="34" y="510" font-size="21" font-weight="400" fill="#e6edf0">Thanks for being</text>
-<text x="34" y="538" font-size="21" font-weight="400" fill="#e6edf0">candid.</text>
-<text x="22" y="611" font-size="20" font-weight="400" fill="#f5d998">Waiting and wording also change.</text>
-<text x="22" y="644" font-size="21" font-weight="700" fill="#f2f7f8">The effect of AI identity alone</text>
-<text x="22" y="673" font-size="21" font-weight="700" fill="#f2f7f8">is not isolated.</text>
-</g>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">Two scenarios to compare</text>
+<text x="16" y="53" font-size="16" font-weight="400" fill="var(--color-paper)">One scenario per participant</text>
+<text x="16" y="89" font-size="14" font-weight="600" fill="var(--color-signal)">HUMAN</text>
+<text x="200" y="89" font-size="14" font-weight="600" fill="var(--color-amber)">AI</text>
+<text x="16" y="120" font-size="22" font-weight="600" fill="var(--color-paper)">10 min</text>
+<text x="200" y="120" font-size="22" font-weight="600" fill="var(--color-paper)">10 s</text>
+<text x="16" y="144" font-size="16" font-weight="400" fill="var(--color-paper)">Stated wait</text>
+<text x="200" y="144" font-size="16" font-weight="400" fill="var(--color-paper)">Stated wait</text>
+<text x="16" y="174" font-size="16" font-weight="400" fill="var(--color-paper)">Remark about</text>
+<text x="16" y="195" font-size="16" font-weight="400" fill="var(--color-paper)">contacting late.</text>
+<text x="200" y="174" font-size="16" font-weight="400" fill="var(--color-paper)">Thanks for</text>
+<text x="200" y="195" font-size="16" font-weight="400" fill="var(--color-paper)">being candid.</text>
+<line x1="16" y1="213" x2="344" y2="213" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="243" font-size="16" font-weight="400" fill="var(--color-paper)">Both waiting and wording change.</text>
+<text x="16" y="267" font-size="16" font-weight="400" fill="var(--color-paper)">AI identity alone is not isolated.</text>
 </svg>
-<figcaption style="margin-top:1rem;font-size:0.94em;line-height:1.65;">Fictional research scenarios, not measurements of a production service. Data collected August-October 2025. Summary of differences in Table A1, pp. 14-15, Goetze and co-authors; methodological interpretation by l0g. <a href="#ia2-en-s05" aria-label="Source 5">[5]</a></figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">Fictional research scenarios, not measurements of a production service. Data collected August-October 2025. Summary of differences in Table A1, pp. 14-15, Goetze and co-authors; methodological interpretation by l0g. <a href="#ia2-en-s05" aria-label="Source 5">[5]</a></figcaption>
 </figure>
 
 Random assignment makes it possible to compare reactions to those two bundles of features. It does not isolate the effect of the interlocutor's artificial identity. Would a prompt, non-judgmental human response have produced the same reaction? The design does not supply that comparison.

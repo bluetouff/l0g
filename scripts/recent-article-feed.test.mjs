@@ -13,6 +13,17 @@ function article(index, date) {
   };
 }
 
+test("le flux conserve l’ordre de publication au sein d’une même journée", () => {
+  const older = article(4, "2026-09-23");
+  const latest = article(3, "2026-09-24");
+  const middle = article(2, "2026-09-24");
+  const earliest = article(1, "2026-09-24");
+  const corpus = [older, latest, middle, earliest];
+
+  assert.deepEqual(selectRecentArticles(corpus), [latest, middle, earliest, older]);
+  assert.deepEqual(corpus, [older, latest, middle, earliest]);
+});
+
 test("la veille reste bornée avec dix mille articles historiques", () => {
   const corpus = Array.from({ length: 10_000 }, (_, index) => {
     const date = new Date(Date.UTC(2026, 6, 27 - index));

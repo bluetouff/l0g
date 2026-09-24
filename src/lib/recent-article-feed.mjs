@@ -4,7 +4,9 @@ export const RECENT_ARTICLE_MAX = 512;
 export function selectRecentArticles(articles) {
   const sorted = [...articles].sort((left, right) => {
     const byDate = Date.parse(right.date) - Date.parse(left.date);
-    return byDate || left.canonicalId.localeCompare(right.canonicalId);
+    // The caller orders exact publication instants before projecting date-only records.
+    // Keep that intraday order when dates tie (Array.sort is stable).
+    return byDate;
   });
   if (
     sorted.some(

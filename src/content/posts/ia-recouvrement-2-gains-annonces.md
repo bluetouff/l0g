@@ -2,8 +2,8 @@
 title: 'L’IA vous demande de payer : derrière les gains annoncés'
 seoTitle: 'Recouvrement par IA : vérifier les gains annoncés | l0g'
 description: 'Encaissements, coûts et satisfaction : enquête sur les résultats du recouvrement par IA, leurs comparateurs et le devenir des accords de paiement.'
-pubDate: '2026-09-24'
-updatedDate: '2026-09-24'
+pubDate: '2026-09-24T13:00:45+02:00'
+updatedDate: '2026-09-24T13:00:45+02:00'
 tags: ['IA', 'Recouvrement', 'Finance', 'Enquête']
 draft: false
 ogImage: /illustrations/news/ia-recouvrement-gains-v1.jpg
@@ -37,35 +37,25 @@ La durée apporte une autre distinction. À horizon rapproché, un dispositif pe
 
 Même la clôture d’un dossier doit être définie. Solde payé, abandon commercial, contestation reconnue, transfert à un autre prestataire et fin de mandat ne devraient pas être fondus dans une seule catégorie de « résolution ». Ce serait perdre l’explication du résultat au moment de le compter.
 
-<figure style="margin:2.4rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" width="360" height="716" viewBox="0 0 360 716" role="img" aria-labelledby="ia2-fr-fig1-title ia2-fr-fig1-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="294" viewBox="0 0 360 294" role="img" aria-labelledby="ia2-fr-fig1-title ia2-fr-fig1-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia2-fr-fig1-title">Trois mesures à distinguer</title>
 <desc id="ia2-fr-fig1-desc">Un engagement mesure une réaction ; un encaissement mesure un mouvement d’argent ; une résolution vérifiée porte sur le devenir de l’accord ou de la contestation. Ces dimensions ne sont pas des étapes obligatoires : une contestation reconnue peut clore le dossier sans paiement.</desc>
-<rect width="360" height="716" rx="16" fill="#10212b" />
-<g font-family="Arial, Helvetica, sans-serif">
-<text x="22" y="35" font-size="18" font-weight="700" fill="#82e4c4">01 / LIRE LES RÉSULTATS</text>
-<text x="22" y="76" font-size="25" font-weight="700" fill="#f2f7f8">Ce que l’on compte</text>
-<rect x="18" y="104" width="324" height="162" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="134" font-size="18" font-weight="700" fill="#82e4c4">CONTACT</text>
-<text x="34" y="170" font-size="23" font-weight="700" fill="#f2f7f8">Une réaction obtenue</text>
-<text x="34" y="202" font-size="20" font-weight="400" fill="#e6edf0">Ouverture, réponse ou</text>
-<text x="34" y="226" font-size="20" font-weight="400" fill="#e6edf0">engagement enregistré.</text>
-<rect x="18" y="285" width="324" height="162" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="315" font-size="18" font-weight="700" fill="#82e4c4">PAIEMENT</text>
-<text x="34" y="351" font-size="23" font-weight="700" fill="#f2f7f8">Un versement reçu</text>
-<text x="34" y="383" font-size="20" font-weight="400" fill="#e6edf0">Encaissements à rapprocher</text>
-<text x="34" y="407" font-size="20" font-weight="400" fill="#e6edf0">des annulations et</text>
-<text x="34" y="431" font-size="20" font-weight="400" fill="#e6edf0">des remboursements.</text>
-<rect x="18" y="466" width="324" height="162" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="496" font-size="18" font-weight="700" fill="#82e4c4">ISSUE DU DOSSIER</text>
-<text x="34" y="532" font-size="23" font-weight="700" fill="#f2f7f8">Une résolution vérifiée</text>
-<text x="34" y="564" font-size="20" font-weight="400" fill="#e6edf0">Accord tenu ou contestation</text>
-<text x="34" y="588" font-size="20" font-weight="400" fill="#e6edf0">traitée ; résultat appliqué.</text>
-<text x="22" y="665" font-size="20" font-weight="400" fill="#f5d998">Une dette contestée à raison</text>
-<text x="22" y="692" font-size="20" font-weight="400" fill="#f5d998">peut être retirée sans paiement.</text>
-</g>
+<rect x="0.5" y="0.5" width="359" height="293" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">Ce que l’on compte</text>
+<text x="16" y="64" font-size="14" font-weight="600" fill="var(--color-signal)">CONTACT</text>
+<text x="16" y="87" font-size="16" font-weight="400" fill="var(--color-paper)">Ouverture, réponse, engagement.</text>
+<line x1="16" y1="102" x2="344" y2="102" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="124" font-size="14" font-weight="600" fill="var(--color-signal)">PAIEMENT</text>
+<text x="16" y="147" font-size="16" font-weight="400" fill="var(--color-paper)">Sommes reçues, annulations et</text>
+<text x="16" y="168" font-size="16" font-weight="400" fill="var(--color-paper)">remboursements à rapprocher.</text>
+<line x1="16" y1="183" x2="344" y2="183" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="205" font-size="14" font-weight="600" fill="var(--color-signal)">ISSUE DU DOSSIER</text>
+<text x="16" y="228" font-size="16" font-weight="400" fill="var(--color-paper)">Accord tenu ou contestation traitée.</text>
+<text x="16" y="259" font-size="16" font-weight="400" fill="var(--color-paper)">Une contestation reconnue peut</text>
+<text x="16" y="280" font-size="16" font-weight="400" fill="var(--color-paper)">clore le dossier sans paiement.</text>
 </svg>
-<figcaption style="margin-top:1rem;font-size:0.94em;line-height:1.65;">Grille d’analyse l0g, sans donnée chiffrée ni séquence obligatoire. Une amélioration doit être reliée à l’indicateur effectivement mesuré. Point de comparaison méthodologique : FCA, revue du 27 juillet 2026 <a href="#ia2-fr-s12" aria-label="Source 12">[12]</a>.</figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">Grille d’analyse l0g, sans donnée chiffrée ni séquence obligatoire. Une amélioration doit être reliée à l’indicateur effectivement mesuré. Point de comparaison méthodologique : FCA, revue du 27 juillet 2026 <a href="#ia2-fr-s12" aria-label="Source 12">[12]</a>.</figcaption>
 </figure>
 
 ## Ce qu’il faut conserver au dénominateur
@@ -120,33 +110,28 @@ La prépublication de Goetze, Clajus et Stricker porte sur **3 514 personnes** r
 
 L’annexe apporte une précision déterminante : l’attente décrite est de dix minutes avec l’humain, dix secondes avec l’IA. Le texte humain comporte aussi une remarque sur le fait qu’il aurait fallu prendre contact plus tôt ; le texte IA remercie la personne pour sa franchise. Plusieurs dimensions de l’expérience changent ensemble. <a href="#ia2-fr-s05" aria-label="Source 5">[5]</a>
 
-<figure style="margin:2.4rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" width="360" height="705" viewBox="0 0 360 705" role="img" aria-labelledby="ia2-fr-fig2-title ia2-fr-fig2-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia2-fr-fig2-title ia2-fr-fig2-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia2-fr-fig2-title">L’expérience compare deux scénarios complets</title>
 <desc id="ia2-fr-fig2-desc">Les participants lisent l’un de deux scénarios. Le scénario humain décrit dix minutes d’attente et une remarque sur le retard de prise de contact ; le scénario IA décrit dix secondes et remercie la personne pour sa franchise. La comparaison porte donc sur plusieurs caractéristiques à la fois, pas sur la seule identité de l’interlocuteur.</desc>
-<rect width="360" height="705" rx="16" fill="#10212b" />
-<g font-family="Arial, Helvetica, sans-serif">
-<text x="22" y="35" font-size="18" font-weight="700" fill="#82e4c4">02 / LIRE LE PROTOCOLE</text>
-<text x="22" y="75" font-size="25" font-weight="700" fill="#f2f7f8">Deux scènes à lire</text>
-<text x="22" y="106" font-size="19" font-weight="400" fill="#e6edf0">Un seul scénario par participant</text>
-<rect x="18" y="132" width="324" height="210" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="163" font-size="18" font-weight="700" fill="#82e4c4">SCÉNARIO HUMAIN</text>
-<text x="34" y="208" font-size="31" font-weight="700" fill="#f2f7f8">10 minutes</text>
-<text x="34" y="238" font-size="20" font-weight="400" fill="#e6edf0">d’attente décrite</text>
-<text x="34" y="282" font-size="21" font-weight="400" fill="#e6edf0">Remarque sur la prise</text>
-<text x="34" y="310" font-size="21" font-weight="400" fill="#e6edf0">de contact tardive.</text>
-<rect x="18" y="360" width="324" height="210" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="391" font-size="18" font-weight="700" fill="#82e4c4">SCÉNARIO IA</text>
-<text x="34" y="436" font-size="31" font-weight="700" fill="#f2f7f8">10 secondes</text>
-<text x="34" y="466" font-size="20" font-weight="400" fill="#e6edf0">d’attente décrite</text>
-<text x="34" y="510" font-size="21" font-weight="400" fill="#e6edf0">Remerciement pour</text>
-<text x="34" y="538" font-size="21" font-weight="400" fill="#e6edf0">la franchise.</text>
-<text x="22" y="611" font-size="20" font-weight="400" fill="#f5d998">Attente et formulations changent.</text>
-<text x="22" y="644" font-size="21" font-weight="700" fill="#f2f7f8">Le seul effet « IA »</text>
-<text x="22" y="673" font-size="21" font-weight="700" fill="#f2f7f8">n’est pas isolé.</text>
-</g>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">Deux scénarios à comparer</text>
+<text x="16" y="53" font-size="16" font-weight="400" fill="var(--color-paper)">Un seul scénario par participant</text>
+<text x="16" y="89" font-size="14" font-weight="600" fill="var(--color-signal)">HUMAIN</text>
+<text x="200" y="89" font-size="14" font-weight="600" fill="var(--color-amber)">IA</text>
+<text x="16" y="120" font-size="22" font-weight="600" fill="var(--color-paper)">10 min</text>
+<text x="200" y="120" font-size="22" font-weight="600" fill="var(--color-paper)">10 s</text>
+<text x="16" y="144" font-size="16" font-weight="400" fill="var(--color-paper)">Attente décrite</text>
+<text x="200" y="144" font-size="16" font-weight="400" fill="var(--color-paper)">Attente décrite</text>
+<text x="16" y="174" font-size="16" font-weight="400" fill="var(--color-paper)">Remarque sur</text>
+<text x="16" y="195" font-size="16" font-weight="400" fill="var(--color-paper)">le contact tardif.</text>
+<text x="200" y="174" font-size="16" font-weight="400" fill="var(--color-paper)">Remerciement</text>
+<text x="200" y="195" font-size="16" font-weight="400" fill="var(--color-paper)">pour la franchise.</text>
+<line x1="16" y1="213" x2="344" y2="213" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="243" font-size="16" font-weight="400" fill="var(--color-paper)">L’attente et les formulations varient.</text>
+<text x="16" y="267" font-size="16" font-weight="400" fill="var(--color-paper)">L’effet de l’IA seule n’est pas isolé.</text>
 </svg>
-<figcaption style="margin-top:1rem;font-size:0.94em;line-height:1.65;">Scénarios fictifs utilisés dans la recherche, pas mesures d’un service en production. Données recueillies d’août à octobre 2025. Synthèse des différences décrites dans le tableau A1, pp. 14-15, Goetze et coauteurs ; interprétation méthodologique l0g. <a href="#ia2-fr-s05" aria-label="Source 5">[5]</a></figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">Scénarios fictifs utilisés dans la recherche, pas mesures d’un service en production. Données recueillies d’août à octobre 2025. Synthèse des différences décrites dans le tableau A1, pp. 14-15, Goetze et coauteurs ; interprétation méthodologique l0g. <a href="#ia2-fr-s05" aria-label="Source 5">[5]</a></figcaption>
 </figure>
 
 La répartition aléatoire permet de comparer les réactions à ces deux ensembles de caractéristiques. Elle ne permet pas d’attribuer tout l’écart à la seule identité artificielle de l’interlocuteur. Un accueil humain rapide, sans remarque sur le retard, aurait-il suscité le même sentiment ? Le protocole ne fournit pas cette comparaison.

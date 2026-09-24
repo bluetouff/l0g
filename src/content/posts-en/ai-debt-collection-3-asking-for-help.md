@@ -2,13 +2,13 @@
 title: 'When AI asks you to pay: what happens when you ask for help'
 seoTitle: 'AI debt collection: what happens when you ask for help | l0g'
 description: How AI detects vulnerability, routes people to support and handles sensitive information. An investigation into what happens after an alert.
-pubDate: '2026-09-24'
-updatedDate: '2026-09-24'
+pubDate: '2026-09-24T16:56:18+02:00'
+updatedDate: '2026-09-24T16:56:18+02:00'
 tags: ['AI', 'Debt collection', 'Data protection', 'Investigation']
 draft: false
 ogImage: /illustrations/news/ia-recouvrement-aide-v1.jpg
 sourceArticle: ia-recouvrement-3-appel-aide
-sourceUpdatedDate: '2026-09-24'
+sourceUpdatedDate: '2026-09-24T16:56:18+02:00'
 ---
 
 **When AI asks you to pay · Part 3**
@@ -59,33 +59,27 @@ Reviewing only flagged cases would not test the whole allocation decision. It wo
 
 This changes how a claim of “accuracy” should be read. A high share of relevant alerts can coexist with many missed cases. Conversely, a system that flags almost everything may find more difficulties while overwhelming the specialist team. Neither metric, taken alone, settles the question without the other error type and its consequences.
 
-<figure style="margin:2.2rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ia3-en-fig1-title ia3-en-fig1-desc" focusable="false" viewBox="0 0 400 810" width="400" height="810" preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:auto;max-width:480px;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia3-en-fig1-title ia3-en-fig1-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia3-en-fig1-title">Review flagged and unflagged cases</title>
 <desc id="ia3-en-fig1-desc">Proposed, unexecuted protocol: review alerts for unwarranted classifications, then sample unflagged cases to identify missed needs. Use common context and criteria, retaining disagreements. No error rate has been calculated.</desc>
-<rect x="0" y="0" width="400" height="810" rx="14" fill="#10212b" />
-<text x="22" y="36" font-size="20" font-weight="700" fill="#82e4c4">01 / EVALUATION</text>
-<text x="22" y="78" font-size="27" font-weight="700" fill="#f1f7f8">Check both sides</text>
-<text x="22" y="111" font-size="21" font-weight="400" fill="#f1f7f8">From a flag to a real need</text>
-<rect x="18" y="138" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="171" font-size="20" font-weight="700" fill="#82e4c4">FLAGGED CASES</text>
-<text x="34" y="214" font-size="21" font-weight="400" fill="#f1f7f8">Is the alert justified?</text>
-<text x="34" y="243" font-size="21" font-weight="400" fill="#f1f7f8">What need is confirmed?</text>
-<text x="34" y="272" font-size="21" font-weight="400" fill="#f1f7f8">What response followed?</text>
-<rect x="18" y="335" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="368" font-size="20" font-weight="700" fill="#f3d798">UNFLAGGED CASES</text>
-<text x="34" y="411" font-size="21" font-weight="400" fill="#f1f7f8">Look for missed needs</text>
-<text x="34" y="440" font-size="21" font-weight="400" fill="#f1f7f8">in an independently</text>
-<text x="34" y="469" font-size="21" font-weight="400" fill="#f1f7f8">reviewed sample.</text>
-<rect x="18" y="532" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="565" font-size="20" font-weight="700" fill="#82e4c4">A COMMON REFERENCE</text>
-<text x="34" y="608" font-size="21" font-weight="400" fill="#f1f7f8">The same available context.</text>
-<text x="34" y="637" font-size="21" font-weight="400" fill="#f1f7f8">Criteria set in advance.</text>
-<text x="34" y="666" font-size="21" font-weight="400" fill="#f1f7f8">Disagreements retained.</text>
-<text x="22" y="749" font-size="21" font-weight="700" fill="#f1f7f8">No error rate calculated</text>
-<text x="22" y="779" font-size="21" font-weight="400" fill="#f1f7f8">in this investigation.</text>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">Check both sides</text>
+<text x="16" y="65" font-size="14" font-weight="600" fill="var(--color-signal)">FLAGGED</text>
+<text x="196" y="65" font-size="14" font-weight="600" fill="var(--color-amber)">UNFLAGGED</text>
+<text x="16" y="92" font-size="16" font-weight="400" fill="var(--color-paper)">Check the alert,</text>
+<text x="16" y="114" font-size="16" font-weight="400" fill="var(--color-paper)">the need and</text>
+<text x="16" y="136" font-size="16" font-weight="400" fill="var(--color-paper)">the support given.</text>
+<text x="196" y="92" font-size="16" font-weight="400" fill="var(--color-paper)">Review a sample</text>
+<text x="196" y="114" font-size="16" font-weight="400" fill="var(--color-paper)">independently.</text>
+<text x="196" y="136" font-size="16" font-weight="400" fill="var(--color-paper)">Find missed needs.</text>
+<line x1="16" y1="157" x2="344" y2="157" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="184" font-size="14" font-weight="600" fill="var(--color-signal)">A SHARED REVIEW FRAMEWORK</text>
+<text x="16" y="209" font-size="16" font-weight="400" fill="var(--color-paper)">Same context, predefined criteria,</text>
+<text x="16" y="232" font-size="16" font-weight="400" fill="var(--color-paper)">disagreements retained.</text>
+<text x="16" y="267" font-size="16" font-weight="400" fill="var(--color-paper)">No error rate calculated here.</text>
 </svg>
-<figcaption style="margin-top:1rem;line-height:1.65;">Methodological illustration by l0g, with no statistical data. This protocol has not been executed. Providers describe the routing choices that motivate the proposed review. <a href="#ia3-en-s01" aria-label="Source 1">[1]</a> <a href="#ia3-en-s06" aria-label="Source 6">[6]</a></figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">Methodological illustration by l0g, with no statistical data. This protocol has not been executed. Providers describe the routing choices that motivate the proposed review. <a href="#ia3-en-s01" aria-label="Source 1">[1]</a> <a href="#ia3-en-s06" aria-label="Source 6">[6]</a></figcaption>
 </figure>
 
 The human reference itself needs a method. Are reviewers looking for a health condition, a communication barrier or a request for an adjustment? Do they see the same conversations? Are disagreements retained? Agreement within a company on a category is not a medical finding.
@@ -132,33 +126,26 @@ The GDPR requires, among other things, data minimisation, explicit purposes and 
 
 For access controls, the CNIL recommends limiting permissions to information needed for each role. An organisation may need an authorised person to examine a disclosure without giving everyone implementing the resulting adjustment the same access. A service instruction linked to a customer is still personal data requiring protection. <a href="#ia3-en-s14" aria-label="Source 14">[14]</a>
 
-<figure style="margin:2.2rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ia3-en-fig2-title ia3-en-fig2-desc" focusable="false" viewBox="0 0 400 810" width="400" height="810" preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:auto;max-width:480px;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia3-en-fig2-title ia3-en-fig2-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia3-en-fig2-title">Separate reviewing a disclosure from implementing support</title>
 <desc id="ia3-en-fig2-desc">Proposed design, not an audited architecture. The original message is accessed according to need. An interpretation retains its source and can be corrected. The agreed adjustment conveys a useful instruction without unnecessary detail. This instruction remains personal data.</desc>
-<rect x="0" y="0" width="400" height="810" rx="14" fill="#10212b" />
-<text x="22" y="36" font-size="20" font-weight="700" fill="#82e4c4">02 / DATA AND ACCESS</text>
-<text x="22" y="78" font-size="27" font-weight="700" fill="#f1f7f8">What needs to travel</text>
-<text x="22" y="111" font-size="21" font-weight="400" fill="#f1f7f8">Separate analysis from action</text>
-<rect x="18" y="138" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="171" font-size="20" font-weight="700" fill="#82e4c4">THE ORIGINAL MESSAGE</text>
-<text x="34" y="214" font-size="21" font-weight="400" fill="#f1f7f8">Access justified by the role,</text>
-<text x="34" y="243" font-size="21" font-weight="400" fill="#f1f7f8">limited to people authorised</text>
-<text x="34" y="272" font-size="21" font-weight="400" fill="#f1f7f8">to examine the disclosure.</text>
-<rect x="18" y="335" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="368" font-size="20" font-weight="700" fill="#82e4c4">THE INTERPRETATION</text>
-<text x="34" y="411" font-size="21" font-weight="400" fill="#f1f7f8">Disclosure or inference?</text>
-<text x="34" y="440" font-size="21" font-weight="400" fill="#f1f7f8">Source, date, verification.</text>
-<text x="34" y="469" font-size="21" font-weight="400" fill="#f1f7f8">A route to correction.</text>
-<rect x="18" y="532" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="565" font-size="20" font-weight="700" fill="#82e4c4">THE AGREED ADJUSTMENT</text>
-<text x="34" y="608" font-size="21" font-weight="400" fill="#f1f7f8">Send the useful instruction</text>
-<text x="34" y="637" font-size="21" font-weight="400" fill="#f1f7f8">to those implementing it,</text>
-<text x="34" y="666" font-size="21" font-weight="400" fill="#f1f7f8">without unnecessary detail.</text>
-<text x="22" y="749" font-size="21" font-weight="700" fill="#f1f7f8">The instruction remains</text>
-<text x="22" y="779" font-size="21" font-weight="400" fill="#f1f7f8">personal data.</text>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">From disclosure to support</text>
+<text x="16" y="66" font-size="14" font-weight="600" fill="var(--color-signal)">01</text>
+<text x="46" y="66" font-size="16" font-weight="600" fill="var(--color-paper)">Original message</text>
+<text x="16" y="89" font-size="16" font-weight="400" fill="var(--color-paper)">Access restricted to authorised staff.</text>
+<line x1="16" y1="103" x2="344" y2="103" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="136" font-size="14" font-weight="600" fill="var(--color-signal)">02</text>
+<text x="46" y="136" font-size="16" font-weight="600" fill="var(--color-paper)">Interpretation</text>
+<text x="16" y="159" font-size="16" font-weight="400" fill="var(--color-paper)">Source, date, review and correction.</text>
+<line x1="16" y1="173" x2="344" y2="173" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="206" font-size="14" font-weight="600" fill="var(--color-signal)">03</text>
+<text x="46" y="206" font-size="16" font-weight="600" fill="var(--color-paper)">Agreed adjustment</text>
+<text x="16" y="229" font-size="16" font-weight="400" fill="var(--color-paper)">Share what is needed to deliver it.</text>
+<text x="16" y="267" font-size="16" font-weight="400" fill="var(--color-paper)">The instruction remains personal data.</text>
 </svg>
-<figcaption style="margin-top:1rem;line-height:1.65;">Design proposed by l0g using data-minimisation, accuracy and access-control principles. It does not depict an observed system at Intrum, Ophelos or PAIR Finance. <a href="#ia3-en-s13" aria-label="Source 13">[13]</a> <a href="#ia3-en-s14" aria-label="Source 14">[14]</a></figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">Design proposed by l0g using data-minimisation, accuracy and access-control principles. It does not depict an observed system at Intrum, Ophelos or PAIR Finance. <a href="#ia3-en-s13" aria-label="Source 13">[13]</a> <a href="#ia3-en-s14" aria-label="Source 14">[14]</a></figcaption>
 </figure>
 
 The diagram proposes separating functions, not building another database of personal disclosures. It would also be necessary to review needs that have changed and distinguish removal of an active flag from any justified retention of a historical record. A past difficulty should not remain presented as current simply because no one revisits the file.

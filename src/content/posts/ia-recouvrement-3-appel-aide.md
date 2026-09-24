@@ -2,8 +2,8 @@
 title: 'L’IA vous demande de payer : ce que devient un appel à l’aide'
 seoTitle: 'Recouvrement par IA : que devient un appel à l’aide ? | l0g'
 description: Comment l’IA repère les difficultés des débiteurs, oriente vers une aide et traite les données sensibles. Enquête sur les alertes et leurs suites.
-pubDate: '2026-09-24'
-updatedDate: '2026-09-24'
+pubDate: '2026-09-24T16:56:18+02:00'
+updatedDate: '2026-09-24T16:56:18+02:00'
 tags: ['IA', 'Recouvrement', 'Données personnelles', 'Enquête']
 draft: false
 ogImage: /illustrations/news/ia-recouvrement-aide-v1.jpg
@@ -61,33 +61,27 @@ Pour vérifier un tel tri, relire uniquement les dossiers signalés serait insuf
 
 Ce point change la façon de lire une promesse de « précision ». Une forte proportion d’alertes pertinentes peut coexister avec beaucoup de situations manquées. Inversement, un système qui signale presque tout peut retrouver davantage de difficultés tout en saturant les équipes. Sans connaître les deux types d’erreur et leurs conséquences, un indicateur isolé ne tranche pas la question.
 
-<figure style="margin:2.2rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ia3-fr-fig1-title ia3-fr-fig1-desc" focusable="false" viewBox="0 0 400 810" width="400" height="810" preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:auto;max-width:480px;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia3-fr-fig1-title ia3-fr-fig1-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia3-fr-fig1-title">Examiner les alertes et les dossiers non signalés</title>
 <desc id="ia3-fr-fig1-desc">Protocole proposé, non exécuté : examiner les alertes pour rechercher les classements injustifiés, puis un échantillon de dossiers sans alerte pour rechercher des difficultés manquées. Employer un contexte et des critères communs, conserver les désaccords. Aucun taux d’erreur calculé.</desc>
-<rect x="0" y="0" width="400" height="810" rx="14" fill="#10212b" />
-<text x="22" y="36" font-size="20" font-weight="700" fill="#82e4c4">01 / CONTRÔLE</text>
-<text x="22" y="78" font-size="27" font-weight="700" fill="#f1f7f8">Contrôler les deux côtés</text>
-<text x="22" y="111" font-size="21" font-weight="400" fill="#f1f7f8">Du classement au besoin réel</text>
-<rect x="18" y="138" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="171" font-size="20" font-weight="700" fill="#82e4c4">DOSSIERS AVEC ALERTE</text>
-<text x="34" y="214" font-size="21" font-weight="400" fill="#f1f7f8">L’alerte est-elle justifiée ?</text>
-<text x="34" y="243" font-size="21" font-weight="400" fill="#f1f7f8">Quel besoin est confirmé ?</text>
-<text x="34" y="272" font-size="21" font-weight="400" fill="#f1f7f8">Quelle réponse a suivi ?</text>
-<rect x="18" y="335" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="368" font-size="20" font-weight="700" fill="#f3d798">DOSSIERS SANS ALERTE</text>
-<text x="34" y="411" font-size="21" font-weight="400" fill="#f1f7f8">Rechercher les difficultés</text>
-<text x="34" y="440" font-size="21" font-weight="400" fill="#f1f7f8">manquées sur un échantillon</text>
-<text x="34" y="469" font-size="21" font-weight="400" fill="#f1f7f8">relu indépendamment.</text>
-<rect x="18" y="532" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="565" font-size="20" font-weight="700" fill="#82e4c4">UNE MÊME RÉFÉRENCE</text>
-<text x="34" y="608" font-size="21" font-weight="400" fill="#f1f7f8">Même contexte disponible.</text>
-<text x="34" y="637" font-size="21" font-weight="400" fill="#f1f7f8">Critères définis à l’avance.</text>
-<text x="34" y="666" font-size="21" font-weight="400" fill="#f1f7f8">Désaccords conservés.</text>
-<text x="22" y="749" font-size="21" font-weight="700" fill="#f1f7f8">Aucun taux d’erreur</text>
-<text x="22" y="779" font-size="21" font-weight="400" fill="#f1f7f8">n’est calculé ici.</text>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">Contrôler les deux côtés</text>
+<text x="16" y="65" font-size="14" font-weight="600" fill="var(--color-signal)">AVEC ALERTE</text>
+<text x="196" y="65" font-size="14" font-weight="600" fill="var(--color-amber)">SANS ALERTE</text>
+<text x="16" y="92" font-size="16" font-weight="400" fill="var(--color-paper)">Vérifier l’alerte,</text>
+<text x="16" y="114" font-size="16" font-weight="400" fill="var(--color-paper)">le besoin et</text>
+<text x="16" y="136" font-size="16" font-weight="400" fill="var(--color-paper)">l’aide apportée.</text>
+<text x="196" y="92" font-size="16" font-weight="400" fill="var(--color-paper)">Relire un échantillon</text>
+<text x="196" y="114" font-size="16" font-weight="400" fill="var(--color-paper)">indépendamment.</text>
+<text x="196" y="136" font-size="16" font-weight="400" fill="var(--color-paper)">Chercher les oublis.</text>
+<line x1="16" y1="157" x2="344" y2="157" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="184" font-size="14" font-weight="600" fill="var(--color-signal)">MÊME CADRE DE CONTRÔLE</text>
+<text x="16" y="209" font-size="16" font-weight="400" fill="var(--color-paper)">Même contexte, critères définis,</text>
+<text x="16" y="232" font-size="16" font-weight="400" fill="var(--color-paper)">désaccords conservés.</text>
+<text x="16" y="267" font-size="16" font-weight="400" fill="var(--color-paper)">Aucun taux d’erreur calculé ici.</text>
 </svg>
-<figcaption style="margin-top:1rem;line-height:1.65;">Illustration méthodologique l0g, sans donnée statistique. Ce protocole n’a pas été exécuté. Les choix d’orientation qui motivent ce contrôle sont décrits par les fournisseurs. <a href="#ia3-fr-s01" aria-label="Source 1">[1]</a> <a href="#ia3-fr-s06" aria-label="Source 6">[6]</a></figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">Illustration méthodologique l0g, sans donnée statistique. Ce protocole n’a pas été exécuté. Les choix d’orientation qui motivent ce contrôle sont décrits par les fournisseurs. <a href="#ia3-fr-s01" aria-label="Source 1">[1]</a> <a href="#ia3-fr-s06" aria-label="Source 6">[6]</a></figcaption>
 </figure>
 
 Même la référence humaine demande une méthode. Les relecteurs doivent-ils repérer une maladie, un obstacle à la communication ou une demande d’aménagement ? Disposent-ils des mêmes échanges ? Leurs désaccords sont-ils conservés ? Un consensus interne sur une catégorie n’en fait pas une vérité médicale.
@@ -134,33 +128,26 @@ Le RGPD impose notamment de limiter les données au nécessaire, de poursuivre d
 
 Sur le plan des accès, la CNIL recommande de limiter les permissions aux informations utiles à chaque mission. Une organisation peut avoir besoin d’une personne habilitée à examiner une confidence sans donner ce même accès à tous ceux qui exécutent l’aménagement retenu. Une consigne de service liée à un client reste cependant une donnée personnelle à protéger. <a href="#ia3-fr-s14" aria-label="Source 14">[14]</a>
 
-<figure style="margin:2.2rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ia3-fr-fig2-title ia3-fr-fig2-desc" focusable="false" viewBox="0 0 400 810" width="400" height="810" preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:auto;max-width:480px;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia3-fr-fig2-title ia3-fr-fig2-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia3-fr-fig2-title">Séparer l’analyse d’une confidence et l’application d’une aide</title>
 <desc id="ia3-fr-fig2-desc">Schéma de conception proposé, pas architecture auditée. Le message original est consulté selon la mission. Une interprétation reste reliée à sa source et peut être corrigée. L’aménagement retenu transmet une consigne utile sans détail superflu. Cette consigne demeure une donnée personnelle.</desc>
-<rect x="0" y="0" width="400" height="810" rx="14" fill="#10212b" />
-<text x="22" y="36" font-size="20" font-weight="700" fill="#82e4c4">02 / DONNÉES ET ACCÈS</text>
-<text x="22" y="78" font-size="27" font-weight="700" fill="#f1f7f8">Ce qui doit circuler</text>
-<text x="22" y="111" font-size="21" font-weight="400" fill="#f1f7f8">Séparer l’analyse de l’action</text>
-<rect x="18" y="138" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="171" font-size="20" font-weight="700" fill="#82e4c4">LE MESSAGE D’ORIGINE</text>
-<text x="34" y="214" font-size="21" font-weight="400" fill="#f1f7f8">Accès justifié par la mission,</text>
-<text x="34" y="243" font-size="21" font-weight="400" fill="#f1f7f8">limité aux personnes</text>
-<text x="34" y="272" font-size="21" font-weight="400" fill="#f1f7f8">habilitées à le consulter.</text>
-<rect x="18" y="335" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="368" font-size="20" font-weight="700" fill="#82e4c4">L’INTERPRÉTATION</text>
-<text x="34" y="411" font-size="21" font-weight="400" fill="#f1f7f8">Déclaration ou hypothèse ?</text>
-<text x="34" y="440" font-size="21" font-weight="400" fill="#f1f7f8">Source, date, vérification.</text>
-<text x="34" y="469" font-size="21" font-weight="400" fill="#f1f7f8">Possibilité de correction.</text>
-<rect x="18" y="532" width="364" height="177" rx="12" fill="#18333f" stroke="#4a6976" />
-<text x="34" y="565" font-size="20" font-weight="700" fill="#82e4c4">L’AMÉNAGEMENT RETENU</text>
-<text x="34" y="608" font-size="21" font-weight="400" fill="#f1f7f8">Transmettre la consigne utile</text>
-<text x="34" y="637" font-size="21" font-weight="400" fill="#f1f7f8">à ceux qui l’appliquent,</text>
-<text x="34" y="666" font-size="21" font-weight="400" fill="#f1f7f8">sans détail superflu.</text>
-<text x="22" y="749" font-size="21" font-weight="700" fill="#f1f7f8">La consigne reste</text>
-<text x="22" y="779" font-size="21" font-weight="400" fill="#f1f7f8">une donnée personnelle.</text>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">De la confidence à l’aide</text>
+<text x="16" y="66" font-size="14" font-weight="600" fill="var(--color-signal)">01</text>
+<text x="46" y="66" font-size="16" font-weight="600" fill="var(--color-paper)">Message d’origine</text>
+<text x="16" y="89" font-size="16" font-weight="400" fill="var(--color-paper)">Accès réservé aux personnes habilitées.</text>
+<line x1="16" y1="103" x2="344" y2="103" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="136" font-size="14" font-weight="600" fill="var(--color-signal)">02</text>
+<text x="46" y="136" font-size="16" font-weight="600" fill="var(--color-paper)">Interprétation</text>
+<text x="16" y="159" font-size="16" font-weight="400" fill="var(--color-paper)">Source, date, vérification, correction.</text>
+<line x1="16" y1="173" x2="344" y2="173" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="206" font-size="14" font-weight="600" fill="var(--color-signal)">03</text>
+<text x="46" y="206" font-size="16" font-weight="600" fill="var(--color-paper)">Consigne d’aménagement</text>
+<text x="16" y="229" font-size="16" font-weight="400" fill="var(--color-paper)">Partager le nécessaire pour agir.</text>
+<text x="16" y="267" font-size="16" font-weight="400" fill="var(--color-paper)">La consigne reste une donnée personnelle.</text>
 </svg>
-<figcaption style="margin-top:1rem;line-height:1.65;">Schéma de conception proposé par l0g à partir des principes de minimisation, d’exactitude et de contrôle des accès. Il ne représente pas un système observé chez Intrum, Ophelos ou PAIR Finance. <a href="#ia3-fr-s13" aria-label="Source 13">[13]</a> <a href="#ia3-fr-s14" aria-label="Source 14">[14]</a></figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">Schéma de conception proposé par l0g à partir des principes de minimisation, d’exactitude et de contrôle des accès. Il ne représente pas un système observé chez Intrum, Ophelos ou PAIR Finance. <a href="#ia3-fr-s13" aria-label="Source 13">[13]</a> <a href="#ia3-fr-s14" aria-label="Source 14">[14]</a></figcaption>
 </figure>
 
 Le schéma propose de séparer les fonctions, pas de créer une nouvelle base de confidences. Il faudrait également prévoir la révision d’un besoin devenu obsolète et distinguer sa suppression de la conservation éventuellement justifiée d’une trace historique. Une ancienne difficulté ne devrait pas être présentée comme actuelle par simple inertie du dossier.

@@ -2,13 +2,13 @@
 title: 'When AI asks you to pay: who decides the next step?'
 seoTitle: 'AI debt collection: who decides the next step? | l0g'
 description: 'Who owns the debt, what the software decides, and how a debtor can challenge the result: a documentary investigation into AI debt collection in France.'
-pubDate: '2026-09-24'
-updatedDate: '2026-09-24'
+pubDate: '2026-09-24T11:04:57+02:00'
+updatedDate: '2026-09-24T11:04:57+02:00'
 tags: ['AI', 'Debt collection', 'Personal data', 'Investigation']
 draft: false
 ogImage: /illustrations/news/ia-recouvrement-decisions-v1.jpg
 sourceArticle: ia-recouvrement-1-qui-decide-relance
-sourceUpdatedDate: '2026-09-24'
+sourceUpdatedDate: '2026-09-24T11:04:57+02:00'
 ---
 
 **When AI asks you to pay · Part 1**
@@ -33,33 +33,28 @@ Under the general French Civil Code rules, unless the debtor has already consent
 
 The technology supplier has another role again. An investigation needs to establish separately who develops the software, who configures its rules and who owns the claim. One group may perform several functions, but that does not make the legal entities or their responsibilities interchangeable.
 
-<figure style="margin:2.2rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="676" viewBox="0 0 400 676" role="img" aria-labelledby="ia1-en-fig1-title ia1-en-fig1-desc" focusable="false" style="display:block;width:100%;max-width:480px;height:auto;margin:0 auto;">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia1-en-fig1-title ia1-en-fig1-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia1-en-fig1-title">Collection mandate or sale of a claim</title>
 <desc id="ia1-en-fig1-desc">Under a collection mandate, the creditor retains the claim and appoints a collector. Under an assignment, the original creditor transfers the claim to a new creditor, which can also appoint a collector. These are alternatives, not mandatory consecutive steps.</desc>
-<rect width="400" height="676" rx="18" fill="#10212b" />
-<g font-family="Arial, Helvetica, sans-serif">
-<text x="26" y="38" font-size="20" font-weight="700" fill="#78e6c4">01 / COLLECTION MANDATE</text>
-<rect x="24" y="60" width="352" height="88" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="42" y="95" font-size="25" font-weight="700" fill="#f2f7f8">Creditor</text>
-<text x="42" y="125" font-size="21" font-weight="400" fill="#c9dde3">Retains the claim</text>
-<path d="M 200 155 V 185 M 194 179 L 200 185 L 206 179" fill="none" stroke="#78e6c4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="24" y="196" width="352" height="88" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="42" y="231" font-size="24" font-weight="700" fill="#f2f7f8">Appointed collector</text>
-<text x="42" y="261" font-size="21" font-weight="400" fill="#c9dde3">Acts for the creditor</text>
-<path d="M 24 313 H 376" stroke="#567681" stroke-width="1" />
-<text x="26" y="353" font-size="20" font-weight="700" fill="#78e6c4">02 / ASSIGNMENT</text>
-<rect x="24" y="375" width="352" height="70" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="42" y="418" font-size="24" font-weight="700" fill="#f2f7f8">Original creditor</text>
-<path d="M 200 451 V 483 M 194 477 L 200 483 L 206 477" fill="none" stroke="#78e6c4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="24" y="497" width="352" height="105" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="42" y="533" font-size="24" font-weight="700" fill="#f2f7f8">New creditor</text>
-<text x="42" y="563" font-size="21" font-weight="400" fill="#c9dde3">Owns the assigned claim</text>
-<text x="26" y="635" font-size="21" font-weight="400" fill="#c9dde3">A collector may also act</text>
-<text x="26" y="660" font-size="21" font-weight="400" fill="#c9dde3">on behalf of the buyer.</text>
-</g>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">Mandate or assignment</text>
+<text x="16" y="62" font-size="14" font-weight="600" fill="var(--color-signal)">01 · COLLECTION MANDATE</text>
+<text x="16" y="91" font-size="16" font-weight="600" fill="var(--color-paper)">Creditor</text>
+<text x="16" y="113" font-size="16" font-weight="400" fill="var(--color-paper)">keeps the claim</text>
+<text x="204" y="91" font-size="16" font-weight="600" fill="var(--color-paper)">Collector</text>
+<text x="204" y="113" font-size="16" font-weight="400" fill="var(--color-paper)">acts for them</text>
+<line x1="169" y1="96" x2="191" y2="96" stroke="var(--color-signal)" stroke-width="1" /><line x1="186" y1="92" x2="191" y2="96" stroke="var(--color-signal)" stroke-width="1" /><line x1="186" y1="100" x2="191" y2="96" stroke="var(--color-signal)" stroke-width="1" />
+<line x1="16" y1="137" x2="344" y2="137" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="163" font-size="14" font-weight="600" fill="var(--color-amber)">02 · ASSIGNMENT</text>
+<text x="16" y="192" font-size="16" font-weight="600" fill="var(--color-paper)">Original creditor</text>
+<text x="204" y="192" font-size="16" font-weight="600" fill="var(--color-paper)">New creditor</text>
+<text x="204" y="214" font-size="16" font-weight="400" fill="var(--color-paper)">owns the claim</text>
+<line x1="169" y1="197" x2="191" y2="197" stroke="var(--color-signal)" stroke-width="1" /><line x1="186" y1="193" x2="191" y2="197" stroke="var(--color-signal)" stroke-width="1" /><line x1="186" y1="201" x2="191" y2="197" stroke="var(--color-signal)" stroke-width="1" />
+<text x="16" y="246" font-size="16" font-weight="400" fill="var(--color-paper)">The buyer can also</text>
+<text x="16" y="267" font-size="16" font-weight="400" fill="var(--color-paper)">appoint a debt collector.</text>
 </svg>
-<figcaption style="margin-top:0.9rem;font-size:0.92em;line-height:1.6;">General French-law schematic. Arrows show a collection mandate (top) or an assignment (bottom), not a payment. No particular transaction is depicted. Sources: <a href="#ia1-en-s02" aria-label="Source 2">[2]</a> <a href="#ia1-en-s03" aria-label="Source 3">[3]</a> <a href="#ia1-en-s04" aria-label="Source 4">[4]</a>. Checked 24 September 2026.</figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">General French-law schematic. Arrows show a collection mandate (top) or an assignment (bottom), not a payment. No particular transaction is depicted. Sources: <a href="#ia1-en-s02" aria-label="Source 2">[2]</a> <a href="#ia1-en-s03" aria-label="Source 3">[3]</a> <a href="#ia1-en-s04" aria-label="Source 4">[4]</a>. Checked 24 September 2026.</figcaption>
 </figure>
 
 This map helps locate the relevant evidence. The underlying contract and account records establish the basis of a demand. The collection mandate describes the authority granted to the collector. Product documentation explains what a customer can automate. None is a substitute for the others.
@@ -90,38 +85,29 @@ The system’s objective matters just as much as its architecture. Getting a res
 
 Nor does a click establish an ability to pay. Silence may have several explanations. The relevant question is how an operator handles that uncertainty, rather than treating a prediction as a verified fact about an individual.
 
-<figure style="margin:2.2rem 0;">
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="750" viewBox="0 0 400 750" role="img" aria-labelledby="ia1-en-fig2-title ia1-en-fig2-desc" focusable="false" style="display:block;width:100%;max-width:480px;height:auto;margin:0 auto;">
+<figure style="margin:2rem 0 2.4rem;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia1-en-fig2-title ia1-en-fig2-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif">
 <title id="ia1-en-fig2-title">From input to action: four functions</title>
-<desc id="ia1-en-fig2-desc">An analytical framework: case data can feed an assessment and action selection. A message can use a template, be written by a person or be generated. Taking action on the case requires the relevant authority. A displayed response does not prove that an action was executed. Human checks can occur at several stages.</desc>
-<rect width="400" height="750" rx="18" fill="#10212b" />
-<g font-family="Arial, Helvetica, sans-serif">
-<rect x="22" y="20" width="356" height="142" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="40" y="50" font-size="20" font-weight="700" fill="#78e6c4">01 / INPUT</text>
-<text x="40" y="86" font-size="25" font-weight="700" fill="#f2f7f8">Debt file</text>
-<text x="40" y="119" font-size="21" font-weight="400" fill="#c9dde3">Invoices, payments,</text>
-<text x="40" y="146" font-size="21" font-weight="400" fill="#c9dde3">messages and corrections</text>
-<path d="M 200 171 V 194 M 194 188 L 200 194 L 206 188" fill="none" stroke="#78e6c4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="22" y="204" width="356" height="142" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="40" y="234" font-size="20" font-weight="700" fill="#78e6c4">02 / SELECTION</text>
-<text x="40" y="270" font-size="25" font-weight="700" fill="#f2f7f8">Assess and route</text>
-<text x="40" y="303" font-size="21" font-weight="400" fill="#c9dde3">A possible score</text>
-<text x="40" y="330" font-size="21" font-weight="400" fill="#c9dde3">and case-handling rules</text>
-<path d="M 200 355 V 378 M 194 372 L 200 378 L 206 372" fill="none" stroke="#78e6c4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="22" y="388" width="356" height="142" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="40" y="418" font-size="20" font-weight="700" fill="#78e6c4">03 / MESSAGE</text>
-<text x="40" y="454" font-size="25" font-weight="700" fill="#f2f7f8">Communicate</text>
-<text x="40" y="487" font-size="21" font-weight="400" fill="#c9dde3">A template, human text</text>
-<text x="40" y="514" font-size="21" font-weight="400" fill="#c9dde3">or model-generated text</text>
-<path d="M 200 539 V 562 M 194 556 L 200 562 L 206 556" fill="none" stroke="#78e6c4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="22" y="572" width="356" height="142" rx="12" fill="#18323e" stroke="#567681" stroke-width="1" />
-<text x="40" y="602" font-size="20" font-weight="700" fill="#78e6c4">04 / EXECUTION</text>
-<text x="40" y="638" font-size="25" font-weight="700" fill="#f2f7f8">Act on the case</text>
-<text x="40" y="671" font-size="21" font-weight="400" fill="#c9dde3">Within the permissions</text>
-<text x="40" y="698" font-size="21" font-weight="400" fill="#c9dde3">and controls in place</text>
-</g>
+<desc id="ia1-en-fig2-desc">An analytical framework: case data can feed an assessment and action selection. A message can use a template, be written by a person or be generated. Taking action on the case requires the relevant authority. Execution has to be checked in the case record. Human checks can occur at several stages.</desc>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="var(--color-paper)">From the file to action</text>
+<text x="16" y="64" font-size="14" font-weight="600" fill="var(--color-signal)">01</text>
+<text x="46" y="64" font-size="16" font-weight="600" fill="var(--color-paper)">Case data</text>
+<text x="16" y="87" font-size="16" font-weight="400" fill="var(--color-paper)">Invoices, payments, corrections.</text>
+<line x1="16" y1="99" x2="344" y2="99" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="122" font-size="14" font-weight="600" fill="var(--color-signal)">02</text>
+<text x="46" y="122" font-size="16" font-weight="600" fill="var(--color-paper)">Assessment and routing</text>
+<text x="16" y="145" font-size="16" font-weight="400" fill="var(--color-paper)">A possible score and case rules.</text>
+<line x1="16" y1="157" x2="344" y2="157" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="180" font-size="14" font-weight="600" fill="var(--color-signal)">03</text>
+<text x="46" y="180" font-size="16" font-weight="600" fill="var(--color-paper)">Writing the message</text>
+<text x="16" y="203" font-size="16" font-weight="400" fill="var(--color-paper)">Template, human or generated text.</text>
+<line x1="16" y1="215" x2="344" y2="215" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="16" y="238" font-size="14" font-weight="600" fill="var(--color-signal)">04</text>
+<text x="46" y="238" font-size="16" font-weight="600" fill="var(--color-paper)">Action on the case</text>
+<text x="16" y="261" font-size="16" font-weight="400" fill="var(--color-paper)">Within its permissions and controls.</text>
 </svg>
-<figcaption style="margin-top:0.9rem;font-size:0.92em;line-height:1.6;">An analytical framework, not a verified architecture: functions may be separate, absent or subject to human checks at different stages. Message content does not prove that an action was executed. l0g synthesis of operator descriptions: <a href="#ia1-en-s09" aria-label="Source 9">[9]</a> <a href="#ia1-en-s10" aria-label="Source 10">[10]</a> <a href="#ia1-en-s11" aria-label="Source 11">[11]</a>. Checked 24 September 2026.</figcaption>
+<figcaption style="margin-top:.75rem;font-size:.85em;line-height:1.6;color:var(--color-muted);">An analytical framework, not a verified architecture: functions may be separate, absent or subject to human checks at different stages. Execution is checked against the case record. l0g synthesis of operator descriptions: <a href="#ia1-en-s09" aria-label="Source 9">[9]</a> <a href="#ia1-en-s10" aria-label="Source 10">[10]</a> <a href="#ia1-en-s11" aria-label="Source 11">[11]</a>. Checked 24 September 2026.</figcaption>
 </figure>
 
 Deployment claims also need the right level of precision. In a statement published on **25 July 2025**, Intrum listed France among the countries where Ophelos had gone live. The announcement did not identify the modules active in each portfolio. A national rollout is not evidence that generative AI is used throughout the business or that collection operates autonomously from end to end. <a href="#ia1-en-s12" aria-label="Source 12">[12]</a>
