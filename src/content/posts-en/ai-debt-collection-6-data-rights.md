@@ -16,6 +16,8 @@ sourceUpdatedDate: '2026-09-25T12:14:02+02:00'
 
 *Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 2: performance claims](/en/analysis/ai-debt-collection-2-performance-claims/) · [Part 3: asking for help](/en/analysis/ai-debt-collection-3-asking-for-help/) · [Part 4: correcting the record](/en/analysis/ai-debt-collection-4-correcting-the-record/) · [Part 5: contracts and accountability](/en/analysis/ai-debt-collection-5-contracts-accountability/).*
 
+<p class="edition-link"><a href="/en/publications/ai-debt-collection/">Read all six parts in the free EPUB: When AI Asks You to Pay.</a></p>
+
 **An assessment of your willingness to pay can be personal data even though you never supplied it. The Court of Justice of the European Union expressly made that point in its CRIF judgment of 4 May 2023. A request for access can therefore reach information a company has calculated about you, not just your name, address or the details you gave it.** <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX%3A62021CJ0487" aria-label="Source 1">[1]</a>
 
 That distinction matters in automated debt collection. On its French product page, PAIR Finance says that how easily someone can be reached and how quickly they respond inform its assessment of willingness to pay. The company also describes changes to the channel, frequency and tone of communications. This description is the supplier’s own account. <a href="https://pairfinance.com/fr/intelligence-artificielle/" aria-label="Source 2">[2]</a>

@@ -7,6 +7,11 @@ const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
   {
+    source: join(ROOT, 'src/epub/ai-debt-collection'),
+    output: join(ROOT, 'public/publications/ai-debt-collection-l0g.epub'),
+    fixedTime: new Date('2026-09-25T16:50:33Z'),
+  },
+  {
     source: join(ROOT, 'src/epub/ia-recouvrement'),
     output: join(ROOT, 'public/publications/ia-recouvrement-l0g.epub'),
     fixedTime: new Date('2026-09-25T15:01:00Z'),

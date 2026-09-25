@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" role="img" aria-labelledby="ia6-en-fig-title ia6-en-fig-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="350" fill="#0b0d10"/>
+<title id="ia6-en-fig-title">Two deadlines, different starting points</title>
+<desc id="ia6-en-fig-desc">The GDPR response period begins when the request is received: one month, with a possible two-month extension notified within the first month. Objecting to a French payment order follows a separate timetable: normally one month after formal service. Special cases are explained in the text.</desc>
+<text x="12" y="30" font-size="24" font-weight="700" fill="#e7e9ee">Data access · GDPR</text>
+<text x="12" y="60" font-size="20" fill="#8b909b">Starts when the request is received</text>
+<g data-region="response"><rect x="12" y="76" width="152" height="78" rx="8" fill="#121419" stroke="#5eead4"/><text x="88" y="108" text-anchor="middle" font-size="24" font-weight="700" fill="#5eead4">1 month</text><text x="88" y="138" text-anchor="middle" font-size="20" fill="#e7e9ee">Response</text></g>
+<path d="M165 115 H177 M171 109 L177 115 L171 121" fill="none" stroke="#8b909b" stroke-width="2"/>
+<g data-region="extension"><rect x="184" y="76" width="304" height="78" rx="8" fill="#121419" stroke="rgba(255,255,255,0.20)"/><text x="336" y="108" text-anchor="middle" font-size="24" font-weight="700" fill="#e7e9ee">+ 2 months possible</text><text x="336" y="138" text-anchor="middle" font-size="20" fill="#8b909b">Reasoned extension</text></g>
+<text x="12" y="184" font-size="20" fill="#8b909b">Notify within the first month.</text>
+<text x="12" y="224" font-size="24" font-weight="700" fill="#e7e9ee">Objection · French payment order</text>
+<text x="12" y="254" font-size="20" fill="#8b909b">Starts at formal service, in France</text>
+<g data-region="objection"><rect x="12" y="266" width="152" height="76" rx="8" fill="#121419" stroke="#ff4d87"/><text x="88" y="298" text-anchor="middle" font-size="24" font-weight="700" fill="#ff4d87">1 month</text><text x="88" y="328" text-anchor="middle" font-size="20" fill="#e7e9ee">Normally</text></g>
+<text x="184" y="292" font-size="20" font-weight="700" fill="#e7e9ee">Separate timetable</text>
+<text x="184" y="324" font-size="20" fill="#8b909b">Special cases: see the text</text>
+</svg>

@@ -2,66 +2,66 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import Layout from '../../layouts/BaseLayout.astro';
-import { recouvrementBook as book, recouvrementChapters as chapters } from '../../config/ia-recouvrement-publication.mjs';
-import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../../config/entities.ts';
-import { serializeInlineScriptData } from '../../lib/security.ts';
+import Layout from '../../../layouts/EnglishGuidesLayout.astro';
+import { recouvrementBookEn as book, recouvrementChaptersEn as chapters } from '../../../config/ia-recouvrement-publication-en.mjs';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../../../config/entities.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
 
 const bytes = readFileSync(join(process.cwd(), 'public', book.epub));
-const size = `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(bytes.length / 1024)} Ko`;
+const size = `${new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 }).format(bytes.length / 1024)} KB`;
 const sha256 = createHash('sha256').update(bytes).digest('hex');
 const pageUrl = `${SITE_URL}${book.path}`;
 const jsonLd = {
   '@context': 'https://schema.org', '@type': 'Book', '@id': `${pageUrl}#book`,
   name: book.title, description: book.description, author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID },
-  datePublished: book.date, dateModified: book.modified, inLanguage: 'fr',
+  datePublished: book.date, dateModified: book.modified, inLanguage: 'en',
   bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true,
   url: pageUrl, image: `${SITE_URL}${book.cover}`, license: 'https://creativecommons.org/licenses/by/4.0/',
-  workTranslation: { '@type': 'Book', '@id': `${SITE_URL}/en/publications/ai-debt-collection/#book`, inLanguage: 'en' },
+  translationOfWork: { '@type': 'Book', '@id': `${SITE_URL}/publications/ia-recouvrement/#book`, inLanguage: 'fr' },
   hasPart: chapters.map((chapter) => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.route}` })),
   associatedMedia: { '@type': 'MediaObject', contentUrl: `${SITE_URL}${book.epub}`, encodingFormat: 'application/epub+zip', contentSize: `${bytes.length} bytes`, sha256 },
 };
 ---
 
-<Layout title={book.title} seoTitle="L’IA vous demande de payer : livre EPUB gratuit | l0g"
-  ogTitle="L’IA vous demande de payer : les six analyses réunies en livre"
-  description={book.description} lang="fr" ogLocale="fr_FR" sidebar={false}
-  ogImage={book.social} ogImageAlt="Couverture de L’IA vous demande de payer : un dossier traverse des portes de décision"
-  alternateLinks={[{ hreflang: 'fr', href: pageUrl }, { hreflang: 'en', href: `${SITE_URL}/en/publications/ai-debt-collection/` }, { hreflang: 'x-default', href: pageUrl }]}>
+<Layout title={book.title} seoTitle="When AI Asks You to Pay: free EPUB | l0g"
+  ogTitle="When AI Asks You to Pay: the complete investigation"
+  description={book.description} canonical={pageUrl}
+  ogImage={book.social} ogImageAlt="When AI Asks You to Pay: a paper record passes through decision gates"
+  alternateLinks={[{ hreflang: 'en', href: pageUrl }, { hreflang: 'fr', href: `${SITE_URL}/publications/ia-recouvrement/` }, { hreflang: 'x-default', href: `${SITE_URL}/publications/ia-recouvrement/` }]}>
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
   <article class="recouvrement-book rise" data-pagefind-body>
     <section class="book-hero" aria-labelledby="book-title">
       <div class="cover-stage">
         <div class="book-shell">
-          <span class="book-spine" aria-hidden="true">l0g · septembre 2026</span>
+          <span class="book-spine" aria-hidden="true">l0g · September 2026</span>
           <img src={book.cover} srcset={[320, 640, 960].map(w => `${book.cover.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
             sizes="(max-width: 360px) 80vw, (max-width: 780px) 304px, 360px" width="1024" height="1638"
-            alt="Couverture du livre L’IA vous demande de payer" loading="eager" fetchpriority="high" decoding="async" />
+            alt="Cover of When AI Asks You to Pay" loading="eager" fetchpriority="high" decoding="async" />
         </div>
-        <p class="cover-caption">Édition française · <time datetime={book.date}>25 septembre 2026</time></p>
+        <p class="cover-caption">English edition · <time datetime={book.date}>25 September 2026</time></p>
       </div>
       <div class="hero-copy">
-        <p class="mono-label">// publication l0g · recouvrement & IA</p>
-        <h1 id="book-title">L’IA vous demande <span>de payer</span></h1>
+        <p class="mono-label">// l0g publication · debt collection & AI</p>
+        <h1 id="book-title">When AI asks you <span>to pay</span></h1>
         <p class="hero-deck">{book.subtitle}.</p>
-        <p class="hero-lede">Un montant, un lien, une relance. Qui a décidé de vous contacter ? Que devient une contestation ? Les six volets suivent le dossier derrière le message, des promesses de performance aux moyens de faire corriger une décision.</p>
+        <p class="hero-lede">An amount, a link, a payment reminder. Who decided to contact you? What happens when you dispute the debt? Six investigations follow the record behind automated collection in France, from performance claims to the means of getting a decision corrected.</p>
         <div class="hero-actions">
-          <a class="download-action" href={book.epub} download>Télécharger l’EPUB <small>Gratuit · {size}</small></a>
-          <a class="contents-action" href="#sommaire">Parcourir les six chapitres <span aria-hidden="true">↓</span></a>
+          <a class="download-action" href={book.epub} download>Download the EPUB <small>Free · {size}</small></a>
+          <a class="contents-action" href="#contents">Explore the six chapters <span aria-hidden="true">↓</span></a>
         </div>
-        <ul class="edition-facts" aria-label="Contenu de l’édition">
-          <li>6 analyses intégrales</li><li>9 schémas</li><li>Introduction et conclusion originales</li>
+        <ul class="edition-facts" aria-label="Edition contents">
+          <li>6 complete investigations</li><li>9 diagrams</li><li>Original introduction and conclusion</li>
         </ul>
-        <p class="edition-note">EPUB 3 · lecture hors ligne · CC BY 4.0</p>
-        <p class="edition-language"><a href="/en/publications/ai-debt-collection/" lang="en" hreflang="en">Read in English <span aria-hidden="true">↗</span></a></p>
+        <p class="edition-note">EPUB 3 · offline reading · CC BY 4.0</p>
+        <p class="edition-language"><a href="/publications/ia-recouvrement/" lang="fr" hreflang="fr">Lire en français <span aria-hidden="true">↗</span></a></p>
       </div>
     </section>
 
     <figure class="panorama">
       <img src={book.panorama} srcset={[640, 960, 1600].map(w => `${book.panorama.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
         sizes="(max-width: 780px) 100vw, 1120px" width="1600" height="800" loading="lazy" decoding="async"
-        alt="Un dossier traverse trois portes de verre ; un trajet turquoise mène à la relance et un trajet rose ramène la correction vers les opérations." />
-      <figcaption>Du dossier à la relance, puis le retour de la correction : illustration conceptuelle. Les systèmes étudiés conservent leurs configurations et leurs responsabilités propres.</figcaption>
+        alt="A paper record passes through three glass gates; a turquoise path leads to a reminder and a pink path carries a correction back to the operations." />
+      <figcaption>From the record to the reminder, and the correction’s return journey: a conceptual illustration. Each system examined has its own configuration and responsibilities.</figcaption>
     </figure>
 
     <section class="reading-section" aria-labelledby="intro-title">
@@ -69,8 +69,8 @@ const jsonLd = {
       <div class="prose-copy">{book.introduction.map(paragraph => <p>{paragraph}</p>)}</div>
     </section>
 
-    <section id="sommaire" class="contents-section" aria-labelledby="contents-title">
-      <div class="section-heading"><p class="mono-label">02 / six étapes</p><h2 id="contents-title">Du premier message aux recours</h2><p>Chaque chapitre reste disponible en ligne. L’EPUB les réunit dans un même parcours, avec leurs sources et leurs illustrations.</p></div>
+    <section id="contents" class="contents-section" aria-labelledby="contents-title">
+      <div class="section-heading"><p class="mono-label">02 / six stages</p><h2 id="contents-title">From the first message to remedies</h2><p>Each chapter is also available online. The EPUB brings them together in a continuous reading sequence, with their sources and illustrations.</p></div>
       <ol class="chapter-grid">
         {chapters.map(chapter => <li><a href={chapter.route}>
           <img src={chapter.image} width="1200" height="630" alt={chapter.imageAlt} loading="lazy" decoding="async" />
@@ -80,28 +80,28 @@ const jsonLd = {
     </section>
 
     <section class="previews-section" aria-labelledby="preview-title">
-      <div class="section-heading"><p class="mono-label">03 / dans les pages du livre</p><h2 id="preview-title">Suivre une correction, distinguer les délais</h2></div>
+      <div class="section-heading"><p class="mono-label">03 / inside the book</p><h2 id="preview-title">Following a correction, separating deadlines</h2></div>
       <div class="preview-grid">
-        <figure><a href={chapters[3].route} aria-label="Lire le chapitre sur la correction du dossier"><img src="/publications/ia-recouvrement-apercu-correction.svg" width="500" height="350" loading="lazy" decoding="async" alt="Dossier Enova : un paiement partiel déclenche un contrôle du solde qui annule un report de paiement." /></a><figcaption>Chapitre 4. Le mécanisme décrit par le régulateur américain dans le dossier Enova : un paiement partiel peut défaire un report accordé.</figcaption></figure>
-        <figure><a href={chapters[5].route} aria-label="Lire le chapitre sur les données et les recours"><img src="/publications/ia-recouvrement-apercu-delais.svg" width="500" height="350" loading="lazy" decoding="async" alt="Deux échéanciers séparés : réponse à une demande RGPD et opposition à une ordonnance d’injonction de payer." /></a><figcaption>Chapitre 6. Deux démarches avec leurs propres points de départ. Les conditions de prolongation et les cas particuliers sont précisés dans le texte.</figcaption></figure>
+        <figure><a href={chapters[3].route} aria-label="Read the chapter on correcting the record"><img src="/publications/ai-debt-collection-preview-correction.svg" width="500" height="350" loading="lazy" decoding="async" alt="The Enova case: a partial payment triggers a balance check that cancels a payment extension." /></a><figcaption>Chapter 4. The mechanism described by the US regulator in the Enova case: a partial payment can undo an agreed extension.</figcaption></figure>
+        <figure><a href={chapters[5].route} aria-label="Read the chapter on data rights and remedies"><img src="/publications/ai-debt-collection-preview-deadlines.svg" width="500" height="350" loading="lazy" decoding="async" alt="Two separate timelines in France: responding to a GDPR request and opposing a court payment order." /></a><figcaption>Chapter 6. Two procedures with different starting points. The text explains the conditions for extensions and the exceptions.</figcaption></figure>
       </div>
     </section>
 
     <section class="reading-section" aria-labelledby="conclusion-title">
       <div class="section-heading"><p class="mono-label">04 / conclusion</p><h2 id="conclusion-title">{book.conclusionTitle}</h2></div>
-      <div class="prose-copy">{book.conclusion.slice(0, 2).map(paragraph => <p>{paragraph}</p>)}<p class="excerpt-note">Extrait de la conclusion originale, à retrouver intégralement dans le livre.</p></div>
+      <div class="prose-copy">{book.conclusion.slice(0, 2).map(paragraph => <p>{paragraph}</p>)}<p class="excerpt-note">An extract from the original conclusion. Read the full text in the book.</p></div>
     </section>
 
     <section class="reading-section" aria-labelledby="edition-title">
-      <div class="section-heading"><p class="mono-label">05 / emporter l’enquête</p><h2 id="edition-title">Une lecture continue, sources comprises</h2></div>
+      <div class="section-heading"><p class="mono-label">05 / take the investigation with you</p><h2 id="edition-title">Read it through, with the sources</h2></div>
       <div class="prose-copy edition-details">
-        <p>Les six analyses publiées les 24 et 25 septembre 2026 sont réunies avec leurs notes, leurs attributions et leurs exemples explicitement fictifs. Le texte s’adapte à l’écran. Le sommaire mène aux chapitres et aux sections ; les liens entre les chapitres fonctionnent hors ligne.</p>
-        <p>Les neuf schémas et les illustrations sont intégrés au fichier. Les documents externes et le glossaire nécessitent une connexion. L’agrandissement des images dépend de la liseuse.</p>
-        <p>Le livre est gratuit, sans inscription, sous licence <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>. Aucun script, police distante ou outil de suivi n’est embarqué.</p>
-        <p class="art-note">La couverture, le panorama et les illustrations de chapitre ont été créés avec une assistance d’intelligence artificielle. Ils représentent des mécanismes de manière conceptuelle, sans représenter un dossier personnel réel ou l’architecture d’un fournisseur.</p>
-        <details><summary>Informations sur le fichier</summary><dl><dt>Format</dt><dd>EPUB 3 · français · {size}</dd><dt>Édition</dt><dd>25 septembre 2026</dd><dt>SHA-256</dt><dd><code>{sha256}</code></dd></dl></details>
-        <a class="download-action final-download" href={book.epub} download>Télécharger le livre <small>EPUB gratuit · {size}</small></a>
-        <p><a href="/publications/">Toutes les publications l0g <span aria-hidden="true">›</span></a></p>
+        <p>The six English articles published on 24 and 25 September 2026 are collected with their notes, attributions and explicitly hypothetical examples. Text reflows to fit the screen. The contents link to chapters and sections; links between chapters work offline.</p>
+        <p>All nine diagrams and the illustrations are embedded in the file. External documents and the glossary require an internet connection. Image enlargement depends on the reading app.</p>
+        <p>The book is free, with no registration required, under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> licence. It contains no scripts, remote fonts or tracking tools.</p>
+        <p class="art-note">The cover, panorama and chapter illustrations were created with AI assistance. They depict mechanisms conceptually and do not represent a real personal record or a supplier’s architecture.</p>
+        <details><summary>File information</summary><dl><dt>Format</dt><dd>EPUB 3 · English · {size}</dd><dt>Edition</dt><dd>25 September 2026</dd><dt>SHA-256</dt><dd><code>{sha256}</code></dd></dl></details>
+        <a class="download-action final-download" href={book.epub} download>Download the book <small>Free EPUB · {size}</small></a>
+        <p><a href="/en/publications/">All English l0g publications <span aria-hidden="true">›</span></a></p>
       </div>
     </section>
   </article>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia2-en-fig2-title ia2-en-fig2-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="360" height="286" fill="#0b0d10"/>
+<title id="ia2-en-fig2-title">The experiment compares two complete scenarios</title>
+<desc id="ia2-en-fig2-desc">Participants read one of two scenarios. The human scenario specifies ten minutes of waiting and a remark about earlier contact; the AI scenario specifies ten seconds and thanks the person for being candid. The comparison changes several features at once, not only the interlocutor’s identity.</desc>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="#121419" stroke="rgba(255,255,255,0.20)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="#e7e9ee">Two scenarios to compare</text>
+<text x="16" y="53" font-size="16" font-weight="400" fill="#e7e9ee">One scenario per participant</text>
+<text x="16" y="89" font-size="14" font-weight="600" fill="#5eead4">HUMAN</text>
+<text x="200" y="89" font-size="14" font-weight="600" fill="#f5b13d">AI</text>
+<text x="16" y="120" font-size="22" font-weight="600" fill="#e7e9ee">10 min</text>
+<text x="200" y="120" font-size="22" font-weight="600" fill="#e7e9ee">10 s</text>
+<text x="16" y="144" font-size="16" font-weight="400" fill="#e7e9ee">Stated wait</text>
+<text x="200" y="144" font-size="16" font-weight="400" fill="#e7e9ee">Stated wait</text>
+<text x="16" y="174" font-size="16" font-weight="400" fill="#e7e9ee">Remark about</text>
+<text x="16" y="195" font-size="16" font-weight="400" fill="#e7e9ee">contacting late.</text>
+<text x="200" y="174" font-size="16" font-weight="400" fill="#e7e9ee">Thanks for</text>
+<text x="200" y="195" font-size="16" font-weight="400" fill="#e7e9ee">being candid.</text>
+<line x1="16" y1="213" x2="344" y2="213" stroke="rgba(255,255,255,0.20)" stroke-width="1" />
+<text x="16" y="243" font-size="16" font-weight="400" fill="#e7e9ee">Both waiting and wording change.</text>
+<text x="16" y="267" font-size="16" font-weight="400" fill="#e7e9ee">AI identity alone is not isolated.</text>
+</svg>

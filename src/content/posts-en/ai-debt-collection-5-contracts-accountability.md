@@ -16,6 +16,8 @@ sourceUpdatedDate: '2026-09-25T10:50:27+02:00'
 
 *Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 2: performance claims](/en/analysis/ai-debt-collection-2-performance-claims/) · [Part 3: asking for help](/en/analysis/ai-debt-collection-3-asking-for-help/) · [Part 4: correcting the record](/en/analysis/ai-debt-collection-4-correcting-the-record/) · [Part 6: data rights and remedies](/en/analysis/ai-debt-collection-6-data-rights/).*
 
+<p class="edition-link"><a href="/en/publications/ai-debt-collection/">Read all six parts in the free EPUB: When AI Asks You to Pay.</a></p>
+
 **Intrum’s French privacy information distinguishes between two roles. For activities including debt collection and debt purchasing, the company describes itself as a data controller. For other services, such as billing administration, it says it processes data on its clients’ instructions. The name on a payment reminder can therefore stay the same while the legal role changes.** <a href="https://www.intrum.fr/solutions-entreprises/a-propos-d-intrum/donnees-personnelles/" aria-label="Source 1">[1]</a>
 
 That distinction provides a practical starting point for examining automated collection. The earlier instalments followed decisions, performance claims, support for people in difficulty and the correction of account records. This one follows the contracts. Who sets the objectives? Who authorises the use of personal data? Who can stop an operation or replace a supplier?

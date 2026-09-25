@@ -15,6 +15,8 @@ sourceUpdatedDate: '2026-09-24T16:56:18+02:00'
 
 *Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 2: results](/en/analysis/ai-debt-collection-2-performance-claims/) · [Part 4: correcting the record](/en/analysis/ai-debt-collection-4-correcting-the-record/) · [Part 5: contracts and accountability](/en/analysis/ai-debt-collection-5-contracts-accountability/) · [Part 6: data rights and remedies](/en/analysis/ai-debt-collection-6-data-rights/).*
 
+<p class="edition-link"><a href="/en/publications/ai-debt-collection/">Read all six parts in the free EPUB: When AI Asks You to Pay.</a></p>
+
 **Identifying someone in difficulty can open a route to support. But the same classification can help decide which conversations are automated. Ophelos’s technical documentation, findings from the UK financial regulator and French data-protection guidance reveal the decisions between a personal disclosure, an alert and actual assistance.**
 
 In a technical post, Ophelos describes vulnerability detection as helping direct human attention to some situations while allowing responses to unflagged conversations to be automated. Detection quality therefore has an operational consequence: a missed difficulty may also influence the service a person receives. That is a possible implication of the company’s description, not an incident verified in a French customer’s case. <a href="#ia3-en-s01" aria-label="Source 1">[1]</a>

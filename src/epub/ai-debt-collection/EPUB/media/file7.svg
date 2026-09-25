@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" role="img" aria-labelledby="ia5-en-fig-title ia5-en-fig-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="350" fill="#0b0d10"/>
+<title id="ia5-en-fig-title">A new use changes the data protection role</title>
+<desc id="ia5-en-fig-desc">An actor initially handles data as a processor for a client. It follows the client’s instructions for that assignment. When it reuses the data for its own purpose, it becomes controller for that new processing. Whether reuse is lawful requires a separate assessment.</desc>
+<g data-region="input"><rect x="70" y="12" width="360" height="66" rx="10" fill="#121419" stroke="rgba(255,255,255,0.20)"/><text x="250" y="53" text-anchor="middle" font-size="24" font-weight="700" fill="#e7e9ee">Entrusted data</text></g>
+<path d="M250 78 V98 H125 V118 M250 98 H375 V118 M119 111 L125 118 L131 111 M369 111 L375 118 L381 111" fill="none" stroke="#8b909b" stroke-width="2"/>
+<g data-region="client"><rect x="12" y="126" width="226" height="152" rx="10" fill="#121419" stroke="#5eead4"/><text x="125" y="158" text-anchor="middle" font-size="20" fill="#8b909b">Client’s purpose</text><text x="125" y="207" text-anchor="middle" font-size="24" font-weight="700" fill="#5eead4">Processor</text><text x="125" y="244" text-anchor="middle" font-size="20" fill="#e7e9ee">for this assignment</text></g>
+<g data-region="reuse"><rect x="262" y="126" width="226" height="152" rx="10" fill="#121419" stroke="#ff4d87"/><text x="375" y="158" text-anchor="middle" font-size="20" fill="#8b909b">Own purpose</text><text x="375" y="195" text-anchor="middle" font-size="24" font-weight="700" fill="#ff4d87">Controller</text><text x="375" y="223" text-anchor="middle" font-size="20" fill="#e7e9ee">for the new</text><text x="375" y="256" text-anchor="middle" font-size="20" fill="#e7e9ee">processing operation</text></g>
+<text x="250" y="320" text-anchor="middle" font-size="22" font-weight="700" fill="#e7e9ee">Assess the role for each use.</text>
+</svg>

@@ -1,0 +1,48 @@
+export const recouvrementBookEn = {
+  lang: 'en', locale: 'en-GB', date: '2026-09-25', modified: '2026-09-25T16:50:33Z',
+  id: 'urn:uuid:b74c31e1-9c16-48d3-9828-8aab8c9e04a7',
+  directory: 'ai-debt-collection',
+  title: 'When AI Asks You to Pay',
+  subtitle: 'An investigation into automated debt collection',
+  description: 'Six investigations into AI and consumer debt collection in France, with nine diagrams, sources, an introduction and a conclusion. Free English EPUB.',
+  path: '/en/publications/ai-debt-collection/',
+  epub: '/publications/ai-debt-collection-l0g.epub',
+  cover: '/publications/ai-debt-collection-cover.jpg',
+  social: '/publications/ai-debt-collection-cover-social.jpg',
+  panorama: '/publications/ia-recouvrement-panorama.jpg',
+  figureCount: 9,
+  introductionTitle: 'Before the message, there is a record',
+  introduction: [
+    'A payment reminder arrives on a phone. It contains an amount, a link and perhaps a repayment offer. Understanding how it was produced means looking further back: identifying the creditor and the company acting on its behalf, examining the information held about the account, and tracing the choices made before the message was sent. Artificial intelligence may enter at several points. The conversation on screen reveals only part of that process.',
+    'This investigation begins before the reminder. The first chapter separates the actors and their functions: owning a claim, organising collection, generating a score and drafting a reply. Each carries different powers. A single interface can bring them together while leaving the person contacted uncertain about who does what. The privacy notices and contractual documents examined here provide a starting point for unravelling those roles.',
+    'Chapter two turns to the results companies advertise. Faster collections, lower processing costs and better customer ratings are different measures. Comparing them requires attention to the people included, the period covered and the method used. The next chapter follows another kind of information: a person describing a difficulty. How is that disclosure interpreted, who receives it, and what support can actually follow?',
+    'Correction comes next. An amount may be disputed, a payment reported or an agreement revised. The change then needs to reach the tools that continue to act on the account. Chapter four follows that process and examines a US case documented by a regulator, keeping its jurisdiction and circumstances explicit. Chapter five moves upstream to contracts, data recipients and service providers. The allocation of tasks matters when several organisations must respond to the same problem.',
+    'The final chapter brings together ways of examining a record: obtaining personal data, asking about a calculated profile, seeking an explanation where the law provides for one, and distinguishing different procedures and their deadlines. Payment reminders do not all fall under the same legal rules. The task is to identify the particular operation at issue and the organisation able to address it.',
+    'The book is a documentary investigation into the collection of consumer debts in France. Laws, decisions, studies and commercial statements are attributed in each chapter. Material from other countries retains its original context. We have not audited a live collection system or reconstructed the handling of individual accounts. That boundary matters whenever the inquiry moves from an advertised capability to its actual use.',
+    'Bringing the six parts together makes it possible to follow one question through the whole process: how does information about a person turn into an action, and how can that person change what happens next? This English edition draws on the six English articles published on 24 and 25 September 2026. Their sources and nine diagrams remain attached to the text. The contents and links between chapters support both continuous reading and a return to a particular issue.',
+  ],
+  conclusionTitle: 'A correction has to reach the action',
+  conclusion: [
+    'The investigation returns to a practical requirement: being able to connect a message to the information and decisions that produced it. A creditor holds a claim for payment; a collection company organises the process; other providers may handle data or supply software. Understanding those roles helps locate the documents and identify who has the authority to change the record.',
+    'Performance claims need the same precision. A payment received sooner, a lower cost and a better satisfaction rating describe different aspects of a service. Their meaning depends on who enters the measurement, the comparison used and the length of follow-up. Assessing how an unpaid debt is resolved also calls for examining what happens to agreements and what difficulties arise after the first exchange. The commercial figures discussed in the book retain their attribution and scope.',
+    'Support makes the need for continuity particularly clear. Recognising a difficulty creates an opportunity to help. The response then depends on the options available and the people authorised to apply them. Personal disclosures create a further responsibility: sensitive information may circulate or find another use. The chapters on support and contracts explain why sharing an actionable instruction and sharing the details of a personal situation warrant separate scrutiny.',
+    'A correction has to travel through that organisation too. Changing a field on one screen leaves questions about actions already scheduled, information already shared and the tools that depend on it. The Enova case describes a specific break between an agreement and its operational implementation in the United States. For the systems examined in France, the available public documents leave parts of the controls and the handling of individual disputes unresolved.',
+    'Access to personal data, explanations for certain automated decisions and procedures for contesting a debt address different matters. The final chapter separates them so that a request for information does not obscure another procedure or its deadline. An account is easier to examine when documents, requests, replies and dates can be brought together. The relevant rights still need to be considered in the circumstances of the case.',
+    'Further investigation would benefit most from documents connecting these stages: how a collection process is configured, who can authorise an action, how a dispute is handled, where a correction is sent and what happens afterwards. Examining those records would require safeguards for personal data. Supplier descriptions and legal frameworks offer starting points; observing the handling of actual accounts remains work to be done.',
+    'Automated debt collection becomes more intelligible when examined through ordinary decisions and their consequences. Who can explain the amount? Who can pause an action when the conditions for doing so are met? Who can implement an agreement or rectify information? Service quality depends in part on those handovers. A useful response must be able to reach the point where the account is still moving forward.',
+  ],
+};
+
+export const recouvrementChaptersEn = [
+  ['ai-debt-collection-1-who-decides-reminder', 'Who decides the next step?', 'Creditor, collector, score and chatbot: identifying the powers behind a reminder.', 'decisions', 2],
+  ['ai-debt-collection-2-performance-claims', 'Examining the performance claims', 'Collections, costs and satisfaction: finding the comparison and the follow-up period.', 'gains', 2],
+  ['ai-debt-collection-3-asking-for-help', 'What happens when you ask for help', 'From recognising a difficulty to providing support and protecting personal disclosures.', 'aide', 2],
+  ['ai-debt-collection-4-correcting-the-record', 'Correcting the record all the way through', 'Disputes, agreements and payment tools: getting the correction into the operations.', 'correction', 1],
+  ['ai-debt-collection-5-contracts-accountability', 'Contracts and accountability', 'Data recipients, reuse and service continuity across a chain of providers.', 'contrats', 1],
+  ['ai-debt-collection-6-data-rights', 'Data rights and remedies', 'Accessing a profile, seeking an explanation and keeping procedures and deadlines distinct.', 'droits', 1],
+].map(([slug, title, summary, imageName, figureCount], index) => ({
+  slug, title, summary, figureCount, number: index + 1,
+  route: `/en/analysis/${slug}/`, chapter: `ch${String(index + 2).padStart(3, '0')}.xhtml`,
+  image: `/illustrations/news/ia-recouvrement-${imageName}-v1.jpg`,
+  imageAlt: `Conceptual illustration for chapter ${index + 1}: ${title}`,
+}));

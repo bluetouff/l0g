@@ -16,6 +16,8 @@ sourceUpdatedDate: '2026-09-25T08:00:07+02:00'
 
 *Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 2: results](/en/analysis/ai-debt-collection-2-performance-claims/) · [Part 3: asking for help](/en/analysis/ai-debt-collection-3-asking-for-help/) · [Part 5: contracts and accountability](/en/analysis/ai-debt-collection-5-contracts-accountability/) · [Part 6: data rights and remedies](/en/analysis/ai-debt-collection-6-data-rights/).*
 
+<p class="edition-link"><a href="/en/publications/ai-debt-collection/">Read all six parts in the free EPUB: When AI Asks You to Pay.</a></p>
+
 **A payment reminder can arrive after the bill has been paid. A dispute can be acknowledged without the underlying record being corrected. Drawing on collectors’ published procedures, a documented US case and French law, this fourth instalment follows the route from a customer’s message to the operations that must take it into account.**
 
 On its French website, Intrum says a payment may take several days to become visible to its services. When money has been paid directly to the original creditor, it asks for proof of payment. PAIR Finance also describes a possible delay before funds reach its account, depending on the payment method, and invites people still receiving reminders after a few days to get in touch. Receiving the money and updating the information used to manage a case are related, but distinct, operations. <a href="https://www.intrum.fr/vous-avez-un-impaye/j-ai-recu-une-relance/j-ai-deja-paye/" aria-label="Source 1">[1]</a> <a href="https://pairfinance.com/fr/aide-et-soutien/france/" aria-label="Source 2">[2]</a>

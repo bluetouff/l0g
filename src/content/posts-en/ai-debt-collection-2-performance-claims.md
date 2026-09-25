@@ -15,6 +15,8 @@ sourceUpdatedDate: '2026-09-24T13:00:45+02:00'
 
 *Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 3: support](/en/analysis/ai-debt-collection-3-asking-for-help/) · [Part 4: correcting the record](/en/analysis/ai-debt-collection-4-correcting-the-record/) · [Part 5: contracts and accountability](/en/analysis/ai-debt-collection-5-contracts-accountability/) · [Part 6: data rights and remedies](/en/analysis/ai-debt-collection-6-data-rights/).*
 
+<p class="edition-link"><a href="/en/publications/ai-debt-collection/">Read all six parts in the free EPUB: When AI Asks You to Pay.</a></p>
+
 On 7 April 2025, Intrum reported that its Ophelos platform had increased **amicable recovery rates in the Netherlands by 25%**, while reducing the **cost to collect by 22%**. These were described as early results. The announcement did not provide a protocol that would allow a reader to reproduce the comparison. <a href="#ia2-en-s01" aria-label="Source 1">[1]</a>
 
 The promise deserves a fair hearing. Collecting a valid debt sooner, with less effort and at a lower cost, can benefit both the creditor and the person who owes the money. Yet apparently similar claims can describe very different improvements: more replies, an initial payment, an agreed instalment plan or a debt actually settled.

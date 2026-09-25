@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { scpiEditions } from '../config/scpi-publication.mjs';
+import { recouvrementBookEn } from '../config/ia-recouvrement-publication-en.mjs';
 import { recouvrementBook } from '../config/ia-recouvrement-publication.mjs';
 import { commerceTracesBook } from '../config/commerce-traces-publication.mjs';
 
@@ -15,7 +16,8 @@ interface Props {
 const { headingLevel = 'h2', lang = 'fr', publication = 'epstein', showAllPublicationsLink = false } = Astro.props;
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
-const isRecouvrement = !isEnglish && publication === 'ia-recouvrement';
+const isRecouvrement = publication === 'ia-recouvrement';
+const recouvrement = isEnglish ? recouvrementBookEn : recouvrementBook;
 const isCommerceTraces = !isEnglish && publication === 'commerce-traces';
 const isOil = publication === 'oil-trading';
 const isScpi = publication === 'scpi';
@@ -25,7 +27,7 @@ const isDigitalIdentity = !isEnglish && publication === 'digital-identity';
 const isDigitalEuro = publication === 'digital-euro';
 const isWaterElectricity = publication === 'water-electricity';
 const isEInvoicing = publication === 'e-invoicing';
-const publicationUrl = isRecouvrement ? recouvrementBook.path : isCommerceTraces ? commerceTracesBook.path : isScpi ? scpi.path : isOil ? isEnglish ? '/en/publications/banking-on-oil/' : '/publications/les-banquiers-du-baril/' : isDigitalIdentity
+const publicationUrl = isRecouvrement ? recouvrement.path : isCommerceTraces ? commerceTracesBook.path : isScpi ? scpi.path : isOil ? isEnglish ? '/en/publications/banking-on-oil/' : '/publications/les-banquiers-du-baril/' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone/'
   : isEInvoicing
   ? isEnglish ? '/en/publications/great-e-invoicing-toll/' : '/publications/grand-peage-facture/'
@@ -38,7 +40,7 @@ const publicationUrl = isRecouvrement ? recouvrementBook.path : isCommerceTraces
   : isEnglish
     ? '/en/publications/epsteins-money/'
     : '/publications/l-argent-d-epstein/';
-const epubFile = isRecouvrement ? recouvrementBook.epub.split('/').at(-1)! : isCommerceTraces ? commerceTracesBook.epub.split('/').at(-1)! : isScpi ? scpi.epub.split('/').at(-1)! : isOil ? isEnglish ? 'banking-on-oil-l0g.epub' : 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
+const epubFile = isRecouvrement ? recouvrement.epub.split('/').at(-1)! : isCommerceTraces ? commerceTracesBook.epub.split('/').at(-1)! : isScpi ? scpi.epub.split('/').at(-1)! : isOil ? isEnglish ? 'banking-on-oil-l0g.epub' : 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
   ? 'votre-identite-dans-un-telephone-enquete-l0g.epub'
   : isEInvoicing
   ? isEnglish ? 'great-e-invoicing-toll-investigation-l0g.epub' : 'grand-peage-facture-enquete-l0g.epub'
@@ -52,7 +54,7 @@ const epubFile = isRecouvrement ? recouvrementBook.epub.split('/').at(-1)! : isC
     ? 'epsteins-money-l0g.epub'
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
-const coverUrl = isRecouvrement ? recouvrementBook.cover : isCommerceTraces ? commerceTracesBook.cover : isScpi ? scpi.cover : isOil ? isEnglish ? '/publications/banking-on-oil-cover.jpg' : '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
+const coverUrl = isRecouvrement ? recouvrement.cover : isCommerceTraces ? commerceTracesBook.cover : isScpi ? scpi.cover : isOil ? isEnglish ? '/publications/banking-on-oil-cover.jpg' : '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone-cover.jpg'
   : isEInvoicing
   ? isEnglish ? '/publications/great-e-invoicing-toll-cover.png' : '/publications/grand-peage-facture-cover.png'
@@ -69,13 +71,14 @@ const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
 const copy = isRecouvrement ? {
-  coverLabel: 'Découvrir L’IA vous demande de payer', coverAlt: recouvrementBook.title,
-  meta: '// enquête illustrée · septembre 2026', titleLead: 'L’IA vous demande', titleAccent: 'de payer',
-  deck: recouvrementBook.subtitle,
-  description: 'Les six volets de la série, des décisions qui précèdent la relance aux moyens de faire corriger le dossier. Avec une introduction et une conclusion originales.',
-  factsLabel: 'Contenu de l’édition',
-  facts: [{ value: '6', label: 'chapitres' }, { value: '9', label: 'schémas' }, { value: formattedSize, label: 'téléchargement' }, { value: 'CC BY 4.0', label: 'licence' }],
-  discover: 'Découvrir le livre', downloadLabel: 'Télécharger l’EPUB', fileName: epubFile,
+  coverLabel: isEnglish ? 'Discover When AI Asks You to Pay' : 'Découvrir L’IA vous demande de payer', coverAlt: recouvrement.title,
+  meta: isEnglish ? '// illustrated investigation · September 2026' : '// enquête illustrée · septembre 2026',
+  titleLead: isEnglish ? 'When AI asks you' : 'L’IA vous demande', titleAccent: isEnglish ? 'to pay' : 'de payer',
+  deck: recouvrement.subtitle,
+  description: isEnglish ? 'Six investigations into automated debt collection in France, from the decisions behind a reminder to correcting the record. With an original introduction and conclusion.' : 'Les six volets de la série, des décisions qui précèdent la relance aux moyens de faire corriger le dossier. Avec une introduction et une conclusion originales.',
+  factsLabel: isEnglish ? 'Edition contents' : 'Contenu de l’édition',
+  facts: [{ value: '6', label: isEnglish ? 'chapters' : 'chapitres' }, { value: '9', label: isEnglish ? 'diagrams' : 'schémas' }, { value: formattedSize, label: isEnglish ? 'download' : 'téléchargement' }, { value: 'CC BY 4.0', label: 'licence' }],
+  discover: isEnglish ? 'Explore the book' : 'Découvrir le livre', downloadLabel: isEnglish ? 'Download the EPUB' : 'Télécharger l’EPUB', fileName: epubFile,
 } : isCommerceTraces ? {
   coverLabel: 'Découvrir Le commerce de nos traces', coverAlt: commerceTracesBook.title,
   meta: '// enquête illustrée · septembre 2026', titleLead: 'Le commerce', titleAccent: 'de nos traces',

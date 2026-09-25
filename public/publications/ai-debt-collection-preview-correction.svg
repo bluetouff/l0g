@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" width="500" height="350" role="img" aria-labelledby="ia4-en-fig-title ia4-en-fig-desc" focusable="false" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="350" fill="#0b0d10"/>
+<title id="ia4-en-fig-title">Enova: a partial payment cancels an extension</title>
+<desc id="ia4-en-fig-desc">According to the CFPB, the system compares the balance recorded at approval with the balance reduced by a partial payment. A mismatch cancels the extension and can trigger a debit of the remaining balance on the original due date.</desc>
+<rect x="0" y="0" width="500" height="350" rx="14" fill="#121419"/>
+<text x="20" y="32" font-size="20" font-weight="700" fill="#e7e9ee">ENOVA · UNITED STATES · 2011–2020</text>
+<g data-region="approved">
+<rect x="16" y="52" width="222" height="98" rx="10" fill="none" stroke="rgba(255,255,255,0.20)"/>
+<text x="127" y="86" text-anchor="middle" font-size="20" font-weight="700" fill="#5eead4">Extension approved</text>
+<text x="127" y="120" text-anchor="middle" font-size="20" fill="#e7e9ee">Recorded balance</text>
+</g>
+<g data-region="changed">
+<rect x="262" y="52" width="222" height="98" rx="10" fill="none" stroke="rgba(255,255,255,0.20)"/>
+<text x="373" y="86" text-anchor="middle" font-size="20" font-weight="700" fill="#5eead4">Partial payment</text>
+<text x="373" y="120" text-anchor="middle" font-size="20" fill="#e7e9ee">Lower balance</text>
+</g>
+<path d="M127 150 V174 H250 M373 150 V174 H250 V188 M245 182 L250 188 L255 182" stroke="#5eead4" stroke-width="2" fill="none"/>
+<g data-region="comparison">
+<rect x="40" y="192" width="420" height="54" rx="10" fill="none" stroke="#ff4d87"/>
+<text x="250" y="225" text-anchor="middle" font-size="20" font-weight="700" fill="#ff4d87">Balance mismatch cancels extension</text>
+</g>
+<path d="M250 246 V267 M245 261 L250 267 L255 261" stroke="#ff4d87" stroke-width="2" fill="none"/>
+<g data-region="debit">
+<rect x="16" y="272" width="468" height="62" rx="10" fill="none" stroke="rgba(255,255,255,0.20)"/>
+<text x="250" y="296" text-anchor="middle" font-size="20" font-weight="700" fill="#e7e9ee">Remaining balance debited</text>
+<text x="250" y="321" text-anchor="middle" font-size="20" fill="#e7e9ee">or attempted on the original due date</text>
+</g>
+</svg>

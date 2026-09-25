@@ -7,18 +7,23 @@ import { XMLParser, XMLValidator } from 'fast-xml-parser';
 import { fromHtml } from 'hast-util-from-html';
 import { toText } from 'hast-util-to-text';
 import sharp from 'sharp';
-import { recouvrementBook as book, recouvrementChapters as chapters } from '../src/config/ia-recouvrement-publication.mjs';
-import { inspectFigure, renderRecouvrementArticle, readingCopy } from './generate-ia-recouvrement-epub.mjs';
+import { parseFrontmatter } from '@astrojs/markdown-remark';
+import { recouvrementBook as frBook, recouvrementChapters as frChapters } from '../src/config/ia-recouvrement-publication.mjs';
+import { recouvrementBookEn, recouvrementChaptersEn } from '../src/config/ia-recouvrement-publication-en.mjs';
+import { inspectFigure, generateRecouvrementEpub, renderRecouvrementArticle, readingCopy } from './generate-ia-recouvrement-epub.mjs';
 import { renderOilMarkdown } from './generate-oil-epub.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
-const SOURCE = join(ROOT, 'src/epub', book.directory);
-const EPUB = join(ROOT, 'public', book.epub);
 const files = dir => readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? files(join(dir, e.name)) : [join(dir, e.name)]);
 const elements = tree => [tree, ...(tree.children ?? []).flatMap(elements)];
 const plain = tree => toText(tree).replace(/\s+/gu, ' ').trim();
 
-test('recouvrement EPUB container packages all source files without corruption', () => {
+for (const [book, chapters] of [[frBook, frChapters], [recouvrementBookEn, recouvrementChaptersEn]]) {
+const SOURCE = join(ROOT, 'src/epub', book.directory);
+const EPUB = join(ROOT, 'public', book.epub);
+const contentRoot = book.lang === 'en' ? 'src/content/posts-en' : 'src/content/posts';
+
+test(`${book.lang}: recouvrement EPUB container packages all source files without corruption`, () => {
   const entries = execFileSync('unzip', ['-Z1', EPUB], { encoding: 'utf8' }).trim().split('\n');
   assert.equal(entries[0], 'mimetype');
   assert.equal(execFileSync('unzip', ['-p', EPUB, 'mimetype'], { encoding: 'utf8' }), 'application/epub+zip');
@@ -28,9 +33,9 @@ test('recouvrement EPUB container packages all source files without corruption',
   for (const file of files(SOURCE)) assert.deepEqual(execFileSync('unzip', ['-p', EPUB, relative(SOURCE, file)]), readFileSync(file));
 });
 
-test('all six complete articles retain paragraphs, sources, anchors and figure captions', async () => {
+test(`${book.lang}: all six complete articles retain paragraphs, sources, anchors and figure captions`, async () => {
   for (const chapter of chapters) {
-    const original = readFileSync(join(ROOT, 'src/content/posts', `${chapter.slug}.md`), 'utf8');
+    const original = readFileSync(join(ROOT, contentRoot, `${chapter.slug}.md`), 'utf8');
     const expected = fromHtml(await renderOilMarkdown(readingCopy(original).replace(/^---\n[\s\S]*?\n---\n/u, '').replace(/<svg\b[\s\S]*?<\/svg>/gu, '')), { fragment: true });
     const actual = fromHtml(readFileSync(join(SOURCE, 'EPUB/text', chapter.chapter), 'utf8'));
     const prose = plain(actual), nodes = elements(actual);
@@ -50,11 +55,13 @@ test('all six complete articles retain paragraphs, sources, anchors and figure c
   }
 });
 
-test('EPUB metadata, manifest, spine and every local fragment are valid', () => {
+test(`${book.lang}: EPUB metadata, manifest, spine and every local fragment are valid`, () => {
   const parser = new XMLParser({ ignoreAttributes: false });
   const opf = parser.parse(readFileSync(join(SOURCE, 'EPUB/content.opf'), 'utf8')).package;
   assert.equal(opf.metadata['dc:title'], book.title);
-  assert.equal(opf.metadata['dc:language'], 'fr');
+  assert.equal(opf.metadata['dc:language'], book.lang);
+  assert.equal(opf.metadata['dc:identifier']['#text'], book.id);
+  assert.equal(opf.metadata['dc:source'], `https://l0g.fr${book.path}`);
   assert.equal(opf.manifest.item.filter(i => i['@_media-type'] === 'image/svg+xml').length, 9);
   assert.equal(opf.manifest.item.filter(i => i['@_media-type'] === 'image/jpeg').length, 8);
   assert.equal(opf.spine.itemref.length, 12);
@@ -80,9 +87,9 @@ test('EPUB metadata, manifest, spine and every local fragment are valid', () => 
   for (const name of ['ch001.xhtml', 'ch008.xhtml']) assert(statSync(join(SOURCE, 'EPUB/text', name)).size > 3000);
 });
 
-test('article assembly rejects active content, foreign chapters and invalid figures', async () => {
+test(`${book.lang}: article assembly rejects active content, foreign chapters and invalid figures`, async () => {
   const chapter = chapters[0];
-  const original = readFileSync(join(ROOT, 'src/content/posts', `${chapter.slug}.md`), 'utf8');
+  const original = readFileSync(join(ROOT, contentRoot, `${chapter.slug}.md`), 'utf8');
   await assert.rejects(renderRecouvrementArticle(original, { ...chapter, slug: '../outside' }), /Unconfigured/u);
   await assert.rejects(renderRecouvrementArticle(original + '\nimport x from "./x";', chapter), /Unexpected article import/u);
   await assert.rejects(renderRecouvrementArticle(original + '\n<script>alert(1)</script>', chapter), /Active EPUB/u);
@@ -98,7 +105,7 @@ test('article assembly rejects active content, foreign chapters and invalid figu
   assert.throws(() => inspectFigure(fixture.replace('<figure>', '<figure style="background:url(https://example.com/pixel)">')));
 });
 
-test('ebook is passive, self-contained and uses direct editorial wording', () => {
+test(`${book.lang}: ebook is passive, self-contained and uses direct editorial wording`, () => {
   for (const file of files(SOURCE).filter(f => /\.(?:xhtml|svg|css)$/u.test(f))) {
     const content = readFileSync(file, 'utf8');
     assert.doesNotMatch(content, /<(?:script|iframe|object|embed|foreignObject|form|input|audio|video)\b|\son\w+=|javascript:|@import|—/iu);
@@ -112,7 +119,7 @@ test('ebook is passive, self-contained and uses direct editorial wording', () =>
   }
 });
 
-test('dedicated cover, panorama and responsive assets meet publication budgets', async () => {
+test(`${book.lang}: dedicated cover, panorama and responsive assets meet publication budgets`, async () => {
   for (const [path, width, height, budget] of [[book.cover, 1024, 1638, 256000], [book.social, 1200, 630, 200000], [book.panorama, 1600, 800, 300000]]) {
     const target = join(ROOT, 'public', path), meta = await sharp(target).metadata();
     assert.equal(meta.width, width); assert.equal(meta.height, height); assert(statSync(target).size < budget);
@@ -121,10 +128,26 @@ test('dedicated cover, panorama and responsive assets meet publication budgets',
     for (const width of widths) assert.equal((await sharp(join(ROOT, 'public', path.replace('.jpg', `-${width}.webp`))).metadata()).width, width);
   }
   assert.deepEqual(readFileSync(join(SOURCE, 'EPUB/media/cover.jpg')), readFileSync(join(ROOT, 'public', book.cover)));
-  const page = readFileSync(join(ROOT, 'src/pages/publications/ia-recouvrement.astro'), 'utf8');
+  const page = readFileSync(join(ROOT, book.lang === 'en' ? 'src/pages/en/publications/ai-debt-collection.astro' : 'src/pages/publications/ia-recouvrement.astro'), 'utf8');
   assert.match(page, /'@type': 'Book'/u); assert.match(page, /serializeInlineScriptData\(jsonLd\)/u);
   assert.match(page, /createHash\('sha256'\)/u); assert.match(page, /ogImage=\{book.social\}/u);
-  const catalogue = readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8');
-  assert(catalogue.indexOf('publication="ia-recouvrement"') < catalogue.indexOf('publication="commerce-traces"'));
+  const catalogue = readFileSync(join(ROOT, book.lang === 'en' ? 'src/pages/en/publications/index.astro' : 'src/pages/publications/index.astro'), 'utf8');
+  assert(catalogue.indexOf('publication="ia-recouvrement"') < catalogue.indexOf(book.lang === 'en' ? 'publication="scpi"' : 'publication="commerce-traces"'));
   assert(catalogue.includes(book.social));
+  for (const lang of ['fr', 'en', 'x-default']) assert(page.includes(`hreflang: '${lang}'`));
+  assert(page.includes(book.lang === 'en' ? 'translationOfWork:' : 'workTranslation:'));
+  assert(page.includes(book.lang === 'en' ? 'Lire en français' : 'Read in English'));
+});
+
+}
+
+test('English edition has a distinct identity and rejects unsupported languages', async () => {
+  assert.notEqual(frBook.id, recouvrementBookEn.id);
+  assert.notEqual(frBook.epub, recouvrementBookEn.epub);
+  await assert.rejects(generateRecouvrementEpub('../outside'), /Unsupported recouvrement edition language/u);
+  for (const [index, chapter] of recouvrementChaptersEn.entries()) {
+    const source = readFileSync(join(ROOT, 'src/content/posts-en', `${chapter.slug}.md`), 'utf8');
+    assert.equal(parseFrontmatter(source).frontmatter.sourceArticle, frChapters[index].slug);
+    assert(source.includes(`<a href="${recouvrementBookEn.path}">Read all six parts`));
+  }
 });
