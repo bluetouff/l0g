@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia2-fr-fig2-title ia2-fr-fig2-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="360" height="286" fill="#0b0d10"/>
+<title id="ia2-fr-fig2-title">L’expérience compare deux scénarios complets</title>
+<desc id="ia2-fr-fig2-desc">Les participants lisent l’un de deux scénarios. Le scénario humain décrit dix minutes d’attente et une remarque sur le retard de prise de contact ; le scénario IA décrit dix secondes et remercie la personne pour sa franchise. La comparaison porte donc sur plusieurs caractéristiques à la fois, pas sur la seule identité de l’interlocuteur.</desc>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="#121419" stroke="rgba(255,255,255,0.20)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="#e7e9ee">Deux scénarios à comparer</text>
+<text x="16" y="53" font-size="16" font-weight="400" fill="#e7e9ee">Un seul scénario par participant</text>
+<text x="16" y="89" font-size="14" font-weight="600" fill="#5eead4">HUMAIN</text>
+<text x="200" y="89" font-size="14" font-weight="600" fill="#f5b13d">IA</text>
+<text x="16" y="120" font-size="22" font-weight="600" fill="#e7e9ee">10 min</text>
+<text x="200" y="120" font-size="22" font-weight="600" fill="#e7e9ee">10 s</text>
+<text x="16" y="144" font-size="16" font-weight="400" fill="#e7e9ee">Attente décrite</text>
+<text x="200" y="144" font-size="16" font-weight="400" fill="#e7e9ee">Attente décrite</text>
+<text x="16" y="174" font-size="16" font-weight="400" fill="#e7e9ee">Remarque sur</text>
+<text x="16" y="195" font-size="16" font-weight="400" fill="#e7e9ee">le contact tardif.</text>
+<text x="200" y="174" font-size="16" font-weight="400" fill="#e7e9ee">Remerciement</text>
+<text x="200" y="195" font-size="16" font-weight="400" fill="#e7e9ee">pour la franchise.</text>
+<line x1="16" y1="213" x2="344" y2="213" stroke="rgba(255,255,255,0.20)" stroke-width="1" />
+<text x="16" y="243" font-size="16" font-weight="400" fill="#e7e9ee">L’attente et les formulations varient.</text>
+<text x="16" y="267" font-size="16" font-weight="400" fill="#e7e9ee">L’effet de l’IA seule n’est pas isolé.</text>
+</svg>

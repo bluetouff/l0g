@@ -21,6 +21,8 @@ quickTake:
 
 *Lire aussi : [Volet 1 : décisions](/posts/ia-recouvrement-1-qui-decide-relance/) · [Volet 2 : résultats](/posts/ia-recouvrement-2-gains-annonces/) · [Volet 3 : appel à l’aide](/posts/ia-recouvrement-3-appel-aide/) · [Volet 4 : correction du dossier](/posts/ia-recouvrement-4-corriger-dossier/) · [Volet 6 : données et recours](/posts/ia-recouvrement-6-verifier-droits/).*
 
+<p class="edition-link"><a href="/publications/ia-recouvrement/">Les six volets réunis dans un EPUB gratuit : L’IA vous demande de payer.</a></p>
+
 **Dans sa présentation française de la protection des données, Intrum distingue deux situations. L’entreprise se déclare responsable du traitement pour certaines activités, notamment le recouvrement et l’acquisition de créances. Pour d’autres services, comme la gestion de facturation, elle indique suivre les instructions de ses clients en tant que sous-traitant. Le nom sur la relance peut donc rester le même alors que le rôle juridique change.** <a href="https://www.intrum.fr/solutions-entreprises/a-propos-d-intrum/donnees-personnelles/" aria-label="Source 1">[1]</a>
 
 Cette distinction donne un point de départ concret à l’examen du recouvrement automatisé. Après avoir suivi les décisions, les gains annoncés, l’accompagnement des difficultés et la correction des dossiers, il reste à remonter les contrats. Qui choisit les objectifs ? Qui autorise l’utilisation des données ? Qui dispose des moyens d’interrompre une opération ou de changer de prestataire ?

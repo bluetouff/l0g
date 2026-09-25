@@ -19,6 +19,8 @@ quickTake:
 
 *Lire aussi : [Volet 1 : décisions](/posts/ia-recouvrement-1-qui-decide-relance/) · [Volet 2 : résultats](/posts/ia-recouvrement-2-gains-annonces/) · [Volet 3 : appel à l’aide](/posts/ia-recouvrement-3-appel-aide/) · [Volet 4 : correction du dossier](/posts/ia-recouvrement-4-corriger-dossier/) · [Volet 5 : contrats et responsabilités](/posts/ia-recouvrement-5-contrats-responsabilites/).*
 
+<p class="edition-link"><a href="/publications/ia-recouvrement/">Les six volets réunis dans un EPUB gratuit : L’IA vous demande de payer.</a></p>
+
 **Une appréciation de votre disposition à payer peut être une donnée personnelle, même si vous ne l’avez jamais fournie. La Cour de justice de l’Union européenne l’a expressément indiqué dans son arrêt CRIF du 4 mai 2023. Le droit d’accès peut donc porter sur ce qu’une entreprise a calculé à votre sujet, et pas seulement sur votre nom, votre adresse ou les renseignements que vous lui avez transmis.** <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX%3A62021CJ0487" aria-label="Source 1">[1]</a>
 
 Ce point donne une prise concrète sur le recouvrement automatisé. PAIR Finance explique, dans sa présentation française, que la possibilité de joindre une personne et sa vitesse de réaction renseignent son système sur sa volonté de payer. L’entreprise décrit aussi une adaptation du canal, de la fréquence et du ton des communications. Cette description est celle du fournisseur. <a href="https://pairfinance.com/fr/intelligence-artificielle/" aria-label="Source 2">[2]</a>

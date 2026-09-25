@@ -20,6 +20,8 @@ quickTake:
 
 *Lire aussi : [Volet 1 : décisions](/posts/ia-recouvrement-1-qui-decide-relance/) · [Volet 2 : résultats](/posts/ia-recouvrement-2-gains-annonces/) · [Volet 3 : appel à l’aide](/posts/ia-recouvrement-3-appel-aide/) · [Volet 5 : contrats et responsabilités](/posts/ia-recouvrement-5-contrats-responsabilites/) · [Volet 6 : données et recours](/posts/ia-recouvrement-6-verifier-droits/).*
 
+<p class="edition-link"><a href="/publications/ia-recouvrement/">Les six volets réunis dans un EPUB gratuit : L’IA vous demande de payer.</a></p>
+
 **Une relance peut arriver alors que la facture est déjà payée. Une contestation peut être reçue sans que le dossier soit corrigé. À partir des procédures publiées par les recouvreurs, d’un cas américain documenté et des règles françaises, ce quatrième volet examine le chemin entre le message du débiteur et les opérations qui doivent en tenir compte.**
 
 Sur son site français, Intrum prévient qu’un paiement peut mettre plusieurs jours à devenir visible dans ses services. Si le règlement a été adressé directement à l’entreprise créancière, le recouvreur demande un justificatif. PAIR Finance évoque un délai de crédit sur son compte, variable selon le moyen de paiement, et invite les personnes encore relancées après quelques jours à prendre contact. Recevoir les fonds et actualiser les informations utilisées pour gérer un dossier sont des opérations liées, mais distinctes. <a href="https://www.intrum.fr/vous-avez-un-impaye/j-ai-recu-une-relance/j-ai-deja-paye/" aria-label="Source 1">[1]</a> <a href="https://pairfinance.com/fr/aide-et-soutien/france/" aria-label="Source 2">[2]</a>

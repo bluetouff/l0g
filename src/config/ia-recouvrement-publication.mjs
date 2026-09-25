@@ -1,0 +1,48 @@
+export const recouvrementBook = {
+  lang: 'fr', locale: 'fr-FR', date: '2026-09-25', modified: '2026-09-25T15:01:00Z',
+  id: 'urn:uuid:6d21c893-37bc-4616-b69b-ea2d4938caf2',
+  directory: 'ia-recouvrement',
+  title: 'L’IA vous demande de payer',
+  subtitle: 'Enquête sur le recouvrement automatisé',
+  description: 'Les six volets de l’enquête sur le recouvrement par IA réunis dans un EPUB gratuit : décisions, résultats, aide, corrections, responsabilités et recours.',
+  path: '/publications/ia-recouvrement/',
+  epub: '/publications/ia-recouvrement-l0g.epub',
+  cover: '/publications/ia-recouvrement-cover.jpg',
+  social: '/publications/ia-recouvrement-cover-social.jpg',
+  panorama: '/publications/ia-recouvrement-panorama.jpg',
+  figureCount: 9,
+  introductionTitle: 'Avant le message, un dossier',
+  introduction: [
+    'Une relance arrive sur un téléphone. Elle contient un montant, un lien, parfois une proposition de paiement. Pour comprendre comment elle a été produite, il faut ouvrir plusieurs portes : retrouver le créancier, identifier l’entreprise qui le représente, examiner les informations du dossier et les choix qui ont précédé l’envoi. L’intelligence artificielle peut intervenir à différents endroits de ce parcours. La conversation visible n’en raconte qu’une partie.',
+    'Cette enquête commence donc avant le message. Son premier chapitre distingue les acteurs et les fonctions : détenir une créance, organiser les démarches, établir un score ou rédiger une réponse. Ces opérations donnent des pouvoirs différents. Une même interface peut les rapprocher sans rendre leur répartition intelligible à la personne contactée. Les notices et les documents contractuels étudiés permettent de commencer à les séparer.',
+    'Le deuxième chapitre aborde les résultats annoncés. Encaisser plus vite, réduire le coût d’un traitement et obtenir une meilleure appréciation du service correspondent à des mesures distinctes. Les comparer demande de conserver les populations, les périodes et les méthodes de calcul. La suite de l’enquête déplace encore le regard : lorsqu’une personne décrit une difficulté, comment cette information est-elle interprétée, à qui est-elle transmise et quelle aide devient effectivement possible ?',
+    'Vient ensuite la correction. Une somme peut être contestée, un paiement signalé, un accord modifié. Il faut alors suivre le changement jusque dans les outils qui continuent d’agir. Le quatrième chapitre examine cette circulation et un dossier américain documenté par le régulateur, en gardant son contexte propre. Le cinquième remonte aux contrats, aux destinataires des données et aux responsabilités des prestataires. La répartition des tâches devient décisive quand plusieurs entreprises doivent répondre à une même difficulté.',
+    'Le dernier chapitre rassemble les moyens de demander des comptes : retrouver les données du dossier, interroger le profil calculé, comprendre une décision dans les situations prévues par le droit et distinguer les démarches avec leurs délais. La lecture ne suppose pas que toutes les relances relèvent du même régime. Elle invite à identifier précisément l’opération en cause et l’interlocuteur capable d’y répondre.',
+    'Le livre repose sur une enquête documentaire consacrée au recouvrement des dettes de particuliers en France. Les textes juridiques, décisions, études et déclarations commerciales sont attribués dans chaque chapitre. Les références étrangères restent situées dans leur pays et leur cadre. Nous n’avons ni audité un système en production, ni reconstitué le parcours de dossiers individuels. Cette limite compte particulièrement lorsqu’on passe d’une fonctionnalité annoncée à son utilisation effective.',
+    'Réunir les six volets permet de suivre une même question jusqu’au bout : comment une information sur une personne devient-elle une action, et comment cette personne peut-elle faire modifier la suite ? Cette édition reprend les articles publiés les 24 et 25 septembre 2026, avec leurs sources et leurs neuf schémas. Le sommaire et les renvois entre chapitres accompagnent une lecture continue ou un retour ponctuel sur un point du dossier.',
+  ],
+  conclusionTitle: 'La correction doit atteindre l’action',
+  conclusion: [
+    'Le parcours de cette enquête ramène à une exigence concrète : pouvoir relier un message reçu aux informations et aux décisions qui l’ont produit. Le créancier détient une demande de paiement ; le recouvreur organise des démarches ; des prestataires peuvent traiter les données ou fournir des outils. Comprendre cette répartition donne un premier moyen de retrouver qui dispose des pièces et qui peut agir sur le dossier.',
+    'L’examen des résultats appelle la même précision. Un encaissement avancé, un coût réduit et une satisfaction déclarée renseignent sur des aspects différents du service. Leur intérêt dépend des personnes incluses dans la mesure, de la comparaison retenue et de la durée du suivi. Pour apprécier la résolution d’un impayé, il faut aussi regarder le devenir des accords et les difficultés rencontrées après le premier échange. Les chiffres commerciaux étudiés conservent ainsi leur attribution et leur périmètre.',
+    'La question de l’aide rend cette continuité particulièrement visible. Repérer une difficulté ouvre une possibilité ; la réponse dépend ensuite des options disponibles et des personnes habilitées à les appliquer. Les confidences recueillies ajoutent un enjeu de protection : elles peuvent être sensibles, circuler ou trouver un autre usage. Les chapitres consacrés à l’aide et aux contrats montrent pourquoi la circulation d’une consigne utile et celle des détails d’une situation personnelle méritent des examens distincts.',
+    'Une correction rencontre à son tour cette organisation. Changer une information dans un écran laisse ouverte la question des actions déjà préparées, des destinataires et des outils dépendants. Le dossier Enova décrit dans le livre illustre une rupture précise entre un accord et sa traduction opérationnelle, dans le contexte américain qui lui est propre. Pour les dispositifs étudiés en France, les documents publics disponibles ne suffisent pas à reconstituer tous les contrôles ni le parcours de chaque contestation.',
+    'L’accès aux données, les explications prévues pour certaines décisions et les moyens de contester une créance répondent à des objets différents. Le dernier chapitre les distingue pour éviter qu’une demande d’information fasse perdre de vue une autre démarche ou son échéance. Un dossier devient plus facile à examiner lorsque les pièces, les demandes, les réponses et leurs dates peuvent être rapprochées. Le texte des droits doit ensuite être confronté à la situation concernée.',
+    'Pour poursuivre l’enquête, les documents les plus utiles seraient ceux qui raccordent ces étapes : configuration d’un parcours, répartition des pouvoirs, traitement d’une contestation, transmission d’une correction et résultat suivi dans le temps. Ils permettraient d’examiner le fonctionnement effectif, avec les précautions nécessaires pour les données personnelles. Les descriptions des fournisseurs et les cadres juridiques donnent des points d’entrée ; l’observation des dossiers reste un travail à accomplir.',
+    'L’automatisation du recouvrement se comprend ainsi à travers des décisions ordinaires et leurs conséquences. Qui peut expliquer le montant ? Qui peut suspendre une action lorsque les conditions sont réunies ? Qui peut appliquer un accord ou rectifier une information ? La qualité d’un service se joue aussi dans ces passages. Une réponse utile doit pouvoir atteindre l’endroit où le dossier continue d’avancer.',
+  ],
+};
+
+export const recouvrementChapters = [
+  ['ia-recouvrement-1-qui-decide-relance', 'Qui décide de la relance ?', 'Créancier, recouvreur, score et chatbot : identifier les pouvoirs derrière le message.', 'decisions', 2],
+  ['ia-recouvrement-2-gains-annonces', 'Que mesurent les gains annoncés ?', 'Encaissements, coûts et satisfaction : retrouver le comparateur et la durée du suivi.', 'gains', 2],
+  ['ia-recouvrement-3-appel-aide', 'Quand un message devient un appel à l’aide', 'Du repérage d’une difficulté à l’aide accordée et à la protection des confidences.', 'aide', 2],
+  ['ia-recouvrement-4-corriger-dossier', 'Corriger le dossier jusqu’au bout', 'Contestation, accords et outils de paiement : faire parvenir la correction aux opérations.', 'correction', 1],
+  ['ia-recouvrement-5-contrats-responsabilites', 'Les contrats et les responsabilités', 'Destinataires, réutilisation des données et continuité du service entre prestataires.', 'contrats', 1],
+  ['ia-recouvrement-6-verifier-droits', 'Les données, les droits et les recours', 'Accéder au profil, demander une explication et distinguer les démarches avec leurs délais.', 'droits', 1],
+].map(([slug, title, summary, imageName, figureCount], index) => ({
+  slug, title, summary, figureCount, number: index + 1,
+  route: `/posts/${slug}/`, chapter: `ch${String(index + 2).padStart(3, '0')}.xhtml`,
+  image: `/illustrations/news/ia-recouvrement-${imageName}-v1.jpg`,
+  imageAlt: `Illustration conceptuelle du chapitre ${index + 1} : ${title.toLocaleLowerCase('fr-FR')}`,
+}));

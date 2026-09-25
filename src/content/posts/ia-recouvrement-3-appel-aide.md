@@ -17,6 +17,8 @@ quickTake:
 
 *Lire aussi : [Volet 1 : décisions](/posts/ia-recouvrement-1-qui-decide-relance/) · [Volet 2 : résultats](/posts/ia-recouvrement-2-gains-annonces/) · [Volet 4 : corriger le dossier](/posts/ia-recouvrement-4-corriger-dossier/) · [Volet 5 : contrats et responsabilités](/posts/ia-recouvrement-5-contrats-responsabilites/) · [Volet 6 : données et recours](/posts/ia-recouvrement-6-verifier-droits/).*
 
+<p class="edition-link"><a href="/publications/ia-recouvrement/">Les six volets réunis dans un EPUB gratuit : L’IA vous demande de payer.</a></p>
+
 **Repérer une personne en difficulté peut lui ouvrir l’accès à une aide. Mais le classement sert aussi à décider quels échanges seront automatisés. Les documents d’Ophelos, les observations du régulateur britannique et les règles françaises de protection des données permettent de suivre ce qui se joue entre une confidence, une alerte et une prise en charge.**
 
 Dans une publication technique, Ophelos explique que son modèle de détection des vulnérabilités contribue à réserver l’intervention humaine à certaines situations, tout en permettant d’automatiser des réponses aux échanges non signalés. La question dépasse donc la qualité du repérage : une difficulté manquée peut aussi influencer le parcours proposé à la personne. C’est une conséquence possible du fonctionnement décrit par l’entreprise, pas un incident constaté dans un dossier français. <a href="#ia3-fr-s01" aria-label="Source 1">[1]</a>

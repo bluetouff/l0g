@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="286" viewBox="0 0 360 286" role="img" aria-labelledby="ia3-fr-fig2-title ia3-fr-fig2-desc" focusable="false" style="display:block;width:100%;max-width:440px;height:auto;margin:0 auto;" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="360" height="286" fill="#0b0d10"/>
+<title id="ia3-fr-fig2-title">Séparer l’analyse d’une confidence et l’application d’une aide</title>
+<desc id="ia3-fr-fig2-desc">Schéma de conception proposé, pas architecture auditée. Le message original est consulté selon la mission. Une interprétation reste reliée à sa source et peut être corrigée. L’aménagement retenu transmet une consigne utile sans détail superflu. Cette consigne demeure une donnée personnelle.</desc>
+<rect x="0.5" y="0.5" width="359" height="285" rx="8" fill="#121419" stroke="rgba(255,255,255,0.20)" stroke-width="1" />
+<text x="16" y="30" font-size="20" font-weight="600" fill="#e7e9ee">De la confidence à l’aide</text>
+<text x="16" y="66" font-size="14" font-weight="600" fill="#5eead4">01</text>
+<text x="46" y="66" font-size="16" font-weight="600" fill="#e7e9ee">Message d’origine</text>
+<text x="16" y="89" font-size="16" font-weight="400" fill="#e7e9ee">Accès réservé aux personnes habilitées.</text>
+<line x1="16" y1="103" x2="344" y2="103" stroke="rgba(255,255,255,0.20)" stroke-width="1" />
+<text x="16" y="136" font-size="14" font-weight="600" fill="#5eead4">02</text>
+<text x="46" y="136" font-size="16" font-weight="600" fill="#e7e9ee">Interprétation</text>
+<text x="16" y="159" font-size="16" font-weight="400" fill="#e7e9ee">Source, date, vérification, correction.</text>
+<line x1="16" y1="173" x2="344" y2="173" stroke="rgba(255,255,255,0.20)" stroke-width="1" />
+<text x="16" y="206" font-size="14" font-weight="600" fill="#5eead4">03</text>
+<text x="46" y="206" font-size="16" font-weight="600" fill="#e7e9ee">Consigne d’aménagement</text>
+<text x="16" y="229" font-size="16" font-weight="400" fill="#e7e9ee">Partager le nécessaire pour agir.</text>
+<text x="16" y="267" font-size="16" font-weight="400" fill="#e7e9ee">La consigne reste une donnée personnelle.</text>
+</svg>

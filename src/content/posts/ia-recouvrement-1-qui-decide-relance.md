@@ -17,6 +17,8 @@ quickTake:
 
 *Lire aussi : [Volet 2 : résultats](/posts/ia-recouvrement-2-gains-annonces/) · [Volet 3 : aide](/posts/ia-recouvrement-3-appel-aide/) · [Volet 4 : corriger le dossier](/posts/ia-recouvrement-4-corriger-dossier/) · [Volet 5 : contrats et responsabilités](/posts/ia-recouvrement-5-contrats-responsabilites/) · [Volet 6 : données et recours](/posts/ia-recouvrement-6-verifier-droits/).*
 
+<p class="edition-link"><a href="/publications/ia-recouvrement/">Les six volets réunis dans un EPUB gratuit : L’IA vous demande de payer.</a></p>
+
 À la page 7 de sa notice française de confidentialité, Intrum Corporate décrit une notation automatique pouvant orienter un dossier vers le recouvrement judiciaire. Le document place ainsi l’automatisation en amont du message reçu : elle peut contribuer au choix de la suite donnée à l’impayé. <a href="#ia1-fr-s01" aria-label="Source 1">[1]</a>
 
 Cette distinction change la manière d’examiner le recouvrement par intelligence artificielle. Une conversation peut paraître ordinaire alors que plusieurs décisions ont déjà été prises : sélectionner le dossier, choisir le canal de contact, préparer une proposition. Inversement, une réponse produite par un modèle de langage peut n’avoir aucun pouvoir sur le montant réclamé ou sur un éventuel recours.

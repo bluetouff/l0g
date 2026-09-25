@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" width="500" height="350" role="img" aria-labelledby="ia4-fr-fig-title ia4-fr-fig-desc" focusable="false" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="350" fill="#0b0d10"/>
+<title id="ia4-fr-fig-title">Enova : un paiement partiel annule le report</title>
+<desc id="ia4-fr-fig-desc">Selon le CFPB, le système compare le solde mémorisé lors du report au solde réduit par un paiement partiel. L’écart annule le report et peut déclencher un prélèvement du solde restant à l’échéance initiale.</desc>
+<rect x="0" y="0" width="500" height="350" rx="14" fill="#121419"/>
+<text x="20" y="32" font-size="20" font-weight="700" fill="#e7e9ee">ENOVA · ÉTATS-UNIS · 2011–2020</text>
+<g data-region="approved">
+<rect x="16" y="52" width="222" height="98" rx="10" fill="none" stroke="rgba(255,255,255,0.20)"/>
+<text x="127" y="86" text-anchor="middle" font-size="20" font-weight="700" fill="#5eead4">Report approuvé</text>
+<text x="127" y="120" text-anchor="middle" font-size="20" fill="#e7e9ee">Solde mémorisé</text>
+</g>
+<g data-region="changed">
+<rect x="262" y="52" width="222" height="98" rx="10" fill="none" stroke="rgba(255,255,255,0.20)"/>
+<text x="373" y="86" text-anchor="middle" font-size="20" font-weight="700" fill="#5eead4">Paiement partiel</text>
+<text x="373" y="120" text-anchor="middle" font-size="20" fill="#e7e9ee">Solde réduit</text>
+</g>
+<path d="M127 150 V174 H250 M373 150 V174 H250 V188 M245 182 L250 188 L255 182" stroke="#5eead4" stroke-width="2" fill="none"/>
+<g data-region="comparison">
+<rect x="40" y="192" width="420" height="54" rx="10" fill="none" stroke="#ff4d87"/>
+<text x="250" y="225" text-anchor="middle" font-size="20" font-weight="700" fill="#ff4d87">Soldes différents : report annulé</text>
+</g>
+<path d="M250 246 V267 M245 261 L250 267 L255 261" stroke="#ff4d87" stroke-width="2" fill="none"/>
+<g data-region="debit">
+<rect x="16" y="272" width="468" height="62" rx="10" fill="none" stroke="rgba(255,255,255,0.20)"/>
+<text x="250" y="296" text-anchor="middle" font-size="20" font-weight="700" fill="#e7e9ee">Prélèvement du solde restant</text>
+<text x="250" y="321" text-anchor="middle" font-size="20" fill="#e7e9ee">ou tentative à l’échéance initiale</text>
+</g>
+</svg>

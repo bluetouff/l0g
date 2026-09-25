@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" role="img" aria-labelledby="ia5-fr-fig-title ia5-fr-fig-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="350" fill="#0b0d10"/>
+<title id="ia5-fr-fig-title">Les données changent d’usage, le rôle change</title>
+<desc id="ia5-fr-fig-desc">Cas d’un prestataire initialement sous-traitant. Pour la mission du client, il suit ses instructions. En réutilisant les données pour sa propre finalité, il devient responsable de ce nouveau traitement. La licéité de cette réutilisation doit être examinée séparément.</desc>
+<g data-region="input"><rect x="70" y="12" width="360" height="66" rx="10" fill="#121419" stroke="rgba(255,255,255,0.20)"/><text x="250" y="53" text-anchor="middle" font-size="24" font-weight="700" fill="#e7e9ee">Données confiées</text></g>
+<path d="M250 78 V98 H125 V118 M250 98 H375 V118 M119 111 L125 118 L131 111 M369 111 L375 118 L381 111" fill="none" stroke="#8b909b" stroke-width="2"/>
+<g data-region="client"><rect x="12" y="126" width="226" height="152" rx="10" fill="#121419" stroke="#5eead4"/><text x="125" y="158" text-anchor="middle" font-size="20" fill="#8b909b">Finalité du client</text><text x="125" y="207" text-anchor="middle" font-size="24" font-weight="700" fill="#5eead4">Sous-traitant</text><text x="125" y="244" text-anchor="middle" font-size="20" fill="#e7e9ee">pour cette mission</text></g>
+<g data-region="reuse"><rect x="262" y="126" width="226" height="152" rx="10" fill="#121419" stroke="#ff4d87"/><text x="375" y="158" text-anchor="middle" font-size="20" fill="#8b909b">Finalité propre</text><text x="375" y="195" text-anchor="middle" font-size="24" font-weight="700" fill="#ff4d87">Responsable</text><text x="375" y="223" text-anchor="middle" font-size="20" fill="#e7e9ee">du traitement</text><text x="375" y="256" text-anchor="middle" font-size="20" fill="#e7e9ee">pour ce nouvel usage</text></g>
+<text x="250" y="320" text-anchor="middle" font-size="22" font-weight="700" fill="#e7e9ee">Un rôle à qualifier pour chaque usage.</text>
+</svg>

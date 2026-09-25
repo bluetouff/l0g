@@ -2,18 +2,20 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { scpiEditions } from '../config/scpi-publication.mjs';
+import { recouvrementBook } from '../config/ia-recouvrement-publication.mjs';
 import { commerceTracesBook } from '../config/commerce-traces-publication.mjs';
 
 interface Props {
   headingLevel?: 'h2' | 'h3';
   lang?: 'fr' | 'en';
-  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity' | 'e-invoicing' | 'digital-identity' | 'oil-trading' | 'scpi' | 'commerce-traces';
+  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity' | 'e-invoicing' | 'digital-identity' | 'oil-trading' | 'scpi' | 'commerce-traces' | 'ia-recouvrement';
   showAllPublicationsLink?: boolean;
 }
 
 const { headingLevel = 'h2', lang = 'fr', publication = 'epstein', showAllPublicationsLink = false } = Astro.props;
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
+const isRecouvrement = !isEnglish && publication === 'ia-recouvrement';
 const isCommerceTraces = !isEnglish && publication === 'commerce-traces';
 const isOil = publication === 'oil-trading';
 const isScpi = publication === 'scpi';
@@ -23,7 +25,7 @@ const isDigitalIdentity = !isEnglish && publication === 'digital-identity';
 const isDigitalEuro = publication === 'digital-euro';
 const isWaterElectricity = publication === 'water-electricity';
 const isEInvoicing = publication === 'e-invoicing';
-const publicationUrl = isCommerceTraces ? commerceTracesBook.path : isScpi ? scpi.path : isOil ? isEnglish ? '/en/publications/banking-on-oil/' : '/publications/les-banquiers-du-baril/' : isDigitalIdentity
+const publicationUrl = isRecouvrement ? recouvrementBook.path : isCommerceTraces ? commerceTracesBook.path : isScpi ? scpi.path : isOil ? isEnglish ? '/en/publications/banking-on-oil/' : '/publications/les-banquiers-du-baril/' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone/'
   : isEInvoicing
   ? isEnglish ? '/en/publications/great-e-invoicing-toll/' : '/publications/grand-peage-facture/'
@@ -36,7 +38,7 @@ const publicationUrl = isCommerceTraces ? commerceTracesBook.path : isScpi ? scp
   : isEnglish
     ? '/en/publications/epsteins-money/'
     : '/publications/l-argent-d-epstein/';
-const epubFile = isCommerceTraces ? commerceTracesBook.epub.split('/').at(-1)! : isScpi ? scpi.epub.split('/').at(-1)! : isOil ? isEnglish ? 'banking-on-oil-l0g.epub' : 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
+const epubFile = isRecouvrement ? recouvrementBook.epub.split('/').at(-1)! : isCommerceTraces ? commerceTracesBook.epub.split('/').at(-1)! : isScpi ? scpi.epub.split('/').at(-1)! : isOil ? isEnglish ? 'banking-on-oil-l0g.epub' : 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
   ? 'votre-identite-dans-un-telephone-enquete-l0g.epub'
   : isEInvoicing
   ? isEnglish ? 'great-e-invoicing-toll-investigation-l0g.epub' : 'grand-peage-facture-enquete-l0g.epub'
@@ -50,7 +52,7 @@ const epubFile = isCommerceTraces ? commerceTracesBook.epub.split('/').at(-1)! :
     ? 'epsteins-money-l0g.epub'
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
-const coverUrl = isCommerceTraces ? commerceTracesBook.cover : isScpi ? scpi.cover : isOil ? isEnglish ? '/publications/banking-on-oil-cover.jpg' : '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
+const coverUrl = isRecouvrement ? recouvrementBook.cover : isCommerceTraces ? commerceTracesBook.cover : isScpi ? scpi.cover : isOil ? isEnglish ? '/publications/banking-on-oil-cover.jpg' : '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone-cover.jpg'
   : isEInvoicing
   ? isEnglish ? '/publications/great-e-invoicing-toll-cover.png' : '/publications/grand-peage-facture-cover.png'
@@ -66,7 +68,15 @@ const coverUrl = isCommerceTraces ? commerceTracesBook.cover : isScpi ? scpi.cov
 const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
-const copy = isCommerceTraces ? {
+const copy = isRecouvrement ? {
+  coverLabel: 'Découvrir L’IA vous demande de payer', coverAlt: recouvrementBook.title,
+  meta: '// enquête illustrée · septembre 2026', titleLead: 'L’IA vous demande', titleAccent: 'de payer',
+  deck: recouvrementBook.subtitle,
+  description: 'Les six volets de la série, des décisions qui précèdent la relance aux moyens de faire corriger le dossier. Avec une introduction et une conclusion originales.',
+  factsLabel: 'Contenu de l’édition',
+  facts: [{ value: '6', label: 'chapitres' }, { value: '9', label: 'schémas' }, { value: formattedSize, label: 'téléchargement' }, { value: 'CC BY 4.0', label: 'licence' }],
+  discover: 'Découvrir le livre', downloadLabel: 'Télécharger l’EPUB', fileName: epubFile,
+} : isCommerceTraces ? {
   coverLabel: 'Découvrir Le commerce de nos traces', coverAlt: commerceTracesBook.title,
   meta: '// enquête illustrée · septembre 2026', titleLead: 'Le commerce', titleAccent: 'de nos traces',
   deck: commerceTracesBook.subtitle,
@@ -225,7 +235,7 @@ const copy = isCommerceTraces ? {
     };
 ---
 
-<article class:list={['publication-spotlight', { 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing, 'publication-spotlight--identity': isDigitalIdentity }]}>
+<article class:list={['publication-spotlight', { 'publication-spotlight--recouvrement': isRecouvrement, 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing, 'publication-spotlight--identity': isDigitalIdentity }]}>
   {isDigitalIdentity && (
     <a class="publication-teaser" href={publicationUrl} aria-label="Découvrir les quatre tableaux visuels de l’enquête">
       <img
@@ -241,8 +251,8 @@ const copy = isCommerceTraces ? {
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
-      srcset={isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? [320, 640, 960].map((width) => `${coverUrl.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ") : undefined}
-      sizes={isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? "(max-width: 640px) 140px, 200px" : undefined}
+      srcset={isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? [320, 640, 960].map((width) => `${coverUrl.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ") : undefined}
+      sizes={isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? "(max-width: 640px) 140px, 200px" : undefined}
       width="1024"
       height="1638"
       alt={copy.coverAlt}
@@ -279,6 +289,7 @@ const copy = isCommerceTraces ? {
 </article>
 
 <style>
+  .publication-spotlight.publication-spotlight--recouvrement { --publication-card-accent: var(--color-signal); }
   .publication-spotlight {
     --publication-card-accent: var(--color-amber);
     display: grid;
