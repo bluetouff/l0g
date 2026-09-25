@@ -13,7 +13,7 @@ sourceUpdatedDate: '2026-09-24T16:56:18+02:00'
 
 **When AI asks you to pay · Part 3**
 
-*Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 2: results](/en/analysis/ai-debt-collection-2-performance-claims/).*
+*Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 2: results](/en/analysis/ai-debt-collection-2-performance-claims/) · [Part 4: correcting the record](/en/analysis/ai-debt-collection-4-correcting-the-record/).*
 
 **Identifying someone in difficulty can open a route to support. But the same classification can help decide which conversations are automated. Ophelos’s technical documentation, findings from the UK financial regulator and French data-protection guidance reveal the decisions between a personal disclosure, an alert and actual assistance.**
 

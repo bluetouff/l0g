@@ -189,6 +189,7 @@ function firstMeaningfulBlock(markdown: string) {
     .replace(/```[\s\S]*?```/g, '\n')
     .split(/\n{2,}/)
     .map((block) => block.trim())
+    .filter((block) => !isNavigationFragment(block))
     .map(stripMarkdown)
     .filter((block) => block.length > 80 && !/^tags?\b/i.test(block))
     .at(0);
