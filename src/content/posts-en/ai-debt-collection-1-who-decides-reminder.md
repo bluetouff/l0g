@@ -13,7 +13,7 @@ sourceUpdatedDate: '2026-09-24T11:04:57+02:00'
 
 **When AI asks you to pay · Part 1**
 
-*Read also: [Part 2: results](/en/analysis/ai-debt-collection-2-performance-claims/) · [Part 3: support](/en/analysis/ai-debt-collection-3-asking-for-help/) · [Part 4: correcting the record](/en/analysis/ai-debt-collection-4-correcting-the-record/).*
+*Read also: [Part 2: results](/en/analysis/ai-debt-collection-2-performance-claims/) · [Part 3: support](/en/analysis/ai-debt-collection-3-asking-for-help/) · [Part 4: correcting the record](/en/analysis/ai-debt-collection-4-correcting-the-record/) · [Part 5: contracts and accountability](/en/analysis/ai-debt-collection-5-contracts-accountability/).*
 
 On page 7 of its French privacy notice, Intrum Corporate describes automated scoring that can inform whether a debt file should be referred for judicial recovery. Automation is therefore described as operating before a message reaches the debtor: it can help determine what happens to the case. <a href="#ia1-en-s01" aria-label="Source 1">[1]</a>
 

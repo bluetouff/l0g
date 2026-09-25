@@ -15,7 +15,7 @@ quickTake:
 
 **L’IA vous demande de payer · Volet 3**
 
-*Lire aussi : [Volet 1 : décisions](/posts/ia-recouvrement-1-qui-decide-relance/) · [Volet 2 : résultats](/posts/ia-recouvrement-2-gains-annonces/) · [Volet 4 : corriger le dossier](/posts/ia-recouvrement-4-corriger-dossier/).*
+*Lire aussi : [Volet 1 : décisions](/posts/ia-recouvrement-1-qui-decide-relance/) · [Volet 2 : résultats](/posts/ia-recouvrement-2-gains-annonces/) · [Volet 4 : corriger le dossier](/posts/ia-recouvrement-4-corriger-dossier/) · [Volet 5 : contrats et responsabilités](/posts/ia-recouvrement-5-contrats-responsabilites/).*
 
 **Repérer une personne en difficulté peut lui ouvrir l’accès à une aide. Mais le classement sert aussi à décider quels échanges seront automatisés. Les documents d’Ophelos, les observations du régulateur britannique et les règles françaises de protection des données permettent de suivre ce qui se joue entre une confidence, une alerte et une prise en charge.**
 

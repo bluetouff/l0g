@@ -14,7 +14,7 @@ sourceUpdatedDate: '2026-09-25T08:00:07+02:00'
 
 **When AI asks you to pay · Part 4**
 
-*Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 2: results](/en/analysis/ai-debt-collection-2-performance-claims/) · [Part 3: asking for help](/en/analysis/ai-debt-collection-3-asking-for-help/).*
+*Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 2: results](/en/analysis/ai-debt-collection-2-performance-claims/) · [Part 3: asking for help](/en/analysis/ai-debt-collection-3-asking-for-help/) · [Part 5: contracts and accountability](/en/analysis/ai-debt-collection-5-contracts-accountability/).*
 
 **A payment reminder can arrive after the bill has been paid. A dispute can be acknowledged without the underlying record being corrected. Drawing on collectors’ published procedures, a documented US case and French law, this fourth instalment follows the route from a customer’s message to the operations that must take it into account.**
 
