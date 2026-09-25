@@ -3,9 +3,10 @@ title: "Yanbu: why France wants to protect Saudi Arabia’s oil route"
 seoTitle: "Yanbu: France, the Houthis and the oil route | l0g"
 description: "France has announced military protection for Yanbu. The routes to Europe, exposure to fuel supplies, Houthi threats and conditional economic scenarios."
 pubDate: 2026-09-25T20:44:00+02:00
+updatedDate: 2026-09-25T22:02:00+02:00
 tags: ["oil", "Yanbu", "Saudi Arabia", "France", "Red Sea", "geopolitics", "fuel"]
 sourceArticle: "yanbu-france-houthis-route-petrole"
-sourceUpdatedDate: 2026-09-25T20:44:00+02:00
+sourceUpdatedDate: 2026-09-25T22:02:00+02:00
 draft: false
 ogImage: "/illustrations/news/yanbu-routes-petrole-v1.jpg"
 ---
@@ -21,6 +22,8 @@ On the evening of **21 September**, a French diplomatic source had already said 
 On **22 September**, Reuters reported a low-rate restart of the East-West pipeline, citing informed sources. Its updated report dates the shutdown to **11 September**, following attacks that Saudi Arabia attributed to Iraqi militias. [Reuters](https://www.marketscreener.com/news/saudi-arabia-restarts-east-west-oil-pipeline-to-resume-exports-from-yanbu-sources-say-ce785ad8db81f327)
 
 The initial restart therefore preceded Macron’s announcement by two days. Saudi Arabia’s attribution of the pipeline attacks also needs to remain distinct from operations claimed by the Houthis in Yemen.
+
+On **24 September**, Reuters added a crucial operational detail: crude was flowing towards coastal refineries again, but **tanker loadings at Yanbu had yet to resume**, according to industry sources and shipping data. Aramco was rebuilding the volumes needed to restart deliveries. The report separates the pipeline’s restart from the recovery of exports. [Reuters, via Baird Maritime](https://www.bairdmaritime.com/shipping/tankers/yanbu-tanker-loadings-yet-to-resume-despite-saudi-pipeline-restart)
 
 The [official Élysée page](https://www.elysee.fr/emmanuel-macron/2026/09/24/interview-du-president-de-la-republique-sur-tf1-et-france-2) confirms the television interview’s date. Personnel numbers, specific systems, operational readiness and the mission’s cost remain to be documented. Its effectiveness will depend on those resources and the interruptions they actually prevent.
 
@@ -72,13 +75,24 @@ This bypass concerns oil. Liquefied natural gas requires specialised liquefactio
 
 ## France also buys oil that has already been refined
 
-One figure might make Yanbu look peripheral, but it needs its proper scope. In **provisional 2025 data** published by Insee, Saudi Arabia accounts for **2.4% of French crude imports**. This mass-based series assigns oil to the country where it was extracted. It also includes condensates, other refinery feedstocks and the non-bio share of additives. It does not identify the loading port. [Insee, using SDES data](https://www.insee.fr/fr/statistiques/2119697)
+French customs data available on 25 September cover **January to July 2026**. Over those seven months, France imported approximately **810,166 tonnes of Saudi crude**, compared with **725,400 tonnes** in the same period of 2025, an increase of **11.7%**. Imports of a major category of ultra-low-sulphur gasoil moved in the opposite direction, falling **36.0%** to **1,829,749 tonnes**. These changes describe two specific trade flows; they do not measure Saudi Arabia’s share of total French consumption. [French Customs, country data by CN8 product code](https://lekiosque.finances.gouv.fr/site_fr/telechargement/telechargement_pays.asp)
+
+| Million tonnes | Jan–Jul 2025 | Jan–Jul 2026 |
+| --- | ---: | ---: |
+| Crude oil | 0.725 | 0.810 |
+| Selected gasoil | 2.858 | 1.830 |
+
+Source and calculation: French Customs file `PAYS_SA_IMP.CSV`, data through July 2026, using the January–July cumulative mass columns, dividing kilograms by 1,000 and rounding to whole tonnes. Crude is code **27090090**, excluding natural gas condensates. Gasoil is code **27101944**, with sulphur content no higher than **0.001%** by mass; its definition is unchanged between 2025 and 2026. This category covers only part of refined-product imports. Percentage changes use unrounded figures for matching months and product codes. [Customs, Saudi Arabia download](https://lekiosque.finances.gouv.fr/download_2.asp?rep=/fichiers/Telecharge&fic=Pays_SA.zip), [Eurostat, crude definition](https://ec.europa.eu/eurostat/fr/web/products-eurostat-news/w/ddn-20260325-3), [Idescat, gasoil code correspondence](https://www.idescat.cat/classificacions/?id=nc-2025-ca&tc=6&v0=3&v3=27101944)
+
+The monthly breakdown adds another detail: this extract records no mass for that crude category in **June or July 2026**, and none for that gasoil category in **July**. These monthly observations are subject to revision. They do not establish September arrivals or purchases routed through other trading partners. [French Customs](https://lekiosque.finances.gouv.fr/site_fr/telechargement/telechargement_pays.asp)
+
+For the latest complete calendar year, **provisional 2025 data** published by Insee put Saudi Arabia’s share at **2.4% of French crude imports**. This mass-based series assigns oil to the country where it was extracted. It also includes condensates, other refinery feedstocks and the non-bio share of additives, making its scope broader than the customs crude code above. It does not identify the loading port. [Insee, using SDES data](https://www.insee.fr/fr/statistiques/2119697)
 
 France also imports products that have already been processed. The provisional French energy balance attributes **14% of refined petroleum product imports in 2025** to Saudi Arabia. That is a different category from crude delivered to refineries. [SDES, page 2](https://www.statistiques.developpement-durable.gouv.fr/media/9287/download?inline=)
 
 The two percentages should not be added or divided to manufacture a dependency index. Their denominators are different. The SDES sentence giving country shares of refined-product imports does not specify the weighting unit; the reported share is reproduced here without an additional conversion. Above all, **14% of refined-product imports is not 14% of French fuel consumption**.
 
-Refined-product purchases therefore widen France’s exposure. These annual series describe the origin of supplies in 2025. Measuring the proportion routed through Yanbu in September 2026 would require tracking cargoes to their destination.
+Refined-product purchases therefore widen France’s exposure. The 2025 shares provide historical annual benchmarks, while customs tonnages update two flows for part of 2026. Measuring the proportion routed through Yanbu in September would require tracking cargoes to their destination.
 
 A central question therefore remains unresolved: how much oil loaded at Yanbu now reaches France, either directly or through another country? The public material assembled here does not support a verified percentage. Treating all Saudi-origin French imports as cargoes shipped through Yanbu would be an unsupported shortcut.
 
@@ -119,6 +133,10 @@ The human consequences also extend far beyond fuel prices. In its **21 September
 Protecting infrastructure and resolving a conflict address different problems. Under some conditions, the first can preserve deliveries without ending the fighting. A durable recovery in commercial confidence could therefore depend on credible political commitments as well as successful interceptions.
 
 ## From pipeline throughput to deliveries
+
+There is also a **2026** reading for Saudi exports: JODI’s **22 September** update covers July. In this series reported by the kingdom, crude exports averaged **4.125 million barrels a day in July**, compared with **3.994 million in June** and **7.276 million in February**, rounded. These monthly averages cover all destinations and export routes; they do not isolate Yanbu or French deliveries. The data are subject to revision, and JODI flags these observations as not assessed for comparability. [JODI update](https://www.jodidata.org/oil/database/customisable-charts.aspx), [2026 primary series](https://www.jodidata.org/_resources/files/downloads/oil-data/annual-csv/primary/primaryyear2026.csv)
+
+For the East-West route, Reuters reported on **22 September** that Saudi Arabia had been rerouting approximately **4 million barrels a day towards Yanbu before the shutdown**. Aramco was seeking to restore that rate after the low-rate restart. It remained a recovery target, while the 24 September report described tanker loadings as still suspended. [Reuters, 22 September](https://www.marketscreener.com/news/saudi-arabia-restarts-east-west-oil-pipeline-to-resume-exports-from-yanbu-sources-say-ce785ad8db81f327), [24 September](https://www.bairdmaritime.com/shipping/tankers/yanbu-tanker-loadings-yet-to-resume-despite-saudi-pipeline-restart)
 
 Aramco says the East-West pipeline reached its maximum capacity of **7 million barrels a day in the first quarter of 2026**, in results published on **10 May**. That is the operator’s account of an earlier period, not a September flow reading or additional supply available to importers. [Aramco](https://www.aramco.com/en/news-media/news/2026/aramco-announces-first-quarter-2026-results)
 
@@ -186,7 +204,7 @@ Unreliable loading windows, cancellations or slower vessel rotations would be re
 
 An outage affecting the port’s supply or infrastructure required for shipment again reduces accessible volumes. Protecting one perimeter would not be sufficient if the binding constraint lay elsewhere. Buyers would seek replacements and might draw on inventories.
 
-Alternative routes remain available: Reuters documented Saudi Gulf loadings and passages through Hormuz on 21 September. [Reuters](https://economictimes.indiatimes.com/news/international/saudi-arabia/saudi-arabia-ramps-up-gulf-oil-exports-after-pipeline-attack-data-shows/articleshow/134394641.cms) A broader recovery on that route could offset some disruption on the Red Sea side. Its scale remains to be measured.
+Alternative routes remain available: Reuters documented Saudi Gulf loadings and passages through Hormuz on 21 September. [Reuters](https://economictimes.indiatimes.com/news/international/saudi-arabia/saudi-arabia-ramps-up-gulf-oil-exports-after-pipeline-attack-data-shows/articleshow/134394641.cms) On **25 September**, it reported Kpler estimates putting Saudi crude exports through Hormuz on track for **3.6 million barrels a day in September**, compared with approximately **0.9 million in August**. With September still incomplete, the estimate remains provisional. Ship-to-ship transfers off Oman were reaching capacity, according to the sources interviewed. Rerouting can offset some lost Red Sea volumes while extending the delivery chain. [Reuters, via MarineLink](https://www.marinelink.com/news/saudi-oil-surge-pushes-gulf-oman-543259)
 
 ### An incident directly involves French assets
 
@@ -206,7 +224,7 @@ Our [guide to the oil market](/en/guides/read-oil-market/) connects inventories,
 
 ## Sources and limitations
 
-Documentary analysis as of **25 September 2026**. French trade figures cover **2025 and remain provisional**. The IEA market estimates concern August and were published on 11 September. No complete daily series of Yanbu-to-France cargoes, independent damage audit or operational record of the French force was obtained. Military statements are attributed to their authors. The fleet example is fictional and is not a forecast.
+Documentary analysis updated on **25 September 2026**. French customs volumes cover **January to July 2026**, compared with the same months of 2025. The annual SDES/Insee shares concern **provisional 2025 data** with a different scope. JODI’s national crude-export series runs through **July 2026**, in its 22 September update. The IEA estimates concern August, published on 11 September; Kpler’s Hormuz estimate concerns an incomplete September. No complete daily series of Yanbu-to-France cargoes, independent damage audit or operational record of the French force was obtained. Military statements are attributed to their authors. The fleet example is fictional and is not a forecast.
 
 1. [Élysée, Interview du Président de la République sur TF1 et France 2](https://www.elysee.fr/emmanuel-macron/2026/09/24/interview-du-president-de-la-republique-sur-tf1-et-france-2) (2026-09-24).
 2. [Reuters, via Al-Monitor, France to send military to protect Saudi Arabia on Red Sea oil route, Macron says](https://www.al-monitor.com/originals/2026/09/france-send-military-protect-saudi-arabia-red-sea-oil-route-macron-says) (2026-09-24).
@@ -227,3 +245,7 @@ Documentary analysis as of **25 September 2026**. French trade figures cover **2
 17. [IOM, Displacement Tracking Matrix, Yemen: Displacement Caused by Escalation in the West Coast, Update #9](https://dtm.iom.int/reports/yemen-displacement-caused-escalation-west-coast-update-9-21-september-2026) (2026-09-21).
 18. [Reuters, via The Economic Times, Saudi Arabia ramps up Gulf oil exports after pipeline attack, shipping data shows](https://economictimes.indiatimes.com/news/international/saudi-arabia/saudi-arabia-ramps-up-gulf-oil-exports-after-pipeline-attack-data-shows/articleshow/134394641.cms) (2026-09-21).
 19. [U.S. Energy Information Administration, Red Sea attacks increase shipping times and freight rates](https://www.eia.gov/todayinenergy/detail.php?id=61363) (2024-02-01).
+20. [French Customs, country data by CN8 product code, Saudi Arabia file](https://lekiosque.finances.gouv.fr/site_fr/telechargement/telechargement_pays.asp) (July 2026 results, accessed 2026-09-25).
+21. [JODI, oil database and September update](https://www.jodidata.org/oil/database/customisable-charts.aspx) (2026-09-22); [2026 primary CSV](https://www.jodidata.org/_resources/files/downloads/oil-data/annual-csv/primary/primaryyear2026.csv), Saudi Arabia, crude oil, exports, thousand barrels per day.
+22. [Reuters, via Baird Maritime, Yanbu tanker loadings yet to resume despite Saudi pipeline restart](https://www.bairdmaritime.com/shipping/tankers/yanbu-tanker-loadings-yet-to-resume-despite-saudi-pipeline-restart) (2026-09-24).
+23. [Reuters, via MarineLink, Saudi Oil Surge Pushes Gulf of Oman Transfers to Capacity](https://www.marinelink.com/news/saudi-oil-surge-pushes-gulf-oman-543259) (2026-09-25).

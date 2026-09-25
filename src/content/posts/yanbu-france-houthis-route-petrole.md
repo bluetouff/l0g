@@ -3,6 +3,7 @@ title: "Yanbu : pourquoi la France veut protéger le pétrole saoudien"
 seoTitle: "Yanbu : France, Houthis et route du pétrole | l0g"
 description: "La France annonce une protection militaire de Yanbu. Routes vers l’Europe, exposition aux carburants, menaces houthies et scénarios économiques."
 pubDate: 2026-09-25T20:44:00+02:00
+updatedDate: 2026-09-25T22:02:00+02:00
 tags: ["pétrole", "Yanbu", "Arabie saoudite", "France", "mer Rouge", "géopolitique", "carburants"]
 draft: false
 ogImage: "/illustrations/news/yanbu-routes-petrole-v1.jpg"
@@ -19,6 +20,8 @@ Le **21 septembre au soir**, une source diplomatique française avait déjà fai
 Le **22 septembre**, Reuters signalait une reprise à faible débit de l’oléoduc Est-Ouest, selon des sources informées. Dans sa version actualisée, l’agence situe l’arrêt au **11 septembre**, après des attaques attribuées par Riyad à des milices irakiennes. [Reuters](https://www.marketscreener.com/news/saudi-arabia-restarts-east-west-oil-pipeline-to-resume-exports-from-yanbu-sources-say-ce785ad8db81f327)
 
 La reprise initiale précède donc de deux jours l’annonce présidentielle. L’attribution saoudienne des attaques contre la conduite doit également rester distincte des opérations revendiquées par les Houthis depuis le Yémen.
+
+Le **24 septembre**, Reuters apportait une précision décisive : le brut circulait de nouveau vers les raffineries de la côte, mais **les chargements de pétroliers à Yanbu n’avaient pas encore repris**, selon ses sources industrielles et les données de suivi maritime. Aramco reconstituait les volumes nécessaires à la reprise des livraisons. Ce point de situation distingue le redémarrage de la conduite du rétablissement des exportations. [Reuters, via Baird Maritime](https://www.bairdmaritime.com/shipping/tankers/yanbu-tanker-loadings-yet-to-resume-despite-saudi-pipeline-restart)
 
 La [page officielle de l’Élysée](https://www.elysee.fr/emmanuel-macron/2026/09/24/interview-du-president-de-la-republique-sur-tf1-et-france-2) confirme la date de l’entretien télévisé. Les effectifs, les modèles exacts de systèmes, leur entrée en service et le coût de la mission restent à documenter. Son efficacité devra être appréciée à partir de ces moyens et des interruptions effectivement évitées.
 
@@ -70,13 +73,24 @@ Ce contournement concerne le pétrole. Le gaz naturel liquéfié demande des ins
 
 ## La France achète aussi du pétrole déjà raffiné
 
-Le chiffre qui pourrait faire paraître Yanbu secondaire est réel : selon la série **2025 provisoire** publiée par l’Insee, l’Arabie saoudite représente **2,4 % des importations françaises de brut**. Cette statistique, construite en tonnes, classe le pétrole selon le pays où il a été extrait. Elle inclut aussi les condensats, les autres produits à distiller et la part non biologique des additifs. Elle n’indique pas le port de chargement. [Insee, données SDES](https://www.insee.fr/fr/statistiques/2119697)
+Les données douanières disponibles au 25 septembre couvrent **janvier à juillet 2026**. Sur ces sept mois, la France a importé environ **810 166 tonnes de brut saoudien**, contre **725 400 tonnes** sur la même période de 2025, soit **+11,7 %**. Pour une grande catégorie de gazole à très faible teneur en soufre, les importations ont au contraire reculé de **36,0 %**, à **1 829 749 tonnes**. Ces évolutions décrivent deux flux précis ; elles ne donnent pas une part saoudienne dans l’ensemble de la consommation française. [Douanes, extraction par pays en NC8](https://lekiosque.finances.gouv.fr/site_fr/telechargement/telechargement_pays.asp)
+
+| Millions de tonnes | Jan.–juil. 2025 | Jan.–juil. 2026 |
+| --- | ---: | ---: |
+| Brut | 0,725 | 0,810 |
+| Gazole étudié | 2,858 | 1,830 |
+
+Source et calcul : fichier `PAYS_SA_IMP.CSV` des Douanes, résultats arrêtés à juillet 2026, colonnes de masses cumulées de janvier à juillet, kilogrammes divisés par 1 000 et résultats arrondis à la tonne. Le brut correspond au code **27090090**, hors condensats de gaz naturel ; le gazole au code **27101944**, teneur en soufre au plus égale à **0,001 %** en masse, dont la définition reste identique entre 2025 et 2026. Cette seule catégorie ne couvre pas tous les produits raffinés. Les variations sont calculées avant arrondi, sur les mêmes mois et les mêmes codes. [Douanes, fichier Arabie saoudite](https://lekiosque.finances.gouv.fr/download_2.asp?rep=/fichiers/Telecharge&fic=Pays_SA.zip), [Eurostat, définition du brut](https://ec.europa.eu/eurostat/fr/web/products-eurostat-news/w/ddn-20260325-3), [Idescat, correspondance du code gazole](https://www.idescat.cat/classificacions/?id=nc-2025-ca&tc=6&v0=3&v3=27101944)
+
+La ventilation mensuelle précise le tableau : dans cette extraction, aucune masse n’est enregistrée pour ce brut en **juin et juillet 2026**, ni pour cette catégorie de gazole en **juillet**. Ces observations mensuelles, révisables, ne renseignent ni les arrivages de septembre ni les achats transitant par d’autres partenaires. [Douanes](https://lekiosque.finances.gouv.fr/site_fr/telechargement/telechargement_pays.asp)
+
+Pour le dernier exercice annuel complet, la série **2025 provisoire** publiée par l’Insee attribue à l’Arabie saoudite **2,4 % des importations françaises de brut**. Cette statistique, construite en tonnes, classe le pétrole selon le pays où il a été extrait. Elle inclut aussi les condensats, les autres produits à distiller et la part non biologique des additifs. Son périmètre est donc plus large que celui du code douanier de brut ci-dessus. Elle n’indique pas le port de chargement. [Insee, données SDES](https://www.insee.fr/fr/statistiques/2119697)
 
 Mais la France importe également des produits déjà transformés. Le bilan énergétique provisoire du SDES attribue à l’Arabie saoudite **14 % des importations françaises de produits pétroliers raffinés en 2025**. C’est une autre catégorie que le brut destiné aux raffineries. [SDES, page 2](https://www.statistiques.developpement-durable.gouv.fr/media/9287/download?inline=)
 
 Ces deux parts ne doivent être ni additionnées ni divisées pour produire un indice de dépendance. Elles portent sur des paniers distincts. La phrase du SDES consacrée aux produits raffinés ne précise pas l’unité de pondération de sa ventilation par pays ; nous en reprenons la part publiée sans lui attribuer une conversion supplémentaire. Surtout, **14 % des importations de produits raffinés ne signifie pas 14 % de la consommation française de carburant**.
 
-Les achats de produits raffinés élargissent donc l’exposition française. Ces séries annuelles renseignent l’origine des approvisionnements en 2025 ; pour connaître la fraction qui transite par Yanbu en septembre 2026, il faudrait suivre les cargaisons jusqu’à leur destination.
+Les achats de produits raffinés élargissent donc l’exposition française. Les parts de 2025 servent de repères annuels historiques ; les tonnages douaniers actualisent deux flux sur une partie de 2026. Pour connaître la fraction qui transite par Yanbu en septembre, il faudrait suivre les cargaisons jusqu’à leur destination.
 
 Il subsiste donc une inconnue centrale : quels volumes effectivement chargés à Yanbu rejoignent aujourd’hui la France, directement ou après un passage par un autre pays ? Le dossier public réuni ici ne permet pas de donner un pourcentage vérifié. Présenter tout le pétrole saoudien importé comme du pétrole passé par Yanbu serait une approximation.
 
@@ -117,6 +131,10 @@ La dimension humaine ne se réduit pas au risque de hausse des carburants. Dans 
 La protection d’une infrastructure et la résolution du conflit répondent à des problèmes différents. La première peut, dans certaines conditions, maintenir des livraisons sans arrêter les combats. Un retour durable de la confiance commerciale pourrait donc dépendre aussi d’engagements politiques crédibles, au-delà du nombre d’attaques interceptées.
 
 ## Du débit de l’oléoduc aux livraisons
+
+Les exportations saoudiennes disposent également d’un relevé de **2026** : la mise à jour JODI du **22 septembre** porte sur juillet. Dans cette série déclarée par le royaume, les exportations de brut atteignent **4,125 millions de barils par jour en juillet**, contre **3,994 millions en juin** et **7,276 millions en février**, après arrondi. Ces moyennes mensuelles concernent toutes les destinations et sorties du pays ; elles n’isolent ni Yanbu ni les livraisons françaises. Les données sont révisables et leur comparabilité n’a pas été évaluée dans le codage JODI de ces observations. [JODI, mise à jour](https://www.jodidata.org/oil/database/customisable-charts.aspx), [série primaire 2026](https://www.jodidata.org/_resources/files/downloads/oil-data/annual-csv/primary/primaryyear2026.csv)
+
+Pour l’axe Est-Ouest, Reuters décrit le **22 septembre** un flux d’environ **4 millions de barils par jour détourné vers Yanbu avant l’arrêt**. Aramco cherchait à retrouver ce débit après le redémarrage à faible régime. Il s’agissait encore d’un objectif de reprise, et le point du 24 septembre signalait des chargements toujours interrompus. [Reuters, 22 septembre](https://www.marketscreener.com/news/saudi-arabia-restarts-east-west-oil-pipeline-to-resume-exports-from-yanbu-sources-say-ce785ad8db81f327), [24 septembre](https://www.bairdmaritime.com/shipping/tankers/yanbu-tanker-loadings-yet-to-resume-despite-saudi-pipeline-restart)
 
 Aramco indique que l’oléoduc Est-Ouest a atteint sa capacité maximale de **7 millions de barils par jour au premier trimestre 2026**, dans ses résultats publiés le **10 mai**. C’est une indication fournie par l’exploitant sur cette période, pas un relevé de septembre ni un volume supplémentaire disponible pour les importateurs. [Aramco](https://www.aramco.com/en/news-media/news/2026/aramco-announces-first-quarter-2026-results)
 
@@ -184,7 +202,7 @@ Les signaux seraient des fenêtres de chargement incertaines, des annulations ou
 
 Une indisponibilité de l’alimentation du port ou des infrastructures nécessaires à l’expédition réduit à nouveau les volumes accessibles. La protection d’un périmètre ne suffirait pas si la contrainte se trouve ailleurs dans la chaîne. Les acheteurs chercheraient alors des remplacements et pourraient puiser dans leurs stocks.
 
-Des solutions de repli subsistent : Reuters documentait le 21 septembre des chargements saoudiens côté Golfe et des passages par Ormuz. [Reuters](https://economictimes.indiatimes.com/news/international/saudi-arabia/saudi-arabia-ramps-up-gulf-oil-exports-after-pipeline-attack-data-shows/articleshow/134394641.cms) Une reprise plus large de cette route pourrait compenser une partie des difficultés côté mer Rouge. Son ampleur reste à mesurer.
+Des solutions de repli subsistent : Reuters documentait le 21 septembre des chargements saoudiens côté Golfe et des passages par Ormuz. [Reuters](https://economictimes.indiatimes.com/news/international/saudi-arabia/saudi-arabia-ramps-up-gulf-oil-exports-after-pipeline-attack-data-shows/articleshow/134394641.cms) Le **25 septembre**, l’agence rapporte une estimation Kpler plaçant les exportations saoudiennes de brut via Ormuz sur une trajectoire de **3,6 millions de barils par jour pour septembre**, contre environ **0,9 million en août**. Le mois n’étant pas terminé, cette estimation reste provisoire. Les transbordements entre navires au large d’Oman arrivent toutefois à saturation, selon les sources interrogées. Cette réorientation peut compenser une partie des volumes perdus en mer Rouge tout en allongeant la chaîne logistique. [Reuters, via MarineLink](https://www.marinelink.com/news/saudi-oil-surge-pushes-gulf-oman-543259)
 
 ### Un incident implique directement les moyens français
 
@@ -204,7 +222,7 @@ Pour approfondir cette mécanique, notre [guide du marché pétrolier](/guides/l
 
 ## Sources et limites
 
-Analyse documentaire arrêtée au **25 septembre 2026**. Les données françaises portent sur **2025 et restent provisoires** ; les données de marché de l’AIE portent sur août et ont été publiées le 11 septembre. Aucune série quotidienne complète des cargaisons de Yanbu vers la France, aucun audit des dégâts et aucun relevé opérationnel du dispositif français n’ont été obtenus. Les déclarations militaires sont attribuées à leurs auteurs. L’exemple de flotte est fictif et ne sert pas de prévision.
+Analyse documentaire actualisée au **25 septembre 2026**. Les volumes douaniers français couvrent **janvier à juillet 2026**, comparés aux mêmes mois de 2025 ; les parts annuelles SDES/Insee portent sur **2025 provisoire** et un autre périmètre. Les exportations nationales de brut JODI vont jusqu’à **juillet 2026**, dans la mise à jour du 22 septembre. Les données AIE portent sur août, publiées le 11 septembre ; l’estimation Kpler via Ormuz concerne un mois de septembre encore incomplet. Aucune série quotidienne complète des cargaisons de Yanbu vers la France, aucun audit des dégâts et aucun relevé opérationnel du dispositif français n’ont été obtenus. Les déclarations militaires sont attribuées à leurs auteurs. L’exemple de flotte est fictif et ne sert pas de prévision.
 
 1. [Élysée, Interview du Président de la République sur TF1 et France 2](https://www.elysee.fr/emmanuel-macron/2026/09/24/interview-du-president-de-la-republique-sur-tf1-et-france-2) (2026-09-24).
 2. [Reuters, reproduit par Al-Monitor, France to send military to protect Saudi Arabia on Red Sea oil route, Macron says](https://www.al-monitor.com/originals/2026/09/france-send-military-protect-saudi-arabia-red-sea-oil-route-macron-says) (2026-09-24).
@@ -225,3 +243,7 @@ Analyse documentaire arrêtée au **25 septembre 2026**. Les données française
 17. [OIM, Displacement Tracking Matrix, Yemen: Displacement Caused by Escalation in the West Coast, Update #9](https://dtm.iom.int/reports/yemen-displacement-caused-escalation-west-coast-update-9-21-september-2026) (2026-09-21).
 18. [Reuters, via The Economic Times, Saudi Arabia ramps up Gulf oil exports after pipeline attack, shipping data shows](https://economictimes.indiatimes.com/news/international/saudi-arabia/saudi-arabia-ramps-up-gulf-oil-exports-after-pipeline-attack-data-shows/articleshow/134394641.cms) (2026-09-21).
 19. [U.S. Energy Information Administration, Red Sea attacks increase shipping times and freight rates](https://www.eia.gov/todayinenergy/detail.php?id=61363) (2024-02-01).
+20. [Douanes françaises, données par pays en NC8, fichier Arabie saoudite](https://lekiosque.finances.gouv.fr/site_fr/telechargement/telechargement_pays.asp) (résultats de juillet 2026, consultés le 2026-09-25).
+21. [JODI, base pétrolière et mise à jour de septembre](https://www.jodidata.org/oil/database/customisable-charts.aspx) (2026-09-22) ; [CSV primaire 2026](https://www.jodidata.org/_resources/files/downloads/oil-data/annual-csv/primary/primaryyear2026.csv), Arabie saoudite, brut, exportations, milliers de barils par jour.
+22. [Reuters, via Baird Maritime, Yanbu tanker loadings yet to resume despite Saudi pipeline restart](https://www.bairdmaritime.com/shipping/tankers/yanbu-tanker-loadings-yet-to-resume-despite-saudi-pipeline-restart) (2026-09-24).
+23. [Reuters, via MarineLink, Saudi Oil Surge Pushes Gulf of Oman Transfers to Capacity](https://www.marinelink.com/news/saudi-oil-surge-pushes-gulf-oman-543259) (2026-09-25).
