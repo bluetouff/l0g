@@ -11,6 +11,8 @@ const articles = [
   '../src/content/posts-en/ai-debt-collection-4-correcting-the-record.md',
   '../src/content/posts/ia-recouvrement-5-contrats-responsabilites.md',
   '../src/content/posts-en/ai-debt-collection-5-contracts-accountability.md',
+  '../src/content/posts/ia-recouvrement-6-verifier-droits.md',
+  '../src/content/posts-en/ai-debt-collection-6-data-rights.md',
 ].map(path => readFileSync(new URL(path, import.meta.url), 'utf8'));
 const figures = articles.map(article => [...article.matchAll(/<svg\b[\s\S]*?<\/svg>/gu)].map(match => match[0]));
 const elements = tree => [tree, ...(tree.children ?? []).flatMap(elements)].filter(node => node.type === 'element');
@@ -55,8 +57,8 @@ async function geometry(svg) {
   }
 }
 
-test('debt correction and data reuse diagrams are compact, themed, accessible and fit their own panels', async () => {
-  assert.deepEqual(figures.map(set => set.length), [1, 1, 1, 1]);
+test('debt correction, data reuse and deadline diagrams are compact, themed, accessible and fit their own panels', async () => {
+  assert.deepEqual(figures.map(set => set.length), [1, 1, 1, 1, 1, 1]);
   for (const svg of figures.flat()) await geometry(svg);
 });
 
@@ -65,6 +67,8 @@ test('geometry rejects a long translated label and a label shifted outside its p
   await assert.rejects(geometry(figures[0][0].replace('x="127" y="86"', 'x="20" y="86"')));
   await assert.rejects(geometry(figures[2][0].replace('Finalité propre</text>', `${'W'.repeat(35)}</text>`)));
   await assert.rejects(geometry(figures[2][0].replace('x="375" y="195"', 'x="260" y="195"')));
+  await assert.rejects(geometry(figures[4][0].replace('Prolongation motivée</text>', `${'W'.repeat(35)}</text>`)));
+  await assert.rejects(geometry(figures[4][0].replace('x="88" y="298"', 'x="160" y="298"')));
 });
 
 test('static SVG contract rejects active markup, external assets and off-brand colors', () => {

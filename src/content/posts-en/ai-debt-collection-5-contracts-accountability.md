@@ -14,7 +14,7 @@ sourceUpdatedDate: '2026-09-25T10:50:27+02:00'
 
 **AI is asking you to pay · Part 5**
 
-*Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 2: performance claims](/en/analysis/ai-debt-collection-2-performance-claims/) · [Part 3: asking for help](/en/analysis/ai-debt-collection-3-asking-for-help/) · [Part 4: correcting the record](/en/analysis/ai-debt-collection-4-correcting-the-record/).*
+*Read also: [Part 1: decisions](/en/analysis/ai-debt-collection-1-who-decides-reminder/) · [Part 2: performance claims](/en/analysis/ai-debt-collection-2-performance-claims/) · [Part 3: asking for help](/en/analysis/ai-debt-collection-3-asking-for-help/) · [Part 4: correcting the record](/en/analysis/ai-debt-collection-4-correcting-the-record/) · [Part 6: data rights and remedies](/en/analysis/ai-debt-collection-6-data-rights/).*
 
 **Intrum’s French privacy information distinguishes between two roles. For activities including debt collection and debt purchasing, the company describes itself as a data controller. For other services, such as billing administration, it says it processes data on its clients’ instructions. The name on a payment reminder can therefore stay the same while the legal role changes.** <a href="https://www.intrum.fr/solutions-entreprises/a-propos-d-intrum/donnees-personnelles/" aria-label="Source 1">[1]</a>
 

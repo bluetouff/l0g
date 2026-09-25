@@ -18,7 +18,7 @@ quickTake:
 
 **L’IA vous demande de payer · Volet 4**
 
-*Lire aussi : [Volet 1 : décisions](/posts/ia-recouvrement-1-qui-decide-relance/) · [Volet 2 : résultats](/posts/ia-recouvrement-2-gains-annonces/) · [Volet 3 : appel à l’aide](/posts/ia-recouvrement-3-appel-aide/) · [Volet 5 : contrats et responsabilités](/posts/ia-recouvrement-5-contrats-responsabilites/).*
+*Lire aussi : [Volet 1 : décisions](/posts/ia-recouvrement-1-qui-decide-relance/) · [Volet 2 : résultats](/posts/ia-recouvrement-2-gains-annonces/) · [Volet 3 : appel à l’aide](/posts/ia-recouvrement-3-appel-aide/) · [Volet 5 : contrats et responsabilités](/posts/ia-recouvrement-5-contrats-responsabilites/) · [Volet 6 : données et recours](/posts/ia-recouvrement-6-verifier-droits/).*
 
 **Une relance peut arriver alors que la facture est déjà payée. Une contestation peut être reçue sans que le dossier soit corrigé. À partir des procédures publiées par les recouvreurs, d’un cas américain documenté et des règles françaises, ce quatrième volet examine le chemin entre le message du débiteur et les opérations qui doivent en tenir compte.**
 

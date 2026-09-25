@@ -1,0 +1,203 @@
+---
+title: 'L’IA vous demande de payer : ce que vous pouvez vérifier'
+seoTitle: 'Recouvrement par IA : données, droits et recours | l0g'
+description: 'Accéder au profil calculé, comprendre une décision et vérifier la créance : les droits utiles face au recouvrement
+  par IA, leurs limites et les démarches distinctes.'
+pubDate: '2026-09-25T12:14:02+02:00'
+updatedDate: '2026-09-25T12:14:02+02:00'
+tags: ["IA", "Recouvrement", "Données personnelles", "Finance", "Enquête"]
+draft: false
+ogImage: /illustrations/news/ia-recouvrement-droits-v1.jpg
+quickTake:
+  fact: La CJUE inclut parmi les données personnelles certaines appréciations calculées sur la disposition à payer.
+  importance: Accéder à un profil, comprendre une décision et contester une créance sont des démarches distinctes.
+  uncertainty: Aucun dossier individuel authentifié, entretien ou test de plateforme n’a été obtenu ou réalisé dans cette
+    enquête documentaire.
+---
+
+**L’IA vous demande de payer · Volet 6**
+
+*Lire aussi : [Volet 1 : décisions](/posts/ia-recouvrement-1-qui-decide-relance/) · [Volet 2 : résultats](/posts/ia-recouvrement-2-gains-annonces/) · [Volet 3 : appel à l’aide](/posts/ia-recouvrement-3-appel-aide/) · [Volet 4 : correction du dossier](/posts/ia-recouvrement-4-corriger-dossier/) · [Volet 5 : contrats et responsabilités](/posts/ia-recouvrement-5-contrats-responsabilites/).*
+
+**Une appréciation de votre disposition à payer peut être une donnée personnelle, même si vous ne l’avez jamais fournie. La Cour de justice de l’Union européenne l’a expressément indiqué dans son arrêt CRIF du 4 mai 2023. Le droit d’accès peut donc porter sur ce qu’une entreprise a calculé à votre sujet, et pas seulement sur votre nom, votre adresse ou les renseignements que vous lui avez transmis.** <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX%3A62021CJ0487" aria-label="Source 1">[1]</a>
+
+Ce point donne une prise concrète sur le recouvrement automatisé. PAIR Finance explique, dans sa présentation française, que la possibilité de joindre une personne et sa vitesse de réaction renseignent son système sur sa volonté de payer. L’entreprise décrit aussi une adaptation du canal, de la fréquence et du ton des communications. Cette description est celle du fournisseur. <a href="https://pairfinance.com/fr/intelligence-artificielle/" aria-label="Source 2">[2]</a>
+
+La différence entre ces deux documents est instructive. Le fournisseur décrit comment il interprète un comportement. Le juge rappelle que certaines interprétations produites sur une personne restent des données auxquelles elle peut accéder. Encore faut-il savoir quoi demander, et ne pas confondre cette démarche avec la contestation de la dette.
+
+Ce dernier volet examine les moyens de vérifier une relance en France, dans le cadre européen de protection des données. Les arrêts cités éclairent ces droits à partir de litiges dans d’autres secteurs ; ils ne constatent aucun manquement des plateformes étudiées ici.
+
+## Revenir à la dette
+
+Avant d’examiner le logiciel, il faut pouvoir reconstituer la somme. Qui se présente comme créancier ? Qui intervient pour son compte ? Quel contrat, quelle prestation ou quelle opération fonde la demande ? Quels paiements ont déjà été enregistrés ? L’article 1353 du Code civil impose à celui qui réclame l’exécution d’une obligation de la justifier ; celui qui soutient avoir payé doit, de son côté, justifier le paiement ou la cause de sa libération. Le dossier doit donc permettre de rapprocher la demande de ses pièces justificatives. <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042341" aria-label="Source 4">[4]</a>
+
+La présentation de la relance est elle-même encadrée. Pour les activités de recouvrement amiable pour autrui entrant dans le champ de l’article R124-1 du Code des procédures civiles d’exécution, une lettre doit notamment identifier le recouvreur et le créancier, indiquer le fondement de la demande et distinguer principal, intérêts et autres accessoires. Ses références et sa date d’envoi doivent être rappelées lors des démarches suivantes. Les professions soumises à un statut particulier appellent un examen distinct : ce régime ne doit pas être étendu mécaniquement à toute personne qui réclame un paiement. <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027015026" aria-label="Source 5">[5]</a> <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000025938360" aria-label="Source 6">[6]</a>
+
+Cette ventilation est utile quand un montant augmente au fil des messages. Un coût ne devient pas exigible parce qu’il apparaît sur un écran. Sans titre exécutoire, les frais de recouvrement restent en principe à la charge du créancier. L’article L111-8 prévoit notamment une exception pour les actes dont l’accomplissement lui est prescrit par la loi, et la possibilité de demander au juge de faire supporter certains frais nécessaires à un débiteur de mauvaise foi. Les dispositions législatives spéciales doivent aussi être prises en compte. <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028747701" aria-label="Source 7">[7]</a>
+
+Il faut enfin distinguer une demande amiable d’une mesure d’exécution forcée. Le vocabulaire d’une relance n’accorde pas les pouvoirs attachés à un titre exécutoire. À l’inverse, un véritable acte de procédure ne doit pas être traité comme une simple notification commerciale. La DGCCRF expose cette distinction dans sa fiche sur le recouvrement. <a href="https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/recouvrement-amiable-de-creances-les-regles-connaitre" aria-label="Source 20">[20]</a>
+
+Rapprocher les pièces et les montants permet aussi de situer l’origine d’une erreur : un paiement mal enregistré en amont peut affecter tout le traitement informatique qui suit.
+
+## Le profil que l’entreprise a construit
+
+Une société peut détenir des renseignements reçus d’un créancier, des échanges avec la personne et des appréciations issues de leur analyse. Dans l’affaire CRIF, la Cour retient une définition des données personnelles qui inclut les informations dérivées concernant une personne identifiée ou identifiable, notamment l’évaluation de sa solvabilité ou de sa disposition à payer. Le résultat du calcul n’échappe donc pas au droit d’accès au seul motif que l’entreprise l’a produit elle-même. <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX%3A62021CJ0487" aria-label="Source 1">[1]</a>
+
+La demande peut porter sur les données effectivement traitées concernant la personne, y compris les scores et appréciations s’ils existent. L’article 15 du règlement général sur la protection des données (RGPD) prévoit également des informations sur leurs finalités, leur source lorsqu’elles n’ont pas été recueillies auprès de la personne, leurs destinataires et leur conservation. <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3" aria-label="Source 3">[3]</a>
+
+La réponse doit permettre de comprendre les données. Une simple liste de catégories ne remplace pas leur communication. La Cour admet que des extraits, voire des documents entiers, puissent être indispensables à une copie intelligible. Elle ne consacre pas pour autant un droit indifférencié à tous les documents de l’entreprise : le droit porte sur les données, en tenant compte du contexte nécessaire et des droits d’autrui. <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX%3A62021CJ0487" aria-label="Source 1">[1]</a> <a href="https://www.cnil.fr/fr/repondre-une-demande-de-droit-dacces" aria-label="Source 10">[10]</a>
+
+Pour un dossier de recouvrement, cela invite à distinguer les faits des appréciations. Une date de réception est un événement. Un classement censé représenter une intention de payer est une interprétation. **Son exactitude et son rôle dans la suite du dossier appellent chacun une vérification.**
+
+Une demande ciblée peut porter sur les appréciations appliquées au dossier, leur signification et leur date lorsqu’elle est conservée, puis sur la manière dont elles ont été utilisées. Cette démarche proposée par l0g permet de partir des informations effectivement disponibles.
+
+## Une explication doit porter sur le cas concerné
+
+Le 27 février 2025, dans l’affaire Dun & Bradstreet Austria, la Cour a précisé l’explication due au titre de l’article 15, paragraphe 1 h), du RGPD. L’affaire concernait une évaluation automatisée de solvabilité utilisée pour refuser un contrat de téléphonie. La procédure et les principes effectivement appliqués doivent être décrits de façon à permettre à la personne de comprendre quelles données ont été utilisées et comment. Une formule mathématique communiquée seule n’y suffit pas. <a href="https://curia.europa.eu/jcms/upload/docs/application/pdf/2025-02/cp250022fr.pdf" aria-label="Source 9">[9]</a>
+
+Une présentation générale du produit et une explication individuelle n’ont donc pas la même valeur. Dire qu’un service utilise des données comportementales renseigne sur sa conception. Expliquer quelle donnée a pesé dans une décision concernant un dossier permet d’en discuter la pertinence. La Cour indique notamment qu’une explication de l’effet qu’aurait eu une variation des données peut être appropriée. <a href="https://curia.europa.eu/jcms/upload/docs/application/pdf/2025-02/cp250022fr.pdf" aria-label="Source 9">[9]</a>
+
+Il faut néanmoins respecter le champ du texte. L’article 22 vise les décisions fondées exclusivement sur un traitement automatisé, qui produisent des effets juridiques ou affectent la personne de manière significative de façon similaire. Un profilage n’aboutit pas nécessairement à une telle décision. Inversement, une décision peut relever de cet article sans utiliser de modèle génératif. Des exceptions existent, notamment la nécessité contractuelle, une autorisation légale assortie de garanties ou le consentement explicite. <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3" aria-label="Source 3">[3]</a> <a href="https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee" aria-label="Source 11">[11]</a>
+
+Lorsque la décision repose sur la nécessité contractuelle ou le consentement explicite, l’article 22 prévoit au moins la possibilité d’obtenir une intervention humaine, d’exprimer son point de vue et de contester la décision. Pour l’exception fondée sur une autorisation légale, le texte qui l’autorise doit prévoir des garanties appropriées. <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3" aria-label="Source 3">[3]</a>
+
+Le droit d’accès aux données demeure applicable même lorsque les conditions particulières de l’article 22 ne sont pas réunies. Le droit à une intervention humaine prévu par cet article dépend, lui, de la nature de la décision et de son fondement. <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3" aria-label="Source 3">[3]</a> <a href="https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee" aria-label="Source 11">[11]</a>
+
+En cas de secret d’affaires invoqué, l’arrêt de 2025 prévoit la communication des informations prétendument protégées à l’autorité ou à la juridiction compétente. Celle-ci doit mettre les intérêts en balance pour déterminer l’étendue de l’accès. <a href="https://curia.europa.eu/jcms/upload/docs/application/pdf/2025-02/cp250022fr.pdf" aria-label="Source 9">[9]</a>
+
+## Ce que les traces peuvent révéler
+
+Les fichiers qui enregistrent des opérations informatiques peuvent aussi apporter des informations pertinentes. Dans l’arrêt Pankki S du 22 juin 2023, la Cour reconnaît le droit d’obtenir les dates et les finalités des consultations de données personnelles. L’affaire concernait les consultations effectuées dans une banque. <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A62021CJ0579" aria-label="Source 8">[8]</a>
+
+La personne ne dispose pas, en règle générale, d’un droit à connaître l’identité des salariés qui ont consulté les données sous l’autorité du responsable du traitement. La Cour réserve le cas où cette information serait indispensable à l’exercice effectif de ses droits, en prenant en compte ceux des salariés. <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A62021CJ0579" aria-label="Source 8">[8]</a>
+
+Ces traces situent une opération dans le temps. Pour examiner le traitement d’une réclamation, nous proposons de rapprocher la date de consultation, son motif et la réponse apportée. Le contenu de cette réponse permettra alors de vérifier si la pièce concernée a été prise en compte.
+
+## Savoir que l’interlocuteur est une IA
+
+Depuis le **2 août 2026**, l’article 50 du règlement européen sur l’IA impose aux fournisseurs des systèmes concernés de les concevoir et de les développer pour informer les personnes lorsqu’elles interagissent directement avec une IA. L’information doit être claire et intervenir au plus tard lors de la première interaction, sauf notamment lorsque cette nature est évidente au regard du contexte. Cette règle vise l’interaction directe ; une analyse automatique en arrière-plan relève d’un examen distinct. <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50" aria-label="Source 12">[12]</a> <a href="https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act" aria-label="Source 13">[13]</a>
+
+Cette information permet d’identifier l’interlocuteur. Elle ne décrit pas nécessairement les données utilisées, les permissions du logiciel ou l’origine du montant réclamé. Les obligations de protection des données et les règles du recouvrement continuent de devoir être examinées séparément. <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3" aria-label="Source 3">[3]</a> <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027015026" aria-label="Source 5">[5]</a> <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50" aria-label="Source 12">[12]</a>
+
+Le calendrier distingue cette transparence des obligations attachées aux systèmes à haut risque. La Commission européenne indique que les exigences renforcées pour les systèmes à haut risque de l’annexe III s’appliqueront le **2 décembre 2027**, selon le calendrier révisé par le Digital Omnibus entré en vigueur le 27 juillet 2026. Sa FAQ maintient le 2 août 2026 pour l’information sur l’interaction avec une IA. Elle prévoit un délai spécifique pour le marquage de contenus générés par certains systèmes préexistants. <a href="https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act" aria-label="Source 13">[13]</a> <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" aria-label="Source 14">[14]</a>
+
+La qualification à haut risque dépend de la destination précise du système. L’annexe III vise notamment l’évaluation de la solvabilité et l’établissement d’une note de crédit des personnes physiques, avec une exception pour la détection des fraudes financières. Le seul fait d’être utilisé dans le recouvrement ne tranche donc pas cette qualification. <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/annex-3" aria-label="Source 22">[22]</a>
+
+## Examiner le contenu de la réponse
+
+Le Laboratoire d’innovation numérique de la Commission nationale de l’informatique et des libertés (CNIL) a publié, le 30 janvier 2025, un bilan des parcours d’accès aux données sur dix réseaux sociaux, observés en 2024. Il précise que son étude n’évaluait ni la complétude ni la qualité des données reçues. Ce travail ne porte pas sur le recouvrement. Il offre néanmoins une distinction méthodologique utile : étudier la facilité d’obtenir un export et examiner ce que cet export permet de vérifier sont deux opérations différentes. <a href="https://www.cnil.fr/fr/observatoire-du-droit-dacces-sur-les-reseaux-sociaux-le-linc-publie-son-bilan" aria-label="Source 15">[15]</a>
+
+Un autre bilan de la CNIL, publié le 20 janvier 2025, porte cette fois sur des contrôles. Dans onze organismes publics et privés examinés en 2024, l’autorité a notamment trouvé des réponses limitées à une notice sans copie des données, ou à une copie sans explication des traitements. Les organismes avaient été sélectionnés notamment à partir de plaintes : ces constats ne constituent ni un taux national de non-conformité ni une enquête sur le recouvrement par IA. Ils montrent néanmoins qu’une réponse reçue peut rester incomplète. <a href="https://www.cnil.fr/fr/droit-dacces-bilan-des-controles-de-la-cnil-dans-le-cadre-dune-action-coordonnee-europeenne" aria-label="Source 23">[23]</a>
+
+Pour le recouvrement, nous proposons de comparer la réponse aux éléments déjà en possession de la personne. Un échange daté apparaît-il ? Le paiement dont elle détient la confirmation est-il correctement pris en compte ? Les appréciations communiquées sont-elles compréhensibles ? La réponse précise-t-elle ce qui n’a pas été retrouvé, ce qui n’est plus conservé ou ce qui est refusé, et pour quel motif ?
+
+Une omission appelle une clarification : les données peuvent relever d’une autre entité responsable ou avoir cessé d’être conservées. La CNIL rappelle que le responsable du traitement doit organiser la réponse, y compris avec l’aide de ses sous-traitants, et motiver un refus. Le recours à un prestataire fait donc partie de cette organisation. <a href="https://www.cnil.fr/fr/repondre-une-demande-de-droit-dacces" aria-label="Source 10">[10]</a>
+
+La demande gagnera à identifier le dossier, les échanges concernés et les informations recherchées. Elle n’a pas à exposer tous les détails de la vie de la personne pour être recevable. La vérification d’identité doit être adaptée : la CNIL indique qu’une copie de pièce d’identité n’est pas systématique, et qu’un doute raisonnable peut justifier des éléments supplémentaires. <a href="https://www.cnil.fr/fr/repondre-une-demande-de-droit-dacces" aria-label="Source 10">[10]</a>
+
+Il faut aussi vérifier le canal. En cas de message suspect, Cybermalveillance.gouv.fr recommande de contacter l’organisme par ses coordonnées officielles ou ses moyens habituels, plutôt que de se laisser conduire par le lien reçu. Conserver les pièces originales dans un espace privé et partager les seuls éléments nécessaires par un canal vérifié limite l’exposition des données. <a href="https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/smishing-hameconnage-sms" aria-label="Source 16">[16]</a>
+
+## Des démarches et des délais distincts
+
+Une réponse à une demande d’accès peut révéler une donnée inexacte. L’article 16 du RGPD ouvre un droit de rectification ; l’article 18 prévoit, sous conditions, une limitation de l’utilisation des données, notamment lorsque leur exactitude est contestée, pendant la vérification. L’article 19 encadre la notification de certaines corrections ou limitations aux destinataires, avec des exceptions. Ces mécanismes concernent le traitement des données : ils n’effacent pas, à eux seuls, une obligation de paiement. <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3" aria-label="Source 3">[3]</a>
+
+Le résultat recherché doit être formulé précisément : corriger un montant enregistré, contester une appréciation ou faire examiner le fondement de la créance. Une confirmation écrite permet ensuite de comparer la correction annoncée avec le relevé ou l’opération suivante.
+
+Les délais ne doivent surtout pas être confondus. Pour les droits du RGPD, l’information sur les suites doit normalement parvenir dans le mois suivant la réception, avec prolongation possible de deux mois en fonction de la complexité et du nombre de demandes, annoncée dans le premier mois. **Une procédure judiciaire suit son propre calendrier.** <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3" aria-label="Source 3">[3]</a>
+
+Ainsi, l’opposition à une injonction de payer doit être formée devant la juridiction concernée, en principe dans le mois suivant la signification, c’est-à-dire la notification formelle de l’acte. Si celle-ci n’a pas été faite à personne, l’article 1416 maintient l’opposition jusqu’à un mois après le premier acte signifié à personne ou la première mesure d’exécution rendant les biens indisponibles. **Une demande RGPD ou une réclamation au service client ne tient pas lieu d’opposition.** <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019960692/" aria-label="Source 18">[18]</a>
+
+Le délai de deux mois introduit à l’article 1422 pour les ordonnances rendues à compter du 1er septembre 2026 concerne les conditions dans lesquelles l’ordonnance devient exécutoire. Le délai d’opposition prévu par l’article 1416 reste distinct. <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019960692/" aria-label="Source 18">[18]</a>
+
+<figure style="max-width:560px;margin:2rem auto 2.5rem;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" role="img" aria-labelledby="ia6-fr-fig-title ia6-fr-fig-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif">
+<title id="ia6-fr-fig-title">Deux délais, deux points de départ</title>
+<desc id="ia6-fr-fig-desc">Le délai de réponse RGPD part de la réception de la demande : un mois, avec prolongation possible de deux mois annoncée au premier mois. L’opposition à une injonction de payer en France suit un calendrier indépendant : en principe un mois après la signification. Les cas particuliers sont expliqués dans le texte.</desc>
+<text x="12" y="30" font-size="24" font-weight="700" fill="var(--color-paper)">Accès aux données · RGPD</text>
+<text x="12" y="60" font-size="20" fill="var(--color-muted)">Départ : réception de la demande</text>
+<g data-region="response"><rect x="12" y="76" width="152" height="78" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)"/><text x="88" y="108" text-anchor="middle" font-size="24" font-weight="700" fill="var(--color-signal)">1 mois</text><text x="88" y="138" text-anchor="middle" font-size="20" fill="var(--color-paper)">Réponse</text></g>
+<path d="M165 115 H177 M171 109 L177 115 L171 121" fill="none" stroke="var(--color-muted)" stroke-width="2"/>
+<g data-region="extension"><rect x="184" y="76" width="304" height="78" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)"/><text x="336" y="108" text-anchor="middle" font-size="24" font-weight="700" fill="var(--color-paper)">+ 2 mois possibles</text><text x="336" y="138" text-anchor="middle" font-size="20" fill="var(--color-muted)">Prolongation motivée</text></g>
+<text x="12" y="184" font-size="20" fill="var(--color-muted)">À annoncer dans le premier mois.</text>
+<text x="12" y="224" font-size="24" font-weight="700" fill="var(--color-paper)">Opposition · Injonction de payer</text>
+<text x="12" y="254" font-size="20" fill="var(--color-muted)">Départ : signification, en France</text>
+<g data-region="objection"><rect x="12" y="266" width="152" height="76" rx="8" fill="var(--color-surface)" stroke="var(--color-accent)"/><text x="88" y="298" text-anchor="middle" font-size="24" font-weight="700" fill="var(--color-accent)">1 mois</text><text x="88" y="328" text-anchor="middle" font-size="20" fill="var(--color-paper)">En principe</text></g>
+<text x="184" y="292" font-size="20" font-weight="700" fill="var(--color-paper)">Calendrier indépendant</text>
+<text x="184" y="324" font-size="20" fill="var(--color-muted)">Cas particuliers : voir le texte</text>
+</svg>
+<figcaption style="margin:.75rem 0 0;">Durées légales, repères au 25 septembre 2026. Prolongation RGPD selon la complexité et le nombre de demandes. Signification non faite à personne : règles particulières dans le texte. Sources : RGPD, art. 12(3) ; CPC, art. 1416. <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3" aria-label="Source 3">[3]</a> <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019960692/" aria-label="Source 18">[18]</a></figcaption>
+</figure>
+
+La prudence vaut également avant de prendre un engagement sur une créance contestée ou ancienne. Selon l’article 2240 du Code civil, la reconnaissance par le débiteur du droit du créancier interrompt la prescription. Cela ne permet pas de qualifier indistinctement tout message ou toute demande d’information de reconnaissance. Cela justifie de faire examiner la situation avant de chercher à résoudre un doute juridique par un engagement dont on ne mesure pas les effets. <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017366" aria-label="Source 17">[17]</a>
+
+## À qui demander quoi
+
+Le service chargé de la créance doit être interrogé sur son fondement, son décompte et les corrections de paiement. Le responsable du traitement, ou son délégué à la protection des données lorsqu’il en a un, constitue l’interlocuteur pour les données et l’exercice des droits. Les règles pratiques de la CNIL permettent aussi de mandater une personne pour cette démarche. Il peut s’agir de la même entreprise, sans que les demandes aient le même objet. <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042341" aria-label="Source 4">[4]</a> <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027015026" aria-label="Source 5">[5]</a> <a href="https://www.cnil.fr/fr/repondre-une-demande-de-droit-dacces" aria-label="Source 10">[10]</a>
+
+Une difficulté sur les données peut conduire à une réclamation auprès de la CNIL, conformément à l’article 77 du RGPD. Un problème avec une société de recouvrement amiable peut être signalé sur [SignalConso](https://signal.conso.gouv.fr/fr), le service public de la répression des fraudes. Le litige sur la créance et une éventuelle procédure doivent être traités par les voies appropriées, avec un accompagnement juridique lorsque nécessaire. Une autorité de protection des données n’est pas un substitut au tribunal appelé à statuer sur le paiement. <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre8" aria-label="Source 19">[19]</a> <a href="https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/recouvrement-amiable-de-creances-les-regles-connaitre" aria-label="Source 20">[20]</a>
+
+Cette séparation n’oblige pas la personne à comprendre toute l’architecture du fournisseur avant de demander de l’aide. Elle sert à rendre la demande orientable : identifier le problème, la pièce qui le documente et le résultat attendu, sans présenter un remède comme s’il produisait tous les autres.
+
+## Du profil calculé au dossier vérifiable
+
+Les présentations de PAIR Finance et d’Ophelos documentent une ambition : personnaliser les communications, orienter certaines demandes et rendre une partie des échanges plus rapidement accessible. Un service qui facilite une démarche ou repère plus tôt un besoin d’aide peut apporter un bénéfice réel. Les documents commerciaux ne suffisent cependant pas à mesurer ce bénéfice, ses conditions ou sa répartition entre les personnes. <a href="https://pairfinance.com/fr/intelligence-artificielle/" aria-label="Source 2">[2]</a> <a href="https://www.ophelos.com/fr/professionnels/ia" aria-label="Source 21">[21]</a>
+
+Les cinq premiers volets ont séparé les responsabilités, les indicateurs de performance, le traitement des difficultés, la correction des erreurs et les contrats. Leur rapprochement conduit à une exigence de vérification : une annonce générale doit pouvoir être confrontée à ce qui s’est passé dans un dossier. Ce sixième volet précise les informations qu’une personne peut déjà chercher à obtenir, les limites de cet accès et les démarches qui restent distinctes.
+
+Nous n’avons pas obtenu, pour cette série documentaire, un ensemble de dossiers individuels authentifiés permettant de relier toutes les étapes. Nous n’avons réalisé ni entretien, ni demande d’accès pour une personne concernée, ni test d’une plateforme commerciale. Aucun taux d’erreur, de pression abusive ou de résolution durable du recouvrement par IA en France ne peut être déduit de ce travail.
+
+La suite de l’enquête se joue dans ces dossiers : rapprocher le fondement de la somme, les appréciations utilisées et la réponse à une demande. **Une explication devient utile lorsque la personne peut s’en servir pour faire vérifier son dossier.**
+
+---
+
+*Enquête documentaire arrêtée au 25 septembre 2026. Les constats d’autres secteurs et les décisions de justice sont présentés avec leur champ ; ils ne constituent pas des constatations à l’encontre des entreprises citées. Le schéma compare les délais légaux ; les critères d’examen sont proposés par l0g. Ce texte fournit des repères généraux, pas un avis juridique sur une créance particulière.*
+
+## Sources et repères
+
+<p id="ia6-fr-s01"><strong>[1] Cour de justice de l’Union européenne</strong>. <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX%3A62021CJ0487" rel="noreferrer">C-487/21, Österreichische Datenschutzbehörde et CRIF</a>. Arrêt du 4 mai 2023. Inclut les appréciations dérivées concernant une personne ; encadre la copie fidèle et intelligible. Une copie de document entier n’est pas systématiquement exigible.</p>
+
+<p id="ia6-fr-s02"><strong>[2] PAIR Finance</strong>. <a href="https://pairfinance.com/fr/intelligence-artificielle/" rel="noreferrer">Gestion des créances avec la technologie IA</a>. Page non datée. Décrit le classement des personnes et la personnalisation des communications. Source commerciale décrivant le service annoncé par l’entreprise.</p>
+
+<p id="ia6-fr-s03"><strong>[3] Union européenne / CNIL</strong>. <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3" rel="noreferrer">RGPD, chapitre III : droits de la personne concernée</a>. Règlement du 27 avril 2016, applicable depuis le 25 mai 2018. Accès, rectification, limitation, décision automatisée et délais de réponse ; conditions et exceptions propres à chaque droit.</p>
+
+<p id="ia6-fr-s04"><strong>[4] Légifrance</strong>. <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042341" rel="noreferrer">Code civil, article 1353</a>. Version en vigueur depuis le 1er octobre 2016. Justification de l’obligation, puis du paiement ou d’une autre cause de libération invoquée.</p>
+
+<p id="ia6-fr-s05"><strong>[5] Légifrance</strong>. <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027015026" rel="noreferrer">Code des procédures civiles d’exécution, R124-4</a>. Version en vigueur depuis le 2 février 2013. Obligation de lettre dans le champ défini par R124-1, pas formalité identique applicable sans distinction à tout créancier.</p>
+
+<p id="ia6-fr-s06"><strong>[6] Légifrance</strong>. <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000025938360" rel="noreferrer">Code des procédures civiles d’exécution, R124-1 à R124-7</a>. Version consultée au 25 septembre 2026. Recouvrement amiable pour autrui, réserve des statuts professionnels ; convention préalable avec le créancier.</p>
+
+<p id="ia6-fr-s07"><strong>[7] Légifrance</strong>. <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028747701" rel="noreferrer">Code des procédures civiles d’exécution, L111-8</a>. Version en vigueur depuis le 19 mars 2014. Frais sans titre exécutoire en principe à la charge du créancier ; actes prescrits par la loi, dispositions spéciales et décision du juge à distinguer.</p>
+
+<p id="ia6-fr-s08"><strong>[8] Cour de justice de l’Union européenne</strong>. <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A62021CJ0579" rel="noreferrer">C-579/21, Pankki S</a>. Arrêt du 22 juin 2023. Dates et finalités des consultations ; pas de droit de principe au nom des salariés ni à l’intégralité des journaux techniques.</p>
+
+<p id="ia6-fr-s09"><strong>[9] Cour de justice de l’Union européenne</strong>. <a href="https://curia.europa.eu/jcms/upload/docs/application/pdf/2025-02/cp250022fr.pdf" rel="noreferrer">C-203/22, Dun &amp; Bradstreet Austria : communiqué n°22/25</a>. Arrêt du 27 février 2025. Explication des principes effectivement appliqués ; arbitrage des secrets par une autorité ou une juridiction. Affaire de solvabilité, pas contentieux d’un recouvreur cité ici.</p>
+
+<p id="ia6-fr-s10"><strong>[10] CNIL</strong>. <a href="https://www.cnil.fr/fr/repondre-une-demande-de-droit-dacces" rel="noreferrer">Professionnels : comment répondre à une demande de droit d’accès ?</a>. Page portant la date du 13 juin 2017, version consultée en septembre 2026. Pièce d’identité non systématique, canaux sécurisés, données effectives et motivation des refus.</p>
+
+<p id="ia6-fr-s11"><strong>[11] CNIL</strong>. <a href="https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee" rel="noreferrer">Profilage et décision entièrement automatisée</a>. Publication du 29 mai 2018. Distingue le profilage des décisions exclusivement automatisées à effet juridique ou significatif. À lire avec le texte de l’article 22 et la jurisprudence ultérieure.</p>
+
+<p id="ia6-fr-s12"><strong>[12] Commission européenne</strong>. <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50" rel="noreferrer">Article 50 : obligations de transparence</a>. Texte de l’article 50(1) et (5) reproduit par l’AI Act Service Desk. La page signale que certaines modifications Omnibus restent à intégrer ; le calendrier est recoupé avec la FAQ actualisée [13].</p>
+
+<p id="ia6-fr-s13"><strong>[13] Commission européenne</strong>. <a href="https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act" rel="noreferrer">Transparency obligations under Article 50 of the AI Act</a>. FAQ mise à jour le 24 juillet 2026, consultée le 25 septembre 2026. Confirme le 2 août 2026 ; le délai supplémentaire de marquage ne concerne pas l’identification du chatbot. Interprétation administrative, à rapprocher du règlement.</p>
+
+<p id="ia6-fr-s14"><strong>[14] Commission européenne</strong>. <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" rel="noreferrer">AI Act : cadre réglementaire et calendrier</a>. Présentation officielle consultée le 25 septembre 2026. Entrée en vigueur du Digital Omnibus le 27 juillet 2026 et application des exigences renforcées pour les systèmes à haut risque de l’annexe III le 2 décembre 2027.</p>
+
+<p id="ia6-fr-s15"><strong>[15] CNIL / LINC</strong>. <a href="https://www.cnil.fr/fr/observatoire-du-droit-dacces-sur-les-reseaux-sociaux-le-linc-publie-son-bilan" rel="noreferrer">Observatoire du droit d’accès sur les réseaux sociaux : bilan</a>. Publié le 30 janvier 2025, observations réalisées en 2024 sur dix réseaux sociaux. L’étude n’évalue pas la complétude ni la qualité des données. Aucun taux n’est transposé au recouvrement.</p>
+
+<p id="ia6-fr-s16"><strong>[16] Cybermalveillance.gouv.fr</strong>. <a href="https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/smishing-hameconnage-sms" rel="noreferrer">Le smishing ou hameçonnage par SMS</a>. Publié le 13 juin 2023, mis à jour le 21 février 2025. Vérifier par les coordonnées habituelles de l’organisme et préserver les messages suspects.</p>
+
+<p id="ia6-fr-s17"><strong>[17] Légifrance</strong>. <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017366" rel="noreferrer">Code civil, article 2240</a>. Version en vigueur depuis le 19 juin 2008. La reconnaissance du droit du créancier interrompt la prescription ; la qualification d’un échange dépend des faits.</p>
+
+<p id="ia6-fr-s18"><strong>[18] Légifrance</strong>. <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019960692/" rel="noreferrer">Code de procédure civile, procédures d’injonction</a>. Version consultée au 25 septembre 2026. Opposition devant la juridiction, délai d’un mois et points de départ particuliers ; les modifications 2026 ne créent pas un délai de deux mois pour s’opposer.</p>
+
+<p id="ia6-fr-s19"><strong>[19] Union européenne / CNIL</strong>. <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre8" rel="noreferrer">RGPD, chapitre VIII : voies de recours</a>. Réclamation en protection des données et recours juridictionnels. Compétence des autorités de contrôle et voies judiciaires.</p>
+
+<p id="ia6-fr-s20"><strong>[20] DGCCRF</strong>. <a href="https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/recouvrement-amiable-de-creances-les-regles-connaitre" rel="noreferrer">Recouvrement amiable de créances : les règles à connaître</a>. Page publiée le 24 octobre 2025. Repères grand public ; règles précises rapprochées du Code des procédures civiles d’exécution.</p>
+
+<p id="ia6-fr-s21"><strong>[21] Ophelos</strong>. <a href="https://www.ophelos.com/fr/professionnels/ia" rel="noreferrer">L’IA dans le recouvrement de créances</a>. Page non datée. Présentation commerciale des fonctions et des bénéfices attendus. Les bénéfices annoncés restent des affirmations du fournisseur.</p>
+
+<p id="ia6-fr-s22"><strong>[22] Commission européenne</strong>. <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/annex-3" rel="noreferrer">AI Act Service Desk, annexe III</a>. Annexe visant notamment l’évaluation de la solvabilité et l’établissement d’une note de crédit des personnes physiques, sauf détection de fraude financière. Qualification à examiner avec l’article 6, usage par usage.</p>
+
+<p id="ia6-fr-s23"><strong>[23] CNIL</strong>. <a href="https://www.cnil.fr/fr/droit-dacces-bilan-des-controles-de-la-cnil-dans-le-cadre-dune-action-coordonnee-europeenne" rel="noreferrer">Droit d’accès : bilan des contrôles de l’action coordonnée européenne</a>. Publié le 20 janvier 2025. Onze organismes de secteurs divers, sélectionnés notamment à partir de plaintes. Constats réels de réponses partielles ; ni échantillon représentatif ni étude du recouvrement par IA. Suites rapportées à la date de publication seulement.</p>
+
+*Documents consultés le 25 septembre 2026. Les références institutionnelles d’un même organisme ne sont pas autant de confirmations indépendantes. Les pages commerciales sont utilisées pour documenter les affirmations de leurs auteurs.*

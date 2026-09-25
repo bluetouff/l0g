@@ -15,7 +15,7 @@ quickTake:
 
 **L’IA vous demande de payer · Volet 2**
 
-*Lire aussi : [Volet 1 : décisions](/posts/ia-recouvrement-1-qui-decide-relance/) · [Volet 3 : aide](/posts/ia-recouvrement-3-appel-aide/) · [Volet 4 : corriger le dossier](/posts/ia-recouvrement-4-corriger-dossier/) · [Volet 5 : contrats et responsabilités](/posts/ia-recouvrement-5-contrats-responsabilites/).*
+*Lire aussi : [Volet 1 : décisions](/posts/ia-recouvrement-1-qui-decide-relance/) · [Volet 3 : aide](/posts/ia-recouvrement-3-appel-aide/) · [Volet 4 : corriger le dossier](/posts/ia-recouvrement-4-corriger-dossier/) · [Volet 5 : contrats et responsabilités](/posts/ia-recouvrement-5-contrats-responsabilites/) · [Volet 6 : données et recours](/posts/ia-recouvrement-6-verifier-droits/).*
 
 Le 7 avril 2025, Intrum annonçait pour sa plateforme Ophelos une hausse de **25 % des taux de recouvrement amiable aux Pays-Bas**, accompagnée d’une baisse de **22 % du coût de recouvrement**. Des résultats présentés comme précoces, sans protocole permettant au lecteur de refaire la comparaison. <a href="#ia2-fr-s01" aria-label="Source 1">[1]</a>
 
