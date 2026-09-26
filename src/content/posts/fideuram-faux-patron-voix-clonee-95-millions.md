@@ -6,6 +6,10 @@ pubDate: 2026-09-26T08:20:00+02:00
 tags: ["fraude", "banques", "risque opérationnel", "intelligence artificielle", "paiements"]
 draft: false
 ogImage: "/illustrations/news/fideuram-voix-clonee-v1.jpg"
+quickTake:
+  fact: "Reuters rapporte environ 95 millions d’euros virés en février 2026 après un faux message de dirigeant et un appel imitant la voix d’un avocat."
+  importance: "Un appel et un courriel peuvent conforter une demande tout en venant des mêmes fraudeurs. La vérification doit avoir une origine indépendante."
+  uncertainty: "Les chiffres de presse restent à réconcilier. La perte finale et les contrôles internes défaillants restent à documenter."
 ---
 
 **Environ 95 millions d’euros virés en février 2026 sur la foi d’une demande fabriquée.** Le 25 septembre, Reuters a révélé une fraude chez Fideuram, banque privée du groupe Intesa Sanpaolo. Une partie des fonds a été récupérée ; le coût final reste à établir. [Reuters](https://whbl.com/2026/09/25/ai-messaging-scam-costs-italys-top-bank-intesa-millions-sources-say/)
