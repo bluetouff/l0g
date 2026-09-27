@@ -9,6 +9,8 @@ ogImage: "/illustrations/news/ia-chine-puces-usines-v1.jpg"
 quickTake: {"fact": "Huawei présente Atlas 960E et CXMT annonce sa mémoire G5 en production. Le calendrier des systèmes, la mémoire mobile et la HBM correspondent à des étapes industrielles différentes.", "importance": "Une machine concurrente utilisable peut donner un choix au client avant l’autonomie complète de sa chaîne de fabrication. Son intérêt dépend du service livré et du coût total.", "uncertainty": "Les annonces sont attribuées aux fabricants. Volumes disponibles, rendements et coûts comparables restent à documenter. Les deux graphiques utilisent des exemples entièrement fictifs."}
 ---
 
+<p class="edition-link"><a href="/publications/le-prix-du-ralentissement/">Lire les six volets dans le livre gratuit « Le prix du ralentissement » (EPUB).</a></p>
+
 *Le prix du ralentissement · Volet 4*
 
 Le 17 septembre 2026, Huawei présente Atlas 960E, une infrastructure conçue pour faire travailler des milliers de processeurs ensemble. Trois jours plus tard, CXMT annonce la production en série de sa nouvelle génération G5 de mémoire. Ces annonces concernent des étapes industrielles différentes : Huawei indique que son système Atlas 960 est encore en test ; les nouveaux produits LPDDR5X de CXMT visent les téléphones et les appareils portables. La mémoire à très forte bande passante, ou HBM, utilisée auprès des grands accélérateurs d’IA, relève d’une autre chaîne de fabrication. [CXMT](https://www.cxmt.com/en/news/info_22.html) · [Huawei](https://www.huawei.com/de/news/2026/atlas-960e-superpod-fuer-ki-modelle)

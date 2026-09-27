@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" role="img" aria-labelledby="ai-time-en-currency-title ai-time-en-currency-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="420" fill="#0b0d10"/>
+<title id="ai-time-en-currency-title">The return back in yen</title>
+<desc id="ai-time-en-currency-desc">Hypothetical one-year simulation, 15,000 yen invested in dollars. Dollar rate 5%, initial exchange rate 150 yen per dollar. Unhedged, final rate 150: +5% in yen; final rate 135: −5.5%. Ideal hedge with yen rate 1%: +1%. All bars share the same zero and scale.</desc>
+<rect x="0" y="0" width="500" height="420" rx="6" fill="#121419"/>
+<text x="24" y="36" font-size="24" font-weight="700" text-anchor="start" fill="#e7e9ee">The return back in yen</text>
+<text x="24" y="68" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Simulation · ¥15,000 · one year</text>
+<text x="24" y="110" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Unhedged · ¥150/$</text>
+<text x="476" y="110" font-size="22" font-weight="400" text-anchor="end" fill="#e7e9ee">+5%</text>
+<rect x="250.000000" y="126" width="175.000000" height="26" fill="#5eead4"/>
+<text x="24" y="194" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Unhedged · ¥135/$</text>
+<text x="476" y="194" font-size="22" font-weight="400" text-anchor="end" fill="#e7e9ee">-5.5%</text>
+<rect x="57.500000" y="210" width="192.500000" height="26" fill="#ff4d87"/>
+<text x="24" y="278" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Hedged · yen rate 1%</text>
+<text x="476" y="278" font-size="22" font-weight="400" text-anchor="end" fill="#e7e9ee">+1%</text>
+<rect x="250.000000" y="294" width="35.000000" height="26" fill="#5eead4"/>
+<path d="M250 122V158 M250 206V242 M250 290V326 M40 334H460 M40 330V338 M250 330V338 M460 330V338" fill="none" stroke="#8b909b" stroke-width="2"/>
+<text x="40" y="368" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">−6</text>
+<text x="250" y="368" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">0</text>
+<text x="460" y="368" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">+6</text>
+<text x="250" y="402" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">Return in yen · % over one year</text>
+</svg>

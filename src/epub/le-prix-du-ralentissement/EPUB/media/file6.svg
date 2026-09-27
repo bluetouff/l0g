@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" role="img" aria-labelledby="ai-chips-fr-bottleneck-title ai-chips-fr-bottleneck-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="420" fill="#0b0d10"/>
+<title id="ai-chips-fr-bottleneck-title">Calcul ou transfert ?</title>
+<desc id="ai-chips-fr-bottleneck-desc">Exemple entièrement fictif. Même tâche, calcul et transfert entièrement simultanés. Base : calcul 20 ms, transfert 80 ms, plancher 80 ms. Calcul deux fois plus puissant : 10 ms et 80 ms, plancher 80 ms. Bande passante doublée : 20 ms et 40 ms, plancher 40 ms. Les six barres partent de zéro ; durée idéale = maximum des deux temps.</desc>
+<rect x="0" y="0" width="500" height="420" rx="6" fill="#121419"/>
+<text x="24" y="34" font-size="24" font-weight="700" text-anchor="start" fill="#e7e9ee">Calcul ou transfert ?</text>
+<text x="24" y="60" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Simulation · même tâche</text>
+<rect x="24" y="74" width="16.000000" height="16" fill="#5eead4"/>
+<text x="48" y="89" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">Calcul</text>
+<rect x="250" y="74" width="16.000000" height="16" fill="#ff4d87"/>
+<text x="274" y="89" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">Transfert</text>
+<text x="24" y="117" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Base</text>
+<text x="476" y="117" font-size="20" font-weight="400" text-anchor="end" fill="#e7e9ee">Plancher : 80 ms</text>
+<rect x="24" y="131" width="80.000000" height="18" fill="#5eead4"/>
+<text x="114" y="147" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">20</text>
+<rect x="24" y="159" width="320.000000" height="18" fill="#ff4d87"/>
+<text x="354" y="175" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">80</text>
+<text x="24" y="205" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Calcul ×2</text>
+<text x="476" y="205" font-size="20" font-weight="400" text-anchor="end" fill="#e7e9ee">Plancher : 80 ms</text>
+<rect x="24" y="219" width="40.000000" height="18" fill="#5eead4"/>
+<text x="74" y="235" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">10</text>
+<rect x="24" y="247" width="320.000000" height="18" fill="#ff4d87"/>
+<text x="354" y="263" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">80</text>
+<text x="24" y="293" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Bande passante ×2</text>
+<text x="476" y="293" font-size="20" font-weight="400" text-anchor="end" fill="#e7e9ee">Plancher : 40 ms</text>
+<rect x="24" y="307" width="80.000000" height="18" fill="#5eead4"/>
+<text x="114" y="323" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">20</text>
+<rect x="24" y="335" width="160.000000" height="18" fill="#ff4d87"/>
+<text x="194" y="351" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">40</text>
+<path d="M24 368H424 M24 364V372 M224 364V372 M424 364V372" fill="none" stroke="#8b909b" stroke-width="2"/>
+<text x="24" y="398" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">0</text>
+<text x="224" y="398" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">50</text>
+<text x="424" y="398" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">100</text>
+<text x="300" y="398" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">ms</text>
+</svg>

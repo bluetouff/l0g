@@ -9,6 +9,8 @@ ogImage: "/illustrations/news/ia-ralentissement-evaluation-v1.jpg"
 quickTake: {"fact": "Anthropic annonce financer des évaluateurs d’Accenture, déjà son partenaire commercial pour Claude. Les propositions de contrôle de l’IA donnent des pouvoirs différents aux évaluateurs.", "importance": "Le prix des évaluations, leurs délais et les conditions d’accès au marché peuvent peser différemment sur un laboratoire établi et un nouvel entrant.", "uncertainty": "Les clauses complètes du partenariat ne sont pas publiques. Les investissements annoncés restent prévisionnels et plusieurs dispositifs discutés sont des propositions."}
 ---
 
+<p class="edition-link"><a href="/publications/le-prix-du-ralentissement/">Lire les six volets dans le livre gratuit « Le prix du ralentissement » (EPUB).</a></p>
+
 Le 22 septembre 2026, Anthropic lance Claude Opus 5.5. Ses tarifs de base passent de 5 à 4 dollars par million de tokens en entrée et de 25 à 20 dollars en sortie, par rapport à Opus 5. Les tokens sont les fragments de texte traités par le modèle. La baisse atteint **20 % sur chacun de ces deux tarifs**. Après l’appel de Dario Amodei à ralentir la progression de l’IA, les nouveaux produits et la concurrence sur les prix continuent donc. [Annonce et grille tarifaire](https://www.anthropic.com/claude-opus-5-5).
 
 Commercialiser un modèle et fixer le programme de recherche de son successeur relèvent de décisions distinctes. Cela oblige à préciser la promesse : **qu’est-ce qui ralentirait, à partir de quel seuil, et qui déciderait de poursuivre ?**

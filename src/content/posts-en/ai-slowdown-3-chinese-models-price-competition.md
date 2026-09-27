@@ -10,6 +10,8 @@ sourceArticle: "ia-ralentissement-3-modeles-chinois-prix-concurrence"
 sourceUpdatedDate: "2026-09-27T14:07:52+02:00"
 ---
 
+<p class="edition-link"><a href="/en/publications/the-price-of-slowing-down/">Read all six parts in the free book The Price of Slowing Down (EPUB).</a></p>
+
 *The price of slowing down · Part 3*
 
 A developer opens Cursor, asks the assistant to change some code and waits for something that works. Part of the technology behind that product comes from China. In its March 27, 2026 technical report, Cursor explains that it built Composer 2 on **Kimi K2.5**, then continued training the model and adapting it to its own environment. Its Composer 2.5 page still identifies that same base. [Cursor technical report](https://cursor.com/blog/composer-2-technical-report); [Composer product page](https://cursor.com/composer).

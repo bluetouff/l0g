@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 362" role="img" aria-labelledby="ai-slowdown-fr-gate-title ai-slowdown-fr-gate-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="362" fill="#0b0d10"/>
+<title id="ai-slowdown-fr-gate-title">Qui décide après le test ?</title>
+<desc id="ai-slowdown-fr-gate-desc">Deux propositions de 2026. Dans le cadre Hassabis, après une phase volontaire, réussir le test conditionnerait l’accès au marché américain pour les modèles concernés. Chez OpenAI, une évaluation obligatoire du CAISI informerait une décision qui resterait au développeur, sans veto du centre. Aucune de ces propositions n’est ici présentée comme une règle en vigueur.</desc>
+<rect x="0" y="0" width="500" height="362" rx="6" fill="#121419"/>
+<text x="24" y="34" font-size="24" font-weight="700" text-anchor="start" fill="#e7e9ee">Qui décide après le test ?</text>
+<text x="24" y="66" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Deux propositions, juin–juillet 2026</text>
+<text x="128" y="111" font-size="22" font-weight="700" text-anchor="middle" fill="#ff4d87">Hassabis</text>
+<text x="372" y="111" font-size="22" font-weight="700" text-anchor="middle" fill="#5eead4">OpenAI</text>
+<g>
+<rect x="24" y="131" width="208" height="56" rx="6" fill="#121419" stroke="rgba(255,255,255,0.20)"/>
+<text x="128.0" y="167.0" font-size="22" font-weight="700" text-anchor="middle" fill="#ff4d87">Test réussi</text>
+</g>
+<g>
+<rect x="268" y="131" width="208" height="56" rx="6" fill="#121419" stroke="rgba(255,255,255,0.20)"/>
+<text x="372.0" y="167.0" font-size="22" font-weight="700" text-anchor="middle" fill="#5eead4">Évaluation</text>
+</g>
+<path d="M128 195V233 M122 226L128 233L134 226" fill="none" stroke="#ff4d87" stroke-width="2"/>
+<path d="M372 195V233 M366 226L372 233L378 226" fill="none" stroke="#5eead4" stroke-width="2"/>
+<g>
+<rect x="24" y="241" width="208" height="72" rx="6" fill="#121419" stroke="rgba(255,255,255,0.20)"/>
+<text x="128.0" y="271.5" font-size="22" font-weight="700" text-anchor="middle" fill="#ff4d87">Accès au</text>
+<text x="128.0" y="298.5" font-size="22" font-weight="700" text-anchor="middle" fill="#ff4d87">marché US</text>
+</g>
+<g>
+<rect x="268" y="241" width="208" height="72" rx="6" fill="#121419" stroke="rgba(255,255,255,0.20)"/>
+<text x="372.0" y="271.5" font-size="22" font-weight="700" text-anchor="middle" fill="#5eead4">Décision du</text>
+<text x="372.0" y="298.5" font-size="22" font-weight="700" text-anchor="middle" fill="#5eead4">développeur</text>
+</g>
+<text x="128" y="344" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">Test exigé</text>
+<text x="372" y="344" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">CAISI sans veto</text>
+</svg>

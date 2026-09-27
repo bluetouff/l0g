@@ -9,6 +9,8 @@ ogImage: "/illustrations/news/ia-japon-prix-attente-v1.jpg"
 quickTake: {"fact": "SoftBank annonce 10 milliards de dollars d’obligations, dont une tranche à coupon de 9,75 %, avec émission prévue le 29 septembre. La Banque du Japon vise désormais un taux au jour le jour de 1,25 %.", "importance": "Un actionnaire peut financer une IA sur plusieurs années tout en devant honorer des paiements réguliers. Allonger les délais affecte différemment une entreprise déjà financée et celle qui doit encore lever des fonds.", "uncertainty": "Les flux japonais disponibles portent sur août et couvrent de nombreux actifs. Ils ne mesurent pas la réaction complète à la décision de septembre. Les exemples de valorisation et de change sont fictifs."}
 ---
 
+<p class="edition-link"><a href="/publications/le-prix-du-ralentissement/">Lire les six volets dans le livre gratuit « Le prix du ralentissement » (EPUB).</a></p>
+
 *Le prix du ralentissement · Volet 5*
 
 Après [les machines et les usines chinoises](/posts/ia-ralentissement-4-chine-puces-memoire-usines/), ce cinquième volet revient au financement : [qui peut continuer à investir](/posts/ia-ralentissement-1-qui-pourra-continuer/) lorsque les délais s’allongent ?

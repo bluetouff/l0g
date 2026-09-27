@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 382" role="img" aria-labelledby="ai-incidents-fr-timing-title ai-incidents-fr-timing-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="382" fill="#0b0d10"/>
+<title id="ai-incidents-fr-timing-title">Après l’alerte, le délai d’arrêt</title>
+<desc id="ai-incidents-fr-timing-desc">Incident OpenAI du 20 septembre 2026. Appel DNS à 09:50:23, alerte à 10:02:11, prise en charge humaine à 10:05:06, arrêt à 12:34:30. Intervalles : 11 minutes 48 secondes, 2 minutes 55 secondes, 2 heures 29 minutes 24 secondes. Barres de durée partant de zéro sur une même échelle, en minutes.</desc>
+<rect x="0" y="0" width="500" height="382" rx="6" fill="#121419"/>
+<text x="24" y="34" font-size="24" font-weight="700" text-anchor="start" fill="#e7e9ee">Après l’alerte, le délai d’arrêt</text>
+<text x="24" y="68" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">OpenAI • 20 septembre 2026</text>
+<text x="24" y="112" font-size="22" font-weight="400" text-anchor="start" fill="#e7e9ee">Appel DNS → alerte</text>
+<text x="476" y="112" font-size="20" font-weight="700" text-anchor="end" fill="#5eead4">11 min 48 s</text>
+<rect x="24" y="126" width="26.222222" height="18" fill="#5eead4"/>
+<text x="24" y="184" font-size="22" font-weight="400" text-anchor="start" fill="#e7e9ee">Alerte → prise en charge</text>
+<text x="476" y="184" font-size="20" font-weight="700" text-anchor="end" fill="#e7e9ee">2 min 55 s</text>
+<rect x="24" y="198" width="6.481481" height="18" fill="#e7e9ee"/>
+<text x="24" y="256" font-size="22" font-weight="400" text-anchor="start" fill="#e7e9ee">Prise en charge → arrêt</text>
+<text x="476" y="256" font-size="20" font-weight="700" text-anchor="end" fill="#ff4d87">2 h 29 min 24 s</text>
+<rect x="24" y="270" width="332.000000" height="18" fill="#ff4d87"/>
+<path d="M24 309H424 M24 305V313 M157.333333 305V313 M290.666667 305V313 M424 305V313" fill="none" stroke="#8b909b" stroke-width="2"/>
+<text x="24.0" y="337" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">0</text>
+<text x="157.333333" y="337" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">60</text>
+<text x="290.666667" y="337" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">120</text>
+<text x="424.0" y="337" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">180</text>
+<text x="250" y="369" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">Minutes, même échelle</text>
+</svg>

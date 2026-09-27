@@ -10,6 +10,8 @@ sourceArticle: "ia-ralentissement-4-chine-puces-memoire-usines"
 sourceUpdatedDate: "2026-09-27T15:22:17+02:00"
 ---
 
+<p class="edition-link"><a href="/en/publications/the-price-of-slowing-down/">Read all six parts in the free book The Price of Slowing Down (EPUB).</a></p>
+
 *The price of slowing down · Part 4*
 
 On September 17, 2026, Huawei presented Atlas 960E, infrastructure designed to make thousands of processors work together. Three days later, CXMT announced volume production of its G5 memory generation. The announcements concern different stages of manufacturing: Huawei says its Atlas 960 system is still being tested, while CXMT’s new LPDDR5X products target phones and portable electronics. High-bandwidth memory, or HBM, used alongside large AI accelerators requires a separate production chain. [CXMT](https://www.cxmt.com/en/news/info_22.html) · [Huawei](https://www.huawei.com/de/news/2026/atlas-960e-superpod-fuer-ki-modelle)

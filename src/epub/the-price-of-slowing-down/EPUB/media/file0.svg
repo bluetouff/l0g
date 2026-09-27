@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 362" role="img" aria-labelledby="ai-slowdown-en-cost-title ai-slowdown-en-cost-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="362" fill="#0b0d10"/>
+<title id="ai-slowdown-en-cost-title">One fixed cost, different scales</title>
+<desc id="ai-slowdown-en-cost-desc">Hypothetical simulation: an annual fixed cost of 1 million euros spread over 10 million tasks gives 0.10 euro per task; over 100 million, 0.01 euro. Bars start at zero and their lengths are proportional to cost per task.</desc>
+<rect x="0" y="0" width="500" height="362" rx="6" fill="#121419"/>
+<text x="24" y="34" font-size="24" font-weight="700" text-anchor="start" fill="#e7e9ee">One fixed cost, different scales</text>
+<text x="24" y="68" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Simulation: €1m fixed cost per year</text>
+<text x="24" y="125" font-size="22" font-weight="400" text-anchor="start" fill="#e7e9ee">10 million tasks/year</text>
+<rect x="24" y="140" width="320" height="28" fill="#ff4d87"/>
+<text x="366" y="163" font-size="22" font-weight="700" text-anchor="start" fill="#ff4d87">€0.10</text>
+<text x="24" y="217" font-size="22" font-weight="400" text-anchor="start" fill="#e7e9ee">100 million tasks/year</text>
+<rect x="24" y="232" width="32" height="28" fill="#5eead4"/>
+<text x="366" y="255" font-size="22" font-weight="700" text-anchor="start" fill="#5eead4">€0.01</text>
+<path d="M24 276H344 M24 272V280 M184 272V280 M344 272V280" fill="none" stroke="#8b909b" stroke-width="2"/>
+<text x="24" y="305" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">0</text>
+<text x="184" y="305" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">0.05</text>
+<text x="344" y="305" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">0.10</text>
+<text x="24" y="341" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Allocated fixed cost: euros per task</text>
+</svg>

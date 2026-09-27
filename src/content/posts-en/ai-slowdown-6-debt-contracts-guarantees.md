@@ -10,6 +10,8 @@ sourceArticle: "ia-ralentissement-6-dettes-contrats-garanties"
 sourceUpdatedDate: "2026-09-27T19:05:58+02:00"
 ---
 
+<p class="edition-link"><a href="/en/publications/the-price-of-slowing-down/">Read all six parts in the free book The Price of Slowing Down (EPUB).</a></p>
+
 *The price of slowing down · Part 6*
 
 After [Japan’s rates and the cost of waiting](/en/analysis/ai-slowdown-5-japan-rates-cost-of-waiting/), part six follows obligations already signed: customer contracts, loan repayments and guarantees.

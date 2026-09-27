@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" role="img" aria-labelledby="ai-debt-fr-interest-title ai-debt-fr-interest-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="420" fill="#0b0d10"/>
+<title id="ai-debt-fr-interest-title">Reporter fait grossir le solde</title>
+<desc id="ai-debt-fr-interest-desc">Simulation fictive : principal initial 100, taux annuel 10 %, deux ans sans amortissement. Intérêts payés chaque année : dette finale 100, trésorerie versée 20. Intérêts PIK capitalisés annuellement : dette finale 121, trésorerie versée zéro. Barres à échelle commune, principal initial en cyan, intérêts ajoutés en rose.</desc>
+<rect x="0" y="0" width="500" height="420" rx="6" fill="#121419"/>
+<text x="24" y="36" font-size="24" font-weight="700" text-anchor="start" fill="#e7e9ee">Reporter fait grossir le solde</text>
+<text x="24" y="68" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Simulation · 100 au départ · 10 % / an</text>
+<text x="24" y="123" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Intérêts payés</text>
+<text x="476" y="123" font-size="22" font-weight="400" text-anchor="end" fill="#e7e9ee">100</text>
+<rect x="40.000000" y="142" width="300.000000" height="30" fill="#5eead4"/>
+<text x="40" y="201" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Trésorerie versée : 20</text>
+<text x="24" y="235" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Intérêts ajoutés (PIK)</text>
+<text x="476" y="235" font-size="22" font-weight="400" text-anchor="end" fill="#e7e9ee">121</text>
+<rect x="40.000000" y="254" width="300.000000" height="30" fill="#5eead4"/>
+<text x="40" y="313" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Trésorerie versée : 0</text>
+<rect x="340.000000" y="254" width="63.000000" height="30" fill="#ff4d87"/>
+<path d="M40 337H415 M40 333V341 M190 333V341 M340 333V341 M415 333V341" fill="none" stroke="#8b909b" stroke-width="2"/>
+<text x="40" y="370" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">0</text>
+<text x="190" y="370" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">50</text>
+<text x="340" y="370" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">100</text>
+<text x="415" y="370" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">125</text>
+<text x="250" y="402" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">Dette après deux ans · unités</text>
+</svg>

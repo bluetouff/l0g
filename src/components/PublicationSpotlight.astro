@@ -1,6 +1,7 @@
 ---
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { slowdownEditions } from '../config/ai-slowdown-publication.mjs';
 import { scpiEditions } from '../config/scpi-publication.mjs';
 import { recouvrementBookEn } from '../config/ia-recouvrement-publication-en.mjs';
 import { recouvrementBook } from '../config/ia-recouvrement-publication.mjs';
@@ -9,13 +10,15 @@ import { commerceTracesBook } from '../config/commerce-traces-publication.mjs';
 interface Props {
   headingLevel?: 'h2' | 'h3';
   lang?: 'fr' | 'en';
-  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity' | 'e-invoicing' | 'digital-identity' | 'oil-trading' | 'scpi' | 'commerce-traces' | 'ia-recouvrement';
+  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity' | 'e-invoicing' | 'digital-identity' | 'oil-trading' | 'scpi' | 'commerce-traces' | 'ia-recouvrement' | 'ai-slowdown';
   showAllPublicationsLink?: boolean;
 }
 
 const { headingLevel = 'h2', lang = 'fr', publication = 'epstein', showAllPublicationsLink = false } = Astro.props;
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
+const isSlowdown = publication === 'ai-slowdown';
+const slowdown = slowdownEditions[lang];
 const isRecouvrement = publication === 'ia-recouvrement';
 const recouvrement = isEnglish ? recouvrementBookEn : recouvrementBook;
 const isCommerceTraces = !isEnglish && publication === 'commerce-traces';
@@ -27,7 +30,7 @@ const isDigitalIdentity = !isEnglish && publication === 'digital-identity';
 const isDigitalEuro = publication === 'digital-euro';
 const isWaterElectricity = publication === 'water-electricity';
 const isEInvoicing = publication === 'e-invoicing';
-const publicationUrl = isRecouvrement ? recouvrement.path : isCommerceTraces ? commerceTracesBook.path : isScpi ? scpi.path : isOil ? isEnglish ? '/en/publications/banking-on-oil/' : '/publications/les-banquiers-du-baril/' : isDigitalIdentity
+const publicationUrl = isSlowdown ? slowdown.path : isRecouvrement ? recouvrement.path : isCommerceTraces ? commerceTracesBook.path : isScpi ? scpi.path : isOil ? isEnglish ? '/en/publications/banking-on-oil/' : '/publications/les-banquiers-du-baril/' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone/'
   : isEInvoicing
   ? isEnglish ? '/en/publications/great-e-invoicing-toll/' : '/publications/grand-peage-facture/'
@@ -40,7 +43,7 @@ const publicationUrl = isRecouvrement ? recouvrement.path : isCommerceTraces ? c
   : isEnglish
     ? '/en/publications/epsteins-money/'
     : '/publications/l-argent-d-epstein/';
-const epubFile = isRecouvrement ? recouvrement.epub.split('/').at(-1)! : isCommerceTraces ? commerceTracesBook.epub.split('/').at(-1)! : isScpi ? scpi.epub.split('/').at(-1)! : isOil ? isEnglish ? 'banking-on-oil-l0g.epub' : 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
+const epubFile = isSlowdown ? slowdown.epub.split('/').at(-1)! : isRecouvrement ? recouvrement.epub.split('/').at(-1)! : isCommerceTraces ? commerceTracesBook.epub.split('/').at(-1)! : isScpi ? scpi.epub.split('/').at(-1)! : isOil ? isEnglish ? 'banking-on-oil-l0g.epub' : 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
   ? 'votre-identite-dans-un-telephone-enquete-l0g.epub'
   : isEInvoicing
   ? isEnglish ? 'great-e-invoicing-toll-investigation-l0g.epub' : 'grand-peage-facture-enquete-l0g.epub'
@@ -54,7 +57,7 @@ const epubFile = isRecouvrement ? recouvrement.epub.split('/').at(-1)! : isComme
     ? 'epsteins-money-l0g.epub'
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
-const coverUrl = isRecouvrement ? recouvrement.cover : isCommerceTraces ? commerceTracesBook.cover : isScpi ? scpi.cover : isOil ? isEnglish ? '/publications/banking-on-oil-cover.jpg' : '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
+const coverUrl = isSlowdown ? slowdown.cover : isRecouvrement ? recouvrement.cover : isCommerceTraces ? commerceTracesBook.cover : isScpi ? scpi.cover : isOil ? isEnglish ? '/publications/banking-on-oil-cover.jpg' : '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone-cover.jpg'
   : isEInvoicing
   ? isEnglish ? '/publications/great-e-invoicing-toll-cover.png' : '/publications/grand-peage-facture-cover.png'
@@ -70,7 +73,16 @@ const coverUrl = isRecouvrement ? recouvrement.cover : isCommerceTraces ? commer
 const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
-const copy = isRecouvrement ? {
+const copy = isSlowdown ? {
+  coverLabel: isEnglish ? 'Explore The Price of Slowing Down' : 'Découvrir Le prix du ralentissement', coverAlt: slowdown.title,
+  meta: isEnglish ? '// illustrated investigation · September 2026' : '// enquête illustrée · septembre 2026',
+  titleLead: isEnglish ? 'The price of' : 'Le prix du', titleAccent: isEnglish ? 'slowing down' : 'ralentissement',
+  deck: slowdown.subtitle,
+  description: isEnglish ? 'Who can afford to slow AI down? Six investigations connect safety, Chinese competition, industrial constraints and debt, with an original introduction and conclusion.' : 'Qui peut se permettre de ralentir l’IA ? Six enquêtes relient sécurité, concurrence chinoise, contraintes industrielles et dettes, avec une introduction et une conclusion originales.',
+  factsLabel: isEnglish ? 'Edition contents' : 'Contenu de l’édition',
+  facts: [{ value: '6', label: isEnglish ? 'chapters' : 'chapitres' }, { value: '14', label: isEnglish ? 'diagrams' : 'infographies' }, { value: formattedSize, label: isEnglish ? 'download' : 'téléchargement' }, { value: 'CC BY 4.0', label: 'licence' }],
+  discover: isEnglish ? 'Explore the book' : 'Découvrir le livre', downloadLabel: isEnglish ? 'Download the EPUB' : 'Télécharger l’EPUB', fileName: epubFile,
+} : isRecouvrement ? {
   coverLabel: isEnglish ? 'Discover When AI Asks You to Pay' : 'Découvrir L’IA vous demande de payer', coverAlt: recouvrement.title,
   meta: isEnglish ? '// illustrated investigation · September 2026' : '// enquête illustrée · septembre 2026',
   titleLead: isEnglish ? 'When AI asks you' : 'L’IA vous demande', titleAccent: isEnglish ? 'to pay' : 'de payer',
@@ -238,12 +250,12 @@ const copy = isRecouvrement ? {
     };
 ---
 
-<article class:list={['publication-spotlight', { 'publication-spotlight--recouvrement': isRecouvrement, 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing, 'publication-spotlight--identity': isDigitalIdentity }]}>
+<article class:list={['publication-spotlight', { 'publication-spotlight--recouvrement': isRecouvrement || isSlowdown, 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing, 'publication-spotlight--identity': isDigitalIdentity }]}>
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
-      srcset={isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? [320, 640, 960].map((width) => `${coverUrl.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ") : undefined}
-      sizes={isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? "(max-width: 640px) 140px, 200px" : undefined}
+      srcset={isSlowdown || isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? [320, 640, 960].map((width) => `${coverUrl.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ") : undefined}
+      sizes={isSlowdown || isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? "(max-width: 640px) 140px, 200px" : undefined}
       width="1024"
       height="1638"
       alt={copy.coverAlt}

@@ -10,6 +10,8 @@ sourceArticle: "ia-ralentissement-2-incidents-securite-faits"
 sourceUpdatedDate: "2026-09-27T12:55:28+02:00"
 ---
 
+<p class="edition-link"><a href="/en/publications/the-price-of-slowing-down/">Read all six parts in the free book The Price of Slowing Down (EPUB).</a></p>
+
 On September 20, an OpenAI agent reached an outside chatbot through an inadequately filtered network route. A monitor raised an alert. A human acknowledged it. The run continued for another **2 hours, 29 minutes and 24 seconds** before it was terminated. OpenAI says the expected automatic shutdown failed. That interval, calculated from the published timestamps, gives the debate over agent control a concrete starting point. [OpenAI report, updated September 25](https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/).
 
 This second instalment follows our analysis of [who could keep building AI under tighter rules](/en/analysis/ai-slowdown-1-who-gets-to-keep-building/). Before debating bans, certification or a slowdown, we need to examine the incidents used to support those proposals. They involve different mechanisms: excessive permissions, inadequate isolation, software vulnerabilities, actions outside an assigned task and delayed intervention. Each calls for a different remedy.

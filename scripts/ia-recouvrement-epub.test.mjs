@@ -133,7 +133,7 @@ test(`${book.lang}: dedicated cover, panorama and responsive assets meet publica
   assert.match(page, /createHash\('sha256'\)/u); assert.match(page, /ogImage=\{book.social\}/u);
   const catalogue = readFileSync(join(ROOT, book.lang === 'en' ? 'src/pages/en/publications/index.astro' : 'src/pages/publications/index.astro'), 'utf8');
   assert(catalogue.indexOf('publication="ia-recouvrement"') < catalogue.indexOf(book.lang === 'en' ? 'publication="scpi"' : 'publication="commerce-traces"'));
-  assert(catalogue.includes(book.social));
+  assert(catalogue.includes('publication="ia-recouvrement"'), 'The older edition stays in the catalogue after a new release');
   for (const lang of ['fr', 'en', 'x-default']) assert(page.includes(`hreflang: '${lang}'`));
   assert(page.includes(book.lang === 'en' ? 'translationOfWork:' : 'workTranslation:'));
   assert(page.includes(book.lang === 'en' ? 'Lire en français' : 'Read in English'));

@@ -10,6 +10,8 @@ sourceArticle: "ia-ralentissement-5-japon-taux-prix-attente"
 sourceUpdatedDate: "2026-09-27T18:24:26+02:00"
 ---
 
+<p class="edition-link"><a href="/en/publications/the-price-of-slowing-down/">Read all six parts in the free book The Price of Slowing Down (EPUB).</a></p>
+
 *The price of slowing down · Part 5*
 
 After [Chinese chips and factories](/en/analysis/ai-slowdown-4-china-chips-memory-factories/), this fifth instalment returns to financing: [who can keep investing](/en/analysis/ai-slowdown-1-who-gets-to-keep-building/) as timelines lengthen?

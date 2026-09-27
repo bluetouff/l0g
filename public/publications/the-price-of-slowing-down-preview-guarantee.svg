@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" role="img" aria-labelledby="ai-debt-en-guarantee-title ai-debt-en-guarantee-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="420" fill="#0b0d10"/>
+<title id="ai-debt-en-guarantee-title">What the guarantee pays</title>
+<desc id="ai-debt-en-guarantee-desc">Hypothetical example, currency units, threshold 80. All triggering conditions are assumed met. Compensation equals the greater of 80 minus property value and zero. Value 50: payment 30; value 90: payment zero.</desc>
+<rect x="0" y="0" width="500" height="420" rx="6" fill="#121419"/>
+<text x="24" y="36" font-size="24" font-weight="700" text-anchor="start" fill="#e7e9ee">What the guarantee pays</text>
+<text x="24" y="68" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Simulation · threshold = 80 units</text>
+<text x="70" y="101" font-size="20" font-weight="700" text-anchor="start" fill="#e7e9ee">Compensation</text>
+<path d="M70 120V330H450 M66 120H74 M66 225H74 M66 330H74 M196.666667 326V334 M323.333333 326V334 M450 326V334" fill="none" stroke="#8b909b" stroke-width="2"/>
+<path d="M70 120L323.333333 330H450" fill="none" stroke="#ff4d87" stroke-width="3"/>
+<text x="52" y="337.0" font-size="20" font-weight="400" text-anchor="end" fill="#8b909b">0</text>
+<text x="52" y="232.0" font-size="20" font-weight="400" text-anchor="end" fill="#8b909b">40</text>
+<text x="52" y="127.0" font-size="20" font-weight="400" text-anchor="end" fill="#8b909b">80</text>
+<text x="70.0" y="368" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">0</text>
+<text x="196.66666666666669" y="368" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">40</text>
+<text x="323.33333333333337" y="368" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">80</text>
+<text x="450.0" y="368" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">120</text>
+<rect x="224.333333" y="247.25" width="8.000000" height="8" fill="#5eead4"/>
+<text x="251" y="238" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">50 → 30</text>
+<rect x="351.000000" y="326" width="8.000000" height="8" fill="#5eead4"/>
+<text x="356" y="305" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">90 → 0</text>
+<text x="250" y="402" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">Property value · currency units</text>
+</svg>

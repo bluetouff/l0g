@@ -10,6 +10,8 @@ sourceArticle: "ia-ralentissement-1-qui-pourra-continuer"
 sourceUpdatedDate: "2026-09-27T12:11:07+02:00"
 ---
 
+<p class="edition-link"><a href="/en/publications/the-price-of-slowing-down/">Read all six parts in the free book The Price of Slowing Down (EPUB).</a></p>
+
 On September 22, 2026, Anthropic launched Claude Opus 5.5. Its published base prices fell from $5 to $4 per million input tokens and from $25 to $20 per million output tokens, compared with Opus 5. Tokens are the fragments of text a model processes. **Both rates fell by 20%.** New releases and price competition were continuing after Dario Amodei’s call to slow advances in AI. [Launch announcement and price table](https://www.anthropic.com/claude-opus-5-5).
 
 Selling a model and setting the research programme for its successor are separate decisions. That makes the scope of the promise essential: **what would slow down, at which threshold, and who would decide that development could continue?**

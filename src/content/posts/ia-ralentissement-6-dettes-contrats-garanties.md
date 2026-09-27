@@ -9,6 +9,8 @@ ogImage: "/illustrations/news/ia-dettes-contrats-garanties-v1.jpg"
 quickTake: {"fact": "CoreWeave a annoncé en août un crédit de 2,6 milliards de dollars d’environ cinq ans, associé à des contrats clients initiaux d’environ trois ans en moyenne.", "importance": "Le renouvellement des clients, les remboursements anticipés et les garanties déterminent qui doit apporter de la trésorerie si l’activité ralentit. Les protections varient selon chaque financement.", "uncertainty": "Les contrats publics ne livrent pas tous les paramètres d’amortissement. Aucune défaillance ni activation de garantie n’est affirmée ; les simulations sont fictives."}
 ---
 
+<p class="edition-link"><a href="/publications/le-prix-du-ralentissement/">Lire les six volets dans le livre gratuit « Le prix du ralentissement » (EPUB).</a></p>
+
 *Le prix du ralentissement · Volet 6*
 
 Après [le coût de l’attente et les taux japonais](/posts/ia-ralentissement-5-japon-taux-prix-attente/), ce sixième volet suit les obligations déjà signées : contrats clients, remboursement des prêts et garanties.

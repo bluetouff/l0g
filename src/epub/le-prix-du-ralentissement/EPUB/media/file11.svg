@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" role="img" aria-labelledby="ai-debt-fr-durations-title ai-debt-fr-durations-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="420" fill="#0b0d10"/>
+<title id="ai-debt-fr-durations-title">Deux durées à financer</title>
+<desc id="ai-debt-fr-durations-desc">CoreWeave, financement DDTL 5.5 annoncé le 10 août 2026. Durées approximatives : contrats clients initiaux, trois ans en moyenne ; prêt, cinq ans. Deux barres de même échelle, en années. Ce graphique ne représente pas le capital restant dû.</desc>
+<rect x="0" y="0" width="500" height="420" rx="6" fill="#121419"/>
+<text x="24" y="36" font-size="24" font-weight="700" text-anchor="start" fill="#e7e9ee">Deux durées à financer</text>
+<text x="24" y="68" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">CoreWeave · annonce du 10 août 2026</text>
+<text x="24" y="124" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Clients · durée moyenne</text>
+<text x="476" y="124" font-size="22" font-weight="400" text-anchor="end" fill="#e7e9ee">≈ 3 ans</text>
+<rect x="40.000000" y="144" width="240.000000" height="32" fill="#5eead4"/>
+<text x="24" y="234" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Prêt · durée totale</text>
+<text x="476" y="234" font-size="22" font-weight="400" text-anchor="end" fill="#e7e9ee">≈ 5 ans</text>
+<rect x="40.000000" y="254" width="400.000000" height="32" fill="#ff4d87"/>
+<path d="M40 332H440 M40 328V336 M200 328V336 M440 328V336" fill="none" stroke="#8b909b" stroke-width="2"/>
+<text x="40" y="367" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">0</text>
+<text x="200" y="367" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">2</text>
+<text x="440" y="367" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">5</text>
+<text x="250" y="402" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">Durée · années</text>
+</svg>

@@ -9,6 +9,8 @@ ogImage: "/illustrations/news/ia-modeles-chinois-concurrence-v1.jpg"
 quickTake: {"fact": "Cursor indique que Composer 2 et 2.5 reposent sur Kimi K2.5, avec un entraînement supplémentaire. Un modèle chinois peut donc devenir le composant d’une offre concurrente.", "importance": "Une alternative utilisable, autorisée et fiable peut peser sur les prix avant de dominer tous les classements. La facture doit inclure les corrections et le coût de migration.", "uncertainty": "Les performances présentées viennent de DeepSeek. Le coût humain est simulé, les marges des fournisseurs restent inconnues et chaque licence doit être lue pour le produit concerné."}
 ---
 
+<p class="edition-link"><a href="/publications/le-prix-du-ralentissement/">Lire les six volets dans le livre gratuit « Le prix du ralentissement » (EPUB).</a></p>
+
 *Le prix du ralentissement · Volet 3*
 
 Le développeur ouvre Cursor, confie une modification à son assistant et attend un résultat qui fonctionne. Derrière ce produit, une partie du travail vient de Chine. Dans son rapport technique du 27 mars 2026, Cursor explique avoir construit Composer 2 à partir de **Kimi K2.5**, avant de poursuivre son entraînement et de l’adapter à son environnement. La page de Composer 2.5 décrit encore cette même base. [Cursor, rapport technique](https://cursor.com/blog/composer-2-technical-report) ; [présentation de Composer](https://cursor.com/composer).

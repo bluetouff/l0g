@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" role="img" aria-labelledby="ai-models-en-bench-title ai-models-en-bench-desc" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif"><rect x="0" y="0" width="500" height="420" fill="#0b0d10"/>
+<title id="ai-models-en-bench-title">The task changes the comparison</title>
+<desc id="ai-models-en-bench-desc">Results published by DeepSeek, accessed September 27, 2026. DeepSWE v1.1, resolved: V4.1 Flash 74.2%, Opus 5.0 74.0%. Terminal-Bench 4.0, pass@1: V4.1 Flash 31.2%, Opus 5.0 51.8%. Four bars on one 0–100% scale. Not independently reproduced.</desc>
+<rect x="0" y="0" width="500" height="420" rx="6" fill="#121419"/>
+<text x="24" y="34" font-size="24" font-weight="700" text-anchor="start" fill="#e7e9ee">The task changes the comparison</text>
+<rect x="24" y="56" width="16.000000" height="16" fill="#5eead4"/>
+<text x="48" y="70" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">V4.1 Flash</text>
+<rect x="260" y="56" width="16.000000" height="16" fill="#ff4d87"/>
+<text x="284" y="70" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">Opus 5.0</text>
+<text x="24" y="108" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">DeepSWE v1.1 · resolved</text>
+<rect x="24" y="122" width="296.800000" height="22" fill="#5eead4"/>
+<text x="476" y="141" font-size="22" font-weight="700" text-anchor="end" fill="#5eead4">74.2%</text>
+<rect x="24" y="160" width="296.000000" height="22" fill="#ff4d87"/>
+<text x="476" y="179" font-size="22" font-weight="700" text-anchor="end" fill="#ff4d87">74.0%</text>
+<rect x="24" y="260" width="124.800000" height="22" fill="#5eead4"/>
+<text x="476" y="279" font-size="22" font-weight="700" text-anchor="end" fill="#5eead4">31.2%</text>
+<rect x="24" y="298" width="207.200000" height="22" fill="#ff4d87"/>
+<text x="476" y="317" font-size="22" font-weight="700" text-anchor="end" fill="#ff4d87">51.8%</text>
+<text x="24" y="246" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Terminal-Bench 4.0 · pass@1</text>
+<path d="M24 352H424 M24 348V356 M124 348V356 M224 348V356 M324 348V356 M424 348V356" fill="none" stroke="#8b909b" stroke-width="2"/>
+<text x="24" y="382" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">0</text>
+<text x="124" y="382" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">25</text>
+<text x="224" y="382" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">50</text>
+<text x="324" y="382" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">75</text>
+<text x="424" y="382" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">100</text>
+<text x="250" y="409" font-size="20" font-weight="400" text-anchor="middle" fill="#8b909b">Percent · common scale</text>
+</svg>
