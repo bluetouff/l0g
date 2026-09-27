@@ -165,7 +165,7 @@ Model behaviour, data destinations and permission to take actions require separa
 
 Economically, this separation helps explain why openness can appeal to some major technology suppliers. A cheaper model may make more applications viable, increase usage and leave a market for hosting. That is a plausible mechanism. The documents cited do not measure its net effect on AWS or the industry as a whole.
 
-## American companies do not all sell the same thing
+## Diverging American business interests
 
 The [joint letter on open weights](https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/), published on July 24, is an important counterpoint to the idea of a single industrial front. The signatory list consulted on September 27 includes Microsoft, Google, Amazon, Meta, NVIDIA and OpenAI. This does not establish that every one of them signed the initial version. The companies present openness as beneficial to competition and user control. Those are their arguments, not independent findings covering every risk.
 

@@ -33,7 +33,7 @@ Une conséquence en découle : l’ouverture peut affaiblir le pouvoir de fixati
 
 Il faut pourtant lire le contrat attaché au téléchargement. **Les modèles chinois ne partagent pas une licence unique.** DeepSeek V4.1 Flash est publié sous [licence MIT](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/raw/main/LICENSE), qui autorise notamment l’usage et la redistribution commerciaux sous réserve de ses conditions de notice. Le dépôt [Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) indique Apache 2.0. Ces droits ne peuvent pas être étendus par voisinage à toute la gamme Qwen.
 
-La [licence de Qwen3.8-Flash-Next](https://huggingface.co/Qwen/Qwen3.8-Flash-Next/raw/main/LICENSE) exige un accord séparé avant usage commercial lorsque le bénéficiaire, ou une entreprise qui lui est affiliée, exerce certaines activités de fourniture de modèles ou d’assistants de travail. L’exception vise un usage strictement interne, sans mise à disposition du modèle, de ses sorties ou de ses capacités à des tiers. Les définitions contractuelles délimitent les activités concernées, notamment les assistants autonomes principalement destinés au code ou au travail de bureau. Les conditions financières de l’accord séparé restent inconnues.
+La [licence de Qwen3.8-Flash-Next](https://huggingface.co/Qwen/Qwen3.8-Flash-Next/raw/main/LICENSE) exige un accord séparé avant usage commercial lorsque le bénéficiaire, ou une entreprise qui lui est affiliée, exerce certaines activités de fourniture de modèles ou d’assistants de travail. L’exception vise un usage strictement interne, sans mise à disposition du modèle, de ses sorties ou de ses capacités à des tiers. Les définitions contractuelles délimitent les activités concernées, notamment les assistants proposés comme produits indépendants, principalement destinés au code ou au travail de bureau. Les conditions financières de l’accord séparé restent inconnues.
 
 La différence est matérielle. Une équipe peut avoir accès aux fichiers et à leurs possibilités techniques sans disposer du même droit de commercialisation qu’avec une licence permissive. L’ouverture de l’artefact et l’ouverture du marché qui l’exploite sont deux questions à vérifier séparément.
 
@@ -164,7 +164,7 @@ Le comportement du modèle, les destinations des données et les permissions d�
 
 Sur le plan économique, cette séparation explique pourquoi l’ouverture peut attirer certains grands fournisseurs de technologie. Une baisse du prix du modèle peut rendre davantage d’applications viables, augmenter leur utilisation et laisser des revenus d’hébergement. Ce mécanisme est plausible ; les documents cités ne permettent pas d’en mesurer ici le solde net pour AWS ou pour l’ensemble du secteur.
 
-## Les acteurs américains ne défendent pas tous le même marché
+## Des intérêts américains divergents
 
 La [lettre collective sur les poids ouverts](https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/), publiée le 24 juillet, fournit un contrepoint important à l’idée d’un front industriel unique. La liste consultée le 27 septembre comporte notamment Microsoft, Google, Amazon, Meta, NVIDIA et OpenAI. Cela ne signifie pas que chacun figurait dans la version initiale. Les signataires présentent l’ouverture comme favorable à la concurrence et au contrôle des utilisateurs ; ce sont leurs arguments, pas des conclusions indépendantes sur tous les risques.
 
