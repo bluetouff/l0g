@@ -2333,5 +2333,372 @@
       "windowStart": "2026-09-13T08:30:00+02:00",
       "windowEnd": "2026-09-20T08:30:00+02:00"
     }
+  },
+  {
+    "issue": 9,
+    "slug": "2026-09-27",
+    "publishedAt": "2026-09-27T08:30:00+02:00",
+    "title": "L’Hebdo du 27 septembre. Bitget : 387,5 millions volés, le piège de la signature",
+    "description": "Édition automatisée du 27 septembre : 23 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Bitget : 387,5 millions volés, le piège de la signature",
+      "href": "/posts/bitget-vol-387-millions-cles-signature/",
+      "update": "Clés privées, fonds de protection, gel des XRP et calendrier de reprise : comprendre le vol chez Bitget et les limites des garanties annoncées."
+    },
+    "lead": "Bitget estime à 387,5 millions de dollars les actifs volés le 24 septembre 2026 et annonce une reprise des retraits à partir du 28 septembre.",
+    "number": {
+      "value": "23",
+      "label": "analyses publiées du 20 septembre à 08 h 30 au 27 septembre à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "Une clé restée secrète peut signer une instruction falsifiée si les contrôles en amont sont trompés. Le client dépend ensuite du rétablissement des retraits.",
+    "test": "L’absence de compromission des clés et la couverture des pertes sont les déclarations de Bitget. Le rapport technique indépendant et le bilan final des récupérations restent attendus.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "23 analyses publiées en sept jours",
+      "subtitle": "du 20 septembre à 08 h 30 au 27 septembre à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-09-27",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "LA SEMAINE EN CHIFFRES",
+      "points": [
+        {
+          "label": "dim 20/09",
+          "shortLabel": "dim 20/09",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-09-20",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 21/09",
+          "shortLabel": "lun 21/09",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-09-21",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 22/09",
+          "shortLabel": "mar 22/09",
+          "value": 5,
+          "valueLabel": "5",
+          "nature": "analyses publiées",
+          "scope": "2026-09-22",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 23/09",
+          "shortLabel": "mer 23/09",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-09-23",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 24/09",
+          "shortLabel": "jeu 24/09",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-09-24",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 25/09",
+          "shortLabel": "ven 25/09",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-09-25",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 26/09",
+          "shortLabel": "sam 26/09",
+          "value": 5,
+          "valueLabel": "5",
+          "nature": "analyses publiées",
+          "scope": "2026-09-26",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 27/09",
+          "shortLabel": "dim 27/09",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-09-27",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Bitget estime à 387,5 millions de dollars les actifs volés le 24 septembre 2026 et annonce une reprise des retraits à partir du 28 septembre.",
+    "linkedin": "23 analyses publiées sur l0g du 20 septembre à 08 h 30 au 27 septembre à 08 h 30.\n\nFocus structuré : Bitget : 387,5 millions volés, le piège de la signature.\n\nBitget estime à 387,5 millions de dollars les actifs volés le 24 septembre 2026 et annonce une reprise des retraits à partir du 28 septembre.\n\nPourquoi le lire : Une clé restée secrète peut signer une instruction falsifiée si les contrôles en amont sont trompés. Le client dépend ensuite du rétablissement des retraits.\n\nLimite à garder : L’absence de compromission des clés et la couverture des pertes sont les déclarations de Bitget. Le rapport technique indépendant et le bilan final des récupérations restent attendus.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-09-27/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 27 septembre compte 23 analyses publiées. Focus : Bitget : 387,5 millions volés, le piège de la signature.",
+      "2/5 Bitget estime à 387,5 millions de dollars les actifs volés le 24 septembre 2026 et annonce une reprise des retraits à partir du 28 septembre.",
+      "3/5 Pourquoi le lire : Une clé restée secrète peut signer une instruction falsifiée si les contrôles en amont sont trompés. Le client dépend ensuite du rétablissement des retraits.",
+      "4/5 Limite : L’absence de compromission des clés et la couverture des pertes sont les déclarations de Bitget. Le rapport technique indépendant et le bilan final des récupérations restent attendus.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-09-27/"
+    ],
+    "sources": [
+      {
+        "label": "Bitget : 387,5 millions volés, le piège de la signature",
+        "href": "/posts/bitget-vol-387-millions-cles-signature/",
+        "role": "Analyse publiée le 26 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Starlink : qui décide où la connexion s’arrête ?",
+        "href": "/posts/starlink-ukraine-controle-connexion/",
+        "role": "Analyse publiée le 26 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le diesel que Washington voudrait garder",
+        "href": "/posts/diesel-americain-exportations-prix-essence/",
+        "role": "Analyse publiée le 26 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Iran : comment Washington fait annuler un vol Téhéran-Dubaï",
+        "href": "/posts/iran-vol-teheran-dubai-sanctions-americaines/",
+        "role": "Analyse publiée le 26 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Fideuram : 95 millions d’euros sur ordre d’un faux patron",
+        "href": "/posts/fideuram-faux-patron-voix-clonee-95-millions/",
+        "role": "Analyse publiée le 26 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Yanbu : pourquoi la France veut protéger le pétrole saoudien",
+        "href": "/posts/yanbu-france-houthis-route-petrole/",
+        "role": "Analyse publiée le 25 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’IA vous demande de payer : ce que vous pouvez vérifier",
+        "href": "/posts/ia-recouvrement-6-verifier-droits/",
+        "role": "Analyse publiée le 25 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’IA vous demande de payer : les contrats derrière la relance",
+        "href": "/posts/ia-recouvrement-5-contrats-responsabilites/",
+        "role": "Analyse publiée le 25 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’IA vous demande de payer : faire corriger le dossier",
+        "href": "/posts/ia-recouvrement-4-corriger-dossier/",
+        "role": "Analyse publiée le 25 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Grâces de Trump : dans les comptes de la clémence",
+        "href": "/posts/graces-trump-economie-clemence/",
+        "role": "Analyse publiée le 24 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’IA vous demande de payer : ce que devient un appel à l’aide",
+        "href": "/posts/ia-recouvrement-3-appel-aide/",
+        "role": "Analyse publiée le 24 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’IA vous demande de payer : derrière les gains annoncés",
+        "href": "/posts/ia-recouvrement-2-gains-annonces/",
+        "role": "Analyse publiée le 24 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’IA vous demande de payer : qui décide de la relance ?",
+        "href": "/posts/ia-recouvrement-1-qui-decide-relance/",
+        "role": "Analyse publiée le 24 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Rachats d’actions : les milliards consacrés à contenir la dilution",
+        "href": "/posts/rachats-actions-anti-dilution-microsoft-airbus/",
+        "role": "Analyse publiée le 23 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Épargne : les 50 points qui changent le risque d’un placement à 10,5 %",
+        "href": "/posts/produits-structures-indices-decrement-risque-epargne/",
+        "role": "Analyse publiée le 23 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Assurance : quand votre fidélité entre dans le prix",
+        "href": "/posts/assurance-prix-fidelite/",
+        "role": "Analyse publiée le 22 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Banque du Japon : les prêts verts face au retour des taux",
+        "href": "/posts/banque-japon-prets-verts-taux-reserves/",
+        "role": "Analyse publiée le 22 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Budget 2027 : le prix de la dette française",
+        "href": "/posts/budget-2027-risque-obligataire-france/",
+        "role": "Analyse publiée le 22 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Private equity : la fabrique d’obligations pour les assureurs",
+        "href": "/posts/private-equity-cfo-obligations-assureurs/",
+        "role": "Analyse publiée le 22 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "UBS : pourquoi vendre une filiale peut fragiliser la banque",
+        "href": "/posts/ubs-capital-filiales-etrangeres-double-levier/",
+        "role": "Analyse publiée le 22 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Actions tokenisées : derrière les 2 %, une chaîne de crédit",
+        "href": "/posts/actions-tokenisees-xstocks-vaults-chaine-credit/",
+        "role": "Analyse publiée le 21 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Crédit privé : les emprunteurs qui peuvent partir",
+        "href": "/posts/credit-prive-emprunteurs-refinancement-revenus/",
+        "role": "Analyse publiée le 20 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Londres réécrit la sortie du QE",
+        "href": "/posts/londres-sortie-qe-tresor-billets/",
+        "role": "Analyse publiée le 20 septembre 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Bitget : 387,5 millions volés, le piège de la signature",
+        "href": "/posts/bitget-vol-387-millions-cles-signature/",
+        "publishedAt": "2026-09-26T16:13:02.000Z"
+      },
+      {
+        "title": "Starlink : qui décide où la connexion s’arrête ?",
+        "href": "/posts/starlink-ukraine-controle-connexion/",
+        "publishedAt": "2026-09-26T12:49:02.000Z"
+      },
+      {
+        "title": "Le diesel que Washington voudrait garder",
+        "href": "/posts/diesel-americain-exportations-prix-essence/",
+        "publishedAt": "2026-09-26T10:44:20.000Z"
+      },
+      {
+        "title": "Iran : comment Washington fait annuler un vol Téhéran-Dubaï",
+        "href": "/posts/iran-vol-teheran-dubai-sanctions-americaines/",
+        "publishedAt": "2026-09-26T08:59:26.000Z"
+      },
+      {
+        "title": "Fideuram : 95 millions d’euros sur ordre d’un faux patron",
+        "href": "/posts/fideuram-faux-patron-voix-clonee-95-millions/",
+        "publishedAt": "2026-09-26T06:20:00.000Z"
+      },
+      {
+        "title": "Yanbu : pourquoi la France veut protéger le pétrole saoudien",
+        "href": "/posts/yanbu-france-houthis-route-petrole/",
+        "publishedAt": "2026-09-25T18:44:00.000Z"
+      },
+      {
+        "title": "L’IA vous demande de payer : ce que vous pouvez vérifier",
+        "href": "/posts/ia-recouvrement-6-verifier-droits/",
+        "publishedAt": "2026-09-25T10:14:02.000Z"
+      },
+      {
+        "title": "L’IA vous demande de payer : les contrats derrière la relance",
+        "href": "/posts/ia-recouvrement-5-contrats-responsabilites/",
+        "publishedAt": "2026-09-25T08:50:27.000Z"
+      },
+      {
+        "title": "L’IA vous demande de payer : faire corriger le dossier",
+        "href": "/posts/ia-recouvrement-4-corriger-dossier/",
+        "publishedAt": "2026-09-25T06:00:07.000Z"
+      },
+      {
+        "title": "Grâces de Trump : dans les comptes de la clémence",
+        "href": "/posts/graces-trump-economie-clemence/",
+        "publishedAt": "2026-09-24T16:06:23.000Z"
+      },
+      {
+        "title": "L’IA vous demande de payer : ce que devient un appel à l’aide",
+        "href": "/posts/ia-recouvrement-3-appel-aide/",
+        "publishedAt": "2026-09-24T14:56:18.000Z"
+      },
+      {
+        "title": "L’IA vous demande de payer : derrière les gains annoncés",
+        "href": "/posts/ia-recouvrement-2-gains-annonces/",
+        "publishedAt": "2026-09-24T11:00:45.000Z"
+      },
+      {
+        "title": "L’IA vous demande de payer : qui décide de la relance ?",
+        "href": "/posts/ia-recouvrement-1-qui-decide-relance/",
+        "publishedAt": "2026-09-24T09:04:57.000Z"
+      },
+      {
+        "title": "Rachats d’actions : les milliards consacrés à contenir la dilution",
+        "href": "/posts/rachats-actions-anti-dilution-microsoft-airbus/",
+        "publishedAt": "2026-09-23T15:47:38.000Z"
+      },
+      {
+        "title": "Épargne : les 50 points qui changent le risque d’un placement à 10,5 %",
+        "href": "/posts/produits-structures-indices-decrement-risque-epargne/",
+        "publishedAt": "2026-09-23T10:16:09.012Z"
+      },
+      {
+        "title": "Assurance : quand votre fidélité entre dans le prix",
+        "href": "/posts/assurance-prix-fidelite/",
+        "publishedAt": "2026-09-22T17:25:20.000Z"
+      },
+      {
+        "title": "Banque du Japon : les prêts verts face au retour des taux",
+        "href": "/posts/banque-japon-prets-verts-taux-reserves/",
+        "publishedAt": "2026-09-22T09:56:14.000Z"
+      },
+      {
+        "title": "Budget 2027 : le prix de la dette française",
+        "href": "/posts/budget-2027-risque-obligataire-france/",
+        "publishedAt": "2026-09-22T08:51:06.000Z"
+      },
+      {
+        "title": "Private equity : la fabrique d’obligations pour les assureurs",
+        "href": "/posts/private-equity-cfo-obligations-assureurs/",
+        "publishedAt": "2026-09-22T07:54:33.000Z"
+      },
+      {
+        "title": "UBS : pourquoi vendre une filiale peut fragiliser la banque",
+        "href": "/posts/ubs-capital-filiales-etrangeres-double-levier/",
+        "publishedAt": "2026-09-22T07:10:08.000Z"
+      },
+      {
+        "title": "Actions tokenisées : derrière les 2 %, une chaîne de crédit",
+        "href": "/posts/actions-tokenisees-xstocks-vaults-chaine-credit/",
+        "publishedAt": "2026-09-21T05:39:46.000Z"
+      },
+      {
+        "title": "Crédit privé : les emprunteurs qui peuvent partir",
+        "href": "/posts/credit-prive-emprunteurs-refinancement-revenus/",
+        "publishedAt": "2026-09-20T17:11:50.000Z"
+      },
+      {
+        "title": "Londres réécrit la sortie du QE",
+        "href": "/posts/londres-sortie-qe-tresor-billets/",
+        "publishedAt": "2026-09-20T11:34:07.000Z"
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-09-27T10:17:13.056Z",
+      "windowStart": "2026-09-20T08:30:00+02:00",
+      "windowEnd": "2026-09-27T08:30:00+02:00"
+    }
   }
 ]
