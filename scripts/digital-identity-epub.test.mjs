@@ -109,9 +109,8 @@ test('cover, publication page and catalog expose the exact digital identity edit
   assert.match(catalog, /PublicationSpotlight publication="digital-identity"/u);
 });
 
-test('the dedicated page and catalog expose five optimized editorial images', async () => {
+test('the dedicated page exposes five optimized editorial images', async () => {
   const page = readFileSync(PAGE, 'utf8');
-  const spotlight = readFileSync(join(ROOT, 'src/components/PublicationSpotlight.astro'), 'utf8');
   const catalog = readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8');
   const images = [
     { file: 'identite-telephone-chaine.webp', format: 'webp', width: 1200, height: 675 },
@@ -134,6 +133,5 @@ test('the dedicated page and catalog expose five optimized editorial images', as
   for (const file of images.slice(0, 4).map((image) => image.file)) assert.match(page, new RegExp(file, 'u'));
   assert.match(page, /Ces illustrations éditoriales sont conceptuelles/u);
   assert.match(page, /identite-telephone-og\.jpg/u);
-  assert.match(spotlight, /identite-telephone-chaine\.webp/u);
   assert.match(catalog, /publication="digital-identity"/u, 'the identity edition remains discoverable when a newer book becomes the catalog cover');
 });

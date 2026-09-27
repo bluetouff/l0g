@@ -239,18 +239,6 @@ const copy = isRecouvrement ? {
 ---
 
 <article class:list={['publication-spotlight', { 'publication-spotlight--recouvrement': isRecouvrement, 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing, 'publication-spotlight--identity': isDigitalIdentity }]}>
-  {isDigitalIdentity && (
-    <a class="publication-teaser" href={publicationUrl} aria-label="Découvrir les quatre tableaux visuels de l’enquête">
-      <img
-        src="/illustrations/publications/identite-telephone-chaine.webp"
-        width="1200"
-        height="675"
-        alt="Carte générique, téléphone, terminal, courrier et infrastructure reliés dans une chaîne de services"
-        loading="lazy"
-        decoding="async"
-      />
-    </a>
-  )}
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
@@ -309,17 +297,6 @@ const copy = isRecouvrement ? {
   .publication-spotlight--water { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--invoice { --publication-card-accent: var(--color-accent); }
   .publication-spotlight--identity { --publication-card-accent: var(--color-signal); }
-  .publication-teaser {
-    display: block;
-    grid-column: 1 / -1;
-    overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--publication-card-accent) 34%, var(--color-line));
-    border-radius: 13px;
-    aspect-ratio: 16 / 7;
-    background: #071017;
-  }
-  .publication-teaser img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
-  .publication-teaser:hover img { transform: scale(1.015); }
   .publication-cover {
     display: block;
     align-self: center;
@@ -442,7 +419,6 @@ const copy = isRecouvrement ? {
     .publication-facts li:nth-child(even) { border-left: 1px solid var(--color-line); padding-left: 0.65rem; }
     .publication-actions { display: grid; grid-template-columns: 1fr; }
     .publication-actions a { width: 100%; }
-    .publication-teaser { aspect-ratio: 16 / 9; }
   }
   @media (max-width: 430px) {
     .publication-spotlight { align-items: start; padding: 0.85rem; }
@@ -451,5 +427,4 @@ const copy = isRecouvrement ? {
     .publication-copy h3 { font-size: clamp(1.45rem, 8vw, 1.9rem); }
     .publication-meta { align-items: flex-start; }
   }
-  @media (prefers-reduced-motion: reduce) { .publication-teaser img { transition: none; } }
 </style>
