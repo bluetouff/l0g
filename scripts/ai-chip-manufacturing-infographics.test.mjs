@@ -91,6 +91,14 @@ function checkYield(svg) {
   assert.match(svg, /(?:capacité identique|equal capacity)/);
 }
 
+function checkMicronRelease(article) {
+  const releasePath = '/news/press-release/2026/Micron-in-High-Volume-Production-of-HBM4-Designed-for-NVIDIA-Vera-Rubin-PCIe-Gen6-SSD-and-SOCAMM2-03-16-2026/default.aspx';
+  const urls = [...article.matchAll(/https?:\/\/[^\s<>"')]+/gu)].map(([raw]) => new URL(raw));
+  const releases = urls.filter(url => url.pathname === releasePath);
+  assert(releases.length >= 1, 'The dated Micron release must be cited');
+  for (const url of releases) assert.equal(url.origin, 'https://investors.micron.com', 'Use the canonical investor publication');
+}
+
 test('Overlap and manufacturing calculations use reproducible assumptions and shared scales', () => {
   for (const pair of figures) { checkBottleneck(pair[0]); checkYield(pair[1]); }
   for (const [i, article] of articles.entries()) {
@@ -98,7 +106,13 @@ test('Overlap and manufacturing calculations use reproducible assumptions and sh
     assert.match(article, i === 0 ? /par rapport à la génération G4/ : /relative to G4/);
     assert.match(article, i === 0 ? /8 gigabits/ : /8-gigabit/);
     assert.match(article, /3C6000\/S, \/D et \/Q|3C6000\/S, \/D and \/Q/);
-    assert(!article.includes('stage-investors.micron.com'));
+    checkMicronRelease(article);
+  }
+});
+
+test('Micron citation check rejects staging, deceptive origins and insecure transport', () => {
+  for (const origin of ['https://stage-investors.micron.com', 'https://investors.micron.com.example.org', 'https://investors.micron.com@other.example', 'https://other.example/investors.micron.com', 'http://investors.micron.com']) {
+    assert.throws(() => checkMicronRelease(articles[0].replaceAll('https://investors.micron.com', origin)));
   }
 });
 
