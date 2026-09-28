@@ -756,6 +756,17 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'scf', sigle: 'SCF', nom: 'Supply chain finance', ...privateCreditSection,
+    def: 'A finance provider pays a supplier before the buyer’s agreed due date, then receives the buyer’s payment. Assessment starts with the commercial obligation, transferred rights and cash-flow timetable. An advance against an expected sale also carries the risk that the sale never occurs.',
+    guide: '/en/analysis/greensill-insurance-future-receivables-risk/',
+    atlas: {
+      intuition: 'The finance provider advances cash to the supplier; the buyer later settles an identified commercial obligation.',
+      articles: [{ label: 'Greensill: lending before the invoice exists', href: '/en/analysis/greensill-insurance-future-receivables-risk/', detail: 'Future receivables, insurance and cash availability.', kind: 'article' }],
+      sources: [{ label: 'Bank of England, 6 May 2021', href: 'https://committees.parliament.uk/publications/5759/documents/66073/default/', detail: 'Page 3: supplier finance and Greensill’s funding model.', kind: 'source' }, { label: 'IASB, 25 May 2023', href: 'https://www.ifrs.org/news-and-events/news/2023/05/iasb-increases-transparency-of-companies-supplier-finance/', detail: 'Disclosure of amounts, payment dates and liquidity risks.', kind: 'source' }],
+      related: ['affacturage'],
+    },
+  },
+  {
     slug: 'affacturage',
     sigle: 'Factoring',
     nom: 'Receivables finance and collection',
@@ -765,9 +776,9 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     accent: 'var(--color-accent)',
     atlas: {
       intuition: 'Turning an invoice into an advance brings forward cash while creating contractual costs and conditions.',
-      articles: [{ label: 'Radiant World: disputed receivables', href: '/en/analysis/radiant-world-disputed-invoices-trade-finance/', detail: 'The debt, its outstanding balance and the funder’s payment rights.', kind: 'article' }],
+      articles: [{ label: 'Greensill: lending before the invoice exists', href: '/en/analysis/greensill-insurance-future-receivables-risk/', detail: 'Future receivables and conditions of insurance.', kind: 'article' }, { label: 'Radiant World: disputed receivables', href: '/en/analysis/radiant-world-disputed-invoices-trade-finance/', detail: 'The debt, its outstanding balance and the funder’s payment rights.', kind: 'article' }],
       sources: [{ label: 'International Trade Administration', href: 'https://www.trade.gov/report/trade-finance-guide', detail: 'Export Factoring chapter: purchasing short-term receivables and allocating risks by contract.', kind: 'source' }, { label: 'BCEAO / COFEB', href: 'https://cofeb.bceao.int/actualite/webinaires-conjoints-bceao-afreximbank-fci-sur-le-theme-affacturage-et-financement-des', detail: 'Institutional explanation of factoring.', kind: 'source' }],
-      related: ['arrieres-de-paiement'],
+      related: ['arrieres-de-paiement', 'scf'],
     },
   },
   {
