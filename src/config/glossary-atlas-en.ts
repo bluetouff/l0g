@@ -202,6 +202,18 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+    slug: 'ccip', sigle: 'CCIP', nom: 'Cross-Chain Interoperability Protocol',
+    def: 'Chainlink’s protocol for communication between blockchains. It carries messages whose attestations are checked at the destination; token contracts then perform the configured operations, such as minting or releasing units. Controls, finality and rights over the asset depend on configuration and legal arrangements.',
+    guide: '/en/analysis/ccip-2-0-assets-rules-crypto-finance/',
+    ...cryptoSection,
+    atlas: {
+      intuition: 'Each chain keeps its own ledger. A transfer requires checking the source message before changing the destination ledger.',
+      articles: [{ label: 'CCIP 2.0: moving assets with their rules', href: '/en/analysis/ccip-2-0-assets-rules-crypto-finance/', kind: 'article' }],
+      sources: [{ label: 'Chainlink, CCIP architecture', href: 'https://docs.chain.link/ccip/concepts/architecture/overview', kind: 'source' }],
+      related: ['tokenisation-des-actifs', 'smart-contract'],
+    },
+  },
   {"slug": "streamshare", "sigle": "Streamshare", "nom": "Share of eligible streams", "sectionTitle": "Digital economy & data", "accent": "var(--color-signal)", "def": "A rights holder’s share of eligible streams within a defined market and period. In proportional allocation, that share determines its fraction of a royalty pool. Contracts then determine what reaches the creator. Counted artificial streams can dilute other rights holders’ shares.", "guide": "/en/analysis/ai-music-fake-streams-royalties/", "atlas": {"articles": [{"label": "AI music: who gets paid for fake streams?", "href": "/en/analysis/ai-music-fake-streams-royalties/", "kind": "article"}], "sources": [{"label": "Spotify, Understanding Spotify royalties", "href": "https://support.spotify.com/de-en/artists/article/understanding-spotify-royalties/", "kind": "source"}]}},
   {"slug": "marche-predictif", "sigle": "Prediction market", "nom": "Event contracts", "sectionTitle": "US regulation & institutions", "accent": "var(--color-topic-blue)", "def": "A market for contracts whose payout depends on the outcome of a defined event. Prices may be interpreted as implied probabilities, subject to liquidity, fees and resolution rules. Legal treatment depends on the contract, operating entity, jurisdiction and customer; US authorisation does not confer access rights in France.", "guide": "/en/analysis/polymarket-europe-betting-financial-products/", "atlas": {"articles": [{"label": "Polymarket and European financial regulation", "href": "/en/analysis/polymarket-europe-betting-financial-products/", "kind": "article"}], "sources": [{"label": "ESMA, event contracts and binary options, 3 July 2026", "href": "https://www.esma.europa.eu/sites/default/files/2026-07/ESMA35-243228190-8148_Public_Statement_on_the_application_of_the_national_product_intervention_measures_on_binary_options_to_event_contracts.pdf", "kind": "source"}]}},
   {

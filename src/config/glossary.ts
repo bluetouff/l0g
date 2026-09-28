@@ -402,6 +402,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'DAT', nom: 'Digital Asset Treasury', def: "Société à trésorerie numérique, dont le bilan est majoritairement constitué de cryptoactifs financés par émission de titres. Strategy (ex-MicroStrategy) en est l'archétype ; le modèle dépend de la prime sur l'actif net." },
       { sigle: 'mNAV', nom: 'Market net asset value', def: "Rapport entre la capitalisation d'une société à trésorerie numérique et la valeur de marché de ses cryptoactifs. Au-dessus de 1, émettre des actions est relutif ; sous 1, le financement par actions devient dilutif et le modèle se grippe." },
       { sigle: 'BTC Yield', nom: 'Rendement en bitcoin', def: "Métrique propre à Strategy : variation du nombre de bitcoins par action diluée sur une période. Mesure la relution de la stratégie d'accumulation, sans être un rendement au sens classique." },
+      { sigle: 'CCIP', nom: 'Cross-Chain Interoperability Protocol', def: 'Protocole de communication entre blockchains de Chainlink. Il transporte des messages dont les attestations sont vérifiées à destination ; les contrats de tokens réalisent ensuite les opérations prévues, comme la création ou la libération des unités. Les contrôles, la finalité et les droits sur l’actif dépendent de la configuration et du montage juridique.', guide: '/posts/ccip-2-0-actifs-regles-crypto-finance/' },
       { sigle: 'Ethereum', nom: 'Couche de règlement programmable', def: "Blockchain publique programmable qui exécute des contrats intelligents et sert de couche de règlement pour ETH, stablecoins, rollups, DeFi et actifs tokenisés.", guide: '/posts/ethereum-tradfi-infrastructure-finance/' },
       { sigle: 'EVM', nom: 'Ethereum Virtual Machine', def: "Machine virtuelle d'Ethereum qui exécute le code des smart contracts. Son importance vient de son effet standard : outils, wallets, audits et applications peuvent se réutiliser sur de nombreux réseaux compatibles.", guide: '/posts/ethereum-tradfi-infrastructure-finance/' },
       { sigle: 'Smart contract', nom: 'Contrat intelligent', def: "Programme déployé sur une blockchain, capable de détenir des actifs et d'exécuter des règles de transfert ou de calcul. Utile pour automatiser le règlement, mais exposé au risque de bug, d'oracle et de gouvernance.", guide: '/posts/ethereum-tradfi-infrastructure-finance/' },
@@ -1314,6 +1315,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     articles: [{ label: 'Crédit privé : les emprunteurs qui peuvent partir', href: '/posts/credit-prive-emprunteurs-refinancement-revenus/', detail: 'Mercer, revenus récurrents et emploi du capital remboursé.', kind: 'article' }],
     sources: [{ label: 'BlackRock Credit Strategies Fund, prospectus 2024', href: 'https://www.sec.gov/Archives/edgar/data/1752019/000119312524242920/d815713d424b3.htm', detail: 'Rubriques Prepayment Risk et Reinvestment Risk, pages 13 et 88.', kind: 'source' }],
     related: ['credit-prive', 'bdc'],
+  },
+  'ccip': {
+    intuition: 'Chaque chaîne tient son propre registre. Un transfert exige de vérifier le message de départ avant de modifier le registre d’arrivée.',
+    articles: [{ label: 'CCIP 2.0 : faire circuler les actifs avec leurs règles', href: '/posts/ccip-2-0-actifs-regles-crypto-finance/', kind: 'article' }],
+    sources: [{ label: 'Chainlink, architecture de CCIP', href: 'https://docs.chain.link/ccip/concepts/architecture/overview', kind: 'source' }],
+    related: ['tokenisation-des-actifs', 'smart-contract'],
   },
   'tokenisation-des-actifs': {
     intuition: 'Un token peut circuler rapidement tout en restant dépendant d’un émetteur, d’un conservateur et de conditions de remboursement.',
