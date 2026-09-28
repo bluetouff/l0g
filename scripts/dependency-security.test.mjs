@@ -48,7 +48,9 @@ test('TOML rejects truncated structures promptly and preserves ordinary document
   const result = spawnSync(process.execPath, ['--input-type=module', '-e', `
     import assert from 'node:assert/strict';
     import { parse, TomlError } from 'smol-toml';
-    assert.deepEqual(parse('title = "Article"\\nvalues = [1, 2]\\n'), { title: 'Article', values: [1, 2] });
+    // smol-toml 1.9 returns tables with a null prototype.
+    const expected = Object.assign(Object.create(null), { title: 'Article', values: [1, 2] });
+    assert.deepEqual(parse('title = "Article"\\nvalues = [1, 2]\\n'), expected);
     for (const input of ['values = [1 # unfinished', 'value = { item = 1 # unfinished']) {
       assert.throws(() => parse(input), TomlError);
     }
