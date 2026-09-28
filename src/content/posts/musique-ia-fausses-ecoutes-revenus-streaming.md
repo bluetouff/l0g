@@ -78,7 +78,7 @@ Le problème précède d’ailleurs les générateurs actuels. Dans son étude s
 
 L’IA ajoute une capacité de production. Elle ne transforme pas toute musique générée en escroquerie, et elle n’est pas nécessaire pour acheter ou fabriquer des écoutes sur un morceau enregistré par des humains.
 
-## Le catalogue grossit beaucoup plus vite que son public
+## Le grand écart entre dépôts et écoutes
 
 Les chiffres de Deezer décrivent une arrivée massive de fichiers, pas une victoire équivalente dans les oreilles. Le **21 juillet 2026**, l’entreprise rapportait près de **90 000 titres générés par jour en moyenne en juin**, avec une part dépassant la moitié des livraisons quotidiennes à son pic. Le même communiqué situait les titres générés entre **1 et 3 % des écoutes**. [Données publiées par Deezer](https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/).
 
