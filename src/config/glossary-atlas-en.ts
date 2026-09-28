@@ -782,6 +782,18 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'ratio-combine', sigle: 'Combined ratio', nom: 'Insurance underwriting profitability', ...macroSection,
+    def: 'Claims costs and expenses divided by premiums, expressed as a percentage. Below 100%, underwriting generates a surplus; above 100%, costs exceed premiums. The measure excludes investment results and does not measure solvency. Comparisons require the period, business line and reinsurance treatment to be specified.',
+    guide: '/en/analysis/not-at-fault-insurance-non-renewal-risk-selection/',
+    atlas: {
+      intuition: 'Comparing claims and operating costs with premiums shows underwriting profitability before investment results.',
+      formula: 'Combined ratio = (claims costs + expenses) / premiums × 100',
+      articles: [{ label: 'Car insurance: customer selection', href: '/en/analysis/not-at-fault-insurance-non-renewal-risk-selection/', detail: 'Costs, reinsurance and underwriting in France.', kind: 'article' }],
+      sources: [{ label: 'ACPR, insurers at the end of 2025', href: 'https://acpr.banque-france.fr/system/files/2026-06/20260630_AS181_assureurs_S2_2025.pdf', detail: 'Page 22: combined-ratio definition; page 12: net-of-reinsurance scope.', kind: 'source' }],
+      related: ['reassurance'],
+    },
+  },
+  {
     slug: 'cat-nat',
     sigle: 'Cat Nat',
     nom: 'France’s statutory natural-catastrophe insurance scheme',

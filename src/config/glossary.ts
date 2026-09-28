@@ -110,6 +110,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Ressources propres', nom: 'Own resources', def: "Recettes du budget européen : droits de douane, quote-part de TVA et surtout contributions nationales assises sur le revenu national brut. Les « nouvelles ressources propres » censées rembourser NGEU (carbone aux frontières, ETS, contribution des entreprises) exigent l'unanimité et n'ont toujours pas été adoptées." },
       { sigle: 'CFP', nom: 'Cadre financier pluriannuel (MFF)', def: "Budget de long terme de l'UE, négocié pour sept ans à l'unanimité. La proposition 2028-2034 avoisine 2 000 milliards d'euros courants, dont 168 milliards réservés au remboursement de la dette NGEU : le premier cadre à porter la facture de l'emprunt commun." },
       { sigle: 'Headroom', nom: 'Marge de manœuvre budgétaire', def: "Écart entre le plafond de ressources que les États membres se sont engagés à fournir à l'UE si nécessaire et les dépenses effectives du budget. Cette marge sert de garantie aux emprunts de l'Union, dont le prêt de 90 milliards d'euros à l'Ukraine : un engagement conditionnel, hors du bilan de chaque État." },
+      { sigle: 'Ratio combiné', nom: 'Rentabilité technique de l’assurance', def: "Rapport des charges de sinistres et des frais aux primes, exprimé en pourcentage. En dessous de 100 %, l’activité dégage un excédent technique ; au-dessus, les charges dépassent les primes. Il exclut le résultat financier et ne mesure pas la solvabilité. Toute comparaison doit préciser la période, la branche et le traitement de la réassurance.", guide: '/posts/assurance-resiliation-sinistre-non-responsable-selection-risques/' },
       { sigle: 'Cat Nat', nom: 'Régime d’indemnisation des catastrophes naturelles', def: "Régime légal français qui étend les contrats de dommages aux biens à certains effets d'une catastrophe naturelle reconnue par arrêté. Son financement repose sur une surprime nationale. Les assureurs peuvent céder une partie du risque à CCR, dont la couverture bénéficie de la garantie de l'État.", guide: '/posts/climat-etat-reassureur-cat-nat/' },
       { sigle: 'Réassurance', nom: 'Assurance de l’assureur', def: "Contrat par lequel un assureur cède à un autre organisme une partie des primes et des pertes qu'il porte. L'assuré conserve sa relation avec sa compagnie : la réassurance répartit la charge entre professionnels lorsque les sinistres deviennent lourds ou très corrélés.", guide: '/posts/climat-etat-reassureur-cat-nat/' },
       { sigle: 'IPCH', nom: 'Indice des prix à la consommation harmonisé', def: "Mesure d'inflation harmonisée entre États membres de l'UE (HICP en anglais), calculée selon une méthodologie commune par Eurostat. C'est l'indice que la BCE cible pour sa stabilité des prix à 2 %." },
@@ -1139,6 +1140,13 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: 'Un fournisseur a livré et la date de règlement est passée : sa trésorerie finance désormais le retard de son client.',
     sources: [{ label: 'Flynn et Pessoa, FMI, 2014', href: 'https://www.imf.org/-/media/websites/imf/imported-full-text-pdf/external/pubs/ft/tnm/2014/_tnm1403.pdf', detail: 'Définition des obligations échues et stratégie de règlement.', kind: 'source' }],
     related: ['bfr', 'affacturage'],
+  },
+  'ratio-combine': {
+    intuition: 'Comparer le coût des sinistres et de la gestion aux primes permet de lire la rentabilité de la couverture avant les placements.',
+    formula: 'Ratio combiné = (charges de sinistres + frais) / primes × 100',
+    articles: [{ label: 'Assurance auto : le tri des clients', href: '/posts/assurance-resiliation-sinistre-non-responsable-selection-risques/', detail: 'Coûts, réassurance et sélection des assurés en France.', kind: 'article' }],
+    sources: [{ label: 'ACPR, situation des assureurs fin 2025', href: 'https://acpr.banque-france.fr/system/files/2026-06/20260630_AS181_assureurs_S2_2025.pdf', detail: 'Page 22 : définition du ratio combiné ; page 12 : périmètre net de réassurance.', kind: 'source' }],
+    related: ['reassurance'],
   },
   scf: {
     intuition: 'Le financeur avance l’argent au fournisseur ; l’acheteur règle ensuite une obligation commerciale identifiée.',
