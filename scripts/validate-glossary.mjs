@@ -29,7 +29,7 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
 assert.equal(glossaryEntries.length, 555, 'Le corpus doit conserver ses 555 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 109, 'Le graphe Atlas doit conserver ses 109 nœuds');
+assert.equal(glossaryAtlasEntries.length, 110, 'Le graphe Atlas doit conserver ses 110 nœuds');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'mvno'), '/posts/sfr-rachat-partage-operateur-prix-forfaits/'],
   [glossaryAtlasEnBySlug.get('mvno'), '/en/analysis/sfr-breakup-phone-bill-networks-competition/'],
