@@ -609,6 +609,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'MVNO', nom: 'Opérateur mobile virtuel', def: 'Opérateur qui achète un accès en gros à un ou plusieurs réseaux mobiles pour vendre ses propres services, sans posséder son propre réseau radio. Il conçoit ses offres et reste responsable des services fournis à ses clients. Ses possibilités de concurrence dépendent notamment des tarifs de gros et des conditions de changement de réseau hôte.', guide: '/posts/sfr-rachat-partage-operateur-prix-forfaits/' },
       { sigle: 'Liste repoussoir', nom: 'Liste d’exclusion pour respecter une opposition', def: 'Fichier conservant les seules informations nécessaires pour éviter de solliciter à nouveau une personne opposée à la prospection. Son usage est réservé à la gestion de cette opposition, notamment pour empêcher un nouvel envoi après une réimportation de contacts.', guide: '/posts/commerce-traces-donnees-apres-fin-contrat/' },
       { sigle: 'Profilage', nom: 'Évaluation automatisée de caractéristiques personnelles', def: 'Traitement automatisé de données personnelles visant à évaluer certains aspects d’une personne, par exemple ses intérêts, son comportement ou ses déplacements. Un profil peut reposer sur des déductions et contenir des erreurs. Le profilage ne suppose pas nécessairement une décision entièrement automatisée ; une statistique collective qui ne sert pas à évaluer une personne ne suffit pas à le caractériser.', guide: '/posts/commerce-traces-fabrication-profils-donnees-personnelles/' },
       { sigle: 'Segment d’audience', nom: 'Sélection d’identifiants selon un critère', def: 'Ensemble d’identifiants sélectionnés selon une règle, par exemple une visite observée, une caractéristique déclarée ou un intérêt inféré par un modèle. Le libellé du segment ne prouve ni la présence réelle de cette caractéristique chez chaque personne ni le droit de réutiliser les données pour tout usage.', guide: '/posts/commerce-traces-fabrication-profils-donnees-personnelles/' },
@@ -929,6 +930,10 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   'tarification-algorithmique': {
     articles: [{ label: 'Prix automatiques et concurrence', href: '/posts/prix-automatiques-concurrence-algorithmes/', kind: 'article' }],
     sources: [{ label: 'Autorité de la concurrence et Bundeskartellamt, Algorithms and Competition', href: 'https://www.autoritedelaconcurrence.fr/sites/default/files/Algorithms_and_Competition_Working-Paper.pdf', kind: 'source' }],
+  },
+  mvno: {
+    articles: [{ label: 'Le partage de SFR vu depuis votre forfait', href: '/posts/sfr-rachat-partage-operateur-prix-forfaits/', kind: 'article' }],
+    sources: [{ label: 'Arcep, définition et liste des MVNO', href: 'https://www.arcep.fr/mes-demarches-et-services/acteurs-regules/operateurs-telecoms/liste-des-mvno.html', kind: 'source' }],
   },
   dscr: {
     formula: 'DSCR = trésorerie disponible pour la dette / service de la dette sur la même période',

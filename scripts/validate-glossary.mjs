@@ -28,8 +28,17 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 554, 'Le corpus doit conserver ses 554 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 108, 'Le graphe Atlas doit conserver ses 108 nœuds');
+assert.equal(glossaryEntries.length, 555, 'Le corpus doit conserver ses 555 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 109, 'Le graphe Atlas doit conserver ses 109 nœuds');
+for (const [entry, href] of [
+  [glossaryEntries.find(item => item.slug === 'mvno'), '/posts/sfr-rachat-partage-operateur-prix-forfaits/'],
+  [glossaryAtlasEnBySlug.get('mvno'), '/en/analysis/sfr-breakup-phone-bill-networks-competition/'],
+]) {
+  assert(entry);
+  assert.equal(entry.guide, href);
+  assert.deepEqual(entry.atlas.articles.map(item => item.href), [href]);
+  assert.deepEqual(entry.atlas.sources.map(item => item.href), ['https://www.arcep.fr/mes-demarches-et-services/acteurs-regules/operateurs-telecoms/liste-des-mvno.html']);
+}
 for (const slug of ['rachat-d-actions', 'actions-propres', 'remuneration-en-actions']) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);
