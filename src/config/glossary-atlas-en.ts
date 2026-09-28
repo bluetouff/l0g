@@ -1050,11 +1050,11 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'repo',
     sigle: 'Repo',
     nom: 'Repurchase agreement',
-    def: 'The sale of a security, most often a Treasury bond, paired with a buy-back the next day at a slightly higher price. A cash loan secured by collateral, the basic building block of overnight market funding.',
+    def: 'The sale of a security with an agreement to repurchase it on agreed terms. Economically, it provides financing secured by that security. A repo can be overnight, longer term or open-ended; the repo rate and the collateral haircut are distinct parameters.',
     ...macroSection,
     atlas: {
       intuition: 'Repo says how public debt funds itself day to day once it becomes collateral.',
-      formula: 'cash today against a security, then buy-back tomorrow with implicit interest',
+      formula: 'cash today against a security, then repurchase at the agreed maturity and price',
       whyNow: 'Repo connects Treasuries, hedge funds, banks and money market funds. A collateral squeeze can turn a rate move into a liquidity problem.',
       articles: [
         usDebtArticles[1],

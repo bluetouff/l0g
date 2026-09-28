@@ -1,0 +1,305 @@
+---
+title: "French debt and its impatient creditors"
+seoTitle: "French debt and hedge funds: short-term funding risk | l0g"
+description: "Who holds French debt? Primary sources, three charts and a simulator explain how short-term repo funding can trigger forced bond sales."
+pubDate: "2026-09-28T17:35:22+02:00"
+tags: ["France", "sovereign debt", "hedge funds", "repo", "ECB"]
+draft: false
+ogImage: "/illustrations/news/dette-francaise-hedge-funds-v1.jpg"
+sourceArticle: "dette-francaise-hedge-funds"
+sourceUpdatedDate: "2026-09-28T17:35:22+02:00"
+---
+
+import FrenchDebtRepoLab from '../../components/FrenchDebtRepoLab.astro';
+
+A French government bond can have ten years left to run while its buyer must renew the borrowing used to finance it within days. The government and its creditor then operate on entirely different clocks. That mismatch can become a source of instability: a fund that wants to keep its bonds may have to sell them to raise cash. The Financial Stability Board identifies precisely this transmission channel between investors' funding and sovereign bond prices. [S10](https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/)
+
+The suggestion that French debt is “falling into the hands of hedge funds” sounds like a takeover. The public data examined here do not establish that. They do show a substantial hedge fund presence in trading and parts of the financing system. Understanding the danger requires separating **who holds the securities, who trades them and how those positions are financed**. Available statistics do not answer all three questions equally well. [S02](https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/436_Bulletin%20mensuel%20septembre%202026.pdf) [S05](https://www.ecb.europa.eu/press/blog/date/2024/html/ecb.blog20240923~d859db790b.en.html) [S06](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/Annex_Item_2_%20BMCG_HF_survey_results.pdf)
+
+A numerical example brings the issue into focus. In the model below, a €100 million bond position loses 2% of its value. At refinancing, the lender requires more collateral protection. After using a separate €1 million cash reserve, the funding shortfall is €3.9 million. Yet restoring the funding arrangement by selling the bonds themselves requires **€78 million of sales**. This is a calculation under stated assumptions, not a measurement of funds' positions or a forecast for France.
+
+[Try the assumptions in the simulator](#repo-lab-en).
+
+## Who actually holds the debt?
+
+In the first quarter of 2026, French general government debt under the Maastricht definition reached **€3,536.1 billion, or 117.5% of GDP**. This covers the whole general government sector: central government, local authorities, social security and related bodies. As of 28 September, this is the latest quarter published by INSEE; the second-quarter release is scheduled for 29 September. [S01](https://www.insee.fr/fr/statistiques/9010340)
+
+Agence France Trésor tracks a different perimeter: marketable central government debt, including medium- and long-term OAT bonds and short-term BTF bills. That stock amounted to **€2,903.8 billion on 31 August 2026**, with an average remaining life of **8 years and 142 days**. These two debt totals cannot simply be subtracted: their dates and coverage differ. [S03](https://www.aft.gouv.fr/fr)
+
+AFT's first-quarter 2026 holder breakdown shows **57.5%** of marketable central government debt, measured at market value, held by non-residents. French credit institutions held 10.5%, French insurers 9.6%, French mutual funds 1.8%, and other French holders 20.6%. This classification does not provide a separate category capturing all hedge funds. [S02](https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/436_Bulletin%20mensuel%20septembre%202026.pdf)
+
+“Non-resident” describes economic residence, not an investment strategy. An overseas investor can be a central bank, an insurer or a pension fund. An intermediary may also hold securities for beneficiaries elsewhere. **A 57.5% non-resident share does not mean a 57.5% hedge fund share.** A geographical breakdown cannot tell us how much leverage an investor uses, how it hedges or how long it will hold its bonds. [S02](https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/436_Bulletin%20mensuel%20septembre%202026.pdf) [S10](https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/)
+
+<figure class="infographic" style="max-width:28rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-labelledby="debt-hf-en-1-title debt-hf-en-1-desc" style="width:100%;height:auto">
+<title id="debt-hf-en-1-title">Who holds the securities?</title>
+<desc id="debt-hf-en-1-desc">Market-value shares in Q1 2026: non-residents 57.5%, other French holders 20.6%, French banks 10.5%, insurers 9.6%, mutual funds 1.8%. Hedge funds are not separately identified.</desc>
+<rect x="0" y="0" width="480" height="480" fill="var(--color-surface)" />
+<text x="24" y="38" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-paper)" text-anchor="start">Who holds the securities?</text>
+<text x="24" y="72" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-muted)" text-anchor="start">Q1 2026 · % of market value</text>
+<text x="24" y="112" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">Non-residents</text>
+<text x="456" y="112" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-signal)" text-anchor="end">57.5%</text>
+<rect x="24" y="125" width="432" height="12" fill="var(--color-line-strong)" />
+<rect x="24" y="125" width="248.4" height="12" fill="var(--color-signal)" />
+<text x="24" y="175" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">Other French holders</text>
+<text x="456" y="175" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-paper)" text-anchor="end">20.6%</text>
+<rect x="24" y="188" width="432" height="12" fill="var(--color-line-strong)" />
+<rect x="24" y="188" width="88.992" height="12" fill="var(--color-muted)" />
+<text x="24" y="238" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">French banks</text>
+<text x="456" y="238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-paper)" text-anchor="end">10.5%</text>
+<rect x="24" y="251" width="432" height="12" fill="var(--color-line-strong)" />
+<rect x="24" y="251" width="45.36" height="12" fill="var(--color-muted)" />
+<text x="24" y="301" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">French insurers</text>
+<text x="456" y="301" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-paper)" text-anchor="end">9.6%</text>
+<rect x="24" y="314" width="432" height="12" fill="var(--color-line-strong)" />
+<rect x="24" y="314" width="41.472" height="12" fill="var(--color-muted)" />
+<text x="24" y="364" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">French mutual funds</text>
+<text x="456" y="364" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-paper)" text-anchor="end">1.8%</text>
+<rect x="24" y="377" width="432" height="12" fill="var(--color-line-strong)" />
+<rect x="24" y="377" width="7.776" height="12" fill="var(--color-muted)" />
+<text x="24" y="443" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-accent)" text-anchor="start">Hedge fund share: not identified</text>
+</svg>
+<figcaption>Source: AFT, September 2026 bulletin, p. 3, Banque de France data. Marketable central government debt, Q1 2026. Every bar runs from 0 to 100%. Residence does not identify strategy or leverage. <a href="https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/436_Bulletin%20mensuel%20septembre%202026.pdf">Source document</a>.</figcaption>
+</figure>
+
+## Where the “more than half” figure comes from
+
+Another claim is that hedge funds account for more than half the market. Its source needs careful reading. In a September 2024 blog post, the ECB reported that their share of euro area government bond trading had increased from **26% in 2018 to 56% in 2023**, based on data from **one leading electronic trading platform**. This is neither the whole French market nor a share of the outstanding debt stock. It is not a September 2026 observation either. [S05](https://www.ecb.europa.eu/press/blog/date/2024/html/ecb.blog20240923~d859db790b.en.html)
+
+The same publication referred to hedge funds accounting for more than half the demand received by primary dealers around German, French, Italian and Spanish auctions. The underlying survey dates from June 2024. Its question concerned **expressions of demand collected before an auction**. That does not mean funds receive half of every issue, let alone hold those bonds until maturity. [S06](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/Annex_Item_2_%20BMCG_HF_survey_results.pdf)
+
+A simple example explains the distinction. Imagine 100 identical bonds, of which ten change hands ten times during a day. Those ten bonds generate 100 transactions while remaining just ten securities out of the stock. Trading volume measures activity; holdings measure what remains in a portfolio at a particular date. An investor can dominate the first measure without dominating the second.
+
+This does not make trading activity harmless. Transactions help establish the prices at which other investors can buy and sell. A minority of highly active holders can therefore influence market conditions. But automatically converting their share of turnover into a percentage of debt “under their control” creates a precision the evidence does not support.
+
+## Why would hedge funds buy French debt?
+
+A hedge fund is an alternative investment fund: it can buy securities, take positions that benefit from falling prices, or combine both. The label does not describe a single strategy. [S07](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/2024-06-26_BMCG_Summary.pdf)
+
+Hedge funds do not all pursue the same strategy. Some take views on the general direction of interest rates or the yield gap between France and Germany. Others seek small pricing discrepancies between similar bonds. Others trade around auctions, anticipating the arrival and subsequent redistribution of new supply. The minutes of the ECB's Bond Market Contact Group distinguish these systematic and relative-value strategies. [S07](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/2024-06-26_BMCG_Summary.pdf)
+
+A fund might buy an OAT it considers cheap while selling another instrument to reduce its overall interest-rate exposure. Its objective is then to profit from a **relative price change**, not necessarily an improvement in France's public finances. Selling a futures contract can hedge bonds bought in the cash market. Looking only at that short position could turn a hedged buyer into an apparent bet against France. [S07](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/2024-06-26_BMCG_Summary.pdf) [S14](https://www.financialresearch.gov/briefs/files/OFRBr_2020_01_Basis-Trades.pdf)
+
+In normal conditions, such arbitrage can bring prices into line, help distribute new issuance and allow dealers to sell down inventories. Problems arise when investors have similar positions and face similar exit constraints. A market may contain many different firms while depending on one crowded investment idea and a small group of lenders. A diversity of names does not guarantee a diversity of behaviour. [S05](https://www.ecb.europa.eu/press/blog/date/2024/html/ecb.blog20240923~d859db790b.en.html) [S24](https://www.fsb.org/2025/07/leverage-in-nonbank-financial-intermediation-final-report/)
+
+## The government borrows long. Its buyer may borrow very short
+
+Understanding the funding requires opening up a **[repurchase agreement](/en/glossary/repo/)**, or repo. Economically, it allows an investor to obtain cash against securities. Legally, it generally takes the form of a sale accompanied by an agreement to repurchase. The bond provides collateral; the cash lender temporarily receives the security. [S10](https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/)
+
+Take our hypothetical €100 million position. With a **2% collateral haircut**, the lender advances €98 million. The holder supplies the remaining €2 million. The haircut is not the interest rate on the loan, nor a reduction in the amount the government promises to repay. It is the portion of the bond's market value the lender will not finance. [S11](https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/icma-ercc-publications/frequently-asked-questions-on-repo/21-what-is-a-haircut/)
+
+The €100 million position is supported by €2 million contributed to that position: a 50-to-one ratio. **This is not the total leverage of an actual hedge fund.** Cash reserves, derivatives margins and other assets would change its balance sheet. The calculation deliberately isolates one transaction to show why a small price change can matter greatly to a leveraged buyer.
+
+The maturity mismatch is not merely theoretical. In its June 2026 report, the Banque de France stated that close to **70% of the hedge fund repo transactions it examined had maturities of less than fifteen days**. It also noted that the largest funds made greater use of term funding. The chart uses monthly snapshots of outstanding OAT-backed repos from January 2025 to January 2026. It measures residual maturities and excludes open repos without an agreed maturity. The figure describes neither ownership shares nor conditions observed in September 2026. [S09](https://www.banque-france.fr/system/files/2026-08/RSF_JUIN_2026_EN.pdf)
+
+
+
+A futures contract does not eliminate the timing issue. In a cash–futures basis trade, a fund buys a bond, finances it in repo and sells a futures contract. Part of the interest-rate risk may be offset, but funding costs, relative prices and margin requirements can change before the position is closed. Hedging a price exposure and having cash immediately available are different problems. [S14](https://www.financialresearch.gov/briefs/files/OFRBr_2020_01_Basis-Trades.pdf)
+
+It is also important not to transplant the US market wholesale into France. In June 2024, ECB contact-group participants considered the classic US cash–futures basis trade relatively uncommon in the euro area. That observation is dated; it does not measure use of the strategy in September 2026. [S07](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/2024-06-26_BMCG_Summary.pdf)
+
+## A 2% price fall can require €78 million of sales
+
+Return to the model, which covers **only the cash bond and its repo, before any hedging**. The €100 million bond position is now worth €98 million. Debt to the lender remains €98 million. At refinancing, the lender will finance only 95% of collateral value, rather than 98%. The new borrowing ceiling is **€93.1 million**: €98 million × 95%.
+
+Financing must therefore fall by **€4.9 million**. Two effects combine: the price decline removes €1.96 million of borrowing capacity at the old haircut; raising the haircut from 2% to 5% removes another €2.94 million against the remaining value. The liquidity requirement is not an additional €4.9 million economic loss. It represents a reduction in permitted borrowing.
+
+The holder uses its separate €1 million cash reserve, leaving a €3.9 million gap. It might seem sufficient to sell bonds worth that amount. But sold bonds can no longer support the remaining loan. **Every euro of sales repays one euro of debt while removing 95 cents of borrowing capacity.** It closes only five cents of the funding gap.
+
+The calculation is therefore €3.9 million ÷ 5% = **€78 million of bond sales**, assuming the stressed price remains unchanged. After those sales and use of the reserve, collateral is €20 million and debt is €19 million. The 5% haircut is satisfied. About 79.6% of the post-shock position has been sold, even though the bond price fell by only 2%.
+
+<figure class="infographic" style="max-width:28rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440" role="img" aria-labelledby="debt-hf-en-2-title debt-hf-en-2-desc" style="width:100%;height:auto">
+<title id="debt-hf-en-2-title">Selling also removes collateral</title>
+<desc id="debt-hf-en-2-desc">Hypothetical example: at a 5% haircut, selling one euro repays one euro of debt but removes 95 cents of borrowing capacity. The funding gap falls by five cents.</desc>
+<rect x="0" y="0" width="480" height="440" fill="var(--color-surface)" />
+<text x="24" y="38" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-paper)" text-anchor="start">Selling also removes collateral</text>
+<text x="24" y="72" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-muted)" text-anchor="start">Hypothetical example · 5% final haircut</text>
+<text x="24" y="119" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-paper)" text-anchor="start">€1 sold = €1 repaid</text>
+<rect x="24" y="142" width="432" height="34" fill="var(--color-paper)" />
+<text x="24" y="222" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" fill="var(--color-signal)" text-anchor="start">Borrowing capacity removed: €0.95</text>
+<rect x="24" y="243" width="410.4" height="34" fill="var(--color-signal)" />
+<rect x="434.4" y="243" width="21.6" height="34" fill="var(--color-accent)" />
+<text x="24" y="324" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-accent)" text-anchor="start">Funding gap closed: €0.05</text>
+<text x="24" y="389" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" fill="var(--color-paper)" text-anchor="start">€3.9m ÷ 5% = €78m of sales</text>
+<text x="24" y="421" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Constant price · cash already used</text>
+</svg>
+<figcaption>l0g calculation. Initial position €100m, price −2%, haircut from 2% to 5%, separate cash €1m. The gap after cash is €3.9m. Every sale also removes collateral. No derivatives, alternative funding, fees or price impact. The simulator below details these assumptions.</figcaption>
+</figure>
+
+The striking result follows from explicit constraints. The fund cannot supply different collateral, find another lender or obtain additional cash. The price does not fall further during liquidation, and interest and transaction costs are ignored. A new haircut is not arbitrarily imposed halfway through an unchanged contract: the scenario assumes it applies at refinancing or at a contractually permitted reset.
+
+A hedge that gains value and delivers cash promptly could reduce the requirement. An increase in initial margin could make it worse. The simulator does not artificially add a loss on the bond to a loss on its hedge: **it includes no hedge at all**. And when selling the entire position would not repay the debt, it displays the residual deficit rather than an impossible volume of sales.
+
+To see why cash timing matters, consider only the refinancing calculation: if €2 million of hedge gains have already arrived and supplement the €1 million reserve, required sales fall to **€38 million**: (4.9 − 3) ÷ 5%. A gain that is not yet available cannot pay that liquidity call. This supplementary calculation does not model closing the hedge or its other margin requirements.
+
+The general formula appears in the methodology. The economic point is straightforward: selling an asset bought almost entirely with borrowed money does not release as much cash as selling an asset that was paid for outright.
+
+<FrenchDebtRepoLab lang="en" />
+
+## When banks and funds all head for the exit
+
+At the level of one isolated position, the calculation above changes no market price. At market level, sell orders must find buyers. When several funds sell the same bonds, dealer banks may have more inventory to absorb just as their own risk limits tighten. The remaining buyers may demand lower prices. The collateral supporting other holders' borrowing then loses value too. [S10](https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/)
+
+Collateral circulation adds another layer. Where contracts permit, a dealer can reuse a bond received in repo to obtain financing of its own. This does not magically create several bonds: one security moves through a chain of transactions and obligations to return collateral. A participant that declines to renew its loan can force others to find replacement cash or securities. [S10](https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/)
+
+
+
+This chain can transmit a shock to France that did not originate in Paris. In one possible scenario, a fund loses money elsewhere, reduces its overall risk and sells readily tradable OATs. The sale need not express a new judgement about the French budget. Distinguishing causes requires examining relative prices, funding conditions and market liquidity together. A rise in French yields alone does not demonstrate an “attack”.
+
+The opposite argument also has limits. Technical selling does not make every French risk premium unjustified. Deficits, growth and the credibility of public financing matter to creditors. The analytical challenge is to distinguish a lasting repricing of risk from a move amplified by cash constraints. Monetary stabilisation tools themselves make this distinction. [S23](https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220721~973e6e7273.en.html)
+
+## 1998: a private portfolio threatens its neighbours
+
+LTCM sought, among other things, to profit as interest-rate spreads returned to normal. Following the Russian shock of August 1998, several spreads widened together and diversification provided far less protection than expected. Testimony by the New York Fed's president focused on the danger of counterparties simultaneously closing out positions. Eventually, **fourteen banks and securities firms** participated in a private recapitalisation. The New York Fed facilitated discussions; no public money was committed to the transaction. [S19](https://www.newyorkfed.org/newsevents/speeches/1998/mcd981001)
+
+For our purposes, the lesson concerns collective dependence. A lender may sensibly decide to reduce its exposure to a distressed fund. If every lender acts at once, they can depress the prices of the assets they intended to sell for protection. That conflict between individual prudence and collective consequences is why private-sector leverage matters to a sovereign borrower.
+
+## March 2020: the sellers held the safest securities
+
+The turmoil in US Treasuries demonstrated that even a vast sovereign bond market can experience a dash for cash. A Federal Reserve study estimated **net Treasury security sales by large hedge funds at $173 billion in March 2020**, after adjusting for valuation effects. Funds identified as likely cash–futures basis traders accounted for $148 billion of that estimate. [S12](https://www.federalreserve.gov/econres/notes/feds-notes/sizing-hedge-funds-treasury-market-activities-and-holdings-20211006.htm)
+
+A convenient single-cause story would be misleading. The sales were substantial, but other investors were selling too. Another study by Fed researchers found bilateral repo haircuts and volumes relatively unchanged; funds' own liquidity management helped drive the reduction in positions. **Precautionary cash management is therefore another documented explanation for the March 2020 sales.** [S12](https://www.federalreserve.gov/econres/notes/feds-notes/sizing-hedge-funds-treasury-market-activities-and-holdings-20211006.htm) [S13](https://www.federalreserve.gov/econres/feds/hedge-fund-treasury-trading-and-funding-fragility-evidence-from-the-covid-19-crisis.htm)
+
+Researchers at the Office of Financial Research argued in July 2020 that the available evidence did not support simply attributing worsening illiquidity to basis-trade unwinds. Federal Reserve intervention may have limited the spillovers. Research differs over the mechanism's causal importance. It supports examining the vulnerability, not blaming it alone for every bond-market crisis. [S14](https://www.financialresearch.gov/briefs/files/OFRBr_2020_01_Basis-Trades.pdf)
+
+## Britain, 2022: pension strategies can be fragile too
+
+Following the fiscal announcement of 23 September 2022, the UK thirty-year gilt yield rose **130 basis points in three trading sessions**, according to the Bank of England. One basis point is 0.01 percentage point, so this was a 1.30 percentage-point increase. The resulting fall in bond prices put pressure on leveraged liability-driven investment strategies, or LDI, used to hedge pension obligations. [S15](https://www.bankofengland.co.uk/quarterly-bulletin/2023/2023/financial-stability-buy-sell-tools-a-gilt-market-case-study)
+
+The apparent contradiction matters. Higher rates can reduce the present value of promised pensions and improve a scheme's funding position. Yet its hedging instruments can simultaneously require cash. An improvement in a long-term balance sheet does not automatically pay tomorrow's margin call. The IMF describes this mismatch between solvency and liquidity. [S18](https://www.imf.org/-/media/files/publications/cr/2023/english/1gbrea2023002.pdf)
+
+Investors needed to mobilise capital, but some vehicles could not receive it quickly enough. They sold bonds, increasing the pressure on their own collateral. The Bank of England's Sarah Breeden described how roughly **£200 billion in pooled LDI funds** could threaten a £1.4 trillion traded gilt market. The fragility of one segment can matter more than its share of the total stock. [S16](https://www.bankofengland.co.uk/speech/2022/november/sarah-breeden-speech-at-isda-aimi-boe-on-nbfi-and-leverage)
+
+
+
+The Bank of England actually purchased **£19.3 billion of gilts between 28 September and 14 October 2022**. That should not be confused with the initial £65 billion purchase capacity. The purchases were temporary, and the entire portfolio had been sold back to the market by January 2023. [S15](https://www.bankofengland.co.uk/quarterly-bulletin/2023/2023/financial-stability-buy-sell-tools-a-gilt-market-case-study)
+
+What were hedge funds doing? A transaction-level Bank of England study found that they were compensated for providing liquidity to the LDI–pension–insurance sector during the crisis. Casting them as the forced sellers responsible would reverse part of the story. The risk lies in the structure and its constraints, not merely the label attached to the investor. [S17](https://www.bankofengland.co.uk/working-paper/2023/an-anatomy-of-the-2022-gilt-market-crisis)
+
+## “Vulture funds” involve another mechanism: the contract
+
+Argentina illustrates a different danger. Following restructurings, creditors that refused the exchange, known as holdouts, pursued the country in court. In 2014, US rulings prevented certain payments to holders of restructured debt without payments to the litigating creditors, based on an interpretation of the *pari passu* clause. The IMF analysed the implications for sovereign restructurings. [S20](https://www.imf.org/external/np/pp/eng/2014/090214.pdf)
+
+Here, the creditor's leverage came from a contract, a court and restrictions on the payment chain. This was not a forced sale to meet a margin call. Collective action clauses aim to allow amendments approved by a qualified majority without granting every holder a veto. France introduced them in new securities with maturities above one year issued from 1 January 2013. The exact conditions depend on the securities and applicable rules. [S21](https://www.aft.gouv.fr/files/archives/attachments/22396.pdf)
+
+There is therefore no direct path from “more hedge funds trade OATs” to “France will suffer Argentina's treatment”. Litigation risk in a potential restructuring warrants separate analysis. Neither an assumed hedge fund majority nor a French default scenario is established by the statistics examined here.
+
+## The interest bill changes as debt is refinanced
+
+The coupon on an existing fixed-rate OAT does not rise because a fund sells it at a lower price. The seller may lose money; the government retains the payments specified in the security. Market prices do matter for new issuance, including reopening an existing bond line: AFT adjusts the issue price while keeping the security's contractual characteristics unchanged. [S25](https://www.aft.gouv.fr/fr/presentation-oat)
+
+Market yields can move today while the budgetary interest bill changes gradually. The government must finance deficits and replace maturing debt. Its indicative 2026 programme provides for **€310 billion of medium- and long-term issuance net of buybacks**. That does not mean a €310 billion deficit: refinancing accounts for part of the issuance too. [S04](https://www.aft.gouv.fr/fr/programme-indicatif-financement-letat)
+
+To establish scale, borrowing €100 billion at an annual rate one percentage point higher adds roughly €1 billion to annual interest in a simple example. But immediately applying that extra percentage point to the entire French debt stock would invent an instant bill that does not arise on existing fixed-rate bonds.
+
+An AFT simulation cited by the Senate during scrutiny of the 2026 budget estimated that a **permanent 100-basis-point increase across the entire yield curve** would raise the annual interest bill by **€3.2 billion after one year, €23.5 billion after five years and €33.5 billion after nine years**. These are sensitivities to the budget baseline used at the time, not a forecast updated in September 2026. They are not cumulative costs. [S22](https://www.senat.fr/rap/l25-139-312/l25-139-312-syn.pdf)
+
+<figure class="infographic" style="max-width:28rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 420" role="img" aria-labelledby="debt-hf-en-3-title debt-hf-en-3-desc" style="width:100%;height:auto">
+<title id="debt-hf-en-3-title">When a rate shock persists</title>
+<desc id="debt-hf-en-3-desc">AFT simulation for the 2026 budget: a permanent 100-basis-point increase adds €3.2 billion to annual interest after one year, €23.5 billion after five years and €33.5 billion after nine years.</desc>
+<rect x="0" y="0" width="480" height="420" fill="var(--color-surface)" />
+<text x="24" y="38" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-paper)" text-anchor="start">When a rate shock persists</text>
+<text x="24" y="72" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Permanent +100 basis points</text>
+<text x="24" y="104" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">Extra annual interest · €bn</text>
+<text x="24" y="151" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start">After 1 year</text>
+<text x="456" y="151" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-signal)" text-anchor="end">3.2</text>
+<rect x="24" y="167" width="39.49714285714286" height="20" fill="var(--color-signal)" />
+<text x="24" y="223" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start">After 5 years</text>
+<text x="456" y="223" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-signal)" text-anchor="end">23.5</text>
+<rect x="24" y="239" width="290.0571428571429" height="20" fill="var(--color-signal)" />
+<text x="24" y="295" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start">After 9 years</text>
+<text x="456" y="295" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-signal)" text-anchor="end">33.5</text>
+<rect x="24" y="311" width="413.48571428571427" height="20" fill="var(--color-signal)" />
+<text x="24" y="369" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-muted)" text-anchor="start">AFT simulation / 2026 budget bill</text>
+<text x="24" y="401" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">Annual amounts, not cumulative</text>
+</svg>
+<figcaption>Source: Senate, November 2025, p. 3, AFT simulation. Permanent +1 percentage point across the yield curve relative to the budget baseline. Common scale: €0–35bn. Budget sensitivity, without estimating a hedge fund effect or updating the forecast in September 2026. <a href="https://www.senat.fr/rap/l25-139-312/l25-139-312-syn.pdf">Source document</a>.</figcaption>
+</figure>
+
+The debt's average maturity gives the government time; it does not insulate it from a persistent shock. Conversely, a brief disruption does not necessarily make nine years of borrowing more expensive. The duration of the shock, the debt falling due and the issuance calendar determine how much reaches the budget.
+
+## The ECB can intervene, subject to conditions
+
+The **Transmission Protection Instrument**, or TPI, allows the ECB to buy in the secondary market against disorderly dynamics unwarranted by fundamentals. The decision depends, among other things, on debt sustainability and compliance with the European fiscal and economic framework. Being under an excessive deficit procedure does not automatically exclude a country: the text distinguishes that situation from a finding that effective action has not been taken. **Intervention remains a Governing Council decision, not automatic insurance for the French Treasury.** [S23](https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220721~973e6e7273.en.html)
+
+This changes the nature of the risk without eliminating it. A credible buyer of last resort can interrupt a selling cascade. It does not make future deficits free or guarantee an unchanged borrowing cost for contested fiscal policies. Investors also face uncertainty about the diagnosis and the timing of intervention.
+
+## The vulnerabilities worth monitoring
+
+Useful surveillance combines several perspectives. Auction results reveal demand at the prices offered. In its June 2026 report, the Banque de France noted a decline in OAT auction coverage from roughly **3.2 to 2.5 since 2025**, using a series ending in May 2026. This ratio is not a probability of default and does not describe buyers' cash reserves. [S09](https://www.banque-france.fr/system/files/2026-08/RSF_JUIN_2026_EN.pdf)
+
+For the mechanism examined here, surveillance would also need funding maturities, lender concentration, additional collateral requirements, derivatives margins and dealers' capacity to absorb sales. A very active fund with secure funding has a different risk profile from one dependent on an imminent loan rollover. A bond that is easy to sell in normal conditions is not an unlimited source of liquidity when everyone wants to sell it.
+
+The Financial Stability Board's July 2025 recommendations point in this direction: better visibility of leverage, counterparty risk management, targeted measures and cross-border cooperation. They also call for attention to regulation's unintended effects. Abruptly reducing available credit during a panic can trigger exactly the liquidations regulators are trying to prevent. [S24](https://www.fsb.org/2025/07/leverage-in-nonbank-financial-intermediation-final-report/)
+
+France benefits from a diverse investor base and confidence in its fiscal trajectory. But counting creditors' passports is not enough. **The decisive question is how many buyers can still hold their securities when their funding becomes more expensive, more demanding or unavailable.** A country can suffer from the departure of creditors in a hurry even when they never owned most of its debt.
+
+## Simulator methodology and limits
+
+All simulator amounts are in millions of euros. With initial position V, price decline p, initial haircut h₀, final haircut h₁ and cash reserve B, initial debt is D = V × (1 − h₀). Collateral after the shock is V′ = V × (1 − p). The required reduction in funding is C = max[0; D − V′ × (1 − h₁)]. After applying cash, the gap is G = max[0; C − B].
+
+When the securities sold are the repo collateral and their stressed price remains constant, sales of X reduce both debt and collateral by X. The condition is D − min(B, C) − X ≤ (1 − h₁) × (V′ − X). This gives **X = G ÷ h₁**, provided X does not exceed V′. Otherwise, full liquidation leaves uncovered debt, which is displayed separately.
+
+The model excludes hedges, other assets, interest, fees, contractual margin thresholds, settlement timing, new funding and price effects from the sales themselves. Parameters are adjustable assumptions, never data assigned to an actual fund. It calculates neither crisis probabilities nor future yields and gives no investment recommendation.
+
+Adjustable haircuts are strictly positive and non-decreasing. Zero and negative repo haircuts exist, as the Banque de France notes; they fall outside this simulator’s scope. [S09](https://www.banque-france.fr/system/files/2026-08/RSF_JUIN_2026_EN.pdf)
+
+**Research cut-off: 28 September 2026.** Observation dates are distinguished from publication dates. The sources establish a funding vulnerability; they do not provide an exhaustive measurement of hedge funds' net OAT holdings, hedges and immediately available liquidity.
+
+## Further reading
+
+For price and refinancing mechanisms, read [our analysis of France’s 2027 budget and bond-market risk](/en/analysis/france-2027-budget-bond-market-risk/). The funding chain is explored in [Repo, the liquidity factory](/en/analysis/repo-the-liquidity-factory/).
+
+## Sources and documents
+
+- **Insee** : [À la fin du premier trimestre 2026, le ratio de dette publique s’établit à 117,5 % du PIB][S01] (2026-06-25).
+- **Agence France Trésor / Banque de France** : [Bulletin mensuel, n° 436, septembre 2026][S02] (2026-09).
+- **Agence France Trésor** : [Chiffres clés de la dette négociable de l’État][S03] (Consulté le 2026-09-28).
+- **Agence France Trésor** : [Programme indicatif de financement de l’État pour 2026][S04] (2025-12-30).
+- **Banque centrale européenne** : [Hedge funds: good or bad for market functioning?][S05] (2024-09-23).
+- **BCE / Bond Market Contact Group** : [BMCG Hedge Fund Survey][S06] (2024-06-26).
+- **BCE / Bond Market Contact Group** : [Summary of the meeting of 26 June 2024][S07] (2024-07-01).
+- **Banque de France** : [Financial Stability Report, June 2026][S09] (2026-06-24).
+- **Conseil de stabilité financière / FSB** : [Vulnerabilities in Government Bond-backed Repo Markets][S10] (2026-02-04).
+- **ICMA** : [Frequently Asked Questions on Repo, 21: What is a haircut?][S11] (Sans date ; consulté le 2026-09-28).
+- **Federal Reserve** : [Sizing hedge funds’ Treasury market activities and holdings][S12] (2021-10-06).
+- **Federal Reserve, FEDS 2021-038** : [Hedge Fund Treasury Trading and Funding Fragility: Evidence from the COVID-19 Crisis][S13] (2021 ; page révisée 2021-11-08).
+- **Office of Financial Research, Daniel Barth et Jay Kahn** : [Basis Trades and Treasury Market Illiquidity, Brief 20-01][S14] (2020-07-16).
+- **Bank of England** : [Financial stability buy/sell tools: a gilt market case study][S15] (2023-11-20).
+- **Bank of England, Sarah Breeden** : [Risks from leverage: how did a small corner of the pensions industry threaten financial stability?][S16] (2022-11-07).
+- **Bank of England** : [An anatomy of the 2022 gilt market crisis][S17] (2023-03-31).
+- **Fonds monétaire international** : [Lessons from the United Kingdom’s Liability-Driven Investment (LDI) Crisis, Country Report 2023/253][S18] (2023-07-11).
+- **Federal Reserve Bank of New York, William J. McDonough** : [Testimony on the private-sector recapitalization of Long-Term Capital Management][S19] (1998-10-01).
+- **Fonds monétaire international** : [Strengthening the Contractual Framework to Address Collective Action Problems in Sovereign Debt Restructuring][S20] (2014-09-02).
+- **Agence France Trésor** : [Bulletin mensuel n° 272, janvier 2013 : clauses d’action collective][S21] (2013-01).
+- **Sénat, commission des finances** : [PLF 2026 : Mission Engagements financiers de l’État, L’essentiel][S22] (2025-11).
+- **Banque centrale européenne** : [The Transmission Protection Instrument][S23] (2022-07-21).
+- **Conseil de stabilité financière / FSB** : [Leverage in Nonbank Financial Intermediation: Final report][S24] (2025-07-09).
+- **Agence France Trésor** : [Présentation des OAT][S25] (Sans date ; consulté le 2026-09-28).
+
+[S01]: https://www.insee.fr/fr/statistiques/9010340
+[S02]: https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/436_Bulletin%20mensuel%20septembre%202026.pdf
+[S03]: https://www.aft.gouv.fr/fr
+[S04]: https://www.aft.gouv.fr/fr/programme-indicatif-financement-letat
+[S05]: https://www.ecb.europa.eu/press/blog/date/2024/html/ecb.blog20240923~d859db790b.en.html
+[S06]: https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/Annex_Item_2_%20BMCG_HF_survey_results.pdf
+[S07]: https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/2024-06-26_BMCG_Summary.pdf
+[S09]: https://www.banque-france.fr/system/files/2026-08/RSF_JUIN_2026_EN.pdf
+[S10]: https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/
+[S11]: https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/icma-ercc-publications/frequently-asked-questions-on-repo/21-what-is-a-haircut/
+[S12]: https://www.federalreserve.gov/econres/notes/feds-notes/sizing-hedge-funds-treasury-market-activities-and-holdings-20211006.htm
+[S13]: https://www.federalreserve.gov/econres/feds/hedge-fund-treasury-trading-and-funding-fragility-evidence-from-the-covid-19-crisis.htm
+[S14]: https://www.financialresearch.gov/briefs/files/OFRBr_2020_01_Basis-Trades.pdf
+[S15]: https://www.bankofengland.co.uk/quarterly-bulletin/2023/2023/financial-stability-buy-sell-tools-a-gilt-market-case-study
+[S16]: https://www.bankofengland.co.uk/speech/2022/november/sarah-breeden-speech-at-isda-aimi-boe-on-nbfi-and-leverage
+[S17]: https://www.bankofengland.co.uk/working-paper/2023/an-anatomy-of-the-2022-gilt-market-crisis
+[S18]: https://www.imf.org/-/media/files/publications/cr/2023/english/1gbrea2023002.pdf
+[S19]: https://www.newyorkfed.org/newsevents/speeches/1998/mcd981001
+[S20]: https://www.imf.org/external/np/pp/eng/2014/090214.pdf
+[S21]: https://www.aft.gouv.fr/files/archives/attachments/22396.pdf
+[S22]: https://www.senat.fr/rap/l25-139-312/l25-139-312-syn.pdf
+[S23]: https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220721~973e6e7273.en.html
+[S24]: https://www.fsb.org/2025/07/leverage-in-nonbank-financial-intermediation-final-report/
+[S25]: https://www.aft.gouv.fr/fr/presentation-oat

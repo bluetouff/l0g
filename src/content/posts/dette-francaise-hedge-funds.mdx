@@ -1,0 +1,304 @@
+---
+title: "Dette française : les créanciers pressés"
+seoTitle: "Dette française et hedge funds : le financement court | l0g"
+description: "Qui détient la dette française ? Sources de 2026, trois graphiques et un simulateur pour comprendre comment le repo peut déclencher des ventes forcées."
+pubDate: "2026-09-28T17:35:22+02:00"
+tags: ["France", "dette publique", "hedge funds", "repo", "BCE"]
+draft: false
+ogImage: "/illustrations/news/dette-francaise-hedge-funds-v1.jpg"
+quickTake: {"fact": "Au T1 2026, les non-résidents détiennent 57,5 % de la dette négociable de l’État en valeur de marché. Cette catégorie ne mesure pas les hedge funds.", "importance": "Des obligations longues financées par des repos courts peuvent être revendues sous contrainte lors du renouvellement des prêts.", "uncertainty": "Les 78 M€ de ventes calculés ici reposent sur des hypothèses fictives et une position isolée. Les données publiques ne donnent pas le stock net exhaustif des hedge funds en OAT."}
+---
+
+import FrenchDebtRepoLab from '../../components/FrenchDebtRepoLab.astro';
+
+Une obligation française peut être remboursable dans dix ans alors que son acheteur doit renouveler son financement dans quelques jours. L'État et son créancier ne vivent alors pas du tout au même rythme. C'est dans cet écart que peut naître une crise : un fonds qui souhaite conserver ses obligations peut être contraint de les vendre pour trouver du liquide. Le Conseil de stabilité financière décrit précisément ce canal de transmission entre le financement des investisseurs et le prix des dettes souveraines. [S10](https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/)
+
+L'expression « la dette française tombe dans les mains des hedge funds » suggère une prise de contrôle. Les données publiques consultées ne permettent pas de l'établir. Elles documentent en revanche une présence importante de ces fonds dans les échanges et certains circuits de financement. Pour mesurer le danger, il faut distinguer **qui détient les titres, qui les négocie et avec quel argent les positions sont financées**. Les statistiques disponibles ne répondent pas à ces trois questions avec la même précision. [S02](https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/436_Bulletin%20mensuel%20septembre%202026.pdf) [S05](https://www.ecb.europa.eu/press/blog/date/2024/html/ecb.blog20240923~d859db790b.en.html) [S06](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/Annex_Item_2_%20BMCG_HF_survey_results.pdf)
+
+Un exemple permet de saisir l'enjeu. Dans le modèle ci-dessous, une position de 100 millions d'euros perd 2 % de sa valeur. Le prêteur exige davantage de garantie au refinancement. Après utilisation d'un million de réserve, il manque 3,9 millions. Pour rétablir le financement en vendant les obligations elles-mêmes, il faut pourtant en céder **78 millions**. Ce résultat est un calcul sous hypothèses, pas une mesure des positions des fonds ni une prévision pour la France.
+
+[Tester les hypothèses dans le simulateur](#repo-lab-fr).
+
+## À qui doit-on vraiment ces milliards ?
+
+Au premier trimestre 2026, la dette publique française au sens de Maastricht atteint **3 536,1 milliards d'euros, soit 117,5 % du PIB**. C'est l'ensemble des administrations publiques : État, collectivités, sécurité sociale et organismes rattachés. Au 28 septembre, ce trimestre est le dernier publié par l'Insee ; la publication du deuxième trimestre est annoncée pour le 29 septembre. [S01](https://www.insee.fr/fr/statistiques/9010340)
+
+L'Agence France Trésor suit un autre périmètre : les titres négociables de l'État, notamment les OAT, ses obligations à moyen et long terme, et les BTF, ses titres courts. Cet encours représente **2 903,8 milliards d'euros au 31 août 2026**, avec une durée de vie moyenne de **8 ans et 142 jours**. On ne soustrait pas directement ces deux encours : leurs dates et leurs périmètres diffèrent. [S03](https://www.aft.gouv.fr/fr)
+
+Dans la photographie des détenteurs publiée par l'AFT pour le premier trimestre 2026, **57,5 %** de la dette négociable de l'État, évaluée en valeur de marché, appartient à des non-résidents. Les établissements de crédit français en détiennent 10,5 %, les assureurs français 9,6 %, les OPCVM français 1,8 % ; les autres porteurs français représentent 20,6 %. Ce classement ne contient pas de case permettant d'isoler l'ensemble des hedge funds. [S02](https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/436_Bulletin%20mensuel%20septembre%202026.pdf)
+
+« Non-résident » indique une résidence économique, pas une stratégie. Un investisseur étranger peut être une banque centrale, un assureur ou un fonds de pension. Un intermédiaire peut aussi détenir des titres pour des bénéficiaires situés ailleurs. **57,5 % de non-résidents ne signifie donc pas 57,5 % de fonds spéculatifs.** Une classification géographique ne permet pas de déduire le levier, les couvertures ou la durée réelle de détention. [S02](https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/436_Bulletin%20mensuel%20septembre%202026.pdf) [S10](https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/)
+
+<figure class="infographic" style="max-width:28rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-labelledby="debt-hf-fr-1-title debt-hf-fr-1-desc" style="width:100%;height:auto">
+<title id="debt-hf-fr-1-title">Qui détient les titres ?</title>
+<desc id="debt-hf-fr-1-desc">Répartition en valeur de marché au T1 2026 : non-résidents 57,5 %, autres résidents 20,6 %, banques françaises 10,5 %, assureurs français 9,6 %, OPCVM français 1,8 %. Les hedge funds ne sont pas isolés.</desc>
+<rect x="0" y="0" width="480" height="480" fill="var(--color-surface)" />
+<text x="24" y="38" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-paper)" text-anchor="start">Qui détient les titres ?</text>
+<text x="24" y="72" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-muted)" text-anchor="start">T1 2026 · % de la valeur de marché</text>
+<text x="24" y="112" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">Non-résidents</text>
+<text x="456" y="112" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-signal)" text-anchor="end">57,5 %</text>
+<rect x="24" y="125" width="432" height="12" fill="var(--color-line-strong)" />
+<rect x="24" y="125" width="248.4" height="12" fill="var(--color-signal)" />
+<text x="24" y="175" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">Autres résidents français</text>
+<text x="456" y="175" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-paper)" text-anchor="end">20,6 %</text>
+<rect x="24" y="188" width="432" height="12" fill="var(--color-line-strong)" />
+<rect x="24" y="188" width="88.992" height="12" fill="var(--color-muted)" />
+<text x="24" y="238" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">Banques françaises</text>
+<text x="456" y="238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-paper)" text-anchor="end">10,5 %</text>
+<rect x="24" y="251" width="432" height="12" fill="var(--color-line-strong)" />
+<rect x="24" y="251" width="45.36" height="12" fill="var(--color-muted)" />
+<text x="24" y="301" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">Assureurs français</text>
+<text x="456" y="301" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-paper)" text-anchor="end">9,6 %</text>
+<rect x="24" y="314" width="432" height="12" fill="var(--color-line-strong)" />
+<rect x="24" y="314" width="41.472" height="12" fill="var(--color-muted)" />
+<text x="24" y="364" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">OPCVM français</text>
+<text x="456" y="364" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-paper)" text-anchor="end">1,8 %</text>
+<rect x="24" y="377" width="432" height="12" fill="var(--color-line-strong)" />
+<rect x="24" y="377" width="7.776" height="12" fill="var(--color-muted)" />
+<text x="24" y="443" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="var(--color-accent)" text-anchor="start">Hedge funds : part non isolée</text>
+</svg>
+<figcaption>Source : AFT, bulletin de septembre 2026, p. 3, données Banque de France. Dette négociable de l’État, T1 2026. Chaque barre a une échelle de 0 à 100 %. La résidence ne décrit ni la stratégie ni le levier. <a href="https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/436_Bulletin%20mensuel%20septembre%202026.pdf">Document source</a>.</figcaption>
+</figure>
+
+## À quoi correspond le « plus de la moitié »
+
+Un autre chiffre circule : les hedge funds représenteraient plus de la moitié du marché. Sa source doit être lue jusqu'au bout. Dans un billet de septembre 2024, la BCE rapporte que leur part des volumes de transactions sur les obligations publiques de la zone euro est passée de **26 % en 2018 à 56 % en 2023**, d'après les données d'**une grande plateforme électronique**. Ce n'est ni l'ensemble du marché français, ni la fraction du stock détenue, ni une observation de septembre 2026. [S05](https://www.ecb.europa.eu/press/blog/date/2024/html/ecb.blog20240923~d859db790b.en.html)
+
+La même publication évoque plus de la moitié des demandes reçues par les banques spécialistes autour des adjudications allemandes, françaises, italiennes et espagnoles. L'enquête sous-jacente date de juin 2024. Sa question porte sur les **manifestations de demande recueillies avant une adjudication**. Cela ne signifie pas que ces fonds se voient attribuer la moitié de chaque émission, encore moins qu'ils la gardent jusqu'au remboursement. [S06](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/Annex_Item_2_%20BMCG_HF_survey_results.pdf)
+
+La différence se comprend sans jargon. Imaginons 100 obligations identiques, dont dix changent de mains dix fois pendant une journée. Elles produisent cent échanges tout en ne représentant que dix titres du stock. Le volume décrit l'activité ; la détention décrit ce qui reste dans un portefeuille à une date donnée. Un investisseur peut dominer le premier indicateur sans dominer le second.
+
+Ce constat ne rend pas les volumes inoffensifs. Les transactions contribuent à former le prix auquel les autres investisseurs peuvent acheter ou vendre. Une minorité de porteurs très actifs peut donc peser sur les conditions de marché. Mais convertir mécaniquement leur part des échanges en pourcentage de dette « sous contrôle » fabrique une précision que les sources ne donnent pas.
+
+## Pourquoi achètent-ils de la dette française ?
+
+Un hedge fund est un fonds de gestion alternative : il peut notamment acheter des titres, parier sur leur baisse ou combiner les deux. Ce nom ne décrit pas une stratégie unique. [S07](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/2024-06-26_BMCG_Summary.pdf)
+
+Tous les hedge funds ne font pas le même métier. Certains prennent une position sur l'évolution générale des taux ou sur l'écart entre la France et l'Allemagne. D'autres cherchent une petite anomalie de prix entre deux obligations proches. D'autres encore interviennent autour des adjudications : ils anticipent l'arrivée d'une nouvelle quantité de titres, puis leur redistribution. Le compte rendu du groupe de contact obligataire de la BCE distingue notamment ces stratégies systématiques et de valeur relative. [S07](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/2024-06-26_BMCG_Summary.pdf)
+
+Un fonds peut ainsi acheter une OAT qu'il juge bon marché tout en vendant un autre instrument pour limiter son exposition générale aux taux. Il cherche alors à gagner sur un **écart de prix**, pas nécessairement sur l'amélioration des finances publiques françaises. La vente d'un contrat à terme peut être une couverture d'obligations achetées au comptant ; regarder seulement cette vente conduirait à prendre un acheteur couvert pour un adversaire de la France. [S07](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/2024-06-26_BMCG_Summary.pdf) [S14](https://www.financialresearch.gov/briefs/files/OFRBr_2020_01_Basis-Trades.pdf)
+
+En temps normal, ces arbitrages peuvent rapprocher les prix, faciliter la distribution des émissions et aider les banques à écouler leurs stocks. Le problème apparaît lorsque plusieurs investisseurs ont des positions semblables et les mêmes contraintes de sortie. Un marché peut compter beaucoup de noms différents tout en dépendant d'une seule idée de placement et de quelques prêteurs. La diversité des enseignes ne garantit pas celle des comportements. [S05](https://www.ecb.europa.eu/press/blog/date/2024/html/ecb.blog20240923~d859db790b.en.html) [S24](https://www.fsb.org/2025/07/leverage-in-nonbank-financial-intermediation-final-report/)
+
+## L'État emprunte long. L'acheteur peut emprunter très court
+
+Pour comprendre ce financement, il faut ouvrir le contrat de **[repo](/glossaire/repo/)**, ou pension livrée. Économiquement, il permet d'obtenir du liquide contre des titres. Juridiquement, il prend généralement la forme d'une vente accompagnée d'un engagement de rachat. L'obligation sert de garantie ; le prêteur de liquidités reçoit temporairement le titre. [S10](https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/)
+
+Prenons notre position fictive de 100 millions d'euros. Avec une **décote de garantie de 2 %**, le prêteur avance 98 millions. Le détenteur apporte les deux millions restants. Cette décote, appelée [*haircut*](/glossaire/haircut-repo/), n'est ni le taux d'intérêt du prêt ni une réduction de la somme que l'État promet de rembourser. Elle mesure la part de la valeur du titre que le prêteur refuse de financer. [S11](https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/icma-ercc-publications/frequently-asked-questions-on-repo/21-what-is-a-haircut/)
+
+Les 100 millions de titres reposent ici sur deux millions apportés à la position : un ratio de 50 pour 1. **Ce n'est pas le levier total d'un hedge fund réel.** Les réserves, les marges sur dérivés et les autres actifs changeraient son bilan. Le calcul isole volontairement une seule opération pour montrer pourquoi une faible variation de prix peut compter beaucoup pour celui qui la finance à crédit.
+
+Le décalage d'échéances n'est pas seulement théorique. Dans son rapport de juin 2026, la Banque de France indique que près de **70 % des opérations de repo des hedge funds étudiées ont une maturité inférieure à quinze jours**. Elle précise aussi que les plus grands fonds utilisent davantage le financement à terme. Le graphique porte sur des photographies mensuelles d'encours de repos garantis par des OAT, de janvier 2025 à janvier 2026. Il mesure les maturités résiduelles et exclut les repos sans échéance convenue. Ce chiffre ne décrit donc ni la part de dette détenue ni une situation observée en septembre 2026. [S09](https://www.banque-france.fr/system/files/2026-08/RSF_JUIN_2026_EN.pdf)
+
+
+
+Le contrat à terme ne supprime pas ce problème de calendrier. Dans un arbitrage comptant–terme, le fonds achète une obligation, finance cet achat en repo et vend un contrat à terme. Une partie du risque de taux peut être compensée, mais le coût du financement, l'écart entre les deux prix et les exigences de marge peuvent évoluer avant le dénouement. La couverture du prix et la disponibilité immédiate de trésorerie sont deux questions distinctes. [S14](https://www.financialresearch.gov/briefs/files/OFRBr_2020_01_Basis-Trades.pdf)
+
+Il faut également éviter de copier le marché américain sur le marché français. En juin 2024, les participants au groupe de contact de la BCE jugeaient l'arbitrage comptant–terme classique américain encore peu répandu dans la zone euro. Cette observation est datée : elle ne mesure pas l'usage de cette stratégie en septembre 2026. [S07](https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/2024-06-26_BMCG_Summary.pdf)
+
+## Une baisse de 2 % peut provoquer 78 millions de ventes
+
+Revenons au modèle, qui porte **uniquement sur l'obligation et son repo, avant toute couverture**. Les 100 millions d'obligations valent désormais 98 millions. La dette envers le prêteur reste de 98 millions. Au refinancement, celui-ci ne veut plus financer que 95 % de la garantie, au lieu de 98 %. Le nouveau plafond tombe à **93,1 millions** : 98 × 95 %.
+
+Il faut donc réduire le financement de **4,9 millions**. Deux effets se cumulent : la baisse du prix retranche 1,96 million à la capacité d'emprunt calculée avec l'ancienne décote ; le passage de 2 % à 5 % retranche encore 2,94 millions sur la valeur restante. Le besoin de liquidité n'est pas une perte économique supplémentaire de 4,9 millions : il correspond à une réduction du crédit autorisé.
+
+Le détenteur utilise sa réserve séparée d'un million. Il manque 3,9 millions. On pourrait croire qu'il suffit de vendre pour ce montant. Mais les titres vendus ne peuvent plus garantir la dette restante. **Chaque euro de vente rembourse un euro de dette, tout en retirant 95 centimes de capacité d'emprunt.** Il ne résorbe donc que cinq centimes du manque de financement.
+
+Le calcul devient : 3,9 millions ÷ 5 % = **78 millions de titres à vendre**, au prix stressé supposé constant. Après cette vente et l'utilisation de la réserve, il reste 20 millions de titres et 19 millions de dette. La décote de 5 % est respectée. Environ 79,6 % de la position après choc a disparu, alors que son prix n'avait baissé que de 2 %.
+
+<figure class="infographic" style="max-width:28rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440" role="img" aria-labelledby="debt-hf-fr-2-title debt-hf-fr-2-desc" style="width:100%;height:auto">
+<title id="debt-hf-fr-2-title">Vendre retire aussi la garantie</title>
+<desc id="debt-hf-fr-2-desc">Exemple fictif : avec une décote de 5 %, vendre un euro rembourse un euro de dette mais retire 95 centimes de capacité de financement. Le manque diminue de 5 centimes.</desc>
+<rect x="0" y="0" width="480" height="440" fill="var(--color-surface)" />
+<text x="24" y="38" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-paper)" text-anchor="start">Vendre retire aussi la garantie</text>
+<text x="24" y="72" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-muted)" text-anchor="start">Exemple fictif · décote finale de 5 %</text>
+<text x="24" y="119" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-paper)" text-anchor="start">1 € vendu = 1 € remboursé</text>
+<rect x="24" y="142" width="432" height="34" fill="var(--color-paper)" />
+<text x="24" y="222" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" fill="var(--color-signal)" text-anchor="start">Capacité de crédit retirée : 0,95 €</text>
+<rect x="24" y="243" width="410.4" height="34" fill="var(--color-signal)" />
+<rect x="434.4" y="243" width="21.6" height="34" fill="var(--color-accent)" />
+<text x="24" y="324" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-accent)" text-anchor="start">Manque résorbé : 0,05 €</text>
+<text x="24" y="389" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" fill="var(--color-paper)" text-anchor="start">3,9 M€ ÷ 5 % = 78 M€ de ventes</text>
+<text x="24" y="421" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Prix constant · réserve déjà utilisée</text>
+</svg>
+<figcaption>Calcul l0g. Position initiale 100 M€, prix −2 %, décote de 2 à 5 %, réserve séparée de 1 M€. Le manque de financement atteint 3,9 M€ après réserve. Chaque vente retire aussi sa garantie. Aucun dérivé, nouveau prêteur, frais ou impact sur le prix. Le simulateur ci-dessous détaille ces hypothèses.</figcaption>
+</figure>
+
+Ce résultat spectaculaire vient de contraintes explicites. Le fonds ne peut ni apporter une autre garantie, ni trouver un nouveau prêteur, ni mobiliser davantage de liquidités. Le prix ne baisse pas davantage pendant la vente ; les intérêts et les frais sont ignorés. Une nouvelle décote n'est pas imposée arbitrairement au milieu d'un contrat inchangé : le scénario la suppose applicable au refinancement, ou lors d'une révision contractuellement autorisée.
+
+Une couverture qui gagne de l'argent et verse rapidement du liquide peut réduire le besoin. À l'inverse, une marge initiale supplémentaire peut le renforcer. Le simulateur n'additionne pas artificiellement la perte sur l'obligation à une perte sur sa couverture : **il n'intègre aucune couverture**. Et lorsque toute la position ne suffit plus à rembourser la dette, il affiche le déficit résiduel plutôt qu'un montant de ventes irréalisable.
+
+Pour mesurer ce que change la trésorerie, reprenons seulement le calcul du refinancement : si deux millions de gains de couverture ont déjà été encaissés et s’ajoutent au million de réserve, les ventes nécessaires tombent à **38 millions** : (4,9 − 3) ÷ 5 %. Un gain encore indisponible ne paie pas cet appel de liquidité. Ce calcul complémentaire ne modélise ni le dénouement de la couverture ni ses autres marges.
+
+La formule générale est donnée dans la méthode. Le point économique tient en une phrase : vendre un actif financé presque entièrement à crédit ne libère pas autant de trésorerie que vendre un actif payé comptant.
+
+<FrenchDebtRepoLab lang="fr" />
+
+## Quand les banques et les fonds cherchent la sortie ensemble
+
+À l'échelle d'une seule position, le calcul précédent ne change aucun prix. À l'échelle d'un marché, les ordres doivent rencontrer des acheteurs. Si plusieurs fonds vendent les mêmes obligations, les banques intermédiaires peuvent se retrouver avec davantage de titres à absorber au moment même où leurs limites de risque se resserrent. Les acheteurs encore présents peuvent demander un prix inférieur. Ce sont alors les garanties des autres porteurs qui perdent à leur tour de la valeur. [S10](https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/)
+
+La circulation du collatéral ajoute un étage. Selon les contrats, le titre reçu en repo peut être réutilisé par l'intermédiaire pour obtenir lui-même du financement. Il ne s'agit pas de plusieurs obligations créées par magie : un même titre circule dans une chaîne de transactions et d'obligations de restitution. Un maillon qui refuse de renouveler son prêt peut obliger les autres à rechercher du liquide ou des titres de remplacement. [S10](https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/)
+
+
+
+Cette chaîne peut transmettre à la France un choc qui n'a pas commencé à Paris. Dans un scénario possible, un fonds subit une perte sur un autre marché, réduit son risque global et vend des OAT faciles à négocier. Le mouvement n'exprime pas forcément une nouvelle opinion sur le budget français. Pour distinguer les causes, il faut regarder simultanément les prix relatifs, les conditions de financement et la liquidité du marché. Une hausse du taux français ne suffit pas à démontrer une « attaque ».
+
+Il existe aussi une limite à l'argument inverse. Des ventes techniques ne rendent pas toute prime de risque française injustifiée. Les déficits, la croissance et la crédibilité du financement public comptent pour les prêteurs. La difficulté est de séparer une réévaluation durable du risque et un mouvement amplifié par des contraintes de trésorerie. Les outils de stabilisation monétaire font eux-mêmes cette distinction. [S23](https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220721~973e6e7273.en.html)
+
+## 1998 : un portefeuille privé menace ses voisins
+
+LTCM cherchait notamment à profiter du retour à la normale d'écarts de taux. Après le choc russe d'août 1998, plusieurs écarts s'élargissent ensemble et la diversification protège beaucoup moins qu'attendu. Le témoignage du président de la Fed de New York décrit surtout le risque d'une liquidation simultanée des positions par les contreparties. Finalement, **quatorze banques et entreprises de titres** participent à une recapitalisation privée. La Fed de New York facilite les discussions ; aucun argent public n'est engagé dans cette opération. [S19](https://www.newyorkfed.org/newsevents/speeches/1998/mcd981001)
+
+La leçon pour notre sujet est celle d'une dépendance collective. Un prêteur peut trouver raisonnable de réduire son exposition à un fonds fragile. Si tous font la même chose en même temps, ils peuvent dégrader le prix des actifs qu'ils comptaient vendre pour se protéger. C'est cette contradiction entre prudence individuelle et résultat collectif qui rend le levier intéressant pour un État emprunteur.
+
+## Mars 2020 : les vendeurs possédaient les titres les plus sûrs
+
+Les tensions sur les Treasuries américains montrent qu'un marché souverain immense n'est pas à l'abri d'une ruée vers le liquide. Une étude de la Fed estime les **ventes nettes de titres du Trésor par les grands hedge funds à 173 milliards de dollars en mars 2020**, après correction des effets de valorisation. Les fonds identifiés comme probablement actifs dans l'arbitrage comptant–terme représentent 148 milliards de cette estimation. [S12](https://www.federalreserve.gov/econres/notes/feds-notes/sizing-hedge-funds-treasury-market-activities-and-holdings-20211006.htm)
+
+Il faut résister à un récit trop commode. Ces ventes étaient importantes, mais d'autres investisseurs vendaient également. Un autre travail de chercheurs de la Fed observe des décotes et volumes de repo bilatéraux relativement stables : la réduction des positions tenait notamment à la gestion de liquidité des fonds. **La gestion préventive de trésorerie est donc une autre explication documentée des ventes de mars 2020.** [S12](https://www.federalreserve.gov/econres/notes/feds-notes/sizing-hedge-funds-treasury-market-activities-and-holdings-20211006.htm) [S13](https://www.federalreserve.gov/econres/feds/hedge-fund-treasury-trading-and-funding-fragility-evidence-from-the-covid-19-crisis.htm)
+
+Des chercheurs de l'Office of Financial Research soulignaient dès juillet 2020 que les éléments disponibles ne permettaient pas d'attribuer simplement l'aggravation de l'illiquidité au dénouement de ces arbitrages. L'intervention de la Fed a pu limiter la propagation. Les travaux diffèrent sur le poids causal du mécanisme ; ils justifient de l'étudier, pas de lui attribuer à lui seul chaque crise obligataire. [S14](https://www.financialresearch.gov/briefs/files/OFRBr_2020_01_Basis-Trades.pdf)
+
+## Royaume-Uni, 2022 : le danger venait aussi des retraites
+
+Après l'annonce budgétaire du 23 septembre 2022, le rendement britannique à trente ans monte de **130 points de base en trois séances**, selon la Banque d'Angleterre. Un point de base vaut 0,01 point de pourcentage : la hausse atteint donc 1,30 point. La chute correspondante du prix des obligations met sous pression les stratégies à levier utilisées pour couvrir les engagements de retraite, les stratégies LDI. [S15](https://www.bankofengland.co.uk/quarterly-bulletin/2023/2023/financial-stability-buy-sell-tools-a-gilt-market-case-study)
+
+Le paradoxe est important. Des taux plus élevés peuvent diminuer la valeur actualisée des retraites promises et améliorer la situation de financement d'un régime. Mais ses instruments de couverture peuvent simultanément exiger du liquide. Une amélioration d'un bilan à long terme ne paie pas automatiquement un appel de marge exigible demain. Le FMI décrit ce décalage entre solvabilité et trésorerie. [S18](https://www.imf.org/-/media/files/publications/cr/2023/english/1gbrea2023002.pdf)
+
+Les investisseurs doivent mobiliser du capital ; certains véhicules ne peuvent pas l'obtenir assez vite. Ils vendent donc des obligations, ce qui renforce la pression sur leurs propres garanties. Sarah Breeden, à la Banque d'Angleterre, décrit comment environ **200 milliards de livres de fonds LDI mutualisés** pouvaient menacer un marché négocié des gilts de 1 400 milliards. La fragilité d'un segment peut compter davantage que sa part du stock total. [S16](https://www.bankofengland.co.uk/speech/2022/november/sarah-breeden-speech-at-isda-aimi-boe-on-nbfi-and-leverage)
+
+
+
+La Banque d'Angleterre achète effectivement **19,3 milliards de livres de gilts entre le 28 septembre et le 14 octobre 2022**. Ce montant ne doit pas être confondu avec la capacité initiale annoncée de 65 milliards. Les achats sont temporaires ; le portefeuille est entièrement revendu en janvier 2023. [S15](https://www.bankofengland.co.uk/quarterly-bulletin/2023/2023/financial-stability-buy-sell-tools-a-gilt-market-case-study)
+
+Et les hedge funds ? Une étude transactionnelle de la Banque d'Angleterre montre qu'ils ont été rémunérés pour fournir de la liquidité au secteur LDI–retraites–assurances pendant cette crise. Les présenter comme les vendeurs responsables de l'épisode inverserait une partie de l'histoire. Le risque dépend du montage et de ses contraintes, pas seulement de l'étiquette du détenteur. [S17](https://www.bankofengland.co.uk/working-paper/2023/an-anatomy-of-the-2022-gilt-market-crisis)
+
+## Les « fonds vautours » : une autre histoire, celle du contrat
+
+L'Argentine illustre un danger différent. Après des restructurations, des créanciers refusant l'échange, les *holdouts*, poursuivent le pays. En 2014, les décisions américaines empêchent certains paiements aux porteurs de dette restructurée sans paiement aux créanciers plaignants, sur le fondement d'une interprétation de la clause *pari passu*. Le FMI analyse les effets de ce contentieux sur les restructurations souveraines. [S20](https://www.imf.org/external/np/pp/eng/2014/090214.pdf)
+
+Ici, le pouvoir du créancier vient d'un contrat, d'un tribunal et d'un blocage du circuit de paiement. Ce n'est pas une vente forcée pour satisfaire un appel de marge. Les clauses d'action collective visent justement à permettre des modifications acceptées par une majorité qualifiée sans donner un veto à chaque porteur ; la France en a introduit dans les nouveaux titres de maturité supérieure à un an émis à partir du 1er janvier 2013. Les conditions exactes dépendent des titres et des textes applicables. [S21](https://www.aft.gouv.fr/files/archives/attachments/22396.pdf)
+
+On ne peut donc pas passer directement de « davantage de hedge funds négocient des OAT » à « la France sera traitée comme l'Argentine ». Le risque contentieux d'une éventuelle restructuration mérite une analyse distincte. Ni une majorité supposée de fonds spéculatifs ni un scénario de défaut français ne sont établis par les statistiques examinées ici.
+
+## La facture arrive au rythme des refinancements
+
+Une OAT déjà émise à taux fixe ne voit pas son coupon augmenter parce qu'un fonds la revend moins cher. Le vendeur peut perdre de l'argent ; l'État conserve les paiements prévus par le titre. En revanche, les prix du marché comptent lors des nouvelles émissions, y compris lorsqu'elles complètent une souche existante : l'AFT en ajuste le prix tout en conservant les caractéristiques du titre. [S25](https://www.aft.gouv.fr/fr/presentation-oat)
+
+Le taux affiché par le marché peut donc bouger aujourd'hui, tandis que la charge budgétaire se transforme progressivement. L'État doit financer ses déficits et remplacer les emprunts arrivant à échéance. Son programme indicatif pour 2026 prévoit **310 milliards d'euros d'émissions à moyen et long terme nettes des rachats**. Ce n'est pas 310 milliards de déficit : les refinancements comptent aussi. [S04](https://www.aft.gouv.fr/fr/programme-indicatif-financement-letat)
+
+Pour fixer les ordres de grandeur, 100 milliards empruntés avec un taux annuel supérieur d'un point représentent environ un milliard d'intérêt annuel supplémentaire, dans un exemple simple. Mais appliquer immédiatement un point de taux à tout le stock français inventerait une facture instantanée qui n'existe pas pour les titres anciens à taux fixe.
+
+Une simulation de l'AFT, citée par le Sénat dans l'examen du budget 2026, estime qu'un choc **permanent de +100 points de base sur toute la courbe des taux** augmenterait la charge annuelle de **3,2 milliards d'euros à un an, 23,5 milliards à cinq ans et 33,5 milliards à neuf ans**. Il s'agit d'une sensibilité calculée par rapport au scénario budgétaire de l'époque, pas d'une prévision actualisée en septembre 2026, et ces montants ne sont pas des coûts cumulés. [S22](https://www.senat.fr/rap/l25-139-312/l25-139-312-syn.pdf)
+
+<figure class="infographic" style="max-width:28rem;margin:2rem auto 2.5rem;padding-bottom:0.5rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 420" role="img" aria-labelledby="debt-hf-fr-3-title debt-hf-fr-3-desc" style="width:100%;height:auto">
+<title id="debt-hf-fr-3-title">Un choc de taux qui dure</title>
+<desc id="debt-hf-fr-3-desc">Simulation AFT pour le budget 2026 : une hausse permanente de 100 points de base ajoute 3,2 milliards d’euros à la charge annuelle à un an, 23,5 à cinq ans et 33,5 à neuf ans.</desc>
+<rect x="0" y="0" width="480" height="420" fill="var(--color-surface)" />
+<text x="24" y="38" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-paper)" text-anchor="start">Un choc de taux qui dure</text>
+<text x="24" y="72" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">+100 points de base permanents</text>
+<text x="24" y="104" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">Surcroît de charge annuelle · Md€</text>
+<text x="24" y="151" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start">À 1 an</text>
+<text x="456" y="151" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-signal)" text-anchor="end">3,2</text>
+<rect x="24" y="167" width="39.49714285714286" height="20" fill="var(--color-signal)" />
+<text x="24" y="223" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start">À 5 ans</text>
+<text x="456" y="223" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-signal)" text-anchor="end">23,5</text>
+<rect x="24" y="239" width="290.0571428571429" height="20" fill="var(--color-signal)" />
+<text x="24" y="295" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start">À 9 ans</text>
+<text x="456" y="295" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="var(--color-signal)" text-anchor="end">33,5</text>
+<rect x="24" y="311" width="413.48571428571427" height="20" fill="var(--color-signal)" />
+<text x="24" y="369" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-muted)" text-anchor="start">Simulation budgétaire AFT / PLF 2026</text>
+<text x="24" y="401" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start">Montants annuels, hors cumul</text>
+</svg>
+<figcaption>Source : Sénat, novembre 2025, p. 3, simulation AFT. Choc pérenne de +1 point sur toute la courbe, par rapport au scénario budgétaire de référence. Échelle commune de 0 à 35 Md€. Sensibilité du budget, sans estimation d’un effet des hedge funds ni actualisation en septembre 2026. <a href="https://www.senat.fr/rap/l25-139-312/l25-139-312-syn.pdf">Document source</a>.</figcaption>
+</figure>
+
+La durée moyenne de la dette donne du temps à l'État ; elle ne l'isole pas d'un choc qui persiste. À l'inverse, une tension très brève ne renchérit pas nécessairement neuf années de financement. Sa durée, les échéances à renouveler et le calendrier des émissions déterminent ce qui se transmet effectivement au budget.
+
+## La BCE peut intervenir, sous conditions
+
+Le mécanisme de protection de la transmission monétaire, le **TPI**, permet à la BCE d'acheter sur le marché secondaire face à des dynamiques désordonnées non justifiées par les fondamentaux. La décision dépend notamment de la soutenabilité de la dette et du respect du cadre économique et budgétaire européen. Être en procédure de déficit excessif n'est pas, à lui seul, une exclusion mécanique : le texte distingue cette situation d'un constat d'absence d'action effective. **L'intervention reste une décision du Conseil des gouverneurs, pas une assurance automatique du Trésor français.** [S23](https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220721~973e6e7273.en.html)
+
+Cela change la nature du risque, sans le faire disparaître. Un acheteur de dernier ressort crédible peut casser une vente en cascade. Il ne rend pas gratuits les déficits futurs et ne garantit pas qu'une politique budgétaire contestée conservera le même coût de financement. Pour les investisseurs, l'incertitude porte aussi sur le diagnostic et le moment de l'intervention.
+
+## Les indicateurs de vulnérabilité à surveiller
+
+La bonne surveillance combine plusieurs fenêtres. Les résultats d'adjudication renseignent sur la demande au prix proposé. La Banque de France relève, dans son rapport de juin 2026, une baisse du ratio de couverture des adjudications d'OAT d'environ **3,2 à 2,5 depuis 2025**, sur une série arrêtée en mai 2026. Cet indicateur n'est pas une probabilité de défaut et ne décrit pas les réserves de trésorerie des acheteurs. [S09](https://www.banque-france.fr/system/files/2026-08/RSF_JUIN_2026_EN.pdf)
+
+Pour notre mécanisme, il faudrait aussi suivre la durée des financements, la concentration des prêteurs, les garanties supplémentaires demandées, les marges sur dérivés et la capacité des banques à absorber des ventes. Un fonds très actif mais solidement financé n'a pas le même profil qu'un fonds dépendant d'un renouvellement de crédit rapproché. Une obligation facile à céder en temps normal n'est pas une réserve de liquidité illimitée lorsque tous veulent la vendre.
+
+Les recommandations du Conseil de stabilité financière de juillet 2025 vont dans cette direction : meilleure connaissance du levier, gestion du risque de contrepartie, mesures ciblées et coopération transfrontalière. Elles demandent aussi de tenir compte des conséquences indésirables de la régulation. Réduire brutalement le crédit disponible pendant une panique peut précisément provoquer les liquidations qu'on cherche à éviter. [S24](https://www.fsb.org/2025/07/leverage-in-nonbank-financial-intermediation-final-report/)
+
+La France a intérêt à diversifier ses investisseurs et à préserver la confiance dans sa trajectoire budgétaire. Mais compter les passeports des créanciers ne suffit pas. **La question décisive est de savoir combien d'acheteurs peuvent encore garder leurs titres lorsque leur financement devient plus cher, plus exigeant ou indisponible.** Un pays peut subir le départ de créanciers pressés sans que ceux-ci aient jamais possédé la majorité de sa dette.
+
+## Méthode du simulateur et limites de l'analyse
+
+Tous les montants du simulateur sont en millions d'euros. Avec une position initiale V, une baisse de prix p, une décote initiale h₀, une décote finale h₁ et une réserve B, la dette initiale vaut D = V × (1 − h₀). La garantie après choc vaut V′ = V × (1 − p). Le besoin de réduction du financement vaut C = max[0 ; D − V′ × (1 − h₁)]. Après la réserve, le manque vaut G = max[0 ; C − B].
+
+Lorsque les titres vendus sont la garantie du repo et que leur prix stressé reste fixe, une vente X réduit à la fois la dette de X et la garantie de X. L'inégalité à respecter est D − min(B, C) − X ≤ (1 − h₁) × (V′ − X). Elle donne **X = G ÷ h₁**, si ce montant ne dépasse pas V′. Sinon, la liquidation totale laisse une dette non couverte, affichée séparément.
+
+Le modèle exclut les couvertures, les autres actifs, les intérêts, les frais, les seuils contractuels de marge, les décalages de règlement, les nouveaux financements et l'effet des ventes sur le prix. Les paramètres sont des hypothèses modifiables, jamais des données imputées à un fonds réel. Il ne calcule ni probabilité de crise, ni niveau futur des taux, ni conseil d'investissement.
+
+Les décotes réglables sont strictement positives et non décroissantes. Les repos à décote nulle ou négative existent, comme le relève la Banque de France ; ils sortent du périmètre de ce simulateur. [S09](https://www.banque-france.fr/system/files/2026-08/RSF_JUIN_2026_EN.pdf)
+
+**Arrêté documentaire : 28 septembre 2026.** Les dates d'observation sont indiquées séparément des dates de publication. Les sources permettent d'établir une vulnérabilité de financement ; elles ne permettent pas de mesurer exhaustivement le stock net d'OAT détenu par les hedge funds, leurs couvertures et leur liquidité immédiatement mobilisable.
+
+## Pour poursuivre
+
+Retrouvez les mécanismes de prix et de refinancement dans notre analyse du [budget 2027 et du risque obligataire français](/posts/budget-2027-risque-obligataire-france/), et les échéances souveraines dans notre [guide de la dette européenne](/guides/lire-la-dette-souveraine-europeenne/).
+
+## Sources et documents
+
+- **Insee** : [À la fin du premier trimestre 2026, le ratio de dette publique s’établit à 117,5 % du PIB][S01] (2026-06-25).
+- **Agence France Trésor / Banque de France** : [Bulletin mensuel, n° 436, septembre 2026][S02] (2026-09).
+- **Agence France Trésor** : [Chiffres clés de la dette négociable de l’État][S03] (Consulté le 2026-09-28).
+- **Agence France Trésor** : [Programme indicatif de financement de l’État pour 2026][S04] (2025-12-30).
+- **Banque centrale européenne** : [Hedge funds: good or bad for market functioning?][S05] (2024-09-23).
+- **BCE / Bond Market Contact Group** : [BMCG Hedge Fund Survey][S06] (2024-06-26).
+- **BCE / Bond Market Contact Group** : [Summary of the meeting of 26 June 2024][S07] (2024-07-01).
+- **Banque de France** : [Financial Stability Report, June 2026][S09] (2026-06-24).
+- **Conseil de stabilité financière / FSB** : [Vulnerabilities in Government Bond-backed Repo Markets][S10] (2026-02-04).
+- **ICMA** : [Frequently Asked Questions on Repo, 21: What is a haircut?][S11] (Sans date ; consulté le 2026-09-28).
+- **Federal Reserve** : [Sizing hedge funds’ Treasury market activities and holdings][S12] (2021-10-06).
+- **Federal Reserve, FEDS 2021-038** : [Hedge Fund Treasury Trading and Funding Fragility: Evidence from the COVID-19 Crisis][S13] (2021 ; page révisée 2021-11-08).
+- **Office of Financial Research, Daniel Barth et Jay Kahn** : [Basis Trades and Treasury Market Illiquidity, Brief 20-01][S14] (2020-07-16).
+- **Bank of England** : [Financial stability buy/sell tools: a gilt market case study][S15] (2023-11-20).
+- **Bank of England, Sarah Breeden** : [Risks from leverage: how did a small corner of the pensions industry threaten financial stability?][S16] (2022-11-07).
+- **Bank of England** : [An anatomy of the 2022 gilt market crisis][S17] (2023-03-31).
+- **Fonds monétaire international** : [Lessons from the United Kingdom’s Liability-Driven Investment (LDI) Crisis, Country Report 2023/253][S18] (2023-07-11).
+- **Federal Reserve Bank of New York, William J. McDonough** : [Testimony on the private-sector recapitalization of Long-Term Capital Management][S19] (1998-10-01).
+- **Fonds monétaire international** : [Strengthening the Contractual Framework to Address Collective Action Problems in Sovereign Debt Restructuring][S20] (2014-09-02).
+- **Agence France Trésor** : [Bulletin mensuel n° 272, janvier 2013 : clauses d’action collective][S21] (2013-01).
+- **Sénat, commission des finances** : [PLF 2026 : Mission Engagements financiers de l’État, L’essentiel][S22] (2025-11).
+- **Banque centrale européenne** : [The Transmission Protection Instrument][S23] (2022-07-21).
+- **Conseil de stabilité financière / FSB** : [Leverage in Nonbank Financial Intermediation: Final report][S24] (2025-07-09).
+- **Agence France Trésor** : [Présentation des OAT][S25] (Sans date ; consulté le 2026-09-28).
+
+[S01]: https://www.insee.fr/fr/statistiques/9010340
+[S02]: https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/436_Bulletin%20mensuel%20septembre%202026.pdf
+[S03]: https://www.aft.gouv.fr/fr
+[S04]: https://www.aft.gouv.fr/fr/programme-indicatif-financement-letat
+[S05]: https://www.ecb.europa.eu/press/blog/date/2024/html/ecb.blog20240923~d859db790b.en.html
+[S06]: https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/Annex_Item_2_%20BMCG_HF_survey_results.pdf
+[S07]: https://www.ecb.europa.eu/paym/groups/pdf/bmcg/240626/2024-06-26_BMCG_Summary.pdf
+[S09]: https://www.banque-france.fr/system/files/2026-08/RSF_JUIN_2026_EN.pdf
+[S10]: https://www.fsb.org/2026/02/vulnerabilities-in-government-bond-backed-repo-markets/
+[S11]: https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/icma-ercc-publications/frequently-asked-questions-on-repo/21-what-is-a-haircut/
+[S12]: https://www.federalreserve.gov/econres/notes/feds-notes/sizing-hedge-funds-treasury-market-activities-and-holdings-20211006.htm
+[S13]: https://www.federalreserve.gov/econres/feds/hedge-fund-treasury-trading-and-funding-fragility-evidence-from-the-covid-19-crisis.htm
+[S14]: https://www.financialresearch.gov/briefs/files/OFRBr_2020_01_Basis-Trades.pdf
+[S15]: https://www.bankofengland.co.uk/quarterly-bulletin/2023/2023/financial-stability-buy-sell-tools-a-gilt-market-case-study
+[S16]: https://www.bankofengland.co.uk/speech/2022/november/sarah-breeden-speech-at-isda-aimi-boe-on-nbfi-and-leverage
+[S17]: https://www.bankofengland.co.uk/working-paper/2023/an-anatomy-of-the-2022-gilt-market-crisis
+[S18]: https://www.imf.org/-/media/files/publications/cr/2023/english/1gbrea2023002.pdf
+[S19]: https://www.newyorkfed.org/newsevents/speeches/1998/mcd981001
+[S20]: https://www.imf.org/external/np/pp/eng/2014/090214.pdf
+[S21]: https://www.aft.gouv.fr/files/archives/attachments/22396.pdf
+[S22]: https://www.senat.fr/rap/l25-139-312/l25-139-312-syn.pdf
+[S23]: https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220721~973e6e7273.en.html
+[S24]: https://www.fsb.org/2025/07/leverage-in-nonbank-financial-intermediation-final-report/
+[S25]: https://www.aft.gouv.fr/fr/presentation-oat
