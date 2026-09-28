@@ -634,7 +634,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-23';
+export const glossaryUpdatedIso = '2026-09-28';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
