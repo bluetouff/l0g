@@ -231,6 +231,12 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: 'var(--color-accent)',
     entries: [
+      {
+        "sigle": "RPO",
+        "nom": "Obligations de performance restantes",
+        "def": "Valeur des prestations contractées avec des clients qui restent à reconnaître en chiffre d’affaires. Le périmètre et le calendrier de reconnaissance dépendent des contrats et des règles comptables. Cet indicateur ne correspond ni à une trésorerie disponible ni à un bénéfice acquis.",
+        "guide": "/posts/quand-le-credit-commence-a-trier-l-ia/"
+      },
       {"sigle":"Rachat d’actions","nom":"Share buyback","def":"Opération par laquelle une entreprise rachète ses propres titres. Les achats peuvent réduire le nombre d’actions en circulation ou compenser des émissions, notamment pour des plans salariés. Le montant dépensé, le volume racheté et la variation nette des actions mesurent des effets différents. Le prix payé et les autres usages de la trésorerie comptent pour apprécier la création de valeur.","guide":"/posts/rachats-actions-anti-dilution-microsoft-airbus/"},
       {"sigle":"Actions propres","nom":"Treasury shares","def":"Titres de son propre capital détenus par une entreprise. Ils sont exclus du nombre d’actions en circulation pendant leur détention, sans être nécessairement annulés : ils peuvent être transférés ultérieurement. IAS 32 les porte en déduction des capitaux propres, et non comme un actif financier.","guide":"/posts/rachats-actions-anti-dilution-microsoft-airbus/"},
       {"sigle":"Rémunération en actions","nom":"Stock-based compensation","def":"Rémunération réglée ou fondée sur des titres de l’entreprise, dont les conditions d’acquisition des droits et d’évaluation dépendent du plan. Pour les attributions réglées en actions, la charge comptable et le décaissement éventuel de rachats sont distincts. Une charge non monétaire peut s’accompagner d’une dilution ou de trésorerie dépensée pour la compenser.","guide":"/posts/rachats-actions-anti-dilution-microsoft-airbus/"},
@@ -894,6 +900,23 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  rpo: {
+    "intuition": "Le contrat engage une prestation future ; l’encaissement et la reconnaissance du revenu suivent leur propre calendrier.",
+    "articles": [
+      {
+        "label": "Quand le crédit commence à trier l’IA",
+        "href": "/posts/quand-le-credit-commence-a-trier-l-ia/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Oracle, SEC, Form 10-Q au 31 août 2026, note 1",
+        "href": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.htm",
+        "kind": "source"
+      }
+    ]
+  },
 "credit-carbone": {
   "intuition": "Le registre décrit une unité ; le projet et sa méthode déterminent le bénéfice climatique.",
   "articles": [
@@ -1002,7 +1025,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   dscr: {
     formula: 'DSCR = trésorerie disponible pour la dette / service de la dette sur la même période',
-    articles: [{ label: 'Crux AI : les puces en garantie', href: '/posts/crux-ai-google-blackstone-banques-puces-collateral/', kind: 'article' }],
+    articles: [{ label: 'Crux AI : les puces en garantie', href: '/posts/crux-ai-google-blackstone-banques-puces-collateral/', kind: 'article' }, { label: 'Quand le crédit commence à trier l’IA', href: '/posts/quand-le-credit-commence-a-trier-l-ia/', kind: 'article' }],
     sources: [{ label: 'BERD, guide d’évaluation des PPP (hébergé par la Banque mondiale)', href: 'https://ppp.worldbank.org/sites/default/files/2024-07/VOLUME2-web.pdf', kind: 'source' }],
     related: ['step-in-rights', 'ltv'],
   },
@@ -1191,6 +1214,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['vrg'],
   },
   vrg: {
+    articles: [{ label: 'Quand le crédit commence à trier l’IA', href: '/posts/quand-le-credit-commence-a-trier-l-ia/', kind: 'article' }],
     intuition: 'Un plafond de garantie indique une limite contractuelle. Le paiement éventuel dépend du déclencheur, des recours et de la valeur récupérée.',
     sources: [{ label: 'Nvidia, SEC, annexe 10.1', href: 'https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda2027q2ex101.htm', detail: 'Exemple de garantie fournie par un tiers : définitions, recours et extinction, sections 1, 12 et 13.', kind: 'source' }],
     related: ['investment-grade'],

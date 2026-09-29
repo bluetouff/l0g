@@ -28,8 +28,8 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 562, 'Le corpus doit conserver ses 562 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 119, 'Le graphe Atlas doit conserver ses 119 nœuds');
+assert.equal(glossaryEntries.length, 563, 'Le corpus doit conserver ses 563 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 120, 'Le graphe Atlas doit conserver ses 120 nœuds');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'mvno'), '/posts/sfr-rachat-partage-operateur-prix-forfaits/'],
   [glossaryAtlasEnBySlug.get('mvno'), '/en/analysis/sfr-breakup-phone-bill-networks-competition/'],
@@ -252,6 +252,12 @@ assert.equal(Object.keys(glossaryRedirects).length, 6, 'Les six anciens slugs do
 for (const [from, to] of Object.entries(glossaryRedirects)) {
   assert(from.endsWith('-2'), `Alias inattendu: ${from}`);
   assert(glossaryEntries.some((entry) => entry.url.replace(/\/$/, '') === to), `Cible inconnue: ${to}`);
+}
+
+for (const entry of [glossaryEntries.find(item => item.slug === 'rpo'), glossaryAtlasEnBySlug.get('rpo')]) {
+  assert(entry);
+  assert.equal(entry.atlas.sources[0].href, 'https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.htm');
+  assert(entry.atlas.articles.length);
 }
 
 console.log(JSON.stringify({

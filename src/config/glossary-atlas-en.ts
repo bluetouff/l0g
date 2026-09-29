@@ -202,6 +202,32 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+    "slug": "rpo",
+    "sigle": "RPO",
+    "nom": "Remaining performance obligations",
+    "def": "The value of contracted customer services still to be recognised as revenue. Scope and recognition timing depend on the contracts and accounting rules. RPO is neither available cash nor an earned profit.",
+    "guide": "/en/analysis/when-credit-starts-sorting-ai/",
+    "sectionTitle": "Private credit & markets",
+    "accent": "var(--color-accent)",
+    "atlas": {
+      "intuition": "The contract commits future services; cash collection and revenue recognition follow their own timetables.",
+      "articles": [
+        {
+          "label": "When credit starts sorting AI",
+          "href": "/en/analysis/when-credit-starts-sorting-ai/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Oracle, SEC, August 31, 2026 Form 10-Q, Note 1",
+          "href": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.htm",
+          "kind": "source"
+        }
+      ]
+    }
+  },
 {
   "slug": "credit-carbone",
   "sigle": "Carbon credit",
@@ -401,7 +427,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/',
     atlas: {
       formula: 'DSCR = cash available for debt service / debt service over the same period',
-      articles: [{ label: 'Crux AI: chips as collateral', href: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/', kind: 'article' }],
+      articles: [{ label: 'Crux AI: chips as collateral', href: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/', kind: 'article' }, { label: 'When credit starts sorting AI', href: '/en/analysis/when-credit-starts-sorting-ai/', kind: 'article' }],
       sources: [{ label: 'EBRD, PPP project appraisal guidelines (hosted by the World Bank)', href: 'https://ppp.worldbank.org/sites/default/files/2024-07/VOLUME2-web.pdf', kind: 'source' }],
       related: ['step-in-rights', 'ltv'],
     },
@@ -800,6 +826,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/openai-credit-rating-nvidia-guarantee-ipo/',
     ...privateCreditSection,
     atlas: {
+      articles: [{ label: 'When credit starts sorting AI', href: '/en/analysis/when-credit-starts-sorting-ai/', kind: 'article' }],
       intuition: 'A guarantee cap is a contractual limit. An eventual payment depends on the trigger, remedies and recoveries.',
       sources: [{ label: 'Nvidia, SEC, Exhibit 10.1', href: 'https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda2027q2ex101.htm', detail: 'A third-party guarantee: definitions, remedies and termination in sections 1, 12 and 13.', kind: 'source' }],
       related: ['investment-grade'],
