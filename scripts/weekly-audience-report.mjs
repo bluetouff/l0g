@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { TRAFFIC_CLASSES } from './human-traffic-report.mjs';
 
 const LABELS = {
-  human_html: 'Lectures HTML humaines',
+  human_html: 'Lectures HTML filtrées',
   mcp_api: 'MCP et API',
   social_previews: 'Prévisualisations sociales',
   known_crawlers: 'Robots connus',
@@ -32,13 +32,14 @@ export function buildWeeklyAudienceTable(report, { through } = {}) {
     generated_at: new Date().toISOString(),
     source: '/api/v1/human-traffic.json',
     source_generated_at: report.generated_at,
+    source_filter_version: report.measurement?.filter_version ?? null,
     interval: { from: rolling.from, through: rolling.through, days: 7 },
     unit: 'requêtes servies',
     audience_metric: {
       name: 'lectures_html_humaines',
       value: requests.human_html,
       definition: report.traffic_classes.definitions?.human_html,
-      caveat: 'Une lecture HTML servie n’est pas une personne unique.',
+      caveat: 'Une lecture HTML filtrée ne certifie ni une personne unique ni un accès humain.',
     },
     operations: {
       mcp_api: requests.mcp_api,
@@ -62,7 +63,7 @@ export function weeklyAudienceMarkdown(table) {
     '',
     '| Mesure | Requêtes | Usage |',
     '| --- | ---: | --- |',
-    `| ${LABELS.human_html} | ${value(table.audience_metric.value)} | Audience, avec la réserve qu’une lecture n’est pas une personne |`,
+    `| ${LABELS.human_html} | ${value(table.audience_metric.value)} | Requêtes compatibles avec une lecture ; origine humaine non certifiée |`,
     `| ${LABELS.mcp_api} | ${value(table.operations.mcp_api)} | Usage machine |`,
     `| ${LABELS.social_previews} | ${value(table.operations.social_previews)} | Distribution, pas audience |`,
     `| ${LABELS.known_crawlers} | ${value(table.operations.known_crawlers)} | Indexation et automatisation |`,
@@ -75,6 +76,8 @@ export function weeklyAudienceMarkdown(table) {
       `| ${label} | ${table.acquisition ? value(table.acquisition[key] ?? null) : 'Indisponible dans ce rapport'} |`),
     '',
     `${table.coverage} Les canaux sont calculés avant suppression des petits effectifs ; ils ne sont pas reconstitués depuis les domaines publiés.`,
+    '',
+    `Génération de la source : ${table.source_generated_at ?? 'non renseignée'}. Filtre : ${table.source_filter_version ?? 'version non renseignée'}.`,
     '',
     `Source : ${table.source}. ${table.forbidden_interpretation}`,
     '',

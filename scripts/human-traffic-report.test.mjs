@@ -56,6 +56,28 @@ test('normalise la page et réduit le référent au domaine', () => {
   assert.equal(parseHumanHtmlRequest(log({ referrer: 'mailto:test@example.test' }))?.referrer, '(unknown)');
 });
 
+test('exclut les clients HTTP déclarés sans les confondre avec les crawlers ou les navigateurs', () => {
+  for (const userAgent of ['python-httpx2/2.7.0', 'python-httpx/0.28.1', 'Python/3.11', 'Python-urllib/3.14', 'python-requests/2.32.5', 'curl/8.0', 'Wget/1.25', 'HTTPie/3.2', 'Python/3.12 aiohttp/3.9']) {
+    assert.equal(parseHumanHtmlRequest(log({ userAgent })), null, userAgent);
+    assert.equal(classifyTrafficRequest(log({ userAgent }))?.category, 'other', userAgent);
+    assert.equal(classifyTrafficRequest(log({ userAgent, path: '/api/mcp' }))?.category, 'mcp_api');
+    assert.equal(classifyTrafficRequest(log({ userAgent, path: '/wp-login.php' }))?.category, 'scans');
+  }
+  const report = buildHumanTrafficReport([
+    ...Array.from({ length: 5 }, () => log()),
+    ...Array.from({ length: 5 }, () => log({ userAgent: 'python-httpx/0.28.1' })),
+  ], { now: new Date('2026-07-30T20:00:00Z') });
+  assert.equal(report.totals.html_gets, 5);
+  assert.equal(report.traffic_classes.totals.other, 5);
+  assert.equal(report.traffic_classes.rolling_7_days.human_referrers.google, 5);
+  const table = buildWeeklyAudienceTable(report);
+  assert.equal(table.source_filter_version, 'html-ua-filter-2');
+  assert.match(weeklyAudienceMarkdown(table), /Filtre : html-ua-filter-2/);
+  delete report.measurement.filter_version;
+  assert.equal(buildWeeklyAudienceTable(report).source_filter_version, null);
+  assert.match(weeklyAudienceMarkdown(buildWeeklyAudienceTable(report)), /version non renseignée/);
+});
+
 test('sépare strictement audience, MCP/API, previews, crawlers et scans', () => {
   assert.equal(classifyTrafficRequest(log())?.category, 'human_html');
   assert.equal(classifyTrafficRequest(log({ method: 'POST', path: '/api/mcp' }))?.category, 'mcp_api');
@@ -134,7 +156,7 @@ test('produit le tableau hebdomadaire depuis human-traffic sans métrique GoAcce
 
   assert.equal(table.audience_metric.value, 35);
   assert.equal(table.operations.mcp_api, 7);
-  assert.match(markdown, /Lectures HTML humaines \| 35/);
+  assert.match(markdown, /Lectures HTML filtrées \| 35/);
   assert.doesNotMatch(markdown, /visiteurs uniques|unique visitors|GoAccess/i);
 });
 

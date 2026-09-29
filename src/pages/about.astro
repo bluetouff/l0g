@@ -15,7 +15,7 @@ const profilePageJsonLd = {
   '@type': 'ProfilePage',
   '@id': `${SITE_URL}/about/#profile-page`,
   url: `${SITE_URL}/about/`,
-  dateModified: '2026-08-29T17:53:21+02:00',
+  dateModified: '2026-09-29T00:00:00+02:00',
   mainEntity: authorEntity,
   isPartOf: { '@id': `${SITE_URL}/#website` },
   publisher: { '@id': ORGANIZATION_ID },
@@ -51,6 +51,11 @@ const profilePageJsonLd = {
     </p>
 
     <TrustBar items={trustItems} />
+    <nav class="reading-links" aria-label="Commencer la lecture">
+      <a class="link-term" href="/demarrer/">Choisir un parcours de lecture</a>
+      <a class="link-term" href="/guides/">Comprendre les mécanismes financiers</a>
+      <a class="link-term" href="/publications/">Lire les enquêtes en livre</a>
+    </nav>
     <div class="facets">
       <div class="facet card" style="--c: var(--color-signal)">
         <span class="facet-k">01</span>
@@ -182,6 +187,7 @@ const profilePageJsonLd = {
   .wm { font-weight: 800; letter-spacing: -0.02em; }
   .wm .wm0 { color: var(--color-signal); }
   .about-intro { line-height: 1.7; }
+  .reading-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; margin: 1.5rem 0; line-height: 1.6; }
 
   /* --- Facettes --- */
   .facets {

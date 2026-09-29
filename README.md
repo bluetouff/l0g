@@ -49,9 +49,10 @@ et par les dashboards :
   intégrité et changefeed.
 - `/api/v1/toolset-manifest.json` : versions et empreintes anti-dérive des contrats
   d'outils MCP complet et compact.
-- `/api/v1/human-traffic.json` : GET HTML humains agrégés par jour, page et
+- `/api/v1/human-traffic.json` : GET HTML filtrés agrégés par jour, page et
   domaine référent, plus une ventilation séparée MCP/API, previews, robots et
-  scans ; sans identifiant persistant et avec seuil k=5.
+  scans ; sans identifiant persistant et avec seuil k=5. Le filtrage ne certifie
+  pas l’origine humaine des accès ; `measurement.filter_version` identifie la méthode.
 - `/llms.txt` et `/llms-full.txt` : cartes textuelles pour agents et RAG.
 
 Les détails de calcul et les limites de modèle sont dans
@@ -266,7 +267,7 @@ sudo apt-get install apache2-utils
 sudo htpasswd -cB /etc/apache2/l0g-stats.htpasswd bluetouff
 sudo chown root:www-data /etc/apache2/l0g-stats.htpasswd
 sudo chmod 0640 /etc/apache2/l0g-stats.htpasswd
-# Agrégat quotidien des GET HTML humains, à installer avant le vhost qui publie son JSON
+# Agrégat quotidien des GET HTML filtrés, à installer avant le vhost qui publie son JSON
 sudo deploy/install-human-traffic.sh
 sudo cp deploy/l0g.fr.apache.conf /etc/apache2/sites-available/
 sudo a2ensite l0g.fr.apache.conf

@@ -79,9 +79,17 @@ npm run build
 
 La mesure d’audience hebdomadaire a une seule source : le rapport public
 `/api/v1/human-traffic.json`. La ligne principale est le nombre de GET 200 de
-documents HTML classés humains. Elle doit être nommée « lectures HTML humaines »,
-jamais « visiteurs uniques », car aucune personne, IP, session ou empreinte
-persistante n’est suivie.
+documents HTML après filtrage. Elle doit être nommée « lectures HTML filtrées » :
+le user-agent ne certifie pas l’origine humaine d’un accès et aucune personne,
+IP, session ou empreinte persistante n’est suivie.
+
+Les clés historiques `human_html` et `lectures_html_humaines` sont conservées
+pour compatibilité. La méthode `measurement.filter_version=html-ua-filter-2`
+exclut aussi les clients HTTP déclarés tels que Python, HTTPX et curl, classés
+dans `other`. Un rapport sans ce champ utilise une méthode non renseignée ;
+ne pas comparer les deux filtres comme si leur périmètre était identique.
+La correction du collecteur nécessite son installation sur le serveur et un
+recalcul depuis les logs disponibles, indépendamment du build statique du site.
 
 Le même rapport ventile séparément les requêtes MCP/API, les prévisualisations
 sociales, les robots connus, les scans opportunistes et les autres requêtes. Ces

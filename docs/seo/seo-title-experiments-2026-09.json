@@ -85,8 +85,8 @@
     }
   ],
   "measurement_followup": {
-    "export_due": "2026-09-12",
-    "review_due": "2026-09-20",
+    "export_due": "2026-09-30",
+    "review_due": "2026-10-05",
     "earliest_title_edit": "2026-09-21",
     "automation_id": "p2-l0g-relev-s-gsc-et-titres",
     "joint_dimensions": [
@@ -110,13 +110,169 @@
         "route": "/en/guides/read-h41-fed-balance-sheet/",
         "observed_title": "Fed H.4.1: what bank reserves really show | l0g",
         "recrawled_after_release_at": null,
-        "post_recrawl_impressions": null,
+        "post_recrawl_impressions": 1995,
         "decision": "maintenir_en_attente_de_mesure",
-        "last_inspected_on": "2026-09-12",
-        "last_crawl_displayed": "17 août 2026, 02:44:22",
+        "last_inspected_on": "2026-09-29",
+        "last_crawl_displayed": "15 sept. 2026, 05:48:16",
         "crawl_timezone_displayed": null,
-        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
-        "recrawl_status": "last_displayed_crawl_predates_title_change"
+        "measurement_evidence": "CORRECTIFS-2026-09-29.md",
+        "recrawl_status": "confirmed_title_in_crawled_html",
+        "last_reviewed_on": "2026-09-29",
+        "review_reason": "Conserver : 1 clic sur 1 995 impressions du 17 au 26 septembre après crawl confirmé. Les 26 requêtes restituées représentent 178 impressions et aucun clic ; plusieurs visent la publication H.4.1. Elles ne décrivent pas les requêtes masquées. Le segment pays × appareil reste à relever.",
+        "inspection_history": [
+          {
+            "last_inspected_on": "2026-09-12",
+            "last_crawl_displayed": "17 août 2026, 02:44:22",
+            "crawl_timezone_displayed": null,
+            "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+            "recrawl_status": "last_displayed_crawl_predates_title_change"
+          }
+        ],
+        "crawled_title_verified": true,
+        "crawled_title": "Fed H.4.1: what bank reserves really show | l0g",
+        "indexed": true,
+        "google_canonical": "/en/guides/read-h41-fed-balance-sheet/",
+        "referring_page": "/en/guides/read-dollar-dxy-cross-currency-basis/",
+        "post_recrawl_window": {
+          "start": "2026-09-17",
+          "end": "2026-09-26",
+          "clicks": 1,
+          "position_displayed": 7.7,
+          "source": "GSC UI inspected on 2026-09-29, exact page and fixed dates, all countries and devices; current title verified in HTML from the crawl displayed as 2026-09-15. Start two calendar days after the displayed crawl; no inferred crawl timezone."
+        },
+        "visible_queries": [
+          {
+            "query": "h.4.1",
+            "impressions": 65,
+            "clicks": 0
+          },
+          {
+            "query": "fed h.4.1",
+            "impressions": 24,
+            "clicks": 0
+          },
+          {
+            "query": "fed h41",
+            "impressions": 15,
+            "clicks": 0
+          },
+          {
+            "query": "h.4.1 statistical release",
+            "impressions": 14,
+            "clicks": 0
+          },
+          {
+            "query": "h.4.1 federal reserve",
+            "impressions": 10,
+            "clicks": 0
+          },
+          {
+            "query": "h4.1 fed",
+            "impressions": 8,
+            "clicks": 0
+          },
+          {
+            "query": "h.4.1 release",
+            "impressions": 7,
+            "clicks": 0
+          },
+          {
+            "query": "h.4.1 fed",
+            "impressions": 5,
+            "clicks": 0
+          },
+          {
+            "query": "h41 fed",
+            "impressions": 5,
+            "clicks": 0
+          },
+          {
+            "query": "fed h 4.1",
+            "impressions": 3,
+            "clicks": 0
+          },
+          {
+            "query": "federal reserve h.4.1",
+            "impressions": 3,
+            "clicks": 0
+          },
+          {
+            "query": "fed h4.1",
+            "impressions": 3,
+            "clicks": 0
+          },
+          {
+            "query": "federal reserve h.4.1 april 2023 borrowings",
+            "impressions": 2,
+            "clicks": 0
+          },
+          {
+            "query": "h.4.1 report",
+            "impressions": 2,
+            "clicks": 0
+          },
+          {
+            "query": "متى سيصدر",
+            "impressions": 1,
+            "clicks": 0
+          },
+          {
+            "query": "quando sai o proximo?",
+            "impressions": 1,
+            "clicks": 0
+          },
+          {
+            "query": "federal reserve h.4.1 april 2023 total borrowings",
+            "impressions": 1,
+            "clicks": 0
+          },
+          {
+            "query": "federal reserve h.4.1 factors affecting reserve balances",
+            "impressions": 1,
+            "clicks": 0
+          },
+          {
+            "query": "federal reserve h.4.1 release",
+            "impressions": 1,
+            "clicks": 0
+          },
+          {
+            "query": "federal reserve h.4.1 release april 2023 borrowing",
+            "impressions": 1,
+            "clicks": 0
+          },
+          {
+            "query": "federal reserve total borrowings april 2023 h.4.1",
+            "impressions": 1,
+            "clicks": 0
+          },
+          {
+            "query": "h.4.1 factors affecting reserve balances",
+            "impressions": 1,
+            "clicks": 0
+          },
+          {
+            "query": "h 4.1",
+            "impressions": 1,
+            "clicks": 0
+          },
+          {
+            "query": "h41 federal reserve",
+            "impressions": 1,
+            "clicks": 0
+          },
+          {
+            "query": "federal reserve h.4.1 total assets july 2026",
+            "impressions": 1,
+            "clicks": 0
+          },
+          {
+            "query": "fed h4",
+            "impressions": 1,
+            "clicks": 0
+          }
+        ],
+        "visible_query_impressions": 178
       },
       {
         "id": "nvidia-500bn",
@@ -125,11 +281,27 @@
         "recrawled_after_release_at": null,
         "post_recrawl_impressions": null,
         "decision": "maintenir_en_attente_de_mesure",
-        "last_inspected_on": "2026-09-12",
-        "last_crawl_displayed": "12 août 2026, 03:42:44",
+        "last_inspected_on": "2026-09-29",
+        "last_crawl_displayed": "15 sept. 2026, 13:59:05",
         "crawl_timezone_displayed": null,
-        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
-        "recrawl_status": "last_displayed_crawl_predates_title_change"
+        "measurement_evidence": "CORRECTIFS-2026-09-29.md",
+        "recrawl_status": "confirmed_title_in_crawled_html",
+        "last_reviewed_on": "2026-09-29",
+        "review_reason": "Conserver : aucune nouvelle mesure segmentée attribuable au titre. Priorité de collecte révisée selon le rapport du 28 septembre.",
+        "inspection_history": [
+          {
+            "last_inspected_on": "2026-09-12",
+            "last_crawl_displayed": "12 août 2026, 03:42:44",
+            "crawl_timezone_displayed": null,
+            "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+            "recrawl_status": "last_displayed_crawl_predates_title_change"
+          }
+        ],
+        "crawled_title_verified": true,
+        "crawled_title": "Nvidia $500bn AI financing: what is committed? | l0g",
+        "indexed": true,
+        "google_canonical": "/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/",
+        "referring_page": "/posts/nvidia-500-milliards-qui-n-existent-pas-encore/"
       },
       {
         "id": "realt-liquidation",
@@ -138,11 +310,27 @@
         "recrawled_after_release_at": null,
         "post_recrawl_impressions": null,
         "decision": "maintenir_en_attente_de_mesure",
-        "last_inspected_on": "2026-09-12",
+        "last_inspected_on": "2026-09-29",
         "last_crawl_displayed": "28 août 2026, 19:42:58",
         "crawl_timezone_displayed": null,
-        "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
-        "recrawl_status": "last_displayed_crawl_predates_title_change"
+        "measurement_evidence": "CORRECTIFS-2026-09-29.md",
+        "recrawl_status": "last_displayed_crawl_predates_title_change",
+        "last_reviewed_on": "2026-09-29",
+        "review_reason": "Conserver : aucune nouvelle mesure segmentée attribuable au titre. Priorité de collecte révisée selon le rapport du 28 septembre.",
+        "inspection_history": [
+          {
+            "last_inspected_on": "2026-09-12",
+            "last_crawl_displayed": "28 août 2026, 19:42:58",
+            "crawl_timezone_displayed": null,
+            "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
+            "recrawl_status": "last_displayed_crawl_predates_title_change"
+          }
+        ],
+        "crawled_title_verified": false,
+        "crawled_title": "RealT in liquidation: the token that did not own… · l0g.fr",
+        "indexed": true,
+        "google_canonical": "/en/analysis/realt-liquidation-token-without-the-deed/",
+        "referring_page": "/posts/realt-en-liquidation-le-token-qui-ne-possedait-pas-la-maison/"
       },
       {
         "id": "productivity",
@@ -155,7 +343,9 @@
         "last_crawl_displayed": "23 août 2026, 22:24:56",
         "crawl_timezone_displayed": null,
         "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
-        "recrawl_status": "last_displayed_crawl_predates_title_change"
+        "recrawl_status": "last_displayed_crawl_predates_title_change",
+        "last_reviewed_on": "2026-09-29",
+        "review_reason": "Conserver : aucune nouvelle mesure segmentée attribuable au titre. Priorité de collecte révisée selon le rapport du 28 septembre."
       },
       {
         "id": "cofer",
@@ -168,7 +358,9 @@
         "last_crawl_displayed": "26 août 2026, 13:09:11",
         "crawl_timezone_displayed": null,
         "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
-        "recrawl_status": "last_displayed_crawl_predates_title_change"
+        "recrawl_status": "last_displayed_crawl_predates_title_change",
+        "last_reviewed_on": "2026-09-29",
+        "review_reason": "Conserver : aucune nouvelle mesure segmentée attribuable au titre. Priorité de collecte révisée selon le rapport du 28 septembre."
       },
       {
         "id": "taiwan",
@@ -181,7 +373,9 @@
         "last_crawl_displayed": "30 août 2026, 00:35:02",
         "crawl_timezone_displayed": null,
         "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
-        "recrawl_status": "last_displayed_crawl_predates_title_change"
+        "recrawl_status": "last_displayed_crawl_predates_title_change",
+        "last_reviewed_on": "2026-09-29",
+        "review_reason": "Conserver : aucune nouvelle mesure segmentée attribuable au titre. Priorité de collecte révisée selon le rapport du 28 septembre."
       },
       {
         "id": "start",
@@ -194,7 +388,9 @@
         "last_crawl_displayed": "30 août 2026, 10:52:06",
         "crawl_timezone_displayed": null,
         "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
-        "recrawl_status": "last_displayed_crawl_predates_title_change"
+        "recrawl_status": "last_displayed_crawl_predates_title_change",
+        "last_reviewed_on": "2026-09-29",
+        "review_reason": "Conserver : aucune nouvelle mesure segmentée attribuable au titre. Priorité de collecte révisée selon le rapport du 28 septembre."
       },
       {
         "id": "bessent",
@@ -207,7 +403,9 @@
         "last_crawl_displayed": "23 août 2026, 04:55:17",
         "crawl_timezone_displayed": null,
         "measurement_evidence": "gsc-filtered-observations-2026-09-12.json",
-        "recrawl_status": "last_displayed_crawl_predates_title_change"
+        "recrawl_status": "last_displayed_crawl_predates_title_change",
+        "last_reviewed_on": "2026-09-29",
+        "review_reason": "Conserver : aucune nouvelle mesure segmentée attribuable au titre. Priorité de collecte révisée selon le rapport du 28 septembre."
       },
       {
         "id": "ai-bis",
@@ -228,10 +426,70 @@
           "position_displayed": 6.8,
           "source": "GSC exact page and exact date; cached HTML title verified"
         },
-        "recrawl_status": "confirmed_title_in_crawled_html"
+        "recrawl_status": "confirmed_title_in_crawled_html",
+        "last_reviewed_on": "2026-09-29",
+        "review_reason": "Conserver : aucune nouvelle mesure segmentée attribuable au titre. Priorité de collecte révisée selon le rapport du 28 septembre."
+      },
+      {
+        "id": "dealer-gamma",
+        "route": "/en/guides/read-dealer-gamma/",
+        "observed_title": "Reading dealer gamma: when options hedging drives… · l0g.fr",
+        "recrawled_after_release_at": null,
+        "post_recrawl_impressions": null,
+        "decision": "maintenir_en_attente_de_mesure",
+        "last_reviewed_on": "2026-09-29",
+        "review_reason": "Nouvelle priorité de diagnostic ; conserver le titre avant mesure des requêtes et segments.",
+        "last_inspected_on": "2026-09-29",
+        "last_crawl_displayed": "6 sept. 2026, 11:22:22",
+        "crawl_timezone_displayed": null,
+        "measurement_evidence": "CORRECTIFS-2026-09-29.md",
+        "recrawl_status": "baseline_title_in_crawled_html",
+        "crawled_title_verified": true,
+        "crawled_title": "Reading dealer gamma: when options hedging drives… · l0g.fr",
+        "indexed": true,
+        "google_canonical": "/en/guides/read-dealer-gamma/",
+        "referring_page": "/guides/lire-le-gamma-des-dealers/"
+      },
+      {
+        "id": "repo-sofr",
+        "route": "/en/guides/read-repo-market-sofr/",
+        "observed_title": "How to Read the Repo Market: SOFR, the Rate… · l0g.fr",
+        "recrawled_after_release_at": null,
+        "post_recrawl_impressions": null,
+        "decision": "maintenir_en_attente_de_mesure",
+        "last_reviewed_on": "2026-09-29",
+        "review_reason": "Nouvelle priorité de diagnostic ; conserver le titre avant mesure des requêtes et segments.",
+        "last_inspected_on": "2026-09-29",
+        "last_crawl_displayed": "10 sept. 2026, 09:49:21",
+        "crawl_timezone_displayed": null,
+        "measurement_evidence": "CORRECTIFS-2026-09-29.md",
+        "recrawl_status": "baseline_title_in_crawled_html",
+        "crawled_title_verified": true,
+        "crawled_title": "How to Read the Repo Market: SOFR, the Rate… · l0g.fr",
+        "indexed": true,
+        "google_canonical": "/en/guides/read-repo-market-sofr/",
+        "referring_page": "/guides/lire-le-marche-du-repo-sofr/"
       }
     ],
     "last_collection_on": "2026-09-12",
-    "collection_method": "Rendered GSC tables with actual exact-page, country and device filters; period aggregates, not a daily API join."
+    "collection_method": "Rendered GSC tables with actual exact-page, country and device filters; period aggregates, not a daily API join.",
+    "previous_schedule": {
+      "export_due": "2026-09-12",
+      "review_due": "2026-09-20"
+    },
+    "last_inspection_on": "2026-09-29",
+    "last_review_on": "2026-09-29",
+    "next_collection_scope": [
+      "h41",
+      "nvidia-500bn",
+      "dealer-gamma",
+      "repo-sofr",
+      "realt-liquidation"
+    ],
+    "review_note": "Revue du 29 septembre : conserver les titres. Cinq inspections actualisées ; H.4.1 et Nvidia portent leur titre courant dans le HTML exploré le 15 septembre. RealT conserve un HTML du 28 août avec ancien titre. Mesure H.4.1 du 17 au 26 septembre réalisée dans GSC, distincte des cumuls du rapport. Les autres extractions et le segment pays × appareil restent à collecter.",
+    "partial_performance_collection_on": "2026-09-29",
+    "partial_performance_collection_scope": [
+      "h41"
+    ]
   }
 }

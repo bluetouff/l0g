@@ -27,6 +27,9 @@ const CRAWLER_USER_AGENT = new RegExp([
   'headlesschrome', 'lighthouse',
 ].join('|'), 'i');
 const SOCIAL_PREVIEW_USER_AGENT = /twitterbot|facebookexternalhit|facebot|linkedinbot|linkedinapp|whatsapp|telegrambot|discordbot|slackbot|skypeuripreview|pinterestbot/i;
+// Declared HTTP libraries and command-line clients are not browser readership.
+// Keep them in `other`: their signature alone does not establish a crawler's purpose.
+const PROGRAMMATIC_HTTP_USER_AGENT = /(?:^|[\s;(])(?:python-httpx2?|python-requests|python-urllib|python|curl|wget|httpie|aiohttp)(?:\/|\s|$)/i;
 const SCAN_PATH = /(?:^|\/)(?:\.env(?:\.|$)|\.git(?:\/|$)|wp-admin(?:\/|$)|wp-login\.php$|xmlrpc\.php$|phpmyadmin(?:\/|$)|adminer(?:\.php|\/|$)|vendor\/phpunit(?:\/|$)|cgi-bin(?:\/|$)|actuator(?:\/|$)|boaform(?:\/|$))|\.php(?:\/|$)/i;
 const MACHINE_SURFACE_PATH = /^(?:\/api(?:\/|$)|\/\.well-known\/(?:mcp|oauth-|openid-)|\/(?:api\/mcp(?:\/compact)?|compact)\/\.well-known\/|\/(?:agents|server|openapi)\.json$)/i;
 export const TRAFFIC_CLASSES = Object.freeze([
@@ -137,7 +140,7 @@ export function classifyTrafficRequest(line) {
   else if (SOCIAL_PREVIEW_USER_AGENT.test(userAgent)) category = 'social_previews';
   else if (SCAN_PATH.test(path)) category = 'scans';
   else if (CRAWLER_USER_AGENT.test(userAgent) || isInternalL0gUserAgent(userAgent)) category = 'known_crawlers';
-  else if (userAgent && userAgent !== '-' && request.method === 'GET' && request.status === 200 && normalizeDocumentPath(request.target)) category = 'human_html';
+  else if (userAgent && userAgent !== '-' && !PROGRAMMATIC_HTTP_USER_AGENT.test(userAgent) && request.method === 'GET' && request.status === 200 && normalizeDocumentPath(request.target)) category = 'human_html';
   return { day: request.day, category };
 }
 
@@ -153,6 +156,7 @@ export function parseHumanHtmlRequest(line) {
     || SCAN_PATH.test(path)
     || SOCIAL_PREVIEW_USER_AGENT.test(userAgent)
     || CRAWLER_USER_AGENT.test(userAgent)
+    || PROGRAMMATIC_HTTP_USER_AGENT.test(userAgent)
     || isInternalL0gUserAgent(userAgent)
   ) return null;
   const page = normalizeDocumentPath(target);
@@ -253,8 +257,9 @@ export function createHumanTrafficAccumulator(
         retention_days: retentionDays,
         minimum_public_cohort: minimumCohort,
         measurement: {
+          filter_version: 'html-ua-filter-2',
           numerator: 'GET HTTP 200 de documents HTML uniquement.',
-          exclusions: 'Crawlers connus, user-agents internes l0g, feeds, assets, API/MCP, statistiques et fichiers machine.',
+          exclusions: 'Crawlers connus, clients HTTP programmatiques déclarés, user-agents internes l0g, feeds, assets, API/MCP, statistiques et fichiers machine.',
           dimensions: 'Agrégation par jour, page canonique et domaine référent seulement.',
           coverage: 'Recalcul à partir des journaux encore disponibles. retention_days est un plafond de sélection, pas un historique garanti ; les agrégats antérieurs ne sont pas cumulés.',
           privacy: 'Aucune IP, cookie, session, empreinte, chemin de référent ni identifiant persistant n’est conservé.',
@@ -275,12 +280,12 @@ export function createHumanTrafficAccumulator(
             coverage: 'Dates des journaux Apache disponibles ; la dernière journée peut être partielle. Aucune complétude historique garantie.',
           },
           definitions: {
-            human_html: 'GET 200 d’un document HTML, après exclusion des surfaces machine et user-agents automatisés connus.',
+            human_html: 'GET 200 d’un document HTML, après exclusion des surfaces machine, robots connus et clients HTTP programmatiques déclarés. Le caractère humain de la lecture n’est pas établi.',
             mcp_api: 'Requête vers /api, les transports MCP ou leurs documents de découverte.',
             social_previews: 'Requête issue d’un user-agent de carte ou de prévisualisation sociale connu.',
             known_crawlers: 'Requête issue d’un robot, crawler, moniteur ou user-agent interne l0g connu.',
             scans: 'Requête vers un chemin caractéristique de sondes automatisées opportunistes.',
-            other: 'Assets, redirections, erreurs ordinaires et trafic non classé ailleurs.',
+            other: 'Assets, redirections, erreurs ordinaires, clients HTTP programmatiques déclarés et trafic non classé ailleurs.',
           },
         },
         limitations: [
