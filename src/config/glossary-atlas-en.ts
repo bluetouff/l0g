@@ -829,16 +829,19 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'reassurance',
     sigle: 'Reinsurance',
     nom: 'Insurance for an insurer',
-    def: 'A contract through which an insurer transfers part of its premiums and losses to another institution. The policyholder keeps the same insurer; the reinsurance treaty redistributes large or correlated losses between professional counterparties.',
+    def: 'A contract through which an insurer transfers all or part of specified risks to a reinsurer in exchange for a premium. The cover and limits determine which losses are shared. The original insurer remains responsible to its policyholders, including if the reinsurer fails to pay.',
     guide: '/en/analysis/when-climate-turns-state-into-reinsurer/',
     ...macroSection,
     atlas: {
       intuition: 'A reinsurer gives an insurer another balance sheet with which to absorb severe losses. It does not replace the insurer in the customer’s policy.',
       whyNow: 'Natural catastrophes can hit many policies at once, making reinsurance and its ultimate backstops central to insurability.',
       articles: [
+        { label: 'Aon and Blackstone: who sets the price of risk?', href: '/en/analysis/aon-blackstone-cortina-reinsurance-risk-pricing/', detail: 'Treaty participation, discounts, loss accumulation and continuity of capacity.', kind: 'article' },
         { label: 'When climate turns the state into a reinsurer', href: '/en/analysis/when-climate-turns-state-into-reinsurer/', detail: 'How France layers policyholder, insurer, CCR and state balance sheets.', kind: 'article' },
       ],
       sources: [
+        { label: 'NAIC: Reinsurance', href: 'https://content.naic.org/insurance-topics/reinsurance', detail: 'Definition, transfer of risk and contractual scope of reinsurance.', kind: 'source' },
+        { label: 'AXIS Syndicate 1686, 2025 accounts', href: 'https://assets.lloyds.com/media-651c0e64-c1d0-4f97-90f7-883c69fe2ef2/6b43f9f4-37b2-45b8-9ab1-87515c4b67d6/1686_Accounts_2025Q4_20260220_150810.html', detail: 'Note 21: liability retained when reinsurers fail to pay.', kind: 'source' },
         { label: 'French Insurance Code, Article L. 431-9', href: 'https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073984/LEGISCTA000006187517/2025-01-08', detail: 'CCR reinsurance and the French state guarantee.', kind: 'source' },
         { label: 'Cour des comptes, April 2026', href: 'https://www.vie-publique.fr/files/rapport/pdf/303004.pdf', detail: 'Treaty structure and financial sustainability of the French Cat Nat scheme.', kind: 'source' },
       ],

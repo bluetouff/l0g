@@ -29,7 +29,7 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
 assert.equal(glossaryEntries.length, 560, 'Le corpus doit conserver ses 560 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 116, 'Le graphe Atlas doit conserver ses 116 nœuds');
+assert.equal(glossaryAtlasEntries.length, 117, 'Le graphe Atlas doit conserver ses 117 nœuds');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'mvno'), '/posts/sfr-rachat-partage-operateur-prix-forfaits/'],
   [glossaryAtlasEnBySlug.get('mvno'), '/en/analysis/sfr-breakup-phone-bill-networks-competition/'],
@@ -56,7 +56,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 416, 'Le graphe Atlas doit conserver ses 416 relations');
+assert.equal(glossaryAtlasEdgeCount, 417, 'Le graphe Atlas doit conserver ses 417 relations');
 for (const [entry, href] of [
   [glossaryEntries.find((item) => item.slug === 'tokenisation-des-actifs'), '/posts/actions-tokenisees-xstocks-vaults-chaine-credit/'],
   [glossaryAtlasEnBySlug.get('tokenisation-des-actifs'), '/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/'],
