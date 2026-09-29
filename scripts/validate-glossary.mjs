@@ -28,8 +28,8 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 564, 'Le corpus doit conserver ses 564 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 121, 'Le graphe Atlas doit conserver ses 121 nœuds');
+assert.equal(glossaryEntries.length, 565, 'Le corpus doit conserver ses 565 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 122, 'Le graphe Atlas doit conserver ses 122 nœuds');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'mvno'), '/posts/sfr-rachat-partage-operateur-prix-forfaits/'],
   [glossaryAtlasEnBySlug.get('mvno'), '/en/analysis/sfr-breakup-phone-bill-networks-competition/'],
@@ -56,7 +56,16 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 421, 'Le graphe Atlas doit conserver ses 421 relations');
+assert.equal(glossaryAtlasEdgeCount, 424, 'Le graphe Atlas doit conserver ses 424 relations');
+for (const [entry, href] of [
+  [glossaryEntries.find(item => item.slug === 'repricing-obligataire'), '/posts/le-monde-redecouvre-le-prix-de-l-argent/'],
+  [glossaryAtlasEnBySlug.get('repricing-obligataire'), '/en/analysis/the-world-rediscovers-the-price-of-money/'],
+]) {
+  assert(entry);
+  assert.equal(entry.guide, href);
+  assert.deepEqual(entry.atlas.related, ['duration', 'prime-de-terme', 'courbe-des-taux']);
+  assert.equal(entry.atlas.sources[0].href, 'https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_area_yield_curves/html/index.en.html');
+}
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'ofz'), '/posts/budget-russe-2027-defense-dette-banques-credit/'],
   [glossaryAtlasEnBySlug.get('ofz'), '/en/analysis/russia-2027-budget-defence-debt-banks-credit/'],

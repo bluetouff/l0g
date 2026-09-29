@@ -203,6 +203,24 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'repricing-obligataire',
+    sigle: 'Bond repricing',
+    nom: 'Reassessment of bond prices and yields',
+    def: 'An adjustment in bond prices and yields as financing conditions or expectations change. For a fixed-cash-flow security, a higher required yield lowers its price. Market repricing can be immediate; transmission to the issuer’s interest bill depends on new issues, maturities and rate clauses.',
+    guide: '/en/analysis/the-world-rediscovers-the-price-of-money/',
+    ...macroSection,
+    atlas: {
+      intuition: 'Payments can stay fixed while the bond’s price changes; the next issue meets the new yield environment.',
+      whyNow: 'Long yields connect monetary expectations with refinancing schedules and valuations.',
+      articles: [{ label: 'The world rediscovers the price of money', href: '/en/analysis/the-world-rediscovers-the-price-of-money/', kind: 'article' }],
+      sources: [
+        { label: 'ECB, yield curves and discounting', href: 'https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_area_yield_curves/html/index.en.html', detail: 'Prices, future cash flows, spot rates and par yields.', kind: 'source' },
+        { label: 'Federal Reserve, Kim–Wright model', href: 'https://www.federalreserve.gov/data/three-factor-nominal-term-structure-model.htm', detail: 'Expected short rates, term premiums and estimation limits.', kind: 'source' },
+      ],
+      related: ['duration', 'prime-de-terme', 'courbe-des-taux'],
+    },
+  },
+  {
     slug: 'ofz',
     sigle: 'OFZ',
     nom: 'Russian federal government bonds',
@@ -1079,7 +1097,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       intuition: 'A model splits a long yield into the expected path of short rates and compensation for duration risk. That split is an estimate, with uncertainty.',
       formula: 'long yield ≈ average expected short rates + term premium',
       whyNow: 'When long-debt supply grows, QT removes the public buyer and foreign demand shifts, an expected fall in short rates can coexist with a rising long yield.',
-      articles: [{ label: 'Can a Fed hike lower long-term yields?', href: '/en/analysis/fed-rate-hikes-long-yields-term-premium/', detail: 'Expectations, the term premium and Treasury buybacks.', kind: 'article' }, ...usDebtArticles],
+      articles: [{ label: 'The world rediscovers the price of money', href: '/en/analysis/the-world-rediscovers-the-price-of-money/', kind: 'article' }, { label: 'Can a Fed hike lower long-term yields?', href: '/en/analysis/fed-rate-hikes-long-yields-term-premium/', detail: 'Expectations, the term premium and Treasury buybacks.', kind: 'article' }, ...usDebtArticles],
       guides: usDebtGuides,
       ...shared,
       sources: [{ label: 'Federal Reserve, Kim–Wright model', href: 'https://www.federalreserve.gov/data/three-factor-nominal-term-structure-model.htm', detail: 'Methodology, limitations and revisions to term-premium estimates.', kind: 'source' }, ...shared.sources],
@@ -1097,7 +1115,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       intuition: 'Duration converts a rate move into a price gain or loss. It says how much rate risk sleeps inside a portfolio.',
       formula: 'approximate price change ≈ -duration × change in yield',
       whyNow: 'In a high-debt regime, duration concentrates risk: banks, insurers, pension funds and repo strategies can all sell at once if long rates break their scenario.',
-      articles: usDebtArticles,
+      articles: [{ label: 'The world rediscovers the price of money', href: '/en/analysis/the-world-rediscovers-the-price-of-money/', kind: 'article' }, ...usDebtArticles],
       guides: usDebtGuides,
       ...shared,
       related: ['prime-de-terme', 'move', 'adjudication', 'courbe-des-taux', 'repo', 'basis-trade'],

@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Repricing obligataire', nom: 'Réévaluation des prix et des rendements obligataires', def: 'Ajustement des prix et des rendements des obligations lorsque les conditions de financement ou les anticipations changent. Pour un titre à flux fixes, une hausse du rendement demandé réduit son prix. La réaction du prix de marché est immédiate ; la transmission aux intérêts de l’émetteur dépend des nouvelles émissions, des échéances et des clauses de taux.', guide: '/posts/le-monde-redecouvre-le-prix-de-l-argent/' },
       { sigle: 'OFZ', nom: 'Obligations fédérales russes', def: 'Titres de dette émis par l’État fédéral russe. Ils apportent un financement contre des paiements futurs selon les clauses de chaque émission. Un coupon fixe et un coupon variable répartissent différemment le risque de taux ; une opération de repo peut procurer de la liquidité au détenteur d’un titre éligible, sous conditions et avec décote.', guide: '/posts/budget-russe-2027-defense-dette-banques-credit/' },
 {
   "sigle": "Crédit carbone",
@@ -901,6 +902,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'repricing-obligataire': {
+    intuition: 'Les paiements du titre peuvent rester fixes tandis que son prix change ; la prochaine émission rencontre les nouveaux rendements.',
+    whyNow: 'Les rendements longs relient les anticipations monétaires aux calendriers de refinancement et aux valorisations.',
+    articles: [{ label: 'Le monde redécouvre le prix de l’argent', href: '/posts/le-monde-redecouvre-le-prix-de-l-argent/', kind: 'article' }],
+    sources: [
+      { label: 'BCE, courbes et actualisation', href: 'https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_area_yield_curves/html/index.en.html', detail: 'Prix, flux futurs, taux spot et rendements au pair.', kind: 'source' },
+      { label: 'Federal Reserve, modèle Kim–Wright', href: 'https://www.federalreserve.gov/data/three-factor-nominal-term-structure-model.htm', detail: 'Taux courts attendus, prime de terme et limites des estimations.', kind: 'source' },
+    ],
+    related: ['duration', 'prime-de-terme', 'courbe-des-taux'],
+  },
   ofz: {
     intuition: 'Le Trésor reçoit des roubles à l’émission ; les conditions du titre déterminent les paiements à venir.',
     whyNow: 'Le financement domestique relie les choix budgétaires russes aux portefeuilles bancaires et aux variations de taux.',
@@ -1274,7 +1285,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Un modèle sépare le rendement long entre trajectoire attendue des taux courts et rémunération du risque de duration. Cette séparation est estimée, donc incertaine.",
     formula: 'rendement long ≈ moyenne des taux courts anticipés + prime de terme',
     whyNow: "Quand l'offre de dette longue augmente, que le QT réduit l'acheteur public et que la demande étrangère se déplace, une baisse attendue des taux courts peut coexister avec une remontée du rendement long.",
-    articles: [{ label: 'Une hausse de la Fed peut-elle faire baisser les taux longs ?', href: '/posts/fed-hausses-taux-longs-prime-terme/', detail: 'Anticipations, prime de terme et rachats du Trésor.', kind: 'article' }, ...treasuryArticles],
+    articles: [{ label: 'Le monde redécouvre le prix de l’argent', href: '/posts/le-monde-redecouvre-le-prix-de-l-argent/', kind: 'article' }, { label: 'Une hausse de la Fed peut-elle faire baisser les taux longs ?', href: '/posts/fed-hausses-taux-longs-prime-terme/', detail: 'Anticipations, prime de terme et rachats du Trésor.', kind: 'article' }, ...treasuryArticles],
     guides: treasuryGuides,
     datasets: treasuryDatasets,
     signals: treasurySignals,
@@ -1285,7 +1296,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "La duration transforme un mouvement de taux en perte ou gain de prix. Elle dit quelle quantité de risque de taux dort dans un portefeuille.",
     formula: 'variation approximative du prix ≈ -duration × variation du rendement',
     whyNow: "Dans un régime de dette élevée, la duration concentre le risque : banques, assureurs, fonds de pension et stratégies repo peuvent vendre en même temps si les taux longs cassent leur scénario.",
-    articles: treasuryArticles,
+    articles: [{ label: 'Le monde redécouvre le prix de l’argent', href: '/posts/le-monde-redecouvre-le-prix-de-l-argent/', kind: 'article' }, ...treasuryArticles],
     guides: treasuryGuides,
     datasets: treasuryDatasets,
     signals: treasurySignals,

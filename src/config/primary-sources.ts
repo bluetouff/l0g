@@ -992,6 +992,7 @@ export const editorialSourceDomainTiers = {
     'federalregister.gov',
     'fec.gov',
     'finra.org',
+    'fhfa.gov',
     'iea.org',
     'insee.fr',
     'judiciary.gov.sg',
