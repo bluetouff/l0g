@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { createRequire } from 'node:module';
 import test from 'node:test';
 import yaml from 'js-yaml';
 import { optimize } from 'svgo';
@@ -12,8 +13,8 @@ const sanitize = (body) => optimize(
   { plugins: ['removeScripts'] },
 ).data;
 
-test('security floors cover every YAML, SVGO, Hono, TOML and devalue copy in both dependency trees', () => {
-  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 2] };
+test('security floors cover vulnerable parsers and network dependencies in both trees', () => {
+  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 2], 'fast-uri': [3, 1, 7], undici: [8, 10, 2], 'ip-address': [10, 5, 1] };
   const seen = new Set();
   for (const path of ['../package-lock.json', '../mcp-server/package-lock.json']) {
     const lock = JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
@@ -28,7 +29,7 @@ test('security floors cover every YAML, SVGO, Hono, TOML and devalue copy in bot
       }
     }
   }
-  assert.equal(seen.size, 5);
+  assert.equal(seen.size, Object.keys(minimums).length);
 });
 
 test('devalue rejects out-of-bounds references and preserves ordinary cyclic data', () => {
@@ -106,4 +107,37 @@ test('SVGO rejects invalid XML character references in text and attributes', () 
     assert.throws(() => sanitize(`<text>${reference}</text>`));
     assert.throws(() => sanitize(`<text aria-label="${reference}">label</text>`));
   }
+});
+
+// Pure, bounded parsing fixtures; these tests never open a network connection.
+const requireMain = createRequire(import.meta.url);
+const requireMcp = createRequire(new URL('../mcp-server/package.json', import.meta.url));
+
+test('both URI parsers reject authority injection and malformed host brackets', () => {
+  // GHSA-qw65-cvwx-89v3 and GHSA-58mr-gqgx-xq4g.
+  for (const requireDependency of [requireMain, requireMcp]) {
+    const uri = requireDependency('fast-uri');
+    assert.throws(() => uri.serialize({ scheme: 'https', host: 'trusted.example', port: '@127.0.0.1:8124', path: '/app' }));
+    for (const input of ['http://[127.0.0.1/', 'http://[example.com/', 'http://example.com]/']) {
+      assert.equal(uri.parse(input).error, 'URI host is malformed.', input);
+    }
+    assert.equal(uri.parse('https://l0g.fr:443/posts/').host, 'l0g.fr');
+    assert.equal(uri.parse('http://[::1]:8080/').error, undefined);
+    assert.equal(uri.serialize({ scheme: 'https', host: 'l0g.fr', port: '8443', path: '/posts/' }), 'https://l0g.fr:8443/posts/');
+  }
+});
+
+test('IPv6 classifiers cover the complete link-local and local-use NAT64 ranges', () => {
+  // GHSA-rpw4-54j3-4h4q and GHSA-2vr4-cq9g-pvrc.
+  const { Address6 } = requireMcp('ip-address');
+  for (const address of ['fe80::1', 'fe81::1', 'fe80:0:0:1::1', 'febf:ffff:ffff:ffff:ffff:ffff:ffff:ffff']) {
+    assert.equal(new Address6(address).isLinkLocal(), true, address);
+  }
+  for (const address of ['fe7f::1', 'fec0::1', '2001:4860:4860::8888']) {
+    assert.equal(new Address6(address).isLinkLocal(), false, address);
+  }
+  for (const address of ['64:ff9b:1::', '64:ff9b:1:7f00:0:100::', '64:ff9b:1::7f00:1', '64:ff9b:1:ffff:ffff:ffff:ffff:ffff']) {
+    assert.equal(new Address6(address).isPrivate(), true, address);
+  }
+  assert.equal(new Address6('2001:4860:4860::8888').isPrivate(), false);
 });
