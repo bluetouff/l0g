@@ -58,6 +58,18 @@ assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-ind
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
 assert.equal(glossaryAtlasEdgeCount, 424, 'Le graphe Atlas doit conserver ses 424 relations');
 for (const [entry, href] of [
+  [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
+  [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
+]) {
+  assert(entry);
+  assert.equal(entry.atlas.articles[0].href, href);
+  assert(entry.atlas.formula.includes('baril') || entry.atlas.formula.includes('barrel'));
+  assert(entry.atlas.whyNow.includes('2029'));
+  assert(!entry.def.includes('1.24') && !entry.def.includes('1,24'));
+  assert(entry.atlas.sources.some(source => source.href === 'https://www.energy.gov/hgeo/opr/spr-sales-and-exchanges'));
+  assert(entry.atlas.sources.some(source => source.href === 'https://www.iea.org/about/oil-security-and-emergency-response'));
+}
+for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'repricing-obligataire'), '/posts/le-monde-redecouvre-le-prix-de-l-argent/'],
   [glossaryAtlasEnBySlug.get('repricing-obligataire'), '/en/analysis/the-world-rediscovers-the-price-of-money/'],
 ]) {
