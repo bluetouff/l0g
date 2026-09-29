@@ -202,6 +202,69 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+{
+  "slug": "credit-carbone",
+  "sigle": "Carbon credit",
+  "nom": "A project-based emissions reduction or removal unit",
+  "def": "A unit generally representing one tonne of CO₂ equivalent reduced or removed by a project under a specified programme and methodology. Its quality depends on additionality, the baseline, storage durability and prevention of double counting. Retirement prevents reuse of the unit; it does not reduce the life-cycle inventory of the product to which a buyer links it.",
+  "guide": "/en/analysis/carbon-neutral-claims-offsets-product-risk/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "The registry records a unit; the project and its methodology determine the climate benefit.",
+    "articles": [
+      {
+        "label": "Carbon credits: the product behind the zero",
+        "href": "/en/analysis/carbon-neutral-claims-offsets-product-risk/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Verra : Verified Carbon Units",
+        "href": "https://verra.org/programs/verified-carbon-standard/verified-carbon-units-vcus/",
+        "kind": "source"
+      },
+      {
+        "label": "ICVCM : Core Carbon Principles",
+        "href": "https://icvcm.org/core-carbon-principles/",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "additionnalite"
+    ]
+  }
+},
+{
+  "slug": "additionnalite",
+  "sigle": "Additionality",
+  "nom": "Climate benefit dependent on carbon-credit revenue",
+  "def": "The requirement that an emissions reduction or removal would not have occurred without the incentive created by carbon-credit revenue. Assessment compares the intervention with a credible trajectory without that funding. A project’s existence and compliance with a methodology do not by themselves establish the size of the additional benefit.",
+  "guide": "/en/analysis/carbon-neutral-claims-offsets-product-risk/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "An intervention can be useful yet have happened without carbon-credit revenue.",
+    "articles": [
+      {
+        "label": "Carbon credits: the product behind the zero",
+        "href": "/en/analysis/carbon-neutral-claims-offsets-product-risk/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "ICVCM : Core Carbon Principles",
+        "href": "https://icvcm.org/core-carbon-principles/",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "credit-carbone"
+    ]
+  }
+},
   {"slug": "tpi", "sigle": "TPI", "nom": "Transmission Protection Instrument", "def": "ECB instrument announced in July 2022 for secondary-market purchases in response to unwarranted tensions threatening monetary-policy transmission. The Governing Council assesses fiscal policies and debt sustainability, among other criteria. An excessive deficit procedure alone does not exclude a country taking the required effective corrective action. Activation remains discretionary.", "guide": "/en/guides/read-european-sovereign-debt/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "atlas": {"intuition": "Potential monetary support depends on economic and fiscal criteria and a decision by the Governing Council.", "articles": [{"label": "LFI and RN: debt, taxes and French political risk", "href": "/en/analysis/france-political-risk-lfi-rn-debt-tax-markets/", "kind": "article"}], "sources": [{"label": "ECB, Transmission Protection Instrument, 21 July 2022", "href": "https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220721~973e6e7273.en.html", "kind": "source"}]}},
   {
     slug: 'ccip', sigle: 'CCIP', nom: 'Cross-Chain Interoperability Protocol',

@@ -30,6 +30,18 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+{
+  "sigle": "Crédit carbone",
+  "nom": "Unité de réduction ou d’absorption de gaz à effet de serre",
+  "def": "Unité correspondant généralement à une tonne d’équivalent CO₂ de réduction ou d’absorption attribuée à un projet selon une méthode et un programme. Sa qualité dépend notamment de l’additionnalité, du scénario de référence, de la durée du stockage et de la prévention du double comptage. Son retrait dans un registre empêche sa réutilisation ; il ne diminue pas le bilan de cycle de vie du produit auquel l’acheteur l’associe.",
+  "guide": "/posts/neutralite-carbone-credits-produit-promesse/"
+},
+{
+  "sigle": "Additionnalité",
+  "nom": "Bénéfice climatique dépendant du financement carbone",
+  "def": "Condition selon laquelle une réduction ou une absorption de gaz à effet de serre n’aurait pas eu lieu sans l’incitation créée par les recettes des crédits carbone. Elle nécessite une comparaison avec une trajectoire crédible sans ce financement. L’existence du projet et sa conformité à une méthode ne suffisent pas à établir l’ampleur du bénéfice supplémentaire.",
+  "guide": "/posts/neutralite-carbone-credits-produit-promesse/"
+},
       { sigle: 'Price walking', nom: 'Hausse tarifaire liée à l’ancienneté', def: 'Pratique consistant à augmenter le prix au fil des renouvellements en fonction de la propension du client à rester ou à accepter une hausse, indépendamment de l’évolution du risque assuré ou du coût du service. En assurance, elle peut pénaliser les clients qui comparent peu. Une hausse liée au coût des sinistres relève d’un autre mécanisme.', guide: '/posts/assurance-prix-fidelite/' },
       { sigle: 'Tarification algorithmique', nom: 'Algorithmic pricing', def: 'Utilisation de règles informatiques pour recommander ou fixer un prix à partir de données, par exemple les coûts, la demande ou les prix des concurrents. Elle peut reposer sur des règles fixes ou sur un apprentissage. Elle ne suppose ni personnalisation selon le client ni entente entre vendeurs ; ses effets dépendent du marché et du fonctionnement des outils.', guide: '/posts/prix-automatiques-concurrence-algorithmes/' },
       { sigle: 'SIEG', nom: 'Service d’intérêt économique général', def: 'Activité économique à laquelle une autorité publique impose des obligations de service public. Une compensation peut financer les coûts nets de ces obligations dans le cadre des règles européennes applicables. Son autorisation ne constate ni son versement ni la réalisation des engagements industriels.', guide: '/posts/penuries-medicaments-prix-disponibilite/' },
@@ -639,7 +651,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-28';
+export const glossaryUpdatedIso = '2026-09-29';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -882,6 +894,51 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+"credit-carbone": {
+  "intuition": "Le registre décrit une unité ; le projet et sa méthode déterminent le bénéfice climatique.",
+  "articles": [
+    {
+      "label": "Crédits carbone : le produit derrière le zéro",
+      "href": "/posts/neutralite-carbone-credits-produit-promesse/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Verra : Verified Carbon Units",
+      "href": "https://verra.org/programs/verified-carbon-standard/verified-carbon-units-vcus/",
+      "kind": "source"
+    },
+    {
+      "label": "ICVCM : Core Carbon Principles",
+      "href": "https://icvcm.org/core-carbon-principles/",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "additionnalite"
+  ]
+},
+"additionnalite": {
+  "intuition": "Une intervention peut être utile tout en ayant eu lieu sans les recettes carbone.",
+  "articles": [
+    {
+      "label": "Crédits carbone : le produit derrière le zéro",
+      "href": "/posts/neutralite-carbone-credits-produit-promesse/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "ICVCM : Core Carbon Principles",
+      "href": "https://icvcm.org/core-carbon-principles/",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "credit-carbone"
+  ]
+},
   tpi: {"intuition": "Un soutien monétaire potentiel dépend de critères économiques et budgétaires ainsi que de la décision du Conseil des gouverneurs.", "articles": [{"label": "LFI, RN : dette, fiscalité et risques de marché", "href": "/posts/lfi-rn-risque-politique-marches-dette-fiscalite/", "kind": "article"}], "sources": [{"label": "BCE, Transmission Protection Instrument, 21 juillet 2022", "href": "https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220721~973e6e7273.en.html", "kind": "source"}]},
   streamshare: {"articles": [{"label": "Musique IA : qui touche l’argent des fausses écoutes ?", "href": "/posts/musique-ia-fausses-ecoutes-revenus-streaming/", "kind": "article"}], "sources": [{"label": "Spotify, Understanding Spotify royalties", "href": "https://support.spotify.com/de-en/artists/article/understanding-spotify-royalties/", "kind": "source"}]},
   "rachat-d-actions": {"articles":[{"label":"Rachats d’actions et dilution","href":"/posts/rachats-actions-anti-dilution-microsoft-airbus/","kind":"article"}],"sources":[{"label":"Microsoft / SEC, note 15, capitaux propres","href":"https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R25.htm","kind":"source"}],"related":["actions-propres","remuneration-en-actions"]},
