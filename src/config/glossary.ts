@@ -298,6 +298,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: "Taux de prêt de l'or", nom: 'Gold lease rate', def: "Rendement implicite tiré du prêt d'or physique. Quand le métal se raréfie, ce taux grimpe, tirant les cours à terme sous le comptant et asséchant la liquidité disponible à la livraison.", guide: '/guides/lire-le-marche-de-l-or/' },
       { sigle: 'Financement circulaire', nom: 'Circular financing', def: "Arrangement où un petit groupe d'acteurs interconnectés s'investissent et se facturent mutuellement, si bien que le capital injecté revient en chiffre d'affaires. Peut donner l'apparence d'une demande organique. Au cœur du débat sur les valorisations de l'IA en 2025-2026." },
       { sigle: 'Vendor financing', nom: 'Financement fournisseur', def: "Pratique par laquelle un fournisseur finance ses propres clients (prêts, prises de participation, garanties d'achat) pour soutenir la demande de ses produits. Légitime en soi, elle peut masquer la fragilité de la demande réelle, comme lors de la bulle télécoms des années 1990." },
+      { sigle: 'Run rate', nom: 'Rythme annualisé de revenus', def: "Extrapolation sur un an du revenu observé pendant une période récente. Un revenu mensuel multiplié par douze donne un rythme annualisé, sous l’hypothèse qu’il se maintient. Le résultat dépend du périmètre, des remises et de la période retenue ; il ne mesure ni le chiffre d’affaires déjà réalisé sur l’année ni les achats futurs garantis par contrat.", guide: '/posts/anthropic-ipo-calcul-valorisation-risque-macro/' },
       { sigle: 'IPO', nom: 'Initial Public Offering', def: "Introduction en bourse : première mise sur le marché des actions d'une société auprès du public." },
       { sigle: 'NDFI', nom: 'Non-Depository Financial Institution', def: "Institution financière non bancaire (fonds de crédit privé, capital-investissement, assureurs), sans dépôts. Au cœur du « shadow banking » car peu régulée comme les banques. Les grandes banques n'y sont souvent pas exposées en direct, mais par les crédits qu'elles leur consentent, ce qui reconnecte le système bancaire au crédit de l'ombre. Poste de risque en forte croissance dans les bilans." },
       { sigle: 'NBFI', nom: 'Non-Bank Financial Intermediation', def: "Intermédiation financière non bancaire : crédit ou transformation d'épargne hors des banques de dépôt, notamment via fonds monétaires, hedge funds, assureurs, crédit privé et véhicules de titrisation. Terme de surveillance privilégié par le Conseil de stabilité financière pour ce périmètre souvent appelé shadow banking." },
@@ -1140,6 +1141,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: 'Un fournisseur a livré et la date de règlement est passée : sa trésorerie finance désormais le retard de son client.',
     sources: [{ label: 'Flynn et Pessoa, FMI, 2014', href: 'https://www.imf.org/-/media/websites/imf/imported-full-text-pdf/external/pubs/ft/tnm/2014/_tnm1403.pdf', detail: 'Définition des obligations échues et stratégie de règlement.', kind: 'source' }],
     related: ['bfr', 'affacturage'],
+  },
+  'run-rate': {
+    intuition: 'Projeter une cadence récente aide à situer une activité en croissance, à condition de préciser la période et le périmètre.',
+    formula: 'Exemple : run rate annuel = revenu mensuel × 12, si le rythme se maintient',
+    articles: [{ label: 'Anthropic : les revenus face aux engagements de calcul', href: '/posts/anthropic-ipo-calcul-valorisation-risque-macro/', kind: 'article' }],
+    sources: [{ label: 'Anthropic, série H du 28 mai 2026', href: 'https://www.anthropic.com/news/series-h', detail: 'Exemple d’usage déclaré du run-rate revenue ; annonce de l’entreprise.', kind: 'source' }],
   },
   'ratio-combine': {
     intuition: 'Comparer le coût des sinistres et de la gestion aux primes permet de lire la rentabilité de la couverture avant les placements.',

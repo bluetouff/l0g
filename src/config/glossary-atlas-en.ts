@@ -782,6 +782,17 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'run-rate', sigle: 'Run rate', nom: 'Annualized revenue pace', ...privateCreditSection,
+    def: 'An extrapolation of revenue from a recent period to one year. Multiplying one month’s revenue by twelve gives an annualized pace, assuming it persists. The result depends on scope, discounts and the measurement period; it measures neither revenue already earned during the year nor future purchases guaranteed by contract.',
+    guide: '/en/analysis/anthropic-ipo-compute-valuation-macro-risk/',
+    atlas: {
+      intuition: 'Projecting a recent pace helps describe a growing business when the measurement period and scope are explicit.',
+      formula: 'Example: annual run rate = monthly revenue × 12, assuming the pace persists',
+      articles: [{ label: 'Anthropic: revenue and compute commitments', href: '/en/analysis/anthropic-ipo-compute-valuation-macro-risk/', kind: 'article' }],
+      sources: [{ label: 'Anthropic, Series H, May 28, 2026', href: 'https://www.anthropic.com/news/series-h', detail: 'Company announcement illustrating its use of run-rate revenue.', kind: 'source' }],
+    },
+  },
+  {
     slug: 'ratio-combine', sigle: 'Combined ratio', nom: 'Insurance underwriting profitability', ...macroSection,
     def: 'Claims costs and expenses divided by premiums, expressed as a percentage. Below 100%, underwriting generates a surplus; above 100%, costs exceed premiums. The measure excludes investment results and does not measure solvency. Comparisons require the period, business line and reinsurance treatment to be specified.',
     guide: '/en/analysis/not-at-fault-insurance-non-renewal-risk-selection/',
