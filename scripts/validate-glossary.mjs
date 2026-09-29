@@ -28,8 +28,8 @@ assert.equal(mentions('Un blob Ethereum transporte les données.', 'Blob'), true
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 563, 'Le corpus doit conserver ses 563 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 120, 'Le graphe Atlas doit conserver ses 120 nœuds');
+assert.equal(glossaryEntries.length, 564, 'Le corpus doit conserver ses 564 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 121, 'Le graphe Atlas doit conserver ses 121 nœuds');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'mvno'), '/posts/sfr-rachat-partage-operateur-prix-forfaits/'],
   [glossaryAtlasEnBySlug.get('mvno'), '/en/analysis/sfr-breakup-phone-bill-networks-competition/'],
@@ -56,7 +56,16 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 419, 'Le graphe Atlas doit conserver ses 419 relations');
+assert.equal(glossaryAtlasEdgeCount, 421, 'Le graphe Atlas doit conserver ses 421 relations');
+for (const [entry, href] of [
+  [glossaryEntries.find(item => item.slug === 'ofz'), '/posts/budget-russe-2027-defense-dette-banques-credit/'],
+  [glossaryAtlasEnBySlug.get('ofz'), '/en/analysis/russia-2027-budget-defence-debt-banks-credit/'],
+]) {
+  assert(entry);
+  assert.equal(entry.guide, href);
+  assert.deepEqual(entry.atlas.related, ['repo', 'duration']);
+  assert.equal(entry.atlas.sources[0].href, 'https://www.cbr.ru/eng/press/event/?id=28292');
+}
 for (const [entry, href] of [
   [glossaryEntries.find((item) => item.slug === 'tokenisation-des-actifs'), '/posts/actions-tokenisees-xstocks-vaults-chaine-credit/'],
   [glossaryAtlasEnBySlug.get('tokenisation-des-actifs'), '/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/'],

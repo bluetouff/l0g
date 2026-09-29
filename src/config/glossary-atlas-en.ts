@@ -203,6 +203,25 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'ofz',
+    sigle: 'OFZ',
+    nom: 'Russian federal government bonds',
+    def: 'Debt securities issued by the Russian federal government. They provide funding in exchange for future payments governed by each issue’s terms. Fixed and floating coupons allocate interest-rate risk differently. A repo can provide liquidity to the holder of an eligible security, subject to conditions and a valuation haircut.',
+    guide: '/en/analysis/russia-2027-budget-defence-debt-banks-credit/',
+    ...macroSection,
+    atlas: {
+      intuition: 'The Treasury receives rubles at issuance; the bond’s terms determine subsequent payments.',
+      whyNow: 'Domestic financing links Russia’s budget choices to bank portfolios and changes in interest rates.',
+      articles: [{ label: 'Russia’s 2027 budget: defence, debt and banks', href: '/en/analysis/russia-2027-budget-defence-debt-banks-credit/', kind: 'article' }],
+      sources: [
+        { label: 'Bank of Russia: OFZ bonds', href: 'https://www.cbr.ru/eng/press/event/?id=28292', detail: 'Federal government bond terminology, February 6, 2026.', kind: 'source' },
+        { label: 'Bank of Russia: repo operations', href: 'https://www.cbr.ru/eng/oper_br/t_odm/repo_operations/', detail: 'Liquidity, eligible securities and haircuts.', kind: 'source' },
+        { label: 'BOFIT: floating-rate auction', href: 'https://www.bofit.fi/en/monitoring/weekly/2026/vw202639_1/', detail: 'Domestic financing observed in early September 2026.', kind: 'source' },
+      ],
+      related: ['repo', 'duration'],
+    },
+  },
+  {
     "slug": "rpo",
     "sigle": "RPO",
     "nom": "Remaining performance obligations",
@@ -1200,6 +1219,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         usDebtArticles[1],
         usDebtArticles[2],
         { label: 'Gilts, repo and leverage', href: '/en/analysis/gilts-repo-leverage-bank-of-england/', detail: 'Transmission of a rate shock through funding.', kind: 'article' },
+        { label: 'Russia’s 2027 budget: defence, debt and banks', href: '/en/analysis/russia-2027-budget-defence-debt-banks-credit/', kind: 'article' },
       ],
       guides: [usDebtGuides[0], usDebtGuides[2]],
       ...shared,

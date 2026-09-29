@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'OFZ', nom: 'Obligations fédérales russes', def: 'Titres de dette émis par l’État fédéral russe. Ils apportent un financement contre des paiements futurs selon les clauses de chaque émission. Un coupon fixe et un coupon variable répartissent différemment le risque de taux ; une opération de repo peut procurer de la liquidité au détenteur d’un titre éligible, sous conditions et avec décote.', guide: '/posts/budget-russe-2027-defense-dette-banques-credit/' },
 {
   "sigle": "Crédit carbone",
   "nom": "Unité de réduction ou d’absorption de gaz à effet de serre",
@@ -900,6 +901,17 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  ofz: {
+    intuition: 'Le Trésor reçoit des roubles à l’émission ; les conditions du titre déterminent les paiements à venir.',
+    whyNow: 'Le financement domestique relie les choix budgétaires russes aux portefeuilles bancaires et aux variations de taux.',
+    articles: [{ label: 'Budget russe 2027 : défense, dette et banques', href: '/posts/budget-russe-2027-defense-dette-banques-credit/', kind: 'article' }],
+    sources: [
+      { label: 'Banque de Russie : obligations OFZ', href: 'https://www.cbr.ru/eng/press/event/?id=28292', detail: 'Terminologie des obligations fédérales, 6 février 2026.', kind: 'source' },
+      { label: 'Banque de Russie : opérations de repo', href: 'https://www.cbr.ru/eng/oper_br/t_odm/repo_operations/', detail: 'Liquidité, titres éligibles et décotes.', kind: 'source' },
+      { label: 'BOFIT : adjudication à taux variable', href: 'https://www.bofit.fi/en/monitoring/weekly/2026/vw202639_1/', detail: 'Financement domestique observé début septembre 2026.', kind: 'source' },
+    ],
+    related: ['repo', 'duration'],
+  },
   rpo: {
     "intuition": "Le contrat engage une prestation future ; l’encaissement et la reconnaissance du revenu suivent leur propre calendrier.",
     "articles": [
@@ -1344,7 +1356,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Le repo dit comment la dette publique se finance au jour le jour quand elle devient collatéral.",
     formula: 'cash aujourd’hui contre titre, puis rachat selon l’échéance et le prix convenus',
     whyNow: "Le repo relie Treasuries, hedge funds, banques et fonds monétaires. Une tension de collatéral peut transformer un mouvement de taux en problème de liquidité.",
-    articles: [treasuryArticles[1], treasuryArticles[2], { label: 'Gilts, repo et levier', href: '/posts/gilts-repo-levier-banque-angleterre/', detail: 'Transmission d’un choc de taux via le financement.', kind: 'article' }],
+    articles: [treasuryArticles[1], treasuryArticles[2], { label: 'Gilts, repo et levier', href: '/posts/gilts-repo-levier-banque-angleterre/', detail: 'Transmission d’un choc de taux via le financement.', kind: 'article' }, { label: 'Budget russe 2027 : défense, dette et banques', href: '/posts/budget-russe-2027-defense-dette-banques-credit/', kind: 'article' }],
     guides: [treasuryGuides[0], treasuryGuides[2]],
     datasets: treasuryDatasets,
     signals: treasurySignals,

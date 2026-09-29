@@ -986,10 +986,13 @@ export const editorialSourceDomainTiers = {
   primary: [...new Set([
     ...configuredPrimaryDomains,
     'banque-france.fr',
+    'bofit.fi',
+    'cbr.ru',
     'ec.europa.eu',
     'federalregister.gov',
     'fec.gov',
     'finra.org',
+    'iea.org',
     'insee.fr',
     'judiciary.gov.sg',
     'justice.gov.uk',
