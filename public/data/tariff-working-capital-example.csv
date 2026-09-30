@@ -1,0 +1,10 @@
+day,paid_usd,collected_usd,net_funding_usd,credit_limit_usd,unfunded_usd,next_interval_calendar_days,annual_funding_rate_percent,day_count_basis,interval_interest_usd,scenario
+0,125000,0,125000,300000,0,30,9,365,924.657534246575,hypothetical_six_shipments_90_day_recovery_same_day_netting
+30,125000,0,250000,300000,0,30,9,365,1849.315068493151,hypothetical_six_shipments_90_day_recovery_same_day_netting
+60,125000,0,375000,300000,75000,30,9,365,2773.972602739726,hypothetical_six_shipments_90_day_recovery_same_day_netting
+90,125000,125000,375000,300000,75000,30,9,365,2773.972602739726,hypothetical_six_shipments_90_day_recovery_same_day_netting
+120,125000,125000,375000,300000,75000,30,9,365,2773.972602739726,hypothetical_six_shipments_90_day_recovery_same_day_netting
+150,125000,125000,375000,300000,75000,30,9,365,2773.972602739726,hypothetical_six_shipments_90_day_recovery_same_day_netting
+180,0,125000,250000,300000,0,30,9,365,1849.315068493151,hypothetical_six_shipments_90_day_recovery_same_day_netting
+210,0,125000,125000,300000,0,30,9,365,924.657534246575,hypothetical_six_shipments_90_day_recovery_same_day_netting
+240,0,125000,0,300000,0,0,9,365,0.000000000000,hypothetical_six_shipments_90_day_recovery_same_day_netting

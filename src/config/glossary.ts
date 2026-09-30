@@ -1325,6 +1325,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['cout-de-portage'],
   },
   'incidence-fiscale': {
+    articles: [{ label: 'Droits de douane : financer le cycle', href: '/posts/droits-douane-tresorerie-proces-section-301/', detail: 'Avance des droits, encaissement du client et portée conditionnelle des remboursements.', kind: 'article' }],
     intuition: 'La personne qui verse une taxe et celles qui en supportent le coût peuvent être différentes.',
     sources: [
       { label: '19 CFR § 141.1', href: 'https://www.law.cornell.edu/cfr/text/19/141.1', detail: 'Obligation douanière de l’importateur.', kind: 'source' },
@@ -1332,6 +1333,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     ],
   },
   'cout-de-portage': {
+    articles: [{ label: 'Droits de douane : financer le cycle', href: '/posts/droits-douane-tresorerie-proces-section-301/', detail: 'Avance des droits, encaissement du client et portée conditionnelle des remboursements.', kind: 'article' }],
     intuition: 'L’immobilisation du capital et les frais de conservation augmentent avec la durée de détention.',
     sources: [{ label: 'CME, entrepôt de Glendale, septembre 2026', href: 'https://www.cmegroup.com/notices/market-regulation/2026/09/mkr09-03-26.html', detail: 'Barème d’entreposage et de sortie du cuivre ; le financement dépend du détenteur.', kind: 'source' }],
     related: ['warrant-d-entrepot'],

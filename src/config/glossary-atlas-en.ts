@@ -914,6 +914,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/trump-5000-election-dividend-no-surplus/',
     ...macroSection,
     atlas: {
+      articles: [{ label: 'Tariffs: funding the cash cycle', href: '/en/analysis/tariffs-cash-flow-section-301-litigation/', detail: 'Duty deposits, customer receipts and the conditional scope of refunds.', kind: 'article' }],
       intuition: 'The party remitting a tax and those bearing its economic cost can be different.',
       sources: [
         { label: '19 CFR § 141.1', href: 'https://www.law.cornell.edu/cfr/text/19/141.1', detail: 'The importer’s customs obligation.', kind: 'source' },
@@ -942,6 +943,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/copper-us-stockpile-carrying-cost-tariff-uncertainty/',
     ...clearingSection,
     atlas: {
+      articles: [{ label: 'Tariffs: funding the cash cycle', href: '/en/analysis/tariffs-cash-flow-section-301-litigation/', detail: 'Duty deposits, customer receipts and the conditional scope of refunds.', kind: 'article' }],
       intuition: 'Capital remains committed and storage charges accumulate while an inventory position is held.',
       sources: [{ label: 'CME, Glendale warehouse, September 2026', href: 'https://www.cmegroup.com/notices/market-regulation/2026/09/mkr09-03-26.html', detail: 'Copper storage and withdrawal charges; financing terms depend on the holder.', kind: 'source' }],
       related: ['warrant-d-entrepot'],

@@ -1,0 +1,5 @@
+case,mode,customs_value_usd,ordinary_rate_percent,headline_rate_percent,ordinary_duty_usd,additional_duty_usd,total_duty_usd,scenario
+add10,additive,1000000,4,10,40000,100000,140000,hypothetical_july_2026_schedule_no_exemptions_or_other_duties
+add125,additive,1000000,4,12.5,40000,125000,165000,hypothetical_july_2026_schedule_no_exemptions_or_other_duties
+eu_tw,top_up,1000000,4,10,40000,60000,100000,hypothetical_july_2026_schedule_no_exemptions_or_other_duties
+jp_kr_ch,top_up,1000000,4,12.5,40000,85000,125000,hypothetical_july_2026_schedule_no_exemptions_or_other_duties
