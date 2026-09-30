@@ -203,6 +203,74 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+  "slug": "dora",
+  "sigle": "DORA",
+  "nom": "Digital Operational Resilience Act",
+  "def": "Regulation (EU) 2022/2554 on digital operational resilience in finance, applicable since January 17, 2025. It addresses ICT risk, major incidents, testing and ICT supplier relationships for financial entities within its scope. European oversight of critical providers complements each entity’s responsibility to manage its own risks.",
+  "atlas": {
+    "intuition": "A shared supplier can transmit disruption across institutions. DORA combines each entity’s risk management with oversight of critical providers.",
+    "sources": [
+      {
+        "label": "EBA: DORA application and registers",
+        "href": "https://www.eba.europa.eu/activities/direct-supervision-and-oversight/digital-operational-resilience-act/preparation-dora-application",
+        "kind": "source"
+      },
+      {
+        "label": "EBA: DORA oversight",
+        "href": "https://www.eba.europa.eu/activities/direct-supervision-and-oversight/digital-operational-resilience-act/dora-oversight",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "ctpp"
+    ],
+    "articles": [
+      {
+        "label": "The invisible suppliers of European banking risk",
+        "href": "/en/analysis/invisible-suppliers-european-banking-risk/",
+        "kind": "article"
+      }
+    ]
+  },
+  "guide": "/en/analysis/invisible-suppliers-european-banking-risk/",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)"
+},
+  {
+  "slug": "ctpp",
+  "sigle": "CTPP",
+  "nom": "Critical ICT Third-Party Provider",
+  "def": "An ICT third-party supplier designated as critical by European supervisors under DORA. Designation considers systemic importance, the functions supported and the substitutability of services. It brings the supplier under European oversight; it does not guarantee uninterrupted service.",
+  "atlas": {
+    "intuition": "Criticality concerns a supplier’s role in Europe’s financial sector and the difficulty of replacing its services.",
+    "sources": [
+      {
+        "label": "European supervisors: designation, November 18, 2025",
+        "href": "https://www.eba.europa.eu/publications-and-media/press-releases/european-supervisory-authorities-designate-critical-ict-third-party-providers-under-digital",
+        "kind": "source"
+      },
+      {
+        "label": "EBA: DORA oversight",
+        "href": "https://www.eba.europa.eu/activities/direct-supervision-and-oversight/digital-operational-resilience-act/dora-oversight",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "dora"
+    ],
+    "articles": [
+      {
+        "label": "The invisible suppliers of European banking risk",
+        "href": "/en/analysis/invisible-suppliers-european-banking-risk/",
+        "kind": "article"
+      }
+    ]
+  },
+  "guide": "/en/analysis/invisible-suppliers-european-banking-risk/",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)"
+},
+  {
   "slug": "bonification-d-interet",
   "sigle": "Interest subsidy",
   "nom": "Third-party contribution to loan interest",

@@ -635,6 +635,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "DORA", "nom": "Digital Operational Resilience Act", "def": "Règlement (UE) 2022/2554 sur la résilience opérationnelle numérique du secteur financier, applicable depuis le 17 janvier 2025. Il encadre les risques informatiques, les incidents majeurs, les tests et les relations avec les fournisseurs informatiques des entités concernées. La surveillance européenne des prestataires critiques complète la responsabilité de chaque établissement pour ses propres risques.", "guide": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/"},
+      {"sigle": "CTPP", "nom": "Critical ICT Third-Party Provider", "def": "Prestataire informatique tiers désigné comme critique par les autorités européennes de supervision dans le cadre de DORA. La désignation tient notamment compte de son importance systémique, des fonctions soutenues et de la possibilité de remplacer ses services. Elle ouvre une surveillance européenne du fournisseur ; elle ne garantit pas l’absence de panne.", "guide": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/"},
       {"sigle": "Streamshare", "nom": "Part des écoutes", "def": "Part des écoutes éligibles attribuée à un ayant droit dans un périmètre et une période donnés. Dans un partage proportionnel, cette part détermine la fraction de l’enveloppe de royalties qui lui revient. Les contrats déterminent ensuite le revenu du créateur. Des écoutes artificielles comptabilisées peuvent diluer les autres parts.", "guide": "/posts/musique-ia-fausses-ecoutes-revenus-streaming/"},
       { sigle: 'MVNO', nom: 'Opérateur mobile virtuel', def: 'Opérateur qui achète un accès en gros à un ou plusieurs réseaux mobiles pour vendre ses propres services, sans posséder son propre réseau radio. Il conçoit ses offres et reste responsable des services fournis à ses clients. Ses possibilités de concurrence dépendent notamment des tarifs de gros et des conditions de changement de réseau hôte.', guide: '/posts/sfr-rachat-partage-operateur-prix-forfaits/' },
       { sigle: 'Liste repoussoir', nom: 'Liste d’exclusion pour respecter une opposition', def: 'Fichier conservant les seules informations nécessaires pour éviter de solliciter à nouveau une personne opposée à la prospection. Son usage est réservé à la gestion de cette opposition, notamment pour empêcher un nouvel envoi après une réimportation de contacts.', guide: '/posts/commerce-traces-donnees-apres-fin-contrat/' },
@@ -904,6 +906,56 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "dora": {
+    "intuition": "Un fournisseur commun peut transmettre une perturbation à plusieurs établissements. DORA associe la gestion des risques de chaque entité à une surveillance des prestataires critiques.",
+    "articles": [
+        {
+            "label": "Les fournisseurs invisibles du risque bancaire européen",
+            "href": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/",
+            "kind": "article"
+        }
+    ],
+    "sources": [
+        {
+            "label": "EBA : application de DORA et registres",
+            "href": "https://www.eba.europa.eu/activities/direct-supervision-and-oversight/digital-operational-resilience-act/preparation-dora-application",
+            "kind": "source"
+        },
+        {
+            "label": "EBA : surveillance sous DORA",
+            "href": "https://www.eba.europa.eu/activities/direct-supervision-and-oversight/digital-operational-resilience-act/dora-oversight",
+            "kind": "source"
+        }
+    ],
+    "related": [
+        "ctpp"
+    ]
+},
+  "ctpp": {
+    "intuition": "La criticité concerne le rôle d’un fournisseur dans le secteur financier européen et la difficulté à remplacer les services qu’il apporte.",
+    "articles": [
+        {
+            "label": "Les fournisseurs invisibles du risque bancaire européen",
+            "href": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/",
+            "kind": "article"
+        }
+    ],
+    "sources": [
+        {
+            "label": "Autorités européennes : désignation, 18 novembre 2025",
+            "href": "https://www.eba.europa.eu/publications-and-media/press-releases/european-supervisory-authorities-designate-critical-ict-third-party-providers-under-digital",
+            "kind": "source"
+        },
+        {
+            "label": "EBA : surveillance sous DORA",
+            "href": "https://www.eba.europa.eu/activities/direct-supervision-and-oversight/digital-operational-resilience-act/dora-oversight",
+            "kind": "source"
+        }
+    ],
+    "related": [
+        "dora"
+    ]
+},
   "bonification-d-interet": {
     "intuition": "Le prêteur reçoit les intérêts contractuels, partagés entre le ménage et le budget selon les conditions du dispositif.",
     "formula": "aide mensuelle illustrative = capital éligible à l’ouverture × taux annuel de bonification / 12",
