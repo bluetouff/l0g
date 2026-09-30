@@ -493,6 +493,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Énergie & géopolitique',
     accent: 'var(--color-amber)',
     entries: [
+      {"sigle": "COP", "nom": "Coefficient de performance", "def": "Rapport entre la chaleur utile délivrée et l’électricité consommée par une pompe à chaleur, sur un même périmètre de mesure. Un COP de 2 signifie deux unités de chaleur pour une unité d’électricité ; la chaleur supplémentaire provient d’une source extérieure. Sa valeur dépend notamment des températures, de la charge et des auxiliaires inclus dans la mesure.", "guide": "/posts/chaleur-industrielle-if26-prime-carbone-sixieme-annee/"},
+      {"sigle": "Pay-as-bid", "nom": "Paiement au prix offert", "def": "Règle d’enchère dans laquelle chaque candidat retenu reçoit le prix de sa propre offre, sous réserve des conditions du dispositif. Le prix utilisé pour classer les candidats peut suivre un ajustement distinct : dans IF26, un bonus admissible réduit le prix de classement de 25 % sans réduire la prime demandée.", "guide": "/posts/chaleur-industrielle-if26-prime-carbone-sixieme-annee/"},
       { sigle: 'Warrant d’entrepôt', nom: 'Warehouse warrant', def: "Titre représentatif d’un métal stocké dans un entrepôt agréé. Sur COMEX, ce document électronique permet de transférer la propriété lors de la livraison d’un contrat à terme. Le nouveau détenteur peut conserver le métal en stockage ou en demander le retrait physique, selon les règles applicables. Le transfert du titre peut laisser le métal sur place.", guide: '/posts/cuivre-stocks-americains-cout-attente-douaniere/' },
       { sigle: 'Coût de portage', nom: 'Carrying cost', def: "Coût de conservation d’un actif pendant une durée donnée. Pour un stock de métal, il peut comprendre le financement, l’entreposage et l’assurance. Son calcul dépend de la quantité, de la durée, des unités et des contrats. Le coût d’opportunité des fonds propres se distingue des intérêts facturés ; les frais de sortie physique dépendent du retrait effectif.", guide: '/posts/cuivre-stocks-americains-cout-attente-douaniere/' },
       { sigle: 'Adéquation électrique', nom: 'Resource adequacy', def: "Capacité d’un système électrique à couvrir la demande avec la production, le stockage, les échanges et les flexibilités disponibles. Une évaluation d’adéquation mesure un risque de déficit énergétique ; elle ne démontre pas l’absence de congestion locale, de tension opérationnelle ou de coût élevé.", guide: '/posts/modele-pompe-prix-adequation/' },
@@ -906,6 +908,46 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "cop": {
+    "formula": "COP = chaleur utile / électricité consommée, dans la même unité.",
+    "articles": [
+        {
+            "label": "L’usine, sa chaudière et la sixième année",
+            "href": "/posts/chaleur-industrielle-if26-prime-carbone-sixieme-annee/",
+            "kind": "article"
+        }
+    ],
+    "sources": [
+        {
+            "label": "AIE : chaleur industrielle",
+            "href": "https://www.iea.org/commentaries/can-low-temperature-heat-in-factories-be-electrified-competitively",
+            "kind": "source"
+        }
+    ],
+    "related": [
+        "pay-as-bid"
+    ]
+},
+  "pay-as-bid": {
+    "formula": "IF26 : prix de classement avec bonus = prix offert × 0,75 ; paiement = prix offert.",
+    "articles": [
+        {
+            "label": "L’usine, sa chaudière et la sixième année",
+            "href": "/posts/chaleur-industrielle-if26-prime-carbone-sixieme-annee/",
+            "kind": "article"
+        }
+    ],
+    "sources": [
+        {
+            "label": "Commission : conditions IF26, §§1.10 et 3.3",
+            "href": "https://climate.ec.europa.eu/document/download/00753a0b-1de3-4e9c-aa47-799d811bede9_en?filename=if26_heat_auction_tc_en.pdf",
+            "kind": "source"
+        }
+    ],
+    "related": [
+        "cop"
+    ]
+},
   "dora": {
     "intuition": "Un fournisseur commun peut transmettre une perturbation à plusieurs établissements. DORA associe la gestion des risques de chaque entité à une surveillance des prestataires critiques.",
     "articles": [

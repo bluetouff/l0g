@@ -203,6 +203,64 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+  "slug": "cop",
+  "sigle": "COP",
+  "nom": "Coefficient of performance",
+  "def": "Useful heat delivered divided by electricity consumed by a heat pump, using the same measurement boundary. A COP of 2 means two units of heat per unit of electricity; the additional heat comes from an external source. Its value depends on temperatures, load and which auxiliaries are included.",
+  "guide": "/en/analysis/industrial-heat-if26-carbon-premium-year-six/",
+  "sectionTitle": "Energy & geopolitics",
+  "accent": "var(--color-amber)",
+  "atlas": {
+    "formula": "COP = useful heat / electricity consumed, in the same unit.",
+    "articles": [
+      {
+        "label": "The factory, its boiler and year six",
+        "href": "/en/analysis/industrial-heat-if26-carbon-premium-year-six/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "IEA: industrial heat",
+        "href": "https://www.iea.org/commentaries/can-low-temperature-heat-in-factories-be-electrified-competitively",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "pay-as-bid"
+    ]
+  }
+},
+  {
+  "slug": "pay-as-bid",
+  "sigle": "Pay-as-bid",
+  "nom": "Payment at the offered price",
+  "def": "Auction pricing rule under which each successful bidder receives its own offered price, subject to the scheme’s conditions. The ranking price may be adjusted separately: in IF26 an eligible bonus reduces the ranking price by 25% while retaining the requested premium.",
+  "guide": "/en/analysis/industrial-heat-if26-carbon-premium-year-six/",
+  "sectionTitle": "Energy & geopolitics",
+  "accent": "var(--color-amber)",
+  "atlas": {
+    "formula": "IF26: ranking price with bonus = offered price × 0.75; payment = offered price.",
+    "articles": [
+      {
+        "label": "The factory, its boiler and year six",
+        "href": "/en/analysis/industrial-heat-if26-carbon-premium-year-six/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Commission: IF26 terms, sections 1.10 and 3.3",
+        "href": "https://climate.ec.europa.eu/document/download/00753a0b-1de3-4e9c-aa47-799d811bede9_en?filename=if26_heat_auction_tc_en.pdf",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "cop"
+    ]
+  }
+},
+  {
   "slug": "dora",
   "sigle": "DORA",
   "nom": "Digital Operational Resilience Act",

@@ -176,7 +176,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
           </h2>
           <ul class="glossary-index">
             {s.entries.map((e) => (
-              <li class="gentry" id={e.slug} data-term={(e.sigle + ' ' + e.nom + ' ' + (e.atlas?.related ?? []).join(' ')).toLowerCase()}>
+              <li class="gentry" id={e.slug} data-related={e.atlas?.related?.length ? e.atlas.related.join(' ') : undefined}>
                 <a class="gentry-link" href={e.url}>
                   <span class="sigle" style={`color:${s.accent}`}>{e.sigle}</span>
                   <span class="nom">{e.nom}</span>
@@ -453,6 +453,16 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
       const chips = Array.from(document.querySelectorAll('.gloss-chip'));
       const chipBySec = new Map(chips.map((c) => [c.dataset.chip, c]));
       const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const entrySearchText = new Map(
+        Array.from(root.querySelectorAll('.gentry')).map((el) => [
+          el,
+          norm([
+            el.querySelector('.sigle')?.textContent ?? '',
+            el.querySelector('.nom')?.textContent ?? '',
+            el.dataset.related ?? '',
+          ].join(' ')),
+        ]),
+      );
 
       function apply() {
         const q = norm(input.value.trim());
@@ -460,7 +470,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
         secs.forEach((sec) => {
           let shown = 0;
           sec.querySelectorAll('.gentry').forEach((el) => {
-            const hit = !q || norm(el.dataset.term).indexOf(q) !== -1;
+            const hit = !q || (entrySearchText.get(el) ?? '').indexOf(q) !== -1;
             el.hidden = !hit;
             if (hit) shown++;
           });
