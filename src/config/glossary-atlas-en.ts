@@ -203,6 +203,67 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+  "slug": "bonification-d-interet",
+  "sigle": "Interest subsidy",
+  "nom": "Third-party contribution to loan interest",
+  "def": "Support under which a third party, such as the public budget, pays part of the interest on an eligible loan. Borrower costs fall according to the scheme’s base, rate and duration, while principal remains repayable. Support can decline with outstanding principal and end before the loan does.",
+  "atlas": {
+    "intuition": "The lender receives contractual interest, shared between the household and the budget under the programme’s terms.",
+    "formula": "illustrative monthly support = eligible opening principal × annual subsidy rate / 12",
+    "sources": [
+      {
+        "label": "MOF, PBOC and NFRA: September 29, 2026 notice",
+        "href": "https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026092917051440583/index.html",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "psl",
+      "ltv"
+    ],
+    "articles": [
+      {
+        "label": "Beijing takes a share of the mortgage payment",
+        "href": "/en/analysis/china-mortgage-subsidy-household-payments/",
+        "kind": "article"
+      }
+    ]
+  },
+  "guide": "/en/analysis/china-mortgage-subsidy-household-payments/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)"
+},
+  {
+  "slug": "psl",
+  "sigle": "PSL",
+  "nom": "Pledged Supplementary Lending",
+  "def": "A collateralised People’s Bank of China funding facility for development and policy banks. It provides resources for fields authorised by the central bank. Its rate and scope govern that funding channel; a budget subsidy on household interest uses a separate channel.",
+  "atlas": {
+    "intuition": "The central bank funds specialised public banks; final lending depends on eligible operations and fields.",
+    "sources": [
+      {
+        "label": "PBOC: September 29, 2026 monetary tools",
+        "href": "https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026092917474922559/index.html",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "bonification-d-interet",
+      "collateral"
+    ],
+    "articles": [
+      {
+        "label": "Beijing takes a share of the mortgage payment",
+        "href": "/en/analysis/china-mortgage-subsidy-household-payments/",
+        "kind": "article"
+      }
+    ]
+  },
+  "guide": "/en/analysis/china-mortgage-subsidy-household-payments/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)"
+},
+  {
     slug: 'repricing-obligataire',
     sigle: 'Bond repricing',
     nom: 'Reassessment of bond prices and yields',

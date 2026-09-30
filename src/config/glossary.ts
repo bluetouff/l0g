@@ -30,6 +30,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "Bonification d’intérêt", "nom": "Prise en charge d’une partie des intérêts par un tiers", "def": "Soutien par lequel un tiers, par exemple le budget public, finance une partie des intérêts dus sur un prêt éligible. Le coût payé par l’emprunteur baisse selon l’assiette, le taux et la durée prévus ; le capital reste à rembourser. L’aide peut diminuer avec le capital restant dû et prendre fin avant le prêt.", "guide": "/posts/chine-credit-immobilier-bonification-mensualites/"},
+      {"sigle": "PSL", "nom": "Pledged Supplementary Lending", "def": "Facilité de financement collatéralisée de la Banque populaire de Chine destinée aux banques de développement et de politique publique. Elle fournit des ressources pour les domaines autorisés par la banque centrale. Son taux et son périmètre déterminent ce canal de financement ; une bonification budgétaire des intérêts des ménages suit un autre circuit.", "guide": "/posts/chine-credit-immobilier-bonification-mensualites/"},
       { sigle: 'Repricing obligataire', nom: 'Réévaluation des prix et des rendements obligataires', def: 'Ajustement des prix et des rendements des obligations lorsque les conditions de financement ou les anticipations changent. Pour un titre à flux fixes, une hausse du rendement demandé réduit son prix. La réaction du prix de marché est immédiate ; la transmission aux intérêts de l’émetteur dépend des nouvelles émissions, des échéances et des clauses de taux.', guide: '/posts/le-monde-redecouvre-le-prix-de-l-argent/' },
       { sigle: 'OFZ', nom: 'Obligations fédérales russes', def: 'Titres de dette émis par l’État fédéral russe. Ils apportent un financement contre des paiements futurs selon les clauses de chaque émission. Un coupon fixe et un coupon variable répartissent différemment le risque de taux ; une opération de repo peut procurer de la liquidité au détenteur d’un titre éligible, sous conditions et avec décote.', guide: '/posts/budget-russe-2027-defense-dette-banques-credit/' },
 {
@@ -659,7 +661,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-29';
+export const glossaryUpdatedIso = '2026-09-30';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -902,6 +904,49 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "bonification-d-interet": {
+    "intuition": "Le prêteur reçoit les intérêts contractuels, partagés entre le ménage et le budget selon les conditions du dispositif.",
+    "formula": "aide mensuelle illustrative = capital éligible à l’ouverture × taux annuel de bonification / 12",
+    "articles": [
+        {
+            "label": "Pékin prend sa part de la mensualité",
+            "href": "/posts/chine-credit-immobilier-bonification-mensualites/",
+            "kind": "article"
+        }
+    ],
+    "sources": [
+        {
+            "label": "MOF, PBOC et NFRA : notification du 29 septembre 2026",
+            "href": "https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026092917051440583/index.html",
+            "kind": "source"
+        }
+    ],
+    "related": [
+        "psl",
+        "ltv"
+    ]
+},
+  "psl": {
+    "intuition": "La banque centrale finance des banques publiques spécialisées ; le crédit final dépend ensuite des opérations et des domaines éligibles.",
+    "articles": [
+        {
+            "label": "Pékin prend sa part de la mensualité",
+            "href": "/posts/chine-credit-immobilier-bonification-mensualites/",
+            "kind": "article"
+        }
+    ],
+    "sources": [
+        {
+            "label": "PBOC : outils monétaires du 29 septembre 2026",
+            "href": "https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026092917474922559/index.html",
+            "kind": "source"
+        }
+    ],
+    "related": [
+        "bonification-d-interet",
+        "collateral"
+    ]
+},
   'repricing-obligataire': {
     intuition: 'Les paiements du titre peuvent rester fixes tandis que son prix change ; la prochaine émission rencontre les nouveaux rendements.',
     whyNow: 'Les rendements longs relient les anticipations monétaires aux calendriers de refinancement et aux valorisations.',
