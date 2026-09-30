@@ -1594,6 +1594,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       formula: 'durable parity = liquid assets + redemption right + supervision + operational trust',
       whyNow: 'Stablecoins are becoming a parallel dollar plumbing: T-bill reserves, cross-border payments, sanctions, DeFi and US regulation all intersect.',
       articles: [
+        { label: 'Stablecoins: from tokens to available dollars', href: '/en/analysis/stablecoin-reserves-redemption-dollar/', detail: 'Reserves, fees, redemption delays and rights by issuer channel.', kind: 'article' },
         { label: 'Iranian oil and USDT', href: '/en/analysis/iranian-oil-usdt-tether-seizure/', detail: 'Freezing, seizure and the powers Tether retains.', kind: 'article' },
         { label: 'RealT in liquidation', href: '/en/analysis/realt-liquidation-token-without-the-deed/', detail: 'Real-estate RWA, off-chain title and on-chain promise.', kind: 'article' },
         { label: 'USDT on Tron and OFAC evasion', href: '/en/analysis/iran-hormuz-tolls-usdt-tron-ofac/', detail: 'Stablecoins, sanctions and geopolitical payments.', kind: 'article' },
@@ -1607,7 +1608,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         { label: 'MiCA, acronym by acronym', href: '/en/guides/decode-mica-crypto-regulation/', detail: 'ARTs, EMTs, CASPs and European supervision.', kind: 'guide' },
       ],
       ...cryptoShared,
-      sources: [...cryptoShared.sources, { label: 'FATF: stablecoins and unhosted wallets', href: 'https://www.fatf-gafi.org/en/publications/Virtualassets/targeted-report-stablecoins-unhosted-wallets.html', detail: 'Risks and proportionate controls, March 3, 2026 report.', kind: 'source' }],
+      sources: [...cryptoShared.sources, { label: 'Fed: September 29, 2026 proposal', href: 'https://www.govinfo.gov/content/pkg/FR-2026-09-29/pdf/2026-19860.pdf', detail: 'Reserves, monetisation capacity and redemption, sections 247.11–247.12.', kind: 'source' }, { label: 'FATF: stablecoins and unhosted wallets', href: 'https://www.fatf-gafi.org/en/publications/Virtualassets/targeted-report-stablecoins-unhosted-wallets.html', detail: 'Risks and proportionate controls, March 3, 2026 report.', kind: 'source' }],
       related: ['usdt', 'usdc', 'genius', 'ppsi', 'rwa'],
     },
   },
@@ -1622,6 +1623,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       intuition: 'Holding the keys to a USDT wallet leaves the token’s rules and its issuer’s powers in place.',
       whyNow: 'The September 14, 2026 US complaint concerning funds allegedly linked to Iranian oil describes a seizure through destruction and replacement of tokens.',
       articles: [
+        { label: 'Stablecoins: from tokens to available dollars', href: '/en/analysis/stablecoin-reserves-redemption-dollar/', detail: 'Reserves, fees, redemption delays and rights by issuer channel.', kind: 'article' },
         { label: 'Iranian oil and USDT', href: '/en/analysis/iranian-oil-usdt-tether-seizure/', detail: 'Freezing, seizure and the powers Tether retains.', kind: 'article' },
         { label: 'USDT on Tron and OFAC evasion', href: '/en/analysis/iran-hormuz-tolls-usdt-tron-ofac/', detail: 'Stablecoins, sanctions and geopolitical payments.', kind: 'article' },
       ],
@@ -1630,7 +1632,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         { label: 'Reading on-chain data', href: '/en/guides/read-on-chain-data/', detail: 'Addresses, reserves, flows and the limits of interpretation.', kind: 'guide' },
       ],
       ...cryptoShared,
-      sources: [...cryptoShared.sources,
+      sources: [...cryptoShared.sources, { label: 'Tether: direct-channel fees', href: 'https://tether.to/en/fees/', detail: 'Minimum redemption and fee schedule checked September 30, 2026.', kind: 'source' },
         { label: 'Tether token terms', href: 'https://tether.to/en/legal/', detail: 'Sections 2 and 4.1: freezing, reserves and direct-redemption conditions.', kind: 'source' },
         { label: 'Manhattan prosecutors’ complaint', href: 'https://www.justice.gov/usao-sdny/media/1461216/dl', detail: 'September 14, 2026, p. 3, footnote 1: planned seizure mechanism.', kind: 'source' },
       ],
@@ -1641,12 +1643,13 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'usdc',
     sigle: 'USDC',
     nom: 'USD Coin',
-    def: 'The dollar-backed stablecoin issued by Circle, presented as more transparent about its reserves than USDT.',
+    def: 'A Circle token designed to maintain one U.S. dollar per unit. Direct redemption depends on the legal framework and applicable procedure: an eligible Circle Mint account outside the EEA, and Circle France’s procedure for EEA holders. Holding USDC alone does not set the date dollars reach a bank account.',
     ...cryptoSection,
     atlas: {
-      intuition: 'USDC represents the stablecoin most integrated into the US regulatory framework and institutional finance.',
-      whyNow: 'The competition plays out less on technology than on reserve transparency, banking access and regulatory status.',
+      intuition: 'The holder needs to identify the entity and procedure through which USDC becomes dollars in a bank account.',
+      whyNow: 'Circle France’s September 2026 policy describes redemption processing and stress circumstances.',
       articles: [
+        { label: 'Stablecoins: from tokens to available dollars', href: '/en/analysis/stablecoin-reserves-redemption-dollar/', detail: 'Reserves, fees, redemption delays and rights by issuer channel.', kind: 'article' },
         { label: 'Hyperliquid and on-chain tradfi', href: '/en/analysis/hyperliquid-onchain-exchange/', detail: 'Perpetuals, DEXs and bridges to traditional assets.', kind: 'article' },
       ],
       guides: [
@@ -1654,6 +1657,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         { label: 'MiCA, acronym by acronym', href: '/en/guides/decode-mica-crypto-regulation/', detail: 'ARTs, EMTs, CASPs and European supervision.', kind: 'guide' },
       ],
       ...cryptoShared,
+      sources: [...cryptoShared.sources, { label: 'Circle: USDC Terms outside the EEA', href: 'https://www.circle.com/legal/usdc-terms', kind: 'source' }, { label: 'Circle France: MiCA redemption', href: 'https://www.circle.com/legal/mica-redemption-policy', detail: 'September 15, 2026 revision, especially sections 1 and 4.2.', kind: 'source' }],
       related: ['stablecoin', 'usdt', 'genius', 'ppsi'],
     },
   },
