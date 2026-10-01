@@ -457,7 +457,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'DAO', nom: 'Decentralized Autonomous Organization', def: "Organisation autonome décentralisée : structure gouvernée par des votes on-chain plutôt que par une hiérarchie classique." },
       { sigle: 'RWA', nom: 'Real World Assets', def: "Actifs du monde réel (obligations, immobilier) tokenisés sur une blockchain pour être échangés on-chain." },
       { sigle: 'Immobilier tokenisé', nom: 'Tokenized real estate', def: "Fractionnement d'un bien immobilier en jetons échangeables on-chain, chaque bien logé dans une société dédiée (souvent une LLC) dont les parts sont tokenisées, le loyer étant reversé en stablecoin. Sa faille propre : le jeton ne vaut que si le titre de propriété off-chain (acte, registre foncier, fiscalité) suit réellement, ce que la liquidation de RealT en 2026 a mis en lumière. Reste marginal (moins de 100 M$ on-chain) face aux créances financières tokenisées." },
-      { sigle: 'DeFi', nom: 'Decentralized Finance', def: "Finance décentralisée : services financiers (prêt, échange) opérés par des contrats intelligents sans intermédiaire bancaire." },
+      {"sigle": "DeFi", "nom": "Finance décentralisée", "def": "Services d’échange, de prêt ou de financement exécutés par des contrats sur une blockchain. Des interfaces commerciales, des droits d’administration et une gouvernance peuvent intervenir dans leur accès et leurs paramètres. L’absence de garde des clés ne décrit donc pas, à elle seule, toute l’organisation du service.", "guide": "/posts/defi-intermediaires-acces-mica/"},
+      {"sigle": "Facteur de santé", "nom": "Health factor", "def": "Dans le mécanisme Aave, ratio entre la valeur des garanties pondérée par leur seuil de liquidation et la valeur de la dette. Sous 1, la position devient liquidable. Il évolue avec les prix et les encours ; les paramètres et les modalités d’exécution dépendent du déploiement.", "guide": "/posts/defi-intermediaires-acces-mica/"},
+      {"sigle": "Timelock", "nom": "Délai d’exécution d’une opération", "def": "Mécanisme imposant un délai entre la programmation et l’exécution d’une opération sur un contrat. Il peut laisser du temps pour examiner une modification. Son effet dépend des rôles autorisés, des opérations couvertes et de la configuration ; il ne garantit ni l’absence d’autres pouvoirs ni une sortie liquide.", "guide": "/posts/defi-intermediaires-acces-mica/"},
       { sigle: 'DEX', nom: 'Bourse décentralisée', def: "Plateforme d'échange de cryptoactifs fonctionnant sur une blockchain, sans intermédiaire central détenant les fonds. Hyperliquid en est un cas particulier, avec un carnet d'ordres entièrement on-chain." },
       { sigle: 'Perp', nom: 'Contrat perpétuel', def: "Contrat à terme crypto sans date d'échéance, maintenu proche du prix au comptant par un taux de financement périodique. Produit phare des bourses de dérivés crypto comme Hyperliquid." },
       { sigle: 'Buyback de token', nom: 'Rachat de token', def: "Rachat par un protocole de son propre jeton sur le marché, financé par ses revenus, à la manière d'une entreprise rachetant ses actions. Chez Hyperliquid, près de 97 % des frais alimentent ces rachats." },
@@ -909,6 +911,80 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "defi": {
+  "intuition": "Suivre séparément l’interface, les fonds et les pouvoirs sur les contrats.",
+  "whyNow": "L’examen des interfaces DeFi demande de distinguer les frais, la liquidité et le contrôle des règles.",
+  "articles": [
+    {
+      "label": "Qui tient la porte d’entrée de la DeFi ?",
+      "href": "/posts/defi-intermediaires-acces-mica/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "ESMA : service d’accès à la DeFi, proposition du 30 septembre 2026",
+      "href": "https://www.esma.europa.eu/sites/default/files/2026-09/ESMA75-113276571-1721_Response_to_the_EC_consultation_MiCA_regulation_review.pdf",
+      "kind": "source"
+    },
+    {
+      "label": "Ethereum : smart contracts",
+      "href": "https://ethereum.org/developers/docs/smart-contracts/",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "mica",
+    "smart-contract",
+    "facteur-de-sante"
+  ]
+},
+  "facteur-de-sante": {
+  "intuition": "Une baisse de garantie peut déclencher une liquidation même si l’interface reste accessible.",
+  "whyNow": "L’examen des interfaces DeFi demande de distinguer les frais, la liquidité et le contrôle des règles.",
+  "articles": [
+    {
+      "label": "Qui tient la porte d’entrée de la DeFi ?",
+      "href": "/posts/defi-intermediaires-acces-mica/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Aave : Health Factor & Liquidations",
+      "href": "https://aave.com/help/borrowing/liquidations",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "defi",
+    "smart-contract",
+    "timelock"
+  ],
+  "formula": "HF = valeur des garanties pondérée par les seuils de liquidation / valeur de la dette."
+},
+  "timelock": {
+  "intuition": "Un délai rend un changement observable avant son exécution, selon les droits réellement configurés.",
+  "whyNow": "L’examen des interfaces DeFi demande de distinguer les frais, la liquidité et le contrôle des règles.",
+  "articles": [
+    {
+      "label": "Qui tient la porte d’entrée de la DeFi ?",
+      "href": "/posts/defi-intermediaires-acces-mica/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "OpenZeppelin : access control et opérations différées",
+      "href": "https://docs.openzeppelin.com/contracts/5.x/access-control",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "defi",
+    "smart-contract"
+  ]
+},
   dma: {
   "intuition": "Ouvrir un marché numérique demande de préciser qui peut accéder aux données, pour quels usages, à quel prix et avec quelles protections.",
   "whyNow": "Le partage de données de Google Search associe des conditions d’entrée, des coûts communs et des contrôles de protection des personnes.",

@@ -202,6 +202,107 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+{
+  "slug": "defi",
+  "sigle": "DeFi",
+  "nom": "Decentralised finance",
+  "def": "Exchange, lending or financing services executed through blockchain contracts. Commercial interfaces, administrative rights and governance can influence access and parameters. Whether an operator holds the user’s keys does not describe the entire organisation of a service.",
+  "guide": "/en/analysis/defi-gateways-mica-access/",
+  "sectionTitle": "Crypto & stablecoins",
+  "accent": "var(--color-amber)",
+  "atlas": {
+    "intuition": "Trace the interface, assets and contract powers separately.",
+    "whyNow": "Examining DeFi interfaces requires separating fees, liquidity and control over rules.",
+    "articles": [
+      {
+        "label": "Who runs DeFi’s front door?",
+        "href": "/en/analysis/defi-gateways-mica-access/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "ESMA: proposed DeFi access service, 30 September 2026",
+        "href": "https://www.esma.europa.eu/sites/default/files/2026-09/ESMA75-113276571-1721_Response_to_the_EC_consultation_MiCA_regulation_review.pdf",
+        "kind": "source"
+      },
+      {
+        "label": "Ethereum: smart contracts",
+        "href": "https://ethereum.org/developers/docs/smart-contracts/",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "mica",
+      "smart-contract",
+      "facteur-de-sante"
+    ]
+  }
+},
+{
+  "slug": "facteur-de-sante",
+  "sigle": "Health factor",
+  "nom": "Health factor",
+  "def": "In Aave’s mechanism, collateral value weighted by liquidation thresholds divided by debt value. Below 1, the position becomes eligible for liquidation. It changes with prices and balances; actual parameters and execution rules depend on the deployment.",
+  "guide": "/en/analysis/defi-gateways-mica-access/",
+  "sectionTitle": "Crypto & stablecoins",
+  "accent": "var(--color-amber)",
+  "atlas": {
+    "intuition": "Falling collateral can trigger liquidation even while the interface remains available.",
+    "whyNow": "Examining DeFi interfaces requires separating fees, liquidity and control over rules.",
+    "articles": [
+      {
+        "label": "Who runs DeFi’s front door?",
+        "href": "/en/analysis/defi-gateways-mica-access/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Aave: Health Factor & Liquidations",
+        "href": "https://aave.com/help/borrowing/liquidations",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "defi",
+      "smart-contract",
+      "timelock"
+    ],
+    "formula": "HF = collateral value weighted by liquidation thresholds / debt value."
+  }
+},
+{
+  "slug": "timelock",
+  "sigle": "Timelock",
+  "nom": "Delayed contract operation",
+  "def": "A mechanism that requires a delay between scheduling and executing a contract operation. It can provide time to examine a change. Its effect depends on authorised roles, covered operations and configuration; it guarantees neither the absence of other powers nor a liquid exit.",
+  "guide": "/en/analysis/defi-gateways-mica-access/",
+  "sectionTitle": "Crypto & stablecoins",
+  "accent": "var(--color-amber)",
+  "atlas": {
+    "intuition": "A delay can make a change observable before execution, subject to the permissions actually configured.",
+    "whyNow": "Examining DeFi interfaces requires separating fees, liquidity and control over rules.",
+    "articles": [
+      {
+        "label": "Who runs DeFi’s front door?",
+        "href": "/en/analysis/defi-gateways-mica-access/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "OpenZeppelin: access control and delayed operations",
+        "href": "https://docs.openzeppelin.com/contracts/5.x/access-control",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "defi",
+      "smart-contract"
+    ]
+  }
+},
   {
   "slug": "dma",
   "sigle": "DMA",

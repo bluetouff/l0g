@@ -69,10 +69,23 @@ for (const [entry, href] of [
   assert.equal(entry.atlas.sources[1].href, 'https://ec.europa.eu/competition/digital_markets_act/cases/202637/DMA_100209_2799.pdf');
 }
 
+for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr && en);
+  assert.equal(fr.guide, '/posts/defi-intermediaires-acces-mica/');
+  assert.equal(en.guide, '/en/analysis/defi-gateways-mica-access/');
+  assert.equal(fr.sectionTitle, 'Crypto & stablecoins');
+  assert.equal(en.sectionTitle, 'Crypto & stablecoins');
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  assert(fr.atlas.sources.every(source => ['www.esma.europa.eu', 'ethereum.org', 'aave.com', 'docs.openzeppelin.com'].includes(new URL(source.href).hostname)));
+}
+
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 572, 'Le corpus doit conserver ses 572 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 129, 'Le graphe Atlas doit conserver ses 129 nœuds');
+assert.equal(glossaryEntries.length, 574, 'Le corpus doit conserver ses 574 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 132, 'Le graphe Atlas doit conserver ses 132 nœuds');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'mvno'), '/posts/sfr-rachat-partage-operateur-prix-forfaits/'],
   [glossaryAtlasEnBySlug.get('mvno'), '/en/analysis/sfr-breakup-phone-bill-networks-competition/'],
@@ -99,7 +112,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 434, 'Le graphe Atlas doit conserver ses 434 relations');
+assert.equal(glossaryAtlasEdgeCount, 442, 'Le graphe Atlas doit conserver ses 442 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
