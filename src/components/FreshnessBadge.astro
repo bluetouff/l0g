@@ -5,21 +5,26 @@ interface Props {
   date: Date | string;
   label?: string;
   compact?: boolean;
+  locale?: 'fr' | 'en';
 }
 
-const { date, label = 'fraîcheur', compact = false } = Astro.props;
+const { date, locale = 'fr', label = locale === 'en' ? 'freshness' : 'fraîcheur', compact = false } = Astro.props;
 const freshnessDate = typeof date === 'string' ? dateFromIsoDate(date) : date;
 const info = freshnessFor(freshnessDate);
-const dateLabel = typeof date === 'string' ? formatDateFrIsoDate(date) : formatDateFr(date);
+const statusLabel = locale === 'en' ? { fresh: 'fresh', current: 'current', watch: 'review due', archive: 'archive' }[info.tone] : info.label;
+const detail = locale === 'en' ? `reviewed ${info.days} day${info.days === 1 ? '' : 's'} ago` : info.detail;
+const dateLabel = locale === 'en'
+  ? freshnessDate.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' })
+  : typeof date === 'string' ? formatDateFrIsoDate(date) : formatDateFr(date);
 ---
 
 <span
   class={`freshness freshness-${info.tone} ${compact ? 'is-compact' : ''}`}
-  title={`${label} : ${dateLabel} · ${info.detail}`}
+  title={`${label} : ${dateLabel} · ${detail}`}
 >
   <span class="fresh-dot" aria-hidden="true"></span>
-  <span>{info.label}</span>
-  {!compact && <span class="fresh-detail">{info.detail}</span>}
+  <span>{statusLabel}</span>
+  {!compact && <span class="fresh-detail">{detail}</span>}
 </span>
 
 <style>

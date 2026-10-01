@@ -124,7 +124,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     <span>/</span>
     <a href="/en/glossary/">glossary</a>
     <span>/</span>
-    <span aria-current="page">{entry.slug}</span>
+    <span aria-current="page">{entry.sigle}</span>
   </nav>
 
   <article class="term-page rise" data-pagefind-body>
@@ -136,7 +136,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         </h1>
         <p class="term-name">{entry.nom}</p>
         <div class="term-freshness" data-pagefind-ignore>
-          <FreshnessBadge date={glossaryUpdatedIso} />
+          <FreshnessBadge date={glossaryUpdatedIso} locale="en" />
         </div>
       </div>
       <span class="term-family" style={`--term-accent:${entry.accent}`}>

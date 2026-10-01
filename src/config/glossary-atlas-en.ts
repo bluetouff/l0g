@@ -203,6 +203,109 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
 {
+  "slug": "pib",
+  "sigle": "GDP",
+  "nom": "Gross domestic product",
+  "def": "Value of final goods and services produced within a territory over a period. The expenditure measure combines consumption, investment and government spending with exports, then subtracts imported content already included in those purchases. Higher imports alone do not identify the overall effect on production.",
+  "guide": "/en/analysis/us-trade-deficit-imports-august-2026/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "Separate domestic spending from foreign production.",
+    "formula": "GDP = C + I + G + X − M",
+    "whyNow": "Read imports while separating spending, production and financing.",
+    "articles": [
+      {
+        "label": "The US trade deficit, from the port to the factory",
+        "href": "/en/analysis/us-trade-deficit-imports-august-2026/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "BEA: NIPA chapter 8",
+        "href": "https://www.bea.gov/resources/methodologies/nipa-handbook/pdf/chapter-08.pdf",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "compte-courant",
+      "van"
+    ]
+  }
+},
+{
+  "slug": "compte-courant",
+  "sigle": "Current account",
+  "nom": "External current account",
+  "def": "Balance of trade in goods and services, primary income and current transfers with the rest of the world. It equals national saving less investment. A deficit can be financed through liabilities to non-residents or a reduction in foreign assets; it does not identify a particular debt instrument or maturity.",
+  "guide": "/en/analysis/us-trade-deficit-imports-august-2026/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "Connect trade to external financing while preserving different statistical boundaries.",
+    "formula": "Current account = national saving − investment",
+    "whyNow": "Read imports while separating spending, production and financing.",
+    "articles": [
+      {
+        "label": "The US trade deficit, from the port to the factory",
+        "href": "/en/analysis/us-trade-deficit-imports-august-2026/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "IMF: Current Account Deficits",
+        "href": "https://www.imf.org/en/publications/fandd/issues/series/back-to-basics/current-account-deficits",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "pib",
+      "van"
+    ]
+  }
+},
+{
+  "slug": "van",
+  "sigle": "NPV",
+  "nom": "Net present value",
+  "def": "Discounted future cash flows less the initial outlay. It depends on the amounts and timing of cash flows and the chosen discount rate. A positive NPV means the assumed receipts exceed the initial investment in present-value terms; it does not guarantee those receipts will materialise.",
+  "guide": "/en/analysis/us-trade-deficit-imports-august-2026/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "Separate the value of purchases from the income they need to generate.",
+    "formula": "NPV = Σ cash_t / (1 + r)^t − initial outlay",
+    "whyNow": "Read imports while separating spending, production and financing.",
+    "articles": [
+      {
+        "label": "The US trade deficit, from the port to the factory",
+        "href": "/en/analysis/us-trade-deficit-imports-august-2026/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "OpenStax / Rice University: NPV method",
+        "href": "https://openstax.org/books/principles-finance-2e/pages/16-2-net-present-value-npv-method",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "pib",
+      "compte-courant"
+    ],
+    "datasets": [
+      {
+        "label": "Hypothetical project return model",
+        "href": "/data/us-trade-project-model.csv",
+        "kind": "dataset"
+      }
+    ]
+  }
+},
+{
   "slug": "defi",
   "sigle": "DeFi",
   "nom": "Decentralised finance",

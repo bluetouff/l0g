@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "VAN", "nom": "Valeur actuelle nette", "def": "Somme des flux de trésorerie futurs actualisés, diminuée de la dépense initiale. Elle dépend du montant et du calendrier des flux ainsi que du taux d’actualisation choisi. Une VAN positive indique que les flux supposés dépassent la mise initiale en valeur actuelle ; elle ne garantit pas la réalisation des revenus.", "guide": "/posts/deficit-commercial-americain-importations-aout-2026/"},
       {"sigle": "Bonification d’intérêt", "nom": "Prise en charge d’une partie des intérêts par un tiers", "def": "Soutien par lequel un tiers, par exemple le budget public, finance une partie des intérêts dus sur un prêt éligible. Le coût payé par l’emprunteur baisse selon l’assiette, le taux et la durée prévus ; le capital reste à rembourser. L’aide peut diminuer avec le capital restant dû et prendre fin avant le prêt.", "guide": "/posts/chine-credit-immobilier-bonification-mensualites/"},
       {"sigle": "PSL", "nom": "Pledged Supplementary Lending", "def": "Facilité de financement collatéralisée de la Banque populaire de Chine destinée aux banques de développement et de politique publique. Elle fournit des ressources pour les domaines autorisés par la banque centrale. Son taux et son périmètre déterminent ce canal de financement ; une bonification budgétaire des intérêts des ménages suit un autre circuit.", "guide": "/posts/chine-credit-immobilier-bonification-mensualites/"},
       { sigle: 'Repricing obligataire', nom: 'Réévaluation des prix et des rendements obligataires', def: 'Ajustement des prix et des rendements des obligations lorsque les conditions de financement ou les anticipations changent. Pour un titre à flux fixes, une hausse du rendement demandé réduit son prix. La réaction du prix de marché est immédiate ; la transmission aux intérêts de l’émetteur dépend des nouvelles émissions, des échéances et des clauses de taux.', guide: '/posts/le-monde-redecouvre-le-prix-de-l-argent/' },
@@ -101,7 +102,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'MOVE', nom: 'Merrill Lynch Option Volatility Estimate', def: "Indice de la volatilité implicite du marché des obligations d'État américaines, l'équivalent obligataire du VIX actions. Exprimé en points de base ; sous 80, marché calme, au-dessus de 120, tension. Un MOVE élevé signale du stress sur les taux et sert d'approximation de la prime de terme.", guide: '/guides/lire-la-volatilite-vix-move/' },
       { sigle: 'VIX', nom: 'CBOE Volatility Index', def: "Indice de la volatilité implicite attendue du S&P 500 sur 30 jours, calculé par le Cboe à partir des options, exprimé en pourcentage annualisé. Surnommé « indice de la peur » : il bondit dans les chutes de marché. Moyenne de long terme autour de 19-20 ; sous 15, complaisance ; au-delà de 30, tension.", guide: '/guides/lire-la-volatilite-vix-move/' },
       { sigle: 'VVIX', nom: 'Volatilité de la volatilité', def: "Indice mesurant la volatilité implicite des options sur le VIX lui-même. Un VVIX élevé alors que le VIX est bas révèle une nervosité tapie sous la surface, des investisseurs qui se couvrent contre un retournement soudain.", guide: '/guides/lire-la-volatilite-vix-move/' },
-      { sigle: 'PIB', nom: 'Produit intérieur brut', def: "Valeur totale des biens et services produits dans un pays sur une période. Mesure de référence de l'activité économique." },
+      {"sigle": "PIB", "nom": "Produit intérieur brut", "def": "Valeur des biens et services finaux produits sur un territoire pendant une période. Le calcul par les dépenses additionne consommation, investissement et dépenses publiques, puis les exportations et retranche les importations déjà comprises dans ces achats. Une hausse des importations ne suffit donc pas à mesurer son effet total sur la production.", "guide": "/posts/deficit-commercial-americain-importations-aout-2026/"},
       { sigle: 'Demande privée intérieure', nom: 'Real final sales to private domestic purchasers', def: "Agrégat du BEA égal aux dépenses de consommation plus l'investissement privé fixe, après correction des prix. Il exclut les variations de stocks, les dépenses publiques et le solde commercial. Moins volatil que le PIB agrégé, il aide à isoler le moteur domestique privé sans mesurer sa répartition entre ménages.", guide: '/posts/pib-americain-demande-privee-t2-2026/' },
       { sigle: 'Involution', nom: 'Neijuan, la concurrence auto-destructrice', def: "Terme chinois (neijuan) désignant la concurrence excessive où la surcapacité force chaque producteur à baisser ses prix pour écouler des volumes, détruisant les marges de tous sans éliminer personne. Ennemi officiel de la politique économique chinoise depuis 2025 : loi sur les prix interdisant la vente à perte, plans de réduction de capacité pour dix industries. Tant que la capacité survit, le trop-plein se déverse à l'export." },
       { sigle: 'LGFV', nom: 'Local Government Financing Vehicle', def: "Véhicule de financement des collectivités locales chinoises : société ad hoc qui emprunte en gageant des terrains publics et se rembourse grâce aux cessions foncières. Pilier du financement local pendant deux décennies, fragilisé par l'effondrement immobilier qui a tari les recettes foncières. Sa dette, en partie hors bilan, est estimée entre 14 800 et 58 000 milliards de yuans selon les sources." },
@@ -206,7 +207,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'COFER', nom: 'Currency Composition of Official Foreign Exchange Reserves', def: "Base trimestrielle du FMI mesurant la composition en devises des réserves de change mondiales, hors or. Le dollar y pèse encore autour de 58 pour cent en 2025, contre près de 70 pour cent en 2000. À distinguer de la part de l'or, mesurée sur les réserves totales." },
       { sigle: 'Dédollarisation', nom: 'Diversification hors du dollar', def: "Réduction progressive de la part du dollar dans les réserves, les échanges et les financements, au profit d'autres devises et de l'or. Mouvement graduel et partiel, accéléré par la crainte des sanctions depuis 2022, plus qu'un abandon brutal du billet vert." },
       { sigle: 'Effet de valorisation', nom: 'Valuation effect', def: "Variation de la valeur d'un portefeuille due aux mouvements de prix et de change, et non à des achats ou ventes. Piège central du COFER et des réserves : la part du dollar ou de l'or peut bouger fortement sans qu'aucune banque centrale n'ait rééquilibré. Distinguer valorisation et flux réels est la clé de lecture de la dédollarisation." },
-      { sigle: 'Compte courant', nom: 'Current account', def: "Solde des échanges d'un pays avec le reste du monde en biens, services, revenus et transferts. Un déficit signifie qu'un pays dépense plus qu'il ne produit et doit être financé par des entrées de capitaux. Il égale, par identité comptable, l'écart entre l'épargne et l'investissement nationaux." },
+      {"sigle": "Compte courant", "nom": "Current account", "def": "Solde des échanges de biens et services, des revenus primaires et des transferts courants avec l’étranger. Il correspond à l’écart entre épargne nationale et investissement. Un déficit peut être financé par des engagements envers des non-résidents ou une réduction d’actifs extérieurs ; il ne décrit à lui seul ni une dette précise ni son échéance.", "guide": "/posts/deficit-commercial-americain-importations-aout-2026/"},
       { sigle: 'Position extérieure nette', nom: 'Net international investment position (NIIP)', def: "Différence entre les actifs financiers détenus à l'étranger par les résidents d'un pays et les actifs de ce pays détenus par l'étranger. Négative de plus de 21 000 milliards de dollars pour les États-Unis en 2026, elle mesure l'endettement net d'une économie vis-à-vis du monde." },
       { sigle: 'Privilège exorbitant', nom: 'Exorbitant privilege', def: "Capacité des États-Unis à s'endetter dans leur propre monnaie et à gagner davantage sur leurs actifs étrangers qu'ils ne paient sur leur dette, grâce au statut de réserve du dollar. Avantage historique qui s'érode à mesure que la position extérieure nette se dégrade et que le service de la dette monte." },
       { sigle: 'Debasement trade', nom: 'Pari sur la dévalorisation', def: "Stratégie consistant à fuir la monnaie fiduciaire et la dette souveraine vers des actifs à offre limitée, or, argent et bitcoin, en réponse à des déficits durables et à la crainte d'une érosion de la valeur de la monnaie. À distinguer du signal structurel de diversification des réserves : le pari tactique peut se retourner brutalement quand les taux réels remontent, alors que la dédollarisation des banques centrales se poursuit à son propre rythme." },
@@ -911,6 +912,80 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+"pib": {
+  "intuition": "Distinguer la dépense locale de la fabrication étrangère.",
+  "formula": "PIB = C + I + G + X − M",
+  "whyNow": "Lire les importations en distinguant dépenses, production et financement.",
+  "articles": [
+    {
+      "label": "Déficit américain : suivre les importations jusqu’à l’usine",
+      "href": "/posts/deficit-commercial-americain-importations-aout-2026/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "BEA : NIPA, chapitre 8",
+      "href": "https://www.bea.gov/resources/methodologies/nipa-handbook/pdf/chapter-08.pdf",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "compte-courant",
+    "van"
+  ]
+},"compte-courant": {
+  "intuition": "Relier les échanges au financement extérieur en gardant les périmètres distincts.",
+  "formula": "Compte courant = épargne nationale − investissement",
+  "whyNow": "Lire les importations en distinguant dépenses, production et financement.",
+  "articles": [
+    {
+      "label": "Déficit américain : suivre les importations jusqu’à l’usine",
+      "href": "/posts/deficit-commercial-americain-importations-aout-2026/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "FMI : Current Account Deficits",
+      "href": "https://www.imf.org/en/publications/fandd/issues/series/back-to-basics/current-account-deficits",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "pib",
+    "van"
+  ]
+},"van": {
+  "intuition": "Séparer la valeur des achats des revenus qu’ils doivent générer.",
+  "formula": "VAN = Σ flux_t / (1 + r)^t − mise initiale",
+  "whyNow": "Lire les importations en distinguant dépenses, production et financement.",
+  "articles": [
+    {
+      "label": "Déficit américain : suivre les importations jusqu’à l’usine",
+      "href": "/posts/deficit-commercial-americain-importations-aout-2026/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "OpenStax / Rice University : méthode de la VAN",
+      "href": "https://openstax.org/books/principles-finance-2e/pages/16-2-net-present-value-npv-method",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "pib",
+    "compte-courant"
+  ],
+  "datasets": [
+    {
+      "label": "Modèle fictif de rentabilité",
+      "href": "/data/us-trade-project-model.csv",
+      "kind": "dataset"
+    }
+  ]
+},
   "defi": {
   "intuition": "Suivre séparément l’interface, les fonds et les pouvoirs sur les contrats.",
   "whyNow": "L’examen des interfaces DeFi demande de distinguer les frais, la liquidité et le contrôle des règles.",

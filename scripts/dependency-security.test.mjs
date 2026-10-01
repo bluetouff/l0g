@@ -14,7 +14,7 @@ const sanitize = (body) => optimize(
 ).data;
 
 test('security floors cover vulnerable parsers and network dependencies in both trees', () => {
-  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 2], 'fast-uri': [3, 1, 7], undici: [8, 10, 2], 'ip-address': [10, 5, 1] };
+  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 3], 'fast-uri': [3, 1, 7], undici: [8, 10, 2], 'ip-address': [10, 5, 1] };
   const seen = new Set();
   for (const path of ['../package-lock.json', '../mcp-server/package-lock.json']) {
     const lock = JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
@@ -42,6 +42,30 @@ test('devalue rejects out-of-bounds references and preserves ordinary cyclic dat
   const restored = parseDevalue(stringifyDevalue(value));
   assert.deepEqual(restored, value);
   assert.equal(restored.self, restored);
+});
+
+test('devalue rejects coerced null-prototype keys while preserving valid string keys', () => {
+  // Bounded cases for GHSA-4q55-j62x-fr9h, following the upstream parser fix.
+  for (const key of [['__proto__'], [], {}, 0, true, null]) {
+    const input = JSON.stringify([['null', key, 1], { value: 2 }, true]);
+    assert.throws(() => parseDevalue(input), /non-string key/);
+  }
+  const value = Object.assign(Object.create(null), { '': 'empty', 0: 'numeric', constructor: 'ordinary' });
+  const restored = parseDevalue(stringifyDevalue(value));
+  assert.equal(Object.getPrototypeOf(restored), null);
+  assert.deepEqual(restored, value);
+});
+
+test('devalue serializes only the visible bytes of a Node Buffer', () => {
+  // GHSA-j22f-vq7h-c4qm: surrounding bytes are a local fixture, never process memory.
+  const storage = new Uint8Array(16).fill(42);
+  storage.set([1, 2], 7);
+  const view = Buffer.from(storage.buffer, 7, 2);
+  const restored = parseDevalue(stringifyDevalue({ view, alias: view }));
+  assert.deepEqual([...restored.view], [1, 2]);
+  assert.equal(restored.view.buffer.byteLength, 2);
+  assert.equal(restored.view.byteOffset, 0);
+  assert.equal(restored.alias, restored.view);
 });
 
 test('TOML rejects truncated structures promptly and preserves ordinary documents', () => {

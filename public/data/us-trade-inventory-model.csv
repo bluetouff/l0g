@@ -1,0 +1,3 @@
+status,period,consumption_usd,inventory_change_usd,imports_usd,gdp_usd,end_stock_usd,source
+hypothetical_constant_acquisition_prices_no_taxes_other_inputs,1,0,100,100,0,100,https://www.bea.gov/resources/methodologies/nipa-handbook/pdf/chapter-07.pdf
+hypothetical_constant_acquisition_prices_no_taxes_other_inputs,2,120,-100,0,20,0,https://www.bea.gov/resources/methodologies/nipa-handbook/pdf/chapter-07.pdf
