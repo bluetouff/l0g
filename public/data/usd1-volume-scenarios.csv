@@ -1,0 +1,4 @@
+scenario,balance_usd,annual_rate_decimal,years,gross_income_usd,scope
+baseline,4000000000,0.04,1,160000000.00,hypothetical_constant_balance_before_all_costs
+higher_rate_same_balance,4000000000,0.05,1,200000000.00,hypothetical_constant_balance_before_all_costs
+higher_rate_lower_balance,3200000000,0.05,1,160000000.00,hypothetical_constant_balance_before_all_costs

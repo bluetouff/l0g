@@ -5,8 +5,10 @@ import { Hono } from 'hono';
 import { ssgParams, toSSG } from 'hono/ssg';
 import { parseBody } from 'hono/utils/body';
 import { getQueryParam, getQueryParams } from 'hono/utils/url';
+import { jsx } from 'hono/jsx';
+import { renderToString, renderToReadableStream } from 'hono/jsx/dom/server';
 
-// Dependency-level checks; the l0g server does not call these three helpers.
+// Dependency-level checks; the l0g server does not call these helpers.
 // SSG uses a recording-only filesystem. Form cases stay below 100 KB.
 async function renderStatic(slug) {
   const writes = [];
@@ -90,4 +92,18 @@ test('query helpers preserve encoded delimiters and normal repeated parameters',
   assert.equal(getQueryParam(url, 'item'), 'one#two');
   assert.deepEqual(getQueryParams(url, 'item'), ['one#two', 'three four']);
   assert.equal(getQueryParam(url, 'key name'), 'a&b');
+});
+
+test('JSX server rendering escapes untrusted text at the root in string and stream modes', async () => {
+  const text = '<img src=x onerror=alert(1)>&';
+  const escaped = '&lt;img src=x onerror=alert(1)&gt;&amp;';
+  assert.equal(renderToString(text), escaped);
+  assert.equal(await new Response(await renderToReadableStream(text)).text(), escaped);
+});
+
+test('JSX server rendering preserves controlled elements and escapes their text children', async () => {
+  const element = jsx('span', {}, 'safe < & >');
+  const expected = '<span>safe &lt; &amp; &gt;</span>';
+  assert.equal(renderToString(element), expected);
+  assert.equal(await new Response(await renderToReadableStream(element)).text(), expected);
 });

@@ -1,0 +1,4 @@
+scenario,base_usd,rate_change_decimal,years,incremental_gross_usd,scope
+one_billion,1000000000,0.01,1,10000000.00,hypothetical_constant_balance_full_rate_transmission_before_all_costs
+money_market_funds_only,3066358657,0.01,1,30663586.57,hypothetical_constant_balance_full_rate_transmission_before_all_costs
+entire_reserve,4195716067,0.01,1,41957160.67,hypothetical_constant_balance_full_rate_transmission_before_all_costs

@@ -1723,7 +1723,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Un stablecoin est une promesse de parité. Le risque se loge dans la réserve, le droit au remboursement, les intermédiaires et les usages géopolitiques.",
     formula: 'parité durable = actifs liquides + droit au rachat + supervision + confiance opérationnelle',
     whyNow: "Les stablecoins deviennent une plomberie dollar parallèle : réserve en T-bills, paiements cross-border, sanctions, DeFi et régulation américaine se croisent.",
-    articles: [{ label: 'Stablecoin : du token au dollar disponible', href: '/posts/stablecoin-reserves-delai-remboursement-dollar/', detail: 'Réserves, frais, délai de remboursement et droits selon le guichet.', kind: 'article' }, { label: 'Pétrole iranien et USDT', href: '/posts/petrole-iranien-usdt-tether-saisie/', detail: 'Gel, saisie et pouvoirs conservés par Tether.', kind: 'article' }, ...stablecoinArticles],
+    articles: [{ label: 'USD1 : qui reçoit les intérêts des réserves ?', href: '/posts/usd1-trump-taux-interets-reserves-beneficiaires/', detail: 'Droits du porteur, revenus de BitGo et intérêts économiques déclarés de la famille Trump.', kind: 'article' }, { label: 'Stablecoin : du token au dollar disponible', href: '/posts/stablecoin-reserves-delai-remboursement-dollar/', detail: 'Réserves, frais, délai de remboursement et droits selon le guichet.', kind: 'article' }, { label: 'Pétrole iranien et USDT', href: '/posts/petrole-iranien-usdt-tether-saisie/', detail: 'Gel, saisie et pouvoirs conservés par Tether.', kind: 'article' }, ...stablecoinArticles],
     guides: stablecoinGuides,
     datasets: stablecoinDatasets,
     signals: stablecoinSignals,

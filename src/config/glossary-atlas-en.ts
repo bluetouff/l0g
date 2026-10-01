@@ -1596,6 +1596,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       formula: 'durable parity = liquid assets + redemption right + supervision + operational trust',
       whyNow: 'Stablecoins are becoming a parallel dollar plumbing: T-bill reserves, cross-border payments, sanctions, DeFi and US regulation all intersect.',
       articles: [
+        { label: 'USD1: who receives the reserve interest?', href: '/en/analysis/usd1-trump-interest-rates-reserves-beneficiaries/', detail: 'Holder rights, BitGo revenue and the Trump family’s disclosed economic interests.', kind: 'article' },
         { label: 'Stablecoins: from tokens to available dollars', href: '/en/analysis/stablecoin-reserves-redemption-dollar/', detail: 'Reserves, fees, redemption delays and rights by issuer channel.', kind: 'article' },
         { label: 'Iranian oil and USDT', href: '/en/analysis/iranian-oil-usdt-tether-seizure/', detail: 'Freezing, seizure and the powers Tether retains.', kind: 'article' },
         { label: 'RealT in liquidation', href: '/en/analysis/realt-liquidation-token-without-the-deed/', detail: 'Real-estate RWA, off-chain title and on-chain promise.', kind: 'article' },
