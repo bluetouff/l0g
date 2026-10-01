@@ -478,6 +478,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'CBDC', nom: 'Central Bank Digital Currency', def: "Monnaie numérique de banque centrale. L'euro numérique de la BCE en est l'exemple européen, visant une première émission potentielle en 2029." },
       { sigle: 'wCBDC', nom: 'Wholesale CBDC', def: "Monnaie numérique de banque centrale de gros, réservée au règlement interbancaire et aux infrastructures de marché, par opposition à la CBDC de détail destinée au public. Sert d'actif de règlement sur les plateformes tokenisées, comme dans le Projet Hangang." },
       { sigle: 'Euro numérique', nom: 'Digital euro', def: "Projet de CBDC de détail de la BCE : monnaie de banque centrale pour le grand public, distribuée via les banques, non rémunérée, sans détention par les entreprises, et bornée par un plafond de détention. Conçue comme ancre monétaire face aux stablecoins et aux réseaux de paiement étrangers. Position du Parlement adoptée en 2026, trilogues ouverts à l'été 2026, pilote visé au second semestre 2027, première émission possible en 2029." },
+      {"sigle": "DMA", "nom": "Digital Markets Act", "def": "Règlement (UE) 2022/1925 visant l’équité et la contestabilité des marchés numériques. Il impose des obligations aux entreprises désignées contrôleurs d’accès pour leurs services de plateforme essentiels. Son article 6(11) prévoit le partage de données de recherche avec d’autres moteurs dans des conditions équitables, raisonnables et non discriminatoires, avec anonymisation des données personnelles des utilisateurs concernés. Le RGPD continue de s’appliquer aux traitements de données personnelles.", "guide": "/posts/google-donnees-recherche-prix-acces-vie-privee/"},
       { sigle: 'Pseudonymisation', nom: 'Pseudonymisation', def: "Traitement qui remplace ou sépare l'identité directe tout en conservant une information supplémentaire permettant de réattribuer les données. À la différence de données réellement anonymisées, les données pseudonymisées restent des données personnelles au sens du RGPD.", guide: '/guides/lire-une-cbdc-euro-numerique-parametre-par-parametre/' },
       { sigle: 'Tokenisation', nom: 'Tokenization', def: "Remplacement d'une donnée par un jeton substitutif utilisable dans un contexte précis. La donnée sous-jacente reste accessible à un acteur autorisé grâce à une table de correspondance, dont la protection détermine la confidentialité du dispositif.", guide: '/guides/lire-une-cbdc-euro-numerique-parametre-par-parametre/' },
       { sigle: 'Attestation', nom: 'Preuve cryptographique d’intégrité', def: "Preuve signée permettant à un service distant d'évaluer l'intégrité d'une application, l'état de son environnement ou la protection d'une clé. Elle ne démontre ni la sécurité totale du terminal ni l'identité de son propriétaire ; sa fiabilité dépend aussi de la racine de confiance, des règles de validation et du recours prévu en cas de faux refus.", guide: '/posts/votre-identite-dans-un-telephone-7-une-identite-souveraine-sur-un-telephone-americain/' },
@@ -665,7 +666,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-09-30';
+export const glossaryUpdatedIso = '2026-10-01';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -908,6 +909,38 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  dma: {
+  "intuition": "Ouvrir un marché numérique demande de préciser qui peut accéder aux données, pour quels usages, à quel prix et avec quelles protections.",
+  "whyNow": "Le partage de données de Google Search associe des conditions d’entrée, des coûts communs et des contrôles de protection des personnes.",
+  "articles": [
+    {
+      "label": "Google : combien vaut l’accès à nos recherches ?",
+      "href": "/posts/google-donnees-recherche-prix-acces-vie-privee/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Digital Markets Act : article 6(11)",
+      "href": "https://eur-lex.europa.eu/eli/reg/2022/1925/oj",
+      "kind": "source"
+    },
+    {
+      "label": "Commission : décision Google Search du 16 juillet 2026",
+      "href": "https://ec.europa.eu/competition/digital_markets_act/cases/202637/DMA_100209_2799.pdf",
+      "kind": "source"
+    },
+    {
+      "label": "Commission : conditions de partage des données",
+      "href": "https://digital-markets-act.ec.europa.eu/businesses-portal/data-access/alphabet-specification-proceedings-sharing-google-search-data_en",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "pseudonymisation",
+    "segment-d-audience"
+  ]
+},
   "cop": {
     "formula": "COP = chaleur utile / électricité consommée, dans la même unité.",
     "articles": [

@@ -203,6 +203,47 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+  "slug": "dma",
+  "sigle": "DMA",
+  "nom": "Digital Markets Act",
+  "def": "Regulation (EU) 2022/1925 seeking fair and contestable digital markets. It imposes obligations on designated gatekeepers for their core platform services. Article 6(11) requires search data access for other search engines on fair, reasonable and non-discriminatory terms, with anonymisation of the relevant users’ personal data. The GDPR still applies to personal data processing.",
+  "guide": "/en/analysis/google-search-data-access-cost-privacy/",
+  "sectionTitle": "Digital markets & personal data",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "Opening a digital market requires rules about eligible recipients, permitted uses, pricing and privacy safeguards.",
+    "whyNow": "Google Search data sharing combines entry criteria, shared costs and protection of individuals.",
+    "articles": [
+      {
+        "label": "Google: what is access to our searches worth?",
+        "href": "/en/analysis/google-search-data-access-cost-privacy/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Digital Markets Act: Article 6(11)",
+        "href": "https://eur-lex.europa.eu/eli/reg/2022/1925/oj",
+        "kind": "source"
+      },
+      {
+        "label": "Commission: 16 July 2026 Google Search decision",
+        "href": "https://ec.europa.eu/competition/digital_markets_act/cases/202637/DMA_100209_2799.pdf",
+        "kind": "source"
+      },
+      {
+        "label": "Commission: search data sharing conditions",
+        "href": "https://digital-markets-act.ec.europa.eu/businesses-portal/data-access/alphabet-specification-proceedings-sharing-google-search-data_en",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "pseudonymisation",
+      "segment-d-audience"
+    ]
+  }
+},
+  {
   "slug": "cop",
   "sigle": "COP",
   "nom": "Coefficient of performance",

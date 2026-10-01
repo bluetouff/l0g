@@ -1,0 +1,5 @@
+component,common_cost_eur,recipient_specific_eur,beneficiaries,common_share_eur,total_per_recipient_eur,period,status,mechanism_source
+initial,600000,30000,4,150000,180000,one_off,hypothetical_constant_costs_no_return_margin_tax_or_internal_costs,https://ec.europa.eu/competition/digital_markets_act/cases/202637/DMA_100209_2799.pdf
+recurring,400000,20000,2,200000,220000,one_year,hypothetical_constant_costs_no_return_margin_tax_or_internal_costs,https://ec.europa.eu/competition/digital_markets_act/cases/202637/DMA_100209_2799.pdf
+recurring,400000,20000,4,100000,120000,one_year,hypothetical_constant_costs_no_return_margin_tax_or_internal_costs,https://ec.europa.eu/competition/digital_markets_act/cases/202637/DMA_100209_2799.pdf
+recurring,400000,20000,8,50000,70000,one_year,hypothetical_constant_costs_no_return_margin_tax_or_internal_costs,https://ec.europa.eu/competition/digital_markets_act/cases/202637/DMA_100209_2799.pdf
