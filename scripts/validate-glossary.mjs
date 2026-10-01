@@ -64,6 +64,7 @@ for (const [entry, href] of [
   assert.equal(entry.guide, href);
   assert.equal(entry.atlas.articles[0].href, href);
   assert.deepEqual(entry.atlas.related, ['pseudonymisation', 'segment-d-audience']);
+  assert.equal(entry.sectionTitle, entry.guide === '/posts/google-donnees-recherche-prix-acces-vie-privee/' ? 'Économie numérique & données' : 'Digital economy & data');
   assert.equal(entry.atlas.sources[0].href, 'https://eur-lex.europa.eu/eli/reg/2022/1925/oj');
   assert.equal(entry.atlas.sources[1].href, 'https://ec.europa.eu/competition/digital_markets_act/cases/202637/DMA_100209_2799.pdf');
 }

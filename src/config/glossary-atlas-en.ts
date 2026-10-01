@@ -208,7 +208,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   "nom": "Digital Markets Act",
   "def": "Regulation (EU) 2022/1925 seeking fair and contestable digital markets. It imposes obligations on designated gatekeepers for their core platform services. Article 6(11) requires search data access for other search engines on fair, reasonable and non-discriminatory terms, with anonymisation of the relevant users’ personal data. The GDPR still applies to personal data processing.",
   "guide": "/en/analysis/google-search-data-access-cost-privacy/",
-  "sectionTitle": "Digital markets & personal data",
+  "sectionTitle": "Digital economy & data",
   "accent": "var(--color-signal)",
   "atlas": {
     "intuition": "Opening a digital market requires rules about eligible recipients, permitted uses, pricing and privacy safeguards.",
