@@ -114,8 +114,16 @@ test('USD1 calculations preserve nominal units, periods, business scope and hypo
     assert(!article.includes('—') && !article.includes('[[S'));
     for (const name of ['reserve-snapshot', 'bitgo-h1-2026', 'rate-scenarios', 'volume-scenarios']) assert(article.includes(`/data/usd1-${name}.csv`));
     const nodes = elements(fromHtml(article, { fragment: true }));
-    assert.equal(nodes.filter(node => node.tagName === 'li' && /^source-\d+$/u.test(node.properties.id ?? '')).length, 17);
-    assert(!article.includes('https://www.arcamax.com/'));
+    const sources = nodes.filter(node => node.tagName === 'li' && /^source-\d+$/u.test(node.properties.id ?? ''));
+    assert.equal(sources.length, 17);
+    for (const source of sources) {
+      const citation = elements(source).find(node => node.tagName === 'a');
+      const url = new URL(citation.properties.href);
+      assert.equal(url.protocol, 'https:');
+      assert.equal(url.username, '');
+      assert.equal(url.password, '');
+      assert(!['arcamax.com', 'www.arcamax.com'].includes(url.hostname));
+    }
   }
   const meta = await sharp(new URL('../public/illustrations/news/usd1-interest-reserves-2026-v1.jpg', import.meta.url).pathname).metadata();
   assert.equal(meta.width, 1200); assert.equal(meta.height, 630);
