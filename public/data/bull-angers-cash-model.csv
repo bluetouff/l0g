@@ -1,0 +1,5 @@
+status,month,stage,customer_receipts_m_eur,production_payments_m_eur,net_flow_m_eur,cumulative_cash_m_eur
+hypothetical_not_bull,0,signature,10,25,-15,-15
+hypothetical_not_bull,4,assembly,0,40,-40,-55
+hypothetical_not_bull,8,acceptance,80,10,70,15
+hypothetical_not_bull,12,final_payment,10,5,5,20

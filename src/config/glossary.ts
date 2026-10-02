@@ -640,6 +640,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "PUE", "nom": "Power Usage Effectiveness", "def": "Rapport entre l’énergie totale d’un centre de données et celle de ses équipements informatiques, sur la même période et le même périmètre. Un PUE de 1,30 signifie 0,30 unité pour les auxiliaires par unité consommée par l’IT. Il renseigne sur l’infrastructure du site ; il ne mesure ni l’efficacité d’un algorithme, ni l’utilisation des serveurs, ni la recette de chaleur récupérée.", "guide": "/posts/bull-usine-angers-supercalculateurs/"},
       {"sigle": "DMA", "nom": "Digital Markets Act", "def": "Règlement (UE) 2022/1925 visant l’équité et la contestabilité des marchés numériques. Il impose des obligations aux entreprises désignées contrôleurs d’accès pour leurs services de plateforme essentiels. Son article 6(11) prévoit le partage de données de recherche avec d’autres moteurs dans des conditions équitables, raisonnables et non discriminatoires, avec anonymisation des données personnelles des utilisateurs concernés. Le RGPD continue de s’appliquer aux traitements de données personnelles.", "guide": "/posts/google-donnees-recherche-prix-acces-vie-privee/"},
       {"sigle": "DORA", "nom": "Digital Operational Resilience Act", "def": "Règlement (UE) 2022/2554 sur la résilience opérationnelle numérique du secteur financier, applicable depuis le 17 janvier 2025. Il encadre les risques informatiques, les incidents majeurs, les tests et les relations avec les fournisseurs informatiques des entités concernées. La surveillance européenne des prestataires critiques complète la responsabilité de chaque établissement pour ses propres risques.", "guide": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/"},
       {"sigle": "CTPP", "nom": "Critical ICT Third-Party Provider", "def": "Prestataire informatique tiers désigné comme critique par les autorités européennes de supervision dans le cadre de DORA. La désignation tient notamment compte de son importance systémique, des fonctions soutenues et de la possibilité de remplacer ses services. Elle ouvre une surveillance européenne du fournisseur ; elle ne garantit pas l’absence de panne.", "guide": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/"},
@@ -669,7 +670,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-01';
+export const glossaryUpdatedIso = '2026-10-02';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -912,6 +913,36 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  pue: {
+  "intuition": "Comparer les auxiliaires à une charge informatique identique.",
+  "formula": "PUE = énergie totale du site / énergie IT",
+  "whyNow": "Séparer le coût des infrastructures du travail de calcul réellement effectué.",
+  "articles": [
+    {
+      "label": "Bull à Angers : les puces, l’usine et le cash",
+      "href": "/posts/bull-usine-angers-supercalculateurs/",
+      "kind": "article"
+    }
+  ],
+  "datasets": [
+    {
+      "label": "Modèle énergétique fictif à charge IT constante",
+      "href": "/data/bull-angers-energy-model.csv",
+      "kind": "dataset"
+    }
+  ],
+  "sources": [
+    {
+      "label": "DOE/FEMP : définition annuelle du PUE",
+      "href": "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "gpu",
+    "bfr"
+  ]
+},
 "pib": {
   "intuition": "Distinguer la dépense locale de la fabrication étrangère.",
   "formula": "PIB = C + I + G + X − M",

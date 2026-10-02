@@ -203,6 +203,45 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
 {
+  "slug": "pue",
+  "sigle": "PUE",
+  "nom": "Power Usage Effectiveness",
+  "def": "Ratio of total data-centre energy to IT equipment energy, measured over the same period and boundary. A PUE of 1.30 means 0.30 units for infrastructure per unit consumed by IT. It measures site infrastructure, not algorithm efficiency, server utilisation or revenue from recovered heat.",
+  "guide": "/en/analysis/bull-angers-supercomputer-factory/",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "Compare site overhead at an unchanged IT load.",
+    "formula": "PUE = total facility energy / IT energy",
+    "whyNow": "Separate infrastructure costs from useful computing work.",
+    "articles": [
+      {
+        "label": "Bull in Angers: chips, factory floors and cash flow",
+        "href": "/en/analysis/bull-angers-supercomputer-factory/",
+        "kind": "article"
+      }
+    ],
+    "datasets": [
+      {
+        "label": "Hypothetical energy model at unchanged IT load",
+        "href": "/data/bull-angers-energy-model.csv",
+        "kind": "dataset"
+      }
+    ],
+    "sources": [
+      {
+        "label": "DOE/FEMP: annual PUE definition",
+        "href": "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "gpu",
+      "bfr"
+    ]
+  }
+},
+{
   "slug": "pib",
   "sigle": "GDP",
   "nom": "Gross domestic product",

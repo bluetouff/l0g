@@ -1,0 +1,5 @@
+status,scenario,components_index,assembly_index,validation_index,output_index
+hypothetical_not_bull,reference,100,100,100,100
+hypothetical_not_bull,components_constrained,100,200,200,100
+hypothetical_not_bull,tests_constrained,200,200,140,140
+hypothetical_not_bull,balanced,200,200,200,200
