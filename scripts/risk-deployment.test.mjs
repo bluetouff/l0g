@@ -28,6 +28,8 @@ test('le manifeste relie cinq producteurs à des révisions et fichiers vérifia
     '/opt/euromacro/validate_snapshot.py',
     '/opt/euromacro/requirements-prod.txt',
     '/opt/euromacro/deploy/refresh.sh',
+    '/opt/euromacro/index.html',
+    '/opt/euromacro/deploy/euromacro-snapshot.service',
   ]) {
     assert.ok(paths.includes(path), `la dépendance Euro doit être attestée: ${path}`);
   }
@@ -100,6 +102,9 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.ok(euroActivator.indexOf('systemctl stop euromacro-snapshot.timer') < euroActivator.indexOf('install -o euromacro'));
   assert.ok(euroActivator.indexOf('systemctl restart euromacro-snapshot.service') < euroActivator.indexOf('install-server.sh'));
   assert.ok(euroActivator.includes('/var/www/html/euromacro/snapshot.json'));
+  assert.ok(euroActivator.includes('"$EURO_STAGE/deploy/euromacro-snapshot.service" /etc/systemd/system/euromacro-snapshot.service'));
+  assert.ok(euroActivator.includes('"$BACKUP/web/index.html"'));
+  assert.ok(euroActivator.includes('"$BACKUP/euromacro-snapshot.service" /etc/systemd/system/euromacro-snapshot.service'));
   const debtSchema = agentSurface.slice(
     agentSurface.indexOf('DebtRiskTileSignal:'),
     agentSurface.indexOf('RiskSignalProvenanceBucket:'),

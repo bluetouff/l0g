@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-09-22",
+  "verifiedAt": "2026-10-03",
   "producers": {
     "us": {
       "repository": "https://github.com/bluetouff/macro_dashboard",
@@ -30,23 +30,23 @@
     },
     "eu": {
       "repository": "https://github.com/bluetouff/euro-macro-dashboard",
-      "revision": "97d00c748c67ed68454a9a0c3cf0cbf9d850d24a",
+      "revision": "aabc030b36d301c3e43780b3fbf4264604d26a88",
       "files": [
         {
           "path": "/opt/euromacro/build_snapshot.py",
-          "sha256": "e3ab3e3303719de85fe025cb69301199632d326328141a1d7814ed450662a7c9"
+          "sha256": "7220ac13826e43ba2addcf176df7c1e4db8e88830f009b6576fb3729f9b2ca79"
         },
         {
           "path": "/opt/euromacro/catalog.py",
-          "sha256": "f5528e88961167901564ddd09e67b122a292e4a202a3fc7b9a20dd36b5a24a75"
+          "sha256": "448cf67b7d6e058e481d2b3e5935281ee960e0c773fddece243ba31296bb3301"
         },
         {
           "path": "/opt/euromacro/data.py",
-          "sha256": "407ca1b68b0ea259290e955e15f180678ae311f3786e0e65d2d9604efcae22aa"
+          "sha256": "451d994e01ef897d4706423a69d5d6ad58a2e486411860ce0b4853bf31af8671"
         },
         {
           "path": "/opt/euromacro/snapshot_contract.py",
-          "sha256": "d1e27f0e8b90995095b862102582a0e68a1c4869cb9c761f26a63a2b5522d477"
+          "sha256": "d79ace2517ef1028667a6746ceae78fa727bc67514a9d56be85209a855d5de8c"
         },
         {
           "path": "/opt/euromacro/validate_snapshot.py",
@@ -58,7 +58,15 @@
         },
         {
           "path": "/opt/euromacro/deploy/refresh.sh",
-          "sha256": "68722d96bbca5d3388fbe242fcd84c272648ccd4a68acd11895dfc2b38ed7949"
+          "sha256": "c6bb913fd6b2b4fb09e56a6d357dd467b97f63a6a620d7157bd7efe6c0b31755"
+        },
+        {
+          "path": "/opt/euromacro/index.html",
+          "sha256": "c596d1d1faaa0ab0a23f338d3865c30832c2aa35a081ae0b770fd09ffce4a976"
+        },
+        {
+          "path": "/opt/euromacro/deploy/euromacro-snapshot.service",
+          "sha256": "f2ad9dbd866bb6bc73c108f3eb061f02096a71f344ec981c920aab6f389cb6a2"
         }
       ]
     },

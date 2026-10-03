@@ -29,6 +29,8 @@ RUNTIME_FILES=(
   validate_snapshot.py
   requirements-prod.txt
   deploy/refresh.sh
+  index.html
+  deploy/euromacro-snapshot.service
 )
 
 cleanup() {
@@ -72,12 +74,17 @@ done
 install -d -o root -g root -m 0700 \
   "$BACKUP/opt/deploy" "$BACKUP/web"
 for relative in "${RUNTIME_FILES[@]}"; do
-  [ -f "/opt/euromacro/${relative}" ] || {
+  if [ ! -f "/opt/euromacro/${relative}" ]; then
+    # L'unité peut n'avoir été installée que sous /etc lors d'une ancienne release.
+    if [ "$relative" = deploy/euromacro-snapshot.service ]; then
+      continue
+    fi
     echo "Fichier Euro actif absent : /opt/euromacro/${relative}" >&2
     exit 1
-  }
+  fi
   cp -a "/opt/euromacro/${relative}" "$BACKUP/opt/${relative}"
 done
+cp -a /etc/systemd/system/euromacro-snapshot.service "$BACKUP/euromacro-snapshot.service"
 if [ -f /opt/euromacro/DEPLOYED_SHA ]; then
   cp -a /opt/euromacro/DEPLOYED_SHA "$BACKUP/opt/DEPLOYED_SHA"
   HAD_DEPLOYED_SHA=1
@@ -87,7 +94,7 @@ if [ -f /opt/euromacro/L0G_ATTESTED_SHA ]; then
   HAD_ATTESTED_SHA=1
 fi
 cp -a /opt/euromacro/snapshot.js /opt/euromacro/snapshot.json "$BACKUP/opt/"
-cp -a /var/www/html/euromacro/snapshot.js \
+cp -a /var/www/html/euromacro/index.html /var/www/html/euromacro/snapshot.js \
   /var/www/html/euromacro/snapshot.json "$BACKUP/web/"
 
 rollback() {
@@ -99,9 +106,16 @@ rollback() {
   trap - ERR
   set +e
   echo "Échec : restauration du producteur Euro" >&2
+  systemctl stop euromacro-snapshot.service
   for relative in "${RUNTIME_FILES[@]}"; do
-    cp -a "$BACKUP/opt/${relative}" "/opt/euromacro/${relative}"
+    if [ -f "$BACKUP/opt/${relative}" ]; then
+      cp -a "$BACKUP/opt/${relative}" "/opt/euromacro/${relative}"
+    elif [ "$relative" = deploy/euromacro-snapshot.service ]; then
+      rm -f /opt/euromacro/deploy/euromacro-snapshot.service
+    fi
   done
+  cp -a "$BACKUP/euromacro-snapshot.service" /etc/systemd/system/euromacro-snapshot.service
+  systemctl daemon-reload
   if [ "$HAD_DEPLOYED_SHA" -eq 1 ]; then
     cp -a "$BACKUP/opt/DEPLOYED_SHA" /opt/euromacro/DEPLOYED_SHA
   else
@@ -113,8 +127,7 @@ rollback() {
     rm -f /opt/euromacro/L0G_ATTESTED_SHA
   fi
   cp -a "$BACKUP/opt/snapshot.js" "$BACKUP/opt/snapshot.json" /opt/euromacro/
-  cp -a "$BACKUP/web/snapshot.js" "$BACKUP/web/snapshot.json" /var/www/html/euromacro/
-  systemctl restart euromacro-snapshot.service >/dev/null 2>&1 || true
+  cp -a "$BACKUP/web/index.html" "$BACKUP/web/snapshot.js" "$BACKUP/web/snapshot.json" /var/www/html/euromacro/
   if [ "$TIMER_WAS_ACTIVE" -eq 1 ]; then
     systemctl start euromacro-snapshot.timer >/dev/null 2>&1 || true
   fi
@@ -136,7 +149,7 @@ if systemctl is-active --quiet euromacro-snapshot.timer; then
   systemctl stop euromacro-snapshot.timer
 fi
 systemctl stop euromacro-snapshot.service
-for relative in build_snapshot.py catalog.py data.py snapshot_contract.py validate_snapshot.py requirements-prod.txt; do
+for relative in build_snapshot.py catalog.py data.py snapshot_contract.py validate_snapshot.py requirements-prod.txt index.html deploy/euromacro-snapshot.service; do
   install -o euromacro -g euromacro -m 0644 \
     "$EURO_STAGE/$relative" "/opt/euromacro/$relative"
 done
@@ -147,6 +160,11 @@ install -o euromacro -g euromacro -m 0644 \
   "$WORK/DEPLOYED_SHA" /opt/euromacro/DEPLOYED_SHA
 install -o root -g root -m 0644 \
   "$WORK/DEPLOYED_SHA" /opt/euromacro/L0G_ATTESTED_SHA
+install -o root -g root -m 0644 \
+  "$EURO_STAGE/deploy/euromacro-snapshot.service" /etc/systemd/system/euromacro-snapshot.service
+systemd-analyze verify /etc/systemd/system/euromacro-snapshot.service
+systemctl daemon-reload
+systemctl reset-failed euromacro-snapshot.service
 systemctl restart euromacro-snapshot.service
 if [ "$(systemctl show euromacro-snapshot.service -p Result --value)" != "success" ]; then
   echo "Échec de la régénération Euro" >&2
