@@ -542,7 +542,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'SMR', nom: 'Small Modular Reactor', def: "Petit réacteur modulaire de faible puissance, conçu pour être fabriqué en série et déployé plus vite qu'une grande centrale. Au cœur des projets d'alimentation des centres de données d'IA, mais dont les premiers exemplaires commerciaux ne sont pas attendus avant le début des années 2030.", guide: '/guides/lire-le-marche-de-l-uranium/' },
       { sigle: 'OPEP', nom: 'Organisation des pays exportateurs de pétrole', def: "Cartel de producteurs (Arabie saoudite, etc.) qui coordonne les quotas de production pour influencer le prix du baril.", guide: '/guides/lire-le-marche-petrolier/' },
       { sigle: 'OPEP+', nom: 'OPEP élargie', def: "OPEP augmentée d'une dizaine de producteurs non membres, dont la Russie, coordonnant leurs quotas depuis fin 2016. Ses décisions pèsent aujourd'hui autant que celles de l'OPEP seule : le groupe a relevé sa production de près de 600 000 barils par jour entre avril et juin 2026, puis de 188 000 supplémentaires en juillet.", guide: '/guides/lire-le-marche-petrolier/' },
-      { sigle: 'SPR', nom: 'Réserve stratégique de pétrole', def: "Aux États-Unis, la Strategic Petroleum Reserve est un stock fédéral de brut conservé dans des cavernes de sel pour répondre aux ruptures d'approvisionnement. Les systèmes d'urgence d'autres pays peuvent aussi comprendre des produits raffinés détenus par l'État, une agence ou des entreprises soumises à une obligation de stockage. Un baril prêté devient une créance de restitution future ; il redevient disponible dans la réserve après son retour physique.", guide: '/guides/lire-le-marche-petrolier/' },
+      { sigle: 'SPR', nom: 'Réserve stratégique de pétrole', def: "Aux États-Unis, la Strategic Petroleum Reserve est un stock fédéral de brut conservé dans des cavernes de sel pour répondre aux ruptures d'approvisionnement. Les systèmes d'urgence d'autres pays peuvent aussi comprendre des produits raffinés détenus par l'État, une agence ou des entreprises soumises à une obligation de stockage. Le brut doit encore être raffiné ; la composition, le transport et les capacités disponibles conditionnent le carburant livré. Un baril prêté devient une créance de restitution future ; il redevient disponible dans la réserve après son retour physique.", guide: '/guides/lire-le-marche-petrolier/' },
       { sigle: 'Stockage flottant', nom: 'Floating storage', def: "Pétrole conservé à bord de tankers à l'ancre plutôt qu'à terre, faute de cuves disponibles, parce que le brut est sanctionné, ou quand la structure des prix rémunère l'attente. Environ 166 millions de barils de brut iranien stationnaient ainsi dans les eaux asiatiques début 2026, un stock où la Chine peut puiser sans surenchérir sur le marché ouvert.", guide: '/guides/lire-le-marche-petrolier/' },
       { sigle: 'IRGC', nom: 'Islamic Revolutionary Guard Corps', def: "Gardiens de la révolution islamique : force armée d'élite iranienne, acteur clé des tensions dans le détroit d'Ormuz." },
       { sigle: 'MOU', nom: 'Memorandum of Understanding', def: "Mémorandum d'entente : accord écrit fixant des engagements entre parties, sans toujours la force contraignante d'un traité. Exemple : le MOU USA-Iran du 17 juin 2026." },
@@ -670,7 +670,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-02';
+export const glossaryUpdatedIso = '2026-10-03';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -2110,7 +2110,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Un stock amortit une interruption quand le pétrole peut être sorti, acheminé et transformé à temps. Une promesse de remboursement organise sa disponibilité future.",
     formula: 'couverture théorique (jours) = volume mobilisable (barils) / manque à couvrir (barils par jour)',
     whyNow: "L’offre américaine de septembre 2026 comporte des fenêtres de retour allant jusqu’en 2029. La prime en barils doit se lire avec le calendrier et les capacités logistiques.",
-    articles: [{ label: 'Les réserves de pétrole achètent du temps', href: '/posts/petrole-reserves-strategiques-prets-temps/' }, energyArticles[0], energyArticles[1]],
+    articles: [{ label: 'Les réserves de pétrole achètent du temps', href: '/posts/petrole-reserves-strategiques-prets-temps/' }, { label: 'Réserves pétrolières : le chemin jusqu’au diesel', href: '/posts/reserves-petrolieres-brut-diesel-contenu-delais/' }, energyArticles[0], energyArticles[1]],
     guides: [energyGuides[0]],
     datasets: energyDatasets,
     signals: energySignals,

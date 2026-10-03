@@ -2341,14 +2341,14 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'spr',
     sigle: 'SPR',
     nom: 'Strategic petroleum reserve',
-    def: 'In the United States, the Strategic Petroleum Reserve is a federal crude stockpile held in salt caverns to respond to supply disruptions. Other countries’ emergency systems may also include refined products owned by the government, an agency or companies subject to stockholding obligations. Loaned oil becomes a claim on future repayment; it is available in the reserve again after its physical return.',
+    def: 'In the United States, the Strategic Petroleum Reserve is a federal crude stockpile held in salt caverns to respond to supply disruptions. Other countries’ emergency systems may also include refined products owned by the government, an agency or companies subject to stockholding obligations. Crude still needs refining; product mix, transport and available capacity determine the fuel delivered. Loaned oil becomes a claim on future repayment; it is available in the reserve again after its physical return.',
     guide: '/en/guides/read-oil-market/',
     ...energySection,
     atlas: {
       intuition: 'A stock cushions an interruption when oil can be withdrawn, transported and processed in time. A repayment promise organises future availability.',
       formula: 'theoretical coverage (days) = deployable volume (barrels) / remaining gap (barrels per day)',
       whyNow: 'The September 2026 U.S. offer includes return windows through 2029. Barrel premiums must be read alongside timing and logistical capacity.',
-      articles: [{ label: 'Strategic oil reserves buy time', href: '/en/analysis/strategic-oil-reserves-borrowing-time/' }, oilArticles[0], oilArticles[1]],
+      articles: [{ label: 'Strategic oil reserves buy time', href: '/en/analysis/strategic-oil-reserves-borrowing-time/' }, { label: 'Oil reserves: the journey from storage to diesel', href: '/en/analysis/oil-reserves-crude-diesel-contents-delivery/' }, oilArticles[0], oilArticles[1]],
       guides: [oilGuide],
       ...energyShared,
       sources: [

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
+import { qualifiesPatchedAdvisory } from './http-cache-security.mjs';
 
 const AUDIT_ENDPOINT = 'https://registry.npmjs.org/-/npm/v1/security/advisories/bulk';
 const AUDIT_TIMEOUT_MS = 60_000;
@@ -93,7 +94,16 @@ function validateAuditReport(report) {
       throw new Error(`registry returned invalid advisories for ${packageName}`);
     }
     for (const advisory of advisories) {
-      const severity = `${advisory?.severity || ''}`.toLowerCase();
+      if (!advisory || typeof advisory !== 'object' || Array.isArray(advisory)) {
+        throw new Error(`registry returned an invalid advisory for ${packageName}`);
+      }
+      if (typeof advisory.severity !== 'string') {
+        throw new Error(`registry returned a non-string advisory severity for ${packageName}`);
+      }
+      const severity = advisory.severity.toLowerCase();
+      if (!severityRank.has(severity)) {
+        throw new Error(`registry returned an unknown advisory severity for ${packageName}`);
+      }
       if ((severityRank.get(severity) || 0) >= severityRank.get('moderate')) {
         findings.push({ packageName, severity, title: advisory.title || 'untitled advisory', url: advisory.url || '' });
       }
@@ -124,7 +134,16 @@ async function runAudit({ label, lockfile, omitDev }) {
     throw new Error(`audit registry returned HTTP ${response.status}: ${raw.toString('utf8').slice(0, 500)}`);
   }
 
-  const findings = validateAuditReport(decodeAuditResponse(raw));
+  const findings = validateAuditReport(decodeAuditResponse(raw)).filter((finding) => {
+    if (label !== 'main' || finding.packageName !== 'http-cache-semantics') return true;
+    const lock = JSON.parse(readFileSync(lockfile, 'utf8'));
+    const instances = Object.entries(lock.packages).filter(([path]) => path === 'node_modules/http-cache-semantics' || path.endsWith('/node_modules/http-cache-semantics'));
+    // Never qualify a nested or different version using the root package's patch.
+    if (instances.length !== 1 || instances[0][0] !== 'node_modules/http-cache-semantics' || instances[0][1].version !== '4.2.0') return true;
+    if (!qualifiesPatchedAdvisory(finding)) return true;
+    console.warn(`⚠️ [test-dependencies] ${label}: ${finding.url} remains in the registry; exact local patch and cache-reuse regression checks verified`);
+    return false;
+  });
   if (findings.length > 0) {
     console.error(`❌ [test-dependencies] ${label}: ${findings.length} vulnerabilities at moderate+ level`);
     for (const finding of findings) {
@@ -133,7 +152,7 @@ async function runAudit({ label, lockfile, omitDev }) {
     throw new Error(`${label}: vulnerable dependency tree`);
   }
 
-  console.log(`✅ [test-dependencies] ${label}: bulk advisory audit OK (${Object.keys(payload).length} packages)`);
+  console.log(`✅ [test-dependencies] ${label}: no unmitigated moderate+ advisory (${Object.keys(payload).length} packages)`);
 }
 
 let ok = true;
@@ -142,8 +161,9 @@ for (const item of audits) {
     await runAudit(item);
   } catch (error) {
     if (isLikelyTransient(error)) {
-      console.warn(`⚠️ [test-dependencies] ${item.label}: audit unavailable due to a transient/network-like issue, continuing`);
-      console.warn(error.message);
+      console.error(`❌ [test-dependencies] ${item.label}: audit unavailable; publication check fails closed`);
+      console.error(error.message);
+      ok = false;
       continue;
     }
     console.error(`❌ [test-dependencies] ${item.label}: audit failed`);
