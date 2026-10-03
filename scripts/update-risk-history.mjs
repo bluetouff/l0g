@@ -1,5 +1,7 @@
-import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
+import { createReadStream, existsSync, mkdirSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname, relative, resolve } from 'node:path';
+import { setTimeout as delay } from 'node:timers/promises';
+import { MAX_HISTORY_BYTES, sampleOperationalHistory } from './operational-history.mjs';
 
 const DEFAULT_URL = 'https://l0g.fr/api/v1/history.ndjson';
 const parsedUrl = new URL(process.env.L0G_OPERATIONAL_HISTORY_URL || DEFAULT_URL);
@@ -22,7 +24,6 @@ function cachePath(value, fallback) {
 const output = cachePath(process.env.L0G_OPERATIONAL_HISTORY_PATH, '.cache/risk-operational-history.ndjson');
 const metaOutput = cachePath(process.env.L0G_OPERATIONAL_HISTORY_META_PATH, '.cache/risk-operational-history.meta.json');
 const attemptedAt = new Date().toISOString();
-const maxBytes = 15_000_000;
 
 function atomicWrite(path, contents) {
   // Flux intentionnel : le NDJSON distant est borné et validé ligne par ligne;
@@ -33,59 +34,52 @@ function atomicWrite(path, contents) {
   renameSync(temporary, path);
 }
 
-function validate(text) {
-  if (Buffer.byteLength(text, 'utf8') > maxBytes) throw new Error('historique opérationnel trop volumineux');
-  const rows = [];
-  for (const [index, line] of text.split('\n').entries()) {
-    if (!line.trim()) continue;
-    let row;
-    try {
-      row = JSON.parse(line);
-    } catch {
-      throw new Error(`NDJSON invalide à la ligne ${index + 1}`);
-    }
-    if (!row.snapshot || Number.isNaN(Date.parse(row.snapshot))) {
-      throw new Error(`snapshot ISO manquant à la ligne ${index + 1}`);
-    }
-    if (!['us', 'eu', 'yen', 'energie', 'debt'].some((key) => typeof row[key] === 'number')) {
-      throw new Error(`aucun signal numérique à la ligne ${index + 1}`);
-    }
-    rows.push(row);
-  }
-  if (!rows.length) throw new Error('historique opérationnel vide');
-  return rows;
-}
-
 async function readSource() {
-  if (sourceFile) return readFileSync(sourceFile, 'utf8');
+  if (sourceFile) return sampleOperationalHistory(createReadStream(sourceFile));
   const response = await fetch(url, {
-    signal: AbortSignal.timeout(30_000),
+    signal: AbortSignal.timeout(60_000),
+    redirect: 'error',
     headers: { accept: 'application/x-ndjson, application/json', 'user-agent': 'l0g-history-fusion/1.0 (+https://l0g.fr/series/)' },
   });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   const length = Number(response.headers.get('content-length') || 0);
-  if (length > maxBytes) throw new Error('historique opérationnel trop volumineux');
-  const text = await response.text();
-  if (Buffer.byteLength(text, 'utf8') > maxBytes) throw new Error('historique opérationnel trop volumineux');
-  return text;
+  if (length > MAX_HISTORY_BYTES) {
+    await response.body?.cancel();
+    throw new Error('historique opérationnel trop volumineux');
+  }
+  if (!response.body) throw new Error('historique opérationnel sans corps');
+  return sampleOperationalHistory(response.body);
+}
+
+async function readWithRetry() {
+  for (let attempt = 0; ; attempt += 1) {
+    try {
+      return await readSource();
+    } catch (error) {
+      const transient = ['TypeError', 'TimeoutError', 'AbortError'].includes(error.name)
+        || /^HTTP (408|429|5\d\d)$/.test(error.message);
+      if (sourceFile || !transient || attempt >= 2) throw error;
+      await delay(1000 * 2 ** attempt);
+    }
+  }
 }
 
 try {
-  const text = await readSource();
-  const rows = validate(text);
-  const normalized = rows.map((row) => JSON.stringify(row)).join('\n') + '\n';
-  atomicWrite(output, normalized);
+  const result = await readWithRetry();
+  atomicWrite(output, result.text);
   atomicWrite(metaOutput, `${JSON.stringify({
     status: 'ok',
     source: url,
     attemptedAt,
     retrievedAt: attemptedAt,
-    rows: rows.length,
-    firstSnapshot: rows[0].snapshot,
-    lastSnapshot: rows.at(-1).snapshot,
-    sampling: 'Le cache conserve le journal brut ; la surface canonique sélectionne le dernier snapshot de chaque jour UTC et de chaque signal.',
+    rows: result.rows,
+    sampledRows: result.sampledRows,
+    bytes: result.bytes,
+    firstSnapshot: result.firstSnapshot,
+    lastSnapshot: result.lastSnapshot,
+    sampling: 'Le journal brut est validé intégralement en flux ; le cache conserve le dernier snapshot de chaque jour UTC, sans interpolation. Le journal complet reste disponible à l’URL source.',
   }, null, 2)}\n`);
-  console.log(`Historique opérationnel -> ${rows.length} lignes (${rows[0].snapshot} — ${rows.at(-1).snapshot})`);
+  console.log(`Historique opérationnel -> ${result.rows} lignes validées, ${result.sampledRows} jours (${result.firstSnapshot} — ${result.lastSnapshot})`);
 } catch (error) {
   const reason = String(error?.message || error).replace(/\s+/g, ' ').slice(0, 240);
   const retained = existsSync(output);
@@ -98,4 +92,7 @@ try {
     reason,
   }, null, 2)}\n`);
   console.warn(`Historique opérationnel indisponible (${reason})${retained ? ' ; cache précédent conservé.' : ' ; historique attesté seul.'}`);
+  // A broken ingestion must stop publication, not silently discard an entire
+  // evidence source while the static release reports success.
+  process.exitCode = 1;
 }

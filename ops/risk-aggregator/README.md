@@ -53,6 +53,22 @@ manifeste de révisions et d'empreintes, puis activer l'agrégateur avant la
 vérification publique. Les dates et révisions des anciennes archives restent
 inchangées.
 
+## Import du journal opérationnel
+
+Le journal public est append-only. Le build le valide ligne par ligne en flux
+et conserve uniquement son dernier snapshot réel par jour UTC dans le cache
+local, comme l'échantillonnage déjà appliqué à l'historique canonique. Toutes
+les colonnes et la provenance du point sélectionné sont conservées ; le
+journal serveur complet n'est ni réécrit ni tronqué. `rows` compte les lignes
+sources validées et `sampledRows` les lignes quotidiennes du cache.
+
+Les limites de ressources sont explicites : 64 Kio par ligne, 128 Mio par
+téléchargement et 36 600 jours distincts. Le dépassement ou une réponse
+invalide bloque le build, même si un ancien cache est conservé. Les erreurs
+réseau transitoires disposent de trois tentatives bornées à 60 secondes.
+Un succès HTTP du dashboard ne prouve pas le renouvellement des snapshots :
+contrôler aussi `sourceUpdatedAt` et `timelinessStatus` de chaque producteur.
+
 ## Journal des déclarations 13F
 
 Le collecteur existant lit aussi `https://13flow.eu/api/events/filings` et ajoute
