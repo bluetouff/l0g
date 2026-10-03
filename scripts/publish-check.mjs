@@ -4,7 +4,7 @@ import { open, readFile, readdir } from 'node:fs/promises';
 import { extname, join, relative, resolve } from 'node:path';
 import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
-import { XMLValidator } from 'fast-xml-parser';
+import { XMLParser, XMLValidator } from 'fast-xml-parser';
 import { editorialSourceDomainTiers } from '../src/config/primary-sources.ts';
 
 const execFileAsync = promisify(execFile);
@@ -266,49 +266,113 @@ function boundsOutside(bounds, box) {
     || bounds.bottom > box.y + box.height + epsilon;
 }
 
-function geometryBounds(tag, attrs) {
+const IDENTITY_MATRIX = [1, 0, 0, 1, 0, 0];
+const svgGeometryParser = new XMLParser({
+  preserveOrder: true,
+  ignoreAttributes: false,
+  attributeNamePrefix: '',
+  parseAttributeValue: false,
+});
+
+function multiplyMatrices(left, right) {
+  const [a, b, c, d, e, f] = left;
+  const [g, h, i, j, k, l] = right;
+  return [a * g + c * h, b * g + d * h, a * i + c * j, b * i + d * j, a * k + c * l + e, b * k + d * l + f];
+}
+
+function transformMatrix(value) {
+  if (value === undefined || value === '') return IDENTITY_MATRIX;
+  if (typeof value !== 'string') return null;
+  if (!value.trim()) return IDENTITY_MATRIX;
+  let matrix = IDENTITY_MATRIX;
+  let remaining = value.trim();
+  // SVG transform lists post-multiply matrices in their declared order.
+  // https://www.w3.org/TR/SVG11/coords.html#TransformAttribute
+  while (remaining) {
+    const match = remaining.match(/^(matrix|translate|scale|rotate|skewX|skewY)\s*\(([^()]*)\)/u);
+    if (!match) return null;
+    const args = match[2].trim();
+    const number = String.raw`[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?`;
+    if (!new RegExp(`^${number}(?:\\s*,\\s*${number}|\\s+${number})*$`, 'u').test(args)) return null;
+    const values = args.split(/[\s,]+/u).map(Number);
+    if (values.some((item) => !Number.isFinite(item))) return null;
+    let local;
+    const [x, y] = values;
+    if (match[1] === 'matrix' && values.length === 6) local = values;
+    if (match[1] === 'translate' && (values.length === 1 || values.length === 2)) local = [1, 0, 0, 1, x, y ?? 0];
+    if (match[1] === 'scale' && (values.length === 1 || values.length === 2)) local = [x, 0, 0, y ?? x, 0, 0];
+    const angle = x * Math.PI / 180;
+    if (match[1] === 'rotate' && (values.length === 1 || values.length === 3)) {
+      const rotation = [Math.cos(angle), Math.sin(angle), -Math.sin(angle), Math.cos(angle), 0, 0];
+      local = values.length === 1 ? rotation : multiplyMatrices(
+        multiplyMatrices([1, 0, 0, 1, y, values[2]], rotation),
+        [1, 0, 0, 1, -y, -values[2]],
+      );
+    }
+    if (match[1] === 'skewX' && values.length === 1) local = [1, 0, Math.tan(angle), 1, 0, 0];
+    if (match[1] === 'skewY' && values.length === 1) local = [1, Math.tan(angle), 0, 1, 0, 0];
+    if (!local || local.some((item) => !Number.isFinite(item))) return null;
+    matrix = multiplyMatrices(matrix, local);
+    if (matrix.some((item) => !Number.isFinite(item))) return null;
+    remaining = remaining.slice(match[0].length).replace(/^\s*,?\s*/u, '');
+  }
+  return matrix;
+}
+
+function transformPoint(matrix, x, y) {
+  const [a, b, c, d, e, f] = matrix;
+  return [a * x + c * y + e, b * x + d * y + f];
+}
+
+function pointBounds(points, matrix) {
+  const transformed = points.map(([x, y]) => transformPoint(matrix, x, y));
+  if (transformed.flat().some((value) => !Number.isFinite(value))) return { invalid: true };
+  const xs = transformed.map(([x]) => x);
+  const ys = transformed.map(([, y]) => y);
+  return { left: Math.min(...xs), top: Math.min(...ys), right: Math.max(...xs), bottom: Math.max(...ys) };
+}
+
+function geometryBounds(tag, attrs, matrix) {
   if (tag === 'rect' || tag === 'image' || tag === 'use') {
     const x = numericAttribute(attrs, 'x', 0);
     const y = numericAttribute(attrs, 'y', 0);
     const width = numericAttribute(attrs, 'width');
     const height = numericAttribute(attrs, 'height');
     if ([x, y, width, height].some((value) => value === null)) return null;
-    return { left: x, top: y, right: x + width, bottom: y + height };
+    return pointBounds([[x, y], [x + width, y], [x, y + height], [x + width, y + height]], matrix);
   }
   if (tag === 'line') {
     const x1 = numericAttribute(attrs, 'x1', 0);
     const y1 = numericAttribute(attrs, 'y1', 0);
     const x2 = numericAttribute(attrs, 'x2', 0);
     const y2 = numericAttribute(attrs, 'y2', 0);
-    return { left: Math.min(x1, x2), top: Math.min(y1, y2), right: Math.max(x1, x2), bottom: Math.max(y1, y2) };
+    if ([x1, y1, x2, y2].some((value) => value === null)) return null;
+    return pointBounds([[x1, y1], [x2, y2]], matrix);
   }
-  if (tag === 'circle') {
+  if (tag === 'circle' || tag === 'ellipse') {
     const cx = numericAttribute(attrs, 'cx', 0);
     const cy = numericAttribute(attrs, 'cy', 0);
-    const radius = numericAttribute(attrs, 'r');
-    if (radius === null) return null;
-    return { left: cx - radius, top: cy - radius, right: cx + radius, bottom: cy + radius };
-  }
-  if (tag === 'ellipse') {
-    const cx = numericAttribute(attrs, 'cx', 0);
-    const cy = numericAttribute(attrs, 'cy', 0);
-    const rx = numericAttribute(attrs, 'rx');
-    const ry = numericAttribute(attrs, 'ry');
-    if (rx === null || ry === null) return null;
-    return { left: cx - rx, top: cy - ry, right: cx + rx, bottom: cy + ry };
+    const rx = numericAttribute(attrs, tag === 'circle' ? 'r' : 'rx');
+    const ry = tag === 'circle' ? rx : numericAttribute(attrs, 'ry');
+    if ([cx, cy, rx, ry].some((value) => value === null)) return null;
+    const [x, y] = transformPoint(matrix, cx, cy);
+    const [a, b, c, d] = matrix;
+    // Exact affine ellipse extents avoid the inflated bounds of rotating its box.
+    const halfWidth = Math.hypot(a * rx, c * ry);
+    const halfHeight = Math.hypot(b * rx, d * ry);
+    const bounds = { left: x - halfWidth, top: y - halfHeight, right: x + halfWidth, bottom: y + halfHeight };
+    return Object.values(bounds).every(Number.isFinite) ? bounds : { invalid: true };
   }
   if (tag === 'text') {
     const x = numericAttribute(attrs, 'x');
     const y = numericAttribute(attrs, 'y');
     if (x === null || y === null) return null;
-    return { left: x, top: y, right: x, bottom: y };
+    return pointBounds([[x, y]], matrix);
   }
   if (tag === 'polygon' || tag === 'polyline') {
     const points = (attrs.get('points') ?? '').trim().split(/[\s,]+/u).map(Number);
     if (points.length < 2 || points.length % 2 !== 0 || points.some((value) => !Number.isFinite(value))) return null;
-    const xs = points.filter((_, index) => index % 2 === 0);
-    const ys = points.filter((_, index) => index % 2 === 1);
-    return { left: Math.min(...xs), top: Math.min(...ys), right: Math.max(...xs), bottom: Math.max(...ys) };
+    return pointBounds(points.filter((_, index) => index % 2 === 0).map((x, index) => [x, points[index * 2 + 1]]), matrix);
   }
   return null;
 }
@@ -334,26 +398,61 @@ function analyzeSvg(svg) {
   }
 
   let transformed = false;
-  if (box) {
+  let renderedPath = false;
+  let renderedMarker = false;
+  if (box && validation === true) {
     const nearX = Math.max(6, box.width * 0.01);
     const nearY = Math.max(6, box.height * 0.01);
-    for (const match of svg.matchAll(/<(rect|image|use|line|circle|ellipse|text|polygon|polyline)\b([^>]*)>/giu)) {
-      const tag = match[1].toLowerCase();
-      const attrs = attributes(match[2]);
-      if (attrs.has('transform')) transformed = true;
-      const bounds = geometryBounds(tag, attrs);
-      if (!bounds) continue;
-      if (boundsOutside(bounds, box)) errors.push(`${tag} geometry exceeds viewBox`);
-      if (tag === 'text' && (
-        bounds.left - box.x < nearX
-        || box.x + box.width - bounds.right < nearX
-        || bounds.top - box.y < nearY
-        || box.y + box.height - bounds.bottom < nearY
-      )) warnings.push('text anchor is very close to a viewBox edge');
-    }
+    const definitionTags = new Set(['defs', 'symbol', 'marker', 'clippath', 'mask', 'pattern', 'lineargradient', 'radialgradient']);
+    const visit = (nodes, parentMatrix, isRoot = false) => {
+      for (const node of nodes) {
+        const name = Object.keys(node).find((key) => key !== ':@' && !key.startsWith('#') && !key.startsWith('?'));
+        if (!name) continue;
+        const tag = name.toLowerCase();
+        // Definitions use their own coordinate systems and render only through references.
+        // The whole document still receives the security checks above.
+        if (definitionTags.has(tag)) continue;
+        const attrs = new Map(Object.entries(node[':@'] ?? {}));
+        if (attrs.has('transform')) transformed = true;
+        const local = transformMatrix(attrs.get('transform'));
+        if (!local) {
+          errors.push(`${tag} has an invalid or unsupported transform`);
+          continue;
+        }
+        // The outer SVG transform moves its viewport as well as its contents.
+        // Internal bounds are checked in the root viewBox's user coordinate system.
+        const matrix = isRoot ? parentMatrix : multiplyMatrices(parentMatrix, local);
+        if (matrix.some((value) => !Number.isFinite(value))) {
+          errors.push(`${tag} transform produces non-finite geometry`);
+          continue;
+        }
+        if (/\btransform\s*:/iu.test(attrs.get('style') ?? '')) warnings.push('CSS transforms require rendered bounds review');
+        if (tag === 'svg' && !isRoot) warnings.push('nested SVG viewport requires rendered bounds review');
+        if (tag === 'use') warnings.push('referenced geometry requires rendered bounds review');
+        if (tag === 'path') renderedPath = true;
+        if (['marker', 'marker-start', 'marker-mid', 'marker-end'].some((attribute) => attrs.has(attribute) && attrs.get(attribute) !== 'none')
+          || /\bmarker(?:-start|-mid|-end)?\s*:/iu.test(attrs.get('style') ?? '')) renderedMarker = true;
+        const bounds = geometryBounds(tag, attrs, matrix);
+        if (bounds?.invalid) errors.push(`${tag} geometry is non-finite after transform`);
+        else if (bounds) {
+          if (boundsOutside(bounds, box)) errors.push(`${tag} geometry exceeds viewBox`);
+          if (tag === 'text' && (
+            bounds.left - box.x < nearX
+            || box.x + box.width - bounds.right < nearX
+            || bounds.top - box.y < nearY
+            || box.y + box.height - bounds.bottom < nearY
+          )) warnings.push('text anchor is very close to a viewBox edge');
+        }
+        if (Array.isArray(node[name])) visit(node[name], matrix);
+      }
+    };
+    const tree = svgGeometryParser.parse(svg);
+    const svgRoot = tree.find((node) => Object.keys(node).some((key) => key.toLowerCase() === 'svg'));
+    if (svgRoot) visit([svgRoot], IDENTITY_MATRIX, true);
   }
   if (transformed) warnings.push('transformed geometry requires rendered bounds review');
-  if (/<path\b/iu.test(svg)) warnings.push('path geometry requires rendered bounds review');
+  if (renderedPath) warnings.push('path geometry requires rendered bounds review');
+  if (renderedMarker) warnings.push('marker geometry requires rendered bounds review');
   return { errors: [...new Set(errors)], warnings: [...new Set(warnings)] };
 }
 
@@ -692,6 +791,36 @@ function runSelfTest() {
   assert.deepEqual(analyzeSvg(responsiveSvg), { errors: [], warnings: [] });
   const overflowingSvg = '<svg viewBox="0 0 100 50" style="width:100%;height:auto"><rect x="90" y="0" width="20" height="50"/></svg>';
   assert.ok(analyzeSvg(overflowingSvg).errors.some((message) => message.includes('exceeds viewBox')));
+  const svgWith = (content) => `<svg viewBox="0 0 100 50" role="img" aria-label="Test" style="width:100%;height:auto">${content}</svg>`;
+  const geometryOverflows = (content) => {
+    const { errors } = analyzeSvg(svgWith(content));
+    assert.ok(errors.every((message) => message.includes('exceeds viewBox')), errors.join('; '));
+    return errors.length > 0;
+  };
+  const translatedNegativeLine = '<g transform="translate(20 20)"><line x1="-10" y1="-10" x2="10" y2="10"/></g>';
+  assert.deepEqual(analyzeSvg(svgWith(translatedNegativeLine)).errors, []);
+  assert.ok(analyzeSvg(svgWith(translatedNegativeLine)).warnings.includes('transformed geometry requires rendered bounds review'));
+  assert.equal(geometryOverflows('<g transform="translate(95 20)"><line x1="0" y1="0" x2="10" y2="10"/></g>'), true);
+  assert.equal(geometryOverflows('<g transform="translate(-20 20)"><line x1="10" y1="0" x2="30" y2="10"/></g>'), true);
+  assert.equal(geometryOverflows('<g transform="translate(10 10)"><g transform="scale(2)"><rect width="30" height="10"/></g></g>'), false);
+  assert.equal(geometryOverflows('<g transform="translate(10 10)"><g transform="scale(4)"><rect width="30" height="10"/></g></g>'), true);
+  assert.equal(geometryOverflows('<g transform="translate(80 10) scale(2)"><rect x="-35" width="20" height="10"/></g>'), false);
+  assert.equal(geometryOverflows('<rect x="90" width="10" height="10" transform="scale(1.1)"/>'), true);
+  assert.equal(geometryOverflows('<line x1="-20" y1="20" x2="20" y2="-20" transform="translate(50 20) rotate(45)"/>'), false);
+  assert.equal(geometryOverflows('<rect x="10" y="10" width="20" height="10" transform="rotate(90 20 20)"/>'), false);
+  assert.equal(geometryOverflows('<rect width="20" height="10" transform="matrix(2 0 0 2 70 10)"/>'), true);
+  assert.equal(geometryOverflows('<ellipse cx="50" cy="25" rx="40" ry="10" transform="rotate(10 50 25)"/>'), false);
+  assert.equal(geometryOverflows('<rect width="20" height="20" transform="translate(70 10) skewX(45)"/>'), true);
+  assert.equal(geometryOverflows('<polygon points="-10,-10 10,-10 10,10" transform="translate(20 20)"/>'), false);
+  assert.equal(geometryOverflows('<g transform="translate(70 20)"><text x="40" y="0">Overflow</text></g>'), true);
+  assert.ok(analyzeSvg(svgWith('<g transform="translate(1oops 2)"><rect width="10" height="10"/></g>')).errors.includes('g has an invalid or unsupported transform'));
+  assert.ok(analyzeSvg(svgWith('<rect x="1e308" width="10" height="10" transform="scale(1e308)"/>')).errors.includes('rect geometry is non-finite after transform'));
+  const unusedDefinitions = '<defs><marker id="arrow"><path d="M-10,-10 L10,10"/><line x1="-20" y1="-20" x2="200" y2="100"/></marker></defs>';
+  assert.deepEqual(analyzeSvg(svgWith(`${unusedDefinitions}<rect width="100" height="50"/>`)), { errors: [], warnings: [] });
+  assert.ok(analyzeSvg(svgWith(`${unusedDefinitions}<line x1="10" y1="10" x2="90" y2="10" marker-end="url(#arrow)"/>`)).warnings.includes('marker geometry requires rendered bounds review'));
+  assert.ok(analyzeSvg(svgWith('<path d="M10,10 L20,20"/>')).warnings.includes('path geometry requires rendered bounds review'));
+  assert.ok(analyzeSvg(svgWith('<defs><script>alert(1)</script></defs>')).errors.includes('script or event handler is forbidden'));
+  assert.ok(analyzeSvg(svgWith('<defs><image href="https://example.com/a.png" width="10" height="10"/></defs>')).errors.includes('external SVG reference is forbidden'));
   const externalSvg = '<svg viewBox="0 0 100 50" style="width:100%;height:auto"><image href="https://example.com/a.png" width="10" height="10"/></svg>';
   assert.ok(analyzeSvg(externalSvg).errors.some((message) => message.includes('external SVG reference')));
   assert.equal(normalizeUrl('https://example.com/a/?utm_source=x&b=2'), 'https://example.com/a?b=2');

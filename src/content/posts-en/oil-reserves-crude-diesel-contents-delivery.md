@@ -481,6 +481,7 @@ The next instalment will trace those products back to their owners and the contr
 
 ## Further reading
 
+- [Part 3: the distance to the pump](/en/analysis/emergency-oil-reserves-last-mile-logistics/) follows depots, transport and the rebuilding of local inventories.
 - [Part 2: who owns France’s emergency oil?](/en/analysis/france-oil-reserves-ownership-sagess-funding/) follows ownership, financing and release rights.
 - [Strategic oil reserves buy time](/en/analysis/strategic-oil-reserves-borrowing-time/) follows exchange contracts and repayments.
 - [Yanbu and the constraints on an oil route](/en/analysis/yanbu-france-houthis-oil-route/) examines physical delivery.

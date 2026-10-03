@@ -520,6 +520,7 @@ The emergency reserve can now be followed to the depot gate: an identified owner
 
 ## Further reading
 
+- [Part 3: the distance to the pump](/en/analysis/emergency-oil-reserves-last-mile-logistics/), from depots to filling-station tanks.
 - [From storage to diesel](/en/analysis/oil-reserves-crude-diesel-contents-delivery/), the industrial journey.
 - [Strategic oil reserves buy time](/en/analysis/strategic-oil-reserves-borrowing-time/), on borrowing and repayment.
 - [Reading the oil market](/en/guides/read-oil-market/).

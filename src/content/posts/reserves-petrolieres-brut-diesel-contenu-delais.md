@@ -481,6 +481,7 @@ La suite de l’enquête remontera de ces produits vers leurs propriétaires et 
 
 ## Pour prolonger
 
+- [Volet 3 : les kilomètres qui restent](/posts/reserves-petrolieres-logistique-dernier-kilometre/) suit les dépôts, le transport et la reconstitution des cuves.
 - [Volet 2 : les propriétaires du secours](/posts/reserves-petrolieres-propriete-sagess-financement/) suit la propriété, les financements et les droits de mobilisation.
 - [Les réserves de pétrole achètent du temps](/posts/petrole-reserves-strategiques-prets-temps/) suit les contrats de prêt et les restitutions.
 - [Yanbu, la route du pétrole et ses contraintes](/posts/yanbu-france-houthis-route-petrole/) examine l’acheminement physique.

@@ -8,6 +8,7 @@
 @import '@fontsource-variable/jetbrains-mono';
 @import '@fontsource-variable/inter';
 @import './reserves-ownership-infographics.css';
+@import './reserves-logistics-infographics.css';
 @import 'tailwindcss';
 
 @theme {
