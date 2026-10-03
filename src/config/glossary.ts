@@ -1532,6 +1532,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     sources: [{ label: 'Ivanhoe Mines, résultats T2 2026', href: 'https://www.ivanhoemines.com/news-stories/news-release/ivanhoe-mines-issues-2026-second-quarter-financial-results-overview-of-operations-and-exploration-activities/', detail: 'Tableau C1 par livre de cuivre payable produite et définition de cette mesure non IFRS.', kind: 'source' }],
   },
   'ieepa': {
+    articles: [{ label: 'Brésil : le prix de la pression américaine', href: '/posts/bresil-prix-pression-americaine/', detail: 'Retrait des droits IEEPA et nouvelle pression sous la Section 301.', kind: 'article' }],
     intuition: 'Le pouvoir d’urgence économique reste limité par l’autorité que le Congrès a effectivement accordée.',
     sources: [{ label: 'Cour suprême, Learning Resources v. Trump', href: 'https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf', detail: 'Arrêt du 20 février 2026 : l’IEEPA n’autorise pas les droits de douane présidentiels.', kind: 'source' }],
   },
@@ -1541,7 +1542,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['cout-de-portage'],
   },
   'incidence-fiscale': {
-    articles: [{ label: 'Droits de douane : financer le cycle', href: '/posts/droits-douane-tresorerie-proces-section-301/', detail: 'Avance des droits, encaissement du client et portée conditionnelle des remboursements.', kind: 'article' }],
+    articles: [{ label: 'Brésil : une surtaxe entre plusieurs bilans', href: '/posts/bresil-prix-pression-americaine/', detail: 'Exemple conditionnel de cumul et répartition entre importateur, fournisseur et client.', kind: 'article' }, { label: 'Droits de douane : financer le cycle', href: '/posts/droits-douane-tresorerie-proces-section-301/', detail: 'Avance des droits, encaissement du client et portée conditionnelle des remboursements.', kind: 'article' }],
     intuition: 'La personne qui verse une taxe et celles qui en supportent le coût peuvent être différentes.',
     sources: [
       { label: '19 CFR § 141.1', href: 'https://www.law.cornell.edu/cfr/text/19/141.1', detail: 'Obligation douanière de l’importateur.', kind: 'source' },

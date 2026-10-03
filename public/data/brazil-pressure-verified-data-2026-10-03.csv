@@ -1,0 +1,20 @@
+metric,value,unit,period,sources,measurement_type,qualification
+trade_goods_us_exports,54.3,USD billion,2025,S16,flow,US exports to Brazil
+trade_goods_us_imports,39.9,USD billion,2025,S16,flow,US imports from Brazil
+trade_services_us_exports,34.4,USD billion,2025,S16,flow,US exports to Brazil
+trade_services_us_imports,7.0,USD billion,2025,S16,flow,US imports from Brazil
+us_goods_surplus,14.4,USD billion,2025,S16,flow,reported
+us_services_surplus,27.4,USD billion,2025,S16,flow,reported
+brazil_specific_tariff,25,percent,effective 2026-07-22,S13,rate,additional; eligible goods only
+forced_labor_tariff,12.5,percent,effective 2026-07-24,S15,rate,additional; eligible goods only
+reserves,372.6,USD billion,2026-08 end,S20,stock,international reserves
+current_account_deficit,63.0,USD billion,12m ending 2026-08,S20,flow,"deficit, positive magnitude"
+inward_direct_investment,86.6,USD billion,12m ending 2026-08,S20,flow,"net liability inflows, includes reinvested earnings"
+portfolio_outflows,5.2,USD billion,2026-08,S20,flow,"domestic market; net monthly outflow, positive magnitude"
+dfc_financing,565,USD million,announced 2026-04-20,S21;S29,financing_package,signed loan announced; disbursement not established
+offtake_duration,15,years,contract described 2026-08-24,S23,contract,Phase 1 scope
+offtake_share,100,percent,contract described 2026-08-24,S21;S22,contract,Phase 1 four magnetic rare earths; not Brazilian national output
+spv_public_investment,750,USD million,announced 2026-08-24,S22,commitment,US government investment commitment
+spv_revolver,500,USD million,announced 2026-08-24,S22,conditional_ceiling,up to; institutional bank commitment letter
+spv_forward_purchases,300,USD million,announced 2026-08-24,S22,minimum_purchase_commitment,at least; over five years
+alleged_brazil_project,1,USD million,reported 2026-09-30,S02;S03;S04,reported_allocation,recipient and payment unverified

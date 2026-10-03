@@ -1187,6 +1187,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'A 1977 US law granting the president emergency economic powers in response to certain foreign-origin threats. It provides authority for sanctions and transaction restrictions. On February 20, 2026, the Supreme Court held that IEEPA does not authorize the president to impose tariffs. The ruling concerns IEEPA, not every other statutory basis for US tariffs.',
     ...macroSection,
     atlas: {
+      articles: [{ label: 'Brazil: the price of American pressure', href: '/en/analysis/brazil-price-american-pressure/', detail: 'IEEPA tariff repeal and renewed pressure under Section 301.', kind: 'article' }],
       intuition: 'Emergency economic powers remain limited by the authority Congress has actually granted.',
       sources: [{ label: 'Supreme Court, Learning Resources v. Trump', href: 'https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf', detail: 'February 20, 2026 holding on presidential tariff authority under IEEPA.', kind: 'source' }],
     },
@@ -1199,7 +1200,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/trump-5000-election-dividend-no-surplus/',
     ...macroSection,
     atlas: {
-      articles: [{ label: 'Tariffs: funding the cash cycle', href: '/en/analysis/tariffs-cash-flow-section-301-litigation/', detail: 'Duty deposits, customer receipts and the conditional scope of refunds.', kind: 'article' }],
+      articles: [{ label: 'Brazil: sharing the tariff burden', href: '/en/analysis/brazil-price-american-pressure/', detail: 'Conditional tariff stacking and costs across importers, suppliers and customers.', kind: 'article' }, { label: 'Tariffs: funding the cash cycle', href: '/en/analysis/tariffs-cash-flow-section-301-litigation/', detail: 'Duty deposits, customer receipts and the conditional scope of refunds.', kind: 'article' }],
       intuition: 'The party remitting a tax and those bearing its economic cost can be different.',
       sources: [
         { label: '19 CFR § 141.1', href: 'https://www.law.cornell.edu/cfr/text/19/141.1', detail: 'The importer’s customs obligation.', kind: 'source' },

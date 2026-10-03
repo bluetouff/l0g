@@ -1,0 +1,101 @@
+/* Original Brazil pressure compositions, with native mobile pagination. */
+.prose figure.l0g-brazil-pressure-figure {
+  width: 100%;
+  max-width: 48rem;
+  margin: 2rem auto;
+  padding-bottom: 1.25rem;
+}
+
+.l0g-brazil-pressure-figure .brp-wide { display: block; }
+.l0g-brazil-pressure-figure .brp-mobile { display: none; }
+
+.l0g-brazil-pressure-figure .brp-wide > svg,
+.l0g-brazil-pressure-figure .brp-panel > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.l0g-brazil-pressure-figure .brp-gallery {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding-bottom: 0.65rem;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-inline: contain;
+  scrollbar-color: var(--color-signal) var(--color-surface);
+  scrollbar-width: thin;
+}
+
+.l0g-brazil-pressure-figure .brp-panel {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+.l0g-brazil-pressure-figure .brp-panel > .brp-panel-light { display: none; }
+:root[data-theme="light"] .l0g-brazil-pressure-figure .brp-panel > .brp-panel-dark { display: none; }
+:root[data-theme="light"] .l0g-brazil-pressure-figure .brp-panel > .brp-panel-light { display: block; }
+
+.l0g-brazil-pressure-figure .brp-scroll-hint,
+.l0g-brazil-pressure-figure .brp-full-link {
+  margin: 0.75rem 0;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.l0g-brazil-pressure-figure .brp-pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.l0g-brazil-pressure-figure .brp-pagination > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 0.35rem;
+  background: var(--color-surface);
+  color: var(--color-signal);
+  font-size: 0.875rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.l0g-brazil-pressure-figure .brp-full-link a {
+  color: var(--color-signal);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.l0g-brazil-pressure-figure .brp-gallery:focus-visible,
+.l0g-brazil-pressure-figure .brp-pagination a:focus-visible,
+.l0g-brazil-pressure-figure .brp-full-link a:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .prose figure.l0g-brazil-pressure-figure { max-width: 24rem; }
+  .l0g-brazil-pressure-figure .brp-wide { display: none; }
+  .l0g-brazil-pressure-figure .brp-mobile {
+    display: block;
+    max-width: 21.875rem;
+    margin-inline: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .l0g-brazil-pressure-figure .brp-gallery { scroll-behavior: auto; }
+}
