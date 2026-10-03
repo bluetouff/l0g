@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 470 480 590" role="img" aria-labelledby="reserves06-en-3-panel2-light-title reserves06-en-3-panel2-light-desc" lang="en" data-figure="3" data-diagram="historical-pre-tax-pass-through" data-as-of="2026-10-03" data-metric="pre-tax-retail-response-pct" data-input-shock-pct="1" data-study-publication="2021-10-14" data-page-updated="2026-09-24" data-recalibrated-for-current-year="false" data-daily-path="unavailable" data-confidence-bands="unavailable" style="width:100%;height:auto" width="480" height="590" data-crop-start="470" data-crop-end="1060" data-panel="2">
+<title id="reserves06-en-3-panel2-light-title">Fourteen-day and long-run responses</title><desc id="reserves06-en-3-panel2-light-desc">After fourteen working days: a 0.72% pre-tax response, or 96% of the final response. In the long run: 0.75%, or 100%. Common axis from zero to 0.8%. About twenty working days for full adjustment in this study; no fitted daily path or 2026 forecast.</desc>
+<metadata>{"edition":"2026-10-03","convention":"Banque de France estimates published on 14 October 2021: for a 1% rise in refined diesel costs, the pre-tax retail price response is 0.45% after one week, or 60% of the final response. A historical result.","sources":[{"id":"S06","publisher":"Banque de France ; Erwan Gautier, Magali Marx, Paul Vertier","title":"Quelle transmission des prix du pétrole aux prix des carburants ?","url":"https://www.banque-france.fr/fr/publications-et-statistiques/publications/quelle-transmission-des-prix-du-petrole-aux-prix-des-carburants","reference_period":"Résultats publiés en 2021 ; date de fin de l’échantillon non précisée dans le billet"}]}</metadata><defs><marker id="reserves06-en-3-panel2-light-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#0b5f58" /></marker><marker id="reserves06-en-3-panel2-light-signal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#92400e" stroke-width="1.6" /></marker></defs>
+<defs><clipPath id="reserves06-en-3-panel2-light-viewport" clipPathUnits="userSpaceOnUse"><rect x="0" y="470" width="480" height="590" /></clipPath></defs><g clip-path="url(#reserves06-en-3-panel2-light-viewport)" data-source-composition="complete"><rect x="0" y="0" width="480" height="1060" rx="0" fill="#e7e9ee" />
+<text x="26" y="34" font-family="ui-monospace, monospace" font-size="14" font-weight="700" text-anchor="start" fill="#0b5f58">l0g.  /  06.03</text>
+<text x="26" y="79" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start" fill="#1b1d23">The time it takes to pass</text>
+<text x="26" y="114" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start" fill="#1b1d23">through</text>
+<text x="26" y="142" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#4d5461" data-layout-correction="subtitle-up-16">Banque de France · Results published 14</text>
+<text x="26" y="167" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#4d5461" data-layout-correction="subtitle-up-16">October 2021</text>
+<rect x="26" y="177" width="428" height="104" rx="8" fill="#e7efee" />
+<text x="46" y="206" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#0b5f58">INPUT SHOCK</text>
+<text x="47" y="248" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="#1b1d23">+1%</text>
+<text x="156" y="235.0" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#1b1d23">Refined diesel cost</text>
+<text x="26" y="336" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="#1b1d23">After one week</text>
+<text x="452" y="336" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end" fill="#0b5f58">+0.45%</text>
+<text x="26" y="366" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#4d5461">Retail price, excluding taxes</text>
+<rect x="42" y="387" width="378" height="30" rx="0" fill="#eef0f4" />
+<rect x="42" y="387" width="212.62499999999997" height="30" rx="0" fill="#0b5f58" data-horizon="one_week" data-response-pct="0.45" data-share-final-response-pct="60" data-status="historical-estimate" />
+<text x="26" y="453" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#4d5461">60% of the final response</text>
+<text x="26" y="510" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="#1b1d23">After 14 working days</text>
+<text x="452" y="510" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end" fill="#0b5f58">+0.72%</text>
+<text x="26" y="540" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#4d5461">Retail price, excluding taxes</text>
+<rect x="42" y="561" width="378" height="30" rx="0" fill="#eef0f4" />
+<rect x="42" y="561" width="340.19999999999993" height="30" rx="0" fill="#0b5f58" data-horizon="14_working_days" data-response-pct="0.72" data-share-final-response-pct="96" data-status="historical-estimate" />
+<text x="26" y="627" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#4d5461">96% of the final response</text>
+<text x="26" y="684" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="#1b1d23">In the long run</text>
+<text x="452" y="684" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end" fill="#0b5f58">+0.75%</text>
+<text x="26" y="714" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#4d5461">Retail price, excluding taxes</text>
+<rect x="42" y="735" width="378" height="30" rx="0" fill="#eef0f4" />
+<rect x="42" y="735" width="354.375" height="30" rx="0" fill="#1b1d23" data-horizon="long_run" data-response-pct="0.75" data-share-final-response-pct="100" data-status="historical-estimate" />
+<text x="26" y="801" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#4d5461">100% of the final response</text>
+<text x="42.0" y="839" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#4d5461">0.0</text>
+<text x="136.5" y="839" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#4d5461">0.2</text>
+<text x="231.0" y="839" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#4d5461">0.4</text>
+<text x="325.49999999999994" y="839" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#4d5461">0.6</text>
+<text x="420.0" y="839" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#4d5461">0.8</text>
+<text x="240" y="868" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#4d5461">Shared scale: pre-tax response, %</text>
+<text x="26" y="914.0" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#1b1d23">Roughly 20 working days for full</text>
+<text x="26" y="942.35" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#1b1d23">adjustment. Historical, not a 2026</text>
+<text x="26" y="970.7" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#1b1d23">forecast.</text>
+<path d="M26 998 L454 998" fill="none" stroke="rgba(12, 13, 16, 0.26)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<text x="26" y="1025" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#4d5461">Source: Banque de France, blog 233 · Three published</text>
+<text x="26" y="1044" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#4d5461">values; no fitted daily path.</text>
+</g></svg>

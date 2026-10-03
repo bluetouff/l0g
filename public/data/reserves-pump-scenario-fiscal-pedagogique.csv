@@ -1,0 +1,3 @@
+scenario,pre_tax_eurocent_per_litre,excise_eurocent_per_litre,VAT_eurocent_per_litre,incl_tax_eurocent_per_litre,cost_50_litres_eur,source,assumptions
+baseline,136.80,60.75,39.51,237.06,118.53,S02;S05,unchanged_tax_rules_and_other_costs_full_transmission_not_forecast
+hypothetical_pre_tax_minus_10,126.80,60.75,37.51,225.06,112.53,S02;S05,unchanged_tax_rules_and_other_costs_full_transmission_not_forecast

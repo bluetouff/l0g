@@ -1,0 +1,4 @@
+component,value_eurocent_per_litre,status,source,date
+pre_tax_price,136.80,observed_rounded,S02,2026-09-25
+excise,60.75,guide_rate_used_to_reconcile_bulletin,S05,2026-09-25
+VAT,39.51,calculated_(136.80+60.75)*0.20,S02;S05,2026-09-25

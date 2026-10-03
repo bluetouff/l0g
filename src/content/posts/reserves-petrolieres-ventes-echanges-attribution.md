@@ -432,6 +432,7 @@ Le choix des contreparties organise ce passage. Il peut réduire un risque de pa
 
 ## Pour prolonger
 
+- [Volet 6 : du marché au prix du plein](/posts/reserves-petrolieres-transmission-prix-pompe/) examine la transmission, les taxes et les délais.
 - [Volet 1 : le chemin jusqu’au diesel](/posts/reserves-petrolieres-brut-diesel-contenu-delais/).
 - [Volet 2 : les propriétaires du secours](/posts/reserves-petrolieres-propriete-sagess-financement/).
 - [Volet 3 : les kilomètres qui restent](/posts/reserves-petrolieres-logistique-dernier-kilometre/).

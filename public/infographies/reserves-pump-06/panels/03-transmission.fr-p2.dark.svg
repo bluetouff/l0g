@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 470 480 590" role="img" aria-labelledby="reserves06-fr-3-panel2-dark-title reserves06-fr-3-panel2-dark-desc" lang="fr" data-figure="3" data-diagram="historical-pre-tax-pass-through" data-as-of="2026-10-03" data-metric="pre-tax-retail-response-pct" data-input-shock-pct="1" data-study-publication="2021-10-14" data-page-updated="2026-09-24" data-recalibrated-for-current-year="false" data-daily-path="unavailable" data-confidence-bands="unavailable" style="width:100%;height:auto" width="480" height="590" data-crop-start="470" data-crop-end="1060" data-panel="2">
+<title id="reserves06-fr-3-panel2-dark-title">Réponses à quatorze jours et à terme</title><desc id="reserves06-fr-3-panel2-dark-desc">Après quatorze jours ouvrés : réponse HTT de 0,72 %, soit 96 % de la réponse finale. À terme : 0,75 %, soit 100 %. Axe commun de 0 à 0,8 %. Environ vingt jours ouvrés au total dans cette étude ; aucune courbe quotidienne interpolée ni prévision 2026.</desc>
+<metadata>{"edition":"2026-10-03","convention":"Estimations Banque de France publiées le 14 octobre 2021 : pour une hausse de 1 % du gazole raffiné, la réponse du prix de détail hors toutes taxes est de 0,45 % après une semaine, soit 60 % de la réponse finale. Résultat historique.","sources":[{"id":"S06","publisher":"Banque de France ; Erwan Gautier, Magali Marx, Paul Vertier","title":"Quelle transmission des prix du pétrole aux prix des carburants ?","url":"https://www.banque-france.fr/fr/publications-et-statistiques/publications/quelle-transmission-des-prix-du-petrole-aux-prix-des-carburants","reference_period":"Résultats publiés en 2021 ; date de fin de l’échantillon non précisée dans le billet"}]}</metadata><defs><marker id="reserves06-fr-3-panel2-dark-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#5eead4" /></marker><marker id="reserves06-fr-3-panel2-dark-signal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#f5b13d" stroke-width="1.6" /></marker></defs>
+<defs><clipPath id="reserves06-fr-3-panel2-dark-viewport" clipPathUnits="userSpaceOnUse"><rect x="0" y="470" width="480" height="590" /></clipPath></defs><g clip-path="url(#reserves06-fr-3-panel2-dark-viewport)" data-source-composition="complete"><rect x="0" y="0" width="480" height="1060" rx="0" fill="#0c0d10" />
+<text x="26" y="34" font-family="ui-monospace, monospace" font-size="14" font-weight="700" text-anchor="start" fill="#5eead4">l0g.  /  06.03</text>
+<text x="26" y="79" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start" fill="#e7e9ee">Le temps de la répercussion</text>
+<text x="26" y="123" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#8b909b">Banque de France · Résultats publiés le 14</text>
+<text x="26" y="148" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#8b909b">octobre 2021</text>
+<rect x="26" y="177" width="428" height="104" rx="8" fill="#1a292c" />
+<text x="46" y="206" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#5eead4">CHOC ÉTUDIÉ</text>
+<text x="47" y="248" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="#e7e9ee">+1 %</text>
+<text x="156" y="235.0" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Coût du gazole raffiné</text>
+<text x="26" y="336" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="#e7e9ee">Après une semaine</text>
+<text x="452" y="336" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end" fill="#5eead4">+0,45 %</text>
+<text x="26" y="366" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#8b909b">Prix de détail HTT</text>
+<rect x="42" y="387" width="378" height="30" rx="0" fill="#171a20" />
+<rect x="42" y="387" width="212.62499999999997" height="30" rx="0" fill="#5eead4" data-horizon="one_week" data-response-pct="0.45" data-share-final-response-pct="60" data-status="historical-estimate" />
+<text x="26" y="453" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#8b909b">60 % de la réponse finale</text>
+<text x="26" y="510" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="#e7e9ee">Après 14 jours ouvrés</text>
+<text x="452" y="510" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end" fill="#5eead4">+0,72 %</text>
+<text x="26" y="540" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#8b909b">Prix de détail HTT</text>
+<rect x="42" y="561" width="378" height="30" rx="0" fill="#171a20" />
+<rect x="42" y="561" width="340.19999999999993" height="30" rx="0" fill="#5eead4" data-horizon="14_working_days" data-response-pct="0.72" data-share-final-response-pct="96" data-status="historical-estimate" />
+<text x="26" y="627" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#8b909b">96 % de la réponse finale</text>
+<text x="26" y="684" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="#e7e9ee">À terme</text>
+<text x="452" y="684" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end" fill="#5eead4">+0,75 %</text>
+<text x="26" y="714" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#8b909b">Prix de détail HTT</text>
+<rect x="42" y="735" width="378" height="30" rx="0" fill="#171a20" />
+<rect x="42" y="735" width="354.375" height="30" rx="0" fill="#e7e9ee" data-horizon="long_run" data-response-pct="0.75" data-share-final-response-pct="100" data-status="historical-estimate" />
+<text x="26" y="801" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#8b909b">100 % de la réponse finale</text>
+<text x="42.0" y="839" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#8b909b">0,0</text>
+<text x="136.5" y="839" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#8b909b">0,2</text>
+<text x="231.0" y="839" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#8b909b">0,4</text>
+<text x="325.49999999999994" y="839" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#8b909b">0,6</text>
+<text x="420.0" y="839" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#8b909b">0,8</text>
+<text x="240" y="868" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#8b909b">Échelle commune : réponse HTT, en %</text>
+<text x="26" y="914.0" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#e7e9ee">Environ 20 jours ouvrés au total. Repère</text>
+<text x="26" y="942.35" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#e7e9ee">historique, hors prévision 2026.</text>
+<path d="M26 998 L454 998" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<text x="26" y="1025" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#8b909b">Source : Banque de France, billet 233 · Trois valeurs</text>
+<text x="26" y="1044" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#8b909b">publiées, sans courbe interpolée.</text>
+</g></svg>

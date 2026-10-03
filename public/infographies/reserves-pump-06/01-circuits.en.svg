@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 810" role="img" aria-labelledby="reserves06-en-1-full-wide-title reserves06-en-1-full-wide-desc" lang="en" data-figure="1" data-diagram="price-signal-and-physical-supply" data-as-of="2026-10-03" data-scale="qualitative" data-measured-flow="unavailable" data-measured-timing="unavailable" style="width:100%;height:auto">
+<title id="reserves06-en-1-full-wide-title">Two routes to the price</title><desc id="reserves06-en-1-full-wide-desc">Qualitative diagram: expectations and physical supply meet in wholesale pricing, then retail. No measured volumes or lags.</desc>
+<metadata>{"edition":"2026-10-03","convention":"Qualitative mechanism: the announcement sets quantity, product and timing. The price signal affects supply expectations and inventory decisions; its amber connector continues to the wholesale price in panel three. No measured quantity or timing.","sources":[{"id":"S04","publisher":"Ministère de la Transition écologique / DGEC","title":"Prix des produits pétroliers","url":"https://www.ecologie.gouv.fr/politiques-publiques/prix-produits-petroliers","reference_period":"Page explicative et portail de séries consultés le 3 octobre 2026"},{"id":"S11","publisher":"Federal Reserve Bank of Dallas ; Lutz Kilian, Xiaoqing Zhou","title":"Does Drawing Down the U.S. Strategic Petroleum Reserve Help Stabilize Oil Prices? Working Paper 1916","url":"https://www.dallasfed.org/-/media/documents/research/papers/2019/wp1916.pdf","reference_period":"Modélisation historique du marché mondial du pétrole ; version du 19 décembre 2019"},{"id":"S12","publisher":"U.S. Energy Information Administration","title":"Factors affecting diesel prices","url":"https://www.eia.gov/energyexplained/diesel-fuel/factors-affecting-diesel-prices.php","reference_period":"Mécanismes économiques ; page consultée le 3 octobre 2026"},{"id":"S13","publisher":"U.S. Energy Information Administration","title":"Gasoline price fluctuations","url":"https://www.eia.gov/energyexplained/gasoline/price-fluctuations.php","reference_period":"Explication des stocks et des fluctuations de prix"}]}</metadata><style>:root{color-scheme:light;--color-ink:#e7e9ee;--color-surface:#ffffff;--color-surface-2:#eef0f4;--color-line-strong:rgba(12, 13, 16, 0.26);--color-paper:#1b1d23;--color-muted:#4d5461;--color-signal:#0b5f58;--color-accent:#a50f4d;--color-amber:#92400e;--color-topic-blue:#1d4ed8}@media(prefers-color-scheme:dark){:root{color-scheme:dark;--color-ink:#0c0d10;--color-surface:#121419;--color-surface-2:#171a20;--color-line-strong:rgba(255, 255, 255, 0.20);--color-paper:#e7e9ee;--color-muted:#8b909b;--color-signal:#5eead4;--color-accent:#ff4d87;--color-amber:#f5b13d;--color-topic-blue:#7aa2f7}}</style><defs><marker id="reserves06-en-1-full-wide-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)" /></marker><marker id="reserves06-en-1-full-wide-signal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="var(--color-amber)" stroke-width="1.6" /></marker></defs>
+<rect x="0" y="0" width="1100" height="810" rx="0" fill="var(--color-ink)" />
+<text x="42" y="39" font-family="ui-monospace, monospace" font-size="16" font-weight="700" text-anchor="start" fill="var(--color-signal)">l0g.  /  06.01</text>
+<text x="42" y="92" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="start" fill="var(--color-paper)">Two routes to the price</text>
+<text x="42" y="145" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-muted)">An announcement works through expectations and deliveries.</text>
+<rect x="42" y="170" width="1016" height="142" rx="10" fill="color-mix(in srgb, var(--color-amber) 10%, var(--color-surface))" />
+<rect x="71" y="198" width="47" height="62" rx="3" fill="var(--color-surface)" stroke="var(--color-paper)" stroke-width="2" />
+<path d="M80 214 L109 214" fill="none" stroke="var(--color-paper)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M80 224 L109 224" fill="none" stroke="var(--color-paper)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M80 234 L109 234" fill="none" stroke="var(--color-paper)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="102" cy="248" r="5" fill="color-mix(in srgb, var(--color-amber) 10%, var(--color-surface))" stroke="var(--color-amber)" stroke-width="1.4" />
+<text x="138" y="212" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start" fill="var(--color-amber)">THE DECISION</text>
+<text x="138" y="247.0" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-paper)">Volumes,</text>
+<text x="138" y="276.7" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-paper)">products, timing</text>
+<path d="M361 242 L444 242" fill="none" stroke="var(--color-amber)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#reserves06-en-1-full-wide-signal)" />
+<text x="468" y="220" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start" fill="var(--color-amber)">EXPECTATIONS</text>
+<text x="468" y="254.0" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="var(--color-paper)">Buy now or keep inventory</text>
+<text x="468" y="285.05" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="var(--color-paper)">for later?</text>
+<path d="M846 242 H928 V414" fill="none" stroke="var(--color-amber)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#reserves06-en-1-full-wide-signal)" />
+<text x="42" y="358" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start" fill="var(--color-signal)">THE PHYSICAL ROUTE</text>
+<rect x="69" y="419" width="70" height="55" rx="3" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2" />
+<ellipse cx="104.0" cy="419" rx="35.0" ry="10" fill="color-mix(in srgb, var(--color-signal) 10%, var(--color-surface))" stroke="var(--color-signal)" stroke-width="2" />
+<rect x="72" y="447.35" width="64" height="23.4" rx="0" fill="color-mix(in srgb, var(--color-signal) 10%, var(--color-surface))" />
+<path d="M139 464 L152 464" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M79 432 L89 432" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M79 441 L89 441" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M79 450 L89 450" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<text x="104" y="510" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-paper)">Crude</text>
+<path d="M165 450 L295 450" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves06-en-1-full-wide-arrow)" />
+<rect x="328" y="398" width="17" height="65" rx="2" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2" />
+<path d="M328 414.25 L345 414.25" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M328 430.5 L345 430.5" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M328 446.75 L345 446.75" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="352" y="380" width="17" height="83" rx="2" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2" />
+<path d="M352 400.75 L369 400.75" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M352 421.5 L369 421.5" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M352 442.25 L369 442.25" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="376" y="411" width="17" height="52" rx="2" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2" />
+<path d="M376 424.0 L393 424.0" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M376 437.0 L393 437.0" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M376 450.0 L393 450.0" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M318 461 H408 V443 H423" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<text x="365" y="510" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-paper)">Refining</text>
+<path d="M429 450 L545 450" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves06-en-1-full-wide-arrow)" />
+<rect x="69" y="595" width="70" height="55" rx="3" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2" />
+<ellipse cx="104.0" cy="595" rx="35.0" ry="10" fill="color-mix(in srgb, var(--color-signal) 10%, var(--color-surface))" stroke="var(--color-signal)" stroke-width="2" />
+<rect x="72" y="623.35" width="64" height="23.4" rx="0" fill="color-mix(in srgb, var(--color-signal) 10%, var(--color-surface))" />
+<path d="M139 640 L152 640" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M79 608 L89 608" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M79 617 L89 617" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M79 626 L89 626" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<text x="104" y="685" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle" fill="var(--color-paper)">Finished diesel</text>
+<path d="M166 626 H492 Q530 626 530 589 V525 Q530 498 549 492" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves06-en-1-full-wide-arrow)" />
+<rect x="570" y="408" width="225" height="151" rx="8" fill="color-mix(in srgb, var(--color-signal) 10%, var(--color-surface))" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="593" y="443" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="var(--color-signal)">DELIVERABLE FUEL</text>
+<text x="593" y="477.0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Quality,</text>
+<text x="593" y="509.4" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">location,</text>
+<text x="593" y="541.8" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">market access</text>
+<path d="M804 482 L858 482" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves06-en-1-full-wide-arrow)" />
+<rect x="867" y="425" width="180" height="133" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="888" y="463.0" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-paper)">Wholesale</text>
+<text x="888" y="498.1" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-paper)">price</text>
+<text x="888" y="532" font-family="ui-monospace, monospace" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">€/litre</text>
+<path d="M957 568 V594 H660" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves06-en-1-full-wide-arrow)" />
+<rect x="574" y="596" width="43.2" height="61.2" rx="3" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2" />
+<rect x="581.2" y="604.1" width="28.8" height="18.0" rx="2" fill="color-mix(in srgb, var(--color-signal) 10%, var(--color-surface))" stroke="var(--color-signal)" stroke-width="1.5" />
+<path d="M567.7 657.2 L624.4 657.2" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M617.2 613.1 C643.3 613.1 636.1 648.2 644.2 648.2 Q655.9 648.2 647.8 611.3 L634.3 602.3" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<text x="680" y="635" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start" fill="var(--color-paper)">Pump price</text>
+<text x="680" y="670.0" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">Contracts, logistics, competition</text>
+<text x="680" y="697.0" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">and taxes</text>
+<path d="M250 721 L294 721" fill="none" stroke="var(--color-amber)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" />
+<text x="307" y="727" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="var(--color-muted)">Price signal</text>
+<path d="M527 721 L571 721" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<text x="584" y="727" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="var(--color-muted)">Physical flow and access</text>
+<path d="M42 748 L1058 748" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<text x="42" y="775" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="var(--color-muted)">Qualitative, not to scale · Sources: DGEC, EIA, Kilian–Zhou</text>
+</svg>

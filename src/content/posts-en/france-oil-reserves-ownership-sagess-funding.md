@@ -520,6 +520,7 @@ The emergency reserve can now be followed to the depot gate: an identified owner
 
 ## Further reading
 
+- [Part 6: from the market to the pump](/en/analysis/emergency-oil-reserves-pass-through-pump-prices/) examines pass-through, taxes and adjustment lags.
 - [Part 5: the contracts behind the release](/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/) follows sales, loans in barrels and guarantees.
 - [Part 4: the refinery sets the pace](/en/analysis/emergency-oil-reserves-refining-capacity-maintenance/) follows processing units, hydrogen and maintenance schedules.
 - [Part 3: the distance to the pump](/en/analysis/emergency-oil-reserves-last-mile-logistics/), from depots to filling-station tanks.

@@ -470,6 +470,7 @@ Refining gives an emergency reserve a dimension that disappears from aggregate v
 
 ## Further reading
 
+- [Part 6: from the market to the pump](/en/analysis/emergency-oil-reserves-pass-through-pump-prices/) examines pass-through, taxes and adjustment lags.
 - [Part 5: the contracts behind the release](/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/) follows sales, loans in barrels and guarantees.
 - [Part 1: the journey from storage to diesel](/en/analysis/oil-reserves-crude-diesel-contents-delivery/) examines the product mix and announced release schedules.
 - [Part 2: who owns France’s emergency oil?](/en/analysis/france-oil-reserves-ownership-sagess-funding/) follows ownership, funding and release rights.

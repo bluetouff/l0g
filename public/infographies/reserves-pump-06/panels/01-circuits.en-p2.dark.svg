@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 395 480 435" role="img" aria-labelledby="reserves06-en-1-panel2-dark-title reserves06-en-1-panel2-dark-desc" lang="en" data-figure="1" data-diagram="price-signal-and-physical-supply" data-as-of="2026-10-03" data-scale="qualitative" data-measured-flow="unavailable" data-measured-timing="unavailable" style="width:100%;height:auto" width="480" height="435" data-crop-start="395" data-crop-end="830" data-panel="2">
+<title id="reserves06-en-1-panel2-dark-title">Crude, finished diesel and refining</title><desc id="reserves06-en-1-panel2-dark-desc">Crude goes through refining; finished diesel has a direct route. These two physical flows converge on product availability in the right place, shown in the next panel. The amber connector carries the decision’s price signal.</desc>
+<metadata>{"edition":"2026-10-03","convention":"Qualitative mechanism: the announcement sets quantity, product and timing. The price signal affects supply expectations and inventory decisions; its amber connector continues to the wholesale price in panel three. No measured quantity or timing.","sources":[{"id":"S04","publisher":"Ministère de la Transition écologique / DGEC","title":"Prix des produits pétroliers","url":"https://www.ecologie.gouv.fr/politiques-publiques/prix-produits-petroliers","reference_period":"Page explicative et portail de séries consultés le 3 octobre 2026"},{"id":"S11","publisher":"Federal Reserve Bank of Dallas ; Lutz Kilian, Xiaoqing Zhou","title":"Does Drawing Down the U.S. Strategic Petroleum Reserve Help Stabilize Oil Prices? Working Paper 1916","url":"https://www.dallasfed.org/-/media/documents/research/papers/2019/wp1916.pdf","reference_period":"Modélisation historique du marché mondial du pétrole ; version du 19 décembre 2019"},{"id":"S12","publisher":"U.S. Energy Information Administration","title":"Factors affecting diesel prices","url":"https://www.eia.gov/energyexplained/diesel-fuel/factors-affecting-diesel-prices.php","reference_period":"Mécanismes économiques ; page consultée le 3 octobre 2026"},{"id":"S13","publisher":"U.S. Energy Information Administration","title":"Gasoline price fluctuations","url":"https://www.eia.gov/energyexplained/gasoline/price-fluctuations.php","reference_period":"Explication des stocks et des fluctuations de prix"}]}</metadata><defs><marker id="reserves06-en-1-panel2-dark-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#5eead4" /></marker><marker id="reserves06-en-1-panel2-dark-signal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#f5b13d" stroke-width="1.6" /></marker></defs>
+<defs><clipPath id="reserves06-en-1-panel2-dark-viewport" clipPathUnits="userSpaceOnUse"><rect x="0" y="395" width="480" height="435" /></clipPath></defs><g clip-path="url(#reserves06-en-1-panel2-dark-viewport)" data-source-composition="complete"><rect x="0" y="0" width="480" height="1240" rx="0" fill="#0c0d10" />
+<text x="26" y="34" font-family="ui-monospace, monospace" font-size="14" font-weight="700" text-anchor="start" fill="#5eead4">l0g.  /  06.01</text>
+<text x="26" y="79" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start" fill="#e7e9ee">Two routes to the price</text>
+<text x="26" y="123" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#8b909b">An announcement works through expectations</text>
+<text x="26" y="148" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#8b909b">and deliveries.</text>
+<rect x="26" y="177" width="428" height="196" rx="9" fill="#29241d" />
+<rect x="47" y="203" width="47" height="62" rx="3" fill="#121419" stroke="#e7e9ee" stroke-width="2" />
+<path d="M56 219 L85 219" fill="none" stroke="#e7e9ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M56 229 L85 229" fill="none" stroke="#e7e9ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M56 239 L85 239" fill="none" stroke="#e7e9ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="78" cy="253" r="5" fill="#29241d" stroke="#f5b13d" stroke-width="1.4" />
+<text x="113" y="218" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" text-anchor="start" fill="#f5b13d">THE DECISION</text>
+<text x="113" y="248.0" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="#e7e9ee">Volume, product and</text>
+<text x="113" y="279.05" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="#e7e9ee">timing</text>
+<path d="M67 279 L67 305" fill="none" stroke="#f5b13d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 5" marker-end="url(#reserves06-en-1-panel2-dark-signal)" />
+<text x="104" y="321.0" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#e7e9ee">Supply expectations and</text>
+<text x="104" y="349.35" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#e7e9ee">decisions to hold inventory</text>
+<text x="26" y="414" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start" fill="#5eead4">PHYSICAL SUPPLY</text>
+<rect x="70" y="460" width="65" height="55" rx="3" fill="#121419" stroke="#5eead4" stroke-width="2" />
+<ellipse cx="102.5" cy="460" rx="32.5" ry="10" fill="#1a292c" stroke="#5eead4" stroke-width="2" />
+<rect x="73" y="488.35" width="59" height="23.4" rx="0" fill="#1a292c" />
+<path d="M135 505 L148 505" fill="none" stroke="#5eead4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M80 473 L90 473" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M80 482 L90 482" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M80 491 L90 491" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<text x="102" y="552" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle" fill="#e7e9ee">Crude</text>
+<rect x="310" y="460" width="65" height="55" rx="3" fill="#121419" stroke="#5eead4" stroke-width="2" />
+<ellipse cx="342.5" cy="460" rx="32.5" ry="10" fill="#1a292c" stroke="#5eead4" stroke-width="2" />
+<rect x="313" y="488.35" width="59" height="23.4" rx="0" fill="#1a292c" />
+<path d="M375 505 L388 505" fill="none" stroke="#5eead4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M320 473 L330 473" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M320 482 L330 482" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M320 491 L330 491" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<text x="342" y="552" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#e7e9ee">Finished diesel</text>
+<path d="M102 566 L102 598" fill="none" stroke="#5eead4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves06-en-1-panel2-dark-arrow)" />
+<rect x="74" y="635" width="17" height="65" rx="2" fill="#121419" stroke="#5eead4" stroke-width="2" />
+<path d="M74 651.25 L91 651.25" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M74 667.5 L91 667.5" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M74 683.75 L91 683.75" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="98" y="617" width="17" height="83" rx="2" fill="#121419" stroke="#5eead4" stroke-width="2" />
+<path d="M98 637.75 L115 637.75" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M98 658.5 L115 658.5" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M98 679.25 L115 679.25" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="122" y="648" width="17" height="52" rx="2" fill="#121419" stroke="#5eead4" stroke-width="2" />
+<path d="M122 661.0 L139 661.0" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M122 674.0 L139 674.0" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M122 687.0 L139 687.0" fill="none" stroke="#5eead4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M64 698 H154 V680 H169" fill="none" stroke="#5eead4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<text x="112" y="736" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#e7e9ee">Refining</text>
+<path d="M343 568 V762 Q343 785 320 785 H180 Q110 785 110 762" fill="none" stroke="#5eead4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M226 785 L226 817" fill="none" stroke="#5eead4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves06-en-1-panel2-dark-arrow)" />
+<path d="M448 337 V846 H423" fill="none" stroke="#f5b13d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6" marker-end="url(#reserves06-en-1-panel2-dark-signal)" />
+<rect x="47" y="836" width="365" height="125" rx="8" fill="#1a292c" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" />
+<text x="70" y="869" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start" fill="#5eead4">WHOLESALE PRICE</text>
+<text x="70" y="903.0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="#e7e9ee">Available product, in the</text>
+<text x="70" y="935.4" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="#e7e9ee">right place</text>
+<path d="M225 970 L225 1003" fill="none" stroke="#5eead4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves06-en-1-panel2-dark-arrow)" />
+<rect x="53" y="1030" width="38.400000000000006" height="54.400000000000006" rx="3" fill="#121419" stroke="#5eead4" stroke-width="2" />
+<rect x="59.4" y="1037.2" width="25.6" height="16.0" rx="2" fill="#1a292c" stroke="#5eead4" stroke-width="1.5" />
+<path d="M47.4 1084.4 L97.80000000000001 1084.4" fill="none" stroke="#5eead4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M91.4 1045.2 C114.6 1045.2 108.2 1076.4 115.4 1076.4 Q125.8 1076.4 118.60000000000001 1043.6 L106.6 1035.6" fill="none" stroke="#5eead4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<text x="143" y="1054" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start" fill="#e7e9ee">Pump price</text>
+<text x="143" y="1090.0" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#8b909b">Logistics, contracts,</text>
+<text x="143" y="1115.65" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#8b909b">competition and taxes</text>
+<path d="M26 1178 L454 1178" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<text x="26" y="1205" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#8b909b">Qualitative, not to scale · Sources: DGEC, EIA, Kilian–Zhou</text>
+</g></svg>

@@ -477,6 +477,7 @@ La raffinerie donne ainsi à la réserve une dimension souvent perdue dans les v
 
 ## Pour prolonger
 
+- [Volet 6 : du marché au prix du plein](/posts/reserves-petrolieres-transmission-prix-pompe/) examine la transmission, les taxes et les délais.
 - [Volet 5 : les contrats qui ouvrent les vannes](/posts/reserves-petrolieres-ventes-echanges-attribution/) suit les ventes, prêts en barils et garanties.
 - [Volet 1 : le chemin jusqu’au diesel](/posts/reserves-petrolieres-brut-diesel-contenu-delais/) examine la composition des stocks et les délais annoncés.
 - [Volet 2 : les propriétaires du secours](/posts/reserves-petrolieres-propriete-sagess-financement/) suit propriété, financement et droits de mobilisation.

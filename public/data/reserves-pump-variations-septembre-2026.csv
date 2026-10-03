@@ -1,0 +1,5 @@
+series,reference_label_before,value_before,reference_label_after,value_after,unit,frequency,change_pct,source,interpretation
+dated_brent_usd_bbl,2026-09-18,123.83,2026-09-25,117.81,USD/bbl,weekly_quotation,-4.86,S02,descriptive_change_not_pass_through_coefficient
+dated_brent_eur_bbl,2026-09-18,107.31,2026-09-25,103.01,EUR/bbl,weekly_quotation,-4.01,S02,descriptive_change_not_pass_through_coefficient
+refined_diesel_usd_tonne,2026-09-18,1532,2026-09-25,1466,USD/metric_tonne,weekly_quotation,-4.31,S02,descriptive_change_not_pass_through_coefficient
+diesel_retail_incl_tax,2026-09-18,238.34,2026-09-25,237.06,eurocent/litre,Friday_observation,-0.54,S02,descriptive_change_not_pass_through_coefficient

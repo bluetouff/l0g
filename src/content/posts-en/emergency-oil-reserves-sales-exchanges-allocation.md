@@ -430,6 +430,7 @@ Counterparty selection organises that transition. It can reduce payment risk, ma
 
 ## Further reading
 
+- [Part 6: from the market to the pump](/en/analysis/emergency-oil-reserves-pass-through-pump-prices/) examines pass-through, taxes and adjustment lags.
 - [Part 1: the journey from storage to diesel](/en/analysis/oil-reserves-crude-diesel-contents-delivery/).
 - [Part 2: who owns France’s emergency oil?](/en/analysis/france-oil-reserves-ownership-sagess-funding/).
 - [Part 3: the distance to the pump](/en/analysis/emergency-oil-reserves-last-mile-logistics/).

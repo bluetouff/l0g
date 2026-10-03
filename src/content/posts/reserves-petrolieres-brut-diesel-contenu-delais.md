@@ -481,6 +481,7 @@ La suite de l’enquête remontera de ces produits vers leurs propriétaires et 
 
 ## Pour prolonger
 
+- [Volet 6 : du marché au prix du plein](/posts/reserves-petrolieres-transmission-prix-pompe/) examine la transmission, les taxes et les délais.
 - [Volet 5 : les contrats qui ouvrent les vannes](/posts/reserves-petrolieres-ventes-echanges-attribution/) suit les ventes, prêts en barils et garanties.
 - [Volet 4 : la raffinerie impose son rythme](/posts/reserves-petrolieres-raffinage-capacites-maintenance/) suit les unités, l’hydrogène et les calendriers de maintenance.
 - [Volet 3 : les kilomètres qui restent](/posts/reserves-petrolieres-logistique-dernier-kilometre/) suit les dépôts, le transport et la reconstitution des cuves.
