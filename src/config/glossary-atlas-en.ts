@@ -10,6 +10,7 @@ export interface GlossaryAtlasEnEntry {
   guide?: string;
   sectionTitle: string;
   accent: string;
+  robots?: 'index,follow' | 'noindex,follow';
   atlas: GlossaryKnowledgeGraph;
 }
 
@@ -2338,6 +2339,24 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'ticket-de-stockage',
+    sigle: 'Stockholding ticket',
+    nom: 'Contractual access to an existing oil stock',
+    def: 'A paid agreement reserving access to oil specified by quantity, product, location and period. The right to acquire or take delivery depends on the agreed terms. Before purchase, the oil remains with its owner; the seller excludes the reserved quantity from coverage of its own obligation. A ticket allocates rights over physical inventory without creating more oil.',
+    guide: '/en/analysis/france-oil-reserves-ownership-sagess-funding/',
+    ...energySection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'One tank can cover different operators’ obligations when contractual rights prevent double counting.',
+      articles: [{ label: 'Who owns France’s emergency oil?', href: '/en/analysis/france-oil-reserves-ownership-sagess-funding/', kind: 'article' }],
+      sources: [
+        { label: 'IEA, stockholding-ticket methodology', href: 'https://www.iea.org/data-and-statistics/data-tools/oil-stocks-of-iea-countries', kind: 'source' },
+        { label: 'French Defence Code, D1336-52', href: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031946360', kind: 'source' },
+      ],
+      related: ['spr'],
+    },
+  },
+  {
     slug: 'spr',
     sigle: 'SPR',
     nom: 'Strategic petroleum reserve',
@@ -2356,7 +2375,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         { label: 'IEA, emergency stockholding systems', href: 'https://www.iea.org/about/oil-security-and-emergency-response' },
         energyShared.sources[0],
       ],
-      related: ['brent', 'wti', 'opep', 'opep-2', 'chokepoint'],
+      related: ['brent', 'wti', 'opep', 'opep-2', 'chokepoint', 'ticket-de-stockage'],
     },
   },
   {

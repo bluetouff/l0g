@@ -188,6 +188,7 @@ The next instalment will trace those products back to their owners and the contr
 
 ## Further reading
 
+- [Part 2: who owns France’s emergency oil?](/en/analysis/france-oil-reserves-ownership-sagess-funding/) follows ownership, financing and release rights.
 - [Strategic oil reserves buy time](/en/analysis/strategic-oil-reserves-borrowing-time/) follows exchange contracts and repayments.
 - [Yanbu and the constraints on an oil route](/en/analysis/yanbu-france-houthis-oil-route/) examines physical delivery.
 - [Read the oil market](/en/guides/read-oil-market/) connects stocks, refining and prices.

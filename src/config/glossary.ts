@@ -544,6 +544,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'OPEP+', nom: 'OPEP élargie', def: "OPEP augmentée d'une dizaine de producteurs non membres, dont la Russie, coordonnant leurs quotas depuis fin 2016. Ses décisions pèsent aujourd'hui autant que celles de l'OPEP seule : le groupe a relevé sa production de près de 600 000 barils par jour entre avril et juin 2026, puis de 188 000 supplémentaires en juillet.", guide: '/guides/lire-le-marche-petrolier/' },
       { sigle: 'SPR', nom: 'Réserve stratégique de pétrole', def: "Aux États-Unis, la Strategic Petroleum Reserve est un stock fédéral de brut conservé dans des cavernes de sel pour répondre aux ruptures d'approvisionnement. Les systèmes d'urgence d'autres pays peuvent aussi comprendre des produits raffinés détenus par l'État, une agence ou des entreprises soumises à une obligation de stockage. Le brut doit encore être raffiné ; la composition, le transport et les capacités disponibles conditionnent le carburant livré. Un baril prêté devient une créance de restitution future ; il redevient disponible dans la réserve après son retour physique.", guide: '/guides/lire-le-marche-petrolier/' },
       { sigle: 'Stockage flottant', nom: 'Floating storage', def: "Pétrole conservé à bord de tankers à l'ancre plutôt qu'à terre, faute de cuves disponibles, parce que le brut est sanctionné, ou quand la structure des prix rémunère l'attente. Environ 166 millions de barils de brut iranien stationnaient ainsi dans les eaux asiatiques début 2026, un stock où la Chine peut puiser sans surenchérir sur le marché ouvert.", guide: '/guides/lire-le-marche-petrolier/' },
+      { sigle: 'Ticket de stockage', nom: 'Stockholding ticket', def: "Contrat rémunéré réservant l’accès à une quantité de pétrole précisée par produit, lieu et période. Le droit d’acquérir ou de prendre livraison dépend des conditions convenues. Avant l’achat, le produit reste chez son propriétaire ; le vendeur exclut la quantité réservée de la couverture de sa propre obligation. Le ticket organise des droits sur un stock physique, sans créer de pétrole supplémentaire.", guide: '/posts/reserves-petrolieres-propriete-sagess-financement/' },
       { sigle: 'IRGC', nom: 'Islamic Revolutionary Guard Corps', def: "Gardiens de la révolution islamique : force armée d'élite iranienne, acteur clé des tensions dans le détroit d'Ormuz." },
       { sigle: 'MOU', nom: 'Memorandum of Understanding', def: "Mémorandum d'entente : accord écrit fixant des engagements entre parties, sans toujours la force contraignante d'un traité. Exemple : le MOU USA-Iran du 17 juin 2026." },
       { sigle: 'FAO', nom: "Food and Agriculture Organization", def: "Organisation des Nations unies pour l'alimentation et l'agriculture. Référence sur les prix alimentaires mondiaux et la sécurité alimentaire." },
@@ -2106,6 +2107,15 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     sources: [energySources[0], energySources[1]],
     related: ['opep', 'brent', 'wti', 'spr', 'stockage-flottant'],
   },
+  'ticket-de-stockage': {
+    intuition: 'Une cuve peut couvrir des obligations de plusieurs opérateurs si les droits sont réservés sans double emploi.',
+    articles: [{ label: 'Réserves pétrolières : les propriétaires du secours', href: '/posts/reserves-petrolieres-propriete-sagess-financement/', kind: 'article' }],
+    sources: [
+      { label: 'AIE, méthodologie des tickets de stockage', href: 'https://www.iea.org/data-and-statistics/data-tools/oil-stocks-of-iea-countries', kind: 'source' },
+      { label: 'Code de la défense, D1336-52', href: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031946360', kind: 'source' },
+    ],
+    related: ['spr'],
+  },
   spr: {
     intuition: "Un stock amortit une interruption quand le pétrole peut être sorti, acheminé et transformé à temps. Une promesse de remboursement organise sa disponibilité future.",
     formula: 'couverture théorique (jours) = volume mobilisable (barils) / manque à couvrir (barils par jour)',
@@ -2119,7 +2129,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       { label: 'AIE, systèmes de stocks d’urgence', href: 'https://www.iea.org/about/oil-security-and-emergency-response' },
       energySources[0],
     ],
-    related: ['brent', 'wti', 'stockage-flottant', 'opep', 'opep-2', 'chokepoint'],
+    related: ['brent', 'wti', 'stockage-flottant', 'opep', 'opep-2', 'chokepoint', 'ticket-de-stockage'],
   },
   u3o8: {
     intuition: "U3O8 est le point de départ marchand du cycle nucléaire, mais pas le goulot final.",

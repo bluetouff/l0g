@@ -6,11 +6,15 @@ import tailwindcss from '@tailwindcss/vite';
 import { glossaryRedirects } from './src/config/glossary-redirects.mjs';
 import { legacySurfaceRedirects } from './src/config/legacy-surface-redirects.mjs';
 import { glossaryReferenceEntries } from './src/config/glossary.ts';
+import { glossaryAtlasEn } from './src/config/glossary-atlas-en.ts';
 import { sitemapLastmod } from './src/config/sitemap-lastmod.mjs';
 import { weeklySitemapLastmods } from './src/config/weekly-editions.ts';
 import inlineHomeStyles from './scripts/inline-home-styles.mjs';
 
 const indexedGlossaryUrls = new Set(glossaryReferenceEntries.map((entry) => `https://l0g.fr${entry.url}`));
+const excludedEnglishGlossaryUrls = new Set(glossaryAtlasEn
+  .filter((entry) => entry.robots === 'noindex,follow')
+  .map((entry) => `https://l0g.fr/en/glossary/${entry.slug}/`));
 const weeklyLastmods = weeklySitemapLastmods('https://l0g.fr');
 
 // https://astro.build/config
@@ -32,6 +36,7 @@ export default defineConfig({
 
   integrations: [mdx(), sitemap({
     filter: (page) => page !== 'https://l0g.fr/recherche/'
+      && !excludedEnglishGlossaryUrls.has(page)
       && (
         page === 'https://l0g.fr/glossaire/'
         || !page.startsWith('https://l0g.fr/glossaire/')
