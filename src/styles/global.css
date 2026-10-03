@@ -396,6 +396,18 @@ a { color: inherit; text-decoration: none; }
 }
 .prose figure figcaption { margin-top: 0.75em; }
 
+/* Oil-reserve illustrations retain distinct compositions for narrow screens. */
+.prose .l0g-reserves01-figure {
+  margin: 2rem auto;
+  padding-bottom: 1.25rem;
+}
+.prose .l0g-reserves01-figure > .l0g-reserves01-mobile { display: none; }
+@media (max-width: 640px) {
+  .prose .l0g-reserves01-figure { max-width: 26rem; }
+  .prose .l0g-reserves01-figure > .l0g-reserves01-desktop { display: none; }
+  .prose .l0g-reserves01-figure > .l0g-reserves01-mobile { display: block; }
+}
+
 @media (max-width: 480px) {
   /* Keep dense inline SVG charts readable without allowing them to widen the page. */
   .prose figure.infographic-readable {

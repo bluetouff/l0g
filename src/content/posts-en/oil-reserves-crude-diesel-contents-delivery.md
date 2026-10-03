@@ -2,22 +2,23 @@
 title: "Oil reserves: the journey from storage to diesel"
 seoTitle: "Oil reserves: crude, diesel and delivery times | l0g"
 ogTitle: "Oil reserves: the journey from storage to diesel"
-description: "Crude, diesel and refining: trace emergency oil reserves from the G7’s announced ceiling through industrial steps, delivery schedules and usable fuel."
+description: "Crude, diesel and refining: trace emergency oil reserves from the G7’s announced commitment through industrial steps, delivery schedules and usable fuel."
 pubDate: "2026-10-03T10:01:56+02:00"
+updatedDate: "2026-10-03T12:49:56+02:00"
 tags: ["Oil", "Strategic reserves", "Energy", "Refining"]
 draft: false
 ogImage: "/illustrations/news/oil-reserves-contents-delivery-2026-v1.jpg"
 sourceArticle: "reserves-petrolieres-brut-diesel-contenu-delais"
-sourceUpdatedDate: "2026-10-03T10:01:56+02:00"
+sourceUpdatedDate: "2026-10-03T12:49:56+02:00"
 ---
 
 *Emergency fuel reserves and the delivery test · Investigation, part 1 of 7 · 3 October 2026*
 
-**The G7 has announced the release of up to 100 million barrels over four months, with an early push to supply diesel. Understanding how much relief those barrels can provide starts with what is in storage. Crude oil, diesel and jet fuel sit at different points in the industrial process. The contents of a reserve help determine how quickly it can respond.** [S01](#source-s01)
+**The G7 has announced the release of 100 million barrels over four months, with an early push to supply diesel. Understanding how much relief those barrels can provide starts with what is in storage. Crude oil, diesel and jet fuel sit at different points in the industrial process. The contents of a reserve help determine how quickly it can respond.** [S01](#source-s01)
 
 The US timetable makes that tangible. On 29 September, the Department of Energy invited proposals for an exchange of **up to 40 million barrels of crude oil** from the Strategic Petroleum Reserve. Bids are due on 6 October at 11 a.m. US Central Time, as specified in the announcement. Deliveries are scheduled for November and December. Several steps still separate the announcement from usable fuel. [S02](#source-s02)
 
-Three days later, the G7 set another deadline: a substantial diesel release within the first twenty days of a four-month operation. Its ceiling of 100 million barrels is framed as the implementation of pledges made in March. The statement leaves the split between crude and refined products, and individual country contributions, unspecified. Adding the headline number to the 400 million barrels agreed through the International Energy Agency in March would treat an operation described as implementation as an entirely new commitment. [S01](#source-s01) [S03](#source-s03)
+Three days later, the G7 set another deadline: a substantial diesel release within the first twenty days of a four-month operation. Its commitment of 100 million barrels is framed as the implementation of pledges made in March. The statement leaves the split between crude and refined products, and individual country contributions, unspecified. Adding the headline number to the 400 million barrels agreed through the International Energy Agency in March would treat an operation described as implementation as an entirely new commitment. [S01](#source-s01) [S03](#source-s03)
 
 That brings this investigation to a basic physical question: **what form is the oil in while it waits to be released?** A tank of crude holds feedstock that still requires processing. Stored diesel has already passed through most of that industrial transformation. The difference determines which facilities a release will still need. [S09](#source-s09) [S10](#source-s10)
 
@@ -31,24 +32,138 @@ Refined-product stocks join the chain further downstream. Stored diesel can move
 
 The advantage depends on where the interruption occurs. Crude can help keep an operating refinery running when its regular feedstock fails to arrive. If the refinery itself is unavailable, stored fuel can bypass that stage. A terminal cut off from its distribution network presents a different problem again. Equal volumes of oil can provide quite different forms of protection.
 
-<figure class="infographic l0g-reserves01-figure" style="max-width:28rem;margin:2rem auto;padding-bottom:1.25rem">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 410" role="img" aria-labelledby="reserves01-en-1-title reserves01-en-1-desc" style="width:100%;height:auto">
-<title id="reserves01-en-1-title">Refining changes the route</title>
-<desc id="reserves01-en-1-desc">Qualitative routes: crude needs a refinery; refined fuel joins distribution after checks and any blending. Both routes require transport.</desc>
-<rect width="480" height="410" rx="12" fill="var(--color-surface)"/>
-<text x="24" y="40" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Refining changes the route</text>
-<text x="24" y="74" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">Qualitative · no volume or time scale</text>
-<text x="128" y="122" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-accent)">Crude stock</text>
-<text x="352" y="122" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-signal)">Stored fuel</text>
-<path d="M128 140 V184 M120 176 L128 184 L136 176" fill="none" stroke="var(--color-accent)" stroke-width="3"/>
-<path d="M352 140 V184 M344 176 L352 184 L360 176" fill="none" stroke="var(--color-signal)" stroke-width="3"/>
-<text x="128" y="216" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-paper)">Refinery</text>
-<text x="352" y="216" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Checks / blending</text>
-<text x="128" y="248" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Capacity needed</text>
-<text x="352" y="248" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="var(--color-muted)">As needed</text>
-<path d="M128 266 V290 H240 V320 M352 266 V290 H240 M232 312 L240 320 L248 312" fill="none" stroke="var(--color-signal)" stroke-width="3"/>
-<text x="240" y="354" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-paper)">Transport → distribution</text>
-<text x="240" y="390" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="var(--color-muted)">A broken link can block either route</text>
+<figure class="infographic l0g-reserves01-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 680" role="img" aria-labelledby="rsv01-01-circuits-en-desktop-title rsv01-01-circuits-en-desktop-desc" lang="en" style="width:100%;height:auto" class="l0g-reserves01-desktop">
+<title id="rsv01-01-circuits-en-desktop-title">Two routes to usable fuel</title>
+<desc id="rsv01-01-circuits-en-desktop-desc">Crude is stored before refining; products are stored after it. Qualitative diagram; line widths do not encode volumes or delivery times.</desc>
+<defs><marker id="rsv01-01-circuits-en-desktop-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="var(--color-muted)" stroke-width="1.5" /></marker></defs>
+<rect x="0" y="0" width="1120" height="680" rx="12" fill="var(--color-surface)" />
+<text x="42" y="32" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="var(--color-signal)" text-anchor="start">l0g / RESERVES 01</text>
+<text x="42" y="77" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="var(--color-paper)" text-anchor="start">Two routes to usable fuel</text>
+<text x="42" y="110" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Crude is stored before refining; products are stored after it.</text>
+<text x="42" y="157" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-accent)" text-anchor="start">CRUDE IN RESERVE</text>
+<rect x="42" y="180" width="474" height="101" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<g transform="translate(65 196) scale(0.85)">
+<path d="M 0 14 L 0 57 Q 30 73 60 57 L 60 14" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<ellipse cx="30" cy="14" rx="30" ry="12" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="2" />
+<path d="M 0 39 Q 30 55 60 39" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<line x1="60" y1="45" x2="73" y2="45" stroke="var(--color-accent)" stroke-width="2" />
+</g>
+<text x="604" y="157" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-signal)" text-anchor="start">PRODUCT IN RESERVE</text>
+<rect x="604" y="180" width="474" height="101" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<g transform="translate(627 196) scale(0.85)">
+<path d="M 0 14 L 0 57 Q 30 73 60 57 L 60 14" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<ellipse cx="30" cy="14" rx="30" ry="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="2" />
+<path d="M 0 39 Q 30 55 60 39" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<line x1="60" y1="45" x2="73" y2="45" stroke="var(--color-signal)" stroke-width="2" />
+</g>
+<text x="156" y="219" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">Feedstock still to be processed</text>
+<text x="156" y="252" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Crude grade and access to a refinery</text>
+<text x="718" y="219" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">Diesel already produced</text>
+<text x="718" y="252" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">The stock joins the chain downstream</text>
+<line x1="279" y1="284" x2="279" y2="309" stroke="var(--color-muted)" stroke-width="2" marker-end="url(#rsv01-01-circuits-en-desktop-arrow)" />
+<rect x="42" y="321" width="474" height="131" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<g transform="translate(65 343) scale(0.8)">
+<rect x="2" y="18" width="25" height="64" rx="5" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1.3" />
+<rect x="43" y="2" width="22" height="80" rx="5" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1.3" />
+<line x1="2" y1="30" x2="27" y2="30" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="2" y1="44" x2="27" y2="44" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="2" y1="58" x2="27" y2="58" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="2" y1="72" x2="27" y2="72" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="43" y1="17" x2="65" y2="17" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="43" y1="33" x2="65" y2="33" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="43" y1="49" x2="65" y2="49" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="43" y1="65" x2="65" y2="65" stroke="var(--color-accent)" stroke-width="1.5" />
+<path d="M 27 68 L 35 68 L 35 43 L 43 43" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 65 70 L 82 70 L 82 50 L 92 50" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<line x1="0" y1="88" x2="98" y2="88" stroke="var(--color-accent)" stroke-width="2" />
+</g>
+<text x="173" y="362" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">An available refinery</text>
+<text x="173" y="393.0" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Separate, convert, treat: several</text>
+<text x="173" y="416.12" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">products emerge.</text>
+<rect x="604" y="321" width="474" height="131" rx="10" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.3" stroke-dasharray="5 5" />
+<text x="628" y="365" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start">Main refining process</text>
+<text x="628" y="396" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-signal)" text-anchor="start">completed before storage</text>
+<line x1="841" y1="284" x2="841" y2="309" stroke="var(--color-muted)" stroke-width="2" marker-end="url(#rsv01-01-circuits-en-desktop-arrow)" />
+<rect x="42" y="482" width="150" height="44" rx="6" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<text x="117" y="509" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="var(--color-paper)" text-anchor="middle">Gasoline</text>
+<path d="M 279 453 L 279 465 L 117 465 L 117 479" fill="none" stroke="var(--color-muted)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="204" y="482" width="150" height="44" rx="6" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<text x="279" y="509" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="var(--color-paper)" text-anchor="middle">Diesel / fuel oils</text>
+<path d="M 279 453 L 279 465 L 279 465 L 279 479" fill="none" stroke="var(--color-muted)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="366" y="482" width="150" height="44" rx="6" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<text x="441" y="509" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="var(--color-paper)" text-anchor="middle">Jet fuel</text>
+<path d="M 279 453 L 279 465 L 441 465 L 441 479" fill="none" stroke="var(--color-muted)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 279 528 L 279 549 L 560 549 L 560 567" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#rsv01-01-circuits-en-desktop-arrow)" />
+<path d="M 841 454 L 841 549 L 560 549" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="151" y="579" width="818" height="88" rx="10" fill="var(--color-surface-2)" />
+<text x="560" y="615" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Checks, any required blending, and transport</text>
+<text x="560" y="644" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Then delivery to the distribution network and users</text>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 818" role="img" aria-labelledby="rsv01-01-circuits-en-mobile-title rsv01-01-circuits-en-mobile-desc" lang="en" style="width:100%;height:auto" class="l0g-reserves01-mobile">
+<title id="rsv01-01-circuits-en-mobile-title">Two routes to usable fuel</title>
+<desc id="rsv01-01-circuits-en-mobile-desc">Crude is stored before refining; products are stored after it. Qualitative diagram; line widths do not encode volumes or delivery times.</desc>
+<defs><marker id="rsv01-01-circuits-en-mobile-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="var(--color-muted)" stroke-width="1.5" /></marker></defs>
+<rect x="0" y="0" width="360" height="818" rx="12" fill="var(--color-surface)" />
+<text x="18" y="25" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="var(--color-signal)" text-anchor="start">l0g / 01</text>
+<text x="18" y="58" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start">Two routes to usable fuel</text>
+<text x="18" y="96" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">Crude still needs to be refined.</text>
+<text x="18" y="119" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">Products are already refined.</text>
+<text x="18" y="157" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-accent)" text-anchor="start">CRUDE</text>
+<rect x="18" y="172" width="150" height="119" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<g transform="translate(69 184) scale(0.6)">
+<path d="M 0 14 L 0 57 Q 30 73 60 57 L 60 14" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<ellipse cx="30" cy="14" rx="30" ry="12" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="2" />
+<path d="M 0 39 Q 30 55 60 39" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<line x1="60" y1="45" x2="73" y2="45" stroke="var(--color-accent)" stroke-width="2" />
+</g>
+<text x="192" y="157" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">PRODUCT</text>
+<rect x="192" y="172" width="150" height="119" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<g transform="translate(243 184) scale(0.6)">
+<path d="M 0 14 L 0 57 Q 30 73 60 57 L 60 14" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<ellipse cx="30" cy="14" rx="30" ry="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="2" />
+<path d="M 0 39 Q 30 55 60 39" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<line x1="60" y1="45" x2="73" y2="45" stroke="var(--color-signal)" stroke-width="2" />
+</g>
+<text x="93" y="271" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-paper)" text-anchor="middle">To be refined</text>
+<text x="267" y="271" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="middle">Already refined</text>
+<line x1="93" y1="294" x2="93" y2="319" stroke="var(--color-muted)" stroke-width="1.8" marker-end="url(#rsv01-01-circuits-en-mobile-arrow)" />
+<line x1="267" y1="294" x2="267" y2="319" stroke="var(--color-muted)" stroke-width="1.8" marker-end="url(#rsv01-01-circuits-en-mobile-arrow)" />
+<rect x="18" y="332" width="150" height="145" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<g transform="translate(58 343) scale(0.55)">
+<rect x="2" y="18" width="25" height="64" rx="5" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1.3" />
+<rect x="43" y="2" width="22" height="80" rx="5" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1.3" />
+<line x1="2" y1="30" x2="27" y2="30" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="2" y1="44" x2="27" y2="44" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="2" y1="58" x2="27" y2="58" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="2" y1="72" x2="27" y2="72" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="43" y1="17" x2="65" y2="17" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="43" y1="33" x2="65" y2="33" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="43" y1="49" x2="65" y2="49" stroke="var(--color-accent)" stroke-width="1.5" />
+<line x1="43" y1="65" x2="65" y2="65" stroke="var(--color-accent)" stroke-width="1.5" />
+<path d="M 27 68 L 35 68 L 35 43 L 43 43" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 65 70 L 82 70 L 82 50 L 92 50" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<line x1="0" y1="88" x2="98" y2="88" stroke="var(--color-accent)" stroke-width="2" />
+</g>
+<text x="93" y="421" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Refinery</text>
+<text x="93" y="443" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="middle">available</text>
+<rect x="192" y="332" width="150" height="145" rx="8" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.3" stroke-dasharray="4 4" />
+<text x="207" y="370" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">Main</text>
+<text x="207" y="392" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">processing</text>
+<text x="207" y="414" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">completed</text>
+<text x="207" y="436" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">before</text>
+<text x="207" y="458" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">storage</text>
+<line x1="93" y1="481" x2="93" y2="505" stroke="var(--color-muted)" stroke-width="1.8" marker-end="url(#rsv01-01-circuits-en-mobile-arrow)" />
+<rect x="18" y="515" width="150" height="107" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<text x="93" y="543" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="var(--color-paper)" text-anchor="middle">Gasoline</text>
+<text x="93" y="571" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="var(--color-paper)" text-anchor="middle">Diesel / fuel oils</text>
+<text x="93" y="599" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="var(--color-paper)" text-anchor="middle">Jet fuel</text>
+<path d="M 93 624 L 93 644 L 180 644 L 180 659" fill="none" stroke="var(--color-muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#rsv01-01-circuits-en-mobile-arrow)" />
+<path d="M 267 480 L 267 644 L 180 644" fill="none" stroke="var(--color-muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="18" y="672" width="324" height="101" rx="8" fill="var(--color-surface-2)" />
+<text x="35" y="700" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="var(--color-paper)" text-anchor="start">Checks, any required</text>
+<text x="35" y="725" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="var(--color-paper)" text-anchor="start">blending, transport and</text>
+<text x="35" y="750" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="var(--color-paper)" text-anchor="start">delivery</text>
 </svg>
 <figcaption>l0g diagram based on the <a href="#source-s04">IEA</a>, <a href="#source-s10">EIA</a> and <a href="#source-s15">SAGESS</a>. Simplified routes, with no quantified volumes or timings. Crude also needs transport before refining; quality, specifications and network access still matter.</figcaption>
 </figure>
@@ -61,26 +176,61 @@ The monthly series available on 3 October runs through **July 2026**: gasoline 4
 
 “Distillate fuel oil” needs careful interpretation: it includes diesel fuels as well as fuel oils used for heating and other purposes. Calling the category road diesel would narrow its scope incorrectly. Yield relates product volumes to crude oil, hydrogen, other hydrocarbons and net unfinished-oil inputs, with specific adjustments for gasoline and distillates. Refining also creates a volume gain: subtracting these three figures from 100% would not produce a valid “other” category. The series describes the output of a refining fleet. [S08](#source-s08)
 
-<figure class="infographic l0g-reserves01-figure" style="max-width:28rem;margin:2rem auto;padding-bottom:1.25rem">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 350" role="img" aria-labelledby="reserves01-en-2-title reserves01-en-2-desc" style="width:100%;height:auto">
-<title id="reserves01-en-2-title">Crude supplies several products</title>
-<desc id="reserves01-en-2-desc">United States · 2025 yield, volume %; Finished motor gasoline: 45.9%, Distillates: diesel and fuel oils: 30.0%, Kerosene-type jet fuel: 11.0%</desc>
-<rect width="480" height="350" rx="12" fill="var(--color-surface)"/>
-<text x="24" y="40" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Crude supplies several products</text>
-<text x="24" y="74" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">United States · 2025 yield, volume %</text>
-<text x="24" y="116" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Finished motor gasoline</text>
-<text x="456" y="116" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="end" fill="var(--color-paper)">45.9 %</text>
-<rect data-value="45.9" x="24" y="128" width="306.00000000" height="18" fill="var(--color-signal)"/>
-<text x="24" y="178" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Distillates: diesel and fuel oils</text>
-<text x="456" y="178" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="end" fill="var(--color-paper)">30.0 %</text>
-<rect data-value="30.0" x="24" y="190" width="200.00000000" height="18" fill="var(--color-accent)"/>
-<text x="24" y="240" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Kerosene-type jet fuel</text>
-<text x="456" y="240" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="end" fill="var(--color-paper)">11.0 %</text>
-<rect data-value="11.0" x="24" y="252" width="73.33333333" height="18" fill="var(--color-amber)"/>
-<text x="24" y="304" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">0</text>
-<text x="224" y="304" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-muted)">30</text>
-<text x="424" y="304" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end" fill="var(--color-muted)">60 %</text>
-<text x="24" y="328" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="var(--color-paper)">Selected categories · common zero scale</text>
+<figure class="infographic l0g-reserves01-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" role="img" aria-labelledby="rsv01-02-rendements-en-desktop-title rsv01-02-rendements-en-desktop-desc" lang="en" style="width:100%;height:auto" class="l0g-reserves01-desktop">
+<title id="rsv01-02-rendements-en-desktop-title">Crude yields several products</title>
+<desc id="rsv01-02-rendements-en-desktop-desc">United States, 2025 · EIA volumetric refinery yields Gasoline 45.9%, distillate fuel oil 30.0%, jet fuel 11.0%. Selected categories.</desc>
+<defs><marker id="rsv01-02-rendements-en-desktop-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="var(--color-muted)" stroke-width="1.5" /></marker></defs>
+<rect x="0" y="0" width="1120" height="500" rx="12" fill="var(--color-surface)" />
+<text x="42" y="32" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="var(--color-signal)" text-anchor="start">l0g / RESERVES 02</text>
+<text x="42" y="77" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="var(--color-paper)" text-anchor="start">Crude yields several products</text>
+<text x="42" y="110" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">United States, 2025 · EIA volumetric refinery yields</text>
+<line x1="363.0" y1="190" x2="363.0" y2="447" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="363.0" y="475" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="middle">0 %</text>
+<line x1="488.0" y1="190" x2="488.0" y2="447" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="488.0" y="475" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="middle">10 %</text>
+<line x1="613.0" y1="190" x2="613.0" y2="447" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="613.0" y="475" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="middle">20 %</text>
+<line x1="738.0" y1="190" x2="738.0" y2="447" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="738.0" y="475" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="middle">30 %</text>
+<line x1="863.0" y1="190" x2="863.0" y2="447" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="863.0" y="475" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="middle">40 %</text>
+<line x1="988.0" y1="190" x2="988.0" y2="447" stroke="var(--color-line-strong)" stroke-width="1" />
+<text x="988.0" y="475" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="middle">50 %</text>
+<text x="42" y="240" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">Motor gasoline</text>
+<rect x="363" y="209" width="573.75" height="47" rx="3" fill="var(--color-accent)" data-value="45.9" data-scale="50" />
+<text x="949.75" y="241" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="var(--color-accent)" text-anchor="start">45.9 %</text>
+<text x="42" y="332" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">Distillate fuel oil*</text>
+<rect x="363" y="301" width="375.0" height="47" rx="3" fill="var(--color-signal)" data-value="30" data-scale="50" />
+<text x="751.0" y="333" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="var(--color-signal)" text-anchor="start">30.0 %</text>
+<text x="42" y="424" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">Kerosene-type jet fuel</text>
+<rect x="363" y="393" width="137.5" height="47" rx="3" fill="var(--color-amber)" data-value="11" data-scale="50" />
+<text x="513.5" y="425" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="var(--color-amber)" text-anchor="start">11.0 %</text>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 512" role="img" aria-labelledby="rsv01-02-rendements-en-mobile-title rsv01-02-rendements-en-mobile-desc" lang="en" style="width:100%;height:auto" class="l0g-reserves01-mobile">
+<title id="rsv01-02-rendements-en-mobile-title">Crude yields several products</title>
+<desc id="rsv01-02-rendements-en-mobile-desc">United States, 2025 · EIA volumetric refinery yields Gasoline 45.9%, distillate fuel oil 30.0%, jet fuel 11.0%. Selected categories.</desc>
+<defs><marker id="rsv01-02-rendements-en-mobile-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="var(--color-muted)" stroke-width="1.5" /></marker></defs>
+<rect x="0" y="0" width="360" height="512" rx="12" fill="var(--color-surface)" />
+<text x="18" y="25" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="var(--color-signal)" text-anchor="start">l0g / 02</text>
+<text x="18" y="58" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start">Crude yields several</text>
+<text x="18" y="84" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start">products</text>
+<text x="18" y="118" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">United States · 2025 yield, vol. %</text>
+<text x="18" y="141" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">Selected categories · EIA</text>
+<text x="18" y="175" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="var(--color-paper)" text-anchor="start">Motor gasoline</text>
+<text x="342" y="204" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" fill="var(--color-accent)" text-anchor="end">45.9 %</text>
+<rect x="18" y="218" width="300" height="23" rx="3" fill="var(--color-surface-2)" />
+<rect x="18" y="218" width="275.4" height="23" rx="3" fill="var(--color-accent)" data-value="45.9" data-scale="50" />
+<text x="18" y="288" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="var(--color-paper)" text-anchor="start">Distillate fuel oil*</text>
+<text x="342" y="317" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" fill="var(--color-signal)" text-anchor="end">30.0 %</text>
+<rect x="18" y="331" width="300" height="23" rx="3" fill="var(--color-surface-2)" />
+<rect x="18" y="331" width="180.0" height="23" rx="3" fill="var(--color-signal)" data-value="30" data-scale="50" />
+<text x="18" y="401" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="var(--color-paper)" text-anchor="start">Kerosene-type jet fuel</text>
+<text x="342" y="430" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" fill="var(--color-amber)" text-anchor="end">11.0 %</text>
+<rect x="18" y="444" width="300" height="23" rx="3" fill="var(--color-surface-2)" />
+<rect x="18" y="444" width="66.0" height="23" rx="3" fill="var(--color-amber)" data-value="11" data-scale="50" />
+<text x="18" y="491" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">0</text>
+<text x="318" y="491" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="end">50 %</text>
 </svg>
 <figcaption>Source: <a href="#source-s07">EIA, annual 2025 yields</a>, table released September 30, 2026; <a href="#source-s08">definitions and adjustments</a>. Three selected categories, excluding other products and processing gain. Volume ratios, with no projection onto SPR barrels. <a href="/data/reserves-01-eia-yields-2025.csv">CSV data</a>.</figcaption>
 </figure>
@@ -107,32 +257,75 @@ SAGESS, the French Société anonyme de gestion de stocks de sécurité, respons
 
 In that snapshot, **refined products made up 69.4% of SAGESS's holdings**, calculated by adding the four relevant categories. A large share of the portfolio had therefore already passed through the principal industrial transformation. Release arrangements and delivery would still be needed to turn that downstream position into supplies reaching customers.
 
-<figure class="infographic l0g-reserves01-figure" style="max-width:28rem;margin:2rem auto;padding-bottom:1.25rem">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-labelledby="reserves01-en-3-title reserves01-en-3-desc" style="width:100%;height:auto">
-<title id="reserves01-en-3-title">SAGESS also holds finished fuels</title>
-<desc id="reserves01-en-3-desc">SAGESS · Dec. 31, 2024, % of tonnage; Gasoil: 49.8%, Crude oil: 30.6%, Gasoline: 9.1%, Jet fuel: 7.8%, Heating oil: 2.7%</desc>
-<rect width="480" height="480" rx="12" fill="var(--color-surface)"/>
-<text x="24" y="40" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">SAGESS also holds finished fuels</text>
-<text x="24" y="74" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">SAGESS · Dec. 31, 2024, % of tonnage</text>
-<text x="24" y="116" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Gasoil</text>
-<text x="456" y="116" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="end" fill="var(--color-paper)">49.8 %</text>
-<rect data-value="49.8" x="24" y="128" width="332.00000000" height="18" fill="var(--color-signal)"/>
-<text x="24" y="178" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Crude oil</text>
-<text x="456" y="178" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="end" fill="var(--color-paper)">30.6 %</text>
-<rect data-value="30.6" x="24" y="190" width="204.00000000" height="18" fill="var(--color-accent)"/>
-<text x="24" y="240" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Gasoline</text>
-<text x="456" y="240" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="end" fill="var(--color-paper)">9.1 %</text>
-<rect data-value="9.1" x="24" y="252" width="60.66666667" height="18" fill="var(--color-signal)"/>
-<text x="24" y="302" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Jet fuel</text>
-<text x="456" y="302" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="end" fill="var(--color-paper)">7.8 %</text>
-<rect data-value="7.8" x="24" y="314" width="52.00000000" height="18" fill="var(--color-signal)"/>
-<text x="24" y="364" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Heating oil</text>
-<text x="456" y="364" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="end" fill="var(--color-paper)">2.7 %</text>
-<rect data-value="2.7" x="24" y="376" width="18.00000000" height="18" fill="var(--color-signal)"/>
-<text x="24" y="428" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">0</text>
-<text x="224" y="428" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-muted)">30</text>
-<text x="424" y="428" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end" fill="var(--color-muted)">60 %</text>
-<text x="24" y="458" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="var(--color-paper)">Refined products: 69.4% of tonnage</text>
+<figure class="infographic l0g-reserves01-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 620" role="img" aria-labelledby="rsv01-03-sagess-en-desktop-title rsv01-03-sagess-en-desktop-desc" lang="en" style="width:100%;height:auto" class="l0g-reserves01-desktop">
+<title id="rsv01-03-sagess-en-desktop-title">Much of the stock is already refined</title>
+<desc id="rsv01-03-sagess-en-desktop-desc">SAGESS only · Snapshot at 31 December 2024 13.2 million metric tonnes; 30.6% crude and 69.4% refined products. Historical data, not current inventory.</desc>
+<defs><marker id="rsv01-03-sagess-en-desktop-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="var(--color-muted)" stroke-width="1.5" /></marker></defs>
+<rect x="0" y="0" width="1120" height="620" rx="12" fill="var(--color-surface)" />
+<text x="42" y="32" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="var(--color-signal)" text-anchor="start">l0g / RESERVES 03</text>
+<text x="42" y="77" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="var(--color-paper)" text-anchor="start">Much of the stock is already refined</text>
+<text x="42" y="110" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">SAGESS only · Snapshot at 31 December 2024</text>
+<text x="42" y="170" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="var(--color-paper)" text-anchor="start">13.2 million metric tonnes</text>
+<text x="42" y="218" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-accent)" text-anchor="start">CRUDE · 30.6%</text>
+<text x="391" y="218" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-signal)" text-anchor="start">REFINED PRODUCTS · 69.4%</text>
+<rect x="42" y="237" width="317.016" height="58" rx="0" fill="var(--color-accent)" data-value="30.6" data-scale="100" />
+<rect x="359.016" y="237" width="718.9839999999999" height="58" rx="0" fill="var(--color-signal)" data-value="69.4" data-scale="100" />
+<g transform="translate(137 359) scale(1.5)">
+<path d="M 0 14 L 0 57 Q 30 73 60 57 L 60 14" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<ellipse cx="30" cy="14" rx="30" ry="12" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="2" />
+<path d="M 0 39 Q 30 55 60 39" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<line x1="60" y1="45" x2="73" y2="45" stroke="var(--color-accent)" stroke-width="2" />
+</g>
+<text x="186" y="494" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="var(--color-accent)" text-anchor="middle">Still to be processed</text>
+<text x="66" y="532" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Feedstock for several uses,</text>
+<text x="66" y="559" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">subject to available refining</text>
+<text x="66" y="586" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">capacity.</text>
+<line x1="366" y1="338" x2="366" y2="598" stroke="var(--color-line-strong)" stroke-width="1.2" />
+<text x="395" y="343" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-signal)" text-anchor="start">REFINED-PRODUCT BREAKDOWN</text>
+<text x="395" y="376" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" fill="var(--color-paper)" text-anchor="start">Gasoil</text>
+<rect x="627" y="359" width="358.56" height="23" rx="3" fill="var(--color-signal)" data-value="49.8" data-scale="50" />
+<text x="1076" y="376" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-signal)" text-anchor="end">49.8 %</text>
+<text x="395" y="442" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" fill="var(--color-paper)" text-anchor="start">Gasoline</text>
+<rect x="627" y="425" width="65.52" height="23" rx="3" fill="var(--color-accent)" data-value="9.1" data-scale="50" />
+<text x="1076" y="442" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-accent)" text-anchor="end">9.1 %</text>
+<text x="395" y="508" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" fill="var(--color-paper)" text-anchor="start">Jet fuel</text>
+<rect x="627" y="491" width="56.16" height="23" rx="3" fill="var(--color-amber)" data-value="7.8" data-scale="50" />
+<text x="1076" y="508" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-amber)" text-anchor="end">7.8 %</text>
+<text x="395" y="574" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" fill="var(--color-paper)" text-anchor="start">Heating oil</text>
+<rect x="627" y="557" width="19.44" height="23" rx="3" fill="var(--color-muted)" data-value="2.7" data-scale="50" />
+<text x="1076" y="574" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-muted)" text-anchor="end">2.7 %</text>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 688" role="img" aria-labelledby="rsv01-03-sagess-en-mobile-title rsv01-03-sagess-en-mobile-desc" lang="en" style="width:100%;height:auto" class="l0g-reserves01-mobile">
+<title id="rsv01-03-sagess-en-mobile-title">Much of the stock is already refined</title>
+<desc id="rsv01-03-sagess-en-mobile-desc">SAGESS only · Snapshot at 31 December 2024 13.2 million metric tonnes; 30.6% crude and 69.4% refined products. Historical data, not current inventory.</desc>
+<defs><marker id="rsv01-03-sagess-en-mobile-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="var(--color-muted)" stroke-width="1.5" /></marker></defs>
+<rect x="0" y="0" width="360" height="688" rx="12" fill="var(--color-surface)" />
+<text x="18" y="25" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="var(--color-signal)" text-anchor="start">l0g / 03</text>
+<text x="18" y="58" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start">Much of the stock is</text>
+<text x="18" y="84" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start">already refined</text>
+<text x="18" y="118" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">SAGESS · 31 December 2024</text>
+<text x="18" y="174" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" fill="var(--color-paper)" text-anchor="start">13.2 Mt</text>
+<text x="153" y="174" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">end-2024</text>
+<text x="18" y="201" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-accent)" text-anchor="start">Crude</text>
+<text x="150" y="201" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">Refined products</text>
+<text x="18" y="231" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="var(--color-accent)" text-anchor="start">30.6%</text>
+<text x="150" y="231" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="var(--color-signal)" text-anchor="start">69.4%</text>
+<rect x="18" y="248" width="99.14399999999999" height="39" rx="0" fill="var(--color-accent)" data-value="30.6" data-scale="100" />
+<rect x="117.14399999999999" y="248" width="224.856" height="39" rx="0" fill="var(--color-signal)" data-value="69.4" data-scale="100" />
+<text x="18" y="325" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">REFINED PRODUCTS</text>
+<text x="18" y="367" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" fill="var(--color-paper)" text-anchor="start">Gasoil</text>
+<text x="341" y="367" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-signal)" text-anchor="end">49.8 %</text>
+<rect x="18" y="383" width="322.70399999999995" height="20" rx="3" fill="var(--color-signal)" data-value="49.8" data-scale="50" />
+<text x="18" y="449" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" fill="var(--color-paper)" text-anchor="start">Gasoline</text>
+<text x="341" y="449" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-accent)" text-anchor="end">9.1 %</text>
+<rect x="18" y="465" width="58.968" height="20" rx="3" fill="var(--color-accent)" data-value="9.1" data-scale="50" />
+<text x="18" y="531" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" fill="var(--color-paper)" text-anchor="start">Jet fuel</text>
+<text x="341" y="531" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-amber)" text-anchor="end">7.8 %</text>
+<rect x="18" y="547" width="50.544" height="20" rx="3" fill="var(--color-amber)" data-value="7.8" data-scale="50" />
+<text x="18" y="613" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" fill="var(--color-paper)" text-anchor="start">Heating oil</text>
+<text x="341" y="613" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-muted)" text-anchor="end">2.7 %</text>
+<rect x="18" y="629" width="17.496000000000002" height="20" rx="3" fill="var(--color-muted)" data-value="2.7" data-scale="50" />
 </svg>
 <figcaption>Source: <a href="#source-s11">SAGESS, July 2025 brochure</a>, reported holdings of 13.2 million metric tonnes at end-2024. SAGESS portfolio, distinct from the national total. l0g calculation: 49.8 + 9.1 + 7.8 + 2.7 = 69.4%. No estimate of deployable quantities in October 2026. <a href="/data/reserves-01-sagess-mix-2024.csv">CSV data</a>.</figcaption>
 </figure>
@@ -163,10 +356,110 @@ The solicitation specifies two ceilings of **20 million barrels**, for November 
 
 The G7 timetable, meanwhile, describes a collective operation intended to start immediately, with an early emphasis on diesel. The two documents alone do not establish the precise accounting relationship between the US 40-million-barrel offer and the G7's 100-million-barrel commitment. Placing the schedules alongside each other reveals their different horizons. Adding the quantities, or assigning one entirely inside the other, would require further documentation. [S01](#source-s01) [S02](#source-s02)
 
-| Announced programme | Volume and contents | Published timetable |
-| --- | --- | --- |
-| G7, 2 October 2026 | Up to 100 million barrels; product split unspecified | Four months; substantial diesel release within the first twenty days |
-| DOE, 29 September 2026 | Up to 40 million barrels of crude offered for exchange | Bids due 6 October, 11 a.m. Central Time; deliveries planned for November and December |
+<figure class="infographic l0g-reserves01-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" role="img" aria-labelledby="rsv01-04-calendriers-en-desktop-title rsv01-04-calendriers-en-desktop-desc" lang="en" style="width:100%;height:auto" class="l0g-reserves01-desktop">
+<title id="rsv01-04-calendriers-en-desktop-title">An announcement has a delivery schedule</title>
+<desc id="rsv01-04-calendriers-en-desktop-desc">Two documented sequences · Schematic positions, not a time scale G7: 2 October, 100 million barrels over four months with early diesel in twenty days. DOE: 29 September solicitation, 6 October bids, November–December deliveries.</desc>
+<defs><marker id="rsv01-04-calendriers-en-desktop-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="var(--color-muted)" stroke-width="1.5" /></marker></defs>
+<rect x="0" y="0" width="1120" height="600" rx="12" fill="var(--color-surface)" />
+<text x="42" y="32" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="var(--color-signal)" text-anchor="start">l0g / RESERVES 04</text>
+<text x="42" y="77" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="var(--color-paper)" text-anchor="start">An announcement has a delivery schedule</text>
+<text x="42" y="110" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Two documented sequences · Schematic positions, not a time scale</text>
+<text x="42" y="166" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-signal)" text-anchor="start">G7 · 2 OCTOBER STATEMENT</text>
+<rect x="42" y="190" width="314" height="144" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="42" y="190" width="314" height="5" rx="0" fill="var(--color-signal)" />
+<text x="60" y="223" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-signal)" text-anchor="start">2 OCT 2026</text>
+<text x="60" y="262" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">100m barrels pledged</text>
+<text x="60" y="288" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Collective implementation of</text>
+<text x="60" y="313" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">March pledges</text>
+<line x1="362" y1="260" x2="389" y2="260" stroke="var(--color-muted)" stroke-width="2" marker-end="url(#rsv01-04-calendriers-en-desktop-arrow)" />
+<rect x="403" y="190" width="314" height="144" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="403" y="190" width="314" height="5" rx="0" fill="var(--color-signal)" />
+<text x="421" y="223" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-signal)" text-anchor="start">FIRST 20 DAYS</text>
+<text x="421" y="262" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">Early diesel</text>
+<text x="421" y="292" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Exact quantity unspecified</text>
+<line x1="723" y1="260" x2="750" y2="260" stroke="var(--color-muted)" stroke-width="2" marker-end="url(#rsv01-04-calendriers-en-desktop-arrow)" />
+<rect x="764" y="190" width="314" height="144" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="764" y="190" width="314" height="5" rx="0" fill="var(--color-signal)" />
+<text x="782" y="223" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-signal)" text-anchor="start">OVER FOUR MONTHS</text>
+<text x="782" y="262" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">Implementation</text>
+<text x="782" y="292" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Allocations unspecified</text>
+<text x="42" y="393" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-accent)" text-anchor="start">DOE · US SOLICITATION OF 29 SEPTEMBER</text>
+<rect x="42" y="417" width="314" height="144" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="42" y="417" width="314" height="5" rx="0" fill="var(--color-accent)" />
+<text x="60" y="450" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-accent)" text-anchor="start">29 SEP 2026</text>
+<text x="60" y="489" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">Up to 40m</text>
+<text x="60" y="519" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Barrels of crude offered for</text>
+<text x="60" y="544" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">exchange</text>
+<line x1="362" y1="487" x2="389" y2="487" stroke="var(--color-muted)" stroke-width="2" marker-end="url(#rsv01-04-calendriers-en-desktop-arrow)" />
+<rect x="403" y="417" width="314" height="144" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="403" y="417" width="314" height="5" rx="0" fill="var(--color-accent)" />
+<text x="421" y="450" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-accent)" text-anchor="start">6 OCT 2026</text>
+<text x="421" y="489" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">Bids due</text>
+<text x="421" y="519" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">11 a.m. US Central Time</text>
+<line x1="723" y1="487" x2="750" y2="487" stroke="var(--color-muted)" stroke-width="2" marker-end="url(#rsv01-04-calendriers-en-desktop-arrow)" />
+<rect x="764" y="417" width="314" height="144" rx="10" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="764" y="417" width="314" height="5" rx="0" fill="var(--color-accent)" />
+<text x="782" y="450" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--color-accent)" text-anchor="start">NOV / DEC 2026</text>
+<text x="782" y="489" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="start">Scheduled deliveries</text>
+<text x="782" y="519" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Awards to be confirmed</text>
+<text x="42" y="365" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">The first twenty days are included within the four-month horizon.</text>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 888" role="img" aria-labelledby="rsv01-04-calendriers-en-mobile-title rsv01-04-calendriers-en-mobile-desc" lang="en" style="width:100%;height:auto" class="l0g-reserves01-mobile">
+<title id="rsv01-04-calendriers-en-mobile-title">An announcement has a delivery schedule</title>
+<desc id="rsv01-04-calendriers-en-mobile-desc">Two documented sequences · Schematic positions, not a time scale G7: 2 October, 100 million barrels over four months with early diesel in twenty days. DOE: 29 September solicitation, 6 October bids, November–December deliveries.</desc>
+<defs><marker id="rsv01-04-calendriers-en-mobile-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="var(--color-muted)" stroke-width="1.5" /></marker></defs>
+<rect x="0" y="0" width="360" height="888" rx="12" fill="var(--color-surface)" />
+<text x="18" y="25" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="var(--color-signal)" text-anchor="start">l0g / 04</text>
+<text x="18" y="58" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start">An announcement has a</text>
+<text x="18" y="84" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start">delivery schedule</text>
+<text x="18" y="118" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">Two documented sequences</text>
+<text x="18" y="141" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">Positions are not a time scale</text>
+<text x="18" y="177" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">G7</text>
+<rect x="30" y="194" width="312" height="92" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="30" y="194" width="4" height="92" rx="0" fill="var(--color-signal)" />
+<text x="45" y="216" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">2 OCT 2026</text>
+<text x="45" y="242" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="var(--color-paper)" text-anchor="start">100m barrels pledged</text>
+<text x="45" y="265" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">March pledges implemented</text>
+<line x1="18" y1="242" x2="18" y2="337" stroke="var(--color-muted)" stroke-width="1.4" marker-end="url(#rsv01-04-calendriers-en-mobile-arrow)" />
+<line x1="18" y1="242" x2="27" y2="242" stroke="var(--color-muted)" stroke-width="1.4" />
+<rect x="30" y="303" width="312" height="92" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="30" y="303" width="4" height="92" rx="0" fill="var(--color-signal)" />
+<text x="45" y="325" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">FIRST 20 DAYS</text>
+<text x="45" y="351" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="var(--color-paper)" text-anchor="start">Early diesel</text>
+<text x="45" y="374" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">Exact quantity unspecified</text>
+<line x1="18" y1="351" x2="18" y2="446" stroke="var(--color-muted)" stroke-width="1.4" marker-end="url(#rsv01-04-calendriers-en-mobile-arrow)" />
+<line x1="18" y1="351" x2="27" y2="351" stroke="var(--color-muted)" stroke-width="1.4" />
+<rect x="30" y="412" width="312" height="92" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="30" y="412" width="4" height="92" rx="0" fill="var(--color-signal)" />
+<text x="45" y="434" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-signal)" text-anchor="start">OVER FOUR MONTHS</text>
+<text x="45" y="460" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="var(--color-paper)" text-anchor="start">Implementation</text>
+<text x="45" y="483" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">Allocations unspecified</text>
+<line x1="18" y1="460" x2="27" y2="460" stroke="var(--color-muted)" stroke-width="1.4" />
+<text x="18" y="537" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-accent)" text-anchor="start">DOE / UNITED STATES</text>
+<rect x="30" y="554" width="312" height="92" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="30" y="554" width="4" height="92" rx="0" fill="var(--color-accent)" />
+<text x="45" y="576" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-accent)" text-anchor="start">29 SEP 2026</text>
+<text x="45" y="602" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="var(--color-paper)" text-anchor="start">Up to 40m</text>
+<text x="45" y="625" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">Barrels of crude offered for exchange</text>
+<line x1="18" y1="602" x2="18" y2="697" stroke="var(--color-muted)" stroke-width="1.4" marker-end="url(#rsv01-04-calendriers-en-mobile-arrow)" />
+<line x1="18" y1="602" x2="27" y2="602" stroke="var(--color-muted)" stroke-width="1.4" />
+<rect x="30" y="663" width="312" height="92" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="30" y="663" width="4" height="92" rx="0" fill="var(--color-accent)" />
+<text x="45" y="685" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-accent)" text-anchor="start">6 OCT 2026</text>
+<text x="45" y="711" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="var(--color-paper)" text-anchor="start">Bids due</text>
+<text x="45" y="734" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">11 a.m. US Central Time</text>
+<line x1="18" y1="711" x2="18" y2="806" stroke="var(--color-muted)" stroke-width="1.4" marker-end="url(#rsv01-04-calendriers-en-mobile-arrow)" />
+<line x1="18" y1="711" x2="27" y2="711" stroke="var(--color-muted)" stroke-width="1.4" />
+<rect x="30" y="772" width="312" height="92" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.3" />
+<rect x="30" y="772" width="4" height="92" rx="0" fill="var(--color-accent)" />
+<text x="45" y="794" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="var(--color-accent)" text-anchor="start">NOV / DEC 2026</text>
+<text x="45" y="820" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="var(--color-paper)" text-anchor="start">Scheduled deliveries</text>
+<text x="45" y="843" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted)" text-anchor="start">Awards to be confirmed</text>
+<line x1="18" y1="820" x2="27" y2="820" stroke="var(--color-muted)" stroke-width="1.4" />
+</svg>
+<figcaption>Sources: <a href="#source-s01">G7, October 2, 2026</a> and <a href="#source-s02">DOE, September 29, 2026</a>. Schematic positions, not a time scale. The first twenty days are included within the four months. The G7 commitment, the DOE offer ceiling and scheduled deliveries: the volumes are not added, and neither announcement measures actual deliveries.</figcaption>
+</figure>
 
 Sources: [G7](#source-s01) and [DOE](#source-s02). Announced schedules, without adding the volumes or assuming contract awards.
 

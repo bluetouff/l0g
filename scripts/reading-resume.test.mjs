@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readingTime } from '../src/lib/reading-time.ts';
 import {
   READING_STORAGE_KEY, READING_MAX_AGE, READING_MAX_ENTRIES,
   readReadingPositions, writeReadingPosition, readingProgress,
@@ -102,4 +103,21 @@ test('progress measures the article body, independent of headers and footers', (
   for (const args of [[0, 0, 800], [0, NaN, 800], [0, 4000, 0], [Infinity, 4000, 800]]) {
     assert.equal(readingProgress(...args), 0);
   }
+});
+
+test('reading time counts prose and captions without SVG markup or alternate compositions', () => {
+  const prose = Array(400).fill('mot').join(' ');
+  const svg = `<svg viewBox="0 0 360 818"><title>${Array(800).fill('label').join(' ')}</title><text>Graphique</text></svg>`;
+  assert.equal(readingTime(prose), 2);
+  assert.equal(readingTime(`${prose}<figure>${svg}${svg}<figcaption>${Array(200).fill('source').join(' ')}</figcaption></figure>`), 3);
+});
+
+test('reading time keeps visible HTML and Markdown but excludes non-reading elements', () => {
+  const visible = `<div>${Array(400).fill('visible').join(' ')}</div>`;
+  const hidden = Array(1000).fill('hidden').join(' ');
+  assert.equal(readingTime(`${visible}<STYLE>${hidden}</STYLE><script>${hidden}</script><template><svg><text>${hidden}</text></svg></template>`), 2);
+  assert.equal(readingTime(Array(400).fill('[label](https://example.com/long-path)').join(' ')), 2);
+  assert.equal(readingTime(undefined), 1);
+  assert.equal(readingTime(''), 1);
+  assert.equal(readingTime(`<svg><text>${hidden}</text></svg>`), 1);
 });
