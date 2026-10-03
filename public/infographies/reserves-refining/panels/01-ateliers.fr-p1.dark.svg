@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 552" role="img" aria-labelledby="reserves04-fr-1-panel1-dark-title reserves04-fr-1-panel1-dark-desc" data-diagram="refining-dependencies" style="width:100%;height:auto" width="400" height="552" data-crop-start="0" data-crop-end="552" data-panel="1">
+<title id="reserves04-fr-1-panel1-dark-title">Du brut à l’hydrotraitement</title><desc id="reserves04-fr-1-panel1-dark-desc">Le brut est distillé en fractions. Les coupes moyennes suivent l’hydrotraitement pour retirer notamment le soufre. Schéma qualitatif général.</desc><metadata>{"edition": "2026-10-03", "sources": [{"id": "S06", "publisher": "U.S. Energy Information Administration", "title": "Refining crude oil: the refining process", "url": "https://www.eia.gov/energyexplained/oil-and-petroleum-products/refining-crude-oil-the-refining-process.php", "reference_period": "Description technique générale, consultée le 3 octobre 2026."}, {"id": "S08", "publisher": "Pennsylvania State University / Semih Eser", "title": "Catalytic Hydrocracking, FSC 432", "url": "https://courses.ems.psu.edu/fsc432/node/644", "reference_period": "Principes de procédé ; date de mise à jour non établie."}, {"id": "S22", "publisher": "Pennsylvania State University / Semih Eser", "title": "Hydrogen Production, FSC 432", "url": "https://courses.ems.psu.edu/fsc432/node/651", "reference_period": "Principes techniques, date de mise à jour non établie."}, {"id": "S24", "publisher": "Pennsylvania State University / Semih Eser", "title": "FSC 432, Petroleum Refining: sections Catalytic Hydrotreatment and finishing", "url": "https://courses.ems.psu.edu/fsc432/book/export/html/2", "reference_period": "Principes techniques du cours."}], "convention": "Schéma qualitatif de voies sélectionnées de raffinage. Hydrogène partagé par traitement et conversion. Aucun rendement ; la branche hydrocraquage dépend de la configuration. Ce schéma ne décrit pas Donges."}</metadata>
+<defs>
+<marker id="reserves04-fr-1-panel1-dark-t" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8" fill="#5eead4" /></marker>
+<marker id="reserves04-fr-1-panel1-dark-a" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8" fill="#f5b13d" /></marker>
+<marker id="reserves04-fr-1-panel1-dark-i" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8" fill="#e7e9ee" /></marker>
+<marker id="reserves04-fr-1-panel1-dark-s" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8" fill="#8b909b" /></marker>
+</defs>
+<defs><clipPath id="reserves04-fr-1-panel1-dark-viewport" clipPathUnits="userSpaceOnUse"><rect x="0" y="0" width="400" height="552" /></clipPath></defs><g clip-path="url(#reserves04-fr-1-panel1-dark-viewport)" data-source-composition="complete"><rect x="0" y="0" width="400" height="1410" rx="0" fill="#0c0d10" />
+<text x="24" y="34" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#e7e9ee" text-anchor="start">l0g.</text>
+<text x="376" y="32" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="600" fill="#8b909b" text-anchor="end">RÉSERVES / 04 · 01</text>
+<path d="M24,48 L376,48" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
+<text x="24" y="83" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" fill="#e7e9ee" text-anchor="start">Les ateliers derrière le</text>
+<text x="24" y="114" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" fill="#e7e9ee" text-anchor="start">gazole</text>
+<text x="24" y="154" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#8b909b" text-anchor="start">Procédés et dépendances · Schéma fonctionnel</text>
+<rect x="24" y="176" width="352" height="74" rx="9" fill="#121419" stroke="#e7e9ee" stroke-width="1.5" />
+<text x="44" y="207" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#e7e9ee" text-anchor="start">BRUT À TRAITER</text>
+<text x="44" y="233" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#8b909b" text-anchor="start">La qualité de charge compte.</text>
+<path d="M200,250 L200,281" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#reserves04-fr-1-panel1-dark-t)" />
+<rect x="24" y="286" width="352" height="92" rx="9" fill="#1a292c" stroke="#5eead4" stroke-width="1.5" />
+<text x="44" y="320" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#5eead4" text-anchor="start">DISTILLATION</text>
+<text x="44" y="349" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#e7e9ee" text-anchor="start">Séparer les fractions du pétrole.</text>
+<path d="M24,333 L12,333 L12,881 L39,881" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#reserves04-fr-1-panel1-dark-t)" />
+<path d="M200,378 L200,417" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#reserves04-fr-1-panel1-dark-t)" />
+<text x="217" y="405" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#8b909b" text-anchor="start">Coupes moyennes</text>
+<rect x="44" y="422" width="312" height="108" rx="9" fill="#1a292c" stroke="#5eead4" stroke-width="1.5" />
+<text x="64" y="455" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#5eead4" text-anchor="start">HYDROTRAITEMENT</text>
+<text x="64" y="486" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#e7e9ee" text-anchor="start">Retirer des contaminants, dont le</text>
+<text x="64" y="510" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#e7e9ee" text-anchor="start">soufre.</text>
+<rect x="44" y="574" width="312" height="90" rx="9" fill="#29241d" stroke="#f5b13d" stroke-width="1.5" />
+<text x="64" y="606" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#f5b13d" text-anchor="start">HYDROGÈNE</text>
+<text x="64" y="635" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#f5b13d" text-anchor="start">Réactif pour les deux ateliers</text>
+<path d="M200,574 L200,535" fill="none" stroke="#f5b13d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" marker-end="url(#reserves04-fr-1-panel1-dark-a)" />
+<path d="M356,620 L381,620 L381,884 L361,884" fill="none" stroke="#f5b13d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" marker-end="url(#reserves04-fr-1-panel1-dark-a)" />
+<text x="44" y="717.0" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#8b909b" text-anchor="start">AUTRES COUPES</text>
+<text x="44" y="748" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#8b909b" text-anchor="start">D’autres circuits produisent</text>
+<text x="44" y="773" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#8b909b" text-anchor="start">notamment des composants</text>
+<text x="44" y="798" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#8b909b" text-anchor="start">d’essence. Une voie de conversion</text>
+<text x="44" y="823" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#8b909b" text-anchor="start">peut traiter des coupes plus lourdes.</text>
+<rect x="44" y="834" width="312" height="126" rx="9" fill="#121419" stroke="#5eead4" stroke-width="1.5" stroke-dasharray="6 4" />
+<text x="64" y="868" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#5eead4" text-anchor="start">HYDROCRAQUAGE</text>
+<text x="64" y="897" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#5eead4" text-anchor="start">Sur les sites équipés</text>
+<text x="64" y="925" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#e7e9ee" text-anchor="start">Charges lourdes à transformer.</text>
+<path d="M356,478 L367,478 L367,1011 L348,1011" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#reserves04-fr-1-panel1-dark-t)" />
+<path d="M200,960 L200,991" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#reserves04-fr-1-panel1-dark-t)" />
+<rect x="44" y="996" width="312" height="112" rx="9" fill="#121419" stroke="#e7e9ee" stroke-width="1.5" />
+<text x="64" y="1031" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#e7e9ee" text-anchor="start">MÉLANGES ET CONTRÔLES</text>
+<text x="64" y="1063" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#e7e9ee" text-anchor="start">Chaque produit est préparé selon</text>
+<text x="64" y="1087" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#e7e9ee" text-anchor="start">ses spécifications.</text>
+<path d="M200,1108 L200,1136 L115,1136 L115,1154" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#reserves04-fr-1-panel1-dark-t)" />
+<path d="M200,1136 L285,1136 L285,1154" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#reserves04-fr-1-panel1-dark-t)" />
+<rect x="44" y="1160" width="142" height="62" rx="9" fill="#1a292c" stroke="#5eead4" stroke-width="1.5" />
+<text x="115" y="1199" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#5eead4" text-anchor="middle">GAZOLE</text>
+<rect x="214" y="1160" width="142" height="62" rx="9" fill="#1a292c" stroke="#5eead4" stroke-width="1.5" />
+<text x="285" y="1199" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#5eead4" text-anchor="middle">JET</text>
+<text x="44" y="1260" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#8b909b" text-anchor="start">Schéma général. Aucun plan de site ni</text>
+<text x="44" y="1282" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#8b909b" text-anchor="start">rendement chiffré.</text>
+<path d="M24,1305 L376,1305" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
+<text x="24" y="1328" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#8b909b" text-anchor="start">Sources : EIA · Penn State</text>
+<text x="24" y="1351" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#8b909b" text-anchor="start">Voies sélectionnées ; flèches non proportionnelles.</text>
+</g></svg>

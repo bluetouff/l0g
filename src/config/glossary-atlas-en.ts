@@ -2367,7 +2367,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       intuition: 'A stock cushions an interruption when oil can be withdrawn, transported and processed in time. A repayment promise organises future availability.',
       formula: 'theoretical coverage (days) = deployable volume (barrels) / remaining gap (barrels per day)',
       whyNow: 'The September 2026 U.S. offer includes return windows through 2029. Barrel premiums must be read alongside timing and logistical capacity.',
-      articles: [{ label: 'Strategic oil reserves buy time', href: '/en/analysis/strategic-oil-reserves-borrowing-time/' }, { label: 'Oil reserves: the journey from storage to diesel', href: '/en/analysis/oil-reserves-crude-diesel-contents-delivery/' }, { label: 'Emergency oil reserves: the distance to the pump', href: '/en/analysis/emergency-oil-reserves-last-mile-logistics/' }, oilArticles[0], oilArticles[1]],
+      articles: [{ label: 'Strategic oil reserves buy time', href: '/en/analysis/strategic-oil-reserves-borrowing-time/' }, { label: 'Oil reserves: the journey from storage to diesel', href: '/en/analysis/oil-reserves-crude-diesel-contents-delivery/' }, { label: 'Emergency oil reserves: the distance to the pump', href: '/en/analysis/emergency-oil-reserves-last-mile-logistics/' }, { label: 'Emergency oil reserves: the refinery sets the pace', href: '/en/analysis/emergency-oil-reserves-refining-capacity-maintenance/' }, oilArticles[0], oilArticles[1]],
       guides: [oilGuide],
       ...energyShared,
       sources: [

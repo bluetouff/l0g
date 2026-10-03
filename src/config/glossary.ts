@@ -2120,7 +2120,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Un stock amortit une interruption quand le pétrole peut être sorti, acheminé et transformé à temps. Une promesse de remboursement organise sa disponibilité future.",
     formula: 'couverture théorique (jours) = volume mobilisable (barils) / manque à couvrir (barils par jour)',
     whyNow: "L’offre américaine de septembre 2026 comporte des fenêtres de retour allant jusqu’en 2029. La prime en barils doit se lire avec le calendrier et les capacités logistiques.",
-    articles: [{ label: 'Les réserves de pétrole achètent du temps', href: '/posts/petrole-reserves-strategiques-prets-temps/' }, { label: 'Réserves pétrolières : le chemin jusqu’au diesel', href: '/posts/reserves-petrolieres-brut-diesel-contenu-delais/' }, { label: 'Réserves pétrolières : les kilomètres qui restent', href: '/posts/reserves-petrolieres-logistique-dernier-kilometre/' }, energyArticles[0], energyArticles[1]],
+    articles: [{ label: 'Les réserves de pétrole achètent du temps', href: '/posts/petrole-reserves-strategiques-prets-temps/' }, { label: 'Réserves pétrolières : le chemin jusqu’au diesel', href: '/posts/reserves-petrolieres-brut-diesel-contenu-delais/' }, { label: 'Réserves pétrolières : les kilomètres qui restent', href: '/posts/reserves-petrolieres-logistique-dernier-kilometre/' }, { label: 'Réserves pétrolières : la raffinerie impose son rythme', href: '/posts/reserves-petrolieres-raffinage-capacites-maintenance/' }, energyArticles[0], energyArticles[1]],
     guides: [energyGuides[0]],
     datasets: energyDatasets,
     signals: energySignals,

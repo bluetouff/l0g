@@ -518,6 +518,7 @@ On peut donc suivre le secours jusqu’à la porte du dépôt : un propriétair
 
 ## Pour prolonger
 
+- [Volet 4 : la raffinerie impose son rythme](/posts/reserves-petrolieres-raffinage-capacites-maintenance/) suit les unités, l’hydrogène et les calendriers de maintenance.
 - [Volet 3 : les kilomètres qui restent](/posts/reserves-petrolieres-logistique-dernier-kilometre/), des dépôts jusqu’aux cuves des stations.
 - [Du brut au diesel : le trajet industriel des réserves](/posts/reserves-petrolieres-brut-diesel-contenu-delais/).
 - [Les réserves de pétrole achètent du temps](/posts/petrole-reserves-strategiques-prets-temps/), sur les prêts et les restitutions.

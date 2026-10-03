@@ -481,6 +481,7 @@ The next instalment will trace those products back to their owners and the contr
 
 ## Further reading
 
+- [Part 4: the refinery sets the pace](/en/analysis/emergency-oil-reserves-refining-capacity-maintenance/) follows processing units, hydrogen and maintenance schedules.
 - [Part 3: the distance to the pump](/en/analysis/emergency-oil-reserves-last-mile-logistics/) follows depots, transport and the rebuilding of local inventories.
 - [Part 2: who owns France’s emergency oil?](/en/analysis/france-oil-reserves-ownership-sagess-funding/) follows ownership, financing and release rights.
 - [Strategic oil reserves buy time](/en/analysis/strategic-oil-reserves-borrowing-time/) follows exchange contracts and repayments.
