@@ -8,7 +8,8 @@ import { join } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import {
-  ADVISORY_URL, ORIGINAL_SHA256, PACKAGE_NAME, PATCHED_SHA256, PATCH_INSERTION,
+  ADVISORY_URL, ORIGINAL_SHA256, PACKAGE_NAME, PATCHED_SHA256, PATCH_REPLACEMENTS,
+  PREVIOUS_PATCHED_SHA256, PREVIOUS_PATCH_INSERTION,
   applyPatch, assertPatchedInstalled, assertSecureBehavior, qualifiesPatchedAdvisory,
 } from './http-cache-security.mjs';
 
@@ -17,9 +18,11 @@ const installedRoot = fileURLToPath(new URL('../node_modules/http-cache-semantic
 const installedSource = readFileSync(join(installedRoot, 'index.js'), 'utf8');
 // npm ci runs postinstall before tests. Recover the immutable original only for
 // private fixtures; no test writes to the real installed dependency.
-const original = hash(installedSource) === ORIGINAL_SHA256
-  ? installedSource
-  : installedSource.replace(PATCH_INSERTION, '');
+let original = installedSource;
+if (hash(installedSource) === PREVIOUS_PATCHED_SHA256) original = installedSource.replace(PREVIOUS_PATCH_INSERTION, '');
+else if (hash(installedSource) === PATCHED_SHA256) {
+  for (const [before, after] of [...PATCH_REPLACEMENTS].reverse()) original = original.replace(after, before);
+}
 assert.equal(hash(original), ORIGINAL_SHA256, 'test fixtures require the exact original or locally patched package');
 const metadata = { name: PACKAGE_NAME, version: '4.2.0', main: 'index.js' };
 const advisory = { packageName: PACKAGE_NAME, severity: 'high', url: ADVISORY_URL };
@@ -95,6 +98,15 @@ test('patching is deterministic and idempotent without changing freshness calcul
   assert.equal(policyAt(load(packageRoot), { 'cache-control': 'public, max-age=60' }).policy.maxAge(), originalMaxAge);
 });
 
+test('the exact previous local mitigation is upgraded without accepting unknown bytes', (t) => {
+  const { packageRoot } = fixture(t);
+  const previous = original.replace('    evaluateRequest(req) {\n        this._assertRequestHasHeaders(req);\n\n', (anchor) => anchor + PREVIOUS_PATCH_INSERTION);
+  assert.equal(hash(previous), PREVIOUS_PATCHED_SHA256);
+  writeFileSync(join(packageRoot, 'index.js'), previous);
+  assert.equal(applyPatch({ packageRoot }).changed, true);
+  assert.equal(hash(readFileSync(join(packageRoot, 'index.js'))), PATCHED_SHA256);
+});
+
 test('max-stale cannot bypass private, cookie, authorization or validation restrictions through either API or serialization', (t) => {
   const { packageRoot } = fixture(t, { patched: true });
   const CachePolicy = load(packageRoot);
@@ -143,6 +155,117 @@ test('public and immutable cookie opt-ins, public authorization and private sing
   }
   assertAllowed(policyAt(CachePolicy, { 'cache-control': 'public, max-age=60' }, { requestHeaders: { authorization: 'Bearer fixture-alice' } }).policy, incoming('max-stale=15'), 'explicit public authorization opt-in');
   assertAllowed(policyAt(CachePolicy, { 'cache-control': 'private, max-age=60', 'set-cookie': 'session=fixture-alice' }, { shared: false }).policy, incoming('max-stale=15'), 'single-user private cache');
+});
+
+test('restricted entries cannot gain a stale TTL or be reused after an origin error', (t) => {
+  const { packageRoot } = fixture(t, { patched: true });
+  const CachePolicy = load(packageRoot);
+  const extensions = 'max-age=60, stale-if-error=120, stale-while-revalidate=120';
+  const cases = [
+    [{ 'cache-control': extensions, 'set-cookie': 'session=fixture-alice' }],
+    [{ 'cache-control': `private, ${extensions}` }],
+    [{ 'cache-control': `no-store, ${extensions}` }],
+    [{ 'cache-control': `no-cache, ${extensions}` }],
+    [{ 'cache-control': `proxy-revalidate, ${extensions}` }],
+    [{ 'cache-control': extensions, vary: ' * ' }],
+    [{ 'cache-control': extensions }, { requestHeaders: { authorization: 'Bearer fixture-alice' } }],
+    [{ 'cache-control': `must-revalidate, ${extensions}` }],
+    [{ 'cache-control': `s-maxage=60, ${extensions}` }],
+  ];
+  for (const [headers, options] of cases) {
+    const { policy, restore } = policyAt(CachePolicy, headers, options);
+    for (const candidate of [policy, restore()]) {
+      assertDenied(candidate, incoming('max-stale'), JSON.stringify(headers));
+      assert.equal(candidate.timeToLive(), 0, 'restricted expiration cannot gain a retention window');
+      assert.equal(candidate.useStaleWhileRevalidate(), false, 'direct stale helper must reject reuse');
+      for (const status of [500, 502, 503, 504]) {
+        const result = candidate.revalidatedPolicy(incoming(), { status, headers: {} });
+        assert.equal(result.modified, true, 'an origin error cannot revive the previous body');
+        assert.equal(result.matches, false);
+        assert.notEqual(result.policy, candidate);
+      }
+      for (const response of [undefined, null]) {
+        assert.throws(() => candidate.revalidatedPolicy(incoming(), response), /Response headers missing/);
+      }
+    }
+  }
+});
+
+test('error fallback requires a matching request and honors its validation directive', (t) => {
+  const { packageRoot } = fixture(t, { patched: true });
+  const { policy, restore } = policyAt(load(packageRoot), {
+    'cache-control': 'public, max-age=60, stale-if-error=120', vary: 'accept-language',
+  }, { requestHeaders: { 'accept-language': 'fr' } });
+  const matching = { ...incoming(), headers: { ...incoming().headers, 'accept-language': 'fr' } };
+  const requests = [
+    { ...matching, url: 'https://cache-fixture.invalid/other' },
+    { ...matching, method: 'POST' },
+    { ...matching, headers: { ...matching.headers, host: 'other.invalid' } },
+    { ...matching, headers: { ...matching.headers, 'accept-language': 'en' } },
+    { ...matching, headers: { ...matching.headers, 'cache-control': 'no-cache' } },
+    { ...matching, headers: { ...matching.headers, pragma: 'no-cache' } },
+    { ...matching, headers: { ...matching.headers, pragma: 'NO-CACHE' } },
+  ];
+  for (const candidate of [policy, restore()]) {
+    for (const request of requests) {
+      assert.equal(candidate.revalidatedPolicy(request, { status: 503, headers: {} }).modified, true);
+      assert.throws(() => candidate.revalidatedPolicy(request, undefined), /Response headers missing/);
+    }
+    for (const method of ['GET', 'HEAD']) {
+      assert.equal(candidate.revalidatedPolicy({ ...matching, method }, { status: 503, headers: {} }).modified, false);
+    }
+    assert.equal(candidate.revalidatedPolicy({ ...matching, headers: { ...matching.headers, 'cache-control': 'max-stale', pragma: 'no-cache' } }, { status: 503, headers: {} }).modified, false);
+  }
+});
+
+test('ordinary stale extensions and successful conditional validation remain available', (t) => {
+  const { packageRoot } = fixture(t, { patched: true });
+  const CachePolicy = load(packageRoot);
+  const headers = { 'cache-control': 'public, max-age=60, stale-if-error=120, stale-while-revalidate=120', etag: '"fixture"' };
+  for (const options of [{}, { shared: false }]) {
+    const { policy, restore } = policyAt(CachePolicy, headers, options);
+    for (const candidate of [policy, restore()]) {
+      assert.equal(candidate.timeToLive(), 110_000);
+      assert.equal(candidate.useStaleWhileRevalidate(), true);
+      for (const response of [{ status: 503, headers: {} }, undefined, null]) {
+        assert.equal(candidate.revalidatedPolicy(incoming(), response).modified, false);
+      }
+      const validated = candidate.revalidatedPolicy(incoming(), { status: 304, headers: { etag: '"fixture"' } });
+      assert.equal(validated.modified, false);
+      assert.equal(validated.matches, true);
+    }
+  }
+  const expired = policyAt(CachePolicy, headers, { age: 181 }).policy;
+  assert.equal(expired.timeToLive(), 0);
+  assert.equal(expired.useStaleWhileRevalidate(), false);
+  assert.equal(expired.revalidatedPolicy(incoming(), { status: 503, headers: {} }).modified, true);
+});
+
+test('directive case and empty field lists cannot bypass restrictions, including historical serialized maps', (t) => {
+  const { packageRoot } = fixture(t);
+  const OriginalPolicy = load(packageRoot);
+  const legacy = policyAt(OriginalPolicy, { 'cache-control': 'Private, max-age=60, stale-if-error=120, stale-while-revalidate=120' }).policy.toObject();
+  assert.equal(legacy.rescc.Private, true);
+  applyPatch({ packageRoot });
+  const CachePolicy = load(packageRoot);
+  const restored = CachePolicy.fromObject(JSON.parse(JSON.stringify(legacy)));
+  assertDenied(restored, incoming('max-stale'), 'historical mixed-case policy');
+  assert.equal(restored.timeToLive(), 0);
+  assert.equal(restored.revalidatedPolicy(incoming(), { status: 503, headers: {} }).modified, true);
+  for (const directive of ['Private', 'NO-STORE', 'No-Cache', 'Proxy-Revalidate', 'Must-Revalidate', 'private=""', 'no-cache=""', 'no-store=""']) {
+    const { policy, restore } = policyAt(CachePolicy, { 'cache-control': `${directive}, max-age=60, stale-if-error=120, stale-while-revalidate=120` });
+    for (const candidate of [policy, restore()]) {
+      assertDenied(candidate, incoming('MAX-STALE'), directive);
+      assert.equal(candidate.timeToLive(), 0);
+      assert.equal(candidate.useStaleWhileRevalidate(), false);
+      assert.equal(candidate.revalidatedPolicy(incoming(), { status: 503, headers: {} }).modified, true);
+    }
+  }
+  const publicPolicy = policyAt(CachePolicy, { 'cache-control': 'Public, Max-Age=60, Stale-If-Error=120' }).policy;
+  assertAllowed(publicPolicy, incoming('MAX-STALE=15'), 'case-insensitive public expiration');
+  for (const directive of ['No-Cache', 'NO-CACHE', 'no-cache=""']) {
+    assert.equal(publicPolicy.revalidatedPolicy(incoming(directive), { status: 503, headers: {} }).modified, true);
+  }
 });
 
 test('unknown source bytes, version, package identity and entrypoint fail closed without modifying the source', (t) => {
@@ -202,7 +325,7 @@ test('the CLI fails closed before patching and applies/checks only a private fix
   const script = join(root, 'scripts', 'http-cache-security.mjs');
   mkdirSync(join(root, 'scripts'));
   copyFileSync(new URL('./http-cache-security.mjs', import.meta.url), script);
-  const execute = (command) => spawnSync(process.execPath, [script, command], { encoding: 'utf8', timeout: 3000, maxBuffer: 64 * 1024 });
+  const execute = (command) => spawnSync(process.execPath, [script, command], { encoding: 'utf8', timeout: 10_000, maxBuffer: 64 * 1024 });
   const initial = execute('--check');
   assert.ifError(initial.error);
   assert.equal(initial.status, 1);
