@@ -203,6 +203,68 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+    "slug": "backwardation",
+    "sigle": "Backwardation",
+    "nom": "Futures below the spot price",
+    "def": "A market structure in which a futures price is below the spot price for a comparable product and market. Immediate physical supply can have industrial value, such as keeping production running. The curve alone does not establish a local shortage or a borrower’s profit; grade, location, timing, transport and financing must also be considered.",
+    "guide": "/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/",
+    "sectionTitle": "Energy & geopolitics",
+    "accent": "var(--color-amber)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "Receiving oil promptly may be more valuable than receiving it later.",
+      "articles": [
+        {
+          "label": "Emergency oil reserves: the contracts behind the release",
+          "href": "/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "CME, contango and backwardation",
+          "href": "https://www.cmegroup.com/education/courses/introduction-to-ferrous-metals/what-is-contango-and-backwardation",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "spr"
+      ]
+    }
+  },
+  {
+    "slug": "lc",
+    "sigle": "LC",
+    "nom": "Letter of credit",
+    "def": "A conditional undertaking by a bank to pay against documents that satisfy the agreed terms. A documentary letter of credit supports a transaction; a standby letter of credit generally guarantees payment if the customer fails to perform. Its face amount is a banking commitment and need not equal a cash deposit by the customer.",
+    "guide": "/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/",
+    "sectionTitle": "Markets & clearing",
+    "accent": "var(--color-topic-blue)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "Issuing a bank undertaking and drawing on it are separate events.",
+      "articles": [
+        {
+          "label": "Emergency oil reserves: the buyer’s guarantees",
+          "href": "/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/",
+          "detail": "A historical 2019 sales clause, kept separate from 2026 exchanges.",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "DOE, sales provisions in effect on 1 March 2019, C.21",
+          "href": "https://www.energy.gov/sites/default/files/2025-06/Appendix%20A%20to%20Part%20625_%20Title%2010%20%28in%20effect%20on%203-01-2019%29.pdf",
+          "detail": "Initial standby letter of credit for 100% of the contract value; not the terms of 2026 exchanges.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "spr"
+      ]
+    }
+  },
 {
   "slug": "pue",
   "sigle": "PUE",
@@ -2368,7 +2430,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       intuition: 'A stock cushions an interruption when oil can be withdrawn, transported and processed in time. A repayment promise organises future availability.',
       formula: 'theoretical coverage (days) = deployable volume (barrels) / remaining gap (barrels per day)',
       whyNow: 'The September 2026 U.S. offer includes return windows through 2029. Barrel premiums must be read alongside timing and logistical capacity.',
-      articles: [{ label: 'Strategic oil reserves buy time', href: '/en/analysis/strategic-oil-reserves-borrowing-time/' }, { label: 'Oil reserves: the journey from storage to diesel', href: '/en/analysis/oil-reserves-crude-diesel-contents-delivery/' }, { label: 'Emergency oil reserves: the distance to the pump', href: '/en/analysis/emergency-oil-reserves-last-mile-logistics/' }, { label: 'Emergency oil reserves: the refinery sets the pace', href: '/en/analysis/emergency-oil-reserves-refining-capacity-maintenance/' }, oilArticles[0], oilArticles[1]],
+      articles: [{ label: 'Strategic oil reserves buy time', href: '/en/analysis/strategic-oil-reserves-borrowing-time/' }, { label: 'Oil reserves: the journey from storage to diesel', href: '/en/analysis/oil-reserves-crude-diesel-contents-delivery/' }, { label: 'Emergency oil reserves: the distance to the pump', href: '/en/analysis/emergency-oil-reserves-last-mile-logistics/' }, { label: 'Emergency oil reserves: the refinery sets the pace', href: '/en/analysis/emergency-oil-reserves-refining-capacity-maintenance/' }, { label: 'Emergency oil reserves: the contracts behind the release', href: '/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/', kind: 'article' }, oilArticles[0], oilArticles[1]],
       guides: [oilGuide],
       ...energyShared,
       sources: [

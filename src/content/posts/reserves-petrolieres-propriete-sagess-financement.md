@@ -518,6 +518,7 @@ On peut donc suivre le secours jusqu’à la porte du dépôt : un propriétair
 
 ## Pour prolonger
 
+- [Volet 5 : les contrats qui ouvrent les vannes](/posts/reserves-petrolieres-ventes-echanges-attribution/) suit les ventes, prêts en barils et garanties.
 - [Volet 4 : la raffinerie impose son rythme](/posts/reserves-petrolieres-raffinage-capacites-maintenance/) suit les unités, l’hydrogène et les calendriers de maintenance.
 - [Volet 3 : les kilomètres qui restent](/posts/reserves-petrolieres-logistique-dernier-kilometre/), des dépôts jusqu’aux cuves des stations.
 - [Du brut au diesel : le trajet industriel des réserves](/posts/reserves-petrolieres-brut-diesel-contenu-delais/).

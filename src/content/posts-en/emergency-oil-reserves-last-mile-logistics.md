@@ -721,6 +721,7 @@ The next instalment moves one step upstream, to the refinery. Where the required
 
 ## Further reading
 
+- [Part 5: the contracts behind the release](/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/) follows sales, loans in barrels and guarantees.
 - [Part 4: the refinery sets the pace](/en/analysis/emergency-oil-reserves-refining-capacity-maintenance/) follows processing units, hydrogen and maintenance schedules.
 - [Read the oil market](/en/guides/read-oil-market/) connects stocks, refining and prices.
 - [Strategic oil reserves buy time](/en/analysis/strategic-oil-reserves-borrowing-time/) follows borrowing and repayment.

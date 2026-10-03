@@ -730,6 +730,7 @@ Le volet suivant remontera d’un maillon : la raffinerie. Lorsque le produit n�
 
 ## Pour prolonger
 
+- [Volet 5 : les contrats qui ouvrent les vannes](/posts/reserves-petrolieres-ventes-echanges-attribution/) suit les ventes, prêts en barils et garanties.
 - [Volet 4 : la raffinerie impose son rythme](/posts/reserves-petrolieres-raffinage-capacites-maintenance/) suit les unités, l’hydrogène et les calendriers de maintenance.
 - [Lire le marché pétrolier](/guides/lire-le-marche-petrolier/) relie stocks, raffinage et prix.
 - [Les réserves de pétrole achètent du temps](/posts/petrole-reserves-strategiques-prets-temps/) suit les prêts et les restitutions.

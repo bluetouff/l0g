@@ -85,7 +85,17 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
 assert.equal(glossaryEntries.length, 577, 'Le corpus doit conserver ses 577 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 137, 'Le graphe Atlas doit conserver ses 137 nœuds');
+assert.equal(glossaryAtlasEntries.length, 139, 'Le graphe Atlas doit conserver ses 139 nœuds, dont LC et backwardation');
+for (const slug of ['lc', 'backwardation']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: définition et sources FR/EN requises`);
+  assert.equal(en.robots, 'noindex,follow');
+  assert.equal(fr.reference, undefined);
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert(fr.atlas.articles.some(article => article.href === '/posts/reserves-petrolieres-ventes-echanges-attribution/'));
+  assert(en.atlas.articles.some(article => article.href === '/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/'));
+}
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'mvno'), '/posts/sfr-rachat-partage-operateur-prix-forfaits/'],
   [glossaryAtlasEnBySlug.get('mvno'), '/en/analysis/sfr-breakup-phone-bill-networks-competition/'],
@@ -112,7 +122,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 452, 'Le graphe Atlas doit conserver ses 452 relations');
+assert.equal(glossaryAtlasEdgeCount, 455, 'Le graphe Atlas doit conserver ses 455 relations, dont LC et backwardation');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 1020" role="img" aria-labelledby="reserves05-fr-1-full-wide-title reserves05-fr-1-full-wide-desc" data-figure="1" data-diagram="release-contracts" data-as-of="2026-10-03" data-scale="qualitative" data-observed-flows="unavailable" style="width:100%;height:auto">
+<title id="reserves05-fr-1-full-wide-title">Trois contrats pour libérer un stock</title><desc id="reserves05-fr-1-full-wide-desc">Schéma qualitatif : vente américaine contre paiement ; échange américain contre restitution et prime ; mise à disposition SAGESS avec retour en bac. Flèches sans proportion. Aucun tarif français supposé.</desc><style>:root{color-scheme:light;--color-ink:#e7e9ee;--color-surface:#ffffff;--color-surface-2:#eef0f4;--color-line-strong:rgba(12, 13, 16, 0.26);--color-paper:#1b1d23;--color-muted:#4d5461;--color-signal:#0b5f58;--color-accent:#a50f4d;--color-amber:#92400e;--color-topic-blue:#1d4ed8}@media(prefers-color-scheme:dark){:root{color-scheme:dark;--color-ink:#0c0d10;--color-surface:#121419;--color-surface-2:#171a20;--color-line-strong:rgba(255, 255, 255, 0.20);--color-paper:#e7e9ee;--color-muted:#8b909b;--color-signal:#5eead4;--color-accent:#ff4d87;--color-amber:#f5b13d;--color-topic-blue:#7aa2f7}}</style><metadata>{"edition": "2026-10-03", "sources": [{"id": "S03", "publisher": "US Department of Energy", "title": "SPR Sales and Exchanges", "url": "https://www.energy.gov/hgeo/opr/spr-sales-and-exchanges", "reference_period": "Présentation générale, consultée le 3 octobre 2026"}, {"id": "S04", "publisher": "SAGESS", "title": "Fournir", "url": "https://www.sagess.fr/fr/logistique/constituer-des-stocks-prives-pour-parer-aux-penuries/fournir", "reference_period": "Procédure générale publiée par l’opérateur ; consultation du 3 octobre 2026"}, {"id": "S05", "publisher": "International Energy Agency", "title": "France Oil Security Policy", "url": "https://www.iea.org/articles/france-oil-security-policy", "reference_period": "Évaluation institutionnelle publiée en juin 2022"}, {"id": "S22", "publisher": "Ministère français chargé de l’énergie", "title": "La chaîne pétrolière", "url": "https://www.ecologie.gouv.fr/politiques-publiques/chaine-petroliere", "reference_period": "Description institutionnelle ; données de dates hétérogènes"}], "convention": "Schéma qualitatif : vente américaine contre paiement ; échange américain contre restitution et prime ; mise à disposition SAGESS avec retour en bac. Flèches sans proportion. Aucun tarif français supposé."}</metadata>
+<defs>
+<marker id="reserves05-fr-1-full-wide-t" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8" fill="var(--color-signal)" /></marker>
+<marker id="reserves05-fr-1-full-wide-a" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8" fill="var(--color-amber)" /></marker>
+<marker id="reserves05-fr-1-full-wide-i" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8" fill="var(--color-paper)" /></marker>
+<marker id="reserves05-fr-1-full-wide-s" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8" fill="var(--color-muted)" /></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="1020" rx="0" fill="var(--color-ink)" />
+<text x="44" y="37" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="var(--color-paper)" text-anchor="start">l0g.</text>
+<text x="1076" y="35" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="var(--color-muted)" text-anchor="end">RÉSERVES / 05 · 01</text>
+<path d="M44,55 L1076,55" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
+<text x="44" y="102" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" fill="var(--color-paper)" text-anchor="start">Trois contrats pour libérer un stock</text>
+<text x="44" y="148" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">La contrepartie dépend du montage.</text>
+<circle cx="58" cy="189" r="14" fill="var(--color-paper)" />
+<text x="58" y="194" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)" text-anchor="middle">1</text>
+<text x="83" y="195" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-paper)" text-anchor="start">VENTE SPR</text>
+<rect x="44" y="224" width="245" height="100" rx="9" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5" />
+<rect x="830" y="224" width="246" height="100" rx="9" fill="color-mix(in srgb, var(--color-signal) 10%, var(--color-surface))" stroke="var(--color-signal)" stroke-width="1.5" />
+<text x="166" y="282" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Réserve publique</text>
+<text x="953" y="282" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-signal)" text-anchor="middle">Acheteur</text>
+<path d="M303,254 L815,254" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#reserves05-fr-1-full-wide-t)" />
+<text x="559" y="238" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" fill="var(--color-signal)" text-anchor="middle">Pétrole au point de livraison</text>
+<path d="M815,306 L303,306" fill="none" stroke="var(--color-amber)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#reserves05-fr-1-full-wide-a)" />
+<text x="559" y="338" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" fill="var(--color-amber)" text-anchor="middle">Paiement contractuel</text>
+<text x="44" y="379" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="var(--color-muted)" text-anchor="start">Choisir une offre et un acheteur capables d’exécuter le contrat.</text>
+<circle cx="58" cy="424" r="14" fill="var(--color-paper)" />
+<text x="58" y="429" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)" text-anchor="middle">2</text>
+<text x="83" y="430" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-paper)" text-anchor="start">ÉCHANGE SPR</text>
+<rect x="44" y="459" width="245" height="100" rx="9" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5" />
+<rect x="830" y="459" width="246" height="100" rx="9" fill="color-mix(in srgb, var(--color-signal) 10%, var(--color-surface))" stroke="var(--color-signal)" stroke-width="1.5" />
+<text x="166" y="517" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Réserve publique</text>
+<text x="953" y="517" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-signal)" text-anchor="middle">Emprunteur</text>
+<path d="M303,489 L815,489" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#reserves05-fr-1-full-wide-t)" />
+<text x="559" y="473" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" fill="var(--color-signal)" text-anchor="middle">Pétrole attribué, puis enlevé</text>
+<path d="M815,541 L303,541" fill="none" stroke="var(--color-amber)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7 5" marker-end="url(#reserves05-fr-1-full-wide-a)" />
+<text x="559" y="573" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" fill="var(--color-amber)" text-anchor="middle">Retour du principal + prime en pétrole</text>
+<text x="44" y="614" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="var(--color-muted)" text-anchor="start">L’enlèvement crée une obligation de restitution future.</text>
+<circle cx="58" cy="659" r="14" fill="var(--color-paper)" />
+<text x="58" y="664" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)" text-anchor="middle">3</text>
+<text x="83" y="665" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-paper)" text-anchor="start">ALLOCATION SAGESS</text>
+<rect x="44" y="694" width="245" height="100" rx="9" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5" />
+<rect x="830" y="694" width="246" height="100" rx="9" fill="color-mix(in srgb, var(--color-signal) 10%, var(--color-surface))" stroke="var(--color-signal)" stroke-width="1.5" />
+<text x="166" y="752" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Stocks SAGESS</text>
+<text x="953" y="752" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="var(--color-signal)" text-anchor="middle">Opérateur désigné</text>
+<path d="M303,724 L815,724" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#reserves05-fr-1-full-wide-t)" />
+<text x="559" y="708" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" fill="var(--color-signal)" text-anchor="middle">Produit cédé en bac</text>
+<path d="M815,776 L303,776" fill="none" stroke="var(--color-amber)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7 5" marker-end="url(#reserves05-fr-1-full-wide-a)" />
+<text x="559" y="808" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" fill="var(--color-amber)" text-anchor="middle">Restitution de produits en bac</text>
+<text x="44" y="849" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="var(--color-muted)" text-anchor="start">L’administration fixe le bénéficiaire, le volume, la qualité et le lieu.</text>
+<rect x="44" y="877" width="1032" height="52" rx="6" fill="color-mix(in srgb, var(--color-amber) 10%, var(--color-surface))" />
+<text x="64" y="909" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-amber)" text-anchor="start">Point de vigilance : les frais des allocations françaises ne sont pas chiffrés dans la procédure publiée.</text>
+<path d="M44,932 L1076,932" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
+<text x="44" y="955" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="var(--color-muted)" text-anchor="start">Sources : DOE · SAGESS · AIE · DGEC</text>
+<text x="44" y="978" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="var(--color-muted)" text-anchor="start">Schéma de mécanismes. Traits pointillés : retour futur. Aucun volume représenté.</text>
+</svg>
