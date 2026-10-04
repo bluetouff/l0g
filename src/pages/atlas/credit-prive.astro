@@ -5,15 +5,16 @@ import dataset from '../../data/private-credit-atlas.json';
 const latestDate = dataset.milestones.at(-1)!.date;
 ---
 
-<BaseLayout title={dataset.title} seoTitle="Atlas du crédit privé : fonds, assureurs et banques | l0g" description="Explorez les circuits du crédit privé : Apollo, Athene, Ares Capital, BNP Paribas, JPMorgan et les entreprises financées. Relations, contrats et sources." sidebar={false}>
+<BaseLayout title={dataset.title} seoTitle="Atlas du crédit privé : fonds, assureurs et banques | l0g" description="Explorez les circuits du crédit privé : Apollo, Athene, Ares Capital, ATLAS SP, Pagaya et les banques. Relations, contrats et sources." sidebar={false}>
   <EngagementAtlas
     dataset={dataset}
     subject="crédit privé"
-    intro="Qui apporte les capitaux, qui gère les fonds et qui emprunte ? Explorez deux circuits documentés : les prêts aux entreprises autour d’Ares Capital et le crédit adossé à des actifs autour d’Apollo et d’Athene."
+    intro="Qui apporte les capitaux, qui gère les fonds et qui emprunte ? Explorez les prêts aux entreprises autour d’Ares Capital et le crédit adossé à des actifs autour d’Apollo, d’Athene et d’ATLAS SP, jusqu’aux prêts personnels de la plateforme Pagaya."
     boundary="La carte couvre une sélection de relations publiées, principalement aux États-Unis. Un même acteur peut intervenir dans plusieurs circuits : cela n’établit pas qu’une banque finance un prêt précis, ni qu’elle garantit les autres participants. ATLAS SP désigne ici une société, distincte des atlas l0g."
-    selectedRelation="noteholders-arcc"
+    selectedRelation="atlas-pagaya-vfn"
     hubs={['arcc', 'atlas-sp', 'athene']}
     entryPoints={[
+      { label: 'Comment ATLAS finance-t-il les prêts Pagaya ?', relation: 'atlas-pagaya-vfn', date: latestDate },
       { label: 'Comment ARCC se refinance-t-elle ?', relation: 'noteholders-arcc', date: latestDate },
       { label: 'Où interviennent les banques ?', relation: 'bnp-afb', date: latestDate },
       { label: 'Comment l’assureur investit-il ?', relation: 'athene-atlas', date: latestDate },
@@ -27,9 +28,10 @@ const latestDate = dataset.milestones.at(-1)!.date;
     ]}
   >
     <section slot="overview" class="credit-overview" aria-labelledby="credit-circuits-title">
+      <p class="credit-review"><strong>Revue du <time datetime="2026-10-04">4 octobre 2026</time>.</strong> Le <a href="https://investor.pagaya.com/news-releases/news-release-details/pagaya-secures-first-variable-funding-note-facility-atlas-sp">communiqué Pagaya du 29 septembre</a> ajoute un entrepôt de prêts à la carte. VFN signifie <em>Variable Funding Note</em>, un financement renouvelable par titres. Les positions de portefeuille restent datées du 30 juin 2026. ARCC <a href="https://arcc.ares.com/news/ares-capital-corporation-schedules-earnings-release-for-the-third-quarter-ended-september-30-2026/47c2ef5e-1218-459c-bc46-73fc46ce2cc9">prévoit ses résultats du troisième trimestre le 27 octobre</a> ; ce calendrier ne décrit pas de nouveaux prêts ou remboursements.</p>
       <details>
       <summary id="credit-circuits-title">Comprendre les rôles dans le circuit du crédit privé</summary>
-      <p>Le crédit privé finance les entreprises en dehors du prêt bancaire traditionnel et des marchés obligataires publics. Les banques restent présentes dans le financement des intermédiaires.</p>
+      <p>Dans les circuits présentés, ARCC prête aux entreprises tandis qu’ATLAS SP finance des portefeuilles de créances, dont des prêts personnels. Les banques restent présentes dans le financement des intermédiaires.</p>
       <ol class="credit-roles">
         <li><span>Apporter des capitaux</span><h3>Investisseurs et assureurs</h3><p>Fonds de pension, assureurs et autres investisseurs allouent des capitaux. L’investissement peut passer par un fonds ou être détenu au bilan.</p></li>
         <li><span>Choisir et gérer</span><h3>Gérants et véhicules</h3><p>Le gérant sélectionne et suit les placements. Le fonds ou la société de financement porte les actifs et peut lui-même emprunter.</p></li>
@@ -49,6 +51,9 @@ const latestDate = dataset.milestones.at(-1)!.date;
   .credit-overview summary { cursor:pointer; min-height:32px; color:var(--color-bright); font-family:var(--font-display); font-size:.95rem; }
   .credit-overview summary:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
   .credit-overview details>p { max-width:85ch; margin:.8rem 0; font-family:var(--font-read); line-height:1.7; font-size:.9rem; }
+  .credit-review { max-width:85ch; margin:0 0 1rem; padding:.8rem 1rem; border-left:2px solid var(--color-signal); background:var(--color-surface); font-family:var(--font-read); line-height:1.7; font-size:.85rem; }
+  .credit-review a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; }
+  .credit-review a:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
   .credit-roles { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.8rem; margin:1.2rem 0; list-style:none; padding:0; }
   .credit-roles li { padding:1rem; border:1px solid var(--color-line); border-radius:8px; background:var(--color-surface); }
   .credit-roles span { font-family:var(--font-mono); font-size:.65rem; color:var(--color-signal); }

@@ -16,13 +16,13 @@ import dataset from '../../data/oil-financing-atlas.json';
     dataset={dataset}
     subject="financement du pétrole"
     intro="Qui paie le vendeur, qui avance l’argent et qui reçoit les recettes ? Suivez une cargaison, le financement d’un négociant, un prêt pétrolier au Tchad et le projet de financement d’une flotte."
-    boundary="Quatre cas documentés, à des périodes différentes. Les flèches représentent la relation décrite dans chaque fiche, pas toujours un versement. Au 23 septembre, le placement de Volare est alloué sous conditions ; son règlement reste attendu. Aucun financement de sa flotte par les crédits bancaires de Trafigura n’est établi ici. Les deux rôles de Glencore restent distincts : acheteur et créancier."
+    boundary="Quatre cas documentés, à des périodes différentes. Les flèches représentent la relation décrite dans chaque fiche, pas toujours un versement. Revue du 4 octobre : les actions nouvelles de Volare sont émises et enregistrées ; le règlement-livraison et la cotation restent à confirmer. Les facilités dont Trafigura annonce la clôture le 1er octobre ne prouvent aucun financement bancaire de Volare. Les deux rôles de Glencore restent distincts : acheteur et créancier."
     selectedRelation="investors-volare"
     hubs={['unicredit', 'trafigura', 'escrow']}
     entryPoints={[
-      { label: 'Où en est le financement de Volare ?', relation: 'investors-volare', date: '2026-09-23' },
+      { label: 'Où en est le financement de Volare ?', relation: 'investors-volare', date: '2026-10-01' },
       { label: 'Qui paie la cargaison ?', relation: 'unicredit-bp-payment', date: '2023-05-04' },
-      { label: 'Qui finance Trafigura ?', relation: 'ercf-trafigura-credit', date: '2026-03-10' },
+      { label: 'Que refinance Trafigura en octobre ?', relation: 'usd-cnh-trafigura-credit', date: '2026-10-01' },
       { label: 'Que reçoit le Trésor tchadien ?', relation: 'escrow-treasury-balance', date: '2025-12-30' },
     ]}
     outlinks={[
@@ -33,6 +33,7 @@ import dataset from '../../data/oil-financing-atlas.json';
     ]}
   >
     <section slot="overview" class="oil-overview" aria-labelledby="oil-circuits-title">
+      <p><strong>Revue ciblée du 4 octobre 2026.</strong> Les communiqués du 1er octobre documentent <a href="https://newsweb.oslobors.no/message/683407">l’émission des actions de Volare</a> et <a href="https://www.trafigura.com/news-and-insights/press-releases/2026/trafigura-secures-usd4-4-billion-syndicated-revolving-credit-facility-and-term-loan-facilities/">un refinancement de Trafigura</a>. Le démarrage des échanges de Volare reste prévu vers le 5 octobre, après cette revue. Le communiqué de Trafigura ne confirme aucune prolongation de la réserve de mars. La <a href="https://eiti.org/countries/chad">page Tchad de l’ITIE</a> renvoie toujours au rapport 2023 publié fin 2025 ; le circuit tchadien conserve cette période historique.</p>
       <details>
         <summary id="oil-circuits-title">Quatre circuits pour lire le financement</summary>
         <ol>

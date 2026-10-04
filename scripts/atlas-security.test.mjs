@@ -22,6 +22,16 @@ test('atlas source links retain exact HTTPS origin and path validation at use', 
     'https://newsweb.oslobors.no/admin', 'https://newsweb.oslobors.no/message/not-a-number',
     `${newsweb}/extra`, 'http://newsweb.oslobors.no/message/682895',
   ]) assert.throws(() => atlasSourceUrl(url));
+  const pagaya = 'https://investor.pagaya.com/news-releases/news-release-details/pagaya-secures-first-variable-funding-note-facility-atlas-sp';
+  assert.equal(atlasSourceUrl(pagaya), pagaya);
+  for (const url of [
+    pagaya.replace('investor.pagaya.com', 'investor.pagaya.com.evil.example'),
+    pagaya.replace('investor.pagaya.com', 'investor.pagaya.com@evil.example'),
+    pagaya.replace('https://', 'https://user:pass@'),
+    `${pagaya}?token=private`, `${pagaya}#fragment`, `${pagaya}/extra`,
+    'https://investor.pagaya.com/admin',
+    pagaya.replace('https://', 'http://'),
+  ]) assert.throws(() => atlasSourceUrl(url));
   for (const origin of ['https://aligneddc.com', 'https://arcc.ares.com']) {
     assert.equal(atlasSourceUrl(`${origin}/news`), `${origin}/news`);
     for (const url of [`${origin}.evil.example/news`, `${origin}@evil.example/news`, `${origin}/news?token=private`, `${origin}/news#fragment`, origin.replace('https://', 'https://user:pass@') + '/news']) assert.throws(() => atlasSourceUrl(url));

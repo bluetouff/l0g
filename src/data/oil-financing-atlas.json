@@ -38,6 +38,20 @@
       "url": "https://newsweb.oslobors.no/message/682895",
       "publishedOn": "2026-09-23",
       "locator": "Communiqué du 23 septembre, 08:17:32 ; Private Placement in summary ; Conditions for completion ; Shares, share capital and free float."
+    },
+    {
+      "id": "volare-capital-20261001",
+      "title": "Volare Shipping : émission et enregistrement des actions nouvelles",
+      "url": "https://newsweb.oslobors.no/message/683407",
+      "publishedOn": "2026-10-01",
+      "locator": "Communiqué du 1er octobre, 11:58:26 : actions allouées, émises et enregistrées ; capital émis et libéré ; premier jour de cotation attendu ; About Volare Shipping."
+    },
+    {
+      "id": "trafigura-facilities-20261001",
+      "title": "Trafigura : clôture de 4,4 Md$ de crédits renouvelables et prêts à terme",
+      "url": "https://www.trafigura.com/news-and-insights/press-releases/2026/trafigura-secures-usd4-4-billion-syndicated-revolving-credit-facility-and-term-loan-facilities/",
+      "publishedOn": "2026-10-01",
+      "locator": "Communiqué du 1er octobre : quatre tranches USD/CNH, refinancement des tranches de 2023 et 2025, usages généraux, 40 institutions et coordination globale d’OCBC."
     }
   ],
   "nodes": [
@@ -98,6 +112,20 @@
       "row": 2
     },
     {
+      "id": "ocbc",
+      "label": "OCBC",
+      "role": "Banque · coordination de la syndication",
+      "column": 0,
+      "row": 3
+    },
+    {
+      "id": "usd-cnh-facilities",
+      "label": "Crédits USD et CNH",
+      "role": "Syndication d’octobre · Trafigura",
+      "column": 2,
+      "row": 3
+    },
+    {
       "id": "sht",
       "label": "SHT",
       "role": "Société des hydrocarbures du Tchad",
@@ -135,7 +163,7 @@
     {
       "id": "volare-investors",
       "label": "Investisseurs du placement",
-      "role": "Souscripteurs envisagés · Volare",
+      "role": "Souscripteurs · Volare",
       "column": 2,
       "row": 1
     },
@@ -492,6 +520,46 @@
       ]
     },
     {
+      "id": "ocbc-facilities-coordination",
+      "from": "ocbc",
+      "to": "usd-cnh-facilities",
+      "observations": [
+        {
+          "publishedOn": "2026-10-01",
+          "recordedOn": "2026-10-04",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Coordination globale · syndication d’octobre",
+          "claim": "Trafigura désigne Oversea-Chinese Banking Corporation (OCBC) comme coordinateur global des facilités dont la clôture est annoncée le 1er octobre. Quarante institutions financières participent à la transaction.",
+          "limit": "Le rôle de coordinateur ne signifie pas qu’OCBC finance seule ces lignes. Sa part d’engagement n’est pas précisée.",
+          "watch": "Répartition des engagements entre prêteurs.",
+          "sources": [
+            "trafigura-facilities-20261001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usd-cnh-trafigura-credit",
+      "from": "usd-cnh-facilities",
+      "to": "trafigura",
+      "observations": [
+        {
+          "publishedOn": "2026-10-01",
+          "recordedOn": "2026-10-04",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Crédits et prêts à terme · 4,4 Md$",
+          "claim": "Trafigura annonce la clôture d’environ 4,4 milliards de dollars de facilités : crédits renouvelables de 1,1 milliard sur 365 jours et 0,2 milliard sur cinq ans, prêts à terme de 1,6 milliard en équivalent dollars libellé en CNH sur un an et de 1,5 milliard de dollars sur trois ans.",
+          "limit": "Leur emploi prévu est le refinancement de tranches conclues en 2023 et 2025 et la couverture de besoins généraux. Leur montant n’est ni un tirage ni un apport net de 4,4 milliards. Elles sont distinctes des crédits européens et de la réserve de mars ; aucun financement de Volare ni prolongation de cette réserve n’en est déduit.",
+          "watch": "Tirages, refinancements réalisés et échéances. CNH désigne le renminbi négocié hors de Chine continentale.",
+          "sources": [
+            "trafigura-facilities-20261001"
+          ]
+        }
+      ]
+    },
+    {
       "id": "trafigura-volare",
       "from": "trafigura",
       "to": "volare",
@@ -554,6 +622,20 @@
           "sources": [
             "volare-placement-20260923"
           ]
+        },
+        {
+          "publishedOn": "2026-10-01",
+          "recordedOn": "2026-10-04",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Actions nouvelles émises et enregistrées",
+          "claim": "Volare confirme l’émission et l’enregistrement des 30 698 864 actions nouvelles du placement. Le nombre total d’actions atteint 70 319 479.",
+          "limit": "Le capital déclaré émis et libéré n’est pas le produit encaissé du placement. Ce communiqué ne confirme pas le règlement-livraison aux investisseurs, prévu vers le 5 octobre par celui du 23 septembre. La cotation reste attendue vers cette date et l’option d’émission supplémentaire n’est pas confirmée.",
+          "watch": "Règlement-livraison, première séance et stabilisation.",
+          "sources": [
+            "volare-capital-20261001",
+            "volare-placement-20260923"
+          ]
         }
       ]
     },
@@ -587,6 +669,20 @@
           "sources": [
             "volare-placement-20260923"
           ]
+        },
+        {
+          "publishedOn": "2026-10-01",
+          "recordedOn": "2026-10-04",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Commandes · livraisons prévues en 2027 et 2028",
+          "claim": "Volare confirme six VLCC exploités et huit en commande, avec des livraisons prévues entre 2027 et 2028.",
+          "limit": "Ce calendrier reste prévisionnel. L’émission des actions n’atteste aucun paiement aux chantiers ni remboursement des dettes mentionnées le 23 septembre.",
+          "watch": "Livraisons et emploi effectif des fonds.",
+          "sources": [
+            "volare-capital-20261001",
+            "volare-placement-20260923"
+          ]
         }
       ]
     }
@@ -616,6 +712,11 @@
       "date": "2026-09-23",
       "label": "Placement alloué, règlement attendu",
       "change": "Volare annonce les allocations du placement. Le règlement, la cotation et l’émission supplémentaire éventuelle restent à confirmer ; les emplois prévus des fonds sont précisés."
+    },
+    {
+      "date": "2026-10-01",
+      "label": "Actions émises et refinancement de Trafigura",
+      "change": "Volare confirme l’émission et l’enregistrement des actions ; la cotation reste attendue vers le 5 octobre. Trafigura annonce séparément la clôture de 4,4 Md$ de facilités USD/CNH, sans lien bancaire établi vers Volare."
     }
   ]
 }

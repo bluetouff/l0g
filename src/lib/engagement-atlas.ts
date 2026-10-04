@@ -31,6 +31,7 @@ const allowedOrigins = new Set([
   'https://www.quadrantchambers.com', 'https://eiti.org', 'https://www.trafigura.com',
   'https://aligneddc.com', 'https://arcc.ares.com',
   'https://newsweb.oslobors.no',
+  'https://investor.pagaya.com',
 ]);
 /** Canonical source URL shared by corpus validation and the browser link sink. */
 export function atlasSourceUrl(value: string): string {
@@ -39,6 +40,7 @@ export function atlasSourceUrl(value: string): string {
   if (url.protocol !== 'https:' || !allowedOrigins.has(url.origin) || url.username || url.password || url.search || url.hash) throw new Error('Atlas : origine ou URL source refusée');
   if (url.origin === 'https://www.sec.gov' && !/^\/Archives\/edgar\/data\/\d+\/\d+\/[a-zA-Z0-9._-]+\.htm$/.test(url.pathname)) throw new Error('Atlas : chemin SEC refusé');
   if (url.origin === 'https://newsweb.oslobors.no' && !/^\/message\/\d+$/.test(url.pathname)) throw new Error('Atlas : chemin NewsWeb refusé');
+  if (url.origin === 'https://investor.pagaya.com' && !/^\/news-releases\/news-release-details\/[a-z0-9-]+$/.test(url.pathname)) throw new Error('Atlas : chemin Pagaya refusé');
   return url.href;
 }
 const idPattern = /^[a-z][a-z0-9-]{0,79}$/;

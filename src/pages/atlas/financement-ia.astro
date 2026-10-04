@@ -23,5 +23,19 @@ import dataset from '../../data/engagement-atlas.json';
       { href: '/api/v1/engagement-atlas.json', label: 'Réutiliser les relations et leurs sources · JSON' },
       { href: '/radar/', label: 'Explorer les transmissions macroéconomiques' },
     ]}
-  />
+  >
+    <section slot="overview" class="ia-review" aria-labelledby="ia-review-title">
+      <h2 id="ia-review-title">Revue ciblée du <time datetime="2026-10-04">4 octobre 2026</time></h2>
+      <p>Le <a href="https://data.sec.gov/submissions/CIK0002133037.json">registre public de SB Energy à la SEC</a> consulté lors de ce passage a pour dernier dépôt le <a href="https://www.sec.gov/Archives/edgar/data/2133037/000162828026062846/sbenergy-sx1a2.htm">prospectus du 21 septembre</a>. Les clauses du préfinancement et du placement simultané ont été relues. Aucune pièce examinée ne confirme le règlement de l’achat d’actions supplémentaire de Nvidia ou la réalisation de l’introduction en Bourse.</p>
+      <p>Les publications récentes d’<a href="https://aligneddc.com/press-release/aligned-data-centers-appoints-industry-veteran-chris-drumgoole-as-chief-operating-officer/">Aligned</a>, de <a href="https://blogs.nvidia.com/blog/gpus-openai-gpt-6-astra-ultrafast/">Nvidia</a> et d’<a href="https://openai.com/news/company-announcements/">OpenAI</a> consultées n’établissent pas d’évolution des relations financières retenues. Cette vérification porte sur les dossiers de la carte ; elle ne couvre pas tous les financements de l’IA. La chronologie conserve les dates de publication des pièces et les dates de revue des observations précédentes.</p>
+    </section>
+  </EngagementAtlas>
 </BaseLayout>
+
+<style>
+  .ia-review { margin:1rem 0 2rem; padding:1rem 1.2rem; border:1px solid var(--color-line); border-left:3px solid var(--color-signal); border-radius:8px; background:var(--color-surface); }
+  .ia-review h2 { margin:0 0 .7rem; color:var(--color-bright); font-family:var(--font-display); font-size:1rem; }
+  .ia-review p { max-width:90ch; margin:.7rem 0; font-family:var(--font-read); font-size:.85rem; line-height:1.7; }
+  .ia-review a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; }
+  .ia-review a:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+</style>

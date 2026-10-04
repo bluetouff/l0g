@@ -244,3 +244,43 @@ test('Volare allocation preserves the earlier proposal and does not imply settle
   assert.match(changed.find(item => item.id === 'trafigura-volare').observation.limit, /prospectif et conditionnel/);
   assert.equal(current.relations.filter(item => item.to === 'volare').every(item => ['trafigura', 'volare-investors'].includes(item.from)), true);
 });
+
+test('Pagaya warehouse enters on publication without turning targeted capacity into drawn cash', () => {
+  const before = atlasAt(credit, '2026-09-28');
+  assert.equal(before.nodes.some(item => item.id === 'pagaya-vfn'), false);
+  assert.equal(before.sources.some(item => item.id === 'pagaya-atlas-vfn-20260929'), false);
+  const current = atlasAt(credit, '2026-09-29');
+  const facility = current.relations.find(item => item.id === 'atlas-pagaya-vfn');
+  assert.deepEqual([facility.from, facility.to], ['atlas-sp', 'pagaya-vfn']);
+  assert.equal(facility.observation.kind, 'announcement');
+  assert.equal(facility.observation.recordedOn, '2026-10-04');
+  assert.equal(facility.observation.amount, undefined);
+  assert.deepEqual(facility.observation.sources, ['pagaya-atlas-vfn-20260929']);
+  assert.match(facility.observation.claim, /capacité ciblée/);
+  assert.match(facility.observation.limit, /ne nomme pas juridiquement le véhicule/);
+  assert.equal(credit.relations.some(item => ['bnp', 'athene'].includes(item.from) && item.to === 'pagaya-vfn'), false);
+  assert.equal(atlasSelection(credit, '#date=2026-09-29&relation=atlas-pagaya-vfn&scenario=default').scenario, false);
+});
+
+test('October oil disclosures preserve the conditional placement and separate Trafigura refinancing', () => {
+  const before = atlasAt(oil, '2026-09-30');
+  assert.equal(before.nodes.some(item => ['ocbc', 'usd-cnh-facilities'].includes(item.id)), false);
+  assert.equal(before.sources.some(item => item.publishedOn === '2026-10-01'), false);
+  assert.equal(before.relations.find(item => item.id === 'investors-volare').observation.kind, 'announcement');
+  const current = atlasAt(oil, '2026-10-01');
+  const placement = current.relations.find(item => item.id === 'investors-volare');
+  assert.equal(placement.observation.kind, 'contract');
+  assert.equal(placement.observation.recordedOn, '2026-10-04');
+  assert.deepEqual(placement.observation.sources, ['volare-capital-20261001', 'volare-placement-20260923']);
+  assert.match(placement.observation.claim, /30 698 864/);
+  assert.match(placement.observation.limit, /ne confirme pas le règlement-livraison/);
+  assert.equal(placement.observation.amount, undefined);
+  const coordination = current.relations.find(item => item.id === 'ocbc-facilities-coordination');
+  const financing = current.relations.find(item => item.id === 'usd-cnh-trafigura-credit');
+  assert.deepEqual([coordination.from, coordination.to, financing.from, financing.to], ['ocbc', 'usd-cnh-facilities', 'usd-cnh-facilities', 'trafigura']);
+  assert.match(coordination.observation.limit, /ne signifie pas qu’OCBC finance seule/);
+  assert.match(financing.observation.claim, /équivalent dollars.*CNH/);
+  assert.equal(financing.observation.amount, undefined);
+  assert.equal(oil.relations.some(item => ['ocbc', 'usd-cnh-facilities'].includes(item.from) && item.to.startsWith('volare')), false);
+  assert.equal(atlasSelection(oil, '#date=2026-10-01&relation=investors-volare&scenario=default').scenario, false);
+});
