@@ -42,3 +42,56 @@ test('a substantive externally cited claim keeps its source instead of becoming 
   assert.equal(result.claims.length, 1);
   assert(result.claims[0].references.some(ref => ref.href === 'https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3'));
 });
+
+test('source periods keep their labels without synthetic publication days', () => {
+  for (const [label, path, expectedLabel] of [
+    ['Report', '/date/2026/report.html', '2026'],
+    ['Report September 2026', '/report.html', 'September 2026'],
+    ['Report Q3 2026', '/report.html', 'T3 2026'],
+  ]) {
+    const result = buildArticleEvidence(`${paragraph} [${label}](https://www.ecb.europa.eu${path})`, options);
+    const reference = result.claims[0].references[0];
+    assert.equal(reference.sourcePublicationDateLabel, expectedLabel);
+    assert.equal(reference.sourcePublicationDateIso, undefined);
+    assert.equal(reference.dateIso, undefined);
+  }
+});
+
+test('source dates preserve valid full dates and reject impossible calendar days', () => {
+  for (const [label, expected] of [
+    ['Report 2026-01-01', '2026-01-01'],
+    ['Report 2026-09-29', '2026-09-29'],
+    ['Report 29 septembre 2026', '2026-09-29'],
+    ['Report September 29, 2026', '2026-09-29'],
+    ['Report 2024-02-29', '2024-02-29'],
+    ['Report 2026-02-29', undefined],
+    ['Report 2026-13-02', undefined],
+    ['Report 2026-04-31', undefined],
+  ]) {
+    const result = buildArticleEvidence(`${paragraph} [${label}](https://www.ecb.europa.eu/report.html)`, options);
+    assert.equal(result.claims[0].references[0].sourcePublicationDateIso, expected);
+  }
+});
+
+test('an undated external source does not inherit the article publication date', () => {
+  const result = buildArticleEvidence(`${paragraph} [Report](https://www.ecb.europa.eu/report.html)`, options);
+  const claim = result.claims[0];
+  assert.equal(claim.claimDateIso, '2026-09-25');
+  assert.equal(claim.references[0].sourcePublicationDateIso, undefined);
+  assert.equal(claim.references[0].dateIso, undefined);
+  const fallback = buildArticleEvidence(paragraph, options).claims[0];
+  assert.equal(fallback.references[0].href, options.url);
+  assert.equal(fallback.references[0].sourcePublicationDateIso, '2026-09-25');
+});
+
+test('source precision changes preserve normalized observation periods', () => {
+  const result = buildArticleEvidence('En 2026, le document décrit les règles applicables aux demandes de rectification et les conditions de limitation du traitement [Report](https://www.ecb.europa.eu/date/2026/report.html).', options);
+  assert.equal(result.claims[0].observationDateIso, '2026-01-01');
+  assert.equal(result.claims[0].temporalPrecision, 'year');
+  assert.equal(result.claims[0].references[0].sourcePublicationDateIso, undefined);
+  const quarterly = buildArticleEvidence('En T2 2025, le document décrit les règles applicables aux demandes de rectification et les conditions de limitation du traitement [Report](https://www.ecb.europa.eu/date/2026/report.html).', options).claims[0];
+  assert.equal(quarterly.observationDateIso, '2025-04-01');
+  assert.equal(quarterly.temporalPrecision, 'quarter');
+  assert.equal(quarterly.claimDateIso, '2026-09-25');
+  assert.equal(quarterly.references[0].sourcePublicationDateIso, undefined);
+});

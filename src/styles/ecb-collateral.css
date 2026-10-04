@@ -118,6 +118,15 @@
 @media (min-width: 780px) {
   .prose .l0g-collateral .ecb-source-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+@media (min-width: 1024px) {
+  body:has(.l0g-collateral[lang="fr"]) aside > div.sticky:has(> .article-sidebar) {
+    max-height: calc(100vh - 4rem);
+    max-height: calc(100dvh - 4rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-signal) var(--color-surface);
+  }
+}
 @media (max-width: 640px) {
   .l0g-collateral .ecb-wide { display: none; }
   .l0g-collateral .ecb-mobile { display: block; max-width: 350px; margin-inline: auto; }

@@ -426,7 +426,13 @@ function observationDateForBlock(block: string) {
 }
 
 function sourcePublicationDateForLink(link: EvidenceLink) {
-  return extractDateFromText(`${link.label} ${link.href}`);
+  const date = extractDateFromText(`${link.label} ${link.href}`);
+  // Claim periods use normalized dates plus their precision. A source date
+  // reaches <time> and JSON-LD without that precision, so keep coarse labels
+  // without inventing the first day of a month, quarter or year.
+  if (!date?.iso || date.precision !== 'day') return date ? { ...date, iso: undefined } : null;
+  const parsed = new Date(`${date.iso}T00:00:00Z`);
+  return Number.isFinite(parsed.valueOf()) && parsed.toISOString().slice(0, 10) === date.iso ? date : null;
 }
 
 function claimClassifier(text: string): ClaimEvidence['classifier'] {
