@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 650 480 400" role="img" aria-labelledby="reserves06-fr-2-panel2-dark-title reserves06-fr-2-panel2-dark-desc" lang="fr" data-figure="2" data-diagram="observed-tax-bridge-and-hypothetical-scenario" data-as-of="2026-10-03" data-unit="eurocent-per-litre" data-observation-date="2026-09-25" data-geography="mainland-France-excluding-Corsica" data-vat-rate-pct="20" data-scenario="hypothetical-not-forecast" width="480" height="400" data-crop-start="650" data-crop-end="1050" data-panel="2">
+<title id="reserves06-fr-2-panel2-dark-title">Exemple hypothétique à fiscalité constante</title><desc id="reserves06-fr-2-panel2-dark-desc">Exemple hypothétique distinct des observations : une baisse de 10 centimes par litre HTT, avec accise inchangée et TVA de 20 %, réduit le prix TTC de 12 centimes. Sous répercussion intégrale, économie de 6 euros sur 50 litres ; aucune prévision.</desc>
+<metadata>{"edition":"2026-10-03","convention":"France métropolitaine hors Corse, gazole du 25 septembre 2026, centimes d’euro par litre : prix hors toutes taxes 136,80, accise de référence 60,75, TVA calculée 39,51, prix TTC 237,06. Addition représentée à l’échelle ; 50 litres coûtent 118,53 euros.","sources":[{"id":"S02","publisher":"DGEC","title":"Cours, prix et marges des produits pétroliers en France et dans l’Union européenne, bulletin du 25 septembre 2026","url":"https://www.ecologie.gouv.fr/sites/default/files/documents/NPG-2026.09.25.pdf","reference_period":"Bulletin daté du 25 septembre 2026 ; prix de détail du 3 juillet au 25 septembre ; cotations des semaines étiquetées 18 et 25 septembre"},{"id":"S05","publisher":"Ministère de la Transition écologique","title":"Guide 2026 sur la fiscalité des énergies","url":"https://www.ecologie.gouv.fr/sites/default/files/documents/Guide%202026%20sur%20fiscalit%C3%A9%20des%20%C3%A9nergies.pdf","reference_period":"Guide 2026 ; annexe au 1er août 2026"}]}</metadata><defs><marker id="reserves06-fr-2-panel2-dark-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#5eead4"></path></marker><marker id="reserves06-fr-2-panel2-dark-signal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#f5b13d" stroke-width="1.6"></path></marker></defs>
+<defs><clipPath id="reserves06-fr-2-panel2-dark-viewport" clipPathUnits="userSpaceOnUse"><rect x="0" y="650" width="480" height="400"></rect></clipPath></defs><g clip-path="url(#reserves06-fr-2-panel2-dark-viewport)" data-source-composition="complete"><rect x="0" y="0" width="480" height="1050" rx="0" fill="#0c0d10"></rect>
+<text x="26" y="34" font-family="ui-monospace, monospace" font-size="14" font-weight="700" text-anchor="start" fill="#5eead4">l0g.  /  06.02</text>
+<text x="26" y="79" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start" fill="#e7e9ee">Ce que contient un litre</text>
+<text x="26" y="123" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#8b909b">Gazole · 25 septembre 2026 · Centimes d’euro</text>
+<text x="26" y="148" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#8b909b">par litre</text>
+<path d="M59 531.0 L449 531.0" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="49" y="537.0" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="end" fill="#8b909b">0</text>
+<path d="M59 469.4 L449 469.4" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="49" y="475.4" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="end" fill="#8b909b">50</text>
+<path d="M59 407.8 L449 407.8" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="49" y="413.8" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="end" fill="#8b909b">100</text>
+<path d="M59 346.20000000000005 L449 346.20000000000005" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="49" y="352.20000000000005" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="end" fill="#8b909b">150</text>
+<path d="M59 284.6 L449 284.6" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="49" y="290.6" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="end" fill="#8b909b">200</text>
+<path d="M59 223.0 L449 223.0" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="49" y="229.0" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="end" fill="#8b909b">250</text>
+<rect x="68.0" y="362.4624" width="54" height="168.5376" rx="0" fill="#5eead4" data-component="pre-tax" data-value="136.8" data-status="observed-rounded"></rect>
+<text x="95" y="347.4624" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#5eead4">136,80</text>
+<path d="M122.0 362.4624 L167.0 362.4624" fill="none" stroke="#8b909b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"></path>
+<text x="95" y="560" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#e7e9ee">Prix</text>
+<text x="95" y="584" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#e7e9ee">HTT</text>
+<rect x="167.0" y="287.6184" width="54" height="74.844" rx="0" fill="#f5b13d" data-component="excise" data-value="60.75" data-status="reference-rate"></rect>
+<text x="194" y="272.6184" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#f5b13d">+60,75</text>
+<path d="M221.0 287.6184 L266.0 287.6184" fill="none" stroke="#8b909b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"></path>
+<text x="194" y="560" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#e7e9ee">Accise</text>
+<rect x="266.0" y="238.94208000000003" width="54" height="48.676319999999976" rx="0" fill="#7aa2f7" data-component="VAT" data-value="39.51" data-status="calculated"></rect>
+<text x="293" y="223.94208000000003" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#7aa2f7">+39,51</text>
+<text x="293" y="560" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#e7e9ee">TVA</text>
+<rect x="365.0" y="238.94208000000003" width="54" height="292.05791999999997" rx="0" fill="#e7e9ee" data-component="tax-inclusive" data-value="237.06" data-status="observed-rounded"></rect>
+<text x="392" y="223.94208000000003" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#e7e9ee">237,06</text>
+<text x="392" y="560" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#e7e9ee">Prix</text>
+<text x="392" y="584" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#e7e9ee">TTC</text>
+<text x="27" y="630" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="start" fill="#e7e9ee">118,53 €</text>
+<text x="231" y="629" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#8b909b">pour 50 litres</text>
+<rect x="26" y="669" width="428" height="290" rx="9" fill="#29241d" data-scenario="hypothetical" data-pre-tax-change="-10" data-vat-change="-2" data-tax-inclusive-change="-12" data-saving-fifty-litres-eur="6" data-assumptions="unchanged-excise-and-20pct-VAT-full-transmission-not-forecast"></rect>
+<text x="45" y="699" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#f5b13d">EXEMPLE HYPOTHÉTIQUE</text>
+<text x="45" y="750" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="#e7e9ee">−10 c/L</text>
+<text x="236" y="750" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="#5eead4">−12 c/L</text>
+<path d="M200 738 L223 738" fill="none" stroke="#5eead4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves06-fr-2-panel2-dark-arrow)"></path>
+<text x="45" y="782" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start" fill="#8b909b">Prix HTT</text>
+<text x="236" y="782" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start" fill="#8b909b">Prix TTC</text>
+<text x="45" y="827.0" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">Accise inchangée ; TVA réduite de 2</text>
+<text x="45" y="854.0" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">c/L.</text>
+<text x="45" y="896.0" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#5eead4">Soit 6 € sur 50 L, sous répercussion</text>
+<text x="45" y="923.0" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#5eead4">intégrale.</text>
+<path d="M26 988 L454 988" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="26" y="1015" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#8b909b">Calculs l0g · DGEC, 25/09/2026 ; guide fiscal 2026 · Exemple</text>
+<text x="26" y="1034" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#8b909b">≠ prévision</text>
+</g></svg>

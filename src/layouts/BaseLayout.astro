@@ -8,6 +8,7 @@ import CspMeta from '../components/CspMeta.astro';
 import { authorEntity, organizationEntity, websiteEntity } from '../config/entities.ts';
 import { buildSeoMetadata } from '../lib/seo.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
+import { getPublicationSocial } from '../config/publication-social.mjs';
 import pagefindInitUrl from '../scripts/pagefind-init.js?url';
 import interLatinUrl from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import jetBrainsMonoLatinUrl from '@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url';
@@ -47,12 +48,13 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
-const ogImageUrl = new URL(ogImage, Astro.site).toString();
+const publicationSocial = getPublicationSocial(Astro.url.pathname);
+const ogImageUrl = new URL(publicationSocial?.image ?? ogImage, Astro.site).toString();
 const seo = buildSeoMetadata(title, seoDescription || description, { seoTitle });
 const fullTitle = seo.fullTitle;
 const socialTitle = (ogTitle ?? '').trim() || fullTitle;
 const metaDescription = seo.description;
-const socialImageAlt = ogImageAlt ?? `${socialTitle} - carte sociale l0g.fr`;
+const socialImageAlt = publicationSocial?.alt ?? ogImageAlt ?? `${socialTitle} - carte sociale l0g.fr`;
 const year = new Date().getFullYear();
 const path = Astro.url.pathname;
 const hasContextSidebar = Astro.slots.has('sidebar');

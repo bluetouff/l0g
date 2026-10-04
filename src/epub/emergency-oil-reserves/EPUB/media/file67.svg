@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 825" role="img" aria-labelledby="reserves06-en-2-wide-title reserves06-en-2-wide-desc" lang="en" data-figure="2" data-diagram="observed-tax-bridge-and-hypothetical-scenario" data-as-of="2026-10-03" data-unit="eurocent-per-litre" data-observation-date="2026-09-25" data-geography="mainland-France-excluding-Corsica" data-vat-rate-pct="20" data-scenario="hypothetical-not-forecast">
+<title id="reserves06-en-2-wide-title">What goes into the price of a litre</title><desc id="reserves06-en-2-wide-desc">Diesel on 25 September 2026: 136.80 cents before taxes +60.75 excise +39.51 VAT =237.06. Separate scenario: -10 before tax gives -12 including tax with tax rules unchanged.</desc>
+<metadata>{"edition":"2026-10-03","convention":"Mainland France excluding Corsica, diesel on 25 September 2026, euro cents per litre: pre-tax price 136.80, reference excise 60.75, calculated VAT 39.51, tax-inclusive price 237.06. The additive bridge is to scale; 50 litres cost €118.53.","sources":[{"id":"S02","publisher":"DGEC","title":"Cours, prix et marges des produits pétroliers en France et dans l’Union européenne, bulletin du 25 septembre 2026","url":"https://www.ecologie.gouv.fr/sites/default/files/documents/NPG-2026.09.25.pdf","reference_period":"Bulletin daté du 25 septembre 2026 ; prix de détail du 3 juillet au 25 septembre ; cotations des semaines étiquetées 18 et 25 septembre"},{"id":"S05","publisher":"Ministère de la Transition écologique","title":"Guide 2026 sur la fiscalité des énergies","url":"https://www.ecologie.gouv.fr/sites/default/files/documents/Guide%202026%20sur%20fiscalit%C3%A9%20des%20%C3%A9nergies.pdf","reference_period":"Guide 2026 ; annexe au 1er août 2026"}]}</metadata><defs><marker id="reserves06-en-2-wide-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#5eead4"></path></marker><marker id="reserves06-en-2-wide-signal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#f5b13d" stroke-width="1.6"></path></marker></defs>
+<rect x="0" y="0" width="1100" height="825" rx="0" fill="#0c0d10"></rect>
+<text x="42" y="39" font-family="ui-monospace, monospace" font-size="16" font-weight="700" text-anchor="start" fill="#5eead4">l0g.  /  06.02</text>
+<text x="42" y="92" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="start" fill="#e7e9ee">The price inside a litre</text>
+<text x="42" y="145" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start" fill="#8b909b">Diesel · 25 September 2026 · Euro cents per litre</text>
+<path d="M88 482.0 L1069 482.0" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="78" y="488.0" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end" fill="#8b909b">0</text>
+<path d="M88 423.6 L1069 423.6" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="78" y="429.6" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end" fill="#8b909b">50</text>
+<path d="M88 365.2 L1069 365.2" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="78" y="371.2" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end" fill="#8b909b">100</text>
+<path d="M88 306.8 L1069 306.8" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="78" y="312.8" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end" fill="#8b909b">150</text>
+<path d="M88 248.39999999999998 L1069 248.39999999999998" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="78" y="254.39999999999998" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end" fill="#8b909b">200</text>
+<path d="M88 190.0 L1069 190.0" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="78" y="196.0" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end" fill="#8b909b">250</text>
+<rect x="162.5" y="322.2176" width="137" height="159.7824" rx="0" fill="#5eead4" data-component="pre-tax" data-value="136.8" data-status="observed-rounded"></rect>
+<text x="231" y="307.2176" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#5eead4">136.80</text>
+<path d="M299.5 322.2176 L384.5 322.2176" fill="none" stroke="#8b909b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"></path>
+<text x="231" y="511" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle" fill="#e7e9ee">Before</text>
+<text x="231" y="535" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle" fill="#e7e9ee">taxes</text>
+<rect x="384.5" y="251.2616" width="137" height="70.95600000000002" rx="0" fill="#f5b13d" data-component="excise" data-value="60.75" data-status="reference-rate"></rect>
+<text x="453" y="236.2616" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#f5b13d">+60.75</text>
+<path d="M521.5 251.2616 L607.5 251.2616" fill="none" stroke="#8b909b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"></path>
+<text x="453" y="511" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle" fill="#e7e9ee">Excise</text>
+<rect x="607.5" y="205.11392" width="137" height="46.14767999999998" rx="0" fill="#7aa2f7" data-component="VAT" data-value="39.51" data-status="calculated"></rect>
+<text x="676" y="190.11392" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#7aa2f7">+39.51</text>
+<text x="676" y="511" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle" fill="#e7e9ee">VAT</text>
+<rect x="851.5" y="205.11392" width="137" height="276.88608" rx="0" fill="#e7e9ee" data-component="tax-inclusive" data-value="237.06" data-status="observed-rounded"></rect>
+<text x="920" y="190.11392" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#e7e9ee">237.06</text>
+<text x="920" y="511" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle" fill="#e7e9ee">Pump</text>
+<text x="920" y="535" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle" fill="#e7e9ee">price</text>
+<text x="85" y="574" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start" fill="#5eead4">50 L</text>
+<text x="190" y="578" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="start" fill="#e7e9ee">€118.53</text>
+<text x="487" y="568" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">VAT: 20% × (pre-tax price + excise)</text>
+<text x="487" y="597" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start" fill="#8b909b">Fixed excise stays at 60.75 c/litre.</text>
+<rect x="42" y="632" width="1016" height="110" rx="9" fill="#29241d" data-scenario="hypothetical" data-pre-tax-change="-10" data-vat-change="-2" data-tax-inclusive-change="-12" data-saving-fifty-litres-eur="6" data-assumptions="unchanged-excise-and-20pct-VAT-full-transmission-not-forecast"></rect>
+<text x="64" y="660" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" text-anchor="start" fill="#f5b13d">SCENARIO</text>
+<text x="64" y="706" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start" fill="#e7e9ee">−10 c/L pre-tax</text>
+<path d="M317 693 L358 693" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves06-en-2-wide-arrow)"></path>
+<text x="383" y="706" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start" fill="#5eead4">−12 c/L at pump</text>
+<text x="745" y="677.0" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">€6 on 50 L. Unchanged</text>
+<text x="745" y="704.0" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">taxes and full</text>
+<text x="745" y="731.0" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">pass-through.</text>
+<path d="M42 763 L1058 763" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="42" y="790" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#8b909b">l0g calculations · DGEC, 25 Sep 2026; tax guide 2026 · Example ≠ forecast</text>
+</svg>

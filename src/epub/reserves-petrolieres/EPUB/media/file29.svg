@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 1090" role="img" aria-labelledby="reserves03-fr-4-wide-title reserves03-fr-4-wide-desc" lang="fr" data-model="inventory-balance" data-diagram="station-stock-flow">
+<title id="reserves03-fr-4-wide-title">La cuve se remplit avec le surplus</title>
+<desc id="reserves03-fr-4-wide-desc">Bilan physique simplifié · Même carburant et même période · Hors pertes et corrections.</desc>
+<defs>
+<marker id="reserves03-fr-4-wide-ink" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#e7e9ee" stroke-width="1.3"></path></marker>
+<marker id="reserves03-fr-4-wide-teal" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#5eead4" stroke-width="1.3"></path></marker>
+<marker id="reserves03-fr-4-wide-gold" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#f5b13d" stroke-width="1.3"></path></marker>
+<marker id="reserves03-fr-4-wide-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#7aa2f7" stroke-width="1.3"></path></marker>
+<marker id="reserves03-fr-4-wide-copper" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#ff4d87" stroke-width="1.3"></path></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="1090" rx="0" fill="#0c0d10"></rect>
+<rect x="0" y="0" width="1120" height="7" rx="0" fill="#5eead4"></rect>
+<text x="42" y="40" fill="#5eead4" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" text-anchor="start">l0g / RÉSERVES / 03.4</text>
+<text x="42" y="91" fill="#e7e9ee" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="start">La cuve se remplit avec le surplus</text>
+<text x="42" y="126" fill="#8b909b" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Bilan physique simplifié · Même carburant et même période · Hors pertes et corrections.</text>
+<g transform="translate(85 223) scale(1.12)">
+<rect x="0" y="13" width="111" height="43" rx="21" fill="#121419" stroke="#7aa2f7" stroke-width="1.4"></rect>
+<line x1="8" y1="61" x2="152" y2="61" stroke="#e7e9ee" stroke-width="3"></line>
+<line x1="25" y1="18" x2="25" y2="51" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<line x1="53" y1="18" x2="53" y2="51" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<line x1="80" y1="18" x2="80" y2="51" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<path d="M117 30 H140 L160 48 V61 H117 Z" fill="#121419" stroke="#7aa2f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M123 35 H137 L150 47 H123 Z" fill="#1a292c" stroke="#7aa2f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="21" cy="65" r="9" fill="#121419" stroke="#e7e9ee"></circle>
+<circle cx="21" cy="65" r="3" fill="#e7e9ee"></circle>
+<circle cx="83" cy="65" r="9" fill="#121419" stroke="#e7e9ee"></circle>
+<circle cx="83" cy="65" r="3" fill="#e7e9ee"></circle>
+<circle cx="102" cy="65" r="9" fill="#121419" stroke="#e7e9ee"></circle>
+<circle cx="102" cy="65" r="3" fill="#e7e9ee"></circle>
+<circle cx="140" cy="65" r="9" fill="#121419" stroke="#e7e9ee"></circle>
+<circle cx="140" cy="65" r="3" fill="#e7e9ee"></circle>
+<rect x="51" y="33" width="14" height="9" rx="1" fill="#29241d" stroke="#f5b13d" stroke-width="1.4"></rect>
+<line x1="5" y1="79" x2="168" y2="79" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></line>
+</g>
+<g transform="translate(926 237) scale(1.04)">
+<rect x="0" y="18" width="45" height="76" rx="4" fill="#121419" stroke="#5eead4" stroke-width="1.4"></rect>
+<rect x="8" y="29" width="28" height="19" rx="2" fill="#1a292c" stroke="#5eead4" stroke-width="1.4"></rect>
+<path d="M45 38 H57 V82 Q70 91 72 76 V39 L63 25" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M60 20 L74 33 L67 43 L58 30 Z" fill="#121419" stroke="#5eead4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="-7" y1="95" x2="54" y2="95" stroke="#5eead4" stroke-width="3"></line>
+<rect x="10" y="58" width="8" height="13" rx="1" fill="#5eead4"></rect>
+<rect x="27" y="58" width="8" height="13" rx="1" fill="#5eead4"></rect>
+</g>
+<text x="181" y="209" fill="#7aa2f7" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" text-anchor="middle">LIVRAISONS</text>
+<text x="960" y="209" fill="#f5b13d" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" text-anchor="middle">VENTES</text>
+<line x1="42" y1="391" x2="1078" y2="391" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></line>
+<text x="65" y="417" fill="#8b909b" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" text-anchor="start">SOUS LE SOL</text>
+<rect x="388" y="421" width="344" height="167" rx="83.5" fill="#121419" stroke="#5eead4" stroke-width="1.4"></rect>
+<defs><clipPath id="reserves03-fr-4-wide-liquid"><rect x="390" y="423" width="340" height="163" rx="81.5"></rect></clipPath></defs>
+<g clip-path="url(#reserves03-fr-4-wide-liquid)">
+<rect x="388" y="507.84000000000003" width="344" height="91.85000000000001" rx="0" fill="#1a292c"></rect>
+<line x1="388" y1="507.84000000000003" x2="732" y2="507.84000000000003" stroke="#5eead4" stroke-width="2"></line>
+</g>
+<path d="M484.32 424 V585" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M628.8 424 V585" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M467.12 421 V381 M646.0 421 V381" fill="none" stroke="#5eead4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M279 273 H467 V379" fill="none" stroke="#7aa2f7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves03-fr-4-wide-blue)"></path>
+<path d="M646 379 V321 H940" fill="none" stroke="#f5b13d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves03-fr-4-wide-gold)"></path>
+<text x="561" y="493" fill="#5eead4" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle">Stock de la station</text>
+<text x="561" y="535" fill="#8b909b" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="500" text-anchor="middle">Niveau schématique</text>
+<rect x="42" y="635" width="1036" height="79" rx="8" fill="#1a292c"></rect>
+<text x="560" y="670" fill="#5eead4" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="middle">Variation du stock = volume livré − volume vendu</text>
+<text x="560" y="697" fill="#5eead4" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="500" text-anchor="middle">Les deux flux sont comparés sur la même période.</text>
+<text x="56" y="765" fill="#ff4d87" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">Livraisons &#x3C; ventes</text>
+<line x1="63" y1="893" x2="336" y2="893" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<line x1="63" y1="803" x2="63" y2="893" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<path d="M73 807 L322 876" fill="none" stroke="#ff4d87" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves03-fr-4-wide-copper)" data-trend="falling"></path>
+<text x="63" y="924" fill="#ff4d87" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">Le stock baisse</text>
+<text x="408" y="765" fill="#7aa2f7" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">Livraisons = ventes</text>
+<line x1="415" y1="893" x2="688" y2="893" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<line x1="415" y1="803" x2="415" y2="893" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<path d="M425 844 L674 844" fill="none" stroke="#7aa2f7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves03-fr-4-wide-blue)" data-trend="unchanged"></path>
+<text x="415" y="924" fill="#7aa2f7" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">Le stock se stabilise</text>
+<text x="760" y="765" fill="#5eead4" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">Livraisons > ventes</text>
+<line x1="767" y1="893" x2="1040" y2="893" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<line x1="767" y1="803" x2="767" y2="893" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<path d="M777 876 L1026 807" fill="none" stroke="#5eead4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#reserves03-fr-4-wide-teal)" data-trend="rising"></path>
+<text x="767" y="924" fill="#5eead4" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">La marge se reconstitue</text>
+<text x="560" y="980" fill="#8b909b" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="500" text-anchor="middle">Sens de variation uniquement : aucun débit, volume ou délai observé.</text>
+<line x1="42" y1="1021" x2="1078" y2="1021" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<text x="42" y="1037" fill="#8b909b" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">Source : modèle l0g, identité de conservation du stock.</text>
+<text x="42" y="1059" fill="#8b909b" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" text-anchor="start">Schéma qualitatif ; aucune série de livraisons réelles.</text>
+</svg>

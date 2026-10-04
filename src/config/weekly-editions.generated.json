@@ -2700,5 +2700,522 @@
       "windowStart": "2026-09-20T08:30:00+02:00",
       "windowEnd": "2026-09-27T08:30:00+02:00"
     }
+  },
+  {
+    "issue": 10,
+    "slug": "2026-10-04",
+    "publishedAt": "2026-10-04T08:30:00+02:00",
+    "title": "L’Hebdo du 4 octobre. Réserves pétrolières : du marché au prix du plein",
+    "description": "Édition automatisée du 4 octobre : 38 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Réserves pétrolières : du marché au prix du plein",
+      "href": "/posts/reserves-petrolieres-transmission-prix-pompe/",
+      "update": "Du déstockage au plein : cours, change, délais, TVA et marges. Enquête sur les données françaises et les économies encore à mesurer."
+    },
+    "lead": "Le gazole moyen français vaut 2,3706 euros par litre le 25 septembre, avant l’annonce du G7 du 2 octobre. Les taxes et les délais séparent le prix de gros du plein.",
+    "number": {
+      "value": "38",
+      "label": "analyses publiées du 27 septembre à 08 h 30 au 4 octobre à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "Une baisse de dix centimes du prix de détail hors toutes taxes réduit le prix TTC de douze centimes à fiscalité constante, dans le scénario présenté.",
+    "test": "L’effet propre de l’intervention d’octobre reste à estimer. Les coefficients de transmission cités ont été publiés en 2021.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "38 analyses publiées en sept jours",
+      "subtitle": "du 27 septembre à 08 h 30 au 4 octobre à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-10-04",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "LA SEMAINE EN CHIFFRES",
+      "points": [
+        {
+          "label": "dim 27/09",
+          "shortLabel": "dim 27/09",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-09-27",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 28/09",
+          "shortLabel": "lun 28/09",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-09-28",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 29/09",
+          "shortLabel": "mar 29/09",
+          "value": 8,
+          "valueLabel": "8",
+          "nature": "analyses publiées",
+          "scope": "2026-09-29",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 30/09",
+          "shortLabel": "mer 30/09",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-09-30",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 01/10",
+          "shortLabel": "jeu 01/10",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-10-01",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 02/10",
+          "shortLabel": "ven 02/10",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-10-02",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 03/10",
+          "shortLabel": "sam 03/10",
+          "value": 7,
+          "valueLabel": "7",
+          "nature": "analyses publiées",
+          "scope": "2026-10-03",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 04/10",
+          "shortLabel": "dim 04/10",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-10-04",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Le gazole moyen français vaut 2,3706 euros par litre le 25 septembre, avant l’annonce du G7 du 2 octobre. Les taxes et les délais séparent le prix de gros du plein.",
+    "linkedin": "38 analyses publiées sur l0g du 27 septembre à 08 h 30 au 4 octobre à 08 h 30.\n\nFocus structuré : Réserves pétrolières : du marché au prix du plein.\n\nLe gazole moyen français vaut 2,3706 euros par litre le 25 septembre, avant l’annonce du G7 du 2 octobre. Les taxes et les délais séparent le prix de gros du plein.\n\nPourquoi le lire : Une baisse de dix centimes du prix de détail hors toutes taxes réduit le prix TTC de douze centimes à fiscalité constante, dans le scénario présenté.\n\nLimite à garder : L’effet propre de l’intervention d’octobre reste à estimer. Les coefficients de transmission cités ont été publiés en 2021.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-10-04/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 4 octobre compte 38 analyses publiées. Focus : Réserves pétrolières : du marché au prix du plein.",
+      "2/5 Le gazole moyen français vaut 2,3706 euros par litre le 25 septembre, avant l’annonce du G7 du 2 octobre. Les taxes et les délais séparent le prix de gros du plein.",
+      "3/5 Pourquoi le lire : Une baisse de dix centimes du prix de détail hors toutes taxes réduit le prix TTC de douze centimes à fiscalité constante, dans le scénario présenté.",
+      "4/5 Limite : L’effet propre de l’intervention d’octobre reste à estimer. Les coefficients de transmission cités ont été publiés en 2021.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-10-04/"
+    ],
+    "sources": [
+      {
+        "label": "Réserves pétrolières : du marché au prix du plein",
+        "href": "/posts/reserves-petrolieres-transmission-prix-pompe/",
+        "role": "Analyse publiée le 3 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Réserves pétrolières : les contrats qui ouvrent les vannes",
+        "href": "/posts/reserves-petrolieres-ventes-echanges-attribution/",
+        "role": "Analyse publiée le 3 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Brésil : le prix de la pression américaine",
+        "href": "/posts/bresil-prix-pression-americaine/",
+        "role": "Analyse publiée le 3 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Réserves pétrolières : la raffinerie impose son rythme",
+        "href": "/posts/reserves-petrolieres-raffinage-capacites-maintenance/",
+        "role": "Analyse publiée le 3 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Réserves pétrolières : les kilomètres qui restent",
+        "href": "/posts/reserves-petrolieres-logistique-dernier-kilometre/",
+        "role": "Analyse publiée le 3 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Réserves pétrolières : les propriétaires du secours",
+        "href": "/posts/reserves-petrolieres-propriete-sagess-financement/",
+        "role": "Analyse publiée le 3 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Réserves pétrolières : le chemin jusqu’au diesel",
+        "href": "/posts/reserves-petrolieres-brut-diesel-contenu-delais/",
+        "role": "Analyse publiée le 3 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Bull à Angers : les puces, l’usine et le cash",
+        "href": "/posts/bull-usine-angers-supercalculateurs/",
+        "role": "Analyse publiée le 2 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Déficit américain : suivre les importations jusqu’à l’usine",
+        "href": "/posts/deficit-commercial-americain-importations-aout-2026/",
+        "role": "Analyse publiée le 1 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Qui tient la porte d’entrée de la DeFi ?",
+        "href": "/posts/defi-intermediaires-acces-mica/",
+        "role": "Analyse publiée le 1 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Google : combien vaut l’accès à nos recherches ?",
+        "href": "/posts/google-donnees-recherche-prix-acces-vie-privee/",
+        "role": "Analyse publiée le 1 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "USD1 : à qui reviennent les intérêts du dollar de Trump ?",
+        "href": "/posts/usd1-trump-taux-interets-reserves-beneficiaires/",
+        "role": "Analyse publiée le 1 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Droits de douane : la facture continue pendant le procès",
+        "href": "/posts/droits-douane-tresorerie-proces-section-301/",
+        "role": "Analyse publiée le 30 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Un stablecoin couvert à 100 % : quand le dollar arrive-t-il sur votre compte ?",
+        "href": "/posts/stablecoin-reserves-delai-remboursement-dollar/",
+        "role": "Analyse publiée le 30 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’usine, sa chaudière et la sixième année",
+        "href": "/posts/chaleur-industrielle-if26-prime-carbone-sixieme-annee/",
+        "role": "Analyse publiée le 30 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Les fournisseurs invisibles du risque bancaire européen",
+        "href": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/",
+        "role": "Analyse publiée le 30 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Pékin prend sa part de la mensualité",
+        "href": "/posts/chine-credit-immobilier-bonification-mensualites/",
+        "role": "Analyse publiée le 30 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Les réserves de pétrole achètent du temps",
+        "href": "/posts/petrole-reserves-strategiques-prets-temps/",
+        "role": "Analyse publiée le 30 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le monde redécouvre le prix de l’argent",
+        "href": "/posts/le-monde-redecouvre-le-prix-de-l-argent/",
+        "role": "Analyse publiée le 29 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Budget russe 2027 : la facture passe aussi par les banques",
+        "href": "/posts/budget-russe-2027-defense-dette-banques-credit/",
+        "role": "Analyse publiée le 29 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quand le crédit commence à trier l’IA",
+        "href": "/posts/quand-le-credit-commence-a-trier-l-ia/",
+        "role": "Analyse publiée le 29 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "« Neutre en carbone » : l’étiquette face aux émissions",
+        "href": "/posts/neutralite-carbone-credits-produit-promesse/",
+        "role": "Analyse publiée le 29 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Aon et Blackstone : qui fixe le prix du risque ?",
+        "href": "/posts/aon-blackstone-cortina-prix-risque-reassurance/",
+        "role": "Analyse publiée le 29 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette, impôts, Europe : les risques de marché de LFI et du RN",
+        "href": "/posts/lfi-rn-risque-politique-marches-dette-fiscalite/",
+        "role": "Analyse publiée le 29 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Anthropic en Bourse : qui paiera la puissance de calcul ?",
+        "href": "/posts/anthropic-ipo-calcul-valorisation-risque-macro/",
+        "role": "Analyse publiée le 29 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Assurance auto : comment les assureurs trient leurs clients",
+        "href": "/posts/assurance-resiliation-sinistre-non-responsable-selection-risques/",
+        "role": "Analyse publiée le 29 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Greensill : l’argent prêté avant la facture",
+        "href": "/posts/greensill-assurance-creances-futures-risque/",
+        "role": "Analyse publiée le 28 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "CCIP 2.0 : faire circuler les actifs avec leurs règles",
+        "href": "/posts/ccip-2-0-actifs-regles-crypto-finance/",
+        "role": "Analyse publiée le 28 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette française : les créanciers pressés",
+        "href": "/posts/dette-francaise-hedge-funds/",
+        "role": "Analyse publiée le 28 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Musique IA : qui touche l’argent des fausses écoutes ?",
+        "href": "/posts/musique-ia-fausses-ecoutes-revenus-streaming/",
+        "role": "Analyse publiée le 28 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Polymarket veut entrer en Europe par la finance",
+        "href": "/posts/polymarket-europe-paris-produits-financiers/",
+        "role": "Analyse publiée le 28 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SFR : le partage d’un opérateur, vu depuis votre forfait",
+        "href": "/posts/sfr-rachat-partage-operateur-prix-forfaits/",
+        "role": "Analyse publiée le 28 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Les dettes de l’IA ont leur propre calendrier",
+        "href": "/posts/ia-ralentissement-6-dettes-contrats-garanties/",
+        "role": "Analyse publiée le 27 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’IA face au prix de l’attente",
+        "href": "/posts/ia-ralentissement-5-japon-taux-prix-attente/",
+        "role": "Analyse publiée le 27 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’IA chinoise à l’épreuve de l’usine",
+        "href": "/posts/ia-ralentissement-4-chine-puces-memoire-usines/",
+        "role": "Analyse publiée le 27 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Modèles chinois : le prix de l’avance américaine",
+        "href": "/posts/ia-ralentissement-3-modeles-chinois-prix-concurrence/",
+        "role": "Analyse publiée le 27 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Incidents d’IA : ce que les agents ont vraiment fait",
+        "href": "/posts/ia-ralentissement-2-incidents-securite-faits/",
+        "role": "Analyse publiée le 27 septembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Ralentir l’IA : qui pourra continuer ?",
+        "href": "/posts/ia-ralentissement-1-qui-pourra-continuer/",
+        "role": "Analyse publiée le 27 septembre 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Réserves pétrolières : du marché au prix du plein",
+        "href": "/posts/reserves-petrolieres-transmission-prix-pompe/",
+        "publishedAt": "2026-10-03T20:48:31.000Z"
+      },
+      {
+        "title": "Réserves pétrolières : les contrats qui ouvrent les vannes",
+        "href": "/posts/reserves-petrolieres-ventes-echanges-attribution/",
+        "publishedAt": "2026-10-03T19:27:26.000Z"
+      },
+      {
+        "title": "Brésil : le prix de la pression américaine",
+        "href": "/posts/bresil-prix-pression-americaine/",
+        "publishedAt": "2026-10-03T17:36:29.000Z"
+      },
+      {
+        "title": "Réserves pétrolières : la raffinerie impose son rythme",
+        "href": "/posts/reserves-petrolieres-raffinage-capacites-maintenance/",
+        "publishedAt": "2026-10-03T15:06:11.000Z"
+      },
+      {
+        "title": "Réserves pétrolières : les kilomètres qui restent",
+        "href": "/posts/reserves-petrolieres-logistique-dernier-kilometre/",
+        "publishedAt": "2026-10-03T13:25:07.000Z"
+      },
+      {
+        "title": "Réserves pétrolières : les propriétaires du secours",
+        "href": "/posts/reserves-petrolieres-propriete-sagess-financement/",
+        "publishedAt": "2026-10-03T10:20:22.000Z"
+      },
+      {
+        "title": "Réserves pétrolières : le chemin jusqu’au diesel",
+        "href": "/posts/reserves-petrolieres-brut-diesel-contenu-delais/",
+        "publishedAt": "2026-10-03T08:01:56.000Z"
+      },
+      {
+        "title": "Bull à Angers : les puces, l’usine et le cash",
+        "href": "/posts/bull-usine-angers-supercalculateurs/",
+        "publishedAt": "2026-10-02T07:55:39.000Z"
+      },
+      {
+        "title": "Déficit américain : suivre les importations jusqu’à l’usine",
+        "href": "/posts/deficit-commercial-americain-importations-aout-2026/",
+        "publishedAt": "2026-10-01T17:33:33.000Z"
+      },
+      {
+        "title": "Qui tient la porte d’entrée de la DeFi ?",
+        "href": "/posts/defi-intermediaires-acces-mica/",
+        "publishedAt": "2026-10-01T16:14:17.000Z"
+      },
+      {
+        "title": "Google : combien vaut l’accès à nos recherches ?",
+        "href": "/posts/google-donnees-recherche-prix-acces-vie-privee/",
+        "publishedAt": "2026-10-01T14:41:06.000Z"
+      },
+      {
+        "title": "USD1 : à qui reviennent les intérêts du dollar de Trump ?",
+        "href": "/posts/usd1-trump-taux-interets-reserves-beneficiaires/",
+        "publishedAt": "2026-10-01T05:49:02.000Z"
+      },
+      {
+        "title": "Droits de douane : la facture continue pendant le procès",
+        "href": "/posts/droits-douane-tresorerie-proces-section-301/",
+        "publishedAt": "2026-09-30T20:38:50.000Z"
+      },
+      {
+        "title": "Un stablecoin couvert à 100 % : quand le dollar arrive-t-il sur votre compte ?",
+        "href": "/posts/stablecoin-reserves-delai-remboursement-dollar/",
+        "publishedAt": "2026-09-30T15:49:53.000Z"
+      },
+      {
+        "title": "L’usine, sa chaudière et la sixième année",
+        "href": "/posts/chaleur-industrielle-if26-prime-carbone-sixieme-annee/",
+        "publishedAt": "2026-09-30T13:57:22.000Z"
+      },
+      {
+        "title": "Les fournisseurs invisibles du risque bancaire européen",
+        "href": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/",
+        "publishedAt": "2026-09-30T12:14:31.000Z"
+      },
+      {
+        "title": "Pékin prend sa part de la mensualité",
+        "href": "/posts/chine-credit-immobilier-bonification-mensualites/",
+        "publishedAt": "2026-09-30T07:39:58.000Z"
+      },
+      {
+        "title": "Les réserves de pétrole achètent du temps",
+        "href": "/posts/petrole-reserves-strategiques-prets-temps/",
+        "publishedAt": "2026-09-29T22:49:37.000Z"
+      },
+      {
+        "title": "Le monde redécouvre le prix de l’argent",
+        "href": "/posts/le-monde-redecouvre-le-prix-de-l-argent/",
+        "publishedAt": "2026-09-29T20:33:53.000Z"
+      },
+      {
+        "title": "Budget russe 2027 : la facture passe aussi par les banques",
+        "href": "/posts/budget-russe-2027-defense-dette-banques-credit/",
+        "publishedAt": "2026-09-29T18:36:07.000Z"
+      },
+      {
+        "title": "Quand le crédit commence à trier l’IA",
+        "href": "/posts/quand-le-credit-commence-a-trier-l-ia/",
+        "publishedAt": "2026-09-29T17:52:43.000Z"
+      },
+      {
+        "title": "« Neutre en carbone » : l’étiquette face aux émissions",
+        "href": "/posts/neutralite-carbone-credits-produit-promesse/",
+        "publishedAt": "2026-09-29T13:11:23.000Z"
+      },
+      {
+        "title": "Aon et Blackstone : qui fixe le prix du risque ?",
+        "href": "/posts/aon-blackstone-cortina-prix-risque-reassurance/",
+        "publishedAt": "2026-09-29T07:54:31.000Z"
+      },
+      {
+        "title": "Dette, impôts, Europe : les risques de marché de LFI et du RN",
+        "href": "/posts/lfi-rn-risque-politique-marches-dette-fiscalite/",
+        "publishedAt": "2026-09-29T06:59:05.000Z"
+      },
+      {
+        "title": "Anthropic en Bourse : qui paiera la puissance de calcul ?",
+        "href": "/posts/anthropic-ipo-calcul-valorisation-risque-macro/",
+        "publishedAt": "2026-09-29T05:55:26.000Z"
+      },
+      {
+        "title": "Assurance auto : comment les assureurs trient leurs clients",
+        "href": "/posts/assurance-resiliation-sinistre-non-responsable-selection-risques/",
+        "publishedAt": "2026-09-28T22:27:05.000Z"
+      },
+      {
+        "title": "Greensill : l’argent prêté avant la facture",
+        "href": "/posts/greensill-assurance-creances-futures-risque/",
+        "publishedAt": "2026-09-28T19:17:13.000Z"
+      },
+      {
+        "title": "CCIP 2.0 : faire circuler les actifs avec leurs règles",
+        "href": "/posts/ccip-2-0-actifs-regles-crypto-finance/",
+        "publishedAt": "2026-09-28T17:27:37.000Z"
+      },
+      {
+        "title": "Dette française : les créanciers pressés",
+        "href": "/posts/dette-francaise-hedge-funds/",
+        "publishedAt": "2026-09-28T15:35:22.000Z"
+      },
+      {
+        "title": "Musique IA : qui touche l’argent des fausses écoutes ?",
+        "href": "/posts/musique-ia-fausses-ecoutes-revenus-streaming/",
+        "publishedAt": "2026-09-28T12:32:46.000Z"
+      },
+      {
+        "title": "Polymarket veut entrer en Europe par la finance",
+        "href": "/posts/polymarket-europe-paris-produits-financiers/",
+        "publishedAt": "2026-09-28T09:44:05.000Z"
+      },
+      {
+        "title": "SFR : le partage d’un opérateur, vu depuis votre forfait",
+        "href": "/posts/sfr-rachat-partage-operateur-prix-forfaits/",
+        "publishedAt": "2026-09-28T07:15:52.000Z"
+      },
+      {
+        "title": "Les dettes de l’IA ont leur propre calendrier",
+        "href": "/posts/ia-ralentissement-6-dettes-contrats-garanties/",
+        "publishedAt": "2026-09-27T17:05:58.000Z"
+      },
+      {
+        "title": "L’IA face au prix de l’attente",
+        "href": "/posts/ia-ralentissement-5-japon-taux-prix-attente/",
+        "publishedAt": "2026-09-27T16:24:26.000Z"
+      },
+      {
+        "title": "L’IA chinoise à l’épreuve de l’usine",
+        "href": "/posts/ia-ralentissement-4-chine-puces-memoire-usines/",
+        "publishedAt": "2026-09-27T13:22:17.000Z"
+      },
+      {
+        "title": "Modèles chinois : le prix de l’avance américaine",
+        "href": "/posts/ia-ralentissement-3-modeles-chinois-prix-concurrence/",
+        "publishedAt": "2026-09-27T12:07:52.000Z"
+      },
+      {
+        "title": "Incidents d’IA : ce que les agents ont vraiment fait",
+        "href": "/posts/ia-ralentissement-2-incidents-securite-faits/",
+        "publishedAt": "2026-09-27T10:55:28.000Z"
+      },
+      {
+        "title": "Ralentir l’IA : qui pourra continuer ?",
+        "href": "/posts/ia-ralentissement-1-qui-pourra-continuer/",
+        "publishedAt": "2026-09-27T10:11:07.000Z"
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-10-04T06:34:29.437Z",
+      "windowStart": "2026-09-27T08:30:00+02:00",
+      "windowEnd": "2026-10-04T08:30:00+02:00"
+    }
   }
 ]

@@ -3,6 +3,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { legacySurfaceRedirects } from '../src/config/legacy-surface-redirects.mjs';
+import { getPublicationSocial } from '../src/config/publication-social.mjs';
 import { scanHtmlElements } from '../src/lib/html-utils.ts';
 
 const rootUrl = new URL('../dist/', import.meta.url);
@@ -23,6 +24,8 @@ const publicationCovers = new Map([
   ['en/publications/water-electricity/index.html', 'water-electricity'],
   ['publications/euro-numerique/index.html', 'euro-numerique'],
   ['en/publications/digital-euro/index.html', 'digital-euro'],
+  ['publications/reserves-petrolieres/index.html', 'reserves-petrolieres'],
+  ['en/publications/emergency-oil-reserves/index.html', 'emergency-oil-reserves'],
 ]);
 
 function decodeHtml(value) {
@@ -123,20 +126,28 @@ for (const file of htmlFiles) {
         assert(image.attributes.get('srcset')?.includes(`${path} ${width}w`), `${name}: variante ${width} absente`);
         assert((await readFile(join(root, path))).length < 500_000, `${name}: variante ${width} hors budget`);
       }
-      assert((await readFile(join(root, `/publications/${cover}-cover.jpg`))).length < 500_000, `${name}: couverture sociale hors budget`);
-      assert((await readFile(join(root, `/publications/${cover}-cover-social.jpg`))).length < 500_000, `${name}: carte sociale hors budget`);
-      const socialPath = `https://l0g.fr/publications/${cover}-cover-social.jpg`;
-      for (const field of ['og:image', 'twitter:image']) {
-        assert(elements.some((element) => element.name === 'meta'
-          && (element.attributes.get('property') ?? element.attributes.get('name')) === field
-          && element.attributes.get('content') === socialPath), `${name}: ${field} ne pointe pas vers la carte sans recadrage`);
-      }
+      assert((await readFile(join(root, `/publications/${cover}-cover.jpg`))).length < 500_000, `${name}: couverture hors budget`);
     } else {
       assert(image.attributes.get('loading') === 'lazy', `${name}: image sans loading=lazy`);
     }
     assert(image.attributes.get('decoding') === 'async', `${name}: image sans decoding=async`);
   }
   if (cover) assert(priorityCovers === 1, `${name}: exactement une couverture prioritaire attendue`);
+  const publicationSocial = getPublicationSocial(`/${name.replace(/index\.html$/, '')}`);
+  if (publicationSocial) {
+    const socialPath = new URL(publicationSocial.image, 'https://l0g.fr').toString();
+    const expectedMetadata = new Map([
+      ['og:image', socialPath], ['twitter:image', socialPath],
+      ['og:image:alt', publicationSocial.alt], ['twitter:image:alt', publicationSocial.alt],
+      ['og:image:width', '1200'], ['og:image:height', '630'],
+    ]);
+    for (const [field, content] of expectedMetadata) {
+      assert(elements.some((element) => element.name === 'meta'
+        && (element.attributes.get('property') ?? element.attributes.get('name')) === field
+        && element.attributes.get('content') === content), `${name}: ${field} incohérent avec la carte sociale dédiée`);
+    }
+    assert((await readFile(join(root, publicationSocial.image))).length < 250_000, `${name}: carte sociale hors budget`);
+  }
   const title = decodeHtml(html.match(/<title>([^<]+)<\/title>/)?.[1]?.trim());
   const description = decodeHtml(elements.find((element) =>
     element.name === 'meta' && element.attributes.get('name') === 'description'

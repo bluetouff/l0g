@@ -6,6 +6,11 @@ import { spawnSync } from 'node:child_process';
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
+  ...['reserves-petrolieres', 'emergency-oil-reserves'].map(directory => ({
+    source: join(ROOT, 'src/epub', directory),
+    output: join(ROOT, 'public/publications', `${directory}-l0g.epub`),
+    fixedTime: new Date('2026-10-04T05:56:27Z'),
+  })),
   ...['le-prix-du-ralentissement', 'the-price-of-slowing-down'].map(directory => ({
     source: join(ROOT, 'src/epub', directory),
     output: join(ROOT, 'public/publications', `${directory}-l0g.epub`),

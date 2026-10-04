@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 620" role="img" aria-labelledby="reserves02-en-3-mobile-title reserves02-en-3-mobile-desc" lang="en" font-family="Arial, Helvetica, sans-serif">
+<title id="reserves02-en-3-mobile-title">SAGESS debt and maturities</title>
+<desc id="reserves02-en-3-mobile-desc">At 31 December 2025, nominal external debt of 4,145 million euros, excluding the CPSSP loan and interest payable: 3,600 million of bonds and 545 million of short-term NEU CP. Bond principal due: 500 million in 2027, 600 in 2028, 500 each year from 2029 to 2031 and 1,000 in 2032. Vertical bars use a linear scale starting at zero. A 1,000 million undrawn bank facility is separate from drawn debt. The February 2026 issue is excluded from this historical snapshot.</desc>
+<rect x="0" y="0" width="480" height="620" rx="0" fill="#0c0d10"></rect>
+<rect x="0" y="0" width="480" height="5" rx="0" fill="#5eead4"></rect>
+<text x="20" y="41" font-size="26" font-weight="700" text-anchor="start" fill="#e7e9ee">SAGESS debt and maturities</text>
+<text x="20" y="71" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">As at 31 December 2025</text>
+<rect x="20" y="89" width="440" height="111" rx="10" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></rect>
+<text x="36" y="139" font-size="42" font-weight="700" text-anchor="start" fill="#e7e9ee">€4,145m</text>
+<text x="36" y="174" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">External debt</text>
+<text x="260" y="134" font-size="32" font-weight="700" text-anchor="start" fill="#5eead4">3,600</text>
+<text x="360" y="134" font-size="32" font-weight="700" text-anchor="start" fill="#8b909b">+</text>
+<text x="387" y="134" font-size="32" font-weight="700" text-anchor="start" fill="#ff4d87">545</text>
+<text x="260" y="170" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">Bonds / NEU CP</text>
+<text x="442" y="190" font-size="18" font-weight="400" text-anchor="end" fill="#8b909b">€m</text>
+<text x="20" y="222" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Excludes CPSSP loan and interest</text>
+<rect x="16" y="235" width="444" height="244" rx="10" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></rect>
+<text x="36" y="266" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Bond principal due</text>
+<text x="64" y="289" font-size="18" font-weight="400" text-anchor="end" fill="#8b909b">€m</text>
+<line x1="72" y1="428.0" x2="445" y2="428.0" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<text x="65" y="434.0" font-size="18" font-weight="400" text-anchor="end" fill="#8b909b">0</text>
+<line x1="72" y1="368.0" x2="445" y2="368.0" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<text x="65" y="374.0" font-size="18" font-weight="400" text-anchor="end" fill="#8b909b">500</text>
+<line x1="72" y1="308.0" x2="445" y2="308.0" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<text x="65" y="314.0" font-size="18" font-weight="400" text-anchor="end" fill="#8b909b">1,000</text>
+<rect x="77" y="368.0" width="34" height="60.0" rx="0" fill="#5eead4" data-year="2027" data-value="500"></rect>
+<text x="94" y="356.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">500</text>
+<text x="94" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2027</text>
+<rect x="140" y="356.0" width="34" height="72.0" rx="0" fill="#5eead4" data-year="2028" data-value="600"></rect>
+<text x="157" y="344.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">600</text>
+<text x="157" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2028</text>
+<rect x="203" y="368.0" width="34" height="60.0" rx="0" fill="#5eead4" data-year="2029" data-value="500"></rect>
+<text x="220" y="356.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">500</text>
+<text x="220" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2029</text>
+<rect x="266" y="368.0" width="34" height="60.0" rx="0" fill="#5eead4" data-year="2030" data-value="500"></rect>
+<text x="283" y="356.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">500</text>
+<text x="283" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2030</text>
+<rect x="329" y="368.0" width="34" height="60.0" rx="0" fill="#5eead4" data-year="2031" data-value="500"></rect>
+<text x="346" y="356.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">500</text>
+<text x="346" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2031</text>
+<rect x="392" y="308.0" width="34" height="120.0" rx="0" fill="#5eead4" data-year="2032" data-value="1000"></rect>
+<text x="409" y="296.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">1,000</text>
+<text x="409" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2032</text>
+<rect x="20" y="487" width="440" height="60" rx="10" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></rect>
+<text x="36" y="525" font-size="32" font-weight="700" text-anchor="start" fill="#ff4d87">€545m</text>
+<text x="187" y="510" font-size="20" font-weight="700" text-anchor="start" fill="#e7e9ee">NEU CP · short term</text>
+<text x="187" y="537" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Roll over or repay</text>
+<rect x="20" y="555" width="440" height="63" rx="10" fill="#121419" stroke="#f5b13d" stroke-width="2" stroke-dasharray="6 5"></rect>
+<text x="36" y="598" font-size="32" font-weight="700" text-anchor="start" fill="#f5b13d">€1,000m</text>
+<text x="212" y="580" font-size="20" font-weight="700" text-anchor="start" fill="#e7e9ee">Undrawn credit</text>
+<text x="212" y="608" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Separate from debt</text>
+</svg>

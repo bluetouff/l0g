@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 620" role="img" aria-labelledby="reserves02-fr-3-mobile-title reserves02-fr-3-mobile-desc" lang="fr" font-family="Arial, Helvetica, sans-serif">
+<title id="reserves02-fr-3-mobile-title">SAGESS : dette et échéances</title>
+<desc id="reserves02-fr-3-mobile-desc">Au 31 décembre 2025, dette externe nominale de 4 145 millions d’euros, hors prêt CPSSP et intérêts dus : 3 600 millions d’obligations et 545 millions de NEU CP à court terme. Principal obligataire à rembourser : 500 millions en 2027, 600 en 2028, 500 par an de 2029 à 2031 et 1 000 en 2032. Histogramme sur une échelle linéaire partant de zéro. Ligne bancaire de 1 000 millions non tirée, séparée de la dette empruntée. L’émission de février 2026 est exclue de cet arrêté historique.</desc>
+<rect x="0" y="0" width="480" height="620" rx="0" fill="#0c0d10"></rect>
+<rect x="0" y="0" width="480" height="5" rx="0" fill="#5eead4"></rect>
+<text x="20" y="41" font-size="26" font-weight="700" text-anchor="start" fill="#e7e9ee">SAGESS : dette et échéances</text>
+<text x="20" y="71" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Au 31 décembre 2025</text>
+<rect x="20" y="89" width="440" height="111" rx="10" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></rect>
+<text x="36" y="139" font-size="42" font-weight="700" text-anchor="start" fill="#e7e9ee">4 145 M€</text>
+<text x="36" y="174" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">Dette externe</text>
+<text x="260" y="134" font-size="32" font-weight="700" text-anchor="start" fill="#5eead4">3 600</text>
+<text x="360" y="134" font-size="32" font-weight="700" text-anchor="start" fill="#8b909b">+</text>
+<text x="387" y="134" font-size="32" font-weight="700" text-anchor="start" fill="#ff4d87">545</text>
+<text x="260" y="170" font-size="20" font-weight="400" text-anchor="start" fill="#e7e9ee">Oblig. / NEU CP</text>
+<text x="442" y="190" font-size="18" font-weight="400" text-anchor="end" fill="#8b909b">M€</text>
+<text x="20" y="222" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Hors prêt CPSSP et intérêts</text>
+<rect x="16" y="235" width="444" height="244" rx="10" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></rect>
+<text x="36" y="266" font-size="22" font-weight="700" text-anchor="start" fill="#e7e9ee">Échéances obligataires</text>
+<text x="64" y="289" font-size="18" font-weight="400" text-anchor="end" fill="#8b909b">M€</text>
+<line x1="72" y1="428.0" x2="445" y2="428.0" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<text x="65" y="434.0" font-size="18" font-weight="400" text-anchor="end" fill="#8b909b">0</text>
+<line x1="72" y1="368.0" x2="445" y2="368.0" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<text x="65" y="374.0" font-size="18" font-weight="400" text-anchor="end" fill="#8b909b">500</text>
+<line x1="72" y1="308.0" x2="445" y2="308.0" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></line>
+<text x="65" y="314.0" font-size="18" font-weight="400" text-anchor="end" fill="#8b909b">1 000</text>
+<rect x="77" y="368.0" width="34" height="60.0" rx="0" fill="#5eead4" data-year="2027" data-value="500"></rect>
+<text x="94" y="356.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">500</text>
+<text x="94" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2027</text>
+<rect x="140" y="356.0" width="34" height="72.0" rx="0" fill="#5eead4" data-year="2028" data-value="600"></rect>
+<text x="157" y="344.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">600</text>
+<text x="157" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2028</text>
+<rect x="203" y="368.0" width="34" height="60.0" rx="0" fill="#5eead4" data-year="2029" data-value="500"></rect>
+<text x="220" y="356.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">500</text>
+<text x="220" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2029</text>
+<rect x="266" y="368.0" width="34" height="60.0" rx="0" fill="#5eead4" data-year="2030" data-value="500"></rect>
+<text x="283" y="356.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">500</text>
+<text x="283" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2030</text>
+<rect x="329" y="368.0" width="34" height="60.0" rx="0" fill="#5eead4" data-year="2031" data-value="500"></rect>
+<text x="346" y="356.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">500</text>
+<text x="346" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2031</text>
+<rect x="392" y="308.0" width="34" height="120.0" rx="0" fill="#5eead4" data-year="2032" data-value="1000"></rect>
+<text x="409" y="296.0" font-size="32" font-weight="700" text-anchor="middle" fill="#5eead4">1 000</text>
+<text x="409" y="459" font-size="20" font-weight="700" text-anchor="middle" fill="#e7e9ee">2032</text>
+<rect x="20" y="487" width="440" height="60" rx="10" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></rect>
+<text x="36" y="525" font-size="32" font-weight="700" text-anchor="start" fill="#ff4d87">545 M€</text>
+<text x="187" y="510" font-size="20" font-weight="700" text-anchor="start" fill="#e7e9ee">NEU CP · court terme</text>
+<text x="187" y="537" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Renouveler ou rembourser</text>
+<rect x="20" y="555" width="440" height="63" rx="10" fill="#121419" stroke="#f5b13d" stroke-width="2" stroke-dasharray="6 5"></rect>
+<text x="36" y="598" font-size="32" font-weight="700" text-anchor="start" fill="#f5b13d">1 000 M€</text>
+<text x="212" y="580" font-size="20" font-weight="700" text-anchor="start" fill="#e7e9ee">Crédit non tiré</text>
+<text x="212" y="608" font-size="20" font-weight="400" text-anchor="start" fill="#8b909b">Séparé de la dette</text>
+</svg>

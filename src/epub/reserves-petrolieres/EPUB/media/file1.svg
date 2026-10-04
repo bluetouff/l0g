@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 818" role="img" aria-labelledby="rsv01-01-circuits-fr-mobile-title rsv01-01-circuits-fr-mobile-desc" lang="fr">
+<title id="rsv01-01-circuits-fr-mobile-title">Deux chemins vers le carburant</title>
+<desc id="rsv01-01-circuits-fr-mobile-desc">Le raffinage se situe après le stock de brut, avant le stock de produit. Schéma qualitatif, sans représentation des volumes ou des délais.</desc>
+<defs><marker id="rsv01-01-circuits-fr-mobile-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="#8b909b" stroke-width="1.5"></path></marker></defs>
+<rect x="0" y="0" width="360" height="818" rx="12" fill="#121419"></rect>
+<text x="18" y="25" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#5eead4" text-anchor="start">l0g / 01</text>
+<text x="18" y="58" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#e7e9ee" text-anchor="start">Deux chemins vers le</text>
+<text x="18" y="84" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#e7e9ee" text-anchor="start">carburant</text>
+<text x="18" y="118" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#8b909b" text-anchor="start">Le brut doit encore être raffiné.</text>
+<text x="18" y="141" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#8b909b" text-anchor="start">Les produits le sont déjà.</text>
+<text x="18" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#ff4d87" text-anchor="start">BRUT</text>
+<rect x="18" y="193" width="150" height="119" rx="8" fill="#171a20" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.3"></rect>
+<g transform="translate(69 205) scale(0.6)">
+<path d="M 0 14 L 0 57 Q 30 73 60 57 L 60 14" fill="#171a20" stroke="#ff4d87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<ellipse cx="30" cy="14" rx="30" ry="12" fill="#171a20" stroke="#ff4d87" stroke-width="2"></ellipse>
+<path d="M 0 39 Q 30 55 60 39" fill="none" stroke="#ff4d87" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="60" y1="45" x2="73" y2="45" stroke="#ff4d87" stroke-width="2"></line>
+</g>
+<text x="192" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#5eead4" text-anchor="start">PRODUIT</text>
+<rect x="192" y="193" width="150" height="119" rx="8" fill="#171a20" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.3"></rect>
+<g transform="translate(243 205) scale(0.6)">
+<path d="M 0 14 L 0 57 Q 30 73 60 57 L 60 14" fill="#171a20" stroke="#5eead4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<ellipse cx="30" cy="14" rx="30" ry="12" fill="#171a20" stroke="#5eead4" stroke-width="2"></ellipse>
+<path d="M 0 39 Q 30 55 60 39" fill="none" stroke="#5eead4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="60" y1="45" x2="73" y2="45" stroke="#5eead4" stroke-width="2"></line>
+</g>
+<text x="93" y="292" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#e7e9ee" text-anchor="middle">À transformer</text>
+<text x="267" y="292" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#5eead4" text-anchor="middle">Déjà raffiné</text>
+<line x1="93" y1="315" x2="93" y2="340" stroke="#8b909b" stroke-width="1.8" marker-end="url(#rsv01-01-circuits-fr-mobile-arrow)"></line>
+<line x1="267" y1="315" x2="267" y2="340" stroke="#8b909b" stroke-width="1.8" marker-end="url(#rsv01-01-circuits-fr-mobile-arrow)"></line>
+<rect x="18" y="353" width="150" height="145" rx="8" fill="#171a20" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.3"></rect>
+<g transform="translate(58 364) scale(0.55)">
+<rect x="2" y="18" width="25" height="64" rx="5" fill="#171a20" stroke="#ff4d87" stroke-width="1.3"></rect>
+<rect x="43" y="2" width="22" height="80" rx="5" fill="#171a20" stroke="#ff4d87" stroke-width="1.3"></rect>
+<line x1="2" y1="30" x2="27" y2="30" stroke="#ff4d87" stroke-width="1.5"></line>
+<line x1="2" y1="44" x2="27" y2="44" stroke="#ff4d87" stroke-width="1.5"></line>
+<line x1="2" y1="58" x2="27" y2="58" stroke="#ff4d87" stroke-width="1.5"></line>
+<line x1="2" y1="72" x2="27" y2="72" stroke="#ff4d87" stroke-width="1.5"></line>
+<line x1="43" y1="17" x2="65" y2="17" stroke="#ff4d87" stroke-width="1.5"></line>
+<line x1="43" y1="33" x2="65" y2="33" stroke="#ff4d87" stroke-width="1.5"></line>
+<line x1="43" y1="49" x2="65" y2="49" stroke="#ff4d87" stroke-width="1.5"></line>
+<line x1="43" y1="65" x2="65" y2="65" stroke="#ff4d87" stroke-width="1.5"></line>
+<path d="M 27 68 L 35 68 L 35 43 L 43 43" fill="none" stroke="#ff4d87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 65 70 L 82 70 L 82 50 L 92 50" fill="none" stroke="#ff4d87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="0" y1="88" x2="98" y2="88" stroke="#ff4d87" stroke-width="2"></line>
+</g>
+<text x="93" y="442" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#e7e9ee" text-anchor="middle">Raffinerie</text>
+<text x="93" y="464" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#8b909b" text-anchor="middle">disponible</text>
+<rect x="192" y="353" width="150" height="145" rx="8" fill="#171a20" stroke="#5eead4" stroke-width="1.3" stroke-dasharray="4 4"></rect>
+<text x="207" y="391" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#5eead4" text-anchor="start">Transformation</text>
+<text x="207" y="413" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#5eead4" text-anchor="start">principale</text>
+<text x="207" y="435" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#5eead4" text-anchor="start">effectuée</text>
+<text x="207" y="457" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#5eead4" text-anchor="start">avant</text>
+<text x="207" y="479" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#5eead4" text-anchor="start">stockage</text>
+<line x1="93" y1="502" x2="93" y2="526" stroke="#8b909b" stroke-width="1.8" marker-end="url(#rsv01-01-circuits-fr-mobile-arrow)"></line>
+<rect x="18" y="536" width="150" height="107" rx="8" fill="#171a20" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.3"></rect>
+<text x="93" y="564" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#e7e9ee" text-anchor="middle">Essence</text>
+<text x="93" y="592" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#e7e9ee" text-anchor="middle">Gazole / fiouls</text>
+<text x="93" y="620" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#e7e9ee" text-anchor="middle">Kérosène</text>
+<path d="M 93 645 L 93 665 L 180 665 L 180 680" fill="none" stroke="#8b909b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#rsv01-01-circuits-fr-mobile-arrow)"></path>
+<path d="M 267 501 L 267 665 L 180 665" fill="none" stroke="#8b909b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+<rect x="18" y="693" width="324" height="101" rx="8" fill="#171a20"></rect>
+<text x="35" y="721" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#e7e9ee" text-anchor="start">Contrôles, mélanges</text>
+<text x="35" y="746" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#e7e9ee" text-anchor="start">éventuels, transport et</text>
+<text x="35" y="771" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#e7e9ee" text-anchor="start">livraison</text>
+</svg>
