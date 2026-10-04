@@ -204,6 +204,30 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'rsu', sigle: 'RSU', nom: 'Restricted stock unit',
+    def: 'A right to receive shares after the plan’s vesting conditions are met, such as a service period or a performance target. A grant does not mean the recipient already owns the underlying shares. Vesting, actual delivery and subsequent disposals require separate checks.',
+    guide: '/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/',
+    ...privateCreditSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Promised share compensation and shares actually held describe different stages.',
+      articles: [{ label: 'Trump Jr., drones and industrial policy', href: '/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/', kind: 'article' }],
+      sources: [{ label: 'SEC, glossary: Restricted Stock', href: 'https://www.sec.gov/resources-small-businesses/glossary', kind: 'source' }],
+      related: ['warrant', 'remuneration-en-actions'],
+    },
+  },
+  {
+    slug: 'warrant', sigle: 'Warrant', nom: 'Share subscription warrant',
+    def: 'A security giving its holder the right to obtain shares under a specified exercise price, term and other contractual conditions. Shares underlying an unexercised warrant must be distinguished from shares already held. Exercise may lead to issuance and dilution; registering shares for resale records neither exercise nor an actual sale.',
+    guide: '/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/',
+    ...privateCreditSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'A warrant gives access to shares under its terms; registration does not record its exercise.',
+      articles: [{ label: 'Trump Jr., drones and industrial policy', href: '/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/', kind: 'article' }],
+      sources: [{ label: 'Unusual Machines / SEC, December 5, 2024 prospectus', href: 'https://www.sec.gov/Archives/edgar/data/1956955/000168316824008527/umac_s1a1.htm', detail: 'Warrant terms and the distinction between registered shares and completed transactions.', kind: 'source' }],
+      related: ['rsu', 'remuneration-en-actions'],
+    },
+  },
+  {
     slug: 'collateral', sigle: 'Collateral', nom: 'An asset pledged to secure borrowing',
     def: 'An asset pledged to secure a debt. If the borrower fails to meet its obligations, the lender may realise the asset under the contract and applicable law. For Eurosystem operations, collateral must be eligible and its recognised value reflects haircuts and other risk controls. Pledging collateral provides borrowing capacity without creating bank equity.',
     guide: '/en/analysis/ecb-collateral-bank-credit-november-2026/',

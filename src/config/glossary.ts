@@ -241,6 +241,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: 'var(--color-accent)',
     entries: [
+      { sigle: 'RSU', nom: 'Restricted stock unit', def: 'Droit à recevoir une action après satisfaction des conditions d’acquisition prévues par le plan, par exemple une durée de service ou un objectif de performance. L’attribution d’une unité ne signifie pas que l’action est déjà détenue. Le calendrier d’acquisition, la livraison effective et les cessions ultérieures doivent être vérifiés séparément.', guide: '/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/' },
+      { sigle: 'Warrant', nom: 'Bon de souscription d’action', def: 'Titre donnant le droit d’obtenir une action selon un prix d’exercice, une durée et les autres conditions fixées par le contrat. L’action sous-jacente à un warrant non exercé doit être distinguée d’une action déjà détenue. L’exercice peut entraîner une émission de titres et une dilution ; enregistrer leur revente ne constate ni l’exercice du bon ni la vente effective.', guide: '/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/' },
       {
         "sigle": "RPO",
         "nom": "Obligations de performance restantes",
@@ -919,6 +921,18 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  rsu: {
+    intuition: 'Une rémunération promise en actions et les titres effectivement détenus correspondent à des étapes différentes.',
+    articles: [{ label: 'Trump Jr., drones et politique industrielle', href: '/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/', kind: 'article' }],
+    sources: [{ label: 'SEC, glossary: Restricted Stock', href: 'https://www.sec.gov/resources-small-businesses/glossary', kind: 'source' }],
+    related: ['warrant', 'remuneration-en-actions'],
+  },
+  warrant: {
+    intuition: 'Le bon donne accès à une action selon ses conditions ; son enregistrement ne constate pas son exercice.',
+    articles: [{ label: 'Trump Jr., drones et politique industrielle', href: '/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/', kind: 'article' }],
+    sources: [{ label: 'Unusual Machines / SEC, prospectus du 5 décembre 2024', href: 'https://www.sec.gov/Archives/edgar/data/1956955/000168316824008527/umac_s1a1.htm', detail: 'Modalités des warrants et distinction entre titres enregistrés et opérations effectivement réalisées.', kind: 'source' }],
+    related: ['rsu', 'remuneration-en-actions'],
+  },
   collateral: {
     intuition: 'La valeur d’un actif détenu et la capacité de financement qu’il procure sont deux mesures distinctes.',
     formula: 'couverture simplifiée = somme, pour chaque actif admissible, de sa valeur × (1 - sa décote exprimée en fraction), hors corrections supplémentaires',

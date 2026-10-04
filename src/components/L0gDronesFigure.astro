@@ -1,0 +1,44 @@
+---
+interface Props {
+  id: string;
+  desktop: string;
+  mobile: string;
+  caption: string;
+}
+const { id, desktop, mobile, caption } = Astro.props;
+---
+<figure id={id} class="l0g-drones-figure">
+  <div class="l0g-drones-desktop" set:html={desktop} />
+  <div class="l0g-drones-mobile" set:html={mobile} />
+  <figcaption>{caption}</figcaption>
+</figure>
+<style>
+  .l0g-drones-figure {
+    margin: 2.6rem 0;
+    padding-bottom: .75rem;
+  }
+  .l0g-drones-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: .75rem;
+    letter-spacing: normal;
+  }
+  .l0g-drones-mobile { display: none; }
+  figcaption {
+    margin-top: .9rem;
+    font-size: .875rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+  }
+  @media (max-width: 640px) {
+    .l0g-drones-desktop { display: none; }
+    .l0g-drones-mobile { display: block; }
+  }
+  @media print {
+    .l0g-drones-figure { break-inside: avoid; }
+    .l0g-drones-desktop { display: block; }
+    .l0g-drones-mobile { display: none; }
+  }
+</style>

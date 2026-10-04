@@ -84,8 +84,20 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 582, 'Le corpus doit conserver ses 582 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 146, 'Le graphe Atlas doit conserver ses 146 nœuds, dont les garanties bancaires et les ABS');
+assert.equal(glossaryEntries.length, 584, 'Le corpus doit conserver ses 584 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 148, 'Le graphe Atlas doit conserver ses 148 nœuds, dont les RSU et warrants');
+for (const slug of ['rsu', 'warrant']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en);
+  assert.equal(fr.reference, undefined);
+  assert.equal(en.robots, 'noindex,follow');
+  assert.equal(fr.guide, '/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/');
+  assert.equal(en.guide, '/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/');
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert(fr.atlas.sources.every(source => new URL(source.href).hostname === 'www.sec.gov'));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+}
 for (const slug of ['transmission-des-prix', 'contrefactuel']) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);
@@ -134,7 +146,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 474, 'Le graphe Atlas doit conserver ses 474 relations, dont les garanties bancaires et les ABS');
+assert.equal(glossaryAtlasEdgeCount, 478, 'Le graphe Atlas doit conserver ses 478 relations, dont les RSU et warrants');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
