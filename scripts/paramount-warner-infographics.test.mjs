@@ -41,8 +41,17 @@ const originalHashes = {
 const nodes = tree => [tree, ...(tree.children ?? []).flatMap(nodes)].filter(node => node.type === 'element');
 const normal = value => String(value).replace(/\s+/gu, ' ').trim();
 const read = name => readFileSync(resolve(base, name), 'utf8');
-const dark = ['#101d28','#182d3a','#f7f2e8','#b2c6cd','#36515e','#ffb16e','#75d7c4','#b7a3e0','#83aed9','#536e81'];
-const light = ['#e7e9ee','#ffffff','#1b1d23','#4d5461','rgba(12, 13, 16, 0.26)','#92400e','#0b5f58','#654796','#1d4ed8'];
+// User-requested charter correction affects paint only. Geometry signatures and
+// the three explicit background-card repairs remain identical to the originals.
+const nativeRoles = { ink:'--color-ink', surface:'--color-surface', paper:'--color-paper', muted:'--color-muted', line:'--color-line-strong', amber:'--color-amber', mint:'--color-signal', violet:'--color-accent', blue:'--color-topic-blue', other:'--color-muted', 'ink-text':'--color-ink' };
+for (const role of ['amber','mint','violet','blue','other']) nativeRoles[role+'-fill'] = nativeRoles[role];
+const nativePaints = {
+  dark: { ink:'#0c0d10',surface:'#121419',paper:'#e7e9ee',muted:'#8b909b',line:'rgba(255, 255, 255, 0.20)',amber:'#f5b13d',mint:'#5eead4',violet:'#ff4d87',blue:'#7aa2f7',other:'#8b909b','ink-text':'#0c0d10' },
+  light: { ink:'#e7e9ee',surface:'#ffffff',paper:'#1b1d23',muted:'#4d5461',line:'rgba(12, 13, 16, 0.26)',amber:'#92400e',mint:'#0b5f58',violet:'#a50f4d',blue:'#1d4ed8',other:'#4d5461','ink-text':'#e7e9ee' },
+};
+for (const palette of Object.values(nativePaints)) for (const role of ['amber','mint','violet','blue','other']) palette[role+'-fill'] = palette[role];
+const dark = Object.values(nativePaints.dark);
+const light = Object.values(nativePaints.light);
 const allowedTags = new Set(['svg','title','desc','metadata','style','defs','marker','pattern','clipPath','path','rect','text','tspan','line','circle','g','polyline','polygon','ellipse']);
 const allowedAttrs = new Set('xmlns viewBox width height role ariaLabelledBy style id x y x1 y1 x2 y2 cx cy r rx ry fill stroke strokeWidth strokeDashArray strokeLineCap strokeLineJoin opacity fillOpacity strokeOpacity fontFamily fontSize fontWeight textAnchor dy dx d points transform markerWidth markerHeight refX refY orient markerUnits markerEnd markerStart patternUnits clipPath clipPathUnits'.split(' '));
 
@@ -91,8 +100,11 @@ function inspect(svg, { panel = false, theme } = {}) {
       assert.equal(css.nodes[0].selector, ':root');
       assert.equal(css.nodes[1].name, 'media');
       assert.equal(css.nodes[1].params, '(prefers-color-scheme:light)');
-      const colours = [...dark, ...light];
-      css.walkDecls(decl => assert(decl.prop === 'color-scheme' && ['dark','light'].includes(decl.value) || /^--pw-[a-z-]+$/u.test(decl.prop) && colours.includes(decl.value), 'Controlled local palette only'));
+      css.walkDecls(decl => {
+        const theme = decl.parent.parent.type === 'atrule' ? 'light' : 'dark';
+        const role = decl.prop.slice('--pw-'.length);
+        assert(decl.prop === 'color-scheme' ? decl.value === theme : decl.prop.startsWith('--pw-') && Object.hasOwn(nativePaints[theme], role) && decl.value === nativePaints[theme][role], 'Exact native semantic palette only');
+      });
       assert(!toText(node).includes('@import'));
       continue;
     }
@@ -104,7 +116,7 @@ function inspect(svg, { panel = false, theme } = {}) {
         assert(ref && ids.includes(ref[1]), 'References resolve locally');
       }
       if (['fill','stroke'].includes(key)) {
-        const valid = value === 'none' || /^url\(#[a-z0-9-]+\)$/u.test(value) || (panel ? (theme === 'dark' ? dark : [...light, ...dark.slice(5)]).includes(value) : /^var\(--pw-[a-z-]+\)$/u.test(value));
+        const valid = value === 'none' || /^url\(#[a-z0-9-]+\)$/u.test(value) || (panel ? (theme === 'dark' ? dark : light).includes(value) : /^var\(--pw-[a-z-]+\)$/u.test(value));
         assert(valid, `Unexpected ${theme ?? 'semantic'} paint ${value}`);
       }
       if (key === 'style') { assert.equal(node.tagName, 'svg'); assert.equal(value, 'width:100%;height:auto'); }
@@ -132,6 +144,21 @@ test('All 84 SVGs are valid, inert, local and use bounded controlled paints', ()
     const file = realpathSync(resolve(base, 'panels', name));
     assert(file.startsWith(realpathSync(base) + sep));
     inspect(read('panels/' + name), { panel: true, theme: name.includes('.dark.') ? 'dark' : 'light' });
+  }
+  const global = postcss.parse(readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf8'));
+  const tokens = { dark:{},light:{} };
+  global.walkAtRules('theme', rule => rule.walkDecls(decl => { tokens.dark[decl.prop] = decl.value; }));
+  global.walkRules(rule => { if (rule.selector === ':root[data-theme="light"]') rule.walkDecls(decl => { tokens.light[decl.prop] = decl.value; }); });
+  const scoped = postcss.parse(readFileSync(resolve(process.cwd(), 'src/styles/paramount-warner-infographics.css'), 'utf8'));
+  for (const theme of ['dark','light']) {
+    const selector = (theme === 'light' ? ':root[data-theme="light"] ' : '') + '.l0g-pw-figure .pw-wide>svg';
+    const rules = scoped.nodes.filter(node => node.type === 'rule' && node.selector === selector);
+    assert.equal(rules.length, 1);
+    assert.equal(rules[0].nodes.length, Object.keys(nativeRoles).length);
+    for (const [role,token] of Object.entries(nativeRoles)) {
+      assert.equal(tokens[theme][token], nativePaints[theme][role], 'Native site token remains the reviewed value');
+      assert.equal(rules[0].nodes.find(decl => decl.prop === '--pw-'+role)?.value, `var(${token}, ${nativePaints[theme][role]})`, 'Inline SVG inherits the actual site token, with the exact theme fallback');
+    }
   }
 });
 
