@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
-import { qualifiesPatchedAdvisory } from './http-cache-security.mjs';
 
 const AUDIT_ENDPOINT = 'https://registry.npmjs.org/-/npm/v1/security/advisories/bulk';
 const AUDIT_TIMEOUT_MS = 60_000;
@@ -134,16 +133,7 @@ async function runAudit({ label, lockfile, omitDev }) {
     throw new Error(`audit registry returned HTTP ${response.status}: ${raw.toString('utf8').slice(0, 500)}`);
   }
 
-  const findings = validateAuditReport(decodeAuditResponse(raw)).filter((finding) => {
-    if (label !== 'main' || finding.packageName !== 'http-cache-semantics') return true;
-    const lock = JSON.parse(readFileSync(lockfile, 'utf8'));
-    const instances = Object.entries(lock.packages).filter(([path]) => path === 'node_modules/http-cache-semantics' || path.endsWith('/node_modules/http-cache-semantics'));
-    // Never qualify a nested or different version using the root package's patch.
-    if (instances.length !== 1 || instances[0][0] !== 'node_modules/http-cache-semantics' || instances[0][1].version !== '4.2.0') return true;
-    if (!qualifiesPatchedAdvisory(finding)) return true;
-    console.warn(`⚠️ [test-dependencies] ${label}: ${finding.url} remains in the registry; exact local patch and cache-reuse regression checks verified`);
-    return false;
-  });
+  const findings = validateAuditReport(decodeAuditResponse(raw));
   if (findings.length > 0) {
     console.error(`❌ [test-dependencies] ${label}: ${findings.length} vulnerabilities at moderate+ level`);
     for (const finding of findings) {

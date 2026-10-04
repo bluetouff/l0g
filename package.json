@@ -124,6 +124,7 @@
   "overrides": {
     "devalue": "5.9.3",
     "esbuild": "0.28.1",
+    "http-cache-semantics": "4.3.0",
     "js-yaml": "4.3.2",
     "svgo": "4.1.0",
     "vite": "$vite",

@@ -51,3 +51,13 @@ test('an available empty advisory report completes both dependency-tree audits',
   assert.match(result.stdout, /main: no unmitigated/);
   assert.match(result.stdout, /mcp-server: no unmitigated/);
 });
+
+test('the previously excepted cache advisory is now blocking', () => {
+  const result = audit('report', JSON.stringify({
+    'http-cache-semantics': [{ severity: 'high', title: 'Cache reuse restriction bypass', url: 'https://github.com/advisories/GHSA-ch52-4w7c-c8xp' }],
+  }));
+  assert.ifError(result.error);
+  assert.equal(result.status, 1, result.stdout + result.stderr);
+  assert.match(result.stderr, /http-cache-semantics: high/);
+  assert.doesNotMatch(result.stdout, /no unmitigated/);
+});

@@ -7,38 +7,18 @@ import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const PACKAGE_NAME = 'http-cache-semantics';
-export const PINNED_VERSION = '4.2.0';
+export const PINNED_VERSION = '4.3.0';
 export const ADVISORY_URL = 'https://github.com/advisories/GHSA-ch52-4w7c-c8xp';
-export const ORIGINAL_SHA256 = '01b7d66c854b2fe53ac05c98feb6e0d64722ab8898a778e2d2426a8b468d178f';
-export const PREVIOUS_PATCHED_SHA256 = '49a4018d48f6eebe6ea81334cf22c8124245e3c2c1fbb1df642f24cd532a6574';
-export const PATCHED_SHA256 = '5745ef39db432d82088250c7204fd670182f368ff8d7a7c391b43c3ab3573e81';
+export const ORIGINAL_SHA256 = 'ede1cc404a492fa348eb9d97a3007a0d72aa717bd22cd86a56bd0824c19729ca';
+export const PATCHED_SHA256 = 'b06f2438435a7073d54b05d8eb7ffaab74795a45b9447680c84b502b6b689761';
 
-// Local mitigation, not an upstream release. PR #58 was open and unmerged on
-// 2026-10-03; reviewed head 14a8c2ad51740dc39bf3e8f1a11c845a5003f217:
-// https://github.com/kornelski/http-cache-semantics/pull/58
-// PR #60 also identifies stale-extension and error-fallback routes:
-// https://github.com/kornelski/http-cache-semantics/pull/60
-// Keep the published package and maxAge() semantics; enforce restrictions across
-// every reuse path. No downloaded fork is executed.
-export const PREVIOUS_PATCH_INSERTION = `        // Local mitigation for CVE-2026-93748; upstream PR #58 is not released.
-        // Request max-stale cannot bypass the restrictions enforced by maxAge().
-        if (
-            !this.storable() ||
-            this._rescc['no-cache'] ||
-            this._resHeaders.vary === '*' ||
-            (this._isShared &&
-                (this._rescc['proxy-revalidate'] ||
-                    (this._resHeaders['set-cookie'] &&
-                        !this._rescc.public &&
-                        !this._rescc.immutable)))
-        ) {
-            return this._evaluateRequestMissResult(req);
-        }
-
-`;
+// Official 4.3.0 includes upstream Vary matching changes. Retain l0g's
+// conservative shared-cache policy across all reuse paths, separately from the
+// registry advisory: Set-Cookie alone does not prohibit caching under RFC 9111.
+// These additional local restrictions are verified by hash and behavior.
 
 const PATCH_ANCHOR = '    evaluateRequest(req) {\n        this._assertRequestHasHeaders(req);\n\n';
-const REUSE_RESTRICTIONS = `    // Local mitigation for CVE-2026-93748; no upstream release is available.
+const REUSE_RESTRICTIONS = `    // Local conservative shared-cache policy, verified across all reuse paths.
     _requiresRevalidation() {
         return !this.storable() ||
             this._rescc['no-cache'] ||
@@ -114,10 +94,8 @@ export function applyPatch({ packageRoot = DEFAULT_PACKAGE_ROOT } = {}) {
     assertSecureBehavior({ packageRoot });
     return { changed: false, ...assertPatchedInstalled({ packageRoot }) };
   }
-  assert([ORIGINAL_SHA256, PREVIOUS_PATCHED_SHA256].includes(installation.hash), `${PACKAGE_NAME}: unknown source hash; refusing to patch`);
-  let patched = installation.hash === PREVIOUS_PATCHED_SHA256
-    ? installation.source.replace(PREVIOUS_PATCH_INSERTION, '') : installation.source;
-  assert.equal(sha256(patched), ORIGINAL_SHA256, `${PACKAGE_NAME}: previous patch could not be recovered`);
+  assert.equal(installation.hash, ORIGINAL_SHA256, `${PACKAGE_NAME}: unknown source hash; refusing to patch`);
+  let patched = installation.source;
   for (const [before, after] of PATCH_REPLACEMENTS) {
     assert.equal(patched.split(before).length, 2, `${PACKAGE_NAME}: patch anchor is not unique`);
     patched = patched.replace(before, after);
@@ -210,20 +188,13 @@ export function assertSecureBehavior({ packageRoot = DEFAULT_PACKAGE_ROOT } = {}
   return { checks };
 }
 
-export function qualifiesPatchedAdvisory(advisory, { packageRoot = DEFAULT_PACKAGE_ROOT } = {}) {
-  if (advisory?.packageName !== PACKAGE_NAME || advisory.severity !== 'high' || advisory.url !== ADVISORY_URL) return false;
-  assertPatchedInstalled({ packageRoot });
-  assertSecureBehavior({ packageRoot });
-  return true;
-}
-
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     assert.equal(process.argv.length, 3, 'Usage: node scripts/http-cache-security.mjs --apply|--check');
     const command = process.argv[2];
     assert(['--apply', '--check'].includes(command), 'Usage: node scripts/http-cache-security.mjs --apply|--check');
     const result = command === '--apply' ? applyPatch() : { ...assertPatchedInstalled(), ...assertSecureBehavior() };
-    console.log(`${PACKAGE_NAME}@${PINNED_VERSION}: local CVE-2026-93748 mitigation verified (${result.sha256})`);
+    console.log(`${PACKAGE_NAME}@${PINNED_VERSION}: local cache-reuse policy verified (${result.sha256})`);
   } catch (error) {
     console.error(`[http-cache-security] ${error.message}`);
     process.exitCode = 1;

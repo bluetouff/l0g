@@ -8,9 +8,8 @@ import { join } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import {
-  ADVISORY_URL, ORIGINAL_SHA256, PACKAGE_NAME, PATCHED_SHA256, PATCH_REPLACEMENTS,
-  PREVIOUS_PATCHED_SHA256, PREVIOUS_PATCH_INSERTION,
-  applyPatch, assertPatchedInstalled, assertSecureBehavior, qualifiesPatchedAdvisory,
+  ORIGINAL_SHA256, PACKAGE_NAME, PATCHED_SHA256, PATCH_REPLACEMENTS, PINNED_VERSION,
+  applyPatch, assertPatchedInstalled, assertSecureBehavior,
 } from './http-cache-security.mjs';
 
 const hash = (source) => createHash('sha256').update(source).digest('hex');
@@ -19,13 +18,11 @@ const installedSource = readFileSync(join(installedRoot, 'index.js'), 'utf8');
 // npm ci runs postinstall before tests. Recover the immutable original only for
 // private fixtures; no test writes to the real installed dependency.
 let original = installedSource;
-if (hash(installedSource) === PREVIOUS_PATCHED_SHA256) original = installedSource.replace(PREVIOUS_PATCH_INSERTION, '');
-else if (hash(installedSource) === PATCHED_SHA256) {
+if (hash(installedSource) === PATCHED_SHA256) {
   for (const [before, after] of [...PATCH_REPLACEMENTS].reverse()) original = original.replace(after, before);
 }
 assert.equal(hash(original), ORIGINAL_SHA256, 'test fixtures require the exact original or locally patched package');
-const metadata = { name: PACKAGE_NAME, version: '4.2.0', main: 'index.js' };
-const advisory = { packageName: PACKAGE_NAME, severity: 'high', url: ADVISORY_URL };
+const metadata = { name: PACKAGE_NAME, version: PINNED_VERSION, main: 'index.js' };
 const requireFixture = createRequire(import.meta.url);
 
 function fixture(t, { patched = false } = {}) {
@@ -74,16 +71,14 @@ function assertAllowed(policy, request, label) {
 test('the real installed dependency has the exact patch and passes bounded cache-reuse checks', () => {
   assert.equal(assertPatchedInstalled().sha256, PATCHED_SHA256);
   assert(assertSecureBehavior().checks >= 100);
-  assert.equal(qualifiesPatchedAdvisory(advisory), true);
 });
 
-test('the unpatched fixture reproduces cross-user reuse and cannot qualify an advisory', (t) => {
+test('the upstream fixture requires the local shared-cache policy', (t) => {
   const { packageRoot } = fixture(t);
   const { policy } = policyAt(load(packageRoot), { 'cache-control': 'max-age=3600', 'set-cookie': 'session=fixture-alice' });
   assert.equal(policy.maxAge(), 0);
-  assertAllowed(policy, incoming('max-stale=100000'), 'original vulnerable response');
+  assertAllowed(policy, incoming('max-stale=100000'), 'upstream response before local hardening');
   assert.throws(() => assertPatchedInstalled({ packageRoot }), /patch missing or modified/);
-  assert.throws(() => qualifiesPatchedAdvisory(advisory, { packageRoot }), /patch missing or modified/);
 });
 
 test('patching is deterministic and idempotent without changing freshness calculations', (t) => {
@@ -96,15 +91,6 @@ test('patching is deterministic and idempotent without changing freshness calcul
   assert.equal(applyPatch({ packageRoot }).changed, false);
   assert.deepEqual(readFileSync(join(packageRoot, 'index.js')), bytes);
   assert.equal(policyAt(load(packageRoot), { 'cache-control': 'public, max-age=60' }).policy.maxAge(), originalMaxAge);
-});
-
-test('the exact previous local mitigation is upgraded without accepting unknown bytes', (t) => {
-  const { packageRoot } = fixture(t);
-  const previous = original.replace('    evaluateRequest(req) {\n        this._assertRequestHasHeaders(req);\n\n', (anchor) => anchor + PREVIOUS_PATCH_INSERTION);
-  assert.equal(hash(previous), PREVIOUS_PATCHED_SHA256);
-  writeFileSync(join(packageRoot, 'index.js'), previous);
-  assert.equal(applyPatch({ packageRoot }).changed, true);
-  assert.equal(hash(readFileSync(join(packageRoot, 'index.js'))), PATCHED_SHA256);
 });
 
 test('max-stale cannot bypass private, cookie, authorization or validation restrictions through either API or serialization', (t) => {
@@ -155,6 +141,25 @@ test('public and immutable cookie opt-ins, public authorization and private sing
   }
   assertAllowed(policyAt(CachePolicy, { 'cache-control': 'public, max-age=60' }, { requestHeaders: { authorization: 'Bearer fixture-alice' } }).policy, incoming('max-stale=15'), 'explicit public authorization opt-in');
   assertAllowed(policyAt(CachePolicy, { 'cache-control': 'private, max-age=60', 'set-cookie': 'session=fixture-alice' }, { shared: false }).policy, incoming('max-stale=15'), 'single-user private cache');
+});
+
+test('upstream Vary normalization and own-header matching survive local hardening', (t) => {
+  for (const patched of [false, true]) {
+    const { packageRoot } = fixture(t, { patched });
+    const CachePolicy = load(packageRoot);
+    for (const header of ['accept-language', 'constructor', '__proto__']) {
+      const { policy, restore } = policyAt(CachePolicy, {
+        'cache-control': 'public, max-age=3600', vary: ` ${header.toUpperCase()} `,
+      }, { requestHeaders: { [header]: 'fixture-fr' }, age: 0 });
+      const matching = { ...incoming(), headers: { ...incoming().headers, [header]: 'fixture-fr' } };
+      const inherited = { ...incoming(), headers: Object.assign(Object.create({ [header]: 'fixture-fr' }), incoming().headers) };
+      for (const candidate of [policy, restore()]) {
+        assertAllowed(candidate, matching, 'matching own header');
+        assertDenied(candidate, inherited, 'an inherited property is not an HTTP header');
+        assertDenied(candidate, { ...matching, headers: { ...matching.headers, [header]: 'fixture-en' } }, 'changed own header');
+      }
+    }
+  }
 });
 
 test('restricted entries cannot gain a stale TTL or be reused after an origin error', (t) => {
@@ -271,7 +276,7 @@ test('directive case and empty field lists cannot bypass restrictions, including
 test('unknown source bytes, version, package identity and entrypoint fail closed without modifying the source', (t) => {
   for (const mutation of [
     { source: `${original}\n// unknown local modification\n` },
-    { metadata: { ...metadata, version: '4.2.1' } },
+    { metadata: { ...metadata, version: '4.2.0' } },
     { metadata: { ...metadata, name: 'different-package' } },
     { metadata: { ...metadata, main: '../elsewhere.js' } },
   ]) {
@@ -306,20 +311,6 @@ test('symbolic package roots, ancestors and dependency files are rejected withou
   assert.equal(hash(readFileSync(join(packageRoot, 'index.js'))), ORIGINAL_SHA256);
 });
 
-test('qualification matches only this exact high-severity package advisory', (t) => {
-  const { packageRoot } = fixture(t, { patched: true });
-  assert.equal(qualifiesPatchedAdvisory(advisory, { packageRoot }), true);
-  for (const candidate of [
-    undefined,
-    { ...advisory, packageName: 'astro' },
-    { ...advisory, severity: 'critical' },
-    { ...advisory, url: `${ADVISORY_URL}?unrelated=1` },
-    { ...advisory, url: 'https://github.com/advisories/GHSA-other-advisory' },
-  ]) assert.equal(qualifiesPatchedAdvisory(candidate, { packageRoot }), false);
-  writeFileSync(join(packageRoot, 'index.js'), `${readFileSync(join(packageRoot, 'index.js'), 'utf8')}\n`);
-  assert.throws(() => qualifiesPatchedAdvisory(advisory, { packageRoot }), /patch missing or modified/);
-});
-
 test('the CLI fails closed before patching and applies/checks only a private fixture', (t) => {
   const { root, packageRoot } = fixture(t);
   const script = join(root, 'scripts', 'http-cache-security.mjs');
@@ -334,7 +325,7 @@ test('the CLI fails closed before patching and applies/checks only a private fix
     const result = execute(command);
     assert.ifError(result.error);
     assert.equal(result.status, 0, result.stderr);
-    assert.match(result.stdout, /local CVE-2026-93748 mitigation verified/);
+    assert.match(result.stdout, /local cache-reuse policy verified/);
   }
   assert.equal(hash(readFileSync(join(packageRoot, 'index.js'))), PATCHED_SHA256);
   assert.equal(execute('--unknown').status, 1);
