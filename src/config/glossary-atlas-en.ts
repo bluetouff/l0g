@@ -203,6 +203,37 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+  "slug": "ebitda",
+  "sigle": "EBITDA",
+  "nom": "Earnings Before Interest, Taxes, Depreciation and Amortisation",
+  "def": "Earnings before interest, taxes, depreciation and amortisation. Adjusted EBITDA adds or subtracts further items whose definitions need checking. This metric does not measure available cash or capital expenditure.",
+  "guide": "/en/analysis/paramount-warner-ellison-trump-fcc-media/",
+  "sectionTitle": "Private credit & markets",
+  "accent": "var(--color-accent)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "Inspect adjustments before comparing debt with earnings.",
+    "formula": "EBITDA = net income + interest + taxes + depreciation and amortisation",
+    "articles": [
+      {
+        "label": "Paramount–Warner: capital, debt and editorial control",
+        "href": "/en/analysis/paramount-warner-ellison-trump-fcc-media/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "SEC, Non-GAAP Financial Measures, §103",
+        "href": "https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/non-gaap-financial-measures",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "lbo"
+    ]
+  }
+},
   {"slug": "transmission-des-prix", "sigle": "Price pass-through", "nom": "How input-cost changes reach selling prices", "def": "The adjustment of a selling price following a change in an upstream cost or price. Measurement requires a specified product, currency, scope and time horizon. Dividing two weekly price changes does not establish pass-through when observation periods, taxes and other costs differ.", "guide": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"intuition": "How input-cost changes reach selling prices.", "articles": [{"label": "Emergency oil reserves: from the market to the pump", "href": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "kind": "article"}], "sources": [{"label": "Banque de France, findings published 14 October 2021", "href": "https://www.banque-france.fr/fr/publications-et-statistiques/publications/quelle-transmission-des-prix-du-petrole-aux-prix-des-carburants", "kind": "source"}], "related": ["spr"]}},
   {"slug": "contrefactuel", "sigle": "Counterfactual", "nom": "Estimated outcome without an intervention", "def": "An estimated outcome that would have occurred without an intervention, allowing for other relevant conditions. It provides a comparison with the observed result and depends on the model and its assumptions. A price decline following an announcement alone does not establish the announcement’s effect.", "guide": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"intuition": "Estimated outcome without an intervention.", "articles": [{"label": "Emergency oil reserves: from the market to the pump", "href": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "kind": "article"}], "sources": [{"label": "Kilian and Zhou, Dallas Fed Working Paper 1916, version dated 19 December 2019", "href": "https://www.dallasfed.org/research/papers/2019/wp1916", "kind": "source"}], "related": ["spr"]}},
   {

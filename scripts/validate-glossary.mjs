@@ -85,7 +85,7 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
 assert.equal(glossaryEntries.length, 579, 'Le corpus doit conserver ses 579 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 141, 'Le graphe Atlas doit conserver ses 141 nœuds, dont la transmission des prix et le contrefactuel');
+assert.equal(glossaryAtlasEntries.length, 142, 'Le graphe Atlas doit conserver ses 142 nœuds, dont la fiche EBITDA');
 for (const slug of ['transmission-des-prix', 'contrefactuel']) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);
@@ -134,7 +134,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 457, 'Le graphe Atlas doit conserver ses 457 relations, dont les deux liens des nouvelles définitions vers la SPR');
+assert.equal(glossaryAtlasEdgeCount, 458, 'Le graphe Atlas doit conserver ses 458 relations, dont le lien EBITDA vers le LBO');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

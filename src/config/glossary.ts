@@ -405,7 +405,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Loan-to-cost', nom: 'Avance rapportée au coût', def: "Part du coût de construction ou d'acquisition d'un actif financée par la dette, à distinguer du loan-to-value qui rapporte la dette à une valeur de marché. Sur les facilités adossées à de l'infrastructure de calcul, l'avance atteint 90 % du coût en phase d'installation, ce qui laisse une marge d'erreur étroite si la valeur de revente s'écarte du coût.", guide: '/posts/gpu-collateral-ce-que-le-preteur-recupere/' },
       { sigle: 'Valeur résiduelle', nom: 'Residual value', def: "Valeur estimée d'un actif à la fin d'un financement ou d'une location. Dans un leasing automobile, elle sert à calculer la part de décote comprise dans les loyers : à prix d'achat identique, une valeur résiduelle plus faible augmente cette composante. Elle reste une estimation distincte du prix de rachat contractuel et du prix réellement obtenu à la revente.", guide: '/posts/leasing-auto-prix-revente-mensualite/' },
       { sigle: 'UCC Article 9', nom: 'Uniform Commercial Code, article 9', def: "Droit américain des sûretés sur biens meubles. Il régit la constitution, l'opposabilité et la réalisation d'un gage : les sections 9-609 et 9-610 autorisent le créancier à reprendre et céder le bien après défaut, la section 9-626 lui impose une cession commercialement raisonnable, exigence qui devient contentieuse quand le bien n'a pas de marché secondaire liquide.", guide: '/posts/gpu-collateral-ce-que-le-preteur-recupere/' },
-      { sigle: 'EBITDA', nom: 'Earnings Before Interest, Taxes, Depreciation and Amortization', def: "Résultat avant intérêts, impôts, dépréciations et amortissements. Proxy de la génération de cash opérationnel, sur lequel on dimensionne la dette." },
+      {"sigle": "EBITDA", "nom": "Earnings Before Interest, Taxes, Depreciation and Amortization", "def": "Résultat avant intérêts, impôts, dépréciations et amortissements. Un EBITDA ajusté ajoute ou retranche d’autres éléments dont la définition doit être vérifiée. Cet indicateur ne mesure pas la trésorerie disponible ni les dépenses d’investissement.", "guide": "/posts/paramount-warner-ellison-trump-fcc-medias/"},
       { sigle: 'DCT', nom: 'Dépositaire central de titres (CSD)', def: "Infrastructure où les titres financiers sont inscrits, conservés et livrés contre paiement. Registre de dernier niveau du marché : quand une obligation change de main, c'est dans les livres du DCT que la propriété bascule. Euroclear Bank et Clearstream en sont les exemples européens les plus connus." },
       { sigle: 'ICSD', nom: 'Dépositaire central international', def: "DCT spécialisé dans les titres internationaux, eurobonds en tête, et le règlement transfrontière. Deux acteurs dominent : Euroclear (Bruxelles, créé en 1968) et Clearstream (Luxembourg, ex-Cedel, 1970). Points de passage obligés du marché obligataire mondial, et à ce titre infrastructures systémiques." },
       { sigle: 'Compte omnibus', nom: 'Omnibus account', def: "Compte sur lequel un intermédiaire regroupe les titres de tous ses clients, sans que l'échelon supérieur de la chaîne de conservation ne voie les bénéficiaires finaux. Réduit massivement les coûts de conservation et permet le netting, au prix d'une opacité structurelle : le dépositaire central ignore, par construction, qui possède réellement quoi." },
@@ -916,6 +916,27 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  ebitda: {
+  "intuition": "Examiner les ajustements avant de rapporter la dette au résultat.",
+  "formula": "EBITDA = résultat net + intérêts + impôts + dépréciations et amortissements",
+  "articles": [
+    {
+      "label": "Paramount–Warner : capitaux, dette et contrôle éditorial",
+      "href": "/posts/paramount-warner-ellison-trump-fcc-medias/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "SEC, Non-GAAP Financial Measures, §103",
+      "href": "https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/non-gaap-financial-measures",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "lbo"
+  ]
+},
   pue: {
   "intuition": "Comparer les auxiliaires à une charge informatique identique.",
   "formula": "PUE = énergie totale du site / énergie IT",
