@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 645 520 635" role="img" aria-labelledby="ecb2026-2-en-p2-light-title ecb2026-2-en-p2-light-desc" style="width:100%;height:auto" data-source-composition="complete-original" data-figure="2" width="520" height="635" data-crop-start="645" data-crop-end="1280" data-panel="2">
+<title id="ecb2026-2-en-p2-light-title">3–4 · Reserve settlement and refinancing</title><desc id="ecb2026-2-en-p2-light-desc">Simplified circuit and fictional amounts. The commercial loan and central bank refinancing remain separate contracts. 3–4 · Reserve settlement and refinancing.</desc>
+<defs><marker id="ecb2026-2-en-p2-light-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#0b5f58"/></marker></defs>
+<rect x="0.00" y="0.00" width="520.00" height="1280.00" rx="0" fill="#e7e9ee"/>
+<text x="28.00" y="40.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="24" font-weight="700" fill="#1b1d23" text-anchor="start">l0g</text>
+<text x="492.00" y="38.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" font-weight="400" fill="#4d5461" text-anchor="end">BANK COLLATERAL / 02</text>
+<line x1="28.00" y1="57.00" x2="492.00" y2="57.00" stroke="rgba(12, 13, 16, 0.26)" stroke-width="1"/>
+<text x="28.00" y="98.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" font-weight="700" fill="#1b1d23" text-anchor="start">From lending to interbank</text>
+<text x="28.00" y="133.70" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" font-weight="700" fill="#1b1d23" text-anchor="start">settlement</text>
+<text x="28.00" y="164.70" font-family="DejaVu Sans,Arial,sans-serif" font-size="18" font-weight="400" fill="#4d5461" text-anchor="start">A fictional €20m example. The bank already holds</text>
+<text x="28.00" y="189.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="18" font-weight="400" fill="#4d5461" text-anchor="start">the collateral used for refinancing.</text>
+<circle cx="45" cy="233.0" r="15" fill="#0b5f58"/>
+<text x="45.00" y="239.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="17" font-weight="700" fill="#e7e9ee" text-anchor="middle">1</text>
+<text x="75.00" y="239.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="700" fill="#1b1d23" text-anchor="start">The loan creates a deposit</text>
+<text x="75.00" y="269.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="400" fill="#1b1d23" text-anchor="start">Bank A: +20 loan asset, +20 customer</text>
+<text x="75.00" y="295.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="400" fill="#1b1d23" text-anchor="start">deposit.</text>
+<text x="75.00" y="380.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" font-weight="700" fill="#0b5f58" text-anchor="start">€20m</text>
+<path d="M45,269.0 L45,411.0" fill="none" stroke="#0b5f58" stroke-width="2" marker-end="url(#ecb2026-2-en-p2-light-arrow)"/>
+<circle cx="45" cy="451.0" r="15" fill="#0b5f58"/>
+<text x="45.00" y="457.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="17" font-weight="700" fill="#e7e9ee" text-anchor="middle">2</text>
+<text x="75.00" y="457.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="700" fill="#1b1d23" text-anchor="start">The customer pays a supplier</text>
+<text x="75.00" y="487.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="400" fill="#1b1d23" text-anchor="start">The deposit leaves A; the supplier is</text>
+<text x="75.00" y="513.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="400" fill="#1b1d23" text-anchor="start">credited at B.</text>
+<text x="75.00" y="598.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" font-weight="700" fill="#0b5f58" text-anchor="start">€20m</text>
+<path d="M45,487.0 L45,629.0" fill="none" stroke="#0b5f58" stroke-width="2" marker-end="url(#ecb2026-2-en-p2-light-arrow)"/>
+<circle cx="45" cy="669.0" r="15" fill="#0b5f58"/>
+<text x="45.00" y="675.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="17" font-weight="700" fill="#e7e9ee" text-anchor="middle">3</text>
+<text x="75.00" y="675.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="700" fill="#1b1d23" text-anchor="start">A settles with B in reserves</text>
+<text x="75.00" y="705.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="400" fill="#1b1d23" text-anchor="start">Reserves: −20 at A, +20 at B. The loan</text>
+<text x="75.00" y="731.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="400" fill="#1b1d23" text-anchor="start">stays at A.</text>
+<text x="75.00" y="816.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" font-weight="700" fill="#0b5f58" text-anchor="start">A → B</text>
+<path d="M45,705.0 L45,847.0" fill="none" stroke="#0b5f58" stroke-width="2" marker-end="url(#ecb2026-2-en-p2-light-arrow)"/>
+<circle cx="45" cy="887.0" r="15" fill="#0b5f58"/>
+<text x="45.00" y="893.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="17" font-weight="700" fill="#e7e9ee" text-anchor="middle">4</text>
+<text x="75.00" y="893.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="700" fill="#1b1d23" text-anchor="start">A replenishes its liquidity</text>
+<text x="75.00" y="923.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="400" fill="#1b1d23" text-anchor="start">25 of collateral × 80% = 20 of funding.</text>
+<text x="75.00" y="949.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="400" fill="#1b1d23" text-anchor="start">A new liability to the central bank.</text>
+<text x="75.00" y="1034.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" font-weight="700" fill="#0b5f58" text-anchor="start">25 → 20</text>
+<line x1="28.00" y1="1196.00" x2="492.00" y2="1196.00" stroke="rgba(12, 13, 16, 0.26)" stroke-width="1"/>
+<text x="28.00" y="1221.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="15" font-weight="400" fill="#4d5461" text-anchor="start">Sources: Bank of England [9], ECB [10, 11]. Refinancing may</text>
+<text x="28.00" y="1240.50" font-family="DejaVu Sans,Arial,sans-serif" font-size="15" font-weight="400" fill="#4d5461" text-anchor="start">precede or follow payment depending on reserves already</text>
+<text x="28.00" y="1260.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="15" font-weight="400" fill="#4d5461" text-anchor="start">available. Amounts in €m.</text>
+</svg>

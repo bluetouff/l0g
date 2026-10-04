@@ -30,6 +30,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Collatéral', nom: 'Actif remis en garantie', def: 'Actif mobilisé pour garantir une dette. Le prêteur peut le réaliser si l’emprunteur ne respecte pas ses obligations, selon le contrat et le droit applicable. Dans les opérations de l’Eurosystème, l’actif doit être admissible et sa valeur retenue tient compte des décotes et des autres mesures de contrôle du risque. Une garantie apporte une capacité de financement, sans créer de fonds propres.', guide: '/posts/bce-garanties-banques-credit-novembre-2026/' },
+      { sigle: 'Décote de garantie', nom: 'Valuation haircut', def: 'Réduction appliquée à la valeur d’un actif remis en garantie pour protéger le prêteur contre une perte lors de sa réalisation. À valeur inchangée, une décote plus élevée réduit la couverture disponible et impose davantage de garanties pour couvrir la même dette. Elle se distingue du taux d’intérêt payé sur le financement et d’une perte comptable sur l’actif.', guide: '/posts/bce-garanties-banques-credit-novembre-2026/' },
+      { sigle: 'ECAF', nom: 'Eurosystem Credit Assessment Framework', def: 'Cadre d’évaluation du crédit de l’Eurosystème. Il définit les procédures et les systèmes acceptés pour apprécier la qualité des actifs proposés en garantie, de leurs émetteurs, débiteurs ou garants. Les évaluations sont rapprochées d’une échelle harmonisée de qualité. Les agences externes constituent une source parmi plusieurs ; satisfaire au critère de crédit ne suffit pas à remplir toutes les conditions d’admissibilité.', guide: '/posts/bce-garanties-banques-credit-novembre-2026/' },
       {"sigle": "Transmission des prix", "nom": "Répercussion des coûts dans les prix de vente", "def": "Ajustement du prix de vente après une variation d’un coût ou d’un prix en amont. Il se mesure avec un produit, une devise, un périmètre et un délai définis. Un rapport entre deux variations hebdomadaires ne suffit pas à estimer la transmission : les calendriers, les taxes et les autres coûts peuvent différer.", "guide": "/posts/reserves-petrolieres-transmission-prix-pompe/"},
       {"sigle": "Contrefactuel", "nom": "Résultat estimé en l’absence d’une intervention", "def": "Trajectoire estimée qui aurait prévalu sans une intervention, les autres conditions pertinentes étant prises en compte. Elle permet de comparer le résultat observé à un scénario sans l’opération. Elle dépend du modèle et de ses hypothèses ; une baisse observée après une annonce ne suffit pas à lui attribuer cette baisse.", "guide": "/posts/reserves-petrolieres-transmission-prix-pompe/"},
       {"sigle": "VAN", "nom": "Valeur actuelle nette", "def": "Somme des flux de trésorerie futurs actualisés, diminuée de la dépense initiale. Elle dépend du montant et du calendrier des flux ainsi que du taux d’actualisation choisi. Une VAN positive indique que les flux supposés dépassent la mise initiale en valeur actuelle ; elle ne garantit pas la réalisation des revenus.", "guide": "/posts/deficit-commercial-americain-importations-aout-2026/"},
@@ -367,7 +370,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'PML', nom: 'Probable Maximum Loss', def: "Perte maximale probable : estimation de la plus grande perte qu'un événement grave mais jugé plausible pourrait causer selon un scénario, un périmètre et un modèle donnés. Elle peut servir à dimensionner un plafond d'assurance industrielle. Elle ne correspond ni à la valeur totale de l'actif, ni à la pire perte physiquement imaginable, et dépend fortement des hypothèses de corrélation et de compartimentage.", guide: '/posts/data-center-meta-trop-gros-assurance-sopaipilla/' },
       { sigle: 'Titrisation', nom: 'Securitization', def: "Technique consistant à regrouper des créances (prêts, obligations) dans un véhicule dédié qui émet des titres adossés à ces actifs, répartis en tranches de risque. Au cœur des CLO comme des CDO subprime, pour le meilleur et pour le pire.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
       { sigle: 'Escrow', nom: 'Compte de provision hypothécaire', def: "Aux États-Unis, compte géré par le servicer d'un prêt immobilier pour prélever chaque mois une provision destinée notamment à l'assurance habitation et aux impôts fonciers. La mensualité totale peut donc monter quand la prime d'assurance est révisée, même si le taux et le capital du prêt restent inchangés.", guide: '/posts/facture-assurance-risque-credit-immobilier-americain/' },
-      { sigle: 'ABS', nom: 'Asset-Backed Security', def: "Titre adossé à un panier de créances autres qu'immobilières : prêts auto, cartes de crédit, paiements fractionnés (BNPL), redevances. Les créances sont logées dans un trust isolé de la faillite de l'originateur, qui émet des tranches de la senior (AAA) à l'equity. Véhicule par lequel le risque du crédit à la consommation quitte le bilan des prêteurs pour se disperser chez les investisseurs.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
+      { sigle: 'ABS', nom: 'Asset-Backed Security', def: 'Titre dont les paiements dépendent principalement des flux d’un panier de créances : prêts immobiliers, prêts automobiles, crédit à la consommation ou autres créances selon la structure. Une titrisation finance ce panier par des titres dont les tranches ont des priorités de paiement et d’absorption des pertes différentes. Le transfert du risque dépend du montage et des tranches conservées ou cédées ; conserver un ABS et le remettre en garantie ne suffit pas à transférer ce risque à un investisseur externe.', guide: '/posts/bce-garanties-banques-credit-novembre-2026/' },
       { sigle: 'ABF', nom: 'Asset-Based Finance', def: "Finance adossée aux actifs : financement de portefeuilles de créances (conso, équipement, redevances) via la titrisation, aussi appelée specialty finance ou crédit privé structuré. Compartiment en forte croissance du crédit privé, où des gérants comme Apollo ou KKR originent, structurent et détiennent la dette, souvent adossée aux primes de rentes des assureurs qu'ils contrôlent." },
       { sigle: "Financement d'entrepôt", nom: 'Warehouse financing', def: "Ligne ou structure temporaire qui finance un stock de prêts ou de créances avant leur vente ou leur titrisation. Si la sortie tarde, la durée et le coût de portage augmentent ; une baisse du collatéral peut aussi imposer davantage de capital ou réduire le montant avancé." },
       { sigle: 'Rehaussement de crédit', nom: 'Credit enhancement', def: "Ensemble des protections qui permettent aux tranches senior d'une titrisation d'atteindre la note AAA : subordination, surdimensionnement, excess spread et compte de réserve. Mesure combien de pertes le pool peut absorber avant que les investisseurs seniors ne soient touchés. Lire un ABS, c'est d'abord lire l'épaisseur de ce coussin.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
@@ -673,7 +676,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-03';
+export const glossaryUpdatedIso = '2026-10-04';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -916,6 +919,42 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  collateral: {
+    intuition: 'La valeur d’un actif détenu et la capacité de financement qu’il procure sont deux mesures distinctes.',
+    formula: 'couverture simplifiée = somme, pour chaque actif admissible, de sa valeur × (1 - sa décote exprimée en fraction), hors corrections supplémentaires',
+    articles: [{ label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' }],
+    sources: [
+      { label: 'BCE, What is collateral?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/collateral.en.html', detail: 'Actif remis en garantie et réalisation en cas de défaut.', kind: 'source' },
+      { label: 'BCE, What are haircuts?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/haircuts.en.html', detail: 'Valeur retenue après décote et couverture du financement.', kind: 'source' },
+    ],
+    related: ['decote-de-garantie', 'ecaf', 'repo', 'abs'],
+  },
+  'decote-de-garantie': {
+    intuition: 'La décote laisse au prêteur un coussin pour réaliser la garantie après un défaut.',
+    formula: 'valeur après décote = valeur avant décote × (1 - h), avec h exprimé en fraction ; hors autres abattements',
+    articles: [{ label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' }],
+    sources: [
+      { label: 'BCE, What are haircuts?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/haircuts.en.html', detail: 'Définition, calcul et protection du prêteur.', kind: 'source' },
+      { label: 'Orientation ECB/2026/27', href: 'https://www.ecb.europa.eu/pub/pdf/legal/ecb.leg_gui_2026_27.en.pdf', detail: 'Article 1 et annexe : barèmes à appliquer à partir du 30 novembre 2026. Des corrections supplémentaires peuvent s’ajouter.', kind: 'source' },
+    ],
+    related: ['collateral', 'ecaf', 'repo', 'abs'],
+  },
+  ecaf: {
+    intuition: 'Une note sert à apprécier le risque de crédit ; l’admissibilité et la valeur en garantie demandent encore d’autres vérifications.',
+    articles: [{ label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' }],
+    sources: [{ label: 'BCE, Eurosystem credit assessment framework', href: 'https://www.ecb.europa.eu/mopo/coll/risk/ecaf/html/index.en.html', detail: 'Sources acceptées, échelle harmonisée de qualité et conditions particulières aux ABS.', kind: 'source' }],
+    related: ['collateral', 'decote-de-garantie', 'repo', 'abs'],
+  },
+  abs: {
+    intuition: 'Financer un panier de créances et céder son risque sont deux opérations à examiner séparément.',
+    articles: [{ label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' }],
+    sources: [
+      { label: 'BCE, Tracing European structured finance counterparty networks', href: 'https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op199.en.pdf#page=8', detail: 'Occasional Paper 199, encadré 1, p. 7 : flux, tranches et créances immobilières ou autres.', kind: 'source' },
+      { label: 'Supervision BCE, Securitisations: meeting significant risk transfer criteria', href: 'https://www.bankingsupervision.europa.eu/press/supervisory-newsletters/newsletter/2022/html/ssm.nl220518_4.en.html', detail: 'Tranches conservées, risque restant et conditions de transfert significatif du risque.', kind: 'source' },
+      { label: 'Orientation ECB/2026/27', href: 'https://www.ecb.europa.eu/pub/pdf/legal/ecb.leg_gui_2026_27.en.pdf', detail: 'Article 1, point 3 : ABS retenus et durée moyenne de la tranche senior ; tableaux 2a et 3b.', kind: 'source' },
+    ],
+    related: ['collateral', 'decote-de-garantie', 'ecaf', 'repo'],
+  },
   ebitda: {
   "intuition": "Examiner les ajustements avant de rapporter la dette au résultat.",
   "formula": "EBITDA = résultat net + intérêts + impôts + dépréciations et amortissements",

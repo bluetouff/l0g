@@ -204,6 +204,70 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'collateral', sigle: 'Collateral', nom: 'An asset pledged to secure borrowing',
+    def: 'An asset pledged to secure a debt. If the borrower fails to meet its obligations, the lender may realise the asset under the contract and applicable law. For Eurosystem operations, collateral must be eligible and its recognised value reflects haircuts and other risk controls. Pledging collateral provides borrowing capacity without creating bank equity.',
+    guide: '/en/analysis/ecb-collateral-bank-credit-november-2026/',
+    ...macroSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'The value of an asset a bank owns and the borrowing it can support are different measures.',
+      formula: 'simplified coverage = sum, for each eligible asset, of its value × (1 - its haircut as a fraction), excluding further adjustments',
+      articles: [{ label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }],
+      sources: [
+        { label: 'ECB, What is collateral?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/collateral.en.html', detail: 'Pledged assets and realisation following a default.', kind: 'source' },
+        { label: 'ECB, What are haircuts?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/haircuts.en.html', detail: 'Post-haircut value and coverage of borrowing.', kind: 'source' },
+      ],
+      related: ['decote-de-garantie', 'ecaf', 'repo', 'abs'],
+    },
+  },
+  {
+    slug: 'decote-de-garantie', sigle: 'Collateral haircut', nom: 'Valuation haircut on a pledged asset',
+    def: 'A reduction applied to the value of a pledged asset to protect the lender against losses when realising collateral. At an unchanged valuation, a higher haircut reduces coverage, requiring more collateral to secure the same borrowing. It is distinct from the interest rate charged on funding and from an accounting loss on the asset.',
+    guide: '/en/analysis/ecb-collateral-bank-credit-november-2026/',
+    ...macroSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'A haircut leaves a buffer for the lender to realise collateral after a default.',
+      formula: 'post-haircut value = pre-haircut value × (1 - h), with h expressed as a fraction; excluding further markdowns',
+      articles: [{ label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }],
+      sources: [
+        { label: 'ECB, What are haircuts?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/haircuts.en.html', detail: 'Definition, calculation and lender protection.', kind: 'source' },
+        { label: 'Guideline ECB/2026/27', href: 'https://www.ecb.europa.eu/pub/pdf/legal/ecb.leg_gui_2026_27.en.pdf', detail: 'Article 1 and annex: schedules to be applied from 30 November 2026. Further valuation adjustments may apply.', kind: 'source' },
+      ],
+      related: ['collateral', 'ecaf', 'repo', 'abs'],
+    },
+  },
+  {
+    slug: 'ecaf', sigle: 'ECAF', nom: 'Eurosystem Credit Assessment Framework',
+    def: 'The Eurosystem framework for assessing the credit quality of collateral, issuers, debtors and guarantors. It defines accepted procedures and assessment systems and maps their assessments to a harmonised quality scale. External rating agencies are one source among several; meeting the credit-quality criterion does not fulfil every collateral eligibility requirement.',
+    guide: '/en/analysis/ecb-collateral-bank-credit-november-2026/',
+    ...macroSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'A rating informs credit-risk assessment; collateral eligibility and recognised value still require further checks.',
+      articles: [{ label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }],
+      sources: [{ label: 'ECB, Eurosystem credit assessment framework', href: 'https://www.ecb.europa.eu/mopo/coll/risk/ecaf/html/index.en.html', detail: 'Accepted sources, harmonised quality scale and specific ABS requirements.', kind: 'source' }],
+      related: ['collateral', 'decote-de-garantie', 'repo', 'abs'],
+    },
+  },
+  {
+    slug: 'abs', sigle: 'ABS', nom: 'Asset-backed security',
+    def: 'A security whose payments depend primarily on cash flows from a pool of claims, such as mortgages, car loans or consumer credit. Securitisation finances the pool through securities whose tranches have different payment priorities and loss exposure. Risk transfer depends on the structure and on which tranches are sold or retained. Retaining an ABS and pledging it as collateral does not itself transfer that risk to an outside investor.',
+    guide: '/en/analysis/ecb-collateral-bank-credit-november-2026/',
+    ...privateCreditSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Financing a pool of claims and transferring its risk require separate assessments.',
+      articles: [{ label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }],
+      sources: [
+        { label: 'ECB, Tracing European structured finance counterparty networks', href: 'https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op199.en.pdf#page=8', detail: 'Occasional Paper 199, Box 1, p. 7: cash flows, tranches and mortgage or other claims.', kind: 'source' },
+        { label: 'ECB Banking Supervision, Securitisations: meeting significant risk transfer criteria', href: 'https://www.bankingsupervision.europa.eu/press/supervisory-newsletters/newsletter/2022/html/ssm.nl220518_4.en.html', detail: 'Retained tranches, remaining risk and significant risk transfer criteria.', kind: 'source' },
+        { label: 'Guideline ECB/2026/27', href: 'https://www.ecb.europa.eu/pub/pdf/legal/ecb.leg_gui_2026_27.en.pdf', detail: 'Article 1(3): retained ABS and the senior tranche’s weighted average life; tables 2a and 3b.', kind: 'source' },
+      ],
+      related: ['collateral', 'decote-de-garantie', 'ecaf', 'repo'],
+    },
+  },
+  {
   "slug": "ebitda",
   "sigle": "EBITDA",
   "nom": "Earnings Before Interest, Taxes, Depreciation and Amortisation",

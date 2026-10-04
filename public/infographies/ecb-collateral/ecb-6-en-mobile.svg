@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 1170" role="img" aria-labelledby="ecb2026-6-en-mobile-full-title ecb2026-6-en-mobile-full-desc" style="width:100%;height:auto" data-source-composition="complete-original" data-figure="6">
+<title id="ecb2026-6-en-mobile-full-title">The same loss, two different buffers</title><desc id="ecb2026-6-en-mobile-full-desc">Fictional scenario: each pool’s capacity falls from €100m to €90m. Existing borrowing is unchanged.</desc>
+<style>:root{color-scheme:dark;--ecb-ink:#0c0d10;--ecb-surface:#121419;--ecb-surface-2:#171a20;--ecb-paper:#e7e9ee;--ecb-muted:#8b909b;--ecb-signal:#5eead4;--ecb-amber:#f5b13d;--ecb-topic-blue:#7aa2f7;--ecb-line-strong:rgba(255, 255, 255, 0.20)}@media(prefers-color-scheme:light){:root{color-scheme:light;--ecb-ink:#e7e9ee;--ecb-surface:#ffffff;--ecb-surface-2:#eef0f4;--ecb-paper:#1b1d23;--ecb-muted:#4d5461;--ecb-signal:#0b5f58;--ecb-amber:#92400e;--ecb-topic-blue:#1d4ed8;--ecb-line-strong:rgba(12, 13, 16, 0.26)}}</style><defs><marker id="ecb2026-6-en-mobile-full-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="var(--ecb-signal)"/></marker></defs>
+<rect x="0.00" y="0.00" width="520.00" height="1170.00" rx="0" fill="var(--ecb-ink)"/>
+<text x="28.00" y="40.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="24" font-weight="700" fill="var(--ecb-paper)" text-anchor="start">l0g</text>
+<text x="492.00" y="38.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" font-weight="400" fill="var(--ecb-muted)" text-anchor="end">BANK COLLATERAL / 06</text>
+<line x1="28.00" y1="57.00" x2="492.00" y2="57.00" stroke="var(--ecb-line-strong)" stroke-width="1"/>
+<text x="28.00" y="98.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" font-weight="700" fill="var(--ecb-paper)" text-anchor="start">The same loss, two</text>
+<text x="28.00" y="133.70" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" font-weight="700" fill="var(--ecb-paper)" text-anchor="start">different buffers</text>
+<text x="28.00" y="164.70" font-family="DejaVu Sans,Arial,sans-serif" font-size="18" font-weight="400" fill="var(--ecb-muted)" text-anchor="start">Fictional scenario: each pool’s capacity falls from</text>
+<text x="28.00" y="189.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="18" font-weight="400" fill="var(--ecb-muted)" text-anchor="start">€100m to €90m. Existing borrowing is unchanged.</text>
+<rect x="28.00" y="215.00" width="18.00" height="18.00" rx="0" fill="var(--ecb-muted)"/>
+<text x="57.00" y="230.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="19" font-weight="400" fill="var(--ecb-paper)" text-anchor="start">Used</text>
+<rect x="218.00" y="215.00" width="18.00" height="18.00" rx="0" fill="var(--ecb-signal)"/>
+<text x="248.00" y="230.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="19" font-weight="400" fill="var(--ecb-paper)" text-anchor="start">Unused headroom</text>
+<text x="28.00" y="288.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="26" font-weight="700" fill="var(--ecb-paper)" text-anchor="start">Bank A</text>
+<text x="28.00" y="345.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="17" font-weight="400" fill="var(--ecb-muted)" text-anchor="start">Before</text>
+<rect x="100.00" y="325.00" width="160.00" height="30.00" rx="0" fill="var(--ecb-muted)"/>
+<rect x="260.00" y="325.00" width="160.00" height="30.00" rx="0" fill="var(--ecb-signal)"/>
+<line x1="420.00" y1="321.00" x2="420.00" y2="361.00" stroke="var(--ecb-line-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="492.00" y="347.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="700" fill="var(--ecb-signal)" text-anchor="end">50</text>
+<text x="28.00" y="421.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="17" font-weight="400" fill="var(--ecb-muted)" text-anchor="start">After</text>
+<rect x="100.00" y="401.00" width="160.00" height="30.00" rx="0" fill="var(--ecb-muted)"/>
+<rect x="260.00" y="401.00" width="128.00" height="30.00" rx="0" fill="var(--ecb-signal)"/>
+<line x1="420.00" y1="397.00" x2="420.00" y2="437.00" stroke="var(--ecb-line-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="492.00" y="423.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="700" fill="var(--ecb-signal)" text-anchor="end">40</text>
+<text x="28.00" y="500.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="700" fill="var(--ecb-amber)" text-anchor="start">Buffer consumed: 20%</text>
+<text x="28.00" y="589.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="26" font-weight="700" fill="var(--ecb-paper)" text-anchor="start">Bank B</text>
+<text x="28.00" y="646.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="17" font-weight="400" fill="var(--ecb-muted)" text-anchor="start">Before</text>
+<rect x="100.00" y="626.00" width="272.00" height="30.00" rx="0" fill="var(--ecb-muted)"/>
+<rect x="372.00" y="626.00" width="48.00" height="30.00" rx="0" fill="var(--ecb-signal)"/>
+<line x1="420.00" y1="622.00" x2="420.00" y2="662.00" stroke="var(--ecb-line-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="492.00" y="648.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="700" fill="var(--ecb-signal)" text-anchor="end">15</text>
+<text x="28.00" y="722.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="17" font-weight="400" fill="var(--ecb-muted)" text-anchor="start">After</text>
+<rect x="100.00" y="702.00" width="272.00" height="30.00" rx="0" fill="var(--ecb-muted)"/>
+<rect x="372.00" y="702.00" width="16.00" height="30.00" rx="0" fill="var(--ecb-signal)"/>
+<line x1="420.00" y1="698.00" x2="420.00" y2="738.00" stroke="var(--ecb-line-strong)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="492.00" y="724.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="700" fill="var(--ecb-signal)" text-anchor="end">5</text>
+<text x="28.00" y="801.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="700" fill="var(--ecb-amber)" text-anchor="start">Buffer consumed: 66.7%</text>
+<rect x="28.00" y="883.00" width="464.00" height="148.00" rx="8" fill="var(--ecb-surface-2)"/>
+<text x="46.00" y="918.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="24" font-weight="700" fill="var(--ecb-paper)" text-anchor="start">New cash need: €12m</text>
+<text x="46.00" y="959.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="21" font-weight="400" fill="var(--ecb-paper)" text-anchor="start">A can cover it. B needs €7m elsewhere</text>
+<text x="46.00" y="986.30" font-family="DejaVu Sans,Arial,sans-serif" font-size="21" font-weight="400" fill="var(--ecb-paper)" text-anchor="start">or must add collateral.</text>
+<line x1="28.00" y1="1086.00" x2="492.00" y2="1086.00" stroke="var(--ecb-line-strong)" stroke-width="1"/>
+<text x="28.00" y="1111.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="15" font-weight="400" fill="var(--ecb-muted)" text-anchor="start">Source: l0g calculations. Headroom is collateral capacity, not</text>
+<text x="28.00" y="1130.50" font-family="DejaVu Sans,Arial,sans-serif" font-size="15" font-weight="400" fill="var(--ecb-muted)" text-anchor="start">cash already held. There is no automatic multiplier from</text>
+<text x="28.00" y="1150.00" font-family="DejaVu Sans,Arial,sans-serif" font-size="15" font-weight="400" fill="var(--ecb-muted)" text-anchor="start">capacity loss to customer lending.</text>
+</svg>

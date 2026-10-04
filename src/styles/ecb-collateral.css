@@ -1,0 +1,130 @@
+/* Supplied ECB diagrams keep their original geometry and typography.
+   The surrounding article inherits l0g prose; no alternate body theme. */
+.prose .l0g-collateral figure.ecb-figure {
+  width: 100%; max-width: 42rem; margin: 2rem auto 2.5rem;
+  padding-bottom: 1rem; border: 1px solid var(--color-line);
+  border-radius: .5rem; background: var(--color-ink);
+}
+.l0g-collateral .ecb-wide { display: block; }
+.l0g-collateral .ecb-mobile { display: none; }
+.l0g-collateral .ecb-wide > svg {
+  display: block; width: 100%; height: auto; max-width: 100%;
+  --ecb-ink: var(--color-ink, #0c0d10);
+  --ecb-surface: var(--color-surface, #121419);
+  --ecb-surface-2: var(--color-surface-2, #171a20);
+  --ecb-paper: var(--color-paper, #e7e9ee);
+  --ecb-muted: var(--color-muted, #8b909b);
+  --ecb-signal: var(--color-signal, #5eead4);
+  --ecb-amber: var(--color-amber, #f5b13d);
+  --ecb-topic-blue: var(--color-topic-blue, #7aa2f7);
+  --ecb-line-strong: var(--color-line-strong, rgba(255, 255, 255, .20));
+}
+:root[data-theme="light"] .l0g-collateral .ecb-wide > svg {
+  --ecb-ink: var(--color-ink, #e7e9ee);
+  --ecb-surface: var(--color-surface, #ffffff);
+  --ecb-surface-2: var(--color-surface-2, #eef0f4);
+  --ecb-paper: var(--color-paper, #1b1d23);
+  --ecb-muted: var(--color-muted, #4d5461);
+  --ecb-signal: var(--color-signal, #0b5f58);
+  --ecb-amber: var(--color-amber, #92400e);
+  --ecb-topic-blue: var(--color-topic-blue, #1d4ed8);
+  --ecb-line-strong: var(--color-line-strong, rgba(12, 13, 16, .26));
+}
+/* Do not inherit the prose letter spacing inside the source illustration. */
+.l0g-collateral .ecb-wide > svg text { letter-spacing: normal; }
+.l0g-collateral .ecb-figure#figure-5,
+.l0g-collateral .ecb-figure#figure-7 { max-width: 40rem; }
+.l0g-collateral .ecb-gallery {
+  display: flex; gap: 1rem; overflow-x: auto; overflow-y: hidden;
+  min-width: 0; max-width: 100%; padding-bottom: .65rem;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin; scrollbar-color: var(--color-signal) var(--color-surface);
+}
+.l0g-collateral .ecb-panel {
+  flex: 0 0 100%; min-width: 0;
+  scroll-snap-align: start; scroll-snap-stop: normal;
+}
+.l0g-collateral .ecb-panel > img {
+  display: block; width: 100%; height: auto; margin: 0;
+  border: 0; border-radius: 0;
+}
+.l0g-collateral .ecb-panel > .ecb-panel-light { display: none; }
+:root[data-theme="light"] .l0g-collateral .ecb-panel > .ecb-panel-dark { display: none; }
+:root[data-theme="light"] .l0g-collateral .ecb-panel > .ecb-panel-light { display: block; }
+.prose .l0g-collateral .ecb-panel-label {
+  font-family: var(--font-read); font-size: .875rem; font-weight: 600;
+  line-height: 1.45; letter-spacing: normal; color: var(--color-paper);
+  margin: .25rem 0 .6rem;
+}
+.prose .l0g-collateral .ecb-scroll-hint,
+.prose .l0g-collateral .ecb-full-link {
+  font-size: .875rem; line-height: 1.5; color: var(--color-muted); margin: .75rem 0;
+}
+.l0g-collateral .ecb-pagination {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: .5rem;
+}
+.l0g-collateral .ecb-pagination > a {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 2.75rem; min-height: 2.75rem; padding: .35rem .6rem;
+  border: 1px solid var(--color-line-strong); border-radius: .35rem;
+  background: var(--color-surface); color: var(--color-signal);
+  font-size: .875rem; line-height: 1; text-decoration: none;
+}
+.l0g-collateral .ecb-gallery:focus-visible,
+.l0g-collateral .ecb-pagination a:focus-visible,
+.l0g-collateral .ecb-full-link a:focus-visible {
+  outline: 2px solid var(--color-signal); outline-offset: 3px;
+}
+.prose .l0g-collateral .ecb-figure figcaption {
+  margin: .85rem 1rem .6rem; font-size: .875rem; line-height: 1.6; color: var(--color-muted);
+}
+.l0g-collateral .ecb-figure-scope { display: block; margin-top: .35rem; }
+.l0g-collateral .ecb-figure details {
+  padding: .5rem 1rem 0; font-size: .875rem; line-height: 1.6; color: var(--color-muted);
+}
+.l0g-collateral .ecb-figure summary {
+  cursor: pointer; min-height: 2rem; color: var(--color-signal);
+}
+.l0g-collateral .ecb-table-wrap { overflow-x: auto; margin-top: .75rem; }
+.l0g-collateral .ecb-table-wrap table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.l0g-collateral .ecb-table-wrap th,
+.l0g-collateral .ecb-table-wrap td {
+  padding: .45rem .6rem; border-bottom: 1px solid var(--color-line); text-align: left;
+  font-size: .8125rem; line-height: 1.5; vertical-align: top;
+}
+.l0g-collateral .ecb-table-wrap th { background: var(--color-surface-2); color: var(--color-paper); }
+.l0g-collateral .ecb-cite { font-size: .75rem; line-height: 1; white-space: nowrap; }
+.l0g-collateral .ecb-cite a { color: var(--color-signal); }
+/* Bibliography titles are compact links, rather than article headings. */
+.prose .l0g-collateral .ecb-source-list {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem 1.5rem;
+  margin: 1.25rem 0 0; padding: 0; list-style: none;
+  font-family: var(--font-read); font-size: .875rem; line-height: 1.6;
+}
+.prose .l0g-collateral .ecb-source-list > li {
+  min-width: 0; margin: 0; padding: .75rem 0 0;
+  border-top: 1px solid var(--color-line); overflow-wrap: anywhere; scroll-margin-top: 1.5rem;
+}
+.l0g-collateral .ecb-source-list .ecb-source-meta,
+.l0g-collateral .ecb-source-list time {
+  display: block; margin: 0 0 .25rem; font-size: .78125rem;
+  font-weight: 500; line-height: 1.5; color: var(--color-muted);
+}
+.prose .l0g-collateral .ecb-source-list .ecb-source-title,
+.prose .l0g-collateral .ecb-source-list .ecb-url {
+  font-size: .875rem; font-weight: 400; line-height: inherit;
+}
+@media (min-width: 780px) {
+  .prose .l0g-collateral .ecb-source-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .l0g-collateral .ecb-wide { display: none; }
+  .l0g-collateral .ecb-mobile { display: block; max-width: 350px; margin-inline: auto; }
+  .prose .l0g-collateral figure.ecb-figure { max-width: 350px; }
+}
+@media (prefers-reduced-motion: reduce) { .l0g-collateral .ecb-gallery { scroll-behavior: auto; } }
+@media print {
+  .l0g-collateral .ecb-wide { display: block; }
+  .l0g-collateral .ecb-mobile { display: none; }
+}
