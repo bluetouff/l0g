@@ -204,6 +204,109 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    "slug": "national-trust-bank",
+    "sigle": "National trust bank",
+    "nom": "A US national bank limited to trust company operations",
+    "def": "A US national bank whose activities are limited to trust company operations and authorised related activities, chartered and supervised by the OCC. Its services may include fiduciary administration and custody. The charter alone does not establish a product’s insurance coverage or grant access to a Federal Reserve account.",
+    "guide": "/en/analysis/crypto-banks-occ-icba-trust-charters-deposits/",
+    "sectionTitle": "US regulation & institutions",
+    "accent": "var(--color-topic-blue)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "The charter sets the permitted scope of the institution; customer rights also depend on the product, contract and applicable protections.",
+      "whyNow": "The OCC rule effective April 1, 2026, aligns the regulatory text with trust company operations. Proposed activities and their legal authority remain subject to individual review. The February 13, 2026 Protego decision granted preliminary conditional approval; its requirements include at least $15 million in Tier 1 capital.",
+      "articles": [
+        {
+          "label": "Crypto and the fight over the word bank",
+          "href": "/en/analysis/crypto-banks-occ-icba-trust-charters-deposits/",
+          "kind": "article"
+        }
+      ],
+      "guides": [
+        {
+          "label": "Reading a bank’s soundness",
+          "href": "/en/guides/read-bank-health/",
+          "detail": "Separate capital, liquidity and deposit protection.",
+          "kind": "guide"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OCC, national trust bank final rule",
+          "href": "https://www.occ.gov/news-issuances/federal-register/2026/91fr9977.pdf",
+          "detail": "91 FR 9977: trust company operations, related activities and licensing review.",
+          "kind": "source"
+        },
+        {
+          "label": "OCC, Protego decision CD1366",
+          "href": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1366.pdf",
+          "detail": "Preliminary conditional approval, pages 1 and 8: opening and capital/liquidity requirements.",
+          "kind": "source"
+        },
+        {
+          "label": "FDIC, Your Insured Deposits",
+          "href": "https://www.fdic.gov/resources/deposit-insurance/brochures/insured-deposits",
+          "detail": "Eligible deposits, ownership categories and the exclusion of crypto assets.",
+          "kind": "source"
+        },
+        {
+          "label": "Fed, May 20, 2026 payment account proposal",
+          "href": "https://www.federalreserve.gov/newsevents/pressreleases/other20260520a.htm",
+          "detail": "Eligibility and account approval are separate from a bank’s charter.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "aua",
+        "genius",
+        "ppsi",
+        "cet1"
+      ]
+    }
+  },
+  {
+    "slug": "aua",
+    "sigle": "AUA",
+    "nom": "Assets under administration",
+    "def": "The value of client assets covered by administration, fiduciary or custody services, under the reporting institution’s stated scope. AUA measures neither the bank’s deposit funding nor its equity capital. Comparing it with assets under management requires checking the included services, valuation basis and observation date.",
+    "guide": "/en/analysis/crypto-banks-occ-icba-trust-charters-deposits/",
+    "sectionTitle": "Private credit & markets",
+    "accent": "var(--color-accent)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "The value entrusted by clients describes the scale of a service; it does not measure the bank’s resources to absorb losses.",
+      "formula": "OCC scope at September 30, 2025: $6.8 trillion AUA = $5.2 trillion fiduciary accounts + $1.6 trillion custody and safekeeping accounts; rounded inputs.",
+      "whyNow": "The Paxos decision reports this total for OCC-supervised uninsured national trust banks across the assets in that scope. It is neither deposit funding nor a crypto-only total.",
+      "articles": [
+        {
+          "label": "Crypto and the fight over the word bank",
+          "href": "/en/analysis/crypto-banks-occ-icba-trust-charters-deposits/",
+          "kind": "article"
+        }
+      ],
+      "guides": [
+        {
+          "label": "Reading a bank’s soundness",
+          "href": "/en/guides/read-bank-health/",
+          "detail": "Distinguish client assets from the bank’s own capital and funding.",
+          "kind": "guide"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OCC, Paxos approval CA1358",
+          "href": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/2026/ca1358.pdf",
+          "detail": "December 12, 2025 letter, page 3, footnote 7: AUA scope and observation date.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "national-trust-bank",
+        "cet1"
+      ]
+    }
+  },
+  {
     slug: 'rsu', sigle: 'RSU', nom: 'Restricted stock unit',
     def: 'A right to receive shares after the plan’s vesting conditions are met, such as a service period or a performance target. A grant does not mean the recipient already owns the underlying shares. Vesting, actual delivery and subsequent disposals require separate checks.',
     guide: '/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/',
@@ -2181,12 +2284,12 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'ppsi',
     sigle: 'PPSI',
     nom: 'Permitted Payment Stablecoin Issuer',
-    def: 'A licensed payment-stablecoin issuer under the GENIUS Act. Only a PPSI may issue legally in the United States: an insured bank subsidiary, a non-bank issuer approved by the OCC, or a state-licensed issuer.',
+    def: 'An issuer status established by the GENIUS Act: an approved subsidiary of an insured depository institution, a federally qualified issuer or a state-qualified issuer, subject to the Act’s conditions. The restriction on US issuance takes effect with the new regime; an existing bank charter alone does not confer PPSI approval.',
     guide: '/en/guides/map-genius-act-stablecoin-regulators/',
     ...cryptoSection,
     atlas: {
       intuition: 'The PPSI status turns the stablecoin issuer into an explicitly supervised actor, with reserve, audit and AML obligations.',
-      formula: 'legal US stablecoin = licensed issuer + eligible reserve + audits + BSA compliance',
+      formula: 'GENIUS PPSI regime = issuer approval + eligible reserves + oversight + BSA compliance',
       whyNow: 'Licensed-issuer status is becoming the border between regulated tokenised dollars and more opaque offshore issuance.',
       articles: [
         { label: 'RealT in liquidation', href: '/en/analysis/realt-liquidation-token-without-the-deed/', detail: 'Real-estate RWA, off-chain title and on-chain promise.', kind: 'article' },
@@ -2197,6 +2300,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         { label: 'Who enforces the GENIUS Act', href: '/en/guides/map-genius-act-stablecoin-regulators/', detail: 'OCC, FinCEN, OFAC, states and the enforcement architecture.', kind: 'guide' },
       ],
       ...cryptoShared,
+      sources: [...cryptoSources, { label: 'GENIUS Act, enacted law', href: 'https://www.congress.gov/119/plaws/publ27/PLAW-119publ27.pdf', detail: 'Sections 2, 3 and 20: PPSI status, issuance and the effective date.', kind: 'source' }],
       related: ['stablecoin', 'genius', 'usdc'],
     },
   },
@@ -2204,7 +2308,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'genius',
     sigle: 'GENIUS',
     nom: 'GENIUS Act',
-    def: 'The US federal law on payment stablecoins, enacted on 18 July 2025: full reserves, licensed issuers, audits.',
+    def: 'The US payment-stablecoin law enacted on July 18, 2025, establishing an issuer approval, reserve and oversight regime. Section 20 sets its effective date as the earlier of January 18, 2027, or 120 days after the primary federal payment-stablecoin regulators issue final implementing regulations.',
     guide: '/en/guides/read-stablecoins-genius-act/',
     ...usRegulationSection,
     atlas: {
@@ -2219,6 +2323,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         { label: 'Who enforces the GENIUS Act', href: '/en/guides/map-genius-act-stablecoin-regulators/', detail: 'OCC, FinCEN, OFAC, states and the enforcement architecture.', kind: 'guide' },
       ],
       ...cryptoShared,
+      sources: [...cryptoSources, { label: 'GENIUS Act, enacted law', href: 'https://www.congress.gov/119/plaws/publ27/PLAW-119publ27.pdf', detail: 'Sections 2, 3 and 20: PPSI status, issuance and the effective date.', kind: 'source' }],
       related: ['stablecoin', 'ppsi', 'usdt', 'usdc'],
     },
   },

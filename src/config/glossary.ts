@@ -295,6 +295,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Rated feeder note', nom: 'Note de fonds nourricier notée', def: "Titre de dette émis par un véhicule nourricier investi dans un fonds privé, assorti d'une notation, le plus souvent privée. Permet à un assureur de loger une exposition de type fonds en la traitant comme une obligation notée, avec une charge en capital réduite. Structure au cœur de l'examen engagé par la NAIC." },
       { sigle: 'Réassurance adossée à l’actif', nom: 'Asset-intensive reinsurance', def: "Cession de réserves d'assurance-vie ou de rentes à un réassureur, souvent affilié au même groupe et installé offshore, aux Bermudes en particulier. Le réassureur reprend les engagements et réinvestit les actifs, fréquemment en crédit privé et en produits structurés, sous un régime prudentiel plus souple que celui du régulateur d'origine." },
       { sigle: 'NAIC', nom: 'National Association of Insurance Commissioners', def: "Association des régulateurs d'assurance des États américains, qui harmonise les règles prudentielles du secteur. Son bureau des valeurs mobilières (SVO) fixe le traitement en capital des actifs détenus par les assureurs ; ses réformes de 2026 lui permettent d'outrepasser des notations jugées trop favorables." },
+      {"sigle": "AUA", "nom": "Assets under administration : actifs administrés", "def": "Valeur des actifs de clients couverts par des services d’administration, de gestion fiduciaire ou de conservation, selon le périmètre déclaré. L’AUA ne mesure ni les dépôts reçus par la banque ni ses fonds propres. La comparaison avec un encours sous gestion exige de vérifier les services inclus, la date et les règles de valorisation.", "guide": "/posts/crypto-banques-occ-icba-agrements-trust-depots/"},
       { sigle: 'AUM', nom: 'Assets Under Management', def: "Encours sous gestion : montant total des actifs gérés par un fonds ou une société de gestion." },
       { sigle: 'Périmètre de consolidation', nom: 'Consolidation perimeter', def: "Frontière comptable dans laquelle une maison mère additionne ligne par ligne les actifs, passifs, produits et charges des entités qu'elle contrôle. Une société déconsolidée ne disparaît pas : les participations, engagements et transactions peuvent rester publiés comme investissements ou opérations avec des parties liées." },
       { sigle: 'Partie liée', nom: 'Related party', def: "Personne ou entité reliée à une entreprise par le contrôle, une influence notable, des dirigeants communs ou d'autres liens définis par les normes comptables. Une transaction avec une partie liée n'est pas irrégulière par nature, mais elle exige une information et une gouvernance adaptées au risque de conflit d'intérêts." },
@@ -496,7 +497,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Monnaie programmable', nom: 'Programmable money', def: "Monnaie dont l'usage peut être conditionné par du code : restreinte à certains biens, à une échéance ou à un usage. La BCE présente au contraire l'euro numérique comme non programmable, chaque unité restant fongible et dépensable partout, précisément pour préserver son cours légal et écarter le soupçon d'une monnaie de contrôle. À distinguer des paiements programmables, qui automatisent une transaction sans contraindre la monnaie elle-même." },
       { sigle: 'Grand livre unifié', nom: 'Unified ledger', def: "Concept formalisé par la BIS en 2023 : une plateforme programmable unique où coexistent monnaie de banque centrale tokenisée, dépôts bancaires tokenisés et actifs tokenisés. Permet le règlement atomique tout en préservant le système monétaire à deux niveaux." },
       { sigle: 'Règlement atomique', nom: 'Atomic settlement', def: "Exécution indivisible d'une transaction où toutes les jambes aboutissent ou aucune. Sur un grand livre unifié, message, compensation et règlement s'effondrent en une seule étape, éliminant le risque de règlement partiel et de contrepartie." },
-      { sigle: 'PPSI', nom: 'Permitted Payment Stablecoin Issuer', def: "Émetteur agréé de stablecoin de paiement au sens du GENIUS Act. Seul un PPSI peut émettre légalement aux États-Unis : filiale de banque assurée, émetteur non bancaire agréé par l'OCC, ou émetteur agréé au niveau d'un État.", guide: '/guides/qui-applique-le-genius-act/' },
+      { sigle: 'PPSI', nom: 'Permitted Payment Stablecoin Issuer', def: "Statut d’émetteur de stablecoins de paiement prévu par le GENIUS Act : filiale agréée d’un établissement de dépôt assuré, émetteur fédéral qualifié ou émetteur agréé au niveau d’un État, dans les conditions de la loi. L’exclusivité d’émission aux États-Unis dépend de l’entrée en vigueur de ce régime ; une charte bancaire existante ne constitue pas à elle seule un agrément PPSI.", guide: '/guides/qui-applique-le-genius-act/' },
     ],
   },
   {
@@ -563,6 +564,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Régulation & institutions US',
     accent: 'var(--color-topic-blue)',
     entries: [
+      {"sigle": "National trust bank", "nom": "Banque nationale américaine à activités de trust company", "def": "Banque nationale américaine dont l’activité est limitée aux opérations d’une trust company et aux activités connexes autorisées, sous charte et supervision de l’OCC. Elle peut assurer des services fiduciaires et de conservation. La charte seule ne détermine ni l’assurance d’un produit ni l’accès à un compte de la Fed.", "guide": "/posts/crypto-banques-occ-icba-agrements-trust-depots/"},
       { sigle: 'SEC', nom: 'Securities and Exchange Commission', def: "Gendarme boursier américain. Supervise les marchés, les introductions en bourse et les obligations de transparence des sociétés cotées." },
       { sigle: 'Basis trade', nom: 'Arbitrage de base sur Treasuries', def: "Arbitrage à effet de levier qui capte l'écart de prix entre une obligation du Trésor au comptant et son contrat à terme : achat du titre au comptant, vente du futures, financement en repo. Apporte de la liquidité en temps normal, amplifie le stress en cas de débouclage forcé." },
       { sigle: 'Swap de taux', nom: 'Interest rate swap (IRS)', def: "Contrat par lequel deux parties échangent des flux d'intérêts sur un même capital de référence, le notionnel : l'une paie un taux fixe, l'autre un taux variable indexé sur un taux de marché comme le SOFR. Le capital n'est jamais échangé, seuls les intérêts le sont. Outil central de couverture du risque de taux, et plus grand marché de dérivés du monde.", guide: '/guides/lire-les-swaps-de-taux/' },
@@ -605,7 +607,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'BLS', nom: 'Bureau of Labor Statistics', def: "Agence statistique américaine du travail. Publie le CPI, l'emploi, et les indices de prix import/export." },
       { sigle: 'CLARITY', nom: 'CLARITY Act', def: "Projet de loi américain visant notamment à répartir les compétences sur les actifs numériques entre la SEC et la CFTC. Il faut distinguer le texte adopté par une chambre, les compromis proposés et une loi promulguée : un vote de procédure ne crée pas à lui seul de nouvelles obligations.", guide: '/posts/clarity-apres-le-vote-49-50/' },
       { sigle: 'Clôture', nom: 'Cloture au Sénat américain', def: "Procédure limitant le débat au Sénat. Pour la législation ordinaire, la règle générale exige les trois cinquièmes des sénateurs dûment choisis et assermentés, soit 60 lorsque les 100 sièges sont pourvus. Une clôture sur la motion permettant d’examiner un projet reste distincte du vote d’adoption de ce projet. D’autres procédures et exceptions existent.", guide: '/posts/clarity-apres-le-vote-49-50/' },
-      { sigle: 'GENIUS', nom: 'GENIUS Act', def: "Loi fédérale américaine sur les stablecoins de paiement, promulguée le 18 juillet 2025 : réserves intégrales, émetteurs agréés, audits.", guide: '/guides/stablecoins-genius-act/' },
+      { sigle: 'GENIUS', nom: 'GENIUS Act', def: "Loi fédérale américaine sur les stablecoins de paiement, promulguée le 18 juillet 2025, qui prévoit un régime d’agrément, de réserves et de contrôle des émetteurs. Son article 20 fixe l’entrée en vigueur à la première de ces dates : le 18 janvier 2027 ou 120 jours après l’adoption de règlements d’application finaux par les régulateurs fédéraux compétents.", guide: '/guides/stablecoins-genius-act/' },
       { sigle: 'NASAA', nom: 'North American Securities Administrators Association', def: "Association des régulateurs boursiers des États américains, du Canada et du Mexique." },
       { sigle: 'USAID', nom: 'U.S. Agency for International Development', def: "Agence américaine pour le développement international, en charge de l'aide étrangère." },
       { sigle: 'SWIFT', nom: 'Society for Worldwide Interbank Financial Telecommunication', def: "Réseau de messagerie interbancaire mondial pour les transferts. Exclure un pays de SWIFT est une arme de sanction majeure." },
@@ -634,8 +636,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'G-SIB', nom: 'Global Systemically Important Bank', def: "Banque d'importance systémique mondiale, désignée par le Conseil de stabilité financière. Soumise à une surcharge de fonds propres proportionnelle à son poids systémique, en plus des minimums de Bâle, pour réduire le risque qu'elle soit trop grosse pour faire faillite.", guide: '/guides/lire-la-solidite-d-une-banque/' },
       { sigle: 'MNI', nom: 'Net interest margin', def: "Marge nette d'intérêt : écart entre ce qu'une banque gagne sur ses prêts et titres et ce qu'elle paie sur ses dépôts et financements, rapporté à ses actifs productifs. Cœur du modèle de banque de détail et métrique la plus scrutée des résultats, souvent plus révélatrice que le bénéfice par action. Le revenu correspondant est le produit net d'intérêts (net interest income, NII).", guide: '/guides/lire-la-solidite-d-une-banque/' },
       { sigle: 'LDI', nom: 'Liability-driven investment', def: "Stratégie de fonds de pension qui utilise obligations longues et dérivés pour aligner les actifs sur les engagements futurs. Au Royaume-Uni, la crise de 2022 a montré qu'un choc de taux pouvait déclencher appels de marge et ventes forcées de gilts." },
-      { sigle: 'FDIC', nom: 'Federal Deposit Insurance Corporation', def: "Agence fédérale qui garantit les dépôts bancaires américains jusqu'à 250 000 dollars par déposant et par banque, et qui agit comme administratrice des banques en faillite. Elle a saisi et cédé SVB, Signature et First Republic en 2023." },
-      { sigle: 'OCC', nom: 'Office of the Comptroller of the Currency', def: "Régulateur bancaire fédéral américain qui agrée et supervise les banques nationales. Sous le GENIUS Act, il est le régulateur principal des émetteurs de stablecoins non bancaires fédéraux et des banques nationales, au périmètre le plus large.", guide: '/guides/qui-applique-le-genius-act/' },
+      { sigle: 'FDIC', nom: 'Federal Deposit Insurance Corporation', def: "Agence fédérale américaine qui assure les dépôts éligibles jusqu’à 250 000 dollars par déposant, par banque assurée et par catégorie de détention des comptes. Les dépôts d’une même catégorie dans une même banque s’additionnent pour ce plafond ; les cryptoactifs sont exclus. Elle peut aussi administrer la résolution d’une banque en faillite." },
+      { sigle: 'OCC', nom: 'Office of the Comptroller of the Currency', def: "Régulateur bancaire fédéral américain qui agrée et supervise les banques nationales. Le GENIUS Act lui attribue notamment l’agrément et la supervision des émetteurs fédéraux qualifiés de stablecoins de paiement ; ce nouveau régime suit le calendrier d’entrée en vigueur de la loi.", guide: '/guides/qui-applique-le-genius-act/' },
       { sigle: 'NCUA', nom: 'National Credit Union Administration', def: "Agence fédérale qui agrée et supervise les credit unions américaines et garantit leurs dépôts. Sous le GENIUS Act, elle régule les émetteurs de stablecoins adossés à une credit union." },
       { sigle: 'FinCEN', nom: 'Financial Crimes Enforcement Network', def: "Cellule de renseignement financier du Trésor américain, chargée de la lutte anti-blanchiment. Sous le GENIUS Act, elle traite les émetteurs agréés comme des institutions financières soumises au Bank Secrecy Act.", guide: '/guides/qui-applique-le-genius-act/' },
       { sigle: 'BSA', nom: 'Bank Secrecy Act', def: "Loi américaine de 1970, socle de la lutte anti-blanchiment. Impose aux institutions financières des programmes de vigilance, d'identification de la clientèle et de déclaration d'opérations suspectes. Le GENIUS Act y assujettit les émetteurs de stablecoins agréés.", guide: '/guides/qui-applique-le-genius-act/' },
@@ -921,6 +923,89 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "national-trust-bank": {
+    "intuition": "La charte fixe un périmètre d’activités ; les droits du client dépendent aussi du produit, du contrat et des protections applicables.",
+    "whyNow": "La règle OCC entrée en vigueur le 1er avril 2026 rapproche le texte réglementaire des opérations d’une trust company. Elle laisse l’examen des activités et de leurs bases légales aux décisions individuelles. La décision Protego du 13 février 2026 est une autorisation préliminaire conditionnelle ; elle impose notamment au moins 15 millions de dollars de capital Tier 1.",
+    "articles": [
+      {
+        "label": "Crypto et l’enjeu du mot banque",
+        "href": "/posts/crypto-banques-occ-icba-agrements-trust-depots/",
+        "kind": "article"
+      }
+    ],
+    "guides": [
+      {
+        "label": "Lire la solidité d’une banque",
+        "href": "/guides/lire-la-solidite-d-une-banque/",
+        "detail": "Distinguer capital, liquidité et nature des dépôts.",
+        "kind": "guide"
+      }
+    ],
+    "sources": [
+      {
+        "label": "OCC, règle finale sur les national trust banks",
+        "href": "https://www.occ.gov/news-issuances/federal-register/2026/91fr9977.pdf",
+        "detail": "91 FR 9977 : opérations de trust company, activités connexes et examen des autorisations.",
+        "kind": "source"
+      },
+      {
+        "label": "OCC, décision Protego CD1366",
+        "href": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1366.pdf",
+        "detail": "Autorisation préliminaire conditionnelle, pages 1 et 8 : ouverture et conditions de capital/liquidité.",
+        "kind": "source"
+      },
+      {
+        "label": "FDIC, Your Insured Deposits",
+        "href": "https://www.fdic.gov/resources/deposit-insurance/brochures/insured-deposits",
+        "detail": "Dépôts éligibles, catégories de détention et exclusion des cryptoactifs.",
+        "kind": "source"
+      },
+      {
+        "label": "Fed, proposition de payment account du 20 mai 2026",
+        "href": "https://www.federalreserve.gov/newsevents/pressreleases/other20260520a.htm",
+        "detail": "L’admissibilité et l’approbation d’un compte sont des questions distinctes de la charte.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "aua",
+      "genius",
+      "ppsi",
+      "cet1"
+    ]
+  },
+  "aua": {
+    "intuition": "La taille des actifs confiés à un établissement renseigne sur ses services aux clients ; elle ne donne pas le montant de son capital disponible pour absorber une perte.",
+    "formula": "Périmètre OCC au 30 septembre 2025 : 6 800 Md$ d’actifs administrés = 5 200 Md$ de comptes fiduciaires + 1 600 Md$ de conservation et safekeeping ; chiffres arrondis.",
+    "whyNow": "Dans la décision Paxos, ce total concerne les national trust banks non assurées supervisées par l’OCC et l’ensemble des actifs de ce périmètre. Il ne représente ni des dépôts ni un total d’actifs crypto.",
+    "articles": [
+      {
+        "label": "Crypto et l’enjeu du mot banque",
+        "href": "/posts/crypto-banques-occ-icba-agrements-trust-depots/",
+        "kind": "article"
+      }
+    ],
+    "guides": [
+      {
+        "label": "Lire la solidité d’une banque",
+        "href": "/guides/lire-la-solidite-d-une-banque/",
+        "detail": "Distinguer les actifs des clients et les ressources propres de la banque.",
+        "kind": "guide"
+      }
+    ],
+    "sources": [
+      {
+        "label": "OCC, autorisation Paxos CA1358",
+        "href": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/2026/ca1358.pdf",
+        "detail": "Lettre du 12 décembre 2025, page 3, note 7 : périmètre et date de l’AUA.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "national-trust-bank",
+      "cet1"
+    ]
+  },
   rsu: {
     intuition: 'Une rémunération promise en actions et les titres effectivement détenus correspondent à des étapes différentes.',
     articles: [{ label: 'Trump Jr., drones et politique industrielle', href: '/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/', kind: 'article' }],
@@ -2048,13 +2133,13 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   ppsi: {
     intuition: "Le PPSI transforme l’émetteur de stablecoin en acteur explicitement supervisé, avec réserve, audit et obligations AML.",
-    formula: 'stablecoin légal US = émetteur agréé + réserve admissible + audits + conformité BSA',
+    formula: 'régime PPSI prévu par GENIUS = agrément + réserve admissible + contrôles + conformité BSA',
     whyNow: "Le statut d’émetteur agréé devient la frontière entre dollar tokenisé réglementé et émission offshore plus opaque.",
     articles: stablecoinArticles.slice(0, 2),
     guides: [stablecoinGuides[0], stablecoinGuides[1]],
     datasets: stablecoinDatasets,
     signals: stablecoinSignals,
-    sources: [stablecoinSources[0], stablecoinSources[1], stablecoinSources[2]],
+    sources: [stablecoinSources[0], stablecoinSources[1], stablecoinSources[2], { label: 'GENIUS Act, loi promulguée', href: 'https://www.congress.gov/119/plaws/publ27/PLAW-119publ27.pdf', detail: 'Articles 2, 3 et 20 : statut PPSI, émission et entrée en vigueur.', kind: 'source' }],
     related: ['stablecoin', 'genius', 'occ', 'fincen', 'bsa', 't-bill', 'usdc'],
   },
   genius: {
@@ -2064,7 +2149,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     guides: [stablecoinGuides[0], stablecoinGuides[1]],
     datasets: stablecoinDatasets,
     signals: stablecoinSignals,
-    sources: [stablecoinSources[0], stablecoinSources[1]],
+    sources: [stablecoinSources[0], stablecoinSources[1], { label: 'GENIUS Act, loi promulguée', href: 'https://www.congress.gov/119/plaws/publ27/PLAW-119publ27.pdf', detail: 'Article 20 : date d’entrée en vigueur distincte de la promulgation.', kind: 'source' }],
     related: ['stablecoin', 'ppsi', 'occ', 'fincen', 'bsa', 't-bill', 'wlfi'],
   },
   wti: {

@@ -1,0 +1,47 @@
+---
+// Both strings are controlled, checked repository SVG imports, never user input.
+interface Props {
+  desktop: string;
+  mobile: string;
+  caption: string;
+  number: string;
+}
+const { desktop, mobile, caption, number } = Astro.props;
+---
+<figure class="occ-crypto-evidence">
+  <div class="occ-crypto-desktop" set:html={desktop} />
+  <div class="occ-crypto-mobile" set:html={mobile} />
+  <figcaption><strong>{number}</strong> {caption}</figcaption>
+</figure>
+<style>
+  .occ-crypto-evidence {
+    margin: 2.6rem 0;
+    width: 100%;
+    padding-bottom: .75rem;
+  }
+  .occ-crypto-evidence :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: .75rem;
+    letter-spacing: normal;
+  }
+  .occ-crypto-mobile { display: none; }
+  figcaption {
+    margin-top: .9rem;
+    font-size: .875rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+  }
+  figcaption strong { margin-right: .35em; }
+  @media (max-width: 640px) {
+    .occ-crypto-desktop { display: none; }
+    .occ-crypto-mobile { display: block; }
+  }
+  @media print {
+    .occ-crypto-evidence { break-inside: avoid; }
+    .occ-crypto-desktop { display: block; }
+    .occ-crypto-mobile { display: none; }
+  }
+</style>
