@@ -1,0 +1,785 @@
+{
+  "parameters": {
+    "equipment_cost": 100.0,
+    "initial_debt": 70.0,
+    "equity": 30.0,
+    "annual_interest_rate": 0.1,
+    "debt_years": 5,
+    "initial_contract_years": 3,
+    "baseline_annual_revenue": 50.0,
+    "annual_cash_operating_cost": 18.0,
+    "renewal_price_retention": 0.75,
+    "renewal_billed_hours_retention": 0.8,
+    "accounting_life_years": 6,
+    "target_annual_coverage_for_resizing": 1.35,
+    "sale_cost_fraction": 0.1,
+    "removal_and_transfer_cost": 2.0,
+    "sale_gross_scenarios": [
+      25.0,
+      35.0,
+      45.0
+    ]
+  },
+  "summary": {
+    "payment": 18.465823655632164,
+    "debt_after_year3": 32.048123699857534,
+    "base_dscr": 1.7329310945867205,
+    "stress_dscr": 0.6498491604700202,
+    "baseline_revenue": 50.0,
+    "stress_revenue": 30.0,
+    "baseline_cfads": 32.0,
+    "stress_cfads": 12.0,
+    "revenue_break_even": 36.465823655632164,
+    "price_retention_break_even_at_80pct_hours": 0.9116455913908041,
+    "supported_debt_after_year3": 15.426997245179068,
+    "required_paydown": 16.621126454678468,
+    "debt_supported_at_dscr1": 20.826446280991746,
+    "base_residual_cash": 13.534176344367836,
+    "stress_cash_gap": 6.465823655632164,
+    "payment_after_resizing": 8.888888888888888,
+    "first_three_years_cash_if_retained": 40.60252903310351
+  },
+  "schedule": [
+    {
+      "year": 1,
+      "debt_start": 70.0,
+      "interest": 7.0,
+      "principal": 11.465823655632164,
+      "payment": 18.465823655632164,
+      "debt_end": 58.534176344367836,
+      "revenue": 50.0,
+      "cash_cost": 18.0,
+      "cfads": 32.0,
+      "dscr": 1.7329310945867205,
+      "cash_after_scheduled_debt_service": 13.534176344367836,
+      "book_value_6yr": 83.33333333333334
+    },
+    {
+      "year": 2,
+      "debt_start": 58.534176344367836,
+      "interest": 5.853417634436784,
+      "principal": 12.61240602119538,
+      "payment": 18.465823655632164,
+      "debt_end": 45.92177032317245,
+      "revenue": 50.0,
+      "cash_cost": 18.0,
+      "cfads": 32.0,
+      "dscr": 1.7329310945867205,
+      "cash_after_scheduled_debt_service": 13.534176344367836,
+      "book_value_6yr": 66.66666666666667
+    },
+    {
+      "year": 3,
+      "debt_start": 45.92177032317245,
+      "interest": 4.592177032317245,
+      "principal": 13.873646623314919,
+      "payment": 18.465823655632164,
+      "debt_end": 32.048123699857534,
+      "revenue": 50.0,
+      "cash_cost": 18.0,
+      "cfads": 32.0,
+      "dscr": 1.7329310945867205,
+      "cash_after_scheduled_debt_service": 13.534176344367836,
+      "book_value_6yr": 50.0
+    },
+    {
+      "year": 4,
+      "debt_start": 32.048123699857534,
+      "interest": 3.2048123699857536,
+      "principal": 15.261011285646411,
+      "payment": 18.465823655632164,
+      "debt_end": 16.787112414211123,
+      "revenue": 30.0,
+      "cash_cost": 18.0,
+      "cfads": 12.0,
+      "dscr": 0.6498491604700202,
+      "cash_after_scheduled_debt_service": -6.465823655632164,
+      "book_value_6yr": 33.333333333333336
+    },
+    {
+      "year": 5,
+      "debt_start": 16.787112414211123,
+      "interest": 1.6787112414211123,
+      "principal": 16.78711241421105,
+      "payment": 18.465823655632164,
+      "debt_end": 7.105427357601002e-14,
+      "revenue": 30.0,
+      "cash_cost": 18.0,
+      "cfads": 12.0,
+      "dscr": 0.6498491604700202,
+      "cash_after_scheduled_debt_service": -6.465823655632164,
+      "book_value_6yr": 16.666666666666664
+    }
+  ],
+  "recovery": [
+    {
+      "gross": 25.0,
+      "sale_cost": 2.5,
+      "transfer_cost": 2.0,
+      "net": 20.5,
+      "debt_due": 32.048123699857534,
+      "lender_recovered": 20.5,
+      "lender_shortfall": 11.548123699857534,
+      "residual_to_equity": 0.0
+    },
+    {
+      "gross": 35.0,
+      "sale_cost": 3.5,
+      "transfer_cost": 2.0,
+      "net": 29.5,
+      "debt_due": 32.048123699857534,
+      "lender_recovered": 29.5,
+      "lender_shortfall": 2.548123699857534,
+      "residual_to_equity": 0.0
+    },
+    {
+      "gross": 45.0,
+      "sale_cost": 4.5,
+      "transfer_cost": 2.0,
+      "net": 38.5,
+      "debt_due": 32.048123699857534,
+      "lender_recovered": 32.048123699857534,
+      "lender_shortfall": 0.0,
+      "residual_to_equity": 6.451876300142466
+    }
+  ],
+  "heatmap": [
+    {
+      "price_index": 100,
+      "billed_hours_index": 100,
+      "revenue": 50.0,
+      "cfads": 32.0,
+      "dscr": 1.7329310945867205
+    },
+    {
+      "price_index": 95,
+      "billed_hours_index": 100,
+      "revenue": 47.5,
+      "cfads": 29.5,
+      "dscr": 1.597545852822133
+    },
+    {
+      "price_index": 90,
+      "billed_hours_index": 100,
+      "revenue": 45.0,
+      "cfads": 27.0,
+      "dscr": 1.4621606110575454
+    },
+    {
+      "price_index": 85,
+      "billed_hours_index": 100,
+      "revenue": 42.5,
+      "cfads": 24.5,
+      "dscr": 1.3267753692929578
+    },
+    {
+      "price_index": 80,
+      "billed_hours_index": 100,
+      "revenue": 40.0,
+      "cfads": 22.0,
+      "dscr": 1.1913901275283703
+    },
+    {
+      "price_index": 75,
+      "billed_hours_index": 100,
+      "revenue": 37.5,
+      "cfads": 19.5,
+      "dscr": 1.0560048857637827
+    },
+    {
+      "price_index": 70,
+      "billed_hours_index": 100,
+      "revenue": 35.0,
+      "cfads": 17.0,
+      "dscr": 0.9206196439991952
+    },
+    {
+      "price_index": 65,
+      "billed_hours_index": 100,
+      "revenue": 32.5,
+      "cfads": 14.5,
+      "dscr": 0.7852344022346077
+    },
+    {
+      "price_index": 60,
+      "billed_hours_index": 100,
+      "revenue": 30.0,
+      "cfads": 12.0,
+      "dscr": 0.6498491604700202
+    },
+    {
+      "price_index": 100,
+      "billed_hours_index": 95,
+      "revenue": 47.5,
+      "cfads": 29.5,
+      "dscr": 1.597545852822133
+    },
+    {
+      "price_index": 95,
+      "billed_hours_index": 95,
+      "revenue": 45.125,
+      "cfads": 27.125,
+      "dscr": 1.4689298731457747
+    },
+    {
+      "price_index": 90,
+      "billed_hours_index": 95,
+      "revenue": 42.75,
+      "cfads": 24.75,
+      "dscr": 1.3403138934694165
+    },
+    {
+      "price_index": 85,
+      "billed_hours_index": 95,
+      "revenue": 40.375,
+      "cfads": 22.375,
+      "dscr": 1.2116979137930584
+    },
+    {
+      "price_index": 80,
+      "billed_hours_index": 95,
+      "revenue": 38.0,
+      "cfads": 20.0,
+      "dscr": 1.0830819341167002
+    },
+    {
+      "price_index": 75,
+      "billed_hours_index": 95,
+      "revenue": 35.625,
+      "cfads": 17.625,
+      "dscr": 0.9544659544403421
+    },
+    {
+      "price_index": 70,
+      "billed_hours_index": 95,
+      "revenue": 33.25,
+      "cfads": 15.25,
+      "dscr": 0.8258499747639839
+    },
+    {
+      "price_index": 65,
+      "billed_hours_index": 95,
+      "revenue": 30.875,
+      "cfads": 12.875,
+      "dscr": 0.6972339950876257
+    },
+    {
+      "price_index": 60,
+      "billed_hours_index": 95,
+      "revenue": 28.5,
+      "cfads": 10.5,
+      "dscr": 0.5686180154112677
+    },
+    {
+      "price_index": 100,
+      "billed_hours_index": 90,
+      "revenue": 45.0,
+      "cfads": 27.0,
+      "dscr": 1.4621606110575454
+    },
+    {
+      "price_index": 95,
+      "billed_hours_index": 90,
+      "revenue": 42.75,
+      "cfads": 24.75,
+      "dscr": 1.3403138934694165
+    },
+    {
+      "price_index": 90,
+      "billed_hours_index": 90,
+      "revenue": 40.5,
+      "cfads": 22.5,
+      "dscr": 1.2184671758812877
+    },
+    {
+      "price_index": 85,
+      "billed_hours_index": 90,
+      "revenue": 38.25,
+      "cfads": 20.25,
+      "dscr": 1.096620458293159
+    },
+    {
+      "price_index": 80,
+      "billed_hours_index": 90,
+      "revenue": 36.0,
+      "cfads": 18.0,
+      "dscr": 0.9747737407050302
+    },
+    {
+      "price_index": 75,
+      "billed_hours_index": 90,
+      "revenue": 33.75,
+      "cfads": 15.75,
+      "dscr": 0.8529270231169014
+    },
+    {
+      "price_index": 70,
+      "billed_hours_index": 90,
+      "revenue": 31.5,
+      "cfads": 13.5,
+      "dscr": 0.7310803055287727
+    },
+    {
+      "price_index": 65,
+      "billed_hours_index": 90,
+      "revenue": 29.25,
+      "cfads": 11.25,
+      "dscr": 0.6092335879406439
+    },
+    {
+      "price_index": 60,
+      "billed_hours_index": 90,
+      "revenue": 27.0,
+      "cfads": 9.0,
+      "dscr": 0.4873868703525151
+    },
+    {
+      "price_index": 100,
+      "billed_hours_index": 85,
+      "revenue": 42.5,
+      "cfads": 24.5,
+      "dscr": 1.3267753692929578
+    },
+    {
+      "price_index": 95,
+      "billed_hours_index": 85,
+      "revenue": 40.375,
+      "cfads": 22.375,
+      "dscr": 1.2116979137930584
+    },
+    {
+      "price_index": 90,
+      "billed_hours_index": 85,
+      "revenue": 38.25,
+      "cfads": 20.25,
+      "dscr": 1.096620458293159
+    },
+    {
+      "price_index": 85,
+      "billed_hours_index": 85,
+      "revenue": 36.125,
+      "cfads": 18.125,
+      "dscr": 0.9815430027932596
+    },
+    {
+      "price_index": 80,
+      "billed_hours_index": 85,
+      "revenue": 34.0,
+      "cfads": 16.0,
+      "dscr": 0.8664655472933602
+    },
+    {
+      "price_index": 75,
+      "billed_hours_index": 85,
+      "revenue": 31.875,
+      "cfads": 13.875,
+      "dscr": 0.7513880917934608
+    },
+    {
+      "price_index": 70,
+      "billed_hours_index": 85,
+      "revenue": 29.75,
+      "cfads": 11.75,
+      "dscr": 0.6363106362935614
+    },
+    {
+      "price_index": 65,
+      "billed_hours_index": 85,
+      "revenue": 27.625,
+      "cfads": 9.625,
+      "dscr": 0.521233180793662
+    },
+    {
+      "price_index": 60,
+      "billed_hours_index": 85,
+      "revenue": 25.5,
+      "cfads": 7.5,
+      "dscr": 0.4061557252937626
+    },
+    {
+      "price_index": 100,
+      "billed_hours_index": 80,
+      "revenue": 40.0,
+      "cfads": 22.0,
+      "dscr": 1.1913901275283703
+    },
+    {
+      "price_index": 95,
+      "billed_hours_index": 80,
+      "revenue": 38.0,
+      "cfads": 20.0,
+      "dscr": 1.0830819341167002
+    },
+    {
+      "price_index": 90,
+      "billed_hours_index": 80,
+      "revenue": 36.0,
+      "cfads": 18.0,
+      "dscr": 0.9747737407050302
+    },
+    {
+      "price_index": 85,
+      "billed_hours_index": 80,
+      "revenue": 34.0,
+      "cfads": 16.0,
+      "dscr": 0.8664655472933602
+    },
+    {
+      "price_index": 80,
+      "billed_hours_index": 80,
+      "revenue": 32.0,
+      "cfads": 14.0,
+      "dscr": 0.7581573538816901
+    },
+    {
+      "price_index": 75,
+      "billed_hours_index": 80,
+      "revenue": 30.0,
+      "cfads": 12.0,
+      "dscr": 0.6498491604700202
+    },
+    {
+      "price_index": 70,
+      "billed_hours_index": 80,
+      "revenue": 28.0,
+      "cfads": 10.0,
+      "dscr": 0.5415409670583501
+    },
+    {
+      "price_index": 65,
+      "billed_hours_index": 80,
+      "revenue": 26.0,
+      "cfads": 8.0,
+      "dscr": 0.4332327736466801
+    },
+    {
+      "price_index": 60,
+      "billed_hours_index": 80,
+      "revenue": 24.0,
+      "cfads": 6.0,
+      "dscr": 0.3249245802350101
+    },
+    {
+      "price_index": 100,
+      "billed_hours_index": 75,
+      "revenue": 37.5,
+      "cfads": 19.5,
+      "dscr": 1.0560048857637827
+    },
+    {
+      "price_index": 95,
+      "billed_hours_index": 75,
+      "revenue": 35.625,
+      "cfads": 17.625,
+      "dscr": 0.9544659544403421
+    },
+    {
+      "price_index": 90,
+      "billed_hours_index": 75,
+      "revenue": 33.75,
+      "cfads": 15.75,
+      "dscr": 0.8529270231169014
+    },
+    {
+      "price_index": 85,
+      "billed_hours_index": 75,
+      "revenue": 31.875,
+      "cfads": 13.875,
+      "dscr": 0.7513880917934608
+    },
+    {
+      "price_index": 80,
+      "billed_hours_index": 75,
+      "revenue": 30.0,
+      "cfads": 12.0,
+      "dscr": 0.6498491604700202
+    },
+    {
+      "price_index": 75,
+      "billed_hours_index": 75,
+      "revenue": 28.125,
+      "cfads": 10.125,
+      "dscr": 0.5483102291465795
+    },
+    {
+      "price_index": 70,
+      "billed_hours_index": 75,
+      "revenue": 26.25,
+      "cfads": 8.25,
+      "dscr": 0.44677129782313885
+    },
+    {
+      "price_index": 65,
+      "billed_hours_index": 75,
+      "revenue": 24.375,
+      "cfads": 6.375,
+      "dscr": 0.3452323664996982
+    },
+    {
+      "price_index": 60,
+      "billed_hours_index": 75,
+      "revenue": 22.5,
+      "cfads": 4.5,
+      "dscr": 0.24369343517625755
+    },
+    {
+      "price_index": 100,
+      "billed_hours_index": 70,
+      "revenue": 35.0,
+      "cfads": 17.0,
+      "dscr": 0.9206196439991952
+    },
+    {
+      "price_index": 95,
+      "billed_hours_index": 70,
+      "revenue": 33.25,
+      "cfads": 15.25,
+      "dscr": 0.8258499747639839
+    },
+    {
+      "price_index": 90,
+      "billed_hours_index": 70,
+      "revenue": 31.5,
+      "cfads": 13.5,
+      "dscr": 0.7310803055287727
+    },
+    {
+      "price_index": 85,
+      "billed_hours_index": 70,
+      "revenue": 29.75,
+      "cfads": 11.75,
+      "dscr": 0.6363106362935614
+    },
+    {
+      "price_index": 80,
+      "billed_hours_index": 70,
+      "revenue": 28.0,
+      "cfads": 10.0,
+      "dscr": 0.5415409670583501
+    },
+    {
+      "price_index": 75,
+      "billed_hours_index": 70,
+      "revenue": 26.25,
+      "cfads": 8.25,
+      "dscr": 0.44677129782313885
+    },
+    {
+      "price_index": 70,
+      "billed_hours_index": 70,
+      "revenue": 24.5,
+      "cfads": 6.5,
+      "dscr": 0.35200162858792755
+    },
+    {
+      "price_index": 65,
+      "billed_hours_index": 70,
+      "revenue": 22.75,
+      "cfads": 4.75,
+      "dscr": 0.2572319593527163
+    },
+    {
+      "price_index": 60,
+      "billed_hours_index": 70,
+      "revenue": 21.0,
+      "cfads": 3.0,
+      "dscr": 0.16246229011750504
+    },
+    {
+      "price_index": 100,
+      "billed_hours_index": 65,
+      "revenue": 32.5,
+      "cfads": 14.5,
+      "dscr": 0.7852344022346077
+    },
+    {
+      "price_index": 95,
+      "billed_hours_index": 65,
+      "revenue": 30.875,
+      "cfads": 12.875,
+      "dscr": 0.6972339950876257
+    },
+    {
+      "price_index": 90,
+      "billed_hours_index": 65,
+      "revenue": 29.25,
+      "cfads": 11.25,
+      "dscr": 0.6092335879406439
+    },
+    {
+      "price_index": 85,
+      "billed_hours_index": 65,
+      "revenue": 27.625,
+      "cfads": 9.625,
+      "dscr": 0.521233180793662
+    },
+    {
+      "price_index": 80,
+      "billed_hours_index": 65,
+      "revenue": 26.0,
+      "cfads": 8.0,
+      "dscr": 0.4332327736466801
+    },
+    {
+      "price_index": 75,
+      "billed_hours_index": 65,
+      "revenue": 24.375,
+      "cfads": 6.375,
+      "dscr": 0.3452323664996982
+    },
+    {
+      "price_index": 70,
+      "billed_hours_index": 65,
+      "revenue": 22.75,
+      "cfads": 4.75,
+      "dscr": 0.2572319593527163
+    },
+    {
+      "price_index": 65,
+      "billed_hours_index": 65,
+      "revenue": 21.125,
+      "cfads": 3.125,
+      "dscr": 0.1692315522057344
+    },
+    {
+      "price_index": 60,
+      "billed_hours_index": 65,
+      "revenue": 19.5,
+      "cfads": 1.5,
+      "dscr": 0.08123114505875252
+    },
+    {
+      "price_index": 100,
+      "billed_hours_index": 60,
+      "revenue": 30.0,
+      "cfads": 12.0,
+      "dscr": 0.6498491604700202
+    },
+    {
+      "price_index": 95,
+      "billed_hours_index": 60,
+      "revenue": 28.5,
+      "cfads": 10.5,
+      "dscr": 0.5686180154112677
+    },
+    {
+      "price_index": 90,
+      "billed_hours_index": 60,
+      "revenue": 27.0,
+      "cfads": 9.0,
+      "dscr": 0.4873868703525151
+    },
+    {
+      "price_index": 85,
+      "billed_hours_index": 60,
+      "revenue": 25.5,
+      "cfads": 7.5,
+      "dscr": 0.4061557252937626
+    },
+    {
+      "price_index": 80,
+      "billed_hours_index": 60,
+      "revenue": 24.0,
+      "cfads": 6.0,
+      "dscr": 0.3249245802350101
+    },
+    {
+      "price_index": 75,
+      "billed_hours_index": 60,
+      "revenue": 22.5,
+      "cfads": 4.5,
+      "dscr": 0.24369343517625755
+    },
+    {
+      "price_index": 70,
+      "billed_hours_index": 60,
+      "revenue": 21.0,
+      "cfads": 3.0,
+      "dscr": 0.16246229011750504
+    },
+    {
+      "price_index": 65,
+      "billed_hours_index": 60,
+      "revenue": 19.5,
+      "cfads": 1.5,
+      "dscr": 0.08123114505875252
+    },
+    {
+      "price_index": 60,
+      "billed_hours_index": 60,
+      "revenue": 18.0,
+      "cfads": 0.0,
+      "dscr": 0.0
+    }
+  ],
+  "depreciation": [
+    {
+      "life": 4,
+      "annual_depreciation": 25.0,
+      "book_after_year3": 25.0,
+      "debt_after_year3": 32.048123699857534
+    },
+    {
+      "life": 6,
+      "annual_depreciation": 16.666666666666668,
+      "book_after_year3": 50.0,
+      "debt_after_year3": 32.048123699857534
+    },
+    {
+      "life": 10,
+      "annual_depreciation": 10.0,
+      "book_after_year3": 70.0,
+      "debt_after_year3": 32.048123699857534
+    }
+  ],
+  "rate_sensitivity": [
+    {
+      "annual_rate": 0.06,
+      "payment": 16.617748030183265,
+      "base_dscr": 1.925652016258613,
+      "stress_dscr": 0.72211950609698
+    },
+    {
+      "annual_rate": 0.08,
+      "payment": 17.53195181967855,
+      "base_dscr": 1.8252388740928402,
+      "stress_dscr": 0.6844645777848151
+    },
+    {
+      "annual_rate": 0.1,
+      "payment": 18.465823655632164,
+      "base_dscr": 1.7329310945867205,
+      "stress_dscr": 0.6498491604700202
+    },
+    {
+      "annual_rate": 0.12,
+      "payment": 19.418681235873407,
+      "base_dscr": 1.6478976925005748,
+      "stress_dscr": 0.6179616346877156
+    },
+    {
+      "annual_rate": 0.14,
+      "payment": 20.38984825437303,
+      "base_dscr": 1.5694084429067257,
+      "stress_dscr": 0.5885281660900221
+    }
+  ],
+  "metadata": {
+    "kind": "hypothetical educational scenarios",
+    "currency": "USD",
+    "monetaryUnit": "millions of nominal US dollars",
+    "period": "illustrative years 1 to 5, annual end-of-year payments",
+    "annualInterestRateConvention": "annual effective",
+    "marketPrices": false,
+    "issuerRepaymentSchedules": false,
+    "exclusions": [
+      "taxes",
+      "working capital",
+      "additional capital expenditure",
+      "financing fees",
+      "accrued interest",
+      "penalties",
+      "other creditors"
+    ]
+  }
+}

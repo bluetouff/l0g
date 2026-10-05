@@ -204,6 +204,98 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    "slug": "gpu",
+    "sigle": "GPU",
+    "nom": "Graphics processing unit",
+    "def": "A processor designed to run many calculations in parallel, used for graphics rendering and artificial intelligence. In a computing service, practical performance also depends on memory, interconnects and software. Technical usefulness does not establish the cash receipts a fleet can earn.",
+    "guide": "/en/analysis/gpu-backed-debt-fourth-year/",
+    "sectionTitle": "Macro & central banks",
+    "accent": "var(--color-signal)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "Computing capability, carrying value and rental cash receipts answer different questions.",
+      "articles": [
+        {
+          "label": "GPU-backed debt: pricing the fourth year",
+          "href": "/en/analysis/gpu-backed-debt-fourth-year/",
+          "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.",
+          "kind": "article"
+        },
+        {
+          "label": "The collateral that cannot leave the building",
+          "href": "/en/analysis/collateral-that-cannot-leave-the-building/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Nvidia, CUDA Programming Guide",
+          "href": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html",
+          "detail": "Parallel execution and the organisation of GPU work.",
+          "kind": "source"
+        },
+        {
+          "label": "AWS, EC2 P4 instances",
+          "href": "https://aws.amazon.com/ec2/instance-types/p4/",
+          "detail": "A service combining A100 GPUs, memory, interconnects and storage; catalogue availability does not measure a fleet’s receipts.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "ddtl",
+        "dscr",
+        "collateral"
+      ]
+    }
+  },
+  {
+    "slug": "ddtl",
+    "sigle": "DDTL",
+    "nom": "Delayed-draw term loan",
+    "def": "A term-loan facility whose funds can be drawn later, in one or more advances within an agreed period, subject to contractual conditions. The committed ceiling differs from the amount actually borrowed. Draw timing, fees, maturity and security depend on the transaction.",
+    "guide": "/en/analysis/collateral-that-cannot-leave-the-building/",
+    "sectionTitle": "Private credit & markets",
+    "accent": "var(--color-accent)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "A commitment to provide funds organises financing; it does not establish the amount already owed or the future cash available to repay it.",
+      "whyNow": "CoreWeave’s DDTL 5.5, documented in August 2026, finances servers and related infrastructure subject to draw conditions. It shows how customer contracts, borrowing availability and debt maturity can follow separate timelines.",
+      "articles": [
+        {
+          "label": "The collateral that cannot leave the building",
+          "href": "/en/analysis/collateral-that-cannot-leave-the-building/",
+          "kind": "article"
+        },
+        {
+          "label": "GPU-backed debt: pricing the fourth year",
+          "href": "/en/analysis/gpu-backed-debt-fourth-year/",
+          "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "CoreWeave / SEC, August 7, 2026 8-K",
+          "href": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000357/crwv-20260807.htm",
+          "detail": "DDTL 5.5 availability and maturity; a facility commitment differs from the drawn balance.",
+          "kind": "source"
+        },
+        {
+          "label": "CoreWeave / SEC, DDTL 5.5 agreement",
+          "href": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000357/ex101creditagreement.htm",
+          "detail": "Draw conditions, amortisation, prepayment and security; some schedules are redacted.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "dscr",
+        "take-or-pay",
+        "collateral",
+        "gpu"
+      ]
+    }
+  },
+  {
     "slug": "national-trust-bank",
     "sigle": "National trust bank",
     "nom": "A US national bank limited to trust company operations",
@@ -339,12 +431,12 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     atlas: {
       intuition: 'The value of an asset a bank owns and the borrowing it can support are different measures.',
       formula: 'simplified coverage = sum, for each eligible asset, of its value × (1 - its haircut as a fraction), excluding further adjustments',
-      articles: [{ label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }],
+      articles: [{ label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }, {"label": "GPU-backed debt: pricing the fourth year", "href": "/en/analysis/gpu-backed-debt-fourth-year/", "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.", "kind": "article"}],
       sources: [
         { label: 'ECB, What is collateral?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/collateral.en.html', detail: 'Pledged assets and realisation following a default.', kind: 'source' },
         { label: 'ECB, What are haircuts?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/haircuts.en.html', detail: 'Post-haircut value and coverage of borrowing.', kind: 'source' },
       ],
-      related: ['decote-de-garantie', 'ecaf', 'repo', 'abs'],
+      related: ['decote-de-garantie', 'ecaf', 'repo', 'abs', 'ddtl'],
     },
   },
   {
@@ -1220,11 +1312,12 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'dscr', sigle: 'DSCR', nom: 'Debt-service coverage ratio', ...privateCreditSection,
     def: 'Cash available for debt service divided by interest and principal payments due over the same period. Below 1, those cash flows do not cover the payments. Contractual definitions vary; the ratio alone measures neither collateral value nor solvency.',
     guide: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/',
+    robots: 'noindex,follow',
     atlas: {
       formula: 'DSCR = cash available for debt service / debt service over the same period',
-      articles: [{ label: 'Crux AI: chips as collateral', href: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/', kind: 'article' }, { label: 'When credit starts sorting AI', href: '/en/analysis/when-credit-starts-sorting-ai/', kind: 'article' }],
+      articles: [{ label: 'Crux AI: chips as collateral', href: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/', kind: 'article' }, { label: 'When credit starts sorting AI', href: '/en/analysis/when-credit-starts-sorting-ai/', kind: 'article' }, {"label": "GPU-backed debt: pricing the fourth year", "href": "/en/analysis/gpu-backed-debt-fourth-year/", "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.", "kind": "article"}],
       sources: [{ label: 'EBRD, PPP project appraisal guidelines (hosted by the World Bank)', href: 'https://ppp.worldbank.org/sites/default/files/2024-07/VOLUME2-web.pdf', kind: 'source' }],
-      related: ['step-in-rights', 'ltv'],
+      related: ['step-in-rights', 'gpu', 'ddtl'],
     },
   },
   {
@@ -2583,16 +2676,16 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'take-or-pay',
     sigle: 'Take-or-pay',
     nom: 'Minimum-payment commitment',
-    def: 'A clause requiring a customer to pay for a minimum quantity or reserved capacity even when it does not use it. In large-load electricity tariffs, it protects the grid against delay or cancellation if coverage, duration and counterparty quality are sufficient.',
+    def: 'A clause requiring payment for a minimum quantity or reserved capacity even when the customer uses less. The minimum, exceptions and service conditions depend on the agreement. It reduces the supplier’s exposure to usage volumes while leaving customer default risk and the supplier’s performance obligations in place.',
     ...regulatedUtilitySection,
+    robots: 'noindex,follow',
     atlas: {
       intuition: 'Take-or-pay charges for the reservation, not only use. It turns the grid volume risk into a customer credit obligation.',
-      formula: 'payment due = greater of actual use and contractual minimum',
       whyNow: 'New large-load tariffs use minimum payments, long terms and collateral to filter speculative requests.',
-      articles: largeLoadArticles,
+      articles: [...largeLoadArticles, {"label": "GPU-backed debt: pricing the fourth year", "href": "/en/analysis/gpu-backed-debt-fourth-year/", "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.", "kind": "article"}],
       datasets: largeLoadDatasets,
-      sources: largeLoadSources,
-      related: ['rate-base', 'actif-echoue', 'hyperscaler', 'spv', 'vrg'],
+      sources: [...largeLoadSources, {"label": "Morningstar DBRS, Lambda Compute I", "href": "https://dbrs.morningstar.com/research/490455/morningstar-dbrs-assigns-credit-ratings-of-a-low-to-lambda-compute-i-llc", "detail": "October 2, 2026 assessment: take-or-pay capacity commitments and counterparty/service risks. Attributed credit opinion.", "kind": "source"}],
+      related: ['rate-base', 'actif-echoue', 'vrg', 'dscr', 'ddtl'],
     },
   },
   {

@@ -1,0 +1,78 @@
+---
+// Both strings are controlled, checked repository SVG imports, never user input.
+interface Props {
+  desktop: string;
+  mobile: string;
+  caption: string;
+  number: string;
+}
+const { desktop, mobile, caption, number } = Astro.props;
+---
+<figure class="gpu-credit-evidence">
+  <div class="gpu-credit-desktop" set:html={desktop} />
+  <div class="gpu-credit-mobile" set:html={mobile} />
+  <figcaption><strong>{number}</strong> {caption}</figcaption>
+  <slot />
+</figure>
+<style>
+  .gpu-credit-evidence {
+    margin: 2.6rem 0;
+    width: 100%;
+    padding-bottom: .75rem;
+  }
+  .gpu-credit-evidence :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: .75rem;
+    letter-spacing: normal;
+  }
+  .gpu-credit-mobile { display: none; }
+  figcaption {
+    margin-top: .9rem;
+    font-size: .875rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+  }
+  figcaption strong { margin-right: .35em; }
+  .gpu-credit-evidence :global(details) {
+    margin-top: .75rem;
+    padding: .7rem .8rem;
+    border: 1px solid var(--color-line-strong);
+    border-radius: .5rem;
+    background: var(--color-surface);
+    font-size: .875rem;
+    line-height: 1.65;
+  }
+  .gpu-credit-evidence :global(summary) {
+    cursor: pointer;
+    color: var(--color-paper);
+  }
+  .gpu-credit-evidence :global(details:focus-within) {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+  .gpu-credit-evidence :global(details table) {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-size: inherit;
+  }
+  .gpu-credit-evidence :global(details th),
+  .gpu-credit-evidence :global(details td) {
+    padding: .35rem .5rem;
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-paper);
+  }
+  @media (max-width: 640px) {
+    .gpu-credit-desktop { display: none; }
+    .gpu-credit-mobile { display: block; }
+  }
+  @media print {
+    .gpu-credit-evidence { break-inside: avoid; }
+    .gpu-credit-desktop { display: block; }
+    .gpu-credit-mobile { display: none; }
+  }
+</style>
