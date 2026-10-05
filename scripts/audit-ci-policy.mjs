@@ -70,7 +70,8 @@ requireCondition(
 requireCondition(build.includes('branches: [main]'), 'le build doit rester lié à main');
 requireCondition(build.includes('pull_request:'), 'le vrai build doit valider les pull requests avant fusion');
 requireCondition(build.includes('workflow_dispatch:'), 'le build manuel doit rester disponible');
-requireCondition(build.includes('timeout-minutes: 15'), 'le build doit conserver sa limite de 15 minutes');
+const publicationJob = build.split('\n  build:\n')[1] || '';
+requireCondition(/^    timeout-minutes: 20$/m.test(publicationJob), 'la publication signée doit rester bornée à 20 minutes');
 requireCondition(
   build.includes("cancel-in-progress: ${{ github.event_name == 'pull_request' }}"),
   'les validations PR obsolètes doivent être annulées sans interrompre une publication main',
@@ -93,8 +94,8 @@ requireCondition(
 );
 const validatePr = build.match(/  validate-pr:[\s\S]*?\n  build:/)?.[0] || '';
 requireCondition(
-  validatePr.includes("if: github.event_name == 'pull_request'") && validatePr.includes('contents: read'),
-  'la validation PR doit être strictement bornée et en lecture seule',
+  validatePr.includes("if: github.event_name == 'pull_request'") && validatePr.includes('contents: read') && /^    timeout-minutes: 15$/m.test(validatePr),
+  'la validation PR doit être bornée à 15 minutes et en lecture seule',
 );
 requireCondition(
   validatePr.includes('ref: black-box-archive') && validatePr.includes('persist-credentials: false'),

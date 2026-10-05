@@ -97,7 +97,8 @@ jobs:
       attestations: write
       artifact-metadata: write
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # The signed archive transfer is part of this bounded publication transaction.
+    timeout-minutes: 20
     steps:
       # Actions officielles uniquement, épinglées sur un SHA immuable.
       # Renovate conserve le SHA et le commentaire de version à jour.
