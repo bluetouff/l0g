@@ -14,7 +14,7 @@ const sanitize = (body) => optimize(
 ).data;
 
 test('security floors cover vulnerable parsers and network dependencies in both trees', () => {
-  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 3], 'fast-uri': [3, 1, 7], undici: [8, 10, 2], 'ip-address': [10, 5, 1], 'http-cache-semantics': [4, 3, 0] };
+  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 3], 'fast-uri': [3, 1, 7], undici: [8, 10, 2], 'ip-address': [10, 5, 1], 'http-cache-semantics': [4, 3, 0], 'source-map-js': [1, 2, 2], 'proxy-addr': [2, 0, 8], sharp: [0, 35, 5] };
   const seen = new Set();
   for (const path of ['../package-lock.json', '../mcp-server/package-lock.json']) {
     const lock = JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
@@ -136,6 +136,62 @@ test('SVGO rejects invalid XML character references in text and attributes', () 
 // Pure, bounded parsing fixtures; these tests never open a network connection.
 const requireMain = createRequire(import.meta.url);
 const requireMcp = createRequire(new URL('../mcp-server/package.json', import.meta.url));
+
+test('indexed source maps reject invalid offsets and preserve ordinary mappings', () => {
+  // GHSA-68fv-2mgg-jv7q: construction only, never iterate a huge generated line.
+  const { SourceMapConsumer, SourceNode } = requireMain('source-map-js');
+  const section = (line, column = 0) => ({
+    version: 3,
+    sections: [{ offset: { line, column }, map: { version: 3, sources: ['fixture.js'], names: [], mappings: 'AAAA' } }],
+  });
+  for (const line of [-1, 0.5, Number.MAX_SAFE_INTEGER]) {
+    assert.throws(() => new SourceMapConsumer(section(line)), /Section offset/);
+  }
+  assert.throws(() => new SourceMapConsumer(section(0, 0.5)), /Section offset/);
+  const nested = section(6_000_000);
+  nested.sections[0].map = section(6_000_000);
+  assert.throws(() => new SourceMapConsumer(nested), /including offsets of nested sections/);
+  const consumer = new SourceMapConsumer(section(1));
+  const mappings = [];
+  consumer.eachMapping((mapping) => mappings.push(mapping));
+  assert.equal(mappings[0].source, 'fixture.js');
+  assert.equal(mappings[0].generatedLine, 2);
+  assert.equal(SourceNode.fromStringWithSourceMap('header\nvalue', consumer).toString(), 'header\nvalue');
+});
+
+test('proxy trust preserves address families and legitimate forwarded clients', () => {
+  // GHSA-jqcg-44mw-7w3h: pure fixtures exercise both single and multi-subnet paths.
+  const proxyaddr = requireMcp('proxy-addr');
+  const request = (address) => ({ socket: { remoteAddress: address }, headers: { 'x-forwarded-for': '198.51.100.7' } });
+  for (const subnets of [['::ffff:10.0.0.0/8'], ['::/1'], ['::ffff:10.0.0.0/8', '192.0.2.0/24']]) {
+    const trust = proxyaddr.compile(subnets);
+    for (const address of ['203.0.113.9', '::ffff:203.0.113.9']) {
+      assert.equal(trust(address), false);
+      assert.equal(proxyaddr(request(address), trust), address);
+    }
+  }
+  for (const subnet of ['10.0.0.0/8', '::ffff:10.0.0.0/104']) {
+    const trust = proxyaddr.compile(subnet);
+    for (const address of ['10.0.0.1', '::ffff:10.0.0.1']) {
+      assert.equal(trust(address), true);
+      assert.equal(proxyaddr(request(address), trust), '198.51.100.7');
+    }
+    assert.equal(trust('203.0.113.9'), false);
+  }
+  const ipv6Trust = proxyaddr.compile(['2001:db8::/32', '10.0.0.0/8']);
+  assert.equal(proxyaddr(request('2001:db8::1'), ipv6Trust), '198.51.100.7');
+  assert.equal(ipv6Trust('2001:db9::1'), false);
+});
+
+test('Sharp loads a patched SVG renderer for the current platform', () => {
+  // GHSA-wq5f-xc86-pv6w: check the loaded library, including system libvips builds.
+  const version = requireMain('sharp').versions.rsvg;
+  assert.match(version, /^\d+\.\d+\.\d+$/);
+  const actual = version.split('.').map(Number);
+  const minimum = [2, 63, 2];
+  const difference = actual.findIndex((part, index) => part !== minimum[index]);
+  assert(difference === -1 || actual[difference] > minimum[difference], `librsvg ${version} below security floor`);
+});
 
 test('both URI parsers reject authority injection and malformed host brackets', () => {
   // GHSA-qw65-cvwx-89v3 and GHSA-58mr-gqgx-xq4g.
