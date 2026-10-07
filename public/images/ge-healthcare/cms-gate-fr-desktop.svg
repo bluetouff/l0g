@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="ge-healthcare-cms-gate-fr-desktop-title ge-healthcare-cms-gate-fr-desktop-desc" style="width:100%;height:auto">
+<title id="ge-healthcare-cms-gate-fr-desktop-title">Aux États-Unis, le remboursement a changé de mécanique</title><desc id="ge-healthcare-cms-gate-fr-desktop-desc">Le seuil OPPS 2026 modifie le mode de paiement des agents diagnostiques coûteux.</desc><defs><marker id="ge-healthcare-cms-gate-fr-desktop-arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="var(--color-paper, #e7e9ee)"/></marker></defs>
+<rect x="0" y="0" width="1200" height="800" rx="24" fill="var(--color-ink, #0c0d10)"/>
+<text x="40" y="55" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="28px" font-weight="800">Aux États-Unis, le remboursement a changé de mécanique</text>
+<text x="40" y="82" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="14px">En 2026, le seuil OPPS de 655 $/jour porte sur le coût estimé par code HCPCS.</text>
+<rect x="70" y="165" width="300" height="430" rx="18" fill="var(--color-surface, #121419)" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="220" y="290" text-anchor="middle" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="32px" font-weight="800">$655</text>
+<text x="220" y="330" text-anchor="middle" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">coût estimé CMS/jour, 2026</text>
+<line x1="370" y1="380" x2="500" y2="380" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-cms-gate-fr-desktop-arr)"/>
+<rect x="520" y="150" width="590" height="190" rx="18" fill="color-mix(in srgb, var(--color-signal, #5eead4) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="555" y="205" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">≤ $655</text>
+<text x="555" y="245" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">coût du radiopharmaceutique intégré au paiement du test nucléaire</text>
+<rect x="520" y="390" width="590" height="190" rx="18" fill="color-mix(in srgb, var(--color-amber, #f5b13d) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="555" y="445" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">&gt; $655</text>
+<text x="555" y="485" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">paiement séparé selon la méthodologie OPPS applicable</text>
+<rect x="100" y="640" width="1000" height="80" rx="18" fill="color-mix(in srgb, var(--color-amber, #f5b13d) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-amber, #f5b13d)" stroke-width="1.5"/>
+<text x="135" y="677" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">Ce seuil améliore la mécanique de paiement des agents diagnostiques coûteux ; il ne garantit ni prix, ni</text>
+<text x="135" y="695" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">adoption, ni remboursement de FAPI-74.</text>
+<text x="40" y="775" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">Source : CMS OPPS 2026, règle 2025-20907 (S13).</text>
+<text x="40" y="790" fill="var(--color-muted, #8b909b)" font-family="Inter,Arial,Helvetica,sans-serif" font-size="11px">Hors pass-through ; produits avec données historiques.</text></svg>

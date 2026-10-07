@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="ge-healthcare-cms-gate-en-desktop-title ge-healthcare-cms-gate-en-desktop-desc" style="width:100%;height:auto">
+<title id="ge-healthcare-cms-gate-en-desktop-title">U.S. reimbursement now has a different gate</title><desc id="ge-healthcare-cms-gate-en-desktop-desc">The 2026 OPPS threshold changes how high-cost diagnostic agents are paid.</desc><defs><marker id="ge-healthcare-cms-gate-en-desktop-arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="var(--color-paper, #e7e9ee)"/></marker></defs>
+<rect x="0" y="0" width="1200" height="800" rx="24" fill="var(--color-ink, #0c0d10)"/>
+<text x="40" y="55" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="28px" font-weight="800">U.S. reimbursement now has a different gate</text>
+<text x="40" y="82" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="14px">2026 OPPS: $655/day, based on CMS-estimated daily cost for each HCPCS code.</text>
+<rect x="70" y="165" width="300" height="430" rx="18" fill="var(--color-surface, #121419)" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="220" y="290" text-anchor="middle" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="32px" font-weight="800">$655</text>
+<text x="220" y="330" text-anchor="middle" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">CMS-estimated cost/day, 2026</text>
+<line x1="370" y1="380" x2="500" y2="380" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-cms-gate-en-desktop-arr)"/>
+<rect x="520" y="150" width="590" height="190" rx="18" fill="color-mix(in srgb, var(--color-signal, #5eead4) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="555" y="205" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">≤ $655</text>
+<text x="555" y="245" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">radiopharmaceutical cost remains packaged into the</text>
+<text x="555" y="263" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">nuclear-medicine test payment</text>
+<rect x="520" y="390" width="590" height="190" rx="18" fill="color-mix(in srgb, var(--color-amber, #f5b13d) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="555" y="445" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">&gt; $655</text>
+<text x="555" y="485" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">separate payment under the applicable OPPS methodology</text>
+<rect x="100" y="640" width="1000" height="80" rx="18" fill="color-mix(in srgb, var(--color-amber, #f5b13d) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-amber, #f5b13d)" stroke-width="1.5"/>
+<text x="135" y="677" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">The threshold improves payment mechanics for high-cost diagnostic agents; it does not guarantee pricing,</text>
+<text x="135" y="695" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">uptake or reimbursement for FAPI-74.</text>
+<text x="40" y="775" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">Source: CMS OPPS 2026, rule 2025-20907 (S13).</text>
+<text x="40" y="790" fill="var(--color-muted, #8b909b)" font-family="Inter,Arial,Helvetica,sans-serif" font-size="11px">Excludes pass-through; products with historical claims.</text></svg>

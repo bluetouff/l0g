@@ -1,0 +1,118 @@
+---
+import { geHealthcareInfographics } from '../data/ge-healthcare-infographics';
+import type { GeHealthcareFigure, GeHealthcareLanguage } from '../data/ge-healthcare-infographics';
+
+interface Props {
+  figure: GeHealthcareFigure;
+  lang?: GeHealthcareLanguage;
+  caption?: string;
+}
+const { figure, lang = 'fr', caption } = Astro.props;
+if (!Object.hasOwn(geHealthcareInfographics, figure) || !['fr', 'en'].includes(lang)) {
+  throw new Error('Unknown GE HealthCare infographic');
+}
+const definition = geHealthcareInfographics[figure];
+const chart = definition[lang];
+const readerId = `ge-healthcare-${figure}-${lang}-reader`;
+const viewportId = `ge-healthcare-${figure}-${lang}-viewport`;
+const enlarge = lang === 'fr' ? 'Agrandir l’infographie' : 'Enlarge the infographic';
+const hypothetical = lang === 'fr'
+  ? 'Simulation illustrative : les revenus sont hypothétiques et ne sont pas des estimations de SOFIE.'
+  : 'Illustrative sensitivity: revenue figures are hypothetical and are not estimates for SOFIE.';
+---
+<figure class="ge-healthcare-figure" data-ge-figure={figure} lang={lang}>
+  <input id={readerId} class="ge-healthcare-reader-toggle" type="checkbox" aria-controls={viewportId} />
+  <label for={readerId} class="ge-healthcare-reader-label">{enlarge}</label>
+  <div id={viewportId} class="ge-healthcare-viewport" role="region" tabindex="0" aria-label={chart.title}>
+    <!-- Strings come only from the controlled, audited repository SVG imports. -->
+    <div class="ge-healthcare-desktop" set:html={chart.desktop} />
+    <div class="ge-healthcare-mobile" set:html={chart.mobile} />
+  </div>
+  <figcaption><strong>{definition.number}</strong> {caption ?? chart.caption}</figcaption>
+  {definition.illustrative && <p class="ge-healthcare-hypothesis">{hypothetical}</p>}
+  <slot />
+</figure>
+<style>
+  .ge-healthcare-figure {
+    margin: 2.6rem 0;
+    width: 100%;
+    min-width: 0;
+    padding-bottom: .75rem;
+  }
+  .ge-healthcare-reader-toggle {
+    accent-color: var(--color-signal);
+    margin: .5rem .5rem .75rem 0;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+  }
+  .ge-healthcare-reader-label {
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .875rem;
+    cursor: pointer;
+  }
+  .ge-healthcare-viewport {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: .75rem;
+    scrollbar-color: var(--color-signal) var(--color-surface);
+    scrollbar-width: thin;
+  }
+  .ge-healthcare-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    letter-spacing: normal;
+  }
+  .ge-healthcare-mobile { display: none; }
+  .ge-healthcare-reader-toggle:checked ~ .ge-healthcare-viewport .ge-healthcare-desktop :global(svg) {
+    width: max(100%, 1200px) !important;
+    max-width: none;
+  }
+  .ge-healthcare-reader-toggle:checked ~ .ge-healthcare-viewport .ge-healthcare-mobile :global(svg) {
+    width: max(100%, 760px) !important;
+    max-width: none;
+  }
+  figcaption, .ge-healthcare-hypothesis {
+    margin: .9rem 0 0;
+    color: var(--color-muted);
+    font-size: .875rem;
+    line-height: 1.65;
+  }
+  figcaption strong { margin-right: .35em; }
+  .ge-healthcare-hypothesis { color: var(--color-amber); }
+  .ge-healthcare-reader-toggle:focus-visible,
+  .ge-healthcare-viewport:focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+  .ge-healthcare-figure :global(details) {
+    margin-top: .75rem;
+    padding: .7rem .8rem;
+    border: 1px solid var(--color-line-strong);
+    border-radius: .5rem;
+    background: var(--color-surface);
+    font-size: .875rem;
+    line-height: 1.65;
+    max-width: 100%;
+  }
+  .ge-healthcare-figure :global(summary) { cursor: pointer; color: var(--color-paper); }
+  .ge-healthcare-figure :global(details:focus-within) { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  .ge-healthcare-figure :global(table) { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
+  .ge-healthcare-figure :global(th), .ge-healthcare-figure :global(td) { padding: .35rem .5rem; border-bottom: 1px solid var(--color-line); }
+  @media (max-width: 640px) {
+    .ge-healthcare-desktop { display: none; }
+    .ge-healthcare-mobile { display: block; }
+  }
+  @media print {
+    .ge-healthcare-figure { break-inside: avoid; }
+    .ge-healthcare-reader-toggle, .ge-healthcare-reader-label { display: none; }
+    .ge-healthcare-desktop { display: block; }
+    .ge-healthcare-mobile { display: none; }
+    .ge-healthcare-figure :global(svg) { width: 100% !important; max-width: 100%; }
+  }
+</style>

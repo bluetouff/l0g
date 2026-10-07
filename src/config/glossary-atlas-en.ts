@@ -203,6 +203,212 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+{
+  "slug": "cyclotron",
+  "sigle": "Cyclotron",
+  "nom": "Particle accelerator for radionuclide production",
+  "guide": "/en/analysis/ge-healthcare-buys-time/",
+  "sectionTitle": "Industry & healthcare",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "Producing the radionuclide is one stage in making the medicine.",
+    "articles": [
+      {
+        "label": "GE HealthCare buys time",
+        "href": "/en/analysis/ge-healthcare-buys-time/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "IAEA, Bulletin 55-4, December 2014, pp. 10-11",
+        "href": "https://www.iaea.org/sites/default/files/bull554dec2014.pdf",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "tep",
+      "demi-vie",
+      "cmo"
+    ]
+  },
+  "def": "An accelerator of charged particles. In nuclear medicine, irradiating a target can produce radionuclides used to make radiopharmaceuticals. Further preparation and quality checks are needed before the medicine reaches a patient."
+},
+{
+  "slug": "tep",
+  "sigle": "PET",
+  "nom": "Positron emission tomography",
+  "guide": "/en/analysis/ge-healthcare-buys-time/",
+  "sectionTitle": "Industry & healthcare",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "Functional imaging depends on both the tracer and the scanner.",
+    "articles": [
+      {
+        "label": "GE HealthCare buys time",
+        "href": "/en/analysis/ge-healthcare-buys-time/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NIH/NIBIB, Nuclear Medicine",
+        "href": "https://www.nibib.nih.gov/science-education/science-topics/nuclear-medicine",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "cyclotron",
+      "demi-vie",
+      "theranostique"
+    ]
+  },
+  "def": "An imaging technique that uses a positron-emitting radiotracer to observe biological processes. The scanner detects photons produced by positron annihilation. What the scan reveals depends on the tracer used."
+},
+{
+  "slug": "demi-vie",
+  "sigle": "Half-life",
+  "nom": "Physical radioactive half-life",
+  "guide": "/en/analysis/ge-healthcare-buys-time/",
+  "sectionTitle": "Industry & healthcare",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "Decay continues during preparation and transport.",
+    "articles": [
+      {
+        "label": "GE HealthCare buys time",
+        "href": "/en/analysis/ge-healthcare-buys-time/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "FDA, PIXCLARA, sections 11.2 and 16, September 2026",
+        "href": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/218592Orig1s000lbl.pdf",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "cyclotron",
+      "tep"
+    ],
+    "formula": "A(t) = A(0) × 2^(−t/T½), with t and T½ expressed in the same time unit"
+  },
+  "def": "The time required for a radionuclide’s activity to fall by half through nuclear decay. Physical half-life differs from a medicine’s shelf life and does not, by itself, determine the longest permitted delivery time."
+},
+{
+  "slug": "cmo",
+  "sigle": "CMO",
+  "nom": "Contract manufacturing organization",
+  "guide": "/en/analysis/ge-healthcare-buys-time/",
+  "sectionTitle": "Industry & healthcare",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "The commercial relationship also carries manufacturing responsibilities.",
+    "articles": [
+      {
+        "label": "GE HealthCare buys time",
+        "href": "/en/analysis/ge-healthcare-buys-time/",
+        "kind": "article"
+      },
+      {
+        "label": "The price of reliable medicine supply",
+        "href": "/en/analysis/drug-shortages-price-of-reliability/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "FDA, Contract Manufacturing Arrangements for Drugs, November 2016",
+        "href": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/contract-manufacturing-arrangements-drugs-quality-agreements-guidance-industry",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "cdmo",
+      "cyclotron",
+      "principe-actif"
+    ]
+  },
+  "def": "A business that performs manufacturing operations under contract for another company. Its assigned work depends on the agreement. In pharmaceuticals, outsourcing does not remove either party’s applicable quality obligations."
+},
+{
+  "slug": "cdmo",
+  "sigle": "CDMO",
+  "nom": "Contract development and manufacturing organization",
+  "guide": "/en/analysis/ge-healthcare-buys-time/",
+  "sectionTitle": "Industry & healthcare",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "Developing a process and manufacturing batches are distinct activities.",
+    "articles": [
+      {
+        "label": "GE HealthCare buys time",
+        "href": "/en/analysis/ge-healthcare-buys-time/",
+        "kind": "article"
+      },
+      {
+        "label": "The price of reliable medicine supply",
+        "href": "/en/analysis/drug-shortages-price-of-reliability/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "GE HealthCare, SOFIE agreement, October 5, 2026",
+        "href": "https://www.gehealthcare.com/en-us/about/newsroom/press-releases/ge-healthcare-to-acquire-sofie-biosciences-establishing-a-final-mile-footprint-for-pet-radiopharmaceutical-supply-in-the-us",
+        "kind": "source"
+      },
+      {
+        "label": "FDA, Contract Manufacturing Arrangements for Drugs, November 2016",
+        "href": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/contract-manufacturing-arrangements-drugs-quality-agreements-guidance-industry",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "cmo",
+      "theranostique",
+      "principe-actif"
+    ]
+  },
+  "def": "A provider of contracted development and manufacturing services. Its work can combine process development or transfer with production. The agreement defines the services; the label does not establish that a medicine has regulatory approval."
+},
+{
+  "slug": "theranostique",
+  "sigle": "Theranostics",
+  "nom": "Diagnostic imaging paired with targeted treatment",
+  "guide": "/en/analysis/ge-healthcare-buys-time/",
+  "sectionTitle": "Industry & healthcare",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "Imaging a target and treating it require suitable products.",
+    "articles": [
+      {
+        "label": "GE HealthCare buys time",
+        "href": "/en/analysis/ge-healthcare-buys-time/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NIH/NIBIB, Nuclear Medicine, radiotheranostics",
+        "href": "https://www.nibib.nih.gov/science-education/science-topics/nuclear-medicine",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "tep",
+      "cdmo"
+    ]
+  },
+  "def": "An approach pairing diagnosis with targeted treatment. In nuclear medicine, related molecules aimed at the same target can carry different radionuclides for imaging and therapy. A diagnostic tracer alone is not a treatment."
+},
   {
     "slug": "gpu",
     "sigle": "GPU",

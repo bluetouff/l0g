@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="ge-healthcare-factory-clock-en-desktop-title ge-healthcare-factory-clock-en-desktop-desc" style="width:100%;height:auto">
+<title id="ge-healthcare-factory-clock-en-desktop-title">A factory whose inventory decays during delivery</title><desc id="ge-healthcare-factory-clock-en-desktop-desc">The product loses activity throughout the manufacturing and logistics chain.</desc><defs><marker id="ge-healthcare-factory-clock-en-desktop-arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="var(--color-paper, #e7e9ee)"/></marker></defs>
+<rect x="0" y="0" width="1200" height="800" rx="24" fill="var(--color-ink, #0c0d10)"/>
+<text x="40" y="55" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="28px" font-weight="800">A factory whose inventory decays during delivery</text>
+<text x="40" y="82" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="14px">The cyclotron is only one stage. Value depends on the whole chain to the patient.</text>
+<rect x="55" y="220" width="165" height="230" rx="18" fill="color-mix(in srgb, var(--color-signal, #5eead4) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="73" y="258" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">1. Cyclotron</text>
+<text x="73" y="295" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">produces the</text>
+<text x="73" y="313" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">radionuclide</text>
+<rect x="73" y="390" width="129.0" height="18" rx="9" fill="var(--color-signal, #5eead4)"/>
+<rect x="73" y="390" width="129" height="18" rx="9" fill="none" stroke="var(--color-muted, #8b909b)"/>
+<text x="73" y="428" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">0 min → 100%</text>
+<line x1="220" y1="335" x2="240" y2="335" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-factory-clock-en-desktop-arr)"/>
+<rect x="245" y="220" width="165" height="230" rx="18" fill="color-mix(in srgb, var(--color-signal, #5eead4) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="263" y="258" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">2. Synthesis</text>
+<text x="263" y="295" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">attaches 18F to the</text>
+<text x="263" y="313" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">molecule</text>
+<rect x="263" y="390" width="106.7" height="18" rx="9" fill="var(--color-signal, #5eead4)"/>
+<rect x="263" y="390" width="129" height="18" rx="9" fill="none" stroke="var(--color-muted, #8b909b)"/>
+<text x="263" y="428" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">30 min → 83%</text>
+<line x1="410" y1="335" x2="430" y2="335" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-factory-clock-en-desktop-arr)"/>
+<rect x="435" y="220" width="165" height="230" rx="18" fill="color-mix(in srgb, var(--color-amber, #f5b13d) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="453" y="258" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">3. Quality control</text>
+<text x="453" y="295" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">release under CGMP</text>
+<text x="453" y="313" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">procedures</text>
+<rect x="453" y="390" width="88.3" height="18" rx="9" fill="var(--color-signal, #5eead4)"/>
+<rect x="453" y="390" width="129" height="18" rx="9" fill="none" stroke="var(--color-muted, #8b909b)"/>
+<text x="453" y="428" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">60 min → 68%</text>
+<line x1="600" y1="335" x2="620" y2="335" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-factory-clock-en-desktop-arr)"/>
+<rect x="625" y="220" width="165" height="230" rx="18" fill="color-mix(in srgb, var(--color-amber, #f5b13d) 18%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="643" y="258" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">4. Dispensing</text>
+<text x="643" y="295" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">calibrated and</text>
+<text x="643" y="313" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">shielded dose</text>
+<rect x="643" y="390" width="73.1" height="18" rx="9" fill="var(--color-signal, #5eead4)"/>
+<rect x="643" y="390" width="129" height="18" rx="9" fill="none" stroke="var(--color-muted, #8b909b)"/>
+<text x="643" y="428" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">90 min → 57%</text>
+<line x1="790" y1="335" x2="810" y2="335" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-factory-clock-en-desktop-arr)"/>
+<rect x="815" y="220" width="165" height="230" rx="18" fill="color-mix(in srgb, var(--color-amber, #f5b13d) 24%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="833" y="258" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">5. Transport</text>
+<text x="833" y="295" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">courier to hospital</text>
+<rect x="833" y="390" width="60.5" height="18" rx="9" fill="var(--color-signal, #5eead4)"/>
+<rect x="833" y="390" width="129" height="18" rx="9" fill="none" stroke="var(--color-muted, #8b909b)"/>
+<text x="833" y="428" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">120 min → 47%</text>
+<line x1="980" y1="335" x2="1000" y2="335" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-factory-clock-en-desktop-arr)"/>
+<rect x="1005" y="220" width="165" height="230" rx="18" fill="color-mix(in srgb, var(--color-accent, #ff4d87) 12%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="1023" y="258" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">6. PET</text>
+<text x="1023" y="295" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">administration and</text>
+<text x="1023" y="313" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">image acquisition</text>
+<rect x="1023" y="390" width="50.0" height="18" rx="9" fill="var(--color-signal, #5eead4)"/>
+<rect x="1023" y="390" width="129" height="18" rx="9" fill="none" stroke="var(--color-muted, #8b909b)"/>
+<text x="1023" y="428" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">150 min → 39%</text>
+<rect x="90" y="525" width="1020" height="130" rx="18" fill="var(--color-surface, #121419)" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="120" y="565" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">Teaching example:</text>
+<text x="120" y="597" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">with 150 minutes between calibration and injection, 39% of starting activity remains. Production</text>
+<text x="120" y="615" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">must start at about 2.58 times the target activity, even before technical losses.</text>
+<text x="40" y="775" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">The 30-minute stage durations are a teaching scenario, not a published SOFIE operating process.</text>
+</svg>

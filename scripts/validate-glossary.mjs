@@ -84,8 +84,27 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 586, 'Le corpus doit conserver ses 586 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 152, 'Le graphe Atlas doit conserver ses 152 nœuds, dont GPU et DDTL');
+assert.equal(glossaryEntries.length, 592, 'Le corpus doit conserver ses 592 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 158, 'Le graphe Atlas doit conserver ses 158 nœuds, dont six notions de radiopharmacie');
+for (const slug of ['cyclotron', 'tep', 'demi-vie', 'cmo', 'cdmo', 'theranostique']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: fiches FR/EN requises`);
+  assert.equal(fr.reference, undefined, `${slug}: conserver la fiche courte en noindex`);
+  assert.equal(en.robots, 'noindex,follow');
+  assert.equal(fr.sectionTitle, 'Industrie & santé');
+  assert.equal(en.sectionTitle, 'Industry & healthcare');
+  assert.equal(fr.guide, '/posts/ge-healthcare-achete-du-temps/');
+  assert.equal(en.guide, '/en/analysis/ge-healthcare-buys-time/');
+  assert.equal(fr.atlas.articles[0].href, fr.guide);
+  assert.equal(en.atlas.articles[0].href, en.guide);
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  for (const related of fr.atlas.related) {
+    assert(glossaryEntries.some(entry => entry.slug === related), `${slug}: relation FR absente`);
+    assert(glossaryAtlasEnBySlug.has(related), `${slug}: relation EN absente`);
+  }
+}
 for (const slug of ['rsu', 'warrant']) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);
@@ -146,7 +165,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 496, 'Le graphe Atlas doit conserver ses 496 relations, dont GPU et DDTL');
+assert.equal(glossaryAtlasEdgeCount, 512, 'Le graphe Atlas doit conserver ses 512 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

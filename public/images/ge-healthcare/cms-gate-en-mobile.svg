@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1040" viewBox="0 0 760 1040" role="img" aria-labelledby="ge-healthcare-cms-gate-en-mobile-title ge-healthcare-cms-gate-en-mobile-desc" style="width:100%;height:auto">
+<title id="ge-healthcare-cms-gate-en-mobile-title">U.S. reimbursement now has a different gate</title><desc id="ge-healthcare-cms-gate-en-mobile-desc">The 2026 OPPS threshold changes how high-cost diagnostic agents are paid.</desc><defs><marker id="ge-healthcare-cms-gate-en-mobile-arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="var(--color-paper, #e7e9ee)"/></marker></defs>
+<rect x="0" y="0" width="760" height="1040" rx="24" fill="var(--color-ink, #0c0d10)"/>
+<text x="40" y="55" font-family="Inter,Arial" fill="var(--color-paper, #e7e9ee)" font-size="26px" font-weight="800">U.S. reimbursement now has a different</text>
+<text x="40" y="87" font-family="Inter,Arial" fill="var(--color-paper, #e7e9ee)" font-size="26px" font-weight="800">gate</text>
+<text x="40" y="106" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="14px">For 2026, the $655/day OPPS threshold uses CMS-estimated daily cost.</text>
+<text x="40" y="124" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="14px">Estimated daily cost per HCPCS code.</text>
+<rect x="60" y="160" width="640" height="300" rx="18" fill="var(--color-surface, #121419)" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="380" y="250" text-anchor="middle" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="32px" font-weight="800">$655 / day</text>
+<text x="380" y="290" text-anchor="middle" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">CMS-estimated cost/day, 2026</text>
+<rect x="60" y="500" width="640" height="190" rx="18" fill="color-mix(in srgb, var(--color-signal, #5eead4) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="90" y="545" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">≤ $655</text>
+<text x="90" y="585" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">radiopharmaceutical payment remains packaged into the</text>
+<text x="90" y="603" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">nuclear-medicine test</text>
+<rect x="60" y="720" width="640" height="190" rx="18" fill="color-mix(in srgb, var(--color-amber, #f5b13d) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="90" y="765" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">&gt; $655</text>
+<text x="90" y="805" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">separate payment under the applicable OPPS methodology</text>
+<text x="40" y="1015" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">Source: CMS OPPS 2026, rule 2025-20907 (S13).</text>
+<text x="40" y="1030" fill="var(--color-muted, #8b909b)" font-family="Inter,Arial,Helvetica,sans-serif" font-size="11px">Excludes pass-through; products with historical claims.</text></svg>

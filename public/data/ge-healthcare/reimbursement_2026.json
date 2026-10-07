@@ -1,0 +1,24 @@
+{
+  "year": 2026,
+  "diagnostic_radiopharmaceutical_packaging_threshold_usd_per_day": 655,
+  "above_threshold": "strictly greater than $655 per day: separately payable under the applicable CMS methodology",
+  "at_or_below_threshold": "$655 per day or less: packaged into the nuclear medicine test payment",
+  "system": "Medicare hospital outpatient OPPS",
+  "product_scope": "diagnostic radiopharmaceuticals without pass-through status",
+  "threshold_metric": "CMS-estimated per-day cost for a product HCPCS code; not a dose invoice price",
+  "payment_method_with_claims": "arithmetic mean unit cost (MUC) derived from hospital claims",
+  "new_coded_nonpass_through_without_claims": {
+    "ASP_available": "ASP plus 6 percent",
+    "ASP_unavailable_initial_sales_period": "WAC plus 3 percent",
+    "ASP_unavailable_after_initial_sales_period": "WAC plus 6 percent",
+    "ASP_and_WAC_unavailable": "95 percent of most recent AWP"
+  },
+  "coverage_limit": "Payment classification does not establish coverage, a future FAPI-74 price, or eligibility for any particular patient.",
+  "source": {
+    "document": "CMS-1834-FC, 2025-20907",
+    "publication_date": "2025-11-25",
+    "effective_date": "2026-01-01",
+    "section": "II.A.3.c(3)",
+    "url": "https://www.govinfo.gov/content/pkg/FR-2025-11-25/html/2025-20907.htm"
+  }
+}

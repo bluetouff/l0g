@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1160" viewBox="0 0 760 1160" role="img" aria-labelledby="ge-healthcare-factory-clock-fr-mobile-title ge-healthcare-factory-clock-fr-mobile-desc" style="width:100%;height:auto">
+<title id="ge-healthcare-factory-clock-fr-mobile-title">Une usine dont le stock se dégrade pendant la livraison</title><desc id="ge-healthcare-factory-clock-fr-mobile-desc">Le produit perd de l’activité pendant toute la chaîne industrielle et logistique.</desc><defs><marker id="ge-healthcare-factory-clock-fr-mobile-arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="var(--color-paper, #e7e9ee)"/></marker></defs>
+<rect x="0" y="0" width="760" height="1160" rx="24" fill="var(--color-ink, #0c0d10)"/>
+<text x="40" y="55" font-family="Inter,Arial" fill="var(--color-paper, #e7e9ee)" font-size="26px" font-weight="800">Une usine dont le stock se dégrade pendant</text>
+<text x="40" y="87" font-family="Inter,Arial" fill="var(--color-paper, #e7e9ee)" font-size="26px" font-weight="800">la livraison</text>
+<text x="40" y="106" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="14px">Le cyclotron n’est qu’un étage. La valeur dépend de toute la chaîne</text>
+<text x="40" y="124" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="14px">jusqu’au patient.</text>
+<rect x="60" y="130" width="640" height="120" rx="18" fill="color-mix(in srgb, var(--color-signal, #5eead4) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="90" y="168" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">1. Cyclotron</text>
+<text x="90" y="200" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">produit le radionucléide</text>
+<line x1="380" y1="250" x2="380" y2="280" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-factory-clock-fr-mobile-arr)"/>
+<rect x="60" y="285" width="640" height="120" rx="18" fill="color-mix(in srgb, var(--color-signal, #5eead4) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="90" y="323" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">2. Synthèse</text>
+<text x="90" y="355" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">attache le 18F à la molécule</text>
+<line x1="380" y1="405" x2="380" y2="435" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-factory-clock-fr-mobile-arr)"/>
+<rect x="60" y="440" width="640" height="120" rx="18" fill="color-mix(in srgb, var(--color-amber, #f5b13d) 10%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="90" y="478" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">3. Contrôle qualité</text>
+<text x="90" y="510" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">libération selon procédures CGMP</text>
+<line x1="380" y1="560" x2="380" y2="590" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-factory-clock-fr-mobile-arr)"/>
+<rect x="60" y="595" width="640" height="120" rx="18" fill="color-mix(in srgb, var(--color-amber, #f5b13d) 18%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="90" y="633" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">4. Dispensation</text>
+<text x="90" y="665" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">dose calibrée et protégée</text>
+<line x1="380" y1="715" x2="380" y2="745" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-factory-clock-fr-mobile-arr)"/>
+<rect x="60" y="750" width="640" height="120" rx="18" fill="color-mix(in srgb, var(--color-amber, #f5b13d) 24%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="90" y="788" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">5. Transport</text>
+<text x="90" y="820" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">courier vers l’hôpital</text>
+<line x1="380" y1="870" x2="380" y2="900" stroke="var(--color-paper, #e7e9ee)" stroke-width="2" marker-end="url(#ge-healthcare-factory-clock-fr-mobile-arr)"/>
+<rect x="60" y="905" width="640" height="120" rx="18" fill="color-mix(in srgb, var(--color-accent, #ff4d87) 12%, var(--color-surface-2, #171a20))" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<text x="90" y="943" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="16px" font-weight="750">6. PET</text>
+<text x="90" y="975" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-paper, #e7e9ee)" font-size="13px">administration et acquisition d’image</text>
+<rect x="60" y="1075" width="640" height="55" rx="18" fill="var(--color-signal, #5eead4)" stroke="var(--color-signal, #5eead4)" stroke-width="1.5"/>
+<text x="380" y="1109" text-anchor="middle" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-ink, #0c0d10)" font-size="14px" font-weight="700">Le même lot perd de l’activité tout au long de la chaîne.</text>
+<text x="40" y="1135" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">Les durées de 30 min par étape sont un scénario pédagogique, pas</text>
+<text x="40" y="1150" font-family="Inter,Arial,Helvetica,sans-serif" fill="var(--color-muted, #8b909b)" font-size="11px">un processus SOFIE publié.</text>
+</svg>

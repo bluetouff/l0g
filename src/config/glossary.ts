@@ -26,6 +26,48 @@ export interface GlossaryKnowledgeGraph {
 }
 
 const rawGlossarySections: GlossarySourceSection[] = [
+{
+  "titre": "Industrie & santé",
+  "accent": "var(--color-signal)",
+  "entries": [
+    {
+      "sigle": "Cyclotron",
+      "nom": "Accélérateur de particules pour la production de radionucléides",
+      "guide": "/posts/ge-healthcare-achete-du-temps/",
+      "def": "Accélérateur de particules chargées. En médecine nucléaire, l’irradiation d’une cible peut produire des radionucléides utilisés pour fabriquer des radiopharmaceutiques. Le médicament destiné au patient nécessite encore des étapes de préparation et de contrôle."
+    },
+    {
+      "sigle": "TEP",
+      "nom": "Tomographie par émission de positons",
+      "guide": "/posts/ge-healthcare-achete-du-temps/",
+      "def": "Technique d’imagerie utilisant un traceur radioactif émetteur de positons pour observer des processus biologiques. Le scanner détecte les photons issus de leur annihilation. L’information obtenue dépend du traceur employé. L’acronyme anglais est PET."
+    },
+    {
+      "sigle": "Demi-vie",
+      "nom": "Demi-vie physique radioactive",
+      "guide": "/posts/ge-healthcare-achete-du-temps/",
+      "def": "Durée nécessaire pour que l’activité d’un radionucléide diminue de moitié par décroissance nucléaire. La demi-vie physique se distingue de la durée de conservation d’un médicament et ne fixe pas, à elle seule, son délai maximal de transport."
+    },
+    {
+      "sigle": "CMO",
+      "nom": "Contract Manufacturing Organization",
+      "guide": "/posts/ge-healthcare-achete-du-temps/",
+      "def": "Entreprise qui réalise des opérations de fabrication sous contrat pour un tiers. Le périmètre confié dépend du contrat. Dans le médicament, l’externalisation ne dispense pas les parties des exigences de qualité applicables."
+    },
+    {
+      "sigle": "CDMO",
+      "nom": "Contract Development and Manufacturing Organization",
+      "guide": "/posts/ge-healthcare-achete-du-temps/",
+      "def": "Prestataire de développement et de fabrication sous contrat. Son intervention peut réunir la mise au point ou le transfert d’un procédé et la production. Les activités confiées restent définies par le contrat ; le sigle ne constate pas l’approbation d’un médicament."
+    },
+    {
+      "sigle": "Théranostique",
+      "nom": "Association du diagnostic et du traitement ciblé",
+      "guide": "/posts/ge-healthcare-achete-du-temps/",
+      "def": "Démarche associant diagnostic et traitement ciblé. En médecine nucléaire, des molécules apparentées visant la même cible peuvent porter des radionucléides différents pour l’imagerie et la thérapie. Un traceur diagnostique ne constitue pas, à lui seul, un traitement."
+    }
+  ]
+},
   {
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
@@ -680,7 +722,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-05';
+export const glossaryUpdatedIso = '2026-10-07';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -923,6 +965,152 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "cyclotron": {
+    "intuition": "La production du radionucléide constitue une étape de la chaîne du médicament.",
+    "articles": [
+      {
+        "label": "GE HealthCare achète du temps",
+        "href": "/posts/ge-healthcare-achete-du-temps/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "AIEA, Bulletin 55-4, décembre 2014, p. 10-11",
+        "href": "https://www.iaea.org/sites/default/files/bull554dec2014.pdf",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "tep",
+      "demi-vie",
+      "cmo"
+    ]
+  },
+  "tep": {
+    "intuition": "L’imagerie fonctionnelle dépend du traceur autant que du scanner.",
+    "articles": [
+      {
+        "label": "GE HealthCare achète du temps",
+        "href": "/posts/ge-healthcare-achete-du-temps/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NIH/NIBIB, Nuclear Medicine",
+        "href": "https://www.nibib.nih.gov/science-education/science-topics/nuclear-medicine",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "cyclotron",
+      "demi-vie",
+      "theranostique"
+    ]
+  },
+  "demi-vie": {
+    "intuition": "La décroissance continue pendant la préparation et le transport.",
+    "articles": [
+      {
+        "label": "GE HealthCare achète du temps",
+        "href": "/posts/ge-healthcare-achete-du-temps/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "FDA, PIXCLARA, §11.2 et §16, septembre 2026",
+        "href": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/218592Orig1s000lbl.pdf",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "cyclotron",
+      "tep"
+    ],
+    "formula": "A(t) = A(0) × 2^(−t/T½), avec t et T½ dans la même unité de temps"
+  },
+  "cmo": {
+    "intuition": "Une relation commerciale avec le laboratoire passe aussi par des responsabilités de production.",
+    "articles": [
+      {
+        "label": "GE HealthCare achète du temps",
+        "href": "/posts/ge-healthcare-achete-du-temps/",
+        "kind": "article"
+      },
+      {
+        "label": "Le prix de la disponibilité des médicaments",
+        "href": "/posts/penuries-medicaments-prix-disponibilite/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "FDA, Contract Manufacturing Arrangements for Drugs, novembre 2016",
+        "href": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/contract-manufacturing-arrangements-drugs-quality-agreements-guidance-industry",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "cdmo",
+      "cyclotron",
+      "principe-actif"
+    ]
+  },
+  "cdmo": {
+    "intuition": "Développer un procédé et fabriquer des lots constituent des activités distinctes.",
+    "articles": [
+      {
+        "label": "GE HealthCare achète du temps",
+        "href": "/posts/ge-healthcare-achete-du-temps/",
+        "kind": "article"
+      },
+      {
+        "label": "Le prix de la disponibilité des médicaments",
+        "href": "/posts/penuries-medicaments-prix-disponibilite/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "GE HealthCare, accord SOFIE, 5 octobre 2026",
+        "href": "https://www.gehealthcare.com/en-us/about/newsroom/press-releases/ge-healthcare-to-acquire-sofie-biosciences-establishing-a-final-mile-footprint-for-pet-radiopharmaceutical-supply-in-the-us",
+        "kind": "source"
+      },
+      {
+        "label": "FDA, Contract Manufacturing Arrangements for Drugs, novembre 2016",
+        "href": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/contract-manufacturing-arrangements-drugs-quality-agreements-guidance-industry",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "cmo",
+      "theranostique",
+      "principe-actif"
+    ]
+  },
+  "theranostique": {
+    "intuition": "Observer une cible et la traiter demandent des produits adaptés.",
+    "articles": [
+      {
+        "label": "GE HealthCare achète du temps",
+        "href": "/posts/ge-healthcare-achete-du-temps/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NIH/NIBIB, Nuclear Medicine, radiotheranostics",
+        "href": "https://www.nibib.nih.gov/science-education/science-topics/nuclear-medicine",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "tep",
+      "cdmo"
+    ]
+  },
   "gpu": {
     "intuition": "La capacité à calculer, le montant au bilan et le cash d’une location répondent à des questions différentes.",
     "articles": [
