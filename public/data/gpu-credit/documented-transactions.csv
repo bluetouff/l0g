@@ -1,0 +1,4 @@
+transaction,announced,commitment_USD_bn,maturity,pricing_type,floating_margin_percentage_points,fixed_interest_pct,average_customer_contract_years,parent_recourse,source_ids,limit
+CoreWeave DDTL 4.0,2026-03-31,8.5,2032-03-31,mixed; floating tranche shown,2.25,,,non-recourse except limited guarantees per overview,S10 S11,Commitment ceiling after stabilization; not drawn balance
+CoreWeave DDTL 5.5,2026-08-10,2.6,2031-09-01,floating,5.5,,3,unconditional parent payment/performance guarantee subject to law,S06 S07 S08 S09,Average duration approximate; redacted renewal deadline and omitted schedules
+Lambda Compute I,2026-10-01,1.008,2033-05-30,"fixed, semiannual coupon per issuer summary",,6.78,,not inferred; DBRS describes customer commitments and step-in protections,S12 S13,Agency states no volume/re-leasing exposure; operational risks remain

@@ -78,7 +78,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Vélocité', nom: 'Vélocité de la monnaie', def: "Vitesse à laquelle une unité de monnaie change de mains, soit le revenu nominal rapporté à la masse monétaire. Si la vélocité baisse, une hausse de la M2 peut ne nourrir ni l'inflation ni les marchés." },
       { sigle: 'PTF', nom: 'Productivité totale des facteurs', def: "Part de la croissance qui ne s'explique ni par plus de travail ni par plus de capital, mais par une meilleure efficacité (technologie, organisation). Mesure résiduelle et centrale du progrès technique. L'estimation d'Acemoglu chiffre l'apport de l'IA à au plus 0,5 à 0,66 % de PTF sur dix ans." },
       { sigle: 'Paradoxe de Solow', nom: 'Solow paradox', def: "Constat de Robert Solow en 1987, « on voit l'âge informatique partout sauf dans les statistiques de productivité » : le décalage entre des gains technologiques visibles au niveau des tâches et un effet longtemps introuvable dans la productivité agrégée. Réapparu avec l'IA générative." },
-      { sigle: 'GPU', nom: 'Graphics Processing Unit', def: "Processeur graphique massivement parallèle. Dans l'IA, le GPU devient un accélérateur de calcul : il exécute beaucoup d'opérations simples en parallèle et déplace la contrainte vers mémoire, réseau, packaging et énergie." },
+      { sigle: 'GPU', nom: 'Graphics Processing Unit', def: "Processeur capable d’exécuter de nombreux calculs en parallèle, utilisé notamment pour le rendu graphique et l’intelligence artificielle. Dans un service de calcul, ses performances dépendent aussi de la mémoire, des interconnexions et du logiciel ; sa capacité technique ne suffit pas à mesurer les recettes qu’il peut générer." },
       { sigle: 'EUV', nom: 'Extreme ultraviolet lithography', def: "Lithographie à ultraviolets extrêmes, utilisée pour imprimer les couches les plus complexes des puces avancées avec une lumière de 13,5 nm. Goulet industriel majeur car elle combine optique, vide, métrologie, logiciels et chaîne de fournisseurs spécialisée." },
       { sigle: 'Fonderie', nom: 'Dedicated IC foundry', def: "Fabricant contractuel de semi-conducteurs qui produit les puces conçues par d'autres. Une fonderie avancée vend de la capacité qualifiée, du rendement industriel et une feuille de route de noeuds, pas seulement des wafers." },
       { sigle: 'HBM', nom: 'High Bandwidth Memory', def: "Mémoire DRAM empilée à très large bande passante, placée près d'un accélérateur pour nourrir le calcul en données. Dans l'IA, elle transforme la mémoire en goulet de packaging et d'approvisionnement." },
@@ -405,9 +405,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'VRG', nom: 'Valeur résiduelle garantie', def: "Protection contractuelle fondée sur une valeur minimale convenue pour un actif ou un bail. Le garant, qui peut être le locataire ou un tiers, couvre un écart défini après application des conditions et des récupérations prévues. Le bénéficiaire, le déclencheur, le plafond et les possibilités de sortie dépendent du contrat. La garantie ne suffit pas, à elle seule, à déterminer le traitement comptable du financement.", guide: '/posts/openai-note-credit-garantie-nvidia-ipo/' },
       { sigle: 'Rate base', nom: "Base d'actifs régulée", def: "Valeur des actifs d'une utility sur laquelle le régulateur l'autorise à percevoir un rendement. Lorsqu'une ligne, une sous-station ou une centrale entre dans cette base, son amortissement et le rendement autorisé sont récupérés dans les tarifs. Le traitement d'un ouvrage construit pour une charge qui ne vient pas détermine donc si le coût reste au client, aux actionnaires ou aux autres abonnés." },
       { sigle: 'Actif échoué', nom: 'Stranded asset', def: "Actif construit ou financé dont l'usage ou les revenus deviennent insuffisants avant le remboursement complet. Pour un data center abandonné, il peut s'agir d'une ligne ou d'une sous-station difficile à réaffecter. L'actif ne disparaît pas : le contrat et la décision du régulateur déterminent qui absorbe le coût non récupéré." },
-      { sigle: 'Take-or-pay', nom: 'Engagement minimal de paiement', def: "Clause obligeant un client à payer une quantité ou une capacité minimale réservée, même s'il ne la consomme pas. Dans les tarifs électriques des grandes charges, elle protège le réseau contre un projet retardé ou annulé, à condition de couvrir les bons ouvrages, la bonne durée et une contrepartie solvable." },
+      { sigle: 'Take-or-pay', nom: 'Engagement minimal de paiement', def: "Clause prévoyant le paiement d’une quantité ou d’une capacité minimale réservée, même lorsque le client l’utilise moins. Le minimum, les exceptions et les conditions de service dépendent du contrat. Elle réduit l’exposition du fournisseur au volume consommé, en laissant subsister le risque de défaut du client et les obligations d’exécution." },
       { sigle: 'Neocloud', nom: 'Neocloud (GPU cloud)', def: "Opérateur de cloud spécialisé dans la location de puissance de calcul GPU pour l'IA, comme CoreWeave. Finance l'achat de puces Nvidia par de la dette adossée au matériel et à des contrats clients, en pariant sur une valeur résiduelle et un taux d'utilisation élevés." },
-      { sigle: 'DDTL', nom: 'Delayed draw term loan', def: "Prêt à terme à tirage différé : l'emprunteur obtient un engagement ferme mais ne tire les fonds qu'au fur et à mesure de ses besoins, ici l'installation de serveurs de calcul. Format devenu dominant pour financer l'infrastructure d'IA, car il fait coïncider le décaissement avec la mise en service de l'équipement gagé.", guide: '/posts/gpu-collateral-ce-que-le-preteur-recupere/' },
+      { sigle: 'DDTL', nom: 'Delayed draw term loan', def: "Prêt à terme dont les fonds peuvent être tirés ultérieurement, en une ou plusieurs fois pendant une période prévue, sous les conditions du contrat. Le plafond engagé et la somme effectivement empruntée sont distincts. Le calendrier de tirage, les frais, la maturité et les sûretés dépendent de chaque opération.", guide: '/posts/gpu-collateral-ce-que-le-preteur-recupere/' },
       { sigle: 'Loan-to-cost', nom: 'Avance rapportée au coût', def: "Part du coût de construction ou d'acquisition d'un actif financée par la dette, à distinguer du loan-to-value qui rapporte la dette à une valeur de marché. Sur les facilités adossées à de l'infrastructure de calcul, l'avance atteint 90 % du coût en phase d'installation, ce qui laisse une marge d'erreur étroite si la valeur de revente s'écarte du coût.", guide: '/posts/gpu-collateral-ce-que-le-preteur-recupere/' },
       { sigle: 'Valeur résiduelle', nom: 'Residual value', def: "Valeur estimée d'un actif à la fin d'un financement ou d'une location. Dans un leasing automobile, elle sert à calculer la part de décote comprise dans les loyers : à prix d'achat identique, une valeur résiduelle plus faible augmente cette composante. Elle reste une estimation distincte du prix de rachat contractuel et du prix réellement obtenu à la revente.", guide: '/posts/leasing-auto-prix-revente-mensualite/' },
       { sigle: 'UCC Article 9', nom: 'Uniform Commercial Code, article 9', def: "Droit américain des sûretés sur biens meubles. Il régit la constitution, l'opposabilité et la réalisation d'un gage : les sections 9-609 et 9-610 autorisent le créancier à reprendre et céder le bien après défaut, la section 9-626 lui impose une cession commercialement raisonnable, exigence qui devient contentieuse quand le bien n'a pas de marché secondaire liquide.", guide: '/posts/gpu-collateral-ce-que-le-preteur-recupere/' },
@@ -680,7 +680,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-04';
+export const glossaryUpdatedIso = '2026-10-05';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -923,6 +923,78 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "gpu": {
+    "intuition": "La capacité à calculer, le montant au bilan et le cash d’une location répondent à des questions différentes.",
+    "articles": [
+      {
+        "label": "GPU à crédit : le prix de la quatrième année",
+        "href": "/posts/gpu-credit-prix-quatrieme-annee/",
+        "detail": "Contrats, recettes au renouvellement et scénarios pédagogiques de dette.",
+        "kind": "article"
+      },
+      {
+        "label": "Le collatéral qui ne peut pas sortir du bâtiment",
+        "href": "/posts/gpu-collateral-ce-que-le-preteur-recupere/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Nvidia, CUDA Programming Guide",
+        "href": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html",
+        "detail": "Modèle d’exécution parallèle et organisation des calculs.",
+        "kind": "source"
+      },
+      {
+        "label": "AWS, instances EC2 P4",
+        "href": "https://aws.amazon.com/ec2/instance-types/p4/",
+        "detail": "Service combinant GPU A100, mémoire, interconnexions et stockage ; les recettes d’un parc exigent un suivi distinct.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "ddtl",
+      "dscr",
+      "collateral"
+    ]
+  },
+  "ddtl": {
+    "intuition": "L’autorisation de tirer des fonds organise le financement ; elle n’établit pas le montant déjà dû ni le cash futur pour le rembourser.",
+    "whyNow": "La DDTL 5.5 de CoreWeave, documentée en août 2026, finance des serveurs et infrastructures sous conditions. Elle illustre comment contrats clients, période de tirage et échéances de dette peuvent suivre des calendriers distincts.",
+    "articles": [
+      {
+        "label": "Le collatéral qui ne peut pas sortir du bâtiment",
+        "href": "/posts/gpu-collateral-ce-que-le-preteur-recupere/",
+        "kind": "article"
+      },
+      {
+        "label": "GPU à crédit : le prix de la quatrième année",
+        "href": "/posts/gpu-credit-prix-quatrieme-annee/",
+        "detail": "Contrats, recettes au renouvellement et scénarios pédagogiques de dette.",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "CoreWeave / SEC, 8-K du 7 août 2026",
+        "href": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000357/crwv-20260807.htm",
+        "detail": "Disponibilité des tirages et maturité de la DDTL 5.5 ; engagement distinct de l’encours tiré.",
+        "kind": "source"
+      },
+      {
+        "label": "CoreWeave / SEC, contrat DDTL 5.5",
+        "href": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000357/ex101creditagreement.htm",
+        "detail": "Conditions de tirage, amortissement, remboursement anticipé et sûretés ; certaines annexes sont expurgées.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "dscr",
+      "take-or-pay",
+      "collateral",
+      "gpu"
+    ]
+  },
   "national-trust-bank": {
     "intuition": "La charte fixe un périmètre d’activités ; les droits du client dépendent aussi du produit, du contrat et des protections applicables.",
     "whyNow": "La règle OCC entrée en vigueur le 1er avril 2026 rapproche le texte réglementaire des opérations d’une trust company. Elle laisse l’examen des activités et de leurs bases légales aux décisions individuelles. La décision Protego du 13 février 2026 est une autorisation préliminaire conditionnelle ; elle impose notamment au moins 15 millions de dollars de capital Tier 1.",
@@ -1021,12 +1093,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   collateral: {
     intuition: 'La valeur d’un actif détenu et la capacité de financement qu’il procure sont deux mesures distinctes.',
     formula: 'couverture simplifiée = somme, pour chaque actif admissible, de sa valeur × (1 - sa décote exprimée en fraction), hors corrections supplémentaires',
-    articles: [{ label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' }],
+    articles: [{ label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' }, {"label": "GPU à crédit : le prix de la quatrième année", "href": "/posts/gpu-credit-prix-quatrieme-annee/", "detail": "Contrats, recettes au renouvellement et scénarios pédagogiques de dette.", "kind": "article"}],
     sources: [
       { label: 'BCE, What is collateral?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/collateral.en.html', detail: 'Actif remis en garantie et réalisation en cas de défaut.', kind: 'source' },
       { label: 'BCE, What are haircuts?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/haircuts.en.html', detail: 'Valeur retenue après décote et couverture du financement.', kind: 'source' },
     ],
-    related: ['decote-de-garantie', 'ecaf', 'repo', 'abs'],
+    related: ['decote-de-garantie', 'ecaf', 'repo', 'abs', 'ddtl'],
   },
   'decote-de-garantie': {
     intuition: 'La décote laisse au prêteur un coussin pour réaliser la garantie après un défaut.',
@@ -1564,9 +1636,9 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   dscr: {
     formula: 'DSCR = trésorerie disponible pour la dette / service de la dette sur la même période',
-    articles: [{ label: 'Crux AI : les puces en garantie', href: '/posts/crux-ai-google-blackstone-banques-puces-collateral/', kind: 'article' }, { label: 'Quand le crédit commence à trier l’IA', href: '/posts/quand-le-credit-commence-a-trier-l-ia/', kind: 'article' }],
+    articles: [{ label: 'Crux AI : les puces en garantie', href: '/posts/crux-ai-google-blackstone-banques-puces-collateral/', kind: 'article' }, { label: 'Quand le crédit commence à trier l’IA', href: '/posts/quand-le-credit-commence-a-trier-l-ia/', kind: 'article' }, {"label": "GPU à crédit : le prix de la quatrième année", "href": "/posts/gpu-credit-prix-quatrieme-annee/", "detail": "Contrats, recettes au renouvellement et scénarios pédagogiques de dette.", "kind": "article"}],
     sources: [{ label: 'BERD, guide d’évaluation des PPP (hébergé par la Banque mondiale)', href: 'https://ppp.worldbank.org/sites/default/files/2024-07/VOLUME2-web.pdf', kind: 'source' }],
-    related: ['step-in-rights', 'ltv'],
+    related: ['step-in-rights', 'ltv', 'gpu', 'ddtl'],
   },
   'step-in-rights': {
     articles: [{ label: 'Crux AI : les puces en garantie', href: '/posts/crux-ai-google-blackstone-banques-puces-collateral/', kind: 'article' }],
@@ -2068,12 +2140,11 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   'take-or-pay': {
     intuition: "Le take-or-pay facture la réservation, pas seulement l'usage. Il transforme le risque de volume du réseau en obligation de crédit du client.",
-    formula: 'paiement dû = maximum de la consommation réelle et du minimum contractuel',
     whyNow: "Les nouveaux tarifs pour grandes charges emploient des paiements minimaux, des durées longues et du collatéral pour filtrer les demandes spéculatives.",
-    articles: largeLoadArticles,
+    articles: [...largeLoadArticles, {"label": "GPU à crédit : le prix de la quatrième année", "href": "/posts/gpu-credit-prix-quatrieme-annee/", "detail": "Contrats, recettes au renouvellement et scénarios pédagogiques de dette.", "kind": "article"}],
     datasets: largeLoadDatasets,
-    sources: largeLoadSources,
-    related: ['rate-base', 'actif-echoue', 'hyperscaler', 'spv', 'vrg'],
+    sources: [...largeLoadSources, {"label": "Morningstar DBRS, Lambda Compute I", "href": "https://dbrs.morningstar.com/research/490455/morningstar-dbrs-assigns-credit-ratings-of-a-low-to-lambda-compute-i-llc", "detail": "Analyse du 2 octobre 2026 : engagements de capacité take-or-pay, risques de contrepartie et de service. Opinion de crédit attribuée.", "kind": "source"}],
+    related: ['rate-base', 'actif-echoue', 'hyperscaler', 'spv', 'vrg', 'dscr', 'ddtl'],
   },
   rwa: {
     intuition: "Un RWA ne rend pas l’actif réel magique : il ajoute une couche tokenisée à une chaîne juridique, comptable et opérationnelle déjà fragile.",
