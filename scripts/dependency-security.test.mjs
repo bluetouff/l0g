@@ -14,7 +14,7 @@ const sanitize = (body) => optimize(
 ).data;
 
 test('security floors cover vulnerable parsers and network dependencies in both trees', () => {
-  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 3], 'fast-uri': [3, 1, 7], undici: [8, 10, 2], 'ip-address': [10, 5, 1], 'http-cache-semantics': [4, 3, 0], 'source-map-js': [1, 2, 2], 'proxy-addr': [2, 0, 8], sharp: [0, 35, 5] };
+  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 3], 'fast-uri': [3, 1, 7], undici: [8, 10, 2], 'ip-address': [10, 5, 1], 'http-cache-semantics': [4, 3, 0], 'source-map-js': [1, 2, 2], 'proxy-addr': [2, 0, 8], sharp: [0, 35, 5], '@modelcontextprotocol/sdk': [1, 31, 0] };
   const seen = new Set();
   for (const path of ['../package-lock.json', '../mcp-server/package-lock.json']) {
     const lock = JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
@@ -142,7 +142,7 @@ test('indexed source maps reject invalid offsets and preserve ordinary mappings'
   const { SourceMapConsumer, SourceNode } = requireMain('source-map-js');
   const section = (line, column = 0) => ({
     version: 3,
-    sections: [{ offset: { line, column }, map: { version: 3, sources: ['fixture.js'], names: [], mappings: 'AAAA' } }],
+    sections: [{ offset: { line, column }, map: { version: 3, sources: ['fixture.js'], sourcesContent: ['value'], names: [], mappings: 'AAAA' } }],
   });
   for (const line of [-1, 0.5, Number.MAX_SAFE_INTEGER]) {
     assert.throws(() => new SourceMapConsumer(section(line)), /Section offset/);
