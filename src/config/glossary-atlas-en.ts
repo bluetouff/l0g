@@ -204,6 +204,31 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'inclusion-forcee', sigle: 'Forced inclusion', nom: 'Submitting a rollup operation through its base chain',
+    sectionTitle: 'Crypto & stablecoins', accent: 'var(--color-amber)', robots: 'noindex,follow',
+    guide: '/en/analysis/blast-abstract-blockchain-shutdown-economics/',
+    def: 'A mechanism for submitting an operation to a rollup through its base chain. Its effect depends on the protocol: placing a request in a queue does not guarantee that the actors publishing and validating states will keep processing it. Withdrawal availability therefore requires checking the whole procedure.',
+    atlas: {
+      intuition: 'The ability to submit a request and the ability to complete it depend on separate functions.',
+      articles: [{ label: 'Blast and Abstract: who pays to keep a blockchain running?', href: '/en/analysis/blast-abstract-blockchain-shutdown-economics/', kind: 'article' }],
+      sources: [{ label: 'OP Stack, forced transactions', href: 'https://docs.optimism.io/op-stack/transactions/forced-transaction', kind: 'source' }, { label: 'ZKsync, handling L1–L2 operations', href: 'https://docs.zksync.io/zksync-protocol/era-vm/contracts/handling-l1-l2-ops', kind: 'source' }, { label: 'L2BEAT, Abstract', href: 'https://l2beat.com/layer2s/projects/abstract', kind: 'source' }],
+      related: ['proposeur-de-rollup'],
+    },
+  },
+  {
+    slug: 'proposeur-de-rollup', sigle: 'Rollup proposer', nom: 'Actor publishing state commitments',
+    sectionTitle: 'Crypto & stablecoins', accent: 'var(--color-amber)', robots: 'noindex,follow',
+    guide: '/en/analysis/blast-abstract-blockchain-shutdown-economics/',
+    def: 'An actor that submits commitments representing a rollup state to its base chain. Depending on the protocol, this role can be open or restricted to authorised actors. A request received by the sequencer still needs the publication and validation steps required for settlement.',
+    atlas: {
+      intuition: 'Receiving an operation, publishing its state and enabling withdrawal are successive tasks.',
+      articles: [{ label: 'Blast and Abstract: who pays to keep a blockchain running?', href: '/en/analysis/blast-abstract-blockchain-shutdown-economics/', kind: 'article' }],
+      sources: [{ label: 'L2BEAT, Abstract', href: 'https://l2beat.com/layer2s/projects/abstract', kind: 'source' }, { label: 'Abstract, transaction lifecycle', href: 'https://docs.abs.xyz/how-abstract-works/architecture/transaction-lifecycle', kind: 'source' }],
+      related: ['inclusion-forcee'],
+    },
+  },
+
+  {
     slug: 'btf', sigle: 'BTF', nom: 'French Treasury bill',
     ...macroSection, robots: 'noindex,follow',
     guide: '/en/analysis/french-debt-price-of-time/',

@@ -1,0 +1,59 @@
+---
+import { l2ContinuitySvg } from '../lib/l2ContinuityFigures.mjs';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'money' | 'fees' | 'exit';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+const references = sources.split(/\s+/).filter(Boolean);
+if (!references.length || references.some((id) => !/^(?:[1-9]|[1-9]\d)$/.test(id))) {
+  throw new Error('Invalid L2-continuity figure source reference');
+}
+---
+<figure class="l2-continuity-figure">
+  <div class="l2-continuity-desktop" set:html={l2ContinuitySvg(lang, kind, false)} />
+  <div class="l2-continuity-mobile" set:html={l2ContinuitySvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="l2-continuity-refs">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  .l2-continuity-figure {
+    margin: 2.6rem 0;
+    width: 100%;
+    padding-bottom: .85rem;
+  }
+  .l2-continuity-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: .8rem;
+    letter-spacing: normal;
+  }
+  .l2-continuity-mobile { display: none; }
+  figcaption {
+    margin-top: .9rem;
+    font-size: .875rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+  }
+  figcaption strong { margin-right: .35em; }
+  .l2-continuity-refs { display: block; }
+  .l2-continuity-refs a { margin-right: .7em; }
+  @media (max-width: 640px) {
+    .l2-continuity-desktop { display: none; }
+    .l2-continuity-mobile { display: block; }
+  }
+  @media print {
+    .l2-continuity-figure { break-inside: avoid; }
+    .l2-continuity-desktop { display: block; }
+    .l2-continuity-mobile { display: none; }
+  }
+</style>

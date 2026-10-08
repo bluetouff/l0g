@@ -1,0 +1,229 @@
+---
+title: "Blast and Abstract: who pays to keep a blockchain running?"
+seoTitle: "Blast and Abstract: why busy blockchains close | l0g"
+description: "Follow the fees, funding and exit routes behind Blast and Abstract’s shutdowns, with sourced figures and three diagrams of how continuity works."
+pubDate: "2026-10-08T17:13:00+02:00"
+updatedDate: "2026-10-08T17:13:00+02:00"
+tags: ["Ethereum", "L2", "Blast", "Abstract", "crypto", "infrastructure"]
+draft: false
+ogImage: "/illustrations/news/blast-abstract-continuity-v1.jpg"
+sourceArticle: "blast-abstract-blockchain-fermeture-economie"
+sourceUpdatedDate: "2026-10-08T17:13:00+02:00"
+---
+
+import L2ContinuityFigure from '../../components/L2ContinuityFigure.astro';
+
+A wallet displays a balance. The transaction history is still there, and the chain is attached to Ethereum. Then the company financing its operation announces that it is closing. For the person holding the assets, the question becomes remarkably practical: which services must keep working long enough to get them out?
+
+Blast announced its wind-down on **2 October 2026**, saying that the ongoing cost of maintaining the chain exceeded its revenue and that it saw no credible route to economic sustainability. Abstract announced its own shutdown on **6 October**. Two networks with different technical designs reached a similar business decision within days of each other. Their exit arrangements, however, differ in ways that matter to users. <sup><a href="#source-3">[3]</a></sup><sup><a href="#source-1">[1]</a></sup>
+
+The lesson begins with the organisation behind the software. Luca Netz, chief executive of Igloo, said that **Igloo had financed Abstract for roughly 18 months** and lost **tens of millions of dollars over two years**. He explained the decision to focus resources on the Pudgy Penguins business and said it had chosen against raising more money through a token or an initial coin offering. These are management statements; audited operating accounts were not available in the sources examined. <sup><a href="#source-2">[2]</a></sup>
+
+A chain can process transactions while depending on a sponsor to cover part of its operation. That arrangement may last through a period of growth. It also creates a decision point: the sponsor can change what it is prepared to finance. Understanding that decision means following the money through the infrastructure, then following an asset through its exit route.
+
+## Follow a transaction beyond the wallet
+
+Imagine a user making a transfer through an application. The example is a way to follow the mechanism, not a reconstruction of a particular transaction. The wallet prepares an instruction, the user authorises it, and a service receives it. On a layer 2, or **L2**, execution takes place in a separate environment above a base blockchain, the **L1**. A rollup connects that environment to Ethereum by publishing the data and commitments required by its design.
+
+On Abstract, the receiving infrastructure includes an RPC service, the interface through which software sends requests and reads the chain. A sequencer orders and executes transactions. An Ethereum operator groups activity and communicates with the L1. The official documentation describes these as separate functions within the sequencer system. They give a user a quick response, while further work continues behind the confirmation shown by the application. <sup><a href="#source-26">[26]</a></sup>
+
+The bill is usually presented in units of **gas**, an accounting measure for computational resources. A small payment at the wallet covers work with several destinations. Abstract’s documentation distinguishes the storage and proof-generation work performed off chain from the publication and verification work performed on Ethereum. A proof generator computes a cryptographic demonstration that the batch follows the rules; a verifier checks the demonstration on the base chain. ZKsync’s documentation explicitly includes off-chain infrastructure in the costs deducted from L2 receipts. <sup><a href="#source-6">[6]</a></sup><sup><a href="#source-7">[7]</a></sup>
+
+Grouping transactions helps spread some overhead across a batch. Ethereum still has to receive the published material, and the systems processing the batch still have to run. The ZKsync fee documentation, relevant to Abstract’s underlying stack, separates computational work, data publication and batch overhead. The amount recovered from an individual transaction therefore depends on more than how familiar its action looks to the user. A simple transfer can leave data that has to be accounted for in the batch. <sup><a href="#source-7">[7]</a></sup>
+
+An OP Stack transaction takes a different path through its fee system. Optimism’s documentation describes execution charges, an L1 data charge and, on versions that support it, an operator charge. The applicable version and configuration determine the details. A chain built from this stack can collect its L2 base fee rather than burning it in the same way as Ethereum’s base fee. Copying the familiar gas terminology from the L1 would obscure where the proceeds go. <sup><a href="#source-22">[22]</a></sup>
+
+The rest of the operation is less visible from the wallet. Nodes, databases, transaction submission services, network access and operational monitoring support the path between a signed instruction and a usable chain. The OP Stack’s network architecture documentation sets out services that an operator has to deploy and connect. Their existence explains why a tally of Ethereum publication spending leaves part of the operating task outside the calculation. <sup><a href="#source-27">[27]</a></sup>
+
+<L2ContinuityFigure
+  kind="money"
+  lang="en"
+  number="01"
+  sources="2 6 7 8 22 27"
+  caption="A transaction funds several functions. The operator’s retained receipts depend on the chain’s fee rules, while the infrastructure continues to incur costs outside Ethereum. The diagram follows destinations and responsibilities; its branches carry no measured monetary proportions."
+>
+  <details>
+    <summary>How to read this diagram</summary>
+    <p>The figure combines documented functions, with the differences between stacks stated in the article. It does not describe one universal allocation rule. Abstract uses the ZKsync fee model; Blast documents a gas-sharing mechanism; OP Stack fee components depend on the active version and configuration. Igloo’s financing is attributed to Luca Netz’s account. No company accounts or cost estimates are reconstructed.</p>
+  </details>
+</L2ContinuityFigure>
+
+Keeping the chain available is also a continuing activity. A fee paid today settles the charge for a particular operation according to the network’s rules. It gives the customer no automatic ownership of the operator’s servers, no power to replenish a service budget and no assurance that another firm will take over the next batch. Those questions sit in the organisation and contracts surrounding the protocol.
+
+## The applications and the chain sell different things
+
+Abstract’s announcement reported more than **325 million transactions**, more than **4 million Abstract Global Wallets**, over **400,000 users**, and more than **$40 million in ecosystem revenue**. These are self-reported thresholds. The announcement supplies neither an audited reconciliation nor a sufficiently precise common observation period for treating the figures as a comparable set of operating statistics. Wallets, users and transactions describe different things. The revenue figure concerns activity within the ecosystem, without a breakdown by company or recipient. <sup><a href="#source-1">[1]</a></sup>
+
+The distinction is easiest to see by returning to the user. An application might charge for a digital item, a service or a trade. Its customer also pays the chain to process the corresponding transaction. The commercial price and the network charge have different recipients. A successful application can support its own business while leaving the underlying network with a much smaller stream of processing fees. CoinDesk’s reporting on the closures explains this separation between application receipts and chain receipts. <sup><a href="#source-4">[4]</a></sup>
+
+An application also brings users, developers and reasons to hold assets on a network. These benefits can help an operator build distribution. They need a route into its own funding if they are to keep paying for infrastructure, through an arrangement such as a contractual contribution or continued sponsor financing.
+
+Blast adds another turn to the flow. Its documentation gives contracts a gas mode. Under the default mode, called `Void`, execution fees go to the sequencer operator. A contract configured as `Claimable` can claim fees allocated to its gas consumption, net of the L1 fees, with the amount shared according to maturity. The guide describes launch parameters starting at a **50% claim rate**, rising to **100% after 30 days**. Those are documented launch parameters, not values independently read from the current deployment during this investigation. <sup><a href="#source-8">[8]</a></sup>
+
+This mechanism gives developers a reason to bring activity to Blast. It also changes how a fee dashboard should be interpreted. Money paid by the user can fund the publication layer, be retained by the operator or become claimable by an application under the documented rules. Counting the user’s expenditure alone does not reveal the final amount available to finance the operator’s business.
+
+The same point applies to subsidy. A sponsor can make a service attractive by carrying part of its expense, expecting commercial development, distribution or a strategic advantage over time. Once that expected return weakens, it has to choose whether to keep financing the offer, change it or withdraw.
+
+Netz’s account describes a choice at that boundary. The parent’s resources had another use in the Pudgy Penguins business, and management decided to focus there. The refusal to pursue a token sale is part of its explanation of the decision. It provides no audited estimate of what a sale could have raised or how long that money could have supported the chain. <sup><a href="#source-2">[2]</a></sup>
+
+The customer sees a product that works. The sponsor sees competing uses for its capital. Both observations can be true at the same time. A wind-down can follow from the sponsor’s assessment of the project even while there are still users, assets and applications relying on the service.
+
+## What September’s fees actually tell us
+
+To place the discussion on a consistent period, we collected the **daily fee series published by DefiLlama for 1–30 September 2026, in UTC**. Each network has an observation for all 30 days. The sums are **$2,067.07 for Blast** and **$121,283 for Abstract**, from data retrieved on **8 October at 15:06:02 UTC**. These are sums of the provider’s published fee observations for one calendar month. <sup><a href="#source-10">[10]</a></sup><sup><a href="#source-11">[11]</a></sup>
+
+The collection makes the period and coverage explicit. It avoids comparing a cumulative launch announcement with a single recent day, or extending a month’s observations into an annual forecast. September captures activity before the two closure announcements.
+
+The measurement has a technical boundary. In the shared DefiLlama helper examined at a fixed revision, the path used for Blast sums **gas used multiplied by the effective gas price**. Abstract’s path instead sums the `tx_fee` field in the provider’s `gas.fees` table. These are distinct collection methods. On OP Stack chains, the L1 data charge is a separately documented component. Each series needs to be read within its adapter’s coverage, rather than presented as an exhaustive reconciliation of user charges or operator receipts. <sup><a href="#source-12">[12]</a></sup><sup><a href="#source-22">[22]</a></sup>
+
+DefiLlama also distinguishes fees and revenue through definitions and adapter conventions. In the Abstract data examined, the revenue and fee observations coincide. That is a numerical observation, which alone cannot establish the calculation’s internal path. Separately, the code includes zero defaults for missing cost sums. The coincidence between series and those defaults provide no measurement of a zero publication or infrastructure bill. Establishing the operator’s costs would require identifying and measuring the relevant spending. <sup><a href="#source-11">[11]</a></sup><sup><a href="#source-12">[12]</a></sup><sup><a href="#source-13">[13]</a></sup>
+
+<L2ContinuityFigure
+  kind="fees"
+  lang="en"
+  number="02"
+  sources="10 11 12 13 22"
+  caption="Published DefiLlama fee-series totals for September 2026: Blast $2,067.07; Abstract $121,283. Each total covers 30 daily UTC observations. The metric’s adapter coverage is described in the text; it represents neither a complete operator cash account nor net profit."
+>
+  <details>
+    <summary>Period, calculation and limits</summary>
+    <p>Period: 1–30 September 2026, UTC. Retrieved: 8 October 2026, 15:06:02 UTC. The published daily observations are summed without annualisation. The pinned helper’s Blast path sums gas used × effective gas price; its Abstract path sums tx_fee in gas.fees. OP Stack’s L1 data fee is a separate component. These totals do not reconcile redistribution, publication costs, off-chain operation or sponsor funding.</p>
+  </details>
+</L2ContinuityFigure>
+
+Other dashboards answer another useful question. Growthepie’s profit methodology subtracts the L1 costs it observes from the L2 fees it observes. Its stated scope leaves off-chain infrastructure outside that result. No series for Blast or Abstract from that dashboard is used here. The distinction illustrates why even a well-defined on-chain margin still needs further work before it can become a conclusion about a company’s sustainability. <sup><a href="#source-9">[9]</a></sup>
+
+A server invoice, an operating team and a developer incentive do not appear merely because a transaction fee has been decoded. Parent-company support may also arrive through arrangements outside the chain. Reconstructing an income statement would require identifying these flows, separating their periods and checking who bears them. The sources available here cannot support that reconstruction.
+
+September’s series consequently informs the investigation without deciding it. Blast’s management says its costs exceed its chain revenue; Abstract’s management says continuing support became unjustifiable. The month of fee observations puts one public measure next to those statements. It cannot independently verify either company’s losses, expense structure or full revenue.
+
+## Cheap transactions change the operator’s bargain
+
+Low transaction costs are an important part of the appeal of an L2. A customer can make an operation whose value would struggle to justify a more expensive base-chain transaction. For applications, that makes repeated interactions easier to offer. For the operator, it places more weight on how much activity it can serve, how the activity is batched and what part of the resulting fees it keeps.
+
+Ethereum’s **EIP-4844** introduced blobs, a form of data publication designed for rollups. The data lives outside ordinary EVM execution and is retained temporarily by the consensus layer. The change supplies another publication resource with its own pricing mechanism. That design improves the options available to a rollup; operating and preserving access to its history still require infrastructure. <sup><a href="#source-14">[14]</a></sup>
+
+Batching introduces an everyday trade-off. Waiting can bring more transactions into a shared operation, allowing them to carry some overhead together. Posting more frequently can shorten part of the user’s journey, but leaves fewer transactions over which to spread that work. A 2023 research paper on EIP-4844 economics models rollup strategies around such publication choices. Its analysis predates activation and provides a mechanism, not measured 2026 accounts for Blast or Abstract. <sup><a href="#source-15">[15]</a></sup>
+
+This is why transaction count alone is an incomplete business description. An operator needs activity whose fees, after the applicable allocations and costs, can support the service it is providing. Different transactions consume different resources. An application bringing a large number of interactions may also receive incentives or share in fees. Higher throughput changes the workload, while the arrangement for financing that workload determines whether it helps sustain the operator.
+
+There are several possible responses to pressure on this arrangement. Management might alter prices, reduce operating scope, seek more funding or concentrate on applications with stronger commercial prospects. Each involves a trade-off for the network’s users and developers. Higher fees could change demand; lower spending could change the service; new financing comes with expectations. These are possible business choices, rather than forecasts of what either closing chain will do.
+
+The infrastructure becomes especially vulnerable when there is only one willing payer for a necessary service. A technical role may be replaceable in principle, yet nobody has accepted the cost of carrying it after the incumbent leaves. The relevant question is then concrete: who has the permissions, the software, the required data and a funded commitment to run the next stage?
+
+## The confirmation is the start of a longer journey
+
+Return to the transfer shown in the wallet. Abstract’s transaction lifecycle separates four phases. First, the transaction executes on the L2 and receives a **soft confirmation**, a provisional response from its operation. Next, batches are committed to Ethereum through state differences published in blobs. A zero-knowledge proof is generated and verified. Finally, `executeBatches` finalises the state and saves the tree of L2 logs used in later verification. <sup><a href="#source-16">[16]</a></sup>
+
+These phases serve different purposes. The quick response allows the application to react. Data publication makes the relevant state changes available. The proof checks the correctness of the batch. The final execution records the state needed by subsequent processes. A shutdown question has to follow the whole sequence, because the completion of an earlier phase leaves work for later services.
+
+A withdrawal makes this distinction tangible. The destination contract needs a basis for recognising the user’s claim. The instructions on the source chain, the published state that contains them and the evidence supplied on the destination chain have to line up. A balance visible in a wallet or explorer is useful information. Completing the transfer requires the route’s executable steps.
+
+L2BEAT’s assessment of Abstract distinguishes the chain’s ZK validation from the ability to continue proposing state. Its analysis describes permissioned [**rollup proposers**](/en/glossary/proposeur-de-rollup/), actors authorised to publish state commitments used for validation or withdrawal, and a governance route that can attempt to replace them. Those are separate capabilities. Valid proofs do not automatically make a replacement operator available, equipped or willing to fund further operation. L2BEAT supplies an attributed technical assessment here, rather than an audit of the shutdown configuration. <sup><a href="#source-17">[17]</a></sup>
+
+There is also a data question. A rollup’s published material can make reconstruction possible under its design, while a user relies on convenient services to read it and assemble the relevant evidence. Archives, nodes and tools can therefore matter after a front end has closed. Their role depends on what has been preserved and on the contracts and permissions still in effect. The permanence of a record and the continuity of a usable service are different properties.
+
+## Blast gives ETH and USDB two different exits
+
+Blast’s announcement sets **26 October** as the deadline associated with its bridge interface. It says withdrawals through contracts will remain possible afterwards and provides documentation for that route. The date should therefore be read according to the service it describes. The announcement does not supply an exact timestamp for the last block or establish an indefinite period of supported contract recovery. <sup><a href="#source-3">[3]</a></sup>
+
+The plan also includes withdrawing Blast’s assets from Lido, expected to take about a week, with withdrawals temporarily interrupted during that process. The team then expects them to resume with a 24-hour delay. These are announced operational steps. Their completion should be distinguished from the calendar of the interface and from the procedures documented for particular assets. <sup><a href="#source-3">[3]</a></sup>
+
+The ordinary-wallet guide follows a withdrawal through several transactions. For ETH, the user initiates on Blast, waits for the withdrawal to be ready to prove on Ethereum, submits that proof, waits the documented **one-day challenge period**, then claims the ETH. The guide allows up to approximately one hour before proving. It describes **two Ethereum transactions**, in addition to the initial Blast transaction. WETH first has to be unwrapped into ETH. <sup><a href="#source-18">[18]</a></sup>
+
+USDB, Blast’s dollar-referenced token, follows a longer path and arrives as **DAI on Ethereum**. The guide requires proof, a one-day challenge period, finalisation and then a separate claim after the USD withdrawal queue has been processed. It allows up to an additional day after finalising for that queue. There are **three Ethereum transactions** after initiation on Blast. These are the operator’s procedural indications, rather than a guarantee that every transaction completes within those times. <sup><a href="#source-18">[18]</a></sup>
+
+The contract guides expose what those buttons do. ETH bridged to Blast is held on Ethereum through its ETH yield-management system. Proving the withdrawal adds a request to the ETH queue. Finalisation needs the request to have been processed and delivers the ETH to the recipient. The source contract has to be capable of making the bridge call, and the destination has to be able to receive and subsequently use the ETH. <sup><a href="#source-19">[19]</a></sup>
+
+For USDB, finalisation creates the DAI withdrawal request in the USD queue. The recipient then has to call `claimWithdrawal` after processing. Proving and finalising can be submitted by another account with enough ETH for gas; the final claim is tied to the recipient. A destination contract that merely receives or forwards tokens may lack the function needed to make that call. The procedure therefore depends on the recipient’s capabilities as well as its address. <sup><a href="#source-20">[20]</a></sup>
+
+Blast Mobile has its own preliminary steps. Its guide tells users to withdraw from Earn where relevant, move the funds to an ordinary wallet controlled by a key on Blast, and then use that wallet to exit through the bridge. It warns that the mobile smart-wallet address should not be used as an Ethereum destination. This is a concrete example of how an account convenient on one chain can require a different route to remain usable on another. <sup><a href="#source-21">[21]</a></sup>
+
+## Abstract’s deadline concerns normal processing
+
+Abstract’s announced date is **15 December 2026**. Its terms, revised on 6 October, distinguish the end of normal chain processing from the deadlines and availability periods of other services. They state that no recovery process after discontinuation is promised. A transfer started earlier can still require destination-chain actions, with availability and deadlines specific to the route. The announced date supplies no precise hour or time zone. <sup><a href="#source-1">[1]</a></sup><sup><a href="#source-5">[5]</a></sup>
+
+This wording is economically revealing. A migration interface has its own dependencies. Networks, contracts, liquidity sources and other providers still process the movement. Authentication, signing, explorer access and support can have different end dates. The terms distinguish these services and their responsibilities; this article does not determine the legal enforceability of a particular clause. <sup><a href="#source-5">[5]</a></sup>
+
+The terms identify **Cube, Inc.** as the contracting party for the services they govern. Igloo features in management’s account as the source of financing, while protocol governance and security involve other bodies. These roles belong to the same project’s story but carry different powers and commitments. Treating them as interchangeable would assign responsibility to the wrong entity. <sup><a href="#source-5">[5]</a></sup><sup><a href="#source-2">[2]</a></sup>
+
+Abstract’s announcement gives an expected **three-hour delay** for its native bridge. That is a statement about the announced route, with the remaining transfer steps and service conditions still relevant. It supplies no exact countdown for completing a particular withdrawal. <sup><a href="#source-1">[1]</a></sup>
+
+Abstract’s native-bridge documentation describes an L2-to-L1 withdrawal delay and notes that third-party bridges carry different security risks. It is a general technical guide. The wind-down communications govern the announced service timetable, and a generic estimate cannot be substituted for the required initiation, completion and claim steps of a selected exit route. <sup><a href="#source-25">[25]</a></sup>
+
+<L2ContinuityFigure
+  kind="exit"
+  lang="en"
+  number="03"
+  sources="3 5 16 17 18 24"
+  caption="An exit depends on a chain of services and recorded states. Blast’s 26 October interface deadline and Abstract’s 15 December end of normal processing describe different events. Published data, a visible balance and a submitted request each leave further conditions to check before an asset becomes usable on the destination chain."
+>
+  <details>
+    <summary>What the routes and dates mean</summary>
+    <p>The diagram separates operational dependencies rather than prescribing a universal withdrawal method. Blast promises a contract route after its interface deadline; Abstract’s revised terms promise no future recovery process after discontinuation. Neither announcement supplies an exact hour or time zone for the stated dates. Queue timing, publication, proof generation, destination steps and the current permissions of each deployment can affect completion.</p>
+  </details>
+</L2ContinuityFigure>
+
+## The route around a sequencer still needs an exit
+
+The strongest version of the L2 promise is that users retain a way to act when the usual operator stops responding. A mechanism called [**forced inclusion**](/en/glossary/inclusion-forcee/) lets an instruction enter through the base chain according to the rollup’s rules. Optimism documents how an L1 deposit transaction can carry an action during a sequencer outage, including one that initiates a withdrawal. Its derivation process gives that instruction a route into the L2’s state. <sup><a href="#source-23">[23]</a></sup>
+
+That capability addresses an important part of censorship and availability. The remaining withdrawal still needs the state and evidence that its destination contract accepts. When roles responsible for publishing state or producing proofs are restricted, those roles can remain necessary even after an instruction has been recorded on Ethereum. The right to enter a queue and the ability to complete the destination transaction need to be examined together.
+
+The ZKsync documentation shows a related distinction. Users can initiate priority operations on L1, which are appended to a queue. The operator includes the operations in a batch; execution later checks that the processed operations match the queued requests. This gives the request a verifiable origin and ordering mechanism. Further batch processing remains part of the documented path. The description of a queue should not be stretched into a promise that any user can independently finalise every withdrawal after an operator has disappeared. <sup><a href="#source-24">[24]</a></sup>
+
+A handover consequently requires more than a copy of public code. A successor needs the applicable state, operational software and a way to perform the roles required by the deployed contracts. A replacement proposer needs the means to perform its role. An independent node can preserve or reconstruct information without necessarily possessing the permissions to advance settlement. Governance can offer a replacement mechanism while leaving participants to organise and finance its execution.
+
+Abstract says it will offer engineering and ecosystem assistance to applications moving elsewhere. That support can help with transition, while each project still has its own contracts, users and assets to address. The installed ecosystem contains commercial relationships and habits whose continued value partly depends on a workable migration. <sup><a href="#source-1">[1]</a></sup>
+
+These distinctions explain why a planned wind-down gives users a window in which an operator is still assisting exits. Services can finish batches, publish the states needed by the routes and process associated requests. Once a dependency becomes unavailable, the difficulty of completing the same operation can change. An investor or application developer gains more from examining that path than from treating the word “Ethereum” as a complete continuity policy.
+
+## Someone has to finance the next batch
+
+The closures bring a business obligation into view. An application built on a chain depends on a shared service whose operation may be financed by another organisation. Its users may authorise their own transfers, yet rely on that organisation for processing, data access or a supported interface. A reasonable continuity plan identifies the arrangement carrying those functions, the circumstances in which it can end and the practical route available during that change.
+
+The same analysis can guide a prospective operator. A plan for attracting activity has to connect to a plan for keeping necessary services available. Fee rules determine what can be retained. Incentives determine what is paid away. Publication and proof costs determine part of the workload. Staffing, infrastructure and sponsor support complete the organisation around it. Each can be understood separately, then reconciled when reliable accounts exist.
+
+For a user, a successful exit is the important result of the wind-down. For an investor, it is also evidence of how the infrastructure handles the end of its initial business model. The useful distinction is between an announcement of support and demonstrated completion. A published guide explains the route; an executed destination transaction establishes that a particular asset reached a particular address. The rest of the continuity question remains about who will perform the next required operation.
+
+The shutdowns thus reveal a layer of dependence that low fees and a fast wallet response can leave out of view. Cryptography sets conditions for valid state changes. Companies, governance participants and service providers decide which operational work they will fund and perform. A durable network needs an arrangement in which those conditions can keep being met, including when its original sponsor changes direction.
+
+The wider context is developed in our analysis of [Ethereum as financial infrastructure](/en/analysis/ethereum-tradfi-infrastructure/). The investigation into [DeFi’s front door](/en/analysis/defi-gateways-mica-access/) follows the businesses surrounding access, while [CCIP’s transfer mechanisms](/en/analysis/ccip-2-0-assets-rules-crypto-finance/) show how destination checks alter an asset’s journey. Our [guide to on-chain data](/en/guides/read-on-chain-data/) explains the measurement choices behind activity and asset counts.
+
+## Scope and limits
+
+This investigation is dated **8 October 2026**. The shutdown decisions, reported activity thresholds and funding explanations are attributed to the announcing teams and management. They were checked against the announcements and contemporary reporting; no audited company accounts were available. The September fee totals use one specified provider, period, collection time and adapter scope. API daily observations were summed independently; their underlying transaction queries were not rerun. The totals leave operating expenses, distributions and parent financing unreconciled.
+
+The withdrawal descriptions come from official documentation. No live transfer, smart-contract configuration audit or independent reconstruction of the closing deployments was performed. Documents can change, and the availability of a route must be checked for the operation in question. L2BEAT’s Blast assessment was under review after implementation changes, with a warning that information could be outdated. Its previous delays and permissions therefore supply no audit of the current shutdown configuration. <sup><a href="#source-17">[17]</a></sup> Abstract’s terms are cited for the provider’s commitments and stated dependencies, without a legal conclusion about individual users’ rights.
+
+The three figures explain payment destinations, a bounded fee observation and the dependencies of exit. They contain no reconstructed profit figures, assumed division of company revenue or token-price forecast. The gaps in the available evidence remain part of the result.
+
+## Sources and documents
+
+<p id="source-1"><strong>1.</strong> Abstract, <a href="https://x.com/AbstractChain/status/2107554632675340420">wind-down announcement</a>, 6 October 2026. Shutdown date and self-reported ecosystem thresholds; interested-party statements.</p>
+<p id="source-2"><strong>2.</strong> Luca Netz, <a href="https://x.com/LucaNetz/status/2107555395640463480">explanation of the decision to stop financing Abstract</a>, 6 October 2026. Management’s account of funding, losses and the decision against a token sale.</p>
+<p id="source-3"><strong>3.</strong> Blast, <a href="https://x.com/blast/status/2106032805280891073">shutdown and withdrawal announcement</a>, 2 October 2026. Economic rationale, 26 October interface deadline and announced subsequent contract route.</p>
+<p id="source-4"><strong>4.</strong> Shaurya Malwa, CoinDesk, <a href="https://www.coindesk.com/tech/2026/10/07/pudgy-penguins-abstract-becomes-second-ethereum-layer-2-to-shut-in-a-week">Pudgy Penguins’ Abstract becomes second Ethereum layer 2 to shut in a week</a>, 7 October 2026. Contemporary reporting and context; numerical claims in this article rely on the identified primary sources and collected series.</p>
+<p id="source-5"><strong>5.</strong> Cube, Inc., Abstract, <a href="https://abs.xyz/terms-of-service">Terms of Service</a>, revised 6 October 2026. Sections 12.1 and 12.5–12.6: routes, service discontinuation, dependencies, completion and future recovery.</p>
+<p id="source-6"><strong>6.</strong> Abstract, <a href="https://docs.abs.xyz/how-abstract-works/evm-differences/gas-fees">Gas Fees</a>. Off-chain storage and proof generation, on-chain publication and verification; the guide’s approximate example is not used as a current measured tariff.</p>
+<p id="source-7"><strong>7.</strong> ZKsync, <a href="https://docs.zksync.io/zksync-protocol/era-vm/transactions/fee-model/fee-structure">ZKsync fee structure</a> and <a href="https://docs.zksync.io/zksync-protocol/era-vm/transactions/fee-model/how-we-charge-for-pubdata">How ZKsync Chains charge for pubdata</a>, final Revenue &amp; Costs section. Resource pricing, publication and batch overhead; the cost definition also includes off-chain infrastructure.</p>
+<p id="source-8"><strong>8.</strong> Blast, <a href="https://docs.blast.io/building/guides/gas-fees">Receive and claim gas fees</a>. Void and Claimable modes, allocation by gas consumption and documented launch parameters for claim maturity.</p>
+<p id="source-9"><strong>9.</strong> Growthepie, <a href="https://www.growthepie.com/fundamentals/profit">On-chain profit</a>. Metric methodology and its exclusion of off-chain infrastructure. No Blast or Abstract series from this dashboard is used.</p>
+<p id="source-10"><strong>10.</strong> DefiLlama, <a href="https://api.llama.fi/summary/fees/blast?dataType=dailyFees">Blast daily fee series</a>. 1–30 September 2026 UTC, 30 observations; retrieval 8 October 2026 at 15:06:02 UTC.</p>
+<p id="source-11"><strong>11.</strong> DefiLlama, <a href="https://api.llama.fi/summary/fees/abstract?dataType=dailyFees">Abstract daily fee series</a> and <a href="https://api.llama.fi/summary/fees/abstract?dataType=dailyRevenue">daily revenue series</a>. Same period, 30 observations and retrieval time. The latter supports the comparison between published series, without supplying a company margin. A mutable API response can differ from the collected version.</p>
+<p id="source-12"><strong>12.</strong> DefiLlama, <a href="https://github.com/DefiLlama/dimension-adapters/blob/2a5816d48a80a8cded93774b7f06918e6f999210/helpers/ethereum-l2.ts">Ethereum L2 adapter helper at revision 2a5816d</a>. Distinct paths for gas used × effective gas price and SUM(tx_fee), cost-field handling and revenue construction.</p>
+<p id="source-13"><strong>13.</strong> DefiLlama, <a href="https://docs.llama.fi/analysts/data-definitions">Data definitions</a>. Fees, revenue and other provider-specific metric conventions.</p>
+<p id="source-14"><strong>14.</strong> Ethereum, <a href="https://eips.ethereum.org/EIPS/eip-4844">EIP-4844: Shard Blob Transactions</a>. Blob publication, separate fee mechanism and temporary consensus-layer availability.</p>
+<p id="source-15"><strong>15.</strong> <a href="https://arxiv.org/html/2310.01155v1">EIP-4844 Economics and Rollup Strategies</a>, 2023, version 1. Research model of rollup publication strategies before activation; not an estimate of either chain’s 2026 accounts.</p>
+<p id="source-16"><strong>16.</strong> Abstract, <a href="https://docs.abs.xyz/how-abstract-works/architecture/transaction-lifecycle">Transaction Lifecycle</a>. Soft confirmation, commitment, proof validation and execution on Ethereum.</p>
+<p id="source-17"><strong>17.</strong> L2BEAT, <a href="https://l2beat.com/layer2s/projects/abstract">Abstract technical assessment</a> and <a href="https://l2beat.com/layer2s/projects/blast">Blast assessment under review</a>, consulted 8 October 2026. State validation, proposer continuity and governance; the limits of potentially outdated Blast information are stated in the article.</p>
+<p id="source-18"><strong>18.</strong> Blast, <a href="https://docs.blast.io/withdrawals/withdraw-to-ethereum">Withdraw to Ethereum</a>. EOA routes, ETH/WETH and USDB/DAI, Ethereum transaction counts and indicative waiting periods.</p>
+<p id="source-19"><strong>19.</strong> Blast, <a href="https://docs.blast.io/withdrawals/eth-from-contracts">ETH Withdrawal Guide</a>. Source-contract capability, output publication, ETH queue, proof and finalisation.</p>
+<p id="source-20"><strong>20.</strong> Blast, <a href="https://docs.blast.io/withdrawals/usdb-from-contracts">USDB Withdrawal Guide</a>. DAI request, USD queue, recipient-only claim and destination-contract requirements.</p>
+<p id="source-21"><strong>21.</strong> Blast, <a href="https://docs.blast.io/withdrawals/blast-mobile">Withdraw from Blast Mobile</a>. Earn exit, EOA handover and destination-wallet compatibility.</p>
+<p id="source-22"><strong>22.</strong> Optimism, <a href="https://docs.optimism.io/op-stack/transactions/fees">Transaction fees on OP Mainnet</a>. Execution, L1 data and version-dependent operator fee; fee collection and configuration.</p>
+<p id="source-23"><strong>23.</strong> Optimism, <a href="https://docs.optimism.io/op-stack/transactions/forced-transaction">Forced Transaction</a>. L1 submission, derivation and sequencer-outage inclusion.</p>
+<p id="source-24"><strong>24.</strong> ZKsync, <a href="https://docs.zksync.io/zksync-protocol/era-vm/contracts/handling-l1-l2-ops">Handling L1→L2 operations</a>. Priority queue, operator batch processing and execution checks.</p>
+<p id="source-25"><strong>25.</strong> Abstract, <a href="https://docs.abs.xyz/tooling/bridges">Bridges</a>. Native and third-party routes, general withdrawal delay and differing security risks.</p>
+<p id="source-26"><strong>26.</strong> Abstract, <a href="https://docs.abs.xyz/how-abstract-works/architecture/components/sequencer">Sequencer</a>. RPC, transaction execution and Ethereum operator functions.</p>
+<p id="source-27"><strong>27.</strong> Optimism, <a href="https://docs.optimism.io/chain-operators/guides/management/network-architecture">Network architecture</a>. Operator service architecture and operational dependencies.</p>

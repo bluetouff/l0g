@@ -475,6 +475,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crypto & stablecoins',
     accent: 'var(--color-amber)',
     entries: [
+      { sigle: 'Inclusion forcée', nom: 'Soumission à un rollup depuis sa chaîne de base', def: 'Mécanisme permettant de soumettre une opération à un rollup depuis la chaîne de base. Son effet dépend du protocole : mettre une demande dans une file ne garantit pas que les acteurs chargés de publier et de valider les états continueront à la traiter. La possibilité d’un retrait exige donc une lecture de toute la procédure.', guide: '/posts/blast-abstract-blockchain-fermeture-economie/' },
+      { sigle: 'Proposeur de rollup', nom: 'Acteur chargé de publier les engagements d’état', def: 'Acteur qui soumet à la chaîne de base les engagements représentant un état du rollup. Selon le protocole, cette fonction peut être ouverte ou réservée à des acteurs autorisés. Une demande reçue par le séquenceur doit encore franchir les étapes de publication et de validation nécessaires à son règlement.', guide: '/posts/blast-abstract-blockchain-fermeture-economie/' },
       { sigle: 'Cryptographie postquantique', nom: 'Cryptographie résistante aux attaques quantiques connues', def: 'Constructions cryptographiques exécutées sur des ordinateurs classiques et conçues pour résister aux attaques quantiques connues. Les signatures autorisent et authentifient des messages ; les mécanismes d’encapsulation de clés établissent des secrets partagés. Leur intégration à Bitcoin exige des règles de protocole et une migration des sorties existantes.', guide: '/posts/bitcoin-quantique-prix-changement-cles/' },
       { sigle: 'Poids de transaction', nom: 'Transaction weight de Bitcoin', def: 'Mesure SegWit de la place occupée par une transaction : quatre unités par octet de la partie de base et une par octet du témoin. La taille virtuelle est le poids divisé par quatre, arrondi à l’entier supérieur. Le poids ne fixe pas le montant des frais, qui dépend aussi du tarif offert pour l’espace dans les blocs.', guide: '/posts/bitcoin-quantique-prix-changement-cles/' },
       { sigle: 'BTC', nom: 'Bitcoin', def: "Première cryptomonnaie, décentralisée, à offre plafonnée à 21 millions d'unités. Distincte de l'écosystème DeFi par sa conception." },
@@ -978,6 +980,19 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'inclusion-forcee': {
+    intuition: 'Le droit de déposer une demande et sa possibilité d’aboutir dépendent de fonctions distinctes.',
+    articles: [{ label: 'Blast et Abstract : qui paie pour faire vivre une blockchain ?', href: '/posts/blast-abstract-blockchain-fermeture-economie/', kind: 'article' }],
+    sources: [{ label: 'OP Stack, forced transactions', href: 'https://docs.optimism.io/op-stack/transactions/forced-transaction', kind: 'source' }, { label: 'ZKsync, handling L1–L2 operations', href: 'https://docs.zksync.io/zksync-protocol/era-vm/contracts/handling-l1-l2-ops', kind: 'source' }, { label: 'L2BEAT, Abstract', href: 'https://l2beat.com/layer2s/projects/abstract', kind: 'source' }],
+    related: ['proposeur-de-rollup'],
+  },
+  'proposeur-de-rollup': {
+    intuition: 'Recevoir une opération, publier son état et permettre le retrait sont des tâches successives.',
+    articles: [{ label: 'Blast et Abstract : qui paie pour faire vivre une blockchain ?', href: '/posts/blast-abstract-blockchain-fermeture-economie/', kind: 'article' }],
+    sources: [{ label: 'L2BEAT, Abstract', href: 'https://l2beat.com/layer2s/projects/abstract', kind: 'source' }, { label: 'Abstract, transaction lifecycle', href: 'https://docs.abs.xyz/how-abstract-works/architecture/transaction-lifecycle', kind: 'source' }],
+    related: ['inclusion-forcee'],
+  },
+
   btf: {
     intuition: 'Une échéance courte permet d’ajuster la trésorerie, mais rapproche le prochain remboursement.',
     articles: [{ label: 'Le prix du temps dans la dette française', href: '/posts/dette-francaise-prix-du-temps/', kind: 'article' }],
