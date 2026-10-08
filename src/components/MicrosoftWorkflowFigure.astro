@@ -1,0 +1,46 @@
+---
+import { microsoftWorkflowSvg } from '../lib/microsoftWorkflowFigures.mjs';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'reporting' | 'consultation';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+const references = sources.split(/\s+/).filter(Boolean);
+if (!references.length || references.some((id) => !/^(?:[1-9]|[1-9]\d)$/.test(id))) {
+  throw new Error('Invalid Microsoft-workflow figure source reference');
+}
+---
+<figure class="microsoft-workflow-figure">
+  <div class="microsoft-workflow-desktop" set:html={microsoftWorkflowSvg(lang, kind, false)} />
+  <div class="microsoft-workflow-mobile" set:html={microsoftWorkflowSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="microsoft-workflow-refs">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  .microsoft-workflow-figure { margin: 2.6rem 0; width: 100%; padding-bottom: .85rem; }
+  .microsoft-workflow-figure :global(svg) {
+    display: block; width: 100%; height: auto; max-width: 100%;
+    border-radius: .8rem; letter-spacing: normal;
+  }
+  .microsoft-workflow-mobile { display: none; }
+  figcaption { margin-top: .9rem; font-size: .875rem; line-height: 1.65; color: var(--color-muted); }
+  figcaption strong { margin-right: .35em; }
+  .microsoft-workflow-refs { display: block; }
+  .microsoft-workflow-refs a { margin-right: .7em; }
+  @media (max-width: 640px) {
+    .microsoft-workflow-desktop { display: none; }
+    .microsoft-workflow-mobile { display: block; }
+  }
+  @media print {
+    .microsoft-workflow-figure { break-inside: avoid; }
+    .microsoft-workflow-desktop { display: block; }
+    .microsoft-workflow-mobile { display: none; }
+  }
+</style>
