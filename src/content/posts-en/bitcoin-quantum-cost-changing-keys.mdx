@@ -1,0 +1,182 @@
+---
+title: 'Bitcoin and the quantum threat: the cost of changing the keys'
+seoTitle: 'Bitcoin quantum migration: costs and dormant coins | l0g'
+description: 'A close look at Bitcoin’s quantum migration: larger signatures, scarce block space, custody systems and the unresolved ownership of dormant coins.'
+pubDate: 2026-10-08T14:02:00+02:00
+updatedDate: 2026-10-08T14:02:00+02:00
+tags: ['Bitcoin', 'cryptography', 'quantum', 'infrastructure', 'governance']
+draft: false
+ogImage: /illustrations/news/bitcoin-quantum-migration-v1.jpg
+sourceArticle: bitcoin-quantique-prix-changement-cles
+sourceUpdatedDate: 2026-10-08T14:02:00+02:00
+---
+
+import QuantumMigrationFigure from '../../components/QuantumMigrationFigure.astro';
+
+The private key can sit in a drawer for years. Another piece of information may already be travelling freely: the public key that Bitcoin uses to check its owner's signatures. The protection rests on an asymmetry. Starting with the secret, generating the public key is easy. Working backwards from the public key to that secret is beyond the reach of the classical methods used to attack these signatures today. A sufficiently capable quantum computer would change that relationship. It could produce a signature authorizing a spend that the network would accept. <sup><a href="#source-2">[2]</a></sup> <sup><a href="#source-3">[3]</a></sup>
+
+On October 7, 2026, Europol called for preparation for cryptocurrencies' post-quantum transition as it announced two reports. Its release identifies the keys used to authorize transactions as the primary point of exposure, distinguishing them from comparatively more resistant hash functions. The warning concerns a future capability whose arrival remains uncertain. It raises a question that can already be investigated: how long would it take to change a protocol, the software around it and the practices of its holders? <sup><a href="#source-1">[1]</a></sup>
+
+Imagine replacing the locks in an apartment building. Every resident pays for their own work. The doors use different mechanisms. Some owners can no longer be reached. Bitcoin adds a further constraint to that image: its spending rules are public and enforced by independent computers. Every replacement lock must work under those rules. Holders must then move their coins from the old conditions to the new ones.
+
+The transition would consume engineering time and space in blocks. It would also require people to act together. Deciding what happens to coins that remain behind reaches into the meaning of ownership itself. To understand who would pay, and for what, it helps to begin with the smallest action: authorizing a spend.
+
+## An attacker's signature can pass the owner's test
+
+A Bitcoin balance consists of transaction outputs that remain available to spend: unspent transaction outputs, or UTXOs. Each output records an amount and the conditions under which it can be spent. A transaction using that output supplies whatever is needed to satisfy those conditions, often a signature. Nodes check the rules. Miners assemble blocks that nodes can accept. <sup><a href="#source-4">[4]</a></sup> <sup><a href="#source-5">[5]</a></sup>
+
+The private key produces a signature; the public key allows others to verify it. A valid signature shows that the signer could perform the calculation required by the key. Its security depends on the difficulty of performing that calculation without the secret. Once an attacker recovers the secret, they gain the same cryptographic ability to sign as the holder.
+
+Bitcoin's ECDSA signatures and Taproot's Schnorr signatures both use the secp256k1 elliptic curve. Their constructions differ, but both rely on the classical difficulty of solving the discrete logarithm problem on that curve. Shor's algorithm would let a suitable quantum computer solve the problem much more efficiently. A spend signed with a key recovered this way would pass the usual cryptographic check. <sup><a href="#source-2">[2]</a></sup> <sup><a href="#source-3">[3]</a></sup> <sup><a href="#source-6">[6]</a></sup>
+
+The target is permission to transfer funds. Old blocks can remain internally consistent while a new transaction sends someone else's coins to the attacker. Hash functions, used for commitments and proof of work among other purposes, raise separate quantum questions. Europol and Chaincode examine those separately. This investigation follows the threat to signatures: the ability to spend in someone else's place. <sup><a href="#source-1">[1]</a></sup> <sup><a href="#source-2">[2]</a></sup>
+
+<QuantumMigrationFigure kind="threat" lang="en" number="01" sources="2 3 6" caption="Recovering the secret from an exposed public key would let an attacker produce a signature that passes the same check as the holder's.">
+<details><summary>Sources and scope</summary><p>A diagram of signature substitution, based on the Schnorr and Taproot specifications and Chaincode's threat analysis. The quantum branch assumes a machine capable of solving the discrete logarithm problem; it depicts a hypothetical capability. <a href="#source-2">[2]</a> <a href="#source-3">[3]</a> <a href="#source-6">[6]</a></p></details>
+</QuantumMigrationFigure>
+
+## An offline vault can have a public key on display
+
+Keeping a secret on a disconnected device protects it from several kinds of computer attack. The public key's exposure is a different question. Some information is already on the blockchain; some may have been shared with other services. The answer begins with the spending condition attached to each output and the history of its use.
+
+Early P2PK outputs publish a public key directly. Taproot outputs, known as P2TR, also contain a public key that can authorize a direct spend. These keys are visible as soon as the outputs are created. A future attacker could work on them for as long as the funds remained unspent. For Taproot, recovering the secret behind the output key would unlock the key spending path even if the holder had arranged alternative spending conditions through scripts. <sup><a href="#source-2">[2]</a></sup> <sup><a href="#source-6">[6]</a></sup>
+
+P2PKH and P2WPKH work differently. Their outputs contain a hash of the public key, with the key itself normally revealed at the time of spending. Provided the key remains unknown elsewhere, the attacker must wait for that disclosure. Their window becomes shorter: recover the secret, construct a competing spend and get it included quickly enough. A recent chain reorganization can also affect that window. <sup><a href="#source-2">[2]</a></sup> <sup><a href="#source-5">[5]</a></sup>
+
+Address reuse changes the assessment. A key disclosed in an earlier spend may still control other outputs. Those funds are then exposed for much longer. A public key shared with a monitoring service may also be known outside the chain. Extended public keys, usually called *xpubs*, add another layer: they allow child public keys to be derived under the relevant derivation rules. Exposure therefore depends on how the wallet is organized as well as what appears in the ledger. <sup><a href="#source-2">[2]</a></sup> <sup><a href="#source-7">[7]</a></sup>
+
+“Dormant” tells us only that no spend has been observed. An heir may hold the key. A custodian may be waiting. The holder may be offline. Or the secret may have disappeared. The blockchain records the lock and the movements through it; it reveals much less about the people who can still open it. That limit matters when a migration deadline enters the discussion.
+
+## The speed of an attack changes which funds are exposed
+
+A machine that took several weeks to recover a key would already pose a problem for public keys exposed long ago. A much faster machine could target transactions as their publication revealed the key. The time needed to complete the computation matters alongside the existence of the machine.
+
+Two preprints published in 2026 illustrate the distinction. A paper by Häner and coauthors, submitted in September, models an attack on secp256k1 using a trapped-ion architecture. Its central scenario combines 19,397 physical qubits, a running time of approximately 25.7 days and an estimated success probability of 63%. The researchers describe an architecture and a resource calculation. These figures are estimates for that construction. <sup><a href="#source-8">[8]</a></sup>
+
+A separate team, including researchers at Google Quantum AI, provides resource estimates under superconducting assumptions. Its April revision describes scenarios taking minutes with fewer than 500,000 physical qubits, under its assumptions about error rates and connectivity. This, too, is modelling. Physical qubits are the hardware components. Logical qubits are the units of computation protected through error correction. The relationship between the two depends on the architecture. <sup><a href="#source-9">[9]</a></sup>
+
+Putting the two raw qubit counts into a league table would mix different machines, operating speeds and error models. The useful question for a holder is whether a complete system could recover a particular key with a sufficient chance of success within the window available to the attacker. Theoretical advances can reduce estimated resource requirements before engineers can build the whole system.
+
+These papers strengthen the case for preparation while leaving the arrival date open. Any protection plan must accommodate that uncertainty and allow time for testing, audits, software updates and transfers. Waiting has a cost before an attack succeeds: it leaves less room to coordinate those operations.
+
+## Standards are available; Bitcoin's design remains open
+
+[Post-quantum cryptography](/en/glossary/cryptographie-postquantique/) runs on classical computers. Its constructions are designed to withstand known quantum attacks. In August 2024, the US National Institute of Standards and Technology published ML-DSA and SLH-DSA standards for digital signatures. ML-KEM, published in the same group, is used to establish shared secrets. Each primitive serves a distinct purpose. <sup><a href="#source-10">[10]</a></sup> <sup><a href="#source-11">[11]</a></sup> <sup><a href="#source-12">[12]</a></sup>
+
+A Bitcoin signature has to fit into public rules and a wide variety of software. Developers need to examine its size, verification cost, security assumptions and implementation requirements. Wallet manufacturers need to produce it on their devices. Custodians need to preserve their approval procedures. Users need a comprehensible way to recover funds from backups.
+
+A standardized primitive gives that work a substantial starting point. Bitcoin's decision still includes the output format, the operations available in scripts, the weight assigned to data and the treatment of older signatures. Pieter Wuille's discussion, opened in July 2026, lays out several constructions and transition mechanisms. The tradeoffs are being debated explicitly as part of continuing design work. <sup><a href="#source-13">[13]</a></sup>
+
+Those requirements are demanding in a network whose rules must work across independent participants. A cryptographic library that performs well on its author's computer may be costly on a signing device with little memory. An implementation optimized for speed may complicate an audit or wallet recovery. Choosing the algorithm also means choosing how these costs would be distributed.
+
+## A larger proof consumes a shared resource
+
+BIP 340 specifies a Schnorr signature of 64 bytes. In FIPS 204, an ML-DSA-44 signature occupies 2,420 bytes and its public key occupies 1,312 bytes. The signature alone is therefore 37.8125 times as large, an increase of 2,356 bytes. This is a size comparison between primitives with their own parameters, constructions and security categories. Bitcoin's future post-quantum signature scheme remains an open choice. <sup><a href="#source-3">[3]</a></sup> <sup><a href="#source-10">[10]</a></sup>
+
+<QuantumMigrationFigure kind="size" lang="en" number="02" sources="3 10" caption="64 and 2,420 bytes: two signatures drawn to scale. The size ratio describes the primitives under their respective parameters.">
+<details><summary>Data and calculation</summary><p>BIP 340: a 64-byte Schnorr signature. FIPS 204, table 2: a 2,420-byte ML-DSA-44 signature. Ratio: 2,420 ÷ 64 = 37.8125. Difference: 2,420 − 64 = 2,356 bytes. Public keys, scripts and transaction structure are excluded. These sizes describe signatures; total transaction fees require a separate calculation. ML-DSA-44 has not been selected for deployment in Bitcoin. <a href="#source-3">[3]</a> <a href="#source-10">[10]</a></p></details>
+</QuantumMigrationFigure>
+
+Space in blocks has a price because transactions share it. SegWit expresses that resource in [weight units](/en/glossary/poids-de-transaction/), with a maximum of 4,000,000 per block. A byte of witness data counts as one unit; a byte in the base part of the transaction counts as four. Virtual size is the weight divided by four, rounded up to the next integer. Rules also determine how those data can be used. Integrating a future signature would require protocol changes beyond replacing its bytes. <sup><a href="#source-5">[5]</a></sup>
+
+Holding those weights and the other transaction data constant, adding signature data would reduce the number of spends that fit in a block. The result would still depend on the construction chosen, the keys transmitted, the scripts and the number of inputs. Signature aggregation can change the calculation where both the scheme and the protocol rules support it. The ratio of 37.8125 answers a precise question about size. Multiplying an entire transaction's fee by that number would give it a meaning the comparison cannot support.
+
+The price paid would also depend on competing demand. Transfers spread over time could use quieter periods. A rush towards a deadline would bring migrations into competition with ordinary payments. That mechanism identifies a congestion risk. Estimating its scale would require usage data and migration rules that remain unavailable.
+
+## P2MR: the price of keeping the key hidden at rest
+
+One proposal already offers a concrete example of a cost. BIP 360, still a draft, describes *Pay to Merkle Root*, or P2MR. An output would contain a 32-byte Merkle root committing to the scripts under which it could be spent. Taproot's directly spendable public key would disappear from this output format. Spending through a script would reveal the information needed to use that path. <sup><a href="#source-14">[14]</a></sup>
+
+The authors aim to protect against long exposure of public keys. BIP 360 leaves post-quantum signatures to separate work. If the script uses a classical signature, revealing its public key at spending time would still create a short attack window. Reusing keys or sharing public keys would also need attention. The proposal addresses a specific stage of protection. <sup><a href="#source-14">[14]</a></sup>
+
+Its size example compares a 66-byte witness for a Taproot key path spend with a 135-byte witness for P2MR using a simple script at depth 1. The latter consists of a one-byte count, 65 bytes for the signature and its prefix, 35 for the prefixed script, and 34 for the prefixed control block. Both examples still use a 64-byte Schnorr signature. <sup><a href="#source-14">[14]</a></sup>
+
+The extra 69 witness bytes represent 69 weight units, or 17.25 virtual bytes before rounding the complete transaction. The calculation makes the tradeoff tangible: keeping the key hidden at rest requires more information to be presented when spending. The total fee depends on the transaction's other data and the price of space at that moment. The draft makes the tradeoff available for study; activation remains a separate decision. <sup><a href="#source-5">[5]</a></sup> <sup><a href="#source-14">[14]</a></sup>
+
+## Count the outputs before counting the blocks
+
+Changing the protection on existing coins requires holders to spend their old outputs into new spending conditions. They can retain economic ownership throughout. The network still records a transaction that needs space in a block and incurs a fee. A fragmented wallet brings many inputs to that operation. A large amount concentrated in a single output can require much less migration work. <sup><a href="#source-4">[4]</a></sup> <sup><a href="#source-5">[5]</a></sup>
+
+This explains why the UTXO count matters when studying capacity. The bitcoin amount measures economic exposure; the structure of the outputs tells us more about the work required. Both measures are useful, and they can move in different directions.
+
+An October 2024 preprint offers a revealing exercise. It starts with 186,676,874 UTXOs, a snapshot from June 2024, and assumes 17,020 inputs per block. With blocks spaced ten minutes apart and all space devoted to the operation, the estimate is about 76 days, reported as 76.16 days in the paper. The model groups inputs extensively and simplifies other transaction components. <sup><a href="#source-15">[15]</a></sup>
+
+The calculation is 186,676,874 ÷ 17,020 × 10 ÷ 1,440, approximately 76.17 days from the displayed inputs. It describes cumulative use of capacity under those historical assumptions. Allocating half the network to migration produces 152.33 days in the same model. That percentage is a chosen allocation for the exercise. It measures no current availability. Chaincode also notes that a faster variant relies on signature aggregation unavailable in the current protocol. <sup><a href="#source-15">[15]</a></sup> <sup><a href="#source-2">[2]</a></sup>
+
+An operational schedule would require an updated output set, an assessment of which inputs could be grouped and a specified spending construction. It would then have to accommodate ordinary payments and the behaviour of holders. Some would migrate early, others would wait, and some would remain unreachable. Two decimal places make a division easy to check while leaving these uncertainties unresolved.
+
+## The individual bill protects a common infrastructure
+
+Holders would pay transfer fees and, depending on their equipment, spend time or replace a device. Their benefit would be retaining the ability to spend after the transition. Other participants would also benefit from a network with fewer exposed outputs. That combination creates a familiar coordination problem: a collective undertaking depends on individual decisions.
+
+While the threat feels distant, the immediate payment can be deferred. The wallet update can wait with it. An operator managing many clients has to communicate, test, recover from errors and deal with absent users. Adoption therefore carries a cost even after the protocol code is ready. Wuille explicitly distinguishes these dimensions in the 2026 design discussion. <sup><a href="#source-13">[13]</a></sup>
+
+A common deadline changes the calculation. It makes the cost of delay visible and may bring transfer requests closer together. A different pricing rule or a hybrid transition would alter incentives again, with consequences for the resources nodes consume. Rules influence users' behaviour; that behaviour feeds back into network demand. This is an analysis of the mechanism, with future fee levels left open.
+
+Useful preparation has to account for that loop. Compatible software, intelligible instructions and time to resolve complicated cases all matter. An active holder, an inherited wallet and a platform holding clients' funds approach migration with different constraints.
+
+## Inside a custodian, a new algorithm changes the work
+
+At a Bitcoin quantum workshop on August 28, 2026, Yehuda Lindell described the institutional constraints. Distributed signing systems, often called MPC or threshold signatures, share signing power across multiple systems. Their purpose is to prevent a single compromised machine from being able to move funds. A new primitive must work within that organization, or the organization must be redesigned. <sup><a href="#source-16">[16]</a></sup>
+
+The question reaches into everyday security procedures. Operators need to check software, permissions, backups and the controls applied before a spend. Signing systems may run across several independent machines. Constructions requiring a signing state to be tracked add another challenge: restoring a backup or losing synchronization can undermine their security assumptions. Lindell presents these as engineering and design difficulties. His intervention reflects the perspective of a professional working in the sector. <sup><a href="#source-16">[16]</a></sup>
+
+At the same workshop, Charles Guillemet examined hardware wallets. These devices sign inside components with limited resources while showing users what they are authorizing. Memory, computation time, firmware updates and device authentication all enter the choice. His observations and experiments concern the systems presented; they identify questions that need testing for each manufacturer. <sup><a href="#source-17">[17]</a></sup>
+
+The economics of migration therefore extend beyond a transaction fee. A custodian may need to change an approval chain, a manufacturer adapt its devices and a holder learn a new recovery process. The documents reviewed provide no basis for a total cost estimate. They do identify the operations that would generate that cost and the actors who would need to supply evidence about them.
+
+## Old coins bring ownership into the governance debate
+
+Authorizing a new format protects users who choose it. Funds left under older conditions continue to rely on the old lock. The network must decide what it will accept from those outputs when a classical signature can be imitated.
+
+BIP 361 proposes a framework for gradually retiring vulnerable signatures. It is an informational draft and explicitly depends on a post-quantum signature proposal that is still unspecified. Its clock starts at a hypothetical activation: a first phase after 160,000 blocks, approximately three years, followed by a second phase two years later. The first would prevent new vulnerable outputs from being created. The second would make legacy spending conditional on a rescue protocol. <sup><a href="#source-18">[18]</a></sup>
+
+That protocol would seek an additional secret that the owner could prove they knew, while an attacker who recovered only the exposed key would still lack it. Certain key derivations might provide that asymmetry. Research must establish the approach's coverage and security. For old P2PK outputs, the authors say that no such knowledge asymmetry is currently known. The difficulty of this debate depends on the technical history of each output. <sup><a href="#source-18">[18]</a></sup> <sup><a href="#source-7">[7]</a></sup>
+
+<QuantumMigrationFigure kind="migration" lang="en" number="03" sources="13 14 18" caption="Once new rules are available, reachable holders can move their outputs. Funds left under old conditions lead to a collective decision about access and ownership.">
+<details><summary>Sources and status</summary><p>A diagram of migration and collective choices, based on BIP 360, BIP 361 and the output design discussion. The proposals remain drafts. A migration timetable and a universal rescue mechanism have yet to be adopted. The branches represent choices, with no measured proportions. “Dormant” records an absence of movement and leaves the status of the key unknown. <a href="#source-13">[13]</a> <a href="#source-14">[14]</a> <a href="#source-18">[18]</a></p></details>
+</QuantumMigrationFigure>
+
+Continuing under the old rules would preserve owners' ability to spend, along with the risk of theft if the cryptography became attackable. Restricting those spends could prevent hostile transfers while also blocking legitimate holders who arrived late. A rescue path would demand an additional proof available to some owners, with security that would itself need to withstand the attack. These choices allocate different losses and rights.
+
+In a June 2026 publication, Coinbase's quantum advisory council supports technical work while remaining neutral on the treatment of abandoned funds. Its position shows why preparing new signatures and deciding the fate of older outputs are separate tasks. Coinbase has a commercial interest in custody; the publication provides evidence of its assessment and recommendations. <sup><a href="#source-19">[19]</a></sup>
+
+Market analysis needs the same discipline. Making funds inaccessible can affect the supply that is available to move. A dispute over ownership can affect confidence and liquidity. Predicting a price from one quantity assumed to be “lost” would overlook those responses. The consequences of handling dormant coins remain open, tied to security and governance as well as financial conditions.
+
+## Preparation will show up in operations that can be checked
+
+Progress can be followed through concrete work: a stable specification, independent implementations, public audits, device tests, recovery procedures and an intelligible activation rule. Each addresses part of the undertaking. An algorithm announcement or a qubit count tells us about a different stage.
+
+Key exposure policies also deserve close reading. An offline wallet, a service receiving an xpub and a Taproot output each raise different questions. Holders and their providers should be able to explain the formats they use, how they can update them and how they would reach clients. Those answers would document preparation well before a cryptographically relevant machine became available.
+
+Europol supplies the immediate trigger. NIST standards, Bitcoin proposals and the 2026 workshops make the underlying work visible. Its success depends on turning a cryptographic design into an ability to spend that users actually retain. A holder who completes a migration pays for an identifiable operation. A network that sets its conditions makes a lasting decision about shared space and existing ownership.
+
+## Scope and limits
+
+Sources were consulted on October 8, 2026. Europol's positions are drawn from its official October 7 release. The quantum preprints model resources under hardware assumptions; this investigation draws no date for attack capability from them. BIP 360 and BIP 361 remain drafts and may change. The 2024 migration calculation uses a historical snapshot and strong simplifications. Signature size comparisons exclude the other transaction components. This article estimates no transaction fee, bitcoin price or total migration bill.
+
+The workshop contributions were consulted as transcripts, with the limitations of that format. Assessments by Coinbase and manufacturers are attributed to them. An output's lack of movement supplies information about its use while leaving the whereabouts of its owner and key unknown.
+
+For further reading, our [guide to on-chain data](/en/guides/read-on-chain-data/) explains what outputs and addresses allow us to observe. [Bitget and the signing blind spot](/en/analysis/bitget-387-million-theft-signing-keys/) examines a different authorization risk. Our analysis of [Ethereum and traditional finance](/en/analysis/ethereum-tradfi-infrastructure/) follows the layers of a settlement infrastructure.
+
+## Sources
+
+1. <span id="source-1"></span>[Europol, October 7, 2026 release on quantum threats and preparation for the transition](https://www.europol.europa.eu/media-press/newsroom/news/europol-urges-early-action-to-protect-cryptocurrencies-and-sensitive-data-quantum-threats). [Announced report: *Quantum computing and cryptocurrencies*](https://www.europol.europa.eu/publications-events/publications/quantum-computing-and-cryptocurrencies).
+2. <span id="source-2"></span>[Chaincode Labs, *Bitcoin and Quantum Computing: Current Status and Future Directions*, May 2025](https://chaincode.com/bitcoin-post-quantum.pdf). Threat analysis and migration discussion; its exposure snapshots are historical.
+3. <span id="source-3"></span>[BIP 340, Schnorr signatures for secp256k1](https://github.com/bitcoin/bips/blob/927b6de9915c9262615a6399de51b200f81e5aa4/bip-0340.mediawiki).
+4. <span id="source-4"></span>[Bitcoin Developer Guide, transaction model and unspent outputs](https://developer.bitcoin.org/devguide/transactions.html).
+5. <span id="source-5"></span>[BIP 141, Segregated Witness, block weight and virtual size](https://github.com/bitcoin/bips/blob/927b6de9915c9262615a6399de51b200f81e5aa4/bip-0141.mediawiki).
+6. <span id="source-6"></span>[BIP 341, Taproot and spending rules](https://github.com/bitcoin/bips/blob/927b6de9915c9262615a6399de51b200f81e5aa4/bip-0341.mediawiki).
+7. <span id="source-7"></span>[BIP 32, hierarchical key derivation](https://github.com/bitcoin/bips/blob/927b6de9915c9262615a6399de51b200f81e5aa4/bip-0032.mediawiki).
+8. <span id="source-8"></span>[Häner and coauthors, resource estimates for a trapped-ion attack, September 2026](https://arxiv.org/abs/2609.05625v1).
+9. <span id="source-9"></span>[Babbush and coauthors, *Securing Elliptic Curve Cryptocurrencies against Quantum Vulnerabilities: Resource Estimates and Mitigations*, April 2026 revision](https://arxiv.org/abs/2603.28846v2).
+10. <span id="source-10"></span>[NIST, FIPS 204, ML-DSA, August 13, 2024](https://csrc.nist.gov/pubs/fips/204/final). Table 2 gives key and signature sizes.
+11. <span id="source-11"></span>[NIST, FIPS 205, SLH-DSA, August 13, 2024](https://csrc.nist.gov/pubs/fips/205/final).
+12. <span id="source-12"></span>[NIST, FIPS 203, ML-KEM, August 13, 2024](https://csrc.nist.gov/pubs/fips/203/final).
+13. <span id="source-13"></span>[Pieter Wuille and participants, post-quantum output design discussion, opened July 2026](https://delvingbitcoin.org/t/pqc-output-type-discussion/2749). Proposals and design opinions.
+14. <span id="source-14"></span>[BIP 360, *Pay to Merkle Root*, draft consulted October 8, 2026](https://github.com/bitcoin/bips/blob/927b6de9915c9262615a6399de51b200f81e5aa4/bip-0360.mediawiki).
+15. <span id="source-15"></span>[*Downtime Required for Bitcoin Quantum-Safety*, October 22, 2024 preprint, version 1](https://arxiv.org/html/2410.16965v1). Used for its historical capacity exercise under the stated assumptions.
+16. <span id="source-16"></span>[Yehuda Lindell, *Institutional Considerations for Post-Quantum Bitcoin*, August 28, 2026 workshop](https://btctranscripts.com/quantum-workshop/2026-08/institutional-considerations-for-post-quantum-bitcoin). Transcript.
+17. <span id="source-17"></span>[Charles Guillemet, workshop on post-quantum cryptography for hardware wallets, August 28, 2026](https://btctranscripts.com/quantum-workshop/2026-08/breakout-session-post-quantum-cryptography-for-hardware-wallets). Transcript.
+18. <span id="source-18"></span>[BIP 361, *Post Quantum Migration and Legacy Signature Sunset*, informational draft consulted October 8, 2026](https://github.com/bitcoin/bips/blob/927b6de9915c9262615a6399de51b200f81e5aa4/bip-0361.mediawiki).
+19. <span id="source-19"></span>[Coinbase Quantum Advisory Council, post-quantum migration and abandoned coins, June 11, 2026](https://www.coinbase.com/blog/coinbase-quantum-advisory-council-post-quantum-migration-and-abandoned-coins).

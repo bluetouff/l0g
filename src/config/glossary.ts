@@ -473,6 +473,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crypto & stablecoins',
     accent: 'var(--color-amber)',
     entries: [
+      { sigle: 'Cryptographie postquantique', nom: 'Cryptographie résistante aux attaques quantiques connues', def: 'Constructions cryptographiques exécutées sur des ordinateurs classiques et conçues pour résister aux attaques quantiques connues. Les signatures autorisent et authentifient des messages ; les mécanismes d’encapsulation de clés établissent des secrets partagés. Leur intégration à Bitcoin exige des règles de protocole et une migration des sorties existantes.', guide: '/posts/bitcoin-quantique-prix-changement-cles/' },
+      { sigle: 'Poids de transaction', nom: 'Transaction weight de Bitcoin', def: 'Mesure SegWit de la place occupée par une transaction : quatre unités par octet de la partie de base et une par octet du témoin. La taille virtuelle est le poids divisé par quatre, arrondi à l’entier supérieur. Le poids ne fixe pas le montant des frais, qui dépend aussi du tarif offert pour l’espace dans les blocs.', guide: '/posts/bitcoin-quantique-prix-changement-cles/' },
       { sigle: 'BTC', nom: 'Bitcoin', def: "Première cryptomonnaie, décentralisée, à offre plafonnée à 21 millions d'unités. Distincte de l'écosystème DeFi par sa conception." },
       { sigle: 'ETH', nom: 'Ether', def: "Cryptomonnaie native de la blockchain Ethereum, qui sert à payer les transactions et fait tourner les contrats intelligents." },
       { sigle: 'On-chain', nom: 'Donnée on-chain', def: "Données inscrites publiquement sur une blockchain : transactions, soldes, dates. Registre permanent et en temps réel, lisible par tous, mais qui exige des heuristiques d'étiquetage pour passer de l'adresse à l'acteur.", guide: '/guides/lire-la-donnee-on-chain/' },
@@ -974,6 +976,18 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'cryptographie-postquantique': {
+    intuition: 'Une primitive standardisée doit encore trouver ses règles de protocole, ses portefeuilles compatibles et son parcours de migration.',
+    articles: [{ label: 'Bitcoin face au quantique : le prix du changement de clés', href: '/posts/bitcoin-quantique-prix-changement-cles/', kind: 'article' }],
+    sources: [{ label: 'NIST FIPS 204', href: 'https://csrc.nist.gov/pubs/fips/204/final', kind: 'source' }, { label: 'NIST FIPS 203', href: 'https://csrc.nist.gov/pubs/fips/203/final', kind: 'source' }],
+    related: ['poids-de-transaction', 'btc'],
+  },
+  'poids-de-transaction': {
+    intuition: 'Les données, le poids et le tarif de frais décrivent trois dimensions du coût.',
+    articles: [{ label: 'Bitcoin face au quantique : le prix du changement de clés', href: '/posts/bitcoin-quantique-prix-changement-cles/', kind: 'article' }],
+    sources: [{ label: 'BIP 141', href: 'https://github.com/bitcoin/bips/blob/927b6de9915c9262615a6399de51b200f81e5aa4/bip-0141.mediawiki', kind: 'source' }],
+    related: ['cryptographie-postquantique', 'btc'],
+  },
   irrbb: {
     intuition: 'Une couverture du revenu à court terme peut laisser une sensibilité de valeur à plus long terme.',
     articles: [{ label: 'La dette publique rattrape les banques européennes', href: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/', detail: 'Prix des titres, collatéral, financement et scénarios Deutsche Bank.', kind: 'article' }],

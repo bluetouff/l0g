@@ -204,6 +204,30 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'cryptographie-postquantique', sigle: 'Post-quantum cryptography', nom: 'Cryptography designed to resist known quantum attacks',
+    ...cryptoSection, robots: 'noindex,follow',
+    guide: '/en/analysis/bitcoin-quantum-cost-changing-keys/',
+    def: 'Cryptographic constructions run on classical computers and designed to resist known quantum attacks. Signatures authorise and authenticate messages; key encapsulation mechanisms establish shared secrets. Integration into Bitcoin requires protocol rules and migration of existing outputs.',
+    atlas: {
+      intuition: 'A standardised primitive still needs a protocol, compatible wallets and a migration path.',
+      articles: [{ label: 'Bitcoin’s quantum migration: the cost of changing keys', href: '/en/analysis/bitcoin-quantum-cost-changing-keys/', kind: 'article' }],
+      sources: [{ label: 'NIST FIPS 204', href: 'https://csrc.nist.gov/pubs/fips/204/final', kind: 'source' }, { label: 'NIST FIPS 203', href: 'https://csrc.nist.gov/pubs/fips/203/final', kind: 'source' }],
+      related: ['poids-de-transaction', 'btc'],
+    },
+  },
+  {
+    slug: 'poids-de-transaction', sigle: 'Transaction weight', nom: 'Bitcoin’s SegWit space measure',
+    ...cryptoSection, robots: 'noindex,follow',
+    guide: '/en/analysis/bitcoin-quantum-cost-changing-keys/',
+    def: 'SegWit’s measure of transaction space: four weight units per byte of base data and one per byte of witness data. Virtual size is weight divided by four, rounded up. Weight alone does not set the fee, which also depends on the offered price for block space.',
+    atlas: {
+      intuition: 'Data, weight and the fee rate describe different parts of the cost.',
+      articles: [{ label: 'Bitcoin’s quantum migration: the cost of changing keys', href: '/en/analysis/bitcoin-quantum-cost-changing-keys/', kind: 'article' }],
+      sources: [{ label: 'BIP 141', href: 'https://github.com/bitcoin/bips/blob/927b6de9915c9262615a6399de51b200f81e5aa4/bip-0141.mediawiki', kind: 'source' }],
+      related: ['cryptographie-postquantique', 'btc'],
+    },
+  },
+  {
     slug: 'irrbb', sigle: 'IRRBB', nom: 'Interest rate risk in the banking book',
     sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
     guide: '/en/analysis/european-banks-sovereign-debt-bond-shock/',
