@@ -203,6 +203,43 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+    slug: 'irrbb', sigle: 'IRRBB', nom: 'Interest rate risk in the banking book',
+    sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    guide: '/en/analysis/european-banks-sovereign-debt-bond-shock/',
+    def: 'The risk that adverse interest-rate changes affect capital or earnings in the banking book. Measurement uses complementary measures of economic value and expected earnings, each with its own horizon and modelling assumptions.',
+    atlas: {
+      intuition: 'A hedge that stabilises near-term income can leave longer-term economic value exposed.',
+      articles: [{ label: 'Government debt is catching up with Europe’s banks', href: '/en/analysis/european-banks-sovereign-debt-bond-shock/', detail: 'Bond prices, collateral, funding and Deutsche Bank scenarios.', kind: 'article' }],
+      sources: [{ label: 'Basel Committee, SRP98', href: 'https://www.bis.org/committees/bcbs/basel-framework/standard/srp/98/inforce/2026-01-01/published/2024-07-16', detail: 'Definition §98.1; complementary measures §§98.17-98.22.', kind: 'source' }],
+      related: ['eve', 'nii', 'duration', 'cet1'],
+    },
+  },
+  {
+    slug: 'eve', sigle: 'EVE', nom: 'Economic value of equity',
+    sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    guide: '/en/analysis/european-banks-sovereign-debt-bond-shock/',
+    def: 'The net present value of cash flows from assets, liabilities and off-balance-sheet positions in an interest-rate risk measure. Its scenario change covers the positions’ remaining life and differs from accounting earnings or the share price.',
+    atlas: {
+      intuition: 'Discounted value follows cash flows until the positions run off, beyond the next financial year.',
+      articles: [{ label: 'Government debt is catching up with Europe’s banks', href: '/en/analysis/european-banks-sovereign-debt-bond-shock/', detail: 'Reading the EVE change in the EU IRRBB1 table.', kind: 'article' }],
+      sources: [{ label: 'BIS, IRRBB standardised framework', href: 'https://www.bis.org/publications/fsi-summary-irrbb-pillar-2-standardised-framework-executive-summary', detail: 'Present value of on- and off-balance-sheet cash flows under rate scenarios.', kind: 'source' }],
+      related: ['irrbb', 'nii', 'duration', 'cet1'],
+    },
+  },
+  {
+    slug: 'nii', sigle: 'NII', nom: 'Net interest income',
+    sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    guide: '/en/analysis/european-banks-sovereign-debt-bond-shock/',
+    def: 'Interest income less interest expense over a period, taking hedging into account. NII sensitivity depends on the scenario’s horizon and assumptions. It is distinct from total net earnings and economic value of equity.',
+    atlas: {
+      intuition: 'Income depends on how quickly assets and funding reprice.',
+      formula: 'NII = interest income - interest expense, over the same period and scope',
+      articles: [{ label: 'Government debt is catching up with Europe’s banks', href: '/en/analysis/european-banks-sovereign-debt-bond-shock/', detail: 'Deutsche Bank’s published one-year sensitivity, separate from EVE.', kind: 'article' }],
+      sources: [{ label: 'Basel Committee, SRP98', href: 'https://www.bis.org/committees/bcbs/basel-framework/standard/srp/98/inforce/2026-01-01/published/2024-07-16', detail: 'Net interest income §98.21 and horizon choice §98.22.', kind: 'source' }],
+      related: ['irrbb', 'eve', 'cet1'],
+    },
+  },
 {
   "slug": "cyclotron",
   "sigle": "Cyclotron",

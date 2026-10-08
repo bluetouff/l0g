@@ -1,0 +1,65 @@
+---
+// Both strings are controlled, checked repository SVG imports, never user input.
+interface Props {
+  desktop: string;
+  mobile: string;
+  caption: string;
+  number: string;
+  kind: string;
+  sources: string;
+}
+const { desktop, mobile, caption, number, kind, sources } = Astro.props;
+const references = sources.split(/\s+/).filter(Boolean);
+if (references.some((id) => !/^S\d{2}$/.test(id))) {
+  throw new Error('Invalid sovereign-bank figure source reference');
+}
+---
+<figure class="sovereign-bank-figure">
+  <div class="sovereign-bank-desktop" set:html={desktop} />
+  <div class="sovereign-bank-mobile" set:html={mobile} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="sovereign-bank-kind">{kind}</span>
+    <span class="sovereign-bank-refs">{references.map((id) => <a href={`#source-${id}`}>{id}</a>)}</span>
+  </figcaption>
+</figure>
+<style>
+  .sovereign-bank-figure {
+    margin: 2.6rem 0;
+    width: 100%;
+    padding-bottom: .75rem;
+  }
+  .sovereign-bank-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: .75rem;
+    letter-spacing: normal;
+  }
+  .sovereign-bank-mobile { display: none; }
+  figcaption {
+    margin-top: .9rem;
+    font-size: .875rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+  }
+  figcaption strong { margin-right: .35em; }
+  .sovereign-bank-kind {
+    display: block;
+    margin-top: .35rem;
+    font-size: .75rem;
+    color: var(--color-muted);
+  }
+  .sovereign-bank-refs { display: block; }
+  .sovereign-bank-refs a { margin-right: .7em; }
+  @media (max-width: 640px) {
+    .sovereign-bank-desktop { display: none; }
+    .sovereign-bank-mobile { display: block; }
+  }
+  @media print {
+    .sovereign-bank-figure { break-inside: avoid; }
+    .sovereign-bank-desktop { display: block; }
+    .sovereign-bank-mobile { display: none; }
+  }
+</style>

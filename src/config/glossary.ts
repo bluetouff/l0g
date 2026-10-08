@@ -27,6 +27,15 @@ export interface GlossaryKnowledgeGraph {
 
 const rawGlossarySections: GlossarySourceSection[] = [
 {
+  titre: 'Banques & gestion du bilan',
+  accent: 'var(--color-topic-blue)',
+  entries: [
+    { sigle: 'IRRBB', nom: 'Risque de taux du portefeuille bancaire', def: 'Risque que des variations défavorables des taux affectent le capital ou les revenus du portefeuille bancaire. Sa mesure rapproche la valeur économique des positions et les revenus attendus, avec leurs horizons et hypothèses propres.', guide: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/' },
+    { sigle: 'EVE', nom: 'Valeur économique des fonds propres', def: 'Valeur actualisée nette des flux des actifs, passifs et positions hors bilan dans une mesure de risque de taux. Sa variation sous scénario porte sur la vie résiduelle des positions ; elle se distingue du résultat comptable et du cours de l’action.', guide: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/' },
+    { sigle: 'NII', nom: 'Revenu net d’intérêts', def: 'Produits d’intérêts diminués des charges d’intérêts pendant une période, en tenant compte des couvertures. Une sensibilité NII dépend de l’horizon et des hypothèses du scénario. Elle ne désigne ni le bénéfice net total ni la valeur économique des fonds propres.', guide: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/' },
+  ],
+},
+{
   "titre": "Industrie & santé",
   "accent": "var(--color-signal)",
   "entries": [
@@ -965,6 +974,25 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  irrbb: {
+    intuition: 'Une couverture du revenu à court terme peut laisser une sensibilité de valeur à plus long terme.',
+    articles: [{ label: 'La dette publique rattrape les banques européennes', href: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/', detail: 'Prix des titres, collatéral, financement et scénarios Deutsche Bank.', kind: 'article' }],
+    sources: [{ label: 'Comité de Bâle, SRP98', href: 'https://www.bis.org/committees/bcbs/basel-framework/standard/srp/98/inforce/2026-01-01/published/2024-07-16', detail: 'Définition §98.1 ; mesures complémentaires §§98.17-98.22.', kind: 'source' }],
+    related: ['eve', 'nii', 'duration', 'cet1'],
+  },
+  eve: {
+    intuition: 'La valeur actualisée suit les flux jusqu’à leur extinction, au-delà du prochain exercice.',
+    articles: [{ label: 'La dette publique rattrape les banques européennes', href: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/', detail: 'Lecture de la variation EVE dans le tableau EU IRRBB1.', kind: 'article' }],
+    sources: [{ label: 'BRI, cadre standardisé IRRBB', href: 'https://www.bis.org/publications/fsi-summary-irrbb-pillar-2-standardised-framework-executive-summary', detail: 'Valeur actualisée des flux au bilan et hors bilan sous scénarios de taux.', kind: 'source' }],
+    related: ['irrbb', 'nii', 'duration', 'cet1'],
+  },
+  nii: {
+    intuition: 'Le revenu dépend de la vitesse à laquelle les actifs et les ressources changent de rémunération.',
+    formula: 'NII = produits d’intérêts - charges d’intérêts, sur la même période et le même périmètre',
+    articles: [{ label: 'La dette publique rattrape les banques européennes', href: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/', detail: 'Sensibilité à un an publiée par Deutsche Bank, distincte de l’EVE.', kind: 'article' }],
+    sources: [{ label: 'Comité de Bâle, SRP98', href: 'https://www.bis.org/committees/bcbs/basel-framework/standard/srp/98/inforce/2026-01-01/published/2024-07-16', detail: 'Revenu net d’intérêts §98.21 et choix d’horizon §98.22.', kind: 'source' }],
+    related: ['irrbb', 'eve', 'cet1'],
+  },
   "cyclotron": {
     "intuition": "La production du radionucléide constitue une étape de la chaîne du médicament.",
     "articles": [
