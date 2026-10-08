@@ -204,6 +204,30 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'btf', sigle: 'BTF', nom: 'French Treasury bill',
+    ...macroSection, robots: 'noindex,follow',
+    guide: '/en/analysis/french-debt-price-of-time/',
+    def: 'Negotiable French Treasury bill issued with a maturity of less than one year and fixed-rate interest deducted upfront. BTFs help manage the State’s cash-flow timing.',
+    atlas: {
+      intuition: 'A short maturity helps manage cash balances but brings the next principal repayment closer.',
+      articles: [{ label: 'The price of time in French debt', href: '/en/analysis/french-debt-price-of-time/', kind: 'article' }],
+      sources: [{ label: 'Agence France Trésor, products', href: 'https://www.aft.gouv.fr/fr/nos-produits', detail: 'BTFs are issued for less than one year to manage cash balances.', kind: 'source' }],
+      related: ['risque-de-refinancement', 'prime-de-terme'],
+    },
+  },
+  {
+    slug: 'risque-de-refinancement', sigle: 'Refinancing risk', nom: 'Risk when maturing debt must be replaced',
+    ...macroSection, robots: 'noindex,follow',
+    guide: '/en/analysis/french-debt-price-of-time/',
+    def: 'The risk of having to refinance maturing debt at a higher cost or facing difficulty raising the required funds. It depends on the amounts due, their timing and access to funding.',
+    atlas: {
+      intuition: 'Shorter issuance can lower the initial cost while bringing the next funding need closer.',
+      articles: [{ label: 'The price of time in French debt', href: '/en/analysis/french-debt-price-of-time/', kind: 'article' }],
+      sources: [{ label: 'DG Trésor, Trésor-Éco no. 297, January 2022', href: 'https://www.tresor.economie.gouv.fr/Articles/aed3274b-b5a2-482d-a02d-09d0b9f339d6/files/dc0bde49-9fd8-4e29-bd30-fe069abb603b', detail: 'Sections 2.1 and 2.2: smoothing redemptions and the cost-risk trade-off.', kind: 'source' }, { label: 'OECD, Global Debt Report 2026', href: 'https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html', detail: 'Chapter 1: issuance maturities and refinancing risk.', kind: 'source' }],
+      related: ['btf', 'prime-de-terme'],
+    },
+  },
+  {
     slug: 'cryptographie-postquantique', sigle: 'Post-quantum cryptography', nom: 'Cryptography designed to resist known quantum attacks',
     ...cryptoSection, robots: 'noindex,follow',
     guide: '/en/analysis/bitcoin-quantum-cost-changing-keys/',
@@ -2218,7 +2242,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       intuition: 'A model splits a long yield into the expected path of short rates and compensation for duration risk. That split is an estimate, with uncertainty.',
       formula: 'long yield ≈ average expected short rates + term premium',
       whyNow: 'When long-debt supply grows, QT removes the public buyer and foreign demand shifts, an expected fall in short rates can coexist with a rising long yield.',
-      articles: [{ label: 'The world rediscovers the price of money', href: '/en/analysis/the-world-rediscovers-the-price-of-money/', kind: 'article' }, { label: 'Can a Fed hike lower long-term yields?', href: '/en/analysis/fed-rate-hikes-long-yields-term-premium/', detail: 'Expectations, the term premium and Treasury buybacks.', kind: 'article' }, ...usDebtArticles],
+      articles: [{ label: 'The world rediscovers the price of money', href: '/en/analysis/the-world-rediscovers-the-price-of-money/', kind: 'article' }, { label: 'Can a Fed hike lower long-term yields?', href: '/en/analysis/fed-rate-hikes-long-yields-term-premium/', detail: 'Expectations, the term premium and Treasury buybacks.', kind: 'article' }, { label: 'The price of time in French debt', href: '/en/analysis/french-debt-price-of-time/', detail: 'Maturity, initial borrowing costs and debt refinancing.', kind: 'article' }, ...usDebtArticles],
       guides: usDebtGuides,
       ...shared,
       sources: [{ label: 'Federal Reserve, Kim–Wright model', href: 'https://www.federalreserve.gov/data/three-factor-nominal-term-structure-model.htm', detail: 'Methodology, limitations and revisions to term-premium estimates.', kind: 'source' }, ...shared.sources],

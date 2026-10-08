@@ -1,0 +1,74 @@
+---
+// These strings are checked, controlled repository SVG imports, never user input.
+interface Props {
+  desktop: string;
+  mobile: string;
+  number: string | number;
+}
+const { desktop, mobile, number } = Astro.props;
+const figureNumber = String(number);
+if (!/^[1-6]$/.test(figureNumber)) {
+  throw new Error('Invalid France debt calendar figure number');
+}
+---
+<figure class="france-debt-calendar-figure" id={`figure-${figureNumber}`} data-figure={`F${figureNumber}`}>
+  <div class="france-debt-calendar-desktop" set:html={desktop} />
+  <div class="france-debt-calendar-mobile" set:html={mobile} />
+  <figcaption><slot name="caption" /></figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face {
+    font-family: 'DejaVu Sans';
+    src: url('/fonts/france-debt-calendar/dejavu-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+  }
+  @font-face {
+    font-family: 'DejaVu Sans';
+    src: url('/fonts/france-debt-calendar/dejavu-sans-700.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: block;
+  }
+  .france-debt-calendar-figure {
+    margin: 2.6rem 0;
+    width: 100%;
+    padding-bottom: .75rem;
+  }
+  .france-debt-calendar-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: .75rem;
+    letter-spacing: normal;
+    font-family: 'DejaVu Sans', Arial, sans-serif;
+  }
+  .france-debt-calendar-mobile { display: none; }
+  figcaption {
+    margin-top: .9rem;
+    font-size: .875rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+  }
+  .france-debt-calendar-figure :global(details) {
+    margin-top: .85rem;
+    font-size: .875rem;
+    color: var(--color-muted);
+  }
+  .france-debt-calendar-figure :global(summary) {
+    cursor: pointer;
+    color: var(--color-paper);
+  }
+  @media (max-width: 700px) {
+    .france-debt-calendar-desktop { display: none; }
+    .france-debt-calendar-mobile { display: block; }
+  }
+  @media print {
+    .france-debt-calendar-figure { break-inside: avoid; }
+    .france-debt-calendar-desktop { display: block; }
+    .france-debt-calendar-mobile { display: none; }
+  }
+</style>

@@ -84,8 +84,42 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 597, 'Le corpus doit conserver ses 597 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 163, 'Le graphe Atlas doit conserver ses 163 nœuds, dont deux notions de migration postquantique');
+assert.equal(glossaryEntries.length, 599, 'Le corpus doit conserver ses 599 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 165, 'Le graphe Atlas doit conserver ses 165 nœuds, dont BTF et risque de refinancement');
+for (const [slug, sources, related] of [
+  ['btf', ['https://www.aft.gouv.fr/fr/nos-produits'], ['risque-de-refinancement', 'prime-de-terme']],
+  ['risque-de-refinancement', [
+    'https://www.tresor.economie.gouv.fr/Articles/aed3274b-b5a2-482d-a02d-09d0b9f339d6/files/dc0bde49-9fd8-4e29-bd30-fe069abb603b',
+    'https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html',
+  ], ['btf', 'prime-de-terme']],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: définitions et sources FR/EN requises`);
+  assert.equal(fr.reference, undefined, `${slug}: conserver la fiche courte en noindex`);
+  assert.equal(fr.referenceCandidate, false, `${slug}: aucune promotion en fiche de référence`);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert(!glossaryReferenceCandidateSlugs.includes(slug));
+  assert.equal(en.robots, 'noindex,follow');
+  assert.equal(fr.guide, '/posts/dette-francaise-prix-du-temps/');
+  assert.equal(en.guide, '/en/analysis/french-debt-price-of-time/');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
+    assert.deepEqual(entry.atlas.articles.map(article => article.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, related);
+    for (const neighbor of entry.atlas.related) {
+      assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
+      assert(glossaryAtlasEnBySlug.has(neighbor));
+    }
+    assert(!entry.def.includes('—'), `${slug}: respecter la charte éditoriale`);
+  }
+}
+for (const [entry, href] of [
+  [glossaryEntries.find(item => item.slug === 'prime-de-terme'), '/posts/dette-francaise-prix-du-temps/'],
+  [glossaryAtlasEnBySlug.get('prime-de-terme'), '/en/analysis/french-debt-price-of-time/'],
+]) assert(entry?.atlas?.articles?.some(article => article.href === href), 'La prime de terme doit relier la nouvelle enquête dans chaque langue');
+const oat = glossaryEntries.find(entry => entry.slug === 'oat');
+assert(oat?.def.includes('rendement de marché') && oat.def.includes('coupon contractuel'), 'OAT doit distinguer rendement de marché et coupon');
 for (const slug of ['cryptographie-postquantique', 'poids-de-transaction']) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);
@@ -188,7 +222,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 527, 'Le graphe Atlas doit conserver ses 527 relations');
+assert.equal(glossaryAtlasEdgeCount, 531, 'Le graphe Atlas doit conserver ses 531 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

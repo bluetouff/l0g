@@ -204,7 +204,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Surcommissions FMI', nom: 'IMF surcharges', def: "Commissions additionnelles facturées par le FMI sur les encours élevés (au-delà d'un seuil en pourcentage de quote-part) ou anciens, en plus du taux de charge de base. Réformées à la baisse fin 2024, elles restent une source majeure de revenus du Fonds, et l'Argentine en est le premier contributeur." },
       { sigle: 'BIS', nom: 'Bank for International Settlements', def: "Banque des règlements internationaux, à Bâle. La « banque centrale des banques centrales », référence pour les statistiques bancaires et de dette mondiales." },
       { sigle: 'ADB', nom: 'Asian Development Bank', def: "Banque asiatique de développement, à Manille. Référence pour les prévisions de croissance et d'inflation de la région Asie-Pacifique." },
-      { sigle: 'OAT', nom: 'Obligation assimilable du Trésor', def: "Titre de dette émis par l'État français à moyen et long terme. Son taux sert de référence au coût d'emprunt de la France.", guide: 'lire-la-dette-souveraine-europeenne' },
+      { sigle: 'OAT', nom: 'Obligation assimilable du Trésor', def: "Titre de dette émis par l'État français à moyen et long terme. Son rendement de marché sert de référence au coût d'emprunt de la France ; il se distingue du coupon contractuel.", guide: 'lire-la-dette-souveraine-europeenne' },
+      { sigle: 'BTF', nom: 'Bon du Trésor à taux fixe et à intérêts précomptés', def: 'Titre négociable du Trésor français, à taux fixe et à intérêts précomptés, d’une maturité à l’émission inférieure à un an. Il sert notamment à gérer les décalages de trésorerie de l’État.', guide: '/posts/dette-francaise-prix-du-temps/' },
+      { sigle: 'Risque de refinancement', nom: 'Refinancing risk', def: 'Risque de devoir remplacer un principal arrivé à échéance à des conditions plus coûteuses, ou de rencontrer une difficulté de placement. Il dépend des montants à renouveler, de leurs dates et de l’accès au financement.', guide: '/posts/dette-francaise-prix-du-temps/' },
       { sigle: 'OATi', nom: 'OAT indexée sur l’inflation française', def: "Obligation de l'État français dont le principal est revalorisé selon l'indice français des prix à la consommation hors tabac. Le coupon s'applique à ce principal indexé. À distinguer de l'OAT€i, liée à l'inflation harmonisée de la zone euro hors tabac.", guide: '/posts/ce-que-votre-livret-a-finance-vraiment/' },
       { sigle: 'Livret A', nom: 'Livret d’épargne réglementé', def: "Dépôt bancaire liquide, défiscalisé et garanti par l'État, dont le taux et le plafond sont réglementés. Une partie de la collecte est centralisée au Fonds d'épargne ; le solde reste dans les banques sous obligations d'emploi. Le titulaire ne possède pas directement les prêts ou les obligations financés.", guide: '/posts/ce-que-votre-livret-a-finance-vraiment/' },
       { sigle: 'Fonds d’épargne', nom: 'Fonds d’épargne de la Caisse des Dépôts', def: "Bilan géré par la Caisse des Dépôts qui reçoit une partie du Livret A, du LDDS et du LEP. Il transforme ces dépôts en prêts de long terme et conserve un portefeuille financier destiné au rendement, à la couverture des risques et à la liquidité.", guide: '/posts/ce-que-votre-livret-a-finance-vraiment/' },
@@ -976,6 +978,18 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  btf: {
+    intuition: 'Une échéance courte permet d’ajuster la trésorerie, mais rapproche le prochain remboursement.',
+    articles: [{ label: 'Le prix du temps dans la dette française', href: '/posts/dette-francaise-prix-du-temps/', kind: 'article' }],
+    sources: [{ label: 'Agence France Trésor, nos produits', href: 'https://www.aft.gouv.fr/fr/nos-produits', detail: 'BTF : titres de moins d’un an à l’émission, destinés à la gestion de trésorerie.', kind: 'source' }],
+    related: ['risque-de-refinancement', 'prime-de-terme'],
+  },
+  'risque-de-refinancement': {
+    intuition: 'Émettre plus court peut réduire le coût initial, tout en rapprochant la date du prochain besoin de financement.',
+    articles: [{ label: 'Le prix du temps dans la dette française', href: '/posts/dette-francaise-prix-du-temps/', kind: 'article' }],
+    sources: [{ label: 'DG Trésor, Trésor-Éco n°297, janvier 2022', href: 'https://www.tresor.economie.gouv.fr/Articles/aed3274b-b5a2-482d-a02d-09d0b9f339d6/files/dc0bde49-9fd8-4e29-bd30-fe069abb603b', detail: 'Sections 2.1 et 2.2 : lissage des remboursements et arbitrage entre coût et risque.', kind: 'source' }, { label: 'OCDE, Global Debt Report 2026', href: 'https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html', detail: 'Chapitre 1 : maturités d’émission et risque de refinancement.', kind: 'source' }],
+    related: ['btf', 'prime-de-terme'],
+  },
   'cryptographie-postquantique': {
     intuition: 'Une primitive standardisée doit encore trouver ses règles de protocole, ses portefeuilles compatibles et son parcours de migration.',
     articles: [{ label: 'Bitcoin face au quantique : le prix du changement de clés', href: '/posts/bitcoin-quantique-prix-changement-cles/', kind: 'article' }],
@@ -2106,7 +2120,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Un modèle sépare le rendement long entre trajectoire attendue des taux courts et rémunération du risque de duration. Cette séparation est estimée, donc incertaine.",
     formula: 'rendement long ≈ moyenne des taux courts anticipés + prime de terme',
     whyNow: "Quand l'offre de dette longue augmente, que le QT réduit l'acheteur public et que la demande étrangère se déplace, une baisse attendue des taux courts peut coexister avec une remontée du rendement long.",
-    articles: [{ label: 'Le monde redécouvre le prix de l’argent', href: '/posts/le-monde-redecouvre-le-prix-de-l-argent/', kind: 'article' }, { label: 'Une hausse de la Fed peut-elle faire baisser les taux longs ?', href: '/posts/fed-hausses-taux-longs-prime-terme/', detail: 'Anticipations, prime de terme et rachats du Trésor.', kind: 'article' }, ...treasuryArticles],
+    articles: [{ label: 'Le monde redécouvre le prix de l’argent', href: '/posts/le-monde-redecouvre-le-prix-de-l-argent/', kind: 'article' }, { label: 'Une hausse de la Fed peut-elle faire baisser les taux longs ?', href: '/posts/fed-hausses-taux-longs-prime-terme/', detail: 'Anticipations, prime de terme et rachats du Trésor.', kind: 'article' }, { label: 'Le prix du temps dans la dette française', href: '/posts/dette-francaise-prix-du-temps/', detail: 'Maturité, coût initial et refinancement de la dette.', kind: 'article' }, ...treasuryArticles],
     guides: treasuryGuides,
     datasets: treasuryDatasets,
     signals: treasurySignals,

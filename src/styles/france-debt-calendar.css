@@ -1,0 +1,57 @@
+/* Scoped reading and documentary notes for this investigation. */
+.prose .l0g-debt .source-ref {
+  font-family: var(--font-read); font-size: .75rem; line-height: 1;
+  white-space: nowrap; margin-left: .2em;
+}
+.prose .l0g-debt .source-ref a { text-decoration: none; }
+.prose .l0g-debt .source-register {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem 1.5rem;
+  margin: 1.25rem 0 0; font-family: var(--font-read);
+  font-size: .875rem; line-height: 1.6;
+}
+.prose .l0g-debt .source-item {
+  min-width: 0; padding-top: .75rem; border-top: 1px solid var(--color-line);
+  overflow-wrap: anywhere; scroll-margin-top: 2rem;
+}
+.prose .l0g-debt .source-item p { margin: 0 0 .25rem; font-size: inherit; }
+.prose .l0g-debt .source-item a { font-size: .875rem; font-weight: 400; }
+.prose .l0g-debt .source-item .source-meta,
+.prose .l0g-debt .source-item .source-meta strong {
+  font-size: .78125rem; line-height: 1.5; font-weight: 500; color: var(--color-muted);
+}
+.prose .l0g-debt .source-item:target { outline: 1px solid var(--color-signal); outline-offset: 5px; }
+.prose .l0g-debt .france-debt-calendar-figure {
+  margin: 2rem 0 2.5rem; padding-bottom: .5rem;
+}
+.prose .l0g-debt .france-debt-calendar-figure figcaption {
+  font-family: var(--font-read); font-size: .875rem; line-height: 1.65;
+  color: var(--color-muted); margin-top: .8rem;
+}
+.prose .l0g-debt .france-debt-calendar-figure details {
+  margin-top: 1rem; padding: .8rem 1rem; border: 1px solid var(--color-line);
+  border-radius: .4rem; background: var(--color-surface);
+  font-family: var(--font-read); font-size: .875rem; line-height: 1.6;
+}
+.prose .l0g-debt .france-debt-calendar-figure summary {
+  cursor: pointer; color: var(--color-signal); font-size: .875rem; font-weight: 500;
+}
+.prose .l0g-debt .france-debt-calendar-figure summary:focus-visible {
+  outline: 2px solid var(--color-signal); outline-offset: 4px;
+}
+.prose .l0g-debt .france-debt-calendar-figure details p { font-size: inherit; }
+.prose .l0g-debt .france-debt-calendar-figure .data-table-scroll {
+  max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain;
+}
+.prose .l0g-debt .france-debt-calendar-figure table {
+  font-family: var(--font-read); font-size: .8125rem; line-height: 1.5;
+}
+@media (min-width: 780px) {
+  .prose .l0g-debt .source-register { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  body:has(.l0g-debt[lang="fr"]) aside > div.sticky:has(> .article-sidebar) {
+    max-height: calc(100vh - 4rem); max-height: calc(100dvh - 4rem);
+    overflow-y: auto; scrollbar-width: thin;
+    scrollbar-color: var(--color-signal) var(--color-surface);
+  }
+}
