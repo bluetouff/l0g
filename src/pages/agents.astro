@@ -88,9 +88,9 @@ const surfaces = [
     use: 'Séries quotidiennes par endpoint : événements, résultats, p50/p95, tailles, familles client et KPI get_risk_state.',
   },
   {
-    need: 'Mesurer les lectures humaines',
+    need: 'Mesurer les lectures HTML filtrées',
     endpoint: '/api/v1/human-traffic.json',
-    use: 'GET HTML humains agrégés par jour, page et domaine référent, sans cookie ni identifiant persistant.',
+    use: 'GET HTML filtrés agrégés par jour, page et domaine référent, sans cookie ni identifiant persistant.',
   },
 ];
 
@@ -259,7 +259,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     </section>
 
     <section class="guide-section usage-section" data-human-traffic data-pagefind-ignore>
-      <p class="mono-label glow">// vrai KPI humain</p>
+      <p class="mono-label glow">// lectures HTML filtrées</p>
       <h2 class="usage-title font-display">Lectures de documents HTML</h2>
       <p class="usage-lede">
         Uniquement les GET 200 de documents HTML, hors crawlers connus, feeds, assets,
@@ -270,7 +270,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         <article><span>GET HTML publiés</span><strong data-human-stat="html_gets">…</strong></article>
         <article><span>Jours publiés</span><strong data-human-stat="days_published">…</strong></article>
       </div>
-      <p class="usage-status" data-human-status>Chargement du rapport humain…</p>
+      <p class="usage-status" data-human-status>Chargement du rapport de lectures HTML…</p>
       <div class="usage-tables">
         <section>
           <h3>Pages les plus lues</h3>
@@ -282,9 +282,25 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         </section>
       </div>
       <p class="usage-method">
-        <strong>Interprétation.</strong> Un GET HTML est une lecture servie, pas une personne unique.
+        <strong>Interprétation.</strong> Un GET HTML compte un document servi. Le filtre ne garantit pas que la requête vient d’une personne ; il ne mesure pas de visiteurs uniques.
         Les jours, pages et référents sous le seuil de confidentialité k=5 ne sont pas publiés.
       </p>
+    </section>
+
+    <section class="guide-section usage-section" data-http-traffic data-pagefind-ignore>
+      <p class="mono-label glow">// activité du serveur</p>
+      <h2 class="usage-title font-display">Requêtes HTTP des journaux disponibles</h2>
+      <p class="usage-lede">Toutes les catégories du même rapport Apache : lectures HTML filtrées,
+        MCP/API, prévisualisations sociales, robots connus, scans et autres requêtes.
+        Ces catégories comptent des requêtes, sans déduplication par personne.</p>
+      <div class="usage-cards" aria-live="polite">
+        <article><span>Requêtes HTTP classées</span><strong data-http-total>…</strong></article>
+      </div>
+      <p class="usage-status" data-http-status>Chargement de la couverture des journaux…</p>
+      <p class="usage-method">Le total porte sur les journaux encore disponibles lors de la génération
+        du rapport HTML. Leurs dates extrêmes ne sont pas publiées. La rétention est un plafond,
+        pas une garantie de journées complètes. Les mesures HTML et HTTP se recouvrent ;
+        la fenêtre du rapport MCP est distincte. Ces trois mesures ne s’additionnent pas.</p>
     </section>
 
     <section class="guide-section">
@@ -360,6 +376,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   </article>
 
   <script>
+    import { totalHttpRequests } from '../lib/traffic-summary.mjs';
     const root = document.querySelector<HTMLElement>('[data-mcp-usage]');
     const status = root?.querySelector<HTMLElement>('[data-usage-status]');
     const endpoints = root?.querySelector<HTMLTableSectionElement>('[data-usage-endpoints]');
@@ -465,6 +482,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       addEmpty(secondaryTools, 'Rapport indisponible.');
     }
 
+    const httpTotal = document.querySelector<HTMLElement>('[data-http-total]');
+    const httpStatus = document.querySelector<HTMLElement>('[data-http-status]');
     const humanRoot = document.querySelector<HTMLElement>('[data-human-traffic]');
     const humanStatus = humanRoot?.querySelector<HTMLElement>('[data-human-status]');
     const humanPages = humanRoot?.querySelector<HTMLTableSectionElement>('[data-human-pages]');
@@ -487,9 +506,20 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       for (const [domain, total] of [...referrers].sort((a, b) => b[1] - a[1]).slice(0, 10)) addRow(humanReferrers, domain, total);
       addEmpty(humanPages, 'Aucune page au-dessus du seuil.');
       addEmpty(humanReferrers, 'Aucun référent au-dessus du seuil.');
-      if (humanStatus) humanStatus.textContent = `Rapport généré le ${new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(report.generated_at))}.`;
+      const filterVersion = typeof report.measurement?.filter_version === 'string'
+        ? report.measurement.filter_version : 'non renseignée';
+      if (humanStatus) humanStatus.textContent = `Rapport généré le ${new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(report.generated_at))}. Version du filtre : ${filterVersion}.`;
+      const requests = totalHttpRequests(report);
+      if (httpTotal) httpTotal.textContent = requests === null ? 'n.d.' : count.format(requests);
+      if (httpStatus) httpStatus.textContent = requests === null
+        ? 'Total indisponible : au moins une catégorie HTTP est absente ou invalide.'
+        : typeof report.measurement?.coverage === 'string'
+          ? report.measurement.coverage
+          : 'Couverture détaillée non renseignée ; seuls les journaux disponibles alimentent ce total.';
     } catch {
-      if (humanStatus) humanStatus.textContent = 'Le rapport humain est momentanément indisponible. Aucun chiffre de remplacement n’est estimé.';
+      if (humanStatus) humanStatus.textContent = 'Le rapport de lectures HTML est momentanément indisponible. Aucun chiffre de remplacement n’est estimé.';
+      if (httpTotal) httpTotal.textContent = 'n.d.';
+      if (httpStatus) httpStatus.textContent = 'Rapport Apache indisponible. Aucun total de remplacement n’est estimé.';
       for (const element of humanRoot?.querySelectorAll<HTMLElement>('[data-human-stat]') ?? []) element.textContent = 'n.d.';
       addEmpty(humanPages, 'Rapport indisponible.');
       addEmpty(humanReferrers, 'Rapport indisponible.');

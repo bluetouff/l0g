@@ -1,0 +1,84 @@
+---
+import { atlases, englishAtlases } from '../config/atlases';
+interface Props { language?: 'fr' | 'en' }
+const { language = 'fr' } = Astro.props;
+const isEnglish = language === 'en';
+const entries = isEnglish ? englishAtlases : atlases;
+---
+
+  <div class="atlas-collection">
+    <header class="collection-header">
+      <a class="collection-language" href={isEnglish ? "/atlas/" : "/en/atlas/"} hreflang={isEnglish ? "fr" : "en"} lang={isEnglish ? "fr" : "en"}>{isEnglish ? "Français" : "English"}</a>
+      <div class="collection-kicker"><p class="mono-label">{isEnglish ? '// l0g atlases' : '// Les atlas l0g'}</p><span>{entries.length} {isEnglish ? 'maps to explore' : 'cartes à explorer'}</span></div>
+      <h1>{isEnglish ? 'An atlas of' : 'Atlas des'} <span>{isEnglish ? 'financial networks' : 'circuits financiers'}</span></h1>
+      <p class="collection-intro">{isEnglish ? 'Who finances whom, and who guarantees what? From AI to oil, explore the actors and contracts behind financial networks.' : 'Qui finance qui ? Qui garantit quoi ? De l’IA au pétrole, explorez les acteurs et les contrats derrière les flux d’argent.'}</p>
+    </header>
+    <div class="atlas-gallery">
+      {entries.map((atlas, index) => (
+        <a class:list={['atlas-cover', `atlas-cover--${atlas.theme}`]} href={atlas.href} aria-labelledby={`title-${atlas.id}`} aria-describedby={`question-${atlas.id}`}>
+          <div class="cover-art">
+            <img src={atlas.image} width="1200" height="630" alt="" loading="lazy" decoding="async" />
+            <span class="cover-number" aria-hidden="true">0{index + 1}</span>
+            <span class="cover-format">{isEnglish ? 'Interactive atlas' : 'Atlas interactif'}</span>
+          </div>
+          <div class="cover-body">
+            <p class="cover-eyebrow">{atlas.eyebrow}</p>
+            <h2 id={`title-${atlas.id}`}>{atlas.label}</h2>
+            <p class="cover-question" id={`question-${atlas.id}`}>{atlas.question}</p>
+            <p class="cover-description">{atlas.description}</p>
+            <p class="cover-actors">{atlas.actors}</p>
+            <span class="cover-action">{isEnglish ? 'Explore the atlas' : 'Explorer l’atlas'} <span aria-hidden="true">↗</span></span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <footer class="collection-note">
+      <p class="mono-label">{isEnglish ? 'One map, several ways to read it' : 'Une carte, plusieurs chemins de lecture'}</p>
+      <p>{isEnglish ? 'Choose an actor or a relationship, move through publication dates and inspect the underlying documents. Each atlas explains its scope and what its evidence establishes.' : 'Choisissez un acteur ou une relation, remontez les publications et consultez les documents associés. Chaque atlas précise son périmètre et ce que ses sources permettent d’établir.'}</p>
+    </footer>
+  </div>
+
+<style>
+  .collection-language { display:inline-block; margin-bottom:1rem; color:var(--color-signal); text-underline-offset:4px; }
+  .atlas-collection { padding:.4rem 0 1rem; }
+  .collection-header { max-width:58rem; padding:.5rem 0 3rem; }
+  .collection-kicker { display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+  .collection-kicker p { margin:0; color:var(--color-signal); }
+  .collection-kicker>span { font-family:var(--font-mono); font-size:.68rem; color:var(--color-muted); padding-left:1.5rem; border-left:1px solid var(--color-line); }
+  h1 { margin:1.5rem 0; max-width:17ch; font-family:var(--font-display); font-size:clamp(2.3rem,5.5vw,4.3rem); font-weight:700; line-height:1.08; letter-spacing:-.065em; color:var(--color-bright); }
+  h1 span { color:var(--color-signal); }
+  .collection-intro { max-width:43rem; margin:0; font-family:var(--font-read); color:var(--color-prose); font-size:1.08rem; line-height:1.75; }
+  .atlas-gallery { display:grid; gap:1.5rem; }
+  .atlas-cover { --cover-accent:var(--color-signal); display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); color:var(--color-paper); background:var(--color-surface); border:1px solid var(--color-line); border-radius:14px; overflow:hidden; text-decoration:none; transition:border-color .2s,box-shadow .2s; }
+  .atlas-cover--petrole { --cover-accent:var(--color-amber); }
+  .cover-art { position:relative; min-width:0; overflow:hidden; background:#090e12; }
+  .cover-art img { display:block; width:100%; height:100%; min-height:320px; object-fit:cover; transition:transform .45s ease; }
+  .cover-art::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(4,8,12,.35),transparent 35%,transparent 65%,rgba(4,8,12,.5)); pointer-events:none; }
+  .cover-number { position:absolute; top:1.1rem; left:1.4rem; z-index:1; font-family:var(--font-display); font-size:1.7rem; line-height:1; font-weight:500; color:#e7e9ee; }
+  .cover-format { position:absolute; bottom:1.2rem; left:1.4rem; z-index:1; font-family:var(--font-mono); font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; color:#e7e9ee; }
+  .cover-body { display:flex; flex-direction:column; align-items:flex-start; padding:clamp(1.4rem,3vw,2.5rem); min-width:0; }
+  .cover-eyebrow { margin:0 0 1rem; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.04em; color:var(--cover-accent); text-transform:uppercase; }
+  h2 { margin:0 0 .9rem; color:var(--color-bright); font-family:var(--font-display); font-size:clamp(1.45rem,2.5vw,2rem); line-height:1.2; letter-spacing:-.055em; }
+  .cover-question { margin:0 0 .7rem; color:var(--color-bright); font-family:var(--font-read); font-size:.96rem; line-height:1.5; font-weight:600; }
+  .cover-description { margin:0; font-family:var(--font-read); font-size:.87rem; color:var(--color-prose); line-height:1.75; }
+  .cover-actors { margin:1rem 0 1.6rem; font-family:var(--font-mono); color:var(--color-muted); font-size:.64rem; line-height:1.8; }
+  .cover-action { display:flex; width:100%; align-items:center; justify-content:space-between; gap:1rem; margin-top:auto; padding-top:1rem; border-top:1px solid var(--color-line); color:var(--cover-accent); font-family:var(--font-mono); font-size:.78rem; }
+  .cover-action>span { font-size:1.5rem; line-height:1; transition:transform .2s; }
+  .atlas-cover:focus-visible { outline:3px solid var(--cover-accent); outline-offset:5px; }
+  .atlas-cover:hover { border-color:var(--cover-accent); box-shadow:0 8px 30px #00000018; }
+  .atlas-cover:hover .cover-art img { transform:scale(1.035); }
+  .atlas-cover:hover .cover-action>span { transform:translate(2px,-2px); }
+  .collection-note { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:2rem; margin-top:2.5rem; padding:1.5rem 0; border-top:1px solid var(--color-line); }
+  .collection-note .mono-label { margin:0; font-size:.68rem; line-height:1.8; color:var(--color-signal); }
+  .collection-note>p:last-child { margin:0; font-family:var(--font-read); color:var(--color-muted); font-size:.85rem; line-height:1.8; }
+  @media(min-width:761px) { .atlas-cover--credit .cover-art { grid-column:2; grid-row:1; } .atlas-cover--credit .cover-body { grid-column:1; grid-row:1; } }
+  @media(max-width:760px) {
+    .collection-header { padding-bottom:2rem; }
+    .atlas-cover { grid-template-columns:minmax(0,1fr); }
+    .cover-art { aspect-ratio:1200 / 630; }
+    .cover-art img { min-height:0; }
+    .cover-body { padding:1.4rem; }
+    .collection-note { grid-template-columns:minmax(0,1fr); gap:.75rem; }
+  }
+  @media(prefers-reduced-motion:reduce) { .atlas-cover,.cover-art img,.cover-action>span { transition:none; } .atlas-cover:hover .cover-art img,.atlas-cover:hover .cover-action>span { transform:none; } }
+</style>

@@ -1,0 +1,263 @@
+{
+  "observed_on": "2026-10-08",
+  "status": "baseline_before_local_changes_are_published",
+  "gsc_export": {
+    "file": "l0g.fr-Performance-on-Search-2026-10-08.zip",
+    "sha256": "9a8c199699b395e6fa3d93a0bf678f655f55b28ae94a45a33d5db36261daf60a",
+    "daily_dates": 76,
+    "first_date": "2026-07-22",
+    "last_date": "2026-10-05",
+    "windows": [
+      {
+        "from": "2026-08-11",
+        "through": "2026-09-07",
+        "days": 28,
+        "clicks": 186,
+        "impressions": 15877,
+        "ctr_percent": 1.1715059520060465
+      },
+      {
+        "from": "2026-09-08",
+        "through": "2026-10-05",
+        "days": 28,
+        "clicks": 210,
+        "impressions": 26186,
+        "ctr_percent": 0.8019552432597572
+      }
+    ],
+    "priority_pages_all_countries_devices_entire_export": [
+      {
+        "Pages les plus populaires": "https://l0g.fr/en/analysis/softbank-openai-liquidity-risk/",
+        "Clics": "8",
+        "Impressions": "726",
+        "CTR": "1.1%",
+        "Position": "5.54"
+      },
+      {
+        "Pages les plus populaires": "https://l0g.fr/en/analysis/residual-value-guarantee-ai-infrastructure-credit/",
+        "Clics": "6",
+        "Impressions": "730",
+        "CTR": "0.82%",
+        "Position": "7.07"
+      },
+      {
+        "Pages les plus populaires": "https://l0g.fr/en/analysis/realt-liquidation-token-without-the-deed/",
+        "Clics": "5",
+        "Impressions": "1039",
+        "CTR": "0.48%",
+        "Position": "6.06"
+      },
+      {
+        "Pages les plus populaires": "https://l0g.fr/en/start/",
+        "Clics": "5",
+        "Impressions": "620",
+        "CTR": "0.81%",
+        "Position": "4.08"
+      },
+      {
+        "Pages les plus populaires": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+        "Clics": "4",
+        "Impressions": "4896",
+        "CTR": "0.08%",
+        "Position": "7.9"
+      },
+      {
+        "Pages les plus populaires": "https://l0g.fr/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/",
+        "Clics": "0",
+        "Impressions": "1173",
+        "CTR": "0%",
+        "Position": "7.05"
+      },
+      {
+        "Pages les plus populaires": "https://l0g.fr/en/guides/read-central-bank-fx-reserves-cofer/",
+        "Clics": "0",
+        "Impressions": "757",
+        "CTR": "0%",
+        "Position": "8.4"
+      },
+      {
+        "Pages les plus populaires": "https://l0g.fr/en/analysis/us-productivity-real-pay-lags/",
+        "Clics": "0",
+        "Impressions": "609",
+        "CTR": "0%",
+        "Position": "6.32"
+      },
+      {
+        "Pages les plus populaires": "https://l0g.fr/en/analysis/ai-and-productivity/",
+        "Clics": "0",
+        "Impressions": "427",
+        "CTR": "0%",
+        "Position": "8.04"
+      },
+      {
+        "Pages les plus populaires": "https://l0g.fr/en/analysis/warsh-fed-without-guidance-uncertainty-cost-july-fomc/",
+        "Clics": "0",
+        "Impressions": "396",
+        "CTR": "0%",
+        "Position": "7.38"
+      }
+    ],
+    "export_limit": 1000
+  },
+  "gsc_live": {
+    "period": [
+      "2026-09-08",
+      "2026-10-05"
+    ],
+    "search_type": "Web",
+    "h41_page_filter": "URL containing https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+    "h41_all": {
+      "clicks": 3,
+      "impressions_display": "3.73k",
+      "position_display": 7.8
+    },
+    "h41_us": {
+      "clicks": 0,
+      "impressions": 118,
+      "position_display": 7.2
+    },
+    "h41_us_desktop": {
+      "clicks": 0,
+      "impressions": 98,
+      "position_display": 7.1,
+      "visible_queries": 22,
+      "top_queries": [
+        {
+          "query": "h.4.1",
+          "clicks": 0,
+          "impressions": 42
+        },
+        {
+          "query": "fed h.4.1",
+          "clicks": 0,
+          "impressions": 17
+        },
+        {
+          "query": "fed h41",
+          "clicks": 0,
+          "impressions": 7
+        },
+        {
+          "query": "h.4.1 release",
+          "clicks": 0,
+          "impressions": 6
+        }
+      ],
+      "exact_url_recheck": {
+        "clicks": 0,
+        "impressions": 98,
+        "position_display": 7.1,
+        "visible_queries": 22,
+        "same_top_queries": true
+      }
+    },
+    "us_desktop_total": {
+      "clicks": 11,
+      "impressions_display": "11k",
+      "position_display": 7.2
+    },
+    "limitations": [
+      "Rounded UI values kept as displayed.",
+      "URL-containing filter, not exact-URL filter.",
+      "Filtered totals and visible query tables may be incomplete. No allocation of hidden queries.",
+      "No causal CTR conclusion and no join between marginal tables."
+    ],
+    "indexation_as_of": "2026-10-04",
+    "indexed": 1033,
+    "not_indexed": 688,
+    "exclusions": {
+      "noindex": 364,
+      "alternate_canonical": 28,
+      "404": 19,
+      "redirect": 15,
+      "other_4xx": 2,
+      "403": 2,
+      "discovered_not_indexed": 165,
+      "crawled_not_indexed": 93
+    },
+    "403_validation": {
+      "started_on": "2026-10-08",
+      "status_display": "commencé",
+      "urls": [
+        "https://l0g.fr/llms-full.txt",
+        "https://l0g.fr/posts/"
+      ],
+      "verification": "HEAD 200 for llms-full; posts redirects to root then 200. Google validation not yet complete."
+    },
+    "other_4xx": {
+      "urls": [
+        "https://l0g.fr/api/mcp",
+        "https://l0g.fr/api/mcp/compact"
+      ],
+      "public_get_status": 405,
+      "allow": "POST",
+      "decision": "Expected protocol endpoints; do not turn into indexable editorial pages."
+    }
+  },
+  "html": {
+    "generated_at": "2026-10-08T00:25:15.646Z",
+    "measurement": {
+      "numerator": "GET HTTP 200 de documents HTML uniquement.",
+      "exclusions": "Crawlers connus, user-agents internes l0g, feeds, assets, API/MCP, statistiques et fichiers machine.",
+      "dimensions": "Agrégation par jour, page canonique et domaine référent seulement.",
+      "coverage": "Recalcul à partir des journaux encore disponibles. retention_days est un plafond de sélection, pas un historique garanti ; les agrégats antérieurs ne sont pas cumulés.",
+      "privacy": "Aucune IP, cookie, session, empreinte, chemin de référent ni identifiant persistant n’est conservé."
+    },
+    "filter_version": null,
+    "totals": {
+      "html_gets": 53047,
+      "days_published": 15
+    },
+    "first_published_day": "2026-09-24",
+    "last_published_day": "2026-10-08",
+    "http_class_totals": {
+      "human_html": 53047,
+      "mcp_api": 100936,
+      "social_previews": 7609,
+      "known_crawlers": 81966,
+      "scans": 5225,
+      "other": 127723
+    },
+    "classified_http_requests": 376506
+  },
+  "mcp": {
+    "schema_version": "2.0.0",
+    "snapshot_file": "/tmp/l0g-mcp-usage-20261008.json",
+    "totals": {
+      "requests": 335682,
+      "successes": 324060,
+      "errors": 11622,
+      "initializations": 60183,
+      "tools_list": 57458,
+      "tool_calls": 20442,
+      "resource_reads": 238,
+      "prompt_gets": 37,
+      "client_info_declared": 60163,
+      "client_info_declaration_rate": 0.999668,
+      "latency_ms": {
+        "p50": 10,
+        "p95": 250
+      },
+      "response_bytes": {
+        "average": 9147,
+        "p50": 256,
+        "p95": 65536
+      }
+    },
+    "limitation": "Requests and tool calls are not distinct people or installations; aggregate historical causes cannot be reconstructed."
+  },
+  "goaccess": {
+    "file": "goaccess-1791484413475.json",
+    "sha256": "d5b924b331bc224ed73a699b478d9707e811089bd043454e178d82b4e01f9c24",
+    "start": "24/sept./2026",
+    "end": "08/oct./2026",
+    "generated_at": "2026-10-08 19:27:31 +0200",
+    "requests": 395710,
+    "5xx": 16,
+    "404_editorial": {
+      "/posts/incidents-ia-agents/": 175,
+      "/posts/incidents-ia-agents-rapport/": 86
+    },
+    "limitation": "Aggregates contain no per-error URI/time/WAF-rule join; no IP or host records copied."
+  }
+}

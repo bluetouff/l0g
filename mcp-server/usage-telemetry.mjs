@@ -7,6 +7,41 @@ export const MCP_USAGE_CLIENT_DIAGNOSTIC_DAYS = 7;
 export const MCP_USAGE_MINIMUM_PUBLIC_COHORT = 5;
 export const MCP_USAGE_FLUSH_INTERVAL_MS = 1_000;
 
+// Fixed categories only: never persist a query, slug, response text or unknown tool name.
+const FAILURE_REASONS = new Set([
+  'invalid_arguments', 'invalid_cursor', 'invalid_date', 'document_not_found',
+  'content_unavailable', 'tool_unavailable', 'output_contract', 'internal_error',
+  'access_denied', 'rate_limited', 'transport_contract', 'invalid_request',
+  'connection_closed', 'tool_error', 'unclassified',
+]);
+
+export function classifyMcpFailure({ statusCode, payload } = {}) {
+  if ([403, 421].includes(statusCode)) return 'access_denied';
+  if (statusCode === 429) return 'rate_limited';
+  if ([405, 406, 415].includes(statusCode)) return 'transport_contract';
+  if (statusCode >= 500) return 'internal_error';
+  if (statusCode >= 400) return 'invalid_request';
+  const messages = Array.isArray(payload) ? payload : [payload];
+  for (const message of messages) {
+    if (message?.error) {
+      if (message.error.code === -32602) return 'invalid_arguments';
+      if (message.error.code === -32603) return 'internal_error';
+      return 'invalid_request';
+    }
+    if (message?.result?.isError !== true) continue;
+    const result = message.result;
+    if (FAILURE_REASONS.has(result.structuredContent?.errorCode)) return result.structuredContent.errorCode;
+    // These fixed prefixes are emitted by the installed MCP SDK. Text is inspected
+    // in memory only; no part of it becomes a telemetry dimension.
+    const text = (result.content?.find((item) => item.type === 'text')?.text || '').replace(/^MCP error -\d+: /, '');
+    if (text.startsWith('Input validation error:')) return 'invalid_arguments';
+    if (text.startsWith('Output validation error:')) return 'output_contract';
+    if (/^Tool [^\n]+ (?:not found|disabled)$/.test(text)) return 'tool_unavailable';
+    return 'tool_error';
+  }
+  return null;
+}
+
 const LEGACY_SCHEMA_VERSION = '1.0.0';
 const SURFACES = new Set(['compact', 'full', 'legacy']);
 const LATENCY_BUCKETS_MS = [5, 10, 25, 50, 100, 250, 500, 1_000, 2_500, 5_000, 10_000, 30_000];
@@ -231,6 +266,9 @@ function validToolRows(rows) {
     && isCount(row.successes)
     && isCount(row.errors)
     && row.successes + row.errors <= row.count
+    && (row.errorReasons === undefined || (validRows(row.errorReasons, 'reason')
+      && row.errorReasons.every((item) => FAILURE_REASONS.has(item.reason))
+      && row.errorReasons.reduce((sum, item) => sum + item.count, 0) <= row.errors))
     && validHistogram(row.latencyHistogram, LATENCY_BUCKETS_MS)
     && validHistogram(row.responseSizeHistogram, RESPONSE_SIZE_BUCKETS_BYTES)
     && isCount(row.responseBytesTotal)
@@ -388,6 +426,7 @@ function normalizeObservation(observation) {
   return {
     surface,
     outcome: observationOutcome(observation),
+    failureReason: FAILURE_REASONS.has(observation.failureReason) ? observation.failureReason : 'unclassified',
     durationMs,
     responseBytes,
     events: Array.isArray(observation.events)
@@ -399,6 +438,7 @@ function normalizeObservation(observation) {
 function newToolRow(name) {
   return {
     name,
+    errorReasons: [],
     count: 0,
     successes: 0,
     errors: 0,
@@ -470,6 +510,10 @@ export function aggregateMcpUsage(state, observations, now = new Date()) {
         const tool = getToolRow(endpoint.tools, classifyMcpTool(event.toolName));
         tool.count += 1;
         tool[observation.outcome === 'success' ? 'successes' : 'errors'] += 1;
+        if (observation.outcome === 'error') {
+          tool.errorReasons ??= [];
+          incrementRow(tool.errorReasons, 'reason', observation.failureReason);
+        }
         incrementHistogram(tool.latencyHistogram, LATENCY_BUCKETS_MS, observation.durationMs);
         incrementHistogram(tool.responseSizeHistogram, RESPONSE_SIZE_BUCKETS_BYTES, observation.responseBytes);
         tool.responseBytesTotal += observation.responseBytes;
@@ -532,7 +576,7 @@ function mergeSimpleRows(endpoints, source, key) {
     .sort((left, right) => right.count - left.count || left[key].localeCompare(right[key]));
 }
 
-function mergeToolRows(endpoints) {
+function mergeToolRows(endpoints, minimumCohort = MCP_USAGE_MINIMUM_PUBLIC_COHORT) {
   const rows = new Map();
   for (const endpoint of endpoints) {
     for (const source of endpoint.tools) {
@@ -544,6 +588,7 @@ function mergeToolRows(endpoints) {
       target.count += source.count;
       target.successes += source.successes;
       target.errors += source.errors;
+      for (const row of source.errorReasons || []) incrementRow(target.errorReasons, 'reason', row.reason, row.count);
       target.responseBytesTotal += source.responseBytesTotal;
       sumHistogram(target.latencyHistogram, source.latencyHistogram);
       sumHistogram(target.responseSizeHistogram, source.responseSizeHistogram);
@@ -556,6 +601,8 @@ function mergeToolRows(endpoints) {
       successes: row.successes,
       errors: row.errors,
       outcome_unavailable: row.count - row.successes - row.errors,
+      error_reasons: row.errorReasons.filter((item) => item.count >= minimumCohort),
+      errors_without_detailed_reason: row.errors - row.errorReasons.filter((item) => item.count >= minimumCohort).reduce((sum, item) => sum + item.count, 0),
       success_rate: ratio(row.successes, row.successes + row.errors),
       ...metrics({ ...row, requests: row.count }),
     }))
@@ -680,7 +727,7 @@ export function buildPublicMcpUsageReport(state, minimumCohort = MCP_USAGE_MINIM
   const recentInitializations = recentEndpoints.reduce((sum, endpoint) => sum + endpoint.events.initializations, 0);
   const recentOther = recentClients.find((row) => row.family === 'other')?.count ?? 0;
   const recentOtherShare = ratio(recentOther, recentInitializations);
-  const tools = mergeToolRows(allEndpoints);
+  const tools = mergeToolRows(allEndpoints, minimumCohort);
   const primaryTool = tools.find((row) => row.name === 'get_risk_state') ?? {
     name: 'get_risk_state',
     count: 0,
@@ -707,6 +754,8 @@ export function buildPublicMcpUsageReport(state, minimumCohort = MCP_USAGE_MINIM
       latency: 'p50 et p95 sont estimés depuis des histogrammes bornés ; aucune durée individuelle n’est conservée.',
       response_size: 'Taille de réponse agrégée en octets et histogrammes bornés ; aucun contenu de réponse n’est conservé.',
       clients: 'Huit familles stables dérivées de clientInfo.name ; les libellés other restent privés sept jours pour recalibrer la taxonomie.',
+      failure_reasons: 'Catégories fixes par outil, sans paramètres ni texte de réponse. Les anciennes erreurs et les catégories sous k=5 restent sans détail ; aucune cause historique n’est reconstruite.',
+      technical_success: 'Un succès indique une réponse MCP sans erreur déclarée ; il ne mesure pas la validité économique, la justesse des sources ou la fraîcheur des données.',
       recurring_usage: 'Le KPI de récurrence compte les jours où get_risk_state est utilisé, puis les jours actifs après le premier jour observé. Il ne repose pas sur les initialisations.',
       privacy: 'User-agents internes l0g exclus avant agrégation ; aucune IP, session, empreinte, cookie ou chaîne user-agent n’est conservé.',
     },

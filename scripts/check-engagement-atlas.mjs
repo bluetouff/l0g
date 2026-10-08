@@ -1,6 +1,7 @@
 import { readAtlasJson } from './read-atlas-json.mjs';
 import { resolve } from 'node:path';
 import { assertAtlasDataset } from '../src/lib/engagement-atlas.ts';
+import { localizeAtlas } from '../src/lib/atlas-localization.ts';
 
 const args = process.argv.slice(2);
 const proposal = args[0] === '--proposal';
@@ -14,6 +15,7 @@ try {
     const path = resolve(entry);
     const data = readAtlasJson(path);
     assertAtlasDataset(data, proposal);
+    if (!proposal) localizeAtlas(data, readAtlasJson(path.replace(/\.json$/, '.en.json')));
     console.log(proposal
       ? 'Structure de proposition valide. Aucune approbation éditoriale ni écriture dans le corpus publié.'
       : `Atlas valide : ${data.nodes.length} acteurs et structures, ${data.relations.length} relations, ${data.sources.length} pièces primaires.`);

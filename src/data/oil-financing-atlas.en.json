@@ -1,0 +1,412 @@
+{
+  "sourceSha256": "f5954d77065f310a2cdc1c0c6acf76c1208be1f7aa57f656a6d8fab807efd384",
+  "title": "Oil financing atlas",
+  "sources": {
+    "sienna-judgment-2023": {
+      "title": "Court of Appeal: UniCredit Bank AG v Euronav, the Sienna case",
+      "locator": "Judgment [2023] EWCA Civ 471, paragraphs 3, 12–17 and 21: sale, financing, payment and repayment. Transactions took place in 2020."
+    },
+    "chad-eiti-2023": {
+      "title": "Chad EITI: report for the 2023 financial year",
+      "locator": "Publication dated December 30, 2025 by EITI. Pages 157–162 and 166: sales, escrow account, allocation of proceeds and reconciliation limits."
+    },
+    "trafigura-facilities-2026": {
+      "title": "Trafigura: European credit facilities and liquidity buffer",
+      "locator": "March 10, 2026 release: uses of the facilities, maturities, coordinators and syndication."
+    },
+    "volare-launch-20260921": {
+      "title": "Trafigura: launch of Volare Shipping",
+      "locator": "September 21 release: ownership, commercial management, proposed placement, listing conditions and vessel programme."
+    },
+    "volare-placement-20260923": {
+      "title": "Volare Shipping: results of the approximately $500m private placement",
+      "locator": "September 23 release, 08:17:32; Private Placement in summary; Conditions for completion; Shares, share capital and free float."
+    },
+    "volare-capital-20261001": {
+      "title": "Volare Shipping: issuance and registration of new shares",
+      "locator": "October 1 release, 11:58:26: shares allocated, issued and registered; issued and paid-up capital; expected first trading day; About Volare Shipping."
+    },
+    "trafigura-facilities-20261001": {
+      "title": "Trafigura: closing of $4.4bn in revolving credit and term loan facilities",
+      "locator": "October 1 release: four USD/CNH tranches, refinancing of 2023 and 2025 tranches, general corporate purposes, 40 institutions and OCBC as global coordinator."
+    }
+  },
+  "nodes": {
+    "unicredit": {
+      "label": "UniCredit Bank",
+      "role": "Bank · financing and coordination"
+    },
+    "bp": {
+      "label": "BP Oil International",
+      "role": "Cargo seller"
+    },
+    "gulf": {
+      "label": "Gulf Petrochem",
+      "role": "Buyer and borrower · Sienna"
+    },
+    "sub-buyers": {
+      "label": "Onward buyers",
+      "role": "Counterparties specified in the agreement"
+    },
+    "socgen": {
+      "label": "Société Générale",
+      "role": "Bank · arranging and coordination"
+    },
+    "ercf": {
+      "label": "European credit facilities",
+      "role": "Syndicated facilities · Trafigura"
+    },
+    "liquidity": {
+      "label": "Liquidity buffer",
+      "role": "Contingent facility · Trafigura"
+    },
+    "trafigura": {
+      "label": "Trafigura",
+      "role": "Trader · multiple commodities"
+    },
+    "ocbc": {
+      "label": "OCBC",
+      "role": "Bank · syndication coordinator"
+    },
+    "usd-cnh-facilities": {
+      "label": "USD and CNH facilities",
+      "role": "October syndication · Trafigura"
+    },
+    "sht": {
+      "label": "SHT",
+      "role": "Chad national oil company"
+    },
+    "glencore": {
+      "label": "Glencore Energy UK",
+      "role": "Crude oil buyer · Chad"
+    },
+    "escrow": {
+      "label": "SHT account · Citibank",
+      "role": "Revenue escrow account"
+    },
+    "creditors": {
+      "label": "Glencore and lenders",
+      "role": "Prepayment creditors"
+    },
+    "treasury": {
+      "label": "Chadian Treasury",
+      "role": "Recipient of the available balance"
+    },
+    "volare-investors": {
+      "label": "Placement investors",
+      "role": "Subscribers · Volare"
+    },
+    "volare": {
+      "label": "Volare Shipping",
+      "role": "Oil shipping company"
+    },
+    "volare-fleet": {
+      "label": "Volare fleet",
+      "role": "Operating vessels and orderbook"
+    }
+  },
+  "relations": {
+    "bp-gulf-sale": {
+      "observations": {
+        "2023-05-04": {
+          "label": "Fuel oil sale",
+          "claim": "The judgment describes BP's sale of fuel oil to Gulf in January 2020.",
+          "limit": "This case does not describe the parties' entire business.",
+          "watch": "Scope of the sale."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-1-cargo-trade-finance/",
+        "label": "Read: who pays for the cargo before you do?"
+      }
+    },
+    "unicredit-gulf-credit": {
+      "observations": {
+        "2023-05-04": {
+          "label": "Secured documentary credit",
+          "claim": "UniCredit Bank AG finances Gulf's purchase, with security over the documents and the cargo.",
+          "limit": "These safeguards did not prevent the failure to repay recorded in the judgment.",
+          "watch": "Terms of the security arrangements."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-1-cargo-trade-finance/",
+        "label": "Read: who pays for the cargo before you do?"
+      }
+    },
+    "unicredit-bp-payment": {
+      "observations": {
+        "2023-05-04": {
+          "label": "Payment to the seller",
+          "claim": "BP receives payment under UniCredit's letter of credit on April 2, 2020.",
+          "limit": "The payment covers the financed portion of the cargo.",
+          "watch": "Payment documents."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-1-cargo-trade-finance/",
+        "label": "Read: who pays for the cargo before you do?"
+      }
+    },
+    "buyers-unicredit-payment": {
+      "observations": {
+        "2023-05-04": {
+          "label": "Planned direct repayment",
+          "claim": "Approved onward buyers were due to pay UniCredit directly, 90 days after their invoices.",
+          "limit": "This is the intended payment route, not a record of payments received.",
+          "watch": "Completion of payments."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-1-cargo-trade-finance/",
+        "label": "Read: who pays for the cargo before you do?"
+      }
+    },
+    "sht-glencore-sale": {
+      "observations": {
+        "2025-12-30": {
+          "label": "Crude oil sale",
+          "claim": "EITI describes sales to Glencore of crude marketed by SHT in 2023.",
+          "limit": "Some public-sector sales use other channels.",
+          "watch": "Cargoes covered."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-3-chad-glencore-oil-backed-debt/",
+        "label": "Read: Chadian oil and debt repayment"
+      }
+    },
+    "glencore-escrow-receipts": {
+      "observations": {
+        "2025-12-30": {
+          "label": "Receipt of sales proceeds",
+          "claim": "According to EITI, the corresponding proceeds flow into SHT's escrow account at Citibank.",
+          "limit": "Bank statements are unavailable: receipts have not been independently verified.",
+          "watch": "Bank reconciliation."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-3-chad-glencore-oil-backed-debt/",
+        "label": "Read: Chadian oil and debt repayment"
+      }
+    },
+    "creditors-sht-prefinancing": {
+      "observations": {
+        "2025-12-30": {
+          "label": "Oil prepayments",
+          "claim": "The report traces prepayments by Glencore and a banking syndicate, backed by oil revenues.",
+          "limit": "Each lender's share is not established here.",
+          "watch": "Agreements and amendments."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-3-chad-glencore-oil-backed-debt/",
+        "label": "Read: Chadian oil and debt repayment"
+      }
+    },
+    "escrow-creditors-service": {
+      "observations": {
+        "2025-12-30": {
+          "label": "Debt service",
+          "claim": "The described arrangement allocates proceeds to oil and transport costs, then to debt service.",
+          "limit": "Reported amounts have not been reconciled with Glencore.",
+          "watch": "Payment reconciliation."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-3-chad-glencore-oil-backed-debt/",
+        "label": "Read: Chadian oil and debt repayment"
+      }
+    },
+    "escrow-treasury-balance": {
+      "observations": {
+        "2025-12-30": {
+          "label": "Balance available for the budget",
+          "claim": "The surplus after priority allocations may be transferred to the Treasury.",
+          "limit": "This arrangement does not cover all public revenues.",
+          "watch": "Actual transfers to the Treasury."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-3-chad-glencore-oil-backed-debt/",
+        "label": "Read: Chadian oil and debt repayment"
+      }
+    },
+    "unicredit-ercf-coordination": {
+      "observations": {
+        "2026-03-10": {
+          "label": "Financing coordination",
+          "claim": "Trafigura names UniCredit Bank GmbH as coordinator of its European credit facilities announced in March 2026.",
+          "limit": "Coordination does not mean providing all the lending.",
+          "watch": "Participants' commitments."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+        "label": "Read: the banks behind Trafigura"
+      }
+    },
+    "socgen-ercf-arrangement": {
+      "observations": {
+        "2026-03-10": {
+          "label": "Joint arranging role",
+          "claim": "Société Générale is among the active arrangers of Trafigura's European credit facilities.",
+          "limit": "Its financial share is not specified.",
+          "watch": "Allocation of commitments."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+        "label": "Read: the banks behind Trafigura"
+      }
+    },
+    "ercf-trafigura-credit": {
+      "observations": {
+        "2026-03-10": {
+          "label": "Revolving credit facilities",
+          "claim": "Trafigura announces these facilities to refinance existing lines and meet general corporate needs.",
+          "limit": "Commitments are neither drawdowns nor financing exclusively for oil.",
+          "watch": "Use of the facilities."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+        "label": "Read: the banks behind Trafigura"
+      }
+    },
+    "socgen-liquidity-coordination": {
+      "observations": {
+        "2026-03-10": {
+          "label": "Liquidity facility coordination",
+          "claim": "Société Générale coordinates the liquidity buffer announced by Trafigura.",
+          "limit": "Several banks participate in the financing.",
+          "watch": "Conditions for drawing on the facility."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+        "label": "Read: the banks behind Trafigura"
+      }
+    },
+    "liquidity-trafigura-buffer": {
+      "observations": {
+        "2026-03-10": {
+          "label": "Contingent liquidity buffer",
+          "claim": "Trafigura announces a buffer initially intended to last six months, with extension options.",
+          "limit": "The release confirms neither its use nor its extension in September 2026.",
+          "watch": "Maturity and extensions."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+        "label": "Read: the banks behind Trafigura"
+      }
+    },
+    "ocbc-facilities-coordination": {
+      "observations": {
+        "2026-10-01": {
+          "label": "Global coordinator · October syndication",
+          "claim": "Trafigura names Oversea-Chinese Banking Corporation (OCBC) as global coordinator of the facilities whose closing is announced on October 1. Forty financial institutions participate in the transaction.",
+          "limit": "The coordinator role does not mean OCBC alone finances these facilities. Its share of commitments is not specified.",
+          "watch": "Allocation of commitments among lenders."
+        }
+      }
+    },
+    "usd-cnh-trafigura-credit": {
+      "observations": {
+        "2026-10-01": {
+          "label": "Credit and term loans · $4.4bn",
+          "claim": "Trafigura announces the closing of approximately $4.4 billion in facilities: revolving credit of $1.1 billion for 365 days and $0.2 billion for five years, a one-year CNH-denominated term loan equivalent to $1.6 billion, and a three-year $1.5 billion term loan.",
+          "limit": "The intended uses are refinancing tranches concluded in 2023 and 2025 and general corporate purposes. The amount represents neither drawdowns nor a net $4.4 billion inflow. These facilities are separate from the March European credit facilities and liquidity buffer; no financing of Volare or extension of that buffer can be inferred.",
+          "watch": "Drawdowns, completed refinancings and maturities. CNH denotes renminbi traded outside mainland China."
+        }
+      }
+    },
+    "trafigura-volare": {
+      "observations": {
+        "2026-09-21": {
+          "label": "Majority shareholder · commercial management",
+          "claim": "Trafigura announces the creation of Volare, in which it holds a majority stake. Its maritime business provides commercial management of the fleet.",
+          "limit": "This equity stake does not constitute a guarantee of Volare's debts. The release envisages continued control after the proposed listing.",
+          "watch": "Ownership after the transaction and management agreements."
+        },
+        "2026-09-23": {
+          "label": "Expected majority control after placement",
+          "claim": "The release projects approximately 53% ownership for Trafigura Volare Holdings B.V. at listing, assuming full exercise of the option to issue additional shares.",
+          "limit": "This percentage is forward-looking and conditional. It establishes neither completed dilution nor a guarantee of Volare's debts.",
+          "watch": "Actual ownership after settlement and stabilization."
+        }
+      }
+    },
+    "investors-volare": {
+      "observations": {
+        "2026-09-21": {
+          "label": "Proposed placement · approximately $500m",
+          "claim": "Volare proposes a private placement of approximately $500 million, followed by listing on Euronext Growth Oslo around October 5, 2026.",
+          "limit": "The placement and listing remain conditional, including on successful placement and exchange approval. No receipt of funds is established here.",
+          "watch": "Placement results and actual admission to trading."
+        },
+        "2026-09-23": {
+          "label": "Placement allocated · approximately $500m",
+          "claim": "Volare announces the conditional allocation of 30,698,864 new shares, for gross proceeds equivalent to approximately $500 million.",
+          "limit": "Settlement is expected around October 5, subject to conditions including exchange approval. The 15% over-allotment uses borrowed shares; the option to issue additional shares has not yet been exercised. No receipt of funds is established here.",
+          "watch": "Actual settlement, admission and any exercise of the option."
+        },
+        "2026-10-01": {
+          "label": "New shares issued and registered",
+          "claim": "Volare confirms issuance and registration of the 30,698,864 new placement shares. The total number of shares reaches 70,319,479.",
+          "limit": "Reported issued and paid-up capital is not the cash proceeds received from the placement. This release does not confirm settlement with investors, expected around October 5 in the September 23 release. Listing remains expected around that date and exercise of the option to issue additional shares is unconfirmed.",
+          "watch": "Settlement, first trading session and stabilization."
+        }
+      }
+    },
+    "volare-fleet-programme": {
+      "observations": {
+        "2026-09-21": {
+          "label": "Fleet and newbuilding programme",
+          "claim": "Volare reports operating six very large crude carriers (VLCCs) and having eight vessels on order. According to its chief executive, the proposed placement should fully fund this newbuilding programme.",
+          "limit": "The ordered vessels have not all been delivered. The announced use of placement proceeds does not establish payments to shipyards.",
+          "watch": "Deliveries and financing actually received."
+        },
+        "2026-09-23": {
+          "label": "Intended use of placement proceeds",
+          "claim": "Net proceeds are intended to fund remaining newbuilding commitments, reduce lease liabilities, repay an intercompany loan and cover working capital, fees and general corporate needs.",
+          "limit": "The funds are therefore not exclusively earmarked for new vessels. These stated uses establish neither payments to shipyards nor completed repayments.",
+          "watch": "Receipt and subsequent actual use of proceeds."
+        },
+        "2026-10-01": {
+          "label": "Orderbook · deliveries expected in 2027 and 2028",
+          "claim": "Volare confirms six operating VLCCs and eight on order, with deliveries expected between 2027 and 2028.",
+          "limit": "This timetable remains a forecast. Share issuance establishes neither payments to shipyards nor repayment of the debts mentioned on September 23.",
+          "watch": "Deliveries and actual use of proceeds."
+        }
+      }
+    }
+  },
+  "milestones": {
+    "2023-05-04": {
+      "label": "The Sienna cargo",
+      "change": "The judgment published in 2023 describes a sale and its financing in 2020. It distinguishes payment to the seller from the bank's expected repayment."
+    },
+    "2025-12-30": {
+      "label": "Chad's oil revenues",
+      "change": "The EITI report published in late 2025 documents the routing of oil revenues in 2023. These historical relationships do not describe current outstanding balances."
+    },
+    "2026-03-10": {
+      "label": "Trafigura's banks",
+      "change": "The March 2026 release adds banking roles and two sets of facilities. The contingent buffer retains the conditions of its announcement; an extension is not established here."
+    },
+    "2026-09-21": {
+      "label": "The Volare proposal",
+      "change": "Trafigura announces Volare: equity ownership, commercial management and the proposed placement are distinguished. Funding expected for vessels is not presented as already received."
+    },
+    "2026-09-23": {
+      "label": "Placement allocated, settlement pending",
+      "change": "Volare announces placement allocations. Settlement, listing and any additional share issuance remain to be confirmed; intended uses of proceeds are specified."
+    },
+    "2026-10-01": {
+      "label": "Shares issued and Trafigura refinancing",
+      "change": "Volare confirms share issuance and registration; listing remains expected around October 5. Trafigura separately announces the closing of $4.4bn in USD/CNH facilities, with no established bank financing link to Volare."
+    }
+  }
+}

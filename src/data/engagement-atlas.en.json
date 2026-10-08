@@ -1,0 +1,300 @@
+{
+  "sourceSha256": "8cb53e0d8eab596701860756c121cbcb00ed4057063cd807c47076f7b09fb031",
+  "title": "AI financing atlas",
+  "sources": {
+    "aip-2024": {
+      "title": "BlackRock: launch of the GAIIP partnership",
+      "locator": "Press release, first four paragraphs: founders, Nvidia's technical support and financing targets."
+    },
+    "aip-2025": {
+      "title": "BlackRock: Nvidia and xAI join AIP",
+      "locator": "Press release, first two paragraphs: new partners and Nvidia's continuing technical advisory role."
+    },
+    "nvda-8k-20260817": {
+      "title": "Nvidia: Form 8-K on the SB Energy campus",
+      "locator": "Item 1.01, Residual Value Guaranties: parties, cap, triggers, options and indemnification."
+    },
+    "nvda-ex101-20260826": {
+      "title": "Nvidia: form of guaranty, Exhibit 10.1",
+      "locator": "Sections 1(b), 1(c), 1(d), 2 and 8: redacted formula, discounting, cap and conditions."
+    },
+    "aligned-close-20260721": {
+      "title": "Aligned: acquisition completed by AIP, MGX and GIP",
+      "locator": "July 21, 2026 press release, opening and paragraph beginning 'In connection with the closing': consortium, acquisition, enterprise value and committed growth capital."
+    },
+    "sb-equity-20260901": {
+      "title": "SB Energy: share purchase agreement between SE Global Holdings and Nvidia",
+      "locator": "August 17, 2026 agreement attached to the S-1 filed on September 1. Section 1(a)-(b): Class N shares, amount, IPO conditions and settlement."
+    },
+    "sb-s1a2-20260921": {
+      "title": "SB Energy: amended S-1/A prospectus of September 21, 2026",
+      "locator": "Summary, p. 21; Our Corporate Information, p. 26; Concurrent Private Placement; Subsequent Events note, NVIDIA Investment, p. F-87."
+    }
+  },
+  "nodes": {
+    "blackrock": {
+      "label": "BlackRock",
+      "role": "Founding partner"
+    },
+    "gip": {
+      "label": "GIP",
+      "role": "Founding partner"
+    },
+    "microsoft": {
+      "label": "Microsoft",
+      "role": "Founding partner"
+    },
+    "mgx": {
+      "label": "MGX",
+      "role": "Founding partner"
+    },
+    "aip": {
+      "label": "GAIIP / AIP",
+      "role": "Infrastructure partnership"
+    },
+    "xai": {
+      "label": "xAI",
+      "role": "Partner announced in 2025"
+    },
+    "nvidia": {
+      "label": "Nvidia",
+      "role": "Technology and commitments"
+    },
+    "openai-tenant": {
+      "label": "OpenAI affiliate",
+      "role": "Campus tenant"
+    },
+    "sb-energy": {
+      "label": "SB Energy",
+      "role": "Campus lessor"
+    },
+    "aligned-consortium": {
+      "label": "Aligned consortium",
+      "role": "AIP · MGX · GIP"
+    },
+    "aligned": {
+      "label": "Aligned Data Centers",
+      "role": "Company acquired by the consortium"
+    },
+    "se-global": {
+      "label": "SE Global Holdings, Inc.",
+      "role": "Issuer in the SB Energy filings"
+    },
+    "energy-global": {
+      "label": "Energy Global, LP",
+      "role": "Prepayment intermediary"
+    }
+  },
+  "relations": {
+    "blackrock-aip": {
+      "observations": {
+        "2024-09-17": {
+          "label": "Founding partner",
+          "claim": "BlackRock announces the creation of the partnership with GIP, Microsoft and MGX.",
+          "limit": "Partner status does not quantify an individual contribution.",
+          "watch": "Individual capital commitments and completed transactions."
+        }
+      }
+    },
+    "gip-aip": {
+      "observations": {
+        "2024-09-17": {
+          "label": "Founding partner",
+          "claim": "GIP is named among the founders of the announced partnership.",
+          "limit": "This relationship measures neither an individual contribution nor a cash flow.",
+          "watch": "Allocation of commitments among partners."
+        }
+      }
+    },
+    "microsoft-aip": {
+      "observations": {
+        "2024-09-17": {
+          "label": "Founding partner",
+          "claim": "Microsoft participates in the launch of the partnership.",
+          "limit": "The release does not specify an individual amount for Microsoft.",
+          "watch": "Binding commitments and projects financed."
+        }
+      }
+    },
+    "mgx-aip": {
+      "observations": {
+        "2024-09-17": {
+          "label": "Founding partner",
+          "claim": "MGX is among the announced founding partners.",
+          "limit": "No individual contribution is quantified here.",
+          "watch": "Amounts actually committed by MGX to this partnership."
+        }
+      }
+    },
+    "nvidia-aip": {
+      "observations": {
+        "2024-09-17": {
+          "label": "Technical support",
+          "claim": "Nvidia is to provide technical expertise to the partnership.",
+          "limit": "This role does not establish a financial investment.",
+          "watch": "Changes in its role and terms of participation."
+        },
+        "2025-03-19": {
+          "label": "Partner and technical adviser",
+          "claim": "BlackRock announces that Nvidia is joining AIP while retaining its technical advisory role.",
+          "limit": "The release does not disclose the amount of Nvidia's participation.",
+          "watch": "Final financial terms and contributions made."
+        }
+      }
+    },
+    "xai-aip": {
+      "observations": {
+        "2025-03-19": {
+          "label": "Announced partner",
+          "claim": "BlackRock also announces that xAI is joining AIP.",
+          "limit": "The announcement does not quantify xAI's individual contribution.",
+          "watch": "Amounts, conditions and transactions attributable to xAI."
+        }
+      }
+    },
+    "openai-sb-lease": {
+      "observations": {
+        "2026-08-17": {
+          "label": "Ohio campus leases",
+          "claim": "Nvidia identifies an OpenAI affiliate as the tenant and SB Energy as the lessor.",
+          "limit": "The link represents the planned leases; it does not establish that rent has already been paid.",
+          "watch": "Lease commencement and commissioning."
+        }
+      }
+    },
+    "nvidia-sb-guarantee": {
+      "observations": {
+        "2026-08-17": {
+          "label": "Residual value guaranty",
+          "claim": "Nvidia reports guaranties with an initial aggregate cap of $105 billion. After specified defaults, payments depend in part on recoveries from reletting or selling the premises; Nvidia also has options, including assuming the lease.",
+          "limit": "A conditional aggregate cap, with no loss estimate. Obligations depend in part on the premises meeting ready-for-service conditions.",
+          "watch": "Form of guaranty and lease commencement conditions.",
+          "amountLabel": "$105bn · initial aggregate cap"
+        },
+        "2026-08-26": {
+          "label": "Guaranty: partly redacted formula",
+          "claim": "The form of guaranty specifies conditions and options. The covered-loss formula, discount rate and some limiting parameters remain redacted.",
+          "limit": "The public documents do not support a quantified loss under a default scenario. The initial cap covers multiple guaranties.",
+          "watch": "Disclosure of redacted parameters, amendments and commissioning.",
+          "amountLabel": "$105bn · initial aggregate cap"
+        }
+      }
+    },
+    "openai-nvidia-indemnity": {
+      "observations": {
+        "2026-08-17": {
+          "label": "Reimbursement and indemnification",
+          "claim": "The 8-K states that OpenAI agrees to reimburse and indemnify Nvidia for amounts paid to the lessor.",
+          "limit": "A reimbursement obligation does not guarantee future ability to pay.",
+          "watch": "Precise identity of the obligors and recovery terms."
+        }
+      }
+    },
+    "aip-aligned-consortium": {
+      "observations": {
+        "2026-07-21": {
+          "label": "Consortium member",
+          "claim": "Aligned names AIP as a member of the acquiring consortium.",
+          "limit": "AIP's individual share is not quantified.",
+          "watch": "Ownership allocation."
+        }
+      }
+    },
+    "mgx-aligned-consortium": {
+      "observations": {
+        "2026-07-21": {
+          "label": "Consortium member",
+          "claim": "Aligned names MGX as a member of the acquiring consortium.",
+          "limit": "MGX's individual share is not quantified.",
+          "watch": "Ownership allocation."
+        }
+      }
+    },
+    "gip-aligned-consortium": {
+      "observations": {
+        "2026-07-21": {
+          "label": "Consortium member",
+          "claim": "Aligned names GIP as a member of the acquiring consortium.",
+          "limit": "GIP's individual share is not quantified.",
+          "watch": "Ownership allocation."
+        }
+      }
+    },
+    "consortium-aligned-acquisition": {
+      "observations": {
+        "2026-07-21": {
+          "label": "Acquisition closed; growth capital committed",
+          "claim": "Aligned announces the consortium's acquisition of 100% of its equity at an enterprise value of approximately $40 billion. The consortium also commits $5 billion for growth.",
+          "limit": "Enterprise value is not the buyers' equity contribution. Committed growth capital does not establish that funds have already been paid.",
+          "watch": "Contributions made and the debt-equity breakdown."
+        }
+      }
+    },
+    "nvidia-se-global-equity": {
+      "observations": {
+        "2026-09-01": {
+          "label": "Conditional share purchase · $1.5bn",
+          "claim": "The August 17 agreement provides for Nvidia to purchase $1.5 billion of Class N shares in SE Global Holdings, Inc., following an IPO raising at least $1.5 billion of primary proceeds. These shares are generally non-voting.",
+          "limit": "Settlement depends on the IPO and contractual conditions. This document establishes neither closing nor payment. The equity commitment is separate from the campus guaranties.",
+          "watch": "IPO completion, settlement and shares actually issued."
+        },
+        "2026-09-21": {
+          "label": "Separate share purchase · conditional $1.5bn",
+          "claim": "The prospectus retains a separate $1.5 billion purchase of non-voting Class N shares at the IPO closing.",
+          "limit": "This second tranche remains subject to contractual conditions, including an IPO raising at least $1.5 billion. It is not an already verified payment.",
+          "watch": "Closing of the placement and settlement of this tranche."
+        }
+      }
+    },
+    "nvidia-energy-global-prepayment": {
+      "observations": {
+        "2026-09-21": {
+          "label": "Prepayment received · $1.5bn",
+          "claim": "According to the prospectus, Energy Global, LP received $1.5 billion from Nvidia on August 17, 2026 under a prepaid forward contract.",
+          "limit": "Payment precedes delivery of shares. The contract provides for future settlement in securities or cash depending on applicable events; it does not establish that an IPO has closed.",
+          "watch": "Settlement of the prepaid contract and securities actually delivered."
+        }
+      }
+    },
+    "energy-global-se-global-contribution": {
+      "observations": {
+        "2026-09-21": {
+          "label": "Prepayment contributed to the company",
+          "claim": "The prospectus states that Energy Global, LP immediately contributed the $1.5 billion received to the company, renamed SB Energy, Inc. on August 31, 2026.",
+          "limit": "This is the same prepayment passed on to the company: the two arrows do not represent two investments that can be added together.",
+          "watch": "Accounting treatment and settlement of the corresponding obligations."
+        }
+      }
+    }
+  },
+  "milestones": {
+    "2024-09-17": {
+      "label": "The platform",
+      "change": "GAIIP is created. Nvidia provides technical support; individual financial contributions remain to be specified."
+    },
+    "2025-03-19": {
+      "label": "New partners",
+      "change": "Nvidia and xAI join the partnership, now called AIP. Nvidia's role changes."
+    },
+    "2026-07-21": {
+      "label": "The Aligned acquisition",
+      "change": "AIP, MGX and GIP are members of the consortium announcing its acquisition of Aligned. The map separates enterprise value from committed growth capital."
+    },
+    "2026-08-17": {
+      "label": "The guaranties",
+      "change": "A separate structure emerges: the Ohio campus leases and Nvidia's guaranty. These documents do not establish that AIP finances this campus."
+    },
+    "2026-08-26": {
+      "label": "The clauses",
+      "change": "The contractual form adds detail while leaving parameters needed to calculate the covered loss redacted."
+    },
+    "2026-09-01": {
+      "label": "The equity commitment",
+      "change": "An exhibit to SB Energy's S-1 documents a conditional share purchase by Nvidia. The agreement is dated August; this milestone marks its publication in September."
+    },
+    "2026-09-21": {
+      "label": "Prepayment and separate commitment",
+      "change": "The prospectus separates Nvidia's prepayment, received and contributed to the company in August, from a share purchase that remains conditional. The same money is not counted twice."
+    }
+  }
+}

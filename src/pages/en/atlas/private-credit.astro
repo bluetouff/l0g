@@ -1,0 +1,68 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import EngagementAtlas from '../../../components/EngagementAtlas.astro';
+import { englishAtlasDatasets } from '../../../config/english-atlas-datasets';
+import { atlasAlternateLinks } from '../../../config/atlases';
+const dataset = englishAtlasDatasets['private-credit'];
+const latestDate = dataset.milestones.at(-1)!.date;
+---
+
+<EnglishGuidesLayout title={dataset.title} seoTitle="Private credit atlas: funds, insurers and banks | l0g" description="Follow private credit through Apollo, Athene, Ares Capital, ATLAS SP, Pagaya and their banks. Explore documented relationships, contracts and sources." ogImage="/illustrations/news/credit-prive-logiciels-ia-v1.jpg" alternateLinks={atlasAlternateLinks(dataset.id)}>
+  <EngagementAtlas
+    language="en"
+    dataset={dataset}
+    subject="private credit"
+    intro="Who supplies the capital, who manages the funds, and who borrows? Explore corporate lending around Ares Capital and asset-backed finance around Apollo, Athene and ATLAS SP, including personal loans originated through Pagaya’s platform."
+    boundary="The map covers selected published relationships, mainly in the United States. One actor can participate in several financing chains: that does not establish that a bank funds a particular loan or guarantees the other participants. ATLAS SP is a company, separate from l0g’s financial atlases."
+    selectedRelation="atlas-pagaya-vfn"
+    hubs={['arcc', 'atlas-sp', 'athene']}
+    entryPoints={[
+      { label: 'How does ATLAS fund Pagaya loans?', relation: 'atlas-pagaya-vfn', date: latestDate },
+      { label: 'How does ARCC refinance itself?', relation: 'noteholders-arcc', date: latestDate },
+      { label: 'Where do banks participate?', relation: 'bnp-afb', date: latestDate },
+      { label: 'How does the insurer invest?', relation: 'athene-atlas', date: latestDate },
+      { label: 'Which company receives a loan?', relation: 'arcc-hyland', date: latestDate },
+    ]}
+    outlinks={[
+      { href: '/en/analysis/when-credit-warehouse-does-not-clear-atlas-apollo-athene/', label: 'Understand credit warehouses' },
+      { href: '/en/analysis/private-credit-clo-warehouse-banks/', label: 'The role of banks in private credit' },
+      { href: '/en/analysis/private-credit-software-ai-cash-flows-debt/', label: 'Private credit and software companies' },
+      { href: '/api/v1/en/atlases/private-credit.json', label: 'Reuse the relationships and sources · English JSON' },
+    ]}
+  >
+    <section slot="overview" class="credit-overview" aria-labelledby="credit-circuits-title">
+      <p class="credit-review"><strong>Evidence reviewed on <time datetime="2026-10-04">4 October 2026</time>.</strong> This English edition retains that review date. <a href="https://investor.pagaya.com/news-releases/news-release-details/pagaya-secures-first-variable-funding-note-facility-atlas-sp">Pagaya’s 29 September announcement</a> adds a loan warehouse to the map. VFN stands for <em>Variable Funding Note</em>, a revolving funding structure using notes. Portfolio positions remain dated 30 June 2026. ARCC <a href="https://arcc.ares.com/news/ares-capital-corporation-schedules-earnings-release-for-the-third-quarter-ended-september-30-2026/47c2ef5e-1218-459c-bc46-73fc46ce2cc9">scheduled its third-quarter results for 27 October</a>; the announcement is a reporting calendar, not evidence of new loans or repayments.</p>
+      <details>
+        <summary id="credit-circuits-title">Understand the roles in private credit</summary>
+        <p>In these financing chains, ARCC lends to companies while ATLAS SP finances portfolios of receivables, including personal loans. Banks remain involved in funding the intermediaries.</p>
+        <ol class="credit-roles">
+          <li><span>Supply capital</span><h3>Investors and insurers</h3><p>Pension funds, insurers and other investors allocate capital. They may invest through a fund or hold an investment on their own balance sheet.</p></li>
+          <li><span>Select and manage</span><h3>Managers and vehicles</h3><p>The manager selects and monitors investments. The fund or financing company holds the assets and may also borrow.</p></li>
+          <li><span>Fund the intermediary</span><h3>Banks</h3><p>A credit facility finances a fund or vehicle. Available commitments, drawn amounts and a bank’s agency role are separate pieces of information.</p></li>
+          <li><span>Receive financing</span><h3>Companies</h3><p>A borrower owes interest and principal under its contract. A lender’s disclosed holding does not show the borrower’s entire debt structure.</p></li>
+        </ol>
+        <p class="credit-sources">Background: <a href="https://www.federalreserve.gov/econres/notes/feds-notes/private-credit-characteristics-and-risks-20240223.html">Federal Reserve, private credit characteristics and risks, February 2024</a>; <a href="https://www.federalreserve.gov/econres/notes/feds-notes/bank-lending-to-private-credit-size-characteristics-and-financial-stability-implications-20250523.html">bank lending to private credit, May 2025</a>. The map uses documents from the actors involved.</p>
+        <p class="credit-scope">ARCC is a <strong>BDC</strong> (Business Development Company), a listed US financing company. ATLAS SP operates in asset-backed finance, a different business from direct corporate lending. Showing them together allows their funding structures to be compared while preserving that distinction.</p>
+      </details>
+    </section>
+  </EngagementAtlas>
+</EnglishGuidesLayout>
+
+<style>
+  .credit-overview { margin:1rem 0 2rem; }
+  .credit-overview details { padding:1rem; border:1px solid var(--color-line); border-radius:8px; }
+  .credit-overview summary { cursor:pointer; min-height:32px; color:var(--color-bright); font-family:var(--font-display); font-size:.95rem; }
+  .credit-overview :is(summary,a):focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+  .credit-overview details>p { max-width:85ch; margin:.8rem 0; font-family:var(--font-read); line-height:1.7; font-size:.9rem; }
+  .credit-review { max-width:85ch; margin:0 0 1rem; padding:.8rem 1rem; border-left:2px solid var(--color-signal); background:var(--color-surface); font-family:var(--font-read); line-height:1.7; font-size:.85rem; }
+  .credit-overview a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; }
+  .credit-roles { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.8rem; margin:1.2rem 0; list-style:none; padding:0; }
+  .credit-roles li { padding:1rem; border:1px solid var(--color-line); border-radius:8px; background:var(--color-surface); }
+  .credit-roles span { font-family:var(--font-mono); font-size:.65rem; color:var(--color-signal); }
+  .credit-roles h3 { margin:.65rem 0; font-size:.92rem; color:var(--color-bright); }
+  .credit-roles p { font-family:var(--font-read); font-size:.82rem; line-height:1.65; }
+  .credit-overview .credit-sources { font-size:.75rem; color:var(--color-muted); }
+  .credit-scope { padding-left:1rem; border-left:2px solid var(--color-line); }
+  @media(max-width:900px) { .credit-roles { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media(max-width:520px) { .credit-roles { grid-template-columns:minmax(0,1fr); } }
+</style>

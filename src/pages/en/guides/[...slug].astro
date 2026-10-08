@@ -238,6 +238,9 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   }
   .en-guide-shell > article { width: 100%; min-width: 0; }
   .en-guide-sidebar { min-width: 0; }
+  .post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; color: var(--color-muted); }
+  .post-meta .sep { opacity: 0.45; }
+  .post-tags { display: inline-flex; flex-wrap: wrap; min-width: 0; gap: 0.7rem; }
   .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60; pointer-events: none; background: transparent; }
   .read-progress > span {
     display: block; height: 100%; width: 100%;

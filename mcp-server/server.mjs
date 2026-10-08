@@ -29,7 +29,7 @@ import { parse as parseHtml } from 'node-html-parser';
 import { agentPrompts, renderAgentPrompt } from '../src/lib/agent-prompts.mjs';
 import { MCP_PROTOCOL_VERSION, MCP_VERSION } from '../src/config/agent-contract.mjs';
 import { SignalFreshnessSchema } from './schemas/signal-freshness.mjs';
-import { createMcpUsageStore } from './usage-telemetry.mjs';
+import { createMcpUsageStore, classifyMcpFailure } from './usage-telemetry.mjs';
 import { createReleaseCache } from './release-cache.mjs';
 import { evidenceGraphIndex } from './evidence-graph-index.mjs';
 
@@ -257,7 +257,10 @@ function decodeCursor(cursor) {
   if (!cursor) return null;
   try {
     const parsed = JSON.parse(Buffer.from(String(cursor), 'base64url').toString('utf8'));
-    if (!parsed || typeof parsed !== 'object') return null;
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)
+      || !['body', 'head', 'tail', 'sources'].includes(parsed.section)
+      || !Number.isSafeInteger(parsed.offset) || parsed.offset < 0
+      || !Number.isSafeInteger(parsed.limit) || parsed.limit < 1000 || parsed.limit > 50000) return null;
     return parsed;
   } catch {
     return null;
@@ -268,6 +271,9 @@ function articleChunk(text, options = {}) {
   const totalChars = full.length;
   const totalWords = full ? full.split(/\s+/).filter(Boolean).length : 0;
   const cursor = decodeCursor(options.cursor);
+  if (options.cursor && !cursor) {
+    throw new McpError(ErrorCode.InvalidParams, 'Curseur invalide', { reason: 'invalid_cursor' });
+  }
   const section = cursor?.section || options.section || 'body';
   const requestedLength = Number.isFinite(cursor?.limit)
     ? cursor.limit
@@ -280,11 +286,11 @@ function articleChunk(text, options = {}) {
   let offset = Math.max(0, Math.min(Number.isFinite(cursor?.offset) ? cursor.offset : Number.isFinite(options.offset) ? options.offset : 0, totalChars));
   let sectionFound = true;
 
-  if (section === 'head') {
+  if (!cursor && section === 'head') {
     offset = 0;
-  } else if (section === 'tail') {
+  } else if (!cursor && section === 'tail') {
     offset = Math.max(0, totalChars - length);
-  } else if (section === 'sources') {
+  } else if (!cursor && section === 'sources') {
     const normalized = norm(full);
     const markers = ['sources principales', 'sources', 'references', 'références'];
     const positions = markers.map((marker) => normalized.lastIndexOf(norm(marker))).filter((index) => index >= 0);
@@ -2168,10 +2174,13 @@ export function buildServer(data, options = {}) {
     },
     async ({ query, language, asOf, riskWindow, limit }) => {
       const requestedAsOf = asOf ? String(asOf).trim() : null;
-      if (requestedAsOf && !/^\d{4}-\d{2}-\d{2}$/.test(requestedAsOf)) {
-        return errorReply({ error: 'asOf invalide', acceptedDateFormat: 'YYYY-MM-DD' });
+      if (requestedAsOf && (!/^\d{4}-\d{2}-\d{2}$/.test(requestedAsOf)
+        || !Number.isFinite(Date.parse(`${requestedAsOf}T00:00:00Z`))
+        || new Date(`${requestedAsOf}T00:00:00Z`).toISOString().slice(0, 10) !== requestedAsOf)) {
+        return errorReply({ error: 'asOf invalide', errorCode: 'invalid_date', acceptedDateFormat: 'YYYY-MM-DD' });
       }
       const queryTokens = tokensOf(query);
+      if (!queryTokens.length) return errorReply({ error: 'requête sans terme de recherche', errorCode: 'invalid_arguments' });
       const searched = await searchFullText(dataDir, catalog, sharedSearchIndex, query, Math.min(10, limit * 2), language);
       const minimumMatchedTerms = Math.min(queryTokens.length, Math.max(2, Math.ceil(queryTokens.length * 0.6)));
       const supported = searched.filter((document) => (document.matchedTerms || []).length >= minimumMatchedTerms);
@@ -2858,7 +2867,7 @@ export function buildServer(data, options = {}) {
     async ({ slug, language, offset, cursor, limit, length, section: requestedSection }) => {
       const clean = cleanSlug(slug);
       const record = resolveCatalogDocument(slug, null, language);
-      if (!record) return errorReply({ error: 'slug inconnu', slug: clean, language: language || null });
+      if (!record) return errorReply({ error: 'slug inconnu', errorCode: 'document_not_found', slug: clean, language: language || null });
       const type = guides.includes(record) ? 'guide' : 'article';
       try {
         const document = await readDocument(record.slug, type, {
@@ -2892,8 +2901,16 @@ export function buildServer(data, options = {}) {
           text: document.text,
           references: document.references,
         });
-      } catch {
-        return errorReply({ error: 'contenu introuvable', slug: clean, language: record.language, url: record.url });
+      } catch (error) {
+        if (error instanceof McpError && error.data?.reason === 'invalid_cursor') {
+          return errorReply({ error: 'curseur invalide', errorCode: 'invalid_cursor', nextAction: 'Reprendre avec le slug et sans cursor, puis utiliser le nextCursor renvoyé.' });
+        }
+        const missing = error?.code === 'ENOENT';
+        return errorReply({
+          error: missing ? 'contenu indisponible' : 'lecture du document impossible',
+          errorCode: missing ? 'content_unavailable' : 'internal_error',
+          slug: clean, language: record.language, url: record.url,
+        });
       }
     }
   );
@@ -3216,6 +3233,11 @@ function observeResponse(res, captureLimit = 1_048_576) {
     responseBytes() {
       return bytes;
     },
+    failureReason(statusCode) {
+      let payload;
+      try { payload = JSON.parse(Buffer.concat(captured).toString('utf8')); } catch { /* No response text is retained. */ }
+      return classifyMcpFailure({ statusCode, payload });
+    },
     outcome(statusCode) {
       if (statusCode < 200 || statusCode >= 400) return 'error';
       if (!captured.length) return 'success';
@@ -3313,6 +3335,7 @@ const httpServer = http.createServer(async (req, res) => {
         body: telemetryBody,
         statusCode: res.statusCode,
         outcome: forcedOutcome || responseObservation.outcome(res.statusCode),
+        failureReason: forcedOutcome ? 'connection_closed' : responseObservation.failureReason(res.statusCode),
         durationMs: performance.now() - startedAt,
         responseBytes: responseObservation.responseBytes(),
         userAgent: req.headers['user-agent'],

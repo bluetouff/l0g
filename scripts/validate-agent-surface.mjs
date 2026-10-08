@@ -2,6 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { extname, join, relative } from 'node:path';
 import Ajv from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
+import { buildHumanTrafficReport } from './human-traffic-report.mjs';
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, 'utf8'));
@@ -110,6 +111,22 @@ function validateOpenapiArtifacts() {
       assert(!validateMetadata({ ...debtMetadata, validUntil: invalid }), `${name}: expiration invalide acceptée`);
     }
     assert(!validateMetadata({ ...debtMetadata, unexpected: true }), `${name}: champ non documenté accepté`);
+  }
+  // Exercise the actual producer: optional rolling diagnostics must be accepted,
+  // while privacy thresholds, bounded coverage and the closed schema remain strict.
+  const validateTraffic = ajv.getSchema('#/components/schemas/HumanTrafficSurface');
+  assert(validateTraffic, 'schema du rapport HTML absent');
+  const trafficLog = '203.0.113.1 - - [08/Oct/2026:12:00:00 +0200] "GET /analyse/ HTTP/2.0" 200 1234 "https://www.google.com/" "Mozilla/5.0"';
+  const trafficFixture = buildHumanTrafficReport(Array(5).fill(trafficLog), { now: new Date('2026-10-08T14:00:00Z') });
+  assert(validateTraffic(trafficFixture), `rapport produit incompatible avec OpenAPI: ${JSON.stringify(validateTraffic.errors)}`);
+  assert(validateTraffic(buildHumanTrafficReport([], { now: new Date('2026-10-08T14:00:00Z') })), 'le rapport HTML vide doit rester valide');
+  const historicalTraffic = structuredClone(trafficFixture);
+  for (const field of ['human_referrers', 'days_observed', 'coverage']) delete historicalTraffic.traffic_classes.rolling_7_days[field];
+  assert(validateTraffic(historicalTraffic), 'les anciens rapports sans diagnostics optionnels doivent rester valides');
+  for (const [field, invalid] of [['days_observed', -1], ['days_observed', 8], ['coverage', 1], ['human_referrers', { google: 4, x: null, direct: null, other: null }], ['unexpected', true]]) {
+    const malformed = structuredClone(trafficFixture);
+    malformed.traffic_classes.rolling_7_days[field] = invalid;
+    assert(!validateTraffic(malformed), `diagnostic HTML invalide accepté: ${field}`);
   }
   const validateFilingFeed = ajv.getSchema('#/components/schemas/FilingEventFeed');
   assert(validateFilingFeed, 'schema du journal 13F absent');

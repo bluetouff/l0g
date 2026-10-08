@@ -1,12 +1,16 @@
 ---
-import { atlases } from '../config/atlases';
-interface Props { current: string }
-const { current } = Astro.props;
+import { atlases, englishAtlases } from '../config/atlases';
+interface Props { current: string; language?: 'fr' | 'en' }
+const { current, language = 'fr' } = Astro.props;
+const isEnglish = language === 'en';
+const entries = isEnglish ? englishAtlases : atlases;
+const counterpart = (isEnglish ? atlases : englishAtlases).find(atlas => atlas.id === current);
 ---
 
-<nav class="atlas-navigation" aria-label="Les atlas l0g">
-  <a class="atlas-home mono-label" href="/atlas/">← Tous les atlas</a>
-  {atlases.map(atlas => <a href={atlas.href} aria-current={atlas.id === current ? 'page' : undefined}>{atlas.label}</a>)}
+<nav class="atlas-navigation" aria-label={isEnglish ? 'l0g atlases' : 'Les atlas l0g'}>
+  <a class="atlas-home mono-label" href={isEnglish ? '/en/atlas/' : '/atlas/'}>← {isEnglish ? 'All atlases' : 'Tous les atlas'}</a>
+  {entries.map(atlas => <a href={atlas.href} aria-current={atlas.id === current ? 'page' : undefined}>{atlas.label}</a>)}
+  {counterpart && <a href={counterpart.href} hreflang={isEnglish ? 'fr' : 'en'} lang={isEnglish ? 'fr' : 'en'}>{isEnglish ? 'Français' : 'English'}</a>}
 </nav>
 
 <style>

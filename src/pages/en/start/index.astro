@@ -9,9 +9,10 @@ const hasAgentSurface = existsSync(new URL('../agent-surface/index.astro', impor
 const steps = [
   ['1', 'Read the latest investigations', '/en/analysis/', 'Start with sourced reporting on macro, credit, technology, policy and the machinery that transmits risk across markets.'],
   ['2', 'Choose a durable reference guide', '/en/guides/', 'Use the guides when you need to read a balance sheet, a public dataset, a market instrument or a regulatory text.'],
-  ['3', 'Follow Asia through the global system', '/en/asia/', 'Trace Japan, Korea, China, Taiwan and Hong Kong through currencies, credit, commodities and global portfolios.'],
-  ['4', 'Audit the evidence', '/en/methodology/', 'Check the methodology, source hierarchy, uncertainty and correction paths behind the editorial work.'],
-  ['5', 'Reuse the public data', hasApi ? '/en/api/' : '/api/', 'Query JSON, NDJSON, the evidence graph, risk snapshots and signal history for reproducible workflows.'],
+  ['3', 'Explore the financing atlases', '/en/atlas/', 'Follow AI, private credit and oil financing through dated relationships; inspect each claim, source and limitation.'],
+  ['4', 'Follow Asia through the global system', '/en/asia/', 'Trace Japan, Korea, China, Taiwan and Hong Kong through currencies, credit, commodities and global portfolios.'],
+  ['5', 'Audit the evidence', '/en/methodology/', 'Check the methodology, source hierarchy, uncertainty and correction paths behind the editorial work.'],
+  ['6', 'Reuse the public data', hasApi ? '/en/api/' : '/api/', 'Query JSON, NDJSON, the evidence graph, risk snapshots and signal history for reproducible workflows.'],
 ];
 
 const tracks = [
@@ -33,7 +34,7 @@ const tracks = [
     href: '/en/guides/read-private-credit-risk/',
     link: 'read the private-credit guide',
     related: [
-      ['/en/analysis/european-risk-national-fund-supervision/', 'Trace fund risk across national supervisors'],
+      ['/en/atlas/private-credit/', 'Map banks, managers, insurers and borrowers in the private credit atlas'],
       ['/en/analysis/private-credit-clo-warehouse-banks/', 'Follow the bank financing before a CLO is issued'],
     ],
   },
@@ -44,7 +45,7 @@ const tracks = [
     href: '/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/',
     link: 'trace Nvidia\'s $500bn claim',
     related: [
-      ['/en/analysis/pjm-electricity-forecast-7-billion/', 'Read the electricity demand forecast behind capacity spending'],
+      ['/en/atlas/ai-financing/', 'Follow commitments and contracts in the AI financing atlas'],
       ['/en/analysis/model-pump-price-of-adequacy/', 'Compare a power-system model with a plant’s physical constraint'],
     ],
   },

@@ -78,6 +78,43 @@ agent / client MCP
   corriger la taxonomie ; seuls ceux atteignant k=5 sont visibles dans le
   diagnostic local `/_l0g/mcp-client-taxonomy`. Rapport public : `/api/mcp/usage`.
 
+## Diagnostic de fiabilité
+
+Le rapport `/api/mcp/usage` conserve les compteurs de succès et d’erreurs. Un succès
+technique indique seulement une réponse MCP sans erreur déclarée ; il ne valide
+ni l’analyse économique, ni la source, ni la fraîcheur du résultat.
+
+Chaque ligne `tools` expose désormais `error_reasons`, des catégories fixes
+agrégées sur la même fenêtre que le compteur d’erreurs. Chaque catégorie publiée
+atteint k=5. `errors_without_detailed_reason` inclut les anciennes erreurs sans
+cause enregistrée et les catégories sous ce seuil. Le fichier de schéma 2 reste
+lisible sans le nouveau champ interne `errorReasons`. Aucun nom d’outil inconnu,
+argument, slug, texte de réponse ou identifiant réseau n’est enregistré.
+
+| Catégorie | Action de diagnostic |
+| --- | --- |
+| `invalid_arguments`, `invalid_date`, `invalid_cursor` | Consulter le contrat de l’outil ; reprendre les curseurs opaques retournés et une date civile valide. |
+| `document_not_found` | Rechercher le slug exact et sa langue avec `search_l0g` ou `search_content`. |
+| `content_unavailable` | Contrôler la présence du fichier HTML dans la release active. |
+| `tool_unavailable` | Relire `tools/list` sur le même endpoint compact ou complet. |
+| `output_contract`, `internal_error` | Reproduire sur la release exacte et contrôler les tests du serveur. |
+| `access_denied`, `rate_limited`, `transport_contract`, `invalid_request`, `connection_closed` | Contrôler le transport, les en-têtes et les limites sans désactiver les protections. |
+| `tool_error`, `unclassified` | Cause encore non qualifiée ; ne pas lui attribuer une explication sans reproduction. |
+
+Les causes des 30 erreurs `get_document` et 32 erreurs `build_research_pack`
+mentionnées dans le rapport du 8 octobre 2026 ne peuvent pas être reconstruites à
+partir de ces seuls agrégats. Les correctifs locaux de pagination et de validation
+ont des tests de régression ; ils ne démontrent pas la cause de ces événements
+historiques. Pour comparer une nouvelle release, relever sa version et son SHA
+avec les dates des captures avant/après, puis calculer les erreurs sur les seuls
+résultats connus. Ne pas mélanger deux fenêtres glissantes comme s’il s’agissait
+d’un flux exact entre deux dates.
+
+La catégorie client `other` reste inconnue tant que le diagnostic local ne fournit
+pas d’éléments suffisants. Ne pas l’attribuer à un fournisseur par supposition.
+Les familles déclarées et les jours actifs ne comptent ni personnes ni
+installations uniques.
+
 ## Resources exposées
 
 Les documents et datasets stables sont exposés comme **resources MCP**. Les tools restent réservés

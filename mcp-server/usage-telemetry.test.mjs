@@ -9,6 +9,7 @@ import {
   buildPrivateClientTaxonomyDiagnostics,
   buildPublicMcpUsageReport,
   classifyMcpClient,
+  classifyMcpFailure,
   classifyMcpResource,
   createMcpUsageStore,
   extractMcpUsageEvents,
@@ -316,4 +317,37 @@ test('regroupe plusieurs requêtes avant une écriture explicite', async () => {
   } finally {
     await rm(root, { recursive: true, force: true });
   }
+});
+
+
+test('classifies bounded failure categories without retaining response text', () => {
+  assert.equal(classifyMcpFailure({ statusCode: 200, payload: { result: { isError: true, structuredContent: { errorCode: 'invalid_cursor', secret: 'private' } } } }), 'invalid_cursor');
+  assert.equal(classifyMcpFailure({ statusCode: 200, payload: { result: { isError: true, structuredContent: { errorCode: 'private-free-form' }, content: [{ type: 'text', text: 'private details' }] } } }), 'tool_error');
+  assert.equal(classifyMcpFailure({ statusCode: 200, payload: { result: { isError: true, content: [{ type: 'text', text: 'MCP error -32602: Output validation error: private details' }] } } }), 'output_contract');
+  assert.equal(classifyMcpFailure({ statusCode: 200, payload: { error: { code: -32602, message: 'private arguments' } } }), 'invalid_arguments');
+  for (const [statusCode, reason] of [[403, 'access_denied'], [406, 'transport_contract'], [429, 'rate_limited'], [500, 'internal_error']]) {
+    assert.equal(classifyMcpFailure({ statusCode }), reason);
+  }
+  assert.equal(classifyMcpFailure({ statusCode: 200, payload: { result: { content: [] } } }), null);
+});
+
+test('keeps historical failures unexplained, applies k=5 and never stores free-form reasons', () => {
+  const request = observation({ body: { method: 'tools/call', params: { name: 'get_document', arguments: { slug: 'private-slug' } } }, outcome: 'error' });
+  let state = aggregateMcpUsage(emptyState(), [request, request], new Date('2026-10-01T00:00:00Z'));
+  // Existing schema-2 files predate this additive field. Their errors remain unknown.
+  delete state.days[0].endpoints[0].tools[0].errorReasons;
+  state = aggregateMcpUsage(state, [
+    ...Array.from({ length: 5 }, () => ({ ...request, failureReason: 'invalid_cursor' })),
+    ...Array.from({ length: 4 }, () => ({ ...request, failureReason: 'content_unavailable' })),
+    { ...request, failureReason: 'private-free-form' },
+  ], new Date('2026-10-08T00:00:00Z'));
+  const report = buildPublicMcpUsageReport(state);
+  const tool = report.tools.find((item) => item.name === 'get_document');
+  assert.equal(tool.errors, 12);
+  assert.equal(tool.success_rate, 0);
+  assert.deepEqual(tool.error_reasons, [{ reason: 'invalid_cursor', count: 5 }]);
+  assert.equal(tool.errors_without_detailed_reason, 7);
+  assert.equal(JSON.stringify(state).includes('private-'), false);
+  assert.equal(report.taxonomy.decision_ready, false);
+  assert.match(report.measurement.technical_success, /validité économique/);
 });

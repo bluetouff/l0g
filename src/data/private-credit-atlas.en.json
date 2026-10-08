@@ -1,0 +1,262 @@
+{
+  "sourceSha256": "db34872ad64ce7be67c88a01cacf7d637ade701833000b4e31f966647b4e56dc",
+  "title": "Private credit atlas",
+  "sources": {
+    "apollo-bnp-2024": {
+      "title": "Apollo and BNP Paribas: the ATLAS SP partnership",
+      "locator": "September 20, 2024 release, first two paragraphs: ATLAS SP ownership and BNP Paribas financing commitment."
+    },
+    "arcc-q2-2026": {
+      "title": "Ares Capital: quarterly report as of June 30, 2026",
+      "locator": "Note 1 (management), note 5 (facilities), investment schedule p. 10 (Hyland Software), exhibits 10.1 and 10.3 (JPMorgan and BNP). SEC filing dated July 29, 2026."
+    },
+    "athene-q2-2026": {
+      "title": "Athene: quarterly report as of June 30, 2026",
+      "locator": "Note 11, Related Parties: Apollo management, AAA/AAA Lux and securities issued by Atlas or its affiliates. SEC filing dated August 10, 2026."
+    },
+    "apollo-q2-2026": {
+      "title": "Apollo: quarterly report as of June 30, 2026",
+      "locator": "Note 1, Organization (fund management and retirement); note 16, Retirement Services, AAA and Atlas sections (ownership interests). SEC filing dated August 10, 2026."
+    },
+    "arcc-notes-announcement-20260908": {
+      "title": "Ares Capital: announcement of the 2033 note offering",
+      "locator": "September 8 release: principal amount, coupon, maturity, expected closing and intended use of proceeds."
+    },
+    "arcc-notes-close-20260915": {
+      "title": "Ares Capital: 8-K confirming the offering closed",
+      "locator": "Items 1.01 and 8.01: September 15 closing, unsecured notes, intended use of proceeds and interest rate swap with JPMorgan."
+    },
+    "pagaya-atlas-vfn-20260929": {
+      "title": "Pagaya: announced closing of a VFN facility with ATLAS SP",
+      "locator": "September 29 release, paragraphs 1 to 3 and final paragraph before About: announced closing, target capacity and dedicated vehicle ahead of securitization."
+    }
+  },
+  "nodes": {
+    "apollo": {
+      "label": "Apollo",
+      "role": "Asset manager"
+    },
+    "bnp": {
+      "label": "BNP Paribas",
+      "role": "Bank · financing"
+    },
+    "jpm": {
+      "label": "JPMorgan Chase",
+      "role": "Bank · credit facility agent"
+    },
+    "ares-manager": {
+      "label": "Ares Capital Management",
+      "role": "ARCC investment manager"
+    },
+    "apollo-funds": {
+      "label": "Apollo funds",
+      "role": "Vehicles managed by Apollo"
+    },
+    "athene": {
+      "label": "Athene",
+      "role": "Insurer · retirement savings"
+    },
+    "arcc": {
+      "label": "Ares Capital · ARCC",
+      "role": "Listed lending company"
+    },
+    "aaa": {
+      "label": "AAA / AAA Lux",
+      "role": "Investment vehicles"
+    },
+    "afb": {
+      "label": "ARCC FB Funding",
+      "role": "ARCC financing subsidiary"
+    },
+    "atlas-sp": {
+      "label": "ATLAS SP",
+      "role": "Asset-backed credit platform"
+    },
+    "hyland": {
+      "label": "Hyland Software",
+      "role": "Corporate borrower"
+    },
+    "arcc-noteholders": {
+      "label": "ARCC noteholders",
+      "role": "Bond financing · 2033 maturity"
+    },
+    "pagaya-vfn": {
+      "label": "Pagaya VFN warehouse",
+      "role": "Personal loan vehicle"
+    }
+  },
+  "relations": {
+    "bnp-atlas": {
+      "observations": {
+        "2024-09-20": {
+          "label": "Announced bank financing",
+          "claim": "BNP Paribas announces a financing commitment for asset-backed credit originated by Apollo and ATLAS SP.",
+          "limit": "The release describes a commitment. It does not establish actual drawdowns or their current status.",
+          "watch": "Drawdowns, maturities and changes to the agreement."
+        }
+      }
+    },
+    "funds-atlas": {
+      "observations": {
+        "2024-09-20": {
+          "label": "Announced majority ownership",
+          "claim": "The release describes ATLAS SP as majority-owned by Apollo funds.",
+          "limit": "The investing funds are separate from the Apollo asset manager balance sheet. The release does not detail their individual stakes.",
+          "watch": "Changes in ownership."
+        }
+      }
+    },
+    "ares-arcc": {
+      "observations": {
+        "2026-07-29": {
+          "label": "Investment management mandate",
+          "claim": "Ares Capital Management manages ARCC under an investment advisory and management agreement.",
+          "limit": "The manager and the financing company are separate entities.",
+          "watch": "Mandate and fees."
+        }
+      }
+    },
+    "jpm-arcc": {
+      "observations": {
+        "2026-07-29": {
+          "label": "Bank facility agent",
+          "claim": "JPMorgan is the administrative agent for the ARCC credit facility cited in exhibit 10.1.",
+          "limit": "Acting as agent does not mean JPMorgan provides all the lending.",
+          "watch": "Syndicate membership and commitments."
+        }
+      }
+    },
+    "bnp-afb": {
+      "observations": {
+        "2026-07-29": {
+          "label": "Lender and administrative agent",
+          "claim": "BNP Paribas is a lender and the administrative agent for the ARCC FB Funding facility.",
+          "limit": "The facility finances this vehicle; it does not identify a particular ultimate borrower.",
+          "watch": "Drawdowns and collateral."
+        }
+      }
+    },
+    "arcc-afb": {
+      "observations": {
+        "2026-07-29": {
+          "label": "Equity ownership and loan servicing",
+          "claim": "ARCC is the equity owner and loan servicer of ARCC FB Funding in exhibit 10.3.",
+          "limit": "The vehicle borrows separately from its parent.",
+          "watch": "Assets assigned to the vehicle."
+        }
+      }
+    },
+    "arcc-hyland": {
+      "observations": {
+        "2026-07-29": {
+          "label": "Senior secured loan",
+          "claim": "ARCC reports a first-lien senior secured loan to Hyland Software as of June 30, 2026.",
+          "limit": "One reported holding does not describe all of Hyland's debt.",
+          "watch": "Repayments and the next investment schedule."
+        }
+      }
+    },
+    "apollo-athene": {
+      "observations": {
+        "2026-08-10": {
+          "label": "Management of the insurer's portfolio",
+          "claim": "Athene states that Apollo manages substantially all of its investments as of June 30, 2026.",
+          "limit": "This mandate does not turn the insurer's obligations into debts of Apollo-managed funds.",
+          "watch": "Mandate, fees and affiliate transactions."
+        }
+      }
+    },
+    "athene-aaa": {
+      "observations": {
+        "2026-08-10": {
+          "label": "Ownership of investment vehicles",
+          "claim": "Apollo states that Athene owns and consolidates AAA and AAA Lux, which hold alternative investments.",
+          "limit": "These vehicles may also include third-party capital. Accounting consolidation does not mean full ownership.",
+          "watch": "Ownership interests and third-party investor interests."
+        }
+      }
+    },
+    "aaa-atlas": {
+      "observations": {
+        "2026-08-10": {
+          "label": "Indirect equity ownership",
+          "claim": "Athene's equity interest in Atlas is held through its investments in AAA and AAA Lux.",
+          "limit": "This ownership chain is separate from the Atlas securities Athene holds directly.",
+          "watch": "Changes in ownership interests and scope."
+        }
+      }
+    },
+    "athene-atlas": {
+      "observations": {
+        "2026-08-10": {
+          "label": "Investment in securities",
+          "claim": "Athene reports holding available-for-sale securities issued by Atlas or its affiliates as of June 30, 2026.",
+          "limit": "This link groups the Atlas and affiliate issuers cited in the report. It measures neither a loss nor a new flow of funds.",
+          "watch": "Issuers, valuations and additional commitments."
+        }
+      }
+    },
+    "apollo-funds-management": {
+      "observations": {
+        "2026-08-10": {
+          "label": "Management of funds and vehicles",
+          "claim": "Apollo raises and manages funds, accounts and vehicles for institutional and individual investors.",
+          "limit": "This node groups distinct vehicles. It represents neither a single fund nor a blanket Apollo guarantee.",
+          "watch": "Scope of vehicles and mandates."
+        }
+      }
+    },
+    "noteholders-arcc": {
+      "observations": {
+        "2026-09-08": {
+          "label": "Offering announced · $750m",
+          "claim": "ARCC announces a $750 million principal offering with a 6.250% annual coupon, maturing on September 15, 2033. Closing is expected on September 15, 2026.",
+          "limit": "At this date, closing remains conditional. Principal differs from net proceeds after the discount and fees.",
+          "watch": "Closing and use of proceeds."
+        },
+        "2026-09-15": {
+          "label": "Offering closed · $750m",
+          "claim": "ARCC confirms the September 15 closing of its $750 million principal offering. These unsecured notes carry a 6.250% coupon and mature on September 15, 2033. Net proceeds are intended to repay debt under its credit facilities.",
+          "limit": "Repayment remains a stated intended use. The coupon does not capture the cost after the interest rate swap with JPMorgan. No financing of a particular portfolio loan can be inferred.",
+          "watch": "Completed repayments and the effects of the interest rate swap."
+        }
+      }
+    },
+    "atlas-pagaya-vfn": {
+      "observations": {
+        "2026-09-29": {
+          "label": "Announced closing · VFN warehouse",
+          "claim": "Pagaya announces the closing of a revolving VFN facility with ATLAS SP, targeting approximately $700 million of capacity. The structure provides for a dedicated vehicle to warehouse personal loans before securitization.",
+          "limit": "The release does not give the vehicle's legal name, publish the agreement or disclose drawdowns. Capacity is not confirmed cash received. No financing from BNP or Athene to this warehouse is established.",
+          "watch": "Vehicle identity, agreement, drawdowns and maturities."
+        }
+      }
+    }
+  },
+  "milestones": {
+    "2024-09-20": {
+      "label": "BNP and ATLAS SP",
+      "change": "An announced financing partnership and ownership by Apollo funds. This view reproduces the position described in the 2024 release."
+    },
+    "2026-07-29": {
+      "label": "The Ares financing chain",
+      "change": "ARCC's report as of June 30, 2026 distinguishes its manager, bank facilities, financing subsidiary and a loan to Hyland Software."
+    },
+    "2026-08-10": {
+      "label": "The insurance financing chain",
+      "change": "Apollo and Athene's reports as of June 30, 2026 describe management mandates, indirect ownership and securities holdings. Links from 2024 retain their original date."
+    },
+    "2026-09-08": {
+      "label": "The bond offering",
+      "change": "ARCC announces a bond offering to refinance debt under its credit facilities. This release does not yet confirm completion."
+    },
+    "2026-09-15": {
+      "label": "The offering closes",
+      "change": "The 8-K confirms the offering closed. ARCC's bond financing appears alongside its bank facilities; actual repayments remain to be documented."
+    },
+    "2026-09-29": {
+      "label": "The Pagaya loan warehouse",
+      "change": "Pagaya announces a revolving facility with ATLAS SP to hold personal loans ahead of securitization. Target capacity and drawdowns are distinct."
+    }
+  }
+}

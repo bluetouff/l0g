@@ -1,0 +1,44 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import EngagementAtlas from '../../../components/EngagementAtlas.astro';
+import { englishAtlasDatasets } from '../../../config/english-atlas-datasets';
+import { atlasAlternateLinks } from '../../../config/atlases';
+const dataset = englishAtlasDatasets['ai-financing'];
+---
+
+<EnglishGuidesLayout title={dataset.title} seoTitle="AI financing atlas: Nvidia, OpenAI and their contracts | l0g" description="Who funds AI infrastructure, and who guarantees the payments? Explore Nvidia, OpenAI, SB Energy and AIP through dated contracts and primary sources." ogImage="/illustrations/news/openai-credit-guarantee-v1.jpg" alternateLinks={atlasAlternateLinks(dataset.id)}>
+  <EngagementAtlas
+    language="en"
+    dataset={dataset}
+    subject="AI financing"
+    intro="Nvidia, OpenAI, SB Energy and AIP: who finances AI infrastructure, who guarantees what, and on which terms? Explore the documented relationships as successive publications change what can be established."
+    boundary="The 21 September prospectus separates prepayment received through Energy Global, LP from a still-conditional share purchase. It renames SE Global Holdings, Inc. as SB Energy, Inc.; the node retains the contractual name for historical views. These transactions remain separate from the campus guarantees. This corpus establishes no financing from AIP to that campus."
+    selectedRelation="nvidia-energy-global-prepayment"
+    hubs={['nvidia', 'aip']}
+    entryPoints={[
+      { label: 'What has Nvidia already paid?', relation: 'nvidia-energy-global-prepayment', date: '2026-09-21' },
+      { label: 'What did AIP, MGX and GIP acquire?', relation: 'consortium-aligned-acquisition', date: '2026-07-21' },
+      { label: 'Who pays if OpenAI stops paying?', relation: 'nvidia-sb-guarantee', date: dataset.milestones.at(-1)!.date, scenario: true },
+      { label: 'How has Nvidia’s role changed?', relation: 'nvidia-aip', date: '2025-03-19' },
+    ]}
+    outlinks={[
+      { href: '/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/', label: 'Read the investigation' },
+      { href: '/api/v1/en/atlases/ai-financing.json', label: 'Reuse the relationships and sources · English JSON' },
+      { href: '/en/methodology/', label: 'Read the methodology behind l0g’s indicators' },
+    ]}
+  >
+    <section slot="overview" class="atlas-overview" aria-labelledby="ai-review-title">
+      <h2 id="ai-review-title">Evidence reviewed on <time datetime="2026-10-04">4 October 2026</time></h2>
+      <p>This English edition preserves the French atlas’s dated review. The latest filing in the <a href="https://data.sec.gov/submissions/CIK0002133037.json">SB Energy SEC register</a> examined then was the <a href="https://www.sec.gov/Archives/edgar/data/2133037/000162828026062846/sbenergy-sx1a2.htm">21 September prospectus</a>. Its prepayment and concurrent placement terms were reviewed. None of the documents examined in that review confirmed settlement of Nvidia’s additional share purchase or completion of the IPO.</p>
+      <p>The <a href="https://aligneddc.com/press-release/aligned-data-centers-appoints-industry-veteran-chris-drumgoole-as-chief-operating-officer/">Aligned</a>, <a href="https://blogs.nvidia.com/blog/gpus-openai-gpt-6-astra-ultrafast/">Nvidia</a> and <a href="https://openai.com/news/company-announcements/">OpenAI</a> publications consulted for the French review did not establish a change in the financial relationships shown. That review covered this map’s selected cases, not every AI financing arrangement. Translating the atlas does not constitute a new review of events after 4 October.</p>
+    </section>
+  </EngagementAtlas>
+</EnglishGuidesLayout>
+
+<style>
+  .atlas-overview { margin:1rem 0 2rem; padding:1rem 1.2rem; border:1px solid var(--color-line); border-left:3px solid var(--color-signal); border-radius:8px; background:var(--color-surface); }
+  .atlas-overview h2 { margin:0 0 .7rem; color:var(--color-bright); font-family:var(--font-display); font-size:1rem; }
+  .atlas-overview p { max-width:90ch; margin:.7rem 0; font-family:var(--font-read); font-size:.85rem; line-height:1.7; }
+  .atlas-overview a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; }
+  .atlas-overview a:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+</style>

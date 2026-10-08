@@ -1,61 +1,68 @@
 ---
 title: "Lire les réserves de change des banques centrales (COFER et part de l'or)"
-description: "Guide de référence sur les réserves de change mondiales : ce que mesure le COFER du FMI, la part du dollar et son déclin graduel, le piège central de la valorisation face aux vrais flux d'achat, le cas de l'or exclu du COFER et son passage au-dessus des Treasuries, et comment distinguer une décision d'allocation d'un simple effet de prix. Avec les données 2026 comme cas d'école du récit de la dédollarisation."
-summary: "Le COFER du FMI mesure chaque trimestre la composition en devises des réserves de change mondiales, hors or. Le dollar y pèse encore autour de 57 %, en déclin graduel depuis 2000. Le lire suppose une discipline unique : distinguer l'effet de valorisation, dû aux mouvements de prix et de change, des vrais flux d'allocation des banques centrales. C'est cette distinction qui sépare le récit d'une dédollarisation brutale de la réalité d'une diversification lente. Les données 2026 servent d'illustration."
+description: "Lire le COFER du FMI : composition des réserves, effet de change, imputation depuis 2025 et différence entre réserves de devises et or monétaire."
+summary: "Le COFER mesure la composition en devises des réserves de change officielles, hors or monétaire. Depuis la publication portant sur le troisième trimestre 2025, il estime la composition auparavant non allouée et révise l'historique jusqu'au premier trimestre 2000. Une variation de part nécessite de vérifier le millésime, le dénominateur et l'effet de change avant d'en déduire des achats ou des ventes."
 pubDate: 2026-07-28T10:23:00+02:00
-updatedDate: 2026-07-28T10:23:00+02:00
+updatedDate: 2026-10-08T20:00:00+02:00
 tags: ["macro", "banques centrales", "dollar"]
 category: macro
 draft: false
 ---
 import InfographicBars from '../../components/infographic/InfographicBars.astro';
 
-*Les réserves de change disent ce qu'une banque centrale garde sous la main quand tout va mal, et à ce titre elles trahissent ses vraies préférences mieux que ses discours. Mais leur lecture est un champ de mines, car un chiffre qui bouge n'est pas forcément une décision qui a été prise. La part du dollar peut chuter d'un trimestre à l'autre sans qu'aucun banquier central n'ait vendu un seul billet vert, simplement parce que le dollar s'est déprécié. Lire les réserves, c'est d'abord apprendre à séparer ce que le prix a fait de ce que l'allocation a voulu. Ce guide donne cette grille, avec les données de 2026 et le récit de la dédollarisation en toile de fond.*
+La part du dollar dans les réserves peut baisser sans qu'une banque centrale ait vendu de dollars. Une appréciation des autres devises suffit à modifier leur poids dans un portefeuille exprimé en monnaie américaine. Une révision de méthode peut aussi déplacer la série que l'on compare. Lire le COFER consiste à identifier ces effets avant d'attribuer une intention aux détenteurs de réserves.
 
-## La méthode du COFER
+## Le périmètre du COFER
 
-La source de référence est le [COFER](/glossaire/#cofer), publié chaque trimestre par le Fonds monétaire international. Il mesure la composition en devises des réserves de change officielles du monde, c'est-à-dire les avoirs en monnaies étrangères que les banques centrales détiennent pour intervenir et se financer. Deux précisions de périmètre sont essentielles. D'abord, le COFER ne couvre que les réserves dites allouées, celles dont la devise est déclarée au FMI ; une fraction reste non allouée, même si la couverture est aujourd'hui quasi complète. Ensuite, et c'est capital, le COFER exclut l'or : il ne mesure que les devises. La part de l'or, elle, se calcule sur les réserves totales, un ensemble différent.
+Le [COFER du FMI](https://data.imf.org/en/datasets/IMF.STA:COFER) publie chaque trimestre la composition en devises des réserves de change officielles. Il exclut l'or monétaire, les droits de tirage spéciaux et la position de réserve au FMI. La part de l'or dans les réserves totales utilise donc un autre dénominateur.
 
-À l'intérieur de ce périmètre, le dollar reste dominant, mais son règne s'effrite lentement. Sa part est passée de près de 71 % en 2000 à environ [57 % au premier trimestre 2026](https://data.imf.org/en/news/imf%20data%20brief%20july%201), un déclin réel mais graduel, étalé sur un quart de siècle, qui n'a rien du décrochage brutal parfois annoncé.
+La devise et l'instrument constituent également deux classements distincts. Les réserves en dollars ne se réduisent pas aux obligations du Trésor américain. Une comparaison avec les Treasuries exige une source qui identifie ces titres ; on ne peut pas renommer ainsi la colonne dollar du COFER.
+
+## La rupture de méthode de 2025
+
+À partir de la publication portant sur le **troisième trimestre 2025**, le FMI a supprimé la catégorie publiée « non allouée » en estimant sa composition en devises. L'historique a été révisé jusqu'au **premier trimestre 2000**, et le FMI publie la part des réserves imputées. La [présentation officielle du jeu de données](https://data.imf.org/en/datasets/IMF.STA:COFER) décrit cette évolution.
+
+Les parts couvrent désormais l'ensemble des réserves de change. Une couverture complète du total ne signifie toutefois pas que toutes les devises ont été directement déclarées. La [note méthodologique de novembre 2025](https://www.imf.org/-/media/files/publications/tnm/2025/english/tnmea2025014.pdf) explique les méthodes d'estimation et les contraintes de confidentialité.
+
+Pour construire un historique, il faut utiliser une même version de la série. Juxtaposer une ancienne part des réserves allouées à une nouvelle part incluant les imputations crée une comparaison de périmètres différents. Un ancien communiqué reste valable comme description de l'estimation publiée à sa date, à condition de conserver cette précision.
+
+## Un exemple vérifiable d'effet de change
+
+Dans sa [publication du 2 octobre 2025](https://data.imf.org/en/news/october-1-2025-cofer), le FMI indiquait que la part du dollar dans les réserves **allouées** était passée de **57,79 % à 56,32 %** entre les deux premiers trimestres de 2025, soit une baisse de **1,47 point de pourcentage**. À taux de change inchangés, il estimait cette baisse à seulement **0,12 point**.
 
 <InfographicBars
-  title="La part du dollar dans les réserves allouées"
-  subtitle="Part du dollar dans les réserves de change mondiales déclarées, en pourcentage."
-  max={71}
+  title="Un trimestre, deux mesures"
+  subtitle="Baisse du dollar · T2 2025 · points"
+  compact={true}
+  fontScale={1.3}
+  max={1.5}
   items={[
-    { label: "2000", value: 71, valueLabel: "≈ 71 %", tone: "muted" },
-    { label: "2015", value: 66, valueLabel: "≈ 66 %", tone: "blue" },
-    { label: "2026 (T1)", value: 57, valueLabel: "≈ 57 %", tone: "signal" },
+    { label: "Baisse publiée", value: 1.47, valueLabel: "1,47 point", tone: "signal" },
+    { label: "À change inchangé", value: 0.12, valueLabel: "0,12 point", tone: "muted" },
   ]}
-  note="Un déclin réel mais lent : environ quatorze points en vingt-cinq ans, pas un effondrement."
-  source="Source : FMI, COFER. Parts arrondies."
-  caption="Le recul du dollar est graduel et étalé sur un quart de siècle. Une part de ce mouvement tient d'ailleurs à la valorisation, non à des ventes : lire la tendance ne suffit pas, il faut la décomposer. Source : FMI."
+  note="Publication 2025 · réserves allouées"
+  source="FMI · 2 octobre 2025."
+  caption="La baisse publiée est calculée par 57,79 moins 56,32. L'estimation de 0,12 point vient de l'ajustement du FMI. Les deux valeurs concernent le même trimestre et le même millésime, antérieur à la réforme des imputations."
 />
 
-## Le piège de la valorisation
+À quantité d'euros inchangée, une appréciation de l'euro augmente leur valeur exprimée en dollars. Leur part progresse et celle du dollar peut diminuer sans vente de dollars. Le FMI détaille ce mécanisme dans sa [note technique](https://www.imf.org/-/media/files/publications/tnm/2025/english/tnmea2025014.pdf).
 
-Voici l'erreur qui piège la moitié des commentaires. Quand la part du dollar bouge, la première question n'est pas « pourquoi les banques centrales ont-elles vendu », mais « le prix a-t-il changé ». Car les réserves sont valorisées en dollars, et le simple mouvement des taux de change déplace les parts sans qu'aucune allocation n'ait été modifiée. La donnée de 2026 l'illustre parfaitement : la part du dollar est [montée à 57,13 % au premier trimestre 2026, contre 56,42 % fin 2025, mais cette hausse tient pour l'essentiel à l'appréciation du dollar, l'effet de valorisation expliquant environ la moitié du mouvement](https://data.imf.org/en/news/imf%20data%20brief%20july%201). Un trimestre plus tôt, la même mécanique jouait en sens inverse : quand la part du dollar avait reculé, [92 % de la baisse venaient des taux de change, pas des décisions de portefeuille](https://www.bestbrokers.com/forex-trading/us-dollar-share-of-global-currency-reserves/).
+Neutraliser le change resserre l'analyse, mais ne transforme pas la variation restante en relevé exhaustif des transactions. Les prix des titres, les revenus, la couverture statistique ou des révisions peuvent encore intervenir. Le résidu ne suffit pas non plus à établir l'intention politique d'un détenteur.
 
-La leçon est une discipline : ne jamais lire une variation de part sans la corriger de l'[effet de valorisation](/glossaire/#effet-de-valorisation). Une part qui monte peut cacher des ventes, une part qui baisse peut cacher des achats. Seule la mesure à taux de change constant révèle ce que les banques centrales ont réellement décidé, et elle raconte presque toujours une histoire plus terne que le prix.
+## L'or demande deux lectures
 
-## L'or, hors du COFER
+Pour l'or, il faut distinguer la quantité détenue de sa valeur. La première renseigne sur les mouvements de métal déclarés ; la seconde dépend aussi du cours et permet d'évaluer son poids dans un portefeuille défini. Ces deux mesures répondent à des questions différentes.
 
-Le même piège se rejoue, amplifié, sur l'or. En 2025, l'or a dépassé les bons du Trésor américain comme part des réserves officielles, un basculement spectaculaire que nous avons commenté dans notre analyse du [debasement trade](/posts/debasement-trade-gueule-de-bois-or/). Mais ce franchissement a été [porté presque entièrement par la hausse du prix de l'or, pas par un rééquilibrage, et il n'apparaît pas dans la part du dollar au COFER, restée globalement stable](https://data.imf.org/en/news/imf%20data%20brief%20july%201). Quand le métal bondit, sa valeur dans les réserves gonfle mécaniquement, sans qu'une once ait été achetée.
+Puisque l'or est hors COFER, sa progression dans les réserves totales ne se lit pas directement dans la part du dollar de cette base. Affirmer qu'il a dépassé un autre actif exige la même date de valorisation et des périmètres explicites. Notre analyse des [achats d'or des banques centrales](/posts/or-banques-centrales-dedollarisation-tonnes/) traite ce sujet séparément.
 
-Cela ne signifie pas que rien ne se passe. Les banques centrales achètent bel et bien de l'or à un rythme soutenu, un vrai flux que nous suivons dans notre article sur [les tonnes accumulées](/posts/or-banques-centrales-dedollarisation-tonnes/), et pour le mesurer il faut regarder les tonnes, pas la valeur. La bonne lecture superpose donc deux plans : la valorisation, qui fait le gros des variations de parts, et le flux, plus lent, qui trahit l'intention. Confondre les deux, c'est prendre une hausse du cours pour une décision géopolitique.
+## Ce que les agrégats laissent inconnu
 
-## Les pièges de lecture
+La confidentialité empêche de reconstruire les choix de chaque pays à partir du seul agrégat mondial. L'absence de ventilation publique par devise ne prouve pas qu'un pays ne fournit aucune donnée confidentielle au FMI. La [note méthodologique](https://www.imf.org/-/media/files/publications/tnm/2025/english/tnmea2025014.pdf) précise cette limite.
 
-Au-delà de la valorisation, quelques réflexes s'imposent. Le premier est de distinguer réserves allouées et totales : le COFER porte sur les premières, la part de l'or sur les secondes, et les mélanger produit des non-sens. Le deuxième est de se méfier des déclarants manquants : certains grands détenteurs, la Chine au premier chef, ne déclarent pas finement la composition de leurs réserves, ce qui rend la mesure de leurs choix indirecte. Le troisième est le décalage : la donnée COFER paraît avec un trimestre de retard. Le quatrième, enfin, est le biais du récit : la dédollarisation est un mouvement réel mais lent, et la tentation est grande de lire chaque soubresaut de prix comme la fin du dollar, alors que les vrais flux, corrigés de la valorisation, dessinent une diversification graduelle et partielle, cohérente avec notre lecture du [récit face aux chiffres](/posts/dedollarisation-recit-vs-chiffres/).
+Un stock trimestriel de réserves ne mesure pas davantage la facturation du commerce, les prêts bancaires internationaux ou les messages de paiement. Ces dimensions de l'usage d'une monnaie disposent de sources distinctes. Notre [lecture des récits de dédollarisation](/posts/dedollarisation-recit-vs-chiffres/) les replace dans leur contexte.
 
-## Lire les réserves en pratique
+## Sources et révision
 
-La méthode tient en quatre gestes. Toujours corriger une variation de part de l'effet de change avant d'y voir une décision. Mesurer l'or en tonnes, jamais en valeur, pour isoler le flux du prix. Séparer proprement le COFER, qui parle devises et réserves allouées, de la part de l'or, qui parle réserves totales. Et croiser la donnée dure avec les intentions déclarées, comme l'enquête annuelle du World Gold Council, pour anticiper les flux à venir. Lu ainsi, le tableau de 2026 est sobre : le dollar autour de 57 %, stable une fois neutralisée la valorisation ; l'or accumulé pour de vrai mais dont la envolée de part doit presque tout au cours. La dédollarisation existe, elle est lente, et elle se lit dans les flux, pas dans les prix.
+La lecture doit conserver le trimestre observé, le millésime de publication, l'unité et le dénominateur, puis vérifier les imputations et les révisions. Lorsque les données ne permettent pas de séparer valorisation et transactions, cette séparation reste inconnue.
 
----
-
-### Sources
-
-- [FMI, « IMF Data Brief: Currency Composition of Official Foreign Exchange Reserves », juillet 2026 (part du dollar 57,13 % au T1 2026, effet de valorisation, or hors COFER)](https://data.imf.org/en/news/imf%20data%20brief%20july%201)
-- [BestBrokers, « US Dollar Share of Global Currency Reserves in 2026 » (92 % de la baisse de part due aux taux de change au T2 2025)](https://www.bestbrokers.com/forex-trading/us-dollar-share-of-global-currency-reserves/)
-- [World Gold Council, « Central Bank Gold Reserves Survey 2026 » (intentions d'achat des banques centrales)](https://www.gold.org/goldhub/research/central-bank-gold-reserves-survey-2026/perspectives-on-gold-reserves)
+La révision du 8 octobre 2026 corrige l'ancien périmètre limité aux réserves allouées et remplace une estimation issue d'un courtier par l'exemple historique du FMI. Sources : [base COFER](https://data.imf.org/en/datasets/IMF.STA:COFER), [méthode de novembre 2025](https://www.imf.org/-/media/files/publications/tnm/2025/english/tnmea2025014.pdf), [publication du 2 octobre 2025](https://data.imf.org/en/news/october-1-2025-cofer).

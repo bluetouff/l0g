@@ -99,7 +99,7 @@ export function assertAtlasDataset(value: unknown, allowProposals = false): asse
     if (relation.reading !== undefined) {
       object(relation.reading); keys(relation.reading, ['href', 'label']);
       text(relation.reading.label, 160);
-      requireValue(typeof relation.reading.href === 'string' && /^\/posts\/[a-z0-9-]+\/$/.test(relation.reading.href), 'lien de lecture interne invalide');
+      requireValue(typeof relation.reading.href === 'string' && /^\/(?:posts|en\/analysis)\/[a-z0-9-]+\/$/.test(relation.reading.href), 'lien de lecture interne invalide');
     }
     requireValue(nodeIds.has(relation.from) && nodeIds.has(relation.to) && relation.from !== relation.to, 'relation orpheline');
     list(relation.observations, 40);
@@ -162,6 +162,6 @@ export function atlasSelection(dataset: AtlasDataset, hash: string, preferredRel
     && snapshot.relations.some(item => item.id === 'nvidia-sb-guarantee') };
 }
 
-export function formatAtlasDate(date: string): string {
-  return new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
+export function formatAtlasDate(date: string, language: 'fr' | 'en' = 'fr'): string {
+  return new Intl.DateTimeFormat(language === 'en' ? 'en-GB' : 'fr-FR', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
 }

@@ -1,4 +1,5 @@
 ---
+import { atlasAlternateLinks } from '../../config/atlases';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EngagementAtlas from '../../components/EngagementAtlas.astro';
 import dataset from '../../data/oil-financing-atlas.json';
@@ -10,7 +11,7 @@ import dataset from '../../data/oil-financing-atlas.json';
   description="Qui finance le commerce du pétrole ? Explorez les liens entre banques, Trafigura, Glencore et le Tchad : cargaisons, crédits et recettes publiques."
   ogImage="/illustrations/news/oil-trade-bank-finance-v1.jpg"
   ogImageAlt="Les banques et le financement du commerce pétrolier"
-  sidebar={false}
+  alternateLinks={atlasAlternateLinks(dataset.id)} sidebar={false}
 >
   <EngagementAtlas
     dataset={dataset}

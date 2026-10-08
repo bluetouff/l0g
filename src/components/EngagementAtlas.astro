@@ -1,7 +1,9 @@
 ---
 import AtlasNavigation from './AtlasNavigation.astro';
+import { atlasUi, atlasRelationCount, type AtlasLanguage } from '../config/atlas-ui.ts';
 import { assertAtlasDataset, atlasAt, formatAtlasDate } from '../lib/engagement-atlas.ts';
 interface Props {
+  language?: AtlasLanguage;
   dataset: unknown;
   subject: string;
   intro: string;
@@ -11,22 +13,24 @@ interface Props {
   entryPoints: { label: string; date: string; relation: string; scenario?: boolean }[];
   outlinks: { href: string; label: string }[];
 }
-const { dataset, subject, intro, boundary, selectedRelation, hubs, entryPoints, outlinks } = Astro.props;
+const { language = 'fr', dataset, subject, intro, boundary, selectedRelation, hubs, entryPoints, outlinks } = Astro.props;
 assertAtlasDataset(dataset);
 const latest = dataset.milestones.at(-1)!;
 const initial = atlasAt(dataset, latest.date);
 const selected = initial.relations.find(item => item.id === selectedRelation);
 if (!selected) throw new Error('Atlas : relation initiale absente');
 const node = (id: string) => dataset.nodes.find(item => item.id === id)!;
-const kinds = { announcement: 'Annonce des parties', contract: 'Relation déclarée', limitation: 'Limites documentées' };
+const ui = atlasUi[language];
+const kinds = ui.kinds;
+const dateLabel = (date: string) => formatAtlasDate(date, language);
 ---
 
-  <div class="atlas" data-engagement-atlas data-atlas-initial-relation={selectedRelation}>
+  <div class="atlas" data-engagement-atlas data-atlas-language={language} data-atlas-initial-relation={selectedRelation}>
     <span hidden data-atlas-data>{JSON.stringify(dataset)}</span>
-    <AtlasNavigation current={dataset.id} />
+    <AtlasNavigation current={dataset.id} language={language} />
     <header class="atlas-header">
-      <p class="mono-label">// carte interactive · acteurs et contrats</p>
-      <h1>Atlas du <span>{subject}</span></h1>
+      <p class="mono-label">{ui.kicker}</p>
+      <h1>{ui.titlePrefix} <span>{subject}</span></h1>
       <p class="atlas-intro">{intro}</p>
       <div class="atlas-entry" data-atlas-controls hidden>
         {entryPoints.map(entry => <button type="button" data-atlas-entry={entry.relation} data-entry-date={entry.date} data-entry-scenario={entry.scenario ? 'default' : undefined}>{entry.label} <span aria-hidden="true">↗</span></button>)}
@@ -37,25 +41,25 @@ const kinds = { announcement: 'Annonce des parties', contract: 'Relation déclar
 
     <section class="atlas-workbench" aria-labelledby="atlas-map-title">
       <div class="atlas-toolbar">
-        <h2 id="atlas-map-title">Le réseau documenté</h2>
-        <p><span data-atlas-count>{initial.nodes.length} acteurs et structures · {initial.relations.length} relations</span></p>
+        <h2 id="atlas-map-title">{ui.network}</h2>
+        <p><span data-atlas-count>{initial.nodes.length} {ui.actors} · {atlasRelationCount(initial.relations.length, language)}</span></p>
       </div>
-      <nav class="atlas-dates" data-atlas-controls hidden aria-label="Choisir une date de publication">
-        {dataset.milestones.map((milestone, index) => <button type="button" data-atlas-date={milestone.date} aria-pressed={milestone.date === latest.date ? 'true' : 'false'}><span class="date-number">0{index + 1}</span><time datetime={milestone.date}>{formatAtlasDate(milestone.date)}</time><span>{milestone.label}</span></button>)}
+      <nav class="atlas-dates" data-atlas-controls hidden aria-label={ui.chooseDate}>
+        {dataset.milestones.map((milestone, index) => <button type="button" data-atlas-date={milestone.date} aria-pressed={milestone.date === latest.date ? 'true' : 'false'}><span class="date-number">0{index + 1}</span><time datetime={milestone.date}>{dateLabel(milestone.date)}</time><span>{milestone.label}</span></button>)}
       </nav>
       <p class="atlas-change" data-atlas-change aria-live="polite">{latest.change}</p>
       <div class="atlas-map" data-atlas-map>
         <svg class="atlas-lines" data-atlas-lines aria-hidden="true" viewBox="0 0 1000 600" style="width:100%;height:auto"><defs><marker id="atlas-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" fill="context-stroke" /></marker></defs><g data-atlas-paths /></svg>
-        {dataset.nodes.map(item => <a href="#atlas-relations" data-atlas-node={item.id} class:list={['atlas-node', { 'atlas-hub': hubs.includes(item.id) }]} style={`--atlas-col:${item.column + 1};--atlas-row:${item.row + 1}`} hidden={!initial.nodes.some(visible => visible.id === item.id)}><span class="node-role">{item.role}</span><strong data-node-label>{item.label}</strong><span class="node-count" data-node-count>{initial.relations.filter(relation => relation.from === item.id || relation.to === item.id).length} relations</span></a>)}
+        {dataset.nodes.map(item => <a href="#atlas-relations" data-atlas-node={item.id} class:list={['atlas-node', { 'atlas-hub': hubs.includes(item.id) }]} style={`--atlas-col:${item.column + 1};--atlas-row:${item.row + 1}`} hidden={!initial.nodes.some(visible => visible.id === item.id)}><span class="node-role">{item.role}</span><strong data-node-label>{item.label}</strong><span class="node-count" data-node-count>{atlasRelationCount(initial.relations.filter(relation => relation.from === item.id || relation.to === item.id).length, language)}</span></a>)}
       </div>
-      <div class="atlas-legend"><span><i class="legend-announcement" /> Annonce</span><span><i /> Relation déclarée</span><span><i class="legend-selected" /> Relation sélectionnée</span><span>Traits sans échelle financière ; nature du lien dans la fiche</span></div>
+      <div class="atlas-legend"><span><i class="legend-announcement" /> {ui.announcement}</span><span><i /> {ui.contract}</span><span><i class="legend-selected" /> {ui.selected}</span><span>{ui.legend}</span></div>
       <p class="atlas-boundary">{boundary}</p>
     </section>
 
     <section class="atlas-inspection" aria-labelledby="atlas-inspector-title">
       <div class="atlas-relations" id="atlas-relations">
-        <div class="relation-heading"><h2>Choisir une relation</h2><button type="button" data-atlas-reset hidden>Toutes</button></div>
-        <p data-atlas-filter class="atlas-filter">Toutes les relations à cette date</p>
+        <div class="relation-heading"><h2>{ui.chooseRelation}</h2><button type="button" data-atlas-reset hidden>{ui.all}</button></div>
+        <p data-atlas-filter class="atlas-filter">{ui.allRelations}</p>
         <div data-atlas-relation-list>
           {initial.relations.map(relation => <a href={`#preuve-${relation.id}`} data-atlas-relation={relation.id} class:list={{ 'is-selected': relation.id === selected.id }}><span>{node(relation.from).label} <b aria-hidden="true">→</b> {node(relation.to).label}</span><small>{relation.observation.label}</small></a>)}
         </div>
@@ -63,27 +67,27 @@ const kinds = { announcement: 'Annonce des parties', contract: 'Relation déclar
       <article class="atlas-proof" data-atlas-proof>
         <p class="mono-label" data-proof-kind>{kinds[selected.observation.kind]}</p>
         <h2 id="atlas-inspector-title" data-proof-title aria-live="polite">{node(selected.from).label} → {node(selected.to).label}</h2>
-        <p class="proof-date" data-proof-date>Publication du {formatAtlasDate(selected.observation.publishedOn)} · revue le {formatAtlasDate(selected.observation.recordedOn)}</p>
+        <p class="proof-date" data-proof-date>{ui.published} {dateLabel(selected.observation.publishedOn)} · {ui.reviewed} {dateLabel(selected.observation.recordedOn)}</p>
         <p class="proof-claim" data-proof-claim>{selected.observation.claim}</p>
         <p class="proof-amount" data-proof-amount>{selected.observation.amount?.label}</p>
-        <div class="proof-limit"><h3>La limite</h3><p data-proof-limit>{selected.observation.limit}</p></div>
-        <div class="proof-watch"><h3>À vérifier ensuite</h3><p data-proof-watch>{selected.observation.watch}</p></div>
+        <div class="proof-limit"><h3>{ui.limit}</h3><p data-proof-limit>{selected.observation.limit}</p></div>
+        <div class="proof-watch"><h3>{ui.watch}</h3><p data-proof-watch>{selected.observation.watch}</p></div>
         {dataset.id === 'financement-ia' && <div class="atlas-scenario" data-atlas-scenario hidden>
-          <button type="button" data-scenario-toggle aria-pressed="false">Explorer un défaut du locataire</button>
-          <p data-scenario-text hidden><strong>Hypothèse, aucun défaut réel représenté.</strong> Le chemin met en évidence le bail, la garantie et le recours en remboursement. Les conditions contractuelles et les récupérations restent déterminantes ; aucun montant de perte n’est calculé.</p>
+          <button type="button" data-scenario-toggle aria-pressed="false">{ui.scenarioOpen}</button>
+          <p data-scenario-text hidden><strong>{ui.scenarioWarning}</strong> {ui.scenarioExplanation}</p>
         </div>}
-        <div class="proof-sources"><h3>Consulter les sources</h3><ul data-proof-sources>{selected.observation.sources.map(id => { const source = dataset.sources.find(item => item.id === id)!; return <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a><p>{source.locator}</p></li>; })}</ul></div>
+        <div class="proof-sources"><h3>{ui.sources}</h3><ul data-proof-sources>{selected.observation.sources.map(id => { const source = dataset.sources.find(item => item.id === id)!; return <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a><p>{source.locator}</p></li>; })}</ul></div>
         <p class="proof-reading" data-atlas-reading hidden={!selected.reading}><a href={selected.reading?.href}>{selected.reading?.label}</a></p>
-        <div class="proof-share" data-atlas-controls hidden><button type="button" data-atlas-copy>Copier ce point de lecture</button><span data-copy-status role="status" /></div>
+        <div class="proof-share" data-atlas-controls hidden><button type="button" data-atlas-copy>{ui.copy}</button><span data-copy-status role="status" /></div>
       </article>
     </section>
 
     <section class="atlas-record" aria-labelledby="atlas-record-title">
-      <h2 id="atlas-record-title">Méthode et périmètre de l’atlas</h2>
-      <p>La chronologie est une <strong>reconstitution documentaire réalisée le {formatAtlasDate(dataset.reconstructedOn)}</strong>. Les dates de la carte désignent la publication des pièces, pas la date à laquelle l0g les aurait connues ou archivées. Une relation ancienne peut avoir évolué depuis sa dernière pièce.</p>
-      <p>Les annonces sont attribuées à leurs auteurs. Les engagements conditionnels restent distincts des paiements. L’absence d’un lien signifie qu’il n’est pas établi dans ce corpus, sans démontrer son inexistence.</p>
-      <details><summary>Lire les relations et leur historique sans la carte</summary>
-        {dataset.relations.map(relation => <section id={`preuve-${relation.id}`} data-record-relation={relation.id}><h3>{node(relation.from).label} → {node(relation.to).label}</h3>{relation.observations.map(observation => <div class="record-observation" data-record-date={observation.publishedOn}><p><time datetime={observation.publishedOn}>{formatAtlasDate(observation.publishedOn)}</time> · {kinds[observation.kind]}</p><p>{observation.claim}</p><p><strong>Limite :</strong> {observation.limit}</p><ul>{observation.sources.map(id => { const source = dataset.sources.find(item => item.id === id)!; return <li><a href={source.url}>{source.title}</a> · {source.locator}</li>; })}</ul></div>)}</section>)}
+      <h2 id="atlas-record-title">{ui.method}</h2>
+      <p>{ui.reconstructionPrefix} <strong>{ui.reconstruction} {dateLabel(dataset.reconstructedOn)}</strong>. {ui.reconstructionExplanation}</p>
+      <p>{ui.methodExplanation}</p>
+      <details><summary>{ui.history}</summary>
+        {dataset.relations.map(relation => <section id={`preuve-${relation.id}`} data-record-relation={relation.id}><h3>{node(relation.from).label} → {node(relation.to).label}</h3>{relation.observations.map(observation => <div class="record-observation" data-record-date={observation.publishedOn}><p><time datetime={observation.publishedOn}>{dateLabel(observation.publishedOn)}</time> · {kinds[observation.kind]}</p><p>{observation.claim}</p><p><strong>{ui.limitShort}</strong> {observation.limit}</p><ul>{observation.sources.map(id => { const source = dataset.sources.find(item => item.id === id)!; return <li><a href={source.url}>{source.title}</a> · {source.locator}</li>; })}</ul></div>)}</section>)}
       </details>
       <div class="atlas-outlinks">{outlinks.map(link => <a href={link.href}>{link.label} →</a>)}</div>
     </section>

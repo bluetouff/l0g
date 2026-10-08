@@ -9,11 +9,53 @@ import {renderRetirementSequence,renderSequenceResults} from '../src/lib/retirem
 import {retirementFigureSvg} from '../src/lib/retirementSequenceFigures.mjs';
 const two={...BASE_SEQUENCE_INPUT,returns:[-20,25],inflation:0};
 const close=(a,b,eps=1e-6)=>assert.ok(Math.abs(a-b)<eps,`${a} != ${b}`);
+// Math.pow may differ by a few final binary digits across V8 versions. Permit
+// only 16 scaled machine epsilons; types, structure and the published CSV stay exact.
+function assertSequenceResult(actual, expected, path = 'result') {
+  if (typeof actual === 'number' || typeof expected === 'number') {
+    assert.ok(Number.isFinite(actual) && Number.isFinite(expected), `${path}: finite numbers required`);
+    if (Number.isInteger(expected)) {
+      assert.equal(actual, expected, `${path}: integer or zero must match exactly`);
+      return;
+    }
+    const tolerance = 16 * Number.EPSILON * Math.max(1, Math.abs(actual), Math.abs(expected));
+    assert.ok(Math.abs(actual - expected) <= tolerance, `${path}: ${actual} != ${expected} (tolerance ${tolerance})`);
+    return;
+  }
+  if (expected !== null && typeof expected === 'object') {
+    assert.ok(actual !== null && typeof actual === 'object', `${path}: object required`);
+    assert.equal(Array.isArray(actual), Array.isArray(expected), `${path}: container type differs`);
+    assert.deepEqual(Object.keys(actual).sort(), Object.keys(expected).sort(), `${path}: fields differ`);
+    for (const key of Object.keys(expected)) assertSequenceResult(actual[key], expected[key], `${path}.${key}`);
+    return;
+  }
+  assert.deepEqual(actual, expected, `${path}: value differs`);
+}
+
+test('published-result tolerance accepts binary rounding but rejects material drift and nonfinite values', () => {
+  const expected = { rows: [{ year: 12, realClosing: 274161.6939267686 }], firstExhaustion: null };
+  assertSequenceResult({ ...expected, rows: [{ year: 12, realClosing: 274161.69392676867 }] }, expected);
+  assert.throws(() => assertSequenceResult({ ...expected, rows: [{ year: 12, realClosing: expected.rows[0].realClosing + 0.01 }] }, expected));
+  assert.throws(() => assertSequenceResult(Number.EPSILON, 0));
+  for (const invalid of [NaN, Infinity, -Infinity, '274161.6939267686']) {
+    assert.throws(() => assertSequenceResult(invalid, expected.rows[0].realClosing));
+    assert.throws(() => assertSequenceResult(expected.rows[0].realClosing, invalid));
+    if (typeof invalid === 'number') assert.throws(() => assertSequenceResult({ value: invalid }, { value: invalid }));
+  }
+  for (const malformed of [
+    { ...expected, rows: [] },
+    { ...expected, rows: { 0: expected.rows[0] } },
+    { rows: expected.rows },
+    { ...expected, extra: true },
+    { ...expected, firstExhaustion: 0 },
+    { ...expected, rows: [{ ...expected.rows[0], year: 12 + 16 * Number.EPSILON }] },
+  ]) assert.throws(() => assertSequenceResult(malformed, expected));
+});
 test('published synthetic JSON and CSV match every independently recalculated row', () => {
   const pack = JSON.parse(readFileSync(new URL('../public/data/retraite-sequence/scenarios.json', import.meta.url), 'utf8'));
   assert.equal(pack.forecast, false); assert.equal(pack.historical_period, null); assert.equal(pack.probability_model, false);
   for (const scenario of pack.scenarios) {
-    assert.deepEqual(compareSequences(scenario.input), scenario.result);
+    assertSequenceResult(compareSequences(scenario.input), scenario.result);
     assert.equal(readFileSync(new URL(`../public/data/retraite-sequence/${scenario.id}.csv`, import.meta.url), 'utf8'), sequenceCSV(scenario.input));
     for (const key of ['a', 'b']) {
       let opening = scenario.input.initial;

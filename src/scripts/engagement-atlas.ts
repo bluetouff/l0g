@@ -1,3 +1,4 @@
+import { atlasUi, atlasRelationCount } from '../config/atlas-ui.ts';
 import { assertAtlasDataset, atlasAt, atlasSelection, atlasSourceUrl, formatAtlasDate, type AtlasDataset } from '../lib/engagement-atlas.ts';
 
 function initAtlas(root: HTMLElement) {
@@ -8,6 +9,9 @@ function initAtlas(root: HTMLElement) {
     dataset = parsed;
   } catch { return; } // Keep the source-backed static reading path usable.
 
+  const language = root.dataset.atlasLanguage === 'en' ? 'en' : 'fr';
+  const ui = atlasUi[language];
+  const dateLabel = (date: string) => formatAtlasDate(date, language);
   const find = <T extends Element = HTMLElement>(selector: string) => root.querySelector<T>(selector)!;
   const preferredRelation = root.dataset.atlasInitialRelation;
   let state = atlasSelection(dataset, location.hash, preferredRelation);
@@ -16,7 +20,7 @@ function initAtlas(root: HTMLElement) {
   const svg = find<SVGSVGElement>('[data-atlas-lines]');
   const paths = find<SVGGElement>('[data-atlas-paths]');
   const relationList = find('[data-atlas-relation-list]');
-  const kindLabels = { announcement: 'Annonce des parties', contract: 'Relation déclarée', limitation: 'Limites documentées' };
+  const kindLabels = ui.kinds;
   const nodeLabel = (id: string) => id === 'aip' && state.date < '2025-03-19' ? 'GAIIP' : dataset.nodes.find(item => item.id === id)!.label;
   const put = (selector: string, text: string) => { find(selector).textContent = text; };
   const scenarioIds = new Set(['openai-sb-lease', 'nvidia-sb-guarantee', 'openai-nvidia-indemnity']);
@@ -79,7 +83,7 @@ function initAtlas(root: HTMLElement) {
     if (!snapshot.nodes.some(item => item.id === focusNode)) focusNode = '';
     root.querySelectorAll<HTMLButtonElement>('[data-atlas-date]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.atlasDate === state.date)));
     put('[data-atlas-change]', snapshot.milestone!.change);
-    put('[data-atlas-count]', `${snapshot.nodes.length} acteurs et structures · ${snapshot.relations.length} relations`);
+    put('[data-atlas-count]', `${snapshot.nodes.length} ${ui.actors} · ${atlasRelationCount(snapshot.relations.length, language)}`);
     root.querySelectorAll<HTMLElement>('[data-record-date]').forEach(element => { element.hidden = element.dataset.recordDate! > state.date; });
     root.querySelectorAll<HTMLElement>('[data-record-relation]').forEach(element => { element.hidden = !snapshot.relations.some(item => item.id === element.dataset.recordRelation); });
     for (const element of root.querySelectorAll<HTMLElement>('[data-atlas-node]')) {
@@ -87,11 +91,11 @@ function initAtlas(root: HTMLElement) {
       element.hidden = !snapshot.nodes.some(item => item.id === id);
       const links = snapshot.relations.filter(item => item.from === id || item.to === id);
       element.querySelector('[data-node-label]')!.textContent = nodeLabel(id);
-      element.querySelector('[data-node-count]')!.textContent = `${links.length} relation${links.length > 1 ? 's' : ''}`;
+      element.querySelector('[data-node-count]')!.textContent = atlasRelationCount(links.length, language);
       const active = state.scenario ? links.some(item => scenarioIds.has(item.id)) : id === selected.from || id === selected.to;
       element.dataset.selected = String(active);
       element.dataset.dim = String((Boolean(focusNode) || state.scenario) && !active && id !== focusNode);
-      element.setAttribute('aria-label', `${nodeLabel(id)}, explorer ${links.length} relation${links.length > 1 ? 's' : ''}`);
+      element.setAttribute('aria-label', `${nodeLabel(id)}, ${ui.explore} ${atlasRelationCount(links.length, language)}`);
     }
     relationList.replaceChildren();
     const shown = snapshot.relations.filter(item => !focusNode || item.from === focusNode || item.to === focusNode);
@@ -107,11 +111,11 @@ function initAtlas(root: HTMLElement) {
       link.append(name, label); relationList.append(link);
     }
     if (focusedRelation) relationList.querySelector<HTMLAnchorElement>(`[data-atlas-relation="${focusedRelation}"]`)?.focus({ preventScroll: true });
-    put('[data-atlas-filter]', focusNode ? `Relations de ${nodeLabel(focusNode)}` : 'Toutes les relations à cette date');
+    put('[data-atlas-filter]', focusNode ? `${ui.relatedTo} ${nodeLabel(focusNode)}` : ui.allRelations);
     find('[data-atlas-reset]').hidden = !focusNode;
     put('[data-proof-kind]', kindLabels[selected.observation.kind]);
     put('[data-proof-title]', `${nodeLabel(selected.from)} → ${nodeLabel(selected.to)}`);
-    put('[data-proof-date]', `Publication du ${formatAtlasDate(selected.observation.publishedOn)} · revue le ${formatAtlasDate(selected.observation.recordedOn)}`);
+    put('[data-proof-date]', `${ui.published} ${dateLabel(selected.observation.publishedOn)} · ${ui.reviewed} ${dateLabel(selected.observation.recordedOn)}`);
     for (const field of ['claim', 'limit', 'watch'] as const) put(`[data-proof-${field}]`, selected.observation[field]);
     put('[data-proof-amount]', selected.observation.amount?.label ?? '');
     find('[data-proof-amount]').hidden = !selected.observation.amount;
@@ -125,7 +129,7 @@ function initAtlas(root: HTMLElement) {
     if (scenario) {
       scenario.hidden = !scenarioIds.has(selected.id);
       find('[data-scenario-toggle]').setAttribute('aria-pressed', String(state.scenario));
-      put('[data-scenario-toggle]', state.scenario ? 'Fermer le scénario de défaut' : 'Explorer un défaut du locataire');
+      put('[data-scenario-toggle]', state.scenario ? ui.scenarioClose : ui.scenarioOpen);
       find('[data-scenario-text]').hidden = !state.scenario;
     }
     const sources = find('[data-proof-sources]'); sources.replaceChildren();
@@ -171,8 +175,8 @@ function initAtlas(root: HTMLElement) {
       state = atlasSelection(dataset, `#${params}`, preferredRelation);
       render(); find('[data-atlas-map]').scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth' });
     } else if (target.hasAttribute('data-atlas-copy')) {
-      try { await navigator.clipboard.writeText(location.href); put('[data-copy-status]', 'Lien copié.'); }
-      catch { put('[data-copy-status]', `Copiez l’adresse de cette page : ${location.href}`); }
+      try { await navigator.clipboard.writeText(location.href); put('[data-copy-status]', ui.copied); }
+      catch { put('[data-copy-status]', `${ui.copyFallback} ${location.href}`); }
     }
   });
   window.addEventListener('hashchange', () => {

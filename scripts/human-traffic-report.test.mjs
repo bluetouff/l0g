@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { totalHttpRequests } from '../src/lib/traffic-summary.mjs';
 import {
   buildHumanTrafficReport,
   classifyTrafficRequest,
@@ -184,4 +185,25 @@ test('exécute le collecteur sans root avec un accès borné aux logs Apache', a
   assert.match(installer, /getent group adm/);
   assert.match(installer, /NODE_BIN="\/opt\/nodejs-lts\/bin\/node"/);
   assert.match(installer, /"\$NODE_MAJOR" -lt 22/);
+});
+
+
+test('HTTP total sums disjoint classes and preserves missing or invalid counts as unknown', () => {
+  const report = buildHumanTrafficReport([
+    ...Array.from({ length: 5 }, () => log()),
+    log({ path: '/api/mcp' }),
+    log({ userAgent: 'Twitterbot/1.0' }),
+    log({ userAgent: 'Googlebot/2.1' }),
+    log({ path: '/wp-login.php' }),
+    log({ path: '/_astro/main.js' }),
+  ], { now: new Date('2026-07-30T20:00:00Z') });
+  assert.equal(totalHttpRequests(report), 10);
+  assert.equal(report.totals.html_gets, 5);
+  assert.equal(totalHttpRequests({}), null);
+  for (const value of [undefined, null, -1, 0.5, '2', Number.MAX_SAFE_INTEGER]) {
+    const invalid = structuredClone(report);
+    invalid.traffic_classes.totals.other = value;
+    assert.equal(totalHttpRequests(invalid), null);
+  }
+  assert.equal(totalHttpRequests(buildHumanTrafficReport([], { now: new Date('2026-07-30T20:00:00Z') })), 0);
 });

@@ -50,7 +50,7 @@
     "test:secrets": "node scripts/audit-secrets.mjs",
     "test:dependencies": "node scripts/http-cache-security.mjs --check && node --test scripts/http-cache-security.test.mjs scripts/dependency-audit.test.mjs && node scripts/test-dependencies.mjs",
     "test:mcp-cache": "node --test mcp-server/release-cache.test.mjs mcp-server/evidence-graph-index.test.mjs",
-    "test:mcp-usage": "node --test mcp-server/usage-telemetry.test.mjs",
+    "test:mcp-usage": "node --test mcp-server/usage-telemetry.test.mjs mcp-server/reliability.test.mjs",
     "test:human-traffic": "node --test scripts/human-traffic-report.test.mjs",
     "test:agent-distribution": "node --test scripts/agent-distribution.test.mjs",
     "generate:toolset": "node scripts/generate-toolset-manifest.mjs",

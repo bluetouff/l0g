@@ -1,10 +1,11 @@
 ---
+import { atlasAlternateLinks } from '../../config/atlases';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EngagementAtlas from '../../components/EngagementAtlas.astro';
 import dataset from '../../data/engagement-atlas.json';
 ---
 
-<BaseLayout title={dataset.title} seoTitle="Atlas du financement de l’IA : Nvidia, OpenAI | l0g" description="Nvidia, OpenAI, SB Energy et AIP : explorez les acteurs, les contrats et les garanties du financement de l’intelligence artificielle." ogImage="/illustrations/news/openai-credit-guarantee-v1.jpg" sidebar={false}>
+<BaseLayout title={dataset.title} seoTitle="Atlas du financement de l’IA : Nvidia, OpenAI | l0g" description="Nvidia, OpenAI, SB Energy et AIP : explorez les acteurs, les contrats et les garanties du financement de l’intelligence artificielle." ogImage="/illustrations/news/openai-credit-guarantee-v1.jpg" alternateLinks={atlasAlternateLinks(dataset.id)} sidebar={false}>
   <EngagementAtlas
     dataset={dataset}
     subject="financement de l’IA"

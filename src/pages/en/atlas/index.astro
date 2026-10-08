@@ -1,0 +1,14 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import AtlasCollection from '../../../components/AtlasCollection.astro';
+import { atlasAlternateLinks } from '../../../config/atlases';
+---
+
+<EnglishGuidesLayout
+  title="Financial atlases"
+  seoTitle="Financial atlases: AI, private credit and oil | l0g"
+  description="Explore the contracts, actors and funding relationships behind AI infrastructure, private credit and oil. Interactive maps with dated primary sources."
+  alternateLinks={atlasAlternateLinks()}
+>
+  <AtlasCollection language="en" />
+</EnglishGuidesLayout>

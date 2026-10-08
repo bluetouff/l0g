@@ -1,64 +1,77 @@
 ---
 title: "How to Read Central Bank FX Reserves (COFER and the gold share)"
 seoTitle: "COFER: reading central bank FX reserves | l0g"
-description: "A reference guide to global foreign exchange reserves: what the IMF's COFER measures, the dollar's share and its gradual decline, the central trap of valuation versus true purchase flows, the case of gold excluded from COFER and its crossover above Treasuries, and how to tell an allocation decision from a mere price effect. With 2026 data as the worked example of the de-dollarisation narrative."
-summary: "The IMF's COFER measures each quarter the currency composition of global foreign exchange reserves, excluding gold. The dollar still weighs about 57%, in gradual decline since 2000. Reading it requires a single discipline: separating the valuation effect, driven by price and exchange-rate moves, from central banks' true allocation flows. That distinction is what separates the narrative of an abrupt de-dollarisation from the reality of a slow diversification. The 2026 data serve as illustration."
+description: "Read IMF COFER data: currency shares, exchange-rate effects, the 2025 imputation change and why gold belongs to a different reserve measure."
+summary: "COFER is the IMF's quarterly dataset on the currency composition of official foreign exchange reserves. It excludes monetary gold. Since the release for 2025 Q3, its currency shares include estimates for previously unallocated reserves, with history revised back to 2000 Q1. Interpreting a change requires checking the data vintage, denominator and exchange-rate effects before inferring purchases or sales."
 pubDate: 2026-07-28T10:23:00+02:00
-updatedDate: 2026-07-28T10:23:00+02:00
+updatedDate: 2026-10-08T20:00:00+02:00
 sourceGuide: "lire-les-reserves-de-change-cofer"
-sourceUpdatedDate: 2026-07-28T10:23:00+02:00
+sourceUpdatedDate: 2026-10-08T20:00:00+02:00
 tags: ["macro", "central banks", "dollar"]
 category: macro
 draft: false
 ---
 import InfographicBars from '../../components/infographic/InfographicBars.astro';
 
-*Foreign exchange reserves tell what a central bank keeps at hand when everything goes wrong, and as such they betray its true preferences better than its speeches. But reading them is a minefield, because a number that moves is not necessarily a decision that was taken. The dollar's share can fall from one quarter to the next without any central banker having sold a single greenback, simply because the dollar depreciated. Reading reserves means first learning to separate what price did from what allocation intended. This guide gives that grid, with 2026 data and the de-dollarisation narrative as backdrop.*
+A fall in the dollar's share of reserves can make a powerful headline. It does not, by itself, show that central banks sold dollars. Exchange rates can change the value of the other currencies in the denominator, and a methodological revision can change the series being compared. COFER is useful precisely when those distinctions survive the headline.
 
-## What COFER measures
+Open the [IMF's COFER dataset](https://data.imf.org/en/datasets/IMF.STA:COFER) alongside this guide. Keep the observation quarter and release date separate. The objective is to understand what changed in reserve portfolios and what the public data leave unresolved.
 
-The reference source is COFER, published each quarter by the International Monetary Fund. It measures the currency composition of the world's official foreign exchange reserves, the holdings of foreign currencies central banks keep to intervene and fund themselves. Two scope points are essential. First, COFER covers only so-called allocated reserves, those whose currency is reported to the IMF; a fraction stays unallocated, though coverage is now nearly complete. Second, and crucially, COFER excludes gold: it measures only currencies. The gold share is computed on total reserves, a different set.
+## Define the reserve measure first
 
-Within that scope, the dollar remains dominant, but its reign is slowly eroding. Its share went from close to 71% in 2000 to about [57% in the first quarter of 2026](https://data.imf.org/en/news/imf%20data%20brief%20july%201), a real but gradual decline, spread over a quarter of a century, nothing like the abrupt collapse sometimes announced.
+COFER stands for Currency Composition of Official Foreign Exchange Reserves. It groups official foreign exchange holdings by currency and reports the aggregates in US dollars. Monetary gold, special drawing rights and the reserve position in the IMF are outside this currency breakdown. A gold share of total reserves consequently uses a different denominator. The [dataset description](https://data.imf.org/en/datasets/IMF.STA:COFER) establishes this scope.
+
+“Dollar reserves” also covers more than US Treasury securities. Currency denomination and instrument type answer different questions. A comparison with Treasury holdings therefore needs a separately defined securities dataset. It cannot be reconstructed by renaming COFER's dollar column.
+
+## The 2025 methodology change matters
+
+Beginning with **2025 Q3**, the IMF eliminated the published “unallocated” portion by estimating the missing currency composition. It revised the history back to **2000 Q1** and began publishing the share of reserves that had been imputed. These are the methodological changes documented on the [COFER dataset page](https://data.imf.org/en/datasets/IMF.STA:COFER).
+
+The resulting currency shares cover the full foreign exchange reserve aggregate. That does not mean every currency holding was directly reported. The IMF's [November 2025 technical note](https://www.imf.org/-/media/files/publications/tnm/2025/english/tnmea2025014.pdf) explains the estimation methods and confidentiality constraints.
+
+For a historical comparison, download the whole series from the same release vintage. Do not join an old chart of allocated reserves to a new estimate covering all FX reserves without explaining the break. An old publication can still be cited accurately as the estimate available then; it should not silently replace the revised historical series.
+
+## A worked example of the exchange-rate effect
+
+The IMF's [October 2, 2025 data brief](https://data.imf.org/en/news/october-1-2025-cofer) reported that the dollar share of **allocated** reserves fell from **57.79% to 56.32%** between the first and second quarters of 2025. That is a decline of **1.47 percentage points**. Holding exchange rates unchanged, the IMF estimated a decline of only **0.12 percentage points**.
 
 <InfographicBars
-  title="The dollar's share of allocated reserves"
-  subtitle="Dollar share of reported global FX reserves, in percent."
-  max={71}
+  title="One quarter, two measures"
+  subtitle="Dollar share decline · Q2 2025 · pp"
+  compact={true}
+  fontScale={1.3}
+  max={1.5}
   items={[
-    { label: "2000", value: 71, valueLabel: "≈ 71%", tone: "muted" },
-    { label: "2015", value: 66, valueLabel: "≈ 66%", tone: "blue" },
-    { label: "2026 (Q1)", value: 57, valueLabel: "≈ 57%", tone: "signal" },
+    { label: "Reported decline", value: 1.47, valueLabel: "1.47 pp", tone: "signal" },
+    { label: "At unchanged FX rates", value: 0.12, valueLabel: "0.12 pp", tone: "muted" },
   ]}
-  note="A real but slow decline: about fourteen points in twenty-five years, not a collapse."
-  source="Source: IMF, COFER. Shares rounded."
-  caption="The dollar's retreat is gradual and spread over a quarter of a century. Part of that move is also down to valuation, not sales: reading the trend is not enough, it must be decomposed. Source: IMF."
+  note="2025 vintage · allocated reserves"
+  source="IMF · October 2, 2025."
+  caption="The reported decline is 57.79 minus 56.32. The 0.12 percentage-point estimate comes from the IMF's exchange-rate adjustment. Both describe the same quarter in the original publication; they are not a current reserve-share estimate."
 />
 
-## The valuation trap
+The mechanism is straightforward. If a portfolio holds the same quantity of euros but the euro rises against the dollar, those euros occupy a larger share of a portfolio measured in dollars. The dollar share can shrink while the dollar holdings are unchanged. The IMF [technical note](https://www.imf.org/-/media/files/publications/tnm/2025/english/tnmea2025014.pdf) discusses this valuation problem.
 
-Here is the error that traps half the commentary. When the dollar's share moves, the first question is not "why did central banks sell", but "did the price change". Because reserves are valued in dollars, and the mere move of exchange rates shifts the shares without any allocation having changed. The 2026 data illustrate it perfectly: the dollar's share [rose to 57.13% in the first quarter of 2026, from 56.42% at end-2025, but that rise was mostly down to the dollar's appreciation, the valuation effect explaining about half the move](https://data.imf.org/en/news/imf%20data%20brief%20july%201). A quarter earlier, the same mechanics ran the other way: when the dollar's share had fallen, [92% of the decline came from exchange rates, not portfolio decisions](https://www.bestbrokers.com/forex-trading/us-dollar-share-of-global-currency-reserves/).
+Removing exchange-rate effects narrows the interpretation. It still does not expose every transaction or a policymaker's motive. Securities valuations, income, changes in coverage and revisions may matter; aggregate data do not supply a trade-by-trade record. Describe an exchange-rate-adjusted change as such, rather than calling the entire residual “dollar selling.”
 
-The lesson is a discipline: never read a change in share without correcting for the valuation effect. A rising share can hide sales, a falling share can hide purchases. Only the measure at constant exchange rates reveals what central banks actually decided, and it almost always tells a duller story than the price.
+## Keep gold on a separate page of the calculation
 
-## Gold, outside COFER
+A central bank's gold holdings have both a quantity and a market value. A higher value can reflect a higher gold price, more metal, or both. Use reported quantities to examine accumulation, and value to assess the weight of gold within a clearly defined reserve portfolio. Neither measure substitutes for the other.
 
-The same trap replays, amplified, on gold. In 2025, gold overtook US Treasuries as a share of official reserves, a spectacular shift we discussed in our analysis of the [debasement trade](/en/analysis/the-debasement-hangover/). But that crossover was [driven almost entirely by the rise in the gold price, not by a rebalancing, and it does not show up in COFER's dollar share, which stayed broadly stable](https://data.imf.org/en/news/imf%20data%20brief%20july%201). When the metal jumps, its value in reserves swells mechanically, without an ounce being bought.
+Because gold sits outside COFER, a rise in its share of total reserves cannot be read directly from COFER's dollar share. Claims that gold “overtook” an asset also need the same valuation date and a specified asset perimeter. We examine those questions separately in [central banks, gold and de-dollarisation](/en/analysis/central-banks-gold-de-dollarisation/).
 
-That does not mean nothing is happening. Central banks are indeed buying gold at a sustained pace, a real flow we track in our piece on [the tonnes accumulated](/en/analysis/central-banks-gold-de-dollarisation/), and to measure it one must look at tonnes, not value. The right reading therefore overlays two planes: valuation, which makes up most of the share moves, and flow, slower, which betrays intent. Confusing the two means taking a price rise for a geopolitical decision.
+## What the dataset cannot tell you
 
-## Reading pitfalls
+COFER publishes aggregate currency composition while protecting individual reporters' information. A country need not disclose its currency breakdown publicly for its confidential data to contribute to an aggregate. Do not infer non-participation merely because a national breakdown is unavailable. The IMF [methodology note](https://www.imf.org/-/media/files/publications/tnm/2025/english/tnmea2025014.pdf) describes these disclosure limits.
 
-Beyond valuation, a few reflexes are in order. The first is to distinguish allocated and total reserves: COFER covers the former, the gold share the latter, and mixing them produces nonsense. The second is to beware missing reporters: some large holders, China first, do not report the fine composition of their reserves, which makes measuring their choices indirect. The third is the lag: COFER data appears a quarter late. The fourth, finally, is narrative bias: de-dollarisation is a real but slow move, and the temptation is great to read every price wobble as the end of the dollar, when the true flows, corrected for valuation, sketch a gradual, partial diversification, consistent with our reading of [the narrative against the numbers](/en/analysis/de-dollarisation-narrative-vs-numbers/).
+A global currency-share movement also cannot reveal which particular country made a transaction. And a quarterly reserve stock does not describe trade invoicing, cross-border bank lending or payment-message traffic. Those are separate dimensions of international currency use, with separate evidence. Our [analysis of de-dollarisation claims](/en/analysis/de-dollarisation-narrative-vs-numbers/) provides the wider reading path.
 
-## Reading reserves in practice
+## Build a comparison that can be checked
 
-The method fits in four moves. Always correct a change in share for the exchange-rate effect before reading it as a decision. Measure gold in tonnes, never in value, to isolate flow from price. Cleanly separate COFER, which speaks currencies and allocated reserves, from the gold share, which speaks total reserves. And cross the hard data with declared intentions, like the World Gold Council's annual survey, to anticipate coming flows. Read this way, the 2026 picture is sober: the dollar around 57%, stable once valuation is neutralised; gold really accumulated but whose share surge owes almost everything to the price. De-dollarisation exists, it is slow, and it is read in the flows, not in the prices.
+Record the quarter, release vintage, currency, unit and denominator before calculating the change. Check the imputed share and any revision notice. Show exchange-rate-adjusted results only when their method and inputs are available. Keep gold quantities, gold values and FX reserve shares in distinct series. If the evidence cannot separate valuation from transactions, leave that separation unresolved.
 
----
+This discipline makes a modest conclusion useful: it identifies which part of a widely repeated story the data actually support. A reserve-share chart can document a change in composition. Establishing a strategic decision requires additional evidence from the institutions concerned.
 
-### Sources
+## Sources and revision
 
-- [IMF, "IMF Data Brief: Currency Composition of Official Foreign Exchange Reserves", July 2026 (dollar share 57.13% in Q1 2026, valuation effect, gold outside COFER)](https://data.imf.org/en/news/imf%20data%20brief%20july%201)
-- [BestBrokers, "US Dollar Share of Global Currency Reserves in 2026" (92% of the share decline due to exchange rates in Q2 2025)](https://www.bestbrokers.com/forex-trading/us-dollar-share-of-global-currency-reserves/)
-- [World Gold Council, "Central Bank Gold Reserves Survey 2026" (central banks' purchase intentions)](https://www.gold.org/goldhub/research/central-bank-gold-reserves-survey-2026/perspectives-on-gold-reserves)
+Primary sources are the [COFER dataset and scope notes](https://data.imf.org/en/datasets/IMF.STA:COFER), the [November 2025 methodology note](https://www.imf.org/-/media/files/publications/tnm/2025/english/tnmea2025014.pdf), and the [October 2, 2025 historical data brief](https://data.imf.org/en/news/october-1-2025-cofer). The October 8, 2026 revision corrects the obsolete allocated-only description and replaces a broker-sourced valuation claim with the IMF's dated example. The chart deliberately retains the original publication vintage and is not spliced into the revised COFER history.

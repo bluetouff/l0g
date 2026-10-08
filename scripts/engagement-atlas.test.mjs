@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import './atlas-security.test.mjs';
+import './atlas-localization.test.mjs';
 import { readFileSync } from 'node:fs';
 import { assertAtlasDataset, atlasAt, atlasSelection, isAtlasDate } from '../src/lib/engagement-atlas.ts';
 import { legacyAtlasDestination } from '../src/lib/atlas-legacy-links.ts';

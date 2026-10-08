@@ -1,0 +1,59 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import EngagementAtlas from '../../../components/EngagementAtlas.astro';
+import { englishAtlasDatasets } from '../../../config/english-atlas-datasets';
+import { atlasAlternateLinks } from '../../../config/atlases';
+const dataset = englishAtlasDatasets['oil-financing'];
+---
+
+<EnglishGuidesLayout title={dataset.title} seoTitle="Oil financing atlas: banks, traders and revenues | l0g" description="Who finances the oil trade? Explore banks, Trafigura, Glencore and Chad through documented cargo payments, credit facilities and public revenues." ogImage="/illustrations/news/oil-trade-bank-finance-v1.jpg" ogImageAlt="Banks and the financing of the oil trade" alternateLinks={atlasAlternateLinks(dataset.id)}>
+  <EngagementAtlas
+    language="en"
+    dataset={dataset}
+    subject="oil financing"
+    intro="Who pays the seller, who advances the money, and who receives the revenues? Follow a cargo, a trader’s financing, an oil-backed loan in Chad and the financing plan for a tanker fleet."
+    boundary="Four documented cases from different periods. Arrows represent the relationship described in each record, which is not always a payment. At the 4 October review, Volare’s new shares had been issued and registered; settlement and listing remained unconfirmed. The facilities Trafigura announced as closed on 1 October establish no bank financing for Volare. Glencore’s roles as buyer and creditor remain distinct."
+    selectedRelation="investors-volare"
+    hubs={['unicredit', 'trafigura', 'escrow']}
+    entryPoints={[
+      { label: 'What is the status of Volare’s financing?', relation: 'investors-volare', date: '2026-10-01' },
+      { label: 'Who pays for the cargo?', relation: 'unicredit-bp-payment', date: '2023-05-04' },
+      { label: 'What is Trafigura refinancing in October?', relation: 'usd-cnh-trafigura-credit', date: '2026-10-01' },
+      { label: 'What reaches Chad’s Treasury?', relation: 'escrow-treasury-balance', date: '2025-12-30' },
+    ]}
+    outlinks={[
+      { href: '/en/analysis/banking-on-oil-1-cargo-trade-finance/', label: 'Paying for an oil cargo' },
+      { href: '/en/analysis/banking-on-oil-2-banks-financing-trafigura/', label: 'The banks behind Trafigura' },
+      { href: '/en/analysis/banking-on-oil-3-chad-glencore-oil-backed-debt/', label: 'Chad’s oil and its debt' },
+      { href: '/api/v1/en/atlases/oil-financing.json', label: 'Reuse the relationships and sources · English JSON' },
+    ]}
+  >
+    <section slot="overview" class="oil-overview" aria-labelledby="oil-circuits-title">
+      <p><strong>Evidence reviewed on <time datetime="2026-10-04">4 October 2026</time>.</strong> This translation preserves that review’s limits. The 1 October releases document <a href="https://newsweb.oslobors.no/message/683407">Volare’s share issuance</a> and <a href="https://www.trafigura.com/news-and-insights/press-releases/2026/trafigura-secures-usd4-4-billion-syndicated-revolving-credit-facility-and-term-loan-facilities/">Trafigura’s refinancing</a>. Volare trading was then expected around 5 October, after the review; this edition does not verify whether it began. Trafigura’s announcement does not confirm an extension of the March buffer. The <a href="https://eiti.org/countries/chad">EITI Chad page</a> consulted in the review still pointed to the 2023 report published in late 2025; the Chad financing chain retains that historical period.</p>
+      <details>
+        <summary id="oil-circuits-title">Four ways to follow the financing</summary>
+        <ol>
+          <li><h3>The cargo</h3><p>Identify the seller, the borrower, the payment made and the repayment expected.</p></li>
+          <li><h3>The trader</h3><p>Distinguish the arrangement of credit, its availability and the amount actually borrowed.</p></li>
+          <li><h3>The producing country</h3><p>Follow the allocation of revenues before they reach the public budget.</p></li>
+          <li><h3>The fleet</h3><p>Separate the shareholder, commercial manager, capital sought and vessels on order.</p></li>
+        </ol>
+        <p>UniCredit Bank is identified as AG in the Sienna case and GmbH in Trafigura’s financing. Its <a href="https://www.hypovereinsbank.de/content/dam/hypovereinsbank/ueber-uns/pdf/investor-relations/Berichte/EN/2023/20240311-Geschaeftsbericht-UCB-GmbH-2023-ENGLISCH.pdf">2023 annual report, page 14</a>, documents the legal-form change. Its presence in two cases establishes no financing between their other participants.</p>
+        <p>The dates below refer to publication. Each record specifies the transaction period and links to the related investigation.</p>
+      </details>
+    </section>
+  </EngagementAtlas>
+</EnglishGuidesLayout>
+
+<style>
+  .oil-overview { margin:1rem 0 2rem; }
+  .oil-overview details { padding:1rem; border:1px solid var(--color-line); border-radius:8px; }
+  .oil-overview summary { cursor:pointer; min-height:32px; color:var(--color-bright); font-family:var(--font-display); font-size:.95rem; }
+  .oil-overview ol { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; list-style:none; padding:0; margin:1.2rem 0; }
+  .oil-overview li { padding:1rem; border:1px solid var(--color-line); border-radius:8px; background:var(--color-surface); }
+  .oil-overview h3 { margin:0 0 .6rem; color:var(--color-bright); font-size:.95rem; }
+  .oil-overview p { max-width:85ch; margin:.7rem 0; font-family:var(--font-read); font-size:.85rem; line-height:1.7; }
+  .oil-overview a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; }
+  .oil-overview :is(a,summary):focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+  @media(max-width:760px) { .oil-overview ol { grid-template-columns:minmax(0,1fr); } }
+</style>

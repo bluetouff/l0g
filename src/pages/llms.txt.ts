@@ -205,7 +205,7 @@ export const GET: APIRoute = async () => {
   lines.push(`- [MCP complet](${SITE}${MCP_PUBLIC_PATH}): surface Streamable HTTP compatible et experte, avec les outils spécialisés Risk Diff, Black Box, historique, claims, sources et evidence graph. Doc : ${SITE}/mcp`);
   lines.push(`- [Manifeste des outils MCP](${SITE}/api/v1/toolset-manifest.json): versions et empreintes anti-dérive des surfaces complète et compacte.`);
   lines.push(`- [Statistiques MCP anonymisées](${SITE}/api/mcp/usage): séries par endpoint, KPI get_risk_state, résultats, p50/p95, tailles et familles client ; user-agents internes exclus et seuil k=5.`);
-  lines.push(`- [Lectures humaines HTML](${SITE}/api/v1/human-traffic.json): GET HTML agrégés par jour, page et domaine référent, sans identifiant persistant et avec seuil k=5.`);
+  lines.push(`- [Lectures HTML filtrées](${SITE}/api/v1/human-traffic.json): GET HTML filtrés agrégés par jour, page et domaine référent, sans identifiant persistant et avec seuil k=5. Le caractère humain de chaque requête reste inconnu.`);
   lines.push(`- [Corpus integral](${SITE}/llms-full.txt): texte complet de toutes les analyses et guides.`);
   lines.push(`- [English full corpus](${SITE}/llms-full-en.txt): complete English analyses and guides in a separate context file.`);
   lines.push('');

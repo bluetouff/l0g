@@ -1,57 +1,71 @@
 ---
 title: "How to Read H.4.1: the Fed Balance Sheet, Line by Line"
 seoTitle: "Fed H.4.1: what bank reserves really show | l0g"
-description: "H.4.1 maps Fed assets, bank reserves, the TGA and reverse repos each Thursday. A weekly snapshot whose securities are not marked to market."
+description: "Read the Fed's H.4.1 tables: weekly averages, Wednesday balances, bank reserves, the TGA and reverse repos, with a worked source check."
 pubDate: 2026-07-08T16:30:00+02:00
-updatedDate: 2026-07-08T16:30:00+02:00
+updatedDate: 2026-10-08T20:00:00+02:00
 sourceGuide: "lire-h41-bilan-fed"
-sourceUpdatedDate: 2026-06-28T17:30:00+02:00
+sourceUpdatedDate: 2026-10-08T20:00:00+02:00
 tags: ["macro", "central banks", "liquidity", "methodology"]
 category: fed
-summary: "H.4.1 is the Federal Reserve’s weekly statistical release titled “Factors Affecting Reserve Balances.” Published every Thursday at 4:30 p.m. New York time, with data as of Wednesday, it shows the central bank balance sheet: what the Fed holds as assets, what absorbs liquidity on the liability side, and the resulting level of bank reserves."
+summary: "H.4.1 is the Federal Reserve's weekly balance-sheet release. Table 1 explains the factors affecting bank reserve balances and includes both weekly averages and Wednesday levels. Table 5 reports the consolidated Wednesday balance sheet. Comparing the same column over time helps distinguish asset changes from movements in the Treasury General Account, reverse repos and other liabilities."
 draft: false
 ---
 
-*The U.S. central bank balance sheet is public, and it can be read once a week. The document is called H.4.1, a dry name for the most important accounting statement in the dollar system. It says which assets the Federal Reserve holds, which liabilities it carries, and how much liquidity actually circulates in the banking system. Read correctly, it lets you track quantitative tightening, anticipate funding stress, and understand why reserves rise or fall even when the Fed has done nothing. Here is how to decode it, line by line. This guide extends our reading of [net liquidity](/en/guides/read-net-liquidity-tga-rrp/).*
+The Federal Reserve can report falling assets and rising bank reserves in the same release. Both can be correct. Cash may be leaving the Treasury's account or moving out of reverse repos while securities mature on the other side of the balance sheet. H.4.1 is the document that lets you follow those movements.
 
-The official title of the release is “Factors Affecting Reserve Balances of Depository Institutions and Condition Statement of Federal Reserve Banks.” It is published every Thursday, normally at **4:30 p.m.** New York time, with publication moved to the next business day when Thursday is a holiday. The data are as of Wednesday. The source is dual: the Federal Reserve Banks and the U.S. Treasury.
+Start with the [official release](https://www.federalreserve.gov/releases/h41/). It normally appears on **Thursday at 4:30 p.m. Eastern time**, with holiday adjustments. Check the date at the top, then the column headings: the document contains **weekly averages and Wednesday observations**. Treating every figure as a Wednesday snapshot is an easy way to reach the wrong conclusion.
 
-## What the Fed publishes every Thursday
+## Find the table that answers your question
 
-H.4.1 is not one table but a series. Table 1, the most closely watched, presents the factors affecting reserve balances: it separates what provides liquidity from what drains it. Table 2 gives the maturity distribution of securities and loans held. Table 5 is the consolidated condition statement of all Reserve Banks, the classic balance sheet where assets equal liabilities plus capital. Other tables detail each regional Reserve Bank and, during crises, special lending facilities. For regular reading, Table 1 and Table 5 are enough.
+The Fed's [description of H.4.1](https://www.federalreserve.gov/releases/h41/about.htm) explains its scope. This is a statement of central-bank accounts, rather than a complete map of dollar funding or bank lending.
 
-## The big idea: reserves are a residual
+| Question | Where to start | What to check |
+| --- | --- | --- |
+| Why did reserves change? | Table 1, factors affecting reserve balances | Weekly average or Wednesday level; compare like with like. |
+| How large is the Fed's balance sheet? | Table 5, consolidated statement | Total assets, liabilities and capital, all on the stated Wednesday. |
+| What maturities does the portfolio contain? | Table 2 | Remaining maturity and the instrument's accounting basis. |
+| How much reverse repo is outstanding? | Table 1 | Foreign official accounts are separate from the “Others” line. |
+| Are these the Fed's own securities? | Table 1A, custody memorandum items | Custody holdings belong to customers; they are not the Fed's own portfolio. |
 
-This is the point most readers miss, and it is the key to the whole document. Bank reserves, meaning the deposits banks hold at the Fed, are not directly steered line by line. They are what remains after all other liability items are subtracted from the Fed’s assets. In plain English, the Fed’s holdings provide liquidity, while currency in circulation, the Treasury account and reverse repos absorb it. Reserves are the residual.
+These labels and distinctions can be checked in the [October 1, 2026 release](https://www.federalreserve.gov/releases/h41/20261001/). It is a fixed example for this guide, not a live estimate.
 
-That mechanics has a major consequence. The level of reserves can move sharply without any monetary policy decision, simply because the Treasury General Account fills or empties, or because reverse [repo](/en/glossary/repo/) volumes change. Following reserves without following those two items is a recipe for misreading funding stress. This is exactly the mechanism explained in our guide to net liquidity.
+## Read reserves as part of an accounting identity
 
-## Assets: what the Fed holds
+Bank reserves are balances eligible institutions hold at Federal Reserve Banks. They are one liability of the central bank. Other liabilities include banknotes, the Treasury General Account (TGA), reverse repos and other deposits. Assets must equal liabilities plus capital, so the different parts cannot move independently. The Fed's [balance-sheet explanation](https://www.federalreserve.gov/monetarypolicy/bst_fedsbalancesheet.htm) gives the broader accounting context.
 
-Most of the asset side sits in one item, securities held outright: U.S. Treasury bills and bonds, and agency-guaranteed mortgage-backed securities. Add repurchase agreements, or [repo](/en/analysis/repo-the-liquidity-factory/) operations through which the Fed lends against collateral, notably through the standing repo facility. Then come discount-window loans, primary, secondary and seasonal credit, and central-bank swap lines, which appear when the Fed provides dollars to foreign counterparts. A technical item, unamortized premiums and discounts, adjusts the difference between purchase price and face value of securities.
+A useful reading method is to begin with the change in assets, then examine changes in the other liabilities and capital before explaining the movement in reserves. All else equal, a larger TGA leaves less room for reserves; Treasury spending can reverse that shift. But a tax receipt, debt settlement, repo operation and securities maturity can occur in the same week. A single line cannot identify the whole mechanism.
 
-## Liabilities: where liquidity goes
+The popular calculation “Fed assets minus TGA minus reverse repos” omits other balance-sheet items. It can be a selected indicator, provided its definition stays fixed; it is not identical to reported reserves or money available to buy equities. Our [net-liquidity guide](/en/guides/read-net-liquidity-tga-rrp/) explains how to keep that distinction visible.
 
-On the liability side, four items absorb most liquidity. Federal Reserve notes, the currency in circulation, form the largest share and grow slowly with the economy. Reverse repurchase agreements, including the overnight facility and foreign official accounts, temporarily drain reserves. The Treasury General Account is the federal government’s checking account at the Fed, whose movements mechanically shift reserves. Finally, deposits of depository institutions are bank reserves themselves. Reserve Bank capital completes the liability side.
+## A source check: average and snapshot differ
 
-## Reading quantitative tightening in the table
+In Table 1 of the [October 1 release](https://www.federalreserve.gov/releases/h41/20261001/), reserve balances averaged **$2,948.090 billion** over the week ending September 30, 2026. The Wednesday level was **$2,881.686 billion**. The source is expressed in millions of dollars; both figures here are divided by 1,000.
 
-H.4.1 is the best place to track quantitative tightening week after week. When the Fed lets securities mature without reinvesting them, within monthly caps, the securities-held-outright item falls and the balance sheet contracts. After peaking around **$8.9 trillion** in 2022, the balance sheet shrank through this run-off until the reduction stopped on **December 1, 2025**. Comparing Table 1 week over week, or following the series over a longer period, shows the actual pace of that movement far better than commentary.
+The **$17.897 billion increase** printed beside the average compares two weekly averages. It cannot be attached to the Wednesday level. This is why a chart should record both the observation date and the frequency convention, even when its title simply says “Fed reserves.”
 
-## Reading traps
+## Repos and reverse repos change different sides
 
-Several precautions are required. The release is a weekly snapshot as of Wednesday and does not capture intra-week movements. Securities are shown at face value and amortized cost, not market value, so unrealized losses on the Fed’s bond portfolio do not appear in these lines. Another major subtlety: since late 2022, interest paid by the Fed has exceeded its income, creating operating losses. Rather than reducing capital, the Fed books them as a deferred asset, visible through remittances due to the Treasury, which turned negative. Until that deferred asset is worked off, the Fed sends nothing to the Treasury. Finally, accounting reclassifications and exceptional facilities can complicate period comparisons, so the table footnotes matter.
+A Fed repo provides cash against securities and temporarily adds reserves. A reverse repo temporarily substitutes a reverse-repo liability for reserve balances. The New York Fed describes both mechanisms in its [guide to repo and reverse repo operations](https://www.newyorkfed.org/markets/domestic-market-operations/monetary-policy-implementation/repo-reverse-repo-agreements).
 
-The European counterpart of this release, the Eurosystem's weekly statement with its Target2 balances and loss-making central banks, is covered in our guide on [the ECB balance sheet](/en/guides/read-ecb-balance-sheet-target2/).
+In a reverse repo, the securities remain in the Fed's portfolio for accounting purposes. A change in the operation therefore need not change the size of its securities holdings. The [New York Fed's reverse-repo FAQ](https://www.newyorkfed.org/markets/rrp_faq.html) explains the offsetting liability movements. Compare the appropriate facility series: the H.4.1 reverse-repo total includes foreign official activity as well as other counterparties.
 
-## Reading the primary source
+For funding conditions, pair these quantities with [repo rates and SOFR](/en/guides/read-repo-market-sofr/). An accounting movement alone does not establish that institutions are unable to obtain cash.
 
-H.4.1 is free and public. It is available on the Federal Reserve website under statistical releases, in current form and weekly archives stretching far back, in HTML and PDF. For time-series analysis, the St. Louis Fed’s FRED database exposes hundreds of series derived from the release, including total balance-sheet size, reserves, reverse repos and the Treasury account, all downloadable and traceable. Since late 2025, the Fed’s interactive charts run through FRED, after the old visualization tool was retired. For rigorous use, return to the source release rather than second-hand summaries, and remember that reserves must be read alongside the Treasury account and reverse repos. This release also sheds light on the swap lines discussed in our piece on [eurodollars](/en/analysis/eurodollars-the-offshore-dollar/).
+## Separate portfolio accounting from policy decisions
 
-## Methodology
+A fall in securities holdings can reflect maturities and principal repayments. To describe it as part of a policy programme, check the applicable FOMC instructions and reinvestment rules. Total assets can also move because of lending and other accounts. A change in the total is insufficient evidence of a new round of quantitative easing or tightening.
 
-This guide describes the public structure of the H.4.1 release using official Federal Reserve documents and schedules. Line items, release timing and the functioning of reserves as a residual come from the release itself and Fed explanations. The end date of quantitative tightening and the balance-sheet peak are dated and sourced. No investment strategy is recommended. H.4.1 is presented as a tool for reading the central bank balance sheet, with explicit limits.
+Accounting values also differ from sale prices. The release's footnotes identify face values, remaining mortgage principal and separate unamortized premiums or discounts. Do not interpret the securities line as a mark-to-market valuation of the portfolio.
 
----
+The earnings-remittance account needs its own explanation. Under the Fed's [Financial Accounting Manual](https://www.federalreserve.gov/aboutthefed/chapter-1-balance-sheet.htm), an accumulated earnings shortfall can be recorded as a deferred asset, presented in the remittance account. It represents earnings needed before remittances resume; it is not a marketable claim that can be sold to fund the government.
 
-**Main sources:** Federal Reserve, weekly H.4.1 statistical release “Factors Affecting Reserve Balances of Depository Institutions and Condition Statement of Federal Reserve Banks,” current release, archives and publication schedule, Thursday at 4:30 p.m. Eastern time with data as of Wednesday; Federal Reserve explanatory notes for the release, including securities held outright, repos, swap lines, premiums and discounts, the Treasury General Account, reverse repos and deposits of depository institutions; Federal Reserve Bank of St. Louis, FRED, H.4.1-derived series; Federal Reserve and FOMC sources for the end of quantitative tightening on December 1, 2025 and the balance-sheet peak around $8.9 trillion in 2022. Items, dates and calendar checked against Federal Reserve documents.
+## Keep a reproducible weekly reading
+
+Save the dated release, rather than citing only the changing “current” page. Record the table, line, unit and column. Compare the same definition with the previous release, identify the largest offsetting movements, and read the footnotes before assigning a cause. If a figure comes through FRED, retain the series identifier and its frequency as well.
+
+H.4.1 tells you where balances sit within the Fed's accounts. It does not reveal every institution's access to funding, intraday shortages or the ultimate use of credit. Continue with [the offshore dollar system](/en/analysis/eurodollars-the-offshore-dollar/) for that wider perimeter, or [the ECB balance sheet](/en/guides/read-ecb-balance-sheet-target2/) for a comparison of central-bank accounting frameworks.
+
+## Sources and revision
+
+The links above point to the Federal Reserve, the New York Fed and the Fed's accounting manual. The numerical example is fixed to the October 1, 2026 release and is reproducible from Table 1. The October 8 revision corrects the distinction between weekly averages and Wednesday levels, replaces unlinked source descriptions with primary documents, and adds a practical reading sequence. It does not report the latest balance-sheet level or infer an investment signal.

@@ -33,3 +33,35 @@ export const atlases = [
     question: 'Qui avance l’argent, qui reçoit les recettes ?',
   },
 ] as const;
+
+export const englishAtlases = [
+  {
+    ...atlases[0], href: '/en/atlas/ai-financing/', label: 'AI financing',
+    eyebrow: 'Infrastructure · Capital · Guarantees',
+    description: 'Behind data centres sit investors, tenants and guarantors. Explore the contracts connecting them and the conditions attached to their commitments.',
+    question: 'Who finances AI infrastructure?',
+  },
+  {
+    ...atlases[1], href: '/en/atlas/private-credit/', label: 'Private credit',
+    eyebrow: 'Funds · Insurers · Banks',
+    description: 'Follow capital from investors to borrowers through asset managers, insurers and banks, and distinguish direct lending from asset-backed finance.',
+    question: 'Where does the money go before it becomes a loan?',
+  },
+  {
+    ...atlases[2], href: '/en/atlas/oil-financing/', label: 'Oil financing',
+    eyebrow: 'Cargoes · Trading · Public revenues', actors: 'UniCredit · Trafigura · Glencore · Chad',
+    description: 'From paying for a cargo to allocating a producing country’s revenues, explore the documented links between banks, traders and borrowers.',
+    question: 'Who advances the money, and who receives the revenues?',
+  },
+] as const;
+
+export function atlasAlternateLinks(id?: string) {
+  const french = id ? atlases.find(atlas => atlas.id === id)?.href : '/atlas/';
+  const english = id ? englishAtlases.find(atlas => atlas.id === id)?.href : '/en/atlas/';
+  if (!french || !english) throw new Error('Unknown atlas language pair');
+  return [
+    { hreflang: 'fr', href: `https://l0g.fr${french}` },
+    { hreflang: 'en', href: `https://l0g.fr${english}` },
+    { hreflang: 'x-default', href: `https://l0g.fr${french}` },
+  ];
+}
