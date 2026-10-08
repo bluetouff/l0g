@@ -397,6 +397,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'AIMA', nom: 'Alternative Investment Management Association', def: "Association professionnelle mondiale des gérants d'actifs alternatifs (hedge funds, crédit privé)." },
       { sigle: 'IA de frontière', nom: 'Frontier AI', def: "Expression qui désigne les modèles d’intelligence artificielle parmi les plus avancés en capacités. Dans un débat sur la sécurité, le périmètre dépend des capacités et des risques examinés. Il faut donc préciser les critères retenus par une politique ou un texte réglementaire, ainsi que leur date.", guide: '/posts/freiner-frontiere-ia-capital-politique/' },
       { sigle: 'Modèle à poids ouverts', nom: 'Open-weight model', def: "Modèle d’intelligence artificielle dont les poids, les paramètres appris pendant l’entraînement, sont mis à disposition pour permettre à des tiers de l’exécuter ou de l’adapter. Les usages autorisés dépendent de la licence. L’ouverture des poids décrit un mode de distribution et ne détermine pas, à elle seule, le niveau de capacité du modèle.", guide: '/posts/freiner-frontiere-ia-capital-politique/' },
+      { sigle: 'Portabilité', nom: 'Transfert des données et des usages', def: 'Capacité à transférer des données vers un autre environnement dans une forme exploitable. La portée dépend des formats, des informations associées et des interfaces disponibles. Copier les fichiers et reprendre le fonctionnement des applications demandent des vérifications distinctes.', guide: '/posts/quitter-microsoft-1-etat-dependances/' },
+      { sigle: 'Réversibilité', nom: 'Capacité de sortie d’un service informatique', def: 'Possibilité organisée de reprendre un service en interne ou chez un autre fournisseur, en récupérant les données et les éléments nécessaires à son fonctionnement. Elle engage des moyens humains, techniques, financiers et contractuels, ainsi que des essais de reprise adaptés au service.', guide: '/posts/quitter-microsoft-1-etat-dependances/' },
+      { sigle: 'Interopérabilité', nom: 'Coopération entre systèmes informatiques', def: 'Capacité de systèmes différents à échanger des informations et à les utiliser pour accomplir une opération. Elle dépend des interfaces, des formats et du sens des informations échangées. Son évaluation doit préciser la fonction et les systèmes concernés.', guide: '/posts/quitter-microsoft-1-etat-dependances/' },
       { sigle: 'Hyperscaler', nom: 'Géant du cloud', def: "Très grand opérateur d'infrastructure informatique en nuage, comme Microsoft, Google, Amazon ou Oracle, qui construit et exploite des centres de données à grande échelle. Au cœur du boom d'investissement dans l'IA." },
       { sigle: 'Capex', nom: "Dépenses d'investissement", def: "Capital expenditures : dépenses engagées pour acquérir ou construire des actifs durables, centres de données, serveurs, équipements. Le boom de l'IA se mesure d'abord à l'explosion de ces dépenses." },
       { sigle: 'Semi-conducteur', nom: 'Semiconductor', def: "Composant électronique gravé dans un matériau conducteur contrôlé, le plus souvent du silicium. Il sert de brique de base aux processeurs, mémoires, capteurs, équipements industriels, véhicules, télécoms et systèmes de défense." },
@@ -980,6 +983,24 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  portabilite: {
+    intuition: 'Le transfert devient utile lorsque le destinataire peut exploiter les données reçues.',
+    articles: [{ label: 'Quitter Microsoft, 1/7', href: '/posts/quitter-microsoft-1-etat-dependances/', detail: 'Contenus, identités, droits et applications dans une migration publique.' }],
+    sources: [{ label: 'Data Act, chapitre VI', href: 'https://eur-lex.europa.eu/eli/reg/2023/2854/oj/fra', detail: 'Changement de fournisseur, export et obligations selon le service.' }],
+    related: ['reversibilite', 'interoperabilite'],
+  },
+  reversibilite: {
+    intuition: 'Préparer une sortie suppose de financer les personnes et les opérations qui permettront de reprendre le service.',
+    articles: [{ label: 'Quitter Microsoft, 1/7', href: '/posts/quitter-microsoft-1-etat-dependances/', detail: 'Retours documentés du Schleswig-Holstein et du CNRS.' }],
+    sources: [{ label: 'Circulaire cloud au centre, 31 mai 2023', href: 'https://www.legifrance.gouv.fr/circulaire/id/45446', detail: 'R4 et R10 : moyens de réversibilité et adhérences techniques ou fonctionnelles.' }],
+    related: ['portabilite', 'interoperabilite'],
+  },
+  interoperabilite: {
+    intuition: 'Deux systèmes coopèrent lorsque les informations échangées gardent le sens nécessaire à l’action attendue.',
+    articles: [{ label: 'Quitter Microsoft, 1/7', href: '/posts/quitter-microsoft-1-etat-dependances/', detail: 'Reconstituer une procédure au-delà de la copie des fichiers.' }],
+    sources: [{ label: 'Data Act, articles 2 et 30', href: 'https://eur-lex.europa.eu/eli/reg/2023/2854/oj/fra', detail: 'Définition de l’interopérabilité et exigences techniques applicables au changement de fournisseur.' }],
+    related: ['portabilite', 'reversibilite'],
+  },
   'inclusion-forcee': {
     intuition: 'Le droit de déposer une demande et sa possibilité d’aboutir dépendent de fonctions distinctes.',
     articles: [{ label: 'Blast et Abstract : qui paie pour faire vivre une blockchain ?', href: '/posts/blast-abstract-blockchain-fermeture-economie/', kind: 'article' }],

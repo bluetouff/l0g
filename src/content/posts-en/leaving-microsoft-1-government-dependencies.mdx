@@ -1,0 +1,143 @@
+---
+title: 'Leaving Microsoft, 1/7: the dependencies a migration uncovers'
+seoTitle: 'Leaving Microsoft: what government migrations reveal | l0g'
+description: 'From Schleswig-Holstein to the CNRS, an investigation into the applications, identities and skills a public administration must rebuild to leave Microsoft.'
+pubDate: 2026-10-08T22:25:00+02:00
+updatedDate: 2026-10-08T22:25:00+02:00
+tags: ['digital sovereignty', 'Microsoft', 'public services', 'cloud', 'open source']
+draft: false
+ogImage: /illustrations/news/quitter-microsoft-etat-v1.jpg
+sourceArticle: quitter-microsoft-1-etat-dependances
+sourceUpdatedDate: 2026-10-08T22:25:00+02:00
+---
+
+import MicrosoftExitFigure from '../../components/MicrosoftExitFigure.astro';
+
+Schleswig-Holstein was removing Microsoft Office. At its roads agency, an application still called Excel. Five additional licences had to be bought.
+
+The episode occupies a few lines in the Schleswig-Holstein government's reply to its parliament, dated 5 January 2026. The application was SIB-Bauwerke; the agency was the LBV. Its direct call to Excel came to light during the migration. It is a small detail with a large bearing on digital sovereignty: replacing an office suite also means dealing with software that staff open to do an entirely different job. <sup><a href="#source-1">[1]</a></sup>
+
+This series begins with a practical question: **what must a public administration be able to do elsewhere before it can leave Microsoft?** Migrations already under way offer the first answers, through both their achievements and their setbacks. Public records from Schleswig-Holstein, the experience reported by France's CNRS research organisation and Microsoft's own technical guides let us examine the work in detail.
+
+This opening instalment looks at the capacity to leave. Later parts will trace contracts, licensing, business applications and costs, then compare migrations and the ways organisations can preserve their choices. The common concern is keeping a public service running when its supplier, commercial terms or political environment changes.
+
+## Five licences at the edge of a large migration
+
+Schleswig-Holstein has made a substantial change. On 4 December 2025, its government reported that almost 80% of administrative workstations, excluding the tax administration, had moved to LibreOffice. It also reported that almost 44,000 of its mailboxes had moved to Open-Xchange. These are the regional government's figures, tied to a specific date and scope. <sup><a href="#source-2">[2]</a></sup>
+
+The parliamentary reply exposes some of the connections that a progress announcement can miss. Alongside the roads agency case, it describes reinstalls of Access and Word to meet needs identified during the transition. The government explains that it asked ministries for information to answer the parliamentary questions; it did not maintain a continuously updated central register of these reinstalls. The document records identified cases while making that coverage limit explicit. <sup><a href="#source-1">[1]</a></sup>
+
+A member of staff sees a form, a table or an export button. Behind it, an application may expect a particular Office component. That connection is where the dependency sits. Another suite may be able to open the finished file while the software producing it still needs adaptation. SIB-Bauwerke's call to Excel makes the distinction tangible.
+
+On 7 July 2026, the state announced a further stage: the gradual replacement of more than a hundred business applications built on Access. Some were due to be replaced during 2026. The announcement also presented the programme as preparation for a future introduction of Linux on workstations. Office, the business applications and the operating system each have a migration timetable of their own. <sup><a href="#source-3">[3]</a></sup>
+
+This suggests a more useful measure of progress than the number of programs uninstalled: **which tasks can now be completed from beginning to end in the new environment?**
+
+## The relationships that travel with a document
+
+Consider a hypothetical public service processing an application for financial assistance. Its case file includes supporting documents, access permissions, an assigned officer, an approval and a notification. Copying the documents moves the information. Rebuilding the procedure requires the right people to be connected to the right actions.
+
+Microsoft's documentation makes this distinction visible within its own ecosystem. Its guide to moving SharePoint sites between customer environments, known as *tenants*, requires users and groups to be prepared at the destination. Permissions can be preserved if the identities have been correctly mapped. Applications must be republished and sometimes modified; Power Apps and automated tasks must be recreated and reconnected. <sup><a href="#source-4">[4]</a></sup>
+
+A file has a destination. Its use depends on several other things: an account, an authorised group, an application and the steps that application triggers. [Portability](/en/glossary/portabilite/) means, in this context, the ability to transfer data to another environment. [Reversibility](/en/glossary/reversibilite/), as French public technology policy uses the term, extends the question to taking over the service itself, with the resources needed to operate it.
+
+<MicrosoftExitFigure kind="dependencies" lang="en" number="01" sources="4" caption="A migration must reconnect content, identities, permissions and the applications that use them.">
+<details><summary>How to read this diagram</summary><p>A functional diagram based on Microsoft's guide to moving SharePoint sites between tenants. It describes a transfer between two Microsoft environments: permissions can be preserved when identities are mapped correctly, while applications and automations require further work. The arrows show functional dependencies, without assigning any costs. This case illustrates the work involved beyond copying files; it provides no cost estimate for moving to another vendor. <a href="#source-4">[4]</a></p></details>
+</MicrosoftExitFigure>
+
+The documentation also provides evidence in Microsoft's favour. The company supplies migration mechanisms, link redirection and conditional preservation of access. The remaining work depends on each use case. This example concerns a move within Microsoft; leaving for other software requires a separate assessment of compatibility with that software. <sup><a href="#source-4">[4]</a></sup>
+
+For a public buyer, the distinction changes how a contract should be prepared. A buyer can specify an export format, then check whether an exported case file retains the information needed to continue processing it. [Interoperability](/en/glossary/interoperabilite/), the ability of different systems to work together, can then be assessed through a completed action: opening a record, understanding it, authorising access and handling the case.
+
+## The workstations that remain have their own timetable
+
+Schleswig-Holstein has published a schedule for the exceptions that still require Microsoft Office, excluding the tax administration. An October 2025 count recorded 5,042 exceptions. Ministries expected 2,944 to remain at the end of 2028, followed by 101 at the end of 2029. The numbers appear in the January 2026 parliamentary reply. The future values are ministry forecasts. <sup><a href="#source-1">[1]</a></sup>
+
+<MicrosoftExitFigure kind="exceptions" lang="en" number="02" sources="1" caption="Microsoft Office exceptions: an October 2025 count, followed by the path ministries forecast through the end of 2029.">
+<details><summary>Scope and method</summary><p>Source: parliamentary reply 20/3911, question 4, page 5, dated 5 January 2026. The tax administration is excluded. Values: 5,042 exceptions counted in October 2025; forecasts of 4,107, 3,320, 2,944 and 101 at the ends of 2026, 2027, 2028 and 2029 respectively. The vertical scale starts at zero. The chart separates the count from the forecasts; future milestones are not presented as outcomes achieved by 8 October 2026. <a href="#source-1">[1]</a></p></details>
+</MicrosoftExitFigure>
+
+The chart reveals a second phase of migration. After deployment across most of the organisation comes the adaptation of applications needed for a remaining set of tasks. The source explicitly connects its forecasts to when those applications will allow Office to be uninstalled. Whether the timetable will be met, and how difficult each case will prove, remain open questions. <sup><a href="#source-1">[1]</a></sup>
+
+A practical implication follows: progress needs to be assessed from two directions. One tracks the workstations and users that have changed tools. The other tracks the functions still attached to the old environment. A single application can sustain a need for support, specialist skills or licences long after most staff have moved. The published schedule makes this period of coexistence visible in a way that a headline migration rate cannot.
+
+## One sorted column, 790 accounts affected
+
+The German migration provides another, more sensitive lesson. Overnight on 6–7 August 2025, an operation in the second phase of the email migration assigned messages more than seven days old to the wrong accounts. The final report by Dataport, the public IT provider responsible for the work, records 790 affected accounts. It was published as an annex to a parliamentary reply on 7 October 2025. <sup><a href="#source-5">[5]</a></sup>
+
+The report describes a preparation error. A list paired account names with directory identifiers. When several batches were combined, the column containing the names was sorted without the associated columns moving with it. The rows still appeared complete, but the pairings had changed. The second-person check required by the procedure had not been performed. <sup><a href="#source-5">[5]</a></sup>
+
+The mistake is easy to picture. Sort the names in an address book while leaving the telephone numbers in place, and each row can become misleading. In an email migration, that relationship determines which account receives the messages.
+
+<MicrosoftExitFigure kind="identity" lang="en" number="03" sources="5" caption="A migration depends on preserving the relationship between an account and its identifier. Sorting a single column can break that relationship.">
+<details><summary>An explanatory example, separate from the incident data</summary><p>The rows in this diagram are fictional and serve only to illustrate the error Dataport describes. The figure of 790 accounts comes from its final report dated 15 August 2025, annexed to parliamentary reply 20/3628. Sections 4 and 6 describe the cause and corrective measures, including automated matching checks and checks by more than one person. The document concerns the migration of old emails; it does not establish how many messages were actually read by unauthorised people. <a href="#source-5">[5]</a></p></details>
+</MicrosoftExitFigure>
+
+Dataport says it blocked the affected mailboxes, suspended subsequent migrations and restored the previous Exchange operation. The report then describes additional checks on the mappings and stronger human oversight. It attributes the incident to an error in migration preparation. The documented explanation concerns that operation, its controls and the way the work was organised. <sup><a href="#source-5">[5]</a></sup>
+
+For a public administration, the freedom to change supplier therefore includes a specific competence: moving the relationships between people, data and permissions correctly. This connects with the questions examined in our investigation of [digital identity under contract](/en/analysis/your-identity-in-your-phone-3-sovereignty-under-contract/). Safeguards become effective through the people and operations that implement them.
+
+In our assessment, a reversibility exercise should follow a case through to processing at the destination, verify access and test a return to the previous system. That temporary return is part of controlling the transition. It gives teams time to correct a fault without extending an interruption.
+
+## At the CNRS, email is the first stage of a wider change
+
+The CNRS offers another perspective. In an account published on 7 July 2026, its IT department says it left Exchange as its server solution in April, moving to Zimbra operated by Renater. It acknowledges a worse user experience during the transition, difficulties with the Outlook client and stability problems that it said had since been resolved. The account distinguishes the replaced server from the software on the user's workstation. <sup><a href="#source-6">[6]</a></sup>
+
+The next horizon is broader. The CNRS plans to leave SharePoint by the end of 2029, a change involving 2,000 collaboration spaces and business applications. Its IT department stresses the variety of functions that must be carried over and is considering several tools. The schedule and assessment come from the organisation itself. Their value lies in showing how a sovereignty decision becomes a set of architectural choices and a reconstruction effort. <sup><a href="#source-6">[6]</a></sup>
+
+Email carries exchanges. A collaboration space may also organise documents, access and procedures. Replacing a server is an identifiable step; taking over a collection of uses requires decisions about which functions to retain, simplify or distribute across several tools.
+
+Those choices involve people. Preserving familiar ways of working can ease a transition. Redesigning a procedure may reduce future dependencies while requiring staff to learn something new today. The CNRS account makes that cost tangible: staff also bear the disruption of the changeover. <sup><a href="#source-6">[6]</a></sup>
+
+## Sovereignty also rests on the contract and the team
+
+Data location, applicable law, the ability to operate a service and the ability to change its software answer different questions. France's SecNumCloud qualification assesses a defined service against security requirements, including protection from extraterritorial laws. ANSSI, the French cybersecurity agency, explains that an application hosted on qualified infrastructure does not automatically inherit the qualification. The exact service boundary matters. <sup><a href="#source-11">[11]</a></sup>
+
+Microsoft has made European continuity commitments of its own. Annex D of its Data Protection Addendum, checked in the May 2026 version, commits it to challenging suspension orders affecting the government customers covered by its terms. The contract provides for legal proceedings and, where necessary, applications for interim or final relief to maintain service during litigation. Its scope includes national, federal and regional governments in the listed countries, as well as the European Commission. <sup><a href="#source-10">[10]</a></sup>
+
+The company has also announced continuity arrangements with European partners. The contractual duty to pursue legal remedies, whose outcome rests with the courts, is distinct from the announced technical arrangements for continued operation. We have observed no exercise that would allow us to assess these arrangements under an imposed suspension, and they do not establish an automatic technical handover. <sup><a href="#source-9">[9]</a></sup> <sup><a href="#source-10">[10]</a></sup>
+
+These arrangements aim to keep a service based on Microsoft technology running. An exit strategy prepares the transfer of its functions to another environment. Both approaches can serve the same organisation: maintaining today's service while retaining an alternative.
+
+Regulatory proceedings also need to be followed through to their outcome. In March 2024, the European Data Protection Supervisor found infringements in the European Commission's use of Microsoft 365. In July 2025, it announced that the Commission had remedied the infringements concerned and closed the proceedings. This case addresses a specific use and specific obligations. Any account of the original finding needs to include the subsequent outcome. <sup><a href="#source-14">[14]</a></sup> <sup><a href="#source-15">[15]</a></sup>
+
+The economic evidence requires the same precision. In its UK cloud investigation, the Competition and Markets Authority concluded in July 2025 that certain Microsoft licensing practices weakened AWS's and Google's ability to compete with Azure for the software concerned. That finding has a defined market and scope. In March 2026, the authority noted steps taken or announced on egress fees and interoperability, with their effectiveness in improving customer choice still to be assessed. It had identified no material progress on licensing. Its investigation, opened in May 2026, into a possible strategic market status designation for Microsoft's business software ecosystem remains ongoing as of 8 October. <sup><a href="#source-12">[12]</a></sup> <sup><a href="#source-16">[16]</a></sup> <sup><a href="#source-13">[13]</a></sup>
+
+These issues meet at the negotiating table. An administration with a usable export, a replacement operator and a trained team has more options when a contract comes up for renewal. That is an assessment of its room to act, separate from any calculation of savings. The documents examined do not allow that room to be quantified across governments as a whole.
+
+## Plan the departure when the service arrives
+
+France's “cloud at the centre” policy already sets out this requirement. A circular dated 31 May 2023 requires projects to plan the human, technical and financial resources for reversibility from the outset. It also calls for avoiding dependencies that significantly hinder portability and for maintaining a range of suppliers, including in office software and collaboration. The means of leaving become part of service design and funding. <sup><a href="#source-7">[7]</a></sup>
+
+The EU Data Act adds obligations intended to make it easier to switch providers of data processing services. Applicable since 12 September 2025, it provides, among other things, for the removal of switching charges for covered services from 12 January 2027. The rules vary with the service: functional equivalence provisions for certain infrastructure services do not impose a general duty to reproduce every function of a software suite. Training people or rewriting an application remains work that somebody must fund. <sup><a href="#source-8">[8]</a></sup>
+
+Free and open-source software gives rights to study, modify and redistribute code under the terms of its licence. Turning those rights into operational autonomy requires people who can maintain and run the system. Schleswig-Holstein's account of service contracts for its new tools illustrates this too. Dependence may move towards services whose providers are easier to replace; the replacement still has to be organised. <sup><a href="#source-1">[1]</a></sup>
+
+The cases examined suggest a demanding but understandable test. An administration gains autonomy when it can take over a function, preserve the right access and maintain the service with resources it controls. Testing can begin on a small scale, with a representative procedure, before committing an entire organisation.
+
+In Schleswig-Holstein, one call to Excel was enough to bring five licences back into the programme. At the CNRS, departure from the email server leaves several years of work ahead on SharePoint. Between those two scales lies the practical work of sovereignty: finding out what holds a service together, then gaining the ability to put it together elsewhere.
+
+*Next: how the first contracts and implementation choices shape a lasting dependency.*
+
+## Sources and limits of this investigation
+
+This instalment draws on public documents consulted on 8 October 2026: parliamentary replies and an incident report, statements by the organisations concerned, technical documentation, legislation and decisions by the relevant authorities. Migration figures are attributed to the organisations reporting them. Forecasts retain their publication dates. We have not audited the systems, interviewed the teams or run a migration test; this is a documentary investigation. The three infographics distinguish an explanatory mechanism, recorded data, a forecast timetable and a fictional example. The cover illustration is a conceptual creation.
+
+<ol>
+<li id="source-1"><a href="https://www.landtag.ltsh.de/infothek/wahl20/drucks/03900/drucksache-20-03911.pdf">Schleswig-Holstein Parliament, reply 20/3911</a>, 5 January 2026. Question 4, p. 5: Office exceptions and forecasts excluding the tax administration; question 5, p. 6: reinstalls, SIB-Bauwerke and the information-gathering method; question 6: contracts for the new services.</li>
+<li id="source-2"><a href="https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/I/Presse/PI/2025/cds/251204_cds_open-source">Schleswig-Holstein government, LibreOffice and email migration update</a>, 4 December 2025. Statements by the regional government; workstation figures exclude the tax administration.</li>
+<li id="source-3"><a href="https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/I/Presse/PI/2026/cds/260707_abloesung_microsoft_access">Schleswig-Holstein government, replacement of Access applications</a>, 7 July 2026. Announced programme and its relationship to a future introduction of Linux.</li>
+<li id="source-4"><a href="https://learn.microsoft.com/en-us/microsoft-365/migration/cross-tenant-sharepoint-migration?view=o365-worldwide">Microsoft Learn, Cross-tenant SharePoint migration</a>, updated 7 May 2026. Sections on destination users and groups, permissions, applications and Power Apps/Power Automate. Migration within Microsoft 365.</li>
+<li id="source-5"><a href="https://www.landtag.ltsh.de/infothek/wahl20/drucks/03600/drucksache-20-03628.pdf">Schleswig-Holstein Parliament, reply 20/3628 and Dataport final report</a>, 7 October 2025; report dated 15 August 2025. Annex, sections 1 and 4: scope and cause; sections 3, 5 and 6: incident response, restoration and corrective measures.</li>
+<li id="source-6"><a href="https://www.cnrs.fr/fr/actualite/le-cnrs-accelere-sa-transition-vers-la-souverainete-numerique">CNRS, Le CNRS accélère sa transition vers la souveraineté numérique</a>, 7 July 2026. The IT department's account of Exchange/Zimbra and the SharePoint programme; statements by the organisation.</li>
+<li id="source-7"><a href="https://www.legifrance.gouv.fr/circulaire/id/45446">French Prime Minister, circular 6404/SG, “cloud at the centre”</a>, 31 May 2023. Rules R4, R10 and R15: resources for reversibility, dependencies and supplier diversity.</li>
+<li id="source-8"><a href="https://eur-lex.europa.eu/eli/reg/2023/2854/oj/fra">Regulation (EU) 2023/2854, Data Act</a>. Chapter VI, particularly Articles 23, 25 and 29–31, and Article 50 on application. Service-specific obligations, the timetable for switching charges, limitations and exemptions. Link to the French text.</li>
+<li id="source-9"><a href="https://blogs.microsoft.com/on-the-issues/2025/04/30/european-digital-commitments/">Microsoft, European digital commitments</a>, 30 April 2025. The supplier's announced commitments on continuity and European partners.</li>
+<li id="source-10"><a href="https://www.microsoft.com/licensing/docs/documents/download/MicrosoftProductandServicesDPA%28WW%29%28English%29%28May2026%29%28CR%29.docx">Microsoft Products and Services Data Protection Addendum</a>, May 2026, Annex D. Contractual commitment concerning legal challenges to suspension orders affecting the national, federal or regional governments covered by its terms; scope and legal remedies. Word document.</li>
+<li id="source-11"><a href="https://cyber.gouv.fr/enjeux-technologiques/cloud/faq-qualification-secnumcloud/">ANSSI, SecNumCloud qualification FAQ</a>, consulted 8 October 2026. Scope of qualification and protection from extraterritorial laws.</li>
+<li id="source-12"><a href="https://assets.publishing.service.gov.uk/media/688b8891fdde2b8f73469544/final_decision_report.pdf">CMA, Cloud services market investigation, final report</a>, 31 July 2025. Executive summary, particularly paragraphs 23–36: switching barriers and Microsoft licensing; the UK cloud services market.</li>
+<li id="source-13"><a href="https://www.gov.uk/cma-cases/microsofts-business-software-ecosystem">CMA, Microsoft's business software ecosystem investigation</a>, opened 14 May 2026; status consulted 8 October 2026. Examination of a potential strategic market status designation; proceedings ongoing.</li>
+<li id="source-14"><a href="https://www.edps.europa.eu/system/files/2024-03/24-03-08-edps-investigation-ec-microsoft365_en.pdf">EDPS, decision on the European Commission's use of Microsoft 365</a>, 8 March 2024, case 2021-0518. Read alongside the outcome of the proceedings in source 15.</li>
+<li id="source-15"><a href="https://www.edps.europa.eu/system/files/2025-07/2025-07-28_Press-Release_EDPS_Microsoft_EC_in_compliance_EN.pdf">EDPS, announcement of compliance and closure</a>, 28 July 2025. Remedial measures addressing the infringements covered by these proceedings.</li>
+<li id="source-16"><a href="https://assets.publishing.service.gov.uk/media/69cbb8d52d120d9d5ec0f311/Actions_on_cloud_and_business_software_through_the_UK_digital_markets_competition_regime.pdf">CMA, Actions on cloud and business software through the UK digital markets competition regime</a>, 31 March 2026. Paragraphs 33, 34 and 36: steps taken or announced on egress fees and interoperability, their effectiveness still to be assessed, and the assessment of licensing.</li>
+</ol>

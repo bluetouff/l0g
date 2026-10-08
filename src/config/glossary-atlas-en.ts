@@ -204,6 +204,42 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'portabilite', sigle: 'Portability', nom: 'Moving data in a usable form',
+    sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    guide: '/en/analysis/leaving-microsoft-1-government-dependencies/',
+    def: 'The ability to transfer data to another environment in a form that can be used there. Its scope depends on the formats, associated information and available interfaces. Copying files and restoring the applications that use them require separate checks.',
+    atlas: {
+      intuition: 'A transfer becomes useful when the recipient can work with the data it receives.',
+      articles: [{ label: 'Leaving Microsoft, 1/7', href: '/en/analysis/leaving-microsoft-1-government-dependencies/', detail: 'Content, identities, permissions and applications in a public-sector migration.', kind: 'article' }],
+      sources: [{ label: 'Data Act, Chapter VI', href: 'https://eur-lex.europa.eu/eli/reg/2023/2854/oj/fra', detail: 'Provider switching, exports and service-specific obligations.', kind: 'source' }],
+      related: ['reversibilite', 'interoperabilite'],
+    },
+  },
+  {
+    slug: 'reversibilite', sigle: 'Reversibility', nom: 'The ability to take over an IT service',
+    sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    guide: '/en/analysis/leaving-microsoft-1-government-dependencies/',
+    def: 'An organised means of taking a service back in-house or transferring it to another supplier, with the data and other resources needed to keep it working. It requires people, technical capabilities, funding and contractual arrangements, supported by tests suited to the service.',
+    atlas: {
+      intuition: 'Preparing an exit includes funding the people and operations needed to take over the service.',
+      articles: [{ label: 'Leaving Microsoft, 1/7', href: '/en/analysis/leaving-microsoft-1-government-dependencies/', detail: 'Documented experience from Schleswig-Holstein and the CNRS.', kind: 'article' }],
+      sources: [{ label: 'French cloud-at-the-centre circular, 31 May 2023', href: 'https://www.legifrance.gouv.fr/circulaire/id/45446', detail: 'R4 and R10: resources for reversibility and technical or functional dependencies.', kind: 'source' }],
+      related: ['portabilite', 'interoperabilite'],
+    },
+  },
+  {
+    slug: 'interoperabilite', sigle: 'Interoperability', nom: 'Enabling different IT systems to work together',
+    sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    guide: '/en/analysis/leaving-microsoft-1-government-dependencies/',
+    def: 'The ability of different systems to exchange information and use it to perform an operation. It depends on interfaces, formats and the meaning of the information exchanged. An assessment must specify the function and systems being examined.',
+    atlas: {
+      intuition: 'Systems can work together when the information they exchange retains the meaning needed for the intended action.',
+      articles: [{ label: 'Leaving Microsoft, 1/7', href: '/en/analysis/leaving-microsoft-1-government-dependencies/', detail: 'Rebuilding a procedure beyond copying its files.', kind: 'article' }],
+      sources: [{ label: 'Data Act, Articles 2 and 30', href: 'https://eur-lex.europa.eu/eli/reg/2023/2854/oj/fra', detail: 'The definition of interoperability and technical requirements for provider switching.', kind: 'source' }],
+      related: ['portabilite', 'reversibilite'],
+    },
+  },
+  {
     slug: 'inclusion-forcee', sigle: 'Forced inclusion', nom: 'Submitting a rollup operation through its base chain',
     sectionTitle: 'Crypto & stablecoins', accent: 'var(--color-amber)', robots: 'noindex,follow',
     guide: '/en/analysis/blast-abstract-blockchain-shutdown-economics/',

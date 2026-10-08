@@ -84,8 +84,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 601, 'Le corpus doit conserver ses 601 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 167, 'Le graphe Atlas doit conserver ses 167 nœuds, dont les fonctions de continuité des rollups');
+assert.equal(glossaryEntries.length, 604, 'Le corpus doit conserver ses 604 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 170, 'Le graphe Atlas doit conserver ses 170 nœuds, dont les notions de sortie d’un service informatique');
 for (const [slug, sources, related] of [
   ['btf', ['https://www.aft.gouv.fr/fr/nos-produits'], ['risque-de-refinancement', 'prime-de-terme']],
   ['risque-de-refinancement', [
@@ -238,7 +238,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 533, 'Le graphe Atlas doit conserver ses 533 relations');
+assert.equal(glossaryAtlasEdgeCount, 539, 'Le graphe Atlas doit conserver ses 539 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
