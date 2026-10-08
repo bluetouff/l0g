@@ -81,6 +81,36 @@ function validateOpenapiArtifacts() {
   const { latestDate: _omittedDate, ...missingDate } = sourceFixture;
   assert(!validateProvenanceSource(missingDate), 'le champ latestDate doit rester obligatoire');
   assert(!validateProvenanceSource({ ...sourceFixture, unexpected: true }), 'les champs non documentés doivent rester refusés');
+  // The debt producer carries method identity and expiry in both the signal
+  // and provenance. Legacy publications may leave that metadata absent or null.
+  const debtMetadata = {
+    methodologyId: 'us-debt-institutional',
+    methodologyVersion: '2.0',
+    validUntil: '2026-10-08T13:05:48Z',
+  };
+  const metadataFields = Object.keys(debtMetadata);
+  for (const name of ['RiskSignal', 'DebtRiskTileSignal', 'RiskSignalProvenance']) {
+    const schema = openapi.components.schemas[name];
+    assert(schema?.additionalProperties === false, `${name}: les champs non documentés doivent rester refusés`);
+    assert(metadataFields.every((field) => schema.properties?.[field]), `${name}: métadonnées de méthode dette absentes`);
+    const validateMetadata = ajv.compile({
+      type: 'object',
+      additionalProperties: false,
+      properties: Object.fromEntries(metadataFields.map((field) => [field, schema.properties[field]])),
+    });
+    assert(validateMetadata(debtMetadata), `${name}: métadonnées institutionnelles invalides`);
+    assert(validateMetadata({}), `${name}: les publications historiques doivent rester valides`);
+    assert(validateMetadata(Object.fromEntries(metadataFields.map((field) => [field, null]))), `${name}: les métadonnées absentes doivent rester null`);
+    for (const field of metadataFields) {
+      for (const invalid of [0, true, {}, []]) {
+        assert(!validateMetadata({ ...debtMetadata, [field]: invalid }), `${name}: type invalide accepté pour ${field}`);
+      }
+    }
+    for (const invalid of ['not-a-date', '2026-02-30T13:05:48Z', '2026-10-08']) {
+      assert(!validateMetadata({ ...debtMetadata, validUntil: invalid }), `${name}: expiration invalide acceptée`);
+    }
+    assert(!validateMetadata({ ...debtMetadata, unexpected: true }), `${name}: champ non documenté accepté`);
+  }
   const validateFilingFeed = ajv.getSchema('#/components/schemas/FilingEventFeed');
   assert(validateFilingFeed, 'schema du journal 13F absent');
   const journalFixture = { version: 1, source: 'https://13flow.eu/api/events/filings',

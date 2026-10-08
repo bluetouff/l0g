@@ -2973,6 +2973,9 @@ export function buildOpenApiContract() {
             producerRevision: { type: ['string', 'null'] },
             producerRevisionStatus: { enum: ['reported', 'unreported'] },
             sourceRevision: { type: ['string', 'null'], pattern: '^[a-f0-9]{40}$' },
+            methodologyId: { type: ['string', 'null'] },
+            methodologyVersion: { type: ['string', 'null'] },
+            validUntil: { type: ['string', 'null'], format: 'date-time' },
             calculation: {
               anyOf: [
                 {
@@ -3090,6 +3093,9 @@ export function buildOpenApiContract() {
             producerRepository: { type: 'string', format: 'uri' },
             producerRevision: { type: ['string', 'null'] },
             producerRevisionStatus: { enum: ['reported', 'unreported'] },
+            methodologyId: { type: ['string', 'null'] },
+            methodologyVersion: { type: ['string', 'null'] },
+            validUntil: { type: ['string', 'null'], format: 'date-time' },
           },
         },
         RiskSignalProvenanceBucket: {
@@ -3164,6 +3170,9 @@ export function buildOpenApiContract() {
             methodology: { type: 'string', format: 'uri' },
             calculator: { type: 'string', format: 'uri' },
             calculatorRevision: { type: ['string', 'null'] },
+            methodologyId: { type: ['string', 'null'] },
+            methodologyVersion: { type: ['string', 'null'] },
+            validUntil: { type: ['string', 'null'], format: 'date-time' },
             generatedAt: { type: 'string', format: 'date-time' },
             observedAt: { type: 'string', format: 'date-time' },
             retrievedAt: { type: 'string', format: 'date-time' },
