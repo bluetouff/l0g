@@ -324,11 +324,29 @@ function updateRiskSnapshot(risk, latest) {
     'score.current_stress',
   );
   const rounded = Math.round(overall);
+  if (overall < 0 || overall > 100) throw new Error('Score dette hors echelle.');
   const status = latest?.score?.status || statusFromScore(overall);
   const generatedAt = latest?.generated_at;
   if (!generatedAt || Number.isNaN(Date.parse(generatedAt))) {
     throw new Error('generated_at doit etre une date ISO valide.');
   }
+  const method = latest.methodology;
+  if (method != null) {
+    if (method.id !== 'us-debt-institutional' || method.version !== '2.0' || latest.schema_version !== '1.2') {
+      throw new Error('Methode dette non reconnue.');
+    }
+    const generated = Date.parse(generatedAt);
+    const expires = Date.parse(latest.valid_until);
+    const attempted = Date.parse(attemptedAt);
+    if (!(generated <= attempted + 60_000 && attempted < expires && expires > generated && expires - generated <= 3_600_000)) {
+      throw new Error('Publication dette perimee ou dates invalides.');
+    }
+    if (latest.score.expected_signals !== 31 || latest.score.eligible_signals !== 31 || latest.score.coverage !== 1) {
+      throw new Error('Couverture institutionnelle dette incomplete.');
+    }
+  }
+  const revision = typeof latest.source_sha === 'string' && /^[a-f0-9]{40}$/.test(latest.source_sha)
+    ? latest.source_sha : null;
 
   if (!Array.isArray(risk.indices)) {
     throw new Error('public/risk.json doit exposer un tableau indices.');
@@ -338,6 +356,13 @@ function updateRiskSnapshot(risk, latest) {
   const debtSignal = {
     key: 'debt',
     value: rounded,
+    rawValue: overall,
+    producerRepository: 'https://github.com/bluetouff/debt-risk-radar',
+    producerRevision: revision,
+    producerRevisionStatus: revision ? 'reported' : 'unreported',
+    methodologyId: method?.id || null,
+    methodologyVersion: method?.version || null,
+    validUntil: latest.valid_until || null,
     scale: 100,
     level: levelFromStatus(status),
     tone: toneFromStatus(status),
@@ -374,7 +399,10 @@ function updateRiskSnapshot(risk, latest) {
       latestJsonUrl: latest.latest_json_url || debtUrl,
       methodology: 'https://l0g.fr/methodologie/debt-risk-radar/',
       calculator: 'https://github.com/bluetouff/debt-risk-radar',
-      calculatorRevision: process.env.DEBT_RISK_CALCULATOR_REVISION || null,
+      calculatorRevision: revision,
+      methodologyId: method?.id || null,
+      methodologyVersion: method?.version || null,
+      validUntil: latest.valid_until || null,
       generatedAt,
       observedAt: observation.observedAt,
       retrievedAt: attemptedAt,
@@ -398,7 +426,7 @@ function updateRiskSnapshot(risk, latest) {
       sources: Array.isArray(latest.sources) ? latest.sources.map(compactSource) : [],
       topSignals: Array.isArray(latest.top_signals) ? latest.top_signals.slice(0, 10).map(compactTopSignal) : [],
       calculation:
-        'current_stress = overall_score(bucket_scores(metrics), exclude=cbo_projection, expected=current_stress_buckets, neutral_missing=50); value is Math.round(score.current_stress) from Debt Risk Radar latest.json.',
+        'Value is Math.round(score.current_stress) from Debt Risk Radar latest.json. Method 2.0 requires all 31 institutional current signals; CBO and ETF prices are excluded; no neutral imputation. Earlier snapshots retain their original methodology.',
     },
   };
 

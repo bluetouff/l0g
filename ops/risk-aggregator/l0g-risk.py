@@ -549,11 +549,24 @@ def idx_yct(src, attempt_at):
 
 def idx_debt(src, attempt_at):
     data = fetch_json(src["url"])
-    score = (data.get("score") or {}).get("current_stress")
-    if score is None:
-        score = (data.get("score") or {}).get("overall")
-    if not isinstance(score, (int, float)):
-        raise ValueError("score.current_stress manquant")
+    scores = data.get("score") or {}
+    score = scores.get("current_stress") if "current_stress" in scores else scores.get("overall")
+    if type(score) not in (int, float) or not math.isfinite(score) or not 0 <= score <= 100:
+        raise ValueError("score.current_stress invalide ou indisponible")
+    method = data.get("methodology")
+    if method is not None:
+        if not isinstance(method, dict) or (method.get("id"), method.get("version")) != ("us-debt-institutional", "2.0"):
+            raise ValueError("méthode dette non reconnue")
+        generated, expires, attempted = (parse_iso(data.get("generated_at")),
+                                         parse_iso(data.get("valid_until")), parse_iso(attempt_at))
+        if (data.get("schema_version") != "1.2" or not generated or not expires or not attempted
+                or not generated <= attempted + datetime.timedelta(seconds=60)
+                or not attempted < expires
+                or not 0 < (expires - generated).total_seconds() <= 3600):
+            raise ValueError("publication dette périmée ou dates invalides")
+        if (scores.get("expected_signals") != 31 or scores.get("eligible_signals") != 31
+                or type(scores.get("coverage")) not in (int, float) or scores["coverage"] != 1):
+            raise ValueError("couverture institutionnelle dette incomplète")
     value = round(score)
     status = str((data.get("score") or {}).get("status") or "")
     level = {"stress": "Stress", "watch": "Watch", "elevated": "Élevé", "calm": "Normal"}.get(status.lower(), level_uniform(value)[0])
@@ -566,6 +579,13 @@ def idx_debt(src, attempt_at):
         src["url"],
     )
     item["rawValue"] = score
+    # The revision must describe this snapshot, never an unrelated old env marker.
+    revision = data.get("source_sha")
+    item["producerRevision"] = revision if isinstance(revision, str) and re.fullmatch(r"[a-f0-9]{40}", revision) else None
+    item["producerRevisionStatus"] = "reported" if item["producerRevision"] else "unreported"
+    item["methodologyId"] = method["id"] if method else None
+    item["methodologyVersion"] = method["version"] if method else None
+    item["validUntil"] = data.get("valid_until")
     component_dates = {
         str(row.get("source") or f"source-{index}"): row.get("latest_date") or row.get("latestDate")
         for index, row in enumerate(data.get("sources") or [])

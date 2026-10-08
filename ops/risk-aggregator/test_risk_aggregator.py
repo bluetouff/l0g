@@ -34,6 +34,59 @@ def item(key, value, source_updated="2026-07-18T08:00:00Z"):
 
 
 class AggregatorContractTest(unittest.TestCase):
+    def test_debt_v2_carries_method_and_snapshot_revision(self):
+        snapshot = self.debt_v2()
+        with patch.object(RISK, "fetch_json", return_value=snapshot):
+            current = RISK.idx_debt({"url": "https://debt.l0g.fr/latest.json"}, "2026-10-08T10:05:00Z")
+        self.assertEqual(current["value"], 54)
+        self.assertEqual(current["methodologyVersion"], "2.0")
+        self.assertEqual(current["producerRevision"], "a" * 40)
+        self.assertEqual(current["validUntil"], snapshot["valid_until"])
+        fallback = RISK.fallback_item(current, "debt", "2026-10-08T11:00:00Z", "unavailable")
+        self.assertEqual(fallback["methodologyVersion"], "2.0")
+        self.assertEqual(fallback["producerRevision"], current["producerRevision"])
+
+    @staticmethod
+    def debt_v2():
+        return {
+            "schema_version": "1.2", "source_sha": "a" * 40,
+            "methodology": {"id": "us-debt-institutional", "version": "2.0"},
+            "generated_at": "2026-10-08T10:00:00Z", "valid_until": "2026-10-08T10:30:00Z",
+            "score": {"current_stress": 54.1, "coverage": 1, "expected_signals": 31, "eligible_signals": 31},
+            "sources": [{"source": "Treasury", "latest_date": "2026-10-07"}],
+        }
+
+    def test_debt_rejects_invalid_current_score_even_with_overall(self):
+        for score in (None, True, float("nan"), float("inf"), -1, 101):
+            snapshot = self.debt_v2()
+            snapshot["score"].update(current_stress=score, overall=50)
+            with self.subTest(score=score), patch.object(RISK, "fetch_json", return_value=snapshot):
+                with self.assertRaises(ValueError):
+                    RISK.idx_debt({"url": "https://debt.l0g.fr/latest.json"}, "2026-10-08T10:05:00Z")
+
+    def test_debt_rejects_expired_future_unknown_or_incomplete_publication(self):
+        cases = [
+            ("valid_until", "2026-10-08T10:05:00Z"),
+            ("generated_at", "2026-10-08T10:07:00Z"),
+            ("valid_until", "invalid"),
+            ("valid_until", "2026-10-09T10:30:00Z"),
+            ("methodology", {"id": "us-debt-institutional", "version": "3.0"}),
+            ("score", {"current_stress": 54.1, "coverage": 0.99, "expected_signals": 31, "eligible_signals": 30}),
+        ]
+        for field, value in cases:
+            snapshot = self.debt_v2()
+            snapshot[field] = value
+            with self.subTest(field=field, value=value), patch.object(RISK, "fetch_json", return_value=snapshot):
+                with self.assertRaises(ValueError):
+                    RISK.idx_debt({"url": "https://debt.l0g.fr/latest.json"}, "2026-10-08T10:05:00Z")
+
+    def test_debt_publication_during_the_request_is_not_a_false_outage(self):
+        snapshot = self.debt_v2()
+        snapshot["generated_at"] = "2026-10-08T10:05:05Z"
+        with patch.object(RISK, "fetch_json", return_value=snapshot):
+            current = RISK.idx_debt({"url": "https://debt.l0g.fr/latest.json"}, "2026-10-08T10:05:00Z")
+        self.assertEqual(current["sourceStatus"], "ok")
+
     def test_public_api_carries_health_contracts_instead_of_presence_only(self):
         risk = {
             "generated": "2026-08-26T18:00:00Z",
@@ -228,6 +281,7 @@ class AggregatorContractTest(unittest.TestCase):
             current["producerRevision"] = f"{current['key']}-revision"
             current["producerRevisionStatus"] = "reported"
             current["sourceRevision"] = f"{current['key']}-source-revision"
+        payload["indices"][-1].update(methodologyId="us-debt-institutional", methodologyVersion="2.0")
         with tempfile.TemporaryDirectory() as directory:
             self.assertTrue(history.append_snapshot(directory, payload))
             self.assertFalse(history.append_snapshot(directory, payload))
@@ -241,7 +295,9 @@ class AggregatorContractTest(unittest.TestCase):
             self.assertEqual(row["us_producer_revision_status"], "reported")
             self.assertEqual(row["us_source_revision"], "us-source-revision")
             manifest = json.loads((pathlib.Path(directory) / "index.json").read_text())
-            self.assertEqual(manifest["schema"], "4")
+            self.assertEqual(manifest["schema"], "5")
+            self.assertEqual(row["debt_methodology_id"], "us-debt-institutional")
+            self.assertEqual(row["debt_methodology_version"], "2.0")
             self.assertIn("us_observed_at", manifest["columns"])
             self.assertIn("us_producer_revision", manifest["columns"])
 

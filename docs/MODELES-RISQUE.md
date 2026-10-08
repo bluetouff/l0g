@@ -12,31 +12,37 @@ mouvement de la connaissance publique et le replay des frames déjà publiées.
 
 ## Dette US
 
-Source amont : Debt Risk Radar, `https://debt.l0g.fr/latest.json`.
+Section mise à jour le 8 octobre 2026. Source amont : Debt Risk Radar,
+`https://debt.l0g.fr/latest.json`, schéma `1.2`, méthode `us-debt-institutional` / `2.0`.
 
 Le score Dette US publié par l0g reprend `score.current_stress` depuis
 `latest.json`. Le calcul courant :
 
 ```text
-current_stress = overall_score(
-  bucket_scores(metrics),
-  exclude=cbo_projection,
-  expected=current_stress_buckets,
-  neutral_missing=50
-)
+current_stress = somme(score_famille * coefficient_famille) / 0.86
+si les 31 signaux courants sont eligibles ; sinon null
 ```
 
 Conséquences :
 
 - `cbo_projection` est un risque structurel de long terme, publié séparément.
-- Les buckets courants attendus restent dans l'univers de pondération même si
-  une source manque.
-- Une famille courante absente est imputée à `50`, point neutre de l'échelle.
-- `score.coverage` indique la part de poids observée avant imputation neutre.
+- Les neuf signaux ETF sont retirés ; la collecte ne contacte plus Massive.
+- Coefficients : fiscal 22, taux/crédit 18, dette privée 12, liquidité 10,
+  Treasury 10, World Bank US 4, BIS US 10, divisés par 86.
+- Une donnée courante absente, invalide ou périmée suspend le score, sans imputation.
+- `score.coverage` expose la couverture pondérée, `valid_until` la validité de
+  publication, `source_sha` la révision installée et `methodology.version` la formule.
+- Le changement de périmètre rompt la comparabilité avec la méthode ETF. Conserver
+  les anciennes observations sans les réétiqueter ni calculer de variation à la bascule.
+- Les API actives sont accessibles gratuitement ; les droits des séries tierces
+  FRED, notamment ICE BofA, restent à vérifier pour une redistribution commerciale.
 
 Une API ou un agent ne doit donc pas recalculer le stress courant en moyenne des
 seules familles disponibles. Il doit utiliser `/api/v1/debt-risk.json` ou
 `score.current_stress` dans `latest.json`.
+Le détail des formules, exceptions, dates et limites est publié dans
+[METHODOLOGY.md](https://github.com/bluetouff/debt-risk-radar/blob/main/METHODOLOGY.md)
+et [API.md](https://github.com/bluetouff/debt-risk-radar/blob/main/API.md).
 
 ## US Macro
 

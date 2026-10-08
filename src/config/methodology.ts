@@ -333,11 +333,11 @@ export const methodologyPages: MethodologyPage[] = [
       'Dette publique, crédit privé, projections budgétaires et signaux de marché : où le risque de dette se tend-il ?',
     dashboardUrl: 'https://debt.l0g.fr',
     repoUrl: 'https://github.com/bluetouff/debt-risk-radar',
-    updated: methodologyUpdated,
+    updated: '2026-10-08',
     quickRead: [
       'Le dashboard ne mesure pas une crise de dette unique ; il surveille plusieurs canaux qui peuvent se renforcer.',
       'Les séries institutionnelles donnent la structure lente : dette, déficit, intérêts, crédit privé, service de la dette.',
-      'Les séries de marché donnent la partie nerveuse : taux, courbe, spreads, ETF et actifs sensibles au risque de refinancement.',
+      'Méthode 2.0 : 31 signaux courants US, dont les taux, la courbe et les spreads FRED. Les neuf signaux ETF sont retirés ; les quatre projections CBO sont séparées.',
     ],
     sources: [
       {
@@ -370,53 +370,47 @@ export const methodologyPages: MethodologyPage[] = [
       },
       {
         name: 'World Bank Open Data',
-        role: 'Comparables internationaux annuels, notamment dette, croissance et agrégats macro.',
+        role: 'Indicateurs annuels américains : dette, intérêts rapportés aux recettes, croissance et inflation.',
         cadence: 'Annuelle',
         delay: 'Variable selon pays et indicateur',
         url: 'https://data.worldbank.org/',
-      },
-      {
-        name: 'Massive Market Data',
-        role: 'Prix et ratios de marché : ETF obligataires, actions bancaires, spreads proxy et actifs sensibles au stress de dette.',
-        cadence: 'À chaque consultation si clé configurée',
-        delay: 'Selon couverture de marché',
-        url: 'https://massive.com/',
       },
     ],
     calculation: [
       'Le score publié par l0g reprend le score de stress courant exposé par https://debt.l0g.fr/latest.json, pas une valeur codée côté navigateur.',
       'Dans le code du radar, les séries sont converties par zscore_latest(), notées par risk_points_from_z() ou risk_points_from_level(), regroupées par bucket_scores(), puis agrégées par overall_score().',
-      'Chaque série est transformée en z-score glissant, cinq ans par défaut, dix ou trente ans pour certaines séries lentes BIS, World Bank ou CBO, puis orientée dans le sens du risque.',
-      'Les indicateurs sont classés par familles : solvabilité fiscale, stress de taux et marché, levier privé, liquidité, comparables globaux, BIS, CBO et prix Massive.',
-      'Le stress courant agrège les familles rapides et institutionnelles hors projections CBO : fiscal 22 %, taux et marché 18 %, levier privé 12 %, liquidité 10 %, Treasury daily 10 %, World Bank 4 %, BIS 10 %, Massive 4 %.',
+      'Les séries standard utilisent un z-score sur cinq ans pour FRED et Treasury, dix ans pour World Bank et les ratios BIS. Le credit gap BIS et la croissance de dette Treasury ont des formules de niveau spécifiques. CBO combine trajectoire projetée et planchers de niveau, sans entrer dans le score courant.',
+      'Sept familles courantes : solvabilité fiscale, taux et crédit, levier privé, liquidité, dette Treasury, indicateurs World Bank US et crédit BIS US.',
+      'Poids effectifs du stress courant : fiscal 22/86, taux et crédit 18/86, levier privé 12/86, liquidité 10/86, Treasury 10/86, World Bank 4/86 et BIS 10/86.',
       'Les projections CBO restent publiées comme vulnérabilité structurelle de long terme, mais elles ne tirent plus le score courant affiché dans le bandeau l0g.',
-      'Les connecteurs optionnels ne bloquent pas le dashboard : si une famille courante manque, elle est imputée à 50 au lieu de renormaliser tout le score sur les seules familles disponibles.',
+      'Le score courant exige 31 signaux valides. Une donnée absente, invalide ou trop ancienne suspend le score, sans imputation ni modification des poids. Les quatre projections CBO sont auditées séparément.',
+      'La version 2.0 retire définitivement les neuf signaux ETF et renormalise les coefficients sur 0,86. Elle ne se compare pas directement à la méthode précédente. Les historiques gardent leur méthode originale.',
     ],
     formula:
-      'z = (valeur - moyenne_5_ans) / ecart_type_5_ans\n' +
+      'z = (valeur - moyenne_fenetre) / ecart_type_fenetre, pour les series standard\n' +
       'signed_z = z si une hausse augmente le risque, -z si une baisse augmente le risque\n' +
       'score_serie = clip(50 + signed_z x 15, 0, 100)\n' +
-      'score_famille = moyenne ponderee des series disponibles dans la famille\n' +
+      'score_famille = moyenne ponderee si tous les signaux requis sont eligibles\n' +
       'score_structurel_cbo = score_famille des projections CBO\n' +
-      'score_courant = moyenne ponderee des familles hors CBO, familles absentes = 50\n' +
+      'score_courant = somme(score_famille x coefficient) / 0.86 si couverture complete, sinon null\n' +
       'seuils Debt Risk Radar : 50 elevated, 65 watch, 80 stress',
     interpretation: [
       'Un score bas indique que les séries suivies restent proches de leur régime récent ou orientées dans un sens moins risqué.',
       'Un score intermédiaire signale que certains canaux se tendent, sans stress large.',
       'Au-dessus des seuils watch et stress, il faut lire quelles familles portent le signal courant : fiscal, marché, crédit privé, liquidité ou comparables institutionnels.',
-      'La trajectoire compte autant que le niveau : un score qui monte vite peut signaler un changement de régime avant que les ratios publics annuels ne bougent.',
+      'La trajectoire se lit à méthode constante. Un écart lors du changement de formule ne démontre pas un mouvement du risque.',
     ],
     limits: [
       'Les séries fiscales et budgétaires sont lentes, révisées et parfois publiées avec retard.',
       'Les projections CBO ne sont pas des prévisions de marché ; elles reposent sur hypothèses légales, macroéconomiques et budgétaires, et sont lues séparément du stress courant.',
-      'La stabilité en cas de sources manquantes est traitée par imputation neutre et couverture publiée ; les pondérations restent des choix de modèle explicites, pas des coefficients optimisés.',
-      'Les données BIS et World Bank améliorent la comparaison internationale mais ne sont pas temps réel.',
-      'Les prix de marché via Massive Market Data ajoutent de la réactivité, mais ne remplacent pas une analyse de liquidité, duration et bilan.',
+      'Les pondérations sont des conventions de surveillance, sans calibration en probabilité de crise. N/D signifie indisponible et jamais risque nul.',
+      'Les données BIS et World Bank utilisées ici concernent les États-Unis et ne sont pas temps réel.',
+      'L’accès gratuit à une API ne vaut pas droit de redistribution. Les séries FRED de tiers, notamment ICE BofA, conservent leurs restrictions ; cette migration ne valide pas leurs droits commerciaux.',
       'Le score 0-100 est une lecture interne du risque de dette ; il ne se compare pas directement aux scores US Macro, Yen Carry ou Énergie.',
     ],
     useFor: [
       'Surveiller si le risque de dette vient plutôt de la solvabilité publique, des taux, du crédit privé ou du marché.',
-      'Comparer la vulnérabilité CBO de long terme aux signaux plus rapides des spreads, taux, prix de marché et données Treasury.',
+      'Comparer la vulnérabilité CBO de long terme aux signaux plus rapides des spreads, taux et données Treasury.',
       'Construire une lecture de risque avant d’ouvrir les séries sources et les rapports budgétaires détaillés.',
     ],
     notFor: [
@@ -427,7 +421,9 @@ export const methodologyPages: MethodologyPage[] = [
     reproducibility: [
       'Le code est publié dans un dépôt GitHub public.',
       'Les sources institutionnelles principales sont gratuites et documentées.',
-      'Les clés FRED et Massive restent côté serveur dans l’environnement systemd, jamais dans le dépôt ni dans le navigateur.',
+      'FRED requiert une clé serveur gratuite. La méthode 2.0 ne collecte plus Massive et ne requiert pas d’abonnement payant pour les API configurées.',
+      'Le collecteur programmé utilise un cache persistant et respecte les pauses fournisseurs. Les visites publiques ne déclenchent aucune collecte.',
+      'Le JSON publie methodology.version, source_sha, generated_at, valid_until et la couverture. Voir METHODOLOGY.md et API.md dans le dépôt pour les formules complètes et tolérances de dates.',
       'Streamlit écoute uniquement en local derrière Apache, avec service systemd dédié et port applicatif non exposé.',
     ],
   },

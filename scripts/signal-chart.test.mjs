@@ -53,3 +53,16 @@ test('signale une baseline manquante sans fabriquer de variation', () => {
   assert.equal(snapshot.moves[0].direction, 'missing');
   assert.equal(snapshot.counts.missing, 1);
 });
+
+test('ne calcule aucun mouvement a travers une rupture de methode, y compris un aller-retour', () => {
+  for (const versions of [['1.0.0', '2.0'], [null, '2.0'], ['1.0.0', '2.0', '1.0.0']]) {
+    const points = versions.map((version, index) => ({
+      ...point(`2026-10-0${index + 1}T00:00:00Z`, 50 + index), methodologyVersion: version,
+    }));
+    const snapshot = buildSignalChartSnapshot([{ key: 'debt', name: 'Dette US', color: '#fff', points }],
+      Date.parse(points[0].date), Date.parse(points.at(-1).date));
+    assert.equal(snapshot.moves[0].delta, null);
+    assert.equal(snapshot.strongest, null);
+    assert.equal(snapshot.series[0].visiblePoints.length, versions.length);
+  }
+});

@@ -17,7 +17,7 @@ import os
 import tempfile
 
 
-SCHEMA_VERSION = "4"
+SCHEMA_VERSION = "5"
 INDEX_KEYS = ("us", "eu", "yen", "energie", "debt")
 COLUMNS = (
     ["date", "snapshot", "generated", "status"]
@@ -31,6 +31,7 @@ COLUMNS = (
     + [f"{key}_producer_repository" for key in INDEX_KEYS]
     + [f"{key}_producer_revision" for key in INDEX_KEYS]
     + [f"{key}_producer_revision_status" for key in INDEX_KEYS]
+    + ["debt_methodology_id", "debt_methodology_version"]
     + [
         "conf_count",
         "conf_conviction",
@@ -67,6 +68,9 @@ def _flatten(risk):
         record[f"{key}_producer_revision"] = item.get("producerRevision")
         record[f"{key}_producer_revision_status"] = item.get("producerRevisionStatus")
         record[f"{key}_source_revision"] = item.get("sourceRevision")
+    debt = indices.get("debt", {}) or {}
+    record["debt_methodology_id"] = debt.get("methodologyId")
+    record["debt_methodology_version"] = debt.get("methodologyVersion")
     record["conf_count"] = confluence.get("count")
     record["conf_conviction"] = confluence.get("conviction")
     record["conf_top_ticker"] = top.get("ticker")

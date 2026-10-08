@@ -203,7 +203,10 @@ function buildSignalMoves(window: WindowSpec, anchor: string) {
   const moves = [...grouped.entries()].map(([instrument, observations]) => {
     const current = latestObservation(observations);
     const baseline = baselineObservation(observations, since);
-    const delta = current?.value != null && baseline?.value != null ? current.value - baseline.value : null;
+    const sameMethod = current && baseline && observations
+      .filter((item) => item.seriesDate >= baseline.seriesDate && item.seriesDate <= current.seriesDate)
+      .every((item) => item.methodologyVersion === baseline.methodologyVersion);
+    const delta = sameMethod && current?.value != null && baseline?.value != null ? current.value - baseline.value : null;
     const tone = moveTone(delta);
     return {
       instrument,
@@ -228,8 +231,9 @@ function buildSignalMoves(window: WindowSpec, anchor: string) {
       } : null,
       delta,
       direction: tone,
-      levelChanged: Boolean(current?.level && baseline?.level && current.level !== baseline.level),
-      limitations: baseline ? [] : ['Pas de point historique antérieur ou égal au début de fenêtre.'],
+      levelChanged: Boolean(sameMethod && current?.level && baseline?.level && current.level !== baseline.level),
+      limitations: !baseline ? ['Pas de point historique antérieur ou égal au début de fenêtre.']
+        : !sameMethod ? ['Rupture de méthode dans la fenêtre : variation non comparable.'] : [],
     };
   });
 

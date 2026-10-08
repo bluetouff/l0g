@@ -36,6 +36,41 @@ const availableDebt = {
   sources: [{ source: 'fixture', latest_date: '2026-09-09' }],
 };
 
+function institutionalDebt() {
+  return {
+    ...availableDebt,
+    schema_version: '1.2', source_sha: 'a'.repeat(40),
+    methodology: { id: 'us-debt-institutional', version: '2.0' },
+    generated_at: new Date(Date.now() - 60_000).toISOString(),
+    valid_until: new Date(Date.now() + 29 * 60_000).toISOString(),
+    score: { ...availableDebt.score, coverage: 1, expected_signals: 31, eligible_signals: 31 },
+  };
+}
+
+test('institutional publication carries its method and exact producer revision', async (t) => {
+  const { result, risk, snapshot } = await runSnapshot(t, { debt: institutionalDebt() });
+  assert.equal(result.status, 0, result.stderr);
+  const signal = risk.indices.find((item) => item.key === 'debt');
+  assert.equal(signal.methodologyVersion, '2.0');
+  assert.equal(signal.producerRevision, 'a'.repeat(40));
+  assert.equal(signal.producerRevisionStatus, 'reported');
+  assert.equal(snapshot.provenance.methodologyVersion, '2.0');
+  assert.equal(snapshot.provenance.calculatorRevision, signal.producerRevision);
+});
+
+test('institutional expired, future, incomplete and unknown publications stay unavailable', async (t) => {
+  const patches = [
+    { valid_until: new Date(Date.now() - 1).toISOString() },
+    { generated_at: new Date(Date.now() + 120_000).toISOString() },
+    { methodology: { id: 'us-debt-institutional', version: '3.0' } },
+    { score: { current_stress: 54, coverage: 0.99, expected_signals: 31, eligible_signals: 30 } },
+    { score: { current_stress: 101, coverage: 1, expected_signals: 31, eligible_signals: 31 } },
+  ];
+  for (const fields of patches) {
+    assertCoherentFallback(await runSnapshot(t, { debt: { ...institutionalDebt(), ...fields } }));
+  }
+});
+
 async function runSnapshot(t, { debt = { score: { current_stress: null } }, aggregateValue = aggregate, prior = previous, priorConfluence = confluence, confluenceValue = confluence } = {}) {
   const directory = await mkdtemp(join(tmpdir(), 'l0g-debt-fallback-'));
   t.after(() => rm(directory, { recursive: true, force: true }));

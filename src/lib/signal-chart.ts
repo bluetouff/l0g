@@ -63,7 +63,10 @@ export function buildSignalChartSnapshot(
       return time > safeStart && time <= safeEnd;
     });
     const visiblePoints = baseline ? [baseline, ...inWindow] : inWindow;
-    const delta = baseline && latest ? latest.value - baseline.value : null;
+    const sameMethod = baseline && latest && visiblePoints.every(
+      (point) => point.methodologyVersion === baseline.methodologyVersion,
+    );
+    const delta = baseline && latest && sameMethod ? latest.value - baseline.value : null;
     moves.push({
       key: item.key,
       name: item.name,

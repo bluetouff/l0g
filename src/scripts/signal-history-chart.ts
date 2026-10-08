@@ -163,7 +163,10 @@ document.querySelectorAll<HTMLElement>('[data-signal-history-chart]').forEach((r
       const points = item.visiblePoints;
       if (!points.length) continue;
       const coordinates = points.map((point) => ({ point, x: xFor(point.date), y: yFor(point.value) }));
-      const pathData = coordinates.map(({ x, y }, index) => `${index ? 'L' : 'M'} ${x.toFixed(2)} ${y.toFixed(2)}`).join(' ');
+      const pathData = coordinates.map(({ point, x, y }, index) => {
+        const continuous = index > 0 && point.methodologyVersion === coordinates[index - 1].point.methodologyVersion;
+        return `${continuous ? 'L' : 'M'} ${x.toFixed(2)} ${y.toFixed(2)}`;
+      }).join(' ');
 
       if (coordinates.length > 1) {
         const glow = svgElement('path', {

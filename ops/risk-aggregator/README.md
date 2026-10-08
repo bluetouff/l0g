@@ -7,6 +7,15 @@ Il remplace les copies historiques installées manuellement dans
 
 ## Contrat best effort
 
+Debt Risk Radar méthode `2.0` publie `methodologyId`, `methodologyVersion`,
+`validUntil` et la révision `source_sha` du snapshot. L'agrégateur refuse une
+couverture inférieure à 31/31 ou une publication expirée. Une tolérance de
+60 secondes permet une publication pendant la requête, sans prolonger l'expiration.
+Le journal append-only conserve la méthode dette (schéma 5) ; les archives
+existantes ne sont pas réécrites et les variations ne franchissent pas une rupture
+de méthode. Les empreintes de `producer-deployment.json` sont les cibles à vérifier
+à l'activation, pas une preuve à elles seules de l'état actuellement servi.
+
 `generated` et `updated` datent l'assemblage. Ils ne prouvent pas la fraîcheur
 de chaque producteur. Chaque entrée d'`indices` publie séparément :
 
