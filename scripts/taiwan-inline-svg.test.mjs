@@ -6,36 +6,6 @@ import test from 'node:test';
 import { fromHtml } from 'hast-util-from-html';
 import { toText } from 'hast-util-to-text';
 
-import './asia-dollar-hedge-model.test.mjs';
-import './asia-dollar-stress.test.mjs';
-import './asia-dollar-purchases.test.mjs';
-import './aircraft-engine-tool.test.mjs';
-import './cocoa-financing-tool.test.mjs';
-import './openai-rating-infographics.test.mjs';
-import './tfff-infographics.test.mjs';
-import './bessent-yen-infographics.test.mjs';
-import './business-aid-infographics.test.mjs';
-import './ghana-gold-infographics.test.mjs';
-import './copper-stock-infographics.test.mjs';
-import './trump-dividend-infographics.test.mjs';
-import './tariff-refund-infographics.test.mjs';
-import './sulfur-infographics.test.mjs';
-import './tungsten-infographics.test.mjs';
-import './scpi-exit-infographics.test.mjs';
-import './scpi-resale-infographics.test.mjs';
-import './scpi-distribution-infographics.test.mjs';
-import './scpi-office-income-infographics.test.mjs';
-import './scpi-debt-infographics.test.mjs';
-import './scpi-insurance-infographics.test.mjs';
-import './fed-long-yields-infographics.test.mjs';
-import './iran-usdt-infographics.test.mjs';
-import './radiant-world-infographics.test.mjs';
-import './clarity-infographics.test.mjs';
-import './ai-debt-infographics.test.mjs';
-import './software-debt-stress.test.mjs';
-import './retirement-sequence.test.mjs';
-import './medicine-supply.test.mjs';
-
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [

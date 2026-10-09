@@ -70,7 +70,10 @@ requireCondition(
 requireCondition(build.includes('branches: [main]'), 'le build doit rester lié à main');
 requireCondition(build.includes('pull_request:'), 'le vrai build doit valider les pull requests avant fusion');
 requireCondition(build.includes('workflow_dispatch:'), 'le build manuel doit rester disponible');
-const publicationJob = build.split('\n  build:\n')[1] || '';
+const job = (name) => build.match(new RegExp(`^  ${name}:\\n[\\s\\S]*?(?=^  [a-z][a-z-]*:|$(?![\\s\\S]))`, 'm'))?.[0] || '';
+const publicationJob = job('publish');
+const buildJob = job('build');
+const sourceJob = job('svg-source');
 requireCondition(/^    timeout-minutes: 20$/m.test(publicationJob), 'la publication signée doit rester bornée à 20 minutes');
 requireCondition(
   build.includes("cancel-in-progress: ${{ github.event_name == 'pull_request' }}"),
@@ -89,10 +92,12 @@ requireCondition(
   'le build doit refuser les dépendances vulnérables avant publication',
 );
 requireCondition(
-  build.includes('npm run build') && rootPackage.scripts?.build?.includes('npm run test:secrets'),
+  build.includes('npm run build:ci') && rootPackage.scripts?.['build:verify']?.includes('npm run test:secrets')
+    && rootPackage.scripts?.build?.includes('npm run build:verify')
+    && rootPackage.scripts?.['build:ci']?.includes('npm run build:verify'),
   'le build doit analyser les secrets accidentels dans les sources et artefacts',
 );
-const validatePr = build.match(/  validate-pr:[\s\S]*?\n  build:/)?.[0] || '';
+const validatePr = job('validate-pr-build');
 requireCondition(
   validatePr.includes("if: github.event_name == 'pull_request'") && validatePr.includes('contents: read') && /^    timeout-minutes: 15$/m.test(validatePr),
   'la validation PR doit être bornée à 15 minutes et en lecture seule',
@@ -102,9 +107,57 @@ requireCondition(
   'la validation PR doit monter les preuves Black Box sans conserver de credentials',
 );
 requireCondition(
-  validatePr.includes('npm run check') && validatePr.includes('npm run build'),
+  validatePr.includes('npm run check') && validatePr.includes('npm run build:ci'),
   'la validation PR doit exécuter les contrôles Astro et le build complet',
 );
+requireCondition(
+  sourceJob.includes('npm run test:inline-svg:source') && sourceJob.includes('contents: read')
+    && !sourceJob.includes('needs:') && !buildJob.includes('needs:'),
+  'les suites SVG source et le build doivent rester indépendants et en parallèle',
+);
+requireCondition(
+  publicationJob.includes('needs: [build, svg-source]')
+    && !publicationJob.includes('always()') && !publicationJob.includes('continue-on-error')
+    && publicationJob.includes('node scripts/stage-ci-release.mjs restore')
+    && publicationJob.includes('artifact-ids: ${{ needs.build.outputs.artifact-id }}')
+    && publicationJob.includes('L0G_CI_BUILD_ATTEMPT: ${{ needs.build.outputs.build-attempt }}'),
+  'la publication doit attendre tous les tests et revérifier le transfert de release',
+);
+const prGate = job('validate-pr');
+requireCondition(
+  prGate.includes('needs: [validate-pr-build, svg-source]')
+    && prGate.includes('always()') && prGate.includes('needs.validate-pr-build.result')
+    && prGate.includes('needs.svg-source.result')
+    && prGate.includes('test "$BUILD_RESULT" = success && test "$SVG_RESULT" = success'),
+  'le check PR historique doit échouer si une des deux suites parallèles échoue',
+);
+requireCondition(
+  !/contents: write|id-token: write|attestations: write/.test(buildJob + sourceJob + validatePr)
+    && publicationJob.includes('contents: write') && publicationJob.includes('id-token: write'),
+  'seul le job final peut obtenir les droits de publication et attestation',
+);
+requireCondition(
+  buildJob.includes("L0G_APPEND_BLACK_BOX_FRAME: '1'")
+    && buildJob.includes('BLACK_BOX_COMPUTED_AT: ${{ env.L0G_BUILD_TIMESTAMP }}')
+    && !build.includes('npx astro build') && !build.includes('black-box-archive.mjs append')
+    && rootPackage.scripts?.['build:ci']?.split('astro build').length === 2,
+  'le build doit préparer sa frame une seule fois avant le rendu Astro unique',
+);
+requireCondition(
+  rootPackage.scripts?.build === 'npm run build:prepare && astro build && npm run test:inline-svg && npm run build:verify'
+    && rootPackage.scripts?.['build:ci'] === 'npm run prebuild && npm run build:prepare && astro build && npm run test:inline-svg:rendered && npm run build:verify'
+    && rootPackage.scripts?.['test:inline-svg'] === 'node scripts/run-svg-tests.mjs'
+    && rootPackage.scripts?.['test:inline-svg:source'] === 'node scripts/run-svg-tests.mjs --group source'
+    && rootPackage.scripts?.['test:inline-svg:rendered'] === 'node scripts/run-svg-tests.mjs --group rendered',
+  'les pipelines locaux et CI doivent conserver les mêmes contrôles complets',
+);
+requireCondition(
+  !/path: public\/?(?:\s|$)/m.test(build)
+    && buildJob.includes("if: github.ref == 'refs/heads/main' && steps.og_cache.outputs.cache-hit != 'true'")
+    && !validatePr.includes('actions/cache/save@'),
+  'le cache graphique doit exclure les snapshots publics et les écritures PR',
+);
+
 const productionInstalls = build
   .split('\n')
   .filter((line) => line.includes('npm ci') && line.includes('--omit=dev'));

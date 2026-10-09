@@ -1,8 +1,10 @@
 import fs from "node:fs";
+import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import sharp from "sharp";
+import { renderPngWithCache } from "./og-render-cache.mjs";
 
 const require = createRequire(import.meta.url);
 
@@ -158,7 +160,29 @@ export function ogCard({
   );
 }
 
-export async function renderOgPng(card) {
+const pngOptions = { palette: true, colours: 256, quality: 100, effort: 10, dither: 1 };
+const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+let rendererIdentity;
+
+function renderCacheInputs(card) {
+  rendererIdentity ??= {
+    implementation: sha256(fs.readFileSync(new URL(import.meta.url))),
+    cacheImplementation: sha256(fs.readFileSync(new URL("./og-render-cache.mjs", import.meta.url))),
+    lockfile: sha256(fs.readFileSync(new URL("../package-lock.json", import.meta.url))),
+    platform: process.platform,
+    architecture: process.arch,
+    runtime: process.versions,
+    sharp: sharp.versions,
+  };
+  return {
+    rendererIdentity,
+    card,
+    fonts: fonts.map(({ data, ...font }) => ({ ...font, sha256: sha256(data) })),
+    pngOptions,
+  };
+}
+
+async function renderOgPngUncached(card) {
   const svg = await satori(card, {
     width: OG.width,
     height: OG.height,
@@ -166,6 +190,17 @@ export async function renderOgPng(card) {
   });
   const png = new Resvg(svg, { fitTo: { mode: "width", value: OG.width } }).render().asPng();
   return sharp(png)
-    .png({ palette: true, colours: 256, quality: 100, effort: 10, dither: 1 })
+    .png(pngOptions)
     .toBuffer();
+}
+
+// CI can opt into .cache/l0g-og. Ordinary calls and explicit cacheDir:null render anew.
+export async function renderOgPng(card, { cacheDir = process.env.L0G_OG_CACHE_DIR } = {}) {
+  return renderPngWithCache({
+    directory: cacheDir,
+    inputs: cacheDir ? renderCacheInputs(card) : null,
+    width: OG.width,
+    height: OG.height,
+    render: () => renderOgPngUncached(card),
+  });
 }

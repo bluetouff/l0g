@@ -12,8 +12,8 @@ test("generated social cards are deterministic optimized palette PNGs", async ()
     subtitle: "A deterministic social-card fixture.",
     dateLabel: "29 August 2026",
   });
-  const first = await renderOgPng(card);
-  const second = await renderOgPng(card);
+  const first = await renderOgPng(card, { cacheDir: null });
+  const second = await renderOgPng(card, { cacheDir: null });
   const metadata = await sharp(first).metadata();
 
   assert.deepEqual(first, second);

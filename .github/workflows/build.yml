@@ -44,7 +44,26 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  validate-pr:
+  svg-source:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Validate complete SVG source suite
+        run: |
+          node --test scripts/svg-test-suites.test.mjs
+          npm run test:inline-svg:source
+
+  validate-pr-build:
     if: github.event_name == 'pull_request'
     permissions:
       contents: read
@@ -72,6 +91,15 @@ jobs:
             package-lock.json
             mcp-server/package-lock.json
 
+      - name: Restore content-addressed OG cache
+        id: og_cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: .cache/l0g-og
+          key: ${{ runner.os }}-${{ runner.arch }}-og-v1-${{ hashFiles('package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-${{ runner.arch }}-og-v1-${{ hashFiles('package-lock.json') }}-
+
       - name: Install (lockfile strict)
         run: |
           npm ci --no-audit --no-fund
@@ -80,6 +108,7 @@ jobs:
       - name: Validate pull request
         env:
           L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive
+          L0G_OG_CACHE_DIR: ${{ github.workspace }}/.cache/l0g-og
         run: |
           node scripts/black-box-archive.mjs validate --archive .black-box-archive
           npm run test:dependencies
@@ -87,17 +116,30 @@ jobs:
           npm run test:editorial-protocol
           npm run test:deploy
           npm run check
-          npm run build
+          npm run build:ci
+
+  validate-pr:
+    # Preserve the existing required check name, with all parallel tests included.
+    needs: [validate-pr-build, svg-source]
+    if: always() && github.event_name == 'pull_request'
+    permissions: {}
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Require both complete PR suites
+        env:
+          BUILD_RESULT: ${{ needs.validate-pr-build.result }}
+          SVG_RESULT: ${{ needs.svg-source.result }}
+        run: test "$BUILD_RESULT" = success && test "$SVG_RESULT" = success
 
   build:
+    outputs:
+      artifact-id: ${{ steps.release_artifact.outputs.artifact-id }}
+      build-attempt: ${{ steps.release_coordinates.outputs.build-attempt }}
     if: github.event_name != 'pull_request'
     permissions:
-      contents: write # nécessaire uniquement pour pousser sur la branche `built`
-      id-token: write # nécessaire pour les attestations Sigstore/GitHub OIDC
-      attestations: write
-      artifact-metadata: write
+      contents: read
     runs-on: ubuntu-latest
-    # The signed archive transfer is part of this bounded publication transaction.
     timeout-minutes: 20
     steps:
       # Actions officielles uniquement, épinglées sur un SHA immuable.
@@ -122,27 +164,28 @@ jobs:
           test "$GITHUB_SHA" = "$(git rev-parse refs/remotes/origin/main)"
 
       - name: Fix deterministic build timestamp
+        id: release_coordinates
         run: |
+          echo "build-attempt=${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_OUTPUT"
           echo "L0G_BUILD_TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
           echo "L0G_SOURCE_DATE_EPOCH=$(git show -s --format=%ct HEAD)" >> "$GITHUB_ENV"
 
-      - name: Checkout or initialize append-only Black Box archive
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if git ls-remote --exit-code origin refs/heads/black-box-archive >/dev/null 2>&1; then
-            git fetch origin black-box-archive:refs/remotes/origin/black-box-archive
-            git worktree add -B black-box-archive .black-box-archive origin/black-box-archive
-          else
-            mkdir -p .black-box-archive/frames
-            git -C .black-box-archive init -q -b black-box-archive
-            git -C .black-box-archive config user.name "github-actions[bot]"
-            git -C .black-box-archive config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            touch .black-box-archive/frames/.gitkeep
-            git -C .black-box-archive add frames/.gitkeep
-            git -C .black-box-archive commit -q -m "Initialize append-only Black Box archive"
-          fi
-          node scripts/black-box-archive.mjs validate --archive .black-box-archive
+      - name: Checkout append-only Black Box archive
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          ref: black-box-archive
+          path: .black-box-archive
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Restore content-addressed OG cache
+        id: og_cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: .cache/l0g-og
+          key: ${{ runner.os }}-${{ runner.arch }}-og-v1-${{ hashFiles('package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-${{ runner.arch }}-og-v1-${{ hashFiles('package-lock.json') }}-
 
       - name: Install (lockfile strict)
         run: |
@@ -156,34 +199,14 @@ jobs:
           npm run test:editorial-protocol
           npm run test:deploy
 
-      - name: Build (Astro + Agent Surface test + Pagefind)
+      - name: Build once from the new immutable Black Box frame
         env:
           L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive
-        run: npm run build
-
-      - name: Append immutable Black Box frame
-        env:
-          L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive
+          L0G_APPEND_BLACK_BOX_FRAME: '1'
+          L0G_OG_CACHE_DIR: ${{ github.workspace }}/.cache/l0g-og
           BLACK_BOX_COMPUTED_AT: ${{ env.L0G_BUILD_TIMESTAMP }}
           BLACK_BOX_ATTESTATION_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          node scripts/black-box-archive.mjs append --archive .black-box-archive --dist dist --git-sha "$GITHUB_SHA" --id-suffix "${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
-          changes=$(git -C .black-box-archive status --porcelain)
-          test -n "$changes"
-          if printf '%s\n' "$changes" | grep -Ev '^\?\? frames/[^/]+\.json$'; then
-            echo "Refus: une frame passée a été modifiée, supprimée ou renommée."
-            exit 1
-          fi
-
-      - name: Rebuild from immutable archive
-        env:
-          L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive
-        run: |
-          npx astro build
-          npm run test:security
-          npm run test:agent-surface
-          npx pagefind --site dist
-          npm run test:internal-links
+        run: npm run build:ci
 
       - name: Test MCP server against built Agent Surface
         env:
@@ -230,6 +253,71 @@ jobs:
             --pax-option=delete=atime,delete=ctime -C dist -cf - . \
             | gzip -n -9 > release/l0g-site.tar.gz
           (cd release && sha256sum l0g-site.tar.gz > l0g-site.tar.gz.sha256)
+
+      - name: Stage checked release and single new archive frame
+        run: node scripts/stage-ci-release.mjs stage --archive .black-box-archive --release release --dist dist --output ci-release
+
+      - name: Transfer release to gated publisher
+        id: release_artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: checked-static-release-${{ github.run_attempt }}
+          path: ci-release/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+
+      - name: Save validated OG cache on main only
+        if: github.ref == 'refs/heads/main' && steps.og_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: .cache/l0g-og
+          key: ${{ steps.og_cache.outputs.cache-primary-key }}
+
+  publish:
+    # No attestation or write token is issued until both complete suites pass.
+    needs: [build, svg-source]
+    if: github.event_name != 'pull_request'
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+      artifact-metadata: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          ref: black-box-archive
+          path: .black-box-archive
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+
+      - name: Require the current main commit before publication
+        run: |
+          test "$GITHUB_REF" = "refs/heads/main"
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          test "$GITHUB_SHA" = "$(git rev-parse refs/remotes/origin/main)"
+
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          artifact-ids: ${{ needs.build.outputs.artifact-id }}
+          path: ci-release
+          merge-multiple: true
+
+      - name: Verify exact source, archive base and release checksum
+        env:
+          L0G_CI_BUILD_ATTEMPT: ${{ needs.build.outputs.build-attempt }}
+        run: node scripts/stage-ci-release.mjs restore --input ci-release --archive .black-box-archive --release release --dist dist
 
       - name: Attest the complete static release and Agent Surface manifests
         id: attest_static

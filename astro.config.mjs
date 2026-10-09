@@ -10,6 +10,7 @@ import { glossaryAtlasEn } from './src/config/glossary-atlas-en.ts';
 import { sitemapLastmod } from './src/config/sitemap-lastmod.mjs';
 import { weeklySitemapLastmods } from './src/config/weekly-editions.ts';
 import inlineHomeStyles from './scripts/inline-home-styles.mjs';
+import blackBoxPrerender from './scripts/black-box-prerender.mjs';
 
 const indexedGlossaryUrls = new Set(glossaryReferenceEntries.map((entry) => `https://l0g.fr${entry.url}`));
 const excludedEnglishGlossaryUrls = new Set(glossaryAtlasEn
@@ -46,7 +47,7 @@ export default defineConfig({
       ...item,
       lastmod: weeklyLastmods.get(item.url) ?? sitemapLastmod(item.url),
     }),
-  }), inlineHomeStyles()],
+  }), blackBoxPrerender(), inlineHomeStyles()],
 
   redirects: Object.fromEntries(
     Object.entries({

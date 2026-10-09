@@ -2,6 +2,7 @@
 import { createHash } from 'node:crypto';
 import { closeSync, constants, existsSync, fstatSync, mkdirSync, openSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { basename, join, resolve } from 'node:path';
+import { BLACK_BOX_FRAME_SUBJECTS } from './black-box-contract.mjs';
 
 const command = process.argv[2] || 'validate';
 const value = (name, fallback = '') => {
@@ -69,15 +70,9 @@ function maxIso(values) {
 function append() {
   mkdirSync(framesDir, { recursive: true });
   const previous = validate();
-  const subjects = [
-    'agents.json', 'openapi.json', 'api/v1/catalog.json', 'api/v1/search-index.json',
-    'api/v1/claims.json', 'api/v1/evidence-graph.json', 'api/v1/sources.json',
-    'api/v1/freshness.json', 'api/v1/changes.json', 'api/v1/risk-diff.json',
-    'api/v1/risk.json', 'api/v1/debt-risk.json', 'api/v1/signals/history.json',
-  ];
   const integrityManifest = json(join(distDir, 'api/v1/integrity.json'));
   const canonicalByPath = new Map((integrityManifest.snapshots || []).map((snapshot) => [snapshot.path, snapshot]));
-  const contemporaryHashes = subjects.map((path) => {
+  const contemporaryHashes = BLACK_BOX_FRAME_SUBJECTS.map((path) => {
     const publicPath = `/${path}`;
     const canonical = canonicalByPath.get(publicPath);
     if (canonical) {
