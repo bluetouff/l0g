@@ -1,0 +1,46 @@
+---
+import { microsoftMigrationPracticeSvg } from '../lib/microsoftMigrationPracticeFigures.mjs';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'qualification' | 'upstream';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+const references = sources.split(/\s+/).filter(Boolean);
+if (!references.length || references.some((id) => !/^(?:[1-9]|[1-9]\d)$/.test(id))) {
+  throw new Error('Invalid Microsoft-migration-practice figure source reference');
+}
+---
+<figure class="microsoft-migration-practice-figure">
+  <div class="microsoft-migration-practice-desktop" set:html={microsoftMigrationPracticeSvg(lang, kind, false)} />
+  <div class="microsoft-migration-practice-mobile" set:html={microsoftMigrationPracticeSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="microsoft-migration-practice-refs">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  .microsoft-migration-practice-figure { margin: 2.6rem 0; width: 100%; padding-bottom: .85rem; }
+  .microsoft-migration-practice-figure :global(svg) {
+    display: block; width: 100%; height: auto; max-width: 100%;
+    border-radius: .8rem; letter-spacing: normal;
+  }
+  .microsoft-migration-practice-mobile { display: none; }
+  figcaption { margin-top: .9rem; font-size: .875rem; line-height: 1.65; color: var(--color-muted); }
+  figcaption strong { margin-right: .35em; }
+  .microsoft-migration-practice-refs { display: block; }
+  .microsoft-migration-practice-refs a { margin-right: .7em; }
+  @media (max-width: 640px) {
+    .microsoft-migration-practice-desktop { display: none; }
+    .microsoft-migration-practice-mobile { display: block; }
+  }
+  @media print {
+    .microsoft-migration-practice-figure { break-inside: avoid; }
+    .microsoft-migration-practice-desktop { display: block; }
+    .microsoft-migration-practice-mobile { display: none; }
+  }
+</style>
