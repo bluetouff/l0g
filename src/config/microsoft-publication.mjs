@@ -93,8 +93,8 @@ const chapterData = [
   {
     fr: 'quitter-microsoft-3-licences-choix-cloud', en: 'leaving-microsoft-3-licences-cloud-choice',
     titleFr: 'Les licences orientent le cloud', titleEn: 'Licences shape cloud choices',
-    summaryFr: 'Les droits d’usage de Windows Server et SQL Server suivent l’application jusqu’à son hébergeur.',
-    summaryEn: 'Windows Server and SQL Server usage rights follow the application to its hosting provider.',
+    summaryFr: 'Les licences des logiciels serveur de Microsoft influencent le choix de l’hébergeur.',
+    summaryEn: 'Microsoft’s server software licences influence the choice of hosting provider.',
     image: '/illustrations/news/quitter-microsoft-licences-cloud-v1.jpg', figureCount: 2,
   },
   {

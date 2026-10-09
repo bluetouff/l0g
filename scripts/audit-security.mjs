@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { legacySurfaceRedirects } from '../src/config/legacy-surface-redirects.mjs';
 import { serializeInlineScriptData } from '../src/lib/security.ts';
 import { scanHtmlElements } from '../src/lib/html-utils.ts';
+import { assertNoMssqlResponseCollision } from './modsecurity-response-guards.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
@@ -131,10 +132,6 @@ if (JSON.parse(serialized).probe !== probe) {
 const htmlFiles = await filesUnder(join(ROOT, 'dist'), new Set(['.html']));
 if (!htmlFiles.length) fail('Aucune page HTML construite à auditer dans dist');
 const modSecurityOracleLeakagePattern = /ORA-[0-9]{4}|java\.sql\.SQLException|Oracle error|Oracle[\s\S]*Driver|Warning[\s\S]*oci_[\s\S]*|Warning[\s\S]*ora_[\s\S]*/i;
-// CRS 3.3.7, rule 951220: an editorial product name followed by an unrelated
-// numeric CSS value can look like a database error. ModSecurity uses DOTALL,
-// so source line breaks cannot separate the two. Guard the affected homepage.
-const modSecurityMssqlHomepagePattern = /SQL Server[\s\S]*(?:Driver|[0-9a-f]{8})/i;
 const cssFiles = await filesUnder(join(ROOT, 'dist'), new Set(['.css']));
 for (const file of cssFiles) {
   const css = await readFile(file, 'utf8');
@@ -242,9 +239,7 @@ let thirdPartyResources = 0;
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
   const relativeFile = relative(ROOT, file);
-  if (relativeFile === 'dist/index.html' && modSecurityMssqlHomepagePattern.test(html)) {
-    fail(`${relativeFile}: collision de contenu éditorial avec OWASP CRS 951220 dans la réponse HTML`);
-  }
+  assertNoMssqlResponseCollision(relativeFile, html);
   if (modSecurityOracleLeakagePattern.test(html)) {
     fail(`${relativeFile}: faux positif Oracle bloqué par OWASP CRS 951100/951120 dans la réponse HTML`);
   }
