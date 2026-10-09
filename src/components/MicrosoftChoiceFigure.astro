@@ -1,0 +1,46 @@
+---
+import { microsoftChoiceSvg } from '../lib/microsoftChoiceFigures.mjs';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'sovereignty' | 'switching';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+const references = sources.split(/\s+/).filter(Boolean);
+if (!references.length || references.some((id) => !/^(?:[1-9]|[1-9]\d)$/.test(id))) {
+  throw new Error('Invalid Microsoft-choice figure source reference');
+}
+---
+<figure class="microsoft-choice-figure">
+  <div class="microsoft-choice-desktop" set:html={microsoftChoiceSvg(lang, kind, false)} />
+  <div class="microsoft-choice-mobile" set:html={microsoftChoiceSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="microsoft-choice-refs">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  .microsoft-choice-figure { margin: 2.6rem 0; width: 100%; padding-bottom: .85rem; }
+  .microsoft-choice-figure :global(svg) {
+    display: block; width: 100%; height: auto; max-width: 100%;
+    border-radius: .8rem; letter-spacing: normal;
+  }
+  .microsoft-choice-mobile { display: none; }
+  figcaption { margin-top: .9rem; font-size: .875rem; line-height: 1.65; color: var(--color-muted); }
+  figcaption strong { margin-right: .35em; }
+  .microsoft-choice-refs { display: block; }
+  .microsoft-choice-refs a { margin-right: .7em; }
+  @media (max-width: 640px) {
+    .microsoft-choice-desktop { display: none; }
+    .microsoft-choice-mobile { display: block; }
+  }
+  @media print {
+    .microsoft-choice-figure { break-inside: avoid; }
+    .microsoft-choice-desktop { display: block; }
+    .microsoft-choice-mobile { display: none; }
+  }
+</style>
