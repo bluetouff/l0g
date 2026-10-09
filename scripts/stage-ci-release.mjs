@@ -29,7 +29,7 @@ function regularFile(file) {
   return { descriptor, stat };
 }
 
-function read(file, maximum = 25_000_000) {
+function read(file, maximum = 4096) {
   const { descriptor, stat } = regularFile(file);
   try {
     if (stat.size > maximum) reject('Release metadata exceeds its size limit');
@@ -56,7 +56,7 @@ function sha256File(file) {
       total += count;
       hash.update(buffer.subarray(0, count));
     }
-    if (total !== stat.size || !total) reject('Release archive changed or is empty');
+    if (total !== stat.size || !total) reject('Release file changed or is empty');
     return hash.digest('hex');
   } finally { fs.closeSync(descriptor); }
 }
@@ -116,6 +116,16 @@ function checkFrame(file, env) {
       frame.attestation?.reference !== `https://github.com/${env.GITHUB_REPOSITORY}/actions/runs/${env.GITHUB_RUN_ID}`) reject('Frame does not belong to this release');
 }
 
+function checkManifests(input) {
+  const hashes = JSON.parse(read(path.join(input, 'manifest-hashes.json'), 4096));
+  if (!hashes || typeof hashes !== 'object' || Array.isArray(hashes) ||
+      JSON.stringify(Object.keys(hashes).sort()) !== JSON.stringify([...MANIFESTS].sort()) ||
+      MANIFESTS.some(file => typeof hashes[file] !== 'string' || !/^[a-f0-9]{64}$/.test(hashes[file]))) reject('Manifest hashes must name exactly the five release manifests');
+  for (const file of MANIFESTS) {
+    if (sha256File(path.join(input, 'manifests', file)) !== hashes[file]) reject(`Manifest checksum mismatch: ${file}`);
+  }
+}
+
 function originatingBuildEnv(env) {
   // A failed publisher may rerun while reusing the immutable artifact from its
   // successful build job. The workflow passes that job's original attempt.
@@ -161,26 +171,29 @@ export function stageRelease({ archive, release, dist, output, env = process.env
   checkRelease(release, env);
   checkFrame(path.join(archive, frame), env);
   validateArchive(archive);
-  for (const file of MANIFESTS) JSON.parse(read(path.join(dist, file)));
+  // The build validates JSON semantics. Transfer hashes the exact bytes in bounded
+  // chunks so the append-only Black Box can grow without loading it into memory.
+  const manifestHashes = Object.fromEntries(MANIFESTS.map(file => [file, sha256File(path.join(dist, file))]));
   output = emptyDestination(output);
   for (const file of RELEASE_FILES) copy(path.join(release, file), path.join(output, 'release', file));
   for (const file of MANIFESTS) copy(path.join(dist, file), path.join(output, 'manifests', file));
   copy(path.join(archive, frame), path.join(output, frame));
   fs.writeFileSync(path.join(output, 'archive-base.txt'), `${head}\n`, { flag: 'wx' });
+  fs.writeFileSync(path.join(output, 'manifest-hashes.json'), `${JSON.stringify(manifestHashes)}\n`, { flag: 'wx' });
 }
 
 export function restoreRelease({ input, archive, release, dist, env = process.env }) {
   const buildEnv = originatingBuildEnv(env);
   const files = filesIn(input).sort();
   const frames = files.filter((file) => FRAME_PATH.test(file));
-  const expected = ['archive-base.txt', ...RELEASE_FILES.map(file => `release/${file}`), ...MANIFESTS.map(file => `manifests/${file}`), ...frames].sort();
+  const expected = ['archive-base.txt', 'manifest-hashes.json', ...RELEASE_FILES.map(file => `release/${file}`), ...MANIFESTS.map(file => `manifests/${file}`), ...frames].sort();
   if (frames.length !== 1 || JSON.stringify(files) !== JSON.stringify(expected)) reject('Transfer must contain exactly the release files, manifests and one frame');
   const { head, changes } = archiveState(archive);
   if (changes.length) reject('Archive must be clean before restoring a frame');
   if (read(path.join(input, 'archive-base.txt'), 128).toString('utf8') !== `${head}\n`) reject('Archive base changed since the build');
   checkRelease(path.join(input, 'release'), buildEnv);
   checkFrame(path.join(input, frames[0]), buildEnv);
-  for (const file of MANIFESTS) JSON.parse(read(path.join(input, 'manifests', file)));
+  checkManifests(input);
   release = emptyDestination(release);
   dist = emptyDestination(dist);
   const frame = path.join(archive, frames[0]);

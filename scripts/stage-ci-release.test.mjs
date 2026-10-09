@@ -73,6 +73,54 @@ test('stage and restore preserve every byte without extracting the tar', (t) => 
   assert.throws(() => restoreRelease(f.restore), /Archive must be clean/);
 });
 
+test('large manifests transfer unchanged using streaming hashes and reject tampering', (t) => {
+  for (const tamper of [false, true]) {
+    const f = fixture(t);
+    const manifest = 'api/v1/black-box.json';
+    const bytes = Buffer.alloc(27_000_000, ' ');
+    bytes.write('{"large":"fixture"}');
+    fs.writeFileSync(path.join(f.dist, manifest), bytes);
+    stageRelease(f.stage);
+    const hashes = JSON.parse(fs.readFileSync(path.join(f.output, 'manifest-hashes.json')));
+    assert.equal(hashes[manifest], sha256(bytes));
+    fs.unlinkSync(f.framePath);
+    if (tamper) {
+      const descriptor = fs.openSync(path.join(f.output, 'manifests', manifest), 'r+');
+      try { fs.writeSync(descriptor, Buffer.from('!'), 0, 1, bytes.length - 1); }
+      finally { fs.closeSync(descriptor); }
+      assert.throws(() => restoreRelease(f.restore), /Manifest checksum mismatch/);
+      assert(!fs.existsSync(f.framePath));
+    } else {
+      restoreRelease(f.restore);
+      assert.equal(sha256(fs.readFileSync(path.join(f.restore.dist, manifest))), sha256(bytes));
+    }
+  }
+});
+
+test('manifest hash metadata has exactly five valid digests within a bounded file', (t) => {
+  for (const mutate of [
+    hashes => { delete hashes['agents.json']; return JSON.stringify(hashes); },
+    hashes => JSON.stringify({ ...hashes, '../unexpected': 'a'.repeat(64) }),
+    hashes => JSON.stringify({ ...hashes, 'agents.json': 'invalid' }),
+    hashes => JSON.stringify({ ...hashes, 'agents.json': '0'.repeat(64) }),
+    () => 'null',
+    () => ' '.repeat(4097),
+  ]) {
+    const f = prepareRestore(t);
+    const file = path.join(f.output, 'manifest-hashes.json');
+    fs.writeFileSync(file, mutate(JSON.parse(fs.readFileSync(file))));
+    assert.throws(() => restoreRelease(f.restore), /Manifest hashes|Manifest checksum|size limit/);
+    assert(!fs.existsSync(f.framePath));
+  }
+});
+
+test('stage refuses empty manifests instead of recording an empty file digest', (t) => {
+  const f = fixture(t);
+  fs.writeFileSync(path.join(f.dist, 'agents.json'), '');
+  assert.throws(() => stageRelease(f.stage), /file changed or is empty/);
+  assert(!fs.existsSync(f.output));
+});
+
 test('stage refuses multiple frames and every tracked or unexpected archive change', (t) => {
   for (const mutation of [
     f => write(path.join(f.archive, 'frames/other.json'), '{}'),
