@@ -6,6 +6,7 @@ import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { XMLParser, XMLValidator } from 'fast-xml-parser';
 import { editorialSourceDomainTiers } from '../src/config/primary-sources.ts';
+import { contentTitleViolations, editorialTitleViolation } from './editorial-title-policy.mjs';
 
 const execFileAsync = promisify(execFile);
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
@@ -499,6 +500,9 @@ function auditEditorialSignals(record) {
   if (contemporaryCount) warn('Contemporary', `${name}: ${contemporaryCount} contemporary formulation(s) require timestamp/freshness review`);
 
   if (record.source.includes('—')) fail('Style patterns', `${name}: em dash is forbidden`);
+  for (const violation of contentTitleViolations(record.body, record.fields)) {
+    fail('Style patterns', `${name} (${violation.location}): ${violation.rule}: ${violation.title}`);
+  }
   const oppositionCount = (record.body.match(/(?:ce n['’]est pas[\s\S]{0,100}c['’]est|\bnot\b[^.!?\n]{0,100}\bbut\b)/giu) ?? []).length;
   if (oppositionCount >= 3) warn('Style patterns', `${name}: repeated “not X, but Y” construction (${oppositionCount})`);
   const paragraphButCount = paragraphs.filter((paragraph) => /^(?:Mais|But)\b/u.test(paragraph)).length;
@@ -830,6 +834,15 @@ function runSelfTest() {
   assert.match(secretAuditSource, /await handle\.readFile\(\)/u);
   assert.match(secretAuditSource, /finally\s*\{\s*await handle\.close\(\)/u);
   assert.doesNotMatch(secretAuditSource, /await (?:stat|readFile)\(path/u);
+  for (const title of ['Ce que révèle le budget', 'Ce qui fait tenir une migration', 'Ce qu’on conserve', "Ce qu'il faut savoir", 'Cloud : CE QUI change', 'What the budget reveals', 'Cloud: What happens next']) {
+    assert.ok(editorialTitleViolation(title), title);
+  }
+  for (const title of ['Le budget de transition', 'The cost of migration', 'La souveraineté dans la durée']) {
+    assert.equal(editorialTitleViolation(title), null, title);
+  }
+  const headingSample = 'Ce qui change dans le paragraphe.\n\n## Ce **que** révèle le budget\n\n<h3>Ce qu’on conserve</h3>\n\n```md\n## Ce que contient cet exemple\n```';
+  assert.equal(contentTitleViolations(headingSample, new Map([['seoTitle', 'What the budget reveals']])).length, 3);
+  assert.equal(contentTitleViolations('Ce que contient ce paragraphe.\n\n## Un titre précis').length, 0);
   console.log('publish:check self-test OK');
 }
 

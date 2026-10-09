@@ -1,0 +1,203 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { microsoftEditions } from '../config/microsoft-publication.mjs';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../config/entities.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
+import { microsoftContractsSvg } from '../lib/microsoftContractsFigures.mjs';
+import { microsoftChoiceSvg } from '../lib/microsoftChoiceFigures.mjs';
+
+interface Props { lang: 'fr' | 'en'; }
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+const tr = (fr: string, en: string) => isEn ? en : fr;
+const book = microsoftEditions[lang];
+const alternate = microsoftEditions[isEn ? 'fr' : 'en'];
+const bytes = readFileSync(join(process.cwd(), 'public', book.epub));
+const sha256 = createHash('sha256').update(bytes).digest('hex');
+const size = `${new Intl.NumberFormat(book.locale, { maximumFractionDigits: 1 }).format(bytes.length / 1024 / 1024)} ${tr('Mo', 'MB')}`;
+const formatDate = (value: string) => new Intl.DateTimeFormat(book.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${value}T12:00:00Z`));
+const pageUrl = `${SITE_URL}${book.path}`;
+const translation = { '@type': 'Book', '@id': `${SITE_URL}${alternate.path}#book`, inLanguage: alternate.lang };
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Book', '@id': `${pageUrl}#book`,
+  name: book.title, alternativeHeadline: book.subtitle, description: book.description, inLanguage: lang,
+  author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID },
+  datePublished: book.date, dateModified: book.modified,
+  bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true,
+  url: pageUrl, image: `${SITE_URL}${book.cover}`, license: 'https://creativecommons.org/licenses/by/4.0/',
+  ...(isEn ? { translationOfWork: translation } : { workTranslation: translation }),
+  hasPart: book.chapters.map(chapter => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.route}` })),
+  associatedMedia: { '@type': 'MediaObject', contentUrl: `${SITE_URL}${book.epub}`, encodingFormat: 'application/epub+zip', contentSize: `${bytes.length} bytes`, sha256 },
+};
+const previews = [
+  {
+    title: tr('L’attribution des licences dans Entra', 'Assigning licences through Entra'), chapter: book.chapters[1],
+    desktop: microsoftContractsSvg(lang, 'activation', false), mobile: microsoftContractsSvg(lang, 'activation', true),
+    caption: tr('Chapitre 2. Une règle de groupe peut attribuer des licences ; les plans de service choisis par l’administrateur déterminent les services disponibles. Le chapitre explique les conditions et cite la documentation Microsoft.', 'Chapter 2. A group rule can assign licences; the service plans selected by the administrator determine which services are available. The chapter explains the conditions and cites Microsoft’s documentation.'),
+  },
+  {
+    title: tr('Le seuil et le score d’une offre souveraine', 'The threshold and score of a sovereign cloud offering'), chapter: book.chapters[6],
+    desktop: microsoftChoiceSvg(lang, 'sovereignty', false), mobile: microsoftChoiceSvg(lang, 'sovereignty', true),
+    caption: tr('Chapitre 7. Cadre de la Commission européenne d’octobre 2025 et guide de juin 2026 : le niveau SEAL minimal et le score pondéré remplissent des fonctions différentes. Les pondérations décrivent la méthode, sans reconstituer les notes des offres.', 'Chapter 7. The European Commission’s October 2025 framework and June 2026 guidance give the minimum SEAL level and weighted score different roles. The weights describe the method; no bid scores are reconstructed.'),
+  },
+];
+---
+
+<BaseLayout title={book.title}
+  seoTitle={tr('Quitter Microsoft : l’enquête en EPUB gratuit | l0g', 'Leaving Microsoft: the free investigative EPUB | l0g')}
+  ogTitle={isEn ? `${book.title}: ${book.subtitle}` : `${book.title} : ${book.subtitle}`}
+  description={book.description} lang={lang} ogLocale={isEn ? 'en_US' : 'fr_FR'} sidebar={false}
+  ogImage={book.social} ogImageAlt={tr('Quitter Microsoft, La liberté de choisir : une enquête sur les dépendances numériques des administrations', 'Leaving Microsoft, The freedom to choose: an investigation into public sector technology dependencies')}
+  alternateLinks={[
+    { hreflang: 'fr', href: `${SITE_URL}${microsoftEditions.fr.path}` },
+    { hreflang: 'en', href: `${SITE_URL}${microsoftEditions.en.path}` },
+    { hreflang: 'x-default', href: `${SITE_URL}${microsoftEditions.fr.path}` },
+  ]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <article class="microsoft-book rise" data-pagefind-body>
+    <section class="book-hero" aria-labelledby="book-title">
+      <div class="cover-stage">
+        <div class="book-shell">
+          <span class="book-spine" aria-hidden="true">l0g · {tr('octobre', 'October')} 2026</span>
+          <img src={book.cover} srcset={[320, 640, 960].map(w => `${book.cover.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
+            sizes="(max-width: 780px) 240px, 360px" width="1024" height="1638"
+            alt={`${tr('Couverture de', 'Cover of')} ${book.title}`} loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+        <p class="cover-caption">{tr('Édition française', 'English edition')} · <time datetime={book.date}>{formatDate(book.date)}</time></p>
+      </div>
+      <div class="hero-copy">
+        <p class="mono-label">// {tr('enquête l0g · souveraineté numérique', 'l0g investigation · digital sovereignty')}</p>
+        <h1 id="book-title">{tr('Quitter', 'Leaving')} <span>Microsoft</span></h1>
+        <p class="hero-deck">{book.subtitle}</p>
+        <p class="hero-lede">{tr('Du contrat d’achat au prochain changement d’équipe, sept enquêtes suivent les dépendances numériques des administrations. Licences, applications, coûts, migrations et responsabilités : un livre pour comprendre comment la liberté de choisir se construit et s’entretient.', 'From the first contract to the next change of team, seven investigations follow public bodies’ technology dependencies. Licences, applications, costs, migrations and responsibilities explain how freedom of choice is built and maintained.')}</p>
+        <div class="hero-actions">
+          <a class="download-action" href={book.epub} download>{tr('Télécharger l’EPUB', 'Download the EPUB')} <small>{tr('Gratuit, sans inscription', 'Free, no registration')} · {size}</small></a>
+          <a class="contents-action" href="#sommaire">{tr('Explorer les chapitres', 'Explore the chapters')} <span aria-hidden="true">↓</span></a>
+        </div>
+        <dl class="edition-facts">
+          <div><dt>{book.chapters.length}</dt><dd>{tr('articles intégraux', 'complete articles')}</dd></div>
+          <div><dt>{book.figureCount}</dt><dd>{tr('infographies', 'infographics')}</dd></div>
+          <div><dt>EPUB 3</dt><dd>{tr('lecture hors ligne', 'offline reading')}</dd></div>
+        </dl>
+        <p class="edition-language"><a href={alternate.path} lang={alternate.lang} hreflang={alternate.lang}>{tr('Read in English', 'Lire en français')} <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </section>
+
+    <figure class="panorama">
+      <img src={book.panorama} srcset={[640, 960, 1600].map(w => `${book.panorama.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
+        sizes="(max-width: 780px) 100vw, 1120px" width="1600" height="800" loading="lazy" decoding="async"
+        alt={tr('Un bâtiment public est relié par un chemin turquoise à un espace de travail, à travers des parois de verre contenant serveurs et documents. Composition conceptuelle.', 'A turquoise path connects a public building to a workspace through glass layers containing servers and documents. Conceptual artwork.')} />
+      <figcaption>{tr('Une liberté à entretenir : illustration conceptuelle, sans représentation d’une installation réelle. Les chapitres documentent les contrats, les procédures et les expériences de migration.', 'A freedom to maintain: conceptual artwork, without depicting an actual installation. The chapters document contracts, workflows and migration experiences.')}</figcaption>
+    </figure>
+
+    <section class="reading-section" aria-labelledby="intro-title">
+      <div class="section-heading"><p class="mono-label">01 / introduction</p><h2 id="intro-title">{book.introductionTitle}</h2></div>
+      <div class="prose-copy">{book.introduction.slice(0, 2).map(paragraph => <p>{paragraph}</p>)}
+        <p class="excerpt-note">{tr('Une introduction originale ouvre le livre et relie les sept enquêtes.', 'An original introduction opens the book and connects the seven investigations.')}</p>
+      </div>
+    </section>
+
+    <section id="sommaire" class="contents-section" aria-labelledby="contents-title">
+      <div class="section-heading"><p class="mono-label">02 / {tr('parcours de lecture', 'reading journey')}</p><h2 id="contents-title">{tr('Sept chapitres pour garder le choix', 'Seven chapters on freedom to choose')}</h2><p>{tr('Les sept volets complets de l’enquête, dans leur ordre de lecture. Chaque article reste disponible en ligne avec ses références et ses limites.', 'The complete seven-part investigation, in reading order. Each article remains available online with its references and limitations.')}</p></div>
+      <ol class="chapter-grid">{book.chapters.map(chapter => <li><a href={chapter.route}>
+        <img src={chapter.image} width="1200" height="630" alt={chapter.imageAlt} loading="lazy" decoding="async" />
+        <div class="chapter-copy"><span class="chapter-number">{String(chapter.number).padStart(2, '0')}</span><div><h3>{chapter.title}</h3><p>{chapter.summary}</p></div><span class="chapter-arrow" aria-hidden="true">↗</span></div>
+      </a></li>)}</ol>
+    </section>
+
+    <section class="previews-section" aria-labelledby="preview-title">
+      <div class="section-heading"><p class="mono-label">03 / {tr('dans le livre', 'inside the book')}</p><h2 id="preview-title">{tr('Licences et critères d’achat en images', 'Licence assignment and procurement criteria')}</h2><p>{tr('Deux des quinze infographies intégrées à l’édition. Elles rendent visibles les mécanismes étudiés, en conservant leur périmètre et leurs sources.', 'Two of the fifteen infographics included in the edition. They explain the mechanisms examined in the book, preserving their scope and sources.')}</p></div>
+      <div class="preview-grid">{previews.map(preview => <figure>
+        <h3>{preview.title}</h3>
+        <div class="preview-desktop" set:html={preview.desktop} />
+        <div class="preview-mobile" set:html={preview.mobile} />
+        <figcaption>{preview.caption}</figcaption>
+        <a class="preview-link" href={preview.chapter.route}>{tr('Lire le chapitre et ses sources', 'Read the chapter and its sources')} <span aria-hidden="true">↗</span></a>
+      </figure>)}</div>
+    </section>
+
+    <section class="reading-section" aria-labelledby="conclusion-title">
+      <div class="section-heading"><p class="mono-label">04 / conclusion</p><h2 id="conclusion-title">{book.conclusionTitle}</h2></div>
+      <div class="prose-copy">{book.conclusion.slice(0, 2).map(paragraph => <p>{paragraph}</p>)}<p class="excerpt-note">{tr('La conclusion complète relie les décisions d’architecture, les contrats et le travail des équipes dans la durée.', 'The full conclusion connects architecture, contracts and the continuing work of the teams who run the service.')}</p></div>
+    </section>
+
+    <section class="reading-section edition-section" aria-labelledby="edition-title">
+      <div class="section-heading"><p class="mono-label">05 / {tr('emporter l’enquête', 'keep the investigation')}</p><h2 id="edition-title">{tr('Une édition sourcée, à lire hors ligne', 'A sourced edition for offline reading')}</h2></div>
+      <div class="prose-copy">
+        <p>{tr('Cette édition du', 'This edition, dated')} {formatDate(book.date)}{tr(', réunit les sept articles, une introduction et une conclusion originales. La documentation est arrêtée au', ', brings together all seven articles with an original introduction and conclusion. Its documentary cutoff is')} {formatDate(book.documentationDate)}.</p>
+        <p>{tr('Le texte s’adapte à l’écran. Le sommaire, les références internes et les infographies sont disponibles hors ligne. Les documents externes et les articles en ligne nécessitent une connexion. L’agrandissement des images dépend de la liseuse.', 'Text reflows to fit the screen. The contents, internal references and infographics are available offline. External documents and online articles require a connection. Image enlargement depends on the reading app.')}</p>
+        <p>{tr('Les couvertures et le panorama sont des illustrations conceptuelles créées avec une assistance d’intelligence artificielle. Les infographies conservent les dates, les unités, les sources et les limites des articles.', 'The covers and panorama are conceptual illustrations created with AI assistance. The infographics retain the articles’ dates, units, sources and limitations.')}</p>
+        <p>{tr('Gratuit, sans inscription, sans script embarqué ni outil de suivi.', 'Free, without registration, embedded scripts or tracking.')} <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>.</p>
+        <details class="integrity"><summary>{tr('Vérifier l’intégrité du fichier', 'Check the file’s integrity')}</summary><p>SHA-256</p><code>{sha256}</code></details>
+        <a class="download-action closing-download" href={book.epub} download>{tr('Télécharger le livre', 'Download the book')} <small>EPUB 3 · {size}</small></a>
+        <p class="back-link"><a href={isEn ? '/en/publications/' : '/publications/'}>← {tr('Toutes les publications', 'All publications')}</a></p>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .microsoft-book { max-width: 1120px; margin: 2rem auto 0; }
+  .book-hero { display: grid; grid-template-columns: minmax(280px,.85fr) minmax(0,1.25fr); align-items: center; gap: clamp(2rem,5vw,5rem); padding: 1rem 0 3.5rem; }
+  .cover-stage { display:flex; flex-direction:column; align-items:center; padding:2rem 1.5rem; position:relative; background:radial-gradient(ellipse at 50% 65%,color-mix(in srgb,var(--color-amber) 12%,transparent),transparent 65%); }
+  .book-shell { position:relative; width:min(100%,360px); transform:perspective(1300px) rotateY(-9deg) rotateZ(-1deg); box-shadow:1rem 1.5rem 3rem color-mix(in srgb,var(--color-ink) 70%,transparent); border-radius:3px 7px 7px 3px; }
+  .book-shell::after { content:''; position:absolute; inset:0; border:1px solid color-mix(in srgb,var(--color-paper) 25%,transparent); border-radius:inherit; box-shadow:inset 8px 0 12px #0006; pointer-events:none; }
+  .book-shell > img { display:block; width:100%; height:auto; border-radius:inherit; }
+  .book-spine { position:absolute; left:-15px; top:1px; bottom:1px; width:15px; writing-mode:vertical-rl; transform:rotate(180deg); background:var(--color-surface); color:var(--color-muted); font-family:var(--font-ui); font-size:.55rem; text-align:center; border:1px solid var(--color-line); }
+  .cover-caption { margin-top:1.8rem; font-family:var(--font-ui); font-size:.72rem; color:var(--color-muted); }
+  .hero-copy > .mono-label { color:var(--color-amber); font-size:.7rem; }
+  .hero-copy h1 { color:var(--color-bright); font-family:var(--font-display); font-size:clamp(2.6rem,4.5vw,4.5rem); line-height:1.05; letter-spacing:-.045em; margin:1rem 0; overflow-wrap:normal; }
+  .hero-copy h1 span { display:block; color:var(--color-signal); }
+  .hero-deck { font-family:var(--font-read); color:var(--color-bright); font-size:1.25rem; line-height:1.5; margin:1.3rem 0; }
+  .hero-lede { font-family:var(--font-read); color:var(--color-prose); font-size:1.04rem; line-height:1.8; }
+  .hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem; margin:1.8rem 0; }
+  .download-action { display:inline-flex; flex-direction:column; align-items:flex-start; gap:.4rem; border:1px solid var(--color-signal); border-radius:7px; padding:1rem 1.4rem; color:var(--color-bright); background:color-mix(in srgb,var(--color-signal) 10%,var(--color-surface)); font-family:var(--font-ui); font-size:.94rem; font-weight:700; text-decoration:none; transition:background .2s,transform .2s; }
+  .download-action small { color:var(--color-muted); font-size:.68rem; font-weight:400; }
+  .download-action:hover { background:color-mix(in srgb,var(--color-signal) 18%,var(--color-surface)); transform:translateY(-2px); }
+  .contents-action,.edition-language a { color:var(--color-signal); font-family:var(--font-ui); font-size:.77rem; text-decoration:none; }
+  .contents-action span { margin-left:.35rem; }
+  .edition-facts { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin:1.7rem 0; padding:1.2rem 0; border-top:1px solid var(--color-line); border-bottom:1px solid var(--color-line); }
+  .edition-facts dt { color:var(--color-bright); font-family:var(--font-ui); font-size:1.25rem; font-weight:700; }
+  .edition-facts dd { color:var(--color-muted); font-family:var(--font-read); font-size:.75rem; margin:.4rem 0 0; }
+  .panorama { margin:0 0 3.5rem; }
+  .panorama img { display:block; width:100%; height:auto; border-radius:10px; border:1px solid var(--color-line); }
+  figcaption { font-family:var(--font-read); color:var(--color-muted); font-size:.8rem; line-height:1.65; margin:.8rem 0 0; }
+  .reading-section { display:grid; grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr); gap:clamp(1.5rem,4vw,4rem); margin:4rem 0; padding-top:2rem; border-top:1px solid var(--color-line); }
+  .section-heading > .mono-label { color:var(--color-amber); font-size:.7rem; }
+  .section-heading h2 { color:var(--color-bright); font-family:var(--font-display); font-size:clamp(1.5rem,2.7vw,2.2rem); letter-spacing:-.035em; line-height:1.2; margin:.8rem 0 1rem; }
+  .section-heading > p:last-child { max-width:46rem; color:var(--color-prose); font-family:var(--font-read); line-height:1.75; }
+  .prose-copy { font-family:var(--font-read); color:var(--color-prose); line-height:1.85; font-size:1.04rem; }
+  .prose-copy > p { margin:0 0 1.3rem; }
+  .prose-copy .excerpt-note { color:var(--color-muted); font-size:.8rem; }
+  .contents-section,.previews-section { margin:4rem 0; scroll-margin-top:2rem; }
+  .chapter-grid { list-style:none; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.1rem; padding:0; margin:1.8rem 0 0; }
+  .chapter-grid li { min-width:0; }
+  .chapter-grid a { height:100%; display:block; text-decoration:none; background:var(--color-surface); border:1px solid var(--color-line); border-radius:9px; overflow:hidden; transition:border-color .2s,transform .2s; }
+  .chapter-grid a:hover { border-color:var(--color-signal); transform:translateY(-3px); }
+  .chapter-grid img { width:100%; height:auto; display:block; }
+  .chapter-copy { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:.8rem; padding:1.2rem; }
+  .chapter-number { font-family:var(--font-ui); color:var(--color-amber); font-size:.7rem; padding-top:.2rem; }
+  .chapter-copy h3 { color:var(--color-bright); font-family:var(--font-read); font-size:1.1rem; line-height:1.4; margin:0 0 .7rem; }
+  .chapter-copy p { font-family:var(--font-read); color:var(--color-muted); font-size:.85rem; line-height:1.6; margin:0; }
+  .chapter-arrow { color:var(--color-signal); }
+  .preview-grid { display:grid; gap:2.5rem; margin-top:2rem; }
+  .preview-grid figure { margin:0; min-width:0; }
+  .preview-grid h3 { font-family:var(--font-read); color:var(--color-bright); font-size:1.1rem; margin:0 0 1rem; }
+  .preview-grid .preview-link { display:inline-block; margin-top:.65rem; color:var(--color-signal); font-family:var(--font-ui); font-size:.75rem; }
+  .preview-grid :global(svg) { display:block; width:100%; height:auto; border:1px solid var(--color-line); border-radius:9px; }
+  .preview-mobile { display:none; }
+  @media(max-width:640px) { .preview-desktop { display:none; } .preview-mobile { display:block; max-width:480px; margin-inline:auto; } }
+  .integrity { font-family:var(--font-ui); font-size:.75rem; border:1px solid var(--color-line); padding:1rem; border-radius:6px; margin:1.5rem 0; }
+  .integrity summary { color:var(--color-signal); cursor:pointer; }
+  .integrity code { display:block; overflow-wrap:anywhere; color:var(--color-muted); margin-top:.5rem; }
+  .closing-download { margin:.5rem 0 1.5rem; }
+  .back-link a { color:var(--color-signal); font-size:.85rem; }
+  a:focus-visible,summary:focus-visible { outline:2px solid var(--color-signal); outline-offset:5px; }
+  @media(max-width:900px) { .chapter-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media(max-width:780px) { .microsoft-book { margin-top:.5rem; } .book-hero { grid-template-columns:1fr; gap:.5rem; padding-bottom:2.5rem; } .book-shell { width:min(100%,240px); } .cover-stage { padding:1.3rem 0; } .hero-copy h1 { font-size:clamp(2.1rem,9vw,3.3rem); } .hero-copy { max-width:38rem; margin:auto; width:100%; } .reading-section { grid-template-columns:1fr; gap:.8rem; margin:3rem 0; } .panorama { margin-bottom:2rem; } }
+  @media(max-width:520px) { .chapter-grid,.preview-grid { grid-template-columns:1fr; } .hero-actions { align-items:stretch; } .download-action { padding:.95rem 1.2rem; } .contents-action { align-self:center; } .edition-facts { gap:.5rem; } .edition-facts dd { font-size:.72rem; } .preview-grid { gap:2.2rem; } }
+  @media(prefers-reduced-motion:reduce) { .download-action,.chapter-grid a { transition:none; } }
+</style>

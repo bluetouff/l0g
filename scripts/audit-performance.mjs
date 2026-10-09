@@ -11,6 +11,8 @@ const root = fileURLToPath(rootUrl);
 const failures = [];
 const pages = new Map();
 const publicationCovers = new Map([
+  ['publications/quitter-microsoft/index.html', 'quitter-microsoft'],
+  ['en/publications/leaving-microsoft/index.html', 'leaving-microsoft'],
   ['publications/le-prix-du-ralentissement/index.html', 'le-prix-du-ralentissement'],
   ['en/publications/the-price-of-slowing-down/index.html', 'the-price-of-slowing-down'],
   ['en/publications/ai-debt-collection/index.html', 'ai-debt-collection'],

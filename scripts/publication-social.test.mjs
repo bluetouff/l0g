@@ -5,8 +5,17 @@ import test from 'node:test';
 import sharp from 'sharp';
 import { publicationSocialCards, getPublicationSocial } from '../src/config/publication-social.mjs';
 import { renderPublicationSocial } from './generate-publication-social.mjs';
+import { editorialTitleViolation } from './editorial-title-policy.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
+
+test('publication social titles identify their subjects directly', () => {
+  for (const card of publicationSocialCards) {
+    for (const title of [card.titleLines.join(' '), card.subtitleLines.join(' ')]) {
+      assert.equal(editorialTitleViolation(title), null, `${card.path}: ${title}`);
+    }
+  }
+});
 
 test('every dedicated EPUB page has a distinct landscape social card', () => {
   const routes = [

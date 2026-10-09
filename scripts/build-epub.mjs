@@ -6,6 +6,11 @@ import { spawnSync } from 'node:child_process';
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
+  ...['quitter-microsoft', 'leaving-microsoft'].map(directory => ({
+    source: join(ROOT, 'src/epub', directory),
+    output: join(ROOT, 'public/publications', `${directory}-l0g.epub`),
+    fixedTime: new Date('2026-10-09T09:30:00Z'),
+  })),
   ...['reserves-petrolieres', 'emergency-oil-reserves'].map(directory => ({
     source: join(ROOT, 'src/epub', directory),
     output: join(ROOT, 'public/publications', `${directory}-l0g.epub`),
@@ -122,7 +127,11 @@ function runZip(cwd, args) {
   }
 }
 
-for (const [index, book] of BOOKS.entries()) {
+const requestedBooks = process.argv.slice(2);
+if (new Set(requestedBooks).size !== requestedBooks.length || requestedBooks.some(name => !BOOKS.some(book => basename(book.source) === name))) throw new Error('Unknown or duplicate EPUB selection');
+const selectedBooks = requestedBooks.length ? BOOKS.filter(book => requestedBooks.includes(basename(book.source))) : BOOKS;
+
+for (const [index, book] of selectedBooks.entries()) {
   const work = mkdtempSync(join(tmpdir(), `l0g-epub-build-${index}-`));
   const stagedSource = join(work, 'source');
   const stagedOutput = join(work, basename(book.output));

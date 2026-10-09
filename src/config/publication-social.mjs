@@ -1,5 +1,7 @@
 // Dedicated landscape cards. Portrait covers remain the book and catalogue artwork.
 const entries = [
+  ['microsoft', 'fr', 'quitter-microsoft', ['Quitter', 'Microsoft'], ['La liberté de choisir'], 'Illustration conceptuelle des dépendances numériques et des possibilités de migration'],
+  ['microsoft', 'en', 'leaving-microsoft', ['Leaving', 'Microsoft'], ['The freedom to choose'], 'Conceptual artwork about technology dependencies and migration options'],
   ['epstein', 'fr', 'l-argent-d-epstein', ['L’argent', 'd’Epstein'], ['Remonter les circuits', 'de l’argent.'], 'Archives, registres et circuits financiers'],
   ['epstein', 'en', 'epsteins-money', ["Epstein’s", 'Money'], ['Following the money', 'through the documents.'], 'Archives, ledgers and financial circuits'],
   ['auditer-opacite', 'fr', 'auditer-l-opacite', ['Auditer', 'l’Opacité'], ['Comprendre les systèmes', 'qui rendent le risque invisible.'], 'Strates de verre et système financier opaque'],
