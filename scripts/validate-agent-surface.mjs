@@ -112,6 +112,31 @@ function validateOpenapiArtifacts() {
     }
     assert(!validateMetadata({ ...debtMetadata, unexpected: true }), `${name}: champ non documenté accepté`);
   }
+  // The debt producer exposes freshness policy identity on the signal only.
+  // Isolate this optional metadata: an unavailable debt tile may legitimately
+  // have null observation fields that the aggregate RiskSignal forbids.
+  for (const name of ['RiskSignal', 'DebtRiskTileSignal']) {
+    const schema = openapi.components.schemas[name];
+    assert(schema?.additionalProperties === false, `${name}: schéma de signal fermé requis`);
+    assert(schema.properties?.freshnessPolicyVersion, `${name}: version de politique de fraîcheur absente du contrat`);
+    const validatePolicy = ajv.compile({
+      type: 'object',
+      additionalProperties: false,
+      properties: { freshnessPolicyVersion: schema.properties.freshnessPolicyVersion },
+    });
+    assert(validatePolicy({}), `${name}: une politique historique absente doit rester valide`);
+    for (const value of ['2', null]) {
+      assert(validatePolicy({ freshnessPolicyVersion: value }), `${name}: politique de fraîcheur valide refusée`);
+    }
+    for (const value of [0, 2, true, {}, []]) {
+      assert(!validatePolicy({ freshnessPolicyVersion: value }), `${name}: type de politique de fraîcheur invalide accepté`);
+    }
+    assert(!validatePolicy({ freshnessPolicyVersion: '2', unexpected: true }), `${name}: champ non documenté accepté`);
+  }
+  const validateDebtTile = ajv.getSchema('#/components/schemas/DebtRiskTileSignal');
+  const producedDebtTile = readJson('dist/api/v1/debt-risk.json').signal;
+  assert(validateDebtTile, 'schema de tuile dette absent');
+  assert(validateDebtTile(producedDebtTile), `tuile dette produite incompatible avec OpenAPI: ${JSON.stringify(validateDebtTile.errors)}`);
   // Exercise the actual producer: optional rolling diagnostics must be accepted,
   // while privacy thresholds, bounded coverage and the closed schema remain strict.
   const validateTraffic = ajv.getSchema('#/components/schemas/HumanTrafficSurface');

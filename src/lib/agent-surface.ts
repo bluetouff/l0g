@@ -2950,6 +2950,10 @@ export function buildOpenApiContract() {
             methodology: { type: 'string', format: 'uri' },
             sourceStatus: { enum: ['ok', 'fallback'] },
             qualityStatus: { enum: ['nominal', 'degraded', 'official-delayed', 'unknown'] },
+            freshnessPolicyVersion: {
+              type: ['string', 'null'],
+              description: 'Version of the producer freshness policy (quality.policy_version), distinct from the scoring methodology version; null when unavailable and optional for historical signals.',
+            },
             fallbackUsed: { type: 'boolean' },
             fallbackLayer: { type: ['string', 'null'] },
             fallbackReason: { type: ['string', 'null'] },
@@ -3066,6 +3070,10 @@ export function buildOpenApiContract() {
             tone: { enum: ['calm', 'moderate', 'elevated', 'stress', 'crisis'] },
             sourceStatus: { enum: ['ok', 'fallback'] },
             qualityStatus: { enum: ['nominal', 'degraded', 'official-delayed', 'unknown'] },
+            freshnessPolicyVersion: {
+              type: ['string', 'null'],
+              description: 'Version of the producer freshness policy (quality.policy_version), distinct from the scoring methodology version; null when unavailable and optional for historical signals.',
+            },
             fallbackUsed: { type: 'boolean' },
             fallbackLayer: { type: ['string', 'null'] },
             fallbackReason: { type: ['string', 'null'] },
