@@ -586,6 +586,14 @@ def idx_debt(src, attempt_at):
     item["methodologyId"] = method["id"] if method else None
     item["methodologyVersion"] = method["version"] if method else None
     item["validUntil"] = data.get("valid_until")
+    quality = data.get("quality") or {}
+    item["freshnessPolicyVersion"] = quality.get("policy_version")
+    if quality.get("status") == "official-delayed":
+        item["qualityStatus"] = "official-delayed"
+        item["warnings"] = ["Publication trimestrielle FRED différée, dernière observation officielle confirmée ; période d'origine conservée."]
+    elif quality.get("status") == "degraded":
+        item["qualityStatus"] = "degraded"
+        item["warnings"] = ["Le producteur signale une qualité des données dégradée."]
     component_dates = {
         str(row.get("source") or f"source-{index}"): row.get("latest_date") or row.get("latestDate")
         for index, row in enumerate(data.get("sources") or [])

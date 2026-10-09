@@ -384,6 +384,7 @@ export const methodologyPages: MethodologyPage[] = [
       'Poids effectifs du stress courant : fiscal 22/86, taux et crédit 18/86, levier privé 12/86, liquidité 10/86, Treasury 10/86, World Bank 4/86 et BIS 10/86.',
       'Les projections CBO restent publiées comme vulnérabilité structurelle de long terme, mais elles ne tirent plus le score courant affiché dans le bandeau l0g.',
       'Le score courant exige 31 signaux valides. Une donnée absente, invalide ou trop ancienne suspend le score, sans imputation ni modification des poids. Les quatre projections CBO sont auditées séparément.',
+      'La politique de fraîcheur 2 peut retenir une publication FRED trimestrielle différée si des métadonnées récentes confirment la dernière période : au plus 120 jours depuis la mise à jour et six mois plus 30 jours depuis la fin du trimestre, avec caches de 6 h et 24 h. La période reste affichée, le statut officiel différé est explicite et le score expire avec ses justificatifs.',
       'La version 2.0 retire définitivement les neuf signaux ETF et renormalise les coefficients sur 0,86. Elle ne se compare pas directement à la méthode précédente. Les historiques gardent leur méthode originale.',
     ],
     formula:

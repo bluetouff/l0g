@@ -34,6 +34,21 @@ def item(key, value, source_updated="2026-07-18T08:00:00Z"):
 
 
 class AggregatorContractTest(unittest.TestCase):
+    def test_debt_confirmed_delayed_publication_is_visible_not_a_fake_nominal_or_outage(self):
+        snapshot = self.debt_v2()
+        snapshot["quality"] = {"status": "official-delayed", "policy_version": "2"}
+        with patch.object(RISK, "fetch_json", return_value=snapshot):
+            current = RISK.idx_debt({"url": "https://debt.l0g.fr/latest.json"}, "2026-10-08T10:05:00Z")
+        self.assertEqual(current["value"], 54)
+        self.assertEqual(current["qualityStatus"], "official-delayed")
+        self.assertEqual(current["freshnessPolicyVersion"], "2")
+        self.assertEqual(current["sourceStatus"], "ok")
+        self.assertFalse(current["fallbackUsed"])
+        self.assertTrue(current["warnings"])
+        snapshot["valid_until"] = "2026-10-08T10:05:00Z"
+        with patch.object(RISK, "fetch_json", return_value=snapshot), self.assertRaises(ValueError):
+            RISK.idx_debt({"url": "https://debt.l0g.fr/latest.json"}, "2026-10-08T10:05:00Z")
+
     def test_debt_v2_carries_method_and_snapshot_revision(self):
         snapshot = self.debt_v2()
         with patch.object(RISK, "fetch_json", return_value=snapshot):

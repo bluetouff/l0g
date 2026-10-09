@@ -42,6 +42,7 @@
       return 'repli best effort · dernier succès ' + (formatDate(item.lastSuccessAt, true) || 'inconnu');
     }
     if (item.qualityStatus === 'official-delayed') {
+      if (item.key === 'debt') return 'publication trimestrielle différée · source ' + (sourceDate || 'non datée');
       return 'officiel différé (EIA) · pétrole au ' + (componentDate || 'jour publié');
     }
     if (item.timelinessStatus === 'stale') {

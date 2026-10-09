@@ -93,6 +93,7 @@ function statusText(signal: RiskSignal) {
     return `repli best effort · dernier succès ${formatDate(signal.lastSuccessAt, true) || 'inconnu'}`;
   }
   if (signal.qualityStatus === 'official-delayed') {
+    if (signal.key === 'debt') return `publication trimestrielle différée · source ${sourceDate || 'non datée'}`;
     return `officiel différé (EIA) · pétrole au ${componentDate || 'jour publié'}`;
   }
   if (signal.timelinessStatus === 'stale') {

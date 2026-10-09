@@ -99,6 +99,27 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
     }
   }
 
+  const debtQuality = input.debt?.quality;
+  if (debtQuality?.policy_version === '2') {
+    const debtExpiry = iso(input.debt?.valid_until);
+    if (!debtExpiry || Date.parse(debtExpiry) <= Date.parse(now)) {
+      errors.push('debt: publication expirée ou échéance absente');
+    }
+    if (debtQuality.status === 'official-delayed' && byKey.get('debt')?.qualityStatus !== 'official-delayed'
+      && !producerPublishedAfterAttempt.has('debt')) {
+      errors.push('debt: publication trimestrielle différée masquée dans l’agrégat');
+    }
+    for (const signal of Array.isArray(debtQuality.expiring_signals) ? debtQuality.expiring_signals : []) {
+      const deadline = iso(signal?.limit_at);
+      const identifier = typeof signal?.series_id === 'string' ? signal.series_id : 'signal inconnu';
+      if (!deadline || Date.parse(deadline) <= Date.parse(now)) {
+        errors.push(`debt: limite de fraîcheur atteinte ou invalide pour ${identifier}`);
+      } else {
+        warnings.push(`debt: ${identifier}, limite de fraîcheur le ${deadline} sans nouvelle publication`);
+      }
+    }
+  }
+
   for (const key of ['brent', 'wti', 'brent_wti_spread']) {
     const row = input.energy?.series?.[key];
     if (!row) {

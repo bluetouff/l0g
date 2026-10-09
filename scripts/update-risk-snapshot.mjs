@@ -368,7 +368,9 @@ function updateRiskSnapshot(risk, latest) {
     tone: toneFromStatus(status),
     ...observation,
     sourceStatus: 'ok',
-    qualityStatus: Array.isArray(latest.issues) && latest.issues.length ? 'degraded' : 'nominal',
+    qualityStatus: (Array.isArray(latest.issues) && latest.issues.length) || latest.quality?.status === 'degraded'
+      ? 'degraded' : latest.quality?.status === 'official-delayed' ? 'official-delayed' : 'nominal',
+    freshnessPolicyVersion: latest.quality?.policy_version || null,
     fallbackUsed: false,
     fallbackLayer: null,
     fallbackReason: null,
@@ -381,7 +383,9 @@ function updateRiskSnapshot(risk, latest) {
     ageSeconds: Math.max(0, Math.round((Date.parse(attemptedAt) - Date.parse(generatedAt)) / 1000)),
     timelinessStatus: Date.parse(attemptedAt) - Date.parse(generatedAt) > 6 * 3600 * 1000 ? 'stale' : 'fresh',
     sourceSnapshotUrl: latest.latest_json_url || debtUrl,
-    warnings: Array.isArray(latest.issues) ? latest.issues.map(compactIssue).slice(0, 10) : [],
+    warnings: latest.quality?.status === 'official-delayed'
+      ? ['Publication trimestrielle FRED différée, dernière observation officielle confirmée ; période d’origine conservée.']
+      : Array.isArray(latest.issues) ? latest.issues.map(compactIssue).slice(0, 10) : [],
   };
 
   const index = risk.indices.findIndex((item) => item.key === 'debt');

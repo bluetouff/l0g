@@ -11,6 +11,16 @@ Debt Risk Radar méthode `2.0` publie `methodologyId`, `methodologyVersion`,
 `validUntil` et la révision `source_sha` du snapshot. L'agrégateur refuse une
 couverture inférieure à 31/31 ou une publication expirée. Une tolérance de
 60 secondes permet une publication pendant la requête, sans prolonger l'expiration.
+La politique de fraîcheur 2 distingue les publications trimestrielles FRED
+différées mais confirmées : `qualityStatus=official-delayed`, avertissement
+explicite et `freshnessPolicyVersion=2`. Cela ne constitue pas un repli de
+l'agrégateur et ne dispense jamais du contrôle de `validUntil` ou de couverture.
+La home conserve le score et affiche « publication trimestrielle différée ».
+Le contrôle horaire existant `risk-producers.yml` reprend les échéances
+`quality.expiring_signals` dans ses avertissements GitHub, jusqu'à 14 jours avant
+la limite d'âge. Une échéance dépassée ou un retard masqué devient une erreur.
+Ces avertissements ne garantissent pas une notification personnelle : leur
+lecture dépend du suivi du workflow.
 Le journal append-only conserve la méthode dette (schéma 5) ; les archives
 existantes ne sont pas réécrites et les variations ne franchissent pas une rupture
 de méthode. Les empreintes de `producer-deployment.json` sont les cibles à vérifier

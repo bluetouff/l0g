@@ -72,6 +72,42 @@ test('le repli EIA officiel est visible mais accepté', () => {
   assert.ok(report.warnings.some((warning) => warning.includes('officielle différée')));
 });
 
+test('la dette différée annonce sa prochaine limite sans simuler une panne', () => {
+  const input = fixture();
+  input.debt.quality = {
+    policy_version: '2', status: 'official-delayed',
+    expiring_signals: [{ series_id: 'GFDEGDQ188S', limit_at: '2026-07-25T00:00:00Z' }],
+  };
+  input.debt.valid_until = '2026-07-18T10:15:00Z';
+  input.aggregate.indices.find((item) => item.key === 'debt').qualityStatus = 'official-delayed';
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, true);
+  assert.ok(report.warnings.some((warning) => warning.includes('GFDEGDQ188S, limite de fraîcheur le 2026-07-25')));
+});
+
+test('une dette différée ne peut masquer son retard ni dépasser sa validité', () => {
+  const input = fixture();
+  input.debt.quality = { policy_version: '2', status: 'official-delayed', expiring_signals: [] };
+  input.debt.valid_until = '2026-07-18T10:15:00Z';
+  assert.ok(auditRiskFlow(input, now).errors.some((error) => error.includes('différée masquée')));
+  input.aggregate.indices.find((item) => item.key === 'debt').qualityStatus = 'official-delayed';
+  input.debt.valid_until = now;
+  assert.ok(auditRiskFlow(input, now).errors.some((error) => error.includes('publication expirée')));
+  input.debt.valid_until = '2026-07-18T10:15:00Z';
+  input.debt.quality.expiring_signals = [{ series_id: 'GFDEGDQ188S', limit_at: now }];
+  assert.ok(auditRiskFlow(input, now).errors.some((error) => error.includes('limite de fraîcheur atteinte')));
+});
+
+test('un retard dette nouvellement publié attend le prochain cycle d’agrégation', () => {
+  const input = fixture();
+  input.debt.generated_at = '2026-07-18T10:00:01Z';
+  input.debt.valid_until = '2026-07-18T10:30:01Z';
+  input.debt.quality = { policy_version: '2', status: 'official-delayed', expiring_signals: [] };
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, true);
+  assert.ok(report.warnings.some((warning) => warning.includes('debt: nouveau snapshot')));
+});
+
 test('une collecte pétrole sans preuve de suppression du filtre est bloquée', () => {
   const input = fixture();
   delete input.energy.series.brent.source_data_policy;

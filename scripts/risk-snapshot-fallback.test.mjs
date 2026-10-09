@@ -71,6 +71,20 @@ test('institutional expired, future, incomplete and unknown publications stay un
   }
 });
 
+test('confirmed delayed quarterly data remains labelled in static debt snapshots', async (t) => {
+  const debt = institutionalDebt();
+  debt.quality = { status: 'official-delayed', policy_version: '2' };
+  const { result, risk, snapshot } = await runSnapshot(t, { debt });
+  assert.equal(result.status, 0, result.stderr);
+  const signal = risk.indices.find((item) => item.key === 'debt');
+  assert.equal(signal.qualityStatus, 'official-delayed');
+  assert.equal(signal.freshnessPolicyVersion, '2');
+  assert.equal(signal.sourceStatus, 'ok');
+  assert.equal(signal.fallbackUsed, false);
+  assert.equal(snapshot.signal.qualityStatus, 'official-delayed');
+  assert.match(signal.warnings[0], /FRED/);
+});
+
 async function runSnapshot(t, { debt = { score: { current_stress: null } }, aggregateValue = aggregate, prior = previous, priorConfluence = confluence, confluenceValue = confluence } = {}) {
   const directory = await mkdtemp(join(tmpdir(), 'l0g-debt-fallback-'));
   t.after(() => rm(directory, { recursive: true, force: true }));

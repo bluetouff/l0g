@@ -27,6 +27,13 @@ Conséquences :
 
 - `cbo_projection` est un risque structurel de long terme, publié séparément.
 - Les neuf signaux ETF sont retirés ; la collecte ne contacte plus Massive.
+- La politique de fraîcheur 2 vérifie les métadonnées FRED des séries trimestrielles
+  proches de leur limite d'âge. Une dernière publication confirmée reste utilisable
+  sous l'étiquette `official-delayed`, au plus 120 jours après la mise à jour FRED
+  et six mois plus 30 jours après la fin du trimestre. Les caches restent limités
+  à 6 h pour les observations et 24 h pour les métadonnées. Périodes et valeurs
+  sont conservées ; aucune imputation. Sans confirmation ou au-delà des bornes,
+  le score est suspendu. L'API expose les échéances et `quality.policy_version`.
 - Coefficients : fiscal 22, taux/crédit 18, dette privée 12, liquidité 10,
   Treasury 10, World Bank US 4, BIS US 10, divisés par 86.
 - Une donnée courante absente, invalide ou périmée suspend le score, sans imputation.
