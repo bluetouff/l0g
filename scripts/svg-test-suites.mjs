@@ -57,6 +57,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/microsoft-cloud-licensing-infographics.test.mjs',
     'scripts/microsoft-contracts-infographics.test.mjs',
     'scripts/microsoft-exit-infographics.test.mjs',
+    'scripts/microsoft-transition-cost-infographics.test.mjs',
     'scripts/microsoft-workflow-infographics.test.mjs',
     'scripts/music-streaming-infographics.test.mjs',
     'scripts/occ-crypto-infographics.test.mjs',
