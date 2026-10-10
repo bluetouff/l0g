@@ -84,8 +84,67 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 606, 'Le corpus doit conserver ses 606 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 172, 'Le graphe Atlas doit conserver ses 172 nœuds, dont OT et SCADA');
+assert.equal(glossaryEntries.length, 608, 'Le corpus doit conserver ses 608 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 174, 'Le graphe Atlas doit conserver ses 174 nœuds, dont Pacte Dutreil et Soulte');
+const dutreilArticleFr = '/posts/dutreil-transmission-fortunes-familiales/';
+const dutreilArticleEn = '/en/analysis/dutreil-family-business-inheritance-tax-relief/';
+for (const [slug, sources, related] of [
+  ['pacte-dutreil', [
+    'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542700',
+    'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542704',
+    'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000024430025',
+  ], ['depense-fiscale', 'soulte']],
+  ['soulte', [
+    'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006432575',
+    'https://bofip.impots.gouv.fr/bofip/6509-PGP.html/identifiant=BOI-ENR-DMTG-10-20-40-10-20260810',
+  ], ['pacte-dutreil', 'depense-fiscale']],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: définitions et sources FR/EN requises`);
+  assert.equal(fr.reference, undefined, `${slug}: conserver la fiche courte en noindex`);
+  assert.equal(fr.referenceCandidate, false, `${slug}: aucune promotion en fiche de référence`);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert(!glossaryReferenceCandidateSlugs.includes(slug));
+  assert.equal(en.robots, 'noindex,follow');
+  assert.equal(fr.guide, dutreilArticleFr);
+  assert.equal(en.guide, dutreilArticleEn);
+  assert.equal(fr.sectionTitle, 'Macro & banques centrales');
+  assert.equal(en.sectionTitle, 'Macro & central banks');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
+    assert.deepEqual(entry.atlas.articles.map(article => article.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, related);
+    assert(entry.atlas.sources.every(source => ['www.legifrance.gouv.fr', 'bofip.impots.gouv.fr'].includes(new URL(source.href).hostname)));
+    for (const neighbor of entry.atlas.related) {
+      assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
+      assert(glossaryAtlasEnBySlug.has(neighbor));
+    }
+    assert(!entry.def.includes('—'), `${slug}: respecter la charte éditoriale`);
+  }
+}
+for (const [slug, oldGuideFr, oldGuideEn, oldSource] of [
+  ['depense-fiscale', '/posts/aides-entreprises-211-milliards-chiffre-trompeur/', '/en/analysis/france-211-billion-business-aid-misleading-figure/', 'https://www2.assemblee-nationale.fr/static/17/Annexes-DL/PLF-2025/Voies_et_moyens_Tome_2_2025.pdf#page=35'],
+  ['contrefactuel', '/posts/reserves-petrolieres-transmission-prix-pompe/', '/en/analysis/emergency-oil-reserves-pass-through-pump-prices/', 'https://www.dallasfed.org/research/papers/2019/wp1916'],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en);
+  assert.equal(fr.guide, oldGuideFr, `${slug}: conserver le guide français existant`);
+  assert.equal(en.guide, oldGuideEn, `${slug}: conserver le guide anglais existant`);
+  assert(fr.atlas.articles.some(article => article.href === dutreilArticleFr));
+  assert(en.atlas.articles.some(article => article.href === dutreilArticleEn));
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), [oldSource]);
+  assert.deepEqual(en.atlas.sources.map(source => source.href), [oldSource]);
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  if (slug === 'contrefactuel') {
+    assert.equal(fr.atlas.articles[0].href, oldGuideFr, 'Conserver l’analyse pétrolière dans le contrefactuel');
+    assert.equal(en.atlas.articles[0].href, oldGuideEn);
+    assert.deepEqual(fr.atlas.related, ['spr']);
+  } else {
+    assert.deepEqual(fr.atlas.related, ['equivalent-subvention', 'pacte-dutreil', 'soulte']);
+  }
+}
 for (const [slug, related] of [['ot', ['scada']], ['scada', ['ot']]]) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);
@@ -262,7 +321,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 541, 'Le graphe Atlas doit conserver ses 541 relations');
+assert.equal(glossaryAtlasEdgeCount, 547, 'Le graphe Atlas doit conserver ses 547 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

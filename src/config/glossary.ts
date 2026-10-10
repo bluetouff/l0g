@@ -113,6 +113,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Activité quasi budgétaire', nom: 'Quasi-fiscal activity', def: "Intervention d’une banque centrale ou d’un organisme public qui produit des effets comparables à une dépense, une subvention ou une recette de l’État, tout en étant comptabilisée hors du budget de l’administration centrale. Transférer cette activité au budget rend son coût plus visible sans le supprimer automatiquement.", guide: '/posts/ghana-or-cedi-goldbod-cout-devises/' },
       { sigle: 'Équivalent-subvention', nom: 'Grant equivalent', def: "Valeur monétaire de l’avantage accordé par une aide, notamment un prêt à taux favorable ou une garantie sous-tarifée. Pour un prêt, elle dépend de l’écart avec des conditions de financement comparables et de l’actualisation des flux. Elle se distingue du capital prêté, du risque couvert et de la perte finalement supportée par le prêteur.", guide: '/posts/aides-entreprises-211-milliards-chiffre-trompeur/' },
       { sigle: 'Dépense fiscale', nom: 'Tax expenditure', def: "Disposition qui réduit les recettes fiscales par rapport à une norme de référence. Son chiffrage dépend de cette norme et des données disponibles. Le gain budgétaire d’une suppression peut différer du coût affiché, car les bénéficiaires adaptent leur comportement et les dispositifs interagissent.", guide: '/posts/aides-entreprises-211-milliards-chiffre-trompeur/' },
+      { sigle: 'Pacte Dutreil', nom: 'Allégement fiscal des transmissions d’entreprise', def: 'Régime français d’exonération partielle des droits de donation ou de succession sur une entreprise éligible. Il retire 75 % de la valeur éligible de l’assiette, sous conditions d’activité, de conservation et de direction ou de poursuite de l’exploitation. Une réduction distincte de 50 % des droits s’applique à certaines donations en pleine propriété avant les 70 ans du donateur.', guide: '/posts/dutreil-transmission-fortunes-familiales/' },
+      { sigle: 'Soulte', nom: 'Paiement d’équilibrage entre lots', def: 'Somme due par la personne qui reçoit, lors d’un partage, un lot d’une valeur supérieure à ses droits, afin de rééquilibrer les lots. Dans une donation-partage d’entreprise, elle peut compenser les enfants qui ne reçoivent pas les titres. Son financement et son traitement fiscal dépendent de l’opération.', guide: '/posts/dutreil-transmission-fortunes-familiales/' },
       { sigle: 'FIMA', nom: 'Foreign and International Monetary Authorities Repo Facility', def: "Facilité de la Fed permettant aux autorités monétaires étrangères et internationales agréées d’obtenir temporairement des dollars contre leurs Treasuries conservés à la Fed de New York. La pension livrée dure une nuit ou sept jours calendaires : les dollars et intérêts doivent être remboursés pour reprendre les titres. Ce financement de réserves publiques reste distinct des emprunts privés en devises.", guide: '/posts/bessent-yen-dette-americaine-fima-rachats/' },
       { sigle: 'TFFF', nom: 'Tropical Forest Forever Facility', def: "Dispositif destiné à rémunérer la conservation des forêts tropicales. Son fonds d’investissement distinct, le TFIF, doit placer les capitaux et lui transférer les ressources distribuables. La charte adoptée le 22 juillet 2026 conditionne les paiements forestiers aux ressources disponibles et réserve au moins 20 % de l’allocation de chaque pays aux peuples autochtones et communautés locales.", guide: '/posts/tfff-forets-bresil-fonds-obligations-risques/' },
       { sigle: 'CPI', nom: 'Consumer Price Index', def: "Indice des prix à la consommation américain, publié chaque mois par le BLS. Mesure la variation d'un panier fixe de biens et services des ménages urbains. Le plus suivi des marchés, mais la Fed cible le PCE. Équivalent de l'IPC français.", guide: 'lire-le-cpi-inflation-us' },
@@ -742,7 +744,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-07';
+export const glossaryUpdatedIso = '2026-10-10';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -2099,8 +2101,28 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   'depense-fiscale': {
     intuition: 'Le coût d’une dérogation fiscale se calcule par rapport à une règle explicite et reste distinct du rendement d’une réforme.',
+    articles: [{ label: 'Dutreil : transmission des fortunes familiales', href: '/posts/dutreil-transmission-fortunes-familiales/', kind: 'article' }],
     sources: [{ label: 'PLF 2025, Voies et moyens, tome II', href: 'https://www2.assemblee-nationale.fr/static/17/Annexes-DL/PLF-2025/Voies_et_moyens_Tome_2_2025.pdf#page=35', detail: 'Norme fiscale, effets comportementaux et interactions entre mesures.', kind: 'source' }],
-    related: ['equivalent-subvention'],
+    related: ['equivalent-subvention', 'pacte-dutreil', 'soulte'],
+  },
+  'pacte-dutreil': {
+    intuition: 'L’exonération réduit la valeur taxable ; la réduction éventuelle de l’article 790 porte ensuite sur les droits.',
+    articles: [{ label: 'Dutreil : transmission des fortunes familiales', href: '/posts/dutreil-transmission-fortunes-familiales/', kind: 'article' }],
+    sources: [
+      { label: 'Code général des impôts, article 787 B', href: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542700', detail: 'Exonération partielle des titres et conditions applicables depuis le 21 février 2026.', kind: 'source' },
+      { label: 'Code général des impôts, article 787 C', href: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542704', detail: 'Exonération partielle des biens d’une entreprise individuelle et poursuite de l’exploitation.', kind: 'source' },
+      { label: 'Code général des impôts, article 790', href: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000024430025', detail: 'Réduction de 50 % des droits pour les donations éligibles en pleine propriété avant 70 ans.', kind: 'source' },
+    ],
+    related: ['depense-fiscale', 'soulte'],
+  },
+  soulte: {
+    intuition: 'Un bénéficiaire peut recevoir les titres et devoir un paiement aux autres : l’attribution de l’entreprise crée alors un besoin de financement.',
+    articles: [{ label: 'Dutreil : transmission des fortunes familiales', href: '/posts/dutreil-transmission-fortunes-familiales/', kind: 'article' }],
+    sources: [
+      { label: 'Code civil, article 826', href: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006432575', detail: 'Égalité en valeur des lots et compensation par une soulte.', kind: 'source' },
+      { label: 'BOFiP, transmission de titres, 10 août 2026', href: 'https://bofip.impots.gouv.fr/bofip/6509-PGP.html/identifiant=BOI-ENR-DMTG-10-20-40-10-20260810', detail: 'Paragraphe 340 : donation-partage avec soulte, droits théoriques et conservation par le bénéficiaire effectif des titres.', kind: 'source' },
+    ],
+    related: ['pacte-dutreil', 'depense-fiscale'],
   },
   fima: {
     intuition: 'Mobiliser des réserves obligataires procure des dollars à court terme et laisse une échéance de remboursement.',
@@ -2656,7 +2678,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['spr'],
   },
   "transmission-des-prix": {"intuition": "Répercussion des coûts dans les prix de vente.", "articles": [{"label": "Réserves pétrolières : du marché au prix du plein", "href": "/posts/reserves-petrolieres-transmission-prix-pompe/", "kind": "article"}], "sources": [{"label": "Banque de France, résultats publiés le 14 octobre 2021", "href": "https://www.banque-france.fr/fr/publications-et-statistiques/publications/quelle-transmission-des-prix-du-petrole-aux-prix-des-carburants", "kind": "source"}], "related": ["spr"]},
-  "contrefactuel": {"intuition": "Résultat estimé en l’absence d’une intervention.", "articles": [{"label": "Réserves pétrolières : du marché au prix du plein", "href": "/posts/reserves-petrolieres-transmission-prix-pompe/", "kind": "article"}], "sources": [{"label": "Kilian et Zhou, Dallas Fed Working Paper 1916, version du 19 décembre 2019", "href": "https://www.dallasfed.org/research/papers/2019/wp1916", "kind": "source"}], "related": ["spr"]},
+  "contrefactuel": {"intuition": "Résultat estimé en l’absence d’une intervention.", "articles": [{"label": "Réserves pétrolières : du marché au prix du plein", "href": "/posts/reserves-petrolieres-transmission-prix-pompe/", "kind": "article"}, {"label": "Dutreil : transmission des fortunes familiales", "href": "/posts/dutreil-transmission-fortunes-familiales/", "kind": "article"}], "sources": [{"label": "Kilian et Zhou, Dallas Fed Working Paper 1916, version du 19 décembre 2019", "href": "https://www.dallasfed.org/research/papers/2019/wp1916", "kind": "source"}], "related": ["spr"]},
   spr: {
     intuition: "Un stock amortit une interruption quand le pétrole peut être sorti, acheminé et transformé à temps. Une promesse de remboursement organise sa disponibilité future.",
     formula: 'couverture théorique (jours) = volume mobilisable (barils) / manque à couvrir (barils par jour)',

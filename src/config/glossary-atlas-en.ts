@@ -894,7 +894,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   }
 },
   {"slug": "transmission-des-prix", "sigle": "Price pass-through", "nom": "How input-cost changes reach selling prices", "def": "The adjustment of a selling price following a change in an upstream cost or price. Measurement requires a specified product, currency, scope and time horizon. Dividing two weekly price changes does not establish pass-through when observation periods, taxes and other costs differ.", "guide": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"intuition": "How input-cost changes reach selling prices.", "articles": [{"label": "Emergency oil reserves: from the market to the pump", "href": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "kind": "article"}], "sources": [{"label": "Banque de France, findings published 14 October 2021", "href": "https://www.banque-france.fr/fr/publications-et-statistiques/publications/quelle-transmission-des-prix-du-petrole-aux-prix-des-carburants", "kind": "source"}], "related": ["spr"]}},
-  {"slug": "contrefactuel", "sigle": "Counterfactual", "nom": "Estimated outcome without an intervention", "def": "An estimated outcome that would have occurred without an intervention, allowing for other relevant conditions. It provides a comparison with the observed result and depends on the model and its assumptions. A price decline following an announcement alone does not establish the announcement’s effect.", "guide": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"intuition": "Estimated outcome without an intervention.", "articles": [{"label": "Emergency oil reserves: from the market to the pump", "href": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "kind": "article"}], "sources": [{"label": "Kilian and Zhou, Dallas Fed Working Paper 1916, version dated 19 December 2019", "href": "https://www.dallasfed.org/research/papers/2019/wp1916", "kind": "source"}], "related": ["spr"]}},
+  {"slug": "contrefactuel", "sigle": "Counterfactual", "nom": "Estimated outcome without an intervention", "def": "An estimated outcome that would have occurred without an intervention, allowing for other relevant conditions. It provides a comparison with the observed result and depends on the model and its assumptions. A price decline following an announcement alone does not establish the announcement’s effect.", "guide": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"intuition": "Estimated outcome without an intervention.", "articles": [{"label": "Emergency oil reserves: from the market to the pump", "href": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "kind": "article"}, {"label": "Dutreil: family business inheritance tax relief", "href": "/en/analysis/dutreil-family-business-inheritance-tax-relief/", "kind": "article"}], "sources": [{"label": "Kilian and Zhou, Dallas Fed Working Paper 1916, version dated 19 December 2019", "href": "https://www.dallasfed.org/research/papers/2019/wp1916", "kind": "source"}], "related": ["spr"]}},
   {
     "slug": "backwardation",
     "sigle": "Backwardation",
@@ -2038,8 +2038,46 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ...macroSection,
     atlas: {
       intuition: 'Costing a tax concession requires an explicit benchmark; estimating a reform also requires behavioural effects.',
+      articles: [{ label: 'Dutreil: family business inheritance tax relief', href: '/en/analysis/dutreil-family-business-inheritance-tax-relief/', kind: 'article' }],
       sources: [{ label: 'France, 2025 draft budget, revenue assessment, volume II', href: 'https://www2.assemblee-nationale.fr/static/17/Annexes-DL/PLF-2025/Voies_et_moyens_Tome_2_2025.pdf#page=35', detail: 'Tax benchmarks, behavioural effects and interactions between measures.', kind: 'source' }],
-      related: ['equivalent-subvention'],
+      related: ['equivalent-subvention', 'pacte-dutreil', 'soulte'],
+    },
+  },
+  {
+    slug: 'pacte-dutreil',
+    sigle: 'Dutreil relief',
+    nom: 'French business-transfer tax relief',
+    def: 'French relief for qualifying business gifts and inheritances, exempting 75% of eligible value from transfer tax. Conditions cover business activity, retention and management or continued operation. A separate 50% reduction in tax due is limited to qualifying outright gifts by donors under 70.',
+    guide: '/en/analysis/dutreil-family-business-inheritance-tax-relief/',
+    ...macroSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'The exemption reduces taxable value; any reduction under article 790 then applies to the tax due.',
+      articles: [{ label: 'Dutreil: family business inheritance tax relief', href: '/en/analysis/dutreil-family-business-inheritance-tax-relief/', kind: 'article' }],
+      sources: [
+        { label: 'French General Tax Code, article 787 B', href: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542700', detail: 'Partial relief for shares and conditions in force since 21 February 2026.', kind: 'source' },
+        { label: 'French General Tax Code, article 787 C', href: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542704', detail: 'Partial relief for sole-trader business assets and continued operation.', kind: 'source' },
+        { label: 'French General Tax Code, article 790', href: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000024430025', detail: 'A 50% reduction in tax due on qualifying outright gifts by donors under 70.', kind: 'source' },
+      ],
+      related: ['depense-fiscale', 'soulte'],
+    },
+  },
+  {
+    slug: 'soulte',
+    sigle: 'Equalisation payment',
+    nom: 'Soulte in a division of assets',
+    def: 'A payment owed by a recipient whose allotted assets exceed their entitlement, used to balance a division of property. In a lifetime business gift divided among children, it can compensate a child who receives no shares. Its financing and tax treatment depend on the transaction.',
+    guide: '/en/analysis/dutreil-family-business-inheritance-tax-relief/',
+    ...macroSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'A recipient receiving the shares may owe a payment to others, creating a financing need when the business is allocated.',
+      articles: [{ label: 'Dutreil: family business inheritance tax relief', href: '/en/analysis/dutreil-family-business-inheritance-tax-relief/', kind: 'article' }],
+      sources: [
+        { label: 'French Civil Code, article 826', href: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006432575', detail: 'Equal value of allotted assets and compensation through a soulte.', kind: 'source' },
+        { label: 'French tax administration, share transfers, 10 August 2026', href: 'https://bofip.impots.gouv.fr/bofip/6509-PGP.html/identifiant=BOI-ENR-DMTG-10-20-40-10-20260810', detail: 'Paragraph 340: lifetime gifts divided with an equalisation payment, theoretical entitlements and retention by the actual recipient of the shares.', kind: 'source' },
+      ],
+      related: ['pacte-dutreil', 'depense-fiscale'],
     },
   },
   {
