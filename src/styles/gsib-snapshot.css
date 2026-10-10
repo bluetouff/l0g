@@ -1,4 +1,18 @@
 /* Native reading styles; the supplied figure geometry is preserved separately. */
+@font-face {
+  font-family: 'DejaVu Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/bank-snapshot/dejavu-sans-400.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DejaVu Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/bank-snapshot/dejavu-sans-700.ttf') format('truetype');
+}
 .prose .gsib-article .source-ref { font-size: .75rem; line-height: 1; text-decoration: none; white-space: nowrap; vertical-align: super; margin-left: .2em; }
 .prose .gsib-article .g-sources,
 .prose .gsib-article .source-register { display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem 1.5rem; margin: 1.25rem 0 0; font-family: var(--font-read); font-size: .875rem; line-height: 1.65; }

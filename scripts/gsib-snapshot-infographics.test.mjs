@@ -2,7 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { XMLParser, XMLValidator } from 'fast-xml-parser';
+import { fileURLToPath } from 'node:url';
+import { XMLParser, XMLBuilder, XMLValidator } from 'fast-xml-parser';
+import { Resvg } from '@resvg/resvg-js';
+import opentype from '@shuding/opentype.js';
 import postcss from 'postcss';
 import sharp from 'sharp';
 import { gsibSnapshotSvg, validateGsibSnapshotFigure, GSIB_KINDS } from '../src/lib/gsibSnapshotFigures.mjs';
@@ -51,8 +54,10 @@ function inspect(svg) {
   return { root, nodes };
 }
 // Fingerprints independently taken from supplied XML before adaptation.
-// Only native paints, root sizing and six text replacements in four FIG5
-// variants are excluded. Net notional is a calculation base, not a risk metric.
+// Native paints and root sizing adapt. Six FIG5 text replacements distinguish
+// net notional from risk. One shorter FIG1 label and four wider FIG5 cards repair
+// glyphs that were concealed or outside their cards with the authored DejaVu font.
+// All remaining text, geometry, fonts and primitive order stay locked.
 const originalSignatures = {
   "01-en-desktop": "2d9cfb966cb8c3e85cf8a212613e4f3090977cdf183699a9debb7b1241529ec4",
   "01-en-mobile": "e560b17dfe1d92d353bb5bcc06cb1484b18d5c88b1a256d647fb4f4695e869c7",
@@ -84,15 +89,27 @@ const originalSignatures = {
   "07-fr-mobile": "d9bbced6d4193755852006866e75497e621dd4d47c38c22db5deb7ff3dba48ba"
 };
 const textRepairs = {
+  '01-fr-desktop': { 'Moy. 4 fins de trim.': 'Moy. 4 fins de trimestre' },
   '05-fr-desktop': { 'Notionnel net': 'Risque de taux', ': 10 M€': 'net : 10 M€' },
   '05-en-desktop': { 'Net notional': 'Net rate', 'in model:': 'exposure:' },
   '05-fr-mobile': { 'Notionnel net du modèle': 'Exposition nette de taux du modèle' },
   '05-en-mobile': { 'Model net notional: €10m': 'Model net rate exposure: €10m' },
 };
+const counterpartyCards = {
+  '05-fr-desktop': { x: '1018', y: '258.0' },
+  '05-en-desktop': { x: '1018', y: '258.0' },
+  '05-fr-mobile': { x: '418', y: '387.3' },
+  '05-en-mobile': { x: '418', y: '321.9' },
+};
 function signature(v) {
   const { root, nodes } = inspect(v.svg);
+  const position = counterpartyCards[v.name];
+  const repairedCards = position ? nodes.filter(n => tag(n) === 'rect' && attrs(n).x === position.x && attrs(n).y === position.y && attrs(n).height === '100' && attrs(n).rx === '12') : [];
+  assert.equal(repairedCards.length, position ? 1 : 0);
+  if (position) assert.equal(attrs(repairedCards[0]).width, '172');
   const entries = nodes.map(n => {
     const a = { ...attrs(n) };
+    if (repairedCards.includes(n)) a.width = '150';
     if (n === root) for (const k of ['width', 'height', 'style', 'data-gsib-kind']) delete a[k];
     const t = ['text', 'title', 'desc', 'metadata'].includes(tag(n)) ? content(n) : '';
     return [tag(n), Object.entries(a).filter(([k]) => !['fill', 'stroke'].includes(k)).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0), textRepairs[v.name]?.[t] || t];
@@ -116,19 +133,51 @@ test('static diagrams use native theme paints, local markers and unique accessib
   assert.equal(ids.size, 140);
 });
 const glyphCache = new Map();
+const fontFiles = [400, 700].map(weight => fileURLToPath(new URL(`../public/fonts/bank-snapshot/dejavu-sans-${weight}.ttf`, import.meta.url)));
+const fontHashes = ['843ad628539ab1a4fe1f74ff971550609028b42439a106b8783881dd2a8b6177', '082056ee6fb7981b18f09ac6cafa23c3c25e755ed5b3ebe11cfe53681e39aa84'];
+const fontFaces = Object.fromEntries(fontFiles.map((path, i) => {
+  const bytes = readFileSync(path);
+  return [[400, 700][i], opentype.parse(bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength))];
+}));
+test('geometry uses the checked local DejaVu faces without system font substitution', () => {
+  fontFiles.forEach((path, i) => assert.equal(createHash('sha256').update(readFileSync(path)).digest('hex'), fontHashes[i]));
+});
+test('both DejaVu faces cover every figure character, including spacing, punctuation and directional symbols', () => {
+  const characters = new Set(variants.flatMap(v => inspect(v.svg).nodes.filter(n => tag(n) === 'text').flatMap(n => [...content(n)])));
+  assert.equal(characters.size, 93);
+  for (const c of [' ', '·', '\u202f', '←', '−', '↓', '↑']) assert.ok(characters.has(c));
+  for (const [weight, face] of Object.entries(fontFaces)) {
+    for (const c of characters) assert.ok(face.charToGlyphIndex(c) > 0, `Missing DejaVu ${weight} glyph U+${c.codePointAt(0).toString(16)}`);
+  }
+  const css = postcss.parse(readFileSync(new URL('../src/styles/gsib-snapshot.css', import.meta.url), 'utf8'));
+  const faces = [];
+  css.walkAtRules('font-face', rule => faces.push(Object.fromEntries(rule.nodes.filter(n => n.type === 'decl').map(n => [n.prop, n.value]))));
+  assert.deepEqual(faces, [400, 700].map(weight => ({
+    'font-family': "'DejaVu Sans'", 'font-style': 'normal', 'font-weight': String(weight), 'font-display': 'swap',
+    src: `url('/fonts/bank-snapshot/dejavu-sans-${weight}.ttf') format('truetype')`,
+  })));
+  const license = readFileSync(new URL('../public/fonts/bank-snapshot/LICENSE.txt', import.meta.url), 'utf8');
+  assert.match(license, /https:\/\/dejavu-fonts\.github\.io\/License\.html/u);
+  assert.match(license, /Copyright \(c\) 2003 by Bitstream/u);
+  assert.match(license, /Permission is hereby granted/u);
+});
 async function glyph(n) {
   const a = attrs(n), value = content(n), key = JSON.stringify([a['font-size'], a['font-weight'], a['text-anchor'], value]);
+  const face = fontFaces[a['font-weight']];
+  for (const c of value) assert.ok(face.charToGlyphIndex(c) > 0, `Missing DejaVu ${a['font-weight']} glyph U+${c.codePointAt(0).toString(16)}`);
   if (!glyphCache.has(key)) {
     const escaped = value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="8192" height="256"><text x="4096" y="160" fill="white" font-family="DejaVu Sans, Arial, sans-serif" font-size="${a['font-size']}" font-weight="${a['font-weight']}" text-anchor="${a['text-anchor']}">${escaped}</text></svg>`;
-    const { info } = await sharp(Buffer.from(svg)).trim().raw().toBuffer({ resolveWithObject: true });
+    // Fontconfig resolved this stack to Arial on macOS and DejaVu on Linux.
+    // Render the already checked local font explicitly on every platform.
+    const png = new Resvg(svg, { font: { loadSystemFonts: false, fontFiles } }).render().asPng();
+    const { info } = await sharp(png).trim().raw().toBuffer({ resolveWithObject: true });
     const x = -info.trimOffsetLeft - 4096, y = -info.trimOffsetTop - 160;
     glyphCache.set(key, { x, y, right: x + info.width, bottom: y + info.height });
   }
   return glyphCache.get(key);
 }
-test('actual glyphs fit the full canvas and their cards without clipping, collisions or later paint concealment', async () => {
-  for (const v of variants) {
+async function assertGeometry(v) {
     const { root } = inspect(v.svg), [, , width, height] = attrs(root).viewBox.split(' ').map(Number);
     const leaves = children(root).filter(n => ['rect', 'line', 'circle', 'path', 'text'].includes(tag(n))), boxes = [];
     const inside = (x, y) => assert.ok(x >= 0 && y >= 0 && x <= width && y <= height, `${v.name}: outside viewBox ${x},${y}`);
@@ -147,7 +196,45 @@ test('actual glyphs fit the full canvas and their cards without clipping, collis
       for (const cover of leaves.slice(ix + 1).filter(c => tag(c) === 'rect' && attrs(c).fill !== 'none')) assert.ok(!(b.x < num(cover, 'x') + num(cover, 'width') && b.right > num(cover, 'x') && b.y < num(cover, 'y') + num(cover, 'height') && b.bottom > num(cover, 'y')), `${v.name}: concealed ${b.label}`);
       boxes.push(b);
     }
+}
+test('actual glyphs fit the full canvas and their cards without clipping, collisions or later paint concealment', async () => {
+  for (const v of variants) await assertGeometry(v);
+});
+const fixtureBuilder = new XMLBuilder({ preserveOrder: true, ignoreAttributes: false, attributeNamePrefix: '' });
+function mutateVariant(v, change) {
+  const tree = parser.parse(v.svg);
+  change(tree[0]);
+  return { ...v, svg: fixtureBuilder.build(tree) };
+}
+test('deterministic DejaVu metrics reject the original covered label and four overflowing counterparty cards', async () => {
+  const first = variants.find(v => v.name === '01-fr-desktop');
+  const covered = mutateVariant(first, root => {
+    const n = children(root).find(n => tag(n) === 'text' && content(n) === 'Moy. 4 fins de trim.');
+    assert.ok(n); n.text = [{ '#text': 'Moy. 4 fins de trimestre' }];
+  });
+  await assert.rejects(assertGeometry(covered), /concealed Moy\. 4 fins de trimestre/u);
+  for (const name of Object.keys(counterpartyCards)) {
+    const v = variants.find(v => v.name === name), position = counterpartyCards[name];
+    const narrow = mutateVariant(v, root => {
+      const n = children(root).find(n => tag(n) === 'rect' && attrs(n).x === position.x && attrs(n).y === position.y && attrs(n).height === '100');
+      assert.equal(attrs(n).width, '172'); attrs(n).width = '150';
+    });
+    await assert.rejects(assertGeometry(narrow), /card (?:contrepartie|counterparty)/u);
   }
+});
+test('geometry still rejects displaced shapes, colliding type and later paint over otherwise valid labels', async () => {
+  const v = variants.find(v => v.name === '01-fr-desktop');
+  const outside = mutateVariant(v, root => { const n = children(root).find(n => tag(n) === 'rect'); attrs(n).x = '1'; });
+  await assert.rejects(assertGeometry(outside), /outside viewBox/u);
+  const collision = mutateVariant(v, root => { const n = children(root).find(n => tag(n) === 'text'); root.svg.push(structuredClone(n)); });
+  await assert.rejects(assertGeometry(collision), /glyph collision/u);
+  const concealed = mutateVariant(v, root => { root.svg.push({ rect: [], ':@': { x: '32', y: '60', width: '1136', height: '60', rx: '0', fill: paint('paper') } }); });
+  await assert.rejects(assertGeometry(concealed), /concealed/u);
+});
+test('geometry rejects unsupported characters instead of measuring a replacement glyph', async () => {
+  const v = variants.find(v => v.name === '01-fr-desktop');
+  const missing = mutateVariant(v, root => { const n = children(root).find(n => tag(n) === 'text'); n.text = [{ '#text': '\u{1f984}' }]; });
+  await assert.rejects(assertGeometry(missing), /Missing DejaVu 700 glyph U\+1f984/u);
 });
 const close = (a, b) => assert.ok(Math.abs(a - b) < 1e-8, `${a} != ${b}`);
 test('five-day exposure reduction yields distinct point-in-time, quarterly, monthly and daily bar lengths', () => {
