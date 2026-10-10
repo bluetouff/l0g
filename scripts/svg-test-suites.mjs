@@ -52,6 +52,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/gpu-credit-infographics.test.mjs',
     'scripts/gpu-credit-model.test.mjs',
     'scripts/greensill-infographics.test.mjs',
+    'scripts/gsib-snapshot-infographics.test.mjs',
     'scripts/industrial-heat-infographics.test.mjs',
     'scripts/insurance-loyalty-infographics.test.mjs',
     'scripts/iran-flights-infographic.test.mjs',

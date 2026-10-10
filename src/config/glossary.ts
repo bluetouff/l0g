@@ -695,7 +695,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Ratio de levier', nom: 'Leverage ratio', def: "Fonds propres de base (Tier 1) rapportés au total des expositions, sans pondération par le risque. Garde-fou contre une sous-estimation du risque par les modèles internes des banques. Sa version renforcée pour les grandes banques américaines, le SLR, est fixée à 5 %.", guide: '/guides/lire-la-solidite-d-une-banque/' },
       { sigle: 'SLR', nom: 'Supplementary Leverage Ratio', def: "Ratio de levier supplémentaire américain : fonds propres Tier 1 rapportés à la totalité des expositions, Treasuries et réserves compris, sans pondération du risque. Sa version renforcée pour les banques systémiques, l'eSLR, exigeait un coussin fixe de 2 %. La réforme finalisée fin 2025 le recalibre à la moitié de la surcharge G-SIB, pour qu'il redevienne un filet de sécurité plutôt qu'une contrainte mordante, notamment sur l'intermédiation du marché des Treasuries.", guide: '/guides/lire-la-solidite-d-une-banque/' },
       { sigle: 'RBC', nom: 'Risk-Based Capital', def: "Capital réglementaire minimal d'un assureur américain, calculé selon la taille et le risque de ses actifs et engagements. Le ratio RBC rapporte le capital ajusté total au seuil de contrôle autorisé (ACL) ; la NAIC déclenche des actions graduées quand il descend sous 200 %, puis 150 %, 100 % et 70 %. L'équivalent, pour l'assurance, du CET1 bancaire.", guide: '/guides/lire-la-solidite-d-un-assureur-vie/' },
-      { sigle: 'G-SIB', nom: 'Global Systemically Important Bank', def: "Banque d'importance systémique mondiale, désignée par le Conseil de stabilité financière. Soumise à une surcharge de fonds propres proportionnelle à son poids systémique, en plus des minimums de Bâle, pour réduire le risque qu'elle soit trop grosse pour faire faillite.", guide: '/guides/lire-la-solidite-d-une-banque/' },
+      {"sigle": "G-SIB", "nom": "Global Systemically Important Bank", "def": "Banque d’importance systémique mondiale figurant dans la liste annuelle du Conseil de stabilité financière. Son score combine cinq catégories d’importance relative et détermine, sous réserve du jugement prudentiel, une surcharge de CET1 sur les actifs pondérés du risque. Il mesure les conséquences possibles d’une défaillance, et non sa probabilité. Les montants de capital requis sont des stocks, distincts des coûts annuels.", "guide": "/posts/banques-prix-photo-31-decembre/"},
       { sigle: 'MNI', nom: 'Net interest margin', def: "Marge nette d'intérêt : écart entre ce qu'une banque gagne sur ses prêts et titres et ce qu'elle paie sur ses dépôts et financements, rapporté à ses actifs productifs. Cœur du modèle de banque de détail et métrique la plus scrutée des résultats, souvent plus révélatrice que le bénéfice par action. Le revenu correspondant est le produit net d'intérêts (net interest income, NII).", guide: '/guides/lire-la-solidite-d-une-banque/' },
       { sigle: 'LDI', nom: 'Liability-driven investment', def: "Stratégie de fonds de pension qui utilise obligations longues et dérivés pour aligner les actifs sur les engagements futurs. Au Royaume-Uni, la crise de 2022 a montré qu'un choc de taux pouvait déclencher appels de marge et ventes forcées de gilts." },
       { sigle: 'FDIC', nom: 'Federal Deposit Insurance Corporation', def: "Agence fédérale américaine qui assure les dépôts éligibles jusqu’à 250 000 dollars par déposant, par banque assurée et par catégorie de détention des comptes. Les dépôts d’une même catégorie dans une même banque s’additionnent pour ce plafond ; les cryptoactifs sont exclus. Elle peut aussi administrer la résolution d’une banque en faillite." },
@@ -990,6 +990,39 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "g-sib": {
+  "intuition": "Une banque peut changer de score lorsque son exposition ou celle de ses pairs varie.",
+  "formula": "Contribution de taille = exposition de la banque / exposition de l’échantillon × 10 000 × 20 %",
+  "articles": [
+    {
+      "label": "Banques : le prix de la photo du 31 décembre",
+      "href": "/posts/banques-prix-photo-31-decembre/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Comité de Bâle, SCO40 : score et tranches",
+      "href": "https://www.bis.org/committees/bcbs/basel-framework/standard/sco/40/inforce/2021-11-09/published/2021-11-09",
+      "kind": "source"
+    },
+    {
+      "label": "Comité de Bâle, RBC40 : coussin de CET1",
+      "href": "https://www.bis.org/committees/bcbs/basel-framework/standard/rbc/40/inforce/2019-12-15/published/2019-12-15",
+      "kind": "source"
+    },
+    {
+      "label": "FSB : liste G-SIB 2025 et calendrier",
+      "href": "https://www.fsb.org/2025/11/2025-list-of-global-systemically-important-banks-g-sibs/",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "repo",
+    "cet1",
+    "apr"
+  ]
+},
   cra: {
     intuition: 'Le signalement réglementaire commence pendant la préparation de la réponse technique.',
     articles: [{ label: 'Cyber Resilience Act : le circuit de l’alerte', href: '/posts/cyber-resilience-act-circuit-alerte/', kind: 'article' }],
@@ -2298,7 +2331,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Le repo dit comment la dette publique se finance au jour le jour quand elle devient collatéral.",
     formula: 'cash aujourd’hui contre titre, puis rachat selon l’échéance et le prix convenus',
     whyNow: "Le repo relie Treasuries, hedge funds, banques et fonds monétaires. Une tension de collatéral peut transformer un mouvement de taux en problème de liquidité.",
-    articles: [treasuryArticles[1], treasuryArticles[2], { label: 'Gilts, repo et levier', href: '/posts/gilts-repo-levier-banque-angleterre/', detail: 'Transmission d’un choc de taux via le financement.', kind: 'article' }, { label: 'Budget russe 2027 : défense, dette et banques', href: '/posts/budget-russe-2027-defense-dette-banques-credit/', kind: 'article' }],
+    articles: [{ label: 'Banques : le prix de la photo du 31 décembre', href: '/posts/banques-prix-photo-31-decembre/', kind: 'article' }, treasuryArticles[1], treasuryArticles[2], { label: 'Gilts, repo et levier', href: '/posts/gilts-repo-levier-banque-angleterre/', detail: 'Transmission d’un choc de taux via le financement.', kind: 'article' }, { label: 'Budget russe 2027 : défense, dette et banques', href: '/posts/budget-russe-2027-defense-dette-banques-credit/', kind: 'article' }],
     guides: [treasuryGuides[0], treasuryGuides[2]],
     datasets: treasuryDatasets,
     signals: treasurySignals,

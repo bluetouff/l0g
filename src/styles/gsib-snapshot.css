@@ -1,0 +1,26 @@
+/* Native reading styles; the supplied figure geometry is preserved separately. */
+.prose .gsib-article .source-ref { font-size: .75rem; line-height: 1; text-decoration: none; white-space: nowrap; vertical-align: super; margin-left: .2em; }
+.prose .gsib-article .g-sources,
+.prose .gsib-article .source-register { display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem 1.5rem; margin: 1.25rem 0 0; font-family: var(--font-read); font-size: .875rem; line-height: 1.65; }
+.prose .gsib-article .g-sources > h2,
+.prose .gsib-article .g-sources > p,
+.prose .gsib-article .source-register > h2,
+.prose .gsib-article .source-register > p { grid-column: 1 / -1; }
+.prose .gsib-article .g-sources > p,
+.prose .gsib-article .source-register > p { font-size: .875rem; }
+.prose .gsib-article .g-source { min-width: 0; padding-top: .75rem; border-top: 1px solid var(--color-line); overflow-wrap: anywhere; scroll-margin-top: 2rem; }
+.prose .gsib-article .g-source h3 { margin: 0 0 .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.65; font-weight: 500; color: var(--color-muted); }
+.prose .gsib-article .g-source .g-source-label { margin: 0 0 .35rem; font-size: .875rem; line-height: 1.65; font-weight: 500; color: var(--color-muted); }
+.prose .gsib-article .g-source p { margin: .3rem 0; font-size: inherit; }
+.prose .gsib-article .g-source a { font-size: .875rem; font-weight: 400; }
+.prose .gsib-article .g-source small { font-size: .78125rem; color: var(--color-muted); }
+.prose .gsib-article .g-source:target { outline: 1px solid var(--color-signal); outline-offset: 5px; }
+.prose .gsib-article .gsib-snapshot-figure details { padding: .8rem 1rem; border: 1px solid var(--color-line); border-radius: .4rem; background: var(--color-surface); font-family: var(--font-read); }
+.prose .gsib-article .gsib-snapshot-figure summary { color: var(--color-signal); }
+.prose .gsib-article .gsib-snapshot-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+.prose .gsib-article .gsib-snapshot-figure details p { font-size: inherit; }
+.prose .gsib-article .g-model-note { padding: .8rem 1rem; border-left: 3px solid var(--color-signal); background: var(--color-surface); font-family: var(--font-read); font-size: .875rem; line-height: 1.65; }
+@media (min-width: 780px) {
+  .prose .gsib-article .g-sources,
+  .prose .gsib-article .source-register { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

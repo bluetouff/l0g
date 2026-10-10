@@ -85,7 +85,18 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
 assert.equal(glossaryEntries.length, 611, 'Le corpus doit conserver ses 611 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 177, 'Le graphe Atlas doit conserver ses 177 nœuds, dont CRA, CSIRT et Intendant de logiciels ouverts');
+assert.equal(glossaryAtlasEntries.length, 178, 'Le graphe Atlas doit conserver ses 178 nœuds, dont G-SIB');
+const snapshotFr = glossaryEntries.find(entry => entry.slug === 'g-sib');
+const snapshotEn = glossaryAtlasEnBySlug.get('g-sib');
+assert(snapshotFr && snapshotEn);
+assert.equal(snapshotFr.guide, '/posts/banques-prix-photo-31-decembre/');
+assert.equal(snapshotEn.guide, '/en/analysis/banks-cost-december-snapshot/');
+assert.deepEqual(snapshotFr.atlas.sources.map(source => source.href), snapshotEn.atlas.sources.map(source => source.href));
+assert.deepEqual(snapshotFr.atlas.related, ['repo', 'cet1', 'apr']);
+assert.deepEqual(snapshotFr.atlas.related, snapshotEn.atlas.related);
+assert.match(snapshotFr.def, /conséquences.*défaillance.*probabilité/);
+assert.match(snapshotEn.def, /impact of failure.*probability/);
+assert.equal(snapshotEn.robots, 'noindex,follow');
 const craArticleFr = '/posts/cyber-resilience-act-circuit-alerte/';
 const craArticleEn = '/en/analysis/cyber-resilience-act-vulnerability-reporting/';
 const craRegulation = 'https://eur-lex.europa.eu/eli/reg/2024/2847/oj';
@@ -372,7 +383,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 553, 'Le graphe Atlas doit conserver ses 553 relations');
+assert.equal(glossaryAtlasEdgeCount, 556, 'Le graphe Atlas doit conserver ses 556 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

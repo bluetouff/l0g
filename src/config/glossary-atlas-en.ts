@@ -2541,6 +2541,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       formula: 'cash today against a security, then repurchase at the agreed maturity and price',
       whyNow: 'Repo connects Treasuries, hedge funds, banks and money market funds. A collateral squeeze can turn a rate move into a liquidity problem.',
       articles: [
+        { label: 'Banks: the cost of the December snapshot', href: '/en/analysis/banks-cost-december-snapshot/', kind: 'article' },
         usDebtArticles[1],
         usDebtArticles[2],
         { label: 'Gilts, repo and leverage', href: '/en/analysis/gilts-repo-leverage-bank-of-england/', detail: 'Transmission of a rate shock through funding.', kind: 'article' },
@@ -3450,6 +3451,49 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       related: ['credit-prive', 'nav-loan'],
     },
   },
+{
+  "slug": "g-sib",
+  "sigle": "G-SIB",
+  "nom": "Global Systemically Important Bank",
+  "def": "A bank included in the Financial Stability Board’s annual list of global systemically important banks. Five categories measure its relative systemic footprint and inform an additional CET1 buffer on risk-weighted assets, subject to supervisory judgement. The score concerns the impact of failure, rather than its probability. Required capital is a stock, distinct from annual expenses.",
+  "guide": "/en/analysis/banks-cost-december-snapshot/",
+  "sectionTitle": "Bank capital & regulation",
+  "accent": "var(--color-topic-blue)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "A bank’s score can change when either its exposure or its peers’ exposure changes.",
+    "formula": "Size contribution = bank exposure / sample exposure × 10,000 × 20%",
+    "articles": [
+      {
+        "label": "Banks: the cost of the December snapshot",
+        "href": "/en/analysis/banks-cost-december-snapshot/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Basel SCO40: scoring and buckets",
+        "href": "https://www.bis.org/committees/bcbs/basel-framework/standard/sco/40/inforce/2021-11-09/published/2021-11-09",
+        "kind": "source"
+      },
+      {
+        "label": "Basel RBC40: CET1 buffer",
+        "href": "https://www.bis.org/committees/bcbs/basel-framework/standard/rbc/40/inforce/2019-12-15/published/2019-12-15",
+        "kind": "source"
+      },
+      {
+        "label": "FSB: 2025 G-SIB list and timing",
+        "href": "https://www.fsb.org/2025/11/2025-list-of-global-systemically-important-banks-g-sibs/",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "repo",
+      "cet1",
+      "apr"
+    ]
+  }
+},
 ];
 
 export const glossaryAtlasEnBySlug = new Map(glossaryAtlasEn.map((entry) => [entry.slug, entry]));
