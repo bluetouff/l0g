@@ -401,6 +401,21 @@ a { color: inherit; text-decoration: none; }
 }
 .prose figure figcaption { margin-top: 0.75em; }
 
+/* Cortina: a wide desktop composition, with a bounded portrait on mobile. */
+.prose figure.cortina-underwriting-figure {
+  max-width: 45rem;
+  margin: 1.5rem auto 2rem;
+  padding-bottom: .8rem;
+  overflow: visible;
+}
+.prose figure.cortina-underwriting-figure > svg { overflow: visible; }
+.prose figure.cortina-underwriting-figure > .cortina-figure-mobile { display: none; }
+@media (max-width: 640px) {
+  .prose figure.cortina-underwriting-figure { max-width: 21rem; }
+  .prose figure.cortina-underwriting-figure > .cortina-figure-desktop { display: none; }
+  .prose figure.cortina-underwriting-figure > .cortina-figure-mobile { display: block; }
+}
+
 /* Oil-reserve illustrations retain distinct compositions for narrow screens. */
 .prose .l0g-reserves01-figure {
   margin: 2rem auto;

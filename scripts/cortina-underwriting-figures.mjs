@@ -30,9 +30,9 @@ function arrow(points, role, flow, dashed = false) {
     + path(`M ${wings[0].join(' ')} L ${endX} ${endY} L ${wings[1].join(' ')}`, role);
 }
 
-function frame(lang, kind, height, title, desc, inner) {
-  const prefix = `cortina-${lang}-${kind}`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 ${height}" role="img" aria-labelledby="${prefix}-title ${prefix}-desc" style="width:100%;height:auto" data-cortina-figure="${kind}" lang="${lang}"><title id="${prefix}-title">${escape(title)}</title><desc id="${prefix}-desc">${escape(desc)}</desc><rect x="1" y="1" width="478" height="${height - 2}" rx="16" fill="${color('surface')}" stroke="${color('line-strong')}" stroke-width="1"/>${inner}</svg>`;
+function frame(lang, kind, height, title, desc, inner, width = 480, layout = 'mobile') {
+  const prefix = `cortina-${lang}-${kind}-${layout}`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="${prefix}-title ${prefix}-desc" style="width:100%;height:auto" class="cortina-figure-${layout}" data-cortina-figure="${kind}" data-layout="${layout}" lang="${lang}"><title id="${prefix}-title">${escape(title)}</title><desc id="${prefix}-desc">${escape(desc)}</desc><rect x="1" y="1" width="${width - 2}" height="${height - 2}" rx="16" fill="${color('surface')}" stroke="${color('line-strong')}" stroke-width="1"/>${inner}</svg>`;
 }
 
 function mechanism(lang) {
@@ -133,12 +133,147 @@ function selection(lang) {
     fr ? 'Le portefeuille éligible passe par le choix des clients puis par l’acceptation et les limites du gestionnaire, pour devenir le portefeuille effectif. Un retour de contrôle relie les expositions retenues aux paramètres du gestionnaire. Des risques communs peuvent demeurer après ces choix. Schéma qualitatif : aucune largeur ni quantité d’icônes ne mesure une proportion.' : 'An eligible portfolio passes through client choice and manager acceptance and limits to become the actual portfolio. A control loop feeds accepted exposures back into manager parameters. Selection retains the possibility of common underlying risks. This is a qualitative diagram: neither widths nor icon counts encode proportions.', s);
 }
 
+function wideHeading(lang, number, eyebrow, title, subtitle) {
+  return region('heading', [16, 12, 688, 104],
+    label(26, 37, `${number} / ${eyebrow}`, 18, 'muted')
+    + label(26, 72, title, 26, 'paper', 700)
+    + label(26, 103, subtitle, 18, 'muted'));
+}
+
+function wideMechanism(lang) {
+  const fr = lang === 'fr';
+  const title = fr ? 'Qui porte l’expertise ?' : 'Who provides the expertise?';
+  let s = wideHeading(lang, '01', 'LEAD → FOLLOW', title,
+    fr ? 'Un cadre, plusieurs porteurs de risque' : 'One framework, several risk carriers');
+  s += `<g data-node="expertise">${rect(28, 130, 190, 164, 'amber')}${path('M 107 147 L 139 147 M 123 139 L 123 165 M 112 147 L 107 159 L 117 159 L 112 147 M 134 147 L 129 159 L 139 159 L 134 147', 'amber')}</g>`;
+  s += region('expertise-copy', [32, 168, 182, 121],
+    label(123, 194, fr ? 'Expertise du lead' : 'Lead expertise', 20, 'amber', 700, 'middle')
+    + label(123, 230, fr ? 'Analyser, tarifer,' : 'Assess, price,', 18, 'paper', 400, 'middle')
+    + label(123, 257, fr ? 'négocier' : 'negotiate', 18, 'paper', 400, 'middle'));
+  s += arrow([[222, 213], [257, 213]], 'amber', 'pricing');
+  s += `<g data-node="contract">${rect(266, 130, 206, 164, 'signal', 'data-panel="contract-copy"')}</g>`;
+  s += region('contract-copy', [270, 134, 198, 156],
+    label(369, 179, fr ? 'Prix, garanties,' : 'Price, coverage,', 20, 'signal', 700, 'middle')
+    + label(369, 208, 'exclusions', 20, 'signal', 700, 'middle')
+    + label(369, 259, fr ? 'Contrat partagé' : 'Shared contract', 18, 'paper', 400, 'middle'));
+  s += region('allocation-copy', [510, 115, 194, 34], label(607, 140, fr ? 'Primes et risque' : 'Premium and risk', 18, 'muted', 400, 'middle'));
+  s += arrow([[474, 213], [500, 213]], 'signal', 'contract-allocation');
+  s += arrow([[500, 213], [510, 213], [510, 180], [531, 180]], 'signal', 'allocation-lead');
+  s += arrow([[510, 213], [510, 263], [531, 263]], 'signal', 'allocation-follower');
+  for (const [y, name] of [[151, 'lead-share'], [234, 'follow-share']]) {
+    s += `<g data-node="${name}">${rect(536, y, 160, 63, 'signal')}</g>`;
+  }
+  s += region('lead-share-copy', [538, 155, 156, 55],
+    label(616, 178, 'Lead', 20, 'paper', 700, 'middle')
+    + label(616, 202, fr ? 'Part conservée' : 'Retained share', 18, 'muted', 400, 'middle'));
+  s += region('follow-share-copy', [538, 238, 156, 55],
+    label(616, 260, fr ? 'Capital suiveur' : 'Follow capital', 18, 'paper', 700, 'middle')
+    + label(616, 285, fr ? 'Part souscrite' : 'Subscribed share', 18, 'muted', 400, 'middle'));
+  s += arrow([[698, 263], [704, 263], [704, 376], [123, 376], [123, 299]], 'amber', 'expertise-remuneration', true);
+  s += region('return-copy', [230, 315, 354, 57],
+    label(242, 341, fr ? 'Rémunérer l’expertise' : 'Paying for expertise', 20, 'amber', 700)
+    + label(242, 364, fr ? 'Un accord à préciser' : 'An agreement to define', 18));
+  s += region('scope-copy', [16, 388, 688, 36], label(26, 415,
+    fr ? 'Mécanisme général · honoraires Cortina non documentés.' : 'General underwriting mechanism · Cortina fees remain undocumented.', 18, 'muted'));
+  // Both layouts share the same economic scope; only the drawing changes.
+  return frame(lang, 'mechanism', 430, title,
+    fr ? 'L’expertise fixe le prix et les conditions du contrat partagé entre lead et capital suiveur. Le retour en pointillé pose la question de la rémunération de cette expertise. Mécanisme général ; honoraires Cortina non documentés.' : 'Expertise sets pricing and terms of the contract shared by the lead and follow capital. The dashed return raises the question of paying for expertise. General underwriting mechanism; Cortina fees remain undocumented.', s, 720, 'desktop');
+}
+
+function wideFixedCost(lang) {
+  const fr = lang === 'fr';
+  const title = fr ? 'Quand la base se réduit' : 'When the premium base shrinks';
+  let s = wideHeading(lang, '02', fr ? 'SIMULATION FICTIVE' : 'HYPOTHETICAL EXAMPLE', title,
+    fr ? 'Programme : 100 M USD de primes/an' : 'Programme: USD 100m premium/year');
+  for (const [i, share] of CORTINA_SIMULATION.leadShares.entries()) {
+    const base = CORTINA_SIMULATION.annualProgrammePremiumUsd * share;
+    const ratio = CORTINA_SIMULATION.annualExpertiseCostUsd / base;
+    const y = 150 + 86 * i;
+    s += region(`scenario-${i}-heading`, [28, y - 27, 424, 35],
+      label(40, y, fr ? `Lead : ${share * 100} %` : `Lead: ${share * 100}%`, 20, 'paper', 700)
+      + label(440, y, fr ? `${base / 1e6} M USD` : `USD ${base / 1e6}m`, 20, 'signal', 700, 'end'));
+    s += `<rect x="40" y="${y + 12}" width="400" height="20" rx="3" fill="none" stroke="${color('line-strong')}" stroke-width="1"/>`;
+    s += `<rect x="40" y="${y + 12}" width="${400 * base / 20_000_000}" height="20" rx="3" fill="${color('signal')}" data-premium-bar="${i}" data-premium-usd="${base}"/>`;
+    s += region(`scenario-${i}-calculation`, [28, y + 35, 424, 37],
+      label(40, y + 62, fr ? `200 000 ÷ ${i === 0 ? '20' : '10'} 000 000` : `200,000 ÷ ${i === 0 ? '20' : '10'},000,000`, 18)
+      + label(440, y + 62, fr ? `${ratio * 100} %` : `${ratio * 100}%`, 24, 'amber', 700, 'end', `data-cost-ratio="${ratio}"`));
+  }
+  s += path('M 40 317 L 440 317', 'line-strong', 'data-axis="premium-zero"');
+  for (const [x, value] of [[40, 0], [240, 10], [440, 20]]) {
+    s += path(`M ${x} 312 L ${x} 322`, 'line-strong');
+    s += region(`tick-${value}`, [value === 0 ? 28 : value === 20 ? 380 : 205, 326, value === 10 ? 70 : 72, 34], label(x, 352, String(value), 18, 'muted', 400, value === 0 ? 'start' : value === 20 ? 'end' : 'middle'));
+  }
+  s += region('axis-copy', [16, 365, 436, 32], label(240, 389,
+    fr ? 'Primes du lead, M USD/an' : 'Lead signed premium, USD m/year', 18, 'muted', 400, 'middle'));
+  s += rect(474, 130, 218, 129, 'amber', 'data-panel="fixed-budget"');
+  s += region('fixed-budget', [478, 134, 210, 121],
+    label(490, 163, fr ? 'Budget annuel' : 'Annual expertise', 18, 'muted')
+    + label(490, 190, fr ? 'd’expertise fixe' : 'budget: fixed', 18, 'muted')
+    + label(490, 234, fr ? '200 000 USD' : 'USD 200,000', 26, 'amber', 700));
+  s += region('mechanism-copy', [474, 272, 230, 117],
+    label(486, 300, fr ? 'Le poids du coût' : 'The fixed-cost ratio', 20, 'amber', 700)
+    + label(486, 328, fr ? 'fixe double' : 'doubles', 20, 'amber', 700)
+    + label(486, 359, fr ? 'Base divisée par deux.' : 'as the base halves.', 18));
+  s += region('scope-copy', [16, 394, 688, 30], label(26, 416,
+    fr ? 'Même coût, moitié de primes · prix et couverture constants.' : 'Same cost, half the premium · price and coverage stay unchanged.', 18, 'muted'));
+  return frame(lang, 'fixed-cost', 430, title,
+    fr ? 'Simulation fictive : cent millions de dollars de primes annuelles et deux cent mille dollars de budget d’expertise fixe. À vingt pour cent, le lead signe vingt millions de primes et le ratio vaut un pour cent. À dix pour cent, dix millions et deux pour cent. Barres de même échelle, origine zéro. Prix et couverture constants. Ce calcul ne décrit pas Cortina.' : 'Hypothetical annual programme premium of one hundred million dollars and a fixed expertise budget of two hundred thousand dollars. A twenty percent lead share gives twenty million in premium and a one percent ratio; ten percent gives ten million and two percent. Bars share a zero-based scale. Price and coverage stay unchanged. This calculation does not describe Cortina.', s, 720, 'desktop');
+}
+
+function wideSelection(lang) {
+  const fr = lang === 'fr';
+  const title = fr ? 'Deux choix façonnent le suivi' : 'Two gates shape the portfolio';
+  let s = wideHeading(lang, '03', fr ? 'CHOIX DE PORTEFEUILLE' : 'PORTFOLIO CHOICES', title,
+    fr ? 'Schéma qualitatif, sans volumes' : 'Qualitative diagram, no volumes');
+  function portfolio(x, name) {
+    let content = '';
+    for (let i = 0; i < 3; i++) content += `<rect x="${x + i * 15}" y="${158 - i * 3}" width="26" height="34" rx="3" fill="${color('surface')}" stroke="${color(name === 'eligible-portfolio' ? 'line-strong' : 'signal')}" stroke-width="1.7"/>`;
+    return `<g data-node="${name}">${content}</g>`;
+  }
+  s += portfolio(60, 'eligible-portfolio');
+  s += portfolio(604, 'effective-portfolio');
+  s += region('eligible-copy', [16, 203, 152, 62],
+    label(92, 228, fr ? 'Portefeuille' : 'Eligible', 20, 'paper', 700, 'middle')
+    + label(92, 255, fr ? 'éligible' : 'portfolio', 20, 'paper', 700, 'middle'));
+  s += region('effective-copy', [552, 203, 152, 62],
+    label(628, 228, fr ? 'Portefeuille' : 'Actual', 20, 'paper', 700, 'middle')
+    + label(628, 255, fr ? 'effectif' : 'portfolio', 20, 'paper', 700, 'middle'));
+  s += arrow([[130, 174], [204, 174]], 'signal', 'eligible-to-client');
+  s += path('M 226 132 L 226 160 M 226 188 L 226 203', 'line-strong', 'data-gate="client"');
+  s += path('M 226 160 L 247 184', 'signal');
+  s += region('client-copy', [177, 213, 162, 92],
+    label(258, 241, fr ? 'Choix du client' : 'Client choice', 20, 'signal', 700, 'middle')
+    + label(258, 269, fr ? 'Quels contrats' : 'Which contracts', 18, 'paper', 400, 'middle')
+    + label(258, 295, fr ? 'entrent ?' : 'enter?', 18, 'paper', 400, 'middle'));
+  s += arrow([[250, 174], [390, 174]], 'signal', 'client-to-manager');
+  s += path('M 414 132 L 414 160 M 414 188 L 414 203', 'line-strong', 'data-gate="manager"');
+  s += path('M 414 160 L 435 184', 'amber');
+  s += region('manager-copy', [347, 213, 194, 92],
+    label(444, 241, fr ? 'Acceptation' : 'Manager', 20, 'amber', 700, 'middle')
+    + label(444, 269, fr ? 'du gestionnaire' : 'acceptance', 20, 'amber', 700, 'middle')
+    + label(444, 295, fr ? 'Limites et cumuls' : 'Limits, accumulations', 18, 'paper', 400, 'middle'));
+  s += arrow([[438, 174], [590, 174]], 'signal', 'manager-to-effective');
+  s += arrow([[632, 150], [632, 123], [414, 123], [414, 130]], 'amber', 'portfolio-control', true);
+  s += `<g data-node="common-exposure"><circle cx="92" cy="333" r="12" fill="none" stroke="${color('amber')}" stroke-width="1.7"/>${path('M 85 334 L 89 328 L 93 339 L 98 331', 'amber')}</g>`;
+  s += arrow([[76, 333], [14, 333], [14, 174], [52, 174]], 'amber', 'common-risk-eligible', true);
+  s += arrow([[108, 333], [708, 333], [708, 174], [668, 174]], 'amber', 'common-risk-effective', true);
+  s += region('control-copy', [16, 351, 688, 72],
+    label(26, 379, fr ? 'Des risques communs restent possibles.' : 'Shared risks can survive selection.', 20, 'amber', 700)
+    + label(26, 410, fr ? 'Le gestionnaire surveille les cumuls et ajuste le suivi.' : 'The manager monitors accumulations and adjusts follow parameters.', 18));
+  return frame(lang, 'selection', 430, title,
+    fr ? 'Le portefeuille éligible traverse le choix du client puis l’acceptation du gestionnaire. Les limites, exclusions et cumuls encadrent le portefeuille effectif. Un retour relie celui-ci au contrôle du gestionnaire ; des risques communs peuvent demeurer. Schéma qualitatif : aucune largeur ni quantité d’icônes ne mesure une proportion.' : 'The eligible portfolio passes through client choice and manager acceptance. Limits, exclusions and accumulations govern the actual portfolio. A control loop feeds it back to the manager; common risks can survive selection. This is a qualitative diagram: neither widths nor icon counts encode proportions.', s, 720, 'desktop');
+}
+
 const kinds = Object.freeze(['mechanism', 'fixed-cost', 'selection']);
 export const CORTINA_FIGURE_KINDS = kinds;
-export function cortinaUnderwritingSvg(lang, kind) {
+export function cortinaUnderwritingSvg(lang, kind, layout = 'mobile') {
   if (!['fr', 'en'].includes(lang)) throw new TypeError('Unsupported figure language');
   if (!kinds.includes(kind)) throw new TypeError('Unsupported figure kind');
-  return ({ mechanism, 'fixed-cost': fixedCost, selection })[kind](lang);
+  if (!['mobile', 'desktop'].includes(layout)) throw new TypeError('Unsupported figure layout');
+  const draw = layout === 'mobile'
+    ? { mechanism, 'fixed-cost': fixedCost, selection }
+    : { mechanism: wideMechanism, 'fixed-cost': wideFixedCost, selection: wideSelection };
+  return draw[kind](lang);
 }
 
 const captions = {
@@ -155,9 +290,9 @@ const captions = {
 };
 
 export function cortinaUnderwritingFigure(lang, kind) {
-  const svg = cortinaUnderwritingSvg(lang, kind);
+  const svg = ['desktop', 'mobile'].map(layout => cortinaUnderwritingSvg(lang, kind, layout)).join('');
   const source = kind === 'fixed-cost' ? '' : ` <a href="${CORTINA_FIGURE_SOURCES.guidance}">Lloyd’s</a>.`;
-  return `<figure class="cortina-underwriting-figure" style="max-width:520px;margin:1.5rem auto 2rem;padding-bottom:.8rem">${svg}<figcaption style="font-size:.9rem;line-height:1.55;color:var(--color-muted);margin-top:.85rem">${escape(captions[lang][kind])}${source}</figcaption></figure>`;
+  return `<figure class="cortina-underwriting-figure">${svg}<figcaption style="font-size:.9rem;line-height:1.55;color:var(--color-muted);margin-top:.85rem">${escape(captions[lang][kind])}${source}</figcaption></figure>`;
 }
 
 export function cortinaUnderwritingFigures(lang) {

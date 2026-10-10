@@ -4,6 +4,7 @@ import { XMLParser, XMLValidator } from 'fast-xml-parser';
 import sharp from 'sharp';
 import { build } from 'esbuild';
 import { fileURLToPath } from 'node:url';
+import { readFileSync } from 'node:fs';
 import {
   CORTINA_SIMULATION,
   CORTINA_FIGURE_KINDS,
@@ -24,7 +25,7 @@ const number = (node, property, fallback = 0) => {
   assert.ok(Number.isFinite(value), `Finite ${property}`);
   return value;
 };
-const variants = ['fr', 'en'].flatMap(lang => CORTINA_FIGURE_KINDS.map(kind => ({ lang, kind, svg: cortinaUnderwritingSvg(lang, kind) })));
+const variants = ['fr', 'en'].flatMap(lang => ['mobile', 'desktop'].flatMap(layout => CORTINA_FIGURE_KINDS.map(kind => ({ lang, kind, layout, svg: cortinaUnderwritingSvg(lang, kind, layout) }))));
 const palette = new Set(['none', ...['surface', 'paper', 'muted', 'signal', 'amber', 'accent', 'line-strong'].map(role => `var(--color-${role})`)]);
 
 function inspect(svg) {
@@ -106,8 +107,10 @@ async function geometry(svg) {
   const { root, all } = inspect(svg), viewBox = attrs(root).viewBox.split(' ').map(Number);
   assert.equal(viewBox.length, 4);
   const [left, top, width, height] = viewBox;
-  assert.equal(left, 0); assert.equal(top, 0); assert.equal(width, 480);
-  assert.ok(height >= 700 && height <= 800, 'Compact portrait canvas');
+  const desktop = attrs(root)['data-layout'] === 'desktop';
+  assert.equal(left, 0); assert.equal(top, 0);
+  assert.equal(width, desktop ? 720 : 480);
+  assert.ok(desktop ? height === 430 : height >= 700 && height <= 800, 'Canvas appropriate to its layout');
   const inside = (x, y) => assert.ok(Number.isFinite(x) && Number.isFinite(y) && x >= 0 && x <= width && y >= 0 && y <= height, `Canvas bounds: ${x},${y}`);
   for (const node of all) {
     if (name(node) === 'rect') {
@@ -134,7 +137,7 @@ async function geometry(svg) {
   for (const node of all.filter(item => name(item) === 'text')) {
     const p = attrs(node), value = text(node), size = number(node, 'font-size'), w = await glyphWidth(node);
     assert.equal(p['font-family'], 'Arial, Helvetica, sans-serif');
-    assert.ok(size >= 20, `Mobile legibility: ${value}`);
+    assert.ok(size >= (desktop ? 18 : 20), `Label legibility: ${value}`);
     const x = number(node, 'x') - (p['text-anchor'] === 'middle' ? w / 2 : p['text-anchor'] === 'end' ? w : 0);
     const y = number(node, 'y'), box = { x, y: y - size * .95, right: x + w, bottom: y + 4, label: value };
     assert.ok(box.x >= 4 && box.right <= width - 4 && box.y >= 4 && box.bottom <= height - 4, `ViewBox padding: ${value}`);
@@ -147,10 +150,10 @@ async function geometry(svg) {
     if (panel) assert.ok(box.x >= number(panel, 'x') + 8 && box.right <= number(panel, 'x') + number(panel, 'width') - 8 && box.y >= number(panel, 'y') + 4 && box.bottom <= number(panel, 'y') + number(panel, 'height') - 4, `Visible panel padding: ${value}`);
     for (const prior of boxes) assert.ok(!(box.x < prior.right + 4 && box.right + 4 > prior.x && box.y < prior.bottom && box.bottom > prior.y), `Label collision: ${prior.label} / ${value}`);
     // Ratios stay within their regions under the actual responsive transform.
-    for (const container of [272, 320, 360, 520]) {
+    for (const container of desktop ? [560, 672, 720] : [272, 320, 336]) {
       const scale = container / width;
       assert.ok(box.x * scale >= (rx + 7) * scale && box.right * scale <= (rx + rw - 7) * scale, `Narrow region: ${value}`);
-      assert.ok(size * scale >= 11, `Narrow font: ${value}`);
+      assert.ok(size * scale >= (desktop ? 14 : 11), `Narrow font: ${value}`);
     }
     boxes.push(box);
   }
@@ -180,7 +183,8 @@ function verifySimulation(svg) {
   assert.equal(number(bars[0], 'width') / number(bars[1], 'width'), 2);
   assert.equal(number(ratios[1], 'data-cost-ratio') / number(ratios[0], 'data-cost-ratio'), 2);
   const axis = all.find(node => attrs(node)['data-axis'] === 'premium-zero');
-  assert.ok(axis); assert.deepEqual(segments(attrs(axis).d).points, [[40, 541], [440, 541]]);
+  const axisY = attrs(root)['data-layout'] === 'desktop' ? 317 : 541;
+  assert.ok(axis); assert.deepEqual(segments(attrs(axis).d).points, [[40, axisY], [440, axisY]]);
   const copy = text(root);
   assert.match(copy, /USD/u);
   assert.match(copy, /ficti|[Hh]ypothetical/u);
@@ -189,14 +193,16 @@ function verifySimulation(svg) {
   assert.doesNotMatch(copy, /prévi|forecast|actual Cortina/u);
 }
 
-test('Six bilingual diagrams are accessible, inert, internally padded and mobile-legible', async () => {
+test('Both bilingual compositions are accessible, inert, internally padded and legible', async context => {
   const ids = new Set();
   for (const variant of variants) {
-    const { all } = await geometry(variant.svg);
-    for (const node of all) if (attrs(node).id) {
-      assert.ok(!ids.has(attrs(node).id), 'Unique bilingual accessibility IDs');
-      ids.add(attrs(node).id);
-    }
+    await context.test(`${variant.lang}/${variant.kind}/${variant.layout}`, async () => {
+      const { all } = await geometry(variant.svg);
+      for (const node of all) if (attrs(node).id) {
+        assert.ok(!ids.has(attrs(node).id), 'Unique bilingual accessibility IDs');
+        ids.add(attrs(node).id);
+      }
+    });
   }
 });
 
@@ -237,6 +243,11 @@ test('Geometry catches long translations, visible-panel failures and displaced c
   await assert.rejects(geometry(selection.replace('M 280 582 L 424 582 L 424 423 L 395 423', 'M 280 582 L 320 582 L 320 423 L 395 423')));
   const fixed = cortinaUnderwritingSvg('fr', 'fixed-cost');
   await assert.rejects(geometry(fixed.replace('width="424" height="78"', 'width="100" height="78"')));
+  const wide = cortinaUnderwritingSvg('en', 'mechanism', 'desktop');
+  await assert.rejects(geometry(wide.replaceAll('>Who provides the expertise?<', `>${'W'.repeat(80)}<`)));
+  await assert.rejects(geometry(wide.replace('width="206" height="164"', 'width="100" height="164"')));
+  const wideSelection = cortinaUnderwritingSvg('en', 'selection', 'desktop');
+  await assert.rejects(geometry(wideSelection.replace('M 632 150 L 632 123 L 414 123 L 414 130', 'M 660 174 L 628 174 L 628 311 L 414 311 L 414 307')));
 });
 
 test('Regression guards reject misleading premium scales and unsafe SVG additions', () => {
@@ -250,6 +261,7 @@ test('Regression guards reject misleading premium scales and unsafe SVG addition
   assert.throws(() => inspect(svg.replace('fill="var(--color-surface)"', 'fill="#fff"')));
   assert.throws(() => cortinaUnderwritingSvg('de', 'selection'));
   assert.throws(() => cortinaUnderwritingSvg('fr', 'invented'));
+  assert.throws(() => cortinaUnderwritingSvg('fr', 'selection', 'invented'));
 });
 
 test('Inline fragments retain canonical source links, annual simulation limits and readable spacing', () => {
@@ -258,15 +270,26 @@ test('Inline fragments retain canonical source links, annual simulation limits a
   for (const lang of ['fr', 'en']) {
     const fragments = cortinaUnderwritingFigures(lang);
     assert.equal((fragments.match(/<figure /gu) ?? []).length, 3);
-    assert.equal((fragments.match(/<svg /gu) ?? []).length, 3);
+    assert.equal((fragments.match(/<svg /gu) ?? []).length, 6);
     assert.equal((fragments.match(/<figcaption /gu) ?? []).length, 3);
-    assert.match(fragments, /max-width:520px/u);
-    assert.match(fragments, /padding-bottom:\.8rem/u);
     assert.doesNotMatch(fragments, /<script|<style|<foreignObject|overflow:\s*hidden/u);
     for (const kind of ['mechanism', 'selection']) assert.ok(cortinaUnderwritingFigure(lang, kind).includes(`href="${CORTINA_FIGURE_SOURCES.guidance}"`));
     const calculation = cortinaUnderwritingFigure(lang, 'fixed-cost');
     assert.match(calculation, /annuels|annual/u);
     assert.match(calculation, /sans donnée Cortina|not Cortina data/u);
+  }
+});
+
+test('The article has bounded graphic proportions with a distinct narrow-screen composition', () => {
+  const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf8');
+  assert.match(css, /figure\.cortina-underwriting-figure\s*\{[^}]*max-width:\s*45rem;/u);
+  assert.match(css, /figure\.cortina-underwriting-figure\s*\{[^}]*padding-bottom:\s*\.8rem;/u);
+  assert.match(css, /@media\s*\(max-width:\s*640px\)\s*\{\s*\.prose figure\.cortina-underwriting-figure\s*\{\s*max-width:\s*21rem;/u);
+  for (const variant of variants) {
+    const { root } = inspect(variant.svg);
+    const [, , width, height] = attrs(root).viewBox.split(' ').map(Number);
+    const cap = variant.layout === 'desktop' ? 720 : 336;
+    assert.ok(height * cap / width <= (variant.layout === 'desktop' ? 430 : 550), 'Graphic fits the article at its maximum rendered width');
   }
 });
 
