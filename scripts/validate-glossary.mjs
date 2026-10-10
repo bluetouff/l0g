@@ -84,8 +84,32 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 604, 'Le corpus doit conserver ses 604 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 170, 'Le graphe Atlas doit conserver ses 170 nœuds, dont les notions de sortie d’un service informatique');
+assert.equal(glossaryEntries.length, 606, 'Le corpus doit conserver ses 606 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 172, 'Le graphe Atlas doit conserver ses 172 nœuds, dont OT et SCADA');
+for (const [slug, related] of [['ot', ['scada']], ['scada', ['ot']]]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: définitions et sources FR/EN requises`);
+  assert.equal(fr.reference, undefined, `${slug}: conserver la fiche courte en noindex`);
+  assert.equal(fr.referenceCandidate, false, `${slug}: aucune promotion en fiche de référence`);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert(!glossaryReferenceCandidateSlugs.includes(slug));
+  assert.equal(en.robots, 'noindex,follow');
+  assert.equal(fr.guide, '/posts/eolien-solaire-acces-cyber-responsabilites/');
+  assert.equal(en.guide, '/en/analysis/wind-solar-cyber-access-responsibility/');
+  assert.equal(fr.sectionTitle, 'Économie numérique & données');
+  assert.equal(en.sectionTitle, 'Digital economy & data');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), ['https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf']);
+    assert.deepEqual(entry.atlas.articles.map(article => article.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, related);
+    for (const neighbor of entry.atlas.related) {
+      assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
+      assert(glossaryAtlasEnBySlug.has(neighbor));
+    }
+    assert(!entry.def.includes('—'), `${slug}: respecter la charte éditoriale`);
+  }
+}
 for (const [slug, sources, related] of [
   ['btf', ['https://www.aft.gouv.fr/fr/nos-produits'], ['risque-de-refinancement', 'prime-de-terme']],
   ['risque-de-refinancement', [
@@ -238,7 +262,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 539, 'Le graphe Atlas doit conserver ses 539 relations');
+assert.equal(glossaryAtlasEdgeCount, 541, 'Le graphe Atlas doit conserver ses 541 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

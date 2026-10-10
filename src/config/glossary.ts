@@ -710,6 +710,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'OT', nom: 'Technologies opérationnelles', def: 'Systèmes et appareils programmables qui surveillent ou pilotent des processus physiques, ou gèrent les équipements qui le font. Leur protection prend en compte le fonctionnement, la fiabilité et la sûreté du procédé. Les systèmes de contrôle industriel, dont SCADA, appartiennent à ce domaine.', guide: '/posts/eolien-solaire-acces-cyber-responsabilites/' },
+      { sigle: 'SCADA', nom: 'Supervision et acquisition de données', def: 'Système qui collecte des données sur des équipements répartis, les transmet à un centre de contrôle et permet aux opérateurs de surveiller ou de piloter un procédé depuis ce centre. Les commandes disponibles et le degré d’automatisation dépendent de la conception et de la configuration du système.', guide: '/posts/eolien-solaire-acces-cyber-responsabilites/' },
       {"sigle": "PUE", "nom": "Power Usage Effectiveness", "def": "Rapport entre l’énergie totale d’un centre de données et celle de ses équipements informatiques, sur la même période et le même périmètre. Un PUE de 1,30 signifie 0,30 unité pour les auxiliaires par unité consommée par l’IT. Il renseigne sur l’infrastructure du site ; il ne mesure ni l’efficacité d’un algorithme, ni l’utilisation des serveurs, ni la recette de chaleur récupérée.", "guide": "/posts/bull-usine-angers-supercalculateurs/"},
       {"sigle": "DMA", "nom": "Digital Markets Act", "def": "Règlement (UE) 2022/1925 visant l’équité et la contestabilité des marchés numériques. Il impose des obligations aux entreprises désignées contrôleurs d’accès pour leurs services de plateforme essentiels. Son article 6(11) prévoit le partage de données de recherche avec d’autres moteurs dans des conditions équitables, raisonnables et non discriminatoires, avec anonymisation des données personnelles des utilisateurs concernés. Le RGPD continue de s’appliquer aux traitements de données personnelles.", "guide": "/posts/google-donnees-recherche-prix-acces-vie-privee/"},
       {"sigle": "DORA", "nom": "Digital Operational Resilience Act", "def": "Règlement (UE) 2022/2554 sur la résilience opérationnelle numérique du secteur financier, applicable depuis le 17 janvier 2025. Il encadre les risques informatiques, les incidents majeurs, les tests et les relations avec les fournisseurs informatiques des entités concernées. La surveillance européenne des prestataires critiques complète la responsabilité de chaque établissement pour ses propres risques.", "guide": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/"},
@@ -983,6 +985,18 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  ot: {
+    intuition: 'Une intervention informatique peut modifier le fonctionnement d’un équipement physique.',
+    articles: [{ label: 'Éolien et solaire : accès cyber et responsabilités', href: '/posts/eolien-solaire-acces-cyber-responsabilites/', kind: 'article' }],
+    sources: [{ label: 'NIST SP 800-82r3, septembre 2023', href: 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf', detail: 'Section 2, page 8 : périmètre des technologies opérationnelles.', kind: 'source' }],
+    related: ['scada'],
+  },
+  scada: {
+    intuition: 'La supervision rapproche les mesures du terrain et les fonctions de contrôle disponibles.',
+    articles: [{ label: 'Éolien et solaire : accès cyber et responsabilités', href: '/posts/eolien-solaire-acces-cyber-responsabilites/', kind: 'article' }],
+    sources: [{ label: 'NIST SP 800-82r3, septembre 2023', href: 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf', detail: 'Section 2.3.2, page 12 : acquisition de données, supervision et contrôle.', kind: 'source' }],
+    related: ['ot'],
+  },
   portabilite: {
     intuition: 'Le transfert devient utile lorsque le destinataire peut exploiter les données reçues.',
     articles: [{ label: 'Quitter Microsoft, 1/7', href: '/posts/quitter-microsoft-1-etat-dependances/', detail: 'Contenus, identités, droits et applications dans une migration publique.' }],

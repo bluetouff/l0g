@@ -69,6 +69,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/polymarket-infographics.test.mjs',
     'scripts/private-credit-refinancing-infographics.test.mjs',
     'scripts/quantum-migration-infographics.test.mjs',
+    'scripts/renewables-access-infographics.test.mjs',
     'scripts/reserves-allocation-infographics.test.mjs',
     'scripts/reserves-contents-infographics.test.mjs',
     'scripts/reserves-logistics-infographics.test.mjs',

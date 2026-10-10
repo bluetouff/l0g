@@ -204,6 +204,30 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'ot', sigle: 'OT', nom: 'Operational technology',
+    sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    guide: '/en/analysis/wind-solar-cyber-access-responsibility/',
+    def: 'Programmable systems and devices that monitor or control the physical environment, or manage equipment that does so. Protecting OT requires attention to operational performance, reliability and safety. Industrial control systems, including SCADA, are part of this domain.',
+    atlas: {
+      intuition: 'A software intervention can change how physical equipment operates.',
+      articles: [{ label: 'Wind and solar: cyber access and responsibility', href: '/en/analysis/wind-solar-cyber-access-responsibility/', kind: 'article' }],
+      sources: [{ label: 'NIST SP 800-82r3, September 2023', href: 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf', detail: 'Section 2, page 8: the scope of operational technology.', kind: 'source' }],
+      related: ['scada'],
+    },
+  },
+  {
+    slug: 'scada', sigle: 'SCADA', nom: 'Supervisory control and data acquisition',
+    sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    guide: '/en/analysis/wind-solar-cyber-access-responsibility/',
+    def: 'A system that gathers data from distributed assets, sends it to a control centre and lets operators monitor or control processes from a central location. The commands available and the degree of automation depend on the system’s design and configuration.',
+    atlas: {
+      intuition: 'Supervision brings together field measurements and the control functions available to operators.',
+      articles: [{ label: 'Wind and solar: cyber access and responsibility', href: '/en/analysis/wind-solar-cyber-access-responsibility/', kind: 'article' }],
+      sources: [{ label: 'NIST SP 800-82r3, September 2023', href: 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf', detail: 'Section 2.3.2, page 12: data acquisition, supervision and control.', kind: 'source' }],
+      related: ['ot'],
+    },
+  },
+  {
     slug: 'portabilite', sigle: 'Portability', nom: 'Moving data in a usable form',
     sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
     guide: '/en/analysis/leaving-microsoft-1-government-dependencies/',

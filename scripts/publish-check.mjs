@@ -5,6 +5,7 @@ import { extname, join, relative, resolve } from 'node:path';
 import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { XMLParser, XMLValidator } from 'fast-xml-parser';
+import { fromHtml } from 'hast-util-from-html';
 import { editorialSourceDomainTiers } from '../src/config/primary-sources.ts';
 import { contentTitleViolations, editorialTitleViolation } from './editorial-title-policy.mjs';
 
@@ -468,6 +469,59 @@ function auditSvgs(record) {
   }
 }
 
+// Astro components can generate SVGs absent from the MDX source. Inspect their
+// actual built markup, retaining source offsets rather than reserialising HTML.
+function renderedInlineSvgs(source) {
+  const tree = fromHtml(source);
+  const bodies = [];
+  const prose = [];
+  const findBody = (node) => {
+    if (node.type === 'element') {
+      if (Object.hasOwn(node.properties ?? {}, 'dataReadingBody')) bodies.push(node);
+      if (node.properties?.className?.includes('prose')) prose.push(node);
+    }
+    for (const child of node.children ?? []) findBody(child);
+  };
+  findBody(tree);
+  const candidates = bodies.length ? bodies : prose;
+  assert.equal(candidates.length, 1, 'Expected exactly one rendered reading body');
+  const svgs = [];
+  const visit = (node) => {
+    if (node.tagName === 'svg') {
+      const start = node.position?.start.offset;
+      const end = node.position?.end.offset;
+      assert.ok(Number.isInteger(start) && Number.isInteger(end)
+        && start >= 0 && end > start && end <= source.length, 'Missing rendered SVG source offsets');
+      svgs.push({ markup: source.slice(start, end), index: start });
+      return;
+    }
+    for (const child of node.children ?? []) visit(child);
+  };
+  visit(candidates[0]);
+  return svgs;
+}
+
+async function auditRenderedSvgs(record) {
+  const prefixes = { 'post-fr': 'posts', 'post-en': 'en/analysis', 'guide-fr': 'guides', 'guide-en': 'en/guides' };
+  const prefix = prefixes[record.kind];
+  assert.ok(prefix && /^[a-z0-9][a-z0-9-]*$/u.test(record.slug), 'Invalid rendered content route');
+  const path = join(ROOT, 'dist', prefix, record.slug, 'index.html');
+  try {
+    const source = await readFile(path, 'utf8');
+    assert.ok(Buffer.byteLength(source) <= 8 * 1024 * 1024, 'Rendered article exceeds inspection bound');
+    const svgs = renderedInlineSvgs(source);
+    checked('SVG', `${displayPath(record.path)}: ${svgs.length} rendered inline SVG(s), including components`);
+    for (const [index, svg] of svgs.entries()) {
+      const label = `${displayPath(path)}:${lineNumber(source, svg.index)} SVG ${index + 1}`;
+      const analysis = analyzeSvg(svg.markup);
+      for (const message of analysis.errors) fail('SVG', `${label}: ${message}`);
+      for (const message of analysis.warnings) warn('SVG', `${label}: ${message}`);
+    }
+  } catch (error) {
+    fail('SVG', `${displayPath(record.path)}: rendered SVG inspection failed (${error.message})`);
+  }
+}
+
 function sourceParagraphs(record) {
   const withoutSvg = record.body
     .replace(/<figure\b[\s\S]*?<\/figure>/giu, ' ')
@@ -792,6 +846,12 @@ function runSelfTest() {
   );
 
   const responsiveSvg = '<svg viewBox="0 0 100 50" role="img" aria-label="Test" style="width:100%;height:auto"><rect x="0" y="0" width="100" height="50"/></svg>';
+  const componentPage = `<html><body><header>${responsiveSvg}</header><div class="prose" data-reading-body><figure><div>${responsiveSvg}</div><div>${responsiveSvg}</div></figure></div></body></html>`;
+  assert.deepEqual(renderedInlineSvgs(componentPage).map(({ markup }) => markup), [responsiveSvg, responsiveSvg]);
+  assert.equal(renderedInlineSvgs('<div class="prose"><p>No diagram</p></div>').length, 0);
+  assert.throws(() => renderedInlineSvgs('<header>No reading body</header>'), /reading body/u);
+  assert.throws(() => renderedInlineSvgs('<div data-reading-body></div><div data-reading-body></div>'), /reading body/u);
+  assert.ok(analyzeSvg(renderedInlineSvgs(`<div data-reading-body>${responsiveSvg.replace('width="100"', 'width="110"')}</div>`)[0].markup).errors.some((message) => message.includes('exceeds viewBox')));
   assert.deepEqual(analyzeSvg(responsiveSvg), { errors: [], warnings: [] });
   const overflowingSvg = '<svg viewBox="0 0 100 50" style="width:100%;height:auto"><rect x="90" y="0" width="20" height="50"/></svg>';
   assert.ok(analyzeSvg(overflowingSvg).errors.some((message) => message.includes('exceeds viewBox')));
@@ -906,7 +966,10 @@ async function main() {
     const astro = join(ROOT, 'node_modules/astro/bin/astro.mjs');
     await runSubcheck('Build', 'Astro check', process.execPath, [astro, 'check']);
     const build = await runSubcheck('Build', 'Astro build', process.execPath, [astro, 'build']);
-    if (build.ok) await runSubcheck('URLs', 'Internal links', process.execPath, [join(ROOT, 'scripts/check-internal-links.mjs')]);
+    if (build.ok) {
+      for (const record of records) await auditRenderedSvgs(record);
+      await runSubcheck('URLs', 'Internal links', process.execPath, [join(ROOT, 'scripts/check-internal-links.mjs')]);
+    }
     await runSubcheck('Style patterns', 'Editorial lint', process.execPath, [join(ROOT, 'scripts/lint-editorial.mjs'), '--quiet']);
     await runSubcheck('Secrets', 'Repository/dist secret scan', process.execPath, [join(ROOT, 'scripts/audit-secrets.mjs')]);
   } else {

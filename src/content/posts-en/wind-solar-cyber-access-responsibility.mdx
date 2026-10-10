@@ -1,0 +1,219 @@
+---
+title: "Wind and solar: who is responsible for exposed interfaces?"
+seoTitle: "Wind and solar: cyber responsibility and insurance | l0g"
+description: "Modat reports 8,547 exposed systems. Access, maintenance and insurance: a sourced investigation into cyber responsibility at wind and solar plants."
+tags: ["cybersecurity", "energy", "solar", "wind", "insurance", "infrastructure"]
+sourceArticle: "eolien-solaire-acces-cyber-responsabilites"
+sourceUpdatedDate: "2026-10-10T12:05:50+02:00"
+pubDate: "2026-10-10T12:05:50+02:00"
+updatedDate: "2026-10-10T12:05:50+02:00"
+draft: false
+ogImage: "/illustrations/news/renewables-cyber-responsibility-2026-v1.jpg"
+---
+import RenewablesAccessFigure from '../../components/RenewablesAccessFigure.astro';
+import '../../styles/renewables-access.css';
+
+<div class="l0g-renewables" lang="en" data-article-lang="en">
+
+In Poland, a remote-control link met the distribution operator’s requirement for serial communication. The interface used to administer its communications router had no equivalent requirements. The national CERT documented that difference in its follow-up to the attacks of 29 December 2025. A security boundary had been drawn around the link’s intended operation while another way of managing the same device remained outside it. <sup><a href="#source-4">[4]</a></sup>
+
+That detail gives a sharper meaning to the census Modat published on **6 October 2026**: **8,547 internet-facing systems**, associated with solar and wind installations in **35 European countries**. This is the researchers’ reported count. It includes protected interfaces and represents neither that many separate power plants nor that many systems an outsider can control. <sup><a href="#source-1">[1]</a></sup> <sup><a href="#source-2">[2]</a></sup>
+
+For an energy asset owner, the questions become practical. Who should have known about the access? Who could close it without disrupting operations? Who had the authority and budget to do so? And if repairs were paid for, who would bear any lost income?
+
+**This documentary investigation follows those handovers.** It brings together incident reports, a manufacturer’s general terms, technical guidance and model insurance clauses. The documents establish specific duties and a documented gap in technical requirements. They do not establish that the plants in Modat’s findings lack an accountable party or adequate insurance.
+
+## 8,547 systems and access rights to establish
+
+Modat divides its findings into **7,942 solar-related systems** and **605 wind-related systems**. The observed unit is an IT system: one device may relate to part of a facility or provide access to a larger group of equipment. The geographical scope extends beyond the European Union. <sup><a href="#source-1">[1]</a></sup> <sup><a href="#source-2">[2]</a></sup>
+
+An externally visible login page tells us something about an architecture. Establishing control requires further evidence: the permissions actually available, the protections encountered and the equipment reachable through that access. The next question concerns physical consequences. Local automation, protective systems and the plant’s operating state have to enter the assessment. [Operational technology (OT)](/en/glossary/ot/) monitors or controls physical processes. [Supervisory control and data acquisition (SCADA)](/en/glossary/scada/) systems gather information and support remote supervision. NIST’s guidance emphasises the need to account for operational and safety requirements. <sup><a href="#source-7">[7]</a></sup>
+
+<RenewablesAccessFigure kind="exposure" lang="en" number="01" sources="1 2 7" caption="From a visible system to a financial loss, every step requires additional evidence. Only the upper bar is proportional to a count.">
+<details><summary>Method and scope</summary><p>Modat’s reported findings, published 6 October 2026. Unit: systems, not plants or MW. The lower steps are an analytical framework, with no conversion rates or implied probabilities. The collection window was not verified.</p></details>
+</RenewablesAccessFigure>
+
+Financial loss is a further step. Losing a monitoring function may require an intervention without stopping generation. Any generation outage, in turn, must be assessed against wind or sunlight conditions and the relevant sales agreements. A count of interfaces answers none of those questions.
+
+We did not review Modat’s full, form-gated report or reproduce its census. The public pages do not allow us to establish one observation date for every system, verify every attribution or calculate exposed generating capacity. **6 October dates the publication; the state of each access point on that day remains unverified.** Modat is also a commercial cyber-intelligence provider. Its findings should be attributed accordingly, rather than presented as official statistics. <sup><a href="#source-1">[1]</a></sup> <sup><a href="#source-2">[2]</a></sup>
+
+On 7 October, Modat explained that its publication contained aggregate data and offered operators a private exchange after verifying their status. That offer supplies neither a newer public count nor a common observation date. <sup><a href="#source-17">[17]</a></sup>
+
+## In Poland, the boundary missed the interface
+
+The initial Polish report, published on 30 January 2026, describes attacks against at least thirty wind and solar facilities on 29 December. Communications with grid operators were disrupted. Renewable generation continued. That distinction matters: an unavailable digital function and electricity not generated require different evidence. <sup><a href="#source-3">[3]</a></sup>
+
+The August follow-up documents a gap in the requirements surrounding a communications router. The distribution operator’s specified serial link had been implemented, but no requirements had been defined for the administration interface. The report reconstructs a path into a private cellular network and onward to another industrial site, retaining uncertainty about some technical steps. That second CHP plant experienced a brief shutdown without disrupting supply to customers. <sup><a href="#source-4">[4]</a></sup>
+
+<RenewablesAccessFigure kind="boundaries" lang="en" number="02" sources="3 4" caption="The serial link meets a specific requirement. Its router’s administration interface needs a separate assessment.">
+<details><summary>Method and scope</summary><p>Synthesis of the architecture described in CERT Polska’s 8 August 2026 follow-up, pp. 7–9. The serial link and administration interface are distinct. The onward path belongs to the CERT’s reconstruction, with its uncertainties. Deliberately simplified; no device models, addresses or attack instructions. No connection with Modat’s census is established.</p></details>
+</RenewablesAccessFigure>
+
+An administration interface allows someone to change how a device operates. It therefore needs to be assessed separately from the connection carrying its ordinary operational data. In this example, checking only the latter’s compliance would have left a central question unanswered.
+
+For a buyer assessing a power plant, the report suggests a straightforward test: does the handover architecture also account for access used to maintain, reconfigure and troubleshoot equipment? A drawing can accurately describe the intended movement of data while saying little about the ability to alter that movement. Both need to be followed.
+
+Legal responsibility requires further documents. The CERT’s finding identifies a missing technical requirement. On its own, it does not settle the respective obligations of the owner, integrator and grid operator. Contracts, specifications, requested changes and acceptance records would be needed to attribute fault. This investigation establishes no connection between the Polish facilities and Modat’s census.
+
+## A patch still needs someone to install it
+
+**SMA’s** international general delivery terms, in their July 2025 version, expose one handover explicitly. Article III.4 requires the business customer to check available updates periodically and pass that information to its own customer. It must also explain that SMA does not guarantee error-free operation if updates are not installed. Article I.3 gives precedence to specific written agreements. These information duties do not, by themselves, identify who must deploy the update at a plant. <sup><a href="#source-5">[5]</a></sup>
+
+The recipient of an update notice may not be the person who installs the patch. That is the space worth investigating. Consider an installer that supplied the equipment, an operator handling day-to-day maintenance and an owner approving exceptional expenditure. This is an analytical example, not an identified plant. Information could move correctly between all three while an instruction to perform the work remains outstanding.
+
+SMA’s cybersecurity guidance assigns configuration and access-management tasks to the operator or network administrator. A separate company page recommends defining the division of responsibilities between installer and operator in their contracts. These documents state the manufacturer’s position and recommendations. They are not verified descriptions of European plant operations. <sup><a href="#source-6">[6]</a></sup> <sup><a href="#source-15">[15]</a></sup>
+
+There is more involved than receiving a message. For industrial systems, NIST recommends testing patches, preparing recovery arrangements and using compensating protections when deployment is deferred. The aim is to address the vulnerability without introducing an unacceptable operational or safety risk. <sup><a href="#source-7">[7]</a></sup>
+
+The final NIST guide cited here remains Revision 3, published in September 2023. Since 21 September 2026, its official page has flagged an initial public draft of Revision 4, open for comments until 30 November. That draft is under consultation. <sup><a href="#source-18">[18]</a></sup>
+
+<RenewablesAccessFigure kind="handoff" lang="en" number="03" sources="5 6 7 15" caption="Passing on information and deploying a patch are separate chains. Authority, resources and evidence must connect them.">
+<details><summary>Method and scope</summary><p>Organisational model proposed by l0g, informed by SMA’s July 2025 terms and NIST guidance. Role labels do not reproduce an actual plant contract. Deferring deployment requires a temporary risk-reduction decision and review; it does not close the issue.</p></details>
+</RenewablesAccessFigure>
+
+A workable allocation therefore has to connect a duty with the ability to act. The contractor needs valid access. Whoever authorises the change needs to understand its consequences. Whoever pays needs to know whether the work falls within the existing fee or requires a separate order. The final step is checking that the equipment actually received the intended change.
+
+This closes the loop between contractual responsibility and technical execution. A manufacturer’s bulletin announces a patch. An accepted work order identifies a task taken on. The configuration observed afterwards provides evidence of execution. Following one patch through that entire chain would tell a buyer more than collecting those three records without establishing how they connect.
+
+## A hardware remedy leaves another bill
+
+The same SMA terms seek to limit certain liabilities, including for indirect losses or lost profits, to the extent permitted by applicable law. Their effect depends on specific agreements and the relevant legal rules. They do not establish that an exclusion will always be enforceable or that every customer bears the same loss. <sup><a href="#source-5">[5]</a></sup>
+
+The economic question can nevertheless be asked without predicting a legal dispute. Suppose a supplier restores a device to working order. That addresses the equipment problem. Someone still has to establish who pays for travel, digital restoration work, staff time and any lost revenue. Each item requires its own contractual basis and supporting evidence.
+
+It would be equally misleading to depict a sector with no specialised cyber services. In its 2025 annual report, Vestas describes a customer-focused service framework and a security operations centre serving customer power plants under service contracts. This is a company disclosure, not an independent audit or evidence that every turbine receives identical coverage. It nevertheless establishes the existence of a specialised offering. <sup><a href="#source-8">[8]</a></sup>
+
+That counterpoint changes the right acquisition question. A maintenance contract’s price says little until the included work is understood. Does monitoring merely generate an alert? Who assesses an incident? Who attends the site, changes access permissions and verifies recovery? These questions belong in a review of signed documents; their answers should not be presumed missing.
+
+A well-defined delegation can provide expertise and monitoring that an individual owner would struggle to organise alone. The working hypothesis concerns continuity across the chain, not an inherent advantage for in-house operations. Counting contractors is no substitute for assessing how they work together.
+
+## Insured against which loss?
+
+The word “insured” requires the same attention to scope. The Lloyd’s Market Association has issued model clauses clarifying cyber treatment in property insurance. These are adaptable wordings, not provisions automatically incorporated into every policy. The LMA’s official table dated 19 March 2026 still lists LMA5400 as an exclusion with a limited write-back and LMA5401 as an exclusion for power generation, among other classes. <sup><a href="#source-9">[9]</a></sup> <sup><a href="#source-16">[16]</a></sup>
+
+**LMA5401** contains a broad exclusion of cyber loss and certain data-related losses. **LMA5400** provides a narrow write-back: subject to its conditions, physical damage to insured property from ensuing fire or explosion directly resulting from a *Cyber Incident*. That opening does not apply where that *Cyber Incident* is connected with a *Cyber Act*, which includes unauthorised, malicious or criminal acts as defined in the clause. <sup><a href="#source-10">[10]</a></sup> <sup><a href="#source-11">[11]</a></sup>
+
+Those terms have contractual definitions. LMA5400 does not promise cover for any physical damage caused by an attack. Nor does its write-back, by itself, provide general business-interruption cover. The policy’s remaining provisions still matter. <sup><a href="#source-10">[10]</a></sup>
+
+<RenewablesAccessFigure kind="coverage" lang="en" number="04" sources="9 10 11 16" caption="The sum insured is available only within the policy’s scope. The LMA wordings illustrate why the first filter matters.">
+<details><summary>Method and scope</summary><p>Reading framework, not a coverage decision. LMA5400 and LMA5401 are adaptable models. LMA5400’s write-back concerns certain physical fire or explosion damage, subject to its definitions and conditions. It is not general cover for the consequences of an attack or for business interruption.</p></details>
+</RenewablesAccessFigure>
+
+These models establish nothing about whether operators in Modat’s findings are uninsured. We obtained neither their policies and endorsements nor a claim file showing a coverage decision. What the wordings do demonstrate is why a general insurance certificate or a sum insured cannot, on its own, answer whether a particular loss will be paid.
+
+For a specific plant, the review should start with a written scenario. Remote administration is compromised; the connection must be rebuilt; generation either continues or stops for a documented interval. Each cost can then be mapped to the responding clause, insured entity, equipment and any dependency on an external provider. Conditions, deductibles and limits follow. The answer may be reassuring. It simply needs to be established before the insured amount is treated as protection against the scenario.
+
+The same discipline prevents another misleading addition. A supplier warranty, property insurance and a cyber policy may address different exposures. Placing them alongside one another in a transaction file does not yet establish who bears the residual loss from a particular event.
+
+## The cash need comes before the final decision
+
+Consider a financial scenario without invented amounts: a company owns the plant, pays for restoration and continues to meet financing obligations while its insurance claim is assessed. Even if an indemnity is ultimately payable, its receipt and the expenditure may occur at different times. Any advance depends on the agreed terms and the claim.
+
+**The liquidity requirement and the final loss are different quantities.** One describes the cash needed to bridge the interval. The other is assessed after insurance payments and other recoveries, actual costs and any avoided expenses. This is a cash-flow framework, not an estimate of damage in Poland or a valuation of the exposure behind the 8,547 systems.
+
+<RenewablesAccessFigure kind="cash" lang="en" number="05" sources="3 10 11" caption="Restoration, expenditure and claim settlement do not necessarily follow the same clock.">
+<details><summary>Method and scope</summary><p>Qualitative analytical scenario, with no amounts, durations or loss estimate. Payment obligations depend on the actual financing. An insurance advance may be available under the terms and claim circumstances; it is not assumed. Generation may continue despite lost monitoring, as in the initial Polish report. Lengths and positions are not a time scale.</p></details>
+</RenewablesAccessFigure>
+
+Where generation stops, a defensible method would first estimate the electricity that would have been produced without the incident, given conditions over the relevant period. It would then examine the expected sales, contractual prices and any applicable imbalance arrangements. Multiplying nameplate capacity in megawatts by outage hours gives a theoretical energy quantity in megawatt-hours, assuming full output throughout. Establishing lost revenue still requires the price and the quantity that could actually have been sold.
+
+Where generation continues, inventing that revenue loss would be still less justified. The analysis would need to identify additional expenditure and contractual consequences actually incurred. The Polish case therefore helps define the questions a financial model must answer before numbers are entered. <sup><a href="#source-3">[3]</a></sup>
+
+A lender’s review could then focus on available reserves, access to restoration expertise and the evidence required for a claim to be resolved. In an adverse scenario, an asset might face a manageable final loss but a material interim cash requirement. That depends on its financing and contracts, not on a universal characteristic of renewable power.
+
+For an investor owning several plants, common dependencies require a further check. In a scenario to be tested, geographically dispersed facilities might share an administration service or rely on the same restoration team. Geographic spread would then provide no basis for assuming independent incidents. Diligence would need to assess the ability to restore several assets at once and the associated funding requirement. This calls for the portfolio’s architectures and service commitments; the interface census does not provide that dependency map.
+
+## European rules still need an operational handover
+
+NIS2 brings governance and suppliers into cybersecurity risk management. For entities within scope, Articles 20 and 21 provide for management approval and oversight, and proportionate measures including supply-chain security. Outsourcing a task therefore does not remove the governance question. <sup><a href="#source-12">[12]</a></sup>
+
+Scope must be established before obligations are attributed: activity, size, exceptions and national implementation all matter. Modat’s 35 European countries do not form a homogeneous group of entities subject to one identical regime. An accessible interface also does not, on its own, establish a legal breach. <sup><a href="#source-1">[1]</a></sup> <sup><a href="#source-12">[12]</a></sup>
+
+The **Cyber Resilience Act** sets a separate timetable for covered digital products. As of 10 October 2026, Article 14 reporting obligations have applied since **11 September 2026** to manufacturers aware of an actively exploited vulnerability or a severe incident affecting their product’s security; general application is scheduled for **11 December 2027**. Article 69 preserves this reporting requirement for products already placed on the market. The other requirements apply to products placed on the market before 11 December 2027 only if they undergo a substantial modification on or after that date. The 2027 requirements cannot simply be projected onto every older device. <sup><a href="#source-13">[13]</a></sup> <sup><a href="#source-14">[14]</a></sup>
+
+These frameworks establish duties and levers. At plant level, someone still has to receive the notice, an organisation has to make the decision and a competent party has to perform the work. The regulatory process ultimately needs to connect with an instruction to act.
+
+## Trace the last intervention before buying a plant
+
+The most useful extension of this investigation would be an authorised review of a few assets, bringing together the people holding the relevant records. Select an administration access point and trace it from the accepted architecture to its current holder. Then take a recent patch, match the manufacturer’s notice to the maintenance mandate and establish how it was actually handled. No such site-level verification was performed for this article.
+
+A contractor change deserves the same attention. Consider a former operator retaining a maintenance account while its replacement receives incomplete documentation. Reviewing that risk would require evidence of revoked access, the transfer of necessary credentials and a restoration test. The example identifies a line of inquiry, not a discovered incident.
+
+Financial diligence should connect with those concrete actions. A restoration exercise provides evidence about the resources needed. Testing a loss scenario against policy wording allows the scope of coverage to be discussed. An approved budget identifies who can authorise expenditure. Accountability becomes testable when these records refer to the same equipment and the same task.
+
+The public documents support a bounded conclusion. **An official report identifies an incomplete technical requirement; manufacturer terms organise the relay of update information; insurance models draw narrow boundaries around some coverage.** They do not establish a Europe-wide abandonment of responsibility. They identify where to look for a break: the point at which the duty, authority to act, budget and evidence of execution should meet.
+
+---
+
+## Further reading
+
+[The invisible suppliers behind European banking risk](/en/analysis/invisible-suppliers-european-banking-risk/) examines shared dependencies. [Greensill: insurance and future receivables](/en/analysis/greensill-insurance-future-receivables-risk/) examines the connection between financing and insured scope. These investigations concern different assets and contracts.
+
+## Method and limitations
+
+Documentary investigation completed as of **10 October 2026**. SMA and Vestas are examples of public documentation; we do not identify them as suppliers of systems in Modat’s census. The Polish reports concern a separate incident. Manufacturer statements are attributed and are not treated as independent audits.
+
+Modat’s full report and detailed underlying data were not reviewed. No plant audit, interview, request for comment, project-specific maintenance agreement or signed insurance policy was obtained or carried out for this article. Those missing records limit individual attribution and quantification; they do not establish that the records or protections do not exist. The figures are explicitly labelled documentary syntheses or analytical frameworks, without exploitable addresses or attack instructions.
+
+Legal and insurance references inform the analysis. Applying them to an asset requires its contracts and governing law. The sources below distinguish event dates, publication dates and document versions.
+
+## Sources
+
+<section class="source-register" aria-label="Sources and documents">
+  <div class="source-item" id="source-1">
+    <p><strong>[1]</strong> <a href="https://modat.io/blog/to-see-the-wind-and-the-sun/">Modat, To See the Wind and the Sun</a>. 6 October 2026. Public account of the research and its scope; the full, form-gated report was not reviewed.</p>
+  </div>
+  <div class="source-item" id="source-2">
+    <p><strong>[2]</strong> <a href="https://modat.io/blog/modat-research-exposed-systems-wind-and-solar/">Modat, Exposed systems in wind and solar</a>. 6 October 2026. Solar/wind breakdown and interpretation limits. Counts reported by the cyber-intelligence vendor, not independently reproduced.</p>
+  </div>
+  <div class="source-item" id="source-3">
+    <p><strong>[3]</strong> <a href="https://cert.pl/en/posts/2026/01/incident-report-energy-sector-2025/">CERT Polska, Energy sector incident report</a>. Published 30 January 2026; attacks on 29 December 2025. Distinguishes lost communications from continued renewable generation.</p>
+  </div>
+  <div class="source-item" id="source-4">
+    <p><strong>[4]</strong> <a href="https://cert.pl/uploads/docs/CERT_Polska_Energy_Sector_Incident_Follow_up_Report_2025.pdf">CERT Polska, Energy sector incident follow-up report</a>. Follow-up published 8 August 2026, concerning 29 December 2025. PDF, pp. 5–9 and diagram p. 14. Operational-link requirements and missing administration-interface requirements: p. 7. The reconstruction retains forensic uncertainties. <a href="https://cert.pl/en/posts/2026/08/incident-follow-up-report-energy-sector-2025/">Official follow-up publication</a>.</p>
+  </div>
+  <div class="source-item" id="source-5">
+    <p><strong>[5]</strong> <a href="https://d3yvy865gav9f.cloudfront.net/asset/851725204959/document_b64avpoh8h29tb5ajmh83i9p4s/GTCD-INT_AG_EN_DE_202411v2.pdf">SMA, General Terms and Conditions of Delivery for International Customers</a>. Document status: July 2025, despite the filename. English text pp. 1–2: I.1 and I.3, III.4, X.1. General B2B terms, not a project agreement obtained by l0g.</p>
+  </div>
+  <div class="source-item" id="source-6">
+    <p><strong>[6]</strong> <a href="https://d3yvy865gav9f.cloudfront.net/asset/851725204959/document_mfav859g6545f7dki8udvm264u/CyberSecurity-TI-en-20.pdf">SMA, Cyber Security: Guidelines for a Secure System Communication</a>. Version 2.0; no publication date shown. In particular section 5.2, p. 7. Manufacturer guidance, not an independent plant audit.</p>
+  </div>
+  <div class="source-item" id="source-7">
+    <p><strong>[7]</strong> <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf">NIST, SP 800-82 Rev. 3: Guide to Operational Technology Security</a>. September 2023, final version. Sections 5.2.5.2 and 6.2.11, printed pp. 77–78 and 124–125: testing, deployment and compensating controls.</p>
+  </div>
+  <div class="source-item" id="source-8">
+    <p><strong>[8]</strong> <a href="https://www.vestas.com/content/dam/vestas-com/global/en/investor/reports-and-presentations/financial/2025/fy-2025/Vestas%20Annual%20Report%202025.pdf">Vestas, Annual Report 2025</a>. Published 5 February 2026. P. 118: cyber services and customer-focused security operations centre. Company disclosure; no universal coverage of plants is inferred.</p>
+  </div>
+  <div class="source-item" id="source-9">
+    <p><strong>[9]</strong> <a href="https://my.lmalloyds.com/WP/LMA_Bulletins/LMA19-031-PD.aspx">Lloyd’s Market Association, Property and Marine Cyber Clauses, LMA19-031-PD</a>. 13 November 2019. Introduces model wordings including LMA5400 and LMA5401. Illustrative clauses that contracting parties may amend.</p>
+  </div>
+  <div class="source-item" id="source-10">
+    <p><strong>[10]</strong> <a href="https://www.insurance-endorsements.com/wp-content/uploads/2020/08/LMA5400-Property-Cyber-and-Data-Endorsement.pdf">LMA5400, Property Cyber and Data Endorsement</a>. Model dated 11 November 2019, pp. 1–2, particularly paragraphs 1–2 and definitions. Public copy of LMA wording hosted by Insurance Endorsements; reference cross-checked against LMA bulletins.</p>
+  </div>
+  <div class="source-item" id="source-11">
+    <p><strong>[11]</strong> <a href="https://www.insurance-endorsements.com/wp-content/uploads/2020/08/LMA5401-Property-Cyber-and-Data-Exclusion.pdf">LMA5401, Property Cyber and Data Exclusion</a>. Model dated 11 November 2019, paragraph 1 and definitions. Public copy hosted by Insurance Endorsements. No evidence that it is incorporated in policies covering Modat’s identified systems.</p>
+  </div>
+  <div class="source-item" id="source-12">
+    <p><strong>[12]</strong> <a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng">European Union, Directive (EU) 2022/2555, NIS2</a>. 14 December 2022; Official Journal, 27 December 2022. Articles 2, 20 and 21, Annex I. Scope and national implementation must be assessed for each entity.</p>
+  </div>
+  <div class="source-item" id="source-13">
+    <p><strong>[13]</strong> <a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng">European Union, Regulation (EU) 2024/2847, Cyber Resilience Act</a>. 23 October 2024; Official Journal, 20 November 2024. Articles 14, 69 and 71: reporting, transitional provisions and application dates.</p>
+  </div>
+  <div class="source-item" id="source-14">
+    <p><strong>[14]</strong> <a href="https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act">European Commission, Cyber Resilience Act</a>. Official page consulted 10 October 2026. Reporting from 11 September 2026; general application from 11 December 2027.</p>
+  </div>
+  <div class="source-item" id="source-15">
+    <p><strong>[15]</strong> <a href="https://www.sma.de/en/cybersecurity/nis2-directive">SMA, NIS2 Directive</a>. Commercial page consulted 10 October 2026; no publication date shown. Used only for its recommendation to allocate tasks contractually, not to interpret legal thresholds.</p>
+  </div>
+  <div class="source-item" id="source-16">
+    <p><strong>[16]</strong> <a href="https://my.lmalloyds.com/WP/LMA_Bulletins/LMA25-012-DP.aspx">Lloyd’s Market Association, NMA2914/NMA2915 withdrawal, LMA25-012-DP</a>. 29 April 2025. Withdrawal of older models and reference to replacements including LMA5400 and LMA5401. Does not make these clauses mandatory in every policy. <a href="https://lmalloyds.com/wp-content/uploads/2025/06/Cyber-Clauses-19-March-2026.pdf">Official cyber clauses table, 19 March 2026</a>. Model classification, including power generation; no universal incorporation in policies.</p>
+  </div>
+  <div class="source-item" id="source-17">
+    <p><strong>[17]</strong> <a href="https://modat.io/blog/operators-can-ask-whether-their-systems-are-in-our-findings/">Modat, Operators can ask whether their systems are in our findings</a>. 7 October 2026. Public aggregate data and a private exchange offered to operators; no new public count.</p>
+  </div>
+  <div class="source-item" id="source-18">
+    <p><strong>[18]</strong> <a href="https://csrc.nist.gov/pubs/sp/800/82/r3/final">NIST, official SP 800-82 Rev. 3 page</a>. Final publication, September 2023; note dated 21 September 2026 on the initial Revision 4 draft, open for comments until 30 November 2026.</p>
+  </div>
+</section>
+
+</div>
