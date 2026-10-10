@@ -2954,6 +2954,10 @@ export function buildOpenApiContract() {
               type: ['string', 'null'],
               description: 'Version of the producer freshness policy (quality.policy_version), distinct from the scoring methodology version; null when unavailable and optional for historical signals.',
             },
+            cacheUsed: {
+              type: 'boolean',
+              description: 'Validated source response reused beyond its renewal cadence but within the producer cache and observation-age limits. Optional for historical signals.',
+            },
             fallbackUsed: { type: 'boolean' },
             fallbackLayer: { type: ['string', 'null'] },
             fallbackReason: { type: ['string', 'null'] },
@@ -3073,6 +3077,10 @@ export function buildOpenApiContract() {
             freshnessPolicyVersion: {
               type: ['string', 'null'],
               description: 'Version of the producer freshness policy (quality.policy_version), distinct from the scoring methodology version; null when unavailable and optional for historical signals.',
+            },
+            cacheUsed: {
+              type: 'boolean',
+              description: 'Validated source response reused beyond its renewal cadence but within the producer cache and observation-age limits. Optional for historical signals.',
             },
             fallbackUsed: { type: 'boolean' },
             fallbackLayer: { type: ['string', 'null'] },
@@ -3233,6 +3241,17 @@ export function buildOpenApiContract() {
                   properties: {
                     institutional: { type: 'integer' },
                     market: { type: 'integer' },
+                  },
+                },
+                source_max_cache_age_seconds: {
+                  type: 'object',
+                  description: 'Hard reuse limits measured from the original retrieval time, distinct from source renewal cadence; optional before freshness policy 3.',
+                  required: ['institutional', 'market', 'cbo_pinned'],
+                  additionalProperties: false,
+                  properties: {
+                    institutional: { type: 'integer', minimum: 1 },
+                    market: { type: 'integer', minimum: 1 },
+                    cbo_pinned: { type: 'integer', minimum: 1 },
                   },
                 },
               },

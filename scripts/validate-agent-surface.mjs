@@ -125,18 +125,43 @@ function validateOpenapiArtifacts() {
       properties: { freshnessPolicyVersion: schema.properties.freshnessPolicyVersion },
     });
     assert(validatePolicy({}), `${name}: une politique historique absente doit rester valide`);
-    for (const value of ['2', null]) {
+    for (const value of ['2', '3', null]) {
       assert(validatePolicy({ freshnessPolicyVersion: value }), `${name}: politique de fraîcheur valide refusée`);
     }
     for (const value of [0, 2, true, {}, []]) {
       assert(!validatePolicy({ freshnessPolicyVersion: value }), `${name}: type de politique de fraîcheur invalide accepté`);
     }
     assert(!validatePolicy({ freshnessPolicyVersion: '2', unexpected: true }), `${name}: champ non documenté accepté`);
+    const validateCache = ajv.compile({
+      type: 'object',
+      additionalProperties: false,
+      properties: { cacheUsed: schema.properties.cacheUsed },
+    });
+    assert(schema.properties.cacheUsed, `${name}: cache producteur absent du contrat`);
+    for (const fixture of [{}, { cacheUsed: true }, { cacheUsed: false }]) {
+      assert(validateCache(fixture), `${name}: état de cache valide refusé`);
+    }
+    for (const value of [null, 0, 'true', {}, []]) {
+      assert(!validateCache({ cacheUsed: value }), `${name}: type de cache invalide accepté`);
+    }
+    assert(!validateCache({ cacheUsed: true, unexpected: true }), `${name}: champ non documenté accepté`);
   }
   const validateDebtTile = ajv.getSchema('#/components/schemas/DebtRiskTileSignal');
   const producedDebtTile = readJson('dist/api/v1/debt-risk.json').signal;
   assert(validateDebtTile, 'schema de tuile dette absent');
   assert(validateDebtTile(producedDebtTile), `tuile dette produite incompatible avec OpenAPI: ${JSON.stringify(validateDebtTile.errors)}`);
+  for (const cacheUsed of [true, false]) {
+    assert(validateDebtTile({ ...producedDebtTile, cacheUsed, freshnessPolicyVersion: '3' }), 'tuile dette politique 3 incompatible avec OpenAPI');
+  }
+  const validateRefresh = ajv.compile(openapi.components.schemas.RiskSignalProvenance.properties.refresh);
+  const refresh = { auto_refresh_seconds: 900, source_ttl_seconds: { market: 21600, institutional: 86400 } };
+  const limits = { market: 172800, institutional: 604800, cbo_pinned: 2592000 };
+  assert(validateRefresh(refresh), 'ancien contrat de renouvellement refusé');
+  assert(validateRefresh({ ...refresh, source_max_cache_age_seconds: limits }), 'limites de cache politique 3 refusées');
+  for (const value of [null, 0, -1, 1.5, '172800']) {
+    assert(!validateRefresh({ ...refresh, source_max_cache_age_seconds: { ...limits, market: value } }), 'limite de cache invalide acceptée');
+  }
+  assert(!validateRefresh({ ...refresh, source_max_cache_age_seconds: { ...limits, unexpected: 1 } }), 'champ de cache non documenté accepté');
   // Exercise the actual producer: optional rolling diagnostics must be accepted,
   // while privacy thresholds, bounded coverage and the closed schema remain strict.
   const validateTraffic = ajv.getSchema('#/components/schemas/HumanTrafficSurface');
