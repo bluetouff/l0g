@@ -72,6 +72,22 @@ test('le repli EIA officiel est visible mais accepté', () => {
   assert.ok(report.warnings.some((warning) => warning.includes('officielle différée')));
 });
 
+test('le cache dette doit rester visible et ne permet jamais un export expiré', () => {
+  const input = fixture();
+  input.debt.quality = { policy_version: '3', status: 'cached', cached_signals: ['TEST'] };
+  input.debt.valid_until = '2026-07-18T10:15:00Z';
+  assert.ok(auditRiskFlow(input, now).errors.some((error) => error.includes('cache source masquée')));
+  const debt = input.aggregate.indices.find((item) => item.key === 'debt');
+  Object.assign(debt, { cacheUsed: true, qualityStatus: 'degraded', fallbackUsed: true, fallbackLayer: 'producer' });
+  assert.equal(auditRiskFlow(input, now).ok, true);
+  input.debt.quality.cache_expiring_signals = [{ series_id: 'TEST', expires_at: '2026-07-18T18:00:00Z' }];
+  assert.ok(auditRiskFlow(input, now).warnings.some((warning) => warning.includes('renouvellement requis pour TEST')));
+  input.debt.quality.cache_expiring_signals[0].expires_at = now;
+  assert.ok(auditRiskFlow(input, now).errors.some((error) => error.includes('cache expiré')));
+  input.debt.valid_until = now;
+  assert.ok(auditRiskFlow(input, now).errors.some((error) => error.includes('publication expirée')));
+});
+
 test('la dette différée annonce sa prochaine limite sans simuler une panne', () => {
   const input = fixture();
   input.debt.quality = {

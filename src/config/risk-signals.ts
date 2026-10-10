@@ -12,6 +12,9 @@ export const SIGNAL_KEYS = ['us', 'eu', 'yen', 'energie', 'debt'] as const;
 export type RiskSignalKey = (typeof SIGNAL_KEYS)[number];
 
 export interface RiskSignalHealth {
+  key?: string;
+  methodologyVersion?: string | null;
+  validUntil?: string | null;
   sourceStatus?: string | null;
   fallbackLayer?: string | null;
   timelinessStatus?: string | null;
@@ -19,7 +22,9 @@ export interface RiskSignalHealth {
 
 export function isRiskSignalUnavailable(signal?: RiskSignalHealth | null) {
   return Boolean(signal && (
-    signal.sourceStatus === 'fallback'
+    (signal.key === 'debt' && signal.methodologyVersion === '2.0'
+      && !(Date.parse(signal.validUntil || '') > Date.now()))
+    || signal.sourceStatus === 'fallback'
     || signal.fallbackLayer === 'aggregator'
     || signal.timelinessStatus === 'stale'
   ));

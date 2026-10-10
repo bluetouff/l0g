@@ -108,11 +108,11 @@
     },
     "debt": {
       "repository": "https://github.com/bluetouff/debt-risk-radar",
-      "revision": "3d602aa04df5ee7979f95fd2303f9dc16d88f94e",
+      "revision": "8e29a75df8174469782104bcea32d6cad17279e0",
       "files": [
         {
           "path": "/opt/debt-risk-radar/latest_export.py",
-          "sha256": "c41cbd83ef67a807a0c2adb1c9665b167ec4d9e8f53920d49633e1c63ce124cd"
+          "sha256": "aab7a39a820ae93a5c0e926afc21e2c25078de042bea078e901ea01c243aae53"
         },
         {
           "path": "/opt/debt-risk-radar/catalog.py",
@@ -120,15 +120,19 @@
         },
         {
           "path": "/opt/debt-risk-radar/data.py",
-          "sha256": "cdc3ba504dc68301b63b41da2ea0a1963a38126529add0a9196b615441fab9e4"
+          "sha256": "1eef544e74135c2aaccd13cf282330966d28f33b47556c0061ed191cfcdc8369"
         },
         {
           "path": "/opt/debt-risk-radar/quality.py",
-          "sha256": "90694d29e39955c9345f0bd057ba5394ce8992c9c4cc133543ec2c68d84ca20f"
+          "sha256": "0bdd1cb97a133025c9d9a1954fe4159d360a4645fde4881fbdd4f49876ac6d9d"
         },
         {
           "path": "/opt/debt-risk-radar/http_cache.py",
-          "sha256": "883835284c4fb5b19865f3ffc3afb74bd8f6d34871e5b31bd7ad062f34703f07"
+          "sha256": "7211df8079b85008248fd4a4341a00616a99fa671c430166f106aab7056a2159"
+        },
+        {
+          "path": "/opt/debt-risk-radar/source_validation.py",
+          "sha256": "1b9a547fa33d1a1d72d26fbf1170498f38a480d1fdf1af9a4e02d5930da8e0c4"
         }
       ]
     }

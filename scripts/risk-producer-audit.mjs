@@ -100,7 +100,7 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
   }
 
   const debtQuality = input.debt?.quality;
-  if (debtQuality?.policy_version === '2') {
+  if (['2', '3'].includes(debtQuality?.policy_version)) {
     const debtExpiry = iso(input.debt?.valid_until);
     if (!debtExpiry || Date.parse(debtExpiry) <= Date.parse(now)) {
       errors.push('debt: publication expirée ou échéance absente');
@@ -108,6 +108,22 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
     if (debtQuality.status === 'official-delayed' && byKey.get('debt')?.qualityStatus !== 'official-delayed'
       && !producerPublishedAfterAttempt.has('debt')) {
       errors.push('debt: publication trimestrielle différée masquée dans l’agrégat');
+    }
+    if (debtQuality.status === 'cached' && !producerPublishedAfterAttempt.has('debt')) {
+      if (byKey.get('debt')?.cacheUsed !== true || byKey.get('debt')?.qualityStatus !== 'degraded') {
+        errors.push('debt: réutilisation du cache source masquée dans l’agrégat');
+      } else {
+        warnings.push('debt: cache source validé réutilisé dans ses limites publiées');
+      }
+    }
+    for (const signal of Array.isArray(debtQuality.cache_expiring_signals) ? debtQuality.cache_expiring_signals : []) {
+      const deadline = iso(signal?.expires_at);
+      const identifier = typeof signal?.series_id === 'string' ? signal.series_id : 'signal inconnu';
+      if (!deadline || Date.parse(deadline) <= Date.parse(now)) {
+        errors.push(`debt: cache expiré ou échéance invalide pour ${identifier}`);
+      } else {
+        warnings.push(`debt: renouvellement requis pour ${identifier} avant ${deadline}`);
+      }
     }
     for (const signal of Array.isArray(debtQuality.expiring_signals) ? debtQuality.expiring_signals : []) {
       const deadline = iso(signal?.limit_at);

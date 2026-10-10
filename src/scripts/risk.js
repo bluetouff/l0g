@@ -41,6 +41,12 @@
     if (item.sourceStatus === 'fallback' || item.fallbackLayer === 'aggregator') {
       return 'repli best effort · dernier succès ' + (formatDate(item.lastSuccessAt, true) || 'inconnu');
     }
+    if (debtExpired(item)) {
+      return `publication expirée · calcul ${sourceDate || 'non daté'}`;
+    }
+    if (item.cacheUsed === true) {
+      return `cache source validé · calcul ${sourceDate || 'non daté'}`;
+    }
     if (item.qualityStatus === 'official-delayed') {
       if (item.key === 'debt') return 'publication trimestrielle différée · source ' + (sourceDate || 'non datée');
       return 'officiel différé (EIA) · pétrole au ' + (componentDate || 'jour publié');
@@ -70,14 +76,23 @@
 
   function isUnavailable(item) {
     return Boolean(item && (
-      item.sourceStatus === 'fallback'
+      debtExpired(item)
+      || item.sourceStatus === 'fallback'
       || item.fallbackLayer === 'aggregator'
       || item.timelinessStatus === 'stale'
     ));
   }
 
+  function debtExpired(item) {
+    return item.key === 'debt' && item.methodologyVersion === '2.0'
+      && !(Date.parse(item.validUntil || '') > Date.now());
+  }
+
+  var lastRendered = null;
+
   function render(data) {
     if (!data || !Array.isArray(data.indices)) return;
+    lastRendered = data;
     data.indices.forEach(function (it) {
       var tile = document.querySelector('[data-risk="' + it.key + '"]');
       if (!tile) return;
@@ -194,4 +209,17 @@
 
   if (document.readyState === 'complete') scheduleRefresh();
   else window.addEventListener('load', scheduleRefresh, { once: true });
+  // Read only public static snapshots. Never call providers from the browser.
+  window.setInterval(function () {
+    if (!document.hidden) refresh();
+  }, 15 * 60 * 1000);
+  window.setInterval(function () {
+    if (!document.hidden && lastRendered) render(lastRendered);
+  }, 60 * 1000);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) {
+      if (lastRendered) render(lastRendered);
+      refresh();
+    }
+  });
 })();

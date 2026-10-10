@@ -11,14 +11,23 @@ Debt Risk Radar méthode `2.0` publie `methodologyId`, `methodologyVersion`,
 `validUntil` et la révision `source_sha` du snapshot. L'agrégateur refuse une
 couverture inférieure à 31/31 ou une publication expirée. Une tolérance de
 60 secondes permet une publication pendant la requête, sans prolonger l'expiration.
-La politique de fraîcheur 2 distingue les publications trimestrielles FRED
+La politique de fraîcheur 3 conserve la distinction des publications trimestrielles FRED
 différées mais confirmées : `qualityStatus=official-delayed`, avertissement
-explicite et `freshnessPolicyVersion=2`. Cela ne constitue pas un repli de
+explicite et `freshnessPolicyVersion=3`. Cela ne constitue pas un repli de
 l'agrégateur et ne dispense jamais du contrôle de `validUntil` ou de couverture.
 La home conserve le score et affiche « publication trimestrielle différée ».
+Un producteur en `quality.status=cached` reste utilisable uniquement avec couverture
+31/31 et `valid_until` futur. L'agrégat porte `cacheUsed=true`, `qualityStatus=degraded`
+et `fallbackLayer=producer` ; la home affiche « cache source validé » sans redater
+les observations. Ce cas ne doit pas être confondu avec le repli de l'agrégateur,
+qui conserve un ancien snapshot après échec et reste indisponible. La home relit
+les snapshots statiques toutes les 15 minutes tant qu'elle est visible et retire
+un score dette arrivé à expiration, même sans nouvelle réponse du serveur.
 Le contrôle horaire existant `risk-producers.yml` reprend les échéances
 `quality.expiring_signals` dans ses avertissements GitHub, jusqu'à 14 jours avant
 la limite d'âge. Une échéance dépassée ou un retard masqué devient une erreur.
+La politique 3 ajoute `quality.cache_expiring_signals` : renouvellement requis
+sous 24 heures avant la rupture d'un cache réutilisé, sans prolonger sa validité.
 Ces avertissements ne garantissent pas une notification personnelle : leur
 lecture dépend du suivi du workflow.
 Le journal append-only conserve la méthode dette (schéma 5) ; les archives

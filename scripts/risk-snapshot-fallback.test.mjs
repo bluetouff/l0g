@@ -85,6 +85,24 @@ test('confirmed delayed quarterly data remains labelled in static debt snapshots
   assert.match(signal.warnings[0], /FRED/);
 });
 
+test('bounded source cache is explicit in static snapshots and clears after recovery', async (t) => {
+  const debt = institutionalDebt();
+  debt.quality = { status: 'cached', policy_version: '3', cached_signals: ['TEST'] };
+  const { result, risk, snapshot } = await runSnapshot(t, { debt });
+  assert.equal(result.status, 0, result.stderr);
+  const signal = risk.indices.find((item) => item.key === 'debt');
+  assert.equal(signal.value, 53);
+  assert.equal(signal.qualityStatus, 'degraded');
+  assert.equal(signal.cacheUsed, true);
+  assert.equal(signal.sourceStatus, 'ok');
+  assert.equal(signal.fallbackLayer, 'producer');
+  assert.equal(snapshot.signal.cacheUsed, true);
+  const recovered = await runSnapshot(t, { debt: institutionalDebt(), prior: risk });
+  assert.equal(recovered.result.status, 0, recovered.result.stderr);
+  assert.equal(recovered.snapshot.signal.cacheUsed, false);
+  assert.equal(recovered.snapshot.signal.qualityStatus, 'nominal');
+});
+
 async function runSnapshot(t, { debt = { score: { current_stress: null } }, aggregateValue = aggregate, prior = previous, priorConfluence = confluence, confluenceValue = confluence } = {}) {
   const directory = await mkdtemp(join(tmpdir(), 'l0g-debt-fallback-'));
   t.after(() => rm(directory, { recursive: true, force: true }));

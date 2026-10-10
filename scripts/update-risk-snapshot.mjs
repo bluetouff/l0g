@@ -347,6 +347,11 @@ function updateRiskSnapshot(risk, latest) {
   }
   const revision = typeof latest.source_sha === 'string' && /^[a-f0-9]{40}$/.test(latest.source_sha)
     ? latest.source_sha : null;
+  const cacheUsed = latest.quality?.status === 'cached';
+  if (cacheUsed && (latest.quality.policy_version !== '3'
+    || !Array.isArray(latest.quality.cached_signals) || !latest.quality.cached_signals.length)) {
+    throw new Error('Provenance du cache dette absente ou non reconnue.');
+  }
 
   if (!Array.isArray(risk.indices)) {
     throw new Error('public/risk.json doit exposer un tableau indices.');
@@ -368,11 +373,12 @@ function updateRiskSnapshot(risk, latest) {
     tone: toneFromStatus(status),
     ...observation,
     sourceStatus: 'ok',
-    qualityStatus: (Array.isArray(latest.issues) && latest.issues.length) || latest.quality?.status === 'degraded'
+    qualityStatus: cacheUsed || (Array.isArray(latest.issues) && latest.issues.length) || latest.quality?.status === 'degraded'
       ? 'degraded' : latest.quality?.status === 'official-delayed' ? 'official-delayed' : 'nominal',
     freshnessPolicyVersion: latest.quality?.policy_version || null,
-    fallbackUsed: false,
-    fallbackLayer: null,
+    cacheUsed,
+    fallbackUsed: cacheUsed,
+    fallbackLayer: cacheUsed ? 'producer' : null,
     fallbackReason: null,
     sourceUpdatedAt: new Date(generatedAt).toISOString(),
     sourcePublishedAt: new Date(generatedAt).toISOString(),
@@ -383,7 +389,9 @@ function updateRiskSnapshot(risk, latest) {
     ageSeconds: Math.max(0, Math.round((Date.parse(attemptedAt) - Date.parse(generatedAt)) / 1000)),
     timelinessStatus: Date.parse(attemptedAt) - Date.parse(generatedAt) > 6 * 3600 * 1000 ? 'stale' : 'fresh',
     sourceSnapshotUrl: latest.latest_json_url || debtUrl,
-    warnings: latest.quality?.status === 'official-delayed'
+    warnings: cacheUsed
+      ? ['Cache source validé réutilisé dans ses limites publiées ; dates d’origine conservées.']
+      : latest.quality?.status === 'official-delayed'
       ? ['Publication trimestrielle FRED différée, dernière observation officielle confirmée ; période d’origine conservée.']
       : Array.isArray(latest.issues) ? latest.issues.map(compactIssue).slice(0, 10) : [],
   };

@@ -588,7 +588,17 @@ def idx_debt(src, attempt_at):
     item["validUntil"] = data.get("valid_until")
     quality = data.get("quality") or {}
     item["freshnessPolicyVersion"] = quality.get("policy_version")
-    if quality.get("status") == "official-delayed":
+    if quality.get("status") == "cached":
+        cached_signals = quality.get("cached_signals")
+        if (quality.get("policy_version") != "3" or not isinstance(cached_signals, list)
+                or not cached_signals):
+            raise ValueError("provenance du cache dette absente ou non reconnue")
+        item["qualityStatus"] = "degraded"
+        item["cacheUsed"] = True
+        item["fallbackUsed"] = True
+        item["fallbackLayer"] = "producer"
+        item["warnings"] = ["Cache source validé réutilisé dans ses limites publiées ; dates d'origine conservées."]
+    elif quality.get("status") == "official-delayed":
         item["qualityStatus"] = "official-delayed"
         item["warnings"] = ["Publication trimestrielle FRED différée, dernière observation officielle confirmée ; période d'origine conservée."]
     elif quality.get("status") == "degraded":

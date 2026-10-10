@@ -34,6 +34,26 @@ def item(key, value, source_updated="2026-07-18T08:00:00Z"):
 
 
 class AggregatorContractTest(unittest.TestCase):
+    def test_debt_validated_cache_remains_visible_without_becoming_nominal(self):
+        snapshot = self.debt_v2()
+        snapshot["quality"] = {"status": "cached", "policy_version": "3", "cached_signals": ["TEST"]}
+        with patch.object(RISK, "fetch_json", return_value=snapshot):
+            current = RISK.idx_debt({"url": "https://debt.l0g.fr/latest.json"}, "2026-10-08T10:05:00Z")
+        self.assertEqual(current["value"], 54)
+        self.assertEqual(current["qualityStatus"], "degraded")
+        self.assertEqual(current["sourceStatus"], "ok")
+        self.assertTrue(current["cacheUsed"])
+        self.assertTrue(current["fallbackUsed"])
+        self.assertEqual(current["fallbackLayer"], "producer")
+        self.assertEqual(current["validUntil"], snapshot["valid_until"])
+        for change in ({"valid_until": "2026-10-08T10:05:00Z"},
+                       {"quality": {"status": "cached", "policy_version": "3"}},
+                       {"quality": {"status": "cached", "policy_version": "3", "cached_signals": "TEST"}},
+                       {"score": {"current_stress": None, "overall": 54}}):
+            with self.subTest(change=change), patch.object(RISK, "fetch_json", return_value={**snapshot, **change}):
+                with self.assertRaises(ValueError):
+                    RISK.idx_debt({"url": "https://debt.l0g.fr/latest.json"}, "2026-10-08T10:05:00Z")
+
     def test_debt_confirmed_delayed_publication_is_visible_not_a_fake_nominal_or_outage(self):
         snapshot = self.debt_v2()
         snapshot["quality"] = {"status": "official-delayed", "policy_version": "2"}

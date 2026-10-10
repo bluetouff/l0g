@@ -20,6 +20,9 @@ type RiskSignal = {
   qualityStatus?: string | null;
   fallbackUsed?: boolean;
   fallbackLayer?: string | null;
+  cacheUsed?: boolean;
+  methodologyVersion?: string | null;
+  validUntil?: string | null;
   timelinessStatus?: string | null;
   sourceUpdatedAt?: string | null;
   sourcePublishedAt?: string | null;
@@ -91,6 +94,13 @@ function statusText(signal: RiskSignal) {
   const componentDate = brentDate === wtiDate ? formatDate(brentDate) : null;
   if (signal.sourceStatus === 'fallback' || signal.fallbackLayer === 'aggregator') {
     return `repli best effort · dernier succès ${formatDate(signal.lastSuccessAt, true) || 'inconnu'}`;
+  }
+  if (signal.key === 'debt' && signal.methodologyVersion === '2.0'
+    && !(Date.parse(signal.validUntil || '') > Date.now())) {
+    return `publication expirée · calcul ${sourceDate || 'non daté'}`;
+  }
+  if (signal.cacheUsed === true) {
+    return `cache source validé · calcul ${sourceDate || 'non daté'}`;
   }
   if (signal.qualityStatus === 'official-delayed') {
     if (signal.key === 'debt') return `publication trimestrielle différée · source ${sourceDate || 'non datée'}`;
