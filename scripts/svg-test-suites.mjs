@@ -34,6 +34,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/cocoa-financing-tool.test.mjs',
     'scripts/copper-stock-infographics.test.mjs',
     'scripts/cortina-underwriting-infographics.test.mjs',
+    'scripts/cra-disclosure-infographics.test.mjs',
     'scripts/debt-correction-infographic.test.mjs',
     'scripts/decrement-infographics.test.mjs',
     'scripts/defi-gateways-infographics.test.mjs',

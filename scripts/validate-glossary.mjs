@@ -84,8 +84,59 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 608, 'Le corpus doit conserver ses 608 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 174, 'Le graphe Atlas doit conserver ses 174 nœuds, dont Pacte Dutreil et Soulte');
+assert.equal(glossaryEntries.length, 611, 'Le corpus doit conserver ses 611 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 177, 'Le graphe Atlas doit conserver ses 177 nœuds, dont CRA, CSIRT et Intendant de logiciels ouverts');
+const craArticleFr = '/posts/cyber-resilience-act-circuit-alerte/';
+const craArticleEn = '/en/analysis/cyber-resilience-act-vulnerability-reporting/';
+const craRegulation = 'https://eur-lex.europa.eu/eli/reg/2024/2847/oj';
+for (const [slug, sources, related] of [
+  ['cra', [craRegulation], ['csirt', 'intendant-de-logiciels-ouverts']],
+  ['csirt', ['https://eur-lex.europa.eu/eli/dir/2022/2555/oj', craRegulation], ['cra', 'intendant-de-logiciels-ouverts']],
+  ['intendant-de-logiciels-ouverts', [craRegulation], ['cra', 'csirt']],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: définition et sources FR/EN requises`);
+  assert.equal(fr.reference, undefined, `${slug}: conserver la fiche courte en noindex`);
+  assert.equal(fr.referenceCandidate, false, `${slug}: aucune promotion en fiche de référence`);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert(!glossaryReferenceCandidateSlugs.includes(slug));
+  assert.equal(en.robots, 'noindex,follow');
+  assert.equal(fr.guide, craArticleFr);
+  assert.equal(en.guide, craArticleEn);
+  assert.equal(fr.sectionTitle, 'Économie numérique & données');
+  assert.equal(en.sectionTitle, 'Digital economy & data');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
+    assert.deepEqual(entry.atlas.articles.map(article => article.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, related);
+    assert(entry.atlas.sources.every(source => new URL(source.href).hostname === 'eur-lex.europa.eu'));
+    for (const neighbor of related) {
+      assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
+      assert(glossaryAtlasEnBySlug.has(neighbor));
+    }
+    assert(!entry.def.includes('—'), `${slug}: respecter la charte éditoriale`);
+  }
+  if (slug === 'cra') {
+    assert.match(fr.def, /11 septembre 2026/);
+    assert.match(en.def, /11 September 2026/);
+    assert.match(fr.def, /vulnérabilités activement exploitées/);
+    assert.match(en.def, /actively exploited vulnerabilities/);
+  }
+  if (slug !== 'csirt') {
+    assert.match(fr.def, /11 décembre 2027/);
+    assert.match(en.def, /11 December 2027/);
+  } else {
+    assert.match(fr.def, /coordinateur.*ENISA.*confidentialité/);
+    assert.match(en.def, /coordinator.*ENISA.*confidentiality/);
+  }
+  if (slug === 'intendant-de-logiciels-ouverts') {
+    assert.match(fr.def, /distincte du fabricant/);
+    assert.match(en.def, /distinct from the manufacturer/);
+    assert.match(fr.def, /activités commerciales/);
+    assert.match(en.def, /commercial activities/);
+  }
+}
 const dutreilArticleFr = '/posts/dutreil-transmission-fortunes-familiales/';
 const dutreilArticleEn = '/en/analysis/dutreil-family-business-inheritance-tax-relief/';
 for (const [slug, sources, related] of [
@@ -321,7 +372,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 547, 'Le graphe Atlas doit conserver ses 547 relations');
+assert.equal(glossaryAtlasEdgeCount, 553, 'Le graphe Atlas doit conserver ses 553 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

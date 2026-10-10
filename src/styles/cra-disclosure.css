@@ -1,0 +1,14 @@
+/* Native reading and compact documentary sources for this investigation. */
+.prose .l0g-cra-disclosure sup { font-size: .75rem; line-height: 1; }
+.prose .l0g-cra-disclosure sup a { text-decoration: none; white-space: nowrap; }
+.prose .l0g-cra-disclosure .source-register { display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem 1.5rem; margin: 1.25rem 0 0; font-family: var(--font-read); font-size: .875rem; line-height: 1.65; }
+.prose .l0g-cra-disclosure .source-item { min-width: 0; padding-top: .75rem; border-top: 1px solid var(--color-line); overflow-wrap: anywhere; scroll-margin-top: 2rem; }
+.prose .l0g-cra-disclosure .source-item p { margin: 0; font-size: inherit; }
+.prose .l0g-cra-disclosure .source-item a { font-size: .875rem; font-weight: 400; }
+.prose .l0g-cra-disclosure .source-item strong { font-size: .78125rem; font-weight: 500; color: var(--color-muted); }
+.prose .l0g-cra-disclosure .source-item:target { outline: 1px solid var(--color-signal); outline-offset: 5px; }
+.prose .l0g-cra-disclosure .cra-disclosure-figure details { padding: .8rem 1rem; border: 1px solid var(--color-line); border-radius: .4rem; background: var(--color-surface); font-family: var(--font-read); }
+.prose .l0g-cra-disclosure .cra-disclosure-figure summary { color: var(--color-signal); }
+.prose .l0g-cra-disclosure .cra-disclosure-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+.prose .l0g-cra-disclosure .cra-disclosure-figure details p { font-size: inherit; }
+@media (min-width: 780px) { .prose .l0g-cra-disclosure .source-register { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

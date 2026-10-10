@@ -204,6 +204,45 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'cra', sigle: 'CRA', nom: 'Cyber Resilience Act',
+    sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    guide: '/en/analysis/cyber-resilience-act-vulnerability-reporting/',
+    def: 'Regulation (EU) 2024/2847 on cybersecurity for products with digital elements. Since 11 September 2026, manufacturers within its scope must report actively exploited vulnerabilities and severe incidents affecting the security of their products. The main security requirements and the specific regime for open-source software stewards apply from 11 December 2027.',
+    atlas: {
+      intuition: 'Regulatory reporting begins while the technical response is still being prepared.',
+      articles: [{ label: 'Cyber Resilience Act: the vulnerability-reporting system', href: '/en/analysis/cyber-resilience-act-vulnerability-reporting/', kind: 'article' }],
+      sources: [{ label: 'Regulation (EU) 2024/2847, Cyber Resilience Act', href: 'https://eur-lex.europa.eu/eli/reg/2024/2847/oj', detail: 'Articles 14, 24 and 71: reporting, stewards and application dates.', kind: 'source' }],
+      related: ['csirt', 'intendant-de-logiciels-ouverts'],
+    },
+  },
+  {
+    slug: 'csirt', sigle: 'CSIRT', nom: 'Computer security incident response team',
+    sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    guide: '/en/analysis/cyber-resilience-act-vulnerability-reporting/',
+    def: 'A team handling computer security incidents, analysing vulnerabilities and assisting the organisations concerned. Under the CRA, the CSIRT designated as coordinator normally receives reports alongside ENISA and arranges onward sharing with other relevant coordinators under the regulation’s confidentiality rules.',
+    atlas: {
+      intuition: 'A response team brings warnings together and coordinates sharing that supports protection.',
+      articles: [{ label: 'Cyber Resilience Act: the vulnerability-reporting system', href: '/en/analysis/cyber-resilience-act-vulnerability-reporting/', kind: 'article' }],
+      sources: [
+        { label: 'Directive (EU) 2022/2555, NIS 2', href: 'https://eur-lex.europa.eu/eli/dir/2022/2555/oj', detail: 'Articles 10 to 12: response teams, tasks and coordinated vulnerability disclosure.', kind: 'source' },
+        { label: 'Regulation (EU) 2024/2847, Cyber Resilience Act', href: 'https://eur-lex.europa.eu/eli/reg/2024/2847/oj', detail: 'Articles 14 to 17: recipients, confidentiality and onward sharing of reports.', kind: 'source' },
+      ],
+      related: ['cra', 'intendant-de-logiciels-ouverts'],
+    },
+  },
+  {
+    slug: 'intendant-de-logiciels-ouverts', sigle: 'Open-source software steward', nom: 'An organisation supporting open-source development',
+    sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    guide: '/en/analysis/cyber-resilience-act-vulnerability-reporting/',
+    def: 'A legal entity distinct from the manufacturer that provides organised, ongoing support for the development of free and open-source software intended for commercial activities and ensures its viability. From 11 December 2027, the CRA requires it to maintain a cybersecurity policy, cooperate with authorities and fulfil reporting duties tailored to its role.',
+    atlas: {
+      intuition: 'Sustained support for an open-source project has a regime distinct from that of the product’s manufacturer.',
+      articles: [{ label: 'Cyber Resilience Act: the vulnerability-reporting system', href: '/en/analysis/cyber-resilience-act-vulnerability-reporting/', kind: 'article' }],
+      sources: [{ label: 'Regulation (EU) 2024/2847, Cyber Resilience Act', href: 'https://eur-lex.europa.eu/eli/reg/2024/2847/oj', detail: 'Articles 3(14), 24 and 71: definition, tailored obligations and application in December 2027.', kind: 'source' }],
+      related: ['cra', 'csirt'],
+    },
+  },
+  {
     slug: 'ot', sigle: 'OT', nom: 'Operational technology',
     sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
     guide: '/en/analysis/wind-solar-cyber-access-responsibility/',

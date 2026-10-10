@@ -712,6 +712,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'CRA', nom: 'Cyber Resilience Act', def: 'Règlement (UE) 2024/2847 sur la cybersécurité des produits comportant des éléments numériques. Depuis le 11 septembre 2026, les fabricants dans son champ signalent les vulnérabilités activement exploitées et les incidents graves touchant la sécurité de leurs produits. Les principales exigences de sécurité et le régime spécifique des intendants de logiciels ouverts commencent le 11 décembre 2027.', guide: '/posts/cyber-resilience-act-circuit-alerte/' },
+      { sigle: 'CSIRT', nom: 'Équipe de réponse aux incidents informatiques', def: 'Équipe chargée du traitement des incidents informatiques, de l’analyse des vulnérabilités et de l’assistance aux acteurs concernés. Dans le CRA, le CSIRT désigné comme coordinateur reçoit en principe les signalements avec l’ENISA et organise leur transmission aux autres coordinateurs concernés, selon les règles de confidentialité du règlement.', guide: '/posts/cyber-resilience-act-circuit-alerte/' },
+      { sigle: 'Intendant de logiciels ouverts', nom: 'Open-source software steward', def: 'Organisation dotée de la personnalité juridique, distincte du fabricant, qui soutient de façon structurée et durable le développement de logiciels libres destinés à des activités commerciales et assure leur viabilité. Le CRA lui impose à partir du 11 décembre 2027 une politique de cybersécurité, une coopération avec les autorités et des obligations de signalement adaptées à son rôle.', guide: '/posts/cyber-resilience-act-circuit-alerte/' },
       { sigle: 'OT', nom: 'Technologies opérationnelles', def: 'Systèmes et appareils programmables qui surveillent ou pilotent des processus physiques, ou gèrent les équipements qui le font. Leur protection prend en compte le fonctionnement, la fiabilité et la sûreté du procédé. Les systèmes de contrôle industriel, dont SCADA, appartiennent à ce domaine.', guide: '/posts/eolien-solaire-acces-cyber-responsabilites/' },
       { sigle: 'SCADA', nom: 'Supervision et acquisition de données', def: 'Système qui collecte des données sur des équipements répartis, les transmet à un centre de contrôle et permet aux opérateurs de surveiller ou de piloter un procédé depuis ce centre. Les commandes disponibles et le degré d’automatisation dépendent de la conception et de la configuration du système.', guide: '/posts/eolien-solaire-acces-cyber-responsabilites/' },
       {"sigle": "PUE", "nom": "Power Usage Effectiveness", "def": "Rapport entre l’énergie totale d’un centre de données et celle de ses équipements informatiques, sur la même période et le même périmètre. Un PUE de 1,30 signifie 0,30 unité pour les auxiliaires par unité consommée par l’IT. Il renseigne sur l’infrastructure du site ; il ne mesure ni l’efficacité d’un algorithme, ni l’utilisation des serveurs, ni la recette de chaleur récupérée.", "guide": "/posts/bull-usine-angers-supercalculateurs/"},
@@ -987,6 +990,27 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  cra: {
+    intuition: 'Le signalement réglementaire commence pendant la préparation de la réponse technique.',
+    articles: [{ label: 'Cyber Resilience Act : le circuit de l’alerte', href: '/posts/cyber-resilience-act-circuit-alerte/', kind: 'article' }],
+    sources: [{ label: 'Règlement (UE) 2024/2847, Cyber Resilience Act', href: 'https://eur-lex.europa.eu/eli/reg/2024/2847/oj', detail: 'Articles 14, 24 et 71 : signalements, intendants et calendrier d’application.', kind: 'source' }],
+    related: ['csirt', 'intendant-de-logiciels-ouverts'],
+  },
+  csirt: {
+    intuition: 'Une équipe de réponse rapproche les alertes et coordonne le partage utile à la protection.',
+    articles: [{ label: 'Cyber Resilience Act : le circuit de l’alerte', href: '/posts/cyber-resilience-act-circuit-alerte/', kind: 'article' }],
+    sources: [
+      { label: 'Directive (UE) 2022/2555, NIS 2', href: 'https://eur-lex.europa.eu/eli/dir/2022/2555/oj', detail: 'Articles 10 à 12 : équipes de réponse, missions et divulgation coordonnée.', kind: 'source' },
+      { label: 'Règlement (UE) 2024/2847, Cyber Resilience Act', href: 'https://eur-lex.europa.eu/eli/reg/2024/2847/oj', detail: 'Articles 14 à 17 : destinataires, confidentialité et circulation des signalements.', kind: 'source' },
+    ],
+    related: ['cra', 'intendant-de-logiciels-ouverts'],
+  },
+  'intendant-de-logiciels-ouverts': {
+    intuition: 'Le soutien durable d’un projet libre reçoit un régime distinct de celui du fabricant du produit.',
+    articles: [{ label: 'Cyber Resilience Act : le circuit de l’alerte', href: '/posts/cyber-resilience-act-circuit-alerte/', kind: 'article' }],
+    sources: [{ label: 'Règlement (UE) 2024/2847, Cyber Resilience Act', href: 'https://eur-lex.europa.eu/eli/reg/2024/2847/oj', detail: 'Articles 3(14), 24 et 71 : définition, obligations adaptées et application en décembre 2027.', kind: 'source' }],
+    related: ['cra', 'csirt'],
+  },
   ot: {
     intuition: 'Une intervention informatique peut modifier le fonctionnement d’un équipement physique.',
     articles: [{ label: 'Éolien et solaire : accès cyber et responsabilités', href: '/posts/eolien-solaire-acces-cyber-responsabilites/', kind: 'article' }],
