@@ -184,7 +184,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'UMC', nom: 'Union des marchés de capitaux', def: "Chantier lancé en 2015 pour bâtir un marché unique du capital dans l'UE et réduire la dépendance au crédit bancaire. Deux plans d'action (2015, 2020) plus tard, la fragmentation nationale a résisté ; le projet a été relancé et rebaptisé Savings and Investments Union en 2025. Voir SIU." },
       { sigle: 'Ressources propres', nom: 'Own resources', def: "Recettes du budget européen : droits de douane, quote-part de TVA et surtout contributions nationales assises sur le revenu national brut. Les « nouvelles ressources propres » censées rembourser NGEU (carbone aux frontières, ETS, contribution des entreprises) exigent l'unanimité et n'ont toujours pas été adoptées." },
       { sigle: 'CFP', nom: 'Cadre financier pluriannuel (MFF)', def: "Budget de long terme de l'UE, négocié pour sept ans à l'unanimité. La proposition 2028-2034 avoisine 2 000 milliards d'euros courants, dont 168 milliards réservés au remboursement de la dette NGEU : le premier cadre à porter la facture de l'emprunt commun." },
-      { sigle: 'Headroom', nom: 'Marge de manœuvre budgétaire', def: "Écart entre le plafond de ressources que les États membres se sont engagés à fournir à l'UE si nécessaire et les dépenses effectives du budget. Cette marge sert de garantie aux emprunts de l'Union, dont le prêt de 90 milliards d'euros à l'Ukraine : un engagement conditionnel, hors du bilan de chaque État." },
+      { sigle: 'Headroom', nom: 'Marge de manœuvre budgétaire', def: "Différence entre le plafond annuel des ressources propres de l'UE pour les paiements et les ressources nécessaires au financement du budget. Elle permet de garantir les obligations financières et les engagements conditionnels de l'Union dans les limites juridiques applicables. Un appel de garantie peut mobiliser des contributions des États membres ; cette marge ne constitue pas une trésorerie déjà disponible.", guide: '/posts/ukraine-interets-reparations/' },
+      { sigle: 'Prêt à recours limité', nom: 'Limited-recourse loan', def: "Prêt dont les possibilités de recouvrement sont limitées par les clauses convenues. Pour le prêt de soutien à l'Ukraine de 2026–2027, le règlement lie l'exigibilité du principal à des événements déterminés, dont la réception de réparations russes. Il prévoit aussi des exceptions en cas de violation des conditions démocratiques ou de fraude, corruption ou autre activité illégale établie dans la gestion du prêt et portant atteinte aux intérêts financiers de l'Union.", guide: '/posts/ukraine-interets-reparations/' },
+      { sigle: 'ERA', nom: 'Extraordinary Revenue Acceleration Loans for Ukraine', def: "Initiative du G7 lancée en 2024 pour avancer à l'Ukraine des prêts dont le service et le remboursement sont soutenus par les revenus exceptionnels futurs tirés de l'immobilisation d'actifs souverains russes. Dans l'UE, le mécanisme de coopération pour les prêts à l'Ukraine affecte les ressources disponibles aux prêts admissibles. Ces revenus sont distincts du capital russe immobilisé.", guide: '/posts/ukraine-interets-reparations/' },
       { sigle: 'Ratio combiné', nom: 'Rentabilité technique de l’assurance', def: "Rapport des charges de sinistres et des frais aux primes, exprimé en pourcentage. En dessous de 100 %, l’activité dégage un excédent technique ; au-dessus, les charges dépassent les primes. Il exclut le résultat financier et ne mesure pas la solvabilité. Toute comparaison doit préciser la période, la branche et le traitement de la réassurance.", guide: '/posts/assurance-resiliation-sinistre-non-responsable-selection-risques/' },
       { sigle: 'Cat Nat', nom: 'Régime d’indemnisation des catastrophes naturelles', def: "Régime légal français qui étend les contrats de dommages aux biens à certains effets d'une catastrophe naturelle reconnue par arrêté. Son financement repose sur une surprime nationale. Les assureurs peuvent céder une partie du risque à CCR, dont la couverture bénéficie de la garantie de l'État.", guide: '/posts/climat-etat-reassureur-cat-nat/' },
       { sigle: 'Réassurance', nom: 'Assurance de l’assureur', def: "Contrat par lequel un assureur transfère tout ou partie de risques à un réassureur contre une prime. Les garanties et limites déterminent les pertes prises en charge. L’assureur initial conserve ses obligations envers ses assurés, y compris si le réassureur ne paie pas.", guide: '/posts/climat-etat-reassureur-cat-nat/' },
@@ -993,6 +995,31 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  headroom: {
+    intuition: "Une garantie budgétaire mobilise des ressources lorsqu'un engagement devient exigible.",
+    formula: 'Headroom = plafond des ressources propres pour les paiements − ressources propres nécessaires au budget',
+    articles: [{ label: 'Ukraine : intérêts et réparations', href: '/posts/ukraine-interets-reparations/', kind: 'article' }],
+    sources: [
+      { label: 'Commission européenne : plafonds de recettes', href: 'https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget/2021-2027/revenue/revenue-ceilings_en', detail: 'Définition de la marge entre plafond de paiements et ressources nécessaires au budget.', kind: 'source' },
+      { label: 'Règlement (UE) 2026/469', href: 'https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32026R0469', detail: 'Article 1 : garantie du prêt à l’Ukraine dans la limite du plafond de ressources propres.', kind: 'source' },
+    ],
+    related: ['pret-a-recours-limite', 'era'],
+  },
+  'pret-a-recours-limite': {
+    intuition: 'Les événements de remboursement et les exceptions déterminent les possibilités de recouvrement du prêteur.',
+    articles: [{ label: 'Ukraine : intérêts et réparations', href: '/posts/ukraine-interets-reparations/', kind: 'article' }],
+    sources: [{ label: 'Règlement (UE) 2026/467', href: 'https://eur-lex.europa.eu/eli/reg/2026/467/oj/eng', detail: 'Article 20 : recours limité, événements de remboursement, sûreté et exceptions.', kind: 'source' }],
+    related: ['headroom', 'era'],
+  },
+  era: {
+    intuition: 'Des revenus attendus au fil des années soutiennent le remboursement de prêts accordés plus tôt.',
+    articles: [{ label: 'Ukraine : intérêts et réparations', href: '/posts/ukraine-interets-reparations/', kind: 'article' }],
+    sources: [
+      { label: 'Règlement (UE) 2024/2773', href: 'https://eur-lex.europa.eu/eli/reg/2024/2773/oj/eng', detail: 'Considérant 7 et articles 3 à 5 : initiative ERA, mécanisme européen et ressources disponibles.', kind: 'source' },
+      { label: 'Conseil de l’UE, 23 octobre 2024 : mécanisme de prêts du G7', href: 'https://www.consilium.europa.eu/en/press/press-releases/2024/10/23/immobilised-assets-council-greenlights-up-to-35-billion-in-macro-financial-assistance-to-ukraine-and-new-loan-mechanism-implementing-g7-commitment/', detail: 'Affectation des revenus exceptionnels futurs tirés de l’immobilisation d’actifs russes.', kind: 'source' },
+    ],
+    related: ['headroom', 'pret-a-recours-limite'],
+  },
   "el-nino": {"intuition": "Relier le signal océanique aux conditions locales avant d’évaluer les dépendances économiques.", "articles": [{"label": "El Niño : quand les secours dépendent de la même pluie", "href": "/posts/el-nino-secours-meme-pluie/", "kind": "article"}], "sources": [{"label": "NOAA JetStream : Effects of ENSO in the Pacific", "href": "https://www.noaa.gov/jetstream/tropical/enso/enso-patterns", "kind": "source"}], "related": ["roni"]},
   "roni": {"intuition": "Lire le seuil, la période et la construction de l’indice avant d’interpréter sa probabilité.", "articles": [{"label": "El Niño : quand les secours dépendent de la même pluie", "href": "/posts/el-nino-secours-meme-pluie/", "kind": "article"}], "sources": [{"label": "NOAA CPC : Relative Oceanic Niño Index", "href": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/", "kind": "source"}], "related": ["el-nino"]},
 

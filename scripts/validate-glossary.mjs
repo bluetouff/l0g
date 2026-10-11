@@ -84,8 +84,45 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 613, 'Le corpus doit conserver ses 613 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 180, 'Le graphe Atlas doit conserver ses 180 nœuds, dont El Niño et RONI');
+assert.equal(glossaryEntries.length, 615, 'Le corpus doit conserver ses 615 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 183, 'Le graphe Atlas doit conserver ses 183 nœuds');
+for (const slug of ['headroom', 'pret-a-recours-limite', 'era']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: définition et sources FR/EN requises`);
+  assert.equal(fr.guide, '/posts/ukraine-interets-reparations/');
+  assert.equal(en.guide, '/en/analysis/europe-ukraine-loan-cost-of-waiting/');
+  assert.equal(fr.reference, undefined, `${slug}: conserver la fiche courte en noindex`);
+  assert.equal(en.robots, 'noindex,follow');
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.articles.map(article => article.href), [entry.guide]);
+    assert(entry.atlas.sources.length > 0);
+    assert(entry.atlas.sources.every(source => ['commission.europa.eu', 'eur-lex.europa.eu', 'www.consilium.europa.eu'].includes(new URL(source.href).hostname)));
+    for (const neighbor of entry.atlas.related) {
+      assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
+      assert(glossaryAtlasEnBySlug.has(neighbor));
+    }
+  }
+  if (slug !== 'headroom') {
+    assert.equal(fr.referenceCandidate, false, `${slug}: aucune promotion en fiche de référence`);
+    assert(!glossaryReferenceCandidateSlugs.includes(slug));
+  }
+  if (slug === 'headroom') {
+    assert.match(fr.def, /plafond.*paiements.*ressources nécessaires/);
+    assert.match(en.def, /ceiling for payments.*resources needed/);
+    assert(!fr.def.includes('hors du bilan'), 'Une garantie ne justifie pas une affirmation générale sur la comptabilité nationale');
+  }
+  if (slug === 'pret-a-recours-limite') {
+    assert.match(fr.def, /exceptions.*conditions démocratiques.*fraude/);
+    assert.match(en.def, /exceptions.*democratic conditions.*fraud/);
+  }
+  if (slug === 'era') {
+    assert.match(fr.def, /ressources disponibles.*distincts du capital/);
+    assert.match(en.def, /available resources.*distinct from.*principal/);
+  }
+}
 for (const slug of ['el-nino', 'roni']) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);
@@ -394,7 +431,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 558, 'Le graphe Atlas doit conserver ses 558 relations');
+assert.equal(glossaryAtlasEdgeCount, 564, 'Le graphe Atlas doit conserver ses 564 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

@@ -203,6 +203,49 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+    slug: 'headroom', sigle: 'Headroom', nom: 'EU budget guarantee capacity',
+    ...macroSection, robots: 'noindex,follow',
+    guide: '/en/analysis/europe-ukraine-loan-cost-of-waiting/',
+    def: 'The difference between the annual EU own-resources ceiling for payments and the resources needed to finance the budget. It guarantees the Union’s financial obligations and contingent liabilities within the applicable legal limits. A guarantee call may require contributions from member states; headroom is not cash already available.',
+    atlas: {
+      intuition: 'A budget guarantee mobilises resources when a financial obligation falls due.',
+      formula: 'Headroom = own-resources ceiling for payments − own resources needed to finance the budget',
+      articles: [{ label: 'Europe’s Ukraine loan: the cost of waiting', href: '/en/analysis/europe-ukraine-loan-cost-of-waiting/', kind: 'article' }],
+      sources: [
+        { label: 'European Commission: revenue ceilings', href: 'https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget/2021-2027/revenue/revenue-ceilings_en', detail: 'Definition of the margin between the payment ceiling and the resources needed for the budget.', kind: 'source' },
+        { label: 'Regulation (EU) 2026/469', href: 'https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32026R0469', detail: 'Article 1: the Ukraine loan guarantee remains within the own-resources ceiling.', kind: 'source' },
+      ],
+      related: ['pret-a-recours-limite', 'era'],
+    },
+  },
+  {
+    slug: 'pret-a-recours-limite', sigle: 'Limited-recourse loan', nom: 'Contractually limited recovery rights',
+    ...macroSection, robots: 'noindex,follow',
+    guide: '/en/analysis/europe-ukraine-loan-cost-of-waiting/',
+    def: 'A loan whose recovery rights are limited by the agreed terms. For the 2026–2027 Ukraine Support Loan, the regulation makes principal repayment due upon specified events, including the receipt of Russian reparations. It also provides exceptions for a breach of democratic conditions or established fraud, corruption or other illegal activity in the management of the loan affecting the Union’s financial interests.',
+    atlas: {
+      intuition: 'Repayment events and exceptions determine the lender’s recovery rights.',
+      articles: [{ label: 'Europe’s Ukraine loan: the cost of waiting', href: '/en/analysis/europe-ukraine-loan-cost-of-waiting/', kind: 'article' }],
+      sources: [{ label: 'Regulation (EU) 2026/467', href: 'https://eur-lex.europa.eu/eli/reg/2026/467/oj/eng', detail: 'Article 20: limited recourse, repayment events, security and exceptions.', kind: 'source' }],
+      related: ['headroom', 'era'],
+    },
+  },
+  {
+    slug: 'era', sigle: 'ERA', nom: 'Extraordinary Revenue Acceleration Loans for Ukraine',
+    ...macroSection, robots: 'noindex,follow',
+    guide: '/en/analysis/europe-ukraine-loan-cost-of-waiting/',
+    def: 'A G7 initiative launched in 2024 to provide loans to Ukraine whose servicing and repayment are supported by future extraordinary revenues from immobilised Russian sovereign assets. In the EU, the Ukraine Loan Cooperation Mechanism allocates available resources to eligible loans. These revenues are distinct from the immobilised Russian principal.',
+    atlas: {
+      intuition: 'Revenues expected over future years support the repayment of loans provided earlier.',
+      articles: [{ label: 'Europe’s Ukraine loan: the cost of waiting', href: '/en/analysis/europe-ukraine-loan-cost-of-waiting/', kind: 'article' }],
+      sources: [
+        { label: 'Regulation (EU) 2024/2773', href: 'https://eur-lex.europa.eu/eli/reg/2024/2773/oj/eng', detail: 'Recital 7 and Articles 3 to 5: the ERA initiative, EU mechanism and available resources.', kind: 'source' },
+        { label: 'Council of the EU, 23 October 2024: the G7 loan mechanism', href: 'https://www.consilium.europa.eu/en/press/press-releases/2024/10/23/immobilised-assets-council-greenlights-up-to-35-billion-in-macro-financial-assistance-to-ukraine-and-new-loan-mechanism-implementing-g7-commitment/', detail: 'Allocation of future extraordinary revenues arising from immobilised Russian assets.', kind: 'source' },
+      ],
+      related: ['headroom', 'pret-a-recours-limite'],
+    },
+  },
   {"slug": "el-nino", "sigle": "El Niño", "nom": "The warm phase of ENSO", "def": "The warm phase of the El Niño–Southern Oscillation (ENSO), a coupled ocean–atmosphere phenomenon in the tropical Pacific. Weaker trade winds and shifts in warm water and convection change rainfall patterns. Local effects also depend on the season and other climate conditions.", "guide": "/en/analysis/el-nino-backup-same-rain/", "sectionTitle": "Energy & geopolitics", "accent": "var(--color-amber)", "robots": "noindex,follow", "atlas": {"intuition": "Assess local conditions before tracing the economic dependencies of the ocean signal.", "articles": [{"label": "El Niño: when the backup depends on the same rain", "href": "/en/analysis/el-nino-backup-same-rain/", "kind": "article"}], "sources": [{"label": "NOAA JetStream : Effects of ENSO in the Pacific", "href": "https://www.noaa.gov/jetstream/tropical/enso/enso-patterns", "kind": "source"}], "related": ["roni"]}},
   {"slug": "roni", "sigle": "RONI", "nom": "Relative Oceanic Niño Index", "def": "NOAA index based on a three-month running mean of the sea-surface temperature anomaly in the Niño 3.4 region, after subtracting the tropical mean anomaly and applying a variance adjustment. It measures a relative ocean contrast; the probability of crossing its threshold does not measure the probability of economic losses.", "guide": "/en/analysis/el-nino-backup-same-rain/", "sectionTitle": "Energy & geopolitics", "accent": "var(--color-amber)", "robots": "noindex,follow", "atlas": {"intuition": "Read the threshold, period and index construction before interpreting its probability.", "articles": [{"label": "El Niño: when the backup depends on the same rain", "href": "/en/analysis/el-nino-backup-same-rain/", "kind": "article"}], "sources": [{"label": "NOAA CPC : Relative Oceanic Niño Index", "href": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/", "kind": "source"}], "related": ["el-nino"]}},
 

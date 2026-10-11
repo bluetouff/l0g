@@ -1,0 +1,56 @@
+---
+import { ukraineReparationsSvg, UKRAINE_REPARATIONS_KINDS } from '../lib/ukraineReparationsFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'timing' | 'disbursements' | 'sharing' | 'guarantee' | 'carrying' | 'resources';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!UKRAINE_REPARATIONS_KINDS.includes(kind) || !['fr', 'en'].includes(lang) || !/^(?:0[1-6])$/.test(number)) {
+  throw new TypeError('Invalid Ukraine reparations figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[0-9])$/.test(id))) {
+  throw new TypeError('Invalid Ukraine reparations source reference');
+}
+---
+<figure class="ukraine-reparations-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="ukraine-reparations-desktop" set:html={ukraineReparationsSvg(lang, kind, false)} />
+  <div class="ukraine-reparations-mobile" set:html={ukraineReparationsSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="ukraine-reparations-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Ukraine Reparations'; src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g Ukraine Reparations'; src: url('/fonts/ukraine-reparations/liberation-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .ukraine-reparations-figure { margin: 2.8rem 0; width: 100%; padding-bottom: .85rem; container-type: inline-size; }
+  .ukraine-reparations-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; }
+  .ukraine-reparations-mobile { display: none; width: 100%; max-width: 24.375rem; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .875rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .ukraine-reparations-references { display: block; }
+  .ukraine-reparations-references a { margin-right: .75em; }
+  .ukraine-reparations-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .ukraine-reparations-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .ukraine-reparations-figure :global(details p) { margin: .7rem 0; }
+  :global(.prose .ukraine-reparations-sources) { font-size: .875rem; line-height: 1.65; }
+  :global(.prose .ukraine-reparations-sources li) { margin: .75rem 0; }
+  @media (max-width: 640px) {
+    .ukraine-reparations-desktop { display: none; }
+    .ukraine-reparations-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .ukraine-reparations-desktop { display: none; }
+    .ukraine-reparations-mobile { display: block; }
+  }
+  @media print {
+    .ukraine-reparations-figure { break-inside: avoid; }
+    .ukraine-reparations-desktop { display: block; }
+    .ukraine-reparations-mobile { display: none; }
+  }
+</style>
