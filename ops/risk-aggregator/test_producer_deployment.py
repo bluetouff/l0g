@@ -67,6 +67,64 @@ class ProducerRevisionTest(unittest.TestCase):
             self.assertEqual(bad.stdout, "")
             self.assertFalse(json.loads(bad.stderr)["ok"])
 
+    def test_cli_rejects_changed_published_revision_even_when_files_are_identical(self):
+        with tempfile.TemporaryDirectory() as directory:
+            manifest = self.manifest(directory)
+            previous = "8e29a75df8174469782104bcea32d6cad17279e0"
+            current = "a8eee9a80f7bb2acf265ff57f589604eccdb69e0"
+            manifest["producers"]["debt"]["revision"] = previous
+            risk = self.publication(manifest)
+            risk["indices"][-1]["producerRevision"] = current
+            target = Path(directory, "manifest.json")
+            target.write_text(json.dumps(manifest))
+            published = Path(directory, "risk.json")
+            published.write_text(json.dumps(risk))
+            args = [sys.executable, str(SCRIPT), str(target), "--published-risk", str(published),
+                    "--env-file", "--aggregate-revision", "a" * 40]
+            bad = subprocess.run(args, capture_output=True, text=True, timeout=10)
+            self.assertEqual(bad.returncode, 1)
+            self.assertEqual(bad.stdout, "", "a failed publication check must emit no environment")
+            report = json.loads(bad.stderr)
+            self.assertTrue(all(row["matches"] for row in report["files"]))
+            self.assertEqual(len(report["errors"]), 1)
+            self.assertIn("debt:", report["errors"][0])
+            self.assertIn(current, report["errors"][0])
+            self.assertIn(previous, report["errors"][0])
+
+            manifest["producers"]["debt"]["revision"] = current
+            target.write_text(json.dumps(manifest))
+            good = subprocess.run(args, capture_output=True, text=True, timeout=10)
+            self.assertEqual(good.returncode, 0, good.stderr)
+            self.assertIn("L0G_DEBT_REVISION=" + current, good.stdout)
+
+    @staticmethod
+    def publication(manifest):
+        rows = [{"key": key, "producerRevision": producer["revision"],
+                 "producerRevisionStatus": "reported"}
+                for key, producer in manifest["producers"].items()]
+        rows[1]["sourceRevision"] = manifest["producers"]["eu"]["revision"]
+        return {"indices": rows}
+
+    def test_cli_requires_reported_revisions_and_the_euro_snapshot_revision(self):
+        with tempfile.TemporaryDirectory() as directory:
+            manifest = self.manifest(directory)
+            target = Path(directory, "manifest.json")
+            target.write_text(json.dumps(manifest))
+            published = Path(directory, "risk.json")
+            args = [sys.executable, str(SCRIPT), str(target), "--published-risk", str(published)]
+            for index, field, detail in ((4, "producerRevisionStatus", "reported"),
+                                         (1, "sourceRevision", "snapshot")):
+                with self.subTest(field=field):
+                    risk = self.publication(manifest)
+                    del risk["indices"][index][field]
+                    published.write_text(json.dumps(risk))
+                    bad = subprocess.run(args, capture_output=True, text=True, timeout=10)
+                    self.assertEqual(bad.returncode, 1)
+                    self.assertEqual(bad.stdout, "")
+                    errors = json.loads(bad.stderr)["errors"]
+                    self.assertEqual(len(errors), 1)
+                    self.assertIn(detail, errors[0])
+
     def test_euro_rollback_stops_timer_and_reaggregates_after_restoring_web(self):
         source = SCRIPT.with_name("activate-euromacro-zen.sh").read_text()
         rollback = "rollback() {" + source.split("rollback() {", 1)[1].split("\ntrap rollback ERR", 1)[0]

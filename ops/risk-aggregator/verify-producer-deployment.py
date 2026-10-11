@@ -75,6 +75,28 @@ def revision_environment(manifest: dict, aggregate_revision: str) -> str:
     return "\n".join(lines) + "\n"
 
 
+def verify_published_revisions(manifest: dict, risk: dict) -> list[str]:
+    """Compare the active publication with the manifest before changing it."""
+    if not isinstance(risk, dict) or not isinstance(risk.get("indices"), list):
+        return ["publication: liste indices absente ou invalide"]
+    errors = []
+    for key in EXPECTED_KEYS:
+        expected = (manifest.get("producers") or {}).get(key, {}).get("revision")
+        rows = [row for row in risk["indices"] if isinstance(row, dict) and row.get("key") == key]
+        if len(rows) != 1:
+            errors.append(f"{key}: publication absente ou dupliquée ; révision attendue={expected}")
+            continue
+        row = rows[0]
+        observed = row.get("producerRevision")
+        if observed != expected:
+            errors.append(f"{key}: révision publiée différente ; observée={observed}, attendue={expected}")
+        if row.get("producerRevisionStatus") != "reported":
+            errors.append(f"{key}: révision non déclarée comme reported ; observée={observed}, attendue={expected}")
+        if key == "eu" and row.get("sourceRevision") != expected:
+            errors.append(f"eu: révision du snapshot différente ; observée={row.get('sourceRevision')}, attendue={expected}")
+    return errors
+
+
 def systemd_environment(manifest: dict, aggregate_revision: str) -> str:
     return "[Service]\n" + "".join(
         f"Environment={line}\n" for line in revision_environment(manifest, aggregate_revision).splitlines()
@@ -84,6 +106,7 @@ def systemd_environment(manifest: dict, aggregate_revision: str) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("manifest")
+    parser.add_argument("--published-risk", help="JSON de risque actif à vérifier avant toute mutation")
     output = parser.add_mutually_exclusive_group()
     output.add_argument("--systemd", action="store_true")
     output.add_argument("--env-file", action="store_true")
@@ -93,6 +116,15 @@ def main() -> int:
         manifest = json.load(handle)
 
     report = verify(manifest)
+    if args.published_risk:
+        try:
+            with open(args.published_risk, encoding="utf-8") as handle:
+                risk = json.load(handle)
+        except (OSError, ValueError) as error:
+            report["errors"].append(f"publication: lecture du JSON impossible ({error})")
+        else:
+            report["errors"].extend(verify_published_revisions(manifest, risk))
+        report["ok"] = not report["errors"]
     if not report["ok"]:
         print(json.dumps(report, ensure_ascii=False, indent=2), file=sys.stderr)
         return 1

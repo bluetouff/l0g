@@ -100,6 +100,10 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.ok(activator.includes('/var/www/html/energie/snapshot.json'));
   assert.ok(!activator.includes('/opt/energie/web/snapshot.json'));
   assert.ok(euroActivator.includes('RUNTIME_FILES=('), 'la release Euro doit être validée comme un lot');
+  assert.ok(euroActivator.includes('--published-risk /var/www/l0g-data/risk.json'),
+    'les révisions publiées doivent être contrôlées même si les fichiers sont identiques');
+  assert.ok(euroActivator.indexOf('--published-risk') < euroActivator.indexOf('install -d -o root'),
+    'une révision publiée incompatible doit bloquer avant toute modification serveur');
   assert.ok(euroActivator.indexOf('sha256sum "$source"') < euroActivator.indexOf('systemctl restart euromacro-snapshot.service'));
   assert.ok(euroActivator.includes('d.get("source_sha") == sys.argv[1]'));
   assert.ok(euroActivator.includes('/opt/euromacro/L0G_ATTESTED_SHA'));

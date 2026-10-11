@@ -71,6 +71,19 @@ for relative in "${RUNTIME_FILES[@]}"; do
   fi
 done
 
+echo "Contrôle des producteurs et des révisions publiées avant activation"
+# Euro est encore sur sa release actuelle. Les autres producteurs doivent déjà
+# correspondre à la cible, même si seuls leurs fichiers de présentation ont changé.
+python3 - "$MANIFEST" /usr/local/lib/l0g-risk/producer-deployment.json "$WORK/current-manifest.json" <<'PY'
+import json, pathlib, sys
+target, current, output = map(pathlib.Path, sys.argv[1:])
+manifest = json.loads(target.read_text())
+manifest["producers"]["eu"] = json.loads(current.read_text())["producers"]["eu"]
+output.write_text(json.dumps(manifest))
+PY
+python3 "${SCRIPT_DIR}/verify-producer-deployment.py" "$WORK/current-manifest.json" \
+  --published-risk /var/www/l0g-data/risk.json >"$WORK/preflight.json"
+
 install -d -o root -g root -m 0700 \
   "$BACKUP/opt/deploy" "$BACKUP/web"
 for relative in "${RUNTIME_FILES[@]}"; do

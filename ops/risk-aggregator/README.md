@@ -145,6 +145,13 @@ prise sur confiance : `verify-producer-deployment.py` relit les fichiers sous
 doit donc modifier ensemble sa révision et les empreintes de ses points d'entrée
 et dépendances locales.
 
+Avant tout arrêt de service ou remplacement de fichiers, l’activateur Euro
+contrôle `--published-risk /var/www/l0g-data/risk.json` avec les révisions cibles
+des autres producteurs et la release Euro encore active. Il exige les cinq révisions publiées et leur
+statut `reported`, ainsi que la révision du snapshot Euro. Un changement limité
+au design peut modifier la révision annoncée sans modifier les empreintes des
+producteurs ; cet écart bloque aussi la génération de `--env-file`.
+
 Le journal opérationnel de schéma 4 archive aussi, pour chaque signal, la date
 économique amont, le dépôt,
 la révision déclarée, la révision publiée par le producteur quand elle existe et
