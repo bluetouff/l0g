@@ -3217,5 +3217,372 @@
       "windowStart": "2026-09-27T08:30:00+02:00",
       "windowEnd": "2026-10-04T08:30:00+02:00"
     }
+  },
+  {
+    "issue": 11,
+    "slug": "2026-10-11",
+    "publishedAt": "2026-10-11T08:30:00+02:00",
+    "title": "L’Hebdo du 11 octobre. El Niño : quand les secours dépendent de la même pluie",
+    "description": "Édition automatisée du 11 octobre : 23 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "El Niño : quand les secours dépendent de la même pluie",
+      "href": "/posts/el-nino-secours-meme-pluie/",
+      "update": "Récoltes, barrages et devises : l’épisode de 2026 invite à tester les dépendances communes, face à une offre céréalière mondiale encore abondante."
+    },
+    "lead": "Le 8 octobre 2026, la NOAA attribue 83 % de probabilité à un RONI moyen sur trois mois d’au moins +2,5 °C pour octobre–décembre.",
+    "number": {
+      "value": "23",
+      "label": "analyses publiées du 4 octobre à 08 h 30 au 11 octobre à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "Récoltes, hydroélectricité et secours régionaux peuvent partager une même exposition à la pluie ; leurs tensions se transmettent aux importations et à l’activité.",
+    "test": "Les prévisions locales restent hétérogènes et l’offre céréalière mondiale élevée. Aucune probabilité de crise économique ne se déduit directement de l’indice ENSO.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "23 analyses publiées en sept jours",
+      "subtitle": "du 4 octobre à 08 h 30 au 11 octobre à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-10-11",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "LA SEMAINE EN CHIFFRES",
+      "points": [
+        {
+          "label": "dim 04/10",
+          "shortLabel": "dim 04/10",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-10-04",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 05/10",
+          "shortLabel": "lun 05/10",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-10-05",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 06/10",
+          "shortLabel": "mar 06/10",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-10-06",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 07/10",
+          "shortLabel": "mer 07/10",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-10-07",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 08/10",
+          "shortLabel": "jeu 08/10",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-10-08",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 09/10",
+          "shortLabel": "ven 09/10",
+          "value": 5,
+          "valueLabel": "5",
+          "nature": "analyses publiées",
+          "scope": "2026-10-09",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 10/10",
+          "shortLabel": "sam 10/10",
+          "value": 5,
+          "valueLabel": "5",
+          "nature": "analyses publiées",
+          "scope": "2026-10-10",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 11/10",
+          "shortLabel": "dim 11/10",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-10-11",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Le 8 octobre 2026, la NOAA attribue 83 % de probabilité à un RONI moyen sur trois mois d’au moins +2,5 °C pour octobre–décembre.",
+    "linkedin": "23 analyses publiées sur l0g du 4 octobre à 08 h 30 au 11 octobre à 08 h 30.\n\nFocus structuré : El Niño : quand les secours dépendent de la même pluie.\n\nLe 8 octobre 2026, la NOAA attribue 83 % de probabilité à un RONI moyen sur trois mois d’au moins +2,5 °C pour octobre–décembre.\n\nPourquoi le lire : Récoltes, hydroélectricité et secours régionaux peuvent partager une même exposition à la pluie ; leurs tensions se transmettent aux importations et à l’activité.\n\nLimite à garder : Les prévisions locales restent hétérogènes et l’offre céréalière mondiale élevée. Aucune probabilité de crise économique ne se déduit directement de l’indice ENSO.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-10-11/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 11 octobre compte 23 analyses publiées. Focus : El Niño : quand les secours dépendent de la même pluie.",
+      "2/5 Le 8 octobre 2026, la NOAA attribue 83 % de probabilité à un RONI moyen sur trois mois d’au moins +2,5 °C pour octobre–décembre.",
+      "3/5 Pourquoi le lire : Récoltes, hydroélectricité et secours régionaux peuvent partager une même exposition à la pluie ; leurs tensions se transmettent aux importations et à l’activité.",
+      "4/5 Limite : Les prévisions locales restent hétérogènes et l’offre céréalière mondiale élevée. Aucune probabilité de crise économique ne se déduit directement de l’indice ENSO.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-10-11/"
+    ],
+    "sources": [
+      {
+        "label": "El Niño : quand les secours dépendent de la même pluie",
+        "href": "/posts/el-nino-secours-meme-pluie/",
+        "role": "Analyse publiée le 11 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Banques : le prix de la photo du 31 décembre",
+        "href": "/posts/banques-prix-photo-31-decembre/",
+        "role": "Analyse publiée le 10 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cyber Resilience Act : l’Europe entre dans le circuit des failles",
+        "href": "/posts/cyber-resilience-act-circuit-alerte/",
+        "role": "Analyse publiée le 10 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dutreil : les milliards publics de la transmission familiale",
+        "href": "/posts/dutreil-transmission-fortunes-familiales/",
+        "role": "Analyse publiée le 10 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Éoliennes, solaire : qui répond des accès exposés ?",
+        "href": "/posts/eolien-solaire-acces-cyber-responsabilites/",
+        "role": "Analyse publiée le 10 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cortina : qui paie l’expertise des réassureurs ?",
+        "href": "/posts/cortina-aon-blackstone-remuneration-souscription/",
+        "role": "Analyse publiée le 10 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quitter Microsoft, 7/7 : garder la liberté de choisir",
+        "href": "/posts/quitter-microsoft-7-liberte-choix/",
+        "role": "Analyse publiée le 9 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quitter Microsoft, 6/7 : les migrations à l’épreuve du quotidien",
+        "href": "/posts/quitter-microsoft-6-migrations-duree/",
+        "role": "Analyse publiée le 9 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quitter Microsoft, 5/7 : financer les années de transition",
+        "href": "/posts/quitter-microsoft-5-cout-transition/",
+        "role": "Analyse publiée le 9 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quitter Microsoft, 4/7 : les procédures choisissent le logiciel",
+        "href": "/posts/quitter-microsoft-4-procedures-applications-metier/",
+        "role": "Analyse publiée le 9 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quitter Microsoft, 3/7 : la licence choisit aussi le cloud",
+        "href": "/posts/quitter-microsoft-3-licences-choix-cloud/",
+        "role": "Analyse publiée le 9 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quitter Microsoft, 2/7 : le contrat qui prépare le suivant",
+        "href": "/posts/quitter-microsoft-2-contrats-choix-installation/",
+        "role": "Analyse publiée le 8 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quitter Microsoft, 1/7 : les dépendances que révèle le départ",
+        "href": "/posts/quitter-microsoft-1-etat-dependances/",
+        "role": "Analyse publiée le 8 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Blast et Abstract : qui paie pour faire vivre une blockchain ?",
+        "href": "/posts/blast-abstract-blockchain-fermeture-economie/",
+        "role": "Analyse publiée le 8 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette française : le prix du temps",
+        "href": "/posts/dette-francaise-prix-du-temps/",
+        "role": "Analyse publiée le 8 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Bitcoin face au quantique : le prix du changement de clés",
+        "href": "/posts/bitcoin-quantique-prix-changement-cles/",
+        "role": "Analyse publiée le 8 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "La dette publique rattrape les banques européennes",
+        "href": "/posts/banques-europeennes-dette-souveraine-choc-obligataire/",
+        "role": "Analyse publiée le 8 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "GE HealthCare achète du temps",
+        "href": "/posts/ge-healthcare-achete-du-temps/",
+        "role": "Analyse publiée le 7 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "GPU à crédit : le prix de la quatrième année",
+        "href": "/posts/gpu-credit-prix-quatrieme-annee/",
+        "role": "Analyse publiée le 5 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Crypto : la bataille pour le mot banque",
+        "href": "/posts/crypto-banques-occ-icba-agrements-trust-depots/",
+        "role": "Analyse publiée le 4 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Les drones de Trump Jr. : la souveraineté en portefeuille",
+        "href": "/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/",
+        "role": "Analyse publiée le 4 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le prêt sur gage des banques change de barème",
+        "href": "/posts/bce-garanties-banques-credit-novembre-2026/",
+        "role": "Analyse publiée le 4 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Paramount–Warner : l’empire Ellison à l’ombre de Trump",
+        "href": "/posts/paramount-warner-ellison-trump-fcc-medias/",
+        "role": "Analyse publiée le 4 octobre 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "El Niño : quand les secours dépendent de la même pluie",
+        "href": "/posts/el-nino-secours-meme-pluie/",
+        "publishedAt": "2026-10-11T06:28:48.000Z"
+      },
+      {
+        "title": "Banques : le prix de la photo du 31 décembre",
+        "href": "/posts/banques-prix-photo-31-decembre/",
+        "publishedAt": "2026-10-10T20:52:00.000Z"
+      },
+      {
+        "title": "Cyber Resilience Act : l’Europe entre dans le circuit des failles",
+        "href": "/posts/cyber-resilience-act-circuit-alerte/",
+        "publishedAt": "2026-10-10T19:21:26.000Z"
+      },
+      {
+        "title": "Dutreil : les milliards publics de la transmission familiale",
+        "href": "/posts/dutreil-transmission-fortunes-familiales/",
+        "publishedAt": "2026-10-10T16:31:39.000Z"
+      },
+      {
+        "title": "Éoliennes, solaire : qui répond des accès exposés ?",
+        "href": "/posts/eolien-solaire-acces-cyber-responsabilites/",
+        "publishedAt": "2026-10-10T10:05:50.000Z"
+      },
+      {
+        "title": "Cortina : qui paie l’expertise des réassureurs ?",
+        "href": "/posts/cortina-aon-blackstone-remuneration-souscription/",
+        "publishedAt": "2026-10-10T10:00:00.000Z"
+      },
+      {
+        "title": "Quitter Microsoft, 7/7 : garder la liberté de choisir",
+        "href": "/posts/quitter-microsoft-7-liberte-choix/",
+        "publishedAt": "2026-10-09T08:10:00.000Z"
+      },
+      {
+        "title": "Quitter Microsoft, 6/7 : les migrations à l’épreuve du quotidien",
+        "href": "/posts/quitter-microsoft-6-migrations-duree/",
+        "publishedAt": "2026-10-09T07:20:00.000Z"
+      },
+      {
+        "title": "Quitter Microsoft, 5/7 : financer les années de transition",
+        "href": "/posts/quitter-microsoft-5-cout-transition/",
+        "publishedAt": "2026-10-09T06:00:00.000Z"
+      },
+      {
+        "title": "Quitter Microsoft, 4/7 : les procédures choisissent le logiciel",
+        "href": "/posts/quitter-microsoft-4-procedures-applications-metier/",
+        "publishedAt": "2026-10-08T23:20:00.000Z"
+      },
+      {
+        "title": "Quitter Microsoft, 3/7 : la licence choisit aussi le cloud",
+        "href": "/posts/quitter-microsoft-3-licences-choix-cloud/",
+        "publishedAt": "2026-10-08T22:10:00.000Z"
+      },
+      {
+        "title": "Quitter Microsoft, 2/7 : le contrat qui prépare le suivant",
+        "href": "/posts/quitter-microsoft-2-contrats-choix-installation/",
+        "publishedAt": "2026-10-08T21:22:00.000Z"
+      },
+      {
+        "title": "Quitter Microsoft, 1/7 : les dépendances que révèle le départ",
+        "href": "/posts/quitter-microsoft-1-etat-dependances/",
+        "publishedAt": "2026-10-08T20:25:00.000Z"
+      },
+      {
+        "title": "Blast et Abstract : qui paie pour faire vivre une blockchain ?",
+        "href": "/posts/blast-abstract-blockchain-fermeture-economie/",
+        "publishedAt": "2026-10-08T15:13:00.000Z"
+      },
+      {
+        "title": "Dette française : le prix du temps",
+        "href": "/posts/dette-francaise-prix-du-temps/",
+        "publishedAt": "2026-10-08T13:47:01.000Z"
+      },
+      {
+        "title": "Bitcoin face au quantique : le prix du changement de clés",
+        "href": "/posts/bitcoin-quantique-prix-changement-cles/",
+        "publishedAt": "2026-10-08T12:02:00.000Z"
+      },
+      {
+        "title": "La dette publique rattrape les banques européennes",
+        "href": "/posts/banques-europeennes-dette-souveraine-choc-obligataire/",
+        "publishedAt": "2026-10-08T08:10:16.000Z"
+      },
+      {
+        "title": "GE HealthCare achète du temps",
+        "href": "/posts/ge-healthcare-achete-du-temps/",
+        "publishedAt": "2026-10-07T09:35:00.000Z"
+      },
+      {
+        "title": "GPU à crédit : le prix de la quatrième année",
+        "href": "/posts/gpu-credit-prix-quatrieme-annee/",
+        "publishedAt": "2026-10-05T08:43:00.000Z"
+      },
+      {
+        "title": "Crypto : la bataille pour le mot banque",
+        "href": "/posts/crypto-banques-occ-icba-agrements-trust-depots/",
+        "publishedAt": "2026-10-04T19:41:32.000Z"
+      },
+      {
+        "title": "Les drones de Trump Jr. : la souveraineté en portefeuille",
+        "href": "/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/",
+        "publishedAt": "2026-10-04T15:32:14.000Z"
+      },
+      {
+        "title": "Le prêt sur gage des banques change de barème",
+        "href": "/posts/bce-garanties-banques-credit-novembre-2026/",
+        "publishedAt": "2026-10-04T10:12:58.000Z"
+      },
+      {
+        "title": "Paramount–Warner : l’empire Ellison à l’ombre de Trump",
+        "href": "/posts/paramount-warner-ellison-trump-fcc-medias/",
+        "publishedAt": "2026-10-04T07:49:03.000Z"
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-10-11T06:39:07.402Z",
+      "windowStart": "2026-10-04T08:30:00+02:00",
+      "windowEnd": "2026-10-11T08:30:00+02:00"
+    }
   }
 ]

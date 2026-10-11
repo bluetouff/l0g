@@ -1,0 +1,56 @@
+---
+import { elNinoSvg, EL_NINO_KINDS } from '../lib/elNinoFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'ocean' | 'forecast' | 'crops' | 'water' | 'stocks' | 'macro';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!EL_NINO_KINDS.includes(kind) || !['fr', 'en'].includes(lang) || !/^(?:0[1-6])$/.test(number)) {
+  throw new TypeError('Invalid El Nino figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[0-8])$/.test(id))) {
+  throw new TypeError('Invalid El Nino source reference');
+}
+---
+<figure class="el-nino-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="el-nino-desktop" set:html={elNinoSvg(lang, kind, false)} />
+  <div class="el-nino-mobile" set:html={elNinoSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="el-nino-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g El Nino'; src: url('/fonts/el-nino/dejavu-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g El Nino'; src: url('/fonts/el-nino/dejavu-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .el-nino-figure { margin: 2.8rem 0; width: 100%; padding-bottom: .85rem; container-type: inline-size; }
+  .el-nino-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; }
+  .el-nino-mobile { display: none; width: 100%; max-width: 25rem; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .875rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .el-nino-references { display: block; }
+  .el-nino-references a { margin-right: .75em; }
+  .el-nino-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .el-nino-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .el-nino-figure :global(details p) { margin: .7rem 0; }
+  :global(.prose .el-nino-sources) { font-size: .875rem; line-height: 1.65; }
+  :global(.prose .el-nino-sources li) { margin: .75rem 0; }
+  @media (max-width: 640px) {
+    .el-nino-desktop { display: none; }
+    .el-nino-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .el-nino-desktop { display: none; }
+    .el-nino-mobile { display: block; }
+  }
+  @media print {
+    .el-nino-figure { break-inside: avoid; }
+    .el-nino-desktop { display: block; }
+    .el-nino-mobile { display: none; }
+  }
+</style>

@@ -28,7 +28,7 @@
     "test:internal-links": "node --experimental-strip-types --test scripts/check-internal-links.test.mjs && node --experimental-strip-types scripts/check-internal-links.mjs",
     "test:pagination": "node --experimental-strip-types --test scripts/analysis-pagination.test.mjs",
     "test:typography": "node --experimental-strip-types scripts/audit-inline-link-spacing.mjs",
-    "test:editorial-headings": "node scripts/audit-editorial-headings.mjs",
+    "test:editorial-headings": "node --test scripts/audit-editorial-headings.test.mjs && node scripts/audit-editorial-headings.mjs",
     "test:performance": "node scripts/audit-performance.mjs",
     "test:digital-euro-tool": "node --experimental-strip-types --test scripts/digital-euro-cost-model.test.mjs",
     "test:invoice-platform-tool": "node --experimental-strip-types --test scripts/invoice-platform-cost-model.test.mjs",

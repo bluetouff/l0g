@@ -84,8 +84,19 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 611, 'Le corpus doit conserver ses 611 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 178, 'Le graphe Atlas doit conserver ses 178 nœuds, dont G-SIB');
+assert.equal(glossaryEntries.length, 613, 'Le corpus doit conserver ses 613 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 180, 'Le graphe Atlas doit conserver ses 180 nœuds, dont El Niño et RONI');
+for (const slug of ['el-nino', 'roni']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr && en);
+  assert.equal(fr.guide, '/posts/el-nino-secours-meme-pluie/');
+  assert.equal(en.guide, '/en/analysis/el-nino-backup-same-rain/');
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  assert(fr.atlas.sources.every(source => new URL(source.href).hostname.endsWith('.noaa.gov')));
+  assert.equal(en.robots, 'noindex,follow');
+}
 const snapshotFr = glossaryEntries.find(entry => entry.slug === 'g-sib');
 const snapshotEn = glossaryAtlasEnBySlug.get('g-sib');
 assert(snapshotFr && snapshotEn);
@@ -383,7 +394,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 556, 'Le graphe Atlas doit conserver ses 556 relations');
+assert.equal(glossaryAtlasEdgeCount, 558, 'Le graphe Atlas doit conserver ses 558 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

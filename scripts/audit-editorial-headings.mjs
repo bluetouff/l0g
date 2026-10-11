@@ -6,10 +6,10 @@ const distRoot = join(process.cwd(), 'dist');
 const violations = [];
 
 const bannedPatterns = [
-  { label: 'opposition ou négation française', regex: /\b(?:pas|sans|mais|ni|contre)\b/iu },
-  { label: 'opposition ou négation anglaise', regex: /\b(?:not|without|but|versus|neither|nor)\b/iu },
-  { label: 'comparaison abrégée', regex: /\bvs\.?\b/iu },
-  { label: 'contraction négative anglaise', regex: /\b(?:isn|aren|wasn|weren|doesn|don|didn|can|couldn|won|wouldn|shouldn)['’]t\b/iu },
+  { label: 'opposition ou négation française', regex: /(?<![\p{L}\p{M}\p{N}_])(?:pas|sans|mais|ni|contre)(?![\p{L}\p{M}\p{N}_])/iu },
+  { label: 'opposition ou négation anglaise', regex: /(?<![\p{L}\p{M}\p{N}_])(?:not|without|but|versus|neither|nor)(?![\p{L}\p{M}\p{N}_])/iu },
+  { label: 'comparaison abrégée', regex: /(?<![\p{L}\p{M}\p{N}_])vs\.?(?![\p{L}\p{M}\p{N}_])/iu },
+  { label: 'contraction négative anglaise', regex: /(?<![\p{L}\p{M}\p{N}_])(?:isn|aren|wasn|weren|doesn|don|didn|can|couldn|won|wouldn|shouldn)['’]t(?![\p{L}\p{M}\p{N}_])/iu },
 ];
 
 function routeFor(path) {

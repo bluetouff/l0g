@@ -566,6 +566,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Énergie & géopolitique',
     accent: 'var(--color-amber)',
     entries: [
+      {"sigle": "El Niño", "nom": "Phase chaude de l’ENSO", "def": "Phase chaude de l’oscillation australe El Niño (ENSO), un phénomène couplé de l’océan et de l’atmosphère dans le Pacifique tropical. L’affaiblissement des alizés et le déplacement des eaux chaudes et de la convection modifient la distribution des pluies. Les effets locaux dépendent aussi de la saison et des autres conditions climatiques.", "guide": "/posts/el-nino-secours-meme-pluie/"},
+      {"sigle": "RONI", "nom": "Indice océanique Niño relatif", "def": "Indice NOAA construit à partir d’une moyenne glissante sur trois mois de l’anomalie de température de surface dans la région Niño 3.4, après soustraction de l’anomalie moyenne des tropiques et ajustement de variance. Il mesure un contraste océanique relatif ; une probabilité de franchir son seuil ne mesure pas une probabilité de pertes économiques.", "guide": "/posts/el-nino-secours-meme-pluie/"},
+
       {"sigle": "COP", "nom": "Coefficient de performance", "def": "Rapport entre la chaleur utile délivrée et l’électricité consommée par une pompe à chaleur, sur un même périmètre de mesure. Un COP de 2 signifie deux unités de chaleur pour une unité d’électricité ; la chaleur supplémentaire provient d’une source extérieure. Sa valeur dépend notamment des températures, de la charge et des auxiliaires inclus dans la mesure.", "guide": "/posts/chaleur-industrielle-if26-prime-carbone-sixieme-annee/"},
       {"sigle": "Pay-as-bid", "nom": "Paiement au prix offert", "def": "Règle d’enchère dans laquelle chaque candidat retenu reçoit le prix de sa propre offre, sous réserve des conditions du dispositif. Le prix utilisé pour classer les candidats peut suivre un ajustement distinct : dans IF26, un bonus admissible réduit le prix de classement de 25 % sans réduire la prime demandée.", "guide": "/posts/chaleur-industrielle-if26-prime-carbone-sixieme-annee/"},
       { sigle: 'Warrant d’entrepôt', nom: 'Warehouse warrant', def: "Titre représentatif d’un métal stocké dans un entrepôt agréé. Sur COMEX, ce document électronique permet de transférer la propriété lors de la livraison d’un contrat à terme. Le nouveau détenteur peut conserver le métal en stockage ou en demander le retrait physique, selon les règles applicables. Le transfert du titre peut laisser le métal sur place.", guide: '/posts/cuivre-stocks-americains-cout-attente-douaniere/' },
@@ -747,7 +750,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-10';
+export const glossaryUpdatedIso = '2026-10-11';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -990,6 +993,9 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "el-nino": {"intuition": "Relier le signal océanique aux conditions locales avant d’évaluer les dépendances économiques.", "articles": [{"label": "El Niño : quand les secours dépendent de la même pluie", "href": "/posts/el-nino-secours-meme-pluie/", "kind": "article"}], "sources": [{"label": "NOAA JetStream : Effects of ENSO in the Pacific", "href": "https://www.noaa.gov/jetstream/tropical/enso/enso-patterns", "kind": "source"}], "related": ["roni"]},
+  "roni": {"intuition": "Lire le seuil, la période et la construction de l’indice avant d’interpréter sa probabilité.", "articles": [{"label": "El Niño : quand les secours dépendent de la même pluie", "href": "/posts/el-nino-secours-meme-pluie/", "kind": "article"}], "sources": [{"label": "NOAA CPC : Relative Oceanic Niño Index", "href": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/", "kind": "source"}], "related": ["el-nino"]},
+
   "g-sib": {
   "intuition": "Une banque peut changer de score lorsque son exposition ou celle de ses pairs varie.",
   "formula": "Contribution de taille = exposition de la banque / exposition de l’échantillon × 10 000 × 20 %",
