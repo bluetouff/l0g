@@ -1,3 +1,4 @@
+import { assertFontLicenseReferences } from './font-license-assertions.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -160,7 +161,7 @@ test('all twenty-eight accessible responsive compositions use inert markup and n
 });
 test('licensed original DejaVu outlines include every regular and bold label glyph', () => {
   let count = 0; for (const v of variants) for (const n of inspect(v).nodes.filter(node => tag(node) === 'text')) { for (const char of textOf(n)) assert.ok(fonts[attrs(n)['font-weight'] === '700' ? 700 : 400].charToGlyphIndex(char) > 0); count++; } assert.equal(count, 762);
-  const licence = read('public/fonts/us-mortgage-risk/LICENSE.txt'); assert.match(licence, /DejaVu Sans 2\.37/u); assert.match(licence, /unchanged DejaVu Sans outlines and metrics/u); assert.match(licence, /Copyright \(c\) 2003 by Bitstream/u); assert.match(licence, /Copyright \(c\) 2006 by Tavmjong Bah/u); assert.match(licence, /dejavu-fonts\.github\.io\/License\.html/u);
+  const licence = read('public/fonts/us-mortgage-risk/LICENSE.txt'); assert.match(licence, /DejaVu Sans 2\.37/u); assert.match(licence, /unchanged DejaVu Sans outlines and metrics/u); assert.match(licence, /Copyright \(c\) 2003 by Bitstream/u); assert.match(licence, /Copyright \(c\) 2006 by Tavmjong Bah/u); assertFontLicenseReferences(licence, 'dejavu');
 });
 test('glyph contours and every path or shape stay inside their viewBox without collision or concealment', () => { for (const v of variants) geometry(v); });
 test('hypothetical mortgage payments preserve the equal-balance equal-term bar scale', () => {

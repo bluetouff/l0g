@@ -1,3 +1,4 @@
+import { assertFontLicenseReferences } from './font-license-assertions.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -132,7 +133,7 @@ test('unmodified licensed regular and bold fonts cover every authored label', ()
   let count = 0; for (const v of variants) for (const n of inspect(v).nodes.filter(node => tag(node) === 'text')) { for (const char of textOf(n)) assert.ok(fonts[attrs(n)['font-weight'] === 'bold' ? 700 : 400].charToGlyphIndex(char) > 0); count++; }
   assert.equal(count, 737);
   const licence = read('public/fonts/ukraine-reparations/LICENSE.txt');
-  assert.match(licence, /Liberation Sans 2\.1\.5/u); assert.match(licence, /Unmodified local font files/u); assert.match(licence, /SIL OPEN FONT LICENSE Version 1\.1/u); assert.match(licence, /Copyright \(c\) 2012 Red Hat/u); assert.match(licence, /Digitized data copyright \(c\) 2010 Google/u); assert.match(licence, /github\.com\/liberationfonts\/liberation-fonts/u);
+  assert.match(licence, /Liberation Sans 2\.1\.5/u); assert.match(licence, /Unmodified local font files/u); assert.match(licence, /SIL OPEN FONT LICENSE Version 1\.1/u); assert.match(licence, /Copyright \(c\) 2012 Red Hat/u); assert.match(licence, /Digitized data copyright \(c\) 2010 Google/u); assertFontLicenseReferences(licence, 'liberation');
 });
 test('actual glyph control points and shapes remain inside each viewBox without collisions or concealed text', () => {
   for (const v of variants) geometry(v);

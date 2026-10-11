@@ -5,6 +5,7 @@ import sharp from 'sharp';
 import { build } from 'esbuild';
 import { fileURLToPath } from 'node:url';
 import { readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import {
   CORTINA_SIMULATION,
   CORTINA_FIGURE_KINDS,
@@ -74,8 +75,17 @@ async function glyphWidth(node) {
 }
 
 function segments(d) {
-  assert.match(d, /^(?:[ML]|-?\d+(?:\.\d+)?|\s)+$/u, 'Only bounded move/line paths');
-  const tokens = d.match(/[ML]|-?\d+(?:\.\d+)?/gu), points = [], lines = [];
+  assert.equal(typeof d, 'string');
+  const token = /[ML]|-?\d+(?:\.\d+)?|\s+/uy;
+  const tokens = [], points = [], lines = [];
+  for (let cursor = 0; cursor < d.length;) {
+    token.lastIndex = cursor;
+    const match = token.exec(d);
+    assert.ok(match, 'Only bounded move/line paths');
+    cursor = token.lastIndex;
+    if (match[0].trim()) tokens.push(match[0]);
+  }
+  assert.ok(tokens.length > 0, 'Nonempty move/line path');
   let last;
   for (let i = 0; i < tokens.length;) {
     const command = tokens[i++];
@@ -91,6 +101,33 @@ function segments(d) {
   }
   return { points, lines };
 }
+
+test('Move/line paths preserve compact coordinates, decimals and separate subpaths', () => {
+  assert.deepEqual(segments('M1-2L3 4'), { points: [[1, -2], [3, 4]], lines: [[[1, -2], [3, 4]]] });
+  assert.deepEqual(segments(' \tM -1.25 2.5\nL 3 -4.75 M 10 20 L 30 40\r\n'), {
+    points: [[-1.25, 2.5], [3, -4.75], [10, 20], [30, 40]],
+    lines: [[[-1.25, 2.5], [3, -4.75]], [[10, 20], [30, 40]]],
+  });
+  assert.deepEqual(segments('M0 0'), { points: [[0, 0]], lines: [] });
+});
+
+test('Move/line paths reject gaps, unsupported syntax and incomplete coordinates', () => {
+  for (const path of ['', ' \n', 'M', 'M1', 'M0 0L1', 'L1 2', '1 2', 'M0 0 1 2', 'M0!0', 'M0 0!', 'M1. 2', 'M0.1.2 3', 'M+1 2', 'M1,2', 'M1e2 3', 'm1 2', 'M0 0Z', 'MInfinity 2', `M${'9'.repeat(400)} 0`]) {
+    assert.throws(() => segments(path), { name: 'AssertionError' });
+  }
+});
+
+test('Move/line parsing stays bounded on long numeric and decimal input', () => {
+  const result = spawnSync(process.execPath, ['--input-type=module', '-e', `
+    import assert from 'node:assert/strict';
+    ${segments.toString()}
+    assert.throws(() => segments('M ' + '1'.repeat(100_000) + '!'));
+    assert.throws(() => segments('M 0.' + '000.'.repeat(25_000) + '!'));
+    assert.deepEqual(segments('M' + '0'.repeat(100_000) + ' 0L1 2').lines, [[[0, 0], [1, 2]]]);
+  `], { encoding: 'utf8', timeout: 3000 });
+  assert.ifError(result.error);
+  assert.equal(result.status, 0, result.stderr);
+});
 
 function intersects(line, box, padding = 2) {
   const [[x1, y1], [x2, y2]] = line, dx = x2 - x1, dy = y2 - y1;

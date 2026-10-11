@@ -1,3 +1,4 @@
+import { assertFontLicenseReferences } from './font-license-assertions.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -156,7 +157,7 @@ test('local regular and bold fonts cover all figure characters and carry their r
   css.walkAtRules('font-face', rule => faces.push(Object.fromEntries(rule.nodes.filter(n => n.type === 'decl').map(n => [n.prop, n.value]))));
   assert.deepEqual(faces.map(face => face['font-weight']).sort(), ['400', '700']);
   for (const face of faces) { assert.equal(face['font-family'], "'l0g El Nino'"); assert.equal(face['font-style'], 'normal'); assert.equal(face['font-display'], 'swap'); assert.equal(face.src, `url('/fonts/el-nino/dejavu-sans-${face['font-weight']}.ttf') format('truetype')`); }
-  const licence = read('public/fonts/el-nino/LICENSE.txt'); assert.match(licence, /https:\/\/dejavu-fonts\.github\.io\/License\.html/u); assert.match(licence, /Copyright \(c\) 2003 by Bitstream/u); assert.match(licence, /Copyright \(c\) 2006 by Tavmjong Bah/u); assert.match(licence, /Permission is hereby granted/u);
+  const licence = read('public/fonts/el-nino/LICENSE.txt'); assertFontLicenseReferences(licence, 'dejavu'); assert.match(licence, /Copyright \(c\) 2003 by Bitstream/u); assert.match(licence, /Copyright \(c\) 2006 by Tavmjong Bah/u); assert.match(licence, /Permission is hereby granted/u);
 });
 test('every visible shape and checked-font glyph fits its canvas and label region without collisions or concealment', () => { for (const variant of variants) geometry(variant); });
 test('structural and geometric regressions reject executable markup, external paints, displaced shapes and unsupported glyphs', () => {

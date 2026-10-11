@@ -1,3 +1,4 @@
+import { assertFontLicenseReferences } from './font-license-assertions.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -157,7 +158,7 @@ test('both DejaVu faces cover every figure character, including spacing, punctua
     src: `url('/fonts/bank-snapshot/dejavu-sans-${weight}.ttf') format('truetype')`,
   })));
   const license = readFileSync(new URL('../public/fonts/bank-snapshot/LICENSE.txt', import.meta.url), 'utf8');
-  assert.match(license, /https:\/\/dejavu-fonts\.github\.io\/License\.html/u);
+  assertFontLicenseReferences(license, 'dejavu');
   assert.match(license, /Copyright \(c\) 2003 by Bitstream/u);
   assert.match(license, /Permission is hereby granted/u);
 });
