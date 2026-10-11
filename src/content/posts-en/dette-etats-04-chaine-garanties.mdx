@@ -1,0 +1,777 @@
+---
+title: 'Government debt: the collateral chain'
+seoTitle: 'Government debt: the collateral chain | l0g'
+description: Who supplies the cash behind leveraged bond buyers? An investigation into collateral reuse, funding maturities and FICC’s Collateral-in-Lieu service.
+pubDate: '2026-10-11T22:25:56+02:00'
+updatedDate: '2026-10-11T22:25:56+02:00'
+tags: ["government debt", "repo", "risk", "banks"]
+draft: false
+ogImage: /illustrations/news/dette-etats-chaine-garanties-v1.jpg
+sourceArticle: dette-etats-04-chaine-garanties
+sourceUpdatedDate: '2026-10-11T22:25:56+02:00'
+---
+
+<style>{`.l0g-debt4-figure{margin:2.5rem auto 3rem;max-width:820px;clear:both}.l0g-debt4-figure svg{display:block;width:100%;height:auto;max-width:100%;border-radius:12px}.l0g-debt4-mobile{display:none}.l0g-debt4-figure figcaption{font-size:.84em;line-height:1.65;padding:1rem .15rem;color:inherit}.l0g-debt4-figure figcaption strong{display:block}.l0g-debt4-kind{display:block;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--color-signal)}.l0g-debt4-ref{font-size:.7em;vertical-align:super;white-space:nowrap}.l0g-debt4-sources{font-size:.85rem;line-height:1.7}.l0g-debt4-sources a{overflow-wrap:anywhere}.l0g-debt4-sources li{margin:1rem 0;scroll-margin-top:2rem}.l0g-debt4-url{display:block}.l0g-debt4-dates{display:block;font-size:.8rem}@media(max-width:680px){.l0g-debt4-figure{max-width:416px}.l0g-debt4-desktop{display:none}.l0g-debt4-mobile{display:block}}`}</style>
+
+<div class="l0g-debt-04">
+
+<p><strong>WHO HOLDS GOVERNMENT DEBT? · Part 4</strong></p>
+
+<p>A fund’s lender may itself borrow against the same bonds. Behind the collateral, a sequence of contracts, rights and deadlines determines how long funding remains available.</p>
+
+On December 23, 2025, three companies announced a transaction in the plumbing of the US government bond market. BNY Securities Finance and Federated Hermes had used a new service offered by FICC, the DTCC clearing house. Its name, [*Collateral-in-Lieu*](/en/glossary/collateral-in-lieu/), sounds like a line on an administrative form. Its purpose is more substantial: when a repo already contains securities that provide protection, why tie up additional resources elsewhere? The announcement identified neither the loan amount nor the specific legal fund providing cash. It reported a first transaction and claimed a more efficient use of collateral. <sup class="l0g-debt4-ref"><a href="#source-01" aria-label="Source 1">[1]</a></sup>
+
+Eleven days earlier, the Securities and Exchange Commission had approved the arrangement. Its order sets out the participants’ obligations, the treatment of defaults and the conditions for accessing the securities. FICC’s rulebook dated August 26, 2026 provides an operative cross-check. Together, these documents show a change taking place behind government borrowing: the way investors lend to each other against public debt. <sup class="l0g-debt4-ref"><a href="#source-02" aria-label="Source 2">[2]</a></sup><sup class="l0g-debt4-ref"><a href="#source-03" aria-label="Source 3">[3]</a></sup>
+
+The first three parts followed [the bond’s issuance](/en/analysis/dette-etats-01-premier-acheteur/), [the intermediary’s balance sheet](/en/analysis/dette-etats-02-bilan-intermediaires/), and [the fund buying it with borrowed money](/en/analysis/dette-etats-03-acheteurs-credit/). The next step is to examine the lender. That lender may also be borrowing. Securities then move between accounts while claims, deadlines and legal rights accumulate around them. Assessing the chain requires knowing who supplies the cash, for how long, and what each participant is entitled to recover.
+
+
+## The cash behind the loan
+
+
+A [money market fund](/en/guides/read-money-market-funds/) pools investors’ cash for investment in short-term instruments. [Repo](/en/glossary/repo/) is one outlet: the fund supplies cash against securities, with a subsequent reversal agreed between the parties. A New York Fed analysis published on September 28, 2026 places money funds’ private repo lending at roughly **$1 trillion in January 2021** and **$3 trillion in January 2026**. These rounded figures are amounts outstanding, not money advanced over the course of a year. <sup class="l0g-debt4-ref"><a href="#source-04" aria-label="Source 4">[4]</a></sup>
+
+The money fund needs a place for its cash. At the other end of the market, a relative-value fund needs cash to finance its portfolio. A dealer structures transactions around their different requirements. Here, “dealer” means a market intermediary, often part of a banking group. It can lend to one customer and finance that claim with another counterparty. The New York Fed describes the connections by separating securities transfers, their operational management and the clearing of obligations. <sup class="l0g-debt4-ref"><a href="#source-05" aria-label="Source 5">[5]</a></sup>
+
+This adds another dimension to the question of who holds government debt. The bond buyer carries the economic exposure. The cash provider makes a shorter commitment secured against those securities. The intermediary connects the two. Each participates for a different reason, with a different incentive to stay.
+
+Aggregate data identify groups of participants. They do not trace each dollar through named counterparties. Attributing the money funds’ roughly $3 trillion entirely to hedge funds would go beyond the evidence. An explicit illustration lets us follow the obligations without inventing a private transaction.
+
+
+## A $100 million portfolio supports two loans
+
+
+A fund buys **$100 million of bonds**. As in the previous episode, it borrows $99 million in repo and contributes $1 million towards the purchase. The separate $1 million futures initial-margin deposit and $1 million cash reserve used in that earlier example remain outside the chain shown here. The fund still has $3 million of its own resources; we are isolating purchase financing.
+
+The dealer advances the $99 million. To do so, it borrows **$98 million** from a money market fund and adds **$1 million** of its own cash. Securities received from the relative-value fund secure this second repo. The illustration holds bond prices constant and leaves out coupons, interest and margin movements to make the financing obligations visible.
+
+The purchase is therefore supported by $98 million from the cash provider outside this chain, $1 million from the dealer and $1 million from the buyer. Yet the two repo contracts contain **$197 million of gross principal**, $99 million on one side and $98 million on the other. That sum measures successive claims. The underlying bond portfolio is still worth $100 million.
+
+<figure class="l0g-debt4-figure" id="figure-01-chaine">
+<div class="l0g-debt4-desktop">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 970" width="1200" height="970" style="width:100%;height:auto" role="img" aria-labelledby="d4-01-chaine-en-d-title d4-01-chaine-en-d-desc" lang="en">
+<title id="d4-01-chaine-en-d-title">One portfolio supports two loans</title><desc id="d4-01-chaine-en-d-desc">l0g scenario · securities value and principal in US$ millions. Hypothetical model: constant prices; interest and margin excluded. Mechanism: FSB [06], OFR [07].</desc>
+<rect x="0" y="0" width="1200" height="970" rx="0" fill="var(--color-ink)"/>
+<rect x="1080" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="1144" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">01 / 06</text>
+<text x="56" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">One portfolio supports two loans</text>
+<text x="56" y="135.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">l0g scenario · securities value and principal in US$ millions</text>
+<line x1="56" y1="870" x2="1144" y2="870" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="904.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Hypothetical model: constant prices; interest and margin excluded. Mechanism: FSB [06], OFR [07].</text>
+<rect x="56" y="252" width="270" height="228" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<rect x="56" y="252" width="5" height="228" rx="2" fill="var(--color-signal)"/>
+<text x="78" y="291.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Money fund</text>
+<text x="78" y="324.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Supplies cash</text>
+<rect x="465" y="252" width="270" height="228" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<rect x="465" y="252" width="5" height="228" rx="2" fill="var(--color-signal)"/>
+<text x="487" y="291.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Dealer</text>
+<text x="487" y="324.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Lends 99,</text>
+<text x="487" y="352.29" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">borrows 98</text>
+<rect x="874" y="252" width="270" height="228" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<rect x="874" y="252" width="5" height="228" rx="2" fill="var(--color-amber)"/>
+<text x="896" y="291.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Bond buyer</text>
+<text x="896" y="324.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Buys 100</text>
+<text x="896" y="352.29" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">of bonds</text>
+<line x1="341" y1="321" x2="450" y2="321" stroke="var(--color-signal)" stroke-width="4"/>
+<polygon points="450.00,321.00 440.00,325.59 440.00,316.41" fill="var(--color-signal)"/>
+<text x="395.5" y="300" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="middle">98</text>
+<line x1="450" y1="422" x2="341" y2="422" stroke="var(--color-amber)" stroke-width="4"/>
+<polygon points="341.00,422.00 351.00,417.41 351.00,426.59" fill="var(--color-amber)"/>
+<text x="395.5" y="403" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">100</text>
+<line x1="750" y1="321" x2="859" y2="321" stroke="var(--color-signal)" stroke-width="4"/>
+<polygon points="859.00,321.00 849.00,325.59 849.00,316.41" fill="var(--color-signal)"/>
+<text x="804.5" y="300" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="middle">99</text>
+<line x1="859" y1="422" x2="750" y2="422" stroke="var(--color-amber)" stroke-width="4"/>
+<polygon points="750.00,422.00 760.00,417.41 760.00,426.59" fill="var(--color-amber)"/>
+<text x="804.5" y="403" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">100</text>
+<text x="486" y="452" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">+ 1 own cash</text>
+<text x="896" y="452" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">+ 1 purchase cash</text>
+<text x="56" y="528.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Cash moves towards the buyer. The same securities support both contracts.</text>
+<rect x="56" y="612" width="528" height="210" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="81" y="694" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" text-anchor="start">197</text>
+<text x="266" y="666.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">gross repo principal</text>
+<text x="81" y="784" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">99 + 98 · two claims</text>
+<rect x="616" y="612" width="528" height="210" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="641" y="694" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" text-anchor="start">100</text>
+<text x="826" y="666.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">underlying</text>
+<text x="826" y="704.4" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">securities</text>
+<text x="641" y="784" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">98 + 1 + 1 fund the purchase</text>
+</svg>
+</div>
+<div class="l0g-debt4-mobile">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1510" width="640" height="1510" style="width:100%;height:auto" role="img" aria-labelledby="d4-01-chaine-en-m-title d4-01-chaine-en-m-desc" lang="en">
+<title id="d4-01-chaine-en-m-title">One portfolio supports two loans</title><desc id="d4-01-chaine-en-m-desc">l0g scenario · securities value and principal in US$ millions. Hypothetical model: constant prices; interest and margin excluded. Mechanism: FSB [06], OFR [07].</desc>
+<rect x="0" y="0" width="640" height="1510" rx="0" fill="var(--color-ink)"/>
+<rect x="520" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="604" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">01 / 06</text>
+<text x="36" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">One portfolio supports two</text>
+<text x="36" y="145.45999999999998" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">loans</text>
+<text x="36" y="179.45999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">l0g scenario · securities value and principal in US$</text>
+<text x="36" y="208.89999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">millions</text>
+<line x1="36" y1="1410" x2="604" y2="1410" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1444.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Hypothetical model: constant prices; interest and margin</text>
+<text x="36" y="1469.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">excluded. Mechanism: FSB [06], OFR [07].</text>
+<rect x="36" y="257" width="568" height="139" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<rect x="36" y="257" width="5" height="139" rx="2" fill="var(--color-signal)"/>
+<text x="58" y="296.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">Money market fund</text>
+<text x="58" y="329.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Supplies 98 of cash to the chain</text>
+<rect x="36" y="543" width="568" height="164" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<rect x="36" y="543" width="5" height="164" rx="2" fill="var(--color-signal)"/>
+<text x="58" y="582.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">Dealer</text>
+<text x="58" y="615.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Borrows 98 + adds 1 of own cash</text>
+<text x="58" y="645.75" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Lends 99 to the bond buyer</text>
+<rect x="36" y="853" width="568" height="163" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<rect x="36" y="853" width="5" height="163" rx="2" fill="var(--color-amber)"/>
+<text x="58" y="892.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">Bond buyer</text>
+<text x="58" y="925.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Borrows 99 + contributes 1</text>
+<text x="58" y="955.75" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Buys 100 of bonds</text>
+<line x1="165" y1="410" x2="165" y2="528" stroke="var(--color-signal)" stroke-width="4"/>
+<polygon points="165.00,528.00 160.41,518.00 169.59,518.00" fill="var(--color-signal)"/>
+<text x="192" y="462.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="start">98</text>
+<text x="192" y="497.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">cash</text>
+<line x1="473" y1="528" x2="473" y2="410" stroke="var(--color-amber)" stroke-width="4"/>
+<polygon points="473.00,410.00 477.59,420.00 468.41,420.00" fill="var(--color-amber)"/>
+<text x="445" y="462.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="end">100</text>
+<text x="445" y="497.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="end">bonds</text>
+<line x1="165" y1="721" x2="165" y2="838" stroke="var(--color-signal)" stroke-width="4"/>
+<polygon points="165.00,838.00 160.41,828.00 169.59,828.00" fill="var(--color-signal)"/>
+<text x="192" y="772.5" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="start">99</text>
+<text x="192" y="807.5" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">cash</text>
+<line x1="473" y1="838" x2="473" y2="721" stroke="var(--color-amber)" stroke-width="4"/>
+<polygon points="473.00,721.00 477.59,731.00 468.41,731.00" fill="var(--color-amber)"/>
+<text x="445" y="772.5" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="end">100</text>
+<text x="445" y="807.5" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="end">bonds</text>
+<text x="36" y="1070.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">The same securities support two</text>
+<text x="36" y="1104.56" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">successive obligations.</text>
+<rect x="36" y="1160" width="568" height="91" rx="10" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="58" y="1224" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" text-anchor="start">197</text>
+<text x="215" y="1202.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">gross repo principal</text>
+<rect x="36" y="1266" width="568" height="91" rx="10" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="58" y="1330" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" text-anchor="start">100</text>
+<text x="215" y="1308.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">underlying securities</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt4-kind">Illustrative scenario</span><strong>One portfolio supports two successive commitments.</strong>Hypothetical example: the dealer lends $99m, borrows $98m and contributes $1m of cash; the buyer contributes $1m to the purchase. The $197m adds two private repo principals. The underlying securities are worth $100m. The fund’s separate $2m in futures margin and cash reserve from episode 3 remain outside this chain. <sup class="l0g-debt4-ref"><a href="#source-06" aria-label="Source 6">[6]</a></sup><sup class="l0g-debt4-ref"><a href="#source-07" aria-label="Source 7">[7]</a></sup></figcaption>
+
+</figure>
+
+This distinction matters when reading market totals. Adding loans along a chain can help measure the commitments of its members. Treating their sum as the amount of government bonds involved would inflate the underlying portfolio. Looking only at the $100 million of securities, meanwhile, would conceal the payments owed between intermediaries. Each measure answers a different question.
+
+The Financial Stability Board emphasises both the efficiency of collateral reuse and the connections it creates. Intermediation connects funding and investment needs that do not always match directly. With it, funding availability depends on several relationships operating together. <sup class="l0g-debt4-ref"><a href="#source-06" aria-label="Source 6">[6]</a></sup>
+
+
+## Ownership moves; the exposure remains
+
+
+Language about “pledging collateral” can suggest that the securities remain locked in the original holder’s name. French law governing *pension livrée*, the domestic form of repo, provides a different structure. Article L. 211-27 of the Monetary and Financial Code describes an outright transfer of ownership with reciprocal, irrevocable commitments to repurchase and return the securities at an agreed date and price. <sup class="l0g-debt4-ref"><a href="#source-08" aria-label="Source 8">[8]</a></sup>
+
+The accounting treatment follows the financing. Article L. 211-32 keeps the securities on the seller’s balance sheet and records the debt to the buyer as a liability. Legal title can therefore move while the bond remains recorded by the party financing it. This French treatment illustrates the distinction; a US transaction still requires examination of its own contract and applicable accounting standards. <sup class="l0g-debt4-ref"><a href="#source-09" aria-label="Source 9">[9]</a></sup>
+
+In our chain, the securities received by the dealer support its own borrowing. At maturity, equivalent securities must be returned under the agreement. That contractual obligation matters more than following an individual paper certificate. ICMA, the bond-market trade association, distinguishes repo’s transfer of ownership from [rehypothecation, the reuse of pledged assets](/en/glossary/rehypothecation/). Its explanation should be read alongside the law, rather than treated as a universal legal assurance. <sup class="l0g-debt4-ref"><a href="#source-11" aria-label="Source 11">[11]</a></sup>
+
+Within the European Union, Article 15 of the Securities Financing Transactions Regulation sets conditions for reuse. They include written information on risks and consequences, prior express consent to a right of reuse or express agreement to title transfer, and compliance with agreed terms. The information must address, among other things, the consequences of the collateral recipient’s default. Stricter restrictions can also apply. <sup class="l0g-debt4-ref"><a href="#source-10" aria-label="Source 10">[10]</a></sup>
+
+This is where the documentary problem becomes apparent. A map linking “bank”, “fund” and “custodian” cannot establish whether a security may be transferred again, on what terms, or for whose benefit. Answering those questions for a particular portfolio would require the executed agreements and their annexes. Public sources reveal rules and categories of transaction. They do not disclose every negotiated clause.
+
+
+## The dealer’s calendar
+
+
+Give our two loans different maturities. The dealer advances $99 million for **thirty days**, while borrowing its $98 million for **one day**. At the first deadline, it owes the principal on the shorter loan, plus the contractual interest excluded from this illustration. Its claim on the fund will not mature until day thirty.
+
+Even with a perfectly stable bond price and a solvent customer, the dealer must obtain cash. It can arrange another loan, use alternative funding or draw on liquid resources. The portfolio does not have to fall in value for this task to arise. The mismatch in commitments creates it.
+
+That alone does not entitle the dealer to demand early repayment of a firm thirty-day loan. Default, margin and termination provisions must be assessed separately. An [*open repo*](/en/glossary/open-repo/), which has no fixed maturity, has a different structure again: termination follows the agreed notice provisions. Treating it as interchangeable with any loan renewed overnight would erase an important contractual distinction. <sup class="l0g-debt4-ref"><a href="#source-12" aria-label="Source 12">[12]</a></sup>
+
+<figure class="l0g-debt4-figure" id="figure-02-echeances">
+<div class="l0g-debt4-desktop">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 940" width="1200" height="940" style="width:100%;height:auto" role="img" aria-labelledby="d4-02-echeances-en-d-title d4-02-echeances-en-d-desc" lang="en">
+<title id="d4-02-echeances-en-d-title">Lending for thirty days, funded for one</title><desc id="d4-02-echeances-en-d-desc">l0g scenario · US dollars · schematic timeline; interest excluded. A firm 30-day loan retains its terms. Open repo follows agreed notice provisions. ICMA [12]; l0g model.</desc>
+<rect x="0" y="0" width="1200" height="940" rx="0" fill="var(--color-ink)"/>
+<rect x="1080" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="1144" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">02 / 06</text>
+<text x="56" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">Lending for thirty days, funded for one</text>
+<text x="56" y="135.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">l0g scenario · US dollars · schematic timeline; interest excluded</text>
+<line x1="56" y1="840" x2="1144" y2="840" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="874.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">A firm 30-day loan retains its terms. Open repo follows agreed notice provisions. ICMA [12]; l0g model.</text>
+<text x="330" y="261" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">Day 0</text>
+<line x1="330" y1="282" x2="330" y2="550" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="4 8"/>
+<text x="587" y="261" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">Day 1</text>
+<line x1="587" y1="282" x2="587" y2="550" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="4 8"/>
+<text x="1100" y="261" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">Day 30</text>
+<line x1="1100" y1="282" x2="1100" y2="550" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="4 8"/>
+<text x="56" y="342.0" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Dealer lends</text>
+<line x1="330" y1="328" x2="1100" y2="328" stroke="var(--color-topic-blue)" stroke-width="14"/>
+<circle cx="330" cy="328" r="10" fill="var(--color-topic-blue)"/>
+<circle cx="1100" cy="328" r="10" fill="var(--color-topic-blue)"/>
+<text x="715" y="314" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="middle">$99m · 30 days</text>
+<text x="56" y="461.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Dealer borrows</text>
+<line x1="330" y1="456" x2="587" y2="456" stroke="var(--color-signal)" stroke-width="14"/>
+<circle cx="330" cy="456" r="10" fill="var(--color-signal)"/>
+<circle cx="587" cy="456" r="10" fill="var(--color-signal)"/>
+<text x="458" y="429" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">$98m · 1 day</text>
+<line x1="607" y1="456" x2="1100" y2="456" stroke="var(--color-muted)" stroke-width="4" stroke-dasharray="8 10"/>
+<polygon points="1100.00,456.00 1090.00,460.59 1090.00,451.41" fill="var(--color-muted)"/>
+<text x="655" y="505.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Later funding still has to be arranged.</text>
+<rect x="56" y="611" width="510" height="193" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="83" y="652" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="start">AT THE FIRST MATURITY</text>
+<text x="83" y="726" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700" text-anchor="start">$98m</text>
+<text x="83" y="774" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">to refinance or repay</text>
+<text x="627" y="650.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="start">The claim on the fund matures</text>
+<text x="627" y="689.68" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="start">on day 30.</text>
+<text x="627" y="750.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Bond price assumed unchanged: the dates</text>
+<text x="627" y="780.72" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">create the cash need.</text>
+</svg>
+</div>
+<div class="l0g-debt4-mobile">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1420" width="640" height="1420" style="width:100%;height:auto" role="img" aria-labelledby="d4-02-echeances-en-m-title d4-02-echeances-en-m-desc" lang="en">
+<title id="d4-02-echeances-en-m-title">Lending for thirty days, funded for one</title><desc id="d4-02-echeances-en-m-desc">l0g scenario · US dollars · schematic timeline; interest excluded. A firm 30-day loan retains its terms. Open repo follows agreed notice provisions. ICMA [12]; l0g model.</desc>
+<rect x="0" y="0" width="640" height="1420" rx="0" fill="var(--color-ink)"/>
+<rect x="520" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="604" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">02 / 06</text>
+<text x="36" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">Lending for thirty days,</text>
+<text x="36" y="145.45999999999998" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">funded for one</text>
+<text x="36" y="179.45999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">l0g scenario · US dollars · schematic timeline; interest</text>
+<text x="36" y="208.89999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">excluded</text>
+<line x1="36" y1="1320" x2="604" y2="1320" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1354.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">A firm 30-day loan retains its terms. Open repo follows agreed</text>
+<text x="36" y="1379.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">notice provisions. ICMA [12]; l0g model.</text>
+<text x="36" y="247" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">A $99M CLAIM UNTIL DAY 30</text>
+<line x1="599" y1="305" x2="599" y2="1080" stroke="var(--color-topic-blue)" stroke-width="5"/>
+<polygon points="599.00,1080.00 594.41,1070.00 603.59,1070.00" fill="var(--color-topic-blue)"/>
+<circle cx="70" cy="355" r="32" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="70" y="364" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">D0</text>
+<circle cx="70" cy="661" r="32" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="70" y="670" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">D1</text>
+<circle cx="70" cy="1030" r="32" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="70" y="1039" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">D30</text>
+<line x1="70" y1="389" x2="70" y2="625" stroke="var(--color-line-strong)" stroke-width="3"/>
+<line x1="70" y1="695" x2="70" y2="994" stroke="var(--color-line-strong)" stroke-width="3" stroke-dasharray="6 8"/>
+<rect x="120" y="297" width="444" height="218" rx="12" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<rect x="120" y="297" width="5" height="218" rx="2" fill="var(--color-topic-blue)"/>
+<text x="142" y="336.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">Two commitments</text>
+<text x="142" y="369.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Dealer lends 99 for 30 days and</text>
+<text x="142" y="399.75" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">borrows 98 for 1 day.</text>
+<rect x="120" y="558" width="444" height="241" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="144" y="624" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" text-anchor="start">$98m</text>
+<text x="144" y="679.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">needed to repay or replace</text>
+<text x="144" y="714.84" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">the funding</text>
+<rect x="120" y="930" width="444" height="198" rx="12" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<rect x="120" y="930" width="5" height="198" rx="2" fill="var(--color-topic-blue)"/>
+<text x="142" y="969.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">Loan matures</text>
+<text x="142" y="1002.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">The fund repays its $99m at the</text>
+<text x="142" y="1032.75" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">agreed maturity.</text>
+<text x="36" y="1200.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">The portfolio can retain its value</text>
+<text x="36" y="1237.12" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">throughout the period.</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt4-kind">Illustrative scenario</span><strong>The first maturity comes before the customer repays.</strong>The dealer lends for thirty days and funds itself for one day. At the first maturity, $98m must be repaid or refinanced. Schematic dates, constant prices, interest excluded. Renewal must be arranged; the lender’s cash need does not erase a firm loan’s contractual terms. <sup class="l0g-debt4-ref"><a href="#source-07" aria-label="Source 7">[7]</a></sup><sup class="l0g-debt4-ref"><a href="#source-12" aria-label="Source 12">[12]</a></sup></figcaption>
+
+</figure>
+
+The Office of Financial Research examined maturities across nine dealers’ portfolios on three dates in June 2022. Its November 2024 brief matches collateral received and reused across four maturity buckets. These statistical matches, by dealer and CUSIP security identifier, use allocation conventions; they do not trace every contract individually. **$48.68 billion** sits in a particular combination: securities received against loans lasting eight to thirty days, then reused to obtain overnight funding. The sample spans several repo segments and collateral categories, rather than Treasuries alone. <sup class="l0g-debt4-ref"><a href="#source-07" aria-label="Source 7">[7]</a></sup>
+
+Regrouping the published cells gives **$172.93 billion** where funding falls into a shorter bucket than the loan, against **$72.28 billion** in the opposite direction, a ratio of **2.39**. Same-bucket matches account for $359.12 billion. Even those can contain different actual dates: two transactions labelled “eight to thirty days” need not mature together. <sup class="l0g-debt4-ref"><a href="#source-07" aria-label="Source 7">[7]</a></sup>
+
+<figure class="l0g-debt4-figure" id="figure-03-matrice">
+<div class="l0g-debt4-desktop">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1110" width="1200" height="1110" style="width:100%;height:auto" role="img" aria-labelledby="d4-03-matrice-en-d-title d4-03-matrice-en-d-desc" lang="en">
+<title id="d4-03-matrice-en-d-title">When lending outlasts its funding</title><desc id="d4-03-matrice-en-d-desc">Reused collateral outstanding · 9 dealers · average of June 15, 22 and 30, 2022 · US$bn. Source: OFR [07], figure 8; l0g regrouping. Same bucket ≠ same date. Multiple collateral types.</desc>
+<rect x="0" y="0" width="1200" height="1110" rx="0" fill="var(--color-ink)"/>
+<rect x="1080" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="1144" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">03 / 06</text>
+<text x="56" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">When lending outlasts its funding</text>
+<text x="56" y="135.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Reused collateral outstanding · 9 dealers · average of June 15, 22 and 30, 2022 · US$bn</text>
+<line x1="56" y1="1010" x2="1144" y2="1010" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="1044.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Source: OFR [07], figure 8; l0g regrouping. Same bucket ≠ same date. Multiple collateral types.</text>
+<text x="56" y="258.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">Cash lent</text>
+<text x="56" y="290.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">for ↓</text>
+<text x="230" y="254" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">CASH BORROWED FOR →</text>
+<text x="302.5" y="313" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">1 day</text>
+<text x="447.5" y="313" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">2–7 d</text>
+<text x="592.5" y="313" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">8–30 d</text>
+<text x="737.5" y="313" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">&gt;30 d</text>
+<text x="200" y="398" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">1 day</text>
+<rect x="232" y="350" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-topic-blue) 16%, var(--color-ink))"/>
+<text x="302.5" y="399" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">244.76</text>
+<rect x="377" y="350" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="447.5" y="399" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">9.56</text>
+<rect x="522" y="350" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="592.5" y="399" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">12.23</text>
+<rect x="667" y="350" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="737.5" y="399" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">24.68</text>
+<text x="200" y="482" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">2–7 d</text>
+<rect x="232" y="434" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="302.5" y="483" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">19.61</text>
+<rect x="377" y="434" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-topic-blue) 16%, var(--color-ink))"/>
+<text x="447.5" y="483" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">10.86</text>
+<rect x="522" y="434" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="592.5" y="483" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">3.77</text>
+<rect x="667" y="434" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="737.5" y="483" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">4.09</text>
+<text x="200" y="566" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">8–30 d</text>
+<rect x="232" y="518" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="302.5" y="567" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">48.68</text>
+<rect x="377" y="518" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="447.5" y="567" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">6.25</text>
+<rect x="522" y="518" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-topic-blue) 16%, var(--color-ink))"/>
+<text x="592.5" y="567" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">30.17</text>
+<rect x="667" y="518" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="737.5" y="567" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">17.95</text>
+<text x="200" y="650" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">&gt;30 d</text>
+<rect x="232" y="602" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="302.5" y="651" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">79.01</text>
+<rect x="377" y="602" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="447.5" y="651" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">7.88</text>
+<rect x="522" y="602" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="592.5" y="651" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">11.50</text>
+<rect x="667" y="602" width="141" height="80" rx="7" fill="color-mix(in srgb, var(--color-topic-blue) 16%, var(--color-ink))"/>
+<text x="737.5" y="651" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">73.33</text>
+<rect x="853" y="348" width="291" height="336" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="878" y="430" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700" text-anchor="start">2.39×</text>
+<text x="878" y="478.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">more collateral in</text>
+<text x="878" y="510.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">shorter-funding</text>
+<text x="878" y="542.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">mismatches than in</text>
+<text x="878" y="574.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">the opposite</text>
+<text x="878" y="606.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">direction</text>
+<text x="56" y="757" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">TOTAL OF 16 CELLS: 604.33 US$BN</text>
+<rect x="56" y="800" width="348" height="177" rx="10" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="78" y="871" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="49" font-weight="700" text-anchor="start">172.93</text>
+<text x="78" y="917.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Shorter funding</text>
+<rect x="426" y="800" width="348" height="177" rx="10" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<text x="448" y="871" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="49" font-weight="700" text-anchor="start">359.12</text>
+<text x="448" y="917.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Same bucket</text>
+<rect x="796" y="800" width="348" height="177" rx="10" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="818" y="871" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="49" font-weight="700" text-anchor="start">72.28</text>
+<text x="818" y="917.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Longer funding</text>
+</svg>
+</div>
+<div class="l0g-debt4-mobile">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1520" width="640" height="1520" style="width:100%;height:auto" role="img" aria-labelledby="d4-03-matrice-en-m-title d4-03-matrice-en-m-desc" lang="en">
+<title id="d4-03-matrice-en-m-title">When lending outlasts its funding</title><desc id="d4-03-matrice-en-m-desc">Reused collateral outstanding · 9 dealers · average of June 15, 22 and 30, 2022 · US$bn. Source: OFR [07], figure 8; l0g regrouping. Same bucket ≠ same date. Multiple collateral types.</desc>
+<rect x="0" y="0" width="640" height="1520" rx="0" fill="var(--color-ink)"/>
+<rect x="520" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="604" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">03 / 06</text>
+<text x="36" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">When lending outlasts its</text>
+<text x="36" y="145.45999999999998" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">funding</text>
+<text x="36" y="179.45999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Reused collateral outstanding · 9 dealers · average of</text>
+<text x="36" y="208.89999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">June 15, 22 and 30, 2022 · US$bn</text>
+<line x1="36" y1="1420" x2="604" y2="1420" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1454.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Source: OFR [07], figure 8; l0g regrouping. Same bucket ≠</text>
+<text x="36" y="1479.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">same date. Multiple collateral types.</text>
+<text x="36" y="260.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Cash lent: rows.</text>
+<text x="36" y="293.28" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Cash borrowed: columns.</text>
+<text x="208.0" y="390" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">1 d</text>
+<text x="320.0" y="390" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">2–7 d</text>
+<text x="432.0" y="390" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">8–30 d</text>
+<text x="544.0" y="390" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">&gt;30 d</text>
+<text x="137" y="481" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">1 d</text>
+<rect x="154" y="427" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-topic-blue) 16%, var(--color-ink))"/>
+<text x="208.0" y="482" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">244.76</text>
+<rect x="266" y="427" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="320.0" y="482" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">9.56</text>
+<rect x="378" y="427" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="432.0" y="482" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">12.23</text>
+<rect x="490" y="427" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="544.0" y="482" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">24.68</text>
+<text x="137" y="577" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">2–7 d</text>
+<rect x="154" y="523" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="208.0" y="578" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">19.61</text>
+<rect x="266" y="523" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-topic-blue) 16%, var(--color-ink))"/>
+<text x="320.0" y="578" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">10.86</text>
+<rect x="378" y="523" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="432.0" y="578" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">3.77</text>
+<rect x="490" y="523" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="544.0" y="578" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">4.09</text>
+<text x="137" y="673" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">8–30 d</text>
+<rect x="154" y="619" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="208.0" y="674" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">48.68</text>
+<rect x="266" y="619" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="320.0" y="674" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">6.25</text>
+<rect x="378" y="619" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-topic-blue) 16%, var(--color-ink))"/>
+<text x="432.0" y="674" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">30.17</text>
+<rect x="490" y="619" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-signal) 14%, var(--color-ink))"/>
+<text x="544.0" y="674" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">17.95</text>
+<text x="137" y="769" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">&gt;30 d</text>
+<rect x="154" y="715" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="208.0" y="770" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">79.01</text>
+<rect x="266" y="715" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="320.0" y="770" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">7.88</text>
+<rect x="378" y="715" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-amber) 25%, var(--color-ink))"/>
+<text x="432.0" y="770" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">11.50</text>
+<rect x="490" y="715" width="108" height="92" rx="7" fill="color-mix(in srgb, var(--color-topic-blue) 16%, var(--color-ink))"/>
+<text x="544.0" y="770" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">73.33</text>
+<text x="36" y="911" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="700" text-anchor="start">2.39×</text>
+<text x="278" y="868.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">short / long: ratio of the</text>
+<text x="278" y="901.28" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">two mismatches</text>
+<rect x="36" y="976" width="568" height="97" rx="10" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="58" y="1038" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="41" font-weight="700" text-anchor="start">172.93</text>
+<text x="247" y="1016.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Shorter funding</text>
+<rect x="36" y="1089" width="568" height="97" rx="10" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<text x="58" y="1151" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="41" font-weight="700" text-anchor="start">359.12</text>
+<text x="247" y="1129.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Same maturity bucket</text>
+<rect x="36" y="1202" width="568" height="97" rx="10" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="58" y="1264" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="41" font-weight="700" text-anchor="start">72.28</text>
+<text x="247" y="1242.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Longer funding</text>
+<text x="36" y="1364" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Total: US$604.33bn</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt4-kind">Published data · l0g calculations</span><strong>The 2022 sample shows a measurable asymmetry.</strong>The 16 cells reproduce OFR figure 8, published November 14, 2024. Rows describe how long dealers lend cash; columns describe their own borrowing. l0g calculation: 172.93 / 72.28 = 2.3925. This rounded matrix totals $604.33bn. The buckets do not establish exact maturity matching or describe the market in 2026. <sup class="l0g-debt4-ref"><a href="#source-07" aria-label="Source 7">[7]</a></sup></figcaption>
+
+</figure>
+
+These are observations from a limited historical sample, not a measure of positions in October 2026. They make a financing choice visible. An intermediary can give its customer more time than it obtains from its own lender. It provides a service while retaining the task of refinancing. Evaluating its resilience would then require its liquidity resources, other funding providers and committed facilities.
+
+
+## Zero haircuts and negotiated protection
+
+
+The loan amount relative to the securities’ value is another negotiation. In our example, advancing 99 against 100 of [collateral](/en/glossary/collateral/) produces a 1% financing discount, or [*haircut*](/en/glossary/haircut-repo/). It leaves a cushion for the lender if the securities must be sold at an unfavourable price. At the next link, the dealer borrows 98 against the same 100, implying a 2% haircut.
+
+In August 2025, the OFR published results from its collection on non-centrally cleared bilateral repo. On a daily-average basis from January 2 to May 30, 2025, across all collateral types, **56%** of outstanding balances had a zero haircut, 34% a positive haircut and 10% a negative one. Excluding affiliated counterparties, the zero-haircut share was **42%**. A negative haircut here means the cash lent exceeds the securities’ value. Excluding affiliates changes the denominator; it does not show a decline over time. <sup class="l0g-debt4-ref"><a href="#source-13" aria-label="Source 13">[13]</a></sup>
+
+<figure class="l0g-debt4-figure" id="figure-04-haircuts">
+<div class="l0g-debt4-desktop">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 970" width="1200" height="970" style="width:100%;height:auto" role="img" aria-labelledby="d4-04-haircuts-en-d-title d4-04-haircuts-en-d-desc" lang="en">
+<title id="d4-04-haircuts-en-d-title">56% of balances carry no transaction haircut</title><desc id="d4-04-haircuts-en-d-desc">Uncleared bilateral repo · January 2–May 30, 2025 · shares of outstanding. Source: OFR [13], August 12, 2025. All collateral. Transaction haircuts do not capture every protection.</desc>
+<rect x="0" y="0" width="1200" height="970" rx="0" fill="var(--color-ink)"/>
+<rect x="1080" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="1144" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">04 / 06</text>
+<text x="56" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">56% of balances carry no transaction haircut</text>
+<text x="56" y="135.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Uncleared bilateral repo · January 2–May 30, 2025 · shares of outstanding</text>
+<line x1="56" y1="870" x2="1144" y2="870" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="904.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Source: OFR [13], August 12, 2025. All collateral. Transaction haircuts do not capture every protection.</text>
+<text x="56" y="247" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">ALL COUNTERPARTIES IN THE COLLECTION</text>
+<rect x="56" y="292" width="607.28" height="108" rx="0" fill="var(--color-signal)"/>
+<text x="360.64" y="362" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" text-anchor="middle">56%</text>
+<text x="360.64" y="449" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="middle">Zero</text>
+<rect x="665.28" y="292" width="367.92" height="108" rx="0" fill="var(--color-topic-blue)"/>
+<text x="850.24" y="362" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" text-anchor="middle">34%</text>
+<text x="850.24" y="449" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="middle">Positive</text>
+<rect x="1035.2" y="292" width="106.8" height="108" rx="0" fill="var(--color-amber)"/>
+<text x="1089.6000000000001" y="362" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="middle">10%</text>
+<text x="1089.6000000000001" y="449" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="middle">Negative</text>
+<line x1="56" y1="510" x2="1144" y2="510" stroke="var(--color-line-strong)" stroke-width="2"/>
+<rect x="56" y="557" width="1088" height="253" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="84" y="653" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="83" font-weight="700" text-anchor="start">42%</text>
+<text x="374" y="612.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="start">Zero-haircut share after affiliated counterparties</text>
+<text x="374" y="651.68" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="start">are excluded</text>
+<text x="84" y="744.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Same period. New denominator. This comparison does not measure a change over time.</text>
+</svg>
+</div>
+<div class="l0g-debt4-mobile">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1420" width="640" height="1420" style="width:100%;height:auto" role="img" aria-labelledby="d4-04-haircuts-en-m-title d4-04-haircuts-en-m-desc" lang="en">
+<title id="d4-04-haircuts-en-m-title">56% of balances carry no transaction haircut</title><desc id="d4-04-haircuts-en-m-desc">Uncleared bilateral repo · January 2–May 30, 2025 · shares of outstanding. Source: OFR [13], August 12, 2025. All collateral. Transaction haircuts do not capture every protection.</desc>
+<rect x="0" y="0" width="640" height="1420" rx="0" fill="var(--color-ink)"/>
+<rect x="520" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="604" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">04 / 06</text>
+<text x="36" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">56% of balances carry no</text>
+<text x="36" y="145.45999999999998" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">transaction haircut</text>
+<text x="36" y="179.45999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Uncleared bilateral repo · January 2–May 30, 2025 ·</text>
+<text x="36" y="208.89999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">shares of outstanding</text>
+<line x1="36" y1="1320" x2="604" y2="1320" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1354.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Source: OFR [13], August 12, 2025. All collateral. Transaction</text>
+<text x="36" y="1379.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">haircuts do not capture every protection.</text>
+<text x="36" y="260.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">All counterparties in the collection</text>
+<rect x="36" y="342" width="317.08" height="90" rx="0" fill="var(--color-signal)"/>
+<text x="195.04" y="399" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="middle">56%</text>
+<rect x="354.08" y="342" width="192.12" height="90" rx="0" fill="var(--color-topic-blue)"/>
+<text x="450.64" y="399" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="middle">34%</text>
+<rect x="547.2" y="342" width="55.8" height="90" rx="0" fill="var(--color-amber)"/>
+<text x="575.6" y="399" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle">10%</text>
+<circle cx="50" cy="506" r="9" fill="var(--color-signal)"/>
+<text x="79" y="517" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">Zero</text>
+<text x="597" y="520" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="end">56%</text>
+<circle cx="50" cy="613" r="9" fill="var(--color-topic-blue)"/>
+<text x="79" y="624" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">Positive</text>
+<text x="597" y="627" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="end">34%</text>
+<circle cx="50" cy="720" r="9" fill="var(--color-amber)"/>
+<text x="79" y="731" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">Negative</text>
+<text x="597" y="734" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="end">10%</text>
+<rect x="36" y="851" width="568" height="294" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="62" y="948" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="79" font-weight="700" text-anchor="start">42%</text>
+<text x="62" y="1008.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">at zero haircut after affiliated</text>
+<text x="62" y="1045.12" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">counterparties are excluded</text>
+<text x="36" y="1202.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="start">Same period, different population: this is not a</text>
+<text x="36" y="1236.56" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="start">fall over time.</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt4-kind">Published observations</span><strong>The haircut must be read with its population.</strong>56% zero, 34% positive and 10% negative: outstanding uncleared bilateral repo, all collateral, January 2–May 30, 2025. The 42% figure excludes affiliated counterparties from its denominator. It is neither a 14-point historical decline nor a measure of all portfolio margin. <sup class="l0g-debt4-ref"><a href="#source-13" aria-label="Source 13">[13]</a></sup><sup class="l0g-debt4-ref"><a href="#source-14" aria-label="Source 14">[14]</a></sup></figcaption>
+
+</figure>
+
+A zero haircut describes the relationship between cash and securities within the transaction. Other protections may apply to the portfolio, the counterparty or an agreement allowing several obligations to be closed out together. A Federal Reserve study on proportionate margining considers these offsets and the risks faced on both sides. The original holder of the security, now borrowing cash, also needs the asset returned. <sup class="l0g-debt4-ref"><a href="#source-14" aria-label="Source 14">[14]</a></sup>
+
+The next question is what legal rights and resources the lender relies on when the visible haircut is small. An attractive economic hedge on a trading screen provides legal protection only to the extent that it can be used under the governing contracts. Comparing haircuts outside that broader portfolio context supplies a reason to investigate, rather than a complete ranking of risk.
+
+Commercial incentives deserve scrutiny nonetheless. In a thematic review published on October 5, 2023, the UK’s Prudential Regulation Authority identified practices in which certain important clients’ haircuts were not subject to independent risk approval, alongside the influence of market conventions and commercial pressure. That historical review concerned the firms examined. It did not provide a list of institutions to accuse of the same conduct today. <sup class="l0g-debt4-ref"><a href="#source-15" aria-label="Source 15">[15]</a></sup>
+
+The question remains current. In a piece published on July 17, 2026, Bank of England deputy governor Sarah Breeden recognised the value of portfolio offsets while stressing legal robustness, stress assessment and governance. Attractive financing helps win customers. Its protection must still work when the positions involved stop moving conveniently together. <sup class="l0g-debt4-ref"><a href="#source-16" aria-label="Source 16">[16]</a></sup>
+
+
+## Existing collateral, additional margin
+
+
+Return to the transaction announced in December 2025. It belongs to a structure in which a cash lender can use both a collateral-management agent and central clearing. Those are different functions. A tri-party agent manages accounts and the agreed transfers. A [central counterparty](/en/glossary/ccp/) interposes itself in the obligations it accepts, applying its own protection framework. A custodian’s presence alone does not make it the guarantor of a loan. <sup class="l0g-debt4-ref"><a href="#source-05" aria-label="Source 5">[5]</a></sup>
+
+In FICC’s *Sponsored GC* service, the lender accepts securities from an eligible pool. The initial exchange of cash for securities settles away from the clearing house. The return leg is novated once submission, matching and initial-leg settlement conditions are met: the original return obligations are replaced with obligations involving FICC under its rules. The earlier structure described by the SEC could combine collateral already delivered to the lender, a guarantee from its sponsor, the member providing access to FICC, and additional margin resources. <sup class="l0g-debt4-ref"><a href="#source-02" aria-label="Source 2">[2]</a></sup>
+
+*Collateral-in-Lieu* offers another route for the relevant cash lender obligations. The lender grants FICC a security interest in the securities held in its tri-party account. The rulebook governs the use of that protection in place of certain requirements separately involving the sponsor and margin. The clearing house can rely on the transaction’s existing collateral. Access conditions and provisions for additional resources remain. <sup class="l0g-debt4-ref"><a href="#source-02" aria-label="Source 2">[2]</a></sup><sup class="l0g-debt4-ref"><a href="#source-03" aria-label="Source 3">[3]</a></sup>
+
+A second, independent illustration makes the calculation clear: **$100 million in cash against $102 million in securities**. The minimum 2% CIL haircut is defined relative to the initial cash amount. It therefore requires $2 million of additional securities. Relative to the $102 million of collateral, that difference is approximately 1.96%. The denominator explains the difference from the convention used in our first scenario. The rulebook requires at least thirty business days’ notice of changes to the required haircut and excludes already novated trades from those changes. That boundary separates future financing terms from accepted commitments. <sup class="l0g-debt4-ref"><a href="#source-03" aria-label="Source 3">[3]</a></sup>
+
+<figure class="l0g-debt4-figure" id="figure-05-cil">
+<div class="l0g-debt4-desktop">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1150" width="1200" height="1150" style="width:100%;height:auto" role="img" aria-labelledby="d4-05-cil-en-d-title d4-05-cil-en-d-desc" lang="en">
+<title id="d4-05-cil-en-d-title">A right over securities already there</title><desc id="d4-05-cil-en-d-desc">Collateral-in-Lieu · simplified mechanism · illustrative $100m cash loan. SEC [02], FICC [03]: 2% of initial cash. Only the end leg is novated. Additional requirements may apply.</desc>
+<rect x="0" y="0" width="1200" height="1150" rx="0" fill="var(--color-ink)"/>
+<rect x="1080" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="1144" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">05 / 06</text>
+<text x="56" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">A right over securities already there</text>
+<text x="56" y="135.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Collateral-in-Lieu · simplified mechanism · illustrative $100m cash loan</text>
+<line x1="56" y1="1050" x2="1144" y2="1050" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="1084.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">SEC [02], FICC [03]: 2% of initial cash. Only the end leg is novated. Additional requirements may apply.</text>
+<rect x="56" y="249" width="292" height="168" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<rect x="56" y="249" width="5" height="168" rx="2" fill="var(--color-signal)"/>
+<text x="78" y="288.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">Cash borrower</text>
+<text x="78" y="321.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Receives the cash</text>
+<rect x="852" y="249" width="292" height="168" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<rect x="852" y="249" width="5" height="168" rx="2" fill="var(--color-amber)"/>
+<text x="874" y="288.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">Cash lender</text>
+<text x="874" y="321.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Receives securities</text>
+<line x1="832" y1="290" x2="368" y2="290" stroke="var(--color-signal)" stroke-width="4"/>
+<polygon points="368.00,290.00 378.00,285.41 378.00,294.59" fill="var(--color-signal)"/>
+<text x="600" y="273" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">$100m cash</text>
+<line x1="368" y1="384" x2="832" y2="384" stroke="var(--color-amber)" stroke-width="4"/>
+<polygon points="832.00,384.00 822.00,388.59 822.00,379.41" fill="var(--color-amber)"/>
+<text x="600" y="366" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">$102m securities</text>
+<text x="600" y="462" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="middle">Initial exchange settles away from FICC</text>
+<rect x="56" y="504" width="1088" height="271" rx="14" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="85" y="549" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">LENDER’S TRI-PARTY ACCOUNT</text>
+<rect x="85" y="587" width="514" height="143" rx="12" fill="color-mix(in srgb, var(--color-amber) 10%, var(--color-ink))" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="111" y="666" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="60" font-weight="700" text-anchor="start">$102m</text>
+<text x="111" y="704" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">100 cash + 2 protection</text>
+<text x="675" y="600.0" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">Security interest granted to</text>
+<text x="675" y="638.4" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">FICC</text>
+<text x="675" y="704.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">The securities stay in the designated</text>
+<text x="675" y="734.72" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">account.</text>
+<rect x="704" y="858" width="440" height="157" rx="12" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<text x="730" y="911" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">FICC</text>
+<text x="730" y="953.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">Protection of the end-leg</text>
+<text x="730" y="985.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">obligations</text>
+<line x1="925" y1="849" x2="925" y2="784" stroke="var(--color-topic-blue)" stroke-width="4" stroke-dasharray="7 6"/>
+<polygon points="925.00,784.00 929.59,794.00 920.41,794.00" fill="var(--color-topic-blue)"/>
+<text x="1000" y="824" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="middle">right</text>
+<text x="56" y="881.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">Fewer additional resources tied up,</text>
+<text x="56" y="919.4" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">subject to conditions.</text>
+<text x="56" y="993.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">2 / 100 = 2% of cash; 2 / 102 ≈ 1.96% of securities.</text>
+</svg>
+</div>
+<div class="l0g-debt4-mobile">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1700" width="640" height="1700" style="width:100%;height:auto" role="img" aria-labelledby="d4-05-cil-en-m-title d4-05-cil-en-m-desc" lang="en">
+<title id="d4-05-cil-en-m-title">A right over securities already there</title><desc id="d4-05-cil-en-m-desc">Collateral-in-Lieu · simplified mechanism · illustrative $100m cash loan. SEC [02], FICC [03]: 2% of initial cash. Only the end leg is novated. Additional requirements may apply.</desc>
+<rect x="0" y="0" width="640" height="1700" rx="0" fill="var(--color-ink)"/>
+<rect x="520" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="604" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">05 / 06</text>
+<text x="36" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">A right over securities already</text>
+<text x="36" y="145.45999999999998" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">there</text>
+<text x="36" y="179.45999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Collateral-in-Lieu · simplified mechanism · illustrative</text>
+<text x="36" y="208.89999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">$100m cash loan</text>
+<line x1="36" y1="1600" x2="604" y2="1600" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1634.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">SEC [02], FICC [03]: 2% of initial cash. Only the end leg is</text>
+<text x="36" y="1659.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">novated. Additional requirements may apply.</text>
+<rect x="36" y="270" width="230" height="167" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<rect x="36" y="270" width="5" height="167" rx="2" fill="var(--color-signal)"/>
+<text x="58" y="309.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Borrower</text>
+<text x="58" y="342.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Receives cash</text>
+<rect x="374" y="270" width="230" height="167" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<rect x="374" y="270" width="5" height="167" rx="2" fill="var(--color-amber)"/>
+<text x="396" y="309.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Lender</text>
+<text x="396" y="342.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Receives bonds</text>
+<line x1="362" y1="322" x2="278" y2="322" stroke="var(--color-signal)" stroke-width="4"/>
+<polygon points="278.00,322.00 288.00,317.41 288.00,326.59" fill="var(--color-signal)"/>
+<text x="320" y="305" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">100</text>
+<line x1="278" y1="401" x2="362" y2="401" stroke="var(--color-amber)" stroke-width="4"/>
+<polygon points="362.00,401.00 352.00,405.59 352.00,396.41" fill="var(--color-amber)"/>
+<text x="320" y="383" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">102</text>
+<text x="320" y="482" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="middle">Start leg away from FICC</text>
+<rect x="36" y="541" width="568" height="420" rx="14" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="62" y="585.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">Lender’s tri-party account</text>
+<rect x="62" y="653" width="516" height="161" rx="12" fill="color-mix(in srgb, var(--color-amber) 10%, var(--color-ink))" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="87" y="734" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="700" text-anchor="start">$102m</text>
+<text x="87" y="781" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400" text-anchor="start">100 cash + 2</text>
+<text x="62" y="872.0" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">FICC security interest over securities</text>
+<text x="62" y="907.84" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">already in the account</text>
+<line x1="320" y1="1055" x2="320" y2="977" stroke="var(--color-topic-blue)" stroke-width="4" stroke-dasharray="7 6"/>
+<polygon points="320.00,977.00 324.59,987.00 315.41,987.00" fill="var(--color-topic-blue)"/>
+<text x="350" y="1029" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">right</text>
+<rect x="80" y="1071" width="480" height="176" rx="12" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<text x="108" y="1125" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" text-anchor="start">FICC</text>
+<text x="108" y="1175.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">Protection of the end-leg</text>
+<text x="108" y="1210.84" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">obligations</text>
+<text x="36" y="1320.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="start">The protection replaces certain</text>
+<text x="36" y="1359.68" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="start">separately supplied resources.</text>
+<text x="36" y="1471.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="start">2% of initial cash equals about 1.96% of the</text>
+<text x="36" y="1505.56" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="start">securities here.</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt4-kind">Verified rules · hypothetical amounts</span><strong>A clearing-house security interest over collateral already delivered.</strong>Simplified CIL mechanism with hypothetical amounts. The 2% minimum uses initial cash: $100m against $102m of securities. The start leg settles away from FICC; only the end leg is novated. The security interest replaces certain separate protections, subject to the rulebook and possible additional requirements. It is not another loan secured against those securities. <sup class="l0g-debt4-ref"><a href="#source-01" aria-label="Source 1">[1]</a></sup><sup class="l0g-debt4-ref"><a href="#source-02" aria-label="Source 2">[2]</a></sup><sup class="l0g-debt4-ref"><a href="#source-03" aria-label="Source 3">[3]</a></sup></figcaption>
+
+</figure>
+
+The operators’ claimed saving comes from reducing additional resource requirements when this protection can be recognised. It could make some transactions cheaper or support more activity with given resources. The launch announcement measures neither the effect on prices nor its market-wide scale. It cannot support a quantified claim about the collective benefit. <sup class="l0g-debt4-ref"><a href="#source-01" aria-label="Source 1">[1]</a></sup>
+
+The security interest also depends on careful legal engineering. The rulebook annex governs custodian instructions, collateral withdrawals and the effects of default notices. Transfers and releases must respect the prescribed settlement conditions. FICC’s rights do not amount to unrestricted access to the securities while ignoring cash owed to the lender. The arrangement is designed to permit completion of the transaction despite a participant’s failure. <sup class="l0g-debt4-ref"><a href="#source-03" aria-label="Source 3">[3]</a></sup>
+
+The change in protection is the key point. In our first chain, collateral reuse supports a second repo and supplies additional financing. Under CIL, a security interest for the clearing house uses securities already present to protect the cleared transaction. Asset circulation and the allocation of rights serve different purposes. A diagram showing one bond connected to several corporate logos would conceal that distinction.
+
+
+## Settlement of accepted obligations
+
+
+What does this architecture offer the investor holding government debt? Better-organised performance of accepted obligations, subject to the clearing house’s rules and resources. A fund seeking to keep its portfolio beyond maturity still needs the next financing transaction. The contract ending today and the possible contract starting tomorrow remain separate decisions.
+
+Consider the dealer’s $98 million again. Effective clearing can support completion of today’s transaction. It cannot compel the money fund to lend again thirty seconds later. The clearing house can facilitate transfers and manage accepted risks without taking responsibility for all its members’ future plans. Confusing reliable settlement with a revolving credit commitment would erase the calendar we have just reconstructed.
+
+That calendar meets the timetable of US market reform. The SEC set compliance dates of **December 31, 2026 for covered cash-market transactions** and **June 30, 2027 for eligible repos**. As of October 11, 2026, both are still ahead. Eligibility conditions matter: the requirement does not apply uniformly to every transaction involving US government debt. <sup class="l0g-debt4-ref"><a href="#source-18" aria-label="Source 18">[18]</a></sup>
+
+The move into clearing is not a smooth upward progression. In an August 20, 2026 post, the OFR reported a **72% peak at year-end 2025**, followed by a plateau around **62%**, for fixed-term Treasury repos between non-affiliated counterparties. Its observations run through April 23, 2026. Across the broader universe of all Treasury repo, the plateau is close to **46%**. Those shares describe different populations. The fixed-term, non-affiliated subset approximates the reform’s scope; it does not account for every regulatory exclusion. <sup class="l0g-debt4-ref"><a href="#source-19" aria-label="Source 19">[19]</a></sup>
+
+<figure class="l0g-debt4-figure" id="figure-06-compensation">
+<div class="l0g-debt4-desktop">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1130" width="1200" height="1130" style="width:100%;height:auto" role="img" aria-labelledby="d4-06-compensation-en-d-title d4-06-compensation-en-d-desc" lang="en">
+<title id="d4-06-compensation-en-d-title">Clearing does not rise in a straight line</title><desc id="d4-06-compensation-en-d-desc">Shares of Treasury repo outstanding · observations through April 23, 2026. Sources: OFR [19] (August 20, 2026), SEC [18]. Rounded shares. Regulatory dates cover eligible transactions.</desc>
+<rect x="0" y="0" width="1200" height="1130" rx="0" fill="var(--color-ink)"/>
+<rect x="1080" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="1144" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">06 / 06</text>
+<text x="56" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">Clearing does not rise in a straight line</text>
+<text x="56" y="135.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Shares of Treasury repo outstanding · observations through April 23, 2026</text>
+<line x1="56" y1="1030" x2="1144" y2="1030" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="1064.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Sources: OFR [19] (August 20, 2026), SEC [18]. Rounded shares. Regulatory dates cover eligible transactions.</text>
+<text x="56" y="244" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">FIXED-TERM, NON-AFFILIATED COUNTERPARTIES</text>
+<text x="56" y="301" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">Year-end 2025 peak</text>
+<rect x="56" y="327" width="700" height="45" rx="5" fill="var(--color-surface-2)"/>
+<rect x="56" y="327" width="504.0" height="45" rx="5" fill="var(--color-signal)"/>
+<text x="796" y="370" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700" text-anchor="start">72%</text>
+<text x="56" y="438" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">Q1 2026 plateau</text>
+<rect x="56" y="464" width="700" height="45" rx="5" fill="var(--color-surface-2)"/>
+<rect x="56" y="464" width="434.0" height="45" rx="5" fill="var(--color-signal)"/>
+<text x="796" y="507" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700" text-anchor="start">≈ 62%</text>
+<rect x="56" y="566" width="1088" height="151" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="83" y="659" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="700" text-anchor="start">≈ 46%</text>
+<text x="395" y="618.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">All Treasury repos: a broader population</text>
+<text x="56" y="797" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">COMPLIANCE DEADLINES STILL AHEAD ON OCTOBER 11, 2026</text>
+<rect x="56" y="837" width="528" height="139" rx="12" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<text x="79" y="895" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">31.12.2026</text>
+<text x="79" y="942" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="start">Covered cash trades</text>
+<rect x="616" y="837" width="528" height="139" rx="12" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<text x="639" y="895" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">30.06.2027</text>
+<text x="639" y="942" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="start">Eligible repos</text>
+</svg>
+</div>
+<div class="l0g-debt4-mobile">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1780" width="640" height="1780" style="width:100%;height:auto" role="img" aria-labelledby="d4-06-compensation-en-m-title d4-06-compensation-en-m-desc" lang="en">
+<title id="d4-06-compensation-en-m-title">Clearing does not rise in a straight line</title><desc id="d4-06-compensation-en-m-desc">Shares of Treasury repo outstanding · observations through April 23, 2026. Sources: OFR [19] (August 20, 2026), SEC [18]. Rounded shares. Regulatory dates cover eligible transactions.</desc>
+<rect x="0" y="0" width="640" height="1780" rx="0" fill="var(--color-ink)"/>
+<rect x="520" y="0" width="120" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="43" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g  /  GOVERNMENT DEBT</text>
+<text x="604" y="43" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">06 / 06</text>
+<text x="36" y="101.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">Clearing does not rise in a</text>
+<text x="36" y="145.45999999999998" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="start">straight line</text>
+<text x="36" y="179.45999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Shares of Treasury repo outstanding · observations</text>
+<text x="36" y="208.89999999999998" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">through April 23, 2026</text>
+<line x1="36" y1="1680" x2="604" y2="1680" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1714.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Sources: OFR [19] (August 20, 2026), SEC [18]. Rounded</text>
+<text x="36" y="1739.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">shares. Regulatory dates cover eligible transactions.</text>
+<text x="36" y="256.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">Fixed-term, non-affiliated counterparties</text>
+<text x="36" y="392" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="start">Year-end 2025 peak</text>
+<text x="36" y="477" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="700" text-anchor="start">72%</text>
+<rect x="36" y="504" width="568" height="32" rx="4" fill="var(--color-surface-2)"/>
+<rect x="36" y="504" width="408.96" height="32" rx="4" fill="var(--color-signal)"/>
+<text x="36" y="609" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="start">Q1 2026 plateau</text>
+<text x="36" y="694" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="700" text-anchor="start">≈ 62%</text>
+<rect x="36" y="721" width="568" height="32" rx="4" fill="var(--color-surface-2)"/>
+<rect x="36" y="721" width="352.16" height="32" rx="4" fill="var(--color-signal)"/>
+<rect x="36" y="842" width="568" height="234" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="60" y="926" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="700" text-anchor="start">≈ 46%</text>
+<text x="60" y="984.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">All Treasury repos: a broader</text>
+<text x="60" y="1019.84" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">population</text>
+<text x="36" y="1154.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">Compliance dates still ahead on October</text>
+<text x="36" y="1189.84" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">11, 2026</text>
+<rect x="36" y="1278" width="568" height="147" rx="12" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<text x="60" y="1337" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" text-anchor="start">31.12.2026</text>
+<text x="60" y="1387" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400" text-anchor="start">Covered cash trades</text>
+<rect x="36" y="1459" width="568" height="147" rx="12" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<text x="60" y="1518" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" text-anchor="start">30.06.2027</text>
+<text x="60" y="1568" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400" text-anchor="start">Eligible repos</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt4-kind">Published observations</span><strong>A peak, a plateau and two statistical universes.</strong>The fixed-term non-affiliate subset reaches 72% at year-end 2025, then roughly 62% at the plateau. The figure near 46% covers all Treasury repos. OFR observations span July 1, 2025–April 23, 2026, published August 20. Compliance deadlines are still ahead on October 11, 2026 and apply within the regulatory scope. No causal effect of CIL is isolated. <sup class="l0g-debt4-ref"><a href="#source-18" aria-label="Source 18">[18]</a></sup><sup class="l0g-debt4-ref"><a href="#source-19" aria-label="Source 19">[19]</a></sup></figcaption>
+
+</figure>
+
+A retreat from a year-end peak cannot, on its own, establish the reform’s outcome. Funding choices, changes in the market’s composition and calendar effects can all contribute. Nor can that pattern be attributed to CIL simply because its launch occurred around the same time. The published observations do not isolate the service’s causal contribution.
+
+Commercial arrangements are still adapting. On July 30, 2026, SIFMA published a model clearing agreement for *done-away* transactions, in which the executing intermediary and clearing provider can be different firms. A template helps parties negotiate responsibilities. It does not establish that every investor has found a provider, or that the agreements ultimately signed have identical terms. <sup class="l0g-debt4-ref"><a href="#source-20" aria-label="Source 20">[20]</a></sup>
+
+
+## Protection has a funding cost
+
+
+Requiring more margin can look prudent when examining one transaction. The next questions are where the necessary assets will come from, when they will be available and how the requirement will change the price or duration of credit. Protecting one lender meets the functioning of the wider market at precisely that point.
+
+In its feedback statement published on April 1, 2026, the Bank of England set out the debate on gilt repo resilience. Responses raised the costs of haircut floors and possible migration of activity. Several issues attracted little quantitative evidence. Work planned for 2026 and possible proposals in early 2027 do not constitute an adopted minimum haircut. <sup class="l0g-debt4-ref"><a href="#source-17" aria-label="Source 17">[17]</a></sup>
+
+The Financial Policy Committee record published on September 30, 2026 confirms that work on central clearing and minimum haircuts is continuing. Proposals are still envisaged for early 2027; policy development remains under way. <sup class="l0g-debt4-ref"><a href="#source-21" aria-label="Source 21">[21]</a></sup>
+
+The objections deserve testing even when raised by participants with a commercial interest in favourable financing. Depending on its calibration, a rule making longer loans much more expensive could encourage shorter borrowing. This conditional argument describes an effect to test. It would strengthen one cushion while increasing the frequency of refinancing. Conversely, accepting every proposed portfolio offset without scrutiny could make protection depend on correlations that weaken under stress. The comparison must include these competing effects without inventing their numerical importance.
+
+The name of a bondholder can no longer carry the whole explanation of demand for government debt. It needs to be accompanied by a funding chain and a calendar of rights. The bond can remain sound while a lender wants its cash back. An intermediary can honour its customer’s contract while searching for replacement funding. A clearing house can protect accepted obligations without promising to extend them.
+
+The next episode will follow the moment when this architecture creates a specific demand: deliver additional cash or securities by a particular deadline. One distinction already improves the reading of the market: **collateral requirements and funding duration are negotiated separately**. The chain’s resilience depends on how they fit together.
+
+
+## Method and scope
+
+
+This episode draws on institutional publications, market rules and legislation accessed on October 11, 2026. The $100 million transactions are hypothetical. The OFR matrix’s 16 cells were transcribed and regrouped by maturity bucket; the cells below the diagonal sum to $172.93 billion and those above it to $72.28 billion, giving 172.93 / 72.28 ≈ 2.39. The diagonal totals $359.12 billion; all 16 cells total $604.33 billion. No interviews, executed private contracts or confidential portfolios are represented as obtained. CIL’s operators supplied the launch announcement; the SEC approval and FICC rulebook were used to cross-check the mechanics. Date, coverage and collection limitations are stated in the text, captions and references below.
+
+
+## Sources and reading notes
+
+<ol class="l0g-debt4-sources">
+<li id="source-01"><strong>[1] DTCC / BNY / Federated Hermes. DTCC’s FICC and BNY Launch Collateral-in-Lieu Service</strong><span class="l0g-debt4-dates">Publication : December 23, 2025. Period / scope : First trade announced on December 23, 2025.</span><a class="l0g-debt4-url" href="https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/dtccs-ficc-and-bny-launch-collateral-in-lieu-service-via-bnys-global-collateral-platform.html">{"https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/dtccs-ficc-and-bny-launch-collateral-in-lieu-service-via-bnys-global-collateral-platform.html"}</a> Joint participant announcement. BNY Securities Finance and Federated Hermes are named, but no trade amount or specific legal fund is disclosed. Claimed benefits are not independently measured outcomes.</li>
+<li id="source-02"><strong>[2] SEC. Order approving SR-FICC-2025-019, Release 34-104374A</strong><span class="l0g-debt4-dates">Publication : December 12, 2025. Period / scope : Regulatory approval dated December 12, 2025; CIL design.</span><a class="l0g-debt4-url" href="https://www.sec.gov/files/rules/sro/ficc/2025/34-104374a.pdf">{"https://www.sec.gov/files/rules/sro/ficc/2025/34-104374a.pdf"}</a> Final approval order, not merely a proposal. The Sponsored GC start leg settles away from FICC; the end leg is novated. Exceptions and additional resources remain.</li>
+<li id="source-03"><strong>[3] FICC / DTCC. Government Securities Division Rulebook, as of August 26, 2026</strong><span class="l0g-debt4-dates">Publication : August 26, 2026. Period / scope : Rulebook version dated August 26, 2026, accessed October 11.</span><a class="l0g-debt4-url" href="https://files.dtcc.com/download/assets/FICC-GSD%2BRulebook%2B%E2%80%93%2B2026-0826%2BFinal.pdf/b6c07124ceb411f09c9062cd3fe05a01">{"https://files.dtcc.com/download/assets/FICC-GSD%2BRulebook%2B%E2%80%93%2B2026-0826%2BFinal.pdf/b6c07124ceb411f09c9062cd3fe05a01"}</a> Operative rulebook cross-check. CIL minimum uses initial cash as its base; changes require advance notice and do not apply to already novated trades. Custodian instructions and lien enforcement are constrained. Targeted reading, not an exhaustive audit of 381 pages. Current rulebook cross-check: <a href="https://www.dtcc.com/~/media/Files/Downloads/legal/rules/ficc_gov_rules.pdf">FICC Government Securities Division Rulebook</a>.</li>
+<li id="source-04"><strong>[4] Federal Reserve Bank of New York. Who’s Borrowing and Lending in Repo Markets?</strong><span class="l0g-debt4-dates">Publication : September 28, 2026. Period / scope : Private MMF repo lending: January 2021 and January 2026; rounded values.</span><a class="l0g-debt4-url" href="https://libertystreeteconomics.newyorkfed.org/2026/09/whos-borrowing-and-lending-in-repo-markets/">{"https://libertystreeteconomics.newyorkfed.org/2026/09/whos-borrowing-and-lending-in-repo-markets/"}</a> Approximately $1tn and $3tn in private lending outstanding. These are stocks, not annual flows or loans directly attributable solely to hedge funds. Authors’ views.</li>
+<li id="source-05"><strong>[5] Federal Reserve Bank of New York. Follow the Cash! Microstructure of Repo Markets</strong><span class="l0g-debt4-dates">Publication : September 29, 2026. Period / scope : Repo market structure; observations published through Q1 2026.</span><a class="l0g-debt4-url" href="https://libertystreeteconomics.newyorkfed.org/2026/09/follow-the-cash-microstructure-of-repo-markets/">{"https://libertystreeteconomics.newyorkfed.org/2026/09/follow-the-cash-microstructure-of-repo-markets/"}</a> BNY acts as agent in uncleared tri-party repo. Separate collateral management from CCP counterparty risk. The older haircut statistic repeated in the post is not used; the OFR 2025 collection is preferred.</li>
+<li id="source-06"><strong>[6] Financial Stability Board. Vulnerabilities in Government Bond-backed Repo Markets</strong><span class="l0g-debt4-dates">Publication : February 4, 2026. Period / scope : International review; main stocks at end-2024 and cited historical studies.</span><a class="l0g-debt4-url" href="https://www.fsb.org/uploads/P040226.pdf">{"https://www.fsb.org/uploads/P040226.pdf"}</a> Reuse improves efficiency while creating interdependencies. Measurement conventions preclude treating every gross amount as unique securities. Global totals are not added to US data.</li>
+<li id="source-07"><strong>[7] Office of Financial Research. Repo Market Intermediation: Dealer Cash and Collateral Flow Management across the U.S. Repo Market, Brief 24-07</strong><span class="l0g-debt4-dates">Publication : November 14, 2024. Period / scope : Nine dealers; average of June 15, 22 and 30, 2022. Figure 8, matched reused collateral outstanding.</span><a class="l0g-debt4-url" href="https://www.financialresearch.gov/briefs/files/OFRBrief-24-07-repo-market-intermediation.pdf">{"https://www.financialresearch.gov/briefs/files/OFRBrief-24-07-repo-market-intermediation.pdf"}</a> All 16 Figure 8 cells are transcribed. Their rounded sum is $604.33bn: lower triangle $172.93bn, upper triangle $72.28bn, diagonal $359.12bn. Maturity buckets do not identify exact maturity dates. No extrapolation to 2026.</li>
+<li id="source-08"><strong>[8] Légifrance. Code monétaire et financier, article L211-27</strong><span class="l0g-debt4-dates">Publication : undated page; version specified below. Period / scope : Version in force since January 3, 2018; accessed October 11, 2026. Event / version: January 3, 2018.</span><a class="l0g-debt4-url" href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035727159">{"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035727159"}</a> French law specifies outright title transfer and reciprocal repurchase/resale undertakings.</li>
+<li id="source-09"><strong>[9] Légifrance. Code monétaire et financier, article L211-32</strong><span class="l0g-debt4-dates">Publication : undated page; version specified below. Period / scope : Version in force since January 10, 2009; accessed October 11, 2026. Event / version: January 10, 2009.</span><a class="l0g-debt4-url" href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020096114">{"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020096114"}</a> The seller retains the security on its balance sheet and records a liability. French law illustrates the legal/accounting distinction; it does not settle every IFRS or US GAAP case.</li>
+<li id="source-10"><strong>[10] ESMA / Union européenne. SFTR, Article 15: Reuse of financial instruments received under a collateral arrangement</strong><span class="l0g-debt4-dates">Publication : undated page; version specified below. Period / scope : Regulatory text accessed October 11, 2026; Regulation (EU) 2015/2365.</span><a class="l0g-debt4-url" href="https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-15-reuse-financial-instruments">{"https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-15-reuse-financial-instruments"}</a> Written risk information and express agreement, followed by conditions on exercise of reuse. Stricter sectoral and national rules remain applicable.</li>
+<li id="source-11"><strong>[11] ICMA. FAQ 10: What is “rehypothecation” of collateral?</strong><span class="l0g-debt4-dates">Publication : undated page; version specified below. Period / scope : Technical explanation accessed October 11, 2026; publication date not established.</span><a class="l0g-debt4-url" href="https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/icma-ercc-publications/frequently-asked-questions-on-repo/10-what-is-rehypothecation-of-collateral/">{"https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/icma-ercc-publications/frequently-asked-questions-on-repo/10-what-is-rehypothecation-of-collateral/"}</a> Interested industry source used for contractual conventions. Precise legal treatment depends on contract and jurisdiction; checked against SFTR and the FSB.</li>
+<li id="source-12"><strong>[12] ICMA. FAQ 12: What is an open repo?</strong><span class="l0g-debt4-dates">Publication : undated page; version specified below. Period / scope : Market convention accessed October 11, 2026; publication date not established.</span><a class="l0g-debt4-url" href="https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/icma-ercc-publications/frequently-asked-questions-on-repo/12-what-is-an-open-repo/">{"https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/icma-ercc-publications/frequently-asked-questions-on-repo/12-what-is-an-open-repo/"}</a> An open repo differs from a rolled overnight repo. Termination follows agreed notice; it does not make a fixed 30-day loan freely recallable.</li>
+<li id="source-13"><strong>[13] Office of Financial Research. Are Zero-Haircut Repos as Common as Advertised?</strong><span class="l0g-debt4-dates">Publication : August 12, 2025. Period / scope : Non-centrally cleared bilateral repo outstanding, all collateral; January 2–May 30, 2025.</span><a class="l0g-debt4-url" href="https://www.financialresearch.gov/the-ofr-blog/2025/08/12/are-zero-haircut-repos-as-common-as-advertised/">{"https://www.financialresearch.gov/the-ofr-blog/2025/08/12/are-zero-haircut-repos-as-common-as-advertised/"}</a> 56% zero, 34% positive, 10% negative. The zero share is 42% after affiliates are excluded: a different denominator, not a time trend. The separate 65% hedge-fund figure is documented but not foregrounded here.</li>
+<li id="source-14"><strong>[14] Federal Reserve Board. Proportionate margining for repo transactions</strong><span class="l0g-debt4-dates">Publication : February 14, 2025. Period / scope : Methodological analysis by R. Jay Kahn and Matthew McCormick; not a new rule.</span><a class="l0g-debt4-url" href="https://www.federalreserve.gov/econres/notes/feds-notes/proportionate-margining-for-repo-transactions-20250214.html">{"https://www.federalreserve.gov/econres/notes/feds-notes/proportionate-margining-for-repo-transactions-20250214.html"}</a> Both sides of repo face default risk. A uniform floor may miss portfolio offsets and securities-driven trades. This article’s hypothetical examples are separate.</li>
+<li id="source-15"><strong>[15] Bank of England / PRA. Fixed income financing thematic review: letter to Chief Risk Officers</strong><span class="l0g-debt4-dates">Publication : October 5, 2023. Period / scope : Supervisory review published in 2023, including lessons from the 2022 LDI stress.</span><a class="l0g-debt4-url" href="https://www.bankofengland.co.uk/prudential-regulation/letter/2023/fixed-income-financing-thematic-review">{"https://www.bankofengland.co.uk/prudential-regulation/letter/2023/fixed-income-financing-thematic-review"}</a> Anonymised findings at reviewed firms: commercial pressures and insufficient controls. They do not identify a named bank or establish that no remediation occurred later.</li>
+<li id="source-16"><strong>[16] Bank of England. Gilt edged resilience: strengthening liquidity provision in the repo market</strong><span class="l0g-debt4-dates">Publication : July 17, 2026. Period / scope : Sarah Breeden article based on May 28, 2026 remarks; chart data subsequently updated. Event / version: May 28, 2026.</span><a class="l0g-debt4-url" href="https://www.bankofengland.co.uk/bank-insights/2026/gilt-edged-resilience-strengthening-liquidity-provision-in-the-repo-market">{"https://www.bankofengland.co.uk/bank-insights/2026/gilt-edged-resilience-strengthening-liquidity-provision-in-the-repo-market"}</a> Recognises portfolio-margining benefits while requiring robust legal documents, governance and stress tests. A central-bank position, not a causal estimate of reform effects.</li>
+<li id="source-17"><strong>[17] Bank of England. Enhancing the resilience of the gilt repo market: discussion paper feedback statement</strong><span class="l0g-debt4-dates">Publication : April 1, 2026. Period / scope : Feedback on the September 2025 consultation; work planned for 2026–27.</span><a class="l0g-debt4-url" href="https://www.bankofengland.co.uk/paper/2026/discussion-paper/enhancing-the-resilience-of-the-gilt-repo-market-discussion-paper-feedback-statement">{"https://www.bankofengland.co.uk/paper/2026/discussion-paper/enhancing-the-resilience-of-the-gilt-repo-market-discussion-paper-feedback-statement"}</a> The consultation concerns potential reforms. Cost and activity-migration objections supplied limited quantitative evidence. No universal UK haircut obligation is portrayed as adopted.</li>
+<li id="source-18"><strong>[18] SEC. SEC Extends Compliance Dates and Provides Temporary Exemption for Rule Related to Clearing of U.S. Treasury Securities</strong><span class="l0g-debt4-dates">Publication : February 25, 2025. Period / scope : Compliance timetable, cross-checked with SIFMA documentation from July 2026.</span><a class="l0g-debt4-url" href="https://www.sec.gov/newsroom/press-releases/2025-43-sec-extends-compliance-dates-provides-temporary-exemption-rule-related-clearing-us-treasury">{"https://www.sec.gov/newsroom/press-releases/2025-43-sec-extends-compliance-dates-provides-temporary-exemption-rule-related-clearing-us-treasury"}</a> December 31, 2026 for eligible cash transactions; June 30, 2027 for eligible repos. These dates do not imply universal worldwide clearing. Timetable cross-checked against the SEC implementation page updated September 23, 2026: <a href="https://www.sec.gov/featured-topics/treasury-clearing-implementation">Treasury Clearing Implementation</a>.</li>
+<li id="source-19"><strong>[19] Office of Financial Research. Central Clearing in Treasury Repos Plateaued in Q1 2026</strong><span class="l0g-debt4-dates">Publication : August 20, 2026. Period / scope : July 1, 2025–April 23, 2026; two distinct denominators.</span><a class="l0g-debt4-url" href="https://www.financialresearch.gov/the-ofr-blog/2026/08/20/central-clearing-treasury-repos-plateaued/">{"https://www.financialresearch.gov/the-ofr-blog/2026/08/20/central-clearing-treasury-repos-plateaued/"}</a> Non-affiliate fixed-term subset: 72% year-end 2025 peak, then about 62%. All Treasury repo: approximately 46% at the plateau. Simplified eligibility proxy, rounded values predating October. No causal attribution to CIL.</li>
+<li id="source-20"><strong>[20] SIFMA. SIFMA Publishes U.S. Treasury Done-Away Securities Clearing Agreement</strong><span class="l0g-debt4-dates">Publication : July 30, 2026. Period / scope : Model-agreement publication on July 30, 2026.</span><a class="l0g-debt4-url" href="https://www.sifma.org/news/press-releases/sifma-publishes-u-s-treasury-done-away-securities-clearing-agreement">{"https://www.sifma.org/news/press-releases/sifma-publishes-u-s-treasury-done-away-securities-clearing-agreement"}</a> A clearing provider can differ from the executing broker. Industry source; the template’s existence establishes neither universal adoption nor guaranteed crisis access. No claim to have audited executed client contracts.</li>
+<li id="source-21"><strong>[21] Bank of England. Financial Policy Committee Record – September 2026</strong><span class="l0g-debt4-dates">Published September 30, 2026. Meeting of September 25; paragraph 32, gilt repo reform.</span><a class="l0g-debt4-url" href="https://www.bankofengland.co.uk/financial-policy-committee-record/2026/september-2026">{"https://www.bankofengland.co.uk/financial-policy-committee-record/2026/september-2026"}</a> Central clearing and minimum haircuts under development, with possible proposals in early 2027.</li>
+</ol>
+
+</div>

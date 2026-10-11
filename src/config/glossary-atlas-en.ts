@@ -1074,16 +1074,17 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
-    slug: 'collateral', sigle: 'Collateral', nom: 'An asset pledged to secure borrowing',
-    def: 'An asset pledged to secure a debt. If the borrower fails to meet its obligations, the lender may realise the asset under the contract and applicable law. For Eurosystem operations, collateral must be eligible and its recognised value reflects haircuts and other risk controls. Pledging collateral provides borrowing capacity without creating bank equity.',
+    slug: 'collateral', sigle: 'Collateral', nom: 'An asset provided to secure borrowing',
+    def: 'An asset provided to secure a debt, through a pledge or transfer of title according to the arrangement. If the borrower fails to meet its obligations, the lender may realise the asset under the contract and applicable law. For Eurosystem operations, collateral must be eligible and its recognised value reflects haircuts and other risk controls. Providing collateral creates borrowing capacity without creating bank equity.',
     guide: '/en/analysis/ecb-collateral-bank-credit-november-2026/',
     ...macroSection,
     robots: 'noindex,follow',
     atlas: {
       intuition: 'The value of an asset a bank owns and the borrowing it can support are different measures.',
       formula: 'simplified coverage = sum, for each eligible asset, of its value × (1 - its haircut as a fraction), excluding further adjustments',
-      articles: [{ label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }, {"label": "GPU-backed debt: pricing the fourth year", "href": "/en/analysis/gpu-backed-debt-fourth-year/", "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.", "kind": "article"}],
+      articles: [{ label: 'Government debt: the collateral chain', href: '/en/analysis/dette-etats-04-chaine-garanties/', kind: 'article' }, { label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }, {"label": "GPU-backed debt: pricing the fourth year", "href": "/en/analysis/gpu-backed-debt-fourth-year/", "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.", "kind": "article"}],
       sources: [
+        { label: 'ESMA, SFTR Article 15', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-15-reuse-financial-instruments', detail: 'Security collateral, title transfer and conditions for reuse.', kind: 'source' },
         { label: 'ECB, What is collateral?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/collateral.en.html', detail: 'Pledged assets and realisation following a default.', kind: 'source' },
         { label: 'ECB, What are haircuts?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/haircuts.en.html', detail: 'Post-haircut value and coverage of borrowing.', kind: 'source' },
       ],
@@ -2819,6 +2820,71 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'rehypothecation', sigle: 'Rehypothecation', nom: 'Reuse of collateral',
+    def: 'Using received collateral in another transaction. Strictly, rehypothecation concerns pledged assets; reuse under a title-transfer repo involves an obligation to return equivalent securities. Rights depend on the contract and governing law. Reuse supports funding while connecting counterparties’ risks.',
+    guide: '/en/analysis/dette-etats-04-chaine-garanties/',
+    ...macroSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Successive claims can finance the same portfolio without multiplying the underlying securities.',
+      articles: [{ label: 'Government debt: the collateral chain', href: '/en/analysis/dette-etats-04-chaine-garanties/', kind: 'article' }],
+      sources: [
+        { label: 'FSB, repo market vulnerabilities, February 2026', href: 'https://www.fsb.org/uploads/P040226.pdf', detail: 'Section 3.1.3: benefits and interdependencies of collateral reuse.', kind: 'source' },
+        { label: 'ESMA, SFTR Article 15', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-15-reuse-financial-instruments', detail: 'Risk information, prior agreement and conditions for reuse.', kind: 'source' },
+        { label: 'ICMA, rehypothecation FAQ', href: 'https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/icma-ercc-publications/frequently-asked-questions-on-repo/10-what-is-rehypothecation-of-collateral/', detail: 'Industry conventions: pledges, title transfer and equivalent securities.', kind: 'source' },
+      ],
+      related: ['repo', 'collateral', 'open-repo', 'haircut-repo'],
+    },
+  },
+  {
+    slug: 'open-repo', sigle: 'Open repo', nom: 'Repurchase agreement without a fixed maturity',
+    def: 'A repo agreed without a fixed end date. Either party may terminate it under the agreed notice provisions; otherwise it continues. It differs from an overnight repo that must be renewed. Funding availability therefore also depends on termination rights and replacement liquidity.',
+    guide: '/en/analysis/dette-etats-04-chaine-garanties/',
+    ...macroSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Funding continues until a party terminates it under the agreed notice provisions.',
+      articles: [{ label: 'Government debt: the collateral chain', href: '/en/analysis/dette-etats-04-chaine-garanties/', kind: 'article' }],
+      sources: [
+        { label: 'FSB, how repo transactions work', href: 'https://www.fsb.org/uploads/P040226.pdf', detail: 'Section 1.1: open-term repo and notice.', kind: 'source' },
+        { label: 'ICMA, open repo FAQ', href: 'https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/icma-ercc-publications/frequently-asked-questions-on-repo/12-what-is-an-open-repo/', detail: 'Contractual notice and the distinction from daily renewal.', kind: 'source' },
+      ],
+      related: ['repo', 'rehypothecation'],
+    },
+  },
+  {
+    slug: 'haircut-repo', sigle: 'Repo haircut', nom: 'Collateral discount in repo financing',
+    def: 'The gap between cash lent and the value of repo collateral. Its calculation must identify the denominator, securities value or initial cash according to the convention. A zero or negative haircut does not describe all portfolio margins or offsets. The effects of an increase depend on contractual terms and refinancing.',
+    guide: '/en/analysis/dette-etats-04-chaine-garanties/',
+    ...macroSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'A transaction’s visible percentage does not fully describe the protection of the portfolio.',
+      articles: [{ label: 'Government debt: the collateral chain', href: '/en/analysis/dette-etats-04-chaine-garanties/', kind: 'article' }],
+      sources: [
+        { label: 'Fed, Proportionate margining for repo transactions', href: 'https://www.federalreserve.gov/econres/notes/feds-notes/proportionate-margining-for-repo-transactions-20250214.html', detail: 'Both counterparties’ risks, negative haircuts and portfolio offsets.', kind: 'source' },
+        { label: 'FICC, August 26, 2026 GSD rulebook', href: 'https://files.dtcc.com/download/assets/FICC-GSD%2BRulebook%2B%E2%80%93%2B2026-0826%2BFinal.pdf/b6c07124ceb411f09c9062cd3fe05a01', detail: 'Rule 1: CIL Required Haircut denominator; Rule 3A: conditions for changes.', kind: 'source' },
+      ],
+      related: ['repo', 'collateral', 'decote-de-garantie', 'collateral-in-lieu'],
+    },
+  },
+  {
+    slug: 'collateral-in-lieu', sigle: 'Collateral-in-Lieu', nom: 'Protection within FICC’s Sponsored GC service',
+    def: 'An FICC service in which the cash lender grants the clearing house a security interest in securities held in its tri-party account. Subject to conditions, this generally replaces the sponsor’s guarantee and certain margin or settlement payments. Haircuts and additional resources remain. The lien protects the cleared transaction; it does not finance a second repo.',
+    guide: '/en/analysis/dette-etats-04-chaine-garanties/',
+    ...macroSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'A lien on existing collateral protects the obligations accepted for clearing.',
+      articles: [{ label: 'Government debt: the collateral chain', href: '/en/analysis/dette-etats-04-chaine-garanties/', kind: 'article' }],
+      sources: [
+        { label: 'SEC, approval of the CIL service', href: 'https://www.sec.gov/files/rules/sro/ficc/2025/34-104374a.pdf', detail: 'December 12, 2025 order: lien, replacement of protections and additional resources.', kind: 'source' },
+        { label: 'FICC, August 26, 2026 GSD rulebook', href: 'https://files.dtcc.com/download/assets/FICC-GSD%2BRulebook%2B%E2%80%93%2B2026-0826%2BFinal.pdf/b6c07124ceb411f09c9062cd3fe05a01', detail: 'Rule 3A and CIL annex: obligations and custodian instructions.', kind: 'source' },
+      ],
+      related: ['repo', 'collateral', 'ccp', 'haircut-repo'],
+    },
+  },
+  {
     slug: 'repo',
     sigle: 'Repo',
     nom: 'Repurchase agreement',
@@ -2829,6 +2895,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       formula: 'cash today against a security, then repurchase at the agreed maturity and price',
       whyNow: 'Repo connects Treasuries, hedge funds, banks and money market funds. A collateral squeeze can turn a rate move into a liquidity problem.',
       articles: [
+        { label: 'Government debt: the collateral chain', href: '/en/analysis/dette-etats-04-chaine-garanties/', kind: 'article' },
         { label: 'Banks: the cost of the December snapshot', href: '/en/analysis/banks-cost-december-snapshot/', kind: 'article' },
         usDebtArticles[1],
         usDebtArticles[2],
