@@ -354,7 +354,10 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Ligne de souscription', nom: 'Subscription line', def: "Crédit-relais consenti à un fonds en début de vie, garanti par les engagements non appelés de ses investisseurs (LP), pour financer les acquisitions avant les appels de capital. À l'inverse du NAV loan, qui arrive en fin de vie du fonds et se gage sur la valeur du portefeuille déjà investi." },
       { sigle: 'DPI', nom: 'Distributions to Paid-In', def: "Rapport entre le capital effectivement rendu aux investisseurs d'un fonds et le capital versé par eux. Mesure de performance « cash », insensible aux valorisations au modèle, devenue le critère dominant des investisseurs institutionnels pendant la sécheresse des sorties de 2023-2026. Un DPI gonflé par un emprunt n'est pas une performance, c'est une avance." },
       { sigle: 'Rated feeder note', nom: 'Note de fonds nourricier notée', def: "Titre de dette émis par un véhicule nourricier investi dans un fonds privé, assorti d'une notation, le plus souvent privée. Permet à un assureur de loger une exposition de type fonds en la traitant comme une obligation notée, avec une charge en capital réduite. Structure au cœur de l'examen engagé par la NAIC." },
-      { sigle: 'Réassurance adossée à l’actif', nom: 'Asset-intensive reinsurance', def: "Cession de réserves d'assurance-vie ou de rentes à un réassureur, souvent affilié au même groupe et installé offshore, aux Bermudes en particulier. Le réassureur reprend les engagements et réinvestit les actifs, fréquemment en crédit privé et en produits structurés, sous un régime prudentiel plus souple que celui du régulateur d'origine." },
+      { sigle: 'Réassurance adossée à l’actif', nom: 'Asset-intensive reinsurance', def: "Réassurance qui transfère à une contrepartie des risques liés aux placements et aux engagements d’assurance-vie ou de rente. Le réassureur s’engage à financer les prestations couvertes ; l’assureur cédant conserve son obligation envers ses assurés. Les actifs peuvent être transférés ou rester détenus par le cédant selon la structure contractuelle.", guide: '/posts/retraites-bermudes-prix-du-retour/' },
+      { sigle: 'Recapture', nom: 'Reprise des risques cédés en réassurance', def: "Reprise par l’assureur des risques qu’il avait cédés au réassureur, selon les déclencheurs du traité, parfois avant une insolvabilité formelle. Elle exige de vérifier les actifs récupérables, les droits d’accès, les besoins de liquidité et le capital nécessaire. Le montant des engagements repris ne mesure pas une perte définitive.", guide: '/posts/retraites-bermudes-prix-du-retour/' },
+      { sigle: 'Matching adjustment', nom: 'Ajustement prudentiel pour des flux appariés', def: "Mécanisme prudentiel britannique soumis à autorisation, qui augmente le taux d’actualisation d’engagements éligibles lorsqu’un portefeuille répond aux critères d’appariement des flux. L’ajustement retranche du spread des actifs une compensation des risques conservés. Il réduit la valeur actuelle des engagements, sans produire de trésorerie immédiate.", guide: '/posts/retraites-bermudes-prix-du-retour/' },
+      { sigle: 'Funds withheld', nom: 'Fonds retenus dans une opération de réassurance', def: "Structure de réassurance dans laquelle les actifs restent détenus et possédés par le cédant, sur son bilan, dans un compte séparé. Le contrat organise l’attribution des revenus et pertes de placement et les règlements avec le réassureur. La conservation des actifs facilite leur contrôle, sans supprimer tous les risques contractuels et opérationnels.", guide: '/posts/retraites-bermudes-prix-du-retour/' },
       { sigle: 'NAIC', nom: 'National Association of Insurance Commissioners', def: "Association des régulateurs d'assurance des États américains, qui harmonise les règles prudentielles du secteur. Son bureau des valeurs mobilières (SVO) fixe le traitement en capital des actifs détenus par les assureurs ; ses réformes de 2026 lui permettent d'outrepasser des notations jugées trop favorables." },
       {"sigle": "AUA", "nom": "Assets under administration : actifs administrés", "def": "Valeur des actifs de clients couverts par des services d’administration, de gestion fiduciaire ou de conservation, selon le périmètre déclaré. L’AUA ne mesure ni les dépôts reçus par la banque ni ses fonds propres. La comparaison avec un encours sous gestion exige de vérifier les services inclus, la date et les règles de valorisation.", "guide": "/posts/crypto-banques-occ-icba-agrements-trust-depots/"},
       { sigle: 'AUM', nom: 'Assets Under Management', def: "Encours sous gestion : montant total des actifs gérés par un fonds ou une société de gestion." },
@@ -999,6 +1002,30 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'reassurance-adossee-a-l-actif': {
+    intuition: 'Le financement et certains risques changent de bilan tandis que la promesse faite à l’assuré reste chez l’assureur initial.',
+    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }],
+    sources: [{ label: 'IAIS : Structural shifts in the life insurance sector', href: 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', detail: 'Sections 4.1.1 et 4.1.6 : économie de la réassurance et structures de collatéral.', kind: 'source' }],
+    related: ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment'],
+  },
+  recapture: {
+    intuition: 'Le cédant doit pouvoir continuer à payer lorsque la contrepartie ne remplit plus son rôle.',
+    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }],
+    sources: [{ label: 'PRA : SS5/24, version d’octobre 2025', href: 'https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2025/ss524-october-2025.pdf', detail: 'Paragraphes 2.5 à 2.22 : reprise des risques, collatéral, liquidité et déclencheurs.', kind: 'source' }],
+    related: ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment'],
+  },
+  'matching-adjustment': {
+    intuition: 'Conserver des actifs jusqu’à leurs encaissements peut atténuer la volatilité prudentielle, sous des conditions précises.',
+    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }],
+    sources: [{ label: 'PRA : Life Insurance Stress Test 2025', href: 'https://www.bankofengland.co.uk/prudential-regulation/publication/2025/november/list-2025-results-report', detail: 'Annexe 3 : principes, taux d’actualisation et risques conservés.', kind: 'source' }],
+    related: ['reassurance-adossee-a-l-actif', 'recapture', 'duration'],
+  },
+  'funds-withheld': {
+    intuition: 'La répartition économique du risque peut changer sans transfert de propriété des actifs.',
+    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }],
+    sources: [{ label: 'IAIS : Structural shifts in the life insurance sector', href: 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', detail: 'Section 4.1.6.3 : propriété, bilan, compte séparé et règlements périodiques.', kind: 'source' }],
+    related: ['reassurance-adossee-a-l-actif', 'recapture', 'reassurance'],
+  },
   cpr: {
     intuition: 'Les remboursements anticipés portent sur une base de capital qui diminue au fil des paiements.',
     formula: 'SMM = 1 − (1 − CPR)^(1/12), CPR et SMM exprimés en proportions',

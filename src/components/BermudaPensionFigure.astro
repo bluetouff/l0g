@@ -1,0 +1,56 @@
+---
+import { bermudaPensionSvg, BERMUDA_PENSION_KINDS } from '../lib/bermudaPensionFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'chain' | 'capital' | 'collateral' | 'liquidity' | 'discounting' | 'solvency' | 'timeline';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!BERMUDA_PENSION_KINDS.includes(kind) || !['fr', 'en'].includes(lang) || !/^(?:0[1-7])$/.test(number)) {
+  throw new TypeError('Invalid Bermuda pension figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[01])$/.test(id))) {
+  throw new TypeError('Invalid Bermuda pension source reference');
+}
+---
+<figure class="bermuda-pension-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="bermuda-pension-desktop" set:html={bermudaPensionSvg(lang, kind, false)} />
+  <div class="bermuda-pension-mobile" set:html={bermudaPensionSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="bermuda-pension-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Bermuda Pensions'; src: url('/fonts/bermuda-pensions/dejavu-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g Bermuda Pensions'; src: url('/fonts/bermuda-pensions/dejavu-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .bermuda-pension-figure { margin: 2.8rem 0; width: 100%; padding-bottom: .85rem; container-type: inline-size; }
+  .bermuda-pension-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; }
+  .bermuda-pension-mobile { display: none; width: 100%; max-width: 27.5rem; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .875rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .bermuda-pension-references { display: block; }
+  .bermuda-pension-references a { margin-right: .75em; }
+  .bermuda-pension-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .bermuda-pension-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .bermuda-pension-figure :global(details p) { margin: .7rem 0; }
+  :global(.prose .bermuda-pension-sources) { font-size: .875rem; line-height: 1.65; }
+  :global(.prose .bermuda-pension-sources li) { margin: .75rem 0; }
+  @media (max-width: 640px) {
+    .bermuda-pension-desktop { display: none; }
+    .bermuda-pension-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .bermuda-pension-desktop { display: none; }
+    .bermuda-pension-mobile { display: block; }
+  }
+  @media print {
+    .bermuda-pension-figure { break-inside: avoid; }
+    .bermuda-pension-desktop { display: block; }
+    .bermuda-pension-mobile { display: none; }
+  }
+</style>

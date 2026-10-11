@@ -17,6 +17,39 @@ import { glossaryAtlasEnBySlug } from '../src/config/glossary-atlas-en.ts';
 import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossary-matching.mjs';
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
+for (const [slug, source, related] of [
+  ['reassurance-adossee-a-l-actif', 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment']],
+  ['recapture', 'https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2025/ss524-october-2025.pdf', ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment']],
+  ['matching-adjustment', 'https://www.bankofengland.co.uk/prudential-regulation/publication/2025/november/list-2025-results-report', ['reassurance-adossee-a-l-actif', 'recapture', 'duration']],
+  ['funds-withheld', 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', ['reassurance-adossee-a-l-actif', 'recapture', 'reassurance']],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: définitions et sources FR/EN requises`);
+  assert.equal(fr.guide, '/posts/retraites-bermudes-prix-du-retour/');
+  assert.equal(en.guide, '/en/analysis/pensions-bermuda-recapture-risk/');
+  assert.equal(fr.reference, undefined, `${slug}: conserver une définition courte en noindex`);
+  assert.equal(fr.referenceCandidate, false);
+  assert.equal(en.robots, 'noindex,follow');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(item => item.href), [source]);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, related);
+    for (const neighbor of related) {
+      assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
+      assert(glossaryAtlasEnBySlug.has(neighbor));
+    }
+    assert(!entry.def.includes('—'));
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'reassurance-adossee-a-l-actif').def, /conserve son obligation/);
+assert.match(glossaryAtlasEnBySlug.get('reassurance-adossee-a-l-actif').def, /remains responsible/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'funds-withheld').def, /détenus et possédés par le cédant/);
+assert.match(glossaryAtlasEnBySlug.get('funds-withheld').def, /cedant continues to own and hold/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'matching-adjustment').def, /sans produire de trésorerie/);
+assert.match(glossaryAtlasEnBySlug.get('matching-adjustment').def, /without generating immediate cash/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'recapture').def, /ne mesure pas une perte définitive/);
+assert.match(glossaryAtlasEnBySlug.get('recapture').def, /not a measure of permanent loss/);
 assert.equal(mentions('Le portail reste disponible.', 'Tail'), false, 'Tail ne doit pas être détecté dans portail');
 assert.equal(mentions('Un test destructif est exclu.', 'ESTR'), false, 'ESTR ne doit pas être détecté dans destructif');
 assert.equal(mentions("Le tail d'adjudication est positif.", 'Tail'), true, 'Tail doit être détecté comme terme autonome');
@@ -84,8 +117,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 619, 'Le corpus doit conserver ses 619 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 187, 'Le graphe Atlas doit conserver ses 187 nœuds');
+assert.equal(glossaryEntries.length, 622, 'Le corpus doit conserver ses 622 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 191, 'Le graphe Atlas doit conserver ses 191 nœuds');
 const mortgageArticleFr = '/posts/credits-americains-risque-3-pourcent/';
 const mortgageArticleEn = '/en/analysis/us-mortgages-three-percent-moving-risk/';
 for (const [slug, source, related] of [
@@ -482,7 +515,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 576, 'Le graphe Atlas doit conserver ses 576 relations');
+assert.equal(glossaryAtlasEdgeCount, 589, 'Le graphe Atlas doit conserver ses 589 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
