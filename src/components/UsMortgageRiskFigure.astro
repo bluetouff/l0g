@@ -1,0 +1,56 @@
+---
+import { usMortgageRiskSvg, US_MORTGAGE_RISK_KINDS } from '../lib/usMortgageRiskFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'household' | 'chain' | 'principal' | 'refinancing' | 'hedging' | 'margin' | 'sensitivities';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!US_MORTGAGE_RISK_KINDS.includes(kind) || !['fr', 'en'].includes(lang) || !/^(?:0[1-7])$/.test(number)) {
+  throw new TypeError('Invalid US mortgage risk figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[0-4])$/.test(id))) {
+  throw new TypeError('Invalid US mortgage risk source reference');
+}
+---
+<figure class="us-mortgage-risk-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="us-mortgage-risk-desktop" set:html={usMortgageRiskSvg(lang, kind, false)} />
+  <div class="us-mortgage-risk-mobile" set:html={usMortgageRiskSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="us-mortgage-risk-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g US Mortgage Risk'; src: url('/fonts/us-mortgage-risk/dejavu-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g US Mortgage Risk'; src: url('/fonts/us-mortgage-risk/dejavu-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .us-mortgage-risk-figure { margin: 2.8rem 0; width: 100%; padding-bottom: .85rem; container-type: inline-size; }
+  .us-mortgage-risk-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; }
+  .us-mortgage-risk-mobile { display: none; width: 100%; max-width: 27.5rem; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .875rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .us-mortgage-risk-references { display: block; }
+  .us-mortgage-risk-references a { margin-right: .75em; }
+  .us-mortgage-risk-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .us-mortgage-risk-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .us-mortgage-risk-figure :global(details p) { margin: .7rem 0; }
+  :global(.prose .us-mortgage-risk-sources) { font-size: .875rem; line-height: 1.65; }
+  :global(.prose .us-mortgage-risk-sources li) { margin: .75rem 0; }
+  @media (max-width: 640px) {
+    .us-mortgage-risk-desktop { display: none; }
+    .us-mortgage-risk-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .us-mortgage-risk-desktop { display: none; }
+    .us-mortgage-risk-mobile { display: block; }
+  }
+  @media print {
+    .us-mortgage-risk-figure { break-inside: avoid; }
+    .us-mortgage-risk-desktop { display: block; }
+    .us-mortgage-risk-mobile { display: none; }
+  }
+</style>

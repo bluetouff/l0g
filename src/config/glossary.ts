@@ -298,6 +298,10 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: 'var(--color-accent)',
     entries: [
+      { sigle: 'CPR', nom: 'Taux annualisé de remboursement anticipé', def: 'Mesure annualisée des remboursements anticipés d’un portefeuille de prêts, rapportés au capital encore exposé après l’amortissement programmé. Un CPR peut résumer des observations ou représenter une hypothèse de modèle : il faut préciser lequel. Son équivalent mensuel, le SMM, se calcule par SMM = 1 − (1 − CPR)^(1/12), avec les taux exprimés en proportions.', guide: '/posts/credits-americains-risque-3-pourcent/' },
+      { sigle: 'WAL', nom: 'Durée de vie moyenne du principal', def: 'Moyenne des délais de remboursement, pondérée par les montants de principal rendus. Elle s’exprime en années depuis une date de référence et dépend notamment des hypothèses de remboursement anticipé. Elle exclut les intérêts et l’actualisation. Ce calendrier se distingue de la duration, qui mesure la sensibilité du prix aux taux.', guide: '/posts/credits-americains-risque-3-pourcent/' },
+      { sigle: 'DV01', nom: 'Sensibilité en dollars à un point de base', def: 'Variation locale estimée de la valeur d’une position pour un mouvement de taux de 0,01 point de pourcentage. Exprimée ici en valeur absolue, elle s’approche par la duration sensible aux taux multipliée par la valeur de marché et par 0,0001. Elle dépend de la position et des hypothèses du choc ; elle ne constitue pas une perte réalisée.', guide: '/posts/credits-americains-risque-3-pourcent/' },
+      { sigle: 'MSR', nom: 'Droit de gestion des prêts immobiliers', def: 'Droit contractuel aux revenus de la gestion des prêts immobiliers, en contrepartie d’obligations comme la collecte des échéances et le suivi des dossiers. Il constitue un actif distinct du titre MBS. Un remboursement anticipé raccourcit les recettes de gestion ; les impayés et défauts peuvent augmenter les coûts de traitement. Sa valeur dépend des revenus nets attendus.', guide: '/posts/credits-americains-risque-3-pourcent/' },
       { sigle: 'RSU', nom: 'Restricted stock unit', def: 'Droit à recevoir une action après satisfaction des conditions d’acquisition prévues par le plan, par exemple une durée de service ou un objectif de performance. L’attribution d’une unité ne signifie pas que l’action est déjà détenue. Le calendrier d’acquisition, la livraison effective et les cessions ultérieures doivent être vérifiés séparément.', guide: '/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/' },
       { sigle: 'Warrant', nom: 'Bon de souscription d’action', def: 'Titre donnant le droit d’obtenir une action selon un prix d’exercice, une durée et les autres conditions fixées par le contrat. L’action sous-jacente à un warrant non exercé doit être distinguée d’une action déjà détenue. L’exercice peut entraîner une émission de titres et une dilution ; enregistrer leur revente ne constate ni l’exercice du bon ni la vente effective.', guide: '/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/' },
       {
@@ -995,6 +999,33 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  cpr: {
+    intuition: 'Les remboursements anticipés portent sur une base de capital qui diminue au fil des paiements.',
+    formula: 'SMM = 1 − (1 − CPR)^(1/12), CPR et SMM exprimés en proportions',
+    articles: [{ label: 'Crédits américains : le risque des prêts à 3 %', href: '/posts/credits-americains-risque-3-pourcent/', kind: 'article' }],
+    sources: [{ label: 'Freddie Mac : Daily Prepayment Report Guide', href: 'https://capitalmarkets.freddiemac.com/mbs/docs/dpr_guide.pdf', detail: 'Pages 12 et 13 : base du SMM et conversion en CPR annualisé.', kind: 'source' }],
+    related: ['wal', 'msr', 'duration'],
+  },
+  wal: {
+    intuition: 'Chaque dollar de principal pèse selon le délai nécessaire pour le récupérer.',
+    formula: 'WAL = Σ(délai en années × principal remboursé) / Σ(principal remboursé)',
+    articles: [{ label: 'Crédits américains : le risque des prêts à 3 %', href: '/posts/credits-americains-risque-3-pourcent/', kind: 'article' }],
+    sources: [{ label: 'Freddie Mac : STACR 2016-HQA2, durée de vie moyenne', href: 'https://capitalmarkets.freddiemac.com/crt/docs/legal-documents/stacr/series-2016-hqa2/16_hqa2_1120281sto.pdf', detail: 'Définition et hypothèses de la durée de vie moyenne des titres.', kind: 'source' }],
+    related: ['cpr', 'dv01', 'duration'],
+  },
+  dv01: {
+    intuition: 'La sensibilité de taux s’exprime en montant monétaire pour dimensionner une couverture.',
+    formula: 'DV01 ≈ |duration sensible aux taux × valeur de marché| × 0,0001, en dollars par point de base',
+    articles: [{ label: 'Crédits américains : le risque des prêts à 3 %', href: '/posts/credits-americains-risque-3-pourcent/', kind: 'article' }],
+    sources: [{ label: 'CME Group : Calculating the Dollar Value of a Basis Point', href: 'https://www.cmegroup.com/trading/interest-rates/files/Calculating_the_Dollar_Value_of_a_Basis_Point.pdf', detail: 'Méthode 2 : duration, valeur de marché et limites de l’approximation locale.', kind: 'source' }],
+    related: ['duration', 'repo', 'wal'],
+  },
+  msr: {
+    intuition: 'Le gestionnaire possède un droit aux revenus de service, distinct du capital investi dans le MBS.',
+    articles: [{ label: 'Crédits américains : le risque des prêts à 3 %', href: '/posts/credits-americains-risque-3-pourcent/', kind: 'article' }],
+    sources: [{ label: 'Federal Reserve : Mortgage Servicing Right Valuations Under Stress', href: 'https://www.federalreserve.gov/econres/notes/feds-notes/mortgage-servicing-right-valuations-under-stress-20260604.html', detail: 'Note du 4 juin 2026 : revenus de gestion, remboursements anticipés et coûts des défauts.', kind: 'source' }],
+    related: ['cpr', 'wal', 'repo'],
+  },
   headroom: {
     intuition: "Une garantie budgétaire mobilise des ressources lorsqu'un engagement devient exigible.",
     formula: 'Headroom = plafond des ressources propres pour les paiements − ressources propres nécessaires au budget',

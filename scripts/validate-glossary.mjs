@@ -84,8 +84,59 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 615, 'Le corpus doit conserver ses 615 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 183, 'Le graphe Atlas doit conserver ses 183 nœuds');
+assert.equal(glossaryEntries.length, 619, 'Le corpus doit conserver ses 619 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 187, 'Le graphe Atlas doit conserver ses 187 nœuds');
+const mortgageArticleFr = '/posts/credits-americains-risque-3-pourcent/';
+const mortgageArticleEn = '/en/analysis/us-mortgages-three-percent-moving-risk/';
+for (const [slug, source, related] of [
+  ['cpr', 'https://capitalmarkets.freddiemac.com/mbs/docs/dpr_guide.pdf', ['wal', 'msr', 'duration']],
+  ['wal', 'https://capitalmarkets.freddiemac.com/crt/docs/legal-documents/stacr/series-2016-hqa2/16_hqa2_1120281sto.pdf', ['cpr', 'dv01', 'duration']],
+  ['dv01', 'https://www.cmegroup.com/trading/interest-rates/files/Calculating_the_Dollar_Value_of_a_Basis_Point.pdf', ['duration', 'repo', 'wal']],
+  ['msr', 'https://www.federalreserve.gov/econres/notes/feds-notes/mortgage-servicing-right-valuations-under-stress-20260604.html', ['cpr', 'wal', 'repo']],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: définitions et sources FR/EN requises`);
+  assert.equal(fr.guide, mortgageArticleFr);
+  assert.equal(en.guide, mortgageArticleEn);
+  assert.equal(fr.sectionTitle, 'Crédit privé & marchés');
+  assert.equal(en.sectionTitle, 'Private credit & markets');
+  assert.equal(fr.reference, undefined, `${slug}: conserver la fiche courte en noindex`);
+  assert.equal(fr.referenceCandidate, false, `${slug}: aucune promotion en fiche de référence`);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert(!glossaryReferenceCandidateSlugs.includes(slug));
+  assert.equal(en.robots, 'noindex,follow');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.articles.map(article => article.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.sources.map(item => item.href), [source]);
+    assert.deepEqual(entry.atlas.related, related);
+    assert(['capitalmarkets.freddiemac.com', 'www.cmegroup.com', 'www.federalreserve.gov'].includes(new URL(source).hostname));
+    for (const neighbor of related) {
+      assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
+      assert(glossaryAtlasEnBySlug.has(neighbor));
+    }
+    assert(!entry.def.includes('—'), `${slug}: respecter la charte éditoriale`);
+  }
+  if (slug === 'cpr') {
+    for (const entry of [fr, en]) assert(entry.atlas.formula.includes('SMM = 1 − (1 − CPR)^(1/12)'));
+    assert.match(fr.def, /observations.*hypothèse.*proportions/);
+    assert.match(en.def, /observed.*assumption.*proportions/);
+  }
+  if (slug === 'wal') {
+    assert.match(fr.def, /principal.*années.*intérêts.*actualisation.*duration/);
+    assert.match(en.def, /principal.*years.*interest.*discounting.*duration/);
+    for (const entry of [fr, en]) assert(entry.atlas.formula.includes('Σ(') && entry.atlas.formula.includes(' / Σ('));
+  }
+  if (slug === 'dv01') {
+    assert.match(fr.def, /locale.*0,01.*valeur absolue.*valeur de marché.*0,0001.*perte réalisée/);
+    assert.match(en.def, /local.*0\.01.*absolute.*market value.*0\.0001.*realised loss/);
+    assert(fr.atlas.formula.includes('0,0001') && en.atlas.formula.includes('0.0001'));
+  }
+  if (slug === 'msr') {
+    assert.match(fr.def, /distinct du titre MBS.*anticipé.*recettes.*défauts.*coûts/);
+    assert.match(en.def, /distinct from an MBS.*Prepayment.*revenues.*defaults.*costs/);
+  }
+}
 for (const slug of ['headroom', 'pret-a-recours-limite', 'era']) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);
@@ -431,7 +482,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 564, 'Le graphe Atlas doit conserver ses 564 relations');
+assert.equal(glossaryAtlasEdgeCount, 576, 'Le graphe Atlas doit conserver ses 576 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

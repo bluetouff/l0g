@@ -1,0 +1,184 @@
+---
+title: "Qui porte le risque du crédit américain à 3 % ?"
+seoTitle: "Crédits américains à 3 % : MBS et liquidité | l0g"
+ogTitle: "Qui porte le risque du crédit américain à 3 % ?"
+description: "Crédits immobiliers américains à 3 % : remboursement anticipé, MBS, couvertures et repo. Enquête sur le risque porté par les investisseurs."
+pubDate: 2026-10-11T13:01:41+02:00
+updatedDate: 2026-10-11T13:01:41+02:00
+tags: ["États-Unis", "crédit immobilier", "banques", "obligations", "risques"]
+draft: false
+ogImage: "/illustrations/news/us-mortgages-risk-v1.jpg"
+quickTake:
+  fact: "Freddie Mac publie un taux moyen de 7,40 % le 8 octobre 2026 pour les nouveaux prêts fixes à trente ans de son enquête."
+  importance: "Des remboursements plus lents modifient les flux des MBS. Un financement court en repo peut réclamer du cash alors que les ménages continuent de payer."
+  uncertainty: "Les modèles sont pédagogiques. Les simulations AGNC portent sur juin, et les sources examinées ne chiffrent aucun effet causal des couvertures en octobre."
+---
+
+import UsMortgageRiskFigure from '../../components/UsMortgageRiskFigure.astro';
+
+Le propriétaire continue de payer sa mensualité. L’investisseur qui détient son crédit aimerait parfois récupérer son argent plus vite. Le taux verrouillé protège le budget du ménage. Pour celui qui finance ce contrat, la lenteur des remboursements peut devenir coûteuse.
+
+Le 8 octobre 2026, Freddie Mac publie un taux moyen de **7,40 % pour les nouveaux prêts immobiliers fixes à trente ans** de son enquête, contre 7,28 % une semaine plus tôt. Ce repère concerne des demandes d’achat de logement répondant aux critères de l’enquête. Il décrit les conditions d’entrée sur le marché, alors que les contrats anciens conservent leur taux. <sup><a href="#source-1" aria-label="Source 1">[1]</a></sup>
+
+C’est cette coexistence qui mérite une enquête. Le crédit à 3 % protège le budget du ménage, mais il engage un autre bilan à recevoir une faible rémunération contractuelle pendant une durée incertaine. Les titres adossés à ces prêts, leurs couvertures et les emprunts utilisés pour les acheter relient cette décision domestique au marché obligataire.
+
+Une réserve change pourtant l’angle : **un vieux prêt très éloigné des taux actuels peut déjà être largement installé dans un scénario de remboursement lent**. Les plus gros ajustements de couverture peuvent se situer ailleurs, parmi les prêts plus proches d’un refinancement intéressant. Il faut donc suivre à la fois le calendrier, le prix et l’identité du détenteur. <sup><a href="#source-6" aria-label="Source 6">[6]</a></sup>
+
+## Le propriétaire possède un avantage difficile à emporter
+
+Prenons un ménage fictif qui a emprunté 300 000 dollars sur trente ans à 3 %. Après cinq années de paiements réguliers, il doit encore **266 719 dollars**. Sa mensualité de principal et d’intérêts reste de **1 265 dollars**, arrondis. Refinancer le même capital sur les vingt-cinq années restantes à 7,40 % demanderait environ **1 954 dollars**, soit 689 dollars supplémentaires chaque mois.
+
+Cette comparaison est un calcul, sans assurance, taxes ni frais de transaction. Le taux de 7,40 % est emprunté au repère officiel à trente ans ; son application sur vingt-cinq ans constitue une hypothèse pédagogique, pas une offre bancaire observée. À mensualité identique, ce ménage ne pourrait financer qu’environ 172 671 dollars dans ce second scénario.
+
+<UsMortgageRiskFigure lang="fr" kind="household" number="01" caption="Ménage fictif : 300 000 dollars initialement sur 30 ans à 3 %, après 60 mensualités. Comparaison sur les 300 mois restants. Le 7,40 % observé concerne un nouveau prêt sur 30 ans ; son emploi sur 25 ans est une hypothèse. Frais, taxes et assurances exclus." sources="1">
+<details><summary>Hypothèses et méthode</summary><p>Mensualité = P × r / (1 − (1 + r)^(−n)), avec r = taux annuel / 12. Solde après 60 paiements : 300 000 × (1 + r)^60 − mensualité × ((1 + r)^60 − 1) / r. Le nouveau paiement utilise ce même solde et 300 mois, à 7,40 % nominal annuel. Taux observé sur 30 ans employé ici sur 25 ans à titre illustratif. Montants en dollars courants, hors frais, assurance et taxes.</p></details>
+</UsMortgageRiskFigure>
+
+L’avantage peut peser sur le choix de déménager, même si le nouveau logement est comparable. La plupart des prêts conventionnels à taux fixe décrits dans le prospectus Freddie Mac ne peuvent généralement pas être repris par l’acquéreur ; les prêts FHA et VA suivent d’autres règles. L’emprunteur qui vend rembourse donc souvent son ancien crédit et recherche un nouveau financement. <sup><a href="#source-4" aria-label="Source 4">[4]</a></sup>
+
+La FHFA a étudié cet effet de verrouillage, le *lock-in*. Dans les données allant jusqu’au deuxième trimestre 2024, les taux des prêts étudiés étaient en moyenne inférieurs de 2,54 points à ceux de prêts similaires nouvellement accessibles. L’étude relie cet avantage aux comportements de vente. Cette photographie historique documente le mécanisme ; elle ne mesure pas la mobilité d’octobre 2026. <sup><a href="#source-2" aria-label="Source 2">[2]</a></sup>
+
+Conserver le contrat reste un choix sous contraintes. Un emploi ailleurs, une séparation, une succession ou un besoin d’espace peuvent l’emporter sur l’économie d’intérêts. Pour l’investisseur, cette diversité empêche de transformer l’écart de taux en calendrier certain de remboursement.
+
+## Le billet mensuel a plusieurs destinataires
+
+Un crédit peut rester dans le bilan du prêteur ou rejoindre un ensemble de prêts transformé en titres. Dans un [MBS résidentiel](/glossaire/#rmbs) simple, abréviation de *mortgage-backed security*, les investisseurs possèdent un droit sur les flux d’un portefeuille de crédits immobiliers. Le gestionnaire du prêt, ou *servicer*, collecte les paiements et assure le suivi du dossier. Une partie des intérêts finance les services et la garantie ; le solde rémunère le titre. <sup><a href="#source-3" aria-label="Source 3">[3]</a></sup> <sup><a href="#source-5" aria-label="Source 5">[5]</a></sup>
+
+Le taux payé par le ménage et le coupon reçu par l’investisseur sont donc deux grandeurs distinctes. Dans notre modèle de portefeuille, des prêts à 3 % alimentent un coupon net de 2,5 %, après une retenue supposée de 0,5 point. Ces paramètres servent au calcul, sans prétendre reproduire les frais d’un pool commercial particulier.
+
+<UsMortgageRiskFigure lang="fr" kind="chain" number="02" caption="Schéma fonctionnel d’un MBS simple garanti par une agence. Flèches pleines : paiements ; flèche pointillée : garantie. Les frais et les risques du servicer restent distincts du coupon et des risques du détenteur du titre. Aucun poids de marché ni flux monétaire chiffré n’est représenté." sources="3 4 5 10">
+<details><summary>Hypothèses et méthode</summary><p>Schéma d’un titre pass-through d’agence. Les flèches représentent des droits et des paiements, sans échelle monétaire. La garantie et le servicing suivent les contrats ; le titre conserve ses risques de prix et de remboursement anticipé. Les prêts à 3 % et le coupon net de 2,5 % sont des paramètres fictifs utilisés dans l’autre modèle.</p></details>
+</UsMortgageRiskFigure>
+
+La garantie de l’agence porte sur les paiements définis par le contrat. Freddie Mac garantit notamment le versement ponctuel des intérêts et du principal programmé de ses UMBS. Son prospectus distingue cette obligation d’une garantie des États-Unis. Surtout, l’investisseur continue de supporter le prix auquel il pourrait revendre son titre et l’incertitude sur les remboursements anticipés. <sup><a href="#source-3" aria-label="Source 3">[3]</a></sup> <sup><a href="#source-4" aria-label="Source 4">[4]</a></sup>
+
+Lorsqu’un ménage rembourse son capital avant l’échéance, le détenteur reçoit sa part de ce principal. S’il avait acheté le titre au-dessus du pair, ce retour accéléré peut raccourcir le temps disponible pour amortir la prime payée. S’il l’avait acheté avec une forte décote, récupérer plus tôt du principal au pair peut au contraire l’avantager. Le prix d’entrée compte autant que le coupon pour comprendre son intérêt. <sup><a href="#source-4" aria-label="Source 4">[4]</a></sup> <sup><a href="#source-5" aria-label="Source 5">[5]</a></sup>
+
+## Cent millions remboursés à deux vitesses
+
+Imaginons maintenant **100 millions de dollars de prêts encore dus**, homogènes, à 3 %, avec vingt-cinq ans restant à courir. Tous les emprunteurs honorent leur échéance. L’exercice fait varier uniquement les remboursements anticipés, en plus de l’amortissement normal.
+
+Le marché utilise souvent le [CPR](/glossaire/#cpr) (Conditional Prepayment Rate), un taux annuel de remboursement anticipé appliqué au capital qui reste exposé. Un CPR de 12 % ne signifie pas que douze millions quittent chaque année un portefeuille initial de cent millions : la base diminue au fil des paiements. Notre calcul convertit ce taux annuel en probabilité mensuelle constante, puis l’applique après le remboursement programmé du mois.
+
+Avec un CPR supposé de 12 %, le portefeuille a rendu **54,9 millions de principal après cinq ans**. Avec 3 %, il en a rendu **26,6 millions**. La moyenne des dates auxquelles chaque dollar de principal revient passe de **5,90 à 10,95 ans**. Cette [durée de vie moyenne](/glossaire/#wal) mesure un calendrier ; la sensibilité du prix aux taux, appelée [duration](/glossaire/#duration), mesure autre chose.
+
+<UsMortgageRiskFigure lang="fr" kind="principal" number="03" caption="Modèle l0g. Capital initial 100 M$, taux des prêts 3 %, coupon net 2,5 %, 25 ans restants ; CPR constants de 12 % et 3 %. Valeurs actuelles calculées au même taux plat de 5,5 %, capitalisation mensuelle. La vie moyenne pondère les dates du principal ; elle ne représente pas une duration." sources="3 5">
+<details><summary>Hypothèses et méthode</summary><p>Pool homogène de 100 millions de dollars, taux des prêts 3 %, coupon net 2,5 %, 300 mois restants. SMM = 1 − (1 − CPR)^(1/12). Au mois t, la mensualité programmée du pool survivant vaut B × r / (1 − (1 + r)^(−(301 − t))), avec B le solde d’ouverture et r = 0,03 / 12. Principal programmé = mensualité − B × r ; principal anticipé = (B − principal programmé) × SMM. Coupon = B × 0,025 / 12. Vie moyenne = somme(t × principal versé) / (100 millions × 12). Valeur actuelle = somme(flux au mois t / (1 + 0,055 / 12)^t). CPR constants, remboursements intégraux d’une fraction homogène, aucun défaut ni délai de transmission. La somme du principal vaut 100 millions dans chaque scénario. Les scénarios isolent le calendrier, sans calibrer la convexité effective ou un spread ajusté de l’option.</p></details>
+</UsMortgageRiskFigure>
+
+Pour rendre l’attente visible dans un prix, actualisons les deux séries de paiements au même taux plat de 5,5 %, avec un coupon net de 2,5 %. La valeur calculée passe de **86,34 à 77,61 millions de dollars**. Le second portefeuille continue de rembourser tous ses cent millions de principal, mais plus tard, et rémunère entre-temps l’investisseur moins que le rendement utilisé pour actualiser.
+
+Ces résultats sont des valeurs de modèle, avec taux de remboursement constants, absence de défaut et versement mensuel simplifié. Le calcul isole une révision du calendrier, sans construire une courbe de prix complète ni une valorisation d’option. Les délais réels entre collecte et distribution sont également omis. Les UMBS Freddie Mac comportent, eux, un délai de paiement contractuel. <sup><a href="#source-3" aria-label="Source 3">[3]</a></sup>
+
+L’écart de 8,73 millions n’est donc ni une perte observée en octobre, ni une décote à appliquer à tous les anciens crédits. Il mesure la différence entre deux hypothèses maintenues jusqu’au terme. Un acheteur arrivé après la baisse peut acquérir le titre à un prix déjà adapté et viser un rendement satisfaisant. La perte éventuelle du vendeur et l’opportunité du nouvel acheteur décrivent le même marché à deux moments.
+
+## La prochaine bascule dépend du taux du contrat
+
+Un refinancement intéressant dépend des économies attendues, des frais, de l’éligibilité du ménage et du temps pendant lequel il compte conserver son logement. Autour de cette zone de décision, un mouvement de taux peut changer rapidement le rythme anticipé des remboursements. Beaucoup plus loin, il peut surtout modifier la valeur d’un flux déjà prévu comme long. <sup><a href="#source-4" aria-label="Source 4">[4]</a></sup> <sup><a href="#source-6" aria-label="Source 6">[6]</a></sup>
+
+Un petit test éclaire cette différence. Supposons, pour l’exercice, qu’un emprunteur envisage le refinancement dès qu’il peut réduire son taux d’au moins un demi-point. Avec un nouveau taux de 6,4 %, un prêt existant à 7,5 % dépasse ce seuil. Si le nouveau taux passe à 7,4 %, il cesse de le dépasser. Le prêt à 3 %, lui, reste très loin du seuil dans les deux cas.
+
+<UsMortgageRiskFigure lang="fr" kind="refinancing" number="04" caption="Test illustratif : économie minimale supposée de 0,5 point, commune aux trois prêts. Indicateur = taux du prêt − nouveau taux − 0,5 point. Les taux nouveaux de 6,4 % et 7,4 % forment deux scénarios ; aucun taux de refinancement, probabilité ou comportement n’est estimé." sources="6 11">
+<details><summary>Hypothèses et méthode</summary><p>Indicateur pédagogique en points de pourcentage = ancien taux − nouveau taux − 0,5 point. Le seuil de 0,5 point est choisi pour l’exercice ; il ne décrit aucune règle bancaire ni probabilité de remboursement. Les nouveaux taux de 6,4 % et 7,4 % sont hypothétiques. Les frais réels et les contraintes de refinancement ne sont pas estimés.</p></details>
+</UsMortgageRiskFigure>
+
+Le demi-point est une convention de notre exemple, sans valeur de règle bancaire. Il permet de voir pourquoi l’étiquette « ancien crédit bon marché » ne suffit pas à localiser le prochain changement de comportement. À mesure que l’écart de taux devient très grand, l’option de refinancement peut perdre l’essentiel de sa sensibilité marginale, alors que le titre reste fortement exposé à une hausse générale des rendements.
+
+Cette distinction sépare **un risque de taux élevé** d’**une variation rapide de ce risque**. La convexité décrit comment la sensibilité du prix se transforme lorsque les taux bougent. Dans la zone où les remboursements ralentissent quand les taux montent, les flux s’allongent et peuvent accentuer la baisse du prix : c’est la convexité négative. Son intensité dépend de la position du prêt par rapport à la zone de refinancement. <sup><a href="#source-6" aria-label="Source 6">[6]</a></sup>
+
+Un taux de marché ne suffit d’ailleurs pas à prévoir une décision humaine. Les travaux de Perotti, Grzelak et Oosterlee, diffusés en prépublication en 2024, traitent explicitement l’incertitude comportementale et les limites de sa couverture. Les prêts ont des tailles, des anciens taux, des âges et des emprunteurs différents. Un portefeuille moyen peut cacher plusieurs zones de réaction. <sup><a href="#source-11" aria-label="Source 11">[11]</a></sup>
+
+## La couverture qui doit être refaite
+
+Le gestionnaire peut chercher à conserver une exposition aux taux définie à l’avance. Si les remboursements ralentissent et que la duration de ses titres augmente, la couverture déjà en place peut devenir insuffisante. Vendre des Treasuries, ou conclure un swap dans lequel il paie un taux fixe et reçoit un taux variable, peut réduire cette exposition. Une baisse des taux peut conduire à l’ajustement inverse. <sup><a href="#source-6" aria-label="Source 6">[6]</a></sup> <sup><a href="#source-8" aria-label="Source 8">[8]</a></sup>
+
+Prenons un **autre portefeuille fictif**, dont la valeur de marché est fixée à un milliard de dollars pour isoler le calcul. Sa duration estimée passe de quatre à six ans. En approximation locale, sa sensibilité à un mouvement d’un point de base, soit 0,01 point de taux, appelée [DV01](/glossaire/#dv01), passe de **400 000 à 600 000 dollars**. Il reste 200 000 dollars de sensibilité supplémentaire à neutraliser si le gestionnaire souhaite conserver sa cible.
+
+Un instrument de couverture dont la duration vaut huit ans nécessiterait une position vendeuse équivalant à **250 millions de dollars de valeur de marché**. Ce chiffre décrit une exposition de couverture, pas un paiement de 250 millions ni une perte de ce montant. Il dépend des durations supposées et ignore les mouvements non parallèles de la courbe.
+
+<UsMortgageRiskFigure lang="fr" kind="hedging" number="05" caption="Approximation locale : DV01 = valeur × duration × 0,0001. Duration du portefeuille 4 puis 6 ans ; duration de l’instrument de couverture 8 ans. Les 250 M$ sont une exposition vendeuse équivalente, sans estimation de perte ou de flux exécuté. Ce modèle est indépendant du pool ancien à 3 %." sources="6 8">
+<details><summary>Hypothèses et méthode</summary><p>DV01 ≈ valeur de marché × duration × 0,0001. Pour un milliard de dollars maintenu constant, 4 puis 6 ans donnent 400 000 puis 600 000 dollars par point de base. Exposition vendeuse équivalente = 200 000 / (8 × 0,0001) = 250 millions de dollars. Approximation locale d’un choc parallèle ; aucune transaction ou perte observée. Portefeuille distinct du modèle de prêts anciens.</p></details>
+</UsMortgageRiskFigure>
+
+Ce modèle est indépendant du pool âgé à 3 % présenté plus haut. Il ne lui attribue aucune duration observée. Il montre ce qu’entraîne une révision de sensibilité, quelle que soit la combinaison de prêts qui la provoque.
+
+Si plusieurs gestionnaires ajustent dans le même sens, leurs ventes peuvent peser sur le prix des obligations et faire remonter leurs rendements. L’effet dépend toutefois de la taille des ordres, de leur calendrier et de la capacité d’autres acheteurs à les absorber. Une réduction de risque pour un portefeuille peut devenir une demande de financement ou de risque supplémentaire pour son intermédiaire.
+
+Un assureur qui aligne des actifs sur ses engagements longs, un fonds indiciel et un investisseur très endetté n’ont ni la même cible, ni la même contrainte de liquidité. La boucle d’amplification suppose des acteurs qui ajustent effectivement leurs positions. La seule existence de prêts remboursables par anticipation ne donne ni le volume de ventes, ni leur effet sur les taux.
+
+## Les propriétaires du risque font toute la différence
+
+La Réserve fédérale détenait encore **1 890,706 milliards de dollars de MBS résidentiels le 7 octobre 2026**. Le montant publié le lendemain dans H.4.1 représente le principal restant des titres, et non leur valeur de marché. Il ne renseigne pas, à lui seul, leur répartition par coupon. <sup><a href="#source-7" aria-label="Source 7">[7]</a></sup>
+
+Le portefeuille d’une banque centrale n’obéit pas à la mécanique d’un investisseur financé en repo, c’est-à-dire par un emprunt garanti par les titres. Une perte de valorisation ne déclenche pas automatiquement, pour la Fed, une demande privée de garanties sur ces titres. En revanche, les flux d’intérêts et le coût de son propre passif continuent d’avoir des conséquences économiques. La détention publique déplace les contraintes ; elle n’efface pas la valeur du temps.
+
+Le *servicer* possède encore une autre exposition. Le droit de gérer les prêts, appelé [MSR](/glossaire/#msr), lui donne des revenus en échange d’obligations de service. Des remboursements plus rapides raccourcissent ces revenus. Un ralentissement peut prolonger la relation rémunérée, toutes choses égales par ailleurs, tandis que les défauts augmentent les coûts de suivi. Additionner les MSR aux titres hypothécaires comme s’ils réagissaient tous de la même manière masque ces différences. <sup><a href="#source-10" aria-label="Source 10">[10]</a></sup>
+
+Les couvertures fonctionnent aussi parfois comme prévu. Pour le deuxième trimestre 2026, Dynex déclare une valeur comptable par action passée de 12,60 à 12,90 dollars. L’entreprise attribue ce résultat notamment au resserrement des spreads et à des couvertures ayant compensé une grande partie de l’effet défavorable des taux. Ce contrepoint provient du groupe lui-même et concerne son portefeuille, mais il suffit à écarter un scénario où tous les détenteurs subiraient mécaniquement la même perte. <sup><a href="#source-12" aria-label="Source 12">[12]</a></sup>
+
+## Une baisse de prix peut précéder un impayé
+
+Le risque devient plus pressant lorsque l’investisseur emprunte pour acheter les titres. Un prêteur en [repo](/glossaire/#repo) accepte le MBS comme garantie, avec une décote de sécurité. Si le cours baisse, la valeur de la garantie diminue. Il peut demander un remboursement partiel ou des titres supplémentaires pour rétablir la couverture convenue. AGNC décrit ce fonctionnement dans sa note sur les pensions livrées. <sup><a href="#source-8" aria-label="Source 8">[8]</a></sup>
+
+Dans une poche fictive de 100 millions de dollars de titres financée par 95 millions de repo, la mise initiale en fonds propres est de cinq millions. Une baisse de prix de 3 % ramène la garantie à 97 millions. À décote constante de 5 %, elle ne permet plus de financer que **92,15 millions** : il faut apporter **2,85 millions de liquidité**, ou une garantie additionnelle acceptée par le prêteur.
+
+<UsMortgageRiskFigure lang="fr" kind="margin" number="06" caption="Position fictive : 100 M$ de titres, 95 M$ de repo, décote constante de 5 %, baisse de cours de 3 %. Aucune couverture, autre ressource ou charge de portage. Perte de valeur de 3 M$ et appel de cash de 2,85 M$ sont deux mesures distinctes, à ne pas additionner comme des pertes." sources="8">
+<details><summary>Hypothèses et méthode</summary><p>Exemple fictif en millions de dollars : actifs 100, repo 95, fonds propres 5. Après une baisse de cours de 3 %, les actifs valent 97. Financement maximal à décote constante de 5 % = 97 × 0,95 = 92,15 ; remboursement demandé = 95 − 92,15 = 2,85. Valeur résiduelle avant apport = 97 − 95 = 2. La perte de valeur de 3 et l’appel de liquidité de 2,85 ne s’additionnent pas comme deux pertes. Couvertures, frais et autres ressources exclus.</p></details>
+</UsMortgageRiskFigure>
+
+La perte de valeur est de trois millions. L’appel de liquidité de 2,85 millions correspond à une autre opération : la réduction de l’emprunt autorisé. Les additionner comme deux pertes gonflerait artificiellement le dommage. Avant tout apport extérieur, la valeur résiduelle de cette poche tombe de cinq à deux millions. D’autres actifs, des couvertures ou de la trésorerie disponible peuvent permettre de traverser le choc.
+
+Le scénario suppose que tous les ménages paient. L’urgence naît de la valorisation de la garantie et de son financement. Elle pourrait conduire à vendre si les ressources mobilisables sont insuffisantes. Une réserve liquide ou une couverture encaissable à temps peut, au contraire, éviter une vente défavorable.
+
+Chez AGNC, les repos finançant les titres d’investissement présentaient au 30 juin 2026 une échéance résiduelle moyenne pondérée de **treize jours**. Le chiffre ne décrit ni la durée des prêts immobiliers, ni une obligation de liquider tout le portefeuille dans treize jours. Il mesure la fréquence avec laquelle une partie du financement doit être renouvelée. Le groupe publiait aussi 7,5 milliards de dollars de cash et de titres Agency MBS non grevés, une réserve qui ne se réduit pas à du cash bancaire. <sup><a href="#source-8" aria-label="Source 8">[8]</a></sup> <sup><a href="#source-9" aria-label="Source 9">[9]</a></sup>
+
+## Couvrir les taux laisse un autre prix à surveiller
+
+Un MBS peut se déprécier par rapport au titre utilisé pour le couvrir. Les investisseurs peuvent exiger davantage de rémunération pour son option de remboursement, sa liquidité ou les incertitudes de sa valorisation. Cet écart aux taux de référence est le *spread*. Une couverture calibrée sur les taux généraux ne neutralise pas automatiquement sa variation. <sup><a href="#source-5" aria-label="Source 5">[5]</a></sup> <sup><a href="#source-8" aria-label="Source 8">[8]</a></sup>
+
+AGNC publie deux tests distincts sur son portefeuille du 30 juin 2026, couvertures incluses. Une hausse parallèle de **25 points de base des taux**, à spreads hypothécaires constants, réduirait selon son modèle la valeur comptable nette tangible par action de **2,3 %**. Un élargissement de **25 points de base des spreads MBS**, à taux constants, la réduirait de **12,2 %**. Ce sont des estimations statiques de l'entreprise, sans probabilité associée, et non des pertes réalisées. <sup><a href="#source-8" aria-label="Source 8">[8]</a></sup>
+
+<UsMortgageRiskFigure lang="fr" kind="sensitivities" number="07" caption="Variation estimée de la valeur comptable nette tangible par action ordinaire : −2,3 % pour +25 pb sur la courbe des taux à spreads constants ; −12,2 % pour +25 pb de spreads MBS à taux constants. Deux tests séparés, sans probabilité, non additionnés et sans lien chiffré établi avec octobre." sources="8">
+<details><summary>Hypothèses et méthode</summary><p>Simulations statiques publiées par AGNC pour son portefeuille au 30 juin 2026, couvertures incluses. Métrique : variation estimée de la valeur comptable nette tangible par action ordinaire. Déplacement parallèle des taux de +25 points de base à spreads constants : −2,3 %. Spreads MBS élargis de +25 points de base à taux constants : −12,2 %. Tests séparés, aucune addition, perte réalisée ou probabilité.</p></details>
+</UsMortgageRiskFigure>
+
+Ces deux tests ne s’additionnent pas ici pour simuler un choc combiné : celui-ci demanderait une nouvelle valorisation cohérente des actifs et des couvertures. Leur contraste expose surtout la question que devrait poser l’acheteur du risque : sur quelle variation le portefeuille a-t-il été protégé, et laquelle demeure à sa charge ?
+
+Une autre ligne du communiqué AGNC illustre le soin nécessaire dans la lecture : le CPR projeté sur la vie restante du portefeuille est de 8,6 %, tandis que le CPR effectivement observé pendant le trimestre est de 13,0 %, exprimé en taux annualisé. Le premier décrit une hypothèse pour les années à venir ; le second résume le passé récent. Les comparer comme deux observations identiques fabriquerait une accélération ou un ralentissement. <sup><a href="#source-9" aria-label="Source 9">[9]</a></sup>
+
+## Les limites du diagnostic d’octobre
+
+Des précédents récents existent. Le 21 mai 2026, Reuters rapportait que des participants de marché attribuaient une partie des ventes de Treasuries aux couvertures hypothécaires. Ce témoignage soutient la plausibilité du canal ; il ne permet pas de chiffrer un effet pour octobre. <sup><a href="#source-14" aria-label="Source 14">[14]</a></sup>
+
+Pour mesurer cette contribution, il faudrait rapprocher des positions par coupon et détenteur, des variations de duration, des couvertures exécutées et de la profondeur du marché au moment des ordres. Les documents publics examinés ici ne fournissent pas cette reconstitution. Les taux de 7,40 %, le bilan hebdomadaire de la Fed et les comptes de juin éclairent trois étages différents. Leur juxtaposition n’établit pas une chaîne causale quotidienne.
+
+Il faut également conserver la distinction entre risque de calendrier et qualité des emprunteurs. Dans son rapport de stabilité financière de mai 2026, arrêté aux données du 23 avril, la Fed décrivait encore des retards hypothécaires globalement faibles au regard de l’histoire et des coussins importants de valeur immobilière, avec des fragilités particulières sur les prêts FHA. Cette appréciation du printemps ne remplace pas les données d’octobre. <sup><a href="#source-13" aria-label="Source 13">[13]</a></sup>
+
+L’enquête débouche sur un partage du risque plus précis que le récit d’une bombe universelle. Le propriétaire garde sa mensualité avantageuse. Le détenteur du prêt accepte un capital qui peut revenir plus tard. Certains acteurs portent cette attente dans un bilan stable ; d’autres doivent financer la position à court terme et retoucher leurs couvertures. Les nouveaux acquéreurs peuvent acheter cette exposition à un prix qui la rémunère mieux.
+
+**La variable décisive est la rencontre entre un calendrier de remboursement révisable et une obligation de financement qui, elle, arrive à date fixe.** Pour repérer le point de tension, il faut regarder qui doit payer prochainement, quels actifs il peut mobiliser et quelle partie du changement de calendrier était déjà incorporée dans son prix. Le seul taux inscrit sur le contrat du ménage ne répond à aucune de ces trois questions.
+
+Pour suivre le passage du crédit aux titres, le guide [Lire une titrisation de crédit à la consommation](/guides/lire-une-titrisation-de-credit-a-la-consommation/) détaille les flux et les tranches. L’enquête [De la carte à la rente](/posts/de-la-carte-a-la-rente-qui-detient-risque-consommateur/) suit les détenteurs de risque dans un autre circuit du crédit américain.
+
+## Sources et méthode
+
+Recherche arrêtée au **11 octobre 2026**. Les données publiées conservent leur période et leur périmètre. Les modèles sont fictifs, en dollars courants, et leurs formules sont exposées sous chaque figure. Ils ne mesurent ni une perte réalisée, ni les couvertures exécutées en octobre. Les sensibilités AGNC sont des simulations de l’entreprise pour le portefeuille de juin. La dépêche Reuters a été consultée dans sa reprise attribuée à Reuters chez Investing.com ; l’accès direct à la page Reuters est resté indisponible.
+
+<div class="us-mortgage-risk-sources">
+<ol>
+<li id="source-1">Freddie Mac · 2026-10-08. <a href="https://www.freddiemac.com/pmms">Primary Mortgage Market Survey</a>.</li>
+<li id="source-2">FHFA · 2024-08-30. <a href="https://www.fhfa.gov/blog/statistics/the-geography-of-the-lock-in-effect-which-msas-are-most-locked-in">The Geography of the Lock-In Effect: Which MSAs are Most Locked-In?</a>.</li>
+<li id="source-3">Freddie Mac Capital Markets · consulté le 11 octobre 2026. <a href="https://capitalmarkets.freddiemac.com/mbs/products">Mortgage Products</a>.</li>
+<li id="source-4">Freddie Mac · 2026-09-01. <a href="https://capitalmarkets.freddiemac.com/mbs/docs/umbs_mbs_oc_090126.pdf">UMBS and MBS Offering Circular</a>.</li>
+<li id="source-5">SEC · 2003-02-03. <a href="https://www.sec.gov/reports/staff-report-enhancing-disclosure-mortgage-backed-securities-markets">Staff Report: Enhancing Disclosure in the Mortgage-Backed Securities Markets</a>.</li>
+<li id="source-6">Federal Reserve Bank of New York · 2014-03-24. <a href="https://libertystreeteconomics.newyorkfed.org/2014/03/convexity-event-risks-in-a-rising-interest-rate-environment/">Convexity Event Risks in a Rising Interest Rate Environment</a>.</li>
+<li id="source-7">Federal Reserve Board · 2026-10-08. <a href="https://www.federalreserve.gov/releases/h41/20261008/">H.4.1, Table 3</a>.</li>
+<li id="source-8">AGNC / SEC EDGAR · 2026-07-31. <a href="https://www.sec.gov/Archives/edgar/data/1423689/000142368926000128/agnc-20260630.htm">Form 10-Q, quarter ended June 30, 2026</a>.</li>
+<li id="source-9">AGNC · 2026-07-20. <a href="https://ir.agnc.com/news-releases/news-release-details/agnc-investment-corp-announces-second-quarter-2026-financial">Second Quarter 2026 Financial Results</a>.</li>
+<li id="source-10">Federal Reserve Board · 2026-06-04. <a href="https://www.federalreserve.gov/econres/notes/feds-notes/mortgage-servicing-right-valuations-under-stress-20260604.html">Mortgage Servicing Right Valuations Under Stress</a>.</li>
+<li id="source-11">Perotti, Grzelak, Oosterlee · 2024-10-28. <a href="https://arxiv.org/abs/2410.21110">Modeling and Replication of the Prepayment Option of Mortgages including Behavioral Uncertainty</a>.</li>
+<li id="source-12">Dynex Capital / SEC EDGAR · 2026-07-20. <a href="https://www.sec.gov/Archives/edgar/data/826675/000082667526000074/a2q26earningsrelease.htm">Second Quarter 2026 Results, Exhibit 99.1</a>.</li>
+<li id="source-13">Federal Reserve Board · mai 2026 · données au 23 avril. <a href="https://www.federalreserve.gov/publications/2026-may-financial-stability-report-overview.htm">Financial Stability Report, Overview</a>.</li>
+<li id="source-14">Reuters · 2026-05-21. <a href="https://www.reuters.com/business/us-treasuries-selloff-exacerbated-mortgage-investors-hedge-against-rising-yields-2026-05-21/">US Treasuries selloff exacerbated as mortgage investors hedge against rising yields</a>. <a href="https://www.investing.com/news/economy-news/analysisus-treasuries-selloff-exacerbated-as-mortgage-investors-hedge-against-rising-yields-4704725">Reprise attribuée à Reuters</a>.</li>
+</ol>
+</div>

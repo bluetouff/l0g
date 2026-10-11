@@ -204,6 +204,57 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'cpr', sigle: 'CPR', nom: 'Conditional prepayment rate',
+    sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    robots: 'noindex,follow', guide: '/en/analysis/us-mortgages-three-percent-moving-risk/',
+    def: 'An annualised measure of mortgage prepayments relative to the principal still exposed after scheduled amortisation. CPR may summarise observed repayments or represent a modelling assumption; the distinction must be stated. Its monthly equivalent, single-month mortality or SMM, is SMM = 1 − (1 − CPR)^(1/12), with rates expressed as proportions.',
+    atlas: {
+      intuition: 'Prepayments apply to a principal balance that shrinks as payments arrive.',
+      formula: 'SMM = 1 − (1 − CPR)^(1/12), CPR and SMM expressed as proportions',
+      articles: [{ label: 'US mortgages: the risk around 3% loans', href: '/en/analysis/us-mortgages-three-percent-moving-risk/', kind: 'article' }],
+      sources: [{ label: 'Freddie Mac: Daily Prepayment Report Guide', href: 'https://capitalmarkets.freddiemac.com/mbs/docs/dpr_guide.pdf', detail: 'Pages 12 and 13: the SMM denominator and annualised CPR conversion.', kind: 'source' }],
+      related: ['wal', 'msr', 'duration'],
+    },
+  },
+  {
+    slug: 'wal', sigle: 'WAL', nom: 'Weighted average life of principal',
+    sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    robots: 'noindex,follow', guide: '/en/analysis/us-mortgages-three-percent-moving-risk/',
+    def: 'The average time to principal repayment, weighted by the amount returned at each date. It is measured in years from a reference date and depends on assumptions such as prepayment speeds. It excludes interest and discounting. This repayment schedule differs from duration, which measures price sensitivity to interest rates.',
+    atlas: {
+      intuition: 'Each dollar of principal is weighted by how long it takes to recover it.',
+      formula: 'WAL = Σ(time in years × principal repaid) / Σ(principal repaid)',
+      articles: [{ label: 'US mortgages: the risk around 3% loans', href: '/en/analysis/us-mortgages-three-percent-moving-risk/', kind: 'article' }],
+      sources: [{ label: 'Freddie Mac: STACR 2016-HQA2, weighted average life', href: 'https://capitalmarkets.freddiemac.com/crt/docs/legal-documents/stacr/series-2016-hqa2/16_hqa2_1120281sto.pdf', detail: 'Definition and assumptions for the securities’ weighted average lives.', kind: 'source' }],
+      related: ['cpr', 'dv01', 'duration'],
+    },
+  },
+  {
+    slug: 'dv01', sigle: 'DV01', nom: 'Dollar value of one basis point',
+    sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    robots: 'noindex,follow', guide: '/en/analysis/us-mortgages-three-percent-moving-risk/',
+    def: 'The estimated local change in a position’s value for a 0.01-percentage-point move in interest rates. Expressed here as an absolute amount, it is approximated by interest-rate duration multiplied by market value and 0.0001. It depends on the position and the assumed rate shock; it is not a realised loss.',
+    atlas: {
+      intuition: 'Expressing rate sensitivity in dollars helps size a hedge.',
+      formula: 'DV01 ≈ |interest-rate duration × market value| × 0.0001, in dollars per basis point',
+      articles: [{ label: 'US mortgages: the risk around 3% loans', href: '/en/analysis/us-mortgages-three-percent-moving-risk/', kind: 'article' }],
+      sources: [{ label: 'CME Group: Calculating the Dollar Value of a Basis Point', href: 'https://www.cmegroup.com/trading/interest-rates/files/Calculating_the_Dollar_Value_of_a_Basis_Point.pdf', detail: 'Method 2: duration, market value and limits of the local approximation.', kind: 'source' }],
+      related: ['duration', 'repo', 'wal'],
+    },
+  },
+  {
+    slug: 'msr', sigle: 'MSR', nom: 'Mortgage servicing right',
+    sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
+    robots: 'noindex,follow', guide: '/en/analysis/us-mortgages-three-percent-moving-risk/',
+    def: 'A contractual right to income from administering mortgage loans, in exchange for duties such as collecting payments and handling borrower accounts. It is an asset distinct from an MBS. Prepayment shortens servicing revenues, while delinquencies and defaults can increase processing costs. Its value depends on expected net servicing income.',
+    atlas: {
+      intuition: 'The servicer owns a claim on service revenues, distinct from capital invested in the MBS.',
+      articles: [{ label: 'US mortgages: the risk around 3% loans', href: '/en/analysis/us-mortgages-three-percent-moving-risk/', kind: 'article' }],
+      sources: [{ label: 'Federal Reserve: Mortgage Servicing Right Valuations Under Stress', href: 'https://www.federalreserve.gov/econres/notes/feds-notes/mortgage-servicing-right-valuations-under-stress-20260604.html', detail: 'Note of 4 June 2026: servicing income, prepayments and default costs.', kind: 'source' }],
+      related: ['cpr', 'wal', 'repo'],
+    },
+  },
+  {
     slug: 'headroom', sigle: 'Headroom', nom: 'EU budget guarantee capacity',
     ...macroSection, robots: 'noindex,follow',
     guide: '/en/analysis/europe-ukraine-loan-cost-of-waiting/',
