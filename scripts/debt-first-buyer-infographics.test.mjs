@@ -63,9 +63,11 @@ const variants = articles.flatMap(({ lang, raw }) => {
 });
 
 // SHA-256 of the complete ordered XML trees from the supplied original SVGs.
-// Only the added root style, JSON URL escaping and the exact conversion of
-// the source hyperlink into its local citation are reversed. Paints, geometry, metadata and every
-// label remain part of the fingerprint, including whitespace text nodes.
+// Only the added root style, JSON URL escaping, the exact conversion of the
+// source hyperlink into its local citation, the bijective semantic paint mapping
+// below and the hatch's contrast repair (.50 to .75 opacity) are reversed.
+// Every original paint role, geometry, metadata and label stays in the
+// fingerprint, including whitespace text nodes.
 const originalSignatures = {
   '01-adjudication-en-desktop': '47280c926a1106e54088c6415f872c65d309b584e9588a62c8d54183e65a6d41',
   '01-adjudication-en-mobile': 'efaf26d11472e8a9813c24eb95d5ed1bf3d635fde43833b94e73b4e418eddf03',
@@ -98,7 +100,25 @@ const allowedAttributes = Object.fromEntries(Object.entries({
   line: 'x1 y1 x2 y2 stroke stroke-width stroke-dasharray',
   polygon: 'points fill', circle: 'cx cy r fill stroke stroke-width', a: 'href',
 }).map(([key, value]) => [key, new Set(value.split(' ').filter(Boolean))]));
-const paints = new Set(['none', '#101b27', '#172737', '#21374b', '#304456', '#66dfc1', '#91b9f5', '#aec0cd', '#f5f4ef', '#ffd18b']);
+const paintTokens = new Map([
+  ['#101b27', 'var(--color-ink)'],
+  ['#172737', 'var(--color-surface)'],
+  ['#21374b', 'var(--color-surface-2)'],
+  ['#304456', 'var(--color-line-strong)'],
+  ['#66dfc1', 'var(--color-signal)'],
+  ['#91b9f5', 'var(--color-topic-blue)'],
+  ['#aec0cd', 'var(--color-muted)'],
+  ['#f5f4ef', 'var(--color-paper)'],
+  ['#ffd18b', 'var(--color-amber)'],
+]);
+const originalPaints = new Map([...paintTokens].map(([original, token]) => [token, original]));
+assert.equal(paintTokens.size, 9);
+assert.equal(originalPaints.size, paintTokens.size, 'The semantic paint mapping must remain bijective');
+const paint = original => {
+  assert.ok(paintTokens.has(original), `Unknown original paint ${original}`);
+  return paintTokens.get(original);
+};
+const paints = new Set(['none', ...paintTokens.values()]);
 const numericAttributes = new Set('x y x1 y1 x2 y2 width height rx cx cy r font-size stroke-width stroke-opacity'.split(' '));
 
 function inspect(v) {
@@ -158,6 +178,10 @@ function inspect(v) {
   assert.equal(attrs(pattern).id, `${v.name}-hatch`);
   assert.equal(number(pattern, 'width'), 9);
   assert.equal(number(pattern, 'height'), 9);
+  const hatchPaths = children(pattern).filter(node => tag(node) === 'path');
+  assert.equal(hatchPaths.length, 1);
+  assert.equal(attrs(hatchPaths[0])['stroke-opacity'], '.75');
+  assert.deepEqual(nodes.filter(node => Object.hasOwn(attrs(node), 'stroke-opacity')), hatchPaths);
   const metadata = JSON.parse(textOf(nodes.find(node => tag(node) === 'metadata')));
   assert.deepEqual(metadata, {
     creator: 'l0g', verification_date: '2026-10-11', figure: v.kind, language: v.lang,
@@ -167,12 +191,21 @@ function inspect(v) {
 }
 function signature(v) {
   const { root } = inspect(v);
+  const hatch = nodesOf(root).find(node => tag(node) === 'pattern');
+  const hatchPath = children(hatch).find(node => tag(node) === 'path');
   const metadata = nodesOf(root).find(node => tag(node) === 'metadata');
   metadata.metadata = [{ '#text': textOf(metadata).replaceAll(String.raw`https\u003a//`, 'https://').replaceAll(String.raw`\u002e`, '.') }];
   const canonical = (node, isRoot = false) => {
     if (tag(node) === '#text') return ['#text', node['#text']];
     const attributes = { ...attrs(node) };
     if (isRoot) delete attributes.style;
+    if (node === hatchPath) {
+      assert.equal(attributes['stroke-opacity'], '.75');
+      attributes['stroke-opacity'] = '.50';
+    }
+    for (const key of ['fill', 'stroke']) {
+      if (originalPaints.has(attributes[key])) attributes[key] = originalPaints.get(attributes[key]);
+    }
     if (tag(node) === 'a') {
       const id = sourceIds[kinds.indexOf(v.kind)][0];
       assert.equal(attributes.href, `#source-${id}`);
@@ -303,7 +336,7 @@ test('deterministic Liberation Sans glyph bounds and drawn primitives stay insid
 test('original composition signatures reject changes to paints, text, labels, metadata, coordinates and nesting', () => {
   const v = variants[0];
   for (const change of [
-    (_, nodes) => { attrs(nodes.find(node => tag(node) === 'rect')).fill = '#172737'; },
+    (_, nodes) => { attrs(nodes.find(node => tag(node) === 'rect')).fill = paint('#172737'); },
     (_, nodes) => { attrs(nodes.find(node => tag(node) === 'text')).x = '57'; },
     (_, nodes) => { nodes.find(node => tag(node) === 'text').text = [{ '#text': 'A changed label' }]; },
     (_, nodes) => { nodes.find(node => tag(node) === 'metadata').metadata = [{ '#text': '{}' }]; },
@@ -328,6 +361,84 @@ test('XML and exact local URL contracts reject active content, malformed XML, es
   assert.throws(() => inspect(mutate(v, root => { attrs(root).onload = 'alert(1)'; })));
   assert.throws(() => inspect(mutate(v, (_, nodes) => { attrs(nodes.find(node => tag(node) === 'text')).style = 'display:none'; })));
 });
+test('paint tokens reject fixed colors, fabricated variables, fallbacks, URL payloads and declaration suffixes', () => {
+  const v = variants[0];
+  const invalid = [
+    ...paintTokens.keys(),
+    'var(--color-signal-fake)',
+    'var(--color-signal, #5eead4)',
+    'var(--color-signal, url(https://example.com/paint))',
+    'var(--color-signal) url(https://example.com/paint)',
+    'var(--color-signal);fill:url(https://example.com/paint)',
+    'var(--color-signal) currentColor',
+    'var( --color-signal)',
+    'VAR(--color-signal)',
+    'var(--color-signal)\n',
+  ];
+  for (const key of ['fill', 'stroke']) for (const value of invalid) {
+    assert.throws(() => inspect(mutate(v, (_, nodes) => {
+      attrs(nodes.find(node => tag(node) === (key === 'fill' ? 'rect' : 'path')))[key] = value;
+    })), `Reject ${key}=${value}`);
+  }
+  assert.throws(() => inspect({ ...v, svg: v.svg.replace('fill="var(--color-ink)"', 'fill="var(--color-ink&#x2c; url(https://example.com/paint))"') }));
+});
+test('the hatch contrast repair is limited to its single known path and rejects the original weak opacity', () => {
+  const v = variants[0];
+  for (const opacity of ['.50', '.5', '0', '1', '.750']) {
+    assert.throws(() => inspect(mutate(v, (_, nodes) => {
+      attrs(nodes.find(node => Object.hasOwn(attrs(node), 'stroke-opacity')))['stroke-opacity'] = opacity;
+    })));
+  }
+  assert.throws(() => inspect(mutate(v, (_, nodes) => {
+    attrs(nodes.find(node => tag(node) === 'line'))['stroke-opacity'] = '.75';
+  })));
+});
+
+function themePalettes() {
+  const palettes = { dark: new Map(), light: new Map() };
+  postcss.parse(read('src/styles/global.css')).walkDecls(declaration => {
+    const parent = declaration.parent;
+    if (parent.type === 'atrule' && parent.name === 'theme') palettes.dark.set(declaration.prop, declaration.value);
+    if (parent.type === 'rule' && parent.selector === ':root[data-theme="light"]') palettes.light.set(declaration.prop, declaration.value);
+  });
+  for (const palette of Object.values(palettes)) {
+    for (const token of paintTokens.values()) assert.ok(palette.has(token.slice(4, -1)), `Missing theme token ${token}`);
+  }
+  return palettes;
+}
+function rgb(hex) {
+  assert.match(hex, /^#[\da-f]{6}$/iu);
+  return [1, 3, 5].map(index => Number.parseInt(hex.slice(index, index + 2), 16));
+}
+function luminance(channels) {
+  return channels.map(channel => channel / 255).map(channel => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4).reduce((sum, channel, index) => sum + channel * [0.2126, 0.7152, 0.0722][index], 0);
+}
+function contrast(left, right) {
+  const a = luminance(left), b = luminance(right);
+  return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+}
+test('all five label colors retain at least 4.5:1 contrast on the three figure surfaces in both site themes', () => {
+  const foregrounds = ['paper', 'muted', 'signal', 'amber', 'topic-blue'];
+  const used = new Set(variants.flatMap(v => inspect(v).nodes.filter(node => tag(node) === 'text').map(node => attrs(node).fill)));
+  assert.deepEqual([...used].sort(), foregrounds.map(role => `var(--color-${role})`).sort());
+  for (const [theme, palette] of Object.entries(themePalettes())) {
+    for (const foreground of foregrounds) for (const background of ['ink', 'surface', 'surface-2']) {
+      const ratio = contrast(rgb(palette.get(`--color-${foreground}`)), rgb(palette.get(`--color-${background}`)));
+      assert.ok(ratio >= 4.5, `${theme}: ${foreground}/${background} contrast ${ratio}`);
+    }
+  }
+});
+test('75 percent amber hatch strokes reach 3:1 contrast on their dark and light backgrounds', () => {
+  for (const [theme, palette] of Object.entries(themePalettes())) {
+    const foreground = rgb(palette.get('--color-amber'));
+    for (const background of ['ink', 'surface-2']) {
+      const base = rgb(palette.get(`--color-${background}`));
+      const blended = foreground.map((channel, index) => channel * 0.75 + base[index] * 0.25);
+      const ratio = contrast(blended, base);
+      assert.ok(ratio >= 3, `${theme}: hatch/${background} contrast ${ratio}`);
+    }
+  }
+});
 test('oversized and unterminated SVG input is rejected before parsing or path matching', () => {
   const v = variants[0];
   assert.throws(() => inspect({ ...v, svg: `<svg>${' '.repeat(100_000)}</svg>` }));
@@ -339,15 +450,15 @@ test('geometry independently rejects moved glyphs, narrow cards, hidden labels a
   assert.throws(() => geometry(mutate(v, (_, nodes) => { attrs(nodes.find(node => tag(node) === 'text')).x = '1199'; })), /outside viewBox/u);
   assert.throws(() => geometry(mutate(v, (_, nodes) => { attrs(nodes.find(node => tag(node) === 'rect' && attrs(node).rx === '14')).width = '120'; })), /outside card/u);
   assert.throws(() => geometry(mutate(v, root => { const label = root.svg.find(node => tag(node) === 'text'); root.svg.push(structuredClone(label)); })), /collision/u);
-  assert.throws(() => geometry(mutate(v, root => { root.svg.push({ rect: [], ':@': { x: '40', y: '20', width: '1100', height: '40', rx: '0', fill: '#172737' } }); })), /conceals label/u);
+  assert.throws(() => geometry(mutate(v, root => { root.svg.push({ rect: [], ':@': { x: '40', y: '20', width: '1100', height: '40', rx: '0', fill: paint('#172737') } }); })), /conceals label/u);
   assert.throws(() => geometry(mutate(v, (_, nodes) => { attrs(nodes.find(node => tag(node) === 'rect')).x = '1'; })), /shape outside viewBox/u);
 });
 
 function barProportions(v) {
   const { nodes } = inspect(v), rectangles = nodes.filter(node => tag(node) === 'rect');
   if (v.kind === '01-adjudication') {
-    const requested = rectangles.filter(node => attrs(node).fill === '#21374b');
-    const awarded = rectangles.filter(node => attrs(node).fill === '#66dfc1');
+    const requested = rectangles.filter(node => attrs(node).fill === paint('#21374b'));
+    const awarded = rectangles.filter(node => attrs(node).fill === paint('#66dfc1'));
     assert.equal(requested.length, 3); assert.equal(awarded.length, 3);
     const unit = number(requested[0], 'width') / 50;
     [50, 40, 40].forEach((value, i) => close(number(requested[i], 'width'), unit * value));
@@ -356,8 +467,8 @@ function barProportions(v) {
     assert.ok(textOf(nodes.find(node => tag(node) === 'desc')).includes(v.lang === 'fr' ? '99,14' : '99.14'));
   }
   if (v.kind === '03-nominal-tresorerie') {
-    const nominal = rectangles.filter(node => attrs(node).fill === '#21374b' && attrs(node).rx === '3');
-    const cash = rectangles.filter(node => attrs(node).fill === '#66dfc1');
+    const nominal = rectangles.filter(node => attrs(node).fill === paint('#21374b') && attrs(node).rx === '3');
+    const cash = rectangles.filter(node => attrs(node).fill === paint('#66dfc1'));
     const discount = rectangles.filter(node => attrs(node).fill === `url(#${v.name}-hatch)`);
     assert.equal(nominal.length, 4); assert.equal(cash.length, 4); assert.equal(discount.length, 4);
     const amounts = [7927, 2056, 2828, 2795], prices = [90.38, 90.46, 67.10, 57.23];
@@ -372,8 +483,8 @@ function barProportions(v) {
     close(amounts.reduce((sum, amount, i) => sum + amount * prices[i] / 100, 0), 12521.4467, 1e-8);
   }
   if (v.kind === '05-acheteurs-us') {
-    const requested = rectangles.filter(node => attrs(node).fill === '#91b9f5');
-    const awarded = rectangles.filter(node => attrs(node).fill === '#66dfc1');
+    const requested = rectangles.filter(node => attrs(node).fill === paint('#91b9f5'));
+    const awarded = rectangles.filter(node => attrs(node).fill === paint('#66dfc1'));
     assert.equal(requested.length, 3); assert.equal(awarded.length, 3);
     const tenders = [29432.5, 7608.9, 18811.544], awards = [1490.5, 4583.0441, 15866.0595];
     const unit = (v.mobile ? 455 : 660) / 30000;
@@ -413,7 +524,7 @@ test('price and yield paths preserve the five separate auction observations and 
 test('bar tests reject a numerically wrong width even when the canvas still contains it', () => {
   for (const kind of ['01-adjudication', '03-nominal-tresorerie', '05-acheteurs-us']) {
     const v = variants.find(entry => entry.kind === kind);
-    assert.throws(() => barProportions(mutate(v, (_, nodes) => { attrs(nodes.find(node => tag(node) === 'rect' && attrs(node).fill === '#66dfc1')).width = '100'; })));
+    assert.throws(() => barProportions(mutate(v, (_, nodes) => { attrs(nodes.find(node => tag(node) === 'rect' && attrs(node).fill === paint('#66dfc1'))).width = '100'; })));
   }
 });
 test('both article styles preserve desktop/mobile alternation, fluid SVG dimensions and caption separation', () => {
@@ -421,6 +532,9 @@ test('both article styles preserve desktop/mobile alternation, fluid SVG dimensi
     const start = raw.indexOf('<style>{`'), end = raw.indexOf('`}</style>', start);
     assert.ok(start >= 0 && end > start);
     const css = postcss.parse(raw.slice(start + '<style>{`'.length, end));
+    css.walkDecls(declaration => {
+      assert.ok(!['fill', 'stroke'].includes(declaration.prop) && !declaration.prop.startsWith('--color-'), 'Article CSS must not override SVG semantic paints');
+    });
     const rules = [];
     css.walkRules(rule => rules.push({ selector: rule.selector, media: rule.parent.type === 'atrule' ? rule.parent.params : '', declarations: Object.fromEntries(rule.nodes.filter(node => node.type === 'decl').map(node => [node.prop, node.value])) }));
     const find = (selector, media = '') => rules.find(rule => rule.selector === selector && rule.media === media)?.declarations;
@@ -433,5 +547,6 @@ test('both article styles preserve desktop/mobile alternation, fluid SVG dimensi
     assert.equal(find('.l0g-debt-01 .debt-figure').margin, '2.4rem auto 3rem');
     assert.equal(find('.l0g-debt-01 .debt-figure')['max-width'], '820px');
     assert.equal(find('.l0g-debt-01 .debt-figure', '(max-width:650px)')['max-width'], '416px');
+    assert.equal(find('.l0g-debt-01 .debt-sources')['border-top'], '1px solid var(--color-line-strong)');
   }
 });
