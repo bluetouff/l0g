@@ -174,11 +174,11 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
           <h2 class="mono-label mb-4 text-lg" style={`color:${s.accent}`}>
             // {s.titre}<span class="gloss-sec-n">{s.entries.length}</span>
           </h2>
-          <ul class="glossary-index">
+          <ul class="glossary-index" style={`--glossary-accent:${s.accent}`}>
             {s.entries.map((e) => (
               <li class="gentry" id={e.slug} data-related={e.atlas?.related?.length ? e.atlas.related.join(' ') : undefined}>
                 <a class="gentry-link" href={e.url}>
-                  <span class="sigle" style={`color:${s.accent}`}>{e.sigle}</span>
+                  <span class="sigle">{e.sigle}</span>
                   <span class="nom">{e.nom}</span>
                   {e.reference && <span class="atlas-tag reference-tag">référence</span>}
                   {!e.reference && e.referenceCandidate && <span class="atlas-tag candidate-tag">candidate</span>}
@@ -277,6 +277,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
       text-decoration: none;
     }
     .gentry .sigle {
+      color: var(--glossary-accent);
       font-family: var(--font-display); font-weight: 600; font-size: 0.92rem; letter-spacing: 0.02em;
       border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
       border-radius: 6px; padding: 1px 8px;
