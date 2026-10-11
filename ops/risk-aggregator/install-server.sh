@@ -117,6 +117,11 @@ for executable in l0g-risk.py api-build.py risk_history.py backfill_history.py \
   install -o root -g root -m 0755 "${SCRIPT_DIR}/${executable}" "${STAGED_RELEASE}/${executable}"
 done
 install -o root -g root -m 0644 "$MANIFEST" "${STAGED_RELEASE}/producer-deployment.json"
+# Les fichiers EnvironmentFile ont priorité sur Environment=, même dans un
+# drop-in tardif. La release fournit donc ses révisions dans un fichier lu en
+# dernier, sans modifier les autres paramètres de /etc/l0g-risk.env.
+python3 "$VERIFY_PRODUCERS" "$MANIFEST" --env-file --aggregate-revision "$REVISION" >"${WORK}/revisions.env"
+install -o root -g root -m 0644 "${WORK}/revisions.env" "${STAGED_RELEASE}/revisions.env"
 PYTHONPYCACHEPREFIX="${WORK}/pycache" python3 -m py_compile \
   "${STAGED_RELEASE}/l0g-risk.py" \
   "${STAGED_RELEASE}/api-build.py" \
@@ -127,7 +132,7 @@ PYTHONPYCACHEPREFIX="${WORK}/pycache" python3 -m py_compile \
 
 if [ -e "$RELEASE" ]; then
   for file in l0g-risk.py api-build.py risk_history.py backfill_history.py \
-    verify-producer-deployment.py verify-risk-output.py producer-deployment.json; do
+    verify-producer-deployment.py verify-risk-output.py producer-deployment.json revisions.env; do
     cmp --silent "${STAGED_RELEASE}/${file}" "${RELEASE}/${file}" || {
       echo "STOP : la release ${RELEASE} existe avec un contenu différent." >&2
       exit 1
@@ -147,6 +152,7 @@ python3 "$VERIFY_PRODUCERS" "$MANIFEST" --systemd --aggregate-revision "$REVISIO
 install -o root -g root -m 0644 "${WORK}/98-revisions.conf" "${DROPIN_DIR}/98-revisions.conf"
 printf '%s\n' \
   '[Service]' \
+  'EnvironmentFile=/usr/local/lib/l0g-risk/revisions.env' \
   'ExecStart=' \
   'ExecStart=/usr/bin/python3 /usr/local/lib/l0g-risk/l0g-risk.py' \
   'ExecStartPost=' \

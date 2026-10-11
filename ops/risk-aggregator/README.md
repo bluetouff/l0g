@@ -159,13 +159,21 @@ les anciennes lignes restent explicitement non versionnées.
 Le script d'installation effectue une migration atomique et réversible :
 
 1. il vérifie les cinq producteurs avant d'annoncer leurs révisions ;
-2. il crée une release immuable dans `/usr/local/lib/l0g-risk-<revision>` ;
+2. il crée une release immuable dans `/usr/local/lib/l0g-risk-<revision>`, avec
+   un fichier `revisions.env` contenant uniquement les révisions publiques ;
 3. il remplace le lien `/usr/local/lib/l0g-risk` atomiquement ;
 4. il sauvegarde puis retire l'ancien `override.conf`, réinitialise `ExecStart`
    et `ExecStartPost`, puis refuse toute configuration effective qui référence
    encore les scripts de `/usr/local/bin` ;
 5. il sauvegarde unités, drop-ins et données, puis restaure l'ensemble si
    systemd ou le contrat de sortie échoue.
+
+Le drop-in versionné lit `revisions.env` après `/etc/l0g-risk.env` : systemd
+donne priorité aux fichiers `EnvironmentFile` sur les directives `Environment`,
+puis au dernier fichier pour une variable identique. Les paramètres privés du
+fichier historique restent chargés. La validation contrôle toujours la révision
+et l’empreinte réellement publiées, pas seulement la configuration systemd.
+Après un rollback Euro, l’agrégateur est recalculé avec le snapshot restauré.
 
 Depuis un checkout propre correspondant au code à activer :
 

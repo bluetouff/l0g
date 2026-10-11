@@ -63,22 +63,30 @@ def verify(manifest: dict) -> dict:
     return {"ok": not errors, "errors": errors, "files": results}
 
 
-def systemd_environment(manifest: dict, aggregate_revision: str) -> str:
+def revision_environment(manifest: dict, aggregate_revision: str) -> str:
     if not REVISION_RE.fullmatch(aggregate_revision):
         raise ValueError("la révision de l’agrégateur doit être un SHA Git complet")
-    lines = ["[Service]", f"Environment=L0G_RISK_REVISION={aggregate_revision}"]
+    lines = [f"L0G_RISK_REVISION={aggregate_revision}"]
     for key in EXPECTED_KEYS:
         revision = (manifest.get("producers") or {}).get(key, {}).get("revision") or ""
         if not REVISION_RE.fullmatch(revision):
             raise ValueError(f"révision invalide pour {key}")
-        lines.append(f"Environment=L0G_{key.upper()}_REVISION={revision}")
+        lines.append(f"L0G_{key.upper()}_REVISION={revision}")
     return "\n".join(lines) + "\n"
+
+
+def systemd_environment(manifest: dict, aggregate_revision: str) -> str:
+    return "[Service]\n" + "".join(
+        f"Environment={line}\n" for line in revision_environment(manifest, aggregate_revision).splitlines()
+    )
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("manifest")
-    parser.add_argument("--systemd", action="store_true")
+    output = parser.add_mutually_exclusive_group()
+    output.add_argument("--systemd", action="store_true")
+    output.add_argument("--env-file", action="store_true")
     parser.add_argument("--aggregate-revision")
     args = parser.parse_args()
     with open(args.manifest, encoding="utf-8") as handle:
@@ -88,10 +96,11 @@ def main() -> int:
     if not report["ok"]:
         print(json.dumps(report, ensure_ascii=False, indent=2), file=sys.stderr)
         return 1
-    if args.systemd:
+    if args.systemd or args.env_file:
         if not args.aggregate_revision:
-            parser.error("--aggregate-revision est requis avec --systemd")
-        print(systemd_environment(manifest, args.aggregate_revision), end="")
+            parser.error("--aggregate-revision est requis avec --systemd ou --env-file")
+        render = systemd_environment if args.systemd else revision_environment
+        print(render(manifest, args.aggregate_revision), end="")
     else:
         print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0

@@ -70,6 +70,12 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   );
   assert.ok(!service.includes('/usr/local/bin/l0g-risk.py'));
   assert.ok(installer.includes("'ExecStartPost='"), 'le reset des anciens ExecStartPost doit être explicite');
+  assert.ok(installer.includes('"$MANIFEST" --env-file --aggregate-revision "$REVISION"'));
+  assert.ok(installer.includes('"${STAGED_RELEASE}/revisions.env"'));
+  assert.ok(installer.includes("'EnvironmentFile=/usr/local/lib/l0g-risk/revisions.env'"),
+    'les révisions doivent rester prioritaires sur le fichier env historique');
+  assert.ok(installer.indexOf('EnvironmentFile=/usr/local/lib/l0g-risk/revisions.env') <
+    installer.lastIndexOf('systemctl restart l0g-risk.service'));
   assert.ok(installer.includes('"${DROPIN_DIR}/override.conf"'), 'le drop-in historique doit être sauvegardé');
   assert.ok(installer.includes('rm -f -- "${DROPIN_DIR}/override.conf"'), 'le drop-in historique doit être retiré');
   assert.ok(installer.includes("grep -Fq '/usr/local/bin/'"), 'la configuration effective doit exclure les anciens scripts');
@@ -105,6 +111,9 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.ok(euroActivator.includes('"$EURO_STAGE/deploy/euromacro-snapshot.service" /etc/systemd/system/euromacro-snapshot.service'));
   assert.ok(euroActivator.includes('"$BACKUP/web/index.html"'));
   assert.ok(euroActivator.includes('"$BACKUP/euromacro-snapshot.service" /etc/systemd/system/euromacro-snapshot.service'));
+  assert.ok(euroActivator.indexOf('cp -a "$BACKUP/web/index.html"') <
+    euroActivator.indexOf('if ! systemctl restart l0g-risk.service; then'),
+    'le rollback doit recalculer l’agrégateur après restauration du snapshot Euro');
   const debtSchema = agentSurface.slice(
     agentSurface.indexOf('DebtRiskTileSignal:'),
     agentSurface.indexOf('RiskSignalProvenanceBucket:'),

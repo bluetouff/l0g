@@ -106,6 +106,9 @@ rollback() {
   trap - ERR
   set +e
   echo "Échec : restauration du producteur Euro" >&2
+  if [ "$TIMER_WAS_ACTIVE" -eq 1 ]; then
+    systemctl stop euromacro-snapshot.timer
+  fi
   systemctl stop euromacro-snapshot.service
   for relative in "${RUNTIME_FILES[@]}"; do
     if [ -f "$BACKUP/opt/${relative}" ]; then
@@ -128,6 +131,11 @@ rollback() {
   fi
   cp -a "$BACKUP/opt/snapshot.js" "$BACKUP/opt/snapshot.json" /opt/euromacro/
   cp -a "$BACKUP/web/index.html" "$BACKUP/web/snapshot.js" "$BACKUP/web/snapshot.json" /var/www/html/euromacro/
+  # L’installateur de l’agrégateur restaure son code avant ce rollback Euro.
+  # Recalculer maintenant évite de conserver un repli créé contre le nouveau SHA.
+  if ! systemctl restart l0g-risk.service; then
+    echo "Restauration Euro terminée, mais l’agrégateur n’a pas pu être recalculé." >&2
+  fi
   if [ "$TIMER_WAS_ACTIVE" -eq 1 ]; then
     systemctl start euromacro-snapshot.timer >/dev/null 2>&1 || true
   fi
