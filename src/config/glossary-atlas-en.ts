@@ -203,6 +203,97 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+{
+  "slug": "apd",
+  "sigle": "ODA",
+  "nom": "Official development assistance",
+  "def": "A measure of official efforts primarily directed at the economic development and welfare of countries eligible under OECD Development Assistance Committee rules. The headline is measured in grant equivalents. Some spending inside donor countries is eligible, so the total does not represent only funds received by partner economies.",
+  "guide": "/en/analysis/foreign-aid-cuts-beyond-government-budgets/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "Foreign aid: tracing the resources",
+        "href": "/en/analysis/foreign-aid-cuts-beyond-government-budgets/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "OECD: ODA statistical conventions",
+        "href": "https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "equivalent-don",
+      "ida",
+      "compte-courant"
+    ]
+  }
+},
+{
+  "slug": "equivalent-don",
+  "sigle": "Grant equivalent",
+  "nom": "Statistical measure of donor effort",
+  "def": "The monetary value of the concessional component of financing under OECD DAC conventions. For a loan, it depends on repayment terms and the prescribed discount rate. It differs from the loan principal and from the net flow of disbursements and repayments during the year.",
+  "guide": "/en/analysis/foreign-aid-cuts-beyond-government-budgets/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "Foreign aid: tracing the resources",
+        "href": "/en/analysis/foreign-aid-cuts-beyond-government-budgets/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "OECD: ODA statistical conventions",
+        "href": "https://www.oecd.org/en/topics/sub-issues/oda-standards/modernising-official-development-assistance-oda.html",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "apd",
+      "ida"
+    ]
+  }
+},
+{
+  "slug": "ida",
+  "sigle": "IDA",
+  "nom": "International Development Association",
+  "def": "The World Bank Group institution providing mainly concessional credits and grants to eligible countries. Its financing combines donor contributions, repayments on earlier financing and balance-sheet resources, including capital markets. A replenishment envelope, a commitment and a disbursement received are distinct stages.",
+  "guide": "/en/analysis/foreign-aid-cuts-beyond-government-budgets/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "Foreign aid: tracing the resources",
+        "href": "/en/analysis/foreign-aid-cuts-beyond-government-budgets/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "World Bank / IDA: financing",
+        "href": "https://ida.worldbank.org/en/financing",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "apd",
+      "compte-courant"
+    ]
+  }
+},
   {
     slug: 'cpr', sigle: 'CPR', nom: 'Conditional prepayment rate',
     sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',

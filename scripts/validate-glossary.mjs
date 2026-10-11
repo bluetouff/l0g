@@ -17,6 +17,32 @@ import { glossaryAtlasEnBySlug } from '../src/config/glossary-atlas-en.ts';
 import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossary-matching.mjs';
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
+
+for (const [slug, source, related] of [
+  ['apd', 'https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html', ['equivalent-don', 'ida', 'compte-courant']],
+  ['equivalent-don', 'https://www.oecd.org/en/topics/sub-issues/oda-standards/modernising-official-development-assistance-oda.html', ['apd', 'ida']],
+  ['ida', 'https://ida.worldbank.org/en/financing', ['apd', 'compte-courant']],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: définitions et sources FR/EN requises`);
+  assert.equal(fr.guide, '/posts/aide-internationale-retrait-deborde-budgets/');
+  assert.equal(en.guide, '/en/analysis/foreign-aid-cuts-beyond-government-budgets/');
+  assert.equal(fr.reference, undefined);
+  assert.equal(fr.referenceCandidate, false);
+  assert.equal(en.robots, 'noindex,follow');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(item => item.href), [source]);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, related);
+    for (const neighbor of related) {
+      assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
+      assert(glossaryAtlasEnBySlug.has(neighbor));
+    }
+    assert(!entry.def.includes('—'));
+  }
+}
+
 for (const [slug, source, related] of [
   ['reassurance-adossee-a-l-actif', 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment']],
   ['recapture', 'https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2025/ss524-october-2025.pdf', ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment']],
@@ -117,8 +143,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 622, 'Le corpus doit conserver ses 622 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 191, 'Le graphe Atlas doit conserver ses 191 nœuds');
+assert.equal(glossaryEntries.length, 625, 'Le corpus doit conserver ses 625 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 194, 'Le graphe Atlas doit conserver ses 194 nœuds');
 const mortgageArticleFr = '/posts/credits-americains-risque-3-pourcent/';
 const mortgageArticleEn = '/en/analysis/us-mortgages-three-percent-moving-risk/';
 for (const [slug, source, related] of [
@@ -515,7 +541,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 589, 'Le graphe Atlas doit conserver ses 589 relations');
+assert.equal(glossaryAtlasEdgeCount, 596, 'Le graphe Atlas doit conserver ses 596 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

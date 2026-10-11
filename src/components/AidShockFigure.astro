@@ -1,0 +1,56 @@
+---
+import { aidShockSvg, AID_SHOCK_KINDS } from '../lib/aidShockFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'volume' | 'routes' | 'inkind' | 'forex' | 'service' | 'multilateral';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!AID_SHOCK_KINDS.includes(kind) || !['fr', 'en'].includes(lang) || !/^(?:0[1-6])$/.test(number)) {
+  throw new TypeError('Invalid Aid shock figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[0-8])$/.test(id))) {
+  throw new TypeError('Invalid Aid shock source reference');
+}
+---
+<figure class="aid-shock-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="aid-shock-desktop" set:html={aidShockSvg(lang, kind, false)} />
+  <div class="aid-shock-mobile" set:html={aidShockSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="aid-shock-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Aid Shock'; src: url('/fonts/aid-shock/dejavu-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g Aid Shock'; src: url('/fonts/aid-shock/dejavu-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .aid-shock-figure { margin: 2.8rem 0; width: 100%; padding-bottom: .85rem; container-type: inline-size; }
+  .aid-shock-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; }
+  .aid-shock-mobile { display: none; width: 100%; max-width: 25rem; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .875rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .aid-shock-references { display: block; }
+  .aid-shock-references a { margin-right: .75em; }
+  .aid-shock-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .aid-shock-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .aid-shock-figure :global(details p) { margin: .7rem 0; }
+  :global(.prose .aid-shock-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.prose .aid-shock-sources li) { margin: .75rem 0; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .aid-shock-desktop { display: none; }
+    .aid-shock-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .aid-shock-desktop { display: none; }
+    .aid-shock-mobile { display: block; }
+  }
+  @media print {
+    .aid-shock-figure { break-inside: avoid; }
+    .aid-shock-desktop { display: block; }
+    .aid-shock-mobile { display: none; }
+  }
+</style>

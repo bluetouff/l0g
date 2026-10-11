@@ -9,6 +9,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/ai-incidents-infographics.test.mjs',
     'scripts/ai-model-competition-infographics.test.mjs',
     'scripts/ai-slowdown-infographics.test.mjs',
+    'scripts/aid-shock-infographics.test.mjs',
     'scripts/aircraft-engine-tool.test.mjs',
     'scripts/anthropic-ipo-infographics.test.mjs',
     'scripts/aon-cortina-infographics.test.mjs',

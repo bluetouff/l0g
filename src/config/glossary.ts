@@ -81,6 +81,24 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+{
+  "sigle": "APD",
+  "nom": "Aide publique au développement",
+  "def": "Mesure des efforts publics consacrés principalement au développement économique et au bien-être des pays admissibles selon les règles du Comité d’aide au développement de l’OCDE. Le total de référence repose sur l’équivalent-don. Certaines dépenses réalisées dans le pays donneur sont admissibles : le total ne représente donc pas uniquement des versements reçus par les pays partenaires.",
+  "guide": "/posts/aide-internationale-retrait-deborde-budgets/"
+},
+{
+  "sigle": "Équivalent-don",
+  "nom": "Mesure statistique de l’effort du donneur",
+  "def": "Valeur monétaire de la part de générosité d’un financement selon les conventions du CAD de l’OCDE. Pour un prêt, elle dépend des conditions de remboursement et du taux d’actualisation retenu. Elle se distingue du principal prêté et des flux nets de décaissements et remboursements observés pendant l’année.",
+  "guide": "/posts/aide-internationale-retrait-deborde-budgets/"
+},
+{
+  "sigle": "IDA",
+  "nom": "Association internationale de développement",
+  "def": "Institution du Groupe de la Banque mondiale qui fournit principalement des crédits concessionnels et des dons aux pays admissibles. Son financement combine contributions des donneurs, remboursements antérieurs et mobilisation du bilan, notamment sur les marchés. Une enveloppe de reconstitution, un engagement et un décaissement reçu sont des étapes distinctes.",
+  "guide": "/posts/aide-internationale-retrait-deborde-budgets/"
+},
       { sigle: 'Collatéral', nom: 'Actif remis en garantie', def: 'Actif mobilisé pour garantir une dette. Le prêteur peut le réaliser si l’emprunteur ne respecte pas ses obligations, selon le contrat et le droit applicable. Dans les opérations de l’Eurosystème, l’actif doit être admissible et sa valeur retenue tient compte des décotes et des autres mesures de contrôle du risque. Une garantie apporte une capacité de financement, sans créer de fonds propres.', guide: '/posts/bce-garanties-banques-credit-novembre-2026/' },
       { sigle: 'Décote de garantie', nom: 'Valuation haircut', def: 'Réduction appliquée à la valeur d’un actif remis en garantie pour protéger le prêteur contre une perte lors de sa réalisation. À valeur inchangée, une décote plus élevée réduit la couverture disponible et impose davantage de garanties pour couvrir la même dette. Elle se distingue du taux d’intérêt payé sur le financement et d’une perte comptable sur l’actif.', guide: '/posts/bce-garanties-banques-credit-novembre-2026/' },
       { sigle: 'ECAF', nom: 'Eurosystem Credit Assessment Framework', def: 'Cadre d’évaluation du crédit de l’Eurosystème. Il définit les procédures et les systèmes acceptés pour apprécier la qualité des actifs proposés en garantie, de leurs émetteurs, débiteurs ou garants. Les évaluations sont rapprochées d’une échelle harmonisée de qualité. Les agences externes constituent une source parmi plusieurs ; satisfaire au critère de crédit ne suffit pas à remplir toutes les conditions d’admissibilité.', guide: '/posts/bce-garanties-banques-credit-novembre-2026/' },
@@ -1002,6 +1020,67 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+"apd": {
+  "articles": [
+    {
+      "label": "Aide internationale : suivre les ressources",
+      "href": "/posts/aide-internationale-retrait-deborde-budgets/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "OCDE : conventions statistiques de l’APD",
+      "href": "https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "equivalent-don",
+    "ida",
+    "compte-courant"
+  ]
+},
+"equivalent-don": {
+  "articles": [
+    {
+      "label": "Aide internationale : suivre les ressources",
+      "href": "/posts/aide-internationale-retrait-deborde-budgets/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "OCDE : conventions statistiques de l’APD",
+      "href": "https://www.oecd.org/en/topics/sub-issues/oda-standards/modernising-official-development-assistance-oda.html",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "apd",
+    "ida"
+  ]
+},
+"ida": {
+  "articles": [
+    {
+      "label": "Aide internationale : suivre les ressources",
+      "href": "/posts/aide-internationale-retrait-deborde-budgets/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Banque mondiale / IDA : financement",
+      "href": "https://ida.worldbank.org/en/financing",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "apd",
+    "compte-courant"
+  ]
+},
   'reassurance-adossee-a-l-actif': {
     intuition: 'Le financement et certains risques changent de bilan tandis que la promesse faite à l’assuré reste chez l’assureur initial.',
     articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }],
