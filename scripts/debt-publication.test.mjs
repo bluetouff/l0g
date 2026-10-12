@@ -68,7 +68,7 @@ function assertDebtPage(html, book) {
   assert(hero);
   assert(nodes(hero).includes(downloadAnchors[0]));
   assert.equal(downloadAnchors[0].childNodes.filter(node => node.nodeName === '#text').map(text).join('').trim(), book.lang === 'fr' ? 'Télécharger l’EPUB sombre' : 'Download the dark EPUB');
-  const fileLinks = inside.filter(node => node.tagName === 'a' && attr(node, 'href')?.endsWith('.epub'));
+  const fileLinks = inside.filter(node => node.tagName === 'a' && attr(node, 'href') && new URL(attr(node, 'href'), SITE).pathname.toLowerCase().endsWith('.epub'));
   assert.deepEqual(fileLinks, downloadAnchors);
   assert.equal(inside.filter(node => hasClass(node, 'download-card') || hasClass(node, 'download-grid') || hasClass(node, 'reading-swatch')).length, 0);
   assert.doesNotMatch(plain(article[0]), /(?:fond clair|EPUB clair|sombre (?:et|ou) clair|dark (?:and|or) light|light EPUB|light edition|two backgrounds|deux fonds)/iu);
@@ -96,6 +96,9 @@ function assertDebtPage(html, book) {
     const media = mediaFor(edition);
     return { '@type': 'MediaObject', name: `${book.title} · ${edition.label}`, contentUrl: `${SITE}${edition.epub}`, encodingFormat: 'application/epub+zip', contentSize: `${media.bytes} bytes`, sha256: media.sha256 };
   }));
+  const visibleDigests = inside.filter(node => node.tagName === 'code');
+  assert.equal(visibleDigests.length, 1);
+  assert.equal(plain(visibleDigests[0]), mediaFor(book.editions[0]).sha256);
   const alternate = debtEditions[book.lang === 'fr' ? 'en' : 'fr'];
   assert.deepEqual(schema[book.lang === 'fr' ? 'workTranslation' : 'translationOfWork'], { '@type': 'Book', '@id': `${SITE}${alternate.path}#book`, inLanguage: alternate.lang });
 
@@ -146,6 +149,8 @@ test('publication checks reject complete-field URL substitutions, missing downlo
     `<a href="${epub}">Duplicate file link</a>`,
     `<a href="/publications/${book.directory}-light-l0g.epub" download>Light EPUB</a>`,
     `<a href="/publications/${book.directory}-light-l0g.epub">Light EPUB</a>`,
+    `<a href="/publications/${book.directory}-light-l0g.epub?alias=1">Light EPUB</a>`,
+    `<a href="/publications/${book.directory}-light-l0g.epub#download">Light EPUB</a>`,
   ]) {
     const altered = html.replace('</article>', `${link}</article>`);
     assert.notEqual(altered, html);
