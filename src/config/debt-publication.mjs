@@ -1,6 +1,6 @@
 const common = {
   date: '2026-10-12',
-  modified: '2026-10-12T11:52:31Z',
+  modified: '2026-10-12T13:51:32Z',
   documentationDate: '2026-10-12',
   figureCount: 40,
   panorama: '/publications/debt-chain-publication-panorama.jpg',
@@ -11,7 +11,7 @@ const editionText = {
     ...common,
     lang: 'fr', locale: 'fr-FR', id: 'urn:uuid:ea470946-b729-4654-95bc-3c91452bf620',
     directory: 'dette-en-chaine', title: 'La dette en chaîne', subtitle: 'Du premier acheteur au dernier recours',
-    description: 'La dette publique, de l’adjudication aux banques centrales : sept enquêtes sourcées, 40 infographies et un glossaire. EPUB disponible sur fond sombre ou clair.',
+    description: 'La dette publique, de l’adjudication aux banques centrales : sept enquêtes sourcées, 40 infographies et un glossaire. Téléchargez l’EPUB sur fond sombre.',
     introductionTitle: 'Une obligation, plusieurs vies',
     introduction: [
       'Un État peut emprunter pour plusieurs décennies tandis que le détenteur de ses obligations doit trouver des espèces avant la fin de la journée. Entre ces horizons se loge une grande partie de la finance publique. Le gouvernement promet des versements futurs ; son créancier organise les moyens d’attendre. Le livre suit cette organisation, depuis la première vente du titre jusqu’aux interventions publiques étudiées dans le dernier chapitre. Il s’adresse au lecteur qui veut comprendre le marché derrière les annonces d’endettement.',
@@ -56,7 +56,7 @@ const editionText = {
     ...common,
     lang: 'en', locale: 'en-GB', id: 'urn:uuid:11c0c1c3-98ee-465c-aee7-cd4946534a97',
     directory: 'sovereign-debt-chain', title: 'The sovereign debt chain', subtitle: 'From the first buyer to the final backstop',
-    description: 'Sovereign debt from auctions to central bank backstops: seven sourced investigations, 40 infographics and a glossary. Download a dark or light EPUB edition.',
+    description: 'Sovereign debt from auctions to central bank backstops: seven sourced investigations, 40 infographics and a glossary. Download the dark EPUB edition.',
     introductionTitle: 'One bond, several lives',
     introduction: [
       'A government can borrow for decades while a holder of its bonds needs cash before the day is over. Much of public finance takes place between those horizons. The state promises future payments; its creditor arranges the means to wait for them. This book follows those arrangements from the initial sale to the public interventions examined in the final chapter. It is written for readers who want to understand the market behind the announcements of government borrowing.',
@@ -110,8 +110,8 @@ const chapterData = [
 ];
 
 const variantIds = {
-  fr: { dark: 'urn:uuid:1d01f15a-a388-49db-aefa-399ecaa2ee9c', light: 'urn:uuid:6cfe6f7a-5a27-49e4-a59a-45e7fd26e487' },
-  en: { dark: 'urn:uuid:1cf2f6d7-6496-486f-9b71-f1a32d33927e', light: 'urn:uuid:20b6d6a2-7e0a-4f03-a80c-c83cbb787030' },
+  fr: 'urn:uuid:1d01f15a-a388-49db-aefa-399ecaa2ee9c',
+  en: 'urn:uuid:1cf2f6d7-6496-486f-9b71-f1a32d33927e',
 };
 
 const synthesisSources = {
@@ -759,13 +759,13 @@ function createEdition(lang) {
     path: `${isEn ? '/en' : ''}/publications/${book.directory}/`,
     cover: `/publications/${book.directory}-cover.jpg`,
     social: `/publications/${book.directory}-og-v1.jpg`,
-    editions: ['dark', 'light'].map(theme => ({
-      theme,
-      directory: `${book.directory}-${theme}`,
-      epub: `/publications/${book.directory}-${theme}-l0g.epub`,
-      id: variantIds[lang][theme],
-      label: isEn ? `${theme === 'dark' ? 'Dark' : 'Light'} edition` : `Édition ${theme === 'dark' ? 'sombre' : 'claire'}`,
-    })),
+    editions: [{
+      theme: 'dark',
+      directory: `${book.directory}-dark`,
+      epub: `/publications/${book.directory}-dark-l0g.epub`,
+      id: variantIds[lang],
+      label: isEn ? 'Dark edition' : 'Édition sombre',
+    }],
     chapters: chapterData.map(({ slug, titleFr, titleEn, summaryFr, summaryEn, image, figureCount }, index) => ({
       slug,
       sourceSlug: slug,
