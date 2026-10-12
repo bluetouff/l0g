@@ -42,6 +42,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/debt-dealer-balance-sheet-infographics.test.mjs',
     'scripts/debt-first-buyer-infographics.test.mjs',
     'scripts/debt-exit-price-infographics.test.mjs',
+    'scripts/debt-last-buyer-infographics.test.mjs',
     'scripts/debt-leveraged-buyers-infographics.test.mjs',
     'scripts/debt-margin-calls-infographics.test.mjs',
     'scripts/decrement-infographics.test.mjs',
@@ -117,6 +118,7 @@ export const SVG_TEST_SUITES = Object.freeze({
   ]),
   rendered: Object.freeze([
     'scripts/debt-exit-price-rendered-infographics.test.mjs',
+    'scripts/debt-last-buyer-rendered-infographics.test.mjs',
     'scripts/debt-margin-calls-rendered-infographics.test.mjs',
     'scripts/ai-debt-infographics.test.mjs',
     'scripts/clarity-infographics.test.mjs',

@@ -143,8 +143,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 630, 'Le corpus doit conserver ses 630 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 207, 'Le graphe Atlas doit conserver ses 207 nœuds');
+assert.equal(glossaryEntries.length, 632, 'Le corpus doit conserver ses 632 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 210, 'Le graphe Atlas doit conserver ses 210 nœuds');
 const mortgageArticleFr = '/posts/credits-americains-risque-3-pourcent/';
 const mortgageArticleEn = '/en/analysis/us-mortgages-three-percent-moving-risk/';
 for (const [slug, source, related] of [
@@ -541,7 +541,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 640, 'Le graphe Atlas doit conserver ses 640 relations');
+assert.equal(glossaryAtlasEdgeCount, 647, 'Le graphe Atlas doit conserver ses 647 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
@@ -817,6 +817,20 @@ for (const slug of ['adjudication', 'bid-to-cover', 'risque-de-refinancement', '
   for (const [entry, href] of [[glossaryEntries.find(item => item.slug === slug), '/posts/dette-etats-06-prix-sortie/'], [glossaryAtlasEnBySlug.get(slug), '/en/analysis/dette-etats-06-prix-sortie/']]) {
     assert.equal(entry.atlas.articles.filter(item => item.href === href).length, 1);
   }
+}
+
+
+for (const [slug, source] of [
+  ['cnrf', 'https://www.bankofengland.co.uk/markets/market-notices/2025/january/contingent-nbfi-repo-facility-market-notice-28-january-2025'],
+  ['apf', 'https://www.bankofengland.co.uk/asset-purchase-facility/2026/2026-q2'],
+  ['qe', 'https://www.bankofengland.co.uk/asset-purchase-facility/2026/2026-q2'],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug), en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr && en); assert.equal(fr.reference, undefined); assert.equal(en.robots, 'noindex,follow');
+  assert.equal(fr.atlas.sources[0].href, source); assert.deepEqual(fr.atlas.related, en.atlas.related);
+  assert.equal(en.atlas.sources[0].href, source);
+  assert.equal(fr.atlas.articles[0].href, '/posts/dette-etats-07-dernier-acheteur/');
+  assert.equal(en.atlas.articles[0].href, '/en/analysis/dette-etats-07-dernier-acheteur/');
 }
 
 console.log(JSON.stringify({
