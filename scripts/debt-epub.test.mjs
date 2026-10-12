@@ -180,10 +180,14 @@ for(const book of Object.values(debtEditions)) {
     await assert.rejects(renderDebtArticle(original.replace('<svg xmlns=', '<svg onload="alert(1)" xmlns='),chapter,'dark'));
     const inserted='<a href="/posts/dette-etats-02-bilan-intermediaires/">Next</a><a href="https://l0g.fr.evil.example/posts/dette-etats-02-bilan-intermediaires/">Fake origin</a><a href="https://l0g.fr/posts/dette-etats-02-bilan-intermediaires/?unexpected=1">Query</a>';
     const reading=prepareDebtReading((await renderDebtArticle(original+'\n'+inserted,chapter,'dark')).html,book,chapter.number);
-    const links=nodes(fromHtml(reading.html,{fragment:true})).filter(n=>n.tagName==='a').map(n=>n.properties.href);
+    const exercises=new Set(['Next','Fake origin','Query']);
+    const links=nodes(fromHtml(reading.html,{fragment:true})).filter(n=>n.tagName==='a' && exercises.has(toText(n))).map(n=>[toText(n),n.properties.href]);
     const expected=book.lang==='fr'?'ch003.xhtml#article-2':'https://l0g.fr/posts/dette-etats-02-bilan-intermediaires/';
-    assert.ok(links.includes(expected));assert.ok(links.includes('https://l0g.fr.evil.example/posts/dette-etats-02-bilan-intermediaires/'));
-    assert.ok(links.includes('https://l0g.fr/posts/dette-etats-02-bilan-intermediaires/?unexpected=1'));
+    assert.deepEqual(links,[
+      ['Next',expected],
+      ['Fake origin','https://l0g.fr.evil.example/posts/dette-etats-02-bilan-intermediaires/'],
+      ['Query','https://l0g.fr/posts/dette-etats-02-bilan-intermediaires/?unexpected=1'],
+    ]);
   });
 }
 
