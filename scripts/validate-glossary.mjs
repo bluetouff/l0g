@@ -143,8 +143,33 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 632, 'Le corpus doit conserver ses 632 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 210, 'Le graphe Atlas doit conserver ses 210 nœuds');
+assert.equal(glossaryEntries.length, 635, 'Le corpus doit conserver ses 635 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 213, 'Le graphe Atlas doit conserver ses 213 nœuds');
+for (const [slug, sources, related] of [
+  ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
+  ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
+  ['termes-de-l-echange', ['https://www.oecd.org/en/data/indicators/terms-of-trade.html'], ['compte-courant', 'transmission-des-prix', 'couverture-de-change']],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: définitions et sources FR/EN requises`);
+  assert.equal(fr.guide, '/posts/dollar-facture-energie/');
+  assert.equal(en.guide, '/en/analysis/dollar-facture-energie/');
+  assert.equal(fr.reference, undefined);
+  assert.equal(fr.referenceCandidate, false);
+  assert.equal(en.robots, 'noindex,follow');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(item => item.href), sources);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, related);
+    for (const neighbor of related) {
+      assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
+      assert(glossaryAtlasEnBySlug.has(neighbor));
+    }
+    assert(!entry.def.includes('—'));
+  }
+}
+assert.equal([...glossaryAtlasEnBySlug.values()].filter(entry => (entry.robots ?? 'index,follow') === 'index,follow').length, 145, 'Les nouvelles définitions ne doivent pas augmenter le corpus EN indexable');
 const mortgageArticleFr = '/posts/credits-americains-risque-3-pourcent/';
 const mortgageArticleEn = '/en/analysis/us-mortgages-three-percent-moving-risk/';
 for (const [slug, source, related] of [
@@ -541,7 +566,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 647, 'Le graphe Atlas doit conserver ses 647 relations');
+assert.equal(glossaryAtlasEdgeCount, 656, 'Le graphe Atlas doit conserver ses 656 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
