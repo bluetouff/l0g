@@ -93,13 +93,13 @@ function pathPoints(value) {
     if (comma) assert.ok(m[2]); comma = false;
     tokens.push(m[1] ?? Number(m[2])); at = token.lastIndex;
   }
-  assert.ok(!comma); const points = []; let x = 0, y = 0, i = 0;
+  assert.ok(!comma); const points = []; let x = 0, y = 0, startX = 0, startY = 0, i = 0;
   while (i < tokens.length) {
     const cmd = tokens[i++]; assert.ok(['M','L','H','V','Z'].includes(cmd));
     const next = () => { const n = tokens[i++]; assert.equal(typeof n, 'number'); assert.ok(Number.isFinite(n)); return n; };
-    if (cmd === 'M' || cmd === 'L') { x = next(); y = next(); }
+    if (cmd === 'M' || cmd === 'L') { x = next(); y = next(); if (cmd === 'M') { startX = x; startY = y; } }
     else if (cmd === 'H') x = next(); else if (cmd === 'V') y = next();
-    else { assert.ok(points.length); continue; }
+    else { assert.ok(points.length); x = startX; y = startY; continue; }
     points.push([x,y]);
   }
   assert.equal(tokens[0], 'M'); assert.ok(points.length); return points;
@@ -245,6 +245,10 @@ test('each bar reproduces official daily Treasury and agency-MBS purchases', () 
       assert.ok(Math.abs(number(treasury,'y')-(bottom-row[0]*scale))<=.011);assert.ok(Math.abs(number(mbs,'y')-(bottom-(row[0]+row[1])*scale))<=.011);
     }
   }
+});
+test('closing each subpath restores its own origin before horizontal and vertical segments',()=>{
+  assert.deepEqual(pathPoints('M 0,0 L 100,100 Z H 22 V 33 M 5,5 L 6,6 Z H 7'),[[0,0],[100,100],[22,0],[22,33],[5,5],[6,6],[7,5]]);
+  assert.throws(()=>pathPoints('Z M 0 0'));assert.throws(()=>pathPoints('L 0 0 Z'));
 });
 test('capacity, transactions, return and cumulative APF cash transfers remain distinct',()=>{
   assert.equal(Math.round(19.3/65*1000)/10,29.7);assert.equal(Math.round((12.1+7.2)*10)/10,19.3);
