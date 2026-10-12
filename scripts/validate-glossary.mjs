@@ -144,7 +144,7 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
 assert.equal(glossaryEntries.length, 628, 'Le corpus doit conserver ses 628 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 204, 'Le graphe Atlas doit conserver ses 204 nœuds');
+assert.equal(glossaryAtlasEntries.length, 205, 'Le graphe Atlas doit conserver ses 205 nœuds');
 const mortgageArticleFr = '/posts/credits-americains-risque-3-pourcent/';
 const mortgageArticleEn = '/en/analysis/us-mortgages-three-percent-moving-risk/';
 for (const [slug, source, related] of [
@@ -541,7 +541,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 629, 'Le graphe Atlas doit conserver ses 629 relations');
+assert.equal(glossaryAtlasEdgeCount, 634, 'Le graphe Atlas doit conserver ses 634 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
@@ -773,6 +773,23 @@ for (const entry of [glossaryEntries.find(item => item.slug === 'rpo'), glossary
   assert(entry);
   assert.equal(entry.atlas.sources[0].href, 'https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.htm');
   assert(entry.atlas.articles.length);
+}
+
+// The LDI entry keeps its existing French URL and remains a short noindex page.
+for (const [entry, guide] of [[glossaryEntries.find(item => item.slug === 'ldi'), '/posts/dette-etats-05-appels-marge/'], [glossaryAtlasEnBySlug.get('ldi'), '/en/analysis/dette-etats-05-appels-marge/']]) {
+  assert(entry?.atlas);
+  assert.equal(entry.guide, guide);
+  assert.equal(entry.atlas.articles[0].href, guide);
+  assert.deepEqual(entry.atlas.sources.map(item => item.href), ['https://www.thepensionsregulator.gov.uk/en/document-library/scheme-management-detailed-guidance/funding-and-investment-detailed-guidance/liability-driven-investment']);
+  assert.deepEqual(entry.atlas.related, ['duration', 'repo', 'appel-de-marge', 'marge-initiale', 'marge-de-variation']);
+}
+assert.equal(glossaryReferenceBySlug.ldi, undefined);
+assert.equal(glossaryAtlasEnBySlug.get('ldi').robots, 'noindex,follow');
+
+for (const entry of [glossaryEntries.find(item => item.slug === 'appel-de-marge'), glossaryAtlasEnBySlug.get('appel-de-marge')]) {
+  assert(entry?.atlas?.formula);
+  assert.match(entry.atlas.formula, /max\(0,/);
+  assert.doesNotMatch(entry.atlas.formula, /cash et collatéral|cash and.*collateral/);
 }
 
 console.log(JSON.stringify({

@@ -668,10 +668,11 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Notionnel', nom: 'Capital notionnel', def: "Montant de référence sur lequel sont calculés les flux d'un dérivé, sans être lui-même échangé. Le notionnel gonfle les statistiques de taille des marchés de dérivés, mais surestime largement le risque réel, qui ne porte que sur les flux nets et la valeur de marché.", guide: '/guides/lire-les-swaps-de-taux/' },
       { sigle: 'Swap spread', nom: 'Spread de swap', def: "Écart entre le taux fixe d’un swap et le rendement d’une obligation d’État de même monnaie et d’échéance comparable, selon la convention swap moins obligation. Un montage peut associer l’achat de l’obligation financé en repo au paiement du taux fixe du swap. Son résultat dépend du spread, du financement et des marges ; il se distingue du cash-futures basis trade.", guide: '/guides/lire-les-swaps-de-taux/' },
       { sigle: 'FICC', nom: 'Fixed Income Clearing Corporation', def: "Chambre de compensation des titres à revenu fixe américains, filiale de la DTCC. Longtemps seule contrepartie centrale agréée pour les Treasuries, avant l'arrivée de CME et ICE. Au cœur du mandat de compensation obligatoire de la SEC." },
+      { sigle: 'LDI', nom: 'Liability-driven investment', def: "Stratégie qui rapproche la sensibilité aux taux et à l’inflation des actifs d’un régime de retraite de celle de ses pensions futures. Obligations, dérivés et parfois emprunts procurent l’exposition recherchée. Le levier crée des besoins de garanties : un régime mieux financé peut détenir un véhicule LDI confronté à une pénurie de cash ou à des pertes de capital.", guide: '/posts/dette-etats-05-appels-marge/' },
       { sigle: 'CCP', nom: 'Central Counterparty (contrepartie centrale)', def: "Chambre de compensation qui s'interpose entre acheteur et vendeur, devenant contrepartie de chaque transaction. Réduit le risque de contrepartie et organise la gestion de défaut, au prix d'appels de marge plus systématiques." },
-      { sigle: 'Appel de marge', nom: 'Margin call', def: "Demande de cash ou de collatéral supplémentaire adressée à un participant lorsque la valeur ou le risque de sa position évolue. Elle peut correspondre à une marge de variation, qui règle la perte courante, ou à un relèvement de la marge initiale destinée à couvrir une perte potentielle en cas de défaut.", guide: '/guides/lire-les-swaps-de-taux/' },
+      { sigle: 'Appel de marge', nom: 'Margin call', def: "Demande de cash ou de collatéral supplémentaire adressée à un participant lorsque la valeur ou le risque de sa position évolue. Elle peut correspondre à une marge de variation, qui règle ou garantit l’exposition courante selon le contrat, ou à un relèvement de la marge initiale destinée à couvrir une perte potentielle en cas de défaut.", guide: '/guides/lire-les-swaps-de-taux/' },
       { sigle: 'Marge initiale', nom: 'Initial margin (IM)', def: "Cash ou titres liquides déposés à l'ouverture et pendant la vie d'une position pour couvrir la perte potentielle qui pourrait survenir durant la fermeture d'un participant défaillant. Son niveau dépend du risque, de la volatilité et des compensations reconnues dans le portefeuille.", guide: '/guides/lire-les-swaps-de-taux/' },
-      { sigle: 'Marge de variation', nom: 'Variation margin (VM)', def: "Paiement, généralement quotidien et en cash sur les dérivés compensés, qui règle les gains et pertes liés à la nouvelle valeur de marché. Elle remet l'exposition courante entre contreparties à zéro, mais peut créer un besoin de trésorerie immédiat.", guide: '/guides/lire-les-swaps-de-taux/' },
+      { sigle: 'Marge de variation', nom: 'Variation margin (VM)', def: "Transfert lié à la variation de valeur d’une position, qui règle ou garantit l’exposition courante selon le contrat. Sur les dérivés compensés, il intervient généralement en espèces. Son encaissement peut être décalé par rapport au paiement exigé sur une autre position.", guide: '/guides/lire-les-swaps-de-taux/' },
       { sigle: 'Membre compensateur', nom: 'Clearing member', def: "Établissement membre d'une contrepartie centrale qui règle les marges et obligations de ses propres positions et de celles de ses clients. Si un client ne paie pas un appel de marge, le membre reste redevable envers la chambre et porte un risque de liquidité de substitution.", guide: '/guides/lire-les-swaps-de-taux/' },
       { sigle: 'COT', nom: 'Commitments of Traders', def: "Relevé hebdomadaire de la CFTC détaillant, par catégorie d'intervenant, les positions ouvertes sur les marchés à terme américains. Publié le vendredi à 15 h 30 heure de New York, sur données arrêtées au mardi précédent, soit un décalage de trois jours." },
       { sigle: 'Future', nom: 'Contrat à terme', def: "Contrat à terme standardisé, négocié sur un marché organisé et compensé centralement. Il crée une exposition à un sous-jacent avec dépôt de marge et règlements des variations de valeur. Le notionnel sert de référence : ouvrir une vente à terme n’en procure pas le montant en espèces. Le contrat prévoit une livraison ou un règlement monétaire à l’échéance.", guide: '/posts/dette-etats-03-acheteurs-credit/' },
@@ -730,7 +731,6 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'RBC', nom: 'Risk-Based Capital', def: "Capital réglementaire minimal d'un assureur américain, calculé selon la taille et le risque de ses actifs et engagements. Le ratio RBC rapporte le capital ajusté total au seuil de contrôle autorisé (ACL) ; la NAIC déclenche des actions graduées quand il descend sous 200 %, puis 150 %, 100 % et 70 %. L'équivalent, pour l'assurance, du CET1 bancaire.", guide: '/guides/lire-la-solidite-d-un-assureur-vie/' },
       {"sigle": "G-SIB", "nom": "Global Systemically Important Bank", "def": "Banque d’importance systémique mondiale figurant dans la liste annuelle du Conseil de stabilité financière. Son score combine cinq catégories d’importance relative et détermine, sous réserve du jugement prudentiel, une surcharge de CET1 sur les actifs pondérés du risque. Il mesure les conséquences possibles d’une défaillance, et non sa probabilité. Les montants de capital requis sont des stocks, distincts des coûts annuels.", "guide": "/posts/banques-prix-photo-31-decembre/"},
       { sigle: 'MNI', nom: 'Net interest margin', def: "Marge nette d'intérêt : écart entre ce qu'une banque gagne sur ses prêts et titres et ce qu'elle paie sur ses dépôts et financements, rapporté à ses actifs productifs. Cœur du modèle de banque de détail et métrique la plus scrutée des résultats, souvent plus révélatrice que le bénéfice par action. Le revenu correspondant est le produit net d'intérêts (net interest income, NII).", guide: '/guides/lire-la-solidite-d-une-banque/' },
-      { sigle: 'LDI', nom: 'Liability-driven investment', def: "Stratégie de fonds de pension qui utilise obligations longues et dérivés pour aligner les actifs sur les engagements futurs. Au Royaume-Uni, la crise de 2022 a montré qu'un choc de taux pouvait déclencher appels de marge et ventes forcées de gilts." },
       { sigle: 'FDIC', nom: 'Federal Deposit Insurance Corporation', def: "Agence fédérale américaine qui assure les dépôts éligibles jusqu’à 250 000 dollars par déposant, par banque assurée et par catégorie de détention des comptes. Les dépôts d’une même catégorie dans une même banque s’additionnent pour ce plafond ; les cryptoactifs sont exclus. Elle peut aussi administrer la résolution d’une banque en faillite." },
       { sigle: 'OCC', nom: 'Office of the Comptroller of the Currency', def: "Régulateur bancaire fédéral américain qui agrée et supervise les banques nationales. Le GENIUS Act lui attribue notamment l’agrément et la supervision des émetteurs fédéraux qualifiés de stablecoins de paiement ; ce nouveau régime suit le calendrier d’entrée en vigueur de la loi.", guide: '/guides/qui-applique-le-genius-act/' },
       { sigle: 'NCUA', nom: 'National Credit Union Administration', def: "Agence fédérale qui agrée et supervise les credit unions américaines et garantit leurs dépôts. Sous le GENIUS Act, elle régule les émetteurs de stablecoins adossés à une credit union." },
@@ -780,7 +780,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-11';
+export const glossaryUpdatedIso = '2026-10-12';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1023,6 +1023,14 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  ldi: {
+    intuition: 'La valeur actualisée des pensions peut baisser plus vite que les actifs, tandis que les contrats du fonds LDI exigent des ressources immédiatement.',
+    formula: 'taux de couverture = actifs du régime / valeur actualisée de ses engagements',
+    articles: [{ label: 'Dette publique : l’heure de l’appel de marge', href: '/posts/dette-etats-05-appels-marge/', kind: 'article' }],
+    sources: [{ label: 'TPR, Using leveraged liability-driven investment', href: 'https://www.thepensionsregulator.gov.uk/en/document-library/scheme-management-detailed-guidance/funding-and-investment-detailed-guidance/liability-driven-investment', kind: 'source' }],
+    related: ['duration', 'repo', 'appel-de-marge', 'marge-initiale', 'marge-de-variation'],
+  },
+
 "apd": {
   "articles": [
     {
@@ -2886,7 +2894,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "La contrepartie centrale réduit le risque qu’un défaut se propage, mais transforme les pertes de marché en appels de cash et de collatéral.",
     formula: 'protection contrepartie = marge initiale + marge de variation + ressources de défaut',
     whyNow: "Quand le pétrole devient plus volatil, la solidité de la compensation dépend aussi de la capacité des clients et des banques à fournir la liquidité à temps.",
-    articles: [energyArticles[5]],
+    articles: [{ label: 'Dette publique : l’heure de l’appel de marge', href: '/posts/dette-etats-05-appels-marge/', kind: 'article' }, energyArticles[5]],
     guides: marginGuides,
     datasets: energyDatasets,
     signals: energySignals,
@@ -2894,10 +2902,10 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['appel-de-marge', 'marge-initiale', 'marge-de-variation', 'membre-compensateur', 'brent', 'future', 'repo'],
   },
   'appel-de-marge': {
-    intuition: "L’appel de marge ne dit pas qu’une couverture est mauvaise. Il dit que sa perte courante ou son risque potentiel doit être financé immédiatement.",
-    formula: 'besoin de liquidité = marge de variation + hausse de marge initiale - cash et collatéral mobilisables',
+    intuition: "Un appel de marge précise les ressources à apporter selon le contrat. Le paiement peut être exigible avant un encaissement attendu sur une autre position.",
+    formula: 'à chaque échéance : relais = max(0, espèces dues cumulées - ressources en espèces cumulées disponibles à cette date)',
     whyNow: "Un producteur court futures peut gagner sur son brut physique et devoir néanmoins avancer du cash avant le règlement de sa cargaison.",
-    articles: [energyArticles[5]],
+    articles: [{ label: 'Dette publique : l’heure de l’appel de marge', href: '/posts/dette-etats-05-appels-marge/', kind: 'article' }, energyArticles[5]],
     guides: marginGuides,
     datasets: energyDatasets,
     signals: energySignals,
@@ -2908,7 +2916,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "La marge initiale est un coussin contre une perte future possible pendant la liquidation d’un défaut, pas le règlement de la perte du jour.",
     formula: 'marge initiale = risque potentiel sur la période de liquidation, après compensations reconnues',
     whyNow: "La volatilité peut relever ce coussin au moment même où les participants doivent déjà financer leurs pertes quotidiennes.",
-    articles: [energyArticles[5]],
+    articles: [{ label: 'Dette publique : l’heure de l’appel de marge', href: '/posts/dette-etats-05-appels-marge/', kind: 'article' }, energyArticles[5]],
     guides: marginGuides,
     datasets: energyDatasets,
     signals: energySignals,
@@ -2916,10 +2924,10 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['appel-de-marge', 'marge-de-variation', 'membre-compensateur', 'ccp', 'brent'],
   },
   'marge-de-variation': {
-    intuition: "La marge de variation règle aujourd’hui le gain ou la perte apparu depuis la dernière valorisation.",
-    formula: 'marge de variation ≈ variation du prix × taille du contrat × nombre de contrats',
+    intuition: "La marge de variation suit les gains et pertes depuis la dernière valorisation. Son paiement peut précéder un encaissement attendu ailleurs.",
+    formula: 'pour un contrat linéaire : marge de variation ≈ variation du prix × taille du contrat × nombre de contrats',
     whyNow: "Sur une couverture courte de pétrole, une hausse du baril peut produire un décaissement immédiat avant que la cargaison physique ne soit payée.",
-    articles: [energyArticles[5]],
+    articles: [{ label: 'Dette publique : l’heure de l’appel de marge', href: '/posts/dette-etats-05-appels-marge/', kind: 'article' }, energyArticles[5]],
     guides: marginGuides,
     datasets: energyDatasets,
     signals: energySignals,

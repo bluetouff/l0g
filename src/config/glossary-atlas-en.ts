@@ -203,6 +203,19 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+    slug: 'ldi', sigle: 'LDI', nom: 'Liability-driven investment',
+    def: 'A strategy aligning the interest-rate and inflation sensitivity of pension assets with future pension liabilities. Bonds, derivatives and sometimes borrowing provide the exposure. Leverage creates collateral demands: a better-funded pension scheme can own an LDI vehicle facing cash shortages or depleted capital.',
+    guide: '/en/analysis/dette-etats-05-appels-marge/', ...clearingSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'The present value of pensions can fall faster than assets while the LDI fund’s contracts demand resources immediately.',
+      formula: 'funding ratio = scheme assets / present value of pension liabilities',
+      articles: [{ label: 'Government debt: the margin-call deadline', href: '/en/analysis/dette-etats-05-appels-marge/', kind: 'article' }],
+      sources: [{ label: 'TPR, Using leveraged liability-driven investment', href: 'https://www.thepensionsregulator.gov.uk/en/document-library/scheme-management-detailed-guidance/funding-and-investment-detailed-guidance/liability-driven-investment', kind: 'source' }],
+      related: ['duration', 'repo', 'appel-de-marge', 'marge-initiale', 'marge-de-variation'],
+    },
+  },
+
 {
   "slug": "apd",
   "sigle": "ODA",
@@ -3640,7 +3653,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       intuition: 'A central counterparty reduces the propagation of default, but turns market losses into calls for cash and collateral.',
       formula: 'counterparty protection = initial margin + variation margin + default resources',
       whyNow: 'When oil becomes more volatile, clearing resilience also depends on clients and banks providing liquidity on time.',
-      articles: [oilArticles[5]],
+      articles: [{ label: 'Government debt: the margin-call deadline', href: '/en/analysis/dette-etats-05-appels-marge/', kind: 'article' }, oilArticles[5]],
       guides: marginGuides,
       ...marginShared,
       related: ['appel-de-marge', 'marge-initiale', 'marge-de-variation', 'membre-compensateur', 'brent', 'repo'],
@@ -3650,14 +3663,14 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'appel-de-marge',
     sigle: 'Margin call',
     nom: 'Demand for additional cash or collateral',
-    def: 'A request for additional cash or collateral when the value or risk of a position changes. It may be variation margin settling the current loss or an increase in initial margin covering a potential loss after default.',
+    def: 'A request for additional cash or collateral when the value or risk of a position changes. It may be variation margin settling or collateralising current exposure under the contract, or an increase in initial margin covering potential losses after default.',
     guide: '/en/guides/read-interest-rate-swaps/',
     ...clearingSection,
     atlas: {
-      intuition: 'A margin call does not mean a hedge is economically wrong. It means its current loss or potential risk must be funded now.',
-      formula: 'liquidity need = variation margin + increase in initial margin - available cash and collateral',
+      intuition: 'A margin call specifies resources to be posted under the contract. Payment can fall due before cash arrives on another position.',
+      formula: 'at each deadline: bridge = max(0, cumulative cash due - cumulative cash resources available by that time)',
       whyNow: 'A producer short futures can gain on physical crude and still have to advance cash before the cargo settles.',
-      articles: [oilArticles[5]],
+      articles: [{ label: 'Government debt: the margin-call deadline', href: '/en/analysis/dette-etats-05-appels-marge/', kind: 'article' }, oilArticles[5]],
       guides: marginGuides,
       ...marginShared,
       related: ['marge-initiale', 'marge-de-variation', 'membre-compensateur', 'ccp', 'brent'],
@@ -3674,7 +3687,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       intuition: "Initial margin is a buffer against a possible future loss during default liquidation, not settlement of today's loss.",
       formula: 'initial margin = potential loss over the liquidation period, after recognised offsets',
       whyNow: 'Volatility can raise this buffer just as participants are already funding daily losses.',
-      articles: [oilArticles[5]],
+      articles: [{ label: 'Government debt: the margin-call deadline', href: '/en/analysis/dette-etats-05-appels-marge/', kind: 'article' }, oilArticles[5]],
       guides: marginGuides,
       ...marginShared,
       related: ['appel-de-marge', 'marge-de-variation', 'membre-compensateur', 'ccp', 'brent'],
@@ -3683,15 +3696,15 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
     slug: 'marge-de-variation',
     sigle: 'Variation margin',
-    nom: 'Daily settlement of mark-to-market gains and losses',
-    def: 'A payment, generally daily and in cash for cleared derivatives, that settles gains and losses caused by the new market value. It resets current exposure between counterparties to zero but can create an immediate cash need.',
+    nom: 'Margin for current mark-to-market exposure',
+    def: 'A transfer linked to a position’s change in value that settles or collateralises current exposure according to the contract. Cleared derivatives generally require cash. Receipt can lag a payment due on another position.',
     guide: '/en/guides/read-interest-rate-swaps/',
     ...clearingSection,
     atlas: {
-      intuition: 'Variation margin settles today the gain or loss that has appeared since the previous valuation.',
-      formula: 'variation margin ≈ price change × contract size × number of contracts',
+      intuition: 'Variation margin tracks gains and losses since the previous valuation. Payment can precede cash received on another position.',
+      formula: 'for a linear contract: variation margin ≈ price change × contract size × number of contracts',
       whyNow: 'On a short oil hedge, a higher barrel can cause an immediate outflow before the physical cargo is paid for.',
-      articles: [oilArticles[5]],
+      articles: [{ label: 'Government debt: the margin-call deadline', href: '/en/analysis/dette-etats-05-appels-marge/', kind: 'article' }, oilArticles[5]],
       guides: marginGuides,
       ...marginShared,
       related: ['appel-de-marge', 'marge-initiale', 'membre-compensateur', 'ccp', 'brent'],
