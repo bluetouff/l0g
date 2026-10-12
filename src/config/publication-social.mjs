@@ -1,5 +1,7 @@
 // Dedicated landscape cards. Portrait covers remain the book and catalogue artwork.
 const entries = [
+  ['debt-chain', 'fr', 'dette-en-chaine', ['La dette', 'en chaîne'], ['Titres publics, garanties', 'et secours de marché.'], 'Illustration conceptuelle de la chaîne de financement des États'],
+  ['debt-chain', 'en', 'sovereign-debt-chain', ['The sovereign', 'debt chain'], ['Government bonds, collateral', 'and market backstops.'], 'Conceptual artwork about sovereign debt financing and market backstops'],
   ['microsoft', 'fr', 'quitter-microsoft', ['Quitter', 'Microsoft'], ['La liberté de choisir'], 'Illustration conceptuelle des dépendances numériques et des possibilités de migration'],
   ['microsoft', 'en', 'leaving-microsoft', ['Leaving', 'Microsoft'], ['The freedom to choose'], 'Conceptual artwork about technology dependencies and migration options'],
   ['epstein', 'fr', 'l-argent-d-epstein', ['L’argent', 'd’Epstein'], ['Remonter les circuits', 'de l’argent.'], 'Archives, registres et circuits financiers'],

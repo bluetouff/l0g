@@ -13,6 +13,8 @@ import ArticleEvidence from '../../components/ArticleEvidence.astro';
 import AiEditorialDisclosure from '../../components/AiEditorialDisclosure.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import EpsteinEpubCard from '../../components/EpsteinEpubCard.astro';
+import DebtEpubCard from '../../components/DebtEpubCard.astro';
+import { debtEditions } from '../../config/debt-publication.mjs';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import ArticleHeroImage from '../../components/ArticleHeroImage.astro';
@@ -44,6 +46,7 @@ const epsteinPublicationSlugs = new Set([
   'epstein-banques-europeennes-six-relations-a-ne-pas-confondre',
 ]);
 const hasEpsteinEpub = epsteinPublicationSlugs.has(post.id);
+const hasDebtEpub = debtEditions.fr.chapters.some(chapter => chapter.slug === post.id);
 const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
 const { Content, headings } = await render(post);
 
@@ -437,6 +440,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty
     </div>
 
     {hasEpsteinEpub && <EpsteinEpubCard />}
+    {hasDebtEpub && <DebtEpubCard lang="fr" />}
 
     <WeeklyCta variant="article" />
 

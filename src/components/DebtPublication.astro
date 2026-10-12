@@ -1,0 +1,229 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { debtEditions } from '../config/debt-publication.mjs';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../config/entities.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+interface Props { lang: 'fr' | 'en'; }
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+const tr = (fr: string, en: string) => isEn ? en : fr;
+const book = debtEditions[lang];
+const alternate = debtEditions[isEn ? 'fr' : 'en'];
+const downloads = book.editions.map(edition => {
+  const bytes = readFileSync(join(process.cwd(), 'public', edition.epub));
+  return {
+    ...edition,
+    bytes: bytes.length,
+    sha256: createHash('sha256').update(bytes).digest('hex'),
+    size: `${new Intl.NumberFormat(book.locale, { maximumFractionDigits: 1 }).format(bytes.length / 1024 / 1024)} ${tr('Mo', 'MB')}`,
+  };
+});
+const formatDate = (value: string) => new Intl.DateTimeFormat(book.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${value}T12:00:00Z`));
+const pageUrl = `${SITE_URL}${book.path}`;
+const translation = { '@type': 'Book', '@id': `${SITE_URL}${alternate.path}#book`, inLanguage: alternate.lang };
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Book', '@id': `${pageUrl}#book`,
+  name: book.title, alternativeHeadline: book.subtitle, description: book.description, inLanguage: lang,
+  author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID },
+  datePublished: book.date, dateModified: book.modified,
+  bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true,
+  url: pageUrl, image: `${SITE_URL}${book.cover}`, license: 'https://creativecommons.org/licenses/by/4.0/',
+  ...(isEn ? { translationOfWork: translation } : { workTranslation: translation }),
+  hasPart: book.chapters.map(chapter => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.route}` })),
+  associatedMedia: downloads.map(edition => ({
+    '@type': 'MediaObject', name: `${book.title} · ${edition.label}`, contentUrl: `${SITE_URL}${edition.epub}`,
+    encodingFormat: 'application/epub+zip', contentSize: `${edition.bytes} bytes`, sha256: edition.sha256,
+  })),
+};
+const related = isEn ? [
+  { href: '/en/publications/scpi-phantom-liquidity/', title: 'The phantom liquidity of SCPI funds', description: 'Follow the assets, withdrawal requests and distribution of losses.' },
+  { href: '/en/publications/banking-on-oil/', title: 'Banking on oil', description: 'Explore the credit and guarantees behind physical cargoes.' },
+] : [
+  { href: '/publications/auditer-l-opacite/', title: 'Auditer l’opacité', description: 'Prolonger la lecture des canaux de transmission du risque financier.' },
+  { href: '/publications/scpi-liquidite-fantome/', title: 'La liquidité fantôme des SCPI', description: 'Suivre les actifs, les demandes de retrait et le partage des pertes.' },
+];
+---
+
+<BaseLayout title={book.title}
+  seoTitle={tr('La dette en chaîne : livre gratuit sur la dette publique | l0g', 'The sovereign debt chain: free EPUB on public debt | l0g')}
+  ogTitle={`${book.title}${isEn ? ': ' : ' : '}${book.subtitle}`}
+  description={book.description} lang={lang} ogLocale={isEn ? 'en_US' : 'fr_FR'} sidebar={false}
+  ogImage={book.social} ogImageAlt={tr('La dette en chaîne : titres publics, garanties et secours de marché. Livre l0g gratuit en EPUB sombre et clair.', 'The sovereign debt chain: government bonds, collateral and market backstops. A free l0g book in dark and light EPUB editions.')}
+  alternateLinks={[
+    { hreflang: 'fr', href: `${SITE_URL}${debtEditions.fr.path}` },
+    { hreflang: 'en', href: `${SITE_URL}${debtEditions.en.path}` },
+    { hreflang: 'x-default', href: `${SITE_URL}${debtEditions.fr.path}` },
+  ]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <article class="debt-book rise" data-pagefind-body>
+    <section class="book-hero" aria-labelledby="book-title">
+      <div class="cover-stage">
+        <div class="book-shell">
+          <span class="book-spine" aria-hidden="true">l0g · {tr('octobre', 'October')} 2026</span>
+          <img src={book.cover} srcset={[320, 640, 960].map(w => `${book.cover.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
+            sizes="(max-width: 780px) 240px, 360px" width="1024" height="1638"
+            alt={`${tr('Couverture de', 'Cover of')} ${book.title}`} loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+        <p class="cover-caption">{tr('Édition française', 'English edition')} · <time datetime={book.date}>{formatDate(book.date)}</time></p>
+      </div>
+      <div class="hero-copy">
+        <p class="mono-label">// {tr('enquête l0g · finance souveraine', 'l0g investigation · sovereign finance')}</p>
+        <h1 id="book-title">{tr('La dette', 'The sovereign')} <span>{tr('en chaîne', 'debt chain')}</span></h1>
+        <p class="hero-deck">{book.subtitle}</p>
+        <p class="hero-lede">{tr('Qui tient la dette des États lorsque le financement se tend ? Du premier acheteur à l’intervention des banques centrales, sept analyses suivent un titre public dans les bilans, les emprunts et les garanties. Le livre rassemble toute la série et relie ses mécanismes dans une lecture continue.', 'Who holds government debt when funding tightens? From the first buyer to central bank intervention, seven analyses follow a government bond through balance sheets, borrowing and collateral. This book brings the complete series into a continuous reading journey.')}</p>
+        <div class="hero-actions">
+          <a class="choose-action" href="#telecharger">{tr('Choisir mon EPUB', 'Choose my EPUB')} <small>{tr('Sombre ou clair · gratuit, sans inscription', 'Dark or light · free, no registration')}</small></a>
+          <a class="contents-action" href="#sommaire">{tr('Explorer les chapitres', 'Explore the chapters')} <span aria-hidden="true">↓</span></a>
+        </div>
+        <dl class="edition-facts">
+          <div><dt>{book.chapters.length}</dt><dd>{tr('analyses intégrales', 'complete analyses')}</dd></div>
+          <div><dt>{book.figureCount}</dt><dd>{tr('infographies', 'infographics')}</dd></div>
+          <div><dt>2</dt><dd>{tr('versions de lecture', 'reading editions')}</dd></div>
+        </dl>
+        <p class="edition-language"><a href={alternate.path} lang={alternate.lang} hreflang={alternate.lang}>{tr('Read in English', 'Lire en français')} <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </section>
+
+    <figure class="panorama">
+      <img src={book.panorama} srcset={[640, 960, 1600].map(w => `${book.panorama.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
+        sizes="(max-width: 780px) 100vw, 1120px" width="1600" height="800" loading="lazy" decoding="async"
+        alt={tr('Illustration conceptuelle reliant des titres publics, des intermédiaires financiers et un soutien de marché.', 'Conceptual illustration connecting government bonds, financial intermediaries and a market backstop.')} />
+      <figcaption>{tr('Une chaîne de financement représentée par une illustration conceptuelle. Les données, les institutions et les interventions historiques sont documentées dans les chapitres.', 'A conceptual illustration of the financing chain. The chapters document the data, institutions and historical interventions.')}</figcaption>
+    </figure>
+
+    <section id="telecharger" class="downloads-section" aria-labelledby="downloads-title">
+      <div class="section-heading"><p class="mono-label">01 / {tr('emporter le livre', 'take the book with you')}</p><h2 id="downloads-title">{tr('Deux fonds pour une même enquête', 'Two backgrounds for the same investigation')}</h2><p>{tr('Choisissez le fond sombre ou le fond clair. Les deux fichiers contiennent les mêmes chapitres, sources et infographies, avec des couleurs adaptées à leur fond.', 'Choose a dark or light background. Both files contain the same chapters, sources and infographics, with colours adapted to their background.')}</p></div>
+      <div class="download-grid">{downloads.map(edition => <article class="download-card" data-edition-theme={edition.theme}>
+        <span class:list={['reading-swatch', `reading-swatch--${edition.theme}`]} aria-hidden="true">Aa<span></span><span></span></span>
+        <div class="download-copy"><p class="mono-label">EPUB 3 · {edition.size}</p><h3>{edition.theme === 'dark' ? tr('Fond sombre', 'Dark background') : tr('Fond clair', 'Light background')}</h3><p>{edition.theme === 'dark' ? tr('Pages anthracite, texte clair et infographies accordées à la palette sombre de l0g.', 'Charcoal pages, light text and infographics matched to l0g’s dark palette.') : tr('Pages claires, texte foncé et infographies accordées à la palette claire de l0g.', 'Light pages, dark text and infographics matched to l0g’s light palette.')}</p></div>
+        <a class="download-action" href={edition.epub} download>{edition.theme === 'dark' ? tr('Télécharger l’EPUB sombre', 'Download the dark EPUB') : tr('Télécharger l’EPUB clair', 'Download the light EPUB')} <span aria-hidden="true">↓</span></a>
+        <small class="reader-note">{tr('Le réglage de votre liseuse peut remplacer les couleurs du livre.', 'Your reading app may override the book’s colours.')}</small>
+      </article>)}</div>
+    </section>
+
+    <section class="reading-section" aria-labelledby="intro-title">
+      <div class="section-heading"><p class="mono-label">02 / introduction</p><h2 id="intro-title">{book.introductionTitle}</h2></div>
+      <div class="prose-copy">{book.introduction.slice(0, 2).map(paragraph => <p>{paragraph}</p>)}
+        <p class="excerpt-note">{tr('Une introduction originale ouvre le livre et raccorde les sept analyses.', 'An original introduction opens the book and connects the seven analyses.')}</p>
+      </div>
+    </section>
+
+    <section id="sommaire" class="contents-section" aria-labelledby="contents-title">
+      <div class="section-heading"><p class="mono-label">03 / {tr('parcours de lecture', 'reading journey')}</p><h2 id="contents-title">{tr('Du premier acheteur au dernier recours', 'From the first buyer to the last resort')}</h2><p>{tr('Les sept articles complets, dans leur ordre de lecture. Chaque chapitre reste accessible en ligne avec ses références et ses limites.', 'The seven complete articles, in reading order. Each chapter remains available online with its references and limitations.')}</p></div>
+      <ol class="chapter-grid">{book.chapters.map(chapter => <li><a href={chapter.route}>
+        <img src={chapter.image} width="1200" height="630" alt={chapter.imageAlt} loading="lazy" decoding="async" />
+        <div class="chapter-copy"><span class="chapter-number">{String(chapter.number).padStart(2, '0')}</span><div><h3>{chapter.title}</h3><p>{chapter.summary}</p></div><span class="chapter-arrow" aria-hidden="true">↗</span></div>
+      </a></li>)}</ol>
+    </section>
+
+    <section class="reading-section glossary-section" aria-labelledby="glossary-title">
+      <div class="section-heading"><p class="mono-label">04 / {tr('repères', 'reference')}</p><h2 id="glossary-title">{tr('Les termes du financement', 'The language of funding')}</h2><p>{tr('Un glossaire accompagne le livre. Ces fiches permettent aussi de poursuivre la lecture en ligne.', 'A glossary accompanies the book. These reference pages also support further reading online.')}</p></div>
+      <div><dl class="glossary-list">{book.glossary.slice(0, 6).map(entry => <div><dt><a href={entry.path}>{entry.title} <span aria-hidden="true">↗</span></a></dt><dd>{entry.definition}</dd></div>)}</dl><a class="text-link" href={isEn ? '/en/glossary/' : '/glossaire/'}>{tr('Ouvrir le glossaire l0g', 'Open the l0g glossary')} <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="reading-section" aria-labelledby="conclusion-title">
+      <div class="section-heading"><p class="mono-label">05 / conclusion</p><h2 id="conclusion-title">{book.conclusionTitle}</h2></div>
+      <div class="prose-copy">{book.conclusion.slice(0, 2).map(paragraph => <p>{paragraph}</p>)}<p class="excerpt-note">{tr('La conclusion complète rapproche les bilans, les engagements et les conditions d’intervention suivis dans le livre.', 'The full conclusion connects the balance sheets, commitments and intervention conditions examined throughout the book.')}</p></div>
+    </section>
+
+    <section class="reading-section edition-section" aria-labelledby="edition-title">
+      <div class="section-heading"><p class="mono-label">06 / {tr('sources et édition', 'sources and edition')}</p><h2 id="edition-title">{book.methodTitle}</h2></div>
+      <div class="prose-copy">
+        <p>{tr('Édition du', 'Edition dated')} {formatDate(book.date)}. {tr('Documentation arrêtée au', 'Documentary cut-off:')} {formatDate(book.documentationDate)}.</p>
+        {book.method.map(paragraph => <p>{paragraph}</p>)}
+        <p>{tr('Le texte s’adapte à l’écran. Le sommaire, les références internes, le glossaire et les infographies sont disponibles hors ligne. Les documents externes et les articles en ligne nécessitent une connexion. L’agrandissement des images dépend de la liseuse.', 'Text reflows to fit the screen. The contents, internal references, glossary and infographics are available offline. External documents and online articles require a connection. Image enlargement depends on the reading app.')}</p>
+        <p>{tr('Les couvertures et le panorama sont des illustrations conceptuelles créées avec une assistance d’intelligence artificielle. Les infographies gardent les dates, les unités, les sources et les limites des articles.', 'The covers and panorama are conceptual illustrations created with AI assistance. The infographics retain the articles’ dates, units, sources and limitations.')}</p>
+        <p>{tr('Gratuit, sans inscription, sans script embarqué ni outil de suivi.', 'Free, without registration, embedded scripts or tracking.')} <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>.</p>
+        <details class="integrity"><summary>{tr('Vérifier l’intégrité des fichiers', 'Check file integrity')}</summary>{downloads.map(edition => <div><p>{edition.theme === 'dark' ? tr('EPUB sombre', 'Dark EPUB') : tr('EPUB clair', 'Light EPUB')} · SHA-256</p><code>{edition.sha256}</code></div>)}</details>
+        <a class="text-link" href="#telecharger">{tr('Choisir mon téléchargement', 'Choose my download')} <span aria-hidden="true">↑</span></a>
+      </div>
+    </section>
+
+    <section class="related-section" aria-labelledby="related-title"><div class="section-heading"><p class="mono-label">07 / {tr('prolonger la lecture', 'further reading')}</p><h2 id="related-title">{tr('D’autres enquêtes sur le risque', 'Further investigations into risk')}</h2></div><div class="related-grid">{related.map(item => <a href={item.href}><h3>{item.title} <span aria-hidden="true">↗</span></h3><p>{item.description}</p></a>)}</div><p class="back-link"><a href={isEn ? '/en/publications/' : '/publications/'}>← {tr('Toutes les publications', 'All publications')}</a></p></section>
+  </article>
+</BaseLayout>
+
+<style>
+  .debt-book { max-width: 1120px; margin: 2rem auto 0; }
+  .book-hero { display: grid; grid-template-columns: minmax(280px,.85fr) minmax(0,1.25fr); align-items: center; gap: clamp(2rem,5vw,5rem); padding: 1rem 0 3.5rem; }
+  .cover-stage { display:flex; flex-direction:column; align-items:center; padding:2rem 1.5rem; }
+  .book-shell { position:relative; width:min(100%,360px); transform:perspective(1300px) rotateY(-9deg) rotateZ(-1deg); box-shadow:1rem 1.5rem 3rem color-mix(in srgb,var(--color-ink) 65%,transparent); border-radius:3px 7px 7px 3px; }
+  .book-shell::after { content:''; position:absolute; inset:0; border:1px solid color-mix(in srgb,var(--color-paper) 25%,transparent); border-radius:inherit; box-shadow:inset 8px 0 12px #0006; pointer-events:none; }
+  .book-shell > img { display:block; width:100%; height:auto; border-radius:inherit; }
+  .book-spine { position:absolute; left:-15px; top:1px; bottom:1px; width:15px; writing-mode:vertical-rl; transform:rotate(180deg); background:var(--color-surface); color:var(--color-muted); font-family:var(--font-ui); font-size:.55rem; text-align:center; border:1px solid var(--color-line); }
+  .cover-caption { margin-top:1.8rem; font-family:var(--font-ui); font-size:.72rem; color:var(--color-muted); }
+  .hero-copy > .mono-label { color:var(--color-amber); font-size:.7rem; }
+  .hero-copy h1 { color:var(--color-bright); font-family:var(--font-display); font-size:clamp(2.6rem,4.5vw,4.5rem); line-height:1.05; letter-spacing:-.045em; margin:1rem 0; }
+  .hero-copy h1 span { display:block; color:var(--color-signal); }
+  .hero-deck { font-family:var(--font-read); color:var(--color-bright); font-size:1.25rem; line-height:1.5; margin:1.3rem 0; }
+  .hero-lede { font-family:var(--font-read); color:var(--color-prose); font-size:1.04rem; line-height:1.8; }
+  .hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem; margin:1.8rem 0; }
+  .choose-action { display:inline-flex; flex-direction:column; gap:.4rem; border:1px solid var(--color-signal); border-radius:7px; padding:1rem 1.4rem; color:var(--color-bright); background:color-mix(in srgb,var(--color-signal) 10%,var(--color-surface)); font-family:var(--font-ui); font-size:.94rem; font-weight:700; text-decoration:none; }
+  .choose-action small { color:var(--color-muted); font-size:.68rem; font-weight:400; }
+  .choose-action:hover { background:color-mix(in srgb,var(--color-signal) 18%,var(--color-surface)); }
+  .contents-action,.edition-language a,.text-link { color:var(--color-signal); font-family:var(--font-ui); font-size:.77rem; text-decoration:none; }
+  .contents-action span { margin-left:.35rem; }
+  .edition-facts { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin:1.7rem 0; padding:1.2rem 0; border-top:1px solid var(--color-line); border-bottom:1px solid var(--color-line); }
+  .edition-facts dt { color:var(--color-bright); font-family:var(--font-ui); font-size:1.25rem; font-weight:700; }
+  .edition-facts dd { color:var(--color-muted); font-family:var(--font-read); font-size:.75rem; margin:.4rem 0 0; }
+  .panorama { margin:0 0 3.5rem; }
+  .panorama img { display:block; width:100%; height:auto; border-radius:10px; border:1px solid var(--color-line); }
+  figcaption { font-family:var(--font-read); color:var(--color-muted); font-size:.8rem; line-height:1.65; margin:.8rem 0 0; }
+  .reading-section { display:grid; grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr); gap:clamp(1.5rem,4vw,4rem); margin:4rem 0; padding-top:2rem; border-top:1px solid var(--color-line); }
+  .section-heading > .mono-label { color:var(--color-amber); font-size:.7rem; }
+  .section-heading h2 { color:var(--color-bright); font-family:var(--font-display); font-size:clamp(1.5rem,2.7vw,2.2rem); letter-spacing:-.035em; line-height:1.2; margin:.8rem 0 1rem; }
+  .section-heading > p:last-child { max-width:46rem; color:var(--color-prose); font-family:var(--font-read); line-height:1.75; }
+  .prose-copy { font-family:var(--font-read); color:var(--color-prose); line-height:1.85; font-size:1.04rem; min-width:0; }
+  .prose-copy > p { margin:0 0 1.3rem; }
+  .prose-copy .excerpt-note { color:var(--color-muted); font-size:.8rem; }
+  .contents-section,.downloads-section,.related-section { margin:4rem 0; scroll-margin-top:2rem; }
+  .chapter-grid { list-style:none; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.1rem; padding:0; margin:1.8rem 0 0; }
+  .chapter-grid li { min-width:0; }
+  .chapter-grid a { height:100%; display:block; text-decoration:none; background:var(--color-surface); border:1px solid var(--color-line); border-radius:9px; overflow:hidden; transition:border-color .2s,transform .2s; }
+  .chapter-grid a:hover { border-color:var(--color-signal); transform:translateY(-3px); }
+  .chapter-grid img { width:100%; height:auto; display:block; }
+  .chapter-copy { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:.8rem; padding:1.2rem; }
+  .chapter-number { font-family:var(--font-ui); color:var(--color-amber); font-size:.7rem; padding-top:.2rem; }
+  .chapter-copy h3 { color:var(--color-bright); font-family:var(--font-read); font-size:1.1rem; line-height:1.4; margin:0 0 .7rem; }
+  .chapter-copy p { font-family:var(--font-read); color:var(--color-muted); font-size:.85rem; line-height:1.6; margin:0; }
+  .chapter-arrow { color:var(--color-signal); }
+  .download-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.2rem; margin-top:1.8rem; }
+  .download-card { display:grid; grid-template-columns:auto minmax(0,1fr); gap:1rem; border:1px solid var(--color-line-strong); border-radius:10px; padding:1.5rem; background:var(--color-surface); }
+  .reading-swatch { display:flex; flex-direction:column; justify-content:center; gap:.45rem; width:4rem; height:5.5rem; padding:.7rem; border:1px solid var(--color-line-strong); border-radius:3px; font-family:var(--font-read); font-size:1.4rem; line-height:1; }
+  .reading-swatch--dark { color:#e7e9ee; background:#0c0d10; }
+  .reading-swatch--light { color:#1b1d23; background:#e7e9ee; }
+  .reading-swatch > span { display:block; height:2px; background:currentColor; opacity:.65; }
+  .reading-swatch > span:last-child { width:75%; }
+  .download-copy .mono-label { color:var(--color-muted); font-size:.65rem; }
+  .download-copy h3 { color:var(--color-bright); font-family:var(--font-read); font-size:1.2rem; margin:.4rem 0 .55rem; }
+  .download-copy p:last-child { font-family:var(--font-read); color:var(--color-muted); font-size:.85rem; line-height:1.6; margin:0; }
+  .download-action { grid-column:1/-1; display:flex; align-items:center; justify-content:space-between; gap:.7rem; border-radius:6px; padding:.85rem 1rem; background:var(--color-signal); color:var(--color-ink); font-family:var(--font-ui); font-size:.8rem; font-weight:700; text-decoration:none; }
+  .download-action:hover { text-decoration:underline; text-underline-offset:.15em; }
+  .reader-note { grid-column:1/-1; color:var(--color-muted); font-family:var(--font-read); font-size:.72rem; line-height:1.55; }
+  .glossary-list { margin:0 0 1.4rem; }
+  .glossary-list > div { padding:1.1rem 0; border-bottom:1px solid var(--color-line); }
+  .glossary-list > div:first-child { padding-top:0; }
+  .glossary-list dt a { color:var(--color-signal); font-family:var(--font-read); font-size:1.04rem; font-weight:700; text-decoration:none; }
+  .glossary-list dd { color:var(--color-prose); font-family:var(--font-read); line-height:1.7; font-size:.94rem; margin:.4rem 0 0; }
+  .integrity { font-family:var(--font-ui); font-size:.75rem; border:1px solid var(--color-line); padding:1rem; border-radius:6px; margin:1.5rem 0; }
+  .integrity summary { color:var(--color-signal); cursor:pointer; }
+  .integrity > div { margin-top:1.2rem; }
+  .integrity p { color:var(--color-paper); font-size:.7rem; }
+  .integrity code { display:block; overflow-wrap:anywhere; color:var(--color-muted); margin-top:.5rem; font-size:.66rem; line-height:1.7; }
+  .related-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.2rem; margin-top:1.4rem; }
+  .related-grid a { border:1px solid var(--color-line); border-radius:8px; padding:1.2rem; text-decoration:none; }
+  .related-grid h3 { color:var(--color-signal); font-family:var(--font-read); font-size:1.1rem; margin:0 0 .8rem; line-height:1.4; }
+  .related-grid p { color:var(--color-muted); font-family:var(--font-read); font-size:.9rem; line-height:1.7; margin:0; }
+  .back-link { margin-top:2rem; }
+  .back-link a { color:var(--color-signal); font-family:var(--font-read); font-size:.85rem; }
+  a:focus-visible,summary:focus-visible { outline:2px solid var(--color-signal); outline-offset:5px; }
+  @media(max-width:900px) { .chapter-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media(max-width:780px) { .debt-book { margin-top:.5rem; } .book-hero { grid-template-columns:1fr; gap:.5rem; padding-bottom:2.5rem; } .book-shell { width:min(100%,240px); } .cover-stage { padding:1.3rem 0; } .hero-copy h1 { font-size:clamp(2.1rem,9vw,3.3rem); } .hero-copy { max-width:38rem; margin:auto; width:100%; } .reading-section { grid-template-columns:1fr; gap:.8rem; margin:3rem 0; } .panorama { margin-bottom:2rem; } .download-grid { gap:.85rem; } .download-card { padding:1.1rem; gap:.8rem; } }
+  @media(max-width:620px) { .download-grid,.related-grid { grid-template-columns:1fr; } }
+  @media(max-width:520px) { .chapter-grid { grid-template-columns:1fr; } .hero-actions { align-items:stretch; } .choose-action { padding:.95rem 1.2rem; } .contents-action { align-self:center; } .edition-facts { gap:.5rem; } .edition-facts dd { font-size:.72rem; } .integrity { padding:.85rem; } }
+  @media(prefers-reduced-motion:reduce) { .chapter-grid a { transition:none; } .book-shell { transform:none; } }
+</style>

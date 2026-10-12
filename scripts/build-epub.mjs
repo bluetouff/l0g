@@ -2,10 +2,16 @@ import { cpSync, mkdtempSync, mkdirSync, readdirSync, renameSync, rmSync, statSy
 import { tmpdir } from 'node:os';
 import { basename, dirname, join, relative, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { debtEditions } from '../src/config/debt-publication.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
+  ...Object.values(debtEditions).flatMap(book => book.editions.map(edition => ({
+    source: join(ROOT, 'src/epub', edition.directory),
+    output: join(ROOT, 'public', edition.epub),
+    fixedTime: new Date(book.modified),
+  }))),
   ...['quitter-microsoft', 'leaving-microsoft'].map(directory => ({
     source: join(ROOT, 'src/epub', directory),
     output: join(ROOT, 'public/publications', `${directory}-l0g.epub`),
