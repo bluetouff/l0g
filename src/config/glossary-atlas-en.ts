@@ -595,7 +595,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'The risk of having to refinance maturing debt at a higher cost or facing difficulty raising the required funds. It depends on the amounts due, their timing and access to funding.',
     atlas: {
       intuition: 'Shorter issuance can lower the initial cost while bringing the next funding need closer.',
-      articles: [{ label: 'The price of time in French debt', href: '/en/analysis/french-debt-price-of-time/', kind: 'article' }],
+      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }, { label: 'The price of time in French debt', href: '/en/analysis/french-debt-price-of-time/', kind: 'article' }],
       sources: [{ label: 'DG Trésor, Trésor-Éco no. 297, January 2022', href: 'https://www.tresor.economie.gouv.fr/Articles/aed3274b-b5a2-482d-a02d-09d0b9f339d6/files/dc0bde49-9fd8-4e29-bd30-fe069abb603b', detail: 'Sections 2.1 and 2.2: smoothing redemptions and the cost-risk trade-off.', kind: 'source' }, { label: 'OECD, Global Debt Report 2026', href: 'https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html', detail: 'Chapter 1: issuance maturities and refinancing risk.', kind: 'source' }],
       related: ['btf', 'prime-de-terme'],
     },
@@ -2644,6 +2644,39 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'oat', sigle: 'OAT', nom: 'French government bond',
+    def: 'An obligation assimilable du Trésor, issued by the French state for medium- and long-term funding. Its market yield provides a reference for France’s borrowing costs and differs from the contractual coupon. Inflation-linked OATs have indexation clauses.',
+    guide: '/en/analysis/dette-etats-06-prix-sortie/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'The market values an outstanding contract; new funding faces the current yield.',
+      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }],
+      sources: [{ label: 'Agence France Trésor, debt instruments', href: 'https://www.aft.gouv.fr/fr/nos-produits', kind: 'source' }],
+      related: ['coupon-obligataire', 'adjudication', 'risque-de-refinancement'],
+    },
+  },
+  {
+    slug: 'profondeur-de-marche', sigle: 'Market depth', nom: 'Quantities available at quoted prices',
+    def: 'The quantities offered for purchase and sale at each price level of an order book at a given instant. Depth at the best bid and offer describes only the inside tier. It differs from the total outstanding stock and past trading volume; quotes can be withdrawn or replenished.',
+    guide: '/en/analysis/dette-etats-06-prix-sortie/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'A large sale can exhaust the best bid and reach lower price levels.',
+      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }],
+      sources: [{ label: 'New York Fed, Treasury liquidity', href: 'https://libertystreeteconomics.newyorkfed.org/2026/04/treasury-market-liquidity-since-april-2025/', detail: 'Inside-tier depth, spreads and price impact.', kind: 'source' }],
+      related: ['bid-to-cover', 'primary-dealer', 'appel-de-marge'],
+    },
+  },
+  {
+    slug: 'coupon-obligataire', sigle: 'Bond coupon', nom: 'Contractual interest payment',
+    def: 'An interest payment specified by a bond’s terms. For a fixed-rate bond, the payment depends on face value and the contractual coupon rate, with the stipulated frequency. The buyer’s yield also depends on the purchase price and other cash flows; a secondary-market sale does not alter the issuer’s coupon.',
+    guide: '/en/analysis/dette-etats-06-prix-sortie/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'The contract sets payments; the purchase price changes the yield.',
+      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }],
+      sources: [{ label: 'SEC, fixed-rate bond prices and yields', href: 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-86', kind: 'source' }],
+      related: ['duration', 'adjudication', 'risque-de-refinancement'],
+    },
+  },
+  {
     slug: 'prime-de-terme',
     sigle: 'Term premium',
     nom: 'Compensation for holding duration',
@@ -2654,7 +2687,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       intuition: 'A model splits a long yield into the expected path of short rates and compensation for duration risk. That split is an estimate, with uncertainty.',
       formula: 'long yield ≈ average expected short rates + term premium',
       whyNow: 'When long-debt supply grows, QT removes the public buyer and foreign demand shifts, an expected fall in short rates can coexist with a rising long yield.',
-      articles: [{ label: 'The world rediscovers the price of money', href: '/en/analysis/the-world-rediscovers-the-price-of-money/', kind: 'article' }, { label: 'Can a Fed hike lower long-term yields?', href: '/en/analysis/fed-rate-hikes-long-yields-term-premium/', detail: 'Expectations, the term premium and Treasury buybacks.', kind: 'article' }, { label: 'The price of time in French debt', href: '/en/analysis/french-debt-price-of-time/', detail: 'Maturity, initial borrowing costs and debt refinancing.', kind: 'article' }, ...usDebtArticles],
+      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }, { label: 'The world rediscovers the price of money', href: '/en/analysis/the-world-rediscovers-the-price-of-money/', kind: 'article' }, { label: 'Can a Fed hike lower long-term yields?', href: '/en/analysis/fed-rate-hikes-long-yields-term-premium/', detail: 'Expectations, the term premium and Treasury buybacks.', kind: 'article' }, { label: 'The price of time in French debt', href: '/en/analysis/french-debt-price-of-time/', detail: 'Maturity, initial borrowing costs and debt refinancing.', kind: 'article' }, ...usDebtArticles],
       guides: usDebtGuides,
       ...shared,
       sources: [{ label: 'Federal Reserve, Kim–Wright model', href: 'https://www.federalreserve.gov/data/three-factor-nominal-term-structure-model.htm', detail: 'Methodology, limitations and revisions to term-premium estimates.', kind: 'source' }, ...shared.sources],
@@ -2688,7 +2721,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     atlas: {
       intuition: 'Auctions match quantities with prices. Awards precede settlement, and the face amount can differ from the cash raised.',
       whyNow: 'The refunding calendar becomes a risk signal when volumes to issue rise and the marginal buyer demands more yield.',
-      articles: [{ label: 'Government debt: the first buyer', href: '/en/analysis/dette-etats-01-premier-acheteur/', detail: 'Price, face value, settlement and bidding channels in France and the United States.', kind: 'article' }],
+      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }, { label: 'Government debt: the first buyer', href: '/en/analysis/dette-etats-01-premier-acheteur/', detail: 'Price, face value, settlement and bidding channels in France and the United States.', kind: 'article' }],
       guides: [usDebtGuides[0]],
       ...shared,
       sources: [{ label: 'AFT, issuance techniques', href: 'https://www.aft.gouv.fr/fr/techniques-demissions', detail: 'Submitted prices and allocation rules for French OATs.', kind: 'source' }, { label: 'TreasuryDirect, How Auctions Work', href: 'https://www.treasurydirect.gov/auctions/how-auctions-work/', detail: 'Uniform-price allocation and payment on the issue date.', kind: 'source' }],
@@ -2703,6 +2736,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/dette-etats-01-premier-acheteur/',
     ...macroSection,
     atlas: {
+      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }],
       intuition: 'The bid-to-cover measures the cushion of bids around an issue, but it is not enough without reading the tail and the split between dealers, directs and indirects.',
       whyNow: 'A large, uncompetitive bid can raise the ratio without changing awards. The volume bid needs to be read alongside the terms at which the securities were placed.',
       guides: [usDebtGuides[0]],

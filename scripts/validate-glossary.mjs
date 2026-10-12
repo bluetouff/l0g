@@ -143,8 +143,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 628, 'Le corpus doit conserver ses 628 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 205, 'Le graphe Atlas doit conserver ses 205 nœuds');
+assert.equal(glossaryEntries.length, 630, 'Le corpus doit conserver ses 630 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 207, 'Le graphe Atlas doit conserver ses 207 nœuds');
 const mortgageArticleFr = '/posts/credits-americains-risque-3-pourcent/';
 const mortgageArticleEn = '/en/analysis/us-mortgages-three-percent-moving-risk/';
 for (const [slug, source, related] of [
@@ -408,7 +408,7 @@ for (const [slug, sources, related] of [
   assert.equal(en.guide, '/en/analysis/french-debt-price-of-time/');
   for (const entry of [fr, en]) {
     assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
-    assert.deepEqual(entry.atlas.articles.map(article => article.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.articles.map(article => article.href), slug === 'risque-de-refinancement' ? [entry === fr ? '/posts/dette-etats-06-prix-sortie/' : '/en/analysis/dette-etats-06-prix-sortie/', entry.guide] : [entry.guide]);
     assert.deepEqual(entry.atlas.related, related);
     for (const neighbor of entry.atlas.related) {
       assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
@@ -541,7 +541,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 634, 'Le graphe Atlas doit conserver ses 634 relations');
+assert.equal(glossaryAtlasEdgeCount, 640, 'Le graphe Atlas doit conserver ses 640 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
@@ -790,6 +790,33 @@ for (const entry of [glossaryEntries.find(item => item.slug === 'appel-de-marge'
   assert(entry?.atlas?.formula);
   assert.match(entry.atlas.formula, /max\(0,/);
   assert.doesNotMatch(entry.atlas.formula, /cash et collatéral|cash and.*collateral/);
+}
+
+for (const [slug, source] of [
+  ['profondeur-de-marche', 'https://libertystreeteconomics.newyorkfed.org/2026/04/treasury-market-liquidity-since-april-2025/'],
+  ['coupon-obligataire', 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-86'],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en);
+  assert.equal(fr.guide, '/posts/dette-etats-06-prix-sortie/');
+  assert.equal(en.guide, '/en/analysis/dette-etats-06-prix-sortie/');
+  assert.equal(fr.reference, undefined);
+  assert.equal(fr.referenceCandidate, false);
+  assert.equal(en.robots, 'noindex,follow');
+  assert.deepEqual(fr.atlas.sources.map(item => item.href), [source]);
+  assert.deepEqual(en.atlas.sources.map(item => item.href), [source]);
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  for (const neighbor of fr.atlas.related) {
+    assert(glossaryEntries.some(entry => entry.slug === neighbor));
+    assert(glossaryAtlasEnBySlug.has(neighbor));
+  }
+}
+
+for (const slug of ['adjudication', 'bid-to-cover', 'risque-de-refinancement', 'prime-de-terme']) {
+  for (const [entry, href] of [[glossaryEntries.find(item => item.slug === slug), '/posts/dette-etats-06-prix-sortie/'], [glossaryAtlasEnBySlug.get(slug), '/en/analysis/dette-etats-06-prix-sortie/']]) {
+    assert.equal(entry.atlas.articles.filter(item => item.href === href).length, 1);
+  }
 }
 
 console.log(JSON.stringify({

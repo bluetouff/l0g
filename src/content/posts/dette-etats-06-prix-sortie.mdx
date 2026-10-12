@@ -1,0 +1,1176 @@
+---
+title: 'Dette publique : le prix de la sortie'
+seoTitle: 'Dette publique : ventes forcées et coût des taux | l0g'
+ogTitle: 'Dette publique : le prix de la sortie'
+description: 'Des ventes pressées aux nouvelles émissions : enquête sur la formation des taux et leur transmission progressive à la charge de la dette. Épisode 6 sur 7.'
+pubDate: '2026-10-12T09:29:17+02:00'
+updatedDate: '2026-10-12T09:29:17+02:00'
+tags: ["dette publique", "obligations", "liquidité", "risques"]
+draft: false
+ogImage: /illustrations/news/dette-etats-prix-sortie-v1.jpg
+quickTake:
+  fact: Les réouvertures du même Treasury de février 2035, en mars et avril 2025, affichent une couverture plus forte mais un rendement supérieur de 12,5 points de base.
+  importance: La pression des ventes peut atteindre les nouvelles émissions ; son coût budgétaire dépend ensuite du calendrier de refinancement et de la persistance du choc.
+  uncertainty: La comparaison des adjudications ne mesure pas un effet causal des ventes forcées. Les modèles l0g sont fictifs et la sensibilité AFT citée est une simulation de 2025, non une prévision actualisée.
+---
+
+<style>{`.l0g-debt6-figure{margin:2.5rem auto 3rem;max-width:680px;clear:both}.l0g-debt6-figure svg{display:block;width:100%;height:auto;max-width:100%;border-radius:12px}.l0g-debt6-mobile{display:none}.l0g-debt6-figure figcaption{font-size:.84em;line-height:1.65;padding:1rem .15rem;color:inherit}.l0g-debt6-figure figcaption strong{display:block;margin:.4rem 0 .25rem}.l0g-debt6-kind{display:block;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--color-signal)}.l0g-debt6-ref{font-size:.7em;vertical-align:super;white-space:nowrap}.l0g-debt6-sources{font-size:.85rem;line-height:1.7}.l0g-debt6-sources a{overflow-wrap:anywhere}.l0g-debt6-sources li{margin:1rem 0;scroll-margin-top:2rem}.l0g-debt6-sources .source-title{font-weight:700}.l0g-debt6-sources small{display:block;font-size:.8rem}.l0g-debt6-sources .source-url{display:block}#figure-02-prix-et-coupon,#figure-06-sensibilite{max-width:560px}:root[data-theme="light"] .l0g-debt6-figure pattern path{opacity:.75}@media(max-width:680px){.l0g-debt6-figure,#figure-02-prix-et-coupon,#figure-06-sensibilite{max-width:416px}.l0g-debt6-desktop{display:none}.l0g-debt6-mobile{display:block}}`}</style>
+
+<div class="l0g-debt-06">
+
+<p><strong>Qui tient la dette des États ? · Épisode 6 sur 7</strong></p>
+
+<p>La vente d’un fonds rencontre un acheteur, déplace un prix et peut modifier les conditions d’un emprunt public. Entre l’urgence privée et les coupons futurs, le calendrier décide de la facture.</p>
+
+Le 9 avril 2025, le Trésor américain trouve ses acheteurs. En pleine secousse obligataire, les offres reçues pour une réouverture de son emprunt à dix ans représentent 2,67 fois le montant attribué, contre 2,59 un mois auparavant. Le rendement auquel il emprunte a pourtant augmenté. Le même titre, remboursable en février 2035, rapporte désormais 4,435 % à son nouveau détenteur, contre 4,310 % lors de l’adjudication du 12 mars. Son coupon, lui, reste à 4,625 %. <sup class="l0g-debt6-ref"><a href="#source-01" aria-label="Source 1">[1]</a></sup><sup class="l0g-debt6-ref"><a href="#source-02" aria-label="Source 2">[2]</a></sup>
+
+Ces chiffres décrivent des mécanismes distincts. Le [ratio de couverture de l’adjudication](/glossaire/bid-to-cover/) mesure la quantité d’offres relativement aux titres distribués. Le rendement exprime la rémunération obtenue au prix accepté. Le [coupon](/glossaire/coupon-obligataire/) détermine les versements contractuels. Une émission peut attirer davantage de demandes tout en devenant plus coûteuse pour l’émetteur. C’est précisément ce que montrent les deux feuilles de résultats américaines. <sup class="l0g-debt6-ref"><a href="#source-01" aria-label="Source 1">[1]</a></sup><sup class="l0g-debt6-ref"><a href="#source-02" aria-label="Source 2">[2]</a></sup>
+
+Dans les épisodes précédents, nous avons suivi [les bilans des banques](/posts/dette-etats-02-bilan-intermediaires/), [les fonds qui achètent à crédit](/posts/dette-etats-03-acheteurs-credit/) et [les appels de marge](/posts/dette-etats-05-appels-marge/) quand les marchés bougent. La vente imposée par un appel de marge quitte maintenant le bilan du vendeur. Elle rencontre une autre contrainte : quelqu’un doit accepter le titre, à un prix et pour une quantité déterminés.
+
+Entre cette décision privée et la charge d’intérêts publique s’intercalent deux délais. Il faut d’abord que les nouvelles transactions déplacent les conditions auxquelles l’État peut emprunter. Il faut ensuite que ces conditions entrent dans ses contrats. Une tension de quelques heures et une hausse des taux qui dure plusieurs années peuvent produire des factures très différentes. <sup class="l0g-debt6-ref"><a href="#source-04" aria-label="Source 4">[4]</a></sup><sup class="l0g-debt6-ref"><a href="#source-15" aria-label="Source 15">[15]</a></sup>
+
+## La place disponible au prochain prix
+
+Le montant total d’une dette donne une idée de la taille du marché. Il renseigne assez peu sur la quantité qu’un vendeur pressé pourra céder dans les prochaines secondes. Le volume échangé pendant une journée répond encore à une autre question : combien de transactions ont effectivement eu lieu, avec éventuellement plusieurs passages du même titre entre intermédiaires. La [*profondeur de marché*](/glossaire/profondeur-de-marche/) décrit les quantités proposées à l’achat ou à la vente aux différents prix. <sup class="l0g-debt6-ref"><a href="#source-03" aria-label="Source 3">[3]</a></sup>
+
+Pour voir la différence, imaginons deux carnets d’ordres simplifiés, exprimés en millions d’euros de nominal. Un investisseur doit vendre 40 millions. Dans le premier carnet, il trouve 20 millions d’acheteurs au prix de 100, puis 20 millions à 99,80. Il encaisse 39,96 millions. Dans le second, le meilleur prix reste affiché à 100, mais pour seulement 5 millions. Les quantités suivantes se trouvent à 99,80, 99,50 puis 99,20. La même vente rapporte alors 39,78 millions.
+
+La différence atteint 180 000 euros. Le vendeur n’a changé ni de portefeuille ni de besoin. C’est la quantité disponible en face qui a changé. Le prix moyen d’exécution descend de 99,90 à 99,45 pour 100 de nominal. Le dernier morceau part encore plus bas, à 99,20. Cette simulation représente un instant figé sur un lieu d’échange ; un marché réel est fragmenté, les cotations peuvent être retirées et d’autres acheteurs peuvent arriver. Elle sert à isoler la mécanique, sans lui attribuer une ampleur observée.
+
+<figure class="l0g-debt6-figure" id="figure-01-profondeur">
+<div class="l0g-debt6-desktop">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 974" role="img" aria-labelledby="d6-01-profondeur-fr-d-title d6-01-profondeur-fr-d-desc" lang="fr">
+<title id="d6-01-profondeur-fr-d-title">Le même vendeur, moins de place en face</title><desc id="d6-01-profondeur-fr-d-desc">La vente produit 39,96 M€ dans le carnet fourni, contre 39,78 M€ dans le carnet aminci, soit 180 000 euros de moins. Le prix moyen passe de 99,90 à 99,45.</desc><rect width="1200" height="974" fill="var(--color-ink)"/>
+<defs><pattern id="d6-01-profondeur-fr-d-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="1056" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="1144" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">01 / 06</text>
+<text x="56" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">Le même vendeur, moins de place en face</text>
+<text x="56" y="141.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Vente de 40 M€ de nominal · deux carnets alternatifs · simulation l0g</text>
+<rect x="56" y="199.0" width="528" height="454" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="80" y="238.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">CARNET FOURNI</text>
+<text x="80" y="282.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Prix offert</text>
+<text x="220" y="282.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Volume disponible (M€)</text>
+<text x="80" y="342.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">100,00</text>
+<rect x="220" y="318.0" width="306.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="220" y="318.0" width="306.0" height="32" rx="3" fill="var(--color-signal)"/>
+<text x="560" y="342.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">20</text>
+<text x="80" y="401.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,80</text>
+<rect x="220" y="377.0" width="306.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="220" y="377.0" width="306.0" height="32" rx="3" fill="var(--color-signal)"/>
+<text x="560" y="401.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">20</text>
+<text x="80" y="460.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,50</text>
+<rect x="220" y="436.0" width="306.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="560" y="460.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">20</text>
+<text x="80" y="519.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,20</text>
+<rect x="220" y="495.0" width="306.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="560" y="519.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">20</text>
+<line x1="80" y1="547.0" x2="560" y2="547.0" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="80" y="582.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Prix moyen</text>
+<text x="560" y="582.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" text-anchor="end">99,90</text>
+<text x="80" y="624.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Encaissement</text>
+<text x="560" y="624.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="end">39,96 M€</text>
+<rect x="616" y="199.0" width="528" height="454" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="640" y="238.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">CARNET AMINCI</text>
+<text x="640" y="282.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Prix offert</text>
+<text x="780" y="282.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Volume disponible (M€)</text>
+<text x="640" y="342.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">100,00</text>
+<rect x="780" y="318.0" width="76.5" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="780" y="318.0" width="76.5" height="32" rx="3" fill="var(--color-amber)"/>
+<text x="1120" y="342.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">5</text>
+<text x="640" y="401.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,80</text>
+<rect x="780" y="377.0" width="76.5" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="780" y="377.0" width="76.5" height="32" rx="3" fill="var(--color-amber)"/>
+<text x="1120" y="401.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">5</text>
+<text x="640" y="460.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,50</text>
+<rect x="780" y="436.0" width="153.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="780" y="436.0" width="153.0" height="32" rx="3" fill="var(--color-amber)"/>
+<text x="1120" y="460.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">10</text>
+<text x="640" y="519.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,20</text>
+<rect x="780" y="495.0" width="306.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="780" y="495.0" width="306.0" height="32" rx="3" fill="var(--color-amber)"/>
+<text x="1120" y="519.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">20</text>
+<line x1="640" y1="547.0" x2="1120" y2="547.0" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="640" y="582.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Prix moyen</text>
+<text x="1120" y="582.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" text-anchor="end">99,45</text>
+<text x="640" y="624.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Encaissement</text>
+<text x="1120" y="624.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="end">39,78 M€</text>
+<text x="56" y="740.0" fill="var(--color-accent)" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="700" text-anchor="start">−180 000 €</text>
+<text x="56" y="788.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">Écart d’encaissement pour le même nominal vendu.</text>
+<text x="56" y="832.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Le meilleur prix est identique au départ. La quantité accessible à ce prix change la sortie.</text>
+<line x1="56" y1="882.0" x2="1144" y2="882.0" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="916.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Prix pour 100 de nominal. Barres : quantités disponibles ; couleur vive : quantités exécutées. Un instant sur un lieu d’échange fictif.</text>
+<text x="56" y="938.5" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Sources méthodologiques : [03], [04].</text>
+</svg>
+</div>
+<div class="l0g-debt6-mobile">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1640" role="img" aria-labelledby="d6-01-profondeur-fr-m-title d6-01-profondeur-fr-m-desc" lang="fr">
+<title id="d6-01-profondeur-fr-m-title">Le même vendeur, moins de place en face</title><desc id="d6-01-profondeur-fr-m-desc">La vente produit 39,96 M€ dans le carnet fourni, contre 39,78 M€ dans le carnet aminci, soit 180 000 euros de moins. Le prix moyen passe de 99,90 à 99,45.</desc><rect width="640" height="1640" fill="var(--color-ink)"/>
+<defs><pattern id="d6-01-profondeur-fr-m-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="496" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="604" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="end">01 / 06</text>
+<text x="36" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">Le même vendeur, moins de</text>
+<text x="36" y="147.8" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">place en face</text>
+<text x="36" y="185.8" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Vente de 40 M€ de nominal · deux carnets</text>
+<text x="36" y="217.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">alternatifs · simulation l0g</text>
+<rect x="36" y="275.05" width="568" height="454" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="60" y="314.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">CARNET FOURNI</text>
+<text x="60" y="358.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Prix offert</text>
+<text x="200" y="358.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Volume disponible (M€)</text>
+<text x="60" y="418.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">100,00</text>
+<rect x="200" y="394.05" width="346.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="200" y="394.05" width="346.0" height="32" rx="3" fill="var(--color-signal)"/>
+<text x="580" y="418.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">20</text>
+<text x="60" y="477.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,80</text>
+<rect x="200" y="453.05" width="346.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="200" y="453.05" width="346.0" height="32" rx="3" fill="var(--color-signal)"/>
+<text x="580" y="477.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">20</text>
+<text x="60" y="536.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,50</text>
+<rect x="200" y="512.05" width="346.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="580" y="536.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">20</text>
+<text x="60" y="595.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,20</text>
+<rect x="200" y="571.05" width="346.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="580" y="595.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">20</text>
+<line x1="60" y1="623.05" x2="580" y2="623.05" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="60" y="658.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Prix moyen</text>
+<text x="580" y="658.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" text-anchor="end">99,90</text>
+<text x="60" y="700.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Encaissement</text>
+<text x="580" y="700.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="end">39,96 M€</text>
+<rect x="36" y="765.05" width="568" height="454" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="60" y="804.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">CARNET AMINCI</text>
+<text x="60" y="848.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Prix offert</text>
+<text x="200" y="848.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Volume disponible (M€)</text>
+<text x="60" y="908.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">100,00</text>
+<rect x="200" y="884.05" width="86.5" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="200" y="884.05" width="86.5" height="32" rx="3" fill="var(--color-amber)"/>
+<text x="580" y="908.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">5</text>
+<text x="60" y="967.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,80</text>
+<rect x="200" y="943.05" width="86.5" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="200" y="943.05" width="86.5" height="32" rx="3" fill="var(--color-amber)"/>
+<text x="580" y="967.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">5</text>
+<text x="60" y="1026.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,50</text>
+<rect x="200" y="1002.05" width="173.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="200" y="1002.05" width="173.0" height="32" rx="3" fill="var(--color-amber)"/>
+<text x="580" y="1026.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">10</text>
+<text x="60" y="1085.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">99,20</text>
+<rect x="200" y="1061.05" width="346.0" height="32" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="200" y="1061.05" width="346.0" height="32" rx="3" fill="var(--color-amber)"/>
+<text x="580" y="1085.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="end">20</text>
+<line x1="60" y1="1113.05" x2="580" y2="1113.05" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="60" y="1148.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Prix moyen</text>
+<text x="580" y="1148.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" text-anchor="end">99,45</text>
+<text x="60" y="1190.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Encaissement</text>
+<text x="580" y="1190.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="end">39,78 M€</text>
+<text x="36" y="1310.05" fill="var(--color-accent)" font-family="Arial, Helvetica, sans-serif" font-size="53" font-weight="700" text-anchor="start">−180 000 €</text>
+<text x="36" y="1358.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">Écart d’encaissement pour le même nominal</text>
+<text x="36" y="1390.81" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">vendu.</text>
+<text x="36" y="1434.81" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Le meilleur prix est identique au départ. La quantité</text>
+<text x="36" y="1465.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">accessible à ce prix change la sortie.</text>
+<line x1="36" y1="1515.05" x2="604" y2="1515.05" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1549.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Prix pour 100 de nominal. Barres : quantités disponibles ;</text>
+<text x="36" y="1576.55" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">couleur vive : quantités exécutées. Un instant sur un lieu</text>
+<text x="36" y="1604.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">d’échange fictif. Sources méthodologiques : [03], [04].</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt6-kind">Simulation pédagogique l0g</span><strong>La capacité disponible change le prix de sortie</strong>Deux carnets alternatifs pour une vente de 40 M€ de nominal. Les prix sont exprimés pour 100 ; les barres montrent les quantités disponibles et exécutées. Simulation figée, sans renouvellement des cotations. <sup class="l0g-debt6-ref"><a href="#source-03" aria-label="Source 3">[3]</a></sup><sup class="l0g-debt6-ref"><a href="#source-04" aria-label="Source 4">[4]</a></sup></figcaption>
+</figure>
+
+La transaction suivante partira d’un environnement modifié. Les intermédiaires viennent d’ajouter du risque à leurs stocks ; ceux qui observent le marché découvrent qu’une quantité importante cherche une sortie. S’ils anticipent d’autres ventes, ils peuvent baisser leurs prix d’achat ou réduire les quantités proposées. Le dernier prix peut aussi entrer dans les valorisations, dégrader les garanties d’autres investisseurs et provoquer de nouvelles décisions de vente. La transmission dépend alors des contrats et des méthodes de valorisation, pas seulement de la taille de l’ordre initial. <sup class="l0g-debt6-ref"><a href="#source-07" aria-label="Source 7">[7]</a></sup><sup class="l0g-debt6-ref"><a href="#source-16" aria-label="Source 16">[16]</a></sup>
+
+La liquidité a donc une dimension temporelle. Un portefeuille peut intéresser beaucoup d’investisseurs sur un mois, et très peu dans les vingt prochaines minutes. Le dealer qui accepte de faire le pont doit financer l’attente, supporter le risque de prix et disposer des instruments nécessaires pour le couvrir. Lorsque ces trois conditions se resserrent ensemble, une baisse de prix peut devenir le moyen d’attirer le prochain bilan disponible. <sup class="l0g-debt6-ref"><a href="#source-07" aria-label="Source 7">[7]</a></sup>
+
+## Le coupon continue sa route
+
+La chute d’une obligation déjà émise produit d’abord une perte de marché chez son détenteur. Pour comprendre son lien avec le rendement, prenons un emprunt fictif de dix ans : 100 euros de principal, 4 euros de coupon chaque année, remboursement des 100 euros à la dernière échéance. Au moment où l’on demande 4 % de rendement annuel pour ces flux, son prix est de 100. Si le rendement exigé monte à 5 %, leur valeur actualisée descend à 92,28 euros. <sup class="l0g-debt6-ref"><a href="#source-04" aria-label="Source 4">[4]</a></sup>
+
+Les dix coupons restent à 4 euros. Le remboursement reste à 100. L’acheteur qui paie moins obtient un meilleur rendement sur les mêmes versements promis. Dans notre calcul, la variation exacte du prix est de −7,72 %. Nous avons choisi une date située juste après un coupon et une convention annuelle ; les résultats d’une obligation à coupons semestriels se calculent avec d’autres conventions.
+
+Le vendeur supporte la baisse s’il cède le titre. Un investisseur qui le conserve doit pouvoir tenir jusqu’aux échéances, sous réserve que l’émetteur honore ses engagements. Quant à l’État, cette revente entre investisseurs ne modifie pas le coupon du contrat en circulation. Elle lui fournit cependant une nouvelle référence de marché lorsqu’il revient solliciter des fonds. <sup class="l0g-debt6-ref"><a href="#source-04" aria-label="Source 4">[4]</a></sup><sup class="l0g-debt6-ref"><a href="#source-15" aria-label="Source 15">[15]</a></sup>
+
+<figure class="l0g-debt6-figure" id="figure-02-prix-et-coupon">
+<div class="l0g-debt6-desktop">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1185" role="img" aria-labelledby="d6-02-prix-et-coupon-fr-d-title d6-02-prix-et-coupon-fr-d-desc" lang="fr">
+<title id="d6-02-prix-et-coupon-fr-d-title">Un prix mobile, des versements fixés</title><desc id="d6-02-prix-et-coupon-fr-d-desc">À rendement exigé de 4 %, prix 100. À 5 %, prix 92,2783. Le prix baisse de 7,72 %, mais les dix coupons restent de 4 euros et le principal remboursé reste de 100 euros.</desc><rect width="1200" height="1185" fill="var(--color-ink)"/>
+<defs><pattern id="d6-02-prix-et-coupon-fr-d-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="1056" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="1144" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">02 / 06</text>
+<text x="56" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">Un prix mobile, des versements fixés</text>
+<text x="56" y="141.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Obligation fictive de dix ans · coupon annuel 4 € · principal 100 €</text>
+<text x="56" y="199.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">LES FLUX PROMIS</text>
+<line x1="86" y1="262.0" x2="1112.0" y2="262.0" stroke="var(--color-line-strong)" stroke-width="3"/>
+<circle cx="86.0" cy="262.0" r="23" fill="var(--color-signal)"/>
+<text x="86.0" y="269.0" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="86.0" y="312.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">1</text>
+<circle cx="200.0" cy="262.0" r="23" fill="var(--color-signal)"/>
+<text x="200.0" y="269.0" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="200.0" y="312.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">2</text>
+<circle cx="314.0" cy="262.0" r="23" fill="var(--color-signal)"/>
+<text x="314.0" y="269.0" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="314.0" y="312.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">3</text>
+<circle cx="428.0" cy="262.0" r="23" fill="var(--color-signal)"/>
+<text x="428.0" y="269.0" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="428.0" y="312.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">4</text>
+<circle cx="542.0" cy="262.0" r="23" fill="var(--color-signal)"/>
+<text x="542.0" y="269.0" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="542.0" y="312.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">5</text>
+<circle cx="656.0" cy="262.0" r="23" fill="var(--color-signal)"/>
+<text x="656.0" y="269.0" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="656.0" y="312.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">6</text>
+<circle cx="770.0" cy="262.0" r="23" fill="var(--color-signal)"/>
+<text x="770.0" y="269.0" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="770.0" y="312.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">7</text>
+<circle cx="884.0" cy="262.0" r="23" fill="var(--color-signal)"/>
+<text x="884.0" y="269.0" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="884.0" y="312.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">8</text>
+<circle cx="998.0" cy="262.0" r="23" fill="var(--color-signal)"/>
+<text x="998.0" y="269.0" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="998.0" y="312.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">9</text>
+<circle cx="1112.0" cy="262.0" r="23" fill="var(--color-signal)"/>
+<text x="1112.0" y="269.0" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="1112.0" y="312.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">10</text>
+<text x="56" y="351.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Années 1 à 10 · + 100 € de principal en année 10</text>
+<line x1="120" y1="743.4444444444445" x2="1114" y2="743.4444444444445" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="105" y="750.4444444444445" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">80</text>
+<line x1="120" y1="672.3333333333334" x2="1114" y2="672.3333333333334" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="105" y="679.3333333333334" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">90</text>
+<line x1="120" y1="601.2222222222222" x2="1114" y2="601.2222222222222" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="105" y="608.2222222222222" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">100</text>
+<line x1="120" y1="530.1111111111111" x2="1114" y2="530.1111111111111" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="105" y="537.1111111111111" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">110</text>
+<line x1="120" y1="459.0" x2="1114" y2="459.0" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="105" y="466.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">120</text>
+<text x="120.0" y="814.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">2 %</text>
+<text x="318.79999999999995" y="814.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">3 %</text>
+<text x="517.5999999999999" y="814.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">4 %</text>
+<text x="716.4" y="814.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">5 %</text>
+<text x="915.1999999999998" y="814.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">6 %</text>
+<text x="1114.0" y="814.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">7 %</text>
+<text x="120" y="436.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Prix / 100</text>
+<text x="1114" y="859.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="end">Rendement exigé</text>
+<path d="M 120.00 473.47 L 129.94 476.99 L 139.88 480.49 L 149.82 483.97 L 159.76 487.44 L 169.70 490.89 L 179.64 494.32 L 189.58 497.73 L 199.52 501.13 L 209.46 504.51 L 219.40 507.87 L 229.34 511.21 L 239.28 514.54 L 249.22 517.85 L 259.16 521.14 L 269.10 524.42 L 279.04 527.68 L 288.98 530.93 L 298.92 534.16 L 308.86 537.37 L 318.80 540.56 L 328.74 543.74 L 338.68 546.91 L 348.62 550.05 L 358.56 553.19 L 368.50 556.30 L 378.44 559.40 L 388.38 562.49 L 398.32 565.56 L 408.26 568.61 L 418.20 571.65 L 428.14 574.68 L 438.08 577.68 L 448.02 580.68 L 457.96 583.66 L 467.90 586.62 L 477.84 589.57 L 487.78 592.51 L 497.72 595.43 L 507.66 598.33 L 517.60 601.22 L 527.54 604.10 L 537.48 606.96 L 547.42 609.81 L 557.36 612.64 L 567.30 615.46 L 577.24 618.27 L 587.18 621.06 L 597.12 623.84 L 607.06 626.61 L 617.00 629.36 L 626.94 632.09 L 636.88 634.82 L 646.82 637.53 L 656.76 640.23 L 666.70 642.91 L 676.64 645.58 L 686.58 648.24 L 696.52 650.88 L 706.46 653.51 L 716.40 656.13 L 726.34 658.74 L 736.28 661.33 L 746.22 663.91 L 756.16 666.48 L 766.10 669.03 L 776.04 671.58 L 785.98 674.11 L 795.92 676.62 L 805.86 679.13 L 815.80 681.62 L 825.74 684.10 L 835.68 686.57 L 845.62 689.03 L 855.56 691.48 L 865.50 693.91 L 875.44 696.33 L 885.38 698.74 L 895.32 701.14 L 905.26 703.52 L 915.20 705.90 L 925.14 708.26 L 935.08 710.61 L 945.02 712.95 L 954.96 715.28 L 964.90 717.60 L 974.84 719.91 L 984.78 722.20 L 994.72 724.49 L 1004.66 726.76 L 1014.60 729.02 L 1024.54 731.28 L 1034.48 733.52 L 1044.42 735.75 L 1054.36 737.97 L 1064.30 740.17 L 1074.24 742.37 L 1084.18 744.56 L 1094.12 746.74 L 1104.06 748.90 L 1114.00 751.06" fill="none" stroke="var(--color-topic-blue)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="517.5999999999999" y1="601.2222222222222" x2="517.5999999999999" y2="779.0" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="5 6"/>
+<circle cx="517.5999999999999" cy="601.2222222222222" r="8" fill="var(--color-signal)"/>
+<text x="530.5999999999999" y="577.2222222222222" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">100</text>
+<line x1="716.4" y1="656.1323372742032" x2="716.4" y2="779.0" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="5 6"/>
+<circle cx="716.4" cy="656.1323372742032" r="8" fill="var(--color-amber)"/>
+<text x="729.4" y="700.1323372742032" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">92,28</text>
+<rect x="56" y="913.0" width="1088" height="136" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="81" y="967.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" text-anchor="start">−7,72 %</text>
+<text x="332" y="961.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Baisse du prix quand le rendement passe de 4 % à 5 %. Les versements</text>
+<text x="332" y="991.24" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">du contrat restent inchangés.</text>
+<line x1="56" y1="1093.0" x2="1144" y2="1093.0" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="1127.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Simulation l0g : actualisation annuelle à une date de coupon. Prix calculé à partir des dix versements et du principal. Hors défaut et frais.</text>
+<text x="56" y="1149.5" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Source de méthode : [04].</text>
+</svg>
+</div>
+<div class="l0g-debt6-mobile">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1366" role="img" aria-labelledby="d6-02-prix-et-coupon-fr-m-title d6-02-prix-et-coupon-fr-m-desc" lang="fr">
+<title id="d6-02-prix-et-coupon-fr-m-title">Un prix mobile, des versements fixés</title><desc id="d6-02-prix-et-coupon-fr-m-desc">À rendement exigé de 4 %, prix 100. À 5 %, prix 92,2783. Le prix baisse de 7,72 %, mais les dix coupons restent de 4 euros et le principal remboursé reste de 100 euros.</desc><rect width="640" height="1366" fill="var(--color-ink)"/>
+<defs><pattern id="d6-02-prix-et-coupon-fr-m-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="496" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="604" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="end">02 / 06</text>
+<text x="36" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">Un prix mobile, des</text>
+<text x="36" y="147.8" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">versements fixés</text>
+<text x="36" y="185.8" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Obligation fictive de dix ans · coupon annuel 4 € ·</text>
+<text x="36" y="217.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">principal 100 €</text>
+<text x="36" y="275.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">LES FLUX PROMIS</text>
+<line x1="66" y1="338.05" x2="572.0" y2="338.05" stroke="var(--color-line-strong)" stroke-width="3"/>
+<circle cx="66.0" cy="338.05" r="17" fill="var(--color-signal)"/>
+<text x="66.0" y="345.05" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="66.0" y="388.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">1</text>
+<circle cx="122.22222222222223" cy="338.05" r="17" fill="var(--color-signal)"/>
+<text x="122.22222222222223" y="345.05" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="122.22222222222223" y="388.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">2</text>
+<circle cx="178.44444444444446" cy="338.05" r="17" fill="var(--color-signal)"/>
+<text x="178.44444444444446" y="345.05" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="178.44444444444446" y="388.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">3</text>
+<circle cx="234.66666666666666" cy="338.05" r="17" fill="var(--color-signal)"/>
+<text x="234.66666666666666" y="345.05" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="234.66666666666666" y="388.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">4</text>
+<circle cx="290.8888888888889" cy="338.05" r="17" fill="var(--color-signal)"/>
+<text x="290.8888888888889" y="345.05" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="290.8888888888889" y="388.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">5</text>
+<circle cx="347.1111111111111" cy="338.05" r="17" fill="var(--color-signal)"/>
+<text x="347.1111111111111" y="345.05" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="347.1111111111111" y="388.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">6</text>
+<circle cx="403.3333333333333" cy="338.05" r="17" fill="var(--color-signal)"/>
+<text x="403.3333333333333" y="345.05" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="403.3333333333333" y="388.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">7</text>
+<circle cx="459.55555555555554" cy="338.05" r="17" fill="var(--color-signal)"/>
+<text x="459.55555555555554" y="345.05" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="459.55555555555554" y="388.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">8</text>
+<circle cx="515.7777777777778" cy="338.05" r="17" fill="var(--color-signal)"/>
+<text x="515.7777777777778" y="345.05" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="515.7777777777778" y="388.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">9</text>
+<circle cx="572.0" cy="338.05" r="17" fill="var(--color-signal)"/>
+<text x="572.0" y="345.05" fill="var(--color-ink)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">4</text>
+<text x="572.0" y="388.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">10</text>
+<text x="36" y="427.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Années 1 à 10 · + 100 € de principal en année 10</text>
+<line x1="100" y1="828.3833333333333" x2="574" y2="828.3833333333333" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="85" y="835.3833333333333" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">80</text>
+<line x1="100" y1="755.05" x2="574" y2="755.05" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="85" y="762.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">90</text>
+<line x1="100" y1="681.7166666666666" x2="574" y2="681.7166666666666" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="85" y="688.7166666666666" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">100</text>
+<line x1="100" y1="608.3833333333332" x2="574" y2="608.3833333333332" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="85" y="615.3833333333332" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">110</text>
+<line x1="100" y1="535.05" x2="574" y2="535.05" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="85" y="542.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">120</text>
+<text x="100.0" y="900.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">2 %</text>
+<text x="194.79999999999998" y="900.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">3 %</text>
+<text x="289.6" y="900.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">4 %</text>
+<text x="384.4" y="900.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">5 %</text>
+<text x="479.19999999999993" y="900.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">6 %</text>
+<text x="574.0" y="900.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">7 %</text>
+<text x="100" y="512.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Prix / 100</text>
+<text x="574" y="945.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="end">Rendement exigé</text>
+<path d="M 100.00 549.97 L 104.74 553.60 L 109.48 557.21 L 114.22 560.80 L 118.96 564.38 L 123.70 567.93 L 128.44 571.47 L 133.18 574.99 L 137.92 578.49 L 142.66 581.98 L 147.40 585.44 L 152.14 588.89 L 156.88 592.32 L 161.62 595.74 L 166.36 599.14 L 171.10 602.52 L 175.84 605.88 L 180.58 609.22 L 185.32 612.55 L 190.06 615.87 L 194.80 619.16 L 199.54 622.44 L 204.28 625.70 L 209.02 628.95 L 213.76 632.18 L 218.50 635.39 L 223.24 638.59 L 227.98 641.77 L 232.72 644.94 L 237.46 648.09 L 242.20 651.22 L 246.94 654.34 L 251.68 657.44 L 256.42 660.53 L 261.16 663.60 L 265.90 666.66 L 270.64 669.70 L 275.38 672.73 L 280.12 675.74 L 284.86 678.74 L 289.60 681.72 L 294.34 684.68 L 299.08 687.64 L 303.82 690.57 L 308.56 693.50 L 313.30 696.40 L 318.04 699.30 L 322.78 702.18 L 327.52 705.04 L 332.26 707.89 L 337.00 710.73 L 341.74 713.55 L 346.48 716.36 L 351.22 719.16 L 355.96 721.94 L 360.70 724.71 L 365.44 727.46 L 370.18 730.20 L 374.92 732.93 L 379.66 735.64 L 384.40 738.34 L 389.14 741.03 L 393.88 743.70 L 398.62 746.36 L 403.36 749.01 L 408.10 751.65 L 412.84 754.27 L 417.58 756.88 L 422.32 759.48 L 427.06 762.06 L 431.80 764.63 L 436.54 767.19 L 441.28 769.74 L 446.02 772.27 L 450.76 774.79 L 455.50 777.30 L 460.24 779.80 L 464.98 782.28 L 469.72 784.75 L 474.46 787.22 L 479.20 789.66 L 483.94 792.10 L 488.68 794.53 L 493.42 796.94 L 498.16 799.34 L 502.90 801.73 L 507.64 804.11 L 512.38 806.48 L 517.12 808.83 L 521.86 811.18 L 526.60 813.51 L 531.34 815.83 L 536.08 818.14 L 540.82 820.44 L 545.56 822.73 L 550.30 825.01 L 555.04 827.28 L 559.78 829.53 L 564.52 831.78 L 569.26 834.01 L 574.00 836.24" fill="none" stroke="var(--color-topic-blue)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="289.6" y1="681.7166666666666" x2="289.6" y2="865.05" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="5 6"/>
+<circle cx="289.6" cy="681.7166666666666" r="8" fill="var(--color-signal)"/>
+<text x="302.6" y="657.7166666666666" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">100</text>
+<line x1="384.4" y1="738.3427228140221" x2="384.4" y2="865.05" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="5 6"/>
+<circle cx="384.4" cy="738.3427228140221" r="8" fill="var(--color-amber)"/>
+<text x="397.4" y="782.3427228140221" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">92,28</text>
+<rect x="36" y="999.05" width="568" height="198" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="61" y="1053.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" text-anchor="start">−7,72 %</text>
+<text x="61" y="1099.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Baisse du prix quand le rendement passe de 4</text>
+<text x="61" y="1129.29" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">% à 5 %. Les versements du contrat restent</text>
+<text x="61" y="1159.53" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">inchangés.</text>
+<line x1="36" y1="1241.05" x2="604" y2="1241.05" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1275.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Simulation l0g : actualisation annuelle à une date de</text>
+<text x="36" y="1302.55" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">coupon. Prix calculé à partir des dix versements et du</text>
+<text x="36" y="1330.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">principal. Hors défaut et frais. Source de méthode : [04].</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt6-kind">Simulation pédagogique l0g</span><strong>Le contrat conserve ses versements</strong>Obligation fictive à coupons annuels. La courbe est calculée, sans points de marché observés. Au rendement de 5 %, les dix coupons de 4 € et le principal de 100 € valent ensemble 92,28 €. <sup class="l0g-debt6-ref"><a href="#source-04" aria-label="Source 4">[4]</a></sup></figcaption>
+</figure>
+
+L’acheteur d’un nouvel emprunt compare ce qu’on lui propose aux titres qu’il peut déjà acheter. Si des obligations proches offrent 5 %, placer une nouvelle dette à 4 % avec un prix de 100 exige une raison particulière : maturité différente, liquidité supérieure, caractéristiques spécifiques ou autre avantage. Pour un instrument comparable, l’émetteur devra généralement ajuster son coupon ou son prix.
+
+Cette comparaison relie le marché secondaire, où s’échangent les titres existants, au marché primaire, où l’État obtient de l’argent neuf. Elle ne repose sur aucune obligation pour tous les détenteurs de vendre. Des transactions portant sur une fraction du stock suffisent à révéler un prix marginal auquel les nouvelles offres doivent se confronter. <sup class="l0g-debt6-ref"><a href="#source-04" aria-label="Source 4">[4]</a></sup><sup class="l0g-debt6-ref"><a href="#source-15" aria-label="Source 15">[15]</a></sup>
+
+## Retrouver la trace des ventes britanniques
+
+Reste à établir qu’une vente contrainte a vraiment pesé sur ce prix. Un taux qui monte peut aussi refléter une inflation attendue plus forte, une trajectoire monétaire différente ou une réévaluation du risque budgétaire. La [prime de terme](/glossaire/prime-de-terme/), rémunération du risque pris en détenant une obligation longue plutôt qu’en renouvelant des placements courts, fait elle-même l’objet d’estimations. Le rendement affiché ne livre pas spontanément le poids de chaque cause. <sup class="l0g-debt6-ref"><a href="#source-09" aria-label="Source 9">[9]</a></sup>
+
+L’automne britannique de 2022 fournit un terrain particulièrement instructif. Dans un travail publié par la Banque d’Angleterre en juillet 2024, Gabor Pinter, Emil Siriwardane et Danny Walker comparent les transactions sur des gilts proches en maturité, au même moment, selon leur exposition préalable aux [fonds LDI](/glossaire/ldi/). Ces fonds cherchent à aligner leurs placements sur les engagements des régimes de retraite. Les auteurs rapportent une décote relative de 6,87 % le 27 septembre et de 7,77 % le 11 octobre sur les titres fortement exposés. Ce sont des estimations de pression sur les prix, conditionnelles à leur méthode d’identification. <sup class="l0g-debt6-ref"><a href="#source-05" aria-label="Source 5">[5]</a></sup>
+
+<figure class="l0g-debt6-figure" id="figure-03-empreinte-ldi">
+<div class="l0g-debt6-desktop">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1019" role="img" aria-labelledby="d6-03-empreinte-ldi-fr-d-title d6-03-empreinte-ldi-fr-d-desc" lang="fr">
+<title id="d6-03-empreinte-ldi-fr-d-title">L’empreinte des ventes dans les prix</title><desc id="d6-03-empreinte-ldi-fr-d-desc">L’étude compare des gilts de maturités proches négociés au même moment selon leur exposition aux LDI avant la crise. Décote relative rapportée de 6,87 % le 27 septembre 2022 et 7,77 % le 11 octobre 2022. Ces chiffres sont des estimations conditionnelles de prix, pas des points de rendement ni une charge fiscale.</desc><rect width="1200" height="1019" fill="var(--color-ink)"/>
+<defs><pattern id="d6-03-empreinte-ldi-fr-d-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="1056" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="1144" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">03 / 06</text>
+<text x="56" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">L’empreinte des ventes dans les prix</text>
+<text x="56" y="141.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Gilts britanniques · deux estimations quotidiennes de l’étude Pinter–Siriwardane–Walker</text>
+<rect x="56" y="199.0" width="342" height="116" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="74" y="237.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">MÊME MOMENT</text>
+<text x="74" y="274.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Même heure de transaction</text>
+<rect x="429" y="199.0" width="342" height="116" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="447" y="237.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">MATURITÉS PROCHES</text>
+<text x="447" y="274.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Voisins sur la courbe</text>
+<rect x="802" y="199.0" width="342" height="116" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="820" y="237.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">EXPOSITION ANTÉRIEURE</text>
+<text x="820" y="274.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Détention LDI avant crise</text>
+<text x="56" y="373.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">Décote relative des titres fortement exposés aux LDI (%)</text>
+<text x="56" y="455.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">27 sept. 2022</text>
+<rect x="56" y="480.0" width="963" height="36" rx="3" fill="var(--color-surface)"/>
+<rect x="56" y="480.0" width="661.581" height="36" rx="3" fill="var(--color-accent)"/>
+<text x="1144" y="510.0" fill="var(--color-accent)" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="end">6,87 %</text>
+<text x="56" y="597.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">11 oct. 2022</text>
+<rect x="56" y="622.0" width="963" height="36" rx="3" fill="var(--color-surface)"/>
+<rect x="56" y="622.0" width="748.251" height="36" rx="3" fill="var(--color-accent)"/>
+<text x="1144" y="652.0" fill="var(--color-accent)" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="end">7,77 %</text>
+<text x="56.0" y="714.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">0</text>
+<text x="248.6" y="714.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">2</text>
+<text x="441.2" y="714.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">4</text>
+<text x="633.8" y="714.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">6</text>
+<text x="826.4" y="714.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">8</text>
+<text x="1019.0" y="714.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">10</text>
+<text x="56" y="766.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">La comparaison isole une pression relative, sous hypothèse de trajectoires comparables sans</text>
+<text x="56" y="797.5" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">ventes forcées.</text>
+<text x="56" y="846.5" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Pour chiffrer le coût public : retrouver les émissions, leurs dates et le prix qu’elles auraient obtenu</text>
+<text x="56" y="876.74" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">sans la perturbation.</text>
+<line x1="56" y1="926.74" x2="1144" y2="926.74" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="960.74" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Source : [05], juillet 2024, §3.2, p. 20 (pagination imprimée). Décotes rapportées par les auteurs à partir d’une régression en log-prix.</text>
+<text x="56" y="983.24" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Aucun intervalle ni point intermédiaire reconstruit.</text>
+</svg>
+</div>
+<div class="l0g-debt6-mobile">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1421" role="img" aria-labelledby="d6-03-empreinte-ldi-fr-m-title d6-03-empreinte-ldi-fr-m-desc" lang="fr">
+<title id="d6-03-empreinte-ldi-fr-m-title">L’empreinte des ventes dans les prix</title><desc id="d6-03-empreinte-ldi-fr-m-desc">L’étude compare des gilts de maturités proches négociés au même moment selon leur exposition aux LDI avant la crise. Décote relative rapportée de 6,87 % le 27 septembre 2022 et 7,77 % le 11 octobre 2022. Ces chiffres sont des estimations conditionnelles de prix, pas des points de rendement ni une charge fiscale.</desc><rect width="640" height="1421" fill="var(--color-ink)"/>
+<defs><pattern id="d6-03-empreinte-ldi-fr-m-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="496" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="604" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="end">03 / 06</text>
+<text x="36" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">L’empreinte des ventes dans</text>
+<text x="36" y="147.8" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">les prix</text>
+<text x="36" y="185.8" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Gilts britanniques · deux estimations quotidiennes</text>
+<text x="36" y="217.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">de l’étude Pinter–Siriwardane–Walker</text>
+<rect x="36" y="275.05" width="568" height="92" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="56" y="308.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">MÊME MOMENT</text>
+<text x="56" y="342.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Transactions dans la même heure</text>
+<rect x="36" y="387.05" width="568" height="92" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="56" y="420.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">MATURITÉS PROCHES</text>
+<text x="56" y="454.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Comparer des voisins sur la courbe</text>
+<rect x="36" y="499.05" width="568" height="92" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="56" y="532.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">EXPOSITION ANTÉRIEURE</text>
+<text x="56" y="566.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Détentions LDI avant la crise</text>
+<text x="36" y="653.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">Décote relative des titres fortement exposés aux</text>
+<text x="36" y="683.29" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">LDI (%)</text>
+<text x="36" y="735.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">27 sept. 2022</text>
+<rect x="36" y="760.05" width="443" height="36" rx="3" fill="var(--color-surface)"/>
+<rect x="36" y="760.05" width="304.341" height="36" rx="3" fill="var(--color-accent)"/>
+<text x="604" y="790.05" fill="var(--color-accent)" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="end">6,87 %</text>
+<text x="36" y="877.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">11 oct. 2022</text>
+<rect x="36" y="902.05" width="443" height="36" rx="3" fill="var(--color-surface)"/>
+<rect x="36" y="902.05" width="344.21099999999996" height="36" rx="3" fill="var(--color-accent)"/>
+<text x="604" y="932.05" fill="var(--color-accent)" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="end">7,77 %</text>
+<text x="36.0" y="994.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">0</text>
+<text x="124.6" y="994.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">2</text>
+<text x="213.2" y="994.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">4</text>
+<text x="301.8" y="994.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">6</text>
+<text x="390.4" y="994.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">8</text>
+<text x="479.0" y="994.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">10</text>
+<text x="36" y="1046.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">La comparaison isole une pression relative, sous</text>
+<text x="36" y="1077.55" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">hypothèse de trajectoires comparables sans</text>
+<text x="36" y="1109.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">ventes forcées.</text>
+<text x="36" y="1158.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Pour chiffrer le coût public : retrouver les émissions,</text>
+<text x="36" y="1188.29" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">leurs dates et le prix qu’elles auraient obtenu sans la</text>
+<text x="36" y="1218.53" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">perturbation.</text>
+<line x1="36" y1="1268.53" x2="604" y2="1268.53" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1302.53" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Source : [05], juillet 2024, §3.2, p. 20 (pagination</text>
+<text x="36" y="1330.03" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">imprimée). Décotes rapportées par les auteurs à partir</text>
+<text x="36" y="1357.53" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">d’une régression en log-prix. Aucun intervalle ni point</text>
+<text x="36" y="1385.03" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">intermédiaire reconstruit.</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt6-kind">Estimation de recherche historique</span><strong>Mesurer un écart relatif entre titres comparables</strong>Deux décotes quotidiennes rapportées par les auteurs pour 2022, à partir de leur régression en log-prix. Les dates ne constituent pas une série interpolée. La causalité repose sur des hypothèses discutées dans l’étude ; les pourcentages ne sont pas des points de rendement. <sup class="l0g-debt6-ref"><a href="#source-05" aria-label="Source 5">[5]</a></sup></figcaption>
+</figure>
+
+L’intérêt de la comparaison tient au choix du voisin. Comparer une obligation très longue à une obligation courte mélangerait la pression des ventes et leur sensibilité différente aux taux. Comparer des titres plus proches aide à séparer les mécanismes. Il reste à supposer que, sans les ventes, les groupes auraient suivi des trajectoires suffisamment comparables. C’est l’hypothèse que les chercheurs discutent et soumettent à des tests de robustesse. <sup class="l0g-debt6-ref"><a href="#source-05" aria-label="Source 5">[5]</a></sup>
+
+Le chiffre de 6,87 % ne peut donc être traduit en « 6,87 points de taux en plus pour Londres ». Il porte sur un prix relatif dans un échantillon et une spécification. Passer au rendement exige les flux et la maturité de chaque obligation. Passer ensuite à une facture fiscale exige les émissions réalisées pendant la perturbation et un scénario crédible du prix auquel elles auraient été placées sans celle-ci.
+
+Cette dernière distinction est essentielle pour enquêter sur un coût public. Une perte subie par un fonds et une dépense supplémentaire de l’État n’ont ni le même débiteur ni le même calendrier. Les additionner reviendrait à compter comme une facture publique toute moins-value privée sur un titre d’État. La perte de marché peut être le point de départ d’une transmission ; son montant ne donne pas le résultat final.
+
+Une autre étude de Pinter, publiée en mars 2023, observe pendant cette crise une forte augmentation des coûts de transaction et de la dispersion des prix, particulièrement pour certaines petites transactions et certains petits intermédiaires. Elle apporte une autre information : les conditions de sortie diffèrent aussi selon l’accès au marché. Un cours moyen peut masquer des exécutions bien plus défavorables pour les vendeurs les moins bien placés. <sup class="l0g-debt6-ref"><a href="#source-06" aria-label="Source 6">[6]</a></sup>
+
+## L’acheteur attend parfois lui aussi
+
+Un prix devenu attractif peut faire revenir un assureur, un fonds disposant d’espèces ou un investisseur capable de financer une position. Ce retour prend du temps. L’acheteur doit évaluer le risque, obtenir ses autorisations et pouvoir régler. Surtout, il peut estimer qu’une nouvelle vague de ventes lui offrira un meilleur point d’entrée. La possibilité d’une bonne affaire demain peut ainsi ralentir l’achat qui stabiliserait le marché aujourd’hui. Cette tension constitue une explication économique possible, pas une intention attribuée à un acteur nommé.
+
+L’exercice exploratoire publié par la Banque d’Angleterre le 29 novembre 2024 permet d’observer l’autre côté de cette attente. Dans son scénario, les ventes consomment 70 % de l’appétit des banques pour conserver temporairement du risque gilt avant d’exiger une rémunération supplémentaire via des écarts achat-vente plus larges. Ce pourcentage porte sur un appétit commercial et financier dans l’exercice, pas sur 70 % des fonds propres réglementaires. <sup class="l0g-debt6-ref"><a href="#source-07" aria-label="Source 7">[7]</a></sup>
+
+Le scénario central conserve des acheteurs en face des vendeurs. Il montre aussi combien le résultat dépend des possibilités de couverture et du type de titres proposés. Une banque qui peut neutraliser une partie du risque de taux accepte plus facilement une obligation qu’elle envisage de revendre. Si le marché des instruments de couverture se dégrade à son tour, un prix plus bas peut devenir insuffisant pour la convaincre. <sup class="l0g-debt6-ref"><a href="#source-07" aria-label="Source 7">[7]</a></sup>
+
+Le raisonnement invite à regarder la disponibilité des acheteurs plutôt que leur seule existence. Un bilan considérable, déjà occupé par d’autres risques ou tenu par des limites internes, peut offrir peu de capacité additionnelle à l’instant critique. À l’inverse, un investisseur plus petit mais disponible peut décider du prix du prochain échange. La liste des grands détenteurs d’une dette et la liste de ses acheteurs de secours répondent à deux questions distinctes.
+
+## Le test américain du 9 avril
+
+Avril 2025 offre un contrepoint utile. L’analyse publiée par la Fed de New York le 2 avril 2026 décrit une brusque dégradation de la liquidité des Treasuries après les annonces tarifaires, suivie d’une amélioration rapide. Elle examine les obligations les plus récemment émises à deux, cinq et dix ans sur BrokerTec. Sa fenêtre s’arrête au 27 février 2026 : elle ne mesure donc pas les conditions d’octobre. <sup class="l0g-debt6-ref"><a href="#source-03" aria-label="Source 3">[3]</a></sup>
+
+Dans son intervention du 9 mai 2025, Roberto Perli, responsable des opérations du portefeuille de la Fed (SOMA), décrit un financement [repo](/glossaire/repo/) resté relativement stable et des dealers encore capables d’assurer l’intermédiation. Selon les estimations du Desk de la Fed de New York, l’[arbitrage entre obligations et futures](/glossaire/basis-trade/) n’a pas connu le décrochage observé en mars 2020. Le rapport de stabilité financière d’avril 2025 constate également que le marché a continué à fonctionner sans reproduire certaines tensions sévères du passé. <sup class="l0g-debt6-ref"><a href="#source-08" aria-label="Source 8">[8]</a></sup><sup class="l0g-debt6-ref"><a href="#source-18" aria-label="Source 18">[18]</a></sup>
+
+Revenons aux résultats de l’emprunt de février 2035. Les attributions hors supplément du portefeuille de la Fed sont proches de 39 milliards de dollars lors des deux adjudications. Les offres passent de 100,948 milliards en mars à 103,944 milliards en avril. Le Trésor obtient une meilleure couverture, tout en acceptant un rendement supérieur de 12,5 points de base, soit 0,125 point de pourcentage. <sup class="l0g-debt6-ref"><a href="#source-01" aria-label="Source 1">[1]</a></sup><sup class="l0g-debt6-ref"><a href="#source-02" aria-label="Source 2">[2]</a></sup>
+
+<figure class="l0g-debt6-figure" id="figure-04-adjudications">
+<div class="l0g-debt6-desktop">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1060" role="img" aria-labelledby="d6-04-adjudications-fr-d-title d6-04-adjudications-fr-d-desc" lang="fr">
+<title id="d6-04-adjudications-fr-d-title">Des offres plus abondantes, un taux plus haut</title><desc id="d6-04-adjudications-fr-d-desc">Du 12 mars au 9 avril 2025, la couverture passe de 2,59 à 2,67 et le rendement de 4,310 à 4,435 %, soit +12,5 points de base. Coupon identique à 4,625 %. Prix de 102,513731 à 101,490492. La différence normalisée sur 39 Md$ de nominal est de 399,1 M$ de recettes hors couru en moins, sans attribution causale aux ventes forcées.</desc><rect width="1200" height="1060" fill="var(--color-ink)"/>
+<defs><pattern id="d6-04-adjudications-fr-d-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="1056" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="1144" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">04 / 06</text>
+<text x="56" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">Des offres plus abondantes, un taux plus haut</text>
+<text x="56" y="141.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Même emprunt : CUSIP 91282CMM0 · échéance 15 février 2035</text>
+<rect x="56" y="199.0" width="528" height="503" rx="12" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<text x="80" y="239.0" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">12 MARS 2025</text>
+<text x="80" y="296.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" text-anchor="start">2,59×</text>
+<text x="214" y="294.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">offres / attributions</text>
+<text x="80" y="342.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Offres</text>
+<text x="560" y="342.0" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">100,948 Md$</text>
+<rect x="80" y="359.0" width="403.7903248" height="22" rx="3" fill="var(--color-topic-blue)"/>
+<text x="80" y="421.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Attribué</text>
+<text x="560" y="421.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">39,000 Md$</text>
+<rect x="80" y="438.0" width="156.0004592" height="22" rx="3" fill="var(--color-signal)"/>
+<line x1="80" y1="488.0" x2="560" y2="488.0" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="80" y="528.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Rendement limite</text>
+<text x="560" y="528.0" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="end">4,310 %</text>
+<text x="80" y="583.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Coupon</text>
+<text x="560" y="583.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="end">4,625 %</text>
+<text x="80" y="639.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Prix / 100</text>
+<text x="560" y="639.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="end">102,513731</text>
+<text x="80" y="681.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">9 ans 11 mois restants</text>
+<rect x="616" y="199.0" width="528" height="503" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="640" y="239.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">9 AVRIL 2025</text>
+<text x="640" y="296.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" text-anchor="start">2,67×</text>
+<text x="774" y="294.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">offres / attributions</text>
+<text x="640" y="342.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Offres</text>
+<text x="1120" y="342.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">103,944 Md$</text>
+<rect x="640" y="359.0" width="415.7744272" height="22" rx="3" fill="var(--color-amber)"/>
+<text x="640" y="421.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Attribué</text>
+<text x="1120" y="421.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">39,000 Md$</text>
+<rect x="640" y="438.0" width="156.0000752" height="22" rx="3" fill="var(--color-signal)"/>
+<line x1="640" y1="488.0" x2="1120" y2="488.0" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="640" y="528.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Rendement limite</text>
+<text x="1120" y="528.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="end">4,435 %</text>
+<text x="640" y="583.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Coupon</text>
+<text x="1120" y="583.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="end">4,625 %</text>
+<text x="640" y="639.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Prix / 100</text>
+<text x="1120" y="639.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="end">101,490492</text>
+<text x="640" y="681.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">9 ans 10 mois restants</text>
+<text x="56" y="796.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" text-anchor="start">+12,5 pb</text>
+<text x="56" y="842.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">Un rendement plus élevé malgré une couverture plus forte.</text>
+<text x="56" y="888.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">À nominal identique de 39 Md$ : environ 399,1 M$ encaissés en moins, hors couru. Comparaison de</text>
+<text x="56" y="918.24" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">prix, sans estimation d’un dommage causal.</text>
+<line x1="56" y1="968.24" x2="1144" y2="968.24" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="1002.24" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Sources : [02] mars et [01] avril 2025. Couverture officielle hors supplément SOMA. Prix hors intérêts courus pour 100 de nominal. Le</text>
+<text x="56" y="1024.74" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">temps restant jusqu’à l’échéance diminue d’un mois.</text>
+</svg>
+</div>
+<div class="l0g-debt6-mobile">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1802" role="img" aria-labelledby="d6-04-adjudications-fr-m-title d6-04-adjudications-fr-m-desc" lang="fr">
+<title id="d6-04-adjudications-fr-m-title">Des offres plus abondantes, un taux plus haut</title><desc id="d6-04-adjudications-fr-m-desc">Du 12 mars au 9 avril 2025, la couverture passe de 2,59 à 2,67 et le rendement de 4,310 à 4,435 %, soit +12,5 points de base. Coupon identique à 4,625 %. Prix de 102,513731 à 101,490492. La différence normalisée sur 39 Md$ de nominal est de 399,1 M$ de recettes hors couru en moins, sans attribution causale aux ventes forcées.</desc><rect width="640" height="1802" fill="var(--color-ink)"/>
+<defs><pattern id="d6-04-adjudications-fr-m-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="496" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="604" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="end">04 / 06</text>
+<text x="36" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">Des offres plus abondantes,</text>
+<text x="36" y="147.8" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">un taux plus haut</text>
+<text x="36" y="185.8" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Même emprunt : CUSIP 91282CMM0 · échéance</text>
+<text x="36" y="217.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">15 février 2035</text>
+<rect x="36" y="275.05" width="568" height="503" rx="12" fill="var(--color-surface-2)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<text x="60" y="315.05" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">12 MARS 2025</text>
+<text x="60" y="372.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" text-anchor="start">2,59×</text>
+<text x="194" y="370.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">offres / attributions</text>
+<text x="60" y="418.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Offres</text>
+<text x="580" y="418.05" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">100,948 Md$</text>
+<rect x="60" y="435.05" width="437.43951853333334" height="22" rx="3" fill="var(--color-topic-blue)"/>
+<text x="60" y="497.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Attribué</text>
+<text x="580" y="497.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">39,000 Md$</text>
+<rect x="60" y="514.05" width="169.00049746666667" height="22" rx="3" fill="var(--color-signal)"/>
+<line x1="60" y1="564.05" x2="580" y2="564.05" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="60" y="604.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Rendement limite</text>
+<text x="580" y="604.05" fill="var(--color-topic-blue)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="end">4,310 %</text>
+<text x="60" y="659.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Coupon</text>
+<text x="580" y="659.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="end">4,625 %</text>
+<text x="60" y="715.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Prix / 100</text>
+<text x="580" y="715.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="end">102,513731</text>
+<text x="60" y="757.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">9 ans 11 mois restants</text>
+<rect x="36" y="812.05" width="568" height="503" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="60" y="852.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">9 AVRIL 2025</text>
+<text x="60" y="909.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" text-anchor="start">2,67×</text>
+<text x="194" y="907.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">offres / attributions</text>
+<text x="60" y="955.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Offres</text>
+<text x="580" y="955.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">103,944 Md$</text>
+<rect x="60" y="972.05" width="450.4222961333333" height="22" rx="3" fill="var(--color-amber)"/>
+<text x="60" y="1034.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Attribué</text>
+<text x="580" y="1034.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end">39,000 Md$</text>
+<rect x="60" y="1051.05" width="169.00008146666667" height="22" rx="3" fill="var(--color-signal)"/>
+<line x1="60" y1="1101.05" x2="580" y2="1101.05" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="60" y="1141.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Rendement limite</text>
+<text x="580" y="1141.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="end">4,435 %</text>
+<text x="60" y="1196.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Coupon</text>
+<text x="580" y="1196.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="end">4,625 %</text>
+<text x="60" y="1252.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Prix / 100</text>
+<text x="580" y="1252.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="end">101,490492</text>
+<text x="60" y="1294.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">9 ans 10 mois restants</text>
+<text x="36" y="1415.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" text-anchor="start">+12,5 pb</text>
+<text x="36" y="1461.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">Un rendement plus élevé malgré une couverture</text>
+<text x="36" y="1493.81" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">plus forte.</text>
+<text x="36" y="1539.81" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">À nominal identique de 39 Md$ : environ 399,1 M$</text>
+<text x="36" y="1570.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">encaissés en moins, hors couru. Comparaison de</text>
+<text x="36" y="1600.29" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">prix, sans estimation d’un dommage causal.</text>
+<line x1="36" y1="1650.29" x2="604" y2="1650.29" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1684.29" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Sources : [02] mars et [01] avril 2025. Couverture officielle</text>
+<text x="36" y="1711.79" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">hors supplément SOMA. Prix hors intérêts courus pour</text>
+<text x="36" y="1739.29" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">100 de nominal. Le temps restant jusqu’à l’échéance</text>
+<text x="36" y="1766.79" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">diminue d’un mois.</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt6-kind">Résultats d’adjudication observés</span><strong>Même CUSIP, coupon inchangé et rendement supérieur</strong>Résultats officiels des 12 mars et 9 avril 2025. Le ratio de couverture reprend le sous-total hors SOMA, non le total incluant le portefeuille de la Fed. Le calcul sur 39 Md$ utilise un nominal commun : il ne mesure pas une perte imputable aux fonds. <sup class="l0g-debt6-ref"><a href="#source-01" aria-label="Source 1">[1]</a></sup><sup class="l0g-debt6-ref"><a href="#source-02" aria-label="Source 2">[2]</a></sup></figcaption>
+</figure>
+
+Le prix hors intérêts courus passe de 102,513731 à 101,490492 dollars pour 100 de nominal. À nominal identique de 39 milliards, cet écart de prix représenterait environ 399,1 millions de dollars d’encaissement en moins, hors couru. Ce montant est une comparaison normalisée calculée par l0g, pas une estimation des dommages causés par les fonds. Les maturités résiduelles diffèrent d’un mois et de nombreuses informations ont changé entre les deux dates. Les montants réellement attribués diffèrent légèrement : 39 000 114 800 dollars en mars et 39 000 018 800 en avril, hors SOMA. <sup class="l0g-debt6-ref"><a href="#source-01" aria-label="Source 1">[1]</a></sup><sup class="l0g-debt6-ref"><a href="#source-02" aria-label="Source 2">[2]</a></sup>
+
+Pourquoi le coupon reste-t-il à 4,625 % alors que le rendement augmente ? Les deux opérations rouvrent une même ligne existante, identifiée par le code CUSIP 91282CMM0. Les nouveaux titres reprennent ses versements et son échéance. L’ajustement passe ici par le prix. Le supplément payé au-dessus de 100 se réduit ; le Trésor reçoit moins d’argent par unité de principal qu’il devra rembourser. Une émission peut donc se renchérir sans afficher un coupon plus élevé. <sup class="l0g-debt6-ref"><a href="#source-01" aria-label="Source 1">[1]</a></sup><sup class="l0g-debt6-ref"><a href="#source-02" aria-label="Source 2">[2]</a></sup>
+
+L’expérience américaine écarte un raccourci fréquent : la hausse des taux ne suffit pas à démontrer une disparition des acheteurs. Leur présence peut être le résultat du prix plus généreux qui leur est offert. Pour juger les conditions de financement, il faut regarder ensemble quantités, prix et fonctionnement des marchés qui permettent de conserver les titres.
+
+## Du prix de marché à la charge française
+
+En France, l’Agence France Trésor affiche un TEC10 de 4,79 % au 9 octobre 2026. Cet indice représente le rendement d’une obligation fictive ayant exactement dix ans à courir. Il diffère du taux moyen pondéré des émissions à moyen et long terme de l’année, publié à 3,55 % au 30 septembre, et plus encore du coût contractuel de l’ensemble des emprunts en circulation. <sup class="l0g-debt6-ref"><a href="#source-10" aria-label="Source 10">[10]</a></sup><sup class="l0g-debt6-ref"><a href="#source-11" aria-label="Source 11">[11]</a></sup>
+
+Le premier temps est celui des prix : une [OAT, obligation assimilable du Trésor](/glossaire/oat/), change de main et sa valorisation bouge. Le deuxième est celui du financement : un emprunt arrive à échéance, un déficit doit être couvert, ou la trésorerie réclame de nouvelles ressources. Le troisième est celui du budget : coupons, intérêts et autres charges sont enregistrés selon leurs échéances et les conventions comptables. <sup class="l0g-debt6-ref"><a href="#source-14" aria-label="Source 14">[14]</a></sup><sup class="l0g-debt6-ref"><a href="#source-15" aria-label="Source 15">[15]</a></sup>
+
+[Le calendrier français de refinancement](/posts/dette-francaise-prix-du-temps/) donne l’échelle du décalage. La dette négociable de l’État possède une durée de vie moyenne de huit ans et 158 jours au 30 septembre 2026. Cette moyenne renseigne sur l’étalement du portefeuille. Elle ne donne pas huit années de répit avant le premier effet d’un choc. Des titres arrivent à échéance bien plus tôt ; le financement de nouveaux besoins est immédiat ; les emprunts courts se renouvellent plus souvent. <sup class="l0g-debt6-ref"><a href="#source-10" aria-label="Source 10">[10]</a></sup><sup class="l0g-debt6-ref"><a href="#source-15" aria-label="Source 15">[15]</a></sup>
+
+À l’autre extrême, appliquer instantanément le dernier taux à dix ans à tout l’encours produirait une charge fictive. Les contrats à taux fixe déjà émis continuent avec leurs coupons. La sensibilité dépend du calendrier de remboursement, des nouveaux besoins, de la place du court terme et des instruments dont les paiements peuvent varier, notamment avec l’inflation. <sup class="l0g-debt6-ref"><a href="#source-04" aria-label="Source 4">[4]</a></sup><sup class="l0g-debt6-ref"><a href="#source-14" aria-label="Source 14">[14]</a></sup><sup class="l0g-debt6-ref"><a href="#source-15" aria-label="Source 15">[15]</a></sup>
+
+Le communiqué AFT du 29 septembre prépare 340 milliards d’euros d’émissions à moyen et long terme, nettes de rachats, pour 2027. Il souligne que les remboursements à ces maturités augmenteraient de 19,4 milliards par rapport à 2026. Les placements de demain dépendront donc aussi des contrats signés hier. Ce programme demeure une prévision de financement ; 340 milliards ne désignent ni le seul déficit ni la seule augmentation du stock de dette. <sup class="l0g-debt6-ref"><a href="#source-12" aria-label="Source 12">[12]</a></sup>
+
+Le même document fait état d’un [ratio de couverture](/glossaire/bid-to-cover/) égal à 2,5 fois l’offre sur les émissions à moyen et long terme depuis le début de 2026. Comme dans le cas américain, cette couverture permet de constater des offres abondantes aux conditions proposées. Elle ne fixe pas le prix auquel les investisseurs accepteront la prochaine opération. <sup class="l0g-debt6-ref"><a href="#source-12" aria-label="Source 12">[12]</a></sup>
+
+## Une semaine de tension peut laisser dix ans de coupons
+
+La durée du trouble et celle de ses conséquences peuvent diverger. Prenons un second modèle, entièrement fictif : un État conserve une dette de 100 milliards d’euros et en refinance exactement 10 milliards au début de chaque année, avec de nouveaux emprunts de dix ans émis au pair. Le taux de référence est de 4 %. Pour isoler l’effet, les intérêts supplémentaires sont financés hors emprunt ; ils n’augmentent donc pas le stock dans le modèle.
+
+Si le taux passe à 5 % au seul moment du refinancement de la première année, la nouvelle tranche coûte 100 millions d’euros de coupon annuel supplémentaire. Le marché retrouve ensuite 4 %. Les émissions suivantes retrouvent ce taux, tandis que la première tranche conserve son coupon pendant dix ans. La perturbation a disparu du marché ; sa trace demeure dans le contrat.
+
+Supposons maintenant que le taux de 5 % persiste lors des dix refinancements. Chaque année ajoute une tranche de 100 millions de coût annuel. Le supplément atteint 500 millions en cinquième année et un milliard en dixième année. Ces montants représentent la charge supplémentaire de l’année considérée. Le cumul sur dix ans est différent : un milliard dans le scénario temporaire et 5,5 milliards dans le scénario persistant.
+
+<figure class="l0g-debt6-figure" id="figure-05-cohortes">
+<div class="l0g-debt6-desktop">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1075" role="img" aria-labelledby="d6-05-cohortes-fr-d-title d6-05-cohortes-fr-d-desc" lang="fr">
+<title id="d6-05-cohortes-fr-d-title">La mémoire du taux dans les contrats</title><desc id="d6-05-cohortes-fr-d-desc">Choc temporaire sur une seule émission : 100 M€ de charge annuelle supplémentaire pendant dix ans. Choc persistant sur les dix émissions : charge annuelle de 100 M€ en année 1, 500 M€ en année 5 et 1 Md€ en année 10. Cumuls sur dix ans : 1 Md€ et 5,5 Md€ respectivement.</desc><rect width="1200" height="1075" fill="var(--color-ink)"/>
+<defs><pattern id="d6-05-cohortes-fr-d-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="1056" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="1144" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">05 / 06</text>
+<text x="56" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">La mémoire du taux dans les contrats</text>
+<text x="56" y="141.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Simulation · 10 Md€ refinancés au pair chaque année · emprunts de dix ans</text>
+<rect x="56" y="199.0" width="528" height="646" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="80" y="238.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">CHOC SUR UNE ÉMISSION</text>
+<text x="80" y="278.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Émission</text>
+<text x="560" y="278.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">Année de paiement →</text>
+<text x="233.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">1</text>
+<text x="267.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">2</text>
+<text x="301.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">3</text>
+<text x="335.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">4</text>
+<text x="369.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">5</text>
+<text x="403.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">6</text>
+<text x="437.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">7</text>
+<text x="471.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">8</text>
+<text x="505.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">9</text>
+<text x="539.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">10</text>
+<text x="83" y="364.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">1</text>
+<rect x="219" y="341.0" width="29" height="29" rx="3" fill="var(--color-signal)"/>
+<rect x="253" y="341.0" width="29" height="29" rx="3" fill="var(--color-signal)"/>
+<rect x="287" y="341.0" width="29" height="29" rx="3" fill="var(--color-signal)"/>
+<rect x="321" y="341.0" width="29" height="29" rx="3" fill="var(--color-signal)"/>
+<rect x="355" y="341.0" width="29" height="29" rx="3" fill="var(--color-signal)"/>
+<rect x="389" y="341.0" width="29" height="29" rx="3" fill="var(--color-signal)"/>
+<rect x="423" y="341.0" width="29" height="29" rx="3" fill="var(--color-signal)"/>
+<rect x="457" y="341.0" width="29" height="29" rx="3" fill="var(--color-signal)"/>
+<rect x="491" y="341.0" width="29" height="29" rx="3" fill="var(--color-signal)"/>
+<rect x="525" y="341.0" width="29" height="29" rx="3" fill="var(--color-signal)"/>
+<text x="83" y="398.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">2</text>
+<rect x="253" y="375.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="287" y="375.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="321" y="375.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="355" y="375.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="389" y="375.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="423" y="375.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="457" y="375.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="491" y="375.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="525" y="375.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="83" y="432.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">3</text>
+<rect x="287" y="409.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="321" y="409.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="355" y="409.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="389" y="409.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="423" y="409.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="457" y="409.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="491" y="409.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="525" y="409.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="83" y="466.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">4</text>
+<rect x="321" y="443.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="355" y="443.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="389" y="443.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="423" y="443.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="457" y="443.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="491" y="443.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="525" y="443.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="83" y="500.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">5</text>
+<rect x="355" y="477.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="389" y="477.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="423" y="477.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="457" y="477.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="491" y="477.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="525" y="477.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="83" y="534.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">6</text>
+<rect x="389" y="511.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="423" y="511.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="457" y="511.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="491" y="511.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="525" y="511.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="83" y="568.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">7</text>
+<rect x="423" y="545.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="457" y="545.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="491" y="545.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="525" y="545.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="83" y="602.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">8</text>
+<rect x="457" y="579.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="491" y="579.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="525" y="579.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="83" y="636.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">9</text>
+<rect x="491" y="613.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="525" y="613.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="83" y="670.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">10</text>
+<rect x="525" y="647.0" width="29" height="29" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<line x1="80" y1="707.0" x2="560" y2="707.0" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="80" y="741.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Surcoût annuel en année 10</text>
+<text x="80" y="796.0" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" text-anchor="start">100 M€</text>
+<text x="80" y="831.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Cumul dix ans : 1 Md€</text>
+<rect x="616" y="199.0" width="528" height="646" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="640" y="238.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">CHOC SUR DIX ÉMISSIONS</text>
+<text x="640" y="278.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Émission</text>
+<text x="1120" y="278.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">Année de paiement →</text>
+<text x="793.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">1</text>
+<text x="827.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">2</text>
+<text x="861.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">3</text>
+<text x="895.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">4</text>
+<text x="929.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">5</text>
+<text x="963.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">6</text>
+<text x="997.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">7</text>
+<text x="1031.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">8</text>
+<text x="1065.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">9</text>
+<text x="1099.5" y="323.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">10</text>
+<text x="643" y="364.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">1</text>
+<rect x="779" y="341.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="813" y="341.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="847" y="341.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="881" y="341.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="915" y="341.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="949" y="341.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="983" y="341.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1017" y="341.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1051" y="341.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1085" y="341.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<text x="643" y="398.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">2</text>
+<rect x="813" y="375.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="847" y="375.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="881" y="375.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="915" y="375.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="949" y="375.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="983" y="375.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1017" y="375.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1051" y="375.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1085" y="375.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<text x="643" y="432.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">3</text>
+<rect x="847" y="409.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="881" y="409.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="915" y="409.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="949" y="409.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="983" y="409.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1017" y="409.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1051" y="409.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1085" y="409.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<text x="643" y="466.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">4</text>
+<rect x="881" y="443.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="915" y="443.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="949" y="443.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="983" y="443.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1017" y="443.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1051" y="443.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1085" y="443.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<text x="643" y="500.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">5</text>
+<rect x="915" y="477.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="949" y="477.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="983" y="477.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1017" y="477.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1051" y="477.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1085" y="477.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<text x="643" y="534.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">6</text>
+<rect x="949" y="511.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="983" y="511.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1017" y="511.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1051" y="511.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1085" y="511.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<text x="643" y="568.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">7</text>
+<rect x="983" y="545.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1017" y="545.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1051" y="545.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1085" y="545.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<text x="643" y="602.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">8</text>
+<rect x="1017" y="579.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1051" y="579.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1085" y="579.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<text x="643" y="636.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">9</text>
+<rect x="1051" y="613.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<rect x="1085" y="613.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<text x="643" y="670.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">10</text>
+<rect x="1085" y="647.0" width="29" height="29" rx="3" fill="var(--color-amber)"/>
+<line x1="640" y1="707.0" x2="1120" y2="707.0" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="640" y="741.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Surcoût annuel en année 10</text>
+<text x="640" y="796.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" text-anchor="start">1 Md€</text>
+<text x="640" y="831.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Cumul dix ans : 5,5 Md€</text>
+<text x="56" y="900.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">Une perturbation terminée peut rester inscrite dans un coupon. La persistance ajoute de</text>
+<text x="56" y="932.76" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">nouvelles tranches au surcoût.</text>
+<line x1="56" y1="983.26" x2="1144" y2="983.26" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="1017.26" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Hypothèses : encours constant de 100 Md€, taux de référence 4 %, choc à 5 %. Émission au début de chaque année, coupon à la fin.</text>
+<text x="56" y="1039.76" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Chaque case colorée = 100 M€ de coupon supplémentaire dans cette année. Calculs l0g ; méthode [04], [15].</text>
+</svg>
+</div>
+<div class="l0g-debt6-mobile">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1975" role="img" aria-labelledby="d6-05-cohortes-fr-m-title d6-05-cohortes-fr-m-desc" lang="fr">
+<title id="d6-05-cohortes-fr-m-title">La mémoire du taux dans les contrats</title><desc id="d6-05-cohortes-fr-m-desc">Choc temporaire sur une seule émission : 100 M€ de charge annuelle supplémentaire pendant dix ans. Choc persistant sur les dix émissions : charge annuelle de 100 M€ en année 1, 500 M€ en année 5 et 1 Md€ en année 10. Cumuls sur dix ans : 1 Md€ et 5,5 Md€ respectivement.</desc><rect width="640" height="1975" fill="var(--color-ink)"/>
+<defs><pattern id="d6-05-cohortes-fr-m-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="496" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="604" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="end">05 / 06</text>
+<text x="36" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">La mémoire du taux dans les</text>
+<text x="36" y="147.8" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">contrats</text>
+<text x="36" y="185.8" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Simulation · 10 Md€ refinancés au pair chaque</text>
+<text x="36" y="217.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">année · emprunts de dix ans</text>
+<rect x="36" y="275.05" width="568" height="646" rx="12" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="60" y="314.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">CHOC SUR UNE ÉMISSION</text>
+<text x="60" y="354.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Émission</text>
+<text x="580" y="354.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">Année de paiement →</text>
+<text x="234.5" y="399.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">1</text>
+<text x="270.5" y="399.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">2</text>
+<text x="306.5" y="399.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">3</text>
+<text x="342.5" y="399.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">4</text>
+<text x="378.5" y="399.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">5</text>
+<text x="414.5" y="399.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">6</text>
+<text x="450.5" y="399.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">7</text>
+<text x="486.5" y="399.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">8</text>
+<text x="522.5" y="399.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">9</text>
+<text x="558.5" y="399.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">10</text>
+<text x="63" y="440.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">1</text>
+<rect x="219" y="417.05" width="31" height="31" rx="3" fill="var(--color-signal)"/>
+<rect x="255" y="417.05" width="31" height="31" rx="3" fill="var(--color-signal)"/>
+<rect x="291" y="417.05" width="31" height="31" rx="3" fill="var(--color-signal)"/>
+<rect x="327" y="417.05" width="31" height="31" rx="3" fill="var(--color-signal)"/>
+<rect x="363" y="417.05" width="31" height="31" rx="3" fill="var(--color-signal)"/>
+<rect x="399" y="417.05" width="31" height="31" rx="3" fill="var(--color-signal)"/>
+<rect x="435" y="417.05" width="31" height="31" rx="3" fill="var(--color-signal)"/>
+<rect x="471" y="417.05" width="31" height="31" rx="3" fill="var(--color-signal)"/>
+<rect x="507" y="417.05" width="31" height="31" rx="3" fill="var(--color-signal)"/>
+<rect x="543" y="417.05" width="31" height="31" rx="3" fill="var(--color-signal)"/>
+<text x="63" y="476.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">2</text>
+<rect x="255" y="453.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="291" y="453.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="327" y="453.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="363" y="453.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="399" y="453.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="435" y="453.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="471" y="453.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="507" y="453.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="543" y="453.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="63" y="512.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">3</text>
+<rect x="291" y="489.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="327" y="489.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="363" y="489.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="399" y="489.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="435" y="489.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="471" y="489.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="507" y="489.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="543" y="489.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="63" y="548.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">4</text>
+<rect x="327" y="525.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="363" y="525.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="399" y="525.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="435" y="525.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="471" y="525.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="507" y="525.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="543" y="525.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="63" y="584.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">5</text>
+<rect x="363" y="561.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="399" y="561.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="435" y="561.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="471" y="561.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="507" y="561.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="543" y="561.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="63" y="620.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">6</text>
+<rect x="399" y="597.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="435" y="597.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="471" y="597.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="507" y="597.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="543" y="597.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="63" y="656.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">7</text>
+<rect x="435" y="633.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="471" y="633.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="507" y="633.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="543" y="633.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="63" y="692.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">8</text>
+<rect x="471" y="669.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="507" y="669.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="543" y="669.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="63" y="728.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">9</text>
+<rect x="507" y="705.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<rect x="543" y="705.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="63" y="764.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">10</text>
+<rect x="543" y="741.05" width="31" height="31" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<line x1="60" y1="783.05" x2="580" y2="783.05" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="60" y="817.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Surcoût annuel en année 10</text>
+<text x="60" y="872.05" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" text-anchor="start">100 M€</text>
+<text x="60" y="907.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Cumul dix ans : 1 Md€</text>
+<rect x="36" y="965.05" width="568" height="646" rx="12" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="60" y="1004.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">CHOC SUR DIX ÉMISSIONS</text>
+<text x="60" y="1044.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Émission</text>
+<text x="580" y="1044.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="end">Année de paiement →</text>
+<text x="234.5" y="1089.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">1</text>
+<text x="270.5" y="1089.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">2</text>
+<text x="306.5" y="1089.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">3</text>
+<text x="342.5" y="1089.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">4</text>
+<text x="378.5" y="1089.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">5</text>
+<text x="414.5" y="1089.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">6</text>
+<text x="450.5" y="1089.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">7</text>
+<text x="486.5" y="1089.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">8</text>
+<text x="522.5" y="1089.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">9</text>
+<text x="558.5" y="1089.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="middle">10</text>
+<text x="63" y="1130.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">1</text>
+<rect x="219" y="1107.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="255" y="1107.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="291" y="1107.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="327" y="1107.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="363" y="1107.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="399" y="1107.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="435" y="1107.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="471" y="1107.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="507" y="1107.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="543" y="1107.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<text x="63" y="1166.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">2</text>
+<rect x="255" y="1143.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="291" y="1143.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="327" y="1143.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="363" y="1143.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="399" y="1143.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="435" y="1143.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="471" y="1143.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="507" y="1143.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="543" y="1143.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<text x="63" y="1202.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">3</text>
+<rect x="291" y="1179.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="327" y="1179.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="363" y="1179.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="399" y="1179.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="435" y="1179.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="471" y="1179.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="507" y="1179.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="543" y="1179.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<text x="63" y="1238.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">4</text>
+<rect x="327" y="1215.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="363" y="1215.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="399" y="1215.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="435" y="1215.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="471" y="1215.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="507" y="1215.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="543" y="1215.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<text x="63" y="1274.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">5</text>
+<rect x="363" y="1251.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="399" y="1251.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="435" y="1251.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="471" y="1251.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="507" y="1251.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="543" y="1251.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<text x="63" y="1310.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">6</text>
+<rect x="399" y="1287.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="435" y="1287.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="471" y="1287.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="507" y="1287.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="543" y="1287.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<text x="63" y="1346.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">7</text>
+<rect x="435" y="1323.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="471" y="1323.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="507" y="1323.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="543" y="1323.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<text x="63" y="1382.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">8</text>
+<rect x="471" y="1359.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="507" y="1359.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="543" y="1359.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<text x="63" y="1418.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">9</text>
+<rect x="507" y="1395.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<rect x="543" y="1395.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<text x="63" y="1454.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">10</text>
+<rect x="543" y="1431.05" width="31" height="31" rx="3" fill="var(--color-amber)"/>
+<line x1="60" y1="1473.05" x2="580" y2="1473.05" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="60" y="1507.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Surcoût annuel en année 10</text>
+<text x="60" y="1562.05" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" text-anchor="start">1 Md€</text>
+<text x="60" y="1597.05" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">Cumul dix ans : 5,5 Md€</text>
+<text x="36" y="1679.05" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">Une perturbation terminée peut rester inscrite</text>
+<text x="36" y="1711.81" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">dans un coupon. La persistance ajoute de</text>
+<text x="36" y="1744.57" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">nouvelles tranches au surcoût.</text>
+<line x1="36" y1="1795.07" x2="604" y2="1795.07" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1829.07" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Hypothèses : encours constant de 100 Md€, taux de</text>
+<text x="36" y="1856.57" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">référence 4 %, choc à 5 %. Émission au début de chaque</text>
+<text x="36" y="1884.07" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">année, coupon à la fin. Chaque case colorée = 100 M€ de</text>
+<text x="36" y="1911.57" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">coupon supplémentaire dans cette année. Calculs l0g ;</text>
+<text x="36" y="1939.07" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">méthode [04], [15].</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt6-kind">Simulation pédagogique l0g</span><strong>Chaque émission garde la mémoire de son taux</strong>Chaque ligne représente une tranche de 10 Md€ refinancée pour dix ans. Une case colorée vaut 100 M€ de coupon annuel supplémentaire. Les cases grises représentent des paiements sans ce supplément ; l’espace vide précède l’émission. Les intérêts supplémentaires n’augmentent pas le stock dans ce modèle. <sup class="l0g-debt6-ref"><a href="#source-04" aria-label="Source 4">[4]</a></sup><sup class="l0g-debt6-ref"><a href="#source-15" aria-label="Source 15">[15]</a></sup></figcaption>
+</figure>
+
+Ce modèle fait ressortir le rôle du calendrier. Une tension qui disparaît avant le placement peut laisser peu de trace directe sur l’emprunt à émettre. La même tension, rencontrée au moment où des fonds doivent être levés, peut être incorporée pour longtemps au prix ou au coupon. Il faudrait les dates, volumes et conditions exactes des émissions pour passer de ce mécanisme à une estimation historique du coût.
+
+Il montre aussi pourquoi une détente ultérieure n’efface pas automatiquement la facture. L’émetteur peut étudier des rachats ou des échanges, mais les détenteurs valorisent eux aussi l’avantage d’un coupon supérieur aux taux redevenus disponibles. Racheter cette promesse a un prix. Le refinancement ne permet pas, par simple décision, de récupérer gratuitement les conditions du marché antérieur. <sup class="l0g-debt6-ref"><a href="#source-04" aria-label="Source 4">[4]</a></sup><sup class="l0g-debt6-ref"><a href="#source-15" aria-label="Source 15">[15]</a></sup>
+
+## Le scénario AFT de 2025
+
+Une simulation de l’AFT, reprise dans le rapport sénatorial sur le budget 2026 déposé le 24 novembre 2025, donne une échelle française à ce décalage. Elle impose une hausse permanente d’un point de pourcentage sur l’ensemble de la courbe de taux, relativement à son scénario de référence. La charge supplémentaire annoncée est de 3,2 milliards d’euros à un an, de 23,5 milliards à cinq ans et de 33,5 milliards à neuf ans. <sup class="l0g-debt6-ref"><a href="#source-13" aria-label="Source 13">[13]</a></sup>
+
+La décomposition montre le court terme répondre rapidement, puis les échéances plus longues prendre davantage de place : 1,3 milliard de contribution du court terme et 1,9 milliard du moyen-long terme au premier horizon ; respectivement 2 et 31,5 milliards au dernier. Nous représentons seulement les trois horizons publiés, sans fabriquer les années intermédiaires. <sup class="l0g-debt6-ref"><a href="#source-13" aria-label="Source 13">[13]</a></sup>
+
+<figure class="l0g-debt6-figure" id="figure-06-sensibilite">
+<div class="l0g-debt6-desktop">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1207" role="img" aria-labelledby="d6-06-sensibilite-fr-d-title d6-06-sensibilite-fr-d-desc" lang="fr">
+<title id="d6-06-sensibilite-fr-d-title">Le choc entre progressivement dans la charge</title><desc id="d6-06-sensibilite-fr-d-desc">Surcroît de charge annuelle en milliards d’euros : 3,2 à un an, 23,5 à cinq ans, 33,5 à neuf ans. Contribution court terme 1,3 puis 2 et 2 ; moyen-long terme 1,9 puis 21,5 et 31,5.</desc><rect width="1200" height="1207" fill="var(--color-ink)"/>
+<defs><pattern id="d6-06-sensibilite-fr-d-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="1056" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="56" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="1144" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">06 / 06</text>
+<text x="56" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">Le choc entre progressivement dans la charge</text>
+<text x="56" y="141.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Simulation AFT publiée en 2025 · hausse permanente de 100 points de base sur toute la courbe</text>
+<text x="56" y="199.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">Charge supplémentaire à l’horizon indiqué (Md€)</text>
+<line x1="104" y1="647.0" x2="1134" y2="647.0" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="91" y="654.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end">0</text>
+<line x1="104" y1="547.0" x2="1134" y2="547.0" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="91" y="554.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end">10</text>
+<line x1="104" y1="447.0" x2="1134" y2="447.0" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="91" y="454.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end">20</text>
+<line x1="104" y1="347.0" x2="1134" y2="347.0" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="91" y="354.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end">30</text>
+<line x1="104" y1="297.0" x2="1134" y2="297.0" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="91" y="304.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end">35</text>
+<rect x="210.8" y="634.0" width="116" height="13.0" rx="0" fill="var(--color-signal)"/>
+<rect x="210.8" y="615.0" width="116" height="19.0" rx="2" fill="var(--color-amber)"/>
+<text x="268.8" y="598.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="middle">3,2</text>
+<text x="268.8" y="685.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle">1 an</text>
+<rect x="571.3" y="627.0" width="116" height="20.0" rx="0" fill="var(--color-signal)"/>
+<rect x="571.3" y="412.0" width="116" height="215.0" rx="2" fill="var(--color-amber)"/>
+<text x="629.3" y="395.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="middle">23,5</text>
+<text x="629.3" y="685.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle">5 ans</text>
+<rect x="931.8" y="627.0" width="116" height="20.0" rx="0" fill="var(--color-signal)"/>
+<rect x="931.8" y="312.0" width="116" height="315.0" rx="2" fill="var(--color-amber)"/>
+<text x="989.8" y="295.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="middle">33,5</text>
+<text x="989.8" y="685.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle">9 ans</text>
+<rect x="56" y="736.0" width="20" height="20" rx="2" fill="var(--color-signal)"/>
+<text x="89" y="753.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Taux courts</text>
+<rect x="454" y="736.0" width="20" height="20" rx="2" fill="var(--color-amber)"/>
+<text x="487" y="753.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Taux moyens et longs</text>
+<rect x="56" y="828.0" width="1088" height="151" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="80" y="870.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">1 an</text>
+<text x="80" y="919.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="start">1,3 + 1,9</text>
+<text x="80" y="954.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">court + moyen-long terme</text>
+<text x="445" y="870.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">5 ans</text>
+<text x="445" y="919.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="start">2 + 21,5</text>
+<text x="445" y="954.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">court + moyen-long terme</text>
+<text x="810" y="870.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">9 ans</text>
+<text x="810" y="919.0" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="start">2 + 31,5</text>
+<text x="810" y="954.0" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">court + moyen-long terme</text>
+<text x="56" y="1032.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">Le temps protège une partie des contrats existants. Les refinancements transmettent ensuite</text>
+<text x="56" y="1064.76" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">le nouveau niveau des taux.</text>
+<line x1="56" y1="1115.26" x2="1144" y2="1115.26" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="56" y="1149.26" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Source : [13], Sénat, rapport déposé le 24 novembre 2025, d’après l’AFT. Suppléments à chaque horizon, pas un cumul. Trois horizons</text>
+<text x="56" y="1171.76" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">publiés, sans interpolation. Simulation historique, pas une prévision actualisée en octobre 2026.</text>
+</svg>
+</div>
+<div class="l0g-debt6-mobile">
+<svg style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1605" role="img" aria-labelledby="d6-06-sensibilite-fr-m-title d6-06-sensibilite-fr-m-desc" lang="fr">
+<title id="d6-06-sensibilite-fr-m-title">Le choc entre progressivement dans la charge</title><desc id="d6-06-sensibilite-fr-m-desc">Surcroît de charge annuelle en milliards d’euros : 3,2 à un an, 23,5 à cinq ans, 33,5 à neuf ans. Contribution court terme 1,3 puis 2 et 2 ; moyen-long terme 1,9 puis 21,5 et 31,5.</desc><rect width="640" height="1605" fill="var(--color-ink)"/>
+<defs><pattern id="d6-06-sensibilite-fr-m-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M-3 3 L3 -3 M0 12 L12 0 M9 15 L15 9" stroke="var(--color-amber)" stroke-width="1" opacity="0.25"/></pattern></defs>
+<rect x="496" y="0" width="144" height="7" rx="0" fill="var(--color-signal)"/>
+<text x="36" y="44" fill="var(--color-signal)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">l0g / DETTE DES ÉTATS</text>
+<text x="604" y="44" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="end">06 / 06</text>
+<text x="36" y="103.0" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">Le choc entre</text>
+<text x="36" y="147.8" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">progressivement dans la</text>
+<text x="36" y="192.60000000000002" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="start">charge</text>
+<text x="36" y="230.60000000000002" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Simulation AFT publiée en 2025 · hausse</text>
+<text x="36" y="261.85" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">permanente de 100 points de base sur toute la</text>
+<text x="36" y="293.1" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">courbe</text>
+<text x="36" y="351.1" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">Charge supplémentaire à l’horizon indiqué (Md€)</text>
+<line x1="84" y1="799.1" x2="594" y2="799.1" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="71" y="806.1" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end">0</text>
+<line x1="84" y1="699.1" x2="594" y2="699.1" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="71" y="706.1" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end">10</text>
+<line x1="84" y1="599.1" x2="594" y2="599.1" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="71" y="606.1" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end">20</text>
+<line x1="84" y1="499.1" x2="594" y2="499.1" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="71" y="506.1" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end">30</text>
+<line x1="84" y1="449.1" x2="594" y2="449.1" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="71" y="456.1" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" text-anchor="end">35</text>
+<rect x="132.60000000000002" y="786.1" width="66" height="13.0" rx="0" fill="var(--color-signal)"/>
+<rect x="132.60000000000002" y="767.1" width="66" height="19.0" rx="2" fill="var(--color-amber)"/>
+<text x="165.60000000000002" y="750.1" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" text-anchor="middle">3,2</text>
+<text x="165.60000000000002" y="837.1" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle">1 an</text>
+<rect x="311.1" y="779.1" width="66" height="20.0" rx="0" fill="var(--color-signal)"/>
+<rect x="311.1" y="564.1" width="66" height="215.0" rx="2" fill="var(--color-amber)"/>
+<text x="344.1" y="547.1" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" text-anchor="middle">23,5</text>
+<text x="344.1" y="837.1" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle">5 ans</text>
+<rect x="489.5999999999999" y="779.1" width="66" height="20.0" rx="0" fill="var(--color-signal)"/>
+<rect x="489.5999999999999" y="464.1" width="66" height="315.0" rx="2" fill="var(--color-amber)"/>
+<text x="522.5999999999999" y="447.1" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" text-anchor="middle">33,5</text>
+<text x="522.5999999999999" y="837.1" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle">9 ans</text>
+<rect x="36" y="888.1" width="20" height="20" rx="2" fill="var(--color-signal)"/>
+<text x="69" y="905.1" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Taux courts</text>
+<rect x="36" y="939.1" width="20" height="20" rx="2" fill="var(--color-amber)"/>
+<text x="69" y="956.1" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Taux moyens et longs</text>
+<rect x="36" y="1030.1" width="568" height="222" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+<text x="60" y="1073.1" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">1 an</text>
+<text x="580" y="1073.1" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="end">1,3 + 1,9 = 3,2</text>
+<text x="60" y="1137.1" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">5 ans</text>
+<text x="580" y="1137.1" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="end">2 + 21,5 = 23,5</text>
+<text x="60" y="1201.1" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">9 ans</text>
+<text x="580" y="1201.1" fill="var(--color-amber)" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="end">2 + 31,5 = 33,5</text>
+<text x="36" y="1309.1" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">Le temps protège une partie des contrats</text>
+<text x="36" y="1341.86" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">existants. Les refinancements transmettent</text>
+<text x="36" y="1374.62" fill="var(--color-paper)" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" text-anchor="start">ensuite le nouveau niveau des taux.</text>
+<line x1="36" y1="1425.12" x2="604" y2="1425.12" stroke="var(--color-line-strong)" stroke-width="2"/>
+<text x="36" y="1459.12" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Source : [13], Sénat, rapport déposé le 24 novembre</text>
+<text x="36" y="1486.62" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">2025, d’après l’AFT. Suppléments à chaque horizon, pas</text>
+<text x="36" y="1514.12" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">un cumul. Trois horizons publiés, sans interpolation.</text>
+<text x="36" y="1541.62" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Simulation historique, pas une prévision actualisée en</text>
+<text x="36" y="1569.12" fill="var(--color-muted)" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">octobre 2026.</text>
+</svg>
+</div>
+<figcaption><span class="l0g-debt6-kind">Simulation institutionnelle · millésime 2025</span><strong>Une transmission progressive, sous hypothèses conventionnelles</strong>Décomposition AFT publiée dans le rapport sénatorial du 24 novembre 2025 : choc permanent de 100 pb sur toute la courbe. Il s’agit du supplément de charge à chaque horizon, pas d’un cumul. La simulation n’est pas recalibrée sur les conditions d’octobre 2026. <sup class="l0g-debt6-ref"><a href="#source-13" aria-label="Source 13">[13]</a></sup></figcaption>
+</figure>
+
+Cette simulation date de 2025. Elle mesure un choc persistant sur toute la courbe, pas une pointe intrajournalière du dix ans. Ses montants ne sont pas un supplément déjà engagé au 11 octobre 2026. Le passage public ne détaille pas toutes les conventions nécessaires pour les raccorder à une nouvelle prévision budgétaire ; les additionner aux 72,9 milliards de charge budgétaire prévus par l’AFT pour 2027 serait injustifié. Les deux documents répondent à des exercices différents. <sup class="l0g-debt6-ref"><a href="#source-12" aria-label="Source 12">[12]</a></sup><sup class="l0g-debt6-ref"><a href="#source-13" aria-label="Source 13">[13]</a></sup>
+
+Les primes et décotes compliquent encore le calendrier apparent. Une réouverture peut procurer moins de trésorerie aujourd’hui pour le même nominal remboursable demain. Dans les comptes en droits constatés, les primes et décotes sont étalées sur la durée des emprunts ; la présentation budgétaire suit une autre logique. Une comparaison de coûts doit donc annoncer sa convention, même lorsque le récit commence par un simple mouvement de taux. <sup class="l0g-debt6-ref"><a href="#source-14" aria-label="Source 14">[14]</a></sup>
+
+## Acheter du temps avant de revenir au marché
+
+Un gestionnaire de dette dispose de marges de manœuvre : répartir ses émissions, utiliser sa trésorerie, choisir des maturités, diversifier ses acheteurs. Les principes FMI–Banque mondiale de gestion de la dette insistent sur ce compromis entre coût de moyen-long terme, risque de refinancement et ressources liquides disponibles en cas de perturbation. <sup class="l0g-debt6-ref"><a href="#source-15" aria-label="Source 15">[15]</a></sup>
+
+Emprunter plus longtemps peut espacer les retours au marché pour une même tranche. Selon la courbe des taux et la demande, cette protection peut se payer par une rémunération initiale plus élevée. Émettre davantage à court terme peut offrir un placement plus facile à un instant donné, mais renouvelle plus vite la confrontation avec les taux futurs. Une réserve de trésorerie achète de la flexibilité, tout en ayant un coût de portage éventuel. Aucun choix ne fait disparaître simultanément toutes les contraintes. <sup class="l0g-debt6-ref"><a href="#source-15" aria-label="Source 15">[15]</a></sup>
+
+L’état du marché et celui des finances publiques interagissent ainsi sans se confondre. Une trajectoire budgétaire inquiétante peut provoquer une réévaluation légitime du risque. Des ventes synchronisées peuvent ajouter une pression temporaire. Une politique d’émission mal adaptée peut immobiliser des conditions défavorables. Pour attribuer un surcoût, l’enquête doit suivre chaque étape plutôt que transformer une variation du dix ans en verdict unique.
+
+Le 6 octobre 2026, le FMI a rappelé que les hedge funds contribuent en temps normal à la liquidité et à la formation des prix, tout en pouvant amplifier les tensions par le levier et les positions communes. L’organisation professionnelle MFA a répondu que des restrictions uniformes pourraient réduire leur participation et renchérir le financement des États. Cette seconde proposition exprime la position du secteur ; elle ne fournit pas une mesure indépendante du coût d’une réforme. <sup class="l0g-debt6-ref"><a href="#source-16" aria-label="Source 16">[16]</a></sup><sup class="l0g-debt6-ref"><a href="#source-17" aria-label="Source 17">[17]</a></sup>
+
+Le véritable arbitrage porte sur la solidité de la demande. Un acheteur financé à crédit peut rendre un marché plus efficace aujourd’hui et devenir vendeur demain. Une règle qui exige davantage de ressources stables peut réduire une partie de cette fragilité, tout en changeant le prix auquel il intervient. Comparer les deux effets demanderait une évaluation de la mesure précise, de son application et des possibilités de substitution. Le simple fait qu’un intermédiaire soit utile ne règle pas la question de sa résistance au stress.
+
+Au terme de ce parcours, trois éléments peuvent être établis séparément : une vente a trouvé moins de capacité disponible, le prix marginal a bougé, de nouvelles conditions ont été inscrites dans une émission publique. Le dossier britannique étaye le premier passage vers les prix ; les adjudications américaines montrent le financement continuer à un rendement différent ; le calendrier français explique la diffusion progressive de ce rendement vers les comptes. Le coût causal exact d’un épisode exige encore de relier ces éléments sur le même marché, aux mêmes dates.
+
+Quand les acheteurs privés tardent davantage que l’État et ses créanciers ne peuvent attendre, un autre bilan peut entrer dans la transaction : celui de la banque centrale. Le dernier épisode examinera ses achats, les risques qu’elle accepte et la façon dont son intervention redistribue le temps disponible.
+
+
+## Méthode et limites
+
+<p><em>Sources vérifiées le 12 octobre 2026. Les modèles l0g sont hypothétiques ; les résultats britanniques sont des estimations historiques ou un scénario exploratoire. Aucune transaction confidentielle ni entretien n’a été obtenu. Les références ci-dessous permettent de retrouver les observations et les conventions citées.</em></p>
+
+## Sources et documents
+
+<ol class="l0g-debt6-sources">
+<li id="source-01"><span class="source-title">U.S. Treasury · Treasury auction results · 9 April 2025</span><small>Publication / mise à jour : 9 avril 2025. Période / périmètre : Adjudication du 9 avril 2025 ; règlement le 15 avril.</small><a class="source-url" href="https://www.treasurydirect.gov/instit/annceresult/press/preanre/2025/R_20250409_2.pdf" rel="noopener noreferrer">{"https://www.treasurydirect.gov/instit/annceresult/press/preanre/2025/R_20250409_2.pdf"}</a></li>
+<li id="source-02"><span class="source-title">U.S. Treasury · Treasury auction results · 12 March 2025</span><small>Publication / mise à jour : 12 mars 2025. Période / périmètre : Adjudication du 12 mars 2025 ; règlement le 17 mars.</small><a class="source-url" href="https://www.treasurydirect.gov/instit/annceresult/press/preanre/2025/R_20250312_2.pdf" rel="noopener noreferrer">{"https://www.treasurydirect.gov/instit/annceresult/press/preanre/2025/R_20250312_2.pdf"}</a></li>
+<li id="source-03"><span class="source-title">Federal Reserve Bank of New York · Treasury Market Liquidity Since April 2025</span><small>Publication / mise à jour : 2 avril 2026. Période / périmètre : Données du 2 janvier 2020 au 27 février 2026 ; épisode d’avril 2025.</small><a class="source-url" href="https://libertystreeteconomics.newyorkfed.org/2026/04/treasury-market-liquidity-since-april-2025/" rel="noopener noreferrer">{"https://libertystreeteconomics.newyorkfed.org/2026/04/treasury-market-liquidity-since-april-2025/"}</a></li>
+<li id="source-04"><span class="source-title">SEC · Investor.gov · Fixed Income Investments: When Interest Rates Go Up, Prices of Fixed-Rate Bonds Fall</span><small>Publication / mise à jour : 26 juin 2013. Période / périmètre : Mécanisme financier général.</small><a class="source-url" href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-86" rel="noopener noreferrer">{"https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-86"}</a></li>
+<li id="source-05"><span class="source-title">Bank of England · Staff Working Paper 1089 · Fire sales of safe assets · Gabor Pinter, Emil Siriwardane, Danny Walker</span><small>Publication / mise à jour : 26 juillet 2024. Période / périmètre : Transactions britanniques de septembre–octobre 2022.</small><a class="source-url" href="https://www.bankofengland.co.uk/-/media/boe/files/working-paper/2024/fire-sales-of-safe-assets.pdf" rel="noopener noreferrer">{"https://www.bankofengland.co.uk/-/media/boe/files/working-paper/2024/fire-sales-of-safe-assets.pdf"}</a></li>
+<li id="source-06"><span class="source-title">Bank of England · Staff Working Paper 1019 · An anatomy of the 2022 gilt market crisis · Gabor Pinter</span><small>Publication / mise à jour : 31 mars 2023. Période / périmètre : Crise britannique de septembre–octobre 2022.</small><a class="source-url" href="https://www.bankofengland.co.uk/working-paper/2023/an-anatomy-of-the-2022-gilt-market-crisis" rel="noopener noreferrer">{"https://www.bankofengland.co.uk/working-paper/2023/an-anatomy-of-the-2022-gilt-market-crisis"}</a></li>
+<li id="source-07"><span class="source-title">Bank of England · System-wide exploratory scenario exercise: final report</span><small>Publication / mise à jour : 29 novembre 2024. Période / périmètre : Scénario exploratoire hypothétique, horizon de deux semaines.</small><a class="source-url" href="https://www.bankofengland.co.uk/financial-stability/boe-system-wide-exploratory-scenario-exercise/boe-swes-exercise-final-report" rel="noopener noreferrer">{"https://www.bankofengland.co.uk/financial-stability/boe-system-wide-exploratory-scenario-exercise/boe-swes-exercise-final-report"}</a></li>
+<li id="source-08"><span class="source-title">Federal Reserve Bank of New York · Recent Developments in Treasury Market Liquidity and Funding Conditions · Roberto Perli</span><small>Publication / mise à jour : 9 mai 2025. Période / périmètre : Épisode d’avril 2025.</small><a class="source-url" href="https://www.newyorkfed.org/newsevents/speeches/2025/per250509" rel="noopener noreferrer">{"https://www.newyorkfed.org/newsevents/speeches/2025/per250509"}</a></li>
+<li id="source-09"><span class="source-title">Federal Reserve Bank of New York · Treasury Term Premia: 1961–Present</span><small>Publication / mise à jour : 12 mai 2014. Période / périmètre : Cadre analytique et estimations historiques, pas une lecture au 11 octobre 2026.</small><a class="source-url" href="https://libertystreeteconomics.newyorkfed.org/2014/05/treasury-term-premia-1961-present/" rel="noopener noreferrer">{"https://libertystreeteconomics.newyorkfed.org/2014/05/treasury-term-premia-1961-present/"}</a></li>
+<li id="source-10"><span class="source-title">Agence France Trésor · Chiffres clefs · dette négociable et maturité</span><small>Publication / mise à jour : date unique non établie sur la page. Période / périmètre : Encours et maturité au 30 septembre 2026 ; TEC10 du 9 octobre 2026.</small><a class="source-url" href="https://www.aft.gouv.fr/fr" rel="noopener noreferrer">{"https://www.aft.gouv.fr/fr"}</a></li>
+<li id="source-11"><span class="source-title">Agence France Trésor · L’OAT TEC 10 · définition de l’indice</span><small>Publication / mise à jour : date unique non établie sur la page. Période / périmètre : Définition méthodologique de l’échéance constante à dix ans.</small><a class="source-url" href="https://www.aft.gouv.fr/fr/oat-tec-10" rel="noopener noreferrer">{"https://www.aft.gouv.fr/fr/oat-tec-10"}</a></li>
+<li id="source-12"><span class="source-title">Agence France Trésor · Besoins et ressources de financement de l’État en 2027 et point sur 2026</span><small>Publication / mise à jour : 29 septembre 2026. Période / périmètre : Prévisions 2027 ; point 2026 présenté fin septembre.</small><a class="source-url" href="https://www.aft.gouv.fr/fr/publications/communiques-presse/29092026-besoins-et-ressources-financement-letat-en-2027-et-point" rel="noopener noreferrer">{"https://www.aft.gouv.fr/fr/publications/communiques-presse/29092026-besoins-et-ressources-financement-letat-en-2027-et-point"}</a></li>
+<li id="source-13"><span class="source-title">Sénat · commission des finances, d’après AFT · PLF 2026 · Engagements financiers de l’État, rapport n°139, annexe 12</span><small>Publication / mise à jour : 24 novembre 2025. Période / périmètre : Simulation conventionnelle AFT publiée en 2025 ; horizons 1, 5 et 9 ans.</small><a class="source-url" href="https://www.senat.fr/rap/l25-139-312/l25-139-312_mono.html" rel="noopener noreferrer">{"https://www.senat.fr/rap/l25-139-312/l25-139-312_mono.html"}</a></li>
+<li id="source-14"><span class="source-title">Agence France Trésor · Principaux chiffres · charge de la dette</span><small>Publication / mise à jour : 21 novembre 2025. Période / périmètre : Exécutions 2019–2024, dernière mise à jour affichée.</small><a class="source-url" href="https://www.aft.gouv.fr/fr/principaux-chiffres-budget-etat" rel="noopener noreferrer">{"https://www.aft.gouv.fr/fr/principaux-chiffres-budget-etat"}</a></li>
+<li id="source-15"><span class="source-title">FMI / Banque mondiale · Revised Guidelines for Public Debt Management</span><small>Publication / mise à jour : 1er avril 2014. Période / périmètre : Principes de gestion de la dette, révision 2014. Couverture du document officiel : 1er avril 2014.</small><a class="source-url" href="https://www.imf.org/-/media/websites/imf/imported-full-text-pdf/external/np/pp/eng/2014/_040114.pdf" rel="noopener noreferrer">{"https://www.imf.org/-/media/websites/imf/imported-full-text-pdf/external/np/pp/eng/2014/_040114.pdf"}</a></li>
+<li id="source-16"><span class="source-title">FMI · Hedge Funds Improve Market Functioning, but Can Also Amplify Stress</span><small>Publication / mise à jour : 6 octobre 2026. Période / périmètre : Analyse publiée en octobre 2026, données historiques variables.</small><a class="source-url" href="https://www.imf.org/en/blogs/articles/2026/10/06/hedge-funds-improve-market-functioning-but-can-also-amplify-stress" rel="noopener noreferrer">{"https://www.imf.org/en/blogs/articles/2026/10/06/hedge-funds-improve-market-functioning-but-can-also-amplify-stress"}</a></li>
+<li id="source-17"><span class="source-title">Managed Funds Association · Statement on IMF report on hedge funds and financial stability</span><small>Publication / mise à jour : 6 octobre 2026. Période / périmètre : Position publique du secteur, 6 octobre 2026.</small><a class="source-url" href="https://www.mfaalts.org/statement/mfa-statement-on-imf-report-on-hedge-funds-and-financial-stability/" rel="noopener noreferrer">{"https://www.mfaalts.org/statement/mfa-statement-on-imf-report-on-hedge-funds-and-financial-stability/"}</a></li>
+<li id="source-18"><span class="source-title">Federal Reserve Board · Financial Stability Report, April 2025 · Asset Valuations</span><small>Publication / mise à jour : date unique non établie sur la page. Période / périmètre : Rapport d’avril 2025 ; épisode du début avril.</small><a class="source-url" href="https://www.federalreserve.gov/publications/April-2025-financial-stability-report-Asset-Valuations.htm" rel="noopener noreferrer">{"https://www.federalreserve.gov/publications/April-2025-financial-stability-report-Asset-Valuations.htm"}</a></li>
+</ol>
+
+</div>
