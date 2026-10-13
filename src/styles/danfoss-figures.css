@@ -1,0 +1,14 @@
+/* Danfoss mechanisms have separately composed narrow layouts. */
+.prose figure.danfoss-figure {
+  max-width: 45rem;
+  margin: 1.5rem auto 2rem;
+  padding-bottom: .8rem;
+  overflow: visible;
+}
+.prose figure.danfoss-figure > svg { overflow: visible; }
+.prose figure.danfoss-figure > .danfoss-figure-mobile { display: none; }
+@media (max-width: 640px) {
+  .prose figure.danfoss-figure { max-width: 21rem; }
+  .prose figure.danfoss-figure > .danfoss-figure-desktop { display: none; }
+  .prose figure.danfoss-figure > .danfoss-figure-mobile { display: block; }
+}
