@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
 
 const script = new URL('./test-dependencies.mjs', import.meta.url).href;
 const harness = `
@@ -60,4 +61,16 @@ test('the previously excepted cache advisory is now blocking', () => {
   assert.equal(result.status, 1, result.stdout + result.stderr);
   assert.match(result.stderr, /http-cache-semantics: high/);
   assert.doesNotMatch(result.stdout, /no unmitigated/);
+});
+
+test('tooling imports are direct dependencies rather than transitive side effects', () => {
+  const manifest = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  const lock = JSON.parse(readFileSync(new URL('../package-lock.json', import.meta.url), 'utf8'));
+  for (const name of ['esbuild', 'js-yaml']) {
+    const declared = manifest.devDependencies?.[name];
+    assert.equal(typeof declared, 'string', `${name} must be declared directly for the publication tests`);
+    assert.equal(declared, manifest.overrides[name], `${name} must retain its security-pinned version`);
+    assert.equal(lock.packages[''].devDependencies[name], declared, `${name} declaration must match the lockfile`);
+    assert.equal(lock.packages[`node_modules/${name}`]?.version, declared, `${name} must be installed at the declared version`);
+  }
 });
