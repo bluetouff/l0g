@@ -59,20 +59,20 @@ function assertDebtPage(html, book) {
   }
 
   const downloadAnchors = inside.filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined);
-  assert.equal(downloadAnchors.length, 2);
-  assert.deepEqual(downloadAnchors.map(node => attr(node, 'href')).sort(), book.editions.map(edition => edition.epub).sort());
-  const cards = inside.filter(node => node.tagName === 'article' && hasClass(node, 'download-card'));
-  assert.equal(cards.length, 2);
-  for (const edition of book.editions) {
-    const card = cards.filter(node => attr(node, 'data-edition-theme') === edition.theme);
-    assert.equal(card.length, 1);
-    const links = nodes(card[0]).filter(node => node.tagName === 'a');
-    assert.equal(links.length, 1);
-    assert.equal(attr(links[0], 'href'), edition.epub);
-    assert.equal(plain(links[0]), book.lang === 'fr'
-      ? `Télécharger l’EPUB ${edition.theme === 'dark' ? 'sombre' : 'clair'} ↓`
-      : `Download the ${edition.theme} EPUB ↓`);
-  }
+  assert.equal(book.editions.length, 1);
+  assert.equal(book.editions[0].theme, 'dark');
+  assert.equal(downloadAnchors.length, 1);
+  assert.equal(attr(downloadAnchors[0], 'href'), book.editions[0].epub);
+  assert.equal(attr(downloadAnchors[0], 'id'), 'telecharger');
+  const hero = inside.find(node => node.tagName === 'section' && hasClass(node, 'book-hero'));
+  assert(hero);
+  assert(nodes(hero).includes(downloadAnchors[0]));
+  assert.equal(downloadAnchors[0].childNodes.filter(node => node.nodeName === '#text').map(text).join('').trim(), book.lang === 'fr' ? 'Télécharger l’EPUB sombre' : 'Download the dark EPUB');
+  const fileLinks = inside.filter(node => node.tagName === 'a' && attr(node, 'href') && new URL(attr(node, 'href'), SITE).pathname.toLowerCase().endsWith('.epub'));
+  assert.deepEqual(fileLinks, downloadAnchors);
+  assert.equal(inside.filter(node => hasClass(node, 'download-card') || hasClass(node, 'download-grid') || hasClass(node, 'reading-swatch')).length, 0);
+  assert.doesNotMatch(plain(article[0]), /(?:fond clair|EPUB clair|sombre (?:et|ou) clair|dark (?:and|or) light|light EPUB|light edition|two backgrounds|deux fonds)/iu);
+  assert(!inside.some(node => attr(node, 'href') === `/publications/${book.directory}-light-l0g.epub`));
 
   const schemas = all.filter(node => node.tagName === 'script' && attr(node, 'type') === 'application/ld+json').map(node => JSON.parse(text(node)));
   const bookSchemas = schemas.filter(schema => schema['@type'] === 'Book');
@@ -96,6 +96,9 @@ function assertDebtPage(html, book) {
     const media = mediaFor(edition);
     return { '@type': 'MediaObject', name: `${book.title} · ${edition.label}`, contentUrl: `${SITE}${edition.epub}`, encodingFormat: 'application/epub+zip', contentSize: `${media.bytes} bytes`, sha256: media.sha256 };
   }));
+  const visibleDigests = inside.filter(node => node.tagName === 'code');
+  assert.equal(visibleDigests.length, 1);
+  assert.equal(plain(visibleDigests[0]), mediaFor(book.editions[0]).sha256);
   const alternate = debtEditions[book.lang === 'fr' ? 'en' : 'fr'];
   assert.deepEqual(schema[book.lang === 'fr' ? 'workTranslation' : 'translationOfWork'], { '@type': 'Book', '@id': `${SITE}${alternate.path}#book`, inLanguage: alternate.lang });
 
@@ -112,7 +115,7 @@ function assertDebtPage(html, book) {
   assert(glossary);
   assert.deepEqual(nodes(glossary).filter(node => node.tagName === 'a').map(node => attr(node, 'href')), book.glossary.slice(0, 6).map(entry => entry.path));
   for (const entry of book.glossary.slice(0, 6)) assert(plain(glossary).includes(entry.definition));
-  for (const paragraph of [...book.introduction.slice(0, 2), ...book.conclusion.slice(0, 2), ...book.method]) assert(plain(article[0]).includes(paragraph));
+  for (const paragraph of [...book.introduction.slice(0, 2), ...book.conclusion.slice(0, 2), ...book.method.slice(0, 1)]) assert(plain(article[0]).includes(paragraph));
   assert(inside.some(node => node.tagName === 'a' && attr(node, 'href') === (book.lang === 'fr' ? '/publications/' : '/en/publications/')));
   assert(inside.some(node => node.tagName === 'a' && attr(node, 'href') === alternate.path && attr(node, 'hreflang') === alternate.lang));
   const ids = inside.map(node => attr(node, 'id')).filter(Boolean);
@@ -121,7 +124,7 @@ function assertDebtPage(html, book) {
   return { article: article[0], all };
 }
 
-test('the compiled bilingual publication exposes both authentic EPUB editions with complete SEO metadata', () => {
+test('each compiled language exposes exactly one dark EPUB with complete SEO metadata', () => {
   for (const book of Object.values(debtEditions)) assertDebtPage(pageHtml(book), book);
 });
 
@@ -141,9 +144,21 @@ test('publication checks reject complete-field URL substitutions, missing downlo
   const changedDownload = html.replace(`href="${epub}" download`, `href="${epub}" data-removed-download`);
   assert.notEqual(changedDownload, html);
   assert.throws(() => assertDebtPage(changedDownload, book));
+  for (const link of [
+    `<a href="${epub}" download>Duplicate dark EPUB</a>`,
+    `<a href="${epub}">Duplicate file link</a>`,
+    `<a href="/publications/${book.directory}-light-l0g.epub" download>Light EPUB</a>`,
+    `<a href="/publications/${book.directory}-light-l0g.epub">Light EPUB</a>`,
+    `<a href="/publications/${book.directory}-light-l0g.epub?alias=1">Light EPUB</a>`,
+    `<a href="/publications/${book.directory}-light-l0g.epub#download">Light EPUB</a>`,
+  ]) {
+    const altered = html.replace('</article>', `${link}</article>`);
+    assert.notEqual(altered, html);
+    assert.throws(() => assertDebtPage(altered, book), link);
+  }
 });
 
-test('both publication catalogues present the book first with explicit dark and light downloads', () => {
+test('both catalogues present the book first with one dark download per language', () => {
   for (const book of Object.values(debtEditions)) {
     const route = book.lang === 'fr' ? 'publications' : 'en/publications';
     const html = readFileSync(join(ROOT, 'dist', route, 'index.html'), 'utf8');
@@ -153,7 +168,10 @@ test('both publication catalogues present the book first with explicit dark and 
     const first = nodes(cards[0]);
     assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));
     const downloads = first.filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined);
+    assert.equal(downloads.length, 1);
     assert.deepEqual(downloads.map(node => attr(node, 'href')), book.editions.map(edition => edition.epub));
+    assert.doesNotMatch(plain(cards[0]), /(?:fond clair|EPUB clair|sombre (?:et|ou) clair|dark (?:and|or) light|light EPUB|light edition)/iu);
+    assert(!first.some(node => attr(node, 'href') === `/publications/${book.directory}-light-l0g.epub`));
     assert(plain(cards[0]).includes(String(book.figureCount)));
     assert.equal(attr(first.find(node => node.tagName === 'img'), 'src'), book.cover);
     if (book.lang === 'fr') {
@@ -167,7 +185,7 @@ test('both publication catalogues present the book first with explicit dark and 
       }, 0);
       const totalDownloads = cards.reduce((total, card) => total + nodes(card).filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined).length, 0);
       assert.deepEqual(values, [cards.length, totalChapters, totalDownloads]);
-      assert.deepEqual(values, [14, 98, 15]);
+      assert.deepEqual(values, [14, 98, 14]);
     }
   }
 });
@@ -182,6 +200,7 @@ test('all fourteen articles link back to their book after the analysis while pre
       const links = nodes(cards[0]).filter(node => node.tagName === 'a');
       assert.equal(links.length, 1);
       assert.equal(attr(links[0], 'href'), book.path);
+      assert.doesNotMatch(plain(cards[0]), /(?:fond clair|EPUB clair|sombre (?:et|ou) clair|dark (?:and|or) light|light EPUB|light edition)/iu);
       assert.equal(attr(cards[0], 'data-pagefind-ignore'), '');
       const body = all.find(node => attr(node, 'data-reading-body') !== undefined);
       assert(body);

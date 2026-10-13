@@ -161,13 +161,17 @@ for(const book of Object.values(debtEditions)) {
       for(const family of ['dejavu','liberation'])assertFontLicenseReferences(readFileSync(join(SOURCE,'EPUB/fonts',`${family}-LICENSE.txt`),'utf8'),family);
     });
   }
-  test(`${book.lang}: dark/light editions contain identical reading copy and genuinely different vector paints`,()=>{
-    const [dark,light]=['dark','light'].map(t=>join(ROOT,'src/epub',`${book.directory}-${t}`,'EPUB'));
-    for(const chapter of book.chapters)assert.equal(readFileSync(join(dark,'text',chapter.chapter),'utf8'),readFileSync(join(light,'text',chapter.chapter),'utf8'));
-    for(let i=0;i<80;i++) {
-      const d=readFileSync(join(dark,'media',`file${i}.svg`),'utf8'),l=readFileSync(join(light,'media',`file${i}.svg`),'utf8');
-      assert.notEqual(d,l);assert.deepEqual(geometry(d),geometry(l));
-    }
+  test(`${book.lang}: only one dark edition exists and removed light assets cannot be rebuilt`,async()=>{
+    assert.deepEqual(book.editions.map(e=>e.theme),['dark']);
+    assert.equal(book.editions[0].directory,`${book.directory}-dark`);
+    assert.equal(book.editions[0].epub,`/publications/${book.directory}-dark-l0g.epub`);
+    assert.equal(existsSync(join(ROOT,'src/epub',`${book.directory}-light`)),false,'No orphan light source tree');
+    assert.equal(existsSync(join(ROOT,'public/publications',`${book.directory}-light-l0g.epub`)),false,'No orphan light download');
+    await assert.rejects(generateDebtEpub(book.lang,'light'),/Unsupported debt EPUB theme/u);
+    await assert.rejects(renderDebtArticle(article(book.chapters[0]),book.chapters[0],'light'),/Unsupported debt EPUB theme/u);
+    assert.throws(()=>execFileSync(process.execPath,['scripts/build-epub.mjs',`${book.directory}-light`],{cwd:ROOT,stdio:'pipe'}));
+    const method=readFileSync(join(ROOT,'src/epub',book.editions[0].directory,'EPUB/text/method.xhtml'),'utf8');
+    assert.doesNotMatch(method,/Les deux éditions|Both editions|fond clair|light edition/iu);
   });
   test(`${book.lang}: MDX adapter fails closed on imports, executable expressions, styles, markup and unsafe URLs`,async()=>{
     const chapter=book.chapters[0],original=article(chapter);
@@ -247,7 +251,7 @@ test('redistributed Liberation-derived subsets use an original family name while
 
 test('SVG adapter rejects foreign content, styles, remote references, paint expressions and missing local identifiers',()=>{
   const fixture='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" style="width:100%;height:auto"><title>A</title><desc>B</desc><rect width="400" height="500" fill="var(--color-ink)"/></svg>';
-  assert.match(bakeDebtSvg(fixture,'dark'),/fill="#0c0d10"/u);assert.match(bakeDebtSvg(fixture,'light'),/fill="#e7e9ee"/u);
+  assert.match(bakeDebtSvg(fixture,'dark'),/fill="#0c0d10"/u);assert.throws(()=>bakeDebtSvg(fixture,'light'),/Unsupported debt EPUB theme/u);
   for(const payload of ['<script/>','<foreignObject/>','<image href="https://example.com/a"/>','<style>@import "x";</style>','<animate/>','<a href="https://example.com/">x</a>'])assert.throws(()=>bakeDebtSvg(fixture.replace('</svg>',payload+'</svg>'),'dark','ch002.xhtml'));
   for(const value of ['var(--color-unknown)','var(--color-constructor)','var(--color-ink) url(x)','url(https://example.com/a)','url(#missing)','var(--color-ink, red)','color-mix(in srgb, var(--color-amber) 99%, var(--color-ink))','javascript:alert(1)'])assert.throws(()=>bakeDebtSvg(fixture.replace('var(--color-ink)',value),'dark'));
   assert.throws(()=>bakeDebtSvg(fixture.replace('<rect ','<rect onload="alert(1)" '),'dark'));
@@ -259,7 +263,7 @@ test('SVG adapter rejects foreign content, styles, remote references, paint expr
 
 test('publication identities, source counts and generation commands are explicit',async()=>{
   const editions=Object.values(debtEditions).flatMap(b=>b.editions);
-  assert.equal(editions.length,4);assert.equal(new Set(editions.map(e=>e.id)).size,4);
+  assert.equal(editions.length,2);assert.equal(new Set(editions.map(e=>e.id)).size,2);
   for(const book of Object.values(debtEditions))assert.equal(book.chapters.reduce((n,c)=>n+c.figureCount,0),40);
   await assert.rejects(generateDebtEpub('../outside','dark'),/Unsupported/u);await assert.rejects(generateDebtEpub('fr','../outside'),/Unsupported/u);
   const pkg=JSON.parse(readFileSync(join(ROOT,'package.json'),'utf8'));

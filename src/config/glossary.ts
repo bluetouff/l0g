@@ -81,6 +81,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Couverture de change', nom: 'Protection d’une exposition en devise', def: 'Opération visant à réduire le risque de variation du change sur un montant et une échéance définis, notamment avec un contrat à terme ou un swap de devises. Protéger le montant prévu ne fixe ni le prix de la marchandise ni les devises supplémentaires nécessaires si la dépense augmente.', guide: '/posts/dollar-facture-energie/' },
+      { sigle: 'Termes de l’échange', nom: 'Prix des exportations rapportés aux prix des importations', def: 'Rapport entre l’indice des prix d’exportation et celui des prix d’importation d’une économie. Une hausse indique que les mêmes exportations peuvent acheter davantage d’importations. Cet indicateur de prix se distingue du solde commercial, qui dépend aussi des quantités échangées.', guide: '/posts/dollar-facture-energie/' },
 {
   "sigle": "APD",
   "nom": "Aide publique au développement",
@@ -599,6 +601,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Énergie & géopolitique',
     accent: 'var(--color-amber)',
     entries: [
+      { sigle: 'Risque de base', nom: 'Variation de l’écart entre exposition et couverture', def: 'Risque que l’écart de prix entre la marchandise effectivement achetée ou vendue et la référence utilisée pour la couvrir évolue pendant la protection. Produits, qualités, lieux et dates peuvent différer. Une couverture sur le brut peut ainsi laisser ouverte une partie du coût d’un carburant raffiné.', guide: '/posts/dollar-facture-energie/' },
       {"sigle": "El Niño", "nom": "Phase chaude de l’ENSO", "def": "Phase chaude de l’oscillation australe El Niño (ENSO), un phénomène couplé de l’océan et de l’atmosphère dans le Pacifique tropical. L’affaiblissement des alizés et le déplacement des eaux chaudes et de la convection modifient la distribution des pluies. Les effets locaux dépendent aussi de la saison et des autres conditions climatiques.", "guide": "/posts/el-nino-secours-meme-pluie/"},
       {"sigle": "RONI", "nom": "Indice océanique Niño relatif", "def": "Indice NOAA construit à partir d’une moyenne glissante sur trois mois de l’anomalie de température de surface dans la région Niño 3.4, après soustraction de l’anomalie moyenne des tropiques et ajustement de variance. Il mesure un contraste océanique relatif ; une probabilité de franchir son seuil ne mesure pas une probabilité de pertes économiques.", "guide": "/posts/el-nino-secours-meme-pluie/"},
 
@@ -1027,6 +1030,26 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'risque-de-base': {
+    formula: 'base de matière première = prix physique − prix à terme, à unité et devise comparables',
+    articles: [{ label: 'Le dollar caché dans la facture d’énergie', href: '/posts/dollar-facture-energie/', kind: 'article' }],
+    sources: [
+      { label: 'CFTC : Basis et Basis Risk', href: 'https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', detail: 'Écart comptant-terme et variations entre l’ouverture et la clôture d’une couverture.', kind: 'source' },
+      { label: 'BCE : dérivés énergétiques', href: 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html', detail: 'Section 3 : écarts entre points de livraison du gaz.', kind: 'source' },
+    ],
+    related: ['brent', 'future', 'couverture-de-change'],
+  },
+  'couverture-de-change': {
+    articles: [{ label: 'Le dollar caché dans la facture d’énergie', href: '/posts/dollar-facture-energie/', kind: 'article' }],
+    sources: [{ label: 'BIS : forwards, swaps et couverture du commerce', href: 'https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt', detail: 'Section sur les entreprises non financières : échanges internationaux et dettes en devises.', kind: 'source' }],
+    related: ['risque-de-base', 'future', 'compte-courant'],
+  },
+  'termes-de-l-echange': {
+    formula: 'indice des termes de l’échange = indice des prix d’exportation / indice des prix d’importation × 100',
+    articles: [{ label: 'Le dollar caché dans la facture d’énergie', href: '/posts/dollar-facture-energie/', kind: 'article' }],
+    sources: [{ label: 'OCDE : définition des termes de l’échange', href: 'https://www.oecd.org/en/data/indicators/terms-of-trade.html', detail: 'Prix relatifs des exportations et importations et pouvoir d’achat extérieur.', kind: 'source' }],
+    related: ['compte-courant', 'transmission-des-prix', 'couverture-de-change'],
+  },
   ldi: {
     intuition: 'La valeur actualisée des pensions peut baisser plus vite que les actifs, tandis que les contrats du fonds LDI exigent des ressources immédiatement.',
     formula: 'taux de couverture = actifs du régime / valeur actualisée de ses engagements',

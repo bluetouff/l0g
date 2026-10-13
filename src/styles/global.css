@@ -321,6 +321,11 @@ a { color: inherit; text-decoration: none; }
 
 .prose p { color: var(--color-prose); }
 
+.post-title, .hero-title {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
 .prose a {
   color: var(--color-signal);
   text-decoration: underline;

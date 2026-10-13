@@ -23,7 +23,6 @@ const isEnglish = lang === 'en';
 const isDebt = publication === 'debt-chain';
 const debt = debtEditions[lang];
 const debtDark = debt.editions.find(edition => edition.theme === 'dark')!;
-const debtLight = debt.editions.find(edition => edition.theme === 'light')!;
 const isMicrosoft = publication === 'microsoft';
 const microsoft = microsoftEditions[lang];
 const isReserves = publication === 'reserves';
@@ -91,7 +90,7 @@ const copy = isDebt ? {
   deck: debt.subtitle,
   description: isEnglish ? 'Follow government debt from the first buyer to the market backstop. Seven complete analyses, forty infographics, an original introduction and conclusion, sources and a glossary.' : 'Suivre la dette publique du premier acheteur au secours de marché. Sept analyses intégrales, quarante infographies, une introduction et une conclusion originales, les sources et un glossaire.',
   factsLabel: isEnglish ? 'Edition contents' : 'Contenu de l’édition',
-  facts: [{ value: String(debt.chapters.length), label: isEnglish ? 'chapters' : 'chapitres' }, { value: String(debt.figureCount), label: isEnglish ? 'infographics' : 'infographies' }, { value: '2', label: isEnglish ? 'dark / light editions' : 'versions sombre / claire' }, { value: 'CC BY 4.0', label: 'licence' }],
+  facts: [{ value: String(debt.chapters.length), label: isEnglish ? 'chapters' : 'chapitres' }, { value: String(debt.figureCount), label: isEnglish ? 'infographics' : 'infographies' }, { value: formattedSize, label: isEnglish ? 'download' : 'téléchargement' }, { value: 'CC BY 4.0', label: 'licence' }],
   discover: isEnglish ? 'Explore the book' : 'Découvrir le livre', downloadLabel: isEnglish ? 'Dark EPUB' : 'EPUB sombre', fileName: epubFile,
 } : isMicrosoft ? {
   coverLabel: isEnglish ? 'Explore Leaving Microsoft' : 'Découvrir Quitter Microsoft', coverAlt: microsoft.title,
@@ -320,9 +319,6 @@ const copy = isDebt ? {
       <a class="publication-secondary" href={epubUrl} download={copy.fileName}>
         {copy.downloadLabel}
       </a>
-      {isDebt && <a class="publication-secondary" href={debtLight.epub} download>
-        {isEnglish ? 'Light EPUB' : 'EPUB clair'}
-      </a>}
       {showAllPublicationsLink && (
         <a class="publication-secondary" href={isEnglish ? '/en/publications/' : '/publications/'}>
           {isEnglish ? 'All publications' : 'Toutes les publications'}

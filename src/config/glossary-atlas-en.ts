@@ -204,6 +204,41 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'risque-de-base', sigle: 'Basis risk', nom: 'Changes in the gap between an exposure and its hedge',
+    def: 'The risk that the price gap between the commodity actually bought or sold and the benchmark used to hedge it changes during the hedge. Products, grades, delivery locations and dates may differ. Hedging crude oil can therefore leave part of a refined fuel’s cost exposed.',
+    guide: '/en/analysis/dollar-facture-energie/', ...energySection, robots: 'noindex,follow',
+    atlas: {
+      formula: 'commodity basis = physical price − futures price, in comparable units and currencies',
+      articles: [{ label: 'The dollar inside Europe’s energy bill', href: '/en/analysis/dollar-facture-energie/', kind: 'article' }],
+      sources: [
+        { label: 'CFTC: Basis and Basis Risk', href: 'https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', detail: 'Cash-futures price differences and changes between establishing and lifting a hedge.', kind: 'source' },
+        { label: 'ECB: energy derivatives', href: 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html', detail: 'Section 3: price spreads between gas delivery points.', kind: 'source' },
+      ],
+      related: ['brent', 'future', 'couverture-de-change'],
+    },
+  },
+  {
+    slug: 'couverture-de-change', sigle: 'Currency hedging', nom: 'Reducing foreign currency exposure',
+    def: 'An operation intended to reduce exchange-rate risk on a defined amount and maturity, for example through a forward or currency swap. Hedging the budgeted amount fixes neither the commodity price nor the additional currency required if spending rises.',
+    guide: '/en/analysis/dollar-facture-energie/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'The dollar inside Europe’s energy bill', href: '/en/analysis/dollar-facture-energie/', kind: 'article' }],
+      sources: [{ label: 'BIS: forwards, swaps and trade hedging', href: 'https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt', detail: 'Non-financial customers: international trade and foreign currency liabilities.', kind: 'source' }],
+      related: ['risque-de-base', 'future', 'compte-courant'],
+    },
+  },
+  {
+    slug: 'termes-de-l-echange', sigle: 'Terms of trade', nom: 'Export prices relative to import prices',
+    def: 'An economy’s export price index divided by its import price index. An increase means that the same exports can buy more imports. This price indicator is distinct from the trade balance, which also depends on the quantities traded.',
+    guide: '/en/analysis/dollar-facture-energie/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      formula: 'terms-of-trade index = export price index / import price index × 100',
+      articles: [{ label: 'The dollar inside Europe’s energy bill', href: '/en/analysis/dollar-facture-energie/', kind: 'article' }],
+      sources: [{ label: 'OECD: terms of trade definition', href: 'https://www.oecd.org/en/data/indicators/terms-of-trade.html', detail: 'Relative export and import prices and purchasing power abroad.', kind: 'source' }],
+      related: ['compte-courant', 'transmission-des-prix', 'couverture-de-change'],
+    },
+  },
+  {
     slug: 'ldi', sigle: 'LDI', nom: 'Liability-driven investment',
     def: 'A strategy aligning the interest-rate and inflation sensitivity of pension assets with future pension liabilities. Bonds, derivatives and sometimes borrowing provide the exposure. Leverage creates collateral demands: a better-funded pension scheme can own an LDI vehicle facing cash shortages or depleted capital.',
     guide: '/en/analysis/dette-etats-05-appels-marge/', ...clearingSection, robots: 'noindex,follow',
