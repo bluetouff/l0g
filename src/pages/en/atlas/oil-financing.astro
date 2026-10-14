@@ -4,6 +4,7 @@ import EngagementAtlas from '../../../components/EngagementAtlas.astro';
 import { englishAtlasDatasets } from '../../../config/english-atlas-datasets';
 import { atlasAlternateLinks } from '../../../config/atlases';
 const dataset = englishAtlasDatasets['oil-financing'];
+const latestDate = dataset.milestones.at(-1)!.date;
 ---
 
 <EnglishGuidesLayout title={dataset.title} seoTitle="Oil financing atlas: banks, traders and revenues | l0g" description="Who finances the oil trade? Explore banks, Trafigura, Glencore and Chad through documented cargo payments, credit facilities and public revenues." ogImage="/illustrations/news/oil-trade-bank-finance-v1.jpg" ogImageAlt="Banks and the financing of the oil trade" alternateLinks={atlasAlternateLinks(dataset.id)}>
@@ -11,12 +12,14 @@ const dataset = englishAtlasDatasets['oil-financing'];
     language="en"
     dataset={dataset}
     subject="oil financing"
-    intro="Who pays the seller, who advances the money, and who receives the revenues? Follow a cargo, a trader’s financing, an oil-backed loan in Chad and the financing plan for a tanker fleet."
-    boundary="Four documented cases from different periods. Arrows represent the relationship described in each record, which is not always a payment. At the 4 October review, Volare’s new shares had been issued and registered; settlement and listing remained unconfirmed. The facilities Trafigura announced as closed on 1 October establish no bank financing for Volare. Glencore’s roles as buyer and creditor remain distinct."
+    intro="Who pays the seller, who advances the money, and who receives the revenues? Follow a cargo, a trader’s financing, an oil-backed loan in Chad and the financing of Volare’s fleet."
+    boundary="Four documented cases from different periods. Arrows represent each record’s relationship, which is not always a payment. Volare began trading on 5 October and reported a partial exercise of its share issuance option on 13 October. Vessel leases, equity subscriptions and Trafigura’s corporate facilities remain separate. Glencore’s roles as buyer and creditor are also distinct."
     selectedRelation="investors-volare"
     hubs={['unicredit', 'trafigura', 'escrow']}
     entryPoints={[
-      { label: 'What is the status of Volare’s financing?', relation: 'investors-volare', date: '2026-10-01' },
+      { label: 'What is the status of Volare’s financing?', relation: 'investors-volare', date: latestDate },
+      { label: 'How are the operating vessels financed?', relation: 'bocomm-volare-leasebacks', date: '2026-10-05' },
+      { label: 'Which financing remains to be secured?', relation: 'volare-fleet-programme', date: '2026-10-05' },
       { label: 'Who pays for the cargo?', relation: 'unicredit-bp-payment', date: '2023-05-04' },
       { label: 'What is Trafigura refinancing in October?', relation: 'usd-cnh-trafigura-credit', date: '2026-10-01' },
       { label: 'What reaches Chad’s Treasury?', relation: 'escrow-treasury-balance', date: '2025-12-30' },
@@ -29,7 +32,7 @@ const dataset = englishAtlasDatasets['oil-financing'];
     ]}
   >
     <section slot="overview" class="oil-overview" aria-labelledby="oil-circuits-title">
-      <p><strong>Evidence reviewed on <time datetime="2026-10-04">4 October 2026</time>.</strong> This translation preserves that review’s limits. The 1 October releases document <a href="https://newsweb.oslobors.no/message/683407">Volare’s share issuance</a> and <a href="https://www.trafigura.com/news-and-insights/press-releases/2026/trafigura-secures-usd4-4-billion-syndicated-revolving-credit-facility-and-term-loan-facilities/">Trafigura’s refinancing</a>. Volare trading was then expected around 5 October, after the review; this edition does not verify whether it began. Trafigura’s announcement does not confirm an extension of the March buffer. The <a href="https://eiti.org/countries/chad">EITI Chad page</a> consulted in the review still pointed to the 2023 report published in late 2025; the Chad financing chain retains that historical period.</p>
+      <p><strong>Evidence reviewed on <time datetime="2026-10-14">14 October 2026</time>.</strong> Volare’s <a href="https://www.volareshipping.com/news/volare-shipping-ltd-first-day-of-trading-on-euronext-growth-oslo-and-publication-of-information-document/">5 October</a> and <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice/">13 October</a> releases update the listing and placement. The <a href="https://mb.cision.com/Public/24324/4404303/ad59eaca69c8f1aa.pdf">information document, sections 6.6 and 6.9</a>, sets out fleet financing. The other financing chains retain their documented periods; the Chad case remains based on the <a href="https://eiti.org/documents/chad-2023-eiti-report">2023 EITI report</a>.</p>
       <details>
         <summary id="oil-circuits-title">Four ways to follow the financing</summary>
         <ol>

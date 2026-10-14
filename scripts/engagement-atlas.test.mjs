@@ -21,6 +21,53 @@ const source = JSON.parse(readFileSync(new URL('../src/data/engagement-atlas.jso
 const credit = JSON.parse(readFileSync(new URL('../src/data/private-credit-atlas.json', import.meta.url), 'utf8'));
 const oil = JSON.parse(readFileSync(new URL('../src/data/oil-financing-atlas.json', import.meta.url), 'utf8'));
 
+test('October securitizations respect publication cutoffs and do not imply VFN loan transfers', () => {
+  const before = atlasAt(credit, '2026-10-04');
+  assert.equal(before.nodes.some(node => ['paid-2026-6', 'rpm-2026-5', 'paid-investors', 'rpm-investors'].includes(node.id)), false);
+  const personal = atlasAt(credit, '2026-10-05');
+  assert.equal(personal.relations.some(relation => relation.id === 'investors-paid-securitization'), true);
+  assert.equal(personal.nodes.some(node => node.id === 'rpm-2026-5'), false);
+  assert.equal(personal.sources.some(item => item.id === 'pagaya-rpm-20261012'), false);
+  const latest = atlasAt(credit, '2026-10-12');
+  const paid = latest.relations.find(item => item.id === 'investors-paid-securitization');
+  const rpm = latest.relations.find(item => item.id === 'investors-rpm-securitization');
+  assert.notEqual(paid.from, rpm.from);
+  for (const relation of [paid, rpm]) {
+    assert.equal(relation.observation.recordedOn, '2026-10-14');
+    assert.equal(relation.observation.amount, undefined);
+    assert.equal(latest.relations.some(item => ['bnp', 'jpm', 'athene', 'atlas-sp', 'pagaya-vfn'].includes(item.from) && item.to === relation.to), false);
+  }
+  assert.deepEqual(latest.relations.find(item => item.id === 'atlas-pagaya-vfn').observation, before.relations.find(item => item.id === 'atlas-pagaya-vfn').observation);
+  assert.deepEqual(latest.relations.find(item => item.id === 'arcc-hyland').observation, before.relations.find(item => item.id === 'arcc-hyland').observation);
+});
+
+test('Volare admission, leases and partial option exercise preserve their separate documentary states', () => {
+  const before = atlasAt(oil, '2026-10-04');
+  assert.equal(before.nodes.some(node => node.id === 'bocomm-leasing'), false);
+  assert.equal(before.sources.some(item => item.id === 'volare-information-20261005'), false);
+  const admitted = atlasAt(oil, '2026-10-05');
+  const issue = admitted.relations.find(item => item.id === 'investors-volare').observation;
+  assert.equal(issue.publishedOn, '2026-10-05');
+  assert.match(issue.label, /livrées/);
+  const shortfall = admitted.relations.find(item => item.id === 'volare-fleet-programme').observation;
+  assert.equal(shortfall.kind, 'limitation');
+  assert.equal(shortfall.amount, undefined);
+  assert.match(shortfall.claim, /59 millions/);
+  assert.match(shortfall.limit, /prévision/);
+  const lease = admitted.relations.find(item => item.id === 'bocomm-volare-leasebacks');
+  assert.deepEqual([lease.from, lease.to], ['bocomm-leasing', 'volare']);
+  assert.equal(lease.observation.amount, undefined);
+  assert.match(lease.observation.claim, /filiales/);
+  assert.match(lease.observation.limit, /pas un prêt bancaire ordinaire/);
+  const latest = atlasAt(oil, '2026-10-13');
+  assert.equal(latest.relations.find(item => item.id === 'investors-volare').observation.publishedOn, '2026-10-13');
+  assert.match(latest.relations.find(item => item.id === 'investors-volare').observation.limit, /pas exercée intégralement/);
+  assert.equal(admitted.sources.some(item => item.id === 'volare-stabilisation-20261013'), false);
+  assert.deepEqual(latest.relations.find(item => item.id === 'usd-cnh-trafigura-credit').observation, before.relations.find(item => item.id === 'usd-cnh-trafigura-credit').observation);
+  assert.equal(oil.relations.some(item => ['ercf', 'usd-cnh-facilities', 'liquidity'].includes(item.from) && item.to === 'volare'), false);
+  assert.equal(oil.relations.every(item => item.observations.every(observation => observation.amount === undefined)), true);
+});
+
 test('oil atlas uses publication dates, not transaction years, and excludes later facilities', () => {
   assertAtlasDataset(oil);
   assert.equal(atlasAt(oil, '2020-04-02').relations.length, 0);

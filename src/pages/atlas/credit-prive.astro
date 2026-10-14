@@ -10,11 +10,13 @@ const latestDate = dataset.milestones.at(-1)!.date;
   <EngagementAtlas
     dataset={dataset}
     subject="crédit privé"
-    intro="Qui apporte les capitaux, qui gère les fonds et qui emprunte ? Explorez les prêts aux entreprises autour d’Ares Capital et le crédit adossé à des actifs autour d’Apollo, d’Athene et d’ATLAS SP, jusqu’aux prêts personnels de la plateforme Pagaya."
+    intro="Qui apporte les capitaux, qui gère les fonds et qui emprunte ? Explorez les prêts aux entreprises autour d’Ares Capital et le crédit adossé à des actifs autour d’Apollo, d’Athene et d’ATLAS SP, jusqu’aux titrisations de prêts personnels et automobiles de Pagaya."
     boundary="La carte couvre une sélection de relations publiées, principalement aux États-Unis. Un même acteur peut intervenir dans plusieurs circuits : cela n’établit pas qu’une banque finance un prêt précis, ni qu’elle garantit les autres participants. ATLAS SP désigne ici une société, distincte des atlas l0g."
-    selectedRelation="atlas-pagaya-vfn"
+    selectedRelation="investors-rpm-securitization"
     hubs={['arcc', 'atlas-sp', 'athene']}
     entryPoints={[
+      { label: 'Comment Pagaya titrise-t-elle les prêts automobiles ?', relation: 'investors-rpm-securitization', date: latestDate },
+      { label: 'Quelle émission porte les prêts personnels ?', relation: 'investors-paid-securitization', date: '2026-10-05' },
       { label: 'Comment ATLAS finance-t-il les prêts Pagaya ?', relation: 'atlas-pagaya-vfn', date: latestDate },
       { label: 'Comment ARCC se refinance-t-elle ?', relation: 'noteholders-arcc', date: latestDate },
       { label: 'Où interviennent les banques ?', relation: 'bnp-afb', date: latestDate },
@@ -29,7 +31,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
     ]}
   >
     <section slot="overview" class="credit-overview" aria-labelledby="credit-circuits-title">
-      <p class="credit-review"><strong>Revue du <time datetime="2026-10-04">4 octobre 2026</time>.</strong> Le <a href="https://investor.pagaya.com/news-releases/news-release-details/pagaya-secures-first-variable-funding-note-facility-atlas-sp">communiqué Pagaya du 29 septembre</a> ajoute un entrepôt de prêts à la carte. VFN signifie <em>Variable Funding Note</em>, un financement renouvelable par titres. Les positions de portefeuille restent datées du 30 juin 2026. ARCC <a href="https://arcc.ares.com/news/ares-capital-corporation-schedules-earnings-release-for-the-third-quarter-ended-september-30-2026/47c2ef5e-1218-459c-bc46-73fc46ce2cc9">prévoit ses résultats du troisième trimestre le 27 octobre</a> ; ce calendrier ne décrit pas de nouveaux prêts ou remboursements.</p>
+      <p class="credit-review"><strong>Revue du <time datetime="2026-10-14">14 octobre 2026</time>.</strong> Les communiqués Pagaya du <a href="https://investor.pagaya.com/static-files/656c85c1-d518-4f09-bd5c-f47e45e67598">5 octobre</a> et du <a href="https://investor.pagaya.com/news-releases/news-release-details/pagaya-closes-100th-asset-backed-securitization-new-650-million">12 octobre</a> ajoutent deux titrisations distinctes. Ils ne documentent pas un tirage de la facilité VFN avec ATLAS SP. VFN signifie <em>Variable Funding Note</em>, un financement renouvelable par titres. Les positions de portefeuille conservent leur période au 30 juin 2026 ; les <a href="https://www.sec.gov/Archives/edgar/data/1527469/000152746926000073/ahl-20261005.htm">estimations préliminaires d’Athene du 5 octobre</a> ne les actualisent pas.</p>
       <details>
       <summary id="credit-circuits-title">Comprendre les rôles dans le circuit du crédit privé</summary>
       <p>Dans les circuits présentés, ARCC prête aux entreprises tandis qu’ATLAS SP finance des portefeuilles de créances, dont des prêts personnels. Les banques restent présentes dans le financement des intermédiaires.</p>

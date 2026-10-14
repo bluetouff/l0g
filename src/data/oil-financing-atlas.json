@@ -52,6 +52,34 @@
       "url": "https://www.trafigura.com/news-and-insights/press-releases/2026/trafigura-secures-usd4-4-billion-syndicated-revolving-credit-facility-and-term-loan-facilities/",
       "publishedOn": "2026-10-01",
       "locator": "Communiqué du 1er octobre : quatre tranches USD/CNH, refinancement des tranches de 2023 et 2025, usages généraux, 40 institutions et coordination globale d’OCBC."
+    },
+    {
+      "id": "volare-first-trading-20261005",
+      "title": "Volare : première séance et livraison des actions",
+      "url": "https://www.volareshipping.com/news/volare-shipping-ltd-first-day-of-trading-on-euronext-growth-oslo-and-publication-of-information-document/",
+      "publishedOn": "2026-10-05",
+      "locator": "Communiqué du 5 octobre, paragraphes sur le début des échanges et la livraison des actions nouvelles."
+    },
+    {
+      "id": "volare-listing-20261005",
+      "title": "Euronext : admission de Volare et actionnaire majoritaire",
+      "url": "https://www.volareshipping.com/news/volare-shipping-ltd-lists-on-euronext-growth/",
+      "publishedOn": "2026-10-05",
+      "locator": "Communiqué Euronext reproduit par Volare le 5 octobre, présentation de la société."
+    },
+    {
+      "id": "volare-information-20261005",
+      "title": "Volare : document d’admission du 5 octobre",
+      "url": "https://mb.cision.com/Public/24324/4404303/ad59eaca69c8f1aa.pdf",
+      "publishedOn": "2026-10-05",
+      "locator": "Sections 6.6, p. 30 (liquidité prévisionnelle), et 6.9, p. 32 (cession-location des six navires) ; pages PDF 34 et 36."
+    },
+    {
+      "id": "volare-stabilisation-20261013",
+      "title": "Volare : exercice partiel de l’option d’émission",
+      "url": "https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice/",
+      "publishedOn": "2026-10-13",
+      "locator": "Communiqué du 13 octobre : actions supplémentaires et durée de la période de stabilisation."
     }
   ],
   "nodes": [
@@ -180,6 +208,13 @@
       "role": "Navires en service et commandes",
       "column": 3,
       "row": 1
+    },
+    {
+      "id": "bocomm-leasing",
+      "label": "BOCOMM Leasing",
+      "role": "Bailleur des six navires exploités",
+      "column": 0,
+      "row": 0
     }
   ],
   "relations": [
@@ -589,6 +624,19 @@
           "sources": [
             "volare-placement-20260923"
           ]
+        },
+        {
+          "publishedOn": "2026-10-05",
+          "recordedOn": "2026-10-14",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Actionnaire majoritaire à l’admission",
+          "claim": "Le communiqué d’admission présente Volare comme majoritairement détenue par Trafigura.",
+          "limit": "Il ne donne pas le pourcentage effectif après stabilisation. La détention du capital ne vaut pas garantie des dettes de Volare ; le pourcentage prospectif du 23 septembre reste dans la coupe historique.",
+          "watch": "Actionnariat publié après la stabilisation et conventions de gestion.",
+          "sources": [
+            "volare-listing-20261005"
+          ]
         }
       ]
     },
@@ -635,6 +683,32 @@
           "sources": [
             "volare-capital-20261001",
             "volare-placement-20260923"
+          ]
+        },
+        {
+          "publishedOn": "2026-10-05",
+          "recordedOn": "2026-10-14",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Cotation commencée · actions livrées",
+          "claim": "Volare annonce le début des échanges sur Euronext Growth Oslo et la livraison des actions nouvelles du placement le 5 octobre.",
+          "limit": "La livraison est désormais annoncée comme réalisée. Elle ne documente pas l’emploi effectif du produit net ni un financement bancaire des navires neufs.",
+          "watch": "Emploi des fonds et éventuel exercice de l’option d’émission supplémentaire.",
+          "sources": [
+            "volare-first-trading-20261005"
+          ]
+        },
+        {
+          "publishedOn": "2026-10-13",
+          "recordedOn": "2026-10-14",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Option exercée partiellement · 300 000 actions",
+          "claim": "Volare annonce l’émission de 300 000 actions supplémentaires par exercice partiel de l’option. Le total annoncé atteint 70 619 479 actions.",
+          "limit": "L’option n’est pas exercée intégralement. La période de stabilisation court jusqu’au 3 novembre ; ce communiqué ne détaille pas un encaissement net ni l’actionnariat définitif.",
+          "watch": "Fin de stabilisation, émissions supplémentaires et actionnariat final.",
+          "sources": [
+            "volare-stabilisation-20261013"
           ]
         }
       ]
@@ -683,6 +757,39 @@
             "volare-capital-20261001",
             "volare-placement-20260923"
           ]
+        },
+        {
+          "publishedOn": "2026-10-05",
+          "recordedOn": "2026-10-14",
+          "review": "reviewed",
+          "kind": "limitation",
+          "label": "Liquidité prévisionnelle · financement à compléter",
+          "claim": "Le document d’admission estime un déficit de liquidité d’environ 59 millions de dollars sur les douze mois suivant l’admission. Aucun prêt couvrant ce besoin n’est signé à sa date.",
+          "limit": "Cette prévision ne mesure ni une perte réalisée ni une dette déjà exigible. Les financements supplémentaires recherchés ne sont pas acquis ; les paiements aux chantiers restent à documenter.",
+          "watch": "Signature des financements complémentaires et paiements du programme de construction.",
+          "sources": [
+            "volare-information-20261005"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bocomm-volare-leasebacks",
+      "from": "bocomm-leasing",
+      "to": "volare",
+      "observations": [
+        {
+          "publishedOn": "2026-10-05",
+          "recordedOn": "2026-10-14",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Six navires · cession puis location",
+          "claim": "Des filiales de Volare ont vendu les six navires exploités à BOCOMM puis les ont repris en location coque nue.",
+          "limit": "Ces contrats de cession-location ne sont pas un prêt bancaire ordinaire à la société mère. Ils ne prouvent pas le financement des huit navires en commande ni une garantie de Trafigura.",
+          "watch": "Échéances de location, options de rachat et financement distinct des navires neufs.",
+          "sources": [
+            "volare-information-20261005"
+          ]
         }
       ]
     }
@@ -717,6 +824,16 @@
       "date": "2026-10-01",
       "label": "Actions émises et refinancement de Trafigura",
       "change": "Volare confirme l’émission et l’enregistrement des actions ; la cotation reste attendue vers le 5 octobre. Trafigura annonce séparément la clôture de 4,4 Md$ de facilités USD/CNH, sans lien bancaire établi vers Volare."
+    },
+    {
+      "date": "2026-10-05",
+      "label": "Volare · admission et financement de la flotte",
+      "change": "La cotation et la livraison des actions sont annoncées comme réalisées. Les fiches distinguent les locations existantes du financement encore recherché."
+    },
+    {
+      "date": "2026-10-13",
+      "label": "Volare · option d’émission partiellement exercée",
+      "change": "La stabilisation reste en cours ; l’émission supplémentaire ne permet pas de déduire l’actionnariat définitif."
     }
   ]
 }

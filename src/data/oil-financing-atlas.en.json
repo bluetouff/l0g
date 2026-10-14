@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "f5954d77065f310a2cdc1c0c6acf76c1208be1f7aa57f656a6d8fab807efd384",
+  "sourceSha256": "876381ec0b53d01173c058bbb8464fdbeb8d43d733121d1adac671d321956b8e",
   "title": "Oil financing atlas",
   "sources": {
     "sienna-judgment-2023": {
@@ -29,6 +29,22 @@
     "trafigura-facilities-20261001": {
       "title": "Trafigura: closing of $4.4bn in revolving credit and term loan facilities",
       "locator": "October 1 release: four USD/CNH tranches, refinancing of 2023 and 2025 tranches, general corporate purposes, 40 institutions and OCBC as global coordinator."
+    },
+    "volare-first-trading-20261005": {
+      "title": "Volare: first trading day and share delivery",
+      "locator": "October 5 release, paragraphs on the start of trading and delivery of the new shares."
+    },
+    "volare-listing-20261005": {
+      "title": "Euronext: Volare admission and majority shareholder",
+      "locator": "Euronext release reproduced by Volare on October 5, company overview."
+    },
+    "volare-information-20261005": {
+      "title": "Volare: October 5 information document",
+      "locator": "Sections 6.6, p. 30 (projected liquidity), and 6.9, p. 32 (six-vessel sale and leasebacks); PDF pages 34 and 36."
+    },
+    "volare-stabilisation-20261013": {
+      "title": "Volare: partial exercise of the share issuance option",
+      "locator": "October 13 notice: additional shares and the stabilization period."
     }
   },
   "nodes": {
@@ -103,6 +119,10 @@
     "volare-fleet": {
       "label": "Volare fleet",
       "role": "Operating vessels and orderbook"
+    },
+    "bocomm-leasing": {
+      "label": "BOCOMM Leasing",
+      "role": "Lessor of the six operating vessels"
     }
   },
   "relations": {
@@ -335,6 +355,12 @@
           "claim": "The release projects approximately 53% ownership for Trafigura Volare Holdings B.V. at listing, assuming full exercise of the option to issue additional shares.",
           "limit": "This percentage is forward-looking and conditional. It establishes neither completed dilution nor a guarantee of Volare's debts.",
           "watch": "Actual ownership after settlement and stabilization."
+        },
+        "2026-10-05": {
+          "label": "Majority shareholder at admission",
+          "claim": "The admission release identifies Volare as majority-owned by Trafigura.",
+          "limit": "It does not give the effective holding after stabilization. Share ownership does not guarantee Volare’s debt; the September 23 prospective percentage remains in the historical view.",
+          "watch": "Published ownership after stabilization and management agreements."
         }
       }
     },
@@ -357,6 +383,18 @@
           "claim": "Volare confirms issuance and registration of the 30,698,864 new placement shares. The total number of shares reaches 70,319,479.",
           "limit": "Reported issued and paid-up capital is not the cash proceeds received from the placement. This release does not confirm settlement with investors, expected around October 5 in the September 23 release. Listing remains expected around that date and exercise of the option to issue additional shares is unconfirmed.",
           "watch": "Settlement, first trading session and stabilization."
+        },
+        "2026-10-05": {
+          "label": "Trading started · shares delivered",
+          "claim": "Volare announces the start of trading on Euronext Growth Oslo and delivery of the placement’s new shares on October 5.",
+          "limit": "Delivery is now reported as completed. It does not document the actual use of net proceeds or bank financing for the newbuilds.",
+          "watch": "Use of proceeds and any exercise of the additional share issuance option."
+        },
+        "2026-10-13": {
+          "label": "Option partly exercised · 300,000 shares",
+          "claim": "Volare reports issuing 300,000 additional shares through a partial exercise of the option, bringing the announced total to 70,619,479 shares.",
+          "limit": "The option has not been exercised in full. Stabilization runs until November 3; this notice does not detail net cash received or final ownership.",
+          "watch": "End of stabilization, further share issuance and final ownership."
         }
       }
     },
@@ -379,6 +417,22 @@
           "claim": "Volare confirms six operating VLCCs and eight on order, with deliveries expected between 2027 and 2028.",
           "limit": "This timetable remains a forecast. Share issuance establishes neither payments to shipyards nor repayment of the debts mentioned on September 23.",
           "watch": "Deliveries and actual use of proceeds."
+        },
+        "2026-10-05": {
+          "label": "Projected liquidity · further financing needed",
+          "claim": "The admission document estimates a liquidity shortfall of about $59 million over the twelve months after admission. No loan covering that need is signed at the document’s date.",
+          "limit": "This forecast is neither a realized loss nor debt already due. Additional financing being sought is not secured; shipyard payments remain to be documented.",
+          "watch": "Execution of further financing agreements and payments for the newbuild program."
+        }
+      }
+    },
+    "bocomm-volare-leasebacks": {
+      "observations": {
+        "2026-10-05": {
+          "label": "Six vessels · sale and leaseback",
+          "claim": "Volare subsidiaries sold the six operating vessels to BOCOMM and chartered them back on bareboat terms.",
+          "limit": "These sale and leasebacks are not an ordinary bank loan to the parent company. They establish neither financing of the eight vessels on order nor a Trafigura guarantee.",
+          "watch": "Lease payments, purchase options and separate newbuild financing."
         }
       }
     }
@@ -407,6 +461,14 @@
     "2026-10-01": {
       "label": "Shares issued and Trafigura refinancing",
       "change": "Volare confirms share issuance and registration; listing remains expected around October 5. Trafigura separately announces the closing of $4.4bn in USD/CNH facilities, with no established bank financing link to Volare."
+    },
+    "2026-10-05": {
+      "label": "Volare · admission and fleet financing",
+      "change": "Trading and share delivery are reported as completed. Records distinguish existing leases from financing still being sought."
+    },
+    "2026-10-13": {
+      "label": "Volare · share issuance option partly exercised",
+      "change": "Stabilization remains in progress; the additional issue does not establish final ownership."
     }
   }
 }

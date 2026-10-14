@@ -31,6 +31,16 @@ Chaque traduction porte `sourceSha256`, le SHA-256 du `JSON.stringify` du corpus
 
 ## Trois dates distinctes
 
+### Enrichissement revu le 14 octobre 2026
+
+- IA : le registre SEC de SB Energy a été consulté. Son dernier dépôt reste le S-1/A du 21 septembre ; ce passage ne renouvelle pas la revue de chaque contrat. Les observations et leurs dates restent inchangées, sans confirmation nouvelle du règlement du placement ou de la réalisation de l’introduction en Bourse.
+- Crédit privé : les communiqués Pagaya des 5 et 12 octobre ajoutent PAID 2026-6 et RPM 2026-5. Ces émissions de prêts personnels et automobiles gardent des groupes de souscripteurs distincts et non identifiés. Aucun transfert de prêts depuis la VFN d’ATLAS SP ni tirage de cette facilité n’est inféré. Les estimations préliminaires d’Athene publiées le 5 octobre ne renouvellent pas les positions de portefeuille au 30 juin.
+- Pétrole : les pièces Volare des 5 et 13 octobre actualisent l’admission, la livraison des actions et l’exercice partiel de l’option d’émission. Les sections 6.6 et 6.9 du document d’admission ajoutent la limite de liquidité prévisionnelle et les contrats de cession-location via les filiales. Les crédits de Trafigura restent distincts et les coupes historiques sont conservées.
+
+Les six pages FR/EN affichent le périmètre réel de cette revue. Les nouvelles observations portent `recordedOn: "2026-10-14"` ; leurs dates de publication restent celles des pièces. Les traductions des ajouts sont relues avant renouvellement des empreintes. La veille automatique reste en pause.
+
+Les liens Volare sont limités aux chemins `/news/<slug>/` de l’émetteur et aux PDF du compte éditeur Cision `24324`. Les communiqués PDF de Pagaya utilisent uniquement `/static-files/<UUID>`. Les tests refusent les autres chemins, comptes éditeurs, suffixes d’origine, authentifiants, paramètres et fragments.
+
 ### Enrichissement revu le 4 octobre 2026
 
 - IA : le registre SEC de SB Energy et le S-1/A du 21 septembre ont été relus, ainsi que les publications récentes d’Aligned, Nvidia et OpenAI. Aucune pièce examinée ne confirme le règlement du placement simultané de Nvidia ou la réalisation de l’introduction en Bourse. Une note de revue ciblée est visible sur la page ; les observations et le dernier jalon du corpus restent inchangés. Cette revue ne constitue pas un recensement de tous les financements de l’IA.

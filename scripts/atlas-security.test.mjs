@@ -32,6 +32,31 @@ test('atlas source links retain exact HTTPS origin and path validation at use', 
     'https://investor.pagaya.com/admin',
     pagaya.replace('https://', 'http://'),
   ]) assert.throws(() => atlasSourceUrl(url));
+  const documents = [
+    'https://investor.pagaya.com/static-files/656c85c1-d518-4f09-bd5c-f47e45e67598',
+    'https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice/',
+    'https://mb.cision.com/Public/24324/4404303/ad59eaca69c8f1aa.pdf',
+  ];
+  for (const url of documents) {
+    assert.equal(atlasSourceUrl(url), url);
+    for (const invalid of [
+      url.replace('https://', 'http://'),
+      url.replace('https://', 'https://user:pass@'),
+      url.replace('.com/', '.com.evil.example/'),
+      url.replace('.com/', '.com@evil.example/'),
+      `${url}?token=private`, `${url}#fragment`, `${url}/extra`,
+    ]) assert.throws(() => atlasSourceUrl(invalid));
+  }
+  for (const url of [
+    'https://investor.pagaya.com/static-files/not-a-uuid',
+    'https://investor.pagaya.com/static-files/656c85c1-d518-4f09-bd5c-f47e45e67598.exe',
+    'https://www.volareshipping.com/admin/',
+    'https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice',
+    'https://mb.cision.com/Public/24325/4404303/ad59eaca69c8f1aa.pdf',
+    'https://mb.cision.com/Public/24324/not-a-number/ad59eaca69c8f1aa.pdf',
+    'https://mb.cision.com/Public/24324/4404303/ad59eaca69c8f1aa.html',
+    'https://mb.cision.com/admin',
+  ]) assert.throws(() => atlasSourceUrl(url));
   for (const origin of ['https://aligneddc.com', 'https://arcc.ares.com']) {
     assert.equal(atlasSourceUrl(`${origin}/news`), `${origin}/news`);
     for (const url of [`${origin}.evil.example/news`, `${origin}@evil.example/news`, `${origin}/news?token=private`, `${origin}/news#fragment`, origin.replace('https://', 'https://user:pass@') + '/news']) assert.throws(() => atlasSourceUrl(url));

@@ -3,6 +3,7 @@ import { atlasAlternateLinks } from '../../config/atlases';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EngagementAtlas from '../../components/EngagementAtlas.astro';
 import dataset from '../../data/oil-financing-atlas.json';
+const latestDate = dataset.milestones.at(-1)!.date;
 ---
 
 <BaseLayout
@@ -16,12 +17,14 @@ import dataset from '../../data/oil-financing-atlas.json';
   <EngagementAtlas
     dataset={dataset}
     subject="financement du pétrole"
-    intro="Qui paie le vendeur, qui avance l’argent et qui reçoit les recettes ? Suivez une cargaison, le financement d’un négociant, un prêt pétrolier au Tchad et le projet de financement d’une flotte."
-    boundary="Quatre cas documentés, à des périodes différentes. Les flèches représentent la relation décrite dans chaque fiche, pas toujours un versement. Revue du 4 octobre : les actions nouvelles de Volare sont émises et enregistrées ; le règlement-livraison et la cotation restent à confirmer. Les facilités dont Trafigura annonce la clôture le 1er octobre ne prouvent aucun financement bancaire de Volare. Les deux rôles de Glencore restent distincts : acheteur et créancier."
+    intro="Qui paie le vendeur, qui avance l’argent et qui reçoit les recettes ? Suivez une cargaison, le financement d’un négociant, un prêt pétrolier au Tchad et le financement de la flotte Volare."
+    boundary="Quatre cas documentés, à des périodes différentes. Les flèches représentent la relation décrite dans chaque fiche, pas toujours un versement. Volare est coté depuis le 5 octobre et annonce un exercice partiel de l’option d’émission le 13. Les locations de navires, l’achat d’actions et les crédits d’entreprise de Trafigura restent distincts. Les deux rôles de Glencore restent séparés : acheteur et créancier."
     selectedRelation="investors-volare"
     hubs={['unicredit', 'trafigura', 'escrow']}
     entryPoints={[
-      { label: 'Où en est le financement de Volare ?', relation: 'investors-volare', date: '2026-10-01' },
+      { label: 'Où en est le financement de Volare ?', relation: 'investors-volare', date: latestDate },
+      { label: 'Comment les navires exploités sont-ils financés ?', relation: 'bocomm-volare-leasebacks', date: '2026-10-05' },
+      { label: 'Quel financement reste à compléter ?', relation: 'volare-fleet-programme', date: '2026-10-05' },
       { label: 'Qui paie la cargaison ?', relation: 'unicredit-bp-payment', date: '2023-05-04' },
       { label: 'Que refinance Trafigura en octobre ?', relation: 'usd-cnh-trafigura-credit', date: '2026-10-01' },
       { label: 'Que reçoit le Trésor tchadien ?', relation: 'escrow-treasury-balance', date: '2025-12-30' },
@@ -34,7 +37,7 @@ import dataset from '../../data/oil-financing-atlas.json';
     ]}
   >
     <section slot="overview" class="oil-overview" aria-labelledby="oil-circuits-title">
-      <p><strong>Revue ciblée du 4 octobre 2026.</strong> Les communiqués du 1er octobre documentent <a href="https://newsweb.oslobors.no/message/683407">l’émission des actions de Volare</a> et <a href="https://www.trafigura.com/news-and-insights/press-releases/2026/trafigura-secures-usd4-4-billion-syndicated-revolving-credit-facility-and-term-loan-facilities/">un refinancement de Trafigura</a>. Le démarrage des échanges de Volare reste prévu vers le 5 octobre, après cette revue. Le communiqué de Trafigura ne confirme aucune prolongation de la réserve de mars. La <a href="https://eiti.org/countries/chad">page Tchad de l’ITIE</a> renvoie toujours au rapport 2023 publié fin 2025 ; le circuit tchadien conserve cette période historique.</p>
+      <p><strong>Revue ciblée du <time datetime="2026-10-14">14 octobre 2026</time>.</strong> Les pièces Volare du <a href="https://www.volareshipping.com/news/volare-shipping-ltd-first-day-of-trading-on-euronext-growth-oslo-and-publication-of-information-document/">5 octobre</a> et du <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice/">13 octobre</a> actualisent la cotation et le placement. Le <a href="https://mb.cision.com/Public/24324/4404303/ad59eaca69c8f1aa.pdf">document d’admission, sections 6.6 et 6.9</a>, précise le financement de la flotte. Les autres circuits conservent leurs périodes documentaires ; le cas tchadien reste fondé sur le <a href="https://eiti.org/documents/chad-2023-eiti-report">rapport ITIE 2023</a>.</p>
       <details>
         <summary id="oil-circuits-title">Quatre circuits pour lire le financement</summary>
         <ol>

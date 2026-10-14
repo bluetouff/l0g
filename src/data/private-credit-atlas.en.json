@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "db34872ad64ce7be67c88a01cacf7d637ade701833000b4e31f966647b4e56dc",
+  "sourceSha256": "15de7883bde9552c2c09ac20e1aee957419c22acb8ca8878fcd591c9d7e1bda0",
   "title": "Private credit atlas",
   "sources": {
     "apollo-bnp-2024": {
@@ -29,6 +29,14 @@
     "pagaya-atlas-vfn-20260929": {
       "title": "Pagaya: announced closing of a VFN facility with ATLAS SP",
       "locator": "September 29 release, paragraphs 1 to 3 and final paragraph before About: announced closing, target capacity and dedicated vehicle ahead of securitization."
+    },
+    "pagaya-paid-20261005": {
+      "title": "Pagaya: closing of PAID 2026-6",
+      "locator": "October 5 release PDF, page 1, first paragraph: closing, principal amount and personal loans."
+    },
+    "pagaya-rpm-20261012": {
+      "title": "Pagaya: closing of RPM 2026-5",
+      "locator": "October 12 release, first paragraph: closing, principal amount and auto loans."
     }
   },
   "nodes": {
@@ -83,6 +91,22 @@
     "pagaya-vfn": {
       "label": "Pagaya VFN warehouse",
       "role": "Personal loan vehicle"
+    },
+    "paid-investors": {
+      "label": "PAID investors",
+      "role": "Subscribers not individually identified"
+    },
+    "paid-2026-6": {
+      "label": "Pagaya · PAID 2026-6",
+      "role": "Personal loan securitization"
+    },
+    "rpm-investors": {
+      "label": "RPM investors",
+      "role": "Subscribers not individually identified"
+    },
+    "rpm-2026-5": {
+      "label": "Pagaya · RPM 2026-5",
+      "role": "Auto loan securitization"
     }
   },
   "relations": {
@@ -231,6 +255,26 @@
           "watch": "Vehicle identity, agreement, drawdowns and maturities."
         }
       }
+    },
+    "investors-paid-securitization": {
+      "observations": {
+        "2026-10-05": {
+          "label": "PAID 2026-6 · announced closing · $600m",
+          "claim": "Pagaya announces the closing of PAID 2026-6, a $600 million personal loan securitization.",
+          "limit": "An ABS is an asset-backed security. The release provides neither individual subscriptions nor an allocation of loans from the ATLAS SP VFN facility. The issuance amount does not measure a draw on that facility.",
+          "watch": "Issuance documents, legal issuer and loan provenance."
+        }
+      }
+    },
+    "investors-rpm-securitization": {
+      "observations": {
+        "2026-10-12": {
+          "label": "RPM 2026-5 · announced closing · $650m",
+          "claim": "Pagaya announces the closing of RPM 2026-5, a $650 million auto loan securitization.",
+          "limit": "The release does not name every subscriber. This issue is distinct from PAID 2026-6 and the personal loan VFN facility; no loan transfer from that facility is established. The two investor groups are not assumed to be identical.",
+          "watch": "Issuance documents, legal issuer and subscription allocations."
+        }
+      }
     }
   },
   "milestones": {
@@ -257,6 +301,14 @@
     "2026-09-29": {
       "label": "The Pagaya loan warehouse",
       "change": "Pagaya announces a revolving facility with ATLAS SP to hold personal loans ahead of securitization. Target capacity and drawdowns are distinct."
+    },
+    "2026-10-05": {
+      "label": "Pagaya · personal loan securitization",
+      "change": "PAID 2026-6 joins the map as an issue separate from the VFN facility."
+    },
+    "2026-10-12": {
+      "label": "Pagaya · auto loan securitization",
+      "change": "RPM 2026-5 adds an auto loan issue; no funding chain between the two securitizations is inferred."
     }
   }
 }

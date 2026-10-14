@@ -52,6 +52,20 @@
       "url": "https://investor.pagaya.com/news-releases/news-release-details/pagaya-secures-first-variable-funding-note-facility-atlas-sp",
       "publishedOn": "2026-09-29",
       "locator": "Communiqué du 29 septembre, paragraphes 1 à 3 et dernier paragraphe avant About : clôture annoncée, capacité ciblée et véhicule dédié avant titrisation."
+    },
+    {
+      "id": "pagaya-paid-20261005",
+      "title": "Pagaya : clôture de PAID 2026-6",
+      "url": "https://investor.pagaya.com/static-files/656c85c1-d518-4f09-bd5c-f47e45e67598",
+      "publishedOn": "2026-10-05",
+      "locator": "Communiqué PDF du 5 octobre, page 1, premier paragraphe : clôture, nominal et prêts personnels."
+    },
+    {
+      "id": "pagaya-rpm-20261012",
+      "title": "Pagaya : clôture de RPM 2026-5",
+      "url": "https://investor.pagaya.com/news-releases/news-release-details/pagaya-closes-100th-asset-backed-securitization-new-650-million",
+      "publishedOn": "2026-10-12",
+      "locator": "Communiqué du 12 octobre, premier paragraphe : clôture, nominal et prêts automobiles."
     }
   ],
   "nodes": [
@@ -145,6 +159,34 @@
       "role": "Véhicule de prêts personnels",
       "column": 3,
       "row": 2
+    },
+    {
+      "id": "paid-investors",
+      "label": "Investisseurs PAID",
+      "role": "Souscripteurs non identifiés individuellement",
+      "column": 1,
+      "row": 2
+    },
+    {
+      "id": "paid-2026-6",
+      "label": "Pagaya · PAID 2026-6",
+      "role": "Titrisation de prêts personnels",
+      "column": 2,
+      "row": 1
+    },
+    {
+      "id": "rpm-investors",
+      "label": "Investisseurs RPM",
+      "role": "Souscripteurs non identifiés individuellement",
+      "column": 1,
+      "row": 4
+    },
+    {
+      "id": "rpm-2026-5",
+      "label": "Pagaya · RPM 2026-5",
+      "role": "Titrisation de prêts automobiles",
+      "column": 2,
+      "row": 4
     }
   ],
   "relations": [
@@ -440,6 +482,46 @@
           ]
         }
       ]
+    },
+    {
+      "id": "investors-paid-securitization",
+      "from": "paid-investors",
+      "to": "paid-2026-6",
+      "observations": [
+        {
+          "publishedOn": "2026-10-05",
+          "recordedOn": "2026-10-14",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "PAID 2026-6 · clôture annoncée · 600 M$",
+          "claim": "Pagaya annonce la clôture de PAID 2026-6, une titrisation de prêts personnels de 600 millions de dollars.",
+          "limit": "Un ABS est un titre adossé à des actifs. Le communiqué ne détaille ni les souscriptions individuelles ni l’allocation de prêts venant de la facilité VFN avec ATLAS SP. Le montant de l’émission ne mesure pas un tirage de cette facilité.",
+          "watch": "Documents d’émission, identité juridique de l’émetteur et origine des prêts.",
+          "sources": [
+            "pagaya-paid-20261005"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "investors-rpm-securitization",
+      "from": "rpm-investors",
+      "to": "rpm-2026-5",
+      "observations": [
+        {
+          "publishedOn": "2026-10-12",
+          "recordedOn": "2026-10-14",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "RPM 2026-5 · clôture annoncée · 650 M$",
+          "claim": "Pagaya annonce la clôture de RPM 2026-5, une titrisation de prêts automobiles de 650 millions de dollars.",
+          "limit": "Le communiqué ne nomme pas chaque souscripteur. Cette émission est distincte de PAID 2026-6 et de la facilité VFN de prêts personnels ; aucun transfert de prêts depuis celle-ci n’est établi. Les deux groupes d’investisseurs ne sont pas présumés identiques.",
+          "watch": "Documents d’émission, identité juridique de l’émetteur et répartition des souscriptions.",
+          "sources": [
+            "pagaya-rpm-20261012"
+          ]
+        }
+      ]
     }
   ],
   "milestones": [
@@ -472,6 +554,16 @@
       "date": "2026-09-29",
       "label": "L’entrepôt de prêts Pagaya",
       "change": "Pagaya annonce une facilité renouvelable avec ATLAS SP pour conserver des prêts personnels avant titrisation. La capacité ciblée et les tirages sont distincts."
+    },
+    {
+      "date": "2026-10-05",
+      "label": "Pagaya · prêts personnels titrisés",
+      "change": "PAID 2026-6 rejoint la carte comme émission distincte de la facilité VFN."
+    },
+    {
+      "date": "2026-10-12",
+      "label": "Pagaya · prêts automobiles titrisés",
+      "change": "RPM 2026-5 ajoute une émission automobile ; aucun circuit entre les deux titrisations n’est déduit."
     }
   ]
 }
