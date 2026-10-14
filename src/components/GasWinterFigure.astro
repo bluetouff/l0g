@@ -1,0 +1,56 @@
+---
+import { gasWinterSvg, GAS_WINTER_KINDS } from '../lib/gasWinterFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'stocks' | 'chain' | 'scenarios' | 'peak' | 'refill' | 'curve';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || GAS_WINTER_KINDS.indexOf(kind) + 1 !== Number(number) || !GAS_WINTER_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid gas winter figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[01])$/.test(id))) {
+  throw new TypeError('Invalid gas winter source reference');
+}
+---
+<figure class="gas-winter-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="gas-winter-desktop" set:html={gasWinterSvg(lang, kind, false)} />
+  <div class="gas-winter-mobile" set:html={gasWinterSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="gas-winter-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Gas Winter'; src: url('/fonts/gas-winter/dejavu-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g Gas Winter'; src: url('/fonts/gas-winter/dejavu-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .gas-winter-figure :global(svg text) { font-family: 'l0g Gas Winter', 'DejaVu Sans', Arial, sans-serif; }
+  .gas-winter-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .gas-winter-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .gas-winter-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .gas-winter-references { display: block; }
+  .gas-winter-references a { margin-right: .75em; }
+  .gas-winter-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .gas-winter-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .gas-winter-figure :global(details p) { margin: .7rem 0; }
+  @media (max-width: 640px) {
+    .gas-winter-desktop { display: none; }
+    .gas-winter-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .gas-winter-desktop { display: none; }
+    .gas-winter-mobile { display: block; }
+  }
+  .gas-winter-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .gas-winter-figure { break-inside: avoid; }
+    .gas-winter-desktop { display: block; }
+    .gas-winter-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  }
+</style>

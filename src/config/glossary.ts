@@ -619,6 +619,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Énergie & géopolitique',
     accent: 'var(--color-amber)',
     entries: [
+      { sigle: 'Capacité de soutirage', nom: 'Débit de retrait d’un stockage de gaz', def: 'Quantité de gaz qu’un stockage peut retirer par unité de temps, souvent par jour. Elle dépend du remplissage, de la pression, de la compression et des installations. En général, le débit disponible diminue avec le stock. Une réserve d’énergie et une capacité de soutirage sont deux mesures distinctes.', guide: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/' },
+      { sigle: 'Gaz utile', nom: 'Gaz disponible au-dessus du gaz coussin', def: 'Volume de gaz présent dans un stockage au-dessus du gaz coussin, disponible pour les retraits en fonctionnement normal. La capacité utile est la capacité totale diminuée du gaz coussin ; le stock utile observé à une date peut rester inférieur à cette capacité.', guide: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/' },
+      { sigle: 'Gaz coussin', nom: 'Gaz conservé pour l’exploitation du stockage', def: 'Volume de gaz destiné à rester dans un stockage pour maintenir les conditions de pression et de débit nécessaires à son exploitation. Il est normalement conservé pendant les cycles d’injection et de retrait. Le volume utile se mesure au-dessus de cette base.', guide: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/' },
       { sigle: 'Risque de base', nom: 'Variation de l’écart entre exposition et couverture', def: 'Risque que l’écart de prix entre la marchandise effectivement achetée ou vendue et la référence utilisée pour la couvrir évolue pendant la protection. Produits, qualités, lieux et dates peuvent différer. Une couverture sur le brut peut ainsi laisser ouverte une partie du coût d’un carburant raffiné.', guide: '/posts/dollar-facture-energie/' },
       {"sigle": "El Niño", "nom": "Phase chaude de l’ENSO", "def": "Phase chaude de l’oscillation australe El Niño (ENSO), un phénomène couplé de l’océan et de l’atmosphère dans le Pacifique tropical. L’affaiblissement des alizés et le déplacement des eaux chaudes et de la convection modifient la distribution des pluies. Les effets locaux dépendent aussi de la saison et des autres conditions climatiques.", "guide": "/posts/el-nino-secours-meme-pluie/"},
       {"sigle": "RONI", "nom": "Indice océanique Niño relatif", "def": "Indice NOAA construit à partir d’une moyenne glissante sur trois mois de l’anomalie de température de surface dans la région Niño 3.4, après soustraction de l’anomalie moyenne des tropiques et ajustement de variance. Il mesure un contraste océanique relatif ; une probabilité de franchir son seuil ne mesure pas une probabilité de pertes économiques.", "guide": "/posts/el-nino-secours-meme-pluie/"},
@@ -1048,6 +1051,21 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'capacite-de-soutirage': {
+    articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }],
+    sources: [{ label: 'EIA, The Basics of Underground Natural Gas Storage', href: 'https://www.eia.gov/naturalgas/storage/basics/', detail: 'Storage Measures : débit quotidien, pression, compression et variations avec le stock. Définitions physiques, sans transposition de données américaines.', kind: 'source' }],
+    related: ['gaz-utile', 'gaz-coussin'],
+  },
+  'gaz-utile': {
+    articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }],
+    sources: [{ label: 'JRC, EU Gas Transmission Network Facilities Review, 2020', href: 'https://publications.jrc.ec.europa.eu/repository/bitstream/JRC122592/jrc122592_v5.pdf', detail: 'Section 3.3, p. 11 : distinction entre working gas, capacité utile et gaz coussin. Définitions techniques, sans reprise de l’inventaire de 2020.', kind: 'source' }],
+    related: ['gaz-coussin', 'capacite-de-soutirage'],
+  },
+  'gaz-coussin': {
+    articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }],
+    sources: [{ label: 'JRC, EU Gas Transmission Network Facilities Review, 2020', href: 'https://publications.jrc.ec.europa.eu/repository/bitstream/JRC122592/jrc122592_v5.pdf', detail: 'Section 3.3, p. 11–12 : fonction du cushion gas dans le maintien de la pression et du débit. Définitions techniques, sans reprise de l’inventaire de 2020.', kind: 'source' }],
+    related: ['gaz-utile', 'capacite-de-soutirage'],
+  },
   "option-exterieure": {
     "articles": [
       {

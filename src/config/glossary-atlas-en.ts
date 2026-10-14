@@ -204,6 +204,36 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'capacite-de-soutirage', sigle: 'Withdrawal capacity', nom: 'Gas storage deliverability',
+    def: 'The amount of gas a storage facility can withdraw per unit of time, usually a day. It depends on inventory, pressure, compression and surface equipment. Available flow generally declines as gas is withdrawn. Stored energy and withdrawal capacity measure different characteristics.',
+    guide: '/en/analysis/european-gas-bridging-gap-between-cargoes/', ...energySection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'European gas: bridging the gap between cargoes', href: '/en/analysis/european-gas-bridging-gap-between-cargoes/', kind: 'article' }],
+      sources: [{ label: 'EIA, The Basics of Underground Natural Gas Storage', href: 'https://www.eia.gov/naturalgas/storage/basics/', detail: 'Storage Measures: daily deliverability, pressure, compression and changes with inventory. Physical definitions without transferring US data to Europe.', kind: 'source' }],
+      related: ['gaz-utile', 'gaz-coussin'],
+    },
+  },
+  {
+    slug: 'gaz-utile', sigle: 'Working gas', nom: 'Gas inventory above cushion gas',
+    def: 'Gas held above the cushion-gas level and available for withdrawal during normal operation. Working gas capacity equals total storage capacity minus cushion gas. Actual working gas inventory on a given date can be below that capacity.',
+    guide: '/en/analysis/european-gas-bridging-gap-between-cargoes/', ...energySection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'European gas: bridging the gap between cargoes', href: '/en/analysis/european-gas-bridging-gap-between-cargoes/', kind: 'article' }],
+      sources: [{ label: 'JRC, EU Gas Transmission Network Facilities Review, 2020', href: 'https://publications.jrc.ec.europa.eu/repository/bitstream/JRC122592/jrc122592_v5.pdf', detail: 'Section 3.3, p. 11: working gas, working gas capacity and cushion gas. Technical definitions without reusing the 2020 facility inventory.', kind: 'source' }],
+      related: ['gaz-coussin', 'capacite-de-soutirage'],
+    },
+  },
+  {
+    slug: 'gaz-coussin', sigle: 'Cushion gas', nom: 'Base inventory supporting storage operation',
+    def: 'Gas intended to remain in a storage reservoir to maintain the pressure and deliverability needed for operation. It is normally retained throughout injection and withdrawal cycles. Working gas is measured above this base inventory.',
+    guide: '/en/analysis/european-gas-bridging-gap-between-cargoes/', ...energySection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'European gas: bridging the gap between cargoes', href: '/en/analysis/european-gas-bridging-gap-between-cargoes/', kind: 'article' }],
+      sources: [{ label: 'JRC, EU Gas Transmission Network Facilities Review, 2020', href: 'https://publications.jrc.ec.europa.eu/repository/bitstream/JRC122592/jrc122592_v5.pdf', detail: 'Section 3.3, p. 11–12: cushion gas supports pressure and deliverability. Technical definitions without reusing the 2020 facility inventory.', kind: 'source' }],
+      related: ['gaz-utile', 'capacite-de-soutirage'],
+    },
+  },
+  {
     "slug": "option-exterieure",
     "sigle": "Outside option",
     "nom": "Fallback alternative in a negotiation",
