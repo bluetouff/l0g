@@ -1,0 +1,56 @@
+---
+import { aiWagesSvg, AI_WAGES_KINDS } from '../lib/aiWagesFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'options' | 'entry' | 'expectations' | 'sharing' | 'contracts' | 'macro';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || AI_WAGES_KINDS.indexOf(kind) + 1 !== Number(number) || !AI_WAGES_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid AI wages figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[0-4])$/.test(id))) {
+  throw new TypeError('Invalid AI wages source reference');
+}
+---
+<figure class="ai-wages-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="ai-wages-desktop" set:html={aiWagesSvg(lang, kind, false)} />
+  <div class="ai-wages-mobile" set:html={aiWagesSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="ai-wages-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g AI Wages'; src: url('/fonts/ai-wages/dejavu-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g AI Wages'; src: url('/fonts/ai-wages/dejavu-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .ai-wages-figure :global(svg text) { font-family: 'l0g AI Wages', 'DejaVu Sans', Arial, sans-serif; }
+  .ai-wages-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .ai-wages-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .ai-wages-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .ai-wages-references { display: block; }
+  .ai-wages-references a { margin-right: .75em; }
+  .ai-wages-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .ai-wages-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .ai-wages-figure :global(details p) { margin: .7rem 0; }
+  @media (max-width: 640px) {
+    .ai-wages-desktop { display: none; }
+    .ai-wages-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .ai-wages-desktop { display: none; }
+    .ai-wages-mobile { display: block; }
+  }
+  .ai-wages-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .ai-wages-figure { break-inside: avoid; }
+    .ai-wages-desktop { display: block; }
+    .ai-wages-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  }
+</style>

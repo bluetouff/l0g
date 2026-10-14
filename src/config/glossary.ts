@@ -81,6 +81,24 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      {
+        "sigle": "Option extérieure",
+        "nom": "Solution de repli dans une négociation",
+        "def": "Alternative disponible lorsqu’une relation ou une négociation s’arrête. Pour un salarié, elle dépend notamment des autres emplois accessibles et des conditions pour les obtenir ; pour une entreprise, des possibilités de remplacement ou de réorganisation. Son effet sur le partage dépend de la crédibilité de ces alternatives et du cadre de négociation.",
+        "guide": "/posts/ia-salaires-pouvoir-partir/"
+      },
+      {
+        "sigle": "Part du travail",
+        "nom": "Rémunération du travail rapportée à la valeur ajoutée",
+        "def": "Part de la valeur ajoutée attribuée à la rémunération du travail. La compensation des salariés comprend les salaires et les cotisations employeur ; certaines mesures agrégées imputent aussi le revenu du travail des indépendants. Le secteur, le traitement des impôts et la convention de valeur ajoutée doivent être précisés. Cette part peut baisser alors que les rémunérations augmentent.",
+        "guide": "/posts/ia-salaires-pouvoir-partir/"
+      },
+      {
+        "sigle": "Wage tracker BCE",
+        "nom": "Suivi des salaires négociés à partir des accords",
+        "def": "Ensemble d’indicateurs de l’Eurosystème construits à partir des accords collectifs actifs des pays participants. Leur composante prospective exploite les clauses déjà connues et reste conditionnelle et révisable. Elle ne constitue pas une prévision de tous les salaires. La couverture statistique mesure les salariés présents dans les données, pas l’ensemble des salariés couverts par la négociation collective.",
+        "guide": "/posts/ia-salaires-pouvoir-partir/"
+      },
       { sigle: 'Couverture de change', nom: 'Protection d’une exposition en devise', def: 'Opération visant à réduire le risque de variation du change sur un montant et une échéance définis, notamment avec un contrat à terme ou un swap de devises. Protéger le montant prévu ne fixe ni le prix de la marchandise ni les devises supplémentaires nécessaires si la dépense augmente.', guide: '/posts/dollar-facture-energie/' },
       { sigle: 'Termes de l’échange', nom: 'Prix des exportations rapportés aux prix des importations', def: 'Rapport entre l’indice des prix d’exportation et celui des prix d’importation d’une économie. Une hausse indique que les mêmes exportations peuvent acheter davantage d’importations. Cet indicateur de prix se distingue du solde commercial, qui dépend aussi des quantités échangées.', guide: '/posts/dollar-facture-energie/' },
 {
@@ -787,7 +805,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-12';
+export const glossaryUpdatedIso = '2026-10-14';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1030,6 +1048,81 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "option-exterieure": {
+    "articles": [
+      {
+        "label": "IA et salaires : le pouvoir de partir",
+        "href": "/posts/ia-salaires-pouvoir-partir/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "CORE, The Economy, unité 6",
+        "href": "https://books.core-econ.org/the-economy-v1/book/text/06.html",
+        "detail": "Valeur du poste comparée à la meilleure solution de repli, y compris la recherche d’un autre emploi.",
+        "kind": "source"
+      },
+      {
+        "label": "Fukui, Nakamura et Steinsson, The Commoditization of Labor",
+        "href": "https://eminakamura.com/papers/Commoditization.pdf",
+        "detail": "Introduction : options des entreprises et des salariés, sous les hypothèses du modèle.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "part-du-travail",
+      "wage-tracker-bce"
+    ]
+  },
+  "part-du-travail": {
+    "articles": [
+      {
+        "label": "IA et salaires : le pouvoir de partir",
+        "href": "/posts/ia-salaires-pouvoir-partir/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "OCDE, Compendium of Productivity Indicators 2024, Labour income and productivity",
+        "href": "https://www.oecd.org/en/publications/oecd-compendium-of-productivity-indicators-2024_b96cd88a-en/full-report/component-9.html",
+        "detail": "Définition de la part du travail, périmètres et écart entre productivité et rémunération.",
+        "kind": "source"
+      },
+      {
+        "label": "OCDE, Employee compensation by activity",
+        "href": "https://www.oecd.org/en/data/indicators/employee-compensation-by-activity.html",
+        "detail": "Rémunération des salariés comprenant les cotisations sociales employeur.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "option-exterieure",
+      "wage-tracker-bce"
+    ]
+  },
+  "wage-tracker-bce": {
+    "articles": [
+      {
+        "label": "IA et salaires : le pouvoir de partir",
+        "href": "/posts/ia-salaires-pouvoir-partir/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "BCE, communiqué wage tracker du 16 septembre 2026",
+        "href": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260916~7bc58ebef4.en.html",
+        "detail": "Définition des quatre indicateurs, couverture et caractère conditionnel du signal futur.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "option-exterieure",
+      "part-du-travail"
+    ]
+  },
   'risque-de-base': {
     formula: 'base de matière première = prix physique − prix à terme, à unité et devise comparables',
     articles: [{ label: 'Le dollar caché dans la facture d’énergie', href: '/posts/dollar-facture-energie/', kind: 'article' }],

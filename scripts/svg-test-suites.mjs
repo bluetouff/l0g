@@ -9,6 +9,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/ai-incidents-infographics.test.mjs',
     'scripts/ai-model-competition-infographics.test.mjs',
     'scripts/ai-slowdown-infographics.test.mjs',
+    'scripts/ai-wages-infographics.test.mjs',
     'scripts/aid-shock-infographics.test.mjs',
     'scripts/aircraft-engine-tool.test.mjs',
     'scripts/anthropic-ipo-infographics.test.mjs',
@@ -119,6 +120,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/yanbu-infographics.test.mjs',
   ]),
   rendered: Object.freeze([
+    'scripts/ai-wages-rendered-infographics.test.mjs',
     'scripts/debt-exit-price-rendered-infographics.test.mjs',
     'scripts/debt-last-buyer-rendered-infographics.test.mjs',
     'scripts/debt-margin-calls-rendered-infographics.test.mjs',

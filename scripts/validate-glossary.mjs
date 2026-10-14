@@ -18,6 +18,34 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+for (const [slug, sources, related] of [
+  ['option-exterieure', ['https://books.core-econ.org/the-economy-v1/book/text/06.html', 'https://eminakamura.com/papers/Commoditization.pdf'], ['part-du-travail', 'wage-tracker-bce']],
+  ['part-du-travail', ['https://www.oecd.org/en/publications/oecd-compendium-of-productivity-indicators-2024_b96cd88a-en/full-report/component-9.html', 'https://www.oecd.org/en/data/indicators/employee-compensation-by-activity.html'], ['option-exterieure', 'wage-tracker-bce']],
+  ['wage-tracker-bce', ['https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260916~7bc58ebef4.en.html'], ['option-exterieure', 'part-du-travail']],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: définitions et sources FR/EN requises`);
+  assert.equal(fr.guide, '/posts/ia-salaires-pouvoir-partir/');
+  assert.equal(en.guide, '/en/analysis/ai-wages-power-walk-away/');
+  assert.equal(fr.reference, undefined);
+  assert.equal(fr.referenceCandidate, false);
+  assert.equal(en.robots, 'noindex,follow');
+  assert.equal(fr.sectionTitle, 'Macro & banques centrales');
+  assert.equal(en.sectionTitle, 'Macro & central banks');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(item => item.href), sources);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, related);
+    for (const neighbor of related) {
+      assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
+      assert(glossaryAtlasEnBySlug.has(neighbor));
+    }
+    assert(!entry.def.includes('—'));
+  }
+}
+assert.equal(glossaryAtlasEnBySlug.size, 228, 'Le corpus anglais doit conserver ses 228 fiches uniques');
+
 for (const [slug, source, related] of [
   ['apd', 'https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html', ['equivalent-don', 'ida', 'compte-courant']],
   ['equivalent-don', 'https://www.oecd.org/en/topics/sub-issues/oda-standards/modernising-official-development-assistance-oda.html', ['apd', 'ida']],
@@ -143,8 +171,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 635, 'Le corpus doit conserver ses 635 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 213, 'Le graphe Atlas doit conserver ses 213 nœuds');
+assert.equal(glossaryEntries.length, 638, 'Le corpus doit conserver ses 638 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 216, 'Le graphe Atlas doit conserver ses 216 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -566,7 +594,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 656, 'Le graphe Atlas doit conserver ses 656 relations');
+assert.equal(glossaryAtlasEdgeCount, 662, 'Le graphe Atlas doit conserver ses 662 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

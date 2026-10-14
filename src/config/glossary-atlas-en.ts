@@ -204,6 +204,111 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    "slug": "option-exterieure",
+    "sigle": "Outside option",
+    "nom": "Fallback alternative in a negotiation",
+    "def": "An alternative available if a relationship or negotiation ends. For a worker, it depends on accessible jobs and the conditions for obtaining them; for a firm, on replacement or reorganisation options. Its influence on the division of gains depends on how workable the alternatives are and on the bargaining setting.",
+    "guide": "/en/analysis/ai-wages-power-walk-away/",
+    "sectionTitle": "Macro & central banks",
+    "accent": "var(--color-signal)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "articles": [
+        {
+          "label": "AI and wages: the power to walk away",
+          "href": "/en/analysis/ai-wages-power-walk-away/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "CORE, The Economy, Unit 6",
+          "href": "https://books.core-econ.org/the-economy-v1/book/text/06.html",
+          "detail": "The value of a job compared with the next best alternative, including job search.",
+          "kind": "source"
+        },
+        {
+          "label": "Fukui, Nakamura and Steinsson, The Commoditization of Labor",
+          "href": "https://eminakamura.com/papers/Commoditization.pdf",
+          "detail": "Introduction: firm and worker outside options under the model’s assumptions.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "part-du-travail",
+        "wage-tracker-bce"
+      ]
+    }
+  },
+  {
+    "slug": "part-du-travail",
+    "sigle": "Labour share",
+    "nom": "Labour compensation relative to value added",
+    "def": "The fraction of value added attributed to labour compensation. Employee compensation includes wages and employer social contributions; some aggregate measures also impute self-employed labour income. The sector, tax treatment and value-added convention must be specified. The share can fall even while pay rises.",
+    "guide": "/en/analysis/ai-wages-power-walk-away/",
+    "sectionTitle": "Macro & central banks",
+    "accent": "var(--color-signal)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "articles": [
+        {
+          "label": "AI and wages: the power to walk away",
+          "href": "/en/analysis/ai-wages-power-walk-away/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OECD, Compendium of Productivity Indicators 2024, Labour income and productivity",
+          "href": "https://www.oecd.org/en/publications/oecd-compendium-of-productivity-indicators-2024_b96cd88a-en/full-report/component-9.html",
+          "detail": "Labour-share definition, scope and divergence between productivity and compensation.",
+          "kind": "source"
+        },
+        {
+          "label": "OECD, Employee compensation by activity",
+          "href": "https://www.oecd.org/en/data/indicators/employee-compensation-by-activity.html",
+          "detail": "Employee compensation including employer social contributions.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "option-exterieure",
+        "wage-tracker-bce"
+      ]
+    }
+  },
+  {
+    "slug": "wage-tracker-bce",
+    "sigle": "ECB wage tracker",
+    "nom": "Agreement-based tracking of negotiated wages",
+    "def": "Eurosystem indicators built from active collective bargaining agreements in participating countries. Forward-looking information reflects known contract clauses and remains conditional and revisable. It is not a forecast of all wages. Statistical coverage measures employees represented in the data rather than all employees covered by collective bargaining.",
+    "guide": "/en/analysis/ai-wages-power-walk-away/",
+    "sectionTitle": "Macro & central banks",
+    "accent": "var(--color-signal)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "articles": [
+        {
+          "label": "AI and wages: the power to walk away",
+          "href": "/en/analysis/ai-wages-power-walk-away/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "ECB, wage tracker release of 16 September 2026",
+          "href": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260916~7bc58ebef4.en.html",
+          "detail": "Definitions of the four indicators, employee coverage and conditional forward-looking signals.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "option-exterieure",
+        "part-du-travail"
+      ]
+    }
+  },
+  {
     slug: 'risque-de-base', sigle: 'Basis risk', nom: 'Changes in the gap between an exposure and its hedge',
     def: 'The risk that the price gap between the commodity actually bought or sold and the benchmark used to hedge it changes during the hedge. Products, grades, delivery locations and dates may differ. Hedging crude oil can therefore leave part of a refined fuel’s cost exposed.',
     guide: '/en/analysis/dollar-facture-energie/', ...energySection, robots: 'noindex,follow',
