@@ -204,6 +204,29 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'capitation', sigle: 'Capitation', nom: 'Fixed payment per patient and period',
+    def: 'A payment method in which a physician or physician group receives a set amount per patient and period, usually a month, for a defined package of services and administrative costs, regardless of the number of services delivered. The covered services and contractual protections determine the provider’s cost exposure. The payment does not measure quality of care.',
+    guide: '/en/analysis/humana-blackrock-promise-behind-clinics/', sectionTitle: 'Industry & healthcare', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Humana and BlackRock: the promise behind the clinics', href: '/en/analysis/humana-blackrock-promise-behind-clinics/', kind: 'article' }],
+      sources: [
+        { label: 'eCFR, 42 CFR 422.208(a)', href: 'https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-422/subpart-E/section-422.208', detail: 'Capitation definition: payment per patient and period for a package of services, regardless of the number of services delivered.', kind: 'source' },
+        { label: 'Humana, 2025 Form 10-K', href: 'https://www.sec.gov/Archives/edgar/data/49071/000004907126000009/hum-20251231.htm', detail: 'Capitation and Risk Factors: contract scope and levels of financial risk; company disclosure.', kind: 'source' },
+      ],
+      related: ['rofo'],
+    },
+  },
+  {
+    slug: 'rofo', sigle: 'ROFO', nom: 'Right of first offer',
+    def: 'A contractual right to submit the first offer in a sale process, under the agreed conditions and timetable. It allows the holder to bid at an early stage of that process; it guarantees neither a completed sale nor an automatic right to match every later offer. The agreement’s clauses determine its scope.',
+    guide: '/en/analysis/humana-blackrock-promise-behind-clinics/', ...privateCreditSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Humana and BlackRock: the promise behind the clinics', href: '/en/analysis/humana-blackrock-promise-behind-clinics/', kind: 'article' }],
+      sources: [{ label: 'Humana, Form 8-K, 13 October 2026', href: 'https://www.sec.gov/Archives/edgar/data/49071/000004907126000060/hum-20261013.htm', detail: 'Item 7.01: CenterWell’s right to submit the first offer in a sale process for remaining clinics after the end of 2033. The full contractual clauses are not attached.', kind: 'source' }],
+      related: ['capitation'],
+    },
+  },
+  {
     slug: 'tiva', sigle: 'TiVA', nom: 'Trade in value added',
     def: 'OECD indicators that trace the countries and industries contributing value added to trade and final demand, using inter-country input-output tables. They distinguish domestic and foreign content in gross exports. The coverage and period must be specified; the indicators do not identify individual end customers.',
     guide: '/en/analysis/world-trade-rhythm-ai-orders/', ...macroSection, robots: 'noindex,follow',

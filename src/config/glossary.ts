@@ -39,6 +39,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
   "titre": "Industrie & santé",
   "accent": "var(--color-signal)",
   "entries": [
+    { sigle: 'Capitation', nom: 'Paiement forfaitaire par patient et par période', def: 'Mode de rémunération dans lequel un médecin ou un groupe de médecins reçoit un montant fixé par patient et par période, généralement mensuelle, pour un ensemble défini de services et de frais, indépendamment du nombre de prestations réalisées. Le périmètre couvert et les protections contractuelles déterminent le risque de dépenses porté par le prestataire. Ce paiement ne mesure pas la qualité des soins.', guide: '/posts/humana-blackrock-promesse-cliniques/' },
     {
       "sigle": "Cyclotron",
       "nom": "Accélérateur de particules pour la production de radionucléides",
@@ -344,6 +345,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: 'var(--color-accent)',
     entries: [
+      { sigle: 'ROFO', nom: 'Droit de première offre', def: 'Droit contractuel de présenter la première offre dans un processus de vente, selon les conditions et le calendrier convenus. Il permet de se porter acquéreur en amont du processus prévu ; il ne garantit ni la conclusion de la vente ni un droit automatique de s’aligner sur toute offre ultérieure. Sa portée doit être vérifiée dans les clauses de l’accord.', guide: '/posts/humana-blackrock-promesse-cliniques/' },
       { sigle: 'CPR', nom: 'Taux annualisé de remboursement anticipé', def: 'Mesure annualisée des remboursements anticipés d’un portefeuille de prêts, rapportés au capital encore exposé après l’amortissement programmé. Un CPR peut résumer des observations ou représenter une hypothèse de modèle : il faut préciser lequel. Son équivalent mensuel, le SMM, se calcule par SMM = 1 − (1 − CPR)^(1/12), avec les taux exprimés en proportions.', guide: '/posts/credits-americains-risque-3-pourcent/' },
       { sigle: 'WAL', nom: 'Durée de vie moyenne du principal', def: 'Moyenne des délais de remboursement, pondérée par les montants de principal rendus. Elle s’exprime en années depuis une date de référence et dépend notamment des hypothèses de remboursement anticipé. Elle exclut les intérêts et l’actualisation. Ce calendrier se distingue de la duration, qui mesure la sensibilité du prix aux taux.', guide: '/posts/credits-americains-risque-3-pourcent/' },
       { sigle: 'DV01', nom: 'Sensibilité en dollars à un point de base', def: 'Variation locale estimée de la valeur d’une position pour un mouvement de taux de 0,01 point de pourcentage. Exprimée ici en valeur absolue, elle s’approche par la duration sensible aux taux multipliée par la valeur de marché et par 0,0001. Elle dépend de la position et des hypothèses du choc ; elle ne constitue pas une perte réalisée.', guide: '/posts/credits-americains-risque-3-pourcent/' },
@@ -1053,6 +1055,19 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  capitation: {
+    articles: [{ label: 'Humana–BlackRock : la promesse derrière les cliniques', href: '/posts/humana-blackrock-promesse-cliniques/', kind: 'article' }],
+    sources: [
+      { label: 'eCFR, 42 CFR 422.208(a)', href: 'https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-422/subpart-E/section-422.208', detail: 'Définition de la capitation : paiement par patient et par période pour un panier de services, indépendamment du nombre de prestations.', kind: 'source' },
+      { label: 'Humana, Form 10-K pour 2025', href: 'https://www.sec.gov/Archives/edgar/data/49071/000004907126000009/hum-20251231.htm', detail: 'Sections Capitation et Risk Factors : périmètres et niveaux de risque contractuels ; communication de l’entreprise.', kind: 'source' },
+    ],
+    related: ['rofo'],
+  },
+  rofo: {
+    articles: [{ label: 'Humana–BlackRock : la promesse derrière les cliniques', href: '/posts/humana-blackrock-promesse-cliniques/', kind: 'article' }],
+    sources: [{ label: 'Humana, Form 8-K du 13 octobre 2026', href: 'https://www.sec.gov/Archives/edgar/data/49071/000004907126000060/hum-20261013.htm', detail: 'Item 7.01 : droit de CenterWell de soumettre la première offre lors du processus de vente des centres restants après fin 2033. Les clauses intégrales ne sont pas annexées.', kind: 'source' }],
+    related: ['capitation'],
+  },
   tiva: {
     articles: [
       { label: 'Le commerce mondial au rythme des commandes d’IA', href: '/posts/commerce-mondial-rythme-commandes-ia/', kind: 'article' },

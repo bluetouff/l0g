@@ -1,0 +1,56 @@
+---
+import { clinicRiskSvg, CLINIC_RISK_KINDS } from '../lib/clinicRiskFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'routes' | 'clock' | 'balance' | 'floor' | 'care' | 'stress';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || CLINIC_RISK_KINDS.indexOf(kind) + 1 !== Number(number) || !CLINIC_RISK_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid clinic risk figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[01])$/.test(id))) {
+  throw new TypeError('Invalid clinic risk source reference');
+}
+---
+<figure class="clinic-risk-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="clinic-risk-desktop" set:html={clinicRiskSvg(lang, kind, false)} />
+  <div class="clinic-risk-mobile" set:html={clinicRiskSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="clinic-risk-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Clinic Risk'; src: url('/fonts/clinic-risk/liberation-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g Clinic Risk'; src: url('/fonts/clinic-risk/liberation-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .clinic-risk-figure :global(svg text) { font-family: 'l0g Clinic Risk', 'Liberation Sans', Arial, sans-serif; }
+  .clinic-risk-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .clinic-risk-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .clinic-risk-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .clinic-risk-references { display: block; }
+  .clinic-risk-references a { margin-right: .75em; }
+  .clinic-risk-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .clinic-risk-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .clinic-risk-figure :global(details p) { margin: .7rem 0; }
+  @media (max-width: 640px) {
+    .clinic-risk-desktop { display: none; }
+    .clinic-risk-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .clinic-risk-desktop { display: none; }
+    .clinic-risk-mobile { display: block; }
+  }
+  .clinic-risk-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .clinic-risk-figure { break-inside: avoid; }
+    .clinic-risk-desktop { display: block; }
+    .clinic-risk-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  }
+</style>
