@@ -1,0 +1,56 @@
+---
+import { tradeCycleSvg, TRADE_CYCLE_KINDS } from '../lib/tradeCycleFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'momentum' | 'taiwan' | 'borders' | 'buyers' | 'inventory' | 'macro';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || TRADE_CYCLE_KINDS.indexOf(kind) + 1 !== Number(number) || !TRADE_CYCLE_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid trade cycle figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[0-4])$/.test(id))) {
+  throw new TypeError('Invalid trade cycle source reference');
+}
+---
+<figure class="trade-cycle-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="trade-cycle-desktop" set:html={tradeCycleSvg(lang, kind, false)} />
+  <div class="trade-cycle-mobile" set:html={tradeCycleSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="trade-cycle-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Trade Cycle'; src: url('/fonts/trade-cycle/dejavu-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g Trade Cycle'; src: url('/fonts/trade-cycle/dejavu-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .trade-cycle-figure :global(svg text) { font-family: 'l0g Trade Cycle', 'DejaVu Sans', Arial, sans-serif; }
+  .trade-cycle-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .trade-cycle-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .trade-cycle-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .trade-cycle-references { display: block; }
+  .trade-cycle-references a { margin-right: .75em; }
+  .trade-cycle-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .trade-cycle-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .trade-cycle-figure :global(details p) { margin: .7rem 0; }
+  @media (max-width: 640px) {
+    .trade-cycle-desktop { display: none; }
+    .trade-cycle-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .trade-cycle-desktop { display: none; }
+    .trade-cycle-mobile { display: block; }
+  }
+  .trade-cycle-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .trade-cycle-figure { break-inside: avoid; }
+    .trade-cycle-desktop { display: block; }
+    .trade-cycle-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  }
+</style>

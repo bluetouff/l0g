@@ -204,6 +204,29 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'tiva', sigle: 'TiVA', nom: 'Trade in value added',
+    def: 'OECD indicators that trace the countries and industries contributing value added to trade and final demand, using inter-country input-output tables. They distinguish domestic and foreign content in gross exports. The coverage and period must be specified; the indicators do not identify individual end customers.',
+    guide: '/en/analysis/world-trade-rhythm-ai-orders/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [
+        { label: 'World trade is moving to the rhythm of AI orders', href: '/en/analysis/world-trade-rhythm-ai-orders/', kind: 'article' },
+        { label: 'The US trade deficit, from the port to the factory', href: '/en/analysis/us-trade-deficit-imports-august-2026/', kind: 'article' },
+      ],
+      sources: [{ label: 'OECD, Trade in value-added', href: 'https://www.oecd.org/en/topics/sub-issues/trade-in-value-added.html', detail: 'Indicators derived from ICIO tables: origins of value added in exports and final demand, with defined country and industry coverage.', kind: 'source' }],
+      related: ['effet-fouet'],
+    },
+  },
+  {
+    slug: 'effet-fouet', sigle: 'Bullwhip effect', nom: 'Order amplification along a supply chain',
+    def: 'A mechanism through which orders sent to suppliers fluctuate more than downstream demand. Forecast revisions and inventory adjustments can amplify changes at several stages. The scale depends on lead times, contracts and ordering practices; a destocking simulation does not estimate a coefficient for an actual industry.',
+    guide: '/en/analysis/world-trade-rhythm-ai-orders/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'World trade is moving to the rhythm of AI orders', href: '/en/analysis/world-trade-rhythm-ai-orders/', kind: 'article' }],
+      sources: [{ label: 'Rees and Rungcharoenkitkul, BIS Bulletin 48, 11 November 2021', href: 'https://www.bis.org/publications/bulletin-48-bottlenecks-causes-and-macroeconomic-implications.pdf', detail: 'Printed page 3: shortage expectations and precautionary buffers at several stages. A mechanism discussed by the authors, without a coefficient transferred to AI.', kind: 'source' }],
+      related: ['tiva'],
+    },
+  },
+  {
     slug: 'capacite-de-soutirage', sigle: 'Withdrawal capacity', nom: 'Gas storage deliverability',
     def: 'The amount of gas a storage facility can withdraw per unit of time, usually a day. It depends on inventory, pressure, compression and surface equipment. Available flow generally declines as gas is withdrawn. Stored energy and withdrawal capacity measure different characteristics.',
     guide: '/en/analysis/european-gas-bridging-gap-between-cargoes/', ...energySection, robots: 'noindex,follow',

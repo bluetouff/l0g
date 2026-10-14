@@ -81,6 +81,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'TiVA', nom: 'Commerce en valeur ajoutée', def: 'Indicateurs de l’OCDE qui attribuent aux pays et aux secteurs la valeur ajoutée incorporée dans les échanges et la demande finale, à partir de tableaux internationaux entrées-sorties. Ils distinguent notamment le contenu intérieur et étranger des exportations brutes. Leur périmètre et leur période doivent être précisés ; ils ne recensent pas les entreprises acheteuses finales.', guide: '/posts/commerce-mondial-rythme-commandes-ia/' },
+      { sigle: 'Effet fouet', nom: 'Amplification des commandes dans une chaîne d’approvisionnement', def: 'Mécanisme par lequel les commandes transmises aux fournisseurs fluctuent davantage que la demande en aval. Les révisions de prévisions et les ajustements de stocks peuvent amplifier le mouvement à plusieurs étapes. Son ampleur dépend des délais, des contrats et des pratiques de commande ; une simulation de déstockage ne mesure pas un coefficient applicable à une filière réelle.', guide: '/posts/commerce-mondial-rythme-commandes-ia/' },
       {
         "sigle": "Option extérieure",
         "nom": "Solution de repli dans une négociation",
@@ -1051,6 +1053,19 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  tiva: {
+    articles: [
+      { label: 'Le commerce mondial au rythme des commandes d’IA', href: '/posts/commerce-mondial-rythme-commandes-ia/', kind: 'article' },
+      { label: 'Déficit américain : suivre les importations jusqu’à l’usine', href: '/posts/deficit-commercial-americain-importations-aout-2026/', kind: 'article' },
+    ],
+    sources: [{ label: 'OCDE, Trade in value-added', href: 'https://www.oecd.org/en/topics/sub-issues/trade-in-value-added.html', detail: 'Indicateurs issus des tableaux ICIO : origines de la valeur ajoutée dans les exportations et la demande finale, avec un périmètre de pays et de secteurs.', kind: 'source' }],
+    related: ['effet-fouet'],
+  },
+  'effet-fouet': {
+    articles: [{ label: 'Le commerce mondial au rythme des commandes d’IA', href: '/posts/commerce-mondial-rythme-commandes-ia/', kind: 'article' }],
+    sources: [{ label: 'Rees et Rungcharoenkitkul, BIS Bulletin 48, 11 novembre 2021', href: 'https://www.bis.org/publications/bulletin-48-bottlenecks-causes-and-macroeconomic-implications.pdf', detail: 'Page imprimée 3 : anticipation de pénuries et stocks de précaution à plusieurs étapes. Mécanisme discuté par les auteurs, sans coefficient transposé à l’IA.', kind: 'source' }],
+    related: ['tiva'],
+  },
   'capacite-de-soutirage': {
     articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }],
     sources: [{ label: 'EIA, The Basics of Underground Natural Gas Storage', href: 'https://www.eia.gov/naturalgas/storage/basics/', detail: 'Storage Measures : débit quotidien, pression, compression et variations avec le stock. Définitions physiques, sans transposition de données américaines.', kind: 'source' }],

@@ -110,6 +110,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/tariff-cashflow-infographics.test.mjs',
     'scripts/tariff-refund-infographics.test.mjs',
     'scripts/tfff-infographics.test.mjs',
+    'scripts/trade-cycle-infographics.test.mjs',
     'scripts/trump-dividend-infographics.test.mjs',
     'scripts/tungsten-infographics.test.mjs',
     'scripts/ubs-capital-infographics.test.mjs',
@@ -142,6 +143,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/radiant-world-infographics.test.mjs',
     'scripts/software-debt-stress.test.mjs',
     'scripts/taiwan-inline-svg.test.mjs',
+    'scripts/trade-cycle-rendered-infographics.test.mjs',
   ]),
 });
 
