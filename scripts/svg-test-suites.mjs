@@ -36,6 +36,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/clemency-infographics.test.mjs',
     'scripts/clinic-risk-infographics.test.mjs',
     'scripts/cocoa-financing-tool.test.mjs',
+    'scripts/copper-border-infographics.test.mjs',
     'scripts/copper-stock-infographics.test.mjs',
     'scripts/cortina-underwriting-infographics.test.mjs',
     'scripts/cra-disclosure-infographics.test.mjs',
@@ -146,6 +147,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/taiwan-inline-svg.test.mjs',
     'scripts/trade-cycle-rendered-infographics.test.mjs',
     'scripts/clinic-risk-rendered-infographics.test.mjs',
+    'scripts/copper-border-rendered-infographics.test.mjs',
   ]),
 });
 

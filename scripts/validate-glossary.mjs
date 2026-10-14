@@ -18,6 +18,27 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+{
+  const slug = 'entrepot-sous-douane';
+  const fr = glossaryEntries.find(entry => entry.slug === slug), en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, 'Entrepôt sous douane : définition et preuves FR/EN requises');
+  assert.equal(fr.guide, '/posts/cuivre-stocks-americains-conditions-retour/');
+  assert.equal(en.guide, '/en/analysis/copper-us-stockpiles-conditions-for-return/');
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false); assert.equal(en.robots, 'noindex,follow');
+  assert.equal(fr.sectionTitle, 'Énergie & géopolitique'); assert.equal(en.sectionTitle, 'Energy & geopolitics');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(item => item.href), [
+      'https://www.ecfr.gov/current/title-19/chapter-I/part-141/subpart-E/section-141.69',
+      'https://www.ecfr.gov/current/title-19/chapter-I/part-144/subpart-D/section-144.38',
+    ]);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, ['warrant-d-entrepot']);
+    assert(!entry.def.includes('—'));
+  }
+  assert.match(fr.def, /Aux États-Unis/); assert.match(fr.def, /en principe/); assert.match(fr.def, /lots/);
+  assert.match(en.def, /In the United States/); assert.match(en.def, /generally/); assert.match(en.def, /individual lots/);
+}
+
 for (const [slug, sources, related, sections] of [
   ['capitation', ['https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-422/subpart-E/section-422.208', 'https://www.sec.gov/Archives/edgar/data/49071/000004907126000009/hum-20251231.htm'], ['rofo'], ['Industrie & santé', 'Industry & healthcare']],
   ['rofo', ['https://www.sec.gov/Archives/edgar/data/49071/000004907126000060/hum-20261013.htm'], ['capitation'], ['Crédit privé & marchés', 'Private credit & markets']],
@@ -97,7 +118,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 235, 'Le corpus anglais doit conserver ses 235 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 236, 'Le corpus anglais doit conserver ses 236 fiches uniques');
 
 for (const [slug, source, related] of [
   ['apd', 'https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html', ['equivalent-don', 'ida', 'compte-courant']],
@@ -224,8 +245,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 645, 'Le corpus doit conserver ses 645 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 223, 'Le graphe Atlas doit conserver ses 223 nœuds');
+assert.equal(glossaryEntries.length, 646, 'Le corpus doit conserver ses 646 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 224, 'Le graphe Atlas doit conserver ses 224 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -647,7 +668,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 672, 'Le graphe Atlas doit conserver ses 672 relations');
+assert.equal(glossaryAtlasEdgeCount, 673, 'Le graphe Atlas doit conserver ses 673 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

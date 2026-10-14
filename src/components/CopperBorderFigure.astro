@@ -1,0 +1,58 @@
+---
+import { copperBorderSvg, COPPER_BORDER_KINDS } from '../lib/copperBorderFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'capacity' | 'thresholds' | 'receipt' | 'customs' | 'hedge' | 'flows';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || COPPER_BORDER_KINDS.indexOf(kind) + 1 !== Number(number) || !COPPER_BORDER_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid copper border figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[0-9]|2[01])$/.test(id))) {
+  throw new TypeError('Invalid copper border source reference');
+}
+---
+<figure class="copper-border-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="copper-border-desktop" set:html={copperBorderSvg(lang, kind, false)} />
+  <div class="copper-border-mobile" set:html={copperBorderSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="copper-border-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Copper Border'; src: url('/fonts/copper-border/liberation-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g Copper Border'; src: url('/fonts/copper-border/liberation-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .copper-border-figure :global(svg text) { font-family: 'l0g Copper Border', 'Liberation Sans', Arial, sans-serif; }
+  .copper-border-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .copper-border-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .copper-border-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .copper-border-references { display: block; }
+  .copper-border-references a { margin-right: .75em; }
+  .copper-border-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .copper-border-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .copper-border-figure :global(details p) { margin: .7rem 0; }
+  :global(.copper-border-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.copper-border-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .copper-border-desktop { display: none; }
+    .copper-border-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .copper-border-desktop { display: none; }
+    .copper-border-mobile { display: block; }
+  }
+  .copper-border-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .copper-border-figure { break-inside: avoid; }
+    .copper-border-desktop { display: block; }
+    .copper-border-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  }
+</style>

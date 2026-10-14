@@ -2469,6 +2469,19 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'entrepot-sous-douane', sigle: 'Customs bonded warehouse', nom: 'US storage under customs control',
+    def: 'A warehouse under customs control where imported merchandise can be held before entry for consumption. In the United States, goods entered for warehousing generally attract the duty rate in effect on withdrawal for consumption, subject to specific provisions. Withdrawal requires formalities and an estimated-duty deposit. COMEX approval does not establish the customs status of individual lots.',
+    guide: '/en/analysis/copper-us-stockpiles-conditions-for-return/', ...energySection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Copper: conditions for US stockpiles to return overseas', href: '/en/analysis/copper-us-stockpiles-conditions-for-return/', kind: 'article' }],
+      sources: [
+        { label: 'eCFR, 19 CFR 141.69', href: 'https://www.ecfr.gov/current/title-19/chapter-I/part-141/subpart-E/section-141.69', detail: 'General rule and the warehousing exception; specific provisions can override the treatment.', kind: 'source' },
+        { label: 'eCFR, 19 CFR 144.38', href: 'https://www.ecfr.gov/current/title-19/chapter-I/part-144/subpart-D/section-144.38', detail: 'Formalities, estimated-duty deposit and permit for withdrawal for consumption.', kind: 'source' },
+      ],
+      related: ['warrant-d-entrepot'],
+    },
+  },
+  {
     slug: 'warrant-d-entrepot',
     sigle: 'Warehouse warrant',
     nom: 'Title to metal held in an approved warehouse',
