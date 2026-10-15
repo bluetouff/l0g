@@ -105,6 +105,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/scpi-office-income-infographics.test.mjs',
     'scripts/scpi-resale-infographics.test.mjs',
     'scripts/sfr-infographics.test.mjs',
+    'scripts/softbank-funding-infographics.test.mjs',
     'scripts/sovereign-bank-infographics.test.mjs',
     'scripts/stablecoin-redemption-infographics.test.mjs',
     'scripts/starlink-infographics.test.mjs',
@@ -148,6 +149,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/trade-cycle-rendered-infographics.test.mjs',
     'scripts/clinic-risk-rendered-infographics.test.mjs',
     'scripts/copper-border-rendered-infographics.test.mjs',
+    'scripts/softbank-funding-rendered-infographics.test.mjs',
   ]),
 });
 

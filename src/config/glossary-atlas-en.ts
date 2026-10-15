@@ -204,6 +204,20 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'pret-relais', sigle: 'Bridge loan', nom: 'Temporary borrowing ahead of an expected funding source',
+    def: 'A short-term loan used to meet a funding need before an expected resource becomes available, such as longer-term financing or proceeds from an asset sale. The later resource still has to materialise. The facility limit, cumulative drawdowns and principal outstanding describe different stages of the borrowing and must not be added together.',
+    guide: '/en/analysis/softbank-openai-financing-freedom-to-wait/', ...privateCreditSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'The loan advances the funds; the resource intended to repay it must subsequently materialise.',
+      articles: [{ label: 'SoftBank: the financing behind its OpenAI bet', href: '/en/analysis/softbank-openai-financing-freedom-to-wait/', kind: 'article' }],
+      sources: [
+        { label: 'BDC, bridge capital', href: 'https://www.bdc.ca/en/articles-tools/entrepreneur-toolkit/templates-business-guides/glossary/bridge-capital', detail: 'Temporary funding ahead of a more permanent resource; bridge financing can take the form of debt.', kind: 'source' },
+        { label: 'SoftBank Group, Early Repayment of Bridge Loans, 9 September 2026', href: 'https://group.softbank/en/news/press/20260909', detail: 'Borrower disclosure distinguishing the facility limit, cumulative drawdowns and balance before repayment.', kind: 'source' },
+      ],
+      related: ['risque-de-refinancement', 'coupon-obligataire'],
+    },
+  },
+  {
     slug: 'capitation', sigle: 'Capitation', nom: 'Fixed payment per patient and period',
     def: 'A payment method in which a physician or physician group receives a set amount per patient and period, usually a month, for a defined package of services and administrative costs, regardless of the number of services delivered. The covered services and contractual protections determine the provider’s cost exposure. The payment does not measure quality of care.',
     guide: '/en/analysis/humana-blackrock-promise-behind-clinics/', sectionTitle: 'Industry & healthcare', accent: 'var(--color-signal)', robots: 'noindex,follow',

@@ -397,6 +397,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'BDC', nom: 'Business Development Company', def: "Société américaine de financement qui investit en dette et en capital dans des entreprises généralement petites ou moyennes. Une BDC peut être cotée ou non cotée. Sa liquidité, son levier et les conditions de rachat dépendent de sa structure.", guide: '/posts/credit-prive-logiciels-ia-revenus-dette/' },
       { sigle: 'Interval fund', nom: 'Fonds à intervalle', def: "Fonds semi-liquide qui n'autorise les rachats que par fenêtres périodiques et plafonnées. Tout en détenant des actifs illiquides, d'où un risque de gating en cas d'afflux de sorties." },
       { sigle: 'NAV', nom: 'Net Asset Value', def: "Valeur nette d'inventaire : valeur des actifs d'un fonds moins ses dettes. Pour les fonds privés, elle est estimée et non cotée, d'où des questions d'opacité." },
+      { sigle: 'Prêt-relais', nom: 'Financement temporaire en attente d’une ressource', def: 'Prêt à court terme destiné à financer un besoin avant l’arrivée d’une ressource attendue, par exemple un financement à plus long terme ou le produit d’une cession. La ressource future reste à obtenir. Le plafond autorisé, les montants tirés et le capital restant dû décrivent des états différents du prêt et ne doivent pas être additionnés.', guide: '/posts/softbank-openai-echeances-liberte-attendre/' },
       { sigle: 'LTV', nom: 'Loan-to-value, ratio prêt-valeur', def: "Rapport entre la dette garantie et la valeur courante du collatéral. Une hausse du collatéral réduit le LTV sans remboursement ; une baisse le relève. Pour un prêt sur or remboursable in fine, la RBI inclut dans la dette le montant total payable à l'échéance, intérêts compris.", guide: '/posts/quand-or-monte-dette-aussi/' },
       { sigle: 'NAV loan', nom: 'Prêt sur valeur liquidative', def: "Emprunt contracté par un fonds contre la valeur liquidative de l'ensemble de son portefeuille, souvent pour financer investissements complémentaires ou distributions. Levier ajouté au niveau du fonds, par-dessus la dette des entreprises détenues, peu visible pour les investisseurs finaux. Quotité typique de 5 à 25 % de la NAV, collatéral croisé sur tout le portefeuille." },
       { sigle: 'Ligne de souscription', nom: 'Subscription line', def: "Crédit-relais consenti à un fonds en début de vie, garanti par les engagements non appelés de ses investisseurs (LP), pour financer les acquisitions avant les appels de capital. À l'inverse du NAV loan, qui arrive en fin de vie du fonds et se gage sur la valeur du portefeuille déjà investi." },
@@ -813,7 +814,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-14';
+export const glossaryUpdatedIso = '2026-10-15';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1056,6 +1057,15 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'pret-relais': {
+    intuition: 'Le prêt avance les fonds ; la ressource destinée à le rembourser doit ensuite se réaliser.',
+    articles: [{ label: 'SoftBank : les échéances du pari OpenAI', href: '/posts/softbank-openai-echeances-liberte-attendre/', kind: 'article' }],
+    sources: [
+      { label: 'BDC, financement relais', href: 'https://www.bdc.ca/fr/articles-outils/boite-outils-entrepreneur/gabarits-documents-guides-affaires/glossaire/financement-provisoire', detail: 'Financement temporaire avant une ressource plus durable ; le financement relais peut prendre la forme d’un prêt.', kind: 'source' },
+      { label: 'SoftBank Group, Early Repayment of Bridge Loans, 9 septembre 2026', href: 'https://group.softbank/en/news/press/20260909', detail: 'Exemple publié par l’emprunteur : plafond de la facilité, tirages cumulés et encours avant remboursement.', kind: 'source' },
+    ],
+    related: ['risque-de-refinancement', 'coupon-obligataire'],
+  },
   capitation: {
     articles: [{ label: 'Humana–BlackRock : la promesse derrière les cliniques', href: '/posts/humana-blackrock-promesse-cliniques/', kind: 'article' }],
     sources: [

@@ -19,6 +19,27 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
 {
+  const slug = 'pret-relais';
+  const fr = glossaryEntries.find(entry => entry.slug === slug), en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, 'Prêt-relais : définition et preuves FR/EN requises');
+  assert.equal(fr.guide, '/posts/softbank-openai-echeances-liberte-attendre/');
+  assert.equal(en.guide, '/en/analysis/softbank-openai-financing-freedom-to-wait/');
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false); assert.equal(en.robots, 'noindex,follow');
+  assert.equal(fr.sectionTitle, 'Crédit privé & marchés'); assert.equal(en.sectionTitle, 'Private credit & markets');
+  for (const [entry, definitionSource] of [
+    [fr, 'https://www.bdc.ca/fr/articles-outils/boite-outils-entrepreneur/gabarits-documents-guides-affaires/glossaire/financement-provisoire'],
+    [en, 'https://www.bdc.ca/en/articles-tools/entrepreneur-toolkit/templates-business-guides/glossary/bridge-capital'],
+  ]) {
+    assert.deepEqual(entry.atlas.sources.map(item => item.href), [definitionSource, 'https://group.softbank/en/news/press/20260909']);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, ['risque-de-refinancement', 'coupon-obligataire']);
+    assert(!entry.def.includes('—'));
+  }
+  assert.match(fr.def, /court terme/); assert.match(fr.def, /ne doivent pas être additionnés/);
+  assert.match(en.def, /short-term/); assert.match(en.def, /must not be added together/);
+}
+
+{
   const slug = 'entrepot-sous-douane';
   const fr = glossaryEntries.find(entry => entry.slug === slug), en = glossaryAtlasEnBySlug.get(slug);
   assert(fr?.atlas && en, 'Entrepôt sous douane : définition et preuves FR/EN requises');
@@ -118,7 +139,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 236, 'Le corpus anglais doit conserver ses 236 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 237, 'Le corpus anglais doit conserver ses 237 fiches uniques');
 
 for (const [slug, source, related] of [
   ['apd', 'https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html', ['equivalent-don', 'ida', 'compte-courant']],
@@ -245,8 +266,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 646, 'Le corpus doit conserver ses 646 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 224, 'Le graphe Atlas doit conserver ses 224 nœuds');
+assert.equal(glossaryEntries.length, 647, 'Le corpus doit conserver ses 647 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 225, 'Le graphe Atlas doit conserver ses 225 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -668,7 +689,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 673, 'Le graphe Atlas doit conserver ses 673 relations');
+assert.equal(glossaryAtlasEdgeCount, 675, 'Le graphe Atlas doit conserver ses 675 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

@@ -1,0 +1,58 @@
+---
+import { softbankFundingSvg, SOFTBANK_FUNDING_KINDS } from '../lib/softbankFundingFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'funding' | 'coupons' | 'ltv' | 'cash' | 'trigger' | 'ipo';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || SOFTBANK_FUNDING_KINDS.indexOf(kind) + 1 !== Number(number) || !SOFTBANK_FUNDING_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid SoftBank funding figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[0-6])$/.test(id))) {
+  throw new TypeError('Invalid SoftBank funding source reference');
+}
+---
+<figure class="softbank-funding-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="softbank-funding-desktop" set:html={softbankFundingSvg(lang, kind, false)} />
+  <div class="softbank-funding-mobile" set:html={softbankFundingSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="softbank-funding-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g SoftBank Funding'; src: url('/fonts/softbank-funding/liberation-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g SoftBank Funding'; src: url('/fonts/softbank-funding/liberation-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .softbank-funding-figure :global(svg text) { font-family: 'l0g SoftBank Funding', 'Liberation Sans', Arial, sans-serif; }
+  .softbank-funding-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .softbank-funding-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .softbank-funding-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .softbank-funding-references { display: block; }
+  .softbank-funding-references a { margin-right: .75em; }
+  .softbank-funding-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .softbank-funding-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .softbank-funding-figure :global(details p) { margin: .7rem 0; }
+  :global(.softbank-funding-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.softbank-funding-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .softbank-funding-desktop { display: none; }
+    .softbank-funding-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .softbank-funding-desktop { display: none; }
+    .softbank-funding-mobile { display: block; }
+  }
+  .softbank-funding-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .softbank-funding-figure { break-inside: avoid; }
+    .softbank-funding-desktop { display: block; }
+    .softbank-funding-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  }
+</style>
