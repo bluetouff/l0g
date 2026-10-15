@@ -1,0 +1,58 @@
+---
+import { usdcBorderSvg, USDC_BORDER_KINDS } from '../lib/usdcBorderFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'oversight' | 'migration' | 'information' | 'buffers' | 'banking' | 'exit';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || USDC_BORDER_KINDS.indexOf(kind) + 1 !== Number(number) || !USDC_BORDER_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid USDC borders figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[0-9])$/.test(id))) {
+  throw new TypeError('Invalid USDC borders source reference');
+}
+---
+<figure class="usdc-border-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="usdc-border-desktop" set:html={usdcBorderSvg(lang, kind, false)} />
+  <div class="usdc-border-mobile" set:html={usdcBorderSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="usdc-border-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g USDC Borders'; src: url('/fonts/usdc-borders/liberation-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g USDC Borders'; src: url('/fonts/usdc-borders/liberation-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .usdc-border-figure :global(svg text) { font-family: 'l0g USDC Borders', 'Liberation Sans', Arial, sans-serif; }
+  .usdc-border-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .usdc-border-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .usdc-border-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .usdc-border-references { display: block; }
+  .usdc-border-references a { margin-right: .75em; }
+  .usdc-border-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .usdc-border-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .usdc-border-figure :global(details p) { margin: .7rem 0; }
+  :global(.usdc-border-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.usdc-border-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .usdc-border-desktop { display: none; }
+    .usdc-border-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .usdc-border-desktop { display: none; }
+    .usdc-border-mobile { display: block; }
+  }
+  .usdc-border-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .usdc-border-figure { break-inside: avoid; }
+    .usdc-border-desktop { display: block; }
+    .usdc-border-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  }
+</style>

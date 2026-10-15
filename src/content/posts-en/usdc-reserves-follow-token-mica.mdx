@@ -1,0 +1,172 @@
+---
+title: 'USDC: can the reserves follow the token?'
+seoTitle: 'USDC: MiCA, reserves and cross-border redemption | l0g'
+ogTitle: 'USDC: can the reserves follow the token?'
+description: 'The EBA takes over part of USDC supervision on 12 November. An investigation into cross-border reserves and the conditions for redemption.'
+tags: ["USDC", "MiCA", "stablecoins", "reserves", "liquidity", "macroeconomic risk"]
+pubDate: '2026-10-15T20:47:45+02:00'
+updatedDate: '2026-10-15T20:47:45+02:00'
+draft: false
+ogImage: /illustrations/news/usdc-reserves-borders-v1.jpg
+sourceArticle: usdc-reserves-suivre-jeton-mica
+sourceUpdatedDate: '2026-10-15T20:47:45+02:00'
+---
+
+import UsdcBorderFigure from '../../components/UsdcBorderFigure.astro';
+
+A token can cross a continent without changing its name. Someone sells [USDC](/en/glossary/usdc/) to a person based in the European Economic Area and the transfer appears on a blockchain. The dollars supporting redemption sit with legal entities governed by national law. Keeping the promise requires that financial geography to follow the holders.
+
+On **14 October 2026**, the European Banking Authority announced that USDC issued by Circle Internet Financial Europe SAS had become the Union’s first **significant e-money token**. From **12 November**, the EBA will take over supervision of capital, reserves, liquidity and crisis plans. France’s ACPR will retain areas including governance and outsourcing. The announcement also refers to a cooperation agreement with New York’s financial supervisor. <sup><a href="#source-1" aria-label="Source 1">[1]</a></sup>
+
+Circle’s documentation already addresses a situation in which reserves cannot be rebalanced between the French issuer and its US counterpart. Some redemptions could then be deferred, even before a formal recovery plan is activated. <sup><a href="#source-3" aria-label="Source 3">[3]</a></sup><sup><a href="#source-4" aria-label="Source 4">[4]</a></sup>
+
+**Europe’s enhanced oversight will therefore examine a private dollar whose holders can move more freely than some of the assets protecting them.** This investigation follows that difference to the bank account. The documents reviewed as of 15 October contain no public confirmation that this particular stress mechanism has been activated.
+
+## Reserve supervision and holders’ rights
+
+An e-money token seeks to maintain its value by reference to a single official currency. For USDC, that currency is the US dollar. European law gives the holder a claim against the issuer and a right to redemption at par: the token’s monetary value must be paid in funds other than electronic money. Article 49 of MiCA establishes that right. <sup><a href="#source-2" aria-label="Source 2">[2]</a></sup>
+
+Our [MiCA reference guide](/en/guides/decode-mica-crypto-regulation/) maps token categories and the authorities responsible for them.
+
+The significant designation brings supervision tailored to the arrangement’s scale and financial connections. Classification combines several criteria and is subject to reassessment. It is therefore different from a quality rating awarded to the token. The announcement does not disclose the individual USDC measurements used in the assessment. <sup><a href="#source-14" aria-label="Source 14">[14]</a></sup>
+
+Enhanced oversight covers the resources available to absorb losses, the assets held, usable liquidity and preparations for distress. MiCA also requires an independent reserve audit every six months for electronic money institutions issuing significant tokens. Periodic audits and day-to-day payment readiness provide complementary protections. <sup><a href="#source-9" aria-label="Source 9">[9]</a></sup>
+
+The debtor remains a private entity. The regime requires a warning that the token is outside the EU’s deposit guarantee and investor compensation schemes. Holding USDC does not open a guaranteed bank account in the holder’s name at each reserve bank. Claims against the issuer and safeguards over its assets must be understood within their own legal framework. <sup><a href="#source-17" aria-label="Source 17">[17]</a></sup>
+
+Our [investigation into EURR, the stablecoin distributed by Revolut](/en/analysis/eurr-who-owes-euro-behind-revolut-stablecoin/) examines the difference between the app a holder uses and the entity responsible for redemption.
+
+<UsdcBorderFigure lang="en" kind="oversight" number="01" sources="1 4 9 14 19" caption="From 12 November 2026, oversight of the French issuer is split between the EBA and ACPR. Reserves remain assets held by private entities linked through a contractual arrangement.">
+<details><summary>Method and scope</summary><p>Main authorities mentioned in the announcement; non-exhaustive diagram with no amounts or implied public guarantee. Solid lines: supervision or entity relationship. Dashed line: disclosed contractual rebalancing, not independently tested. The EBA also announced an information-sharing agreement with NYDFS. Legal scopes remain distinct.</p></details>
+</UsdcBorderFigure>
+
+The public EBA–NYDFS memorandum covers information about obstacles to reserve rebalancing, including under stress. Article 9 nevertheless states that it is not legally binding and does not change applicable laws. Supervisory cooperation can therefore improve information without guaranteeing that assets can be transferred. <sup><a href="#source-19" aria-label="Source 19">[19]</a></sup>
+
+The practical question for the EBA–ACPR division of work is whether asset decisions remain consistent with the organisation that must mobilise them. A liquidity plan also depends on banks, service providers and people authorised to act. Changing supervisors does not remove those connections. It identifies who will examine them.
+
+## The claim crosses before the reserve
+
+Circle describes USDC as globally fungible: units are interchangeable. Its policy directs holders established in the European Economic Area to Circle France and those outside it to Circle Internet Financial, LLC. The white paper describes a contractual reserve-rebalancing arrangement intended to track European holdings. <sup><a href="#source-3" aria-label="Source 3">[3]</a></sup><sup><a href="#source-4" aria-label="Source 4">[4]</a></sup>
+
+This structure combines two features users may value: broad circulation of a common asset and a regulated counterparty within their jurisdiction. It also requires an additional operation. Moving tokens between holders and transferring reserves between issuers are separate transactions that have to be reconciled.
+
+Consider an **entirely fictional example**. A system has 1,000 one-dollar tokens backed by USD 1,000 of assets. European holders initially own 200 tokens and the European issuer holds USD 200. The rest of the arrangement accounts for 800 tokens and USD 800.
+
+European buyers then purchase 150 tokens from holders elsewhere. Global supply remains 1,000. No additional token has been created and no asset has lost value. Yet European holdings now reach 350, while the European reserve remains 200 if it has not moved. **USD 150 must be reassigned to restore alignment.**
+
+The illustration deliberately isolates that interval. Where continuous coverage is required, such a mismatch is precisely what the arrangement must prevent or correct. This is neither a permitted regulatory grace period nor a reconstruction of Circle’s accounts. It explains why checking a worldwide reserve total cannot, on its own, establish that every entity can meet requests at the same time.
+
+<UsdcBorderFigure lang="en" kind="migration" number="02" sources="4 5" caption="Fictional simulation: 150 tokens move to European holders. Global totals remain 1,000 tokens and USD 1,000 of reserves, but USD 150 must be reassigned.">
+<details><summary>Method and scope</summary><p>EEA: European Economic Area. Two simplified groups, not Circle data. One token is worth one dollar in this example. No issuance, redemptions, fees or losses. Token and reserve bars each have a 1,000 base; they are not added together. The intermediate mismatch illustrates a problem to prevent or correct, not an authorised regulatory grace period.</p></details>
+</UsdcBorderFigure>
+
+The required transfer may be prepared and completed smoothly. High-quality assets, available banks and reliable information make adjustment easier. The test becomes harder when requests concentrate, a counterparty delays or an authority restricts transfers. The **Financial Stability Board’s 12 October note** identifies this vulnerability in multi-issuer arrangements: effective rebalancing depends on reserve mobility, market access and coordination. It describes potential vulnerabilities rather than announcing the failure of a named issuer. <sup><a href="#source-5" aria-label="Source 5">[5]</a></sup>
+
+A transfer requirement should also be distinguished from a permanent loss. The USD 150 in our example still exists. Its location creates a payment constraint. Asset impairment, a legal prohibition on transfers or conflicting creditor rights would produce different problems, each requiring additional evidence.
+
+## The blockchain leaves part of the map blank
+
+Locating holders is central to the problem. An address reveals balances and movements, but not, by itself, the legal residence of whoever controls the tokens. A custodian’s address may also combine different clients’ holdings. The FSB distinguishes abundant transaction data from the difficulty of assigning activity to a particular use or jurisdiction. <sup><a href="#source-5" aria-label="Source 5">[5]</a></sup>
+
+Circle asks crypto-asset service providers, or **CASPs**, to report relevant holdings daily. Its reporting page describes an S08.00 template and automated submission. Platform data therefore supplements the token’s technical record. The reporting process is public; the completeness and actual speed of incoming information have not been audited here. <sup><a href="#source-6" aria-label="Source 6">[6]</a></sup>
+
+An analytical consequence follows: two dashboards can both be accurate while answering different questions. One counts outstanding tokens. The other seeks to identify which entity must prepare to redeem which holders. Connecting the two requires identities, locations and legal claims to be reconciled.
+
+That information becomes particularly important under stress. Circle’s white paper links certain temporary provider limits to previously reported holdings. It also describes different treatment for other holders to constrain opportunistic shifts of redemption demand between jurisdictions. Neither the reference data nor provider-specific limits were obtained for this investigation. <sup><a href="#source-4" aria-label="Source 4">[4]</a></sup>
+
+<UsdcBorderFigure lang="en" kind="information" number="03" sources="4 5 6" caption="Blockchain balances must be matched with holder information. Providers’ daily reporting helps size reserves and may become a reference during stress.">
+<details><summary>Method and scope</summary><p>Documented mechanism. No reporting coverage, error rate or actual delay is assumed. A wallet may aggregate several clients. Temporary limits follow Circle’s published description; the figure calculates no provider-specific cap.</p></details>
+</UsdcBorderFigure>
+
+The mechanism may limit a sudden arrival of requests that the local reserve is not yet ready to meet. It may also make earlier reporting quality consequential for access to redemption. A rule based on a recorded balance needs procedures for correcting errors, recognising changes of ownership and reconciling pending requests. Public documents identify these questions without supplying a complete record of their execution.
+
+## Redemption under cross-border stress
+
+Circle’s policy distinguishes a stress period in which rebalancing is obstructed from the possible subsequent activation of a regulatory plan. In the first period, it provides for changes to request sequencing and timing. It presents the entitlement to par redemption as preserved. The promised value and the date on which that value becomes available can consequently follow different paths. <sup><a href="#source-3" aria-label="Source 3">[3]</a></sup>
+
+This distinction matters to a business paid in USDC. Its supplier may require payment on a fixed date. If token conversion takes longer, the business needs other cash, an extension or a buyer for the tokens. Expected recovery of the full amount does not remove the financing need during the interval. This is a mechanism, not an estimate of Circle’s current delays or any discount charged by intermediaries.
+
+MiCA also contains its own crisis arrangements. Article 55 applies recovery and redemption planning provisions to e-money-token issuers. Article 46 contemplates measures including limits and suspensions within the framework and powers of the relevant authority. Circle’s contractual stress period before plan activation therefore deserves separate examination. <sup><a href="#source-15" aria-label="Source 15">[15]</a></sup><sup><a href="#source-16" aria-label="Source 16">[16]</a></sup>
+
+This investigation does not rule on the legal validity of individual clauses. An issuer’s document is not a supervisor’s decision on every possible application of its terms. MiCA requires the white paper to state that it has not been approved by an authority and that the issuer is responsible for its contents. The October classification and notification of a white paper are different acts. <sup><a href="#source-17" aria-label="Source 17">[17]</a></sup>
+
+The useful question is testable: during a stress exercise, which request is accepted, using which information, by which entity and against which mobilisable assets? A high coverage ratio becomes most meaningful when that sequence can be demonstrated.
+
+## More deposits can create a different exposure
+
+The European framework seeks to prepare an available reserve. Article 54 requires at least **30%** of the funds received to be placed in separate accounts at credit institutions. The enhanced framework uses a deposit floor of at least **60%**, as set out through MiCA’s cross-references and explained by the European System of Central Banks. These percentages describe requirements within their scope, not the actual worldwide composition of Circle’s reserves. <sup><a href="#source-7" aria-label="Source 7">[7]</a></sup><sup><a href="#source-8" aria-label="Source 8">[8]</a></sup><sup><a href="#source-9" aria-label="Source 9">[9]</a></sup><sup><a href="#source-10" aria-label="Source 10">[10]</a></sup>
+
+A base of 100 makes the thresholds readable. The first requires at least 30 in deposits; the second raises the minimum to 60. The unfilled parts of the figure leave room for other eligible assets. They do not require portfolios containing exactly 70 or 40 in securities. No current reserve shortfall is inferred from these floors.
+
+<UsdcBorderFigure lang="en" kind="buffers" number="04" sources="7 8 9 10" caption="On an illustrative base of 100, the banking minimum rises from 30 to 60 between the ordinary and enhanced regimes. These are regulatory floors, not Circle portfolio measurements.">
+<details><summary>Method and scope</summary><p>Minimum deposit share; common zero-based scale. The open section can contain other eligible assets or additional deposits. Articles 54, 45 and 58 read together with the ESCB’s September 2026 explanation. No transfer volume on 12 November is inferred; an issuer-specific compliance schedule was not obtained.</p></details>
+</UsdcBorderFigure>
+
+The protective logic is straightforward. Money already in a bank may allow redemption without an immediate sale of securities. But the bank itself receives a deposit whose withdrawals depend on a token market. It must prepare for collective redemption demand to become a concentrated loss of funding.
+
+In its **September 2026** contribution to the MiCA review, the European System of Central Banks advocates replacing fixed deposit floors with requirements tied to the availability of very short-term assets. Its reasoning has two sides: reserves must be mobilisable, and the way they are assembled can transmit risk to banks. Circle supports that criticism in its response published on **1 October**. These are reform proposals. Their publication does not repeal existing percentages. <sup><a href="#source-10" aria-label="Source 10">[10]</a></sup><sup><a href="#source-11" aria-label="Source 11">[11]</a></sup>
+
+The macroeconomic issue concerns who makes withdrawal decisions. In a simulation, ten people each hold ten dollars in a bank. If each converts those dollars into tokens and the matching reserve is deposited at a single bank, the simplified system still contains USD 100 of deposits. Ownership and the potential for simultaneous withdrawal have changed. Actual flows may include securities purchases and other banks. The example isolates one possible route rather than an automatic transformation of every deposit.
+
+<UsdcBorderFigure lang="en" kind="banking" number="05" sources="10 13" caption="Fictional example: ten deposits of 10 become one reserve deposit of 100. The money remains in the simplified banking system; ownership and potential withdrawal concentration change.">
+<details><summary>Method and scope</summary><p>Deposit-only simulation, with no securities purchases, fees, credit creation or cash withdrawals. No initial number of banks is assumed. The 100 outflow is an illustrated possibility, not a withdrawal forecast or a description of Circle reserves.</p></details>
+</UsdcBorderFigure>
+
+History supplies the reverse direction. Federal Reserve research published in December 2025 examines **USD 3.3 billion** of Circle reserves exposed to Silicon Valley Bank in March 2023. Uncertainty over access to those deposits contributed to USDC stress. The 12 March announcement protecting the bank’s depositors helped restore confidence. A bank reserve can transmit a bank problem to the token, just as token redemptions can put pressure on a bank. That episode is not a measure of the arrangement’s current fragility. <sup><a href="#source-13" aria-label="Source 13">[13]</a></sup>
+
+## An unresolved European debate
+
+The debate extends beyond deposit percentages. In **October 2025**, the European Systemic Risk Board published a recommendation on fungible schemes involving both EU and third-country issuers. It highlighted the risk of redemption demand shifting towards the jurisdiction perceived as most protective while reserves remain elsewhere. <sup><a href="#source-12" aria-label="Source 12">[12]</a></sup>
+
+In its MiCA review response dated 29 September 2026, highlighted on its website on 14 October, the ESRB reiterates concerns about redemption requests shifting towards the EU and barriers to transferring reserves. It calls for changes to the framework and additional safeguards. The consultation submission itself introduces no new prohibition. <sup><a href="#source-18" aria-label="Source 18">[18]</a></sup>
+
+In September 2026, European central banks maintained a restrictive reading of the legal basis for these structures and called for legislative changes and strong safeguards. Circle instead argues for retaining them, emphasising global market depth and access through a regulated European issuer. The first document is an institutional consultation response; the second is an interested company’s position. <sup><a href="#source-10" aria-label="Source 10">[10]</a></sup><sup><a href="#source-11" aria-label="Source 11">[11]</a></sup>
+
+The EBA, meanwhile, has announced enhanced oversight of the French issuer. These documents address different levels: supervision of an entity, interpretation of the framework and proposals to change it. Combining them into a single verdict for or against the entire model would erase that disagreement.
+
+The strongest argument for fungibility still deserves serious consideration. An asset accepted by more counterparties can be easier to sell or use. An intermediary with dollars and effective redemption access may absorb temporary selling pressure. Under normal conditions, deeper markets can help stabilise trading. Resilience then depends on whether those intermediaries can continue when access to reserves slows. <sup><a href="#source-5" aria-label="Source 5">[5]</a></sup><sup><a href="#source-11" aria-label="Source 11">[11]</a></sup>
+
+## Direct redemption for holders in France
+
+Circle’s published procedure offers European retail holders direct redemption, with identity verification and an EEA bank account capable of receiving dollars. Its post-receipt process includes checks before payment and should take no more than **five business days**, unless discrepancies are identified. Third-party banking or conversion charges may still arise. This is the issuer’s policy timetable; MiCA does not establish a general five-day rule here. <sup><a href="#source-2" aria-label="Source 2">[2]</a></sup><sup><a href="#source-3" aria-label="Source 3">[3]</a></sup>
+
+<UsdcBorderFigure lang="en" kind="exit" number="06" sources="2 3 15 16" caption="The EEA retail route connects a token to an account able to receive dollars. Circle’s five-business-day timetable is conditional; it does not describe every withdrawal from a platform.">
+<details><summary>Method and scope</summary><p>Circle policy updated 15 September 2026, especially sections 2–4 and 8. Identity and bank checks before deposit; received-token checks before payment. The five-day wording includes an exception for discrepancies. Additional adjustments may apply under stress. This is neither a five-calendar-day promise nor a completed redemption trial.</p></details>
+</UsdcBorderFigure>
+
+The route explains why a balance displayed by a platform says little on its own about the available exit. The user needs to identify the asset held, withdrawal access, the entity owing the money and the account able to receive it. A market sale uses a buyer’s funds; redemption with the issuer draws on reserves. Our [earlier analysis of redemption delays](/en/analysis/stablecoin-reserves-redemption-dollar/) examined that distinction. European designation now adds a question about coordination between the entities holding those reserves.
+
+Even when redeemed in full, USDC retains its dollar reference. A household spending euros remains exposed to a separate exchange rate. Better supervision may strengthen execution of a dollar claim; it does not fix its future euro value.
+
+The public record establishes the new supervisory division, a disclosed rebalancing mechanism and terms for handling requests under stress. It does not reconstruct daily reserves by entity, actual transfer times or the results of a complete crisis exercise. **The decisive test is whether, under pressure, the location of redemption demand can remain aligned with the location of usable dollars.**
+
+## Sources and limits
+
+Documentary research as of **15 October 2026**. The full HTML of the EBA’s 14 October release was obtained. The public NYDFS cooperation memorandum was also read, with its contact appendix redacted. MiCA provisions were read in ESMA’s official reproduction. Circle’s policies remain attributed to the issuer and are distinguished from statutory obligations, consultation positions and empirical findings.
+
+The redemption policy is dated 15 September 2026. The white paper’s introduction records the same amendment, while some fields retain a July date. Cross-border mechanisms were compared with the FSB’s 12 October note and ESCB and ESRB positions. Deposit percentages are floors, not a reconstructed portfolio. The SVB episode concerns March 2023, examined in research published in December 2025.
+
+No interviews, redemption trials, reserve audits or exhaustive holder tracing were performed. The full rebalancing agreement, internal crisis plans, exercise results and daily reserves by entity were not obtained. The investigation makes no ruling on each clause’s validity and does not estimate current default risk. The 1,000-token and ten-deposit examples are fictional simulations designed to isolate mechanisms, with no claim to calibration against Circle.
+
+
+<ol class="usdc-border-sources">
+<li id="source-1"><strong>Autorité bancaire européenne / EBA</strong> · <a href="https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union">EBA classifies USDC as first significant e-money token in the European Union</a>. 2026-10-14. Designation, 12 November transfer, EBA/ACPR split and NYDFS cooperation. Full official release obtained as HTML. Individual classification decision and detailed assessment inputs not obtained. The public NYDFS memorandum was read separately, source 19.</li>
+<li id="source-2"><strong>Union européenne / ESMA</strong> · <a href="https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-49-issuance-and-redeemability-e">MiCA, article 49: Issuance and redeemability of e-money tokens</a>. 2023-05-31. Claim against the issuer, par redemption and treatment of fees. ESMA official reproduction of Regulation 2023/1114; read with Articles 46 and 55 for recovery arrangements.</li>
+<li id="source-3"><strong>Circle</strong> · <a href="https://www.circle.com/legal/mica-redemption-policy">MiCA Redemption Policy</a>. 2026-09-15. Retail access, USD bank account, processing and cross-border stress event. Issuer policy; no redemption trial or independent legal validation of each clause.</li>
+<li id="source-4"><strong>Circle Internet Financial Europe SAS</strong> · <a href="https://www.circle.com/legal/mica-usdc-whitepaper">USDC White Paper</a>. 2026-09-15. Fungibility, reserve rebalancing and treatment of requests under stress. Latest amendment date from the introduction; some fields retain July. Full rebalancing agreement not obtained.</li>
+<li id="source-5"><strong>Financial Stability Board</strong> · <a href="https://www.fsb.org/uploads/P121026-2.pdf">Global Stablecoin Arrangements: Cross-border vulnerabilities and financial stability monitoring</a>. 2026-10-12. Mobile liabilities, jurisdiction-bound reserves, transmission and data gaps. Monitoring note; no new binding rule or finding that an issuer has failed.</li>
+<li id="source-6"><strong>Circle</strong> · <a href="https://www.circle.com/legal/casp-emt-data-reporting">CASP EMT Data Reporting</a>. 2026-04-08, accessed 15 October 2026. Daily reporting from service providers to locate holdings. Published arrangement; completeness and actual reporting speed not independently measured.</li>
+<li id="source-7"><strong>Union européenne / ESMA</strong> · <a href="https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-54-investment-funds-received">MiCA, article 54: Investment of funds received in exchange for e-money tokens</a>. 2023-05-31. 30% floor in separate bank accounts and rules for other assets. Regulatory requirement, distinct from Circle’s actual portfolio.</li>
+<li id="source-8"><strong>Union européenne / ESMA</strong> · <a href="https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-45-specific-additional-obligations">MiCA, article 45: Specific additional obligations</a>. 2023-05-31. Deposit floor of at least 60% within the enhanced framework. Does not reconstruct global reserve allocation or an issuer-specific transition schedule.</li>
+<li id="source-9"><strong>Union européenne / ESMA</strong> · <a href="https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-58-specific-additional-obligations">MiCA, article 58: Specific additional obligations for issuers of e-money tokens</a>. 2023-05-31. Enhanced regime for electronic money institutions and independent six-month reserve audit. Statutory scope and cross-references; no finding on an observed portfolio’s compliance.</li>
+<li id="source-10"><strong>Système européen de banques centrales / ESCB</strong> · <a href="https://www.ecb.europa.eu/press/consultationresponse/pdf/ecb.conresp202609_micarreview.de.pdf">ESCB response to the European Commission consultation on the MiCA review</a>. 2026-09-22. Critique of deposit floors and position on EU/third-country multi-issuer arrangements. Consultation response; proposals do not replace current law.</li>
+<li id="source-11"><strong>Circle</strong> · <a href="https://www.circle.com/blog/circles-response-to-the-european-commissions-mica-review-consultation">Circle’s response to the European Commission’s MiCA review consultation</a>. 2026-10-01. Defence of global liquidity and proposed reform of reserve requirements. Interested company’s policy position; claimed benefits not measured here.</li>
+<li id="source-12"><strong>Comité européen du risque systémique / ESRB</strong> · <a href="https://www.esrb.europa.eu/news/pr/date/2025/html/esrb.pr251020~84e90ccc73.en.html">ESRB publishes report on systemic risks from crypto-assets and issues recommendation on stablecoins</a>. 2025-10-20. Risks of shifting redemption demand and cross-border reserve barriers. Dated recommendation; its timetable does not establish adoption of the proposed measures.</li>
+<li id="source-13"><strong>Federal Reserve Board</strong> · <a href="https://www.federalreserve.gov/econres/notes/feds-notes/in-the-shadow-of-bank-run-lessons-from-the-silicon-valley-bank-failure-and-its-impact-on-stablecoins-20251217.html">In the Shadow of Bank Runs: Lessons from the Silicon Valley Bank Failure and Its Impact on Stablecoins</a>. 2025-12-17. USD 3.3 billion of reserves exposed to SVB; chronology of stress and public action. Historical research, corrected 8 January 2026; not a measure of current USDC weakness.</li>
+<li id="source-14"><strong>Union européenne / ESMA</strong> · <a href="https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-56-classification-e-money-tokens">MiCA, article 56: Classification of e-money tokens as significant</a>. 2023-05-31. Multi-criterion designation and periodic reassessment. Individual USDC inputs are not published in the reviewed announcement.</li>
+<li id="source-15"><strong>Union européenne / ESMA</strong> · <a href="https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-46-recovery-plan">MiCA, article 46: Recovery plan</a>. 2023-05-31. Recovery measures and authority powers. Distinct from Circle’s contractual stress period before plan activation.</li>
+<li id="source-16"><strong>Union européenne / ESMA</strong> · <a href="https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-55-recovery-and-redemption-plans">MiCA, article 55: Recovery and redemption plans</a>. 2023-05-31. Application of Articles 46 and 47 to EMT issuers. Must be read together with the rest of Title IV.</li>
+<li id="source-17"><strong>Union européenne / ESMA</strong> · <a href="https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-51-content-and-form-crypto-asset">MiCA, article 51: Content and form of the crypto-asset white paper for e-money tokens</a>. 2023-05-31. White-paper responsibility and absence of deposit and investor compensation coverage. Reserve safeguarding and legal claims are different types of protection.</li>
+<li id="source-18"><strong>European Systemic Risk Board / Comité européen du risque systémique</strong> · <a href="https://www.esrb.europa.eu/pub/pdf/other/ESRB.response260929~dc708d0e30.en.pdf">ESRB response to the European Commission’s targeted consultation on the review of Regulation on the Markets in Crypto-Assets (MiCA)</a>. 2026-09-29. Institutional consultation position; no new prohibition or finding that Circle has failed.</li>
+<li id="source-19"><strong>European Banking Authority / New York State Department of Financial Services</strong> · <a href="https://www.dfs.ny.gov/system/files/documents/2026/06/mou_06022026_dfs_stablecoin.pdf">Memorandum of Understanding on cooperation, exchange of information and coordination between the New York State Department of Financial Services and the European Banking Authority</a>. Signed 27 April and 13 May 2026; effective 13 May; announced 2 June. Full public version, with contact appendix redacted. Statement of supervisory cooperation intent, creating no new rights or redemption guarantee. Actual information exchanges not audited.</li>
+</ol>
