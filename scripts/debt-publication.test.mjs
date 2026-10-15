@@ -43,7 +43,7 @@ function assertDebtPage(html, book) {
   ].sort());
   const robots = all.filter(node => node.tagName === 'meta' && attr(node, 'name') === 'robots');
   assert.equal(robots.length, 1);
-  assert.equal(attr(robots[0], 'content'), 'index,follow');
+  assert.equal(attr(robots[0], 'content'), 'index,follow,max-image-preview:large');
   assert.equal(attr(all.find(node => node.tagName === 'html'), 'lang'), book.lang);
 
   const social = getPublicationSocial(book.path);

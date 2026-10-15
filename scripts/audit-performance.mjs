@@ -9,6 +9,7 @@ import { scanHtmlElements } from '../src/lib/html-utils.ts';
 const rootUrl = new URL('../dist/', import.meta.url);
 const root = fileURLToPath(rootUrl);
 const failures = [];
+const metadataOverFormerCutoffs = [];
 const pages = new Map();
 const publicationCovers = new Map([
   ['publications/dette-en-chaine/index.html', 'dette-en-chaine'],
@@ -198,8 +199,11 @@ for (const file of htmlFiles) {
   pages.set(canonical, { name, html, title, description, robots, canonical, alternates, jsonLd });
 
   if (canonical.startsWith('https://l0g.fr/en/')) {
-    assert(title.length <= 60, `${name}: title anglais trop long (${title.length})`);
-    assert(description.length <= 155, `${name}: description anglaise trop longue (${description.length})`);
+    // Snippet width varies by device and query. Length is a review signal,
+    // not a reason to cut complete, source-authored metadata in the HTML.
+    if (title.length > 60 || description.length > 155) {
+      metadataOverFormerCutoffs.push(name);
+    }
   }
 
   const isNewsAnalysis = /^posts\/[^/]+\/index\.html$/.test(name)
@@ -529,3 +533,4 @@ console.log(
   `glossaire ${glossary.length} o (${glossaryGzip.length} o gzip), inline max ${maxInline} o, ` +
   `${sitemapBlocks.length} URL datées, images, presse, hreflang et auteur validés.`
 );
+console.log(`Metadata review: ${metadataOverFormerCutoffs.length} English pages exceed the former 60/155 character cutoffs; complete wording retained.`);

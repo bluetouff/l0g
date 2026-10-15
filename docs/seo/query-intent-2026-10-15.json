@@ -1,0 +1,338 @@
+{
+  "observed_on": "2026-10-15",
+  "source_system": "Google Search Console, navigateur interne authentifié",
+  "property": "sc-domain:l0g.fr",
+  "search_type": "Web",
+  "period": {
+    "start": "2026-09-15",
+    "end": "2026-10-12"
+  },
+  "country": "all",
+  "device": "all",
+  "grain": "page sur la période et requêtes de cette même page; aucune jointure inférée avec pays ou appareil",
+  "pages": [
+    {
+      "url": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+      "source": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&start_date=20260915&end_date=20261012&breakdown=query&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&page=!https%3A%2F%2Fl0g.fr%2Fen%2Fguides%2Fread-h41-fed-balance-sheet%2F",
+      "clicks": 3,
+      "impressions": 4078,
+      "ctr_computed_percent": 0.0736,
+      "position_displayed": 7.7,
+      "queries_available_rows": 39,
+      "queries_collected_rows": 39,
+      "collected_query_impressions": 380,
+      "collected_query_share_of_page_impressions_percent": 9.32,
+      "queries": [
+        {
+          "query": "h.4.1",
+          "clicks": 0,
+          "impressions": 155
+        },
+        {
+          "query": "fed h.4.1",
+          "clicks": 0,
+          "impressions": 53
+        },
+        {
+          "query": "fed h41",
+          "clicks": 0,
+          "impressions": 32
+        },
+        {
+          "query": "h.4.1 statistical release",
+          "clicks": 0,
+          "impressions": 21
+        },
+        {
+          "query": "h4.1 fed",
+          "clicks": 0,
+          "impressions": 13
+        },
+        {
+          "query": "h.4.1 federal reserve",
+          "clicks": 0,
+          "impressions": 13
+        },
+        {
+          "query": "h.4.1 release",
+          "clicks": 0,
+          "impressions": 11
+        },
+        {
+          "query": "fed h 4.1",
+          "clicks": 0,
+          "impressions": 10
+        },
+        {
+          "query": "h41 fed",
+          "clicks": 0,
+          "impressions": 9
+        },
+        {
+          "query": "h41",
+          "clicks": 0,
+          "impressions": 7
+        },
+        {
+          "query": "h.4.1 fed",
+          "clicks": 0,
+          "impressions": 6
+        },
+        {
+          "query": "fed h4.1",
+          "clicks": 0,
+          "impressions": 6
+        },
+        {
+          "query": "federal reserve h.4.1 october 8 2026 reserve balances treasury general account",
+          "clicks": 0,
+          "impressions": 6
+        },
+        {
+          "query": "federal reserve h.4.1",
+          "clicks": 0,
+          "impressions": 5
+        },
+        {
+          "query": "federal reserve h.4.1 release",
+          "clicks": 0,
+          "impressions": 3
+        },
+        {
+          "query": "federal reserve h.4.1 april 2023 borrowings",
+          "clicks": 0,
+          "impressions": 2
+        },
+        {
+          "query": "federal reserve h.4.1 april 2023 total borrowings",
+          "clicks": 0,
+          "impressions": 2
+        },
+        {
+          "query": "h.4.1 report",
+          "clicks": 0,
+          "impressions": 2
+        },
+        {
+          "query": "federal reserve h.4.1 october 1 2026 reserve balances treasury general account",
+          "clicks": 0,
+          "impressions": 2
+        },
+        {
+          "query": "federal reserve h.4.1 total assets july 2026",
+          "clicks": 0,
+          "impressions": 2
+        },
+        {
+          "query": "fed h4",
+          "clicks": 0,
+          "impressions": 2
+        },
+        {
+          "query": "是非お願いします！",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "متى سيصدر",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "quando sai o proximo?",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "federal reserve h.4.1 factors affecting reserve balances",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "sao mình không thấy nhỉ",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "federal reserve h.4.1 release april 2023 borrowing",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "federal reserve total borrowings april 2023 h.4.1",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "h.4.1 factors affecting reserve balances",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "h 4.1",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "h41 federal reserve",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "si me gustaria",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "fed balance sheet h.4.1 latest",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "federal reserve h.4.1 october 1 2026 reserve balances tga reverse repo",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "federal reserve h.4.1 october 1 2026 reserve balances treasury general account reverse repo",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "sure",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "en que linea esta",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "federal reserve h.4.1 september 3 2026 reserve balances treasury general account",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "확인하는곳",
+          "clicks": 0,
+          "impressions": 1
+        }
+      ],
+      "decision": "Conserver le titre suivi. Parmi les requêtes rendues, les variantes du nom de la publication officielle dominent. Elles ne couvrent que 9,32 % des impressions de la page et ne justifient aucune conclusion sur les requêtes non restituées. Le guide contient déjà un exemple et un lien vers la publication officielle. Mesurer les intentions pédagogiques après réexploration."
+    },
+    {
+      "url": "https://l0g.fr/en/guides/read-repo-market-sofr/",
+      "source": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&start_date=20260915&end_date=20261012&breakdown=query&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&page=!https%3A%2F%2Fl0g.fr%2Fen%2Fguides%2Fread-repo-market-sofr%2F",
+      "clicks": 3,
+      "impressions": 603,
+      "ctr_computed_percent": 0.4975,
+      "position_displayed": 6.5,
+      "queries_available_rows": 13,
+      "queries_collected_rows": 10,
+      "collected_query_impressions": 21,
+      "collected_query_share_of_page_impressions_percent": 3.48,
+      "queries": [
+        {
+          "query": "sofr-iorb",
+          "clicks": 0,
+          "impressions": 5
+        },
+        {
+          "query": "sofr repo funding stress today — repo rate spikes, sofr vs iorb spread, overnight funding disruption, reserve scarcity signals",
+          "clicks": 0,
+          "impressions": 3
+        },
+        {
+          "query": "sofr iorb",
+          "clicks": 0,
+          "impressions": 3
+        },
+        {
+          "query": "sofr effr spread latest",
+          "clicks": 0,
+          "impressions": 2
+        },
+        {
+          "query": "sofr iorb spread",
+          "clicks": 0,
+          "impressions": 2
+        },
+        {
+          "query": "sofr - iorb",
+          "clicks": 0,
+          "impressions": 2
+        },
+        {
+          "query": "yes",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "more",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "rate corridor",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "؟",
+          "clicks": 0,
+          "impressions": 1
+        }
+      ],
+      "decision": "Conserver la correction de métadonnées déjà livrée le 15 octobre. Les requêtes collectées portent notamment sur les écarts SOFR-IORB et SOFR-EFFR, déjà traités dans le guide corrigé. Dix lignes sur treize collectées; aucune conclusion sur les trois autres ni sur les impressions non attribuées à des requêtes rendues."
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/",
+      "source": "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Al0g.fr&start_date=20260915&end_date=20261012&breakdown=query&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&page=!https%3A%2F%2Fl0g.fr%2Fen%2Fanalysis%2Fnvidia-the-500-billion-that-does-not-exist-yet%2F",
+      "clicks": 1,
+      "impressions": 562,
+      "ctr_computed_percent": 0.1779,
+      "position_displayed": 7.0,
+      "queries_available_rows": 3,
+      "queries_collected_rows": 3,
+      "collected_query_impressions": 3,
+      "collected_query_share_of_page_impressions_percent": 0.53,
+      "queries": [
+        {
+          "query": "nvidia financial commitments 2026",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "plazo",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "nvidia residual value guarantee",
+          "clicks": 0,
+          "impressions": 1
+        }
+      ],
+      "decision": "Conserver le titre suivi: trois impressions seulement attribuées aux trois requêtes rendues. Aucun angle majoritaire, cannibalisation ni effet de titre démontré."
+    }
+  ],
+  "limitations": [
+    "Données antérieures aux correctifs techniques et au maillage préparés dans ce lot.",
+    "Les requêtes restituées ne couvrent pas les totaux des pages; ce rapport ne prétend pas identifier la cause complète de cet écart.",
+    "Aucune extrapolation des requêtes visibles aux impressions non restituées.",
+    "Absence de segmentation conjointe pays × appareil et de mesure après réexploration du nouveau lot.",
+    "Ces modifications multiples ne constituent pas un test isolé de titre."
+  ],
+  "next_measurement": {
+    "trigger": "Activation de la version contenant ce lot puis réexploration confirmée des pages étudiées.",
+    "window": "Au moins 14 jours complets comparables après la réexploration; conserver la période, le pays et le type d’appareil.",
+    "metrics": [
+      "indexation confirmée et canonical Google",
+      "impressions et clics par page",
+      "requêtes pédagogiques effectivement disponibles",
+      "position et apparence des résultats"
+    ],
+    "claim_boundary": "Demande d’indexation acceptée, page techniquement indexable et présence dans l’index sont trois états distincts."
+  }
+}

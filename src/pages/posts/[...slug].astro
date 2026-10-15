@@ -221,6 +221,13 @@ const articleJsonLd = {
         },
       ],
     },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Journal', item: `${site}/` },
+        { '@type': 'ListItem', position: 2, name: post.data.title, item: shareUrl },
+      ],
+    },
     ...sourceWorks,
     ...automaticClaimWorks,
     ...claimReviews,
@@ -307,6 +314,13 @@ const quickUncertainty = post.data.quickTake?.uncertainty
   <script type="application/ld+json" is:inline set:html={safeArticleJsonLd} />
 
   <article class="rise max-w-2xl" data-pagefind-body>
+    <nav class="mb-5 text-sm text-muted" aria-label="Fil d’Ariane" data-pagefind-ignore>
+      <ol class="flex flex-wrap gap-2">
+        <li><a href="/" class="text-signal underline underline-offset-4">Journal</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page" class="min-w-0">{post.data.title}</li>
+      </ol>
+    </nav>
     <header class="post-head mb-10">
       <p class="mono-label glow post-kicker">// analyse</p>
 

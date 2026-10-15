@@ -2,17 +2,14 @@
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import { buildSignalHistorySurface } from '../../../lib/signal-history.ts';
 import { getCollection } from 'astro:content';
+import { pressInvestigations } from '../../../config/press-investigations.ts';
 
 const analyses = await getCollection('postsEn', ({ data }) => !data.draft);
-const investigationIds = [
-  'greensill-insurance-future-receivables-risk',
-  'aon-blackstone-cortina-reinsurance-risk-pricing',
-  'banking-on-oil-2-banks-financing-trafigura',
-];
-const investigations = investigationIds.map((id) => {
+const investigations = pressInvestigations.map((resource) => {
+  const { id } = resource;
   const entry = analyses.find((post) => post.id === id);
   if (!entry) throw new Error(`Missing press resource: ${id}`);
-  return entry;
+  return { ...entry, resource };
 });
 
 const history = buildSignalHistorySurface();
@@ -30,11 +27,13 @@ const jsonLd = {
   license: 'https://creativecommons.org/licenses/by/4.0/',
   mainEntity: {
     '@type': 'ItemList',
-    itemListElement: history.instruments.map((series, index) => ({
+    itemListElement: [...history.instruments.map((series) => ({ name: series.name, url: series.page })),
+      ...investigations.map((entry) => ({ name: entry.data.title, url: `${SITE}/en/analysis/${entry.id}/` })),
+    ].map((resource, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      name: series.name,
-      url: series.page,
+      name: resource.name,
+      url: resource.url,
     })),
   },
 };
@@ -86,6 +85,11 @@ const jsonLd = {
           <article class="resource-card resource-body">
             <h3><a href={`/en/analysis/${entry.id}/`}>{entry.data.title}</a></h3>
             <p>{entry.data.description}</p>
+            <p><strong>Reporting angle.</strong> {entry.resource.angle}</p>
+            <p><strong>Limits to retain.</strong> {entry.resource.limits}</p>
+            <ul class="source-links" aria-label={`Primary documents for ${entry.data.title}`}>
+              {entry.resource.sources.map((source) => <li><a href={source.href}>{source.label}</a></li>)}
+            </ul>
             <p class="citation">
               Olivier Laurelli / l0g.fr, “{entry.data.title}”, {(entry.data.updatedDate ?? entry.data.pubDate).toISOString().slice(0, 10)}, https://l0g.fr/en/analysis/{entry.id}/, CC BY 4.0.
             </p>
@@ -188,6 +192,8 @@ const jsonLd = {
     .principle-grid strong { color: var(--color-signal); font-family: var(--font-mono); }
     .principle-grid p, .info-card li, .contact-card p { color: var(--color-muted); line-height: 1.65; margin-top: .5rem; }
     .resource-grid { display: grid; gap: 1.2rem; margin-top: 1.2rem; }
+    .source-links { display: grid; gap: .5rem; list-style: disc; margin: 1rem 0 1rem 1.2rem; }
+    .source-links a { color: var(--color-signal); overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: .2em; }
     .resource-card { background: color-mix(in srgb, var(--color-surface) 48%, transparent); border: 1px solid var(--color-line); border-radius: 10px; overflow: hidden; }
     .resource-card > img { background: #0b0f14; display: block; height: auto; width: 100%; }
     .resource-body { padding: 1rem; }

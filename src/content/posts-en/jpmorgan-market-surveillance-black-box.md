@@ -1,5 +1,6 @@
 ---
 title: "After the fines: the black box inside JPMorgan market surveillance"
+seoTitle: "JPMorgan surveillance: controls after regulatory fines | l0g"
 description: "Regulators required JPMorgan to conduct a retrospective review, hire an independent consultant, implement remediation and report progress. The contents remain absent from the public record. Part two explains sponsored access, the surveillance chain and the risk still open to measurement."
 pubDate: 2026-07-31T14:30:00+02:00
 updatedDate: 2026-07-31T14:30:00+02:00

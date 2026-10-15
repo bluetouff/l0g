@@ -1,0 +1,258 @@
+{
+  "date": "2026-10-15",
+  "status": "local_changes_validated_not_published",
+  "base_commit": "986f833af969d4c6d56b1053b708277c4ed09a7d",
+  "deployment": {
+    "committed": false,
+    "pushed": false,
+    "published": false,
+    "google_recrawl_confirmed": false,
+    "seo_impact_measured": false
+  },
+  "scope": "Chantiers SEO 1 à 6 autorisés dans le chat. Les travaux déjà présents sur A7, le glossaire, les EPUB, les images et les snapshots publics ne font pas partie de ce lot.",
+  "items": [
+    {
+      "id": 1,
+      "status": "implemented_locally",
+      "result": "Suppression des troncatures automatiques du titre et de la description. Métadonnées ciblées sur sept ressources. Les anciens seuils de 60/155 caractères deviennent informatifs dans l’audit de performance; les budgets de poids restent bloquants.",
+      "reference": "https://developers.google.com/search/docs/appearance/title-link"
+    },
+    {
+      "id": 2,
+      "status": "implemented_locally",
+      "result": "48 suggestions de lecture contextuelles depuis 41 ressources anglaises. Les 48 destinations précédemment sans lien depuis un autre article ou guide anglais sont désormais reliées. Elles n’étaient pas toutes des pages orphelines du site."
+    },
+    {
+      "id": 3,
+      "status": "implemented_locally",
+      "result": "max-image-preview:large ajouté aux pages indexables des deux layouts. Les décisions noindex sont conservées. Cette permission ne garantit ni apparition dans Discover ni indexation.",
+      "reference": "https://developers.google.com/search/docs/appearance/google-discover"
+    },
+    {
+      "id": 4,
+      "status": "resources_and_drafts_prepared_not_sent",
+      "result": "Trois enquêtes présentées avec angle, limites, six liens vers des documents primaires et consignes de citation. Trois propositions adaptées à GTR, Reinsurance News et Insurance Journal sont prêtes. Aucune citation externe ni lien retour obtenu.",
+      "evidence": "docs/seo/distribution-proposals-2026-10-15.json"
+    },
+    {
+      "id": 5,
+      "status": "analysis_complete",
+      "result": "Lecture directe des requêtes GSC des pages H.4.1, SOFR et Nvidia, Web, tous pays et appareils, du 15 septembre au 12 octobre 2026. La faible couverture des requêtes visibles interdit d’extrapoler l’intention de toutes les impressions. Titres conservés; attendre activation, réexploration confirmée et 14 jours complets comparables.",
+      "evidence": "docs/seo/query-intent-2026-10-15.json"
+    },
+    {
+      "id": 6,
+      "status": "implemented_locally",
+      "result": "Fil d’Ariane visible et BreadcrumbList ajoutés aux analyses françaises, avec Journal vers la véritable page d’accueil.",
+      "reference": "https://developers.google.com/search/docs/appearance/structured-data/breadcrumb"
+    }
+  ],
+  "local_html_comparison": {
+    "before": {
+      "html_pages": 1960,
+      "indexable_pages": 1054,
+      "canonical_articles_and_guides": 829,
+      "english_articles_and_guides": 414,
+      "article_titles_with_ellipsis": 204,
+      "article_descriptions_ending_with_ellipsis": 336,
+      "duplicate_indexable_titles": 0,
+      "hreflang_errors": 0,
+      "articles_without_breadcrumb": 365,
+      "english_without_link_from_another_english_article_or_guide": 48
+    },
+    "after": {
+      "html_pages": 1963,
+      "indexable_pages": 1056,
+      "canonical_articles_and_guides": 831,
+      "english_articles_and_guides": 415,
+      "article_titles_with_ellipsis": 0,
+      "article_descriptions_ending_with_ellipsis": 0,
+      "duplicate_indexable_titles": 0,
+      "hreflang_errors": 0,
+      "articles_without_breadcrumb": 0,
+      "english_without_link_from_another_english_article_or_guide": 0
+    },
+    "caveat": "Les populations diffèrent de deux articles avec le travail A7 présent dans le checkout partagé. La différence de volume ne représente pas un gain SEO. Les 48 cibles initiales sont également vérifiées individuellement par le graphe des liens.",
+    "after_checked_at": "2026-10-15T16:44:15.021Z"
+  },
+  "editorial_repairs": "Les guides anglais gamma, JOLTS, M2 et 13D/13G ont reçu des sources directes et des corrections factuelles; 13FLOW précise le périmètre et les délais des déclarations SEC. Les exemples datés ne sont pas présentés comme des mesures actuelles. Le schéma gamma s’empile sur mobile et les graphiques JOLTS utilisent les paramètres compacts existants.",
+  "validation": [
+    {
+      "command": "npm run test:seo",
+      "status": "passed",
+      "detail": "3 tests et contrôle des 831 entrées de contenu."
+    },
+    {
+      "command": "npm run test:english-reading-paths",
+      "status": "passed",
+      "detail": "5 tests, chemins publiés, absence de doublons et contexte des suggestions."
+    },
+    {
+      "command": "npm run test:theme",
+      "status": "passed",
+      "detail": "4 tests."
+    },
+    {
+      "command": "npm run publish:check -- <7 fichiers modifiés>",
+      "status": "passed_with_20_warnings",
+      "detail": "Astro check, build, frontmatter, sources, SVG du HTML, liens, style et secrets contrôlés. Le dernier ajustement de disposition des deux graphiques JOLTS a ensuite été reconstruit et vérifié séparément sur le rendu réel."
+    },
+    {
+      "command": "npm run publish:check -- --no-build <7 fichiers modifiés>",
+      "status": "passed_with_20_warnings",
+      "detail": "Source finale contrôlée; ce mode ne reconstruit pas le site."
+    },
+    {
+      "command": "npm run build:verify",
+      "status": "passed_before_final_chart_layout",
+      "detail": "Sécurité 68 tests, secrets, surfaces agents, Pagefind, liens internes, typographie, performance et publication dette. Home 199960 octets, 31898 gzip; seuils inchangés 200000/32000."
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed"
+    },
+    {
+      "command": "node node_modules/astro/bin/astro.mjs build",
+      "status": "passed_final_sources",
+      "detail": "Reconstruction finale terminée le 15 octobre à 18:44:10 Europe/Paris, après le dernier ajustement de JOLTS. Les 24 sources du lot sont inchangées pendant cette reconstruction."
+    },
+    {
+      "command": "npm run test:internal-links",
+      "status": "passed_final_build",
+      "detail": "99632 liens contrôlés sur 1963 pages; aucune destination cassée ou non canonique."
+    },
+    {
+      "command": "npm run test:performance",
+      "status": "passed_final_build",
+      "detail": "Home 199960 octets, 31898 gzip; budgets conservés. Métadonnées, images, JSON-LD, hreflang et attribution contrôlés."
+    },
+    {
+      "command": "Audit du HTML reconstruit",
+      "status": "passed_final_build",
+      "detail": "831 articles/guides canoniques, dont 415 anglais; zéro titre/description tronqués par ellipse, doublon de titre, erreur hreflang, fil d’Ariane manquant ou page anglaise sans lien depuis un autre article/guide anglais."
+    }
+  ],
+  "warning_review": [
+    {
+      "count": 11,
+      "category": "FR/EN numbers and source sets",
+      "assessment": "Les sources et corrections anglaises créent des différences explicites avec les textes français anciens; une harmonisation éditoriale française reste à traiter. Le signal SOFR porte sur un numéro isolé, sans divergence de mesure nouvelle établie."
+    },
+    {
+      "count": 3,
+      "category": "Primary sources",
+      "assessment": "Les alertes concernent les originaux français 13FLOW, gamma et 13D/13G, dont les listes de sources n’ont pas été réécrites dans ce lot."
+    },
+    {
+      "count": 1,
+      "category": "Unsourced numbers",
+      "assessment": "JPMorgan: paragraphes introductifs et listes sans URL à proximité immédiate. Les ordres CFTC, Fed, OCC et la déclaration SEC sont liés dans le corps. Le titre seul est modifié."
+    },
+    {
+      "count": 2,
+      "category": "Causal claims",
+      "assessment": "JPMorgan: cause attribuée à la CFTC et expression juridique good cause. SOFR: description du guide et réserve explicite contre une inférence causale à partir du seul écart de taux."
+    },
+    {
+      "count": 3,
+      "category": "Contemporary",
+      "assessment": "13FLOW rappelle que les positions ne sont pas actuelles; JOLTS indique que le millésime fixe n’est pas le dernier; M2 contient le nom de l’URL current, la variable de calcul et des limites de fraîcheur explicites."
+    }
+  ],
+  "visual_checks": {
+    "browser": "navigateur interne, aperçu local",
+    "desktop_width": 1280,
+    "mobile_width": 390,
+    "mobile_pages_without_document_overflow": [
+      "/posts/13flow/",
+      "/en/guides/read-dealer-gamma/",
+      "/en/guides/read-jolts-report/",
+      "/en/press-resources/",
+      "/en/guides/read-h41-fed-balance-sheet/"
+    ],
+    "gamma": "Deux panneaux de 350 × 247 pixels sur mobile; contrôle visuel sombre et clair, composition côte à côte sur bureau.",
+    "press_primary_links": 6,
+    "jolts_final_compact_render": {
+      "status": "passed",
+      "desktop_width": 1280,
+      "mobile_width": 390,
+      "document_width": 390,
+      "figures": [
+        {
+          "viewBox": "0 0 420 456",
+          "mobile_width": 350,
+          "mobile_height": 380,
+          "overflowing_text_nodes": 0
+        },
+        {
+          "viewBox": "0 0 420 402",
+          "mobile_width": 350,
+          "mobile_height": 335,
+          "overflowing_text_nodes": 0
+        }
+      ],
+      "assessment": "Contrôle visuel des deux dimensions et des rectangles de texte réellement rendus; titres, notes, source et valeurs tiennent dans chaque SVG."
+    },
+    "settings_restored": true,
+    "preview_server_stopped": true
+  },
+  "limits": [
+    "L’éligibilité technique n’est pas une confirmation d’indexation Google.",
+    "Aucun gain de clics, d’impressions ou de position attribué à ce lot.",
+    "Les anciennes versions françaises des guides corrigés en anglais restent à harmoniser.",
+    "Aucun démarchage ni message externe envoyé."
+  ],
+  "modified_paths": [
+    "docs/seo/seo-title-experiments-2026-09.json",
+    "package.json",
+    "scripts/audit-performance.mjs",
+    "scripts/debt-publication.test.mjs",
+    "scripts/english-reading-paths.test.mjs",
+    "scripts/validate-seo.mjs",
+    "src/components/EnglishRelatedReading.astro",
+    "src/content/guides-en/read-dealer-gamma.md",
+    "src/content/guides-en/read-jolts-report.mdx",
+    "src/content/guides-en/read-m2-money-supply-risk-on.md",
+    "src/content/guides-en/read-schedule-13d-13g-sec.md",
+    "src/content/guides/lire-le-marche-du-repo-sofr.mdx",
+    "src/content/posts-en/13flow-institutional-and-insider-signals.md",
+    "src/content/posts-en/jpmorgan-market-surveillance-black-box.md",
+    "src/layouts/BaseLayout.astro",
+    "src/layouts/EnglishGuidesLayout.astro",
+    "src/lib/seo.ts",
+    "src/pages/en/press-resources/index.astro",
+    "src/pages/posts/[...slug].astro",
+    "docs/seo/distribution-proposals-2026-10-15.json",
+    "docs/seo/query-intent-2026-10-15.json",
+    "scripts/seo-metadata.test.mjs",
+    "src/config/english-editorial-links.ts",
+    "src/config/press-investigations.ts",
+    "docs/seo/improvements-2026-10-15.json"
+  ],
+  "reviewed_source_sha256": {
+    "docs/seo/seo-title-experiments-2026-09.json": "ec26bce35f7cb92d08c1fa20c3a3701ad216e0920fb99bc8d2cc87c9a150b1df",
+    "package.json": "7394d68755b0ceea979c879e35df08d25139f05c2139163b64f0febd406b6934",
+    "scripts/audit-performance.mjs": "bc615ce64c224517064f25fa769854f97c78192325301495e59a93331434d04e",
+    "scripts/debt-publication.test.mjs": "0f1bccccfa7a001ca2330f47f1cc6ed1408bce47249d8fc1bf65136973881349",
+    "scripts/english-reading-paths.test.mjs": "5260e63a10bf708760243f3aa03256febcf9feaf4f3632b06afdbb7e9e83ba78",
+    "scripts/validate-seo.mjs": "93094998575fe2e0854d8ec2dbe9d612c51945d0b9d8c44679df6aa998f30b80",
+    "src/components/EnglishRelatedReading.astro": "e616f246fa2ab17bbbfe887ec8c8ebde2d56978621518a087d26203b4219367d",
+    "src/content/guides-en/read-dealer-gamma.md": "4217e39bddec679aaaeb4b144664b52dc29df78ffdfc631d3d590b9f23cbfe5a",
+    "src/content/guides-en/read-jolts-report.mdx": "c6ea12bf28e049b291f22c5fb8a7ed9902c5e2d1c750f4a36d190e0a59cb6eb4",
+    "src/content/guides-en/read-m2-money-supply-risk-on.md": "f69c4ce1819b4f1c83206c4b36c6a78a7d234760a5e0367e2dcf2449bf2fcecf",
+    "src/content/guides-en/read-schedule-13d-13g-sec.md": "d85d5771f0aa78aff0dad41dd61bee4db69bd4439d7609c8bd4e4118c0bebd5a",
+    "src/content/guides/lire-le-marche-du-repo-sofr.mdx": "2cb0c0078a6541fed3950288c906e745e59f751dfc38541597dbc2bf023d8b8b",
+    "src/content/posts-en/13flow-institutional-and-insider-signals.md": "2b0ba0d33332b68d628b98e948b105b71d765995c126c48b739f689675d59c82",
+    "src/content/posts-en/jpmorgan-market-surveillance-black-box.md": "849d11c905cbe77bab37224fd126e3c95412311c10b2664454ebba00d6ce290c",
+    "src/layouts/BaseLayout.astro": "c398f109864698e9ad0da693f93dfcb516ca882cb35837573e0d4acb821b2e04",
+    "src/layouts/EnglishGuidesLayout.astro": "a59bbb179c4e69b0ebdfad532902779b9285d48e82edf985c0805d5a2ee32e9d",
+    "src/lib/seo.ts": "30441c95d7d1f558c1e193d116e4137c80c99039b39c00c2b491f76125c5319a",
+    "src/pages/en/press-resources/index.astro": "194dc58ded06222c4028136a2d1b2cb2a8793ab46d2173d114e0ae4be233bc26",
+    "src/pages/posts/[...slug].astro": "4412673ae92b426cb5e9a593cb5dd08206a7ae6de37b00e77c968b1537741d87",
+    "docs/seo/distribution-proposals-2026-10-15.json": "4c964f9056fda7ceb04d302ade1f66dce005171b97750ddd6d599cb28541c4f2",
+    "docs/seo/query-intent-2026-10-15.json": "8e9e45b9e0d83a0e0d232215dcdff2aabec137dfd2cd2f43b0d645847e655003",
+    "scripts/seo-metadata.test.mjs": "2d528a48ea69fff45e7c5dec2e6a399069a1f2aca1d4f30d51fb9ecc8a86f0fe",
+    "src/config/english-editorial-links.ts": "c77d4bb3894049daf7ef4819605cb901e01fdb6d7fb358cc03ec14710cdbb832",
+    "src/config/press-investigations.ts": "45063080b0c361a3b74daa28ba5a748561a358a3306c7f18613b359a886478b8"
+  }
+}

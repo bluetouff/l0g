@@ -1,5 +1,6 @@
 ---
 title: "13FLOW: the money that is heavy and the money that knows"
+seoTitle: "13FLOW: SEC 13F holdings and Form 4 insider signals | l0g"
 description: "13FLOW industrialises the reading of 13F-HR and Form 4 filings on SEC EDGAR and crosses them into an auditable confluence score. Breakdown of the method: institutional weighting, transaction-code hygiene, time decay and insider clusters."
 pubDate: 2026-07-14T09:10:00+02:00
 updatedDate: 2026-07-14T09:10:00+02:00
@@ -9,9 +10,9 @@ sourceArticle: "13flow"
 sourceUpdatedDate: 2026-06-14
 ---
 
-The 13F and the Form 4 are two of the rare clean signals that US regulation makes public. The first exposes, every quarter, the long positions of managers above $100m. The second captures, within two business days, the trades of executives on the stock of their own company. Both are in the public domain and readable on [EDGAR](/en/guides/how-to-analyze-sec-13f-filings/). [13FLOW](https://13flow.eu) does not claim to give access one would not otherwise have: it industrialises the reading and, above all, it crosses the two signals, something the historical databases (Dataroma, WhaleWisdom) do badly or not at all.
+Form 13F and Form 4 make different disclosures public. Form 13F covers reportable Section 13(f) securities held by managers meeting the **$100 million** reporting threshold; it is not a complete portfolio or a measure of every long position. Form 4 generally reports changes in ownership by covered insiders within **two business days**, including transactions that need not be open-market purchases. The [SEC’s Form 13F FAQ](https://www.sec.gov/rules-regulations/staff-guidance/frequently-asked-questions-about-form-13f) and [insider-transactions bulletin](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-69) explain the scope and exceptions. [13FLOW](https://13flow.eu) organises these public disclosures and compares them.
 
-The value of the crossing rests on an asymmetry. The 13F is dense but late: up to 45 days after the quarter's close, it is an already stale snapshot by the time it lands. The [Form 4](/en/guides/how-to-read-sec-form-4/) is near real time but individually weak: a single executive's purchase, in isolation, has no predictive value. Their intersection corrects both flaws at once. A stock that several institutions are accumulating and that executives are buying at market price, within the same window, is the coincidence of two populations that share neither the same information nor the same constraints. The noise cancels out, the conviction remains.
+The comparison has a timing problem. A 13F is a quarter-end snapshot filed up to **45 days** later under the [SEC reporting timetable](https://www.sec.gov/rules-regulations/staff-guidance/frequently-asked-questions-about-form-13f); a Form 4 refers to individual transaction dates. Combining them does not make the holdings current or establish an insider’s motive. It can identify a case to investigate, provided transaction codes, amendments, reporting dates and valuation dates remain visible. Agreement between the two sources is not evidence that their errors cancel or that the investment will perform.
 
 ## Building the score
 

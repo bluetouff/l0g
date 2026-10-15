@@ -3,12 +3,32 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
 import { asiaReadingPaths, financingReadingPaths, isAsiaAnalysis } from '../src/config/english-reading-paths.ts';
+import { englishEditorialLinks } from '../src/config/english-editorial-links.ts';
 
 const ROOT = process.cwd();
 
 function contentEntryExists(collection, id) {
   return ['md', 'mdx'].some((extension) => existsSync(join(ROOT, 'src', 'content', collection, `${id}.${extension}`)));
 }
+
+test('editorial reading suggestions lead to published resources and explain the connection', () => {
+  const pairs = new Set();
+  for (const link of englishEditorialLinks) {
+    assert.notEqual(link.from, link.to, `self-link: ${link.from}`);
+    assert.ok(link.note.trim(), `missing reading context: ${link.to}`);
+    const key = `${link.from} ${link.to}`;
+    assert.ok(!pairs.has(key), `duplicate suggestion: ${key}`);
+    pairs.add(key);
+    for (const route of [link.from, link.to]) {
+      const match = route.match(/^\/en\/(analysis|guides)\/([^/]+)\/$/);
+      assert.ok(match, `invalid editorial route: ${route}`);
+      const collection = match[1] === 'analysis' ? 'posts-en' : 'guides-en';
+      const file = ['md', 'mdx'].map((extension) => join(ROOT, 'src/content', collection, `${match[2]}.${extension}`)).find(existsSync);
+      assert.ok(file, `missing editorial destination: ${route}`);
+      assert.doesNotMatch(readFileSync(file, 'utf8').split('---')[1], /^draft:\s*true\s*$/m, route);
+    }
+  }
+});
 
 test('financing paths link published English analyses to existing English atlases', () => {
   for (const path of financingReadingPaths) {

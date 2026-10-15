@@ -436,9 +436,9 @@
         "observed_title": "Reading dealer gamma: when options hedging drives… · l0g.fr",
         "recrawled_after_release_at": null,
         "post_recrawl_impressions": null,
-        "decision": "maintenir_en_attente_de_mesure",
-        "last_reviewed_on": "2026-09-29",
-        "review_reason": "Nouvelle priorité de diagnostic ; conserver le titre avant mesure des requêtes et segments.",
+        "decision": "corriger_troncature_metadata",
+        "last_reviewed_on": "2026-10-15",
+        "review_reason": "Suppression de la troncature livrée dans le HTML, autorisée le 15 octobre avec les chantiers 1 à 6. Titre et description rendus complets ; aucune attribution de gain au titre. Attendre activation, réexploration et 14 jours complets comparables.",
         "last_inspected_on": "2026-09-29",
         "last_crawl_displayed": "6 sept. 2026, 11:22:22",
         "crawl_timezone_displayed": null,
@@ -448,7 +448,10 @@
         "crawled_title": "Reading dealer gamma: when options hedging drives… · l0g.fr",
         "indexed": true,
         "google_canonical": "/en/guides/read-dealer-gamma/",
-        "referring_page": "/guides/lire-le-gamma-des-dealers/"
+        "referring_page": "/guides/lire-le-gamma-des-dealers/",
+        "approved_title": "Dealer gamma: options hedging and market volatility | l0g",
+        "correction_served_at": null,
+        "correction_recrawled_at": null
       },
       {
         "id": "repo-sofr",

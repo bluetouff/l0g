@@ -56,7 +56,7 @@
     "generate:toolset": "node scripts/generate-toolset-manifest.mjs",
     "test:mcp-toolset": "node --experimental-strip-types --test scripts/signal-freshness-contract.test.mjs && node scripts/generate-toolset-manifest.mjs --check",
     "test:glossary": "node scripts/validate-glossary.mjs",
-    "test:seo": "node scripts/validate-seo.mjs",
+    "test:seo": "node --test scripts/seo-metadata.test.mjs && node scripts/validate-seo.mjs",
     "atlas:check": "node --experimental-strip-types scripts/check-engagement-atlas.mjs",
     "test:atlas": "node --experimental-strip-types --test scripts/engagement-atlas.test.mjs",
     "test:reading-resume": "node --experimental-strip-types --test scripts/reading-resume.test.mjs",

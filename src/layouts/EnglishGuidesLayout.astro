@@ -4,7 +4,7 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import CspMeta from '../components/CspMeta.astro';
 import { authorEntity, organizationEntity, websiteEntity } from '../config/entities.ts';
-import { buildSeoMetadata } from '../lib/seo.ts';
+import { buildRobotsMetadata, buildSeoMetadata } from '../lib/seo.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
 import { getPublicationSocial } from '../config/publication-social.mjs';
 
@@ -122,7 +122,7 @@ const siteJsonLd = {
 
     <title>{fullTitle}</title>
     <meta name="description" content={metaDescription} />
-    <meta name="robots" content={robots} />
+    <meta name="robots" content={buildRobotsMetadata(robots)} />
     <link rel="canonical" href={canonical} />
     {alternateLinks.map((link) => (
       <link rel="alternate" hreflang={link.hreflang} href={link.href} />

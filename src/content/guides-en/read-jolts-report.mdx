@@ -1,9 +1,10 @@
 ---
 title: "How to Read JOLTS: under the hood of the U.S. labor market"
-description: "A reference guide to the Job Openings and Labor Turnover Survey: what JOLTS measures that payrolls do not, the five key numbers (openings, hires, quits, layoffs, total separations), the quits rate as a confidence gauge, the job-openings-to-unemployed ratio watched by the Fed, the Beveridge curve, measurement traps, and the 2026 regime of a frozen low-turnover labor market."
+seoTitle: "JOLTS explained: openings, hires, quits and layoffs | l0g"
+description: "Read JOLTS job openings, hires, quits and layoffs alongside payrolls. Compare labour flows, survey limits and the Beveridge curve."
 summary: "JOLTS is the flow map of the U.S. labor market. Where payrolls show a net balance, JOLTS shows job openings, hires, quits, layoffs and total separations. The key readings are the quits rate, a gauge of worker confidence, and the job-openings-to-unemployed ratio, a Fed-favored measure of labor-market tightness."
 pubDate: 2026-07-08T08:00:00+02:00
-updatedDate: 2026-07-08T08:00:00+02:00
+updatedDate: 2026-10-15T18:26:00+02:00
 sourceGuide: "lire-le-rapport-jolts"
 sourceUpdatedDate: 2026-07-08T08:00:00+02:00
 tags: ["macro", "employment", "central banks"]
@@ -12,23 +13,25 @@ draft: false
 ---
 import InfographicBars from '../../components/infographic/InfographicBars.astro';
 
-*The payroll report gives the net balance of jobs, a single number that hides everything underneath. JOLTS opens the hood: how many jobs are open, how many workers were hired, how many quit voluntarily, and how many were laid off. It was one of Jerome Powell's favored gauges of labor-market tightness. The frozen 2026 labor market makes it especially useful.*
+A monthly employment balance can conceal very different patterns of hiring and departures. JOLTS helps identify them. This guide uses the [BLS release for May 2026, published June 30](https://www.bls.gov/news.release/archives/jolts_06302026.htm), as a fixed reading example. Its figures are that release’s seasonally adjusted estimates, not the latest readings or a later revised vintage.
 
 ## The labour-market flows captured by JOLTS
 
-The [Employment Situation](/en/guides/read-us-employment-report-nfp/) gives a snapshot: net jobs created or lost during the month. JOLTS gives the movie behind that snapshot. Behind a net gain of 150,000 payrolls sit millions of hires and separations, of which the NFP shows only the difference.
+The [Employment Situation](/en/guides/read-us-employment-report-nfp/) gives a snapshot: net jobs created or lost during the month. JOLTS gives the movie behind that snapshot. Hiring and separations can both be large even when net employment changes little. However, payrolls and JOLTS are different statistical programmes; their monthly estimates need not reconcile exactly. See the [BLS definitions and comparisons](https://www.bls.gov/jlt/jltdef.htm).
 
-Published by the BLS roughly a month after the payroll report, JOLTS is older data, but it reveals what the net figure cannot: labor demand, worker confidence and the nature of separations. A labor market can show a stable payroll balance while activity underneath freezes: fewer hires, fewer quits, fewer layoffs. Payrolls would miss the rotation; JOLTS shows it.
+JOLTS is published after the reference month. Check the [BLS release calendar](https://www.bls.gov/schedule/2026/home.htm) rather than assuming a fixed interval from the payroll report. Its series describe vacancies, hiring and the nature of separations. A labor market can show a stable payroll balance while activity underneath freezes: fewer hires, fewer quits, fewer layoffs. Payrolls would miss the rotation; JOLTS shows it.
 
 ## The five key numbers
 
-JOLTS is read through five series. **Job openings** measure unsatisfied labor demand: positions open, actively recruited for, and available within 30 days. **Hires** count workers added during the month. **Total separations** include all exits, split into **quits**, **layoffs and discharges**, and other separations.
+JOLTS is read through five series. **Job openings** measure unsatisfied labor demand: positions open, actively recruited for, and able to start within 30 days. The opening exists on the last business day of the month; hires and separations are flows over the whole month. [BLS data definitions](https://www.bls.gov/jlt/jltdef.htm). **Hires** count workers added during the month. **Total separations** include all exits, split into **quits**, **layoffs and discharges**, and other separations.
 
-In May 2026 the U.S. economy had **7.6 million** openings, **5.2 million** hires, **3.1 million** quits, **1.7 million** layoffs and discharges, and **5.1 million** total separations.
+In May 2026 the U.S. economy had **7.6 million** openings, **5.2 million** hires, **3.1 million** quits, **1.7 million** layoffs and discharges, and **5.1 million** total separations. These rounded levels come from the [archived May release](https://www.bls.gov/news.release/archives/jolts_06302026.htm). Quits and layoffs are components of separations, so do not add them to the total.
 
 <InfographicBars
-  title="Labor-market flows, May 2026"
-  subtitle="JOLTS levels, in millions."
+  title="Openings and labour flows"
+  subtitle="May 2026 · millions · adjusted"
+  compact={true}
+  fontScale={1.3}
   max={7.6}
   items={[
     { label: "Job openings", value: 7.6, valueLabel: "7.6M", tone: "signal" },
@@ -37,73 +40,60 @@ In May 2026 the U.S. economy had **7.6 million** openings, **5.2 million** hires
     { label: "Quits", value: 3.1, valueLabel: "3.1M", tone: "amber" },
     { label: "Layoffs and discharges", value: 1.7, valueLabel: "1.7M", tone: "muted" },
   ]}
-  note="Openings remain above hires: some labor demand is still unfilled."
-  source="Source: BLS, Job Openings and Labor Turnover Survey, May 2026."
-  caption="JOLTS decomposes the payroll balance into demand, hiring and the nature of exits. Source: BLS."
+  notes={["Openings: month-end stock.", "Other bars: monthly flows.", "Quits and layoffs are in the total."]}
+  source="BLS · June 30, 2026 release"
+  caption="These measures describe different stages of the labour market. They are not quantities to add together. Source: BLS, May 2026 release published June 30."
 />
 
 ## The quits rate: worker confidence
 
-The richest signal is the quits rate, quits divided by total employment. Workers usually quit voluntarily only when they are confident they can find something better. The quits rate is therefore a gauge of worker confidence and, indirectly, wage pressure: a market where workers can quit easily forces employers to pay to retain.
+The quits rate is quits during the month divided by employment, expressed as a percentage. The BLS describes it as a measure of workers’ willingness or ability to leave jobs. That can inform an interpretation of confidence, but it is not a direct survey of expectations and cannot by itself establish wage pressure. [BLS release and definitions](https://www.bls.gov/news.release/archives/jolts_06302026.htm).
 
-At the peak of the Great Resignation in 2021-2022, the quits rate reached roughly 3%. In 2026 it was back near **2.0%**, below the pre-pandemic norm of about 2.3%. Workers had become cautious. That confirms a cooling labor market before the unemployment rate necessarily moves.
+In the fixed May example, the release reports a **3.3%** hiring rate, **3.2%** total-separations rate, **1.9%** quits rate and **1.1%** layoffs-and-discharges rate. Use the published rates: dividing rounded headline counts can produce a different result. [BLS, tables 2–5](https://www.bls.gov/news.release/archives/jolts_06302026.htm).
 
 <InfographicBars
-  title="The quits rate as confidence gauge"
-  subtitle="Quits as a share of employment, in %."
-  max={3}
+  title="Hiring and departure rates"
+  subtitle="May 2026 · % of employment · adjusted"
+  compact={true}
+  fontScale={1.3}
+  max={4}
   items={[
-    { label: "Great Resignation peak", value: 3.0, valueLabel: "~3.0%", tone: "muted" },
-    { label: "Pre-pandemic norm", value: 2.3, valueLabel: "~2.3%", tone: "amber" },
-    { label: "2026", value: 2.0, valueLabel: "2.0%", tone: "signal" },
+    { label: "Hires", value: 3.3, valueLabel: "3.3%", tone: "blue" },
+    { label: "Total separations", value: 3.2, valueLabel: "3.2%", tone: "muted" },
+    { label: "Quits", value: 1.9, valueLabel: "1.9%", tone: "amber" },
+    { label: "Layoffs and discharges", value: 1.1, valueLabel: "1.1%", tone: "muted" },
   ]}
-  note="Below the pre-Covid norm: workers are less willing to move."
-  source="Sources: BLS JOLTS, FRED."
-  caption="A quits rate back near 2.0% points to caution among workers and easing wage pressure. Sources: BLS, FRED."
+  notes={["All bars: monthly flows.", "Quits and layoffs are in the total.", "Other exits are not shown."]}
+  source="BLS · June 30, 2026 release"
+  caption="Compare the same month and vintage. The displayed components do not include every category of separation."
 />
 
 ## Job openings per unemployed worker
 
-The Fed's favored JOLTS gauge is the number of job openings divided by the number of unemployed workers. It measures labor-market tightness: how many open jobs are available for each job seeker. Before the pandemic it was near 1.2. The 2022 overheating pushed it close to 2.0.
+Divide job openings by unemployed people for the same reference month, using compatible seasonal adjustment. The denominator comes from the household survey, not JOLTS. The [BLS Employment Situation](https://www.bls.gov/news.release/archives/empsit_06052026.htm) explains the household and establishment measures.
 
-By 2026 the ratio had fallen to roughly **0.95**, below even its pre-pandemic norm. The labor-market tightness had been fully drained. That is delicate: falling from 2.0 to 1.2 meant fewer openings without much unemployment. Falling further below 1.0 risks shifting from painless cooling to job losses.
-
-<InfographicBars
-  title="Openings per unemployed worker"
-  subtitle="Ratio of job openings to unemployed workers."
-  max={2}
-  items={[
-    { label: "Overheating, 2022", value: 2.0, valueLabel: "~2.0", tone: "muted" },
-    { label: "Pre-pandemic", value: 1.2, valueLabel: "~1.2", tone: "amber" },
-    { label: "2026", value: 0.95, valueLabel: "~0.95", tone: "signal" },
-  ]}
-  note="Below 1.0, painless cooling becomes harder."
-  source="Sources: BLS, MacroMicro."
-  caption="The ratio has fallen from nearly two openings per unemployed worker to less than one. Sources: BLS, MacroMicro."
-/>
+The result is a ratio, not the probability that a particular unemployed person will receive an offer. Skills, location, recruitment time and mismatched survey populations matter. A ratio below one does not create an automatic recession threshold. Record both inputs and the release vintage when making the calculation.
 
 ## The Beveridge curve and the soft landing
 
 The Beveridge curve links the job openings rate and the unemployment rate. In normal slowdowns, openings fall and unemployment rises. The post-2022 soft-landing bet was that the economy could slide down the steep part of the curve: fewer vacancies, little unemployment damage.
 
-By 2026 the economy was near the point where this becomes harder. Once the vacancy ratio is close to normal, another drop in labor demand is more likely to show up as unemployment rather than just fewer job postings. That is why JOLTS matters for the Fed.
+A movement along the curve and a shift of the curve have different interpretations. Compare several observations before describing a change in matching efficiency. The curve does not supply a fixed point at which vacancies must turn into unemployment. JOLTS is evidence for a labour-market assessment alongside payrolls, household employment and other indicators.
 
 ## Measurement traps
 
-JOLTS has all the weaknesses of a survey, and then some. Its sample is smaller than payrolls, roughly 21,000 establishments, and response rates have fallen. One month should never be over-read; the three- to six-month trend carries the signal.
+JOLTS has all the weaknesses of a survey, and then some. Its estimates are subject to sampling error, nonresponse and revisions; the [BLS Handbook of Methods](https://www.bls.gov/opub/hom/jlt/pdf/jlt.pdf) describes the survey design and estimation. One month should never be over-read; the three- to six-month trend carries the signal.
 
-A job opening is also declarative: a position must be open, actively recruited for and available within 30 days, but firms can leave online postings stale or keep “ghost jobs” visible. Finally, JOLTS is lagged by a month relative to payrolls. It is a confirmation and decomposition tool, not a seconds-after-release trading signal.
+An online advertisement is not automatically a JOLTS opening. The survey has specific conditions for an existing job, a possible start within 30 days and active outside recruitment. Check revisions, confidence intervals and the release date before treating a one-month movement as a trend. [BLS definitions](https://www.bls.gov/jlt/jltdef.htm).
 
-## 2026: a frozen labor market
+## Keep the reference month visible
 
-The 2026 regime is best described as frozen. Openings around 7.6 million, hires around 5.2 million, quits low and layoffs low: fewer firms are hiring aggressively, but few are cutting yet, and workers are staying put.
-
-That configuration can turn quickly. If firms move from hiring freezes to headcount cuts, unemployment rises fast. JOLTS therefore complements the [dot plot](/en/guides/read-dot-plot-sep/) and the payroll report: it shows whether the labor market is cooling smoothly or approaching the point where cooling becomes damage.
+The May example describes that release’s observations. It does not establish the state of the labour market when a reader opens this guide. Open the [BLS archive](https://www.bls.gov/bls/news-release/jolts.htm), select a dated release and compare like with like before drawing a contemporary conclusion. Pair the result with the [payroll guide](/en/guides/read-us-employment-report-nfp/) and the [dot plot guide](/en/guides/read-dot-plot-sep/) when examining monetary-policy assumptions.
 
 ## How to use it
 
-Read JOLTS as the indispensable counterpoint to payrolls. Payrolls give the net balance; JOLTS gives the flows. The quits rate tells worker confidence. The openings-to-unemployed ratio tells labor-market tightness. The Beveridge curve tells whether the economy is still shedding excess vacancies without creating unemployment. Separations, split between quits and layoffs, tell what kind of slowdown is underway.
+Read JOLTS as the indispensable counterpoint to payrolls. Payrolls give the net balance; JOLTS gives the flows. The quits rate informs an interpretation of willingness or ability to leave. The openings-to-unemployed ratio tells labor-market tightness. The Beveridge curve helps organise the comparison between vacancies and unemployment. Separations, split between quits and layoffs, tell what kind of slowdown is underway.
 
 ---
 
-**Main sources:** BLS, *Job Openings and Labor Turnover Summary*, May 2026; BLS JOLTS methodology and publication calendar; FRED series for job openings and quits; MacroMicro JOLTS dashboard; Economic Policy Institute monthly JOLTS analysis.
+**Primary sources:** [May 2026 JOLTS release](https://www.bls.gov/news.release/archives/jolts_06302026.htm), [data definitions](https://www.bls.gov/jlt/jltdef.htm), [Handbook of Methods](https://www.bls.gov/opub/hom/jlt/pdf/jlt.pdf), [May Employment Situation](https://www.bls.gov/news.release/archives/empsit_06052026.htm) and [release archive](https://www.bls.gov/bls/news-release/jolts.htm). The October 15 revision adds direct sources, fixes the example’s quits rate to 1.9%, distinguishes stocks and flows, and removes undated historical comparisons and the unsupported vacancy ratio.

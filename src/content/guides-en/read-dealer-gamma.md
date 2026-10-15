@@ -1,9 +1,10 @@
 ---
 title: "Reading dealer gamma: when options hedging drives the market"
-description: "A reference guide to options positioning and market-maker gamma: what delta and gamma are, why dealers mechanically hedge their options in the underlying, the decisive difference between long gamma that dampens volatility and short gamma that amplifies it, the rise of 0DTE options, and the precedents of the 2018 Volmageddon and the GameStop gamma squeeze. How an invisible force sets part of the market's moves."
-summary: "A growing share of short-term market moves comes not from fundamentals but from the mechanical hedging of options sellers, the market makers. When these dealers are long gamma, they buy dips and sell rallies, dampening volatility; when they are short gamma, they do the opposite and amplify moves. The explosion of same-day options (0DTE), now 40 to 50% of S&P 500 volume, has made these hedging flows a dominant driver of intraday action. Reading it requires understanding delta, gamma, the gamma flip and their limits."
+seoTitle: "Dealer gamma: options hedging and market volatility | l0g"
+description: "Read delta, gamma and dealer hedging, compare long and short gamma, and identify the limits of positioning estimates and 0DTE narratives."
+summary: "Dealer gamma describes how an options portfolio’s delta changes with the underlying. In a delta-hedging model, long gamma produces trades against price changes and short gamma produces trades in the same direction. The market effect depends on net exposure, hedge execution and available liquidity; gross options volume does not establish it."
 pubDate: 2026-07-10T16:00:00+02:00
-updatedDate: 2026-07-10T16:00:00+02:00
+updatedDate: 2026-10-15T18:26:00+02:00
 sourceGuide: "lire-le-gamma-des-dealers"
 sourceUpdatedDate: 2026-07-10T16:00:00+02:00
 tags: ["options", "volatility", "markets", "gamma"]
@@ -11,117 +12,70 @@ category: marches
 draft: false
 ---
 
-*There is a force that moves markets every day with no news to explain it. It comes neither from fundamental analysis nor from a manager's conviction, but from plumbing: the obligation, for options sellers, to hedge their risk by buying or selling the underlying, mechanically, continuously. On days of heavy same-day options activity, this hedging becomes the primary driver of moves. Understanding dealer gamma means seeing the invisible hand that, depending on the case, pins the market in place or hastens its fall. This guide takes apart its workings.*
+An options dealer can buy or sell the underlying as its exposure changes. Those trades may interact with other orders in the market. Understanding the mechanism requires a distinction between the sensitivity of one option, the net position of a portfolio and the market impact of a hedge. None of those quantities can be inferred from a large options-volume headline alone.
 
-## Options, delta and gamma: the bare minimum
+## Delta and gamma describe different changes
 
-An [option](/glossaire/option/) gives the right to buy (a call) or sell (a put) an asset at a set price up to an expiry. Two measures are enough to follow this guide. [Delta](/glossaire/delta/) is the sensitivity of the option's price to the underlying's: a delta of 0.5 means the option moves 0.50 when the asset moves 1. [Gamma](/glossaire/gamma/) is the speed at which that delta changes as the underlying moves. Gamma is greatest when the price is near the strike and when expiry approaches, two conditions met by same-day options.
+Delta measures an option value’s local sensitivity to the underlying price. Gamma measures how delta changes as that price moves. As a hypothetical first-order example, a delta of **0.5** means an underlying move of one price unit implies an option-value change of about half a unit, holding other inputs fixed. Delta itself will change as the underlying moves. These are model sensitivities, not guaranteed realised returns. The [Options Industry Council’s guide to the Greeks](https://prd-web.optionseducation.org/advancedconcepts/understanding-options-greeks) explains the definitions and their limitations.
 
-Keep the image: delta says how much you are exposed, gamma says how fast that exposure changes. High gamma means an exposure that changes fast, hence a hedge to be readjusted constantly. It is from this constant readjustment that the flows that move the market are born.
+Short-dated, near-the-money options can have high gamma. That describes sensitivity, not the size or direction of a dealer’s net exposure. A portfolio may contain offsetting options, other maturities and existing hedges. The [OIC gamma explanation](https://prd-web.optionseducation.org/advancedconcepts/gamma) discusses the effect of strike and time to expiry.
 
-## The dealer who must hedge
+## Net exposure determines the hedge direction
 
-When a retail trader or a fund buys an option, someone sells it to them. That seller is most often a [market maker](/glossaire/teneur-de-marche/), a dealer, whose job is not to bet on market direction but to earn the spread between bid and ask. To stay neutral, it must cancel the delta its option sale left it with, by taking an offsetting position in the underlying. If it sold a call, it buys shares or futures to hedge; if it sold a put, it sells them.
+A dealer seeking to offset portfolio delta adjusts a stock or futures hedge when delta changes. This is a risk-management model, rather than an obligation to maintain perfect neutrality at every instant. The dealer’s positions, risk limits and execution choices matter.
 
-The crucial point is that this hedging is not a directional choice, it is a mechanical constraint. And because delta changes with price, through gamma, the dealer must adjust its hedge continuously, buying and selling the underlying as the market moves. Multiply this by millions of contracts, and you get a flow that genuinely weighs on price. The direction of that flow depends on one thing: is the dealer broadly long or short gamma.
-
-## Long gamma, short gamma: dampen or amplify
-
-This is the heart of the matter. When dealers are collectively long gamma, their hedging pushes them to buy when the market falls and sell when it rises. This behaviour is counter-cyclical: it pulls the price back toward its starting point, dampens volatility and tends to pin the market around the large strikes. When dealers are short gamma, the logic reverses: they sell when the market falls and buy when it rises, a pro-cyclical behaviour that amplifies moves and accelerates declines.
+Under that model, a long-gamma portfolio requires hedge trades against the underlying move: selling after a rise and buying after a fall. A short-gamma portfolio requires trades in the same direction as the move. [Cboe’s September 2023 analysis](https://www.cboe.com/insights/posts/volatility-insights-evaluating-the-market-impact-of-spx-0-dte-options/) explains both the sign and the magnitude of net gamma. Cboe operates the exchange and has a commercial interest in these products; its empirical findings should retain their dataset and period.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 340" role="img" aria-label="Comparison of dealer hedging when long versus short gamma" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="340" fill="#0c0d10"></rect>
-  <text x="32" y="34" fill="#f5f6f8" font-size="17" font-weight="700">Long gamma, short gamma: dampen or amplify</text>
-  <text x="32" y="55" fill="#8b909b" font-size="12">Depending on the side of their position, dealer hedging smothers or accelerates moves.</text>
-  <rect x="30" y="76" width="320" height="238" rx="6" fill="none" stroke="#5eead4" stroke-width="1.5"></rect>
-  <text x="46" y="102" fill="#5eead4" font-size="13" font-weight="700">Dealers LONG gamma</text>
-  <text x="46" y="120" fill="#8b909b" font-size="11">volatility dampener</text>
-  <polyline points="50,180 90,168 130,190 170,172 210,186 250,174 290,184 330,178" fill="none" stroke="#5eead4" stroke-width="2.5"></polyline>
-  <text x="46" y="228" fill="#d6d9df" font-size="11.5">Market falls, the dealer BUYS</text>
-  <text x="46" y="248" fill="#d6d9df" font-size="11.5">Market rises, the dealer SELLS</text>
-  <text x="46" y="284" fill="#5eead4" font-size="11">Price pins to the strikes,</text>
-  <text x="46" y="300" fill="#5eead4" font-size="11">volatility is smothered.</text>
-  <rect x="370" y="76" width="320" height="238" rx="6" fill="none" stroke="#ff4d87" stroke-width="1.5"></rect>
-  <text x="386" y="102" fill="#ff4d87" font-size="13" font-weight="700">Dealers SHORT gamma</text>
-  <text x="386" y="120" fill="#8b909b" font-size="11">volatility amplifier</text>
-  <polyline points="390,150 430,158 470,150 510,172 550,196 590,228 630,258 670,282" fill="none" stroke="#ff4d87" stroke-width="2.5"></polyline>
-  <text x="386" y="228" fill="#d6d9df" font-size="11.5">Market falls, the dealer SELLS</text>
-  <text x="386" y="248" fill="#d6d9df" font-size="11.5">Market rises, the dealer BUYS</text>
-  <text x="386" y="284" fill="#ff4d87" font-size="11">Moves accelerate,</text>
-  <text x="386" y="300" fill="#ff4d87" font-size="11">crashes go faster.</text>
+<p><strong>Long gamma and short gamma: opposite hedge directions</strong></p>
+<p>Schematic examples with other inputs held constant. The lines are not market observations.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1rem">
+<svg viewBox="0 0 340 240" role="img" aria-label="Long gamma: buy after a fall and sell after a rise" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect x="1" y="1" width="338" height="238" rx="6" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"></rect>
+  <text x="16" y="28" fill="var(--color-signal)" font-size="16" font-weight="700">Dealers LONG gamma</text>
+  <text x="16" y="49" fill="var(--color-muted)" font-size="13">Potential stabilising flow</text>
+  <polyline points="20,100 60,88 100,110 140,92 180,106 220,94 260,104 300,98" fill="none" stroke="var(--color-signal)" stroke-width="2.5"></polyline>
+  <text x="16" y="160" fill="var(--color-paper)" font-size="14">Market falls: BUY</text>
+  <text x="16" y="182" fill="var(--color-paper)" font-size="14">Market rises: SELL</text>
+  <text x="16" y="210" fill="var(--color-signal)" font-size="13">Hedge trades against</text>
+  <text x="16" y="228" fill="var(--color-signal)" font-size="13">the price change.</text>
 </svg>
-<figcaption>On the left, <strong>long-gamma</strong> dealers buy the dips and sell the rallies: the market is dampened. On the right, <strong>short-gamma</strong> dealers do the opposite and pour fuel on the fire. The level where one flips to the other is the "gamma flip." </figcaption>
+<svg viewBox="0 0 340 240" role="img" aria-label="Short gamma: sell after a fall and buy after a rise" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect x="1" y="1" width="338" height="238" rx="6" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1.5"></rect>
+  <text x="16" y="28" fill="var(--color-accent)" font-size="16" font-weight="700">Dealers SHORT gamma</text>
+  <text x="16" y="49" fill="var(--color-muted)" font-size="13">Potential reinforcing flow</text>
+  <polyline points="20,75 60,83 100,75 140,88 180,99 220,109 260,121 300,130" fill="none" stroke="var(--color-accent)" stroke-width="2.5"></polyline>
+  <text x="16" y="160" fill="var(--color-paper)" font-size="14">Market falls: SELL</text>
+  <text x="16" y="182" fill="var(--color-paper)" font-size="14">Market rises: BUY</text>
+  <text x="16" y="210" fill="var(--color-accent)" font-size="13">Hedge follows</text>
+  <text x="16" y="228" fill="var(--color-accent)" font-size="13">the price change.</text>
+</svg>
+</div>
+<figcaption>Conceptual delta-hedging directions. Long gamma implies selling after a rise and buying after a fall; short gamma reverses those hedge trades. The resulting market move is not predetermined. Source: <a href="https://www.cboe.com/insights/posts/volatility-insights-evaluating-the-market-impact-of-spx-0-dte-options/">Cboe’s explanation of net gamma</a>.</figcaption>
 </figure>
 
-The price level where dealers flip from long to short gamma has a name, the gamma flip. Above it, the market tends to be calm and drawn toward the large strikes; below it, it turns nervous and prone to accelerations. Specialist data providers estimate this level from options open interest, under the name [GEX](/glossaire/gex/), for Gamma Exposure. A positive GEX signals a dampened market, a negative GEX one at risk of a runaway move.
+## Gross 0DTE volume leaves net risk unknown
 
-## The 0DTE regime
+A zero-days-to-expiry option expires during the trading day. A high share of such contracts in options turnover does not reveal the hedge flow entering the underlying market. Customer purchases and sales can offset one another, and the remaining risk can be hedged across instruments.
 
-This mechanism, long confined to monthly expiry days, has become daily with the explosion of same-day options, [0DTE](/glossaire/0dte/). In 2026, they account for roughly 40 to 50% of total S&P 500 options volume, and up to nearly 60% on some days. Because their gamma is extreme in the final hours before expiry, the hedging they impose on dealers concentrates within the session and must adjust in real time.
+[Cboe’s later positioning analysis](https://www.cboe.com/insights/posts/0-dt-es-decoded-positioning-trends-and-market-impact) reports balanced customer activity and limited estimated net hedging in its sample. That finding does not establish the impact on every day or on another underlying. It also does not support a claim that dealer hedging generally represents a fixed large share of index trading. This guide therefore uses no unsourced market-wide percentage.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 290" role="img" aria-label="Weight of 0DTE options and dealer hedging in S&P 500 volume" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="290" fill="#0c0d10"></rect>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The mechanical weight of 0DTE</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Share of S&amp;P 500 options volume and of dealer hedging, 2026.</text>
-  <text x="40" y="96" fill="#d6d9df" font-size="12">0DTE options in SPX options volume</text>
-  <rect x="40" y="106" width="600" height="22" fill="#2a2c33"></rect>
-  <rect x="40" y="106" width="270" height="22" fill="#5eead4" opacity="0.9"></rect>
-  <text x="322" y="123" fill="#5eead4" font-size="12" font-weight="700">~40 to 50%</text>
-  <text x="40" y="158" fill="#d6d9df" font-size="12">Dealer hedging in SPX volume</text>
-  <rect x="40" y="168" width="600" height="22" fill="#2a2c33"></rect>
-  <rect x="40" y="168" width="195" height="22" fill="#f5b13d" opacity="0.9"></rect>
-  <text x="247" y="185" fill="#f5b13d" font-size="12" font-weight="700">~25 to 40%</text>
-  <text x="40" y="224" fill="#d6d9df" font-size="12.5">On heavy 0DTE days, it is hedging flows,</text>
-  <text x="40" y="243" fill="#d6d9df" font-size="12.5">not fundamentals, that drive the intraday tape.</text>
-  <text x="32" y="276" fill="#8b909b" font-size="11">Sources: CBOE, SpotGamma, academic research. Ranges vary by day and by measure.</text>
-</svg>
-<figcaption>0DTE options now make up <strong>40 to 50%</strong> of S&amp;P 500 options volume, and dealer hedging <strong>a quarter to two-fifths</strong> of index volume. Enough for the plumbing to set the price. Sources: CBOE, SpotGamma.</figcaption>
-</figure>
+## Volatility and time also change delta
 
-On indices, this shows up as a magnet effect: toward the close, the underlying tends to gravitate to the strikes where open interest is densest, because dealer hedging turns stabilizing there. The same effect, reversed, makes expiry days (OpEx) more volatile, when the disappearance of a large block of options abruptly changes dealer positioning.
+Vanna describes how delta changes with implied volatility; charm describes its change with time. The hedge direction depends on the portfolio and option characteristics. Falling implied volatility cannot, by itself, establish that dealers must buy the market. The [OIC discussion of second-order Greeks](https://prd-web.optionseducation.org/news/may-office-hours-faqs) provides the definitions.
 
-## Vanna, charm and rallies with no news
+## GameStop requires its own evidence
 
-Dealer hedging does not respond to price alone. It also responds to two other variables, the source of moves that seem inexplicable. The first is volatility: when implied volatility falls, the hedging of dealers who sold puts pushes them to buy the underlying, a flow called vanna that can feed a "vanna rally," a slow, steady rise with no news at all. The second is the passage of time: as expiry approaches, the erosion of time value (charm) also generates directional hedging flows.
+A theoretical gamma squeeze is a feedback mechanism: buying calls can leave intermediaries with short gamma, and their subsequent hedge purchases may reinforce a rise. Whether that mechanism dominated a particular episode is an empirical question.
 
-These second-order flows have powerful explanatory value. They account for markets that grind higher for weeks in a deceptive calm, carried by hedging mechanics alone, then reverse violently as soon as volatility rebounds and flips the sign of all those flows. Calm is not the absence of risk; it is sometimes the product of a self-reinforcing hedge, until it breaks.
+For GameStop in January **2021**, [SEC staff reported that they did not find evidence of a gamma squeeze in the available data](https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf#page=30). This is a staff finding, not a Commission rule or a universal rejection of the mechanism. Presenting GameStop as a proven textbook case would overstate that evidence.
 
-## When gamma breaks: Volmageddon and GameStop
+## Read positioning estimates as conditional scenarios
 
-Two episodes show the same mechanism in both directions. On 5 February 2018, "Volmageddon," a rebound in volatility caught out a mass of short-volatility positions and short-gamma dealers: the VIX jumped from about 17 to over 37, the Dow lost 1,175 points in the session, a record at the time, and the inverse VIX product, XIV, collapsed some 96% before being wound down. Forced hedging fed its own decline.
+Before using a gamma-exposure or gamma-flip estimate, identify the underlying, option universe, observation time, assumptions about customer positions and treatment of existing hedges. Open interest does not publicly identify every holder’s position. An estimated sign change in gamma is not a universal boundary between a calm market and a falling one.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 280" role="img" aria-label="Two precedents of a gamma break, Volmageddon 2018 and GameStop 2021" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="280" fill="#0c0d10"></rect>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">When gamma breaks: two precedents</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">The same forced-hedging mechanism, in both directions.</text>
-  <rect x="40" y="80" width="4" height="70" fill="#ff4d87"></rect>
-  <text x="58" y="100" fill="#ff4d87" font-size="13" font-weight="700">February 2018, Volmageddon</text>
-  <text x="58" y="120" fill="#d6d9df" font-size="11.5">VIX ~17 to 37, Dow -1,175 pts, the inverse fund XIV -96%.</text>
-  <text x="58" y="138" fill="#8b909b" font-size="11.5">Short-gamma, short-vega dealers: the fall feeds itself.</text>
-  <rect x="40" y="168" width="4" height="70" fill="#f5b13d"></rect>
-  <text x="58" y="188" fill="#f5b13d" font-size="13" font-weight="700">January 2021, GameStop</text>
-  <text x="58" y="208" fill="#d6d9df" font-size="11.5">GME from under $20 to a peak of $483 on 28 January.</text>
-  <text x="58" y="226" fill="#8b909b" font-size="11.5">Gamma squeeze: call buying forces dealers to buy.</text>
-  <text x="32" y="266" fill="#8b909b" font-size="11">Sources: session records, CBOE. Two faces of one hedging mechanism.</text>
-</svg>
-<figcaption>Downward in 2018, upward in 2021: in both cases, the hedging of short-gamma dealers amplified the move instead of dampening it. <strong>Gamma does not create the trend, it accelerates it.</strong> Sources: session records, CBOE.</figcaption>
-</figure>
+Compare the possible hedge size with the liquidity available when execution would occur. Revisit the assumptions after new trades, expiry or changes in implied volatility. Continue with the guides to [VIX and MOVE](/en/guides/read-vix-move-volatility/) and [CFTC positioning](/en/guides/read-cftc-cot-report/) to distinguish option sensitivity from other measures of market risk.
 
-Conversely, in January 2021, GameStop stock showed the [gamma squeeze](/glossaire/gamma-squeeze/) in its upward version. Heavy call buying by retail traders forced dealers to buy the stock to hedge; that buying pushed the price, raised the delta to hedge, and compelled the dealers to buy still more, in a loop that carried the stock from under $20 to an intraday peak of $483 on 28 January. Down in 2018, up in 2021, but in both cases the same truth: gamma does not create the trend, it accelerates it.
+## Sources and revision
 
-## Reading gamma in practice
-
-Following dealer gamma means adding a layer of reading on top of [volatility](/en/guides/read-vix-move-volatility/). Three reflexes help. First, locate the market relative to the gamma flip: above it, expect a dampened, pinned market; below it, amplified moves. Second, distrust the calm: very low volatility can reflect a stabilizing hedge that will reverse abruptly the day it breaks. Third, read expiry days and large strikes as potential tipping points.
-
-One caveat, finally, separates serious analysis from noise. Gross options volume does not reveal dealers' net exposure: what matters is not how many contracts trade, but the balance between customer buys and sells, which alone determines the volume dealers must hedge. GEX and gamma-flip estimates are valuable, but they rest on positioning assumptions no participant knows with certainty. Dealer gamma explains much of short-term moves; it replaces neither the fundamentals, nor caution before an indicator that remains, by nature, a reconstruction.
-
-## Sources and further reading
-
-- [CBOE, "Evaluating the Market Impact of SPX 0DTE Options"](https://www.cboe.com/insights/posts/volatility-insights-evaluating-the-market-impact-of-spx-0-dte-options/): share of 0DTE and weight of dealer hedging.
-- [CBOE, "0DTE Index Options and Market Volatility"](https://cdn.cboe.com/resources/education/research_publications/gammasqueezes.pdf): research on the impact of 0DTE and gamma squeezes.
-- SpotGamma, gamma exposure (GEX) and gamma-flip methodology: estimating dealer positioning.
-- Related guides: [Reading VIX and MOVE volatility](/en/guides/read-vix-move-volatility/) and [Reading the CFTC COT report](/en/guides/read-cftc-cot-report/).
-</content>
+The links above provide the OIC definitions, Cboe’s dated analyses and the SEC staff’s GameStop finding. The diagram is schematic and the delta example is hypothetical. The October 15 revision removes unsupported trading-share figures and causal claims, corrects the GameStop example and qualifies the interpretation of gamma-flip estimates.

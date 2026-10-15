@@ -1,9 +1,10 @@
 ---
 title: "How to Read M2 Money Supply: liquidity signal, bad readings and risk-on narratives"
-description: "A complete guide to U.S. M2: the Federal Reserve definition, what it measures and does not measure, the 2020 explosion and 2023 contraction, and a disciplined reading of its link with risk assets and crypto. The correlation exists, but it is fragile, conditional on velocity and macro regime, and fixed-lag models often amount to overfitting."
+seoTitle: "US M2 money supply: deposits, liquidity and risk assets | l0g"
+description: "Read the Fed’s M2 definition, distinguish deposits from bank reserves, and assess the limits of links between money supply, equities and crypto."
 summary: "M2 is the Fed's broad money aggregate: liquid money and near-money held by the nonbank public. It is often used as a liquidity barometer for risk assets, but it is a stock, not a flow. It is useful as a directional signal only when read with velocity, composition and the broader macro regime."
 pubDate: 2026-06-29T15:30:00+02:00
-updatedDate: 2026-06-29T15:30:00+02:00
+updatedDate: 2026-10-15T18:26:00+02:00
 sourceGuide: "m2-masse-monetaire-risk-on"
 sourceUpdatedDate: 2026-06-29T15:30:00+02:00
 tags: ["macro", "central banks", "crypto", "liquidity"]
@@ -15,31 +16,29 @@ draft: false
 
 ## The exact definition of M2
 
-M2 is a monetary aggregate published monthly by the Federal Reserve in the H.6 release. It nests inside M1. M1 includes the most liquid money: currency in circulation, demand deposits and, since May 2020, other liquid deposits such as savings accounts and money market deposit accounts. M2 adds less-liquid components: small time deposits below **$100,000** and retail money market fund shares.
+M2 is a monetary aggregate published monthly by the Federal Reserve in the H.6 release. It includes M1. M1 includes the most liquid money: currency in circulation, demand deposits and, since May 2020, other liquid deposits such as savings accounts and money market deposit accounts. M2 adds less-liquid components: small time deposits below **$100,000** and retail money market fund shares, with the applicable IRA and Keogh exclusions. [Federal Reserve definition](https://www.federalreserve.gov/releases/h6/current/default.htm).
 
-Three details matter. First, M2 counts money held by the U.S. nonbank public: federal government deposits and interbank deposits are excluded. Second, a May 2020 regulatory change moved savings deposits into M1, complicating composition comparisons across that date. Third, from the July 28, 2026 H.6 release, the Fed changes how IRA and Keogh balances are treated in the seasonally adjusted series.
+[The Fed’s technical Q&A](https://www.federalreserve.gov/releases/h6/h6_technical_qa.htm) explains the breaks in definition and treatment. Three details matter. First, M2 counts money held by the U.S. nonbank public: federal government deposits and interbank deposits are excluded. Second, a May 2020 regulatory change moved savings deposits into M1, complicating composition comparisons across that date. Third, from the July 28, 2026 H.6 release, the Fed changes how IRA and Keogh balances are treated in the seasonally adjusted series.
 
 The crucial point: M2 is a **stock**, not a flow of money into equities or crypto. A rising M2 means liquid money balances are rising. It does not tell what holders will do with those balances.
 
-## 2020-2023: explosion, then contraction
+## Compare the same series and vintage
 
-The 2020-2023 episode is the cleanest case study. Fed asset purchases and fiscal transfers pushed M2 growth to nearly **27%** year over year in early 2021, a record in the series. Monetarists saw an inflation warning when the central bank still played down the risk. Inflation followed. Then tightening and balance-sheet reduction pulled M2 into a rare contraction, down **4.6%** year over year in April 2023, the deepest decline in the modern data.
+Use the [Fed’s H.6 release](https://www.federalreserve.gov/releases/h6/current/default.htm) or [FRED’s M2SL series](https://fred.stlouisfed.org/series/M2SL), recording the observation month, units, seasonal adjustment and retrieval date. Historical data can be revised. A level from an old article is not a current reading.
 
-That episode supports both sides of the debate. M2 did carry a powerful signal when its move was extreme. But it was also an exceptional fiscal-monetary shock. In normal regimes, the signal is weaker. By mid-2026, M2 was above **$22.8 trillion** and growing roughly **5.6%** year over year, close to its long-run rhythm.
+For a year-over-year change, compare the same monthly series with its value twelve months earlier. The calculation is `(current / year-earlier - 1) × 100`. Keep the level and growth rate together: slower growth can coexist with a rising stock. The [June 23, 2026 release](https://www.federalreserve.gov/releases/h6/20260623/) is an archived example of the release format, not the latest observation.
 
 ## The link with risk-on
 
 The usual shortcut is that more money pushes risk assets higher. The mechanism is not absurd: abundant liquidity can seek return in equities, credit, commodities and scarce digital assets. But the transmission depends on **velocity**, the speed at which money turns over. The quantity theory identity links money times velocity to nominal income. If velocity falls, higher M2 may feed neither inflation nor markets.
 
-Velocity has trended down since the 1990s and remains unstable. That is why mechanical M2 readings fail. The composition also matters: rising retail money market balances can reflect risk-off behavior, as households move from low-yielding deposits into safer cash-like assets, not a rush into speculation.
+Velocity is a measured ratio that can change over time; consult [FRED’s M2V definition and observations](https://fred.stlouisfed.org/series/M2V). That is why mechanical M2 readings fail. The composition also matters: rising retail money market balances can reflect risk-off behavior, as households move from low-yielding deposits into safer cash-like assets, not a rush into speculation.
 
 ## Bitcoin as liquidity barometer
 
-Crypto is where the M2 narrative became most popular. The serious version comes from Lyn Alden and Sam Callahan: from May 2013 to July 2024, Bitcoin moved in the same direction as global liquidity **83%** of the time over twelve-month windows and **74%** over six-month windows. That is a meaningful directional relationship.
+An [analysis published by Lyn Alden and written by Sam Callahan](https://www.lynalden.com/bitcoin-a-global-liquidity-barometer/) reports that Bitcoin and the authors’ global-liquidity measure moved in the same direction in **83%** of twelve-month windows and **74%** of six-month windows in their historical sample. These are the authors’ retrospective results, not a probability of future price increases or an independent replication. The study’s global measure must also be distinguished from US M2 alone.
 
-The weak version is the social-media chart claiming that global M2 leads Bitcoin by a fixed lag. The lag changes by author and by cycle: ten weeks, twelve weeks, fifteen weeks. When the “best” lag changes after the fact, it is overfitting, not law. Global M2 itself is a fragile construction: it aggregates many central-bank money supplies into dollars, so FX moves can inflate or depress the series without any real liquidity impulse.
-
-Recently the relationship broke. Over the twelve months into early 2026, global M2 rose about **12%** while Bitcoin fell by a similar amount, according to CF Benchmarks. Liquidity dominated in 2020 and 2022; other factors dominated in 2025-2026: ETF flows, leverage, regulation and geopolitics.
+A chart fitted with a selected lag is a different claim. Changing the lag after observing prices can improve the historical fit without establishing predictive value. Converting foreign monetary aggregates into dollars introduces an exchange-rate effect as well. A useful replication must disclose the component series, dates, conversion method and out-of-sample test. The [Fed’s H.6 definitions](https://www.federalreserve.gov/releases/h6/about.htm) specify the US aggregate; they do not define a universal global-M2 trading signal.
 
 ## Common traps
 
@@ -55,4 +54,4 @@ M2 is one piece of the broader plumbing described in the guides on the [Fed bala
 
 ---
 
-**Main sources:** Federal Reserve, H.6 *Money Stock Measures* definitions and current release; FRED M2SL, M2V and M2REAL series; Lyn Alden and Sam Callahan, *Bitcoin: A Global Liquidity Barometer*; CF Benchmarks, *The M2-Bitcoin Relationship: What the Data Actually Shows*; Kokabian working paper on global liquidity and Bitcoin.
+**Primary sources:** [Federal Reserve H.6 definitions](https://www.federalreserve.gov/releases/h6/about.htm), [technical Q&A](https://www.federalreserve.gov/releases/h6/h6_technical_qa.htm), [M2SL](https://fred.stlouisfed.org/series/M2SL) and [M2V](https://fred.stlouisfed.org/series/M2V). The [Alden/Callahan study](https://www.lynalden.com/bitcoin-a-global-liquidity-barometer/) is the original source for its own retrospective findings. The October 15 revision corrects the inclusion of M1 in M2, removes undated market readings and separates the study’s measure from US M2.

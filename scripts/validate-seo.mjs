@@ -37,14 +37,15 @@ for (const entry of entries) {
     assert.notEqual(entry.data.seoTitle, editorialTitle, `Title SEO identique au H1: ${entry.id}`);
     assert(/\s[|\-·]\s*l0g(?:\.fr)?$/i.test(entry.data.seoTitle), `Marque finale absente du title SEO: ${entry.id}`);
   } else {
-    assert(seo.fullTitle.length <= 60, `Title SEO de repli trop long: ${entry.id} (${seo.fullTitle.length})`);
+    assert(!seo.fullTitle.includes('…') || editorialTitle.includes('…'), `Title SEO tronqué automatiquement: ${entry.id}`);
   }
   if (entry.data.ogTitle) {
     assert(entry.data.ogTitle.length <= 100, `og:title trop long: ${entry.id} (${entry.data.ogTitle.length})`);
   }
   assert(!/[<>]/.test(entry.data.seoTitle), `Balisage interdit dans title SEO: ${entry.id}`);
   assert(!/[<>]/.test(entry.data.ogTitle), `Balisage interdit dans og:title: ${entry.id}`);
-  assert(seo.description.length <= 155, `Meta description trop longue: ${entry.id}`);
+  assert(seo.description.trim(), `Meta description vide: ${entry.id}`);
+  assert(!seo.description.endsWith('…') || entry.data.description.endsWith('…'), `Meta description tronquée automatiquement: ${entry.id}`);
   assert.equal(entry.data.title, editorialTitle, `Le titre éditorial a été altéré: ${entry.id}`);
   const uniquenessKey = `${entry.collection}:${seo.fullTitle.toLocaleLowerCase()}`;
   assert(!effectiveTitles.has(uniquenessKey), `Title SEO dupliqué: ${entry.id} et ${effectiveTitles.get(uniquenessKey)}`);
@@ -89,7 +90,7 @@ console.log(JSON.stringify({
   entries: entries.length,
   explicitSeoTitles: entries.filter(({ data }) => data.seoTitle).length,
   explicitOgTitles: entries.filter(({ data }) => data.ogTitle).length,
-  fallbackMaxTitle: 60,
+  completeFallbackTitles: true,
   explicitMaxTitle: 90,
-  maxDescription: 155,
+  completeDescriptions: true,
 }));
