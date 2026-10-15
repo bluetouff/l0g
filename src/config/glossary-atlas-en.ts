@@ -210,6 +210,27 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'swift', sigle: 'SWIFT', nom: 'Society for Worldwide Interbank Financial Telecommunication',
+    def: 'A secure financial messaging network that carries instructions between institutions. Swift is not a bank: it does not hold funds or manage accounts for its customers. Transfers and settlement are performed by the institutions and infrastructures involved. Disconnection from messaging is distinct from an asset freeze or a transaction ban, whose scope depends on the applicable law.',
+    guide: '/en/analysis/a7-banks-russia-payment-detour/', ...usRegulationSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'A message may have arrived while the supplier is still waiting for its bank account to be credited.',
+      whyNow: 'The A7 dossier calls for distinguishing payment instructions, available currency and the credit actually received by the supplier.',
+      articles: [
+        { label: 'A7: the banking detour for Russian payments', href: '/en/analysis/a7-banks-russia-payment-detour/', detail: 'Messaging, foreign exchange and settlement in the public record on A7.', kind: 'article' },
+        { label: 'Stablecoins: from tokens to available dollars', href: '/en/analysis/stablecoin-reserves-redemption-dollar/', detail: 'Reserves, redemption rights and dollars reaching a bank account.', kind: 'article' },
+        { label: 'Iranian oil and USDT', href: '/en/analysis/iranian-oil-usdt-tether-seizure/', detail: 'Freezing and seizure powers that persist when a holder controls the keys.', kind: 'article' },
+      ],
+      sources: [
+        { label: 'Swift, FAQs: Does Swift move money? and Is Swift a bank?', href: 'https://www.swift.com/about-us/who-we-are', detail: 'Messaging carries instructions; institutions transfer the funds. Read on October 15, 2026.', kind: 'source' },
+        { label: 'Swift, About Swift section of its June 16, 2026 release', href: 'https://www.swift.com/about-us/media-centre/press-releases/swift-appoints-michael-manos-chief-information-officer', detail: 'Operator description stating that Swift does not hold funds or manage customer accounts.', kind: 'source' },
+        { label: 'Swift, Swift and sanctions', href: 'https://www.swift.com/about-us/legal/compliance-0/swift-and-sanctions', detail: 'Institutions’ responsibilities and disconnection of designated entities under EU law. Read on October 15, 2026.', kind: 'source' },
+        { label: 'FinCEN, proposal published in the Federal Register on October 5, 2026', href: 'https://www.govinfo.gov/content/pkg/FR-2026-10-05/html/2026-20371.htm', detail: 'Administrative assessment of A7 subagents’ accounts and liquidity; the additional prohibition remains proposed.', kind: 'source' },
+      ],
+      related: ['stablecoin', 'usdt'],
+    },
+  },
+  {
     slug: 'pret-relais', sigle: 'Bridge loan', nom: 'Temporary borrowing ahead of an expected funding source',
     def: 'A short-term loan used to meet a funding need before an expected resource becomes available, such as longer-term financing or proceeds from an asset sale. The later resource still has to materialise. The facility limit, cumulative drawdowns and principal outstanding describe different stages of the borrowing and must not be added together.',
     guide: '/en/analysis/softbank-openai-financing-freedom-to-wait/', ...privateCreditSection, robots: 'noindex,follow',

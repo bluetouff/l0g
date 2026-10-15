@@ -740,7 +740,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'GENIUS', nom: 'GENIUS Act', def: "Loi fédérale américaine sur les stablecoins de paiement, promulguée le 18 juillet 2025, qui prévoit un régime d’agrément, de réserves et de contrôle des émetteurs. Son article 20 fixe l’entrée en vigueur à la première de ces dates : le 18 janvier 2027 ou 120 jours après l’adoption de règlements d’application finaux par les régulateurs fédéraux compétents.", guide: '/guides/stablecoins-genius-act/' },
       { sigle: 'NASAA', nom: 'North American Securities Administrators Association', def: "Association des régulateurs boursiers des États américains, du Canada et du Mexique." },
       { sigle: 'USAID', nom: 'U.S. Agency for International Development', def: "Agence américaine pour le développement international, en charge de l'aide étrangère." },
-      { sigle: 'SWIFT', nom: 'Society for Worldwide Interbank Financial Telecommunication', def: "Réseau de messagerie interbancaire mondial pour les transferts. Exclure un pays de SWIFT est une arme de sanction majeure." },
+      { sigle: 'SWIFT', nom: 'Society for Worldwide Interbank Financial Telecommunication', def: 'Réseau de messagerie financière sécurisée qui transmet des instructions entre établissements. Swift n’est pas une banque : il ne détient pas les fonds et ne gère pas les comptes de ses clients. Le transfert et le règlement relèvent des établissements et des infrastructures concernés. Une déconnexion de la messagerie se distingue d’un gel d’avoirs ou d’une interdiction de transaction, dont le champ dépend du droit applicable.', guide: '/posts/a7-banques-detour-paiements-russes/' },
       { sigle: 'CIPS', nom: 'Cross-Border Interbank Payment System', def: "Infrastructure chinoise de paiement, compensation et règlement transfrontalier en renminbi. À la différence de SWIFT, qui est surtout un réseau de messagerie financière multidevise, CIPS traite et règle des paiements en RMB ; leurs volumes ne mesurent donc pas une part de marché contre SWIFT.", guide: '/posts/renminbi-zone-monetaire-asie/' },
       { sigle: 'FSOC', nom: 'Financial Stability Oversight Council', def: "Conseil américain de supervision de la stabilité financière. Peut désigner des non-banques comme systémiques." },
       { sigle: 'FHFA', nom: 'Federal Housing Finance Agency', def: "Régulateur fédéral américain du financement du logement, créé par la loi HERA du 30 juillet 2008. Il supervise Fannie Mae, Freddie Mac et les douze Federal Home Loan Banks, et exerce depuis septembre 2008 la tutelle des deux premières. Sa double casquette de superviseur et de gestionnaire est au coeur du débat sur la sortie de tutelle.", guide: '/posts/privatisation-fannie-freddie-garantie-non-ecrite/' },
@@ -1057,6 +1057,22 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  swift: {
+    intuition: 'Le message peut être arrivé alors que le fournisseur attend encore le crédit sur son compte.',
+    whyNow: 'Le dossier A7 invite à distinguer la transmission d’une instruction, la devise disponible et le crédit effectif du fournisseur.',
+    articles: [
+      { label: 'A7 : le détour bancaire des paiements russes', href: '/posts/a7-banques-detour-paiements-russes/', detail: 'Messagerie, devises et règlement dans les documents publics sur A7.', kind: 'article' },
+      { label: 'Stablecoin : du token au dollar disponible', href: '/posts/stablecoin-reserves-delai-remboursement-dollar/', detail: 'Réserves, droits de remboursement et arrivée des dollars sur un compte.', kind: 'article' },
+      { label: 'Pétrole iranien et USDT', href: '/posts/petrole-iranien-usdt-tether-saisie/', detail: 'Pouvoirs de gel et de saisie distincts de la détention des clés.', kind: 'article' },
+    ],
+    sources: [
+      { label: 'Swift, FAQ « Does Swift move money? » et « Is Swift a bank? »', href: 'https://www.swift.com/about-us/who-we-are', detail: 'Instructions par messagerie et transfert par les établissements ; page consultée le 15 octobre 2026.', kind: 'source' },
+      { label: 'Swift, section « About Swift » du communiqué du 16 juin 2026', href: 'https://www.swift.com/about-us/media-centre/press-releases/swift-appoints-michael-manos-chief-information-officer', detail: 'Présentation de l’opérateur : absence de détention des fonds et de gestion des comptes des clients.', kind: 'source' },
+      { label: 'Swift, « Swift and sanctions »', href: 'https://www.swift.com/about-us/legal/compliance-0/swift-and-sanctions', detail: 'Responsabilités des institutions et déconnexion d’entités désignées selon le droit européen ; page consultée le 15 octobre 2026.', kind: 'source' },
+      { label: 'FinCEN, proposition publiée au Federal Register le 5 octobre 2026', href: 'https://www.govinfo.gov/content/pkg/FR-2026-10-05/html/2026-20371.htm', detail: 'Analyse administrative des comptes et des liquidités des sous-agents d’A7 ; interdiction supplémentaire encore proposée.', kind: 'source' },
+    ],
+    related: ['stablecoin', 'usdt'],
+  },
   'pret-relais': {
     intuition: 'Le prêt avance les fonds ; la ressource destinée à le rembourser doit ensuite se réaliser.',
     articles: [{ label: 'SoftBank : les échéances du pari OpenAI', href: '/posts/softbank-openai-echeances-liberte-attendre/', kind: 'article' }],

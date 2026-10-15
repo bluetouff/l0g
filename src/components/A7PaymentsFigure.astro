@@ -1,0 +1,58 @@
+---
+import { a7PaymentsSvg, A7_PAYMENTS_KINDS } from '../lib/a7PaymentsFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'mirror' | 'backing' | 'turnover' | 'activity' | 'measures' | 'liquidity';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || A7_PAYMENTS_KINDS.indexOf(kind) + 1 !== Number(number) || !A7_PAYMENTS_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid A7 payments figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[0-7])$/.test(id))) {
+  throw new TypeError('Invalid A7 payments source reference');
+}
+---
+<figure class="a7-payments-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="a7-payments-desktop" set:html={a7PaymentsSvg(lang, kind, false)} />
+  <div class="a7-payments-mobile" set:html={a7PaymentsSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="a7-payments-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g A7 Payments'; src: url('/fonts/a7-payments/liberation-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g A7 Payments'; src: url('/fonts/a7-payments/liberation-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .a7-payments-figure :global(svg text) { font-family: 'l0g A7 Payments', 'Liberation Sans', Arial, sans-serif; }
+  .a7-payments-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .a7-payments-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .a7-payments-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .a7-payments-references { display: block; }
+  .a7-payments-references a { margin-right: .75em; }
+  .a7-payments-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .a7-payments-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .a7-payments-figure :global(details p) { margin: .7rem 0; }
+  :global(.a7-payments-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.a7-payments-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .a7-payments-desktop { display: none; }
+    .a7-payments-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .a7-payments-desktop { display: none; }
+    .a7-payments-mobile { display: block; }
+  }
+  .a7-payments-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .a7-payments-figure { break-inside: avoid; }
+    .a7-payments-desktop { display: block; }
+    .a7-payments-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  }
+</style>
