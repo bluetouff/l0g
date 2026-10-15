@@ -1,0 +1,58 @@
+---
+import { doctolibChoicesSvg, DOCTOLIB_CHOICES_KINDS } from '../lib/doctolibChoicesFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'lifecycle' | 'evidence' | 'network' | 'routes' | 'export' | 'autonomy';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || DOCTOLIB_CHOICES_KINDS.indexOf(kind) + 1 !== Number(number) || !DOCTOLIB_CHOICES_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid Doctolib choices figure variant');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || references.some((id) => !/^(?:[1-9]|1[0-9]|20)$/.test(id))) {
+  throw new TypeError('Invalid Doctolib choices source reference');
+}
+---
+<figure class="doctolib-choices-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="doctolib-choices-desktop" set:html={doctolibChoicesSvg(lang, kind, false)} />
+  <div class="doctolib-choices-mobile" set:html={doctolibChoicesSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="doctolib-choices-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Doctolib Choices'; src: url('/fonts/doctolib-choices/liberation-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g Doctolib Choices'; src: url('/fonts/doctolib-choices/liberation-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  .doctolib-choices-figure :global(svg text) { font-family: 'l0g Doctolib Choices', 'Liberation Sans', Arial, sans-serif; }
+  .doctolib-choices-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .doctolib-choices-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .doctolib-choices-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .doctolib-choices-references { display: block; }
+  .doctolib-choices-references a { margin-right: .75em; }
+  .doctolib-choices-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .doctolib-choices-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .doctolib-choices-figure :global(details p) { margin: .7rem 0; }
+  :global(.doctolib-choices-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.doctolib-choices-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .doctolib-choices-desktop { display: none; }
+    .doctolib-choices-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .doctolib-choices-desktop { display: none; }
+    .doctolib-choices-mobile { display: block; }
+  }
+  .doctolib-choices-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .doctolib-choices-figure { break-inside: avoid; }
+    .doctolib-choices-desktop { display: block; }
+    .doctolib-choices-mobile { display: none; width: 100%; max-width: 400px; margin-inline: auto; }
+  }
+</style>
