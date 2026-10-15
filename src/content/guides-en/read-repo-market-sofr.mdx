@@ -1,108 +1,82 @@
 ---
 title: "How to Read the Repo Market: SOFR, the Rate Corridor and Reserve Scarcity"
-description: "A reference guide to U.S. secured-funding plumbing: what repo is, how SOFR is produced and on what volume it rests, the Fed’s rate corridor (IORB, RRP, SRF, EFFR), how to read the SOFR-IORB spread as a reserve-scarcity thermometer, the anatomy of a stress episode with September 2019, quarter-end and year-end jumps, and the 2026 regime after the end of quantitative tightening."
-summary: "Repo is the market where wholesale finance funds itself every day: more than $3 trillion of cash lending secured by Treasuries, whose volume-weighted median becomes SOFR, the reference rate for overnight secured funding. Reading it means understanding repos, the Fed’s corridor and why SOFR moving above IORB signals scarcer reserves."
+seoTitle: "SOFR and repo markets: rates, spreads and liquidity | l0g"
+description: "Understand Treasury repo, SOFR, the Fed’s policy rates and funding stress. Read spreads alongside collateral, market access and calendar effects."
+summary: "SOFR measures overnight Treasury repo funding. Read its construction, the Fed’s rate framework and the September 2019 stress episode, then compare spreads, trading volumes and access to central-bank facilities before diagnosing reserve scarcity."
 pubDate: 2026-07-08T18:00:00+02:00
-updatedDate: 2026-07-08T18:00:00+02:00
+updatedDate: 2026-10-15T14:39:00+02:00
 sourceGuide: "lire-le-marche-du-repo-sofr"
-sourceUpdatedDate: 2026-07-08T08:00:00+02:00
+sourceUpdatedDate: 2026-10-15T14:39:00+02:00
 tags: ["macro", "central banks", "liquidity", "rates", "methodology"]
 category: fed
 draft: false
 ---
 import InfographicBars from '../../components/infographic/InfographicBars.astro';
 
-*[Repo](/en/glossary/repo/) is the most important market nobody talks about. This is where banks, hedge funds and money-market funds finance themselves overnight against collateral, for trillions of dollars a day. Its median gives SOFR, the rate that replaced Libor and anchors hundreds of trillions of contracts. This guide follows the plumbing end to end: the mechanics of a repo, how SOFR is built, the corridor through which the Fed keeps it in range, and how to read rising stress. September 2019 and year-end 2025 are the case studies.*
+*Repo turns securities into short-term funding. This guide explains the transaction, SOFR’s construction and the Fed’s influence on overnight rates. The [September 2019 episode](https://www.federalreserve.gov/econres/notes/feds-notes/what-happened-in-money-markets-in-september-2019-20200227.html) shows why a rise in funding costs needs to be read alongside cash flows and intermediaries’ ability to lend.*
 
 ## Repo, the basic block of market funding
 
-A repurchase agreement, or [repo](/glossaire/repo/), is deceptively simple: one party sells a security, almost always a Treasury, while agreeing to buy it back the next day at a slightly higher price. Economically, it is a cash loan secured by collateral, and the difference between the two prices is the interest rate. The cash lender who receives the security is doing a “reverse repo”; the security lender who receives cash is doing a “repo.” Same contract, two views.
+A repurchase agreement, or [repo](/en/glossary/repo/), is deceptively simple: one party sells a security, in the US Treasury repo market, a Treasury, while agreeing to buy it back at an agreed later date at a slightly higher price. Economically, it is a cash loan secured by collateral, and the difference between the two prices determines the interest paid. The cash lender who receives the security is doing a “reverse repo”; the security lender who receives cash is doing a “repo.” The terminology depends on the side of the transaction.
 
-Two settings govern the risk. The first is the [haircut](/glossaire/haircut-repo/): the lender does not advance 100% of the security’s value but slightly less, a margin that protects against collateral price moves. A low haircut allows high leverage; a rising haircut forces the borrower to find cash or sell. The second is the type of collateral. When the cash lender does not care which exact security it receives, as long as it is high quality, the trade is “general collateral” and the rate reflects the price of cash. When a specific security is in high demand, it becomes “special” and finances at a lower rate because owning that security has value. This plumbing manufactures liquidity every day.
+Two settings govern the risk. The first is the [haircut](/en/glossary/haircut-repo/): the lender does not advance 100% of the security’s value but slightly less, a margin that protects against collateral price moves. A low haircut allows high leverage; a rising haircut forces the borrower to find cash or sell. The second is the type of collateral. When the cash lender does not care which exact security it receives, as long as it is high quality, the trade is “general collateral” and the rate reflects the price of cash. When a specific security is in high demand, it becomes “special” and finances at a lower rate because owning that security has value.
 
 ## How SOFR is built
 
-[SOFR](/glossaire/sofr/), the Secured Overnight Financing Rate, is not a number quoted by a bank. It is a statistic. Every business morning around 8 a.m., the [New York Fed](https://www.newyorkfed.org/markets/reference-rates/sofr) publishes the volume-weighted median of the previous day’s Treasury repo transactions. A median, not an average, prevents a handful of extreme trades from distorting the number. That is what makes SOFR robust, based on real transactions, unlike Libor, which rested on submitted estimates and collapsed under manipulation scandals.
+[SOFR](/glossaire/sofr/), the Secured Overnight Financing Rate, is a volume-weighted median of eligible overnight Treasury repo transactions. The [New York Fed](https://www.newyorkfed.org/markets/reference-rates/sofr) publishes it around 8 a.m. Eastern Time on business days, using the previous business day’s activity. Its coverage combines tri-party repo, GCF and cleared bilateral DVP transactions, with filtering intended to reduce the influence of securities trading “special.” It does not cover every Treasury repo transaction.
 
-Its strength comes from its base. SOFR rests on more than **$3 trillion** of daily transactions across three segments: tri-party repo, where an agent such as BNY manages collateral; cleared bilateral repo, or DVP, through FICC; and GCF. No reference rate has ever rested on such a broad base, making it almost impossible to manipulate.
+The [published methodology](https://www.newyorkfed.org/markets/reference-rates/additional-information-about-reference-rates) explains the data inputs and exclusions. A daily rate should be read with the accompanying volume and percentiles: a median can remain stable while the more expensive part of the distribution moves. A transaction-based benchmark still depends on its coverage and calculation rules. Daily volumes are observations to date explicitly, not a permanent size attached to the market.
 
-<InfographicBars
-  title="What powers SOFR: more than $3 trillion per day"
-  subtitle="Average daily Treasury repo volume by segment, first half 2026, in billions of dollars."
-  max={2000}
-  items={[
-    { label: "Cleared bilateral, DVP via FICC", value: 1855, valueLabel: "$1,855bn", tone: "signal" },
-    { label: "Tri-party, via BNY", value: 1280, valueLabel: "$1,280bn", tone: "blue" },
-    { label: "GCF, FICC", value: 31, valueLabel: "$31bn", tone: "muted" },
-  ]}
-  source="Source: Federal Reserve Bank of New York, SOFR components."
-  caption="SOFR is the volume-weighted median of more than $3 trillion in daily repo transactions. That base makes it extremely hard to manipulate. Source: New York Fed."
-/>
+## The Fed’s short-rate framework
 
-## The short-rate corridor
+The Fed targets a range for the federal funds rate. [EFFR](/glossaire/effr/) measures that unsecured market; SOFR measures secured Treasury funding. Their differences matter when interpreting a spread.
 
-The Federal Reserve does not set SOFR by hand. It builds a corridor in which it should trade, and the market does the rest. The central reference is [IORB](/glossaire/iorb/), the rate the Fed pays on reserves banks hold with it. A bank has little reason to lend cash below what the Fed pays risk-free, making IORB a magnet for short rates.
+The [New York Fed’s operating framework](https://www.newyorkfed.org/markets/domestic-market-operations/monetary-policy-implementation/repo-reverse-repo-agreements) uses administered rates and repo operations to influence market rates:
 
-The corridor has two boundaries. At the bottom is the overnight reverse repo rate, [ON RRP](/glossaire/rrp/), where money-market funds can place cash with the Fed; nobody should lend cheaper elsewhere. At the top is the [standing repo facility, SRF](/glossaire/srf/), which lends cash against Treasuries to eligible counterparties at a fixed rate; nobody should need to borrow more expensively while the window is open. Between those boundaries sit SOFR and [EFFR](/glossaire/effr/), the effective federal funds rate, the true operational target of monetary policy. In July 2026, with a [fed funds target range of 3.50% to 3.75%](https://www.federalreserve.gov/monetarypolicy/openmarket.htm), SOFR was around [3.64%](https://www.newyorkfed.org/markets/reference-rates/sofr), just below IORB at 3.65%, well inside the corridor.
+| Instrument | Role in the framework |
+| --- | --- |
+| [IORB](/glossaire/iorb/) | Interest on eligible institutions’ reserve balances; a reference return for banks. |
+| [ON RRP](/glossaire/rrp/) | An overnight investment alternative for approved counterparties that supports a floor under short rates. |
+| [Standing repo](/glossaire/srf/) | Cash against eligible collateral for approved counterparties, limiting upward funding pressure. |
 
-<InfographicBars
-  title="The short-rate corridor, July 2026"
-  subtitle="Each rate’s position above the ON RRP floor, 3.50%, in basis points."
-  items={[
-    { label: "SRF ceiling, 3.75%", value: 25, valueLabel: "+25 bp", tone: "amber" },
-    { label: "IORB anchor, 3.65%", value: 15, valueLabel: "+15 bp", tone: "muted" },
-    { label: "SOFR, 3.64%", value: 14, valueLabel: "+14 bp", tone: "signal" },
-    { label: "EFFR, 3.63%", value: 13, valueLabel: "+13 bp", tone: "blue" },
-  ]}
-  note="Floor = ON RRP facility rate, 3.50%."
-  source="Sources: Federal Reserve and New York Fed, July 2, 2026 data."
-  caption="In an ample-reserves regime, SOFR sits just below IORB and far from the SRF ceiling. When it moves toward the ceiling, cash is becoming scarce. Sources: Fed, New York Fed."
-/>
+These are economic incentives with access conditions. They do not guarantee that every market participant can transact with the Fed at the quoted rate. The [standing-repo FAQ](https://www.newyorkfed.org/markets/repo-agreement-ops-faq) specifies counterparties, collateral and operating windows. It describes full allotment subject to proposition limits. “Unlimited access for everyone” would be an incorrect reading.
 
-## The thermometer: SOFR minus IORB
+## Interpreting SOFR minus IORB
 
-Within this system, one number concentrates the information: the spread between SOFR and IORB. In an [ample reserves](/glossaire/reserves-bancaires/) regime, cash is abundant, lenders compete, and SOFR sits at IORB or a basis point below it, as in early July 2026, when the gap was about -1 bp. When the gap narrows and turns positive, reserves are becoming scarce: borrowers are willing to pay more than what the Fed offers to get cash. A SOFR rate persistently above IORB is the first symptom of a system short of liquidity.
+A persistent rise in SOFR relative to IORB deserves investigation. It does not, by itself, identify a system-wide shortage of [bank reserves](/glossaire/reserves-bancaires/). Check whether the change affects the whole rate distribution, coincides with Treasury settlement or tax dates, and persists beyond a reporting date.
 
-The same mechanism appears one layer away in regional-bank liquidity ratios and in repo-funded gilt stress in the United Kingdom. SOFR-IORB is to secured funding what a thermometer is to fever: it does not tell you the cause, but it tells you there is one.
+Access and balance-sheet costs also matter. A [New York Fed staff survey analysis](https://tellerwindow.newyorkfed.org/2026/05/14/surveys-suggest-improved-willingness-by-counterparties-to-use-standing-repo-operations/) finds that some counterparties require a spread above the standing-repo rate before using the facility. Respondents cite, among other factors, the inability to net those trades against customer activity. That helps explain why market rates can exceed a facility rate without every borrower immediately switching to the Fed.
 
-## When the mechanics break: September 2019
+## September 2019: a funding squeeze
 
-The reference episode remains September 17, 2019. In two days, two drains combined: settlement of roughly **$54 billion** of Treasuries and quarterly corporate tax payments, which drained about **$120 billion** of reserves. The system was already tight after years of Fed balance-sheet reduction. Result: SOFR jumped from **2.43%** the previous day to **5.25%** on September 17, with intraday trades near 10%, roughly twice the corridor ceiling.
+The [Fed’s retrospective](https://www.federalreserve.gov/econres/notes/feds-notes/what-happened-in-money-markets-in-september-2019-20200227.html) describes Treasury settlement of about **$54 billion** and corporate tax payments that jointly reduced reserves by roughly **$120 billion** over two business days. SOFR rose from **2.43% on September 16 to 5.25% on September 17**, as recorded in the [New York Fed series distributed by FRED](https://fred.stlouisfed.org/series/SOFR). The difference is **2.82 percentage points**, or **282 basis points**.
 
 <InfographicBars
-  title="Anatomy of a stress episode: September 2019"
-  subtitle="SOFR, overnight repo rate, in %."
-  max={10}
+  title="SOFR: September 2019"
+  compact={true}
+  fontScale={1.4}
+  subtitle="Daily median, percent"
+  max={6}
   items={[
-    { label: "Sept. 16, previous day", value: 2.43, valueLabel: "2.43%", tone: "muted" },
-    { label: "Sept. 17, day median", value: 5.25, valueLabel: "5.25%", tone: "signal" },
-    { label: "Sept. 17, intraday high", value: 10.0, valueLabel: "~10%", tone: "amber" },
+    { label: "September 16, 2019", value: 2.43, valueLabel: "2.43%", tone: "muted" },
+    { label: "September 17, 2019", value: 5.25, valueLabel: "5.25%", tone: "signal" },
   ]}
-  note="The Fed injected $75bn on the 17th, then nearly $200bn during the week."
-  source="Sources: Federal Reserve FEDS Notes; Office of Financial Research."
-  caption="A reserve drain of about $120bn in two days was enough to make the rate quintuple. The SRF was created in 2021 in response to this episode. Sources: Fed, OFR."
+  source="New York Fed / FRED"
+  caption="The daily median rose by 282 basis points. Intraday transaction highs are excluded from this comparison."
 />
 
-The lesson of 2019 is not merely that an accident happened. It happened without anyone seeing it coming, because the boundary between “ample” and “scarce” reserves is not visible in advance. The Fed created the SRF in 2021 to avoid depending on ad hoc interventions and to cap rates before a blow-up.
+On September 17, the Fed offered up to **$75 billion** and supplied approximately **$53 billion**, according to the [same retrospective](https://www.federalreserve.gov/econres/notes/feds-notes/what-happened-in-money-markets-in-september-2019-20200227.html). Offered capacity and actual lending are different quantities. Upward pressure had been expected; its magnitude surprised market participants. Intermediation constraints complicated the response to the reserve drain.
 
-## Calendar shocks
+## Calendar effects and balance-sheet changes
 
-Since then, stress has not disappeared; it has migrated to balance-sheet dates. At quarter-end, and especially year-end, banks shrink balance sheets to manage regulatory ratios and lend less cash to the market, lifting rates for a few days. Year-end 2025 was clear: SOFR jumped to **3.87%** on December 31, with trades at 4.0%, well above IORB at 3.65%. Counterparties drew **$75 billion** from the SRF that day, before the stress dissolved in early January and usage fell back to zero. A smaller warning appeared in mid-September 2025, when SRF usage reached about **$18.5 billion** in one day, its largest draw since creation.
+Treat quarter-end as a hypothesis to test against dated observations. Compare the days before and after the event, rather than assigning every rate increase to regulatory reporting. The [New York Fed staff discussion of repo operations](https://libertystreeteconomics.newyorkfed.org/2026/09/the-role-of-repos-in-monetary-policy-implementation/) explains how central-bank repos add reserves while outstanding and reverse that addition at maturity. Adding daily allotments across a week would therefore overstate the amount simultaneously outstanding when loans roll over.
 
-Those jumps are not alarming in themselves. They are seasonal and usually fade. What matters is their amplitude and frequency, which reveal how thin the reserve cushion has become. If SRF usage becomes ordinary rather than exceptional, the system has moved from overflowing cash to cash that must be fetched at the window.
-
-## The 2026 regime
-
-That shift is the central issue in 2026. The Fed ended quantitative tightening on **December 1, 2025**, stopping balance-sheet run-off so it would no longer drain reserves. At the same time, ON RRP, long a buffer above $2 trillion, fell close to zero: the cushion that absorbed shocks disappeared, and every drain now hits bank reserves more directly. In parallel, the Fed strengthened the SRF, removing the aggregate cap and moving to full allotment so it can function more clearly as a backstop.
-
-The 2026 regime is therefore a system with fewer margins. Reserves are no longer superabundant, merely “sufficient,” a more fragile state in which SOFR-IORB and SRF usage become the indicators to watch closely. This is the same thread followed in our guides to [Treasury liquidity](/en/guides/read-net-liquidity-tga-rrp/) and the [Fed balance sheet](/en/guides/read-h41-fed-balance-sheet/), of which repo is the daily extension.
+The [FOMC announced on October 29, 2025](https://www.federalreserve.gov/newsevents/pressreleases/monetary20251029a.htm) that the reduction of its aggregate securities holdings would end on **December 1, 2025**. That decision did not freeze reserve balances. Changes in the Treasury’s cash account, currency and other liabilities can still alter the composition of the Fed’s balance sheet. Our guides to [Treasury liquidity](/en/guides/read-net-liquidity-tga-rrp/) and the [Fed balance sheet](/en/guides/read-h41-fed-balance-sheet/) explain those accounting links.
 
 ## Reading the market in practice
 
-Read properly, repo is not a rate but an early-warning system. Repo mechanics and haircuts say how much leverage is available. SOFR and volume show the price and depth of secured funding. The IORB-RRP-SRF corridor shows where the Fed wants to hold short rates. SOFR-IORB, together with SRF usage, says when the mechanics are tightening, often before stress becomes visible elsewhere. In 2019 and again at year-end 2025, repo spoke first.
+Use a dated observation sheet: SOFR and its percentiles, transaction volume, IORB, EFFR, facility rates and actual repo take-up. Keep rate observation dates separate from publication dates. Compare the same business days and distinguish overnight operations from outstanding balances.
 
-This framework matters when leverage accumulates in Treasuries through the [basis trade](/glossaire/basis-trade/), funded in repo, and it mirrors the [Treasury market](/en/guides/read-us-treasuries-market/) itself. The [glossary](/glossaire/) defines the acronyms. Quarter-end dates should be checked with the infrastructures and authorities listed on our [reference sites](/sites-reference/) page.
+Then formulate the diagnosis explicitly. A short-lived quarter-end spread, a broad and persistent funding squeeze, and difficulty obtaining a particular Treasury security call for different explanations. A spread is a starting point for this investigation; it cannot establish the cause alone.
 
----
-
-**Main sources:** Federal Reserve Bank of New York, SOFR data and methodology; Federal Reserve policy rates and target range; MacroMicro, SOFR-IORB spread; Federal Reserve FEDS Notes, “What Happened in Money Markets in September 2019?”; Office of Financial Research, “Anatomy of the Repo Rate Spikes in September 2019”; Federal Reserve, end of balance-sheet run-off on December 1, 2025; Wolf Street, year-end 2025 SRF usage.
+Repo funding is central to the [basis trade](/en/glossary/basis-trade/) and complements our guide to the [Treasury market](/en/guides/read-us-treasuries-market/). The [English glossary](/en/glossary/) defines the terminology.

@@ -1,6 +1,19 @@
 ---
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import { buildSignalHistorySurface } from '../../../lib/signal-history.ts';
+import { getCollection } from 'astro:content';
+
+const analyses = await getCollection('postsEn', ({ data }) => !data.draft);
+const investigationIds = [
+  'greensill-insurance-future-receivables-risk',
+  'aon-blackstone-cortina-reinsurance-risk-pricing',
+  'banking-on-oil-2-banks-financing-trafigura',
+];
+const investigations = investigationIds.map((id) => {
+  const entry = analyses.find((post) => post.id === id);
+  if (!entry) throw new Error(`Missing press resource: ${id}`);
+  return entry;
+});
 
 const history = buildSignalHistorySurface();
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -63,6 +76,23 @@ const jsonLd = {
         <div><strong>Date</strong><p>Keep the published observation date. Current values are not retroactive historical data.</p></div>
         <div><strong>Context</strong><p>Each 0-100 score has its own method. Equal readings are not economically equivalent.</p></div>
       </div>
+    </section>
+
+    <section class="press-section" id="investigations">
+      <h2>Documented investigations for further reporting</h2>
+      <p class="press-lede">These analyses connect primary documents, explanatory figures and explicit limits. Cite the investigation alongside the original evidence for any claim you reuse.</p>
+      <div class="resource-grid">
+        {investigations.map((entry) => (
+          <article class="resource-card resource-body">
+            <h3><a href={`/en/analysis/${entry.id}/`}>{entry.data.title}</a></h3>
+            <p>{entry.data.description}</p>
+            <p class="citation">
+              Olivier Laurelli / l0g.fr, “{entry.data.title}”, {(entry.data.updatedDate ?? entry.data.pubDate).toISOString().slice(0, 10)}, https://l0g.fr/en/analysis/{entry.id}/, CC BY 4.0.
+            </p>
+          </article>
+        ))}
+      </div>
+      <p class="citation">Attribute l0g’s original text and figures, link to the specific analysis and indicate changes. Third-party material and underlying sources retain their own rights. A citation must preserve dates, scope and uncertainty.</p>
     </section>
 
     <section class="press-section" id="series">

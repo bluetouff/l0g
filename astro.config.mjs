@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { glossaryRedirects } from './src/config/glossary-redirects.mjs';
 import { legacySurfaceRedirects } from './src/config/legacy-surface-redirects.mjs';
 import { glossaryReferenceEntries } from './src/config/glossary.ts';
-import { glossaryAtlasEn } from './src/config/glossary-atlas-en.ts';
+import { glossaryAtlasEn, englishGlossaryRobots } from './src/config/glossary-atlas-en.ts';
 import { sitemapLastmod } from './src/config/sitemap-lastmod.mjs';
 import { weeklySitemapLastmods } from './src/config/weekly-editions.ts';
 import inlineHomeStyles from './scripts/inline-home-styles.mjs';
@@ -14,7 +14,7 @@ import blackBoxPrerender from './scripts/black-box-prerender.mjs';
 
 const indexedGlossaryUrls = new Set(glossaryReferenceEntries.map((entry) => `https://l0g.fr${entry.url}`));
 const excludedEnglishGlossaryUrls = new Set(glossaryAtlasEn
-  .filter((entry) => entry.robots === 'noindex,follow')
+  .filter((entry) => englishGlossaryRobots(entry) === 'noindex,follow')
   .map((entry) => `https://l0g.fr/en/glossary/${entry.slug}/`));
 const weeklyLastmods = weeklySitemapLastmods('https://l0g.fr');
 

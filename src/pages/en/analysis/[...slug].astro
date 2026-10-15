@@ -5,6 +5,7 @@ import '../../../styles/reserves-pump-infographics.css';
 import '../../../styles/paramount-warner-infographics.css';
 import '../../../styles/danfoss-figures.css';
 import AiEditorialDisclosure from '../../../components/AiEditorialDisclosure.astro';
+import EnglishRelatedReading from '../../../components/EnglishRelatedReading.astro';
 import ArticleHeroImage from '../../../components/ArticleHeroImage.astro';
 import ReadingResume from '../../../components/ReadingResume.astro';
 import SupportCard from '../../../components/SupportCard.astro';
@@ -182,6 +183,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     </div>
 
     {hasDebtEpub && <DebtEpubCard lang="en" />}
+
+    <EnglishRelatedReading id={post.id} collection="postsEn" />
 
     <div class="share mt-14" data-pagefind-ignore>
       <span class="mono-label share-label">// share</span>

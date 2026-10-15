@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import AiEditorialDisclosure from '../../../components/AiEditorialDisclosure.astro';
+import EnglishRelatedReading from '../../../components/EnglishRelatedReading.astro';
 import SupportCard from '../../../components/SupportCard.astro';
 import { organizationEntity } from '../../../config/entities.ts';
 import { readingTime } from '../../../lib/reading-time.ts';
@@ -140,6 +141,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     <div class="prose">
       <Content />
     </div>
+
+    <EnglishRelatedReading id={guide.id} collection="guidesEn" />
 
     <div class="share mt-14" data-pagefind-ignore>
       <span class="mono-label share-label">// share</span>

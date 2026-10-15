@@ -14,6 +14,12 @@ export interface GlossaryAtlasEnEntry {
   atlas: GlossaryKnowledgeGraph;
 }
 
+// A translated short definition is not an independently qualified reference page.
+// Keep the same opt-in indexation policy as the French glossary.
+export function englishGlossaryRobots(entry: GlossaryAtlasEnEntry): 'index,follow' | 'noindex,follow' {
+  return entry.robots ?? 'noindex,follow';
+}
+
 const macroSection = { sectionTitle: 'Macro & central banks', accent: 'var(--color-signal)' };
 
 const usDebtArticles: GlossaryGraphLink[] = [

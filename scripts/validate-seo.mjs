@@ -60,7 +60,8 @@ for (const experiment of titleExperiments.experiments) {
   assert.equal(entry.data.seoTitle, experiment.seo_title, `Title gelé modifié avant décision: ${experiment.id}`);
 }
 for (const page of titleExperiments.measurement_followup.pages) {
-  if (page.decision !== 'maintenir_en_attente_de_mesure') continue;
+  const approvedCorrection = page.decision === 'corriger_troncature_metadata';
+  if (page.decision !== 'maintenir_en_attente_de_mesure' && !approvedCorrection) continue;
   let currentTitle;
   if (page.route === '/en/start/') {
     const source = readFileSync(new URL('../src/pages/en/start/index.astro', import.meta.url), 'utf8');
@@ -74,7 +75,9 @@ for (const page of titleExperiments.measurement_followup.pages) {
     currentTitle = buildSeoMetadata(entry.data.title, entry.data.description, { seoTitle: entry.data.seoTitle }).fullTitle;
   }
   assert(page.observed_title, `Title de référence absent du suivi: ${page.id}`);
-  assert.equal(currentTitle, page.observed_title, `Title suivi modifié avant décision: ${page.id}`);
+  const expectedTitle = approvedCorrection ? page.approved_title : page.observed_title;
+  assert(expectedTitle, `Title approuvé absent du suivi: ${page.id}`);
+  assert.equal(currentTitle, expectedTitle, `Title suivi modifié sans décision correspondante: ${page.id}`);
 }
 assert.equal(
   buildSeoMetadata('H1 éditorial', 'Description', { seoTitle: 'Titre SEO exact | l0g' }).fullTitle,

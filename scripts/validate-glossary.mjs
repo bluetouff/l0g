@@ -13,10 +13,15 @@ import {
   glossaryReferenceWordCount,
 } from '../src/config/glossary-reference-fr.ts';
 import { glossaryRedirects } from '../src/config/glossary-redirects.mjs';
-import { glossaryAtlasEnBySlug } from '../src/config/glossary-atlas-en.ts';
+import { glossaryAtlasEnBySlug, englishGlossaryRobots } from '../src/config/glossary-atlas-en.ts';
 import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossary-matching.mjs';
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
+
+// Short translated fiches remain accessible without being submitted as reference pages.
+for (const entry of glossaryAtlasEnBySlug.values()) {
+  assert.equal(englishGlossaryRobots(entry), 'noindex,follow', `${entry.slug}: reference qualification required before indexation`);
+}
 
 {
   const slug = 'pret-relais';

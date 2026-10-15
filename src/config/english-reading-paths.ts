@@ -62,6 +62,7 @@ export const asiaReadingPaths: readonly EnglishReadingPath[] = [
       'taiwan-life-insurers-724-billion-currency-risk',
       'hong-kong-life-insurance-china-tax-enforcement',
       'asia-invisible-dollar-hedging-machine',
+      'asia-dollar-stop-buying',
     ],
     guideIds: ['read-life-insurer-health', 'read-dollar-dxy-cross-currency-basis', 'read-the-balance-of-payments'],
   },
@@ -88,3 +89,50 @@ const asiaTags = new Set([
 export function isAsiaAnalysis(id: string, tags: readonly string[]): boolean {
   return curatedAsiaAnalysisIds.has(id) || tags.some((tag) => asiaTags.has(tag.trim().toLowerCase()));
 }
+
+// Deliberate editorial neighbours, not broad tag matches or a site-wide link list.
+export const financingReadingPaths = [
+  {
+    id: 'ai-financing',
+    title: 'AI infrastructure, collateral and financing commitments',
+    description: 'Connect customer contracts, equipment collateral and funding commitments through the documented transactions in the atlas.',
+    atlasHref: '/en/atlas/ai-financing/',
+    atlasLabel: 'Explore the AI financing atlas',
+    analysisIds: [
+      'collateral-that-cannot-leave-the-building',
+      'residual-value-guarantee-ai-infrastructure-credit',
+      'nvidia-the-500-billion-that-does-not-exist-yet',
+      'softbank-openai-financing-freedom-to-wait',
+    ],
+    guideIds: [],
+  },
+  {
+    id: 'private-credit',
+    title: 'Private credit, insurance and the funding chain',
+    description: 'Follow the links between loans, temporary financing, insurance and the conditions governing repayment.',
+    atlasHref: '/en/atlas/private-credit/',
+    atlasLabel: 'Explore the private credit atlas',
+    analysisIds: [
+      'private-credit-clo-warehouse-banks',
+      'greensill-insurance-future-receivables-risk',
+      'radiant-world-disputed-invoices-trade-finance',
+      'aon-blackstone-cortina-reinsurance-risk-pricing',
+      'semi-liquid-private-credit-gating',
+    ],
+    guideIds: ['read-private-credit-risk'],
+  },
+  {
+    id: 'oil-financing',
+    title: 'Oil trading, bank credit and public revenues',
+    description: 'Trace the funding of cargoes and traders, then compare those arrangements with loans backed by future public revenues.',
+    atlasHref: '/en/atlas/oil-financing/',
+    atlasLabel: 'Explore the oil financing atlas',
+    analysisIds: [
+      'banking-on-oil-2-banks-financing-trafigura',
+      'banking-on-oil-4-trafigura-platts-fuel-oil-benchmark',
+      'banking-on-oil-5-vitol-refineries-terminals-engen',
+      'banking-on-oil-7-trafigura-petrobras-bribery',
+    ],
+    guideIds: [],
+  },
+] satisfies (Omit<EnglishReadingPath, 'eyebrow' | 'transmission'> & { atlasHref: string; atlasLabel: string })[];

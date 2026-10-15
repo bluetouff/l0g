@@ -1,0 +1,3030 @@
+{
+  "observed_on": "2026-10-15",
+  "publication_status": "push_authorized_ci_and_activation_pending",
+  "public_audit_at": "2026-10-15T12:19:15.003Z",
+  "mechanical_eligibility_is_not_google_indexation": true,
+  "coverage_export_cohort": {
+    "analyses": 60,
+    "guides": 2,
+    "crawled_analyses": 4,
+    "discovered_analyses": 56,
+    "discovered_guides": 2
+  },
+  "live_checks": {
+    "urls": 65,
+    "http_200_self_canonical_indexfollow_sitemap_lang_en": 65
+  },
+  "built_english_editorial": {
+    "analyses": 363,
+    "guides": 50,
+    "all_indexable_in_sitemap_with_inlinks": true,
+    "excluded_alias": "/en/analysis/athora-the-balance-sheet-apollo-does-not-consolidate/",
+    "alias_target": "/en/analysis/the-balance-sheet-apollo-does-not-consolidate/"
+  },
+  "manual_requests": [
+    {
+      "url": "https://l0g.fr/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+      "inspected_on": "2026-10-15",
+      "inspection_before_request": "discovered",
+      "request_result": "accepted_priority_crawl_queue",
+      "request_date": "2026-10-15",
+      "editorial_reason": "Bank lending and trade-finance mechanisms, distinct investigation with primary documents.",
+      "indexation_confirmed": false
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/greensill-insurance-future-receivables-risk/",
+      "inspected_on": "2026-10-15",
+      "inspection_before_request": "discovered",
+      "request_result": "accepted_priority_crawl_queue",
+      "request_date": "2026-10-15",
+      "editorial_reason": "Existing versus future receivables, source-based analysis with explicit insurance and settlement limits.",
+      "indexation_confirmed": false
+    },
+    {
+      "url": "https://l0g.fr/en/atlas/oil-financing/",
+      "inspected_on": "2026-10-15",
+      "inspection_before_request": "unknown",
+      "request_result": "accepted_priority_crawl_queue",
+      "request_date": "2026-10-15",
+      "editorial_reason": "Documented interactive atlas of entities, financing relationships and sources.",
+      "indexation_confirmed": false
+    },
+    {
+      "url": "https://l0g.fr/en/atlas/ai-financing/",
+      "inspected_on": "2026-10-15",
+      "inspection_before_request": "discovered",
+      "request_result": "accepted_priority_crawl_queue",
+      "request_date": "2026-10-15",
+      "editorial_reason": "Documented interactive atlas of AI funding, entities and sources.",
+      "indexation_confirmed": false
+    },
+    {
+      "url": "https://l0g.fr/en/atlas/private-credit/",
+      "inspected_on": "2026-10-15",
+      "inspection_before_request": "discovered",
+      "request_result": "accepted_priority_crawl_queue",
+      "request_date": "2026-10-15",
+      "editorial_reason": "Documented interactive atlas of private credit relationships and sources.",
+      "indexation_confirmed": false
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/ge-healthcare-buys-time/",
+      "inspected_on": "2026-10-15",
+      "inspection_before_request": "unknown",
+      "request_result": "accepted_priority_crawl_queue",
+      "request_date": "2026-10-15",
+      "editorial_reason": "Acquisition, isotope decay, manufacturing network and reimbursement scopes separated; disclosures and calculations.",
+      "indexation_confirmed": false
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/collateral-that-cannot-leave-the-building/",
+      "inspected_on": "2026-10-15",
+      "inspection_before_request": "discovered",
+      "request_result": "accepted_priority_crawl_queue",
+      "request_date": "2026-10-15",
+      "editorial_reason": "GPU security packages and customer/lease dependencies, documented credit analysis.",
+      "indexation_confirmed": false
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/pjm-electricity-forecast-7-billion/",
+      "inspected_on": "2026-10-15",
+      "inspection_before_request": "unknown",
+      "request_result": "accepted_priority_crawl_queue",
+      "request_date": "2026-10-15",
+      "editorial_reason": "Electricity demand forecast, capacity procurement and cost attribution; documented investigation.",
+      "indexation_confirmed": false
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/asia-dollar-stop-buying/",
+      "inspected_on": "2026-10-15",
+      "inspection_before_request": "discovered",
+      "request_result": "accepted_priority_crawl_queue",
+      "request_date": "2026-10-15",
+      "editorial_reason": "Marginal demand versus liquidation, dated TIC data, explicit geographical and scenario limits.",
+      "indexation_confirmed": false
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/jpmorgan-market-surveillance-black-box/",
+      "inspected_on": "2026-10-15",
+      "inspection_before_request": "unknown",
+      "request_result": "accepted_priority_crawl_queue",
+      "request_date": "2026-10-15",
+      "editorial_reason": "Regulatory orders, sponsored access, surveillance data coverage and explicit public-evidence limits.",
+      "indexation_confirmed": false
+    }
+  ],
+  "cohort": [
+    {
+      "url": "https://l0g.fr/en/analysis/leaving-microsoft-7-freedom-to-choose/",
+      "gscStatus": "crawled",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/leaving-microsoft-7-freedom-to-choose/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3340,
+      "externalSources": 19,
+      "title": "Leaving Microsoft: keeping the freedom to choose | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/leaving-microsoft-7-freedom-to-choose/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/quitter-microsoft-7-liberte-choix/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/quitter-microsoft-7-liberte-choix/"
+        }
+      ],
+      "last_crawl_in_coverage_export": "2026-10-10",
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/leaving-microsoft-7-freedom-to-choose/",
+        "gsc_status": "crawled",
+        "built": true,
+        "sitemap": true,
+        "words": 3405,
+        "inlinks": 4,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/leaving-microsoft-7-freedom-to-choose/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/ai-slowdown-2-what-agents-actually-did/",
+      "gscStatus": "crawled",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/ai-slowdown-2-what-agents-actually-did/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 2355,
+      "externalSources": 23,
+      "title": "AI incidents: permissions and delayed shutdowns | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/ai-slowdown-2-what-agents-actually-did/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/ia-ralentissement-2-incidents-securite-faits/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/ia-ralentissement-2-incidents-securite-faits/"
+        }
+      ],
+      "last_crawl_in_coverage_export": "2026-09-28",
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/ai-slowdown-2-what-agents-actually-did/",
+        "gsc_status": "crawled",
+        "built": true,
+        "sitemap": true,
+        "words": 2388,
+        "inlinks": 5,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/ai-slowdown-2-what-agents-actually-did/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/the-2026-iran-war-economic-political-earthquake/",
+      "gscStatus": "crawled",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/the-2026-iran-war-economic-political-earthquake/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 4011,
+      "externalSources": 4,
+      "title": "Iran war 2026: inflation, energy and growth scenarios | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/the-2026-iran-war-economic-political-earthquake/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/la-guerre-diran-2026-seisme-economique-politique/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/la-guerre-diran-2026-seisme-economique-politique/"
+        }
+      ],
+      "last_crawl_in_coverage_export": "2026-09-06",
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/the-2026-iran-war-economic-political-earthquake/",
+        "gsc_status": "crawled",
+        "built": true,
+        "sitemap": true,
+        "words": 4042,
+        "inlinks": 8,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/the-2026-iran-war-economic-political-earthquake/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/uranium-market-deficit-ai-bottlenecks/",
+      "gscStatus": "crawled",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/uranium-market-deficit-ai-bottlenecks/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 1877,
+      "externalSources": 17,
+      "title": "Uranium deficit: supply, enrichment and AI demand | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/uranium-market-deficit-ai-bottlenecks/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/uranium-marche-en-deficit-promesse-de-l-ia-et-goulots-caches/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/uranium-marche-en-deficit-promesse-de-l-ia-et-goulots-caches/"
+        }
+      ],
+      "last_crawl_in_coverage_export": "2026-08-30",
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/uranium-market-deficit-ai-bottlenecks/",
+        "gsc_status": "crawled",
+        "built": true,
+        "sitemap": true,
+        "words": 1955,
+        "inlinks": 7,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/uranium-market-deficit-ai-bottlenecks/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/ai-debt-collection-2-performance-claims/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/ai-debt-collection-2-performance-claims/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3394,
+      "externalSources": 16,
+      "title": "AI debt collection: examining the performance claims | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/ai-debt-collection-2-performance-claims/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/ia-recouvrement-2-gains-annonces/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/ia-recouvrement-2-gains-annonces/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/ai-debt-collection-2-performance-claims/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3455,
+        "inlinks": 8,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/ai-debt-collection-2-performance-claims/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/ai-slowdown-4-china-chips-memory-factories/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/ai-slowdown-4-china-chips-memory-factories/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3272,
+      "externalSources": 27,
+      "title": "Chinese AI: chips, memory and competition | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/ai-slowdown-4-china-chips-memory-factories/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/ia-ralentissement-4-chine-puces-memoire-usines/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/ia-ralentissement-4-chine-puces-memoire-usines/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/ai-slowdown-4-china-chips-memory-factories/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3324,
+        "inlinks": 5,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/ai-slowdown-4-china-chips-memory-factories/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/asia-dollar-stop-buying/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/asia-dollar-stop-buying/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3239,
+      "externalSources": 22,
+      "title": "Asia buys less US debt: who replaces the demand? | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/asia-dollar-stop-buying/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/asie-dollar-cesser-acheter/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/asie-dollar-cesser-acheter/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/asia-dollar-stop-buying/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3276,
+        "inlinks": 4,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/asia-dollar-stop-buying/"
+      },
+      "manual_request": {
+        "url": "https://l0g.fr/en/analysis/asia-dollar-stop-buying/",
+        "inspected_on": "2026-10-15",
+        "inspection_before_request": "discovered",
+        "request_result": "accepted_priority_crawl_queue",
+        "request_date": "2026-10-15",
+        "editorial_reason": "Marginal demand versus liquidation, dated TIC data, explicit geographical and scenario limits.",
+        "indexation_confirmed": false
+      }
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/asia-dollar-stress-test-three-risks/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/asia-dollar-stress-test-three-risks/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 4376,
+      "externalSources": 21,
+      "title": "Asia dollar stress test: bonds, FX hedges and cash | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/asia-dollar-stress-test-three-risks/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/asie-dollar-stress-test-trois-risques/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/asie-dollar-stress-test-trois-risques/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/asia-dollar-stress-test-three-risks/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 4371,
+        "inlinks": 3,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/asia-dollar-stress-test-three-risks/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/asia-invisible-dollar-hedging-machine/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/asia-invisible-dollar-hedging-machine/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3912,
+      "externalSources": 20,
+      "title": "Asia’s FX swaps: the risk inside short hedges | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/asia-invisible-dollar-hedging-machine/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/asie-usine-invisible-couverture-dollar/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/asie-usine-invisible-couverture-dollar/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/asia-invisible-dollar-hedging-machine/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3938,
+        "inlinks": 8,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/asia-invisible-dollar-hedging-machine/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/bank-of-england-qe-exit-treasury-banknotes/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/bank-of-england-qe-exit-treasury-banknotes/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3578,
+      "externalSources": 21,
+      "title": "Bank of England QE exit: gilts, banknotes and debt | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/bank-of-england-qe-exit-treasury-banknotes/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/londres-sortie-qe-tresor-billets/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/londres-sortie-qe-tresor-billets/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/bank-of-england-qe-exit-treasury-banknotes/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3624,
+        "inlinks": 4,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/bank-of-england-qe-exit-treasury-banknotes/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3785,
+      "externalSources": 21,
+      "title": "Who finances Trafigura? Banks behind oil trading | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/banking-on-oil-2-banks-financing-trafigura/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/les-banquiers-du-baril-2-banques-financement-trafigura/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/les-banquiers-du-baril-2-banques-financement-trafigura/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3886,
+        "inlinks": 13,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/banking-on-oil-2-banks-financing-trafigura/"
+      },
+      "manual_request": {
+        "url": "https://l0g.fr/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+        "inspected_on": "2026-10-15",
+        "inspection_before_request": "discovered",
+        "request_result": "accepted_priority_crawl_queue",
+        "request_date": "2026-10-15",
+        "editorial_reason": "Bank lending and trade-finance mechanisms, distinct investigation with primary documents.",
+        "indexation_confirmed": false
+      }
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/banking-on-oil-4-trafigura-platts-fuel-oil-benchmark/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/banking-on-oil-4-trafigura-platts-fuel-oil-benchmark/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3345,
+      "externalSources": 14,
+      "title": "Trafigura and Platts: fuel-oil price manipulation | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/banking-on-oil-4-trafigura-platts-fuel-oil-benchmark/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/les-banquiers-du-baril-4-trafigura-platts-prix-fioul/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/les-banquiers-du-baril-4-trafigura-platts-prix-fioul/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/banking-on-oil-4-trafigura-platts-fuel-oil-benchmark/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3455,
+        "inlinks": 9,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/banking-on-oil-4-trafigura-platts-fuel-oil-benchmark/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/banking-on-oil-5-vitol-refineries-terminals-engen/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/banking-on-oil-5-vitol-refineries-terminals-engen/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3652,
+      "externalSources": 25,
+      "title": "Vitol, Engen and the power of oil infrastructure | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/banking-on-oil-5-vitol-refineries-terminals-engen/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/les-banquiers-du-baril-5-vitol-raffineries-terminaux-engen/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/les-banquiers-du-baril-5-vitol-raffineries-terminaux-engen/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/banking-on-oil-5-vitol-refineries-terminals-engen/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3774,
+        "inlinks": 8,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/banking-on-oil-5-vitol-refineries-terminals-engen/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/banking-on-oil-7-trafigura-petrobras-bribery/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/banking-on-oil-7-trafigura-petrobras-bribery/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3438,
+      "externalSources": 14,
+      "title": "Trafigura and Petrobras: bribery, fines and controls | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/banking-on-oil-7-trafigura-petrobras-bribery/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/les-banquiers-du-baril-7-trafigura-petrobras-corruption/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/les-banquiers-du-baril-7-trafigura-petrobras-corruption/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/banking-on-oil-7-trafigura-petrobras-bribery/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3539,
+        "inlinks": 7,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/banking-on-oil-7-trafigura-petrobras-bribery/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/bitcoin-quantum-cost-changing-keys/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/bitcoin-quantum-cost-changing-keys/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 4174,
+      "externalSources": 24,
+      "title": "Bitcoin quantum migration: costs and dormant coins | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/bitcoin-quantum-cost-changing-keys/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/bitcoin-quantique-prix-changement-cles/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/bitcoin-quantique-prix-changement-cles/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/bitcoin-quantum-cost-changing-keys/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 4223,
+        "inlinks": 4,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/bitcoin-quantum-cost-changing-keys/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/blast-abstract-blockchain-shutdown-economics/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/blast-abstract-blockchain-shutdown-economics/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 5384,
+      "externalSources": 34,
+      "title": "Blast and Abstract: why busy blockchains close | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/blast-abstract-blockchain-shutdown-economics/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/blast-abstract-blockchain-fermeture-economie/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/blast-abstract-blockchain-fermeture-economie/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/blast-abstract-blockchain-shutdown-economics/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 5394,
+        "inlinks": 4,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/blast-abstract-blockchain-shutdown-economics/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/bull-angers-supercomputer-factory/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/bull-angers-supercomputer-factory/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 2864,
+      "externalSources": 24,
+      "title": "Bull in Angers: supercomputers and supply chains | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/bull-angers-supercomputer-factory/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/bull-usine-angers-supercalculateurs/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/bull-usine-angers-supercalculateurs/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/bull-angers-supercomputer-factory/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 2911,
+        "inlinks": 3,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/bull-angers-supercomputer-factory/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/ccip-2-0-assets-rules-crypto-finance/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/ccip-2-0-assets-rules-crypto-finance/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3422,
+      "externalSources": 33,
+      "title": "CCIP 2.0: transfers, controls and financial risks | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/ccip-2-0-assets-rules-crypto-finance/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/ccip-2-0-actifs-regles-crypto-finance/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/ccip-2-0-actifs-regles-crypto-finance/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/ccip-2-0-assets-rules-crypto-finance/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3461,
+        "inlinks": 5,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/ccip-2-0-assets-rules-crypto-finance/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/collateral-that-cannot-leave-the-building/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/collateral-that-cannot-leave-the-building/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 2604,
+      "externalSources": 15,
+      "title": "GPU-backed loans: how data centres finance their debt | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/collateral-that-cannot-leave-the-building/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/gpu-collateral-ce-que-le-preteur-recupere/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/gpu-collateral-ce-que-le-preteur-recupere/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/collateral-that-cannot-leave-the-building/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 2736,
+        "inlinks": 8,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/collateral-that-cannot-leave-the-building/"
+      },
+      "manual_request": {
+        "url": "https://l0g.fr/en/analysis/collateral-that-cannot-leave-the-building/",
+        "inspected_on": "2026-10-15",
+        "inspection_before_request": "discovered",
+        "request_result": "accepted_priority_crawl_queue",
+        "request_date": "2026-10-15",
+        "editorial_reason": "GPU security packages and customer/lease dependencies, documented credit analysis.",
+        "indexation_confirmed": false
+      }
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/crypto-banks-occ-icba-trust-charters-deposits/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/crypto-banks-occ-icba-trust-charters-deposits/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 5335,
+      "externalSources": 42,
+      "title": "Crypto banks: ICBA challenges OCC trust charters | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/crypto-banks-occ-icba-trust-charters-deposits/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/crypto-banques-occ-icba-agrements-trust-depots/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/crypto-banques-occ-icba-agrements-trust-depots/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/crypto-banks-occ-icba-trust-charters-deposits/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 5287,
+        "inlinks": 4,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/crypto-banks-occ-icba-trust-charters-deposits/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/digital-euro-5-price-of-sovereignty/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/digital-euro-5-price-of-sovereignty/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 551,
+      "externalSources": 0,
+      "title": "Digital euro costs for the ECB, banks and merchants | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/digital-euro-5-price-of-sovereignty/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/euro-numerique-5-prix-souverainete/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/euro-numerique-5-prix-souverainete/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/digital-euro-5-price-of-sovereignty/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 4335,
+        "inlinks": 7,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/digital-euro-5-price-of-sovereignty/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/dollar-yen-intervention-carry-unwind/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/dollar-yen-intervention-carry-unwind/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 790,
+      "externalSources": 11,
+      "title": "Dollar-yen: the risk is not only the level, it is… · l0g.fr",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/dollar-yen-intervention-carry-unwind/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/dollar-yen-intervention-risque-carry-2026/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/dollar-yen-intervention-risque-carry-2026/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/dollar-yen-intervention-carry-unwind/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 860,
+        "inlinks": 9,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/dollar-yen-intervention-carry-unwind/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/emergency-oil-reserves-pass-through-pump-prices/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/emergency-oil-reserves-pass-through-pump-prices/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3783,
+      "externalSources": 21,
+      "title": "Oil reserves and pump prices: taxes and delays | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/emergency-oil-reserves-pass-through-pump-prices/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/reserves-petrolieres-transmission-prix-pompe/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/reserves-petrolieres-transmission-prix-pompe/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/emergency-oil-reserves-pass-through-pump-prices/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3804,
+        "inlinks": 12,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3986,
+      "externalSources": 30,
+      "title": "Emergency oil reserves: sales, loans and awards | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/reserves-petrolieres-ventes-echanges-attribution/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/reserves-petrolieres-ventes-echanges-attribution/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 4007,
+        "inlinks": 11,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/emergency-oil-reserves-sales-exchanges-allocation/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/fed-rate-hikes-long-yields-term-premium/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/fed-rate-hikes-long-yields-term-premium/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 4493,
+      "externalSources": 33,
+      "title": "Can a Fed rate hike lower long-term Treasury yields? | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/fed-rate-hikes-long-yields-term-premium/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/fed-hausses-taux-longs-prime-terme/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/fed-hausses-taux-longs-prime-terme/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/fed-rate-hikes-long-yields-term-premium/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 4514,
+        "inlinks": 4,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/fed-rate-hikes-long-yields-term-premium/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/france-oil-reserves-ownership-sagess-funding/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/france-oil-reserves-ownership-sagess-funding/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3352,
+      "externalSources": 25,
+      "title": "Who owns France’s emergency oil reserves? | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/france-oil-reserves-ownership-sagess-funding/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/reserves-petrolieres-propriete-sagess-financement/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/reserves-petrolieres-propriete-sagess-financement/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/france-oil-reserves-ownership-sagess-funding/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3392,
+        "inlinks": 9,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/france-oil-reserves-ownership-sagess-funding/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/french-debt-hedge-funds/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/french-debt-hedge-funds/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 4866,
+      "externalSources": 28,
+      "title": "French debt and hedge funds: short-term funding risk | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/french-debt-hedge-funds/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/dette-francaise-hedge-funds/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/dette-francaise-hedge-funds/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/french-debt-hedge-funds/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 4872,
+        "inlinks": 5,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/french-debt-hedge-funds/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/ge-healthcare-buys-time/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/ge-healthcare-buys-time/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3089,
+      "externalSources": 24,
+      "title": "GE HealthCare and SOFIE: buying time in radiopharma | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/ge-healthcare-buys-time/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/ge-healthcare-achete-du-temps/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/ge-healthcare-achete-du-temps/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/ge-healthcare-buys-time/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3128,
+        "inlinks": 8,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/ge-healthcare-buys-time/"
+      },
+      "manual_request": {
+        "url": "https://l0g.fr/en/analysis/ge-healthcare-buys-time/",
+        "inspected_on": "2026-10-15",
+        "inspection_before_request": "unknown",
+        "request_result": "accepted_priority_crawl_queue",
+        "request_date": "2026-10-15",
+        "editorial_reason": "Acquisition, isotope decay, manufacturing network and reimbursement scopes separated; disclosures and calculations.",
+        "indexation_confirmed": false
+      }
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/google-search-data-access-cost-privacy/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/google-search-data-access-cost-privacy/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3275,
+      "externalSources": 17,
+      "title": "Google Search data: access costs, DMA and privacy | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/google-search-data-access-cost-privacy/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/google-donnees-recherche-prix-acces-vie-privee/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/google-donnees-recherche-prix-acces-vie-privee/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/google-search-data-access-cost-privacy/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3332,
+        "inlinks": 3,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/google-search-data-access-cost-privacy/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/greensill-insurance-future-receivables-risk/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/greensill-insurance-future-receivables-risk/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3303,
+      "externalSources": 17,
+      "title": "Greensill: insurance and future receivables | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/greensill-insurance-future-receivables-risk/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/greensill-assurance-creances-futures-risque/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/greensill-assurance-creances-futures-risque/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/greensill-insurance-future-receivables-risk/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3401,
+        "inlinks": 13,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/greensill-insurance-future-receivables-risk/"
+      },
+      "manual_request": {
+        "url": "https://l0g.fr/en/analysis/greensill-insurance-future-receivables-risk/",
+        "inspected_on": "2026-10-15",
+        "inspection_before_request": "discovered",
+        "request_result": "accepted_priority_crawl_queue",
+        "request_date": "2026-10-15",
+        "editorial_reason": "Existing versus future receivables, source-based analysis with explicit insurance and settlement limits.",
+        "indexation_confirmed": false
+      }
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/india-pays-for-oil-with-code/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/india-pays-for-oil-with-code/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 2864,
+      "externalSources": 12,
+      "title": "How Indian services pay for imported oil | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/india-pays-for-oil-with-code/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/inde-paie-petrole-code/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/inde-paie-petrole-code/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/india-pays-for-oil-with-code/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 2917,
+        "inlinks": 2,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/india-pays-for-oil-with-code/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/japan-end-free-money-life-insurer-balance-sheets/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/japan-end-free-money-life-insurer-balance-sheets/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 4586,
+      "externalSources": 20,
+      "title": "Japan rates: balance-sheet risk in life insurers | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/japan-end-free-money-life-insurer-balance-sheets/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/japon-fin-argent-gratuit-bilans-assureurs-vie/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/japon-fin-argent-gratuit-bilans-assureurs-vie/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/japan-end-free-money-life-insurer-balance-sheets/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 4604,
+        "inlinks": 6,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/japan-end-free-money-life-insurer-balance-sheets/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/jpmorgan-market-surveillance-black-box/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/jpmorgan-market-surveillance-black-box/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 2335,
+      "externalSources": 14,
+      "title": "After the fines: the black box inside JPMorgan… · l0g.fr",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/jpmorgan-market-surveillance-black-box/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/jpmorgan-boite-noire-controle-marches/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/jpmorgan-boite-noire-controle-marches/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/jpmorgan-market-surveillance-black-box/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 2402,
+        "inlinks": 4,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/jpmorgan-market-surveillance-black-box/"
+      },
+      "manual_request": {
+        "url": "https://l0g.fr/en/analysis/jpmorgan-market-surveillance-black-box/",
+        "inspected_on": "2026-10-15",
+        "inspection_before_request": "unknown",
+        "request_result": "accepted_priority_crawl_queue",
+        "request_date": "2026-10-15",
+        "editorial_reason": "Regulatory orders, sponsored access, surveillance data coverage and explicit public-evidence limits.",
+        "indexation_confirmed": false
+      }
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/leaving-microsoft-1-government-dependencies/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/leaving-microsoft-1-government-dependencies/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3353,
+      "externalSources": 20,
+      "title": "Leaving Microsoft: mapping government dependencies | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/leaving-microsoft-1-government-dependencies/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/quitter-microsoft-1-etat-dependances/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/quitter-microsoft-1-etat-dependances/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/leaving-microsoft-1-government-dependencies/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3414,
+        "inlinks": 9,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/leaving-microsoft-1-government-dependencies/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/leaving-microsoft-3-licences-cloud-choice/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/leaving-microsoft-3-licences-cloud-choice/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3545,
+      "externalSources": 26,
+      "title": "Leaving Microsoft: how licences shape cloud choice | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/leaving-microsoft-3-licences-cloud-choice/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/quitter-microsoft-3-licences-choix-cloud/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/quitter-microsoft-3-licences-choix-cloud/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/leaving-microsoft-3-licences-cloud-choice/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3597,
+        "inlinks": 6,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/leaving-microsoft-3-licences-cloud-choice/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/leaving-microsoft-4-workflows-business-applications/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/leaving-microsoft-4-workflows-business-applications/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3357,
+      "externalSources": 25,
+      "title": "Leaving Microsoft: workflows choose the software | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/leaving-microsoft-4-workflows-business-applications/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/quitter-microsoft-4-procedures-applications-metier/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/quitter-microsoft-4-procedures-applications-metier/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/leaving-microsoft-4-workflows-business-applications/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3412,
+        "inlinks": 7,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/leaving-microsoft-4-workflows-business-applications/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/leaving-microsoft-5-transition-costs/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/leaving-microsoft-5-transition-costs/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3236,
+      "externalSources": 17,
+      "title": "Leaving Microsoft: funding the transition years | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/leaving-microsoft-5-transition-costs/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/quitter-microsoft-5-cout-transition/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/quitter-microsoft-5-cout-transition/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/leaving-microsoft-5-transition-costs/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3298,
+        "inlinks": 6,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/leaving-microsoft-5-transition-costs/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/leaving-microsoft-6-lasting-migrations/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/leaving-microsoft-6-lasting-migrations/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3379,
+      "externalSources": 17,
+      "title": "Leaving Microsoft: making a migration last | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/leaving-microsoft-6-lasting-migrations/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/quitter-microsoft-6-migrations-duree/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/quitter-microsoft-6-migrations-duree/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/leaving-microsoft-6-lasting-migrations/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3441,
+        "inlinks": 5,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/leaving-microsoft-6-lasting-migrations/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/not-at-fault-insurance-non-renewal-risk-selection/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/not-at-fault-insurance-non-renewal-risk-selection/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 2911,
+      "externalSources": 28,
+      "title": "Car insurance in France: non-fault claims and renewal | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/not-at-fault-insurance-non-renewal-risk-selection/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/assurance-resiliation-sinistre-non-responsable-selection-risques/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/assurance-resiliation-sinistre-non-responsable-selection-risques/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/not-at-fault-insurance-non-renewal-risk-selection/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 2950,
+        "inlinks": 4,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/not-at-fault-insurance-non-renewal-risk-selection/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/paramount-warner-ellison-trump-fcc-media/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/paramount-warner-ellison-trump-fcc-media/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 5250,
+      "externalSources": 45,
+      "title": "Paramount–Warner: Ellison, Trump, CBS and CNN | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/paramount-warner-ellison-trump-fcc-media/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/paramount-warner-ellison-trump-fcc-medias/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/paramount-warner-ellison-trump-fcc-medias/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/paramount-warner-ellison-trump-fcc-media/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 5239,
+        "inlinks": 4,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/paramount-warner-ellison-trump-fcc-media/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/personal-data-after-the-contract-ends/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/personal-data-after-the-contract-ends/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3086,
+      "externalSources": 24,
+      "title": "Personal data after the contract ends | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/personal-data-after-the-contract-ends/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/commerce-traces-donnees-apres-fin-contrat/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/commerce-traces-donnees-apres-fin-contrat/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/personal-data-after-the-contract-ends/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3132,
+        "inlinks": 6,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/personal-data-after-the-contract-ends/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/personal-data-traces-to-saleable-profiles/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/personal-data-traces-to-saleable-profiles/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3404,
+      "externalSources": 25,
+      "title": "Personal data: how traces become saleable profiles | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/personal-data-traces-to-saleable-profiles/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/commerce-traces-fabrication-profils-donnees-personnelles/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/commerce-traces-fabrication-profils-donnees-personnelles/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/personal-data-traces-to-saleable-profiles/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3478,
+        "inlinks": 10,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/personal-data-traces-to-saleable-profiles/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/pjm-electricity-forecast-7-billion/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/pjm-electricity-forecast-7-billion/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 1200,
+      "externalSources": 2,
+      "title": "PJM Data Centers: The $7.3bn Forecast Effect | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/pjm-electricity-forecast-7-billion/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/pjm-prevision-electrique-7-milliards/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/pjm-prevision-electrique-7-milliards/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/pjm-electricity-forecast-7-billion/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3890,
+        "inlinks": 2,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/pjm-electricity-forecast-7-billion/"
+      },
+      "manual_request": {
+        "url": "https://l0g.fr/en/analysis/pjm-electricity-forecast-7-billion/",
+        "inspected_on": "2026-10-15",
+        "inspection_before_request": "unknown",
+        "request_result": "accepted_priority_crawl_queue",
+        "request_date": "2026-10-15",
+        "editorial_reason": "Electricity demand forecast, capacity procurement and cost attribution; documented investigation.",
+        "indexation_confirmed": false
+      }
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/private-credit-clo-warehouse-banks/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/private-credit-clo-warehouse-banks/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 2663,
+      "externalSources": 10,
+      "title": "Private credit CLOs: the bank warehouse pipeline | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/private-credit-clo-warehouse-banks/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/credit-prive-clo-warehouse-banques/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/credit-prive-clo-warehouse-banques/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/private-credit-clo-warehouse-banks/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 2930,
+        "inlinks": 9,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/private-credit-clo-warehouse-banks/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/radiant-world-disputed-invoices-trade-finance/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/radiant-world-disputed-invoices-trade-finance/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 1918,
+      "externalSources": 16,
+      "title": "Radiant World: disputed invoices and credit risk | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/radiant-world-disputed-invoices-trade-finance/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/radiant-world-factures-contestees-financement/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/radiant-world-factures-contestees-financement/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/radiant-world-disputed-invoices-trade-finance/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 2019,
+        "inlinks": 8,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/radiant-world-disputed-invoices-trade-finance/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/scpi-life-insurance-banks-contagion/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/scpi-life-insurance-banks-contagion/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3610,
+      "externalSources": 17,
+      "title": "French SCPI funds: insurance losses and bank risk | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/scpi-life-insurance-banks-contagion/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/scpi-assurance-vie-banques-contagion/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/scpi-assurance-vie-banques-contagion/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/scpi-life-insurance-banks-contagion/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3655,
+        "inlinks": 7,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/scpi-life-insurance-banks-contagion/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/south-korea-price-perfect-fx-hedge/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/south-korea-price-perfect-fx-hedge/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3172,
+      "externalSources": 12,
+      "title": "Korean insurers: cost and risk of FX hedging | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/south-korea-price-perfect-fx-hedge/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/coree-du-sud-prix-couverture-parfaite/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/coree-du-sud-prix-couverture-parfaite/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/south-korea-price-perfect-fx-hedge/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3213,
+        "inlinks": 8,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/south-korea-price-perfect-fx-hedge/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/strategic-oil-reserves-borrowing-time/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/strategic-oil-reserves-borrowing-time/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 2897,
+      "externalSources": 22,
+      "title": "Strategic oil reserves: loans and returns through 2029 | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/strategic-oil-reserves-borrowing-time/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/petrole-reserves-strategiques-prets-temps/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/petrole-reserves-strategiques-prets-temps/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/strategic-oil-reserves-borrowing-time/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 2957,
+        "inlinks": 8,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/strategic-oil-reserves-borrowing-time/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 2652,
+      "externalSources": 24,
+      "title": "Sulfur, Gulf disruption, fertilizers and nickel | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/soufre-crise-golfe-engrais-nickel/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/soufre-crise-golfe-engrais-nickel/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 2685,
+        "inlinks": 7,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/the-extra-degree-thermal-discharges-nuclear/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/the-extra-degree-thermal-discharges-nuclear/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3242,
+      "externalSources": 18,
+      "title": "Nuclear thermal discharges: Rhône limits at Bugey | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/the-extra-degree-thermal-discharges-nuclear/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/degre-de-trop-rejets-thermiques-nucleaire/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/degre-de-trop-rejets-thermiques-nucleaire/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/the-extra-degree-thermal-discharges-nuclear/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3268,
+        "inlinks": 8,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/the-extra-degree-thermal-discharges-nuclear/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3310,
+      "externalSources": 27,
+      "title": "Tokenised stocks: tracing vault yield and credit risk | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/actions-tokenisees-xstocks-vaults-chaine-credit/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/actions-tokenisees-xstocks-vaults-chaine-credit/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3374,
+        "inlinks": 4,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 4620,
+      "externalSources": 40,
+      "title": "Trump Jr., Unusual Machines and Draganfly: drones | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 4657,
+        "inlinks": 4,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/trump-sanctions-russia-iran-concessions/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/trump-sanctions-russia-iran-concessions/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 5422,
+      "externalSources": 58,
+      "title": "Trump sanctions: concessions to Russia and Iran | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/trump-sanctions-russia-iran-concessions/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/trump-sanctions-russie-iran-concessions/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/trump-sanctions-russie-iran-concessions/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/trump-sanctions-russia-iran-concessions/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 5380,
+        "inlinks": 2,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/trump-sanctions-russia-iran-concessions/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/tungsten-inventory-cash-flow-kennametal/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/tungsten-inventory-cash-flow-kennametal/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3080,
+      "externalSources": 11,
+      "title": "Tungsten, inventory and cash flow at Kennametal | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/tungsten-inventory-cash-flow-kennametal/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/tungstene-stocks-tresorerie-kennametal/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/tungstene-stocks-tresorerie-kennametal/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/tungsten-inventory-cash-flow-kennametal/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3103,
+        "inlinks": 3,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/tungsten-inventory-cash-flow-kennametal/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/us-trade-deficit-imports-august-2026/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/us-trade-deficit-imports-august-2026/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 2962,
+      "externalSources": 17,
+      "title": "US trade deficit: equipment, inventories and GDP | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/us-trade-deficit-imports-august-2026/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/deficit-commercial-americain-importations-aout-2026/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/deficit-commercial-americain-importations-aout-2026/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/us-trade-deficit-imports-august-2026/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 2993,
+        "inlinks": 7,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/us-trade-deficit-imports-august-2026/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/wet-megawatt-europe-water-electricity/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/wet-megawatt-europe-water-electricity/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3078,
+      "externalSources": 18,
+      "title": "Water and electricity: Europe&#39;s missing wet megawatt | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/wet-megawatt-europe-water-electricity/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/megawatt-humide-europe-eau-electricite/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/megawatt-humide-europe-eau-electricite/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/wet-megawatt-europe-water-electricity/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3117,
+        "inlinks": 10,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/wet-megawatt-europe-water-electricity/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/when-climate-turns-state-into-reinsurer/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/when-climate-turns-state-into-reinsurer/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 2835,
+      "externalSources": 23,
+      "title": "France’s NatCat insurance: who pays? | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/when-climate-turns-state-into-reinsurer/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/climat-etat-reassureur-cat-nat/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/climat-etat-reassureur-cat-nat/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/when-climate-turns-state-into-reinsurer/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 2840,
+        "inlinks": 6,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/when-climate-turns-state-into-reinsurer/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/when-gold-rises-so-does-debt/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/when-gold-rises-so-does-debt/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3486,
+      "externalSources": 15,
+      "title": "India’s gold-loan boom: collateral, rollover and banks | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/when-gold-rises-so-does-debt/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/quand-or-monte-dette-aussi/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/quand-or-monte-dette-aussi/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/when-gold-rises-so-does-debt/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3495,
+        "inlinks": 2,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/when-gold-rises-so-does-debt/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/why-the-fed-can-make-money-without-printing-but-can-lose-too/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/why-the-fed-can-make-money-without-printing-but-can-lose-too/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 1007,
+      "externalSources": 12,
+      "title": "Fed balance sheet: why the Fed earns and loses money | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/why-the-fed-can-make-money-without-printing-but-can-lose-too/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/pourquoi-la-fed-peut-gagner-sans-imprimer-mais-peut-aussi-perdre/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/pourquoi-la-fed-peut-gagner-sans-imprimer-mais-peut-aussi-perdre/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/why-the-fed-can-make-money-without-printing-but-can-lose-too/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 1092,
+        "inlinks": 3,
+        "depth": 3,
+        "noindex": false,
+        "canonical": "/en/analysis/why-the-fed-can-make-money-without-printing-but-can-lose-too/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/analysis/yanbu-france-houthis-oil-route/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/analysis/yanbu-france-houthis-oil-route/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 3798,
+      "externalSources": 31,
+      "title": "Yanbu: France, the Houthis and the oil route | l0g",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/analysis/yanbu-france-houthis-oil-route/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/posts/yanbu-france-houthis-route-petrole/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/posts/yanbu-france-houthis-route-petrole/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/analysis/yanbu-france-houthis-oil-route/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 3833,
+        "inlinks": 5,
+        "depth": 2,
+        "noindex": false,
+        "canonical": "/en/analysis/yanbu-france-houthis-oil-route/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/guides/read-on-chain-data/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/guides/read-on-chain-data/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 1309,
+      "externalSources": 4,
+      "title": "Reading on-chain data: what the blockchain shows… · l0g.fr",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/guides/read-on-chain-data/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/guides/lire-la-donnee-on-chain/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/guides/lire-la-donnee-on-chain/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/guides/read-on-chain-data/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 1382,
+        "inlinks": 13,
+        "depth": 1,
+        "noindex": false,
+        "canonical": "/en/guides/read-on-chain-data/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/guides/read-private-credit-risk/",
+      "gscStatus": "discovered",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/guides/read-private-credit-risk/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 1267,
+      "externalSources": 4,
+      "title": "How to Read Private Credit: the risk you cannot see · l0g.fr",
+      "hreflang": [
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/guides/read-private-credit-risk/"
+        },
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/guides/analyser-credit-prive/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/guides/analyser-credit-prive/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": {
+        "url": "https://l0g.fr/en/guides/read-private-credit-risk/",
+        "gsc_status": "discovered",
+        "built": true,
+        "sitemap": true,
+        "words": 1380,
+        "inlinks": 27,
+        "depth": 1,
+        "noindex": false,
+        "canonical": "/en/guides/read-private-credit-risk/"
+      },
+      "manual_request": null
+    },
+    {
+      "url": "https://l0g.fr/en/atlas/ai-financing/",
+      "gscStatus": "individual_inspection",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/atlas/ai-financing/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 145,
+      "externalSources": 1,
+      "title": "AI financing atlas: Nvidia, OpenAI and their contracts | l0g",
+      "hreflang": [
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/atlas/financement-ia/"
+        },
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/atlas/ai-financing/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/atlas/financement-ia/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": null,
+      "manual_request": {
+        "url": "https://l0g.fr/en/atlas/ai-financing/",
+        "inspected_on": "2026-10-15",
+        "inspection_before_request": "discovered",
+        "request_result": "accepted_priority_crawl_queue",
+        "request_date": "2026-10-15",
+        "editorial_reason": "Documented interactive atlas of AI funding, entities and sources.",
+        "indexation_confirmed": false
+      }
+    },
+    {
+      "url": "https://l0g.fr/en/atlas/private-credit/",
+      "gscStatus": "individual_inspection",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/atlas/private-credit/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 105,
+      "externalSources": 1,
+      "title": "Private credit atlas: funds, insurers and banks | l0g",
+      "hreflang": [
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/atlas/credit-prive/"
+        },
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/atlas/private-credit/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/atlas/credit-prive/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": null,
+      "manual_request": {
+        "url": "https://l0g.fr/en/atlas/private-credit/",
+        "inspected_on": "2026-10-15",
+        "inspection_before_request": "discovered",
+        "request_result": "accepted_priority_crawl_queue",
+        "request_date": "2026-10-15",
+        "editorial_reason": "Documented interactive atlas of private credit relationships and sources.",
+        "indexation_confirmed": false
+      }
+    },
+    {
+      "url": "https://l0g.fr/en/atlas/oil-financing/",
+      "gscStatus": "individual_inspection",
+      "status": 200,
+      "canonical": "https://l0g.fr/en/atlas/oil-financing/",
+      "robots": "index,follow",
+      "robotsHeader": null,
+      "sitemap": true,
+      "lang": "en",
+      "words": 99,
+      "externalSources": 1,
+      "title": "Oil financing atlas: banks, traders and revenues | l0g",
+      "hreflang": [
+        {
+          "lang": "fr",
+          "href": "https://l0g.fr/atlas/petrole/"
+        },
+        {
+          "lang": "en",
+          "href": "https://l0g.fr/en/atlas/oil-financing/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://l0g.fr/atlas/petrole/"
+        }
+      ],
+      "last_crawl_in_coverage_export": null,
+      "local_build_after": null,
+      "manual_request": {
+        "url": "https://l0g.fr/en/atlas/oil-financing/",
+        "inspected_on": "2026-10-15",
+        "inspection_before_request": "unknown",
+        "request_result": "accepted_priority_crawl_queue",
+        "request_date": "2026-10-15",
+        "editorial_reason": "Documented interactive atlas of entities, financing relationships and sources.",
+        "indexation_confirmed": false
+      }
+    }
+  ],
+  "local_glossary": {
+    "terms": 237,
+    "previous_default_indexable": 145,
+    "previous_explicit_noindex": 92,
+    "now_noindex": 237,
+    "now_in_sitemap": 0,
+    "policy": "Short definitions remain accessible; explicit reference qualification required for indexation. No fixed Google word-count threshold is asserted.",
+    "explanatory_words_in_145_default_terms": {
+      "min": 35,
+      "max": 130
+    },
+    "gsc_28day_glossary_rows": {
+      "rows": 63,
+      "clicks": 4,
+      "impressions": 424
+    },
+    "risk": "The 145 newly excluded short-term pages may lose their existing search impressions; analytical articles are unaffected."
+  },
+  "local_link_changes": {
+    "atlases": [
+      {
+        "route": "/en/atlas/ai-financing/",
+        "inlinks": 10,
+        "depth": 2,
+        "sitemap": true,
+        "noindex": false
+      },
+      {
+        "route": "/en/atlas/private-credit/",
+        "inlinks": 13,
+        "depth": 2,
+        "sitemap": true,
+        "noindex": false
+      },
+      {
+        "route": "/en/atlas/oil-financing/",
+        "inlinks": 10,
+        "depth": 2,
+        "sitemap": true,
+        "noindex": false
+      }
+    ],
+    "improved_cohort_pages": [
+      {
+        "url": "https://l0g.fr/en/analysis/asia-dollar-stop-buying/",
+        "inlinks": 4,
+        "depth": 2,
+        "previous": {
+          "url": "https://l0g.fr/en/analysis/asia-dollar-stop-buying/",
+          "gsc_status": "discovered",
+          "built": true,
+          "sitemap": true,
+          "words": 3276,
+          "inlinks": 3,
+          "depth": 4,
+          "noindex": false,
+          "canonical": "/en/analysis/asia-dollar-stop-buying/"
+        }
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+        "inlinks": 13,
+        "depth": 2,
+        "previous": {
+          "url": "https://l0g.fr/en/analysis/banking-on-oil-2-banks-financing-trafigura/",
+          "gsc_status": "discovered",
+          "built": true,
+          "sitemap": true,
+          "words": 3830,
+          "inlinks": 11,
+          "depth": 3,
+          "noindex": false,
+          "canonical": "/en/analysis/banking-on-oil-2-banks-financing-trafigura/"
+        }
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/banking-on-oil-4-trafigura-platts-fuel-oil-benchmark/",
+        "inlinks": 9,
+        "depth": 2,
+        "previous": {
+          "url": "https://l0g.fr/en/analysis/banking-on-oil-4-trafigura-platts-fuel-oil-benchmark/",
+          "gsc_status": "discovered",
+          "built": true,
+          "sitemap": true,
+          "words": 3401,
+          "inlinks": 7,
+          "depth": 3,
+          "noindex": false,
+          "canonical": "/en/analysis/banking-on-oil-4-trafigura-platts-fuel-oil-benchmark/"
+        }
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/banking-on-oil-5-vitol-refineries-terminals-engen/",
+        "inlinks": 8,
+        "depth": 3,
+        "previous": {
+          "url": "https://l0g.fr/en/analysis/banking-on-oil-5-vitol-refineries-terminals-engen/",
+          "gsc_status": "discovered",
+          "built": true,
+          "sitemap": true,
+          "words": 3721,
+          "inlinks": 6,
+          "depth": 3,
+          "noindex": false,
+          "canonical": "/en/analysis/banking-on-oil-5-vitol-refineries-terminals-engen/"
+        }
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/banking-on-oil-7-trafigura-petrobras-bribery/",
+        "inlinks": 7,
+        "depth": 3,
+        "previous": {
+          "url": "https://l0g.fr/en/analysis/banking-on-oil-7-trafigura-petrobras-bribery/",
+          "gsc_status": "discovered",
+          "built": true,
+          "sitemap": true,
+          "words": 3486,
+          "inlinks": 4,
+          "depth": 3,
+          "noindex": false,
+          "canonical": "/en/analysis/banking-on-oil-7-trafigura-petrobras-bribery/"
+        }
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/collateral-that-cannot-leave-the-building/",
+        "inlinks": 8,
+        "depth": 2,
+        "previous": {
+          "url": "https://l0g.fr/en/analysis/collateral-that-cannot-leave-the-building/",
+          "gsc_status": "discovered",
+          "built": true,
+          "sitemap": true,
+          "words": 2681,
+          "inlinks": 5,
+          "depth": 3,
+          "noindex": false,
+          "canonical": "/en/analysis/collateral-that-cannot-leave-the-building/"
+        }
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/greensill-insurance-future-receivables-risk/",
+        "inlinks": 13,
+        "depth": 2,
+        "previous": {
+          "url": "https://l0g.fr/en/analysis/greensill-insurance-future-receivables-risk/",
+          "gsc_status": "discovered",
+          "built": true,
+          "sitemap": true,
+          "words": 3353,
+          "inlinks": 7,
+          "depth": 2,
+          "noindex": false,
+          "canonical": "/en/analysis/greensill-insurance-future-receivables-risk/"
+        }
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/jpmorgan-market-surveillance-black-box/",
+        "inlinks": 4,
+        "depth": 2,
+        "previous": {
+          "url": "https://l0g.fr/en/analysis/jpmorgan-market-surveillance-black-box/",
+          "gsc_status": "discovered",
+          "built": true,
+          "sitemap": true,
+          "words": 2402,
+          "inlinks": 3,
+          "depth": 4,
+          "noindex": false,
+          "canonical": "/en/analysis/jpmorgan-market-surveillance-black-box/"
+        }
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/private-credit-clo-warehouse-banks/",
+        "inlinks": 9,
+        "depth": 2,
+        "previous": {
+          "url": "https://l0g.fr/en/analysis/private-credit-clo-warehouse-banks/",
+          "gsc_status": "discovered",
+          "built": true,
+          "sitemap": true,
+          "words": 2882,
+          "inlinks": 4,
+          "depth": 2,
+          "noindex": false,
+          "canonical": "/en/analysis/private-credit-clo-warehouse-banks/"
+        }
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/radiant-world-disputed-invoices-trade-finance/",
+        "inlinks": 8,
+        "depth": 2,
+        "previous": {
+          "url": "https://l0g.fr/en/analysis/radiant-world-disputed-invoices-trade-finance/",
+          "gsc_status": "discovered",
+          "built": true,
+          "sitemap": true,
+          "words": 1973,
+          "inlinks": 4,
+          "depth": 3,
+          "noindex": false,
+          "canonical": "/en/analysis/radiant-world-disputed-invoices-trade-finance/"
+        }
+      }
+    ],
+    "max_cohort_depth": 3,
+    "definition": "Shortest number of links from existing site hubs, not exclusively from the homepage."
+  },
+  "public_crawl_checks": {
+    "checked_at": "2026-10-15T12:54:12.185Z",
+    "method": "GET",
+    "user_agent": "l0g-seo-audit/1.0",
+    "results": [
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "location": null,
+        "contentType": "text/plain",
+        "content": "User-agent: *\nAllow: /\n\nSitemap: https://l0g.fr/sitemap-index.xml\nSitemap: https://l0g.fr/news-sitemap.xml\n"
+      },
+      {
+        "path": "/llms-full.txt",
+        "status": 200,
+        "location": null,
+        "contentType": "text/plain"
+      },
+      {
+        "path": "/posts/",
+        "status": 301,
+        "location": "https://l0g.fr/",
+        "contentType": "text/html; charset=iso-8859-1"
+      },
+      {
+        "path": "/api/mcp",
+        "status": 405,
+        "location": null,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "path": "/api/mcp/compact",
+        "status": 405,
+        "location": null,
+        "contentType": "application/json; charset=utf-8"
+      }
+    ]
+  },
+  "server_log_review": {
+    "attempts": 0,
+    "status": "awaiting_explicit_access_open_confirmation",
+    "prepared_script": "/tmp/l0g-robots-log-summary.py"
+  },
+  "limitations": [
+    "Coverage reports and per-URL inspections can differ; the individual inspection is recorded separately.",
+    "Source review selected a first useful batch; the 65 mechanical checks are not a full factual audit of all articles.",
+    "Priority crawl acceptance does not guarantee indexing, rankings or traffic.",
+    "No fixed Google request quota inferred from batch size.",
+    "Public HTTP probes do not reproduce verified Googlebot access or diagnose historical WAF events."
+  ],
+  "accepted_requests": {
+    "analyses": 7,
+    "atlases": 3,
+    "total": 10
+  }
+}

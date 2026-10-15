@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import { financingReadingPaths } from '../config/english-reading-paths.ts';
+
+interface Props { id: string; collection: 'postsEn' | 'guidesEn' }
+const { id, collection } = Astro.props;
+const path = financingReadingPaths.find((candidate) =>
+  (collection === 'postsEn' ? candidate.analysisIds : candidate.guideIds).includes(id));
+const analyses = path ? await getCollection('postsEn', ({ data }) => !data.draft) : [];
+const neighbours = path?.analysisIds
+  .filter((slug) => collection !== 'postsEn' || slug !== id)
+  .map((slug) => analyses.find((entry) => entry.id === slug))
+  .filter((entry) => entry !== undefined)
+  .slice(0, 3) ?? [];
+---
+
+{path && (
+  <nav class="related-reading" aria-labelledby="related-reading-title" data-pagefind-ignore>
+    <h2 id="related-reading-title">{path.title}</h2>
+    <p>{path.description}</p>
+    <ul>
+      <li><a href={path.atlasHref}>{path.atlasLabel}</a></li>
+      {neighbours.map((entry) => <li><a href={`/en/analysis/${entry.id}/`}>{entry.data.title}</a></li>)}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .related-reading { border-block: 1px solid var(--color-line); margin-top: 2.5rem; padding-block: 1.25rem; }
+  h2 { color: var(--color-bright); font-family: var(--font-display); font-size: 1.25rem; line-height: 1.4; }
+  p { color: var(--color-muted); line-height: 1.65; margin-top: .65rem; }
+  ul { display: grid; gap: .65rem; list-style: none; margin-top: 1rem; padding: 0; }
+  a { color: var(--color-signal); line-height: 1.5; text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere; }
+</style>

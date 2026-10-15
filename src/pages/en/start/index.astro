@@ -36,6 +36,7 @@ const tracks = [
     related: [
       ['/en/atlas/private-credit/', 'Map banks, managers, insurers and borrowers in the private credit atlas'],
       ['/en/analysis/private-credit-clo-warehouse-banks/', 'Follow the bank financing before a CLO is issued'],
+      ['/en/analysis/jpmorgan-market-surveillance-black-box/', 'Examine the controls behind market surveillance'],
     ],
   },
   {
@@ -47,6 +48,17 @@ const tracks = [
     related: [
       ['/en/atlas/ai-financing/', 'Follow commitments and contracts in the AI financing atlas'],
       ['/en/analysis/model-pump-price-of-adequacy/', 'Compare a power-system model with a plant’s physical constraint'],
+    ],
+  },
+  {
+    label: 'oil & trade finance',
+    title: 'Follow the money behind the cargo',
+    text: 'Bank facilities, trading houses, receivables and loans backed by future oil revenues.',
+    href: '/en/atlas/oil-financing/',
+    link: 'explore the oil financing atlas',
+    related: [
+      ['/en/analysis/banking-on-oil-2-banks-financing-trafigura/', 'Distinguish bank commitments from cash available to a trader'],
+      ['/en/analysis/banking-on-oil-4-trafigura-platts-fuel-oil-benchmark/', 'Follow the benchmark used to price fuel oil'],
     ],
   },
   {
@@ -82,7 +94,7 @@ const tracks = [
 
   <section class="track-section rise" aria-labelledby="track-title">
     <p class="mono-label" style="color: var(--color-accent)">// choose a reading path</p>
-    <h2 id="track-title">Four doors into the same financial system.</h2>
+    <h2 id="track-title">Reading paths through the financial system</h2>
     <div class="track-grid">
       {tracks.map((track) => (
         <article class="track-card">

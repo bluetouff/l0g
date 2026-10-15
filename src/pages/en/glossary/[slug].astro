@@ -1,9 +1,7 @@
 ---
 import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import CitationBox from '../../../components/CitationBox.astro';
-import FreshnessBadge from '../../../components/FreshnessBadge.astro';
-import { glossaryAtlasEn, glossaryAtlasEnBySlug } from '../../../config/glossary-atlas-en.ts';
-import { glossaryUpdatedIso } from '../../../config/glossary.ts';
+import { glossaryAtlasEn, glossaryAtlasEnBySlug, englishGlossaryRobots } from '../../../config/glossary-atlas-en.ts';
 
 export function getStaticPaths() {
   return glossaryAtlasEn.map((entry) => ({
@@ -55,7 +53,6 @@ const jsonLd = {
       description: entry.def,
       url: canonical,
       inLanguage: 'en',
-      dateModified: glossaryUpdatedIso,
       ...(atlas.formula ? { mathExpression: atlas.formula } : {}),
       ...(atlas.whyNow ? { disambiguatingDescription: atlas.whyNow } : {}),
       ...(atlasJsonLinks.length > 0
@@ -112,7 +109,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 <EnglishLayout
   title={title}
   description={description}
-  robots={entry.robots}
+  robots={englishGlossaryRobots(entry)}
   ogType="article"
   canonical={canonical}
   alternateLinks={alternateLinks}
@@ -136,9 +133,6 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
           {entry.sigle}
         </h1>
         <p class="term-name">{entry.nom}</p>
-        <div class="term-freshness" data-pagefind-ignore>
-          <FreshnessBadge date={glossaryUpdatedIso} locale="en" />
-        </div>
       </div>
       <span class="term-family" style={`--term-accent:${entry.accent}`}>
         {entry.sectionTitle}
@@ -210,7 +204,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <a class="term-action ghost" href={`/glossaire/${entry.slug}/`} hreflang="fr">Lire cette fiche en français</a>
     </div>
 
-    <CitationBox title={title} url={canonical} kind="definition" updated={glossaryUpdatedIso} />
+    <CitationBox title={title} url={canonical} kind="definition" locale="en" />
   </article>
 
   {related.length > 0 && (

@@ -9,16 +9,22 @@ interface Props {
   kind?: string;
   published?: CitationDate;
   updated?: CitationDate;
+  locale?: 'fr' | 'en';
 }
 
-const { title, url, kind = 'page', published, updated } = Astro.props;
+const { title, url, kind = 'page', published, updated, locale = 'fr' } = Astro.props;
+const labels = locale === 'en'
+  ? { heading: 'cite this page', permalink: 'permalink', canonical: 'canonical', copy: 'copy', copied: 'copied', unavailable: 'unavailable', reviewed: 'reviewed', published: 'published', accessed: 'accessed' }
+  : { heading: 'citer cette page', permalink: 'permalien', canonical: 'canonique', copy: 'copier', copied: 'copié', unavailable: 'indisponible', reviewed: 'revu le', published: 'publié le', accessed: 'consulté le' };
 const date = updated ?? published;
-const formatCitationDate = (value: CitationDate) => (typeof value === 'string' ? formatDateFrIsoDate(value) : formatDateFr(value));
+const formatCitationDate = (value: CitationDate) => locale === 'en'
+  ? new Date(value).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' })
+  : (typeof value === 'string' ? formatDateFrIsoDate(value) : formatDateFr(value));
 const year = typeof date === 'string' ? date.slice(0, 4) : date?.getFullYear();
-const datePart = date ? `, ${updated ? 'revu le' : 'publié le'} ${formatCitationDate(date)}` : '';
-const accessed = formatDateFr(new Date());
+const datePart = date ? `, ${updated ? labels.reviewed : labels.published} ${formatCitationDate(date)}` : '';
+const accessed = formatCitationDate(new Date());
 const citation = `l0g.fr, « ${title} » (${kind}${datePart}), ${url}`;
-const md = `[${title}](${url}) — l0g.fr${date ? `, ${formatCitationDate(date)}` : ''}.`;
+const md = `[${title}](${url}), l0g.fr${date ? `, ${formatCitationDate(date)}` : ''}.`;
 const bibKey = `l0g-${title
   .normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '')
@@ -29,12 +35,11 @@ const bibKey = `l0g-${title
 const bibtex = `@online{${bibKey},
   title = {${title.replace(/[{}]/g, '')}},
   author = {{l0g.fr}},
-  year = {${year ?? new Date().getFullYear()}},
-  url = {${url}},
-  note = {${kind}${datePart}; consulté le ${accessed}}
+  ${year ? `year = {${year}},\n  ` : ''}url = {${url}},
+  note = {${kind}${datePart}; ${labels.accessed} ${accessed}}
 }`;
 const formats = [
-  { label: 'canonique', value: citation },
+  { label: labels.canonical, value: citation },
   { label: 'markdown', value: md },
   { label: 'bibtex', value: bibtex },
 ];
@@ -42,16 +47,16 @@ const formats = [
 
 <aside class="citation-box" aria-labelledby="citation-title" data-pagefind-ignore>
   <div class="citation-head">
-    <p id="citation-title" class="mono-label">// citer cette page</p>
-    <a href={url} class="citation-permalink">permalien</a>
+    <p id="citation-title" class="mono-label">// {labels.heading}</p>
+    <a href={url} class="citation-permalink">{labels.permalink}</a>
   </div>
   <div class="citation-formats">
     {formats.map((format) => (
       <div class="citation-format">
         <div class="citation-format-head">
           <span>{format.label}</span>
-          <button type="button" data-copy-citation={format.value}>
-            copier
+          <button type="button" data-copy-citation={format.value} data-copied={labels.copied} data-unavailable={labels.unavailable}>
+            {labels.copy}
           </button>
         </div>
         <code>{format.value}</code>
@@ -71,12 +76,12 @@ const formats = [
         setTimeout(function () { btn.textContent = original; }, 1600);
       };
       if (!value || !window.isSecureContext || !navigator.clipboard || !navigator.clipboard.writeText) {
-        flash('indisponible');
+        flash(btn.getAttribute('data-unavailable') || 'indisponible');
         return;
       }
       navigator.clipboard.writeText(value)
-        .then(function () { flash('copié'); })
-        .catch(function () { flash('indisponible'); });
+        .then(function () { flash(btn.getAttribute('data-copied') || 'copié'); })
+        .catch(function () { flash(btn.getAttribute('data-unavailable') || 'indisponible'); });
     });
   });
 </script>

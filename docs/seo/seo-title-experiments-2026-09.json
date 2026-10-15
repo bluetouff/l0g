@@ -456,9 +456,9 @@
         "observed_title": "How to Read the Repo Market: SOFR, the Rate… · l0g.fr",
         "recrawled_after_release_at": null,
         "post_recrawl_impressions": null,
-        "decision": "maintenir_en_attente_de_mesure",
-        "last_reviewed_on": "2026-09-29",
-        "review_reason": "Nouvelle priorité de diagnostic ; conserver le titre avant mesure des requêtes et segments.",
+        "decision": "corriger_troncature_metadata",
+        "last_reviewed_on": "2026-10-15",
+        "review_reason": "Correction de la troncature présente dans le HTML livré, autorisée le 15 octobre. Le titre et la description sont remplacés ensemble pour leur lisibilité ; aucun effet causal du titre ni gain SEO n’est établi. L’ancien titre observé est conservé comme historique. Nouvelle mesure seulement après activation, réexploration et 14 jours complets comparables. La relecture a aussi corrigé le fond en FR/EN (méthode SOFR, opérations de 2019, limites du corridor) ; cette livraison ne constitue donc pas un test de titre isolé.",
         "last_inspected_on": "2026-09-29",
         "last_crawl_displayed": "10 sept. 2026, 09:49:21",
         "crawl_timezone_displayed": null,
@@ -468,7 +468,10 @@
         "crawled_title": "How to Read the Repo Market: SOFR, the Rate… · l0g.fr",
         "indexed": true,
         "google_canonical": "/en/guides/read-repo-market-sofr/",
-        "referring_page": "/guides/lire-le-marche-du-repo-sofr/"
+        "referring_page": "/guides/lire-le-marche-du-repo-sofr/",
+        "approved_title": "SOFR and repo markets: rates, spreads and liquidity | l0g",
+        "correction_served_at": null,
+        "correction_recrawled_at": null
       }
     ],
     "last_collection_on": "2026-09-12",
