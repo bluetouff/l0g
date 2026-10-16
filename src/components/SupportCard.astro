@@ -9,100 +9,118 @@ const copy = lang === 'en'
   ? {
       href: '/en/support/',
       eyebrow: '// support l0g',
-      title: 'Keep independent analysis public.',
-      cta: 'One-time or monthly support',
+      title: 'Keep independent analysis open.',
+      description: 'Help sustain sourced investigations and public tools, accessible to everyone.',
+      cta: 'Support l0g',
+      note: 'One-time or monthly contribution',
     }
   : {
       href: '/soutenir/',
       eyebrow: '// soutenir l0g',
-      title: 'Préserver son indépendance.',
-      cta: 'Contribution libre ou mensuelle',
+      title: 'Faire vivre l’analyse indépendante.',
+      description: 'Des enquêtes sourcées et des outils publics, accessibles à tous.',
+      cta: 'Je soutiens l0g',
+      note: 'Contribution libre ou mensuelle',
     };
 ---
 
 <a class:list={['support-card', { compact }]} href={copy.href} data-pagefind-ignore>
   <span class="support-card-top">
-    <span class="support-pulse" aria-hidden="true"></span>
     <small>{copy.eyebrow}</small>
+    <span class="support-mark" aria-hidden="true">♡</span>
   </span>
   <strong>{copy.title}</strong>
+  <span class="support-description">{copy.description}</span>
   <span class="support-card-cta">
     {copy.cta}
-    <i aria-hidden="true">›</i>
+    <i aria-hidden="true">↗</i>
   </span>
+  <span class="support-note">{copy.note}</span>
 </a>
 
-<style>
+<style is:global>
   .support-card {
     position: relative;
     display: block;
-    overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--color-signal) 42%, var(--color-line));
-    border-radius: 12px 3px 12px 12px;
-    padding: 0.9rem;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 50%, var(--color-line));
+    border-radius: 16px 4px 16px 16px;
+    padding: 1.15rem;
     background:
-      radial-gradient(90% 120% at 0 0, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent 72%),
+      linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent 75%),
       var(--surface-elevated);
-    box-shadow: inset 0 1px 0 var(--edge-highlight);
+    box-shadow: inset 0 1px 0 var(--edge-highlight), var(--shadow-elevated);
+    text-decoration: none;
+    transition: border-color 160ms ease, transform 160ms ease;
   }
-  .support-card::after {
+  .support-card::before {
     content: '';
     position: absolute;
-    top: -1px;
-    right: -1px;
-    width: 0.65rem;
-    height: 0.65rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 52%, var(--color-line));
-    border-left: 1px solid color-mix(in srgb, var(--color-accent) 52%, var(--color-line));
-    background: var(--color-ink);
+    inset: 1.2rem auto 1.2rem -1px;
+    width: 2px;
+    background: linear-gradient(var(--color-signal), var(--color-amber));
   }
   .support-card-top,
   .support-card-cta {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
   }
-  .support-card-top { gap: 0.5rem; }
-  .support-pulse {
-    width: 0.42rem;
-    height: 0.42rem;
-    flex: none;
-    border-radius: 50%;
-    background: var(--color-accent);
-    box-shadow: 0 0 12px color-mix(in srgb, var(--color-accent) 70%, transparent);
+  .support-mark {
+    color: var(--color-amber);
+    font-size: 1.7rem;
+    line-height: 1;
   }
   .support-card small {
     color: var(--color-signal);
     font-family: var(--font-mono);
-    font-size: 0.58rem;
+    font-size: 0.62rem;
     font-weight: 650;
     letter-spacing: 0.09em;
     text-transform: uppercase;
   }
   .support-card strong {
     display: block;
-    margin-top: 0.55rem;
+    margin-top: 0.65rem;
     color: var(--color-bright);
     font-family: var(--font-display);
-    font-size: 1rem;
-    line-height: 1.25;
-  }
-  .support-card-cta {
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-top: 0.55rem;
-    color: var(--color-muted);
-    font-size: 0.68rem;
+    font-size: 1.18rem;
     line-height: 1.35;
   }
+  .support-description,
+  .support-note {
+    display: block;
+    color: var(--color-muted);
+    font-size: 0.73rem;
+    line-height: 1.65;
+  }
+  .support-description { margin-top: 0.6rem; }
+  .support-card-cta {
+    min-height: 44px;
+    margin-top: 1rem;
+    border-radius: 6px;
+    padding: 0.65rem 0.8rem;
+    background: var(--color-signal);
+    color: var(--color-ink);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .support-note {
+    margin-top: 0.55rem;
+    font-size: 0.6rem;
+    text-align: center;
+  }
   .support-card-cta i {
-    color: var(--color-accent);
-    font-size: 0.95rem;
     font-style: normal;
+    font-size: 1rem;
   }
-  .support-card:hover {
-    border-color: color-mix(in srgb, var(--color-accent) 64%, var(--color-line));
+  .support-card:hover { border-color: var(--color-signal); transform: translateY(-2px); }
+  .support-card:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .support-card.compact { padding: 1rem; }
+  .support-card.compact strong { font-size: 1.08rem; }
+  @media (prefers-reduced-motion: reduce) {
+    .support-card { transition: none; }
+    .support-card:hover { transform: none; }
   }
-  .support-card:hover strong { color: var(--color-signal); }
-  .support-card.compact { padding: 0.8rem; }
-  .support-card.compact strong { font-size: 0.94rem; }
 </style>
