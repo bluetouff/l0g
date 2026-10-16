@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "15de7883bde9552c2c09ac20e1aee957419c22acb8ca8878fcd591c9d7e1bda0",
+  "sourceSha256": "7f7a9a318a30d16fadd8a93b5ad4cb060b5aad5bcaf627457729fa561270bed0",
   "title": "Private credit atlas",
   "sources": {
     "apollo-bnp-2024": {
@@ -37,6 +37,10 @@
     "pagaya-rpm-20261012": {
       "title": "Pagaya: closing of RPM 2026-5",
       "locator": "October 12 release, first paragraph: closing, principal amount and auto loans."
+    },
+    "pagaya-rev1-20260922": {
+      "title": "Pagaya: PAID 2026-REV1",
+      "locator": "September 22 release: initial size, projected deployment and reinvestment."
     }
   },
   "nodes": {
@@ -107,6 +111,14 @@
     "rpm-2026-5": {
       "label": "Pagaya · RPM 2026-5",
       "role": "Auto loan securitization"
+    },
+    "paid-rev-investors": {
+      "label": "REV1 investors",
+      "role": "Unidentified institutions"
+    },
+    "paid-2026-rev1": {
+      "label": "Pagaya · PAID REV1",
+      "role": "Revolving securitization"
     }
   },
   "relations": {
@@ -275,6 +287,16 @@
           "watch": "Issuance documents, legal issuer and subscription allocations."
         }
       }
+    },
+    "investors-paid-rev1": {
+      "observations": {
+        "2026-09-22": {
+          "label": "PAID REV1 · revolving structure",
+          "claim": "Pagaya announces an initial $460 million and projects approximately $850 million in deployment over 24 months through reinvestment.",
+          "limit": "Projected deployment is cumulative; it does not measure cash received at closing. Individual investors are not named.",
+          "watch": "Settlement, subscriptions and actual reinvestment."
+        }
+      }
     }
   },
   "milestones": {
@@ -309,6 +331,10 @@
     "2026-10-12": {
       "label": "Pagaya · auto loan securitization",
       "change": "RPM 2026-5 adds an auto loan issue; no funding chain between the two securitizations is inferred."
+    },
+    "2026-09-22": {
+      "label": "Pagaya · PAID REV1",
+      "change": "A revolving structure separates initial funding from expected deployment."
     }
   }
 }

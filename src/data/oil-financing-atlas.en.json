@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "876381ec0b53d01173c058bbb8464fdbeb8d43d733121d1adac671d321956b8e",
+  "sourceSha256": "9e3ba873fce2b4f08d0db341d984710a5bbcf7d5cc30b3e8f636c33cd827c557",
   "title": "Oil financing atlas",
   "sources": {
     "sienna-judgment-2023": {
@@ -45,6 +45,10 @@
     "volare-stabilisation-20261013": {
       "title": "Volare: partial exercise of the share issuance option",
       "locator": "October 13 notice: additional shares and the stabilization period."
+    },
+    "volare-stabilisation-20261005": {
+      "title": "Volare: stabilisation and over-allotment",
+      "locator": "October 5 release: share lending, issuance option and stabilisation period."
     }
   },
   "nodes": {
@@ -123,6 +127,10 @@
     "bocomm-leasing": {
       "label": "BOCOMM Leasing",
       "role": "Lessor of the six operating vessels"
+    },
+    "clarksons": {
+      "label": "Clarksons Securities",
+      "role": "Volare’s stabilisation manager"
     }
   },
   "relations": {
@@ -433,6 +441,22 @@
           "claim": "Volare subsidiaries sold the six operating vessels to BOCOMM and chartered them back on bareboat terms.",
           "limit": "These sale and leasebacks are not an ordinary bank loan to the parent company. They establish neither financing of the eight vessels on order nor a Trafigura guarantee.",
           "watch": "Lease payments, purchase options and separate newbuild financing."
+        }
+      }
+    },
+    "volare-clarksons-option": {
+      "observations": {
+        "2026-10-05": {
+          "label": "Issuance option and borrowed shares",
+          "claim": "Volare grants Clarksons an option over up to 4,604,829 new shares. The manager borrows the same number from Trafigura Volare Holdings B.V. to deliver the over-allotment.",
+          "limit": "This is share lending, not a cash loan. The release provides neither the full lending agreement nor a cash receipt statement.",
+          "watch": "Share redelivery, stabilisation purchases and the option."
+        },
+        "2026-10-13": {
+          "label": "Partial exercise · the same 300,000-share issuance",
+          "claim": "Volare announces 300,000 shares issued through partial exercise of the option granted to the stabilisation manager.",
+          "limit": "This is the same exercise described in the placement record, not a second capital inflow to add. No net cash receipt is quantified.",
+          "watch": "End of stabilisation on November 3 and share redelivery."
         }
       }
     }

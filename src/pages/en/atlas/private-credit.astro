@@ -19,6 +19,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
     entryPoints={[
       { label: 'How does Pagaya securitize auto loans?', relation: 'investors-rpm-securitization', date: latestDate },
       { label: 'Which issue contains personal loans?', relation: 'investors-paid-securitization', date: '2026-10-05' },
+      { label: 'How does the revolving structure work?', relation: 'investors-paid-rev1', date: '2026-09-22' },
       { label: 'How does ATLAS fund Pagaya loans?', relation: 'atlas-pagaya-vfn', date: latestDate },
       { label: 'How does ARCC refinance itself?', relation: 'noteholders-arcc', date: latestDate },
       { label: 'Where do banks participate?', relation: 'bnp-afb', date: latestDate },
@@ -33,7 +34,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
     ]}
   >
     <section slot="overview" class="credit-overview" aria-labelledby="credit-circuits-title">
-      <p class="credit-review"><strong>Evidence reviewed on <time datetime="2026-10-14">14 October 2026</time>.</strong> Pagaya’s <a href="https://investor.pagaya.com/static-files/656c85c1-d518-4f09-bd5c-f47e45e67598">5 October</a> and <a href="https://investor.pagaya.com/news-releases/news-release-details/pagaya-closes-100th-asset-backed-securitization-new-650-million">12 October</a> releases add two separate securitizations. They do not document a draw on the ATLAS SP VFN facility. VFN stands for <em>Variable Funding Note</em>, a revolving funding structure using notes. Portfolio positions retain their 30 June 2026 reporting period; <a href="https://www.sec.gov/Archives/edgar/data/1527469/000152746926000073/ahl-20261005.htm">Athene’s preliminary estimates published on 5 October</a> do not update those holdings.</p>
+      <p class="credit-review"><strong>Targeted review on <time datetime="2026-10-16">16 October 2026</time>.</strong> New record: <a href="https://investor.pagaya.com/news-releases/news-release-details/pagaya-closes-24-month-460-million-revolving-personal-loan">PAID REV1</a>. Evidence retains its publication dates. The SEC registers for <a href="https://data.sec.gov/submissions/CIK0001287750.json">ARCC</a>, <a href="https://data.sec.gov/submissions/CIK0001858681.json">Apollo</a> and <a href="https://data.sec.gov/submissions/CIK0001527469.json">Athene</a> were checked; portfolio holdings remain documented as of 30 June 2026. <a href="https://www.sec.gov/Archives/edgar/data/1527469/000152746926000073/ahl-20261005.htm">Athene’s preliminary estimates published on 5 October</a> do not renew those inventories. VFN stands for <em>Variable Funding Note</em>, a revolving funding structure using notes. Pagaya’s funding structures remain separate, and securitizations do not establish VFN drawdowns.</p>
       <details>
         <summary id="credit-circuits-title">Understand the roles in private credit</summary>
         <p>In these financing chains, ARCC lends to companies while ATLAS SP finances portfolios of receivables, including personal loans. Banks remain involved in funding the intermediaries.</p>

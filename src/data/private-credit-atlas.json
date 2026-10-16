@@ -66,6 +66,13 @@
       "url": "https://investor.pagaya.com/news-releases/news-release-details/pagaya-closes-100th-asset-backed-securitization-new-650-million",
       "publishedOn": "2026-10-12",
       "locator": "Communiqué du 12 octobre, premier paragraphe : clôture, nominal et prêts automobiles."
+    },
+    {
+      "id": "pagaya-rev1-20260922",
+      "publishedOn": "2026-09-22",
+      "title": "Pagaya : PAID 2026-REV1",
+      "url": "https://investor.pagaya.com/news-releases/news-release-details/pagaya-closes-24-month-460-million-revolving-personal-loan",
+      "locator": "Communiqué du 22 septembre : taille initiale, déploiement prévu et réinvestissement."
     }
   ],
   "nodes": [
@@ -186,6 +193,20 @@
       "label": "Pagaya · RPM 2026-5",
       "role": "Titrisation de prêts automobiles",
       "column": 2,
+      "row": 4
+    },
+    {
+      "id": "paid-rev-investors",
+      "label": "Investisseurs REV1",
+      "role": "Institutions non identifiées",
+      "column": 3,
+      "row": 0
+    },
+    {
+      "id": "paid-2026-rev1",
+      "label": "Pagaya · PAID REV1",
+      "role": "Titrisation renouvelable",
+      "column": 3,
       "row": 4
     }
   ],
@@ -522,6 +543,26 @@
           ]
         }
       ]
+    },
+    {
+      "id": "investors-paid-rev1",
+      "from": "paid-rev-investors",
+      "to": "paid-2026-rev1",
+      "observations": [
+        {
+          "publishedOn": "2026-09-22",
+          "recordedOn": "2026-10-16",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "PAID REV1 · structure renouvelable",
+          "claim": "Pagaya annonce 460 millions de dollars initiaux et prévoit environ 850 millions de dollars de déploiements sur 24 mois, grâce au réinvestissement.",
+          "limit": "Le volume prévu est cumulé ; il ne décrit pas les fonds encaissés à la clôture. L’identité des souscripteurs n’est pas publiée.",
+          "watch": "Règlement, souscriptions et réinvestissements effectifs.",
+          "sources": [
+            "pagaya-rev1-20260922"
+          ]
+        }
+      ]
     }
   ],
   "milestones": [
@@ -549,6 +590,11 @@
       "date": "2026-09-15",
       "label": "L’émission clôturée",
       "change": "Le 8-K confirme la clôture de l’émission. Le financement obligataire d’ARCC apparaît à côté de ses facilités bancaires ; les remboursements effectifs restent à documenter."
+    },
+    {
+      "date": "2026-09-22",
+      "label": "Pagaya · PAID REV1",
+      "change": "Une structure renouvelable distingue financement initial et déploiement attendu."
     },
     {
       "date": "2026-09-29",

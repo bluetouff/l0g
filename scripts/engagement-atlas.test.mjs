@@ -21,6 +21,51 @@ const source = JSON.parse(readFileSync(new URL('../src/data/engagement-atlas.jso
 const credit = JSON.parse(readFileSync(new URL('../src/data/private-credit-atlas.json', import.meta.url), 'utf8'));
 const oil = JSON.parse(readFileSync(new URL('../src/data/oil-financing-atlas.json', import.meta.url), 'utf8'));
 
+test('PAID REV1 separates initial funding from projected revolving deployment and preserves earlier cuts', () => {
+  const before = atlasAt(credit, '2026-09-21');
+  assert.equal(before.nodes.some(node => ['paid-rev-investors', 'paid-2026-rev1'].includes(node.id)), false);
+  assert.equal(before.sources.some(item => item.id === 'pagaya-rev1-20260922'), false);
+  const announced = atlasAt(credit, '2026-09-22');
+  const relation = announced.relations.find(item => item.id === 'investors-paid-rev1');
+  assert.deepEqual([relation.from, relation.to], ['paid-rev-investors', 'paid-2026-rev1']);
+  assert.equal(relation.observation.recordedOn, '2026-10-16');
+  assert.equal(relation.observation.kind, 'announcement');
+  assert.equal(relation.observation.amount, undefined);
+  assert.match(relation.observation.claim, /460.*850.*24 mois/);
+  assert.match(relation.observation.claim, /prévoit/);
+  assert.match(relation.observation.limit, /cumulé/);
+  assert.doesNotMatch(relation.observation.claim + relation.observation.limit, /VFN|ATLAS SP/);
+  const latest = atlasAt(credit, '2026-10-12');
+  for (const id of ['investors-paid-securitization', 'investors-rpm-securitization']) {
+    assert.notEqual(latest.relations.find(item => item.id === id).from, relation.from);
+  }
+  assert.equal(latest.relations.some(item => ['bnp', 'athene', 'atlas-sp', 'pagaya-vfn'].includes(item.from) && item.to === 'paid-2026-rev1'), false);
+  assert.deepEqual(latest.relations.find(item => item.id === 'arcc-hyland').observation, before.relations.find(item => item.id === 'arcc-hyland').observation);
+});
+
+test('Volare stabilisation identifies the option holder without inventing a cash loan or another share issuance', () => {
+  const before = atlasAt(oil, '2026-10-04');
+  assert.equal(before.nodes.some(node => node.id === 'clarksons'), false);
+  assert.equal(before.sources.some(item => item.id === 'volare-stabilisation-20261005'), false);
+  const granted = atlasAt(oil, '2026-10-05');
+  const relation = granted.relations.find(item => item.id === 'volare-clarksons-option');
+  assert.deepEqual([relation.from, relation.to], ['volare', 'clarksons']);
+  assert.equal(relation.observation.kind, 'announcement');
+  assert.equal(relation.observation.recordedOn, '2026-10-16');
+  assert.match(relation.observation.claim, /4 604 829.*Trafigura Volare Holdings/);
+  assert.match(relation.observation.limit, /pas un crédit en trésorerie/);
+  assert.equal(granted.sources.some(item => item.id === 'volare-stabilisation-20261013'), false);
+  const latest = atlasAt(oil, '2026-10-13');
+  const exercised = latest.relations.find(item => item.id === 'volare-clarksons-option').observation;
+  assert.equal(exercised.publishedOn, '2026-10-13');
+  assert.equal(exercised.recordedOn, '2026-10-16');
+  assert.match(exercised.claim, /300 000/);
+  assert.match(exercised.limit, /même exercice/);
+  assert.equal(exercised.amount, undefined);
+  assert.equal(latest.relations.find(item => item.id === 'investors-volare').observation.recordedOn, '2026-10-14');
+  assert.deepEqual(latest.relations.find(item => item.id === 'usd-cnh-trafigura-credit').observation, before.relations.find(item => item.id === 'usd-cnh-trafigura-credit').observation);
+});
+
 test('October securitizations respect publication cutoffs and do not imply VFN loan transfers', () => {
   const before = atlasAt(credit, '2026-10-04');
   assert.equal(before.nodes.some(node => ['paid-2026-6', 'rpm-2026-5', 'paid-investors', 'rpm-investors'].includes(node.id)), false);

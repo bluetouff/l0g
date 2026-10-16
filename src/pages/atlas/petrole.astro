@@ -24,6 +24,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
     entryPoints={[
       { label: 'Où en est le financement de Volare ?', relation: 'investors-volare', date: latestDate },
       { label: 'Comment les navires exploités sont-ils financés ?', relation: 'bocomm-volare-leasebacks', date: '2026-10-05' },
+      { label: 'Comment fonctionne l’option d’émission ?', relation: 'volare-clarksons-option', date: latestDate },
       { label: 'Quel financement reste à compléter ?', relation: 'volare-fleet-programme', date: '2026-10-05' },
       { label: 'Qui paie la cargaison ?', relation: 'unicredit-bp-payment', date: '2023-05-04' },
       { label: 'Que refinance Trafigura en octobre ?', relation: 'usd-cnh-trafigura-credit', date: '2026-10-01' },
@@ -37,7 +38,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
     ]}
   >
     <section slot="overview" class="oil-overview" aria-labelledby="oil-circuits-title">
-      <p><strong>Revue ciblée du <time datetime="2026-10-14">14 octobre 2026</time>.</strong> Les pièces Volare du <a href="https://www.volareshipping.com/news/volare-shipping-ltd-first-day-of-trading-on-euronext-growth-oslo-and-publication-of-information-document/">5 octobre</a> et du <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice/">13 octobre</a> actualisent la cotation et le placement. Le <a href="https://mb.cision.com/Public/24324/4404303/ad59eaca69c8f1aa.pdf">document d’admission, sections 6.6 et 6.9</a>, précise le financement de la flotte. Les autres circuits conservent leurs périodes documentaires ; le cas tchadien reste fondé sur le <a href="https://eiti.org/documents/chad-2023-eiti-report">rapport ITIE 2023</a>.</p>
+      <p><strong>Revue ciblée du <time datetime="2026-10-16">16 octobre 2026</time>.</strong> Ajout du rôle de Clarksons à partir de la <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-and-over-allotment-notice/">pièce du 5 octobre</a>. Le <a href="https://www.volareshipping.com/news/">registre des communiqués Volare</a> consulté conserve la publication du <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice/">13 octobre</a> comme dernière pièce. Le <a href="https://mb.cision.com/Public/24324/4404303/ad59eaca69c8f1aa.pdf">document d’admission, sections 6.6 et 6.9</a>, reste la référence pour la flotte. Les autres circuits conservent leurs périodes documentaires ; le cas tchadien reste fondé sur le <a href="https://eiti.org/documents/chad-2023-eiti-report">rapport ITIE 2023</a>.</p>
       <details>
         <summary id="oil-circuits-title">Quatre circuits pour lire le financement</summary>
         <ol>

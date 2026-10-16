@@ -31,6 +31,14 @@ Chaque traduction porte `sourceSha256`, le SHA-256 du `JSON.stringify` du corpus
 
 ## Trois dates distinctes
 
+### Enrichissement revu le 16 octobre 2026
+
+- IA : le registre SEC de SB Energy conserve le S-1/A du 21 septembre comme dernier dépôt. Les observations antérieures et leurs dates de revue restent inchangées. Cette vérification ciblée ne confirme ni le règlement du placement distinct de Nvidia ni l’achèvement de l’introduction.
+- Crédit privé : ajout de PAID 2026-REV1, à partir du communiqué du 22 septembre. La fiche distingue financement initial et déploiement prévisionnel cumulé. Son groupe d’investisseurs reste distinct de ceux des deux autres titrisations. Les registres SEC d’ARCC, d’Apollo et d’Athene ont été consultés ; les inventaires trimestriels conservent leur période au 30 juin.
+- Pétrole : la pièce Volare du 5 octobre ajoute Clarksons comme titulaire de l’option d’émission. L’exercice partiel du 13 octobre reste le même événement que dans la fiche du placement. Le registre de l’émetteur consulté ne présente pas de communiqué plus récent. Les autres dossiers conservent leurs périodes documentaires.
+
+Les ajouts portent sur des pièces publiées les 22 septembre, 5 et 13 octobre, relues le 16 octobre. Les nouvelles observations portent cette date réelle de revue ; les anciennes ne sont pas redatées. Les éditions anglaises des ajouts ont été revues avant renouvellement des empreintes. Aucun nouveau domaine source ni changement du modèle monétaire n’est nécessaire. La veille automatique reste en pause.
+
 ### Enrichissement revu le 14 octobre 2026
 
 - IA : le registre SEC de SB Energy a été consulté. Son dernier dépôt reste le S-1/A du 21 septembre ; ce passage ne renouvelle pas la revue de chaque contrat. Les observations et leurs dates restent inchangées, sans confirmation nouvelle du règlement du placement ou de la réalisation de l’introduction en Bourse.

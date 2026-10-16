@@ -80,6 +80,13 @@
       "url": "https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice/",
       "publishedOn": "2026-10-13",
       "locator": "Communiqué du 13 octobre : actions supplémentaires et durée de la période de stabilisation."
+    },
+    {
+      "id": "volare-stabilisation-20261005",
+      "publishedOn": "2026-10-05",
+      "title": "Volare : stabilisation et surallocation",
+      "url": "https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-and-over-allotment-notice/",
+      "locator": "Communiqué du 5 octobre : prêt d’actions, option d’émission et période de stabilisation."
     }
   ],
   "nodes": [
@@ -214,6 +221,13 @@
       "label": "BOCOMM Leasing",
       "role": "Bailleur des six navires exploités",
       "column": 0,
+      "row": 0
+    },
+    {
+      "id": "clarksons",
+      "label": "Clarksons Securities",
+      "role": "Agent de stabilisation de Volare",
+      "column": 3,
       "row": 0
     }
   ],
@@ -789,6 +803,40 @@
           "watch": "Échéances de location, options de rachat et financement distinct des navires neufs.",
           "sources": [
             "volare-information-20261005"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "volare-clarksons-option",
+      "from": "volare",
+      "to": "clarksons",
+      "observations": [
+        {
+          "publishedOn": "2026-10-05",
+          "recordedOn": "2026-10-16",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Option d’émission et actions prêtées",
+          "claim": "Volare accorde à Clarksons une option sur au plus 4 604 829 actions nouvelles. L’agent emprunte autant de titres à Trafigura Volare Holdings B.V. pour livrer la surallocation.",
+          "limit": "Ce prêt de titres n’est pas un crédit en trésorerie. Le communiqué ne publie pas le contrat de prêt complet ni le relevé des encaissements.",
+          "watch": "Restitution des titres, rachats de stabilisation et option.",
+          "sources": [
+            "volare-stabilisation-20261005"
+          ]
+        },
+        {
+          "publishedOn": "2026-10-13",
+          "recordedOn": "2026-10-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Exercice partiel · même émission de 300 000 actions",
+          "claim": "Volare annonce 300 000 actions émises par exercice partiel de l’option accordée à l’agent de stabilisation.",
+          "limit": "C’est le même exercice que dans la fiche du placement, sans second apport à additionner. Aucun produit net encaissé n’est chiffré.",
+          "watch": "Fin de stabilisation le 3 novembre et restitution des titres.",
+          "sources": [
+            "volare-stabilisation-20261013",
+            "volare-stabilisation-20261005"
           ]
         }
       ]
