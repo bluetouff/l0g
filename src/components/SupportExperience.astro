@@ -1,0 +1,215 @@
+---
+import {
+  configuredSupportPaymentLinkCount,
+  supportPaymentLinks,
+} from '../config/support-payment-links.mjs';
+
+interface Props { lang?: 'fr' | 'en' }
+const { lang = 'fr' } = Astro.props;
+const en = lang === 'en';
+const paymentLinksReady = configuredSupportPaymentLinkCount === 4;
+const monthlyOptions = [
+  { amount: en ? '€5' : '5 €', href: supportPaymentLinks.monthly5 },
+  { amount: en ? '€10' : '10 €', href: supportPaymentLinks.monthly10 },
+  { amount: en ? '€25' : '25 €', href: supportPaymentLinks.monthly25 },
+];
+const trust = en ? [
+  ['Editorial independence', 'A contribution gives no control over topics, sources, methods or conclusions.'],
+  ['Public access', 'No public article, dataset or analysis tool is reserved for contributors.'],
+  ['Voluntary contribution', 'l0g is operated as a French sole proprietorship. The contribution is not presented as a charitable donation and no tax-deduction receipt is issued.'],
+  ['Your privacy', 'Contributor names are not published, and no contributor list is sold or used for commercial targeting.'],
+] : [
+  ['Indépendance éditoriale', 'Une contribution ne donne aucun droit de regard sur les sujets, les sources ou les conclusions.'],
+  ['Accès public', 'Aucun contenu, donnée ou outil public n’est réservé aux contributeurs.'],
+  ['Cadre fiscal', 'l0g est exploité en entreprise individuelle. Le soutien n’ouvre droit à aucune réduction d’impôt.'],
+  ['Votre vie privée', 'Aucun nom de contributeur n’est publié et aucune liste n’est cédée ou utilisée à des fins commerciales.'],
+];
+---
+
+<div class="support-experience">
+  <section class="support-stage" aria-labelledby="support-title">
+    <div class="support-intro">
+      <p class="support-eyebrow"><span aria-hidden="true">♡</span> {en ? 'reader supported' : 'porté par ses lecteurs'}</p>
+      <h1 id="support-title">{en ? 'Keep independent' : 'Faites vivre'} <span>{en ? 'analysis open.' : 'l’analyse indépendante.'}</span></h1>
+      <p class="support-lede">{en
+        ? 'Sourced investigations. Public tools. Your support helps keep them going.'
+        : 'Des enquêtes sourcées. Des outils publics. Votre soutien aide à les faire durer.'}</p>
+      <div class="support-circuit" aria-hidden="true">
+        <span>{en ? 'you' : 'vous'}</span><i></i><b>l0g<span>_</span></b><i></i><span>{en ? 'everyone' : 'tous'}</span>
+      </div>
+      <p class="support-open">{en ? 'The analysis stays independent. Access stays public.' : 'L’analyse reste indépendante. L’accès reste public.'}</p>
+    </div>
+
+    <section class="support-ticket" aria-labelledby="support-choice">
+      <header class="ticket-header">
+        <div>
+          <p class="support-eyebrow">{en ? 'support l0g' : 'soutenir l0g'}</p>
+          <h2 id="support-choice">{en ? 'Your support. Your pace.' : 'À votre rythme.'}</h2>
+        </div>
+        <span class="ticket-heart" aria-hidden="true">♡</span>
+      </header>
+
+      {!paymentLinksReady && <p class="setup-note" role="status">{en
+        ? 'The Stripe payment links are not active. No payment can be initiated from this page.'
+        : 'Les liens de paiement Stripe ne sont pas encore activés. Aucun paiement ne peut être envoyé depuis cette page pour le moment.'}</p>}
+
+      {paymentLinksReady && supportPaymentLinks.oneTime ? (
+        <a class="payment-link payment-once" href={supportPaymentLinks.oneTime} rel="external nofollow" aria-describedby="payment-note">
+          <span class="payment-caption">{en ? 'One time' : 'Une fois'}</span>
+          <strong>{en ? 'Any amount' : 'Montant libre'}</strong>
+          <span class="payment-action">{en ? 'Support l0g' : 'Je soutiens l0g'} <span aria-hidden="true">↗</span></span>
+        </a>
+      ) : (
+        <span class="payment-link payment-once is-disabled" aria-disabled="true">{en ? 'One-time support: coming soon' : 'Soutien ponctuel : bientôt disponible'}</span>
+      )}
+
+      <div class="monthly-heading">
+        <h3>{en ? 'Or every month' : 'Ou chaque mois'}</h3>
+        <span>{en ? 'Cancel anytime' : 'Arrêt à tout moment'}</span>
+      </div>
+      <div class="monthly-choices">
+        {monthlyOptions.map((option) => paymentLinksReady && option.href ? (
+          <a class="payment-link payment-monthly" href={option.href} rel="external nofollow" aria-describedby="payment-note">
+            <strong>{option.amount}</strong>
+            <span>{en ? '/ month' : '/ mois'}</span>
+            <span class="monthly-arrow" aria-hidden="true">↗</span>
+          </a>
+        ) : (
+          <span class="payment-link payment-monthly is-disabled" aria-disabled="true"><strong>{option.amount}</strong><span>{en ? 'Coming soon' : 'Bientôt'}</span></span>
+        ))}
+      </div>
+      <p class="payment-note" id="payment-note"><span aria-hidden="true">↗</span> {en ? 'Secure payment on Stripe, after your click.' : 'Paiement sécurisé sur Stripe, après votre clic.'}</p>
+      <div class="ticket-footer"><span>{en ? 'Voluntary contribution' : 'Contribution volontaire'}</span><span>{en ? 'No private access' : 'Sans contrepartie'}</span></div>
+    </section>
+  </section>
+
+  <section class="support-purpose" aria-labelledby="support-purpose-title">
+    <h2 id="support-purpose-title">{en ? 'Help sustain the work behind every page.' : 'Derrière chaque page, un travail à soutenir.'}</h2>
+    <div class="purpose-items">
+      <p><span aria-hidden="true">01 /</span> Infrastructure</p>
+      <p><span aria-hidden="true">02 /</span> {en ? 'Data collection' : 'Collecte de données'}</p>
+      <p><span aria-hidden="true">03 /</span> {en ? 'Research & analysis' : 'Recherche & analyse'}</p>
+    </div>
+  </section>
+
+  <section class="support-trust" aria-labelledby="support-contract">
+    <p class="support-eyebrow">{en ? 'our commitment' : 'notre engagement'}</p>
+    <h2 id="support-contract">{en ? 'Independence, at every step.' : 'L’indépendance, à chaque étape.'}</h2>
+    <div class="trust-grid">
+      {trust.map(([heading, detail], index) => <article><span class="trust-index" aria-hidden="true">0{index + 1}</span><h3>{heading}</h3><p>{detail}</p></article>)}
+    </div>
+  </section>
+
+  <section class="stripe-boundary" id="stripe-boundary" aria-labelledby="stripe-title">
+    <div><p class="support-eyebrow">{en ? 'before leaving l0g' : 'avant de quitter l0g'}</p><h2 id="stripe-title">{en ? 'Your payment, in clear terms.' : 'Votre paiement, en toute clarté.'}</h2></div>
+    <div class="boundary-copy">
+      {en ? <>
+        <p>Active buttons open an official Stripe payment domain: <strong>donate.stripe.com</strong> or <strong>buy.stripe.com</strong>. No Stripe script, pixel, form or cookie is loaded on l0g before you click.</p>
+        <p>Stripe then processes the information required for payment under its own privacy policy. l0g receives only the transaction information needed to track the contribution and meet its accounting obligations.</p>
+        <p>Monthly support can be stopped through Stripe’s management tools or by writing to <a href="mailto:olivier@l0g.fr">olivier@l0g.fr</a>.</p>
+      </> : <>
+        <p>Les boutons actifs ouvrent un domaine de paiement Stripe officiel : <strong>donate.stripe.com</strong> ou <strong>buy.stripe.com</strong>. Aucun script, pixel, formulaire ou cookie Stripe n’est chargé sur cette page avant votre clic.</p>
+        <p>Stripe traite ensuite les informations nécessaires au paiement selon sa propre politique de confidentialité. l0g reçoit uniquement les informations de transaction nécessaires au suivi du soutien et à ses obligations comptables.</p>
+        <p>Un soutien mensuel peut être arrêté depuis les outils de gestion Stripe ou en écrivant à <a href="mailto:olivier@l0g.fr">olivier@l0g.fr</a>.</p>
+      </>}
+      <div class="boundary-links">
+        <a href="/rgpd/">{en ? 'l0g privacy notice in French' : 'Confidentialité l0g'}</a>
+        <a href={en ? 'https://stripe.com/privacy' : 'https://stripe.com/fr/privacy'} rel="external nofollow noopener" target="_blank">{en ? 'Stripe privacy policy' : 'Confidentialité Stripe'} <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .support-experience { width: min(100%, 66rem); margin-inline: auto; }
+  .support-stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr); align-items: center; gap: clamp(1.5rem, 5vw, 4rem); }
+  .support-eyebrow { display: flex; align-items: center; gap: 0.55rem; color: var(--color-signal); font: 650 0.65rem/1.4 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; }
+  .support-eyebrow > span { color: var(--color-amber); font-size: 1.25rem; }
+  .support-intro h1 { margin-top: 0.9rem; color: var(--color-bright); font: 650 clamp(1.8rem, 3.3vw, 2.8rem)/1.12 var(--font-display); letter-spacing: -0.055em; text-wrap: balance; }
+  .support-intro h1 > span { display: block; color: var(--color-signal); }
+  .support-lede { max-width: 36ch; margin-top: 1.1rem; color: var(--color-paper); font: 400 1rem/1.65 var(--font-read); }
+  .support-circuit { display: flex; align-items: center; gap: 0.75rem; max-width: 23rem; margin-top: 2.2rem; color: var(--color-muted); font: 500 0.65rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; }
+  .support-circuit b { display: grid; grid-template-columns: auto auto; place-content: center; width: 3.5rem; height: 3.5rem; flex-shrink: 0; border: 1px solid color-mix(in srgb, var(--color-signal) 40%, var(--color-line)); border-radius: 50%; color: var(--color-paper); font-size: 1.05rem; letter-spacing: -0.06em; text-transform: none; box-shadow: 0 0 30px color-mix(in srgb, var(--color-signal) 8%, transparent); }
+  .support-circuit b span { color: var(--color-amber); }
+  .support-circuit i { position: relative; flex: 1; height: 1px; background: linear-gradient(90deg, var(--color-signal), color-mix(in srgb, var(--color-signal) 24%, transparent)); transition: box-shadow 180ms ease; }
+  .support-circuit i::after { content: ''; position: absolute; width: 5px; height: 5px; top: -2px; right: 0; border-radius: 50%; background: var(--color-signal); }
+  .support-circuit i:last-of-type { background: linear-gradient(90deg, var(--color-signal), var(--color-amber)); }
+  .support-circuit i:last-of-type::after { background: var(--color-amber); }
+  .support-stage:has(.payment-link:hover, .payment-link:focus-visible) .support-circuit i { box-shadow: 0 0 12px color-mix(in srgb, var(--color-signal) 65%, transparent); }
+  .support-open { margin-top: 0.8rem; max-width: 36ch; color: var(--color-muted); font: 400 0.8rem/1.6 var(--font-read); }
+  .support-ticket { position: relative; min-width: 0; overflow: hidden; border: 1px solid color-mix(in srgb, var(--color-signal) 26%, var(--color-line)); border-radius: 18px 4px 18px 18px; padding: clamp(1rem, 2.5vw, 1.6rem); background: linear-gradient(145deg, color-mix(in srgb, var(--color-signal) 7%, transparent), transparent 60%), var(--surface-elevated); box-shadow: var(--shadow-elevated), inset 0 1px 0 var(--edge-highlight); }
+  .support-ticket::before { content: ''; position: absolute; top: 0; left: 1.6rem; right: 1.6rem; height: 2px; background: linear-gradient(90deg, var(--color-signal), var(--color-amber)); }
+  .ticket-header { display: flex; align-items: center; justify-content: space-between; gap: 0.7rem; margin-bottom: 1.1rem; }
+  .ticket-header > div { min-width: 0; }
+  .ticket-header h2 { margin-top: 0.25rem; color: var(--color-bright); font: 650 clamp(1.05rem, 1.8vw, 1.35rem)/1.3 var(--font-display); letter-spacing: -0.04em; }
+  .ticket-heart { display: grid; width: 2.5rem; height: 2.5rem; flex-shrink: 0; place-items: center; border: 1px solid color-mix(in srgb, var(--color-amber) 30%, var(--color-line)); border-radius: 50%; color: var(--color-amber); font: 400 1.65rem/1 var(--font-body); transform: rotate(-12deg); }
+  .payment-link { position: relative; display: flex; min-height: 44px; border: 1px solid color-mix(in srgb, var(--color-signal) 35%, var(--color-line)); border-radius: 10px 3px 10px 10px; color: var(--color-paper); text-decoration: none; transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease; }
+  .payment-link:hover { border-color: var(--color-signal); box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-signal) 24%, transparent); }
+  .payment-link:focus-visible, .boundary-links a:focus-visible, .boundary-copy p a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .payment-once { flex-direction: column; gap: 0.3rem; padding: 1rem; background: color-mix(in srgb, var(--color-signal) 8%, var(--color-surface)); }
+  .payment-caption { color: var(--color-paper); font: 500 0.75rem/1.4 var(--font-read); }
+  .payment-once strong { color: var(--color-bright); font: 650 clamp(1.25rem, 2vw, 1.65rem)/1.2 var(--font-display); letter-spacing: -0.04em; }
+  .payment-action { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: 0.5rem; border-radius: 5px 2px 5px 5px; padding: 0.65rem 0.75rem; background: var(--color-signal); color: var(--color-ink); font: 750 0.8rem/1.4 var(--font-mono); }
+  .payment-action > span { font-size: 1.1rem; }
+  .monthly-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.25rem 0.6rem; margin: 1rem 0 0.6rem; }
+  .monthly-heading h3 { color: var(--color-paper); font: 600 0.8rem/1.4 var(--font-read); }
+  .monthly-heading > span { color: var(--color-muted); font: 400 0.67rem/1.4 var(--font-read); }
+  .monthly-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
+  .payment-monthly { flex-direction: column; align-items: flex-start; gap: 0.25rem; padding: 0.85rem 0.7rem; background: color-mix(in srgb, var(--color-surface) 75%, transparent); }
+  .payment-monthly:hover { background: color-mix(in srgb, var(--color-signal) 9%, var(--color-surface)); }
+  .payment-monthly strong { color: var(--color-bright); font: 650 clamp(1rem, 1.9vw, 1.45rem)/1.2 var(--font-display); letter-spacing: -0.055em; }
+  .payment-monthly > span { color: var(--color-muted); font: 400 0.65rem/1.4 var(--font-read); }
+  .payment-monthly .monthly-arrow { position: absolute; right: 0.55rem; top: 0.45rem; color: var(--color-signal); font-size: 0.85rem; }
+  .payment-note { display: flex; gap: 0.4rem; margin-top: 0.85rem; color: var(--color-muted); font: 400 0.7rem/1.5 var(--font-read); }
+  .payment-note > span { color: var(--color-signal); }
+  .ticket-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.3rem 0.6rem; margin-top: 1rem; border-top: 1px dashed var(--color-line); padding-top: 0.8rem; color: var(--color-muted); font: 400 0.6rem/1.4 var(--font-mono); }
+  .is-disabled { color: var(--color-muted); opacity: 0.65; }
+  .setup-note { margin-bottom: 0.8rem; color: var(--color-amber); font: 400 0.85rem/1.5 var(--font-read); }
+  .support-purpose { margin-top: 2.5rem; border-block: 1px solid var(--color-line); padding-block: 1.2rem; }
+  .support-purpose h2 { color: var(--color-paper); font: 500 0.85rem/1.5 var(--font-read); }
+  .purpose-items { display: flex; flex-wrap: wrap; gap: 0.7rem 2rem; margin-top: 0.8rem; color: var(--color-paper); font: 500 0.7rem/1.5 var(--font-mono); }
+  .purpose-items span { margin-right: 0.3rem; color: var(--color-signal); }
+  .support-trust { margin-top: 2.8rem; }
+  .support-trust > h2, .stripe-boundary h2 { margin-top: 0.5rem; color: var(--color-bright); font: 600 clamp(1.15rem, 2.5vw, 1.6rem)/1.3 var(--font-display); letter-spacing: -0.045em; }
+  .trust-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+  .trust-grid article { border-top: 1px solid var(--color-line); padding-top: 0.85rem; }
+  .trust-index { color: var(--color-signal); font: 500 0.65rem/1.4 var(--font-mono); }
+  .trust-grid h3 { margin-top: 0.5rem; color: var(--color-paper); font: 600 0.9rem/1.4 var(--font-read); }
+  .trust-grid p, .boundary-copy p { margin-top: 0.55rem; color: var(--color-muted); font: 400 0.82rem/1.65 var(--font-read); }
+  .stripe-boundary { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 1.5rem 2.5rem; margin-top: 2.8rem; border-top: 1px solid var(--color-line); padding-top: 1.6rem; }
+  .boundary-copy p:first-child { margin-top: 0; }
+  .boundary-copy strong { color: var(--color-paper); font-weight: 500; overflow-wrap: anywhere; }
+  .boundary-copy a { color: var(--color-signal); text-decoration: underline; text-underline-offset: 3px; }
+  .boundary-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; margin-top: 0.8rem; font: 400 0.75rem/1.5 var(--font-read); }
+  .boundary-links a { display: inline-flex; align-items: center; min-height: 44px; }
+  @media (max-width: 760px) {
+    .support-stage { grid-template-columns: minmax(0, 1fr); gap: 1.3rem; }
+    .support-intro h1 { max-width: 25ch; font-size: clamp(1.6rem, 5.8vw, 2.3rem); }
+    .support-lede { max-width: 50ch; margin-top: 0.65rem; font-size: 0.9rem; line-height: 1.5; }
+    .support-circuit, .support-open { display: none; }
+    .ticket-header { margin-bottom: 0.8rem; }
+    .payment-once { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 0.75rem; align-items: center; padding: 0.85rem; }
+    .payment-action { grid-column: 2; grid-row: 1 / 3; margin-top: 0; min-height: 44px; padding: 0.5rem 0.65rem; font-size: 0.7rem; }
+    .payment-once strong { font-size: 1.2rem; }
+    .monthly-heading { margin-top: 0.8rem; }
+    .payment-monthly { padding: 0.8rem; }
+    .payment-monthly strong { font-size: 1.4rem; }
+    .ticket-footer { margin-top: 0.75rem; padding-top: 0.65rem; }
+    .trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stripe-boundary { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  }
+  @media (max-width: 380px) {
+    .support-intro h1 { margin-top: 0.65rem; }
+    .support-eyebrow { font-size: 0.6rem; }
+    .support-ticket { padding: 0.85rem; }
+    .payment-once { gap: 0.2rem 0.5rem; padding: 0.7rem; }
+    .payment-once strong { font-size: 1.05rem; }
+    .payment-action { font-size: 0.65rem; white-space: nowrap; }
+    .payment-monthly { padding: 0.8rem 0.6rem; }
+    .payment-monthly strong { font-size: 1.2rem; }
+    .trust-grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .payment-link, .support-circuit i { transition: none; }
+  }
+</style>

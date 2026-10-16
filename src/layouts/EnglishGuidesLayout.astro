@@ -22,6 +22,7 @@ interface Props {
   ogImageAlt?: string;
   canonical?: string;
   alternateLinks?: AlternateLink[];
+  compactNavigation?: boolean;
 }
 
 const {
@@ -36,6 +37,7 @@ const {
   ogImageAlt,
   canonical = new URL(Astro.url.pathname, Astro.site).toString(),
   alternateLinks = [],
+  compactNavigation = false,
 } = Astro.props;
 
 const publicationSocial = getPublicationSocial(Astro.url.pathname);
@@ -66,6 +68,9 @@ const nav = [
   { href: '/en/support/', label: 'support', active: Astro.url.pathname.startsWith('/en/support'), show: hasPage('src/pages/en/support/index.astro') },
   { href: '/', label: 'fr', active: false, show: true },
 ].filter((item) => item.show !== false);
+const visibleNav = compactNavigation
+  ? nav.filter((item) => ['/en/', '/en/support/', '/'].includes(item.href))
+  : nav;
 
 const footerLinks = [
   { href: '/en/guides/', label: 'guides', show: hasPage('src/pages/en/guides/index.astro') },
@@ -164,7 +169,7 @@ const siteJsonLd = {
         </a>
 
         <nav class="en-nav" aria-label="English navigation">
-          {nav.map((item) => (
+          {visibleNav.map((item) => (
             <a href={item.href} class="nav-tab" aria-current={item.active ? 'page' : undefined}>{item.label}</a>
           ))}
         </nav>

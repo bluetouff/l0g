@@ -59,6 +59,7 @@ test('la page active est visible dans la navigation, la recherche et les colonne
     englishGuidePage,
     englishLayout,
     supportCard,
+    supportExperience,
     footer,
     privacy,
     astroConfig,
@@ -72,6 +73,7 @@ test('la page active est visible dans la navigation, la recherche et les colonne
     readFile(new URL('../src/pages/en/guides/[...slug].astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/layouts/EnglishGuidesLayout.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/components/SupportCard.astro', import.meta.url), 'utf8'),
+    readFile(new URL('../src/components/SupportExperience.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/components/SiteFooter.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/pages/rgpd.astro', import.meta.url), 'utf8'),
     readFile(new URL('../astro.config.mjs', import.meta.url), 'utf8'),
@@ -79,14 +81,16 @@ test('la page active est visible dans la navigation, la recherche et les colonne
 
   assert.doesNotMatch(page, /robots="noindex,follow"/);
   assert.match(page, /data-pagefind-body/);
-  assert.match(page, /paymentLinksReady && supportPaymentLinks\.oneTime/);
-  assert.match(page, /paymentLinksReady && option\.href/);
+  assert.match(page, /<SupportExperience lang="fr"/);
+  assert.match(supportExperience, /paymentLinksReady && supportPaymentLinks\.oneTime/);
+  assert.match(supportExperience, /paymentLinksReady && option\.href/);
+  assert.match(supportExperience, /aria-disabled="true"/);
+  assert.doesNotMatch(supportExperience, /<iframe|<script[^>]+src=|js\.stripe\.com|stripe\.com\/v3/iu);
   assert.match(page, /\{ hreflang: 'en', href: 'https:\/\/l0g\.fr\/en\/support\/'/);
   assert.doesNotMatch(page, /\bCe qu(?:e|i|['’])/);
   assert.doesNotMatch(englishPage, /robots="noindex,follow"/);
   assert.match(englishPage, /data-pagefind-body/);
-  assert.match(englishPage, /paymentLinksReady && supportPaymentLinks\.oneTime/);
-  assert.match(englishPage, /paymentLinksReady && option\.href/);
+  assert.match(englishPage, /<SupportExperience lang="en"/);
   assert.match(englishPage, /inLanguage: 'en'/);
   assert.match(englishPage, /\{ hreflang: 'fr', href: frenchUrl \}/);
   assert.doesNotMatch(englishPage, /<iframe|<script[^>]+src=|js\.stripe\.com|stripe\.com\/v3/iu);
