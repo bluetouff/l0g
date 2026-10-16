@@ -621,7 +621,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Cours légal', nom: 'Legal tender', def: "Statut juridique obligeant à accepter un moyen de paiement pour éteindre une dette. Les billets en euros l'ont ; l'euro numérique l'aurait aussi, ce qui impose son acceptation à la plupart des commerçants. Argument central pour garantir l'universalité et l'unicité de la monnaie publique face aux moyens de paiement privés." },
       { sigle: 'Monnaie programmable', nom: 'Programmable money', def: "Monnaie dont l'usage peut être conditionné par du code : restreinte à certains biens, à une échéance ou à un usage. La BCE présente au contraire l'euro numérique comme non programmable, chaque unité restant fongible et dépensable partout, précisément pour préserver son cours légal et écarter le soupçon d'une monnaie de contrôle. À distinguer des paiements programmables, qui automatisent une transaction sans contraindre la monnaie elle-même." },
       { sigle: 'Grand livre unifié', nom: 'Unified ledger', def: "Concept formalisé par la BIS en 2023 : une plateforme programmable unique où coexistent monnaie de banque centrale tokenisée, dépôts bancaires tokenisés et actifs tokenisés. Permet le règlement atomique tout en préservant le système monétaire à deux niveaux." },
-      { sigle: 'Règlement atomique', nom: 'Atomic settlement', def: "Exécution indivisible d'une transaction où toutes les jambes aboutissent ou aucune. Sur un grand livre unifié, message, compensation et règlement s'effondrent en une seule étape, éliminant le risque de règlement partiel et de contrepartie." },
+      {"sigle": "Règlement atomique", "nom": "Atomic settlement", "def": "Mode de règlement qui rend indivisibles les composantes liées d’une transaction. Dans un échange titre contre paiement, la livraison définitive dépend du règlement du paiement correspondant. Cette condition traite le risque de livrer sans recevoir. La sécurité juridique et opérationnelle, la qualité de la monnaie de règlement et le financement restent à examiner.", "guide": "/posts/tokenisation-qui-finance-weekend/"},
+      {"sigle": "Compensation nette", "nom": "Netting", "def": "Réduction convenue d’obligations entre participants à des soldes nets à payer ou à recevoir, selon le droit et les règles applicables. Dans un exemple fictif entre deux parties devant échanger 100 et 90 dans la même monnaie et à la même échéance, le solde est 10. L’économie de liquidité dépend du périmètre effectivement compensable.", "guide": "/posts/tokenisation-qui-finance-weekend/"},
+      {"sigle": "Oracle de prix", "nom": "Donnée de prix transmise à un programme", "def": "Dispositif qui transmet à une application, par exemple un contrat intelligent, un prix issu de sources extérieures au programme. La valeur retenue dépend des marchés observés, de l’agrégation et de la fréquence de mise à jour. Un protocole de prêt peut l’utiliser pour évaluer une garantie. Elle peut différer du prix obtenu lors d’une vente importante.", "guide": "/posts/tokenisation-qui-finance-weekend/"},
       { sigle: 'PPSI', nom: 'Permitted Payment Stablecoin Issuer', def: "Statut d’émetteur de stablecoins de paiement prévu par le GENIUS Act : filiale agréée d’un établissement de dépôt assuré, émetteur fédéral qualifié ou émetteur agréé au niveau d’un État, dans les conditions de la loi. L’exclusivité d’émission aux États-Unis dépend de l’entrée en vigueur de ce régime ; une charte bancaire existante ne constitue pas à elle seule un agrément PPSI.", guide: '/guides/qui-applique-le-genius-act/' },
     ],
   },
@@ -2062,7 +2064,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       "label": "Qui tient la porte d’entrée de la DeFi ?",
       "href": "/posts/defi-intermediaires-acces-mica/",
       "kind": "article"
-    }
+    },
+    {"label": "Tokenisation : qui finance le dimanche ?", "href": "/posts/tokenisation-qui-finance-weekend/", "kind": "article"}
   ],
   "sources": [
     {
@@ -2074,7 +2077,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   "related": [
     "defi",
     "smart-contract",
-    "timelock"
+    "timelock",
+    "oracle-de-prix"
   ],
   "formula": "HF = valeur des garanties pondérée par les seuils de liquidation / valeur de la dette."
 },
@@ -2959,11 +2963,85 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     sources: [{ label: 'Chainlink, architecture de CCIP', href: 'https://docs.chain.link/ccip/concepts/architecture/overview', kind: 'source' }],
     related: ['tokenisation-des-actifs', 'smart-contract'],
   },
+  "reglement-atomique": {
+    "intuition": "La livraison et le paiement sont liés ; la liquidité nécessaire doit aussi être disponible.",
+    "articles": [
+      {
+        "label": "Tokenisation : qui finance le dimanche ?",
+        "href": "/posts/tokenisation-qui-finance-weekend/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "BRI/CPMI, tokenisation : règlement et risques",
+        "href": "https://www.bis.org/publications/tokenisation-context-money-and-other-assets-concepts-and-implications-central-banks.pdf",
+        "detail": "Pages 12–13, section 4 et annexe 1 : atomicité, risque en principal et liquidité.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "tokenisation-des-actifs",
+      "compensation-nette",
+      "oracle-de-prix"
+    ]
+  },
+  "compensation-nette": {
+    "intuition": "Le montant net à régler se distingue de la somme des paiements bruts.",
+    "articles": [
+      {
+        "label": "Tokenisation : qui finance le dimanche ?",
+        "href": "/posts/tokenisation-qui-finance-weekend/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "BCE, glossaire : netting",
+        "href": "https://www.bankingsupervision.europa.eu/services/glossary/html/glossn.en.html",
+        "detail": "Compensation convenue et réduction juridique d’obligations en un montant net bilatéral ou multilatéral.",
+        "kind": "source"
+      },
+      {
+        "label": "BRI/CPMI, règlement et besoins de liquidité",
+        "href": "https://www.bis.org/publications/tokenisation-context-money-and-other-assets-concepts-and-implications-central-banks.pdf",
+        "detail": "Pages 12–13 : liquidité des règlements immédiats, compensation et réemploi des fonds.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "reglement-atomique",
+      "tokenisation-des-actifs"
+    ]
+  },
+  "oracle-de-prix": {
+    "intuition": "Le prix utilisé par le programme et le produit d’une vente sont deux mesures distinctes.",
+    "articles": [
+      {
+        "label": "Tokenisation : qui finance le dimanche ?",
+        "href": "/posts/tokenisation-qui-finance-weekend/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Duley et al., BIS Bulletin 76 : le problème des oracles",
+        "href": "https://www.bis.org/publications/bulletin-76-oracle-problem-and-future-defi",
+        "detail": "Importation de données extérieures, sources de prix et dépendance à leur fiabilité.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "facteur-de-sante",
+      "tokenisation-des-actifs",
+      "reglement-atomique"
+    ]
+  },
   'tokenisation-des-actifs': {
     intuition: 'Un token peut circuler rapidement tout en restant dépendant d’un émetteur, d’un conservateur et de conditions de remboursement.',
-    articles: [{ label: 'Actions tokenisées : derrière les 2 %, une chaîne de crédit', href: '/posts/actions-tokenisees-xstocks-vaults-chaine-credit/', kind: 'article' }],
+    articles: [{ label: 'Actions tokenisées : derrière les 2 %, une chaîne de crédit', href: '/posts/actions-tokenisees-xstocks-vaults-chaine-credit/', kind: 'article' }, {"label": "Tokenisation : qui finance le dimanche ?", "href": "/posts/tokenisation-qui-finance-weekend/", "kind": "article"}],
     sources: [{ label: 'BRI, système monétaire et financier de nouvelle génération', href: 'https://www.bis.org/publications/aer-2025/next-generation-monetary-financial-system', kind: 'source' }, { label: 'ESMA, qualification des cryptoactifs en instruments financiers', href: 'https://www.esma.europa.eu/sites/default/files/2025-03/ESMA75453128700-1323_Guidelines_on_the_conditions_and_criteria_for_the_qualification_of_CAs_as_FIs.pdf', kind: 'source' }],
-    related: ['smart-contract', 'stablecoin'],
+    related: ['smart-contract', 'stablecoin', 'reglement-atomique', 'compensation-nette', 'oracle-de-prix'],
   },
   bdc: {
     intuition: "Une BDC cotée donne un prix de marché à son portefeuille. Une BDC non cotée peut offrir des rachats périodiques plafonnés ; les deux formes exposent l’investisseur à des conditions de sortie différentes.",

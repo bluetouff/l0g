@@ -1745,7 +1745,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         "label": "Who runs DeFi’s front door?",
         "href": "/en/analysis/defi-gateways-mica-access/",
         "kind": "article"
-      }
+      },
+      {"label": "Tokenized markets: who funds the weekend?", "href": "/en/analysis/tokenized-markets-weekend-funding/", "kind": "article"}
     ],
     "sources": [
       {
@@ -1757,7 +1758,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "related": [
       "defi",
       "smart-contract",
-      "timelock"
+      "timelock",
+      "oracle-de-prix"
     ],
     "formula": "HF = collateral value weighted by liquidation thresholds / debt value."
   }
@@ -2184,15 +2186,119 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    "slug": "reglement-atomique",
+    "sigle": "Atomic settlement",
+    "nom": "Linked settlement of transaction legs",
+    "def": "A settlement arrangement that makes the linked legs of a transaction indivisible. In delivery versus payment, final delivery is conditional on the corresponding payment settling. This addresses principal risk during the exchange. Legal and operational safeguards, the credit quality of the settlement asset and available funding still matter.",
+    "guide": "/en/analysis/tokenized-markets-weekend-funding/",
+    "sectionTitle": "Crypto & stablecoins",
+    "accent": "var(--color-amber)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "Linking delivery to payment still requires available settlement funds.",
+      "articles": [
+        {
+          "label": "Tokenized markets: who funds the weekend?",
+          "href": "/en/analysis/tokenized-markets-weekend-funding/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "BIS/CPMI, tokenisation: settlement and risks",
+          "href": "https://www.bis.org/publications/tokenisation-context-money-and-other-assets-concepts-and-implications-central-banks.pdf",
+          "detail": "Pages 12–13, section 4 and Annex 1: atomicity, principal risk and liquidity.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "tokenisation-des-actifs",
+        "compensation-nette",
+        "oracle-de-prix"
+      ]
+    }
+  },
+  {
+    "slug": "compensation-nette",
+    "sigle": "Netting",
+    "nom": "Offsetting obligations into net positions",
+    "def": "Agreed offsetting of obligations into net amounts payable or receivable under the applicable legal framework. In a fictional bilateral example, obligations of 100 and 90 in the same currency and at the same maturity leave a net payment of 10. Liquidity savings depend on which obligations can legally and operationally be included.",
+    "guide": "/en/analysis/tokenized-markets-weekend-funding/",
+    "sectionTitle": "Crypto & stablecoins",
+    "accent": "var(--color-amber)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "The net amount due differs from total gross payment turnover.",
+      "articles": [
+        {
+          "label": "Tokenized markets: who funds the weekend?",
+          "href": "/en/analysis/tokenized-markets-weekend-funding/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "ECB glossary: netting",
+          "href": "https://www.bankingsupervision.europa.eu/services/glossary/html/glossn.en.html",
+          "detail": "Agreed offsetting and legal reduction of obligations to a bilateral or multilateral net amount.",
+          "kind": "source"
+        },
+        {
+          "label": "BIS/CPMI, settlement and liquidity requirements",
+          "href": "https://www.bis.org/publications/tokenisation-context-money-and-other-assets-concepts-and-implications-central-banks.pdf",
+          "detail": "Pages 12–13: immediate settlement, netting and reuse of funds.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "reglement-atomique",
+        "tokenisation-des-actifs"
+      ]
+    }
+  },
+  {
+    "slug": "oracle-de-prix",
+    "sigle": "Price oracle",
+    "nom": "Price input supplied to an application",
+    "def": "A mechanism that supplies an application, such as a smart contract, with an external price. Its output depends on the sources, aggregation rules and update schedule. Lending systems may use it to assess collateral coverage. The reported value can differ from the price a large sale would obtain.",
+    "guide": "/en/analysis/tokenized-markets-weekend-funding/",
+    "sectionTitle": "Crypto & stablecoins",
+    "accent": "var(--color-amber)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "A contract’s pricing input and an executable sale price describe different things.",
+      "articles": [
+        {
+          "label": "Tokenized markets: who funds the weekend?",
+          "href": "/en/analysis/tokenized-markets-weekend-funding/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Duley et al., BIS Bulletin 76: the oracle problem",
+          "href": "https://www.bis.org/publications/bulletin-76-oracle-problem-and-future-defi",
+          "detail": "External data inputs, price sources and reliance on their integrity.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "facteur-de-sante",
+        "tokenisation-des-actifs",
+        "reglement-atomique"
+      ]
+    }
+  },
+  {
     slug: 'tokenisation-des-actifs', sigle: 'Asset tokenisation', nom: 'Digital representation of assets or legal claims',
     def: 'Digital representation of an asset or a legal claim on a programmable ledger. A token may represent the security itself, a certificate issued by a third party or another contractual right. The technology can simplify transfers and settlement; rights, collateral and liquidity depend on the instrument and its legal arrangements.',
     guide: '/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/',
     ...cryptoSection,
     atlas: {
       intuition: 'A token may move quickly while still depending on an issuer, a custodian and redemption conditions.',
-      articles: [{ label: 'Tokenised stocks: the credit behind the extra yield', href: '/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/', kind: 'article' }],
+      articles: [{ label: 'Tokenised stocks: the credit behind the extra yield', href: '/en/analysis/tokenized-stocks-xstocks-vaults-credit-yield/', kind: 'article' }, {"label": "Tokenized markets: who funds the weekend?", "href": "/en/analysis/tokenized-markets-weekend-funding/", "kind": "article"}],
       sources: [{ label: 'BIS, the next-generation monetary and financial system', href: 'https://www.bis.org/publications/aer-2025/next-generation-monetary-financial-system', kind: 'source' }, { label: 'ESMA, qualification of crypto-assets as financial instruments', href: 'https://www.esma.europa.eu/sites/default/files/2025-03/ESMA75453128700-1323_Guidelines_on_the_conditions_and_criteria_for_the_qualification_of_CAs_as_FIs.pdf', kind: 'source' }],
-      related: ['smart-contract', 'stablecoin'],
+      related: ['smart-contract', 'stablecoin', 'reglement-atomique', 'compensation-nette', 'oracle-de-prix'],
     },
   },
   {

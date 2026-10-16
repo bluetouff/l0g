@@ -1,0 +1,68 @@
+---
+import { tokenisationWeekendSvg, TOKENISATION_WEEKEND_KINDS } from '../lib/tokenisationWeekendFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'calendar' | 'stock' | 'funding' | 'quote' | 'collateral' | 'settlement' | 'evidence';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-7])$/.test(number) || TOKENISATION_WEEKEND_KINDS.indexOf(kind) + 1 !== Number(number) || !TOKENISATION_WEEKEND_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid Tokenisation weekend figure variant');
+}
+const references = sources.trim() ? sources.trim().split(/\s+/) : [];
+if (references.length === 0 || references.some((id) => !/^(?:0[1-9]|1[0-8])$/.test(id))) {
+  throw new TypeError('Invalid Tokenisation weekend source reference');
+}
+// Add only the root responsive contract to the reviewed static XML at render time.
+const responsiveSvg = (mobile: boolean) => tokenisationWeekendSvg(lang, kind, mobile).replace(/^<svg /u, '<svg style="width:100%;height:auto" ');
+---
+<figure class="tokenisation-weekend-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="tokenisation-weekend-desktop" set:html={responsiveSvg(false)} />
+  <div class="tokenisation-weekend-mobile" set:html={responsiveSvg(true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="tokenisation-weekend-references">{references.map((id) => <a href={`#source-s${id}`}>[S{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  /* These scoped aliases override the passive exports' standalone palette.
+     Preserve supplied geometry; approved text edits only. */
+  .tokenisation-weekend-figure :global(svg.l0g-tkn-svg) {
+    --bg: var(--color-ink); --panel: var(--color-surface-2);
+    --ink: var(--color-paper); --muted: var(--color-muted); --grid: var(--color-line-strong);
+    --teal: var(--color-signal); --red: var(--color-accent); --gold: var(--color-amber);
+    --blue: var(--color-topic-blue); --white: var(--color-ink);
+  }
+  .tokenisation-weekend-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .tokenisation-weekend-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .tokenisation-weekend-desktop { margin-inline: auto; }
+  .tokenisation-weekend-figure[data-kind="collateral"] .tokenisation-weekend-desktop { max-width: 586px; }
+  .tokenisation-weekend-figure[data-kind="settlement"] .tokenisation-weekend-desktop { max-width: 598px; }
+  .tokenisation-weekend-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .tokenisation-weekend-references { display: block; }
+  .tokenisation-weekend-references a { margin-right: .75em; }
+  .tokenisation-weekend-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .tokenisation-weekend-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .tokenisation-weekend-figure :global(details p) { margin: .7rem 0; }
+  :global(.tokenisation-weekend-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.tokenisation-weekend-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .tokenisation-weekend-desktop { display: none; }
+    .tokenisation-weekend-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .tokenisation-weekend-desktop { display: none; }
+    .tokenisation-weekend-mobile { display: block; }
+  }
+  .tokenisation-weekend-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .tokenisation-weekend-figure { break-inside: avoid; }
+    .tokenisation-weekend-desktop { display: block; }
+    .tokenisation-weekend-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  }
+</style>
