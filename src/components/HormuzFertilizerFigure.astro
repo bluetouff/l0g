@@ -1,0 +1,68 @@
+---
+import { hormuzFertilizerSvg, HORMUZ_FERTILIZER_KINDS } from '../lib/hormuzFertilizerFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'corridor' | 'inputs' | 'prices' | 'trade' | 'bangladesh' | 'timing';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || HORMUZ_FERTILIZER_KINDS.indexOf(kind) + 1 !== Number(number) || !HORMUZ_FERTILIZER_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid Hormuz fertilizer figure variant');
+}
+const references = sources.trim() ? sources.trim().split(/\s+/) : [];
+if ((kind === 'timing' ? references.length !== 0 : references.length === 0) || references.some((id) => !/^(?:0[1-9]|1[0-8])$/.test(id))) {
+  throw new TypeError('Invalid Hormuz fertilizer source reference');
+}
+// Add only the root responsive contract to the reviewed static XML at render time.
+const responsiveSvg = (mobile: boolean) => hormuzFertilizerSvg(lang, kind, mobile).replace(/^<svg /u, '<svg style="width:100%;height:auto" ');
+---
+<figure class="hormuz-fertilizer-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="hormuz-fertilizer-desktop" set:html={responsiveSvg(false)} />
+  <div class="hormuz-fertilizer-mobile" set:html={responsiveSvg(true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="hormuz-fertilizer-references">{references.map((id) => <a href={`#source-s${id}`}>[S{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Fertilizer'; src: url('/fonts/hormuz-fertilizer/liberation-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g Fertilizer'; src: url('/fonts/hormuz-fertilizer/liberation-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  /* These scoped aliases override the passive exports' standalone palette.
+     Keep the supplied SVG bytes and all geometry intact. */
+  .hormuz-fertilizer-figure :global(svg.l0g-fert-svg) {
+    --bg: var(--color-ink); --panel: var(--color-surface-2);
+    --ink: var(--color-paper); --muted: var(--color-muted); --grid: var(--color-line-strong);
+    --teal: var(--color-signal); --red: var(--color-accent); --gold: var(--color-amber);
+    --blue: var(--color-topic-blue); --white: var(--color-ink);
+  }
+  .hormuz-fertilizer-figure :global(svg text) { font-family: 'l0g Fertilizer', 'Liberation Sans', Arial, sans-serif; }
+  .hormuz-fertilizer-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .hormuz-fertilizer-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .hormuz-fertilizer-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .hormuz-fertilizer-references { display: block; }
+  .hormuz-fertilizer-references a { margin-right: .75em; }
+  .hormuz-fertilizer-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .hormuz-fertilizer-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .hormuz-fertilizer-figure :global(details p) { margin: .7rem 0; }
+  :global(.hormuz-fertilizer-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.hormuz-fertilizer-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .hormuz-fertilizer-desktop { display: none; }
+    .hormuz-fertilizer-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .hormuz-fertilizer-desktop { display: none; }
+    .hormuz-fertilizer-mobile { display: block; }
+  }
+  .hormuz-fertilizer-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .hormuz-fertilizer-figure { break-inside: avoid; }
+    .hormuz-fertilizer-desktop { display: block; }
+    .hormuz-fertilizer-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  }
+</style>

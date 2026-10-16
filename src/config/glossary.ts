@@ -39,6 +39,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
   "titre": "Industrie & santé",
   "accent": "var(--color-signal)",
   "entries": [
+    { sigle: 'Urée', nom: 'Engrais azoté à 46 % d’azote', def: 'Engrais azoté commercialisé notamment sous forme de billes ou de granulés. Le produit courant contient 46 % d’azote en masse : 100 tonnes d’urée apportent donc 46 tonnes d’azote. Cette teneur ne mesure ni la quantité absorbée par la plante ni le rendement obtenu, qui dépendent notamment des conditions d’application et du sol.', guide: '/posts/ormuz-engrais-pari-cinq-navires/' },
+    { sigle: 'DAP', nom: 'Phosphate diammonique', def: 'Engrais associant azote et phosphore, fabriqué à partir d’ammoniac et d’acide phosphorique. Son grade courant 18-46-0 contient 18 % d’azote et 46 % de phosphate disponible exprimé en équivalent P₂O₅. Ce second chiffre ne représente pas une teneur en phosphore élémentaire ni la part automatiquement absorbée par la culture.', guide: '/posts/ormuz-engrais-pari-cinq-navires/' },
     { sigle: 'Capitation', nom: 'Paiement forfaitaire par patient et par période', def: 'Mode de rémunération dans lequel un médecin ou un groupe de médecins reçoit un montant fixé par patient et par période, généralement mensuelle, pour un ensemble défini de services et de frais, indépendamment du nombre de prestations réalisées. Le périmètre couvert et les protections contractuelles déterminent le risque de dépenses porté par le prestataire. Ce paiement ne mesure pas la qualité des soins.', guide: '/posts/humana-blackrock-promesse-cliniques/' },
     {
       "sigle": "Cyclotron",
@@ -1057,6 +1059,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  uree: {
+    articles: [{ label: 'Ormuz : le pari des cinq navires', href: '/posts/ormuz-engrais-pari-cinq-navires/', detail: 'Produits transportés, financement et calendrier des cultures.', kind: 'article' }],
+    sources: [{ label: 'University of Minnesota Extension, Fertilizer urea', href: 'https://extension.umn.edu/agriculture/crop-production/nutrient-management-for-minnesota-crops/fertilizer-urea', detail: 'Teneur de 46 % d’azote et rôle des conditions d’application ; aucun conseil d’épandage local déduit.', kind: 'source' }],
+    related: ['dap', 'chokepoint'],
+  },
+  dap: {
+    articles: [{ label: 'Ormuz : le pari des cinq navires', href: '/posts/ormuz-engrais-pari-cinq-navires/', detail: 'Soufre, phosphates et disponibilité des engrais pour les exploitants.', kind: 'article' }],
+    sources: [{ label: 'University of Minnesota Extension, Understanding phosphorus fertilizers', href: 'https://extension.umn.edu/agriculture/crop-production/nutrient-management-for-minnesota-crops/understanding-phosphorus-fertilizers', detail: 'Fabrication et grade 18-46-0 ; tableau 1 : phosphate disponible exprimé en P₂O₅, distinct du phosphore élémentaire.', kind: 'source' }],
+    related: ['uree', 'chokepoint'],
+  },
   swift: {
     intuition: 'Le message peut être arrivé alors que le fournisseur attend encore le crédit sur son compte.',
     whyNow: 'Le dossier A7 invite à distinguer la transmission d’une instruction, la devise disponible et le crédit effectif du fournisseur.',
@@ -3173,7 +3185,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   chokepoint: {
     intuition: "L’exposition à un passage ne mesure pas une perte de production. Un détour peut maintenir les livraisons en mobilisant davantage de navires, de temps et de financement.",
     whyNow: "Dans le Bulletin 138 publié par la BRI le 15 octobre 2026, les auteurs soulignent que les stocks et la substitution peuvent amortir les effets sur la production tout en renchérissant les intrants. Leur efficacité dépend de la durée du choc et des solutions réellement disponibles.",
-    articles: [{ label: 'Détroits : le prix des jours gagnés', href: '/posts/detroits-prix-des-jours-gagnes/', detail: 'Stocks utilisables, détours et financement de l’attente ; observations distinctes des scénarios.', kind: 'article' }, energyArticles[2], energyArticles[3], energyArticles[4]],
+    articles: [{ label: 'Ormuz : le pari des cinq navires', href: '/posts/ormuz-engrais-pari-cinq-navires/', detail: 'Passage proposé pour les engrais, composition des cargaisons et calendrier des cultures.', kind: 'article' }, { label: 'Détroits : le prix des jours gagnés', href: '/posts/detroits-prix-des-jours-gagnes/', detail: 'Stocks utilisables, détours et financement de l’attente ; observations distinctes des scénarios.', kind: 'article' }, energyArticles[2], energyArticles[3], energyArticles[4]],
     guides: [energyGuides[0]],
     datasets: energyDatasets,
     signals: energySignals,

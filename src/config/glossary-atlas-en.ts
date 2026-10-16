@@ -210,6 +210,26 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'uree', sigle: 'Urea', nom: 'Nitrogen fertilizer containing 46% nitrogen',
+    def: 'A nitrogen fertilizer sold as prills or granules. The standard product contains 46% nitrogen by mass, so 100 tonnes of urea provide 46 tonnes of nitrogen. That concentration measures neither crop uptake nor yield, which also depend on soil and application conditions.',
+    guide: '/en/analysis/hormuz-fertilizer-corridor-crop-calendar/', sectionTitle: 'Industry & healthcare', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Hormuz: five ships and the crop calendar', href: '/en/analysis/hormuz-fertilizer-corridor-crop-calendar/', detail: 'Cargo composition, financing and the crop calendar.', kind: 'article' }],
+      sources: [{ label: 'University of Minnesota Extension, Fertilizer urea', href: 'https://extension.umn.edu/agriculture/crop-production/nutrient-management-for-minnesota-crops/fertilizer-urea', detail: '46% nitrogen content and application conditions; no local application recommendation inferred.', kind: 'source' }],
+      related: ['dap', 'chokepoint'],
+    },
+  },
+  {
+    slug: 'dap', sigle: 'DAP', nom: 'Diammonium phosphate',
+    def: 'A fertilizer supplying nitrogen and phosphorus, manufactured from ammonia and phosphoric acid. Its standard 18-46-0 grade contains 18% nitrogen and 46% available phosphate expressed as P₂O₅ equivalent. The second figure is neither elemental phosphorus content nor the share automatically taken up by a crop.',
+    guide: '/en/analysis/hormuz-fertilizer-corridor-crop-calendar/', sectionTitle: 'Industry & healthcare', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Hormuz: five ships and the crop calendar', href: '/en/analysis/hormuz-fertilizer-corridor-crop-calendar/', detail: 'Sulfur, phosphates and fertilizer availability for growers.', kind: 'article' }],
+      sources: [{ label: 'University of Minnesota Extension, Understanding phosphorus fertilizers', href: 'https://extension.umn.edu/agriculture/crop-production/nutrient-management-for-minnesota-crops/understanding-phosphorus-fertilizers', detail: 'Manufacturing and 18-46-0 grade; table 1 reports available phosphate as P₂O₅, distinct from elemental phosphorus.', kind: 'source' }],
+      related: ['uree', 'chokepoint'],
+    },
+  },
+  {
     slug: 'swift', sigle: 'SWIFT', nom: 'Society for Worldwide Interbank Financial Telecommunication',
     def: 'A secure financial messaging network that carries instructions between institutions. Swift is not a bank: it does not hold funds or manage accounts for its customers. Transfers and settlement are performed by the institutions and infrastructures involved. Disconnection from messaging is distinct from an asset freeze or a transaction ban, whose scope depends on the applicable law.',
     guide: '/en/analysis/a7-banks-russia-payment-detour/', ...usRegulationSection, robots: 'noindex,follow',
@@ -3727,7 +3747,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     atlas: {
       intuition: 'Exposure to a passage is not a measure of lost output. A detour can keep supplies moving while requiring more vessel time and financing.',
       whyNow: 'In BIS Bulletin 138, published on 15 October 2026, the authors explain that inventories and substitution can cushion output while raising input costs. The protection they provide depends on how long disruption lasts and which alternatives are actually available.',
-      articles: [{ label: 'Shipping chokepoints: the cost of buying time', href: '/en/analysis/shipping-chokepoints-cost-of-buying-time/', detail: 'Usable inventories, diversions and financing the wait; observations kept distinct from illustrative scenarios.', kind: 'article' }, oilArticles[2], oilArticles[3], oilArticles[4]],
+      articles: [{ label: 'Hormuz: five ships and the crop calendar', href: '/en/analysis/hormuz-fertilizer-corridor-crop-calendar/', detail: 'Proposed fertilizer passage, cargo composition and the crop calendar.', kind: 'article' }, { label: 'Shipping chokepoints: the cost of buying time', href: '/en/analysis/shipping-chokepoints-cost-of-buying-time/', detail: 'Usable inventories, diversions and financing the wait; observations kept distinct from illustrative scenarios.', kind: 'article' }, oilArticles[2], oilArticles[3], oilArticles[4]],
       guides: [oilGuide],
       ...energyShared,
       sources: [
