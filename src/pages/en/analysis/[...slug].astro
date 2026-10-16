@@ -30,7 +30,7 @@ const hasDebtEpub = debtEditions.en.chapters.some(chapter => chapter.slug === po
 const sourcePost = (await getCollection('posts')).find((entry) => entry.id === post.data.sourceArticle);
 const { Content } = await render(post);
 
-const fmt = (d: Date) => d.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' });
 const updated = post.data.updatedDate ?? post.data.pubDate;
 const publishedLabel = fmt(post.data.pubDate);
 const updatedLabel = fmt(updated);

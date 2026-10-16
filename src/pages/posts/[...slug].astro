@@ -27,6 +27,7 @@ import { glossaryEntries, glossaryEntryBySlug } from '../../config/glossary.ts';
 import { buildArticleEvidence, type ClaimEvidence } from '../../lib/article-evidence.ts';
 import { glossarySearchText, textContainsGlossaryToken } from '../../lib/glossary-matching.mjs';
 import { readingTime } from '../../lib/reading-time.ts';
+import { formatDateFr } from '../../lib/freshness.ts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -51,11 +52,7 @@ const hasDebtEpub = debtEditions.fr.chapters.some(chapter => chapter.slug === po
 const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
 const { Content, headings } = await render(post);
 
-const dateLabel = post.data.pubDate.toLocaleDateString('fr-FR', {
-  day: '2-digit',
-  month: 'long',
-  year: 'numeric',
-});
+const dateLabel = formatDateFr(post.data.pubDate);
 const refDate = post.data.updatedDate ?? post.data.pubDate;
 const iso = post.data.pubDate.toISOString();
 const rt = readingTime(post.body);
@@ -356,7 +353,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty
             <dt>Mise à jour</dt>
             <dd>
               <time datetime={post.data.updatedDate.toISOString()}>
-                {post.data.updatedDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })}
+                {formatDateFr(post.data.updatedDate)}
               </time>
             </dd>
           </div>
@@ -498,12 +495,12 @@ const quickUncertainty = post.data.quickTake?.uncertainty
       <ul>
         <li>
           <span>publication</span>
-          <time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })}</time>
+          <time datetime={post.data.pubDate.toISOString()}>{formatDateFr(post.data.pubDate)}</time>
         </li>
         {post.data.updatedDate ? (
           <li>
             <span>révision</span>
-            <time datetime={post.data.updatedDate.toISOString()}>{post.data.updatedDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })}</time>
+            <time datetime={post.data.updatedDate.toISOString()}>{formatDateFr(post.data.updatedDate)}</time>
           </li>
         ) : (
           <li>

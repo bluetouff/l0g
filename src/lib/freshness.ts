@@ -29,7 +29,7 @@ export function freshnessFor(date: Date, now = new Date()): FreshnessInfo {
 }
 
 export function formatDateFr(date: Date): string {
-  return date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+  return date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' });
 }
 
 export function dateFromIsoDate(isoDate: string): Date {

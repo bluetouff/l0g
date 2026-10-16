@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
@@ -124,4 +125,36 @@ test("un identifiant stable départage les dates strictement identiques", () => 
     sortPostsByLatestDate(posts).map(({ id }) => id),
     ["a-post", "z-post"],
   );
+});
+
+// A publication instant must display the same Paris calendar day on developer and CI hosts.
+test("les dates visibles des analyses FR et EN gardent le jour de Paris indépendamment du fuseau du build", () => {
+  const english = source("src/pages/en/analysis/[...slug].astro");
+  const matches = [...english.matchAll(/^const fmt = \(d: Date\) => ([^\n]+);$/gm)];
+  assert.equal(matches.length, 1);
+  const french = source("src/lib/freshness.ts").match(/export function formatDateFr\(date: Date\): string \{\s*return ([^\n]+);\s*\}/);
+  assert.ok(french);
+  const template = source("src/pages/posts/[...slug].astro");
+  assert.match(template, /import \{ formatDateFr \} from '\.\.\/\.\.\/lib\/freshness\.ts'/);
+  assert.match(template, /const dateLabel = formatDateFr\(post\.data\.pubDate\);/);
+  assert.equal((template.match(/formatDateFr\(post\.data\.(?:pubDate|updatedDate)\)/g) ?? []).length, 4);
+  assert.doesNotMatch(template, /toLocaleDateString/);
+  assert.match(source("src/components/CitationBox.astro"), /formatDateFr\(value\)/);
+  const dates = ['2026-10-17T00:31:11+02:00', '2026-01-01T00:30:00+01:00', '2026-03-29T01:30:00Z', '2026-10-25T01:30:00Z', '2026-06-30T22:15:00Z', '2026-12-31T23:15:00Z'];
+  const expected = {
+    en: ['October 17, 2026', 'January 01, 2026', 'March 29, 2026', 'October 25, 2026', 'July 01, 2026', 'January 01, 2027'],
+    fr: ['17 octobre 2026', '01 janvier 2026', '29 mars 2026', '25 octobre 2026', '01 juillet 2026', '01 janvier 2027'],
+  };
+  const run = (expression, timezone, parameter) => JSON.parse(execFileSync(process.execPath, [
+    '--input-type=module', '-e',
+    `const fmt = ${parameter} => ${expression}; process.stdout.write(JSON.stringify(${JSON.stringify(dates)}.map(value => fmt(new Date(value)))));`,
+  ], { encoding: 'utf8', env: { ...process.env, TZ: timezone }, timeout: 5000, maxBuffer: 4096 }));
+  for (const [lang, expression, parameter] of [['en', matches[0][1], 'd'], ['fr', french[1], 'date']]) {
+    for (const timezone of ['UTC', 'America/New_York', 'Asia/Tokyo']) {
+      assert.deepEqual(run(expression, timezone, parameter), expected[lang], `${lang}: ${timezone}`);
+    }
+    const legacy = expression.replace(", timeZone: 'Europe/Paris'", '');
+    assert.notEqual(legacy, expression);
+    assert.equal(run(legacy, 'UTC', parameter)[0], lang === 'en' ? 'October 16, 2026' : '16 octobre 2026', 'The old UTC build reproduces the reported defect');
+  }
 });
