@@ -279,6 +279,14 @@ function stableClaimId(block: string, claimText: string) {
   return `claim-${hash}`;
 }
 
+// Decimal-only IDs are ambiguous: only the exact content-derived hash is stable.
+// Explicit nonnumeric markers retain their existing identifier contract.
+export function isStableClaimIdentifier(id: string, claimText: string) {
+  if (!/:claim-\d+\s*$/u.test(id)) return true;
+  const expected = stableClaimId('', claimText);
+  return /^claim-[a-f0-9]{14}$/.test(expected) && id.endsWith(`:${expected}`);
+}
+
 function sourceHosts(source: PrimarySourceInstitution) {
   return new Set(
     [source.url, ...source.datasets.map((dataset) => dataset.url)]

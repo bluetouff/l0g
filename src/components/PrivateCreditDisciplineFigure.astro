@@ -1,0 +1,68 @@
+---
+import { privateCreditDisciplineSvg, PRIVATE_CREDIT_DISCIPLINE_KINDS } from '../lib/privateCreditDisciplineFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'observations' | 'commitments' | 'borrowers' | 'ebitda' | 'pik' | 'leverage';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || PRIVATE_CREDIT_DISCIPLINE_KINDS.indexOf(kind) + 1 !== Number(number) || !PRIVATE_CREDIT_DISCIPLINE_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid Private credit discipline figure variant');
+}
+const references = sources.trim() ? sources.trim().split(/\s+/) : [];
+if (references.length === 0 || references.some((id) => !/^(?:0[1-9]|1[0-6])$/.test(id))) {
+  throw new TypeError('Invalid Private credit discipline source reference');
+}
+// Add only the root responsive contract to the reviewed static XML at render time.
+const responsiveSvg = (mobile: boolean) => privateCreditDisciplineSvg(lang, kind, mobile).replace(/^<svg /u, '<svg style="width:100%;height:auto" ');
+---
+<figure class="private-credit-discipline-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="private-credit-discipline-desktop" set:html={responsiveSvg(false)} />
+  <div class="private-credit-discipline-mobile" set:html={responsiveSvg(true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="private-credit-discipline-references">{references.map((id) => <a href={`#source-s${id}`}>[S{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Credit Discipline'; src: url('/fonts/private-credit-discipline/liberation-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g Credit Discipline'; src: url('/fonts/private-credit-discipline/liberation-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  /* These scoped aliases override the passive exports' standalone palette.
+     Keep the supplied SVG bytes and all geometry intact. */
+  .private-credit-discipline-figure :global(svg.l0g-credit-svg) {
+    --bg: var(--color-ink); --panel: var(--color-surface-2);
+    --ink: var(--color-paper); --muted: var(--color-muted); --grid: var(--color-line-strong);
+    --teal: var(--color-signal); --red: var(--color-accent); --gold: var(--color-amber);
+    --blue: var(--color-topic-blue); --white: var(--color-ink);
+  }
+  .private-credit-discipline-figure :global(svg text) { font-family: 'l0g Credit Discipline', 'Liberation Sans', Arial, sans-serif; }
+  .private-credit-discipline-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .private-credit-discipline-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .private-credit-discipline-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .private-credit-discipline-references { display: block; }
+  .private-credit-discipline-references a { margin-right: .75em; }
+  .private-credit-discipline-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .private-credit-discipline-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .private-credit-discipline-figure :global(details p) { margin: .7rem 0; }
+  :global(.private-credit-discipline-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.private-credit-discipline-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .private-credit-discipline-desktop { display: none; }
+    .private-credit-discipline-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .private-credit-discipline-desktop { display: none; }
+    .private-credit-discipline-mobile { display: block; }
+  }
+  .private-credit-discipline-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .private-credit-discipline-figure { break-inside: avoid; }
+    .private-credit-discipline-desktop { display: block; }
+    .private-credit-discipline-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  }
+</style>

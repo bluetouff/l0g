@@ -10,7 +10,7 @@ const bundled = await build({
   format: 'esm',
   write: false,
 });
-const { buildArticleEvidence } = await import(`data:text/javascript;base64,${Buffer.from(bundled.outputFiles[0].text).toString('base64')}`);
+const { buildArticleEvidence, isStableClaimIdentifier } = await import(`data:text/javascript;base64,${Buffer.from(bundled.outputFiles[0].text).toString('base64')}`);
 
 const options = {
   published: new Date('2026-09-25T06:00:07Z'),
@@ -94,4 +94,36 @@ test('source precision changes preserve normalized observation periods', () => {
   assert.equal(quarterly.temporalPrecision, 'quarter');
   assert.equal(quarterly.claimDateIso, '2026-09-25');
   assert.equal(quarterly.references[0].sourcePublicationDateIso, undefined);
+});
+
+
+const decimalHashClaim = 'Avec le payment-in-kind, ou PIK, une partie de la rémunération vient augmenter la dette au lieu d’être versée en espèces.';
+
+test('decimal-only content fingerprints remain stable and use the canonical normalization', () => {
+  const claim = buildArticleEvidence(decimalHashClaim, options).claims[0];
+  assert.equal(claim.id, 'claim-82869070879262');
+  const id = `example:${claim.id}`;
+  assert.equal(isStableClaimIdentifier(id, claim.claim), true);
+  for (const text of [claim.claim.toUpperCase(), `  ${claim.claim.replaceAll(' ', '\u00a0')}  `, claim.claim.replace('PIK', '**PIK**')]) {
+    assert.equal(isStableClaimIdentifier(id, text), true);
+  }
+  assert.equal(isStableClaimIdentifier(id, claim.claim.replace('espèces', 'numéraire')), false);
+});
+
+test('positional IDs and decimal lookalikes do not gain a length-only exception', () => {
+  for (const suffix of ['0', '1', '001', '123456789012', '1234567890123', '123456789012345', '12345678901234', '00000000000000', '82869070879263']) {
+    assert.equal(isStableClaimIdentifier(`example:claim-${suffix}`, decimalHashClaim), false, suffix);
+  }
+  for (const trailing of [' ', '\t', '\n', '\r\n']) {
+    assert.equal(isStableClaimIdentifier(`example:claim-82869070879262${trailing}`, decimalHashClaim), false);
+  }
+});
+
+test('explicit markers preserve nonnumeric IDs and the existing rejection of noncanonical decimal markers', () => {
+  const linked = decimalHashClaim.replace('PIK', '[PIK](https://www.bostonfed.org/publications/current-policy-perspectives/2026/early-warnings-private-credit-bdc-portfolios.aspx)');
+  for (const marker of ['contract-note-2026', '1234', '12345678901234', '82869070879262']) {
+    const claim = buildArticleEvidence(`<!-- claim-id: ${marker} -->\n${linked}`, options).claims[0];
+    assert.equal(claim.id, `claim-${marker}`);
+    assert.equal(isStableClaimIdentifier(`example:${claim.id}`, claim.claim), marker === 'contract-note-2026' || marker === '82869070879262');
+  }
 });

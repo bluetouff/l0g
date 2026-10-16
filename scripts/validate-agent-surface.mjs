@@ -1,5 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { extname, join, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { build } from 'esbuild';
 import Ajv from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import { buildHumanTrafficReport } from './human-traffic-report.mjs';
@@ -351,6 +353,15 @@ assert(llmsFullEn.includes('REFERENCE GUIDE:') && llmsFullEn.includes('ANALYSIS:
 assert(llmsFull.includes('Corpus anglais distinct : https://l0g.fr/llms-full-en.txt'), 'llms-full.txt ne pointe pas vers le corpus anglais distinct');
 assert(!llmsFull.includes('ENGLISH ANALYSIS :'), 'llms-full.txt gonflé par le corpus anglais');
 
+const bundledEvidence = await build({
+  entryPoints: [fileURLToPath(new URL('../src/lib/article-evidence.ts', import.meta.url))],
+  bundle: true,
+  platform: 'node',
+  format: 'esm',
+  write: false,
+});
+const { isStableClaimIdentifier } = await import(`data:text/javascript;base64,${Buffer.from(bundledEvidence.outputFiles[0].text).toString('base64')}`);
+
 const claimIds = new Set();
 const claimsByArticle = new Map();
 for (const claim of claims.claims || []) {
@@ -361,7 +372,7 @@ for (const claim of claims.claims || []) {
   assert(['scenario-marker', 'estimate-marker', 'inference-marker', 'cited-fact-default'].includes(claim.classifier?.matchedRule), `règle de classification invalide: ${claim.id}`);
   assert(['fait', 'estimation', 'inférence', 'scénario'].includes(claim.kind), `claim non classée: ${claim.id}`);
   claimsByArticle.set(claim.articleSlug, (claimsByArticle.get(claim.articleSlug) || 0) + 1);
-  assert(!/:claim-\d+$/.test(claim.id), `claim id positionnel instable: ${claim.id}`);
+  assert(isStableClaimIdentifier(claim.id, claim.claim), `claim id positionnel instable: ${claim.id}`);
   assert(!/^sources?\s+principales?\b/iu.test(claim.claim), `section bibliographique extraite en claim: ${claim.id}`);
   assert(!/^(?:pour le contexte|voir aussi|lire aussi|lire également|à lire aussi|a lire aussi|voir également|for context|see also|read also|further reading|related reading)\b/iu.test(claim.claim), `phrase navigationnelle extraite en claim: ${claim.id}`);
   assert(Object.prototype.hasOwnProperty.call(claim, 'claimDate'), `claimDate manquant: ${claim.id}`);

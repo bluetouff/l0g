@@ -347,6 +347,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: 'var(--color-accent)',
     entries: [
+      { sigle: 'Borrowing base', nom: 'Base contractuelle de capacité d’emprunt', def: 'Base d’actifs retenue pour calculer le montant empruntable sur une ligne de crédit garantie. Le contrat définit les actifs admissibles, leur valorisation et les décotes ou taux d’avance applicables. Une diminution de cette base peut réduire la capacité de financement avant une insolvabilité.', guide: '/posts/credit-prive-prix-argent-a-placer/' },
+      { sigle: 'Add-back', nom: 'Ajustement de l’EBITDA contractuel', def: 'Ajustement autorisé par un contrat de crédit pour ajouter certains éléments à l’EBITDA retenu dans les ratios, notamment des économies attendues. Les catégories admises, plafonds et délais dépendent de la documentation. Cet ajustement ne constitue pas un encaissement et ne réduit pas la dette à rembourser.', guide: '/posts/credit-prive-prix-argent-a-placer/' },
       { sigle: 'ROFO', nom: 'Droit de première offre', def: 'Droit contractuel de présenter la première offre dans un processus de vente, selon les conditions et le calendrier convenus. Il permet de se porter acquéreur en amont du processus prévu ; il ne garantit ni la conclusion de la vente ni un droit automatique de s’aligner sur toute offre ultérieure. Sa portée doit être vérifiée dans les clauses de l’accord.', guide: '/posts/humana-blackrock-promesse-cliniques/' },
       { sigle: 'CPR', nom: 'Taux annualisé de remboursement anticipé', def: 'Mesure annualisée des remboursements anticipés d’un portefeuille de prêts, rapportés au capital encore exposé après l’amortissement programmé. Un CPR peut résumer des observations ou représenter une hypothèse de modèle : il faut préciser lequel. Son équivalent mensuel, le SMM, se calcule par SMM = 1 − (1 − CPR)^(1/12), avec les taux exprimés en proportions.', guide: '/posts/credits-americains-risque-3-pourcent/' },
       { sigle: 'WAL', nom: 'Durée de vie moyenne du principal', def: 'Moyenne des délais de remboursement, pondérée par les montants de principal rendus. Elle s’exprime en années depuis une date de référence et dépend notamment des hypothèses de remboursement anticipé. Elle exclut les intérêts et l’actualisation. Ce calendrier se distingue de la duration, qui mesure la sensibilité du prix aux taux.', guide: '/posts/credits-americains-risque-3-pourcent/' },
@@ -1059,6 +1061,19 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'borrowing-base': {
+    articles: [{ label: 'Crédit privé : le prix de l’argent à placer', href: '/posts/credit-prive-prix-argent-a-placer/', detail: 'Capacité de financement du fonds et garanties de ses lignes bancaires.', kind: 'article' }],
+    sources: [
+      { label: 'Ares Capital, résultats au 30 juin 2026', href: 'https://arcc.ares.com/news/ares-capital-corporation-announces-june-30-2026-financial-results-and-declares-third-quarter-2026-dividend/f7760e0a-2af5-471a-9ee0-ff7ead3d6875', detail: 'Disponibilités soumises à la borrowing base et aux autres restrictions des lignes.', kind: 'source' },
+      { label: 'Ares Capital, formulaire 10-Q au 30 juin 2026', href: 'https://arcc.ares.com/media/document/1cbc95d3-9338-4c60-ae48-079474d44300/assets/arcc2026q2.pdf', detail: 'Note 5, pages 186–190 : taux d’avance, catégories d’actifs et restrictions des facilités.', kind: 'source' },
+    ],
+    related: ['bdc', 'credit-prive'],
+  },
+  'add-back': {
+    articles: [{ label: 'Crédit privé : le prix de l’argent à placer', href: '/posts/credit-prive-prix-argent-a-placer/', detail: 'Économies attendues et calcul du levier dans les contrats.', kind: 'article' }],
+    sources: [{ label: 'Proskauer, Private Credit Prepares for the Next Cycle', href: 'https://www.proskauer.com/pub/private-credit-prepares-for-the-next-cycle', detail: 'Analyse contractuelle du 18 septembre 2019 : ajustements de l’EBITDA et plafonds de synergies, sans fréquence actuelle déduite.', kind: 'source' }],
+    related: ['ebitda', 'credit-prive'],
+  },
   uree: {
     articles: [{ label: 'Ormuz : le pari des cinq navires', href: '/posts/ormuz-engrais-pari-cinq-navires/', detail: 'Produits transportés, financement et calendrier des cultures.', kind: 'article' }],
     sources: [{ label: 'University of Minnesota Extension, Fertilizer urea', href: 'https://extension.umn.edu/agriculture/crop-production/nutrient-management-for-minnesota-crops/fertilizer-urea', detail: 'Teneur de 46 % d’azote et rôle des conditions d’application ; aucun conseil d’épandage local déduit.', kind: 'source' }],
@@ -2936,7 +2951,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Une BDC cotée donne un prix de marché à son portefeuille. Une BDC non cotée peut offrir des rachats périodiques plafonnés ; les deux formes exposent l’investisseur à des conditions de sortie différentes.",
     formula: 'BDC cotée : prime ou décote = prix de marché / NAV par action - 1',
     whyNow: "Pour lire une exposition au logiciel, il faut distinguer valeur comptable des prêts, prix de l’action et possibilités de retrait.",
-    articles: [{ label: 'Crédit privé : la dette du logiciel face à l’IA', href: '/posts/credit-prive-logiciels-ia-revenus-dette/', detail: 'Expositions BRI, comptes OTF et scénarios pédagogiques.', kind: 'article' }, privateCreditArticles[0], privateCreditArticles[1], privateCreditArticles[4]],
+    articles: [{ label: 'Crédit privé : le prix de l’argent à placer', href: '/posts/credit-prive-prix-argent-a-placer/', detail: 'Prêts en non-accrual, bases comptables et financement bancaire des véhicules.', kind: 'article' }, { label: 'Crédit privé : la dette du logiciel face à l’IA', href: '/posts/credit-prive-logiciels-ia-revenus-dette/', detail: 'Expositions BRI, comptes OTF et scénarios pédagogiques.', kind: 'article' }, privateCreditArticles[0], privateCreditArticles[1], privateCreditArticles[4]],
     guides: privateCreditGuides,
     datasets: privateCreditDatasets,
     signals: privateCreditSignals,
@@ -2980,7 +2995,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Les intérêts PIK augmentent la créance au lieu de fournir du cash immédiatement. Les dividendes PIK sont une autre forme de rémunération en titres.",
     formula: 'Sans autre mouvement : dette future = dette initiale + intérêts capitalisés',
     whyNow: "Il faut distinguer un PIK contractuel d’origine d’un report négocié sous contrainte et vérifier la capacité à régler le montant final.",
-    articles: [{ label: 'Crédit privé : la dette du logiciel face à l’IA', href: '/posts/credit-prive-logiciels-ia-revenus-dette/', detail: 'Calcul des revenus PIK d’OTF et distinction entre revenu et encaissement.', kind: 'article' }, privateCreditArticles[1], privateCreditArticles[2], privateCreditArticles[4]],
+    articles: [{ label: 'Crédit privé : le prix de l’argent à placer', href: '/posts/credit-prive-prix-argent-a-placer/', detail: 'Intérêts capitalisés, cash reçu et PIK ajouté après la clôture du prêt.', kind: 'article' }, { label: 'Crédit privé : la dette du logiciel face à l’IA', href: '/posts/credit-prive-logiciels-ia-revenus-dette/', detail: 'Calcul des revenus PIK d’OTF et distinction entre revenu et encaissement.', kind: 'article' }, privateCreditArticles[1], privateCreditArticles[2], privateCreditArticles[4]],
     guides: [privateCreditGuides[0]],
     datasets: privateCreditDatasets,
     signals: privateCreditSignals,
