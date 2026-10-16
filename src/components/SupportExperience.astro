@@ -137,7 +137,7 @@ const trust = en ? [
   .support-circuit i:last-of-type::after { background: var(--color-amber); }
   .support-stage:has(.payment-link:hover, .payment-link:focus-visible) .support-circuit i { box-shadow: 0 0 12px color-mix(in srgb, var(--color-signal) 65%, transparent); }
   .support-open { margin-top: 0.8rem; max-width: 36ch; color: var(--color-muted); font: 400 0.8rem/1.6 var(--font-read); }
-  .support-ticket { position: relative; min-width: 0; overflow: hidden; border: 1px solid color-mix(in srgb, var(--color-signal) 26%, var(--color-line)); border-radius: 18px 4px 18px 18px; padding: clamp(1rem, 2.5vw, 1.6rem); background: linear-gradient(145deg, color-mix(in srgb, var(--color-signal) 7%, transparent), transparent 60%), var(--surface-elevated); box-shadow: var(--shadow-elevated), inset 0 1px 0 var(--edge-highlight); }
+  .support-ticket { position: relative; min-width: 0; overflow: hidden; border: 1px solid color-mix(in srgb, var(--color-signal) 26%, var(--color-line)); border-radius: 18px 4px 18px 18px; padding: clamp(1rem, 2.5vw, 1.6rem); background: linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 16%, transparent), transparent 45%, color-mix(in srgb, var(--color-amber) 8%, transparent)), repeating-linear-gradient(135deg, var(--surface-inset) 0 1px, transparent 1px 4px), var(--surface-elevated); box-shadow: var(--shadow-elevated), inset 0 1px 0 var(--edge-highlight); }
   .support-ticket::before { content: ''; position: absolute; top: 0; left: 1.6rem; right: 1.6rem; height: 2px; background: linear-gradient(90deg, var(--color-signal), var(--color-amber)); }
   .ticket-header { display: flex; align-items: center; justify-content: space-between; gap: 0.7rem; margin-bottom: 1.1rem; }
   .ticket-header > div { min-width: 0; }
