@@ -210,6 +210,33 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'r', sigle: 'r*', nom: 'Natural real interest rate',
+    def: 'A real short-term interest rate consistent with an economy operating at potential and stable inflation. It is estimated through a model and varies with economic conditions. The longer-run dot plot reports a nominal policy rate: a real comparison requires approximately subtracting expected inflation over the same horizon. That longer-run nominal projection and a current estimate of r* therefore address different questions.',
+    guide: '/en/guides/read-dot-plot-sep/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Compare real rates over matching horizons, with an explicit inflation assumption.',
+      formula: 'nominal neutral rate ≈ natural real rate + expected inflation',
+      articles: [{ label: 'AI demand and innovation returns', href: '/en/analysis/ai-growth-demand-innovation-returns/', kind: 'article' }],
+      guides: [{ label: 'Reading the dot plot and SEP', href: '/en/guides/read-dot-plot-sep/', kind: 'guide' }],
+      sources: [
+        { label: 'New York Fed, Measuring the Natural Rate of Interest', href: 'https://www.newyorkfed.org/research/policy/rstar', detail: 'Definition of the real short-term rate estimated by the LW and HLW models.', kind: 'source' },
+        { label: 'Lael Brainard, Federal Reserve, 5 September 2017', href: 'https://www.federalreserve.gov/newsevents/speech/brainard20170905a.htm', detail: 'Distinguishes the SEP longer-run nominal projection from its real counterpart after inflation.', kind: 'source' },
+      ],
+      related: ['pib', 'van'],
+    },
+  },
+  {
+    slug: 'rente-d-innovation', sigle: 'Innovation rent', nom: 'Income from a technological lead',
+    def: 'Income earned from a technological lead beyond current production costs. It can help cover research costs. Its size and persistence depend on competition, imitation, obsolescence and the rights that sustain the advantage. Expected rents in a model are assumptions, distinct from observed profits.',
+    guide: '/en/analysis/ai-growth-demand-innovation-returns/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'The persistence of an advantage and the income retained help finance further research.',
+      articles: [{ label: 'AI demand and innovation returns', href: '/en/analysis/ai-growth-demand-innovation-returns/', kind: 'article' }],
+      sources: [{ label: 'Rungcharoenkitkul, BIS WP 1381, October 2026', href: 'https://www.bis.org/publications/working-paper-1381-transformative-ai-and-demand-bottlenecks', detail: 'Sections 2.4–2.5: innovation rents, research costs and the persistence of an advantage. A conditional theoretical framework.', kind: 'source' }],
+      related: ['van', 'part-du-travail'],
+    },
+  },
+  {
     slug: 'uree', sigle: 'Urea', nom: 'Nitrogen fertilizer containing 46% nitrogen',
     def: 'A nitrogen fertilizer sold as prills or granules. The standard product contains 46% nitrogen by mass, so 100 tonnes of urea provide 46 tonnes of nitrogen. That concentration measures neither crop uptake nor yield, which also depend on soil and application conditions.',
     guide: '/en/analysis/hormuz-fertilizer-corridor-crop-calendar/', sectionTitle: 'Industry & healthcare', accent: 'var(--color-signal)', robots: 'noindex,follow',

@@ -1,0 +1,68 @@
+---
+import { aiDemandSvg, AI_DEMAND_KINDS } from '../lib/aiDemandFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'financing' | 'consumption' | 'erosion' | 'distribution' | 'evidence' | 'valuation';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || AI_DEMAND_KINDS.indexOf(kind) + 1 !== Number(number) || !AI_DEMAND_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid AI demand figure variant');
+}
+const references = sources.trim() ? sources.trim().split(/\s+/) : [];
+if (references.length === 0 || references.some((id) => !/^(?:0[1-9]|1[0-6])$/.test(id))) {
+  throw new TypeError('Invalid AI demand source reference');
+}
+// Add only the root responsive contract to the reviewed static XML at render time.
+const responsiveSvg = (mobile: boolean) => aiDemandSvg(lang, kind, mobile).replace(/^<svg /u, '<svg style="width:100%;height:auto" ');
+---
+<figure class="ai-demand-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="ai-demand-desktop" set:html={responsiveSvg(false)} />
+  <div class="ai-demand-mobile" set:html={responsiveSvg(true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="ai-demand-references">{references.map((id) => <a href={`#source-s${id}`}>[S{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g AI Demand'; src: url('/fonts/ai-demand/liberation-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g AI Demand'; src: url('/fonts/ai-demand/liberation-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  /* These scoped aliases override the passive exports' standalone palette.
+     Keep the supplied SVG bytes and all geometry intact. */
+  .ai-demand-figure :global(svg.l0g-ai-svg) {
+    --bg: var(--color-ink); --panel: var(--color-surface-2);
+    --ink: var(--color-paper); --muted: var(--color-muted); --grid: var(--color-line-strong);
+    --teal: var(--color-signal); --red: var(--color-accent); --gold: var(--color-amber);
+    --blue: var(--color-topic-blue); --white: var(--color-ink);
+  }
+  .ai-demand-figure :global(svg text) { font-family: 'l0g AI Demand', 'Liberation Sans', Arial, sans-serif; }
+  .ai-demand-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .ai-demand-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .ai-demand-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .ai-demand-references { display: block; }
+  .ai-demand-references a { margin-right: .75em; }
+  .ai-demand-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .ai-demand-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .ai-demand-figure :global(details p) { margin: .7rem 0; }
+  :global(.ai-demand-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.ai-demand-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .ai-demand-desktop { display: none; }
+    .ai-demand-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .ai-demand-desktop { display: none; }
+    .ai-demand-mobile { display: block; }
+  }
+  .ai-demand-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .ai-demand-figure { break-inside: avoid; }
+    .ai-demand-desktop { display: block; }
+    .ai-demand-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  }
+</style>

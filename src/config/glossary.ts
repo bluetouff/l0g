@@ -84,6 +84,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Rente d’innovation', nom: 'Revenu d’une avance technique', def: 'Revenu tiré d’une avance technique au-delà des coûts courants de production. Il peut contribuer à couvrir les dépenses de recherche. Son montant et sa durée dépendent notamment de la concurrence, de l’imitation, de l’obsolescence et des droits permettant de conserver cet avantage. Une rente anticipée dans un modèle constitue une hypothèse distincte d’un bénéfice observé.', guide: '/posts/ia-debouches-rentabilite-innovation/' },
       { sigle: 'TiVA', nom: 'Commerce en valeur ajoutée', def: 'Indicateurs de l’OCDE qui attribuent aux pays et aux secteurs la valeur ajoutée incorporée dans les échanges et la demande finale, à partir de tableaux internationaux entrées-sorties. Ils distinguent notamment le contenu intérieur et étranger des exportations brutes. Leur périmètre et leur période doivent être précisés ; ils ne recensent pas les entreprises acheteuses finales.', guide: '/posts/commerce-mondial-rythme-commandes-ia/' },
       { sigle: 'Effet fouet', nom: 'Amplification des commandes dans une chaîne d’approvisionnement', def: 'Mécanisme par lequel les commandes transmises aux fournisseurs fluctuent davantage que la demande en aval. Les révisions de prévisions et les ajustements de stocks peuvent amplifier le mouvement à plusieurs étapes. Son ampleur dépend des délais, des contrats et des pratiques de commande ; une simulation de déstockage ne mesure pas un coefficient applicable à une filière réelle.', guide: '/posts/commerce-mondial-rythme-commandes-ia/' },
       {
@@ -273,7 +274,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'FOMC', nom: 'Federal Open Market Committee', def: "Comité de politique monétaire de la Fed, qui fixe les taux directeurs. Se réunit huit fois par an, dont quatre réunions accompagnées de projections.", guide: 'lire-le-dot-plot-sep' },
       { sigle: 'SEP', nom: 'Summary of Economic Projections', def: "Projections trimestrielles des membres du FOMC (croissance, chômage, inflation, taux), publiées en mars, juin, septembre et décembre. Inclut le fameux dot plot, le nuage de points où chaque membre situe le taux qu'il juge approprié.", guide: 'lire-le-dot-plot-sep' },
       { sigle: 'Dot plot', nom: 'Nuage de points', def: "Graphique du SEP où chaque point situe le taux directeur qu'un participant du FOMC juge approprié pour chaque fin d'année et à long terme. Avis individuels, anonymes et non engageants : ni un plan, ni une prévision du résultat le plus probable.", guide: 'lire-le-dot-plot-sep' },
-      { sigle: 'r*', nom: 'Taux neutre', def: "Taux directeur ni accommodant ni restrictif, vers lequel la politique convergerait à long terme sous une économie à l'équilibre. Approché par le point de long terme du dot plot ; comparé au taux courant, il mesure le caractère restrictif de la politique.", guide: 'lire-le-dot-plot-sep' },
+      { sigle: 'r*', nom: 'Taux naturel réel', def: 'Taux d’intérêt réel de court terme compatible avec une économie à son potentiel et une inflation stable. Il est estimé à partir d’un modèle et varie avec les conditions économiques. Le point de long terme du dot plot exprime un taux directeur nominal : une comparaison en termes réels exige d’en retrancher approximativement l’inflation attendue au même horizon. Cette projection nominale de long terme et une estimation courante de r* répondent donc à des questions distinctes.', guide: 'lire-le-dot-plot-sep' },
       { sigle: 'Tendance centrale', nom: 'Central tendency', def: "Lecture intermédiaire du SEP entre la médiane et la fourchette : elle exclut les trois projections les plus hautes et les trois plus basses. Mesure la dispersion des avis au sein du FOMC, donc le degré d'accord du comité.", guide: 'lire-le-dot-plot-sep' },
       { sigle: 'FFR', nom: 'Federal Funds Rate', def: "Taux directeur de la Fed : fourchette cible pour le taux au jour le jour entre banques. Principal levier de la politique monétaire américaine." },
       { sigle: 'NFP', nom: 'Nonfarm Payrolls', def: "Emplois salariés non agricoles créés ou détruits sur le mois aux États-Unis, issus de l'enquête entreprises du BLS. La donnée macro la plus suivie des marchés, mais assortie d'un intervalle de confiance large (environ plus ou moins 122 000) et de fortes révisions.", guide: 'lire-le-rapport-emploi-nfp' },
@@ -1061,6 +1062,23 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  r: {
+    intuition: 'Comparer un taux réel à un taux réel, avec le même horizon et une hypothèse d’inflation explicite.',
+    formula: 'taux nominal neutre ≈ taux naturel réel + inflation attendue',
+    articles: [{ label: 'IA : débouchés et rentabilité de l’innovation', href: '/posts/ia-debouches-rentabilite-innovation/', kind: 'article' }],
+    guides: [{ label: 'Lire le dot plot et le SEP', href: '/guides/lire-le-dot-plot-sep/', kind: 'guide' }],
+    sources: [
+      { label: 'Fed de New York, Measuring the Natural Rate of Interest', href: 'https://www.newyorkfed.org/research/policy/rstar', detail: 'Définition du taux réel de court terme estimé par les modèles LW et HLW.', kind: 'source' },
+      { label: 'Lael Brainard, Fed, 5 septembre 2017', href: 'https://www.federalreserve.gov/newsevents/speech/brainard20170905a.htm', detail: 'Distinction entre la projection nominale de long terme du SEP et son équivalent réel après inflation.', kind: 'source' },
+    ],
+    related: ['pib', 'van'],
+  },
+  'rente-d-innovation': {
+    intuition: 'La durée d’une avance et les revenus conservés contribuent au financement de la recherche suivante.',
+    articles: [{ label: 'IA : débouchés et rentabilité de l’innovation', href: '/posts/ia-debouches-rentabilite-innovation/', kind: 'article' }],
+    sources: [{ label: 'Rungcharoenkitkul, BIS WP 1381, octobre 2026', href: 'https://www.bis.org/publications/working-paper-1381-transformative-ai-and-demand-bottlenecks', detail: 'Sections 2.4–2.5 : rentes d’innovation, coûts de recherche et durée de l’avantage. Cadre théorique conditionnel.', kind: 'source' }],
+    related: ['van', 'part-du-travail'],
+  },
   'borrowing-base': {
     articles: [{ label: 'Crédit privé : le prix de l’argent à placer', href: '/posts/credit-prive-prix-argent-a-placer/', detail: 'Capacité de financement du fonds et garanties de ses lignes bancaires.', kind: 'article' }],
     sources: [
