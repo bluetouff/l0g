@@ -422,7 +422,10 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Niveau 3', nom: 'Level 3 fair value', def: "Catégorie IFRS de juste valeur dans laquelle des données non observables significatives entrent dans le modèle. Elle signale davantage d'incertitude et de jugement dans l'estimation, pas nécessairement une perte ou un actif dégradé." },
       { sigle: 'PIK', nom: 'Payment In Kind', def: "Rémunération en nature : des intérêts s’ajoutent à une dette ou des dividendes sont versés en titres, sans paiement immédiat en espèces. Le PIK peut être prévu dès l’origine du contrat ; sa présence seule ne démontre pas une difficulté financière.", guide: '/posts/credit-prive-logiciels-ia-revenus-dette/' },
       { sigle: 'LP', nom: 'Limited Partner', def: "Investisseur commanditaire d'un fonds (assureur, fonds de pension, family office) qui apporte le capital sans gérer." },
-      { sigle: 'ETF', nom: 'Exchange-Traded Fund', def: "Fonds indiciel coté en bourse, qui réplique un indice ou un panier d'actifs et se négocie comme une action." },
+      {"sigle": "Flottant", "nom": "Part des actions disponible sur le marché", "def": "Part des actions en circulation considérée comme disponible à l’achat sur les marchés publics. L’estimation écarte les participations classées comme stratégiques selon les règles du fournisseur. MSCI apprécie cette disponibilité pour les investisseurs internationaux et tient compte des restrictions à la détention étrangère. L’estimation repose sur les informations publiques relatives aux actionnaires ; sa fiabilité dépend de leur qualité.", "guide": "/posts/msci-indonesie-flottant-risque-indices/"},
+      {"sigle": "Gestion passive", "nom": "Suivi d’un indice de référence", "def": "Stratégie visant à reproduire la performance d’un indice de référence selon ses règles. La réplication peut être complète, fondée sur un échantillon de titres ou synthétique selon le mandat. Les flux des investisseurs et les révisions de l’indice peuvent conduire à des transactions. Les frais et les conditions d’exécution peuvent créer un écart de performance.", "guide": "/posts/msci-indonesie-flottant-risque-indices/"},
+      {"sigle": "Tracking error", "nom": "Volatilité de l’écart de rendement à l’indice", "def": "Écart-type, généralement annualisé, des différences de rendement périodiques entre un portefeuille et son indice de référence. La mesure réalisée utilise les rendements observés sur une fenêtre donnée ; la mesure prévisionnelle estime leur dispersion avec un modèle de risque. La fréquence, la fenêtre, la devise et la méthode d’annualisation doivent être précisées. La tracking difference désigne l’écart de performance sur une période et constitue une mesure distincte.", "guide": "/posts/msci-indonesie-flottant-risque-indices/"},
+      {"sigle": "ETF", "nom": "Exchange-Traded Fund", "def": "Fonds dont les parts se négocient en bourse au cours de la séance. Sa stratégie peut suivre un indice ou relever d’une gestion active, selon son mandat. Son prix de marché peut s’écarter de sa valeur liquidative par part.", "guide": "/posts/msci-indonesie-flottant-risque-indices/"},
       { sigle: 'PER', nom: 'Price-Earnings Ratio', def: "Rapport entre le cours d'une action ou d'un indice et son bénéfice par action. Mesure combien les investisseurs paient pour un euro de bénéfice courant. Élevé, il traduit soit de fortes attentes de croissance, soit une survalorisation." },
       { sigle: 'Derating', nom: 'Compression de multiple', def: "Baisse du multiple de valorisation (PER, notamment) qu'un marché accepte de payer pour un même flux de bénéfices : le cours baisse ou stagne alors que les profits tiennent, voire montent. Inverse du re-rating. Un derating peut dégonfler un excès de valorisation sans krach, mais il peut aussi signaler que le marché doute de la durabilité des bénéfices sur lesquels le multiple est calculé." },
       { sigle: 'SOX', nom: 'Philadelphia Semiconductor Index', def: "Indice de référence des semi-conducteurs, une trentaine de valeurs cotées aux États-Unis (Nvidia, TSMC via ADR, Micron, AMD, Intel...). Baromètre du cycle mondial des puces et, depuis 2023, du pari boursier sur l'IA. Entré en marché baissier le 17 juillet 2026, à plus de 20 % sous son record de fin juin, après un rallye de 105 % entre mars et juin." },
@@ -821,7 +824,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-16';
+export const glossaryUpdatedIso = '2026-10-17';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1064,6 +1067,116 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "flottant": {
+    "intuition": "La répartition des actionnaires conditionne la part du capital accessible aux investisseurs.",
+    "articles": [
+      {
+        "label": "MSCI et l’Indonésie : le prix d’un flottant opaque",
+        "href": "/posts/msci-indonesie-flottant-risque-indices/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "MSCI, Free Float Data Methodology, mars 2023",
+        "href": "https://www.msci.com/eqb/methodology/meth_docs/MSCI_Free_Float_Data_Methodology.pdf",
+        "detail": "Sections 1.1–1.3 : définition, participations stratégiques, limites étrangères et qualité des informations publiques.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "gestion-passive",
+      "tracking-error",
+      "etf"
+    ]
+  },
+  "gestion-passive": {
+    "intuition": "La règle de l’indice guide les ajustements du portefeuille.",
+    "articles": [
+      {
+        "label": "MSCI et l’Indonésie : le prix d’un flottant opaque",
+        "href": "/posts/msci-indonesie-flottant-risque-indices/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Sushko et Turner, BRI, mars 2018",
+        "href": "https://www.bis.org/publications/implications-passive-investing-securities-markets",
+        "detail": "Définition de la gestion passive et transactions liées aux flux ou aux changements de composition.",
+        "kind": "source"
+      },
+      {
+        "label": "ESMA, Guidelines on ETFs and other UCITS issues, 2014",
+        "href": "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf",
+        "detail": "Définitions et §9 : réplication physique complète, échantillonnée ou synthétique ; facteurs affectant le suivi.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "flottant",
+      "tracking-error",
+      "etf"
+    ]
+  },
+  "tracking-error": {
+    "intuition": "Mesurer la dispersion des écarts de rendement demande plusieurs observations comparables.",
+    "articles": [
+      {
+        "label": "MSCI et l’Indonésie : le prix d’un flottant opaque",
+        "href": "/posts/msci-indonesie-flottant-risque-indices/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "MSCI, Introducing MSCI IndexMetrics, décembre 2013",
+        "href": "https://www.msci.com/documents/1296102/1336482/Introducing_MSCI_IndexMetrics.pdf/23cbc36f-cf2c-4bf0-96c3-206eecdfdf6d",
+        "detail": "Annexe, page 27 : écart-type annualisé des rendements actifs, calculés ici mensuellement.",
+        "kind": "source"
+      },
+      {
+        "label": "MSCI, Bond-Index Replication While Navigating Volatility",
+        "href": "https://www.msci.com/research-and-insights/blog-post/bond-index-replication-while-navigating-volatility",
+        "detail": "Note 1 : risque actif prévisionnel annualisé entre portefeuille et indice.",
+        "kind": "source"
+      },
+      {
+        "label": "ESMA, Guidelines on ETFs and other UCITS issues, 2014",
+        "href": "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf",
+        "detail": "Définitions et §11 : tracking error, tracking difference annuelle et distinction anticipé/réalisé.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "flottant",
+      "gestion-passive",
+      "etf"
+    ]
+  },
+  "etf": {
+    "intuition": "Le mode de négociation des parts et la stratégie de gestion décrivent des caractéristiques distinctes.",
+    "articles": [
+      {
+        "label": "MSCI et l’Indonésie : le prix d’un flottant opaque",
+        "href": "/posts/msci-indonesie-flottant-risque-indices/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "SEC, Updated Investor Bulletin: ETFs, 23 février 2023",
+        "href": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24",
+        "detail": "Fonds indiciels ou actifs, négociation en séance et prix de marché distinct de la valeur liquidative.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "flottant",
+      "gestion-passive",
+      "tracking-error"
+    ]
+  },
   r: {
     intuition: 'Comparer un taux réel à un taux réel, avec le même horizon et une hypothèse d’inflation explicite.',
     formula: 'taux nominal neutre ≈ taux naturel réel + inflation attendue',

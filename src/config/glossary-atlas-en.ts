@@ -210,6 +210,156 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    "slug": "flottant",
+    "sigle": "Free float",
+    "nom": "Shares available in public markets",
+    "def": "The portion of outstanding shares considered available for purchase in public markets. The estimate excludes holdings classified as strategic under the provider’s rules. MSCI assesses availability to international investors and takes foreign ownership restrictions into account. Its estimate relies on public shareholder information, whose quality affects the result.",
+    "guide": "/en/analysis/msci-indonesia-free-float-index-risk/",
+    "sectionTitle": "Private credit & markets",
+    "accent": "var(--color-accent)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "Shareholder classifications shape how much capital investors can access.",
+      "articles": [
+        {
+          "label": "MSCI and Indonesia: the cost of opaque ownership",
+          "href": "/en/analysis/msci-indonesia-free-float-index-risk/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "MSCI, Free Float Data Methodology, March 2023",
+          "href": "https://www.msci.com/eqb/methodology/meth_docs/MSCI_Free_Float_Data_Methodology.pdf",
+          "detail": "Sections 1.1–1.3: definition, strategic holdings, foreign ownership limits and public-data quality.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "gestion-passive",
+        "tracking-error",
+        "etf"
+      ]
+    }
+  },
+  {
+    "slug": "gestion-passive",
+    "sigle": "Passive investing",
+    "nom": "Tracking a benchmark index",
+    "def": "An investment strategy that aims to track a benchmark’s performance under its rules. Depending on the mandate, replication can use all constituents, a sample of securities or a synthetic approach. Investor flows and index changes can require trading. Fees and execution conditions can cause performance to differ from the benchmark.",
+    "guide": "/en/analysis/msci-indonesia-free-float-index-risk/",
+    "sectionTitle": "Private credit & markets",
+    "accent": "var(--color-accent)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "Index rules guide portfolio adjustments.",
+      "articles": [
+        {
+          "label": "MSCI and Indonesia: the cost of opaque ownership",
+          "href": "/en/analysis/msci-indonesia-free-float-index-risk/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Sushko and Turner, BIS, March 2018",
+          "href": "https://www.bis.org/publications/implications-passive-investing-securities-markets",
+          "detail": "Definition of passive investing and trading caused by flows or composition changes.",
+          "kind": "source"
+        },
+        {
+          "label": "ESMA, Guidelines on ETFs and other UCITS issues, 2014",
+          "href": "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf",
+          "detail": "Definitions and paragraph 9: full or sampled physical replication, synthetic replication and tracking factors.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "flottant",
+        "tracking-error",
+        "etf"
+      ]
+    }
+  },
+  {
+    "slug": "tracking-error",
+    "sigle": "Tracking error",
+    "nom": "Volatility of returns relative to a benchmark",
+    "def": "The standard deviation, usually annualized, of periodic return differences between a portfolio and its benchmark. Realized tracking error uses returns observed over a specified window; ex-ante tracking error estimates their dispersion with a risk model. The frequency, window, currency and annualization method must be specified. Tracking difference measures the performance gap over a period and is a separate metric.",
+    "guide": "/en/analysis/msci-indonesia-free-float-index-risk/",
+    "sectionTitle": "Private credit & markets",
+    "accent": "var(--color-accent)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "Measuring the variability of return differences requires comparable observations over time.",
+      "articles": [
+        {
+          "label": "MSCI and Indonesia: the cost of opaque ownership",
+          "href": "/en/analysis/msci-indonesia-free-float-index-risk/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "MSCI, Introducing MSCI IndexMetrics, December 2013",
+          "href": "https://www.msci.com/documents/1296102/1336482/Introducing_MSCI_IndexMetrics.pdf/23cbc36f-cf2c-4bf0-96c3-206eecdfdf6d",
+          "detail": "Appendix, page 27: annualized standard deviation of active returns, using monthly observations here.",
+          "kind": "source"
+        },
+        {
+          "label": "MSCI, Bond-Index Replication While Navigating Volatility",
+          "href": "https://www.msci.com/research-and-insights/blog-post/bond-index-replication-while-navigating-volatility",
+          "detail": "Footnote 1: projected annualized active risk between portfolio and benchmark.",
+          "kind": "source"
+        },
+        {
+          "label": "ESMA, Guidelines on ETFs and other UCITS issues, 2014",
+          "href": "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf",
+          "detail": "Definitions and paragraph 11: tracking error, annual tracking difference and anticipated versus realized measures.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "flottant",
+        "gestion-passive",
+        "etf"
+      ]
+    }
+  },
+  {
+    "slug": "etf",
+    "sigle": "ETF",
+    "nom": "Exchange-Traded Fund",
+    "def": "A fund whose shares trade on an exchange during the trading day. Its mandate may follow an index or use active management. The market price can differ from the fund’s net asset value per share.",
+    "guide": "/en/analysis/msci-indonesia-free-float-index-risk/",
+    "sectionTitle": "Private credit & markets",
+    "accent": "var(--color-accent)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "The trading structure and investment strategy describe separate features of a fund.",
+      "articles": [
+        {
+          "label": "MSCI and Indonesia: the cost of opaque ownership",
+          "href": "/en/analysis/msci-indonesia-free-float-index-risk/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "SEC, Updated Investor Bulletin: ETFs, February 23, 2023",
+          "href": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24",
+          "detail": "Index-based or actively managed funds, intraday trading and market price versus net asset value.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "flottant",
+        "gestion-passive",
+        "tracking-error"
+      ]
+    }
+  },
+  {
     slug: 'r', sigle: 'r*', nom: 'Natural real interest rate',
     def: 'A real short-term interest rate consistent with an economy operating at potential and stable inflation. It is estimated through a model and varies with economic conditions. The longer-run dot plot reports a nominal policy rate: a real comparison requires approximately subtracting expected inflation over the same horizon. That longer-run nominal projection and a current estimate of r* therefore address different questions.',
     guide: '/en/guides/read-dot-plot-sep/', ...macroSection, robots: 'noindex,follow',

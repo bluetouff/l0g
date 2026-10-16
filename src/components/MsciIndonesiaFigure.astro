@@ -1,0 +1,79 @@
+---
+import { msciIndonesiaSvg, MSCI_INDONESIA_KINDS } from '../lib/msciIndonesiaFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'ownership' | 'contraction' | 'selling' | 'concentration' | 'calendar';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-5])$/.test(number) || MSCI_INDONESIA_KINDS.indexOf(kind) + 1 !== Number(number) || !MSCI_INDONESIA_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid MSCI Indonesia figure variant');
+}
+const references = sources.trim() ? sources.trim().split(/\s+/) : [];
+if (references.length === 0 || references.some((id) => !/^(?:0[1-9]|1[0-7])$/.test(id))) {
+  throw new TypeError('Invalid MSCI Indonesia source reference');
+}
+// Add only the root responsive contract to the reviewed static XML at render time.
+const responsiveSvg = (mobile: boolean) => msciIndonesiaSvg(lang, kind, mobile).replace(/^<svg /u, '<svg style="width:100%;height:auto" ');
+---
+<figure class="msci-indonesia-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="msci-indonesia-desktop" set:html={responsiveSvg(false)} />
+  <div class="msci-indonesia-mobile" set:html={responsiveSvg(true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="msci-indonesia-references">{references.map((id) => <a href={`#source-s${id}`}>[S{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  /* Scoped presentation overrides preserve every supplied colour attribute.
+     Preserve supplied geometry; approved text edits only. */
+  .msci-indonesia-figure :global([fill="#101923"]) { fill: var(--color-ink); }
+  .msci-indonesia-figure :global([fill="#172431"]) { fill: var(--color-surface-2); }
+  .msci-indonesia-figure :global([fill="#f3eee4"]) { fill: var(--color-paper); }
+  .msci-indonesia-figure :global([fill="#b6c4cf"]) { fill: var(--color-muted); }
+  .msci-indonesia-figure :global([fill="#344556"]) { fill: var(--color-line-strong); }
+  .msci-indonesia-figure :global([fill="#79dfbc"]) { fill: var(--color-signal); }
+  .msci-indonesia-figure :global([fill="#efc778"]) { fill: var(--color-amber); }
+  .msci-indonesia-figure :global([fill="#8ab8f1"]) { fill: var(--color-topic-blue); }
+  .msci-indonesia-figure :global([fill="#fb927f"]) { fill: var(--color-accent); }
+  .msci-indonesia-figure :global([fill="#b4a4e8"]) { fill: var(--color-elevated); }
+  .msci-indonesia-figure :global([fill="#71849b"]) { fill: var(--color-prose); }
+  .msci-indonesia-figure :global([stroke="#344556"]) { stroke: var(--color-line-strong); }
+  .msci-indonesia-figure :global([stroke="#b6c4cf"]) { stroke: var(--color-muted); }
+  .msci-indonesia-figure :global([stroke="#79dfbc"]) { stroke: var(--color-signal); }
+  .msci-indonesia-figure :global([stroke="#efc778"]) { stroke: var(--color-amber); }
+  .msci-indonesia-figure :global([stroke="#8ab8f1"]) { stroke: var(--color-topic-blue); }
+  .msci-indonesia-figure :global([stroke="#fb927f"]) { stroke: var(--color-accent); }
+  .msci-indonesia-figure :global([stroke="#b4a4e8"]) { stroke: var(--color-elevated); }
+  .msci-indonesia-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .msci-indonesia-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .msci-indonesia-desktop { margin-inline: auto; }
+  .msci-indonesia-figure[data-kind="calendar"] .msci-indonesia-desktop { max-width: 580px; }
+  .msci-indonesia-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .msci-indonesia-references { display: block; }
+  .msci-indonesia-references a { margin-right: .75em; }
+  .msci-indonesia-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .msci-indonesia-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .msci-indonesia-figure :global(details p) { margin: .7rem 0; }
+  :global(.msci-indonesia-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.msci-indonesia-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .msci-indonesia-desktop { display: none; }
+    .msci-indonesia-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .msci-indonesia-desktop { display: none; }
+    .msci-indonesia-mobile { display: block; }
+  }
+  .msci-indonesia-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .msci-indonesia-figure { break-inside: avoid; }
+    .msci-indonesia-desktop { display: block; }
+    .msci-indonesia-mobile { display: none; }
+  }
+</style>

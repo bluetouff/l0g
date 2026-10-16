@@ -18,6 +18,35 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Investment approach, investable shares and relative risk remain distinct concepts.
+for (const [slug, sourceUrls] of [["flottant", ["https://www.msci.com/eqb/methodology/meth_docs/MSCI_Free_Float_Data_Methodology.pdf"]], ["gestion-passive", ["https://www.bis.org/publications/implications-passive-investing-securities-markets", "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf"]], ["tracking-error", ["https://www.msci.com/documents/1296102/1336482/Introducing_MSCI_IndexMetrics.pdf/23cbc36f-cf2c-4bf0-96c3-206eecdfdf6d", "https://www.msci.com/research-and-insights/blog-post/bond-index-replication-while-navigating-volatility", "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf"]], ["etf", ["https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24"]]]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en?.atlas, `${slug}: fiches FR/EN et sources requises`);
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.equal(fr.guide, '/posts/msci-indonesie-flottant-risque-indices/');
+  assert.equal(en.guide, '/en/analysis/msci-indonesia-free-float-index-risk/');
+  assert.deepEqual(fr.atlas.sources.map(item => item.href), sourceUrls);
+  assert.deepEqual(en.atlas.sources.map(item => item.href), sourceUrls);
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  assert.deepEqual(fr.atlas.related, ["flottant", "gestion-passive", "tracking-error", "etf"].filter(item => item !== slug));
+  assert.equal(fr.atlas.articles[0].href, fr.guide); assert.equal(en.atlas.articles[0].href, en.guide);
+  for (const related of fr.atlas.related) {
+    assert(glossaryEntries.some(entry => entry.slug === related)); assert(glossaryAtlasEnBySlug.has(related));
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'flottant').def, /informations publiques/);
+assert.match(glossaryAtlasEnBySlug.get('flottant').def, /foreign ownership restrictions/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'gestion-passive').def, /échantillon/);
+assert.match(glossaryAtlasEnBySlug.get('gestion-passive').def, /synthetic/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'tracking-error').def, /Écart-type/);
+assert.match(glossaryAtlasEnBySlug.get('tracking-error').def, /standard deviation/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'tracking-error').def, /réalisée.*prévisionnelle/);
+assert.match(glossaryAtlasEnBySlug.get('tracking-error').def, /Realized.*ex-ante/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'etf').def, /gestion active/);
+assert.match(glossaryAtlasEnBySlug.get('etf').def, /active management/);
+
 // Short translated fiches remain accessible without being submitted as reference pages.
 for (const entry of glossaryAtlasEnBySlug.values()) {
   assert.equal(englishGlossaryRobots(entry), 'noindex,follow', `${entry.slug}: reference qualification required before indexation`);
@@ -174,7 +203,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 247, 'Le corpus anglais doit conserver ses 247 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 251, 'Le corpus anglais doit conserver ses 251 fiches uniques');
 
 for (const [slug, source, related] of [
   ['apd', 'https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html', ['equivalent-don', 'ida', 'compte-courant']],
@@ -301,8 +330,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 654, 'Le corpus doit conserver ses 654 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 235, 'Le graphe Atlas doit conserver ses 235 nœuds');
+assert.equal(glossaryEntries.length, 657, 'Le corpus doit conserver ses 657 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 239, 'Le graphe Atlas doit conserver ses 239 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -724,7 +753,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 701, 'Le graphe Atlas doit conserver ses 701 relations');
+assert.equal(glossaryAtlasEdgeCount, 713, 'Le graphe Atlas doit conserver ses 713 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
