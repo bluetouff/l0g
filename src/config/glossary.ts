@@ -661,7 +661,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Backwardation', nom: 'Backwardation (déport)', def: "Situation où le prix à terme est inférieur au prix comptant, pour un produit et un marché comparables. La disponibilité immédiate peut procurer un avantage industriel, par exemple maintenir une production. La courbe seule ne permet pas de conclure à une pénurie locale ni de calculer le profit d’un emprunteur de pétrole : transport, qualité, lieu, calendrier et financement restent à prendre en compte.", guide: '/guides/lire-le-marche-petrolier/' },
       { sigle: 'GNL', nom: 'Gaz naturel liquéfié', def: "Gaz refroidi à l'état liquide pour le transport par méthanier. Permet d'exporter le gaz hors gazoducs." },
       { sigle: 'GPL', nom: 'Gaz de pétrole liquéfié', def: "Mélange de propane et de butane liquéfié sous pression, utilisé pour le chauffage, la cuisson et certains transports. Distinct du GNL." },
-      { sigle: 'Chokepoint', nom: 'Point de passage stratégique', def: "Passage maritime étroit par lequel transite une part majeure d'un flux mondial : Ormuz (pétrole, GNL), Malacca, Suez, Panama, Bab el-Mandeb. Sa concentration crée une grande efficacité en temps normal et une vulnérabilité aiguë en cas de blocage, faute de contournement à la hauteur." },
+      { sigle: 'Chokepoint', nom: 'Point de passage stratégique', def: "Passage maritime qui concentre des routes commerciales, comme Ormuz, Malacca, Suez, Panama ou Bab el-Mandeb. Son importance dépend des produits transportés et des itinéraires de remplacement disponibles. Un blocage expose les flux qui le traversent ; les pertes effectives dépendent aussi de sa durée, des stocks utilisables et de la possibilité de remplacer les intrants ou les fournisseurs. Une même cargaison peut traverser plusieurs passages successifs.", guide: '/posts/detroits-prix-des-jours-gagnes/' },
       { sigle: 'TTF', nom: 'Title Transfer Facility', def: "Marché de gros néerlandais du gaz naturel, prix de référence du gaz en Europe, coté en euros par mégawattheure. Le GNL y fixe souvent le prix marginal, ce qui rend le TTF très sensible aux ruptures d'approvisionnement, comme lors de la crise d'Ormuz de 2026.", guide: '/guides/lire-le-marche-du-gaz-et-du-gnl/' },
       { sigle: 'Henry Hub', nom: 'Henry Hub', def: "Point de livraison physique du gaz naturel en Louisiane, référence des prix du gaz aux États-Unis et de la plupart des contrats d'export de GNL américain. Coté en dollars par MMBtu, il est structurellement le moins cher des trois grands indices mondiaux.", guide: '/guides/lire-le-marche-du-gaz-et-du-gnl/' },
       { sigle: 'JKM', nom: 'Japan-Korea Marker', def: "Indice de référence du GNL spot livré en Asie du Nord-Est, publié par S&P Global Platts, coté en dollars par MMBtu. Son écart avec le TTF européen commande la direction des cargaisons entre les deux bassins.", guide: '/guides/lire-le-marche-du-gaz-et-du-gnl/' },
@@ -814,7 +814,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-15';
+export const glossaryUpdatedIso = '2026-10-16';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -3171,14 +3171,17 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['appel-de-marge', 'marge-initiale', 'marge-de-variation', 'ccp', 'brent'],
   },
   chokepoint: {
-    intuition: "Un chokepoint concentre un flux mondial dans un passage difficile à remplacer.",
-    formula: 'fragilité = part du flux mondial × capacité de contournement limitée',
-    whyNow: "Ormuz a montré qu’un choc local peut devenir inflation, fret, assurance maritime et risque politique en quelques jours.",
-    articles: [energyArticles[2], energyArticles[3], energyArticles[4]],
+    intuition: "L’exposition à un passage ne mesure pas une perte de production. Un détour peut maintenir les livraisons en mobilisant davantage de navires, de temps et de financement.",
+    whyNow: "Dans le Bulletin 138 publié par la BRI le 15 octobre 2026, les auteurs soulignent que les stocks et la substitution peuvent amortir les effets sur la production tout en renchérissant les intrants. Leur efficacité dépend de la durée du choc et des solutions réellement disponibles.",
+    articles: [{ label: 'Détroits : le prix des jours gagnés', href: '/posts/detroits-prix-des-jours-gagnes/', detail: 'Stocks utilisables, détours et financement de l’attente ; observations distinctes des scénarios.', kind: 'article' }, energyArticles[2], energyArticles[3], energyArticles[4]],
     guides: [energyGuides[0]],
     datasets: energyDatasets,
     signals: energySignals,
-    sources: energySources,
+    sources: [
+      { label: 'BRI, Bulletin 138', href: 'https://www.bis.org/publications/bulletin-138-chokepoint-disruptions-and-their-macroeconomic-consequences', detail: '15 octobre 2026 : stocks, substitution et coûts des perturbations. Analyse des auteurs, distincte d’une prévision pour l’épisode actuel.', kind: 'source' },
+      { label: 'Nature Communications, dépendances maritimes', href: 'https://www.nature.com/articles/s41467-025-65403-w', detail: '24 novembre 2025 : réseau de routes, expositions multiples et risques modélisés. L’exposition ne constitue pas une perte observée.', kind: 'source' },
+      { label: 'EIA, STEO d’octobre 2026', href: 'https://www.eia.gov/outlooks/steo/report/global_oil.php', detail: '6 octobre 2026 : interruption temporaire de l’oléoduc Est-Ouest et dépendances des routes de contournement. URL mise à jour à chaque édition.', kind: 'source' },
+    ],
     related: ['brent', 'wti', 'gnl', 'ttf', 'vlsfo', 'irgc', 'mou', 'stockage-flottant'],
   },
   ttf: {

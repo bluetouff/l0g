@@ -1,0 +1,68 @@
+---
+import { straitsSvg, STRAITS_KINDS } from '../lib/straitsFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'stocks' | 'routes' | 'transport' | 'inventory' | 'financing' | 'liquidity';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || STRAITS_KINDS.indexOf(kind) + 1 !== Number(number) || !STRAITS_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid straits figure variant');
+}
+const references = sources.trim() ? sources.trim().split(/\s+/) : [];
+if ((kind === 'inventory' ? references.length !== 0 : references.length === 0) || references.some((id) => !/^(?:[1-9]|1[0-5])$/.test(id))) {
+  throw new TypeError('Invalid straits source reference');
+}
+// Add only the root responsive contract to the reviewed static XML at render time.
+const responsiveSvg = (mobile: boolean) => straitsSvg(lang, kind, mobile).replace(/^<svg /u, '<svg style="width:100%;height:auto" ');
+---
+<figure class="straits-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="straits-desktop" set:html={responsiveSvg(false)} />
+  <div class="straits-mobile" set:html={responsiveSvg(true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="straits-references">{references.map((id) => <a href={`#source-${id}`}>[{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Straits'; src: url('/fonts/straits/liberation-sans-400.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'l0g Straits'; src: url('/fonts/straits/liberation-sans-700.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  /* These scoped aliases override the passive exports' standalone palette.
+     Keep the supplied SVG bytes and all geometry intact. */
+  .straits-figure :global(svg.l0g-det-svg) {
+    --bg: var(--color-ink); --panel: var(--color-surface-2);
+    --ink: var(--color-paper); --muted: var(--color-muted); --grid: var(--color-line-strong);
+    --teal: var(--color-signal); --red: var(--color-accent); --gold: var(--color-amber);
+    --blue: var(--color-topic-blue); --white: var(--color-ink);
+  }
+  .straits-figure :global(svg text) { font-family: 'l0g Straits', 'Liberation Sans', Arial, sans-serif; }
+  .straits-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .straits-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .straits-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .straits-references { display: block; }
+  .straits-references a { margin-right: .75em; }
+  .straits-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .straits-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .straits-figure :global(details p) { margin: .7rem 0; }
+  :global(.straits-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.straits-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .straits-desktop { display: none; }
+    .straits-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .straits-desktop { display: none; }
+    .straits-mobile { display: block; }
+  }
+  .straits-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .straits-figure { break-inside: avoid; }
+    .straits-desktop { display: block; }
+    .straits-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  }
+</style>

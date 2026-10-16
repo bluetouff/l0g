@@ -111,6 +111,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/sovereign-bank-infographics.test.mjs',
     'scripts/stablecoin-redemption-infographics.test.mjs',
     'scripts/starlink-infographics.test.mjs',
+    'scripts/straits-infographics.test.mjs',
     'scripts/sulfur-infographics.test.mjs',
     'scripts/tariff-cashflow-infographics.test.mjs',
     'scripts/tariff-refund-infographics.test.mjs',
@@ -156,6 +157,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/softbank-funding-rendered-infographics.test.mjs',
     'scripts/doctolib-choices-rendered-infographics.test.mjs',
     'scripts/usdc-borders-rendered-infographics.test.mjs',
+    'scripts/straits-rendered-infographics.test.mjs',
   ]),
 });
 
