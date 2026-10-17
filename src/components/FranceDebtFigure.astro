@@ -1,0 +1,74 @@
+---
+import { franceDebtSvg, FRANCE_DEBT_KINDS } from '../lib/franceDebtFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'auction' | 'structure' | 'maturities' | 'cohorts' | 'financing' | 'indexation';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || FRANCE_DEBT_KINDS.indexOf(kind) + 1 !== Number(number) || !FRANCE_DEBT_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid France debt figure variant');
+}
+const references = sources.trim() ? sources.trim().split(/\s+/) : [];
+if (references.length === 0 || references.some((id) => !/^(?:0[1-9]|1[0-4]|m1)$/.test(id))) {
+  throw new TypeError('Invalid France debt source reference');
+}
+// Add only the root responsive contract to the reviewed static XML at render time.
+const responsiveSvg = (mobile: boolean) => franceDebtSvg(lang, kind, mobile).replace(/^<svg /u, '<svg style="width:100%;height:auto" ');
+---
+<figure class="france-debt-figure" id={`figure-${number}`} data-figure={number} data-kind={kind}>
+  <div class="france-debt-desktop" set:html={responsiveSvg(false)} />
+  <div class="france-debt-mobile" set:html={responsiveSvg(true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="france-debt-references">{references.map((id) => <a href={id === 'm1' ? '#source-m1' : `#source-s${id}`}>{id === 'm1' ? '[M1]' : `[S${id}]`}</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  /* Scoped presentation overrides preserve every supplied colour attribute.
+     Preserve supplied geometry; approved text edits only. */
+  .france-debt-figure :global([fill="#f7f7f2"]) { fill: var(--color-ink); }
+  .france-debt-figure :global([fill="#f3e3d8"]) { fill: var(--color-surface-2); }
+  .france-debt-figure :global([fill="#143247"]) { fill: var(--color-paper); }
+  .france-debt-figure :global([fill="#526873"]) { fill: var(--color-muted); }
+  .france-debt-figure :global([fill="#137976"]) { fill: var(--color-signal); }
+  .france-debt-figure :global([fill="#216595"]) { fill: var(--color-topic-blue); }
+  .france-debt-figure :global([fill="#aa502b"]) { fill: var(--color-amber); }
+  .france-debt-figure :global([fill="#ced8d9"]) { fill: var(--color-line-strong); }
+  .france-debt-figure :global(rect[fill="#ffffff"]) { fill: var(--color-surface); }
+  .france-debt-figure :global(text[fill="#ffffff"]) { fill: var(--color-ink); }
+  .france-debt-figure :global([stroke="#137976"]) { stroke: var(--color-signal); }
+  .france-debt-figure :global([stroke="#216595"]) { stroke: var(--color-topic-blue); }
+  .france-debt-figure :global([stroke="#aa502b"]) { stroke: var(--color-amber); }
+  .france-debt-figure :global([stroke="#ced8d9"]) { stroke: var(--color-line-strong); }
+  .france-debt-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .france-debt-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .france-debt-desktop { margin-inline: auto; }
+  .france-debt-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .france-debt-references { display: block; }
+  .france-debt-references a { margin-right: .75em; }
+  .france-debt-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .france-debt-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .france-debt-figure :global(details p) { margin: .7rem 0; }
+  :global(.france-debt-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.france-debt-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .france-debt-desktop { display: none; }
+    .france-debt-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .france-debt-desktop { display: none; }
+    .france-debt-mobile { display: block; }
+  }
+  .france-debt-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .france-debt-figure { break-inside: avoid; }
+    .france-debt-desktop { display: block; }
+    .france-debt-mobile { display: none; }
+  }
+</style>

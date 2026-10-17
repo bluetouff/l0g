@@ -187,6 +187,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'RMP', nom: 'Reserve management purchases', def: "Achats de titres courts par une banque centrale pour fournir les réserves nécessaires au règlement interbancaire et piloter les taux au jour le jour. À la Fed, ces achats sont dimensionnés selon la demande de réserves et ne visent pas à réduire les taux longs : ils se distinguent donc du QE.", guide: '/posts/defaut-souverain-qui-paie-vraiment/' },
       { sigle: 'Off-the-run', nom: 'Ancienne souche de Treasury', def: "Titre du Trésor qui n’est plus l’émission la plus récente de sa maturité. Il reste une dette fédérale de même nature, mais se négocie généralement moins que le titre on-the-run, avec davantage de dispersion et parfois une petite décote de liquidité.", guide: '/posts/bessent-put-treasury-buybacks-taux-longs/' },
       { sigle: 'Profondeur de marché', nom: 'Quantités disponibles aux prix proposés', def: 'Quantités offertes à l’achat et à la vente aux différents prix d’un carnet, à un instant donné. La profondeur au meilleur prix ne décrit qu’un niveau. Elle se distingue du stock total de titres et du volume déjà échangé ; les cotations peuvent être retirées ou renouvelées.', guide: '/posts/dette-etats-06-prix-sortie/' },
+      {"sigle": "Décote d’émission", "nom": "Prix d’émission inférieur au pair", "def": "Écart entre la valeur nominale d’une obligation et son prix d’émission lorsque celui-ci est inférieur au pair. L’émetteur reçoit alors moins de trésorerie que le principal créé. Le coupon contractuel reste fixé ; l’écart de prix participe au rendement de l’acheteur. Les traitements de trésorerie, de dépense budgétaire et d’étalement en droits constatés répondent à des conventions distinctes.", "guide": "/posts/dette-francaise-refinancement-calendrier-taux/"},
+      {"sigle": "Prime d’émission", "nom": "Prix d’émission supérieur au pair", "def": "Excédent du prix d’émission d’une obligation sur sa valeur nominale. L’émetteur reçoit plus de trésorerie que le principal créé, en contrepartie de l’ensemble des paiements contractuels, dont les coupons. La prime participe au calcul du rendement et s’étale dans les comptes en droits constatés sur la vie du titre. Elle se distingue de la prime de terme, qui rémunère un risque de taux estimé.", "guide": "/posts/dette-francaise-refinancement-calendrier-taux/"},
       { sigle: 'Coupon obligataire', nom: 'Versement contractuel d’une obligation', def: 'Paiement d’intérêts prévu par les clauses d’une obligation. Pour un titre à taux fixe, son montant dépend du nominal et du taux contractuel, selon la fréquence prévue. Le rendement de l’acheteur dépend aussi du prix payé et des autres flux ; une revente ne modifie pas le coupon de l’émetteur.', guide: '/posts/dette-etats-06-prix-sortie/' },
       { sigle: 'Adjudication', nom: 'Vente de titres aux enchères', def: "Procédure par laquelle un émetteur attribue des titres à partir des offres reçues. Pour les OAT françaises, chaque offre retenue est servie au prix proposé. Aux États-Unis, les offres retenues reçoivent un prix uniforme correspondant au rendement limite, au taux limite ou à la marge limite. Les quantités demandées, attribuées et finalement réglées décrivent des étapes distinctes.", guide: '/posts/dette-etats-01-premier-acheteur/' },
       { sigle: 'Bid-to-cover', nom: 'Ratio de couverture', def: "Rapport entre les montants nominaux demandés et attribués dans le périmètre défini pour une adjudication. Il mesure un volume d'offres à des conditions de prix différentes. Son interprétation exige de comparer des titres et des règles comparables, puis d'examiner les prix et les allocations ; aucun seuil universel ne suffit à qualifier la demande.", guide: '/posts/dette-etats-01-premier-acheteur/' },
@@ -1067,6 +1069,50 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "decote-d-emission": {
+    "intuition": "Le remboursement au pair dépasse le prix reçu à l’émission.",
+    "articles": [
+      {
+        "label": "Dette française : échéances et refinancement",
+        "href": "/posts/dette-francaise-refinancement-calendrier-taux/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Assemblée nationale, comptes 2024 : primes et décotes",
+        "href": "https://www.assemblee-nationale.fr/dyn/opendata/RAPPANR5L17B1492-tI.html",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "prime-d-emission",
+      "coupon-obligataire",
+      "risque-de-refinancement"
+    ]
+  },
+  "prime-d-emission": {
+    "intuition": "Une recette de trésorerie à l’émission s’inscrit dans un contrat de paiements futurs.",
+    "articles": [
+      {
+        "label": "Dette française : échéances et refinancement",
+        "href": "/posts/dette-francaise-refinancement-calendrier-taux/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Assemblée nationale, comptes 2024 : primes et décotes",
+        "href": "https://www.assemblee-nationale.fr/dyn/opendata/RAPPANR5L17B1492-tI.html",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "decote-d-emission",
+      "coupon-obligataire",
+      "risque-de-refinancement"
+    ]
+  },
   "flottant": {
     "intuition": "La répartition des actionnaires conditionne la part du capital accessible aux investisseurs.",
     "articles": [

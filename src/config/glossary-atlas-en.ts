@@ -210,6 +210,70 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    "slug": "decote-d-emission",
+    "sigle": "Issue discount",
+    "nom": "Issue price below par",
+    "def": "The difference between a bond’s face value and an issue price below par. The issuer receives less cash than the principal created. The contractual coupon stays fixed; the price difference contributes to the buyer’s yield. Cash financing, coupon expenditure and accrual-accounting amortisation follow distinct conventions.",
+    "guide": "/en/analysis/france-debt-refinancing-maturity-interest-costs/",
+    "sectionTitle": "Macro & central banks",
+    "accent": "var(--color-signal)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "Redemption at par exceeds the cash received on issue.",
+      "articles": [
+        {
+          "label": "French debt: maturities and refinancing",
+          "href": "/en/analysis/france-debt-refinancing-maturity-interest-costs/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "French Parliament, 2024 accounts: issue premiums and discounts",
+          "href": "https://www.assemblee-nationale.fr/dyn/opendata/RAPPANR5L17B1492-tI.html",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "prime-d-emission",
+        "coupon-obligataire",
+        "risque-de-refinancement"
+      ]
+    }
+  },
+  {
+    "slug": "prime-d-emission",
+    "sigle": "Issue premium",
+    "nom": "Issue price above par",
+    "def": "The excess of a bond’s issue price over face value. The issuer receives more cash than the principal created, in exchange for the full contractual payment stream, including coupons. The premium affects yield and is amortised over the bond’s life in accrual accounts. It differs from the term premium, an estimated compensation for interest-rate risk.",
+    "guide": "/en/analysis/france-debt-refinancing-maturity-interest-costs/",
+    "sectionTitle": "Macro & central banks",
+    "accent": "var(--color-signal)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "Cash received at issue belongs to a contract specifying future payments.",
+      "articles": [
+        {
+          "label": "French debt: maturities and refinancing",
+          "href": "/en/analysis/france-debt-refinancing-maturity-interest-costs/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "French Parliament, 2024 accounts: issue premiums and discounts",
+          "href": "https://www.assemblee-nationale.fr/dyn/opendata/RAPPANR5L17B1492-tI.html",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "decote-d-emission",
+        "coupon-obligataire",
+        "risque-de-refinancement"
+      ]
+    }
+  },
+  {
     "slug": "flottant",
     "sigle": "Free float",
     "nom": "Shares available in public markets",

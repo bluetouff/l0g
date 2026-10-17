@@ -18,6 +18,21 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Issue-price adjustments retain their own accounting scope and reference qualification.
+for (const slug of ['decote-d-emission', 'prime-d-emission']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug), en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en?.atlas, `${slug}: sourced bilingual definitions required`);
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.equal(fr.guide, '/posts/dette-francaise-refinancement-calendrier-taux/');
+  assert.equal(en.guide, '/en/analysis/france-debt-refinancing-maturity-interest-costs/');
+  assert.deepEqual(fr.atlas.sources.map(item => item.href), ['https://www.assemblee-nationale.fr/dyn/opendata/RAPPANR5L17B1492-tI.html']);
+  assert.deepEqual(fr.atlas.sources, en.atlas.sources.map(item => ({...item, label: 'Assemblée nationale, comptes 2024 : primes et décotes'})));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  assert.equal(fr.atlas.articles[0].href, fr.guide); assert.equal(en.atlas.articles[0].href, en.guide);
+  for (const peer of fr.atlas.related) { assert(glossaryEntries.some(entry => entry.slug === peer)); assert(glossaryAtlasEnBySlug.has(peer)); }
+}
+
 // Investment approach, investable shares and relative risk remain distinct concepts.
 for (const [slug, sourceUrls] of [["flottant", ["https://www.msci.com/eqb/methodology/meth_docs/MSCI_Free_Float_Data_Methodology.pdf"]], ["gestion-passive", ["https://www.bis.org/publications/implications-passive-investing-securities-markets", "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf"]], ["tracking-error", ["https://www.msci.com/documents/1296102/1336482/Introducing_MSCI_IndexMetrics.pdf/23cbc36f-cf2c-4bf0-96c3-206eecdfdf6d", "https://www.msci.com/research-and-insights/blog-post/bond-index-replication-while-navigating-volatility", "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf"]], ["etf", ["https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24"]]]) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
@@ -203,7 +218,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 251, 'Le corpus anglais doit conserver ses 251 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 253, 'Le corpus anglais doit conserver ses 253 fiches uniques');
 
 for (const [slug, source, related] of [
   ['apd', 'https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html', ['equivalent-don', 'ida', 'compte-courant']],
@@ -330,8 +345,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 657, 'Le corpus doit conserver ses 657 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 239, 'Le graphe Atlas doit conserver ses 239 nœuds');
+assert.equal(glossaryEntries.length, 659, 'Le corpus doit conserver ses 659 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 241, 'Le graphe Atlas doit conserver ses 241 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -753,7 +768,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 713, 'Le graphe Atlas doit conserver ses 713 relations');
+assert.equal(glossaryAtlasEdgeCount, 719, 'Le graphe Atlas doit conserver ses 719 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
