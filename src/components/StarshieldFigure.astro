@@ -1,0 +1,92 @@
+---
+import { starshieldSvg, STARSHIELD_KINDS } from '../lib/starshieldFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'metrics' | 'permissions' | 'chronology' | 'dependency' | 'capacity' | 'milestones';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || STARSHIELD_KINDS.indexOf(kind) + 1 !== Number(number) || !STARSHIELD_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid Starshield figure variant');
+}
+const references = sources.trim() ? sources.trim().split(/\s+/) : [];
+if (references.length === 0 || references.some((id) => !/^(?:0[1-9]|1[0-9]|2[0-7])$/.test(id))) {
+  throw new TypeError('Invalid Starshield source reference');
+}
+// Keep the reviewed raw SVG intact; render source links as local bibliography citations.
+const sourceAnchors: Readonly<Record<string, string>> = Object.freeze({
+  "https://eu-space.europa.eu/news/observer-how-european-union-accelerating-and-reinforcing-iris2": "#source-s17",
+  "https://eutelsat.mynewsdesk.com/pressreleases/eutelsat-et-le-ministere-des-armees-annoncent-la-signature-du-contrat-de-capacite-centaure-marche-subsequent-de-laccord-cadre-nexus-3454217": "#source-s14",
+  "https://kyivindependent.com/breaking-starlink-service-in-ukraine-restored-defense-ministry-source-says/": "#source-s01",
+  "https://new.spacex.com/starshield": "#source-s09",
+  "https://nps.edu/web/acqnresearch/2024-archive/-/asset_publisher/riOLyDXewOgo/content/newsletter-4.5.2024": "#source-s24",
+  "https://starlink.com/ki/support/article/413011a8-34c9-5b33-bf97-03f7ca7273ea": "#source-s10",
+  "https://unn.ua/en/news/ukraine-awaits-confirmation-from-the-pentagon-and-spacex-regarding-the-restoration-of-starshield": "#source-s08",
+  "https://www.airbus.com/en/newsroom/press-releases/2026-09-airbus-starts-the-development-of-iris2-satellites-on-behalf-of-eutelsat": "#source-s19",
+  "https://www.defense.gouv.fr/dga/actualites/dga-poursuit-diversification-moyens-telecommunications-satellite-au-profit-forces": "#source-s12",
+  "https://www.euspa.europa.eu/newsroom-events/news/commission-accelerates-iris2-deployment-enhanced-security-and-expanded": "#source-s18",
+  "https://www.foreign.senate.gov/download/letter-to-dodig-re-starlink-over-ukraine_-final-signed": "#source-s06",
+  "https://www.reuters.com/world/europe/order-limit-starshield-ukraine-came-inside-white-house-sources-say-2026-10-15/": "#source-s02",
+  "https://www.vandenberg.spaceforce.mil/News/Article-Display/Article/3736616/ussf-releases-commercial-space-strategy-to-increase-competitive-advantage/": "#source-s25"
+});
+const responsiveSvg = (mobile: boolean) => starshieldSvg(lang, kind, mobile)
+  .replace(/^<svg /u, '<svg style="width:100%;height:auto" ')
+  .replace(/ href="([^"]+)"/gu, (_attribute: string, url: string) => {
+    if (!Object.hasOwn(sourceAnchors, url)) throw new TypeError('Unknown Starshield SVG source URL');
+    return ` href="${sourceAnchors[url]}"`;
+  });
+---
+<figure class="starshield-figure" id={`figure-${number}`} data-figure={number} data-kind={kind}>
+  <div class="starshield-desktop" set:html={responsiveSvg(false)} />
+  <div class="starshield-mobile" set:html={responsiveSvg(true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="starshield-references">{references.map((id) => <a href={`#source-s${id}`}>{`[S${id}]`}</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  /* Scoped presentation overrides preserve every supplied colour attribute.
+     Preserve supplied geometry; approved text edits only. */
+  .starshield-figure :global([fill="#0b1724"]) { fill: var(--color-ink); }
+  .starshield-figure :global([fill="#142638"]) { fill: var(--color-surface); }
+  .starshield-figure :global([fill="#f0f5fa"]) { fill: var(--color-paper); }
+  .starshield-figure :global([fill="#aec0ce"]) { fill: var(--color-muted); }
+  .starshield-figure :global([fill="#405468"]) { fill: var(--color-line-strong); }
+  .starshield-figure :global([fill="#83bdff"]) { fill: var(--color-topic-blue); }
+  .starshield-figure :global([fill="#ffd18a"]) { fill: var(--color-amber); }
+  .starshield-figure :global([fill="#78ddcb"]) { fill: var(--color-signal); }
+  .starshield-figure :global([stroke="#83bdff"]) { stroke: var(--color-topic-blue); }
+  .starshield-figure :global([stroke="#ffd18a"]) { stroke: var(--color-amber); }
+  .starshield-figure :global([stroke="#405468"]) { stroke: var(--color-line-strong); }
+  .starshield-figure :global([stroke="#78ddcb"]) { stroke: var(--color-signal); }
+  .starshield-figure { margin: 2.8rem auto; width: 100%; max-width: 760px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .starshield-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .starshield-desktop { margin-inline: auto; }
+  .starshield-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .starshield-references { display: block; }
+  .starshield-references a { margin-right: .75em; }
+  .starshield-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .starshield-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .starshield-figure :global(details p) { margin: .7rem 0; }
+  :global(.starshield-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.starshield-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .starshield-desktop { display: none; }
+    .starshield-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .starshield-desktop { display: none; }
+    .starshield-mobile { display: block; }
+  }
+  .starshield-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .starshield-figure { break-inside: avoid; }
+    .starshield-desktop { display: block; }
+    .starshield-mobile { display: none; }
+  }
+</style>

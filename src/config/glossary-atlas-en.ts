@@ -210,6 +210,38 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    "slug": "disponibilite-de-service",
+    "sigle": "Service availability",
+    "nom": "Usable access for authorised users",
+    "def": "The property of a system or service that authorised users can access and use when needed, with the expected timeliness and reliability. Availability must be assessed for specified uses and users. Encryption protects confidentiality; maintaining a usable service also requires suitable technical resources and access rights.",
+    "guide": "/en/analysis/starshield-ukraine-terms-of-connection/",
+    "sectionTitle": "Digital economy & data",
+    "accent": "var(--color-signal)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "A usable connection combines technical capability with authorised access.",
+      "articles": [
+        {
+          "label": "Starshield: control over the terms of connection",
+          "href": "/en/analysis/starshield-ukraine-terms-of-connection/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "NIST, availability definition",
+          "href": "https://csrc.nist.gov/glossary/term/availability",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "interoperabilite",
+        "reversibilite",
+        "portabilite"
+      ]
+    }
+  },
+  {
     "slug": "decote-d-emission",
     "sigle": "Issue discount",
     "nom": "Issue price below par",

@@ -1,0 +1,197 @@
+---
+title: "Starshield: who controls Ukraine’s terms of connection?"
+seoTitle: "Starshield in Ukraine: restrictions and control of access | l0g"
+ogTitle: "Starshield and Ukraine’s dependence on service permissions"
+description: "An investigation into Ukraine’s reported Starshield restrictions, the authority over service permissions and Europe’s available alternatives."
+pubDate: "2026-10-17T13:57:37+02:00"
+updatedDate: "2026-10-17T13:57:37+02:00"
+tags: ["Starshield", "Ukraine", "SpaceX", "satellites", "digital sovereignty", "geopolitics"]
+draft: false
+ogImage: "/illustrations/news/starshield-ukraine-v1.jpg"
+sourceArticle: "starshield-ukraine-controle-connexion"
+sourceUpdatedDate: "2026-10-17T13:57:37+02:00"
+---
+
+import StarshieldFigure from '../../components/StarshieldFigure.astro';
+
+Reports of restrictions in Ukraine this week raise a more specific question than whether a satellite network went down: who can change the permitted uses of a connection after an armed force has come to depend on it? Public evidence still does not establish who made the decision. It does explain why buying connectivity, owning a terminal and controlling service continuity are different forms of control.
+
+## The number that changes the story
+
+One hundred miles per hour, roughly 160 kilometres per hour. In the reports examined by US senators on 15 October, that figure describes how fast a terminal is moving. Internet throughput and message transmission time measure different properties. The same document mentions other reported thresholds, so the available observations do not establish a single rule operating uniformly across the network. [S06](#source-s06)
+
+The distinction matters. A throughput cap allows less information to pass each second. A movement-based access rule can disable service when a terminal falls outside its permitted operating conditions, while other terminals remain connected. Under that second arrangement, aggregate traffic might look relatively reassuring even if particular users experienced a serious loss of service. That is a possible consequence of the permission model, rather than a measurement of what happened in Ukraine.
+
+Starlink’s public commercial documentation describes an alert triggered when a terminal moves faster than its service policy permits and service is disabled. This establishes that the network can make access conditional on use. It does not disclose the settings of the government service supplied to Ukraine or identify who might have requested a change. [S10](#source-s10)
+
+The language carries political weight. A “slowdown” suggests pages taking longer to load. A “Starlink shutdown” suggests that every connection disappeared. An investigation must preserve the distinction between affected uses, observed symptoms and the still-unknown scale of the incident. The public documents reviewed for this article do not include the technical logs needed to quantify that scale.
+
+<StarshieldFigure lang="en" kind="metrics" number="01" caption="The reported movement threshold concerns terminal use. No measured throughput or network latency is shown." sources="06 10">
+<details><summary>Method and scope</summary><p>The Senate letter reports a 100 mph movement threshold and also mentions another threshold. Conversion: 100 × 1.609344 = 160.9344 km/h, approximately 161 rounded to the nearest unit or 160 at two significant figures. No throughput or latency is inferred from motion. Commercial documentation supports a general mechanism, while the Ukrainian contract remains incompletely public.</p></details>
+</StarshieldFigure>
+
+## A second network governs permission
+
+SpaceX describes Starshield as a government offering built on Starlink technology, encompassing communications, Earth observation and hosted payloads. The name therefore covers more than an enhanced internet subscription. Available evidence about Ukrainian communications does not describe every government programme associated with the brand. [S09](#source-s09)
+
+Understanding the risk requires following two paths. One carries information through user equipment, the space segment, ground infrastructure and destination services. The other governs whether that transport is allowed: contracts, service administration, customer entitlements and the rules implemented by the operator. A failure along either path can leave a user without service, although responsibility and possible remedies may be quite different.
+
+Owning the terminal gives control of a local device. It does not automatically confer administrative power over a distant network. Paying for a subscription buys rights defined by an agreement; those rights may depend on an intermediary purchaser, government approval or an authorised use. Being the beneficiary country does not necessarily make a government the authority entitled to order changes. Beneficiary, payer, contracting customer and service administrator may be different organisations.
+
+That separation is why “Musk or Washington?” is too narrow a question when assessing the safeguards a customer needs. The investigation must establish who could decide, who had to approve, who could execute and who had to notify affected users. Several functions may sit in one organisation, or a decision may travel through several of them. The diagram below illustrates this general distinction. It does not purport to reveal Ukraine’s actual network routing or contractual chain.
+
+<StarshieldFigure lang="en" kind="permissions" number="02" caption="Amber arrows represent permission logic, not a reconstruction of Ukraine’s actual chain of instruction." sources="06 09 10">
+<details><summary>Method and scope</summary><p>Conceptual distinction between transport and permission functions, based on SpaceX’s presentation, its commercial documentation and the senators’ questions. Arrows do not reconstruct a verified Ukrainian network route or chain of command.</p></details>
+</StarshieldFigure>
+
+## Restoration accounts and contested responsibility
+
+On 15 October, the Kyiv Independent reported a restoration, qualified by uncertainty over its completeness. Reuters that day attributed the restriction order to the White House, citing unnamed officials. On 16 October, Donald Trump denied responsibility, said he did not think Musk was behind the restrictions and said the United States had not imposed them. [S01](#source-s01) [S02](#source-s02) [S03](#source-s03)
+
+Reuters still reported frontline difficulties and Volodymyr Zelensky’s assessment of incomplete restoration on 16 October. On 17 October, UNN relayed remarks from Ukraine’s chargé d’affaires Denys Senik, given in an interview on Friday 16: he was still awaiting confirmation from the Pentagon and SpaceX despite improvements. These accounts are not comparable network measurements. [S04](#source-s04) [S08](#source-s08)
+
+It would therefore be premature to treat “restored” as the end of the incident. Recovery may apply to particular accounts, functions or observation periods. Unless the scope of each statement is known, improvement and continuing disruption can coexist. Their apparent contradiction does not, on its own, establish that one account is false or that another represents the experience of the entire country.
+
+Responsibility remains contested as well. Reuters’ attribution relies on anonymous sources; the presidential denial comes from a party whose conduct is in question. Neither replaces a documented instruction linked to an execution record. Musk has described Starshield as controlled by the US government. That interested-party statement is not an ownership and governance audit of every asset associated with Starlink or Starshield. [S02](#source-s02) [S03](#source-s03) [S07](#source-s07)
+
+The Telegraph published a more specific account on 16 October: citing four anonymous sources, it attributed a proposal to restrict the service to Musk and reported Trump’s agreement. That allegation conflicts with the denials. It adds another account without a published order or accessible technical record that could settle responsibility. [S27](#source-s27)
+
+<StarshieldFigure lang="en" kind="chronology" number="03" caption="The chronology combines service accounts and statements about responsibility. It is not a series of network measurements." sources="01 02 03 04 05 06 07 08">
+<details><summary>Method and scope</summary><p>Selected accounts and statements published from 14 to 17 October. Restoration reports cover different observations; they are not a uniform network measurement. Attribution accounts, including the subsequent Telegraph report discussed in the text, remain distinct from a verified public instruction.</p></details>
+</StarshieldFigure>
+
+A bipartisan letter sent to the Pentagon’s inspector general on 15 October requests an investigation, preservation of relevant records and an initial written status update and a briefing by 1 November. It is a parliamentary request for scrutiny, not an investigative report that has already established responsibility. [S05](#source-s05) [S06](#source-s06)
+
+## Switching costs are also measured in time
+
+The economic problem begins when a connection becomes an input into other investments. Organisations adapt equipment, procedures and skills around an ability to communicate. Part of the value of those investments then depends on retaining that ability. If access conditions change, buying another subscription may not restore the same useful service.
+
+Consider a civilian emergency agency that has equipped its response centres for a particular network. A competing service may exist, yet require different terminals, [interoperability](/en/glossary/interoperabilite/) testing, a new support arrangement and different access rights. This analytical example makes no claim about specific Ukrainian equipment. It illustrates why the price of a competing offer is not a complete measure of the cost of switching.
+
+Time becomes an economic resource. A solution available in six months may provide meaningful leverage in a contract negotiation while offering little help during an interruption today. The supplier or authority controlling the integrated service then holds an additional advantage: its customer cannot immediately turn a theoretical alternative into actual continuity. That advantage exists even without an intention to exercise coercive pressure.
+
+This is the problem of relationship-specific investment. Spending creates its full value within a particular arrangement and cannot be redeployed elsewhere on equal terms. Reducing the resulting dependence takes preparation before a dispute or failure occurs. The same logic applies to cloud computing, identity software and payment infrastructure. In each case, an exit option should be evaluated against the service it can preserve, rather than the number of alternative contracts held.
+
+Prepared [reversibility](/en/glossary/reversibilite/) requires more than a standby supplier named in a presentation. An organisation must fund usable capacity, keep it compatible and establish that it can actually bring the service into use. The institutional summary of the United States’ 2024 commercial space integration strategy stresses preparation and exercises before a crisis. Commercial capability and preparation for its limits belong within the same policy. [S24](#source-s24) [S25](#source-s25)
+
+## Encryption and continuity address different risks
+
+A message can be protected against interception and still be impossible to send. Information security distinguishes confidentiality, integrity and [service availability](/en/glossary/disponibilite-de-service/). Strengthening the first does not establish the third. Cryptographic protection, contractual obligations and continuity arrangements address different risks. [S11](#source-s11)
+
+This distinction also prevents every outage from being labelled a cyberattack. The European Union attributed the 24 February 2022 KA-SAT attack to Russia and described disruption beyond Ukraine. That documented precedent involved a hostile cyber operation. It does not establish the cause of the restrictions reported in October 2026. [S23](#source-s23)
+
+A hardware fault, an attack, a configuration mistake and an administrative decision can each prevent a user from communicating. They require different investigations and safeguards. Where a service rule is applied by the network, authority and procedure become central: which provision permits a change, who controls its scope, who receives notice and how can an error be corrected?
+
+Such rules are not inherently illegitimate. A critical service must administer its users, obligations and risks. The problem arises when a beneficiary has built a strong dependency without being able to verify how the rules can change. A broad promise of “security” does not resolve the issue unless it explains authorised interruptions, coordination and remedies.
+
+Reports concerning intelligence sharing must also remain distinct from those concerning satellite communications. Coincidence does not demonstrate a common cause. The senators specifically ask investigators to determine whether a link exists. Combining every reported malfunction into one account would manufacture certainty where attribution remains unresolved. [S06](#source-s06) [S26](#source-s26)
+
+## Two bills can conceal one dependency
+
+Diversification has a trap: it may change the commercial intermediary without changing the underlying system. Two contracts can depend on the same operator, service administration or infrastructure. They add counterparties and negotiating options, but do not necessarily provide independent capacity against the risk being considered.
+
+A useful assessment looks for common failure points. If one authority suspends access, adding resellers does not address that cause. Two genuinely separate networks may still depend on local power or shared user equipment. Independence is always relative to a scenario. Counting suppliers without specifying the scenario can produce a misleading picture of resilience.
+
+<StarshieldFigure lang="en" kind="dependency" number="04" caption="A second contract reduces a common cause only when it provides a genuinely distinct service chain against that cause. Analytical illustration." sources="24 25">
+<details><summary>Method and scope</summary><p>Analytical illustration of a common dependency: two contracts may rely on the same access chain. It depicts a scenario rather than a measured number of Ukrainian operators or failures. Independence must be assessed against a specified interruption cause and use.</p></details>
+</StarshieldFigure>
+
+Ground infrastructure provides a concrete financial example. In January, Eutelsat announced that it would not proceed with a sale of passive ground-segment assets from which it had expected about €550 million in net proceeds. Reuters reported that France had blocked the transaction on national-security grounds. The figure represents expected disposal proceeds, not a cash loss of that amount. [S21](#source-s21) [S22](#source-s22)
+
+The episode illustrates a trade-off between financing and control of assets deemed sensitive. It does not prove that owning antennas gives control over every condition of satellite service. Ownership may strengthen bargaining power or prevent particular changes while technical administration and authorisations remain governed elsewhere. Effective control must be assessed by connecting the assets an organisation owns to the decisions it can actually make.
+
+The distinction is particularly important when governments support infrastructure companies financially. A capital contribution can help preserve a supplier, but the service rights obtained by a public customer still require examination. Conversely, a carefully specified capacity contract may deliver useful continuity without public ownership of every component. Neither the shareholding nor the procurement announcement should be treated as a complete description of control.
+
+## CENTAURE reserves OneWeb capacity for French forces
+
+France’s approach offers a concrete example of purchasing defined service rights. The DGA announced that CENTAURE had been signed on 15 June 2026 under the NEXUS framework. CENTAURE reserves OneWeb capacity for French forces; the DGA places the purchase within a hybrid approach complementing Syracuse IV. [S12](#source-s12)
+
+The ministry’s equipment description identifies guaranteed throughput, measured in megabits per second, in specified areas, together with management tools for the armed forces. This detail matters: the purchased capability has a quantity, a scope and an intended use. Those definitions offer a more useful starting point for assessing continuity than a general claim of global coverage. [S13](#source-s13)
+
+Eutelsat reports an initial firm commitment of approximately **€115 million excluding VAT over four years**, within a ceiling of approximately **€300 million excluding VAT for up to eight years**. These are the release’s footnoted tax-exclusive figures. The ceiling is neither money already spent nor secured revenue. The amounts come from the operator; the DGA confirms the contract. [S14](#source-s14) [S12](#source-s12)
+
+<StarshieldFigure lang="en" kind="capacity" number="05" caption="Approximate nominal amounts excluding VAT. The firm commitment is included in the ceiling, with different contract horizons. The fill does not represent procurement completion." sources="12 13 14">
+<details><summary>Method and scope</summary><p>Rounded figures excluding VAT in Eutelsat’s 15 June 2026 footnotes: an initial firm commitment near €115 million over four years, within a ceiling near €300 million for up to eight years. The fill represents contractual inclusion, not payment, completion or annualised revenue.</p></details>
+</StarshieldFigure>
+
+The agreement illuminates the mechanism without providing a price for replacing Starshield in Ukraine. Areas, uses, equipment and responsibilities are not interchangeable. Dividing its value by an assumed terminal count, or comparing it with an aid budget on a different basis, would produce an attractive number with little operational meaning.
+
+The useful point lies in the service definition. Guaranteed capacity can establish what the customer reserves and how it can administer that resource. Evaluating its robustness would still require the full continuity commitments, exceptions, change procedures and evidence of performance. The public documents reviewed do not disclose all those terms. Calling a service sovereign does not remove the need to inspect them.
+
+This also changes the way a purchaser should read a headline price. An agreement may buy capacity, management tools and service-security work over different periods. Without the underlying allocation, a simple annual average is an accounting convenience rather than a demonstrated delivery schedule. The contract envelope is useful evidence of a commitment; it is not a public map of every service delivered in return.
+
+## GOVSATCOM and IRIS²: current capacity and deployment milestones
+
+Europe’s timetable needs to be read in stages. GOVSATCOM pools existing government satellite resources and began operating in January 2026; EUSPA announced an initial operational use by Cyprus in March. The roadmap provides for expansion to commercial resources in 2027. The programme organises access to existing capacity rather than waiting for an entirely new constellation. [S15](#source-s15) [S16](#source-s16)
+
+For IRIS², the Commission’s updated communication of 7 August separates **first launches planned for 2029** from **initial secure government services from 2030**. The announced architecture contains 348 satellites: 330 in low Earth orbit and 18 in medium Earth orbit. These are deployment plans. [S17](#source-s17) [S18](#source-s18)
+
+Airbus announced in September that it was developing an initial layer of at least 66 satellites, with deliveries planned for 2029. Industrial delivery, launch and usable service are distinct milestones. Collapsing them into a single date would create a false impression of immediate availability. [S19](#source-s19)
+
+<StarshieldFigure lang="en" kind="milestones" number="06" caption="Announced IRIS² milestones do not establish full availability. Access to European capacity still requires suitable permissions and equipment. The 2030 timetable follows DG DEFIS; the disagreement with EUSPA is explained in the text." sources="15 16 17 18 19 20">
+<details><summary>Method and scope</summary><p>Announced milestones: GOVSATCOM operational since January 2026, commercial expansion planned for 2027; first Airbus deliveries and IRIS² launches targeted in 2029. The graphic follows DG DEFIS and its factsheet for initial government services from 2030; EUSPA also retains a service announcement from 2029. None of these dates guarantees equivalent access for Ukraine.</p></details>
+</StarshieldFigure>
+
+European publications differ on the service start date: EUSPA still mentions 2029 in its March and 7 August releases, while the detailed DG DEFIS presentation and associated factsheet place initial government services in 2030. The graphic follows that timetable and distinguishes it from launches planned from 2029. The factsheet checked on 17 October gives a consistent total of 348 satellites: 330 in low Earth orbit and 18 in medium Earth orbit. [S15](#source-s15) [S17](#source-s17) [S18](#source-s18) [S20](#source-s20)
+
+European capabilities can expand available options, but access for a particular beneficiary depends on authorisation, equipment and the service required. None of the reviewed announcements demonstrates an immediate, complete substitute for every Ukrainian use of Starlink or Starshield. Satellite numbers alone cannot yield a measure of useful capacity either: network design, coverage, terminals and access rules all matter.
+
+Nor does reserving capacity for one government establish its availability for another. Transferring an entitlement may require a separate decision, agreement or technical arrangement. The public announcements should therefore be read as evidence of expanding options, not as proof that all those options have already been made available to Ukraine on equivalent terms.
+
+## The strongest counterargument deserves a hearing
+
+Dependence is not sufficient grounds for rejecting commercial infrastructure. Capability available in time may be worth more than a perfectly controlled system still under development. US commercial integration policy explicitly accepts that trade-off and seeks to manage it. A serious comparison must assess usable services and their conditions, rather than assume public or private ownership settles the issue. [S24](#source-s24) [S25](#source-s25)
+
+Building a second chain costs money, potentially drawing resources from other needs. Poorly prepared duplication can introduce complexity that reduces reliability. A more useful objective is to identify the functions whose interruption would be most damaging, the causes that threaten them and the continuity capacity that would actually reduce the harm. That does not require every component to be duplicated identically.
+
+The benefit of an alternative may be hard to see during normal operations. Reserved capacity, compatible equipment and a continuity exercise do not necessarily increase everyday traffic. Their value becomes visible when the main service fails or its conditions change. This is a form of operational insurance whose cost should be compared with the consequences of interruption, consequences that the current public record does not quantify for Ukraine.
+
+An operator’s nationality matters because it can change the relevant authorities and the interests involved. It does not, by itself, describe technical quality or effective governance. Control over service rules, visibility into changes and the ability to activate another connection require specific safeguards, including when the provider is domestic or European.
+
+The practical economic comparison is therefore not merely between two subscription prices. It is between service arrangements over time, including preparation, continuing compatibility and the consequences of losing access. A cheaper primary service combined with a credible fallback may be preferable to a costlier single system; in another setting, stronger guaranteed rights may be the more valuable investment. Public evidence here is insufficient to price either choice for Ukraine.
+
+## The records that could settle the issue
+
+Attribution would require the configuration-change timeline, its scope, the instructions received, the notifications sent and the applicable contractual provisions. Matching those records could distinguish political direction, operator action, error or a combination of causes. These are investigative questions, not conclusions that can be extracted from a restoration announcement.
+
+The senators’ request to preserve records addresses that need. Their 1 November date concerns an initial response requested; it guarantees neither the opening of an investigation nor a final public finding by that date. As of 17 October, the documents reviewed do not settle responsibility. [S05](#source-s05) [S06](#source-s06)
+
+The available evidence supports a specific conclusion. Connectivity depends on the permissions that make a link usable. When a state builds critical functions around that link, the authority able to alter those permissions becomes part of its risk exposure. Capacity contracts, change procedures and alternatives that can actually be used then belong in the infrastructure assessment alongside the satellites themselves.
+
+## Further reading
+
+The [September analysis of Starlink authorisations](/en/analysis/starlink-ukraine-control-connection/) examines terminal admission and shared infrastructure. [Doctolib and Nvidia](/en/analysis/doctolib-nvidia-freedom-to-switch-tools/) explores the practical freedom to change tools; the [map of Microsoft dependencies](/en/analysis/leaving-microsoft-1-government-dependencies/) follows the data, contracts and workflows a migration must preserve.
+
+## Sources and documentary limits
+
+Sources checked on 17 October 2026. Publication dates, reported statements and planned milestones remain distinct. Interested-party claims retain their attribution.
+
+<ol class="starshield-sources">
+<li id="source-s01"><strong>[S01] The Kyiv Independent.</strong> <a href="https://kyivindependent.com/breaking-starlink-service-in-ukraine-restored-defense-ministry-source-says/">Starlink service in Ukraine “restored,” Defense Ministry source says</a>. 2026-10-15. Qualified restoration claim; no complete technical verification.</li>
+<li id="source-s02"><strong>[S02] Reuters.</strong> <a href="https://www.reuters.com/world/europe/order-limit-starshield-ukraine-came-inside-white-house-sources-say-2026-10-15/">Order to limit Starshield for Ukraine came from inside White House, sources say</a> · <a href="https://www.investing.com/news/world-news/exclusiveorder-to-limit-starshield-for-ukraine-came-from-inside-white-house-sources-say-4952816">Additional access to the document</a>. 2026-10-15. Anonymous-source reporting; contested attribution. The alternative URL carries the same Reuters report, not independent confirmation.</li>
+<li id="source-s03"><strong>[S03] Reuters.</strong> <a href="https://www.reuters.com/world/europe/trump-says-neither-he-nor-musk-responsible-ukraine-starlink-access-2026-10-16/">Trump says neither he nor Musk responsible for Ukraine loss of Starlink access</a> · <a href="https://www.investing.com/news/commodities-news/trump-says-neither-he-nor-musk-responsible-for-ukraine-starlink-access-4954681">Additional access to the document</a>. 2026-10-16. Reuters text read in syndication; denial of personal responsibility, Musk’s involvement and restrictions imposed by the United States, without a technical record.</li>
+<li id="source-s04"><strong>[S04] Reuters.</strong> <a href="https://www.reuters.com/business/aerospace-defense/starlink-disruptions-are-being-felt-front-lines-ukraine-2026-10-16/">Starlink disruptions are being felt on the front lines of Ukraine</a> · <a href="https://www.investing.com/news/world-news/starlink-disruptions-are-being-felt-on-the-front-lines-of-ukraine-4954383">Additional access to the document</a>. 2026-10-16. Reuters report read in syndication; local testimony and an assessment of incomplete improvement rather than a network-wide measurement.</li>
+<li id="source-s05"><strong>[S05] U.S. Senate, Foreign Relations Committee.</strong> <a href="https://www.foreign.senate.gov/press/dem/release/shaheen-tillis-lead-bipartisan-senators-in-calling-for-department-of-defense-inspector-general-investigation-into-starlink-disruptions-in-ukraine">Shaheen, Tillis: request for an Inspector General investigation</a>. 2026-10-15. A request for investigation, not an investigative finding.</li>
+<li id="source-s06"><strong>[S06] U.S. Senate.</strong> <a href="https://www.foreign.senate.gov/download/letter-to-dodig-re-starlink-over-ukraine_-final-signed">Letter to the Department of Defense Inspector General, signed</a>. 2026-10-15. Signed three-page letter. An initial response is requested by 1 November, not a guaranteed final report.</li>
+<li id="source-s07"><strong>[S07] Agence France-Presse.</strong> <a href="https://www.afp.com/en/musk-calls-ukraines-zelensky-go-after-satellite-slowdown-row">Musk calls on Ukraine’s Zelensky to go after satellite slowdown row</a>. 2026-10-15. An interested-party statement, not an ownership audit.</li>
+<li id="source-s08"><strong>[S08] UNN.</strong> <a href="https://unn.ua/en/news/ukraine-awaits-confirmation-from-the-pentagon-and-spacex-regarding-the-restoration-of-starshield">Ukraine awaits confirmation from the Pentagon and SpaceX regarding the restoration of Starshield</a>. 2026-10-17. Remarks by Denys Senik from an interview on 16 October, relayed on 17 October; no independent technical confirmation.</li>
+<li id="source-s09"><strong>[S09] SpaceX.</strong> <a href="https://new.spacex.com/starshield">Starshield: secured satellite network for government entities</a> · <a href="https://www.spacex.com/starshield">Additional access to the document</a>. Publication date not established. Government product description. Dynamic page; indexed official text consulted.</li>
+<li id="source-s10"><strong>[S10] Starlink.</strong> <a href="https://starlink.com/ki/support/article/413011a8-34c9-5b33-bf97-03f7ca7273ea">What are the telemetry API alerts on my Enterprise Dashboard?</a>. Publication date not established. Commercial service documentation; it does not disclose the Ukrainian Starshield agreement.</li>
+<li id="source-s11"><strong>[S11] NIST.</strong> <a href="https://csrc.nist.gov/glossary/term/security">Security: CSRC glossary</a> · <a href="https://csrc.nist.gov/glossary/term/availability">NIST, availability</a>. Publication date not established. Conceptual definitions, not a diagnosis of the incident.</li>
+<li id="source-s12"><strong>[S12] Direction générale de l’armement.</strong> <a href="https://www.defense.gouv.fr/dga/actualites/dga-poursuit-diversification-moyens-telecommunications-satellite-au-profit-forces">La DGA poursuit la diversification des moyens de télécommunications par satellite au profit des forces</a>. The indexed DGA page is dated 16 June 2026. The 15 June signature is corroborated by Eutelsat; direct access to the page was unavailable during verification. No Ukrainian transfer of rights is documented.</li>
+<li id="source-s13"><strong>[S13] Ministère des Armées.</strong> <a href="https://www.defense.gouv.fr/de/node/23486">Connectivité Oneweb Nexus, Eurosatory 2026</a>. Publication date not established. Official description of capacity rights; full contract terms are not public in this record.</li>
+<li id="source-s14"><strong>[S14] Eutelsat.</strong> <a href="https://eutelsat.mynewsdesk.com/pressreleases/eutelsat-et-le-ministere-des-armees-annoncent-la-signature-du-contrat-de-capacite-centaure-marche-subsequent-de-laccord-cadre-nexus-3454217">Signature du contrat de capacité CENTAURE, marché subséquent de NEXUS</a>. 2026-06-15. Corporate figures. Approximate tax-exclusive values appear in the release’s footnotes.</li>
+<li id="source-s15"><strong>[S15] EUSPA.</strong> <a href="https://www.euspa.europa.eu/pressroom/press-releases/cyprus-completes-first-operational-use-eu-govsatcom-hub-services-marking">Cyprus completes first operational use of EU GOVSATCOM Hub services</a>. 2026-03-10. GOVSATCOM operational since January 2026; this text retains an IRIS² service objective from 2029, distinct from the detailed DG DEFIS timetable.</li>
+<li id="source-s16"><strong>[S16] Commission européenne, DG DEFIS.</strong> <a href="https://eu-space.europa.eu/secure-connectivity/govsatcom">GOVSATCOM</a>. Publication date not established. A roadmap, not automatic access for every beneficiary.</li>
+<li id="source-s17"><strong>[S17] Commission européenne, DG DEFIS.</strong> <a href="https://eu-space.europa.eu/news/observer-how-european-union-accelerating-and-reinforcing-iris2">OBSERVER: How the European Union is accelerating and reinforcing IRIS²</a>. 2026-08-07. Updated timetable and planned architecture; future deployment remains uncertain.</li>
+<li id="source-s18"><strong>[S18] EUSPA.</strong> <a href="https://www.euspa.europa.eu/newsroom-events/news/commission-accelerates-iris2-deployment-enhanced-security-and-expanded">Commission accelerates IRIS² deployment with enhanced security and expanded satellites network</a>. 2026-08-07. Announced total of 348 satellites; its services paragraph retains 2029, differing from initial government services in 2030 in S17 and S20.</li>
+<li id="source-s19"><strong>[S19] Airbus.</strong> <a href="https://www.airbus.com/en/newsroom/press-releases/2026-09-airbus-starts-the-development-of-iris2-satellites-on-behalf-of-eutelsat">Airbus starts the development of IRIS² satellites on behalf of Eutelsat</a>. 2026-09-10. An industrial delivery plan, distinct from launch or service availability.</li>
+<li id="source-s20"><strong>[S20] Commission européenne, DG DEFIS.</strong> <a href="https://defence-industry-space.ec.europa.eu/document/download/5cb72e29-5eb0-4c4c-be48-95570ffa13d3_en?filename=IRIS2+-+EU+Secure+Connectivity+Programme_0.pdf">IRIS²: EU Secure Connectivity Programme, factsheet</a>. Publication date not established. Current PDF downloaded and both pages inspected: a consistent total of 348, comprising 330 LEO and 18 MEO satellites; launches in 2029 and government services in 2030. No precise publication date is printed.</li>
+<li id="source-s21"><strong>[S21] Eutelsat.</strong> <a href="https://www.mynewsdesk.com/eutelsat/pressreleases/eutelsat-announces-the-end-of-the-transaction-to-dispose-of-its-passive-ground-segment-infrastructure-assets-3429735">End of the transaction to dispose of passive ground segment infrastructure assets</a>. 2026-01-29. Expected net disposal proceeds, not a realised cash loss.</li>
+<li id="source-s22"><strong>[S22] Reuters.</strong> <a href="https://www.reuters.com/business/media-telecom/france-prevented-eutelsat-selling-ground-antennas-finance-minister-says-2026-01-30/">France halted Eutelsat’s sale of ground antennas, Finance Minister says</a>. 2026-01-30. Roland Lescure’s statement attributed by Reuters; text found in indexed syndication, without an inspected veto decision or its annexes.</li>
+<li id="source-s23"><strong>[S23] Conseil de l’Union européenne.</strong> <a href="https://www.consilium.europa.eu/en/press/press-releases/2022/05/10/russian-cyber-operations-against-ukraine-declaration-by-the-high-representative-on-behalf-of-the-european-union/">Russian cyber operations against Ukraine: declaration by the High Representative</a>. 2022-05-10. A dated EU attribution of a different historical cyberattack.</li>
+<li id="source-s24"><strong>[S24] Naval Postgraduate School, Acquisition Research Program.</strong> <a href="https://nps.edu/web/acqnresearch/2024-archive/-/asset_publisher/riOLyDXewOgo/content/newsletter-4.5.2024">Newsletter, Issue 191: commercial space integration</a>. 2024-04-05. Institutional summary of the 2024 strategy. The original DoD PDF is not archived in this package.</li>
+<li id="source-s25"><strong>[S25] U.S. Space Force / Secretary of the Air Force Public Affairs.</strong> <a href="https://www.vandenberg.spaceforce.mil/News/Article-Display/Article/3736616/ussf-releases-commercial-space-strategy-to-increase-competitive-advantage/">USSF releases Commercial Space Strategy to increase competitive advantage</a>. 2024-04-10. Official strategy announcement; indexed text consulted.</li>
+<li id="source-s26"><strong>[S26] Commission européenne.</strong> <a href="https://audiovisual.ec.europa.eu/en/media/video/I-296250">Midday briefing of 14 October 2026: Ukraine, defence and space</a> · <a href="https://www.eurointegration.com.ua/eng/news/2026/10/14/7247699/">Additional access to the document</a>. 2026-10-14. Primary Commission transcript of 14 October, covering Ukraine, defence and space. Having no indication of a general halt does not establish the absence of local incidents.</li>
+<li id="source-s27"><strong>[S27] The Telegraph.</strong> <a href="https://www.telegraph.co.uk/world-news/2026/10/16/musk-approached-trump-slow-down-starlink-help-ukraine/">Report on Musk’s alleged proposal to restrict Ukraine’s satellite service</a> · <a href="https://www.aol.com/articles/exclusive-musk-approached-trump-slow-175901000.html">Additional access to the document</a>. 2026-10-16. 16 October investigation read in full in its AOL syndication; four anonymous sources. It attributes a proposal to Musk and agreement to Trump without a published order or accessible technical log.</li>
+</ol>
