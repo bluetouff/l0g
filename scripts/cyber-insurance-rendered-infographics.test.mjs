@@ -31,7 +31,7 @@ test('compiled SVG guards reject geometry, text, source, responsive and executab
   svg=>{svg.attrs=svg.attrs.filter(a=>a.name!=='style');},
   svg=>{const t=nodes(svg).find(n=>n.tagName==='text');t.attrs.find(a=>a.name==='font-family').value='Arial';},
   svg=>{nodes(svg).find(n=>n.nodeName==='#text'&&n.value.includes('La dépendance')).value='Changed figure title';},
-  svg=>{nodes(svg).find(n=>n.nodeName==='#text'&&n.value.includes('https://data.fca.org.uk/')).value='Forged metadata';},
+  svg=>{const metadata=nodes(svg).filter(n=>n.tagName==='metadata');assert.equal(metadata.length,1);assert.equal(metadata[0].childNodes.length,1);const value=metadata[0].childNodes[0];assert.equal(value.nodeName,'#text');value.value='Forged metadata';},
   svg=>{svg.childNodes.push({nodeName:'script',tagName:'script',attrs:[],childNodes:[]});},
  ]){const tree=parse(page.html),svg=nodes(tree).find(n=>n.tagName==='figure'&&attrs(n).id==='figure-01').childNodes.flatMap(nodes).find(n=>n.tagName==='svg');change(svg);assert.throws(()=>figures(tree,page.lang));}
 });
