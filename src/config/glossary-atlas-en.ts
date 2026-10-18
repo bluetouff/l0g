@@ -210,6 +210,84 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+      "slug": "pertes-d-exploitation-dependantes",
+      "sigle": "Dependent business interruption",
+      "nom": "Cover for business interruption caused by a third party",
+      "def": "Cover for specified business interruption losses caused by an outage at a third party defined in the policy. Eligible parties may include suppliers or service providers; reduced purchasing by a customer requires suitable cover. The policy sets the triggering event, eligible counterparties, time provisions and limits.",
+      "guide": "/en/analysis/after-cyberattack-03-insurance-customer-disruption/",
+      "sectionTitle": "Macro & central banks",
+      "accent": "var(--color-signal)",
+      "robots": "noindex,follow",
+      "atlas": {
+          "intuition": "The trading relationship identifies the third party’s role; the policy then determines eligible losses.",
+          "articles": [
+              {
+                  "label": "Cyber insurance: an outage at a customer",
+                  "href": "/en/analysis/after-cyberattack-03-insurance-customer-disruption/",
+                  "detail": "Trading relationships, scope of cover and claim settlement.",
+                  "kind": "article"
+              }
+          ],
+          "sources": [
+              {
+                  "label": "Beazley, cyber policy guidance",
+                  "href": "https://www.beazley.com/en-001/cyber-customer-centre/cyber-risk-management-tools/cyber-business-interruption/policy-wording/",
+                  "detail": "Dependent Business Interruption Loss: supplier and customer examples within this published guidance.",
+                  "kind": "source"
+              },
+              {
+                  "label": "Hiscox, 04/23 specimen",
+                  "href": "https://www.hiscox.co.uk/sites/default/files/documents/2023-05/19029%20WD-PIP-UK-CCLEAR(5).pdf",
+                  "detail": "Definitions, pages 3–6; cover and payment provisions, pages 7–8 and 15.",
+                  "kind": "source"
+              },
+              {
+                  "label": "CFC, 8 January 2026",
+                  "href": "https://www.cfc.com/en-gb/knowledge/resources/articles/2026/01/cyber-coverage-highlights-customer-business-interruption/",
+                  "detail": "Commercial description of a named-customer extension, with an agreed aggregate limit per customer.",
+                  "kind": "source"
+              }
+          ],
+          "related": [
+              "franchise-temporelle",
+              "bfr"
+          ]
+      }
+  },
+  {
+      "slug": "franchise-temporelle",
+      "sigle": "Time excess",
+      "nom": "A period of loss retained by the insured",
+      "def": "A policy-defined period during which specified losses remain with the insured. Under the income-loss option in Hiscox’s 04/23 specimen, losses and expenses incurred during the time excess are excluded. The schedule sets its duration. A time excess is distinct from a monetary excess.",
+      "guide": "/en/analysis/after-cyberattack-03-insurance-customer-disruption/",
+      "sectionTitle": "Macro & central banks",
+      "accent": "var(--color-signal)",
+      "robots": "noindex,follow",
+      "atlas": {
+          "intuition": "The covered loss period and the insurer’s payment date answer different questions.",
+          "articles": [
+              {
+                  "label": "Cyber insurance: an outage at a customer",
+                  "href": "/en/analysis/after-cyberattack-03-insurance-customer-disruption/",
+                  "detail": "Trading relationships, scope of cover and claim settlement.",
+                  "kind": "article"
+              }
+          ],
+          "sources": [
+              {
+                  "label": "Hiscox, 04/23 specimen",
+                  "href": "https://www.hiscox.co.uk/sites/default/files/documents/2023-05/19029%20WD-PIP-UK-CCLEAR(5).pdf",
+                  "detail": "Page 6: Time excess and Waiting period definitions. Page 15: income-loss option and exclusion of losses during the time excess.",
+                  "kind": "source"
+              }
+          ],
+          "related": [
+              "pertes-d-exploitation-dependantes",
+              "bfr"
+          ]
+      }
+  },
+  {
     slug: 'bfr',
     sigle: 'BFR',
     nom: 'Operating working capital requirement',

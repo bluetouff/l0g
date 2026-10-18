@@ -18,6 +18,41 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Cyber cover depends on the insured relationship and the selected policy option.
+for (const [slug, sources, related] of [
+  ['pertes-d-exploitation-dependantes', [
+    'https://www.beazley.com/en-001/cyber-customer-centre/cyber-risk-management-tools/cyber-business-interruption/policy-wording/',
+    'https://www.hiscox.co.uk/sites/default/files/documents/2023-05/19029%20WD-PIP-UK-CCLEAR(5).pdf',
+    'https://www.cfc.com/en-gb/knowledge/resources/articles/2026/01/cyber-coverage-highlights-customer-business-interruption/',
+  ], ['franchise-temporelle', 'bfr']],
+  ['franchise-temporelle', [
+    'https://www.hiscox.co.uk/sites/default/files/documents/2023-05/19029%20WD-PIP-UK-CCLEAR(5).pdf',
+  ], ['pertes-d-exploitation-dependantes', 'bfr']],
+]) {
+  const matches = glossaryEntries.filter(entry => entry.slug === slug);
+  assert.equal(matches.length, 1, `${slug}: unique French definition`);
+  const fr = matches[0], en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr.atlas && en?.atlas, `${slug}: native bilingual definitions and primary sources required`);
+  assert.equal(fr.guide, '/posts/apres-cyberattaque-03-cyberassurance-panne-client/');
+  assert.equal(en.guide, '/en/analysis/after-cyberattack-03-insurance-customer-disruption/');
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
+    assert.deepEqual(entry.atlas.articles.map(article => article.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, related);
+    assert(!entry.def.includes('—'));
+    for (const neighbor of related) { assert(glossaryEntries.some(term => term.slug === neighbor)); assert(glossaryAtlasEnBySlug.has(neighbor)); }
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'pertes-d-exploitation-dependantes').def, /tiers défini au contrat/);
+assert.match(glossaryAtlasEnBySlug.get('pertes-d-exploitation-dependantes').def, /third party defined in the policy/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'franchise-temporelle').def, /loss of income.*Hiscox 04\/23.*exclues/u);
+assert.match(glossaryAtlasEnBySlug.get('franchise-temporelle').def, /income-loss option.*04\/23 specimen.*excluded/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'franchise-temporelle').def, /franchise monétaire/u);
+assert.match(glossaryAtlasEnBySlug.get('franchise-temporelle').def, /monetary excess/u);
+
 // Statutory protection, notice and sanctions retain their separate scopes.
 {
   const fr = glossaryEntries.find(entry => entry.slug === 'automatic-stay');
@@ -252,7 +287,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 257, 'Le corpus anglais doit conserver ses 257 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 259, 'Le corpus anglais doit conserver ses 259 fiches uniques');
 
 for (const [slug, source, related] of [
   ['apd', 'https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html', ['equivalent-don', 'ida', 'compte-courant']],
@@ -379,8 +414,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 662, 'Le corpus doit conserver ses 662 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 245, 'Le graphe Atlas doit conserver ses 245 nœuds');
+assert.equal(glossaryEntries.length, 664, 'Le corpus doit conserver ses 664 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 247, 'Le graphe Atlas doit conserver ses 247 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -802,7 +837,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 725, 'Le graphe Atlas doit conserver ses 725 relations');
+assert.equal(glossaryAtlasEdgeCount, 729, 'Le graphe Atlas doit conserver ses 729 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

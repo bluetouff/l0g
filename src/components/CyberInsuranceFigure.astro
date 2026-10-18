@@ -1,0 +1,74 @@
+---
+import { cyberInsuranceInlineSvg, cyberInsuranceReferences, CYBER_INSURANCE_KINDS } from '../lib/cyberInsuranceFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'dependence' | 'window' | 'vertu' | 'marks-spencer';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (typeof number !== 'string' || !/^(?:0[1-4])$/.test(number) || CYBER_INSURANCE_KINDS.indexOf(kind) + 1 !== Number(number)) {
+  throw new TypeError('Invalid Cyber insurance figure number');
+}
+if (typeof caption !== 'string' || !caption.trim()) throw new TypeError('Cyber insurance figure caption required');
+const references = cyberInsuranceReferences(kind, sources);
+const svg = cyberInsuranceInlineSvg(lang, kind);
+---
+<figure class="cyber-insurance-figure" id={`figure-${number}`} data-figure={number} data-kind={kind}>
+  <div class="cyber-insurance-graphic" set:html={svg} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="cyber-insurance-references">{references.map(id => <a href={`#source-${id}`}>[{Number(id)}]</a>)}</span>
+  </figcaption>
+  <slot />
+  {number === '01' && <details class="cyber-insurance-fonts">
+    <summary>{lang === 'fr' ? 'Polices et licences des figures' : 'Figure fonts and licences'}</summary>
+    <p>{lang === 'fr' ? 'Polices des figures : Inter Variable et JetBrains Mono Variable, sous licence SIL Open Font License 1.1.' : 'Figure fonts: Inter Variable and JetBrains Mono Variable, under the SIL Open Font License 1.1.'} <a href="/fonts/jlr/LICENSE-inter.txt">Inter</a> · <a href="/fonts/jlr/LICENSE-jetbrains-mono.txt">JetBrains Mono</a>.</p>
+  </details>}
+</figure>
+<style>
+  /* Preserve the supplied composition and all source paint attributes.
+     Only presentation follows the site's existing semantic theme tokens. */
+  .cyber-insurance-figure :global([fill="#0c0d10"]) { fill: var(--color-ink); }
+  .cyber-insurance-figure :global([stroke="#0c0d10"]) { stroke: var(--color-ink); }
+  .cyber-insurance-figure :global([fill="#121419"]) { fill: var(--color-surface); }
+  .cyber-insurance-figure :global([stroke="#121419"]) { stroke: var(--color-surface); }
+  .cyber-insurance-figure :global([fill="#171a20"]) { fill: var(--color-surface-2); }
+  .cyber-insurance-figure :global([stroke="#171a20"]) { stroke: var(--color-surface-2); }
+  .cyber-insurance-figure :global([fill="#272d37"]) { fill: var(--color-line-strong); }
+  .cyber-insurance-figure :global([stroke="#272d37"]) { stroke: var(--color-line-strong); }
+  .cyber-insurance-figure :global([fill="#343b48"]) { fill: var(--color-line-strong); }
+  .cyber-insurance-figure :global([stroke="#343b48"]) { stroke: var(--color-line-strong); }
+  .cyber-insurance-figure :global([fill="#657084"]) { fill: var(--color-muted); }
+  .cyber-insurance-figure :global([stroke="#657084"]) { stroke: var(--color-muted); }
+  .cyber-insurance-figure :global([fill="#a5adbb"]) { fill: var(--color-muted); }
+  .cyber-insurance-figure :global([stroke="#a5adbb"]) { stroke: var(--color-muted); }
+  .cyber-insurance-figure :global([fill="#e7e9ee"]) { fill: var(--color-paper); }
+  .cyber-insurance-figure :global([stroke="#e7e9ee"]) { stroke: var(--color-paper); }
+  .cyber-insurance-figure :global([fill="#5eead4"]) { fill: var(--color-signal); }
+  .cyber-insurance-figure :global([stroke="#5eead4"]) { stroke: var(--color-signal); }
+  .cyber-insurance-figure :global([fill="#ff4d87"]) { fill: var(--color-accent); }
+  .cyber-insurance-figure :global([stroke="#ff4d87"]) { stroke: var(--color-accent); }
+  .cyber-insurance-figure :global([fill="#f5b13d"]) { fill: var(--color-amber); }
+  .cyber-insurance-figure :global([stroke="#f5b13d"]) { stroke: var(--color-amber); }
+  .cyber-insurance-figure :global([fill="#7aa2f7"]) { fill: var(--color-topic-blue); }
+  .cyber-insurance-figure :global([stroke="#7aa2f7"]) { stroke: var(--color-topic-blue); }
+  .cyber-insurance-figure :global([stop-color="#5eead4"]) { stop-color: var(--color-signal); }
+  /* Keep the original hatching readable against the light palette. */
+  :global(html[data-theme="light"]) .cyber-insurance-figure[data-kind="window"] :global(pattern path[opacity="0.30"]) { opacity: .15; }
+  .cyber-insurance-figure { margin: 2.8rem auto; width: 100%; max-width: 600px; padding-bottom: .85rem; overflow: visible; }
+  .cyber-insurance-graphic { width: 100%; }
+  .cyber-insurance-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .cyber-insurance-references { display: block; }
+  .cyber-insurance-references a { margin-right: .75em; }
+  .cyber-insurance-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .cyber-insurance-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .cyber-insurance-figure :global(details p) { margin: .7rem 0; }
+  .cyber-insurance-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  :global(.cyber-insurance-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.cyber-insurance-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media print { .cyber-insurance-figure { break-inside: avoid; } }
+</style>

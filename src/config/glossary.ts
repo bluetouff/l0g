@@ -235,6 +235,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Headroom', nom: 'Marge de manœuvre budgétaire', def: "Différence entre le plafond annuel des ressources propres de l'UE pour les paiements et les ressources nécessaires au financement du budget. Elle permet de garantir les obligations financières et les engagements conditionnels de l'Union dans les limites juridiques applicables. Un appel de garantie peut mobiliser des contributions des États membres ; cette marge ne constitue pas une trésorerie déjà disponible.", guide: '/posts/ukraine-interets-reparations/' },
       { sigle: 'Prêt à recours limité', nom: 'Limited-recourse loan', def: "Prêt dont les possibilités de recouvrement sont limitées par les clauses convenues. Pour le prêt de soutien à l'Ukraine de 2026–2027, le règlement lie l'exigibilité du principal à des événements déterminés, dont la réception de réparations russes. Il prévoit aussi des exceptions en cas de violation des conditions démocratiques ou de fraude, corruption ou autre activité illégale établie dans la gestion du prêt et portant atteinte aux intérêts financiers de l'Union.", guide: '/posts/ukraine-interets-reparations/' },
       { sigle: 'ERA', nom: 'Extraordinary Revenue Acceleration Loans for Ukraine', def: "Initiative du G7 lancée en 2024 pour avancer à l'Ukraine des prêts dont le service et le remboursement sont soutenus par les revenus exceptionnels futurs tirés de l'immobilisation d'actifs souverains russes. Dans l'UE, le mécanisme de coopération pour les prêts à l'Ukraine affecte les ressources disponibles aux prêts admissibles. Ces revenus sont distincts du capital russe immobilisé.", guide: '/posts/ukraine-interets-reparations/' },
+      {"sigle": "Pertes d’exploitation dépendantes", "nom": "Garantie des pertes d’exploitation liées à un tiers", "def": "Garantie de certaines pertes d’activité causées par l’interruption d’un tiers défini au contrat. Le périmètre peut viser des fournisseurs ou prestataires ; la baisse des achats d’un client exige une garantie adaptée. L’événement déclencheur, les tiers admissibles, les délais et les plafonds dépendent de la police.", "guide": "/posts/apres-cyberattaque-03-cyberassurance-panne-client/"},
+      {"sigle": "Franchise temporelle", "nom": "Durée de franchise prévue par le contrat d’assurance", "def": "Durée contractuelle pendant laquelle certaines pertes restent à la charge de l’assuré. Dans l’option « loss of income » du spécimen Hiscox 04/23, les pertes et dépenses subies pendant le time excess sont exclues. Les conditions particulières fixent sa durée. Cette franchise de temps se distingue d’une franchise monétaire.", "guide": "/posts/apres-cyberattaque-03-cyberassurance-panne-client/"},
       { sigle: 'Ratio combiné', nom: 'Rentabilité technique de l’assurance', def: "Rapport des charges de sinistres et des frais aux primes, exprimé en pourcentage. En dessous de 100 %, l’activité dégage un excédent technique ; au-dessus, les charges dépassent les primes. Il exclut le résultat financier et ne mesure pas la solvabilité. Toute comparaison doit préciser la période, la branche et le traitement de la réassurance.", guide: '/posts/assurance-resiliation-sinistre-non-responsable-selection-risques/' },
       { sigle: 'Cat Nat', nom: 'Régime d’indemnisation des catastrophes naturelles', def: "Régime légal français qui étend les contrats de dommages aux biens à certains effets d'une catastrophe naturelle reconnue par arrêté. Son financement repose sur une surprime nationale. Les assureurs peuvent céder une partie du risque à CCR, dont la couverture bénéficie de la garantie de l'État.", guide: '/posts/climat-etat-reassureur-cat-nat/' },
       { sigle: 'Réassurance', nom: 'Assurance de l’assureur', def: "Contrat par lequel un assureur transfère tout ou partie de risques à un réassureur contre une prime. Les garanties et limites déterminent les pertes prises en charge. L’assureur initial conserve ses obligations envers ses assurés, y compris si le réassureur ne paie pas.", guide: '/posts/climat-etat-reassureur-cat-nat/' },
@@ -1072,6 +1074,64 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "pertes-d-exploitation-dependantes": {
+      "intuition": "La relation commerciale identifie le rôle du tiers, puis le contrat détermine les pertes admissibles.",
+      "articles": [
+          {
+              "label": "Cyberassurance : l’arrêt chez un client",
+              "href": "/posts/apres-cyberattaque-03-cyberassurance-panne-client/",
+              "detail": "Relations commerciales, conditions de couverture et règlement du sinistre.",
+              "kind": "article"
+          }
+      ],
+      "sources": [
+          {
+              "label": "Beazley, guide des garanties cyber",
+              "href": "https://www.beazley.com/en-001/cyber-customer-centre/cyber-risk-management-tools/cyber-business-interruption/policy-wording/",
+              "detail": "Dependent Business Interruption Loss : exemples fournisseurs et clients ; portée propre au guide publié.",
+              "kind": "source"
+          },
+          {
+              "label": "Hiscox, spécimen 04/23",
+              "href": "https://www.hiscox.co.uk/sites/default/files/documents/2023-05/19029%20WD-PIP-UK-CCLEAR(5).pdf",
+              "detail": "Définitions, pages 3–6 ; garanties et modalités de règlement, pages 7–8 et 15.",
+              "kind": "source"
+          },
+          {
+              "label": "CFC, 8 janvier 2026",
+              "href": "https://www.cfc.com/en-gb/knowledge/resources/articles/2026/01/cyber-coverage-highlights-customer-business-interruption/",
+              "detail": "Présentation commerciale d’une extension pour clients nommés, avec plafond agrégé par client.",
+              "kind": "source"
+          }
+      ],
+      "related": [
+          "franchise-temporelle",
+          "bfr"
+      ]
+  },
+  "franchise-temporelle": {
+      "intuition": "La période indemnisable et la date du virement de l’assureur répondent à des questions différentes.",
+      "articles": [
+          {
+              "label": "Cyberassurance : l’arrêt chez un client",
+              "href": "/posts/apres-cyberattaque-03-cyberassurance-panne-client/",
+              "detail": "Relations commerciales, conditions de couverture et règlement du sinistre.",
+              "kind": "article"
+          }
+      ],
+      "sources": [
+          {
+              "label": "Hiscox, spécimen 04/23",
+              "href": "https://www.hiscox.co.uk/sites/default/files/documents/2023-05/19029%20WD-PIP-UK-CCLEAR(5).pdf",
+              "detail": "Page 6, définitions Time excess et Waiting period ; page 15, option Loss of income et exclusion des pertes de franchise.",
+              "kind": "source"
+          }
+      ],
+      "related": [
+          "pertes-d-exploitation-dependantes",
+          "bfr"
+      ]
+  },
   bfr: {
     intuition: 'Une reprise de production peut absorber de la trésorerie avant les recettes des ventes correspondantes.',
     articles: [
