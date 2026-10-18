@@ -3184,8 +3184,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/greensill-insurance-future-receivables-risk/',
     atlas: {
       intuition: 'The finance provider advances cash to the supplier; the buyer later settles an identified commercial obligation.',
-      articles: [{ label: 'Greensill: lending before the invoice exists', href: '/en/analysis/greensill-insurance-future-receivables-risk/', detail: 'Future receivables, insurance and cash availability.', kind: 'article' }],
-      sources: [{ label: 'Bank of England, 6 May 2021', href: 'https://committees.parliament.uk/publications/5759/documents/66073/default/', detail: 'Page 3: supplier finance and Greensill’s funding model.', kind: 'source' }, { label: 'IASB, 25 May 2023', href: 'https://www.ifrs.org/news-and-events/news/2023/05/iasb-increases-transparency-of-companies-supplier-finance/', detail: 'Disclosure of amounts, payment dates and liquidity risks.', kind: 'source' }],
+      articles: [{ label: 'JLR: suppliers and credit', href: '/en/analysis/after-cyberattack-2-jlr-suppliers-credit/', detail: 'Order-based advances, payment dates and visibility across the supply chain.', kind: 'article' }, { label: 'Greensill: lending before the invoice exists', href: '/en/analysis/greensill-insurance-future-receivables-risk/', detail: 'Future receivables, insurance and cash availability.', kind: 'article' }],
+      sources: [{ label: 'JLR, 7 October 2025', href: 'https://www.jlr.com/news/2025/10/jlr-restarts-manufacturing-and-introduces-new-financing-solution-pay-jlr-suppliers', detail: 'Order-based advances, normal payment terms and phased eligibility.', kind: 'source' }, { label: 'Bank of England, 6 May 2021', href: 'https://committees.parliament.uk/publications/5759/documents/66073/default/', detail: 'Page 3: supplier finance and Greensill’s funding model.', kind: 'source' }, { label: 'IASB, 25 May 2023', href: 'https://www.ifrs.org/news-and-events/news/2023/05/iasb-increases-transparency-of-companies-supplier-finance/', detail: 'Disclosure of amounts, payment dates and liquidity risks.', kind: 'source' }],
       related: ['affacturage'],
     },
   },

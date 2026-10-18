@@ -1,0 +1,71 @@
+---
+import { jlrSuppliersInlineSvg, jlrSuppliersReferences, JLR_SUPPLIERS_KINDS } from '../lib/jlrSuppliersFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'propagation' | 'credit' | 'orders' | 'guarantee';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (typeof number !== 'string' || !/^(?:0[1-4])$/.test(number) || JLR_SUPPLIERS_KINDS.indexOf(kind) + 1 !== Number(number)) {
+  throw new TypeError('Invalid JLR suppliers figure number');
+}
+if (typeof caption !== 'string' || !caption.trim()) throw new TypeError('JLR suppliers figure caption required');
+const references = jlrSuppliersReferences(kind, sources);
+const svg = jlrSuppliersInlineSvg(lang, kind);
+---
+<figure class="jlr-suppliers-figure" id={`figure-${number}`} data-figure={number} data-kind={kind}>
+  <div class="jlr-suppliers-graphic" set:html={svg} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="jlr-suppliers-references">{references.map(id => <a href={`#source-${id}`}>[{Number(id)}]</a>)}</span>
+  </figcaption>
+  <slot />
+  {number === '01' && <details class="jlr-suppliers-fonts">
+    <summary>{lang === 'fr' ? 'Polices et licences des figures' : 'Figure fonts and licences'}</summary>
+    <p>{lang === 'fr' ? 'Polices des figures : Inter Variable et JetBrains Mono Variable, sous licence SIL Open Font License 1.1.' : 'Figure fonts: Inter Variable and JetBrains Mono Variable, under the SIL Open Font License 1.1.'} <a href="/fonts/jlr/LICENSE-inter.txt">Inter</a> · <a href="/fonts/jlr/LICENSE-jetbrains-mono.txt">JetBrains Mono</a>.</p>
+  </details>}
+</figure>
+<style>
+  /* Preserve the supplied composition and all source paint attributes.
+     Only presentation follows the site's existing semantic theme tokens. */
+  .jlr-suppliers-figure :global([fill="#0c0d10"]) { fill: var(--color-ink); }
+  .jlr-suppliers-figure :global([stroke="#0c0d10"]) { stroke: var(--color-ink); }
+  .jlr-suppliers-figure :global([fill="#121419"]) { fill: var(--color-surface); }
+  .jlr-suppliers-figure :global([stroke="#121419"]) { stroke: var(--color-surface); }
+  .jlr-suppliers-figure :global([fill="#171a20"]) { fill: var(--color-surface-2); }
+  .jlr-suppliers-figure :global([stroke="#171a20"]) { stroke: var(--color-surface-2); }
+  .jlr-suppliers-figure :global([fill="#272d37"]) { fill: var(--color-line-strong); }
+  .jlr-suppliers-figure :global([stroke="#272d37"]) { stroke: var(--color-line-strong); }
+  .jlr-suppliers-figure :global([fill="#343b48"]) { fill: var(--color-line-strong); }
+  .jlr-suppliers-figure :global([stroke="#343b48"]) { stroke: var(--color-line-strong); }
+  .jlr-suppliers-figure :global([fill="#657084"]) { fill: var(--color-muted); }
+  .jlr-suppliers-figure :global([stroke="#657084"]) { stroke: var(--color-muted); }
+  .jlr-suppliers-figure :global([fill="#a5adbb"]) { fill: var(--color-muted); }
+  .jlr-suppliers-figure :global([stroke="#a5adbb"]) { stroke: var(--color-muted); }
+  .jlr-suppliers-figure :global([fill="#e7e9ee"]) { fill: var(--color-paper); }
+  .jlr-suppliers-figure :global([stroke="#e7e9ee"]) { stroke: var(--color-paper); }
+  .jlr-suppliers-figure :global([fill="#5eead4"]) { fill: var(--color-signal); }
+  .jlr-suppliers-figure :global([stroke="#5eead4"]) { stroke: var(--color-signal); }
+  .jlr-suppliers-figure :global([fill="#ff4d87"]) { fill: var(--color-accent); }
+  .jlr-suppliers-figure :global([stroke="#ff4d87"]) { stroke: var(--color-accent); }
+  .jlr-suppliers-figure :global([fill="#f5b13d"]) { fill: var(--color-amber); }
+  .jlr-suppliers-figure :global([stroke="#f5b13d"]) { stroke: var(--color-amber); }
+  .jlr-suppliers-figure :global([fill="#7aa2f7"]) { fill: var(--color-topic-blue); }
+  .jlr-suppliers-figure :global([stroke="#7aa2f7"]) { stroke: var(--color-topic-blue); }
+  .jlr-suppliers-figure { margin: 2.8rem auto; width: 100%; max-width: 600px; padding-bottom: .85rem; overflow: visible; }
+  .jlr-suppliers-graphic { width: 100%; }
+  .jlr-suppliers-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .jlr-suppliers-references { display: block; }
+  .jlr-suppliers-references a { margin-right: .75em; }
+  .jlr-suppliers-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .jlr-suppliers-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .jlr-suppliers-figure :global(details p) { margin: .7rem 0; }
+  .jlr-suppliers-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  :global(.jlr-suppliers-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.jlr-suppliers-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media print { .jlr-suppliers-figure { break-inside: avoid; } }
+</style>
