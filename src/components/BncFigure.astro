@@ -1,0 +1,95 @@
+---
+import { bncSvg, BNC_KINDS } from '../lib/bncFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'channels' | 'filings' | 'deadlines' | 'fallback' | 'backlog' | 'reconciliation';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (!/^(?:0[1-6])$/.test(number) || BNC_KINDS.indexOf(kind) + 1 !== Number(number) || !BNC_KINDS.includes(kind) || !['fr', 'en'].includes(lang)) {
+  throw new TypeError('Invalid Bnc figure variant');
+}
+const references = sources.trim() ? sources.trim().split(/\s+/) : [];
+if (references.length === 0 || references.some((id) => !/^(?:0[1-9]|1[0-9]|2[0-2]|m01)$/.test(id))) {
+  throw new TypeError('Invalid Bnc source reference');
+}
+// Keep the reviewed raw SVG intact; render source links as local bibliography citations.
+const sourceAnchors: Readonly<Record<string, string>> = Object.freeze({
+  "https://www.txeb.uscourts.gov/news/bnc-service-disruption-notification": "#source-s02",
+  "https://www.almb.uscourts.gov/news/nationwide-bankruptcy-noticing-center-outage-october-2026": "#source-s03",
+  "https://www.insb.uscourts.gov/sites/insb/files/BNC_10162026_FAQs.pdf": "#source-s05",
+  "https://www.uscourts.gov/data-news/judiciary-news/2026/07/28/bankruptcies-rise-122-percent": "#source-s15",
+  "https://www.uscourts.gov/sites/default/files/document/bf_f2_0630.2026.pdf": "#source-s16",
+  "https://www.uscourts.gov/sites/default/files/document/federal-rules-of-bankruptcy-procedure.pdf": "#source-s12",
+  "https://uscode.house.gov/us/usc/119-118/t11/s362/": "#source-s13",
+  "https://uscode.house.gov/us/usc/119-118/t11/s342/": "#source-s14",
+  "https://www.insb.uscourts.gov/sites/insb/files/26-0004.pdf": "#source-s04",
+  "https://www.laeb.uscourts.gov/sites/laeb/files/AGO2026-1_BNC101326.pdf": "#source-s06",
+  "https://www.nyeb.uscourts.gov/sites/nyeb/files/general-ordes/ord_844.pdf": "#source-s07",
+  "https://www.akb.uscourts.gov/news/important-notice-bankruptcy-noticing-center-service-disruption": "#source-s11",
+  "https://www.gasb.uscourts.gov/news/important-information-regarding-bankruptcy-noticing-center-bnc-nationwide-service-disruption": "#source-s10",
+  "https://www.mnb.uscourts.gov/news/update-regarding-bankruptcy-noticing-center-service-interruption": "#source-s20"
+});
+const responsiveSvg = (mobile: boolean) => bncSvg(lang, kind, mobile)
+  .replace(/^<svg /u, '<svg style="width:100%;height:auto" ')
+  .replace(/ href="([^"]+)"/gu, (_attribute: string, url: string) => {
+    if (!Object.hasOwn(sourceAnchors, url)) throw new TypeError('Unknown Bnc SVG source URL');
+    return ` href="${sourceAnchors[url]}"`;
+  })
+  .replace(/ target="_blank"/gu, ' target="_self"');
+---
+<figure class="bnc-figure" id={`figure-${number}`} data-figure={number} data-kind={kind}>
+  <div class="bnc-desktop" set:html={responsiveSvg(false)} />
+  <div class="bnc-mobile" set:html={responsiveSvg(true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="bnc-references">{references.map((id) => <a href={id === 'm01' ? '#source-m01' : `#source-s${id}`}>{id === 'm01' ? '[M01]' : `[S${id}]`}</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  /* Scoped presentation overrides preserve every supplied colour attribute.
+     Preserve supplied geometry; approved text edits only. */
+  .bnc-figure :global([fill="#102830"]) { fill: var(--color-ink); }
+  .bnc-figure :global([fill="#19363e"]) { fill: var(--color-surface); }
+  .bnc-figure :global([fill="#f1f5f2"]) { fill: var(--color-paper); }
+  .bnc-figure :global([fill="#b5c7c8"]) { fill: var(--color-muted); }
+  .bnc-figure :global([fill="#35525a"]) { fill: var(--color-line-strong); }
+  .bnc-figure :global([fill="#74d6c5"]) { fill: var(--color-signal); }
+  .bnc-figure :global([fill="#f3bf7a"]) { fill: var(--color-amber); }
+  .bnc-figure :global([fill="#f19b87"]) { fill: var(--color-accent); }
+  .bnc-figure :global([stroke="#b5c7c8"]) { stroke: var(--color-muted); }
+  .bnc-figure :global([stroke="#35525a"]) { stroke: var(--color-line-strong); }
+  .bnc-figure :global([stroke="#74d6c5"]) { stroke: var(--color-signal); }
+  .bnc-figure :global([stroke="#f3bf7a"]) { stroke: var(--color-amber); }
+  .bnc-figure :global([stroke="#f19b87"]) { stroke: var(--color-accent); }
+  .bnc-figure { margin: 2.8rem auto; width: 100%; max-width: 696px; padding-bottom: .85rem; container-type: inline-size; overflow: visible; }
+  .bnc-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  .bnc-desktop { margin-inline: auto; }
+  .bnc-mobile { display: none; width: 100%; max-width: 420px; margin-inline: auto; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .bnc-references { display: block; }
+  .bnc-references a { margin-right: .75em; }
+  .bnc-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .bnc-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .bnc-figure :global(details p) { margin: .7rem 0; }
+  :global(.bnc-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.bnc-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media (max-width: 640px) {
+    .bnc-desktop { display: none; }
+    .bnc-mobile { display: block; }
+  }
+  @container (max-width: 640px) {
+    .bnc-desktop { display: none; }
+    .bnc-mobile { display: block; }
+  }
+  .bnc-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media print {
+    .bnc-figure { break-inside: avoid; }
+    .bnc-desktop { display: block; }
+    .bnc-mobile { display: none; }
+  }
+</style>

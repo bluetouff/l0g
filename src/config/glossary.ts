@@ -705,6 +705,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Régulation & institutions US',
     accent: 'var(--color-topic-blue)',
     entries: [
+      {"sigle": "Automatic stay", "nom": "Suspension automatique de certaines actions en faillite américaine", "def": "Protection prévue par l’article 362 du Bankruptcy Code américain : le dépôt d’une demande relevant des dispositions visées suspend notamment certaines actions de recouvrement de créances antérieures. Son périmètre, sa durée et ses exceptions dépendent du dossier et de la loi. L’existence de cette protection se distingue de la connaissance du créancier et des conditions de sanctions.", "guide": "/posts/bnc-faillites-americaines-notifications-risque/"},
       {"sigle": "National trust bank", "nom": "Banque nationale américaine à activités de trust company", "def": "Banque nationale américaine dont l’activité est limitée aux opérations d’une trust company et aux activités connexes autorisées, sous charte et supervision de l’OCC. Elle peut assurer des services fiduciaires et de conservation. La charte seule ne détermine ni l’assurance d’un produit ni l’accès à un compte de la Fed.", "guide": "/posts/crypto-banques-occ-icba-agrements-trust-depots/"},
       { sigle: 'SEC', nom: 'Securities and Exchange Commission', def: "Gendarme boursier américain. Supervise les marchés, les introductions en bourse et les obligations de transparence des sociétés cotées." },
       { sigle: 'Basis trade', nom: 'Arbitrage de base sur Treasuries', def: "Stratégie qui cherche à exploiter le prix relatif d’une obligation et d’un contrat à terme. Sa forme longue sur Treasuries combine achat du titre, vente du future et financement en repo. Le résultat dépend des prix, coupons, coûts de financement et conditions de livraison. Couvrir le risque de taux ne supprime ni le risque de base ni les besoins de liquidité liés aux marges.", guide: '/posts/dette-etats-03-acheteurs-credit/' },
@@ -827,7 +828,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-17';
+export const glossaryUpdatedIso = '2026-10-18';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1070,6 +1071,27 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "automatic-stay": {
+    "intuition": "La protection peut prendre effet avant que chaque créancier ait reçu un avis.",
+    "articles": [
+      {
+        "label": "BNC : panne des notifications de faillite",
+        "href": "/posts/bnc-faillites-americaines-notifications-risque/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "11 U.S.C. §362, Automatic stay",
+        "href": "https://uscode.house.gov/us/usc/119-118/t11/s362/",
+        "detail": "Paragraphes (a), (b), (c)(3) et (k) : effets, exceptions, procédures répétées et sanctions.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "disponibilite-de-service"
+    ]
+  },
   "decote-d-emission": {
     "intuition": "Le remboursement au pair dépasse le prix reçu à l’émission.",
     "articles": [
@@ -1646,7 +1668,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
         "label": "Starshield : contrôler les conditions de connexion",
         "href": "/posts/starshield-ukraine-controle-connexion/",
         "kind": "article"
-      }
+      },
+      {"label": "BNC : panne des notifications de faillite", "href": "/posts/bnc-faillites-americaines-notifications-risque/", "kind": "article"}
     ],
     "sources": [
       {

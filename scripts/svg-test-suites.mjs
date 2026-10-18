@@ -78,6 +78,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/msci-indonesia-infographics.test.mjs',
     'scripts/france-debt-infographics.test.mjs',
     'scripts/starshield-infographics.test.mjs',
+    'scripts/bnc-infographics.test.mjs',
     'scripts/industrial-heat-infographics.test.mjs',
     'scripts/insurance-loyalty-infographics.test.mjs',
     'scripts/iran-flights-infographic.test.mjs',
@@ -171,6 +172,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/msci-indonesia-rendered-infographics.test.mjs',
     'scripts/france-debt-rendered-infographics.test.mjs',
     'scripts/starshield-rendered-infographics.test.mjs',
+    'scripts/bnc-rendered-infographics.test.mjs',
     'scripts/straits-rendered-infographics.test.mjs',
   ]),
 });

@@ -210,6 +210,37 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    "slug": "automatic-stay",
+    "sigle": "Automatic stay",
+    "nom": "Statutory pause on specified actions in US bankruptcy",
+    "def": "Protection under Section 362 of the US Bankruptcy Code. Filing a petition under the provisions it covers stays specified actions, including certain efforts to collect pre-petition claims. Its scope, duration and exceptions depend on the case and statute. The stay’s existence is distinct from a creditor’s knowledge and from the conditions for sanctions.",
+    "guide": "/en/analysis/bnc-us-bankruptcy-notice-outage-risk/",
+    "sectionTitle": "US regulation & institutions",
+    "accent": "var(--color-topic-blue)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "intuition": "The protection can take effect before every creditor receives notice.",
+      "articles": [
+        {
+          "label": "BNC: the bankruptcy notice outage",
+          "href": "/en/analysis/bnc-us-bankruptcy-notice-outage-risk/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "11 U.S.C. §362, Automatic stay",
+          "href": "https://uscode.house.gov/us/usc/119-118/t11/s362/",
+          "detail": "Subsections (a), (b), (c)(3) and (k): effects, exceptions, repeat filings and sanctions.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "disponibilite-de-service"
+      ]
+    }
+  },
+  {
     "slug": "disponibilite-de-service",
     "sigle": "Service availability",
     "nom": "Usable access for authorised users",
@@ -225,7 +256,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
           "label": "Starshield: control over the terms of connection",
           "href": "/en/analysis/starshield-ukraine-terms-of-connection/",
           "kind": "article"
-        }
+        },
+        {"label": "BNC: the bankruptcy notice outage", "href": "/en/analysis/bnc-us-bankruptcy-notice-outage-risk/", "kind": "article"}
       ],
       "sources": [
         {

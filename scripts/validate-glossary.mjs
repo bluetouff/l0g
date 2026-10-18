@@ -18,6 +18,24 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Statutory protection, notice and sanctions retain their separate scopes.
+{
+  const fr = glossaryEntries.find(entry => entry.slug === 'automatic-stay');
+  const en = glossaryAtlasEnBySlug.get('automatic-stay');
+  assert(fr?.atlas && en?.atlas);
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.equal(fr.guide, '/posts/bnc-faillites-americaines-notifications-risque/');
+  assert.equal(en.guide, '/en/analysis/bnc-us-bankruptcy-notice-outage-risk/');
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), ['https://uscode.house.gov/us/usc/119-118/t11/s362/']);
+    assert.deepEqual(entry.atlas.related, ['disponibilite-de-service']);
+    assert.equal(entry.atlas.articles[0].href, entry.guide);
+  }
+  assert.match(fr.def, /exceptions/); assert.match(en.def, /exceptions/);
+  assert.match(fr.def, /connaissance du créancier/); assert.match(en.def, /creditor’s knowledge/);
+}
+
 // Availability concerns authorised, usable access rather than confidentiality alone.
 {
   const slug = 'disponibilite-de-service';
@@ -234,7 +252,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 254, 'Le corpus anglais doit conserver ses 254 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 255, 'Le corpus anglais doit conserver ses 255 fiches uniques');
 
 for (const [slug, source, related] of [
   ['apd', 'https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html', ['equivalent-don', 'ida', 'compte-courant']],
@@ -361,8 +379,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 660, 'Le corpus doit conserver ses 660 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 242, 'Le graphe Atlas doit conserver ses 242 nœuds');
+assert.equal(glossaryEntries.length, 661, 'Le corpus doit conserver ses 661 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 243, 'Le graphe Atlas doit conserver ses 243 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -784,7 +802,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 722, 'Le graphe Atlas doit conserver ses 722 relations');
+assert.equal(glossaryAtlasEdgeCount, 723, 'Le graphe Atlas doit conserver ses 723 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
