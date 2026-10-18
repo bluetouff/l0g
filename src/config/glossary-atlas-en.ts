@@ -210,6 +210,39 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'bfr',
+    sigle: 'BFR',
+    nom: 'Operating working capital requirement',
+    def: 'Funding tied up in operating inventories and receivables after deducting trade payables and other operating funding. Payment timing and inventory turnover can create cash needs even in a profitable business. BFR is the French abbreviation for this operating funding requirement.',
+    guide: '/en/analysis/ghana-cocoa-financing-cash-crisis/',
+    ...privateCreditSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Restarting production can absorb cash before the corresponding sales bring receipts.',
+      articles: [
+        { label: 'JLR: when the factory stops', href: '/en/analysis/after-cyberattack-1-jlr-factories-cash-flow/', detail: 'Inventory, trade payables and funding needs during the recovery.', kind: 'article' },
+        { label: 'Ghana’s cocoa crisis: who finances the wait?', href: '/en/analysis/ghana-cocoa-financing-cash-crisis/', detail: 'Crop purchases, inventory and the timing of receipts.', kind: 'article' },
+      ],
+      sources: [{ label: 'Bpifrance Création, operating working capital requirement', href: 'https://bpifrance-creation.fr/encyclopedie/previsions-financieres-business-plan/previsions-financieres/besoin-fonds-roulement-bfr', detail: 'Inventories, receivables, trade payables and operating cash timing. French source.', kind: 'source' }],
+      related: ['fcf'],
+    },
+  },
+  {
+    slug: 'fcf',
+    sigle: 'FCF',
+    nom: 'Free cash flow',
+    def: 'A cash measure often calculated as operating cash flow less capital expenditure. Definitions vary by issuer, so the included items and reconciliation to the accounts must be checked. It is neither accounting profit nor necessarily cash freely available for debt repayment or shareholder distributions.',
+    guide: '/en/analysis/after-cyberattack-1-jlr-factories-cash-flow/',
+    ...privateCreditSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Profit and cash follow different calculations and timetables.',
+      articles: [{ label: 'JLR: when the factory stops', href: '/en/analysis/after-cyberattack-1-jlr-factories-cash-flow/', detail: 'The manufacturer’s definition, investment and operating working capital movements.', kind: 'article' }],
+      sources: [{ label: 'SEC, Non-GAAP Financial Measures, question 102.07', href: 'https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/non-gaap-financial-measures', detail: 'Common free cash flow calculation, lack of a uniform definition and reconciliation to the accounts.', kind: 'source' }],
+      related: ['bfr'],
+    },
+  },
+  {
     "slug": "automatic-stay",
     "sigle": "Automatic stay",
     "nom": "Statutory pause on specified actions in US bankruptcy",

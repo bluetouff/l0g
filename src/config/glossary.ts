@@ -386,6 +386,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Valeur de reconstitution', nom: 'Coût théorique de reconstitution d’une SCPI', def: "Valeur de réalisation augmentée des frais nécessaires pour reconstituer le patrimoine de la SCPI, notamment les frais d’acquisition et la commission de souscription. Elle sert de référence au prix de souscription. Elle ne constitue pas un plancher pour les transactions sur les parts existantes.", guide: '/posts/scpi-prix-revente-decote-marche-secondaire/' },
       { sigle: 'LIFO', nom: 'Dernier entré, premier sorti', def: "Méthode de valorisation des stocks qui affecte en priorité les coûts des achats les plus récents au coût des ventes. Elle décrit un ordre comptable, sans imposer l’ordre physique des sorties d’entrepôt. L’écart avec une autre méthode de valorisation ne constitue pas une réserve de trésorerie.", guide: '/posts/tungstene-stocks-tresorerie-kennametal/' },
       { sigle: 'BFR', nom: 'Besoin en fonds de roulement', def: "Trésorerie immobilisée par le cycle d'exploitation : stocks et créances clients, diminués des dettes fournisseurs et autres ressources d'exploitation. Une activité rentable peut manquer de liquidités si elle paie ses achats longtemps avant d'encaisser ses ventes.", guide: '/posts/cacao-ghana-financement-tresorerie/' },
+      { sigle: 'FCF', nom: 'Flux de trésorerie disponible', def: "Indicateur de trésorerie souvent calculé à partir des flux d’exploitation diminués des investissements. Sa définition varie selon l’émetteur : il faut vérifier les postes inclus et le rapprochement avec les comptes. Il ne représente ni le bénéfice ni nécessairement une somme entièrement disponible pour rembourser la dette ou rémunérer les actionnaires.", guide: '/posts/apres-cyberattaque-1-jlr-usines-tresorerie/' },
       { sigle: 'Arriérés de paiement', nom: 'Obligations échues et impayées', def: "Sommes dues dont la date de paiement applicable est dépassée. Pour une commande publique, il faut distinguer la livraison, la validation de la facture, son échéance et son règlement. Une créance en attente de validation ne peut pas être assimilée automatiquement à un arriéré reconnu.", guide: '/posts/senegal-arrieres-etat-entreprises-creancieres/' },
       { sigle: 'SCF', nom: 'Supply chain finance, financement des fournisseurs', def: "Mécanisme par lequel un financeur paie un fournisseur avant l’échéance convenue avec l’acheteur, puis reçoit le paiement de cet acheteur. L’analyse porte sur l’obligation commerciale, les droits transférés et le calendrier des flux. Une avance sur une vente encore espérée ajoute le risque que cette vente ne se réalise pas.", guide: '/posts/greensill-assurance-creances-futures-risque/' },
       { sigle: 'Affacturage', nom: 'Financement et gestion de créances clients', def: "Contrat par lequel une entreprise confie ses créances clients à un établissement spécialisé, qui peut les financer et en gérer le recouvrement contre rémunération. Le montant avancé, les frais et la prise en charge du risque de non-paiement dépendent du contrat.", guide: '/posts/senegal-arrieres-etat-entreprises-creancieres/' },
@@ -1071,6 +1072,21 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  bfr: {
+    intuition: 'Une reprise de production peut absorber de la trésorerie avant les recettes des ventes correspondantes.',
+    articles: [
+      { label: 'JLR : le jour où l’usine s’arrête', href: '/posts/apres-cyberattaque-1-jlr-usines-tresorerie/', detail: 'Stocks, dettes fournisseurs et besoins de financement pendant la reprise.', kind: 'article' },
+      { label: 'Cacao au Ghana : qui finance l’attente des planteurs ?', href: '/posts/cacao-ghana-financement-tresorerie/', detail: 'Achats de récolte, stocks et calendrier des encaissements.', kind: 'article' },
+    ],
+    sources: [{ label: 'Bpifrance Création, besoin en fonds de roulement', href: 'https://bpifrance-creation.fr/encyclopedie/previsions-financieres-business-plan/previsions-financieres/besoin-fonds-roulement-bfr', detail: 'Stocks, créances, dettes fournisseurs et décalages de trésorerie du cycle d’exploitation.', kind: 'source' }],
+    related: ['fcf'],
+  },
+  fcf: {
+    intuition: 'Le résultat et la trésorerie suivent des calculs et des calendriers différents.',
+    articles: [{ label: 'JLR : le jour où l’usine s’arrête', href: '/posts/apres-cyberattaque-1-jlr-usines-tresorerie/', detail: 'Définition du constructeur, investissements et mouvements du cycle d’exploitation.', kind: 'article' }],
+    sources: [{ label: 'SEC, Non-GAAP Financial Measures, question 102.07', href: 'https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/non-gaap-financial-measures', detail: 'Calcul courant du free cash flow, absence de définition uniforme et rapprochement avec les comptes.', kind: 'source' }],
+    related: ['bfr'],
+  },
   "automatic-stay": {
     "intuition": "La protection peut prendre effet avant que chaque créancier ait reçu un avis.",
     "articles": [
