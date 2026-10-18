@@ -3584,5 +3584,442 @@
       "windowStart": "2026-10-04T08:30:00+02:00",
       "windowEnd": "2026-10-11T08:30:00+02:00"
     }
+  },
+  {
+    "issue": 12,
+    "slug": "2026-10-18",
+    "publishedAt": "2026-10-18T08:30:00+02:00",
+    "title": "L’Hebdo du 18 octobre. Starshield : qui contrôle les conditions de connexion de l’Ukraine ?",
+    "description": "Édition automatisée du 18 octobre : 30 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Starshield : qui contrôle les conditions de connexion de l’Ukraine ?",
+      "href": "/posts/starshield-ukraine-controle-connexion/",
+      "update": "Restrictions de mobilité, autorisations et contrats : enquête sur Starshield en Ukraine et sur les capacités européennes réellement disponibles."
+    },
+    "lead": "Des restrictions de mobilité et un rétablissement contesté sont rapportés en Ukraine.",
+    "number": {
+      "value": "30",
+      "label": "analyses publiées du 11 octobre à 08 h 30 au 18 octobre à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "La continuité dépend des conditions d’accès autant que de la liaison physique.",
+    "test": "La chaîne de décision et le périmètre complet restent incomplets dans les documents publics consultés.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "30 analyses publiées en sept jours",
+      "subtitle": "du 11 octobre à 08 h 30 au 18 octobre à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-10-18",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "LA SEMAINE EN CHIFFRES",
+      "points": [
+        {
+          "label": "dim 11/10",
+          "shortLabel": "dim 11/10",
+          "value": 8,
+          "valueLabel": "8",
+          "nature": "analyses publiées",
+          "scope": "2026-10-11",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 12/10",
+          "shortLabel": "lun 12/10",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-10-12",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 13/10",
+          "shortLabel": "mar 13/10",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-10-13",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 14/10",
+          "shortLabel": "mer 14/10",
+          "value": 5,
+          "valueLabel": "5",
+          "nature": "analyses publiées",
+          "scope": "2026-10-14",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 15/10",
+          "shortLabel": "jeu 15/10",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-10-15",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 16/10",
+          "shortLabel": "ven 16/10",
+          "value": 5,
+          "valueLabel": "5",
+          "nature": "analyses publiées",
+          "scope": "2026-10-16",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 17/10",
+          "shortLabel": "sam 17/10",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-10-17",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 18/10",
+          "shortLabel": "dim 18/10",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-10-18",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Des restrictions de mobilité et un rétablissement contesté sont rapportés en Ukraine.",
+    "linkedin": "30 analyses publiées sur l0g du 11 octobre à 08 h 30 au 18 octobre à 08 h 30.\n\nFocus structuré : Starshield : qui contrôle les conditions de connexion de l’Ukraine ?.\n\nDes restrictions de mobilité et un rétablissement contesté sont rapportés en Ukraine.\n\nPourquoi le lire : La continuité dépend des conditions d’accès autant que de la liaison physique.\n\nLimite à garder : La chaîne de décision et le périmètre complet restent incomplets dans les documents publics consultés.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-10-18/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 18 octobre compte 30 analyses publiées. Focus : Starshield : qui contrôle les conditions de connexion de l’Ukraine ?.",
+      "2/5 Des restrictions de mobilité et un rétablissement contesté sont rapportés en Ukraine.",
+      "3/5 Pourquoi le lire : La continuité dépend des conditions d’accès autant que de la liaison physique.",
+      "4/5 Limite : La chaîne de décision et le périmètre complet restent incomplets dans les documents publics consultés.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-10-18/"
+    ],
+    "sources": [
+      {
+        "label": "Starshield : qui contrôle les conditions de connexion de l’Ukraine ?",
+        "href": "/posts/starshield-ukraine-controle-connexion/",
+        "role": "Analyse publiée le 17 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette française : le renchérissement se joue aux échéances",
+        "href": "/posts/dette-francaise-refinancement-calendrier-taux/",
+        "role": "Analyse publiée le 17 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "MSCI et l’Indonésie : le prix d’un flottant opaque",
+        "href": "/posts/msci-indonesie-flottant-risque-indices/",
+        "role": "Analyse publiée le 17 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Tokenisation : qui finance le dimanche ?",
+        "href": "/posts/tokenisation-qui-finance-weekend/",
+        "role": "Analyse publiée le 16 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’IA à l’épreuve des débouchés",
+        "href": "/posts/ia-debouches-rentabilite-innovation/",
+        "role": "Analyse publiée le 16 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Crédit privé : le prix de l’argent à placer",
+        "href": "/posts/credit-prive-prix-argent-a-placer/",
+        "role": "Analyse publiée le 16 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Ormuz : le pari des cinq navires",
+        "href": "/posts/ormuz-engrais-pari-cinq-navires/",
+        "role": "Analyse publiée le 16 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Détroits : le prix des jours gagnés",
+        "href": "/posts/detroits-prix-des-jours-gagnes/",
+        "role": "Analyse publiée le 16 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "USDC : les réserves doivent suivre le jeton",
+        "href": "/posts/usdc-reserves-suivre-jeton-mica/",
+        "role": "Analyse publiée le 15 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "A7 : les banques au bout du détour russe",
+        "href": "/posts/a7-banques-detour-paiements-russes/",
+        "role": "Analyse publiée le 15 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Doctolib–Nvidia : la liberté de changer d’outil",
+        "href": "/posts/doctolib-nvidia-liberte-changer-outil/",
+        "role": "Analyse publiée le 15 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SoftBank : les échéances du pari OpenAI",
+        "href": "/posts/softbank-openai-echeances-liberte-attendre/",
+        "role": "Analyse publiée le 15 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cuivre : les conditions du retour des stocks américains",
+        "href": "/posts/cuivre-stocks-americains-conditions-retour/",
+        "role": "Analyse publiée le 14 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Humana–BlackRock : la promesse derrière les cliniques",
+        "href": "/posts/humana-blackrock-promesse-cliniques/",
+        "role": "Analyse publiée le 14 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le commerce mondial au rythme des commandes d’IA",
+        "href": "/posts/commerce-mondial-rythme-commandes-ia/",
+        "role": "Analyse publiée le 14 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Gaz européen : tenir entre deux cargaisons",
+        "href": "/posts/gaz-europeen-tenir-entre-deux-cargaisons/",
+        "role": "Analyse publiée le 14 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "IA et salaires : le pouvoir de partir",
+        "href": "/posts/ia-salaires-pouvoir-partir/",
+        "role": "Analyse publiée le 14 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Danfoss et le business drama de la cyberdécongélation",
+        "href": "/posts/danfoss-business-drama-cyberdecongelation/",
+        "role": "Analyse publiée le 13 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le dollar caché dans la facture d’énergie",
+        "href": "/posts/dollar-facture-energie/",
+        "role": "Analyse publiée le 12 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette publique : le dernier acheteur",
+        "href": "/posts/dette-etats-07-dernier-acheteur/",
+        "role": "Analyse publiée le 12 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette publique : le prix de la sortie",
+        "href": "/posts/dette-etats-06-prix-sortie/",
+        "role": "Analyse publiée le 12 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette publique : l’heure de l’appel de marge",
+        "href": "/posts/dette-etats-05-appels-marge/",
+        "role": "Analyse publiée le 12 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette publique : la chaîne des garanties",
+        "href": "/posts/dette-etats-04-chaine-garanties/",
+        "role": "Analyse publiée le 11 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette publique : les acheteurs à crédit",
+        "href": "/posts/dette-etats-03-acheteurs-credit/",
+        "role": "Analyse publiée le 11 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette publique : le prix d’un bilan disponible",
+        "href": "/posts/dette-etats-02-bilan-intermediaires/",
+        "role": "Analyse publiée le 11 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette publique : le premier acheteur",
+        "href": "/posts/dette-etats-01-premier-acheteur/",
+        "role": "Analyse publiée le 11 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Aide internationale : le retrait déborde les budgets",
+        "href": "/posts/aide-internationale-retrait-deborde-budgets/",
+        "role": "Analyse publiée le 11 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Retraites aux Bermudes : le prix du retour",
+        "href": "/posts/retraites-bermudes-prix-du-retour/",
+        "role": "Analyse publiée le 11 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Qui porte le risque du crédit américain à 3 % ?",
+        "href": "/posts/credits-americains-risque-3-pourcent/",
+        "role": "Analyse publiée le 11 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Ukraine : les intérêts courent avant les réparations",
+        "href": "/posts/ukraine-interets-reparations/",
+        "role": "Analyse publiée le 11 octobre 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Starshield : qui contrôle les conditions de connexion de l’Ukraine ?",
+        "href": "/posts/starshield-ukraine-controle-connexion/",
+        "publishedAt": "2026-10-17T11:57:37.000Z"
+      },
+      {
+        "title": "Dette française : le renchérissement se joue aux échéances",
+        "href": "/posts/dette-francaise-refinancement-calendrier-taux/",
+        "publishedAt": "2026-10-17T06:29:49.000Z"
+      },
+      {
+        "title": "MSCI et l’Indonésie : le prix d’un flottant opaque",
+        "href": "/posts/msci-indonesie-flottant-risque-indices/",
+        "publishedAt": "2026-10-16T22:31:11.000Z"
+      },
+      {
+        "title": "Tokenisation : qui finance le dimanche ?",
+        "href": "/posts/tokenisation-qui-finance-weekend/",
+        "publishedAt": "2026-10-16T18:34:25.000Z"
+      },
+      {
+        "title": "L’IA à l’épreuve des débouchés",
+        "href": "/posts/ia-debouches-rentabilite-innovation/",
+        "publishedAt": "2026-10-16T15:16:12.000Z"
+      },
+      {
+        "title": "Crédit privé : le prix de l’argent à placer",
+        "href": "/posts/credit-prive-prix-argent-a-placer/",
+        "publishedAt": "2026-10-16T11:51:24.000Z"
+      },
+      {
+        "title": "Ormuz : le pari des cinq navires",
+        "href": "/posts/ormuz-engrais-pari-cinq-navires/",
+        "publishedAt": "2026-10-16T10:34:51.000Z"
+      },
+      {
+        "title": "Détroits : le prix des jours gagnés",
+        "href": "/posts/detroits-prix-des-jours-gagnes/",
+        "publishedAt": "2026-10-16T07:28:15.000Z"
+      },
+      {
+        "title": "USDC : les réserves doivent suivre le jeton",
+        "href": "/posts/usdc-reserves-suivre-jeton-mica/",
+        "publishedAt": "2026-10-15T18:47:45.000Z"
+      },
+      {
+        "title": "A7 : les banques au bout du détour russe",
+        "href": "/posts/a7-banques-detour-paiements-russes/",
+        "publishedAt": "2026-10-15T15:55:01.000Z"
+      },
+      {
+        "title": "Doctolib–Nvidia : la liberté de changer d’outil",
+        "href": "/posts/doctolib-nvidia-liberte-changer-outil/",
+        "publishedAt": "2026-10-15T13:57:17.000Z"
+      },
+      {
+        "title": "SoftBank : les échéances du pari OpenAI",
+        "href": "/posts/softbank-openai-echeances-liberte-attendre/",
+        "publishedAt": "2026-10-15T08:11:48.000Z"
+      },
+      {
+        "title": "Cuivre : les conditions du retour des stocks américains",
+        "href": "/posts/cuivre-stocks-americains-conditions-retour/",
+        "publishedAt": "2026-10-14T20:25:06.000Z"
+      },
+      {
+        "title": "Humana–BlackRock : la promesse derrière les cliniques",
+        "href": "/posts/humana-blackrock-promesse-cliniques/",
+        "publishedAt": "2026-10-14T18:15:33.000Z"
+      },
+      {
+        "title": "Le commerce mondial au rythme des commandes d’IA",
+        "href": "/posts/commerce-mondial-rythme-commandes-ia/",
+        "publishedAt": "2026-10-14T13:56:00.000Z"
+      },
+      {
+        "title": "Gaz européen : tenir entre deux cargaisons",
+        "href": "/posts/gaz-europeen-tenir-entre-deux-cargaisons/",
+        "publishedAt": "2026-10-14T12:18:23.000Z"
+      },
+      {
+        "title": "IA et salaires : le pouvoir de partir",
+        "href": "/posts/ia-salaires-pouvoir-partir/",
+        "publishedAt": "2026-10-14T10:16:40.000Z"
+      },
+      {
+        "title": "Danfoss et le business drama de la cyberdécongélation",
+        "href": "/posts/danfoss-business-drama-cyberdecongelation/",
+        "publishedAt": "2026-10-13T08:11:44.000Z"
+      },
+      {
+        "title": "Le dollar caché dans la facture d’énergie",
+        "href": "/posts/dollar-facture-energie/",
+        "publishedAt": "2026-10-12T15:19:04.000Z"
+      },
+      {
+        "title": "Dette publique : le dernier acheteur",
+        "href": "/posts/dette-etats-07-dernier-acheteur/",
+        "publishedAt": "2026-10-12T08:56:01.000Z"
+      },
+      {
+        "title": "Dette publique : le prix de la sortie",
+        "href": "/posts/dette-etats-06-prix-sortie/",
+        "publishedAt": "2026-10-12T07:29:17.000Z"
+      },
+      {
+        "title": "Dette publique : l’heure de l’appel de marge",
+        "href": "/posts/dette-etats-05-appels-marge/",
+        "publishedAt": "2026-10-12T05:36:46.000Z"
+      },
+      {
+        "title": "Dette publique : la chaîne des garanties",
+        "href": "/posts/dette-etats-04-chaine-garanties/",
+        "publishedAt": "2026-10-11T20:25:56.000Z"
+      },
+      {
+        "title": "Dette publique : les acheteurs à crédit",
+        "href": "/posts/dette-etats-03-acheteurs-credit/",
+        "publishedAt": "2026-10-11T19:32:19.000Z"
+      },
+      {
+        "title": "Dette publique : le prix d’un bilan disponible",
+        "href": "/posts/dette-etats-02-bilan-intermediaires/",
+        "publishedAt": "2026-10-11T18:35:51.000Z"
+      },
+      {
+        "title": "Dette publique : le premier acheteur",
+        "href": "/posts/dette-etats-01-premier-acheteur/",
+        "publishedAt": "2026-10-11T17:41:23.000Z"
+      },
+      {
+        "title": "Aide internationale : le retrait déborde les budgets",
+        "href": "/posts/aide-internationale-retrait-deborde-budgets/",
+        "publishedAt": "2026-10-11T13:53:14.000Z"
+      },
+      {
+        "title": "Retraites aux Bermudes : le prix du retour",
+        "href": "/posts/retraites-bermudes-prix-du-retour/",
+        "publishedAt": "2026-10-11T12:33:39.000Z"
+      },
+      {
+        "title": "Qui porte le risque du crédit américain à 3 % ?",
+        "href": "/posts/credits-americains-risque-3-pourcent/",
+        "publishedAt": "2026-10-11T11:01:41.000Z"
+      },
+      {
+        "title": "Ukraine : les intérêts courent avant les réparations",
+        "href": "/posts/ukraine-interets-reparations/",
+        "publishedAt": "2026-10-11T09:39:23.000Z"
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-10-18T11:33:32.310Z",
+      "windowStart": "2026-10-11T08:30:00+02:00",
+      "windowEnd": "2026-10-18T08:30:00+02:00"
+    }
   }
 ]
