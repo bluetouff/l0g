@@ -72,6 +72,7 @@ const siteJsonLd = {
 <!doctype html>
 <html lang={lang} data-theme="dark">
   <head>
+    {ogType === 'article' && <link rel="stylesheet" href="/styles/article-sources-v1.css" />}
     <meta charset="utf-8" />
     <CspMeta />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

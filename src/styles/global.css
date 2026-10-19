@@ -357,62 +357,6 @@ main h1 {
 .prose ul li::marker { color: var(--color-accent); }
 .prose ol li::marker { color: var(--color-signal); }
 
-/* Shared bibliography scale. Override legacy article and inline font sizes,
-   as the common H1 scale above does, without affecting figures or body headings. */
-.prose :is(
-  .sources-list,
-  li[id^="source-"], p[id^="source-"], div[id^="source-"], section[id^="source-"],
-  li:has(> span[id^="source-"]), p:has(> span[id^="source-"]),
-  h2:is([id^="sources"], [id^="references"], [id^="références"], [id^="bibliograph"]) + :is(ul, ol)
-):not(:where(figure *, svg *, figcaption *, .infographic *)) {
-  font-family: var(--font-read) !important;
-  font-size: .875rem !important;
-  line-height: 1.6 !important;
-  overflow-wrap: anywhere;
-  scroll-margin-top: 2rem;
-}
-.prose .sources-list {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 1.25rem;
-}
-.prose .sources-list > li {
-  min-width: 0;
-  margin-top: 0;
-  padding: .75rem 0;
-  border-top: 1px solid var(--color-line);
-}
-.prose .sources-list > li > a {
-  color: var(--color-paper);
-  font-weight: 500;
-}
-.prose :is(.sources-list, [id^="source-"]):not(:where(figure *, svg *, figcaption *, .infographic *)) :is(h3, h4) {
-  font: inherit !important;
-  letter-spacing: normal;
-  margin: .25rem 0;
-  color: var(--color-bright);
-}
-.prose :is(.sources-list, [id^="source-"]):not(:where(figure *, svg *, figcaption *, .infographic *)) :is(p, a) {
-  font-size: inherit !important;
-  line-height: inherit !important;
-}
-.prose :is(.sources-list, [id^="source-"]):not(:where(figure *, svg *, figcaption *, .infographic *)) p {
-  margin: .25rem 0 0;
-}
-.prose .sources-list .source-meta {
-  display: block;
-  margin-bottom: .25rem;
-  font-size: .78125rem !important;
-  line-height: 1.5;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-  color: var(--color-muted);
-}
-.prose .sources-list > li:target {
-  outline: 1px solid var(--color-signal);
-  outline-offset: 4px;
-}
-
 .prose blockquote {
   margin-left: 0;
   padding: 0.3em 0 0.3em 1.1em;
