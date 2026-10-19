@@ -210,6 +210,72 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+  "slug": "valeur-ajoutee",
+  "robots": "noindex,follow",
+  "sigle": "Value added",
+  "nom": "Output less intermediate consumption",
+  "def": "The value of an activity’s output less the goods and services consumed in producing it. Gross value added retains consumption of fixed capital. GDP is the sum of resident producers’ gross value added, plus taxes on products less subsidies on products. Adding turnover across a supply chain also counts purchases between its stages.",
+  "guide": "/en/analysis/after-cyberattack-04-jlr-gdp-footprint/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "articles": [
+      {
+        "label": "JLR: a cyberattack’s footprint in GDP",
+        "href": "/en/analysis/after-cyberattack-04-jlr-gdp-footprint/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "ONS, national accounts",
+        "href": "https://www.ons.gov.uk/economy/nationalaccounts/uksectoraccounts/methodologies/aguidetotheuknationalaccountsmarch2020",
+        "kind": "source"
+      },
+      {
+        "label": "ONS, trading margins and value added",
+        "href": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/articles/bluebook2024advancedaggregateestimates/2024-08-07",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "pib",
+      "effet-de-base"
+    ]
+  }
+},
+  {
+  "slug": "effet-de-base",
+  "robots": "noindex,follow",
+  "sigle": "Base effect",
+  "nom": "The starting level’s influence on a percentage change",
+  "def": "The influence of the starting level on a percentage change. For an identical final level, a lower comparison base produces a higher growth rate. A rebound measured against a disrupted period describes the rate of activity; establishing whether delayed production was made up also requires cumulative volumes and order data.",
+  "guide": "/en/analysis/after-cyberattack-04-jlr-gdp-footprint/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "articles": [
+      {
+        "label": "JLR: a cyberattack’s footprint in GDP",
+        "href": "/en/analysis/after-cyberattack-04-jlr-gdp-footprint/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "ONS, March 2026 GDP, automotive base effect",
+        "href": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/march2026",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "pib",
+      "valeur-ajoutee"
+    ]
+  }
+},
+
+  {
       "slug": "pertes-d-exploitation-dependantes",
       "sigle": "Dependent business interruption",
       "nom": "Cover for business interruption caused by a third party",

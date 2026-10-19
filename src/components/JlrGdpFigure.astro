@@ -1,0 +1,76 @@
+---
+import { jlrGdpInlineSvg, jlrGdpReferences, JLR_GDP_KINDS } from '../lib/jlrGdpFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'production' | 'recovery' | 'value-added' | 'hours';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (typeof number !== 'string' || !/^(?:0[1-4])$/.test(number) || JLR_GDP_KINDS.indexOf(kind) + 1 !== Number(number)) {
+  throw new TypeError('Invalid JLR GDP figure number');
+}
+if (typeof caption !== 'string' || !caption.trim()) throw new TypeError('JLR GDP figure caption required');
+const references = jlrGdpReferences(kind, sources);
+const svg = jlrGdpInlineSvg(lang, kind);
+---
+<figure class="jlr-gdp-figure" id={`figure-${number}`} data-figure={number} data-kind={kind}>
+  <div class="jlr-gdp-graphic" set:html={svg} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="jlr-gdp-references">{references.map(id => <a href={`#source-${id}`}>[{Number(id)}]</a>)}</span>
+  </figcaption>
+  <slot />
+  {number === '01' && <details class="jlr-gdp-fonts">
+    <summary>{lang === 'fr' ? 'Polices et licences des figures' : 'Figure fonts and licences'}</summary>
+    <p>{lang === 'fr' ? 'Polices des figures : Inter Variable et JetBrains Mono Variable, sous licence SIL Open Font License 1.1.' : 'Figure fonts: Inter Variable and JetBrains Mono Variable, under the SIL Open Font License 1.1.'} <a href="/fonts/jlr/LICENSE-inter.txt">Inter</a> · <a href="/fonts/jlr/LICENSE-jetbrains-mono.txt">JetBrains Mono</a>.</p>
+  </details>}
+</figure>
+<style>
+  /* Preserve the supplied composition and all source paint attributes.
+     Only presentation follows the site's existing semantic theme tokens. */
+  .jlr-gdp-figure :global([fill="#0c0d10"]) { fill: var(--color-ink); }
+  .jlr-gdp-figure :global([stroke="#0c0d10"]) { stroke: var(--color-ink); }
+  .jlr-gdp-figure :global([fill="#13161c"]) { fill: var(--color-surface); }
+  .jlr-gdp-figure :global([stroke="#13161c"]) { stroke: var(--color-surface); }
+  .jlr-gdp-figure :global([fill="#1a1e26"]) { fill: var(--color-surface-2); }
+  .jlr-gdp-figure :global([stroke="#1a1e26"]) { stroke: var(--color-surface-2); }
+  .jlr-gdp-figure :global([fill="#28303b"]) { fill: var(--color-line-strong); }
+  .jlr-gdp-figure :global([stroke="#28303b"]) { stroke: var(--color-line-strong); }
+  .jlr-gdp-figure :global([fill="#3b4351"]) { fill: var(--color-line-strong); }
+  .jlr-gdp-figure :global([stroke="#3b4351"]) { stroke: var(--color-line-strong); }
+  .jlr-gdp-figure :global([fill="#69778d"]) { fill: var(--color-muted); }
+  .jlr-gdp-figure :global([stroke="#69778d"]) { stroke: var(--color-muted); }
+  .jlr-gdp-figure :global([fill="#a9b3c2"]) { fill: var(--color-muted); }
+  .jlr-gdp-figure :global([stroke="#a9b3c2"]) { stroke: var(--color-muted); }
+  .jlr-gdp-figure :global([fill="#e7e9ee"]) { fill: var(--color-paper); }
+  .jlr-gdp-figure :global([stroke="#e7e9ee"]) { stroke: var(--color-paper); }
+  .jlr-gdp-figure :global([fill="#5eead4"]) { fill: var(--color-signal); }
+  .jlr-gdp-figure :global([stroke="#5eead4"]) { stroke: var(--color-signal); }
+  .jlr-gdp-figure :global([fill="#ff4d87"]) { fill: var(--color-accent); }
+  .jlr-gdp-figure :global([stroke="#ff4d87"]) { stroke: var(--color-accent); }
+  .jlr-gdp-figure :global([fill="#f5b13d"]) { fill: var(--color-amber); }
+  .jlr-gdp-figure :global([stroke="#f5b13d"]) { stroke: var(--color-amber); }
+  .jlr-gdp-figure :global([fill="#7aa2f7"]) { fill: var(--color-topic-blue); }
+  .jlr-gdp-figure :global([stroke="#7aa2f7"]) { stroke: var(--color-topic-blue); }
+  .jlr-gdp-figure :global([stop-color="#5eead4"]) { stop-color: var(--color-signal); }
+  .jlr-gdp-figure :global([stop-color="#ff4d87"]) { stop-color: var(--color-accent); }
+  /* The supplied hatching remains local to explanatory areas. */
+  :global(html[data-theme="dark"]) .jlr-gdp-figure :global(pattern[id$="-hatch-quiet"] path[opacity="0.36"]) { opacity: .12; }
+  :global(html[data-theme="light"]) .jlr-gdp-figure :global(pattern path[opacity="0.36"]) { opacity: .18; }
+  .jlr-gdp-figure { margin: 2.8rem auto; width: 100%; max-width: 600px; padding-bottom: .85rem; overflow: visible; }
+  .jlr-gdp-graphic { width: 100%; }
+  .jlr-gdp-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .jlr-gdp-references { display: block; }
+  .jlr-gdp-references a { margin-right: .75em; }
+  .jlr-gdp-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .jlr-gdp-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .jlr-gdp-figure :global(details p) { margin: .7rem 0; }
+  .jlr-gdp-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  :global(.jlr-gdp-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.jlr-gdp-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media print { .jlr-gdp-figure { break-inside: avoid; } }
+</style>

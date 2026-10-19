@@ -84,6 +84,19 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      {
+        "sigle": "Valeur ajoutée",
+        "nom": "Contribution productive après déduction des consommations intermédiaires",
+        "def": "Valeur de la production d’une activité diminuée des biens et services consommés pour la réaliser. La valeur ajoutée brute conserve la consommation de capital fixe. Le PIB correspond à la somme des valeurs ajoutées brutes des producteurs résidents, augmentée des impôts sur les produits et diminuée des subventions sur les produits. Le chiffre d’affaires d’une chaîne entière additionne aussi les achats entre ses étapes.",
+        "guide": "/posts/apres-cyberattaque-04-jlr-empreinte-pib/"
+      },
+      {
+        "sigle": "Effet de base",
+        "nom": "Influence du niveau de comparaison sur un taux de variation",
+        "def": "Influence du niveau de départ sur une variation exprimée en pourcentage. À niveau final identique, une base de comparaison plus faible donne une hausse plus élevée. Un rebond mesuré par rapport à une période perturbée renseigne le rythme d’activité ; établir le rattrapage d’une production reportée demande aussi de suivre les volumes cumulés et les commandes.",
+        "guide": "/posts/apres-cyberattaque-04-jlr-empreinte-pib/"
+      },
+
       { sigle: 'Rente d’innovation', nom: 'Revenu d’une avance technique', def: 'Revenu tiré d’une avance technique au-delà des coûts courants de production. Il peut contribuer à couvrir les dépenses de recherche. Son montant et sa durée dépendent notamment de la concurrence, de l’imitation, de l’obsolescence et des droits permettant de conserver cet avantage. Une rente anticipée dans un modèle constitue une hypothèse distincte d’un bénéfice observé.', guide: '/posts/ia-debouches-rentabilite-innovation/' },
       { sigle: 'TiVA', nom: 'Commerce en valeur ajoutée', def: 'Indicateurs de l’OCDE qui attribuent aux pays et aux secteurs la valeur ajoutée incorporée dans les échanges et la demande finale, à partir de tableaux internationaux entrées-sorties. Ils distinguent notamment le contenu intérieur et étranger des exportations brutes. Leur périmètre et leur période doivent être précisés ; ils ne recensent pas les entreprises acheteuses finales.', guide: '/posts/commerce-mondial-rythme-commandes-ia/' },
       { sigle: 'Effet fouet', nom: 'Amplification des commandes dans une chaîne d’approvisionnement', def: 'Mécanisme par lequel les commandes transmises aux fournisseurs fluctuent davantage que la demande en aval. Les révisions de prévisions et les ajustements de stocks peuvent amplifier le mouvement à plusieurs étapes. Son ampleur dépend des délais, des contrats et des pratiques de commande ; une simulation de déstockage ne mesure pas un coefficient applicable à une filière réelle.', guide: '/posts/commerce-mondial-rythme-commandes-ia/' },
@@ -1074,6 +1087,52 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "valeur-ajoutee": {
+  "articles": [
+    {
+      "label": "JLR : l’empreinte d’une cyberattaque dans le PIB",
+      "href": "/posts/apres-cyberattaque-04-jlr-empreinte-pib/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "ONS, comptabilité nationale",
+      "href": "https://www.ons.gov.uk/economy/nationalaccounts/uksectoraccounts/methodologies/aguidetotheuknationalaccountsmarch2020",
+      "kind": "source"
+    },
+    {
+      "label": "ONS, marges commerciales et valeur ajoutée",
+      "href": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/articles/bluebook2024advancedaggregateestimates/2024-08-07",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "pib",
+    "effet-de-base"
+  ]
+},
+  "effet-de-base": {
+  "articles": [
+    {
+      "label": "JLR : l’empreinte d’une cyberattaque dans le PIB",
+      "href": "/posts/apres-cyberattaque-04-jlr-empreinte-pib/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "ONS, PIB de mars 2026, effet de base automobile",
+      "href": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/march2026",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "pib",
+    "valeur-ajoutee"
+  ]
+},
+
   "pertes-d-exploitation-dependantes": {
       "intuition": "La relation commerciale identifie le rôle du tiers, puis le contrat détermine les pertes admissibles.",
       "articles": [
