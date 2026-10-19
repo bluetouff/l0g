@@ -19,7 +19,7 @@ const { edition, older, newer } = Astro.props;
 ---
 
 <BaseLayout title={`${edition.title} · L’hebdo`} description={edition.description} sidebar={false}>
-  <main class="issue-page">
+  <div class="issue-page">
     <a class="back" href="/hebdo/">← Toutes les éditions</a>
     <WeeklyIssue edition={edition} headingLevel="h1" />
     <nav class="issue-navigation" aria-label="Naviguer entre les éditions de l’Hebdo">
@@ -31,7 +31,7 @@ const { edition, older, newer } = Astro.props;
         ? <a href={`/hebdo/${newer.slug}/`} rel="next"><span>édition suivante</span><strong>{String(newer.issue).padStart(2, '0')} · {newer.title}</strong></a>
         : <span aria-hidden="true"></span>}
     </nav>
-  </main>
+  </div>
   <style>
     .issue-page { max-width: 72rem; margin: 0 auto; }
     .back { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; }

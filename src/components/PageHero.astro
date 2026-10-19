@@ -45,8 +45,10 @@ const {
   </div>
 
   <h1>
-    {title}
-    {highlight && <> <span>{highlight}</span></>}
+    <slot name="title">
+      {title}
+      {highlight && <> <span>{highlight}</span></>}
+    </slot>
   </h1>
 
   <p class="page-hero-lede">{description}</p>

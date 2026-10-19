@@ -209,6 +209,385 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+{
+  "slug": "rto",
+  "sigle": "RTO",
+  "nom": "Recovery Time Objective",
+  "def": "The maximum time an IT resource is intended to remain unavailable before the impact on other resources or business processes becomes unacceptable. This planning target normally leaves room within tolerable business downtime for necessary data reprocessing. An achieved recovery time depends on the scope and scenario of the test.",
+  "guide": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "The cost of a faster recovery",
+        "href": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NIST SP 800-34 Rev. 1, May 2010, updated November 2010",
+        "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+        "detail": "Section 3.2.1, printed pages 17–18: definitions and the relationship between recovery targets and tolerable downtime.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "rpo-reprise",
+      "mtd"
+    ]
+  }
+},
+{
+  "slug": "rpo-reprise",
+  "sigle": "RPO (recovery)",
+  "nom": "Recovery Point Objective",
+  "def": "The point in the past to which business-process data should be recoverable after an outage, given the available backups. It expresses the data loss tolerated in recovery planning. Meeting this target requires testing; restored data may still need reconciliation with records created during manual workarounds.",
+  "guide": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "The cost of a faster recovery",
+        "href": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NIST SP 800-34 Rev. 1, May 2010, updated November 2010",
+        "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+        "detail": "Section 3.2.1, printed pages 17–18: definitions and the relationship between recovery targets and tolerable downtime.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "rto",
+      "mtd"
+    ]
+  }
+},
+{
+  "slug": "mtd",
+  "sigle": "MTD",
+  "nom": "Maximum Tolerable Downtime",
+  "def": "The total outage or disruption a responsible owner is willing to accept for a business process, taking all relevant impacts into account. IT resource recovery and necessary data reprocessing must fit within this period. It is a business-specific impact tolerance, rather than a recovery duration already demonstrated by a test.",
+  "guide": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "The cost of a faster recovery",
+        "href": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NIST SP 800-34 Rev. 1, May 2010, updated November 2010",
+        "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+        "detail": "Section 3.2.1, printed pages 17–18: definitions and the relationship between recovery targets and tolerable downtime.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "rto",
+      "rpo-reprise"
+    ]
+  }
+},
+  {
+  "slug": "garantie-de-pret",
+  "sigle": "Loan guarantee",
+  "nom": "A guarantor’s commitment to lenders",
+  "def": "A guarantor’s commitment to lenders covering a loan’s default risk within the contract’s scope. Banks advance funds when the borrower draws the loan, and the borrower remains liable for repayment. The guarantor’s payment depends on the claim conditions. A public guarantee creates a contingent commitment, with any cash payment subject to its terms.",
+  "guide": "/en/analysis/after-cyberattack-07-public-crisis-financing/",
+  "sectionTitle": "Banking & balance-sheet management",
+  "accent": "var(--color-topic-blue)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "Lenders advance the money, the borrower owes repayment and the guarantor steps in under the contract’s conditions.",
+    "articles": [
+      {
+        "label": "Public financing after the JLR cyberattack",
+        "href": "/en/analysis/after-cyberattack-07-public-crisis-financing/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "UKEF, Export Development Guarantee",
+        "href": "https://www.gov.uk/guidance/export-development-guarantee",
+        "detail": "Overview and Cost: commercial credit, risk sharing and premium.",
+        "kind": "source"
+      },
+      {
+        "label": "Peter Kyle, letter of 13 October 2025",
+        "href": "https://committees.parliament.uk/publications/49980/documents/269099/default/",
+        "detail": "Page 1, paragraphs 1a–b; page 3: loan, guarantee and public commitment are distinct.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "pret-relais",
+      "responsabilite-maximale"
+    ]
+  }
+},
+  {
+  "slug": "responsabilite-maximale",
+  "sigle": "Maximum liability",
+  "nom": "UKEF exposure measure including interest",
+  "def": "In UKEF’s glossary, the maximum amount of claims payable under a particular product, including interest. UKEF uses it to measure exposure before cover is issued. It differs from loan principal, the amount drawn and a realised loss. Linking a published entry to a particular facility requires checking the contract and transaction references.",
+  "guide": "/en/analysis/after-cyberattack-07-public-crisis-financing/",
+  "sectionTitle": "Banking & balance-sheet management",
+  "accent": "var(--color-topic-blue)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "A published ceiling can include interest. The contract is needed to connect that scope to a particular facility.",
+    "articles": [
+      {
+        "label": "Public financing after the JLR cyberattack",
+        "href": "/en/analysis/after-cyberattack-07-public-crisis-financing/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "UKEF, 2025/26 glossary, Maximum liability",
+        "href": "https://www.gov.uk/government/publications/uk-export-finance-annual-report-and-accounts-2025-to-2026/glossary-of-terms",
+        "detail": "Maximum liability, Claims and Amount at risk entries: definition and distinct scopes.",
+        "kind": "source"
+      },
+      {
+        "label": "UKEF, Business supported 2025 to 2026",
+        "href": "https://www.gov.uk/government/publications/uk-export-finance-business-supported-2025-to-2026/business-supported-2025-to-2026",
+        "detail": "Table 1, Maximum liability column: the JLR entries provide neither a contract identifier nor a drawn balance.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "garantie-de-pret",
+      "pret-relais"
+    ]
+  }
+},
+  {
+  "slug": "dependance-commune",
+  "sigle": "Shared dependency",
+  "nom": "Several services relying on the same resource",
+  "def": "A situation in which several functions or organisations rely on the same provider, service or technical infrastructure. Separate supplier contracts can also converge on shared infrastructure through subcontracting. Its interruption may affect multiple customers at once. The risk depends on the importance of the supported functions and the recovery or substitution options available.",
+  "guide": "/en/analysis/after-cyberattack-06-shared-provider/",
+  "robots": "noindex,follow",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "Several contracts can lead to the same infrastructure.",
+    "articles": [
+      {
+        "label": "A shared provider draws its clients into the same disruption",
+        "href": "/en/analysis/after-cyberattack-06-shared-provider/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "FSB, third-party risk toolkit",
+        "href": "https://www.fsb.org/wp-content/uploads/P041223-1.pdf",
+        "detail": "Sections 3.5, 3.8 and 4.3: concentration, indirect dependencies and substitutability.",
+        "kind": "source"
+      },
+      {
+        "label": "NCSC, Mapping your supply chain",
+        "href": "https://www.ncsc.gov.uk/guidance/mapping-your-supply-chain",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "disponibilite-de-service",
+      "reversibilite",
+      "portabilite"
+    ]
+  }
+},
+  {
+  "slug": "dms",
+  "sigle": "DMS",
+  "nom": "Dealer management system",
+  "def": "A system used by an automotive dealership to connect functions including sales, service, inventory, customer relationships and accounting. Its scope depends on the software and its integrations. Asbury and AutoNation’s disclosures following the 2024 CDK incident show that the core system and its ancillary applications can return at different times.",
+  "guide": "/en/analysis/after-cyberattack-06-shared-provider/",
+  "robots": "noindex,follow",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "A sale connects a vehicle, its record and the accounts.",
+    "articles": [
+      {
+        "label": "A shared provider draws its clients into the same disruption",
+        "href": "/en/analysis/after-cyberattack-06-shared-provider/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Asbury, Q2 2024 Form 10-Q",
+        "href": "https://www.sec.gov/Archives/edgar/data/1144980/000114498024000130/abg-20240630.htm",
+        "kind": "source"
+      },
+      {
+        "label": "AutoNation, Q2 2024 Form 10-Q",
+        "href": "https://www.sec.gov/Archives/edgar/data/350698/000035069824000098/an-20240630.htm",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "dependance-commune",
+      "disponibilite-de-service"
+    ]
+  }
+},
+  {
+  "slug": "mvo",
+  "sigle": "MVO",
+  "nom": "Minimum viable operations",
+  "def": "The lowest operational capability that, in NCSC guidance, allows an organisation to operate safely, meet its legal and regulatory obligations and maintain the trust of customers, partners and staff. During recovery from a cyberattack, this priority helps identify the functions and dependencies to restore. It is a recovery milestone whose scope depends on the organisation.",
+  "guide": "/en/analysis/after-cyberattack-05-economics-of-recovery/",
+  "robots": "noindex,follow",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "Restoring priority functions requires checking their dependencies.",
+    "articles": [
+      {
+        "label": "After the cyberattack: the long road back to service",
+        "href": "/en/analysis/after-cyberattack-05-economics-of-recovery/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NCSC, Recovery and ongoing investigations",
+        "href": "https://www.ncsc.gov.uk/collection/disruptive-cyber-attacks/recovering/2-recovery-ongoing-investigations",
+        "detail": "Section 2.1: definition and selection of minimum viable operations.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "disponibilite-de-service",
+      "retainer"
+    ]
+  }
+},
+  {
+  "slug": "retainer",
+  "sigle": "Retainer",
+  "nom": "Incident response retainer",
+  "def": "An agreement arranged before a crisis to give access to specialists on agreed terms. In the public NCC offering examined here, the annual availability fee is separate from prepaid response time; additional work follows the contractual terms. Commitments define access and the initial response. Restoring a usable service still depends on the work required.",
+  "guide": "/en/analysis/after-cyberattack-05-economics-of-recovery/",
+  "robots": "noindex,follow",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "Reserving response capacity and completing a rebuild are separate commitments.",
+    "articles": [
+      {
+        "label": "After the cyberattack: the long road back to service",
+        "href": "/en/analysis/after-cyberattack-05-economics-of-recovery/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NCC, retained incident response terms",
+        "href": "https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/716961/929698583726031-terms-and-conditions-2024-05-07-0015.pdf",
+        "detail": "Retained Incident Response module, definitions, clauses 5.9 and 8.1–8.6, Appendix 1.",
+        "kind": "source"
+      },
+      {
+        "label": "NCC, G-Cloud 14 pricing",
+        "href": "https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/716961/929698583726031-pricing-document-2024-05-07-0128.pdf",
+        "detail": "Pages 2–3: annual fees, prepaid days and pricing conditions.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "disponibilite-de-service",
+      "mvo"
+    ]
+  }
+},
+  {
+  "slug": "valeur-ajoutee",
+  "robots": "noindex,follow",
+  "sigle": "Value added",
+  "nom": "Output less intermediate consumption",
+  "def": "The value of an activity’s output less the goods and services consumed in producing it. Gross value added retains consumption of fixed capital. GDP is the sum of resident producers’ gross value added, plus taxes on products less subsidies on products. Adding turnover across a supply chain also counts purchases between its stages.",
+  "guide": "/en/analysis/after-cyberattack-04-jlr-gdp-footprint/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "articles": [
+      {
+        "label": "JLR: a cyberattack’s footprint in GDP",
+        "href": "/en/analysis/after-cyberattack-04-jlr-gdp-footprint/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "ONS, national accounts",
+        "href": "https://www.ons.gov.uk/economy/nationalaccounts/uksectoraccounts/methodologies/aguidetotheuknationalaccountsmarch2020",
+        "kind": "source"
+      },
+      {
+        "label": "ONS, trading margins and value added",
+        "href": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/articles/bluebook2024advancedaggregateestimates/2024-08-07",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "pib",
+      "effet-de-base"
+    ]
+  }
+},
+  {
+  "slug": "effet-de-base",
+  "robots": "noindex,follow",
+  "sigle": "Base effect",
+  "nom": "The starting level’s influence on a percentage change",
+  "def": "The influence of the starting level on a percentage change. For an identical final level, a lower comparison base produces a higher growth rate. A rebound measured against a disrupted period describes the rate of activity; establishing whether delayed production was made up also requires cumulative volumes and order data.",
+  "guide": "/en/analysis/after-cyberattack-04-jlr-gdp-footprint/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "articles": [
+      {
+        "label": "JLR: a cyberattack’s footprint in GDP",
+        "href": "/en/analysis/after-cyberattack-04-jlr-gdp-footprint/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "ONS, March 2026 GDP, automotive base effect",
+        "href": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/march2026",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "pib",
+      "valeur-ajoutee"
+    ]
+  }
+},
+
   {
       "slug": "pertes-d-exploitation-dependantes",
       "sigle": "Dependent business interruption",
