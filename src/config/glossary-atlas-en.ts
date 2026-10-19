@@ -209,6 +209,99 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+{
+  "slug": "rto",
+  "sigle": "RTO",
+  "nom": "Recovery Time Objective",
+  "def": "The maximum time an IT resource is intended to remain unavailable before the impact on other resources or business processes becomes unacceptable. This planning target normally leaves room within tolerable business downtime for necessary data reprocessing. An achieved recovery time depends on the scope and scenario of the test.",
+  "guide": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "The cost of a faster recovery",
+        "href": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NIST SP 800-34 Rev. 1, May 2010, updated November 2010",
+        "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+        "detail": "Section 3.2.1, printed pages 17–18: definitions and the relationship between recovery targets and tolerable downtime.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "rpo-reprise",
+      "mtd"
+    ]
+  }
+},
+{
+  "slug": "rpo-reprise",
+  "sigle": "RPO (recovery)",
+  "nom": "Recovery Point Objective",
+  "def": "The point in the past to which business-process data should be recoverable after an outage, given the available backups. It expresses the data loss tolerated in recovery planning. Meeting this target requires testing; restored data may still need reconciliation with records created during manual workarounds.",
+  "guide": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "The cost of a faster recovery",
+        "href": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NIST SP 800-34 Rev. 1, May 2010, updated November 2010",
+        "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+        "detail": "Section 3.2.1, printed pages 17–18: definitions and the relationship between recovery targets and tolerable downtime.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "rto",
+      "mtd"
+    ]
+  }
+},
+{
+  "slug": "mtd",
+  "sigle": "MTD",
+  "nom": "Maximum Tolerable Downtime",
+  "def": "The total outage or disruption a responsible owner is willing to accept for a business process, taking all relevant impacts into account. IT resource recovery and necessary data reprocessing must fit within this period. It is a business-specific impact tolerance, rather than a recovery duration already demonstrated by a test.",
+  "guide": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "The cost of a faster recovery",
+        "href": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NIST SP 800-34 Rev. 1, May 2010, updated November 2010",
+        "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+        "detail": "Section 3.2.1, printed pages 17–18: definitions and the relationship between recovery targets and tolerable downtime.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "rto",
+      "rpo-reprise"
+    ]
+  }
+},
   {
   "slug": "garantie-de-pret",
   "sigle": "Loan guarantee",

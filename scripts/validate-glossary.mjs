@@ -18,6 +18,35 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+
+// Recovery objectives must not overwrite the existing accounting meaning of RPO.
+const recoverySlugs = ['rto', 'rpo-reprise', 'mtd'];
+const continuitySource = 'https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf';
+for (const slug of recoverySlugs) {
+  const frMatches = glossaryEntries.filter(entry => entry.slug === slug);
+  const enMatches = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(frMatches.length, 1); assert.equal(enMatches.length, 1);
+  const fr = frMatches[0], en = enMatches[0];
+  assert.equal(fr.sectionTitle, 'Économie numérique & données');
+  assert.equal(en.sectionTitle, 'Digital economy & data');
+  assert.equal(fr.guide, '/posts/apres-cyberattaque-08-prix-reprise/');
+  assert.equal(en.guide, '/en/analysis/after-cyberattack-08-faster-recovery-cost/');
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.notEqual(fr.def, en.def);
+  for (const entry of [fr, en]) {
+    assert.deepEqual(entry.atlas.sources.map(link => link.href), [continuitySource]);
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.related, recoverySlugs.filter(value => value !== slug));
+    assert.doesNotMatch(entry.def, /[0-9%£€$—]/u);
+  }
+}
+const accountingRpo = glossaryEntries.find(entry => entry.slug === 'rpo');
+assert.equal(accountingRpo.nom, 'Obligations de performance restantes');
+assert.equal(glossaryAtlasEnBySlug.get('rpo').nom, 'Remaining performance obligations');
+assert.notEqual(accountingRpo.guide, glossaryEntries.find(entry => entry.slug === 'rpo-reprise').guide);
+
 // A lender's cash advance, conditional public cover and UKEF's exposure ceiling have different scopes.
 for (const [slug, sources, related] of [
   ['garantie-de-pret', ["https://www.gov.uk/guidance/export-development-guarantee", "https://committees.parliament.uk/publications/49980/documents/269099/default/"], ['pret-relais', 'responsabilite-maximale']],
@@ -351,7 +380,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 267, 'Le corpus anglais doit conserver ses 267 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 270, 'Le corpus anglais doit conserver ses 270 fiches uniques');
 
 for (const [slug, source, related] of [
   ['apd', 'https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html', ['equivalent-don', 'ida', 'compte-courant']],
@@ -478,8 +507,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 672, 'Le corpus doit conserver ses 672 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 255, 'Le graphe Atlas doit conserver ses 255 nœuds');
+assert.equal(glossaryEntries.length, 675, 'Le corpus doit conserver ses 675 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 258, 'Le graphe Atlas doit conserver ses 258 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -901,7 +930,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 746, 'Le graphe Atlas doit conserver ses 746 relations');
+assert.equal(glossaryAtlasEdgeCount, 752, 'Le graphe Atlas doit conserver ses 752 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

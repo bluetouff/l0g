@@ -811,6 +811,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "RTO", "nom": "Objectif de temps de reprise", "def": "Durée maximale d’indisponibilité retenue pour une ressource informatique avant un effet jugé inacceptable sur les autres ressources ou sur l’activité. Cet objectif de préparation doit normalement laisser, dans la durée tolérable pour le processus métier, le temps nécessaire au retraitement des données. Un délai obtenu lors d’un essai dépend de son scénario et de son périmètre.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
+      {"sigle": "RPO (reprise)", "nom": "Point de reprise des données", "def": "Point dans le passé auquel les données d’un processus doivent pouvoir être récupérées après une interruption, compte tenu des sauvegardes disponibles. Il exprime la perte de données tolérée dans la préparation. Le respect de cette cible doit être éprouvé ; la restauration peut encore demander un rapprochement avec les opérations enregistrées pendant le fonctionnement dégradé.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
+      {"sigle": "MTD", "nom": "Durée maximale d’interruption tolérable", "def": "Durée totale de perturbation qu’un responsable accepte pour un processus métier, en tenant compte de l’ensemble de ses conséquences. Le délai de reprise de la ressource informatique et le retraitement nécessaire des données doivent tenir dans cette durée. La limite relève d’une analyse d’impact propre à l’activité ; elle ne constitue pas un temps de reprise déjà démontré.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
       {"sigle": "Dépendance commune", "nom": "Plusieurs services reposant sur une même ressource", "def": "Situation dans laquelle plusieurs fonctions ou organisations utilisent un même prestataire, service ou socle technique. Des contrats avec des fournisseurs distincts peuvent aussi converger vers une infrastructure commune par la sous-traitance. Son interruption peut alors affecter plusieurs clients simultanément. Le risque dépend de l’importance des fonctions soutenues et des moyens de reprise ou de remplacement disponibles.", "guide": "/posts/apres-cyberattaque-06-prestataire-commun/"},
       {"sigle": "DMS", "nom": "Dealer management system", "def": "Système de gestion utilisé dans une concession automobile pour relier notamment ventes, atelier, stocks, relation client et comptabilité. Les périmètres dépendent du logiciel et de ses connexions. Les déclarations d’Asbury et d’AutoNation après l’incident CDK de 2024 montrent que le retour du système principal et celui des applications complémentaires peuvent intervenir à des dates différentes.", "guide": "/posts/apres-cyberattaque-06-prestataire-commun/"},
       {"sigle": "MVO", "nom": "Niveau d’activité minimum viable", "def": "Niveau minimal de fonctionnement qui permet, selon le NCSC, de poursuivre les opérations en sécurité, de satisfaire les obligations légales et réglementaires et de préserver la confiance des clients, partenaires et salariés. Après une cyberattaque, cette priorité aide à choisir les fonctions et dépendances à rétablir. Elle constitue une étape de reprise ; son périmètre dépend de l’organisation.", "guide": "/posts/apres-cyberattaque-05-economie-remise-en-route/"},
@@ -1093,6 +1096,72 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "rto": {
+  "intuition": "La ressource informatique a sa cible de disponibilité ; le service doit aussi retrouver des données utilisables.",
+  "articles": [
+    {
+      "label": "Combien coûte une reprise plus rapide ?",
+      "href": "/posts/apres-cyberattaque-08-prix-reprise/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "NIST SP 800-34 Rev. 1, mai 2010, mise à jour novembre 2010",
+      "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+      "detail": "Section 3.2.1, pages imprimées 17–18 : définitions et relation entre objectifs de reprise et durée tolérable.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "rpo-reprise",
+    "mtd"
+  ]
+},
+  "rpo-reprise": {
+  "intuition": "Le point de données récupérable et le temps nécessaire pour rétablir un service répondent à deux questions distinctes.",
+  "articles": [
+    {
+      "label": "Combien coûte une reprise plus rapide ?",
+      "href": "/posts/apres-cyberattaque-08-prix-reprise/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "NIST SP 800-34 Rev. 1, mai 2010, mise à jour novembre 2010",
+      "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+      "detail": "Section 3.2.1, pages imprimées 17–18 : définitions et relation entre objectifs de reprise et durée tolérable.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "rto",
+    "mtd"
+  ]
+},
+  "mtd": {
+  "intuition": "Le processus métier fixe une limite globale qui doit laisser une place au travail après restauration.",
+  "articles": [
+    {
+      "label": "Combien coûte une reprise plus rapide ?",
+      "href": "/posts/apres-cyberattaque-08-prix-reprise/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "NIST SP 800-34 Rev. 1, mai 2010, mise à jour novembre 2010",
+      "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+      "detail": "Section 3.2.1, pages imprimées 17–18 : définitions et relation entre objectifs de reprise et durée tolérable.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "rto",
+    "rpo-reprise"
+  ]
+},
   "garantie-de-pret": {
   "intuition": "Les prêteurs avancent l’argent, l’emprunteur doit le rembourser et le garant intervient selon les conditions du contrat.",
   "articles": [
