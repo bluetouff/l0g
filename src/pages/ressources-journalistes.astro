@@ -96,6 +96,7 @@ const jsonLd = {
       </div>
       <div class="weekly-package-assets">
         <img src={`${weeklyRoot}/graphique.svg`} alt={`${weekly.chart.title}. ${weekly.chart.note}`} width={weeklyChartSize.width} height={weeklyChartSize.height} loading="lazy" decoding="async" />
+        <p>{weekly.chart.note}</p>
         <nav aria-label="Formats disponibles pour cette édition">
           <a href={weekly.analysis.href}>analyse</a>
           <a href={`${weeklyRoot}/graphique.svg`} download>SVG</a>

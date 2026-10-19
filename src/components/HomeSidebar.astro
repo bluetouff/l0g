@@ -2,10 +2,13 @@
 import PaCheckCard from './PaCheckCard.astro';
 import SupportCard from './SupportCard.astro';
 import WatchCard from './WatchCard.astro';
+import WeeklyCta from './WeeklyCta.astro';
 ---
 
 <div class="home-sidebar">
   <SupportCard />
+
+  <WeeklyCta variant="home" />
 
   <PaCheckCard />
 
@@ -24,10 +27,6 @@ import WatchCard from './WatchCard.astro';
     <a href="/sujets/">
       <strong>Sujets suivis</strong>
       <span>Les dossiers dans la durée</span>
-    </a>
-    <a href="/hebdo/">
-      <strong>La synthèse hebdo</strong>
-      <span>Ce qu’il faut retenir</span>
     </a>
   </section>
 </div>

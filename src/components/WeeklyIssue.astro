@@ -1,137 +1,101 @@
 ---
-import type { WeeklyEdition } from '../config/weekly-editions.ts';
-import { buildWeeklyCitationText, weeklyChartDimensions } from '../lib/weekly-package.ts';
+import type { WeeklyEdition, WeeklyReading } from '../config/weekly-editions.ts';
+import { buildWeeklyCitationText, buildWeeklyLinkedInText, buildWeeklyThreadText, weeklyChartDimensions } from '../lib/weekly-package.ts';
+import { readingTime } from '../lib/reading-time.ts';
 
-interface Props {
-  edition: WeeklyEdition;
-  headingLevel?: 'h1' | 'h2';
-}
-
+interface Props { edition: WeeklyEdition; headingLevel?: 'h1' | 'h2'; }
 const { edition, headingLevel = 'h2' } = Astro.props;
 const Heading = headingLevel;
+const SectionHeading = headingLevel === 'h1' ? 'h2' : 'h3';
+const ReadingHeading = headingLevel === 'h1' ? 'h3' : 'h4';
 const root = `/hebdo/${edition.slug}`;
-const published = new Intl.DateTimeFormat('fr-FR', {
-  day: '2-digit',
-  month: 'long',
-  year: 'numeric',
-  timeZone: 'Europe/Paris',
-}).format(new Date(edition.publishedAt));
+const editorial = edition.editorial;
+const readings: WeeklyReading[] = editorial?.readings ?? (edition.briefs?.length ? edition.briefs : [{
+  title: edition.analysis.title, href: edition.analysis.href, topic: 'Le dossier',
+  fact: edition.lead, importance: edition.mechanism, uncertainty: edition.test,
+}]);
+const dateLabel = (value: string) => new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' }).format(new Date(value));
+const shortDate = (value: string) => new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'short', timeZone: 'Europe/Paris' }).format(new Date(value));
+const minutes = readingTime([
+  ...(editorial?.opening ?? []),
+  ...readings.flatMap((item) => [item.title, item.fact, item.importance, item.uncertainty]),
+  ...(editorial?.watchlist.flatMap((item) => [item.title, item.detail]) ?? []),
+].join(' '));
 const citation = buildWeeklyCitationText(edition);
+const linkedin = buildWeeklyLinkedInText(edition).trim();
+const thread = buildWeeklyThreadText(edition).trim();
 const chartDimensions = weeklyChartDimensions(edition);
 ---
 
-<article class="weekly-issue" data-pagefind-body>
+<article class="weekly-issue" data-pagefind-body data-weekly-edition={edition.slug}>
   <header class="issue-head">
     <div class="issue-coordinate">
-      <span>édition</span>
-      <strong>{String(edition.issue).padStart(2, '0')}</strong>
-      <time datetime={edition.publishedAt}>{published}</time>
-      {edition.automation && <small>assemblage automatique</small>}
+      <span class="issue-number">N° {String(edition.issue).padStart(2, '0')}</span>
+      <time datetime={edition.publishedAt}>{dateLabel(edition.publishedAt)}</time>
+      <span>Lecture · environ {minutes} min</span>
+      {editorial && <span class="review-date">Revue le <time datetime={editorial.reviewedAt}>{shortDate(editorial.reviewedAt)}</time></span>}
     </div>
-    <div>
-      <p class="mono-label">// le dossier de la semaine</p>
-      <Heading>{edition.title}</Heading>
-      <p class="issue-lead">{edition.lead}</p>
+    <div class:list={['issue-cover', { 'has-cover': !!editorial }]}>
+      <div class="issue-opening">
+        <p class="mono-label">{editorial ? '// le fil de la semaine' : '// la revue des analyses'}</p>
+        <Heading>{edition.title}</Heading>
+        <p class="issue-lead">{editorial?.opening[0] ?? edition.analysis.update}</p>
+        <nav class="issue-contents" aria-label="Sommaire de cette édition">
+          {readings.map((item, index) => <a href={`#lecture-${edition.issue}-${index + 1}`}><span>0{index + 1}</span>{item.topic}<b aria-hidden="true">↗</b></a>)}
+        </nav>
+      </div>
+      {editorial && <figure class="cover-image">
+        <img src={editorial.cover.src} alt={editorial.cover.alt} width="1200" height="630" loading="lazy" decoding="async" />
+        <figcaption>Le dossier d’ouverture <span aria-hidden="true">↙</span> <a href={readings[0].href}>{readings[0].topic}</a></figcaption>
+      </figure>}
     </div>
   </header>
 
-  <div class="issue-grid">
-    <section class="issue-reading">
-      <p class="mono-label">// l’analyse</p>
-      <h3><a href={edition.analysis.href}>{edition.analysis.title}</a></h3>
-      <p>{edition.analysis.update}</p>
-      <a class="text-link" href={edition.analysis.href}>Lire l’enquête complète <span aria-hidden="true">›</span></a>
-    </section>
+  {editorial && <section class="editor-note" aria-labelledby={`note-${edition.issue}`}>
+    <SectionHeading id={`note-${edition.issue}`}>Le regard l0g</SectionHeading>
+    <div>{editorial.opening.slice(1).map((paragraph) => <p>{paragraph}</p>)}</div>
+  </section>}
 
-    <aside class="hero-number">
-      <span>le chiffre</span>
-      <strong>{edition.number.value}</strong>
-      <p>{edition.number.label}</p>
-      <small>{edition.number.context}</small>
-    </aside>
+  <div class:list={['issue-body', { 'with-watchlist': !!editorial }]}>
+    <section class="issue-readings" aria-labelledby={`readings-${edition.issue}`}>
+      <div class="section-line"><SectionHeading id={`readings-${edition.issue}`}>{editorial ? 'Les dossiers à retenir' : 'À lire cette semaine'}</SectionHeading><span>{String(readings.length).padStart(2, '0')} lecture{readings.length > 1 ? 's' : ''}</span></div>
+      {readings.map((item, index) => <article class="reading-note" id={`lecture-${edition.issue}-${index + 1}`}>
+        <div class="reading-meta"><span>0{index + 1}</span><p>{item.topic}</p></div>
+        <ReadingHeading><a href={item.href}>{item.title}<span aria-hidden="true"> ↗</span></a></ReadingHeading>
+        <p class="reading-fact">{item.fact}</p>
+        <p class="reading-importance">{item.importance}</p>
+        <p class="reading-limit"><strong>La limite.</strong> {item.uncertainty}</p>
+        <footer><a class="reading-link" href={item.href}>Lire l’analyse <span aria-hidden="true">→</span></a>{item.source && <a class="reading-source" href={item.source.href}>{item.source.label} <span aria-hidden="true">↗</span></a>}</footer>
+      </article>)}
+    </section>
+    {editorial && <aside class="issue-watch" aria-labelledby={`watch-${edition.issue}`}>
+      <p class="mono-label">// garder le fil</p>
+      <SectionHeading id={`watch-${edition.issue}`}>Les prochaines vérifications</SectionHeading>
+      <p class="watch-intro">Les pièces à chercher pour prolonger cette lecture.</p>
+      <ol>{editorial.watchlist.map((item) => <li><ReadingHeading><a href={item.href}>{item.title} <span aria-hidden="true">↗</span></a></ReadingHeading><p>{item.detail}</p></li>)}</ol>
+      <a class="watch-more" href="/maintenant/">Le suivi sur Maintenant <span aria-hidden="true">→</span></a>
+    </aside>}
   </div>
 
-  <section class="mechanism-grid" aria-label="Lecture de la semaine">
-    <article>
-      <span>01</span>
-      <h3>Le mécanisme</h3>
-      <p>{edition.mechanism}</p>
-    </article>
-    <article>
-      <span>02</span>
-      <h3>Le test suivant</h3>
-      <p>{edition.test}</p>
-    </article>
-  </section>
+  {editorial && <aside class="issue-takeaway"><p class="mono-label">// une grille de lecture</p><p>{editorial.takeaway}</p></aside>}
 
-  <figure class="issue-chart">
-    <img
-      src={`${root}/graphique.svg`}
-      alt={`${edition.chart.title}. ${edition.chart.subtitle} ${edition.chart.note}`}
-      width={chartDimensions.width}
-      height={chartDimensions.height}
-      loading="lazy"
-      decoding="async"
-    />
-    <figcaption>
-      <span>{edition.chart.note}</span>
-      <nav aria-label="Téléchargements du graphique">
-        <a href={`${root}/graphique.svg`} download>SVG</a>
-        <a href={`${root}/donnees.csv`} download>CSV</a>
-        <a href={edition.chart.sourceUrl}>source du graphique</a>
-      </nav>
-    </figcaption>
-  </figure>
-
-  <section class="quote-card">
-    <div>
-      <p class="mono-label">// citation prête à copier</p>
-      <blockquote>« {edition.quote} »</blockquote>
-      <small>Source : l0g.fr, édition {String(edition.issue).padStart(2, '0')}.</small>
+  <details class="issue-documentation">
+    <summary><span>Le périmètre de cette édition</span><small>{edition.includedAnalyses ? `${edition.includedAnalyses.length} analyses dans la semaine` : 'Sources et méthode'} <span aria-hidden="true">＋</span></small></summary>
+    <div class="documentation-body">
+      <p>{editorial ? 'Les dossiers à retenir font l’objet d’une sélection et d’une revue éditoriales datées. La liste ci-dessous conserve toutes les analyses de la fenêtre hebdomadaire. Le graphique et le CSV décrivent uniquement leur cadence de publication.' : edition.automation ? 'Cette édition reprend les faits, les mécanismes et les limites des analyses publiées dans sa fenêtre hebdomadaire. Le graphique et le CSV documentent la cadence de publication ; ils ne mesurent pas l’importance économique des sujets.' : 'Les données, les sources et les limites de cette édition sont conservées avec les formats téléchargeables.'}</p>
+      <ol class="coverage-list">{edition.sources.map((source) => <li><a href={source.href}>{source.label}</a><span>{source.role}</span></li>)}</ol>
+      <figure class="issue-chart"><img src={`${root}/graphique.svg`} alt={`${edition.chart.title}. ${edition.chart.subtitle} ${edition.chart.note}`} width={chartDimensions.width} height={chartDimensions.height} loading="lazy" decoding="async" /><figcaption>{edition.chart.note} <a href={`${root}/graphique.svg`} download>SVG</a> · <a href={`${root}/donnees.csv`} download>CSV</a> · <a href={edition.chart.sourceUrl}>Source du graphique</a></figcaption></figure>
+      <ul class="method-limits">{(editorial ? ['Chaque dossier conserve ses dates et son périmètre ; cette revue ne constitue pas une actualisation quotidienne des données.', 'La synthèse ne remplace pas les hypothèses et les méthodes explicitées dans les analyses.'] : edition.limits).map((limit) => <li>{limit}</li>)}</ul>
     </div>
-    <button type="button" data-copy-value={edition.quote}><span data-copy-label>Copier</span></button>
-  </section>
+  </details>
 
-  <section class="distribution" aria-labelledby={`distribution-${edition.issue}`}>
-    <div class="distribution-head">
-      <div>
-        <p class="mono-label">// à lire, citer et réutiliser</p>
-        <h3 id={`distribution-${edition.issue}`}>Les formats utiles sont disponibles ici.</h3>
-      </div>
-      <a href="/ressources-journalistes/">Ressources presse</a>
+  <details class="issue-formats">
+    <summary><span>Citer et réutiliser l’édition</span><small>Référence · LinkedIn · X <span aria-hidden="true">＋</span></small></summary>
+    <div class="formats-body">
+      <p>Textes à adapter librement, avec attribution à l0g. <a href="/ressources-journalistes/">Ressources presse ↗</a></p>
+      {[{ label: 'Référence bibliographique', text: citation, file: 'citation.txt' }, { label: 'Texte LinkedIn', text: linkedin, file: 'linkedin.txt' }, { label: 'Thread X', text: thread, file: 'thread-x.txt' }].map((format) => <details class="format-item"><summary>{format.label}</summary><pre>{format.text}</pre><div><button type="button" data-copy-value={format.text}><span data-copy-label aria-live="polite">Copier</span></button><a href={`${root}/${format.file}`}>Télécharger le texte</a></div></details>)}
     </div>
-    <div class="distribution-grid">
-      <details>
-        <summary>Post LinkedIn centré sur le chiffre</summary>
-        <pre>{edition.linkedin}</pre>
-        <div><button type="button" data-copy-value={edition.linkedin}><span data-copy-label>Copier</span></button><a href={`${root}/linkedin.txt`}>TXT</a></div>
-      </details>
-      <details>
-        <summary>Thread X</summary>
-        <pre>{edition.threadX.join('\n\n')}</pre>
-        <div><button type="button" data-copy-value={edition.threadX.join('\n\n')}><span data-copy-label>Copier</span></button><a href={`${root}/thread-x.txt`}>TXT</a></div>
-      </details>
-      <details>
-        <summary>Référence bibliographique</summary>
-        <pre>{citation}</pre>
-        <div><button type="button" data-copy-value={citation}><span data-copy-label>Copier</span></button><a href={`${root}/citation.txt`}>TXT</a></div>
-      </details>
-    </div>
-  </section>
-
-  <section class="issue-sources">
-    <p class="mono-label">{edition.sourcesEyebrow ?? '// sources primaires'}</p>
-    <ol>
-      {edition.sources.map((source) => (
-        <li><a href={source.href}>{source.label}</a><span>{source.role}</span></li>
-      ))}
-    </ol>
-  </section>
-
-  <section class="issue-limits">
-    <p class="mono-label">// limites</p>
-    <ul>{edition.limits.map((limit) => <li>{limit}</li>)}</ul>
-  </section>
+  </details>
 </article>
 
 <script>
@@ -144,80 +108,96 @@ const chartDimensions = weeklyChartDimensions(edition);
         return;
       }
       const original = label.textContent;
-      try {
-        await navigator.clipboard.writeText(value);
-        label.textContent = 'Copié';
-      } catch {
-        label.textContent = 'Indisponible';
-      }
+      try { await navigator.clipboard.writeText(value); label.textContent = 'Copié'; }
+      catch { label.textContent = 'Indisponible'; }
       window.setTimeout(() => { label.textContent = original; }, 1600);
     });
   });
 </script>
 
 <style>
-  .weekly-issue { margin-top: clamp(3.5rem, 8vw, 6rem); }
-  .issue-head { display: grid; gap: 1.2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-line); }
-  .issue-coordinate { display: grid; grid-template-columns: auto auto; align-content: start; justify-content: start; column-gap: 0.7rem; }
-  .issue-coordinate span { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
-  .issue-coordinate strong { grid-row: 2; color: var(--color-signal); font-family: var(--font-display); font-size: clamp(3rem, 8vw, 5rem); line-height: 0.9; }
-  .issue-coordinate time { grid-column: 2; grid-row: 2; align-self: end; padding-bottom: 0.3rem; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.65rem; }
-  .issue-coordinate small { grid-column: 1 / -1; margin-top: 0.55rem; color: var(--color-accent); font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.05em; text-transform: uppercase; }
-  .issue-head .mono-label { color: var(--color-signal); }
-  .issue-head h1, .issue-head h2 { max-width: 52rem; margin-top: 0.7rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.35rem); line-height: 1.04; letter-spacing: -0.035em; text-wrap: balance; }
-  .issue-lead { max-width: 48rem; margin-top: 1rem; border-left: 2px solid var(--color-signal); padding-left: 1rem; color: var(--color-paper); font-family: var(--font-read); font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.68; }
-  .issue-grid { display: grid; gap: 1rem; margin-top: 1rem; }
-  .issue-reading, .hero-number { border: 1px solid var(--color-line); border-radius: 12px 3px 12px 12px; padding: 1.1rem; background: var(--color-surface); }
-  .issue-reading .mono-label { color: var(--color-accent); }
-  .issue-reading h3 { margin-top: 0.7rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.3rem; line-height: 1.25; }
-  .issue-reading h3 a { color: inherit; }
-  .issue-reading p { margin-top: 0.6rem; color: var(--color-muted); font-size: 0.84rem; line-height: 1.6; }
-  .text-link { display: inline-block; margin-top: 0.9rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; }
-  .hero-number { border-color: color-mix(in srgb, var(--color-amber) 42%, var(--color-line)); background: radial-gradient(90% 130% at 100% 0, color-mix(in srgb, var(--color-amber) 10%, transparent), transparent 70%), var(--color-surface); }
-  .hero-number > span { color: var(--color-amber); font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; }
-  .hero-number strong { display: block; margin-top: 0.65rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2.3rem, 7vw, 4.5rem); line-height: 0.95; }
-  .hero-number p { margin-top: 0.65rem; color: var(--color-paper); font-weight: 650; }
-  .hero-number small { display: block; margin-top: 0.55rem; color: var(--color-muted); font-size: 0.69rem; line-height: 1.5; }
-  .mechanism-grid { display: grid; gap: 1px; overflow: hidden; margin-top: 1rem; border: 1px solid var(--color-line); border-radius: 12px 3px 12px 12px; background: var(--color-line); }
-  .mechanism-grid article { padding: 1.1rem; background: var(--color-surface); }
-  .mechanism-grid span { color: var(--color-line-strong); font-family: var(--font-display); font-size: 1.8rem; }
-  .mechanism-grid h3 { margin-top: 0.3rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.15rem; }
-  .mechanism-grid p { margin-top: 0.55rem; color: var(--color-muted); font-size: 0.8rem; line-height: 1.6; }
-  .issue-chart { margin: 2rem 0 2.5rem; padding-bottom: 0.9rem; }
-  .issue-chart img { display: block; width: 100%; height: auto; border: 1px solid var(--color-line); border-radius: 14px; background: #0b0f14; }
-  .issue-chart figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.7rem 1rem; margin-top: 0.75rem; color: var(--color-muted); font-size: 0.72rem; line-height: 1.5; }
-  .issue-chart figcaption > span { max-width: 44rem; }
-  .issue-chart nav { display: flex; gap: 0.45rem; }
-  .issue-chart nav a, .distribution-grid div a { border: 1px solid var(--color-line-strong); border-radius: 999px; padding: 0.3rem 0.55rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; }
-  .quote-card { display: grid; gap: 1rem; align-items: center; border: 1px solid color-mix(in srgb, var(--color-accent) 44%, var(--color-line)); border-radius: 4px 14px 14px 14px; padding: 1.2rem; background: color-mix(in srgb, var(--color-accent) 5%, var(--color-surface)); }
-  .quote-card .mono-label { color: var(--color-accent); }
-  .quote-card blockquote { max-width: 48rem; margin-top: 0.75rem; color: var(--color-bright); font-family: var(--font-read); font-size: 1.08rem; line-height: 1.65; }
-  .quote-card small { display: block; margin-top: 0.55rem; color: var(--color-muted); font-size: 0.66rem; }
-  .quote-card button, .distribution-grid button { justify-self: start; border: 1px solid color-mix(in srgb, var(--color-accent) 54%, var(--color-line)); border-radius: 999px; padding: 0.5rem 0.7rem; color: var(--color-accent); background: transparent; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700; text-transform: uppercase; cursor: pointer; }
-  .distribution { margin-top: 3rem; }
-  .distribution-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; }
-  .distribution-head .mono-label { color: var(--color-signal); }
-  .distribution-head h3 { margin-top: 0.45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.5rem; }
-  .distribution-head > a { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; }
-  .distribution-grid { display: grid; gap: 0.7rem; margin-top: 1rem; }
-  .distribution-grid details { min-width: 0; border: 1px solid var(--color-line); border-radius: 9px; padding: 0.85rem; background: var(--color-surface); }
-  .distribution-grid summary { color: var(--color-paper); cursor: pointer; font-family: var(--font-mono); font-size: 0.7rem; }
-  .distribution-grid pre { max-height: 20rem; overflow: auto; margin-top: 0.8rem; border: 1px solid var(--color-line); border-radius: 7px; padding: 0.75rem; color: var(--color-muted); background: var(--color-ink); font-size: 0.67rem; line-height: 1.55; white-space: pre-wrap; }
-  .distribution-grid details > div { display: flex; gap: 0.5rem; margin-top: 0.7rem; }
-  .distribution-grid button { color: var(--color-signal); border-color: color-mix(in srgb, var(--color-signal) 54%, var(--color-line)); }
-  .issue-sources, .issue-limits { margin-top: 2.5rem; border-top: 1px dashed var(--color-line); padding-top: 1rem; }
-  .issue-sources .mono-label { color: var(--color-signal); }
-  .issue-sources ol { display: grid; gap: 0.65rem; margin: 0.9rem 0 0 1.1rem; }
-  .issue-sources li { padding-left: 0.3rem; color: var(--color-paper); font-size: 0.78rem; line-height: 1.5; }
-  .issue-sources li::marker { color: var(--color-signal); font-family: var(--font-mono); }
-  .issue-sources a { color: var(--color-bright); }
-  .issue-sources span { display: block; color: var(--color-muted); }
-  .issue-limits .mono-label { color: var(--color-amber); }
-  .issue-limits ul { display: grid; gap: 0.45rem; margin-top: 0.8rem; padding-left: 1rem; color: var(--color-muted); font-size: 0.74rem; line-height: 1.55; }
-  @media (min-width: 760px) {
-    .issue-head { grid-template-columns: 10rem minmax(0, 1fr); }
-    .issue-grid { grid-template-columns: minmax(0, 1.35fr) minmax(17rem, 0.65fr); }
-    .mechanism-grid, .distribution-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .quote-card { grid-template-columns: minmax(0, 1fr) auto; }
+  .weekly-issue { margin-top: 1.5rem; color: var(--color-prose); }
+  .issue-head { border-top: 1px solid var(--color-line-strong); }
+  .issue-coordinate { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; padding: .9rem 0; color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; }
+  .issue-number { color: var(--color-signal); font-weight: 700; }
+  .review-date { margin-left: auto; }
+  .issue-cover { padding: 1.6rem 0 1.8rem; }
+  .issue-opening { min-width: 0; }
+  .issue-opening .mono-label { color: var(--color-signal); font-size: .64rem; }
+  .issue-opening h1, .issue-opening h2 { max-width: 42rem; margin-top: .65rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 700; line-height: 1.2; letter-spacing: -.035em; text-wrap: balance; }
+  .issue-lead { margin-top: 1rem; max-width: 46rem; font-family: var(--font-read); font-size: .98rem; line-height: 1.8; }
+  .issue-contents { display: flex; flex-wrap: wrap; gap: .5rem 1.15rem; margin-top: 1.3rem; }
+  .issue-contents a { display: inline-flex; align-items: baseline; gap: .4rem; color: var(--color-paper); font-family: var(--font-mono); font-size: .65rem; }
+  .issue-contents a span { color: var(--color-signal); font-size: .58rem; }
+  .issue-contents b { color: var(--color-muted); font-weight: 400; }
+  .cover-image { min-width: 0; align-self: stretch; margin: 0; }
+  .cover-image img { display: block; width: 100%; height: auto; aspect-ratio: 1.8; object-fit: cover; border-radius: 4px; border: 1px solid var(--color-line); }
+  .cover-image figcaption { display: flex; align-items: center; gap: .45rem; margin-top: .55rem; font-family: var(--font-mono); font-size: .6rem; color: var(--color-muted); }
+  .cover-image figcaption a { color: var(--color-signal); }
+  .editor-note { display: grid; gap: .8rem; padding: 1.2rem 1.4rem; border-left: 2px solid var(--color-signal); background: linear-gradient(105deg, color-mix(in srgb, var(--color-signal) 5%, transparent), transparent 85%), var(--surface-inset); }
+  .editor-note :is(h2, h3) { color: var(--color-signal); font-family: var(--font-mono); font-size: .7rem; }
+  .editor-note p { max-width: 52rem; font-family: var(--font-read); font-size: .88rem; line-height: 1.75; }
+  .issue-body { margin-top: 2.3rem; }
+  .section-line { display: flex; flex-wrap: wrap; gap: .5rem; align-items: baseline; justify-content: space-between; padding-bottom: .9rem; border-bottom: 1px solid var(--color-line-strong); }
+  .section-line :is(h2, h3) { color: var(--color-bright); font-family: var(--font-display); font-size: 1.1rem; font-weight: 650; }
+  .section-line > span { color: var(--color-muted); font-family: var(--font-mono); font-size: .6rem; }
+  .reading-note { padding: 1.6rem 0; border-bottom: 1px solid var(--color-line); scroll-margin-top: 1.5rem; }
+  .reading-meta { display: flex; align-items: center; gap: .7rem; font-family: var(--font-mono); font-size: .65rem; }
+  .reading-meta > span { color: var(--color-signal); }
+  .reading-meta > p { color: var(--color-muted); }
+  .reading-note :is(h3, h4) { max-width: 42rem; margin-top: .65rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.1rem, 1.8vw, 1.35rem); font-weight: 650; line-height: 1.4; text-wrap: balance; }
+  .reading-note :is(h3, h4) span { color: var(--color-signal); font-size: .9rem; white-space: nowrap; }
+  .reading-fact, .reading-importance { margin-top: .8rem; font-family: var(--font-read); font-size: .93rem; line-height: 1.8; }
+  .reading-fact { color: var(--color-paper); }
+  .reading-importance { color: var(--color-prose); }
+  .reading-limit { margin-top: 1rem; padding: .75rem .9rem; border-left: 2px solid color-mix(in srgb, var(--color-amber) 65%, var(--color-line)); background: var(--surface-inset); font-family: var(--font-read); font-size: .8rem; line-height: 1.7; color: var(--color-muted); }
+  .reading-limit strong { color: var(--color-amber); font-weight: 600; }
+  .reading-note footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .65rem 1rem; margin-top: 1rem; font-family: var(--font-mono); font-size: .63rem; }
+  .reading-link { color: var(--color-signal); }
+  .reading-source { max-width: 26rem; color: var(--color-muted); font-size: .66rem; line-height: 1.6; }
+  .issue-watch { align-self: start; padding: 1.2rem; border: 1px solid var(--color-line); border-top: 2px solid var(--color-amber); border-radius: 3px; background: var(--surface-elevated); }
+  .issue-watch > .mono-label { color: var(--color-amber); font-size: .6rem; }
+  .issue-watch > :is(h2, h3) { margin-top: .65rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.05rem; line-height: 1.4; }
+  .watch-intro { margin-top: .65rem; font-family: var(--font-read); font-size: .78rem; line-height: 1.7; color: var(--color-muted); }
+  .issue-watch ol { list-style: none; }
+  .issue-watch li { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--color-line); }
+  .issue-watch li :is(h3, h4) { color: var(--color-paper); font-size: .72rem; line-height: 1.6; }
+  .issue-watch :is(h3, h4) span { color: var(--color-amber); }
+  .issue-watch li p { margin-top: .55rem; font-family: var(--font-read); font-size: .78rem; line-height: 1.75; color: var(--color-muted); }
+  .watch-more { display: inline-block; margin-top: 1.25rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .62rem; }
+  .issue-takeaway { margin: 2rem 0; padding: 1.2rem 1.4rem; border: 1px solid var(--color-line); border-radius: 3px; background: linear-gradient(110deg, color-mix(in srgb, var(--color-signal) 7%, transparent), transparent 65%); }
+  .issue-takeaway .mono-label { color: var(--color-signal); font-size: .6rem; }
+  .issue-takeaway > p:last-child { max-width: 50rem; margin-top: .6rem; font-family: var(--font-read); font-size: 1rem; line-height: 1.7; color: var(--color-paper); }
+  .issue-documentation, .issue-formats { margin-top: 1rem; border: 1px solid var(--color-line); border-radius: 3px; }
+  .issue-documentation > summary, .issue-formats > summary { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem; padding: 1rem 1.15rem; cursor: pointer; color: var(--color-paper); font-family: var(--font-mono); font-size: .72rem; }
+  summary small { color: var(--color-muted); font-size: .6rem; }
+  summary small > span { display: inline-block; margin-left: .7rem; color: var(--color-signal); }
+  details[open] > summary { border-bottom: 1px solid var(--color-line); }
+  details[open] > summary small > span { transform: rotate(45deg); }
+  .documentation-body, .formats-body { padding: 1.15rem; }
+  .documentation-body > p, .formats-body > p { max-width: 48rem; font-family: var(--font-read); font-size: .8rem; line-height: 1.7; color: var(--color-muted); }
+  .coverage-list { margin: 1rem 0 0 1.2rem; }
+  .coverage-list li { margin-top: .7rem; font-size: .73rem; line-height: 1.6; }
+  .coverage-list li::marker { color: var(--color-signal); }
+  .coverage-list a { color: var(--color-paper); }
+  .coverage-list span { display: block; font-size: .65rem; color: var(--color-muted); }
+  .issue-chart { max-width: 46rem; margin: 1.5rem 0; }
+  .issue-chart img { width: 100%; height: auto; border: 1px solid var(--color-line); border-radius: 3px; }
+  .issue-chart figcaption { margin-top: .7rem; color: var(--color-muted); font-size: .68rem; line-height: 1.7; }
+  .issue-chart a, .formats-body a { color: var(--color-signal); }
+  .method-limits { padding-left: 1rem; color: var(--color-muted); font-size: .7rem; line-height: 1.8; }
+  .format-item { margin-top: .8rem; border-top: 1px solid var(--color-line); padding-top: .8rem; }
+  .format-item summary { cursor: pointer; color: var(--color-paper); font-size: .73rem; }
+  .format-item pre { max-height: 24rem; margin-top: 1rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .7rem; line-height: 1.7; color: var(--color-muted); }
+  .format-item > div { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: .8rem; font-size: .65rem; }
+  .format-item button { padding: .45rem .7rem; color: var(--color-signal); border: 1px solid var(--color-line-strong); border-radius: 3px; cursor: pointer; }
+  .weekly-issue a:hover { color: var(--color-signal); }
+  .weekly-issue a:focus-visible, .weekly-issue summary:focus-visible, .weekly-issue button:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media (min-width: 800px) {
+    .has-cover { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 2rem; align-items: center; }
+    .editor-note { grid-template-columns: 8rem minmax(0, 1fr); }
+    .with-watchlist { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 2.5rem; }
   }
+  @media (max-width: 799px) { .cover-image { margin-top: 1.3rem; max-width: 36rem; } .issue-watch { margin-top: 1.8rem; } }
+  @media (max-width: 500px) { .review-date { margin-left: 0; } .issue-coordinate { font-size: .6rem; gap: .5rem .8rem; } .issue-cover { padding-top: 1rem; } .issue-opening h1, .issue-opening h2 { font-size: 1.6rem; } .issue-lead { font-size: .9rem; } .editor-note { padding: 1rem; } }
 </style>

@@ -4,7 +4,7 @@ import { weeklyEditions } from '../../config/weekly-editions.ts';
 
 export const GET: APIRoute = (context) => rss({
   title: 'L’Hebdo l0g',
-  description: 'Une édition chaque dimanche, avec une URL stable, ses analyses, son graphique et ses formats réutilisables.',
+  description: 'Les dossiers de la semaine, leurs mécanismes, leurs limites et les prochaines vérifications.',
   site: context.site ?? new URL('https://l0g.fr'),
   items: [...weeklyEditions]
     .sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))

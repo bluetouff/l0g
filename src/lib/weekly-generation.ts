@@ -1,4 +1,5 @@
 import type { WeeklyEdition } from '../config/weekly-editions.ts';
+import { topicLabelForTags } from '../config/topics.ts';
 import {
   addCalendarDays,
   parisDateOnly,
@@ -10,6 +11,7 @@ export type WeeklyPostInput = {
   title: string;
   description: string;
   pubDate: string;
+  tags?: string[];
   quickTake?: {
     fact: string;
     importance: string;
@@ -62,8 +64,14 @@ function assertPost(post: WeeklyPostInput) {
   if (Number.isNaN(Date.parse(post.pubDate))) {
     throw new TypeError(`Date de publication invalide pour ${post.id}.`);
   }
-  if (post.quickTake) {
-    for (const value of Object.values(post.quickTake)) {
+  if (post.tags !== undefined && (!Array.isArray(post.tags) || post.tags.some((tag) => typeof tag !== 'string'))) {
+    throw new TypeError(`Sujets invalides pour ${post.id}.`);
+  }
+  if (post.quickTake !== undefined) {
+    if (!post.quickTake || typeof post.quickTake !== 'object') {
+      throw new TypeError(`Fiche structurée invalide pour ${post.id}.`);
+    }
+    for (const value of [post.quickTake.fact, post.quickTake.importance, post.quickTake.uncertainty]) {
       if (typeof value !== 'string' || value.trim().length < 20) {
         throw new TypeError(`Fiche structurée invalide pour ${post.id}.`);
       }
@@ -115,7 +123,7 @@ function splitWithoutRewriting(value: string, maxLength: number) {
   return chunks;
 }
 
-function buildThread(parts: string[]) {
+export function buildWeeklyThread(parts: string[]) {
   const chunks = parts.flatMap((part) => splitWithoutRewriting(part, 266));
   const total = chunks.length;
   return chunks.map((chunk, index) => `${index + 1}/${total} ${chunk}`);
@@ -164,6 +172,17 @@ export function createAutomatedWeeklyEdition({
     .sort((left, right) => Date.parse(right.pubDate) - Date.parse(left.pubDate) || left.id.localeCompare(right.id));
   const structured = selected.filter((post) => post.quickTake);
   const focus = structured[0] ?? selected[0];
+  const readingPosts: WeeklyPostInput[] = [];
+  const topics = new Set<string>();
+  for (const post of structured) {
+    const topic = topicLabelForTags(post.tags ?? []) ?? 'analyse';
+    if (!topics.has(topic)) { readingPosts.push(post); topics.add(topic); }
+    if (readingPosts.length === 4) break;
+  }
+  for (const post of structured) {
+    if (readingPosts.length === 4) break;
+    if (!readingPosts.includes(post)) readingPosts.push(post);
+  }
   const count = selected.length;
   const countLabel = count === 1 ? 'analyse publiée' : 'analyses publiées';
   const issueUrl = `https://l0g.fr/hebdo/${editionDate}/`;
@@ -188,7 +207,7 @@ export function createAutomatedWeeklyEdition({
     `Édition, graphique de cadence, CSV et archives : ${issueUrl}`,
   ].join('\n\n');
 
-  const threadX = buildThread([
+  const threadX = buildWeeklyThread([
     `L’Hebdo l0g du ${formatDateOnly(editionDate)} compte ${count} ${countLabel}. Focus : ${focusTitle}.`,
     focusFact,
     `Pourquoi le lire : ${focusImportance}`,
@@ -252,6 +271,14 @@ export function createAutomatedWeeklyEdition({
       title: post.title,
       href: `/posts/${post.id}/`,
       publishedAt: post.pubDate,
+    })),
+    briefs: readingPosts.map((post) => ({
+      title: post.title,
+      href: `/posts/${post.id}/`,
+      topic: topicLabelForTags(post.tags ?? []) ?? 'analyse',
+      fact: post.quickTake!.fact,
+      importance: post.quickTake!.importance,
+      uncertainty: post.quickTake!.uncertainty,
     })),
     automation: {
       strategy: 'published-metadata-v1',
