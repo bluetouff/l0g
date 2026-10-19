@@ -809,6 +809,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "Dépendance commune", "nom": "Plusieurs services reposant sur une même ressource", "def": "Situation dans laquelle plusieurs fonctions ou organisations utilisent un même prestataire, service ou socle technique. Des contrats avec des fournisseurs distincts peuvent aussi converger vers une infrastructure commune par la sous-traitance. Son interruption peut alors affecter plusieurs clients simultanément. Le risque dépend de l’importance des fonctions soutenues et des moyens de reprise ou de remplacement disponibles.", "guide": "/posts/apres-cyberattaque-06-prestataire-commun/"},
+      {"sigle": "DMS", "nom": "Dealer management system", "def": "Système de gestion utilisé dans une concession automobile pour relier notamment ventes, atelier, stocks, relation client et comptabilité. Les périmètres dépendent du logiciel et de ses connexions. Les déclarations d’Asbury et d’AutoNation après l’incident CDK de 2024 montrent que le retour du système principal et celui des applications complémentaires peuvent intervenir à des dates différentes.", "guide": "/posts/apres-cyberattaque-06-prestataire-commun/"},
       {"sigle": "MVO", "nom": "Niveau d’activité minimum viable", "def": "Niveau minimal de fonctionnement qui permet, selon le NCSC, de poursuivre les opérations en sécurité, de satisfaire les obligations légales et réglementaires et de préserver la confiance des clients, partenaires et salariés. Après une cyberattaque, cette priorité aide à choisir les fonctions et dépendances à rétablir. Elle constitue une étape de reprise ; son périmètre dépend de l’organisation.", "guide": "/posts/apres-cyberattaque-05-economie-remise-en-route/"},
       {"sigle": "Retainer", "nom": "Contrat de disponibilité pour la réponse à incident", "def": "Accord préparé avant une crise pour accéder à des spécialistes selon des conditions convenues. Dans l’offre publique NCC étudiée, les frais annuels de disponibilité sont distincts du temps d’intervention prépayé ; le travail supplémentaire suit les conditions contractuelles. Les engagements précisent l’accès et la réponse initiale. Le retour d’un service utilisable dépend encore du travail à accomplir.", "guide": "/posts/apres-cyberattaque-05-economie-remise-en-route/"},
       { sigle: 'CRA', nom: 'Cyber Resilience Act', def: 'Règlement (UE) 2024/2847 sur la cybersécurité des produits comportant des éléments numériques. Depuis le 11 septembre 2026, les fabricants dans son champ signalent les vulnérabilités activement exploitées et les incidents graves touchant la sécurité de leurs produits. Les principales exigences de sécurité et le régime spécifique des intendants de logiciels ouverts commencent le 11 décembre 2027.', guide: '/posts/cyber-resilience-act-circuit-alerte/' },
@@ -1089,6 +1091,60 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "dependance-commune": {
+  "intuition": "Plusieurs contrats peuvent aboutir à la même infrastructure.",
+  "articles": [
+    {
+      "label": "Un prestataire commun, plusieurs entreprises touchées",
+      "href": "/posts/apres-cyberattaque-06-prestataire-commun/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "FSB, third-party risk toolkit",
+      "href": "https://www.fsb.org/wp-content/uploads/P041223-1.pdf",
+      "detail": "Sections 3.5, 3.8 et 4.3 : concentration, dépendances indirectes et substituabilité.",
+      "kind": "source"
+    },
+    {
+      "label": "NCSC, Mapping your supply chain",
+      "href": "https://www.ncsc.gov.uk/guidance/mapping-your-supply-chain",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "disponibilite-de-service",
+    "reversibilite",
+    "portabilite"
+  ]
+},
+  "dms": {
+  "intuition": "Une vente mobilise le véhicule, son dossier et la comptabilité.",
+  "articles": [
+    {
+      "label": "Un prestataire commun, plusieurs entreprises touchées",
+      "href": "/posts/apres-cyberattaque-06-prestataire-commun/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Asbury, Q2 2024 Form 10-Q",
+      "href": "https://www.sec.gov/Archives/edgar/data/1144980/000114498024000130/abg-20240630.htm",
+      "kind": "source"
+    },
+    {
+      "label": "AutoNation, Q2 2024 Form 10-Q",
+      "href": "https://www.sec.gov/Archives/edgar/data/350698/000035069824000098/an-20240630.htm",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "dependance-commune",
+    "disponibilite-de-service"
+  ]
+},
   "mvo": {
   "intuition": "Reprendre les fonctions prioritaires demande de vérifier leurs dépendances.",
   "articles": [

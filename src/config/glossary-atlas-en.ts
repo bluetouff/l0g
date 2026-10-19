@@ -210,6 +210,80 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+  "slug": "dependance-commune",
+  "sigle": "Shared dependency",
+  "nom": "Several services relying on the same resource",
+  "def": "A situation in which several functions or organisations rely on the same provider, service or technical infrastructure. Separate supplier contracts can also converge on shared infrastructure through subcontracting. Its interruption may affect multiple customers at once. The risk depends on the importance of the supported functions and the recovery or substitution options available.",
+  "guide": "/en/analysis/after-cyberattack-06-shared-provider/",
+  "robots": "noindex,follow",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "Several contracts can lead to the same infrastructure.",
+    "articles": [
+      {
+        "label": "A shared provider draws its clients into the same disruption",
+        "href": "/en/analysis/after-cyberattack-06-shared-provider/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "FSB, third-party risk toolkit",
+        "href": "https://www.fsb.org/wp-content/uploads/P041223-1.pdf",
+        "detail": "Sections 3.5, 3.8 and 4.3: concentration, indirect dependencies and substitutability.",
+        "kind": "source"
+      },
+      {
+        "label": "NCSC, Mapping your supply chain",
+        "href": "https://www.ncsc.gov.uk/guidance/mapping-your-supply-chain",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "disponibilite-de-service",
+      "reversibilite",
+      "portabilite"
+    ]
+  }
+},
+  {
+  "slug": "dms",
+  "sigle": "DMS",
+  "nom": "Dealer management system",
+  "def": "A system used by an automotive dealership to connect functions including sales, service, inventory, customer relationships and accounting. Its scope depends on the software and its integrations. Asbury and AutoNation’s disclosures following the 2024 CDK incident show that the core system and its ancillary applications can return at different times.",
+  "guide": "/en/analysis/after-cyberattack-06-shared-provider/",
+  "robots": "noindex,follow",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "A sale connects a vehicle, its record and the accounts.",
+    "articles": [
+      {
+        "label": "A shared provider draws its clients into the same disruption",
+        "href": "/en/analysis/after-cyberattack-06-shared-provider/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Asbury, Q2 2024 Form 10-Q",
+        "href": "https://www.sec.gov/Archives/edgar/data/1144980/000114498024000130/abg-20240630.htm",
+        "kind": "source"
+      },
+      {
+        "label": "AutoNation, Q2 2024 Form 10-Q",
+        "href": "https://www.sec.gov/Archives/edgar/data/350698/000035069824000098/an-20240630.htm",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "dependance-commune",
+      "disponibilite-de-service"
+    ]
+  }
+},
+  {
   "slug": "mvo",
   "sigle": "MVO",
   "nom": "Minimum viable operations",
