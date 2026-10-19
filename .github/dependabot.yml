@@ -10,6 +10,8 @@ updates:
     open-pull-requests-limit: 5
     groups:
       site-non-major:
+        exclude-patterns:
+          - satori
         update-types:
           - minor
           - patch
