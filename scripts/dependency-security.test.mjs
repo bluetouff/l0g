@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import test from 'node:test';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 import { optimize } from 'svgo';
 import { parse as parseDevalue, stringify as stringifyDevalue } from 'devalue';
 
@@ -85,19 +85,22 @@ test('TOML rejects truncated structures promptly and preserves ordinary document
 });
 
 test('YAML counts empty merge sources toward its configured budget', () => {
+  const schema = yaml.CORE_SCHEMA.withTags(yaml.mergeTag);
   const emptySources = Array(10).fill('{}').join(', ');
   for (const merge of ['<<: *base', '<<: [*base, *base]']) {
     const source = merge.includes('[*base')
       ? `base: &base {}\nout:\n  ${merge}\n`
       : `base: &base [${emptySources}]\nout:\n  ${merge}\n`;
-    assert.throws(() => yaml.load(source, { maxTotalMergeKeys: 1 }), /maxTotalMergeKeys/);
+    assert.throws(() => yaml.load(source, { schema, maxTotalMergeKeys: 1 }), /maxTotalMergeKeys/);
   }
 });
 
 test('ordinary YAML frontmatter and small legitimate merges still work', () => {
   const source = 'title: OpenAI\npubDate: "2026-09-09T10:16:02+02:00"\ntags: [credit, AI]\n';
   assert.deepEqual(yaml.load(source), { title: 'OpenAI', pubDate: '2026-09-09T10:16:02+02:00', tags: ['credit', 'AI'] });
-  assert.deepEqual(yaml.load('base: &base {unit: USD}\npoint: {<<: *base, value: 4.2}\n', { maxTotalMergeKeys: 8 }).point, { unit: 'USD', value: 4.2 });
+  const input = 'base: &base {unit: USD}\npoint: {<<: *base, value: 4.2}\n';
+  assert.deepEqual(yaml.load(input).point, { '<<': { unit: 'USD' }, value: 4.2 });
+  assert.deepEqual(yaml.load(input, { schema: yaml.CORE_SCHEMA.withTags(yaml.mergeTag), maxTotalMergeKeys: 8 }).point, { unit: 'USD', value: 4.2 });
 });
 
 test('SVGO removes active HTML attributes while preserving foreignObject text', () => {
