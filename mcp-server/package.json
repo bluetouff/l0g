@@ -14,7 +14,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.1",
     "node-html-parser": "^9.0.4",
-    "zod": "^3.25.0"
+    "zod": "^4.6.7"
   },
   "overrides": {
     "@hono/node-server": "2.0.12",
