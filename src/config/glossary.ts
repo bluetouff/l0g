@@ -30,6 +30,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    {"sigle": "Garantie de prêt", "nom": "Engagement d’un garant envers les prêteurs", "def": "Engagement d’un garant envers les prêteurs, couvrant le risque de défaut dans le périmètre fixé par le contrat. Les banques avancent les fonds lors du tirage ; l’emprunteur reste tenu de rembourser. Le paiement du garant dépend des conditions d’appel. Une garantie publique crée un engagement éventuel, distinct d’un décaissement de l’État.", "guide": "/posts/apres-cyberattaque-07-etat-financement-crise/"},
+    {"sigle": "Responsabilité maximale", "nom": "Mesure d’exposition UKEF, intérêts compris", "def": "Dans le glossaire d’UKEF, montant maximal des sommes payables au titre d’un produit, intérêts compris. UKEF utilise cette mesure pour l’exposition avant émission de la couverture. Elle se distingue du principal du prêt, du montant tiré et d’une perte réalisée. Rattacher une ligne publiée à une facilité précise exige d’examiner le contrat et les références de l’opération.", "guide": "/posts/apres-cyberattaque-07-etat-financement-crise/"},
     { sigle: 'IRRBB', nom: 'Risque de taux du portefeuille bancaire', def: 'Risque que des variations défavorables des taux affectent le capital ou les revenus du portefeuille bancaire. Sa mesure rapproche la valeur économique des positions et les revenus attendus, avec leurs horizons et hypothèses propres.', guide: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/' },
     { sigle: 'EVE', nom: 'Valeur économique des fonds propres', def: 'Valeur actualisée nette des flux des actifs, passifs et positions hors bilan dans une mesure de risque de taux. Sa variation sous scénario porte sur la vie résiduelle des positions ; elle se distingue du résultat comptable et du cours de l’action.', guide: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/' },
     { sigle: 'NII', nom: 'Revenu net d’intérêts', def: 'Produits d’intérêts diminués des charges d’intérêts pendant une période, en tenant compte des couvertures. Une sensibilité NII dépend de l’horizon et des hypothèses du scénario. Elle ne désigne ni le bénéfice net total ni la valeur économique des fonds propres.', guide: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/' },
@@ -848,7 +850,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-18';
+export const glossaryUpdatedIso = '2026-10-19';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1091,6 +1093,62 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "garantie-de-pret": {
+  "intuition": "Les prêteurs avancent l’argent, l’emprunteur doit le rembourser et le garant intervient selon les conditions du contrat.",
+  "articles": [
+    {
+      "label": "Le financement public après la cyberattaque de JLR",
+      "href": "/posts/apres-cyberattaque-07-etat-financement-crise/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "UKEF, Export Development Guarantee",
+      "href": "https://www.gov.uk/guidance/export-development-guarantee",
+      "detail": "Présentation et rubrique Cost : crédit commercial, partage du risque et prime.",
+      "kind": "source"
+    },
+    {
+      "label": "Peter Kyle, lettre du 13 octobre 2025",
+      "href": "https://committees.parliament.uk/publications/49980/documents/269099/default/",
+      "detail": "Page 1, paragraphes 1a–b ; page 3 : prêt, garantie et engagement public distincts.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "pret-relais",
+    "responsabilite-maximale"
+  ]
+},
+  "responsabilite-maximale": {
+  "intuition": "Le plafond publié peut inclure des intérêts. Le contrat permet de relier ce périmètre à une facilité précise.",
+  "articles": [
+    {
+      "label": "Le financement public après la cyberattaque de JLR",
+      "href": "/posts/apres-cyberattaque-07-etat-financement-crise/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "UKEF, glossaire 2025/26, Maximum liability",
+      "href": "https://www.gov.uk/government/publications/uk-export-finance-annual-report-and-accounts-2025-to-2026/glossary-of-terms",
+      "detail": "Entrées Maximum liability, Claims et Amount at risk : définition et périmètres distincts.",
+      "kind": "source"
+    },
+    {
+      "label": "UKEF, Business supported 2025 to 2026",
+      "href": "https://www.gov.uk/government/publications/uk-export-finance-business-supported-2025-to-2026/business-supported-2025-to-2026",
+      "detail": "Tableau 1, colonne Maximum liability : les lignes JLR ne donnent ni identifiant contractuel ni solde tiré.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "garantie-de-pret",
+    "pret-relais"
+  ]
+},
   "dependance-commune": {
   "intuition": "Plusieurs contrats peuvent aboutir à la même infrastructure.",
   "articles": [

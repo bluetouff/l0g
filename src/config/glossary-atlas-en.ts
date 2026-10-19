@@ -210,6 +210,82 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+  "slug": "garantie-de-pret",
+  "sigle": "Loan guarantee",
+  "nom": "A guarantor’s commitment to lenders",
+  "def": "A guarantor’s commitment to lenders covering a loan’s default risk within the contract’s scope. Banks advance funds when the borrower draws the loan, and the borrower remains liable for repayment. The guarantor’s payment depends on the claim conditions. A public guarantee creates a contingent commitment, with any cash payment subject to its terms.",
+  "guide": "/en/analysis/after-cyberattack-07-public-crisis-financing/",
+  "sectionTitle": "Banking & balance-sheet management",
+  "accent": "var(--color-topic-blue)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "Lenders advance the money, the borrower owes repayment and the guarantor steps in under the contract’s conditions.",
+    "articles": [
+      {
+        "label": "Public financing after the JLR cyberattack",
+        "href": "/en/analysis/after-cyberattack-07-public-crisis-financing/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "UKEF, Export Development Guarantee",
+        "href": "https://www.gov.uk/guidance/export-development-guarantee",
+        "detail": "Overview and Cost: commercial credit, risk sharing and premium.",
+        "kind": "source"
+      },
+      {
+        "label": "Peter Kyle, letter of 13 October 2025",
+        "href": "https://committees.parliament.uk/publications/49980/documents/269099/default/",
+        "detail": "Page 1, paragraphs 1a–b; page 3: loan, guarantee and public commitment are distinct.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "pret-relais",
+      "responsabilite-maximale"
+    ]
+  }
+},
+  {
+  "slug": "responsabilite-maximale",
+  "sigle": "Maximum liability",
+  "nom": "UKEF exposure measure including interest",
+  "def": "In UKEF’s glossary, the maximum amount of claims payable under a particular product, including interest. UKEF uses it to measure exposure before cover is issued. It differs from loan principal, the amount drawn and a realised loss. Linking a published entry to a particular facility requires checking the contract and transaction references.",
+  "guide": "/en/analysis/after-cyberattack-07-public-crisis-financing/",
+  "sectionTitle": "Banking & balance-sheet management",
+  "accent": "var(--color-topic-blue)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "A published ceiling can include interest. The contract is needed to connect that scope to a particular facility.",
+    "articles": [
+      {
+        "label": "Public financing after the JLR cyberattack",
+        "href": "/en/analysis/after-cyberattack-07-public-crisis-financing/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "UKEF, 2025/26 glossary, Maximum liability",
+        "href": "https://www.gov.uk/government/publications/uk-export-finance-annual-report-and-accounts-2025-to-2026/glossary-of-terms",
+        "detail": "Maximum liability, Claims and Amount at risk entries: definition and distinct scopes.",
+        "kind": "source"
+      },
+      {
+        "label": "UKEF, Business supported 2025 to 2026",
+        "href": "https://www.gov.uk/government/publications/uk-export-finance-business-supported-2025-to-2026/business-supported-2025-to-2026",
+        "detail": "Table 1, Maximum liability column: the JLR entries provide neither a contract identifier nor a drawn balance.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "garantie-de-pret",
+      "pret-relais"
+    ]
+  }
+},
+  {
   "slug": "dependance-commune",
   "sigle": "Shared dependency",
   "nom": "Several services relying on the same resource",
