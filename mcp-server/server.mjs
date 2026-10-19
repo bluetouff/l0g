@@ -24,7 +24,8 @@ import { fileURLToPath } from 'node:url';
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { ErrorCode, McpError } from '@modelcontextprotocol/sdk/types.js';
-import { z } from 'zod';
+// Keep the published MCP schemas and validation semantics on the versioned v3 API.
+import { z } from 'zod/v3';
 import { parse as parseHtml } from 'node-html-parser';
 import { agentPrompts, renderAgentPrompt } from '../src/lib/agent-prompts.mjs';
 import { MCP_PROTOCOL_VERSION, MCP_VERSION } from '../src/config/agent-contract.mjs';

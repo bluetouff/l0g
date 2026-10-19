@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v3';
 import {
   SIGNAL_FRESHNESS_COVERAGE_STATUSES,
   SIGNAL_FRESHNESS_KEYS,
