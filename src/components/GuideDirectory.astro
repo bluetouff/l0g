@@ -1,0 +1,179 @@
+---
+import GuideCategoryIcon from './GuideCategoryIcon.astro';
+interface Guide {
+  id: string;
+  title: string;
+  description: string;
+  category?: string;
+  date: Date;
+  minutes: number;
+}
+interface Props { guides: Guide[]; lang: 'fr' | 'en' }
+const { guides, lang } = Astro.props;
+const en = lang === 'en';
+const categories = [
+  { key: 'macro', label: en ? 'Macroeconomics' : 'Macroéconomie', hint: en ? 'Inflation · jobs · public finances' : 'Inflation · emploi · comptes publics', accent: 'var(--color-signal)' },
+  { key: 'fed', label: en ? 'Banks & liquidity' : 'Banques & liquidité', hint: en ? 'Central banks · money · debt' : 'Banques centrales · monnaie · dette', accent: 'var(--color-amber)' },
+  { key: 'marches', label: en ? 'Markets & companies' : 'Marchés & entreprises', hint: en ? 'Bonds · commodities · SEC filings' : 'Obligations · matières premières · SEC', accent: 'var(--color-topic-blue)' },
+  { key: 'crypto', label: en ? 'Crypto & regulation' : 'Crypto & régulation', hint: en ? 'Stablecoins · blockchain · regulation' : 'Stablecoins · blockchain · régulation', accent: 'var(--color-accent)' },
+];
+const groups = categories.map(c => ({ ...c, guides: guides.filter(g => g.category === c.key) })).filter(c => c.guides.length);
+const other = guides.filter(g => !categories.some(c => c.key === g.category));
+if (other.length) groups.push({ key: 'other', label: en ? 'Other guides' : 'Autres guides', hint: '', accent: 'var(--color-signal)', guides: other });
+const base = en ? '/en/guides/' : '/guides/';
+const fmt = (date: Date) => date.toLocaleDateString(en ? 'en-GB' : 'fr-FR', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Europe/Paris' });
+---
+
+<div class="directory" id="guides-top" data-guide-directory data-lang={lang}>
+  <header class="directory-header">
+    <div>
+      <p class="eyebrow">l0g / {en ? 'Reference library' : 'Bibliothèque'}</p>
+      <h1>Guides<span class="title-dot" aria-hidden="true">.</span></h1>
+      <p class="intro">{en ? `${guides.length} guides to economics and finance.` : `${guides.length} guides pour lire l’économie et la finance.`}</p>
+    </div>
+    <a class="language-link" href={en ? '/guides/' : '/en/guides/'} lang={en ? 'fr' : 'en'}>
+      {en ? 'Lire en français' : 'Read in English'} <span aria-hidden="true">↗</span>
+    </a>
+  </header>
+
+  <nav class="category-nav" aria-label={en ? 'Guide categories' : 'Catégories des guides'}>
+    {groups.map(cat => <a class="category-tile" href={`#guides-${cat.key}`} style={`--category-accent:${cat.accent}`}>
+      <span class="tile-top"><span class="tile-icon"><GuideCategoryIcon category={cat.key} /></span><span class="tile-count"><span data-tile-count>{String(cat.guides.length).padStart(2, '0')}</span> <span class="sr-only">guides</span></span></span>
+      <span class="tile-title">{cat.label}</span>
+      <span class="tile-hint">{cat.hint}</span>
+      <span class="tile-arrow" aria-hidden="true">↘</span>
+    </a>)}
+  </nav>
+
+  <form class="search-bar" role="search" hidden data-guide-search>
+    <label for="guide-search" class="sr-only">{en ? 'Search guides' : 'Rechercher un guide'}</label>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg>
+    <input id="guide-search" type="search" placeholder={en ? 'Search a topic, CPI, private credit…' : 'Une notion, CPI, crédit privé…'} autocomplete="off" aria-controls="guide-results" />
+    <button type="button" data-clear hidden>{en ? 'Clear' : 'Effacer'}</button>
+    <span class="result-count" role="status" aria-live="polite" data-count>{guides.length} guides</span>
+  </form>
+
+  <div id="guide-results">
+    {groups.map(cat => <section class="guide-group" id={`guides-${cat.key}`} aria-labelledby={`heading-${cat.key}`} data-guide-group style={`--category-accent:${cat.accent}`}>
+      <header class="group-header">
+        <span class="group-icon"><GuideCategoryIcon category={cat.key} /></span>
+        <h2 id={`heading-${cat.key}`}>{cat.label}</h2>
+        <span class="group-count" data-group-count>{cat.guides.length}</span>
+        <a class="back-top" href="#guides-top" aria-label={en ? 'Back to categories' : 'Revenir aux catégories'}>↑</a>
+      </header>
+      <ul class="guide-grid">
+        {cat.guides.map(g => <li data-guide-item data-search={`${g.title} ${g.description}`}>
+          <a class="guide-card" href={`${base}${g.id}/`}>
+            <h3>{g.title}</h3>
+            <span class="guide-meta"><time datetime={g.date.toISOString()}>{fmt(g.date)}</time><span aria-hidden="true">·</span><span>{g.minutes} min</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+          </a>
+        </li>)}
+      </ul>
+    </section>)}
+    <p class="empty-state" data-empty hidden>{en ? 'No matching guide. Try another term.' : 'Aucun guide trouvé. Essayez un autre terme.'}</p>
+    {guides.length === 0 && <p class="empty-state">{en ? 'No guides published yet.' : 'Aucun guide publié pour le moment.'}</p>}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-guide-directory]').forEach(directory => {
+    const form = directory.querySelector<HTMLFormElement>('[data-guide-search]');
+    const input = form?.querySelector<HTMLInputElement>('input');
+    const clear = form?.querySelector<HTMLButtonElement>('[data-clear]');
+    const count = directory.querySelector<HTMLElement>('[data-count]');
+    const empty = directory.querySelector<HTMLElement>('[data-empty]');
+    if (!form || !input || !clear || !count || !empty) return;
+    const normalize = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().replace(/[’']/g, ' ');
+    const items = [...directory.querySelectorAll<HTMLElement>('[data-guide-item]')].map(node => ({ node, text: normalize(node.dataset.search ?? '') }));
+    const groups = [...directory.querySelectorAll<HTMLElement>('[data-guide-group]')];
+    const update = () => {
+      const words = normalize(input.value).trim().split(/\s+/).filter(Boolean);
+      let visible = 0;
+      items.forEach(({ node, text }) => { node.hidden = !words.every(word => text.includes(word)); if (!node.hidden) visible++; });
+      groups.forEach(group => {
+        const n = group.querySelectorAll('[data-guide-item]:not([hidden])').length;
+        group.hidden = n === 0;
+        const badge = group.querySelector('[data-group-count]');
+        if (badge) badge.textContent = String(n);
+        const link = directory.querySelector<HTMLAnchorElement>(`a[href="#${group.id}"]`);
+        if (link) {
+          link.setAttribute('aria-disabled', String(n === 0));
+          const tileCount = link.querySelector('[data-tile-count]');
+          if (tileCount) tileCount.textContent = String(n).padStart(2, '0');
+        }
+      });
+      count.textContent = `${visible} ${visible === 1 ? 'guide' : 'guides'}`;
+      empty.hidden = visible !== 0;
+      clear.hidden = input.value.length === 0;
+    };
+    directory.querySelectorAll<HTMLAnchorElement>('.category-tile').forEach(link => {
+      link.addEventListener('click', event => { if (link.getAttribute('aria-disabled') === 'true') event.preventDefault(); });
+    });
+    form.hidden = false;
+    form.addEventListener('submit', event => event.preventDefault());
+    input.addEventListener('input', update);
+    clear.addEventListener('click', () => { input.value = ''; update(); input.focus(); });
+  });
+</script>
+
+<style>
+  [hidden] { display: none !important; }
+  .directory { padding-bottom: 2rem; }
+  .directory-header { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: .5rem 0 1.8rem; }
+  .eyebrow { color: var(--color-muted); font: .65rem var(--font-mono); text-transform: uppercase; letter-spacing: .12em; }
+  h1 { margin: .55rem 0 .5rem; color: var(--color-bright); font: 700 clamp(2rem, 4vw, 2.6rem)/1.1 var(--font-read); letter-spacing: -.045em; }
+  .title-dot { color: var(--color-signal); }
+  .intro { color: var(--color-muted); font-size: .95rem; }
+  .language-link { flex-shrink: 0; padding: .7rem .9rem; border: 1px solid var(--color-line); border-radius: 8px; font-size: .8rem; color: var(--color-paper); }
+  .language-link span { margin-left: .6rem; color: var(--color-signal); }
+  .language-link:hover { border-color: var(--color-signal); }
+  .category-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; }
+  .category-tile { position: relative; display: flex; flex-direction: column; padding: 1.15rem; border: 1px solid var(--color-line); border-top: 2px solid var(--category-accent); border-radius: 12px; background: var(--color-surface); transition: border-color 160ms, background 160ms; }
+  .category-tile[aria-disabled="true"] { opacity: .5; cursor: default; }
+  .category-tile:hover { border-color: var(--category-accent); background: var(--color-surface-2); }
+  .tile-top { display: flex; justify-content: space-between; align-items: start; gap: .5rem; margin-bottom: 1.1rem; color: var(--category-accent); }
+  .tile-icon { width: 3rem; flex: none; }
+  .tile-count { font: .7rem var(--font-mono); }
+  .tile-title { color: var(--color-bright); font-size: 1rem; font-weight: 650; line-height: 1.3; letter-spacing: -.02em; }
+  .tile-hint { margin-top: .55rem; padding-right: .8rem; color: var(--color-muted); font-size: .73rem; line-height: 1.5; }
+  .tile-arrow { position: absolute; right: .8rem; bottom: .75rem; color: var(--category-accent); }
+  .search-bar { display: flex; gap: .8rem; align-items: center; margin: 1.5rem 0 .3rem; padding: .7rem 1rem; border: 1px solid var(--color-line-strong); border-radius: 10px; background: var(--color-ink); }
+  .search-bar:focus-within { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  .search-bar svg { width: 1.15rem; height: auto; flex: none; color: var(--color-muted); }
+  input { min-width: 0; width: 100%; padding: .4rem 0; font-size: .9rem; background: transparent; color: var(--color-bright); border: 0; outline: none; }
+  input::placeholder { color: var(--color-muted); opacity: 1; }
+  .search-bar button { min-height: 2.75rem; color: var(--color-signal); font-size: .75rem; cursor: pointer; }
+  .result-count { flex-shrink: 0; color: var(--color-muted); font: .7rem var(--font-mono); }
+  .guide-group { padding-top: 2rem; scroll-margin-top: 1.5rem; }
+  .group-header { display: flex; align-items: center; gap: .65rem; padding-bottom: .85rem; }
+  .group-icon { width: 1.75rem; color: var(--category-accent); flex: none; }
+  h2 { color: var(--color-bright); font-size: 1.15rem; font-weight: 650; line-height: 1.3; letter-spacing: -.02em; }
+  .group-count { color: var(--color-muted); font: .7rem var(--font-mono); }
+  .back-top { display: grid; place-items: center; margin-left: auto; width: 2.75rem; height: 2.75rem; color: var(--color-muted); }
+  .back-top:hover { color: var(--category-accent); }
+  .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; list-style: none; padding: 0; margin: 0; }
+  .guide-grid li { min-width: 0; }
+  .guide-card { display: flex; flex-direction: column; justify-content: space-between; gap: 1.1rem; height: 100%; padding: 1.2rem; border: 1px solid var(--color-line); border-radius: 10px; background: var(--color-surface); transition: background 160ms, border-color 160ms; }
+  .guide-card:hover { border-color: var(--category-accent); background: var(--color-surface-2); }
+  h3 { color: var(--color-paper); font-size: 1rem; font-weight: 550; line-height: 1.45; overflow-wrap: anywhere; }
+  .guide-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; color: var(--color-muted); font: .64rem/1.5 var(--font-mono); }
+  .card-arrow { margin-left: auto; font-size: 1rem; color: var(--category-accent); }
+  .empty-state { padding: 3rem 0; text-align: center; color: var(--color-muted); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media (max-width: 800px) { .category-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) {
+    .directory-header { flex-wrap: wrap; gap: 1rem; }
+    .language-link { padding: .65rem .8rem; }
+    .category-nav { gap: .55rem; }
+    .category-tile { padding: .9rem; }
+    .tile-title { font-size: .9rem; }
+    .tile-hint { font-size: .7rem; }
+    .tile-top { margin-bottom: .7rem; }
+    .tile-icon { width: 2.5rem; }
+    .guide-grid { grid-template-columns: minmax(0, 1fr); }
+    .guide-card { padding: 1rem; }
+    .result-count { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .search-bar { padding: .5rem .75rem; gap: .5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .category-tile, .guide-card { transition: none; } }
+</style>
