@@ -37,7 +37,8 @@ export const fonts = [
 export const h = (type, style, ...children) => ({
   type,
   props: {
-    style,
+    // Keep padding and borders inside the declared card dimensions in Satori.
+    style: { boxSizing: "border-box", ...style },
     children: children.length === 0 ? undefined : children.length === 1 ? children[0] : children,
   },
 });
