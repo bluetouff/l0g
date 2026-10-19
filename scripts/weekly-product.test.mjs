@@ -49,7 +49,7 @@ test('le contrat hebdomadaire possède une édition à chaque échéance due', a
   const edition = latestWeeklyEdition();
   assert.equal(
     weeklySitemapLastmods().get(`https://l0g.fr/hebdo/${edition.slug}/`),
-    new Date(edition.publishedAt).toISOString(),
+    new Date(edition.editorial?.reviewedAt ?? edition.publishedAt).toISOString(),
   );
 
   const [weeklyPage, workflow, privacy] = await Promise.all([
@@ -147,6 +147,64 @@ test('le générateur choisit le dernier focus structuré sans inventer de conte
   assert.ok(edition.threadX.every((post) => [...post].length <= 280));
 });
 
+test('les prochaines éditions proposent plusieurs lectures complètes et des sujets distincts sans ajouter de faits', () => {
+  const makePost = (id, day, tags, complete = true) => ({
+    id, title: `Analyse ${id}`, description: 'Description déjà publiée dans le corpus.',
+    pubDate: `2026-08-${day}T10:00:00+02:00`, tags,
+    ...(complete ? { quickTake: {
+      fact: `Fait documenté dans l’analyse ${id}, repris sans reformulation automatique.`,
+      importance: `Mécanisme documenté dans l’analyse ${id}, conservé avec son périmètre.`,
+      uncertainty: `Incertitude documentée dans l’analyse ${id}, sans nouvel élément déduit.`,
+    } } : {}),
+  });
+  const posts = [makePost('recent-credit', '15', ['private-credit']), makePost('second-credit', '14', ['private-credit']), makePost('macro', '13', ['macro']), makePost('crypto', '12', ['crypto']), makePost('energie', '11', ['énergie']), makePost('sans-fiche', '15', ['macro'], false), makePost('future', '17', ['macro']), makePost('trop-ancien', '01', ['macro'])];
+  const edition = createAutomatedWeeklyEdition({ issue: 3, editionDate: '2026-08-16', generatedAt: '2026-08-16T06:35:00Z', posts });
+  assert.equal(edition.briefs.length, 4);
+  assert.equal(edition.briefs[0].href, '/posts/recent-credit/');
+  assert.ok(edition.briefs.some((item) => item.href === '/posts/macro/'));
+  assert.ok(edition.briefs.some((item) => item.href === '/posts/crypto/'));
+  assert.ok(edition.briefs.every((item) => !['/posts/future/', '/posts/trop-ancien/', '/posts/sans-fiche/'].includes(item.href)));
+  for (const item of edition.briefs) {
+    const post = posts.find((post) => item.href === `/posts/${post.id}/`);
+    assert.equal(item.fact, post.quickTake.fact);
+    assert.equal(item.importance, post.quickTake.importance);
+    assert.equal(item.uncertainty, post.quickTake.uncertainty);
+  }
+  assert.throws(() => createAutomatedWeeklyEdition({ issue: 3, editionDate: '2026-08-16', generatedAt: '2026-08-16T06:35:00Z', posts: [{ ...posts[0], tags: 'macro' }] }), /Sujets invalides/);
+  assert.throws(() => createAutomatedWeeklyEdition({ issue: 3, editionDate: '2026-08-16', generatedAt: '2026-08-16T06:35:00Z', posts: [{ ...posts[0], quickTake: { fact: posts[0].quickTake.fact, importance: posts[0].quickTake.importance } }] }), /Fiche structurée invalide/);
+});
+
+test('la revue éditoriale conserve la fenêtre, les sources et les dates des éditions figées', async () => {
+  const frozen = JSON.parse(await source('src/config/weekly-editions.generated.json'));
+  const reviewed = weeklyEditions.filter((edition) => edition.editorial);
+  assert.ok(reviewed.length > 0);
+  for (const edition of reviewed) {
+    const original = frozen.find((item) => item.slug === edition.slug);
+    assert.equal(edition.publishedAt, original.publishedAt);
+    assert.deepEqual(edition.automation, original.automation);
+    assert.deepEqual(edition.includedAnalyses, original.includedAnalyses);
+    assert.ok(Date.parse(edition.editorial.reviewedAt) >= Date.parse(edition.publishedAt));
+    assert.ok(edition.editorial.readings.length >= 3 && edition.editorial.readings.length <= 4);
+    assert.equal(new Set(edition.editorial.readings.map((item) => item.href)).size, edition.editorial.readings.length);
+    for (const reading of edition.editorial.readings) {
+      assert.ok(edition.includedAnalyses.some((item) => item.href === reading.href));
+      assert.match(reading.href, /^\/posts\/[a-z0-9-]+\/$/);
+      assert.ok(reading.uncertainty.length > 40);
+      assert.ok(reading.source);
+      const url = new URL(reading.source.href);
+      assert.equal(url.protocol, 'https:');
+      assert.equal(url.username + url.password, '');
+      const slug = reading.href.split('/')[2];
+      const body = await source(`src/content/posts/${slug}.mdx`).catch(() => source(`src/content/posts/${slug}.md`));
+      assert.ok(body.includes(reading.source.href), `${slug}: source primaire absente du dossier`);
+    }
+    const thread = buildWeeklyThreadText(edition).trim().split('\n\n');
+    assert.ok(thread.every((post) => [...post].length <= 280));
+    assert.match(buildWeeklyLinkedInText(edition), new RegExp(edition.editorial.title));
+    assert.match(buildWeeklyCitationText(edition), /revue du/);
+  }
+});
+
 test('le SVG, le CSV et les textes sont générés depuis la même édition', () => {
   const edition = latestWeeklyEdition();
   const dimensions = weeklyChartDimensions(edition);
@@ -203,7 +261,11 @@ test('les CTA, les archives et les formats journalistes couvrent toutes les surf
     source('src/pages/hebdo/rss.xml.ts'),
   ]);
 
-  for (const page of [home, article, now]) assert.match(page, /WeeklyCta/);
+  for (const page of [article, now]) assert.match(page, /WeeklyCta/);
+  const homeSidebar = await source('src/components/HomeSidebar.astro');
+  assert.match(home, /<HomeSidebar slot="sidebar"/);
+  assert.doesNotMatch(home, /WeeklyCta/);
+  assert.match(homeSidebar, /<WeeklyCta variant="home"/);
   for (const extension of ['graphique.svg', 'donnees.csv', 'citation.txt', 'linkedin.txt', 'thread-x.txt']) {
     assert.match(press, new RegExp(extension.replace('.', '\\.')));
   }
@@ -255,6 +317,7 @@ test('les composants et éditions de l’Hebdo respectent l’interdiction du ti
     'src/components/WeeklyCta.astro',
     'src/components/WeeklyIssue.astro',
     'src/config/weekly-editions.ts',
+    'src/config/weekly-editorial.ts',
     'src/config/weekly-editions.generated.json',
     'src/lib/weekly-generation.ts',
     'src/lib/weekly-package.ts',

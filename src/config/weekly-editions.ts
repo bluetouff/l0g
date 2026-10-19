@@ -1,4 +1,5 @@
 import generatedWeeklyEditions from './weekly-editions.generated.json' with { type: 'json' };
+import { weeklyEditorialReviews } from './weekly-editorial.ts';
 
 export const WEEKLY_SCHEDULE = {
   weekday: 'dimanche',
@@ -23,6 +24,27 @@ export type WeeklyAnalysisLink = {
   title: string;
   href: string;
   publishedAt: string;
+};
+
+export type WeeklyReading = {
+  title: string;
+  href: string;
+  topic: string;
+  fact: string;
+  importance: string;
+  uncertainty: string;
+  source?: { label: string; href: string };
+};
+
+export type WeeklyEditorial = {
+  reviewedAt: string;
+  title: string;
+  description: string;
+  opening: string[];
+  readings: WeeklyReading[];
+  watchlist: Array<{ title: string; detail: string; href: string }>;
+  takeaway: string;
+  cover: { src: string; alt: string };
 };
 
 export type WeeklyEdition = {
@@ -62,6 +84,8 @@ export type WeeklyEdition = {
   sources: Array<{ label: string; href: string; role: string }>;
   sourcesEyebrow?: string;
   includedAnalyses?: WeeklyAnalysisLink[];
+  briefs?: WeeklyReading[];
+  editorial?: WeeklyEditorial;
   automation?: {
     strategy: 'published-metadata-v1';
     generatedAt: string;
@@ -186,7 +210,20 @@ export const manualWeeklyEditions: WeeklyEdition[] = [
 export const weeklyEditions: WeeklyEdition[] = [
   ...manualWeeklyEditions,
   ...(generatedWeeklyEditions as WeeklyEdition[]),
-].sort((left, right) => left.publishedAt.localeCompare(right.publishedAt));
+].map((edition) => {
+  const editorial = weeklyEditorialReviews[edition.slug];
+  return editorial ? {
+    ...edition,
+    title: editorial.title,
+    description: editorial.description,
+    analysis: { title: editorial.readings[0].title, href: editorial.readings[0].href, update: editorial.readings[0].fact },
+    lead: editorial.opening[0],
+    mechanism: editorial.readings[0].importance,
+    test: editorial.watchlist[0].detail,
+    quote: editorial.takeaway,
+    editorial,
+  } : edition;
+}).sort((left, right) => left.publishedAt.localeCompare(right.publishedAt));
 
 export function latestWeeklyEdition(editions = weeklyEditions) {
   return [...editions].sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))[0];
@@ -200,6 +237,6 @@ export function weeklySitemapLastmods(site = 'https://l0g.fr') {
   const origin = site.replace(/\/$/, '');
   return new Map(weeklyEditions.map((edition) => [
     `${origin}/hebdo/${edition.slug}/`,
-    new Date(edition.publishedAt).toISOString(),
+    new Date(edition.editorial?.reviewedAt ?? edition.publishedAt).toISOString(),
   ]));
 }

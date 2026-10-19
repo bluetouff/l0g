@@ -1,4 +1,5 @@
 import type { WeeklyEdition } from '../config/weekly-editions.ts';
+import { buildWeeklyThread } from './weekly-generation.ts';
 
 function escapeXml(value: string) {
   return value
@@ -45,14 +46,36 @@ export function buildWeeklyCitationText(edition: WeeklyEdition) {
     year: 'numeric',
     timeZone: 'Europe/Paris',
   }).format(new Date(edition.publishedAt));
-  return `l0g.fr, « ${edition.title} », L'hebdo no ${edition.issue}, ${date}, https://l0g.fr/hebdo/${edition.slug}/, CC BY 4.0.`;
+  const review = edition.editorial ? `, revue du ${new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' }).format(new Date(edition.editorial.reviewedAt))}` : '';
+  return `l0g.fr, « ${edition.title} », L'hebdo no ${edition.issue}, ${date}${review}, https://l0g.fr/hebdo/${edition.slug}/, CC BY 4.0.`;
 }
 
 export function buildWeeklyLinkedInText(edition: WeeklyEdition) {
+  if (edition.editorial) return `${[
+    edition.title,
+    ...edition.editorial.opening,
+    ...edition.editorial.readings.map((reading) => `${reading.title}\n${reading.fact}\nLimite : ${reading.uncertainty}`),
+    `Lire l’édition : https://l0g.fr/hebdo/${edition.slug}/`,
+  ].join('\n\n')}\n`;
+  if (edition.briefs?.length) return `${[
+    edition.title,
+    ...edition.briefs.map((reading) => `${reading.title}\n${reading.fact}\n${reading.importance}\nLimite : ${reading.uncertainty}`),
+    `Lire l’édition : https://l0g.fr/hebdo/${edition.slug}/`,
+  ].join('\n\n')}\n`;
   return `${edition.linkedin}\n`;
 }
 
 export function buildWeeklyThreadText(edition: WeeklyEdition) {
+  if (edition.editorial) return `${buildWeeklyThread([
+    `${edition.title}. ${edition.editorial.takeaway}`,
+    ...edition.editorial.readings.flatMap((reading) => [`${reading.title}. ${reading.fact}`, `La limite : ${reading.uncertainty}`]),
+    `Analyses et sources : https://l0g.fr/hebdo/${edition.slug}/`,
+  ]).join('\n\n')}\n`;
+  if (edition.briefs?.length) return `${buildWeeklyThread([
+    edition.title,
+    ...edition.briefs.flatMap((reading) => [`${reading.title}. ${reading.fact}`, reading.importance, `La limite : ${reading.uncertainty}`]),
+    `Analyses et sources : https://l0g.fr/hebdo/${edition.slug}/`,
+  ]).join('\n\n')}\n`;
   return `${edition.threadX.join('\n\n')}\n`;
 }
 

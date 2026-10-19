@@ -1,169 +1,30 @@
 ---
 import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import PostCard from '../../components/PostCard.astro';
+import GuideDirectory from '../../components/GuideDirectory.astro';
 import { readingTime } from '../../lib/reading-time.ts';
 
-// Familles de guides : ordre d'affichage, libellé, dossier (label terminal) et couleur de charte.
-const CATEGORIES = [
-  { key: 'macro',   label: 'Données macro',                 dir: 'macro',   accent: 'var(--color-signal)' },
-  { key: 'fed',     label: 'Fed, dette & liquidité',        dir: 'fed',     accent: 'var(--color-amber)' },
-  { key: 'marches', label: 'Marchés, SEC & positionnement', dir: 'marches', accent: 'var(--color-muted)' },
-  { key: 'crypto',  label: 'Crypto & régulation',           dir: 'crypto',  accent: 'var(--color-accent)' },
-];
-
-const all = (await getCollection('guides', ({ data }) => !data.draft)).sort((a, b) => {
-  const da = (a.data.updatedDate ?? a.data.pubDate).getTime();
-  const db = (b.data.updatedDate ?? b.data.pubDate).getTime();
-  return db - da;
-});
-
-type GuideEntry = CollectionEntry<'guides'>;
-
-const toItem = (g: GuideEntry) => ({
-  id: g.id,
-  title: g.data.title,
-  description: g.data.description,
-  date: g.data.updatedDate ?? g.data.pubDate,
-  rt: readingTime(g.body),
-});
-
-const groups = CATEGORIES
-  .map((c) => ({ ...c, items: all.filter((g) => g.data.category === c.key).map(toItem) }))
-  .filter((g) => g.items.length > 0);
-
-// Filet de sécurité : tout guide sans famille connue est regroupé en fin de page.
-const known = new Set(CATEGORIES.map((c) => c.key));
-const others = all.filter((g) => !g.data.category || !known.has(g.data.category)).map(toItem);
-if (others.length) {
-  groups.push({ key: 'autres', label: 'Autres', dir: 'autres', accent: 'var(--color-muted)', items: others });
-}
-
-const total = all.length;
-const englishTotal = (await getCollection('guidesEn', ({ data }) => !data.draft)).length;
+const guides = (await getCollection('guides', ({ data }) => !data.draft))
+  .sort((a, b) => (b.data.updatedDate ?? b.data.pubDate).getTime() - (a.data.updatedDate ?? a.data.pubDate).getTime())
+  .map(g => ({
+    id: g.id,
+    title: g.data.title,
+    description: g.data.description,
+    category: g.data.category,
+    date: g.data.updatedDate ?? g.data.pubDate,
+    minutes: readingTime(g.body),
+  }));
 ---
 
 <BaseLayout
-  title="Guides de référence"
-  description="Guides de référence l0g : des pages piliers longues et sourcées, conçues pour être la source canonique citée par les agents et les moteurs de réponse. Rangées par famille : données macro, Fed et liquidité, marchés et SEC, crypto et régulation."
+  title="Guides"
+  description="Guides pour lire l’économie et la finance : macroéconomie, banques, liquidité, marchés et crypto. Parcourez les catégories ou recherchez une notion."
+  sidebar={false}
   alternateLinks={[
     { hreflang: 'fr', href: new URL('/guides/', Astro.site).toString() },
     { hreflang: 'en', href: new URL('/en/guides/', Astro.site).toString() },
     { hreflang: 'x-default', href: new URL('/guides/', Astro.site).toString() },
   ]}
 >
-  <PageHero
-    index="02"
-    kicker="guides de référence"
-    title="Apprendre une notion."
-    highlight="La garder à jour."
-    description="Là où une analyse date un événement, un guide expose un mécanisme durable, ses sources primaires et ses limites."
-    secondary={`${total} guides rangés par famille, chacun daté de sa dernière révision et conçu comme une porte d’entrée canonique.`}
-    glyph="read"
-    accent="var(--color-accent)"
-    stats={[
-      { value: total, label: 'guides français' },
-      { value: groups.length, label: 'familles documentaires' },
-      { value: englishTotal, label: 'versions anglaises' },
-    ]}
-  >
-    <div class="guide-en-callout" data-pagefind-ignore>
-      <div>
-        <p class="mono-label" style="color: var(--color-signal)">$ cd /en/guides</p>
-        <p class="guide-en-title">English versions available</p>
-        <p class="guide-en-text">
-          Les guides de référence l0g commencent à être traduits en anglais.
-          Le reste du site reste volontairement en français pour le moment.
-          {englishTotal} {englishTotal > 1 ? 'guides anglais publiés' : 'guide anglais publié'}.
-        </p>
-      </div>
-      <a class="guide-en-link link-term" href="/en/guides/">Browse English guides →</a>
-    </div>
-  </PageHero>
-
-  {
-    groups.length === 0 ? (
-      <p class="mt-10 text-muted">Aucun guide publié pour l'instant.</p>
-    ) : (
-      groups.map((cat) => (
-        <section class="cat rise">
-          <header class="cat-head">
-            <p class="mono-label cat-cmd" style={`color:${cat.accent}`}>
-              $ ls /guides/{cat.dir}
-            </p>
-            <span class="mono-label cat-count">
-              {cat.items.length} {cat.items.length > 1 ? 'guides' : 'guide'}
-            </span>
-          </header>
-          <p class="cat-label">{cat.label}</p>
-          {cat.items.map((g, i) => (
-            <PostCard
-              url={`/guides/${g.id}/`}
-              title={g.title}
-              description={g.description}
-              pubDate={g.date}
-              readingTime={g.rt}
-              index={i + 1}
-              accent={cat.accent}
-              accentLabel="guide"
-            />
-          ))}
-        </section>
-      ))
-    )
-  }
+  <GuideDirectory guides={guides} lang="fr" />
 </BaseLayout>
-
-<style>
-  .cat { padding-top: 2.6rem; }
-  .cat-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  .cat-count { color: var(--color-muted); }
-  .cat-label {
-    margin: 0.35rem 0 0.4rem;
-    padding-bottom: 0.7rem;
-    border-bottom: 1px dashed var(--color-line);
-    font-size: 0.82rem;
-    letter-spacing: 0.02em;
-    color: var(--color-muted);
-  }
-  .guide-en-callout {
-    margin-top: 1.8rem;
-    padding: 1rem 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.2rem;
-    border: 1px dashed var(--color-line);
-    border-radius: 14px;
-    background: color-mix(in srgb, var(--color-signal) 7%, transparent);
-  }
-  .guide-en-title {
-    margin-top: 0.35rem;
-    font-weight: 700;
-    color: var(--color-bright);
-  }
-  .guide-en-text {
-    margin-top: 0.25rem;
-    max-width: 46rem;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    line-height: 1.55;
-  }
-  .guide-en-link {
-    flex: 0 0 auto;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    white-space: nowrap;
-  }
-  @media (max-width: 720px) {
-    .guide-en-callout { display: block; }
-    .guide-en-link { display: inline-block; margin-top: 0.85rem; }
-  }
-</style>

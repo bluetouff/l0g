@@ -30,6 +30,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    {"sigle": "Garantie de prêt", "nom": "Engagement d’un garant envers les prêteurs", "def": "Engagement d’un garant envers les prêteurs, couvrant le risque de défaut dans le périmètre fixé par le contrat. Les banques avancent les fonds lors du tirage ; l’emprunteur reste tenu de rembourser. Le paiement du garant dépend des conditions d’appel. Une garantie publique crée un engagement éventuel, distinct d’un décaissement de l’État.", "guide": "/posts/apres-cyberattaque-07-etat-financement-crise/"},
+    {"sigle": "Responsabilité maximale", "nom": "Mesure d’exposition UKEF, intérêts compris", "def": "Dans le glossaire d’UKEF, montant maximal des sommes payables au titre d’un produit, intérêts compris. UKEF utilise cette mesure pour l’exposition avant émission de la couverture. Elle se distingue du principal du prêt, du montant tiré et d’une perte réalisée. Rattacher une ligne publiée à une facilité précise exige d’examiner le contrat et les références de l’opération.", "guide": "/posts/apres-cyberattaque-07-etat-financement-crise/"},
     { sigle: 'IRRBB', nom: 'Risque de taux du portefeuille bancaire', def: 'Risque que des variations défavorables des taux affectent le capital ou les revenus du portefeuille bancaire. Sa mesure rapproche la valeur économique des positions et les revenus attendus, avec leurs horizons et hypothèses propres.', guide: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/' },
     { sigle: 'EVE', nom: 'Valeur économique des fonds propres', def: 'Valeur actualisée nette des flux des actifs, passifs et positions hors bilan dans une mesure de risque de taux. Sa variation sous scénario porte sur la vie résiduelle des positions ; elle se distingue du résultat comptable et du cours de l’action.', guide: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/' },
     { sigle: 'NII', nom: 'Revenu net d’intérêts', def: 'Produits d’intérêts diminués des charges d’intérêts pendant une période, en tenant compte des couvertures. Une sensibilité NII dépend de l’horizon et des hypothèses du scénario. Elle ne désigne ni le bénéfice net total ni la valeur économique des fonds propres.', guide: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/' },
@@ -84,6 +86,19 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      {
+        "sigle": "Valeur ajoutée",
+        "nom": "Contribution productive après déduction des consommations intermédiaires",
+        "def": "Valeur de la production d’une activité diminuée des biens et services consommés pour la réaliser. La valeur ajoutée brute conserve la consommation de capital fixe. Le PIB correspond à la somme des valeurs ajoutées brutes des producteurs résidents, augmentée des impôts sur les produits et diminuée des subventions sur les produits. Le chiffre d’affaires d’une chaîne entière additionne aussi les achats entre ses étapes.",
+        "guide": "/posts/apres-cyberattaque-04-jlr-empreinte-pib/"
+      },
+      {
+        "sigle": "Effet de base",
+        "nom": "Influence du niveau de comparaison sur un taux de variation",
+        "def": "Influence du niveau de départ sur une variation exprimée en pourcentage. À niveau final identique, une base de comparaison plus faible donne une hausse plus élevée. Un rebond mesuré par rapport à une période perturbée renseigne le rythme d’activité ; établir le rattrapage d’une production reportée demande aussi de suivre les volumes cumulés et les commandes.",
+        "guide": "/posts/apres-cyberattaque-04-jlr-empreinte-pib/"
+      },
+
       { sigle: 'Rente d’innovation', nom: 'Revenu d’une avance technique', def: 'Revenu tiré d’une avance technique au-delà des coûts courants de production. Il peut contribuer à couvrir les dépenses de recherche. Son montant et sa durée dépendent notamment de la concurrence, de l’imitation, de l’obsolescence et des droits permettant de conserver cet avantage. Une rente anticipée dans un modèle constitue une hypothèse distincte d’un bénéfice observé.', guide: '/posts/ia-debouches-rentabilite-innovation/' },
       { sigle: 'TiVA', nom: 'Commerce en valeur ajoutée', def: 'Indicateurs de l’OCDE qui attribuent aux pays et aux secteurs la valeur ajoutée incorporée dans les échanges et la demande finale, à partir de tableaux internationaux entrées-sorties. Ils distinguent notamment le contenu intérieur et étranger des exportations brutes. Leur périmètre et leur période doivent être précisés ; ils ne recensent pas les entreprises acheteuses finales.', guide: '/posts/commerce-mondial-rythme-commandes-ia/' },
       { sigle: 'Effet fouet', nom: 'Amplification des commandes dans une chaîne d’approvisionnement', def: 'Mécanisme par lequel les commandes transmises aux fournisseurs fluctuent davantage que la demande en aval. Les révisions de prévisions et les ajustements de stocks peuvent amplifier le mouvement à plusieurs étapes. Son ampleur dépend des délais, des contrats et des pratiques de commande ; une simulation de déstockage ne mesure pas un coefficient applicable à une filière réelle.', guide: '/posts/commerce-mondial-rythme-commandes-ia/' },
@@ -796,6 +811,13 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "RTO", "nom": "Objectif de temps de reprise", "def": "Durée maximale d’indisponibilité retenue pour une ressource informatique avant un effet jugé inacceptable sur les autres ressources ou sur l’activité. Cet objectif de préparation doit normalement laisser, dans la durée tolérable pour le processus métier, le temps nécessaire au retraitement des données. Un délai obtenu lors d’un essai dépend de son scénario et de son périmètre.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
+      {"sigle": "RPO (reprise)", "nom": "Point de reprise des données", "def": "Point dans le passé auquel les données d’un processus doivent pouvoir être récupérées après une interruption, compte tenu des sauvegardes disponibles. Il exprime la perte de données tolérée dans la préparation. Le respect de cette cible doit être éprouvé ; la restauration peut encore demander un rapprochement avec les opérations enregistrées pendant le fonctionnement dégradé.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
+      {"sigle": "MTD", "nom": "Durée maximale d’interruption tolérable", "def": "Durée totale de perturbation qu’un responsable accepte pour un processus métier, en tenant compte de l’ensemble de ses conséquences. Le délai de reprise de la ressource informatique et le retraitement nécessaire des données doivent tenir dans cette durée. La limite relève d’une analyse d’impact propre à l’activité ; elle ne constitue pas un temps de reprise déjà démontré.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
+      {"sigle": "Dépendance commune", "nom": "Plusieurs services reposant sur une même ressource", "def": "Situation dans laquelle plusieurs fonctions ou organisations utilisent un même prestataire, service ou socle technique. Des contrats avec des fournisseurs distincts peuvent aussi converger vers une infrastructure commune par la sous-traitance. Son interruption peut alors affecter plusieurs clients simultanément. Le risque dépend de l’importance des fonctions soutenues et des moyens de reprise ou de remplacement disponibles.", "guide": "/posts/apres-cyberattaque-06-prestataire-commun/"},
+      {"sigle": "DMS", "nom": "Dealer management system", "def": "Système de gestion utilisé dans une concession automobile pour relier notamment ventes, atelier, stocks, relation client et comptabilité. Les périmètres dépendent du logiciel et de ses connexions. Les déclarations d’Asbury et d’AutoNation après l’incident CDK de 2024 montrent que le retour du système principal et celui des applications complémentaires peuvent intervenir à des dates différentes.", "guide": "/posts/apres-cyberattaque-06-prestataire-commun/"},
+      {"sigle": "MVO", "nom": "Niveau d’activité minimum viable", "def": "Niveau minimal de fonctionnement qui permet, selon le NCSC, de poursuivre les opérations en sécurité, de satisfaire les obligations légales et réglementaires et de préserver la confiance des clients, partenaires et salariés. Après une cyberattaque, cette priorité aide à choisir les fonctions et dépendances à rétablir. Elle constitue une étape de reprise ; son périmètre dépend de l’organisation.", "guide": "/posts/apres-cyberattaque-05-economie-remise-en-route/"},
+      {"sigle": "Retainer", "nom": "Contrat de disponibilité pour la réponse à incident", "def": "Accord préparé avant une crise pour accéder à des spécialistes selon des conditions convenues. Dans l’offre publique NCC étudiée, les frais annuels de disponibilité sont distincts du temps d’intervention prépayé ; le travail supplémentaire suit les conditions contractuelles. Les engagements précisent l’accès et la réponse initiale. Le retour d’un service utilisable dépend encore du travail à accomplir.", "guide": "/posts/apres-cyberattaque-05-economie-remise-en-route/"},
       { sigle: 'CRA', nom: 'Cyber Resilience Act', def: 'Règlement (UE) 2024/2847 sur la cybersécurité des produits comportant des éléments numériques. Depuis le 11 septembre 2026, les fabricants dans son champ signalent les vulnérabilités activement exploitées et les incidents graves touchant la sécurité de leurs produits. Les principales exigences de sécurité et le régime spécifique des intendants de logiciels ouverts commencent le 11 décembre 2027.', guide: '/posts/cyber-resilience-act-circuit-alerte/' },
       { sigle: 'CSIRT', nom: 'Équipe de réponse aux incidents informatiques', def: 'Équipe chargée du traitement des incidents informatiques, de l’analyse des vulnérabilités et de l’assistance aux acteurs concernés. Dans le CRA, le CSIRT désigné comme coordinateur reçoit en principe les signalements avec l’ENISA et organise leur transmission aux autres coordinateurs concernés, selon les règles de confidentialité du règlement.', guide: '/posts/cyber-resilience-act-circuit-alerte/' },
       { sigle: 'Intendant de logiciels ouverts', nom: 'Open-source software steward', def: 'Organisation dotée de la personnalité juridique, distincte du fabricant, qui soutient de façon structurée et durable le développement de logiciels libres destinés à des activités commerciales et assure leur viabilité. Le CRA lui impose à partir du 11 décembre 2027 une politique de cybersécurité, une coopération avec les autorités et des obligations de signalement adaptées à son rôle.', guide: '/posts/cyber-resilience-act-circuit-alerte/' },
@@ -831,7 +853,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-18';
+export const glossaryUpdatedIso = '2026-10-19';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1074,6 +1096,278 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "rto": {
+  "intuition": "La ressource informatique a sa cible de disponibilité ; le service doit aussi retrouver des données utilisables.",
+  "articles": [
+    {
+      "label": "Combien coûte une reprise plus rapide ?",
+      "href": "/posts/apres-cyberattaque-08-prix-reprise/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "NIST SP 800-34 Rev. 1, mai 2010, mise à jour novembre 2010",
+      "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+      "detail": "Section 3.2.1, pages imprimées 17–18 : définitions et relation entre objectifs de reprise et durée tolérable.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "rpo-reprise",
+    "mtd"
+  ]
+},
+  "rpo-reprise": {
+  "intuition": "Le point de données récupérable et le temps nécessaire pour rétablir un service répondent à deux questions distinctes.",
+  "articles": [
+    {
+      "label": "Combien coûte une reprise plus rapide ?",
+      "href": "/posts/apres-cyberattaque-08-prix-reprise/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "NIST SP 800-34 Rev. 1, mai 2010, mise à jour novembre 2010",
+      "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+      "detail": "Section 3.2.1, pages imprimées 17–18 : définitions et relation entre objectifs de reprise et durée tolérable.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "rto",
+    "mtd"
+  ]
+},
+  "mtd": {
+  "intuition": "Le processus métier fixe une limite globale qui doit laisser une place au travail après restauration.",
+  "articles": [
+    {
+      "label": "Combien coûte une reprise plus rapide ?",
+      "href": "/posts/apres-cyberattaque-08-prix-reprise/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "NIST SP 800-34 Rev. 1, mai 2010, mise à jour novembre 2010",
+      "href": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+      "detail": "Section 3.2.1, pages imprimées 17–18 : définitions et relation entre objectifs de reprise et durée tolérable.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "rto",
+    "rpo-reprise"
+  ]
+},
+  "garantie-de-pret": {
+  "intuition": "Les prêteurs avancent l’argent, l’emprunteur doit le rembourser et le garant intervient selon les conditions du contrat.",
+  "articles": [
+    {
+      "label": "Le financement public après la cyberattaque de JLR",
+      "href": "/posts/apres-cyberattaque-07-etat-financement-crise/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "UKEF, Export Development Guarantee",
+      "href": "https://www.gov.uk/guidance/export-development-guarantee",
+      "detail": "Présentation et rubrique Cost : crédit commercial, partage du risque et prime.",
+      "kind": "source"
+    },
+    {
+      "label": "Peter Kyle, lettre du 13 octobre 2025",
+      "href": "https://committees.parliament.uk/publications/49980/documents/269099/default/",
+      "detail": "Page 1, paragraphes 1a–b ; page 3 : prêt, garantie et engagement public distincts.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "pret-relais",
+    "responsabilite-maximale"
+  ]
+},
+  "responsabilite-maximale": {
+  "intuition": "Le plafond publié peut inclure des intérêts. Le contrat permet de relier ce périmètre à une facilité précise.",
+  "articles": [
+    {
+      "label": "Le financement public après la cyberattaque de JLR",
+      "href": "/posts/apres-cyberattaque-07-etat-financement-crise/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "UKEF, glossaire 2025/26, Maximum liability",
+      "href": "https://www.gov.uk/government/publications/uk-export-finance-annual-report-and-accounts-2025-to-2026/glossary-of-terms",
+      "detail": "Entrées Maximum liability, Claims et Amount at risk : définition et périmètres distincts.",
+      "kind": "source"
+    },
+    {
+      "label": "UKEF, Business supported 2025 to 2026",
+      "href": "https://www.gov.uk/government/publications/uk-export-finance-business-supported-2025-to-2026/business-supported-2025-to-2026",
+      "detail": "Tableau 1, colonne Maximum liability : les lignes JLR ne donnent ni identifiant contractuel ni solde tiré.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "garantie-de-pret",
+    "pret-relais"
+  ]
+},
+  "dependance-commune": {
+  "intuition": "Plusieurs contrats peuvent aboutir à la même infrastructure.",
+  "articles": [
+    {
+      "label": "Un prestataire commun, plusieurs entreprises touchées",
+      "href": "/posts/apres-cyberattaque-06-prestataire-commun/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "FSB, third-party risk toolkit",
+      "href": "https://www.fsb.org/wp-content/uploads/P041223-1.pdf",
+      "detail": "Sections 3.5, 3.8 et 4.3 : concentration, dépendances indirectes et substituabilité.",
+      "kind": "source"
+    },
+    {
+      "label": "NCSC, Mapping your supply chain",
+      "href": "https://www.ncsc.gov.uk/guidance/mapping-your-supply-chain",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "disponibilite-de-service",
+    "reversibilite",
+    "portabilite"
+  ]
+},
+  "dms": {
+  "intuition": "Une vente mobilise le véhicule, son dossier et la comptabilité.",
+  "articles": [
+    {
+      "label": "Un prestataire commun, plusieurs entreprises touchées",
+      "href": "/posts/apres-cyberattaque-06-prestataire-commun/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Asbury, Q2 2024 Form 10-Q",
+      "href": "https://www.sec.gov/Archives/edgar/data/1144980/000114498024000130/abg-20240630.htm",
+      "kind": "source"
+    },
+    {
+      "label": "AutoNation, Q2 2024 Form 10-Q",
+      "href": "https://www.sec.gov/Archives/edgar/data/350698/000035069824000098/an-20240630.htm",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "dependance-commune",
+    "disponibilite-de-service"
+  ]
+},
+  "mvo": {
+  "intuition": "Reprendre les fonctions prioritaires demande de vérifier leurs dépendances.",
+  "articles": [
+    {
+      "label": "Cyberattaque : le long chantier du redémarrage",
+      "href": "/posts/apres-cyberattaque-05-economie-remise-en-route/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "NCSC, Recovery and ongoing investigations",
+      "href": "https://www.ncsc.gov.uk/collection/disruptive-cyber-attacks/recovering/2-recovery-ongoing-investigations",
+      "detail": "Section 2.1 : définition et choix des opérations minimales.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "disponibilite-de-service",
+    "retainer"
+  ]
+},
+  "retainer": {
+  "intuition": "Réserver une capacité de réponse et terminer une reconstruction sont deux engagements distincts.",
+  "articles": [
+    {
+      "label": "Cyberattaque : le long chantier du redémarrage",
+      "href": "/posts/apres-cyberattaque-05-economie-remise-en-route/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "NCC, conditions de réponse à incident",
+      "href": "https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/716961/929698583726031-terms-and-conditions-2024-05-07-0015.pdf",
+      "detail": "Module Retained Incident Response, définitions, clauses 5.9 et 8.1–8.6, annexe 1.",
+      "kind": "source"
+    },
+    {
+      "label": "NCC, barème G-Cloud 14",
+      "href": "https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/716961/929698583726031-pricing-document-2024-05-07-0128.pdf",
+      "detail": "Pages 2–3 : frais annuels, jours prépayés et conditions tarifaires.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "disponibilite-de-service",
+    "mvo"
+  ]
+},
+  "valeur-ajoutee": {
+  "articles": [
+    {
+      "label": "JLR : l’empreinte d’une cyberattaque dans le PIB",
+      "href": "/posts/apres-cyberattaque-04-jlr-empreinte-pib/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "ONS, comptabilité nationale",
+      "href": "https://www.ons.gov.uk/economy/nationalaccounts/uksectoraccounts/methodologies/aguidetotheuknationalaccountsmarch2020",
+      "kind": "source"
+    },
+    {
+      "label": "ONS, marges commerciales et valeur ajoutée",
+      "href": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/articles/bluebook2024advancedaggregateestimates/2024-08-07",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "pib",
+    "effet-de-base"
+  ]
+},
+  "effet-de-base": {
+  "articles": [
+    {
+      "label": "JLR : l’empreinte d’une cyberattaque dans le PIB",
+      "href": "/posts/apres-cyberattaque-04-jlr-empreinte-pib/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "ONS, PIB de mars 2026, effet de base automobile",
+      "href": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/march2026",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "pib",
+    "valeur-ajoutee"
+  ]
+},
+
   "pertes-d-exploitation-dependantes": {
       "intuition": "La relation commerciale identifie le rôle du tiers, puis le contrat détermine les pertes admissibles.",
       "articles": [

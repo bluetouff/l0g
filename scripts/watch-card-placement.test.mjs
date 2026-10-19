@@ -9,7 +9,7 @@ test('Watch card is passive, bilingual and links to the canonical Watch home', a
 
   assert.match(component, /href="https:\/\/watch\.l0g\.fr\/"/);
   assert.match(component, /target="_blank"[\s\S]*rel="noopener noreferrer"/);
-  assert.match(component, />new</i);
+  assert.doesNotMatch(component, /watch-new|>new</i);
   assert.match(component, /La mémoire privée de votre veille\./);
   assert.match(component, /Your private monitoring memory\./);
   assert.match(component, /Souscriptions ouvertes/);

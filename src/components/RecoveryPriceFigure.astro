@@ -1,0 +1,80 @@
+---
+import { recoveryPriceInlineSvg, recoveryPriceReferences, RECOVERY_PRICE_KINDS } from '../lib/recoveryPriceFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'tsb' | 'recovery' | 'supervision' | 'threshold';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (typeof number !== 'string' || !/^(?:0[1-4])$/.test(number) || RECOVERY_PRICE_KINDS.indexOf(kind) + 1 !== Number(number)) {
+  throw new TypeError('Invalid Recovery-price figure number');
+}
+if (typeof caption !== 'string' || !caption.trim()) throw new TypeError('Recovery-price figure caption required');
+const references = recoveryPriceReferences(kind, sources);
+const svg = recoveryPriceInlineSvg(lang, kind);
+---
+<figure class="recovery-price-figure" id={`figure-${number}`} data-figure={number} data-kind={kind}>
+  <div class="recovery-price-graphic" set:html={svg} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="recovery-price-references">{references.map(id => <a href={`#source-${id}`}>[{Number(id)}]</a>)}</span>
+  </figcaption>
+  <slot />
+  {number === '01' && <details class="recovery-price-fonts">
+    <summary>{lang === 'fr' ? 'Polices et licences des figures' : 'Figure fonts and licences'}</summary>
+    <p>{lang === 'fr' ? 'Polices des figures : Inter Variable et JetBrains Mono Variable, sous licence SIL Open Font License 1.1.' : 'Figure fonts: Inter Variable and JetBrains Mono Variable, under the SIL Open Font License 1.1.'} <a href="/fonts/jlr/LICENSE-inter.txt">Inter</a> · <a href="/fonts/jlr/LICENSE-jetbrains-mono.txt">JetBrains Mono</a>.</p>
+  </details>}
+</figure>
+<style>
+  /* Preserve the supplied composition and all source paint attributes.
+     Only presentation follows the site's existing semantic theme tokens. */
+  .recovery-price-figure :global([fill="#0c0d10"]) { fill: var(--color-ink); }
+  .recovery-price-figure :global([stroke="#0c0d10"]) { stroke: var(--color-ink); }
+  .recovery-price-figure :global([fill="#13161c"]) { fill: var(--color-surface); }
+  .recovery-price-figure :global([stroke="#13161c"]) { stroke: var(--color-surface); }
+  .recovery-price-figure :global([fill="#1a1e26"]) { fill: var(--color-surface-2); }
+  .recovery-price-figure :global([stroke="#1a1e26"]) { stroke: var(--color-surface-2); }
+  .recovery-price-figure :global([fill="#28303b"]) { fill: var(--color-line-strong); }
+  .recovery-price-figure :global([stroke="#28303b"]) { stroke: var(--color-line-strong); }
+  .recovery-price-figure :global([fill="#3b4351"]) { fill: var(--color-line-strong); }
+  .recovery-price-figure :global([stroke="#3b4351"]) { stroke: var(--color-line-strong); }
+  .recovery-price-figure :global([fill="#69778d"]) { fill: var(--color-muted); }
+  .recovery-price-figure :global([stroke="#69778d"]) { stroke: var(--color-muted); }
+  .recovery-price-figure :global([fill="#a9b3c2"]) { fill: var(--color-muted); }
+  .recovery-price-figure :global([stroke="#a9b3c2"]) { stroke: var(--color-muted); }
+  .recovery-price-figure :global([fill="#e7e9ee"]) { fill: var(--color-paper); }
+  .recovery-price-figure :global([stroke="#e7e9ee"]) { stroke: var(--color-paper); }
+  .recovery-price-figure :global([fill="#5eead4"]) { fill: var(--color-signal); }
+  .recovery-price-figure :global([stroke="#5eead4"]) { stroke: var(--color-signal); }
+  .recovery-price-figure :global([fill="#ff4d87"]) { fill: var(--color-accent); }
+  .recovery-price-figure :global([stroke="#ff4d87"]) { stroke: var(--color-accent); }
+  .recovery-price-figure :global([fill="#f5b13d"]) { fill: var(--color-amber); }
+  .recovery-price-figure :global([stroke="#f5b13d"]) { stroke: var(--color-amber); }
+  .recovery-price-figure :global([fill="#7aa2f7"]) { fill: var(--color-topic-blue); }
+  .recovery-price-figure :global([stroke="#7aa2f7"]) { stroke: var(--color-topic-blue); }
+  .recovery-price-figure :global([stop-color="#5eead4"]) { stop-color: var(--color-signal); }
+  .recovery-price-figure :global([stop-color="#ff4d87"]) { stop-color: var(--color-accent); }
+  /* Blue-on-blue labels and the muted validation note need their own measured paint limits. */
+  :global(html[data-theme="dark"]) .recovery-price-figure :global(pattern[id$="-02-hatch-blue"] path[opacity="0.36"]) { opacity: .12; }
+  :global(html[data-theme="light"]) .recovery-price-figure :global(pattern[id$="-02-hatch-blue"] path[opacity="0.36"]) { opacity: .16; }
+  :global(html[data-theme="dark"]) .recovery-price-figure :global(linearGradient[id$="-02-tealfade"] stop[stop-opacity="0.17"]) { stop-opacity: .12; }
+  /* The supplied hatching remains local to explanatory areas. */
+  :global(html[data-theme="dark"]) .recovery-price-figure :global(pattern[id$="-hatch-quiet"] path[opacity="0.36"]) { opacity: .12; }
+  :global(html[data-theme="light"]) .recovery-price-figure :global(pattern path[opacity="0.36"]) { opacity: .18; }
+  .recovery-price-figure { margin: 2.8rem auto; width: 100%; max-width: 600px; padding-bottom: .85rem; overflow: visible; }
+  .recovery-price-graphic { width: 100%; }
+  .recovery-price-figure :global(svg) { display: block; width: 100%; height: auto; max-width: 100%; letter-spacing: normal; overflow: visible; }
+  figcaption { margin: .95rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .recovery-price-references { display: block; }
+  .recovery-price-references a { margin-right: .75em; }
+  .recovery-price-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .recovery-price-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .recovery-price-figure :global(details p) { margin: .7rem 0; }
+  .recovery-price-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  :global(.recovery-price-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.recovery-price-sources li) { margin-block: 1rem; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  @media print { .recovery-price-figure { break-inside: avoid; } }
+</style>

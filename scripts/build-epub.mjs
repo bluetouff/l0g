@@ -3,10 +3,16 @@ import { tmpdir } from 'node:os';
 import { basename, dirname, join, relative, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { debtEditions } from '../src/config/debt-publication.mjs';
+import { cyberRecoveryEditions } from '../src/config/cyber-recovery-publication.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
+  ...Object.values(cyberRecoveryEditions).map(book => ({
+    source: join(ROOT, 'src/epub', book.directory),
+    output: join(ROOT, 'public', book.epub),
+    fixedTime: new Date(book.modified),
+  })),
   ...Object.values(debtEditions).flatMap(book => book.editions.map(edition => ({
     source: join(ROOT, 'src/epub', edition.directory),
     output: join(ROOT, 'public', edition.epub),

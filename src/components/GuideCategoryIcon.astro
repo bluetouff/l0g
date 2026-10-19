@@ -1,0 +1,35 @@
+---
+interface Props { category: string }
+const { category } = Astro.props;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  {category === 'macro' ? <>
+    <path d="M8 9v30h33" opacity=".35" />
+    <path d="M14 31v-8m9 8V17m9 14V12" stroke-width="5" opacity=".25" />
+    <path d="m12 24 10-8 9 3 10-11m-7 0h7v7" />
+    <circle cx="22" cy="16" r="2.5" fill="var(--color-surface)" />
+  </> : category === 'fed' ? <>
+    <path d="m7 17 17-9 17 9H7Zm3 20h28M7 41h34M13 22v10m11-10v10m11-10v10" />
+    <path d="M13 22h22" opacity=".25" />
+    <circle cx="24" cy="14" r="1.5" fill="currentColor" stroke="none" />
+  </> : category === 'marches' ? <>
+    <path d="M7 39h34M7 9v30" opacity=".35" />
+    <path d="M16 14v20m11-25v19m11-13v20" />
+    <rect x="12" y="19" width="8" height="10" rx="1.5" fill="var(--color-surface)" />
+    <rect x="23" y="13" width="8" height="10" rx="1.5" fill="currentColor" fill-opacity=".2" />
+    <rect x="34" y="23" width="8" height="7" rx="1.5" fill="var(--color-surface)" />
+  </> : category === 'crypto' ? <>
+    <path d="m24 7 15 9v17l-15 8-15-8V16L24 7Z" opacity=".35" />
+    <path d="m24 17 7 4v8l-7 4-7-4v-8l7-4Zm0-10v10m15-1-8 5M9 16l8 5m7 12v8m7-12 8 4M9 33l8-4" />
+    <circle cx="24" cy="7" r="2.5" fill="var(--color-surface)" />
+    <circle cx="39" cy="33" r="2.5" fill="var(--color-surface)" />
+    <circle cx="9" cy="33" r="2.5" fill="var(--color-surface)" />
+  </> : <>
+    <path d="M9 10h12l3 3 3-3h12v27H27l-3 3-3-3H9V10Zm15 3v27" />
+  </>}
+</svg>
+
+<style>
+  svg { display: block; width: 100%; height: auto; }
+</style>

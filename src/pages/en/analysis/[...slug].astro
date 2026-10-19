@@ -11,6 +11,8 @@ import ReadingResume from '../../../components/ReadingResume.astro';
 import SupportCard from '../../../components/SupportCard.astro';
 import WatchCard from '../../../components/WatchCard.astro';
 import DebtEpubCard from '../../../components/DebtEpubCard.astro';
+import CyberRecoveryEpubCard from '../../../components/CyberRecoveryEpubCard.astro';
+import { cyberRecoveryEditions } from '../../../config/cyber-recovery-publication.mjs';
 import { debtEditions } from '../../../config/debt-publication.mjs';
 import { authorEntity, organizationEntity } from '../../../config/entities.ts';
 import { isAsiaAnalysis } from '../../../config/english-reading-paths.ts';
@@ -27,6 +29,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const hasDebtEpub = debtEditions.en.chapters.some(chapter => chapter.slug === post.id);
+const hasCyberRecoveryEpub = cyberRecoveryEditions.en.chapters.some(chapter => chapter.slug === post.id);
 const sourcePost = (await getCollection('posts')).find((entry) => entry.id === post.data.sourceArticle);
 const { Content } = await render(post);
 
@@ -183,6 +186,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     </div>
 
     {hasDebtEpub && <DebtEpubCard lang="en" />}
+    {hasCyberRecoveryEpub && <CyberRecoveryEpubCard lang="en" />}
 
     <EnglishRelatedReading id={post.id} collection="postsEn" />
 

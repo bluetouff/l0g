@@ -178,7 +178,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
             {s.entries.map((e) => (
               <li class="gentry" id={e.slug} data-related={e.atlas?.related?.length ? e.atlas.related.join(' ') : undefined}>
                 <a class="gentry-link" href={e.url}>
-                  <span class="sigle">{e.sigle}</span>
+                  <b class="sigle">{e.sigle}</b>
                   <span class="nom">{e.nom}</span>
                   {e.reference && <span class="atlas-tag reference-tag">référence</span>}
                   {!e.reference && e.referenceCandidate && <span class="atlas-tag candidate-tag">candidate</span>}

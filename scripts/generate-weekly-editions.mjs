@@ -72,6 +72,7 @@ async function loadPosts() {
       title: frontmatter.title,
       description: frontmatter.description,
       pubDate: normalizedDate(frontmatter.pubDate, id),
+      tags: frontmatter.tags === undefined ? [] : frontmatter.tags,
       quickTake: normalizedQuickTake(frontmatter.quickTake, id),
     });
   }
