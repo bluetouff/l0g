@@ -36,8 +36,7 @@ const trustItems = [
   <PageHero
     index="05"
     kicker="méthodologie"
-    title="Montrer le calcul."
-    highlight="Nommer la limite."
+    title="Calcul des indicateurs"
     description="l0g ne se contente pas d’auditer l’opacité des marchés : le projet évite aussi de devenir lui-même une boîte noire."
     secondary="Formules, seuils, normalisations, sources et observations point-in-time sont documentés pour comprendre ce qu’un signal mesure, et ce qu’il ne mesure pas."
     glyph="verify"
@@ -355,6 +354,7 @@ valeur bandeau = arrondi(score.current_stress depuis latest.json)</code></pre>
   </p>
 
   <style>
+    :global(.page-hero h1) { max-width: none !important; }
     .methodo-lede {
       margin-top: 1.6rem;
       max-width: 42rem;
