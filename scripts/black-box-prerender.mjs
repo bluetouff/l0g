@@ -70,8 +70,10 @@ export default function blackBoxPrerender({ environment = process.env } = {}) {
             ...defaultPrerenderer,
             name: 'l0g-black-box-prerender',
             async getStaticPaths() {
-              const paths = await defaultPrerenderer.getStaticPaths();
-              if (seeded) return paths;
+              const result = await defaultPrerenderer.getStaticPaths();
+              if (seeded) return result;
+              const paths = Array.isArray(result) ? result : result?.paths;
+              if (!Array.isArray(paths)) throw new Error('Black Box prepass: liste de chemins statiques requise');
               const seeds = BLACK_BOX_SEED_PATHS.map((path) => {
                 const matches = paths.filter((item) => item.pathname === `/${path}`);
                 if (matches.length !== 1 || matches[0].route.type !== 'endpoint') {
@@ -111,7 +113,7 @@ export default function blackBoxPrerender({ environment = process.env } = {}) {
               } finally {
                 await rm(temporary, { recursive: true, force: true });
               }
-              return paths;
+              return result;
             },
           };
         });
