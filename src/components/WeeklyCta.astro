@@ -5,22 +5,25 @@ const { variant = 'article' } = Astro.props;
 const edition = latestWeeklyEdition();
 const published = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'short', timeZone: 'Europe/Paris' }).format(new Date(edition.publishedAt));
 ---
-<aside class:list={['weekly-cta', `is-${variant}`]} data-pagefind-ignore aria-label="Lire l’hebdo l0g">
+<a class:list={['weekly-cta', `is-${variant}`]} href="/hebdo/" data-pagefind-ignore aria-label={`Lire l’hebdo l0g : ${edition.title}`}>
   <div class="weekly-label"><p class="mono-label">// l’hebdo l0g</p><span>N° {String(edition.issue).padStart(2, '0')} · {published}</span></div>
   <strong>{edition.title}</strong>
   <p>Les dossiers à retenir, leurs limites et les prochaines vérifications.</p>
-  <a href="/hebdo/">Lire la revue <span aria-hidden="true">↗</span></a>
-</aside>
+  <span class="weekly-link">Lire la revue <i aria-hidden="true">↗</i></span>
+</a>
 <style>
-  .weekly-cta { min-width: 0; border: 1px solid color-mix(in srgb, var(--color-signal) 32%, var(--color-line)); border-top: 2px solid var(--color-signal); border-radius: 4px; padding: 1.05rem; background: linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 7%, transparent), transparent 65%), var(--surface-elevated); }
-  .weekly-label { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem .75rem; }
-  .weekly-label .mono-label { font-size: .62rem; color: var(--color-signal); }
+  .weekly-cta { position: relative; display: block; min-width: 0; overflow: hidden; isolation: isolate; border: 1px solid transparent; border-radius: 4px 16px 16px 16px; padding: 1rem; text-decoration: none; background: linear-gradient(var(--surface-elevated), var(--surface-elevated)) padding-box, linear-gradient(135deg, color-mix(in srgb, var(--color-amber) 60%, var(--color-line)), var(--color-line) 55%, color-mix(in srgb, var(--color-accent) 38%, var(--color-line))) border-box; box-shadow: inset 0 1px 0 var(--edge-highlight), var(--shadow-elevated); }
+  .weekly-cta::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--color-amber) 10%, transparent), transparent 75%), repeating-linear-gradient(0deg, color-mix(in srgb, var(--color-line) 15%, transparent) 0 1px, transparent 1px 24px); }
+  .weekly-label { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem .75rem; padding-bottom: .8rem; border-bottom: 1px solid var(--color-line); }
+  .weekly-label .mono-label { font-size: .62rem; color: var(--color-amber); }
   .weekly-label > span { color: var(--color-muted); font-family: var(--font-mono); font-size: .55rem; }
-  .weekly-cta > strong { display: block; margin-top: .8rem; color: var(--color-bright); font-family: var(--font-display); font-size: .95rem; line-height: 1.5; font-weight: 650; }
+  .weekly-cta > strong { display: block; margin-top: .9rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.1rem; line-height: 1.3; font-weight: 650; letter-spacing: -.015em; }
   .weekly-cta > p { max-width: 38rem; margin-top: .5rem; color: var(--color-muted); font-family: var(--font-read); font-size: .76rem; line-height: 1.7; }
-  .weekly-cta > a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .9rem; padding-top: .75rem; border-top: 1px solid var(--color-line); color: var(--color-signal); font-family: var(--font-mono); font-size: .65rem; }
-  .weekly-cta > a:hover { color: var(--color-bright); }
-  .weekly-cta a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .weekly-link { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .9rem; padding-top: .75rem; border-top: 1px solid var(--color-line); color: var(--color-amber); font-family: var(--font-mono); font-size: .65rem; }
+  .weekly-link i { font-style: normal; font-size: .85rem; }
+  .weekly-cta:hover { border-color: var(--color-amber); }
+  .weekly-cta:hover > strong { color: var(--color-amber); }
+  .weekly-cta:focus-visible { outline: 2px solid var(--color-amber); outline-offset: 4px; }
   .is-article { margin-top: 3rem; }
   .is-now { margin-top: 1rem; }
 </style>

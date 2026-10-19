@@ -33,7 +33,6 @@ const copy = lang === 'en'
 >
   <span class="watch-card-top">
     <span class="watch-wordmark"><b>l<span>0</span>g</b> watch</span>
-    <span class="watch-new">new</span>
   </span>
 
   <span class="watch-signal" aria-hidden="true">
@@ -114,20 +113,6 @@ const copy = lang === 'en'
     text-transform: none;
   }
   .watch-wordmark b span { color: var(--color-signal); }
-  .watch-new {
-    border: 1px solid color-mix(in srgb, var(--color-accent) 62%, transparent);
-    border-radius: 999px;
-    padding: 0.16rem 0.42rem 0.13rem;
-    color: var(--color-accent);
-    background: color-mix(in srgb, var(--color-accent) 9%, transparent);
-    box-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 18%, transparent);
-    font-family: var(--font-mono);
-    font-size: 0.52rem;
-    font-weight: 750;
-    letter-spacing: 0.13em;
-    line-height: 1;
-    text-transform: uppercase;
-  }
   .watch-signal {
     position: relative;
     display: grid;

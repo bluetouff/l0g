@@ -42,23 +42,26 @@ const copy = lang === 'en'
   .support-card {
     position: relative;
     display: block;
-    border: 1px solid color-mix(in srgb, var(--color-signal) 50%, var(--color-line));
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid transparent;
     border-radius: 16px 4px 16px 16px;
     padding: 1.15rem;
     background:
-      linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 16%, transparent), transparent 45%, color-mix(in srgb, var(--color-amber) 8%, transparent)),
-      repeating-linear-gradient(135deg, var(--surface-inset) 0 1px, transparent 1px 4px),
-      var(--surface-elevated);
+      linear-gradient(145deg, color-mix(in srgb, var(--color-signal) 6%, var(--surface-elevated)), var(--surface-elevated) 65%) padding-box,
+      linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 48%, var(--color-line)), var(--color-line) 55%, color-mix(in srgb, var(--color-amber) 45%, var(--color-line))) border-box;
     box-shadow: inset 0 1px 0 var(--edge-highlight), var(--shadow-elevated);
     text-decoration: none;
-    transition: border-color 160ms ease, transform 160ms ease;
+    transition: border-color 160ms ease;
   }
   .support-card::before {
     content: '';
     position: absolute;
-    inset: 1.2rem auto 1.2rem -1px;
-    width: 2px;
-    background: linear-gradient(var(--color-signal), var(--color-amber));
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 100% 0, color-mix(in srgb, var(--color-amber) 8%, transparent), transparent 11rem),
+      repeating-linear-gradient(135deg, color-mix(in srgb, var(--color-line) 14%, transparent) 0 1px, transparent 1px 5px);
   }
   .support-card-top,
   .support-card-cta {
@@ -85,8 +88,8 @@ const copy = lang === 'en'
     margin-top: 0.65rem;
     color: var(--color-bright);
     font-family: var(--font-display);
-    font-size: 1.18rem;
-    line-height: 1.35;
+    font-size: 1.12rem;
+    line-height: 1.3;
   }
   .support-description,
   .support-note {
@@ -99,29 +102,36 @@ const copy = lang === 'en'
   .support-card-cta {
     min-height: 44px;
     margin-top: 1rem;
-    border-radius: 6px;
-    padding: 0.65rem 0.8rem;
-    background: var(--color-signal);
-    color: var(--color-ink);
-    font-size: 0.75rem;
-    font-weight: 700;
+    border-top: 1px solid var(--color-line);
+    padding-top: 0.7rem;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 650;
+    letter-spacing: 0.04em;
     line-height: 1.4;
   }
   .support-note {
     margin-top: 0.55rem;
     font-size: 0.6rem;
-    text-align: center;
   }
   .support-card-cta i {
     font-style: normal;
-    font-size: 1rem;
+    display: grid;
+    place-items: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    border: 1px solid color-mix(in srgb, var(--color-amber) 32%, var(--color-line));
+    border-radius: 50%;
+    color: var(--color-amber);
+    font-size: 0.8rem;
   }
-  .support-card:hover { border-color: var(--color-signal); transform: translateY(-2px); }
+  .support-card:hover { border-color: var(--color-signal); }
+  .support-card:hover .support-card-cta { color: var(--color-signal); }
   .support-card:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
   .support-card.compact { padding: 1rem; }
   .support-card.compact strong { font-size: 1.08rem; }
   @media (prefers-reduced-motion: reduce) {
     .support-card { transition: none; }
-    .support-card:hover { transform: none; }
   }
 </style>
