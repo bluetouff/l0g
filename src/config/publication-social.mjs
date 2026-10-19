@@ -1,5 +1,7 @@
 // Dedicated landscape cards. Portrait covers remain the book and catalogue artwork.
 const entries = [
+  ['cyber-recovery', 'fr', 'apres-la-cyberattaque', ['Après la', 'cyberattaque'], ['Qui finance la reprise ?'], 'Illustration conceptuelle d’un mécanisme industriel réparé et du financement de la reprise'],
+  ['cyber-recovery', 'en', 'after-the-cyberattack', ['After the', 'cyberattack'], ['Who pays for recovery?'], 'Conceptual artwork of a repaired industrial mechanism and the financing of recovery'],
   ['debt-chain', 'fr', 'dette-en-chaine', ['La dette', 'en chaîne'], ['Titres publics, garanties', 'et secours de marché.'], 'Illustration conceptuelle de la chaîne de financement des États'],
   ['debt-chain', 'en', 'sovereign-debt-chain', ['The sovereign', 'debt chain'], ['Government bonds, collateral', 'and market backstops.'], 'Conceptual artwork about sovereign debt financing and market backstops'],
   ['microsoft', 'fr', 'quitter-microsoft', ['Quitter', 'Microsoft'], ['La liberté de choisir'], 'Illustration conceptuelle des dépendances numériques et des possibilités de migration'],

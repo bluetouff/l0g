@@ -12,6 +12,8 @@ const failures = [];
 const metadataOverFormerCutoffs = [];
 const pages = new Map();
 const publicationCovers = new Map([
+  ['publications/apres-la-cyberattaque/index.html', 'apres-la-cyberattaque'],
+  ['en/publications/after-the-cyberattack/index.html', 'after-the-cyberattack'],
   ['publications/dette-en-chaine/index.html', 'dette-en-chaine'],
   ['en/publications/sovereign-debt-chain/index.html', 'sovereign-debt-chain'],
   ['publications/quitter-microsoft/index.html', 'quitter-microsoft'],
