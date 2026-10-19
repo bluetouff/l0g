@@ -46,18 +46,19 @@ function seedBody(path) {
   return JSON.stringify({ generated: timestamp, path, snapshots: [], signalFreshness: [], entries: [], count: 0 });
 }
 
-function defaultRenderer({ omit, duplicate, respond } = {}) {
+function defaultRenderer({ omit, duplicate, respond, rich = false } = {}) {
   const calls = [];
   const paths = [
     ...BLACK_BOX_SEED_PATHS.filter((path) => path !== omit).map((path) => ({ pathname: `/${path}`, route: { type: 'endpoint' } })),
     { pathname: '/', route: { type: 'page' } },
   ];
   if (duplicate) paths.push(paths.find((item) => item.pathname === `/${duplicate}`));
+  const result = rich ? { paths, metadata: { staticImages: [], referencedImages: ['/fixture/image.png'] } } : paths;
   let ready = false;
   const renderer = {
     name: 'fixture-default',
     async setup() { ready = true; },
-    async getStaticPaths() { assert.ok(ready); return paths; },
+    async getStaticPaths() { assert.ok(ready); return result; },
     async render(request, options) {
       assert.ok(ready);
       const path = new URL(request.url).pathname.slice(1);
@@ -69,7 +70,7 @@ function defaultRenderer({ omit, duplicate, respond } = {}) {
     },
     async teardown() { ready = false; },
   };
-  return { renderer, paths, calls };
+  return { renderer, paths, calls, result };
 }
 
 function stable(value) {
@@ -133,6 +134,46 @@ test('ordinary builds and dev do not acquire an archive writer', () => {
   assert.throws(() => blackBoxPrerender({ environment: { L0G_APPEND_BLACK_BOX_FRAME: 'true' } }), /doit valoir 1/);
   const integration = blackBoxPrerender({ environment: environment('/tmp/unused') });
   assert.throws(() => integration.hooks['astro:config:setup']({ command: 'dev' }), /réservée à astro build/);
+});
+
+test('Astro 7.4 static-path metadata is preserved and the frame is appended only once', async () => {
+  const temporary = await mkdtemp(join(tmpdir(), 'l0g-black-box-test-'));
+  const archive = join(temporary, 'archive');
+  try {
+    await mkdir(join(archive, 'frames'), { recursive: true });
+    const { renderer, paths, calls, result } = defaultRenderer({ rich: true });
+    const wrapped = configured(environment(archive))(renderer);
+    await wrapped.setup();
+    assert.strictEqual(await wrapped.getStaticPaths(), result);
+    assert.strictEqual(result.paths, paths);
+    assert.deepEqual(result.metadata, { staticImages: [], referencedImages: ['/fixture/image.png'] });
+    assert.equal(calls.length, BLACK_BOX_SEED_PATHS.length);
+    assert.strictEqual(await wrapped.getStaticPaths(), result);
+    assert.equal(calls.length, BLACK_BOX_SEED_PATHS.length);
+    assert.equal((await readdir(join(archive, 'frames'))).length, 1);
+    await wrapped.teardown();
+  } finally {
+    await rm(temporary, { recursive: true, force: true });
+  }
+});
+
+test('malformed static-path results fail before rendering or writing a frame', async () => {
+  const temporary = await mkdtemp(join(tmpdir(), 'l0g-black-box-test-'));
+  try {
+    for (const result of [null, {}, { paths: null }, { paths: 'not-an-array' }]) {
+      const archive = join(temporary, 'archive');
+      const fixture = defaultRenderer();
+      fixture.renderer.getStaticPaths = async () => result;
+      const wrapped = configured(environment(archive))(fixture.renderer);
+      await wrapped.setup();
+      await assert.rejects(wrapped.getStaticPaths(), /liste de chemins statiques requise/);
+      assert.deepEqual(fixture.calls, []);
+      await assert.rejects(readdir(archive), { code: 'ENOENT' });
+      await wrapped.teardown();
+    }
+  } finally {
+    await rm(temporary, { recursive: true, force: true });
+  }
 });
 
 test('publication rejects a foreign checkout, unverified run identity and inconsistent timestamps before rendering', () => {
