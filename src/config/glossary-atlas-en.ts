@@ -210,6 +210,76 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+  "slug": "mvo",
+  "sigle": "MVO",
+  "nom": "Minimum viable operations",
+  "def": "The lowest operational capability that, in NCSC guidance, allows an organisation to operate safely, meet its legal and regulatory obligations and maintain the trust of customers, partners and staff. During recovery from a cyberattack, this priority helps identify the functions and dependencies to restore. It is a recovery milestone whose scope depends on the organisation.",
+  "guide": "/en/analysis/after-cyberattack-05-economics-of-recovery/",
+  "robots": "noindex,follow",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "Restoring priority functions requires checking their dependencies.",
+    "articles": [
+      {
+        "label": "After the cyberattack: the long road back to service",
+        "href": "/en/analysis/after-cyberattack-05-economics-of-recovery/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NCSC, Recovery and ongoing investigations",
+        "href": "https://www.ncsc.gov.uk/collection/disruptive-cyber-attacks/recovering/2-recovery-ongoing-investigations",
+        "detail": "Section 2.1: definition and selection of minimum viable operations.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "disponibilite-de-service",
+      "retainer"
+    ]
+  }
+},
+  {
+  "slug": "retainer",
+  "sigle": "Retainer",
+  "nom": "Incident response retainer",
+  "def": "An agreement arranged before a crisis to give access to specialists on agreed terms. In the public NCC offering examined here, the annual availability fee is separate from prepaid response time; additional work follows the contractual terms. Commitments define access and the initial response. Restoring a usable service still depends on the work required.",
+  "guide": "/en/analysis/after-cyberattack-05-economics-of-recovery/",
+  "robots": "noindex,follow",
+  "sectionTitle": "Digital economy & data",
+  "accent": "var(--color-signal)",
+  "atlas": {
+    "intuition": "Reserving response capacity and completing a rebuild are separate commitments.",
+    "articles": [
+      {
+        "label": "After the cyberattack: the long road back to service",
+        "href": "/en/analysis/after-cyberattack-05-economics-of-recovery/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NCC, retained incident response terms",
+        "href": "https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/716961/929698583726031-terms-and-conditions-2024-05-07-0015.pdf",
+        "detail": "Retained Incident Response module, definitions, clauses 5.9 and 8.1–8.6, Appendix 1.",
+        "kind": "source"
+      },
+      {
+        "label": "NCC, G-Cloud 14 pricing",
+        "href": "https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/716961/929698583726031-pricing-document-2024-05-07-0128.pdf",
+        "detail": "Pages 2–3: annual fees, prepaid days and pricing conditions.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "disponibilite-de-service",
+      "mvo"
+    ]
+  }
+},
+  {
   "slug": "valeur-ajoutee",
   "robots": "noindex,follow",
   "sigle": "Value added",

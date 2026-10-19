@@ -83,6 +83,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/jlr-suppliers-infographics.test.mjs',
     'scripts/cyber-insurance-infographics.test.mjs',
     'scripts/jlr-gdp-infographics.test.mjs',
+    'scripts/jlr-recovery-infographics.test.mjs',
     'scripts/industrial-heat-infographics.test.mjs',
     'scripts/insurance-loyalty-infographics.test.mjs',
     'scripts/iran-flights-infographic.test.mjs',
@@ -181,6 +182,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/jlr-suppliers-rendered-infographics.test.mjs',
     'scripts/cyber-insurance-rendered-infographics.test.mjs',
     'scripts/jlr-gdp-rendered-infographics.test.mjs',
+    'scripts/jlr-recovery-rendered-infographics.test.mjs',
     'scripts/straits-rendered-infographics.test.mjs',
   ]),
 });

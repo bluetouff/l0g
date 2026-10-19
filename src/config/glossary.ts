@@ -809,6 +809,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "MVO", "nom": "Niveau d’activité minimum viable", "def": "Niveau minimal de fonctionnement qui permet, selon le NCSC, de poursuivre les opérations en sécurité, de satisfaire les obligations légales et réglementaires et de préserver la confiance des clients, partenaires et salariés. Après une cyberattaque, cette priorité aide à choisir les fonctions et dépendances à rétablir. Elle constitue une étape de reprise ; son périmètre dépend de l’organisation.", "guide": "/posts/apres-cyberattaque-05-economie-remise-en-route/"},
+      {"sigle": "Retainer", "nom": "Contrat de disponibilité pour la réponse à incident", "def": "Accord préparé avant une crise pour accéder à des spécialistes selon des conditions convenues. Dans l’offre publique NCC étudiée, les frais annuels de disponibilité sont distincts du temps d’intervention prépayé ; le travail supplémentaire suit les conditions contractuelles. Les engagements précisent l’accès et la réponse initiale. Le retour d’un service utilisable dépend encore du travail à accomplir.", "guide": "/posts/apres-cyberattaque-05-economie-remise-en-route/"},
       { sigle: 'CRA', nom: 'Cyber Resilience Act', def: 'Règlement (UE) 2024/2847 sur la cybersécurité des produits comportant des éléments numériques. Depuis le 11 septembre 2026, les fabricants dans son champ signalent les vulnérabilités activement exploitées et les incidents graves touchant la sécurité de leurs produits. Les principales exigences de sécurité et le régime spécifique des intendants de logiciels ouverts commencent le 11 décembre 2027.', guide: '/posts/cyber-resilience-act-circuit-alerte/' },
       { sigle: 'CSIRT', nom: 'Équipe de réponse aux incidents informatiques', def: 'Équipe chargée du traitement des incidents informatiques, de l’analyse des vulnérabilités et de l’assistance aux acteurs concernés. Dans le CRA, le CSIRT désigné comme coordinateur reçoit en principe les signalements avec l’ENISA et organise leur transmission aux autres coordinateurs concernés, selon les règles de confidentialité du règlement.', guide: '/posts/cyber-resilience-act-circuit-alerte/' },
       { sigle: 'Intendant de logiciels ouverts', nom: 'Open-source software steward', def: 'Organisation dotée de la personnalité juridique, distincte du fabricant, qui soutient de façon structurée et durable le développement de logiciels libres destinés à des activités commerciales et assure leur viabilité. Le CRA lui impose à partir du 11 décembre 2027 une politique de cybersécurité, une coopération avec les autorités et des obligations de signalement adaptées à son rôle.', guide: '/posts/cyber-resilience-act-circuit-alerte/' },
@@ -1087,6 +1089,56 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "mvo": {
+  "intuition": "Reprendre les fonctions prioritaires demande de vérifier leurs dépendances.",
+  "articles": [
+    {
+      "label": "Cyberattaque : le long chantier du redémarrage",
+      "href": "/posts/apres-cyberattaque-05-economie-remise-en-route/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "NCSC, Recovery and ongoing investigations",
+      "href": "https://www.ncsc.gov.uk/collection/disruptive-cyber-attacks/recovering/2-recovery-ongoing-investigations",
+      "detail": "Section 2.1 : définition et choix des opérations minimales.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "disponibilite-de-service",
+    "retainer"
+  ]
+},
+  "retainer": {
+  "intuition": "Réserver une capacité de réponse et terminer une reconstruction sont deux engagements distincts.",
+  "articles": [
+    {
+      "label": "Cyberattaque : le long chantier du redémarrage",
+      "href": "/posts/apres-cyberattaque-05-economie-remise-en-route/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "NCC, conditions de réponse à incident",
+      "href": "https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/716961/929698583726031-terms-and-conditions-2024-05-07-0015.pdf",
+      "detail": "Module Retained Incident Response, définitions, clauses 5.9 et 8.1–8.6, annexe 1.",
+      "kind": "source"
+    },
+    {
+      "label": "NCC, barème G-Cloud 14",
+      "href": "https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/716961/929698583726031-pricing-document-2024-05-07-0128.pdf",
+      "detail": "Pages 2–3 : frais annuels, jours prépayés et conditions tarifaires.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "disponibilite-de-service",
+    "mvo"
+  ]
+},
   "valeur-ajoutee": {
   "articles": [
     {
