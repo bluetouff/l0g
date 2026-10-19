@@ -326,6 +326,20 @@ a { color: inherit; text-decoration: none; }
   hyphens: auto;
 }
 
+/* One H1 scale across page templates, matching the methodology hero.
+   Keep it above scoped component styles and utility font shorthands. */
+:root { --page-title-size: clamp(2rem, 5vw, 3.25rem); }
+main h1 {
+  font-size: var(--page-title-size) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.035em !important;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+@media (max-width: 540px) {
+  :root { --page-title-size: clamp(1.85rem, 10vw, 2.5rem); }
+}
+
 .prose a {
   color: var(--color-signal);
   text-decoration: underline;
