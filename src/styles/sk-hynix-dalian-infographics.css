@@ -1,0 +1,92 @@
+/* The supplied DejaVu compositions keep their original glyph metrics. */
+@font-face {
+  font-family: 'l0g Dalian';
+  src: url('/fonts/sk-hynix-dalian/dejavu-sans-400.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'l0g Dalian';
+  src: url('/fonts/sk-hynix-dalian/dejavu-sans-700.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+.prose figure.l0g-sk-figure {
+  width: 100%;
+  min-width: 0;
+  max-width: 48rem;
+  margin: 2.5rem auto;
+  padding-bottom: 1rem;
+  overflow: visible;
+  container-type: inline-size;
+}
+.l0g-sk-figure .diagram {
+  min-width: 0;
+  max-width: 100%;
+  background: var(--color-ink);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+}
+.l0g-sk-figure svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+  letter-spacing: normal;
+}
+.l0g-sk-figure svg text {
+  font-family: 'l0g Dalian', 'DejaVu Sans', Arial, sans-serif;
+}
+.l0g-sk-figure .sk-desktop { display: block; }
+.l0g-sk-figure .sk-mobile {
+  display: none;
+  width: 100%;
+  max-width: 24rem;
+  margin-inline: auto;
+}
+.prose .l0g-sk-figure figcaption {
+  margin-top: 1rem;
+  color: var(--color-muted);
+  font-size: .88rem;
+  line-height: 1.6;
+}
+.l0g-sk-figure .fignum {
+  color: var(--color-paper);
+  font-weight: 700;
+}
+.l0g-sk-figure .details-data {
+  font-size: .85rem;
+  margin-top: .75rem;
+}
+.l0g-sk-figure summary { cursor: pointer; }
+.l0g-sk-figure summary:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 4px;
+}
+.l0g-sk-figure .audit-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.l0g-sk-figure .audit-table td,
+.l0g-sk-figure .audit-table th {
+  padding: .5rem;
+  border-bottom: 1px solid var(--color-line-strong);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.l0g-sk-figure pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  .l0g-sk-figure .sk-mobile { display: block; }
+  .l0g-sk-figure .sk-desktop { display: none; }
+}
+@container (max-width: 640px) {
+  .l0g-sk-figure .sk-mobile { display: block; }
+  .l0g-sk-figure .sk-desktop { display: none; }
+}

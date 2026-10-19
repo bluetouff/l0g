@@ -123,6 +123,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/scpi-office-income-infographics.test.mjs',
     'scripts/scpi-resale-infographics.test.mjs',
     'scripts/sfr-infographics.test.mjs',
+    'scripts/sk-hynix-dalian-infographics.test.mjs',
     'scripts/softbank-funding-infographics.test.mjs',
     'scripts/sovereign-bank-infographics.test.mjs',
     'scripts/stablecoin-redemption-infographics.test.mjs',
@@ -189,6 +190,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/shared-provider-rendered-infographics.test.mjs',
     'scripts/public-crisis-rendered-infographics.test.mjs',
     'scripts/recovery-price-rendered-infographics.test.mjs',
+    'scripts/sk-hynix-dalian-rendered-infographics.test.mjs',
     'scripts/straits-rendered-infographics.test.mjs',
   ]),
 });

@@ -204,6 +204,8 @@ Le diagnostic robuste tient en une phrase : **un choc mondial sur les puces a fr
 
 Pour prolonger la mécanique, voir notre article sur le [basis trade et ses débouclages forcés](/posts/basis-trade-treasuries-levier/), le [guide du carry trade](/guides/lire-le-carry-trade/) et la définition de l’[appel de marge](/glossaire/appel-de-marge/). Pour le déclencheur sectoriel, voir la [pile de contraintes des semi-conducteurs](/posts/semi-conducteurs-pile-contraintes/).
 
+Sur le versant industriel, notre enquête sur [SK hynix, Dalian et le financement d’une usine américaine](/posts/sk-hynix-dalian-usine-americaine-financement/) distingue les activités de fabrication, les périmètres de filiales et les conditions réglementaires qui encadrent un investissement. Elle prolonge ici la question des droits économiques des actionnaires.
+
 ## Sources
 
 - [Financial Services Commission, autorisation des ETF à titre unique et plafond de 200 %, 21 avril 2026](https://www.fsc.go.kr/eng/pr010101/86752)

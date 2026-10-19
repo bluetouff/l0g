@@ -210,6 +210,134 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
 {
+  "slug": "nand",
+  "sigle": "NAND",
+  "nom": "NAND flash memory",
+  "def": "A family of flash memory that retains stored data when power is removed. It provides storage in many SSDs. Three-dimensional NAND arranges memory cells in stacked layers; its storage role differs from the working memory supplied by HBM.",
+  "guide": "/en/analysis/sk-hynix-dalian-usine-americaine-financement/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "SK hynix: Dalian and funding a US memory factory",
+        "href": "/en/analysis/sk-hynix-dalian-usine-americaine-financement/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Solidigm, D7-P5510 product brief",
+        "href": "https://www.solidigm.com/products/data-center/product-briefs/dc-p5510.html",
+        "detail": "NAND memory, controller and firmware in a data-centre SSD.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "ssd",
+      "hbm",
+      "packaging-avance"
+    ]
+  }
+},
+{
+  "slug": "ssd",
+  "sigle": "SSD",
+  "nom": "Solid-state drive",
+  "def": "An electronic storage device combining non-volatile memory, usually NAND, with a controller and firmware that manage data and communication with the host system. NAND chips provide the storage medium; the complete drive also supplies these control functions.",
+  "guide": "/en/analysis/sk-hynix-dalian-usine-americaine-financement/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "SK hynix: Dalian and funding a US memory factory",
+        "href": "/en/analysis/sk-hynix-dalian-usine-americaine-financement/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Solidigm, D7-P5510 product brief",
+        "href": "https://www.solidigm.com/products/data-center/product-briefs/dc-p5510.html",
+        "detail": "NAND memory, controller and firmware in a data-centre SSD.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "nand",
+      "hbm",
+      "packaging-avance"
+    ]
+  }
+},
+{
+  "slug": "hbm",
+  "sigle": "HBM",
+  "nom": "High Bandwidth Memory",
+  "def": "Stacked DRAM connected through a wide interface to deliver data at high bandwidth, commonly to computing accelerators. Fabricating the memory chips and assembling and testing the finished package are separate production stages that can take place in different locations.",
+  "guide": "/en/analysis/sk-hynix-dalian-usine-americaine-financement/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "SK hynix: Dalian and funding a US memory factory",
+        "href": "/en/analysis/sk-hynix-dalian-usine-americaine-financement/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "SK hynix, HBM production between Korea and Indiana",
+        "href": "https://news.skhynix.com/en/groundbreaking-ceremony-in-indiana/",
+        "detail": "Advanced packaging, testing and wafers produced in Korea.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "nand",
+      "ssd",
+      "packaging-avance"
+    ]
+  }
+},
+{
+  "slug": "packaging-avance",
+  "sigle": "Advanced packaging",
+  "nom": "Connecting and assembling semiconductor chips",
+  "def": "Assembly technologies that combine or vertically stack multiple chips and interconnections within a package. They help connect processors and memory. An advanced packaging and test facility performs a different production stage from a plant that fabricates circuits on silicon wafers.",
+  "guide": "/en/analysis/sk-hynix-dalian-usine-americaine-financement/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "SK hynix: Dalian and funding a US memory factory",
+        "href": "/en/analysis/sk-hynix-dalian-usine-americaine-financement/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "SK hynix, HBM production between Korea and Indiana",
+        "href": "https://news.skhynix.com/en/groundbreaking-ceremony-in-indiana/",
+        "detail": "Advanced packaging, testing and wafers produced in Korea.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "nand",
+      "ssd",
+      "hbm"
+    ]
+  }
+},
+{
   "slug": "rto",
   "sigle": "RTO",
   "nom": "Recovery Time Objective",

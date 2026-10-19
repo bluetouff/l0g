@@ -206,6 +206,8 @@ The robust diagnosis fits in one sentence: **a global chip shock hit two shares 
 
 For related plumbing, read our work on the [Treasury basis trade and forced unwinds](/en/analysis/the-treasury-basis-trade/), the [carry-trade guide](/en/guides/read-the-carry-trade/) and the definition of a [margin call](/en/glossary/appel-de-marge/). For the sector trigger, see the [stack of semiconductor constraints](/en/analysis/semiconductors-a-stack-of-constraints/).
 
+On the industrial side, our investigation of [SK hynix, Dalian and US factory financing](/en/analysis/sk-hynix-dalian-usine-americaine-financement/) separates manufacturing stages, subsidiary boundaries and the regulatory conditions surrounding an investment. It extends the question of shareholders’ economic rights beyond trading flows.
+
 ## Sources
 
 - [Financial Services Commission, single-stock ETF authorisation and 200% cap, 21 April 2026](https://www.fsc.go.kr/eng/pr010101/86752)

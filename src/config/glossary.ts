@@ -193,8 +193,10 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'GPU', nom: 'Graphics Processing Unit', def: "Processeur capable d’exécuter de nombreux calculs en parallèle, utilisé notamment pour le rendu graphique et l’intelligence artificielle. Dans un service de calcul, ses performances dépendent aussi de la mémoire, des interconnexions et du logiciel ; sa capacité technique ne suffit pas à mesurer les recettes qu’il peut générer." },
       { sigle: 'EUV', nom: 'Extreme ultraviolet lithography', def: "Lithographie à ultraviolets extrêmes, utilisée pour imprimer les couches les plus complexes des puces avancées avec une lumière de 13,5 nm. Goulet industriel majeur car elle combine optique, vide, métrologie, logiciels et chaîne de fournisseurs spécialisée." },
       { sigle: 'Fonderie', nom: 'Dedicated IC foundry', def: "Fabricant contractuel de semi-conducteurs qui produit les puces conçues par d'autres. Une fonderie avancée vend de la capacité qualifiée, du rendement industriel et une feuille de route de noeuds, pas seulement des wafers." },
-      { sigle: 'HBM', nom: 'High Bandwidth Memory', def: "Mémoire DRAM empilée à très large bande passante, placée près d'un accélérateur pour nourrir le calcul en données. Dans l'IA, elle transforme la mémoire en goulet de packaging et d'approvisionnement." },
-      { sigle: 'Packaging avancé', nom: 'Advanced packaging', def: "Ensemble des techniques d'assemblage qui rapprochent plusieurs puces, mémoires et interconnexions dans un même module. Il devient critique quand la performance dépend autant du déplacement des données que du calcul brut." },
+      {"sigle": "NAND", "nom": "Mémoire flash NAND", "def": "Famille de mémoire flash qui conserve les données sans alimentation électrique. Elle sert notamment au stockage dans les SSD. Dans la NAND tridimensionnelle, les cellules sont disposées sur plusieurs couches ; la mémoire de stockage et la mémoire de travail HBM remplissent des fonctions différentes.", "guide": "/posts/sk-hynix-dalian-usine-americaine-financement/"},
+      {"sigle": "SSD", "nom": "Solid-state drive", "def": "Support de stockage électronique associant une mémoire non volatile, généralement NAND, à un contrôleur et à un micrologiciel pour gérer les données et les échanges avec le système. Les puces NAND sont des composants du SSD ; le produit fini comprend aussi ces fonctions de contrôle.", "guide": "/posts/sk-hynix-dalian-usine-americaine-financement/"},
+      { sigle: 'HBM', nom: 'High Bandwidth Memory', def: "Mémoire DRAM empilée à très large bande passante, placée près d'un accélérateur pour nourrir le calcul en données. Dans l'IA, elle transforme la mémoire en goulet de packaging et d'approvisionnement.", guide: '/posts/sk-hynix-dalian-usine-americaine-financement/' },
+      { sigle: 'Packaging avancé', nom: 'Advanced packaging', def: "Ensemble des techniques d'assemblage qui rapprochent plusieurs puces, mémoires et interconnexions dans un même module. Il devient critique quand la performance dépend autant du déplacement des données que du calcul brut.", guide: '/posts/sk-hynix-dalian-usine-americaine-financement/' },
       { sigle: 'Fabless', nom: 'Concepteur sans usine', def: "Modèle d'entreprise qui conçoit des puces mais confie leur fabrication à une fonderie. Il sépare la propriété intellectuelle et le logiciel de la charge industrielle des fabs." },
       { sigle: 'Prime de terme', nom: 'Term premium', def: "Écart entre le rendement d'une obligation longue et celui attendu d'une succession de placements courts sur le même horizon. Cette rémunération du risque de taux est estimée par des modèles, notamment ACM et Kim–Wright, dont les résultats peuvent différer et être révisés. Elle peut être négative si l'obligation offre une protection recherchée. La pente de la courbe ne la mesure pas directement.", guide: '/guides/lire-le-marche-des-treasuries/' },
       { sigle: 'Duration', nom: 'Sensibilité aux taux', def: "Mesure de la sensibilité du prix d'une obligation à une variation de taux. Plus la duration est élevée, plus une hausse de rendement détruit de valeur de marché. Elle transforme une tension sur les taux longs en risque de bilan pour les porteurs de dette longue.", guide: '/guides/lire-le-marche-des-treasuries/' },
@@ -853,7 +855,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-19';
+export const glossaryUpdatedIso = '2026-10-20';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1096,6 +1098,94 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "nand": {
+    "articles": [
+      {
+        "label": "SK hynix : Dalian et le financement d’une usine américaine",
+        "href": "/posts/sk-hynix-dalian-usine-americaine-financement/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Solidigm, fiche technique D7-P5510",
+        "href": "https://www.solidigm.com/products/data-center/product-briefs/dc-p5510.html",
+        "detail": "Mémoire NAND, contrôleur et micrologiciel dans un SSD destiné aux centres de données.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "ssd",
+      "hbm",
+      "packaging-avance"
+    ]
+  },
+  "ssd": {
+    "articles": [
+      {
+        "label": "SK hynix : Dalian et le financement d’une usine américaine",
+        "href": "/posts/sk-hynix-dalian-usine-americaine-financement/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Solidigm, fiche technique D7-P5510",
+        "href": "https://www.solidigm.com/products/data-center/product-briefs/dc-p5510.html",
+        "detail": "Mémoire NAND, contrôleur et micrologiciel dans un SSD destiné aux centres de données.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "nand",
+      "hbm",
+      "packaging-avance"
+    ]
+  },
+  "hbm": {
+    "articles": [
+      {
+        "label": "SK hynix : Dalian et le financement d’une usine américaine",
+        "href": "/posts/sk-hynix-dalian-usine-americaine-financement/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "SK hynix, chaîne HBM entre Corée et Indiana",
+        "href": "https://news.skhynix.com/en/groundbreaking-ceremony-in-indiana/",
+        "detail": "Assemblage avancé, test et acheminement de wafers fabriqués en Corée.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "nand",
+      "ssd",
+      "packaging-avance"
+    ]
+  },
+  "packaging-avance": {
+    "articles": [
+      {
+        "label": "SK hynix : Dalian et le financement d’une usine américaine",
+        "href": "/posts/sk-hynix-dalian-usine-americaine-financement/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "SK hynix, chaîne HBM entre Corée et Indiana",
+        "href": "https://news.skhynix.com/en/groundbreaking-ceremony-in-indiana/",
+        "detail": "Assemblage avancé, test et acheminement de wafers fabriqués en Corée.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "nand",
+      "ssd",
+      "hbm"
+    ]
+  },
   "rto": {
   "intuition": "La ressource informatique a sa cible de disponibilité ; le service doit aussi retrouver des données utilisables.",
   "articles": [
