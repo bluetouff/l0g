@@ -17,7 +17,7 @@ quickTake:
 
 Un badge peut paraître beaucoup plus précis qu’il ne l’est. Dans la documentation de World ID pour Zoom, l’entreprise choisit une durée de validité après authentification : vingt-quatre heures par défaut, ou sept, quinze, voire trente jours. Pendant cette fenêtre, le badge peut réapparaître dans les réunions sans nouvelle sollicitation de l’utilisateur. Le réglage est public. Il rappelle qu’un signe rassurant sur un écran possède une date, un périmètre et des conditions d’emploi. <sup><a href="#source-S04" aria-label="Source 4">4</a></sup>
 
-Cette petite fenêtre de configuration éclaire le projet présenté par World le 18 octobre 2026, puis diffusé par communiqué le lendemain : proposer à la banque et à la finance une infrastructure capable d’attester la présence d’êtres humains dans des interactions envahies par les identités synthétiques. Le projet, conçu à l’origine par Sam Altman, Max Novendstern et Alex Blania, assemble une application d’identité, une intégration à Zoom et des outils pour agents logiciels. <sup><a href="#source-S01" aria-label="Source 1">1</a></sup><sup><a href="#source-S02" aria-label="Source 2">2</a></sup>
+Cette petite fenêtre de configuration éclaire le projet présenté par World le 18 octobre 2026, puis diffusé par communiqué le lendemain : proposer à la banque et à la finance une infrastructure capable d’attester la présence d’êtres humains dans des interactions envahies par les identités synthétiques. Le projet, conçu à l’origine par Sam Altman, Max Novendstern et Alex Blania, assemble une application d’identité, une intégration à Zoom et des outils pour agents logiciels. <sup><a href="#source-S01" aria-label="Source 1">1</a>, <a href="#source-S02" aria-label="Source 2">2</a></sup>
 
 L’offre répond à un problème réel. Sa valeur dépendra pourtant d’une question beaucoup plus exigeante que la reconnaissance d’un visage : comment une institution transforme-t-elle une preuve technique en décision financière, et qui répond de l’erreur lorsqu’elle se trompe ? Les notices d’administration et la documentation destinée aux développeurs donnent une réponse plus intéressante que les promesses générales d’un Internet débarrassé des imposteurs.
 
@@ -148,7 +148,7 @@ L’autorisation d’un paiement ajoute encore une relation : cette personne a-t
 </div>
 </div>
 <figcaption>
-<span className="figlabel">Figure 1.</span> Trois familles d’attestations alimentent une décision qui doit encore être reliée à l’identité du titulaire, à ses droits et à l’opération. La figure est une décomposition analytique, pas le parcours d’une banque cliente. <sup><a href="#source-S01" aria-label="Source 1">1</a></sup><sup><a href="#source-S11" aria-label="Source 11">11</a></sup><sup><a href="#source-S17" aria-label="Source 17">17</a></sup><sup><a href="#source-S19" aria-label="Source 19">19</a></sup><sup><a href="#source-S20" aria-label="Source 20">20</a></sup>
+<span className="figlabel">Figure 1.</span> Trois familles d’attestations alimentent une décision qui doit encore être reliée à l’identité du titulaire, à ses droits et à l’opération. La figure est une décomposition analytique, pas le parcours d’une banque cliente. <sup><a href="#source-S01" aria-label="Source 1">1</a>, <a href="#source-S11" aria-label="Source 11">11</a>, <a href="#source-S17" aria-label="Source 17">17</a>, <a href="#source-S19" aria-label="Source 19">19</a>, <a href="#source-S20" aria-label="Source 20">20</a></sup>
 </figcaption>
 </figure>
 
@@ -256,13 +256,13 @@ L’enjeu bancaire est l’usage du résultat. Une preuve de connexion récente 
 </div>
 </div>
 <figcaption>
-<span className="figlabel">Figure 2.</span> Les longueurs correspondent exactement aux quatre durées configurables. Le réglage décrit une cadence de réauthentification, pas un résultat de test de fraude. Les contrôles éventuellement appliqués à chaque session ne sont pas reconstitués ici. <sup><a href="#source-S04" aria-label="Source 4">4</a></sup><sup><a href="#source-S05" aria-label="Source 5">5</a></sup>
+<span className="figlabel">Figure 2.</span> Les longueurs correspondent exactement aux quatre durées configurables. Le réglage décrit une cadence de réauthentification, pas un résultat de test de fraude. Les contrôles éventuellement appliqués à chaque session ne sont pas reconstitués ici. <sup><a href="#source-S04" aria-label="Source 4">4</a>, <a href="#source-S05" aria-label="Source 5">5</a></sup>
 </figcaption>
 </figure>
 
 <h2 id="la-confidentialite-merite-mieux-quun-proces-automatique">La confidentialité mérite mieux qu’un procès automatique</h2>
 
-La critique la plus facile consisterait à imaginer une banque centrale des iris où World pourrait retrouver toutes les activités de chacun. L’architecture publiée décrit un effort réel pour éviter cette concentration. Les informations nécessaires à la recherche de doublons sont réparties en fragments de secret, comparés par plusieurs opérateurs au moyen d’un [calcul multipartite](/glossaire/calcul-multipartite/). Le principe est de produire un résultat sans remettre à chaque intervenant la donnée complète. <sup><a href="#source-S08" aria-label="Source 8">8</a></sup><sup><a href="#source-S09" aria-label="Source 9">9</a></sup>
+La critique la plus facile consisterait à imaginer une banque centrale des iris où World pourrait retrouver toutes les activités de chacun. L’architecture publiée décrit un effort réel pour éviter cette concentration. Les informations nécessaires à la recherche de doublons sont réparties en fragments de secret, comparés par plusieurs opérateurs au moyen d’un [calcul multipartite](/glossaire/calcul-multipartite/). Le principe est de produire un résultat sans remettre à chaque intervenant la donnée complète. <sup><a href="#source-S08" aria-label="Source 8">8</a>, <a href="#source-S09" aria-label="Source 9">9</a></sup>
 
 Il faut distinguer ce contrôle d’unicité, effectué lors de l’enrôlement, de la présentation ultérieure d’une preuve à un service. Une [preuve à divulgation nulle de connaissance](/glossaire/zkp/) permet de vérifier une propriété sans nécessairement révéler les données qui l’établissent. L’intérêt pratique est important : prouver une condition d’accès pourrait éviter de transmettre une nouvelle copie de document à chaque interlocuteur. C’est une possibilité technique, dont le bénéfice dépend du parcours effectivement déployé et des informations que le destinataire demande en plus. <sup><a href="#source-S08" aria-label="Source 8">8</a></sup> <sup><a href="#source-S18" aria-label="Source 18">18</a></sup>
 
@@ -397,7 +397,7 @@ Même lorsque la confidentialité technique progresse, une question demeure pour
 </div>
 </div>
 <figcaption>
-<span className="figlabel">Figure 3.</span> Séparation conceptuelle entre déduplication à l’enrôlement et présentation ultérieure. Les nœuds A, B et C sont symboliques, sans représenter la topologie de production. L’architecture est celle décrite par le projet, non auditée dans ce dossier. <sup><a href="#source-S03" aria-label="Source 3">3</a></sup><sup><a href="#source-S05" aria-label="Source 5">5</a></sup><sup><a href="#source-S08" aria-label="Source 8">8</a></sup><sup><a href="#source-S09" aria-label="Source 9">9</a></sup>
+<span className="figlabel">Figure 3.</span> Séparation conceptuelle entre déduplication à l’enrôlement et présentation ultérieure. Les nœuds A, B et C sont symboliques, sans représenter la topologie de production. L’architecture est celle décrite par le projet, non auditée dans ce dossier. <sup><a href="#source-S03" aria-label="Source 3">3</a>, <a href="#source-S05" aria-label="Source 5">5</a>, <a href="#source-S08" aria-label="Source 8">8</a>, <a href="#source-S09" aria-label="Source 9">9</a></sup>
 </figcaption>
 </figure>
 
@@ -524,6 +524,9 @@ La cryptographie peut solidement attacher un accord à des paramètres. Elle ne 
 <text x="42" y="644" font-family="DejaVu Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="world-4-fr-m-panel-5">Banque</text>
 <text x="238" y="644" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="world-4-fr-m-panel-5">Mandat et</text>
 <text x="238" y="671" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="world-4-fr-m-panel-5">contrôles</text>
+<path id="world-4-fr-m-step-1" d="M 22 427.515 H 12 V 470.291 H 20" fill="none" stroke="var(--color-signal)" stroke-width="2" marker-end="url(#world-4-fr-m-arrow)" />
+<path id="world-4-fr-m-step-2" d="M 22 507.515 H 12 V 550.291 H 20" fill="none" stroke="var(--color-signal)" stroke-width="2" marker-end="url(#world-4-fr-m-arrow)" />
+<path id="world-4-fr-m-step-3" d="M 22 589.576 H 12 V 630.291 H 20" fill="none" stroke="var(--color-signal)" stroke-width="2" marker-end="url(#world-4-fr-m-arrow)" />
 <line x1="24" y1="693" x2="456" y2="693" stroke="var(--color-line-strong)" stroke-width="1.6" />
 <text x="24" y="718" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources : </text>
 <a href="#source-S06">
@@ -539,7 +542,7 @@ La cryptographie peut solidement attacher un accord à des paramètres. Elle ne 
 </div>
 </div>
 <figcaption>
-<span className="figlabel">Figure 4.</span> Le rattachement à un humain et l’approbation d’une opération répondent à deux besoins. La partie inférieure adapte le mécanisme documenté à un paiement hypothétique ; aucun déploiement bancaire n’est allégué. <sup><a href="#source-S06" aria-label="Source 6">6</a></sup><sup><a href="#source-S07" aria-label="Source 7">7</a></sup><sup><a href="#source-S18" aria-label="Source 18">18</a></sup>
+<span className="figlabel">Figure 4.</span> Le rattachement à un humain et l’approbation d’une opération répondent à deux besoins. La partie inférieure adapte le mécanisme documenté à un paiement hypothétique ; aucun déploiement bancaire n’est allégué. <sup><a href="#source-S06" aria-label="Source 6">6</a>, <a href="#source-S07" aria-label="Source 7">7</a>, <a href="#source-S18" aria-label="Source 18">18</a></sup>
 </figcaption>
 </figure>
 
@@ -547,7 +550,7 @@ La cryptographie peut solidement attacher un accord à des paramètres. Elle ne 
 
 Le projet n’est pas seulement un ensemble de protocoles. Il doit financer des appareils, des applications, des opérateurs et leur maintenance. En juillet 2026, World Foundation a annoncé une première clôture de 52,5 millions de dollars par vente de jetons WLD bloqués douze mois, menée par Pantera Capital. Bain Capital Crypto figure également dans la liste des participants. Les jetons ne représentent pas des actions de la fondation. <sup><a href="#source-S13" aria-label="Source 13">13</a></sup>
 
-Pantera réapparaît en octobre parmi les partenaires de conception. Ce chevauchement ne révèle aucune irrégularité, mais il interdit de traiter automatiquement la participation au lancement comme une validation économique indépendante. Il faut aussi conserver la précision des noms : le financement cite Bain Capital Crypto, tandis que le lancement cite Bain Capital, sans permettre de leur attribuer une même équipe ou un même engagement commercial. <sup><a href="#source-S02" aria-label="Source 2">2</a></sup><sup><a href="#source-S13" aria-label="Source 13">13</a></sup>
+Pantera réapparaît en octobre parmi les partenaires de conception. Ce chevauchement ne révèle aucune irrégularité, mais il interdit de traiter automatiquement la participation au lancement comme une validation économique indépendante. Il faut aussi conserver la précision des noms : le financement cite Bain Capital Crypto, tandis que le lancement cite Bain Capital, sans permettre de leur attribuer une même équipe ou un même engagement commercial. <sup><a href="#source-S02" aria-label="Source 2">2</a>, <a href="#source-S13" aria-label="Source 13">13</a></sup>
 
 La fondation décrit un objectif de financement du protocole par des frais payés par les applications. Les conditions de facturation de l’offre bancaire et les revenus correspondants ne sont pas publiés dans les pièces consultées. Le mécanisme économique reste néanmoins lisible : plus une attestation est acceptée, plus elle devient utile à ses détenteurs ; plus ils sont nombreux à pouvoir la présenter, plus son intégration intéresse les services. <sup><a href="#source-S13" aria-label="Source 13">13</a></sup>
 
@@ -660,13 +663,13 @@ Aucune pièce consultée n’établit une position monopolistique de World dans 
 </div>
 </div>
 <figcaption>
-<span className="figlabel">Figure 5.</span> Les traits pointillés relient des rôles documentés, sans représenter des flux de capitaux individuels. Les 52,5 millions de dollars sont le total initial annoncé de la vente de jetons. Le financement du réseau par les applications est un objectif déclaré, pas un revenu bancaire constaté. <sup><a href="#source-S02" aria-label="Source 2">2</a></sup><sup><a href="#source-S13" aria-label="Source 13">13</a></sup>
+<span className="figlabel">Figure 5.</span> Les traits pointillés relient des rôles documentés, sans représenter des flux de capitaux individuels. Les 52,5 millions de dollars sont le total initial annoncé de la vente de jetons. Le financement du réseau par les applications est un objectif déclaré, pas un revenu bancaire constaté. <sup><a href="#source-S02" aria-label="Source 2">2</a>, <a href="#source-S13" aria-label="Source 13">13</a></sup>
 </figcaption>
 </figure>
 
 <h2 id="le-pouvoir-se-partage-entre-plusieurs-reglages">Le pouvoir se partage entre plusieurs réglages</h2>
 
-Parler de World comme d’un acteur unique ferait disparaître une partie du problème. La fondation se présente comme le dépositaire à but non lucratif du protocole ; Tools for Humanity contribue à construire les outils et à développer les intégrations. Cette répartition institutionnelle ne renseigne pas, à elle seule, sur tous les pouvoirs de modification, les garanties contractuelles ou les voies de contestation. <sup><a href="#source-S02" aria-label="Source 2">2</a></sup><sup><a href="#source-S13" aria-label="Source 13">13</a></sup>
+Parler de World comme d’un acteur unique ferait disparaître une partie du problème. La fondation se présente comme le dépositaire à but non lucratif du protocole ; Tools for Humanity contribue à construire les outils et à développer les intégrations. Cette répartition institutionnelle ne renseigne pas, à elle seule, sur tous les pouvoirs de modification, les garanties contractuelles ou les voies de contestation. <sup><a href="#source-S02" aria-label="Source 2">2</a>, <a href="#source-S13" aria-label="Source 13">13</a></sup>
 
 Dans le parcours Zoom documenté, l’employeur choisit la fréquence de réauthentification. Dans une intégration bancaire, ce serait l’établissement qui déciderait de la portée donnée au résultat et des opérations qui exigent un contrôle supplémentaire. Le fournisseur définit les possibilités du produit ; son client choisit parmi elles, puis traduit le signal dans ses procédures. Attribuer l’ensemble de ces décisions à Sam Altman masquerait la responsabilité de ceux qui les configurent. <sup><a href="#source-S04" aria-label="Source 4">4</a></sup>
 
@@ -684,7 +687,7 @@ Avec une capacité de 800 heures mensuelles, l’équipe peut traiter 6 000 doss
 
 Le choix du recours devient décisif. Un contrôle trop difficile à franchir peut bloquer un client réel ; un dépannage trop permissif peut rouvrir l’accès aux imposteurs. La procédure alternative doit donc offrir un niveau de sécurité cohérent, tout en restant accessible et suffisamment dimensionnée. Son prix fait partie du coût du système, même lorsqu’il n’apparaît pas dans la facture de l’API.
 
-La récupération de World ID illustre cette dépendance. Les guides prévoient des méthodes de connexion enregistrées à l’avance et indiquent que le support ne peut pas reconstituer l’accès à la place de l’usager. Perdre cet accès ne signifie pas automatiquement perdre son compte bancaire. Cela devient un risque bancaire si l’établissement a fait de cette preuve un passage obligé sans autre procédure de vérification. <sup><a href="#source-S05" aria-label="Source 5">5</a></sup><sup><a href="#source-S15" aria-label="Source 15">15</a></sup>
+La récupération de World ID illustre cette dépendance. Les guides prévoient des méthodes de connexion enregistrées à l’avance et indiquent que le support ne peut pas reconstituer l’accès à la place de l’usager. Perdre cet accès ne signifie pas automatiquement perdre son compte bancaire. Cela devient un risque bancaire si l’établissement a fait de cette preuve un passage obligé sans autre procédure de vérification. <sup><a href="#source-S05" aria-label="Source 5">5</a>, <a href="#source-S15" aria-label="Source 15">15</a></sup>
 
 <figure className="l0g-world-figure" id="figure-6">
 <div className="world-panel">
@@ -774,7 +777,7 @@ La récupération de World ID illustre cette dépendance. Les guides prévoient 
 
 <h2 id="la-responsabilite-survit-a-lexternalisation">La responsabilité survit à l’externalisation</h2>
 
-Une infrastructure de preuve peut être utile précisément parce qu’elle prend en charge une opération difficile. Encore faut-il décrire ce qui lui est confié. Les orientations américaines de 2023 sur les prestataires couvrent la sélection, le contrat, la surveillance et la fin de la relation. Une révision publiée le 15 septembre 2026 propose une approche davantage proportionnée aux risques, avec une consultation jusqu’au 16 novembre. Ce projet, qui réaffirme la responsabilité de l’établissement, ne doit pas être présenté comme un nouveau texte définitif. Le programme d’identification de la clientèle conserve lui aussi la responsabilité de la banque. Acheter un service n’achète pas une disparition de cette responsabilité. <sup><a href="#source-S16" aria-label="Source 16">16</a></sup><sup><a href="#source-S22" aria-label="Source 22">22</a></sup><sup><a href="#source-S11" aria-label="Source 11">11</a></sup>
+Une infrastructure de preuve peut être utile précisément parce qu’elle prend en charge une opération difficile. Encore faut-il décrire ce qui lui est confié. Les orientations américaines de 2023 sur les prestataires couvrent la sélection, le contrat, la surveillance et la fin de la relation. Une révision publiée le 15 septembre 2026 propose une approche davantage proportionnée aux risques, avec une consultation jusqu’au 16 novembre. Ce projet, qui réaffirme la responsabilité de l’établissement, ne doit pas être présenté comme un nouveau texte définitif. Le programme d’identification de la clientèle conserve lui aussi la responsabilité de la banque. Acheter un service n’achète pas une disparition de cette responsabilité. <sup><a href="#source-S16" aria-label="Source 16">16</a>, <a href="#source-S22" aria-label="Source 22">22</a>, <a href="#source-S11" aria-label="Source 11">11</a></sup>
 
 Dans le cas de World, les points décisifs restent la performance en conditions réelles, la fraîcheur requise pour chaque usage, les données conservées et les modalités de recours. Un établissement aurait aussi besoin de savoir qui supporte le coût d’une indisponibilité, comment changer de fournisseur et quelles preuves de décision resteront accessibles après résiliation. Les documents publics permettent de formuler ces exigences ; ils ne permettent pas de reconstituer des contrats bancaires qui ne sont pas publiés.
 

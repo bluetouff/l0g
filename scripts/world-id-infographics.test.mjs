@@ -5,7 +5,7 @@ import test from 'node:test';
 import postcss from 'postcss';
 import { compile } from '@mdx-js/mdx';
 import { assertFontLicenseReferences } from './font-license-assertions.mjs';
-import { assertWorldGeometry, assertWorldProportions, assertWorldQuantitative, assertWorldSourceFaithful, inspectWorldSvg, worldSourceFigures } from './world-id-svg-assertions.mjs';
+import { assertWorldGeometry, assertWorldMobileActionConnections, assertWorldProportions, assertWorldQuantitative, assertWorldSourceFaithful, inspectWorldSvg, worldSourceFigures } from './world-id-svg-assertions.mjs';
 
 const read = file => readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
 const cssBase = '/styles/world-id-infographics-v1.css';
@@ -81,6 +81,18 @@ test('expanding cards cannot consume the gutter between adjacent mobile rows', (
   assert.ok(first && next);
   const bottom = Number(first.match(/\by="([^"]+)"/u)[1]) + Number(first.match(/\bheight="([^"]+)"/u)[1]);
   for (const gap of [-1, .5]) assert.throws(() => assertWorldGeometry(svg.replace(next, next.replace(/\by="[^"]+"/u, `y="${bottom + gap}"`))), /gutter/u);
+});
+
+test('all four mobile action connections are drawn, legible and painted above the cards', () => {
+  for (const group of figures) {
+    const svg = group[7], rail = svg.match(/<path\b[^>]*id="world-4-(?:fr|en)-m-step-1"[^>]*\/>/u)?.[0];
+    assert.ok(rail); assertWorldMobileActionConnections(svg);
+    assert.throws(() => assertWorldMobileActionConnections(svg.replace(rail, '')), /all three/u);
+    assert.throws(() => assertWorldMobileActionConnections(svg.replace(rail, rail.replace('stroke="var(--color-signal)"', 'stroke="none"'))), /visible semantic stroke/u);
+    assert.throws(() => assertWorldMobileActionConnections(svg.replace(rail, rail.replace('H 12', 'H 120'))), /clear left margin/u);
+    const behind = svg.replace(rail, '').replace('</defs>', `</defs>${rail}`);
+    assert.throws(() => assertWorldMobileActionConnections(behind), /painted after/u);
+  }
 });
 
 test('visible path parsing consumes its bounded numeric grammar without accepting malformed or oversized numbers', () => {

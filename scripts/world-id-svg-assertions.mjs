@@ -17,7 +17,7 @@ const hashes = {
   "fr-4": "fa4cf1afdd083a07d6759565baff8b9c2bf15535182acfd2c9d951074b68dfdf",
   "fr-5": "5a0805e9fcf79a1b637a0cd1335f42a4e03f63b510272f7f17d0bf46e5cfe339",
   "fr-6": "e998c80d1cdd91a84b839588b56eb1bbddf0570d73540b69a0e0a30b9af4cc82",
-  "fr-7": "6fe87ba7ce2f16fc13384726d3b63ac88a5dc8b05c8fe50bfd4e405e7f05e1ef",
+  "fr-7": "83d140181e5cae2a25cdb42a50dbbff78cd3a284ad0c85d17934a3e5a5489921",
   "fr-8": "cb6ad136739bb13a53468ff79525e8cc867060fb71608cb988bc9bdb465d37f1",
   "fr-9": "abe1b7c5dc66783799bdee8eed274f61b5c7ec1ca95a2c47c4ce5254d3caf8fb",
   "fr-10": "a49d307f76eca67a6da076171d72d6fb41639c1b990887cf18e317183909450c",
@@ -29,7 +29,7 @@ const hashes = {
   "en-4": "e60d0132c8374385990db58346e31b140366b788763cdfef556efda71a72204e",
   "en-5": "d3ddea36580b9ba7b02ab2c4a0dd17562a85e5906d10e5e0ce0409959dd8aae8",
   "en-6": "d5141f8021fa18875d3e6ce951762d27f9281dd339fcbdc7edd06ccfb6396145",
-  "en-7": "2939d2316ab51faf5135c0933c26176e11aa1a860969f4121211c2e4d8737fe6",
+  "en-7": "c5a28e7f9e2fab333a4ebbe0efdf2d296d7c33a9d84a26cf418fa79552c39505",
   "en-8": "20f337030b108576d835aef627cfba1603fb616c7cf7b1172c37adc260b0c2c2",
   "en-9": "e120bfaf78054922f43e5c447c159bb6fbdf199716cf4a6bde269f927d84c65f",
   "en-10": "99606f1a949906807cafa2d485a1c13087f4d9ca80905ddbed49522397e18afe",
@@ -97,8 +97,38 @@ export function assertWorldSourceFaithful(svg, lang, index) {
   assert.equal(createHash('sha256').update(svg).digest('hex'), hashes[`${lang}-${index}`], 'Verified compact composition, labels or semantic-theme mapping changed');
 }
 
+export function assertWorldMobileActionConnections(svg) {
+  const { root, nodes } = inspectWorldSvg(svg), language = worldAttrs(root)['aria-labelledby'].match(/^world-4-(fr|en)-m-title\b/u)?.[1];
+  assert.ok(language, 'Mobile action workflow');
+  const connections = nodes.filter(n => ['line', 'path'].includes(worldTag(n)) && worldAttrs(n)['marker-end']);
+  assert.equal(connections.length, 4, 'Human attachment and all three action transitions remain visible');
+  for (const n of connections) {
+    assert.equal(worldAttrs(n).stroke, 'var(--color-signal)', 'Connections have a visible semantic stroke');
+    assert.ok(number(n, 'stroke-width') >= 2);
+  }
+  const panels = Array.from({ length: 6 }, (_, i) => nodes.find(n => worldAttrs(n).id === `world-4-${language}-m-panel-${i}`));
+  assert.ok(panels.every(Boolean));
+  const attachment = connections.find(n => worldTag(n) === 'line');
+  assert.ok(attachment);
+  assert.ok(number(attachment, 'x1') >= number(panels[0], 'x') + number(panels[0], 'width') + 8 && number(attachment, 'x2') <= number(panels[1], 'x') - 8 && number(attachment, 'x2') > number(attachment, 'x1'));
+  const lastBackground = Math.max(...panels.map(p => nodes.indexOf(p)));
+  for (let i = 0; i < 3; i++) {
+    const rail = connections.find(n => worldAttrs(n).id === `world-4-${language}-m-step-${i + 1}`);
+    assert.ok(rail, 'Each successive action has its own drawn connection');
+    assert.ok(nodes.indexOf(rail) > lastBackground, 'Side rails are painted after the card backgrounds');
+    const match = worldAttrs(rail).d.match(/^M ([0-9.]+) ([0-9.]+) H ([0-9.]+) V ([0-9.]+) H ([0-9.]+)$/u);
+    assert.ok(match, 'Side rail has an explicit descending route');
+    const [startX, startY, railX, endY, endX] = match.slice(1).map(Number), from = panels[i + 2], to = panels[i + 3];
+    const left = Math.min(number(from, 'x'), number(to, 'x'));
+    assert.ok(railX >= 10 && railX < startX && railX < endX && startX <= left - 2 && endX <= left - 4, 'Rails and arrowheads remain in the clear left margin');
+    assert.ok(startY > number(from, 'y') + 8 && startY < number(from, 'y') + number(from, 'height') - 8 && endY > number(to, 'y') + 8 && endY < number(to, 'y') + number(to, 'height') - 8 && endY > startY, 'Connections lead from each card to the following card');
+  }
+  return true;
+}
+
 export function assertWorldGeometry(svg) {
   const { root, nodes } = inspectWorldSvg(svg), [,, width, height] = worldAttrs(root).viewBox.split(' ').map(Number);
+  if (/^world-4-(?:fr|en)-m-title\b/u.test(worldAttrs(root)['aria-labelledby'])) assertWorldMobileActionConnections(svg);
   const labelBoxes = [];
   const visible = node => worldTag(node) === 'defs' ? [] : [node, ...(node[worldTag(node)] ?? []).filter(child => worldTag(child) !== '#text').flatMap(visible)];
   const point = (x, y) => assert.ok(Number.isFinite(x) && Number.isFinite(y) && x >= 0 && y >= 0 && x <= width && y <= height, `Shape outside viewBox: ${x},${y}`);

@@ -15,7 +15,7 @@ sourceUpdatedDate: '2026-10-20T14:13:08+02:00'
 
 A badge can look more precise than the assurance behind it. World ID’s documentation for Zoom lets an organisation choose how long authentication remains valid: twenty-four hours by default, or seven, fifteen or thirty days. Within that window, the badge can appear in further meetings without another prompt to the user. The setting is public. It is a reminder that a reassuring mark on a screen has an age, a scope and conditions of use. <sup><a href="#source-S04" aria-label="Source 4">4</a></sup>
 
-That small configuration panel helps explain the larger ambition World announced on 18 October 2026, followed by a press release the next day: to supply banking and finance with infrastructure for proving that humans are involved in increasingly synthetic digital interactions. Originally conceived by Sam Altman, Max Novendstern and Alex Blania, the project now bundles an identity app, a Zoom integration and tools for software agents. <sup><a href="#source-S01" aria-label="Source 1">1</a></sup><sup><a href="#source-S02" aria-label="Source 2">2</a></sup>
+That small configuration panel helps explain the larger ambition World announced on 18 October 2026, followed by a press release the next day: to supply banking and finance with infrastructure for proving that humans are involved in increasingly synthetic digital interactions. Originally conceived by Sam Altman, Max Novendstern and Alex Blania, the project now bundles an identity app, a Zoom integration and tools for software agents. <sup><a href="#source-S01" aria-label="Source 1">1</a>, <a href="#source-S02" aria-label="Source 2">2</a></sup>
 
 There is a genuine problem to solve. The value of the solution, however, depends on something more demanding than recognising a face. How does an institution turn technical evidence into a financial decision, and who bears the consequences when it gets that decision wrong? Administrative settings and developer instructions offer a more useful starting point than the broad promise of an internet free of impersonators.
 
@@ -148,7 +148,7 @@ Authorising a payment requires another relationship. Is this person entitled to 
 </div>
 </div>
 <figcaption>
-<span className="figlabel">Figure 1.</span> Three families of credentials inform a decision that must still be connected to the account holder’s identity, authority and transaction. This is an analytical decomposition, not a customer bank’s workflow. <sup><a href="#source-S01" aria-label="Source 1">1</a></sup><sup><a href="#source-S11" aria-label="Source 11">11</a></sup><sup><a href="#source-S17" aria-label="Source 17">17</a></sup><sup><a href="#source-S19" aria-label="Source 19">19</a></sup><sup><a href="#source-S20" aria-label="Source 20">20</a></sup>
+<span className="figlabel">Figure 1.</span> Three families of credentials inform a decision that must still be connected to the account holder’s identity, authority and transaction. This is an analytical decomposition, not a customer bank’s workflow. <sup><a href="#source-S01" aria-label="Source 1">1</a>, <a href="#source-S11" aria-label="Source 11">11</a>, <a href="#source-S17" aria-label="Source 17">17</a>, <a href="#source-S19" aria-label="Source 19">19</a>, <a href="#source-S20" aria-label="Source 20">20</a></sup>
 </figcaption>
 </figure>
 
@@ -259,13 +259,13 @@ A sensible deployment would make the relevant time and assurance level visible w
 </div>
 </div>
 <figcaption>
-<span className="figlabel">Figure 2.</span> Bar lengths exactly represent the four available intervals. The setting is a reauthentication cadence, not a fraud-test result. This figure does not reconstruct every possible session-level control. <sup><a href="#source-S04" aria-label="Source 4">4</a></sup><sup><a href="#source-S05" aria-label="Source 5">5</a></sup>
+<span className="figlabel">Figure 2.</span> Bar lengths exactly represent the four available intervals. The setting is a reauthentication cadence, not a fraud-test result. This figure does not reconstruct every possible session-level control. <sup><a href="#source-S04" aria-label="Source 4">4</a>, <a href="#source-S05" aria-label="Source 5">5</a></sup>
 </figcaption>
 </figure>
 
 <h2 id="privacy-deserves-a-proper-technical-argument">Privacy deserves a proper technical argument</h2>
 
-The easiest criticism would imagine a central vault of irises from which World could reconstruct everyone’s activities. The published architecture describes a substantial effort to avoid that concentration. Information used to identify duplicate enrolments is split into secret shares and compared by multiple operators through [multiparty computation](/en/glossary/calcul-multipartite/). The aim is to produce a result without handing each participant the complete underlying data. <sup><a href="#source-S08" aria-label="Source 8">8</a></sup><sup><a href="#source-S09" aria-label="Source 9">9</a></sup>
+The easiest criticism would imagine a central vault of irises from which World could reconstruct everyone’s activities. The published architecture describes a substantial effort to avoid that concentration. Information used to identify duplicate enrolments is split into secret shares and compared by multiple operators through [multiparty computation](/en/glossary/calcul-multipartite/). The aim is to produce a result without handing each participant the complete underlying data. <sup><a href="#source-S08" aria-label="Source 8">8</a>, <a href="#source-S09" aria-label="Source 9">9</a></sup>
 
 That enrolment-time uniqueness check should be distinguished from a later proof presented to a service. A [zero-knowledge proof](/en/glossary/zkp/) can establish a property without necessarily disclosing the data behind it. The practical benefit could be significant: proving an access condition may avoid sending another copy of a document to another organisation. Whether this actually reduces disclosure depends on the deployed workflow and the additional information its recipient requires. <sup><a href="#source-S08" aria-label="Source 8">8</a></sup> <sup><a href="#source-S18" aria-label="Source 18">18</a></sup>
 
@@ -401,7 +401,7 @@ These issues can coexist. It is possible to welcome smaller data disclosures and
 </div>
 </div>
 <figcaption>
-<span className="figlabel">Figure 3.</span> Conceptual separation of enrolment deduplication and later presentation. Nodes A, B and C are symbolic, not a production topology. The architecture is described by the project and was not audited for this investigation. <sup><a href="#source-S03" aria-label="Source 3">3</a></sup><sup><a href="#source-S05" aria-label="Source 5">5</a></sup><sup><a href="#source-S08" aria-label="Source 8">8</a></sup><sup><a href="#source-S09" aria-label="Source 9">9</a></sup>
+<span className="figlabel">Figure 3.</span> Conceptual separation of enrolment deduplication and later presentation. Nodes A, B and C are symbolic, not a production topology. The architecture is described by the project and was not audited for this investigation. <sup><a href="#source-S03" aria-label="Source 3">3</a>, <a href="#source-S05" aria-label="Source 5">5</a>, <a href="#source-S08" aria-label="Source 8">8</a>, <a href="#source-S09" aria-label="Source 9">9</a></sup>
 </figcaption>
 </figure>
 
@@ -526,6 +526,9 @@ Cryptography can bind an approval tightly to specified parameters. It cannot gua
 <text x="42" y="644" font-family="DejaVu Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="world-4-en-m-panel-5">Institution</text>
 <text x="238" y="644" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="world-4-en-m-panel-5">Authority and</text>
 <text x="238" y="671" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="world-4-en-m-panel-5">checks</text>
+<path id="world-4-en-m-step-1" d="M 22 429.576 H 12 V 470.291 H 20" fill="none" stroke="var(--color-signal)" stroke-width="2" marker-end="url(#world-4-en-m-arrow)" />
+<path id="world-4-en-m-step-2" d="M 22 507.515 H 12 V 550.291 H 20" fill="none" stroke="var(--color-signal)" stroke-width="2" marker-end="url(#world-4-en-m-arrow)" />
+<path id="world-4-en-m-step-3" d="M 22 584 H 12 V 630.291 H 20" fill="none" stroke="var(--color-signal)" stroke-width="2" marker-end="url(#world-4-en-m-arrow)" />
 <line x1="24" y1="693" x2="456" y2="693" stroke="var(--color-line-strong)" stroke-width="1.6" />
 <text x="24" y="718" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources: </text>
 <a href="#source-S06">
@@ -541,7 +544,7 @@ Cryptography can bind an approval tightly to specified parameters. It cannot gua
 </div>
 </div>
 <figcaption>
-<span className="figlabel">Figure 4.</span> Association with a human and approval of an operation address different needs. The lower section applies the documented mechanism to a hypothetical payment; it does not claim a banking deployment. <sup><a href="#source-S06" aria-label="Source 6">6</a></sup><sup><a href="#source-S07" aria-label="Source 7">7</a></sup><sup><a href="#source-S18" aria-label="Source 18">18</a></sup>
+<span className="figlabel">Figure 4.</span> Association with a human and approval of an operation address different needs. The lower section applies the documented mechanism to a hypothetical payment; it does not claim a banking deployment. <sup><a href="#source-S06" aria-label="Source 6">6</a>, <a href="#source-S07" aria-label="Source 7">7</a>, <a href="#source-S18" aria-label="Source 18">18</a></sup>
 </figcaption>
 </figure>
 
@@ -549,7 +552,7 @@ Cryptography can bind an approval tightly to specified parameters. It cannot gua
 
 The project must pay for devices, applications, operators and maintenance. In July 2026, World Foundation announced an initial $52.5 million token-sale close led by Pantera Capital, with WLD locked for twelve months. Bain Capital Crypto was also named. WLD does not represent an equity interest in the foundation. <sup><a href="#source-S13" aria-label="Source 13">13</a></sup>
 
-Pantera appears again among October’s design partners. The overlap establishes no wrongdoing, but participation in the launch should not automatically be treated as an independent economic assessment. Names also matter: the funding announcement specifies Bain Capital Crypto; the product announcement says Bain Capital. The documents do not justify assigning both roles to the same team or assuming an identical commercial commitment. <sup><a href="#source-S02" aria-label="Source 2">2</a></sup><sup><a href="#source-S13" aria-label="Source 13">13</a></sup>
+Pantera appears again among October’s design partners. The overlap establishes no wrongdoing, but participation in the launch should not automatically be treated as an independent economic assessment. Names also matter: the funding announcement specifies Bain Capital Crypto; the product announcement says Bain Capital. The documents do not justify assigning both roles to the same team or assuming an identical commercial commitment. <sup><a href="#source-S02" aria-label="Source 2">2</a>, <a href="#source-S13" aria-label="Source 13">13</a></sup>
 
 The foundation envisages funding the protocol through fees paid by applications. The reviewed documents do not disclose the banking suite’s billing terms or revenue. The potential economic mechanism is nevertheless clear: the more widely a credential is accepted, the more useful it becomes to its holders; the larger the population able to present it, the more attractive integration becomes to services. <sup><a href="#source-S13" aria-label="Source 13">13</a></sup>
 
@@ -664,13 +667,13 @@ None of the reviewed evidence establishes a World monopoly in banking identity. 
 </div>
 </div>
 <figcaption>
-<span className="figlabel">Figure 5.</span> Dotted lines connect documented roles, not individual capital flows. The $52.5m is the announced initial token-sale total. Application-funded network operation is a stated objective, not observed banking revenue. <sup><a href="#source-S02" aria-label="Source 2">2</a></sup><sup><a href="#source-S13" aria-label="Source 13">13</a></sup>
+<span className="figlabel">Figure 5.</span> Dotted lines connect documented roles, not individual capital flows. The $52.5m is the announced initial token-sale total. Application-funded network operation is a stated objective, not observed banking revenue. <sup><a href="#source-S02" aria-label="Source 2">2</a>, <a href="#source-S13" aria-label="Source 13">13</a></sup>
 </figcaption>
 </figure>
 
 <h2 id="control-is-distributed-across-several-settings">Control is distributed across several settings</h2>
 
-Treating World as a single actor would obscure part of the question. The foundation describes itself as the protocol’s nonprofit steward, while Tools for Humanity contributes to building tools and integrations. That institutional division does not, by itself, disclose every amendment power, contractual safeguard or route of appeal. <sup><a href="#source-S02" aria-label="Source 2">2</a></sup><sup><a href="#source-S13" aria-label="Source 13">13</a></sup>
+Treating World as a single actor would obscure part of the question. The foundation describes itself as the protocol’s nonprofit steward, while Tools for Humanity contributes to building tools and integrations. That institutional division does not, by itself, disclose every amendment power, contractual safeguard or route of appeal. <sup><a href="#source-S02" aria-label="Source 2">2</a>, <a href="#source-S13" aria-label="Source 13">13</a></sup>
 
 In the documented Zoom workflow, the employer chooses the reauthentication interval. In a banking integration, the institution would decide how much weight to give the result and which operations require additional checks. The supplier defines the product’s available options; its customer selects among them and translates the signal into procedures. Attributing every one of those decisions to Sam Altman would conceal the responsibility of the organisations configuring the system. <sup><a href="#source-S04" aria-label="Source 4">4</a></sup>
 
@@ -688,7 +691,7 @@ A team with 800 hours of monthly review capacity can process 6,000 cases. Its th
 
 The fallback procedure is crucial. A difficult check can keep a genuine customer out; an excessively permissive recovery process can let an impostor in. An alternative needs both an appropriate level of security and enough capacity to remain usable. Its cost belongs in the system’s economics even when it is absent from the vendor’s API invoice.
 
-World ID account recovery offers a concrete example of dependence. The guides rely on sign-in methods established beforehand and say support cannot restore access on the user’s behalf. Losing access to World ID does not automatically mean losing access to a bank account. It becomes a banking risk if the institution makes that credential mandatory and provides no other adequate verification route. <sup><a href="#source-S05" aria-label="Source 5">5</a></sup><sup><a href="#source-S15" aria-label="Source 15">15</a></sup>
+World ID account recovery offers a concrete example of dependence. The guides rely on sign-in methods established beforehand and say support cannot restore access on the user’s behalf. Losing access to World ID does not automatically mean losing access to a bank account. It becomes a banking risk if the institution makes that credential mandatory and provides no other adequate verification route. <sup><a href="#source-S05" aria-label="Source 5">5</a>, <a href="#source-S15" aria-label="Source 15">15</a></sup>
 
 <figure className="l0g-world-figure" id="figure-6">
 <div className="world-panel">
@@ -778,7 +781,7 @@ World ID account recovery offers a concrete example of dependence. The guides re
 
 <h2 id="outsourcing-leaves-responsibility-behind">Outsourcing leaves responsibility behind</h2>
 
-An identity service may be valuable precisely because it performs a difficult task. The task still needs to be defined. The 2023 US interagency guidance on third parties covers selection, contracts, monitoring and the end of the relationship. A revision published on 15 September 2026 proposes a more explicitly risk-tailored approach, with comments due by 16 November. The proposal reiterates the institution’s responsibility; it should not be presented as new final guidance. Customer identification requirements also retain the bank’s responsibility. Buying a service does not purchase the disappearance of that responsibility. <sup><a href="#source-S16" aria-label="Source 16">16</a></sup><sup><a href="#source-S22" aria-label="Source 22">22</a></sup><sup><a href="#source-S11" aria-label="Source 11">11</a></sup>
+An identity service may be valuable precisely because it performs a difficult task. The task still needs to be defined. The 2023 US interagency guidance on third parties covers selection, contracts, monitoring and the end of the relationship. A revision published on 15 September 2026 proposes a more explicitly risk-tailored approach, with comments due by 16 November. The proposal reiterates the institution’s responsibility; it should not be presented as new final guidance. Customer identification requirements also retain the bank’s responsibility. Buying a service does not purchase the disappearance of that responsibility. <sup><a href="#source-S16" aria-label="Source 16">16</a>, <a href="#source-S22" aria-label="Source 22">22</a>, <a href="#source-S11" aria-label="Source 11">11</a></sup>
 
 For World, the decisive evidence will concern real-world performance, the freshness required for each use, retained information and workable remedies. An institution also needs to know who bears the cost of unavailability, how to change suppliers and which records remain accessible after termination. Public documents allow those requirements to be identified. They do not reconstruct unpublished bank contracts.
 
