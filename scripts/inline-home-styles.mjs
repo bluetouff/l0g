@@ -19,7 +19,7 @@ export async function inlineHomeStylesheetLinks(dir) {
     const css = styles.get(href);
     if (typeof css !== 'string') throw new Error(`Feuille critique introuvable : ${href}`);
     bytes += Buffer.byteLength(css);
-    return `<style data-critical-href="${href}">${css}</style>`;
+    return `<style>${css}</style>`;
   });
 
   await writeFile(homeUrl, output);
