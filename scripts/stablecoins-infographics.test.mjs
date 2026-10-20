@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import test from 'node:test';
 import postcss from 'postcss';
 import { compile } from '@mdx-js/mdx';
+import { parseFragment } from 'parse5';
 import { assertFontLicenseReferences } from './font-license-assertions.mjs';
 import { assertStablecoinsConnections, assertStablecoinsGeometry, assertStablecoinsProportions, assertStablecoinsQuantitative, assertStablecoinsSourceFaithful, inspectStablecoinsSvg, stablecoinsAttrs, stablecoinsNodes, stablecoinsSourceFigures, stablecoinsTag } from './stablecoins-svg-assertions.mjs';
 const read = p => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
@@ -13,13 +14,14 @@ const cssBase = '/styles/stablecoins-infographics-v1.css';
 const cssHref = `${cssBase}?v=${createHash('sha256').update(readFileSync(new URL(`../public${cssBase}`, import.meta.url))).digest('hex').slice(0, 12)}`;
 const stylesheet = article => assert.deepEqual([...article.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*>/gu)].map(m => m[0].match(/href="([^"]+)"/u)?.[1]).filter(p => p?.startsWith(cssBase)), [cssHref]);
 const mutateRect = (svg, id, attr, delta) => { const raw = svg.match(new RegExp(`<rect\\b[^>]*id="[^"]*${id}"[^>]*>`))?.[0]; assert.ok(raw); const value = Number(raw.match(new RegExp(`\\b${attr}="([^"]+)"`))[1]); return svg.replace(raw, raw.replace(new RegExp(`\\b${attr}="[^"]+"`), `${attr}="${value + delta}"`)); };
+const textContent = node => node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(textContent).join('');
 
 const assertReferences = article => {
   const entries = [...article.matchAll(/<li id="source-(S[0-9]{2})">([\s\S]*?)<\/li>/gu)];
   const ids = entries.map(m => m[1]);
   assert.deepEqual(ids, Array.from({ length: 16 }, (_, i) => `S${String(i + 1).padStart(2, '0')}`));
   for (const [, id, body] of entries) {
-    assert.ok(body.replace(/<[^>]+>/gu, '').trim().length > 60, `${id} must retain its citation metadata`);
+    assert.ok(textContent(parseFragment(body)).trim().length > 60, `${id} must retain its citation metadata`);
     assert.match(body, /<a\b[^>]*href="https:\/\/[^"<>]+"/u, `${id} retains a canonical external source`);
   }
   for (const ref of article.matchAll(/href="#source-(S[0-9]+)"/gu)) assert.ok(ids.includes(ref[1]), `Resolved ${ref[1]}`);
