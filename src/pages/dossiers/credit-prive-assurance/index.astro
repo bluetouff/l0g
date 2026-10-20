@@ -1,0 +1,48 @@
+---
+import FinancingDossier from '../../../components/FinancingDossier.astro';
+
+const analyses = [
+  { id: 'private-credit-clo-warehouse-banks', label: 'Le financement bancaire avant l’émission d’un CLO', note: 'Commencer avant la vente des titres : suivre le crédit temporaire utilisé pour réunir les prêts, puis examiner les engagements après leur transfert dans un véhicule de titrisation.' },
+  { id: 'life-insurers-retirement-savings-private-credit-bermuda', label: 'L’épargne retraite dans les portefeuilles des assureurs', note: 'Passer au bilan de l’assureur : identifier les actifs qui soutiennent ses engagements envers les assurés, le gestionnaire affilié et la place de la réassurance dans les montages documentés.' },
+  { id: 'aon-blackstone-cortina-reinsurance-risk-pricing', label: 'Cortina et la tarification en réassurance', note: 'Comparer un projet distinct de réassurance dommages : sélection des risques, fixation des prix et apport de capital. Les cas précédents couvrent le financement bancaire des prêts et les placements des assureurs-vie, avec des périmètres différents.' },
+];
+const guides = [
+  { id: 'read-private-credit-risk', label: 'Analyser le crédit privé', note: 'Définir le périmètre des prêts, examiner les valorisations, les intérêts capitalisés dans la dette et la liquidité du fonds.' },
+  { id: 'read-clos-and-leveraged-loans', label: 'CLO et prêts à effet de levier', note: 'Suivre les remboursements selon leur ordre de priorité et distinguer la dette senior de la tranche qui absorbe les premières pertes.' },
+  { id: 'read-life-insurer-health', label: 'Lire le bilan d’un assureur-vie', note: 'Rapprocher actifs, engagements envers les assurés, comptes réglementaires et mesures de capital pour apprécier la solidité de l’ensemble.' },
+];
+---
+
+<FinancingDossier
+  language="fr"
+  alternateHref="/en/topics/private-credit-insurance/"
+  title="Crédit privé et assurance"
+  description="Des prêts aux portefeuilles des assureurs : suivre les financements bancaires, la titrisation et la réassurance à travers les contrats et les bilans."
+  atlas={{ image: '/illustrations/news/credit-prive-logiciels-ia-v1.jpg', href: '/atlas/credit-prive/', title: 'Atlas du crédit privé', note: 'Explorer des relations documentées entre prêteurs, gestionnaires, banques, assureurs et emprunteurs. Le prêt direct aux entreprises et le financement adossé à des actifs gardent leurs structures propres, leurs dates d’observation et leurs sources.' }}
+  analyses={analyses}
+  guides={guides}
+  related={{ href: '/dossiers/financement-ia/', title: 'Financement des infrastructures d’IA' }}
+>
+  <Fragment slot="mechanism">
+    <p>
+      Le crédit privé finance un emprunteur par un prêt négocié, détenu par un fonds ou une société de financement. Le gestionnaire sélectionne et suit les actifs ; le véhicule qui les détient peut lui-même emprunter. Dans leur <a href="https://www.federalreserve.gov/econres/notes/feds-notes/private-credit-characteristics-and-risks-20240223.html">présentation du crédit privé</a>, des chercheurs de la Réserve fédérale replacent le prêt direct dans un ensemble plus large de stratégies. Un portefeuille de prêts aux entreprises, un ensemble de créances de particuliers et l’investissement d’un assureur dans la dette d’un fonds appellent donc des descriptions distinctes avant toute comparaison des expositions.
+    </p>
+    <p>
+      Les banques participent à ces circuits lorsqu’elles financent les intermédiaires. Une <a href="https://www.federalreserve.gov/econres/notes/feds-notes/bank-lending-to-private-credit-size-characteristics-and-financial-stability-implications-20250523.html">étude de la Fed sur leurs prêts au crédit privé</a> examine ces liens. Le <em>warehouse</em>, ou financement d’entrepôt, correspond à une <a href="https://www.federalreserve.gov/data/scoos/scoos-202606.htm">ligne temporaire garantie par les prêts réunis avant leur titrisation</a>. Un CLO, pour <em>collateralized loan obligation</em>, finance ensuite un portefeuille de prêts par des titres dont les paiements suivent des priorités différentes. Lire les conditions de ces deux étapes permet de situer les risques de refinancement, de collatéral et de défaut des emprunteurs, ainsi que les acteurs qui les portent.
+    </p>
+    <p>
+      Les assureurs peuvent investir dans des prêts, des fonds ou des titres issus de titrisations. Ces actifs soutiennent leurs engagements d’assurance ; leur analyse doit donc intégrer le calendrier des paiements promis aux assurés et les règles de capital. Des <a href="https://www.federalreserve.gov/econres/notes/feds-notes/life-insurers-role-in-the-intermediation-chain-of-public-and-private-credit-to-risky-firms-20250321.html">chercheurs de la Fed décrivent les expositions directes et indirectes des assureurs-vie</a>, notamment par des gestionnaires affiliés et des véhicules d’investissement. La gestion des actifs, les liens de propriété et les garanties contractuelles relèvent de relations différentes. Pour établir un circuit de financement ou une obligation de couvrir des pertes, il faut retrouver les contrats et les expositions concernés.
+    </p>
+    <p>
+      La réassurance ajoute une relation contractuelle : un assureur cède des risques définis à un réassureur selon les conditions convenues. La <a href="https://content.naic.org/insurance-topics/reinsurance">présentation de la NAIC</a>, l’association des régulateurs américains de l’assurance, explique le rôle de cette cession dans la gestion des risques et du capital. Les placements au bilan d’un assureur et ses contrats de réassurance peuvent faire intervenir les mêmes groupes financiers tout en remplissant des fonctions économiques distinctes. L’enquête sur Cortina porte ainsi sur un projet de réassurance dommages, à examiner séparément des placements et des engagements des assureurs-vie.
+    </p>
+  </Fragment>
+  <Fragment slot="limits">
+    <p>
+      Les cas réunis ici concernent une sélection de structures américaines de crédit et d’assurance, ainsi que des montages transfrontaliers. Les définitions du crédit privé varient selon les études. L’encours des fonds, l’exposition d’un assureur et celle d’une banque mesurent des objets différents ; une conclusion sur l’ensemble du marché exige des dates, des définitions et des périmètres de consolidation cohérents.
+    </p>
+    <p>
+      Chaque enquête conserve sa date de recherche et précise les conditions encore proposées ou les informations manquantes. Le contrat définitif et les résultats d’exploitation de Cortina restent à établir dans l’enquête citée. Le parcours fournit une méthode pour rapprocher contrats, actifs et engagements. Un ratio de capital ou une notation de crédit constitue une pièce de cette lecture ; reconstituer toutes les expositions demande les documents sous-jacents.
+    </p>
+  </Fragment>
+</FinancingDossier>

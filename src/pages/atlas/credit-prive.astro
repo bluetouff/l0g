@@ -2,6 +2,7 @@
 import { atlasAlternateLinks } from '../../config/atlases';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EngagementAtlas from '../../components/EngagementAtlas.astro';
+import FrenchRelatedReading from '../../components/FrenchRelatedReading.astro';
 import dataset from '../../data/private-credit-atlas.json';
 const latestDate = dataset.milestones.at(-1)!.date;
 ---
@@ -47,6 +48,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
       </details>
     </section>
   </EngagementAtlas>
+  <FrenchRelatedReading id="private-credit" collection="atlas" />
 </BaseLayout>
 
 <style>

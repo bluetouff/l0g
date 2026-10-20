@@ -1,4 +1,5 @@
 ---
+import FrenchDossierLinks from '../components/FrenchDossierLinks.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { serializeInlineScriptData } from '../lib/security.ts';
 
@@ -430,6 +431,11 @@ const jsonLd = {
           <li><span>05</span> réutiliser</li>
         </ol>
       </div>
+    </section>
+
+    <section class="tour-section" aria-labelledby="start-dossiers-title">
+      <div class="section-head"><h2 id="start-dossiers-title">Dossiers de financement</h2></div>
+      <FrenchDossierLinks />
     </section>
 
     <section class="tour-strip" aria-label="Principe de lecture">

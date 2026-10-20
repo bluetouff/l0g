@@ -19,6 +19,7 @@ import CyberRecoveryEpubCard from '../../components/CyberRecoveryEpubCard.astro'
 import { cyberRecoveryEditions } from '../../config/cyber-recovery-publication.mjs';
 import { debtEditions } from '../../config/debt-publication.mjs';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
+import FrenchRelatedReading from '../../components/FrenchRelatedReading.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import ArticleHeroImage from '../../components/ArticleHeroImage.astro';
 import ReadingResume from '../../components/ReadingResume.astro';
@@ -457,6 +458,8 @@ const quickUncertainty = post.data.quickTake?.uncertainty
     {hasEpsteinEpub && <EpsteinEpubCard />}
     {hasDebtEpub && <DebtEpubCard lang="fr" />}
     {hasCyberRecoveryEpub && <CyberRecoveryEpubCard lang="fr" />}
+
+    <FrenchRelatedReading id={post.id} collection="posts" />
 
     <WeeklyCta variant="article" />
 

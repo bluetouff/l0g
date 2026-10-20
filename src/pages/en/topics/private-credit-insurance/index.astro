@@ -3,7 +3,7 @@ import FinancingDossier from '../../../../components/FinancingDossier.astro';
 const analyses = [
   { id: 'private-credit-clo-warehouse-banks', note: 'Begin before the securities are sold: follow the temporary bank financing used to accumulate loans, then examine the obligations remaining after a CLO issues its debt and equity.' },
   { id: 'life-insurers-retirement-savings-private-credit-bermuda', note: 'Move to the insurer’s balance sheet. Identify the assets supporting policyholder promises, the affiliated manager and the role of reinsurance in the documented arrangements.' },
-  { id: 'aon-blackstone-cortina-reinsurance-risk-pricing', note: 'Compare a separate property-and-casualty reinsurance proposal: who selects underwriting risks, sets prices and supplies capital. The life-insurance portfolio cases above have a different scope.' },
+  { id: 'aon-blackstone-cortina-reinsurance-risk-pricing', note: 'Compare a separate property-and-casualty reinsurance proposal: who selects underwriting risks, sets prices and supplies capital. The preceding cases cover bank funding for loans and life-insurer investments, with different scopes.' },
 ];
 const guides = [
   { id: 'read-private-credit-risk', note: 'Define the lending perimeter and examine valuations, payment-in-kind interest and fund liquidity.' },
@@ -13,6 +13,7 @@ const guides = [
 ---
 
 <FinancingDossier
+  alternateHref="/dossiers/credit-prive-assurance/"
   title="Private credit and insurance"
   description="A reading path through private lending, bank funding, insurer portfolios and reinsurance, with the contracts and balance sheets kept in view."
   atlas={{ image: '/illustrations/news/credit-prive-logiciels-ia-v1.jpg', href: '/en/atlas/private-credit/', title: 'Private credit atlas', note: 'Explore selected relationships around lenders, managers, banks, insurers and borrowers. Direct corporate lending and asset-backed finance retain their separate structures, observation dates and source documents.' }}

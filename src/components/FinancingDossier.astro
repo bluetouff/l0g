@@ -1,10 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import EnglishGuidesLayout from '../layouts/EnglishGuidesLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { serializeInlineScriptData } from '../lib/security.ts';
 
 interface ReadingEntry { id: string; note: string; label?: string }
 interface Props {
+  language?: 'fr' | 'en';
+  alternateHref: string;
   title: string;
   description: string;
   atlas: { href: string; title: string; note: string; image: string };
@@ -12,20 +15,47 @@ interface Props {
   guides: ReadingEntry[];
   related: { href: string; title: string };
 }
-const { title, description, atlas, analyses, guides, related } = Astro.props;
+const { language = 'en', alternateHref, title, description, atlas, analyses, guides, related } = Astro.props;
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const canonical = new URL(Astro.url.pathname, `${site}/`).toString();
-const posts = await getCollection('postsEn', ({ data }) => !data.draft);
-const referenceGuides = await getCollection('guidesEn', ({ data }) => !data.draft);
+const otherLanguage = language === 'fr' ? 'en' : 'fr';
+const alternateUrl = new URL(alternateHref, `${site}/`).toString();
+const alternateLinks = [
+  { hreflang: language, href: canonical },
+  { hreflang: otherLanguage, href: alternateUrl },
+  { hreflang: 'x-default', href: language === 'fr' ? canonical : alternateUrl },
+];
+const Layout = language === 'fr' ? BaseLayout : EnglishGuidesLayout;
+const ui = language === 'fr' ? {
+  backHref: '/', back: 'Analyses / dossier', sections: 'Rubriques du dossier',
+  mechanism: 'Le mécanisme de financement', investigations: 'Enquêtes',
+  guides: 'Guides de référence', limits: 'Périmètre et limites',
+  map: 'Carte interactive et sources', openAtlas: 'Explorer l’Atlas',
+  sequence: 'Parcours de lecture', related: 'Dossier associé', connected: 'Pour prolonger',
+  alternate: 'English version',
+} : {
+  backHref: '/en/analysis/', back: 'English analysis / dossier', sections: 'Dossier sections',
+  mechanism: 'The financing mechanism', investigations: 'Investigations',
+  guides: 'Reference guides', limits: 'Scope and limits',
+  map: 'Interactive evidence map', openAtlas: 'Explore the atlas',
+  sequence: 'A reading sequence', related: 'Related dossier', connected: 'Connected reading',
+  alternate: 'Version française',
+};
+const englishPosts = await getCollection('postsEn', ({ data }) => !data.draft);
+const englishGuides = await getCollection('guidesEn', ({ data }) => !data.draft);
+const frenchPosts = language === 'fr' ? await getCollection('posts', ({ data }) => !data.draft) : [];
+const frenchGuides = language === 'fr' ? await getCollection('guides', ({ data }) => !data.draft) : [];
 const reading = analyses.map((item) => {
-  const entry = posts.find((post) => post.id === item.id);
-  if (!entry) throw new Error(`Missing published English dossier analysis: ${item.id}`);
-  return { ...item, title: item.label ?? entry.data.title, href: `/en/analysis/${entry.id}/` };
+  const source = englishPosts.find((post) => post.id === item.id);
+  const entry = language === 'fr' ? frenchPosts.find((post) => post.id === source?.data.sourceArticle) : source;
+  if (!entry) throw new Error(`Missing published ${language} dossier analysis: ${item.id}`);
+  return { ...item, title: item.label ?? entry.data.title, href: `${language === 'fr' ? '/posts' : '/en/analysis'}/${entry.id}/` };
 });
 const tools = guides.map((item) => {
-  const entry = referenceGuides.find((guide) => guide.id === item.id);
-  if (!entry) throw new Error(`Missing published English dossier guide: ${item.id}`);
-  return { ...item, title: entry.data.title, href: `/en/guides/${entry.id}/` };
+  const source = englishGuides.find((guide) => guide.id === item.id);
+  const entry = language === 'fr' ? frenchGuides.find((guide) => guide.id === source?.data.sourceGuide) : source;
+  if (!entry) throw new Error(`Missing published ${language} dossier guide: ${item.id}`);
+  return { ...item, title: item.label ?? entry.data.title, href: `${language === 'fr' ? '/guides' : '/en/guides'}/${entry.id}/` };
 });
 const resources = [atlas, ...reading, ...tools];
 const jsonLd = {
@@ -35,7 +65,7 @@ const jsonLd = {
   url: canonical,
   name: title,
   description,
-  inLanguage: 'en',
+  inLanguage: language,
   isPartOf: { '@id': `${site}/#website` },
   mainEntity: {
     '@type': 'ItemList',
@@ -50,35 +80,38 @@ const jsonLd = {
 };
 ---
 
-<EnglishGuidesLayout title={title} seoTitle={`${title} | l0g`} description={description} canonical={canonical} ogImage={atlas.image} ogImageAlt={atlas.title}>
+<Layout title={title} seoTitle={`${title} | l0g`} description={description} ogImage={atlas.image} ogImageAlt={atlas.title} alternateLinks={alternateLinks} {...(language === 'fr' ? { sidebar: false } : {})}>
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
   <article class="dossier" data-pagefind-body>
     <header class="dossier-hero">
-      <a class="dossier-back" href="/en/analysis/">English analysis / dossier</a>
+      <div class="dossier-context">
+        <a class="dossier-back" href={ui.backHref}>{ui.back}</a>
+        <a class="dossier-language" href={alternateHref} hreflang={otherLanguage} lang={otherLanguage}>{ui.alternate} <span aria-hidden="true">↗</span></a>
+      </div>
       <h1>{title}</h1>
       <p class="dossier-lede">{description}</p>
-      <nav class="dossier-jumps" aria-label="Dossier sections">
-        <a href="#mechanism">Mechanism</a>
-        <a href="#reading">Investigations</a>
-        <a href="#guides">Reference guides</a>
-        <a href="#limits">Scope and limits</a>
+      <nav class="dossier-jumps" aria-label={ui.sections}>
+        <a href="#mechanism">{language === 'fr' ? 'Mécanisme' : 'Mechanism'}</a>
+        <a href="#reading">{ui.investigations}</a>
+        <a href="#guides">{ui.guides}</a>
+        <a href="#limits">{ui.limits}</a>
       </nav>
     </header>
 
     <section id="mechanism" class="dossier-section" aria-labelledby="mechanism-title">
-      <h2 id="mechanism-title">The financing mechanism</h2>
+      <h2 id="mechanism-title">{ui.mechanism}</h2>
       <div class="dossier-copy"><slot name="mechanism" /></div>
     </section>
 
     <a class="dossier-atlas" href={atlas.href}>
-      <span class="dossier-label">Interactive evidence map</span>
+      <span class="dossier-label">{ui.map}</span>
       <h2>{atlas.title}</h2>
       <p>{atlas.note}</p>
-      <span class="dossier-open">Explore the atlas <span aria-hidden="true">↗</span></span>
+      <span class="dossier-open">{ui.openAtlas} <span aria-hidden="true">↗</span></span>
     </a>
 
     <section id="reading" class="dossier-section" aria-labelledby="reading-title">
-      <h2 id="reading-title">A reading sequence</h2>
+      <h2 id="reading-title">{ui.sequence}</h2>
       <ol class="dossier-reading">
         {reading.map((item, index) => (
           <li>
@@ -90,28 +123,30 @@ const jsonLd = {
     </section>
 
     <section id="guides" class="dossier-section" aria-labelledby="guides-title">
-      <h2 id="guides-title">Reference guides</h2>
+      <h2 id="guides-title">{ui.guides}</h2>
       <ul class="dossier-guides">
         {tools.map((item) => <li><h3><a href={item.href}>{item.title}</a></h3><p>{item.note}</p></li>)}
       </ul>
     </section>
 
     <section id="limits" class="dossier-section dossier-limits" aria-labelledby="limits-title">
-      <h2 id="limits-title">Scope and limits</h2>
+      <h2 id="limits-title">{ui.limits}</h2>
       <div class="dossier-copy"><slot name="limits" /></div>
     </section>
-    <nav class="dossier-next" aria-label="Related dossier">
-      <span class="dossier-label">Connected reading</span>
+    <nav class="dossier-next" aria-label={ui.related}>
+      <span class="dossier-label">{ui.connected}</span>
       <a href={related.href}>{related.title} <span aria-hidden="true">→</span></a>
     </nav>
   </article>
-</EnglishGuidesLayout>
+</Layout>
 
 <style>
   .dossier { max-width: 66rem; margin-inline: auto; min-width: 0; }
   .dossier-hero { padding-block: clamp(1rem, 4vw, 2.5rem) 2rem; border-bottom: 1px solid var(--color-line); }
   .dossier-back, .dossier-label { color: var(--color-signal); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .04em; }
-  h1 { margin-top: 1rem; color: var(--color-bright); font-family: var(--font-display); }
+  .dossier-context { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .dossier-language { color: var(--color-signal); font-family: var(--font-mono); font-size: .75rem; text-decoration: underline; text-underline-offset: .2em; }
+  h1 { margin-top: 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2.1rem, 5vw, 3.25rem); line-height: 1.12; letter-spacing: -.035em; }
   .dossier-lede { max-width: 62ch; margin-top: 1.25rem; color: var(--color-prose); font-family: var(--font-read); font-size: 1.15rem; line-height: 1.8; }
   .dossier-jumps { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
   .dossier-jumps a { display: inline-flex; align-items: center; min-height: 44px; padding: .6rem .9rem; border: 1px solid var(--color-line); border-radius: 6px; font-family: var(--font-mono); font-size: .75rem; color: var(--color-signal); }

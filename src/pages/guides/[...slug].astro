@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AiEditorialDisclosure from '../../components/AiEditorialDisclosure.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
+import FrenchRelatedReading from '../../components/FrenchRelatedReading.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import { organizationEntity } from '../../config/entities.ts';
 import { topicForTag } from '../../config/topics.ts';
@@ -150,6 +151,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     <div class="prose">
       <Content />
     </div>
+
+    <FrenchRelatedReading id={guide.id} collection="guides" />
 
     <div class="share mt-14" data-pagefind-ignore>
       <span class="mono-label share-label">// partager</span>

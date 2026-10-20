@@ -1,0 +1,45 @@
+---
+import FinancingDossier from '../../../components/FinancingDossier.astro';
+
+const analyses = [
+  { id: 'nvidia-the-500-billion-that-does-not-exist-yet', label: 'Nvidia et les engagements commerciaux de l’IA', note: 'Commencer par la demande annoncée : distinguer les perspectives commerciales, les commandes et le chiffre d’affaires comptabilisé, puis repérer les conditions entre une annonce et son encaissement.' },
+  { id: 'collateral-that-cannot-leave-the-building', label: 'Prêts sur GPU et périmètre du collatéral', note: 'Examiner ensuite les sûretés du prêteur. Les équipements, le contrat client, l’alimentation électrique et l’accès au bâtiment peuvent relever de propriétaires et de protections contractuelles différents.' },
+  { id: 'how-long-does-ai-server-live', label: 'Durée de vie et amortissement des serveurs d’IA', note: 'Terminer par les estimations comptables : comparer les durées d’amortissement publiées et leurs justifications avant d’évaluer le renouvellement des équipements ou les bénéfices futurs.' },
+];
+const guides = [
+  { id: 'how-to-read-10-k-sec', note: 'Retrouver les engagements, garanties, parties liées et estimations comptables dans le rapport annuel.' },
+  { id: 'read-corporate-debt', note: 'Rapprocher échéances, trésorerie mobilisable, sûretés et clauses financières sur un même périmètre comptable.' },
+  { id: 'from-earnings-to-cash-working-capital-investment', note: 'Reconstituer les flux d’exploitation et les dépenses d’investissement, puis identifier les besoins de financement correspondants.' },
+];
+---
+
+<FinancingDossier
+  language="fr"
+  alternateHref="/en/topics/ai-financing/"
+  title="Financement des infrastructures d’IA"
+  description="Un parcours dans le financement de l’IA : engagements clients, dette des centres de données, équipements donnés en garantie et estimations comptables."
+  atlas={{ image: '/illustrations/news/openai-credit-guarantee-v1.jpg', href: '/atlas/financement-ia/', title: 'Atlas du financement de l’IA', note: 'Explorer les relations documentées entre Nvidia, OpenAI, SB Energy et AIP. Chaque lien conserve sa source, son statut contractuel et ses limites. Cette sélection permet de suivre des opérations précises, avec leurs dates et leur périmètre.' }}
+  analyses={analyses}
+  guides={guides}
+  related={{ href: '/dossiers/credit-prive-assurance/', title: 'Crédit privé et assurance' }}
+>
+  <Fragment slot="mechanism">
+    <p>
+      Derrière un service d’intelligence artificielle, il faut financer des puces, construire ou louer des bâtiments et payer l’électricité. Les règlements des clients servent à couvrir les charges d’exploitation et à honorer les engagements financiers. La dette peut être portée par l’opérateur informatique, le propriétaire du centre de données ou une société dédiée au projet. Pour lire ce financement, le point de départ est l’emprunteur : quels revenus reçoit-il, à qui doit-il payer, et selon quel calendrier ?
+    </p>
+    <p>
+      Une sûreté sur les équipements peut s’accompagner de droits sur un contrat client. Dans son <a href="https://www.sec.gov/Archives/edgar/data/1769628/000176962826000129/ex991.htm">annonce de financement de mars 2026 déposée auprès de la SEC</a>, CoreWeave décrit une opération garantie par des infrastructures informatiques et un contrat client associé, au sein d’une société emprunteuse dédiée. Le communiqué expose le montage présenté par l’émetteur ; les accords sous-jacents restent nécessaires pour déterminer les droits précis du prêteur et leurs conditions d’exercice. La machine, l’accès au site et les revenus de son utilisation constituent ainsi des objets d’analyse distincts.
+    </p>
+    <p>
+      Le calendrier des investissements se lit également dans plusieurs états financiers. L’achat des équipements mobilise de la trésorerie, tandis que leur amortissement répartit le coût comptabilisé sur une durée d’utilisation estimée. Le <a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm">rapport annuel 2025 d’Amazon</a> montre comment la révision d’une estimation modifie la charge enregistrée pour une partie du parc. Durée d’amortissement, durée d’utilisation technique et valeur de revente répondent à des questions différentes. Leur rapprochement avec les échéances de dette et les obligations des clients permet d’examiner la cohérence des hypothèses de financement.
+    </p>
+  </Fragment>
+  <Fragment slot="limits">
+    <p>
+      Ce dossier rapproche des cas dont les entités juridiques, les actifs et les périodes comptables diffèrent. Chaque enquête garde sa date de recherche et son périmètre ; les sociétés citées restent des emprunteurs distincts. Une annonce historique décrit l’étape documentée d’une opération. La réalisation des étapes suivantes demande ses propres justificatifs.
+    </p>
+    <p>
+      Les publications financières donnent un accès partiel aux contrats. Des droits de résiliation, des restrictions au transfert des actifs ou des coûts de récupération peuvent rester inconnus. La <a href="https://pcaobus.org/oversight/standards/auditing-standards/details/AS2501">norme du PCAOB sur l’audit des estimations comptables</a> encadre l’examen des méthodes, des hypothèses et des biais éventuels. Elle constitue un cadre d’audit, sans fixer une durée de vie universelle pour les équipements d’IA. Toute estimation de pertes exige donc des hypothèses explicites sur l’utilisation du matériel, les paiements clients, le refinancement et les montants récupérables.
+    </p>
+  </Fragment>
+</FinancingDossier>

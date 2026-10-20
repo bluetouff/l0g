@@ -2,6 +2,7 @@
 import { atlasAlternateLinks } from '../../config/atlases';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EngagementAtlas from '../../components/EngagementAtlas.astro';
+import FrenchRelatedReading from '../../components/FrenchRelatedReading.astro';
 import dataset from '../../data/engagement-atlas.json';
 ---
 
@@ -31,6 +32,7 @@ import dataset from '../../data/engagement-atlas.json';
       <p>Cette vérification ciblée ne renouvelle pas la revue de chaque contrat et ne recense pas tous les financements de l’IA. Le corpus conserve ses observations et leurs dates de revue. L’absence de nouveau dépôt n’établit pas, à elle seule, l’absence d’une opération.</p>
     </section>
   </EngagementAtlas>
+  <FrenchRelatedReading id="ai-financing" collection="atlas" />
 </BaseLayout>
 
 <style>

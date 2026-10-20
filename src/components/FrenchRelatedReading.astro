@@ -1,0 +1,112 @@
+---
+import { getCollection } from 'astro:content';
+import { financingReadingPaths } from '../config/english-reading-paths.ts';
+import { englishEditorialLinks } from '../config/english-editorial-links.ts';
+import { frenchDossiers } from '../config/french-dossiers.ts';
+
+interface Props { id: string; collection: 'posts' | 'guides' | 'atlas' }
+const { id, collection } = Astro.props;
+const [englishPosts, englishGuides, posts, guides] = await Promise.all([
+  getCollection('postsEn', ({ data }) => !data.draft),
+  getCollection('guidesEn', ({ data }) => !data.draft),
+  getCollection('posts', ({ data }) => !data.draft),
+  getCollection('guides', ({ data }) => !data.draft),
+]);
+
+const frenchPost = (englishId: string) => {
+  const english = englishPosts.find((entry) => entry.id === englishId);
+  const entry = posts.find((candidate) => candidate.id === english?.data.sourceArticle);
+  if (!english || !entry) throw new Error(`Missing French dossier analysis: ${englishId}`);
+  return entry;
+};
+const frenchGuide = (englishId: string) => {
+  const english = englishGuides.find((entry) => entry.id === englishId);
+  const entry = guides.find((candidate) => candidate.id === english?.data.sourceGuide);
+  if (!english || !entry) throw new Error(`Missing French dossier guide: ${englishId}`);
+  return entry;
+};
+
+// The French paths use the established source linkage, keeping both editions aligned.
+const paths = frenchDossiers.map((dossier) => {
+  const englishPath = financingReadingPaths.find((candidate) => candidate.id === dossier.id);
+  if (!englishPath) throw new Error(`Missing financing path: ${dossier.id}`);
+  return {
+    ...dossier,
+    atlasHref: dossier.id === 'ai-financing' ? '/atlas/financement-ia/' : '/atlas/credit-prive/',
+    analyses: englishPath.analysisIds.map(frenchPost),
+    guides: englishPath.guideIds.map(frenchGuide),
+  };
+});
+const path = paths.find((candidate) => collection === 'atlas'
+  ? candidate.id === id
+  : (collection === 'posts' ? candidate.analyses : candidate.guides).some((entry) => entry.id === id));
+const englishId = collection === 'posts'
+  ? englishPosts.find((entry) => entry.data.sourceArticle === id)?.id
+  : collection === 'guides'
+    ? englishGuides.find((entry) => entry.data.sourceGuide === id)?.id
+    : undefined;
+const englishRoute = englishId ? `/en/${collection === 'posts' ? 'analysis' : 'guides'}/${englishId}/` : undefined;
+const selectedEnglishRoutes = new Set(financingReadingPaths
+  .filter((candidate) => frenchDossiers.some((dossier) => dossier.id === candidate.id))
+  .flatMap((candidate) => [
+    ...candidate.analysisIds.map((slug) => `/en/analysis/${slug}/`),
+    ...candidate.guideIds.map((slug) => `/en/guides/${slug}/`),
+  ]));
+
+// These notes explain the existing curated links in native French.
+const editorialNotes: Record<string, string> = {
+  'nvidia-the-500-billion-that-does-not-exist-yet/anthropic-ipo-compute-valuation-macro-risk': 'Comparer les engagements de calcul avec une autre voie de financement : le projet de cotation d’Anthropic et les besoins de financement décrits dans l’enquête.',
+  'read-life-insurer-health/hong-kong-life-insurance-china-tax-enforcement': 'Compléter la lecture du bilan de l’assureur par les risques fiscaux et les contrôles de capitaux auxquels s’expose le souscripteur transfrontalier.',
+  'residual-value-guarantee-ai-infrastructure-credit/how-long-does-ai-server-live': 'Comparer la valeur résiduelle du matériel donné en garantie avec la durée d’utilisation retenue dans les comptes.',
+  'read-corporate-debt/softbank-openai-financing-freedom-to-wait': 'Appliquer la lecture de l’échéancier de dette et de la trésorerie disponible aux engagements de financement de SoftBank.',
+  'softbank-openai-financing-freedom-to-wait/read-corporate-debt': 'Distinguer les échéances de remboursement, la trésorerie utilisable et les lignes de crédit encore disponibles.',
+  'from-earnings-to-cash-working-capital-investment/greensill-insurance-future-receivables-risk': 'Comparer les créances issues de ventes réalisées avec le financement de ventes futures attendues.',
+  'greensill-insurance-future-receivables-risk/from-earnings-to-cash-working-capital-investment': 'Utiliser le besoin en fonds de roulement pour distinguer les ventes enregistrées, les créances et les encaissements.',
+  'read-credit-ratings/residual-value-guarantee-ai-infrastructure-credit': 'Identifier l’emprunteur, le garant et l’obligation couverte par une notation dans le financement des infrastructures de l’IA.',
+  'residual-value-guarantee-ai-infrastructure-credit/read-credit-ratings': 'Vérifier l’émetteur, l’instrument et la garantie auxquels s’applique une notation de crédit.',
+  'read-clos-and-leveraged-loans/private-credit-clo-warehouse-banks': 'Suivre le financement temporaire des portefeuilles de prêts avant l’émission des tranches d’un CLO.',
+  'private-credit-clo-warehouse-banks/read-clos-and-leveraged-loans': 'Lire le portefeuille de prêts, l’ordre des paiements et les tests de couverture, en distinguant les CLO de prêts syndiqués des CLO de prêts aux entreprises de taille intermédiaire.',
+  'read-life-insurer-health/when-credit-warehouse-does-not-clear-atlas-apollo-athene': 'Suivre les actifs de l’assureur, ses placements affiliés et les financements temporaires dans la chaîne Apollo/Athene.',
+  'when-credit-warehouse-does-not-clear-atlas-apollo-athene/read-life-insurer-health': 'Examiner le capital de l’assureur, les actifs affiliés et la réassurance en conservant le périmètre propre au financement de l’entrepôt de crédit.',
+};
+const suggestions = englishRoute ? englishEditorialLinks
+  .filter((link) => link.from === englishRoute && (path || selectedEnglishRoutes.has(link.to)))
+  .map((link) => {
+    const target = link.to.match(/^\/en\/(analysis|guides)\/([^/]+)\/$/);
+    if (!target) throw new Error(`Invalid dossier reading suggestion: ${link.to}`);
+    const entry = target[1] === 'analysis' ? frenchPost(target[2]) : frenchGuide(target[2]);
+    const note = editorialNotes[`${englishId}/${target[2]}`];
+    if (!note) throw new Error(`Missing French editorial context: ${link.from} ${link.to}`);
+    return { href: `/${target[1] === 'analysis' ? 'posts' : 'guides'}/${entry.id}/`, title: entry.data.title, note };
+  }) : [];
+const neighbours = path?.analyses.filter((entry) => collection !== 'posts' || entry.id !== id).slice(0, 3) ?? [];
+const neighbourHrefs = new Set(neighbours.map((entry) => `/posts/${entry.id}/`));
+const additionalResources = suggestions.filter((link) => !neighbourHrefs.has(link.href));
+const readingGuides = collection === 'atlas' ? path?.guides ?? [] : [];
+---
+
+{(path || additionalResources.length > 0) && (
+  <nav class="related-reading" aria-labelledby="french-related-reading-title" data-pagefind-ignore>
+    <h2 id="french-related-reading-title">{path?.title ?? 'Approfondir l’analyse'}</h2>
+    {path && <p>{path.description}</p>}
+    <ul>
+      {path && <li><a href={path.href}>{path.title} : le dossier</a></li>}
+      {path && collection !== 'atlas' && <li><a href={path.atlasHref}>Explorer l’atlas du {path.id === 'ai-financing' ? 'financement de l’IA' : 'crédit privé'}</a></li>}
+      {readingGuides.map((entry) => <li><a href={`/guides/${entry.id}/`}>{entry.data.title}</a></li>)}
+      {neighbours.map((entry) => {
+        const note = suggestions.find((link) => link.href === `/posts/${entry.id}/`)?.note;
+        return <li><a href={`/posts/${entry.id}/`}>{entry.data.title}</a>{note && <p>{note}</p>}</li>;
+      })}
+      {additionalResources.map((link) => <li><a href={link.href}>{link.title}</a><p>{link.note}</p></li>)}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .related-reading { border-block: 1px solid var(--color-line); margin-top: 2.5rem; padding-block: 1.25rem; }
+  h2 { color: var(--color-bright); font-family: var(--font-display); font-size: 1.25rem; line-height: 1.4; }
+  p { color: var(--color-muted); line-height: 1.65; margin-top: .65rem; }
+  ul { display: grid; gap: .65rem; list-style: none; margin-top: 1rem; padding: 0; }
+  a { color: var(--color-signal); line-height: 1.5; text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere; }
+  a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+</style>

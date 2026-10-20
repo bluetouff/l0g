@@ -1,0 +1,20 @@
+---
+import { frenchDossiers } from '../config/french-dossiers.ts';
+---
+<nav class="dossier-links" aria-label="Dossiers de financement">
+  {frenchDossiers.map((dossier) => (
+    <a href={dossier.href}>
+      <strong>{dossier.title}<span aria-hidden="true">↗</span></strong>
+      <span>{dossier.description}</span>
+    </a>
+  ))}
+</nav>
+<style>
+  .dossier-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; margin-block: 1.4rem; }
+  a { display: grid; gap: .6rem; padding: 1.15rem; border: 1px solid var(--color-line); border-radius: 10px; color: var(--color-paper); background: var(--color-surface); text-decoration: none; min-width: 0; }
+  a:hover { border-color: var(--color-signal); }
+  a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  strong { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-display); color: var(--color-bright); font-size: 1.1rem; line-height: 1.4; }
+  strong span { color: var(--color-signal); }
+  a > span { color: var(--color-muted); font-family: var(--font-read); line-height: 1.6; }
+</style>
