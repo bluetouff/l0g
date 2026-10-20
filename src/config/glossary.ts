@@ -88,6 +88,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'Niveau de vie', nom: 'Revenu disponible par unité de consommation', def: 'Revenu disponible du ménage divisé par son nombre d’unités de consommation, pour tenir compte de sa taille et de sa composition. L’échelle de l’OCDE modifiée attribue une unité au premier adulte, une demi-unité aux autres personnes de quatorze ans ou plus et trois dixièmes aux enfants plus jeunes. Chaque membre d’un même ménage reçoit ainsi le même niveau de vie statistique.', guide: '/posts/budget-2027-repartition-effort-risque/' },
+      { sigle: 'Propension marginale à consommer', nom: 'Réponse de la consommation à une variation de revenu', def: 'Part d’une variation du revenu disponible qui se traduit par une variation de consommation, sur un horizon défini. Sa mesure dépend du type de choc, de son anticipation et des liquidités du ménage. Le rapport entre consommation totale et revenu total mesure, lui, une propension moyenne.', guide: '/posts/budget-2027-repartition-effort-risque/' },
+      { sigle: 'Multiplicateur budgétaire', nom: 'Réponse du PIB à une mesure budgétaire', def: 'Rapport entre la variation du PIB attribuée à une mesure budgétaire discrétionnaire et la variation de dépense publique ou de prélèvement qui l’a déclenchée, relativement à un scénario de référence. Le signe, l’horizon et les conventions de calcul doivent être précisés. Sa valeur dépend notamment de l’instrument, de la conjoncture et des conditions monétaires.', guide: '/posts/budget-2027-repartition-effort-risque/' },
       {
         "sigle": "Valeur ajoutée",
         "nom": "Contribution productive après déduction des consommations intermédiaires",
@@ -1124,6 +1127,32 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'niveau-de-vie': {
+    intuition: 'Comparer des ménages de compositions différentes exige d’ajuster le revenu aux besoins partagés.',
+    formula: 'niveau de vie = revenu disponible du ménage / unités de consommation',
+    articles: [{ label: 'Budget 2027 : ménages et transmission économique', href: '/posts/budget-2027-repartition-effort-risque/', kind: 'article' }],
+    sources: [{ label: 'INSEE, définition du niveau de vie', href: 'https://www.insee.fr/fr/metadonnees/definition/c1890', detail: 'Revenu disponible, unité de consommation et échelle de l’OCDE modifiée.', kind: 'source' }],
+    related: ['propension-marginale-a-consommer'],
+  },
+  'propension-marginale-a-consommer': {
+    intuition: 'Une variation de ressources peut être absorbée par la consommation, l’épargne ou les réserves liquides.',
+    formula: 'PMC = variation de consommation / variation du revenu disponible',
+    articles: [{ label: 'Budget 2027 : ménages et transmission économique', href: '/posts/budget-2027-repartition-effort-risque/', kind: 'article' }],
+    sources: [
+      { label: 'BCE, des taux immobiliers à la consommation', href: 'https://www.ecb.europa.eu/press/economic-bulletin/articles/2025/html/ecb.ebart202504_01~b621c01098.en.html', detail: 'Section 4 et note 10 : estimation par groupe de revenus et hypothèses de transmission.', kind: 'source' },
+      { label: 'OeNB, hétérogénéité des propensions à consommer', href: 'https://www.oenb.at/dam/jcr:dab57322-375a-49e8-8ae5-441abe2ca52d/wp-254.pdf', detail: 'Working Paper 254, sections 2 et 3 : méthodes et réponse déclarée à un gain temporaire hypothétique.', kind: 'source' },
+    ],
+    related: ['niveau-de-vie', 'multiplicateur-budgetaire'],
+  },
+  'multiplicateur-budgetaire': {
+    intuition: 'La réaction de l’activité dépend du contenu de la mesure et des ajustements qu’elle déclenche.',
+    articles: [{ label: 'Budget 2027 : ménages et transmission économique', href: '/posts/budget-2027-repartition-effort-risque/', kind: 'article' }],
+    sources: [
+      { label: 'FMI, Fiscal Multipliers', href: 'https://www.imf.org/en/publications/tnm/issues/2016/12/31/fiscal-multipliers-size-determinants-and-use-in-macroeconomic-projections-41784', detail: 'Note technique 14/04, introduction et encadré 1 : définition, instrument et horizon des multiplicateurs.', kind: 'source' },
+      { label: 'DG Trésor et OFCE, comparaison ThreeME et Mésange', href: 'https://www.tresor.economie.gouv.fr/Articles/2026/07/09/comparaison-des-proprietes-des-modeles-macroeconomiques-francais-threeme-et-mesange', detail: 'Document de travail 2026/1, sections 2.2 et 2.3 : variantes de dépenses publiques et de TVA.', kind: 'source' },
+    ],
+    related: ['propension-marginale-a-consommer', 'pib', 'contrefactuel'],
+  },
   'prix-de-revient-fiscal': {
     intuition: 'Le coût fiscal déjà déduit lors d’une cession doit être suivi pour calculer les gains suivants.',
     whyNow: 'Le dossier sur I-3898 compare le régime français actuel à une réforme proposée du calcul et de la transmission des coûts.',
@@ -4217,7 +4246,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['spr'],
   },
   "transmission-des-prix": {"intuition": "Répercussion des coûts dans les prix de vente.", "articles": [{"label": "Réserves pétrolières : du marché au prix du plein", "href": "/posts/reserves-petrolieres-transmission-prix-pompe/", "kind": "article"}], "sources": [{"label": "Banque de France, résultats publiés le 14 octobre 2021", "href": "https://www.banque-france.fr/fr/publications-et-statistiques/publications/quelle-transmission-des-prix-du-petrole-aux-prix-des-carburants", "kind": "source"}], "related": ["spr"]},
-  "contrefactuel": {"intuition": "Résultat estimé en l’absence d’une intervention.", "articles": [{"label": "Réserves pétrolières : du marché au prix du plein", "href": "/posts/reserves-petrolieres-transmission-prix-pompe/", "kind": "article"}, {"label": "Dutreil : transmission des fortunes familiales", "href": "/posts/dutreil-transmission-fortunes-familiales/", "kind": "article"}], "sources": [{"label": "Kilian et Zhou, Dallas Fed Working Paper 1916, version du 19 décembre 2019", "href": "https://www.dallasfed.org/research/papers/2019/wp1916", "kind": "source"}], "related": ["spr"]},
+  "contrefactuel": {"intuition": "Résultat estimé en l’absence d’une intervention.", "articles": [{"label": "Réserves pétrolières : du marché au prix du plein", "href": "/posts/reserves-petrolieres-transmission-prix-pompe/", "kind": "article"}, {"label": "Dutreil : transmission des fortunes familiales", "href": "/posts/dutreil-transmission-fortunes-familiales/", "kind": "article"}, {"label": "Budget 2027 : les revenus face au scénario de référence", "href": "/posts/budget-2027-repartition-effort-risque/", "kind": "article"}], "sources": [{"label": "Kilian et Zhou, Dallas Fed Working Paper 1916, version du 19 décembre 2019", "href": "https://www.dallasfed.org/research/papers/2019/wp1916", "kind": "source"}], "related": ["spr"]},
   spr: {
     intuition: "Un stock amortit une interruption quand le pétrole peut être sorti, acheminé et transformé à temps. Une promesse de remboursement organise sa disponibilité future.",
     formula: 'couverture théorique (jours) = volume mobilisable (barils) / manque à couvrir (barils par jour)',

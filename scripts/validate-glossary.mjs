@@ -18,6 +18,34 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Distribution, household spending responses and macroeconomic effects use different denominators.
+for (const slug of ['niveau-de-vie', 'propension-marginale-a-consommer', 'multiplicateur-budgetaire']) {
+  const frMatches = glossaryEntries.filter(entry => entry.slug === slug);
+  const enMatches = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(frMatches.length, 1); assert.equal(enMatches.length, 1);
+  const fr = frMatches[0], en = enMatches[0];
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(en.robots, 'noindex,follow'); assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.equal(fr.sectionTitle, 'Macro & banques centrales'); assert.equal(en.sectionTitle, 'Macro & central banks');
+  assert.notEqual(fr.def, en.def);
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  for (const [entry, article] of [[fr, '/posts/budget-2027-repartition-effort-risque/'], [en, '/en/analysis/france-2027-budget-distribution-economic-risk/']]) {
+    assert.equal(entry.guide, article); assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    assert.doesNotMatch(entry.def, /[—]/u);
+    for (const source of entry.atlas.sources) {
+      const url = new URL(source.href);
+      assert.equal(url.protocol, 'https:'); assert.equal(url.username, ''); assert.equal(url.password, '');
+    }
+    for (const related of entry.atlas.related) {
+      assert(glossaryEntries.some(term => term.slug === related)); assert(glossaryAtlasEnBySlug.has(related));
+    }
+  }
+}
+const livingStandardFr = glossaryEntries.find(entry => entry.slug === 'niveau-de-vie');
+assert.equal(livingStandardFr.atlas.sources[0].href, 'https://www.insee.fr/fr/metadonnees/definition/c1890');
+
 // Tax basis, annual loss use and MiCA classification retain separate legal scopes.
 for (const slug of ['prix-de-revient-fiscal', 'imputation-des-moins-values', 'emt', 'art']) {
   const fr = glossaryEntries.filter(entry => entry.slug === slug);
@@ -459,7 +487,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 290, 'Le corpus anglais doit conserver ses 290 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 293, 'Le corpus anglais doit conserver ses 293 fiches uniques');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -641,8 +669,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 688, 'Le corpus doit conserver ses 688 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 278, 'Le graphe Atlas doit conserver ses 278 nœuds');
+assert.equal(glossaryEntries.length, 691, 'Le corpus doit conserver ses 691 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 281, 'Le graphe Atlas doit conserver ses 281 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1064,7 +1092,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 806, 'Le graphe Atlas doit conserver ses 806 relations');
+assert.equal(glossaryAtlasEdgeCount, 812, 'Le graphe Atlas doit conserver ses 812 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

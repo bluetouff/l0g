@@ -210,6 +210,47 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'niveau-de-vie', sigle: 'Equivalised disposable income', nom: 'Household income adjusted for household composition',
+    def: 'Household disposable income divided by an equivalence factor that accounts for household size and composition. The modified OECD scale assigns one unit to the first adult, half a unit to each other person aged fourteen or over, and three tenths to younger children. Every member of a household is assigned the same statistical living standard.',
+    guide: '/en/analysis/france-2027-budget-distribution-economic-risk/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Comparing households of different sizes requires adjusting income for shared needs.',
+      formula: 'equivalised income = household disposable income / equivalence factor',
+      articles: [{ label: 'France’s 2027 budget: households and economic transmission', href: '/en/analysis/france-2027-budget-distribution-economic-risk/', kind: 'article' }],
+      sources: [{ label: 'INSEE, standard of living definition', href: 'https://www.insee.fr/fr/metadonnees/definition/c1890', detail: 'Disposable income, consumption units and the modified OECD scale. French-language source.', kind: 'source' }],
+      related: ['propension-marginale-a-consommer'],
+    },
+  },
+  {
+    slug: 'propension-marginale-a-consommer', sigle: 'Marginal propensity to consume', nom: 'Consumption response to an income change',
+    def: 'The share of a change in disposable income reflected in a change in consumption over a specified horizon. Its measurement depends on the type of shock, how far it was anticipated, and the household’s liquid resources. Total consumption divided by total income instead measures the average propensity to consume.',
+    guide: '/en/analysis/france-2027-budget-distribution-economic-risk/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Households can absorb an income change through spending, saving or their liquid buffers.',
+      formula: 'MPC = change in consumption / change in disposable income',
+      articles: [{ label: 'France’s 2027 budget: households and economic transmission', href: '/en/analysis/france-2027-budget-distribution-economic-risk/', kind: 'article' }],
+      sources: [
+        { label: 'ECB, from mortgage rates to consumption', href: 'https://www.ecb.europa.eu/press/economic-bulletin/articles/2025/html/ecb.ebart202504_01~b621c01098.en.html', detail: 'Section 4 and footnote 10: estimates by income group and transmission assumptions.', kind: 'source' },
+        { label: 'OeNB, MPC heterogeneity', href: 'https://www.oenb.at/dam/jcr:dab57322-375a-49e8-8ae5-441abe2ca52d/wp-254.pdf', detail: 'Working Paper 254, sections 2 and 3: methods and reported responses to a hypothetical temporary windfall.', kind: 'source' },
+      ],
+      related: ['niveau-de-vie', 'multiplicateur-budgetaire'],
+    },
+  },
+  {
+    slug: 'multiplicateur-budgetaire', sigle: 'Fiscal multiplier', nom: 'Output response to a fiscal policy measure',
+    def: 'The change in GDP attributed to a discretionary fiscal measure divided by the change in public spending or taxation that prompted it, relative to a baseline. The sign convention, horizon and calculation method must be specified. Its value depends on the policy instrument, economic conditions and the monetary policy setting, among other factors.',
+    guide: '/en/analysis/france-2027-budget-distribution-economic-risk/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'The output response depends on the measure’s composition and the adjustments it triggers.',
+      articles: [{ label: 'France’s 2027 budget: households and economic transmission', href: '/en/analysis/france-2027-budget-distribution-economic-risk/', kind: 'article' }],
+      sources: [
+        { label: 'IMF, Fiscal Multipliers', href: 'https://www.imf.org/en/publications/tnm/issues/2016/12/31/fiscal-multipliers-size-determinants-and-use-in-macroeconomic-projections-41784', detail: 'Technical Note 14/04, introduction and Box 1: definitions, policy instruments and measurement horizons.', kind: 'source' },
+        { label: 'French Treasury and OFCE, ThreeME and Mésange comparison', href: 'https://www.tresor.economie.gouv.fr/Articles/2026/07/09/comparaison-des-proprietes-des-modeles-macroeconomiques-francais-threeme-et-mesange', detail: 'Working Paper 2026/1, sections 2.2 and 2.3: public expenditure and VAT experiments. French-language source.', kind: 'source' },
+      ],
+      related: ['propension-marginale-a-consommer', 'pib', 'contrefactuel'],
+    },
+  },
+  {
     slug: 'prix-de-revient-fiscal', sigle: 'Tax basis', nom: 'Cost used to calculate a taxable gain',
     def: 'The amount assigned to an asset or portfolio for tax purposes and deducted from disposal proceeds under the applicable rules to calculate a gain or loss. It tracks acquisitions, disposals and prescribed adjustments. Individual cost, weighted average cost and an allocated share of aggregate portfolio cost are methods whose scope must be established.',
     guide: '/en/analysis/france-stablecoin-tax-capital-gains/', ...cryptoSection, robots: 'noindex,follow',
@@ -2539,7 +2580,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   }
 },
   {"slug": "transmission-des-prix", "sigle": "Price pass-through", "nom": "How input-cost changes reach selling prices", "def": "The adjustment of a selling price following a change in an upstream cost or price. Measurement requires a specified product, currency, scope and time horizon. Dividing two weekly price changes does not establish pass-through when observation periods, taxes and other costs differ.", "guide": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"intuition": "How input-cost changes reach selling prices.", "articles": [{"label": "Emergency oil reserves: from the market to the pump", "href": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "kind": "article"}], "sources": [{"label": "Banque de France, findings published 14 October 2021", "href": "https://www.banque-france.fr/fr/publications-et-statistiques/publications/quelle-transmission-des-prix-du-petrole-aux-prix-des-carburants", "kind": "source"}], "related": ["spr"]}},
-  {"slug": "contrefactuel", "sigle": "Counterfactual", "nom": "Estimated outcome without an intervention", "def": "An estimated outcome that would have occurred without an intervention, allowing for other relevant conditions. It provides a comparison with the observed result and depends on the model and its assumptions. A price decline following an announcement alone does not establish the announcement’s effect.", "guide": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"intuition": "Estimated outcome without an intervention.", "articles": [{"label": "Emergency oil reserves: from the market to the pump", "href": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "kind": "article"}, {"label": "Dutreil: family business inheritance tax relief", "href": "/en/analysis/dutreil-family-business-inheritance-tax-relief/", "kind": "article"}], "sources": [{"label": "Kilian and Zhou, Dallas Fed Working Paper 1916, version dated 19 December 2019", "href": "https://www.dallasfed.org/research/papers/2019/wp1916", "kind": "source"}], "related": ["spr"]}},
+  {"slug": "contrefactuel", "sigle": "Counterfactual", "nom": "Estimated outcome without an intervention", "def": "An estimated outcome that would have occurred without an intervention, allowing for other relevant conditions. It provides a comparison with the observed result and depends on the model and its assumptions. A price decline following an announcement alone does not establish the announcement’s effect.", "guide": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"intuition": "Estimated outcome without an intervention.", "articles": [{"label": "Emergency oil reserves: from the market to the pump", "href": "/en/analysis/emergency-oil-reserves-pass-through-pump-prices/", "kind": "article"}, {"label": "Dutreil: family business inheritance tax relief", "href": "/en/analysis/dutreil-family-business-inheritance-tax-relief/", "kind": "article"}, {"label": "France’s 2027 budget: income losses against the baseline", "href": "/en/analysis/france-2027-budget-distribution-economic-risk/", "kind": "article"}], "sources": [{"label": "Kilian and Zhou, Dallas Fed Working Paper 1916, version dated 19 December 2019", "href": "https://www.dallasfed.org/research/papers/2019/wp1916", "kind": "source"}], "related": ["spr"]}},
   {
     "slug": "backwardation",
     "sigle": "Backwardation",
