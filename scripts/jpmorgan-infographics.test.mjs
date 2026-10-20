@@ -8,14 +8,22 @@ import { assertFontLicenseReferences } from './font-license-assertions.mjs';
 import { assertJpmGeometry, assertJpmProportions, assertJpmQuantitative, assertJpmSourceFaithful, inspectJpmSvg, jpmSourceFigures } from './jpmorgan-svg-assertions.mjs';
 
 const read = file => readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
+const stylesheetBase = '/styles/jpmorgan-infographics-v1.css';
+const stylesheetHash = createHash('sha256').update(readFileSync(new URL(`../public${stylesheetBase}`, import.meta.url))).digest('hex').slice(0, 12);
+const stylesheetHref = `${stylesheetBase}?v=${stylesheetHash}`;
 const articles = [read('src/content/posts/jpmorgan-capital-strategique.mdx'), read('src/content/posts-en/jpmorgan-industrial-power-investment.mdx')];
 const figures = articles.map(jpmSourceFigures);
+
+function assertStylesheetLink(article) {
+  const hrefs = [...article.matchAll(/<link\b[^>]*>/gu)].filter(match => /\brel="stylesheet"/u.test(match[0])).map(match => match[0].match(/\bhref="([^"]+)"/u)?.[1]).filter(href => href?.startsWith(stylesheetBase));
+  assert.deepEqual(hrefs, [stylesheetHref], 'Exactly one stylesheet link must carry the current CSS content fingerprint');
+}
 
 test('24 compact JPMorgan scenes preserve verified figures, chart scales and relationships', () => {
   assert.deepEqual(figures.map(group => group.length), [12, 12]);
   for (const [language, article] of articles.entries()) {
     assert.equal((article.match(/<figure className="l0g-jpm-figure"/gu) ?? []).length, 6);
-    assert.equal((article.match(/<link rel="stylesheet" href="\/styles\/jpmorgan-infographics-v1\.css"\s*\/>/gu) ?? []).length, 1);
+    assertStylesheetLink(article);
     assert.doesNotMatch(article, /<style>|<img[^>]+jpmorgan/iu);
     for (const [index, svg] of figures[language].entries()) {
       assertJpmSourceFaithful(svg, language ? 'en' : 'fr', index);
@@ -23,6 +31,15 @@ test('24 compact JPMorgan scenes preserve verified figures, chart scales and rel
       assertJpmProportions(svg);
       assertJpmQuantitative(svg, Math.floor(index / 2) + 1);
     }
+  }
+});
+
+test('the stylesheet fingerprint follows the exact CSS bytes and rejects stale or absent cache keys', () => {
+  for (const article of articles) {
+    assertStylesheetLink(article);
+    assert.throws(() => assertStylesheetLink(article.replace(stylesheetHref, stylesheetBase)));
+    assert.throws(() => assertStylesheetLink(article.replace(stylesheetHref, `${stylesheetBase}?v=000000000000`)));
+    assert.throws(() => assertStylesheetLink(article.replace(stylesheetHref, '/styles/missing.css')));
   }
 });
 

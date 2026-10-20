@@ -1,10 +1,14 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import test from 'node:test';
 import { parse, serializeOuter } from 'parse5';
 import { assertJpmProportions, assertJpmRenderedFaithful, jpmSourceFigures } from './jpmorgan-svg-assertions.mjs';
 
 const read = file => readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
+const stylesheetBase = '/styles/jpmorgan-infographics-v1.css';
+const stylesheetHash = createHash('sha256').update(readFileSync(new URL(`../public${stylesheetBase}`, import.meta.url))).digest('hex').slice(0, 12);
+const stylesheetHref = `${stylesheetBase}?v=${stylesheetHash}`;
 const nodes = node => [node, ...(node.childNodes ?? []).flatMap(nodes)];
 const attrs = node => Object.fromEntries((node.attrs ?? []).map(a => [a.name, a.value]));
 const pages = [
@@ -15,7 +19,8 @@ const pages = [
 function assertPageFigures(html, originals, lang) {
   const all = nodes(parse(html)), figures = all.filter(node => node.tagName === 'figure' && (attrs(node).class ?? '').split(' ').includes('l0g-jpm-figure'));
   assert.equal(figures.length, 6);
-  assert.equal(all.filter(node => node.tagName === 'link' && attrs(node).rel === 'stylesheet' && attrs(node).href === '/styles/jpmorgan-infographics-v1.css').length, 1);
+  const stylesheets = all.filter(node => node.tagName === 'link' && attrs(node).rel === 'stylesheet' && (attrs(node).href ?? '').startsWith(stylesheetBase)).map(node => attrs(node).href);
+  assert.deepEqual(stylesheets, [stylesheetHref], 'Compiled stylesheet link must carry the exact current CSS content fingerprint');
   for (const [index, figure] of figures.entries()) {
     const descendants = nodes(figure), graphics = descendants.filter(node => node.tagName === 'svg');
     assert.equal(attrs(figure).id, `figure-${index + 1}`);
@@ -47,5 +52,7 @@ test('compiled coordinate, sizing, label, reference and missing-mobile regressio
     html => html.replace('style="width:100%;height:auto"', 'style="width:1100px;height:auto"'),
     html => html.replace('class="jpm-mobile"', 'class="removed-variant"'),
     html => html.replace('href="#source-S01"', 'href="#source-S99"'),
+    html => html.replace(stylesheetHref, stylesheetBase),
+    html => html.replace(stylesheetHref, `${stylesheetBase}?v=000000000000`),
   ]) assert.throws(() => assertPageFigures(mutate(page.html), page.originals, page.lang));
 });
