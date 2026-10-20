@@ -132,6 +132,11 @@ export function sitemapLastmod(pageUrl) {
   if (pathname === '/' || /^\/\d+\/$/.test(pathname)) {
     paths.add('src/pages/[...page].astro');
     posts.forEach((path) => paths.add(path));
+  } else if (pathname === '/peage/') {
+    paths.add('src/data/peage-dossier.ts');
+    paths.add('src/lib/peage.ts');
+    paths.add('src/scripts/peage.ts');
+    paths.add('src/components/PeageDossier.astro');
   } else if (pathname === '/atlas/' || pathname === '/en/atlas/') {
     paths.add('src/config/atlases.ts');
     paths.add('src/components/AtlasCollection.astro');
