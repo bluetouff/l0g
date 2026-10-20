@@ -1,6 +1,7 @@
 ---
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import EngagementAtlas from '../../../components/EngagementAtlas.astro';
+import EnglishRelatedReading from '../../../components/EnglishRelatedReading.astro';
 import { englishAtlasDatasets } from '../../../config/english-atlas-datasets';
 import { atlasAlternateLinks } from '../../../config/atlases';
 const dataset = englishAtlasDatasets['oil-financing'];
@@ -47,6 +48,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
       </details>
     </section>
   </EngagementAtlas>
+  <EnglishRelatedReading id="oil-financing" collection="atlas" />
 </EnglishGuidesLayout>
 
 <style>

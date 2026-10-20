@@ -78,8 +78,12 @@ const jsonLd = {
     </section>
 
     <section class="press-section" id="investigations">
-      <h2>Documented investigations for further reporting</h2>
+      <h2>Documented investigations</h2>
       <p class="press-lede">These analyses connect primary documents, explanatory figures and explicit limits. Cite the investigation alongside the original evidence for any claim you reuse.</p>
+      <nav class="format-links" aria-label="Background dossiers">
+        <a href="/en/topics/ai-financing/">AI financing</a>
+        <a href="/en/topics/private-credit-insurance/">Private credit and insurance</a>
+      </nav>
       <div class="resource-grid">
         {investigations.map((entry) => (
           <article class="resource-card resource-body">
@@ -90,6 +94,7 @@ const jsonLd = {
             <ul class="source-links" aria-label={`Primary documents for ${entry.data.title}`}>
               {entry.resource.sources.map((source) => <li><a href={source.href}>{source.label}</a></li>)}
             </ul>
+            {entry.resource.atlas && <p><a class="atlas-link" href={entry.resource.atlas.en}>Explore the documented financing map</a></p>}
             <p class="citation">
               Olivier Laurelli / l0g.fr, “{entry.data.title}”, {(entry.data.updatedDate ?? entry.data.pubDate).toISOString().slice(0, 10)}, https://l0g.fr/en/analysis/{entry.id}/, CC BY 4.0.
             </p>
@@ -194,6 +199,7 @@ const jsonLd = {
     .resource-grid { display: grid; gap: 1.2rem; margin-top: 1.2rem; }
     .source-links { display: grid; gap: .5rem; list-style: disc; margin: 1rem 0 1rem 1.2rem; }
     .source-links a { color: var(--color-signal); overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: .2em; }
+    .atlas-link { color: var(--color-signal); text-decoration: underline; text-underline-offset: .2em; }
     .resource-card { background: color-mix(in srgb, var(--color-surface) 48%, transparent); border: 1px solid var(--color-line); border-radius: 10px; overflow: hidden; }
     .resource-card > img { background: #0b0f14; display: block; height: auto; width: 100%; }
     .resource-body { padding: 1rem; }
@@ -205,7 +211,7 @@ const jsonLd = {
     summary { color: var(--color-paper); cursor: pointer; font-family: var(--font-mono); font-size: .72rem; }
     pre { background: var(--color-ink); border: 1px solid var(--color-line); border-radius: 7px; margin-top: .65rem; overflow-x: auto; padding: .75rem; }
     code { color: var(--color-muted); font-size: .72rem; white-space: pre; }
-    .citation { border-left: 2px solid var(--color-amber); color: var(--color-muted); font-family: var(--font-mono); font-size: .7rem; line-height: 1.55; margin-top: 1rem; padding-left: .7rem; }
+    .citation { border-left: 2px solid var(--color-amber); color: var(--color-muted); font-family: var(--font-mono); font-size: .7rem; line-height: 1.55; margin-top: 1rem; padding-left: .7rem; overflow-wrap: anywhere; }
     .info-card ul { margin: .8rem 0 0 1.1rem; }
     .warning { border-color: color-mix(in srgb, var(--color-amber) 38%, var(--color-line)); }
     @media (min-width: 760px) {

@@ -1,5 +1,6 @@
 ---
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import EnglishDossierLinks from '../../../components/EnglishDossierLinks.astro';
 import { existsSync } from 'node:fs';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -85,12 +86,14 @@ const tracks = [
   <section class="rise start-hero">
     <p class="mono-label glow" style="color: var(--color-signal)">$ cat start.md</p>
     <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-tight tracking-wider glow">
-      Start with a question. <span style="color: var(--color-accent)">Follow the evidence.</span>
+      Reading paths
     </h1>
     <p class="mt-5 max-w-2xl text-paper text-lg leading-8">
       l0g is an independent publication about macro, opaque finance, credit, market plumbing, technology, public policy and systemic risk. Its English edition combines investigations, reference guides and open data for readers who want the mechanism as well as the outcome.
     </p>
   </section>
+
+  <EnglishDossierLinks />
 
   <section class="track-section rise" aria-labelledby="track-title">
     <p class="mono-label" style="color: var(--color-accent)">// choose a reading path</p>

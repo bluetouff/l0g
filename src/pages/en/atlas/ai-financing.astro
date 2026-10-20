@@ -1,6 +1,7 @@
 ---
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import EngagementAtlas from '../../../components/EngagementAtlas.astro';
+import EnglishRelatedReading from '../../../components/EnglishRelatedReading.astro';
 import { englishAtlasDatasets } from '../../../config/english-atlas-datasets';
 import { atlasAlternateLinks } from '../../../config/atlases';
 const dataset = englishAtlasDatasets['ai-financing'];
@@ -33,6 +34,7 @@ const dataset = englishAtlasDatasets['ai-financing'];
       <p>This targeted check does not renew the review of every contract or cover every AI financing arrangement. Existing observations and their review dates remain in the corpus. The absence of a new filing alone does not establish that a transaction has not occurred.</p>
     </section>
   </EngagementAtlas>
+  <EnglishRelatedReading id="ai-financing" collection="atlas" />
 </EnglishGuidesLayout>
 
 <style>

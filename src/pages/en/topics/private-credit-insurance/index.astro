@@ -1,0 +1,45 @@
+---
+import FinancingDossier from '../../../../components/FinancingDossier.astro';
+const analyses = [
+  { id: 'private-credit-clo-warehouse-banks', note: 'Begin before the securities are sold: follow the temporary bank financing used to accumulate loans, then examine the obligations remaining after a CLO issues its debt and equity.' },
+  { id: 'life-insurers-retirement-savings-private-credit-bermuda', note: 'Move to the insurer’s balance sheet. Identify the assets supporting policyholder promises, the affiliated manager and the role of reinsurance in the documented arrangements.' },
+  { id: 'aon-blackstone-cortina-reinsurance-risk-pricing', note: 'Compare a separate property-and-casualty reinsurance proposal: who selects underwriting risks, sets prices and supplies capital. The life-insurance portfolio cases above have a different scope.' },
+];
+const guides = [
+  { id: 'read-private-credit-risk', note: 'Define the lending perimeter and examine valuations, payment-in-kind interest and fund liquidity.' },
+  { id: 'read-clos-and-leveraged-loans', note: 'Follow loan cash flows through the payment waterfall and distinguish senior debt from first-loss exposure.' },
+  { id: 'read-life-insurer-health', note: 'Read assets, liabilities, statutory disclosures and capital measures together before judging an insurer’s resilience.' },
+];
+---
+
+<FinancingDossier
+  title="Private credit and insurance"
+  description="A reading path through private lending, bank funding, insurer portfolios and reinsurance, with the contracts and balance sheets kept in view."
+  atlas={{ image: '/illustrations/news/credit-prive-logiciels-ia-v1.jpg', href: '/en/atlas/private-credit/', title: 'Private credit atlas', note: 'Explore selected relationships around lenders, managers, banks, insurers and borrowers. Direct corporate lending and asset-backed finance retain their separate structures, observation dates and source documents.' }}
+  analyses={analyses}
+  guides={guides}
+  related={{ href: '/en/topics/ai-financing/', title: 'AI infrastructure financing' }}
+>
+  <Fragment slot="mechanism">
+    <p>
+      Private credit connects a borrower with capital through a negotiated loan and an investment vehicle. The manager selects and monitors assets; the fund or financing company holds them and may borrow in turn. The <a href="https://www.federalreserve.gov/econres/notes/feds-notes/private-credit-characteristics-and-risks-20240223.html">Federal Reserve’s introduction to private credit</a> places direct lending within a wider range of strategies. A portfolio of corporate loans, a pool of consumer receivables and an insurer’s investment in fund debt therefore need separate descriptions before their exposures can be compared.
+    </p>
+    <p>
+      Banks remain part of this chain when they finance the intermediaries. The Fed’s <a href="https://www.federalreserve.gov/econres/notes/feds-notes/bank-lending-to-private-credit-size-characteristics-and-financial-stability-implications-20250523.html">study of bank lending to private credit</a> examines these connections. A warehouse is <a href="https://www.federalreserve.gov/data/scoos/scoos-202606.htm">temporary financing used while loans accumulate ahead of securitisation</a>. A collateralised loan obligation, or CLO, then finances a loan portfolio through securities with different payment priorities. Reading the terms of both stages helps identify who faces refinancing, collateral and borrower-default risk at each point.
+    </p>
+    <p>
+      Insurers can participate as investors in loans, funds or securitisations. Their assets support insurance liabilities, so the analysis also needs the payment promises made to policyholders and the rules governing capital. <a href="https://www.federalreserve.gov/econres/notes/feds-notes/life-insurers-role-in-the-intermediation-chain-of-public-and-private-credit-to-risky-firms-20250321.html">Fed researchers trace these direct and indirect credit exposures</a> through affiliated managers and investment vehicles. Keep asset management, ownership and contractual guarantees distinct: an affiliation alone establishes neither a particular funding path nor an obligation to absorb another company’s losses.
+    </p>
+    <p>
+      Reinsurance adds another contractual relationship. An insurer cedes specified insurance risks to a reinsurer under agreed terms; the <a href="https://content.naic.org/insurance-topics/reinsurance">NAIC’s overview</a> explains the role of this transfer in managing risk and capital. The asset side of an insurer’s balance sheet and its underwriting or reinsurance arrangements can involve some of the same financial groups while performing different economic functions.
+    </p>
+  </Fragment>
+  <Fragment slot="limits">
+    <p>
+      These cases cover selected US lending and insurance structures alongside cross-border arrangements. Definitions of private credit vary, and a statistic for fund assets cannot be treated as the total exposure of insurers or banks. Market-wide conclusions require consistent dates, definitions and consolidation boundaries.
+    </p>
+    <p>
+      Each investigation preserves its evidence date and identifies proposed terms or missing disclosures. Neither an insurer’s capital ratio nor a credit rating reconstructs every underlying exposure. The reading sequence is a framework for checking contracts, assets and liabilities; it does not rank institutions or assign a common probability of failure.
+    </p>
+  </Fragment>
+</FinancingDossier>

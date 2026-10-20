@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import AnalysisList from '../../../components/AnalysisList.astro';
+import EnglishDossierLinks from '../../../components/EnglishDossierLinks.astro';
 import { readingTime } from '../../../lib/reading-time.ts';
 import { sortPostsByPublicationDate } from '../../../lib/content-order.mjs';
 
@@ -48,6 +49,8 @@ const canonical = new URL('/en/analysis/', Astro.site).toString();
       <a href="/en/guides/">open the reference guides</a>
     </div>
   </section>
+
+  <EnglishDossierLinks />
 
   {
     total === 0 ? (

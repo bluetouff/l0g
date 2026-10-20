@@ -1,0 +1,142 @@
+---
+import { getCollection } from 'astro:content';
+import EnglishGuidesLayout from '../layouts/EnglishGuidesLayout.astro';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+interface ReadingEntry { id: string; note: string; label?: string }
+interface Props {
+  title: string;
+  description: string;
+  atlas: { href: string; title: string; note: string; image: string };
+  analyses: ReadingEntry[];
+  guides: ReadingEntry[];
+  related: { href: string; title: string };
+}
+const { title, description, atlas, analyses, guides, related } = Astro.props;
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const canonical = new URL(Astro.url.pathname, `${site}/`).toString();
+const posts = await getCollection('postsEn', ({ data }) => !data.draft);
+const referenceGuides = await getCollection('guidesEn', ({ data }) => !data.draft);
+const reading = analyses.map((item) => {
+  const entry = posts.find((post) => post.id === item.id);
+  if (!entry) throw new Error(`Missing published English dossier analysis: ${item.id}`);
+  return { ...item, title: item.label ?? entry.data.title, href: `/en/analysis/${entry.id}/` };
+});
+const tools = guides.map((item) => {
+  const entry = referenceGuides.find((guide) => guide.id === item.id);
+  if (!entry) throw new Error(`Missing published English dossier guide: ${item.id}`);
+  return { ...item, title: entry.data.title, href: `/en/guides/${entry.id}/` };
+});
+const resources = [atlas, ...reading, ...tools];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${canonical}#collection`,
+  url: canonical,
+  name: title,
+  description,
+  inLanguage: 'en',
+  isPartOf: { '@id': `${site}/#website` },
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: resources.length,
+    itemListElement: resources.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.title,
+      url: new URL(item.href, `${site}/`).toString(),
+    })),
+  },
+};
+---
+
+<EnglishGuidesLayout title={title} seoTitle={`${title} | l0g`} description={description} canonical={canonical} ogImage={atlas.image} ogImageAlt={atlas.title}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <article class="dossier" data-pagefind-body>
+    <header class="dossier-hero">
+      <a class="dossier-back" href="/en/analysis/">English analysis / dossier</a>
+      <h1>{title}</h1>
+      <p class="dossier-lede">{description}</p>
+      <nav class="dossier-jumps" aria-label="Dossier sections">
+        <a href="#mechanism">Mechanism</a>
+        <a href="#reading">Investigations</a>
+        <a href="#guides">Reference guides</a>
+        <a href="#limits">Scope and limits</a>
+      </nav>
+    </header>
+
+    <section id="mechanism" class="dossier-section" aria-labelledby="mechanism-title">
+      <h2 id="mechanism-title">The financing mechanism</h2>
+      <div class="dossier-copy"><slot name="mechanism" /></div>
+    </section>
+
+    <a class="dossier-atlas" href={atlas.href}>
+      <span class="dossier-label">Interactive evidence map</span>
+      <h2>{atlas.title}</h2>
+      <p>{atlas.note}</p>
+      <span class="dossier-open">Explore the atlas <span aria-hidden="true">↗</span></span>
+    </a>
+
+    <section id="reading" class="dossier-section" aria-labelledby="reading-title">
+      <h2 id="reading-title">A reading sequence</h2>
+      <ol class="dossier-reading">
+        {reading.map((item, index) => (
+          <li>
+            <span class="dossier-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <div><h3><a href={item.href}>{item.title}</a></h3><p>{item.note}</p></div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="guides" class="dossier-section" aria-labelledby="guides-title">
+      <h2 id="guides-title">Reference guides</h2>
+      <ul class="dossier-guides">
+        {tools.map((item) => <li><h3><a href={item.href}>{item.title}</a></h3><p>{item.note}</p></li>)}
+      </ul>
+    </section>
+
+    <section id="limits" class="dossier-section dossier-limits" aria-labelledby="limits-title">
+      <h2 id="limits-title">Scope and limits</h2>
+      <div class="dossier-copy"><slot name="limits" /></div>
+    </section>
+    <nav class="dossier-next" aria-label="Related dossier">
+      <span class="dossier-label">Connected reading</span>
+      <a href={related.href}>{related.title} <span aria-hidden="true">→</span></a>
+    </nav>
+  </article>
+</EnglishGuidesLayout>
+
+<style>
+  .dossier { max-width: 66rem; margin-inline: auto; min-width: 0; }
+  .dossier-hero { padding-block: clamp(1rem, 4vw, 2.5rem) 2rem; border-bottom: 1px solid var(--color-line); }
+  .dossier-back, .dossier-label { color: var(--color-signal); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .04em; }
+  h1 { margin-top: 1rem; color: var(--color-bright); font-family: var(--font-display); }
+  .dossier-lede { max-width: 62ch; margin-top: 1.25rem; color: var(--color-prose); font-family: var(--font-read); font-size: 1.15rem; line-height: 1.8; }
+  .dossier-jumps { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+  .dossier-jumps a { display: inline-flex; align-items: center; min-height: 44px; padding: .6rem .9rem; border: 1px solid var(--color-line); border-radius: 6px; font-family: var(--font-mono); font-size: .75rem; color: var(--color-signal); }
+  .dossier-section { margin-top: clamp(2rem, 5vw, 3.25rem); scroll-margin-top: 2rem; }
+  h2 { color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.3rem, 2.5vw, 1.7rem); line-height: 1.3; }
+  .dossier-copy { max-width: 76ch; color: var(--color-prose); font-family: var(--font-read); font-size: 1.02rem; line-height: 1.85; }
+  .dossier-copy :global(p) { margin-top: 1rem; }
+  .dossier-copy :global(a) { color: var(--color-signal); text-decoration: underline; text-underline-offset: .2em; }
+  .dossier-atlas { display: block; margin-top: 2rem; padding: clamp(1.25rem, 4vw, 2rem); border: 1px solid var(--color-line); border-left: 3px solid var(--color-signal); border-radius: 10px; background: var(--color-surface); text-decoration: none; }
+  .dossier-atlas h2 { margin-top: .65rem; }
+  .dossier-atlas p { max-width: 66ch; margin-top: .75rem; color: var(--color-prose); font-family: var(--font-read); line-height: 1.75; }
+  .dossier-open { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.25rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .8rem; }
+  .dossier-reading { list-style: none; margin-top: 1.25rem; padding: 0; }
+  .dossier-reading li { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 1rem; padding-block: 1.35rem; border-top: 1px solid var(--color-line); }
+  .dossier-number { padding-top: .15rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .8rem; }
+  h3 { color: var(--color-bright); font-family: var(--font-display); font-size: 1.1rem; line-height: 1.45; }
+  h3 a { text-decoration: underline; text-decoration-color: var(--color-line); text-underline-offset: .2em; }
+  .dossier-reading p, .dossier-guides p { margin-top: .65rem; color: var(--color-prose); font-family: var(--font-read); line-height: 1.75; }
+  .dossier-guides { display: grid; gap: 1rem; margin-top: 1.25rem; padding: 0; list-style: none; }
+  .dossier-guides li { min-width: 0; padding: 1.25rem; border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-surface); }
+  .dossier-limits { padding-top: 1.5rem; border-top: 1px solid var(--color-line); }
+  .dossier-next { display: grid; gap: .65rem; margin-top: 2.5rem; padding-block: 1.5rem; border-block: 1px solid var(--color-line); }
+  .dossier-next a { color: var(--color-signal); font-family: var(--font-display); font-size: 1.05rem; line-height: 1.5; }
+  a { overflow-wrap: anywhere; }
+  a:hover { color: var(--color-signal); }
+  a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media (min-width: 760px) { .dossier-guides { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+</style>

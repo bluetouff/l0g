@@ -103,8 +103,9 @@ export const financingReadingPaths = [
       'residual-value-guarantee-ai-infrastructure-credit',
       'nvidia-the-500-billion-that-does-not-exist-yet',
       'softbank-openai-financing-freedom-to-wait',
+      'how-long-does-ai-server-live',
     ],
-    guideIds: [],
+    guideIds: ['read-corporate-debt', 'from-earnings-to-cash-working-capital-investment', 'read-credit-ratings', 'how-to-read-10-k-sec'],
   },
   {
     id: 'private-credit',
@@ -118,8 +119,9 @@ export const financingReadingPaths = [
       'radiant-world-disputed-invoices-trade-finance',
       'aon-blackstone-cortina-reinsurance-risk-pricing',
       'semi-liquid-private-credit-gating',
+      'life-insurers-retirement-savings-private-credit-bermuda',
     ],
-    guideIds: ['read-private-credit-risk'],
+    guideIds: ['read-private-credit-risk', 'read-clos-and-leveraged-loans', 'read-life-insurer-health'],
   },
   {
     id: 'oil-financing',
@@ -133,6 +135,6 @@ export const financingReadingPaths = [
       'banking-on-oil-5-vitol-refineries-terminals-engen',
       'banking-on-oil-7-trafigura-petrobras-bribery',
     ],
-    guideIds: [],
+    guideIds: ['read-oil-market', 'understand-margin-calls-and-collateral'],
   },
 ] satisfies (Omit<EnglishReadingPath, 'eyebrow' | 'transmission'> & { atlasHref: string; atlasLabel: string })[];

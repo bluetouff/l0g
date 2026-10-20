@@ -5,6 +5,17 @@ import { buildSignalHistorySurface } from '../lib/signal-history.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
 import { latestWeeklyEdition } from '../config/weekly-editions.ts';
 import { buildWeeklyCitationText, weeklyChartDimensions } from '../lib/weekly-package.ts';
+import { getCollection } from 'astro:content';
+import { pressInvestigations } from '../config/press-investigations.ts';
+
+const englishAnalyses = await getCollection('postsEn', ({ data }) => !data.draft);
+const analyses = await getCollection('posts', ({ data }) => !data.draft);
+const investigations = pressInvestigations.map((resource) => {
+  const english = englishAnalyses.find((post) => post.id === resource.id);
+  const entry = english && analyses.find((post) => post.id === english.data.sourceArticle);
+  if (!entry) throw new Error(`Missing French press resource: ${resource.id}`);
+  return { ...entry, resource, heading: 'headingFr' in resource ? resource.headingFr : entry.data.title };
+});
 
 const history = buildSignalHistorySurface();
 const weekly = latestWeeklyEdition();
@@ -32,11 +43,13 @@ const jsonLd = {
   license: 'https://creativecommons.org/licenses/by/4.0/',
   mainEntity: {
     '@type': 'ItemList',
-    itemListElement: history.instruments.map((series, index) => ({
+    itemListElement: [...history.instruments.map((series) => ({ name: series.name, url: series.page })),
+      ...investigations.map((entry) => ({ name: entry.heading, url: `${site}/posts/${entry.id}/` })),
+    ].map((resource, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      name: series.name,
-      url: series.page,
+      name: resource.name,
+      url: resource.url,
     })),
   },
 };
@@ -107,6 +120,31 @@ const jsonLd = {
           <a href={weeklyRoot}>édition web</a>
         </nav>
       </div>
+    </section>
+
+    <section class="press-section" id="investigations" aria-labelledby="investigations-title">
+      <h2 id="investigations-title">Enquêtes documentées</h2>
+      <p class="press-lede">Des mécanismes financiers reconstitués à partir de documents primaires, avec leurs figures et leurs limites. Toute reprise d’un résultat doit conserver le lien vers l’enquête et vers ses preuves.</p>
+      <nav class="format-links" aria-label="Dossiers de référence en anglais">
+        <a href="/en/topics/ai-financing/" hreflang="en">Financement de l’IA · EN</a>
+        <a href="/en/topics/private-credit-insurance/" hreflang="en">Crédit privé et assurance · EN</a>
+      </nav>
+      <div class="resource-grid">
+        {investigations.map((entry) => (
+          <article class="resource-card resource-body">
+            <h3><a href={`/posts/${entry.id}/`}>{entry.heading}</a></h3>
+            <p>{entry.data.description}</p>
+            <p><strong>Angle de reprise.</strong> {entry.resource.angleFr}</p>
+            <p><strong>Limites à conserver.</strong> {entry.resource.limitsFr}</p>
+            <ul class="source-links" aria-label={`Documents primaires pour ${entry.data.title}`}>
+              {entry.resource.sources.map((source) => <li><a href={source.href}>{source.label}</a></li>)}
+            </ul>
+            {entry.resource.atlas && <p><a class="atlas-link" href={entry.resource.atlas.fr}>Explorer la carte des financements documentés</a></p>}
+            <p class="citation">Olivier Laurelli / l0g.fr, « {entry.data.title} », {(entry.data.updatedDate ?? entry.data.pubDate).toISOString().slice(0, 10)}, https://l0g.fr/posts/{entry.id}/, CC BY 4.0.</p>
+          </article>
+        ))}
+      </div>
+      <p class="citation">Pour les textes et figures originaux de l0g : citer l’auteur, l’enquête précise et la licence CC BY 4.0 ; signaler les adaptations. Les documents et illustrations de tiers conservent leurs droits propres. Préserver les dates, les périmètres et les incertitudes.</p>
     </section>
 
     <section class="press-section" id="series" aria-labelledby="series-title">
@@ -233,7 +271,9 @@ const jsonLd = {
     summary { color: var(--color-paper); cursor: pointer; font-family: var(--font-mono); font-size: .72rem; }
     pre { background: var(--color-ink); border: 1px solid var(--color-line); border-radius: 7px; margin-top: .65rem; overflow-x: auto; padding: .75rem; }
     code { color: var(--color-muted); font-size: .72rem; white-space: pre; }
-    .citation { border-left: 2px solid var(--color-amber); color: var(--color-muted); font-family: var(--font-mono); font-size: .7rem; line-height: 1.55; margin-top: 1rem; padding-left: .7rem; }
+    .source-links { display: grid; gap: .5rem; list-style: disc; margin: 1rem 0 1rem 1.2rem; }
+    .source-links a, .atlas-link { color: var(--color-signal); overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: .2em; }
+    .citation { border-left: 2px solid var(--color-amber); color: var(--color-muted); font-family: var(--font-mono); font-size: .7rem; line-height: 1.55; margin-top: 1rem; padding-left: .7rem; overflow-wrap: anywhere; }
     .info-card ul { margin: .8rem 0 0 1.1rem; }
     .warning { border-color: color-mix(in srgb, var(--color-amber) 38%, var(--color-line)); }
     @media (min-width: 760px) {

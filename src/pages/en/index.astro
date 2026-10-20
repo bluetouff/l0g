@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
 import WatchCard from '../../components/WatchCard.astro';
 import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
+import EnglishDossierLinks from '../../components/EnglishDossierLinks.astro';
+import { selectedEnglishInvestigations } from '../../config/english-edition.ts';
 import { MCP_COMPACT_PUBLIC_PATH } from '../../config/agent-contract.mjs';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -10,6 +12,12 @@ const englishGuides = await getCollection('guidesEn', ({ data }) => !data.draft)
 const guideCount = englishGuides.length;
 const englishPosts = await getCollection('postsEn', ({ data }) => !data.draft);
 const analysisCount = englishPosts.length;
+const selectedInvestigations = selectedEnglishInvestigations.map((selection) => {
+  const entry = englishPosts.find((post) => post.id === selection.id);
+  if (!entry) throw new Error(`Missing selected English investigation: ${selection.id}`);
+  return { ...selection, entry };
+});
+const publicationDate = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
 const primaryCards = [
   {
@@ -89,11 +97,7 @@ const jsonLd = {
   <section class="en-home-hero rise" data-pagefind-body>
     <div class="en-hero-copy">
       <p class="mono-label glow" style="color: var(--color-signal)">$ open /en</p>
-      <h1 class="en-title font-display glow">
-        <span class="title-line">Financial risk,</span>{' '}
-        <span class="title-line gradient-word">opened up</span>{' '}
-        <span class="title-line">and traced to its sources.</span>
-      </h1>
+      <h1 class="en-title font-display glow">Independent financial analysis</h1>
       <p class="en-lede">
         l0g is an independent French publication with a growing English edition. It investigates macro, credit, market plumbing, technology and public policy with primary sources, explicit uncertainty and machine-readable evidence.
       </p>
@@ -126,6 +130,26 @@ status: readable by humans and agents`}</code></pre>
     <span><strong>API</strong> JSON / NDJSON / CSV</span>
     <span><strong>MCP</strong> read-only server</span>
     <span><strong>0</strong> trackers</span>
+  </section>
+
+  <section class="en-section selected-section" aria-labelledby="selected-investigations-title">
+    <p class="mono-label" style="color:var(--color-signal)">// editorial selection</p>
+    <h2 id="selected-investigations-title">Selected investigations</h2>
+    <div class="selected-grid">
+      {selectedInvestigations.map(({ id, topic, note, entry }) => (
+        <article class="selected-card">
+          <p class="selected-meta">{topic} <span aria-hidden="true">·</span> <time datetime={entry.data.pubDate.toISOString()}>{publicationDate(entry.data.pubDate)}</time></p>
+          <h3><a href={`/en/analysis/${id}/`}>{entry.data.title}</a></h3>
+          <p>{note}</p>
+          <a class="selected-link" href={`/en/analysis/${id}/`} aria-label={`Read ${entry.data.title}`}>Read the investigation <span aria-hidden="true">↗</span></a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="en-section" aria-labelledby="english-dossiers-title">
+    <h2 id="english-dossiers-title">Research dossiers</h2>
+    <EnglishDossierLinks />
   </section>
 
   <section class="publication-highlight" aria-labelledby="english-publication-title">
@@ -210,6 +234,17 @@ status: readable by humans and agents`}</code></pre>
 </EnglishLayout>
 
 <style>
+  .selected-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin-top:1.2rem; }
+  .selected-card { display:flex; flex-direction:column; gap:1rem; min-width:0; padding:1.3rem; border:1px solid var(--color-line); border-top:3px solid var(--color-signal); border-radius:10px; background:var(--color-surface); }
+  .selected-card:nth-child(2) { border-top-color:var(--color-accent); }
+  .selected-card:nth-child(3) { border-top-color:var(--color-amber); }
+  .selected-card .selected-meta { color:var(--color-muted); font-family:var(--font-mono); font-size:.7rem; line-height:1.7; }
+  .selected-card h3 { color:var(--color-bright); font-family:var(--font-display); font-size:1.22rem; line-height:1.4; }
+  .selected-card h3 a { text-decoration:none; }
+  .selected-card > p { font-family:var(--font-read); color:var(--color-paper); line-height:1.7; }
+  .selected-link { display:inline-flex; justify-content:space-between; gap:.6rem; margin-top:auto; color:var(--color-signal); font-family:var(--font-mono); font-size:.75rem; line-height:1.6; text-decoration:underline; text-underline-offset:3px; }
+  .selected-card a:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+  @media(max-width:780px) { .selected-grid { grid-template-columns:minmax(0,1fr); } }
   .publication-highlight { margin: clamp(2.4rem, 6vw, 4.5rem) 0 clamp(1.25rem, 3vw, 2rem); }
   .publication-highlight > h2 { margin: .35rem 0 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.55rem, 3vw, 2.15rem); line-height: 1.12; }
   .en-home-hero {
@@ -266,17 +301,6 @@ status: readable by humans and agents`}</code></pre>
     line-height: .98;
     letter-spacing: -0.035em;
     overflow-wrap: anywhere;
-  }
-  .title-line { display: block; }
-  .gradient-word {
-    width: max-content;
-    max-width: 100%;
-    background: linear-gradient(90deg, var(--color-signal), var(--color-accent) 54%, var(--color-amber));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: none;
-    filter: drop-shadow(0 0 22px color-mix(in srgb, var(--color-signal) 22%, transparent));
   }
   .en-lede {
     margin-top: 1.25rem;

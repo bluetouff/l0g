@@ -2,19 +2,28 @@
 import { getCollection } from 'astro:content';
 import { financingReadingPaths } from '../config/english-reading-paths.ts';
 import { englishEditorialLinks } from '../config/english-editorial-links.ts';
+import { englishDossiers } from '../config/english-edition.ts';
 
-interface Props { id: string; collection: 'postsEn' | 'guidesEn' }
+interface Props { id: string; collection: 'postsEn' | 'guidesEn' | 'atlas' }
 const { id, collection } = Astro.props;
-const route = `/en/${collection === 'postsEn' ? 'analysis' : 'guides'}/${id}/`;
+const route = `/en/${collection === 'postsEn' ? 'analysis' : collection === 'guidesEn' ? 'guides' : 'atlas'}/${id}/`;
 const suggestions = englishEditorialLinks.filter((link) => link.from === route);
 const path = financingReadingPaths.find((candidate) =>
-  (collection === 'postsEn' ? candidate.analysisIds : candidate.guideIds).includes(id));
+  collection === 'atlas' ? candidate.id === id :
+    (collection === 'postsEn' ? candidate.analysisIds : candidate.guideIds).includes(id));
 const analyses = path ? await getCollection('postsEn', ({ data }) => !data.draft) : [];
+const dossier = englishDossiers.find((entry) => entry.id === path?.id);
 const neighbours = path?.analysisIds
   .filter((slug) => collection !== 'postsEn' || slug !== id)
   .map((slug) => analyses.find((entry) => entry.id === slug))
   .filter((entry) => entry !== undefined)
   .slice(0, 3) ?? [];
+const guides = collection === 'atlas' && path ? await getCollection('guidesEn', ({ data }) => !data.draft) : [];
+const readingGuides = collection === 'atlas' ? path?.guideIds.map((slug) => {
+  const entry = guides.find((guide) => guide.id === slug);
+  if (!entry) throw new Error(`Missing atlas reading guide: ${slug}`);
+  return entry;
+}) ?? [] : [];
 const suggestedResources = await Promise.all(suggestions.map(async (link) => {
   const targetCollection = link.to.startsWith('/en/analysis/') ? 'postsEn' : 'guidesEn';
   const targetId = link.to.split('/').filter(Boolean).at(-1);
@@ -32,8 +41,13 @@ const additionalResources = suggestedResources.filter((link) => !neighbourHrefs.
     <h2 id="related-reading-title">{path?.title ?? 'Continue the analysis'}</h2>
     {path && <p>{path.description}</p>}
     <ul>
-      {path && <li><a href={path.atlasHref}>{path.atlasLabel}</a></li>}
-      {neighbours.map((entry) => <li><a href={`/en/analysis/${entry.id}/`}>{entry.data.title}</a></li>)}
+      {dossier && <li><a href={dossier.href}>{dossier.title}: research dossier</a></li>}
+      {path && collection !== 'atlas' && <li><a href={path.atlasHref}>{path.atlasLabel}</a></li>}
+      {readingGuides.map((entry) => <li><a href={`/en/guides/${entry.id}/`}>{entry.data.title}</a></li>)}
+      {neighbours.map((entry) => {
+        const note = suggestions.find((link) => link.to === `/en/analysis/${entry.id}/`)?.note;
+        return <li><a href={`/en/analysis/${entry.id}/`}>{entry.data.title}</a>{note && <p>{note}</p>}</li>;
+      })}
       {additionalResources.map((link) => <li><a href={link.to}>{link.title}</a><p>{link.note}</p></li>)}
     </ul>
   </nav>
