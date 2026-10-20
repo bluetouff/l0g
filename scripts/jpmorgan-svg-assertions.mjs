@@ -5,34 +5,34 @@ import { XMLParser, XMLValidator } from 'fast-xml-parser';
 import { parseFragment } from 'parse5';
 import opentype from '@shuding/opentype.js';
 
-// Complete supplied scenes retain every coordinate, font and element order.
-// Adaptations: semantic themes, native attributes, MDX whitespace, responsive
-// roots, local source links and two figure-1 qualifiers about third-party funds.
+// Compact scenes retain the verified amounts, populations, chart scales and
+// relationships. Reflow removes repeated prose already present in captions,
+// body and method notes; source and rendered pins protect each final scene.
 const hashes = {
-  "fr-0": "7ea01305d4e63e8cd80135237c2fb4ab4ef2fec509af1ec9fc60294fb5625be1",
-  "fr-1": "187ed7c020da675c528f0f95a1c9df2ab562ef10a2d3088fd68ab5a1e507f1e3",
-  "fr-2": "0b1ca19bbefeec70dcec49e4cb6cfda350760665c44ccd61675ca1c5d87ff8fa",
-  "fr-3": "17d65a2584266be826ac7cce1c676fcc44c307d4d193c8e8ebcc90f174fca880",
-  "fr-4": "bc425621652eb702a2f7deb86ef00ce4697f9478700d8d887d53530577e33c43",
-  "fr-5": "55afe1a462e83e4ff6656bb604150dd0cbc763439684b6d81c8c8abb933825d3",
-  "fr-6": "7c7dc08df10b9423521582b56ee7086ce61c287595f6dce087f860e27f2f6538",
-  "fr-7": "82f80f3299e106e1a0b20fbe79938b509e9e603b09ac3ce79a6b25afce932ac3",
-  "fr-8": "27700aaab05c0c3cf960e72e27ce382f47ec93490e1bc38fedb45c4ba5cd1aec",
-  "fr-9": "086c99d13faa86d80a7bf2892a61e06759122337102c9121a50c8366a9f260b1",
-  "fr-10": "804e5b46a50eee225b708b142b5d9f483ed7ee17c73c93f64b41a1d601efa3f9",
-  "fr-11": "9a063bd34e07b10c5869604002803f099d4e33bdbc8937bb8ea856bd58c42b49",
-  "en-0": "cf7d66e5cc4ffb9241ee219924dc0cfab3828a6bb4f223144890bcbac5dcf693",
-  "en-1": "9e039e8abc5ba3eaa7d5d80afe2ed06d421b8f7fb3a95656f25980e09031e25a",
-  "en-2": "abba8d71372b3debae6626d602a69e20b6188cafbac5b2ca9fad989ad6584a38",
-  "en-3": "24b83d3cee1abb85f8019133648ee3fe7352ff6a80ccba712febca1b18af04ca",
-  "en-4": "b47a9577dd70096ec2cca0bfbadfd300f909483d3dd35837839bf2998942aede",
-  "en-5": "c0b84cc5dc1699b1a355daabd9f1ddfb23c33312f9792921fbd63eb56238dc29",
-  "en-6": "954b0f714a3c95c1b91c57f5c64a281516fc7c97ebbc49493b79aa5df981c3e6",
-  "en-7": "72a82e5f814b304239b9d5cf0308755acab02696d3ec58ce3906210a7510e8e9",
-  "en-8": "42731144daba781c709ec7eef89e5d26688be1051c2cdc29eacb0abec19e3f40",
-  "en-9": "b9886009328325e1ebe097ff9ba6c0b59dff864091cac1ea0d680aa1d8db6cc8",
-  "en-10": "c88d37078f3bb951e7d73e7e5c22d1f6b3556fb896a4fc8d6ba0f491c3ec1ceb",
-  "en-11": "b160d824fd6d7b7bacfbfb47137deebd5fdc348444af7c22b7a558c6328d4dbd"
+  "fr-0": "5748f2d76fa20a0830409be01489b72974cb457669f90100c4da00a586bd4a6e",
+  "fr-1": "bba4d9ff505ba5aeb23d8a583ea1105aa00d669343160e0f01a8710032a4c127",
+  "fr-2": "a800829572cb6504d1de20889d144fe8ed1f66321960e3d64ce78ef1d63734cd",
+  "fr-3": "908be81828d41e2ba12f637f760e8816203298403bf43d7cdcb59200b254fb1c",
+  "fr-4": "d3cd96b9ce55ca38698c1632495b27543361d13dce26878a6259324599036f86",
+  "fr-5": "2ac5f7b3e98ac206ba6651ced6d3716d6534765f8d923196ec042a2a9285c830",
+  "fr-6": "0796c18966601f1908e89cc829c74789f1167680bdc2a8dd1a5c44c72e297dcf",
+  "fr-7": "064127f20de1842560c6cb46f6e06ae325708ccb728a80a513ae4cb9cabb559c",
+  "fr-8": "c26e7269a9066c69c2a5922d84aff799506d556ef27e8b16e799786929d88c21",
+  "fr-9": "36bd93a6e8b278236f2beca1e74ca9cb19629cc89901ef6a6ba9ed8a5ee97713",
+  "fr-10": "a082dd646888ceec95bc1b4b368b3354cf270ef874e782ed3fd9793030d73b5d",
+  "fr-11": "c8e6d5e344ddb0ea867657b2d6f345c2216195fce4e99d600d3c35b0f7fdb375",
+  "en-0": "e8fda533610ffe798c06a962ebc07cb791aa7c7e5e34c0521bb3cbdfff27cd3f",
+  "en-1": "febdea659b5d10a11da4beb5cd5d07802cba7d0e8afd2f37f627b4447c098657",
+  "en-2": "ac7c382b7186f3b5dbd8ce14d2152620e1c64400ccbd1429d97abae8c8acdab8",
+  "en-3": "3281f9da33c27676c37ddcc8c8304604860c9979df98ee640914cdfce0291b5e",
+  "en-4": "392a53d263fe0e0b1963cdd74ed82fe18239abdf15579e314b928ee713654d44",
+  "en-5": "9d422a91e2227030b167f1ee3c5b88ac83d7361ee758474c5f419f198c4d1efa",
+  "en-6": "79dd41dff81c55d8aa49dc093733c70e4bfd4030ccbce70bd9f939b79fd86122",
+  "en-7": "a6716a8946db2e57f37e3d0414962cd1150490f63292a38b2a39424ec0af09a3",
+  "en-8": "2a4e4a06687a6f6d5218e703264639d6b42000bba1afb3c00d5df11dfc87e8a9",
+  "en-9": "e3aa286cf60b551380368044a2ba680f891ec454b98193574f6d8aacebd656fe",
+  "en-10": "7b874d9dcd5b6439964e306f03698ccef9361214de483f40f2eb5cb6d2f99287",
+  "en-11": "c391b74671713cc4b2899b0c597903d2ed1c3a44a8059fb8f03a27a3ffb5b914"
 };
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '', preserveOrder: true, trimValues: false, parseTagValue: false });
 export const jpmTag = node => Object.keys(node).find(key => key !== ':@');
@@ -44,7 +44,7 @@ const allowed = {
   svg: 'style xmlns viewBox role aria-labelledby', title: 'id', desc: 'id', defs: '',
   marker: 'id viewBox refX refY markerWidth markerHeight orient',
   pattern: 'id width height patternUnits',
-  path: 'd fill stroke stroke-width stroke-dasharray marker-end',
+  path: 'id d fill stroke stroke-width stroke-dasharray marker-end',
   rect: 'x y width height rx fill stroke stroke-width stroke-dasharray',
   text: 'x y font-family font-size font-weight text-anchor fill',
   line: 'x1 y1 x2 y2 stroke stroke-width stroke-dasharray marker-end',
@@ -68,7 +68,7 @@ export function inspectJpmSvg(svg) {
   assert.equal(jpmTag(root), 'svg');
   assert.equal(a.style, 'width:100%;height:auto');
   assert.equal(a.role, 'img');
-  assert.match(a.viewBox, /^0 0 (?:600|1200) [0-9]+(?:\.0)?$/u);
+  assert.match(a.viewBox, /^0 0 (?:480|1000) [0-9]+$/u);
   const ids = nodes.map(node => jpmAttrs(node).id).filter(Boolean);
   assert.equal(ids.length, new Set(ids).size);
   for (const id of a['aria-labelledby'].split(' ')) assert.ok(nodes.some(node => jpmAttrs(node).id === id && ['title', 'desc'].includes(jpmTag(node)) && jpmText(node).trim()));
@@ -77,7 +77,7 @@ export function inspectJpmSvg(svg) {
     for (const [key, value] of Object.entries(jpmAttrs(node))) {
       assert.ok(allowed[jpmTag(node)].split(' ').includes(key), `Forbidden SVG attribute: ${key}`);
       if (key === 'href') {
-        const label = jpmText(node).trim().match(/^(S[0-9]{2}) · /u)?.[1];
+        const label = jpmText(node).trim().match(/^(S[0-9]{2})$/u)?.[1];
         assert.ok(label && Number(label.slice(1)) >= 1 && Number(label.slice(1)) <= 20);
         assert.equal(value, `#source-${label}`);
       }
@@ -93,11 +93,12 @@ export function inspectJpmSvg(svg) {
 
 export function assertJpmSourceFaithful(svg, lang, index) {
   inspectJpmSvg(svg);
-  assert.equal(createHash('sha256').update(svg).digest('hex'), hashes[`${lang}-${index}`], 'Complete supplied composition, labels or semantic-theme mapping changed');
+  assert.equal(createHash('sha256').update(svg).digest('hex'), hashes[`${lang}-${index}`], 'Verified compact composition, labels or semantic-theme mapping changed');
 }
 
 export function assertJpmGeometry(svg) {
   const { root, nodes } = inspectJpmSvg(svg), [,, width, height] = jpmAttrs(root).viewBox.split(' ').map(Number);
+  const labelBoxes = [];
   const visible = node => jpmTag(node) === 'defs' ? [] : [node, ...(node[jpmTag(node)] ?? []).filter(child => jpmTag(child) !== '#text').flatMap(visible)];
   const point = (x, y) => assert.ok(Number.isFinite(x) && Number.isFinite(y) && x >= 0 && y >= 0 && x <= width && y <= height, `Shape outside viewBox: ${x},${y}`);
   for (const node of visible(root)) {
@@ -144,26 +145,44 @@ export function assertJpmGeometry(svg) {
       box.y1 = Math.min(box.y1, gy - glyph.yMax * scale); box.y2 = Math.max(box.y2, gy - glyph.yMin * scale);
     });
     assert.ok(box.x1 >= 2 && box.y1 >= 2 && box.x2 <= width - 2 && box.y2 <= height - 2, `Text outside viewBox: ${label}`);
+    labelBoxes.push({ ...box, label });
     const panel = panels.filter(panel => number(node, 'x') >= number(panel, 'x') && number(node, 'x') <= number(panel, 'x') + number(panel, 'width') && y >= number(panel, 'y') && y <= number(panel, 'y') + number(panel, 'height')).sort((a, b) => number(a, 'width') * number(a, 'height') - number(b, 'width') * number(b, 'height'))[0];
     if (panel) assert.ok(box.x1 >= number(panel, 'x') + 2 && box.y1 >= number(panel, 'y') + 2 && box.x2 <= number(panel, 'x') + number(panel, 'width') - 2 && box.y2 <= number(panel, 'y') + number(panel, 'height') - 2, `Text outside internal panel: ${label}`);
+  }
+  for (let i = 0; i < labelBoxes.length; i++) for (let j = i + 1; j < labelBoxes.length; j++) {
+    const a = labelBoxes[i], b = labelBoxes[j];
+    assert.ok(!(Math.min(a.x2, b.x2) - Math.max(a.x1, b.x1) > 1 && Math.min(a.y2, b.y2) - Math.max(a.y1, b.y1) > 1), `Overlapping labels: ${a.label} / ${b.label}`);
   }
   return true;
 }
 
+export function assertJpmProportions(svg) {
+  const { root, nodes } = inspectJpmSvg(svg), [,, width, height] = jpmAttrs(root).viewBox.split(' ').map(Number), mobile = width === 480;
+  assert.ok(height / width <= (mobile ? 1.55 : .7), 'Artwork retains compact in-page proportions');
+  const minimum = Math.min(...nodes.filter(node => jpmTag(node) === 'text').map(node => number(node, 'font-size')));
+  assert.ok(minimum >= (mobile ? 22 : 24), 'Compactness must preserve legible typography');
+  // Use the actual 320px page's 280px column and the exact horizontal
+  // breakpoint boundary, allowing for the panel's two 1px borders. The smallest
+  // desktop notes reach about 11.47px immediately above 480px; they reach
+  // 14.35px in the usual 600px column. Do not claim a 12px boundary minimum.
+  const column = mobile ? 280 : 480.01;
+  assert.ok(minimum * (column - 2) / width >= (mobile ? 12.5 : 11.4));
+}
+
 const near = (actual, expected) => assert.ok(Math.abs(Number(actual) - expected) <= .0006, `${actual} != ${expected}`);
 export function assertJpmQuantitative(svg, figure) {
-  const { root, nodes } = inspectJpmSvg(svg), mobile = jpmAttrs(root).viewBox.startsWith('0 0 600 '), english = jpmAttrs(root)['aria-labelledby'].includes('-en-');
+  const { root, nodes } = inspectJpmSvg(svg), mobile = jpmAttrs(root).viewBox.startsWith('0 0 480 ');
   if (figure === 5) {
     // Explicit hypothetical annual model: revenues × 45% - fixed costs 20 - debt service 12.
-    const chart = nodes.find(node => jpmTag(node) === 'path' && /^M84\.000 /u.test(jpmAttrs(node).d ?? ''));
+    const chart = nodes.find(node => jpmTag(node) === 'path' && (jpmAttrs(node).id ?? '').endsWith('-cash-curve'));
     assert.ok(chart);
     const points = [...jpmAttrs(chart).d.matchAll(/[ML]([0-9.]+) ([0-9.]+)/gu)].map(match => match.slice(1).map(Number));
     assert.equal(points.length, 71);
-    const x = revenue => 84 + (revenue - 40) / 70 * (mobile ? 464 : 1064);
-    const top = mobile ? (english ? 380 : 426) : (english ? 284 : 238);
-    const y = balance => top + (20 - balance) / 35 * (mobile ? 418 : 330);
+    const x = revenue => (mobile ? 64 : 80) + (revenue - 40) / 70 * (mobile ? 384 : 872);
+    const top = mobile ? 166 : 136;
+    const y = balance => top + (20 - balance) / 35 * (mobile ? 292 : 280);
     for (const [index, point] of points.entries()) { near(point[0], x(40 + index)); near(point[1], y((40 + index) * .45 - 32)); }
-    for (const [revenue, radius] of [[60, 7], [100, 7], [32 / .45, 5]]) {
+    for (const [revenue, radius] of [[60, 6], [100, 6], [32 / .45, 5]]) {
       const circle = nodes.find(node => jpmTag(node) === 'circle' && number(node, 'r') === radius && Math.abs(number(node, 'cx') - x(revenue)) < .001);
       assert.ok(circle); near(number(circle, 'cy'), y(.45 * revenue - 32));
     }
@@ -183,7 +202,7 @@ export function assertJpmQuantitative(svg, figure) {
     }
     const labels = nodes.filter(node => jpmTag(node) === 'text').map(jpmText);
     for (const count of expected) assert.ok(labels.includes(`${count}/15`));
-    assert.ok(labels.some(label => /généralisable|generalizable/u.test(label)), 'GAO sample limit remains visible');
+    assert.ok(labels.some(label => /généralisable|generalized|generalizable/u.test(label)), 'GAO sample limit remains visible');
   }
 }
 

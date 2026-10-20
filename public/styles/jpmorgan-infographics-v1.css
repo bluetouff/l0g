@@ -1,4 +1,11 @@
-/* Preserve the supplied compositions with the exact, existing DejaVu metrics. */
+/* Keep the JPMorgan article titles on whole-word line breaks. */
+article:has(.l0g-jpm-figure) > .post-head .post-title {
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* Compact compositions retain the verified data and original DejaVu metrics. */
 @font-face {
   font-family: 'l0g JPMorgan';
   src: url('/fonts/jpmorgan/dejavu-sans-400.ttf') format('truetype');
@@ -39,8 +46,8 @@
 }
 .l0g-jpm-figure .jpm-mobile {
   display: none;
-  max-width: 24rem;
-  margin-inline: auto;
+  width: 100%;
+  min-width: 0;
 }
 .prose .l0g-jpm-figure figcaption {
   font-size: .88rem;
@@ -53,11 +60,8 @@
 .l0g-jpm-figure .data-note pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 .l0g-jpm-figure summary { cursor: pointer; }
 .l0g-jpm-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
-@media (max-width: 700px) {
-  .l0g-jpm-figure .jpm-mobile { display: block; }
-  .l0g-jpm-figure .jpm-desktop { display: none; }
-}
-@container (max-width: 640px) {
+/* Select the composition from the reading column, including browser zoom. */
+@container (max-width: 480px) {
   .l0g-jpm-figure .jpm-mobile { display: block; }
   .l0g-jpm-figure .jpm-desktop { display: none; }
 }

@@ -5,13 +5,13 @@ import test from 'node:test';
 import postcss from 'postcss';
 import { compile } from '@mdx-js/mdx';
 import { assertFontLicenseReferences } from './font-license-assertions.mjs';
-import { assertJpmGeometry, assertJpmQuantitative, assertJpmSourceFaithful, inspectJpmSvg, jpmSourceFigures } from './jpmorgan-svg-assertions.mjs';
+import { assertJpmGeometry, assertJpmProportions, assertJpmQuantitative, assertJpmSourceFaithful, inspectJpmSvg, jpmSourceFigures } from './jpmorgan-svg-assertions.mjs';
 
 const read = file => readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
 const articles = [read('src/content/posts/jpmorgan-capital-strategique.mdx'), read('src/content/posts-en/jpmorgan-industrial-power-investment.mdx')];
 const figures = articles.map(jpmSourceFigures);
 
-test('24 complete supplied JPMorgan scenes preserve geometry, labels, font metrics and native SVG attributes', () => {
+test('24 compact JPMorgan scenes preserve verified figures, chart scales and relationships', () => {
   assert.deepEqual(figures.map(group => group.length), [12, 12]);
   for (const [language, article] of articles.entries()) {
     assert.equal((article.match(/<figure className="l0g-jpm-figure"/gu) ?? []).length, 6);
@@ -20,6 +20,7 @@ test('24 complete supplied JPMorgan scenes preserve geometry, labels, font metri
     for (const [index, svg] of figures[language].entries()) {
       assertJpmSourceFaithful(svg, language ? 'en' : 'fr', index);
       assertJpmGeometry(svg);
+      assertJpmProportions(svg);
       assertJpmQuantitative(svg, Math.floor(index / 2) + 1);
     }
   }
@@ -27,7 +28,7 @@ test('24 complete supplied JPMorgan scenes preserve geometry, labels, font metri
 
 test('hypothetical cash model and GAO sample markers fail closed on arithmetic or population regressions', () => {
   const cash = figures[0][8], gao = figures[0][10];
-  assert.throws(() => assertJpmQuantitative(cash.replace('M84.000 558.571', 'M84.000 548.571'), 5));
+  assert.throws(() => assertJpmQuantitative(cash.replace('M80.000 408.000', 'M80.000 398.000'), 5));
   assert.throws(() => assertJpmQuantitative(cash.replace('>+13<', '>+14<'), 5));
   assert.throws(() => assertJpmQuantitative(cash.replaceAll('EXEMPLE FICTIF', 'RÉSULTAT OBSERVÉ'), 5));
   const firstCircle = gao.indexOf('<circle');
@@ -47,7 +48,15 @@ test('active markup, external assets, CSS injection, source diversion and geomet
     raw => raw.replace('font-size=', 'fontSize='),
   ]) assert.throws(() => inspectJpmSvg(mutation(svg)));
   assert.throws(() => assertJpmSourceFaithful(svg.replace('>1 500<', '>1 501<'), 'fr', 0));
-  assert.throws(() => assertJpmGeometry(svg.replace('x="32" y="39"', 'x="1190" y="39"')), /viewBox/u);
+  assert.throws(() => assertJpmGeometry(svg.replace('x="24" y="44"', 'x="990" y="44"')), /viewBox/u);
+  assert.throws(() => assertJpmGeometry(svg.replace('x="24" y="44"', 'x="24" y="78"')), /Overlapping labels/u);
+});
+
+test('oversized mobile scenes and compressed typography fail even when every element remains inside its viewBox', () => {
+  const mobile = figures[0][3], desktop = figures[0][0];
+  assert.throws(() => assertJpmProportions(mobile.replace('viewBox="0 0 480 740"', 'viewBox="0 0 480 1100"')), /compact/u);
+  assert.throws(() => assertJpmProportions(mobile.replace('font-size="22"', 'font-size="16"')), /legible/u);
+  assert.throws(() => assertJpmProportions(desktop.replace('viewBox="0 0 1000 520"', 'viewBox="0 0 1000 1000"')), /compact/u);
 });
 
 test('figure CSS retains semantic themes, supplied font metrics, compact sizing and both responsive variants', () => {
@@ -61,14 +70,17 @@ test('figure CSS retains semantic themes, supplied font metrics, compact sizing 
   assert.deepEqual([figure.width, figure['max-width'], figure['container-type'], figure['padding-bottom']], ['100%', '48rem', 'inline-size', '1rem']);
   const svg = rule('.l0g-jpm-figure svg');
   assert.deepEqual([svg.width, svg['max-width'], svg.height, svg.overflow], ['100%', '100%', 'auto', 'visible']);
-  assert.equal(rule('.l0g-jpm-figure .jpm-mobile')['max-width'], '24rem');
+  assert.equal(rule('.l0g-jpm-figure .jpm-mobile').width, '100%');
+  assert.equal(rule('.l0g-jpm-figure .jpm-mobile')['max-width'], undefined, 'Mobile fills its panel instead of forming a narrow strip');
   assert.equal(rule('.l0g-jpm-figure svg text')['font-family'], "'l0g JPMorgan', 'DejaVu Sans', Arial, sans-serif");
   const faces = css.nodes.filter(node => node.type === 'atrule' && node.name === 'font-face').map(declarations);
   assert.deepEqual(faces.map(face => [face['font-family'], face.src, face['font-weight']]), [400, 700].map(weight => ["'l0g JPMorgan'", `url('/fonts/jpmorgan/dejavu-sans-${weight}.ttf') format('truetype')`, String(weight)]));
-  for (const [kind, width] of [['media', 700], ['container', 640]]) {
+  for (const [kind, width] of [['container', 480]]) {
     const node = css.nodes.find(node => node.type === 'atrule' && node.name === kind && node.params === `(max-width: ${width}px)`);
     assert.ok(node); assert.deepEqual(node.nodes.map(node => [node.selector, declarations(node).display]), [['.l0g-jpm-figure .jpm-mobile', 'block'], ['.l0g-jpm-figure .jpm-desktop', 'none']]);
   }
+  assert.equal(css.nodes.filter(node => node.type === 'atrule' && node.name === 'container').length, 1);
+  assert.doesNotMatch(raw, /@media\s*\(max-width:/u, 'Viewport size must not independently select a vertical scene inside a wide reading column');
   css.walkRules(node => assert.ok(node.selector.split(',').every(selector => selector.includes('.l0g-jpm-figure'))));
   assert.doesNotMatch(raw, /#(?:[a-f0-9]{3}){1,2}\b|overflow\s*:\s*(?:hidden|clip)|(?:clip-path|transform)\s*:/iu);
 });

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { parse, serializeOuter } from 'parse5';
-import { assertJpmRenderedFaithful, jpmSourceFigures } from './jpmorgan-svg-assertions.mjs';
+import { assertJpmProportions, assertJpmRenderedFaithful, jpmSourceFigures } from './jpmorgan-svg-assertions.mjs';
 
 const read = file => readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
 const nodes = node => [node, ...(node.childNodes ?? []).flatMap(nodes)];
@@ -20,7 +20,10 @@ function assertPageFigures(html, originals, lang) {
     const descendants = nodes(figure), graphics = descendants.filter(node => node.tagName === 'svg');
     assert.equal(attrs(figure).id, `figure-${index + 1}`);
     assert.equal(graphics.length, 2);
-    for (const [variant, svg] of graphics.entries()) assertJpmRenderedFaithful(serializeOuter(svg), originals[index * 2 + variant], lang, index * 2 + variant);
+    for (const [variant, svg] of graphics.entries()) {
+      assertJpmRenderedFaithful(serializeOuter(svg), originals[index * 2 + variant], lang, index * 2 + variant);
+      assertJpmProportions(serializeOuter(svg));
+    }
     for (const kind of ['jpm-desktop', 'jpm-mobile']) assert.ok(descendants.some(node => node.tagName === 'div' && (attrs(node).class ?? '').split(' ').includes(kind)));
     assert.equal(descendants.filter(node => node.tagName === 'figcaption').length, 1);
     assert.equal(descendants.filter(node => node.tagName === 'details').length, 1);
@@ -39,8 +42,8 @@ test('compiled coordinate, sizing, label, reference and missing-mobile regressio
   const page = pages[0];
   for (const mutate of [
     html => html.replace('>1 500<', '>1 501<'),
-    html => html.replace('width="251"', 'width="252"'),
-    html => html.replace('viewBox="0 0 1200 788"', 'viewBox="0 0 1200 789"'),
+    html => html.replace('width="208"', 'width="209"'),
+    html => html.replace('viewBox="0 0 1000 520"', 'viewBox="0 0 1000 521"'),
     html => html.replace('style="width:100%;height:auto"', 'style="width:1100px;height:auto"'),
     html => html.replace('class="jpm-mobile"', 'class="removed-variant"'),
     html => html.replace('href="#source-S01"', 'href="#source-S99"'),
