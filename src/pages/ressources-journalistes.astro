@@ -9,6 +9,7 @@ import { getCollection } from 'astro:content';
 import { pressInvestigations } from '../config/press-investigations.ts';
 
 const englishAnalyses = await getCollection('postsEn', ({ data }) => !data.draft);
+const citationDate = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'Europe/Paris' });
 const analyses = await getCollection('posts', ({ data }) => !data.draft);
 const investigations = pressInvestigations.map((resource) => {
   const english = englishAnalyses.find((post) => post.id === resource.id);
@@ -140,7 +141,7 @@ const jsonLd = {
               {entry.resource.sources.map((source) => <li><a href={source.href}>{source.label}</a></li>)}
             </ul>
             {entry.resource.atlas && <p><a class="atlas-link" href={entry.resource.atlas.fr}>Explorer la carte des financements documentés</a></p>}
-            <p class="citation">Olivier Laurelli / l0g.fr, « {entry.data.title} », {(entry.data.updatedDate ?? entry.data.pubDate).toISOString().slice(0, 10)}, https://l0g.fr/posts/{entry.id}/, CC BY 4.0.</p>
+            <p class="citation">Olivier Laurelli / l0g.fr, « {entry.data.title} », {citationDate.format(entry.data.updatedDate ?? entry.data.pubDate)}, https://l0g.fr/posts/{entry.id}/, CC BY 4.0.</p>
           </article>
         ))}
       </div>
