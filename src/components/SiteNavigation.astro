@@ -1,6 +1,7 @@
 ---
 import NavigationSymbols from './NavigationSymbols.astro';
 import NavigationIcon, { type NavigationIconName } from './NavigationIcon.astro';
+import NavigationItemText from './NavigationItemText.astro';
 
 interface Props {
   path: string;
@@ -139,8 +140,7 @@ function isActive(item: NavItem): boolean {
               <h2><NavigationIcon name={group.glyph} compact /><span>{group.label}</span></h2>
               {group.items.map((item) => (
                 <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
-                  <strong>{item.label}</strong>
-                  {item.description && <span>{item.description}</span>}
+                  <NavigationItemText label={item.label} description={item.description} />
                 </a>
               ))}
             </section>
@@ -186,8 +186,7 @@ function isActive(item: NavItem): boolean {
             <div>
               {group.items.map((item) => (
                 <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
-                  <strong>{item.label}</strong>
-                  {item.description && <span>{item.description}</span>}
+                  <NavigationItemText label={item.label} description={item.description} />
                 </a>
               ))}
             </div>
@@ -408,10 +407,10 @@ function isActive(item: NavItem): boolean {
   .nav-groups section > a[aria-current='page'] {
     background: color-mix(in srgb, var(--color-signal) 7%, transparent);
   }
-  .nav-groups strong,
-  .nav-groups span { display: block; }
-  .nav-groups strong { color: var(--color-bright); font-size: 0.88rem; }
-  .nav-groups section > a span { margin-top: 0.18rem; color: var(--color-muted); font-family: var(--font-read); font-size: 0.73rem; line-height: 1.4; }
+  .nav-groups :global(strong),
+  .nav-groups :global(span) { display: block; }
+  .nav-groups :global(strong) { color: var(--color-bright); font-size: 0.88rem; }
+  .nav-groups section > a :global(span) { margin-top: 0.18rem; color: var(--color-muted); font-family: var(--font-read); font-size: 0.73rem; line-height: 1.4; }
   .developer-row {
     display: flex;
     flex-wrap: wrap;
@@ -546,8 +545,8 @@ function isActive(item: NavItem): boolean {
   }
   .mobile-panel a[aria-current='page'],
   .mobile-panel a:hover { background: color-mix(in srgb, var(--color-signal) 8%, transparent); }
-  .mobile-panel strong { color: var(--color-bright); font-size: 0.88rem; }
-  .mobile-panel span { color: var(--color-muted); font-size: 0.75rem; line-height: 1.35; }
+  .mobile-panel :global(strong) { color: var(--color-bright); font-size: 0.88rem; }
+  .mobile-panel :global(span) { color: var(--color-muted); font-size: 0.75rem; line-height: 1.35; }
   .mobile-panel h2 > span { color: var(--color-signal); font-size: inherit; }
   .mobile-developer,
   .mobile-utility { border-top: 1px solid var(--color-line); padding-top: 1rem; }
