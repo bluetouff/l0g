@@ -18,6 +18,48 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Market activity, execution quality and contractual size retain distinct scopes.
+for (const [slug, sourceUrls] of [
+  ['wash-trading', ['https://www.cmegroup.com/rulebook/files/cme-group-Rule-534.pdf']],
+  ['slippage', [
+    'https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order',
+    'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-14',
+  ]],
+  ['teneur-de-marche', [
+    'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mifid-ii/article-4-definitions',
+    'https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order',
+  ]],
+  ['notionnel', ['https://www.bis.org/publications/qr-202512/international-finance-through-lens-bis-statistics-derivatives-markets']],
+]) {
+  const frMatches = glossaryEntries.filter(entry => entry.slug === slug);
+  const enMatches = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(frMatches.length, 1); assert.equal(enMatches.length, 1);
+  const fr = frMatches[0], en = enMatches[0];
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  for (const entry of [fr, en]) {
+    assert(entry.atlas); assert(!entry.def.includes('—'));
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), sourceUrls);
+    assert(entry.atlas.articles.some(article => article.href === (entry === fr
+      ? '/posts/fifa-predictstreet-volume-wash-trading/'
+      : '/en/analysis/fifa-predictstreet-trading-volume-risk/')));
+    for (const neighbor of entry.atlas.related) {
+      assert(glossaryEntries.some(term => term.slug === neighbor));
+      assert(glossaryAtlasEnBySlug.has(neighbor));
+    }
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'wash-trading').def, /intention.*contrôle des comptes/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'wash-trading').def, /accidentel.*position finale nulle.*ne suffit pas/u);
+assert.match(glossaryAtlasEnBySlug.get('wash-trading').def, /accidental.*flat ending position.*does not by itself/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'slippage').def, /référence.*exécution.*quantités.*favorable ou défavorable.*frais/u);
+assert.match(glossaryAtlasEnBySlug.get('slippage').def, /reference price.*actually obtained.*quantities.*favour or disadvantage.*fees/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'notionnel').def, /principal effectivement payable.*paiement éventuel.*base de calcul/u);
+assert.match(glossaryAtlasEnBySlug.get('notionnel').def, /principal that must be paid.*contingent payout.*reference for calculating/u);
+assert.doesNotMatch(glossaryEntries.find(entry => entry.slug === 'notionnel').def, /sans être lui-même échangé|surestime largement/u);
+assert.equal(glossaryEntries.find(entry => entry.slug === 'teneur-de-marche').guide, '/guides/lire-le-gamma-des-dealers/');
+assert.equal(glossaryEntries.find(entry => entry.slug === 'notionnel').guide, '/guides/lire-les-swaps-de-taux/');
 
 // Recovery objectives must not overwrite the existing accounting meaning of RPO.
 const recoverySlugs = ['rto', 'rpo-reprise', 'mtd'];
@@ -380,7 +422,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 282, 'Le corpus anglais doit conserver ses 282 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 286, 'Le corpus anglais doit conserver ses 286 fiches uniques');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -562,8 +604,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 684, 'Le corpus doit conserver ses 684 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 270, 'Le graphe Atlas doit conserver ses 270 nœuds');
+assert.equal(glossaryEntries.length, 686, 'Le corpus doit conserver ses 686 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 274, 'Le graphe Atlas doit conserver ses 274 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -985,7 +1027,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 788, 'Le graphe Atlas doit conserver ses 788 relations');
+assert.equal(glossaryAtlasEdgeCount, 798, 'Le graphe Atlas doit conserver ses 798 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

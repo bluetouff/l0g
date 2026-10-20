@@ -753,7 +753,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Swap de taux', nom: 'Interest rate swap (IRS)', def: "Contrat par lequel deux parties échangent des flux d'intérêts sur un même capital de référence, le notionnel : l'une paie un taux fixe, l'autre un taux variable indexé sur un taux de marché comme le SOFR. Le capital n'est jamais échangé, seuls les intérêts le sont. Outil central de couverture du risque de taux, et plus grand marché de dérivés du monde.", guide: '/guides/lire-les-swaps-de-taux/' },
       { sigle: 'OIS', nom: 'Overnight Index Swap', def: "Swap dont la jambe variable est indexée sur un taux au jour le jour composé, le SOFR aux États-Unis. Ses cotations reflètent la trajectoire anticipée du taux directeur, ce qui en fait la référence pour lire les paris du marché sur la banque centrale, et le taux d'actualisation « sans risque » des dérivés.", guide: '/guides/lire-les-swaps-de-taux/' },
       { sigle: 'LIBOR', nom: 'London Interbank Offered Rate', def: "Ancien taux de référence interbancaire, calculé par sondage déclaratif et miné par un scandale de manipulation. Abandonné pour le dollar fin juin 2023 au profit du SOFR, adossé à des transactions réelles. Sa disparition a refondé tout l'édifice des swaps de taux.", guide: '/guides/lire-les-swaps-de-taux/' },
-      { sigle: 'Notionnel', nom: 'Capital notionnel', def: "Montant de référence sur lequel sont calculés les flux d'un dérivé, sans être lui-même échangé. Le notionnel gonfle les statistiques de taille des marchés de dérivés, mais surestime largement le risque réel, qui ne porte que sur les flux nets et la valeur de marché.", guide: '/guides/lire-les-swaps-de-taux/' },
+      { sigle: 'Notionnel', nom: 'Montant de référence d’un dérivé', def: 'Montant décrivant la taille contractuelle d’un dérivé. Selon le produit, il représente un principal effectivement payable, un paiement éventuel ou une base de calcul des flux. Il se distingue de la valeur de marché du contrat et ne mesure pas, à lui seul, la perte possible. Toute comparaison exige de préciser l’instrument et la convention de comptage.', guide: '/guides/lire-les-swaps-de-taux/' },
       { sigle: 'Swap spread', nom: 'Spread de swap', def: "Écart entre le taux fixe d’un swap et le rendement d’une obligation d’État de même monnaie et d’échéance comparable, selon la convention swap moins obligation. Un montage peut associer l’achat de l’obligation financé en repo au paiement du taux fixe du swap. Son résultat dépend du spread, du financement et des marges ; il se distingue du cash-futures basis trade.", guide: '/guides/lire-les-swaps-de-taux/' },
       { sigle: 'FICC', nom: 'Fixed Income Clearing Corporation', def: "Chambre de compensation des titres à revenu fixe américains, filiale de la DTCC. Longtemps seule contrepartie centrale agréée pour les Treasuries, avant l'arrivée de CME et ICE. Au cœur du mandat de compensation obligatoire de la SEC." },
       { sigle: 'LDI', nom: 'Liability-driven investment', def: "Stratégie qui rapproche la sensibilité aux taux et à l’inflation des actifs d’un régime de retraite de celle de ses pensions futures. Obligations, dérivés et parfois emprunts procurent l’exposition recherchée. Le levier crée des besoins de garanties : un régime mieux financé peut détenir un véhicule LDI confronté à une pénurie de cash ou à des pertes de capital.", guide: '/posts/dette-etats-05-appels-marge/' },
@@ -775,6 +775,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Gamma squeeze', nom: 'Compression par le gamma', def: "Spirale haussière où des achats massifs de calls forcent les teneurs de marché à acheter le sous-jacent pour se couvrir, ce qui pousse le prix, ce qui les oblige à acheter encore. Mécanisme au cœur de l'épisode GameStop de janvier 2021.", guide: '/guides/lire-le-gamma-des-dealers/' },
       { sigle: 'CFTC', nom: 'Commodity Futures Trading Commission', def: "Régulateur américain des marchés de dérivés et de matières premières. Publie le rapport de positionnement « Commitment of Traders »." },
       { sigle: 'Marché prédictif', nom: 'Prediction market', def: "Marché où s’échangent des contrats dont le paiement dépend de l’issue d’un événement défini. Le prix peut s’interpréter comme une probabilité implicite, sous les contraintes de liquidité, de frais et de résolution. Le régime juridique dépend du contrat, de l’entité qui le propose, du pays et du client ; un agrément américain ne donne pas un droit d’accès en France.", guide: '/posts/polymarket-europe-paris-produits-financiers/' },
+      { sigle: 'Wash trading', nom: 'Transactions produisant une activité apparente', def: 'Transactions structurées pour donner l’apparence d’achats et de ventes de marché en neutralisant le risque ou la concurrence sur les prix. Leur qualification dépend notamment de l’intention et du contrôle des comptes. Un croisement accidentel d’ordres indépendants ou une position finale nulle ne suffit pas à conclure à une manipulation ; les règles applicables dépendent du marché et de la juridiction.', guide: '/posts/fifa-predictstreet-volume-wash-trading/' },
+      { sigle: 'Slippage', nom: 'Écart entre prix de référence et prix exécuté', def: 'Écart entre un prix de référence précisé et le prix réellement obtenu à l’exécution, éventuellement moyen pour plusieurs exécutions partielles. Il dépend notamment des quantités disponibles et des mouvements de prix pendant le traitement de l’ordre. Il peut être favorable ou défavorable et se distingue des frais facturés.', guide: '/posts/fifa-predictstreet-volume-wash-trading/' },
       { sigle: 'MNPI', nom: 'Material Non-Public Information', def: "Information importante non publique : toute donnée susceptible d'influencer un cours et non encore diffusée au marché. Sa négociation par un initié fonde le délit d'initié en droit boursier américain. Le concept, taillé pour l'initié d'entreprise, s'applique mal aux détenteurs du script d'un événement politique, angle mort exposé par les marchés prédictifs." },
       { sigle: 'Course à la latence', nom: 'Latency race', def: "Compétition des acteurs de marché pour recevoir et traiter l'information quelques microsecondes avant les autres : colocation des serveurs dans les data centers des bourses, flux de données premium, liaisons micro-ondes. Quelques millisecondes d'avance sur une nouvelle qui bouge les prix se convertissent mécaniquement en gains pour le trading algorithmique." },
       { sigle: 'OFAC', nom: 'Office of Foreign Assets Control', def: "Bureau du Trésor américain chargé d'appliquer les sanctions économiques (gel d'avoirs, listes noires).", guide: '/guides/ofac-sdn-list/' },
@@ -1120,6 +1122,34 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'wash-trading': {
+    articles: [{ label: 'FIFA et Predictstreet : volumes et risque', href: '/posts/fifa-predictstreet-volume-wash-trading/', kind: 'article' }],
+    sources: [{ label: 'CME Group, règle 534 et FAQ sur les wash trades', href: 'https://www.cmegroup.com/rulebook/files/cme-group-Rule-534.pdf', detail: 'Intention, bénéficiaires communs, croisements accidentels et transactions indirectes ; cadre propre aux marchés CME Group.', kind: 'source' }],
+    related: ['marche-predictif', 'teneur-de-marche'],
+  },
+  slippage: {
+    articles: [{ label: 'FIFA et Predictstreet : volumes et risque', href: '/posts/fifa-predictstreet-volume-wash-trading/', kind: 'article' }],
+    sources: [
+      { label: 'SEC Investor.gov, exécution d’un ordre', href: 'https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order', detail: 'Prix cotés, mouvements de prix et amélioration ou dégradation à l’exécution.', kind: 'source' },
+      { label: 'SEC Investor.gov, types d’ordres', href: 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-14', detail: 'Exécution partielle d’un gros ordre à plusieurs prix selon les quantités disponibles.', kind: 'source' },
+    ],
+    related: ['profondeur-de-marche', 'teneur-de-marche', 'marche-predictif'],
+  },
+  'teneur-de-marche': {
+    articles: [{ label: 'FIFA et Predictstreet : volumes et risque', href: '/posts/fifa-predictstreet-volume-wash-trading/', kind: 'article' }],
+    guides: [{ label: 'Lire le gamma des dealers', href: '/guides/lire-le-gamma-des-dealers/', kind: 'guide' }],
+    sources: [
+      { label: 'MiFID II, article 4 : définition du teneur de marché', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mifid-ii/article-4-definitions', detail: 'Négociation pour compte propre à des prix proposés par l’intermédiaire.', kind: 'source' },
+      { label: 'SEC Investor.gov, exécution d’un ordre', href: 'https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order', detail: 'Prix cotés, quantités et conditions d’exécution.', kind: 'source' },
+    ],
+    related: ['profondeur-de-marche', 'slippage', 'marche-predictif'],
+  },
+  notionnel: {
+    articles: [{ label: 'FIFA et Predictstreet : conventions de volume', href: '/posts/fifa-predictstreet-volume-wash-trading/', kind: 'article' }],
+    guides: [{ label: 'Lire les swaps de taux', href: '/guides/lire-les-swaps-de-taux/', kind: 'guide' }],
+    sources: [{ label: 'BRI, concepts et statistiques des dérivés, décembre 2025', href: 'https://www.bis.org/publications/qr-202512/international-finance-through-lens-bis-statistics-derivatives-markets', detail: 'Principal payable, paiement éventuel et base de calcul selon le produit ; distinction avec la valeur de marché.', kind: 'source' }],
+    related: ['future', 'dv01'],
+  },
   'preuve-d-humanite': {
     articles: [{ label: 'World ID et le pouvoir de certifier les humains', href: '/posts/world-id-finance-preuve-humanite/', kind: 'article' }],
     sources: [
@@ -3200,7 +3230,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     articles: [{ label: 'Prix automatiques et concurrence', href: '/posts/prix-automatiques-concurrence-algorithmes/', kind: 'article' }],
     sources: [{ label: 'Autorité de la concurrence et Bundeskartellamt, Algorithms and Competition', href: 'https://www.autoritedelaconcurrence.fr/sites/default/files/Algorithms_and_Competition_Working-Paper.pdf', kind: 'source' }],
   },
-  'marche-predictif': {"articles": [{"label": "Polymarket et le droit financier européen", "href": "/posts/polymarket-europe-paris-produits-financiers/", "kind": "article"}], "sources": [{"label": "ESMA, contrats événementiels et options binaires, 3 juillet 2026", "href": "https://www.esma.europa.eu/sites/default/files/2026-07/ESMA35-243228190-8148_Public_Statement_on_the_application_of_the_national_product_intervention_measures_on_binary_options_to_event_contracts.pdf", "kind": "source"}]},
+  'marche-predictif': {"articles": [{"label": "Polymarket et le droit financier européen", "href": "/posts/polymarket-europe-paris-produits-financiers/", "kind": "article"}, {"label": "FIFA et Predictstreet : volumes et risque", "href": "/posts/fifa-predictstreet-volume-wash-trading/", "kind": "article"}], "sources": [{"label": "ESMA, contrats événementiels et options binaires, 3 juillet 2026", "href": "https://www.esma.europa.eu/sites/default/files/2026-07/ESMA35-243228190-8148_Public_Statement_on_the_application_of_the_national_product_intervention_measures_on_binary_options_to_event_contracts.pdf", "kind": "source"}]},
   mvno: {
     articles: [{ label: 'Le partage de SFR vu depuis votre forfait', href: '/posts/sfr-rachat-partage-operateur-prix-forfaits/', kind: 'article' }],
     sources: [{ label: 'Arcep, définition et liste des MVNO', href: 'https://www.arcep.fr/mes-demarches-et-services/acteurs-regules/operateurs-telecoms/liste-des-mvno.html', kind: 'source' }],
@@ -3477,7 +3507,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   'profondeur-de-marche': {
     intuition: 'Une vente importante peut épuiser le meilleur prix et rencontrer les niveaux suivants.',
-    articles: [{ label: 'Dette publique : le prix de la sortie', href: '/posts/dette-etats-06-prix-sortie/', kind: 'article' }],
+    articles: [{ label: 'Dette publique : le prix de la sortie', href: '/posts/dette-etats-06-prix-sortie/', kind: 'article' }, { label: 'FIFA et Predictstreet : liquidité et prix de sortie', href: '/posts/fifa-predictstreet-volume-wash-trading/', kind: 'article' }],
     sources: [{ label: 'Fed de New York, liquidité des Treasuries', href: 'https://libertystreeteconomics.newyorkfed.org/2026/04/treasury-market-liquidity-since-april-2025/', detail: 'Profondeur au meilleur prix, fourchette et impact des transactions.', kind: 'source' }],
     related: ['bid-to-cover', 'primary-dealer', 'appel-de-marge'],
   },

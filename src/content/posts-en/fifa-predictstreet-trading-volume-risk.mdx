@@ -1,0 +1,742 @@
+---
+title: "FIFA and Predictstreet: who takes the trading risk?"
+seoTitle: "FIFA and Predictstreet: volume, wash-trading claims and liquidity | l0g"
+description: An investigation of Predictstreet’s disputed activity, market-data methodology, liquidity and fees, with the limits of the public evidence made explicit.
+tags: ["FIFA", "Predictstreet", "wash trading", "prediction markets", "risk", "crypto", "Gibraltar"]
+pubDate: "2026-10-20T18:06:25+02:00"
+updatedDate: "2026-10-20T18:06:25+02:00"
+draft: false
+sourceArticle: fifa-predictstreet-volume-wash-trading
+sourceUpdatedDate: "2026-10-20T18:06:25+02:00"
+ogImage: "/illustrations/news/fifa-predictstreet-v1.jpg"
+---
+
+<link rel="stylesheet" href="/styles/predictstreet-infographics-v1.css?v=5c88b2376aa3" />
+
+A sports federation can sell visibility. A [prediction market](/en/glossary/marche-predictif/) still needs participants willing to take different risks. That gap is at the heart of the questions surrounding ADI Predictstreet, which became the 2026 FIFA World Cup’s official prediction-market partner in April. FIFA’s partner page describes a form of collective intelligence: supporters’ views would become signals about future events. The value of that proposition depends on who actually controls the orders. <sup><a href="#source-S01" aria-label="Source 1">1</a>, <a href="#source-S13" aria-label="Source 13">13</a></sup>
+
+On October 17, *The Wall Street Journal* reported that roughly **$108 million of $167 million traded through late September** came from wallets apparently linked to the platform. They reportedly traded almost entirely within the group and were funded by an address that also collected trading fees. For the period beginning in late August, the investigation attributed **99% of volume to 795 wallets**, according to *Legal Sports Report’s* account. <sup><a href="#source-S02" aria-label="Source 2">2</a>, <a href="#source-S03" aria-label="Source 3">3</a></sup>
+
+Gibraltar’s regulator offered a different assessment: a preliminary review reportedly found compliance with rules against self-trading and no consumer harm. That response belongs alongside the allegations. This documentary investigation did not obtain the complete transaction dataset or the detailed reasoning behind the review. The percentages therefore remain attributed reporting, not independently reproduced l0g measurements. <sup><a href="#source-S03" aria-label="Source 3">3</a></sup>
+
+Public documents nevertheless make it possible to move beyond a clash of assertions. DefiLlama’s public collector, the surveillance commitments and Gibraltar’s rules describe three different things: recorded volume, an economically active market and a system of controls. Treating them as interchangeable gives marketing claims more authority than they deserve, and can make accusations against them equally overconfident.
+
+## Reported volumes cover different periods
+
+The reported $108 million represents approximately **64.7% of the $167 million** in cumulative transactions. Subtraction leaves $59 million outside the identified group. It tells us nothing further about the quality of that remainder: it is neither a customer count nor a certificate of independent demand. The 99% figure refers to the more recent window starting in late August. Applying it to the platform’s entire history would change the claim. <sup><a href="#source-S02" aria-label="Source 2">2</a>, <a href="#source-S03" aria-label="Source 3">3</a></sup>
+
+Reconciling these figures with a blockchain dashboard would also require the authors’ exact volume convention. Their amounts are preserved as reported, without assuming equivalence with the DefiLlama aggregates examined below.
+
+<figure className="l0g-predict-figure" id="figure-1">
+<div className="predict-panel">
+<div className="predict-desktop"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 1000 770" role="img" aria-labelledby="predict-1-en-d-title predict-1-en-d-desc">
+<title id="predict-1-en-d-title">Reported volumes and measurement periods</title>
+<desc id="predict-1-en-d-desc">108 million out of 167 million is 64.7%. The 99% figure uses a different period.</desc>
+<defs><marker id="predict-1-en-d-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="1000" height="770" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-paper)">Reported volumes and measurement periods</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">WSJ / LSR · not replicated by l0g</text>
+<text x="24" y="148" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)">A · Cumulative through late September 2026</text>
+<text x="24" y="214" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="44" font-weight="700" text-anchor="start" fill="var(--color-paper)">US$167m</text>
+<text x="310" y="210" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-muted)">Reported period total</text>
+<rect x="24" y="250" width="615.665" height="56" rx="0" fill="var(--color-signal)" id="predict-1-en-d-reported-108"/>
+<rect x="639.665" y="250" width="336.335" height="56" rx="0" fill="var(--color-surface-2)" id="predict-1-en-d-reported-59"/>
+<text x="331.832" y="288.08" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="var(--color-ink)">$108m</text>
+<text x="807.832" y="288.08" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="var(--color-paper)">$59m</text>
+<text x="24" y="365" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-signal)">64.7%</text>
+<text x="212" y="348" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Attributed to the flagged group; the remaining $59m is not certified</text>
+<text x="212" y="378" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">as “organic”.</text>
+<line x1="24" y1="410" x2="976" y2="410" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="456" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-amber)">B · Window starting in late August 2026</text>
+<text x="24" y="535" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="48" font-weight="700" text-anchor="start" fill="var(--color-amber)">99%</text>
+<text x="228" y="506" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-paper)">Share of volume attributed to 795 wallets in the recent</text>
+<text x="228" y="538" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-paper)">window.</text>
+<rect x="24" y="625" width="952" height="84" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-1-en-d-panel-1"/>
+<text x="40" y="663" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-1-en-d-panel-1">Do not apply 99% to the $167m cumulative total. The regulator reports a</text>
+<text x="40" y="693" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-1-en-d-panel-1">different preliminary conclusion.</text>
+<rect x="24" y="574" width="942.48" height="24" rx="0" fill="var(--color-amber)" id="predict-1-en-d-reported-99"/>
+<rect x="966.48" y="574" width="9.52" height="24" rx="0" fill="var(--color-surface-2)"/>
+<line x1="24" y1="721" x2="976" y2="721" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="746" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources:</text>
+<a href="#source-S02">
+<text x="150" y="746" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)">S02</text>
+</a>
+<a href="#source-S03">
+<text x="230" y="746" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)">S03</text>
+</a>
+</svg>
+</div>
+<div className="predict-mobile"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 480 748" role="img" aria-labelledby="predict-1-en-m-title predict-1-en-m-desc">
+<title id="predict-1-en-m-title">Reported volumes and measurement periods</title>
+<desc id="predict-1-en-m-desc">108 million out of 167 million is 64.7%. The 99% figure uses a different period.</desc>
+<defs><marker id="predict-1-en-m-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="480" height="748" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">Reported volumes and</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">measurement periods</text>
+<text x="24" y="112" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">WSJ / LSR · not replicated by l0g</text>
+<text x="24" y="158" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)">A · Through late September 2026</text>
+<text x="24" y="214" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="40" font-weight="700" text-anchor="start" fill="var(--color-paper)">US$167m</text>
+<text x="24" y="246" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Reported total</text>
+<rect x="24" y="268" width="279.377" height="48" rx="0" fill="var(--color-signal)" id="predict-1-en-m-reported-108"/>
+<rect x="303.377" y="268" width="152.623" height="48" rx="0" fill="var(--color-surface-2)" id="predict-1-en-m-reported-59"/>
+<text x="163.689" y="300.64" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-ink)">$108m</text>
+<text x="379.689" y="300.64" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-paper)">$59m</text>
+<text x="24" y="365" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-signal)">64.7%</text>
+<text x="190" y="354" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Attributed to the flagged</text>
+<text x="190" y="380" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">group</text>
+<text x="24" y="422" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">$59m unclassified</text>
+<line x1="24" y1="448" x2="456" y2="448" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="488" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-amber)">B · From late August 2026</text>
+<text x="24" y="552" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="40" font-weight="700" text-anchor="start" fill="var(--color-amber)">99%</text>
+<text x="174" y="530" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">of volume attributed to 795</text>
+<text x="174" y="556" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">wallets</text>
+<text x="24" y="645" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">Do not apply 99% to the $167m total.</text>
+<text x="24" y="679" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Regulator: a different preliminary view.</text>
+<rect x="24" y="585" width="427.68" height="24" rx="0" fill="var(--color-amber)" id="predict-1-en-m-reported-99"/>
+<rect x="451.68" y="585" width="4.32" height="24" rx="0" fill="var(--color-surface-2)"/>
+<line x1="24" y1="699" x2="456" y2="699" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources:</text>
+<a href="#source-S02">
+<text x="130" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)">S02</text>
+</a>
+<a href="#source-S03">
+<text x="194" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)">S03</text>
+</a>
+</svg>
+</div>
+</div>
+<figcaption>
+<span className="figlabel">Figure 1.</span> The amounts and recent share are attributed findings, not independently replicated here. The cumulative bar separates the flagged group from the unclassified remainder. The 99% uses a different denominator; the windows must not be merged. <sup><a href="#source-S02" aria-label="Source 2">2</a>, <a href="#source-S03" aria-label="Source 3">3</a></sup>
+
+</figcaption>
+</figure>
+
+A wallet is a technical address. Several addresses can belong to one actor, while several customers may also use a common service infrastructure. The most flattering commercial denominator, a count of visible accounts, can therefore differ substantially from the number of independent decisions. Any serious measurement needs to identify its unit of observation before it describes a crowd.
+
+The concern about [*wash trading*](/en/glossary/wash-trading/) is that transactions may be arranged to generate apparent activity without a corresponding economic transfer of risk between independent actors. Establishing that requires more than a long series of purchases and sales. A legitimate intermediary can buy, resell and finish with very little inventory too. Research on network-based detection explicitly recognises this difficulty. <sup><a href="#source-S08" aria-label="Source 8">8</a></sup>
+
+The useful questions go beyond the size of a headline percentage. Who funds the positions? Who controls the orders? To which outside participants is risk transferred? Answers may reveal that a collection of addresses is one economic unit. Alternatively, they may show that accounts sharing technical infrastructure serve genuinely separate clients.
+
+## One dollar of payout can support several volume measures
+
+Consider a fictional contract that pays one dollar if a team wins and zero otherwise. A buyer purchases 1,000 shares at $0.40 from a seller who already owns them. The buyer spends $400 before fees. The shares’ maximum conditional payout is $1,000. Both numbers describe the same transaction, from different perspectives.
+
+The first is its actual traded value. The second is [notional volume](/en/glossary/notionnel/), expressed here using the shares’ possible payout. That difference is not evidence of manipulation. It becomes misleading when venues are compared without checking their definitions, or when notional volume is presented as new money deposited. Price and quantity need to accompany the counter. <sup><a href="#source-S06" aria-label="Source 6">6</a>, <a href="#source-S07" aria-label="Source 7">7</a></sup>
+
+Another trap lies in the transaction records. One execution can produce several events: a record for one side of the trade and another for the other side. Adding their values indiscriminately can count the same economic transfer twice. The version of DefiLlama’s collector examined for this article groups events by emitting contract, transaction and batch position, then treats ordinary trades differently from the creation or redemption of complementary shares. <sup><a href="#source-S06" aria-label="Source 6">6</a></sup>
+
+<figure className="l0g-predict-figure" id="figure-2">
+<div className="predict-panel">
+<div className="predict-desktop"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 1000 800" role="img" aria-labelledby="predict-2-en-d-title predict-2-en-d-desc">
+<title id="predict-2-en-d-title">One execution, several counters</title>
+<desc id="predict-2-en-d-desc">A $400 transfer can leave two $400 records. Deduplication yields $400 traded value and $1,000 notional.</desc>
+<defs><marker id="predict-2-en-d-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="1000" height="800" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-paper)">One execution, several counters</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">HYPOTHETICAL · 1,000 shares at $0.40; no fees</text>
+<rect x="24" y="154" width="250" height="176" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-d-panel-1"/>
+<text x="42" y="188" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-d-panel-1">Buyer</text>
+<text x="42" y="232" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-2-en-d-panel-1">1,000 shares</text>
+<text x="42" y="270" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-2-en-d-panel-1">From the seller</text>
+<rect x="726" y="154" width="250" height="176" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-d-panel-2"/>
+<text x="744" y="188" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-d-panel-2">Seller</text>
+<text x="744" y="232" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-2-en-d-panel-2">$400</text>
+<text x="744" y="270" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-2-en-d-panel-2">Payment received</text>
+<text x="500" y="190" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="var(--color-signal)">$400 payment</text>
+<line x1="298" y1="213" x2="702" y2="213" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-2-en-d-arrow)" id="predict-2-en-d-payment"/>
+<text x="500" y="267" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="var(--color-signal)">1,000 existing shares</text>
+<line x1="702" y1="289" x2="298" y2="289" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-2-en-d-arrow)" id="predict-2-en-d-shares"/>
+<text x="24" y="374" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-amber)">Records of the same transfer</text>
+<rect x="24" y="410" width="220" height="96" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-d-panel-3"/>
+<text x="134" y="467" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-2-en-d-panel-3">$400 + $400</text>
+<text x="327" y="430" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Group</text>
+<line x1="264" y1="458" x2="394" y2="458" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-2-en-d-arrow)" id="predict-2-en-d-deduplicate"/>
+<rect x="408" y="388" width="264" height="188" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-d-panel-4"/>
+<text x="426" y="422" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-d-panel-4">Traded value</text>
+<text x="426" y="466" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-2-en-d-panel-4">$400</text>
+<text x="426" y="504" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-2-en-d-panel-4">One economic</text>
+<text x="426" y="534" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-2-en-d-panel-4">trade</text>
+<rect x="700" y="388" width="276" height="188" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-d-panel-5"/>
+<text x="718" y="422" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-d-panel-5">Notional volume</text>
+<text x="718" y="466" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-2-en-d-panel-5">$1,000</text>
+<text x="718" y="504" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-2-en-d-panel-5">Maximum</text>
+<text x="718" y="534" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-2-en-d-panel-5">conditional payout</text>
+<rect x="24" y="612" width="952" height="114" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-d-panel-6"/>
+<text x="40" y="650" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-d-panel-6">Buyer/seller trade only. Complementary-share creation and redemption are</text>
+<text x="40" y="680" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-d-panel-6">handled separately. Deduplication and counterparty independence remain</text>
+<text x="40" y="710" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-d-panel-6">distinct.</text>
+<line x1="24" y1="751" x2="976" y2="751" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="776" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources:</text>
+<a href="#source-S06">
+<text x="150" y="776" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)">S06</text>
+</a>
+</svg>
+</div>
+<div className="predict-mobile"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 480 748" role="img" aria-labelledby="predict-2-en-m-title predict-2-en-m-desc">
+<title id="predict-2-en-m-title">One execution, several counters</title>
+<desc id="predict-2-en-m-desc">A $400 transfer can leave two $400 records. Deduplication yields $400 traded value and $1,000 notional.</desc>
+<defs><marker id="predict-2-en-m-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="480" height="748" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">One execution, several counters</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">HYPOTHETICAL · 1,000 shares at $0.40;</text>
+<text x="24" y="104" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">no fees</text>
+<rect x="24" y="174" width="170" height="142" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-m-panel-1"/>
+<text x="42" y="208" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-m-panel-1">Buyer</text>
+<text x="42" y="251" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-2-en-m-panel-1">−$400</text>
+<text x="42" y="290" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-2-en-m-panel-1">+1,000 shares</text>
+<rect x="286" y="174" width="170" height="142" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-m-panel-2"/>
+<text x="304" y="208" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-m-panel-2">Seller</text>
+<text x="304" y="251" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-2-en-m-panel-2">+$400</text>
+<text x="304" y="290" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-2-en-m-panel-2">−1,000 shares</text>
+<text x="240" y="206" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-signal)">$400</text>
+<line x1="206" y1="230" x2="274" y2="230" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-2-en-m-arrow)" id="predict-2-en-m-payment"/>
+<text x="240" y="267" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-signal)">1,000</text>
+<line x1="274" y1="288" x2="206" y2="288" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-2-en-m-arrow)" id="predict-2-en-m-shares"/>
+<text x="24" y="355" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-amber)">Two records of the same transfer</text>
+<rect x="24" y="376" width="192" height="72" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-m-panel-3"/>
+<text x="42" y="407" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-2-en-m-panel-3">Record A</text>
+<text x="198" y="432" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-paper)" data-panel="predict-2-en-m-panel-3">$400</text>
+<rect x="264" y="376" width="192" height="72" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-m-panel-4"/>
+<text x="282" y="407" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-2-en-m-panel-4">Record B</text>
+<text x="438" y="432" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-paper)" data-panel="predict-2-en-m-panel-4">$400</text>
+<line x1="240" y1="455" x2="240" y2="477" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-2-en-m-arrow)" id="predict-2-en-m-deduplicate"/>
+<rect x="24" y="490" width="200" height="128" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-m-panel-5"/>
+<text x="42" y="525" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-m-panel-5">Traded value</text>
+<text x="42" y="595" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="32" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-2-en-m-panel-5">$400</text>
+<rect x="256" y="490" width="200" height="128" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-2-en-m-panel-6"/>
+<text x="274" y="525" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-m-panel-6">Notional</text>
+<text x="274" y="553" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-2-en-m-panel-6">volume</text>
+<text x="274" y="595" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="32" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-2-en-m-panel-6">$1,000</text>
+<text x="24" y="650" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Notional: $1 per winning share.</text>
+<text x="24" y="681" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">Deduplication does not establish control.</text>
+<line x1="24" y1="699" x2="456" y2="699" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources:</text>
+<a href="#source-S06">
+<text x="130" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)">S06</text>
+</a>
+</svg>
+</div>
+</div>
+<figcaption>
+<span className="figlabel">Figure 2.</span> Fictional purchase of existing shares, before fees. The reviewed collector distinguishes traded value, notional volume and technical events. Complementary-share creation and redemption use different counting rules. <sup><a href="#source-S06" aria-label="Source 6">6</a></sup>
+
+</figcaption>
+</figure>
+
+The code also exposes an important detail for anyone investigating counterparties: the exchange contract itself appears as the taker in some events. A network built on the assumption that every taker field identifies a customer would be misleading. An analyst must first reconstruct the economic meaning of the execution. This observation does not establish that the journalists’ researchers made that mistake; their full processing pipeline has not been reproduced here. <sup><a href="#source-S06" aria-label="Source 6">6</a></sup>
+
+The public collector addresses a counting problem. The reviewed file does not classify beneficial owners or filter trading between accounts under common control. A correctly deduplicated series may still contain economically circular transactions. Conversely, mirrored technical events are not sufficient evidence of an intention to inflate activity. <sup><a href="#source-S06" aria-label="Source 6">6</a></sup>
+
+## The market maker and the closed loop
+
+A new market needs someone willing to quote buying and selling prices before a large customer base exists. That is the [market maker’s](/en/glossary/teneur-de-marche/) role. It may receive compensation for providing liquidity, automate its orders and seek to reduce its exposure quickly. From a distance, its work can look like a repetitive sequence of transactions in opposite directions.
+
+Economic relationships help distinguish the cases. In a simple example, an intermediary buys 100 shares from Alice and sells 100 shares to Bernard. Its final inventory returns to its starting level, but Alice has reduced her exposure and Bernard has increased his. The intermediary has enabled a transfer between two separate decisions. In a closed circuit where A, B and C resell the same shares and all return to their original positions, the transaction counter rises without that sequence, by itself, demonstrating outside demand.
+
+<figure className="l0g-predict-figure" id="figure-3">
+<div className="predict-panel">
+<div className="predict-desktop"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 1000 800" role="img" aria-labelledby="predict-3-en-d-title predict-3-en-d-desc">
+<title id="predict-3-en-d-title">Same closing position, different relationships</title>
+<desc id="predict-3-en-d-desc">The market maker connects independent clients. The A B C cycle returns to its starting point. No unlawful intent is inferred.</desc>
+<defs><marker id="predict-3-en-d-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="1000" height="800" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-paper)">Same closing position, different relationships</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Fictional networks · no actual addresses</text>
+<rect x="24" y="158" width="464" height="432" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-3-en-d-panel-1"/>
+<rect x="512" y="158" width="464" height="432" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-3-en-d-panel-2"/>
+<text x="46" y="198" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-3-en-d-panel-1">A · Independent customers</text>
+<text x="534" y="198" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-amber)" data-panel="predict-3-en-d-panel-2">B · Closed cycle</text>
+<circle id="predict-3-en-d-node-7" cx="90" cy="292" r="52" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="90" y="299.68" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-d-node-7">Alice</text>
+<circle id="predict-3-en-d-node-9" cx="256" cy="292" r="52" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="256" y="299.68" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-d-node-9">MM</text>
+<circle id="predict-3-en-d-node-11" cx="418" cy="292" r="52" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="418" y="299.68" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-d-node-11">Bernard</text>
+<line x1="154" y1="292" x2="192" y2="292" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-3-en-d-arrow)"/>
+<text x="173" y="267" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="var(--color-signal)">100</text>
+<line x1="320" y1="292" x2="354" y2="292" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-3-en-d-arrow)"/>
+<text x="337" y="267" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="var(--color-signal)">100</text>
+<text x="256" y="375" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="predict-3-en-d-panel-1">Shares transferred →</text>
+<text x="46" y="433" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-3-en-d-panel-1">Alice</text>
+<text x="466" y="433" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-signal)" data-panel="predict-3-en-d-panel-1">−100</text>
+<text x="46" y="476" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-3-en-d-panel-1">Market maker</text>
+<text x="466" y="476" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-signal)" data-panel="predict-3-en-d-panel-1">0</text>
+<text x="46" y="519" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-3-en-d-panel-1">Bernard</text>
+<text x="466" y="519" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-signal)" data-panel="predict-3-en-d-panel-1">+100</text>
+<text x="256" y="564" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="predict-3-en-d-panel-1">Closing changes</text>
+<rect x="540" y="220" width="408" height="270" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-3-en-d-panel-3"/>
+<circle id="predict-3-en-d-node-26" cx="744" cy="278" r="42" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="744" y="286.96" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-d-node-26">A</text>
+<circle id="predict-3-en-d-node-28" cx="628" cy="420" r="42" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="628" y="428.96" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-d-node-28">B</text>
+<circle id="predict-3-en-d-node-30" cx="860" cy="420" r="42" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="860" y="428.96" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-d-node-30">C</text>
+<path d="M 716 313 L 656 384" fill="none" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-3-en-d-arrow)" id="predict-3-en-d-a-b"/>
+<path d="M 675 420 H 813" fill="none" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-3-en-d-arrow)" id="predict-3-en-d-b-c"/>
+<path d="M 832 384 L 772 313" fill="none" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-3-en-d-arrow)" id="predict-3-en-d-c-a"/>
+<text x="744" y="362" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="var(--color-amber)">100</text>
+<text x="744" y="395" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-muted)">shares / leg</text>
+<text x="744" y="537" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-d-panel-2">A: 0 · B: 0 · C: 0</text>
+<text x="744" y="570" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="predict-3-en-d-panel-2">Closing changes</text>
+<rect x="24" y="630" width="952" height="84" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-3-en-d-panel-4"/>
+<text x="40" y="668" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-3-en-d-panel-4">A flat closing position is insufficient. Test outsider trades and control links;</text>
+<text x="40" y="698" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-3-en-d-panel-4">shared funding alone does not establish common control.</text>
+<line x1="24" y1="751" x2="976" y2="751" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="776" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources:</text>
+<a href="#source-S08">
+<text x="150" y="776" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)">S08</text>
+</a>
+</svg>
+</div>
+<div className="predict-mobile"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 480 748" role="img" aria-labelledby="predict-3-en-m-title predict-3-en-m-desc">
+<title id="predict-3-en-m-title">Same closing position, different relationships</title>
+<desc id="predict-3-en-m-desc">The market maker connects independent clients. The A B C cycle returns to its starting point. No unlawful intent is inferred.</desc>
+<defs><marker id="predict-3-en-m-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="480" height="748" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">Same closing position, different</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">relationships</text>
+<text x="24" y="112" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Fictional networks · no actual addresses</text>
+<text x="24" y="158" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">A · Risk transferred to an outsider</text>
+<circle id="predict-3-en-m-node-5" cx="82" cy="240" r="50" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="82" y="247.04" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-m-node-5">Alice</text>
+<circle id="predict-3-en-m-node-7" cx="240" cy="240" r="50" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="240" y="247.04" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-m-node-7">MM</text>
+<circle id="predict-3-en-m-node-9" cx="398" cy="240" r="50" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="398" y="247.04" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-m-node-9">Bernard</text>
+<line x1="138" y1="240" x2="184" y2="240" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-3-en-m-arrow)"/>
+<text x="161" y="215" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-signal)">100</text>
+<line x1="296" y1="240" x2="342" y2="240" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-3-en-m-arrow)"/>
+<text x="319" y="215" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-signal)">100</text>
+<text x="240" y="310" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Shares transferred →</text>
+<text x="82" y="349" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="var(--color-signal)">−100</text>
+<text x="240" y="349" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="var(--color-signal)">0</text>
+<text x="398" y="349" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="var(--color-signal)">+100</text>
+<text x="240" y="381" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Closing account changes</text>
+<line x1="24" y1="403" x2="456" y2="403" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="438" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-amber)">B · Closed cycle</text>
+<rect x="48" y="444" width="384" height="214" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-3-en-m-panel-1"/>
+<circle id="predict-3-en-m-node-23" cx="240" cy="489" r="36" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="240" y="496.68" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-m-node-23">A</text>
+<circle id="predict-3-en-m-node-25" cx="110" cy="612" r="36" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="110" y="619.68" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-m-node-25">B</text>
+<circle id="predict-3-en-m-node-27" cx="370" cy="612" r="36" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="370" y="619.68" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-paper)" data-panel="predict-3-en-m-node-27">C</text>
+<path d="M 215 519 L 136 579" fill="none" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-3-en-m-arrow)" id="predict-3-en-m-a-b"/>
+<path d="M 151 612 H 329" fill="none" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-3-en-m-arrow)" id="predict-3-en-m-b-c"/>
+<path d="M 344 579 L 265 519" fill="none" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-3-en-m-arrow)" id="predict-3-en-m-c-a"/>
+<text x="240" y="556" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-amber)" data-panel="predict-3-en-m-panel-1">100</text>
+<text x="240" y="584" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="predict-3-en-m-panel-1">shares / leg</text>
+<text x="240" y="683" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-paper)">A: 0 · B: 0 · C: 0</text>
+<line x1="24" y1="699" x2="456" y2="699" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources:</text>
+<a href="#source-S08">
+<text x="130" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)">S08</text>
+</a>
+</svg>
+</div>
+</div>
+<figcaption>
+<span className="figlabel">Figure 3.</span> Arrows represent shares, not payments. Actors and relationships are fictional. A closed-loop pattern needs to be tested against control relationships and outside trading; it is not a finding of unlawful activity. <sup><a href="#source-S08" aria-label="Source 8">8</a></sup>
+
+</figcaption>
+</figure>
+
+Research by Allen Sirolly, Hongyao Ma, Yash Kanoria and Rajiv Sethi proposes examining groups that trade predominantly with one another. Their study concerns Polymarket; its numerical findings cannot be transferred to Predictstreet. Its relevance here is methodological: it directs attention to how closed a trading network is, rather than relying on a turnover measure alone. <sup><a href="#source-S08" aria-label="Source 8">8</a></sup>
+
+Even that test requires care. Under one possible explanation, a custody or pooled-funding service supplies several independent customers. Under another, common funding connects accounts to one decision-maker. These explanations need to be tested against identification records, mandates and order logs. A public graph produces useful clues and specific questions, but establishing the legal identity of whoever controls the trades may require non-public information.
+
+The strongest defence of a market-making operation would therefore demonstrate its relationship with independent customers: executable quotes, trades with outsiders, exposure actually borne and verifiable execution conditions. Showing only that software exchanged tokens or paid fees would leave those issues unresolved.
+
+## Liquidity matters when the customer wants out
+
+Volume adds up past transactions. Liquidity describes what a buyer or seller can obtain now, for a specified quantity. An active trading history can coexist with an almost empty order book when a customer needs to close a position. Conversely, an infrequently traded market can offer reasonable execution capacity if an intermediary genuinely commits to buying.
+
+Consider another fictional example, unrelated to observed Predictstreet trading. A customer owns 1,000 shares. The best displayed bid is $0.50, but it covers only 100 shares. The next 200 shares can be sold at $0.45, and the remaining 700 at $0.30. Selling the entire position immediately into those orders produces **$350 before fees**, an average of $0.35 per share. Marking the whole position at the best bid would have suggested $500.
+
+<figure className="l0g-predict-figure" id="figure-4">
+<div className="predict-panel">
+<div className="predict-desktop"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 1000 800" role="img" aria-labelledby="predict-4-en-d-title predict-4-en-d-desc">
+<title id="predict-4-en-d-title">Your exit price depends on size</title>
+<desc id="predict-4-en-d-desc">100 shares at .50, 200 at .45 and 700 at .30 yield $350, 30 percent below a $500 top-bid mark.</desc>
+<defs><marker id="predict-4-en-d-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="1000" height="800" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-paper)">Your exit price depends on size</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">HYPOTHETICAL · sell 1,000 shares; no fees</text>
+<text x="90" y="165" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Bid price per share ($)</text>
+<line x1="90" y1="420" x2="950" y2="420" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="78" y="427" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="end" fill="var(--color-muted)">0</text>
+<line x1="90" y1="378.182" x2="950" y2="378.182" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="78" y="385.182" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="end" fill="var(--color-muted)">0.1</text>
+<line x1="90" y1="336.364" x2="950" y2="336.364" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="78" y="343.364" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="end" fill="var(--color-muted)">0.2</text>
+<line x1="90" y1="294.545" x2="950" y2="294.545" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="78" y="301.545" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="end" fill="var(--color-muted)">0.3</text>
+<line x1="90" y1="252.727" x2="950" y2="252.727" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="78" y="259.727" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="end" fill="var(--color-muted)">0.4</text>
+<line x1="90" y1="210.909" x2="950" y2="210.909" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="78" y="217.909" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="end" fill="var(--color-muted)">0.5</text>
+<rect x="90" y="210.909" width="86" height="209.091" rx="0" fill="var(--color-signal)" id="predict-4-en-d-tier-1"/>
+<line x1="90" y1="210.909" x2="176" y2="210.909" stroke="var(--color-paper)" stroke-width="2"/>
+<text x="133" y="196.909" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="var(--color-paper)">100</text>
+<rect x="176" y="231.818" width="172" height="188.182" rx="0" fill="var(--color-amber)" id="predict-4-en-d-tier-2"/>
+<line x1="176" y1="231.818" x2="348" y2="231.818" stroke="var(--color-paper)" stroke-width="2"/>
+<text x="262" y="217.818" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="var(--color-paper)">200</text>
+<rect x="348" y="294.545" width="602" height="125.455" rx="0" fill="var(--color-accent)" id="predict-4-en-d-tier-3"/>
+<line x1="348" y1="294.545" x2="950" y2="294.545" stroke="var(--color-paper)" stroke-width="2"/>
+<text x="649" y="280.545" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="var(--color-paper)">700</text>
+<line x1="90" y1="420" x2="950" y2="420" stroke="var(--color-paper)" stroke-width="1.6"/>
+<line x1="90" y1="190" x2="90" y2="420" stroke="var(--color-paper)" stroke-width="1.6"/>
+<line x1="90" y1="420" x2="90" y2="426" stroke="var(--color-paper)" stroke-width="1.6"/>
+<text x="90" y="454" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-muted)">0</text>
+<line x1="176" y1="420" x2="176" y2="426" stroke="var(--color-paper)" stroke-width="1.6"/>
+<text x="176" y="454" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-muted)">100</text>
+<line x1="348" y1="420" x2="348" y2="426" stroke="var(--color-paper)" stroke-width="1.6"/>
+<text x="348" y="454" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-muted)">300</text>
+<line x1="520" y1="420" x2="520" y2="426" stroke="var(--color-paper)" stroke-width="1.6"/>
+<text x="520" y="454" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-muted)">500</text>
+<line x1="735" y1="420" x2="735" y2="426" stroke="var(--color-paper)" stroke-width="1.6"/>
+<text x="735" y="454" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-muted)">750</text>
+<line x1="950" y1="420" x2="950" y2="426" stroke="var(--color-paper)" stroke-width="1.6"/>
+<text x="950" y="454" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-muted)">1000</text>
+<text x="90" y="485" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Cumulative shares sold</text>
+<text x="24" y="559" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="40" font-weight="700" text-anchor="start" fill="var(--color-paper)">$500</text>
+<text x="24" y="602" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Mark at $0.50</text>
+<text x="350" y="559" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="40" font-weight="700" text-anchor="start" fill="var(--color-signal)">$350</text>
+<text x="350" y="602" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Model execution</text>
+<text x="350" y="632" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">proceeds</text>
+<text x="700" y="559" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="40" font-weight="700" text-anchor="start" fill="var(--color-paper)">−30%</text>
+<text x="700" y="602" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Shortfall from the mark</text>
+<rect x="24" y="658" width="952" height="84" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-4-en-d-panel-1"/>
+<text x="40" y="696" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-4-en-d-panel-1">Historical volume does not determine exit depth. Static model: executable bids</text>
+<text x="40" y="726" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-4-en-d-panel-1">assumed, with no cancellations or fees.</text>
+<line x1="24" y1="751" x2="976" y2="751" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="776" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Hypothetical model · l0g calculation</text>
+</svg>
+</div>
+<div className="predict-mobile"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 480 748" role="img" aria-labelledby="predict-4-en-m-title predict-4-en-m-desc">
+<title id="predict-4-en-m-title">Your exit price depends on size</title>
+<desc id="predict-4-en-m-desc">100 shares at .50, 200 at .45 and 700 at .30 yield $350, 30 percent below a $500 top-bid mark.</desc>
+<defs><marker id="predict-4-en-m-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="480" height="748" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">Your exit price depends on size</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">HYPOTHETICAL · sell 1,000 shares; no</text>
+<text x="24" y="104" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">fees</text>
+<text x="80" y="163" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Bid price per share ($)</text>
+<line x1="80" y1="368" x2="440" y2="368" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="68" y="375" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="end" fill="var(--color-muted)">0</text>
+<line x1="80" y1="335.273" x2="440" y2="335.273" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="68" y="342.273" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="end" fill="var(--color-muted)">0.1</text>
+<line x1="80" y1="302.545" x2="440" y2="302.545" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="68" y="309.545" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="end" fill="var(--color-muted)">0.2</text>
+<line x1="80" y1="269.818" x2="440" y2="269.818" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="68" y="276.818" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="end" fill="var(--color-muted)">0.3</text>
+<line x1="80" y1="237.091" x2="440" y2="237.091" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="68" y="244.091" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="end" fill="var(--color-muted)">0.4</text>
+<line x1="80" y1="204.364" x2="440" y2="204.364" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="68" y="211.364" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="end" fill="var(--color-muted)">0.5</text>
+<rect x="80" y="204.364" width="36" height="163.636" rx="0" fill="var(--color-signal)" id="predict-4-en-m-tier-1"/>
+<line x1="80" y1="204.364" x2="116" y2="204.364" stroke="var(--color-paper)" stroke-width="2"/>
+<rect x="116" y="220.727" width="72" height="147.273" rx="0" fill="var(--color-amber)" id="predict-4-en-m-tier-2"/>
+<line x1="116" y1="220.727" x2="188" y2="220.727" stroke="var(--color-paper)" stroke-width="2"/>
+<rect x="188" y="269.818" width="252" height="98.1818" rx="0" fill="var(--color-accent)" id="predict-4-en-m-tier-3"/>
+<line x1="188" y1="269.818" x2="440" y2="269.818" stroke="var(--color-paper)" stroke-width="2"/>
+<line x1="80" y1="368" x2="440" y2="368" stroke="var(--color-paper)" stroke-width="1.6"/>
+<line x1="80" y1="188" x2="80" y2="368" stroke="var(--color-paper)" stroke-width="1.6"/>
+<line x1="80" y1="368" x2="80" y2="374" stroke="var(--color-paper)" stroke-width="1.6"/>
+<text x="80" y="402" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-muted)">0</text>
+<line x1="188" y1="368" x2="188" y2="374" stroke="var(--color-paper)" stroke-width="1.6"/>
+<text x="188" y="402" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-muted)">300</text>
+<line x1="440" y1="368" x2="440" y2="374" stroke="var(--color-paper)" stroke-width="1.6"/>
+<text x="440" y="402" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-muted)">1000</text>
+<text x="80" y="433" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Cumulative shares sold</text>
+<rect x="24" y="456" width="5" height="27" rx="0" fill="var(--color-signal)"/>
+<text x="42" y="478" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">100 × $0.50</text>
+<text x="456" y="478" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="end" fill="var(--color-paper)">$50</text>
+<rect x="24" y="490" width="5" height="27" rx="0" fill="var(--color-amber)"/>
+<text x="42" y="512" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">200 × $0.45</text>
+<text x="456" y="512" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="end" fill="var(--color-paper)">$90</text>
+<rect x="24" y="524" width="5" height="27" rx="0" fill="var(--color-accent)"/>
+<text x="42" y="546" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">700 × $0.30</text>
+<text x="456" y="546" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="end" fill="var(--color-paper)">$210</text>
+<text x="24" y="584" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="32" font-weight="700" text-anchor="start" fill="var(--color-signal)">$350 proceeds</text>
+<text x="24" y="620" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Mark at $0.50: $500</text>
+<text x="24" y="654" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-amber)">−30% · static model</text>
+<text x="24" y="686" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">No actual loss is represented.</text>
+<line x1="24" y1="699" x2="456" y2="699" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Hypothetical model · l0g calculation</text>
+</svg>
+</div>
+</div>
+<figcaption>
+<span className="figlabel">Figure 4.</span> Step widths represent executed quantities and heights represent prices. Total proceeds are $350 before fees, assuming all orders remain available. No actual Predictstreet order book or customer loss is depicted.
+</figcaption>
+</figure>
+
+The $150 difference, or 30% of that reference valuation, arises entirely from [order-book depth](/en/glossary/profondeur-de-marche/) in this model. It is not a measured Predictstreet loss or the result of a sporting wager. The example isolates execution cost: different quantities need not receive the price shown at the top of the screen.
+
+[Slippage](/en/glossary/slippage/) measures the difference from an explicit reference price, excluding fees in this example. [The price of getting out](/en/analysis/dette-etats-06-prix-sortie/) examines the same order-book mechanism in government bonds, using different units and a separate scenario.
+
+A useful market-quality audit could publish exit costs for several position sizes, with timestamps and an explicit statement about fees. It should also test whether quotes remain available, because an offer withdrawn before a seller reaches it provides little practical protection. Volume would then have a companion measure directly relevant to customers, instead of carrying the entire burden of demonstrating success.
+
+This distinction also matters when prices are interpreted as probabilities. The fictional contract bought at $0.40 earns $0.60 if the event occurs and loses $0.40 otherwise. Ignoring fees and funding costs, and reasoning in terms of expected monetary value, the break-even probability is 40%. That arithmetic does not make the price a representative forecast automatically. Enough independent views must be able to challenge it through executable orders.
+
+Our [analysis of Polymarket’s European strategy](/en/analysis/polymarket-europe-betting-financial-products/) examines collateral, executable prices and the conditions governing access to these contracts.
+
+## Fees can circulate inside the same economic group
+
+Trading fees may seem to provide firmer evidence of a commercial business. They look more tangible than a count of addresses: someone gave up value to complete a transaction. Yet the destination of that value, and the economic identity of whoever paid it, remain crucial.
+
+In a teaching model, suppose there are 100 trades worth $100 each, with a hypothetical 1% fee charged to each side. The fee collector receives $200. If both trading accounts and the collector belong to one economic group, that $200 is also a cost borne by the group. Before network and operating costs, the internal transfer creates no external revenue for that perimeter. The interpretation changes if independent customers pay the fees.
+
+<figure className="l0g-predict-figure" id="figure-5">
+<div className="predict-panel">
+<div className="predict-desktop"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 1000 800" role="img" aria-labelledby="predict-5-en-d-title predict-5-en-d-desc">
+<title id="predict-5-en-d-title">Gross fees depend on the perimeter</title>
+<desc id="predict-5-en-d-desc">Two accounts pay $100 each to a fee collector within the same group. The $200 is not consolidated external revenue.</desc>
+<defs><marker id="predict-5-en-d-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="1000" height="800" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-paper)">Gross fees depend on the perimeter</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">HYPOTHETICAL · 100 trades × $100</text>
+<text x="24" y="108" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">A 1% fee on each side</text>
+<rect x="24" y="172" width="952" height="340" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-5-en-d-panel-1"/>
+<text x="44" y="211" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-5-en-d-panel-1">Assumed common economic perimeter</text>
+<rect x="44" y="246" width="242" height="140" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-5-en-d-panel-2"/>
+<text x="62" y="282" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-5-en-d-panel-2">Account A</text>
+<text x="62" y="326" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-5-en-d-panel-2">$100</text>
+<text x="62" y="366" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-5-en-d-panel-2">Account expense</text>
+<rect x="714" y="246" width="242" height="140" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-5-en-d-panel-3"/>
+<text x="732" y="282" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-5-en-d-panel-3">Account B</text>
+<text x="732" y="326" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-5-en-d-panel-3">$100</text>
+<text x="732" y="366" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-5-en-d-panel-3">Account expense</text>
+<rect x="350" y="350" width="300" height="140" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-5-en-d-panel-4"/>
+<text x="368" y="386" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-5-en-d-panel-4">Fee collector</text>
+<text x="368" y="430" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-5-en-d-panel-4">$200 received</text>
+<text x="368" y="470" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-5-en-d-panel-4">Gross protocol receipts</text>
+<path d="M 286 316 H 318 V 410 H 338" fill="none" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-5-en-d-arrow)" id="predict-5-en-d-a-fees"/>
+<path d="M 714 316 H 682 V 410 H 662" fill="none" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-5-en-d-arrow)" id="predict-5-en-d-b-fees"/>
+<text x="24" y="576" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="42" font-weight="700" text-anchor="start" fill="var(--color-paper)">+200 − 200 = 0</text>
+<text x="500" y="553" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Net outside contribution from this internal</text>
+<text x="500" y="583" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">transfer, before other costs.</text>
+<rect x="24" y="650" width="952" height="84" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-5-en-d-panel-5"/>
+<text x="40" y="688" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-5-en-d-panel-5">A fee paid by an independent customer has a different meaning. This diagram</text>
+<text x="40" y="718" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-5-en-d-panel-5">assigns no actual Predictstreet tariff or control relationship.</text>
+<line x1="24" y1="751" x2="976" y2="751" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="776" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Hypothetical model · l0g calculation</text>
+</svg>
+</div>
+<div className="predict-mobile"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 480 748" role="img" aria-labelledby="predict-5-en-m-title predict-5-en-m-desc">
+<title id="predict-5-en-m-title">Gross fees depend on the perimeter</title>
+<desc id="predict-5-en-m-desc">Two accounts pay $100 each to a fee collector within the same group. The $200 is not consolidated external revenue.</desc>
+<defs><marker id="predict-5-en-m-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="480" height="748" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">Gross fees depend on the</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">perimeter</text>
+<text x="24" y="112" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">HYPOTHETICAL · 100 trades × $100</text>
+<text x="24" y="138" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">A 1% fee on each side</text>
+<rect x="24" y="160" width="432" height="316" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-5-en-m-panel-1"/>
+<text x="44" y="193" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-5-en-m-panel-1">Assumed common perimeter</text>
+<rect x="44" y="218" width="172" height="110" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-5-en-m-panel-2"/>
+<text x="60" y="250" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-5-en-m-panel-2">Account A</text>
+<text x="60" y="284" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-5-en-m-panel-2">$100</text>
+<text x="60" y="311" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-5-en-m-panel-2">Fees paid</text>
+<rect x="264" y="218" width="172" height="110" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-5-en-m-panel-3"/>
+<text x="280" y="250" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-5-en-m-panel-3">Account B</text>
+<text x="280" y="284" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-5-en-m-panel-3">$100</text>
+<text x="280" y="311" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-5-en-m-panel-3">Fees paid</text>
+<rect x="132" y="364" width="216" height="94" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-5-en-m-panel-4"/>
+<text x="150" y="395" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-5-en-m-panel-4">Fee collector</text>
+<text x="150" y="432" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-5-en-m-panel-4">$200 received</text>
+<path d="M 130 334 V 340 H 200 V 354" fill="none" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-5-en-m-arrow)" id="predict-5-en-m-a-fees"/>
+<path d="M 350 334 V 340 H 280 V 354" fill="none" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-5-en-m-arrow)" id="predict-5-en-m-b-fees"/>
+<text x="24" y="529" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-paper)">+200 − 200 = 0</text>
+<text x="24" y="569" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Net outside contribution before other costs.</text>
+<text x="24" y="637" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Gross protocol receipts: $200.</text>
+<text x="24" y="673" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">Common control is fictional, not established.</text>
+<line x1="24" y1="699" x2="456" y2="699" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Hypothetical model · l0g calculation</text>
+</svg>
+</div>
+</div>
+<figcaption>
+<span className="figlabel">Figure 5.</span> Each side pays $100 in the model. The collector receives $200, offset by the same amount of expenses within the assumed common perimeter. This diagram attributes no tariff or account ownership to Predictstreet.
+</figcaption>
+</figure>
+
+The example is not a description of Predictstreet’s tariff or wallet ownership. It explains why revenue analysis needs to trace the origin of payments rather than stop at their destination. Any separate compensation or subsidies supporting trading would also need to be considered where they exist: gross protocol receipts and customer-acquisition spending may travel through different channels.
+
+The DefiLlama page consulted on October 20 displayed approximately **$9.41 million in cumulative fees**. Its collector treats trading fees as protocol revenue. That is a technical aggregate, not the audited profit of Predict Street Limited, the operator identified in the platform’s terms. It cannot establish how much was paid by economically independent customers. <sup><a href="#source-S06" aria-label="Source 6">6</a>, <a href="#source-S07" aria-label="Source 7">7</a>, <a href="#source-S11" aria-label="Source 11">11</a></sup>
+
+It would be equally misleading to compare cumulative trading volume with collateral measured on one date and declare the platform insolvent. The same funds can support successive transactions. A solvency assessment requires outstanding obligations, the assets covering them and withdrawal rights. An inquiry into circularity requires relationships between counterparties. Combining the two would sacrifice the precision this case needs.
+
+## Announced controls and unresolved responsibilities
+
+The launch announcement names Sumsub for identity and anti-money-laundering checks, Global Ledger for wallet analysis and Modulus for transaction surveillance. It also identifies sports-data suppliers used to settle contracts. That architecture is described by the company. Having named providers does not measure the effectiveness of the rules actually configured. <sup><a href="#source-S04" aria-label="Source 4">4</a></sup>
+
+Each function answers a particular question. A correct sports result allows the right winning contract to be paid. Verified identification links an account to a customer file. Transaction surveillance looks for prohibited or abnormal behaviour. These checks can complement one another, but none removes the need to examine economic relationships between accounts. Without access to service mandates and alerts, attributing a failure to a named supplier would be premature.
+
+Gibraltar’s regulations, effective July 13, expressly address wash trading, self-trading and conflicts associated with market making. They also preserve operator responsibility when functions are outsourced. Their scope and entity-specific authorisation conditions need to be checked in each case; the legislation is not a ruling on Predictstreet. <sup><a href="#source-S09" aria-label="Source 9">9</a></sup>
+
+The public register consulted on October 20 lists Predict Street Limited under authorisation PMA01. It publishes no grant date, individual conditions or decision on the disputed trading. <sup><a href="#source-S14" aria-label="Source 14">14</a></sup>
+
+<figure className="l0g-predict-figure" id="figure-6">
+<div className="predict-panel">
+<div className="predict-desktop"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 1000 800" role="img" aria-labelledby="predict-6-en-d-title predict-6-en-d-desc">
+<title id="predict-6-en-d-title">From the ledger to assessable evidence</title>
+<desc id="predict-6-en-d-desc">Events need reconstruction, actor attribution and assessment against controls. Commercial branding replaces none of these steps.</desc>
+<defs><marker id="predict-6-en-d-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="1000" height="800" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-paper)">From the ledger to assessable evidence</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Each layer tests a different object.</text>
+<rect x="24" y="154" width="952" height="100" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-6-en-d-panel-1"/>
+<circle id="predict-6-en-d-node-4" cx="56" cy="188" r="26" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="56" y="195.68" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-ink)" data-panel="predict-6-en-d-node-4">01</text>
+<text x="94" y="192" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-6-en-d-panel-1">Executions</text>
+<text x="330" y="192" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-6-en-d-panel-1">Cash and shares</text>
+<text x="330" y="222" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-6-en-d-panel-1">transferred</text>
+<text x="656" y="192" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-6-en-d-panel-1">Deduplicate events</text>
+<line x1="500" y1="258" x2="500" y2="273" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-6-en-d-arrow)" id="predict-6-en-d-layer-1"/>
+<rect x="24" y="280" width="952" height="100" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-6-en-d-panel-2"/>
+<circle id="predict-6-en-d-node-12" cx="56" cy="314" r="26" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="56" y="321.68" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-ink)" data-panel="predict-6-en-d-node-12">02</text>
+<text x="94" y="318" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-6-en-d-panel-2">Economic</text>
+<text x="94" y="350" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-6-en-d-panel-2">actors</text>
+<text x="330" y="318" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-6-en-d-panel-2">Funding, control and risk</text>
+<text x="656" y="318" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-6-en-d-panel-2">Test account</text>
+<text x="656" y="348" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-6-en-d-panel-2">relationships</text>
+<line x1="500" y1="384" x2="500" y2="399" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-6-en-d-arrow)" id="predict-6-en-d-layer-2"/>
+<rect x="24" y="406" width="952" height="100" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-6-en-d-panel-3"/>
+<circle id="predict-6-en-d-node-21" cx="56" cy="440" r="26" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="56" y="447.68" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-ink)" data-panel="predict-6-en-d-node-21">03</text>
+<text x="94" y="444" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-6-en-d-panel-3">Service quality</text>
+<text x="330" y="444" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-6-en-d-panel-3">Outside customer: entry</text>
+<text x="330" y="474" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-6-en-d-panel-3">and exit</text>
+<text x="656" y="444" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-6-en-d-panel-3">Size, price, withdrawals</text>
+<line x1="500" y1="510" x2="500" y2="525" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-6-en-d-arrow)" id="predict-6-en-d-layer-3"/>
+<rect x="24" y="532" width="952" height="100" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-6-en-d-panel-4"/>
+<circle id="predict-6-en-d-node-29" cx="56" cy="566" r="26" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="56" y="573.68" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="var(--color-ink)" data-panel="predict-6-en-d-node-29">04</text>
+<text x="94" y="570" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-6-en-d-panel-4">Surveillance</text>
+<text x="330" y="570" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-6-en-d-panel-4">Conflicts and alerts</text>
+<text x="656" y="570" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-6-en-d-panel-4">Document methods and</text>
+<text x="656" y="600" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-6-en-d-panel-4">results</text>
+<rect x="24" y="648" width="952" height="84" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-6-en-d-panel-5"/>
+<text x="40" y="686" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-6-en-d-panel-5">FIFA promised surveillance. Neither audit contract nor reasoned ruling</text>
+<text x="40" y="716" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="predict-6-en-d-panel-5">obtained; this does not establish its involvement in the trades.</text>
+<line x1="24" y1="751" x2="976" y2="751" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="776" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources:</text>
+<a href="#source-S01">
+<text x="150" y="776" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)">S01</text>
+</a>
+<a href="#source-S06">
+<text x="230" y="776" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)">S06</text>
+</a>
+<a href="#source-S08">
+<text x="310" y="776" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)">S08</text>
+</a>
+<a href="#source-S09">
+<text x="390" y="776" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)">S09</text>
+</a>
+</svg>
+</div>
+<div className="predict-mobile"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" viewBox="0 0 480 748" role="img" aria-labelledby="predict-6-en-m-title predict-6-en-m-desc">
+<title id="predict-6-en-m-title">From the ledger to assessable evidence</title>
+<desc id="predict-6-en-m-desc">Events need reconstruction, actor attribution and assessment against controls. Commercial branding replaces none of these steps.</desc>
+<defs><marker id="predict-6-en-m-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--color-signal)"/></marker></defs>
+<rect x="0" y="0" width="480" height="748" rx="0" fill="var(--color-ink)"/>
+<text x="24" y="44" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">From the ledger to assessable</text>
+<text x="24" y="78" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">evidence</text>
+<text x="24" y="112" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Each layer tests a different object.</text>
+<rect x="24" y="136" width="432" height="100" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-6-en-m-panel-1"/>
+<circle id="predict-6-en-m-node-5" cx="52" cy="164" r="24" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="52" y="171.04" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-ink)" data-panel="predict-6-en-m-node-5">01</text>
+<text x="84" y="168" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-6-en-m-panel-1">Executions</text>
+<text x="84" y="195" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-6-en-m-panel-1">Cash and shares transferred</text>
+<text x="84" y="221" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-6-en-m-panel-1">Deduplicate events</text>
+<line x1="240" y1="240" x2="240" y2="253" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-6-en-m-arrow)" id="predict-6-en-m-layer-1"/>
+<rect x="24" y="260" width="432" height="100" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-6-en-m-panel-2"/>
+<circle id="predict-6-en-m-node-12" cx="52" cy="288" r="24" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="52" y="295.04" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-ink)" data-panel="predict-6-en-m-node-12">02</text>
+<text x="84" y="292" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-6-en-m-panel-2">Economic actors</text>
+<text x="84" y="319" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-6-en-m-panel-2">Funding, control and risk</text>
+<text x="84" y="345" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-6-en-m-panel-2">Test account relationships</text>
+<line x1="240" y1="364" x2="240" y2="377" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-6-en-m-arrow)" id="predict-6-en-m-layer-2"/>
+<rect x="24" y="384" width="432" height="100" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-6-en-m-panel-3"/>
+<circle id="predict-6-en-m-node-19" cx="52" cy="412" r="24" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="52" y="419.04" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-ink)" data-panel="predict-6-en-m-node-19">03</text>
+<text x="84" y="416" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-6-en-m-panel-3">Service quality</text>
+<text x="84" y="443" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-6-en-m-panel-3">Outside customer: entry and exit</text>
+<text x="84" y="469" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-6-en-m-panel-3">Size, price, withdrawals</text>
+<line x1="240" y1="488" x2="240" y2="501" stroke="var(--color-signal)" stroke-width="2.4" marker-end="url(#predict-6-en-m-arrow)" id="predict-6-en-m-layer-3"/>
+<rect x="24" y="508" width="432" height="100" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.6" id="predict-6-en-m-panel-4"/>
+<circle id="predict-6-en-m-node-26" cx="52" cy="536" r="24" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.8"/>
+<text x="52" y="543.04" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--color-ink)" data-panel="predict-6-en-m-node-26">04</text>
+<text x="84" y="540" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)" data-panel="predict-6-en-m-panel-4">Surveillance</text>
+<text x="84" y="567" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="predict-6-en-m-panel-4">Conflicts and alerts</text>
+<text x="84" y="593" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)" data-panel="predict-6-en-m-panel-4">Document methods and results</text>
+<text x="24" y="642" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">FIFA promised monitoring. No audit contract</text>
+<text x="24" y="668" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">or reasoned ruling obtained.</text>
+<line x1="24" y1="699" x2="456" y2="699" stroke="var(--color-line-strong)" stroke-width="1.6"/>
+<text x="24" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources:</text>
+<a href="#source-S01">
+<text x="130" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)">S01</text>
+</a>
+<a href="#source-S06">
+<text x="194" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)">S06</text>
+</a>
+<a href="#source-S08">
+<text x="258" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)">S08</text>
+</a>
+<a href="#source-S09">
+<text x="322" y="724" font-family="l0g Predictstreet Sans,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)">S09</text>
+</a>
+</svg>
+</div>
+</div>
+<figcaption>
+<span className="figlabel">Figure 6.</span> An assessment chain proposed by l0g. Public code documents the first layer; the others require additional evidence. FIFA’s commitments and Gibraltar’s framework are not a ruling on the alleged transactions. <sup><a href="#source-S01" aria-label="Source 1">1</a>, <a href="#source-S06" aria-label="Source 6">6</a>, <a href="#source-S08" aria-label="Source 8">8</a>, <a href="#source-S09" aria-label="Source 9">9</a></sup>
+
+</figcaption>
+</figure>
+
+Differences between the journalists’ analysis and the regulator’s preliminary position might turn on the definition of linked accounts, the treatment of particular transactions or private evidence reviewed. None of these explanations can be attributed to the regulator without documentation. A review becomes assessable when readers know its time window, applicable rules, ownership relationships and treatment of internal trades. Confidential customer identities need not necessarily prevent publication of a methodology and aggregated findings.
+
+The absence of identified harm also addresses a different question from the quality of an activity indicator. A customer might have received the correct contractual payment while published volume led them to overestimate the market’s independent activity. That scenario establishes no actual damage in this case. It explains why settlement, trading integrity and fair disclosure warrant separate tests.
+
+## The commercial risk reaches the partner
+
+For FIFA, the issue concerns the scope of its own public commitment. Its April announcement promised surveillance of suspicious trading and structured information sharing. The full commercial contract is absent from the documents reviewed, leaving audit rights, escalation duties and possible exit provisions unknown. Nothing in this dossier establishes that FIFA ordered, financed or knew about the disputed transactions. <sup><a href="#source-S01" aria-label="Source 1">1</a></sup>
+
+The potential reputational mechanism is nevertheless straightforward. Association with a familiar institution can reduce a new user’s initial suspicion. If market quality is later challenged, questions return to the institution that lent its name: what did it verify, and what explanation can it now obtain? Buying visibility creates a relationship the public may interpret more broadly than the contract’s confidential clauses.
+
+That relationship extends beyond one tournament. The announced project with DAZN would bring sports viewing and market participation closer together, subject to the required approvals. The more a transaction becomes part of a familiar experience, the more important it is to identify its execution venue and counterparties. Shared branding, however, does not establish that every partner service uses the same order book. <sup><a href="#source-S05" aria-label="Source 5">5</a></sup>
+
+Territorial authorisation also needs to be distinguished from international visibility. On July 3, ESMA reiterated that event-contract classification depends on product characteristics and may trigger European binary-options restrictions or national gambling rules. The platform’s chosen label does not settle the question. That general statement is not an individual decision against Predictstreet. <sup><a href="#source-S10" aria-label="Source 10">10</a></sup>
+
+## Evidence needed to assess the disputed trading
+
+The most useful evidence would reconcile recorded executions with economic counterparties in a reproducible way. It would begin with a dated set of contracts and blocks, explain how events are grouped, separate traded value from notional volume, and document the control relationships used to classify accounts. Results could then distinguish internal transactions, market making with outsiders and unclassified activity, rather than turning every uncertainty into an “organic” residual.
+
+A second layer would test the service: what quantities can an independent customer actually buy or sell, at what cost and with what withdrawal options? Finally, a fee reconciliation would show how much money enters from outside the economic perimeter supplying liquidity. These are complementary tests of the commercial proposition, none of which requires publishing every participant’s personal information.
+
+As of October 20, the documents establish the partnership, public surveillance commitments and the methodology behind one market counter. Complete account attribution and detailed reasoning for the regulatory review remain unresolved. The newspaper’s figures provide a specific reason to seek that evidence. For a platform selling collective intelligence, the decisive demonstration would show how independent decisions meet, take risk and exit on the advertised terms.
+
+<section className="method"><h2>Scope of the investigation</h2><p>Documentary investigation as of 20 October 2026. The disputed shares are attributed to the WSJ and LSR’s account, without independent replication by l0g. The regulator’s preliminary response is reported through those sources.</p><p>The DefiLlama collector was read at a pinned revision, without a security audit or full event reconstruction. The three numerical models and the network are teaching examples; they do not measure Predictstreet’s fees, losses or ownership links.</p><p>No interviews, contact with the parties or access to private contracts took place. External originals are linked, not archived in full. Wash trading alone does not establish money laundering or manipulation of sporting results.</p><p>The opening image is an AI-generated conceptual illustration; it does not depict an actual FIFA or Predictstreet device or installation.</p></section>
+
+<h2 id="sources">Sources and documents</h2>
+
+<ol className="sources-list" role="list">
+<li id="source-S01"><span className="source-meta">S01 · FIFA · Published: 2026-04-02 · Accessed October 20, 2026.</span><a href="https://inside.fifa.com/tournament-organisation/commercial/news/adi-predictstreet-official-prediction-market-partner-fifa-world-cup-2026" target="_blank" rel="noopener noreferrer">ADI Predictstreet named official prediction market partner of the FIFA World Cup 2026</a></li>
+<li id="source-S02"><span className="source-meta">S02 · The Wall Street Journal · Caitlin Ostroff and Katherine Long · Published: 2026-10-17 · Accessed October 20, 2026.</span><a href="https://www.wsj.com/finance/nearly-all-volume-on-fifa-linked-prediction-market-is-circular-trading-549393f3" target="_blank" rel="noopener noreferrer">Nearly All Volume on FIFA-Linked Prediction Market Is Circular Trading</a></li>
+<li id="source-S03"><span className="source-meta">S03 · Legal Sports Report · Sam McQuillan · Published: 2026-10-19 · Accessed October 20, 2026.</span><a href="https://www.legalsportsreport.com/282846/fifa-prediction-market-partner-tied-to-108m-in-circular-trades-wsj/" target="_blank" rel="noopener noreferrer">FIFA Prediction Market Partner Tied To $108M In Circular Trades: WSJ</a></li>
+<li id="source-S04"><span className="source-meta">S04 · ADI Predictstreet · press release distributed by GlobeNewswire · Published: 2026-06-08 · Accessed October 20, 2026.</span><a href="https://www.globenewswire.com/news-release/2026/06/08/3307940/0/en/adi-predictstreet-goes-live-as-the-countdown-to-the-fifa-world-cup-2026-begins.html" target="_blank" rel="noopener noreferrer">ADI Predictstreet Goes Live as the Countdown to the FIFA World Cup 2026 Begins</a></li>
+<li id="source-S05"><span className="source-meta">S05 · DAZN · Published: 2026-07-15 · Accessed October 20, 2026.</span><a href="https://dazngroup.com/press-room/dazn-and-adi-predictstreet-announce-exclusive-global-partnership-to-launch-next-generation-regulated-sports-prediction-markets/" target="_blank" rel="noopener noreferrer">DAZN and ADI Predictstreet Announce Exclusive Global Partnership to Launch Next-Generation Regulated Sports Prediction Markets</a></li>
+<li id="source-S06"><span className="source-meta">S06 · DefiLlama · dimension-adapters · Version date not established · Accessed October 20, 2026.</span><a href="https://github.com/DefiLlama/dimension-adapters/blob/f76bea70e867f705c0136ad03f1eea4baec3760c/dexs/predictstreet/index.ts" target="_blank" rel="noopener noreferrer">Predictstreet collector: code at a pinned revision</a></li>
+<li id="source-S07"><span className="source-meta">S07 · DefiLlama · Version date not established · Accessed October 20, 2026.</span><a href="https://defillama.com/protocol/predictstreet" target="_blank" rel="noopener noreferrer">PredictStreet TVL, Fees, Revenue &amp; Volume</a></li>
+<li id="source-S08"><span className="source-meta">S08 · Columbia Business School · Allen Sirolly, Hongyao Ma, Yash Kanoria and Rajiv Sethi · Version date not established · Accessed October 20, 2026.</span><a href="https://business.columbia.edu/faculty/research/network-based-detection-wash-trading" target="_blank" rel="noopener noreferrer">Network-Based Detection of Wash Trading</a></li>
+<li id="source-S09"><span className="source-meta">S09 · Government of Gibraltar · Published: 2026-07-13 · Accessed October 20, 2026.</span><a href="https://www.gibraltarlaws.gov.gi/uploads/legislations/gambling/2026s176/2026s176.pdf" target="_blank" rel="noopener noreferrer">Prediction Market Regulations 2026 · LN 2026/176</a></li>
+<li id="source-S10"><span className="source-meta">S10 · ESMA · Published: 2026-07-03 · Accessed October 20, 2026.</span><a href="https://www.esma.europa.eu/press-news/esma-news/esma-reminds-firms-existing-rules-and-obligations-under-binary-option-measures" target="_blank" rel="noopener noreferrer">ESMA reminds firms of existing rules and obligations under binary option measures amid growing popularity of prediction markets globally</a></li>
+<li id="source-S11"><span className="source-meta">S11 · Predict Street Limited · Published: 2026-03-27 · Accessed October 20, 2026.</span><a href="https://adipredictstreet.com/terms" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a></li>
+<li id="source-S12"><span className="source-meta">S12 · ADI Predictstreet · press release distributed by GlobeNewswire · Published: 2026-04-08 · Accessed October 20, 2026.</span><a href="https://www.globenewswire.com/news-release/2026/04/08/3270357/0/en/ADI-Predictstreet-Secures-Gibraltar-Regulatory-Approval-to-Scale-Its-Data-Driven-Forecasting-Platform-Globally.html" target="_blank" rel="noopener noreferrer">ADI Predictstreet Secures Gibraltar Regulatory Approval to Scale Its Data-Driven Forecasting Platform Globally</a></li>
+<li id="source-S13"><span className="source-meta">S13 · FIFA · Updated: 2026-05-04 · Accessed October 20, 2026.</span><a href="https://inside.fifa.com/tournament-organisation/partners/adi-predictstreet" target="_blank" rel="noopener noreferrer">ADI Predictstreet · partner page</a></li>
+<li id="source-S14"><span className="source-meta">S14 · Gambling Division, Government of Gibraltar · Undated register · Accessed October 20, 2026.</span><a href="https://gamblingdivision.gov.gi/prediction-market-authorisations" target="_blank" rel="noopener noreferrer">Prediction Market Authorisations</a></li>
+</ol>

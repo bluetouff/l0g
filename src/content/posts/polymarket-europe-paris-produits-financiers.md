@@ -120,6 +120,8 @@ Un autre exemple fictif montre la différence. La meilleure offre d’achat est 
 
 L’écart entre achat et vente et les quantités disponibles font donc partie du produit. Une ligne indiquant « 60 % » peut être informative sans permettre de prendre ou de fermer une position importante à ce prix. La dernière transaction, à elle seule, ne renseigne pas sur la somme qu’un nouvel acheteur pourrait engager sans faire bouger le marché.
 
+Le volume publié dépend aussi des opérations retenues et des relations entre comptes. Notre [enquête sur FIFA et Predictstreet](/posts/fifa-predictstreet-volume-wash-trading/) suit ces liens entre activité enregistrée, contreparties indépendantes et conditions de sortie.
+
 Il faut également distinguer l’information collective de sa représentativité. Une personne disposant de davantage d’argent peut peser plus lourd qu’une autre. Un intervenant qui cherche une couverture peut accepter un prix différent de celui qu’il choisirait pour une simple spéculation. Le prix reflète ainsi des moyens financiers et des besoins différents. Sa représentativité doit être examinée séparément de sa capacité à anticiper les événements.
 
 Pour évaluer une prévision, le test pertinent porte sur une série de résultats comparables. Si l’on annonce souvent 60 % pour des événements similaires, se réalisent-ils environ six fois sur dix ? Une prédiction isolée, gagnante ou perdante, ne permet pas de répondre. **Un marché peut produire une information utile tout en offrant une opération défavorable à celui qui arrive trop tard, paie trop cher ou supporte trop de frais.**

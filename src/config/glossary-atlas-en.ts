@@ -210,6 +210,54 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'wash-trading', sigle: 'Wash trading', nom: 'Trading that creates apparent market activity',
+    def: 'Transactions structured to resemble genuine buying and selling while neutralising market risk or price competition. Classification depends on intent and control of the accounts, among other evidence. An accidental match between independently placed orders or a flat ending position does not by itself establish manipulation; the applicable rules depend on the market and jurisdiction.',
+    guide: '/en/analysis/fifa-predictstreet-trading-volume-risk/', sectionTitle: 'US regulation & institutions', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'FIFA and Predictstreet: trading volume and risk', href: '/en/analysis/fifa-predictstreet-trading-volume-risk/', kind: 'article' }],
+      sources: [{ label: 'CME Group, Rule 534 and wash-trading FAQ', href: 'https://www.cmegroup.com/rulebook/files/cme-group-Rule-534.pdf', detail: 'Intent, common beneficial ownership, incidental matches and indirect trades; rules for CME Group markets.', kind: 'source' }],
+      related: ['marche-predictif', 'teneur-de-marche'],
+    },
+  },
+  {
+    slug: 'slippage', sigle: 'Slippage', nom: 'Reference price versus execution price',
+    def: 'The difference between a specified reference price and the price actually obtained, using an average if an order has several partial executions. Available quantities and price movements during order handling can affect it. The difference can favour or disadvantage the customer and is distinct from separately charged fees.',
+    guide: '/en/analysis/fifa-predictstreet-trading-volume-risk/', sectionTitle: 'US regulation & institutions', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'FIFA and Predictstreet: trading volume and risk', href: '/en/analysis/fifa-predictstreet-trading-volume-risk/', kind: 'article' }],
+      sources: [
+        { label: 'SEC Investor.gov, executing an order', href: 'https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order', detail: 'Quoted prices, price movements and improvement or deterioration at execution.', kind: 'source' },
+        { label: 'SEC Investor.gov, understanding order types', href: 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-14', detail: 'Parts of a large order can execute at different prices when quantities are limited.', kind: 'source' },
+      ],
+      related: ['profondeur-de-marche', 'teneur-de-marche', 'marche-predictif'],
+    },
+  },
+  {
+    slug: 'teneur-de-marche', sigle: 'Market maker', nom: 'An intermediary quoting buying and selling prices',
+    def: 'An intermediary willing to trade for its own account at buying and selling prices it quotes. It uses its own capital and can hold inventory between trades. Quoted quantities and execution conditions matter: the presence of a market maker does not guarantee that an entire customer order can be filled at one price.',
+    guide: '/en/guides/read-dealer-gamma/', sectionTitle: 'US regulation & institutions', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'FIFA and Predictstreet: trading volume and risk', href: '/en/analysis/fifa-predictstreet-trading-volume-risk/', kind: 'article' }],
+      guides: [{ label: 'Reading dealer gamma', href: '/en/guides/read-dealer-gamma/', kind: 'guide' }],
+      sources: [
+        { label: 'MiFID II, Article 4: market-maker definition', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mifid-ii/article-4-definitions', detail: 'Dealing on own account against proprietary capital at quoted prices.', kind: 'source' },
+        { label: 'SEC Investor.gov, executing an order', href: 'https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order', detail: 'Quoted prices, quantities and execution conditions.', kind: 'source' },
+      ],
+      related: ['profondeur-de-marche', 'slippage', 'marche-predictif'],
+    },
+  },
+  {
+    slug: 'notionnel', sigle: 'Notional amount', nom: 'The contractual size of a derivative',
+    def: 'An amount describing a derivative’s contractual size. Depending on the product, it can be a principal that must be paid, a contingent payout or a reference for calculating cash flows. It differs from the contract’s market value and does not by itself measure the possible loss. Comparisons require the instrument and counting convention to be specified.',
+    guide: '/en/guides/read-interest-rate-swaps/', sectionTitle: 'US regulation & institutions', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'FIFA and Predictstreet: volume conventions', href: '/en/analysis/fifa-predictstreet-trading-volume-risk/', kind: 'article' }],
+      guides: [{ label: 'Reading interest-rate swaps', href: '/en/guides/read-interest-rate-swaps/', kind: 'guide' }],
+      sources: [{ label: 'BIS, derivatives concepts and statistics, December 2025', href: 'https://www.bis.org/publications/qr-202512/international-finance-through-lens-bis-statistics-derivatives-markets', detail: 'Payable principal, contingent payout and calculation reference by product; distinction from market value.', kind: 'source' }],
+      related: ['future', 'dv01'],
+    },
+  },
+  {
     slug: 'preuve-d-humanite', sigle: 'Proof of personhood', nom: 'Human uniqueness within an enrolment system',
     def: 'A mechanism intended to establish that a proof relates to a distinct human within a specified enrolment system. Its criteria and assurance level depend on the implementation. It does not by itself establish a civil identity, honest intent or authority to commit a bank account.',
     guide: '/en/analysis/world-id-banking-proof-of-human/', ...cryptoSection, robots: 'noindex,follow',
@@ -3219,7 +3267,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {"slug": "streamshare", "sigle": "Streamshare", "nom": "Share of eligible streams", "sectionTitle": "Digital economy & data", "accent": "var(--color-signal)", "def": "A rights holder’s share of eligible streams within a defined market and period. In proportional allocation, that share determines its fraction of a royalty pool. Contracts then determine what reaches the creator. Counted artificial streams can dilute other rights holders’ shares.", "guide": "/en/analysis/ai-music-fake-streams-royalties/", "atlas": {"articles": [{"label": "AI music: who gets paid for fake streams?", "href": "/en/analysis/ai-music-fake-streams-royalties/", "kind": "article"}], "sources": [{"label": "Spotify, Understanding Spotify royalties", "href": "https://support.spotify.com/de-en/artists/article/understanding-spotify-royalties/", "kind": "source"}]}},
-  {"slug": "marche-predictif", "sigle": "Prediction market", "nom": "Event contracts", "sectionTitle": "US regulation & institutions", "accent": "var(--color-topic-blue)", "def": "A market for contracts whose payout depends on the outcome of a defined event. Prices may be interpreted as implied probabilities, subject to liquidity, fees and resolution rules. Legal treatment depends on the contract, operating entity, jurisdiction and customer; US authorisation does not confer access rights in France.", "guide": "/en/analysis/polymarket-europe-betting-financial-products/", "atlas": {"articles": [{"label": "Polymarket and European financial regulation", "href": "/en/analysis/polymarket-europe-betting-financial-products/", "kind": "article"}], "sources": [{"label": "ESMA, event contracts and binary options, 3 July 2026", "href": "https://www.esma.europa.eu/sites/default/files/2026-07/ESMA35-243228190-8148_Public_Statement_on_the_application_of_the_national_product_intervention_measures_on_binary_options_to_event_contracts.pdf", "kind": "source"}]}},
+  {"slug": "marche-predictif", "sigle": "Prediction market", "nom": "Event contracts", "sectionTitle": "US regulation & institutions", "accent": "var(--color-topic-blue)", "def": "A market for contracts whose payout depends on the outcome of a defined event. Prices may be interpreted as implied probabilities, subject to liquidity, fees and resolution rules. Legal treatment depends on the contract, operating entity, jurisdiction and customer; US authorisation does not confer access rights in France.", "guide": "/en/analysis/polymarket-europe-betting-financial-products/", "atlas": {"articles": [{"label": "Polymarket and European financial regulation", "href": "/en/analysis/polymarket-europe-betting-financial-products/", "kind": "article"}, {"label": "FIFA and Predictstreet: trading volume and risk", "href": "/en/analysis/fifa-predictstreet-trading-volume-risk/", "kind": "article"}], "sources": [{"label": "ESMA, event contracts and binary options, 3 July 2026", "href": "https://www.esma.europa.eu/sites/default/files/2026-07/ESMA35-243228190-8148_Public_Statement_on_the_application_of_the_national_product_intervention_measures_on_binary_options_to_event_contracts.pdf", "kind": "source"}]}},
   {
     slug: 'mvno', sigle: 'MVNO', nom: 'Mobile virtual network operator', sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)',
     def: 'An operator that buys wholesale access to one or more mobile networks to sell its own services, without owning a radio network. It designs its offers and remains responsible for the services supplied to its customers. Its ability to compete depends partly on wholesale prices and the terms for switching host networks.',
@@ -4143,7 +4191,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/dette-etats-06-prix-sortie/', ...macroSection, robots: 'noindex,follow',
     atlas: {
       intuition: 'A large sale can exhaust the best bid and reach lower price levels.',
-      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }],
+      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }, { label: 'FIFA and Predictstreet: liquidity and exit prices', href: '/en/analysis/fifa-predictstreet-trading-volume-risk/', kind: 'article' }],
       sources: [{ label: 'New York Fed, Treasury liquidity', href: 'https://libertystreeteconomics.newyorkfed.org/2026/04/treasury-market-liquidity-since-april-2025/', detail: 'Inside-tier depth, spreads and price impact.', kind: 'source' }],
       related: ['bid-to-cover', 'primary-dealer', 'appel-de-marge'],
     },

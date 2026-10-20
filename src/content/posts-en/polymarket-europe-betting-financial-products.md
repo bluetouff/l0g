@@ -118,6 +118,8 @@ Consider a second fictional example. The best bid is 58 cents and the best offer
 
 The gap between buying and selling prices, and the quantity available at each price, are part of the economics. “60%” can be informative without allowing a large position to be opened or closed there. A recent trade does not, by itself, tell the next customer how much can be bought without moving the price.
 
+Published trading volume also depends on which executions are counted and how accounts are related. Our [investigation into FIFA and Predictstreet](/en/analysis/fifa-predictstreet-trading-volume-risk/) follows those links through recorded activity, independent counterparties and the conditions available to a seller.
+
 Market information also differs from representativeness. Someone with more money can have more influence than someone with less. A participant seeking a hedge may accept a price they would reject for a purely speculative trade. The price therefore reflects different financial resources and needs. Its representativeness requires separate examination from its ability to anticipate events.
 
 Assessing the forecast requires repeated, comparable observations. When similar events are assigned a probability of 60%, do they occur about six times out of ten? A single correct or incorrect call cannot answer that. **A market can produce useful information while offering a poor trade to someone who arrives late, pays too much or incurs excessive costs.**
@@ -216,7 +218,7 @@ Automated payment follows the decision. Software may apply a rule faithfully whi
 
 A technical dispute mechanism is not, by itself, a public system of legal redress. Customers would need to know the responsible entity, the applicable law, the deadlines and the means of obtaining a remedy when a service fails to honour its commitments. Those protections would need to be established in any future authorised offering. The presence of a blockchain does not establish them.
 
-## What happens when the event itself becomes a target?
+<h2 id="what-happens-when-the-event-itself-becomes-a-target">Influence over the event that determines payment</h2>
 
 In its July statement, the ANJ refers to suspicions involving weather sensors and an [investigation opened on 4 May 2026](https://anj.fr/promotion-dune-offre-de-jeux-dargent-illegale-blocage-du-site-polymarket). The statement describes an ongoing investigation, with suspicions to examine and responsibility still to establish. The case highlights the dependency on the measurement that triggers payment.
 

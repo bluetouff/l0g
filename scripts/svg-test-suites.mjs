@@ -87,6 +87,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/jlr-recovery-infographics.test.mjs',
     'scripts/jpmorgan-infographics.test.mjs',
     'scripts/world-id-infographics.test.mjs',
+    'scripts/predictstreet-infographics.test.mjs',
     'scripts/shared-provider-infographics.test.mjs',
     'scripts/public-crisis-infographics.test.mjs',
     'scripts/recovery-price-infographics.test.mjs',
@@ -151,6 +152,7 @@ export const SVG_TEST_SUITES = Object.freeze({
   rendered: Object.freeze([
     'scripts/jpmorgan-rendered-infographics.test.mjs',
     'scripts/world-id-rendered-infographics.test.mjs',
+    'scripts/predictstreet-rendered-infographics.test.mjs',
     'scripts/a7-payments-rendered-infographics.test.mjs',
     'scripts/ai-wages-rendered-infographics.test.mjs',
     'scripts/debt-exit-price-rendered-infographics.test.mjs',
