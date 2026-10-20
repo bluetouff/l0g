@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { resolve } from 'node:path';
 import test from 'node:test';
 import { Hono } from 'hono';
+import { serveStatic } from 'hono/serve-static';
 import { ssgParams, toSSG } from 'hono/ssg';
 import { parseBody } from 'hono/utils/body';
 import { getQueryParam, getQueryParams } from 'hono/utils/url';
@@ -10,6 +11,29 @@ import { renderToString, renderToReadableStream } from 'hono/jsx/dom/server';
 
 // Dependency-level checks; the l0g server does not call these helpers.
 // SSG uses a recording-only filesystem. Form cases stay below 100 KB.
+test('static serving cannot decode a path past prefix authorization', async () => {
+  const reads = [];
+  const app = new Hono();
+  app.use('/static/admin/*', (c) => c.text('Unauthorized', 401));
+  app.use('/static/*', serveStatic({
+    getContent: async (path) => { reads.push(path); return 'Public fixture'; },
+  }));
+
+  assert.equal((await app.request('/static/admin/secret.txt')).status, 401);
+  // GHSA-5r4p-p66f-jhc7: the router and file resolver must agree on the path.
+  for (const path of ['/static/%%36%31dmin/secret.txt', '/static/%2Fadmin/secret.txt', '/static/100%25.txt']) {
+    assert.equal((await app.request(path)).status, 404);
+  }
+  assert.deepEqual(reads, []);
+
+  for (const path of ['/static/hello%20world.txt', '/static/%E7%82%8E.txt']) {
+    const response = await app.request(path);
+    assert.equal(response.status, 200);
+    assert.equal(await response.text(), 'Public fixture');
+  }
+  assert.deepEqual(reads, ['static/hello world.txt', 'static/炎.txt']);
+});
+
 async function renderStatic(slug) {
   const writes = [];
   const app = new Hono();
