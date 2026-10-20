@@ -161,17 +161,29 @@ test('dynamic article routes select only the eight configured chapter slugs and 
   assert.doesNotMatch(card, /<script\b|set:html/u);
 });
 
-test('the light cyber-recovery catalogue action keeps its measured readable foreground', () => {
+test('catalogue downloads retain readable text on their tinted surface in both themes', () => {
   const component = readFileSync(join(ROOT, 'src/components/PublicationSpotlight.astro'), 'utf8');
   const css = postcss.parse(component.match(/<style>([\s\S]*?)<\/style>/u)[1]);
-  const selector = ":global(html[data-theme='light']) .publication-spotlight--cyber-recovery .publication-primary";
-  const rules = [];css.walkRules(rule => { if (rule.selector === selector) rules.push(rule); });
-  assert.equal(rules.length, 1);assert.deepEqual(rules[0].nodes.map(node => [node.prop, node.value]), [['color', 'var(--color-ink)']]);
-  const globalCss = postcss.parse(readFileSync(join(ROOT, 'src/styles/global.css'), 'utf8')), tokens = new Map();
-  globalCss.walkRules(rule => { if (rule.selector === ':root[data-theme="light"]') rule.walkDecls(decl => tokens.set(decl.prop, decl.value)); });
-  const luminance = value => {assert.match(value, /^#[0-9a-f]{6}$/iu);return [1,3,5].map(i => parseInt(value.slice(i,i+2),16)).reduce((sum,v,i) => sum + [.2126,.7152,.0722][i] * (v/255 <= .04045 ? v/255/12.92 : ((v/255+.055)/1.055)**2.4), 0);};
-  const a = luminance(tokens.get('--color-ink')), b = luminance(tokens.get('--color-signal'));
-  assert.ok((Math.max(a,b)+.05)/(Math.min(a,b)+.05) >= 4.5, 'Actual theme tokens must retain small-text contrast');
+  const rules = [];css.walkRules(rule => { if (rule.selector === '.publication-primary') rules.push(rule); });
+  assert.equal(rules.length, 1);
+  const declarations = new Map(rules[0].nodes.map(node => [node.prop, node.value]));
+  assert.equal(declarations.get('color'), 'var(--color-bright)');
+  assert.equal(declarations.get('background'), 'color-mix(in srgb, var(--color-amber) 9%, var(--color-surface))');
+  const globalCss = postcss.parse(readFileSync(join(ROOT, 'src/styles/global.css'), 'utf8'));
+  const rgb = value => {assert.match(value, /^#[0-9a-f]{6}$/iu);return [1,3,5].map(i => parseInt(value.slice(i,i+2),16));};
+  const luminance = channels => channels.reduce((sum,v,i) => sum + [.2126,.7152,.0722][i] * (v/255 <= .04045 ? v/255/12.92 : ((v/255+.055)/1.055)**2.4), 0);
+  for (const theme of ['dark', 'light']) {
+    const tokens = new Map();
+    globalCss.walkAtRules('theme', rule => rule.walkDecls(decl => tokens.set(decl.prop, decl.value)));
+    if (theme === 'light') globalCss.walkRules(rule => { if (rule.selector === ':root[data-theme="light"]') rule.walkDecls(decl => tokens.set(decl.prop, decl.value)); });
+    const surface = rgb(tokens.get('--color-surface')), amber = rgb(tokens.get('--color-amber'));
+    const background = surface.map((channel, i) => channel * .91 + amber[i] * .09);
+    const b = luminance(background);
+    for (const token of ['--color-bright', '--color-muted']) {
+      const a = luminance(rgb(tokens.get(token)));
+      assert.ok((Math.max(a,b)+.05)/(Math.min(a,b)+.05) >= 4.5, `${theme}: ${token} must retain small-text contrast`);
+    }
+  }
 });
 
 test('each compiled language exposes exactly one dark EPUB with complete SEO metadata', () => {
@@ -219,6 +231,8 @@ test('both catalogues present the book first with one dark download per language
     assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));
     const downloads = first.filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined);
     assert.equal(downloads.length, 1);
+    assert(hasClass(downloads[0], 'publication-primary'));
+    assert(plain(downloads[0]).includes(book.lang === 'fr' ? 'Télécharger l’EPUB' : 'Download the EPUB'));
     assert.deepEqual(downloads.map(node => attr(node, 'href')), [book.epub]);
     assert.doesNotMatch(plain(cards[0]), /(?:fond clair|EPUB clair|sombre (?:et|ou) clair|dark (?:and|or) light|light EPUB|light edition)/iu);
     assert(!first.some(node => attr(node, 'href') === `/publications/${book.directory}-light-l0g.epub`));

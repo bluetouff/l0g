@@ -316,7 +316,7 @@ const copy = isCyberRecovery ? {
   <div class="publication-copy">
     <div class="publication-meta">
       <p class="mono-label">{copy.meta}</p>
-      <span>EPUB 3</span>
+      <span>EPUB 3 · {isEnglish ? 'Free' : 'Gratuit'}</span>
     </div>
     <Heading><a class="publication-title-link" href={publicationUrl}>{copy.titleLead}{' '}<em>{copy.titleAccent}</em></a></Heading>
     <p class="publication-deck">{copy.deck}</p>
@@ -327,10 +327,11 @@ const copy = isCyberRecovery ? {
     </ul>
 
     <div class="publication-actions">
-      <a class="publication-primary" href={publicationUrl}>{copy.discover} <span aria-hidden="true">›</span></a>
-      <a class="publication-secondary" href={epubUrl} download={copy.fileName}>
-        {copy.downloadLabel}
+      <a class="publication-primary" href={epubUrl} download={copy.fileName} aria-label={`${isEnglish ? 'Download the EPUB' : 'Télécharger l’EPUB'} : ${copy.titleLead} ${copy.titleAccent}`}>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v4h14v-4" /></svg>
+        <span><strong>{isEnglish ? 'Download the EPUB' : 'Télécharger l’EPUB'}</strong><small>{isEnglish ? 'Free' : 'Gratuit'} · {isCyberRecovery || isDebt ? copy.downloadLabel : 'EPUB 3'} · {formattedSize}</small></span>
       </a>
+      <a class="publication-secondary" href={publicationUrl}>{copy.discover} <span aria-hidden="true">↗</span></a>
       {showAllPublicationsLink && (
         <a class="publication-secondary" href={isEnglish ? '/en/publications/' : '/publications/'}>
           {isEnglish ? 'All publications' : 'Toutes les publications'}
@@ -344,14 +345,29 @@ const copy = isCyberRecovery ? {
   .publication-spotlight.publication-spotlight--recouvrement { --publication-card-accent: var(--color-signal); }
   .publication-spotlight {
     --publication-card-accent: var(--color-amber);
+    position: relative;
+    isolation: isolate;
     display: grid;
     grid-template-columns: minmax(10rem, 13.5rem) minmax(0, 1fr);
-    gap: clamp(1.2rem, 4vw, 2.4rem);
+    gap: clamp(1.1rem, 3vw, 2rem);
     overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--publication-card-accent) 34%, var(--color-line));
-    border-radius: 18px;
-    padding: clamp(1rem, 3vw, 1.65rem);
-    background: var(--color-surface);
+    border: 1px solid transparent;
+    border-radius: 20px 5px 20px 20px;
+    padding: clamp(1rem, 2.5vw, 1.65rem);
+    background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+      linear-gradient(135deg, color-mix(in srgb, var(--publication-card-accent) 40%, var(--color-line)), var(--color-line) 45%, color-mix(in srgb, var(--color-amber) 25%, var(--color-line))) border-box;
+    box-shadow: inset 0 1px 0 var(--edge-highlight), 0 16px 40px color-mix(in srgb, var(--color-ink) 12%, transparent);
+  }
+  .publication-spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 0 10%, color-mix(in srgb, var(--publication-card-accent) 8%, transparent), transparent 60%),
+      radial-gradient(ellipse at 100% 100%, color-mix(in srgb, var(--color-amber) 5%, transparent), transparent 55%),
+      repeating-linear-gradient(0deg, color-mix(in srgb, var(--color-paper) 2%, transparent) 0 1px, transparent 1px 4px),
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--color-paper) 2%, transparent) 0 1px, transparent 1px 5px);
   }
   .publication-spotlight--auditer { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--digital-euro { --publication-card-accent: var(--color-signal); }
@@ -361,11 +377,25 @@ const copy = isCyberRecovery ? {
   .publication-spotlight--cyber-recovery { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--debt { --publication-card-accent: var(--color-signal); }
   .publication-cover {
+    position: relative;
     display: block;
     align-self: center;
     width: 100%;
     max-width: 13.5rem;
     margin-inline: auto;
+    padding: 1rem;
+    border: 1px solid color-mix(in srgb, var(--publication-card-accent) 14%, var(--color-line));
+    border-radius: 12px 3px 12px 12px;
+    background: linear-gradient(145deg, color-mix(in srgb, var(--publication-card-accent) 6%, transparent), var(--surface-inset));
+    box-shadow: inset 0 1px 0 var(--edge-highlight);
+  }
+  .publication-cover::after {
+    content: '';
+    position: absolute;
+    inset: 1rem;
+    pointer-events: none;
+    border-radius: 2px 6px 6px 2px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, .22), rgba(255, 255, 255, .12) 2%, transparent 5%, rgba(0, 0, 0, .1) 7%, transparent 9%);
   }
   .publication-cover img {
     display: block;
@@ -373,7 +403,8 @@ const copy = isCyberRecovery ? {
     height: auto;
     border: 1px solid color-mix(in srgb, var(--color-paper) 18%, transparent);
     border-radius: 3px 8px 8px 3px;
-    box-shadow: -8px 12px 28px rgba(0, 0, 0, 0.42);
+    box-shadow: 4px 4px 0 color-mix(in srgb, var(--color-paper) 14%, var(--color-surface)), 8px 14px 22px rgba(0, 0, 0, .28);
+    transition: transform 220ms ease;
   }
   .publication-copy { align-self: center; min-width: 0; }
   .publication-meta {
@@ -385,7 +416,7 @@ const copy = isCyberRecovery ? {
   }
   .publication-meta p { color: var(--publication-card-accent); }
   .publication-meta > span {
-    border: 1px solid color-mix(in srgb, var(--publication-card-accent) 45%, var(--color-line));
+    border: 1px solid color-mix(in srgb, var(--publication-card-accent) 22%, var(--color-line));
     border-radius: 999px;
     padding: 0.25rem 0.55rem;
     color: var(--publication-card-accent);
@@ -399,12 +430,13 @@ const copy = isCyberRecovery ? {
     margin-top: 0.65rem;
     color: var(--color-bright);
     font-family: var(--font-display);
-    font-size: clamp(1.7rem, 4.2vw, 3rem);
-    line-height: 0.98;
+    font-size: clamp(1.65rem, 3.1vw, 2.35rem);
+    line-height: 1.08;
     letter-spacing: -0.035em;
+    text-wrap: balance;
   }
   .publication-copy h2 em,
-  .publication-copy h3 em { color: var(--color-accent); font-style: normal; }
+  .publication-copy h3 em { color: var(--publication-card-accent); font-style: normal; }
   .publication-title-link { color: inherit; text-decoration: none; }
   .publication-title-link:hover {
     text-decoration: underline;
@@ -454,44 +486,65 @@ const copy = isCyberRecovery ? {
     color: var(--color-muted);
     font-size: 0.67rem;
   }
-  .publication-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+  .publication-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem 1.1rem; margin-top: 1.1rem; }
   .publication-actions a {
     display: inline-flex;
-    min-height: 2.65rem;
+    min-height: 2.75rem;
     align-items: center;
     justify-content: center;
     gap: 0.55rem;
-    border-radius: 999px;
-    padding: 0.55rem 0.9rem;
+    border-radius: 10px 3px 10px 10px;
+    padding: 0.7rem 0.9rem;
     font-family: var(--font-mono);
     font-size: 0.66rem;
     font-weight: 700;
-    letter-spacing: 0.055em;
-    text-transform: uppercase;
+    letter-spacing: 0.015em;
+    text-decoration: none;
   }
-  .publication-primary { color: var(--color-ink); background: var(--publication-card-accent); }
-  .publication-primary span { font-size: 1rem; line-height: 0; }
-  .publication-secondary { border: 1px solid var(--color-line-strong); color: var(--color-paper); }
-  :root[data-theme='light'] .publication-primary { color: #1a1509; }
-  :root[data-theme='light'] .publication-spotlight--recouvrement .publication-primary { color: var(--color-ink); }
-  :global(html[data-theme='light']) .publication-spotlight--microsoft .publication-primary { color: var(--color-ink); }
-  :global(html[data-theme='light']) .publication-spotlight--debt .publication-primary { color: var(--color-ink); }
-  :global(html[data-theme='light']) .publication-spotlight--cyber-recovery .publication-primary { color: var(--color-ink); }
+  .publication-primary {
+    border: 1px solid color-mix(in srgb, var(--color-amber) 55%, var(--color-line));
+    color: var(--color-bright);
+    background: color-mix(in srgb, var(--color-amber) 9%, var(--color-surface));
+    box-shadow: inset 0 1px 0 var(--edge-highlight);
+    transition: background 180ms ease, border-color 180ms ease;
+  }
+  .publication-primary svg { flex: none; color: var(--color-amber); }
+  .publication-primary strong, .publication-primary small { display: block; }
+  .publication-primary strong { font-size: .72rem; font-weight: 650; }
+  .publication-primary small { margin-top: .2rem; color: var(--color-muted); font-size: .58rem; font-weight: 400; }
+  .publication-secondary { color: var(--color-paper); }
+  .publication-secondary > span { color: var(--publication-card-accent); font-size: 1rem; }
+  .publication-secondary:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .publication-primary:hover { border-color: var(--color-amber); background: color-mix(in srgb, var(--color-amber) 15%, var(--color-surface)); }
+  .publication-spotlight a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .publication-cover:hover img { transform: translateY(-3px); }
+  }
   @media (max-width: 680px) {
-    .publication-spotlight { grid-template-columns: 1fr; gap: 1.35rem; padding: 1rem; }
-    .publication-cover { align-self: start; max-width: 10.5rem; }
-    .publication-copy { width: 100%; }
-    .publication-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .publication-spotlight { grid-template-columns: 6.75rem minmax(0, 1fr); align-items: start; gap: .8rem 1rem; padding: 1rem; }
+    .publication-cover { grid-column: 1; grid-row: 1 / span 2; align-self: start; margin: 0; padding: .6rem; }
+    .publication-cover::after { inset: .6rem; }
+    .publication-copy { display: contents; }
+    .publication-meta { grid-column: 2; align-self: end; gap: .5rem; }
+    .publication-copy h2, .publication-copy h3 { grid-column: 2; margin: 0; font-size: clamp(1.15rem, 5vw, 1.8rem); }
+    .publication-deck, .publication-description, .publication-facts, .publication-actions { grid-column: 1 / -1; }
+    .publication-deck, .publication-description { margin-top: 0; }
+    .publication-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: .3rem; }
     .publication-facts li { border-left: 0; padding: 0.35rem 0; }
     .publication-facts li:nth-child(even) { border-left: 1px solid var(--color-line); padding-left: 0.65rem; }
-    .publication-actions { display: grid; grid-template-columns: 1fr; }
+    .publication-actions { display: grid; grid-template-columns: 1fr; gap: .25rem; margin-top: .3rem; }
     .publication-actions a { width: 100%; }
   }
   @media (max-width: 430px) {
     .publication-spotlight { align-items: start; padding: 0.85rem; }
-    .publication-cover { max-width: 8.7rem; }
-    .publication-copy h2,
-    .publication-copy h3 { font-size: clamp(1.45rem, 8vw, 1.9rem); }
     .publication-meta { align-items: flex-start; }
+  }
+  @media (max-width: 360px) {
+    .publication-spotlight { grid-template-columns: 5.5rem minmax(0, 1fr); column-gap: .75rem; }
+    .publication-copy h2, .publication-copy h3 { font-size: 1.1rem; }
+    .publication-meta > .mono-label { font-size: .57rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .publication-cover img, .publication-primary { transition: none; }
   }
 </style>
