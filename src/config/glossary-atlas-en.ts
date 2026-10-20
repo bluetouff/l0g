@@ -209,6 +209,26 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+    slug: 'credit-renouvelable', sigle: 'Revolving credit facility', nom: 'Reusable borrowing capacity',
+    def: 'A facility allowing a borrower to draw funds, repay them and borrow again during an agreed period, subject to the contract’s limits and conditions. It can fund the interval between production spending and customer receipts. The committed limit differs from the amount drawn and from cash available to spend.',
+    guide: '/en/analysis/jpmorgan-industrial-power-investment/', sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'JPMorgan and the cost of industrial power', href: '/en/analysis/jpmorgan-industrial-power-investment/', kind: 'article' }],
+      sources: [{ label: 'OCC, Asset-Based Lending, printed page 3', href: 'https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/asset-based-lending/pub-ch-asset-based-lending.pdf', detail: 'Draws, repayments, reborrowing and the conditions for continued availability.', kind: 'source' }],
+      related: ['bfr', 'borrowing-base', 'pret-senior-garanti'],
+    },
+  },
+  {
+    slug: 'pret-senior-garanti', sigle: 'Senior secured loan', nom: 'Asset-backed lending with a senior claim',
+    def: 'A loan backed by security interests in assets and ranking ahead of specified other claims. The agreement and applicable law determine its priority and enforcement rights. These protections do not ensure full repayment or automatically make a government responsible for losses.',
+    guide: '/en/analysis/jpmorgan-industrial-power-investment/', sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'JPMorgan and the cost of industrial power', href: '/en/analysis/jpmorgan-industrial-power-investment/', kind: 'article' }],
+      sources: [{ label: 'SEC Investor.gov, creditor priority and collateral', href: 'https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products', detail: 'The distinct roles of collateral rights and claim seniority.', kind: 'source' }],
+      related: ['collateral', 'garantie-de-pret', 'credit-renouvelable'],
+    },
+  },
 {
   "slug": "nand",
   "sigle": "NAND",
@@ -805,6 +825,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     atlas: {
       intuition: 'Restarting production can absorb cash before the corresponding sales bring receipts.',
       articles: [
+        { label: 'JPMorgan and the cost of industrial power', href: '/en/analysis/jpmorgan-industrial-power-investment/', detail: 'Funding production before receipts and carrying delayed deliveries.', kind: 'article' },
         { label: 'JLR: when the factory stops', href: '/en/analysis/after-cyberattack-1-jlr-factories-cash-flow/', detail: 'Inventory, trade payables and funding needs during the recovery.', kind: 'article' },
         { label: 'Ghana’s cocoa crisis: who finances the wait?', href: '/en/analysis/ghana-cocoa-financing-cash-crisis/', detail: 'Crop purchases, inventory and the timing of receipts.', kind: 'article' },
       ],

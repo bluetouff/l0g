@@ -380,7 +380,25 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 277, 'Le corpus anglais doit conserver ses 277 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 279, 'Le corpus anglais doit conserver ses 279 fiches uniques');
+
+// Financing capacity and repayment protection do not establish cash received or a public loss guarantee.
+for (const slug of ['credit-renouvelable', 'pret-senior-garanti']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: sourced bilingual definitions required`);
+  assert.equal(fr.reference, undefined);
+  assert.equal(fr.referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.equal(fr.guide, '/posts/jpmorgan-capital-strategique/');
+  assert.equal(en.guide, '/en/analysis/jpmorgan-industrial-power-investment/');
+  assert.deepEqual(fr.atlas.sources.map(item => item.href), en.atlas.sources.map(item => item.href));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'credit-renouvelable').def, /plafond engagé se distingue du montant effectivement tiré/);
+assert.match(glossaryAtlasEnBySlug.get('credit-renouvelable').def, /committed limit differs from the amount drawn/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'pret-senior-garanti').def, /ni une prise en charge automatique des pertes par un État/);
+assert.match(glossaryAtlasEnBySlug.get('pret-senior-garanti').def, /automatically make a government responsible for losses/);
 
 // New short definitions retain the existing opt-in reference-page boundary.
 for (const slug of ['offtake', 'silvopastoralisme', 'permanence-du-carbone']) {
@@ -526,8 +544,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 680, 'Le corpus doit conserver ses 680 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 265, 'Le graphe Atlas doit conserver ses 265 nœuds');
+assert.equal(glossaryEntries.length, 682, 'Le corpus doit conserver ses 682 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 267, 'Le graphe Atlas doit conserver ses 267 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -949,7 +967,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 776, 'Le graphe Atlas doit conserver ses 776 relations');
+assert.equal(glossaryAtlasEdgeCount, 782, 'Le graphe Atlas doit conserver ses 782 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

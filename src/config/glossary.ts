@@ -30,6 +30,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    { sigle: 'Crédit renouvelable', nom: 'Revolving credit facility ou revolver', def: 'Facilité permettant de tirer des fonds, de les rembourser puis de les réemprunter pendant une période définie, dans les limites et sous les conditions du contrat. Elle peut financer le décalage entre les dépenses de production et les encaissements. Son plafond engagé se distingue du montant effectivement tiré et de la trésorerie disponible.', guide: '/posts/jpmorgan-capital-strategique/' },
+    { sigle: 'Prêt senior garanti', nom: 'Senior secured loan', def: 'Prêt assorti de sûretés sur des actifs et d’un rang prioritaire par rapport à certaines autres créances. Le contrat et le droit applicable déterminent la priorité et les droits sur les actifs. Cette protection ne garantit ni un remboursement intégral ni une prise en charge automatique des pertes par un État.', guide: '/posts/jpmorgan-capital-strategique/' },
     {"sigle": "Garantie de prêt", "nom": "Engagement d’un garant envers les prêteurs", "def": "Engagement d’un garant envers les prêteurs, couvrant le risque de défaut dans le périmètre fixé par le contrat. Les banques avancent les fonds lors du tirage ; l’emprunteur reste tenu de rembourser. Le paiement du garant dépend des conditions d’appel. Une garantie publique crée un engagement éventuel, distinct d’un décaissement de l’État.", "guide": "/posts/apres-cyberattaque-07-etat-financement-crise/"},
     {"sigle": "Responsabilité maximale", "nom": "Mesure d’exposition UKEF, intérêts compris", "def": "Dans le glossaire d’UKEF, montant maximal des sommes payables au titre d’un produit, intérêts compris. UKEF utilise cette mesure pour l’exposition avant émission de la couverture. Elle se distingue du principal du prêt, du montant tiré et d’une perte réalisée. Rattacher une ligne publiée à une facilité précise exige d’examiner le contrat et les références de l’opération.", "guide": "/posts/apres-cyberattaque-07-etat-financement-crise/"},
     { sigle: 'IRRBB', nom: 'Risque de taux du portefeuille bancaire', def: 'Risque que des variations défavorables des taux affectent le capital ou les revenus du portefeuille bancaire. Sa mesure rapproche la valeur économique des positions et les revenus attendus, avec leurs horizons et hypothèses propres.', guide: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/' },
@@ -1116,6 +1118,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'credit-renouvelable': {
+    articles: [{ label: 'JPMorgan et le prix de la puissance industrielle', href: '/posts/jpmorgan-capital-strategique/', kind: 'article' }],
+    sources: [{ label: 'OCC, Asset-Based Lending, page 3', href: 'https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/asset-based-lending/pub-ch-asset-based-lending.pdf', detail: 'Tirages, remboursements, réutilisation et conditions de disponibilité du crédit.', kind: 'source' }],
+    related: ['bfr', 'borrowing-base', 'pret-senior-garanti'],
+  },
+  'pret-senior-garanti': {
+    articles: [{ label: 'JPMorgan et le prix de la puissance industrielle', href: '/posts/jpmorgan-capital-strategique/', kind: 'article' }],
+    sources: [{ label: 'SEC Investor.gov, priorité des créanciers et collatéral', href: 'https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products', detail: 'Distinction entre sûreté sur des actifs et rang de la créance.', kind: 'source' }],
+    related: ['collateral', 'garantie-de-pret', 'credit-renouvelable'],
+  },
   "nand": {
     "articles": [
       {
@@ -1537,6 +1549,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   bfr: {
     intuition: 'Une reprise de production peut absorber de la trésorerie avant les recettes des ventes correspondantes.',
     articles: [
+      { label: 'JPMorgan et le prix de la puissance industrielle', href: '/posts/jpmorgan-capital-strategique/', detail: 'Financer les dépenses de production avant les encaissements et absorber un retard de livraison.', kind: 'article' },
       { label: 'JLR : le jour où l’usine s’arrête', href: '/posts/apres-cyberattaque-1-jlr-usines-tresorerie/', detail: 'Stocks, dettes fournisseurs et besoins de financement pendant la reprise.', kind: 'article' },
       { label: 'Cacao au Ghana : qui finance l’attente des planteurs ?', href: '/posts/cacao-ghana-financement-tresorerie/', detail: 'Achats de récolte, stocks et calendrier des encaissements.', kind: 'article' },
     ],
