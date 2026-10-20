@@ -1,5 +1,5 @@
 {
   "extends": "astro/tsconfigs/strict",
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist", "livrables/peage-prototype-offres-2026-10-20"]
+  "exclude": ["dist"]
 }
