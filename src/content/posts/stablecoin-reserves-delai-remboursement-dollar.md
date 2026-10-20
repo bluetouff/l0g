@@ -28,6 +28,8 @@ La seconde sortie fait intervenir l’émetteur. Un détenteur admissible lui re
 
 Les deux circuits se rejoignent grâce à l’**arbitrage** : acheter un token sous un dollar, puis le faire rembourser au pair, peut dégager un gain. Ce mécanisme suppose un accès effectif au remboursement et une marge suffisante après frais et financement. Un professionnel capable d’avancer les dollars peut servir d’intermédiaire à ceux qui souhaitent sortir immédiatement. Son bilan absorbe alors une partie de l’attente. Le prix de marché dépend donc aussi de la capacité de ces intermédiaires à prendre le relais. C’est un mécanisme économique, pas une mesure de leur capacité actuelle.
 
+La fiscalité intervient également dans le parcours d’un particulier résident français. Notre [analyse de la réforme proposée sur les stablecoins](/posts/stablecoins-fiscalite-calcul-plus-values/) suit le calcul des gains, le coût fiscal transmis entre actifs et le calendrier des pertes.
+
 ## Le chronomètre que propose la Fed
 
 Le plafond envisagé est formulé en **jours ouvrés**. Dans un exemple de calendrier sans jour férié, une demande recevable le vendredi 2 octobre serait suivie d’un premier jour ouvré le lundi 5 et d’un second le mardi 6. Cet exemple illustre le texte proposé ; il ne décrit ni une opération programmée ni un délai de quarante-huit heures. [Projet Fed](https://www.govinfo.gov/content/pkg/FR-2026-09-29/pdf/2026-19860.pdf)

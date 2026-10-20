@@ -18,6 +18,43 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Tax basis, annual loss use and MiCA classification retain separate legal scopes.
+for (const slug of ['prix-de-revient-fiscal', 'imputation-des-moins-values', 'emt', 'art']) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.equal(en[0].robots, 'noindex,follow');
+  assert.notEqual(fr[0].def, en[0].def);
+  assert.deepEqual(fr[0].atlas.sources.map(source => source.href), en[0].atlas.sources.map(source => source.href));
+  assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  for (const [entry, article] of [[fr[0], '/posts/stablecoins-fiscalite-calcul-plus-values/'], [en[0], '/en/analysis/france-stablecoin-tax-capital-gains/']]) {
+    assert(entry.atlas.articles.some(link => link.href === article));
+    assert.doesNotMatch(entry.def, /[0-9%£€$—]/u);
+    for (const source of entry.atlas.sources) {
+      const url = new URL(source.href);
+      assert.equal(url.protocol, 'https:'); assert.equal(url.username, ''); assert.equal(url.password, '');
+    }
+    for (const related of entry.atlas.related) {
+      assert(glossaryEntries.some(term => term.slug === related));
+      assert(glossaryAtlasEnBySlug.has(related));
+    }
+  }
+}
+const taxBasisFr = glossaryEntries.find(entry => entry.slug === 'prix-de-revient-fiscal');
+const taxBasisEn = glossaryAtlasEnBySlug.get('prix-de-revient-fiscal');
+assert.match(taxBasisFr.atlas.whyNow, /régime français actuel.*réforme proposée/u);
+assert.match(taxBasisEn.atlas.whyNow, /current regime.*proposed change/u);
+assert(taxBasisFr.atlas.sources.some(source => source.href.startsWith('https://bofip.impots.gouv.fr/')));
+assert(taxBasisFr.atlas.sources.some(source => source.href === 'https://www.assemblee-nationale.fr/dyn/17/amendements/3210A/AN/3898.pdf'));
+assert.match(glossaryEntries.find(entry => entry.slug === 'imputation-des-moins-values').def, /patrimoine privé en France.*même nature.*même année.*exclut le report/u);
+assert.match(glossaryAtlasEnBySlug.get('imputation-des-moins-values').def, /privately managed crypto-assets in France.*same type.*same year.*no carryforward/u);
+assert.equal(glossaryEntries.find(entry => entry.slug === 'art').atlas.sources[0].href, 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-3-definitions');
+assert.match(glossaryEntries.find(entry => entry.slug === 'art').def, /référence à une valeur, un droit ou une combinaison/u);
+assert.match(glossaryAtlasEnBySlug.get('art').def, /reference to a value, a right or a combination/u);
+
 // Market activity, execution quality and contractual size retain distinct scopes.
 for (const [slug, sourceUrls] of [
   ['wash-trading', ['https://www.cmegroup.com/rulebook/files/cme-group-Rule-534.pdf']],
@@ -422,7 +459,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 286, 'Le corpus anglais doit conserver ses 286 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 290, 'Le corpus anglais doit conserver ses 290 fiches uniques');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -604,8 +641,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 686, 'Le corpus doit conserver ses 686 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 274, 'Le graphe Atlas doit conserver ses 274 nœuds');
+assert.equal(glossaryEntries.length, 688, 'Le corpus doit conserver ses 688 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 278, 'Le graphe Atlas doit conserver ses 278 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1027,7 +1064,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 798, 'Le graphe Atlas doit conserver ses 798 relations');
+assert.equal(glossaryAtlasEdgeCount, 806, 'Le graphe Atlas doit conserver ses 806 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

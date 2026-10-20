@@ -589,6 +589,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crypto & stablecoins',
     accent: 'var(--color-amber)',
     entries: [
+      { sigle: 'Prix de revient fiscal', nom: 'Coût retenu pour le calcul du gain imposable', def: 'Montant attribué fiscalement à un actif ou à un portefeuille et déduit, selon le régime applicable, du prix de cession pour calculer un gain ou une perte. Son suivi tient compte des acquisitions, des cessions et des ajustements prévus. Le coût individuel, la moyenne pondérée et la fraction d’un coût global correspondent à des méthodes dont le champ doit être précisé.', guide: '/posts/stablecoins-fiscalite-calcul-plus-values/' },
+      { sigle: 'Imputation des moins-values', nom: 'Compensation fiscale des pertes réalisées', def: 'Utilisation d’une moins-value réalisée pour réduire des plus-values entrant dans le périmètre admis par un régime fiscal. Les règles fixent les gains concernés et la période d’utilisation. Pour les crypto-actifs du patrimoine privé en France, la doctrine actuelle limite cette compensation aux gains de même nature de la même année et exclut le report sur les années suivantes.', guide: '/posts/stablecoins-fiscalite-calcul-plus-values/' },
       { sigle: 'Inclusion forcée', nom: 'Soumission à un rollup depuis sa chaîne de base', def: 'Mécanisme permettant de soumettre une opération à un rollup depuis la chaîne de base. Son effet dépend du protocole : mettre une demande dans une file ne garantit pas que les acteurs chargés de publier et de valider les états continueront à la traiter. La possibilité d’un retrait exige donc une lecture de toute la procédure.', guide: '/posts/blast-abstract-blockchain-fermeture-economie/' },
       { sigle: 'Proposeur de rollup', nom: 'Acteur chargé de publier les engagements d’état', def: 'Acteur qui soumet à la chaîne de base les engagements représentant un état du rollup. Selon le protocole, cette fonction peut être ouverte ou réservée à des acteurs autorisés. Une demande reçue par le séquenceur doit encore franchir les étapes de publication et de validation nécessaires à son règlement.', guide: '/posts/blast-abstract-blockchain-fermeture-economie/' },
       { sigle: 'Cryptographie postquantique', nom: 'Cryptographie résistante aux attaques quantiques connues', def: 'Constructions cryptographiques exécutées sur des ordinateurs classiques et conçues pour résister aux attaques quantiques connues. Les signatures autorisent et authentifient des messages ; les mécanismes d’encapsulation de clés établissent des secrets partagés. Leur intégration à Bitcoin exige des règles de protocole et une migration des sorties existantes.', guide: '/posts/bitcoin-quantique-prix-changement-cles/' },
@@ -645,7 +647,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Buyback de token', nom: 'Rachat de token', def: "Rachat par un protocole de son propre jeton sur le marché, financé par ses revenus, à la manière d'une entreprise rachetant ses actions. Chez Hyperliquid, près de 97 % des frais alimentent ces rachats." },
       { sigle: 'MiCA', nom: 'Markets in Crypto-Assets', def: "Règlement (UE) 2023/1114, cadre unifié de l'Union pour les crypto-actifs non couverts par la réglementation financière existante. Un agrément national ouvre un passeport vers les 27 États membres.", guide: '/guides/mica-sigle-par-sigle/' },
       { sigle: 'CASP', nom: 'Crypto-Asset Service Provider', def: "Prestataire de services sur crypto-actifs (échange, conservation, exécution) soumis à agrément sous MiCA." },
-      { sigle: 'ART', nom: 'Asset-Referenced Token', def: "Stablecoin adossé à un panier d'actifs (devises, matières premières, crypto), par opposition à l'EMT adossé à une seule monnaie." },
+      { sigle: 'ART', nom: 'Asset-Referenced Token', def: 'Catégorie de crypto-actif définie par MiCA, distincte des EMT, qui vise une valeur stable par référence à une valeur, un droit ou une combinaison, pouvant inclure une ou plusieurs monnaies officielles. La référence du jeton et la composition de sa réserve sont deux caractéristiques à examiner séparément.', guide: '/guides/mica-sigle-par-sigle/' },
       { sigle: 'EMT', nom: 'E-Money Token', def: "Cryptoactif qui vise une valeur stable par référence à une seule monnaie officielle. Sous MiCA, il donne une créance sur l’émetteur et un droit au remboursement au pair. Les émetteurs de jetons classés significatifs sont soumis à des exigences supplémentaires.", guide: '/posts/usdc-reserves-suivre-jeton-mica/' },
       { sigle: 'ESMA', nom: 'European Securities and Markets Authority', def: "Autorité européenne des marchés financiers. Elle élabore des normes, favorise la convergence entre superviseurs nationaux, centralise des données et supervise directement certaines infrastructures et catégories d'acteurs. Elle ne supervise pas directement l'ensemble des fonds européens." },
       { sigle: 'ESRB', nom: 'European Systemic Risk Board', def: "Comité européen du risque systémique. Réunit banques centrales et superviseurs pour identifier les vulnérabilités transfrontalières, publier alertes et recommandations et coordonner l'analyse macroprudentielle, sans assurer la surveillance quotidienne des fonds." },
@@ -1122,6 +1124,40 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'prix-de-revient-fiscal': {
+    intuition: 'Le coût fiscal déjà déduit lors d’une cession doit être suivi pour calculer les gains suivants.',
+    whyNow: 'Le dossier sur I-3898 compare le régime français actuel à une réforme proposée du calcul et de la transmission des coûts.',
+    articles: [{ label: 'Stablecoins : calcul des gains et calendrier fiscal', href: '/posts/stablecoins-fiscalite-calcul-plus-values/', kind: 'article' }],
+    sources: [
+      { label: 'DGFiP, base d’imposition des cessions d’actifs numériques', href: 'https://bofip.impots.gouv.fr/bofip/11968-PGP.html/identifiant=BOI-RPPM-PVBMC-30-20-20190902', detail: 'Coût global du portefeuille et fractions de capital déjà déduites, paragraphes 1 et 70 à 110.', kind: 'source' },
+      { label: 'Assemblée nationale, amendement I-3898', href: 'https://www.assemblee-nationale.fr/dyn/17/amendements/3210A/AN/3898.pdf', detail: 'Méthode par actif, moyenne pondérée et transition proposées dans un amendement adopté ; processus législatif en cours.', kind: 'source' },
+    ],
+    related: ['imputation-des-moins-values', 'emt'],
+  },
+  'imputation-des-moins-values': {
+    intuition: 'La réalisation d’une perte et son utilisation fiscale dépendent de l’année et des gains avec lesquels elle peut être compensée.',
+    articles: [{ label: 'Stablecoins : calcul des gains et calendrier fiscal', href: '/posts/stablecoins-fiscalite-calcul-plus-values/', kind: 'article' }],
+    sources: [{ label: 'DGFiP, déclaration des plus et moins-values sur actifs numériques', href: 'https://www.impots.gouv.fr/particulier/questions/comment-declarer-les-plus-ou-moins-values-sur-cessions-dactifs-numeriques', detail: 'Gestion du patrimoine privé : gains de même nature de la même année et absence de report des pertes, fiche modifiée le 17 juillet 2026.', kind: 'source' }],
+    related: ['prix-de-revient-fiscal'],
+  },
+  emt: {
+    articles: [
+      { label: 'USDC : réserves et droits sous MiCA', href: '/posts/usdc-reserves-suivre-jeton-mica/', kind: 'article' },
+      { label: 'Stablecoins : calcul des gains et calendrier fiscal', href: '/posts/stablecoins-fiscalite-calcul-plus-values/', kind: 'article' },
+    ],
+    sources: [
+      { label: 'MiCA, article 3 : définitions', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-3-definitions', detail: 'Point 7 : référence à une seule monnaie officielle.', kind: 'source' },
+      { label: 'MiCA, article 49 : émission et remboursement', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-49-issuance-and-redeemability-e', detail: 'Créance du détenteur et remboursement au pair.', kind: 'source' },
+      { label: 'MiCA, article 58 : obligations supplémentaires', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-58-specific-additional-obligations', detail: 'Régime renforcé des émetteurs de jetons significatifs.', kind: 'source' },
+    ],
+    related: ['stablecoin', 'art', 'prix-de-revient-fiscal'],
+  },
+  art: {
+    articles: [{ label: 'Stablecoins : calcul des gains et calendrier fiscal', href: '/posts/stablecoins-fiscalite-calcul-plus-values/', kind: 'article' }],
+    guides: [{ label: 'MiCA, sigle par sigle', href: '/guides/mica-sigle-par-sigle/', kind: 'guide' }],
+    sources: [{ label: 'MiCA, article 3 : définitions', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-3-definitions', detail: 'Point 6 : référence à une valeur, un droit ou une combinaison.', kind: 'source' }],
+    related: ['stablecoin', 'emt'],
+  },
   'wash-trading': {
     articles: [{ label: 'FIFA et Predictstreet : volumes et risque', href: '/posts/fifa-predictstreet-volume-wash-trading/', kind: 'article' }],
     sources: [{ label: 'CME Group, règle 534 et FAQ sur les wash trades', href: 'https://www.cmegroup.com/rulebook/files/cme-group-Rule-534.pdf', detail: 'Intention, bénéficiaires communs, croisements accidentels et transactions indirectes ; cadre propre aux marchés CME Group.', kind: 'source' }],
@@ -3982,7 +4018,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Un stablecoin est une promesse de parité. Le risque se loge dans la réserve, le droit au remboursement, les intermédiaires et les usages géopolitiques.",
     formula: 'parité durable = actifs liquides + droit au rachat + supervision + confiance opérationnelle',
     whyNow: "Les stablecoins deviennent une plomberie dollar parallèle : réserve en T-bills, paiements cross-border, sanctions, DeFi et régulation américaine se croisent.",
-    articles: [{ label: 'USD1 : qui reçoit les intérêts des réserves ?', href: '/posts/usd1-trump-taux-interets-reserves-beneficiaires/', detail: 'Droits du porteur, revenus de BitGo et intérêts économiques déclarés de la famille Trump.', kind: 'article' }, { label: 'Stablecoin : du token au dollar disponible', href: '/posts/stablecoin-reserves-delai-remboursement-dollar/', detail: 'Réserves, frais, délai de remboursement et droits selon le guichet.', kind: 'article' }, { label: 'Pétrole iranien et USDT', href: '/posts/petrole-iranien-usdt-tether-saisie/', detail: 'Gel, saisie et pouvoirs conservés par Tether.', kind: 'article' }, ...stablecoinArticles],
+    articles: [{ label: 'Stablecoins : calcul des gains et calendrier fiscal', href: '/posts/stablecoins-fiscalite-calcul-plus-values/', detail: 'Projet français, prix de revient et utilisation annuelle des pertes.', kind: 'article' }, { label: 'USD1 : qui reçoit les intérêts des réserves ?', href: '/posts/usd1-trump-taux-interets-reserves-beneficiaires/', detail: 'Droits du porteur, revenus de BitGo et intérêts économiques déclarés de la famille Trump.', kind: 'article' }, { label: 'Stablecoin : du token au dollar disponible', href: '/posts/stablecoin-reserves-delai-remboursement-dollar/', detail: 'Réserves, frais, délai de remboursement et droits selon le guichet.', kind: 'article' }, { label: 'Pétrole iranien et USDT', href: '/posts/petrole-iranien-usdt-tether-saisie/', detail: 'Gel, saisie et pouvoirs conservés par Tether.', kind: 'article' }, ...stablecoinArticles],
     guides: stablecoinGuides,
     datasets: stablecoinDatasets,
     signals: stablecoinSignals,

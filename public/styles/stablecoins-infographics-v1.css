@@ -1,0 +1,67 @@
+/* Keep the Stablecoins article titles on whole-word line breaks. */
+article:has(.l0g-stablecoins-figure) > .post-head .post-title {
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* Compact compositions retain the verified data and original DejaVu Sans metrics. */
+@font-face {
+  font-family: 'l0g Stablecoins Sans';
+  src: url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'l0g Stablecoins Sans';
+  src: url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+.prose figure.l0g-stablecoins-figure {
+  width: 100%;
+  min-width: 0;
+  max-width: 48rem;
+  margin: 2.5rem auto;
+  padding-bottom: 1rem;
+  container-type: inline-size;
+}
+.l0g-stablecoins-figure .l0g-stablecoins-panel {
+  border: 1px solid var(--color-line);
+  border-radius: 9px;
+  background: var(--color-ink);
+}
+.l0g-stablecoins-figure svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+  letter-spacing: normal;
+}
+.l0g-stablecoins-figure svg text {
+  font-family: 'l0g Stablecoins Sans', 'DejaVu Sans', Arial, sans-serif;
+}
+.l0g-stablecoins-figure .l0g-stablecoins-mobile {
+  display: none;
+  width: 100%;
+  min-width: 0;
+}
+.prose .l0g-stablecoins-figure figcaption {
+  font-size: .88rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+  margin: 1rem 0;
+}
+.l0g-stablecoins-figure .figlabel { font-weight: 700; color: var(--color-paper); }
+/* Select the composition from the reading column, including browser zoom. */
+@container (max-width: 480px) {
+  .l0g-stablecoins-figure .l0g-stablecoins-mobile { display: block; }
+  .l0g-stablecoins-figure .l0g-stablecoins-desktop { display: none; }
+}
+@media print {
+  .l0g-stablecoins-figure .l0g-stablecoins-mobile { display: none; }
+  .l0g-stablecoins-figure .l0g-stablecoins-desktop { display: block; }
+}

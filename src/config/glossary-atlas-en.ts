@@ -210,6 +210,60 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'prix-de-revient-fiscal', sigle: 'Tax basis', nom: 'Cost used to calculate a taxable gain',
+    def: 'The amount assigned to an asset or portfolio for tax purposes and deducted from disposal proceeds under the applicable rules to calculate a gain or loss. It tracks acquisitions, disposals and prescribed adjustments. Individual cost, weighted average cost and an allocated share of aggregate portfolio cost are methods whose scope must be established.',
+    guide: '/en/analysis/france-stablecoin-tax-capital-gains/', ...cryptoSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Basis already deducted on a disposal must be tracked when calculating later gains.',
+      whyNow: 'The investigation compares France’s current regime with a proposed change to cost calculations and carryover rules under amendment I-3898.',
+      articles: [{ label: 'France’s stablecoin tax plan: gains and timing', href: '/en/analysis/france-stablecoin-tax-capital-gains/', kind: 'article' }],
+      sources: [
+        { label: 'French tax administration, crypto-asset capital gains tax base', href: 'https://bofip.impots.gouv.fr/bofip/11968-PGP.html/identifiant=BOI-RPPM-PVBMC-30-20-20190902', detail: 'Aggregate portfolio cost and basis previously deducted, paragraphs 1 and 70 to 110.', kind: 'source' },
+        { label: 'National Assembly, amendment I-3898', href: 'https://www.assemblee-nationale.fr/dyn/17/amendements/3210A/AN/3898.pdf', detail: 'Asset-level cost, weighted averages and transition rules proposed in an adopted amendment; the legislative process remains ongoing.', kind: 'source' },
+      ],
+      related: ['imputation-des-moins-values', 'emt'],
+    },
+  },
+  {
+    slug: 'imputation-des-moins-values', sigle: 'Capital loss offsetting', nom: 'Using realised losses against taxable gains',
+    def: 'Applying a realised capital loss to reduce gains covered by a tax regime. Its rules determine the eligible gains and the period in which the loss can be used. For privately managed crypto-assets in France, current tax guidance permits offsetting against gains of the same type within the same year, with no carryforward to later years.',
+    guide: '/en/analysis/france-stablecoin-tax-capital-gains/', ...cryptoSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'A loss’s tax use depends on when it is realised and which gains it can offset.',
+      articles: [{ label: 'France’s stablecoin tax plan: gains and timing', href: '/en/analysis/france-stablecoin-tax-capital-gains/', kind: 'article' }],
+      sources: [{ label: 'French tax administration, reporting digital-asset gains and losses', href: 'https://www.impots.gouv.fr/particulier/questions/comment-declarer-les-plus-ou-moins-values-sur-cessions-dactifs-numeriques', detail: 'Private-asset management: same-type gains in the same year and no loss carryforward; guidance updated 17 July 2026.', kind: 'source' }],
+      related: ['prix-de-revient-fiscal'],
+    },
+  },
+  {
+    slug: 'emt', sigle: 'EMT', nom: 'E-money token',
+    def: 'A cryptoasset intended to maintain a stable value by reference to one official currency. Under MiCA, holders have a claim against the issuer and a right to redemption at par. Issuers of significant tokens face additional requirements.',
+    guide: '/en/analysis/usdc-reserves-follow-token-mica/', ...cryptoSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [
+        { label: 'USDC: reserves and rights under MiCA', href: '/en/analysis/usdc-reserves-follow-token-mica/', kind: 'article' },
+        { label: 'France’s stablecoin tax plan: gains and timing', href: '/en/analysis/france-stablecoin-tax-capital-gains/', kind: 'article' },
+      ],
+      sources: [
+        { label: 'MiCA, Article 3: definitions', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-3-definitions', detail: 'Point 7: reference to one official currency.', kind: 'source' },
+        { label: 'MiCA, Article 49: issuance and redemption', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-49-issuance-and-redeemability-e', detail: 'Holder’s claim and redemption at par.', kind: 'source' },
+        { label: 'MiCA, Article 58: additional obligations', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-58-specific-additional-obligations', detail: 'Enhanced requirements for issuers of significant tokens.', kind: 'source' },
+      ],
+      related: ['stablecoin', 'art', 'prix-de-revient-fiscal'],
+    },
+  },
+  {
+    slug: 'art', sigle: 'ART', nom: 'Asset-referenced token',
+    def: 'A MiCA category of cryptoasset, distinct from an e-money token, that aims to keep a stable value by reference to a value, a right or a combination, potentially including one or more official currencies. The token’s reference and the composition of its reserve require separate examination.',
+    guide: '/en/guides/decode-mica-crypto-regulation/', ...cryptoSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'France’s stablecoin tax plan: gains and timing', href: '/en/analysis/france-stablecoin-tax-capital-gains/', kind: 'article' }],
+      guides: [{ label: 'MiCA reference guide', href: '/en/guides/decode-mica-crypto-regulation/', kind: 'guide' }],
+      sources: [{ label: 'MiCA, Article 3: definitions', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-3-definitions', detail: 'Point 6: reference to a value, a right or a combination.', kind: 'source' }],
+      related: ['stablecoin', 'emt'],
+    },
+  },
+  {
     slug: 'wash-trading', sigle: 'Wash trading', nom: 'Trading that creates apparent market activity',
     def: 'Transactions structured to resemble genuine buying and selling while neutralising market risk or price competition. Classification depends on intent and control of the accounts, among other evidence. An accidental match between independently placed orders or a flat ending position does not by itself establish manipulation; the applicable rules depend on the market and jurisdiction.',
     guide: '/en/analysis/fifa-predictstreet-trading-volume-risk/', sectionTitle: 'US regulation & institutions', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
@@ -4739,6 +4793,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       formula: 'durable parity = liquid assets + redemption right + supervision + operational trust',
       whyNow: 'Stablecoins are becoming a parallel dollar plumbing: T-bill reserves, cross-border payments, sanctions, DeFi and US regulation all intersect.',
       articles: [
+        { label: 'France’s stablecoin tax plan: gains and timing', href: '/en/analysis/france-stablecoin-tax-capital-gains/', detail: 'France’s proposed reform, tax basis and annual use of losses.', kind: 'article' },
         { label: 'USD1: who receives the reserve interest?', href: '/en/analysis/usd1-trump-interest-rates-reserves-beneficiaries/', detail: 'Holder rights, BitGo revenue and the Trump family’s disclosed economic interests.', kind: 'article' },
         { label: 'Stablecoins: from tokens to available dollars', href: '/en/analysis/stablecoin-reserves-redemption-dollar/', detail: 'Reserves, fees, redemption delays and rights by issuer channel.', kind: 'article' },
         { label: 'Iranian oil and USDT', href: '/en/analysis/iranian-oil-usdt-tether-seizure/', detail: 'Freezing, seizure and the powers Tether retains.', kind: 'article' },

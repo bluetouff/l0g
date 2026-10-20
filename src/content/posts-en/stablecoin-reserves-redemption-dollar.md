@@ -29,6 +29,8 @@ The second exit goes through the issuer. An eligible holder surrenders tokens in
 
 **Arbitrage** connects the two routes: buying a token below one dollar and redeeming it at par can produce a gain. That requires effective access to redemption and a sufficient margin after fees and financing costs. A professional able to advance dollars can accommodate sellers who need an immediate exit. Its balance sheet carries part of the waiting period. Market prices therefore also depend on intermediaries’ ability to bridge the gap. This is an economic mechanism, not a measurement of their current capacity.
 
+For a French tax resident managing private assets, tax recognition is another step in that journey. Our [analysis of France’s proposed stablecoin tax reform](/en/analysis/france-stablecoin-tax-capital-gains/) follows the cost basis through swaps and examines when losses can offset gains.
+
 ## The clock the Fed proposes
 
 The proposed ceiling is expressed in **business days**. In a calendar example with no intervening holiday, an eligible request made on Friday, October 2, would be followed by the first business day on Monday, October 5, and the second on Tuesday, October 6. This is an illustration of the proposed rule, not a scheduled transaction or a forty-eight-hour promise. [Fed proposal](https://www.govinfo.gov/content/pkg/FR-2026-09-29/pdf/2026-19860.pdf)
