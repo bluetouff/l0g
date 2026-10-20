@@ -210,6 +210,39 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'preuve-d-humanite', sigle: 'Proof of personhood', nom: 'Human uniqueness within an enrolment system',
+    def: 'A mechanism intended to establish that a proof relates to a distinct human within a specified enrolment system. Its criteria and assurance level depend on the implementation. It does not by itself establish a civil identity, honest intent or authority to commit a bank account.',
+    guide: '/en/analysis/world-id-banking-proof-of-human/', ...cryptoSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'World ID and the power to certify humans', href: '/en/analysis/world-id-banking-proof-of-human/', kind: 'article' }],
+      sources: [
+        { label: 'World, Proof of Human', href: 'https://docs.world.org/world-id/credentials/1', detail: 'The supplier’s account of biometric humanity and uniqueness checks.', kind: 'source' },
+        { label: 'NIST, Digital Identity Model', href: 'https://pages.nist.gov/800-63-4/sp800-63/model/', detail: 'Identity proofing, authentication and authorisation decisions have distinct roles.', kind: 'source' },
+      ],
+      related: ['zkp', 'calcul-multipartite'],
+    },
+  },
+  {
+    slug: 'zkp', sigle: 'ZKP', nom: 'Zero-knowledge proof',
+    def: 'A cryptographic method for proving a specified statement without revealing the secret information used to establish it beyond what the statement itself discloses. Its assurance applies to the statement and protocol. It does not automatically validate a biometric measurement or give the holder authority to make a payment.',
+    guide: '/en/analysis/world-id-banking-proof-of-human/', sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'World ID and the power to certify humans', href: '/en/analysis/world-id-banking-proof-of-human/', kind: 'article' }],
+      sources: [{ label: 'NIST CSRC, Zero-Knowledge Proof', href: 'https://csrc.nist.gov/glossary/term/zero_knowledge_proof', detail: 'Proving a statement without disclosing further information.', kind: 'source' }],
+      related: ['preuve-d-humanite', 'calcul-multipartite'],
+    },
+  },
+  {
+    slug: 'calcul-multipartite', sigle: 'MPC', nom: 'Secure multiparty computation',
+    def: 'Protocols that let several parties jointly compute a result from private data without giving one another their complete inputs. Confidentiality depends on the security model, including the compromised participants it tolerates. Distributing computation does not by itself establish that the operators are independent.',
+    guide: '/en/analysis/world-id-banking-proof-of-human/', sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'World ID and the power to certify humans', href: '/en/analysis/world-id-banking-proof-of-human/', kind: 'article' }],
+      sources: [{ label: 'NIST, Multiparty Computation and Threshold Schemes', href: 'https://csrc.nist.gov/Projects/pec/threshold', detail: 'Joint computation over private inputs, under the protocol’s assumptions.', kind: 'source' }],
+      related: ['preuve-d-humanite', 'zkp'],
+    },
+  },
+  {
     slug: 'credit-renouvelable', sigle: 'Revolving credit facility', nom: 'Reusable borrowing capacity',
     def: 'A facility allowing a borrower to draw funds, repay them and borrow again during an agreed period, subject to the contract’s limits and conditions. It can fund the interval between production spending and customer receipts. The committed limit differs from the amount drawn and from cash available to spend.',
     guide: '/en/analysis/jpmorgan-industrial-power-investment/', sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',

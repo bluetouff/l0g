@@ -380,7 +380,25 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 279, 'Le corpus anglais doit conserver ses 279 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 282, 'Le corpus anglais doit conserver ses 282 fiches uniques');
+
+// Cryptographic and uniqueness claims do not confer civil identity or payment authority.
+for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: sourced bilingual definitions required`);
+  assert.equal(fr.reference, undefined);
+  assert.equal(fr.referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.equal(fr.guide, '/posts/world-id-finance-preuve-humanite/');
+  assert.equal(en.guide, '/en/analysis/world-id-banking-proof-of-human/');
+  assert.deepEqual(fr.atlas.sources.map(item => item.href), en.atlas.sources.map(item => item.href));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'preuve-d-humanite').def, /ne suffit pas à établir l’identité civile/);
+assert.match(glossaryAtlasEnBySlug.get('preuve-d-humanite').def, /does not by itself establish a civil identity/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'calcul-multipartite').def, /participants compromis/);
+assert.match(glossaryAtlasEnBySlug.get('calcul-multipartite').def, /compromised participants/);
 
 // Financing capacity and repayment protection do not establish cash received or a public loss guarantee.
 for (const slug of ['credit-renouvelable', 'pret-senior-garanti']) {
@@ -544,8 +562,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 682, 'Le corpus doit conserver ses 682 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 267, 'Le graphe Atlas doit conserver ses 267 nœuds');
+assert.equal(glossaryEntries.length, 684, 'Le corpus doit conserver ses 684 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 270, 'Le graphe Atlas doit conserver ses 270 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -967,7 +985,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 782, 'Le graphe Atlas doit conserver ses 782 relations');
+assert.equal(glossaryAtlasEdgeCount, 788, 'Le graphe Atlas doit conserver ses 788 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

@@ -631,7 +631,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Agent autonome', nom: 'AI agent', def: "Programme d'intelligence artificielle capable de poursuivre un objectif, d'appeler des outils et d'enchaîner des actions sous une autorisation donnée. L'autonomie ne signifie pas nécessairement paiement ni absence totale de validation humaine ; le niveau de délégation doit être précisé." },
       { sigle: 'x402', nom: 'Protocole de paiement HTTP x402', def: "Protocole ouvert qui utilise la réponse HTTP 402 « Payment Required » pour négocier et prouver un paiement dans le cycle requête-réponse. Un client reçoit les conditions de paiement, règle via un réseau pris en charge puis rejoue sa requête avec la preuve, sans imposer de compte marchand ou de clé d'API propre à chaque service." },
       { sigle: 'Commerce agentique', nom: 'Agentic commerce', def: "Parcours commercial où un agent d'IA intervient dans la recherche, le classement, le panier ou le paiement au nom d'un utilisateur. Le terme couvre des degrés très différents, de la recommandation à l'achat autonome sous mandat ; il faut donc préciser la présence humaine, les limites et la preuve d'autorisation." },
-      { sigle: 'Preuve d\'humanité', nom: 'Proof of personhood', def: "Mécanisme visant à prouver qu'un acteur en ligne est un humain réel et unique, ni un bot ni une multitude de faux comptes. Enjeu croissant face aux agents IA et aux deepfakes ; les approches crypto combinent biométrie (World ID) et divulgation sélective par preuve à divulgation nulle." },
+      { sigle: 'Preuve d\'humanité', nom: 'Proof of personhood', def: 'Dispositif visant à établir qu’une preuve se rattache à une personne humaine distincte dans un système d’enrôlement donné. Les critères et le niveau d’assurance dépendent du dispositif. La preuve ne suffit pas à établir l’identité civile, l’honnêteté ou le droit d’engager un compte bancaire.', guide: '/posts/world-id-finance-preuve-humanite/' },
       { sigle: 'RLUSD', nom: 'Ripple USD', def: "Stablecoin dollar émis par Ripple, plus récent, adossé à des liquidités et bons du Trésor." },
       { sigle: 'TVL', nom: 'Total Value Locked', def: "Valeur totale verrouillée dans un protocole DeFi : somme des actifs déposés dans ses contrats, valorisée en dollars (référence : DefiLlama). Mesure d'adoption, mais sensible au prix des jetons et au double comptage.", guide: '/guides/lire-la-donnee-on-chain/' },
       { sigle: 'DAO', nom: 'Decentralized Autonomous Organization', def: "Organisation autonome décentralisée : structure gouvernée par des votes on-chain plutôt que par une hiérarchie classique." },
@@ -833,6 +833,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'ZKP', nom: 'Preuve à divulgation nulle de connaissance', def: 'Méthode cryptographique permettant de démontrer la validité d’un énoncé sans révéler l’information secrète utilisée pour l’établir, au-delà de l’énoncé lui-même. Sa portée dépend de l’énoncé vérifié et du protocole. Elle ne certifie pas automatiquement la fiabilité d’une mesure biométrique ou le droit d’autoriser un paiement.', guide: '/posts/world-id-finance-preuve-humanite/' },
+      { sigle: 'Calcul multipartite', nom: 'Secure multiparty computation (MPC)', def: 'Famille de protocoles permettant à plusieurs parties de calculer ensemble un résultat à partir de données privées sans se communiquer leurs données d’entrée complètes. La confidentialité dépend du modèle de sécurité, notamment des participants compromis admis. La répartition des calculs ne prouve pas, à elle seule, l’indépendance des opérateurs.', guide: '/posts/world-id-finance-preuve-humanite/' },
       {"sigle": "RTO", "nom": "Objectif de temps de reprise", "def": "Durée maximale d’indisponibilité retenue pour une ressource informatique avant un effet jugé inacceptable sur les autres ressources ou sur l’activité. Cet objectif de préparation doit normalement laisser, dans la durée tolérable pour le processus métier, le temps nécessaire au retraitement des données. Un délai obtenu lors d’un essai dépend de son scénario et de son périmètre.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
       {"sigle": "RPO (reprise)", "nom": "Point de reprise des données", "def": "Point dans le passé auquel les données d’un processus doivent pouvoir être récupérées après une interruption, compte tenu des sauvegardes disponibles. Il exprime la perte de données tolérée dans la préparation. Le respect de cette cible doit être éprouvé ; la restauration peut encore demander un rapprochement avec les opérations enregistrées pendant le fonctionnement dégradé.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
       {"sigle": "MTD", "nom": "Durée maximale d’interruption tolérable", "def": "Durée totale de perturbation qu’un responsable accepte pour un processus métier, en tenant compte de l’ensemble de ses conséquences. Le délai de reprise de la ressource informatique et le retraitement nécessaire des données doivent tenir dans cette durée. La limite relève d’une analyse d’impact propre à l’activité ; elle ne constitue pas un temps de reprise déjà démontré.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
@@ -1118,6 +1120,24 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'preuve-d-humanite': {
+    articles: [{ label: 'World ID et le pouvoir de certifier les humains', href: '/posts/world-id-finance-preuve-humanite/', kind: 'article' }],
+    sources: [
+      { label: 'World, Proof of Human', href: 'https://docs.world.org/world-id/credentials/1', detail: 'Description par le fournisseur de sa preuve biométrique d’humanité et d’unicité.', kind: 'source' },
+      { label: 'NIST, Digital Identity Model', href: 'https://pages.nist.gov/800-63-4/sp800-63/model/', detail: 'Rôles distincts de l’établissement de l’identité, de l’authentification et de la décision d’autorisation.', kind: 'source' },
+    ],
+    related: ['zkp', 'calcul-multipartite'],
+  },
+  zkp: {
+    articles: [{ label: 'World ID et le pouvoir de certifier les humains', href: '/posts/world-id-finance-preuve-humanite/', kind: 'article' }],
+    sources: [{ label: 'NIST CSRC, Zero-Knowledge Proof', href: 'https://csrc.nist.gov/glossary/term/zero_knowledge_proof', detail: 'Preuve de la validité d’un énoncé sans divulgation d’information supplémentaire.', kind: 'source' }],
+    related: ['preuve-d-humanite', 'calcul-multipartite'],
+  },
+  'calcul-multipartite': {
+    articles: [{ label: 'World ID et le pouvoir de certifier les humains', href: '/posts/world-id-finance-preuve-humanite/', kind: 'article' }],
+    sources: [{ label: 'NIST, Multiparty Computation and Threshold Schemes', href: 'https://csrc.nist.gov/Projects/pec/threshold', detail: 'Calcul collectif sur des entrées privées, sous les hypothèses du protocole.', kind: 'source' }],
+    related: ['preuve-d-humanite', 'zkp'],
+  },
   'credit-renouvelable': {
     articles: [{ label: 'JPMorgan et le prix de la puissance industrielle', href: '/posts/jpmorgan-capital-strategique/', kind: 'article' }],
     sources: [{ label: 'OCC, Asset-Based Lending, page 3', href: 'https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/asset-based-lending/pub-ch-asset-based-lending.pdf', detail: 'Tirages, remboursements, réutilisation et conditions de disponibilité du crédit.', kind: 'source' }],
