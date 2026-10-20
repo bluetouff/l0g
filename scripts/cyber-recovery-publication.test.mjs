@@ -169,6 +169,9 @@ test('catalogue downloads retain readable text on their tinted surface in both t
   const declarations = new Map(rules[0].nodes.map(node => [node.prop, node.value]));
   assert.equal(declarations.get('color'), 'var(--color-bright)');
   assert.equal(declarations.get('background'), 'color-mix(in srgb, var(--color-amber) 9%, var(--color-surface))');
+  const hover = [];css.walkRules(rule => { if (rule.selector === '.publication-primary:hover') hover.push(rule); });
+  assert.equal(hover.length, 1);
+  assert.equal(hover[0].nodes.find(node => node.prop === 'background').value, 'color-mix(in srgb, var(--color-amber) 12%, var(--color-surface))');
   const globalCss = postcss.parse(readFileSync(join(ROOT, 'src/styles/global.css'), 'utf8'));
   const rgb = value => {assert.match(value, /^#[0-9a-f]{6}$/iu);return [1,3,5].map(i => parseInt(value.slice(i,i+2),16));};
   const luminance = channels => channels.reduce((sum,v,i) => sum + [.2126,.7152,.0722][i] * (v/255 <= .04045 ? v/255/12.92 : ((v/255+.055)/1.055)**2.4), 0);
@@ -177,11 +180,13 @@ test('catalogue downloads retain readable text on their tinted surface in both t
     globalCss.walkAtRules('theme', rule => rule.walkDecls(decl => tokens.set(decl.prop, decl.value)));
     if (theme === 'light') globalCss.walkRules(rule => { if (rule.selector === ':root[data-theme="light"]') rule.walkDecls(decl => tokens.set(decl.prop, decl.value)); });
     const surface = rgb(tokens.get('--color-surface')), amber = rgb(tokens.get('--color-amber'));
-    const background = surface.map((channel, i) => channel * .91 + amber[i] * .09);
-    const b = luminance(background);
-    for (const token of ['--color-bright', '--color-muted']) {
-      const a = luminance(rgb(tokens.get(token)));
-      assert.ok((Math.max(a,b)+.05)/(Math.min(a,b)+.05) >= 4.5, `${theme}: ${token} must retain small-text contrast`);
+    for (const tint of [.09, .12]) {
+      const background = surface.map((channel, i) => channel * (1 - tint) + amber[i] * tint);
+      const b = luminance(background);
+      for (const token of ['--color-bright', '--color-muted']) {
+        const a = luminance(rgb(tokens.get(token)));
+        assert.ok((Math.max(a,b)+.05)/(Math.min(a,b)+.05) >= 4.5, `${theme}, tint ${tint}: ${token} must retain small-text contrast`);
+      }
     }
   }
 });
