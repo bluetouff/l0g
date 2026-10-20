@@ -2983,6 +2983,102 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     }
   },
 {
+  "slug": "offtake",
+  "sigle": "Offtake",
+  "nom": "Purchase agreement for future output",
+  "def": "An agreement to buy future output on specified volume, price and delivery terms. For a carbon project, a committed buyer can support fundraising. Payment dates, advances and the allocation of delivery risk depend on the contract; an announced purchase volume alone does not establish how much cash has been paid.",
+  "guide": "/en/analysis/google-mckinsey-pasture-carbon-timber/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "Google and McKinsey: pasture carbon and timber",
+        "href": "/en/analysis/google-mckinsey-pasture-carbon-timber/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Symbiosis / CrossBoundary, Carbon Offtake Guide",
+        "href": "https://crossboundary.com/carbon-offtake-guide/",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "credit-carbone",
+      "additionnalite",
+      "silvopastoralisme",
+      "permanence-du-carbone"
+    ]
+  }
+},
+{
+  "slug": "silvopastoralisme",
+  "sigle": "Silvopasture",
+  "nom": "Trees, forage and grazing animals on the same land",
+  "def": "An agroforestry system combining trees, forage and grazing animals on the same land. Effects on livestock output and carbon storage depend on species, tree density, climate and management. Assessing a climate benefit requires comparison with a credible trajectory without the intervention.",
+  "guide": "/en/analysis/google-mckinsey-pasture-carbon-timber/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "Google and McKinsey: pasture carbon and timber",
+        "href": "/en/analysis/google-mckinsey-pasture-carbon-timber/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Google, Working Trees and silvopasture",
+        "href": "https://blog.google/company-news/outreach-and-initiatives/sustainability/brazil-silvopasture/",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "credit-carbone",
+      "additionnalite",
+      "offtake",
+      "permanence-du-carbone"
+    ]
+  }
+},
+{
+  "slug": "permanence-du-carbone",
+  "sigle": "Carbon permanence",
+  "nom": "Continued storage underlying a climate claim",
+  "def": "Continued storage of carbon underlying a credited climate benefit. Fire, tree mortality or land-use change can reverse storage. The programme and project commitments must specify monitoring, the duration of obligations and how losses are addressed. Financial compensation and restoration of atmospheric benefit follow different processes.",
+  "guide": "/en/analysis/google-mckinsey-pasture-carbon-timber/",
+  "sectionTitle": "Macro & central banks",
+  "accent": "var(--color-signal)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "articles": [
+      {
+        "label": "Google and McKinsey: pasture carbon and timber",
+        "href": "/en/analysis/google-mckinsey-pasture-carbon-timber/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "ICVCM, Core Carbon Principles",
+        "href": "https://icvcm.org/core-carbon-principles/",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "credit-carbone",
+      "additionnalite",
+      "offtake",
+      "silvopastoralisme"
+    ]
+  }
+},
+{
   "slug": "credit-carbone",
   "sigle": "Carbon credit",
   "nom": "A project-based emissions reduction or removal unit",
@@ -2996,6 +3092,11 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       {
         "label": "Carbon credits: the product behind the zero",
         "href": "/en/analysis/carbon-neutral-claims-offsets-product-risk/",
+        "kind": "article"
+      },
+      {
+        "label": "Google and McKinsey: pasture carbon and timber",
+        "href": "/en/analysis/google-mckinsey-pasture-carbon-timber/",
         "kind": "article"
       }
     ],
@@ -3030,6 +3131,11 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       {
         "label": "Carbon credits: the product behind the zero",
         "href": "/en/analysis/carbon-neutral-claims-offsets-product-risk/",
+        "kind": "article"
+      },
+      {
+        "label": "Google and McKinsey: pasture carbon and timber",
+        "href": "/en/analysis/google-mckinsey-pasture-carbon-timber/",
         "kind": "article"
       }
     ],

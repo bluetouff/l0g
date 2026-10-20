@@ -151,6 +151,24 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Repricing obligataire', nom: 'Réévaluation des prix et des rendements obligataires', def: 'Ajustement des prix et des rendements des obligations lorsque les conditions de financement ou les anticipations changent. Pour un titre à flux fixes, une hausse du rendement demandé réduit son prix. La réaction du prix de marché est immédiate ; la transmission aux intérêts de l’émetteur dépend des nouvelles émissions, des échéances et des clauses de taux.', guide: '/posts/le-monde-redecouvre-le-prix-de-l-argent/' },
       { sigle: 'OFZ', nom: 'Obligations fédérales russes', def: 'Titres de dette émis par l’État fédéral russe. Ils apportent un financement contre des paiements futurs selon les clauses de chaque émission. Un coupon fixe et un coupon variable répartissent différemment le risque de taux ; une opération de repo peut procurer de la liquidité au détenteur d’un titre éligible, sous conditions et avec décote.', guide: '/posts/budget-russe-2027-defense-dette-banques-credit/' },
 {
+  "sigle": "Offtake",
+  "nom": "Contrat d’achat d’une production future",
+  "def": "Engagement d’acheter une production à venir suivant des volumes, des prix et des conditions convenus. Pour un projet carbone, cet accord sécurise un débouché et peut faciliter la recherche de financement. Les échéances de paiement, les avances et les conséquences d’un retard de livraison dépendent des clauses du contrat.",
+  "guide": "/posts/google-mckinsey-carbone-paturages/"
+},
+{
+  "sigle": "Silvopastoralisme",
+  "nom": "Association d’arbres, de pâturages et d’animaux",
+  "def": "Système agroforestier qui associe des arbres, une ressource fourragère et des animaux sur une même surface. Les effets sur la production et le stockage de carbone dépendent notamment des essences, de la densité, du climat et de la gestion. Évaluer un bénéfice climatique exige une comparaison avec une trajectoire sans le projet.",
+  "guide": "/posts/google-mckinsey-carbone-paturages/"
+},
+{
+  "sigle": "Permanence du carbone",
+  "nom": "Maintien dans le temps du stockage crédité",
+  "def": "Maintien dans le temps d’un stock de carbone auquel un bénéfice climatique est attribué. Un incendie, la mortalité des arbres ou un changement d’usage peuvent provoquer une perte. La durée des obligations, le suivi et le traitement des pertes doivent être précisés par les règles du programme et les engagements du projet.",
+  "guide": "/posts/google-mckinsey-carbone-paturages/"
+},
+{
   "sigle": "Crédit carbone",
   "nom": "Unité de réduction ou d’absorption de gaz à effet de serre",
   "def": "Unité correspondant généralement à une tonne d’équivalent CO₂ de réduction ou d’absorption attribuée à un projet selon une méthode et un programme. Sa qualité dépend notamment de l’additionnalité, du scénario de référence, de la durée du stockage et de la prévention du double comptage. Son retrait dans un registre empêche sa réutilisation ; il ne diminue pas le bilan de cycle de vie du produit auquel l’acheteur l’associe.",
@@ -2972,12 +2990,83 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       }
     ]
   },
+"offtake": {
+  "articles": [
+    {
+      "label": "Google et McKinsey : le carbone des pâturages",
+      "href": "/posts/google-mckinsey-carbone-paturages/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Symbiosis / CrossBoundary, Carbon Offtake Guide",
+      "href": "https://crossboundary.com/carbon-offtake-guide/",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "credit-carbone",
+    "additionnalite",
+    "silvopastoralisme",
+    "permanence-du-carbone"
+  ]
+},
+"silvopastoralisme": {
+  "articles": [
+    {
+      "label": "Google et McKinsey : le carbone des pâturages",
+      "href": "/posts/google-mckinsey-carbone-paturages/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Google, Working Trees and silvopasture",
+      "href": "https://blog.google/company-news/outreach-and-initiatives/sustainability/brazil-silvopasture/",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "credit-carbone",
+    "additionnalite",
+    "offtake",
+    "permanence-du-carbone"
+  ]
+},
+"permanence-du-carbone": {
+  "articles": [
+    {
+      "label": "Google et McKinsey : le carbone des pâturages",
+      "href": "/posts/google-mckinsey-carbone-paturages/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "ICVCM, Core Carbon Principles",
+      "href": "https://icvcm.org/core-carbon-principles/",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "credit-carbone",
+    "additionnalite",
+    "offtake",
+    "silvopastoralisme"
+  ]
+},
 "credit-carbone": {
   "intuition": "Le registre décrit une unité ; le projet et sa méthode déterminent le bénéfice climatique.",
   "articles": [
     {
       "label": "Crédits carbone : le produit derrière le zéro",
       "href": "/posts/neutralite-carbone-credits-produit-promesse/",
+      "kind": "article"
+    },
+    {
+      "label": "Google et McKinsey : le carbone des pâturages",
+      "href": "/posts/google-mckinsey-carbone-paturages/",
       "kind": "article"
     }
   ],
@@ -3003,6 +3092,11 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     {
       "label": "Crédits carbone : le produit derrière le zéro",
       "href": "/posts/neutralite-carbone-credits-produit-promesse/",
+      "kind": "article"
+    },
+    {
+      "label": "Google et McKinsey : le carbone des pâturages",
+      "href": "/posts/google-mckinsey-carbone-paturages/",
       "kind": "article"
     }
   ],

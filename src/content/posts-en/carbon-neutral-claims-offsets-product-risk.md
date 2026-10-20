@@ -127,6 +127,8 @@ For a consumer, the decisive information comes down to concrete questions. Which
 
 **A certificate can document useful action. It cannot rewrite the life cycle of the product it accompanies.** The project’s quality deserves examination; so does the product’s improvement. Keeping them visible separately makes it possible to follow the money without giving it credit for effects it has yet to establish.
 
+The [Google and McKinsey agreement for Brazilian pasture carbon](/en/analysis/google-mckinsey-pasture-carbon-timber/) follows that chain at project level, from establishment finance and tree measurement to continued storage and timber harvesting.
+
 ## Sources and documents
 
 <ol class="l0g-carbon-sources">

@@ -1,0 +1,85 @@
+/* Supplied compositions retain their original DejaVu glyph metrics. */
+@font-face {
+  font-family: 'l0g Carbon';
+  src: url('/fonts/google-carbon/dejavu-sans-400.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'l0g Carbon';
+  src: url('/fonts/google-carbon/dejavu-sans-700.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+.prose figure.l0g-cc-figure {
+  width: 100%;
+  min-width: 0;
+  max-width: 48rem;
+  margin: 2.5rem auto;
+  padding-bottom: 1rem;
+  overflow: visible;
+  container-type: inline-size;
+}
+.l0g-cc-figure .cc-panel {
+  min-width: 0;
+  max-width: 100%;
+  background: var(--color-ink);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+}
+.l0g-cc-figure svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+  letter-spacing: normal;
+}
+.l0g-cc-figure svg text {
+  font-family: 'l0g Carbon', 'DejaVu Sans', Arial, sans-serif;
+}
+.l0g-cc-figure .cc-desktop { display: block; }
+.l0g-cc-figure .cc-mobile {
+  display: none;
+  width: 100%;
+  max-width: 24rem;
+  margin-inline: auto;
+}
+.prose .l0g-cc-figure figcaption {
+  margin-top: 1rem;
+  color: var(--color-muted);
+  font-size: .88rem;
+  line-height: 1.6;
+}
+.l0g-cc-figure .fig-number {
+  color: var(--color-paper);
+  font-weight: 700;
+}
+.l0g-cc-figure .data-note {
+  font-size: .85rem;
+  margin-top: .75rem;
+}
+.l0g-cc-figure summary { cursor: pointer; }
+.l0g-cc-figure summary:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 4px;
+}
+.l0g-cc-figure pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  .l0g-cc-figure .cc-mobile { display: block; }
+  .l0g-cc-figure .cc-desktop { display: none; }
+}
+@container (max-width: 640px) {
+  .l0g-cc-figure .cc-mobile { display: block; }
+  .l0g-cc-figure .cc-desktop { display: none; }
+}
+@media print {
+  .l0g-cc-figure .cc-mobile { display: none; }
+  .l0g-cc-figure .cc-desktop { display: block; }
+}

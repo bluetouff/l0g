@@ -380,7 +380,26 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 274, 'Le corpus anglais doit conserver ses 274 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 277, 'Le corpus anglais doit conserver ses 277 fiches uniques');
+
+// New short definitions retain the existing opt-in reference-page boundary.
+for (const slug of ['offtake', 'silvopastoralisme', 'permanence-du-carbone']) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert.equal(fr.length, 1, `${slug}: one French definition`);
+  assert(en && fr[0].atlas, `${slug}: bilingual source-backed entries`);
+  assert.equal(fr[0].reference, undefined);
+  assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.equal(fr[0].guide, '/posts/google-mckinsey-carbone-paturages/');
+  assert.equal(en.guide, '/en/analysis/google-mckinsey-pasture-carbon-timber/');
+  assert.notEqual(fr[0].def, en.def, `${slug}: native English wording`);
+  for (const entry of [fr[0], en]) {
+    assert(entry.atlas.sources.length > 0);
+    assert(entry.atlas.articles.some(item => item.href === entry.guide));
+  }
+}
+
 
 for (const [slug, source, related] of [
   ['apd', 'https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html', ['equivalent-don', 'ida', 'compte-courant']],
@@ -507,8 +526,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 677, 'Le corpus doit conserver ses 677 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 262, 'Le graphe Atlas doit conserver ses 262 nœuds');
+assert.equal(glossaryEntries.length, 680, 'Le corpus doit conserver ses 680 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 265, 'Le graphe Atlas doit conserver ses 265 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -930,7 +949,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 764, 'Le graphe Atlas doit conserver ses 764 relations');
+assert.equal(glossaryAtlasEdgeCount, 776, 'Le graphe Atlas doit conserver ses 776 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

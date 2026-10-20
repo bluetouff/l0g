@@ -125,6 +125,8 @@ Pour le consommateur, l’information décisive tient finalement dans quelques r
 
 **Un certificat peut documenter une action utile. Il ne réécrit pas le cycle de vie du produit auquel on l’attache.** La qualité du projet mérite son examen ; l’amélioration du produit mérite le sien. Les rendre visibles séparément permet de suivre l’argent sans lui attribuer des effets qu’il n’a pas encore démontrés.
 
+L’accord de [Google et McKinsey sur le carbone des pâturages brésiliens](/posts/google-mckinsey-carbone-paturages/) permet de suivre cette chaîne au niveau du projet : financement initial, mesure des arbres, maintien des stocks et récolte du bois.
+
 ## Sources et documents
 
 <ol class="l0g-carbon-sources">
