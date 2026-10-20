@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import GlossaryIndexEntry from '../components/GlossaryIndexEntry.astro';
 
 import {
   glossaryAtlasEdgeCount,
@@ -176,15 +177,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
           </h2>
           <ul class="glossary-index" style={`--glossary-accent:${s.accent}`}>
             {s.entries.map((e) => (
-              <li class="gentry" id={e.slug} data-related={e.atlas?.related?.length ? e.atlas.related.join(' ') : undefined}>
-                <a class="gentry-link" href={e.url}>
-                  <b class="sigle">{e.sigle}</b>
-                  <span class="nom">{e.nom}</span>
-                  {e.reference && <span class="atlas-tag reference-tag">référence</span>}
-                  {!e.reference && e.referenceCandidate && <span class="atlas-tag candidate-tag">candidate</span>}
-                  {e.atlas && <span class="atlas-tag">atlas</span>}
-                </a>
-              </li>
+              <GlossaryIndexEntry entry={e} />
             ))}
           </ul>
         </section>
@@ -257,17 +250,17 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
       margin: 0;
       padding: 0;
     }
-    .gentry {
+    .glossary-index :global(.gentry) {
       border: 1px solid var(--color-line);
       border-radius: 8px;
       min-width: 0;
       transition: background 0.15s, border-color 0.15s;
     }
-    .gentry:hover {
+    .glossary-index :global(.gentry:hover) {
       background: rgba(255, 255, 255, 0.018);
       border-color: color-mix(in srgb, var(--color-signal) 35%, var(--color-line));
     }
-    .gentry-link {
+    .glossary-index :global(.gentry-link) {
       align-items: baseline;
       display: flex;
       flex-wrap: wrap;
@@ -276,17 +269,17 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
       padding: 0.6rem;
       text-decoration: none;
     }
-    .gentry .sigle {
+    .glossary-index :global(.gentry .sigle) {
       color: var(--glossary-accent);
       font-family: var(--font-display); font-weight: 600; font-size: 0.92rem; letter-spacing: 0.02em;
       border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
       border-radius: 6px; padding: 1px 8px;
       transition: border-color 0.18s, background 0.18s;
     }
-    .gentry .sigle:hover { background: color-mix(in srgb, currentColor 10%, transparent); border-color: currentColor; }
-    .gentry .nom { color: var(--color-bright); font-size: 0.9rem; transition: color 0.18s; }
-    .gentry-link:hover .nom { color: var(--color-signal); }
-    .gentry:target { background: color-mix(in srgb, var(--color-signal) 8%, transparent); }
+    .glossary-index :global(.gentry .sigle:hover) { background: color-mix(in srgb, currentColor 10%, transparent); border-color: currentColor; }
+    .glossary-index :global(.gentry .nom) { color: var(--color-bright); font-size: 0.9rem; transition: color 0.18s; }
+    .glossary-index :global(.gentry-link:hover .nom) { color: var(--color-signal); }
+    .glossary-index :global(.gentry:target) { background: color-mix(in srgb, var(--color-signal) 8%, transparent); }
 
     .gloss-empty { margin-top: 2rem; color: var(--color-muted); font-family: var(--font-mono); }
     .gloss-empty::before { content: "// "; color: var(--color-accent); }
@@ -406,7 +399,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
       font-size: 1rem;
       margin: 0.1rem 0 0;
     }
-    .atlas-tag {
+    .glossary-index :global(.atlas-tag) {
       border: 1px solid color-mix(in srgb, var(--color-signal) 45%, transparent);
       border-radius: 7px;
       color: var(--color-signal);
@@ -416,15 +409,15 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
       padding: 0.12rem 0.4rem;
       text-transform: uppercase;
     }
-    .atlas-tag:hover {
+    .glossary-index :global(.atlas-tag:hover) {
       background: color-mix(in srgb, var(--color-signal) 9%, transparent);
       color: var(--color-bright);
     }
-    .reference-tag {
+    .glossary-index :global(.reference-tag) {
       border-color: color-mix(in srgb, var(--color-signal) 55%, transparent);
       color: var(--color-signal);
     }
-    .candidate-tag {
+    .glossary-index :global(.candidate-tag) {
       border-color: color-mix(in srgb, var(--color-amber) 45%, transparent);
       color: var(--color-amber);
     }

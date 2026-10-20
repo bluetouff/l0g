@@ -1,0 +1,19 @@
+---
+import type { GlossaryEntry } from '../config/glossary.ts';
+
+interface Props {
+  entry: GlossaryEntry;
+}
+
+const { entry: e } = Astro.props;
+---
+
+<li class="gentry" id={e.slug} data-related={e.atlas?.related?.length ? e.atlas.related.join(' ') : undefined}>
+  <a class="gentry-link" href={e.url}>
+    <b class="sigle">{e.sigle}</b>
+    <span class="nom">{e.nom}</span>
+    {e.reference && <span class="atlas-tag reference-tag">référence</span>}
+    {!e.reference && e.referenceCandidate && <span class="atlas-tag candidate-tag">candidate</span>}
+    {e.atlas && <span class="atlas-tag">atlas</span>}
+  </a>
+</li>
