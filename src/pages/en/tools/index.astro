@@ -19,7 +19,7 @@ const jsonLd = {
 ]}>
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
   <section class="tools-hero rise" data-pagefind-ignore>
-    <div class="tools-hero__copy"><p class="mono-label">// l0g lab · open assumptions</p><h1>See the mechanism.<span>Touch the assumptions.</span></h1><p>Every tool starts with an investigation. Move the inputs, observe the result, then return to the article for facts, sources and limitations.</p></div>
+    <div class="tools-hero__copy"><p class="mono-label">// l0g lab · open assumptions</p><h1>Interactive <span>research tools</span></h1><p>Every tool starts with an investigation. Move the inputs, observe the result, then return to the article for facts, sources and limitations.</p></div>
     <div class="tools-console" aria-label="Tool contract"><p><span>tools</span><strong>{analysisTools.length}</strong></p><p><span>remote_calls</span><strong>0</strong></p><p><span>tracking</span><strong>off</strong></p><p><span>models</span><strong>open</strong></p></div>
   </section>
   <nav class="tools-jump" aria-label="Quick access to tools">{analysisTools.map((tool, index) => <a href={tool.en.href}><span>{String(index + 1).padStart(2, '0')}</span>{tool.en.title}</a>)}</nav>
