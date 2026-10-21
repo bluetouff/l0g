@@ -30,6 +30,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    { sigle: 'TRS', nom: 'Total return swap, swap de rendement total', def: 'Contrat dérivé transférant le rendement économique total d’un actif de référence, y compris ses revenus, ses variations de prix et ses pertes de crédit, en échange d’une rémunération de financement selon les termes convenus. L’exposition peut changer de mains tandis que la propriété juridique de l’actif reste inchangée. La protection dépend de l’exécution des paiements promis.', guide: '/posts/barclays-credit-prive-trs-risque/' },
+    { sigle: 'Risque de contrepartie', nom: 'Risque de crédit de contrepartie', def: 'Risque qu’une contrepartie fasse défaut avant le règlement définitif des flux d’une transaction. Une perte peut survenir lorsque les contrats ont une valeur économique positive pour l’autre partie au moment du défaut. L’exposition varie avec les marchés ; les garanties et la compensation influencent la perte résiduelle.', guide: '/posts/barclays-credit-prive-trs-risque/' },
+    { sigle: 'Ensemble de compensation', nom: 'Netting set', def: 'Dans le cadre de Bâle, groupe de transactions avec une même contrepartie relevant d’un accord de compensation bilatérale juridiquement exécutoire et reconnu pour le calcul du capital réglementaire. Une transaction sans accord reconnu constitue son propre ensemble. Des contrats opposés conclus avec des contreparties distinctes relèvent d’ensembles distincts.', guide: '/posts/barclays-credit-prive-trs-risque/' },
     { sigle: 'Crédit renouvelable', nom: 'Revolving credit facility ou revolver', def: 'Facilité permettant de tirer des fonds, de les rembourser puis de les réemprunter pendant une période définie, dans les limites et sous les conditions du contrat. Elle peut financer le décalage entre les dépenses de production et les encaissements. Son plafond engagé se distingue du montant effectivement tiré et de la trésorerie disponible.', guide: '/posts/jpmorgan-capital-strategique/' },
     { sigle: 'Prêt senior garanti', nom: 'Senior secured loan', def: 'Prêt assorti de sûretés sur des actifs et d’un rang prioritaire par rapport à certaines autres créances. Le contrat et le droit applicable déterminent la priorité et les droits sur les actifs. Cette protection ne garantit ni un remboursement intégral ni une prise en charge automatique des pertes par un État.', guide: '/posts/jpmorgan-capital-strategique/' },
     {"sigle": "Garantie de prêt", "nom": "Engagement d’un garant envers les prêteurs", "def": "Engagement d’un garant envers les prêteurs, couvrant le risque de défaut dans le périmètre fixé par le contrat. Les banques avancent les fonds lors du tirage ; l’emprunteur reste tenu de rembourser. Le paiement du garant dépend des conditions d’appel. Une garantie publique crée un engagement éventuel, distinct d’un décaissement de l’État.", "guide": "/posts/apres-cyberattaque-07-etat-financement-crise/"},
@@ -1127,6 +1130,28 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  trs: {
+    intuition: 'Transférer la performance d’un prêt ajoute une promesse de paiement dont il faut apprécier la solidité.',
+    articles: [{ label: 'Barclays : crédit privé et risque des TRS', href: '/posts/barclays-credit-prive-trs-risque/', kind: 'article' }],
+    guides: [{ label: 'Lire les swaps de taux', href: '/guides/lire-les-swaps-de-taux/', detail: 'Repères sur les dérivés, la compensation et les marges ; les flux d’un TRS portent sur le rendement total.', kind: 'guide' }],
+    sources: [
+      { label: 'ESMA, SFTR : définition du TRS', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-3-definitions', detail: 'Article 3, point 18 : revenus, variations de prix et pertes de crédit. Définition européenne du produit.', kind: 'source' },
+      { label: 'HMRC, mécanisme du total return swap', href: 'https://www.gov.uk/hmrc-internal-manuals/corporate-finance-manual/cfm13380', detail: 'CFM13380 : échange des flux de rendement et de financement, avec inversion du paiement lorsque la valeur baisse. Exemple historique de taux.', kind: 'source' },
+    ],
+    related: ['risque-de-contrepartie', 'ensemble-de-compensation', 'notionnel'],
+  },
+  'risque-de-contrepartie': {
+    intuition: 'Une couverture protège dans la mesure où son débiteur paie ou où les garanties permettent un recouvrement.',
+    articles: [{ label: 'Barclays : crédit privé et risque des TRS', href: '/posts/barclays-credit-prive-trs-risque/', kind: 'article' }],
+    sources: [{ label: 'Comité de Bâle, CRE50 : risque de contrepartie', href: 'https://www.bis.org/committees/bcbs/basel-framework/standard/cre/50/inforce/2019-12-15/published/2024-07-05', detail: 'Paragraphe 50.1 : défaut avant règlement et valeur économique positive. Standard international, distinct de sa transposition nationale.', kind: 'source' }],
+    related: ['trs', 'ensemble-de-compensation', 'appel-de-marge'],
+  },
+  'ensemble-de-compensation': {
+    intuition: 'L’appariement économique de deux contrats ne suffit pas à réunir leurs contreparties dans un même accord bilatéral.',
+    articles: [{ label: 'Barclays : crédit privé et risque des TRS', href: '/posts/barclays-credit-prive-trs-risque/', kind: 'article' }],
+    sources: [{ label: 'Comité de Bâle, CRE50 : ensemble de compensation', href: 'https://www.bis.org/committees/bcbs/basel-framework/standard/cre/50/inforce/2019-12-15/published/2024-07-05', detail: 'Paragraphe 50.15 : même contrepartie, accord bilatéral exécutoire et reconnaissance prudentielle ; transaction isolée à défaut d’accord reconnu.', kind: 'source' }],
+    related: ['trs', 'risque-de-contrepartie', 'compensation-nette'],
+  },
   'niveau-de-vie': {
     intuition: 'Comparer des ménages de compositions différentes exige d’ajuster le revenu aux besoins partagés.',
     formula: 'niveau de vie = revenu disponible du ménage / unités de consommation',
@@ -1213,7 +1238,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     articles: [{ label: 'FIFA et Predictstreet : conventions de volume', href: '/posts/fifa-predictstreet-volume-wash-trading/', kind: 'article' }],
     guides: [{ label: 'Lire les swaps de taux', href: '/guides/lire-les-swaps-de-taux/', kind: 'guide' }],
     sources: [{ label: 'BRI, concepts et statistiques des dérivés, décembre 2025', href: 'https://www.bis.org/publications/qr-202512/international-finance-through-lens-bis-statistics-derivatives-markets', detail: 'Principal payable, paiement éventuel et base de calcul selon le produit ; distinction avec la valeur de marché.', kind: 'source' }],
-    related: ['future', 'dv01'],
+    related: ['future', 'dv01', 'trs'],
   },
   'preuve-d-humanite': {
     articles: [{ label: 'World ID et le pouvoir de certifier les humains', href: '/posts/world-id-finance-preuve-humanite/', kind: 'article' }],
@@ -3898,7 +3923,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     ],
     "related": [
       "reglement-atomique",
-      "tokenisation-des-actifs"
+      "tokenisation-des-actifs",
+      "ensemble-de-compensation"
     ]
   },
   "oracle-de-prix": {
@@ -4146,7 +4172,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     datasets: energyDatasets,
     signals: energySignals,
     sources: marginSources,
-    related: ['marge-initiale', 'marge-de-variation', 'membre-compensateur', 'ccp', 'brent', 'open-interest'],
+    related: ['marge-initiale', 'marge-de-variation', 'membre-compensateur', 'ccp', 'brent', 'open-interest', 'risque-de-contrepartie'],
   },
   'marge-initiale': {
     intuition: "La marge initiale est un coussin contre une perte future possible pendant la liquidation d’un défaut, pas le règlement de la perte du jour.",

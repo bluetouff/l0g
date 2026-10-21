@@ -210,6 +210,46 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'trs', sigle: 'TRS', nom: 'Total return swap',
+    sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    guide: '/en/analysis/barclays-private-credit-trs-risk/',
+    def: 'A derivative that passes the total economic performance of a reference asset, including income, price movements and credit losses, to another party in return for a financing payment under the agreed terms. Economic exposure can move while legal ownership stays with the original holder. Protection depends on the promised payments being made.',
+    atlas: {
+      intuition: 'Passing on a loan’s return introduces another payment promise whose reliability needs to be assessed.',
+      articles: [{ label: 'Barclays: private credit and TRS risk', href: '/en/analysis/barclays-private-credit-trs-risk/', kind: 'article' }],
+      guides: [{ label: 'Reading interest rate swaps', href: '/en/guides/read-interest-rate-swaps/', detail: 'Background on derivatives, clearing and margin; TRS cash flows cover the total return.', kind: 'guide' }],
+      sources: [
+        { label: 'ESMA, SFTR: TRS definition', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-3-definitions', detail: 'Article 3(18): income, price movements and credit losses. The EU product definition.', kind: 'source' },
+        { label: 'HMRC, total return swap mechanics', href: 'https://www.gov.uk/hmrc-internal-manuals/corporate-finance-manual/cfm13380', detail: 'CFM13380: return and financing cash flows, with the performance payment reversing when value falls. Historical rate example.', kind: 'source' },
+      ],
+      related: ['risque-de-contrepartie', 'ensemble-de-compensation', 'notionnel'],
+    },
+  },
+  {
+    slug: 'risque-de-contrepartie', sigle: 'Counterparty credit risk', nom: 'Default risk before a transaction’s final settlement',
+    sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    guide: '/en/analysis/barclays-private-credit-trs-risk/',
+    def: 'The risk that a counterparty defaults before a transaction’s cash flows are finally settled. A loss can arise when the contracts have positive economic value to the other party at default. Exposure changes with market conditions; collateral and netting affect the remaining loss.',
+    atlas: {
+      intuition: 'A hedge provides protection to the extent that its counterparty pays or collateral supports recovery.',
+      articles: [{ label: 'Barclays: private credit and TRS risk', href: '/en/analysis/barclays-private-credit-trs-risk/', kind: 'article' }],
+      sources: [{ label: 'Basel Committee, CRE50: counterparty credit risk', href: 'https://www.bis.org/committees/bcbs/basel-framework/standard/cre/50/inforce/2019-12-15/published/2024-07-05', detail: 'Paragraph 50.1: default before settlement and positive economic value. An international standard, distinct from national implementation.', kind: 'source' }],
+      related: ['trs', 'ensemble-de-compensation', 'appel-de-marge'],
+    },
+  },
+  {
+    slug: 'ensemble-de-compensation', sigle: 'Netting set', nom: 'Transactions covered by recognised bilateral netting',
+    sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    guide: '/en/analysis/barclays-private-credit-trs-risk/',
+    def: 'Under the Basel framework, transactions with a single counterparty covered by a legally enforceable bilateral netting agreement recognised for regulatory capital purposes. A trade without such recognition forms its own set. Opposing contracts with different counterparties belong to separate sets.',
+    atlas: {
+      intuition: 'Matching economic exposures does not bring different counterparties within the same bilateral agreement.',
+      articles: [{ label: 'Barclays: private credit and TRS risk', href: '/en/analysis/barclays-private-credit-trs-risk/', kind: 'article' }],
+      sources: [{ label: 'Basel Committee, CRE50: netting set', href: 'https://www.bis.org/committees/bcbs/basel-framework/standard/cre/50/inforce/2019-12-15/published/2024-07-05', detail: 'Paragraph 50.15: one counterparty, enforceable bilateral netting and regulatory recognition; a standalone trade where no recognised agreement applies.', kind: 'source' }],
+      related: ['trs', 'risque-de-contrepartie', 'compensation-nette'],
+    },
+  },
+  {
     slug: 'niveau-de-vie', sigle: 'Equivalised disposable income', nom: 'Household income adjusted for household composition',
     def: 'Household disposable income divided by an equivalence factor that accounts for household size and composition. The modified OECD scale assigns one unit to the first adult, half a unit to each other person aged fourteen or over, and three tenths to younger children. Every member of a household is assigned the same statistical living standard.',
     guide: '/en/analysis/france-2027-budget-distribution-economic-risk/', ...macroSection, robots: 'noindex,follow',
@@ -349,7 +389,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       articles: [{ label: 'FIFA and Predictstreet: volume conventions', href: '/en/analysis/fifa-predictstreet-trading-volume-risk/', kind: 'article' }],
       guides: [{ label: 'Reading interest-rate swaps', href: '/en/guides/read-interest-rate-swaps/', kind: 'guide' }],
       sources: [{ label: 'BIS, derivatives concepts and statistics, December 2025', href: 'https://www.bis.org/publications/qr-202512/international-finance-through-lens-bis-statistics-derivatives-markets', detail: 'Payable principal, contingent payout and calculation reference by product; distinction from market value.', kind: 'source' }],
-      related: ['future', 'dv01'],
+      related: ['future', 'dv01', 'trs'],
     },
   },
   {
@@ -3451,7 +3491,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       ],
       "related": [
         "reglement-atomique",
-        "tokenisation-des-actifs"
+        "tokenisation-des-actifs",
+        "ensemble-de-compensation"
       ]
     }
   },
@@ -5378,7 +5419,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       articles: [{ label: 'Government debt: the margin-call deadline', href: '/en/analysis/dette-etats-05-appels-marge/', kind: 'article' }, oilArticles[5]],
       guides: marginGuides,
       ...marginShared,
-      related: ['marge-initiale', 'marge-de-variation', 'membre-compensateur', 'ccp', 'brent'],
+      related: ['marge-initiale', 'marge-de-variation', 'membre-compensateur', 'ccp', 'brent', 'risque-de-contrepartie'],
     },
   },
   {

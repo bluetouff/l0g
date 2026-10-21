@@ -18,6 +18,47 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Total-return transfer, counterparty default and recognised netting have separate scopes.
+for (const [slug, sourceUrls] of [
+  ['trs', ['https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-3-definitions', 'https://www.gov.uk/hmrc-internal-manuals/corporate-finance-manual/cfm13380']],
+  ['risque-de-contrepartie', ['https://www.bis.org/committees/bcbs/basel-framework/standard/cre/50/inforce/2019-12-15/published/2024-07-05']],
+  ['ensemble-de-compensation', ['https://www.bis.org/committees/bcbs/basel-framework/standard/cre/50/inforce/2019-12-15/published/2024-07-05']],
+]) {
+  const frMatches = glossaryEntries.filter(entry => entry.slug === slug);
+  const enMatches = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(frMatches.length, 1); assert.equal(enMatches.length, 1);
+  const fr = frMatches[0], en = enMatches[0];
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(en.robots, 'noindex,follow'); assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.equal(fr.sectionTitle, 'Banques & gestion du bilan');
+  assert.equal(en.sectionTitle, 'Banking & balance-sheet management');
+  assert.notEqual(fr.def, en.def);
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), sourceUrls);
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  for (const [entry, article, terms] of [[fr, '/posts/barclays-credit-prive-trs-risque/', glossaryEntries], [en, '/en/analysis/barclays-private-credit-trs-risk/', glossaryAtlasEn]]) {
+    assert.equal(entry.guide, article);
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    assert.doesNotMatch(entry.def, /[—]/u);
+    for (const source of entry.atlas.sources) {
+      const url = new URL(source.href);
+      assert.equal(url.protocol, 'https:'); assert.equal(url.username, ''); assert.equal(url.password, '');
+    }
+    for (const neighbor of entry.atlas.related) {
+      const related = terms.find(term => term.slug === neighbor);
+      assert(related, `${slug}: missing related term ${neighbor}`);
+      assert(related.atlas.related.includes(slug), `${slug}: missing reciprocal relation from ${neighbor}`);
+    }
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'trs').def, /revenus.*variations de prix.*pertes de crédit.*propriété juridique/u);
+assert.match(glossaryAtlasEnBySlug.get('trs').def, /income.*price movements.*credit losses.*legal ownership/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'risque-de-contrepartie').def, /défaut avant.*valeur économique positive/u);
+assert.match(glossaryAtlasEnBySlug.get('risque-de-contrepartie').def, /defaults before.*positive economic value/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'ensemble-de-compensation').def, /cadre de Bâle.*même contrepartie.*juridiquement exécutoire.*capital réglementaire.*propre ensemble/u);
+assert.match(glossaryAtlasEnBySlug.get('ensemble-de-compensation').def, /Basel framework.*single counterparty.*legally enforceable.*regulatory capital.*own set/u);
+
 // Distribution, household spending responses and macroeconomic effects use different denominators.
 for (const slug of ['niveau-de-vie', 'propension-marginale-a-consommer', 'multiplicateur-budgetaire']) {
   const frMatches = glossaryEntries.filter(entry => entry.slug === slug);
@@ -487,7 +528,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 293, 'Le corpus anglais doit conserver ses 293 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 296, 'Le corpus anglais doit conserver ses 296 fiches uniques');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -669,8 +710,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 691, 'Le corpus doit conserver ses 691 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 281, 'Le graphe Atlas doit conserver ses 281 nœuds');
+assert.equal(glossaryEntries.length, 694, 'Le corpus doit conserver ses 694 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 284, 'Le graphe Atlas doit conserver ses 284 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1092,7 +1133,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 812, 'Le graphe Atlas doit conserver ses 812 relations');
+assert.equal(glossaryAtlasEdgeCount, 824, 'Le graphe Atlas doit conserver ses 824 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
