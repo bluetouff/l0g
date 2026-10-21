@@ -1606,6 +1606,29 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     }
   },
   {
+    slug: 'distillats', sigle: 'Distillate fuel oil', nom: 'Diesel and fuel oils in EIA statistics',
+    def: 'A category of petroleum products from distillation that includes diesel fuels and fuel oils, including heating oil, in EIA statistics. Its scope extends beyond road diesel. Comparisons of inventories need to retain the same product category.',
+    guide: '/en/analysis/oil-flows-diesel-stocks-liquidity/', ...energySection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'From oil at sea to delivered diesel', href: '/en/analysis/oil-flows-diesel-stocks-liquidity/', kind: 'article' }],
+      sources: [{ label: 'EIA: distillate fuel oil', href: 'https://www.eia.gov/tools/glossary/index.php?id=distillate', detail: 'Definition of the category covering diesel fuels and fuel oils.', kind: 'source' }],
+      related: ['padd', 'risque-de-base'],
+    },
+  },
+  {
+    slug: 'padd', sigle: 'PADD', nom: 'Petroleum Administration for Defense Districts',
+    def: 'Regions used by the EIA to analyse US petroleum supplies, inventories and movements. The fifty states and Washington, DC, form five districts; PADD 1 covers the East Coast. US territories fall within PADDs 6 and 7, which are excluded from EIA US totals.',
+    guide: '/en/analysis/oil-flows-diesel-stocks-liquidity/', ...energySection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'From oil at sea to delivered diesel', href: '/en/analysis/oil-flows-diesel-stocks-liquidity/', kind: 'article' }],
+      sources: [
+        { label: 'EIA: PADD boundaries', href: 'https://www.eia.gov/TOOLS/GLOSSARY/index.php?id=petroleum', detail: 'Five districts for the fifty states and DC; territories in PADDs 6 and 7 are excluded from US totals.', kind: 'source' },
+        { label: 'EIA: regional petroleum supply analysis', href: 'https://www.eia.gov/todayinenergy/detail.php?id=4890', detail: 'Regional analysis of petroleum products and movements.', kind: 'source' },
+      ],
+      related: ['distillats'],
+    },
+  },
+  {
     slug: 'risque-de-base', sigle: 'Basis risk', nom: 'Changes in the gap between an exposure and its hedge',
     def: 'The risk that the price gap between the commodity actually bought or sold and the benchmark used to hedge it changes during the hedge. Products, grades, delivery locations and dates may differ. Hedging crude oil can therefore leave part of a refined fuel’s cost exposed.',
     guide: '/en/analysis/dollar-facture-energie/', ...energySection, robots: 'noindex,follow',
@@ -1616,7 +1639,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         { label: 'CFTC: Basis and Basis Risk', href: 'https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', detail: 'Cash-futures price differences and changes between establishing and lifting a hedge.', kind: 'source' },
         { label: 'ECB: energy derivatives', href: 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html', detail: 'Section 3: price spreads between gas delivery points.', kind: 'source' },
       ],
-      related: ['brent', 'future', 'couverture-de-change'],
+      related: ['brent', 'future', 'couverture-de-change', 'distillats'],
     },
   },
   {

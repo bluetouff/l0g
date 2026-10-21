@@ -685,6 +685,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Énergie & géopolitique',
     accent: 'var(--color-amber)',
     entries: [
+      { sigle: 'Distillats', nom: 'Catégorie EIA « distillate fuel oil »', def: 'Catégorie de produits pétroliers issue de la distillation qui réunit, dans les statistiques de l’EIA, des carburants diesel et des fiouls, notamment de chauffage. Son périmètre dépasse le seul gazole routier. Une comparaison de stocks doit conserver la même catégorie de produits.', guide: '/posts/petrole-flux-gazole-stocks-tresorerie/' },
+      { sigle: 'PADD', nom: 'Petroleum Administration for Defense Districts', def: 'Régions utilisées par l’EIA pour analyser les approvisionnements, les stocks et les mouvements pétroliers américains. Les cinquante États et Washington, DC, forment cinq districts ; le PADD 1 couvre la côte Est. Les territoires américains relèvent des PADD 6 et 7, exclus des totaux nationaux de l’EIA.', guide: '/posts/petrole-flux-gazole-stocks-tresorerie/' },
       { sigle: 'Capacité de soutirage', nom: 'Débit de retrait d’un stockage de gaz', def: 'Quantité de gaz qu’un stockage peut retirer par unité de temps, souvent par jour. Elle dépend du remplissage, de la pression, de la compression et des installations. En général, le débit disponible diminue avec le stock. Une réserve d’énergie et une capacité de soutirage sont deux mesures distinctes.', guide: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/' },
       { sigle: 'Gaz utile', nom: 'Gaz disponible au-dessus du gaz coussin', def: 'Volume de gaz présent dans un stockage au-dessus du gaz coussin, disponible pour les retraits en fonctionnement normal. La capacité utile est la capacité totale diminuée du gaz coussin ; le stock utile observé à une date peut rester inférieur à cette capacité.', guide: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/' },
       { sigle: 'Gaz coussin', nom: 'Gaz conservé pour l’exploitation du stockage', def: 'Volume de gaz destiné à rester dans un stockage pour maintenir les conditions de pression et de débit nécessaires à son exploitation. Il est normalement conservé pendant les cycles d’injection et de retrait. Le volume utile se mesure au-dessus de cette base.', guide: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/' },
@@ -1130,6 +1132,19 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  distillats: {
+    articles: [{ label: 'Du pétrole en mer au gazole livré', href: '/posts/petrole-flux-gazole-stocks-tresorerie/', kind: 'article' }],
+    sources: [{ label: 'EIA : distillate fuel oil', href: 'https://www.eia.gov/tools/glossary/index.php?id=distillate', detail: 'Définition de la catégorie regroupant carburants diesel et fiouls.', kind: 'source' }],
+    related: ['padd', 'risque-de-base'],
+  },
+  padd: {
+    articles: [{ label: 'Du pétrole en mer au gazole livré', href: '/posts/petrole-flux-gazole-stocks-tresorerie/', kind: 'article' }],
+    sources: [
+      { label: 'EIA : périmètre des PADD', href: 'https://www.eia.gov/TOOLS/GLOSSARY/index.php?id=petroleum', detail: 'Cinq districts pour les cinquante États et DC ; territoires dans les PADD 6 et 7, hors totaux américains.', kind: 'source' },
+      { label: 'EIA : analyse régionale des approvisionnements', href: 'https://www.eia.gov/todayinenergy/detail.php?id=4890', detail: 'Utilisation des régions pour suivre les produits pétroliers et leurs mouvements.', kind: 'source' },
+    ],
+    related: ['distillats'],
+  },
   trs: {
     intuition: 'Transférer la performance d’un prêt ajoute une promesse de paiement dont il faut apprécier la solidité.',
     articles: [{ label: 'Barclays : crédit privé et risque des TRS', href: '/posts/barclays-credit-prive-trs-risque/', kind: 'article' }],
@@ -2065,7 +2080,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       { label: 'CFTC : Basis et Basis Risk', href: 'https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', detail: 'Écart comptant-terme et variations entre l’ouverture et la clôture d’une couverture.', kind: 'source' },
       { label: 'BCE : dérivés énergétiques', href: 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html', detail: 'Section 3 : écarts entre points de livraison du gaz.', kind: 'source' },
     ],
-    related: ['brent', 'future', 'couverture-de-change'],
+    related: ['brent', 'future', 'couverture-de-change', 'distillats'],
   },
   'couverture-de-change': {
     articles: [{ label: 'Le dollar caché dans la facture d’énergie', href: '/posts/dollar-facture-energie/', kind: 'article' }],

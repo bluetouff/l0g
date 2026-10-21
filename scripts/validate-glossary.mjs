@@ -18,6 +18,35 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Product and geographic scopes must remain explicit in EIA inventory comparisons.
+for (const [slug, sources] of [
+  ['distillats', ['https://www.eia.gov/tools/glossary/index.php?id=distillate']],
+  ['padd', ['https://www.eia.gov/TOOLS/GLOSSARY/index.php?id=petroleum', 'https://www.eia.gov/todayinenergy/detail.php?id=4890']],
+]) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(en[0].robots, 'noindex,follow'); assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.equal(fr[0].sectionTitle, 'Énergie & géopolitique'); assert.equal(en[0].sectionTitle, 'Energy & geopolitics');
+  assert.notEqual(fr[0].def, en[0].def); assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  for (const [entry, article, terms] of [[fr[0], '/posts/petrole-flux-gazole-stocks-tresorerie/', glossaryEntries], [en[0], '/en/analysis/oil-flows-diesel-stocks-liquidity/', glossaryAtlasEn]]) {
+    assert.equal(entry.guide, article); assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
+    assert.doesNotMatch(entry.def, /[—]/u);
+    for (const neighbor of entry.atlas.related) {
+      const related = terms.find(term => term.slug === neighbor);
+      assert(related, `${slug}: missing related term ${neighbor}`);
+      assert(related.atlas.related.includes(slug), `${slug}: missing reciprocal relation from ${neighbor}`);
+    }
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'distillats').def, /statistiques de l’EIA.*diesel.*fiouls.*chauffage.*dépasse le seul gazole routier/u);
+assert.match(glossaryAtlasEnBySlug.get('distillats').def, /diesel fuels.*fuel oils.*heating oil.*EIA statistics.*beyond road diesel/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'padd').def, /cinquante États.*DC.*cinq districts.*PADD 1.*côte Est.*PADD 6 et 7.*exclus des totaux/u);
+assert.match(glossaryAtlasEnBySlug.get('padd').def, /fifty states.*DC.*five districts.*PADD 1.*East Coast.*PADDs 6 and 7.*excluded.*US totals/u);
+
 // Total-return transfer, counterparty default and recognised netting have separate scopes.
 for (const [slug, sourceUrls] of [
   ['trs', ['https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-3-definitions', 'https://www.gov.uk/hmrc-internal-manuals/corporate-finance-manual/cfm13380']],
@@ -528,7 +557,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 296, 'Le corpus anglais doit conserver ses 296 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 298, 'Le corpus anglais doit conserver ses 298 fiches uniques');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -710,10 +739,10 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 694, 'Le corpus doit conserver ses 694 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 284, 'Le graphe Atlas doit conserver ses 284 nœuds');
+assert.equal(glossaryEntries.length, 696, 'Le corpus doit conserver ses 696 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 286, 'Le graphe Atlas doit conserver ses 286 nœuds');
 for (const [slug, sources, related] of [
-  ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change']],
+  ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
   ['termes-de-l-echange', ['https://www.oecd.org/en/data/indicators/terms-of-trade.html'], ['compte-courant', 'transmission-des-prix', 'couverture-de-change']],
 ]) {
@@ -1133,7 +1162,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 824, 'Le graphe Atlas doit conserver ses 824 relations');
+assert.equal(glossaryAtlasEdgeCount, 828, 'Le graphe Atlas doit conserver ses 828 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
