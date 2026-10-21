@@ -31,6 +31,14 @@ Chaque traduction porte `sourceSha256`, le SHA-256 du `JSON.stringify` du corpus
 
 ## Trois dates distinctes
 
+### Enrichissement revu le 21 octobre 2026
+
+- IA : le communiqué Aligned du 28 juillet ajoute une émission ABS de 1,183 milliard de dollars déclarée finalisée, adossée à quatre campus. Les souscripteurs et l'émetteur juridique des titres ne sont pas nommés. La date de remboursement prévue à cinq ans ne devient pas une maturité finale vérifiée ; les emplois du produit net restent prospectifs. Cette dette est distincte du capital de croissance engagé lors de l'acquisition. Le registre SEC de SB Energy conserve le S-1/A du 21 septembre comme dernier dépôt ; cette vérification ciblée ne confirme aucun règlement supplémentaire de Nvidia ni introduction achevée.
+- Crédit privé : les registres SEC d'ARCC, d'Apollo et d'Athene et les index officiels Pagaya et ATLAS SP ont été consultés pour les publications du 17 au 21 octobre. Les pièces examinées n'ajoutent pas de financement aux relations représentées. Le dépôt ARCC du 2 octobre porte sur une assurance, le 8-K Apollo du 20 octobre sur une nomination et l'annonce Athene du 19 octobre sur un appel investisseurs. Les corpus et leurs dates restent inchangés, avec des inventaires au 30 juin.
+- Pétrole : la section 6.8 du document d'admission Volare du 5 octobre ajoute les garanties de Trafigura Group Pte. Ltd. aux chantiers. Le total d'environ 731 millions de dollars concerne des dépenses restantes garanties ou à garantir pour huit navires, sans ventilation entre les deux états. Il n'est ni un prêt bancaire ni un paiement. La prévision de besoin de liquidité reste datée du document. Les index Volare et Trafigura examinés n'apportent pas de pièce supplémentaire sur les crédits déjà représentés ; le cas tchadien conserve sa période documentaire.
+
+Les deux nouvelles relations conservent la date de publication de leur pièce et portent `recordedOn: "2026-10-21"`. Les observations antérieures ne sont pas redatées. Les traductions anglaises sont relues avant renouvellement de leurs empreintes ; le corpus crédit et son empreinte restent inchangés. Aucun domaine source ni changement du modèle monétaire n'est ajouté. La veille automatique reste en pause.
+
 ### Enrichissement revu le 16 octobre 2026
 
 - IA : le registre SEC de SB Energy conserve le S-1/A du 21 septembre comme dernier dépôt. Les observations antérieures et leurs dates de revue restent inchangées. Cette vérification ciblée ne confirme ni le règlement du placement distinct de Nvidia ni l’achèvement de l’introduction.

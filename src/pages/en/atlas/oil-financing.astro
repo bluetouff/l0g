@@ -14,12 +14,13 @@ const latestDate = dataset.milestones.at(-1)!.date;
     dataset={dataset}
     subject="oil financing"
     intro="Who pays the seller, who advances the money, and who receives the revenues? Follow a cargo, a trader’s financing, an oil-backed loan in Chad and the financing of Volare’s fleet."
-    boundary="Four documented cases from different periods. Arrows represent each record’s relationship, which is not always a payment. Volare began trading on 5 October and reported a partial exercise of its share issuance option on 13 October. Vessel leases, equity subscriptions and Trafigura’s corporate facilities remain separate. Glencore’s roles as buyer and creditor are also distinct."
+    boundary="Four documented cases from different periods. Arrows represent each record’s relationship, which is not always a payment. Volare began trading on 5 October and reported a partial exercise of its share issuance option on 13 October. Shipbuilding guarantees, vessel leases, equity subscriptions and Trafigura’s corporate facilities remain separate. Glencore’s roles as buyer and creditor are also distinct."
     selectedRelation="investors-volare"
     hubs={['unicredit', 'trafigura', 'escrow']}
     entryPoints={[
       { label: 'What is the status of Volare’s financing?', relation: 'investors-volare', date: latestDate },
       { label: 'How are the operating vessels financed?', relation: 'bocomm-volare-leasebacks', date: '2026-10-05' },
+      { label: 'Which shipbuilding obligations does Trafigura guarantee?', relation: 'trafigura-volare-construction-guarantees', date: '2026-10-05' },
       { label: 'How does Volare’s issuance option work?', relation: 'volare-clarksons-option', date: latestDate },
       { label: 'Which financing remains to be secured?', relation: 'volare-fleet-programme', date: '2026-10-05' },
       { label: 'Who pays for the cargo?', relation: 'unicredit-bp-payment', date: '2023-05-04' },
@@ -34,7 +35,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
     ]}
   >
     <section slot="overview" class="oil-overview" aria-labelledby="oil-circuits-title">
-      <p><strong>Targeted review on <time datetime="2026-10-16">16 October 2026</time>.</strong> Clarksons’ role is added from the <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-and-over-allotment-notice/">5 October release</a>. The <a href="https://www.volareshipping.com/news/">Volare news register</a> checked still lists <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice/">13 October</a> as its latest release. The <a href="https://mb.cision.com/Public/24324/4404303/ad59eaca69c8f1aa.pdf">information document, sections 6.6 and 6.9</a>, remains the reference for fleet financing. The other chains retain their documented periods; the Chad case remains based on the <a href="https://eiti.org/documents/chad-2023-eiti-report">2023 EITI report</a>.</p>
+      <p><strong>Targeted review on <time datetime="2026-10-21">21 October 2026</time>.</strong> Trafigura’s guarantees to shipbuilders are added from the <a href="https://mb.cision.com/Public/24324/4404303/ad59eaca69c8f1aa.pdf">5 October admission document, section 6.8</a>. Its total combines obligations guaranteed or still to be guaranteed; it is not cash paid. The liquidity need in section 6.6 remains a forecast made at the document’s date; this review does not confirm that it has been funded. The <a href="https://www.volareshipping.com/news/">Volare register</a> checked still lists <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice/">13 October</a> as its latest release. The <a href="https://www.trafigura.com/news-and-insights/">news</a> and <a href="https://www.trafigura.com/finance/funding/">funding pages at Trafigura</a> checked provide no further document on the facilities shown. The Chad case retains its documented period, based on the <a href="https://eiti.org/documents/chad-2023-eiti-report">2023 EITI report</a>.</p>
       <details>
         <summary id="oil-circuits-title">Four ways to follow the financing</summary>
         <ol>

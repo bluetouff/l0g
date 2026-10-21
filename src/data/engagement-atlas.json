@@ -52,6 +52,13 @@
       "url": "https://www.sec.gov/Archives/edgar/data/2133037/000162828026062846/sbenergy-sx1a2.htm",
       "publishedOn": "2026-09-21",
       "locator": "Résumé, p. 21 ; Our Corporate Information, p. 26 ; Concurrent Private Placement ; note Subsequent Events, NVIDIA Investment, p. F-87."
+    },
+    {
+      "id": "aligned-abs-20260728",
+      "title": "Aligned : émission de titres adossés à des actifs annoncée comme finalisée",
+      "url": "https://aligneddc.com/press-release/aligned-data-centers-completes-1-18-billion-securitization-financing/",
+      "publishedOn": "2026-07-28",
+      "locator": "Communiqué du 28 juillet 2026, ouverture et paragraphes sur les classes A-2-I et B, leur date de remboursement prévue et les emplois du produit net."
     }
   ],
   "nodes": [
@@ -91,6 +98,13 @@
       "role": "Intermédiaire du préfinancement",
       "column": 2,
       "row": 3
+    },
+    {
+      "id": "aligned-abs-investors",
+      "label": "Investisseurs ABS d’Aligned",
+      "role": "Souscripteurs institutionnels non nommés",
+      "column": 3,
+      "row": 1
     }
   ],
   "relations": [
@@ -262,6 +276,26 @@
           ]
         }
       ]
+    },
+    {
+      "id": "investors-aligned-abs",
+      "from": "aligned-abs-investors",
+      "to": "aligned",
+      "observations": [
+        {
+          "publishedOn": "2026-07-28",
+          "recordedOn": "2026-10-21",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Émission ABS déclarée finalisée · 1,183 Md$",
+          "claim": "Aligned annonce avoir finalisé une émission de 1,183 milliard de dollars de titres adossés à des actifs (ABS), en classes A-2-I et B, auprès d’investisseurs institutionnels. Les titres sont adossés à quatre campus, avec une date de remboursement prévue à cinq ans (ARD). Le produit net est destiné au développement, au refinancement et aux réserves obligatoires.",
+          "limit": "La flèche résume le financement déclaré par Aligned : le communiqué ne nomme ni les souscripteurs ni l’émetteur juridique des titres. L’ARD n’est pas une échéance finale vérifiée. Les emplois du produit restent prévus, sans dépenses ou remboursements attestés. Cette dette ne se confond pas avec le capital de croissance engagé lors de l’acquisition.",
+          "watch": "Documentation obligataire, identité de l’émetteur et des porteurs, puis utilisation effective du produit net.",
+          "sources": [
+            "aligned-abs-20260728"
+          ]
+        }
+      ]
     }
   ],
   "milestones": [
@@ -279,6 +313,11 @@
       "date": "2026-07-21",
       "label": "L’acquisition d’Aligned",
       "change": "AIP, MGX et GIP figurent dans le consortium qui annonce avoir acquis Aligned. La carte distingue la valeur d’entreprise du capital de croissance engagé."
+    },
+    {
+      "date": "2026-07-28",
+      "label": "La titrisation d’Aligned",
+      "change": "Aligned annonce la finalisation d’une émission ABS de 1,183 milliard de dollars. Le financement obligataire reste distinct du capital de croissance engagé lors de l’acquisition ; les emplois du produit net sont prospectifs."
     },
     {
       "date": "2026-08-17",

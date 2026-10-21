@@ -18,12 +18,13 @@ const latestDate = dataset.milestones.at(-1)!.date;
     dataset={dataset}
     subject="financement du pétrole"
     intro="Qui paie le vendeur, qui avance l’argent et qui reçoit les recettes ? Suivez une cargaison, le financement d’un négociant, un prêt pétrolier au Tchad et le financement de la flotte Volare."
-    boundary="Quatre cas documentés, à des périodes différentes. Les flèches représentent la relation décrite dans chaque fiche, pas toujours un versement. Volare est coté depuis le 5 octobre et annonce un exercice partiel de l’option d’émission le 13. Les locations de navires, l’achat d’actions et les crédits d’entreprise de Trafigura restent distincts. Les deux rôles de Glencore restent séparés : acheteur et créancier."
+    boundary="Quatre cas documentés, à des périodes différentes. Les flèches représentent la relation décrite dans chaque fiche, pas toujours un versement. Volare est coté depuis le 5 octobre et annonce un exercice partiel de l’option d’émission le 13. Les garanties de construction, les locations de navires, l’achat d’actions et les crédits d’entreprise de Trafigura restent distincts. Les deux rôles de Glencore restent séparés : acheteur et créancier."
     selectedRelation="investors-volare"
     hubs={['unicredit', 'trafigura', 'escrow']}
     entryPoints={[
       { label: 'Où en est le financement de Volare ?', relation: 'investors-volare', date: latestDate },
       { label: 'Comment les navires exploités sont-ils financés ?', relation: 'bocomm-volare-leasebacks', date: '2026-10-05' },
+      { label: 'Quels engagements de construction Trafigura garantit-il ?', relation: 'trafigura-volare-construction-guarantees', date: '2026-10-05' },
       { label: 'Comment fonctionne l’option d’émission ?', relation: 'volare-clarksons-option', date: latestDate },
       { label: 'Quel financement reste à compléter ?', relation: 'volare-fleet-programme', date: '2026-10-05' },
       { label: 'Qui paie la cargaison ?', relation: 'unicredit-bp-payment', date: '2023-05-04' },
@@ -38,7 +39,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
     ]}
   >
     <section slot="overview" class="oil-overview" aria-labelledby="oil-circuits-title">
-      <p><strong>Revue ciblée du <time datetime="2026-10-16">16 octobre 2026</time>.</strong> Ajout du rôle de Clarksons à partir de la <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-and-over-allotment-notice/">pièce du 5 octobre</a>. Le <a href="https://www.volareshipping.com/news/">registre des communiqués Volare</a> consulté conserve la publication du <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice/">13 octobre</a> comme dernière pièce. Le <a href="https://mb.cision.com/Public/24324/4404303/ad59eaca69c8f1aa.pdf">document d’admission, sections 6.6 et 6.9</a>, reste la référence pour la flotte. Les autres circuits conservent leurs périodes documentaires ; le cas tchadien reste fondé sur le <a href="https://eiti.org/documents/chad-2023-eiti-report">rapport ITIE 2023</a>.</p>
+      <p><strong>Revue ciblée du <time datetime="2026-10-21">21 octobre 2026</time>.</strong> Ajout des garanties de Trafigura aux chantiers à partir du <a href="https://mb.cision.com/Public/24324/4404303/ad59eaca69c8f1aa.pdf">document d’admission du 5 octobre, section 6.8</a>. Le montant indiqué regroupe des engagements garantis ou à garantir ; il ne mesure pas un versement. Le besoin de liquidité de la section 6.6 reste une prévision à la date du document, sans confirmation de sa couverture par cette revue. Le <a href="https://www.volareshipping.com/news/">registre Volare</a> consulté conserve le <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice/">13 octobre</a> comme dernière publication. Les pages <a href="https://www.trafigura.com/news-and-insights/">actualités</a> et <a href="https://www.trafigura.com/finance/funding/">financement de Trafigura</a> examinées n’ajoutent pas de pièce sur les crédits représentés. Le cas tchadien conserve sa période documentaire, fondée sur le <a href="https://eiti.org/documents/chad-2023-eiti-report">rapport ITIE 2023</a>.</p>
       <details>
         <summary id="oil-circuits-title">Quatre circuits pour lire le financement</summary>
         <ol>

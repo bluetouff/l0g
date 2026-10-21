@@ -17,6 +17,7 @@ import dataset from '../../data/engagement-atlas.json';
     entryPoints={[
       { label: 'Quel argent Nvidia a-t-elle déjà versé ?', relation: 'nvidia-energy-global-prepayment', date: '2026-09-21' },
       { label: 'Qu’a acquis le consortium AIP, MGX et GIP ?', relation: 'consortium-aligned-acquisition', date: '2026-07-21' },
+      { label: 'Comment Aligned se finance-t-elle par titrisation ?', relation: 'investors-aligned-abs', date: '2026-07-28' },
       { label: 'Qui paie si OpenAI ne paie plus ?', relation: 'nvidia-sb-guarantee', date: dataset.milestones.at(-1)!.date, scenario: true },
       { label: 'Comment le rôle de Nvidia évolue-t-il ?', relation: 'nvidia-aip', date: '2025-03-19' },
     ]}
@@ -27,9 +28,10 @@ import dataset from '../../data/engagement-atlas.json';
     ]}
   >
     <section slot="overview" class="ia-review" aria-labelledby="ia-review-title">
-      <h2 id="ia-review-title">Revue ciblée du <time datetime="2026-10-16">16 octobre 2026</time></h2>
-      <p>Le <a href="https://data.sec.gov/submissions/CIK0002133037.json">registre public de SB Energy à la SEC</a> consulté le 16 octobre conserve pour dernier dépôt le <a href="https://www.sec.gov/Archives/edgar/data/2133037/000162828026062846/sbenergy-sx1a2.htm">prospectus du 21 septembre</a>. Aucun nouveau dépôt recensé dans ce registre ne confirme le règlement de l’achat d’actions supplémentaire de Nvidia ou la réalisation de l’introduction en Bourse.</p>
-      <p>Cette vérification ciblée ne renouvelle pas la revue de chaque contrat et ne recense pas tous les financements de l’IA. Le corpus conserve ses observations et leurs dates de revue. L’absence de nouveau dépôt n’établit pas, à elle seule, l’absence d’une opération.</p>
+      <h2 id="ia-review-title">Revue ciblée du <time datetime="2026-10-21">21 octobre 2026</time></h2>
+      <p>Le <a href="https://aligneddc.com/press-release/aligned-data-centers-completes-1-18-billion-securitization-financing/">communiqué d’Aligned du 28 juillet</a>, ajouté lors de cette revue, déclare une émission de titres adossés à des actifs (ABS) de 1,183 milliard de dollars finalisée. Cette dette reste distincte du capital de croissance engagé lors de l’acquisition ; l’emploi prévu du produit ne prouve pas les dépenses réalisées.</p>
+      <p>Le <a href="https://data.sec.gov/submissions/CIK0002133037.json">registre public de SB Energy à la SEC</a> consulté le 21 octobre conserve pour dernier dépôt le <a href="https://www.sec.gov/Archives/edgar/data/2133037/000162828026062846/sbenergy-sx1a2.htm">prospectus du 21 septembre</a>. Aucun nouveau dépôt recensé dans ce registre ne confirme le règlement de l’achat d’actions supplémentaire de Nvidia ou la réalisation de l’introduction en Bourse.</p>
+      <p>Cette vérification ciblée ne renouvelle pas la revue de chaque contrat et ne recense pas tous les financements de l’IA. Le corpus conserve ses observations antérieures et leurs dates de revue. L’absence de nouveau dépôt n’établit pas, à elle seule, l’absence d’une opération.</p>
     </section>
   </EngagementAtlas>
   <FrenchRelatedReading id="ai-financing" collection="atlas" />

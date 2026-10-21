@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "9e3ba873fce2b4f08d0db341d984710a5bbcf7d5cc30b3e8f636c33cd827c557",
+  "sourceSha256": "2f2f5326d2dd59400606ee6f6c3e0a3e70698be7790347378b35de77ccecd725",
   "title": "Oil financing atlas",
   "sources": {
     "sienna-judgment-2023": {
@@ -40,7 +40,7 @@
     },
     "volare-information-20261005": {
       "title": "Volare: October 5 information document",
-      "locator": "Sections 6.6, p. 30 (projected liquidity), and 6.9, p. 32 (six-vessel sale and leasebacks); PDF pages 34 and 36."
+      "locator": "Sections 1.1.8, p. 5 (Sponsor identity), 6.6, p. 30 (projected liquidity), 6.8, p. 31 (guarantees of shipbuilding instalments), and 6.9, p. 32 (six-vessel sale and leasebacks); PDF pages 9, 34, 35 and 36."
     },
     "volare-stabilisation-20261013": {
       "title": "Volare: partial exercise of the share issuance option",
@@ -444,6 +444,16 @@
         }
       }
     },
+    "trafigura-volare-construction-guarantees": {
+      "observations": {
+        "2026-10-05": {
+          "label": "Shipyard guarantees · vessels on order",
+          "claim": "The admission document identifies Trafigura Group Pte. Ltd. as the Sponsor and reports guarantees provided to shipbuilders for construction instalments. It puts remaining expenditure guaranteed or to be guaranteed for the eight vessels on order at about $731 million.",
+          "limit": "The total combines guarantees already provided and those still to be provided, without a breakdown. The shipbuilding contracts are held by vessel-owning subsidiaries. These commitments establish no guarantee of all Volare debt and are neither a bank loan nor cash paid.",
+          "watch": "Guarantees actually issued, conditions for claims and funding of construction instalments."
+        }
+      }
+    },
     "volare-clarksons-option": {
       "observations": {
         "2026-10-05": {
@@ -488,7 +498,7 @@
     },
     "2026-10-05": {
       "label": "Volare · admission and fleet financing",
-      "change": "Trading and share delivery are reported as completed. Records distinguish existing leases from financing still being sought."
+      "change": "Trading and share delivery are reported as completed. Records distinguish existing leases, shipbuilding guarantees provided or still to be provided, and financing still being sought."
     },
     "2026-10-13": {
       "label": "Volare · share issuance option partly exercised",

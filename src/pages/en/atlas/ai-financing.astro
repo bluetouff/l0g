@@ -19,6 +19,7 @@ const dataset = englishAtlasDatasets['ai-financing'];
     entryPoints={[
       { label: 'What has Nvidia already paid?', relation: 'nvidia-energy-global-prepayment', date: '2026-09-21' },
       { label: 'What did AIP, MGX and GIP acquire?', relation: 'consortium-aligned-acquisition', date: '2026-07-21' },
+      { label: 'How does Aligned use securitization?', relation: 'investors-aligned-abs', date: '2026-07-28' },
       { label: 'Who pays if OpenAI stops paying?', relation: 'nvidia-sb-guarantee', date: dataset.milestones.at(-1)!.date, scenario: true },
       { label: 'How has Nvidia’s role changed?', relation: 'nvidia-aip', date: '2025-03-19' },
     ]}
@@ -29,9 +30,10 @@ const dataset = englishAtlasDatasets['ai-financing'];
     ]}
   >
     <section slot="overview" class="atlas-overview" aria-labelledby="ai-review-title">
-      <h2 id="ai-review-title">Evidence reviewed on <time datetime="2026-10-16">16 October 2026</time></h2>
-      <p>The <a href="https://data.sec.gov/submissions/CIK0002133037.json">SB Energy SEC register</a> checked on 16 October still lists the <a href="https://www.sec.gov/Archives/edgar/data/2133037/000162828026062846/sbenergy-sx1a2.htm">21 September prospectus</a> as its latest filing. No new filing listed in that register confirms settlement of Nvidia’s additional share purchase or completion of the IPO.</p>
-      <p>This targeted check does not renew the review of every contract or cover every AI financing arrangement. Existing observations and their review dates remain in the corpus. The absence of a new filing alone does not establish that a transaction has not occurred.</p>
+      <h2 id="ai-review-title">Evidence reviewed on <time datetime="2026-10-21">21 October 2026</time></h2>
+      <p>The <a href="https://aligneddc.com/press-release/aligned-data-centers-completes-1-18-billion-securitization-financing/">28 July Aligned release</a>, added in this review, reports completion of a $1.183 billion asset-backed securities (ABS) issuance. This debt remains separate from the growth capital committed at the acquisition; intended uses of proceeds do not establish actual spending.</p>
+      <p>The <a href="https://data.sec.gov/submissions/CIK0002133037.json">SB Energy SEC register</a> checked on 21 October still lists the <a href="https://www.sec.gov/Archives/edgar/data/2133037/000162828026062846/sbenergy-sx1a2.htm">21 September prospectus</a> as its latest filing. No new filing listed in that register confirms settlement of Nvidia’s additional share purchase or completion of the IPO.</p>
+      <p>This targeted check does not renew the review of every contract or cover every AI financing arrangement. Earlier observations and their review dates remain in the corpus. The absence of a new filing alone does not establish that a transaction has not occurred.</p>
     </section>
   </EngagementAtlas>
   <EnglishRelatedReading id="ai-financing" collection="atlas" />

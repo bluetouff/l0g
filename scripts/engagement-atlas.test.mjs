@@ -21,6 +21,45 @@ const source = JSON.parse(readFileSync(new URL('../src/data/engagement-atlas.jso
 const credit = JSON.parse(readFileSync(new URL('../src/data/private-credit-atlas.json', import.meta.url), 'utf8'));
 const oil = JSON.parse(readFileSync(new URL('../src/data/oil-financing-atlas.json', import.meta.url), 'utf8'));
 
+test('Aligned ABS financing enters on disclosure without rewriting acquisition capital or implying spent proceeds', () => {
+  const before = atlasAt(source, '2026-07-27');
+  assert.equal(before.nodes.some(node => node.id === 'aligned-abs-investors'), false);
+  assert.equal(before.sources.some(item => item.id === 'aligned-abs-20260728'), false);
+  const disclosed = atlasAt(source, '2026-07-28');
+  const relation = disclosed.relations.find(item => item.id === 'investors-aligned-abs');
+  assert.deepEqual([relation.from, relation.to], ['aligned-abs-investors', 'aligned']);
+  assert.equal(relation.observation.recordedOn, '2026-10-21');
+  assert.equal(relation.observation.kind, 'announcement');
+  assert.equal(relation.observation.amount, undefined);
+  assert.match(relation.observation.claim, /1,183 milliard.*A-2-I.*B/);
+  assert.match(relation.observation.claim, /destiné/);
+  assert.match(relation.observation.limit, /ni les souscripteurs ni l’émetteur juridique/);
+  assert.match(relation.observation.limit, /pas une échéance finale/);
+  assert.deepEqual(disclosed.relations.filter(item => item.from === 'aligned-abs-investors' || item.to === 'aligned-abs-investors').map(item => item.id), ['investors-aligned-abs']);
+  const observations = snapshot => snapshot.relations
+    .filter(item => item.id !== relation.id).map(({ changed, ...item }) => item);
+  assert.deepEqual(observations(disclosed), observations(before));
+  assert.equal(disclosed.sources.some(item => item.id === 'sb-s1a2-20260921'), false);
+});
+
+test('Volare construction guarantees retain their documentary cutoff and are not treated as cash or bank credit', () => {
+  const id = 'trafigura-volare-construction-guarantees';
+  assert.equal(atlasAt(oil, '2026-10-04').relations.some(item => item.id === id), false);
+  const disclosed = atlasAt(oil, '2026-10-05');
+  const relation = disclosed.relations.find(item => item.id === id);
+  assert.deepEqual([relation.from, relation.to], ['trafigura', 'volare-fleet']);
+  assert.equal(relation.observation.recordedOn, '2026-10-21');
+  assert.equal(relation.observation.kind, 'contract');
+  assert.equal(relation.observation.amount, undefined);
+  assert.deepEqual(relation.observation.sources, ['volare-information-20261005']);
+  assert.match(relation.observation.claim, /Trafigura Group Pte\. Ltd\./);
+  assert.match(relation.observation.claim, /731.*garanties ou à garantir.*huit/);
+  assert.match(relation.observation.limit, /sans ventilation/);
+  assert.match(relation.observation.limit, /ni un prêt bancaire ni des espèces versées/);
+  assert.equal(disclosed.sources.some(item => item.id === 'volare-stabilisation-20261013'), false);
+  assert.equal(oil.relations.some(item => ['ercf', 'usd-cnh-facilities', 'liquidity'].includes(item.from) && item.to === 'volare-fleet'), false);
+});
+
 test('PAID REV1 separates initial funding from projected revolving deployment and preserves earlier cuts', () => {
   const before = atlasAt(credit, '2026-09-21');
   assert.equal(before.nodes.some(node => ['paid-rev-investors', 'paid-2026-rev1'].includes(node.id)), false);

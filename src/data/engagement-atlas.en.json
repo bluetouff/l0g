@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "8cb53e0d8eab596701860756c121cbcb00ed4057063cd807c47076f7b09fb031",
+  "sourceSha256": "39afbf69e062b6775f8e5eca19e9aded4c1da5aefb352160e4aefc2058fcfd41",
   "title": "AI financing atlas",
   "sources": {
     "aip-2024": {
@@ -29,6 +29,10 @@
     "sb-s1a2-20260921": {
       "title": "SB Energy: amended S-1/A prospectus of September 21, 2026",
       "locator": "Summary, p. 21; Our Corporate Information, p. 26; Concurrent Private Placement; Subsequent Events note, NVIDIA Investment, p. F-87."
+    },
+    "aligned-abs-20260728": {
+      "title": "Aligned: asset-backed securities issuance reported as completed",
+      "locator": "28 July 2026 press release, opening and paragraphs on Classes A-2-I and B, their anticipated repayment date and intended use of net proceeds."
     }
   },
   "nodes": {
@@ -83,6 +87,10 @@
     "energy-global": {
       "label": "Energy Global, LP",
       "role": "Prepayment intermediary"
+    },
+    "aligned-abs-investors": {
+      "label": "Aligned ABS investors",
+      "role": "Unnamed institutional subscribers"
     }
   },
   "relations": {
@@ -265,6 +273,16 @@
           "watch": "Accounting treatment and settlement of the corresponding obligations."
         }
       }
+    },
+    "investors-aligned-abs": {
+      "observations": {
+        "2026-07-28": {
+          "label": "ABS issuance reported as completed · $1.183bn",
+          "claim": "Aligned announces completion of a $1.183 billion asset-backed securities (ABS) issuance to institutional investors, comprising Class A-2-I and Class B notes. Four campuses provide the collateral, with a five-year anticipated repayment date (ARD). Net proceeds are intended for development, refinancing and mandatory reserves.",
+          "limit": "The arrow summarises Aligned’s reported financing: the release names neither the subscribers nor the legal issuer of the notes. The ARD is not a verified final maturity. Planned uses of proceeds do not establish that expenditure or repayments have occurred. This debt is separate from the growth capital committed at the acquisition.",
+          "watch": "Note documentation, identity of the issuer and holders, and actual use of net proceeds."
+        }
+      }
     }
   },
   "milestones": {
@@ -279,6 +297,10 @@
     "2026-07-21": {
       "label": "The Aligned acquisition",
       "change": "AIP, MGX and GIP are members of the consortium announcing its acquisition of Aligned. The map separates enterprise value from committed growth capital."
+    },
+    "2026-07-28": {
+      "label": "Aligned’s securitization",
+      "change": "Aligned reports completion of a $1.183 billion ABS issuance. The debt financing remains separate from growth capital committed at the acquisition; uses of net proceeds are prospective."
     },
     "2026-08-17": {
       "label": "The guaranties",
