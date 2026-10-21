@@ -298,7 +298,7 @@ test('the English publication is discoverable from navigation and home', () => {
   const layout = readFileSync(ENGLISH_LAYOUT, 'utf8');
   const spotlight = readFileSync(PUBLICATION_SPOTLIGHT, 'utf8');
   assert.match(index, /<PublicationSpotlight lang="en"/u);
-  assert.match(home, /<PublicationSpotlight lang="en"/u);
+  assert.match(home, /<LatestEnglishEpub \/>/u);
   assert.match(layout, /href: '\/en\/publications\/'/u);
   assert.match(spotlight, /epsteins-money-l0g\.epub/u);
   assert.match(spotlight, /epsteins-money-cover\.png/u);

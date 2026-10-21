@@ -110,9 +110,7 @@ test('bilingual pages, cover files and catalog expose the exact editions', () =>
   assert.match(spotlight, /publication === 'e-invoicing'/u);
   assert.match(frIndex, /PublicationSpotlight publication="e-invoicing"/u);
   assert.match(enIndex, /PublicationSpotlight lang="en" publication="e-invoicing"/u);
-  assert.match(enHome, /The Great E-Invoicing Toll: five investigations in one EPUB\./u);
-  assert.match(enHome, /PublicationSpotlight lang="en" publication="e-invoicing" headingLevel="h3" showAllPublicationsLink/u);
-  assert.match(enHome, /\.publication-highlight\s*\{\s*margin:\s*clamp\([^;]+\)\s+0\s+clamp\([^;]+\);/u);
+  assert.match(enHome, /<LatestEnglishEpub \/>/u);
   assert.match(spotlight, /href=\{isEnglish \? '\/en\/publications\/' : '\/publications\/'\}/u);
   assert.match(spotlight, /isEnglish \? 'All publications' : 'Toutes les publications'/u);
   for (const file of ['grand-peage-facture-cover.png', 'great-e-invoicing-toll-cover.png']) {
