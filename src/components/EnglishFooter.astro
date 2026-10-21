@@ -1,0 +1,103 @@
+---
+import FooterLinkIcon, { type FooterIconName } from './FooterLinkIcon.astro';
+
+interface Props {
+  path: string;
+  year: number;
+}
+
+const { path, year } = Astro.props;
+const normalize = (value: string) => value.replace(/\/$/, '') || '/';
+const currentPath = normalize(path);
+const currentState = (href: string): 'page' | 'location' | undefined => {
+  const target = normalize(href);
+  if (currentPath === target) return 'page';
+  return target !== '/en' && currentPath.startsWith(`${target}/`) ? 'location' : undefined;
+};
+
+const columns = [
+  {
+    key: 'read',
+    label: 'Read & explore',
+    links: [
+      { href: '/en/analysis/', label: 'Analysis', icon: 'proof' },
+      { href: '/en/asia/', label: 'Asia', icon: 'topics' },
+      { href: '/en/atlas/', label: 'Financial atlases', icon: 'topics' },
+      { href: '/en/guides/', label: 'Reference guides', icon: 'guide' },
+      { href: '/en/glossary/', label: 'Glossary', icon: 'glossary' },
+      { href: '/en/tools/', label: 'Analysis tools', icon: 'tools' },
+      { href: '/en/publications/', label: 'Publications', icon: 'guide' },
+    ],
+  },
+  {
+    key: 'methods',
+    label: 'Methods & sources',
+    links: [
+      { href: '/en/methodology/', label: 'Methodology', icon: 'methodology' },
+      { href: '/en/sources/', label: 'Primary sources', icon: 'sources' },
+      { href: '/en/editorial-protocol/', label: 'Editorial protocol', icon: 'protocol' },
+    ],
+  },
+  {
+    key: 'developers',
+    label: 'Developers',
+    links: [
+      { href: '/en/api/', label: 'API', icon: 'api' },
+      { href: '/en/mcp/', label: 'MCP', icon: 'mcp' },
+      { href: '/en/agent-surface/', label: 'Agent surface', icon: 'agents' },
+    ],
+  },
+  {
+    key: 'about',
+    label: 'About l0g',
+    links: [
+      { href: '/en/start/', label: 'Start here', icon: 'compass' },
+      { href: '/en/about/', label: 'About', icon: 'about' },
+      { href: '/en/contact/', label: 'Contact', icon: 'contact' },
+      { href: '/en/press-resources/', label: 'Press resources', icon: 'pages' },
+      { href: '/en/support/', label: 'Support l0g', icon: 'support' },
+    ],
+  },
+] as const;
+---
+
+<footer class="en-footer">
+  <div class="en-footer-rule" aria-hidden="true"></div>
+  <div class="en-footer-inner mx-auto max-w-6xl px-5">
+    <div class="en-footer-intro">
+      <a href="/en/" class="en-footer-brand" aria-label="l0g English home">
+        <span class="en-footer-wordmark">l<span>0</span>g<span class="en-footer-cursor" aria-hidden="true">_</span></span>
+        <span class="en-footer-edition">English edition</span>
+      </a>
+      <p>Independent financial analysis, <br />reference guides and public sources.</p>
+    </div>
+
+    <nav class="en-footer-grid" aria-label="Footer navigation">
+      {columns.map((column) => (
+        <section class={`en-footer-group en-footer-group-${column.key}`} aria-labelledby={`en-footer-${column.key}`}>
+          <h2 id={`en-footer-${column.key}`}>{column.label}</h2>
+          <ul role="list">
+            {column.links.map(({ href, label, icon }) => (
+              <li>
+                <a href={href} aria-current={currentState(href)}>
+                  <FooterLinkIcon name={icon as FooterIconName} />
+                  <span>{label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </nav>
+
+    <div class="en-footer-bottom">
+      <p>© {year} l0g.fr <span aria-hidden="true">·</span> CC BY 4.0 unless stated otherwise</p>
+      <ul role="list" aria-label="Edition and site resources">
+        <li><a href="/" lang="fr" hreflang="fr">Français</a></li>
+        <li><a href="/en/rss.xml">RSS</a></li>
+        <li><a href="https://github.com/bluetouff" rel="me noopener">GitHub</a></li>
+        <li><a href="/.well-known/security.txt">security.txt</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

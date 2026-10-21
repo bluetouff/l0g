@@ -111,7 +111,9 @@ test('la page active est visible dans la navigation, la recherche et les colonne
   const englishNavigation = await readFile(new URL('../src/components/EnglishNavigation.astro', import.meta.url), 'utf8');
   assert.match(englishLayout, /<EnglishNavigation path=\{Astro.url.pathname\} compact=\{compactNavigation\}/);
   assert.match(englishNavigation, /href="\/en\/support\/"[^>]*>Support l0g/);
-  assert.match(englishLayout, /\{ href: '\/en\/support\/', label: 'support l0g'/);
+  const englishFooter = await readFile(new URL('../src/components/EnglishFooter.astro', import.meta.url), 'utf8');
+  assert.match(englishLayout, /<EnglishFooter\b/);
+  assert.match(englishFooter, /\{ href: '\/en\/support\/', label: 'Support l0g'/);
   assert.match(supportCard, /href: '\/soutenir\/'/);
   assert.match(supportCard, /href: '\/en\/support\/'/);
   assert.match(supportCard, /lang\?: 'fr' \| 'en'/);

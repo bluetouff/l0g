@@ -1,9 +1,8 @@
 ---
 import '../styles/global.css';
-import { existsSync } from 'node:fs';
-import { join } from 'node:path';
 import CspMeta from '../components/CspMeta.astro';
 import EnglishNavigation from '../components/EnglishNavigation.astro';
+import EnglishFooter from '../components/EnglishFooter.astro';
 import { authorEntity, organizationEntity, websiteEntity } from '../config/entities.ts';
 import { buildRobotsMetadata, buildSeoMetadata } from '../lib/seo.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
@@ -52,24 +51,6 @@ const metaDescription = seo.description;
 const socialImageAlt = publicationSocial?.alt ?? ogImageAlt ?? (ogImage ? `${socialTitle}: l0g.fr social card` : pageSocial.alt);
 const year = new Date().getFullYear();
 
-const hasPage = (path: string) => existsSync(join(process.cwd(), path));
-const footerLinks = [
-  { href: '/en/guides/', label: 'guides', show: hasPage('src/pages/en/guides/index.astro') },
-  { href: '/en/analysis/', label: 'analysis', show: hasPage('src/pages/en/analysis/index.astro') },
-  { href: '/en/asia/', label: 'asia in the global system', show: hasPage('src/pages/en/asia/index.astro') },
-  { href: '/en/atlas/', label: 'financial atlases', show: hasPage('src/pages/en/atlas/index.astro') },
-  { href: '/en/tools/', label: 'analysis tools', show: hasPage('src/pages/en/tools/index.astro') },
-  { href: '/en/publications/', label: 'publications', show: hasPage('src/pages/en/publications/index.astro') },
-  { href: '/en/methodology/', label: 'methodology', show: hasPage('src/pages/en/methodology/index.astro') },
-  { href: '/en/sources/', label: 'sources', show: hasPage('src/pages/en/sources/index.astro') },
-  { href: '/en/api/', label: 'api', show: hasPage('src/pages/en/api/index.astro') },
-  { href: '/en/press-resources/', label: 'press resources', show: hasPage('src/pages/en/press-resources/index.astro') },
-  { href: '/en/mcp/', label: 'mcp', show: hasPage('src/pages/en/mcp.astro') },
-  { href: '/en/agent-surface/', label: 'agent surface', show: hasPage('src/pages/en/agent-surface.astro') },
-  { href: '/en/support/', label: 'support l0g', show: hasPage('src/pages/en/support/index.astro') },
-  { href: '/', label: 'french site', show: true },
-].filter((item) => item.show);
-
 const siteJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -84,6 +65,7 @@ const siteJsonLd = {
 <html lang="en" data-theme="dark">
   <head>
     {ogType === 'article' && <link rel="stylesheet" href="/styles/article-sources-v1.css" />}
+    <link rel="stylesheet" href="/styles/english-footer-v1.css" />
     <meta charset="utf-8" />
     <CspMeta />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -148,24 +130,7 @@ const siteJsonLd = {
       </main>
     </div>
 
-    <footer class="site-footer en-footer">
-      <div class="footer-grad" aria-hidden="true"></div>
-      <div class="footer-inner mx-auto max-w-6xl px-5">
-        <p class="mono-label">// l0g English edition</p>
-        <p class="en-footer-text">
-          Independent financial analysis, reference guides and public evidence for international readers. The French corpus remains broader, and every adapted English edition links back to its source.
-        </p>
-        <p class="en-footer-links">
-          {footerLinks.map((link, index) => (
-            <>
-              {index > 0 && <span aria-hidden="true"> · </span>}
-              <a href={link.href} class="link-term">{link.label}</a>
-            </>
-          ))}
-        </p>
-        <p class="mono-label en-copy">© {year} l0g.fr · CC BY 4.0 unless stated otherwise</p>
-      </div>
-    </footer>
+    <EnglishFooter path={Astro.url.pathname} year={year} />
   </body>
 </html>
 
@@ -182,13 +147,4 @@ const siteJsonLd = {
       radial-gradient(circle at 60% 92%, color-mix(in srgb, var(--color-amber) 8%, transparent), transparent 24rem),
       linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 31%, transparent), transparent 34rem);
   }
-  .en-footer-text {
-    margin-top: 0.45rem;
-    max-width: 48rem;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-  .en-footer-links { margin-top: 0.75rem; font-family: var(--font-mono); font-size: 0.75rem; }
-  .en-copy { margin-top: 1.2rem; color: var(--color-muted); }
 </style>

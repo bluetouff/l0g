@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Sidebar from '../components/Sidebar.astro';
 import SiteNavigation from '../components/SiteNavigation.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import EnglishFooter from '../components/EnglishFooter.astro';
 import WebMCPTools from '../components/WebMCPTools.astro';
 import CspMeta from '../components/CspMeta.astro';
 import { authorEntity, organizationEntity, websiteEntity } from '../config/entities.ts';
@@ -77,6 +78,7 @@ const siteJsonLd = {
 <html lang={lang} data-theme="dark">
   <head>
     {ogType === 'article' && <link rel="stylesheet" href="/styles/article-sources-v1.css" />}
+    {lang === 'en' && <link rel="stylesheet" href="/styles/english-footer-v1.css" />}
     <meta charset="utf-8" />
     <CspMeta />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -209,7 +211,7 @@ const siteJsonLd = {
       )}
     </div>
 
-    <SiteFooter path={path} year={year} />
+    {lang === 'en' ? <EnglishFooter path={path} year={year} /> : <SiteFooter path={path} year={year} />}
 
     {path.startsWith('/recherche') && (
       <script src={pagefindInitUrl} defer is:inline></script>

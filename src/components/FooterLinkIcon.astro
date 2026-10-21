@@ -15,6 +15,8 @@ export type FooterIconName =
   | 'mcp'
   | 'agents'
   | 'about'
+  | 'contact'
+  | 'support'
   | 'status'
   | 'privacy'
   | 'pages';
@@ -136,6 +138,15 @@ const { name } = Astro.props;
       <line x1="12" y1="11" x2="12" y2="16" />
       <circle cx="12" cy="8" r="0.7" fill="currentColor" stroke="none" />
     </>
+  )}
+  {name === 'contact' && (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    </>
+  )}
+  {name === 'support' && (
+    <path d="M20.2 5.8a5 5 0 0 0-7.1 0L12 6.9l-1.1-1.1a5 5 0 0 0-7.1 7.1L12 21l8.2-8.1a5 5 0 0 0 0-7.1Z" />
   )}
   {name === 'status' && (
     <>
