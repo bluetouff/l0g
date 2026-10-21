@@ -8,27 +8,23 @@
 //   - slug = nom de fichier sans extension (routage Astro filename-based)
 //
 // Env (defauts cales sur le repo) : POSTS_DIR=src/content/posts  OUT_DIR=public/og
+// Les cartes anglaises utilisent public/og/en pour ne jamais ecraser une carte francaise.
 
 import fs from "node:fs";
 import path from "node:path";
+import { load, JSON_SCHEMA } from "js-yaml";
 import { OG, ogCard, renderOgPng } from "./og-kit.mjs";
 
 const POSTS_DIR = process.env.POSTS_DIR || "src/content/posts";
-const OUT_DIR = process.env.OUT_DIR || "public/og";
+const OG_LANG = process.env.OG_LANG || "fr";
+const OUT_DIR = process.env.OUT_DIR || (OG_LANG === "en" ? "public/og/en" : "public/og");
 
 function frontmatter(src) {
   const m = src.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!m) return {};
-  const block = m[1];
-  const field = (name) => {
-    const r = block.match(new RegExp(`^${name}:\\s*(.*\\S)\\s*$`, "m"));
-    if (!r) return undefined;
-    let v = r[1].trim();
-    if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
-      v = v.slice(1, -1);
-    }
-    return v;
-  };
+  const data = load(m[1], { schema: JSON_SCHEMA });
+  if (!data || typeof data !== "object" || Array.isArray(data)) return {};
+  const field = (name) => typeof data[name] === "string" ? data[name].trim() : undefined;
   return { title: field("title"), ogImage: field("ogImage"), pubDate: field("pubDate") };
 }
 
@@ -39,8 +35,6 @@ function frDate(raw) {
   const locale = (process.env.OG_LANG || "fr") === "en" ? "en-GB" : "fr-FR";
   return d.toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" });
 }
-
-const OG_LANG = process.env.OG_LANG || "fr";
 
 async function render(title, dateLabel) {
   const isGuide = POSTS_DIR.includes("guides");

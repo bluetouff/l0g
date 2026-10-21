@@ -9,6 +9,7 @@ import { authorEntity, organizationEntity, websiteEntity } from '../config/entit
 import { buildRobotsMetadata, buildSeoMetadata } from '../lib/seo.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
 import { getPublicationSocial } from '../config/publication-social.mjs';
+import { defaultEnglishPageSocial, getEnglishPageSocial } from '../config/english-page-social.mjs';
 import pagefindInitUrl from '../scripts/pagefind-init.js?url';
 import interLatinUrl from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import jetBrainsMonoLatinUrl from '@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url';
@@ -39,22 +40,25 @@ const {
   seoDescription,
   robots = 'index,follow',
   ogType = 'website',
-  ogImage = '/og-default.png',
+  ogImage,
   ogImageAlt,
   sidebar = true,
   lang = 'fr',
-  ogLocale = 'fr_FR',
+  ogLocale = lang === 'en' ? 'en_US' : 'fr_FR',
   alternateLinks = [],
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const publicationSocial = getPublicationSocial(Astro.url.pathname);
-const ogImageUrl = new URL(publicationSocial?.image ?? ogImage, Astro.site).toString();
+const pageSocial = getEnglishPageSocial(Astro.url.pathname) ?? defaultEnglishPageSocial;
+const ogImageUrl = new URL(publicationSocial?.image ?? ogImage ?? (lang === 'en' ? pageSocial.image : '/og-default.png'), Astro.site).toString();
 const seo = buildSeoMetadata(title, seoDescription || description, { seoTitle });
 const fullTitle = seo.fullTitle;
 const socialTitle = (ogTitle ?? '').trim() || fullTitle;
 const metaDescription = seo.description;
-const socialImageAlt = publicationSocial?.alt ?? ogImageAlt ?? `${socialTitle} - carte sociale l0g.fr`;
+const socialImageAlt = publicationSocial?.alt ?? ogImageAlt ?? (lang === 'en'
+  ? (ogImage ? `${socialTitle}: l0g.fr social card` : pageSocial.alt)
+  : `${socialTitle} - carte sociale l0g.fr`);
 const year = new Date().getFullYear();
 const path = Astro.url.pathname;
 const hasContextSidebar = Astro.slots.has('sidebar');

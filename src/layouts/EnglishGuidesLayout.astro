@@ -8,6 +8,7 @@ import { authorEntity, organizationEntity, websiteEntity } from '../config/entit
 import { buildRobotsMetadata, buildSeoMetadata } from '../lib/seo.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
 import { getPublicationSocial } from '../config/publication-social.mjs';
+import { defaultEnglishPageSocial, getEnglishPageSocial } from '../config/english-page-social.mjs';
 
 type AlternateLink = { hreflang: string; href: string };
 
@@ -34,7 +35,7 @@ const {
   seoDescription,
   robots = 'index,follow',
   ogType = 'website',
-  ogImage = '/og-default.png',
+  ogImage,
   ogImageAlt,
   canonical = new URL(Astro.url.pathname, Astro.site).toString(),
   alternateLinks = [],
@@ -42,12 +43,13 @@ const {
 } = Astro.props;
 
 const publicationSocial = getPublicationSocial(Astro.url.pathname);
-const ogImageUrl = new URL(publicationSocial?.image ?? ogImage, Astro.site).toString();
+const pageSocial = getEnglishPageSocial(Astro.url.pathname) ?? defaultEnglishPageSocial;
+const ogImageUrl = new URL(publicationSocial?.image ?? ogImage ?? pageSocial.image, Astro.site).toString();
 const seo = buildSeoMetadata(title, seoDescription || description, { seoTitle });
 const fullTitle = seo.fullTitle;
 const socialTitle = (ogTitle ?? '').trim() || fullTitle;
 const metaDescription = seo.description;
-const socialImageAlt = publicationSocial?.alt ?? ogImageAlt ?? `${socialTitle}: l0g.fr social card`;
+const socialImageAlt = publicationSocial?.alt ?? ogImageAlt ?? (ogImage ? `${socialTitle}: l0g.fr social card` : pageSocial.alt);
 const year = new Date().getFullYear();
 
 const hasPage = (path: string) => existsSync(join(process.cwd(), path));

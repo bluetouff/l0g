@@ -87,6 +87,78 @@ test("social-card PNG visibly retains all four terminal borders", async () => {
   }
 });
 
+test("long social-card titles retain their full text and a clear gap before footer chips", async (t) => {
+  const fixtures = [
+    {
+      title: "Collatéral et réhypothécation : un même titre, plusieurs propriétaires, et la clé de toute la plomberie",
+      subtitle: "Analyse l0g : lecture critique, sources citées, données publiques.",
+    },
+    {
+      title: "La contagion silencieuse : comment le crédit privé tisse une toile invisible entre banques, assureurs, marchés actions, crypto et stablecoins",
+      subtitle: "Analyse l0g : lecture critique, sources citées, données publiques.",
+    },
+    {
+      title: "Fonds de crédit privé semi-liquides et gating : le cas HLEND (BlackRock) et les leçons pour les investisseurs particuliers en 2026",
+      subtitle: "Analyse l0g : lecture critique, sources citées, données publiques.",
+    },
+    {
+      title: "Risque inflationniste persistant en 2026 : choc énergétique iranien, révisions haussières et défis pour les banques centrales",
+      subtitle: "Analyse l0g : lecture critique, sources citées, données publiques.",
+    },
+    {
+      title: "SpaceX entre en bourse, 12 juin 2026 : le tapis rouge que la SEC déroule à l'IPO la plus chère de l'histoire en tordant son règlement",
+      subtitle: "Analyse l0g : lecture critique, sources citées, données publiques.",
+    },
+    {
+      title: "SpaceX goes public, 12 June 2026: the red carpet the SEC rolls out for the most expensive IPO in history by bending its own rules",
+      subtitle: "l0g analysis: critical reading, cited sources, public data.",
+    },
+    {
+      title: "Lire la masse monétaire M2 : signal de liquidité, lectures erronées et lien avec le risk-on",
+      subtitle: "Guide de référence l0g : notion durable, sources primaires, révision datée.",
+    },
+  ];
+
+  for (const fixture of fixtures) {
+    await t.test(fixture.title, async () => {
+      const nodes = [];
+      await satori(ogCard({ ...fixture, dateLabel: "19 October 2026" }), {
+        width: OG.width,
+        height: OG.height,
+        fonts,
+        onNodeDetected: (node) => nodes.push(node),
+      });
+      const title = nodes.find(({ textContent }) => textContent === fixture.title);
+      const subtitle = nodes.find(({ textContent }) => textContent === fixture.subtitle);
+      const chips = nodes.filter(({ props }) => props.style.height === "34px");
+      assert.ok(title, "the complete, untruncated title must be rendered");
+      assert.ok(subtitle, "the complete subtitle must be rendered");
+      assert.equal(chips.length, 3);
+      const gap = Math.min(...chips.map(({ top }) => top)) - subtitle.top - subtitle.height;
+      assert.ok(gap >= 24, `subtitle is too close to footer chips: ${gap}px`);
+      assert.ok(title.top + title.height <= subtitle.top);
+    });
+  }
+});
+
+test("short social-card titles keep the existing type size and placement", async () => {
+  const nodes = [];
+  await satori(ogCard({
+    title: "Taiwan FX risk",
+    subtitle: "Analyse l0g : lecture critique, sources citées, données publiques.",
+    dateLabel: "19 October 2026",
+  }), {
+    width: OG.width,
+    height: OG.height,
+    fonts,
+    onNodeDetected: (node) => nodes.push(node),
+  });
+  const title = nodes.find(({ textContent }) => textContent === "Taiwan FX risk");
+  assert.ok(title);
+  assert.equal(title.props.style.fontSize, "54px");
+  assert.deepEqual([title.left, title.top, title.width, title.height], [120, 266, 920, 60]);
+});
+
 test("homepage social card visibly retains its bottom-right site address", async (t) => {
   const directory = await mkdtemp(join(tmpdir(), "l0g-og-home-"));
   t.after(() => rm(directory, { recursive: true, force: true }));

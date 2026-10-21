@@ -152,12 +152,18 @@ const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile
   .en-brand-caption { display: grid; gap: .18rem; padding-left: 1.2rem; border-left: 1px solid var(--color-line-strong); font-size: .67rem; line-height: 1.5; letter-spacing: .02em; }
   .en-brand-caption > :first-child { color: var(--color-paper); }
   .en-brand-caption > :last-child { color: var(--color-muted); }
-  .en-utilities { display: flex; align-items: center; gap: 1.5rem; font-size: .7rem; color: var(--color-muted); }
+  .en-utilities { display: flex; align-items: center; gap: .75rem; font-size: .7rem; color: var(--color-muted); }
   .en-utilities a { display: inline-flex; align-items: center; gap: .55rem; min-height: 44px; white-space: nowrap; }
   .en-utilities a:hover { color: var(--color-bright); }
-  .en-utilities .en-support { color: var(--color-paper); }
-  .en-support > span { color: var(--color-accent); }
-  .en-language { display: flex; align-items: center; gap: .65rem; padding-left: 1.5rem; border-left: 1px solid var(--color-line); font-size: .65rem; }
+  .en-utilities :is(.en-start, .en-support) { justify-content: center; gap: .75rem; padding: .35rem .85rem; border: 1px solid; border-radius: 8px; color: var(--color-paper); font-size: .73rem; font-weight: 600; line-height: 1.3; box-shadow: inset 0 1px 0 var(--edge-highlight); transition: background-color .18s, border-color .18s, color .18s; }
+  .en-utilities .en-start { border-color: color-mix(in srgb, var(--color-signal) 30%, var(--color-line)); background: color-mix(in srgb, var(--color-signal) 4%, var(--color-surface)); }
+  .en-start > span { color: var(--color-signal); }
+  .en-utilities .en-support { border-color: color-mix(in srgb, var(--color-accent) 58%, var(--color-line)); background: color-mix(in srgb, var(--color-accent) 11%, var(--color-surface)); }
+  .en-support > span { display: grid; place-items: center; width: 22px; height: 22px; border: 1px solid color-mix(in srgb, var(--color-accent) 27%, transparent); border-radius: 50%; color: var(--color-accent); }
+  .en-utilities .en-start:hover { border-color: color-mix(in srgb, var(--color-signal) 75%, var(--color-line)); background: color-mix(in srgb, var(--color-signal) 9%, var(--color-surface)); color: var(--color-signal); }
+  .en-utilities .en-support:is(:hover, [aria-current]) { border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 18%, var(--color-surface)); color: var(--color-bright); }
+  .english-header :is(.en-start, .en-support):focus-visible { border-radius: 8px; outline-offset: 4px; }
+  .en-language { display: flex; align-items: center; gap: .65rem; padding-left: .75rem; border-left: 1px solid var(--color-line); font-size: .65rem; }
   .en-language > span { color: var(--color-signal); }
   .en-theme { display: grid; place-items: center; width: 44px; height: 44px; margin-left: -.6rem; padding: 0; border: 1px solid var(--color-line); border-radius: 50%; background: transparent; color: var(--color-muted); cursor: pointer; }
   .en-theme[hidden] { display: none; }
@@ -227,12 +233,10 @@ const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile
     .en-masthead { gap: .7rem; }
     .en-wordmark { font-size: 2.1rem; }
     .en-brand { gap: .8rem; }
-    .en-brand-caption { padding-left: .8rem; font-size: .6rem; }
-    .en-brand-caption > :first-child { display: none; }
+    .en-brand-caption { display: none; }
     .en-utilities { gap: .55rem; }
-    .en-utilities .en-support { display: none; }
-    .is-compact .en-utilities .en-support { display: inline-flex; font-size: .65rem; }
-    .is-compact .en-brand-caption { display: none; }
+    .en-utilities .en-support { gap: .5rem; padding: .35rem .65rem; font-size: .67rem; }
+    .en-support > span { width: 18px; height: 18px; }
     .en-language { padding-left: 0; border: 0; gap: .5rem; }
     .en-language > span { display: none; }
     .en-theme { width: 44px; margin-left: 0; border: 0; }
@@ -259,6 +263,6 @@ const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile
     .en-navigation { gap: .5rem; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .en-menu-symbol i { transition: none; }
+    .en-menu-symbol i, .en-utilities :is(.en-start, .en-support) { transition: none; }
   }
 </style>

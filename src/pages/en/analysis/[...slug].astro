@@ -40,7 +40,7 @@ const updatedLabel = fmt(updated);
 const isoPub = post.data.pubDate.toISOString();
 const isoUpd = updated.toISOString();
 const rt = readingTime(post.body);
-const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
+const ogImage = post.data.ogImage ?? `/og/en/${post.id}.png`;
 
 const url = new URL(`/en/analysis/${post.id}/`, Astro.site).toString();
 const articleId = `${url}#article`;

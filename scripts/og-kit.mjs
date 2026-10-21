@@ -83,6 +83,10 @@ export function ogCard({
   accent = OG.rose,
   chips = ["sources primaires", "code ouvert", "zéro tracker"],
 }) {
+  // Keep short titles unchanged; longer copy needs room above the footer chips.
+  // These steps retain the full title and at least 24px of separation with the
+  // current 970px title column, font metrics and two-line analysis/guide decks.
+  const titleSize = title.length <= 78 ? 54 : title.length <= 110 ? 50 : 44;
   return h(
     "div",
     {
@@ -139,7 +143,7 @@ export function ogCard({
             {
               display: "flex",
               fontWeight: 700,
-              fontSize: "54px",
+              fontSize: `${titleSize}px`,
               lineHeight: 1.12,
               color: OG.bright,
               letterSpacing: "-1px",
