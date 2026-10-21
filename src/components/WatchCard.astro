@@ -25,7 +25,7 @@ const copy = lang === 'en'
 
 <a
   class:list={['watch-card', { compact }]}
-  href="https://watch.l0g.fr/"
+  href={lang === 'en' ? 'https://watch.l0g.fr/en/' : 'https://watch.l0g.fr/'}
   target="_blank"
   rel="noopener noreferrer"
   aria-label={copy.label}

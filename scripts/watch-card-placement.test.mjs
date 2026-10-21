@@ -4,10 +4,10 @@ import test from 'node:test';
 
 const read = (path) => readFile(new URL(path, import.meta.url), 'utf8');
 
-test('Watch card is passive, bilingual and links to the canonical Watch home', async () => {
+test('Watch card is passive, bilingual and links to the matching Watch edition', async () => {
   const component = await read('../src/components/WatchCard.astro');
 
-  assert.match(component, /href="https:\/\/watch\.l0g\.fr\/"/);
+  assert.match(component, /href=\{lang === 'en' \? 'https:\/\/watch\.l0g\.fr\/en\/' : 'https:\/\/watch\.l0g\.fr\/'\}/);
   assert.match(component, /target="_blank"[\s\S]*rel="noopener noreferrer"/);
   assert.doesNotMatch(component, /watch-new|>new</i);
   assert.match(component, /La mémoire privée de votre veille\./);
