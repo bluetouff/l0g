@@ -108,7 +108,9 @@ test('la page active est visible dans la navigation, la recherche et les colonne
   assert.match(englishAnalysisPage, /<SupportCard lang="en" compact \/>[\s\S]*<WatchCard lang="en" compact \/>/);
   assert.match(englishGuidePage, /<SupportCard lang="en" compact \/>/);
   assert.match(englishGuidePage, /grid-template-columns: minmax\(0, 42rem\) 290px/);
-  assert.match(englishLayout, /\{ href: '\/en\/support\/', label: 'support'/);
+  const englishNavigation = await readFile(new URL('../src/components/EnglishNavigation.astro', import.meta.url), 'utf8');
+  assert.match(englishLayout, /<EnglishNavigation path=\{Astro.url.pathname\} compact=\{compactNavigation\}/);
+  assert.match(englishNavigation, /href="\/en\/support\/"[^>]*>Support l0g/);
   assert.match(englishLayout, /\{ href: '\/en\/support\/', label: 'support l0g'/);
   assert.match(supportCard, /href: '\/soutenir\/'/);
   assert.match(supportCard, /href: '\/en\/support\/'/);

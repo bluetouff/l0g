@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import CspMeta from '../components/CspMeta.astro';
+import EnglishNavigation from '../components/EnglishNavigation.astro';
 import { authorEntity, organizationEntity, websiteEntity } from '../config/entities.ts';
 import { buildRobotsMetadata, buildSeoMetadata } from '../lib/seo.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
@@ -50,28 +51,6 @@ const socialImageAlt = publicationSocial?.alt ?? ogImageAlt ?? `${socialTitle}: 
 const year = new Date().getFullYear();
 
 const hasPage = (path: string) => existsSync(join(process.cwd(), path));
-const nav = [
-  { href: '/en/', label: 'overview', active: Astro.url.pathname === '/en/' },
-  { href: '/en/start/', label: 'start', active: Astro.url.pathname.startsWith('/en/start'), show: hasPage('src/pages/en/start/index.astro') },
-  { href: '/en/tour/', label: 'tour', active: Astro.url.pathname.startsWith('/en/tour'), show: hasPage('src/pages/en/tour/index.astro') },
-  { href: '/en/guides/', label: 'guides', active: Astro.url.pathname.startsWith('/en/guides'), show: hasPage('src/pages/en/guides/index.astro') },
-  { href: '/en/analysis/', label: 'analysis', active: Astro.url.pathname.startsWith('/en/analysis'), show: hasPage('src/pages/en/analysis/index.astro') },
-  { href: '/en/asia/', label: 'asia', active: Astro.url.pathname.startsWith('/en/asia'), show: hasPage('src/pages/en/asia/index.astro') },
-  { href: '/en/atlas/', label: 'atlases', active: Astro.url.pathname.startsWith('/en/atlas'), show: hasPage('src/pages/en/atlas/index.astro') },
-  { href: '/en/tools/', label: 'tools', active: Astro.url.pathname.startsWith('/en/tools'), show: hasPage('src/pages/en/tools/index.astro') },
-  { href: '/en/publications/', label: 'publications', active: Astro.url.pathname.startsWith('/en/publications'), show: hasPage('src/pages/en/publications/index.astro') },
-  { href: '/en/methodology/', label: 'method', active: Astro.url.pathname.startsWith('/en/methodology'), show: hasPage('src/pages/en/methodology/index.astro') },
-  { href: '/en/sources/', label: 'sources', active: Astro.url.pathname.startsWith('/en/sources'), show: hasPage('src/pages/en/sources/index.astro') },
-  { href: '/en/api/', label: 'api', active: Astro.url.pathname.startsWith('/en/api'), show: hasPage('src/pages/en/api/index.astro') },
-  { href: '/en/press-resources/', label: 'press', active: Astro.url.pathname.startsWith('/en/press-resources'), show: hasPage('src/pages/en/press-resources/index.astro') },
-  { href: '/en/mcp/', label: 'mcp', active: Astro.url.pathname.startsWith('/en/mcp'), show: hasPage('src/pages/en/mcp/index.astro') },
-  { href: '/en/support/', label: 'support', active: Astro.url.pathname.startsWith('/en/support'), show: hasPage('src/pages/en/support/index.astro') },
-  { href: '/', label: 'fr', active: false, show: true },
-].filter((item) => item.show !== false);
-const visibleNav = compactNavigation
-  ? nav.filter((item) => ['/en/', '/en/support/', '/'].includes(item.href))
-  : nav;
-
 const footerLinks = [
   { href: '/en/guides/', label: 'guides', show: hasPage('src/pages/en/guides/index.astro') },
   { href: '/en/analysis/', label: 'analysis', show: hasPage('src/pages/en/analysis/index.astro') },
@@ -83,8 +62,8 @@ const footerLinks = [
   { href: '/en/sources/', label: 'sources', show: hasPage('src/pages/en/sources/index.astro') },
   { href: '/en/api/', label: 'api', show: hasPage('src/pages/en/api/index.astro') },
   { href: '/en/press-resources/', label: 'press resources', show: hasPage('src/pages/en/press-resources/index.astro') },
-  { href: '/en/mcp/', label: 'mcp', show: hasPage('src/pages/en/mcp/index.astro') },
-  { href: '/en/agent-surface/', label: 'agent surface', show: hasPage('src/pages/en/agent-surface/index.astro') },
+  { href: '/en/mcp/', label: 'mcp', show: hasPage('src/pages/en/mcp.astro') },
+  { href: '/en/agent-surface/', label: 'agent surface', show: hasPage('src/pages/en/agent-surface.astro') },
   { href: '/en/support/', label: 'support l0g', show: hasPage('src/pages/en/support/index.astro') },
   { href: '/', label: 'french site', show: true },
 ].filter((item) => item.show);
@@ -160,23 +139,9 @@ const siteJsonLd = {
     <div class="topbar" aria-hidden="true"></div>
     <div class="en-backdrop" aria-hidden="true"></div>
     <div class="mx-auto max-w-6xl px-5 py-7 sm:py-9">
-      <header class="en-header">
-        <a href="/en/" class="brand en-brand" aria-label="l0g English home">
-          <span class="brand-mark">
-            <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="brand-cursor blink text-accent" aria-hidden="true">_</span>
-          </span>
-          <span class="brand-sep" aria-hidden="true"></span>
-          <span class="brand-tag mono-label">risk intelligence · english</span>
-        </a>
+      <EnglishNavigation path={Astro.url.pathname} compact={compactNavigation} />
 
-        <nav class="en-nav" aria-label="English navigation">
-          {visibleNav.map((item) => (
-            <a href={item.href} class="nav-tab" aria-current={item.active ? 'page' : undefined}>{item.label}</a>
-          ))}
-        </nav>
-      </header>
-
-      <main class="min-w-0 py-8">
+      <main id="main-content" tabindex="-1" class="min-w-0 py-8">
         <slot />
       </main>
     </div>
@@ -215,22 +180,6 @@ const siteJsonLd = {
       radial-gradient(circle at 60% 92%, color-mix(in srgb, var(--color-amber) 8%, transparent), transparent 24rem),
       linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 31%, transparent), transparent 34rem);
   }
-  .en-header {
-    display: grid;
-    gap: 1rem;
-    align-items: end;
-  }
-  .en-brand { text-decoration: none; }
-  .en-nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.35rem 1.05rem;
-  }
-  .en-nav .nav-tab[aria-current='page'] {
-    color: var(--color-signal);
-    text-shadow: 0 0 18px color-mix(in srgb, var(--color-signal) 35%, transparent);
-  }
   .en-footer-text {
     margin-top: 0.45rem;
     max-width: 48rem;
@@ -240,8 +189,4 @@ const siteJsonLd = {
   }
   .en-footer-links { margin-top: 0.75rem; font-family: var(--font-mono); font-size: 0.75rem; }
   .en-copy { margin-top: 1.2rem; color: var(--color-muted); }
-  @media (min-width: 860px) {
-    .en-header { grid-template-columns: auto 1fr; }
-    .en-nav { justify-content: flex-end; }
-  }
 </style>

@@ -1,0 +1,264 @@
+---
+interface Props {
+  path: string;
+  compact?: boolean;
+}
+
+const { path, compact = false } = Astro.props;
+const normalize = (value: string) => value.replace(/\/$/, '') || '/';
+const currentPath = normalize(path);
+const isActive = (href: string) => {
+  const base = normalize(href);
+  return currentPath === base || (base !== '/en' && currentPath.startsWith(`${base}/`));
+};
+const primary = [
+  { href: '/en/analysis/', label: 'Analysis', mobile: true },
+  { href: '/en/asia/', label: 'Asia', mobile: true },
+  { href: '/en/atlas/', label: 'Atlases' },
+  { href: '/en/guides/', label: 'Guides', mobile: true },
+  { href: '/en/tools/', label: 'Tools' },
+  { href: '/en/publications/', label: 'Publications' },
+];
+const groups = [
+  {
+    title: 'Read & follow',
+    items: [
+      { href: '/en/', label: 'Overview', description: 'The English edition at a glance' },
+      { href: '/en/analysis/', label: 'Analysis', description: 'Our latest investigations' },
+      { href: '/en/asia/', label: 'Asia', description: 'Capital, currencies and supply chains' },
+      { href: '/en/publications/', label: 'Publications', description: 'Book-length investigations, freely available' },
+    ],
+  },
+  {
+    title: 'Explore & learn',
+    items: [
+      { href: '/en/atlas/', label: 'Financial atlases', description: 'Map the institutions and the money' },
+      { href: '/en/guides/', label: 'Reference guides', description: 'Read the data behind the story' },
+      { href: '/en/tools/', label: 'Analysis tools', description: 'Test assumptions and scenarios' },
+      { href: '/en/glossary/', label: 'Glossary', description: 'Financial terms, explained' },
+    ],
+  },
+  {
+    title: 'Inside l0g',
+    items: [
+      { href: '/en/start/', label: 'Start here', description: 'Find your way through the publication' },
+      { href: '/en/tour/', label: 'Guided tour', description: 'A closer look at the reading experience' },
+      { href: '/en/methodology/', label: 'Methodology', description: 'Sources, calculations and limits' },
+      { href: '/en/sources/', label: 'Primary sources', description: 'The evidence we work with' },
+    ],
+  },
+];
+const resources = [
+  { href: '/en/about/', label: 'About' },
+  { href: '/en/press-resources/', label: 'Press' },
+  { href: '/en/api/', label: 'API' },
+  { href: '/en/mcp/', label: 'MCP' },
+  { href: '/en/agent-surface/', label: 'Agent Surface' },
+];
+const exploreActive = !primary.some((item) => isActive(item.href))
+  && [...groups.flatMap((group) => group.items), ...resources].some((item) => isActive(item.href));
+const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile && isActive(item.href));
+---
+
+<header class:list={['english-header', { 'is-compact': compact }]} data-english-header>
+  <a href="#main-content" class="en-skip">Skip to content</a>
+  <div class="en-masthead">
+    <a href="/en/" class="en-brand" aria-label="l0g English home">
+      <span class="brand-mark en-wordmark"><span>l</span><span class="brand-0">0</span><span>g</span><span class="brand-cursor" aria-hidden="true">_</span></span>
+      <span class="en-brand-caption"><span>Independent analysis</span><span>English edition</span></span>
+    </a>
+    <div class="en-utilities">
+      {!compact && <a class="en-start" href="/en/start/">Start here <span aria-hidden="true">↗</span></a>}
+      <a href="/en/support/" class="en-support" aria-current={isActive('/en/support/') ? 'page' : undefined}>Support l0g <span aria-hidden="true">↗</span></a>
+      <div class="en-language" aria-label="Edition"><span lang="en">EN</span><a href="/" lang="fr" hreflang="fr" aria-label="Lire l0g en français">FR</a></div>
+      <button type="button" class="en-theme" aria-label="Light theme" aria-pressed="false" hidden>
+        <svg class="en-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" /></svg>
+        <svg class="en-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13.2A8.5 8.5 0 0 1 10.8 3.5a8.5 8.5 0 1 0 9.7 9.7Z" /></svg>
+      </button>
+    </div>
+  </div>
+
+  {!compact && (
+    <nav class="en-navigation" aria-label="English navigation">
+      <ul class="en-primary" role="list">
+        {primary.map((item) => <li class:list={{ 'en-desktop-item': !item.mobile }}><a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a></li>)}
+      </ul>
+      <details class="en-explore">
+        <summary data-active={exploreActive ? 'true' : undefined} data-mobile-active={mobileExploreActive ? 'true' : undefined}>
+          <span class="en-menu-symbol" aria-hidden="true"><i></i><i></i></span>
+          <span class="en-explore-label">Explore</span><span class="en-menu-label">Menu</span>
+          <span class="en-menu-chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="en-menu-panel">
+          <div class="en-menu-heading"><span>Explore l0g</span><span>Independent thinking. Open evidence.</span></div>
+          <div class="en-menu-groups">
+            {groups.map((group, index) => (
+              <section aria-label={group.title}>
+                <p class="en-group-label"><span aria-hidden="true">0{index + 1}</span>{group.title}</p>
+                <ul role="list">
+                  {group.items.map((item) => <li><a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}><span class="en-menu-item-title">{item.label}<span aria-hidden="true">↗</span></span><span class="en-menu-description">{item.description}</span></a></li>)}
+                </ul>
+              </section>
+            ))}
+          </div>
+          <div class="en-menu-footer"><span>More from l0g</span><ul role="list">{resources.map((item) => <li><a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a></li>)}</ul><a href="/en/support/" class="en-menu-support">Support independent work <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </details>
+    </nav>
+  )}
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-english-header]');
+  const explorer = header?.querySelector<HTMLDetailsElement>('.en-explore');
+  const summary = explorer?.querySelector('summary');
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && explorer?.open) {
+      explorer.open = false;
+      summary?.focus();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (explorer?.open && event.target instanceof Node && !explorer.contains(event.target)) explorer.open = false;
+  });
+  explorer?.addEventListener('focusout', (event) => {
+    if (event.relatedTarget instanceof Node && !explorer.contains(event.relatedTarget)) explorer.open = false;
+  });
+
+  const themeButton = header?.querySelector<HTMLButtonElement>('.en-theme');
+  if (themeButton) {
+    const syncTheme = () => themeButton.setAttribute('aria-pressed', String(document.documentElement.dataset.theme === 'light'));
+    syncTheme();
+    themeButton.hidden = false;
+    themeButton.addEventListener('click', () => {
+      const theme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+      document.documentElement.dataset.theme = theme;
+      syncTheme();
+      try { localStorage.setItem('l0g-theme', theme); } catch { /* The theme still works when storage is unavailable. */ }
+    });
+  }
+</script>
+
+<style>
+  .english-header { position: relative; z-index: 20; }
+  .en-skip { position: absolute; top: 0; left: 0; z-index: 30; padding: .75rem 1rem; background: var(--color-surface); color: var(--color-signal); transform: translateY(-200%); }
+  .en-skip:focus { transform: none; }
+  .english-header :is(a, button, summary):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 5px; border-radius: 2px; }
+  .en-masthead { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: .35rem 0 1.6rem; }
+  .en-brand { display: inline-flex; align-items: center; gap: 1.2rem; flex-shrink: 0; }
+  .en-wordmark { color: var(--color-bright); font-size: 2.55rem; font-weight: 650; line-height: 1; letter-spacing: -.09em; }
+  .brand-0 { color: var(--color-signal); }
+  .brand-cursor { color: var(--color-accent); }
+  .en-brand-caption { display: grid; gap: .18rem; padding-left: 1.2rem; border-left: 1px solid var(--color-line-strong); font-size: .67rem; line-height: 1.5; letter-spacing: .02em; }
+  .en-brand-caption > :first-child { color: var(--color-paper); }
+  .en-brand-caption > :last-child { color: var(--color-muted); }
+  .en-utilities { display: flex; align-items: center; gap: 1.5rem; font-size: .7rem; color: var(--color-muted); }
+  .en-utilities a { display: inline-flex; align-items: center; gap: .55rem; min-height: 44px; white-space: nowrap; }
+  .en-utilities a:hover { color: var(--color-bright); }
+  .en-utilities .en-support { color: var(--color-paper); }
+  .en-support > span { color: var(--color-accent); }
+  .en-language { display: flex; align-items: center; gap: .65rem; padding-left: 1.5rem; border-left: 1px solid var(--color-line); font-size: .65rem; }
+  .en-language > span { color: var(--color-signal); }
+  .en-theme { display: grid; place-items: center; width: 44px; height: 44px; margin-left: -.6rem; padding: 0; border: 1px solid var(--color-line); border-radius: 50%; background: transparent; color: var(--color-muted); cursor: pointer; }
+  .en-theme[hidden] { display: none; }
+  .en-theme:hover { color: var(--color-signal); border-color: var(--color-signal); }
+  .en-theme svg { width: 17px; height: 17px; }
+  .en-moon, :global(:root[data-theme='light']) .en-sun { display: none; }
+  :global(:root[data-theme='light']) .en-moon { display: block; }
+  .en-navigation { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-top: 1px solid var(--color-line-strong); border-bottom: 1px solid var(--color-line-strong); }
+  .en-primary { display: flex; align-items: stretch; gap: clamp(1rem, 3.1vw, 2.4rem); list-style: none; margin: 0; padding: 0; }
+  .en-primary a { position: relative; display: flex; align-items: center; min-height: 56px; font-size: .82rem; font-weight: 500; color: var(--color-nav-idle); }
+  .en-primary a::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: transparent; }
+  .en-primary a:hover { color: var(--color-bright); }
+  .en-primary a:hover::after { background: var(--color-line-strong); }
+  .en-primary a[aria-current] { color: var(--color-signal); }
+  .en-primary a[aria-current]::after { background: var(--color-signal); }
+  .en-explore summary { display: flex; align-items: center; gap: .6rem; min-height: 56px; padding-left: 1.5rem; border-left: 1px solid var(--color-line); color: var(--color-paper); cursor: pointer; list-style: none; font-size: .75rem; }
+  .en-explore summary::-webkit-details-marker { display: none; }
+  .en-explore summary:hover, .en-explore summary[data-active], .en-explore[open] summary { color: var(--color-signal); }
+  .en-menu-symbol { display: grid; gap: 4px; width: 14px; }
+  .en-menu-symbol i { display: block; height: 1px; width: 14px; background: currentColor; transition: transform .18s; }
+  .en-explore[open] .en-menu-symbol i:first-child { transform: translateY(2.5px) rotate(45deg); }
+  .en-explore[open] .en-menu-symbol i:last-child { transform: translateY(-2.5px) rotate(-45deg); }
+  .en-menu-chevron { color: var(--color-muted); margin-left: .6rem; }
+  .en-explore[open] .en-menu-chevron { transform: rotate(180deg); }
+  .en-menu-label { display: none; }
+  .en-menu-panel { position: absolute; top: calc(100% + 10px); left: 0; right: 0; padding: 1.4rem 1.7rem 0; border: 1px solid var(--color-line-strong); border-radius: 4px; background: var(--color-surface); box-shadow: var(--shadow-elevated); max-height: calc(100dvh - 12rem); overflow-y: auto; overscroll-behavior: contain; }
+  .en-menu-heading { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 1.1rem; border-bottom: 1px solid var(--color-line); font-size: .65rem; color: var(--color-muted); }
+  .en-menu-heading > :first-child { color: var(--color-signal); }
+  .en-menu-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding: 1.3rem 0 1.5rem; }
+  .en-group-label { display: flex; gap: .7rem; margin: 0 0 .85rem; font-size: .63rem; text-transform: uppercase; letter-spacing: .09em; color: var(--color-muted); }
+  .en-group-label > span { color: var(--color-signal); }
+  .en-menu-groups ul, .en-menu-footer ul { list-style: none; padding: 0; margin: 0; }
+  .en-menu-groups li + li { margin-top: .35rem; }
+  .en-menu-groups a { display: block; padding: .5rem .65rem; margin: 0 -.65rem; border-radius: 3px; }
+  .en-menu-groups a:hover, .en-menu-groups a[aria-current] { background: var(--surface-inset); }
+  .en-menu-item-title { display: flex; align-items: center; justify-content: space-between; gap: .5rem; color: var(--color-paper); font-size: .8rem; }
+  .en-menu-item-title > span { color: var(--color-signal); opacity: 0; }
+  .en-menu-groups a:is(:hover, :focus-visible, [aria-current]) .en-menu-item-title { color: var(--color-signal); }
+  .en-menu-groups a:is(:hover, :focus-visible, [aria-current]) .en-menu-item-title > span { opacity: 1; }
+  .en-menu-description { display: block; margin-top: .25rem; color: var(--color-muted); font-family: var(--font-read); font-size: .76rem; line-height: 1.5; }
+  .en-menu-footer { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.3rem; padding: .7rem 0; border-top: 1px solid var(--color-line); font-size: .65rem; }
+  .en-menu-footer > span { color: var(--color-muted); }
+  .en-menu-footer ul { display: flex; flex-wrap: wrap; gap: 0 1.3rem; }
+  .en-menu-footer a { display: inline-flex; align-items: center; gap: .75rem; min-height: 44px; }
+  .en-menu-footer a:hover, .en-menu-footer a[aria-current] { color: var(--color-signal); }
+  .en-menu-support { margin-left: auto; }
+  .en-menu-support > span { color: var(--color-accent); }
+  .is-compact .en-masthead { padding-bottom: 1.25rem; border-bottom: 1px solid var(--color-line-strong); }
+  @media (max-width: 800px) {
+    .en-masthead { padding-bottom: 1.15rem; }
+    .en-utilities { gap: .85rem; }
+    .en-start { display: none !important; }
+    .en-language { padding-left: .85rem; }
+    .en-primary { gap: clamp(1rem, 4vw, 2rem); }
+    .en-primary .en-desktop-item { display: none; }
+    .en-primary a, .en-explore summary { min-height: 52px; }
+    .en-menu-label { display: inline; }
+    .en-explore-label { display: none; }
+    .en-menu-chevron { display: none; }
+    .en-explore summary { padding-left: 1rem; }
+    .en-explore summary[data-mobile-active] { color: var(--color-signal); }
+    .en-menu-panel { padding: 1.1rem 1.2rem 0; }
+    .en-menu-groups { gap: 1.4rem; }
+    .en-menu-description { font-size: .73rem; }
+  }
+  @media (max-width: 580px) {
+    .en-masthead { gap: .7rem; }
+    .en-wordmark { font-size: 2.1rem; }
+    .en-brand { gap: .8rem; }
+    .en-brand-caption { padding-left: .8rem; font-size: .6rem; }
+    .en-brand-caption > :first-child { display: none; }
+    .en-utilities { gap: .55rem; }
+    .en-utilities .en-support { display: none; }
+    .is-compact .en-utilities .en-support { display: inline-flex; font-size: .65rem; }
+    .is-compact .en-brand-caption { display: none; }
+    .en-language { padding-left: 0; border: 0; gap: .5rem; }
+    .en-language > span { display: none; }
+    .en-theme { width: 44px; margin-left: 0; border: 0; }
+    .en-primary a { font-size: .75rem; }
+    .en-explore summary { font-size: .7rem; gap: .5rem; padding-left: .85rem; }
+    .en-menu-panel { max-height: calc(100dvh - 10rem); }
+    .en-menu-heading > :last-child { display: none; }
+    .en-menu-groups { grid-template-columns: 1fr; gap: 1.25rem; }
+    .en-menu-groups section + section { border-top: 1px solid var(--color-line); padding-top: 1.2rem; }
+    .en-menu-groups ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem 1.2rem; }
+    .en-menu-groups li + li { margin-top: 0; }
+    .en-menu-item-title { font-size: .75rem; }
+    .en-menu-item-title > span { display: none; }
+    .en-menu-description { font-size: .73rem; }
+    .en-group-label { margin-bottom: .55rem; }
+    .en-menu-footer { gap: .3rem .8rem; }
+    .en-menu-footer > span { width: 100%; }
+    .en-menu-footer ul { gap: 0 1rem; }
+    .en-menu-support { margin-left: 0; }
+  }
+  @media (max-width: 360px) {
+    .en-brand-caption { display: none; }
+    .en-primary { gap: .9rem; }
+    .en-navigation { gap: .5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .en-menu-symbol i { transition: none; }
+  }
+</style>
