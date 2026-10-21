@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-10-11",
+  "verifiedAt": "2026-10-21",
   "producers": {
     "us": {
       "repository": "https://github.com/bluetouff/macro_dashboard",
@@ -30,7 +30,7 @@
     },
     "eu": {
       "repository": "https://github.com/bluetouff/euro-macro-dashboard",
-      "revision": "31c9abac8576cfc12460bb00bb6aa1ee026b1df3",
+      "revision": "4ecf68b70c55a228ff587dfe08e5fd7b2f40ed2e",
       "files": [
         {
           "path": "/opt/euromacro/build_snapshot.py",
@@ -54,7 +54,7 @@
         },
         {
           "path": "/opt/euromacro/requirements-prod.txt",
-          "sha256": "ada38e9c4bf39b7af90fe654403f6c154f6ca951b4e1af2a3c326f6fbbaab66c"
+          "sha256": "be0c11cc14339369e59cbe8e4e86ed12bdf9645644c7e374bf3cc17d7e931d4e"
         },
         {
           "path": "/opt/euromacro/deploy/refresh.sh",
@@ -108,7 +108,7 @@
     },
     "debt": {
       "repository": "https://github.com/bluetouff/debt-risk-radar",
-      "revision": "a8eee9a80f7bb2acf265ff57f589604eccdb69e0",
+      "revision": "23147bbb49b569dca8ce08843e613e954d2f1d5a",
       "files": [
         {
           "path": "/opt/debt-risk-radar/latest_export.py",
