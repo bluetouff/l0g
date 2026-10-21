@@ -76,7 +76,7 @@ const jsonLd = {
         <div class="latest-grid">
           <article class="lead-story">
             <a class="lead-image" href={analysisHref(lead.id)} tabindex="-1" aria-hidden="true">
-              <img src={lead.data.ogImage ?? `/og/${lead.id}.png`} alt="" width="1200" height="630" fetchpriority="high" decoding="async" />
+              <img src={lead.data.ogImage ?? `/og/${lead.id}.png`} alt="" width="1200" height="630" loading="lazy" decoding="async" />
             </a>
             <p class="story-meta"><time datetime={lead.data.pubDate.toISOString()}>{fmt(lead.data.pubDate)}</time><span>Latest investigation</span></p>
             <h3><a href={analysisHref(lead.id)}>{lead.data.title}</a></h3>

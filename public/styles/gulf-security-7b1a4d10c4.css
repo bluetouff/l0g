@@ -1,0 +1,23 @@
+/* Article figures: shared l0g semantic colours, no external SVG resources. */
+.gulf-figure{margin:2rem 0 2.6rem;padding:1rem 0 .5rem;border-block:1px solid var(--color-line-strong)}
+.gulf-figure .gulf-svg{display:block;width:100%;height:auto;background:var(--color-surface);border-radius:.5rem}
+.gulf-figure .gulf-mobile{display:none}
+.gulf-svg text{font-family:var(--font-read);fill:var(--color-paper);font-size:17px;font-weight:450}
+.gulf-svg .eyebrow{font-family:var(--font-mono);font-size:13px;letter-spacing:.5px;fill:var(--color-muted)}
+.gulf-svg .subtitle{font-size:20px;font-weight:650}
+.gulf-svg .small{font-size:14px;fill:var(--color-muted)}
+.gulf-svg .number{font-family:var(--font-mono);font-size:44px;font-weight:600;fill:var(--color-accent)}
+.gulf-svg .signalbody{font-size:18px;font-weight:600;fill:var(--color-signal)}
+.gulf-svg .amberbody{font-size:18px;font-weight:600;fill:var(--color-amber)}
+.gulf-svg .wire{fill:none;stroke:var(--color-muted);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gulf-svg .object{fill:var(--color-surface-2);stroke:var(--color-signal);stroke-width:1.7}
+.gulf-svg .grid{stroke:var(--color-line-strong);stroke-width:1}
+.gulf-svg .flow{fill:none;stroke:var(--color-signal);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.gulf-svg .break{fill:none;stroke:var(--color-accent);stroke-width:3;stroke-linecap:round}
+.gulf-svg .duration{stroke:var(--color-amber);stroke-width:12;stroke-linecap:round}
+.gulf-svg .track{fill:var(--color-surface-2);stroke:var(--color-line-strong);stroke-width:1}
+.gulf-svg .fill-signal{fill:var(--color-signal)}
+.gulf-svg .dot{fill:var(--color-paper);stroke:var(--color-surface);stroke-width:2}
+.gulf-figure figcaption{margin-top:1rem;font-size:.875rem;line-height:1.65;color:var(--color-muted)}
+.gulf-figure figcaption strong{color:var(--color-paper)}
+@media(max-width:639px){.gulf-figure .gulf-desktop{display:none}.gulf-figure .gulf-mobile{display:block}.gulf-svg .subtitle{font-size:17px}.gulf-svg .body{font-size:16px}.gulf-svg .eyebrow{font-size:12px}.gulf-svg .small{font-size:13px}.gulf-svg .signalbody,.gulf-svg .amberbody{font-size:16px}}
