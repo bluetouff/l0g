@@ -18,6 +18,34 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Manufacturing capacity and investment spending retain their distinct scopes in both languages.
+for (const [slug, sources] of [
+  ['fonderie', ['https://www.tsmc.com/english/aboutTSMC/company_profile']],
+  ['capex', ['https://www.sec.gov/about/reports-publications/investorpubsbegfinstmtguide', 'https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4']],
+]) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(en[0].robots, 'noindex,follow'); assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.notEqual(fr[0].def, en[0].def); assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  for (const [entry, article, terms] of [[fr[0], '/posts/tsmc-puces-data-centers-risque-electrique/', glossaryEntries], [en[0], '/en/analysis/tsmc-chip-demand-data-center-power-risk/', glossaryAtlasEn]]) {
+    assert.equal(entry.guide, article); assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
+    assert.doesNotMatch(entry.def, /[—]/u);
+    for (const neighbor of entry.atlas.related) {
+      const related = terms.find(term => term.slug === neighbor);
+      assert(related, `${slug}: missing related term ${neighbor}`);
+      assert(related.atlas.related.includes(slug), `${slug}: missing reciprocal relation from ${neighbor}`);
+    }
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'fonderie').def, /clients.*circuits intégrés.*conçus.*wafers/u);
+assert.match(glossaryAtlasEnBySlug.get('fonderie').def, /integrated circuits designed by its customers.*silicon wafers/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'capex').def, /périmètre publié.*investissements payés.*location.*engagements futurs.*budget.*prévues.*période/u);
+assert.match(glossaryAtlasEnBySlug.get('capex').def, /scope.*cash investment.*leases.*future commitments.*budget.*planned.*actual expenditure.*period/u);
+
 // Product and geographic scopes must remain explicit in EIA inventory comparisons.
 for (const [slug, sources] of [
   ['distillats', ['https://www.eia.gov/tools/glossary/index.php?id=distillate']],
@@ -557,7 +585,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 298, 'Le corpus anglais doit conserver ses 298 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 300, 'Le corpus anglais doit conserver ses 300 fiches uniques');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -740,7 +768,7 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
 assert.equal(glossaryEntries.length, 696, 'Le corpus doit conserver ses 696 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 286, 'Le graphe Atlas doit conserver ses 286 nœuds');
+assert.equal(glossaryAtlasEntries.length, 288, 'Le graphe Atlas doit conserver ses 288 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1162,7 +1190,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 828, 'Le graphe Atlas doit conserver ses 828 relations');
+assert.equal(glossaryAtlasEdgeCount, 833, 'Le graphe Atlas doit conserver ses 833 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

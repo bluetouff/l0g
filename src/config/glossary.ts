@@ -218,7 +218,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Paradoxe de Solow', nom: 'Solow paradox', def: "Constat de Robert Solow en 1987, « on voit l'âge informatique partout sauf dans les statistiques de productivité » : le décalage entre des gains technologiques visibles au niveau des tâches et un effet longtemps introuvable dans la productivité agrégée. Réapparu avec l'IA générative." },
       { sigle: 'GPU', nom: 'Graphics Processing Unit', def: "Processeur capable d’exécuter de nombreux calculs en parallèle, utilisé notamment pour le rendu graphique et l’intelligence artificielle. Dans un service de calcul, ses performances dépendent aussi de la mémoire, des interconnexions et du logiciel ; sa capacité technique ne suffit pas à mesurer les recettes qu’il peut générer." },
       { sigle: 'EUV', nom: 'Extreme ultraviolet lithography', def: "Lithographie à ultraviolets extrêmes, utilisée pour imprimer les couches les plus complexes des puces avancées avec une lumière de 13,5 nm. Goulet industriel majeur car elle combine optique, vide, métrologie, logiciels et chaîne de fournisseurs spécialisée." },
-      { sigle: 'Fonderie', nom: 'Dedicated IC foundry', def: "Fabricant contractuel de semi-conducteurs qui produit les puces conçues par d'autres. Une fonderie avancée vend de la capacité qualifiée, du rendement industriel et une feuille de route de noeuds, pas seulement des wafers." },
+      { sigle: 'Fonderie', nom: 'Fabrication de circuits intégrés pour des clients', def: 'Entreprise qui fabrique pour ses clients les circuits intégrés qu’ils ont conçus. Elle produit les puces sur des plaques de silicium, les wafers, avec les procédés et les capacités de ses usines.', guide: '/posts/tsmc-puces-data-centers-risque-electrique/' },
       {"sigle": "NAND", "nom": "Mémoire flash NAND", "def": "Famille de mémoire flash qui conserve les données sans alimentation électrique. Elle sert notamment au stockage dans les SSD. Dans la NAND tridimensionnelle, les cellules sont disposées sur plusieurs couches ; la mémoire de stockage et la mémoire de travail HBM remplissent des fonctions différentes.", "guide": "/posts/sk-hynix-dalian-usine-americaine-financement/"},
       {"sigle": "SSD", "nom": "Solid-state drive", "def": "Support de stockage électronique associant une mémoire non volatile, généralement NAND, à un contrôleur et à un micrologiciel pour gérer les données et les échanges avec le système. Les puces NAND sont des composants du SSD ; le produit fini comprend aussi ces fonctions de contrôle.", "guide": "/posts/sk-hynix-dalian-usine-americaine-financement/"},
       { sigle: 'HBM', nom: 'High Bandwidth Memory', def: "Mémoire DRAM empilée à très large bande passante, placée près d'un accélérateur pour nourrir le calcul en données. Dans l'IA, elle transforme la mémoire en goulet de packaging et d'approvisionnement.", guide: '/posts/sk-hynix-dalian-usine-americaine-financement/' },
@@ -518,7 +518,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Réversibilité', nom: 'Capacité de sortie d’un service informatique', def: 'Possibilité organisée de reprendre un service en interne ou chez un autre fournisseur, en récupérant les données et les éléments nécessaires à son fonctionnement. Elle engage des moyens humains, techniques, financiers et contractuels, ainsi que des essais de reprise adaptés au service.', guide: '/posts/quitter-microsoft-1-etat-dependances/' },
       { sigle: 'Interopérabilité', nom: 'Coopération entre systèmes informatiques', def: 'Capacité de systèmes différents à échanger des informations et à les utiliser pour accomplir une opération. Elle dépend des interfaces, des formats et du sens des informations échangées. Son évaluation doit préciser la fonction et les systèmes concernés.', guide: '/posts/quitter-microsoft-1-etat-dependances/' },
       { sigle: 'Hyperscaler', nom: 'Géant du cloud', def: "Très grand opérateur d'infrastructure informatique en nuage, comme Microsoft, Google, Amazon ou Oracle, qui construit et exploite des centres de données à grande échelle. Au cœur du boom d'investissement dans l'IA." },
-      { sigle: 'Capex', nom: "Dépenses d'investissement", def: "Capital expenditures : dépenses engagées pour acquérir ou construire des actifs durables, centres de données, serveurs, équipements. Le boom de l'IA se mesure d'abord à l'explosion de ces dépenses." },
+      { sigle: 'Capex', nom: "Dépenses d'investissement", def: 'Dépenses d’acquisition, de construction ou d’amélioration d’actifs durables, comme des usines et des équipements. Le périmètre publié doit être vérifié : investissements payés, actifs obtenus par location et engagements futurs peuvent être présentés séparément. Un budget décrit des dépenses prévues ; leur réalisation se mesure sur une période donnée.', guide: '/posts/tsmc-puces-data-centers-risque-electrique/' },
       { sigle: 'Semi-conducteur', nom: 'Semiconductor', def: "Composant électronique gravé dans un matériau conducteur contrôlé, le plus souvent du silicium. Il sert de brique de base aux processeurs, mémoires, capteurs, équipements industriels, véhicules, télécoms et systèmes de défense." },
       { sigle: 'EDA', nom: 'Electronic Design Automation', def: "Logiciels de conception assistée des circuits intégrés. Ils permettent de dessiner, simuler, vérifier et préparer une puce avant fabrication, et constituent une couche stratégique souvent moins visible que les usines." },
       { sigle: 'CDS', nom: 'Credit default swap', def: "Contrat d'assurance contre le défaut d'un émetteur de dette. Sa prime, exprimée en points de base, mesure le risque de crédit perçu : elle monte quand le marché juge le défaut plus probable." },
@@ -1132,6 +1132,19 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  fonderie: {
+    articles: [{ label: 'TSMC suit la demande de puces jusqu’au réseau électrique', href: '/posts/tsmc-puces-data-centers-risque-electrique/', kind: 'article' }],
+    sources: [{ label: 'TSMC, présentation de l’entreprise', href: 'https://www.tsmc.com/english/aboutTSMC/company_profile', detail: 'Modèle de fonderie dédié aux produits des clients, procédés de fabrication et capacité en wafers.', kind: 'source' }],
+    related: ['capex', 'packaging-avance'],
+  },
+  capex: {
+    articles: [{ label: 'TSMC suit la demande de puces jusqu’au réseau électrique', href: '/posts/tsmc-puces-data-centers-risque-electrique/', kind: 'article' }],
+    sources: [
+      { label: 'SEC, guide de lecture des états financiers', href: 'https://www.sec.gov/about/reports-publications/investorpubsbegfinstmtguide', detail: 'Tableau des flux de trésorerie : acquisitions d’immobilisations et dépenses d’investissement payées.', kind: 'source' },
+      { label: 'Microsoft, résultats du quatrième trimestre de l’exercice 2026', href: 'https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4', detail: 'Présentation du 29 juillet : distinction entre capex, locations-financement et trésorerie payée pour les immobilisations ; perspectives d’investissement.', kind: 'source' },
+    ],
+    related: ['fonderie', 'actif-echoue'],
+  },
   distillats: {
     articles: [{ label: 'Du pétrole en mer au gazole livré', href: '/posts/petrole-flux-gazole-stocks-tresorerie/', kind: 'article' }],
     sources: [{ label: 'EIA : distillate fuel oil', href: 'https://www.eia.gov/tools/glossary/index.php?id=distillate', detail: 'Définition de la catégorie regroupant carburants diesel et fiouls.', kind: 'source' }],
@@ -1368,7 +1381,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     "related": [
       "nand",
       "ssd",
-      "hbm"
+      "hbm",
+      "fonderie"
     ]
   },
   "rto": {

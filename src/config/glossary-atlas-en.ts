@@ -210,6 +210,31 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'fonderie', sigle: 'Foundry', nom: 'Manufacturing integrated circuits for customers',
+    ...macroSection, robots: 'noindex,follow',
+    guide: '/en/analysis/tsmc-chip-demand-data-center-power-risk/',
+    def: 'A company that manufactures integrated circuits designed by its customers. It produces chips on silicon wafers using the manufacturing technologies and capacity available at its factories.',
+    atlas: {
+      articles: [{ label: 'TSMC follows chip demand all the way to the power grid', href: '/en/analysis/tsmc-chip-demand-data-center-power-risk/', kind: 'article' }],
+      sources: [{ label: 'TSMC, company profile', href: 'https://www.tsmc.com/english/aboutTSMC/company_profile', detail: 'The foundry model focused on customers’ products, manufacturing technologies and wafer capacity.', kind: 'source' }],
+      related: ['capex', 'packaging-avance'],
+    },
+  },
+  {
+    slug: 'capex', sigle: 'Capex', nom: 'Capital expenditure',
+    sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)', robots: 'noindex,follow',
+    guide: '/en/analysis/tsmc-chip-demand-data-center-power-risk/',
+    def: 'Expenditure to acquire, build or improve long-lived assets such as factories and equipment. The scope of a reported measure needs to be checked: cash investment, assets obtained through leases and future commitments may be disclosed separately. An announced budget describes planned spending; actual expenditure is measured over a specified period.',
+    atlas: {
+      articles: [{ label: 'TSMC follows chip demand all the way to the power grid', href: '/en/analysis/tsmc-chip-demand-data-center-power-risk/', kind: 'article' }],
+      sources: [
+        { label: 'SEC, guide to financial statements', href: 'https://www.sec.gov/about/reports-publications/investorpubsbegfinstmtguide', detail: 'Cash flow statements: purchases of long-term assets and cash investment.', kind: 'source' },
+        { label: 'Microsoft, fiscal 2026 fourth-quarter results', href: 'https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4', detail: 'July 29 call: distinction between capex, finance leases and cash paid for property, plant and equipment; investment outlook.', kind: 'source' },
+      ],
+      related: ['fonderie', 'actif-echoue'],
+    },
+  },
+  {
     slug: 'trs', sigle: 'TRS', nom: 'Total return swap',
     sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
     guide: '/en/analysis/barclays-private-credit-trs-risk/',
@@ -569,7 +594,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "related": [
       "nand",
       "ssd",
-      "hbm"
+      "hbm",
+      "fonderie"
     ]
   }
 },
