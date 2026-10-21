@@ -1,17 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
-import { asiaReadingPaths } from '../../../config/english-reading-paths.ts';
-import { sortPostsByLatestDate } from '../../../lib/content-order.mjs';
+import { asiaDollarStages, asiaReadingPaths, selectAsiaAnalyses } from '../../../config/english-reading-paths.ts';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const canonical = `${SITE}/en/asia/`;
-
 const posts = await getCollection('postsEn', ({ data }) => !data.draft);
 const guides = await getCollection('guidesEn', ({ data }) => !data.draft);
 const postsById = new Map(posts.map((post) => [post.id, post]));
 const guidesById = new Map(guides.map((guide) => [guide.id, guide]));
-
 const paths = asiaReadingPaths.map((path) => ({
   ...path,
   analyses: path.analysisIds.map((id) => {
@@ -25,240 +22,238 @@ const paths = asiaReadingPaths.map((path) => ({
     return guide;
   }),
 }));
-
-const latest = sortPostsByLatestDate(
-  Array.from(new Set(paths.flatMap((path) => path.analyses))),
-).slice(0, 5);
-
+const dollarPath = paths.find((path) => path.id === 'insurer-nodes')!;
+const regionalPaths = paths.filter((path) => path.id !== dollarPath.id);
+const latest = selectAsiaAnalyses(posts).slice(0, 5);
+const [lead, ...recent] = latest;
+const fmt = (date: Date) => date.toLocaleDateString('en-GB', {
+  day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Europe/Paris',
+});
+const analysisHref = (id: string) => `/en/analysis/${id}/`;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   '@id': `${canonical}#collection`,
   url: canonical,
-  name: 'Asia in the global financial system',
-  description: 'English l0g analysis of how Japan, South Korea, China, Taiwan and Hong Kong transmit financial risk through currencies, credit, commodities and global portfolios.',
+  name: 'Asia: capital, currencies and supply chains',
+  description: 'English l0g investigations into Asian economies and their connections to global finance, industry and trade.',
   inLanguage: 'en',
   isPartOf: { '@id': `${SITE}/#website` },
   mainEntity: {
     '@type': 'ItemList',
     itemListElement: latest.map((post, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: post.data.title,
-      url: `${SITE}/en/analysis/${post.id}/`,
+      '@type': 'ListItem', position: index + 1,
+      name: post.data.title, url: `${SITE}${analysisHref(post.id)}`,
     })),
   },
 };
-
-const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 ---
 
 <EnglishGuidesLayout
-  title="Asia in the global financial system"
-  seoTitle="Asia financial risk: Japan, Korea, China and the yen | l0g"
-  ogTitle="Asia is part of the global balance sheet"
-  description="Trace financial risk from Japan, South Korea, China, Taiwan and Hong Kong into currencies, credit, commodities and global portfolios."
+  title="Asia: capital, currencies and supply chains"
+  seoTitle="Asia: capital, currencies and supply chains | l0g"
+  ogTitle="Asia: capital, currencies and supply chains"
+  description="Explore Asian economies through capital flows, currencies and supply chains. Read the latest investigations and follow the Asian dollar loop with interactive tools."
   canonical={canonical}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
 
-  <section class="asia-hero rise" data-pagefind-body>
-    <div>
-      <p class="mono-label" style="color: var(--color-signal)">$ trace asia --through global-finance</p>
-      <h1>Asia is part of the <span>global balance sheet.</span></h1>
-      <p class="asia-lede">
-        This is a reading path through the mechanisms that connect Asian savings, currencies, credit and industrial capacity to the rest of the financial system. It is one lens inside l0g's wider coverage of macro, markets, technology, public policy and systemic risk.
-      </p>
-      <div class="asia-actions" data-pagefind-ignore>
-        <a class="asia-cta primary" href="#paths">choose a transmission path</a>
-        <a class="asia-cta" href="/en/analysis/">all English analysis</a>
-      </div>
-    </div>
-    <aside aria-label="Scope of this reading path">
-      <span>4 transmission paths</span>
-      <strong>Tokyo · Seoul · Beijing · Taipei · Hong Kong</strong>
-      <p>Rates, currencies, credit, insurers, commodities and market structure.</p>
-      <small>Primary sources first · uncertainty kept visible · no investment advice</small>
-    </aside>
-  </section>
+  <div class="asia-edition" data-pagefind-body>
+    <header class="asia-hero">
+      <div class="edition-line"><p class="mono-label">// Asia in the global system</p><span>l0g · English edition</span></div>
+      <h1>Asia: capital, currencies <span>and supply chains.</span></h1>
+      <p class="asia-lede">Follow the money, the institutions and the industrial links connecting Asian economies to the world.</p>
+      <nav class="section-nav" aria-label="Asia sections">
+        <a href="#latest">Latest analysis <span aria-hidden="true">↓</span></a>
+        <a href="#asian-dollar-loop">The Asian dollar loop <span aria-hidden="true">↓</span></a>
+        <a href="#paths">Regional reading paths <span aria-hidden="true">↓</span></a>
+      </nav>
+    </header>
 
-  <section class="asia-section latest-section" aria-labelledby="latest-asia-title">
-    <div class="section-head">
-      <div>
-        <p class="mono-label" style="color: var(--color-accent)">// latest investigations</p>
-        <h2 id="latest-asia-title">Begin with what changed most recently.</h2>
-      </div>
-      <a href="/en/rss.xml" class="section-link">English RSS →</a>
-    </div>
-    <div class="latest-grid">
-      {latest.map((post, index) => (
-        <a class:list={['latest-card', { lead: index === 0 }]} href={`/en/analysis/${post.id}/`}>
-          <span class="latest-index">0{index + 1}</span>
-          <div>
-            <small>{fmt(post.data.updatedDate ?? post.data.pubDate)} · {post.data.tags.slice(0, 2).join(' · ')}</small>
-            <h3>{post.data.title}</h3>
-            <p>{post.data.description}</p>
-          </div>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <section id="paths" class="asia-section" aria-labelledby="paths-asia-title">
-    <div class="section-head">
-      <div>
-        <p class="mono-label" style="color: var(--color-signal)">// four ways into the system</p>
-        <h2 id="paths-asia-title">Follow the links across financial systems.</h2>
-      </div>
-    </div>
-
-    <div class="path-grid">
-      {paths.map((path, index) => (
-        <article class="path-card" id={path.id}>
-          <header>
-            <span class="path-number">0{index + 1}</span>
-            <p class="mono-label">// {path.eyebrow}</p>
-            <h3>{path.title}</h3>
-            <p>{path.description}</p>
-          </header>
-          <div class="transmission">
-            <span>transmission</span>
-            <code>{path.transmission}</code>
-          </div>
-          <div class="path-links">
-            <strong>Analysis</strong>
-            {path.analyses.map((post) => (
-              <a href={`/en/analysis/${post.id}/`}>{post.data.title}<span aria-hidden="true">↗</span></a>
+    <section id="latest" class="asia-section latest-section" aria-labelledby="latest-title">
+      <div class="section-head"><h2 id="latest-title">Latest Asia analysis</h2><a href="/en/rss.xml" class="section-link">English RSS <span aria-hidden="true">↗</span></a></div>
+      {lead ? (
+        <div class="latest-grid">
+          <article class="lead-story">
+            <a class="lead-image" href={analysisHref(lead.id)} tabindex="-1" aria-hidden="true">
+              <img src={lead.data.ogImage ?? `/og/${lead.id}.png`} alt="" width="1200" height="630" fetchpriority="high" decoding="async" />
+            </a>
+            <p class="story-meta"><time datetime={lead.data.pubDate.toISOString()}>{fmt(lead.data.pubDate)}</time><span>Latest investigation</span></p>
+            <h3><a href={analysisHref(lead.id)}>{lead.data.title}</a></h3>
+            <p class="story-description">{lead.data.description}</p>
+          </article>
+          <ol role="list" class="recent-list" aria-label="More recent Asia analysis">
+            {recent.map((post, index) => (
+              <li>
+                <span class="story-number" aria-hidden="true">{String(index + 2).padStart(2, '0')}</span>
+                <div>
+                  <p class="story-meta"><time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time></p>
+                  <h3><a href={analysisHref(post.id)}>{post.data.title}</a></h3>
+                  <p class="story-description">{post.data.description}</p>
+                </div>
+              </li>
             ))}
-          </div>
-          <div class="path-links guides">
-            <strong>Reading tools</strong>
-            {path.guides.map((guide) => (
-              <a href={`/en/guides/${guide.id}/`}>{guide.data.title}<span aria-hidden="true">→</span></a>
-            ))}
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
+          </ol>
+        </div>
+      ) : <p class="empty-state">Asia investigations will appear here as they are published.</p>}
+    </section>
 
-  <section class="asia-section system-panel" aria-labelledby="system-title">
-    <div>
-      <p class="mono-label" style="color: var(--color-amber)">// keep the whole system in view</p>
-      <h2 id="system-title">The regional story is only useful when it explains a global mechanism.</h2>
-      <p>
-        A Japanese yield changes the price of funding elsewhere. Korean chip concentration reaches global technology portfolios. Chinese property and RMB settlement alter trade, collateral and commodity demand. Taiwanese insurers connect domestic savings to dollar bonds. That is why this page sits beside, not above, l0g's global coverage.
-      </p>
-    </div>
-    <nav aria-label="Continue beyond the Asia reading path">
-      <a href="/en/start/"><strong>Start with l0g</strong><span>Choose another route through the publication.</span></a>
-      <a href="/en/guides/"><strong>Reference guides</strong><span>Read the instruments behind the mechanisms.</span></a>
-      <a href="/en/analysis/"><strong>All analysis</strong><span>Macro, credit, technology, policy and systemic risk.</span></a>
+    <section id="asian-dollar-loop" class="asia-section dollar-section" aria-labelledby="dollar-title">
+      <span id="insurer-nodes" class="anchor-alias" aria-hidden="true"></span>
+      <div class="dollar-intro">
+        <p class="mono-label">// The Asian dollar loop</p>
+        <h2 id="dollar-title">Asian savings <span>and dollar risk.</span></h2>
+        <p>A reading path through the assets, the institutions that hold them and the cash needed to keep the system running.</p>
+        <a class="start-link" href={analysisHref(asiaDollarStages[0].readings[0].id)}>Start with the assets <span aria-hidden="true">↗</span></a>
+
+      </div>
+      <ol role="list" class="dollar-stages">
+        {asiaDollarStages.map((stage, index) => (
+          <li>
+            <span class="stage-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{stage.title}</h3>
+              <p>{stage.description}</p>
+              <ul role="list" class="stage-readings">
+                {stage.readings.map((reading) => <li><a href={analysisHref(reading.id)}>{reading.label}<span aria-hidden="true">↗</span></a></li>)}
+              </ul>
+              {stage.tool && <a class="tool-link" href={`${analysisHref(stage.readings[0].id)}#${stage.tool.fragment}`}><span class="tool-kind">Interactive</span>{stage.tool.label}<span aria-hidden="true">→</span></a>}
+            </div>
+          </li>
+        ))}
+      </ol>
+      <aside class="dollar-reference" aria-label="Dollar reference guides and tool methodology">
+        <div class="guide-list">
+          <h3>Reference guides</h3>
+          {dollarPath.guides.map((guide) => <a href={`/en/guides/${guide.id}/`}>{guide.data.title}<span aria-hidden="true">↗</span></a>)}
+        </div>
+        <p class="tool-note">The linked tools explain mechanisms through stated assumptions. Scenarios are hypothetical; source observations retain their own dates.</p>
+      </aside>
+    </section>
+
+    <section id="paths" class="asia-section" aria-labelledby="paths-title">
+      <div class="section-head"><div><p class="mono-label">// Go deeper</p><h2 id="paths-title">Regional reading paths</h2></div></div>
+      <div class="path-grid">
+        {regionalPaths.map((path, index) => (
+          <article class="path-card" id={path.id}>
+            <header>
+              <span class="path-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{path.title}</h3>
+              <p>{path.description}</p>
+            </header>
+            <p class="transmission">{path.transmission}</p>
+            <div class="path-links"><h4>Analysis</h4>{path.analyses.map((post) => <a href={analysisHref(post.id)}>{post.data.title}<span aria-hidden="true">↗</span></a>)}</div>
+            <div class="path-links guides"><h4>Reference guides</h4>{path.guides.map((guide) => <a href={`/en/guides/${guide.id}/`}>{guide.data.title}<span aria-hidden="true">↗</span></a>)}</div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <nav class="edition-footer" aria-label="Continue beyond Asia">
+      <p>Continue through l0g</p>
+      <a href="/en/analysis/">All English analysis <span aria-hidden="true">↗</span></a>
+      <a href="/en/guides/">Reference guides <span aria-hidden="true">↗</span></a>
+      <a href="/en/start/">Start with l0g <span aria-hidden="true">↗</span></a>
     </nav>
-  </section>
+  </div>
 </EnglishGuidesLayout>
 
 <style>
-  .asia-hero {
-    display: grid;
-    gap: clamp(1.4rem, 4vw, 3rem);
-    align-items: end;
-    padding: clamp(1.4rem, 5vw, 3.5rem);
-    border: 1px solid transparent;
-    border-radius: 24px;
-    background:
-      linear-gradient(var(--color-ink), var(--color-ink)) padding-box,
-      linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 60%, transparent), color-mix(in srgb, var(--color-accent) 32%, transparent), color-mix(in srgb, var(--color-amber) 35%, transparent)) border-box;
-    overflow: hidden;
+  .asia-edition { --asia-rule: color-mix(in srgb, var(--color-signal) 32%, var(--color-line)); }
+  .asia-edition a { text-decoration: none; }
+  .asia-edition a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 5px; border-radius: 2px; }
+  .asia-edition a:hover { color: var(--color-signal); }
+  .asia-hero { border-top: 2px solid var(--color-signal); padding-top: 1rem; }
+  .edition-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; align-items: center; }
+  .mono-label, .edition-line > span, .story-meta, .section-link, .section-nav, .tool-kind, .path-links h4, .guide-list h3, .edition-footer > p { font-family: var(--font-mono); font-size: .7rem; line-height: 1.5; letter-spacing: .06em; text-transform: uppercase; }
+  .mono-label { color: var(--color-signal); }
+  .edition-line > span { color: var(--color-muted); }
+  .asia-hero h1 { max-width: 60rem; margin: 1.05rem 0 .8rem; font-family: var(--font-display); color: var(--color-bright); text-wrap: balance; }
+  .asia-hero h1 span { color: var(--color-signal); }
+  .asia-lede { max-width: 50rem; color: var(--color-muted); line-height: 1.65; font-size: 1rem; }
+  .section-nav { display: flex; flex-wrap: wrap; gap: .25rem 2rem; margin-top: 1.4rem; border-top: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); }
+  .section-nav a { display: inline-flex; gap: .7rem; align-items: center; min-height: 2.8rem; color: var(--color-paper); }
+  .section-nav a span { color: var(--color-signal); }
+  .asia-section { margin-top: clamp(2.2rem, 5vw, 4rem); scroll-margin-top: 1.5rem; }
+  .section-head { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: .75rem; margin-bottom: 1.4rem; }
+  .section-head h2 { font-family: var(--font-display); color: var(--color-bright); font-size: clamp(1.3rem, 2.2vw, 1.8rem); letter-spacing: -.04em; line-height: 1.25; }
+  .section-head .mono-label { margin-bottom: .4rem; }
+  .section-link { color: var(--color-muted); }
+  .latest-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); }
+  .lead-image { display: block; overflow: hidden; border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-surface); }
+  .lead-image img { display: block; width: 100%; height: auto; aspect-ratio: 40 / 21; object-fit: cover; }
+  .story-meta { display: flex; flex-wrap: wrap; gap: .35rem 1rem; color: var(--color-muted); margin-bottom: .5rem; font-size: .65rem; }
+  .lead-story .story-meta { margin-top: 1.1rem; }
+  .lead-story .story-meta span { color: var(--color-signal); }
+  .lead-story h3 { font-family: var(--font-display); color: var(--color-bright); font-size: clamp(1.3rem, 2.3vw, 1.75rem); line-height: 1.3; letter-spacing: -.04em; text-wrap: balance; }
+  .story-description { margin-top: .65rem; color: var(--color-muted); line-height: 1.65; font-size: .88rem; }
+  .recent-list { list-style: none; margin: 0; padding: 0; }
+  .recent-list > li { display: grid; grid-template-columns: 1.7rem minmax(0, 1fr); gap: .8rem; padding: 1.1rem 0; border-top: 1px solid var(--color-line); }
+  .recent-list > li:first-child { padding-top: 0; border-top: 0; }
+  .story-number { font-family: var(--font-mono); font-size: .7rem; color: var(--color-accent); line-height: 1.5; }
+  .recent-list h3 { font-family: var(--font-display); font-size: 1rem; line-height: 1.45; color: var(--color-bright); letter-spacing: -.025em; }
+  .recent-list .story-description { font-size: .8rem; margin-top: .4rem; }
+  .dollar-section { position: relative; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.4fr); grid-template-areas: "intro stages" "reference stages"; grid-template-rows: auto 1fr; gap: clamp(2rem, 6vw, 5rem); border-top: 2px solid var(--color-signal); border-bottom: 1px solid var(--asia-rule); padding: clamp(1.5rem, 4vw, 3rem) 0; }
+  .anchor-alias { position: absolute; top: 0; }
+  .dollar-intro { grid-area: intro; }
+  .dollar-reference { grid-area: reference; align-self: start; }
+  .dollar-intro h2 { margin-top: .8rem; font-family: var(--font-display); font-size: clamp(1.8rem, 3.1vw, 2.6rem); letter-spacing: -.05em; line-height: 1.15; color: var(--color-bright); }
+  .dollar-intro h2 span { color: var(--color-signal); }
+  .dollar-intro > p:not(.mono-label) { margin-top: 1rem; color: var(--color-muted); line-height: 1.75; font-size: .9rem; }
+  .start-link { display: inline-flex; gap: 1rem; align-items: center; margin-top: 1.3rem; padding: .8rem 1rem; border: 1px solid var(--asia-rule); border-radius: 6px; background: color-mix(in srgb, var(--color-signal) 6%, var(--color-ink)); color: var(--color-signal); font-size: .8rem; }
+  .guide-list { display: grid; gap: .8rem; margin-top: 0; padding-top: 1.2rem; border-top: 1px solid var(--color-line); }
+  .guide-list h3 { color: var(--color-muted); }
+  .guide-list a { display: flex; justify-content: space-between; gap: 1rem; font-size: .8rem; line-height: 1.6; color: var(--color-paper); }
+  .tool-note { margin-top: 1rem; color: var(--color-muted); font-size: .75rem; line-height: 1.75; }
+  .dollar-stages { grid-area: stages; list-style: none; margin: 0; padding: 0; }
+  .dollar-stages > li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; padding: 1.3rem 0; border-top: 1px solid var(--color-line); }
+  .dollar-stages > li:first-child { padding-top: 0; border-top: 0; }
+  .stage-number { display: flex; justify-content: center; align-items: center; height: 2.5rem; border: 1px solid var(--asia-rule); border-radius: 50%; color: var(--color-signal); font-family: var(--font-mono); font-size: .8rem; }
+  .dollar-stages h3 { font-family: var(--font-display); font-size: 1.05rem; line-height: 1.4; color: var(--color-bright); letter-spacing: -.03em; }
+  .dollar-stages p { margin-top: .45rem; color: var(--color-muted); font-size: .8rem; line-height: 1.7; }
+  .stage-readings { list-style: none; padding: 0; margin: .7rem 0 0; display: grid; gap: .5rem; }
+  .stage-readings a { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; color: var(--color-paper); font-size: .8rem; line-height: 1.6; }
+  .stage-readings a span, .guide-list a span, .path-links a span { flex-shrink: 0; color: var(--color-signal); }
+  .tool-link { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem .6rem; width: fit-content; margin-top: .8rem; color: var(--color-signal); font-size: .75rem; line-height: 1.6; }
+  .tool-kind { border: 1px solid var(--asia-rule); border-radius: 3px; padding: .1rem .3rem; font-size: .58rem; letter-spacing: .03em; }
+  .path-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+  .path-card { min-width: 0; border-top: 1px solid var(--asia-rule); padding-top: 1rem; }
+  .path-number { color: var(--color-signal); font-family: var(--font-mono); font-size: .75rem; }
+  .path-card h3 { margin-top: .7rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.15rem; line-height: 1.4; letter-spacing: -.035em; }
+  .path-card header p { margin-top: .7rem; font-size: .8rem; color: var(--color-muted); line-height: 1.7; }
+  .transmission { padding: .7rem 0 .7rem .8rem; margin-top: 1rem; border-left: 2px solid var(--color-signal); color: var(--color-signal); font-size: .75rem; line-height: 1.7; }
+  .path-links { display: grid; gap: .7rem; margin-top: 1.3rem; }
+  .path-links h4 { color: var(--color-muted); font-weight: normal; }
+  .path-links a { display: flex; justify-content: space-between; gap: .7rem; color: var(--color-paper); font-size: .8rem; line-height: 1.65; }
+  .path-links.guides { padding-top: 1rem; border-top: 1px solid var(--color-line); }
+  .edition-footer { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; border-top: 1px solid var(--color-line); margin-top: 3rem; padding-top: 1.2rem; }
+  .edition-footer > p { color: var(--color-muted); margin-right: auto; }
+  .edition-footer a { color: var(--color-paper); font-size: .75rem; line-height: 1.5; }
+  @media (max-width: 850px) {
+    .latest-grid { gap: 1.5rem; }
+    .recent-list .story-description { display: none; }
+    .dollar-section { grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr); gap: 2rem; }
+    .path-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .path-card { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+    .path-card header { grid-column: 1; }
+    .path-card .transmission { grid-column: 1; align-self: start; }
+    .path-card .path-links { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; }
+    .path-card .guides { grid-row: 3; margin-top: 1rem; }
   }
-  .asia-hero > div,
-  .asia-hero > aside { min-width: 0; }
-  .asia-hero h1 {
-    max-width: 48rem;
-    margin: 0.75rem 0 0;
-    color: var(--color-bright);
-    font-family: var(--font-display);
-    font-size: clamp(2.15rem, 6.2vw, 4.8rem);
-    line-height: 0.98;
-    letter-spacing: -0.045em;
-  }
-  .asia-hero h1 span {
-    display: block;
-    width: fit-content;
-    max-width: 100%;
-    color: var(--color-signal);
-  }
-  .asia-lede {
-    max-width: 47rem;
-    margin-top: 1.35rem;
-    color: var(--color-paper);
-    font-size: clamp(1.02rem, 1.8vw, 1.2rem);
-    line-height: 1.72;
-  }
-  .asia-hero aside {
-    display: grid;
-    gap: 0.65rem;
-    padding: 1.1rem;
-    border: 1px solid color-mix(in srgb, var(--color-signal) 34%, transparent);
-    border-radius: 14px;
-    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
-  }
-  .asia-hero aside span,
-  .asia-hero aside small { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; }
-  .asia-hero aside strong { color: var(--color-bright); font-size: 1.05rem; line-height: 1.45; }
-  .asia-hero aside p { color: var(--color-paper); line-height: 1.55; }
-  .asia-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
-  .asia-cta { display: inline-flex; min-height: 2.6rem; align-items: center; justify-content: center; padding: 0.65rem 0.95rem; border: 1px solid var(--color-line); border-radius: 8px; color: var(--color-paper); font-family: var(--font-mono); font-size: 0.74rem; text-decoration: none; }
-  .asia-cta:hover { border-color: var(--color-signal); color: var(--color-bright); }
-  .asia-cta.primary { border-color: var(--color-signal); background: color-mix(in srgb, var(--color-signal) 13%, transparent); color: var(--color-signal); }
-  .asia-section { margin-top: clamp(3rem, 8vw, 6rem); scroll-margin-top: 1rem; }
-  .section-head { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; justify-content: space-between; margin-bottom: 1.3rem; }
-  .section-head h2,
-  .system-panel h2 { margin-top: 0.45rem; max-width: 48rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.7rem, 3.5vw, 2.55rem); line-height: 1.08; }
-  .section-link { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.75rem; }
-  .latest-grid { display: grid; gap: 0.8rem; }
-  .latest-card { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: 0.9rem; padding: 1rem; border: 1px solid var(--color-line); border-radius: 12px; background: color-mix(in srgb, var(--color-surface) 62%, transparent); text-decoration: none; }
-  .latest-card:hover { border-color: color-mix(in srgb, var(--color-accent) 62%, transparent); transform: translateY(-1px); }
-  .latest-index { color: var(--color-accent); font-family: var(--font-mono); }
-  .latest-card small { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; }
-  .latest-card h3 { margin-top: 0.35rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.08rem; line-height: 1.25; }
-  .latest-card p { margin-top: 0.45rem; color: var(--color-muted); font-size: 0.9rem; line-height: 1.55; }
-  .path-grid { display: grid; gap: 1rem; }
-  .path-card { min-width: 0; padding: clamp(1.1rem, 3vw, 1.55rem); border: 1px solid var(--color-line); border-radius: 16px; background: color-mix(in srgb, var(--color-surface) 56%, transparent); }
-  .path-card header { position: relative; padding-right: 3rem; }
-  .path-number { position: absolute; top: 0; right: 0; color: color-mix(in srgb, var(--color-signal) 48%, transparent); font-family: var(--font-display); font-size: 1.8rem; }
-  .path-card h3 { margin-top: 0.45rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.3rem, 2.3vw, 1.75rem); line-height: 1.15; }
-  .path-card header > p:last-child { margin-top: 0.7rem; color: var(--color-muted); line-height: 1.6; }
-  .transmission { display: grid; gap: 0.35rem; margin-top: 1rem; padding: 0.7rem 0.8rem; border-left: 2px solid var(--color-signal); background: color-mix(in srgb, var(--color-signal) 6%, transparent); }
-  .transmission span,
-  .path-links > strong { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.07em; }
-  .transmission code { color: var(--color-signal); white-space: normal; overflow-wrap: anywhere; }
-  .path-links { display: grid; gap: 0.45rem; margin-top: 1.1rem; }
-  .path-links a { display: flex; gap: 0.8rem; justify-content: space-between; color: var(--color-paper); line-height: 1.4; text-decoration: none; }
-  .path-links a:hover { color: var(--color-bright); }
-  .path-links a span { flex: 0 0 auto; color: var(--color-accent); }
-  .path-links.guides { padding-top: 0.85rem; border-top: 1px dashed var(--color-line); }
-  .path-links.guides a { color: var(--color-signal); }
-  .system-panel { display: grid; gap: 1.4rem; padding: clamp(1.25rem, 4vw, 2.4rem); border: 1px solid color-mix(in srgb, var(--color-amber) 38%, transparent); border-radius: 18px; background: color-mix(in srgb, var(--color-amber) 5%, var(--color-ink)); }
-  .system-panel > div > p:last-child { max-width: 48rem; margin-top: 1rem; color: var(--color-muted); line-height: 1.7; }
-  .system-panel nav { display: grid; gap: 0.65rem; }
-  .system-panel nav a { display: grid; gap: 0.2rem; padding: 0.8rem; border: 1px solid var(--color-line); border-radius: 10px; text-decoration: none; }
-  .system-panel nav a:hover { border-color: var(--color-amber); }
-  .system-panel nav strong { color: var(--color-bright); }
-  .system-panel nav span { color: var(--color-muted); font-size: 0.85rem; line-height: 1.45; }
-  @media (min-width: 760px) {
-    .asia-hero { grid-template-columns: minmax(0, 1.65fr) minmax(15rem, 0.72fr); }
-    .latest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .latest-card.lead { grid-column: 1 / -1; padding: 1.3rem; }
-    .latest-card.lead h3 { font-size: 1.35rem; }
-    .path-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .system-panel { grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.72fr); align-items: start; }
-  }
-  @media (max-width: 520px) {
-    .asia-hero { padding: 1.15rem; border-radius: 18px; }
-    .asia-hero h1 { font-size: clamp(2rem, 12vw, 3.15rem); overflow-wrap: anywhere; }
-    .asia-cta { width: 100%; }
-    .path-card header { padding-right: 2.25rem; }
-    .latest-card p { display: none; }
+  @media (max-width: 600px) {
+    .edition-line > span { display: none; }
+    .asia-hero h1 { margin-top: .8rem; }
+    .asia-lede { font-size: .88rem; }
+    .section-nav { gap: 0 1.2rem; font-size: .62rem; }
+    .section-nav a { min-height: 2.75rem; }
+    .latest-grid, .dollar-section { grid-template-columns: 1fr; }
+    .recent-list > li:first-child { border-top: 1px solid var(--color-line); padding-top: 1.1rem; }
+    .dollar-section { grid-template-areas: "intro" "stages" "reference"; grid-template-rows: auto; }
+    .dollar-intro h2 { max-width: 20rem; }
+    .dollar-stages > li { grid-template-columns: 2rem minmax(0, 1fr); gap: .8rem; }
+    .stage-number { height: 2rem; }
+    .path-card { display: block; }
+    .path-card .path-links { margin-top: 1.2rem; }
+    .section-head { margin-bottom: 1rem; }
   }
 </style>

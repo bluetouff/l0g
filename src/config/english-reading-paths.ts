@@ -1,3 +1,5 @@
+import { sortPostsByPublicationDate } from '../lib/content-order.mjs';
+
 export type EnglishReadingPath = {
   id: string;
   eyebrow: string;
@@ -7,6 +9,51 @@ export type EnglishReadingPath = {
   analysisIds: readonly string[];
   guideIds: readonly string[];
 };
+
+export type AsiaDollarStage = {
+  title: string;
+  description: string;
+  readings: readonly { id: string; label: string }[];
+  tool?: { fragment: string; label: string };
+};
+
+export const asiaDollarStages: readonly AsiaDollarStage[] = [
+  {
+    title: 'Map the assets',
+    description: 'Start with the securities held in the US and the different risks inside a dollar portfolio.',
+    readings: [{ id: 'what-asia-really-buys-in-america', label: 'Equities, Treasuries, mortgages and credit' }],
+    tool: { fragment: 'asia-us-portfolio-en-embed', label: 'Explore portfolio shocks' },
+  },
+  {
+    title: 'Identify the holders',
+    description: 'Read the assets alongside the liabilities, policyholders and institutions behind them.',
+    readings: [
+      { id: 'taiwan-life-insurers-724-billion-currency-risk', label: 'Taiwan: life insurers and currency exposure' },
+      { id: 'japan-end-free-money-life-insurer-balance-sheets', label: 'Japan: rates and insurer balance sheets' },
+      { id: 'south-korea-price-perfect-fx-hedge', label: 'South Korea: the cost of currency protection' },
+      { id: 'china-dollar-risk-reserves-banks-balance-sheets', label: 'China: reserves, banks and other holders' },
+      { id: 'hong-kong-life-insurance-china-tax-enforcement', label: 'Hong Kong: insurance and capital controls' },
+    ],
+  },
+  {
+    title: 'Follow the hedge',
+    description: 'Trace short currency contracts against long assets, through renewals, dealers and collateral.',
+    readings: [{ id: 'asia-invisible-dollar-hedging-machine', label: 'Inside the dollar hedging machinery' }],
+    tool: { fragment: 'asia-dollar-hedge-en-embed', label: 'Explore hedge renewals' },
+  },
+  {
+    title: 'Test the cash constraint',
+    description: 'Combine bond losses, exchange-rate moves and payments due in an explicit hypothetical scenario.',
+    readings: [{ id: 'asia-dollar-stress-test-three-risks', label: 'Three risks, two ledgers' }],
+    tool: { fragment: 'asia-triple-en', label: 'Run the liquidity stress test' },
+  },
+  {
+    title: 'Track the next buyer',
+    description: 'Distinguish selling existing holdings from reducing reinvestment and new purchases.',
+    readings: [{ id: 'asia-dollar-stop-buying', label: 'Asian demand and the marginal dollar buyer' }],
+    tool: { fragment: 'ad9-tool-en', label: 'Explore a purchase slowdown' },
+  },
+];
 
 export const asiaReadingPaths: readonly EnglishReadingPath[] = [
   {
@@ -54,40 +101,45 @@ export const asiaReadingPaths: readonly EnglishReadingPath[] = [
   },
   {
     id: 'insurer-nodes',
-    eyebrow: 'insurers · dollar assets · capital controls',
-    title: 'Taiwan and Hong Kong as balance-sheet nodes',
-    description: 'Use life insurers, currency hedges and policy enforcement to see how Asian savings connect to dollar assets and cross-border capital controls.',
-    transmission: 'local savings → dollar portfolios → hedging costs → policy response',
-    analysisIds: [
-      'taiwan-life-insurers-724-billion-currency-risk',
-      'hong-kong-life-insurance-china-tax-enforcement',
-      'asia-invisible-dollar-hedging-machine',
-      'asia-dollar-stop-buying',
-    ],
+    eyebrow: 'the Asian dollar loop',
+    title: 'Asian savings and dollar risk',
+    description: 'Follow the complete reading path from dollar assets and their holders to currency hedges, liquidity and new purchases.',
+    transmission: 'savings → dollar assets → currency hedges → cash needs → new purchases',
+    analysisIds: asiaDollarStages.flatMap((stage) => stage.readings.map((reading) => reading.id)),
     guideIds: ['read-life-insurer-health', 'read-dollar-dxy-cross-currency-basis', 'read-the-balance-of-payments'],
   },
 ] as const;
 
 const curatedAsiaAnalysisIds = new Set(asiaReadingPaths.flatMap((path) => path.analysisIds));
+// Explicit editorial tags remain useful when a subject has no place name in its headline.
 const asiaTags = new Set([
-  'asia',
-  'asean',
-  'boj',
-  'china',
-  'hong kong',
-  'india',
-  'japan',
-  'jgb',
-  'kospi',
-  'renminbi',
-  'singapore',
-  'south korea',
-  'taiwan',
-  'yen',
+  'asia', 'asie', 'asian', 'asean', 'apac', 'boj', 'jgb', 'kospi', 'renminbi', 'rmb', 'yen',
+  'bank of japan', 'bank of korea', 'pboc', 'chine', 'japon', 'inde', 'corée du sud',
 ]);
 
-export function isAsiaAnalysis(id: string, tags: readonly string[]): boolean {
-  return curatedAsiaAnalysisIds.has(id) || tags.some((tag) => asiaTags.has(tag.trim().toLowerCase()));
+// Match whole geographic terms in editorial metadata, never incidental body/source mentions.
+// Keep ambiguous terms (won, BoJ, JGB) in tags rather than matching ordinary prose.
+const asiaGeography = /(?:^|[^\p{L}\p{N}])(?:asia|asian|asean|apac|japan|japanese|tokyo|china|chinese|beijing|shanghai|hong kong|taiwan|taiwanese|taipei|korea|korean|seoul|india|indian|indonesia|indonesian|singapore|singaporean|malaysia|malaysian|vietnam|vietnamese|viet nam|thailand|thai|philippines|philippine|filipino|bangladesh|bangladeshi|pakistan|pakistani|sri lanka|sri lankan|nepal|nepalese|bhutan|bhutanese|maldives|maldivian|myanmar|burmese|cambodia|cambodian|laos|laotian|brunei|timor-leste|mongolia|mongolian|kazakhstan|kazakh|uzbekistan|uzbek|kyrgyzstan|kyrgyz|tajikistan|tajik|turkmenistan|turkmen|renminbi|yen)(?=$|[^\p{L}\p{N}])/iu;
+
+type AsiaMetadata = { title?: string; description?: string };
+
+export function isAsiaAnalysis(id: string, tags: readonly string[], metadata: AsiaMetadata = {}): boolean {
+  return curatedAsiaAnalysisIds.has(id)
+    || tags.some((tag) => asiaTags.has(tag.trim().toLowerCase()) || asiaGeography.test(tag))
+    || asiaGeography.test(`${metadata.title ?? ''} ${metadata.description ?? ''}`);
+}
+
+type AsiaPost = {
+  id: string;
+  data: AsiaMetadata & { tags: readonly string[]; pubDate: Date; draft?: boolean };
+};
+
+// Every publication build discovers new analyses; the curated paths never gate this feed.
+export function selectAsiaAnalyses<T extends AsiaPost>(posts: readonly T[], now = Date.now()): T[] {
+  return sortPostsByPublicationDate(posts.filter((post) =>
+    !post.data.draft && post.data.pubDate.getTime() <= now
+    && isAsiaAnalysis(post.id, post.data.tags, post.data),
+  ));
 }
 
 // Deliberate editorial neighbours, not broad tag matches or a site-wide link list.

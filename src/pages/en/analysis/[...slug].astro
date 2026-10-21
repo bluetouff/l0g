@@ -58,7 +58,7 @@ const primaryImage = {
 const frUrl = sourcePost ? new URL(`/posts/${sourcePost.id}/`, Astro.site).toString() : new URL('/', Astro.site).toString();
 const sourceUpdated = sourcePost ? (sourcePost.data.updatedDate ?? sourcePost.data.pubDate) : post.data.sourceUpdatedDate;
 const translationIsStale = sourcePost && isTranslationStale(sourceUpdated, post.data.sourceUpdatedDate);
-const belongsToAsiaPath = isAsiaAnalysis(post.id, post.data.tags);
+const belongsToAsiaPath = isAsiaAnalysis(post.id, post.data.tags, post.data);
 
 const alternateLinks = [
   { hreflang: 'en', href: url },
