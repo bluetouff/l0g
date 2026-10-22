@@ -5,7 +5,7 @@ import WatchCard from '../../components/WatchCard.astro';
 import LatestEnglishEpub from '../../components/LatestEnglishEpub.astro';
 import EnglishDossierLinks from '../../components/EnglishDossierLinks.astro';
 import PublicationDates from '../../components/PublicationDates.astro';
-import { selectHomeFeaturedPost, sortPostsByPublicationDate } from '../../lib/content-order.mjs';
+import { selectHomeFeaturedPost } from '../../lib/content-order.mjs';
 import { selectedEnglishInvestigations } from '../../config/english-edition.ts';
 import { MCP_COMPACT_PUBLIC_PATH } from '../../config/agent-contract.mjs';
 
@@ -14,13 +14,8 @@ const englishGuides = await getCollection('guidesEn', ({ data }) => !data.draft)
 const guideCount = englishGuides.length;
 const englishPosts = await getCollection('postsEn', ({ data }) => !data.draft);
 const analysisCount = englishPosts.length;
-const homeFeaturedCandidate = selectHomeFeaturedPost(englishPosts);
-const latestPublication = sortPostsByPublicationDate(englishPosts)[0];
-const featuredRevision = homeFeaturedCandidate?.data.homeFeaturedDate
-  && homeFeaturedCandidate.data.homeFeaturedDate.getTime() > homeFeaturedCandidate.data.pubDate.getTime()
-  && homeFeaturedCandidate.data.homeFeaturedDate.getTime() > (latestPublication?.data.pubDate.getTime() ?? -Infinity)
-  ? homeFeaturedCandidate : null;
-const selectedInvestigations = selectedEnglishInvestigations.filter((selection) => selection.id !== featuredRevision?.id).map((selection) => {
+const featuredInvestigation = selectHomeFeaturedPost(englishPosts);
+const selectedInvestigations = selectedEnglishInvestigations.filter((selection) => selection.id !== featuredInvestigation?.id).map((selection) => {
   const entry = englishPosts.find((post) => post.id === selection.id);
   if (!entry) throw new Error(`Missing selected English investigation: ${selection.id}`);
   return { ...selection, entry };
@@ -134,13 +129,13 @@ const jsonLd = {
     <p class="mono-label" style="color:var(--color-signal)">// editorial selection</p>
     <h2 id="selected-investigations-title">Selected investigations</h2>
     <div class="selected-grid">
-      {featuredRevision && (
+      {featuredInvestigation && (
         <article class="selected-card selected-card-promoted">
           <p class="selected-meta">Featured investigation</p>
-          <PublicationDates pubDate={featuredRevision.data.pubDate} updatedDate={featuredRevision.data.updatedDate} lang="en" />
-          <h3><a href={`/en/analysis/${featuredRevision.id}/`}>{featuredRevision.data.title}</a></h3>
-          <p>{featuredRevision.data.description}</p>
-          <a class="selected-link" href={`/en/analysis/${featuredRevision.id}/`} aria-label={`Read ${featuredRevision.data.title}`}>Read the investigation <span aria-hidden="true">↗</span></a>
+          <PublicationDates pubDate={featuredInvestigation.data.pubDate} updatedDate={featuredInvestigation.data.updatedDate} lang="en" />
+          <h3><a href={`/en/analysis/${featuredInvestigation.id}/`}>{featuredInvestigation.data.title}</a></h3>
+          <p>{featuredInvestigation.data.description}</p>
+          <a class="selected-link" href={`/en/analysis/${featuredInvestigation.id}/`} aria-label={`Read ${featuredInvestigation.data.title}`}>Read the investigation <span aria-hidden="true">↗</span></a>
         </article>
       )}
       {selectedInvestigations.map(({ id, topic, note, entry }) => (

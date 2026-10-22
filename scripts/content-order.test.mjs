@@ -117,29 +117,35 @@ test("l’enquête MSCI conserve sa première publication et promeut expliciteme
   assert.equal(frontmatterDate(en, "sourceUpdatedDate"), frontmatterDate(fr, "updatedDate"));
 });
 
-test("la home EN ajoute seulement une révision explicitement promue et déduplique sa sélection éditoriale", () => {
+test("la home EN présente la dernière publication ou promotion et conserve les lectures éditoriales sans doublon", () => {
   const text = source("src/pages/en/index.astro");
-  const selection = text.match(/const homeFeaturedCandidate = [\s\S]+?(?=\nconst publicationDate)/)?.[0];
+  const selection = text.match(/const featuredInvestigation = [\s\S]+?(?=\nconst publicationDate)/)?.[0];
   assert.ok(selection, "sélection de la home EN absente");
   const compiled = ts.transpileModule(selection, {
     compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext },
   }).outputText;
-  const selectEnglishHome = new Function("englishPosts", "selectHomeFeaturedPost", "sortPostsByPublicationDate", "selectedEnglishInvestigations", `${compiled}; return { featuredRevision, selectedInvestigations };`);
+  const selectEnglishHome = new Function("englishPosts", "selectHomeFeaturedPost", "selectedEnglishInvestigations", `${compiled}; return { featuredInvestigation, selectedInvestigations };`);
   const curated = ["curated-1", "curated-2", "curated-3"].map((id) => ({ id, topic: "Markets", note: "Editorial reading" }));
   const revised = post("revised", "2026-10-17T00:31:11+02:00", "2026-10-22T09:09:09+02:00");
   const latest = post("latest", "2026-10-21T19:36:36+02:00");
   const posts = [revised, latest, ...curated.map(({ id }) => post(id, "2026-09-01"))];
-  const select = (entries, selections = curated) => selectEnglishHome(entries, selectHomeFeaturedPost, sortPostsByPublicationDate, selections);
-  assert.equal(select(posts).featuredRevision, null);
-  assert.deepEqual(select(posts).selectedInvestigations.map(({ id }) => id), curated.map(({ id }) => id));
+  const select = (entries, selections = curated) => selectEnglishHome(entries, selectHomeFeaturedPost, selections);
+  const initial = select(posts);
+  assert.equal(initial.featuredInvestigation, latest, "une publication figure en home sans date de promotion artificielle");
+  assert.deepEqual(initial.selectedInvestigations.map(({ id }) => id), curated.map(({ id }) => id));
   revised.data.homeFeaturedDate = new Date("2026-10-22T09:09:09+02:00");
   const promoted = select(posts);
-  assert.equal(promoted.featuredRevision, revised);
+  assert.equal(promoted.featuredInvestigation, revised);
   assert.equal(promoted.selectedInvestigations.length, 3);
   const duplicate = select(posts, [{ ...curated[0], id: "revised" }, ...curated.slice(1)]);
   assert.deepEqual(duplicate.selectedInvestigations.map(({ id }) => id), ["curated-2", "curated-3"]);
-  assert.equal(select([...posts, post("new-publication", "2026-10-22T10:00:00+02:00")]).featuredRevision, null);
-  assert.match(text, /<PublicationDates pubDate=\{featuredRevision\.data\.pubDate\} updatedDate=\{featuredRevision\.data\.updatedDate\} lang="en"/);
+  const newer = post("new-publication", "2026-10-22T10:00:00+02:00");
+  assert.equal(select([...posts, newer]).featuredInvestigation, newer, "une nouvelle publication remplace la révision promue");
+  const noPosts = select([], []);
+  assert.equal(noPosts.featuredInvestigation, null);
+  assert.deepEqual(noPosts.selectedInvestigations, []);
+  assert.throws(() => select([], curated), /Missing selected English investigation/, "une sélection cassée reste bloquante");
+  assert.match(text, /<PublicationDates pubDate=\{featuredInvestigation\.data\.pubDate\} updatedDate=\{featuredInvestigation\.data\.updatedDate\} lang="en"/);
 });
 
 test("l’analyse moteurs conserve son instant de publication exact en FR et EN", () => {

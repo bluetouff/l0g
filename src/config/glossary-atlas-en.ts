@@ -210,6 +210,19 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'alm', sigle: 'ALM', nom: 'Asset-liability management',
+    sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    def: 'Managing investments and obligations together. For an insurer, ALM aligns the amounts, timing, currencies and sensitivities of assets with promised policy benefits while planning for liquidity needs. Policyholder surrenders and other contractual options can change the expected cash flows.',
+    guide: '/en/guides/read-life-insurer-health/',
+    atlas: {
+      intuition: 'An investment must help fund a future payment in the currency and at the time it falls due.',
+      articles: [{ label: 'Japanese savings and global borrowing costs', href: '/en/analysis/japan-savings-global-borrowing-costs/', detail: 'Reinvestment choices, currency hedges and liability schedules.', kind: 'article' }],
+      guides: [{ label: 'Reading a life insurer’s financial health', href: '/en/guides/read-life-insurer-health/', kind: 'guide' }],
+      sources: [{ label: 'Bank of Canada, liquidity risks at life insurers', href: 'https://www.bankofcanada.ca/2024/04/staff-analytical-note-2024-7/', detail: 'ALM, duration, currency risk, surrenders and liquidity needs.', kind: 'source' }],
+      related: ['duration', 'couverture-de-change'],
+    },
+  },
+  {
     slug: 'fonderie', sigle: 'Foundry', nom: 'Manufacturing integrated circuits for customers',
     ...macroSection, robots: 'noindex,follow',
     guide: '/en/analysis/tsmc-chip-demand-data-center-power-risk/',

@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    { sigle: 'ALM', nom: 'Gestion actif-passif', def: 'Gestion coordonnée des placements et des engagements d’un établissement. Pour un assureur, elle rapproche les montants, échéances, devises et sensibilités des actifs de ceux des prestations promises, tout en prévoyant les besoins de liquidité. Les rachats des assurés et les autres options des contrats peuvent modifier les flux attendus.', guide: '/guides/lire-la-solidite-d-un-assureur-vie/' },
     { sigle: 'TRS', nom: 'Total return swap, swap de rendement total', def: 'Contrat dérivé transférant le rendement économique total d’un actif de référence, y compris ses revenus, ses variations de prix et ses pertes de crédit, en échange d’une rémunération de financement selon les termes convenus. L’exposition peut changer de mains tandis que la propriété juridique de l’actif reste inchangée. La protection dépend de l’exécution des paiements promis.', guide: '/posts/barclays-credit-prive-trs-risque/' },
     { sigle: 'Risque de contrepartie', nom: 'Risque de crédit de contrepartie', def: 'Risque qu’une contrepartie fasse défaut avant le règlement définitif des flux d’une transaction. Une perte peut survenir lorsque les contrats ont une valeur économique positive pour l’autre partie au moment du défaut. L’exposition varie avec les marchés ; les garanties et la compensation influencent la perte résiduelle.', guide: '/posts/barclays-credit-prive-trs-risque/' },
     { sigle: 'Ensemble de compensation', nom: 'Netting set', def: 'Dans le cadre de Bâle, groupe de transactions avec une même contrepartie relevant d’un accord de compensation bilatérale juridiquement exécutoire et reconnu pour le calcul du capital réglementaire. Une transaction sans accord reconnu constitue son propre ensemble. Des contrats opposés conclus avec des contreparties distinctes relèvent d’ensembles distincts.', guide: '/posts/barclays-credit-prive-trs-risque/' },
@@ -2101,6 +2102,13 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       { label: 'BCE : dérivés énergétiques', href: 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html', detail: 'Section 3 : écarts entre points de livraison du gaz.', kind: 'source' },
     ],
     related: ['brent', 'future', 'couverture-de-change', 'distillats'],
+  },
+  alm: {
+    intuition: 'Le placement doit financer une prestation future dans la monnaie et au moment où elle sera due.',
+    articles: [{ label: 'Épargne japonaise et coût de la dette mondiale', href: '/posts/japon-epargne-dette-mondiale/', detail: 'Choix de réinvestissement, couverture et calendrier des engagements.', kind: 'article' }],
+    guides: [{ label: 'Lire la solidité d’un assureur-vie', href: '/guides/lire-la-solidite-d-un-assureur-vie/', kind: 'guide' }],
+    sources: [{ label: 'Banque du Canada, liquidité des assureurs-vie', href: 'https://www.bankofcanada.ca/2024/04/staff-analytical-note-2024-7/', detail: 'Gestion actif-passif, duration, risque de change, rachats et besoins de liquidité.', kind: 'source' }],
+    related: ['duration', 'couverture-de-change'],
   },
   'couverture-de-change': {
     articles: [{ label: 'Le dollar caché dans la facture d’énergie', href: '/posts/dollar-facture-energie/', kind: 'article' }],

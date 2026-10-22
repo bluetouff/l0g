@@ -1,0 +1,87 @@
+---
+import { japanSavingsSvg, JAPAN_SAVINGS_KINDS } from '../lib/japanSavingsFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'flows' | 'sectors' | 'hedge' | 'duration' | 'transmission';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (typeof lang !== 'string' || !['fr', 'en'].includes(lang) || typeof kind !== 'string' || !JAPAN_SAVINGS_KINDS.includes(kind) || !/^0[1-5]$/.test(number) || JAPAN_SAVINGS_KINDS.indexOf(kind) + 1 !== Number(number)) {
+  throw new TypeError('Invalid Japan savings figure');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || new Set(references).size !== references.length || references.some(id => !/^(?:0[1-9]|1[0-9]|20)$/.test(id))) {
+  throw new TypeError('Invalid Japan savings source');
+}
+// The renderer accepts only closed enum variants and returns controlled passive SVG.
+---
+<figure class="japan-savings-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="japan-savings-panel">
+    <div class="japan-savings-desktop" set:html={japanSavingsSvg(lang, kind, false)} />
+    <div class="japan-savings-mobile" set:html={japanSavingsSvg(lang, kind, true)} />
+  </div>
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="japan-savings-references">{references.map(id => <a href={`#source-s${id}`}>[S{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face {
+    font-family: 'l0g Japan Savings';
+    src: url('/fonts/japan-savings/dejavu-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'l0g Japan Savings';
+    src: url('/fonts/japan-savings/dejavu-sans-700.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+  :global(article:has(.japan-savings-figure) > .post-head .post-title) {
+    hyphens: none;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .japan-savings-figure {
+    margin: 2.5rem auto;
+    width: 100%;
+    max-width: 44rem;
+    padding-bottom: 1rem;
+    container-type: inline-size;
+    overflow: visible;
+  }
+  .japan-savings-panel { width: 100%; }
+  .japan-savings-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    letter-spacing: normal;
+    overflow: visible;
+  }
+  .japan-savings-desktop { display: block; width: 100%; }
+  .japan-savings-mobile { display: none; width: 100%; }
+  figcaption { margin: 1rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .japan-savings-references { display: block; }
+  .japan-savings-references a { margin-right: .75em; }
+  .japan-savings-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .japan-savings-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .japan-savings-figure :global(details p) { margin: .7rem 0; }
+  .japan-savings-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @container (max-width: 480px) {
+    .japan-savings-desktop { display: none; }
+    .japan-savings-mobile { display: block; }
+  }
+  @media print {
+    .japan-savings-figure { break-inside: avoid; }
+    .japan-savings-desktop { display: block; }
+    .japan-savings-mobile { display: none; }
+  }
+</style>
