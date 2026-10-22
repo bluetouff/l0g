@@ -72,15 +72,15 @@
     },
     "yen": {
       "repository": "https://github.com/bluetouff/carry-yen-monitor",
-      "revision": "b4ccc88abbce09fc7435a4899295f44c823b8c90",
+      "revision": "0418198f1d116a67e84e7e6d7e19c666e314c284",
       "files": [
         {
           "path": "/opt/yct/build_snapshot.py",
-          "sha256": "1b154bcad3e921e657ce430d22f3712d8e92c5286dffbe243b4cd950fc6d4527"
+          "sha256": "2ed8daaf6dcb6e4f28eafee4e06f18034b6faa8a40993157d2aabae80b0858da"
         },
         {
           "path": "/opt/yct/yct_quality.py",
-          "sha256": "a5466f4a52703be11a155b05536ac33384c838066ab8a7c183115e90a9a0ffdc"
+          "sha256": "3b7e0c776c0d11f3da4bc735cf58b9cf174bc9bcf1bde8c0dbbb07ec3f3c1e9b"
         },
         {
           "path": "/opt/yct/verify_snapshot.py",
