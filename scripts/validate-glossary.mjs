@@ -401,7 +401,7 @@ for (const slug of ['decote-d-emission', 'prime-d-emission']) {
 }
 
 // Investment approach, investable shares and relative risk remain distinct concepts.
-for (const [slug, sourceUrls] of [["flottant", ["https://www.msci.com/eqb/methodology/meth_docs/MSCI_Free_Float_Data_Methodology.pdf"]], ["gestion-passive", ["https://www.bis.org/publications/implications-passive-investing-securities-markets", "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf"]], ["tracking-error", ["https://www.msci.com/documents/1296102/1336482/Introducing_MSCI_IndexMetrics.pdf/23cbc36f-cf2c-4bf0-96c3-206eecdfdf6d", "https://www.msci.com/research-and-insights/blog-post/bond-index-replication-while-navigating-volatility", "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf"]], ["etf", ["https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24"]]]) {
+for (const [slug, sourceUrls] of [["flottant", ["https://www.msci.com/index/methodology/latest/FreeFloatData", "https://www.msci.com/index/methodology/latest/GIMI"]], ["gestion-passive", ["https://www.bis.org/publications/implications-passive-investing-securities-markets", "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf"]], ["tracking-error", ["https://www.msci.com/documents/1296102/1336482/Introducing_MSCI_IndexMetrics.pdf/23cbc36f-cf2c-4bf0-96c3-206eecdfdf6d", "https://www.msci.com/research-and-insights/blog-post/bond-index-replication-while-navigating-volatility", "https://www.esma.europa.eu/sites/default/files/library/2015/11/esma-2014-0011-01-00_en_0.pdf"]], ["etf", ["https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24"]]]) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);
   assert(fr?.atlas && en?.atlas, `${slug}: fiches FR/EN et sources requises`);
@@ -420,14 +420,18 @@ for (const [slug, sourceUrls] of [["flottant", ["https://www.msci.com/eqb/method
 }
 assert.match(glossaryEntries.find(entry => entry.slug === 'flottant').def, /informations publiques/);
 assert.match(glossaryAtlasEnBySlug.get('flottant').def, /foreign ownership restrictions/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'flottant').def, /Foreign Inclusion Factor.*coefficient.*arrondi.*restrictions étrangères/);
+assert.match(glossaryAtlasEnBySlug.get('flottant').def, /Foreign Inclusion Factor.*adjustment factor.*rounding conventions.*foreign ownership restrictions/);
 assert.match(glossaryEntries.find(entry => entry.slug === 'gestion-passive').def, /échantillon/);
 assert.match(glossaryAtlasEnBySlug.get('gestion-passive').def, /synthetic/);
 assert.match(glossaryEntries.find(entry => entry.slug === 'tracking-error').def, /Écart-type/);
 assert.match(glossaryAtlasEnBySlug.get('tracking-error').def, /standard deviation/);
 assert.match(glossaryEntries.find(entry => entry.slug === 'tracking-error').def, /réalisée.*prévisionnelle/);
 assert.match(glossaryAtlasEnBySlug.get('tracking-error').def, /Realized.*ex-ante/);
-assert.match(glossaryEntries.find(entry => entry.slug === 'etf').def, /gestion active/);
-assert.match(glossaryAtlasEnBySlug.get('etf').def, /active management/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'etf').def, /stratégie indicielle ou active/);
+assert.match(glossaryAtlasEnBySlug.get('etf').def, /index or an active strategy/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'etf').def, /transactions entre investisseurs.*parts.*créations et rachats.*généralement.*participants autorisés.*titres.*espèces/);
+assert.match(glossaryAtlasEnBySlug.get('etf').def, /Trades between investors.*fund shares.*Creations and redemptions.*generally.*authorised participants.*securities.*cash/);
 
 // Short translated fiches remain accessible without being submitted as reference pages.
 for (const entry of glossaryAtlasEnBySlug.values()) {

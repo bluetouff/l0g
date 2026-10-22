@@ -1222,7 +1222,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "slug": "flottant",
     "sigle": "Free float",
     "nom": "Shares available in public markets",
-    "def": "The portion of outstanding shares considered available for purchase in public markets. The estimate excludes holdings classified as strategic under the provider’s rules. MSCI assesses availability to international investors and takes foreign ownership restrictions into account. Its estimate relies on public shareholder information, whose quality affects the result.",
+    "def": "The portion of outstanding shares considered available for purchase in public markets. The estimate excludes holdings classified as strategic under the provider’s rules. MSCI assesses availability to international investors using public shareholder information. Its Foreign Inclusion Factor (FIF) converts that estimate into a market capitalisation adjustment factor, applying rounding conventions and foreign ownership restrictions. The quality of the data affects the estimate.",
     "guide": "/en/analysis/msci-indonesia-free-float-index-risk/",
     "sectionTitle": "Private credit & markets",
     "accent": "var(--color-accent)",
@@ -1238,9 +1238,15 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       ],
       "sources": [
         {
-          "label": "MSCI, Free Float Data Methodology, March 2023",
-          "href": "https://www.msci.com/eqb/methodology/meth_docs/MSCI_Free_Float_Data_Methodology.pdf",
-          "detail": "Sections 1.1–1.3: definition, strategic holdings, foreign ownership limits and public-data quality.",
+          "label": "MSCI, Free Float Data Methodology, March 2026",
+          "href": "https://www.msci.com/index/methodology/latest/FreeFloatData",
+          "detail": "Sections 1.1–1.3 and Appendix I, pp. 3–6 and 13: strategic holdings, beneficial owners and public-data quality. Version accessed 22 October 2026; mutable URL.",
+          "kind": "source"
+        },
+        {
+          "label": "MSCI, GIMI Methodology, October 2026",
+          "href": "https://www.msci.com/index/methodology/latest/GIMI",
+          "detail": "Appendix VI, pp. 100–104: FIF, rounding, foreign ownership restrictions and adjusted market capitalisation. Version accessed 22 October 2026; mutable URL.",
           "kind": "source"
         }
       ],
@@ -1339,7 +1345,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "slug": "etf",
     "sigle": "ETF",
     "nom": "Exchange-Traded Fund",
-    "def": "A fund whose shares trade on an exchange during the trading day. Its mandate may follow an index or use active management. The market price can differ from the fund’s net asset value per share.",
+    "def": "A fund whose shares trade on an exchange during the trading day, following an index or an active strategy. Trades between investors transfer fund shares. Creations and redemptions with the fund generally pass through authorised participants, in exchange for securities, cash or both under the fund’s rules. These operations change its portfolio. The exchange price can differ from net asset value per share.",
     "guide": "/en/analysis/msci-indonesia-free-float-index-risk/",
     "sectionTitle": "Private credit & markets",
     "accent": "var(--color-accent)",
@@ -1357,7 +1363,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         {
           "label": "SEC, Updated Investor Bulletin: ETFs, February 23, 2023",
           "href": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24",
-          "detail": "Index-based or actively managed funds, intraday trading and market price versus net asset value.",
+          "detail": "Index-based or actively managed funds; investor trading, creation/redemption through authorised participants, baskets or cash, market price and net asset value. The bulletin covers US ETFs registered as open-end funds or unit investment trusts.",
           "kind": "source"
         }
       ],

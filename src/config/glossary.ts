@@ -470,10 +470,10 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Niveau 3', nom: 'Level 3 fair value', def: "Catégorie IFRS de juste valeur dans laquelle des données non observables significatives entrent dans le modèle. Elle signale davantage d'incertitude et de jugement dans l'estimation, pas nécessairement une perte ou un actif dégradé." },
       { sigle: 'PIK', nom: 'Payment In Kind', def: "Rémunération en nature : des intérêts s’ajoutent à une dette ou des dividendes sont versés en titres, sans paiement immédiat en espèces. Le PIK peut être prévu dès l’origine du contrat ; sa présence seule ne démontre pas une difficulté financière.", guide: '/posts/credit-prive-logiciels-ia-revenus-dette/' },
       { sigle: 'LP', nom: 'Limited Partner', def: "Investisseur commanditaire d'un fonds (assureur, fonds de pension, family office) qui apporte le capital sans gérer." },
-      {"sigle": "Flottant", "nom": "Part des actions disponible sur le marché", "def": "Part des actions en circulation considérée comme disponible à l’achat sur les marchés publics. L’estimation écarte les participations classées comme stratégiques selon les règles du fournisseur. MSCI apprécie cette disponibilité pour les investisseurs internationaux et tient compte des restrictions à la détention étrangère. L’estimation repose sur les informations publiques relatives aux actionnaires ; sa fiabilité dépend de leur qualité.", "guide": "/posts/msci-indonesie-flottant-risque-indices/"},
+      {"sigle": "Flottant", "nom": "Part des actions disponible sur le marché", "def": "Part des actions en circulation considérée comme disponible à l’achat sur les marchés publics. L’estimation écarte les participations classées comme stratégiques selon les règles du fournisseur. MSCI apprécie cette disponibilité pour les investisseurs internationaux à partir des informations publiques sur les actionnaires. Son Foreign Inclusion Factor (FIF) traduit cette estimation en coefficient d’ajustement de la capitalisation, avec des conventions d’arrondi et la prise en compte des restrictions étrangères. La qualité des données conditionne cette estimation.", "guide": "/posts/msci-indonesie-flottant-risque-indices/"},
       {"sigle": "Gestion passive", "nom": "Suivi d’un indice de référence", "def": "Stratégie visant à reproduire la performance d’un indice de référence selon ses règles. La réplication peut être complète, fondée sur un échantillon de titres ou synthétique selon le mandat. Les flux des investisseurs et les révisions de l’indice peuvent conduire à des transactions. Les frais et les conditions d’exécution peuvent créer un écart de performance.", "guide": "/posts/msci-indonesie-flottant-risque-indices/"},
       {"sigle": "Tracking error", "nom": "Volatilité de l’écart de rendement à l’indice", "def": "Écart-type, généralement annualisé, des différences de rendement périodiques entre un portefeuille et son indice de référence. La mesure réalisée utilise les rendements observés sur une fenêtre donnée ; la mesure prévisionnelle estime leur dispersion avec un modèle de risque. La fréquence, la fenêtre, la devise et la méthode d’annualisation doivent être précisées. La tracking difference désigne l’écart de performance sur une période et constitue une mesure distincte.", "guide": "/posts/msci-indonesie-flottant-risque-indices/"},
-      {"sigle": "ETF", "nom": "Exchange-Traded Fund", "def": "Fonds dont les parts se négocient en bourse au cours de la séance. Sa stratégie peut suivre un indice ou relever d’une gestion active, selon son mandat. Son prix de marché peut s’écarter de sa valeur liquidative par part.", "guide": "/posts/msci-indonesie-flottant-risque-indices/"},
+      {"sigle": "ETF", "nom": "Exchange-Traded Fund", "def": "Fonds dont les parts se négocient en bourse pendant la séance, suivant une stratégie indicielle ou active. Les transactions entre investisseurs transfèrent des parts du fonds. Les créations et rachats auprès du fonds passent généralement par des participants autorisés, contre des titres, des espèces ou les deux, selon ses règles. Ces opérations modifient son portefeuille. Le prix en bourse peut s’écarter de la valeur liquidative par part.", "guide": "/posts/msci-indonesie-flottant-risque-indices/"},
       { sigle: 'PER', nom: 'Price-Earnings Ratio', def: "Rapport entre le cours d'une action ou d'un indice et son bénéfice par action. Mesure combien les investisseurs paient pour un euro de bénéfice courant. Élevé, il traduit soit de fortes attentes de croissance, soit une survalorisation." },
       { sigle: 'Derating', nom: 'Compression de multiple', def: "Baisse du multiple de valorisation (PER, notamment) qu'un marché accepte de payer pour un même flux de bénéfices : le cours baisse ou stagne alors que les profits tiennent, voire montent. Inverse du re-rating. Un derating peut dégonfler un excès de valorisation sans krach, mais il peut aussi signaler que le marché doute de la durabilité des bénéfices sur lesquels le multiple est calculé." },
       { sigle: 'SOX', nom: 'Philadelphia Semiconductor Index', def: "Indice de référence des semi-conducteurs, une trentaine de valeurs cotées aux États-Unis (Nvidia, TSMC via ADR, Micron, AMD, Intel...). Baromètre du cycle mondial des puces et, depuis 2023, du pari boursier sur l'IA. Entré en marché baissier le 17 juillet 2026, à plus de 20 % sous son record de fin juin, après un rallye de 105 % entre mars et juin." },
@@ -1807,9 +1807,15 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     ],
     "sources": [
       {
-        "label": "MSCI, Free Float Data Methodology, mars 2023",
-        "href": "https://www.msci.com/eqb/methodology/meth_docs/MSCI_Free_Float_Data_Methodology.pdf",
-        "detail": "Sections 1.1–1.3 : définition, participations stratégiques, limites étrangères et qualité des informations publiques.",
+        "label": "MSCI, Free Float Data Methodology, mars 2026",
+        "href": "https://www.msci.com/index/methodology/latest/FreeFloatData",
+        "detail": "§1.1–1.3 et annexe I, p. 3–6 et 13 : participations stratégiques, bénéficiaires et qualité des informations publiques. Version consultée le 22 octobre 2026 ; URL mutable.",
+        "kind": "source"
+      },
+      {
+        "label": "MSCI, GIMI Methodology, octobre 2026",
+        "href": "https://www.msci.com/index/methodology/latest/GIMI",
+        "detail": "Annexe VI, p. 100–104 : FIF, arrondis, restrictions étrangères et capitalisation ajustée. Version consultée le 22 octobre 2026 ; URL mutable.",
         "kind": "source"
       }
     ],
@@ -1896,7 +1902,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       {
         "label": "SEC, Updated Investor Bulletin: ETFs, 23 février 2023",
         "href": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24",
-        "detail": "Fonds indiciels ou actifs, négociation en séance et prix de marché distinct de la valeur liquidative.",
+        "detail": "Fonds indiciels ou actifs ; transactions entre investisseurs, créations/rachats via les participants autorisés, paniers de titres ou espèces, prix de marché et valeur liquidative. Bulletin portant sur les ETF américains enregistrés comme fonds ouverts ou unit investment trusts.",
         "kind": "source"
       }
     ],
