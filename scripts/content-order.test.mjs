@@ -2,7 +2,8 @@ import { execFileSync } from "node:child_process";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
-import { sortPostsByLatestDate, sortPostsByPublicationDate } from "../src/lib/content-order.mjs";
+import ts from "typescript";
+import { selectHomeFeaturedPost, sortPostsByLatestDate, sortPostsByPublicationDate } from "../src/lib/content-order.mjs";
 
 function post(id, pubDate, updatedDate) {
   return {
@@ -34,6 +35,33 @@ test("le classement de publication compare les instants et départage les égali
   assert.deepEqual(sortPostsByPublicationDate([]), []);
 });
 
+test("une mise à la une explicite distingue une révision substantielle de la maintenance", () => {
+  const revised = post("revised", "2026-10-17T00:31:11+02:00", "2026-10-22T09:09:09+02:00");
+  const latest = post("latest", "2026-10-21T19:36:36+02:00");
+  const posts = [revised, latest];
+  assert.equal(selectHomeFeaturedPost(posts), latest, "updatedDate seule ne doit jamais promouvoir un article");
+  revised.data.homeFeaturedDate = new Date("2026-10-22T09:09:09+02:00");
+  assert.equal(selectHomeFeaturedPost(posts), revised);
+  assert.deepEqual(sortPostsByPublicationDate(posts), [latest, revised]);
+  assert.deepEqual(posts, [revised, latest], "la sélection ne modifie pas le tableau source");
+
+  const newer = post("newer", "2026-10-22T10:00:00+02:00");
+  assert.equal(selectHomeFeaturedPost([...posts, newer]), newer, "une publication ultérieure reprend la une");
+  assert.equal(selectHomeFeaturedPost([]), null);
+});
+
+test("la une ne peut antidater une publication et départage les égalités par publication puis identifiant", () => {
+  const first = post("z-first", "2026-10-21T18:00:00+02:00");
+  first.data.homeFeaturedDate = new Date("2026-10-20T12:00:00+02:00");
+  const earlier = post("earlier", "2026-10-21T17:00:00+02:00");
+  assert.equal(selectHomeFeaturedPost([earlier, first]), first);
+
+  earlier.data.homeFeaturedDate = new Date("2026-10-21T18:00:00+02:00");
+  assert.equal(selectHomeFeaturedPost([earlier, first]), first);
+  const equal = post("a-equal", "2026-10-21T18:00:00+02:00");
+  assert.equal(selectHomeFeaturedPost([first, equal]), equal);
+});
+
 const source = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 
 function frontmatterDate(path, field) {
@@ -41,6 +69,78 @@ function frontmatterDate(path, field) {
   assert.ok(match, `${path}: ${field} absent`);
   return match[1];
 }
+
+test("la une FR conserve la pagination chronologique, les dix cartes et les articles sans doublon", async () => {
+  const text = source("src/pages/[...page].astro");
+  const getStaticPaths = text.match(/export async function getStaticPaths\([\s\S]+?\n\}/)?.[0];
+  assert.ok(getStaticPaths, "getStaticPaths absent");
+  const compiled = ts.transpileModule(getStaticPaths.replace(/^export /, ""), {
+    compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext },
+  }).outputText;
+  const run = new Function("getCollection", "sortPostsByPublicationDate", "selectHomeFeaturedPost", `${compiled}; return getStaticPaths;`);
+  const feedExpression = text.match(/^const feed = ([^\n]+);$/m)?.[1];
+  assert.ok(feedExpression, "filtre du flux absent");
+  const feedFor = new Function("isFirst", "items", "hero", `return ${feedExpression};`);
+  const posts = Array.from({ length: 23 }, (_, index) => post(`article-${index + 1}`, new Date(Date.UTC(2026, 9, 22 - index)).toISOString()));
+  const originalOrder = posts.map(({ id }) => id);
+  const paginate = (entries, { pageSize }) => Array.from({ length: Math.ceil(entries.length / pageSize) }, (_, index) => ({
+    params: { page: index === 0 ? undefined : String(index + 1) },
+    props: { page: { data: entries.slice(index * pageSize, (index + 1) * pageSize), start: index * pageSize, currentPage: index + 1 } },
+  }));
+  const pathsFor = run(async () => posts, sortPostsByPublicationDate, selectHomeFeaturedPost);
+  const baseline = await pathsFor({ paginate });
+  const baselineFirst = baseline[0].props;
+  assert.equal(baselineFirst.homeFeaturedPost.id, "article-1");
+  assert.equal(feedFor(true, baselineFirst.page.data.map((entry) => ({ post: entry })), { post: baselineFirst.homeFeaturedPost }).length, 9);
+
+  posts[22].data.homeFeaturedDate = new Date("2026-10-23T09:00:00+02:00");
+  const promoted = await pathsFor({ paginate });
+  const first = promoted[0].props;
+  assert.equal(first.homeFeaturedPost.id, "article-23");
+  assert.deepEqual(promoted.map((path) => path.props.page.data.map(({ id }) => id)), baseline.map((path) => path.props.page.data.map(({ id }) => id)));
+  assert.ok(promoted.slice(1).every((path) => path.props.homeFeaturedPost === null));
+  const firstFeed = feedFor(true, first.page.data.map((entry) => ({ post: entry })), { post: first.homeFeaturedPost });
+  assert.equal(firstFeed.length, 10, "une une hors de la première page conserve ses dix cartes");
+  assert.deepEqual(firstFeed.map(({ post }) => post.id), originalOrder.slice(0, 10));
+  assert.equal(new Set([first.homeFeaturedPost.id, ...firstFeed.map(({ post }) => post.id)]).size, 11);
+  assert.deepEqual(posts.map(({ id }) => id), originalOrder);
+});
+
+test("l’enquête MSCI conserve sa première publication et promeut explicitement sa révision FR et EN", () => {
+  const fr = "src/content/posts/msci-indonesie-flottant-risque-indices.mdx";
+  const en = "src/content/posts-en/msci-indonesia-free-float-index-risk.mdx";
+  for (const path of [fr, en]) {
+    assert.equal(frontmatterDate(path, "pubDate"), "2026-10-17T00:31:11+02:00");
+    assert.equal(frontmatterDate(path, "updatedDate"), "2026-10-22T09:09:09+02:00");
+    assert.equal(frontmatterDate(path, "homeFeaturedDate"), frontmatterDate(path, "updatedDate"));
+  }
+  assert.equal(frontmatterDate(en, "sourceUpdatedDate"), frontmatterDate(fr, "updatedDate"));
+});
+
+test("la home EN ajoute seulement une révision explicitement promue et déduplique sa sélection éditoriale", () => {
+  const text = source("src/pages/en/index.astro");
+  const selection = text.match(/const homeFeaturedCandidate = [\s\S]+?(?=\nconst publicationDate)/)?.[0];
+  assert.ok(selection, "sélection de la home EN absente");
+  const compiled = ts.transpileModule(selection, {
+    compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext },
+  }).outputText;
+  const selectEnglishHome = new Function("englishPosts", "selectHomeFeaturedPost", "sortPostsByPublicationDate", "selectedEnglishInvestigations", `${compiled}; return { featuredRevision, selectedInvestigations };`);
+  const curated = ["curated-1", "curated-2", "curated-3"].map((id) => ({ id, topic: "Markets", note: "Editorial reading" }));
+  const revised = post("revised", "2026-10-17T00:31:11+02:00", "2026-10-22T09:09:09+02:00");
+  const latest = post("latest", "2026-10-21T19:36:36+02:00");
+  const posts = [revised, latest, ...curated.map(({ id }) => post(id, "2026-09-01"))];
+  const select = (entries, selections = curated) => selectEnglishHome(entries, selectHomeFeaturedPost, sortPostsByPublicationDate, selections);
+  assert.equal(select(posts).featuredRevision, null);
+  assert.deepEqual(select(posts).selectedInvestigations.map(({ id }) => id), curated.map(({ id }) => id));
+  revised.data.homeFeaturedDate = new Date("2026-10-22T09:09:09+02:00");
+  const promoted = select(posts);
+  assert.equal(promoted.featuredRevision, revised);
+  assert.equal(promoted.selectedInvestigations.length, 3);
+  const duplicate = select(posts, [{ ...curated[0], id: "revised" }, ...curated.slice(1)]);
+  assert.deepEqual(duplicate.selectedInvestigations.map(({ id }) => id), ["curated-2", "curated-3"]);
+  assert.equal(select([...posts, post("new-publication", "2026-10-22T10:00:00+02:00")]).featuredRevision, null);
+  assert.match(text, /<PublicationDates pubDate=\{featuredRevision\.data\.pubDate\} updatedDate=\{featuredRevision\.data\.updatedDate\} lang="en"/);
+});
 
 test("l’analyse moteurs conserve son instant de publication exact en FR et EN", () => {
   const frPath = "src/content/posts/moteurs-avion-penurie-maintenance-location.md";

@@ -4,6 +4,8 @@ import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
 import WatchCard from '../../components/WatchCard.astro';
 import LatestEnglishEpub from '../../components/LatestEnglishEpub.astro';
 import EnglishDossierLinks from '../../components/EnglishDossierLinks.astro';
+import PublicationDates from '../../components/PublicationDates.astro';
+import { selectHomeFeaturedPost, sortPostsByPublicationDate } from '../../lib/content-order.mjs';
 import { selectedEnglishInvestigations } from '../../config/english-edition.ts';
 import { MCP_COMPACT_PUBLIC_PATH } from '../../config/agent-contract.mjs';
 
@@ -12,7 +14,13 @@ const englishGuides = await getCollection('guidesEn', ({ data }) => !data.draft)
 const guideCount = englishGuides.length;
 const englishPosts = await getCollection('postsEn', ({ data }) => !data.draft);
 const analysisCount = englishPosts.length;
-const selectedInvestigations = selectedEnglishInvestigations.map((selection) => {
+const homeFeaturedCandidate = selectHomeFeaturedPost(englishPosts);
+const latestPublication = sortPostsByPublicationDate(englishPosts)[0];
+const featuredRevision = homeFeaturedCandidate?.data.homeFeaturedDate
+  && homeFeaturedCandidate.data.homeFeaturedDate.getTime() > homeFeaturedCandidate.data.pubDate.getTime()
+  && homeFeaturedCandidate.data.homeFeaturedDate.getTime() > (latestPublication?.data.pubDate.getTime() ?? -Infinity)
+  ? homeFeaturedCandidate : null;
+const selectedInvestigations = selectedEnglishInvestigations.filter((selection) => selection.id !== featuredRevision?.id).map((selection) => {
   const entry = englishPosts.find((post) => post.id === selection.id);
   if (!entry) throw new Error(`Missing selected English investigation: ${selection.id}`);
   return { ...selection, entry };
@@ -126,6 +134,15 @@ const jsonLd = {
     <p class="mono-label" style="color:var(--color-signal)">// editorial selection</p>
     <h2 id="selected-investigations-title">Selected investigations</h2>
     <div class="selected-grid">
+      {featuredRevision && (
+        <article class="selected-card selected-card-promoted">
+          <p class="selected-meta">Featured investigation</p>
+          <PublicationDates pubDate={featuredRevision.data.pubDate} updatedDate={featuredRevision.data.updatedDate} lang="en" />
+          <h3><a href={`/en/analysis/${featuredRevision.id}/`}>{featuredRevision.data.title}</a></h3>
+          <p>{featuredRevision.data.description}</p>
+          <a class="selected-link" href={`/en/analysis/${featuredRevision.id}/`} aria-label={`Read ${featuredRevision.data.title}`}>Read the investigation <span aria-hidden="true">↗</span></a>
+        </article>
+      )}
       {selectedInvestigations.map(({ id, topic, note, entry }) => (
         <article class="selected-card">
           <p class="selected-meta">{topic} <span aria-hidden="true">·</span> <time datetime={entry.data.pubDate.toISOString()}>{publicationDate(entry.data.pubDate)}</time></p>
@@ -220,6 +237,7 @@ const jsonLd = {
 <style>
   .selected-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin-top:1.2rem; }
   .selected-card { display:flex; flex-direction:column; gap:1rem; min-width:0; padding:1.3rem; border:1px solid var(--color-line); border-top:3px solid var(--color-signal); border-radius:10px; background:var(--color-surface); }
+  .selected-card-promoted { grid-column:1 / -1; }
   .selected-card:nth-child(2) { border-top-color:var(--color-accent); }
   .selected-card:nth-child(3) { border-top-color:var(--color-amber); }
   .selected-card .selected-meta { color:var(--color-muted); font-family:var(--font-mono); font-size:.7rem; line-height:1.7; }

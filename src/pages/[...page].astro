@@ -1,10 +1,11 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
+import type { GetStaticPathsOptions } from 'astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AnalysisPagination from '../components/AnalysisPagination.astro';
 import HomeSidebar from '../components/HomeSidebar.astro';
 import PostCard from '../components/PostCard.astro';
-import { sortPostsByPublicationDate } from '../lib/content-order.mjs';
+import { selectHomeFeaturedPost, sortPostsByPublicationDate } from '../lib/content-order.mjs';
 import PostHero from '../components/PostHero.astro';
 import RiskBand from '../components/RiskBand.astro';
 import SectionSignature from '../components/SectionSignature.astro';
@@ -24,12 +25,19 @@ type PaginatedPosts = {
   };
 };
 
-export async function getStaticPaths({ paginate }: { paginate: (data: PostEntry[], options: { pageSize: number }) => unknown }) {
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = sortPostsByPublicationDate(await getCollection('posts', ({ data }) => !data.draft));
-  return paginate(posts, { pageSize: 10 });
+  const homeFeaturedPost = selectHomeFeaturedPost(posts);
+  return paginate(posts, { pageSize: 10 }).map((path) => ({
+    ...path,
+    props: {
+      ...path.props,
+      homeFeaturedPost: path.props.page.currentPage === 1 ? homeFeaturedPost : null,
+    },
+  }));
 }
 
-const { page } = Astro.props as { page: PaginatedPosts };
+const { page, homeFeaturedPost } = Astro.props as { page: PaginatedPosts; homeFeaturedPost: PostEntry | null };
 const isFirst = page.currentPage === 1;
 const pageTitle = isFirst
   ? 'l0g : les angles morts de la finance'
@@ -45,8 +53,13 @@ const items = page.data.map((post: PostEntry, i: number) => ({
   accentLabel: topicLabelForTags(post.data.tags || []),
   rt: readingTime(post.body),
 }));
-const hero = isFirst ? items[0] : null;
-const feed = isFirst ? items.slice(1) : items;
+const hero = isFirst && homeFeaturedPost ? {
+  post: homeFeaturedPost,
+  accent: accentForTags(homeFeaturedPost.data.tags || []),
+  accentLabel: topicLabelForTags(homeFeaturedPost.data.tags || []),
+  rt: readingTime(homeFeaturedPost.body),
+} : null;
+const feed = isFirst && hero ? items.filter((item) => item.post.id !== hero.post.id) : items;
 const pageHref = (n: number) => (n <= 1 ? '/' : `/${n}/`);
 const needCards = [
   { title: 'Financement de l’IA', href: '/dossiers/financement-ia/' },
@@ -98,13 +111,7 @@ const needCards = [
 
   {hero && (
     <section class="home-featured" aria-labelledby="featured-title">
-      {isFirst
-        ? <SectionSignature index="01" eyebrow="à la une" title="L’analyse à retenir" id="featured-title" />
-        : <>
-            <p class="mono-label" style="color: var(--color-signal)">// à la une</p>
-            <h2 id="featured-title" class="section-title">L’analyse à retenir</h2>
-          </>
-      }
+      <SectionSignature index="01" eyebrow="à la une" title="L’analyse à retenir" id="featured-title" />
       <PostHero
         url={`/posts/${hero.post.id}/`}
         title={hero.post.data.title}
@@ -140,12 +147,12 @@ const needCards = [
   <section class="pb-4 latest-feed" id="dernieres-analyses">
     {isFirst
       ? <SectionSignature index="04" eyebrow="chronologie" title="Les dernières analyses" />
-      : <div class="section-heading feed-heading">
+      : <div class="section-heading feed-heading" style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:0.75rem 1rem;margin-bottom:0.9rem">
           <div>
             <p class="mono-label" style="color: var(--color-signal)">// archives</p>
-            <h2 class="section-title">Page {page.currentPage}</h2>
+            <h2 class="section-title" style="margin-top:0.35rem;color:var(--color-bright);font-family:var(--font-display);font-size:clamp(1.55rem,3vw,2.15rem);line-height:1.12">Page {page.currentPage}</h2>
           </div>
-          <p class="mono-label">{page.total} entrées</p>
+          <p class="mono-label" style="color:var(--color-muted)">{page.total} entrées</p>
         </div>
     }
     {
@@ -177,7 +184,7 @@ const needCards = [
 
 </BaseLayout>
 
-<style>
+<style is:global>
   .home-intro { padding: 1.1rem 0 0.4rem; }
   .home-kicker {
     display: flex;
@@ -249,15 +256,7 @@ const needCards = [
   :root[data-theme='light'] .home-action.primary { color: #fff; }
   .home-needs,
   .home-featured,
-  .home-risk,
   .latest-feed { margin-top: 3.4rem; }
-  .section-title {
-    margin-top: 0.35rem;
-    color: var(--color-bright);
-    font-family: var(--font-display);
-    font-size: clamp(1.55rem, 3vw, 2.15rem);
-    line-height: 1.12;
-  }
   .need-grid { display: grid; grid-template-columns: 1fr; gap: 0.7rem; }
   .need-card {
     display: flex;
@@ -276,30 +275,14 @@ const needCards = [
   .need-card span { color: var(--color-signal); }
   .need-card:hover { border-color: var(--color-signal); }
   .need-card:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
-  .home-featured :global(.post-hero) { margin-top: 0; }
-  .section-heading {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: end;
-    justify-content: space-between;
-    gap: 0.75rem 1rem;
-  }
-  .section-heading > a {
-    color: var(--color-signal);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
+  .home-featured .hero-title { hyphens: none; }
   .home-risk {
     margin-top: 1.65rem;
     border-top: 1px solid var(--color-line);
     border-bottom: 1px solid var(--color-line);
     padding: 1.15rem 0 1.2rem;
   }
-  .home-risk :global(.rise) { margin-top: 0; margin-bottom: 0; }
-  .feed-heading { margin-bottom: 0.9rem; }
-  .feed-heading > p { color: var(--color-muted); }
+  .home-risk .rise { margin-top: 0; margin-bottom: 0; }
   @media (min-width: 560px) {
     .need-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }

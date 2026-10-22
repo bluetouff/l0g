@@ -14,6 +14,8 @@ const posts = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
+    // Mise à la une explicite, sans modifier la chronologie de publication.
+    homeFeaturedDate: z.coerce.date().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     ogImage: z.string().optional(),
@@ -74,6 +76,8 @@ const postsEn = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
+    // Explicit homepage promotion, separate from publication and maintenance.
+    homeFeaturedDate: z.coerce.date().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     ogImage: z.string().optional(),
