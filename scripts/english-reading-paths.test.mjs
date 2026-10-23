@@ -5,6 +5,7 @@ import test from 'node:test';
 import { asiaDollarStages, asiaReadingPaths, financingReadingPaths, isAsiaAnalysis, selectAsiaAnalyses } from '../src/config/english-reading-paths.ts';
 import { load } from 'js-yaml';
 import { englishEditorialLinks } from '../src/config/english-editorial-links.ts';
+import { frenchDossiers } from '../src/config/french-dossiers.ts';
 
 const ROOT = process.cwd();
 
@@ -45,8 +46,8 @@ test('financing paths link published English analyses to existing English atlase
   }
 });
 
-test('the Asia hub has four distinct mechanism-led paths backed by published content', () => {
-  assert.equal(asiaReadingPaths.length, 4);
+test('the Asia hub has distinct mechanism-led paths backed by published content', () => {
+  assert.ok(asiaReadingPaths.length >= 4);
   assert.equal(new Set(asiaReadingPaths.map((path) => path.id)).size, asiaReadingPaths.length);
 
   for (const path of asiaReadingPaths) {
@@ -57,6 +58,27 @@ test('the Asia hub has four distinct mechanism-led paths backed by published con
     }
     for (const id of path.guideIds) {
       assert.ok(contentEntryExists('guides-en', id), `missing English guide: ${id}`);
+    }
+  }
+});
+
+test('French financing paths resolve through published source links for analyses and guides', () => {
+  for (const dossier of frenchDossiers) {
+    const path = financingReadingPaths.find((candidate) => candidate.id === dossier.id);
+    assert.ok(path, `missing financing path: ${dossier.id}`);
+    for (const [englishCollection, frenchCollection, linkage, ids] of [
+      ['posts-en', 'posts', 'sourceArticle', path.analysisIds],
+      ['guides-en', 'guides', 'sourceGuide', path.guideIds],
+    ]) {
+      for (const id of ids) {
+        const source = ['md', 'mdx'].map((extension) => join(ROOT, 'src/content', englishCollection, `${id}.${extension}`)).find(existsSync);
+        const metadata = load(readFileSync(source, 'utf8').split('---')[1]);
+        assert.ok(metadata[linkage], `missing ${linkage}: ${id}`);
+        const counterpart = ['md', 'mdx'].map((extension) => join(ROOT, 'src/content', frenchCollection, `${metadata[linkage]}.${extension}`)).find(existsSync);
+        assert.ok(counterpart, `missing French source for ${id}`);
+        const frenchMetadata = load(readFileSync(counterpart, 'utf8').split('---')[1]);
+        assert.notEqual(frenchMetadata.draft, true, `unpublished French source for ${id}`);
+      }
     }
   }
 });

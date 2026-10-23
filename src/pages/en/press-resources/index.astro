@@ -3,6 +3,7 @@ import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import { buildSignalHistorySurface } from '../../../lib/signal-history.ts';
 import { getCollection } from 'astro:content';
 import { pressInvestigations } from '../../../config/press-investigations.ts';
+import PressInvestigationPackages from '../../../components/PressInvestigationPackages.astro';
 const citationDate = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long', timeZone: 'Europe/Paris' });
 
 const analyses = await getCollection('postsEn', ({ data }) => !data.draft);
@@ -22,7 +23,7 @@ const jsonLd = {
   '@id': `${pageUrl}#resources`,
   url: pageUrl,
   name: 'l0g press and journalist resources',
-  description: 'Reusable SVG charts, CSV and JSON series, methods and attribution guidance for citing l0g public data.',
+  description: 'Original investigation figures, calculation data, public series, methods and citations for reusing l0g reporting resources.',
   inLanguage: 'en',
   isAccessibleForFree: true,
   license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -42,7 +43,7 @@ const jsonLd = {
 
 <EnglishGuidesLayout
   title="Press and journalist resources"
-  description="Reusable l0g SVG charts, CSV and JSON series, versioned methods and attribution guidance for financial and economic reporting."
+  description="Original investigation figures, calculation data, public series, methods and citations for reusing l0g reporting resources."
   canonical={pageUrl}
   alternateLinks={[
     { hreflang: 'en', href: pageUrl },
@@ -57,8 +58,8 @@ const jsonLd = {
       <p class="mono-label glow">// reusable public data</p>
       <h1 class="press-title font-display glow">Charts and data ready for direct citation.</h1>
       <p class="press-lede">
-        Permanent SVG charts, CSV and JSON exports, versioned methods and explicit attribution
-        rules for l0g recurring risk series. No account, tracking script or third-party embed is required.
+        Investigation figures and recurring l0g series, with downloadable data, methods and
+        attribution guidance. Each package retains the dates, scope and limits needed for reuse.
       </p>
       <div class="trust-row">
         <span>CSV · JSON · SVG</span>
@@ -78,6 +79,8 @@ const jsonLd = {
       </div>
     </section>
 
+    <PressInvestigationPackages locale="en" />
+
     <section class="press-section" id="investigations">
       <h2>Documented investigations</h2>
       <p class="press-lede">These analyses connect primary documents, explanatory figures and explicit limits. Cite the investigation alongside the original evidence for any claim you reuse.</p>
@@ -92,6 +95,7 @@ const jsonLd = {
             <p>{entry.data.description}</p>
             <p><strong>Reporting angle.</strong> {entry.resource.angle}</p>
             <p><strong>Limits to retain.</strong> {entry.resource.limits}</p>
+            {'packageId' in entry.resource && <p><a class="atlas-link" href={`#${entry.resource.packageId}`}>Figure, calculation data and method</a></p>}
             <ul class="source-links" aria-label={`Primary documents for ${entry.data.title}`}>
               {entry.resource.sources.map((source) => <li><a href={source.href}>{source.label}</a></li>)}
             </ul>

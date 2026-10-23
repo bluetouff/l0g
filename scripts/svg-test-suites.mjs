@@ -161,6 +161,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/yanbu-infographics.test.mjs',
   ]),
   rendered: Object.freeze([
+    'scripts/treasury-buyback-rendered-infographics.test.mjs',
     'scripts/insurance-affiliated-rendered-infographics.test.mjs',
     'scripts/insurance-reinsurance-rendered-infographics.test.mjs',
     'scripts/insurance-acquisitions-rendered-infographics.test.mjs',

@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { legacySurfaceRedirects } from '../src/config/legacy-surface-redirects.mjs';
 import { getPublicationSocial } from '../src/config/publication-social.mjs';
 import { scanHtmlElements } from '../src/lib/html-utils.ts';
+import { articleHeroImageStart } from './article-hero-image.mjs';
 
 const rootUrl = new URL('../dist/', import.meta.url);
 const root = fileURLToPath(rootUrl);
@@ -118,6 +119,7 @@ for (const file of htmlFiles) {
 
   const elements = scanHtmlElements(html);
   const cover = publicationCovers.get(name);
+  const heroStart = articleHeroImageStart(html, name);
   let priorityCovers = 0;
   for (const image of elements.filter((element) => element.name === 'img')) {
     assert(image.attributes.has('alt'), `${name}: image sans alt`);
@@ -134,6 +136,8 @@ for (const file of htmlFiles) {
         assert((await readFile(join(root, path))).length < 500_000, `${name}: variante ${width} hors budget`);
       }
       assert((await readFile(join(root, `/publications/${cover}-cover.jpg`))).length < 500_000, `${name}: couverture hors budget`);
+    } else if (image.start === heroStart) {
+      assert(image.attributes.get('loading') === 'eager' && image.attributes.get('fetchpriority') === 'high', `${name}: image principale LCP non prioritaire`);
     } else {
       assert(image.attributes.get('loading') === 'lazy', `${name}: image sans loading=lazy`);
     }

@@ -9,6 +9,7 @@ import test from "node:test";
 import satori from "satori";
 import sharp from "sharp";
 import { OG, fonts, ogCard, renderOgPng } from "./og-kit.mjs";
+import { articleHeroImageStart } from "./article-hero-image.mjs";
 
 const readProjectFile = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
@@ -191,10 +192,29 @@ test("article hero images keep descriptive alt text without a redundant visible 
   ]);
 
   assert.match(component, /alt=\{alt\}/);
+  assert.match(component, /loading="eager"/);
+  assert.match(component, /fetchpriority="high"/);
   assert.doesNotMatch(component, /<figcaption\b/);
   assert.doesNotMatch(component, /caption:\s*string/);
   assert.match(frenchArticle, /alt=\{`Illustration de l’analyse : \$\{post\.data\.title\}`\}/);
   assert.match(englishArticle, /alt=\{`Illustration for the analysis: \$\{post\.data\.title\}`\}/);
   assert.doesNotMatch(frenchArticle, /Illustration éditoriale de l’analyse\./);
   assert.doesNotMatch(englishArticle, /Editorial illustration for this analysis\./);
+});
+
+test("article hero priority is restricted to the first image in an article header", () => {
+  const hero = '<img data-article-image src="/hero.jpg" loading="eager" fetchpriority="high">';
+  const article = `<article data-pagefind-body><header class="post-head"><h1>Analysis</h1><figure>${hero}</figure></header><img src="/body.jpg" loading="lazy"></article>`;
+  for (const route of ["posts/analysis/index.html", "en/analysis/analysis/index.html"]) {
+    assert.equal(articleHeroImageStart(article, route), article.indexOf(hero));
+  }
+  assert.equal(articleHeroImageStart(article, "en/guides/analysis/index.html"), null);
+  for (const html of [
+    `<header class="post-head">${hero}</header><article data-pagefind-body><header class="post-head"><h1>Analysis</h1></header></article>`,
+    `<article data-pagefind-body><header class="post-head"><h1>Analysis</h1></header>${hero}</article>`,
+    `<article data-pagefind-body><header class="post-head"><img src="/first.jpg">${hero}</header></article>`,
+    `<article data-pagefind-body><header class="post-head"><script>const fake = '${hero}';</script></header></article>`,
+  ]) {
+    assert.equal(articleHeroImageStart(html, "posts/analysis/index.html"), null);
+  }
 });

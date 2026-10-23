@@ -1,6 +1,7 @@
 export const pressInvestigations = [
   {
     id: 'collateral-that-cannot-leave-the-building',
+    packageId: 'coreweave-ddtl4-2026-03-31',
     headingFr: 'Prêts sur GPU et périmètre du collatéral',
     angle: 'Examine the equipment, customer contract and data centre lease behind GPU-backed lending, then distinguish contractual security from recoverable value.',
     angleFr: 'Examiner les équipements, le contrat client et le bail du centre de données derrière un prêt garanti par des GPU, puis distinguer la sûreté contractuelle de la valeur récupérable.',
@@ -38,6 +39,7 @@ export const pressInvestigations = [
   },
   {
     id: 'banking-on-oil-2-banks-financing-trafigura',
+    packageId: 'trafigura-liquidity-2026-03-31',
     angle: 'Separate a commodity trader’s committed credit facilities, actual borrowings, collateral and cash needed for margin calls.',
     angleFr: 'Distinguer les lignes de crédit engagées d’un négociant, les emprunts effectivement tirés, le collatéral et les paiements liés aux appels de marge.',
     limits: 'A lender’s name in a facility announcement does not reveal its drawn exposure. Facility commitments, balance-sheet debt and hypothetical stress examples must retain their separate definitions.',

@@ -14,6 +14,7 @@ import {
 } from '../src/config/glossary-reference-fr.ts';
 import { glossaryRedirects } from '../src/config/glossary-redirects.mjs';
 import { glossaryAtlasEn, glossaryAtlasEnBySlug, englishGlossaryRobots } from '../src/config/glossary-atlas-en.ts';
+import { glossaryReferenceEnBySlug } from '../src/config/treasury-buyback-reference.ts';
 import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossary-matching.mjs';
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
@@ -481,9 +482,18 @@ assert.match(glossaryAtlasEnBySlug.get('etf').def, /index or an active strategy/
 assert.match(glossaryEntries.find(entry => entry.slug === 'etf').def, /transactions entre investisseurs.*parts.*créations et rachats.*généralement.*participants autorisés.*titres.*espèces/);
 assert.match(glossaryAtlasEnBySlug.get('etf').def, /Trades between investors.*fund shares.*Creations and redemptions.*generally.*authorised participants.*securities.*cash/);
 
-// Short translated fiches remain accessible without being submitted as reference pages.
+// Only individually qualified, complete English references may be indexed.
+assert.deepEqual(Object.keys(glossaryReferenceEnBySlug), ['treasury-buyback']);
 for (const entry of glossaryAtlasEnBySlug.values()) {
-  assert.equal(englishGlossaryRobots(entry), 'noindex,follow', `${entry.slug}: reference qualification required before indexation`);
+  const reference = glossaryReferenceEnBySlug[entry.slug];
+  if (reference) {
+    assert.equal(englishGlossaryRobots(entry), 'index,follow', `${entry.slug}: the qualified English reference must be indexable`);
+    assert(glossaryReferenceWordCount(reference) >= 800 && glossaryReferenceWordCount(reference) <= 1_200, `${entry.slug}: complete English reference required`);
+    assert(reference.primarySources.length >= 3, `${entry.slug}: primary sources required`);
+    assert.equal(reference.updatedIso, glossaryReferenceBySlug[entry.slug]?.updatedIso, `${entry.slug}: bilingual review dates must agree`);
+  } else {
+    assert.equal(englishGlossaryRobots(entry), 'noindex,follow', `${entry.slug}: reference qualification required before indexation`);
+  }
 }
 
 {
@@ -637,7 +647,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 307, 'Le corpus anglais doit conserver ses 307 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 308, 'Le corpus anglais ajoute Treasury buyback à ses 307 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -845,7 +855,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal([...glossaryAtlasEnBySlug.values()].filter(entry => (entry.robots ?? 'index,follow') === 'index,follow').length, 145, 'Les nouvelles définitions ne doivent pas augmenter le corpus EN indexable');
+assert.equal([...glossaryAtlasEnBySlug.values()].filter(entry => englishGlossaryRobots(entry) === 'index,follow').length, 1, 'Seule la référence Treasury buyback qualifiée est ouverte en anglais');
 const mortgageArticleFr = '/posts/credits-americains-risque-3-pourcent/';
 const mortgageArticleEn = '/en/analysis/us-mortgages-three-percent-moving-risk/';
 for (const [slug, source, related] of [
@@ -1428,7 +1438,7 @@ for (const slug of ['arrieres-de-paiement', 'affacturage']) {
 assert.equal(glossaryReferenceCandidateSlugs.length, 70, 'La sélection éditoriale doit contenir 70 notions rares');
 assert.equal(new Set(glossaryReferenceCandidateSlugs).size, glossaryReferenceCandidateSlugs.length, 'La sélection contient un slug dupliqué');
 assert.equal(glossaryReferenceCandidates.length, glossaryReferenceCandidateSlugs.length, 'Chaque candidate doit correspondre à une entrée du glossaire');
-assert.equal(glossaryReferenceEntries.length, 3, 'La première vague doit publier exactement trois fiches de référence');
+assert.equal(glossaryReferenceEntries.length, 4, 'Les trois références initiales et Treasury buyback sont les seules fiches admises');
 assert.deepEqual(
   glossaryReferenceEntries.map((entry) => entry.slug).sort(),
   Object.keys(glossaryReferenceBySlug).sort(),

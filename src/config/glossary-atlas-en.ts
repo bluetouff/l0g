@@ -210,6 +210,18 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'treasury-buyback', sigle: 'Treasury buyback', nom: 'Repurchase of outstanding US government debt',
+    def: 'A purchase by the US Treasury of its own outstanding securities before maturity. The operation exchanges public cash for older debt, which is retired at settlement. Reading it requires separating the announced par limit, accepted principal, price and accrued interest, then examining the government’s financing.',
+    sectionTitle: 'Macro & central banks', accent: 'var(--color-signal)', robots: 'index,follow',
+    guide: '/en/guides/read-us-treasuries-market/',
+    atlas: {
+      articles: [{ label: 'Bessent and Treasury buybacks', href: '/en/analysis/bessent-yield-threshold-30-year-treasury/', kind: 'article' }],
+      guides: [{ label: 'Read the US Treasury market', href: '/en/guides/read-us-treasuries-market/', kind: 'guide' }],
+      sources: [{ label: 'TreasuryDirect: buyback announcements and results', href: 'https://www.treasurydirect.gov/auctions/buy-backs/', kind: 'source' }],
+      related: ['adjudication', 'tga', 't-bill', 'duration'],
+    },
+  },
+  {
     slug: 'alm', sigle: 'ALM', nom: 'Asset-liability management',
     sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
     def: 'Managing investments and obligations together. For an insurer, ALM aligns the amounts, timing, currencies and sensitivities of assets with promised policy benefits while planning for liquidity needs. Policyholder surrenders and other contractual options can change the expected cash flows.',
@@ -4980,14 +4992,14 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'pcdr',
     sigle: 'PCDR',
     nom: 'Private Credit Default Rate',
-    def: 'The Fitch index measuring the default rate across roughly 1,200 middle-market borrowers in private credit. A broadened measure of default, more complete than missed payments alone.',
+    def: 'Fitch’s issuer-based default measure for US and Canadian borrowers in its non-broadly-syndicated middle-market CLO and privately monitored direct-lending universe. Over a trailing twelve-month period, unique issuers assigned RD or D are divided by the average issuer count at the beginning and end, without debt weighting. Multiple defaults by one issuer count once within that window. Events include payment defaults and distressed exchanges meeting Fitch’s criteria. Exercising a PIK option agreed at origination does not itself constitute default.',
     ...privateCreditSection,
     atlas: {
-      intuition: 'The PCDR tracks private default across a middle-market universe, a stress less visible than listed high yield.',
-      whyNow: 'It works as a direct sensor when private restructurings advance without always passing through a classic public default.',
+      intuition: 'Compare rates using the same universe, observation window and default definition.',
       articles: [privateCreditArticles[1], privateCreditArticles[2]],
       guides: [privateCreditGuides[0]],
       ...privateCreditShared,
+      sources: [{ label: 'Fitch: U.S. Private Credit, Default Rate Methodology', href: 'https://assets.fitchratings.com/downloadFile?reportType=report&sfReport=false&slug=corporate-finance/us-private-credit-default-rate-methodology-30-01-2026', detail: '30 January 2026, pages 1–4.', kind: 'source' }],
       related: ['credit-prive', 'pik', 'bdc'],
     },
   },

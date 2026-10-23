@@ -1,0 +1,52 @@
+---
+import type { GlossaryReferencePage } from '../config/glossary-reference-fr.ts';
+import TreasuryBuybackMechanism from './TreasuryBuybackMechanism.astro';
+interface Props { reference: GlossaryReferencePage; lang?: 'fr' | 'en' }
+const { reference, lang = 'fr' } = Astro.props;
+const fr = lang === 'fr';
+const groups = [
+  { title: fr ? 'Analyses l0g' : 'l0g analyses', items: reference.analyses },
+  { title: fr ? 'Pour approfondir' : 'Further reading', items: reference.instruments },
+  { title: fr ? 'Sources primaires' : 'Primary sources', items: reference.primarySources },
+].filter(group => group.items.length);
+---
+<section class="term-reference" aria-labelledby="reference-title">
+  <p class="eyebrow">{fr ? 'FICHE DE RÉFÉRENCE' : 'REFERENCE PAGE'} · <time datetime={reference.updatedIso}>{reference.updatedIso}</time></p>
+  <h2 id="reference-title">{fr ? 'Lire une opération de rachat' : 'Reading a buyback operation'}</h2>
+  <p class="standfirst">{reference.standfirst}</p>
+  <aside class="dated-fact"><h3>{reference.datedFact.label}</h3><p>{reference.datedFact.text}</p><a href={reference.datedFact.sourceHref}>{fr ? 'Source primaire' : 'Primary source'}</a></aside>
+  <div class="reference-body">
+    {reference.sections.map((section, index) => <section>
+      <h3>{section.title}</h3>
+      {section.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+      {section.sources?.length && <p class="section-sources"><span>{fr ? 'Sources : ' : 'Sources: '}</span>{section.sources.map((source, sourceIndex) => <>{sourceIndex > 0 && ' · '}<a href={source.href}>{source.label}</a></>)}</p>}
+      {index === 3 && reference.mechanism === 'treasury-buyback' && <TreasuryBuybackMechanism lang={lang} />}
+    </section>)}
+  </div>
+  <aside class="reference-limit"><h3>{fr ? 'Périmètre et limites' : 'Scope and limitations'}</h3><p>{reference.limitation}</p></aside>
+  <div class="resources">{groups.map(group => <section><h3>{group.title}</h3><ul>{group.items.map(item => <li><a href={item.href}>{item.label}</a><span>{item.detail}</span></li>)}</ul></section>)}</div>
+</section>
+<style>
+  .term-reference { margin-top:2rem; padding-top:1.4rem; border-top:1px solid var(--color-line); }
+  .eyebrow { color:var(--color-signal); font-family:var(--font-mono); font-size:.7rem; letter-spacing:.04em; }
+  h2 { color:var(--color-bright); font-family:var(--font-display); font-size:clamp(1.45rem,2.8vw,2rem); line-height:1.22; margin:.7rem 0 0; }
+  .standfirst { margin:1rem 0 0; max-width:68ch; color:var(--color-paper); font-size:1.07rem; line-height:1.75; }
+  .dated-fact,.reference-limit { margin-top:1.5rem; padding:1rem; border:1px solid var(--color-line); border-left:3px solid var(--color-signal); border-radius:7px; }
+  h3 { color:var(--color-bright); font-family:var(--font-display); font-size:1.18rem; line-height:1.35; }
+  .dated-fact h3,.reference-limit h3,.resources h3 { font-family:var(--font-mono); font-size:.72rem; color:var(--color-signal); line-height:1.5; }
+  p { color:var(--color-paper); font-family:var(--font-read); line-height:1.78; margin:.75rem 0 0; max-width:70ch; }
+  .dated-fact a { display:inline-block; margin-top:.6rem; font-size:.8rem; }
+  .reference-body { display:grid; gap:1.8rem; margin-top:2rem; }
+  a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; }
+  a:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+  .section-sources { font-size:.75rem; color:var(--color-muted); line-height:1.6; }
+  .section-sources a { color:var(--color-muted); }
+  .reference-limit { border-left-color:var(--color-accent); }
+  .reference-limit h3 { color:var(--color-accent); }
+  .resources { display:grid; gap:1.2rem; margin-top:2rem; }
+  .resources section { border-top:1px solid var(--color-line); padding-top:.8rem; }
+  ul { list-style:none; display:grid; gap:.65rem; margin:.7rem 0 0; padding:0; }
+  li { display:grid; gap:.2rem; }
+  li a { color:var(--color-paper); font-size:.86rem; }
+  li span { color:var(--color-muted); font-size:.75rem; line-height:1.5; }
+</style>

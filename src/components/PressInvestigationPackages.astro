@@ -1,0 +1,80 @@
+---
+import { pressPackages, pressPackagePaths, pressFigureSize, pressRights, buildPressCitation } from '../lib/press-packages.ts';
+import type { PressLocale } from '../lib/press-packages.ts';
+interface Props { locale: PressLocale }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+---
+
+<section class="press-packages" aria-labelledby="press-packages-title">
+  <p class="mono-label glow">// {fr ? 'figures d’enquête réutilisables' : 'reusable investigation figures'}</p>
+  <h2 id="press-packages-title">{fr ? 'Deux enquêtes, du chiffre à la source' : 'Two investigations, from figures to sources'}</h2>
+  <p class="intro">{fr
+    ? 'Chaque ensemble associe une figure originale autonome, les données du calcul, la méthode et une citation. Ces photographies historiques conservent leur date ; la vérification des sources ne les transforme pas en données actuelles.'
+    : 'Each package contains an original standalone figure, calculation data, method and citation. These historical snapshots keep their observation dates; checking their sources does not make them current data.'}</p>
+  <div class="package-grid">
+    {pressPackages.map((pack) => {
+      const paths = pressPackagePaths(pack, locale);
+      return (
+        <article class="package" id={pack.id}>
+          <div class="package-copy">
+            <p class="package-date">{fr ? 'Photographie' : 'Snapshot'} : <time datetime={pack.date}>{pack.date}</time> · v1</p>
+            <h3>{pack.title[locale]}</h3>
+            <p>{pack.summary[locale]}</p>
+          </div>
+          <figure>
+            <img src={paths.svg} alt={pack.title[locale]} width={pressFigureSize.width} height={pressFigureSize.height} loading="lazy" decoding="async" />
+            <figcaption>{pack.limits[locale]}</figcaption>
+          </figure>
+          <div class="package-copy">
+            <nav class="downloads" aria-label={`${fr ? 'Formats' : 'Downloads'} : ${pack.title[locale]}`}>
+              <a href={paths.svg} download>SVG</a>
+              <a href={paths.csv} download>CSV</a>
+              <a href={paths.method}>{fr ? 'Méthode' : 'Method'}</a>
+              <a href={paths.citation}>Citation</a>
+            </nav>
+            <details>
+              <summary>{fr ? 'Calcul, périmètre et sources' : 'Calculation, scope and sources'}</summary>
+              <p>{pack.scope[locale]}</p>
+              {pack.method[locale].map((paragraph) => <p>{paragraph}</p>)}
+              <ul>
+                {pack.sources.map((source) => <li><a href={source.url}>{source.label[locale]}</a> ({source.published}). {source.locator[locale]}</li>)}
+              </ul>
+              <p>{fr ? 'Sources consultées le' : 'Sources checked on'} <time datetime={pack.reviewed}>{pack.reviewed}</time>.</p>
+            </details>
+            <p class="package-citation">{buildPressCitation(pack, locale).trim()}</p>
+            <a class="analysis-link" href={pack.investigation[locale]}>{fr ? 'Lire l’enquête et ses limites' : 'Read the investigation and its limits'} →</a>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+  <p class="rights">{pressRights[locale]}</p>
+</section>
+
+<style>
+  .press-packages { margin-top: 2.5rem; }
+  h2 { margin: .55rem 0 1rem; font-family: var(--font-display); font-size: clamp(1.5rem, 3.6vw, 2rem); line-height: 1.2; color: var(--color-bright); }
+  .intro, .rights { color: var(--color-muted); line-height: 1.75; }
+  .intro { max-width: 64rem; margin-bottom: 1.5rem; }
+  .package-grid { display: grid; gap: 1.25rem; }
+  .package { min-width: 0; scroll-margin-top: 6rem; border: 1px solid var(--color-line); border-radius: 10px; overflow: hidden; background: color-mix(in srgb, var(--color-surface) 48%, transparent); }
+  .package-copy { padding: 1rem; }
+  .package-date { color: var(--color-signal); font: .7rem/1.7 var(--font-mono); letter-spacing: .04em; }
+  h3 { margin: .5rem 0 .8rem; color: var(--color-bright); font: 700 1.4rem/1.25 var(--font-display); }
+  p, li { line-height: 1.7; overflow-wrap: anywhere; }
+  figure { margin: 0; }
+  img { display: block; width: 100%; max-width: 480px; height: auto; margin: 0 auto; }
+  figcaption { padding: 1rem 1rem 0; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  .downloads { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1rem; }
+  .downloads a { border: 1px solid var(--color-line); border-radius: 999px; padding: .45rem .7rem; color: var(--color-signal); font: .75rem/1.5 var(--font-mono); text-transform: uppercase; }
+  a:hover { color: var(--color-bright); }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  summary { cursor: pointer; color: var(--color-bright); line-height: 1.5; }
+  ul { padding-left: 1.2rem; }
+  li + li { margin-top: .65rem; }
+  .package-citation { border-left: 2px solid var(--color-amber); padding-left: .8rem; margin: 1.2rem 0; color: var(--color-muted); font: .75rem/1.7 var(--font-mono); }
+  .analysis-link { color: var(--color-signal); font-weight: 650; }
+  .rights { margin-top: 1.1rem; font-size: .85rem; }
+  @media (min-width: 760px) { .package-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

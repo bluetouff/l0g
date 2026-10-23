@@ -21,6 +21,29 @@ const source = JSON.parse(readFileSync(new URL('../src/data/engagement-atlas.jso
 const credit = JSON.parse(readFileSync(new URL('../src/data/private-credit-atlas.json', import.meta.url), 'utf8'));
 const oil = JSON.parse(readFileSync(new URL('../src/data/oil-financing-atlas.json', import.meta.url), 'utf8'));
 
+test('FR and EN Atlas entry links have an archived relation and a valid dated interactive view', () => {
+  const pages = [
+    [source, 'atlas/financement-ia', 'en/atlas/ai-financing'],
+    [credit, 'atlas/credit-prive', 'en/atlas/private-credit'],
+    [oil, 'atlas/petrole', 'en/atlas/oil-financing'],
+  ];
+  for (const [dataset, ...paths] of pages) {
+    for (const path of paths) {
+      const page = readFileSync(new URL(`../src/pages/${path}.astro`, import.meta.url), 'utf8');
+      const entries = page.match(/entryPoints=\{\[([\s\S]*?)\]\}/)?.[1].match(/\{[^{}]*\}/g);
+      assert.ok(entries?.length, `${path}: missing entry points`);
+      for (const entry of entries) {
+        const relation = entry.match(/relation:\s*'([^']+)'/)?.[1];
+        const dateExpression = entry.match(/date:\s*([^,}]+)/)?.[1].trim();
+        const date = dateExpression?.match(/^'(\d{4}-\d{2}-\d{2})'$/)?.[1]
+          ?? (['latestDate', 'dataset.milestones.at(-1)!.date'].includes(dateExpression) ? dataset.milestones.at(-1).date : undefined);
+        assert.ok(dataset.relations.some(item => item.id === relation), `${path}: missing archived target ${relation}`);
+        assert.ok(date && atlasAt(dataset, date).relations.some(item => item.id === relation), `${path}: ${relation} unavailable at ${dateExpression}`);
+      }
+    }
+  }
+});
+
 test('Aligned ABS financing enters on disclosure without rewriting acquisition capital or implying spent proceeds', () => {
   const before = atlasAt(source, '2026-07-27');
   assert.equal(before.nodes.some(node => node.id === 'aligned-abs-investors'), false);

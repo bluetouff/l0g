@@ -1,0 +1,781 @@
+{
+  "measured_date": "2026-10-23",
+  "status": "public_baseline_before_local_fixes",
+  "production_source_sha": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+  "scope": "Five public templates; no authenticated browser profile, field telemetry or production change",
+  "software": {
+    "lighthouse": "13.5.0",
+    "chrome": "Google Chrome for Testing 151.0.7922.34",
+    "web_vitals": "6.2.3"
+  },
+  "navigation": {
+    "method": "Lighthouse navigation, simulated mobile, cold browser profile for each run",
+    "repeats_per_page": 3,
+    "settings": {
+      "screenEmulation": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      },
+      "throttlingMethod": "simulate",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36 Lighthouse/13.5.0 l0g-seo-lab/1"
+    },
+    "runs": [
+      {
+        "template": "home",
+        "url": "https://l0g.fr/",
+        "repeat": 1,
+        "fetch_time": "2026-10-23T13:21:11.894Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1639,
+        "cls": 0,
+        "tbt_ms": 89,
+        "fcp_ms": 1145,
+        "performance_score": 0.99,
+        "benchmark_index": 2722.5,
+        "warnings": [],
+        "raw_report_sha256": "e2338d7b4a026a8a077c7dd984ccbe4a332ad2b9ef743b2be51135e8495ced77"
+      },
+      {
+        "template": "directory",
+        "url": "https://l0g.fr/guides/",
+        "repeat": 1,
+        "fetch_time": "2026-10-23T13:21:39.113Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1547,
+        "cls": 0,
+        "tbt_ms": 117,
+        "fcp_ms": 1260,
+        "performance_score": 0.99,
+        "benchmark_index": 2810,
+        "warnings": [],
+        "raw_report_sha256": "a1cce42b850645efc253d2842439e0b495f667388a9e5286b0d7eb47c60a90cf"
+      },
+      {
+        "template": "guide-en",
+        "url": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+        "repeat": 1,
+        "fetch_time": "2026-10-23T13:22:00.815Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1435.156,
+        "cls": 0.001671468073187017,
+        "tbt_ms": 0,
+        "fcp_ms": 1360.156,
+        "performance_score": 1,
+        "benchmark_index": 2520.5,
+        "warnings": [],
+        "raw_report_sha256": "b1a6ee0f2d550f3d82e61f981e63a8cec7580d12ce8561e204ea3ed25d91182d"
+      },
+      {
+        "template": "atlas-en",
+        "url": "https://l0g.fr/en/atlas/ai-financing/",
+        "repeat": 1,
+        "fetch_time": "2026-10-23T13:22:27.827Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1536.752,
+        "cls": 0.08182020930170789,
+        "tbt_ms": 0,
+        "fcp_ms": 1519.252,
+        "performance_score": 0.98,
+        "benchmark_index": 2619.5,
+        "warnings": [],
+        "raw_report_sha256": "b16c85404532609adccc3d13a8758d3cf221fc18d2635dc4207a6e3f5af3b0f8"
+      },
+      {
+        "template": "analysis-tool",
+        "url": "https://l0g.fr/posts/modele-pompe-prix-adequation/",
+        "repeat": 1,
+        "fetch_time": "2026-10-23T13:22:45.655Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 3481.0385,
+        "cls": 0,
+        "tbt_ms": 0,
+        "fcp_ms": 1606.0385,
+        "performance_score": 0.9,
+        "benchmark_index": 3059,
+        "warnings": [],
+        "raw_report_sha256": "c5fc6214ef2a0b9ac7eb81dd661e3acdd647ed71335434b01bf71cb62d983fdc"
+      },
+      {
+        "template": "home",
+        "url": "https://l0g.fr/",
+        "repeat": 2,
+        "fetch_time": "2026-10-23T13:22:59.944Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1612,
+        "cls": 0,
+        "tbt_ms": 32,
+        "fcp_ms": 1081,
+        "performance_score": 1,
+        "benchmark_index": 2422,
+        "warnings": [],
+        "raw_report_sha256": "1b4d654a5a21e71417dbec1213df77e8572437db008b429124b6aa2689ed42fd"
+      },
+      {
+        "template": "directory",
+        "url": "https://l0g.fr/guides/",
+        "repeat": 2,
+        "fetch_time": "2026-10-23T13:23:18.810Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1515.768,
+        "cls": 0.01002302741492292,
+        "tbt_ms": 0,
+        "fcp_ms": 1208.768,
+        "performance_score": 1,
+        "benchmark_index": 2757,
+        "warnings": [],
+        "raw_report_sha256": "774ff3cff89c9c794809f443a97f0d0939d57f95b8abfd14f6ea2e10a3b04d36"
+      },
+      {
+        "template": "guide-en",
+        "url": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+        "repeat": 2,
+        "fetch_time": "2026-10-23T13:23:34.878Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1452,
+        "cls": 5.649331876650212e-05,
+        "tbt_ms": 0,
+        "fcp_ms": 1452,
+        "performance_score": 1,
+        "benchmark_index": 2833,
+        "warnings": [],
+        "raw_report_sha256": "b775f6d0e64165b046cab521fa687ba494f2989b055d292ac05a5ba47ce5251c"
+      },
+      {
+        "template": "atlas-en",
+        "url": "https://l0g.fr/en/atlas/ai-financing/",
+        "repeat": 2,
+        "fetch_time": "2026-10-23T13:23:54.427Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1537.5435,
+        "cls": 0.1257827555366427,
+        "tbt_ms": 0,
+        "fcp_ms": 1515.0435,
+        "performance_score": 0.95,
+        "benchmark_index": 2794,
+        "warnings": [],
+        "raw_report_sha256": "b26b2c1aedc3ead5274cf731b50ae1a264781bc171f6a7388cc0de3e5f4d6c41"
+      },
+      {
+        "template": "analysis-tool",
+        "url": "https://l0g.fr/posts/modele-pompe-prix-adequation/",
+        "repeat": 2,
+        "fetch_time": "2026-10-23T13:24:20.677Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 3480,
+        "cls": 0,
+        "tbt_ms": 0,
+        "fcp_ms": 1605,
+        "performance_score": 0.89,
+        "benchmark_index": 2556.5,
+        "warnings": [],
+        "raw_report_sha256": "e6d6ea6fdceaa563dcca1f952ce162f8730f33ea0b4b98d8671e062ee19f1377"
+      },
+      {
+        "template": "home",
+        "url": "https://l0g.fr/",
+        "repeat": 3,
+        "fetch_time": "2026-10-23T13:24:59.529Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1612.103,
+        "cls": 0,
+        "tbt_ms": 156,
+        "fcp_ms": 1137.103,
+        "performance_score": 0.98,
+        "benchmark_index": 2672,
+        "warnings": [],
+        "raw_report_sha256": "90bdc4a23be3e9b00d124a3e1cbf7e643dbd162ee160bb82719a743c4ef94d4f"
+      },
+      {
+        "template": "directory",
+        "url": "https://l0g.fr/guides/",
+        "repeat": 3,
+        "fetch_time": "2026-10-23T13:25:22.415Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1525.988,
+        "cls": 0.01002302741492292,
+        "tbt_ms": 9.5,
+        "fcp_ms": 1085.488,
+        "performance_score": 1,
+        "benchmark_index": 2644,
+        "warnings": [],
+        "raw_report_sha256": "73c81831963c54b63ad4fa4a3e53c06fcbbb9aaa84af4b659e333485872ca093"
+      },
+      {
+        "template": "guide-en",
+        "url": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+        "repeat": 3,
+        "fetch_time": "2026-10-23T13:25:40.046Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1444.231,
+        "cls": 0.001671468073187017,
+        "tbt_ms": 0,
+        "fcp_ms": 1369.231,
+        "performance_score": 1,
+        "benchmark_index": 2797,
+        "warnings": [],
+        "raw_report_sha256": "b38d5da9960219a7d0a15b03494ad033e79ffc722fb81ba0addff09b5e92d0a1"
+      },
+      {
+        "template": "atlas-en",
+        "url": "https://l0g.fr/en/atlas/ai-financing/",
+        "repeat": 3,
+        "fetch_time": "2026-10-23T13:25:57.399Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 1758.0415,
+        "cls": 0.0006085439513433169,
+        "tbt_ms": 0,
+        "fcp_ms": 1758.0415,
+        "performance_score": 0.99,
+        "benchmark_index": 2919.5,
+        "warnings": [],
+        "raw_report_sha256": "d2ee2f1563c7cdd69dece2d83c61239fbb495b7cbf82f5551e626eb02dc23b33"
+      },
+      {
+        "template": "analysis-tool",
+        "url": "https://l0g.fr/posts/modele-pompe-prix-adequation/",
+        "repeat": 3,
+        "fetch_time": "2026-10-23T13:27:04.386Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "lcp_ms": 3555,
+        "cls": 0,
+        "tbt_ms": 299,
+        "fcp_ms": 1858,
+        "performance_score": 0.83,
+        "benchmark_index": 1775,
+        "warnings": [],
+        "raw_report_sha256": "dedbf5dbba565a0313eeb5a9bf5656a0257df969516c033a95ff01d7a9fa48b3"
+      }
+    ]
+  },
+  "interaction": {
+    "method": "Official web-vitals6.2.3 onINP during Lighthouse devtools-throttled timespan interactions; isolated mobile lab, not field INP",
+    "repeats_per_page": 1,
+    "settings": {
+      "screenEmulation": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      },
+      "throttlingMethod": "devtools",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      }
+    },
+    "runs": [
+      {
+        "template": "home",
+        "url": "https://l0g.fr/",
+        "started": "2026-10-23T13:42:11.059Z",
+        "ended": "2026-10-23T13:42:24.279Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "actions": [
+          "open mobile menu",
+          "close mobile menu"
+        ],
+        "assertions": {
+          "passed": true
+        },
+        "inp_ms": 128,
+        "report_sha256": "df81299bd4b968b96b67345e71d7c9a38f4261321ed59a4d42f76de00becf416"
+      },
+      {
+        "template": "directory",
+        "url": "https://l0g.fr/guides/",
+        "started": "2026-10-23T13:42:24.280Z",
+        "ended": "2026-10-23T13:42:34.786Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "actions": [
+          "search inflation",
+          "clear search"
+        ],
+        "assertions": {
+          "before": 57,
+          "filtered": 3
+        },
+        "inp_ms": 88,
+        "report_sha256": "afb92dd8999c20f314eddf535a7f3704d3f0ac2988ad948c1eb5cf568035511d"
+      },
+      {
+        "template": "guide-en",
+        "url": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+        "started": "2026-10-23T13:42:34.787Z",
+        "ended": "2026-10-23T13:42:45.128Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "actions": [
+          "switch colour theme",
+          "restore colour theme",
+          "open explore menu",
+          "close explore menu"
+        ],
+        "assertions": {
+          "passed": true
+        },
+        "inp_ms": 112,
+        "report_sha256": "50c29d1cdee5ceea9e62d794da71e1ac66348b89414070ad8c25d5f32b369366"
+      },
+      {
+        "template": "atlas-en",
+        "url": "https://l0g.fr/en/atlas/ai-financing/",
+        "started": "2026-10-23T13:42:45.129Z",
+        "ended": "2026-10-23T13:42:53.838Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "actions": [
+          "select first milestone",
+          "select last milestone"
+        ],
+        "assertions": {
+          "dates": [
+            "2024-09-17",
+            "2025-03-19",
+            "2026-07-21",
+            "2026-07-28",
+            "2026-08-17",
+            "2026-08-26",
+            "2026-09-01",
+            "2026-09-21"
+          ]
+        },
+        "inp_ms": 64,
+        "report_sha256": "05dc665ccb2e6c4bc21a78e18f7f99753d2863199d6463350af36f36357fb642"
+      },
+      {
+        "template": "analysis-tool",
+        "url": "https://l0g.fr/posts/modele-pompe-prix-adequation/",
+        "started": "2026-10-23T13:42:53.838Z",
+        "ended": "2026-10-23T13:43:02.392Z",
+        "source_before": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "source_after": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+        "release_stable": true,
+        "actions": [
+          "comfortable margin preset",
+          "limited imports preset",
+          "restore basin shock preset"
+        ],
+        "assertions": {
+          "before": "+100 MW",
+          "comfortable": "+900 MW"
+        },
+        "inp_ms": 96,
+        "report_sha256": "bc8ca9420c270c6fc42ea64d1aae948e22fc0c76c295058433f0bed289561e35"
+      }
+    ]
+  },
+  "summaries": [
+    {
+      "template": "home",
+      "url": "https://l0g.fr/",
+      "lcp_ms": {
+        "median": 1612.103,
+        "min": 1612,
+        "max": 1639
+      },
+      "cls": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "tbt_ms": {
+        "median": 89,
+        "min": 32,
+        "max": 156
+      },
+      "interaction_inp_ms": 128
+    },
+    {
+      "template": "directory",
+      "url": "https://l0g.fr/guides/",
+      "lcp_ms": {
+        "median": 1525.988,
+        "min": 1515.768,
+        "max": 1547
+      },
+      "cls": {
+        "median": 0.01002302741492292,
+        "min": 0,
+        "max": 0.01002302741492292
+      },
+      "tbt_ms": {
+        "median": 9.5,
+        "min": 0,
+        "max": 117
+      },
+      "interaction_inp_ms": 88
+    },
+    {
+      "template": "guide-en",
+      "url": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+      "lcp_ms": {
+        "median": 1444.231,
+        "min": 1435.156,
+        "max": 1452
+      },
+      "cls": {
+        "median": 0.001671468073187017,
+        "min": 5.649331876650212e-05,
+        "max": 0.001671468073187017
+      },
+      "tbt_ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "interaction_inp_ms": 112
+    },
+    {
+      "template": "atlas-en",
+      "url": "https://l0g.fr/en/atlas/ai-financing/",
+      "lcp_ms": {
+        "median": 1537.5435,
+        "min": 1536.752,
+        "max": 1758.0415
+      },
+      "cls": {
+        "median": 0.08182020930170789,
+        "min": 0.0006085439513433169,
+        "max": 0.1257827555366427
+      },
+      "tbt_ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "interaction_inp_ms": 64
+    },
+    {
+      "template": "analysis-tool",
+      "url": "https://l0g.fr/posts/modele-pompe-prix-adequation/",
+      "lcp_ms": {
+        "median": 3481.0385,
+        "min": 3480,
+        "max": 3555
+      },
+      "cls": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "tbt_ms": {
+        "median": 0,
+        "min": 0,
+        "max": 299
+      },
+      "interaction_inp_ms": 96
+    }
+  ],
+  "limitations": [
+    "Laboratory measurements do not establish a field Core Web Vitals pass or a ranking effect.",
+    "Three cold navigation runs per template; one bounded interaction session per template, not population p75.",
+    "Network simulation and DevTools interaction throttling are different protocols. TBT is not INP.",
+    "Host workload was not globally controlled for the navigation batch. The final interaction pass ran after this task’s concurrent checks and Git copy were stopped/completed.",
+    "Initial Lighthouse timespan INP audit was not applicable on this Chrome trace. INP comes from official web-vitals onINP, with reportAllChanges, not TBT.",
+    "Earlier interaction sessions under concurrent workload and the invalid hidden-scenario test are retained in temporary logs, excluded from the final interaction summary.",
+    "No field CrUX or GSC Core Web Vitals cohort was retrieved in this pass. Local fixes have no measured production gain yet."
+  ],
+  "instrumentation_failures": [
+    {
+      "tool": "Lighthouse with system Chrome155",
+      "error": "NO_NAVSTART; no values used"
+    },
+    {
+      "tool": "Lighthouse timespan legacy INP audit on Chrome151",
+      "result": "notApplicable; do not interpret as zero"
+    },
+    {
+      "scenario": "Atlas hidden scenario toggle",
+      "result": "invalid test precondition; retried using visible milestone controls"
+    }
+  ],
+  "raw_evidence_directory": "/tmp/l0g-mobile-lab-2026-10-23",
+  "local_validation": {
+    "base_sha": "ccf319fd4200c5b815aaadacf3ab79d550d4440d",
+    "scoped_source_files": 31,
+    "check": {
+      "status": "passed_final_source",
+      "files": 991,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 515,
+      "log": "/tmp/l0g-opt-check-final-2026-10-23.log"
+    },
+    "build_ci": {
+      "status": "passed",
+      "astro_pages": 2155,
+      "audited_html": 2181,
+      "rendered_svg_tests": 272,
+      "security_tests": 76,
+      "secret_scan_files": 4871,
+      "log": "/tmp/l0g-opt-build-2026-10-23.log"
+    },
+    "deployment": {
+      "authorization": "User explicitly requested push after preview",
+      "status": "authorized_pending_ci_and_public_sha",
+      "source_scope": "31 previously validated sources plus focused rendered-SVG regression",
+      "followup": "Execution plan remains local; record actual release proof after CI and public SHA confirmation"
+    },
+    "observed_completed_at": "2026-10-23T14:18:15Z",
+    "ci_policy": {
+      "status": "passed",
+      "log": "/tmp/l0g-opt-ci-policy-2026-10-23.log"
+    },
+    "scoped_source_sha256": {
+      "package.json": "000873018a21b8eece248fd52244b3dd1b2c4ba56a169e3e1d16e98388b6e9df",
+      "scripts/article-hero-image.mjs": "dbf5662013e2be5c83386c735c8d3f1c32dc02350543643f5de2bc6cdc6c8949",
+      "scripts/audit-performance.mjs": "0c63009e1904a1852c03ccd97de8b03db679a065f5f2a49b8efce0bfef6b9b1f",
+      "scripts/english-reading-paths.test.mjs": "72fccf6efc7e20cc976bb6a538a7deeedec61006261c64771084a666c798b568",
+      "scripts/og-kit.test.mjs": "11b8494194e6a4d245d7eed781089bfada7f93eaee732dcaa63cc3ade1e71151",
+      "scripts/validate-glossary.mjs": "f438aa088f4d2cc7fe6552a4f16b186f9c9c78ced540e66ccf202e09dfaf0904",
+      "scripts/press-packages.test.mjs": "a50ec4fbc5c7c5ed0561de64a46786c0d008d3ed06d26fdb295ef10141f319dd",
+      "scripts/treasury-buyback-reference.test.mjs": "c8358e20b795cd1db4ecfde7aee47947c41a3747ca6bd48104a23aef8ad92858",
+      "src/components/ArticleHeroImage.astro": "695c771719bcccfda8367ac43f480000524089793fc6b8653308f7bc2864bd9b",
+      "src/components/OperationalGlossaryReference.astro": "d73f2082cc60c1dcd875aafedae53258098e94c3bec949a265c2522d148ea216",
+      "src/components/PressInvestigationPackages.astro": "4ed1914c3db6622daa6a5b665fae3c881c242b01414f99faf793568d9de1b5c6",
+      "src/components/TreasuryBuybackMechanism.astro": "8b3930238736e7d07e2479748d6d44c910db7464608b37e7081d903886f0198d",
+      "src/config/english-reading-paths.ts": "4843c9e41957f77f94781a82742a15fc869854c55c529f66d3281a4ee8e85459",
+      "src/config/glossary-atlas-en.ts": "24cc4eb341921b05578fc769d484bc0041c6e83b17cd7a54d91781d1b9dae062",
+      "src/config/glossary-reference-fr.ts": "9b1b281f49c8366eff230ee9b363ccbd346a9257a2e8a8dd28fc5b4c1d4d9910",
+      "src/config/glossary.ts": "d63804bce7df04b5f69f2c4e21d16b39a5ee5260137aaab03dba4fa89eb22ca0",
+      "src/config/press-investigations.ts": "3fa8827237275758a09730b2fce0d790838467247063a288a2b67a9f06c4542c",
+      "src/config/treasury-buyback-reference.ts": "2eee4acf9f4ed5a704a105ca242b276db044b74bb16856ec831a2e7ae0f02f6b",
+      "src/content/guides-en/read-etfs-creation-redemption-arbitrage.md": "24005f17923eed577ba6adba9a142b8b116bef5406a108f12a3f95e8ae4ce7ec",
+      "src/content/guides/lire-les-etf-creation-rachat-arbitrage.md": "6241b0f856c501df0bb3c71a41ec4bb761bbd4bbdb9ee3465ccee01c165ad495",
+      "src/lib/press-packages.ts": "5e303d9ad1fe7b97dffe1feeceadbdc906bed662e5ea7026b4ee1e72fa8ab59a",
+      "src/pages/dossiers/credit-prive-assurance/index.astro": "0e3bc8d4c7996375e6adbdca3b0e7570c1e68e7a3af8d387a79150a61d6d983b",
+      "src/pages/en/glossary/[slug].astro": "cb43c63e7fc1bb0863385353a1094a76e044c5fff959dd2e999d6076d35c0ff6",
+      "src/pages/en/press-resources/index.astro": "30784b2d6d2c220c871082586b13760e4418e810d427e0798dd66867f9953eaa",
+      "src/pages/en/topics/private-credit-insurance/index.astro": "2840fa06f0ceb6d774ea31c78a472f8abd5f26d01e15c04af9ca8a832b5fb4cb",
+      "src/pages/glossaire/[slug].astro": "7b4bc524b01969176353b04e5994bb924c81bdbde3a6cd90d03c576bfd20fff9",
+      "src/pages/ressources-journalistes.astro": "70b580ffac0e84fe93ac5587a184f6017acda0e6554c05b55198c72c47ff9c26",
+      "src/pages/press/investigations/[...asset].ts": "e03e58c43af214666a4ea5a0b66f1a01ed7dd704b5e510986a99bf5d85ba4cd3",
+      "src/components/EngagementAtlas.astro": "ba50a63688bb4dd374860420a13d3bf7a8341c58dd979e6e3a4cffbab3a8f0ca",
+      "src/scripts/engagement-atlas.ts": "4de9fb040657a7db28e01fed2fdf4ea308b30b982e876d93c5887fe9ba11c954",
+      "scripts/engagement-atlas.test.mjs": "71363820b0728b09dd49a7e291bea40520b8d4bccee564ee744028247b235593"
+    },
+    "rendered_link_checks": {
+      "passed": 16,
+      "checks": [
+        {
+          "from": "/dossiers/credit-prive-assurance/",
+          "to": "/posts/assureurs-02-pourquoi-acheter-assureur/",
+          "in_related_reading": false,
+          "status": "passed"
+        },
+        {
+          "from": "/posts/assureurs-02-pourquoi-acheter-assureur/",
+          "to": "/dossiers/credit-prive-assurance/",
+          "in_related_reading": true,
+          "status": "passed"
+        },
+        {
+          "from": "/posts/assureurs-02-pourquoi-acheter-assureur/",
+          "to": "/atlas/credit-prive/",
+          "in_related_reading": true,
+          "status": "passed"
+        },
+        {
+          "from": "/en/topics/private-credit-insurance/",
+          "to": "/en/analysis/why-investment-firms-buy-insurers/",
+          "in_related_reading": false,
+          "status": "passed"
+        },
+        {
+          "from": "/en/analysis/why-investment-firms-buy-insurers/",
+          "to": "/en/topics/private-credit-insurance/",
+          "in_related_reading": true,
+          "status": "passed"
+        },
+        {
+          "from": "/en/analysis/why-investment-firms-buy-insurers/",
+          "to": "/en/atlas/private-credit/",
+          "in_related_reading": true,
+          "status": "passed"
+        },
+        {
+          "from": "/dossiers/credit-prive-assurance/",
+          "to": "/posts/assureurs-03-bermudes-reassurance-jackson-athene/",
+          "in_related_reading": false,
+          "status": "passed"
+        },
+        {
+          "from": "/posts/assureurs-03-bermudes-reassurance-jackson-athene/",
+          "to": "/dossiers/credit-prive-assurance/",
+          "in_related_reading": true,
+          "status": "passed"
+        },
+        {
+          "from": "/posts/assureurs-03-bermudes-reassurance-jackson-athene/",
+          "to": "/atlas/credit-prive/",
+          "in_related_reading": true,
+          "status": "passed"
+        },
+        {
+          "from": "/en/topics/private-credit-insurance/",
+          "to": "/en/analysis/bermuda-reinsurance-jackson-athene/",
+          "in_related_reading": false,
+          "status": "passed"
+        },
+        {
+          "from": "/en/analysis/bermuda-reinsurance-jackson-athene/",
+          "to": "/en/topics/private-credit-insurance/",
+          "in_related_reading": true,
+          "status": "passed"
+        },
+        {
+          "from": "/en/analysis/bermuda-reinsurance-jackson-athene/",
+          "to": "/en/atlas/private-credit/",
+          "in_related_reading": true,
+          "status": "passed"
+        },
+        {
+          "from": "/guides/lire-les-etf-creation-rachat-arbitrage/",
+          "to": "/posts/msci-indonesie-flottant-risque-indices/",
+          "in_related_reading": false,
+          "status": "passed"
+        },
+        {
+          "from": "/en/guides/read-etfs-creation-redemption-arbitrage/",
+          "to": "/en/analysis/msci-indonesia-free-float-index-risk/#the-mandate-determines-the-pressure",
+          "in_related_reading": false,
+          "status": "passed"
+        },
+        {
+          "from": "/en/asia/",
+          "to": "/en/analysis/msci-indonesia-free-float-index-risk/",
+          "in_related_reading": false,
+          "status": "passed"
+        },
+        {
+          "from": "/en/asia/",
+          "to": "/en/guides/read-etfs-creation-redemption-arbitrage/",
+          "in_related_reading": false,
+          "status": "passed"
+        }
+      ]
+    },
+    "indexation": {
+      "source_sha256_matches": 31,
+      "english_glossary_count": 308,
+      "english_indexable": [
+        "treasury-buyback"
+      ],
+      "english_noindex": 307,
+      "pcdr_fr_en_noindex": true,
+      "cohort": {
+        "pages": 2181,
+        "sitemap_urls": 1148,
+        "sitemap_undesirable": [],
+        "undesirable_internal_destinations": [],
+        "strategic_inlinks": [
+          {
+            "route": "/en/guides/read-h41-fed-balance-sheet/",
+            "inlinks": 16,
+            "depth": 1
+          },
+          {
+            "route": "/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/",
+            "inlinks": 17,
+            "depth": 1
+          },
+          {
+            "route": "/en/analysis/realt-liquidation-token-without-the-deed/",
+            "inlinks": 9,
+            "depth": 2
+          },
+          {
+            "route": "/en/analysis/kospi-concentrated-liquidation-samsung-sk-hynix/",
+            "inlinks": 8,
+            "depth": 1
+          }
+        ]
+      }
+    },
+    "qa": {
+      "treasury": {
+        "status": "passed_final_checks",
+        "cases": 28,
+        "report": "/tmp/l0g-treasury-render-qa-2026-10-23/results.json",
+        "sha256": "0d5f73273c49a1d4f743abaf4baf798fdc3295b4841792c509521ac10e7a716d"
+      },
+      "atlas": {
+        "status": "passed_final_checks",
+        "cases": 12,
+        "report": "/tmp/l0g-mobile-lab-2026-10-23/atlas-patch-qa/report.json",
+        "sha256": "72b8162e5b96600b86e279ba2331aecb3f69e517a75c126a4730f02a15322285",
+        "note": "Initial304cache response was rechecked with cache disabled; functional checks all passed. No production CLS gain claimed."
+      },
+      "atlas_uncached": {
+        "status": "passed_final_checks",
+        "cases": 1,
+        "report": "/tmp/l0g-mobile-lab-2026-10-23/atlas-patch-qa-uncached/report.json",
+        "sha256": "ab9b61022ec22106be8f69ba827366338560272e6a577292b67a0842f75c4e6d"
+      },
+      "press": {
+        "status": "passed_final_checks",
+        "cases": 16,
+        "report": "/tmp/l0g-press-integration-qa-2026-10-23/result.json",
+        "sha256": "cb4d32948d523690e4153932eb91df2e1906bd358f06b2525232c204bca94e50"
+      }
+    },
+    "final_secret_scan": {
+      "status": "passed",
+      "tracked_files_in_validation_copy": 4882,
+      "includes_new_files_and_dist": true,
+      "log": "/tmp/l0g-opt-final-secrets-2026-10-23.log"
+    }
+  }
+}

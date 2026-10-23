@@ -32,8 +32,8 @@ const dateLabel = (date: string) => formatAtlasDate(date, language);
       <p class="mono-label">{ui.kicker}</p>
       <h1>{ui.titlePrefix} <span>{subject}</span></h1>
       <p class="atlas-intro">{intro}</p>
-      <div class="atlas-entry" data-atlas-controls hidden>
-        {entryPoints.map(entry => <button type="button" data-atlas-entry={entry.relation} data-entry-date={entry.date} data-entry-scenario={entry.scenario ? 'default' : undefined}>{entry.label} <span aria-hidden="true">↗</span></button>)}
+      <div class="atlas-entry">
+        {entryPoints.map(entry => <a href={`#preuve-${entry.relation}`} data-atlas-entry={entry.relation} data-entry-date={entry.date} data-entry-scenario={entry.scenario ? 'default' : undefined}>{entry.label} <span aria-hidden="true">↗</span></a>)}
       </div>
     </header>
 
@@ -106,8 +106,9 @@ const dateLabel = (date: string) => formatAtlasDate(date, language);
   .atlas-intro { max-width:48rem; font-family:var(--font-read); font-size:1.05rem; line-height:1.7; }
   .atlas-entry { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.5rem; }
   button { cursor:pointer; }
-  .atlas-entry button,.proof-share button,.atlas-scenario button,.relation-heading button { display:inline-flex; align-items:center; justify-content:space-between; gap:1rem; min-height:44px; padding:.7rem 1rem; border:1px solid var(--color-line); border-radius:5px; background:var(--color-surface-2); font-size:.8rem; color:var(--color-bright); }
-  .atlas-entry button:first-child { border-color:var(--color-signal); color:var(--color-signal); }
+  .atlas-entry a,.proof-share button,.atlas-scenario button,.relation-heading button { display:inline-flex; align-items:center; justify-content:space-between; gap:1rem; min-height:44px; padding:.7rem 1rem; border:1px solid var(--color-line); border-radius:5px; background:var(--color-surface-2); font-size:.8rem; color:var(--color-bright); }
+  .atlas-entry a { text-decoration:none; }
+  .atlas-entry a:first-child { border-color:var(--color-signal); color:var(--color-signal); }
   .atlas-workbench { border:1px solid var(--color-line); border-radius:14px; overflow:hidden; background:var(--color-surface); }
   .atlas-toolbar { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:.6rem; padding:1.2rem 1.4rem; border-bottom:1px solid var(--color-line); }
   .atlas-toolbar h2,.relation-heading h2 { font-family:var(--font-display); font-size:1rem; color:var(--color-bright); }
@@ -177,6 +178,6 @@ const dateLabel = (date: string) => formatAtlasDate(date, language);
   .atlas-outlinks { display:flex; gap:1rem 2rem; flex-wrap:wrap; }
   [hidden] { display:none!important; }
   a:focus-visible,button:focus-visible,summary:focus-visible,[data-atlas-relation-list] :global(a:focus-visible) { outline:2px solid var(--color-signal); outline-offset:4px; }
-  @media(max-width:760px) { .atlas-map { grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:none; gap:.7rem; padding:1rem; }.atlas-node { grid-column:auto; grid-row:auto; min-height:88px; }.atlas-node strong { font-size:1rem; }.node-role,.node-count { font-size:.72rem; }.atlas-lines { display:none; }.atlas-inspection { grid-template-columns:minmax(0,1fr); }.atlas-dates { grid-template-columns:repeat(2,minmax(0,1fr)); padding:1rem 1rem 0; }.atlas-change { margin:1rem; }.atlas-toolbar { padding:1rem; }.atlas-entry { flex-direction:column; }.atlas-entry button { text-align:left; }.atlas-proof { order:-1; } }
+  @media(max-width:760px) { .atlas-map { grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:none; gap:.7rem; padding:1rem; }.atlas-node { grid-column:auto; grid-row:auto; min-height:88px; }.atlas-node strong { font-size:1rem; }.node-role,.node-count { font-size:.72rem; }.atlas-lines { display:none; }.atlas-inspection { grid-template-columns:minmax(0,1fr); }.atlas-dates { grid-template-columns:repeat(2,minmax(0,1fr)); padding:1rem 1rem 0; }.atlas-change { margin:1rem; }.atlas-toolbar { padding:1rem; }.atlas-entry { flex-direction:column; }.atlas-entry a { text-align:left; }.atlas-proof { order:-1; } }
   @media(prefers-reduced-motion:reduce) { .atlas-node { transition:none; } }
 </style>

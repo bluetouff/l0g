@@ -1,3 +1,5 @@
+import { treasuryBuybackReferenceFr } from './treasury-buyback-reference.ts';
+
 export interface GlossaryReferenceLink {
   label: string;
   href: string;
@@ -7,6 +9,7 @@ export interface GlossaryReferenceLink {
 export interface GlossaryReferenceSection {
   title: string;
   paragraphs: string[];
+  sources?: GlossaryReferenceLink[];
 }
 
 export interface GlossaryReferencePage {
@@ -23,6 +26,7 @@ export interface GlossaryReferencePage {
   analyses: GlossaryReferenceLink[];
   instruments: GlossaryReferenceLink[];
   primarySources: GlossaryReferenceLink[];
+  mechanism?: 'treasury-buyback';
 }
 
 export interface GlossaryReferenceCandidateGroup {
@@ -143,6 +147,7 @@ export const glossaryReferenceCandidateSlugs = glossaryReferenceCandidateGroups.
 export const glossaryGenericShortSlugs = ['cpi', 'etf', 'per', 'vix', 'm2', 'kyc'] as const;
 
 export const glossaryReferenceBySlug: Record<string, GlossaryReferencePage> = {
+  'treasury-buyback': treasuryBuybackReferenceFr,
   slar: {
     updatedIso: '2026-09-02',
     standfirst: "Le Short-Term Liquid Assets Ratio mesure le coussin d'actifs très courts des fonds obligataires d'entreprise américains à partir de leurs déclarations N-PORT. Il aide à voir ce qui absorbe les rachats avant une vente d'obligations, sans constituer un seuil réglementaire ni une promesse de liquidité.",

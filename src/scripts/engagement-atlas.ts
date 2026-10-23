@@ -166,6 +166,8 @@ function initAtlas(root: HTMLElement) {
     } else if (target.hasAttribute('data-atlas-reset')) { focusNode = ''; render();
     } else if (target.hasAttribute('data-scenario-toggle')) { state.scenario = !state.scenario; render();
     } else if (target.dataset.atlasEntry) {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
       focusNode = '';
       const params = new URLSearchParams({
         date: target.dataset.entryDate ?? '',

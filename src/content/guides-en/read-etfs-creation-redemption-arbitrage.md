@@ -70,6 +70,8 @@ The BIS research addresses particular market structures and observed episodes. I
 
 **Tracking difference** compares the fund’s return with its benchmark over a specified period. **Tracking error** measures the variability of periodic return differences. A premium or discount instead compares a share price with NAV at a particular time. Close portfolio tracking can coexist with expensive exchange execution.
 
+The [MSCI Indonesia investigation](/en/analysis/msci-indonesia-free-float-index-risk/#the-mandate-determines-the-pressure) follows the link from index eligibility to a fund’s portfolio target. It separates benchmark-driven rebalancing from investor creations and redemptions, keeping the mandates of broad emerging-market funds and a country ETF distinct.
+
 An investor’s costs include fund charges, any brokerage fees, the bid/ask spread and changes in the premium or discount between entry and exit. Buying at 100.20 CU and immediately selling at 99.80 CU loses 0.40 CU per share, assuming unchanged underlying prices. That hypothetical round trip isolates the spread; it says little about the return from holding the fund over a longer period. [Investor.gov, mutual fund and ETF fees](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/mutual-fund-and-etf-fees-and-expenses-investor-bulletin).
 
 A limit order specifies an acceptable execution price while accepting the possibility that the trade will remain unfilled. Observing quotes while the principal underlying markets are open makes the comparison more coherent, although it cannot ensure a narrow spread. Daily share turnover also provides an incomplete picture of the depth available for an order of a particular size.

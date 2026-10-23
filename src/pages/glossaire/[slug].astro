@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
+import OperationalGlossaryReference from '../../components/OperationalGlossaryReference.astro';
 import { glossaryEntries, glossaryEntryBySlug, glossaryUpdatedIso } from '../../config/glossary.ts';
 import { glossaryAtlasEnBySlug } from '../../config/glossary-atlas-en.ts';
 
@@ -181,7 +182,9 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <p>{entry.def}</p>
     </section>
 
-    {reference && (
+    {reference?.mechanism && <OperationalGlossaryReference reference={reference} lang="fr" />}
+
+    {reference && !reference.mechanism && (
       <section class="term-reference" aria-labelledby="reference-title">
         <p class="mono-label" style={`color:${entry.accent}`}>fiche de référence</p>
         <h2 id="reference-title">Comprendre le mécanisme</h2>

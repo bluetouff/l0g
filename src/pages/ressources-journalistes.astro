@@ -7,6 +7,7 @@ import { latestWeeklyEdition } from '../config/weekly-editions.ts';
 import { buildWeeklyCitationText, weeklyChartDimensions } from '../lib/weekly-package.ts';
 import { getCollection } from 'astro:content';
 import { pressInvestigations } from '../config/press-investigations.ts';
+import PressInvestigationPackages from '../components/PressInvestigationPackages.astro';
 
 const englishAnalyses = await getCollection('postsEn', ({ data }) => !data.draft);
 const citationDate = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'Europe/Paris' });
@@ -38,7 +39,7 @@ const jsonLd = {
   url: pageUrl,
   name: 'Ressources l0g pour journalistes',
   description:
-    'Graphiques SVG, séries CSV et JSON, méthodologies et règles d’attribution pour citer les données publiques de l0g.',
+    'Figures d’enquête SVG, données de calcul CSV, séries publiques, méthodes et citations pour réutiliser les ressources originales de l0g.',
   inLanguage: 'fr',
   isAccessibleForFree: true,
   license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -58,7 +59,7 @@ const jsonLd = {
 
 <BaseLayout
   title="Ressources pour journalistes"
-  description="Graphiques SVG, séries CSV et JSON, méthodologies et règles d’attribution pour citer les données publiques et indices récurrents de l0g."
+  description="Figures d’enquête SVG, données de calcul CSV, séries publiques, méthodes et citations pour réutiliser les ressources originales de l0g."
   sidebar={false}
   alternateLinks={[
     { hreflang: 'fr', href: pageUrl },
@@ -73,9 +74,9 @@ const jsonLd = {
       <p class="mono-label glow">// press kit données</p>
       <h1 class="press-title font-display glow">Des données et graphiques prêts à citer.</h1>
       <p class="press-lede">
-        Cette page rassemble les séries récurrentes de l0g dans des formats directement
-        réutilisables. Chaque graphique possède une URL permanente, les données existent en
-        CSV et JSON, et la méthode reste liée à l'instrument.
+        Figures d’enquête et séries récurrentes de l0g, avec leurs données, méthodes et règles
+        d’attribution. Les formats téléchargeables conservent la date, le périmètre et les limites
+        nécessaires pour les réutiliser.
       </p>
       <TrustBar items={trustItems} />
     </header>
@@ -123,6 +124,8 @@ const jsonLd = {
       </div>
     </section>
 
+    <PressInvestigationPackages locale="fr" />
+
     <section class="press-section" id="investigations" aria-labelledby="investigations-title">
       <h2 id="investigations-title">Enquêtes documentées</h2>
       <p class="press-lede">Des mécanismes financiers reconstitués à partir de documents primaires, avec leurs figures et leurs limites. Toute reprise d’un résultat doit conserver le lien vers l’enquête et vers ses preuves.</p>
@@ -137,6 +140,7 @@ const jsonLd = {
             <p>{entry.data.description}</p>
             <p><strong>Angle de reprise.</strong> {entry.resource.angleFr}</p>
             <p><strong>Limites à conserver.</strong> {entry.resource.limitsFr}</p>
+            {'packageId' in entry.resource && <p><a class="atlas-link" href={`#${entry.resource.packageId}`}>Figure, données du calcul et méthode</a></p>}
             <ul class="source-links" aria-label={`Documents primaires pour ${entry.data.title}`}>
               {entry.resource.sources.map((source) => <li><a href={source.href}>{source.label}</a></li>)}
             </ul>

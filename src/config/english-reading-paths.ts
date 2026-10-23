@@ -100,6 +100,18 @@ export const asiaReadingPaths: readonly EnglishReadingPath[] = [
     guideIds: ['read-tic-data-us-debt'],
   },
   {
+    id: 'equity-market-access',
+    eyebrow: 'free float · index eligibility · fund mandates',
+    title: 'Asian equities, index rules and portfolio constraints',
+    description: 'Read Indonesia’s ownership disclosures alongside South Korea’s leveraged ETFs, following how index rules and fund mandates translate into portfolio adjustments.',
+    transmission: 'ownership and index rules → portfolio targets → rebalancing → market liquidity',
+    analysisIds: [
+      'msci-indonesia-free-float-index-risk',
+      'kospi-concentrated-liquidation-samsung-sk-hynix',
+    ],
+    guideIds: ['read-etfs-creation-redemption-arbitrage'],
+  },
+  {
     id: 'insurer-nodes',
     eyebrow: 'the Asian dollar loop',
     title: 'Asian savings and dollar risk',
@@ -172,6 +184,8 @@ export const financingReadingPaths = [
       'aon-blackstone-cortina-reinsurance-risk-pricing',
       'semi-liquid-private-credit-gating',
       'life-insurers-retirement-savings-private-credit-bermuda',
+      'why-investment-firms-buy-insurers',
+      'bermuda-reinsurance-jackson-athene',
     ],
     guideIds: ['read-private-credit-risk', 'read-clos-and-leveraged-loans', 'read-life-insurer-health'],
   },

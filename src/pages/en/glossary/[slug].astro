@@ -1,6 +1,8 @@
 ---
 import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import CitationBox from '../../../components/CitationBox.astro';
+import OperationalGlossaryReference from '../../../components/OperationalGlossaryReference.astro';
+import { glossaryReferenceEnBySlug } from '../../../config/treasury-buyback-reference.ts';
 import { glossaryAtlasEn, glossaryAtlasEnBySlug, englishGlossaryRobots } from '../../../config/glossary-atlas-en.ts';
 
 export function getStaticPaths() {
@@ -12,6 +14,7 @@ export function getStaticPaths() {
 
 const { entry } = Astro.props;
 const atlas = entry.atlas;
+const reference = glossaryReferenceEnBySlug[entry.slug];
 const related = (atlas.related ?? [])
   .map((slug) => glossaryAtlasEnBySlug.get(slug))
   .filter(Boolean)
@@ -29,6 +32,9 @@ const atlasJsonLinks = [
   ...(atlas.datasets ?? []),
   ...(atlas.signals ?? []),
   ...(atlas.sources ?? []),
+  ...(reference?.analyses ?? []),
+  ...(reference?.instruments ?? []),
+  ...(reference?.primarySources ?? []),
 ];
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -36,7 +42,7 @@ const url = `/en/glossary/${entry.slug}/`;
 const canonical = `${SITE}${url}`;
 const frUrl = `${SITE}/glossaire/${entry.slug}/`;
 const title = `${entry.sigle}: ${entry.nom}`;
-const description = `${entry.sigle} (${entry.nom}): ${entry.def}`;
+const description = reference?.standfirst ?? `${entry.sigle} (${entry.nom}): ${entry.def}`;
 const alternateLinks = [
   { hreflang: 'en', href: canonical },
   { hreflang: 'fr', href: frUrl },
@@ -53,6 +59,7 @@ const jsonLd = {
       description: entry.def,
       url: canonical,
       inLanguage: 'en',
+      ...(reference ? { dateModified: reference.updatedIso, citation: reference.primarySources.map(source => ({ '@type': 'CreativeWork', name: source.label, url: source.href })) } : {}),
       ...(atlas.formula ? { mathExpression: atlas.formula } : {}),
       ...(atlas.whyNow ? { disambiguatingDescription: atlas.whyNow } : {}),
       ...(atlasJsonLinks.length > 0
@@ -143,6 +150,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <h2 id="definition-title" class="mono-label">Short definition</h2>
       <p>{entry.def}</p>
     </section>
+
+    {reference && <OperationalGlossaryReference reference={reference} lang="en" />}
 
     <section class="term-atlas" aria-labelledby="atlas-title">
       <p class="mono-label" style={`color:${entry.accent}`}>risk atlas</p>
