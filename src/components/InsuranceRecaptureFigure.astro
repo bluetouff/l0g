@@ -1,0 +1,87 @@
+---
+import { insuranceRecaptureSvg, INSURANCE_RECAPTURE_KINDS, INSURANCE_RECAPTURE_SOURCES } from '../lib/insuranceRecaptureFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'branches' | 'ratio' | 'payments' | 'rebalancing';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (typeof lang !== 'string' || !['fr', 'en'].includes(lang) || typeof kind !== 'string' || !INSURANCE_RECAPTURE_KINDS.includes(kind) || !/^0[1-4]$/.test(number) || INSURANCE_RECAPTURE_KINDS.indexOf(kind) + 1 !== Number(number)) {
+  throw new TypeError('Invalid insurance recapture figure');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || new Set(references).size !== references.length || references.some(id => !/^(?:0[1-9]|[1-3][0-9])$/.test(id)) || references.join(' ') !== INSURANCE_RECAPTURE_SOURCES[INSURANCE_RECAPTURE_KINDS.indexOf(kind)]) {
+  throw new TypeError('Invalid insurance recapture source');
+}
+// The renderer accepts only closed enum variants and returns controlled passive SVG.
+---
+<figure class="insurance-recapture-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="insurance-recapture-panel">
+    <div class="insurance-recapture-desktop" set:html={insuranceRecaptureSvg(lang, kind, false)} />
+    <div class="insurance-recapture-mobile" set:html={insuranceRecaptureSvg(lang, kind, true)} />
+  </div>
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="insurance-recapture-references">{references.map(id => <a href={`#source-s${id}`}>[S{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face {
+    font-family: 'l0g Insurance Recapture';
+    src: url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'l0g Insurance Recapture';
+    src: url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+  :global(article:has(.insurance-recapture-figure) > .post-head .post-title) {
+    hyphens: none;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .insurance-recapture-figure {
+    margin: 2.5rem auto;
+    width: 100%;
+    max-width: 44rem;
+    padding-bottom: 1rem;
+    container-type: inline-size;
+    overflow: visible;
+  }
+  .insurance-recapture-panel { width: 100%; }
+  .insurance-recapture-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    letter-spacing: normal;
+    overflow: visible;
+  }
+  .insurance-recapture-desktop { display: block; width: 100%; }
+  .insurance-recapture-mobile { display: none; width: 100%; }
+  figcaption { margin: 1rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .insurance-recapture-references { display: block; }
+  .insurance-recapture-references a { margin-right: .75em; }
+  .insurance-recapture-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .insurance-recapture-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .insurance-recapture-figure :global(details p) { margin: .7rem 0; }
+  .insurance-recapture-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @container (max-width: 480px) {
+    .insurance-recapture-desktop { display: none; }
+    .insurance-recapture-mobile { display: block; }
+  }
+  @media print {
+    .insurance-recapture-figure { break-inside: avoid; }
+    .insurance-recapture-desktop { display: block; }
+    .insurance-recapture-mobile { display: none; }
+  }
+</style>

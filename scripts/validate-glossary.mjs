@@ -744,8 +744,8 @@ for (const [slug, source, related] of [
   assert.equal(fr.referenceCandidate, false);
   assert.equal(en.robots, 'noindex,follow');
   for (const entry of [fr, en]) {
-    assert.deepEqual(entry.atlas.sources.map(item => item.href), [source, ...(slug === 'reassurance-adossee-a-l-actif' ? ['https://content.naic.org/sites/default/files/inline-files/2025-10-L%20RBC%20Asset%20Credit%20Modco-FWH%20proposal.pdf'] : [])]);
-    assert.deepEqual(entry.atlas.articles.map(item => item.href), [...(slug === 'reassurance-adossee-a-l-actif' ? [entry === fr ? '/posts/assureurs-fonds-06-traitement-risque/' : '/en/analysis/insurers-asset-managers-06-risk-treatment/'] : []), entry.guide, ...(['reassurance-adossee-a-l-actif', 'recapture'].includes(slug) ? [entry === fr ? pensionArticleFr : pensionArticleEn] : []), ...(['reassurance-adossee-a-l-actif', 'recapture', 'funds-withheld'].includes(slug) ? [entry === fr ? '/posts/assureurs-03-bermudes-reassurance-jackson-athene/' : '/en/analysis/bermuda-reinsurance-jackson-athene/'] : [])]);
+    assert.deepEqual(entry.atlas.sources.map(item => item.href), [source, ...(slug === 'reassurance-adossee-a-l-actif' ? ['https://content.naic.org/sites/default/files/inline-files/2025-10-L%20RBC%20Asset%20Credit%20Modco-FWH%20proposal.pdf'] : []), ...(slug === 'funds-withheld' ? ['https://www.justgroupplc.co.uk/~/media/Files/J/Just-Retirement-Corp/investor-docs/financial-reports-and-presentations/2026/just-group-annual-report-2025.pdf'] : [])]);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry === fr ? '/posts/assureurs-fonds-07-retour-risques/' : '/en/analysis/insurers-asset-managers-07-risks-return/', ...(slug === 'reassurance-adossee-a-l-actif' ? [entry === fr ? '/posts/assureurs-fonds-06-traitement-risque/' : '/en/analysis/insurers-asset-managers-06-risk-treatment/'] : []), entry.guide, ...(['reassurance-adossee-a-l-actif', 'recapture'].includes(slug) ? [entry === fr ? pensionArticleFr : pensionArticleEn] : []), ...(['reassurance-adossee-a-l-actif', 'recapture', 'funds-withheld'].includes(slug) ? [entry === fr ? '/posts/assureurs-03-bermudes-reassurance-jackson-athene/' : '/en/analysis/bermuda-reinsurance-jackson-athene/'] : [])]);
     assert.deepEqual(entry.atlas.related, related);
     for (const neighbor of related) {
       assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
@@ -756,8 +756,16 @@ for (const [slug, source, related] of [
 }
 assert.match(glossaryEntries.find(entry => entry.slug === 'reassurance-adossee-a-l-actif').def, /conserve son obligation/);
 assert.match(glossaryAtlasEnBySlug.get('reassurance-adossee-a-l-actif').def, /remains responsible/);
-assert.match(glossaryEntries.find(entry => entry.slug === 'funds-withheld').def, /détenus et possédés par le cédant/);
-assert.match(glossaryAtlasEnBySlug.get('funds-withheld').def, /cedant continues to own and hold/);
+const fundsWithheldDefFr = glossaryEntries.find(entry => entry.slug === 'funds-withheld').def;
+const fundsWithheldDefEn = glossaryAtlasEnBySlug.get('funds-withheld').def;
+assert.match(fundsWithheldDefFr, /le cédant conserve les actifs tandis que le traité attribue au réassureur les revenus et risques convenus/);
+assert.match(fundsWithheldDefFr, /La propriété juridique, les droits sur les flux et la reconnaissance comptable dépendent du montage et des règles applicables/);
+assert.match(fundsWithheldDefFr, /Dans son rapport 2025, Just décrit des prêts viagers détenus juridiquement et gérés par le groupe/);
+assert.match(fundsWithheldDefFr, /dont les rendements vont au réassureur et qui ne sont pas reconnus comme ses actifs IFRS/);
+assert.match(fundsWithheldDefEn, /the cedant retains assets while the treaty allocates agreed income and risks to the reinsurer/);
+assert.match(fundsWithheldDefEn, /Legal ownership, cash-flow rights and accounting recognition depend on the structure and applicable rules/);
+assert.match(fundsWithheldDefEn, /In its 2025 report, Just describes lifetime mortgages legally held and managed by the group/);
+assert.match(fundsWithheldDefEn, /whose returns go to the reinsurer and which are not recognised as its IFRS assets/);
 assert.match(glossaryEntries.find(entry => entry.slug === 'matching-adjustment').def, /sans produire de trésorerie/);
 assert.match(glossaryAtlasEnBySlug.get('matching-adjustment').def, /without generating immediate cash/);
 assert.match(glossaryEntries.find(entry => entry.slug === 'recapture').def, /ne mesure pas une perte définitive/);
