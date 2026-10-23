@@ -2704,7 +2704,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     robots: 'noindex,follow',
     atlas: {
       intuition: 'Financing a pool of claims and transferring its risk require separate assessments.',
-      articles: [{ label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }],
+      articles: [{ label: 'The insurer’s money, the group’s business', href: '/en/analysis/insurers-affiliated-investments-apollo-brookfield-kkr/', kind: 'article' }, { label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }],
       sources: [
         { label: 'ECB, Tracing European structured finance counterparty networks', href: 'https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op199.en.pdf#page=8', detail: 'Occasional Paper 199, Box 1, p. 7: cash flows, tranches and mortgage or other claims.', kind: 'source' },
         { label: 'ECB Banking Supervision, Securitisations: meeting significant risk transfer criteria', href: 'https://www.bankingsupervision.europa.eu/press/supervisory-newsletters/newsletter/2022/html/ssm.nl220518_4.en.html', detail: 'Retained tranches, remaining risk and significant risk transfer criteria.', kind: 'source' },
@@ -4370,7 +4370,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ...privateCreditSection,
     atlas: {
       intuition: 'Consolidation is a binary accounting boundary. Economic influence can continue outside it through capital, contracts, mandates and governance.',
-      articles: [{ label: 'The balance sheet Apollo does not consolidate', href: '/en/analysis/the-balance-sheet-apollo-does-not-consolidate/', detail: 'Deconsolidation, asset mandates, governance and insurance contracts.', kind: 'article' }],
+      articles: [{ label: 'The insurer’s money, the group’s business', href: '/en/analysis/insurers-affiliated-investments-apollo-brookfield-kkr/', kind: 'article' }, { label: 'The balance sheet Apollo does not consolidate', href: '/en/analysis/the-balance-sheet-apollo-does-not-consolidate/', detail: 'Deconsolidation, asset mandates, governance and insurance contracts.', kind: 'article' }],
       guides: [{ label: 'Reading life-insurer health', href: '/en/guides/read-life-insurer-health/', detail: 'Capital, asset quality, liabilities and reinsurance.', kind: 'guide' }],
       sources: [
         { label: 'US Securities and Exchange Commission', href: 'https://www.sec.gov/edgar', detail: 'Corporate filings and consolidation disclosures.', kind: 'source' },
@@ -4387,7 +4387,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ...privateCreditSection,
     atlas: {
       intuition: 'The label identifies a relationship, not a wrongdoing. The analytical question is whether pricing, approval and disclosure withstand the conflict.',
-      articles: [{ label: 'The balance sheet Apollo does not consolidate', href: '/en/analysis/the-balance-sheet-apollo-does-not-consolidate/', detail: 'Capital, board seats, fees and related insurance contracts.', kind: 'article' }],
+      articles: [{ label: 'The insurer’s money, the group’s business', href: '/en/analysis/insurers-affiliated-investments-apollo-brookfield-kkr/', kind: 'article' }, { label: 'The balance sheet Apollo does not consolidate', href: '/en/analysis/the-balance-sheet-apollo-does-not-consolidate/', detail: 'Capital, board seats, fees and related insurance contracts.', kind: 'article' }],
       sources: [
         { label: 'IFRS Foundation', href: 'https://www.ifrs.org/issued-standards/list-of-standards/ias-24-related-party-disclosures/', detail: 'IAS 24 definitions and disclosure requirements.', kind: 'source' },
         { label: 'US Securities and Exchange Commission', href: 'https://www.sec.gov/edgar', detail: 'Issuer disclosures of related-party transactions.', kind: 'source' },

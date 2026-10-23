@@ -1138,6 +1138,24 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'partie-liee': {
+    intuition: 'Identifier séparément le gestionnaire, le vendeur, le véhicule et le débiteur permet de situer le conflit potentiel et les droits à défendre.',
+    articles: [
+      { label: 'L’argent de l’assureur, les affaires du groupe', href: '/posts/assureurs-placements-apparentes-apollo-brookfield-kkr/', kind: 'article' },
+      { label: 'Le bilan qu’Apollo ne consolide pas', href: '/posts/bilan-apollo-non-consolide/', kind: 'article' },
+    ],
+    sources: [{ label: 'NAIC, Affiliated Investments', href: 'https://content.naic.org/insurance-topics/affiliated-investments', detail: 'Liens d’affiliation, parties liées, information et surveillance des conflits potentiels.', kind: 'source' }],
+    related: ['perimetre-de-consolidation', 'abs'],
+  },
+  'perimetre-de-consolidation': {
+    intuition: 'Les comptes de groupe éliminent des soldes internes ; les créances et les obligations restent à examiner dans les comptes des sociétés qui les portent.',
+    articles: [
+      { label: 'L’argent de l’assureur, les affaires du groupe', href: '/posts/assureurs-placements-apparentes-apollo-brookfield-kkr/', kind: 'article' },
+      { label: 'Le bilan qu’Apollo ne consolide pas', href: '/posts/bilan-apollo-non-consolide/', kind: 'article' },
+    ],
+    sources: [{ label: 'Apollo, comptes semestriels 2026', href: 'https://ir.apollo.com/sec-filings/content/0001858681-26-000040/apo-20260630.htm', detail: 'Principes de consolidation et élimination des soldes entre sociétés du groupe.', kind: 'source' }],
+    related: ['partie-liee'],
+  },
   "aum": {"intuition": "Un encours mesure des actifs à une date ; les commissions et le résultat sont des flux sur une période.", "articles": [{"label": "Pourquoi acheter un assureur ?", "href": "/posts/assureurs-02-pourquoi-acheter-assureur/", "kind": "article"}], "sources": [{"label": "Apollo, rapport annuel 2025", "href": "https://ir.apollo.com/sec-filings/content/0001858681-26-000013/apo-20251231.htm", "detail": "Définitions AUM, FRE, SRE et rapprochements des mesures ajustées.", "kind": "source"}, {"label": "Brookfield Asset Management, rapport annuel 2025", "href": "https://bam.brookfield.com/sites/brookfield-bam-v2/files/brookfield-bam-v2/report-fillings/annual-quarterly-reports/q4-2025-bam-full-english-10-k-report.pdf", "detail": "Définition du FRE et évolution des commissions du mandat AEL.", "kind": "source"}], "related": ["fre", "sre"]},
   "fre": {"intuition": "Le résultat du gestionnaire dépend des revenus retenus et des coûts déduits.", "articles": [{"label": "Pourquoi acheter un assureur ?", "href": "/posts/assureurs-02-pourquoi-acheter-assureur/", "kind": "article"}], "sources": [{"label": "Apollo, rapport annuel 2025", "href": "https://ir.apollo.com/sec-filings/content/0001858681-26-000013/apo-20251231.htm", "detail": "Définitions AUM, FRE, SRE et rapprochements des mesures ajustées.", "kind": "source"}, {"label": "Brookfield Asset Management, rapport annuel 2025", "href": "https://bam.brookfield.com/sites/brookfield-bam-v2/files/brookfield-bam-v2/report-fillings/annual-quarterly-reports/q4-2025-bam-full-english-10-k-report.pdf", "detail": "Définition du FRE et évolution des commissions du mandat AEL.", "kind": "source"}], "related": ["aum", "sre"]},
   "sre": {"intuition": "La marge d’assurance rapproche revenus des placements, coût des engagements et charges.", "articles": [{"label": "Pourquoi acheter un assureur ?", "href": "/posts/assureurs-02-pourquoi-acheter-assureur/", "kind": "article"}], "sources": [{"label": "Apollo, rapport annuel 2025", "href": "https://ir.apollo.com/sec-filings/content/0001858681-26-000013/apo-20251231.htm", "detail": "Définitions AUM, FRE, SRE et rapprochements des mesures ajustées.", "kind": "source"}], "related": ["aum", "fre"]},
@@ -2817,7 +2835,10 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   abs: {
     intuition: 'Financer un panier de créances et céder son risque sont deux opérations à examiner séparément.',
-    articles: [{ label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' }],
+    articles: [
+      { label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' },
+      { label: 'L’argent de l’assureur, les affaires du groupe', href: '/posts/assureurs-placements-apparentes-apollo-brookfield-kkr/', kind: 'article' },
+    ],
     sources: [
       { label: 'BCE, Tracing European structured finance counterparty networks', href: 'https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op199.en.pdf#page=8', detail: 'Occasional Paper 199, encadré 1, p. 7 : flux, tranches et créances immobilières ou autres.', kind: 'source' },
       { label: 'Supervision BCE, Securitisations: meeting significant risk transfer criteria', href: 'https://www.bankingsupervision.europa.eu/press/supervisory-newsletters/newsletter/2022/html/ssm.nl220518_4.en.html', detail: 'Tranches conservées, risque restant et conditions de transfert significatif du risque.', kind: 'source' },
