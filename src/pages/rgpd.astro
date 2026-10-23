@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const updated = '16 septembre 2026';
+const updated = '23 octobre 2026';
 ---
 
 <BaseLayout
@@ -16,7 +16,7 @@ const updated = '16 septembre 2026';
     <p class="rgpd-lede">
       Cette page identifie l'opérateur de l0g et décrit les traitements de données liés à la
       consultation de l0g.fr, à la mesure locale de son usage, aux prises de contact et aux
-      contributions volontaires traitées par Stripe lorsqu’elles sont activées.
+      contributions volontaires par Stripe ou en bitcoin.
     </p>
     <span class="rgpd-meta">Dernière mise à jour : {updated}</span>
   </section>
@@ -133,6 +133,22 @@ const updated = '16 septembre 2026';
           <li><strong class="text-bright">Transferts :</strong> Stripe décrit les lieux de traitement et garanties applicables dans sa <a class="link-term" href="https://stripe.com/fr/privacy" rel="noopener">politique de confidentialité</a> ;</li>
           <li><strong class="text-bright">Durée :</strong> durée nécessaire au traitement, puis délais légaux de conservation des pièces comptables.</li>
         </ul>
+      </article>
+
+      <article class="leak card" style="--c: var(--color-amber)">
+        <span class="leak-h" id="bitcoin">Contribution volontaire en bitcoin</span>
+        <p class="leak-d">
+          La page de soutien affiche une adresse Bitcoin publique et un QR code généré localement,
+          sans service tiers. l0g ne demande ni nom ni adresse électronique pour cette contribution.
+          Le lien d’ouverture d’un portefeuille compatible n’est activé qu’à votre clic.
+        </p>
+        <p class="leak-d">
+          Les transactions, leurs adresses et leurs montants sont publics et conservés durablement
+          sur la blockchain. L’adresse de réception commune permet de rapprocher les contributions
+          entre elles : ce paiement ne garantit aucun anonymat, comme l’explique{' '}
+          <a class="link-term" href="https://bitcoin.org/en/protect-your-privacy" rel="noopener">Bitcoin.org</a>.
+          Le cas échéant, le fournisseur de votre portefeuille applique sa propre politique de confidentialité.
+        </p>
       </article>
     </div>
   </section>

@@ -1,4 +1,5 @@
 ---
+import BitcoinSupport from './BitcoinSupport.astro';
 import {
   configuredSupportPaymentLinkCount,
   supportPaymentLinks,
@@ -59,8 +60,8 @@ const trust = en ? [
       </header>
 
       {!paymentLinksReady && <p class="setup-note" role="status">{en
-        ? 'The Stripe payment links are not active. No payment can be initiated from this page.'
-        : 'Les liens de paiement Stripe ne sont pas encore activés. Aucun paiement ne peut être envoyé depuis cette page pour le moment.'}</p>}
+        ? 'The Stripe payment links are not active. Bitcoin support is available below.'
+        : 'Les liens de paiement Stripe ne sont pas encore activés. Le soutien en bitcoin est disponible ci-dessous.'}</p>}
 
       {paymentLinksReady && supportPaymentLinks.oneTime ? (
         <a class="payment-link payment-once" href={supportPaymentLinks.oneTime} rel="external nofollow" aria-describedby="payment-note">
@@ -92,6 +93,8 @@ const trust = en ? [
     </section>
   </section>
 
+  <BitcoinSupport lang={lang} />
+
   <section class="support-purpose" aria-labelledby="support-purpose-title">
     <p class="support-eyebrow">{en ? 'behind the pages' : 'derrière les pages'}</p>
     <h2 id="support-purpose-title">{en ? 'Give the work room to continue.' : 'Donner du temps au travail de fond.'}</h2>
@@ -112,11 +115,11 @@ const trust = en ? [
     <div><p class="support-eyebrow">{en ? 'before leaving l0g' : 'avant de quitter l0g'}</p><h2 id="stripe-title">{en ? 'Your payment, in clear terms.' : 'Votre paiement, en toute clarté.'}</h2></div>
     <div class="boundary-copy">
       {en ? <>
-        <p>Active buttons open an official Stripe payment domain: <strong>donate.stripe.com</strong> or <strong>buy.stripe.com</strong>. No Stripe script, pixel, form or cookie is loaded on l0g before you click.</p>
+        <p>The card payment buttons open an official Stripe payment domain: <strong>donate.stripe.com</strong> or <strong>buy.stripe.com</strong>. No Stripe script, pixel, form or cookie is loaded on l0g before you click.</p>
         <p>Stripe then processes the information required for payment under its own privacy policy. l0g receives only the transaction information needed to track the contribution and meet its accounting obligations.</p>
         <p>Monthly support can be stopped through Stripe’s management tools or by writing to <a href="mailto:olivier@l0g.fr">olivier@l0g.fr</a>.</p>
       </> : <>
-        <p>Les boutons actifs ouvrent un domaine de paiement Stripe officiel : <strong>donate.stripe.com</strong> ou <strong>buy.stripe.com</strong>. Aucun script, pixel, formulaire ou cookie Stripe n’est chargé sur cette page avant votre clic.</p>
+        <p>Les boutons de paiement par carte ouvrent un domaine Stripe officiel : <strong>donate.stripe.com</strong> ou <strong>buy.stripe.com</strong>. Aucun script, pixel, formulaire ou cookie Stripe n’est chargé sur cette page avant votre clic.</p>
         <p>Stripe traite ensuite les informations nécessaires au paiement selon sa propre politique de confidentialité. l0g reçoit uniquement les informations de transaction nécessaires au suivi du soutien et à ses obligations comptables.</p>
         <p>Un soutien mensuel peut être arrêté depuis les outils de gestion Stripe ou en écrivant à <a href="mailto:olivier@l0g.fr">olivier@l0g.fr</a>.</p>
       </>}

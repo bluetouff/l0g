@@ -1,0 +1,129 @@
+---
+import { supportBitcoin } from '../config/support-bitcoin.mjs';
+import bitcoinQr from '../assets/support-bitcoin-qr.svg?url';
+
+interface Props { lang?: 'fr' | 'en' }
+const { lang = 'fr' } = Astro.props;
+const en = lang === 'en';
+---
+
+<section
+  class="bitcoin-support"
+  aria-labelledby="bitcoin-title"
+  data-bitcoin-support
+  data-copied={en ? 'Address copied. Check it in your wallet before sending.' : 'Adresse copiée. Vérifiez-la dans votre portefeuille avant l’envoi.'}
+  data-copy-failed={en ? 'Automatic copying is unavailable. Select and copy the address above.' : 'La copie automatique est indisponible. Sélectionnez et copiez l’adresse ci-dessus.'}
+>
+  <header class="bitcoin-header">
+    <span class="bitcoin-mark" aria-hidden="true">₿</span>
+    <div>
+      <p class="bitcoin-eyebrow">{en ? 'one-time contribution' : 'contribution ponctuelle'}</p>
+      <h2 id="bitcoin-title">{en ? 'Support with bitcoin.' : 'Un soutien en bitcoin.'}</h2>
+    </div>
+    <span class="bitcoin-network">BTC <span aria-hidden="true">·</span> {en ? 'Bitcoin network' : 'Réseau Bitcoin'}</span>
+  </header>
+
+  <div class="bitcoin-body">
+    <div class="bitcoin-transfer">
+      <p class="bitcoin-intro">{en
+        ? 'Send directly from your wallet, with an amount of your choice.'
+        : 'Directement depuis votre portefeuille, au montant de votre choix.'}</p>
+      <div class="bitcoin-address-box">
+        <span id="bitcoin-address-label">{en ? 'Bitcoin address · mainnet' : 'Adresse Bitcoin · réseau principal'}</span>
+        <code id="bitcoin-address" tabindex="0" aria-labelledby="bitcoin-address-label" data-bitcoin-address>{supportBitcoin.address}</code>
+      </div>
+      <div class="bitcoin-actions">
+        <button type="button" class="bitcoin-copy" data-bitcoin-copy hidden>
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" /><path d="M12 4V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1" /></svg>
+          {en ? 'Copy address' : 'Copier l’adresse'}
+        </button>
+        <a class="bitcoin-wallet" href={supportBitcoin.uri} aria-describedby="bitcoin-note">
+          {en ? 'Open wallet' : 'Ouvrir mon portefeuille'} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <p class="bitcoin-status" role="status" aria-atomic="true" data-bitcoin-status></p>
+    </div>
+    <figure class="bitcoin-qr">
+      <img src={bitcoinQr} width="164" height="164" alt={en ? 'Scan to send BTC to the address shown on this page' : 'Scanner pour envoyer des BTC à l’adresse affichée sur cette page'} loading="lazy" decoding="async" />
+      <figcaption>{en ? 'Scan with your wallet' : 'Scanner avec votre portefeuille'}</figcaption>
+    </figure>
+  </div>
+
+  <p class="bitcoin-note" id="bitcoin-note">
+    {en
+      ? 'Bitcoin network only. Check the address and network fees before confirming. Transactions are public and irreversible.'
+      : 'Réseau Bitcoin uniquement. Vérifiez l’adresse et les frais réseau avant de confirmer. Les transactions sont publiques et irréversibles.'}
+    {' '}<a href="/rgpd/#bitcoin">{en ? 'Privacy' : 'Confidentialité'} <span aria-hidden="true">↗</span></a>
+  </p>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-bitcoin-support]').forEach((root) => {
+    const button = root.querySelector<HTMLButtonElement>('[data-bitcoin-copy]');
+    const address = root.querySelector<HTMLElement>('[data-bitcoin-address]');
+    const status = root.querySelector<HTMLElement>('[data-bitcoin-status]');
+    if (!button || !address || !status) return;
+
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(address.textContent ?? '');
+        status.textContent = root.dataset.copied ?? '';
+      } catch {
+        address.focus();
+        const range = document.createRange();
+        range.selectNodeContents(address);
+        const selection = window.getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        status.textContent = root.dataset.copyFailed ?? '';
+      }
+    });
+  });
+</script>
+
+<style>
+  .bitcoin-support { margin-top: 1rem; padding: clamp(1.1rem, 3vw, 2rem); border: 1px solid var(--color-line-strong); border-radius: 6px 20px 20px 20px; background: var(--surface-elevated); box-shadow: inset 0 1px 0 var(--edge-highlight); }
+  .bitcoin-header { display: flex; align-items: center; gap: .85rem; }
+  .bitcoin-header > div { min-width: 0; }
+  .bitcoin-mark { display: grid; place-items: center; flex: none; width: 2.7rem; height: 2.7rem; border: 1px solid color-mix(in srgb, var(--color-amber) 40%, var(--color-line)); border-radius: 50%; background: color-mix(in srgb, var(--color-amber) 7%, transparent); color: var(--color-amber); font: 500 1.8rem/1 var(--font-read); }
+  .bitcoin-eyebrow { color: var(--color-amber); font: 600 .6rem/1.5 var(--font-mono); letter-spacing: .09em; text-transform: uppercase; }
+  .bitcoin-header h2 { margin-top: .25rem; color: var(--color-bright); font: 600 clamp(1.05rem, 2.2vw, 1.4rem)/1.35 var(--font-display); letter-spacing: -.03em; }
+  .bitcoin-network { display: inline-flex; align-items: center; gap: .5rem; margin-left: auto; padding: .4rem .65rem; border: 1px solid var(--color-line); border-radius: 5px; color: var(--color-muted); font: 500 .62rem/1.4 var(--font-mono); white-space: nowrap; }
+  .bitcoin-network > span { color: var(--color-amber); }
+  .bitcoin-body { display: grid; grid-template-columns: minmax(0, 1fr) 10.25rem; align-items: center; gap: 1.25rem 2.25rem; margin-top: 1.3rem; }
+  .bitcoin-transfer { min-width: 0; }
+  .bitcoin-intro { color: var(--color-paper); font: 400 .85rem/1.65 var(--font-read); }
+  .bitcoin-address-box { margin-top: .9rem; padding: .75rem .9rem; border: 1px solid var(--color-line); border-radius: 8px; background: var(--surface-inset); }
+  .bitcoin-address-box > span { display: block; color: var(--color-muted); font: 500 .6rem/1.5 var(--font-mono); }
+  .bitcoin-address-box code { display: block; margin-top: .4rem; color: var(--color-paper); font: 500 clamp(.7rem, 1.25vw, .85rem)/1.8 var(--font-mono); overflow-wrap: anywhere; user-select: all; }
+  .bitcoin-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: .85rem; }
+  .bitcoin-actions > * { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; min-height: 44px; padding: .65rem .9rem; border: 1px solid var(--color-line-strong); border-radius: 7px 3px 7px 7px; font: 600 .7rem/1.5 var(--font-read); text-decoration: none; cursor: pointer; transition: border-color 160ms ease, background-color 160ms ease; }
+  .bitcoin-actions > [hidden] { display: none; }
+  .bitcoin-copy { color: var(--color-amber); border-color: color-mix(in srgb, var(--color-amber) 45%, var(--color-line)); background: color-mix(in srgb, var(--color-amber) 7%, transparent); }
+  .bitcoin-wallet { color: var(--color-paper); background: transparent; }
+  .bitcoin-wallet > span { color: var(--color-amber); }
+  .bitcoin-actions > *:hover { border-color: var(--color-amber); background-color: color-mix(in srgb, var(--color-amber) 10%, transparent); }
+  .bitcoin-actions > *:focus-visible, .bitcoin-address-box code:focus-visible, .bitcoin-note a:focus-visible { outline: 2px solid var(--color-amber); outline-offset: 4px; }
+  .bitcoin-status { min-height: 1.5em; margin-top: .5rem; color: var(--color-muted); font: 400 .68rem/1.5 var(--font-read); }
+  .bitcoin-qr { margin: 0; text-align: center; }
+  .bitcoin-qr img { display: block; width: 100%; height: auto; border-radius: 8px; }
+  .bitcoin-qr figcaption { margin-top: .5rem; color: var(--color-muted); font: 400 .6rem/1.5 var(--font-read); }
+  .bitcoin-note { margin-top: .9rem; border-top: 1px solid var(--color-line); padding-top: .85rem; color: var(--color-muted); font: 400 .7rem/1.65 var(--font-read); }
+  .bitcoin-note a { display: inline-block; color: var(--color-signal); text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 620px) {
+    .bitcoin-header { flex-wrap: wrap; gap: .65rem; }
+    .bitcoin-network { margin-left: 3.35rem; padding: 0; border: 0; }
+    .bitcoin-body { grid-template-columns: minmax(0, 1fr); margin-top: .9rem; gap: .85rem; }
+    .bitcoin-qr { width: 9rem; justify-self: center; }
+    .bitcoin-intro { font-size: .8rem; }
+    .bitcoin-address-box { padding-inline: .7rem; }
+    .bitcoin-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
+    .bitcoin-status { font-size: .65rem; }
+  }
+  @media (max-width: 380px) {
+    .bitcoin-support { padding: 1rem; }
+    .bitcoin-actions > * { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { .bitcoin-actions > * { transition: none; } }
+</style>

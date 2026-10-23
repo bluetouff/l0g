@@ -70,7 +70,7 @@
     "test:sitemap-lastmod": "node --test scripts/sitemap-lastmod.test.mjs",
     "test:content-order": "node --test scripts/content-order.test.mjs",
     "test:recent-articles": "node --test scripts/recent-article-feed.test.mjs",
-    "test:support": "node --test scripts/support-payment-links.test.mjs",
+    "test:support": "node --test scripts/support-payment-links.test.mjs scripts/support-bitcoin.test.mjs",
     "test:watch-card": "node --test scripts/watch-card-placement.test.mjs",
     "test:pa-card": "node --test scripts/pa-check-card-placement.test.mjs",
     "test:legal": "node --test scripts/legal-watch-contract.test.mjs",
