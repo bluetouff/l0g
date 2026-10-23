@@ -120,9 +120,17 @@ test('invalid financial inputs fail rather than drawing plausible charts', () =>
 
 test('text labels are escaped and spreadsheet formulas cannot become active cells', () => {
   const copy = structuredClone(coreweave);
-  copy.title.en = '<script>alert(1)</script>';
+  for (const title of [
+    '<script>alert(1)</script>',
+    '<SCRIPT>alert(1)</SCRIPT>',
+    '</title><ScRiPt data-test="x">alert(1)</ScRiPt><title>',
+    'Cash & capacity < 10 "units"',
+  ]) {
+    copy.title.en = title;
+    const svg = buildPressSvg(copy, 'en');
+    assert.equal(XMLValidator.validate(svg), true);
+    assert.deepEqual(parser.parse(svg).svg.title, { '#text': title, '@id': 'title' });
+  }
   copy.rows[0].label.en = '=HYPERLINK("https://example.test")';
-  assert.ok(buildPressSvg(copy, 'en').includes('&lt;script&gt;'));
-  assert.doesNotMatch(buildPressSvg(copy, 'en'), /<script>/);
   assert.ok(buildPressCsv(copy, 'en').includes('"\'=HYPERLINK(""https://example.test"")"'));
 });
