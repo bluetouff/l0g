@@ -462,6 +462,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Réassurance adossée à l’actif', nom: 'Asset-intensive reinsurance', def: "Réassurance qui transfère à une contrepartie des risques liés aux placements et aux engagements d’assurance-vie ou de rente. Le réassureur s’engage à financer les prestations couvertes ; l’assureur cédant conserve son obligation envers ses assurés. Les actifs peuvent être transférés ou rester détenus par le cédant selon la structure contractuelle.", guide: '/posts/retraites-bermudes-prix-du-retour/' },
       { sigle: 'Recapture', nom: 'Reprise des risques cédés en réassurance', def: "Reprise par l’assureur des risques qu’il avait cédés au réassureur, selon les déclencheurs du traité, parfois avant une insolvabilité formelle. Elle exige de vérifier les actifs récupérables, les droits d’accès, les besoins de liquidité et le capital nécessaire. Le montant des engagements repris ne mesure pas une perte définitive.", guide: '/posts/retraites-bermudes-prix-du-retour/' },
       { sigle: 'Matching adjustment', nom: 'Ajustement prudentiel pour des flux appariés', def: "Mécanisme prudentiel britannique soumis à autorisation, qui augmente le taux d’actualisation d’engagements éligibles lorsqu’un portefeuille répond aux critères d’appariement des flux. L’ajustement retranche du spread des actifs une compensation des risques conservés. Il réduit la valeur actuelle des engagements, sans produire de trésorerie immédiate.", guide: '/posts/retraites-bermudes-prix-du-retour/' },
+      {"sigle": "ModCo", "nom": "Modified coinsurance", "def": "Forme de réassurance proportionnelle dans laquelle l’assureur cédant conserve les actifs et les réserves à son bilan. Le traité attribue au réassureur les risques et résultats convenus et organise les règlements entre les parties. La protection dépend des droits sur les actifs, de leur valorisation et des conditions de reprise.", "guide": "/posts/assureurs-03-bermudes-reassurance-jackson-athene/"},
       { sigle: 'Funds withheld', nom: 'Fonds retenus dans une opération de réassurance', def: "Structure de réassurance dans laquelle les actifs restent détenus et possédés par le cédant, sur son bilan, dans un compte séparé. Le contrat organise l’attribution des revenus et pertes de placement et les règlements avec le réassureur. La conservation des actifs facilite leur contrôle, sans supprimer tous les risques contractuels et opérationnels.", guide: '/posts/retraites-bermudes-prix-du-retour/' },
       { sigle: 'NAIC', nom: 'National Association of Insurance Commissioners', def: "Association des régulateurs d'assurance des États américains, qui harmonise les règles prudentielles du secteur. Son bureau des valeurs mobilières (SVO) fixe le traitement en capital des actifs détenus par les assureurs ; ses réformes de 2026 lui permettent d'outrepasser des notations jugées trop favorables." },
       {"sigle": "AUA", "nom": "Assets under administration : actifs administrés", "def": "Valeur des actifs de clients couverts par des services d’administration, de gestion fiduciaire ou de conservation, selon le périmètre déclaré. L’AUA ne mesure ni les dépôts reçus par la banque ni ses fonds propres. La comparaison avec un encours sous gestion exige de vérifier les services inclus, la date et les règles de valorisation.", "guide": "/posts/crypto-banques-occ-icba-agrements-trust-depots/"},
@@ -2212,15 +2213,15 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
 },
   'reassurance-adossee-a-l-actif': {
     intuition: 'Le financement et certains risques changent de bilan tandis que la promesse faite à l’assuré reste chez l’assureur initial.',
-    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }, { label: 'Qui doit payer les retraités d’AT&T ?', href: '/posts/assureurs-01-contrat-change-de-mains/', kind: 'article' }],
+    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }, { label: 'Qui doit payer les retraités d’AT&T ?', href: '/posts/assureurs-01-contrat-change-de-mains/', kind: 'article' }, { label: 'Aux Bermudes, l’autre bilan de l’épargne américaine', href: '/posts/assureurs-03-bermudes-reassurance-jackson-athene/', kind: 'article' }],
     sources: [{ label: 'IAIS : Structural shifts in the life insurance sector', href: 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', detail: 'Sections 4.1.1 et 4.1.6 : économie de la réassurance et structures de collatéral.', kind: 'source' }],
     related: ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment'],
   },
   recapture: {
     intuition: 'Le cédant doit pouvoir continuer à payer lorsque la contrepartie ne remplit plus son rôle.',
-    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }, { label: 'Qui doit payer les retraités d’AT&T ?', href: '/posts/assureurs-01-contrat-change-de-mains/', kind: 'article' }],
+    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }, { label: 'Qui doit payer les retraités d’AT&T ?', href: '/posts/assureurs-01-contrat-change-de-mains/', kind: 'article' }, { label: 'Aux Bermudes, l’autre bilan de l’épargne américaine', href: '/posts/assureurs-03-bermudes-reassurance-jackson-athene/', kind: 'article' }],
     sources: [{ label: 'PRA : SS5/24, version d’octobre 2025', href: 'https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2025/ss524-october-2025.pdf', detail: 'Paragraphes 2.5 à 2.22 : reprise des risques, collatéral, liquidité et déclencheurs.', kind: 'source' }],
-    related: ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment'],
+    related: ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment', 'modco'],
   },
   'matching-adjustment': {
     intuition: 'Conserver des actifs jusqu’à leurs encaissements peut atténuer la volatilité prudentielle, sous des conditions précises.',
@@ -2228,11 +2229,33 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     sources: [{ label: 'PRA : Life Insurance Stress Test 2025', href: 'https://www.bankofengland.co.uk/prudential-regulation/publication/2025/november/list-2025-results-report', detail: 'Annexe 3 : principes, taux d’actualisation et risques conservés.', kind: 'source' }],
     related: ['reassurance-adossee-a-l-actif', 'recapture', 'duration'],
   },
+  modco: {
+  "intuition": "La propriété des actifs et la comptabilisation des réserves restent chez le cédant tandis que le traité répartit les résultats et les risques.",
+  "articles": [
+    {
+      "label": "Aux Bermudes, l’autre bilan de l’épargne américaine",
+      "href": "/posts/assureurs-03-bermudes-reassurance-jackson-athene/",
+      "kind": "article"
+    }
+  ],
+  "sources": [
+    {
+      "label": "BMA : Collateral Structures in the Bermuda Long-term Insurance Market",
+      "href": "https://cdn.bma.bm/documents/2024-09-06-12-10-21-Bermuda-Long-Term-Insurance-Collateral-Structures.pdf",
+      "detail": "Page 2, note 2 ; pages 4–5 : conservation des actifs et des réserves par le cédant, droits et résultats économiques.",
+      "kind": "source"
+    }
+  ],
+  "related": [
+    "funds-withheld",
+    "recapture"
+  ]
+},
   'funds-withheld': {
     intuition: 'La répartition économique du risque peut changer sans transfert de propriété des actifs.',
-    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }],
+    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }, { label: 'Aux Bermudes, l’autre bilan de l’épargne américaine', href: '/posts/assureurs-03-bermudes-reassurance-jackson-athene/', kind: 'article' }],
     sources: [{ label: 'IAIS : Structural shifts in the life insurance sector', href: 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', detail: 'Section 4.1.6.3 : propriété, bilan, compte séparé et règlements périodiques.', kind: 'source' }],
-    related: ['reassurance-adossee-a-l-actif', 'recapture', 'reassurance'],
+    related: ['reassurance-adossee-a-l-actif', 'recapture', 'reassurance', 'modco'],
   },
   cpr: {
     intuition: 'Les remboursements anticipés portent sur une base de capital qui diminue au fil des paiements.',

@@ -1,0 +1,87 @@
+---
+import { insuranceReinsuranceSvg, INSURANCE_REINSURANCE_KINDS, INSURANCE_REINSURANCE_SOURCES } from '../lib/insuranceReinsuranceFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'responsibilities' | 'funds' | 'collateral' | 'triggers' | 'market';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (typeof lang !== 'string' || !['fr', 'en'].includes(lang) || typeof kind !== 'string' || !INSURANCE_REINSURANCE_KINDS.includes(kind) || !/^0[1-5]$/.test(number) || INSURANCE_REINSURANCE_KINDS.indexOf(kind) + 1 !== Number(number)) {
+  throw new TypeError('Invalid insurance reinsurance figure');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || new Set(references).size !== references.length || references.some(id => !/^(?:0[1-9]|[1-3][0-9])$/.test(id)) || references.join(' ') !== INSURANCE_REINSURANCE_SOURCES[INSURANCE_REINSURANCE_KINDS.indexOf(kind)]) {
+  throw new TypeError('Invalid insurance reinsurance source');
+}
+// The renderer accepts only closed enum variants and returns controlled passive SVG.
+---
+<figure class="insurance-reinsurance-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="insurance-reinsurance-panel">
+    <div class="insurance-reinsurance-desktop" set:html={insuranceReinsuranceSvg(lang, kind, false)} />
+    <div class="insurance-reinsurance-mobile" set:html={insuranceReinsuranceSvg(lang, kind, true)} />
+  </div>
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="insurance-reinsurance-references">{references.map(id => <a href={`#source-s${id}`}>[S{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face {
+    font-family: 'l0g Insurance Reinsurance';
+    src: url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'l0g Insurance Reinsurance';
+    src: url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+  :global(article:has(.insurance-reinsurance-figure) > .post-head .post-title) {
+    hyphens: none;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .insurance-reinsurance-figure {
+    margin: 2.5rem auto;
+    width: 100%;
+    max-width: 44rem;
+    padding-bottom: 1rem;
+    container-type: inline-size;
+    overflow: visible;
+  }
+  .insurance-reinsurance-panel { width: 100%; }
+  .insurance-reinsurance-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    letter-spacing: normal;
+    overflow: visible;
+  }
+  .insurance-reinsurance-desktop { display: block; width: 100%; }
+  .insurance-reinsurance-mobile { display: none; width: 100%; }
+  figcaption { margin: 1rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .insurance-reinsurance-references { display: block; }
+  .insurance-reinsurance-references a { margin-right: .75em; }
+  .insurance-reinsurance-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .insurance-reinsurance-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .insurance-reinsurance-figure :global(details p) { margin: .7rem 0; }
+  .insurance-reinsurance-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @container (max-width: 480px) {
+    .insurance-reinsurance-desktop { display: none; }
+    .insurance-reinsurance-mobile { display: block; }
+  }
+  @media print {
+    .insurance-reinsurance-figure { break-inside: avoid; }
+    .insurance-reinsurance-desktop { display: block; }
+    .insurance-reinsurance-mobile { display: none; }
+  }
+</style>

@@ -1895,7 +1895,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'Reinsurance that transfers investment risks and risks associated with life insurance or annuity liabilities to a counterparty. The reinsurer agrees to fund covered benefits; the cedant remains responsible to its policyholders. Assets may transfer or stay with the cedant, depending on the contractual structure.',
     atlas: {
       intuition: 'Funding and specified risks move between balance sheets while the original insurer retains its promise to policyholders.',
-      articles: [{ label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }],
+      articles: [{ label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }, { label: 'The Bermuda balance sheet behind an American annuity', href: '/en/analysis/bermuda-reinsurance-jackson-athene/', kind: 'article' }],
       sources: [{ label: 'IAIS: Structural shifts in the life insurance sector', href: 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', detail: 'Sections 4.1.1 and 4.1.6: reinsurance economics and collateral structures.', kind: 'source' }],
       related: ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment'],
     },
@@ -1907,9 +1907,9 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'The insurer takes back risks previously ceded to a reinsurer under treaty-defined triggers, sometimes before formal insolvency. Recapture requires assessment of recoverable assets, access rights, liquidity needs and required capital. The amount of liabilities recaptured is not a measure of permanent loss.',
     atlas: {
       intuition: 'The cedant must be able to continue paying when its counterparty no longer performs.',
-      articles: [{ label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }],
+      articles: [{ label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }, { label: 'The Bermuda balance sheet behind an American annuity', href: '/en/analysis/bermuda-reinsurance-jackson-athene/', kind: 'article' }],
       sources: [{ label: 'PRA: SS5/24, October 2025 version', href: 'https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2025/ss524-october-2025.pdf', detail: 'Paragraphs 2.5–2.22: recapture, collateral, liquidity and triggers.', kind: 'source' }],
-      related: ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment'],
+      related: ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment', 'modco'],
     },
   },
   {
@@ -1925,15 +1925,47 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+  "slug": "modco",
+  "sigle": "ModCo",
+  "nom": "Modified coinsurance",
+  "def": "A proportional reinsurance structure in which the cedant retains both assets and reserves on its balance sheet. The treaty allocates agreed risks and returns to the reinsurer and sets settlements between the parties. Protection depends on rights over the assets, their valuation and recapture conditions.",
+  "guide": "/en/analysis/bermuda-reinsurance-jackson-athene/",
+  "sectionTitle": "Private credit & markets",
+  "accent": "var(--color-accent)",
+  "robots": "noindex,follow",
+  "atlas": {
+    "intuition": "Asset ownership and reserve recognition remain with the cedant while the treaty allocates risks and returns.",
+    "articles": [
+      {
+        "label": "The Bermuda balance sheet behind an American annuity",
+        "href": "/en/analysis/bermuda-reinsurance-jackson-athene/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "BMA: Collateral Structures in the Bermuda Long-term Insurance Market",
+        "href": "https://cdn.bma.bm/documents/2024-09-06-12-10-21-Bermuda-Long-Term-Insurance-Collateral-Structures.pdf",
+        "detail": "Page 2, footnote 2; pages 4–5: cedant retains assets and reserves; contractual rights and economic returns.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "funds-withheld",
+      "recapture"
+    ]
+  }
+},
+  {
     slug: 'funds-withheld', sigle: 'Funds withheld', nom: 'Reinsurance assets retained by the cedant',
     ...privateCreditSection, robots: 'noindex,follow',
     guide: '/en/analysis/pensions-bermuda-recapture-risk/',
     def: 'A reinsurance structure in which the cedant continues to own and hold the assets on its balance sheet in a segregated account. The contract allocates investment income and losses and governs settlements with the reinsurer. Retaining assets assists control while contractual and operational risks remain.',
     atlas: {
       intuition: 'The economic allocation of risk can change without transferring ownership of the assets.',
-      articles: [{ label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }],
+      articles: [{ label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }, { label: 'The Bermuda balance sheet behind an American annuity', href: '/en/analysis/bermuda-reinsurance-jackson-athene/', kind: 'article' }],
       sources: [{ label: 'IAIS: Structural shifts in the life insurance sector', href: 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', detail: 'Section 4.1.6.3: ownership, balance sheet, segregated account and periodic settlements.', kind: 'source' }],
-      related: ['reassurance-adossee-a-l-actif', 'recapture', 'reassurance'],
+      related: ['reassurance-adossee-a-l-actif', 'recapture', 'reassurance', 'modco'],
     },
   },
   {

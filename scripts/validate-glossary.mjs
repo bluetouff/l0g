@@ -18,6 +18,23 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// ModCo retains both assets and reserves; its two glossary neighbours link back.
+for (const [entry, article] of [[glossaryEntries.find(item => item.slug === 'modco'), '/posts/assureurs-03-bermudes-reassurance-jackson-athene/'], [glossaryAtlasEnBySlug.get('modco'), '/en/analysis/bermuda-reinsurance-jackson-athene/']]) {
+  assert(entry?.atlas);
+  assert.equal(entry.guide, article);
+  assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+  assert.deepEqual(entry.atlas.sources.map(link => link.href), ['https://cdn.bma.bm/documents/2024-09-06-12-10-21-Bermuda-Long-Term-Insurance-Collateral-Structures.pdf']);
+  assert.deepEqual(entry.atlas.related, ['funds-withheld', 'recapture']);
+  for (const slug of entry.atlas.related) {
+    assert(glossaryEntries.find(term => term.slug === slug).atlas.related.includes('modco'));
+    assert(glossaryAtlasEnBySlug.get(slug).atlas.related.includes('modco'));
+  }
+}
+assert.equal(glossaryEntries.find(item => item.slug === 'modco').reference, undefined);
+assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('modco')), 'noindex,follow');
+assert.match(glossaryEntries.find(item => item.slug === 'modco').def, /conserve les actifs et les réserves/);
+assert.match(glossaryAtlasEnBySlug.get('modco').def, /retains both assets and reserves/);
+
 // Pension insurance keeps the legal obligor and jurisdiction explicit.
 const pensionArticleFr = '/posts/assureurs-01-contrat-change-de-mains/';
 const pensionArticleEn = '/en/analysis/when-pension-contracts-change-hands/';
@@ -620,7 +637,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 306, 'Le corpus anglais doit conserver ses 306 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 307, 'Le corpus anglais doit conserver ses 307 fiches uniques');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -704,9 +721,9 @@ for (const [slug, source, related] of [
 
 for (const [slug, source, related] of [
   ['reassurance-adossee-a-l-actif', 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment']],
-  ['recapture', 'https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2025/ss524-october-2025.pdf', ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment']],
+  ['recapture', 'https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2025/ss524-october-2025.pdf', ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment', 'modco']],
   ['matching-adjustment', 'https://www.bankofengland.co.uk/prudential-regulation/publication/2025/november/list-2025-results-report', ['reassurance-adossee-a-l-actif', 'recapture', 'duration']],
-  ['funds-withheld', 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', ['reassurance-adossee-a-l-actif', 'recapture', 'reassurance']],
+  ['funds-withheld', 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', ['reassurance-adossee-a-l-actif', 'recapture', 'reassurance', 'modco']],
 ]) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
   const en = glossaryAtlasEnBySlug.get(slug);
@@ -718,7 +735,7 @@ for (const [slug, source, related] of [
   assert.equal(en.robots, 'noindex,follow');
   for (const entry of [fr, en]) {
     assert.deepEqual(entry.atlas.sources.map(item => item.href), [source]);
-    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide, ...(['reassurance-adossee-a-l-actif', 'recapture'].includes(slug) ? [entry === fr ? pensionArticleFr : pensionArticleEn] : [])]);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide, ...(['reassurance-adossee-a-l-actif', 'recapture'].includes(slug) ? [entry === fr ? pensionArticleFr : pensionArticleEn] : []), ...(['reassurance-adossee-a-l-actif', 'recapture', 'funds-withheld'].includes(slug) ? [entry === fr ? '/posts/assureurs-03-bermudes-reassurance-jackson-athene/' : '/en/analysis/bermuda-reinsurance-jackson-athene/'] : [])]);
     assert.deepEqual(entry.atlas.related, related);
     for (const neighbor of related) {
       assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
@@ -802,8 +819,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 701, 'Le corpus doit conserver ses 701 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 294, 'Le graphe Atlas doit conserver ses 294 nœuds');
+assert.equal(glossaryEntries.length, 702, 'Le corpus doit conserver ses 702 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 295, 'Le graphe Atlas doit conserver ses 295 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1225,7 +1242,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 843, 'Le graphe Atlas doit conserver ses 843 relations');
+assert.equal(glossaryAtlasEdgeCount, 847, 'Le graphe Atlas doit conserver ses 847 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
