@@ -1,0 +1,87 @@
+---
+import { insuranceAcquisitionsSvg, INSURANCE_ACQUISITIONS_KINDS, INSURANCE_ACQUISITIONS_SOURCES } from '../lib/insuranceAcquisitionsFigures.mjs';
+interface Props {
+  lang?: 'fr' | 'en';
+  kind: 'acquisition' | 'mandates' | 'earnings' | 'fees' | 'blackstone';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang = 'fr', kind, number, caption, sources } = Astro.props;
+if (typeof lang !== 'string' || !['fr', 'en'].includes(lang) || typeof kind !== 'string' || !INSURANCE_ACQUISITIONS_KINDS.includes(kind) || !/^0[1-5]$/.test(number) || INSURANCE_ACQUISITIONS_KINDS.indexOf(kind) + 1 !== Number(number)) {
+  throw new TypeError('Invalid insurance acquisitions figure');
+}
+const references = sources.trim().split(/\s+/);
+if (!references.length || new Set(references).size !== references.length || references.some(id => !/^(?:0[1-9]|[1-3][0-9]|4[0-7])$/.test(id)) || references.join(' ') !== INSURANCE_ACQUISITIONS_SOURCES[INSURANCE_ACQUISITIONS_KINDS.indexOf(kind)]) {
+  throw new TypeError('Invalid insurance acquisitions source');
+}
+// The renderer accepts only closed enum variants and returns controlled passive SVG.
+---
+<figure class="insurance-acquisitions-figure" id={`figure-${Number(number)}`} data-figure={number} data-kind={kind}>
+  <div class="insurance-acquisitions-panel">
+    <div class="insurance-acquisitions-desktop" set:html={insuranceAcquisitionsSvg(lang, kind, false)} />
+    <div class="insurance-acquisitions-mobile" set:html={insuranceAcquisitionsSvg(lang, kind, true)} />
+  </div>
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="insurance-acquisitions-references">{references.map(id => <a href={`#source-s${id}`}>[S{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face {
+    font-family: 'l0g Insurance Acquisitions';
+    src: url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'l0g Insurance Acquisitions';
+    src: url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+  :global(article:has(.insurance-acquisitions-figure) > .post-head .post-title) {
+    hyphens: none;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .insurance-acquisitions-figure {
+    margin: 2.5rem auto;
+    width: 100%;
+    max-width: 44rem;
+    padding-bottom: 1rem;
+    container-type: inline-size;
+    overflow: visible;
+  }
+  .insurance-acquisitions-panel { width: 100%; }
+  .insurance-acquisitions-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    letter-spacing: normal;
+    overflow: visible;
+  }
+  .insurance-acquisitions-desktop { display: block; width: 100%; }
+  .insurance-acquisitions-mobile { display: none; width: 100%; }
+  figcaption { margin: 1rem 0 .65rem; color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
+  figcaption strong { margin-right: .45em; }
+  .insurance-acquisitions-references { display: block; }
+  .insurance-acquisitions-references a { margin-right: .75em; }
+  .insurance-acquisitions-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .insurance-acquisitions-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .insurance-acquisitions-figure :global(details p) { margin: .7rem 0; }
+  .insurance-acquisitions-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @container (max-width: 480px) {
+    .insurance-acquisitions-desktop { display: none; }
+    .insurance-acquisitions-mobile { display: block; }
+  }
+  @media print {
+    .insurance-acquisitions-figure { break-inside: avoid; }
+    .insurance-acquisitions-desktop { display: block; }
+    .insurance-acquisitions-mobile { display: none; }
+  }
+</style>
