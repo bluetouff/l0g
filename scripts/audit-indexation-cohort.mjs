@@ -7,6 +7,7 @@ import { fromHtml } from 'hast-util-from-html';
 import { toText } from 'hast-util-to-text';
 import { glossaryRedirects } from '../src/config/glossary-redirects.mjs';
 import { legacySurfaceRedirects } from '../src/config/legacy-surface-redirects.mjs';
+import { glossaryAtlasEnBySlug, englishGlossaryRobots } from '../src/config/glossary-atlas-en.ts';
 
 const SITE = 'https://l0g.fr';
 const GONE_ROUTES = new Set(['/hard-commodities/', '/calendrier-eco/']);
@@ -251,9 +252,14 @@ export async function auditBuiltSite(distPath) {
   return { pages, assets, sitemap, inlinks, depths, titles, sitemapUndesirable, undesirableInternalDestinations };
 }
 
-function intendedNoindex(route, page, site) {
+function intendedNoindex(route, page, site, canonicalPath) {
   if (!page?.noindex) return false;
   if (route === '/recherche/' || route === '/404.html') return true;
+  if (route.startsWith('/en/glossary/')) {
+    if (!canonicalPath || page.canonical !== route) return false;
+    const entry = glossaryAtlasEnBySlug.get(route.slice('/en/glossary/'.length, -1));
+    return Boolean(entry && englishGlossaryRobots(entry) === 'noindex,follow' && !site.sitemap.has(route));
+  }
   return route.startsWith('/glossaire/') && !site.sitemap.has(route);
 }
 
@@ -304,7 +310,7 @@ export function classifyCohortRow(row, site) {
   } else if (GONE_ROUTES.has(route)) {
     decision = 'supprimee_410';
     reason = 'retrait volontaire sans équivalent sémantique';
-  } else if (intendedNoindex(route, page, site)) {
+  } else if (intendedNoindex(route, page, site, canonicalPath)) {
     decision = 'noindex_voulu';
     reason = 'politique noindex explicite';
   } else if (intendedMachineSurface(route, site)) {

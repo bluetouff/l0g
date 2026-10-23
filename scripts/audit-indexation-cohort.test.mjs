@@ -3,6 +3,7 @@ import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
+import { glossaryAtlasEnBySlug } from '../src/config/glossary-atlas-en.ts';
 import {
   auditBuiltSite,
   buildCohort,
@@ -50,6 +51,63 @@ test('classe indexable et noindex voulu depuis le build sans inventer GSC', asyn
   assert.equal(cohort[0].inlinks_build, 1);
   assert.equal(cohort[0].profondeur_hub, 1);
   assert.deepEqual(siteSummary(site).sitemap_undesirable, []);
+});
+
+test('reconnaît la politique noindex anglaise sans masquer une exclusion inattendue', async (t) => {
+  const dist = await fixture(t);
+  const base = { derniere_exploration: '', canonical_utilisateur: '', canonical_google: '', sitemap: '', date_publication: '' };
+  const route = '/en/glossary/alm/';
+  const directory = join(dist, route);
+  await mkdir(directory, { recursive: true });
+  await writeFile(join(directory, 'index.html'), `<html lang="en"><head><title>Asset-liability management</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://l0g.fr${route}"></head><body>English glossary definition.</body></html>`);
+  const site = await auditBuiltSite(dist);
+  const row = { ...base, url: `https://l0g.fr${route}`, statut_gsc: 'Exclue par noindex' };
+  assert.equal(buildCohort([row], site)[0].decision, 'noindex_voulu');
+  const variants = buildCohort([
+    { ...row, url: 'https://l0g.fr/en/glossary/alm' },
+    { ...row, url: 'https://l0g.fr/en/glossary/alm/index.html' },
+  ], site);
+  assert.deepEqual(variants.map(({ decision }) => decision), ['redirection', 'redirection']);
+
+  // A future editorial admission must still expose stale noindex HTML.
+  const entry = glossaryAtlasEnBySlug.get('alm');
+  const originalRobots = entry.robots;
+  try {
+    entry.robots = 'index,follow';
+    const result = buildCohort([row], site)[0];
+    assert.equal(result.decision, 'inconnue');
+    assert.equal(result.raison_decision, 'noindex hors politique documentée');
+  } finally {
+    if (originalRobots === undefined) delete entry.robots;
+    else entry.robots = originalRobots;
+  }
+
+  // Being intentionally excluded never makes inclusion in a sitemap valid.
+  site.sitemap.add(route);
+  assert.equal(buildCohort([row], site)[0].decision, 'inconnue');
+  await writeFile(join(dist, 'sitemap-0.xml'), `<urlset><url><loc>https://l0g.fr${route}</loc></url></urlset>`);
+  assert.deepEqual((await auditBuiltSite(dist)).sitemapUndesirable, [{ route, reasons: ['noindex'] }]);
+});
+
+test('ne présume aucune politique noindex pour une fiche anglaise inconnue', async (t) => {
+  const dist = await fixture(t);
+  const route = '/en/glossary/unregistered-test-entry/';
+  await mkdir(join(dist, route), { recursive: true });
+  await writeFile(join(dist, route, 'index.html'), `<html lang="en"><head><title>Unregistered term</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://l0g.fr${route}"></head><body>Definition.</body></html>`);
+  const site = await auditBuiltSite(dist);
+  const row = { url: `https://l0g.fr${route}`, statut_gsc: 'Exclue par noindex', derniere_exploration: '', canonical_utilisateur: '', canonical_google: '', sitemap: '', date_publication: '' };
+  assert.equal(buildCohort([row], site)[0].decision, 'inconnue');
+});
+
+test('conserve une alerte pour une fiche anglaise noindex sans canonical propre', async (t) => {
+  const dist = await fixture(t);
+  const route = '/en/glossary/alm/';
+  await mkdir(join(dist, route), { recursive: true });
+  const row = { url: `https://l0g.fr${route}`, statut_gsc: 'Exclue par noindex', derniere_exploration: '', canonical_utilisateur: '', canonical_google: '', sitemap: '', date_publication: '' };
+  for (const canonical of ['<link rel="canonical" href="https://l0g.fr/en/glossary/duration/">', '']) {
+    await writeFile(join(dist, route, 'index.html'), `<html lang="en"><head><title>Asset-liability management</title><meta name="robots" content="noindex,follow">${canonical}</head><body>English glossary definition.</body></html>`);
+    assert.equal(buildCohort([row], await auditBuiltSite(dist))[0].decision, 'inconnue');
+  }
 });
 
 test('classe les origines historiques sans confondre URL et route', async (t) => {
