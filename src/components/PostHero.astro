@@ -114,8 +114,11 @@ const refDate = updatedDate ?? pubDate;
   }
 
   .hero-title {
-    font-size: clamp(1.7rem, 4.2vw, 2.5rem);
+    font-size: clamp(1.5rem, 4.2vw, 2.5rem);
     line-height: 1.08;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
     color: var(--color-bright);
     transition: color 0.18s;
   }

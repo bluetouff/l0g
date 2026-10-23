@@ -17,7 +17,7 @@ draft: false
 
 The first measure is capital, and its yardstick in the United States is RBC, for Risk-Based Capital. It is the insurance equivalent of bank CET1: a minimum capital calculated not on the gross size of the balance sheet, but on the risk of the assets and commitments. A portfolio loaded with equities or speculative credit requires more capital than a portfolio of government bonds.
 
-The RBC ratio divides the insurer's total adjusted capital by the authorized control level. What matters is less the absolute figure than the threshold it crosses. According to the NAIC, the association of state insurance regulators, regulatory actions kick in by stages: above 250%, no intervention; between 200 and 250% with a failed trend test, or between 150 and 200%, the insurer must submit a recovery plan; between 100 and 150%, a corrective plan is required; between 70 and 100%, the regulator is authorized to place the insurer under control, up to liquidation.
+The RBC ratio divides the insurer’s total adjusted capital by Authorized Control Level RBC. For life insurers, the NAIC instructions apply a trend test when the ratio is at least 200% and below 300%. If the test triggers Company Action Level, the insurer must submit an RBC plan to its domiciliary state regulator. That obligation also applies at ratios of at least 150% and below 200%. From 100% to below 150%, the regulator examines the situation and prescribes corrective action; from 70% to below 100%, it may place the company under regulatory control. Below 70%, regulatory control becomes mandatory under the applicable law. The 300% boundary belongs to this capital alert framework. [NAIC, life instructions LR034–LR035 adopted in 2025](https://content.naic.org/sites/default/files/inline-files/2025-07-CA_0.pdf).
 
 <figure class="infographic" style="padding-bottom:1.75rem">
 <svg viewBox="0 0 720 340" role="img" aria-label="NAIC regulatory action levels by an insurer's RBC ratio" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
@@ -25,11 +25,11 @@ The RBC ratio divides the insurer's total adjusted capital by the authorized con
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">An insurer's capital alert ladder</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">NAIC actions by RBC ratio (total adjusted capital / authorized control level).</text>
   <rect x="40" y="84" width="640" height="30" fill="#5eead4" opacity="0.22"></rect>
-  <text x="52" y="104" fill="#5eead4" font-size="12.5" font-weight="700">&gt; 250%</text>
-  <text x="200" y="104" fill="#d6d9df" font-size="12">no action, comfort zone</text>
+  <text x="52" y="104" fill="#5eead4" font-size="12.5" font-weight="700">≥ 300%</text>
+  <text x="200" y="104" fill="#d6d9df" font-size="12">above the trend-test threshold</text>
   <rect x="40" y="120" width="640" height="30" fill="#f5b13d" opacity="0.22"></rect>
-  <text x="52" y="140" fill="#f5b13d" font-size="12.5" font-weight="700">200 - 250%</text>
-  <text x="200" y="140" fill="#d6d9df" font-size="12">monitoring (if the trend test fails)</text>
+  <text x="52" y="140" fill="#f5b13d" font-size="12.5" font-weight="700">200 to &lt; 300%</text>
+  <text x="200" y="140" fill="#d6d9df" font-size="12">RBC plan if the trend test triggers</text>
   <rect x="40" y="156" width="640" height="30" fill="#f5b13d" opacity="0.35"></rect>
   <text x="52" y="176" fill="#f5b13d" font-size="12.5" font-weight="700">150 - 200%</text>
   <text x="200" y="176" fill="#d6d9df" font-size="12">recovery plan required</text>

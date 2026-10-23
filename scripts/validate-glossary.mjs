@@ -647,7 +647,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 308, 'Le corpus anglais ajoute Treasury buyback à ses 307 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 310, 'Le corpus anglais ajoute les traductions CLO et RBC à ses 308 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -730,7 +730,7 @@ for (const [slug, source, related] of [
 }
 
 for (const [slug, source, related] of [
-  ['reassurance-adossee-a-l-actif', 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment']],
+  ['reassurance-adossee-a-l-actif', 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment', 'rbc']],
   ['recapture', 'https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2025/ss524-october-2025.pdf', ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment', 'modco']],
   ['matching-adjustment', 'https://www.bankofengland.co.uk/prudential-regulation/publication/2025/november/list-2025-results-report', ['reassurance-adossee-a-l-actif', 'recapture', 'duration']],
   ['funds-withheld', 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', ['reassurance-adossee-a-l-actif', 'recapture', 'reassurance', 'modco']],
@@ -744,8 +744,8 @@ for (const [slug, source, related] of [
   assert.equal(fr.referenceCandidate, false);
   assert.equal(en.robots, 'noindex,follow');
   for (const entry of [fr, en]) {
-    assert.deepEqual(entry.atlas.sources.map(item => item.href), [source]);
-    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide, ...(['reassurance-adossee-a-l-actif', 'recapture'].includes(slug) ? [entry === fr ? pensionArticleFr : pensionArticleEn] : []), ...(['reassurance-adossee-a-l-actif', 'recapture', 'funds-withheld'].includes(slug) ? [entry === fr ? '/posts/assureurs-03-bermudes-reassurance-jackson-athene/' : '/en/analysis/bermuda-reinsurance-jackson-athene/'] : [])]);
+    assert.deepEqual(entry.atlas.sources.map(item => item.href), [source, ...(slug === 'reassurance-adossee-a-l-actif' ? ['https://content.naic.org/sites/default/files/inline-files/2025-10-L%20RBC%20Asset%20Credit%20Modco-FWH%20proposal.pdf'] : [])]);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), [...(slug === 'reassurance-adossee-a-l-actif' ? [entry === fr ? '/posts/assureurs-fonds-06-traitement-risque/' : '/en/analysis/insurers-asset-managers-06-risk-treatment/'] : []), entry.guide, ...(['reassurance-adossee-a-l-actif', 'recapture'].includes(slug) ? [entry === fr ? pensionArticleFr : pensionArticleEn] : []), ...(['reassurance-adossee-a-l-actif', 'recapture', 'funds-withheld'].includes(slug) ? [entry === fr ? '/posts/assureurs-03-bermudes-reassurance-jackson-athene/' : '/en/analysis/bermuda-reinsurance-jackson-athene/'] : [])]);
     assert.deepEqual(entry.atlas.related, related);
     for (const neighbor of related) {
       assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
@@ -830,7 +830,7 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
 assert.equal(glossaryEntries.length, 702, 'Le corpus doit conserver ses 702 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 297, 'Le graphe Atlas doit conserver ses 297 nœuds');
+assert.equal(glossaryAtlasEntries.length, 299, 'Le graphe Atlas ajoute CLO et RBC à ses 297 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1252,7 +1252,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 850, 'Le graphe Atlas doit conserver ses 850 relations');
+assert.equal(glossaryAtlasEdgeCount, 854, 'Le graphe Atlas ajoute les quatre relations réciproques CLO–RBC et RBC–réassurance à ses 850 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

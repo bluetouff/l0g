@@ -15,7 +15,7 @@ draft: false
 
 La première mesure est le capital, et son étalon aux États-Unis est le [RBC](/glossaire/rbc/), pour Risk-Based Capital. C'est l'équivalent assurantiel du [CET1](/glossaire/cet1/) bancaire : un capital minimal calculé non sur la taille brute du bilan, mais sur le risque des actifs et des engagements. Un portefeuille chargé d'actions ou de crédit spéculatif exige plus de capital qu'un portefeuille d'obligations d'État.
 
-Le ratio RBC rapporte le capital ajusté total de l'assureur au seuil de contrôle autorisé, l'Authorized Control Level. Ce qui compte est moins le chiffre absolu que le seuil qu'il franchit. Selon la [NAIC](/glossaire/naic/), l'association des régulateurs d'assurance des États, les actions réglementaires s'enclenchent par paliers : au-dessus de 250 %, aucune intervention ; entre 200 et 250 % avec échec au test de tendance, ou entre 150 et 200 %, l'assureur doit soumettre un plan de redressement ; entre 100 et 150 %, un plan correctif s'impose ; entre 70 et 100 %, le régulateur est autorisé à placer l'assureur sous contrôle, jusqu'à la mise en liquidation.
+Le ratio RBC rapporte le capital ajusté total de l’assureur à l’Authorized Control Level. Pour les assureurs-vie, les instructions NAIC soumettent les ratios d’au moins 200 % et inférieurs à 300 % à un test de tendance. Si le test déclenche le niveau d’action, l’assureur doit remettre un plan RBC au régulateur de son État de domiciliation. Cette obligation s’applique aussi aux ratios d’au moins 150 % et inférieurs à 200 %. Entre 100 % et moins de 150 %, le régulateur examine la situation et prescrit des corrections ; entre 70 % et moins de 100 %, il peut placer l’entreprise sous contrôle. Sous 70 %, la mise sous contrôle devient obligatoire dans le cadre prévu par la loi. La borne de 300 % concerne ce dispositif d’alerte en capital. [NAIC, instructions vie LR034–LR035 adoptées en 2025](https://content.naic.org/sites/default/files/inline-files/2025-07-CA_0.pdf).
 
 <figure class="infographic" style="padding-bottom:1.75rem">
 <svg viewBox="0 0 720 340" role="img" aria-label="Les seuils d'action réglementaire de la NAIC selon le ratio RBC d'un assureur" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
@@ -23,11 +23,11 @@ Le ratio RBC rapporte le capital ajusté total de l'assureur au seuil de contrô
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">L'échelle d'alerte du capital d'un assureur</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Actions de la NAIC selon le ratio RBC (capital ajusté / seuil de contrôle autorisé).</text>
   <rect x="40" y="84" width="640" height="30" fill="#5eead4" opacity="0.22"></rect>
-  <text x="52" y="104" fill="#5eead4" font-size="12.5" font-weight="700">&gt; 250 %</text>
-  <text x="200" y="104" fill="#d6d9df" font-size="12">aucune action, zone de confort</text>
+  <text x="52" y="104" fill="#5eead4" font-size="12.5" font-weight="700">≥ 300 %</text>
+  <text x="200" y="104" fill="#d6d9df" font-size="12">au-dessus du seuil du test de tendance</text>
   <rect x="40" y="120" width="640" height="30" fill="#f5b13d" opacity="0.22"></rect>
-  <text x="52" y="140" fill="#f5b13d" font-size="12.5" font-weight="700">200 - 250 %</text>
-  <text x="200" y="140" fill="#d6d9df" font-size="12">surveillance (si échec au test de tendance)</text>
+  <text x="52" y="140" fill="#f5b13d" font-size="12.5" font-weight="700">200 à &lt; 300 %</text>
+  <text x="200" y="140" fill="#d6d9df" font-size="12">plan RBC si déclenchement du test de tendance</text>
   <rect x="40" y="156" width="640" height="30" fill="#f5b13d" opacity="0.35"></rect>
   <text x="52" y="176" fill="#f5b13d" font-size="12.5" font-weight="700">150 - 200 %</text>
   <text x="200" y="176" fill="#d6d9df" font-size="12">plan de redressement exigé</text>

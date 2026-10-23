@@ -210,6 +210,33 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'clo', sigle: 'CLO', nom: 'Collateralized loan obligation',
+    ...privateCreditSection, robots: 'noindex,follow',
+    guide: '/en/guides/read-clos-and-leveraged-loans/',
+    def: 'A securitisation backed by a portfolio of corporate loans. It finances those loans by issuing securities with different levels of seniority. A contractual waterfall allocates cash flows, paying senior tranches before subordinated tranches, while losses first reach the residual tranche. The protection afforded to a security depends on its seniority, the portfolio and the contractual terms as well as its rating.',
+    atlas: {
+      intuition: 'Seniority determines payment priority and the order in which a loan portfolio’s losses reach investors.',
+      articles: [{ label: 'The regulatory price of a promise', href: '/en/analysis/insurers-asset-managers-06-risk-treatment/', kind: 'article' }],
+      guides: [{ label: 'Reading CLOs and leveraged loans', href: '/en/guides/read-clos-and-leveraged-loans/', kind: 'guide' }],
+      sources: [{ label: 'NAIC, Collateralized Loan Obligations Primer, 2018', href: 'https://content.naic.org/sites/default/files/naic_archive/primer_180821.pdf', detail: 'Pages 2–4: loan portfolios, tranches, payment priority and the first-loss position.', kind: 'source' }, { label: 'NAIC, adopted CLO factors for year-end 2026', href: 'https://content.naic.org/sites/default/files/inline-files/2026-12-ire.pdf', detail: 'LR002 pre-tax C-1 factors and the surcharge for the specified thin BSL CLO tranches.', kind: 'source' }],
+      related: ['rbc'],
+    },
+  },
+  {
+    slug: 'rbc', sigle: 'RBC', nom: 'Risk-based capital',
+    sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    guide: '/en/guides/read-life-insurer-health/',
+    def: 'A US prudential framework that assesses an insurer’s capital needs according to its risks. For life insurers, the calculation aggregates investment, underwriting, interest-rate and business risks, together with exposures to insurance affiliates, accounting for dependencies among them. The RBC ratio divides total adjusted capital by Authorized Control Level RBC, the denominator used for intervention thresholds. An asset risk factor is one input to this calculation.',
+    atlas: {
+      intuition: 'An asset risk factor enters a broader calculation, after which the capital ratio locates the insurer relative to intervention thresholds.',
+      formula: 'RBC ratio = total adjusted capital / Authorized Control Level RBC',
+      articles: [{ label: 'The regulatory price of a promise', href: '/en/analysis/insurers-asset-managers-06-risk-treatment/', kind: 'article' }],
+      guides: [{ label: 'Reading a life insurer’s financial health', href: '/en/guides/read-life-insurer-health/', kind: 'guide' }],
+      sources: [{ label: 'NAIC, Risk-Based Capital', href: 'https://content.naic.org/insurance-topics/risk-based-capital', detail: 'Risk categories, dependencies, diversification and the ratio of capital to ACL RBC.', kind: 'source' }, { label: 'NAIC, adopted CLO factors for year-end 2026', href: 'https://content.naic.org/sites/default/files/inline-files/2026-12-ire.pdf', detail: 'LR002 asset factors, portfolio adjustment and separate stages of the calculation.', kind: 'source' }],
+      related: ['clo', 'reassurance-adossee-a-l-actif'],
+    },
+  },
+  {
     slug: 'treasury-buyback', sigle: 'Treasury buyback', nom: 'Repurchase of outstanding US government debt',
     def: 'A purchase by the US Treasury of its own outstanding securities before maturity. The operation exchanges public cash for older debt, which is retired at settlement. Reading it requires separating the announced par limit, accepted principal, price and accrued interest, then examining the government’s financing.',
     sectionTitle: 'Macro & central banks', accent: 'var(--color-signal)', robots: 'index,follow',
@@ -1907,9 +1934,9 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'Reinsurance that transfers investment risks and risks associated with life insurance or annuity liabilities to a counterparty. The reinsurer agrees to fund covered benefits; the cedant remains responsible to its policyholders. Assets may transfer or stay with the cedant, depending on the contractual structure.',
     atlas: {
       intuition: 'Funding and specified risks move between balance sheets while the original insurer retains its promise to policyholders.',
-      articles: [{ label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }, { label: 'The Bermuda balance sheet behind an American annuity', href: '/en/analysis/bermuda-reinsurance-jackson-athene/', kind: 'article' }],
-      sources: [{ label: 'IAIS: Structural shifts in the life insurance sector', href: 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', detail: 'Sections 4.1.1 and 4.1.6: reinsurance economics and collateral structures.', kind: 'source' }],
-      related: ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment'],
+      articles: [{ label: 'The regulatory price of a promise', href: '/en/analysis/insurers-asset-managers-06-risk-treatment/', kind: 'article' }, { label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }, { label: 'The Bermuda balance sheet behind an American annuity', href: '/en/analysis/bermuda-reinsurance-jackson-athene/', kind: 'article' }],
+      sources: [{ label: 'IAIS: Structural shifts in the life insurance sector', href: 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', detail: 'Sections 4.1.1 and 4.1.6: reinsurance economics and collateral structures.', kind: 'source' }, { label: 'NAIC, RBC asset credit for ModCo and funds withheld, adopted in 2025', href: 'https://content.naic.org/sites/default/files/inline-files/2025-10-L%20RBC%20Asset%20Credit%20Modco-FWH%20proposal.pdf', detail: 'LR045–LR048: asset-risk transfer and conditions for the cedant’s capital relief.', kind: 'source' }],
+      related: ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment', 'rbc'],
     },
   },
   {
