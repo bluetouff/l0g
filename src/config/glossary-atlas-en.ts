@@ -216,7 +216,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/guides/read-life-insurer-health/',
     atlas: {
       intuition: 'An investment must help fund a future payment in the currency and at the time it falls due.',
-      articles: [{ label: 'Japanese savings and global borrowing costs', href: '/en/analysis/japan-savings-global-borrowing-costs/', detail: 'Reinvestment choices, currency hedges and liability schedules.', kind: 'article' }],
+      articles: [{ label: 'Japanese savings and global borrowing costs', href: '/en/analysis/japan-savings-global-borrowing-costs/', detail: 'Reinvestment choices, currency hedges and liability schedules.', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }],
       guides: [{ label: 'Reading a life insurer’s financial health', href: '/en/guides/read-life-insurer-health/', kind: 'guide' }],
       sources: [{ label: 'Bank of Canada, liquidity risks at life insurers', href: 'https://www.bankofcanada.ca/2024/04/staff-analytical-note-2024-7/', detail: 'ALM, duration, currency risk, surrenders and liquidity needs.', kind: 'source' }],
       related: ['duration', 'couverture-de-change'],
@@ -1864,13 +1864,38 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'pension-risk-transfer', sigle: 'Pension risk transfer', nom: 'PRT: transferring pension risks to an insurer',
+    ...privateCreditSection, robots: 'noindex,follow',
+    guide: '/en/analysis/when-pension-contracts-change-hands/',
+    def: 'An arrangement that transfers some or all of the risks associated with defined-benefit pension promises to an insurer, usually through an annuity purchase. The transaction structure and applicable law determine which liabilities move, who is legally responsible for paying benefits and which protection arrangements cover beneficiaries.',
+    atlas: {
+      articles: [{ label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }],
+      sources: [
+        { label: 'NAIC: Pension Risk Transfer', href: 'https://content.naic.org/cipr_topics/topic_pension_risk_transfer.htm', detail: 'Transferring risks from a defined-benefit pension plan to an insurer.', kind: 'source' },
+        { label: 'PBGC: Annuities', href: 'https://www.pbgc.gov/guidance/annuities', detail: 'PBGC protection ends for benefits covered by irrevocable commitments purchased from an insurer.', kind: 'source' },
+      ],
+      related: ['buy-in-buy-out'],
+    },
+  },
+  {
+    slug: 'buy-in-buy-out', sigle: 'Buy-in / buy-out', nom: 'Two UK pension insurance arrangements',
+    ...privateCreditSection, robots: 'noindex,follow',
+    guide: '/en/analysis/when-pension-contracts-change-hands/',
+    def: 'In the UK, a buy-in is an insurance policy held as a pension scheme asset: the insurer pays the scheme, whose trustees remain legally responsible for benefits. A buy-out makes the insurer directly responsible to covered members. The distinction rests on who owes the benefits, including when a buy-in covers every member.',
+    atlas: {
+      articles: [{ label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }],
+      sources: [{ label: 'The Pensions Regulator: insurance solutions', href: 'https://www.thepensionsregulator.gov.uk/en/document-library/scheme-management-detailed-guidance/funding-and-investment-detailed-guidance/new-models-and-options-in-defined-benefit-pensions-schemes', detail: 'Buy-ins and Buy-outs sections: scheme policies, trustee responsibility and the insurer’s direct obligation.', kind: 'source' }],
+      related: ['pension-risk-transfer'],
+    },
+  },
+  {
     slug: 'reassurance-adossee-a-l-actif', sigle: 'Asset-intensive reinsurance', nom: 'Transfer of investment and insurance risks',
     ...privateCreditSection, robots: 'noindex,follow',
     guide: '/en/analysis/pensions-bermuda-recapture-risk/',
     def: 'Reinsurance that transfers investment risks and risks associated with life insurance or annuity liabilities to a counterparty. The reinsurer agrees to fund covered benefits; the cedant remains responsible to its policyholders. Assets may transfer or stay with the cedant, depending on the contractual structure.',
     atlas: {
       intuition: 'Funding and specified risks move between balance sheets while the original insurer retains its promise to policyholders.',
-      articles: [{ label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }],
+      articles: [{ label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }],
       sources: [{ label: 'IAIS: Structural shifts in the life insurance sector', href: 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', detail: 'Sections 4.1.1 and 4.1.6: reinsurance economics and collateral structures.', kind: 'source' }],
       related: ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment'],
     },
@@ -1882,7 +1907,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'The insurer takes back risks previously ceded to a reinsurer under treaty-defined triggers, sometimes before formal insolvency. Recapture requires assessment of recoverable assets, access rights, liquidity needs and required capital. The amount of liabilities recaptured is not a measure of permanent loss.',
     atlas: {
       intuition: 'The cedant must be able to continue paying when its counterparty no longer performs.',
-      articles: [{ label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }],
+      articles: [{ label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }],
       sources: [{ label: 'PRA: SS5/24, October 2025 version', href: 'https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2025/ss524-october-2025.pdf', detail: 'Paragraphs 2.5–2.22: recapture, collateral, liquidity and triggers.', kind: 'source' }],
       related: ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment'],
     },

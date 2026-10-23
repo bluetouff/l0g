@@ -457,6 +457,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Ligne de souscription', nom: 'Subscription line', def: "Crédit-relais consenti à un fonds en début de vie, garanti par les engagements non appelés de ses investisseurs (LP), pour financer les acquisitions avant les appels de capital. À l'inverse du NAV loan, qui arrive en fin de vie du fonds et se gage sur la valeur du portefeuille déjà investi." },
       { sigle: 'DPI', nom: 'Distributions to Paid-In', def: "Rapport entre le capital effectivement rendu aux investisseurs d'un fonds et le capital versé par eux. Mesure de performance « cash », insensible aux valorisations au modèle, devenue le critère dominant des investisseurs institutionnels pendant la sécheresse des sorties de 2023-2026. Un DPI gonflé par un emprunt n'est pas une performance, c'est une avance." },
       { sigle: 'Rated feeder note', nom: 'Note de fonds nourricier notée', def: "Titre de dette émis par un véhicule nourricier investi dans un fonds privé, assorti d'une notation, le plus souvent privée. Permet à un assureur de loger une exposition de type fonds en la traitant comme une obligation notée, avec une charge en capital réduite. Structure au cœur de l'examen engagé par la NAIC." },
+      { sigle: 'Pension risk transfer', nom: 'PRT, transfert des risques de retraite', def: 'Opération par laquelle un régime de retraite à prestations définies transfère à un assureur tout ou partie des risques associés aux prestations promises, généralement par l’achat de rentes. Le montage et le droit applicable déterminent les engagements transférés, le débiteur légal des prestations et les dispositifs de protection des bénéficiaires.', guide: '/posts/assureurs-01-contrat-change-de-mains/' },
+      { sigle: 'Buy-in / buy-out', nom: 'Deux formes d’assurance des retraites britanniques', def: 'Au Royaume-Uni, un buy-in est une police détenue comme actif par le régime de retraite : l’assureur paie le régime, dont les trustees restent juridiquement responsables des prestations. Lors d’un buy-out, l’assureur devient directement responsable envers les bénéficiaires couverts. La différence porte sur le débiteur des prestations, y compris lorsqu’un buy-in couvre tous les membres.', guide: '/posts/assureurs-01-contrat-change-de-mains/' },
       { sigle: 'Réassurance adossée à l’actif', nom: 'Asset-intensive reinsurance', def: "Réassurance qui transfère à une contrepartie des risques liés aux placements et aux engagements d’assurance-vie ou de rente. Le réassureur s’engage à financer les prestations couvertes ; l’assureur cédant conserve son obligation envers ses assurés. Les actifs peuvent être transférés ou rester détenus par le cédant selon la structure contractuelle.", guide: '/posts/retraites-bermudes-prix-du-retour/' },
       { sigle: 'Recapture', nom: 'Reprise des risques cédés en réassurance', def: "Reprise par l’assureur des risques qu’il avait cédés au réassureur, selon les déclencheurs du traité, parfois avant une insolvabilité formelle. Elle exige de vérifier les actifs récupérables, les droits d’accès, les besoins de liquidité et le capital nécessaire. Le montant des engagements repris ne mesure pas une perte définitive.", guide: '/posts/retraites-bermudes-prix-du-retour/' },
       { sigle: 'Matching adjustment', nom: 'Ajustement prudentiel pour des flux appariés', def: "Mécanisme prudentiel britannique soumis à autorisation, qui augmente le taux d’actualisation d’engagements éligibles lorsqu’un portefeuille répond aux critères d’appariement des flux. L’ajustement retranche du spread des actifs une compensation des risques conservés. Il réduit la valeur actuelle des engagements, sans produire de trésorerie immédiate.", guide: '/posts/retraites-bermudes-prix-du-retour/' },
@@ -1133,6 +1135,19 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'pension-risk-transfer': {
+    articles: [{ label: 'Qui doit payer les retraités d’AT&T ?', href: '/posts/assureurs-01-contrat-change-de-mains/', kind: 'article' }],
+    sources: [
+      { label: 'NAIC : Pension Risk Transfer', href: 'https://content.naic.org/cipr_topics/topic_pension_risk_transfer.htm', detail: 'Transfert de risques d’un régime à prestations définies vers un assureur.', kind: 'source' },
+      { label: 'PBGC : Annuities', href: 'https://www.pbgc.gov/guidance/annuities', detail: 'Fin de la garantie PBGC pour les prestations couvertes par des engagements irrévocables achetés à un assureur.', kind: 'source' },
+    ],
+    related: ['buy-in-buy-out'],
+  },
+  'buy-in-buy-out': {
+    articles: [{ label: 'Qui doit payer les retraités d’AT&T ?', href: '/posts/assureurs-01-contrat-change-de-mains/', kind: 'article' }],
+    sources: [{ label: 'The Pensions Regulator : solutions d’assurance', href: 'https://www.thepensionsregulator.gov.uk/en/document-library/scheme-management-detailed-guidance/funding-and-investment-detailed-guidance/new-models-and-options-in-defined-benefit-pensions-schemes', detail: 'Sections Buy-ins et Buy-outs : police du régime, responsabilité des trustees et obligation directe de l’assureur.', kind: 'source' }],
+    related: ['pension-risk-transfer'],
+  },
   fonderie: {
     articles: [{ label: 'TSMC suit la demande de puces jusqu’au réseau électrique', href: '/posts/tsmc-puces-data-centers-risque-electrique/', kind: 'article' }],
     sources: [{ label: 'TSMC, présentation de l’entreprise', href: 'https://www.tsmc.com/english/aboutTSMC/company_profile', detail: 'Modèle de fonderie dédié aux produits des clients, procédés de fabrication et capacité en wafers.', kind: 'source' }],
@@ -2105,7 +2120,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   alm: {
     intuition: 'Le placement doit financer une prestation future dans la monnaie et au moment où elle sera due.',
-    articles: [{ label: 'Épargne japonaise et coût de la dette mondiale', href: '/posts/japon-epargne-dette-mondiale/', detail: 'Choix de réinvestissement, couverture et calendrier des engagements.', kind: 'article' }],
+    articles: [{ label: 'Épargne japonaise et coût de la dette mondiale', href: '/posts/japon-epargne-dette-mondiale/', detail: 'Choix de réinvestissement, couverture et calendrier des engagements.', kind: 'article' }, { label: 'Qui doit payer les retraités d’AT&T ?', href: '/posts/assureurs-01-contrat-change-de-mains/', kind: 'article' }],
     guides: [{ label: 'Lire la solidité d’un assureur-vie', href: '/guides/lire-la-solidite-d-un-assureur-vie/', kind: 'guide' }],
     sources: [{ label: 'Banque du Canada, liquidité des assureurs-vie', href: 'https://www.bankofcanada.ca/2024/04/staff-analytical-note-2024-7/', detail: 'Gestion actif-passif, duration, risque de change, rachats et besoins de liquidité.', kind: 'source' }],
     related: ['duration', 'couverture-de-change'],
@@ -2192,13 +2207,13 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
 },
   'reassurance-adossee-a-l-actif': {
     intuition: 'Le financement et certains risques changent de bilan tandis que la promesse faite à l’assuré reste chez l’assureur initial.',
-    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }],
+    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }, { label: 'Qui doit payer les retraités d’AT&T ?', href: '/posts/assureurs-01-contrat-change-de-mains/', kind: 'article' }],
     sources: [{ label: 'IAIS : Structural shifts in the life insurance sector', href: 'https://www.iais.org/uploads/2025/11/Issues-Paper-on-structural-shifts-in-the-life-insurance-sector.pdf', detail: 'Sections 4.1.1 et 4.1.6 : économie de la réassurance et structures de collatéral.', kind: 'source' }],
     related: ['reassurance', 'recapture', 'funds-withheld', 'matching-adjustment'],
   },
   recapture: {
     intuition: 'Le cédant doit pouvoir continuer à payer lorsque la contrepartie ne remplit plus son rôle.',
-    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }],
+    articles: [{ label: 'Retraites et Bermudes : le prix du retour', href: '/posts/retraites-bermudes-prix-du-retour/', kind: 'article' }, { label: 'Qui doit payer les retraités d’AT&T ?', href: '/posts/assureurs-01-contrat-change-de-mains/', kind: 'article' }],
     sources: [{ label: 'PRA : SS5/24, version d’octobre 2025', href: 'https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2025/ss524-october-2025.pdf', detail: 'Paragraphes 2.5 à 2.22 : reprise des risques, collatéral, liquidité et déclencheurs.', kind: 'source' }],
     related: ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment'],
   },

@@ -11,6 +11,8 @@ Un retraité américain qui achète une rente viagère croit confier son épargn
 
 Cet article complète notre série sur le crédit privé, après [les défauts et le gating](/posts/credit-prive-juin-2026-defaut-record-gating/), [les rachats face aux méga-IPO](/posts/credit-prive-rachats-mega-ipo/) et [la migration du risque hors du regard réglementaire](/posts/migration-risque-credit-hors-du-regard-reglementaire/). Le maillon traité ici est le plus gros de tous : celui qui relie l'épargne retraite au crédit de l'ombre.
 
+Notre enquête sur [le contrat de retraite des anciens salariés d’AT&T](/posts/assureurs-01-contrat-change-de-mains/) distingue le régime de retraite, l’assureur tenu de payer et les accords de réassurance. Elle examine aussi les protections applicables après l’achat de rentes.
+
 ## Un tiers du bilan en actifs privés
 
 Les ordres de grandeur donnent la mesure. Selon l'enquête d'[American Banker](https://www.americanbanker.com/news/is-private-credit-a-2-trillion-dollar-insurance-timebomb), les assureurs-vie américains ont alloué près d'un tiers de leurs **5 600 milliards de dollars** d'actifs au crédit privé, soit environ **1 900 milliards** d'exposition. Le [FMI](https://www.imf.org/en/publications/gfsr/issues/2026/04/14/global-financial-stability-report-april-2026) retient un chiffre voisin dans son rapport de stabilité financière d'avril 2026 : le crédit privé pèse environ 35 % des portefeuilles des assureurs nord-américains. Le même rapport souligne un clivage interne au secteur : les assureurs adossés à des fonds de capital-investissement détiennent près de deux fois plus d'actifs illiquides que les autres.

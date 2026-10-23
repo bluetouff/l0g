@@ -14,6 +14,8 @@ An American retiree who buys a lifetime annuity believes they are entrusting the
 
 This article completes our [private credit](/en/glossary/credit-prive/) series, after [the defaults and the gating](/en/analysis/private-credit-record-default-liquidity-closing/), [the redemptions facing the mega-IPOs](/en/analysis/private-credit-redemptions-mega-ipos/) and [the migration of credit risk out of regulatory sight](/en/analysis/the-migration-of-credit-risk/). The link treated here is the largest of all: the one that connects retirement savings to shadow credit.
 
+Our investigation into [AT&T retirees’ pension contracts](/en/analysis/when-pension-contracts-change-hands/) follows the payment obligation from the pension plan to the insurer and explains the role of reinsurance. It also examines the protection available after an annuity purchase.
+
 ## A third of the balance sheet in private assets
 
 The orders of magnitude set the scale. According to [American Banker](https://www.americanbanker.com/news/is-private-credit-a-2-trillion-dollar-insurance-timebomb)'s investigation, US life insurers have allocated nearly a third of their **$5.6 trillion** in assets to private credit, about **$1.9 trillion** of exposure. The [IMF](https://www.imf.org/en/publications/gfsr/issues/2026/04/14/global-financial-stability-report-april-2026) uses a similar figure in its April 2026 financial stability report: private credit accounts for about 35% of North American insurers' portfolios. The same report highlights a divide within the sector: insurers backed by private-equity firms hold nearly twice as many illiquid assets as the others.

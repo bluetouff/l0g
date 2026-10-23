@@ -18,6 +18,37 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Pension insurance keeps the legal obligor and jurisdiction explicit.
+const pensionArticleFr = '/posts/assureurs-01-contrat-change-de-mains/';
+const pensionArticleEn = '/en/analysis/when-pension-contracts-change-hands/';
+for (const [slug, sources, related] of [
+  ['pension-risk-transfer', ['https://content.naic.org/cipr_topics/topic_pension_risk_transfer.htm', 'https://www.pbgc.gov/guidance/annuities'], ['buy-in-buy-out']],
+  ['buy-in-buy-out', ['https://www.thepensionsregulator.gov.uk/en/document-library/scheme-management-detailed-guidance/funding-and-investment-detailed-guidance/new-models-and-options-in-defined-benefit-pensions-schemes'], ['pension-risk-transfer']],
+]) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(en[0].robots, 'noindex,follow'); assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  for (const [entry, article, terms] of [[fr[0], pensionArticleFr, glossaryEntries], [en[0], pensionArticleEn, glossaryAtlasEn]]) {
+    assert.equal(entry.guide, article);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), [article]);
+    assert.deepEqual(entry.atlas.sources.map(item => item.href), sources);
+    assert.deepEqual(entry.atlas.related, related);
+    for (const neighbor of related) assert(terms.find(term => term.slug === neighbor).atlas.related.includes(slug));
+    assert(!entry.def.includes('—'));
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'pension-risk-transfer').def, /prestations définies.*débiteur légal.*protection/);
+assert.match(glossaryAtlasEnBySlug.get('pension-risk-transfer').def, /defined-benefit.*legally responsible.*protection/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'buy-in-buy-out').def, /Royaume-Uni.*actif.*trustees restent juridiquement responsables.*buy-out.*directement responsable/);
+assert.match(glossaryAtlasEnBySlug.get('buy-in-buy-out').def, /In the UK.*scheme asset.*trustees remain legally responsible.*buy-out.*directly responsible/);
+for (const slug of ['alm', 'reassurance-adossee-a-l-actif', 'recapture']) {
+  assert(glossaryEntries.find(entry => entry.slug === slug).atlas.articles.some(link => link.href === pensionArticleFr));
+  assert(glossaryAtlasEnBySlug.get(slug).atlas.articles.some(link => link.href === pensionArticleEn));
+}
+
 // Manufacturing capacity and investment spending retain their distinct scopes in both languages.
 for (const [slug, sources] of [
   ['fonderie', ['https://www.tsmc.com/english/aboutTSMC/company_profile']],
@@ -589,7 +620,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 301, 'Le corpus anglais doit conserver ses 301 fiches uniques');
+assert.equal(glossaryAtlasEnBySlug.size, 303, 'Le corpus anglais doit conserver ses 303 fiches uniques');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -687,7 +718,7 @@ for (const [slug, source, related] of [
   assert.equal(en.robots, 'noindex,follow');
   for (const entry of [fr, en]) {
     assert.deepEqual(entry.atlas.sources.map(item => item.href), [source]);
-    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide, ...(['reassurance-adossee-a-l-actif', 'recapture'].includes(slug) ? [entry === fr ? pensionArticleFr : pensionArticleEn] : [])]);
     assert.deepEqual(entry.atlas.related, related);
     for (const neighbor of related) {
       assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
@@ -771,8 +802,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 697, 'Le corpus doit conserver ses 697 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 289, 'Le graphe Atlas doit conserver ses 289 nœuds');
+assert.equal(glossaryEntries.length, 699, 'Le corpus doit conserver ses 699 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 291, 'Le graphe Atlas doit conserver ses 291 nœuds');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1194,7 +1225,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 835, 'Le graphe Atlas doit conserver ses 835 relations');
+assert.equal(glossaryAtlasEdgeCount, 837, 'Le graphe Atlas doit conserver ses 837 relations');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
