@@ -14,7 +14,7 @@ const sanitize = (body) => optimize(
 ).data;
 
 test('security floors cover vulnerable parsers and network dependencies in both trees', () => {
-  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 3], 'fast-uri': [3, 1, 7], undici: [8, 10, 2], 'ip-address': [10, 5, 1], 'http-cache-semantics': [4, 3, 0], 'source-map-js': [1, 2, 2], 'proxy-addr': [2, 0, 8], sharp: [0, 35, 5], '@modelcontextprotocol/sdk': [1, 31, 0] };
+  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 3], 'fast-uri': [3, 1, 7], undici: [8, 10, 2], 'ip-address': [10, 7, 4], 'http-cache-semantics': [4, 3, 0], 'source-map-js': [1, 2, 2], 'proxy-addr': [2, 0, 8], sharp: [0, 35, 5], '@modelcontextprotocol/sdk': [1, 31, 0] };
   const seen = new Set();
   for (const path of ['../package-lock.json', '../mcp-server/package-lock.json']) {
     const lock = JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
@@ -139,6 +139,26 @@ test('SVGO rejects invalid XML character references in text and attributes', () 
 // Pure, bounded parsing fixtures; these tests never open a network connection.
 const requireMain = createRequire(import.meta.url);
 const requireMcp = createRequire(new URL('../mcp-server/package.json', import.meta.url));
+
+test('IPv6 zones reject repeated delimiters and line terminators within a bounded process', () => {
+  // GHSA-rxp7-6hxx-x8q5: isolate the parser so a regression cannot stall the runner.
+  const result = spawnSync(process.execPath, ['--input-type=commonjs', '-e', `
+    const assert = require('node:assert/strict');
+    const { Address4, Address6 } = require('ip-address');
+    const valid = new Address6('fe80::1%eth0');
+    assert.equal(valid.zone, '%eth0');
+    assert.equal(valid.correctForm(), 'fe80::1');
+    assert.equal(Address6.isValid('2001:db8::1'), true);
+    assert.equal(Address4.isValid('192.0.2.1'), true);
+    for (const ending of ['\\n', '\\r', '\\u2028', '\\u2029']) {
+      const malformed = '%'.repeat(64 * 1024) + ending;
+      assert.equal(Address6.isValid(malformed), false);
+      assert.throws(() => new Address6(malformed));
+    }
+  `], { cwd: new URL('../mcp-server/', import.meta.url), timeout: 3000, encoding: 'utf8', maxBuffer: 64 * 1024 });
+  assert.ifError(result.error);
+  assert.equal(result.status, 0, result.stderr);
+});
 
 test('indexed source maps reject invalid offsets and preserve ordinary mappings', () => {
   // GHSA-68fv-2mgg-jv7q: construction only, never iterate a huge generated line.
