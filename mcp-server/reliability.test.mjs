@@ -8,7 +8,7 @@ import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { buildServer } from './server.mjs';
 import { classifyMcpFailure } from './usage-telemetry.mjs';
 
-async function withClient(t, surface = 'compact') {
+async function withClient(t, surface = 'compact', overrides = {}) {
   const dataDir = await mkdtemp(join(tmpdir(), 'l0g-mcp-reliability-'));
   const record = { slug: 'test-article', language: 'en', canonicalId: 'article:test-article', type: 'article', url: 'https://l0g.fr/en/analysis/test-article/', title: 'Risk evidence', date: '2026-10-01' };
   await mkdir(join(dataDir, 'en/analysis/test-article'), { recursive: true });
@@ -21,6 +21,7 @@ async function withClient(t, surface = 'compact') {
     claims: { claims: [] }, sources: { primarySources: [] },
     freshness: { generated: '2026-10-08T00:00:00Z', corpus: {}, signalFreshness: [] },
     integrity: {}, changes: {}, evidenceGraph: { nodes: [], edges: [] },
+    ...overrides,
   };
   const server = buildServer(data, { surface });
   const client = new Client({ name: 'l0g-reliability-test', version: '1.0.0' });
@@ -113,4 +114,61 @@ test('research packs reject impossible dates and empty terms without hiding erro
   const unknown = await client.callTool({ name: 'private-unknown-tool', arguments: {} });
   assert.equal(unknown.isError, true);
   assert.equal(classifyMcpFailure({ statusCode: 200, payload: { result: unknown } }), 'tool_unavailable');
+});
+
+const openapiFixture = {
+  openapi: '3.1.0',
+  info: { title: 'Public test contract', version: '1.0.0' },
+  servers: [{ url: 'https://l0g.fr' }],
+  paths: {
+    '/api/v1/claims.json': {
+      parameters: [{ name: 'language', in: 'query', schema: { type: 'string' } }],
+      get: { summary: 'Read claims', responses: { 200: { description: 'Claims' } } },
+      head: { description: 'Read claim headers', responses: { 200: { description: 'Headers' } } },
+      servers: [{ url: 'https://l0g.fr' }],
+      'x-internal-note': 'Public extension metadata',
+    },
+    '/api/v1/freshness.json': {
+      summary: 'Freshness of public data',
+      get: { summary: 'Read freshness', responses: { 200: { description: 'Freshness' } } },
+    },
+  },
+  components: { schemas: { Claim: { type: 'object' } } },
+};
+
+test('OpenAPI summary, exact path and full modes preserve the public contract', async (t) => {
+  const { client } = await withClient(t, 'full', { openapi: openapiFixture });
+  const summary = await client.callTool({ name: 'get_openapi_schema', arguments: {} });
+  assert.notEqual(summary.isError, true);
+  assert.equal(summary.structuredContent.pathCount, 2);
+  assert.deepEqual(summary.structuredContent.schemas, ['Claim']);
+  assert.deepEqual(summary.structuredContent.paths, [
+    { path: '/api/v1/claims.json', methods: ['GET', 'HEAD'], summary: 'Read claims' },
+    { path: '/api/v1/freshness.json', methods: ['GET'], summary: 'Freshness of public data' },
+  ]);
+  const targeted = await client.callTool({ name: 'get_openapi_schema', arguments: { mode: 'path', path: ' /api/v1/claims.json ' } });
+  assert.notEqual(targeted.isError, true);
+  assert.deepEqual(targeted.structuredContent.paths, [summary.structuredContent.paths[0]]);
+  assert.equal(targeted.structuredContent.pathCount, 2);
+  const full = await client.callTool({ name: 'get_openapi_schema', arguments: { mode: 'full' } });
+  assert.notEqual(full.isError, true);
+  assert.deepEqual(full.structuredContent, openapiFixture);
+});
+
+test('OpenAPI invalid or unknown paths stay recoverable argument errors', async (t) => {
+  const { client, dataDir } = await withClient(t, 'full', { openapi: openapiFixture });
+  for (const path of [undefined, '', '   ', 'api/v1/claims.json', 'https://l0g.fr/api/v1/claims.json', '/api/v1/unknown.json', '/api/v1/claims.json?language=en']) {
+    const result = await client.callTool({ name: 'get_openapi_schema', arguments: { mode: 'path', ...(path === undefined ? {} : { path }) } });
+    assert.equal(result.isError, true);
+    assert.equal(result.structuredContent.errorCode, 'invalid_arguments');
+    assert.equal(classifyMcpFailure({ statusCode: 200, payload: { result } }), 'invalid_arguments');
+    assert.ok(result.structuredContent.nextAction);
+    assert.equal(JSON.stringify(result).includes(dataDir), false);
+  }
+  const recovered = await client.callTool({ name: 'get_openapi_schema', arguments: { mode: 'path', path: '/api/v1/claims.json' } });
+  assert.notEqual(recovered.isError, true);
+  assert.equal(recovered.structuredContent.paths[0].path, '/api/v1/claims.json');
+  const invalidMode = await client.callTool({ name: 'get_openapi_schema', arguments: { mode: 'unknown' } });
+  assert.equal(invalidMode.isError, true);
+  assert.equal(classifyMcpFailure({ statusCode: 200, payload: { result: invalidMode } }), 'invalid_arguments');
 });

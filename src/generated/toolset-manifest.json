@@ -1,10 +1,10 @@
 {
-  "serverVersion": "1.24.6",
+  "serverVersion": "1.24.7",
   "protocolVersion": "2025-11-25",
   "primaryTool": "get_risk_state",
   "recommendedSurface": "/api/mcp/compact",
   "researchSurface": "/api/mcp",
-  "toolsetHash": "85329bc693be5ef59717ad34a42a3d26610dc40a814e7c594b70c5904e5713fb",
+  "toolsetHash": "ad0d1a8c7fb92372053495531e1da16d8279b91e5445ebee0163183c3533ed83",
   "tools": [
     {
       "name": "build_research_pack",
@@ -122,7 +122,7 @@
       "name": "get_openapi_schema",
       "semanticVersion": "1.0.0",
       "descriptionHash": "15b7ac2f5b4f292b50fada0ed4b5d05692bce8f726e83616252f48ee331bac28",
-      "inputSchemaHash": "6ec1e62bc0e70cf54f21a97b55f9c257b3899b6baadcb3719e6c44fef9191988",
+      "inputSchemaHash": "a7832e8ed75b5d350fbc3b9adff52e05a420bc8c3ac0ed63568dd26d28a99b76",
       "outputSchemaHash": "887e9dfde6562dbc3ece35d9652d1c2b46bbecd485d9ee7ae6341059e0d370d3",
       "changeType": "non-breaking"
     },
@@ -218,7 +218,7 @@
   "surfaces": {
     "full": {
       "path": "/api/mcp",
-      "toolsetHash": "abbff163d23e26206bf341c8575bc3fffb3b8e4a58a5b76b2377333dd5c63fdd",
+      "toolsetHash": "308089d28b7cd33969dc516ad684613558bbb7e82ca20623420210fc67dc22da",
       "tools": [
         "build_research_pack",
         "get_agent_manifest",
@@ -243,7 +243,7 @@
         "verify_artifact"
       ],
       "toolCount": 21,
-      "toolsListBytes": 51259
+      "toolsListBytes": 51288
     },
     "compact": {
       "path": "/api/mcp/compact",

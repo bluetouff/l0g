@@ -1050,16 +1050,20 @@ function uriValue(value) {
 function summarizeOpenapi(openapi, path) {
   const paths = openapi.paths || {};
   const selectedPaths = path ? Object.fromEntries(Object.entries(paths).filter(([key]) => key === path)) : paths;
+  const httpMethods = new Set(['get', 'put', 'post', 'delete', 'options', 'head', 'patch', 'trace']);
   return {
     openapi: openapi.openapi,
     info: openapi.info,
     servers: openapi.servers || [],
     pathCount: Object.keys(paths).length,
-    paths: Object.entries(selectedPaths).map(([key, value]) => ({
-      path: key,
-      methods: Object.keys(value || {}).map((method) => method.toUpperCase()),
-      summary: Object.values(value || {})[0]?.summary || Object.values(value || {})[0]?.description || null,
-    })),
+    paths: Object.entries(selectedPaths).map(([key, value]) => {
+      const operations = Object.entries(value || {}).filter(([method]) => httpMethods.has(method));
+      return {
+        path: key,
+        methods: operations.map(([method]) => method.toUpperCase()),
+        summary: value?.summary || value?.description || operations[0]?.[1]?.summary || operations[0]?.[1]?.description || null,
+      };
+    }),
     schemas: Object.keys(openapi.components?.schemas || {}),
   };
 }
@@ -2029,7 +2033,7 @@ export function buildServer(data, options = {}) {
         "sans récupérer tout le fichier si un résumé suffit.",
       inputSchema: {
         mode: z.enum(['summary', 'path', 'full']).default('summary').describe('summary pour index, path pour un endpoint, full pour le contrat complet.'),
-        path: z.string().optional().describe('Chemin OpenAPI exact, par exemple /api/v1/claims.json, utilisé avec mode=path.'),
+        path: z.string().optional().describe('Requis avec mode=path : chemin OpenAPI exact, par exemple /api/v1/claims.json, sans domaine ni query string.'),
       },
       outputSchema: OpenapiOutput,
       annotations: { readOnlyHint: true },
@@ -2038,9 +2042,19 @@ export function buildServer(data, options = {}) {
       if (mode === 'full') return reply(openapi);
       if (mode === 'path') {
         const clean = String(path || '').trim();
-        if (!clean.startsWith('/')) return errorReply({ error: 'path invalide', note: 'utiliser un chemin exact commençant par /' });
+        if (!clean.startsWith('/')) return errorReply({
+          error: 'path invalide',
+          errorCode: 'invalid_arguments',
+          nextAction: 'Utiliser mode=summary pour découvrir les chemins, puis mode=path avec un chemin exact commençant par /, sans domaine ni query string.',
+        });
         const summary = summarizeOpenapi(openapi, clean);
-        if (!summary.paths.length) return errorReply({ error: 'path inconnu', path: clean, knownPaths: Object.keys(openapi.paths || {}) });
+        if (!summary.paths.length) return errorReply({
+          error: 'path inconnu',
+          errorCode: 'invalid_arguments',
+          path: clean,
+          knownPaths: Object.keys(openapi.paths || {}),
+          nextAction: 'Reprendre un chemin exact de knownPaths, sans domaine ni query string.',
+        });
         return reply(summary);
       }
       return reply(summarizeOpenapi(openapi));
