@@ -14,7 +14,7 @@ const sanitize = (body) => optimize(
 ).data;
 
 test('security floors cover vulnerable parsers and network dependencies in both trees', () => {
-  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 3], 'fast-uri': [3, 1, 7], undici: [8, 10, 2], 'ip-address': [10, 7, 4], 'http-cache-semantics': [4, 3, 0], 'source-map-js': [1, 2, 2], 'proxy-addr': [2, 0, 8], sharp: [0, 35, 5], '@modelcontextprotocol/sdk': [1, 31, 0] };
+  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 3], 'fast-uri': [3, 1, 9], undici: [8, 10, 2], 'ip-address': [10, 7, 4], 'http-cache-semantics': [4, 3, 0], 'source-map-js': [1, 2, 2], 'proxy-addr': [2, 0, 8], sharp: [0, 35, 5], '@modelcontextprotocol/sdk': [1, 31, 0] };
   const seen = new Set();
   for (const path of ['../package-lock.json', '../mcp-server/package-lock.json']) {
     const lock = JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
@@ -229,6 +229,74 @@ test('both URI parsers reject authority injection and malformed host brackets', 
     assert.equal(uri.serialize({ scheme: 'https', host: 'l0g.fr', port: '8443', path: '/posts/' }), 'https://l0g.fr:8443/posts/');
   }
 });
+
+for (const [tree, requireDependency] of [['site', requireMain], ['MCP', requireMcp]]) {
+  test(`${tree}: URI schemes cannot be synthesized from percent-encoded input`, () => {
+    // GHSA-w74x-v6f9-j3xg, including legacy Unicode escapes and scheme equality.
+    const uri = requireDependency('fast-uri');
+    for (const input of ['%6Aavascript:alert(1)', '%u006Aavascript:alert(1)', '%64ata:text/plain,test', 'vb%73cript:msgbox(1)']) {
+      assert.equal(uri.parse(input).error, 'URI scheme is malformed.');
+      assert.equal(uri.normalize(input), input);
+      assert.throws(() => uri.resolve('https://example.com/app/', input), /URI scheme is malformed/);
+    }
+    assert.throws(() => uri.serialize({ scheme: '%6Aavascript', path: 'alert(1)' }), /URI scheme is malformed/);
+    assert.equal(uri.equal('%68ttp://example.com/', 'http://example.com/'), false);
+    assert.equal(uri.normalize('HTTPS://EXAMPLE.COM:443/app/'), 'https://example.com/app/');
+  });
+
+  test(`${tree}: URI normalization preserves relative reference targets`, () => {
+    // GHSA-xhq7-xmqj-769h: parent paths, authority-like paths and exposed colons.
+    const uri = requireDependency('fast-uri');
+    for (const [input, expected] of [['../x', '../x'], ['a/../b', 'b'], ['../../x', '../../x'], ['a/..//x', './/x'], ['a/../javascript:alert(1)', './javascript:alert(1)']]) {
+      assert.equal(uri.normalize(input), expected);
+      assert.equal(uri.serialize({ path: input }), expected);
+      assert.equal(uri.parse(expected).scheme, undefined);
+      assert.equal(uri.parse(expected).host, undefined);
+      for (const base of ['https://example.com/docs/current/', 'relative/base']) {
+        assert.equal(uri.resolve(base, expected), uri.resolve(base, input));
+      }
+    }
+    assert.equal(uri.equal('../x', 'x'), false);
+    assert.equal(uri.equal('a/../b', '/b'), false);
+    assert.equal(uri.equal('a/../b', 'b'), true);
+    assert.equal(uri.normalize('https://example.com/a/../b'), 'https://example.com/b');
+  });
+
+  test(`${tree}: URI parsing rejects ambiguous domain hosts`, () => {
+    // GHSA-wjr9-j795-jxcr: neither extra userinfo nor control characters may disappear.
+    const uri = requireDependency('fast-uri');
+    for (const scheme of ['http', 'https', 'ws', 'wss']) {
+      for (const host of ['a@b@evil.example', 'ex\tample.com', 'ex\rample.com', 'ex\nample.com']) {
+        const input = `${scheme}://${host}/`;
+        assert.equal(uri.parse(input).error, 'URI host is malformed.');
+        assert.equal(uri.normalize(input), input);
+        assert.equal(uri.equal(input, `${scheme}://example.com/`), false);
+        assert.throws(() => uri.resolve(input, 'child'), /URI host is malformed/);
+        assert.throws(() => uri.resolve('https://example.com/app/', input), /URI host is malformed/);
+      }
+    }
+    assert.equal(uri.parse('https://user@example.com/app/').error, undefined);
+    assert.equal(uri.parse('https://EXAMPLE.COM/app/').host, 'example.com');
+  });
+
+  test(`${tree}: URI suffix paths cannot become executable schemes`, () => {
+    // GHSA-333x-w4r6-6crp: path-only suffix references, with and without skipEscape.
+    const uri = requireDependency('fast-uri');
+    const options = { reference: 'suffix', scheme: 'x' };
+    for (const input of ['javascript:alert(1)', 'data:text/plain,test', 'vbscript:msgbox(1)']) {
+      const expected = input.replace(':', '%3A');
+      assert.equal(uri.normalize(input, options), expected);
+      assert.equal(uri.serialize({ path: input }, { reference: 'suffix' }), expected);
+      for (const skipEscape of [false, true]) {
+        const serialized = uri.serialize({ path: input }, { reference: 'suffix', skipEscape });
+        assert.equal(uri.parse(serialized).scheme, undefined);
+      }
+      assert.equal(uri.parse(expected).scheme, undefined);
+    }
+    assert.equal(uri.normalize('path/to/file', options), 'path/to/file');
+    assert.equal(uri.normalize('a/b:c', options), 'a/b:c');
+  });
+}
 
 test('IPv6 classifiers cover the complete link-local and local-use NAT64 ranges', () => {
   // GHSA-rpw4-54j3-4h4q and GHSA-2vr4-cq9g-pvrc.

@@ -97,8 +97,8 @@ if (mcpPackage.overrides?.['@hono/node-server'] !== honoVersions[0]) {
 if (!honoFrameworkVersions.length || honoFrameworkVersions.some((version) => !atLeast(version, '4.13.5'))) {
   fail(`Hono doit rester corrigé dans tous les lockfiles, minimum 4.13.5 pour GHSA-gqvv-2mrq-wpjv, GHSA-g6gw-c38x-mqfc et GHSA-crvj-82cr-hjcx (${honoFrameworkVersions.join(', ') || 'absent'})`);
 }
-if (!fastUriVersions.length || fastUriVersions.some((version) => !atLeast(version, '3.1.4'))) {
-  fail(`fast-uri doit rester corrigé dans tous les lockfiles (${fastUriVersions.join(', ') || 'absent'})`);
+if (!fastUriVersions.length || fastUriVersions.some((version) => !atLeast(version, '3.1.9'))) {
+  fail(`fast-uri doit rester corrigé dans tous les lockfiles, minimum 3.1.9 pour les failles de schéma, d’hôte, de chemin relatif et de suffixe (${fastUriVersions.join(', ') || 'absent'})`);
 }
 
 const sourceFiles = await filesUnder(join(ROOT, 'src'), new Set(['.astro', '.js', '.mjs', '.ts']));
