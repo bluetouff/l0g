@@ -2,6 +2,8 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { load } from 'js-yaml';
+import { asiaReadingPaths, selectAsiaAnalyses } from './english-reading-paths.ts';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 
@@ -89,6 +91,39 @@ function frontmatterDate(source, field) {
     ?.trim()
     .replace(/^['"]|['"]$/g, '');
   return value || null;
+}
+
+export function parseSitemapContentEntry(source, directory, content) {
+  const frontmatter = content.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
+  const data = load(frontmatter);
+  const pubDate = new Date(data.pubDate);
+  if (Number.isNaN(pubDate.getTime())) {
+    throw new Error(`date de publication invalide pour ${source}`);
+  }
+  return {
+    id: source.slice(directory.length + 1).replace(/\.mdx?$/, ''),
+    source,
+    data: { ...data, pubDate, tags: data.tags ?? [], draft: data.draft ?? false },
+  };
+}
+
+function contentEntries(sources, directory) {
+  return sources.map((source) => parseSitemapContentEntry(source, directory, readFileSync(join(ROOT, source), 'utf8')));
+}
+
+export function asiaHubContentSources(analyses, englishGuides, now = Date.now()) {
+  const analysisIds = new Set([
+    ...selectAsiaAnalyses(analyses, now).slice(0, 5).map((post) => post.id),
+    // The dollar stages render their own labels from the configuration; only
+    // regional cards and the latest feed render analysis metadata.
+    ...asiaReadingPaths.filter((path) => path.id !== 'insurer-nodes')
+      .flatMap((path) => path.analysisIds),
+  ]);
+  const guideIds = new Set(asiaReadingPaths.flatMap((path) => path.guideIds));
+  return [
+    ...analyses.filter((post) => !post.data.draft && analysisIds.has(post.id)),
+    ...englishGuides.filter((guide) => !guide.data.draft && guideIds.has(guide.id)),
+  ].map((entry) => entry.source);
 }
 
 // Une migration SEO massive doit être déclarée ici, route par route ou par
@@ -179,6 +214,13 @@ export function sitemapLastmod(pageUrl) {
     if (/\/page\//.test(pathname)) paths.add('src/pages/en/analysis/page/[page].astro');
   } else if (pathname === '/en/guides/') {
     guidesEn.forEach((path) => paths.add(path));
+  } else if (pathname === '/en/asia/') {
+    paths.add('src/config/english-reading-paths.ts');
+    paths.add('src/lib/content-order.mjs');
+    asiaHubContentSources(
+      contentEntries(postsEn, 'src/content/posts-en'),
+      contentEntries(guidesEn, 'src/content/guides-en')
+    ).forEach((path) => paths.add(path));
   } else if (pathname === '/sujets/' || pathname.startsWith('/sujet/')) {
     paths.add('src/config/topics.ts');
     posts.forEach((path) => paths.add(path));

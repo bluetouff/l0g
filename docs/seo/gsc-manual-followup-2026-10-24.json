@@ -1,0 +1,2577 @@
+{
+  "schema_version": "1.0.0",
+  "followup_date": "2026-10-24",
+  "written_at": "2026-10-24T19:43:50.994841+00:00",
+  "scope": "User-requested follow-up on four English guides, three English atlases and the Treasury reference in FR/EN, with bounded open-issue remediation.",
+  "source": "Authenticated Google Search Console in the internal browser; independent read-only public HTTP checks.",
+  "crawl_timestamp_timezone": "Not displayed by Search Console; exact labels retained without conversion or inferred same-day release ordering.",
+  "google_search_console": {
+    "inspections": [
+      {
+        "url": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+        "observed_at": null,
+        "observation_date": "2026-10-24",
+        "indexed": true,
+        "index_status": "La page est indexée",
+        "last_crawl_display": "18 oct. 2026, 21:44:35",
+        "crawler": "Googlebot pour smartphone",
+        "fetch": "Réussie",
+        "crawl_allowed": "Oui",
+        "index_allowed": "Oui",
+        "declared_canonical": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+        "google_canonical": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+        "sitemap_display": "https://l0g.fr/sitemap-index.xml",
+        "referring_page": "https://l0g.fr/en/guides/read-dollar-dxy-cross-currency-basis/",
+        "observation_limit": "Exact per-record capture time was not retained for the first two guides."
+      },
+      {
+        "url": "https://l0g.fr/en/guides/read-central-bank-fx-reserves-cofer/",
+        "observed_at": null,
+        "observation_date": "2026-10-24",
+        "indexed": true,
+        "index_status": "La page est indexée",
+        "last_crawl_display": "18 oct. 2026, 21:44:35",
+        "crawler": "Googlebot pour smartphone",
+        "fetch": "Réussie",
+        "crawl_allowed": "Oui",
+        "index_allowed": "Oui",
+        "declared_canonical": "https://l0g.fr/en/guides/read-central-bank-fx-reserves-cofer/",
+        "google_canonical": "https://l0g.fr/en/guides/read-central-bank-fx-reserves-cofer/",
+        "sitemap_display": "Erreur de traitement temporaire",
+        "referring_page": "Aucune page d'origine détectée",
+        "observation_limit": "Exact per-record capture time was not retained for the first two guides."
+      },
+      {
+        "url": "https://l0g.fr/en/guides/read-cpi-inflation-us/",
+        "observed_at": "2026-10-24T19:16:04.303Z",
+        "observation_date": "2026-10-24",
+        "indexed": true,
+        "index_status": "La page est indexée",
+        "last_crawl_display": "18 oct. 2026, 21:46:34",
+        "crawler": "Googlebot pour smartphone",
+        "fetch": "Réussie",
+        "crawl_allowed": "Oui",
+        "index_allowed": "Oui",
+        "declared_canonical": "https://l0g.fr/en/guides/read-cpi-inflation-us/",
+        "google_canonical": "https://l0g.fr/en/guides/read-cpi-inflation-us/",
+        "sitemap_display": "https://l0g.fr/sitemap-index.xml",
+        "referring_page": "https://l0g.fr/en/glossary/",
+        "observation_limit": null
+      },
+      {
+        "url": "https://l0g.fr/en/guides/read-credit-ratings/",
+        "observed_at": "2026-10-24T19:16:08.808Z",
+        "observation_date": "2026-10-24",
+        "indexed": true,
+        "index_status": "La page est indexée",
+        "last_crawl_display": "18 oct. 2026, 21:44:34",
+        "crawler": "Googlebot pour smartphone",
+        "fetch": "Réussie",
+        "crawl_allowed": "Oui",
+        "index_allowed": "Oui",
+        "declared_canonical": "https://l0g.fr/en/guides/read-credit-ratings/",
+        "google_canonical": "https://l0g.fr/en/guides/read-credit-ratings/",
+        "sitemap_display": "https://l0g.fr/sitemap-index.xml",
+        "referring_page": "Aucune page d'origine détectée",
+        "observation_limit": null
+      },
+      {
+        "url": "https://l0g.fr/en/atlas/ai-financing/",
+        "observed_at": "2026-10-24T19:16:45.778Z",
+        "observation_date": "2026-10-24",
+        "indexed": true,
+        "index_status": "La page est indexée",
+        "last_crawl_display": "23 oct. 2026, 13:02:05",
+        "crawler": "Googlebot pour smartphone",
+        "fetch": "Réussie",
+        "crawl_allowed": "Oui",
+        "index_allowed": "Oui",
+        "declared_canonical": "https://l0g.fr/en/atlas/ai-financing/",
+        "google_canonical": "https://l0g.fr/en/atlas/ai-financing/",
+        "sitemap_display": "https://l0g.fr/sitemap-index.xml",
+        "referring_page": "Aucune page d'origine détectée",
+        "observation_limit": null
+      },
+      {
+        "url": "https://l0g.fr/en/atlas/private-credit/",
+        "observed_at": "2026-10-24T19:18:19.213Z",
+        "observation_date": "2026-10-24",
+        "indexed": true,
+        "index_status": "La page est indexée",
+        "last_crawl_display": "23 oct. 2026, 13:00:05",
+        "crawler": "Googlebot pour smartphone",
+        "fetch": "Réussie",
+        "crawl_allowed": "Oui",
+        "index_allowed": "Oui",
+        "declared_canonical": "https://l0g.fr/en/atlas/private-credit/",
+        "google_canonical": "https://l0g.fr/en/atlas/private-credit/",
+        "sitemap_display": "https://l0g.fr/sitemap-index.xml",
+        "referring_page": "Aucune page d'origine détectée",
+        "observation_limit": null
+      },
+      {
+        "url": "https://l0g.fr/en/atlas/oil-financing/",
+        "observed_at": "2026-10-24T19:18:44.284Z",
+        "observation_date": "2026-10-24",
+        "indexed": true,
+        "index_status": "La page est indexée",
+        "last_crawl_display": "23 oct. 2026, 12:58:05",
+        "crawler": "Googlebot pour smartphone",
+        "fetch": "Réussie",
+        "crawl_allowed": "Oui",
+        "index_allowed": "Oui",
+        "declared_canonical": "https://l0g.fr/en/atlas/oil-financing/",
+        "google_canonical": "https://l0g.fr/en/atlas/oil-financing/",
+        "sitemap_display": "https://l0g.fr/sitemap-index.xml",
+        "referring_page": "Aucune page d'origine détectée",
+        "observation_limit": null
+      },
+      {
+        "url": "https://l0g.fr/glossaire/treasury-buyback/",
+        "observed_at": "2026-10-24T19:19:55.320Z",
+        "observation_date": "2026-10-24",
+        "indexed": false,
+        "index_status": "La page n'est pas indexée : Exclue par la balise \"noindex\"",
+        "last_crawl_display": "23 août 2026, 16:52:44",
+        "crawler": "Googlebot pour smartphone",
+        "fetch": "Réussie",
+        "crawl_allowed": "Oui",
+        "index_allowed": "Non : noindex détecté dans la balise Meta robots",
+        "declared_canonical": "https://l0g.fr/glossaire/treasury-buyback/",
+        "google_canonical": "https://l0g.fr/glossaire/treasury-buyback/",
+        "sitemap_display": "Erreur de traitement temporaire",
+        "referring_page": "https://l0g.fr/en/analysis/bessent-yield-threshold-30-year-treasury/",
+        "observation_limit": null
+      },
+      {
+        "url": "https://l0g.fr/en/glossary/treasury-buyback/",
+        "observed_at": "2026-10-24T19:23:37.219Z",
+        "observation_date": "2026-10-24",
+        "indexed": false,
+        "index_status": "La page n'est pas indexée : Détectée, actuellement non indexée",
+        "last_crawl_display": null,
+        "crawler": null,
+        "fetch": null,
+        "crawl_allowed": null,
+        "index_allowed": null,
+        "declared_canonical": null,
+        "google_canonical": null,
+        "sitemap_display": "https://l0g.fr/sitemap-index.xml",
+        "referring_page": "Aucune page d'origine détectée",
+        "observation_limit": null
+      },
+      {
+        "url": "https://l0g.fr/en/analysis/asia-invisible-dollar-hedging-machine/",
+        "observed_at": "2026-10-24T19:26:59.234Z",
+        "observation_date": "2026-10-24",
+        "indexed": true,
+        "index_status": "La page est indexée",
+        "last_crawl_display": "23 oct. 2026, 13:12:06",
+        "crawler": "Googlebot pour smartphone",
+        "fetch": "Réussie",
+        "crawl_allowed": "Oui",
+        "index_allowed": "Oui",
+        "declared_canonical": "https://l0g.fr/en/analysis/asia-invisible-dollar-hedging-machine/",
+        "google_canonical": "https://l0g.fr/en/analysis/asia-invisible-dollar-hedging-machine/",
+        "sitemap_display": "Erreur de traitement temporaire",
+        "referring_page": "https://l0g.fr/posts/asie-usine-invisible-couverture-dollar/",
+        "observation_limit": null
+      }
+    ],
+    "live_tests": [
+      {
+        "url": "https://l0g.fr/glossaire/treasury-buyback/",
+        "observed_at": "2026-10-24T19:22:11.682Z",
+        "test_time_display": "24 oct. 2026, 21:20:20",
+        "google_can_access": true,
+        "eligible": true,
+        "fetch": "Réussie",
+        "crawl_allowed": "Oui",
+        "index_allowed": "Oui",
+        "declared_canonical": "https://l0g.fr/glossaire/treasury-buyback/",
+        "google_canonical": null,
+        "limitation": "Live eligibility is not indexation; Google canonical is determined after indexation."
+      },
+      {
+        "url": "https://l0g.fr/en/glossary/treasury-buyback/",
+        "observed_at": "2026-10-24T19:24:29.346Z",
+        "test_time_display": "24 oct. 2026, 21:23:38",
+        "google_can_access": true,
+        "eligible": true,
+        "fetch": "Réussie",
+        "crawl_allowed": "Oui",
+        "index_allowed": "Oui",
+        "declared_canonical": "https://l0g.fr/en/glossary/treasury-buyback/",
+        "google_canonical": null,
+        "limitation": "Live eligibility is not indexation; Google canonical is determined after indexation."
+      }
+    ],
+    "indexation_requests": [
+      {
+        "url": "https://l0g.fr/glossaire/treasury-buyback/",
+        "observedAt": "2026-10-24T19:22:30.988Z",
+        "accepted": true,
+        "proof": "/tmp/l0g-gsc-treasury-fr-request-2026-10-24.jpg"
+      },
+      {
+        "url": "https://l0g.fr/en/glossary/treasury-buyback/",
+        "observedAt": "2026-10-24T19:26:48.010Z",
+        "accepted": true,
+        "proof": "/tmp/l0g-gsc-treasury-en-request-2026-10-24.jpg"
+      }
+    ],
+    "performance": {
+      "freshly_reread": true,
+      "period": {
+        "start": "2026-09-22",
+        "end": "2026-10-19",
+        "inclusive_days": 28,
+        "complete_calendar_days": true,
+        "role": "Same fixed Tuesday-to-Monday window as 23 October, reread to check consistency. Mostly pre-recrawl; not a new post-change effect estimate.",
+        "latest_default_date_shown": "2026-10-22"
+      },
+      "filters": {
+        "search_type": "Web",
+        "page_match": "exact URL",
+        "country": "United States",
+        "device": "Desktop"
+      },
+      "pages": [
+        {
+          "url": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+          "observed_at": "2026-10-24T19:28:13.629Z",
+          "clicks": 0,
+          "impressions": 190,
+          "ctr_percent_display": 0.0,
+          "average_position": 7.0,
+          "position_display": "7",
+          "visible_query_count": 25,
+          "complete_visible_query_table": true,
+          "queries": [
+            {
+              "query": "h.4.1",
+              "clicks": 0,
+              "impressions": 61
+            },
+            {
+              "query": "federal reserve h.4.1 release september 10 2026 total assets tga reverse repos",
+              "clicks": 0,
+              "impressions": 49
+            },
+            {
+              "query": "fed h.4.1",
+              "clicks": 0,
+              "impressions": 19
+            },
+            {
+              "query": "fed h41",
+              "clicks": 0,
+              "impressions": 14
+            },
+            {
+              "query": "h41",
+              "clicks": 0,
+              "impressions": 9
+            },
+            {
+              "query": "h.4.1 release",
+              "clicks": 0,
+              "impressions": 8
+            },
+            {
+              "query": "h= 4 1 ​ nb",
+              "clicks": 0,
+              "impressions": 6
+            },
+            {
+              "query": "fed h 4.1",
+              "clicks": 0,
+              "impressions": 2
+            },
+            {
+              "query": "h.4.1 fed",
+              "clicks": 0,
+              "impressions": 2
+            },
+            {
+              "query": "fed h4.1",
+              "clicks": 0,
+              "impressions": 2
+            },
+            {
+              "query": "federal reserve h.4.1 october 1 2026 reserve balances treasury general account",
+              "clicks": 0,
+              "impressions": 2
+            },
+            {
+              "query": "fed h4",
+              "clicks": 0,
+              "impressions": 2
+            },
+            {
+              "query": "h/4+1=9",
+              "clicks": 0,
+              "impressions": 2
+            },
+            {
+              "query": "federal reserve h.4.1 release",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "federal reserve h.4.1 release april 2023 borrowing",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "h.4.1 factors affecting reserve balances",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "h.4.1 federal reserve",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "h4.1 fed",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "federal reserve h.4.1 october 15 2026 reserve balances treasury general account",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "h 4.1",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "federal reserve h.4.1 october 1 2026 reserve balances tga reverse repo",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "sure",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "federal reserve h.4.1 april 2023 total borrowings",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "h.4.1 report",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "h4 1",
+              "clicks": 0,
+              "impressions": 1
+            }
+          ],
+          "filters_verified": true,
+          "period_verified": true,
+          "same_fixed_window_as_oct23": {
+            "clicks_unchanged": true,
+            "impressions_unchanged": true,
+            "position_unchanged": true,
+            "visible_row_count_unchanged": true
+          }
+        },
+        {
+          "url": "https://l0g.fr/en/guides/read-central-bank-fx-reserves-cofer/",
+          "observed_at": "2026-10-24T19:28:30.618Z",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr_percent_display": 0.0,
+          "average_position": 8.0,
+          "position_display": "8",
+          "visible_query_count": 1,
+          "complete_visible_query_table": true,
+          "queries": [
+            {
+              "query": "imf cofer us dollar share allocated foreign exchange reserves 2025 q4",
+              "clicks": 0,
+              "impressions": 1
+            }
+          ],
+          "filters_verified": true,
+          "period_verified": true,
+          "same_fixed_window_as_oct23": {
+            "clicks_unchanged": true,
+            "impressions_unchanged": true,
+            "position_unchanged": true,
+            "visible_row_count_unchanged": true
+          }
+        },
+        {
+          "url": "https://l0g.fr/en/guides/read-cpi-inflation-us/",
+          "observed_at": "2026-10-24T19:28:57.458Z",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr_percent_display": 0.0,
+          "average_position": 10.0,
+          "position_display": "10",
+          "visible_query_count": 1,
+          "complete_visible_query_table": true,
+          "queries": [
+            {
+              "query": "bls cpi food inflation june 2026 -site:kalshi.com -site:polymarket.com -site:manifold.markets -site:metaculus.com",
+              "clicks": 0,
+              "impressions": 1
+            }
+          ],
+          "filters_verified": true,
+          "period_verified": true,
+          "same_fixed_window_as_oct23": {
+            "clicks_unchanged": true,
+            "impressions_unchanged": true,
+            "position_unchanged": true,
+            "visible_row_count_unchanged": true
+          }
+        },
+        {
+          "url": "https://l0g.fr/en/guides/read-credit-ratings/",
+          "observed_at": "2026-10-24T19:29:09.957Z",
+          "clicks": 0,
+          "impressions": 6,
+          "ctr_percent_display": 0.0,
+          "average_position": 47.8,
+          "position_display": "47,8",
+          "visible_query_count": 4,
+          "complete_visible_query_table": true,
+          "queries": [
+            {
+              "query": "scale for long term credit ratings",
+              "clicks": 0,
+              "impressions": 2
+            },
+            {
+              "query": "scale for short term credit ratings",
+              "clicks": 0,
+              "impressions": 2
+            },
+            {
+              "query": "credit ratings scale",
+              "clicks": 0,
+              "impressions": 1
+            },
+            {
+              "query": "credit rating interpretation",
+              "clicks": 0,
+              "impressions": 1
+            }
+          ],
+          "filters_verified": true,
+          "period_verified": true,
+          "same_fixed_window_as_oct23": {
+            "clicks_unchanged": true,
+            "impressions_unchanged": true,
+            "position_unchanged": true,
+            "visible_row_count_unchanged": true
+          }
+        },
+        {
+          "url": "https://l0g.fr/en/atlas/ai-financing/",
+          "observed_at": "2026-10-24T19:29:21.383Z",
+          "clicks": 0,
+          "impressions": 0,
+          "ctr_percent_display": 0.0,
+          "average_position": null,
+          "position_display": "0",
+          "visible_query_count": 0,
+          "complete_visible_query_table": true,
+          "queries": [],
+          "filters_verified": true,
+          "period_verified": true,
+          "same_fixed_window_as_oct23": {
+            "clicks_unchanged": true,
+            "impressions_unchanged": true,
+            "position_unchanged": true,
+            "visible_row_count_unchanged": true
+          }
+        },
+        {
+          "url": "https://l0g.fr/en/atlas/private-credit/",
+          "observed_at": "2026-10-24T19:29:44.038Z",
+          "clicks": 0,
+          "impressions": 0,
+          "ctr_percent_display": 0.0,
+          "average_position": null,
+          "position_display": "0",
+          "visible_query_count": 0,
+          "complete_visible_query_table": true,
+          "queries": [],
+          "filters_verified": true,
+          "period_verified": true,
+          "same_fixed_window_as_oct23": {
+            "clicks_unchanged": true,
+            "impressions_unchanged": true,
+            "position_unchanged": true,
+            "visible_row_count_unchanged": true
+          }
+        },
+        {
+          "url": "https://l0g.fr/en/atlas/oil-financing/",
+          "observed_at": "2026-10-24T19:29:59.868Z",
+          "clicks": 0,
+          "impressions": 0,
+          "ctr_percent_display": 0.0,
+          "average_position": null,
+          "position_display": "0",
+          "visible_query_count": 0,
+          "complete_visible_query_table": true,
+          "queries": [],
+          "filters_verified": true,
+          "period_verified": true,
+          "same_fixed_window_as_oct23": {
+            "clicks_unchanged": true,
+            "impressions_unchanged": true,
+            "position_unchanged": true,
+            "visible_row_count_unchanged": true
+          }
+        },
+        {
+          "url": "https://l0g.fr/glossaire/treasury-buyback/",
+          "observed_at": "2026-10-24T19:30:07.308Z",
+          "clicks": 0,
+          "impressions": 0,
+          "ctr_percent_display": 0.0,
+          "average_position": null,
+          "position_display": "0",
+          "visible_query_count": 0,
+          "complete_visible_query_table": true,
+          "queries": [],
+          "filters_verified": true,
+          "period_verified": true,
+          "limitation": "Window predates the 23 October reference publication and says nothing about its public performance."
+        },
+        {
+          "url": "https://l0g.fr/en/glossary/treasury-buyback/",
+          "observed_at": "2026-10-24T19:30:12.449Z",
+          "clicks": 0,
+          "impressions": 0,
+          "ctr_percent_display": 0.0,
+          "average_position": null,
+          "position_display": "0",
+          "visible_query_count": 0,
+          "complete_visible_query_table": true,
+          "queries": [],
+          "filters_verified": true,
+          "period_verified": true,
+          "limitation": "Window predates the 23 October reference publication and says nothing about its public performance."
+        }
+      ],
+      "limitations": [
+        "No country/device/query marginal joins; all filters applied jointly.",
+        "Visible query rows only; no allocation to hidden queries.",
+        "Zero impressions in this segment does not mean zero worldwide.",
+        "Windows overlap previous follow-ups and do not support causal title or content attribution."
+      ]
+    },
+    "reports": {
+      "index_report": {
+        "observed_at": "2026-10-24T19:30:34.980Z",
+        "last_updated": "16/10/2026",
+        "not_indexed": 707,
+        "indexed_display": "1,18 k",
+        "reasons": {
+          "noindex": 401,
+          "alternate_canonical": 40,
+          "not_found404": 19,
+          "redirect": 16,
+          "other4xx": 2,
+          "crawled_not_indexed": 115,
+          "discovered_not_indexed": 112,
+          "forbidden403": 2
+        },
+        "unchanged_since_oct23": true,
+        "limit": "Report predates the new Atlas/Asia crawls and Treasury publication."
+      },
+      "old_forbidden403": {
+        "observed_at": "2026-10-24T19:31:18.469Z",
+        "last_updated": "16/10/2026",
+        "validation": "Commencé",
+        "validation_start": "08/10/2026",
+        "examples": [
+          {
+            "url": "https://l0g.fr/llms-full.txt",
+            "last_crawl_display": "6 juil. 2026"
+          },
+          {
+            "url": "https://l0g.fr/posts/",
+            "last_crawl_display": "25 juin 2026"
+          }
+        ],
+        "action": "Existing validation retained; no repeated validation or security change. Historical cause needs timestamped raw server/WAF logs."
+      },
+      "sitemaps": {
+        "observed_at": "2026-10-24T19:32:11.587Z",
+        "entries": [
+          {
+            "url": "https://l0g.fr/news-sitemap.xml",
+            "status": "Opération effectuée",
+            "last_read": "24 oct. 2026",
+            "discovered_pages": 14
+          },
+          {
+            "url": "https://l0g.fr/sitemap-index.xml",
+            "status": "Opération effectuée",
+            "last_read": "23 oct. 2026",
+            "discovered_pages": 1158
+          }
+        ],
+        "action": "No duplicate sitemap submission. Temporary URL-inspection warnings are not treated as a proven general sitemap failure."
+      }
+    }
+  },
+  "public_checks": {
+    "observed_at": "2026-10-24T19:18:26.529Z",
+    "finished_at": "2026-10-24T19:18:27.576Z",
+    "release_before": {
+      "observed_at": "2026-10-24T19:18:26.561Z",
+      "status": 200,
+      "fields": {
+        "L0G_RELEASE_SCHEMA": "1",
+        "L0G_RELEASE_REPOSITORY": "bluetouff/l0g",
+        "L0G_RELEASE_SOURCE_REF": "refs/heads/main",
+        "L0G_RELEASE_SOURCE_SHA": "f971bab250f08d8aa1cce3612ae27349989afa8d",
+        "L0G_RELEASE_RUN_ID": "40120411957",
+        "L0G_RELEASE_RUN_ATTEMPT": "1"
+      }
+    },
+    "release_after": {
+      "observed_at": "2026-10-24T19:18:27.566Z",
+      "status": 200,
+      "fields": {
+        "L0G_RELEASE_SCHEMA": "1",
+        "L0G_RELEASE_REPOSITORY": "bluetouff/l0g",
+        "L0G_RELEASE_SOURCE_REF": "refs/heads/main",
+        "L0G_RELEASE_SOURCE_SHA": "f971bab250f08d8aa1cce3612ae27349989afa8d",
+        "L0G_RELEASE_RUN_ID": "40120411957",
+        "L0G_RELEASE_RUN_ATTEMPT": "1"
+      }
+    },
+    "release_stable": true,
+    "robots": {
+      "status": 200,
+      "document_sha256": "e09d8b46da2abe058beede16afc6f72008d860a1fc37c1c6994cc14ae2ca0a6e",
+      "groups": [
+        {
+          "agents": [
+            "*"
+          ],
+          "rules": [
+            {
+              "field": "allow",
+              "value": "/"
+            }
+          ]
+        }
+      ]
+    },
+    "sitemaps": [
+      {
+        "url": "https://l0g.fr/sitemap-0.xml",
+        "status": 200,
+        "entries": 1166,
+        "document_sha256": "b237d406bc97172324922bd401d7cb3b810f03e284960ad6f5a2adc1b9324f2e"
+      }
+    ],
+    "summary": {
+      "primary_pages": 9,
+      "counterparts": 7,
+      "hubs": 7,
+      "sitemap_urls_total": 1166,
+      "requests": 28,
+      "confirmed_defects": 0
+    },
+    "metadata_findings": [
+      {
+        "kind": "collection_wide_glossary_lastmod",
+        "observed_urls": [
+          "https://l0g.fr/glossaire/treasury-buyback/",
+          "https://l0g.fr/en/glossary/treasury-buyback/"
+        ],
+        "served_sitemap_lastmod": "2026-10-24T18:22:20.000Z",
+        "reference_updated_iso_in_versioned_source": "2026-10-23",
+        "dedicated_sources": [
+          {
+            "path": "src/config/treasury-buyback-reference.ts",
+            "identical_to_23_release": true,
+            "sha256": "2eee4acf9f4ed5a704a105ca242b276db044b74bb16856ec831a2e7ae0f02f6b"
+          },
+          {
+            "path": "src/components/OperationalGlossaryReference.astro",
+            "identical_to_23_release": true,
+            "sha256": "d73f2082cc60c1dcd875aafedae53258098e94c3bec949a265c2522d148ea216"
+          },
+          {
+            "path": "src/components/TreasuryBuybackMechanism.astro",
+            "identical_to_23_release": true,
+            "sha256": "8b3930238736e7d07e2479748d6d44c910db7464608b37e7081d903886f0198d"
+          },
+          {
+            "path": "src/pages/glossaire/[slug].astro",
+            "identical_to_23_release": true,
+            "sha256": "7b4bc524b01969176353b04e5994bb924c81bdbde3a6cd90d03c576bfd20fff9"
+          },
+          {
+            "path": "src/pages/en/glossary/[slug].astro",
+            "identical_to_23_release": true,
+            "sha256": "cb43c63e7fc1bb0863385353a1094a76e044c5fff959dd2e999d6076d35c0ff6"
+          }
+        ],
+        "entry_checks": [
+          {
+            "path": "src/config/glossary.ts",
+            "treasury_entry_found": true,
+            "treasury_entry_identical": true
+          },
+          {
+            "path": "src/config/glossary-atlas-en.ts",
+            "treasury_entry_found": true,
+            "treasury_entry_identical": true
+          }
+        ],
+        "shared_config_updates": [
+          {
+            "path": "src/config/glossary.ts",
+            "last_commit": "f971bab250f08d8aa1cce3612ae27349989afa8d",
+            "commit_date": "2026-10-24T20:22:20+02:00",
+            "subject": "Publish sourced GM and VAC rare-earth magnet investigation in French and English"
+          },
+          {
+            "path": "src/config/glossary-atlas-en.ts",
+            "last_commit": "f971bab250f08d8aa1cce3612ae27349989afa8d",
+            "commit_date": "2026-10-24T20:22:20+02:00",
+            "subject": "Publish sourced GM and VAC rare-earth magnet investigation in French and English"
+          }
+        ],
+        "policy_source": "src/config/sitemap-lastmod.mjs",
+        "policy_fact": "Each individual FR/EN glossary URL derives lastmod from the latest commit of the two entire glossary config files and its shared route template. The dedicated reference source is not included.",
+        "interpretation": "The 24 October date is explained by unrelated glossary updates in the GM/VAC publication; it is not evidence of a new review of the Treasury reference. Technical accessibility checks still pass.",
+        "potential_followup": "Consider term-specific reference dates and dependencies for admitted reference pages, retaining collection-wide dates for indexes and explicitly covering substantive metadata or source-link changes.",
+        "blocking_for_current_http_cohort": false,
+        "google_effect_established": false
+      }
+    ],
+    "pages": [
+      {
+        "url": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/",
+        "observed_at": "2026-10-24T19:18:26.831Z",
+        "status": 200,
+        "x_robots_tag": null,
+        "lang": "en",
+        "canonical": [
+          "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/"
+        ],
+        "robots_meta": [
+          {
+            "name": "robots",
+            "content": "index,follow,max-image-preview:large"
+          }
+        ],
+        "hreflang": [
+          {
+            "lang": "en",
+            "href": "https://l0g.fr/en/guides/read-h41-fed-balance-sheet/"
+          },
+          {
+            "lang": "fr",
+            "href": "https://l0g.fr/guides/lire-h41-bilan-fed/"
+          },
+          {
+            "lang": "x-default",
+            "href": "https://l0g.fr/guides/lire-h41-bilan-fed/"
+          }
+        ],
+        "robots_googlebot": {
+          "allowed": true,
+          "matched_rule": {
+            "field": "allow",
+            "value": "/"
+          }
+        },
+        "sitemap_entries": [
+          {
+            "sitemap": "https://l0g.fr/sitemap-0.xml",
+            "lastmod": "2026-10-08T18:00:00.000Z"
+          }
+        ],
+        "reciprocal_hreflang": true,
+        "expected_hubs": [
+          {
+            "url": "https://l0g.fr/en/guides/",
+            "status": 200,
+            "contains_link": true
+          },
+          {
+            "url": "https://l0g.fr/en/start/",
+            "status": 200,
+            "contains_link": true
+          }
+        ],
+        "expected_reading_links": [],
+        "atlas_entry_visible_in_ssr": null,
+        "treasury_mechanism_in_ssr": false,
+        "errors": []
+      },
+      {
+        "url": "https://l0g.fr/en/guides/read-central-bank-fx-reserves-cofer/",
+        "observed_at": "2026-10-24T19:18:26.831Z",
+        "status": 200,
+        "x_robots_tag": null,
+        "lang": "en",
+        "canonical": [
+          "https://l0g.fr/en/guides/read-central-bank-fx-reserves-cofer/"
+        ],
+        "robots_meta": [
+          {
+            "name": "robots",
+            "content": "index,follow,max-image-preview:large"
+          }
+        ],
+        "hreflang": [
+          {
+            "lang": "en",
+            "href": "https://l0g.fr/en/guides/read-central-bank-fx-reserves-cofer/"
+          },
+          {
+            "lang": "fr",
+            "href": "https://l0g.fr/guides/lire-les-reserves-de-change-cofer/"
+          },
+          {
+            "lang": "x-default",
+            "href": "https://l0g.fr/guides/lire-les-reserves-de-change-cofer/"
+          }
+        ],
+        "robots_googlebot": {
+          "allowed": true,
+          "matched_rule": {
+            "field": "allow",
+            "value": "/"
+          }
+        },
+        "sitemap_entries": [
+          {
+            "sitemap": "https://l0g.fr/sitemap-0.xml",
+            "lastmod": "2026-10-08T18:00:00.000Z"
+          }
+        ],
+        "reciprocal_hreflang": true,
+        "expected_hubs": [
+          {
+            "url": "https://l0g.fr/en/guides/",
+            "status": 200,
+            "contains_link": true
+          }
+        ],
+        "expected_reading_links": [],
+        "atlas_entry_visible_in_ssr": null,
+        "treasury_mechanism_in_ssr": false,
+        "errors": []
+      },
+      {
+        "url": "https://l0g.fr/en/guides/read-cpi-inflation-us/",
+        "observed_at": "2026-10-24T19:18:26.832Z",
+        "status": 200,
+        "x_robots_tag": null,
+        "lang": "en",
+        "canonical": [
+          "https://l0g.fr/en/guides/read-cpi-inflation-us/"
+        ],
+        "robots_meta": [
+          {
+            "name": "robots",
+            "content": "index,follow,max-image-preview:large"
+          }
+        ],
+        "hreflang": [
+          {
+            "lang": "en",
+            "href": "https://l0g.fr/en/guides/read-cpi-inflation-us/"
+          },
+          {
+            "lang": "fr",
+            "href": "https://l0g.fr/guides/lire-le-cpi-inflation-us/"
+          },
+          {
+            "lang": "x-default",
+            "href": "https://l0g.fr/guides/lire-le-cpi-inflation-us/"
+          }
+        ],
+        "robots_googlebot": {
+          "allowed": true,
+          "matched_rule": {
+            "field": "allow",
+            "value": "/"
+          }
+        },
+        "sitemap_entries": [
+          {
+            "sitemap": "https://l0g.fr/sitemap-0.xml",
+            "lastmod": "2026-10-08T18:00:00.000Z"
+          }
+        ],
+        "reciprocal_hreflang": true,
+        "expected_hubs": [
+          {
+            "url": "https://l0g.fr/en/guides/",
+            "status": 200,
+            "contains_link": true
+          }
+        ],
+        "expected_reading_links": [],
+        "atlas_entry_visible_in_ssr": null,
+        "treasury_mechanism_in_ssr": false,
+        "errors": []
+      },
+      {
+        "url": "https://l0g.fr/en/guides/read-credit-ratings/",
+        "observed_at": "2026-10-24T19:18:26.884Z",
+        "status": 200,
+        "x_robots_tag": null,
+        "lang": "en",
+        "canonical": [
+          "https://l0g.fr/en/guides/read-credit-ratings/"
+        ],
+        "robots_meta": [
+          {
+            "name": "robots",
+            "content": "index,follow,max-image-preview:large"
+          }
+        ],
+        "hreflang": [
+          {
+            "lang": "en",
+            "href": "https://l0g.fr/en/guides/read-credit-ratings/"
+          },
+          {
+            "lang": "fr",
+            "href": "https://l0g.fr/guides/lire-une-notation-de-credit/"
+          },
+          {
+            "lang": "x-default",
+            "href": "https://l0g.fr/guides/lire-une-notation-de-credit/"
+          }
+        ],
+        "robots_googlebot": {
+          "allowed": true,
+          "matched_rule": {
+            "field": "allow",
+            "value": "/"
+          }
+        },
+        "sitemap_entries": [
+          {
+            "sitemap": "https://l0g.fr/sitemap-0.xml",
+            "lastmod": "2026-10-08T18:00:00.000Z"
+          }
+        ],
+        "reciprocal_hreflang": true,
+        "expected_hubs": [
+          {
+            "url": "https://l0g.fr/en/guides/",
+            "status": 200,
+            "contains_link": true
+          }
+        ],
+        "expected_reading_links": [],
+        "atlas_entry_visible_in_ssr": null,
+        "treasury_mechanism_in_ssr": false,
+        "errors": []
+      },
+      {
+        "url": "https://l0g.fr/en/atlas/ai-financing/",
+        "observed_at": "2026-10-24T19:18:26.902Z",
+        "status": 200,
+        "x_robots_tag": null,
+        "lang": "en",
+        "canonical": [
+          "https://l0g.fr/en/atlas/ai-financing/"
+        ],
+        "robots_meta": [
+          {
+            "name": "robots",
+            "content": "index,follow,max-image-preview:large"
+          }
+        ],
+        "hreflang": [
+          {
+            "lang": "fr",
+            "href": "https://l0g.fr/atlas/financement-ia/"
+          },
+          {
+            "lang": "en",
+            "href": "https://l0g.fr/en/atlas/ai-financing/"
+          },
+          {
+            "lang": "x-default",
+            "href": "https://l0g.fr/atlas/financement-ia/"
+          }
+        ],
+        "robots_googlebot": {
+          "allowed": true,
+          "matched_rule": {
+            "field": "allow",
+            "value": "/"
+          }
+        },
+        "sitemap_entries": [
+          {
+            "sitemap": "https://l0g.fr/sitemap-0.xml",
+            "lastmod": "2026-10-23T14:49:08.000Z"
+          }
+        ],
+        "reciprocal_hreflang": true,
+        "expected_hubs": [
+          {
+            "url": "https://l0g.fr/en/atlas/",
+            "status": 200,
+            "contains_link": true
+          },
+          {
+            "url": "https://l0g.fr/en/start/",
+            "status": 200,
+            "contains_link": true
+          },
+          {
+            "url": "https://l0g.fr/en/topics/ai-financing/",
+            "status": 200,
+            "contains_link": true
+          }
+        ],
+        "expected_reading_links": [
+          {
+            "url": "https://l0g.fr/en/guides/read-corporate-debt/",
+            "present": true
+          },
+          {
+            "url": "https://l0g.fr/en/guides/from-earnings-to-cash-working-capital-investment/",
+            "present": true
+          },
+          {
+            "url": "https://l0g.fr/en/guides/read-credit-ratings/",
+            "present": true
+          },
+          {
+            "url": "https://l0g.fr/en/guides/how-to-read-10-k-sec/",
+            "present": true
+          },
+          {
+            "url": "https://l0g.fr/en/topics/ai-financing/",
+            "present": true
+          }
+        ],
+        "atlas_entry_visible_in_ssr": true,
+        "treasury_mechanism_in_ssr": false,
+        "errors": []
+      },
+      {
+        "url": "https://l0g.fr/en/atlas/private-credit/",
+        "observed_at": "2026-10-24T19:18:26.917Z",
+        "status": 200,
+        "x_robots_tag": null,
+        "lang": "en",
+        "canonical": [
+          "https://l0g.fr/en/atlas/private-credit/"
+        ],
+        "robots_meta": [
+          {
+            "name": "robots",
+            "content": "index,follow,max-image-preview:large"
+          }
+        ],
+        "hreflang": [
+          {
+            "lang": "fr",
+            "href": "https://l0g.fr/atlas/credit-prive/"
+          },
+          {
+            "lang": "en",
+            "href": "https://l0g.fr/en/atlas/private-credit/"
+          },
+          {
+            "lang": "x-default",
+            "href": "https://l0g.fr/atlas/credit-prive/"
+          }
+        ],
+        "robots_googlebot": {
+          "allowed": true,
+          "matched_rule": {
+            "field": "allow",
+            "value": "/"
+          }
+        },
+        "sitemap_entries": [
+          {
+            "sitemap": "https://l0g.fr/sitemap-0.xml",
+            "lastmod": "2026-10-23T14:49:08.000Z"
+          }
+        ],
+        "reciprocal_hreflang": true,
+        "expected_hubs": [
+          {
+            "url": "https://l0g.fr/en/atlas/",
+            "status": 200,
+            "contains_link": true
+          },
+          {
+            "url": "https://l0g.fr/en/start/",
+            "status": 200,
+            "contains_link": true
+          },
+          {
+            "url": "https://l0g.fr/en/topics/private-credit-insurance/",
+            "status": 200,
+            "contains_link": true
+          }
+        ],
+        "expected_reading_links": [
+          {
+            "url": "https://l0g.fr/en/guides/read-private-credit-risk/",
+            "present": true
+          },
+          {
+            "url": "https://l0g.fr/en/guides/read-clos-and-leveraged-loans/",
+            "present": true
+          },
+          {
+            "url": "https://l0g.fr/en/guides/read-life-insurer-health/",
+            "present": true
+          },
+          {
+            "url": "https://l0g.fr/en/topics/private-credit-insurance/",
+            "present": true
+          }
+        ],
+        "atlas_entry_visible_in_ssr": true,
+        "treasury_mechanism_in_ssr": false,
+        "errors": []
+      },
+      {
+        "url": "https://l0g.fr/en/atlas/oil-financing/",
+        "observed_at": "2026-10-24T19:18:26.933Z",
+        "status": 200,
+        "x_robots_tag": null,
+        "lang": "en",
+        "canonical": [
+          "https://l0g.fr/en/atlas/oil-financing/"
+        ],
+        "robots_meta": [
+          {
+            "name": "robots",
+            "content": "index,follow,max-image-preview:large"
+          }
+        ],
+        "hreflang": [
+          {
+            "lang": "fr",
+            "href": "https://l0g.fr/atlas/petrole/"
+          },
+          {
+            "lang": "en",
+            "href": "https://l0g.fr/en/atlas/oil-financing/"
+          },
+          {
+            "lang": "x-default",
+            "href": "https://l0g.fr/atlas/petrole/"
+          }
+        ],
+        "robots_googlebot": {
+          "allowed": true,
+          "matched_rule": {
+            "field": "allow",
+            "value": "/"
+          }
+        },
+        "sitemap_entries": [
+          {
+            "sitemap": "https://l0g.fr/sitemap-0.xml",
+            "lastmod": "2026-10-23T14:49:08.000Z"
+          }
+        ],
+        "reciprocal_hreflang": true,
+        "expected_hubs": [
+          {
+            "url": "https://l0g.fr/en/atlas/",
+            "status": 200,
+            "contains_link": true
+          },
+          {
+            "url": "https://l0g.fr/en/start/",
+            "status": 200,
+            "contains_link": true
+          }
+        ],
+        "expected_reading_links": [
+          {
+            "url": "https://l0g.fr/en/guides/read-oil-market/",
+            "present": true
+          },
+          {
+            "url": "https://l0g.fr/en/guides/understand-margin-calls-and-collateral/",
+            "present": true
+          }
+        ],
+        "atlas_entry_visible_in_ssr": true,
+        "treasury_mechanism_in_ssr": false,
+        "errors": []
+      },
+      {
+        "url": "https://l0g.fr/glossaire/treasury-buyback/",
+        "observed_at": "2026-10-24T19:18:26.977Z",
+        "status": 200,
+        "x_robots_tag": null,
+        "lang": "fr",
+        "canonical": [
+          "https://l0g.fr/glossaire/treasury-buyback/"
+        ],
+        "robots_meta": [
+          {
+            "name": "robots",
+            "content": "index,follow,max-image-preview:large"
+          }
+        ],
+        "hreflang": [
+          {
+            "lang": "fr",
+            "href": "https://l0g.fr/glossaire/treasury-buyback/"
+          },
+          {
+            "lang": "en",
+            "href": "https://l0g.fr/en/glossary/treasury-buyback/"
+          },
+          {
+            "lang": "x-default",
+            "href": "https://l0g.fr/glossaire/treasury-buyback/"
+          }
+        ],
+        "robots_googlebot": {
+          "allowed": true,
+          "matched_rule": {
+            "field": "allow",
+            "value": "/"
+          }
+        },
+        "sitemap_entries": [
+          {
+            "sitemap": "https://l0g.fr/sitemap-0.xml",
+            "lastmod": "2026-10-24T18:22:20.000Z"
+          }
+        ],
+        "reciprocal_hreflang": true,
+        "expected_hubs": [
+          {
+            "url": "https://l0g.fr/glossaire/",
+            "status": 200,
+            "contains_link": true
+          }
+        ],
+        "expected_reading_links": [],
+        "atlas_entry_visible_in_ssr": null,
+        "treasury_mechanism_in_ssr": true,
+        "errors": []
+      },
+      {
+        "url": "https://l0g.fr/en/glossary/treasury-buyback/",
+        "observed_at": "2026-10-24T19:18:27.050Z",
+        "status": 200,
+        "x_robots_tag": null,
+        "lang": "en",
+        "canonical": [
+          "https://l0g.fr/en/glossary/treasury-buyback/"
+        ],
+        "robots_meta": [
+          {
+            "name": "robots",
+            "content": "index,follow,max-image-preview:large"
+          }
+        ],
+        "hreflang": [
+          {
+            "lang": "en",
+            "href": "https://l0g.fr/en/glossary/treasury-buyback/"
+          },
+          {
+            "lang": "fr",
+            "href": "https://l0g.fr/glossaire/treasury-buyback/"
+          },
+          {
+            "lang": "x-default",
+            "href": "https://l0g.fr/glossaire/treasury-buyback/"
+          }
+        ],
+        "robots_googlebot": {
+          "allowed": true,
+          "matched_rule": {
+            "field": "allow",
+            "value": "/"
+          }
+        },
+        "sitemap_entries": [
+          {
+            "sitemap": "https://l0g.fr/sitemap-0.xml",
+            "lastmod": "2026-10-24T18:22:20.000Z"
+          }
+        ],
+        "reciprocal_hreflang": true,
+        "expected_hubs": [
+          {
+            "url": "https://l0g.fr/en/glossary/",
+            "status": 200,
+            "contains_link": true
+          }
+        ],
+        "expected_reading_links": [],
+        "atlas_entry_visible_in_ssr": null,
+        "treasury_mechanism_in_ssr": true,
+        "errors": []
+      }
+    ],
+    "old_forbidden403_followup": {
+      "observed_at": "2026-10-24T19:33:10.461Z",
+      "user_agent": "Mozilla/5.0 Chrome/151.0.0.0 HeadlessChrome/151.0.0.0 Lighthouse/13.5.0 l0g-release-verifier/1",
+      "concurrency": 2,
+      "method": "Bounded read-only public HTTPS GET; no browser, raw logs or historical-cause inference",
+      "release_before": {
+        "observed_at": "2026-10-24T19:33:10.535Z",
+        "url": "https://l0g.fr/source.env",
+        "status": 200,
+        "headers": {
+          "content-type": null,
+          "content-length": "218",
+          "date": "Sat, 24 Oct 2026 19:33:10 GMT",
+          "etag": "\"da-65e9a2d678f00\"",
+          "last-modified": "Sat, 24 Oct 2026 18:22:20 GMT",
+          "location": null,
+          "x-robots-tag": null
+        },
+        "fields": {
+          "L0G_RELEASE_SCHEMA": "1",
+          "L0G_RELEASE_REPOSITORY": "bluetouff/l0g",
+          "L0G_RELEASE_SOURCE_REF": "refs/heads/main",
+          "L0G_RELEASE_SOURCE_SHA": "f971bab250f08d8aa1cce3612ae27349989afa8d",
+          "L0G_RELEASE_RUN_ID": "40120411957",
+          "L0G_RELEASE_RUN_ATTEMPT": "1"
+        },
+        "unexpected_field_names": [],
+        "body_complete": true
+      },
+      "release_after": {
+        "observed_at": "2026-10-24T19:33:10.649Z",
+        "url": "https://l0g.fr/source.env",
+        "status": 200,
+        "headers": {
+          "content-type": null,
+          "content-length": "218",
+          "date": "Sat, 24 Oct 2026 19:33:10 GMT",
+          "etag": "\"da-65e9a2d678f00\"",
+          "last-modified": "Sat, 24 Oct 2026 18:22:20 GMT",
+          "location": null,
+          "x-robots-tag": null
+        },
+        "fields": {
+          "L0G_RELEASE_SCHEMA": "1",
+          "L0G_RELEASE_REPOSITORY": "bluetouff/l0g",
+          "L0G_RELEASE_SOURCE_REF": "refs/heads/main",
+          "L0G_RELEASE_SOURCE_SHA": "f971bab250f08d8aa1cce3612ae27349989afa8d",
+          "L0G_RELEASE_RUN_ID": "40120411957",
+          "L0G_RELEASE_RUN_ATTEMPT": "1"
+        },
+        "unexpected_field_names": [],
+        "body_complete": true
+      },
+      "observations": [
+        {
+          "initial_url": "https://l0g.fr/posts/",
+          "observed_at": "2026-10-24T19:33:10.536Z",
+          "redirects": [
+            {
+              "url": "https://l0g.fr/posts/",
+              "status": 301,
+              "location": "https://l0g.fr/",
+              "destination": "https://l0g.fr/"
+            }
+          ],
+          "final_url": "https://l0g.fr/",
+          "initial_status": 301,
+          "final_status": 200,
+          "headers": {
+            "content-type": "text/html",
+            "content-length": "30004",
+            "date": "Sat, 24 Oct 2026 19:33:10 GMT",
+            "etag": "\"2fc86-65e9a2d678f00-br\"",
+            "last-modified": "Sat, 24 Oct 2026 18:22:20 GMT",
+            "location": null,
+            "x-robots-tag": null
+          },
+          "inspected_prefix_bytes": 195718,
+          "received_body_bytes": 195718,
+          "body_complete": true,
+          "canonical": [
+            "https://l0g.fr/"
+          ],
+          "html_head_complete_in_prefix": true
+        },
+        {
+          "initial_url": "https://l0g.fr/llms-full.txt",
+          "observed_at": "2026-10-24T19:33:10.536Z",
+          "redirects": [],
+          "final_url": "https://l0g.fr/llms-full.txt",
+          "initial_status": 200,
+          "final_status": 200,
+          "headers": {
+            "content-type": "text/plain",
+            "content-length": null,
+            "date": "Sat, 24 Oct 2026 19:33:10 GMT",
+            "etag": "\"8970ce-65e9a2d678f00-br\"",
+            "last-modified": "Sat, 24 Oct 2026 18:22:20 GMT",
+            "location": null,
+            "x-robots-tag": null
+          },
+          "inspected_prefix_bytes": 2048,
+          "received_body_bytes": 16384,
+          "body_complete": false,
+          "canonical": null,
+          "html_head_complete_in_prefix": null
+        }
+      ],
+      "limitations": [
+        "The report dated 16 October in GSC describes an earlier state. Current responses cannot establish the cause of the historical 403.",
+        "Only response headers and a bounded body prefix are inspected for the two targets. A large text body is not downloaded or validated in full.",
+        "No Googlebot impersonation, WAF testing, SSH or configuration changes."
+      ],
+      "release_stable": true,
+      "finished_at": "2026-10-24T19:33:10.649Z"
+    }
+  },
+  "measurement_accounting": {
+    "schema_version": "1.0.0",
+    "followup_date": "2026-10-24",
+    "checked_at": "2026-10-24T19:15:59.026932Z",
+    "sources": {
+      "html": {
+        "url": "https://l0g.fr/api/v1/human-traffic.json",
+        "checked_at": "2026-10-24T19:14:15.149Z",
+        "status": 200,
+        "server_date": "Sat, 24 Oct 2026 19:14:15 GMT",
+        "content_type": "application/json",
+        "sha256": "48eb6333b645a780453cbe0555884b6d9253205ae428b7f17e9e319247561bbc",
+        "bytes": 62737,
+        "user_agent": "l0g-release-verifier/1 Lighthouse/13.5.0"
+      },
+      "mcp": {
+        "url": "https://l0g.fr/api/mcp/usage",
+        "checked_at": "2026-10-24T19:14:15.207Z",
+        "status": 200,
+        "server_date": "Sat, 24 Oct 2026 19:14:15 GMT",
+        "content_type": "application/json; charset=utf-8",
+        "sha256": "66b5348bebe59038f3e48caa55fd2a830e113d264055f01be3b0b762bfc8f09e",
+        "bytes": 106478,
+        "user_agent": "l0g-release-verifier/1 Lighthouse/13.5.0"
+      }
+    },
+    "baseline_sources": {
+      "previous": {
+        "path": "/Users/bluetouff/Desktop/DEV/l0g/docs/seo/audience-followup-2026-10-23.json",
+        "sha256": "2766c2b4daab8ec8a4e0180a3d9eef225758439c6c4f1e00ed2a03d656a70b48"
+      },
+      "oct8": {
+        "path": "/Users/bluetouff/Desktop/DEV/l0g/docs/seo/audience-baseline-2026-10-08.json",
+        "sha256": "af30291d9ec952cb7acb52b67becb8b595d8f2cd4eb4b06023296a15acb5a3a5"
+      }
+    },
+    "accounting": {
+      "filtered_html": {
+        "unit": "GET HTTP 200 HTML après filtrage, sans preuve de personne humaine ni déduplication.",
+        "generated_at": "2026-10-24T00:17:25.583Z",
+        "schema_version": "1.1.0",
+        "filter_version": "html-ua-filter-2",
+        "same_filter_label_as_oct23": true,
+        "coverage": {
+          "first_published_day": "2026-10-10",
+          "last_published_day": "2026-10-24",
+          "published_days": 15,
+          "last_day_partial": true
+        },
+        "retention_days_cap": 91,
+        "minimum_public_cohort": 5,
+        "coverage_rule": "Recalcul à partir des journaux encore disponibles. retention_days est un plafond de sélection, pas un historique garanti ; les agrégats antérieurs ne sont pas cumulés.",
+        "day_timezone": "Dates civiles textuelles des journaux Apache ; décalage non publié, aucune conversion UTC supposée.",
+        "totals": {
+          "html_gets": 38868,
+          "days_published": 15
+        },
+        "daily": [
+          {
+            "date": "2026-10-10",
+            "html_gets": 2519
+          },
+          {
+            "date": "2026-10-11",
+            "html_gets": 2771
+          },
+          {
+            "date": "2026-10-12",
+            "html_gets": 2430
+          },
+          {
+            "date": "2026-10-13",
+            "html_gets": 3077
+          },
+          {
+            "date": "2026-10-14",
+            "html_gets": 3038
+          },
+          {
+            "date": "2026-10-15",
+            "html_gets": 2535
+          },
+          {
+            "date": "2026-10-16",
+            "html_gets": 2577
+          },
+          {
+            "date": "2026-10-17",
+            "html_gets": 2252
+          },
+          {
+            "date": "2026-10-18",
+            "html_gets": 2461
+          },
+          {
+            "date": "2026-10-19",
+            "html_gets": 3075
+          },
+          {
+            "date": "2026-10-20",
+            "html_gets": 3613
+          },
+          {
+            "date": "2026-10-21",
+            "html_gets": 2764
+          },
+          {
+            "date": "2026-10-22",
+            "html_gets": 2598
+          },
+          {
+            "date": "2026-10-23",
+            "html_gets": 2726
+          },
+          {
+            "date": "2026-10-24",
+            "html_gets": 432
+          }
+        ],
+        "first_day_may_be_partial": true,
+        "last_day_partial": {
+          "date": "2026-10-24",
+          "html_gets": 432
+        },
+        "previous_snapshot_changes": [
+          {
+            "date": "2026-10-10",
+            "previous": 2529,
+            "current": 2519,
+            "net_change": -10
+          },
+          {
+            "date": "2026-10-23",
+            "previous": 225,
+            "current": 2726,
+            "net_change": 2501
+          }
+        ],
+        "shared_interior_days_checked": {
+          "from": "2026-10-11",
+          "through": "2026-10-22",
+          "days": 12,
+          "unchanged": true
+        },
+        "net_total_change_since_previous": -454,
+        "net_change_decomposition": {
+          "expired_oct9": -3377,
+          "recomputed_oct10": -10,
+          "oct23_partial_to_elapsed": 2501,
+          "new_partial_oct24": 432
+        },
+        "net_change_interpretation": "Variation nette de deux fenêtres retenues ; expiration, recalcul du bord et complétion du dernier jour, pas croissance du lectorat.",
+        "oct8_comparison": {
+          "filter_version": null,
+          "direct_growth_comparison_valid": false,
+          "reason": "Filtre non exposé au relevé du 8 octobre et fenêtres retenues distinctes."
+        },
+        "fixed_weeks_from_oct23": {
+          "before": {
+            "from": "2026-10-09",
+            "through": "2026-10-15",
+            "html_gets": 19938,
+            "source": "Snapshot archivé du 16 octobre utilisé au relevé du 23 ; le 9 ne figure plus dans le snapshot courant."
+          },
+          "after": {
+            "from": "2026-10-16",
+            "through": "2026-10-22",
+            "html_gets": 19340,
+            "unchanged_from_oct23": true
+          },
+          "new_independent_window_available": false,
+          "interpretation": "Aucune nouvelle paire de semaines indépendante depuis hier ; ne pas présenter le décalage d’un jour comme une preuve d’effet SEO."
+        }
+      },
+      "functional_mcp": {
+        "unit": "Appels fonctionnels des outils MCP, distincts des POST, personnes et installations.",
+        "schema_version": "2.0.0",
+        "updated_at": "2026-10-24T19:14:00.678Z",
+        "enabled": true,
+        "storage_healthy": true,
+        "retention_days_cap": 91,
+        "minimum_public_cohort": 5,
+        "coverage": {
+          "first_published_day": "2026-07-26",
+          "last_published_day": "2026-10-24",
+          "published_days": 91,
+          "last_day_partial": true
+        },
+        "totals": {
+          "count": 23881,
+          "successes": 21557,
+          "errors": 500,
+          "outcome_unavailable": 1824
+        },
+        "net_change_since_previous": {
+          "count": 281,
+          "successes": 292,
+          "errors": 13,
+          "outcome_unavailable": -24
+        },
+        "snapshot_interval": {
+          "from": "2026-10-23T09:02:56.828Z",
+          "through": "2026-10-24T19:14:00.678Z",
+          "interpretation": "Écart net de snapshots glissants, avec expiration du 25 juillet ; pas un décompte exact de nouveaux appels."
+        },
+        "tools": [
+          {
+            "name": "get_risk_state",
+            "count": 21863,
+            "successes": 20099,
+            "errors": 11,
+            "outcome_unavailable": 1753,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 11
+          },
+          {
+            "name": "unknown",
+            "count": 369,
+            "successes": 0,
+            "errors": 354,
+            "outcome_unavailable": 15,
+            "error_reasons": [
+              {
+                "reason": "tool_unavailable",
+                "count": 58
+              }
+            ],
+            "errors_without_detailed_reason": 296
+          },
+          {
+            "name": "get_evidence",
+            "count": 329,
+            "successes": 327,
+            "errors": 2,
+            "outcome_unavailable": 0,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 2
+          },
+          {
+            "name": "build_research_pack",
+            "count": 269,
+            "successes": 220,
+            "errors": 46,
+            "outcome_unavailable": 3,
+            "error_reasons": [
+              {
+                "reason": "invalid_arguments",
+                "count": 14
+              }
+            ],
+            "errors_without_detailed_reason": 32
+          },
+          {
+            "name": "search_l0g",
+            "count": 246,
+            "successes": 223,
+            "errors": 23,
+            "outcome_unavailable": 0,
+            "error_reasons": [
+              {
+                "reason": "invalid_arguments",
+                "count": 14
+              }
+            ],
+            "errors_without_detailed_reason": 9
+          },
+          {
+            "name": "discover_l0g",
+            "count": 221,
+            "successes": 221,
+            "errors": 0,
+            "outcome_unavailable": 0,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_document",
+            "count": 123,
+            "successes": 79,
+            "errors": 44,
+            "outcome_unavailable": 0,
+            "error_reasons": [
+              {
+                "reason": "invalid_arguments",
+                "count": 14
+              }
+            ],
+            "errors_without_detailed_reason": 30
+          },
+          {
+            "name": "search_content",
+            "count": 104,
+            "successes": 98,
+            "errors": 0,
+            "outcome_unavailable": 6,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_risk_indices",
+            "count": 46,
+            "successes": 39,
+            "errors": 0,
+            "outcome_unavailable": 7,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_agent_manifest",
+            "count": 43,
+            "successes": 35,
+            "errors": 2,
+            "outcome_unavailable": 6,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 2
+          },
+          {
+            "name": "get_claims",
+            "count": 40,
+            "successes": 36,
+            "errors": 0,
+            "outcome_unavailable": 4,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_signal_history",
+            "count": 28,
+            "successes": 27,
+            "errors": 0,
+            "outcome_unavailable": 1,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_black_box",
+            "count": 24,
+            "successes": 21,
+            "errors": 2,
+            "outcome_unavailable": 1,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 2
+          },
+          {
+            "name": "get_freshness",
+            "count": 24,
+            "successes": 18,
+            "errors": 0,
+            "outcome_unavailable": 6,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_risk_diff",
+            "count": 22,
+            "successes": 16,
+            "errors": 0,
+            "outcome_unavailable": 6,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_article",
+            "count": 21,
+            "successes": 15,
+            "errors": 4,
+            "outcome_unavailable": 2,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 4
+          },
+          {
+            "name": "get_integrity",
+            "count": 16,
+            "successes": 15,
+            "errors": 0,
+            "outcome_unavailable": 1,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "list_recent_analyses",
+            "count": 13,
+            "successes": 9,
+            "errors": 0,
+            "outcome_unavailable": 4,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_changefeed",
+            "count": 11,
+            "successes": 10,
+            "errors": 0,
+            "outcome_unavailable": 1,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_openapi_schema",
+            "count": 11,
+            "successes": 3,
+            "errors": 7,
+            "outcome_unavailable": 1,
+            "error_reasons": [
+              {
+                "reason": "tool_error",
+                "count": 7
+              }
+            ],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_evidence_graph",
+            "count": 10,
+            "successes": 9,
+            "errors": 0,
+            "outcome_unavailable": 1,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "list_guides",
+            "count": 10,
+            "successes": 9,
+            "errors": 0,
+            "outcome_unavailable": 1,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_changes",
+            "count": 8,
+            "successes": 7,
+            "errors": 0,
+            "outcome_unavailable": 1,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "list_sources",
+            "count": 8,
+            "successes": 7,
+            "errors": 0,
+            "outcome_unavailable": 1,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "verify_artifact",
+            "count": 8,
+            "successes": 7,
+            "errors": 0,
+            "outcome_unavailable": 1,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "get_ndjson_feed",
+            "count": 7,
+            "successes": 6,
+            "errors": 0,
+            "outcome_unavailable": 1,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 0
+          },
+          {
+            "name": "search_by_topic",
+            "count": 7,
+            "successes": 1,
+            "errors": 5,
+            "outcome_unavailable": 1,
+            "error_reasons": [],
+            "errors_without_detailed_reason": 5
+          }
+        ],
+        "fixed_elapsed_weeks": [
+          {
+            "from": "2026-10-09",
+            "through": "2026-10-15",
+            "timezone": "UTC",
+            "days": 7,
+            "tool_calls": 1541,
+            "transport_requests": 50796,
+            "transport_errors": 2650,
+            "all_days_two_current_endpoints": true
+          },
+          {
+            "from": "2026-10-16",
+            "through": "2026-10-22",
+            "timezone": "UTC",
+            "days": 7,
+            "tool_calls": 1532,
+            "transport_requests": 57894,
+            "transport_errors": 849,
+            "all_days_two_current_endpoints": true
+          }
+        ],
+        "latest_elapsed_utc_day": {
+          "date": "2026-10-23",
+          "endpoints": [
+            "/api/mcp/compact",
+            "/api/mcp"
+          ],
+          "coverage_flags": [
+            "complete",
+            "complete"
+          ],
+          "requests": 7830,
+          "successes": 7660,
+          "errors": 170,
+          "tool_calls": 218,
+          "resource_reads": 16,
+          "prompt_gets": 8,
+          "get_risk_state": {
+            "calls": 202,
+            "successes": 202,
+            "errors": 0
+          }
+        },
+        "current_partial_utc_day": {
+          "date": "2026-10-24",
+          "endpoints": [
+            "/api/mcp/compact",
+            "/api/mcp"
+          ],
+          "coverage_flags": [
+            "complete",
+            "complete"
+          ],
+          "requests": 6130,
+          "successes": 6004,
+          "errors": 126,
+          "tool_calls": 173,
+          "resource_reads": 23,
+          "prompt_gets": 10,
+          "get_risk_state": {
+            "calls": 160,
+            "successes": 160,
+            "errors": 0
+          }
+        },
+        "per_tool_error_causes_by_day_available": false,
+        "technical_success_limit": "Un succès indique une réponse MCP sans erreur déclarée ; il ne mesure pas la validité économique, la justesse des sources ou la fraîcheur des données."
+      },
+      "classified_http": {
+        "unit": "requêtes HTTP Apache, sans déduplication par personne ni adresse",
+        "generated_at": "2026-10-24T00:17:25.583Z",
+        "total": 430990,
+        "classes": {
+          "human_html": 38868,
+          "mcp_api": 131989,
+          "social_previews": 5236,
+          "known_crawlers": 125202,
+          "scans": 3835,
+          "other": 125860
+        },
+        "net_change_since_previous": 2220,
+        "exact_all_class_date_bounds": null,
+        "period": "Journaux Apache disponibles ; bornes toutes classes non publiées séparément.",
+        "rolling_7_days": {
+          "from": "2026-10-18",
+          "through": "2026-10-24",
+          "requests": {
+            "human_html": 17669,
+            "mcp_api": 56489,
+            "social_previews": 2285,
+            "known_crawlers": 78472,
+            "scans": 1361,
+            "other": 42837
+          },
+          "human_referrers": {
+            "google": 538,
+            "x": 432,
+            "direct": 14268,
+            "other": 2431
+          },
+          "days_observed": 7,
+          "coverage": "Dates des journaux Apache disponibles ; la dernière journée peut être partielle. Aucune complétude historique garantie."
+        },
+        "rolling_last_day_partial": true,
+        "complete_week_to_week_comparison_available": false,
+        "raw_server_logs_or_goaccess_refetched": false,
+        "additive_to_html_or_mcp": false
+      }
+    },
+    "mcp_post_transport": {
+      "unit": "Requêtes POST MCP externes agrégées par jour et endpoint ; succès et erreurs incluent les erreurs JSON-RPC et isError des tools.",
+      "totals": {
+        "requests": 459688,
+        "successes": 444138,
+        "errors": 15550,
+        "initializations": 81876,
+        "tools_list": 74199,
+        "resource_reads": 177,
+        "prompt_gets": 53
+      },
+      "net_change_since_previous": {
+        "requests": 11037,
+        "successes": 10793,
+        "errors": 244,
+        "initializations": 2306,
+        "tools_list": 1462,
+        "resource_reads": 26,
+        "prompt_gets": 12
+      },
+      "interpretation": "POST et erreurs transport incluent protocole, initialisation, catalogue et outils ; ces erreurs ne sont pas le taux d’échec fonctionnel."
+    },
+    "error_diagnostics": {
+      "retained_functional_errors": 500,
+      "published_error_causes": [
+        {
+          "tool": "unknown",
+          "reason": "tool_unavailable",
+          "count": 58
+        },
+        {
+          "tool": "build_research_pack",
+          "reason": "invalid_arguments",
+          "count": 14
+        },
+        {
+          "tool": "search_l0g",
+          "reason": "invalid_arguments",
+          "count": 14
+        },
+        {
+          "tool": "get_document",
+          "reason": "invalid_arguments",
+          "count": 14
+        },
+        {
+          "tool": "get_openapi_schema",
+          "reason": "tool_error",
+          "count": 7
+        }
+      ],
+      "net_category_changes_since_oct23": [
+        {
+          "tool": "unknown",
+          "reason": "tool_unavailable",
+          "count": 58,
+          "previous": 51,
+          "net_change": 7
+        },
+        {
+          "tool": "build_research_pack",
+          "reason": "invalid_arguments",
+          "count": 14,
+          "previous": 12,
+          "net_change": 2
+        },
+        {
+          "tool": "search_l0g",
+          "reason": "invalid_arguments",
+          "count": 14,
+          "previous": 12,
+          "net_change": 2
+        },
+        {
+          "tool": "get_document",
+          "reason": "invalid_arguments",
+          "count": 14,
+          "previous": 12,
+          "net_change": 2
+        },
+        {
+          "tool": "get_openapi_schema",
+          "reason": "tool_error",
+          "count": 7,
+          "previous": 7,
+          "net_change": 0
+        }
+      ],
+      "published_count": 107,
+      "errors_without_public_detail": 393,
+      "previous_errors_without_public_detail": 393,
+      "newly_published_pairs": [],
+      "priority_tool_net_changes": [
+        {
+          "name": "unknown",
+          "net": {
+            "count": 5,
+            "successes": 0,
+            "errors": 7,
+            "outcome_unavailable": -2,
+            "errors_without_detailed_reason": 0
+          }
+        },
+        {
+          "name": "build_research_pack",
+          "net": {
+            "count": 2,
+            "successes": 0,
+            "errors": 2,
+            "outcome_unavailable": 0,
+            "errors_without_detailed_reason": 0
+          }
+        },
+        {
+          "name": "search_l0g",
+          "net": {
+            "count": 2,
+            "successes": 0,
+            "errors": 2,
+            "outcome_unavailable": 0,
+            "errors_without_detailed_reason": 0
+          }
+        },
+        {
+          "name": "get_document",
+          "net": {
+            "count": 3,
+            "successes": 1,
+            "errors": 2,
+            "outcome_unavailable": 0,
+            "errors_without_detailed_reason": 0
+          }
+        },
+        {
+          "name": "get_agent_manifest",
+          "net": {
+            "count": -3,
+            "successes": 0,
+            "errors": 0,
+            "outcome_unavailable": -3,
+            "errors_without_detailed_reason": 0
+          }
+        },
+        {
+          "name": "get_openapi_schema",
+          "net": {
+            "count": -1,
+            "successes": 0,
+            "errors": 0,
+            "outcome_unavailable": -1,
+            "errors_without_detailed_reason": 0
+          }
+        }
+      ],
+      "period": "Causes cumulées sur la rétention ; aucun jour ni release des erreurs exposés.",
+      "release_effect": "Les 7 tool_error retenus de get_openapi_schema sont inchangés ; cela ne démontre ni récidive ni résolution après le correctif. Aucune nouvelle cause publiée.",
+      "interpretation": "Les catégories sous k=5 et les erreurs anciennes peuvent rester sans détail. Aucun argument, texte d’erreur, client ou cause historique reconstruit."
+    },
+    "taxonomy": {
+      "recent_window_days": 7,
+      "recent_initializations": 12905,
+      "other_initializations": 12633,
+      "other_share": 0.978923,
+      "decision_ready": false,
+      "public_raw_names": false,
+      "interpretation": "Familles déclarées agrégées, sans lien public entre famille et outil ni personnes/installations uniques."
+    },
+    "missing_evidence": [
+      "Causes horodatées par outil et par version sur périodes comparables, notamment get_openapi_schema après activation du correctif.",
+      "Couverture effective et fuseau des journaux Apache, séries quotidiennes toutes classes ; état timer/service non contrôlé.",
+      "Aucun compteur de personnes ou installations distinctes, aucune attribution causale à SEO, titres ou publication."
+    ],
+    "next_missing_piece": "Diagnostic agrégé horodaté par outil et version, examiné localement dans un cadre autorisé, pour séparer erreurs historiques et post-correctif ; sans exporter arguments, identifiants ou logs bruts.",
+    "validation": {
+      "html_daily_total_matches": true,
+      "html_days_matches": true,
+      "mcp_tool_count_matches": true,
+      "mcp_tool_outcomes_match": true,
+      "mcp_error_categories_match": true,
+      "mcp_each_tool_outcomes_match": true,
+      "mcp_transport_daily_matches": true,
+      "html_class_matches_filtered": true,
+      "html_shared_interior_unchanged": true
+    },
+    "execution_boundaries": {
+      "network_requests": 2,
+      "max_concurrency": 2,
+      "user_agent": "l0g-release-verifier/1 Lighthouse/13.5.0",
+      "functional_tool_calls": 0,
+      "intentional_errors": 0,
+      "repo_edits": false,
+      "raw_logs_read": false,
+      "identifiers_read": false,
+      "ssh": false,
+      "chrome": false,
+      "build": false,
+      "push": false,
+      "source_manifest_or_runtime_identity_refetched": false,
+      "google_search_console_access": false
+    },
+    "assessment": {
+      "confirmed_changes": [
+        "Le 10 octobre recule de 10 GET au bord des journaux retenus ; 12 dates intérieures du 11 au 22 restent identiques.",
+        "Le 23 octobre est maintenant écoulé : 2 726 GET HTML, 218 appels d’outils et 7 830 POST MCP, sur des horloges distinctes.",
+        "Les erreurs fonctionnelles retenues augmentent de 13 net : tool_unavailable +7, invalid_arguments +2 sur chacun de trois outils ; get_openapi_schema reste à 7 tool_error."
+      ],
+      "no_seo_or_reader_growth_claim": true,
+      "no_postfix_error_rate_claim": true
+    }
+  },
+  "local_correction": {
+    "status": "local, not committed or deployed",
+    "files": [
+      "src/config/sitemap-lastmod.mjs",
+      "scripts/sitemap-lastmod.test.mjs"
+    ],
+    "problem": "/en/asia/ lastmod only followed its page file, ignoring newer reading-path configuration and displayed publications.",
+    "served_before": "2026-10-21T18:06:58+02:00",
+    "expected_with_current_sources": "2026-10-24T20:22:20+02:00",
+    "method": "Track the actual shared selection of five latest Asia analyses, regional analysis cards, guides rendered in reading paths, and their shared selection configuration. Preserve editorial dates on individual publications.",
+    "official_reference": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+    "limits": [
+      "Dependency dates still use whole-file Git changes; semantic subfield tracking is a separate enhancement.",
+      "Treasury individual lastmod is overdated by unrelated glossary collection updates; no unsafe dependency deletion in this patch."
+    ],
+    "validation": {
+      "targeted_tests": {
+        "passed": 17,
+        "runtime": "Node 22.23.2",
+        "suites": [
+          "sitemap-lastmod",
+          "english-reading-paths"
+        ]
+      },
+      "astro_config_import": "passed without a build",
+      "frontmatter_compatibility": {
+        "english_sources_checked": 463,
+        "result": "pubDate, IDs, tags/defaults and draft/defaults agree with Astro parsing"
+      },
+      "independent_review": "Missing optional tags default reproduced, corrected and regression tested; no further blocking finding.",
+      "isolated_astro_build": {
+        "base_sha": "f971bab250f08d8aa1cce3612ae27349989afa8d",
+        "clone_head": "f971bab250f08d8aa1cce3612ae27349989afa8d",
+        "node_version": "v22.23.2",
+        "ci_node_version_observed": "v22.23.3",
+        "ci_run": "40120411957",
+        "build_mode": "direct Astro CLI; no npm prebuild/build:prepare/build:verify",
+        "build_started_at": "2026-10-24T19:40:24.585903+00:00",
+        "build_finished_at": "2026-10-24T19:42:29.621253+00:00",
+        "build_exit_code": 0,
+        "build_duration_seconds": 125.03535,
+        "build_warning_lines": [],
+        "build_error_lines": [],
+        "overlay_files": [
+          {
+            "path": "src/config/sitemap-lastmod.mjs",
+            "sha256": "f0c572665b124ba81867836eb5535ebc2c7b6dc2d0cf99aeee3c3b80bab9f1bf"
+          },
+          {
+            "path": "scripts/sitemap-lastmod.test.mjs",
+            "sha256": "3746940bff73b4e47555a2a250d96e0946cee1de28cebaa63dc78c062de6a263"
+          }
+        ],
+        "sitemap_validation": {
+          "result": "passed",
+          "sitemap_files": [
+            "/tmp/l0g-sitemap-clean-2026-10-24-2o3jx2l9/repo/dist/sitemap-0.xml"
+          ],
+          "url_count": 1166,
+          "observed_routes": [
+            {
+              "route": "/en/asia/",
+              "group": "asia_hub",
+              "before": "2026-10-21T18:06:58+02:00",
+              "expected": "2026-10-24T20:22:20+02:00",
+              "rendered": "2026-10-24T18:22:20.000Z",
+              "timestamp_match": true,
+              "changed": true
+            },
+            {
+              "route": "/glossaire/treasury-buyback/",
+              "group": "treasury",
+              "before": "2026-10-24T20:22:20+02:00",
+              "expected": "2026-10-24T20:22:20+02:00",
+              "rendered": "2026-10-24T18:22:20.000Z",
+              "timestamp_match": true,
+              "changed": false,
+              "known_issue": "Global glossary dependencies still overdate the unchanged Treasury entry."
+            },
+            {
+              "route": "/en/glossary/treasury-buyback/",
+              "group": "treasury",
+              "before": "2026-10-24T20:22:20+02:00",
+              "expected": "2026-10-24T20:22:20+02:00",
+              "rendered": "2026-10-24T18:22:20.000Z",
+              "timestamp_match": true,
+              "changed": false,
+              "known_issue": "Global glossary dependencies still overdate the unchanged Treasury entry."
+            },
+            {
+              "route": "/en/guides/read-h41-fed-balance-sheet/",
+              "group": "seven_cohort",
+              "before": "2026-10-08T18:00:00.000Z",
+              "expected": "2026-10-08T18:00:00.000Z",
+              "rendered": "2026-10-08T18:00:00.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/en/guides/read-central-bank-fx-reserves-cofer/",
+              "group": "seven_cohort",
+              "before": "2026-10-08T18:00:00.000Z",
+              "expected": "2026-10-08T18:00:00.000Z",
+              "rendered": "2026-10-08T18:00:00.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/en/guides/read-cpi-inflation-us/",
+              "group": "seven_cohort",
+              "before": "2026-10-08T18:00:00.000Z",
+              "expected": "2026-10-08T18:00:00.000Z",
+              "rendered": "2026-10-08T18:00:00.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/en/guides/read-credit-ratings/",
+              "group": "seven_cohort",
+              "before": "2026-10-08T18:00:00.000Z",
+              "expected": "2026-10-08T18:00:00.000Z",
+              "rendered": "2026-10-08T18:00:00.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/en/atlas/ai-financing/",
+              "group": "seven_cohort",
+              "before": "2026-10-23T16:49:08+02:00",
+              "expected": "2026-10-23T16:49:08+02:00",
+              "rendered": "2026-10-23T14:49:08.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/en/atlas/private-credit/",
+              "group": "seven_cohort",
+              "before": "2026-10-23T16:49:08+02:00",
+              "expected": "2026-10-23T16:49:08+02:00",
+              "rendered": "2026-10-23T14:49:08.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/en/atlas/oil-financing/",
+              "group": "seven_cohort",
+              "before": "2026-10-23T16:49:08+02:00",
+              "expected": "2026-10-23T16:49:08+02:00",
+              "rendered": "2026-10-23T14:49:08.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/",
+              "group": "witness",
+              "before": "2026-10-24T20:22:20+02:00",
+              "expected": "2026-10-24T20:22:20+02:00",
+              "rendered": "2026-10-24T18:22:20.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/en/analysis/",
+              "group": "witness",
+              "before": "2026-10-24T20:22:20+02:00",
+              "expected": "2026-10-24T20:22:20+02:00",
+              "rendered": "2026-10-24T18:22:20.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/en/guides/",
+              "group": "witness",
+              "before": "2026-10-23T22:04:19+02:00",
+              "expected": "2026-10-23T22:04:19+02:00",
+              "rendered": "2026-10-23T20:04:19.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/en/atlas/",
+              "group": "witness",
+              "before": "2026-10-08T21:55:26+02:00",
+              "expected": "2026-10-08T21:55:26+02:00",
+              "rendered": "2026-10-08T19:55:26.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/guides/",
+              "group": "witness",
+              "before": "2026-10-23T22:04:19+02:00",
+              "expected": "2026-10-23T22:04:19+02:00",
+              "rendered": "2026-10-23T20:04:19.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/atlas/",
+              "group": "witness",
+              "before": "2026-10-08T21:55:26+02:00",
+              "expected": "2026-10-08T21:55:26+02:00",
+              "rendered": "2026-10-08T19:55:26.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/glossaire/",
+              "group": "witness",
+              "before": "2026-10-24T20:22:20+02:00",
+              "expected": "2026-10-24T20:22:20+02:00",
+              "rendered": "2026-10-24T18:22:20.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/methodologie/",
+              "group": "witness",
+              "before": "2026-10-19T22:53:15+02:00",
+              "expected": "2026-10-19T22:53:15+02:00",
+              "rendered": "2026-10-19T20:53:15.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/sources/",
+              "group": "witness",
+              "before": "2026-09-30T14:49:21+02:00",
+              "expected": "2026-09-30T14:49:21+02:00",
+              "rendered": "2026-09-30T12:49:21.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/sujets/",
+              "group": "witness",
+              "before": "2026-10-24T20:22:20+02:00",
+              "expected": "2026-10-24T20:22:20+02:00",
+              "rendered": "2026-10-24T18:22:20.000Z",
+              "timestamp_match": true,
+              "changed": false
+            },
+            {
+              "route": "/en/start/",
+              "group": "witness",
+              "before": "2026-10-20T02:34:32+02:00",
+              "expected": "2026-10-20T02:34:32+02:00",
+              "rendered": "2026-10-20T00:34:32.000Z",
+              "timestamp_match": true,
+              "changed": false
+            }
+          ],
+          "intentional_english_glossary_exclusions_preserved": 315,
+          "clone_changed_paths": [
+            "scripts/sitemap-lastmod.test.mjs",
+            "src/config/sitemap-lastmod.mjs"
+          ]
+        },
+        "validated_at": "2026-10-24T19:42:40.767Z",
+        "artifact_report": "/tmp/l0g-sitemap-validation-2026-10-24.json",
+        "build_log": "/tmp/l0g-sitemap-clean-2026-10-24-2o3jx2l9/astro-build.log"
+      },
+      "full_pipeline_limit": "Direct Astro build succeeded. npm prebuild, build:prepare and build:verify were not rerun; a future publication must pass its full CI pipeline.",
+      "final_diff_check": "passed"
+    }
+  },
+  "decisions": {
+    "guide_titles": "Retained unchanged; insufficient elapsed post-recrawl time and sparse volume.",
+    "guides_earliest_complete_window": {
+      "from": "2026-10-19",
+      "through": "2026-11-01",
+      "earliest_assessment": "2026-11-02",
+      "condition": "Consolidated data and sufficient query volume required."
+    },
+    "atlas_earliest_complete_window": {
+      "from": "2026-10-24",
+      "through": "2026-11-06",
+      "earliest_assessment": "2026-11-07",
+      "condition": "Consolidated data and sufficient volume required; same-day release ordering is not inferred from unspecified crawl timezone."
+    },
+    "treasury": "Both current public pages indexable; qualified live tests passed and one request accepted per URL. Actual new crawl/indexation still pending.",
+    "asia_hedging": "Now indexed with self canonical after 23 October crawl; no repeat request.",
+    "english_content": "57 French guides have 57 English counterparts. No new adaptation justified by a missing counterpart this pass.",
+    "glossary": "315 intentionally noindex English short fiches retained; Treasury remains the single admitted English reference."
+  },
+  "open_evidence": [
+    "Historical403/5xx attribution requires raw timestamped Apache/WAF logs and coverage, not a current200 response.",
+    "Functional MCP errors need tool/cause/version time bins to assess after the fix; rolling all-time totals cannot date the seven retained get_openapi_schema errors.",
+    "Treasury sitemap dates need per-entry significant-change tracking without hiding real future definition, source or link changes.",
+    "Local sitemap patch passed its isolated build; full publication CI and explicit publication remain before any public-effect claim."
+  ],
+  "execution_boundaries": {
+    "no_push": true,
+    "no_deploy": true,
+    "no_ssh": true,
+    "no_security_change": true,
+    "no_unrelated_file_staging": true,
+    "no_mass_noindex_change": true,
+    "foreign_tracked_paths_verified_before_plan_append": 25,
+    "foreign_other_files_verified_after_work": 24,
+    "prior_plan_prefix_preserved": true
+  },
+  "execution_boundaries_scope": "Historical audit execution, before the subsequent user push authorization.",
+  "publication": {
+    "authorized_at": "2026-10-24T20:26:01.747695+00:00",
+    "authorization": "User explicitly requested push after reviewing the completed audit and local correction.",
+    "status": "prepared for scoped commit; CI and public activation not yet observed",
+    "scope": [
+      "src/config/sitemap-lastmod.mjs",
+      "scripts/sitemap-lastmod.test.mjs",
+      "docs/seo/gsc-manual-followup-2026-10-24.json"
+    ],
+    "historical_observations": "GSC and HTTP observations above retain their original dates. The previous audit boundaries do not describe the later publication step.",
+    "validation_before_commit": {
+      "targeted_tests": 17,
+      "editorial_lint": "passed; warnings concern the unchanged corpus",
+      "isolated_astro_build": "passed in preceding audit; source hashes still identical",
+      "typecheck": {
+        "result": "passed",
+        "command": "Node22 Astro CLI check, in isolated clone",
+        "files": 1036,
+        "errors": 0,
+        "warnings": 0,
+        "hints": 537
+      }
+    }
+  }
+}
