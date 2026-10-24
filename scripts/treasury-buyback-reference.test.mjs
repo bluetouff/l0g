@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import test from 'node:test';
+import { fromHtml } from 'hast-util-from-html';
 import { glossaryEntries } from '../src/config/glossary.ts';
 import { glossaryAtlasEnBySlug, englishGlossaryRobots } from '../src/config/glossary-atlas-en.ts';
 import { glossaryReferenceBySlug, glossaryReferenceWordCount } from '../src/config/glossary-reference-fr.ts';
@@ -78,9 +79,67 @@ const treasuryEditorialReview = {
   en: { date: '2026-10-23', sha256: 'fc053179995ba2c53a048674873d7f9916e83c5888274f2b32dcd2fdf27daf40' },
 };
 
+function treasuryStyleRanges(source) {
+  const ranges = [];
+  function inspect(fragment, base = 0) {
+    const tree = fromHtml(fragment, {
+      fragment: true, verbose: true,
+      onerror(error) {
+        if (error.ruleId.startsWith('eof-') && error.ruleId !== 'eof-in-element-that-can-contain-only-text') {
+          throw new Error(`Treasury source structure is incomplete: ${error.ruleId}`);
+        }
+      },
+    });
+    function visit(node) {
+      const tags = node.data?.position;
+      if (node.type === 'element' && node.tagName === 'script') {
+        const openingStart = tags?.opening?.start.offset;
+        const openingEnd = tags?.opening?.end.offset;
+        const end = node.position?.end.offset;
+        assert([openingStart, openingEnd, end].every(Number.isInteger) && 0 <= openingStart
+          && openingStart < openingEnd && openingEnd <= end && end <= fragment.length,
+          'Treasury script source positions are invalid');
+        // Astro permits <script ... />. HTML treats its following source as raw
+        // script text; inspect that source span separately, without rewriting it.
+        if (fragment.slice(openingStart, openingEnd).endsWith('/>')) {
+          inspect(fragment.slice(openingEnd, end), base + openingEnd);
+          return;
+        }
+        assert(tags.closing, 'Treasury source has an unclosed script');
+      }
+      if (node.type === 'element' && node.tagName === 'style') {
+        const offsets = [tags?.opening?.start.offset, tags?.opening?.end.offset,
+          tags?.closing?.start.offset, tags?.closing?.end.offset];
+        const [start, cssStart, cssEnd, end] = offsets;
+        assert(offsets.every(Number.isInteger) && 0 <= start && start < cssStart
+          && cssStart <= cssEnd && cssEnd < end && end <= fragment.length,
+        'Treasury style source is unclosed or has invalid positions');
+        ranges.push({ start: base + start, cssStart: base + cssStart, cssEnd: base + cssEnd, end: base + end });
+      }
+      for (const child of node.children ?? []) visit(child);
+      if (node.content) visit(node.content);
+    }
+    visit(tree);
+  }
+  inspect(source);
+  ranges.sort((left, right) => left.start - right.start);
+  let previousEnd = 0;
+  for (const range of ranges) {
+    assert(previousEnd <= range.start && range.end <= source.length, 'Treasury style source ranges overlap or exceed the source');
+    previousEnd = range.end;
+  }
+  return ranges;
+}
+
 function treasurySourceFingerprint(source) {
-  const withoutCss = source.replace(/<style\b[^>]*>[\s\S]*?<\/style\s*>/gi, '').trim();
-  return createHash('sha256').update(withoutCss).digest('hex');
+  const hash = createHash('sha256');
+  let cursor = 0;
+  for (const { start, end } of treasuryStyleRanges(source)) {
+    hash.update(source.slice(cursor, start));
+    cursor = end;
+  }
+  hash.update(source.slice(cursor));
+  return hash.digest('hex');
 }
 
 // Static labels, figures and source URLs also live outside the dictionaries.
@@ -89,10 +148,10 @@ function treasurySourceFingerprint(source) {
 const treasurySourceReview = {
   dates: { fr: '2026-10-23', en: '2026-10-23' },
   files: {
-    'src/components/TreasuryBuybackMechanism.astro': '34d391ceadb2673751a10b09333465959b2b91ea8b4a25273bffe87bf8c193f1',
-    'src/components/OperationalGlossaryReference.astro': '73ff178aa8f1a33ed6fed92a4c102b3f32ca1b42fb5b95c78b76c0505805c759',
-    'src/pages/glossaire/[slug].astro': '46f924b26d56c1af6864d6e94dc53b9fc45b66780308a6e968b55eacb95f02df',
-    'src/pages/en/glossary/[slug].astro': 'd940cfce83ff0ed7d9102257dcf050ad848030611289079618c9e5f80cebbe33',
+    'src/components/TreasuryBuybackMechanism.astro': '80be748b80b5e9f7d05919d711595dd4598774ac05a89ca86b408d0d1c11f7ec',
+    'src/components/OperationalGlossaryReference.astro': '5a8cc0a09958af1d6a21009ea4dc098f60440f92b59ff4ad576f2da428007900',
+    'src/pages/glossaire/[slug].astro': 'da8d36c0c1ec01c2be4214b34ea8be167c62084e347c2b2558bfb1de14b85c68',
+    'src/pages/en/glossary/[slug].astro': 'be58f5446a29f70a37ae1eedac141134422183c055af7e15e35fdfc44893710b',
   },
 };
 
@@ -103,6 +162,7 @@ test('Treasury : composants et templates conservent leur revue éditoriale daté
   }
   for (const [path, sha256] of Object.entries(treasurySourceReview.files)) {
     const source = readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
+    assert.equal(treasuryStyleRanges(source).length, 1, `${path}: expected one explicit Astro style block`);
     assert.equal(treasurySourceFingerprint(source), sha256,
       `${path}: static Treasury content changed; review the editorial dates before updating this dated fingerprint. A justified same-day revision may retain the date.`);
   }
@@ -125,11 +185,33 @@ test('Treasury : texte, source et chiffres de la figure déclenchent une révisi
 test('Treasury : les seules modifications CSS restent neutres', () => {
   for (const path of Object.keys(treasurySourceReview.files)) {
     const source = readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
-    const changed = source.replace(/(<style\b[^>]*>)[\s\S]*?(<\/style\s*>)/gi,
-      (_, opening, closing) => `${opening}\n/* Cosmetic revision */\n${closing}`);
+    const [{ cssStart, cssEnd }] = treasuryStyleRanges(source);
+    const changed = `${source.slice(0, cssStart)}\n/* Cosmetic revision */\n${source.slice(cssEnd)}`;
     assert.notEqual(changed, source, `${path}: CSS mutation must change an existing style block`);
     assert.equal(treasurySourceFingerprint(changed), treasurySourceFingerprint(source));
   }
+});
+
+test('Treasury : les positions CSS couvrent attributs, blocs multiples et script Astro autofermé', () => {
+  const source = '<script type="application/ld+json" set:html={json} />\n<h1>Title</h1>'
+    + '<!-- <style>Comment retained</style> --><STYLE data-label=">">a{color:red}</STYLE><style></style>Tail';
+  const ranges = treasuryStyleRanges(source);
+  assert.equal(ranges.length, 2);
+  assert.equal(source.slice(ranges[0].cssStart, ranges[0].cssEnd), 'a{color:red}');
+  assert.equal(ranges[1].cssStart, ranges[1].cssEnd);
+  const changed = `${source.slice(0, ranges[0].cssStart)}b{color:blue}${source.slice(ranges[0].cssEnd)}`;
+  assert.equal(treasurySourceFingerprint(changed), treasurySourceFingerprint(source));
+  assert.notEqual(treasurySourceFingerprint(source.replace('Comment retained', 'Comment reviewed')), treasurySourceFingerprint(source));
+  const script = '<script>const sample = "<style>literal</style>";</script><style>a{}</style>';
+  assert.equal(treasuryStyleRanges(script).length, 1);
+  assert.notEqual(treasurySourceFingerprint(script.replace('literal', 'reviewed')), treasurySourceFingerprint(script));
+});
+
+test('Treasury : une structure de source incomplète échoue explicitement', () => {
+  for (const source of ['<style>a{}', '<style/>tail', '<style data-label="unterminated>', '<script>unclosed']) {
+    assert.throws(() => treasurySourceFingerprint(source), /Treasury .*?(?:incomplete|unclosed|invalid)/);
+  }
+  assert.equal(treasurySourceFingerprint('plain text'), createHash('sha256').update('plain text').digest('hex'));
 });
 
 for (const lang of ['fr', 'en']) {
