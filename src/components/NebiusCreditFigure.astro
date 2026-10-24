@@ -1,0 +1,61 @@
+---
+// Reviewed passive vector sources are bundled directly in article HTML.
+import { nebiusFigureReferences } from '../lib/nebiusCreditFigures.mjs';
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'funding' | 'cash' | 'spread' | 'security' | 'contracts' | 'rpo' | 'capacity';
+  number: string;
+  sources: string;
+  caption: string;
+}
+const { lang, kind, number, sources, caption } = Astro.props;
+const refs = nebiusFigureReferences(lang, kind, number, sources, caption);
+const modules = import.meta.glob('../figures/nebius/*.svg', { query: '?raw', import: 'default', eager: true });
+const key = `../figures/nebius/${lang}-${kind}`;
+const desktop = modules[`${key}.svg`];
+const mobile = modules[`${key}-mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError(`Missing bilingual responsive SVG: ${key}`);
+
+---
+<figure class="nebius-credit-figure" id={`figure-${number}`} data-kind={kind}>
+  <div class="figure-wide" set:html={desktop} />
+  <div class="figure-narrow" set:html={mobile} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="figure-cites">{refs.map(r => <a href={`#source-s${r}`}>[S{r}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face {
+    font-family: 'l0g Nebius Credit';
+    src: url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'l0g Nebius Credit';
+    src: url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+  .nebius-credit-figure { max-width: 48rem; width: 100%; margin: 2.5rem auto; padding-bottom: 1rem; overflow: visible; container-type: inline-size; }
+  .nebius-credit-figure :global(svg) { width: 100%; max-width: 100%; height: auto; display: block; letter-spacing: normal; overflow: visible; }
+  .figure-wide { display: block; width: 100%; }
+  .figure-narrow { display: none; width: 100%; max-width: 26rem; margin-inline: auto; }
+  figcaption { color: var(--color-muted); font-size: .9rem; line-height: 1.7; margin: 1rem 0 .65rem; }
+  figcaption strong { margin-right: .6rem; }
+  .figure-cites { display: block; margin: .4rem 0; }
+  .figure-cites a { margin-right: .75rem; }
+  .nebius-credit-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .nebius-credit-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .nebius-credit-figure :global(details p) { margin: .7rem 0; }
+  .nebius-credit-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  :global(.nebius-credit-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.nebius-credit-sources li) { margin-bottom: .65rem; }
+  :global(.nebius-credit-sources a) { overflow-wrap: anywhere; }
+  @container (max-width: 640px) { .figure-wide { display: none; } .figure-narrow { display: block; } }
+  @media print { .nebius-credit-figure { break-inside: avoid; } .figure-wide { display: block; } .figure-narrow { display: none; } }
+</style>

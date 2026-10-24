@@ -80,7 +80,10 @@ for (const [slug, sources] of [
   assert.equal(en[0].robots, 'noindex,follow'); assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
   assert.notEqual(fr[0].def, en[0].def); assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
   for (const [entry, article, terms] of [[fr[0], '/posts/tsmc-puces-data-centers-risque-electrique/', glossaryEntries], [en[0], '/en/analysis/tsmc-chip-demand-data-center-power-risk/', glossaryAtlasEn]]) {
-    assert.equal(entry.guide, article); assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    const expectedArticles = slug === 'capex'
+      ? [article, terms === glossaryEntries ? '/posts/nebius-citi-credit-364-jours-gpu/' : '/en/analysis/nebius-citi-364-day-gpu-credit/']
+      : [article];
+    assert.equal(entry.guide, article); assert.deepEqual(entry.atlas.articles.map(link => link.href), expectedArticles);
     assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
     assert.doesNotMatch(entry.def, /[—]/u);
     for (const neighbor of entry.atlas.related) {
@@ -94,6 +97,37 @@ assert.match(glossaryEntries.find(entry => entry.slug === 'fonderie').def, /clie
 assert.match(glossaryAtlasEnBySlug.get('fonderie').def, /integrated circuits designed by its customers.*silicon wafers/u);
 assert.match(glossaryEntries.find(entry => entry.slug === 'capex').def, /périmètre publié.*investissements payés.*location.*engagements futurs.*budget.*prévues.*période/u);
 assert.match(glossaryAtlasEnBySlug.get('capex').def, /scope.*cash investment.*leases.*future commitments.*budget.*planned.*actual expenditure.*period/u);
+
+// The Nebius analysis connects funding terms without promoting short glossary pages.
+for (const slug of ['sofr', 'rpo', 'capex', 'collateral', 'covenant', 'revenus-differes']) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  for (const [entry, article] of [[fr[0], '/posts/nebius-citi-credit-364-jours-gpu/'], [en[0], '/en/analysis/nebius-citi-364-day-gpu-credit/']]) {
+    assert.deepEqual(entry.atlas.articles.filter(link => link.href === article).map(link => link.href), [article], `${slug}: missing or duplicate Nebius backlink`);
+  }
+}
+for (const [slug, sources] of [
+  ['sofr', ['https://www.newyorkfed.org/markets/reference-rates/sofr', 'https://www.cmegroup.com/market-data/cme-group-benchmark-administration/term-sofr.html']],
+  ['covenant', ['https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_6k.htm']],
+  ['revenus-differes', ['https://www.sec.gov/Archives/edgar/data/1513845/000110465926094844/nbis-20260812xex99d2.htm']],
+]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert.equal(en.robots, 'noindex,follow');
+  assert.notEqual(fr.def, en.def);
+  assert.deepEqual(fr.atlas.sources.map(link => link.href), sources);
+  assert.deepEqual(en.atlas.sources.map(link => link.href), sources);
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'sofr').def, /jour le jour.*Term SOFR.*prospectif.*contrats à terme.*marge contractuelle/u);
+assert.match(glossaryAtlasEnBySlug.get('sofr').def, /overnight.*Term SOFR.*forward-looking.*futures.*contractual margin/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'covenant').def, /seuil financier.*définitions.*exceptions.*manquement.*modalités précises/u);
+assert.match(glossaryAtlasEnBySlug.get('covenant').def, /financial threshold.*definitions.*exceptions.*breach.*detailed terms/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'revenus-differes').def, /Passif.*payé avant.*prestation.*remboursées.*solde au bilan.*tableau des flux/u);
+assert.match(glossaryAtlasEnBySlug.get('revenus-differes').def, /liability.*paid before.*performance obligations.*refundable.*balance-sheet.*cash-flow/u);
 
 // Product and geographic scopes must remain explicit in EIA inventory comparisons.
 for (const [slug, sources] of [
@@ -653,7 +687,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 310, 'Le corpus anglais ajoute les traductions CLO et RBC à ses 308 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 313, 'Le corpus anglais ajoute SOFR, covenant et revenus différés à ses 310 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -854,8 +888,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 702, 'Le corpus doit conserver ses 702 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 299, 'Le graphe Atlas ajoute CLO et RBC à ses 297 nœuds existants');
+assert.equal(glossaryEntries.length, 704, 'Le corpus ajoute covenant et revenus différés à ses 702 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 302, 'Le graphe Atlas ajoute SOFR, covenant et revenus différés à ses 299 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1277,7 +1311,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 854, 'Le graphe Atlas ajoute les quatre relations réciproques CLO–RBC et RBC–réassurance à ses 850 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 859, 'Le graphe Atlas ajoute les cinq relations de SOFR, covenant et revenus différés à ses 854 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

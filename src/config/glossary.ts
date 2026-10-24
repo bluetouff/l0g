@@ -36,6 +36,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     { sigle: 'Ensemble de compensation', nom: 'Netting set', def: 'Dans le cadre de Bâle, groupe de transactions avec une même contrepartie relevant d’un accord de compensation bilatérale juridiquement exécutoire et reconnu pour le calcul du capital réglementaire. Une transaction sans accord reconnu constitue son propre ensemble. Des contrats opposés conclus avec des contreparties distinctes relèvent d’ensembles distincts.', guide: '/posts/barclays-credit-prive-trs-risque/' },
     { sigle: 'Crédit renouvelable', nom: 'Revolving credit facility ou revolver', def: 'Facilité permettant de tirer des fonds, de les rembourser puis de les réemprunter pendant une période définie, dans les limites et sous les conditions du contrat. Elle peut financer le décalage entre les dépenses de production et les encaissements. Son plafond engagé se distingue du montant effectivement tiré et de la trésorerie disponible.', guide: '/posts/jpmorgan-capital-strategique/' },
     { sigle: 'Prêt senior garanti', nom: 'Senior secured loan', def: 'Prêt assorti de sûretés sur des actifs et d’un rang prioritaire par rapport à certaines autres créances. Le contrat et le droit applicable déterminent la priorité et les droits sur les actifs. Cette protection ne garantit ni un remboursement intégral ni une prise en charge automatique des pertes par un État.', guide: '/posts/jpmorgan-capital-strategique/' },
+    { sigle: 'Covenant', nom: 'Engagement contractuel de l’emprunteur', def: 'Clause d’un financement imposant à l’emprunteur une obligation, une restriction ou un seuil financier, comme un minimum de liquidité. Les définitions, dates de contrôle, exceptions et délais de remède du contrat déterminent son application et les conséquences d’un manquement. Le calcul de la marge disponible exige les modalités précises de cette clause.', guide: '/posts/nebius-citi-credit-364-jours-gpu/' },
     {"sigle": "Garantie de prêt", "nom": "Engagement d’un garant envers les prêteurs", "def": "Engagement d’un garant envers les prêteurs, couvrant le risque de défaut dans le périmètre fixé par le contrat. Les banques avancent les fonds lors du tirage ; l’emprunteur reste tenu de rembourser. Le paiement du garant dépend des conditions d’appel. Une garantie publique crée un engagement éventuel, distinct d’un décaissement de l’État.", "guide": "/posts/apres-cyberattaque-07-etat-financement-crise/"},
     {"sigle": "Responsabilité maximale", "nom": "Mesure d’exposition UKEF, intérêts compris", "def": "Dans le glossaire d’UKEF, montant maximal des sommes payables au titre d’un produit, intérêts compris. UKEF utilise cette mesure pour l’exposition avant émission de la couverture. Elle se distingue du principal du prêt, du montant tiré et d’une perte réalisée. Rattacher une ligne publiée à une facilité précise exige d’examiner le contrat et les références de l’opération.", "guide": "/posts/apres-cyberattaque-07-etat-financement-crise/"},
     { sigle: 'IRRBB', nom: 'Risque de taux du portefeuille bancaire', def: 'Risque que des variations défavorables des taux affectent le capital ou les revenus du portefeuille bancaire. Sa mesure rapproche la valeur économique des positions et les revenus attendus, avec leurs horizons et hypothèses propres.', guide: '/posts/banques-europeennes-dette-souveraine-choc-obligataire/' },
@@ -382,7 +383,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'DXY', nom: 'U.S. Dollar Index', def: "Indice du dollar contre un panier de six devises, dominé par l'euro (près de 58 %) et sans le yuan ni le peso. Panier inchangé depuis 1999, base 1973 = 100. Thermomètre commode mais biaisé : pour le dollar contre le monde réel, l'indice large pondéré par les échanges de la Fed est plus fidèle.", guide: '/guides/lire-le-dollar-dxy-cross-currency-basis/' },
       { sigle: 'Ligne de swap', nom: 'Central bank liquidity swap', def: "Accord par lequel la Fed prête des dollars à des banques centrales étrangères (BCE, BoJ, BoE…), qui les reprêtent à leurs banques. Filet de sécurité du financement dollar offshore, activé massivement en 2008 et en mars 2020. Visible à l'actif du bilan de la Fed.", guide: '/guides/lire-le-dollar-dxy-cross-currency-basis/' },
       { sigle: 'Swap de change', nom: 'FX swap', def: "Échange de devises au comptant assorti de l'opération inverse à terme. Économiquement proche d'un repo, avec une devise comme collatéral, mais enregistré hors bilan. Source d'une dette dollar « manquante » estimée par la BIS à des dizaines de milliers de milliards." },
-      { sigle: 'SOFR', nom: 'Secured Overnight Financing Rate', def: "Taux de référence des financements garantis au jour le jour aux États-Unis, adossé aux pensions sur Treasuries. Thermomètre des tensions sur le marché du financement." },
+      { sigle: 'SOFR', nom: 'Secured Overnight Financing Rate', def: 'Taux publié par la Réserve fédérale de New York mesurant le coût des emprunts au jour le jour garantis par des titres du Trésor américain. Le Term SOFR est un taux prospectif à échéance déterminée, dérivé des marchés de contrats à terme sur le SOFR. Dans un prêt, la marge contractuelle s’ajoute au taux de référence applicable.', guide: '/posts/nebius-citi-credit-364-jours-gpu/' },
       { sigle: 'PCE', nom: 'Personal Consumption Expenditures', def: "Indice des prix des dépenses de consommation calculé par le BEA, mesure d'inflation préférée de la Fed pour sa cible de 2 %. Plus large que le CPI et chaîné (formule de Fisher), il pèse la santé environ deux fois plus et le logement deux fois moins, et court en moyenne 0,4 point en dessous du CPI.", guide: '/guides/lire-le-pce-inflation-fed/' },
       { sigle: 'Core PCE', nom: 'PCE hors alimentation et énergie', def: "Indice PCE privé des postes alimentation et énergie, les plus volatils. Mesure de la tendance de fond que la Fed suit en pratique pour juger de la persistance de l'inflation, même si sa cible de 2 % porte sur le PCE total.", guide: '/guides/lire-le-pce-inflation-fed/' },
       { sigle: 'Trimmed mean PCE', nom: 'Moyenne tronquée du PCE', def: "Mesure robuste calculée par la Fed de Dallas, qui écarte chaque mois les composantes aux variations les plus extrêmes, en haut comme en bas de la distribution, plutôt que de retirer toujours l'alimentation et l'énergie. Capte mieux la tendance durable qu'un poste isolé pourrait fausser.", guide: '/guides/lire-le-pce-inflation-fed/' },
@@ -411,6 +412,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
         "def": "Valeur des prestations contractées avec des clients qui restent à reconnaître en chiffre d’affaires. Le périmètre et le calendrier de reconnaissance dépendent des contrats et des règles comptables. Cet indicateur ne correspond ni à une trésorerie disponible ni à un bénéfice acquis.",
         "guide": "/posts/quand-le-credit-commence-a-trier-l-ia/"
       },
+      { sigle: 'Revenus différés', nom: 'Deferred revenue, prestations restant à fournir', def: 'Passif constaté lorsqu’un client a payé avant que l’entreprise ait rempli les obligations de prestation correspondantes. Dans les comptes de Nebius, il inclut des avances susceptibles d’être remboursées. Le revenu est reconnu au rythme de l’exécution des prestations. Le solde au bilan et sa variation dans le tableau des flux répondent à des mesures distinctes.', guide: '/posts/nebius-citi-credit-364-jours-gpu/' },
       {"sigle":"Rachat d’actions","nom":"Share buyback","def":"Opération par laquelle une entreprise rachète ses propres titres. Les achats peuvent réduire le nombre d’actions en circulation ou compenser des émissions, notamment pour des plans salariés. Le montant dépensé, le volume racheté et la variation nette des actions mesurent des effets différents. Le prix payé et les autres usages de la trésorerie comptent pour apprécier la création de valeur.","guide":"/posts/rachats-actions-anti-dilution-microsoft-airbus/"},
       {"sigle":"Actions propres","nom":"Treasury shares","def":"Titres de son propre capital détenus par une entreprise. Ils sont exclus du nombre d’actions en circulation pendant leur détention, sans être nécessairement annulés : ils peuvent être transférés ultérieurement. IAS 32 les porte en déduction des capitaux propres, et non comme un actif financier.","guide":"/posts/rachats-actions-anti-dilution-microsoft-airbus/"},
       {"sigle":"Rémunération en actions","nom":"Stock-based compensation","def":"Rémunération réglée ou fondée sur des titres de l’entreprise, dont les conditions d’acquisition des droits et d’évaluation dépendent du plan. Pour les attributions réglées en actions, la charge comptable et le décaissement éventuel de rachats sont distincts. Une charge non monétaire peut s’accompagner d’une dilution ou de trésorerie dépensée pour la compenser.","guide":"/posts/rachats-actions-anti-dilution-microsoft-airbus/"},
@@ -895,7 +897,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-20';
+export const glossaryUpdatedIso = '2026-10-24';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1138,6 +1140,27 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  sofr: {
+    intuition: 'Le taux de référence et la marge bancaire évoluent selon des mécanismes distincts.',
+    articles: [{ label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Marge croissante, taux variable et échéance du crédit Citi.', kind: 'article' }],
+    sources: [
+      { label: 'Réserve fédérale de New York, SOFR', href: 'https://www.newyorkfed.org/markets/reference-rates/sofr', detail: 'Marché des pensions sur titres du Trésor, méthode et publication du taux au jour le jour.', kind: 'source' },
+      { label: 'CME, Term SOFR', href: 'https://www.cmegroup.com/market-data/cme-group-benchmark-administration/term-sofr.html', detail: 'Taux prospectifs fondés sur les marchés de contrats à terme sur le SOFR.', kind: 'source' },
+    ],
+    related: ['covenant'],
+  },
+  covenant: {
+    intuition: 'Le respect d’une clause financière se mesure avec les définitions et les seuils du contrat.',
+    articles: [{ label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Covenant de liquidité publié sans seuil chiffré dans le résumé d’octobre.', kind: 'article' }],
+    sources: [{ label: 'Nebius / SEC, 6-K du 22 octobre 2026', href: 'https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_6k.htm', detail: 'Covenant de liquidité minimale, autres engagements et événements de défaut soumis à exceptions et délais.', kind: 'source' }],
+    related: ['collateral', 'dscr'],
+  },
+  'revenus-differes': {
+    intuition: 'L’avance apporte du cash et laisse une prestation à fournir ou, selon le contrat, une somme à rembourser.',
+    articles: [{ label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Avances clients, flux d’exploitation et obligations de service.', kind: 'article' }],
+    sources: [{ label: 'Nebius / SEC, comptes intermédiaires au 30 juin 2026', href: 'https://www.sec.gov/Archives/edgar/data/1513845/000110465926094844/nbis-20260812xex99d2.htm', detail: 'Note 4, Deferred Revenue : encaissement avant exécution, remboursements possibles et reconnaissance du revenu.', kind: 'source' }],
+    related: ['rpo', 'capex'],
+  },
   clo: {
     intuition: 'Le rang organise la priorité des paiements et l’ordre d’absorption des pertes dans un portefeuille de prêts.',
     articles: [{ label: 'Le prix réglementaire d’une promesse', href: '/posts/assureurs-fonds-06-traitement-risque/', kind: 'article' }],
@@ -1193,7 +1216,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['capex', 'packaging-avance'],
   },
   capex: {
-    articles: [{ label: 'TSMC suit la demande de puces jusqu’au réseau électrique', href: '/posts/tsmc-puces-data-centers-risque-electrique/', kind: 'article' }],
+    articles: [{ label: 'TSMC suit la demande de puces jusqu’au réseau électrique', href: '/posts/tsmc-puces-data-centers-risque-electrique/', kind: 'article' }, { label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Investissements effectivement payés et financement de la construction.', kind: 'article' }],
     sources: [
       { label: 'SEC, guide de lecture des états financiers', href: 'https://www.sec.gov/about/reports-publications/investorpubsbegfinstmtguide', detail: 'Tableau des flux de trésorerie : acquisitions d’immobilisations et dépenses d’investissement payées.', kind: 'source' },
       { label: 'Microsoft, résultats du quatrième trimestre de l’exercice 2026', href: 'https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4', detail: 'Présentation du 29 juillet : distinction entre capex, locations-financement et trésorerie payée pour les immobilisations ; perspectives d’investissement.', kind: 'source' },
@@ -2836,7 +2859,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   collateral: {
     intuition: 'La valeur d’un actif détenu et la capacité de financement qu’il procure sont deux mesures distinctes.',
     formula: 'couverture simplifiée = somme, pour chaque actif admissible, de sa valeur × (1 - sa décote exprimée en fraction), hors corrections supplémentaires',
-    articles: [{ label: 'Dette publique : la chaîne des garanties', href: '/posts/dette-etats-04-chaine-garanties/', kind: 'article' }, { label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' }, {"label": "GPU à crédit : le prix de la quatrième année", "href": "/posts/gpu-credit-prix-quatrieme-annee/", "detail": "Contrats, recettes au renouvellement et scénarios pédagogiques de dette.", "kind": "article"}],
+    articles: [{ label: 'Dette publique : la chaîne des garanties', href: '/posts/dette-etats-04-chaine-garanties/', kind: 'article' }, { label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' }, {"label": "GPU à crédit : le prix de la quatrième année", "href": "/posts/gpu-credit-prix-quatrieme-annee/", "detail": "Contrats, recettes au renouvellement et scénarios pédagogiques de dette.", "kind": "article"}, { label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Périmètres distincts des sûretés et limites du rang connu entre créanciers.', kind: 'article' }],
     sources: [
       { label: 'ESMA, SFTR article 15', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-15-reuse-financial-instruments', detail: 'Distinction entre nantissement et transfert de propriété, conditions de réutilisation.', kind: 'source' },
       { label: 'BCE, What is collateral?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/collateral.en.html', detail: 'Actif remis en garantie et réalisation en cas de défaut.', kind: 'source' },
@@ -3278,6 +3301,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       {
         "label": "Quand le crédit commence à trier l’IA",
         "href": "/posts/quand-le-credit-commence-a-trier-l-ia/",
+        "kind": "article"
+      },
+      {
+        "label": "Nebius : un crédit de 364 jours dans la course aux GPU",
+        "href": "/posts/nebius-citi-credit-364-jours-gpu/",
+        "detail": "Obligations de prestation, avances clients et calendrier de reconnaissance du revenu.",
         "kind": "article"
       }
     ],

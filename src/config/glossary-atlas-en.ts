@@ -210,6 +210,45 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'sofr', sigle: 'SOFR', nom: 'Secured Overnight Financing Rate',
+    def: 'A rate published by the Federal Reserve Bank of New York measuring the cost of overnight cash borrowing secured by US Treasury securities. Term SOFR is a forward-looking benchmark for specified tenors derived from SOFR futures markets. A loan adds its contractual margin to the applicable reference rate.',
+    guide: '/en/analysis/nebius-citi-364-day-gpu-credit/',
+    ...privateCreditSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'The benchmark rate and the lender’s margin follow different mechanisms.',
+      articles: [{ label: 'Nebius: a 364-day Citi facility for GPU expansion', href: '/en/analysis/nebius-citi-364-day-gpu-credit/', detail: 'Rising margins, variable rates and the Citi facility’s maturity.', kind: 'article' }],
+      sources: [
+        { label: 'Federal Reserve Bank of New York, SOFR', href: 'https://www.newyorkfed.org/markets/reference-rates/sofr', detail: 'Treasury repo transactions, methodology and publication of the overnight rate.', kind: 'source' },
+        { label: 'CME, Term SOFR', href: 'https://www.cmegroup.com/market-data/cme-group-benchmark-administration/term-sofr.html', detail: 'Forward-looking benchmarks derived from SOFR futures markets.', kind: 'source' },
+      ],
+      related: ['covenant'],
+    },
+  },
+  {
+    slug: 'covenant', sigle: 'Covenant', nom: 'A borrower’s contractual undertaking',
+    def: 'A financing clause requiring a borrower to meet an obligation, restriction or financial threshold, such as minimum liquidity. Contractual definitions, testing dates, exceptions and remedy periods determine its application and the consequences of a breach. Calculating available headroom requires the covenant’s detailed terms.',
+    guide: '/en/analysis/nebius-citi-364-day-gpu-credit/',
+    ...privateCreditSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Compliance with a financial clause depends on the contract’s definitions and thresholds.',
+      articles: [{ label: 'Nebius: a 364-day Citi facility for GPU expansion', href: '/en/analysis/nebius-citi-364-day-gpu-credit/', detail: 'The October summary discloses a minimum-liquidity covenant without its numerical threshold.', kind: 'article' }],
+      sources: [{ label: 'Nebius / SEC, October 22, 2026 Form 6-K', href: 'https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_6k.htm', detail: 'Minimum liquidity, other undertakings and events of default subject to exceptions, grace periods and thresholds.', kind: 'source' }],
+      related: ['collateral', 'dscr'],
+    },
+  },
+  {
+    slug: 'revenus-differes', sigle: 'Deferred revenue', nom: 'Customer payments for outstanding services',
+    def: 'A liability recorded when a customer has paid before the company fulfils the corresponding performance obligations. Nebius’s accounts include advances that may be refundable. Revenue is recognised as the services are provided. The balance-sheet amount and the cash-flow-statement movement are distinct measures.',
+    guide: '/en/analysis/nebius-citi-364-day-gpu-credit/',
+    ...privateCreditSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'An advance supplies cash while leaving services to provide or, depending on the contract, money to refund.',
+      articles: [{ label: 'Nebius: a 364-day Citi facility for GPU expansion', href: '/en/analysis/nebius-citi-364-day-gpu-credit/', detail: 'Customer advances, operating cash flow and outstanding service obligations.', kind: 'article' }],
+      sources: [{ label: 'Nebius / SEC, June 30, 2026 interim financial statements', href: 'https://www.sec.gov/Archives/edgar/data/1513845/000110465926094844/nbis-20260812xex99d2.htm', detail: 'Note 4, Deferred Revenue: advance receipts, potentially refundable balances and revenue recognition.', kind: 'source' }],
+      related: ['rpo', 'capex'],
+    },
+  },
+  {
     slug: 'clo', sigle: 'CLO', nom: 'Collateralized loan obligation',
     ...privateCreditSection, robots: 'noindex,follow',
     guide: '/en/guides/read-clos-and-leveraged-loans/',
@@ -278,7 +317,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/tsmc-chip-demand-data-center-power-risk/',
     def: 'Expenditure to acquire, build or improve long-lived assets such as factories and equipment. The scope of a reported measure needs to be checked: cash investment, assets obtained through leases and future commitments may be disclosed separately. An announced budget describes planned spending; actual expenditure is measured over a specified period.',
     atlas: {
-      articles: [{ label: 'TSMC follows chip demand all the way to the power grid', href: '/en/analysis/tsmc-chip-demand-data-center-power-risk/', kind: 'article' }],
+      articles: [{ label: 'TSMC follows chip demand all the way to the power grid', href: '/en/analysis/tsmc-chip-demand-data-center-power-risk/', kind: 'article' }, { label: 'Nebius: a 364-day Citi facility for GPU expansion', href: '/en/analysis/nebius-citi-364-day-gpu-credit/', detail: 'Cash capital expenditure and funding construction.', kind: 'article' }],
       sources: [
         { label: 'SEC, guide to financial statements', href: 'https://www.sec.gov/about/reports-publications/investorpubsbegfinstmtguide', detail: 'Cash flow statements: purchases of long-term assets and cash investment.', kind: 'source' },
         { label: 'Microsoft, fiscal 2026 fourth-quarter results', href: 'https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4', detail: 'July 29 call: distinction between capex, finance leases and cash paid for property, plant and equipment; investment outlook.', kind: 'source' },
@@ -2708,7 +2747,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     atlas: {
       intuition: 'The value of an asset a bank owns and the borrowing it can support are different measures.',
       formula: 'simplified coverage = sum, for each eligible asset, of its value × (1 - its haircut as a fraction), excluding further adjustments',
-      articles: [{ label: 'Government debt: the collateral chain', href: '/en/analysis/dette-etats-04-chaine-garanties/', kind: 'article' }, { label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }, {"label": "GPU-backed debt: pricing the fourth year", "href": "/en/analysis/gpu-backed-debt-fourth-year/", "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.", "kind": "article"}],
+      articles: [{ label: 'Government debt: the collateral chain', href: '/en/analysis/dette-etats-04-chaine-garanties/', kind: 'article' }, { label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }, {"label": "GPU-backed debt: pricing the fourth year", "href": "/en/analysis/gpu-backed-debt-fourth-year/", "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.", "kind": "article"}, { label: 'Nebius: a 364-day Citi facility for GPU expansion', href: '/en/analysis/nebius-citi-364-day-gpu-credit/', detail: 'Distinct collateral footprints and limits to the disclosed ranking among creditors.', kind: 'article' }],
       sources: [
         { label: 'ESMA, SFTR Article 15', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-15-reuse-financial-instruments', detail: 'Security collateral, title transfer and conditions for reuse.', kind: 'source' },
         { label: 'ECB, What is collateral?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/collateral.en.html', detail: 'Pledged assets and realisation following a default.', kind: 'source' },
@@ -3395,6 +3434,12 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         {
           "label": "When credit starts sorting AI",
           "href": "/en/analysis/when-credit-starts-sorting-ai/",
+          "kind": "article"
+        },
+        {
+          "label": "Nebius: a 364-day Citi facility for GPU expansion",
+          "href": "/en/analysis/nebius-citi-364-day-gpu-credit/",
+          "detail": "Performance obligations, customer advances and revenue-recognition timing.",
           "kind": "article"
         }
       ],
