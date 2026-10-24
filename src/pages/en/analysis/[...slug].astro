@@ -12,6 +12,8 @@ import SupportCard from '../../../components/SupportCard.astro';
 import WatchCard from '../../../components/WatchCard.astro';
 import DebtEpubCard from '../../../components/DebtEpubCard.astro';
 import CyberRecoveryEpubCard from '../../../components/CyberRecoveryEpubCard.astro';
+import InsurancePromiseEpubCard from '../../../components/InsurancePromiseEpubCard.astro';
+import { insurancePromiseEditions } from '../../../config/insurance-promise-publication.mjs';
 import { cyberRecoveryEditions } from '../../../config/cyber-recovery-publication.mjs';
 import { debtEditions } from '../../../config/debt-publication.mjs';
 import { authorEntity, organizationEntity } from '../../../config/entities.ts';
@@ -30,6 +32,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const hasDebtEpub = debtEditions.en.chapters.some(chapter => chapter.slug === post.id);
 const hasCyberRecoveryEpub = cyberRecoveryEditions.en.chapters.some(chapter => chapter.slug === post.id);
+const hasInsurancePromiseEpub = insurancePromiseEditions.en.chapters.some(chapter => chapter.slug === post.id);
 const sourcePost = (await getCollection('posts')).find((entry) => entry.id === post.data.sourceArticle);
 const { Content } = await render(post);
 
@@ -187,6 +190,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
 
     {hasDebtEpub && <DebtEpubCard lang="en" />}
     {hasCyberRecoveryEpub && <CyberRecoveryEpubCard lang="en" />}
+    {hasInsurancePromiseEpub && <InsurancePromiseEpubCard lang="en" />}
 
     <EnglishRelatedReading id={post.id} collection="postsEn" />
 

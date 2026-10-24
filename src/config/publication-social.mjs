@@ -1,5 +1,7 @@
 // Dedicated landscape cards. Portrait covers remain the book and catalogue artwork.
 const entries = [
+  ['insurance-promise', 'fr', 'l-argent-des-promesses', ['L’argent des', 'promesses'], ['Quand les fonds rachètent', 'les assureurs'], 'Illustration conceptuelle des engagements des assureurs et des ressources qui les soutiennent'],
+  ['insurance-promise', 'en', 'the-money-behind-the-promise', ['The money behind', 'the promise'], ['When asset managers', 'buy insurers'], 'Conceptual artwork of insurers’ obligations and the resources supporting them'],
   ['cyber-recovery', 'fr', 'apres-la-cyberattaque', ['Après la', 'cyberattaque'], ['Qui finance la reprise ?'], 'Illustration conceptuelle d’un mécanisme industriel réparé et du financement de la reprise'],
   ['cyber-recovery', 'en', 'after-the-cyberattack', ['After the', 'cyberattack'], ['Who pays for recovery?'], 'Conceptual artwork of a repaired industrial mechanism and the financing of recovery'],
   ['debt-chain', 'fr', 'dette-en-chaine', ['La dette', 'en chaîne'], ['Titres publics, garanties', 'et secours de marché.'], 'Illustration conceptuelle de la chaîne de financement des États'],

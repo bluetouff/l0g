@@ -16,6 +16,8 @@ import CitationBox from '../../components/CitationBox.astro';
 import EpsteinEpubCard from '../../components/EpsteinEpubCard.astro';
 import DebtEpubCard from '../../components/DebtEpubCard.astro';
 import CyberRecoveryEpubCard from '../../components/CyberRecoveryEpubCard.astro';
+import InsurancePromiseEpubCard from '../../components/InsurancePromiseEpubCard.astro';
+import { insurancePromiseEditions } from '../../config/insurance-promise-publication.mjs';
 import { cyberRecoveryEditions } from '../../config/cyber-recovery-publication.mjs';
 import { debtEditions } from '../../config/debt-publication.mjs';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
@@ -53,6 +55,7 @@ const epsteinPublicationSlugs = new Set([
 const hasEpsteinEpub = epsteinPublicationSlugs.has(post.id);
 const hasDebtEpub = debtEditions.fr.chapters.some(chapter => chapter.slug === post.id);
 const hasCyberRecoveryEpub = cyberRecoveryEditions.fr.chapters.some(chapter => chapter.slug === post.id);
+const hasInsurancePromiseEpub = insurancePromiseEditions.fr.chapters.some(chapter => chapter.slug === post.id);
 const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
 const { Content, headings } = await render(post);
 
@@ -458,6 +461,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty
     {hasEpsteinEpub && <EpsteinEpubCard />}
     {hasDebtEpub && <DebtEpubCard lang="fr" />}
     {hasCyberRecoveryEpub && <CyberRecoveryEpubCard lang="fr" />}
+    {hasInsurancePromiseEpub && <InsurancePromiseEpubCard lang="fr" />}
 
     <FrenchRelatedReading id={post.id} collection="posts" />
 

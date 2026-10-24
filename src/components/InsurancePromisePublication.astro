@@ -1,0 +1,212 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EnglishGuidesLayout from '../layouts/EnglishGuidesLayout.astro';
+import { insurancePromiseEditions } from '../config/insurance-promise-publication.mjs';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../config/entities.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+interface Props { lang: 'fr' | 'en'; }
+const { lang } = Astro.props;
+if (lang !== 'fr' && lang !== 'en') throw new TypeError('Invalid insurance-promise publication language');
+const isEn = lang === 'en';
+const Layout = isEn ? EnglishGuidesLayout : BaseLayout;
+const shellProps = isEn ? {} : { lang: 'fr' as const, ogLocale: 'fr_FR' as const, sidebar: false };
+const tr = (fr: string, en: string) => isEn ? en : fr;
+const book = insurancePromiseEditions[lang];
+const alternate = insurancePromiseEditions[isEn ? 'fr' : 'en'];
+if (book.theme !== 'dark') throw new Error('The insurance-promise publication requires one dark EPUB');
+const bytes = readFileSync(join(process.cwd(), 'public', book.epub));
+if (!bytes.length) throw new Error('The insurance-promise EPUB must not be empty');
+const download = {
+  epub: book.epub,
+  bytes: bytes.length,
+  sha256: createHash('sha256').update(bytes).digest('hex'),
+  size: `${new Intl.NumberFormat(book.locale, { maximumFractionDigits: 1 }).format(bytes.length / 1024 / 1024)} ${tr('Mo', 'MB')}`,
+};
+const formatDate = (value: string) => new Intl.DateTimeFormat(book.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${value}T12:00:00Z`));
+const pageUrl = `${SITE_URL}${book.path}`;
+const translation = { '@type': 'Book', '@id': `${SITE_URL}${alternate.path}#book`, inLanguage: alternate.lang };
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Book', '@id': `${pageUrl}#book`,
+  name: book.title, alternativeHeadline: book.subtitle, description: book.description, inLanguage: lang,
+  author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID },
+  datePublished: book.date, dateModified: book.modified,
+  bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true,
+  url: pageUrl, image: `${SITE_URL}${book.cover}`, license: 'https://creativecommons.org/licenses/by/4.0/',
+  ...(isEn ? { translationOfWork: translation } : { workTranslation: translation }),
+  hasPart: book.chapters.map(chapter => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.route}` })),
+  associatedMedia: [{
+    '@type': 'MediaObject', name: `${book.title} · ${tr('EPUB sombre', 'Dark EPUB')}`, contentUrl: `${SITE_URL}${download.epub}`,
+    encodingFormat: 'application/epub+zip', contentSize: `${download.bytes} bytes`, sha256: download.sha256,
+  }],
+};
+const related = isEn ? [
+  { href: '/en/publications/sovereign-debt-chain/', title: 'The sovereign debt chain', description: 'Follow the assets, collateral and funding commitments that connect financial balance sheets.' },
+  { href: '/en/publications/after-the-cyberattack/', title: 'After the cyberattack', description: 'Examine the contracts and cash flows that finance a return to useful activity.' },
+] : [
+  { href: '/publications/dette-en-chaine/', title: 'La dette en chaîne', description: 'Suivre les actifs, les garanties et les engagements de financement qui relient les bilans.' },
+  { href: '/publications/apres-la-cyberattaque/', title: 'Après la cyberattaque', description: 'Examiner les contrats et les flux de trésorerie qui financent le retour à une activité utile.' },
+];
+---
+
+<Layout {...shellProps} title={book.title}
+  seoTitle={tr('L’argent des promesses : assureurs et fonds | l0g', 'The money behind the promise: insurers and funds | l0g')}
+  ogTitle={`${book.title}${isEn ? ': ' : ' : '}${book.subtitle}`}
+  description={book.description}
+  ogImage={book.social} ogImageAlt={tr('L’argent des promesses : quand les fonds rachètent les assureurs. Huit enquêtes l0g et trente-quatre infographies, en EPUB gratuit.', 'The money behind the promise: when asset managers buy insurers. Eight l0g investigations and thirty-four infographics in a free EPUB.')}
+  alternateLinks={[
+    { hreflang: 'fr', href: `${SITE_URL}${insurancePromiseEditions.fr.path}` },
+    { hreflang: 'en', href: `${SITE_URL}${insurancePromiseEditions.en.path}` },
+    { hreflang: 'x-default', href: `${SITE_URL}${insurancePromiseEditions.fr.path}` },
+  ]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <article class="insurance-promise-book rise" data-pagefind-body>
+    <section class="book-hero" aria-labelledby="book-title">
+      <div class="cover-stage">
+        <div class="book-shell">
+          <span class="book-spine" aria-hidden="true">l0g · {tr('octobre', 'October')} 2026</span>
+          <img src={book.cover} srcset={[320, 640, 960].map(w => `${book.cover.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
+            sizes="(max-width: 780px) 240px, 360px" width="1024" height="1638"
+            alt={`${tr('Couverture de', 'Cover of')} ${book.title}`} loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+        <p class="cover-caption">{tr('Édition française', 'English edition')} · <time datetime={book.date}>{formatDate(book.date)}</time></p>
+      </div>
+      <div class="hero-copy">
+        <p class="mono-label">// {tr('enquête l0g · assurance et crédit privé', 'l0g investigation · insurance and private credit')}</p>
+        <h1 id="book-title">{tr('L’argent des', 'The money behind')} <span>{tr('promesses', 'the promise')}</span></h1>
+        <p class="hero-deck">{book.subtitle}</p>
+        <p class="hero-lede">{tr('Apollo et Athene, KKR et Global Atlantic, Brookfield et Just : les rachats d’assureurs rapprochent les promesses de retraite et les métiers de la gestion d’actifs. Huit enquêtes suivent les contrats, les revenus et les droits sur les placements jusqu’à la compagnie tenue de payer l’assuré. Le livre les réunit dans une lecture continue, avec leurs sources, leurs figures et leurs limites.', 'Apollo and Athene, KKR and Global Atlantic, Brookfield and Just: buying insurers connects retirement promises with the business of asset management. Eight investigations follow the contracts, revenues and rights over investments through to the insurer that owes the policyholder. This book brings them together in a continuous reading sequence, preserving their sources, illustrations and limitations.')}</p>
+        <div class="hero-actions">
+          <a id="telecharger" class="download-action" href={download.epub} download>{tr('Télécharger l’EPUB sombre', 'Download the dark EPUB')} <small>EPUB 3 · {download.size} · {tr('gratuit', 'free')}</small></a>
+          <a class="contents-action" href="#sommaire">{tr('Explorer les chapitres', 'Explore the chapters')} <span aria-hidden="true">↓</span></a>
+        </div>
+        <dl class="edition-facts">
+          <div><dt>{book.chapters.length}</dt><dd>{tr('analyses intégrales', 'complete analyses')}</dd></div>
+          <div><dt>{book.figureCount}</dt><dd>{tr('infographies', 'infographics')}</dd></div>
+          <div><dt>EPUB 3</dt><dd>{tr('lecture hors ligne', 'offline reading')}</dd></div>
+        </dl>
+        <p class="edition-language"><a href={alternate.path} lang={alternate.lang} hreflang={alternate.lang}>{tr('Read in English', 'Lire en français')} <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </section>
+
+    <figure class="panorama">
+      <img src={book.panorama} srcset={[640, 960, 1600].map(w => `${book.panorama.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
+        sizes="(max-width: 780px) 100vw, 1120px" width="1600" height="800" loading="lazy" decoding="async"
+        alt={tr('Illustration conceptuelle : un ruban continu de papier ivoire traverse trois cadres en verre fumé sur des socles de basalte, reliés par un fil turquoise.', 'Conceptual artwork: a continuous ivory paper ribbon passes through three smoked-glass frames on basalt bases, linked by a turquoise thread.')} />
+      <figcaption>{tr('Illustration conceptuelle de la promesse assurantielle et des ressources qui la soutiennent. Les contrats, les montants et les responsabilités examinés sont documentés dans les chapitres.', 'Conceptual artwork of an insurance promise and the resources supporting it. The chapters document the contracts, amounts and responsibilities examined in the investigation.')}</figcaption>
+    </figure>
+
+    <section class="reading-section" aria-labelledby="intro-title">
+      <div class="section-heading"><p class="mono-label">01 / introduction</p><h2 id="intro-title">{book.introductionTitle}</h2></div>
+      <div class="prose-copy">{book.introduction.slice(0, 2).map(paragraph => <p>{paragraph}</p>)}
+        <p class="excerpt-note">{tr('Une introduction originale ouvre le livre et relie les huit analyses.', 'An original introduction opens the book and connects the eight analyses.')}</p>
+      </div>
+    </section>
+
+    <section id="sommaire" class="contents-section" aria-labelledby="contents-title">
+      <div class="section-heading"><p class="mono-label">02 / {tr('parcours de lecture', 'reading journey')}</p><h2 id="contents-title">{tr('Du transfert des retraites à la promesse de paiement', 'From pension transfers to the payment promise')}</h2><p>{tr('Les huit analyses intégrales, dans leur ordre de lecture. Chaque chapitre reste accessible en ligne avec ses références et ses limites.', 'The eight complete analyses, in reading order. Each chapter remains available online with its references and limitations.')}</p></div>
+      <ol class="chapter-grid">{book.chapters.map(chapter => <li><a href={chapter.route}>
+        <img src={chapter.image} width="1200" height="630" alt={chapter.imageAlt} loading="lazy" decoding="async" />
+        <div class="chapter-copy"><span class="chapter-number">{String(chapter.number).padStart(2, '0')}</span><div><h3>{chapter.title}</h3><p>{chapter.summary}</p></div><span class="chapter-arrow" aria-hidden="true">↗</span></div>
+      </a></li>)}</ol>
+    </section>
+
+    <section class="reading-section glossary-section" aria-labelledby="glossary-title">
+      <div class="section-heading"><p class="mono-label">03 / {tr('repères', 'reference')}</p><h2 id="glossary-title">{tr('Les droits au fil du contrat', 'Rights throughout the contract')}</h2><p>{tr('Un glossaire accompagne le livre. Ces fiches permettent aussi de poursuivre la lecture en ligne.', 'A glossary accompanies the book. These reference pages also support further reading online.')}</p></div>
+      <div><dl class="glossary-list">{book.glossary.slice(0, 6).map(entry => <div><dt><a href={entry.path}>{entry.title} <span aria-hidden="true">↗</span></a></dt><dd>{entry.definition}</dd></div>)}</dl><a class="text-link" href={isEn ? '/en/glossary/' : '/glossaire/'}>{tr('Ouvrir le glossaire l0g', 'Open the l0g glossary')} <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="reading-section" aria-labelledby="conclusion-title">
+      <div class="section-heading"><p class="mono-label">04 / conclusion</p><h2 id="conclusion-title">{book.conclusionTitle}</h2></div>
+      <div class="prose-copy">{book.conclusion.slice(0, 2).map(paragraph => <p>{paragraph}</p>)}<p class="excerpt-note">{tr('La conclusion complète relie les engagements de l’assureur aux actifs, aux droits et à la trésorerie qui permettent de les tenir.', 'The full conclusion connects the insurer’s obligations with the assets, rights and cash needed to meet them.')}</p></div>
+    </section>
+
+    <section class="reading-section edition-section" aria-labelledby="edition-title">
+      <div class="section-heading"><p class="mono-label">05 / {tr('sources et édition', 'sources and edition')}</p><h2 id="edition-title">{book.methodTitle}</h2></div>
+      <div class="prose-copy">
+        <p>{tr('Édition du', 'Edition dated')} {formatDate(book.date)}. {tr('Documentation arrêtée au', 'Documentary cut-off:')} {formatDate(book.documentationDate)}.</p>
+        {book.method.slice(0, 1).map(paragraph => <p>{paragraph}</p>)}
+        <p>{tr('Le texte, le sommaire, le glossaire et les infographies restent lisibles hors ligne. Les sources externes demandent une connexion. L’agrandissement des figures et les couleurs affichées dépendent de votre liseuse.', 'Text, contents, glossary and infographics are available offline. External sources require a connection. Image enlargement and displayed colours depend on your reading app.')}</p>
+        <p>{tr('Les couvertures et le panorama sont des illustrations conceptuelles créées avec une assistance d’intelligence artificielle. Les infographies gardent les dates, les unités, les sources et les limites des articles.', 'The covers and panorama are conceptual illustrations created with AI assistance. The infographics retain the articles’ dates, units, sources and limitations.')}</p>
+        <p>{tr('Gratuit, sans inscription, sans script embarqué ni outil de suivi.', 'Free, without registration, embedded scripts or tracking.')} <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>.</p>
+        <p class="support-note">{tr('Pour aider à poursuivre ces enquêtes en accès libre, la page de soutien accepte les soutiens ponctuels ou mensuels. Les contributions en Bitcoin y sont aussi proposées.', 'To help keep these investigations freely available, the support page accepts one-time or monthly contributions, with Bitcoin support also available.')} <a href={isEn ? '/en/support/' : '/soutenir/'}>{tr('Soutenir l0g', 'Support l0g')} <span aria-hidden="true">↗</span></a></p>
+        <details class="integrity"><summary>{tr('Vérifier l’intégrité du fichier', 'Check file integrity')}</summary><div><p>EPUB 3 · {download.size} · SHA-256</p><code>{download.sha256}</code></div></details>
+      </div>
+    </section>
+
+    <section class="related-section" aria-labelledby="related-title"><div class="section-heading"><p class="mono-label">06 / {tr('prolonger la lecture', 'further reading')}</p><h2 id="related-title">{tr('Prolonger la lecture des engagements', 'Further reading on financial commitments')}</h2></div><div class="related-grid">{related.map(item => <a href={item.href}><h3>{item.title} <span aria-hidden="true">↗</span></h3><p>{item.description}</p></a>)}</div><p class="back-link"><a href={isEn ? '/en/publications/' : '/publications/'}>← {tr('Toutes les publications', 'All publications')}</a></p></section>
+  </article>
+</Layout>
+
+<style>
+  .insurance-promise-book { max-width: 1120px; margin: 2rem auto 0; }
+  .book-hero { display: grid; grid-template-columns: minmax(280px,.85fr) minmax(0,1.25fr); align-items: center; gap: clamp(2rem,5vw,5rem); padding: 1rem 0 3.5rem; }
+  .cover-stage { display:flex; flex-direction:column; align-items:center; padding:2rem 1.5rem; }
+  .book-shell { position:relative; width:min(100%,360px); transform:perspective(1300px) rotateY(-9deg) rotateZ(-1deg); box-shadow:1rem 1.5rem 3rem color-mix(in srgb,var(--color-ink) 65%,transparent); border-radius:3px 7px 7px 3px; }
+  .book-shell::after { content:''; position:absolute; inset:0; border:1px solid color-mix(in srgb,var(--color-paper) 25%,transparent); border-radius:inherit; box-shadow:inset 8px 0 12px #0006; pointer-events:none; }
+  .book-shell > img { display:block; width:100%; height:auto; border-radius:inherit; }
+  .book-spine { position:absolute; left:-15px; top:1px; bottom:1px; width:15px; writing-mode:vertical-rl; transform:rotate(180deg); background:var(--color-surface); color:var(--color-muted); font-family:var(--font-ui); font-size:.55rem; text-align:center; border:1px solid var(--color-line); }
+  .cover-caption { margin-top:1.8rem; font-family:var(--font-ui); font-size:.72rem; color:var(--color-muted); }
+  .hero-copy > .mono-label { color:var(--color-amber); font-size:.7rem; }
+  .hero-copy h1 { color:var(--color-bright); font-family:var(--font-display); font-size:clamp(2.6rem,4.5vw,4.5rem); line-height:1.05; letter-spacing:-.045em; margin:1rem 0; }
+  .hero-copy h1 span { display:block; color:var(--color-signal); }
+  .hero-deck { font-family:var(--font-read); color:var(--color-bright); font-size:1.25rem; line-height:1.5; margin:1.3rem 0; }
+  .hero-lede { font-family:var(--font-read); color:var(--color-prose); font-size:1.04rem; line-height:1.8; }
+  .hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem; margin:1.8rem 0; }
+  .download-action { display:inline-flex; flex-direction:column; gap:.4rem; border:1px solid var(--color-signal); border-radius:7px; padding:1rem 1.4rem; color:var(--color-bright); background:color-mix(in srgb,var(--color-signal) 10%,var(--color-surface)); font-family:var(--font-ui); font-size:.94rem; font-weight:700; text-decoration:none; }
+  .download-action small { color:var(--color-muted); font-size:.68rem; font-weight:400; }
+  .download-action:hover { background:color-mix(in srgb,var(--color-signal) 18%,var(--color-surface)); }
+  .contents-action,.edition-language a,.text-link { color:var(--color-signal); font-family:var(--font-ui); font-size:.77rem; text-decoration:none; }
+  .contents-action span { margin-left:.35rem; }
+  .edition-facts { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin:1.7rem 0; padding:1.2rem 0; border-top:1px solid var(--color-line); border-bottom:1px solid var(--color-line); }
+  .edition-facts dt { color:var(--color-bright); font-family:var(--font-ui); font-size:1.25rem; font-weight:700; }
+  .edition-facts dd { color:var(--color-muted); font-family:var(--font-read); font-size:.75rem; margin:.4rem 0 0; }
+  .panorama { margin:0 0 3.5rem; }
+  .panorama img { display:block; width:100%; height:auto; border-radius:10px; border:1px solid var(--color-line); }
+  figcaption { font-family:var(--font-read); color:var(--color-muted); font-size:.8rem; line-height:1.65; margin:.8rem 0 0; }
+  .reading-section { display:grid; grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr); gap:clamp(1.5rem,4vw,4rem); margin:4rem 0; padding-top:2rem; border-top:1px solid var(--color-line); }
+  .section-heading > .mono-label { color:var(--color-amber); font-size:.7rem; }
+  .section-heading h2 { color:var(--color-bright); font-family:var(--font-display); font-size:clamp(1.5rem,2.7vw,2.2rem); letter-spacing:-.035em; line-height:1.2; margin:.8rem 0 1rem; }
+  .section-heading > p:last-child { max-width:46rem; color:var(--color-prose); font-family:var(--font-read); line-height:1.75; }
+  .prose-copy { font-family:var(--font-read); color:var(--color-prose); line-height:1.85; font-size:1.04rem; min-width:0; }
+  .prose-copy > p { margin:0 0 1.3rem; }
+  .prose-copy .support-note { font-size:.88rem; padding-top:1rem; border-top:1px solid var(--color-line); }
+  .support-note a { color:var(--color-signal); text-underline-offset:4px; }
+  .prose-copy .excerpt-note { color:var(--color-muted); font-size:.8rem; }
+  .contents-section,.related-section { margin:4rem 0; scroll-margin-top:2rem; }
+  .chapter-grid { list-style:none; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.1rem; padding:0; margin:1.8rem 0 0; }
+  .chapter-grid li { min-width:0; }
+  .chapter-grid a { height:100%; display:block; text-decoration:none; background:var(--color-surface); border:1px solid var(--color-line); border-radius:9px; overflow:hidden; transition:border-color .2s,transform .2s; }
+  .chapter-grid a:hover { border-color:var(--color-signal); transform:translateY(-3px); }
+  .chapter-grid img { width:100%; height:auto; display:block; }
+  .chapter-copy { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:.8rem; padding:1.2rem; }
+  .chapter-number { font-family:var(--font-ui); color:var(--color-amber); font-size:.7rem; padding-top:.2rem; }
+  .chapter-copy h3 { color:var(--color-bright); font-family:var(--font-read); font-size:1.1rem; line-height:1.4; margin:0 0 .7rem; }
+  .chapter-copy p { font-family:var(--font-read); color:var(--color-muted); font-size:.85rem; line-height:1.6; margin:0; }
+  .chapter-arrow { color:var(--color-signal); }
+  .glossary-list { margin:0 0 1.4rem; }
+  .glossary-list > div { padding:1.1rem 0; border-bottom:1px solid var(--color-line); }
+  .glossary-list > div:first-child { padding-top:0; }
+  .glossary-list dt a { color:var(--color-signal); font-family:var(--font-read); font-size:1.04rem; font-weight:700; text-decoration:none; }
+  .glossary-list dd { color:var(--color-prose); font-family:var(--font-read); line-height:1.7; font-size:.94rem; margin:.4rem 0 0; }
+  .integrity { font-family:var(--font-ui); font-size:.75rem; border:1px solid var(--color-line); padding:1rem; border-radius:6px; margin:1.5rem 0; }
+  .integrity summary { color:var(--color-signal); cursor:pointer; }
+  .integrity > div { margin-top:1.2rem; }
+  .integrity p { color:var(--color-paper); font-size:.7rem; }
+  .integrity code { display:block; overflow-wrap:anywhere; color:var(--color-muted); margin-top:.5rem; font-size:.66rem; line-height:1.7; }
+  .related-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.2rem; margin-top:1.4rem; }
+  .related-grid a { border:1px solid var(--color-line); border-radius:8px; padding:1.2rem; text-decoration:none; }
+  .related-grid h3 { color:var(--color-signal); font-family:var(--font-read); font-size:1.1rem; margin:0 0 .8rem; line-height:1.4; }
+  .related-grid p { color:var(--color-muted); font-family:var(--font-read); font-size:.9rem; line-height:1.7; margin:0; }
+  .back-link { margin-top:2rem; }
+  .back-link a { color:var(--color-signal); font-family:var(--font-read); font-size:.85rem; }
+  a:focus-visible,summary:focus-visible { outline:2px solid var(--color-signal); outline-offset:5px; }
+  @media(max-width:900px) { .chapter-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media(max-width:780px) { .insurance-promise-book { margin-top:.5rem; } .book-hero { grid-template-columns:1fr; gap:.5rem; padding-bottom:2.5rem; } .book-shell { width:min(100%,240px); } .cover-stage { padding:1.3rem 0; } .hero-copy h1 { font-size:clamp(2.1rem,9vw,3.3rem); } .hero-copy { max-width:38rem; margin:auto; width:100%; } .reading-section { grid-template-columns:1fr; gap:.8rem; margin:3rem 0; } .panorama { margin-bottom:2rem; } }
+  @media(max-width:620px) { .related-grid { grid-template-columns:1fr; } }
+  @media(max-width:520px) { .chapter-grid { grid-template-columns:1fr; } .hero-actions { align-items:stretch; } .download-action { padding:.95rem 1.2rem; } .contents-action { align-self:center; } .edition-facts { gap:.5rem; } .edition-facts dd { font-size:.72rem; } .integrity { padding:.85rem; } }
+  @media(prefers-reduced-motion:reduce) { .chapter-grid a { transition:none; } .book-shell { transform:none; } }
+</style>

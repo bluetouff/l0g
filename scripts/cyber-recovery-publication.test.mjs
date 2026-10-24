@@ -225,29 +225,31 @@ test('publication checks reject complete-field URL substitutions, missing downlo
   }
 });
 
-test('both catalogues present the book first with one dark download per language', () => {
+test('both catalogues retain the cyber-recovery book after the insurer edition with one dark download per language', () => {
   for (const book of Object.values(cyberRecoveryEditions)) {
     const route = book.lang === 'fr' ? 'publications' : 'en/publications';
     const html = readFileSync(join(ROOT, 'dist', route, 'index.html'), 'utf8');
     const cards = nodes(parse(html)).filter(node => node.tagName === 'article' && hasClass(node, 'publication-spotlight'));
-    assert.equal(cards.length, book.lang === 'fr' ? 15 : 12);
-    assert(hasClass(cards[0], 'publication-spotlight--cyber-recovery'));
-    const first = nodes(cards[0]);
+    assert.equal(cards.length, book.lang === 'fr' ? 16 : 13);
+    assert(hasClass(cards[0], 'publication-spotlight--insurance-promise'));
+    assert(hasClass(cards[1], 'publication-spotlight--cyber-recovery'));
+    const cyberCard = cards[1];
+    const first = nodes(cyberCard);
     assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));
     const downloads = first.filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined);
     assert.equal(downloads.length, 1);
     assert(hasClass(downloads[0], 'publication-primary'));
     assert(plain(downloads[0]).includes(book.lang === 'fr' ? 'Télécharger l’EPUB' : 'Download the EPUB'));
     assert.deepEqual(downloads.map(node => attr(node, 'href')), [book.epub]);
-    assert.doesNotMatch(plain(cards[0]), /(?:fond clair|EPUB clair|sombre (?:et|ou) clair|dark (?:and|or) light|light EPUB|light edition)/iu);
+    assert.doesNotMatch(plain(cyberCard), /(?:fond clair|EPUB clair|sombre (?:et|ou) clair|dark (?:and|or) light|light EPUB|light edition)/iu);
     assert(!first.some(node => attr(node, 'href') === `/publications/${book.directory}-light-l0g.epub`));
-    assert(plain(cards[0]).includes(String(book.figureCount)));
+    assert(plain(cyberCard).includes(String(book.figureCount)));
     assert.equal(attr(first.find(node => node.tagName === 'img'), 'src'), book.cover);
     const chapterTotal = cards.reduce((total, card) => {
       const facts = nodes(card).find(node => node.tagName === 'ul' && hasClass(node, 'publication-facts'));
       return total + Number(plain(nodes(facts).find(node => node.tagName === 'strong')));
     }, 0);
-    assert.equal(chapterTotal, book.lang === 'fr' ? 106 : 79);
+    assert.equal(chapterTotal, book.lang === 'fr' ? 114 : 87);
     if (book.lang === 'fr') {
       const stats = nodes(parse(html)).find(node => node.tagName === 'dl' && hasClass(node, 'page-hero-stats'));
       assert(stats);
@@ -259,7 +261,7 @@ test('both catalogues present the book first with one dark download per language
       }, 0);
       const totalDownloads = cards.reduce((total, card) => total + nodes(card).filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined).length, 0);
       assert.deepEqual(values, [cards.length, totalChapters, totalDownloads]);
-      assert.deepEqual(values, [15, 106, 15]);
+      assert.deepEqual(values, [16, 114, 16]);
     }
   }
 });

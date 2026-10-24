@@ -13,6 +13,8 @@ const failures = [];
 const metadataOverFormerCutoffs = [];
 const pages = new Map();
 const publicationCovers = new Map([
+  ['publications/l-argent-des-promesses/index.html', 'l-argent-des-promesses'],
+  ['en/publications/the-money-behind-the-promise/index.html', 'the-money-behind-the-promise'],
   ['publications/apres-la-cyberattaque/index.html', 'apres-la-cyberattaque'],
   ['en/publications/after-the-cyberattack/index.html', 'after-the-cyberattack'],
   ['publications/dette-en-chaine/index.html', 'dette-en-chaine'],
