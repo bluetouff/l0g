@@ -283,8 +283,13 @@ for (const [tree, requireDependency] of [['site', requireMain], ['MCP', requireM
     // GHSA-333x-w4r6-6crp: path-only suffix references, with and without skipEscape.
     const uri = requireDependency('fast-uri');
     const options = { reference: 'suffix', scheme: 'x' };
-    for (const input of ['javascript:alert(1)', 'data:text/plain,test', 'vbscript:msgbox(1)']) {
-      const expected = input.replace(':', '%3A');
+    for (const [input, expected] of [
+      ['javascript:alert(1)', 'javascript%3Aalert(1)'],
+      ['data:text/plain,test', 'data%3Atext/plain,test'],
+      ['vbscript:msgbox(1)', 'vbscript%3Amsgbox(1)'],
+      ['javascript:alert(1):tail', 'javascript%3Aalert(1)%3Atail'],
+      ['javascript:alert(1)/a:b', 'javascript%3Aalert(1)/a:b'],
+    ]) {
       assert.equal(uri.normalize(input, options), expected);
       assert.equal(uri.serialize({ path: input }, { reference: 'suffix' }), expected);
       for (const skipEscape of [false, true]) {
