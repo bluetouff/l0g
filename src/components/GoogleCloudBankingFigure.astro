@@ -1,0 +1,79 @@
+---
+import { googleCloudBankingSvg, GOOGLE_CLOUD_KINDS, GOOGLE_CLOUD_SOURCES } from '../lib/googleCloudBankingFigures.mjs';
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'power' | 'cascade' | 'timeline' | 'bank-impact' | 'regulation';
+  number: string;
+  caption: string;
+  sources: string;
+}
+const { lang, kind, number, caption, sources } = Astro.props;
+if (typeof lang !== 'string' || !['fr', 'en'].includes(lang) || typeof kind !== 'string' || !GOOGLE_CLOUD_KINDS.includes(kind) || typeof number !== 'string' || !/^0[1-5]$/.test(number) || Number(number) !== GOOGLE_CLOUD_KINDS.indexOf(kind) + 1 || typeof caption !== 'string' || !caption.trim() || typeof sources !== 'string') {
+  throw new TypeError('Unexpected Google Cloud figure parameters');
+}
+const referenceIds = sources.trim().split(/\s+/);
+if (!referenceIds.length || new Set(referenceIds).size !== referenceIds.length || referenceIds.some(id => !/^(?:0[1-9]|1[0-6])$/.test(id)) || referenceIds.join(' ') !== GOOGLE_CLOUD_SOURCES[GOOGLE_CLOUD_KINDS.indexOf(kind)]) {
+  throw new TypeError('Invalid Google Cloud source references');
+}
+// Closed enums produce controlled passive SVG; article text is escaped by Astro.
+---
+<figure class="gc-banking-figure" id={`figure-${number}`} data-figure={number} data-kind={kind}>
+  <div class="desktop" set:html={googleCloudBankingSvg(lang, kind, false)} />
+  <div class="mobile" set:html={googleCloudBankingSvg(lang, kind, true)} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="citations">{referenceIds.map(id => <a href={`#source-s${id}`}>[S{id}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face {
+    font-family: 'l0g Google Cloud Banking';
+    src: url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'l0g Google Cloud Banking';
+    src: url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+  .gc-banking-figure {
+    max-width: 44rem;
+    width: 100%;
+    margin: 2.5rem auto;
+    padding-bottom: 1rem;
+    container-type: inline-size;
+    overflow: visible;
+  }
+  .gc-banking-figure :global(svg) {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    letter-spacing: normal;
+    overflow: visible;
+  }
+  .desktop { display: block; width: 100%; }
+  .mobile { display: none; width: 100%; max-width: 26rem; margin-inline: auto; }
+  figcaption { font-size: .9rem; line-height: 1.7; color: var(--color-muted); margin: 1rem 0 .65rem; }
+  figcaption strong { margin-right: .6rem; }
+  .citations { display: block; margin: .4rem 0; }
+  .citations a { margin-right: .75rem; }
+  .gc-banking-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .gc-banking-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .gc-banking-figure :global(details p) { margin: .7rem 0; }
+  .gc-banking-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @container (max-width: 640px) {
+    .desktop { display: none; }
+    .mobile { display: block; }
+  }
+  @media print {
+    .gc-banking-figure { break-inside: avoid; }
+    .desktop { display: block; }
+    .mobile { display: none; }
+  }
+</style>

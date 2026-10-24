@@ -276,6 +276,8 @@ assert.equal(glossaryEntries.find(entry => entry.slug === 'notionnel').guide, '/
 // Recovery objectives must not overwrite the existing accounting meaning of RPO.
 const recoverySlugs = ['rto', 'rpo-reprise', 'mtd'];
 const continuitySource = 'https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf';
+const googleCloudBankingArticleFr = '/posts/google-cloud-banques-automates-londres/';
+const googleCloudBankingArticleEn = '/en/analysis/google-cloud-banks-london-power-control-failure/';
 for (const slug of recoverySlugs) {
   const frMatches = glossaryEntries.filter(entry => entry.slug === slug);
   const enMatches = glossaryAtlasEn.filter(entry => entry.slug === slug);
@@ -289,9 +291,9 @@ for (const slug of recoverySlugs) {
   assert.equal(glossaryReferenceBySlug[slug], undefined);
   assert.equal(englishGlossaryRobots(en), 'noindex,follow');
   assert.notEqual(fr.def, en.def);
-  for (const entry of [fr, en]) {
+  for (const [entry, googleCloudArticle] of [[fr, googleCloudBankingArticleFr], [en, googleCloudBankingArticleEn]]) {
     assert.deepEqual(entry.atlas.sources.map(link => link.href), [continuitySource]);
-    assert.deepEqual(entry.atlas.articles.map(link => link.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), slug === 'mtd' ? [entry.guide] : [entry.guide, googleCloudArticle]);
     assert.deepEqual(entry.atlas.related, recoverySlugs.filter(value => value !== slug));
     assert.doesNotMatch(entry.def, /[0-9%£€$—]/u);
   }
@@ -300,6 +302,10 @@ const accountingRpo = glossaryEntries.find(entry => entry.slug === 'rpo');
 assert.equal(accountingRpo.nom, 'Obligations de performance restantes');
 assert.equal(glossaryAtlasEnBySlug.get('rpo').nom, 'Remaining performance obligations');
 assert.notEqual(accountingRpo.guide, glossaryEntries.find(entry => entry.slug === 'rpo-reprise').guide);
+assert(!accountingRpo.atlas.articles.some(link => link.href === googleCloudBankingArticleFr));
+assert(!glossaryAtlasEnBySlug.get('rpo').atlas.articles.some(link => link.href === googleCloudBankingArticleEn));
+assert.match(glossaryEntries.find(entry => entry.slug === 'rpo-reprise').def, /perte maximale de données admissible.*durée/u);
+assert.match(glossaryAtlasEnBySlug.get('rpo-reprise').def, /maximum acceptable data loss.*duration/u);
 
 // A lender's cash advance, conditional public cover and UKEF's exposure ceiling have different scopes.
 for (const [slug, sources, related] of [
@@ -797,6 +803,17 @@ for (const slug of ['dora', 'ctpp']) {
   assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
   assert(fr.atlas.sources.every(source => source.href.startsWith('https://www.eba.europa.eu/')));
   assert.deepEqual(fr.atlas.related, en.atlas.related);
+  assert.deepEqual(fr.atlas.articles.map(link => link.href), [fr.guide, googleCloudBankingArticleFr]);
+  assert.deepEqual(en.atlas.articles.map(link => link.href), [en.guide, googleCloudBankingArticleEn]);
+}
+
+for (const slug of ['dora', 'ctpp', 'rto', 'rpo-reprise']) {
+  for (const [entry, href] of [[glossaryEntries.find(item => item.slug === slug), googleCloudBankingArticleFr], [glossaryAtlasEnBySlug.get(slug), googleCloudBankingArticleEn]]) {
+    const articles = entry.atlas.articles.filter(link => link.href === href);
+    assert.equal(articles.length, 1);
+    assert.equal(articles[0].kind, 'article');
+    assert(articles[0].detail?.trim());
+  }
 }
 
 for (const slug of ['cop', 'pay-as-bid']) {

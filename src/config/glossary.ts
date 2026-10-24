@@ -854,7 +854,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'ZKP', nom: 'Preuve à divulgation nulle de connaissance', def: 'Méthode cryptographique permettant de démontrer la validité d’un énoncé sans révéler l’information secrète utilisée pour l’établir, au-delà de l’énoncé lui-même. Sa portée dépend de l’énoncé vérifié et du protocole. Elle ne certifie pas automatiquement la fiabilité d’une mesure biométrique ou le droit d’autoriser un paiement.', guide: '/posts/world-id-finance-preuve-humanite/' },
       { sigle: 'Calcul multipartite', nom: 'Secure multiparty computation (MPC)', def: 'Famille de protocoles permettant à plusieurs parties de calculer ensemble un résultat à partir de données privées sans se communiquer leurs données d’entrée complètes. La confidentialité dépend du modèle de sécurité, notamment des participants compromis admis. La répartition des calculs ne prouve pas, à elle seule, l’indépendance des opérateurs.', guide: '/posts/world-id-finance-preuve-humanite/' },
       {"sigle": "RTO", "nom": "Objectif de temps de reprise", "def": "Durée maximale d’indisponibilité retenue pour une ressource informatique avant un effet jugé inacceptable sur les autres ressources ou sur l’activité. Cet objectif de préparation doit normalement laisser, dans la durée tolérable pour le processus métier, le temps nécessaire au retraitement des données. Un délai obtenu lors d’un essai dépend de son scénario et de son périmètre.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
-      {"sigle": "RPO (reprise)", "nom": "Point de reprise des données", "def": "Point dans le passé auquel les données d’un processus doivent pouvoir être récupérées après une interruption, compte tenu des sauvegardes disponibles. Il exprime la perte de données tolérée dans la préparation. Le respect de cette cible doit être éprouvé ; la restauration peut encore demander un rapprochement avec les opérations enregistrées pendant le fonctionnement dégradé.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
+      {"sigle": "RPO (reprise)", "nom": "Point de reprise des données", "def": "Point dans le passé auquel les données d’un processus doivent pouvoir être récupérées après une interruption, compte tenu des sauvegardes disponibles. Il fixe la perte maximale de données admissible, généralement exprimée en durée. Le respect de cette cible doit être éprouvé ; la restauration peut encore demander un rapprochement avec les opérations enregistrées pendant le fonctionnement dégradé.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
       {"sigle": "MTD", "nom": "Durée maximale d’interruption tolérable", "def": "Durée totale de perturbation qu’un responsable accepte pour un processus métier, en tenant compte de l’ensemble de ses conséquences. Le délai de reprise de la ressource informatique et le retraitement nécessaire des données doivent tenir dans cette durée. La limite relève d’une analyse d’impact propre à l’activité ; elle ne constitue pas un temps de reprise déjà démontré.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
       {"sigle": "Dépendance commune", "nom": "Plusieurs services reposant sur une même ressource", "def": "Situation dans laquelle plusieurs fonctions ou organisations utilisent un même prestataire, service ou socle technique. Des contrats avec des fournisseurs distincts peuvent aussi converger vers une infrastructure commune par la sous-traitance. Son interruption peut alors affecter plusieurs clients simultanément. Le risque dépend de l’importance des fonctions soutenues et des moyens de reprise ou de remplacement disponibles.", "guide": "/posts/apres-cyberattaque-06-prestataire-commun/"},
       {"sigle": "DMS", "nom": "Dealer management system", "def": "Système de gestion utilisé dans une concession automobile pour relier notamment ventes, atelier, stocks, relation client et comptabilité. Les périmètres dépendent du logiciel et de ses connexions. Les déclarations d’Asbury et d’AutoNation après l’incident CDK de 2024 montrent que le retour du système principal et celui des applications complémentaires peuvent intervenir à des dates différentes.", "guide": "/posts/apres-cyberattaque-06-prestataire-commun/"},
@@ -1447,6 +1447,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       "label": "Combien coûte une reprise plus rapide ?",
       "href": "/posts/apres-cyberattaque-08-prix-reprise/",
       "kind": "article"
+    },
+    {
+      "label": "Google Cloud : la panne londonienne et les services bancaires",
+      "href": "/posts/google-cloud-banques-automates-londres/",
+      "detail": "Séparer l’objectif de reprise des étapes de rétablissement observées.",
+      "kind": "article"
     }
   ],
   "sources": [
@@ -1468,6 +1474,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     {
       "label": "Combien coûte une reprise plus rapide ?",
       "href": "/posts/apres-cyberattaque-08-prix-reprise/",
+      "kind": "article"
+    },
+    {
+      "label": "Google Cloud : la panne londonienne et les services bancaires",
+      "href": "/posts/google-cloud-banques-automates-londres/",
+      "detail": "Distinguer le délai de reprise de la perte de données admissible.",
       "kind": "article"
     }
   ],
@@ -3141,6 +3153,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
             "label": "Les fournisseurs invisibles du risque bancaire européen",
             "href": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/",
             "kind": "article"
+        },
+        {
+            "label": "Google Cloud : la panne londonienne et les services bancaires",
+            "href": "/posts/google-cloud-banques-automates-londres/",
+            "detail": "Distinguer la surveillance européenne du régime britannique des tiers critiques.",
+            "kind": "article"
         }
     ],
     "sources": [
@@ -3165,6 +3183,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
         {
             "label": "Les fournisseurs invisibles du risque bancaire européen",
             "href": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/",
+            "kind": "article"
+        },
+        {
+            "label": "Google Cloud : la panne londonienne et les services bancaires",
+            "href": "/posts/google-cloud-banques-automates-londres/",
+            "detail": "Une désignation critique ne tranche pas la conformité lors d’un incident.",
             "kind": "article"
         }
     ],

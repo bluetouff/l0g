@@ -666,6 +666,12 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         "label": "The cost of a faster recovery",
         "href": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
         "kind": "article"
+      },
+      {
+        "label": "Google Cloud: the London outage and banking services",
+        "href": "/en/analysis/google-cloud-banks-london-power-control-failure/",
+        "detail": "Separating a recovery target from the observed restoration milestones.",
+        "kind": "article"
       }
     ],
     "sources": [
@@ -686,7 +692,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   "slug": "rpo-reprise",
   "sigle": "RPO (recovery)",
   "nom": "Recovery Point Objective",
-  "def": "The point in the past to which business-process data should be recoverable after an outage, given the available backups. It expresses the data loss tolerated in recovery planning. Meeting this target requires testing; restored data may still need reconciliation with records created during manual workarounds.",
+  "def": "The point in the past to which business-process data should be recoverable after an outage, given the available backups. It defines the maximum acceptable data loss, usually expressed as a duration. Meeting this target requires testing; restored data may still need reconciliation with records created during manual workarounds.",
   "guide": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
   "sectionTitle": "Digital economy & data",
   "accent": "var(--color-signal)",
@@ -696,6 +702,12 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       {
         "label": "The cost of a faster recovery",
         "href": "/en/analysis/after-cyberattack-08-faster-recovery-cost/",
+        "kind": "article"
+      },
+      {
+        "label": "Google Cloud: the London outage and banking services",
+        "href": "/en/analysis/google-cloud-banks-london-power-control-failure/",
+        "detail": "Distinguishing recovery time from acceptable data loss.",
         "kind": "article"
       }
     ],
@@ -3218,6 +3230,12 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         "label": "The invisible suppliers of European banking risk",
         "href": "/en/analysis/invisible-suppliers-european-banking-risk/",
         "kind": "article"
+      },
+      {
+        "label": "Google Cloud: the London outage and banking services",
+        "href": "/en/analysis/google-cloud-banks-london-power-control-failure/",
+        "detail": "Distinguishing European oversight from the UK critical-third-party regime.",
+        "kind": "article"
       }
     ]
   },
@@ -3251,6 +3269,12 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       {
         "label": "The invisible suppliers of European banking risk",
         "href": "/en/analysis/invisible-suppliers-european-banking-risk/",
+        "kind": "article"
+      },
+      {
+        "label": "Google Cloud: the London outage and banking services",
+        "href": "/en/analysis/google-cloud-banks-london-power-control-failure/",
+        "detail": "Critical designation does not settle compliance during an incident.",
         "kind": "article"
       }
     ]
