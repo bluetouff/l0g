@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { load } from 'js-yaml';
 import { asiaReadingPaths, selectAsiaAnalyses } from './english-reading-paths.ts';
+import { treasuryBuybackReferenceFr, treasuryBuybackReferenceEn } from './treasury-buyback-reference.ts';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 
@@ -159,8 +160,28 @@ function latestCommittedDate(paths, pathname) {
   return dates.at(-1);
 }
 
+export function referenceEditorialLastmod(updatedIso, pathname) {
+  const date = typeof updatedIso === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(updatedIso)
+    ? new Date(`${updatedIso}T00:00:00.000Z`)
+    : null;
+  if (!date || Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== updatedIso) {
+    throw new Error(`date éditoriale de référence invalide pour ${pathname}`);
+  }
+  return date.toISOString();
+}
+
 export function sitemapLastmod(pageUrl) {
   const { pathname } = new URL(pageUrl);
+
+  // Même date éditoriale que la fiche visible et son JSON-LD. La garde de
+  // révision Treasury impose une revue du contenu rendu avant sa mise à jour.
+  if (pathname === '/glossaire/treasury-buyback/') {
+    return referenceEditorialLastmod(treasuryBuybackReferenceFr.updatedIso, pathname);
+  }
+  if (pathname === '/en/glossary/treasury-buyback/') {
+    return referenceEditorialLastmod(treasuryBuybackReferenceEn.updatedIso, pathname);
+  }
+
   const paths = new Set();
   addDirectPageSources(paths, pathname);
 

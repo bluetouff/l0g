@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import test from 'node:test';
-import { asiaHubContentSources, parseSitemapContentEntry, sitemapLastmod } from '../src/config/sitemap-lastmod.mjs';
+import { asiaHubContentSources, parseSitemapContentEntry, referenceEditorialLastmod, sitemapLastmod } from '../src/config/sitemap-lastmod.mjs';
+import { treasuryBuybackReferenceFr, treasuryBuybackReferenceEn } from '../src/config/treasury-buyback-reference.ts';
 
 const cases = [
   {
@@ -38,6 +39,22 @@ for (const entry of cases) {
     assert.equal(Date.parse(sitemapLastmod(entry.url)), Date.parse(expected));
   });
 }
+
+for (const [pathname, reference] of [
+  ['/glossaire/treasury-buyback/', treasuryBuybackReferenceFr],
+  ['/en/glossary/treasury-buyback/', treasuryBuybackReferenceEn],
+]) {
+  test(`${pathname} conserve la date éditoriale de sa référence`, () => {
+    assert.equal(sitemapLastmod(`https://l0g.fr${pathname}`), `${reference.updatedIso}T00:00:00.000Z`);
+  });
+}
+
+test('les dates de référence exigent un jour civil ISO réel', () => {
+  assert.equal(referenceEditorialLastmod('2024-02-29', '/reference/'), '2024-02-29T00:00:00.000Z');
+  for (const value of [undefined, null, '', '2026-02-29', '2026-02-30', '2026-13-01', '2026-10-23T12:00:00Z', '23/10/2026']) {
+    assert.throws(() => referenceEditorialLastmod(value, '/reference/'), /date éditoriale de référence invalide/);
+  }
+});
 
 test('le hub Asie tient compte du parcours effectivement ajouté à sa page', () => {
   const committed = execFileSync(
