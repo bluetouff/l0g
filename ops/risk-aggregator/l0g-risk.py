@@ -590,7 +590,7 @@ def idx_debt(src, attempt_at):
     item["freshnessPolicyVersion"] = quality.get("policy_version")
     if quality.get("status") == "cached":
         cached_signals = quality.get("cached_signals")
-        if (quality.get("policy_version") != "3" or not isinstance(cached_signals, list)
+        if (quality.get("policy_version") not in {"3", "4"} or not isinstance(cached_signals, list)
                 or not cached_signals):
             raise ValueError("provenance du cache dette absente ou non reconnue")
         item["qualityStatus"] = "degraded"

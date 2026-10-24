@@ -101,6 +101,16 @@ test('la dette différée annonce sa prochaine limite sans simuler une panne', (
   assert.ok(report.warnings.some((warning) => warning.includes('GFDEGDQ188S, limite de fraîcheur le 2026-07-25')));
 });
 
+test('la politique dette 4 conserve les contrôles de validité et la qualification du retard', () => {
+  const input = fixture();
+  input.debt.quality = { policy_version: '4', status: 'official-delayed', expiring_signals: [] };
+  input.debt.valid_until = '2026-07-18T10:15:00Z';
+  input.aggregate.indices.find((item) => item.key === 'debt').qualityStatus = 'official-delayed';
+  assert.equal(auditRiskFlow(input, now).ok, true);
+  input.debt.valid_until = now;
+  assert.ok(auditRiskFlow(input, now).errors.some((error) => error.includes('publication expirée')));
+});
+
 test('une dette différée ne peut masquer son retard ni dépasser sa validité', () => {
   const input = fixture();
   input.debt.quality = { policy_version: '2', status: 'official-delayed', expiring_signals: [] };

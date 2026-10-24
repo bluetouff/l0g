@@ -34,6 +34,17 @@ def item(key, value, source_updated="2026-07-18T08:00:00Z"):
 
 
 class AggregatorContractTest(unittest.TestCase):
+    def test_debt_calendar_policy_preserves_cached_and_delayed_qualification(self):
+        for status in ("cached", "official-delayed"):
+            snapshot = self.debt_v2()
+            snapshot["quality"] = {"status": status, "policy_version": "4", "cached_signals": ["GFDEGDQ188S"]}
+            with patch.object(RISK, "fetch_json", return_value=snapshot):
+                current = RISK.idx_debt({"url": "https://debt.l0g.fr/latest.json"}, "2026-10-08T10:05:00Z")
+            self.assertEqual(current["value"], 54)
+            self.assertEqual(current["freshnessPolicyVersion"], "4")
+            self.assertEqual(current["qualityStatus"], "degraded" if status == "cached" else "official-delayed")
+            self.assertEqual(current.get("cacheUsed", False), status == "cached")
+
     def test_debt_validated_cache_remains_visible_without_becoming_nominal(self):
         snapshot = self.debt_v2()
         snapshot["quality"] = {"status": "cached", "policy_version": "3", "cached_signals": ["TEST"]}

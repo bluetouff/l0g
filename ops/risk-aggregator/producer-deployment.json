@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-24",
   "producers": {
     "us": {
       "repository": "https://github.com/bluetouff/macro_dashboard",
@@ -108,23 +108,23 @@
     },
     "debt": {
       "repository": "https://github.com/bluetouff/debt-risk-radar",
-      "revision": "23147bbb49b569dca8ce08843e613e954d2f1d5a",
+      "revision": "cf1da317d155fb1092aac70c11412ab008379861",
       "files": [
         {
           "path": "/opt/debt-risk-radar/latest_export.py",
-          "sha256": "aab7a39a820ae93a5c0e926afc21e2c25078de042bea078e901ea01c243aae53"
+          "sha256": "98465b049dee67952c0b75fe648158ce2ba9050b0275b9f699d12a57c381a46c"
         },
         {
           "path": "/opt/debt-risk-radar/catalog.py",
-          "sha256": "bec6346b298f6f13bc80aeb7a729e72ee3ae850e83ccaeec14a501193d06faf1"
+          "sha256": "329d4513f5c820685a907a8bd12c15888683a76c786b4431bfb7db2029ec0fce"
         },
         {
           "path": "/opt/debt-risk-radar/data.py",
-          "sha256": "1eef544e74135c2aaccd13cf282330966d28f33b47556c0061ed191cfcdc8369"
+          "sha256": "c68d6a3586b42d4c40ecd555be5a376e0a83070f7ba37483b37a2f85f730fca5"
         },
         {
           "path": "/opt/debt-risk-radar/quality.py",
-          "sha256": "0bdd1cb97a133025c9d9a1954fe4159d360a4645fde4881fbdd4f49876ac6d9d"
+          "sha256": "05ad84cd1d3242d39a06f2bfbf48ee103d037b3b7b82250caf31b33cd63b7aac"
         },
         {
           "path": "/opt/debt-risk-radar/http_cache.py",
@@ -132,7 +132,7 @@
         },
         {
           "path": "/opt/debt-risk-radar/source_validation.py",
-          "sha256": "1b9a547fa33d1a1d72d26fbf1170498f38a480d1fdf1af9a4e02d5930da8e0c4"
+          "sha256": "f1f8109e9b7cae68d0a18efd8dc053e629f0d91328f75ef51233c4fb866d1bc3"
         }
       ]
     }

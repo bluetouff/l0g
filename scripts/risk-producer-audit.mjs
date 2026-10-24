@@ -100,7 +100,7 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
   }
 
   const debtQuality = input.debt?.quality;
-  if (['2', '3'].includes(debtQuality?.policy_version)) {
+  if (['2', '3', '4'].includes(debtQuality?.policy_version)) {
     const debtExpiry = iso(input.debt?.valid_until);
     if (!debtExpiry || Date.parse(debtExpiry) <= Date.parse(now)) {
       errors.push('debt: publication expirée ou échéance absente');
