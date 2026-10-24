@@ -32,6 +32,8 @@ function inspectNode(node, route, file) {
   if (['h1', 'h2', 'h3'].includes(node.tagName)) {
     const heading = nodeText(node).replace(/\s+/gu, ' ').trim();
     for (const pattern of bannedPatterns) {
+      // This exact financial term names the lender's recourse perimeter, not a rhetorical contrast.
+      if (route === '/glossaire/financement-sans-recours/' && node.tagName === 'h1' && heading === 'Financement sans recours') continue;
       if (pattern.regex.test(heading)) {
         violations.push({ route, file, tag: node.tagName, heading, rule: pattern.label });
         break;

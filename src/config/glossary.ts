@@ -30,6 +30,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    {"sigle": "Financement sans recours", "nom": "Non-recourse project finance", "def": "Financement dont le remboursement repose principalement ou exclusivement sur les flux et les actifs du projet, avec un recours limité à ce périmètre plutôt qu’au patrimoine général des actionnaires. Les garanties, exceptions et engagements des sponsors doivent être vérifiés dans les contrats et le droit applicable. La qualification sans recours laisse aux prêteurs un risque économique sur le projet.", "guide": "/posts/aimants-terres-rares-gm-vac-usine-contrat/"},
+    {"sigle": "Forbearance", "nom": "Suspension temporaire de certains recours des prêteurs", "def": "Accord par lequel des prêteurs acceptent temporairement de suspendre l’exercice de certains recours pour des manquements identifiés, sous les conditions convenues. Dans le cas e-VAC, l’accord de septembre 2026 porte sur des événements de défaut précis, sans prolonger l’échéance du prêt ni modifier son principal. Sa portée dépend des clauses et de la durée de suspension.", "guide": "/posts/aimants-terres-rares-gm-vac-usine-contrat/"},
     { sigle: 'ALM', nom: 'Gestion actif-passif', def: 'Gestion coordonnée des placements et des engagements d’un établissement. Pour un assureur, elle rapproche les montants, échéances, devises et sensibilités des actifs de ceux des prestations promises, tout en prévoyant les besoins de liquidité. Les rachats des assurés et les autres options des contrats peuvent modifier les flux attendus.', guide: '/guides/lire-la-solidite-d-un-assureur-vie/' },
     { sigle: 'TRS', nom: 'Total return swap, swap de rendement total', def: 'Contrat dérivé transférant le rendement économique total d’un actif de référence, y compris ses revenus, ses variations de prix et ses pertes de crédit, en échange d’une rémunération de financement selon les termes convenus. L’exposition peut changer de mains tandis que la propriété juridique de l’actif reste inchangée. La protection dépend de l’exécution des paiements promis.', guide: '/posts/barclays-credit-prive-trs-risque/' },
     { sigle: 'Risque de contrepartie', nom: 'Risque de crédit de contrepartie', def: 'Risque qu’une contrepartie fasse défaut avant le règlement définitif des flux d’une transaction. Une perte peut survenir lorsque les contrats ont une valeur économique positive pour l’autre partie au moment du défaut. L’exposition varie avec les marchés ; les garanties et la compensation influencent la perte résiduelle.', guide: '/posts/barclays-credit-prive-trs-risque/' },
@@ -93,6 +95,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+    {"sigle": "Crédit d’impôt transférable", "nom": "Cession d’un crédit fiscal contre du numéraire", "def": "Aux États-Unis, le régime de la section 6418 permet à un contribuable éligible de céder tout ou partie de certains crédits d’impôt, dont le crédit 48C, à un tiers non lié contre un paiement exclusivement en numéraire. Le crédit attribué, le prix brut de cession et la trésorerie nette après frais sont des montants distincts. Les conditions fiscales et les obligations de conformité continuent de s’appliquer.", "guide": "/posts/aimants-terres-rares-gm-vac-usine-contrat/"},
       { sigle: 'Niveau de vie', nom: 'Revenu disponible par unité de consommation', def: 'Revenu disponible du ménage divisé par son nombre d’unités de consommation, pour tenir compte de sa taille et de sa composition. L’échelle de l’OCDE modifiée attribue une unité au premier adulte, une demi-unité aux autres personnes de quatorze ans ou plus et trois dixièmes aux enfants plus jeunes. Chaque membre d’un même ménage reçoit ainsi le même niveau de vie statistique.', guide: '/posts/budget-2027-repartition-effort-risque/' },
       { sigle: 'Propension marginale à consommer', nom: 'Réponse de la consommation à une variation de revenu', def: 'Part d’une variation du revenu disponible qui se traduit par une variation de consommation, sur un horizon défini. Sa mesure dépend du type de choc, de son anticipation et des liquidités du ménage. Le rapport entre consommation totale et revenu total mesure, lui, une propension moyenne.', guide: '/posts/budget-2027-repartition-effort-risque/' },
       { sigle: 'Multiplicateur budgétaire', nom: 'Réponse du PIB à une mesure budgétaire', def: 'Rapport entre la variation du PIB attribuée à une mesure budgétaire discrétionnaire et la variation de dépense publique ou de prélèvement qui l’a déclenchée, relativement à un scénario de référence. Le signe, l’horizon et les conventions de calcul doivent être précisés. Sa valeur dépend notamment de l’instrument, de la conjoncture et des conditions monétaires.', guide: '/posts/budget-2027-repartition-effort-risque/' },
@@ -1140,6 +1143,9 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "credit-d-impot-transferable": {"articles": [{"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}], "sources": [{"label": "IRS, FAQ sur la transférabilité des crédits d’impôt", "href": "https://www.irs.gov/credits-deductions/elective-pay-and-transferability-frequently-asked-questions-transferability", "kind": "source"}], "related": ["capex"]},
+  "financement-sans-recours": {"articles": [{"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}], "sources": [{"label": "Banque mondiale, Project Finance: Key Concepts", "href": "https://ppp.worldbank.org/financing/project-finance-concepts", "kind": "source"}], "related": ["offtake", "collateral"]},
+  "forbearance": {"articles": [{"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}], "sources": [{"label": "VAC / SEC, comptes semestriels 2026, note 19", "href": "https://www.sec.gov/Archives/edgar/data/1385849/000106299326005306/exhibit99-2.htm", "kind": "source"}], "related": ["covenant"]},
   sofr: {
     intuition: 'Le taux de référence et la marge bancaire évoluent selon des mécanismes distincts.',
     articles: [{ label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Marge croissante, taux variable et échéance du crédit Citi.', kind: 'article' }],
@@ -1151,9 +1157,9 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   covenant: {
     intuition: 'Le respect d’une clause financière se mesure avec les définitions et les seuils du contrat.',
-    articles: [{ label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Covenant de liquidité publié sans seuil chiffré dans le résumé d’octobre.', kind: 'article' }],
+    articles: [{ label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Covenant de liquidité publié sans seuil chiffré dans le résumé d’octobre.', kind: 'article' }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}],
     sources: [{ label: 'Nebius / SEC, 6-K du 22 octobre 2026', href: 'https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_6k.htm', detail: 'Covenant de liquidité minimale, autres engagements et événements de défaut soumis à exceptions et délais.', kind: 'source' }],
-    related: ['collateral', 'dscr'],
+    related: ['collateral', 'dscr', "forbearance"],
   },
   'revenus-differes': {
     intuition: 'L’avance apporte du cash et laisse une prestation à fournir ou, selon le contrat, une somme à rembourser.',
@@ -1216,12 +1222,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['capex', 'packaging-avance'],
   },
   capex: {
-    articles: [{ label: 'TSMC suit la demande de puces jusqu’au réseau électrique', href: '/posts/tsmc-puces-data-centers-risque-electrique/', kind: 'article' }, { label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Investissements effectivement payés et financement de la construction.', kind: 'article' }],
+    articles: [{ label: 'TSMC suit la demande de puces jusqu’au réseau électrique', href: '/posts/tsmc-puces-data-centers-risque-electrique/', kind: 'article' }, { label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Investissements effectivement payés et financement de la construction.', kind: 'article' }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}],
     sources: [
       { label: 'SEC, guide de lecture des états financiers', href: 'https://www.sec.gov/about/reports-publications/investorpubsbegfinstmtguide', detail: 'Tableau des flux de trésorerie : acquisitions d’immobilisations et dépenses d’investissement payées.', kind: 'source' },
       { label: 'Microsoft, résultats du quatrième trimestre de l’exercice 2026', href: 'https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4', detail: 'Présentation du 29 juillet : distinction entre capex, locations-financement et trésorerie payée pour les immobilisations ; perspectives d’investissement.', kind: 'source' },
     ],
-    related: ['fonderie', 'actif-echoue'],
+    related: ['fonderie', 'actif-echoue', "credit-d-impot-transferable"],
   },
   distillats: {
     articles: [{ label: 'Du pétrole en mer au gazole livré', href: '/posts/petrole-flux-gazole-stocks-tresorerie/', kind: 'article' }],
@@ -1365,12 +1371,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['preuve-d-humanite', 'zkp'],
   },
   'credit-renouvelable': {
-    articles: [{ label: 'JPMorgan et le prix de la puissance industrielle', href: '/posts/jpmorgan-capital-strategique/', kind: 'article' }],
+    articles: [{ label: 'JPMorgan et le prix de la puissance industrielle', href: '/posts/jpmorgan-capital-strategique/', kind: 'article' }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}],
     sources: [{ label: 'OCC, Asset-Based Lending, page 3', href: 'https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/asset-based-lending/pub-ch-asset-based-lending.pdf', detail: 'Tirages, remboursements, réutilisation et conditions de disponibilité du crédit.', kind: 'source' }],
     related: ['bfr', 'borrowing-base', 'pret-senior-garanti'],
   },
   'pret-senior-garanti': {
-    articles: [{ label: 'JPMorgan et le prix de la puissance industrielle', href: '/posts/jpmorgan-capital-strategique/', kind: 'article' }],
+    articles: [{ label: 'JPMorgan et le prix de la puissance industrielle', href: '/posts/jpmorgan-capital-strategique/', kind: 'article' }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}],
     sources: [{ label: 'SEC Investor.gov, priorité des créanciers et collatéral', href: 'https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products', detail: 'Distinction entre sûreté sur des actifs et rang de la créance.', kind: 'source' }],
     related: ['collateral', 'garantie-de-pret', 'credit-renouvelable'],
   },
@@ -2859,13 +2865,13 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   collateral: {
     intuition: 'La valeur d’un actif détenu et la capacité de financement qu’il procure sont deux mesures distinctes.',
     formula: 'couverture simplifiée = somme, pour chaque actif admissible, de sa valeur × (1 - sa décote exprimée en fraction), hors corrections supplémentaires',
-    articles: [{ label: 'Dette publique : la chaîne des garanties', href: '/posts/dette-etats-04-chaine-garanties/', kind: 'article' }, { label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' }, {"label": "GPU à crédit : le prix de la quatrième année", "href": "/posts/gpu-credit-prix-quatrieme-annee/", "detail": "Contrats, recettes au renouvellement et scénarios pédagogiques de dette.", "kind": "article"}, { label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Périmètres distincts des sûretés et limites du rang connu entre créanciers.', kind: 'article' }],
+    articles: [{ label: 'Dette publique : la chaîne des garanties', href: '/posts/dette-etats-04-chaine-garanties/', kind: 'article' }, { label: 'BCE : garanties bancaires et crédit en novembre 2026', href: '/posts/bce-garanties-banques-credit-novembre-2026/', kind: 'article' }, {"label": "GPU à crédit : le prix de la quatrième année", "href": "/posts/gpu-credit-prix-quatrieme-annee/", "detail": "Contrats, recettes au renouvellement et scénarios pédagogiques de dette.", "kind": "article"}, { label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Périmètres distincts des sûretés et limites du rang connu entre créanciers.', kind: 'article' }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}],
     sources: [
       { label: 'ESMA, SFTR article 15', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-15-reuse-financial-instruments', detail: 'Distinction entre nantissement et transfert de propriété, conditions de réutilisation.', kind: 'source' },
       { label: 'BCE, What is collateral?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/collateral.en.html', detail: 'Actif remis en garantie et réalisation en cas de défaut.', kind: 'source' },
       { label: 'BCE, What are haircuts?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/haircuts.en.html', detail: 'Valeur retenue après décote et couverture du financement.', kind: 'source' },
     ],
-    related: ['decote-de-garantie', 'ecaf', 'repo', 'abs', 'ddtl'],
+    related: ['decote-de-garantie', 'ecaf', 'repo', 'abs', 'ddtl', "financement-sans-recours"],
   },
   'decote-de-garantie': {
     intuition: 'La décote laisse au prêteur un coussin pour réaliser la garantie après un défaut.',
@@ -3324,21 +3330,18 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       "label": "Google et McKinsey : le carbone des pâturages",
       "href": "/posts/google-mckinsey-carbone-paturages/",
       "kind": "article"
-    }
-  ],
+    }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}],
   "sources": [
     {
       "label": "Symbiosis / CrossBoundary, Carbon Offtake Guide",
       "href": "https://crossboundary.com/carbon-offtake-guide/",
       "kind": "source"
-    }
-  ],
+    }, {"label": "Energy Fuels / SEC, contrat industriel et capacité réservée", "href": "https://www.sec.gov/Archives/edgar/data/1385849/000106299326005306/form8k.htm", "kind": "source"}],
   "related": [
     "credit-carbone",
     "additionnalite",
     "silvopastoralisme",
-    "permanence-du-carbone"
-  ]
+    "permanence-du-carbone", "financement-sans-recours"]
 },
 "silvopastoralisme": {
   "articles": [

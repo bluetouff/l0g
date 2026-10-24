@@ -8,12 +8,12 @@ import { test } from 'node:test';
 
 const audit = fileURLToPath(new URL('./audit-editorial-headings.mjs', import.meta.url));
 
-async function inspect(heading, route = '') {
+async function inspect(heading, route = '', tag = 'h1') {
   const directory = await mkdtemp(join(tmpdir(), 'l0g-heading-'));
   try {
     const target = join(directory, 'dist', route);
     await mkdir(target, { recursive: true });
-    await writeFile(join(target, 'index.html'), `<h1>${heading}</h1>`);
+    await writeFile(join(target, 'index.html'), `<${tag}>${heading}</${tag}>`);
     return spawnSync(process.execPath, [audit], { cwd: directory, encoding: 'utf8' });
   } finally {
     await rm(directory, { recursive: true, force: true });
@@ -39,5 +39,20 @@ test('the existing analysis-route boundary is preserved', async () => {
   for (const route of ['posts/example', 'en/analysis/example']) {
     const result = await inspect('X, pas Y', route);
     assert.equal(result.status, 0, result.stderr);
+  }
+});
+
+test('the exact non-recourse glossary term is allowed while surrounding contrasts remain blocked', async () => {
+  const route = 'glossaire/financement-sans-recours';
+  const allowed = await inspect('Financement sans recours', route);
+  assert.equal(allowed.status, 0, allowed.stderr);
+  for (const [heading, candidateRoute, tag] of [
+    ['Financement sans recours, mais avec dette', route, 'h1'],
+    ['Financement sans recours', 'glossaire/example', 'h1'],
+    ['Financement sans recours', route, 'h2'],
+    ['Un financement sans recours', route, 'h1'],
+  ]) {
+    const blocked = await inspect(heading, candidateRoute, tag);
+    assert.equal(blocked.status, 1, `${candidateRoute} ${tag}: ${blocked.stderr}`);
   }
 });

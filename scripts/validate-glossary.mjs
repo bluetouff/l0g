@@ -81,7 +81,7 @@ for (const [slug, sources] of [
   assert.notEqual(fr[0].def, en[0].def); assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
   for (const [entry, article, terms] of [[fr[0], '/posts/tsmc-puces-data-centers-risque-electrique/', glossaryEntries], [en[0], '/en/analysis/tsmc-chip-demand-data-center-power-risk/', glossaryAtlasEn]]) {
     const expectedArticles = slug === 'capex'
-      ? [article, terms === glossaryEntries ? '/posts/nebius-citi-credit-364-jours-gpu/' : '/en/analysis/nebius-citi-364-day-gpu-credit/']
+      ? [article, terms === glossaryEntries ? '/posts/nebius-citi-credit-364-jours-gpu/' : '/en/analysis/nebius-citi-364-day-gpu-credit/', terms === glossaryEntries ? '/posts/aimants-terres-rares-gm-vac-usine-contrat/' : '/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/']
       : [article];
     assert.equal(entry.guide, article); assert.deepEqual(entry.atlas.articles.map(link => link.href), expectedArticles);
     assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
@@ -97,6 +97,38 @@ assert.match(glossaryEntries.find(entry => entry.slug === 'fonderie').def, /clie
 assert.match(glossaryAtlasEnBySlug.get('fonderie').def, /integrated circuits designed by its customers.*silicon wafers/u);
 assert.match(glossaryEntries.find(entry => entry.slug === 'capex').def, /périmètre publié.*investissements payés.*location.*engagements futurs.*budget.*prévues.*période/u);
 assert.match(glossaryAtlasEnBySlug.get('capex').def, /scope.*cash investment.*leases.*future commitments.*budget.*planned.*actual expenditure.*period/u);
+
+// Industrial funding distinguishes a remedy standstill, project recourse and tax-credit proceeds.
+const vacArticleFr = '/posts/aimants-terres-rares-gm-vac-usine-contrat/';
+const vacArticleEn = '/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/';
+for (const [slug, source, related] of [["forbearance", "https://www.sec.gov/Archives/edgar/data/1385849/000106299326005306/exhibit99-2.htm", ["covenant"]], ["financement-sans-recours", "https://ppp.worldbank.org/financing/project-finance-concepts", ["offtake", "collateral"]], ["credit-d-impot-transferable", "https://www.irs.gov/credits-deductions/elective-pay-and-transferability-frequently-asked-questions-transferability", ["capex"]]]) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(en[0].robots, 'noindex,follow'); assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.notEqual(fr[0].def, en[0].def);
+  for (const [entry, article, terms] of [[fr[0], vacArticleFr, glossaryEntries], [en[0], vacArticleEn, glossaryAtlasEn]]) {
+    assert.equal(entry.guide, article);
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    assert.deepEqual(entry.atlas.sources.map(link => link.href), [source]);
+    assert.deepEqual(entry.atlas.related, related);
+    for (const neighbor of related) assert(terms.find(term => term.slug === neighbor).atlas.related.includes(slug));
+    assert(!entry.def.includes('—'));
+  }
+}
+for (const slug of ['forbearance', 'financement-sans-recours', 'credit-d-impot-transferable', 'covenant', 'capex', 'offtake', 'collateral', 'credit-renouvelable', 'pret-senior-garanti']) {
+  for (const [entry, article] of [[glossaryEntries.find(term => term.slug === slug), vacArticleFr], [glossaryAtlasEnBySlug.get(slug), vacArticleEn]]) {
+    assert.deepEqual(entry.atlas.articles.filter(link => link.href === article).map(link => link.href), [article], `${slug}: missing or duplicate GM/VAC backlink`);
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'forbearance').def, /temporairement.*recours.*manquements.*sans prolonger.*échéance.*principal/u);
+assert.match(glossaryAtlasEnBySlug.get('forbearance').def, /temporarily.*remedies.*defaults.*maturity and principal unchanged/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'financement-sans-recours').def, /flux et les actifs du projet.*actionnaires.*garanties, exceptions/u);
+assert.match(glossaryAtlasEnBySlug.get('financement-sans-recours').def, /cash flows and assets.*shareholders.*Guarantees, exceptions/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'credit-d-impot-transferable').def, /6418.*48C.*tiers non lié.*numéraire.*prix brut.*trésorerie nette/u);
+assert.match(glossaryAtlasEnBySlug.get('credit-d-impot-transferable').def, /6418.*48C.*unrelated party.*cash.*gross sale proceeds.*net cash/u);
 
 // The Nebius analysis connects funding terms without promoting short glossary pages.
 for (const slug of ['sofr', 'rpo', 'capex', 'collateral', 'covenant', 'revenus-differes']) {
@@ -687,7 +719,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 313, 'Le corpus anglais ajoute SOFR, covenant et revenus différés à ses 310 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 316, 'Le corpus anglais ajoute trois notions de financement industriel à ses 313 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -888,8 +920,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 704, 'Le corpus ajoute covenant et revenus différés à ses 702 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 302, 'Le graphe Atlas ajoute SOFR, covenant et revenus différés à ses 299 nœuds existants');
+assert.equal(glossaryEntries.length, 707, 'Le corpus ajoute trois notions de financement industriel à ses 704 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 305, 'Le graphe Atlas ajoute trois notions de financement industriel à ses 302 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1311,7 +1343,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 859, 'Le graphe Atlas ajoute les cinq relations de SOFR, covenant et revenus différés à ses 854 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 867, 'Le graphe Atlas ajoute huit relations réciproques de financement industriel à ses 859 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

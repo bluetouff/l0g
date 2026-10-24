@@ -209,6 +209,9 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {"slug": "credit-d-impot-transferable", "sigle": "Transferable tax credit", "nom": "Selling an eligible tax credit for cash", "def": "Under US section 6418, an eligible taxpayer can transfer all or part of certain tax credits, including the section 48C credit, to an unrelated party solely in exchange for cash. The credit awarded, gross sale proceeds and net cash after fees are distinct amounts. Tax eligibility and ongoing compliance requirements continue to apply.", "guide": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "GM, VAC and financing the Sumter magnet factory", "href": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "kind": "article"}], "sources": [{"label": "IRS, tax-credit transferability FAQs", "href": "https://www.irs.gov/credits-deductions/elective-pay-and-transferability-frequently-asked-questions-transferability", "kind": "source"}], "related": ["capex"]}},
+  {"slug": "financement-sans-recours", "sigle": "Non-recourse financing", "nom": "Lending against a project’s own cash flows and assets", "def": "Financing repaid primarily or exclusively from a project’s cash flows and assets, with lender recourse limited to that perimeter rather than shareholders’ general assets. Guarantees, exceptions and sponsor undertakings require examination of the contracts and applicable law. Lenders remain exposed to the project’s economic performance.", "guide": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "sectionTitle": "Banking & balance-sheet management", "accent": "var(--color-topic-blue)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "GM, VAC and financing the Sumter magnet factory", "href": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "kind": "article"}], "sources": [{"label": "World Bank, Project Finance: Key Concepts", "href": "https://ppp.worldbank.org/financing/project-finance-concepts", "kind": "source"}], "related": ["offtake", "collateral"]}},
+  {"slug": "forbearance", "sigle": "Forbearance", "nom": "Temporary suspension of specified lender remedies", "def": "An agreement under which lenders temporarily refrain from exercising specified remedies for identified defaults, subject to agreed conditions. e-VAC’s September 2026 agreement covers specified events of default while leaving the loan’s maturity and principal unchanged. The contractual scope and forbearance period determine the protection provided.", "guide": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "sectionTitle": "Banking & balance-sheet management", "accent": "var(--color-topic-blue)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "GM, VAC and financing the Sumter magnet factory", "href": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "kind": "article"}], "sources": [{"label": "VAC / SEC, 2026 interim accounts, Note 19", "href": "https://www.sec.gov/Archives/edgar/data/1385849/000106299326005306/exhibit99-2.htm", "kind": "source"}], "related": ["covenant"]}},
   {
     slug: 'sofr', sigle: 'SOFR', nom: 'Secured Overnight Financing Rate',
     def: 'A rate published by the Federal Reserve Bank of New York measuring the cost of overnight cash borrowing secured by US Treasury securities. Term SOFR is a forward-looking benchmark for specified tenors derived from SOFR futures markets. A loan adds its contractual margin to the applicable reference rate.',
@@ -231,9 +234,9 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ...privateCreditSection, robots: 'noindex,follow',
     atlas: {
       intuition: 'Compliance with a financial clause depends on the contract’s definitions and thresholds.',
-      articles: [{ label: 'Nebius: a 364-day Citi facility for GPU expansion', href: '/en/analysis/nebius-citi-364-day-gpu-credit/', detail: 'The October summary discloses a minimum-liquidity covenant without its numerical threshold.', kind: 'article' }],
+      articles: [{ label: 'Nebius: a 364-day Citi facility for GPU expansion', href: '/en/analysis/nebius-citi-364-day-gpu-credit/', detail: 'The October summary discloses a minimum-liquidity covenant without its numerical threshold.', kind: 'article' }, {"label": "GM, VAC and financing the Sumter magnet factory", "href": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "kind": "article"}],
       sources: [{ label: 'Nebius / SEC, October 22, 2026 Form 6-K', href: 'https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_6k.htm', detail: 'Minimum liquidity, other undertakings and events of default subject to exceptions, grace periods and thresholds.', kind: 'source' }],
-      related: ['collateral', 'dscr'],
+      related: ['collateral', 'dscr', "forbearance"],
     },
   },
   {
@@ -317,12 +320,12 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/tsmc-chip-demand-data-center-power-risk/',
     def: 'Expenditure to acquire, build or improve long-lived assets such as factories and equipment. The scope of a reported measure needs to be checked: cash investment, assets obtained through leases and future commitments may be disclosed separately. An announced budget describes planned spending; actual expenditure is measured over a specified period.',
     atlas: {
-      articles: [{ label: 'TSMC follows chip demand all the way to the power grid', href: '/en/analysis/tsmc-chip-demand-data-center-power-risk/', kind: 'article' }, { label: 'Nebius: a 364-day Citi facility for GPU expansion', href: '/en/analysis/nebius-citi-364-day-gpu-credit/', detail: 'Cash capital expenditure and funding construction.', kind: 'article' }],
+      articles: [{ label: 'TSMC follows chip demand all the way to the power grid', href: '/en/analysis/tsmc-chip-demand-data-center-power-risk/', kind: 'article' }, { label: 'Nebius: a 364-day Citi facility for GPU expansion', href: '/en/analysis/nebius-citi-364-day-gpu-credit/', detail: 'Cash capital expenditure and funding construction.', kind: 'article' }, {"label": "GM, VAC and financing the Sumter magnet factory", "href": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "kind": "article"}],
       sources: [
         { label: 'SEC, guide to financial statements', href: 'https://www.sec.gov/about/reports-publications/investorpubsbegfinstmtguide', detail: 'Cash flow statements: purchases of long-term assets and cash investment.', kind: 'source' },
         { label: 'Microsoft, fiscal 2026 fourth-quarter results', href: 'https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4', detail: 'July 29 call: distinction between capex, finance leases and cash paid for property, plant and equipment; investment outlook.', kind: 'source' },
       ],
-      related: ['fonderie', 'actif-echoue'],
+      related: ['fonderie', 'actif-echoue', "credit-d-impot-transferable"],
     },
   },
   {
@@ -546,7 +549,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'A facility allowing a borrower to draw funds, repay them and borrow again during an agreed period, subject to the contract’s limits and conditions. It can fund the interval between production spending and customer receipts. The committed limit differs from the amount drawn and from cash available to spend.',
     guide: '/en/analysis/jpmorgan-industrial-power-investment/', sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
     atlas: {
-      articles: [{ label: 'JPMorgan and the cost of industrial power', href: '/en/analysis/jpmorgan-industrial-power-investment/', kind: 'article' }],
+      articles: [{ label: 'JPMorgan and the cost of industrial power', href: '/en/analysis/jpmorgan-industrial-power-investment/', kind: 'article' }, {"label": "GM, VAC and financing the Sumter magnet factory", "href": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "kind": "article"}],
       sources: [{ label: 'OCC, Asset-Based Lending, printed page 3', href: 'https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/asset-based-lending/pub-ch-asset-based-lending.pdf', detail: 'Draws, repayments, reborrowing and the conditions for continued availability.', kind: 'source' }],
       related: ['bfr', 'borrowing-base', 'pret-senior-garanti'],
     },
@@ -556,7 +559,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'A loan backed by security interests in assets and ranking ahead of specified other claims. The agreement and applicable law determine its priority and enforcement rights. These protections do not ensure full repayment or automatically make a government responsible for losses.',
     guide: '/en/analysis/jpmorgan-industrial-power-investment/', sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
     atlas: {
-      articles: [{ label: 'JPMorgan and the cost of industrial power', href: '/en/analysis/jpmorgan-industrial-power-investment/', kind: 'article' }],
+      articles: [{ label: 'JPMorgan and the cost of industrial power', href: '/en/analysis/jpmorgan-industrial-power-investment/', kind: 'article' }, {"label": "GM, VAC and financing the Sumter magnet factory", "href": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "kind": "article"}],
       sources: [{ label: 'SEC Investor.gov, creditor priority and collateral', href: 'https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products', detail: 'The distinct roles of collateral rights and claim seniority.', kind: 'source' }],
       related: ['collateral', 'garantie-de-pret', 'credit-renouvelable'],
     },
@@ -2747,13 +2750,13 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     atlas: {
       intuition: 'The value of an asset a bank owns and the borrowing it can support are different measures.',
       formula: 'simplified coverage = sum, for each eligible asset, of its value × (1 - its haircut as a fraction), excluding further adjustments',
-      articles: [{ label: 'Government debt: the collateral chain', href: '/en/analysis/dette-etats-04-chaine-garanties/', kind: 'article' }, { label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }, {"label": "GPU-backed debt: pricing the fourth year", "href": "/en/analysis/gpu-backed-debt-fourth-year/", "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.", "kind": "article"}, { label: 'Nebius: a 364-day Citi facility for GPU expansion', href: '/en/analysis/nebius-citi-364-day-gpu-credit/', detail: 'Distinct collateral footprints and limits to the disclosed ranking among creditors.', kind: 'article' }],
+      articles: [{ label: 'Government debt: the collateral chain', href: '/en/analysis/dette-etats-04-chaine-garanties/', kind: 'article' }, { label: 'ECB collateral rules and bank credit in November 2026', href: '/en/analysis/ecb-collateral-bank-credit-november-2026/', kind: 'article' }, {"label": "GPU-backed debt: pricing the fourth year", "href": "/en/analysis/gpu-backed-debt-fourth-year/", "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.", "kind": "article"}, { label: 'Nebius: a 364-day Citi facility for GPU expansion', href: '/en/analysis/nebius-citi-364-day-gpu-credit/', detail: 'Distinct collateral footprints and limits to the disclosed ranking among creditors.', kind: 'article' }, {"label": "GM, VAC and financing the Sumter magnet factory", "href": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "kind": "article"}],
       sources: [
         { label: 'ESMA, SFTR Article 15', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-15-reuse-financial-instruments', detail: 'Security collateral, title transfer and conditions for reuse.', kind: 'source' },
         { label: 'ECB, What is collateral?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/collateral.en.html', detail: 'Pledged assets and realisation following a default.', kind: 'source' },
         { label: 'ECB, What are haircuts?', href: 'https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/haircuts.en.html', detail: 'Post-haircut value and coverage of borrowing.', kind: 'source' },
       ],
-      related: ['decote-de-garantie', 'ecaf', 'repo', 'abs', 'ddtl'],
+      related: ['decote-de-garantie', 'ecaf', 'repo', 'abs', 'ddtl', "financement-sans-recours"],
     },
   },
   {
@@ -3467,21 +3470,18 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         "label": "Google and McKinsey: pasture carbon and timber",
         "href": "/en/analysis/google-mckinsey-pasture-carbon-timber/",
         "kind": "article"
-      }
-    ],
+      }, {"label": "GM, VAC and financing the Sumter magnet factory", "href": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "kind": "article"}],
     "sources": [
       {
         "label": "Symbiosis / CrossBoundary, Carbon Offtake Guide",
         "href": "https://crossboundary.com/carbon-offtake-guide/",
         "kind": "source"
-      }
-    ],
+      }, {"label": "Energy Fuels / SEC, industrial supply agreement and reserved capacity", "href": "https://www.sec.gov/Archives/edgar/data/1385849/000106299326005306/form8k.htm", "kind": "source"}],
     "related": [
       "credit-carbone",
       "additionnalite",
       "silvopastoralisme",
-      "permanence-du-carbone"
-    ]
+      "permanence-du-carbone", "financement-sans-recours"]
   }
 },
 {
