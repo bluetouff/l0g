@@ -255,7 +255,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/guides/read-life-insurer-health/',
     atlas: {
       intuition: 'An investment must help fund a future payment in the currency and at the time it falls due.',
-      articles: [{ label: 'Japanese savings and global borrowing costs', href: '/en/analysis/japan-savings-global-borrowing-costs/', detail: 'Reinvestment choices, currency hedges and liability schedules.', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }],
+      articles: [{ label: 'The strength of an insurer’s promise', href: '/en/analysis/insurers-asset-managers-08-promise/', kind: 'article' }, { label: 'Japanese savings and global borrowing costs', href: '/en/analysis/japan-savings-global-borrowing-costs/', detail: 'Reinvestment choices, currency hedges and liability schedules.', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }],
       guides: [{ label: 'Reading a life insurer’s financial health', href: '/en/guides/read-life-insurer-health/', kind: 'guide' }],
       sources: [{ label: 'Bank of Canada, liquidity risks at life insurers', href: 'https://www.bankofcanada.ca/2024/04/staff-analytical-note-2024-7/', detail: 'ALM, duration, currency risk, surrenders and liquidity needs.', kind: 'source' }],
       related: ['duration', 'couverture-de-change'],
@@ -1946,7 +1946,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'The insurer takes back risks previously ceded to a reinsurer under treaty-defined triggers, sometimes before formal insolvency. Recapture requires assessment of recoverable assets, access rights, liquidity needs and required capital. The amount of liabilities recaptured is not a measure of permanent loss.',
     atlas: {
       intuition: 'The cedant must be able to continue paying when its counterparty no longer performs.',
-      articles: [{ label: 'When risks return to the insurer', href: '/en/analysis/insurers-asset-managers-07-risks-return/', kind: 'article' }, { label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }, { label: 'The Bermuda balance sheet behind an American annuity', href: '/en/analysis/bermuda-reinsurance-jackson-athene/', kind: 'article' }],
+      articles: [{ label: 'The strength of an insurer’s promise', href: '/en/analysis/insurers-asset-managers-08-promise/', kind: 'article' }, { label: 'When risks return to the insurer', href: '/en/analysis/insurers-asset-managers-07-risks-return/', kind: 'article' }, { label: 'Pensions and Bermuda: the cost of recapture', href: '/en/analysis/pensions-bermuda-recapture-risk/', kind: 'article' }, { label: 'Who owes AT&T retirees their pensions?', href: '/en/analysis/when-pension-contracts-change-hands/', kind: 'article' }, { label: 'The Bermuda balance sheet behind an American annuity', href: '/en/analysis/bermuda-reinsurance-jackson-athene/', kind: 'article' }],
       sources: [{ label: 'PRA: SS5/24, October 2025 version', href: 'https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2025/ss524-october-2025.pdf', detail: 'Paragraphs 2.5–2.22: recapture, collateral, liquidity and triggers.', kind: 'source' }],
       related: ['reassurance-adossee-a-l-actif', 'funds-withheld', 'matching-adjustment', 'modco'],
     },
@@ -3895,9 +3895,9 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   },
   {
     slug: 'unite-de-compte', sigle: 'Unit-linked option', nom: 'Investment-linked life insurance benefit',
-    def: "A life insurance obligation expressed in units whose euro value tracks a financial or property investment. The insurer commits to a number of units; the policyholder bears changes in unit value, subject to any additional contractual guarantees. The policy surrender timetable and the underlying fund’s liquidity are separate questions.",
+    def: "A life insurance obligation expressed in units whose euro value tracks a financial or property investment. The insurer commits to a number of units, which policy charges can reduce; the policyholder bears changes in unit value, subject to any additional contractual guarantees. The policy surrender timetable and the underlying fund’s liquidity are separate questions.",
     guide: '/en/analysis/scpi-life-insurance-banks-contagion/', sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)',
-    atlas: { sources: [{ label: 'ABE Infoservice', href: 'https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-avant-de-souscrire-beneficier-dun-conseil-adapte-comprendre-et-comparer-les', detail: 'Unit-linked commitments and capital-loss risk. French source.', kind: 'source' }], related: ['scpi', 'niveau-3-ifrs-9'] },
+    atlas: { articles: [{ label: 'The strength of an insurer’s promise', href: '/en/analysis/insurers-asset-managers-08-promise/', kind: 'article' }], sources: [{ label: 'ABE Infoservice', href: 'https://www.abe-infoservice.fr/fr/assurance/assurance-vie/que-faut-il-savoir-avant-de-souscrire-beneficier-dun-conseil-adapte-comprendre-et-comparer-les', detail: 'Unit-linked commitments and capital-loss risk. French source.', kind: 'source' }, { label: 'Spirica, Linxea Spirit 2 policy terms, 1 September 2026', href: 'https://www.linxea.com/assets/uploads/2020/08/SPK_LINXEA_CG4445_20260901_VDEF-1.pdf', detail: 'Section 12.2, printed p. 15 / PDF 16; table, printed p. 18 / PDF 19: policy charges deducted by reducing the number of units. French source.', kind: 'source' }], related: ['scpi', 'niveau-3-ifrs-9'] },
   },
   {
     slug: 'niveau-3-ifrs-9', sigle: 'IFRS 9 Stage 3', nom: 'Credit-impaired financial asset',
@@ -4350,7 +4350,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     atlas: {
       intuition: 'A reinsurer gives an insurer another balance sheet with which to absorb severe losses. It does not replace the insurer in the customer’s policy.',
       whyNow: 'Natural catastrophes can hit many policies at once, making reinsurance and its ultimate backstops central to insurability.',
-      articles: [
+      articles: [{ label: 'The strength of an insurer’s promise', href: '/en/analysis/insurers-asset-managers-08-promise/', kind: 'article' },
         { label: 'Aon and Blackstone: who sets the price of risk?', href: '/en/analysis/aon-blackstone-cortina-reinsurance-risk-pricing/', detail: 'Treaty participation, discounts, loss accumulation and continuity of capacity.', kind: 'article' },
         { label: 'When climate turns the state into a reinsurer', href: '/en/analysis/when-climate-turns-state-into-reinsurer/', detail: 'How France layers policyholder, insurer, CCR and state balance sheets.', kind: 'article' },
       ],

@@ -2,6 +2,7 @@
 // Keep new SVG suites here: svg-test-suites.test.mjs rejects missing or duplicate coverage.
 export const SVG_TEST_SUITES = Object.freeze({
   source: Object.freeze([
+    'scripts/insurance-promise-infographics.test.mjs',
     'scripts/insurance-recapture-infographics.test.mjs',
     'scripts/insurance-risk-infographics.test.mjs',
     'scripts/insurance-returns-infographics.test.mjs',
@@ -164,6 +165,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/yanbu-infographics.test.mjs',
   ]),
   rendered: Object.freeze([
+    'scripts/insurance-promise-rendered-infographics.test.mjs',
     'scripts/insurance-recapture-rendered-infographics.test.mjs',
     'scripts/insurance-risk-rendered-infographics.test.mjs',
     'scripts/insurance-returns-rendered-infographics.test.mjs',
