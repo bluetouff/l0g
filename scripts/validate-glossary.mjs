@@ -19,6 +19,40 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Accounting expense recognition and a bank's cost ratio remain sourced short definitions.
+const barclaysAiArticleFr = '/posts/barclays-ia-preuves-suppressions-postes/';
+const barclaysAiArticleEn = '/en/analysis/barclays-ai-job-cuts-productivity-evidence/';
+for (const [slug, sources, related] of [
+  ['provision-comptable', ['https://www.ifrs.org/issued-standards/list-of-standards/ias-37-provisions-contingent-liabilities-and-contingent-assets/', 'https://www.ifrs.org/news-and-events/updates/ifric/2024/ifric-update-march-2024/', 'https://www.ifrs.org/issued-standards/list-of-standards/ias-19-employee-benefits/'], ['coefficient-d-exploitation']],
+  ['coefficient-d-exploitation', ['https://home.barclays/content/dam/home-barclays/documents/investor-relations/ResultAnnouncements/Q32026Results/Q326-BPLC-Results-RA.pdf'], ['provision-comptable']],
+]) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert(!glossaryReferenceCandidateSlugs.includes(slug));
+  assert.equal(en[0].robots, 'noindex,follow');
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  for (const [entry, article, terms] of [[fr[0], barclaysAiArticleFr, glossaryEntries], [en[0], barclaysAiArticleEn, glossaryAtlasEn]]) {
+    assert.equal(entry.guide, article);
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    assert.deepEqual(entry.atlas.sources.map(link => link.href), sources);
+    assert.deepEqual(entry.atlas.related, related);
+    for (const peer of related) assert(terms.find(term => term.slug === peer).atlas.related.includes(slug));
+    assert(!entry.def.includes('—'));
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'provision-comptable').def, /IAS 37.*obligation actuelle.*sortie probable.*estimation fiable.*IAS 19/);
+assert.match(glossaryAtlasEnBySlug.get('provision-comptable').def, /IAS 37.*present obligation.*probable outflow.*reliable estimate.*IAS 19/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'coefficient-d-exploitation').def, /dépenses totales d’exploitation par le revenu total.*varier.*revenus progressent plus vite/);
+assert.match(glossaryAtlasEnBySlug.get('coefficient-d-exploitation').def, /total operating expenses divided by total income.*vary.*income grows faster/);
+for (const slug of ['rachat-d-actions', 'actions-propres']) {
+  for (const [entry, article] of [[glossaryEntries.find(term => term.slug === slug), barclaysAiArticleFr], [glossaryAtlasEnBySlug.get(slug), barclaysAiArticleEn]]) {
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  }
+}
+
 // Ratings and outlooks remain distinct, sourced bilingual short definitions.
 const ratingsArticleFr = '/posts/france-moodys-budget-2027-prix-dette/';
 const ratingsArticleEn = '/en/analysis/france-moodys-reprieve-2027-borrowing-costs/';
@@ -752,7 +786,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 318, 'Le corpus anglais ajoute deux notions de notation à ses 316 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 320, 'Le corpus anglais ajoute deux notions comptables à ses 318 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -953,8 +987,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 709, 'Le corpus ajoute deux notions de notation à ses 707 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 308, 'Le graphe Atlas ajoute deux notions de notation et le nœud OAT à ses 305 nœuds existants');
+assert.equal(glossaryEntries.length, 711, 'Le corpus ajoute deux notions comptables à ses 709 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 310, 'Le graphe Atlas ajoute deux notions comptables à ses 308 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1376,7 +1410,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 875, 'Le graphe Atlas ajoute huit relations réciproques de notation et de coupon OAT à ses 867 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 877, 'Le graphe Atlas ajoute deux relations réciproques comptables à ses 875 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

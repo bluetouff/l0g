@@ -30,6 +30,16 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    {
+      sigle: 'Provision comptable', nom: 'Passif au montant ou à l’échéance incertain',
+      def: 'Au sens d’IAS 37, passif dont le montant ou l’échéance est incertain. Sa comptabilisation suppose une obligation actuelle issue d’un événement passé, une sortie probable de ressources et une estimation fiable du montant. La charge et le paiement peuvent intervenir à des dates différentes. Les indemnités de cessation d’emploi relèvent d’IAS 19.',
+      guide: '/posts/barclays-ia-preuves-suppressions-postes/',
+    },
+    {
+      sigle: 'Coefficient d’exploitation', nom: 'Charges rapportées aux revenus d’une banque',
+      def: 'Rapport des charges retenues aux revenus d’une banque sur une même période. Barclays le calcule en divisant les dépenses totales d’exploitation par le revenu total. Les périmètres et ajustements peuvent varier selon les établissements. Le ratio peut baisser lorsque les revenus progressent plus vite que les dépenses, même si celles-ci augmentent.',
+      guide: '/posts/barclays-ia-preuves-suppressions-postes/',
+    },
     {"sigle": "Financement sans recours", "nom": "Non-recourse project finance", "def": "Financement dont le remboursement repose principalement ou exclusivement sur les flux et les actifs du projet, avec un recours limité à ce périmètre plutôt qu’au patrimoine général des actionnaires. Les garanties, exceptions et engagements des sponsors doivent être vérifiés dans les contrats et le droit applicable. La qualification sans recours laisse aux prêteurs un risque économique sur le projet.", "guide": "/posts/aimants-terres-rares-gm-vac-usine-contrat/"},
     {"sigle": "Forbearance", "nom": "Suspension temporaire de certains recours des prêteurs", "def": "Accord par lequel des prêteurs acceptent temporairement de suspendre l’exercice de certains recours pour des manquements identifiés, sous les conditions convenues. Dans le cas e-VAC, l’accord de septembre 2026 porte sur des événements de défaut précis, sans prolonger l’échéance du prêt ni modifier son principal. Sa portée dépend des clauses et de la durée de suspension.", "guide": "/posts/aimants-terres-rares-gm-vac-usine-contrat/"},
     { sigle: 'ALM', nom: 'Gestion actif-passif', def: 'Gestion coordonnée des placements et des engagements d’un établissement. Pour un assureur, elle rapproche les montants, échéances, devises et sensibilités des actifs de ceux des prestations promises, tout en prévoyant les besoins de liquidité. Les rachats des assurés et les autres options des contrats peuvent modifier les flux attendus.', guide: '/guides/lire-la-solidite-d-un-assureur-vie/' },
@@ -902,7 +912,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-24';
+export const glossaryUpdatedIso = '2026-10-25';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1145,6 +1155,19 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'provision-comptable': {
+    intuition: 'Reconnaître une charge et une obligation peut précéder le paiement correspondant.',
+    articles: [{ label: 'Barclays : les preuves attendues derrière les suppressions de postes', href: '/posts/barclays-ia-preuves-suppressions-postes/', kind: 'article' }],
+    sources: [{ label: 'IFRS Foundation, IAS 37', href: 'https://www.ifrs.org/issued-standards/list-of-standards/ias-37-provisions-contingent-liabilities-and-contingent-assets/', detail: 'Définition des provisions.', kind: 'source' }, { label: 'IFRS Foundation, IFRIC Update, mars 2024', href: 'https://www.ifrs.org/news-and-events/updates/ifric/2024/ifric-update-march-2024/', detail: 'IAS 37, paragraphe 14 : obligation actuelle, sortie probable et estimation fiable.', kind: 'source' }, { label: 'IFRS Foundation, IAS 19', href: 'https://www.ifrs.org/issued-standards/list-of-standards/ias-19-employee-benefits/', detail: 'Indemnités de cessation d’emploi : dette et charge comptabilisées à la première des deux dates prévues.', kind: 'source' }],
+    related: ['coefficient-d-exploitation'],
+  },
+  'coefficient-d-exploitation': {
+    intuition: 'Une charge nouvelle et une variation des revenus affectent deux côtés du même ratio.',
+    formula: 'coefficient d’exploitation = charges retenues / revenus retenus × 100',
+    articles: [{ label: 'Barclays : les preuves attendues derrière les suppressions de postes', href: '/posts/barclays-ia-preuves-suppressions-postes/', kind: 'article' }],
+    sources: [{ label: 'Barclays, résultats du troisième trimestre 2026', href: 'https://home.barclays/content/dam/home-barclays/documents/investor-relations/ResultAnnouncements/Q32026Results/Q326-BPLC-Results-RA.pdf', detail: 'Page PDF 48, mesures alternatives de performance : dépenses totales d’exploitation divisées par revenu total.', kind: 'source' }],
+    related: ['provision-comptable'],
+  },
   "agence-de-notation": {"articles": [{"label": "France, Moody’s et le prix de la dette", "href": "/posts/france-moodys-budget-2027-prix-dette/", "kind": "article"}], "sources": [{"label": "ESMA, supervision des agences de notation", "href": "https://www.esma.europa.eu/esmas-activities/investors-and-issuers/credit-rating-agencies", "kind": "source"}, {"label": "S&P Global Ratings, principes de la notation", "href": "https://www.spglobal.com/ratings/en/credit-ratings/about/understanding-credit-ratings", "kind": "source"}], "related": ["perspective-de-notation", "investment-grade"]},
   "perspective-de-notation": {"articles": [{"label": "France, Moody’s et le prix de la dette", "href": "/posts/france-moodys-budget-2027-prix-dette/", "kind": "article"}], "sources": [{"label": "S&P Global Ratings, définitions du 16 décembre 2025, section II", "href": "https://maalot.co.il/Publications/RS20251216162753.pdf", "kind": "source"}], "related": ["agence-de-notation", "investment-grade"]},
   oat: {"intuition": "Le coupon suit le contrat ; le prix d’émission détermine le rendement du nouveau financement.", "articles": [{"label": "France, Moody’s et le prix de la dette", "href": "/posts/france-moodys-budget-2027-prix-dette/", "kind": "article"}], "sources": [{"label": "Agence France Trésor, nos produits", "href": "https://www.aft.gouv.fr/fr/nos-produits", "kind": "source"}], "related": ["coupon-obligataire"]},
@@ -3451,8 +3474,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
 },
   tpi: {"intuition": "Un soutien monétaire potentiel dépend de critères économiques et budgétaires ainsi que de la décision du Conseil des gouverneurs.", "articles": [{"label": "Dette publique : le dernier acheteur", "href": "/posts/dette-etats-07-dernier-acheteur/", "kind": "article"}, {"label": "LFI, RN : dette, fiscalité et risques de marché", "href": "/posts/lfi-rn-risque-politique-marches-dette-fiscalite/", "kind": "article"}], "sources": [{"label": "BCE, Transmission Protection Instrument, 21 juillet 2022", "href": "https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220721~973e6e7273.en.html", "kind": "source"}]},
   streamshare: {"articles": [{"label": "Musique IA : qui touche l’argent des fausses écoutes ?", "href": "/posts/musique-ia-fausses-ecoutes-revenus-streaming/", "kind": "article"}], "sources": [{"label": "Spotify, Understanding Spotify royalties", "href": "https://support.spotify.com/de-en/artists/article/understanding-spotify-royalties/", "kind": "source"}]},
-  "rachat-d-actions": {"articles":[{"label":"Rachats d’actions et dilution","href":"/posts/rachats-actions-anti-dilution-microsoft-airbus/","kind":"article"}],"sources":[{"label":"Microsoft / SEC, note 15, capitaux propres","href":"https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R25.htm","kind":"source"}],"related":["actions-propres","remuneration-en-actions"]},
-  "actions-propres": {"articles":[{"label":"Rachats d’actions et dilution","href":"/posts/rachats-actions-anti-dilution-microsoft-airbus/","kind":"article"}],"sources":[{"label":"AASB 132 / IAS 32, paragraphes 33 et AG36","href":"https://standards.aasb.gov.au/aasb-132-dec-2021","kind":"source"},{"label":"Microsoft / SEC, note 2, bénéfice par action","href":"https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R12.htm","kind":"source"}],"related":["rachat-d-actions","remuneration-en-actions"]},
+  "rachat-d-actions": {"articles":[{"label":"Rachats d’actions et dilution","href":"/posts/rachats-actions-anti-dilution-microsoft-airbus/","kind":"article"},{"label":"Barclays : les preuves attendues derrière les suppressions de postes","href":"/posts/barclays-ia-preuves-suppressions-postes/","kind":"article"}],"sources":[{"label":"Microsoft / SEC, note 15, capitaux propres","href":"https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R25.htm","kind":"source"}],"related":["actions-propres","remuneration-en-actions"]},
+  "actions-propres": {"articles":[{"label":"Rachats d’actions et dilution","href":"/posts/rachats-actions-anti-dilution-microsoft-airbus/","kind":"article"},{"label":"Barclays : les preuves attendues derrière les suppressions de postes","href":"/posts/barclays-ia-preuves-suppressions-postes/","kind":"article"}],"sources":[{"label":"AASB 132 / IAS 32, paragraphes 33 et AG36","href":"https://standards.aasb.gov.au/aasb-132-dec-2021","kind":"source"},{"label":"Microsoft / SEC, note 2, bénéfice par action","href":"https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R12.htm","kind":"source"}],"related":["rachat-d-actions","remuneration-en-actions"]},
   "remuneration-en-actions": {"articles":[{"label":"Rachats d’actions et dilution","href":"/posts/rachats-actions-anti-dilution-microsoft-airbus/","kind":"article"}],"sources":[{"label":"Microsoft / SEC, note 17, plans salariés","href":"https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R27.htm","kind":"source"},{"label":"IFRS 2 Share-based Payment","href":"https://www.ifrs.org/issued-standards/list-of-standards/ifrs-2-share-based-payment/","kind":"source"}],"related":["rachat-d-actions","actions-propres"]},
   cfo: {
     intuition: 'Une créance peut être protégée contre les premières pertes tout en dépendant de distributions irrégulières.',
