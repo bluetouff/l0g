@@ -539,6 +539,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Investment grade', nom: 'Catégorie investissement', def: "Catégorie de notes attribuées à un émetteur ou à une dette dont le risque de défaut est jugé relativement faible. Dans l’échelle illustrée par la SEC, elle commence à BBB−. Les symboles dépendent de l’agence. Une note reste une appréciation révisable : elle ne garantit ni remboursement ni valeur de revente et ne révèle pas le seuil prévu dans un contrat particulier.", guide: '/posts/openai-note-credit-garantie-nvidia-ipo/' },
       { sigle: 'High yield', nom: 'Haut rendement', def: "Dette d'émetteurs notés sous BBB- (BB, B, CCC et moins), dite à haut rendement ou spéculative. Rémunère un risque de défaut plus élevé ; son spread est l'un des baromètres les plus suivis du stress de crédit." },
       { sigle: 'CDX', nom: 'Indice de CDS', def: "Indice regroupant un panier de credit default swaps (CDX.NA.IG pour l'investment grade, CDX.NA.HY pour le high yield). Instrument synthétique et liquide, il se négocie en continu et bouge souvent plus vite que le marché comptant des obligations." },
+      {"sigle": "Agence de notation", "nom": "Évaluation professionnelle du risque de crédit", "def": "Organisme spécialisé qui attribue des opinions sur la solvabilité d’émetteurs ou le risque de crédit d’obligations, au moyen d’une échelle de notation. L’analyse est prospective et révisable. Dans l’Union européenne, les agences enregistrées relèvent de la supervision directe d’ESMA. Une notation porte sur le risque de crédit, distinct du rendement ou du prix de marché.", "guide": "/posts/france-moodys-budget-2027-prix-dette/"},
+      {"sigle": "Perspective de notation", "nom": "Orientation possible d’une note à moyen terme", "def": "Appréciation de l’orientation possible d’une note de crédit à moyen terme. Une perspective négative signale une possibilité de baisse ; une perspective positive, une possibilité de hausse. La perspective reste distincte de la note en vigueur : une révision peut intervenir avec une perspective stable, tandis qu’une perspective négative peut être résolue sans dégradation. L’horizon et les catégories dépendent de l’agence.", "guide": "/posts/france-moodys-budget-2027-prix-dette/"},
       { sigle: 'NRSRO', nom: 'Nationally Recognized Statistical Rating Organization', def: "Agence de notation agréée par la SEC pour que ses notes servent à des fins réglementaires. S&P, Moody's et Fitch, les trois principales, concentrent environ 95 % du marché mondial. Leur modèle dominant, l'émetteur-payeur, où l'entité notée paie sa propre note, porte un conflit d'intérêts structurel.", guide: '/guides/lire-une-notation-de-credit/' },
       { sigle: 'Matrice de transition', nom: 'Rating transition matrix', def: "Tableau qui donne, pour chaque note de départ, la probabilité de migrer vers une autre note (hausse, baisse ou défaut) sur un horizon donné, en général un an. Outil central de la gestion du risque de crédit, calibré sur l'historique des notations.", guide: '/guides/lire-une-notation-de-credit/' },
       { sigle: 'Ratio de détresse', nom: 'Distress ratio', def: "Part des obligations à haut rendement dont le spread dépasse 1 000 points de base. Mesure la taille du segment déjà en difficulté ; sa montée précède généralement les vagues de défaut." },
@@ -1143,6 +1145,9 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "agence-de-notation": {"articles": [{"label": "France, Moody’s et le prix de la dette", "href": "/posts/france-moodys-budget-2027-prix-dette/", "kind": "article"}], "sources": [{"label": "ESMA, supervision des agences de notation", "href": "https://www.esma.europa.eu/esmas-activities/investors-and-issuers/credit-rating-agencies", "kind": "source"}, {"label": "S&P Global Ratings, principes de la notation", "href": "https://www.spglobal.com/ratings/en/credit-ratings/about/understanding-credit-ratings", "kind": "source"}], "related": ["perspective-de-notation", "investment-grade"]},
+  "perspective-de-notation": {"articles": [{"label": "France, Moody’s et le prix de la dette", "href": "/posts/france-moodys-budget-2027-prix-dette/", "kind": "article"}], "sources": [{"label": "S&P Global Ratings, définitions du 16 décembre 2025, section II", "href": "https://maalot.co.il/Publications/RS20251216162753.pdf", "kind": "source"}], "related": ["agence-de-notation", "investment-grade"]},
+  oat: {"intuition": "Le coupon suit le contrat ; le prix d’émission détermine le rendement du nouveau financement.", "articles": [{"label": "France, Moody’s et le prix de la dette", "href": "/posts/france-moodys-budget-2027-prix-dette/", "kind": "article"}], "sources": [{"label": "Agence France Trésor, nos produits", "href": "https://www.aft.gouv.fr/fr/nos-produits", "kind": "source"}], "related": ["coupon-obligataire"]},
   "credit-d-impot-transferable": {"articles": [{"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}], "sources": [{"label": "IRS, FAQ sur la transférabilité des crédits d’impôt", "href": "https://www.irs.gov/credits-deductions/elective-pay-and-transferability-frequently-asked-questions-transferability", "kind": "source"}], "related": ["capex"]},
   "financement-sans-recours": {"articles": [{"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}], "sources": [{"label": "Banque mondiale, Project Finance: Key Concepts", "href": "https://ppp.worldbank.org/financing/project-finance-concepts", "kind": "source"}], "related": ["offtake", "collateral"]},
   "forbearance": {"articles": [{"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}], "sources": [{"label": "VAC / SEC, comptes semestriels 2026, note 19", "href": "https://www.sec.gov/Archives/edgar/data/1385849/000106299326005306/exhibit99-2.htm", "kind": "source"}], "related": ["covenant"]},
@@ -1855,7 +1860,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
         "label": "Dette française : échéances et refinancement",
         "href": "/posts/dette-francaise-refinancement-calendrier-taux/",
         "kind": "article"
-      }
+      },
+      {"label": "France, Moody’s et le prix de la dette", "href": "/posts/france-moodys-budget-2027-prix-dette/", "kind": "article"}
     ],
     "sources": [
       {
@@ -1877,7 +1883,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
         "label": "Dette française : échéances et refinancement",
         "href": "/posts/dette-francaise-refinancement-calendrier-taux/",
         "kind": "article"
-      }
+      },
+      {"label": "France, Moody’s et le prix de la dette", "href": "/posts/france-moodys-budget-2027-prix-dette/", "kind": "article"}
     ],
     "sources": [
       {
@@ -2508,7 +2515,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
 
   btf: {
     intuition: 'Une échéance courte permet d’ajuster la trésorerie, mais rapproche le prochain remboursement.',
-    articles: [{ label: 'Le prix du temps dans la dette française', href: '/posts/dette-francaise-prix-du-temps/', kind: 'article' }],
+    articles: [{ label: 'Le prix du temps dans la dette française', href: '/posts/dette-francaise-prix-du-temps/', kind: 'article' }, {"label": "France, Moody’s et le prix de la dette", "href": "/posts/france-moodys-budget-2027-prix-dette/", "kind": "article"}],
     sources: [{ label: 'Agence France Trésor, nos produits', href: 'https://www.aft.gouv.fr/fr/nos-produits', detail: 'BTF : titres de moins d’un an à l’émission, destinés à la gestion de trésorerie.', kind: 'source' }],
     related: ['risque-de-refinancement', 'prime-de-terme'],
   },
@@ -3725,9 +3732,10 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     ],
   },
   'investment-grade': {
+    articles: [{"label": "France, Moody’s et le prix de la dette", "href": "/posts/france-moodys-budget-2027-prix-dette/", "kind": "article"}],
     intuition: 'La note classe un risque de crédit ; le contrat détermine les conséquences attachées à cette note.',
     sources: [{ label: 'SEC, Investor.gov', href: 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated-8', detail: 'Échelles, périmètre et limites des notes de crédit.', kind: 'source' }],
-    related: ['vrg'],
+    related: ['vrg', "agence-de-notation", "perspective-de-notation"],
   },
   vrg: {
     articles: [{ label: 'Quand le crédit commence à trier l’IA', href: '/posts/quand-le-credit-commence-a-trier-l-ia/', kind: 'article' }],
@@ -3782,9 +3790,9 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   'coupon-obligataire': {
     intuition: 'Le contrat fixe les versements ; le prix payé modifie le rendement obtenu.',
-    articles: [{ label: 'Dette publique : le prix de la sortie', href: '/posts/dette-etats-06-prix-sortie/', kind: 'article' }],
+    articles: [{ label: 'Dette publique : le prix de la sortie', href: '/posts/dette-etats-06-prix-sortie/', kind: 'article' }, {"label": "France, Moody’s et le prix de la dette", "href": "/posts/france-moodys-budget-2027-prix-dette/", "kind": "article"}],
     sources: [{ label: 'SEC, prix et taux des obligations fixes', href: 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-86', kind: 'source' }],
-    related: ['duration', 'adjudication', 'risque-de-refinancement'],
+    related: ['duration', 'adjudication', 'risque-de-refinancement', "oat"],
   },
   'prime-de-terme': {
     intuition: "Un modèle sépare le rendement long entre trajectoire attendue des taux courts et rémunération du risque de duration. Cette séparation est estimée, donc incertaine.",

@@ -4021,5 +4021,496 @@
       "windowStart": "2026-10-11T08:30:00+02:00",
       "windowEnd": "2026-10-18T08:30:00+02:00"
     }
+  },
+  {
+    "issue": 13,
+    "slug": "2026-10-25",
+    "publishedAt": "2026-10-25T08:30:00+01:00",
+    "title": "L’Hebdo du 25 octobre. Aimants américains : l’usine a ouvert, son grand client s’est retiré",
+    "description": "Édition automatisée du 25 octobre : 32 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Aimants américains : l’usine a ouvert, son grand client s’est retiré",
+      "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/",
+      "update": "À Sumter, l’usine d’aimants soutenue par Washington produit déjà. GM a dénoncé son contrat. Dette, aides et risque industriel examinés dans les dépôts SEC."
+    },
+    "lead": "GM a notifié une résiliation le 1er juillet 2026 ; e-VAC a engagé un arbitrage le 7 juillet. L’usine de Sumter produisait déjà des aimants.",
+    "number": {
+      "value": "32",
+      "label": "analyses publiées du 18 octobre à 08 h 30 au 25 octobre à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "Le conflit porte sur les compensations de capacité inutilisée. En septembre, les prêteurs ont accepté de suspendre temporairement certains recours.",
+    "test": "Les volumes achetés, les clauses complètes, le montant réclamé et l’issue de l’arbitrage restent inconnus.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "32 analyses publiées en sept jours",
+      "subtitle": "du 18 octobre à 08 h 30 au 25 octobre à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-10-25",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "LA SEMAINE EN CHIFFRES",
+      "points": [
+        {
+          "label": "dim 18/10",
+          "shortLabel": "dim 18/10",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-10-18",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 19/10",
+          "shortLabel": "lun 19/10",
+          "value": 5,
+          "valueLabel": "5",
+          "nature": "analyses publiées",
+          "scope": "2026-10-19",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 20/10",
+          "shortLabel": "mar 20/10",
+          "value": 7,
+          "valueLabel": "7",
+          "nature": "analyses publiées",
+          "scope": "2026-10-20",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 21/10",
+          "shortLabel": "mer 21/10",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-10-21",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 22/10",
+          "shortLabel": "jeu 22/10",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-10-22",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 23/10",
+          "shortLabel": "ven 23/10",
+          "value": 7,
+          "valueLabel": "7",
+          "nature": "analyses publiées",
+          "scope": "2026-10-23",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 24/10",
+          "shortLabel": "sam 24/10",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-10-24",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 25/10",
+          "shortLabel": "dim 25/10",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-10-25",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "GM a notifié une résiliation le 1er juillet 2026 ; e-VAC a engagé un arbitrage le 7 juillet. L’usine de Sumter produisait déjà des aimants.",
+    "linkedin": "32 analyses publiées sur l0g du 18 octobre à 08 h 30 au 25 octobre à 08 h 30.\n\nFocus structuré : Aimants américains : l’usine a ouvert, son grand client s’est retiré.\n\nGM a notifié une résiliation le 1er juillet 2026 ; e-VAC a engagé un arbitrage le 7 juillet. L’usine de Sumter produisait déjà des aimants.\n\nPourquoi le lire : Le conflit porte sur les compensations de capacité inutilisée. En septembre, les prêteurs ont accepté de suspendre temporairement certains recours.\n\nLimite à garder : Les volumes achetés, les clauses complètes, le montant réclamé et l’issue de l’arbitrage restent inconnus.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-10-25/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 25 octobre compte 32 analyses publiées. Focus : Aimants américains : l’usine a ouvert, son grand client s’est retiré.",
+      "2/5 GM a notifié une résiliation le 1er juillet 2026 ; e-VAC a engagé un arbitrage le 7 juillet. L’usine de Sumter produisait déjà des aimants.",
+      "3/5 Pourquoi le lire : Le conflit porte sur les compensations de capacité inutilisée. En septembre, les prêteurs ont accepté de suspendre temporairement certains recours.",
+      "4/5 Limite : Les volumes achetés, les clauses complètes, le montant réclamé et l’issue de l’arbitrage restent inconnus.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-10-25/"
+    ],
+    "sources": [
+      {
+        "label": "Aimants américains : l’usine a ouvert, son grand client s’est retiré",
+        "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/",
+        "role": "Analyse publiée le 24 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nebius : un crédit de 364 jours dans la course aux GPU",
+        "href": "/posts/nebius-citi-credit-364-jours-gpu/",
+        "role": "Analyse publiée le 24 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Une panne électrique, trois banques et la fragilité cachée du cloud",
+        "href": "/posts/google-cloud-banques-automates-londres/",
+        "role": "Analyse publiée le 24 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "La solidité d’une promesse",
+        "href": "/posts/assureurs-fonds-08-solidite-promesse/",
+        "role": "Analyse publiée le 24 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quand les risques reviennent chez l’assureur",
+        "href": "/posts/assureurs-fonds-07-retour-risques/",
+        "role": "Analyse publiée le 23 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le prix réglementaire d’une promesse",
+        "href": "/posts/assureurs-fonds-06-traitement-risque/",
+        "role": "Analyse publiée le 23 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "À qui revient le rendement ?",
+        "href": "/posts/assureurs-fonds-05-partage-rendement/",
+        "role": "Analyse publiée le 23 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’argent de l’assureur, les affaires du groupe",
+        "href": "/posts/assureurs-placements-apparentes-apollo-brookfield-kkr/",
+        "role": "Analyse publiée le 23 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Aux Bermudes, l’autre bilan de l’épargne américaine",
+        "href": "/posts/assureurs-03-bermudes-reassurance-jackson-athene/",
+        "role": "Analyse publiée le 23 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Pourquoi acheter un assureur quand on gère déjà son argent ?",
+        "href": "/posts/assureurs-02-pourquoi-acheter-assureur/",
+        "role": "Analyse publiée le 23 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Qui doit payer les retraités d’AT&T ?",
+        "href": "/posts/assureurs-01-contrat-change-de-mains/",
+        "role": "Analyse publiée le 23 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Japon : le retour de l’épargne peut‑il renchérir la dette ailleurs ?",
+        "href": "/posts/japon-epargne-dette-mondiale/",
+        "role": "Analyse publiée le 22 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "TSMC suit la demande de puces jusqu’au réseau électrique",
+        "href": "/posts/tsmc-puces-data-centers-risque-electrique/",
+        "role": "Analyse publiée le 21 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Du pétrole en mer au gazole livré : une chaîne sous tension",
+        "href": "/posts/petrole-flux-gazole-stocks-tresorerie/",
+        "role": "Analyse publiée le 21 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Barclays et le crédit privé : la protection des TRS sous examen",
+        "href": "/posts/barclays-credit-prive-trs-risque/",
+        "role": "Analyse publiée le 21 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Golfe : la trahison de la promesse américaine",
+        "href": "/posts/golfe-trump-promesse-securite-trahison-cout-mondial/",
+        "role": "Analyse publiée le 21 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Budget 2027 : les pertes des ménages et le risque pour la consommation",
+        "href": "/posts/budget-2027-repartition-effort-risque/",
+        "role": "Analyse publiée le 20 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Stablecoins : le projet fiscal qui change le calcul des gains",
+        "href": "/posts/stablecoins-fiscalite-calcul-plus-values/",
+        "role": "Analyse publiée le 20 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "FIFA et Predictstreet : derrière le volume, qui prend le risque ?",
+        "href": "/posts/fifa-predictstreet-volume-wash-trading/",
+        "role": "Analyse publiée le 20 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "World ID : le pouvoir de certifier les humains",
+        "href": "/posts/world-id-finance-preuve-humanite/",
+        "role": "Analyse publiée le 20 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "JPMorgan et le prix de la puissance industrielle",
+        "href": "/posts/jpmorgan-capital-strategique/",
+        "role": "Analyse publiée le 20 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Google et McKinsey : qui garantit le carbone des pâturages ?",
+        "href": "/posts/google-mckinsey-carbone-paturages/",
+        "role": "Analyse publiée le 20 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SK hynix : Dalian peut-il financer le pari américain ?",
+        "href": "/posts/sk-hynix-dalian-usine-americaine-financement/",
+        "role": "Analyse publiée le 20 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Combien coûte une reprise plus rapide ?",
+        "href": "/posts/apres-cyberattaque-08-prix-reprise/",
+        "role": "Analyse publiée le 19 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "La reprise de JLR sous garantie publique",
+        "href": "/posts/apres-cyberattaque-07-etat-financement-crise/",
+        "role": "Analyse publiée le 19 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Un prestataire commun, plusieurs entreprises touchées",
+        "href": "/posts/apres-cyberattaque-06-prestataire-commun/",
+        "role": "Analyse publiée le 19 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cyberattaque : le long chantier du redémarrage",
+        "href": "/posts/apres-cyberattaque-05-economie-remise-en-route/",
+        "role": "Analyse publiée le 19 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "JLR : l’empreinte d’une cyberattaque dans le PIB",
+        "href": "/posts/apres-cyberattaque-04-jlr-empreinte-pib/",
+        "role": "Analyse publiée le 19 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cyberassurance : quand la panne vient du client",
+        "href": "/posts/apres-cyberattaque-03-cyberassurance-panne-client/",
+        "role": "Analyse publiée le 18 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "JLR : quand l’arrêt des commandes réduit aussi le crédit",
+        "href": "/posts/apres-cyberattaque-2-jlr-fournisseurs-credit/",
+        "role": "Analyse publiée le 18 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "JLR : le jour où l’usine s’arrête",
+        "href": "/posts/apres-cyberattaque-1-jlr-usines-tresorerie/",
+        "role": "Analyse publiée le 18 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Faillites américaines : la panne qui désynchronise les créanciers",
+        "href": "/posts/bnc-faillites-americaines-notifications-risque/",
+        "role": "Analyse publiée le 18 octobre 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Aimants américains : l’usine a ouvert, son grand client s’est retiré",
+        "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/",
+        "publishedAt": "2026-10-24T18:06:15.000Z"
+      },
+      {
+        "title": "Nebius : un crédit de 364 jours dans la course aux GPU",
+        "href": "/posts/nebius-citi-credit-364-jours-gpu/",
+        "publishedAt": "2026-10-24T15:01:15.000Z"
+      },
+      {
+        "title": "Une panne électrique, trois banques et la fragilité cachée du cloud",
+        "href": "/posts/google-cloud-banques-automates-londres/",
+        "publishedAt": "2026-10-24T12:58:25.000Z"
+      },
+      {
+        "title": "La solidité d’une promesse",
+        "href": "/posts/assureurs-fonds-08-solidite-promesse/",
+        "publishedAt": "2026-10-24T00:17:41.000Z"
+      },
+      {
+        "title": "Quand les risques reviennent chez l’assureur",
+        "href": "/posts/assureurs-fonds-07-retour-risques/",
+        "publishedAt": "2026-10-23T20:41:15.000Z"
+      },
+      {
+        "title": "Le prix réglementaire d’une promesse",
+        "href": "/posts/assureurs-fonds-06-traitement-risque/",
+        "publishedAt": "2026-10-23T17:50:41.000Z"
+      },
+      {
+        "title": "À qui revient le rendement ?",
+        "href": "/posts/assureurs-fonds-05-partage-rendement/",
+        "publishedAt": "2026-10-23T13:51:44.000Z"
+      },
+      {
+        "title": "L’argent de l’assureur, les affaires du groupe",
+        "href": "/posts/assureurs-placements-apparentes-apollo-brookfield-kkr/",
+        "publishedAt": "2026-10-23T12:19:02.000Z"
+      },
+      {
+        "title": "Aux Bermudes, l’autre bilan de l’épargne américaine",
+        "href": "/posts/assureurs-03-bermudes-reassurance-jackson-athene/",
+        "publishedAt": "2026-10-23T10:57:36.000Z"
+      },
+      {
+        "title": "Pourquoi acheter un assureur quand on gère déjà son argent ?",
+        "href": "/posts/assureurs-02-pourquoi-acheter-assureur/",
+        "publishedAt": "2026-10-23T08:45:37.000Z"
+      },
+      {
+        "title": "Qui doit payer les retraités d’AT&T ?",
+        "href": "/posts/assureurs-01-contrat-change-de-mains/",
+        "publishedAt": "2026-10-23T07:15:24.000Z"
+      },
+      {
+        "title": "Japon : le retour de l’épargne peut‑il renchérir la dette ailleurs ?",
+        "href": "/posts/japon-epargne-dette-mondiale/",
+        "publishedAt": "2026-10-22T10:01:38.000Z"
+      },
+      {
+        "title": "TSMC suit la demande de puces jusqu’au réseau électrique",
+        "href": "/posts/tsmc-puces-data-centers-risque-electrique/",
+        "publishedAt": "2026-10-21T17:36:36.000Z"
+      },
+      {
+        "title": "Du pétrole en mer au gazole livré : une chaîne sous tension",
+        "href": "/posts/petrole-flux-gazole-stocks-tresorerie/",
+        "publishedAt": "2026-10-21T10:52:39.000Z"
+      },
+      {
+        "title": "Barclays et le crédit privé : la protection des TRS sous examen",
+        "href": "/posts/barclays-credit-prive-trs-risque/",
+        "publishedAt": "2026-10-21T07:21:16.000Z"
+      },
+      {
+        "title": "Golfe : la trahison de la promesse américaine",
+        "href": "/posts/golfe-trump-promesse-securite-trahison-cout-mondial/",
+        "publishedAt": "2026-10-21T00:00:00.000Z"
+      },
+      {
+        "title": "Budget 2027 : les pertes des ménages et le risque pour la consommation",
+        "href": "/posts/budget-2027-repartition-effort-risque/",
+        "publishedAt": "2026-10-20T21:18:53.000Z"
+      },
+      {
+        "title": "Stablecoins : le projet fiscal qui change le calcul des gains",
+        "href": "/posts/stablecoins-fiscalite-calcul-plus-values/",
+        "publishedAt": "2026-10-20T19:18:10.000Z"
+      },
+      {
+        "title": "FIFA et Predictstreet : derrière le volume, qui prend le risque ?",
+        "href": "/posts/fifa-predictstreet-volume-wash-trading/",
+        "publishedAt": "2026-10-20T16:06:25.000Z"
+      },
+      {
+        "title": "World ID : le pouvoir de certifier les humains",
+        "href": "/posts/world-id-finance-preuve-humanite/",
+        "publishedAt": "2026-10-20T12:13:08.000Z"
+      },
+      {
+        "title": "JPMorgan et le prix de la puissance industrielle",
+        "href": "/posts/jpmorgan-capital-strategique/",
+        "publishedAt": "2026-10-20T07:39:34.000Z"
+      },
+      {
+        "title": "Google et McKinsey : qui garantit le carbone des pâturages ?",
+        "href": "/posts/google-mckinsey-carbone-paturages/",
+        "publishedAt": "2026-10-20T00:00:00.000Z"
+      },
+      {
+        "title": "SK hynix : Dalian peut-il financer le pari américain ?",
+        "href": "/posts/sk-hynix-dalian-usine-americaine-financement/",
+        "publishedAt": "2026-10-19T22:00:39.000Z"
+      },
+      {
+        "title": "Combien coûte une reprise plus rapide ?",
+        "href": "/posts/apres-cyberattaque-08-prix-reprise/",
+        "publishedAt": "2026-10-19T11:35:21.000Z"
+      },
+      {
+        "title": "La reprise de JLR sous garantie publique",
+        "href": "/posts/apres-cyberattaque-07-etat-financement-crise/",
+        "publishedAt": "2026-10-19T10:49:32.000Z"
+      },
+      {
+        "title": "Un prestataire commun, plusieurs entreprises touchées",
+        "href": "/posts/apres-cyberattaque-06-prestataire-commun/",
+        "publishedAt": "2026-10-19T09:08:11.000Z"
+      },
+      {
+        "title": "Cyberattaque : le long chantier du redémarrage",
+        "href": "/posts/apres-cyberattaque-05-economie-remise-en-route/",
+        "publishedAt": "2026-10-19T07:40:31.000Z"
+      },
+      {
+        "title": "JLR : l’empreinte d’une cyberattaque dans le PIB",
+        "href": "/posts/apres-cyberattaque-04-jlr-empreinte-pib/",
+        "publishedAt": "2026-10-19T05:20:30.000Z"
+      },
+      {
+        "title": "Cyberassurance : quand la panne vient du client",
+        "href": "/posts/apres-cyberattaque-03-cyberassurance-panne-client/",
+        "publishedAt": "2026-10-18T18:34:16.000Z"
+      },
+      {
+        "title": "JLR : quand l’arrêt des commandes réduit aussi le crédit",
+        "href": "/posts/apres-cyberattaque-2-jlr-fournisseurs-credit/",
+        "publishedAt": "2026-10-18T17:19:09.000Z"
+      },
+      {
+        "title": "JLR : le jour où l’usine s’arrête",
+        "href": "/posts/apres-cyberattaque-1-jlr-usines-tresorerie/",
+        "publishedAt": "2026-10-18T15:40:44.000Z"
+      },
+      {
+        "title": "Faillites américaines : la panne qui désynchronise les créanciers",
+        "href": "/posts/bnc-faillites-americaines-notifications-risque/",
+        "publishedAt": "2026-10-18T11:52:53.000Z"
+      }
+    ],
+    "briefs": [
+      {
+        "title": "Aimants américains : l’usine a ouvert, son grand client s’est retiré",
+        "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/",
+        "topic": "analyse",
+        "fact": "GM a notifié une résiliation le 1er juillet 2026 ; e-VAC a engagé un arbitrage le 7 juillet. L’usine de Sumter produisait déjà des aimants.",
+        "importance": "Le conflit porte sur les compensations de capacité inutilisée. En septembre, les prêteurs ont accepté de suspendre temporairement certains recours.",
+        "uncertainty": "Les volumes achetés, les clauses complètes, le montant réclamé et l’issue de l’arbitrage restent inconnus."
+      },
+      {
+        "title": "La solidité d’une promesse",
+        "href": "/posts/assureurs-fonds-08-solidite-promesse/",
+        "topic": "crédit privé",
+        "fact": "Les produits étudiés désignent Athene Annuity and Life Company, Forethought Life Insurance Company et Just Retirement Limited comme compagnies responsables. Le propriétaire et le gestionnaire occupent des fonctions distinctes.",
+        "importance": "Le paiement dépend du contenu du contrat, des actifs, des droits et des liquidités de la compagnie. Les fonds de garantie interviennent sous leurs propres conditions.",
+        "uncertainty": "L’exemple français repose sur des clauses datées et des hypothèses explicites. L’effet du changement de propriétaire sur la sécurité de chaque contrat individuel reste à apprécier avec les ressources et les engagements pertinents."
+      },
+      {
+        "title": "Japon : le retour de l’épargne peut‑il renchérir la dette ailleurs ?",
+        "href": "/posts/japon-epargne-dette-mondiale/",
+        "topic": "macro",
+        "fact": "En septembre 2026, les assureurs-vie du panel du ministère des Finances enregistrent 288,6 milliards de yens de désinvestissement net en dette étrangère à moyen et long terme, remboursements compris. Publication du 8 octobre.",
+        "importance": "Réinvestir une échéance au Japon peut retirer un acheteur à un marché étranger. Le rendement en yens après couverture et la gestion actif-passif déterminent cet arbitrage.",
+        "uncertainty": "La destination des fonds, les changements de couverture et les acheteurs de remplacement restent à documenter. Une hausse des taux étrangers attribuable à ce mouvement demande une estimation spécifique."
+      },
+      {
+        "title": "Du pétrole en mer au gazole livré : une chaîne sous tension",
+        "href": "/posts/petrole-flux-gazole-stocks-tresorerie/",
+        "topic": "liquidité",
+        "fact": "En septembre, les stocks observés à terre baissent de 113 millions de barils et le pétrole en mer augmente de 103 millions, selon l’AIE. Au 9 octobre, les stocks américains de distillats restent sous leur niveau de la semaine comparable de 2025.",
+        "importance": "La localisation, le raffinage et le transport déterminent le carburant disponible. Une couverture de prix peut exiger des versements de marge avant la vente de la cargaison.",
+        "uncertainty": "Arrivées effectives, redémarrages et livraisons des réserves conditionnent la détente. Le total en mer agrège plusieurs situations ; les exemples de trésorerie sont fictifs."
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-10-25T07:55:22.779Z",
+      "windowStart": "2026-10-18T08:30:00+02:00",
+      "windowEnd": "2026-10-25T08:30:00+01:00"
+    }
   }
 ]

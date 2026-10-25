@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 1086" style="width:100%;height:auto" class="l0g-france-moodys-svg" role="img" aria-labelledby="fdm-fr-contract-m-title fdm-fr-contract-m-desc">
+  <title id="fdm-fr-contract-m-title">Le rendement passe par le prix</title>
+  <desc id="fdm-fr-contract-m-desc">Schéma contractuel : prix moyen pied de coupon 67,10 pour 100, coupon annuel 1,25, principal remboursé 100 en 2038. Rendement publié 5,06 %.</desc>
+  <rect width="420" height="1086" fill="var(--color-surface)" x="0" y="0"/>
+  <rect id="fdm-fr-contract-m-header" x="8" y="5" width="404" height="172.24" fill="none"/>
+  <rect id="fdm-fr-contract-m-mechanism" x="8" y="177.24" width="404" height="810.76" fill="none"/>
+  <rect id="fdm-fr-contract-m-sources" x="8" y="988" width="404" height="95" fill="none"/>
+  <text x="30" y="30" font-family="l0g France Ratings" font-size="17" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-contract-m-header">l0g  /  02</text>
+  <text x="30" y="67" font-family="l0g France Ratings" font-size="26" font-weight="700" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-contract-m-header">Le rendement passe par</text>
+  <text x="30" y="101" font-family="l0g France Ratings" font-size="26" font-weight="700" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-contract-m-header">le prix</text>
+  <text x="30" y="143" font-family="l0g France Ratings" font-size="17" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-contract-m-header">OAT 1,25 % / 25 mai 2038 /</text>
+  <text x="30" y="167" font-family="l0g France Ratings" font-size="17" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-contract-m-header">FR0014009O62</text>
+  <rect x="30" y="215" width="360" height="170" rx="0" fill="var(--color-surface-2)" id="fdm-fr-contract-m-card-1"/>
+  <text x="50" y="244" font-family="l0g France Ratings" font-size="17" font-weight="700" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-contract-m-card-1">5 OCT. 2026</text>
+  <text x="50" y="298" font-family="l0g France Ratings" font-size="42" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-contract-m-card-1">67,10 €</text>
+  <text x="50" y="335" font-family="l0g France Ratings" font-size="19" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-contract-m-card-1">Prix payé hors intérêts courus</text>
+  <line x1="210" y1="394" x2="210" y2="418" stroke="var(--color-muted)" stroke-width="2"/>
+  <path d="M 206.16 410.98 L 210 418 L 213.84 410.98" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="30" y="430" width="360" height="170" rx="0" fill="var(--color-surface-2)" id="fdm-fr-contract-m-card-2"/>
+  <text x="50" y="459" font-family="l0g France Ratings" font-size="17" font-weight="700" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-contract-m-card-2">2027 → 2038</text>
+  <text x="50" y="513" font-family="l0g France Ratings" font-size="42" font-weight="700" fill="var(--color-amber)" text-anchor="start" data-panel="fdm-fr-contract-m-card-2">1,25 €</text>
+  <text x="50" y="550" font-family="l0g France Ratings" font-size="19" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-contract-m-card-2">Chaque année, pour 100 € de</text>
+  <text x="50" y="576.6" font-family="l0g France Ratings" font-size="19" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-contract-m-card-2">nominal</text>
+  <line x1="210" y1="609" x2="210" y2="633" stroke="var(--color-muted)" stroke-width="2"/>
+  <path d="M 206.16 625.98 L 210 633 L 213.84 625.98" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="30" y="645" width="360" height="170" rx="0" fill="var(--color-surface-2)" id="fdm-fr-contract-m-card-3"/>
+  <text x="50" y="674" font-family="l0g France Ratings" font-size="17" font-weight="700" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-contract-m-card-3">25 MAI 2038</text>
+  <text x="50" y="728" font-family="l0g France Ratings" font-size="42" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-contract-m-card-3">100 €</text>
+  <text x="50" y="765" font-family="l0g France Ratings" font-size="19" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-contract-m-card-3">Capital remboursé, plus le</text>
+  <text x="50" y="791.6" font-family="l0g France Ratings" font-size="19" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-contract-m-card-3">dernier coupon</text>
+  <text x="30" y="890" font-family="l0g France Ratings" font-size="42" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-contract-m-mechanism">5,06 %</text>
+  <text x="30" y="928" font-family="l0g France Ratings" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-contract-m-mechanism">Rendement actuariel publié par</text>
+  <text x="30" y="957.4" font-family="l0g France Ratings" font-size="21" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-contract-m-mechanism">l’AFT.</text>
+  <line x1="30" y1="988" x2="390" y2="988" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="30" y="1013" font-family="l0g France Ratings" font-size="17" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-contract-m-sources">Sources : AFT, adjudication du 1er</text>
+  <text x="30" y="1037" font-family="l0g France Ratings" font-size="17" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-contract-m-sources">octobre et fiche du titre. Schéma</text>
+  <text x="30" y="1061" font-family="l0g France Ratings" font-size="17" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-contract-m-sources">contractuel.</text>
+</svg>

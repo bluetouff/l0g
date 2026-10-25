@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" style="width:100%;height:auto" class="l0g-france-moodys-svg" role="img" aria-labelledby="fdm-fr-incentives-d-title fdm-fr-incentives-d-desc">
+  <title id="fdm-fr-incentives-d-title">Le client de l’agence et l’utilisateur de la note</title>
+  <desc id="fdm-fr-incentives-d-desc">L’émetteur sélectionne et rémunère l’agence. L’agence publie une note utilisée par les investisseurs. Les investisseurs financent l’émetteur selon leur propre décision. La séparation des fonctions commerciales et analytiques cherche à encadrer ce conflit d’intérêts potentiel. Aucun contrat France–Moody’s n’est reconstitué.</desc>
+  <rect width="1000" height="650" fill="var(--color-surface)" x="0" y="0"/>
+  <rect id="fdm-fr-incentives-d-header" x="8" y="5" width="984" height="109.06" fill="none"/>
+  <rect id="fdm-fr-incentives-d-mechanism" x="8" y="114.06" width="984" height="503.03" fill="none"/>
+  <rect id="fdm-fr-incentives-d-sources" x="8" y="617.09" width="984" height="29.91" fill="none"/>
+  <text x="48" y="25.43" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-incentives-d-header">l0g  /  09</text>
+  <text x="48" y="61.33" font-family="l0g France Ratings" font-size="33" font-weight="700" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-header">Le client de l’agence et l’utilisateur de la note</text>
+  <text x="48" y="99.48" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-incentives-d-header">Modèle émetteur-payeur / schéma général des relations</text>
+  <rect x="48" y="178.77" width="240" height="121.17" rx="0" fill="var(--color-surface-2)" id="fdm-fr-incentives-d-card-1"/>
+  <text x="69" y="208.69" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-incentives-d-card-1">ÉMETTEUR</text>
+  <text x="69" y="239.36" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-card-1">Cherche à lever</text>
+  <text x="69" y="261.8" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-card-1">des fonds.</text>
+  <rect x="380" y="178.77" width="240" height="121.17" rx="0" fill="var(--color-surface-2)" id="fdm-fr-incentives-d-card-2"/>
+  <text x="401" y="208.69" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-amber)" text-anchor="start" data-panel="fdm-fr-incentives-d-card-2">AGENCE</text>
+  <text x="401" y="239.36" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-card-2">Produit une</text>
+  <text x="401" y="261.8" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-card-2">opinion de crédit.</text>
+  <rect x="712" y="178.77" width="240" height="121.17" rx="0" fill="var(--color-surface-2)" id="fdm-fr-incentives-d-card-3"/>
+  <text x="733" y="208.69" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-incentives-d-card-3">INVESTISSEURS</text>
+  <text x="733" y="239.36" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-card-3">Utilisent la note et</text>
+  <text x="733" y="261.8" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-card-3">décident.</text>
+  <line x1="298" y1="239.36" x2="369" y2="239.36" stroke="var(--color-amber)" stroke-width="3"/>
+  <path d="M 361.98 242.23 L 369 239.36 L 361.98 236.48" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="335" y="222.9" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-amber)" text-anchor="middle" data-panel="fdm-fr-incentives-d-mechanism">Paie</text>
+  <line x1="630" y1="239.36" x2="701" y2="239.36" stroke="var(--color-signal)" stroke-width="3"/>
+  <path d="M 693.98 242.23 L 701 239.36 L 693.98 236.48" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="665" y="222.9" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="middle" data-panel="fdm-fr-incentives-d-mechanism">Note</text>
+  <path d="M 832 305.93 L 832 363.52 L 168 363.52 L 168 305.93" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="168" y1="363.52" x2="168" y2="305.93" stroke="var(--color-signal)" stroke-width="2"/>
+  <path d="M 171.84 311.18 L 168 305.93 L 164.16 311.18" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="245" y="389.7" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-incentives-d-mechanism">Financement, si la décision d’investir est favorable</text>
+  <line x1="48" y1="441.31" x2="952" y2="441.31" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="48" y="470.48" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-amber)" text-anchor="start" data-panel="fdm-fr-incentives-d-mechanism">TENSION</text>
+  <text x="48" y="495.91" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-mechanism">L’agence est rémunérée par un</text>
+  <text x="48" y="519.85" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-mechanism">acteur qui bénéficie de l’accès au</text>
+  <text x="48" y="543.79" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-mechanism">financement.</text>
+  <text x="520" y="470.48" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-incentives-d-mechanism">GARDE-FOUS ANNONCÉS</text>
+  <text x="520" y="495.91" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-mechanism">Séparation commerciale / analytique</text>
+  <text x="520" y="519.85" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-incentives-d-mechanism">et contrôles des méthodes.</text>
+  <text x="48" y="594.65" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-incentives-d-mechanism">Schéma général. Le contrat France–Moody’s n’est pas documenté dans le corpus.</text>
+  <line x1="48" y1="617.09" x2="952" y2="617.09" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="48" y="638.09" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-incentives-d-sources">Sources : S&amp;P [S18, S23] ; DOJ [S20], 2017. Relations schématiques.</text>
+</svg>

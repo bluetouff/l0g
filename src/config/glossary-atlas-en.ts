@@ -1276,7 +1276,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
           "label": "French debt: maturities and refinancing",
           "href": "/en/analysis/france-debt-refinancing-maturity-interest-costs/",
           "kind": "article"
-        }
+        },
+        {"label": "France, Moody’s and the price of debt", "href": "/en/analysis/france-moodys-reprieve-2027-borrowing-costs/", "kind": "article"}
       ],
       "sources": [
         {
@@ -1308,7 +1309,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
           "label": "French debt: maturities and refinancing",
           "href": "/en/analysis/france-debt-refinancing-maturity-interest-costs/",
           "kind": "article"
-        }
+        },
+        {"label": "France, Moody’s and the price of debt", "href": "/en/analysis/france-moodys-reprieve-2027-borrowing-costs/", "kind": "article"}
       ],
       "sources": [
         {
@@ -2238,7 +2240,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'Negotiable French Treasury bill issued with a maturity of less than one year and fixed-rate interest deducted upfront. BTFs help manage the State’s cash-flow timing.',
     atlas: {
       intuition: 'A short maturity helps manage cash balances but brings the next principal repayment closer.',
-      articles: [{ label: 'The price of time in French debt', href: '/en/analysis/french-debt-price-of-time/', kind: 'article' }],
+      articles: [{ label: 'The price of time in French debt', href: '/en/analysis/french-debt-price-of-time/', kind: 'article' }, {"label": "France, Moody’s and the price of debt", "href": "/en/analysis/france-moodys-reprieve-2027-borrowing-costs/", "kind": "article"}],
       sources: [{ label: 'Agence France Trésor, products', href: 'https://www.aft.gouv.fr/fr/nos-produits', detail: 'BTFs are issued for less than one year to manage cash balances.', kind: 'source' }],
       related: ['risque-de-refinancement', 'prime-de-terme'],
     },
@@ -4307,9 +4309,10 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/openai-credit-rating-nvidia-guarantee-ipo/',
     ...privateCreditSection,
     atlas: {
+      articles: [{"label": "France, Moody’s and the price of debt", "href": "/en/analysis/france-moodys-reprieve-2027-borrowing-costs/", "kind": "article"}],
       intuition: 'The rating assesses credit risk; the contract determines the consequences attached to it.',
       sources: [{ label: 'SEC, Investor.gov', href: 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated-8', detail: 'Credit rating scales, scope and limitations.', kind: 'source' }],
-      related: ['vrg'],
+      related: ['vrg', "agence-de-notation", "perspective-de-notation"],
     },
   },
   {
@@ -4552,7 +4555,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/dette-etats-06-prix-sortie/', ...macroSection, robots: 'noindex,follow',
     atlas: {
       intuition: 'The market values an outstanding contract; new funding faces the current yield.',
-      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }],
+      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }, {"label": "France, Moody’s and the price of debt", "href": "/en/analysis/france-moodys-reprieve-2027-borrowing-costs/", "kind": "article"}],
       sources: [{ label: 'Agence France Trésor, debt instruments', href: 'https://www.aft.gouv.fr/fr/nos-produits', kind: 'source' }],
       related: ['coupon-obligataire', 'adjudication', 'risque-de-refinancement'],
     },
@@ -4574,9 +4577,9 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/dette-etats-06-prix-sortie/', ...macroSection, robots: 'noindex,follow',
     atlas: {
       intuition: 'The contract sets payments; the purchase price changes the yield.',
-      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }],
+      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }, {"label": "France, Moody’s and the price of debt", "href": "/en/analysis/france-moodys-reprieve-2027-borrowing-costs/", "kind": "article"}],
       sources: [{ label: 'SEC, fixed-rate bond prices and yields', href: 'https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-86', kind: 'source' }],
-      related: ['duration', 'adjudication', 'risque-de-refinancement'],
+      related: ['duration', 'adjudication', 'risque-de-refinancement', "oat"],
     },
   },
   {
@@ -5904,6 +5907,9 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ]
   }
 },
+  {"slug": "agence-de-notation", "sigle": "Credit rating agency", "nom": "Professional assessment of credit risk", "def": "An organisation that assigns opinions on the creditworthiness of issuers or debt obligations, using a rating scale. Its analysis is forward-looking and can change. Registered agencies in the European Union are directly supervised by ESMA. Credit ratings assess creditworthiness, a separate question from market prices or investment returns.", "guide": "/en/analysis/france-moodys-reprieve-2027-borrowing-costs/", "sectionTitle": "Private credit & markets", "accent": "var(--color-accent)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "France, Moody’s and the price of debt", "href": "/en/analysis/france-moodys-reprieve-2027-borrowing-costs/", "kind": "article"}], "sources": [{"label": "ESMA, credit rating agency supervision", "href": "https://www.esma.europa.eu/esmas-activities/investors-and-issuers/credit-rating-agencies", "kind": "source"}, {"label": "S&P Global Ratings, understanding credit ratings", "href": "https://www.spglobal.com/ratings/en/credit-ratings/about/understanding-credit-ratings", "kind": "source"}], "related": ["perspective-de-notation", "investment-grade"]}},
+  {"slug": "perspective-de-notation", "sigle": "Rating outlook", "nom": "Potential direction of a credit rating", "def": "An assessment of the potential direction of a credit rating over the medium term. A negative outlook indicates that a rating may fall; a positive outlook indicates that it may rise. The outlook is separate from the current rating: a rating can change with a stable outlook, while a negative outlook can be resolved without a downgrade. Horizons and categories depend on the agency.", "guide": "/en/analysis/france-moodys-reprieve-2027-borrowing-costs/", "sectionTitle": "Private credit & markets", "accent": "var(--color-accent)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "France, Moody’s and the price of debt", "href": "/en/analysis/france-moodys-reprieve-2027-borrowing-costs/", "kind": "article"}], "sources": [{"label": "S&P Global Ratings, definitions dated 16 December 2025, section II", "href": "https://maalot.co.il/Publications/RS20251216162753.pdf", "kind": "source"}], "related": ["agence-de-notation", "investment-grade"]}},
+
 ];
 
 export const glossaryAtlasEnBySlug = new Map(glossaryAtlasEn.map((entry) => [entry.slug, entry]));

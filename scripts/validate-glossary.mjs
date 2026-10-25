@@ -19,6 +19,39 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Ratings and outlooks remain distinct, sourced bilingual short definitions.
+const ratingsArticleFr = '/posts/france-moodys-budget-2027-prix-dette/';
+const ratingsArticleEn = '/en/analysis/france-moodys-reprieve-2027-borrowing-costs/';
+for (const slug of ['agence-de-notation', 'perspective-de-notation']) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert(!glossaryReferenceCandidateSlugs.includes(slug));
+  assert.equal(en[0].robots, 'noindex,follow');
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.deepEqual(fr[0].atlas.sources.map(link => link.href), en[0].atlas.sources.map(link => link.href));
+  assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  for (const [entry, article, terms] of [[fr[0], ratingsArticleFr, glossaryEntries], [en[0], ratingsArticleEn, glossaryAtlasEn]]) {
+    assert.equal(entry.guide, article);
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    for (const peer of entry.atlas.related) assert(terms.find(term => term.slug === peer).atlas.related.includes(slug));
+    assert(!entry.def.includes('—'));
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'agence-de-notation').def, /prospective.*supervision directe d’ESMA.*distinct du rendement/);
+assert.match(glossaryAtlasEnBySlug.get('agence-de-notation').def, /forward-looking.*directly supervised by ESMA.*separate question from market prices/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'perspective-de-notation').def, /distincte de la note.*perspective stable.*sans dégradation/);
+assert.match(glossaryAtlasEnBySlug.get('perspective-de-notation').def, /separate from the current rating.*stable outlook.*without a downgrade/);
+for (const slug of ['oat', 'btf', 'coupon-obligataire', 'decote-d-emission', 'prime-d-emission', 'investment-grade']) {
+  for (const [entry, article] of [[glossaryEntries.find(term => term.slug === slug), ratingsArticleFr], [glossaryAtlasEnBySlug.get(slug), ratingsArticleEn]]) {
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  }
+}
+assert.equal(glossaryEntries.find(entry => entry.slug === 'oat').reference, undefined);
+assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('oat')), 'noindex,follow');
+
 // ModCo retains both assets and reserves; its two glossary neighbours link back.
 for (const [entry, article] of [[glossaryEntries.find(item => item.slug === 'modco'), '/posts/assureurs-03-bermudes-reassurance-jackson-athene/'], [glossaryAtlasEnBySlug.get('modco'), '/en/analysis/bermuda-reinsurance-jackson-athene/']]) {
   assert(entry?.atlas);
@@ -719,7 +752,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 316, 'Le corpus anglais ajoute trois notions de financement industriel à ses 313 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 318, 'Le corpus anglais ajoute deux notions de notation à ses 316 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -920,8 +953,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 707, 'Le corpus ajoute trois notions de financement industriel à ses 704 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 305, 'Le graphe Atlas ajoute trois notions de financement industriel à ses 302 nœuds existants');
+assert.equal(glossaryEntries.length, 709, 'Le corpus ajoute deux notions de notation à ses 707 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 308, 'Le graphe Atlas ajoute deux notions de notation et le nœud OAT à ses 305 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1210,7 +1243,7 @@ for (const [slug, sources, related] of [
   assert.equal(en.guide, '/en/analysis/french-debt-price-of-time/');
   for (const entry of [fr, en]) {
     assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
-    assert.deepEqual(entry.atlas.articles.map(article => article.href), slug === 'risque-de-refinancement' ? [entry === fr ? '/posts/dette-etats-06-prix-sortie/' : '/en/analysis/dette-etats-06-prix-sortie/', entry.guide] : [entry.guide]);
+    assert.deepEqual(entry.atlas.articles.map(article => article.href), slug === 'risque-de-refinancement' ? [entry === fr ? '/posts/dette-etats-06-prix-sortie/' : '/en/analysis/dette-etats-06-prix-sortie/', entry.guide] : [entry.guide, entry === fr ? ratingsArticleFr : ratingsArticleEn]);
     assert.deepEqual(entry.atlas.related, related);
     for (const neighbor of entry.atlas.related) {
       assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
@@ -1343,7 +1376,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 867, 'Le graphe Atlas ajoute huit relations réciproques de financement industriel à ses 859 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 875, 'Le graphe Atlas ajoute huit relations réciproques de notation et de coupon OAT à ses 867 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

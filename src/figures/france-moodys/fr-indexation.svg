@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" style="width:100%;height:auto" class="l0g-france-moodys-svg" role="img" aria-labelledby="fdm-fr-indexation-d-title fdm-fr-indexation-d-desc">
+  <title id="fdm-fr-indexation-d-title">L’inflation dans le budget et dans la trésorerie</title>
+  <desc id="fdm-fr-indexation-d-desc">La provision annuelle de 8,5 milliards est retirée du déficit pour calculer le besoin de trésorerie. Les 9,7 milliards d’indexation accumulée remboursés à l’échéance sont inclus dans les amortissements.</desc>
+  <rect width="1000" height="650" fill="var(--color-surface)" x="0" y="0"/>
+  <rect id="fdm-fr-indexation-d-header" x="8" y="5" width="984" height="125.78" fill="none"/>
+  <rect id="fdm-fr-indexation-d-mechanism" x="8" y="130.78" width="984" height="480.78" fill="none"/>
+  <rect id="fdm-fr-indexation-d-sources" x="8" y="611.56" width="984" height="35.44" fill="none"/>
+  <text x="48" y="29.7" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-indexation-d-header">l0g  /  05</text>
+  <text x="48" y="71.64" font-family="l0g France Ratings" font-size="33" font-weight="700" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-indexation-d-header">L’inflation dans le budget et dans la trésorerie</text>
+  <text x="48" y="116.2" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-indexation-d-header">Deux périmètres temporels / PLF 2027 initial / Md€</text>
+  <rect x="48" y="168.62" width="904" height="154.64" rx="0" fill="var(--color-surface-2)" id="fdm-fr-indexation-d-card-1"/>
+  <text x="72" y="194.83" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-1">CHARGE DE L’EXERCICE</text>
+  <text x="72" y="255.11" font-family="l0g France Ratings" font-size="55" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-1">8,5</text>
+  <text x="205" y="228.9" font-family="l0g France Ratings" font-size="23" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-1">Provision annuelle</text>
+  <text x="205" y="257.03" font-family="l0g France Ratings" font-size="23" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-1">Incluse dans le déficit</text>
+  <line x1="553" y1="248.12" x2="610" y2="248.12" stroke="var(--color-signal)" stroke-width="2"/>
+  <path d="M 602.98 251.47 L 610 248.12 L 602.98 244.76" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="635" y="227.15" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-1">Retirée pour calculer le</text>
+  <text x="635" y="254.06" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-1">besoin de trésorerie</text>
+  <rect x="48" y="347.72" width="904" height="154.64" rx="0" fill="var(--color-surface-2)" id="fdm-fr-indexation-d-card-2"/>
+  <text x="72" y="373.92" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-amber)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-2">CAPITAL REMBOURSÉ</text>
+  <text x="72" y="434.21" font-family="l0g France Ratings" font-size="55" font-weight="700" fill="var(--color-amber)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-2">9,7</text>
+  <text x="205" y="408" font-family="l0g France Ratings" font-size="23" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-2">Indexation accumulée</text>
+  <text x="205" y="436.13" font-family="l0g France Ratings" font-size="23" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-2">Titres arrivant à échéance</text>
+  <line x1="553" y1="427.22" x2="610" y2="427.22" stroke="var(--color-amber)" stroke-width="2"/>
+  <path d="M 602.98 430.57 L 610 427.22 L 602.98 423.86" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="635" y="406.25" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-2">Payée en 2027, incluse</text>
+  <text x="635" y="433.16" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-2">dans les</text>
+  <text x="635" y="460.07" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-indexation-d-card-2">amortissements</text>
+  <text x="48" y="574.87" font-family="l0g France Ratings" font-size="34" font-weight="700" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-fr-indexation-d-mechanism">−8,5 + 2,0 = −6,5</text>
+  <text x="415" y="559.14" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-indexation-d-mechanism">Provision retirée + paiements PIA = autres</text>
+  <text x="415" y="584.83" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-indexation-d-mechanism">besoins de trésorerie.</text>
+  <line x1="48" y1="611.56" x2="952" y2="611.56" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="48" y="632.56" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-fr-indexation-d-sources">Sources : PLF 2027 [S11] ; AFT [S14]. Prévisions, montants non additifs.</text>
+</svg>

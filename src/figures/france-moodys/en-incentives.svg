@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" style="width:100%;height:auto" class="l0g-france-moodys-svg" role="img" aria-labelledby="fdm-en-incentives-d-title fdm-en-incentives-d-desc">
+  <title id="fdm-en-incentives-d-title">Who pays for the rating, and who uses it</title>
+  <desc id="fdm-en-incentives-d-desc">The issuer selects and pays the agency, which publishes a rating used by investors. Investors decide whether to provide funding to the issuer. Separation of commercial and analytical functions is intended to contain the potential conflict. The diagram does not reconstruct the France–Moody’s contract.</desc>
+  <rect width="1000" height="650" fill="var(--color-surface)" x="0" y="0"/>
+  <rect id="fdm-en-incentives-d-header" x="8" y="5" width="984" height="112.87" fill="none"/>
+  <rect id="fdm-en-incentives-d-mechanism" x="8" y="117.87" width="984" height="497.96" fill="none"/>
+  <rect id="fdm-en-incentives-d-sources" x="8" y="615.83" width="984" height="31.17" fill="none"/>
+  <text x="48" y="26.4" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-en-incentives-d-header">l0g  /  09</text>
+  <text x="48" y="63.68" font-family="l0g France Ratings" font-size="33" font-weight="700" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-en-incentives-d-header">Who pays for the rating, and who uses it</text>
+  <text x="48" y="103.29" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-en-incentives-d-header">Issuer-pays model / schematic relationships</text>
+  <rect x="48" y="185.6" width="240" height="125.81" rx="0" fill="var(--color-surface-2)" id="fdm-en-incentives-d-card-1"/>
+  <text x="69" y="216.67" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-en-incentives-d-card-1">ISSUER</text>
+  <text x="69" y="248.51" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-en-incentives-d-card-1">Seeks to raise</text>
+  <text x="69" y="271.8" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-en-incentives-d-card-1">financing.</text>
+  <rect x="380" y="185.6" width="240" height="125.81" rx="0" fill="var(--color-surface-2)" id="fdm-en-incentives-d-card-2"/>
+  <text x="401" y="216.67" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-amber)" text-anchor="start" data-panel="fdm-en-incentives-d-card-2">AGENCY</text>
+  <text x="401" y="248.51" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-en-incentives-d-card-2">Produces a credit</text>
+  <text x="401" y="271.8" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-en-incentives-d-card-2">opinion.</text>
+  <rect x="712" y="185.6" width="240" height="125.81" rx="0" fill="var(--color-surface-2)" id="fdm-en-incentives-d-card-3"/>
+  <text x="733" y="216.67" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-en-incentives-d-card-3">INVESTORS</text>
+  <text x="733" y="248.51" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-en-incentives-d-card-3">Use the rating and</text>
+  <text x="733" y="271.8" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-en-incentives-d-card-3">decide.</text>
+  <line x1="298" y1="248.51" x2="369" y2="248.51" stroke="var(--color-amber)" stroke-width="3"/>
+  <path d="M 361.98 251.49 L 369 248.51 L 361.98 245.52" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="335" y="231.42" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-amber)" text-anchor="middle" data-panel="fdm-en-incentives-d-mechanism">Pays</text>
+  <line x1="630" y1="248.51" x2="701" y2="248.51" stroke="var(--color-signal)" stroke-width="3"/>
+  <path d="M 693.98 251.49 L 701 248.51 L 693.98 245.52" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="665" y="231.42" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="middle" data-panel="fdm-en-incentives-d-mechanism">Rating</text>
+  <path d="M 832 317.62 L 832 377.42 L 168 377.42 L 168 317.62" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="168" y1="377.42" x2="168" y2="317.62" stroke="var(--color-signal)" stroke-width="2"/>
+  <path d="M 171.84 323.07 L 168 317.62 L 164.16 323.07" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="245" y="404.6" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-en-incentives-d-mechanism">Funding, if the investment decision is favourable</text>
+  <line x1="48" y1="458.18" x2="952" y2="458.18" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="48" y="488.47" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-amber)" text-anchor="start" data-panel="fdm-en-incentives-d-mechanism">TENSION</text>
+  <text x="48" y="514.87" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-en-incentives-d-mechanism">The agency is paid by a party that</text>
+  <text x="48" y="539.73" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-en-incentives-d-mechanism">benefits from access to funding.</text>
+  <text x="520" y="488.47" font-family="l0g France Ratings" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start" data-panel="fdm-en-incentives-d-mechanism">STATED SAFEGUARDS</text>
+  <text x="520" y="514.87" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-en-incentives-d-mechanism">Commercial / analytical separation and</text>
+  <text x="520" y="539.73" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-paper)" text-anchor="start" data-panel="fdm-en-incentives-d-mechanism">methodology controls.</text>
+  <text x="48" y="592.53" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-en-incentives-d-mechanism">General model. France–Moody’s terms are unavailable in the reviewed sources.</text>
+  <line x1="48" y1="615.83" x2="952" y2="615.83" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="48" y="636.83" font-family="l0g France Ratings" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start" data-panel="fdm-en-incentives-d-sources">Sources: S&amp;P [S18, S23]; DOJ [S20], 2017. Schematic relationships.</text>
+</svg>
