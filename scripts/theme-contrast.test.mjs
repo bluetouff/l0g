@@ -62,7 +62,8 @@ test('editorial and dashboard accents follow theme-aware CSS tokens', () => {
     'src/components/RiskBand.astro',
     'src/scripts/risk.js',
     'src/components/PublicationSpotlight.astro',
-    'src/components/PaCheckCard.astro',
+    'src/styles/article-tools.css',
+    'src/styles/reading-library.css',
   ];
   const rawDarkAccents = /#(?:5eead4|7aa2f7|ff4d87|f5b13d|ff8a3d)/iu;
 

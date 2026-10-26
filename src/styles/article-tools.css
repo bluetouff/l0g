@@ -1,18 +1,22 @@
 .at-tools { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem .75rem; font-family: var(--font-read); }
-.at-tools[hidden], .at-dialog [hidden], .at-selection[hidden], .at-copy-fallback[hidden] { display: none; }
 .at-action { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 2.75rem; padding: .4rem .7rem; border: 1px solid var(--color-line-strong); border-radius: .35rem; color: var(--color-muted); background: var(--color-surface); font: 500 .75rem/1.4 var(--font-read); cursor: pointer; }
 .at-action:hover { color: var(--color-paper); border-color: var(--color-signal); }
 .at-action:focus-visible, .at-dialog a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
 .at-tools .at-status { flex-basis: 100%; margin: 0; color: var(--color-muted); font: .75rem/1.5 var(--font-read); }
 .at-tools .at-status:empty { display: none; }
 .at-selection { position: fixed; z-index: 45; right: 1rem; bottom: 1rem; max-width: calc(100vw - 2rem); color: var(--color-paper); border-color: var(--color-signal); box-shadow: var(--shadow-elevated); }
-.at-figure-action { margin: .5rem 0 1.5rem; }
+.at-figure-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 1.5rem 0 .5rem; border-bottom: 1px solid var(--color-line); padding-bottom: .35rem; scroll-margin-top: 1.5rem; }
+.at-figure-header > span { color: var(--color-muted); font: .65rem var(--font-mono); text-transform: uppercase; letter-spacing: .06em; }
+.prose .at-figure-header + * { margin-top: .5rem; }
+.prose a.at-source-link { border: 1px solid var(--color-line-strong); border-radius: .25rem; padding: .1em .3em; font: 600 .75em var(--font-mono); text-decoration: none; white-space: nowrap; }
+.prose a.at-glossary-link { text-decoration-style: dotted; text-decoration-thickness: 2px; text-underline-offset: .2em; }
+.prose a.at-analysis-link { text-decoration-style: solid; text-decoration-thickness: 1px; }
 .at-dialog { box-sizing: border-box; position: fixed; inset: 0; margin: auto; padding: 1rem; width: min(40rem, calc(100vw - 2rem)); max-width: none; max-height: 88dvh; overflow: auto; border: 1px solid var(--color-line-strong); border-radius: .6rem; background: var(--color-surface); color: var(--color-paper); box-shadow: var(--shadow-elevated); font: 1rem/1.65 var(--font-read); }
 .at-dialog::backdrop { background: rgb(0 0 0 / 65%); }
 html:has(.at-dialog[open]) { overflow: hidden; }
 .at-dialog.at-figure-dialog { width: calc(100vw - 2rem); }
 .at-dialog .at-dialog-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin: 0 0 1rem; }
-.at-dialog .at-dialog-header h2 { margin: 0; padding: .4rem 0; border: 0; color: var(--color-paper); font: 600 1rem/1.5 var(--font-read); letter-spacing: normal; text-transform: none; }
+.at-dialog .at-dialog-header h2 { min-width: 0; overflow-wrap: anywhere; margin: 0; padding: .4rem 0; border: 0; color: var(--color-paper); font: 600 1rem/1.5 var(--font-read); letter-spacing: normal; text-transform: none; }
 .at-dialog-header .at-action { flex-shrink: 0; }
 .at-dialog .at-dialog-content p { margin: 0 0 1rem; font: inherit; white-space: pre-line; overflow-wrap: anywhere; }
 .at-dialog .at-dialog-content a { color: var(--color-signal); overflow-wrap: anywhere; text-decoration: underline; }
@@ -22,4 +26,5 @@ html:has(.at-dialog[open]) { overflow: hidden; }
 .at-figure-dialog .at-dialog-content > * { margin: 0 !important; width: 100%; max-width: none !important; }
 .at-figure-dialog .at-dialog-content.is-zoomed > * { min-width: var(--at-chart-width, 900px); }
 .at-copy-fallback { box-sizing: border-box; width: 100%; min-height: 12rem; padding: .75rem; color: var(--color-paper); background: var(--color-surface); border: 1px solid var(--color-line-strong); font: .875rem/1.6 var(--font-read); }
-@media print { .at-tools, .at-dialog, .at-figure-action { display: none !important; } }
+.at-tools[hidden], .at-tools [hidden], .at-dialog [hidden] { display: none; }
+@media print { .at-tools, .at-dialog, .at-figure-header { display: none !important; } }

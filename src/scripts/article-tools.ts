@@ -14,6 +14,9 @@ if (root && body) {
   const status = root.querySelector<HTMLElement>('[data-article-status]')!;
   const selectionButton = root.querySelector<HTMLButtonElement>('[data-article-selection]')!;
   const fallback = root.querySelector<HTMLTextAreaElement>('[data-article-fallback]')!;
+  const indexButton = root.querySelector<HTMLButtonElement>('[data-article-index]')!;
+  const figureTargets = new Map<string, HTMLElement>();
+  const figureEntries: Array<{ title: string; href: string }> = [];
   const headings = Array.from(body.querySelectorAll<HTMLElement>('h2[id],h3[id],h4[id]'));
   const supportsDialog = typeof dialog.showModal === 'function';
   const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href || location.href;
@@ -77,7 +80,7 @@ if (root && body) {
     link.textContent = text;
     if (local) link.addEventListener('click', () => {
       const id = articleReferenceId(url.href, location.href);
-      const target = id ? document.getElementById(id) : null;
+      const target = figureTargets.get(url.href) || (id ? document.getElementById(id) : null);
       if (target) {
         const previous = target.getAttribute('tabindex');
         target.setAttribute('tabindex', '-1');
@@ -134,6 +137,16 @@ if (root && body) {
     openPreview(term ? `${term.dataset.label} · ${term.dataset.name}` : `Source ${link.textContent?.trim() || ''}`, link);
   });
 
+  for (const link of body.querySelectorAll<HTMLAnchorElement>('a[href]')) {
+    if (link.closest('svg')) continue;
+    const url = articleToolUrl(link.getAttribute('href') || '', location.href);
+    if (!url) continue;
+    const id = articleReferenceId(url.href, location.href);
+    if (id && body.contains(document.getElementById(id)) && (link.textContent?.length || 0) <= 32) link.classList.add('at-source-link');
+    else if (terms.has(url.href)) link.classList.add('at-glossary-link');
+    else if (url.origin === location.origin && /^\/(?:posts|en\/analysis)\/[^/]+\/$/.test(url.pathname)) link.classList.add('at-analysis-link');
+  }
+
   if (supportsDialog) {
     const figures = new Set<Element>();
     for (const svg of body.querySelectorAll<SVGSVGElement>('svg[viewBox]')) {
@@ -141,13 +154,27 @@ if (root && body) {
       const figure = svg.closest('figure') || svg;
       if (figures.has(figure)) continue;
       figures.add(figure);
+      const number = String(figures.size).padStart(2, '0');
+      const title = svg.querySelector('title')?.textContent?.trim() || `${en ? 'Figure' : 'Graphique'} ${number}`;
+      const row = document.createElement('div');
+      row.className = 'at-figure-header';
+      row.dataset.pagefindIgnore = '';
+      row.id = `l0g-figure-${number}`;
+      while (document.getElementById(row.id)) row.id += '-';
+      const label = document.createElement('span');
+      label.textContent = `${en ? 'Figure' : 'Graphique'} ${number}`;
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'at-action at-figure-action';
-      button.textContent = en ? 'Enlarge figure' : 'Agrandir le graphique';
+      button.textContent = en ? 'Enlarge' : 'Agrandir';
+      button.setAttribute('aria-label', `${en ? 'Enlarge' : 'Agrandir'} : ${title}`);
       button.setAttribute('aria-haspopup', 'dialog');
       button.dataset.pagefindIgnore = '';
-      figure.after(button);
+      row.append(label, button);
+      figure.before(row);
+      const href = new URL(`#${row.id}`, location.href).href;
+      figureTargets.set(href, row);
+      figureEntries.push({ title: `${number} · ${title}`, href });
       button.addEventListener('click', () => {
         restoreFigure();
         const visible = Array.from(figure.querySelectorAll<SVGSVGElement>('svg')).find((item) => item.getBoundingClientRect().width > 0) || svg;
@@ -162,6 +189,15 @@ if (root && body) {
         openPreview(title, button);
       });
     }
+    indexButton.hidden = figureEntries.length < 2;
+    indexButton.addEventListener('click', () => {
+      restoreFigure();
+      const links = document.createElement('ul');
+      links.className = 'at-dialog-links';
+      for (const figure of figureEntries) addLink(links, figure.title, figure.href, true);
+      preview.append(links);
+      openPreview(en ? 'Figures in this analysis' : 'Graphiques de l’analyse', indexButton);
+    });
   }
 
   function captureSelection(event: Event) {

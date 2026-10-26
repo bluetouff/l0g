@@ -301,6 +301,13 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   }
   .post-meta,
   .post-tags { min-width: 0; }
+  @media (max-width: 620px) {
+    .post-head { margin-bottom: 1.5rem; }
+    .post-meta { display: flex; flex-wrap: wrap; gap: .35rem .6rem; font-size: .62rem; line-height: 1.6; }
+    .post-meta > a { flex-basis: 100%; }
+    .post-meta > a + .sep { display: none; }
+    .en-trust { gap: .35rem; margin-top: .75rem; font-size: .6rem; }
+  }
   .post-tags {
     display: inline-flex;
     flex-wrap: wrap;

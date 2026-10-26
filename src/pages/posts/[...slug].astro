@@ -5,7 +5,6 @@ import '../../styles/reserves-pump-infographics.css';
 import '../../styles/paramount-warner-infographics.css';
 import '../../styles/danfoss-figures.css';
 import ArticleNavigator from '../../components/ArticleNavigator.astro';
-import PaCheckCard from '../../components/PaCheckCard.astro';
 import SupportCard from '../../components/SupportCard.astro';
 import WatchCard from '../../components/WatchCard.astro';
 import WeeklyCta from '../../components/WeeklyCta.astro';
@@ -312,7 +311,6 @@ const quickUncertainty = post.data.quickTake?.uncertainty
   <div slot="sidebar" class="article-sidebar">
     <SupportCard compact />
     <WatchCard compact />
-    <PaCheckCard compact />
     <ArticleNavigator
       headings={articleHeadings}
       terms={articleTerms}
@@ -323,7 +321,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty
   <script type="application/ld+json" is:inline set:html={safeArticleJsonLd} />
 
   <article class="rise max-w-2xl" data-pagefind-body>
-    <nav class="mb-5 text-sm text-muted" aria-label="Fil d’Ariane" data-pagefind-ignore>
+    <nav class="post-breadcrumb mb-5 text-sm text-muted" aria-label="Fil d’Ariane" data-pagefind-ignore>
       <ol class="flex flex-wrap gap-2">
         <li><a href="/" class="text-signal underline underline-offset-4">Journal</a></li>
         <li aria-hidden="true">/</li>
@@ -841,17 +839,31 @@ const quickUncertainty = post.data.quickTake?.uncertainty
     .proof-context { --proof-color: var(--color-accent); }
 
     @media (max-width: 620px) {
+      .post-breadcrumb li + li { display: none; }
+      .post-breadcrumb a::before { content: '← '; }
+      .post-head { margin-bottom: 1.5rem; }
       .post-meta,
       .post-meta.has-update {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        gap: .55rem 1rem;
+        padding-block: .75rem;
       }
+      .post-meta > div { display: flex; align-items: baseline; gap: .35rem; padding: 0; border: 0; }
+      .post-meta > div:first-child { flex-basis: 100%; }
+      .post-meta dd { margin: 0; font-size: .68rem; }
       .post-topics {
-        grid-template-columns: 1fr;
+        grid-template-columns: auto minmax(0, 1fr);
         gap: 0.45rem;
       }
-      .post-topics-label { padding-top: 0; }
-      .article-tools { grid-template-columns: 1fr; }
-      .translation-card { grid-column: 1; }
+      .post-topics-label { padding-top: .3rem; }
+      .article-tools { gap: .5rem; margin-top: .9rem; }
+      .translation-card { min-height: 2.75rem; padding: .5rem .65rem; gap: .5rem; }
+      .translation-copy > span, .article-tool-copy > span { display: none; }
+      .article-tool > summary { min-height: 2.75rem; padding: .6rem; }
+      .article-tool[open] { grid-column: 1 / -1; }
+      .post-rule { margin-top: 1rem; }
+      .analysis-start { margin-bottom: 1rem; }
     }
 
     .revision-box {

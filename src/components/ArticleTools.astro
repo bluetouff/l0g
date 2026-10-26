@@ -20,6 +20,7 @@ const en = lang === 'en';
     {en ? 'Copy an excerpt' : 'Copier un extrait'}
   </button>
   <button type="button" class="at-action" data-article-print>{en ? 'Print / PDF' : 'Imprimer / PDF'}</button>
+  <button type="button" class="at-action" data-article-index aria-haspopup="dialog" hidden>{en ? 'Figures' : 'Graphiques'}</button>
   <p class="at-status" id="article-copy-status" role="status" aria-live="polite" data-article-status></p>
   <textarea class="at-copy-fallback" data-article-fallback readonly hidden aria-label={en ? 'Excerpt with its source link' : 'Extrait et lien vers son analyse'}></textarea>
   <button type="button" class="at-action at-selection" data-article-copy data-article-selection hidden>

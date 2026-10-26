@@ -1,7 +1,9 @@
 .reading-library[hidden], .reading-library [hidden] { display: none; }
 .reading-library { display: flex; align-items: center; flex-wrap: wrap; gap: .25rem 1rem; margin-block: .75rem; font: .75rem/1.6 var(--font-read); }
 .reading-library button { min-height: 44px; cursor: pointer; color: var(--color-muted); text-align: left; }
+.reading-library > button { display: inline-flex; align-items: center; justify-content: center; padding: .4rem .7rem; border: 1px solid var(--color-line-strong); border-radius: .35rem; background: var(--color-surface); font: 500 .75rem/1.4 var(--font-read); }
 .reading-library button:hover { color: var(--color-signal); text-decoration: underline; text-underline-offset: 3px; }
+.reading-library > button:hover { color: var(--color-paper); border-color: var(--color-signal); text-decoration: none; }
 .reading-library button[aria-pressed="true"] { color: var(--color-signal); }
 .reading-library :is(a, button):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; border-radius: 2px; }
 .reading-library-status { color: var(--color-muted); font-size: .75rem; }

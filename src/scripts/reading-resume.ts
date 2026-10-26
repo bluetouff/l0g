@@ -14,7 +14,7 @@ if (root && content && bar) {
   const en = root.dataset.lang === 'en';
   const title = readingTitle(document.querySelector('h1')?.textContent);
   const blocks = Array.from(content.children).filter((node): node is HTMLElement =>
-    node instanceof HTMLElement && !node.matches('.at-figure-action, .at-dialog'));
+    node instanceof HTMLElement && !node.matches('.at-figure-action, .at-figure-header, .at-dialog'));
   let storage: Storage | null = null;
   try { storage = window.localStorage; } catch { /* Reading remains available without storage. */ }
   let saved = storage ? readReadingPositions(storage).find((item) => item.path === path) : undefined;
