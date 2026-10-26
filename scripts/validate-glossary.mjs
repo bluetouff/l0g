@@ -19,6 +19,32 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Survey definitions retain their sample scope, primary sources and short-page indexation.
+const cesArticleFr = '/posts/bce-menages-facture-plus-lourde/';
+const cesArticleEn = '/en/analysis/ecb-households-bigger-bills/';
+for (const [slug, sources, related] of [
+  ['ces', ['https://www.ecb.europa.eu/stats/ecb_surveys/consumer_exp_survey/shared/pdf/CES_methodological_guide.en.pdf'], ['winsorisation', 'quintile-de-revenu', 'ipch']],
+  ['winsorisation', ['https://www.ecb.europa.eu/stats/ecb_surveys/consumer_exp_survey/shared/pdf/CES_aggregate_statistics_guide.en.pdf'], ['ces', 'quintile-de-revenu']],
+  ['quintile-de-revenu', ['https://www.ecb.europa.eu/stats/ecb_surveys/consumer_exp_survey/shared/pdf/CES_aggregate_statistics_guide.en.pdf'], ['ces', 'winsorisation']],
+  ['ipch', ['https://ec.europa.eu/eurostat/web/hicp/overview', 'https://www.ecb.europa.eu/mopo/strategy/pricestab/html/index.en.html'], ['ces']],
+]) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert(!glossaryReferenceCandidateSlugs.includes(slug));
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  if (slug !== 'ipch') assert.equal(fr[0].guide, cesArticleFr);
+  for (const [entry, article, terms] of [[fr[0], cesArticleFr, glossaryEntries], [en[0], cesArticleEn, glossaryAtlasEn]]) {
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    assert.deepEqual(entry.atlas.sources.map(link => link.href), sources);
+    assert.deepEqual(entry.atlas.related, related);
+    for (const peer of related) assert(terms.find(term => term.slug === peer).atlas.related.includes(slug));
+    assert(!entry.def.includes('—'));
+  }
+}
+
 // Accounting expense recognition and a bank's cost ratio remain sourced short definitions.
 const barclaysAiArticleFr = '/posts/barclays-ia-preuves-suppressions-postes/';
 const barclaysAiArticleEn = '/en/analysis/barclays-ai-job-cuts-productivity-evidence/';
@@ -786,7 +812,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 320, 'Le corpus anglais ajoute deux notions comptables à ses 318 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 324, 'Le corpus anglais ajoute trois notions CES et l’IPCH à ses 320 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -987,8 +1013,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 711, 'Le corpus ajoute deux notions comptables à ses 709 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 310, 'Le graphe Atlas ajoute deux notions comptables à ses 308 nœuds existants');
+assert.equal(glossaryEntries.length, 714, 'Le corpus ajoute trois notions CES à ses 711 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 314, 'Le graphe Atlas ajoute trois notions CES et le rattachement IPCH à ses 310 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1410,7 +1436,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 877, 'Le graphe Atlas ajoute deux relations réciproques comptables à ses 875 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 885, 'Le graphe Atlas ajoute huit relations CES réciproques à ses 877 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

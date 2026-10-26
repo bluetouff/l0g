@@ -105,6 +105,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      { sigle: 'CES', nom: 'Consumer Expectations Survey de la BCE', def: 'Enquête mensuelle en ligne de la BCE auprès d’adultes des pays participants de la zone euro. Elle recueille leurs perceptions, anticipations et intentions concernant les prix, les revenus, les dépenses et les conditions économiques. Les résultats sont pondérés selon la population. Ils décrivent les réponses des consommateurs ; ils se distinguent des projections économiques de la BCE.', guide: '/posts/bce-menages-facture-plus-lourde/' },
+      { sigle: 'Winsorisation', nom: 'Traitement des valeurs extrêmes aux bornes retenues', def: 'Traitement statistique qui ramène les valeurs situées au-delà de seuils choisis à ces seuils, en conservant les observations concernées. Dans les indicateurs quantitatifs de la CES, les bornes sont les 2e et 98e percentiles de la distribution pondérée, calculés par pays et vague. Le traitement limite l’influence des réponses extrêmes sur la moyenne.', guide: '/posts/bce-menages-facture-plus-lourde/' },
+      { sigle: 'Quintile de revenu', nom: 'Groupe classé dans la distribution des revenus', def: 'L’un des cinq groupes obtenus en classant une population selon le revenu, chacun représentant environ un cinquième de son poids. Dans la CES, les seuils reposent sur le revenu disponible du ménage et sont calculés par pays, vague et module, avec les pondérations de l’enquête. Le premier quintile regroupe les revenus les plus faibles ; le cinquième, les plus élevés. Ces groupes décrivent le revenu, distinct du patrimoine.', guide: '/posts/bce-menages-facture-plus-lourde/' },
     {"sigle": "Crédit d’impôt transférable", "nom": "Cession d’un crédit fiscal contre du numéraire", "def": "Aux États-Unis, le régime de la section 6418 permet à un contribuable éligible de céder tout ou partie de certains crédits d’impôt, dont le crédit 48C, à un tiers non lié contre un paiement exclusivement en numéraire. Le crédit attribué, le prix brut de cession et la trésorerie nette après frais sont des montants distincts. Les conditions fiscales et les obligations de conformité continuent de s’appliquer.", "guide": "/posts/aimants-terres-rares-gm-vac-usine-contrat/"},
       { sigle: 'Niveau de vie', nom: 'Revenu disponible par unité de consommation', def: 'Revenu disponible du ménage divisé par son nombre d’unités de consommation, pour tenir compte de sa taille et de sa composition. L’échelle de l’OCDE modifiée attribue une unité au premier adulte, une demi-unité aux autres personnes de quatorze ans ou plus et trois dixièmes aux enfants plus jeunes. Chaque membre d’un même ménage reçoit ainsi le même niveau de vie statistique.', guide: '/posts/budget-2027-repartition-effort-risque/' },
       { sigle: 'Propension marginale à consommer', nom: 'Réponse de la consommation à une variation de revenu', def: 'Part d’une variation du revenu disponible qui se traduit par une variation de consommation, sur un horizon défini. Sa mesure dépend du type de choc, de son anticipation et des liquidités du ménage. Le rapport entre consommation totale et revenu total mesure, lui, une propension moyenne.', guide: '/posts/budget-2027-repartition-effort-risque/' },
@@ -912,7 +915,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-25';
+export const glossaryUpdatedIso = '2026-10-26';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1155,6 +1158,26 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  ces: {
+    articles: [{ label: 'BCE : les ménages face à une facture plus lourde', href: '/posts/bce-menages-facture-plus-lourde/', kind: 'article' }],
+    sources: [{ label: 'BCE, informations méthodologiques de la CES, janvier 2026', href: 'https://www.ecb.europa.eu/stats/ecb_surveys/consumer_exp_survey/shared/pdf/CES_methodological_guide.en.pdf', detail: 'Population cible, recrutement, modules et pondérations.', kind: 'source' }],
+    related: ['winsorisation', 'quintile-de-revenu', 'ipch'],
+  },
+  winsorisation: {
+    articles: [{ label: 'BCE : les ménages face à une facture plus lourde', href: '/posts/bce-menages-facture-plus-lourde/', kind: 'article' }],
+    sources: [{ label: 'BCE, calcul des agrégats CES, mars 2026', href: 'https://www.ecb.europa.eu/stats/ecb_surveys/consumer_exp_survey/shared/pdf/CES_aggregate_statistics_guide.en.pdf', detail: 'Section 3.2 : bornes des réponses quantitatives par pays et vague.', kind: 'source' }],
+    related: ['ces', 'quintile-de-revenu'],
+  },
+  'quintile-de-revenu': {
+    articles: [{ label: 'BCE : les ménages face à une facture plus lourde', href: '/posts/bce-menages-facture-plus-lourde/', kind: 'article' }],
+    sources: [{ label: 'BCE, calcul des agrégats CES, mars 2026', href: 'https://www.ecb.europa.eu/stats/ecb_surveys/consumer_exp_survey/shared/pdf/CES_aggregate_statistics_guide.en.pdf', detail: 'Section 4 : seuils de revenu pondérés propres au pays, à la vague et au module.', kind: 'source' }],
+    related: ['ces', 'winsorisation'],
+  },
+  ipch: {
+    articles: [{ label: 'BCE : les ménages face à une facture plus lourde', href: '/posts/bce-menages-facture-plus-lourde/', kind: 'article' }],
+    sources: [{ label: 'Eurostat, présentation de l’IPCH', href: 'https://ec.europa.eu/eurostat/web/hicp/overview', kind: 'source' }, { label: 'BCE, cible d’inflation de 2 %', href: 'https://www.ecb.europa.eu/mopo/strategy/pricestab/html/index.en.html', detail: 'Cible à moyen terme évaluée avec l’IPCH de la zone euro.', kind: 'source' }],
+    related: ['ces'],
+  },
   'provision-comptable': {
     intuition: 'Reconnaître une charge et une obligation peut précéder le paiement correspondant.',
     articles: [{ label: 'Barclays : les preuves attendues derrière les suppressions de postes', href: '/posts/barclays-ia-preuves-suppressions-postes/', kind: 'article' }],

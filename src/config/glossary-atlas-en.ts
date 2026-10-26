@@ -210,6 +210,46 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'ces', sigle: 'CES', nom: 'ECB Consumer Expectations Survey',
+    def: 'A monthly online ECB survey of adults in participating euro area countries. It records perceptions, expectations and intentions concerning prices, income, spending and economic conditions. Results are population-weighted. They describe consumers’ answers and are distinct from the ECB’s economic projections.',
+    guide: '/en/analysis/ecb-households-bigger-bills/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Europe’s households expect bigger bills', href: '/en/analysis/ecb-households-bigger-bills/', kind: 'article' }],
+      sources: [{ label: 'ECB, CES methodological information, January 2026', href: 'https://www.ecb.europa.eu/stats/ecb_surveys/consumer_exp_survey/shared/pdf/CES_methodological_guide.en.pdf', detail: 'Target population, recruitment, modules and weighting.', kind: 'source' }],
+      related: ['winsorisation', 'quintile-de-revenu', 'ipch'],
+    },
+  },
+  {
+    slug: 'winsorisation', sigle: 'Winsorisation', nom: 'Replacing extreme values at selected thresholds',
+    def: 'A statistical treatment that replaces values beyond selected thresholds with those thresholds while retaining the observations. For CES quantitative indicators, the limits are the 2nd and 98th percentiles of the weighted distribution, calculated separately for each country and survey round. This limits the influence of extreme responses on the mean.',
+    guide: '/en/analysis/ecb-households-bigger-bills/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Europe’s households expect bigger bills', href: '/en/analysis/ecb-households-bigger-bills/', kind: 'article' }],
+      sources: [{ label: 'ECB, CES aggregate statistics guide, March 2026', href: 'https://www.ecb.europa.eu/stats/ecb_surveys/consumer_exp_survey/shared/pdf/CES_aggregate_statistics_guide.en.pdf', detail: 'Section 3.2: quantitative-response thresholds by country and round.', kind: 'source' }],
+      related: ['ces', 'quintile-de-revenu'],
+    },
+  },
+  {
+    slug: 'quintile-de-revenu', sigle: 'Income quintile', nom: 'A ranked group within the income distribution',
+    def: 'One of five groups formed by ranking a population by income, each accounting for roughly one fifth of its weight. In the CES, thresholds use household disposable income and are calculated by country, survey round and module using survey weights. The first quintile contains the lowest incomes and the fifth the highest. The grouping describes income, which is distinct from wealth.',
+    guide: '/en/analysis/ecb-households-bigger-bills/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Europe’s households expect bigger bills', href: '/en/analysis/ecb-households-bigger-bills/', kind: 'article' }],
+      sources: [{ label: 'ECB, CES aggregate statistics guide, March 2026', href: 'https://www.ecb.europa.eu/stats/ecb_surveys/consumer_exp_survey/shared/pdf/CES_aggregate_statistics_guide.en.pdf', detail: 'Section 4: weighted income thresholds by country, round and module.', kind: 'source' }],
+      related: ['ces', 'winsorisation'],
+    },
+  },
+  {
+    slug: 'ipch', sigle: 'HICP', nom: 'Harmonised Index of Consumer Prices',
+    def: 'A measure of consumer-price inflation calculated using a common methodology that allows comparison across EU countries. Eurostat publishes the index and its detailed consumption categories. The ECB assesses its medium-term 2% inflation target using euro area HICP. The index describes a statistical consumption basket, while a household’s own spending pattern can differ.',
+    guide: '/en/analysis/ecb-households-bigger-bills/', ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Europe’s households expect bigger bills', href: '/en/analysis/ecb-households-bigger-bills/', kind: 'article' }],
+      sources: [{ label: 'Eurostat, HICP overview', href: 'https://ec.europa.eu/eurostat/web/hicp/overview', kind: 'source' }, { label: 'ECB, two per cent inflation target', href: 'https://www.ecb.europa.eu/mopo/strategy/pricestab/html/index.en.html', detail: 'Medium-term target assessed using euro area HICP.', kind: 'source' }],
+      related: ['ces'],
+    },
+  },
+  {
     slug: 'provision-comptable', sigle: 'Accounting provision', nom: 'Liability of uncertain timing or amount',
     def: 'Under IAS 37, a liability of uncertain timing or amount. Recognition requires a present obligation arising from a past event, a probable outflow of resources and a reliable estimate of the amount. Recognising an expense and making the payment can occur at different dates. Termination benefits fall under IAS 19.',
     guide: '/en/analysis/barclays-ai-job-cuts-productivity-evidence/',
