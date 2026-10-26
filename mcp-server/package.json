@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.1",
-    "node-html-parser": "^9.0.4",
+    "node-html-parser": "^9.0.5",
     "zod": "^4.6.7"
   },
   "overrides": {
