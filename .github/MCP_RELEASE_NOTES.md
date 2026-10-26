@@ -5,17 +5,19 @@ Cette release publie le daemon distant en lecture seule dont la porte d’entré
 et référencé dans le Registry officiel sous le nom
 `io.github.bluetouff/l0g`.
 
-## Correctifs de dépendances 1.24.5
+## Correctifs de dépendances 1.24.8
 
-Cette version active les mises à jour déjà intégrées au dépôt depuis la release
-1.24.4 : `node-html-parser` passe de 9.0.1 à 9.0.4 et `hono` de 4.12.34 à 4.13.5.
-Le parseur traite notamment la fermeture implicite des balises `dt` et `dd`.
-Les correctifs Hono sont couverts par les tests de dépendances du dépôt.
+Cette version met à jour `node-html-parser` de 9.0.4 à 9.0.5 et embarque
+`fast-uri` 3.1.9, déjà intégré au dépôt après la release 1.24.7. Les tests de
+régression couvrent la confusion de schéma et d'hôte ainsi que la normalisation
+des références relatives et des deux-points dans le premier segment d'une URI.
 
-Les outils, schémas, permissions et endpoints MCP restent inchangés. Zod reste
-en version 3.25.76 ; cette release ne réalise pas de migration vers Zod 4.
-Les optimisations de chargement du corpus et du graphe de preuve de la version
-1.24.4 sont conservées.
+Elle embarque également les mises à jour déjà intégrées de `body-parser` 2.4.0
+et de ses dépendances. Les outils, schémas, permissions et endpoints MCP restent
+inchangés ; le serveur conserve Zod 4.6.7 et le SDK MCP 1.32.1.
+
+La chaîne de compilation utilise Node.js 22.23.4 pour satisfaire le minimum
+de sécurité des dépendances Astro actualisées.
 
 La publication vérifie les contrats du serveur complet et compact, Agent Bench,
 les dépendances et l’archive Linux extraite avant attestation. L’activation en
