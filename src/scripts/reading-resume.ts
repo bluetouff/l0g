@@ -1,4 +1,4 @@
-import { READING_STORAGE_KEY, readReadingPositions, writeReadingPosition, readingProgress, type ReadingPosition } from '../lib/reading-position.ts';
+import { READING_STORAGE_KEY, readReadingPositions, writeReadingPosition, readingProgress, readingTitle, type ReadingPosition } from '../lib/reading-position.ts';
 
 const root = document.querySelector<HTMLElement>('[data-reading-resume]');
 const content = document.querySelector<HTMLElement>('[data-reading-body]');
@@ -12,7 +12,9 @@ if (root && content && bar) {
   const path = location.pathname;
   const revision = root.dataset.revision!;
   const en = root.dataset.lang === 'en';
-  const blocks = Array.from(content.children).filter((node): node is HTMLElement => node instanceof HTMLElement);
+  const title = readingTitle(document.querySelector('h1')?.textContent);
+  const blocks = Array.from(content.children).filter((node): node is HTMLElement =>
+    node instanceof HTMLElement && !node.matches('.at-figure-action, .at-dialog'));
   let storage: Storage | null = null;
   try { storage = window.localStorage; } catch { /* Reading remains available without storage. */ }
   let saved = storage ? readReadingPositions(storage).find((item) => item.path === path) : undefined;
@@ -33,7 +35,7 @@ if (root && content && bar) {
   }
 
   function save() {
-    if (!storage || disabled || !scrolled) return;
+    if (!storage || disabled || !scrolled || document.querySelector('dialog[open]')) return;
     const rect = content!.getBoundingClientRect();
     const progress = readingProgress(rect.top, rect.height, window.innerHeight);
     // Returning to the title must not erase a pending bookmark.
@@ -55,10 +57,10 @@ if (root && content && bar) {
     const bounds = blocks[block]?.getBoundingClientRect();
     if (!bounds || bounds.height <= 0) return;
     const position: ReadingPosition = {
-      path, revision, block, progress, savedAt: Date.now(),
+      path, revision, block, progress, savedAt: Date.now(), ...(title ? { title } : {}),
       fraction: Math.min(1, Math.max(0, (24 - bounds.top) / bounds.height)),
     };
-    if (writeReadingPosition(storage, path, position)) hasStored = true;
+    if (writeReadingPosition(storage, path, position)) { hasStored = true; saved = position; }
   }
 
   function update() {
@@ -83,6 +85,21 @@ if (root && content && bar) {
       else target.setAttribute('tabindex', previous);
     }, { once: true });
     status.textContent = en ? 'Reading position restored.' : 'Position de lecture retrouvée.';
+  });
+  // Reading-list links explicitly request resuming. Other shared anchors retain their normal behaviour.
+  function resumeFromLibrary() {
+    if (location.hash === '#l0g-reading-position' && saved) resume.click();
+  }
+  window.addEventListener('hashchange', resumeFromLibrary);
+  document.addEventListener('l0g:reading-resume', () => { if (saved) resume.click(); });
+  if (location.hash === '#l0g-reading-position' && saved) requestAnimationFrame(resumeFromLibrary);
+  document.addEventListener('l0g:reading-removed', (event) => {
+    if ((event as CustomEvent<{ path: string }>).detail?.path !== path) return;
+    disabled = true;
+    saved = undefined;
+    hasStored = false;
+    window.clearTimeout(timer);
+    root!.hidden = true;
   });
   forget.addEventListener('click', () => {
     disabled = true;

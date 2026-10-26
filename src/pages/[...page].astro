@@ -4,6 +4,7 @@ import type { GetStaticPathsOptions } from 'astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AnalysisPagination from '../components/AnalysisPagination.astro';
 import HomeSidebar from '../components/HomeSidebar.astro';
+import ReadingLibrary from '../components/ReadingLibrary.astro';
 import PostCard from '../components/PostCard.astro';
 import { selectHomeFeaturedPost, sortPostsByPublicationDate } from '../lib/content-order.mjs';
 import PostHero from '../components/PostHero.astro';
@@ -94,6 +95,7 @@ const needCards = [
         <a href="/atlas/" class="home-action primary">Explorer les atlas</a>
         <a href="#dernieres-analyses" class="home-action">Lire les dernières analyses</a>
       </div>
+      <div class="mt-4" data-pagefind-ignore><ReadingLibrary lang="fr" /></div>
     </section>
   )}
 

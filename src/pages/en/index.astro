@@ -4,6 +4,7 @@ import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
 import WatchCard from '../../components/WatchCard.astro';
 import LatestEnglishEpub from '../../components/LatestEnglishEpub.astro';
 import EnglishDossierLinks from '../../components/EnglishDossierLinks.astro';
+import ReadingLibrary from '../../components/ReadingLibrary.astro';
 import PublicationDates from '../../components/PublicationDates.astro';
 import { selectHomeFeaturedPost } from '../../lib/content-order.mjs';
 import { selectedEnglishInvestigations } from '../../config/english-edition.ts';
@@ -109,6 +110,7 @@ const jsonLd = {
         <a href="/en/asia/" class="en-cta">follow Asia's global links</a>
         <a href="/en/start/" class="en-cta ghost">choose a reading path</a>
       </div>
+      <ReadingLibrary lang="en" />
     </div>
 
     <aside class="en-hero-rail" aria-label="l0g English highlights" data-pagefind-ignore>

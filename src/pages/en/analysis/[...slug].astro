@@ -8,6 +8,10 @@ import AiEditorialDisclosure from '../../../components/AiEditorialDisclosure.ast
 import EnglishRelatedReading from '../../../components/EnglishRelatedReading.astro';
 import ArticleHeroImage from '../../../components/ArticleHeroImage.astro';
 import ReadingResume from '../../../components/ReadingResume.astro';
+import ReadingLibrary from '../../../components/ReadingLibrary.astro';
+import ArticleTools from '../../../components/ArticleTools.astro';
+import { articleGlossaryTerms } from '../../../lib/article-glossary.ts';
+import '../../../styles/article-print.css';
 import SupportCard from '../../../components/SupportCard.astro';
 import WatchCard from '../../../components/WatchCard.astro';
 import DebtEpubCard from '../../../components/DebtEpubCard.astro';
@@ -184,6 +188,10 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
       <div class="post-rule" aria-hidden="true"></div>
     </header>
 
+    <div class="article-reading-actions" data-pagefind-ignore>
+      <ReadingLibrary lang="en" articleTitle={post.data.title} />
+      <ArticleTools lang="en" title={post.data.title} terms={articleGlossaryTerms(post.body ?? '')} />
+    </div>
     <div class="prose" data-reading-body>
       <Content />
     </div>
@@ -261,6 +269,10 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     });
   </script>
 </EnglishGuidesLayout>
+
+<script>
+  import '../../../scripts/article-print.ts';
+</script>
 
 <style>
   .en-article-shell {

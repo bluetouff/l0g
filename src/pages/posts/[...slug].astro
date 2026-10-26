@@ -25,6 +25,10 @@ import FrenchRelatedReading from '../../components/FrenchRelatedReading.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import ArticleHeroImage from '../../components/ArticleHeroImage.astro';
 import ReadingResume from '../../components/ReadingResume.astro';
+import ReadingLibrary from '../../components/ReadingLibrary.astro';
+import ArticleTools from '../../components/ArticleTools.astro';
+import { articleGlossaryTerms } from '../../lib/article-glossary.ts';
+import '../../styles/article-print.css';
 import { ORGANIZATION_ID, authorEntity, organizationEntity } from '../../config/entities.ts';
 import { topicForTag } from '../../config/topics.ts';
 import { topics, postMatchesTopic } from '../../config/topics.ts';
@@ -454,6 +458,10 @@ const quickUncertainty = post.data.quickTake?.uncertainty
 
     <h2 id="analyse-complete" class="analysis-start font-display">Analyse complète</h2>
 
+    <div class="article-reading-actions" data-pagefind-ignore>
+      <ReadingLibrary lang="fr" articleTitle={post.data.title} />
+      <ArticleTools lang="fr" title={post.data.title} terms={articleGlossaryTerms(post.body ?? '')} />
+    </div>
     <div class="prose" data-reading-body>
       <Content />
     </div>
@@ -912,3 +920,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty
     }
   </style>
 </BaseLayout>
+
+<script>
+  import '../../scripts/article-print.ts';
+</script>

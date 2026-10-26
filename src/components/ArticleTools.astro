@@ -1,0 +1,45 @@
+---
+import '../styles/article-tools.css';
+
+interface Term {
+  label: string;
+  name: string;
+  definition: string;
+  href: string;
+}
+interface Props {
+  lang?: 'fr' | 'en';
+  title: string;
+  terms?: Term[];
+}
+const { lang = 'fr', title, terms = [] } = Astro.props;
+const en = lang === 'en';
+---
+<div class="at-tools" data-article-tools data-lang={lang} data-title={title} data-pagefind-ignore hidden>
+  <button type="button" class="at-action" data-article-copy aria-describedby="article-copy-status">
+    {en ? 'Copy an excerpt' : 'Copier un extrait'}
+  </button>
+  <button type="button" class="at-action" data-article-print>{en ? 'Print / PDF' : 'Imprimer / PDF'}</button>
+  <p class="at-status" id="article-copy-status" role="status" aria-live="polite" data-article-status></p>
+  <textarea class="at-copy-fallback" data-article-fallback readonly hidden aria-label={en ? 'Excerpt with its source link' : 'Extrait et lien vers son analyse'}></textarea>
+  <button type="button" class="at-action at-selection" data-article-copy data-article-selection hidden>
+    {en ? 'Copy selected excerpt' : 'Copier l’extrait sélectionné'}
+  </button>
+  <template data-article-terms>
+    {terms.map((term) => <div data-href={term.href} data-label={term.label} data-name={term.name}>{term.definition}</div>)}
+  </template>
+  <dialog class="at-dialog" aria-labelledby="article-preview-title" data-article-dialog>
+    <div class="at-dialog-header">
+      <h2 id="article-preview-title" data-article-dialog-title></h2>
+      <button type="button" class="at-action" data-article-close autofocus>{en ? 'Close' : 'Fermer'} <span aria-hidden="true">×</span></button>
+    </div>
+    <div class="at-zoom-controls" data-article-zoom-controls hidden>
+      <button type="button" class="at-action" data-article-zoom aria-pressed="false">{en ? 'Zoom +' : 'Agrandir +'}</button>
+      <span>{en ? 'Scroll inside the figure to explore.' : 'Faites défiler le graphique pour l’examiner.'}</span>
+    </div>
+    <div class="at-dialog-content" data-article-dialog-content></div>
+  </dialog>
+</div>
+<script>
+  import '../scripts/article-tools';
+</script>

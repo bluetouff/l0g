@@ -267,7 +267,8 @@ test('publication identities, source counts and generation commands are explicit
   for(const book of Object.values(debtEditions))assert.equal(book.chapters.reduce((n,c)=>n+c.figureCount,0),40);
   await assert.rejects(generateDebtEpub('../outside','dark'),/Unsupported/u);await assert.rejects(generateDebtEpub('fr','../outside'),/Unsupported/u);
   const pkg=JSON.parse(readFileSync(join(ROOT,'package.json'),'utf8'));
-  assert.ok(pkg.scripts['build:epub'].includes('node scripts/generate-debt-epub.mjs'));
+  assert.equal(pkg.scripts['build:epub'],'node scripts/derived-assets.mjs epub');
+  assert.ok(pkg.scripts['build:epub:generate'].includes('node scripts/generate-debt-epub.mjs'));
   assert.ok(pkg.scripts['test:epub'].includes('scripts/debt-epub.test.mjs'));
   assert.ok(pkg.scripts['build:verify'].includes('scripts/debt-publication.test.mjs'));
   assert.throws(()=>execFileSync(process.execPath,['scripts/build-epub.mjs','../unconfigured'],{cwd:ROOT,stdio:'pipe'}));

@@ -192,6 +192,7 @@ test('two fixed dark editions remain distinct, complete and integrated into exis
   assert.notEqual(cyberRecoveryEditions.fr.id,cyberRecoveryEditions.en.id);assert.deepEqual(Object.values(cyberRecoveryEditions).map(b=>b.theme),['dark','dark']);
   await assert.rejects(generateCyberRecoveryEpub('../outside'),/Unsupported/u);
   const pkg=JSON.parse(readFileSync(join(ROOT,'package.json'),'utf8'));
-  assert.ok(pkg.scripts['build:epub'].includes('node scripts/generate-cyber-recovery-epub.mjs'));assert.ok(pkg.scripts['test:epub'].includes('scripts/cyber-recovery-epub.test.mjs'));
+  assert.equal(pkg.scripts['build:epub'],'node scripts/derived-assets.mjs epub');
+  assert.ok(pkg.scripts['build:epub:generate'].includes('node scripts/generate-cyber-recovery-epub.mjs'));assert.ok(pkg.scripts['test:epub'].includes('scripts/cyber-recovery-epub.test.mjs'));
   for(const book of Object.values(cyberRecoveryEditions))assert.equal(book.chapters.reduce((sum,c)=>sum+c.figureCount,0),32);
 });

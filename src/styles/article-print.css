@@ -1,0 +1,66 @@
+.article-reading-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .65rem 1.1rem;
+  margin: 0 0 1.5rem;
+}
+@media print {
+  @page { margin: 17mm 15mm; }
+  html:root, html:root[data-theme] {
+    --color-ink: #fff;
+    --color-surface: #fff;
+    --color-surface-2: #f3f4f6;
+    --color-paper: #171a20;
+    --color-prose: #171a20;
+    --color-nav-idle: #454b56;
+    --color-bright: #080a0c;
+    --color-muted: #454b56;
+    --color-signal: #075b52;
+    --color-accent: #98274e;
+    --color-amber: #78551b;
+    --color-line: #d1d5db;
+    --color-line-strong: #89919e;
+    background: #fff;
+    color: #171a20;
+    color-scheme: light;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  body { background: #fff !important; }
+  body > header, body > div > header, body > footer, .topbar, .english-header,
+  .article-sidebar, .en-backdrop, aside:not(article aside), nav, .reading-resume,
+  .article-reading-actions, dialog, [data-reading-progress] { display: none !important; }
+  body > div, main, main > div, .en-article-shell {
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  article[data-pagefind-body] {
+    width: auto;
+    max-width: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    font-size: 10.5pt;
+  }
+  article[data-pagefind-body] > :not(.post-head):not([data-reading-body]):not(.citation-box):not(.citation-en):not(.post-disclaimer) { display: none !important; }
+  .post-head { margin-bottom: 1.2rem !important; }
+  .post-head > :not(h1):not(.post-lede):not(.post-meta):not(.stale-note) { display: none !important; }
+  .post-title { font-size: 23pt !important; line-height: 1.15 !important; text-shadow: none !important; }
+  .post-meta { font-size: 8pt !important; }
+  [data-reading-body] { max-width: none !important; font-size: 10.5pt; }
+  [data-reading-body] h2, [data-reading-body] h3 { break-after: avoid; }
+  [data-reading-body] p, [data-reading-body] li { orphans: 3; widows: 3; }
+  [data-reading-body] figure { break-inside: avoid; margin: 1rem auto !important; }
+  [data-reading-body] svg { max-width: 100%; height: auto; }
+  [data-reading-body] button, [data-reading-body] [data-figure-enlarge] { display: none !important; }
+  [data-reading-body] a { color: inherit; text-decoration: underline; }
+  [data-reading-body] a[href^="https://"]::after { content: " (" attr(href) ")"; font-size: 8pt; overflow-wrap: anywhere; }
+  [data-reading-body] svg a::after { content: none; }
+  .citation-box, .citation-en, .post-disclaimer { margin-top: 1rem; font-size: 8pt; break-inside: avoid; }
+  .citation-format:not(:first-child), .citation-format-head, .citation-box button { display: none !important; }
+  .citation-format code { white-space: normal; overflow-wrap: anywhere; }
+}

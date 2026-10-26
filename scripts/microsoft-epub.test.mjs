@@ -184,7 +184,8 @@ test('book identity, dates and generation commands remain explicit and reproduci
   assert.notEqual(microsoftEditions.fr.id,microsoftEditions.en.id);
   await assert.rejects(generateMicrosoftEpub('../outside'),/Unsupported Microsoft/u);
   const pkg=JSON.parse(readFileSync(join(ROOT,'package.json'),'utf8'));
-  assert.ok(pkg.scripts['build:epub'].includes('node scripts/generate-microsoft-epub.mjs'));
+  assert.equal(pkg.scripts['build:epub'],'node scripts/derived-assets.mjs epub');
+  assert.ok(pkg.scripts['build:epub:generate'].includes('node scripts/generate-microsoft-epub.mjs'));
   assert.ok(pkg.scripts['test:epub'].includes('scripts/microsoft-epub.test.mjs'));
   for(const book of Object.values(microsoftEditions))assert.equal(book.chapters.reduce((n,c)=>n+c.figureCount,0),15);
   assert.throws(()=>execFileSync(process.execPath,['scripts/build-epub.mjs','../unconfigured'],{cwd:ROOT,stdio:'pipe'}));

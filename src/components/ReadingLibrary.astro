@@ -1,0 +1,32 @@
+---
+import styles from '../styles/reading-library.css?url&no-inline';
+interface Props { lang?: 'fr' | 'en'; articleTitle?: string; articlePath?: string; }
+const { lang = 'fr', articleTitle, articlePath = Astro.url.pathname } = Astro.props;
+const en = lang === 'en';
+---
+
+<div class="reading-library" data-reading-library data-lang={en ? 'en' : undefined} data-styles={styles}
+  data-article-title={articleTitle} data-article-path={articleTitle ? articlePath : undefined} data-pagefind-ignore hidden>
+  {articleTitle && <button type="button" data-library-save aria-pressed="false">{en ? 'Save for later' : 'À lire plus tard'}</button>}
+  <button type="button" data-library-open aria-haspopup="dialog">{en ? 'My reading list' : 'Mes lectures'}</button>
+  <span class="reading-library-status" data-library-status role="status"></span>
+  <dialog class="reading-library-dialog" aria-label={en ? 'My reading list' : 'Mes lectures'}>
+    <header>
+      <h2>{en ? 'My reading list' : 'Mes lectures'}</h2>
+      <button type="button" data-library-close autofocus>{en ? 'Close' : 'Fermer'}</button>
+    </header>
+    <p>{en
+      ? 'In this browser · positions: 30 days.'
+      : 'Dans ce navigateur · positions : 30 jours.'}</p>
+    <p class="reading-library-status" data-library-dialog-status role="status"></p>
+    <h3 data-library-positions-heading hidden>{en ? 'Continue reading' : 'En cours'}</h3>
+    <ul data-library-positions></ul>
+    <h3>{en ? 'Saved for later' : 'À lire'}</h3>
+    <ul data-library-saved></ul>
+    <p data-library-saved-empty>{en ? 'Empty list.' : 'Liste vide.'}</p>
+  </dialog>
+</div>
+
+<script>
+  import '../scripts/reading-library.ts';
+</script>
