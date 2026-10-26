@@ -1,6 +1,6 @@
 {
   "name": "l0g-mcp-server",
-  "version": "1.24.7",
+  "version": "1.24.8",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.1",
-    "node-html-parser": "^9.0.4",
+    "node-html-parser": "^9.0.5",
     "zod": "^4.6.7"
   },
   "overrides": {
