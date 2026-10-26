@@ -55,7 +55,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
-          node-version: 22
+          node-version: '22.23.4'
           cache: npm
       - run: npm ci --no-audit --no-fund
       - name: Validate complete SVG source suite
@@ -85,7 +85,7 @@ jobs:
 
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
-          node-version: 22
+          node-version: '22.23.4'
           cache: npm
           cache-dependency-path: |
             package-lock.json
@@ -151,7 +151,7 @@ jobs:
 
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
-          node-version: 22
+          node-version: '22.23.4'
           cache: npm
           cache-dependency-path: |
             package-lock.json
@@ -300,7 +300,7 @@ jobs:
 
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
-          node-version: 22
+          node-version: '22.23.4'
 
       - name: Require the current main commit before publication
         run: |
