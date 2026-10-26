@@ -1,0 +1,62 @@
+---
+// Reviewed passive vector sources are bundled directly in article HTML.
+import { heliumWaferFigureReferences } from '../lib/heliumWaferFigures.mjs';
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'wafer' | 'production' | 'delivery' | 'recovery' | 'timeline';
+  number: string;
+  sources: string;
+  caption: string;
+}
+const { lang, kind, number, sources, caption } = Astro.props;
+const refs = heliumWaferFigureReferences(lang, kind, number, sources, caption);
+const modules = import.meta.glob('../figures/helium-wafer/*.svg', { query: '?raw', import: 'default', eager: true });
+const key = `../figures/helium-wafer/${lang}-${kind}`;
+const desktop = modules[`${key}.svg`];
+const mobile = modules[`${key}-mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError(`Missing bilingual responsive SVG: ${key}`);
+
+---
+<figure class="helium-wafer-figure" id={`figure-${number}`} data-kind={kind}>
+  <div class="figure-wide" set:html={desktop} />
+  <div class="figure-narrow" set:html={mobile} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="figure-cites">{refs.map(r => <a href={`#source-${r}`}>[{Number(r)}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face {
+    font-family: 'l0g Helium Wafer';
+    src: url('/fonts/helium-wafer/dejavu-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'l0g Helium Wafer';
+    src: url('/fonts/helium-wafer/dejavu-sans-700.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+  .helium-wafer-figure { max-width: 48rem; width: 100%; margin: 2.5rem auto; padding-bottom: 1rem; overflow: visible; container-type: inline-size; }
+  .helium-wafer-figure :global(svg) { width: 100%; max-width: 100%; height: auto; display: block; letter-spacing: normal; overflow: visible; }
+  .figure-wide { display: block; width: 100%; }
+  .figure-narrow { display: none; width: 100%; max-width: 26rem; margin-inline: auto; }
+  figcaption { color: var(--color-muted); font-size: .9rem; line-height: 1.7; margin: 1rem 0 .65rem; }
+  figcaption strong { margin-right: .6rem; }
+  .figure-cites { display: block; margin: .4rem 0; }
+  .figure-cites a { margin-right: .75rem; }
+  .helium-wafer-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .helium-wafer-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .helium-wafer-figure :global(details p) { margin: .7rem 0; }
+  .helium-wafer-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @container (max-width: 500px) { .figure-wide { display: none; } .figure-narrow { display: block; } }
+  @media print { .helium-wafer-figure { break-inside: avoid; } .figure-wide { display: block; } .figure-narrow { display: none; } }
+  :global(.helium-wafer-sources) { font-size: .875rem; line-height: 1.7; }
+  :global(.helium-wafer-sources li) { margin: .85rem 0; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
+  :global(.helium-wafer-sources a) { overflow-wrap: anywhere; }
+  :global(article:has(.helium-wafer-figure) .post-title) { hyphens: none; word-break: normal; overflow-wrap: normal; }
+</style>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="he-fr-wafer-m-title he-fr-wafer-m-desc" viewBox="0 0 420 1010" style="width:100%;height:auto" class="l0g-helium-wafer-svg">
+<title id="he-fr-wafer-m-title">L’hélium transfère la chaleur de la plaquette</title><desc id="he-fr-wafer-m-desc">Plasma, plaquette, hélium gazeux régulé, support électrostatique et circuit liquide séparé. Coupe agrandie, sans échelle. Conductivités à 300 K dans la limite des gaz dilués : He 155,7, N₂ 25,9, Ar 17,7 mW/(m·K). Pression, surfaces et géométrie déterminent aussi le transfert réel. Sources [3, 4, 5].</desc>
+<rect id="he-fr-wafer-m-frame" x="0" y="0" width="420" height="1010" rx="12" fill="var(--color-ink)"/>
+<text data-panel="he-fr-wafer-m-frame" x="20" y="30" fill="var(--color-signal)" font-family="l0g Helium Wafer" font-size="17" font-weight="700" text-anchor="start">01 / MATIÈRE ET INDUSTRIE</text>
+<text data-panel="he-fr-wafer-m-frame" x="20" y="65" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">L’hélium transfère la chaleur</text>
+<text data-panel="he-fr-wafer-m-frame" x="20" y="93" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">de la plaquette</text>
+<rect id="he-fr-wafer-m-card-tool" x="16" y="124" width="388" height="393" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-fr-wafer-m-card-tool" x="32" y="151" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="start">Chambre sous vide</text>
+<rect id="he-fr-wafer-m-card-plasma" x="40" y="171" width="340" height="35" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="he-fr-wafer-m-card-plasma" x="210" y="195" fill="var(--color-accent)" font-family="l0g Helium Wafer" font-size="17" font-weight="700" text-anchor="middle">Plasma de gravure</text>
+<path d="M 75 216 L 75 247" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 71.1500 240.0000 L 75 247 L 78.8500 240.0000" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 350 216 L 350 247" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 346.1500 240.0000 L 350 247 L 353.8500 240.0000" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="he-fr-wafer-m-card-tool" x="210" y="248" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="middle">Plaquette de silicium</text>
+<rect id="he-fr-wafer-m-wafer" x="40" y="258" width="340" height="9" rx="12" fill="var(--color-accent)"/>
+<rect id="he-fr-wafer-m-card-gap" x="40" y="278" width="340" height="56" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="he-fr-wafer-m-card-gap" x="257" y="303" fill="var(--color-signal)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="middle">Hélium gazeux</text>
+<text data-panel="he-fr-wafer-m-card-gap" x="257" y="327" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="middle">Pression régulée</text>
+<rect id="he-fr-wafer-m-contact-60" x="60" y="269" width="7" height="68" rx="12" fill="var(--color-line-strong)"/>
+<rect id="he-fr-wafer-m-contact-135" x="135" y="269" width="7" height="68" rx="12" fill="var(--color-line-strong)"/>
+<rect id="he-fr-wafer-m-contact-355" x="355" y="269" width="7" height="68" rx="12" fill="var(--color-line-strong)"/>
+<path d="M 90 283 L 90 327" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 86.1500 320.0000 L 90 327 L 93.8500 320.0000" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 360 283 L 360 327" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 356.1500 320.0000 L 360 327 L 363.8500 320.0000" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="he-fr-wafer-m-card-chuck" x="40" y="342" width="340" height="36" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="he-fr-wafer-m-card-chuck" x="260" y="367" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="middle">Support électrostatique</text>
+<rect id="he-fr-wafer-m-card-cooling" x="40" y="389" width="340" height="63" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="he-fr-wafer-m-card-cooling" x="260" y="413" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="middle">Plaque refroidie</text>
+<path d="M 26 434 L 380 434" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 373.0000 437.8500 L 380 434 L 373.0000 430.1500" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 120 500 L 120 382 L 120 284" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 123.8500 291.0000 L 120 284 L 116.1500 291.0000" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="he-fr-wafer-m-card-tool" x="190" y="492" fill="var(--color-signal)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="start">Arrivée He</text>
+<rect id="he-fr-wafer-m-card-properties" x="16" y="538" width="388" height="285" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-fr-wafer-m-card-properties" x="32" y="569" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="17" font-weight="700" text-anchor="start">Conductivité thermique</text>
+<text data-panel="he-fr-wafer-m-card-properties" x="32" y="594" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="17" font-weight="700" text-anchor="start">à 300 K (26,85 °C)</text>
+<text data-panel="he-fr-wafer-m-card-properties" x="32" y="623" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="start">Gaz dilués · mW/(m·K)</text>
+<text data-panel="he-fr-wafer-m-card-properties" x="32" y="673" fill="var(--color-signal)" font-family="l0g Helium Wafer" font-size="17" font-weight="700" text-anchor="start">He</text>
+<rect id="he-fr-wafer-m-bar-He" x="83" y="658" width="238.415625" height="19" rx="12" fill="var(--color-signal)"/>
+<text data-panel="he-fr-wafer-m-card-properties" x="384" y="673" fill="var(--color-signal)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="end">155,7</text>
+<text data-panel="he-fr-wafer-m-card-properties" x="32" y="718" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="17" font-weight="700" text-anchor="start">N₂</text>
+<rect id="he-fr-wafer-m-bar-N₂" x="83" y="703" width="39.659375" height="19" rx="12" fill="var(--color-muted)"/>
+<text data-panel="he-fr-wafer-m-card-properties" x="384" y="718" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="end">25,9</text>
+<text data-panel="he-fr-wafer-m-card-properties" x="32" y="763" fill="var(--color-accent)" font-family="l0g Helium Wafer" font-size="17" font-weight="700" text-anchor="start">Ar</text>
+<rect id="he-fr-wafer-m-bar-Ar" x="83" y="748" width="27.103125" height="19" rx="12" fill="var(--color-accent)"/>
+<text data-panel="he-fr-wafer-m-card-properties" x="384" y="763" fill="var(--color-accent)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="end">17,7</text>
+<path d="M 83 797 L 328 797" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="he-fr-wafer-m-card-properties" x="83" y="819" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="start">0</text>
+<text data-panel="he-fr-wafer-m-card-properties" x="328" y="819" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="end">160</text>
+<rect id="he-fr-wafer-m-card-method" x="16" y="844" width="388" height="150" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-fr-wafer-m-card-method" x="30" y="871" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="start">Chaleur : ambre · He : menthe</text>
+<text data-panel="he-fr-wafer-m-card-method" x="30" y="896" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="start">Liquide : rose · circuits distincts</text>
+<text data-panel="he-fr-wafer-m-card-method" x="30" y="921" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="start">Pression, surfaces et géométrie</text>
+<text data-panel="he-fr-wafer-m-card-method" x="30" y="946" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="start">comptent aussi. Coupe sans échelle.</text>
+<text data-panel="he-fr-wafer-m-card-method" x="30" y="971" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="17" font-weight="400" text-anchor="start">NIST, 2024 ; Qorvo, 2022 ; brevet [3, 4, 5].</text>
+</svg>

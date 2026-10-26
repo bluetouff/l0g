@@ -19,6 +19,33 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Semiconductor terms remain distinct, sourced definitions with reciprocal links.
+const heliumWaferArticleFr = '/posts/helium-geopolitique-sous-les-puces/';
+const heliumWaferArticleEn = '/en/analysis/helium-geopolitics-beneath-the-wafer/';
+for (const [slug, sources, related] of [["wafer", ["https://news.samsung.com/global/eight-major-steps-to-semiconductor-fabrication-part-1-creating-the-wafer"], ["esc", "conductivite-thermique"]], ["esc", ["https://csmantech.org/wp-content/acfrcwduploads/field_5e8cddf5ddd10/post_6573/15.3_Characterization_of_Electrostatic_Chuck.pdf"], ["wafer", "conductivite-thermique"]], ["conductivite-thermique", ["https://srdata.nist.gov/insulation/Home/DataFieldDef?Length=4", "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=957066"], ["wafer", "esc"]]]) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert(!glossaryReferenceCandidateSlugs.includes(slug));
+  assert.equal(en[0].robots, 'noindex,follow');
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.notEqual(fr[0].def, en[0].def);
+  for (const [entry, article, terms] of [[fr[0], heliumWaferArticleFr, glossaryEntries], [en[0], heliumWaferArticleEn, glossaryAtlasEn]]) {
+    assert.equal(entry.guide, article);
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    assert.deepEqual(entry.atlas.sources.map(link => link.href), sources);
+    assert.deepEqual(entry.atlas.related, related);
+    for (const peer of related) assert(terms.find(term => term.slug === peer).atlas.related.includes(slug));
+    assert(!entry.def.includes('—'));
+  }
+}
+for (const [entry, article, originalGuide] of [[glossaryEntries.find(term => term.slug === 'fonderie'), heliumWaferArticleFr, '/posts/tsmc-puces-data-centers-risque-electrique/'], [glossaryAtlasEnBySlug.get('fonderie'), heliumWaferArticleEn, '/en/analysis/tsmc-chip-demand-data-center-power-risk/']]) {
+  assert.equal(entry.guide, originalGuide);
+  assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+}
+
 // Survey definitions retain their sample scope, primary sources and short-page indexation.
 const cesArticleFr = '/posts/bce-menages-facture-plus-lourde/';
 const cesArticleEn = '/en/analysis/ecb-households-bigger-bills/';
@@ -175,7 +202,7 @@ for (const [slug, sources] of [
   for (const [entry, article, terms] of [[fr[0], '/posts/tsmc-puces-data-centers-risque-electrique/', glossaryEntries], [en[0], '/en/analysis/tsmc-chip-demand-data-center-power-risk/', glossaryAtlasEn]]) {
     const expectedArticles = slug === 'capex'
       ? [article, terms === glossaryEntries ? '/posts/nebius-citi-credit-364-jours-gpu/' : '/en/analysis/nebius-citi-364-day-gpu-credit/', terms === glossaryEntries ? '/posts/aimants-terres-rares-gm-vac-usine-contrat/' : '/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/']
-      : [article];
+      : [article, terms === glossaryEntries ? heliumWaferArticleFr : heliumWaferArticleEn];
     assert.equal(entry.guide, article); assert.deepEqual(entry.atlas.articles.map(link => link.href), expectedArticles);
     assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
     assert.doesNotMatch(entry.def, /[—]/u);
@@ -812,7 +839,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 324, 'Le corpus anglais ajoute trois notions CES et l’IPCH à ses 320 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 327, 'Le corpus anglais ajoute trois notions de fabrication aux 324 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1013,8 +1040,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 714, 'Le corpus ajoute trois notions CES à ses 711 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 314, 'Le graphe Atlas ajoute trois notions CES et le rattachement IPCH à ses 310 nœuds existants');
+assert.equal(glossaryEntries.length, 717, 'Le corpus ajoute trois notions de fabrication aux 714 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 317, 'Le graphe Atlas ajoute trois notions de fabrication aux 314 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1436,7 +1463,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 885, 'Le graphe Atlas ajoute huit relations CES réciproques à ses 877 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 891, 'Le graphe Atlas ajoute six relations de fabrication réciproques aux 885 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

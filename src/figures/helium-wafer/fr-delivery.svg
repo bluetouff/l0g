@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="he-fr-delivery-d-title he-fr-delivery-d-desc" viewBox="0 0 1000 650" style="width:100%;height:auto" class="l0g-helium-wafer-svg">
+<title id="he-fr-delivery-d-title">Du stock au gaz livré à l’usine</title><desc id="he-fr-delivery-d-desc">Deux équipements documentés et indépendants. Caverne de Beaumont : capacité annoncée supérieure à trois milliards de pieds cubes ; mise en service annoncée en juillet 2025 ; remplissage actuel non publié. Conteneur HELICS : durée de maintien annoncée supérieure à 48 jours, à une pression maximale de 5,7 bar et une température ambiante de 30 °C. Cette durée est distincte de l’autonomie d’une fab. Une chaîne générique relie stock utilisable, traitement, transport et gaz qualifié. Exemple de grade électronique commercial : hélium à au moins 99,9999 %. Sources : Linde et Air Liquide Taiwan [11, 12, 13, 14].</desc>
+<rect id="he-fr-delivery-d-frame" x="0" y="0" width="1000" height="650" rx="12" fill="var(--color-ink)"/>
+<text data-panel="he-fr-delivery-d-frame" x="24" y="30" fill="var(--color-signal)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">03 / MATIÈRE ET INDUSTRIE</text>
+<text data-panel="he-fr-delivery-d-frame" x="24" y="72" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="30" font-weight="700" text-anchor="start">Du stock au gaz livré à l’usine</text>
+<rect id="he-fr-delivery-d-card-storage" x="22" y="112" width="468" height="281" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<rect id="he-fr-delivery-d-card-transport" x="510" y="112" width="468" height="281" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-fr-delivery-d-card-storage" x="40" y="146" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">BEAUMONT · STOCKAGE GAZEUX</text>
+<path d="M 44 179 L 460 179" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 245 159 L 245 211" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 240.0500 202.0000 L 245 211 L 249.9500 202.0000" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="he-fr-delivery-d-card-cavern" x="140" y="217" width="210" height="45" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="he-fr-delivery-d-card-cavern" x="245" y="247" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="middle">Caverne de sel</text>
+<text data-panel="he-fr-delivery-d-card-storage" x="40" y="303" fill="var(--color-signal)" font-family="l0g Helium Wafer" font-size="27" font-weight="700" text-anchor="start">&gt; 3 milliards de pieds cubes</text>
+<text data-panel="he-fr-delivery-d-card-storage" x="40" y="339" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Capacité annoncée en juillet 2025.</text>
+<text data-panel="he-fr-delivery-d-card-storage" x="40" y="369" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Remplissage actuel : non publié.</text>
+<text data-panel="he-fr-delivery-d-card-transport" x="530" y="146" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">HELICS · TRANSPORT LIQUIDE</text>
+<rect id="he-fr-delivery-d-card-tank" x="600" y="173" width="290" height="61" rx="12" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-fr-delivery-d-card-tank" x="745" y="212" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="middle">He liquide · isolé</text>
+<path d="M 548 201 L 590 201" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 581.0000 205.9500 L 590 201 L 581.0000 196.0500" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="he-fr-delivery-d-card-transport" x="530" y="280" fill="var(--color-signal)" font-family="l0g Helium Wafer" font-size="35" font-weight="700" text-anchor="start">&gt; 48 jours</text>
+<text data-panel="he-fr-delivery-d-card-transport" x="530" y="317" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Maintien annoncé par Linde.</text>
+<text data-panel="he-fr-delivery-d-card-transport" x="530" y="347" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Pression max. 5,7 bar · air à 30 °C</text>
+<text data-panel="he-fr-delivery-d-card-transport" x="530" y="377" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Isolation + écran thermique à l’azote</text>
+<rect id="he-fr-delivery-d-card-step-0" x="22" y="427" width="218" height="116" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-fr-delivery-d-card-step-0" x="34" y="461" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">Stock utilisable</text>
+<text data-panel="he-fr-delivery-d-card-step-0" x="34" y="495" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Quantité et état</text>
+<text data-panel="he-fr-delivery-d-card-step-0" x="34" y="524" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">du gaz</text>
+<path d="M 241 484 L 263 484" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 254.0000 488.9500 L 263 484 L 254.0000 479.0500" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="he-fr-delivery-d-card-step-1" x="268" y="427" width="218" height="116" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-fr-delivery-d-card-step-1" x="280" y="461" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">Traitement</text>
+<text data-panel="he-fr-delivery-d-card-step-1" x="280" y="495" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Soutirage et</text>
+<text data-panel="he-fr-delivery-d-card-step-1" x="280" y="524" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">purification</text>
+<path d="M 487 484 L 509 484" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 500.0000 488.9500 L 509 484 L 500.0000 479.0500" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="he-fr-delivery-d-card-step-2" x="514" y="427" width="218" height="116" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-fr-delivery-d-card-step-2" x="526" y="461" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">Acheminement</text>
+<text data-panel="he-fr-delivery-d-card-step-2" x="526" y="495" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Conteneurs et</text>
+<text data-panel="he-fr-delivery-d-card-step-2" x="526" y="524" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">itinéraire, délais</text>
+<path d="M 733 484 L 755 484" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 746.0000 488.9500 L 755 484 L 746.0000 479.0500" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="he-fr-delivery-d-card-step-3" x="760" y="427" width="218" height="116" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-fr-delivery-d-card-step-3" x="772" y="461" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">Gaz qualifié</text>
+<text data-panel="he-fr-delivery-d-card-step-3" x="772" y="495" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Spécification et</text>
+<text data-panel="he-fr-delivery-d-card-step-3" x="772" y="524" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">disponibilité</text>
+<text data-panel="he-fr-delivery-d-frame" x="24" y="579" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Grade électronique commercial : He ≥ 99,9999 % (Air Liquide Taiwan).</text>
+<text data-panel="he-fr-delivery-d-frame" x="24" y="608" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Schémas génériques : capacité de stockage, maintien et débit restent distincts.</text>
+<text data-panel="he-fr-delivery-d-frame" x="24" y="637" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Linde et Air Liquide Taiwan, sources consultées le 26 octobre 2026 [11, 12, 13, 14].</text>
+</svg>

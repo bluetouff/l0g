@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="he-en-recovery-d-title he-en-recovery-d-desc" viewBox="0 0 1000 650" style="width:100%;height:auto" class="l0g-helium-wafer-svg">
+<title id="he-en-recovery-d-title">Recovering helium, then checking its quality</title><desc id="he-en-recovery-d-desc">Generic recovery loop: distribution to fab processes, exhaust collection and sorting, contaminant-specific pretreatment, purification and quality checks. Gas meeting specifications returns to distribution; fresh supply makes up for unrecovered gas and treatment rejects. Paths show no quantified flow, and this is separate from Samsung’s actual installation topology. Samsung reports an annual saving of approximately 4.7 tonnes on one production line as of 2025. Baseline consumption is undisclosed and a group-wide recovery rate remains unknown. Sources: Samsung and patent US20250122079A1 [15, 16].</desc>
+<rect id="he-en-recovery-d-frame" x="0" y="0" width="1000" height="650" rx="12" fill="var(--color-ink)"/>
+<text data-panel="he-en-recovery-d-frame" x="24" y="30" fill="var(--color-signal)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">04 / MATERIALS AND INDUSTRY</text>
+<text data-panel="he-en-recovery-d-frame" x="24" y="72" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="30" font-weight="700" text-anchor="start">Recovering helium, then checking its quality</text>
+<rect id="he-en-recovery-d-card-step-0" x="22" y="148" width="290" height="97" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-en-recovery-d-card-step-0" x="37" y="183" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">Distribution</text>
+<text data-panel="he-en-recovery-d-card-step-0" x="37" y="221" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Buffer and delivery</text>
+<rect id="he-en-recovery-d-card-step-1" x="355" y="148" width="290" height="97" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-en-recovery-d-card-step-1" x="370" y="183" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">Fab processes</text>
+<text data-panel="he-en-recovery-d-card-step-1" x="370" y="221" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Helium use</text>
+<rect id="he-en-recovery-d-card-step-2" x="688" y="148" width="290" height="97" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-en-recovery-d-card-step-2" x="703" y="183" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">Collect and sort</text>
+<text data-panel="he-en-recovery-d-card-step-2" x="703" y="221" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Selected streams</text>
+<rect id="he-en-recovery-d-card-step-3" x="688" y="306" width="290" height="97" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-en-recovery-d-card-step-3" x="703" y="341" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">Pretreatment</text>
+<text data-panel="he-en-recovery-d-card-step-3" x="703" y="379" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Contaminant-specific</text>
+<rect id="he-en-recovery-d-card-step-4" x="355" y="306" width="290" height="97" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-en-recovery-d-card-step-4" x="370" y="341" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">Purification</text>
+<text data-panel="he-en-recovery-d-card-step-4" x="370" y="379" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Impurity removal</text>
+<rect id="he-en-recovery-d-card-step-5" x="22" y="306" width="290" height="97" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-en-recovery-d-card-step-5" x="37" y="341" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">Quality check</text>
+<text data-panel="he-en-recovery-d-card-step-5" x="37" y="379" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Reuse if on specification</text>
+<path d="M 314 196 L 348 196" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 339.0000 200.9500 L 348 196 L 339.0000 191.0500" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 647 196 L 681 196" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 672.0000 200.9500 L 681 196 L 672.0000 191.0500" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 833 247 L 833 298" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 828.0500 289.0000 L 833 298 L 837.9500 289.0000" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 686 355 L 652 355" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 661.0000 350.0500 L 652 355 L 661.0000 359.9500" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 353 355 L 319 355" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 328.0000 350.0500 L 319 355 L 328.0000 359.9500" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 167 304 L 167 252" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 171.9500 261.0000 L 167 252 L 162.0500 261.0000" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="he-en-recovery-d-frame" x="320" y="286" fill="var(--color-signal)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">On-specification reuse</text>
+<text data-panel="he-en-recovery-d-frame" x="360" y="113" fill="var(--color-amber)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Fresh supply</text>
+<path d="M 345 108 L 167 108 L 167 141" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 162.0500 132.0000 L 167 141 L 171.9500 132.0000" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 833 405 L 833 435" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 828.0500 426.0000 L 833 435 L 837.9500 426.0000" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 167 405 L 167 435 L 550 435" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 541.0000 439.9500 L 550 435 L 541.0000 430.0500" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 646 220 L 666 220 L 666 435 L 720 435" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5"/>
+<path d="M 711.0000 439.9500 L 720 435 L 711.0000 430.0500" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="he-en-recovery-d-frame" x="977" y="466" fill="var(--color-accent)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="end">Unrecovered gas / treatment rejects</text>
+<rect id="he-en-recovery-d-card-samsung" x="22" y="489" width="956" height="138" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="he-en-recovery-d-card-samsung" x="40" y="523" fill="var(--color-paper)" font-family="l0g Helium Wafer" font-size="22" font-weight="700" text-anchor="start">SAMSUNG</text>
+<text data-panel="he-en-recovery-d-card-samsung" x="40" y="573" fill="var(--color-signal)" font-family="l0g Helium Wafer" font-size="34" font-weight="700" text-anchor="start">≈ 4.7 t/year</text>
+<text data-panel="he-en-recovery-d-card-samsung" x="40" y="610" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">reported annual saving</text>
+<text data-panel="he-en-recovery-d-card-samsung" x="375" y="523" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">One line as of 2025; baseline not disclosed.</text>
+<text data-panel="he-en-recovery-d-card-samsung" x="375" y="552" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Generic loop; Samsung’s installation is not depicted.</text>
+<text data-panel="he-en-recovery-d-card-samsung" x="375" y="581" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Flows unquantified; group recovery rate unknown.</text>
+<text data-panel="he-en-recovery-d-card-samsung" x="375" y="610" fill="var(--color-muted)" font-family="l0g Helium Wafer" font-size="22" font-weight="400" text-anchor="start">Samsung; patent US20250122079A1 [15, 16].</text>
+</svg>
