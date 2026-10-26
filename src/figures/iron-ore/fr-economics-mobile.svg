@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="iron-fr-economics-m-title iron-fr-economics-m-desc" viewBox="0 0 420 1150" style="width:100%;height:auto" class="l0g-iron-ore-svg">
+<title id="iron-fr-economics-m-title">Les coûts montent, le prix réalisé recule</title><desc id="iron-fr-economics-m-desc">Hématite Fortescue. Trimestres septembre 2025, juin 2026 et septembre 2026 : C1 de 18,17, 19,37 et 21,98 US$/tonne humide ; prix réalisé de 88,86, 88,85 et 79,79 US$/tonne sèche. Deux échelles distinctes, toutes deux à zéro. Diesel : effet déclaré d’environ +1,40 US$/tonne humide sur un an. Le C1 et le prix ont des bases et périmètres distincts ; une marge demande leur rapprochement, fret et redevances compris. Sources [1, 4].</desc>
+<rect id="iron-fr-economics-m-frame" x="0" y="0" width="420" height="1150" rx="12" fill="var(--color-ink)"/>
+<text data-panel="iron-fr-economics-m-frame" x="20" y="30" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">03 / MINERAI ET POUVOIR</text>
+<text data-panel="iron-fr-economics-m-frame" x="20" y="65" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="start">Les coûts montent,</text>
+<text data-panel="iron-fr-economics-m-frame" x="20" y="93" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="start">le prix réalisé recule</text>
+<text data-panel="iron-fr-economics-m-frame" x="24" y="132" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Hématite Fortescue · dollars américains</text>
+<rect id="iron-fr-economics-m-card-cost" x="16" y="166" width="388" height="343" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-economics-m-card-cost" x="34" y="196" fill="var(--color-amber)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">COÛT C1</text>
+<text data-panel="iron-fr-economics-m-card-cost" x="34" y="225" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">US$ / tonne humide</text>
+<path d="M 74 408.0 L 81 408.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-economics-m-card-cost" x="66" y="414.0" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="end">0</text>
+<path d="M 74 361.333333 L 81 361.333333" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-economics-m-card-cost" x="66" y="367.333333" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="end">10</text>
+<path d="M 74 314.666667 L 81 314.666667" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-economics-m-card-cost" x="66" y="320.666667" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="end">20</text>
+<path d="M 74 268.0 L 81 268.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-economics-m-card-cost" x="66" y="274.0" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="end">30</text>
+<rect id="iron-fr-economics-m-bar-cost-0" x="99" y="323.206667" width="52" height="84.793333" rx="2" fill="var(--color-amber)"/>
+<text data-panel="iron-fr-economics-m-card-cost" x="125.0" y="311.206667" fill="var(--color-amber)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="middle">18,17</text>
+<text data-panel="iron-fr-economics-m-card-cost" x="125.0" y="438" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="middle">Sept. 25</text>
+<rect id="iron-fr-economics-m-bar-cost-1" x="184" y="317.606667" width="52" height="90.393333" rx="2" fill="var(--color-amber)"/>
+<text data-panel="iron-fr-economics-m-card-cost" x="210.0" y="305.606667" fill="var(--color-amber)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="middle">19,37</text>
+<text data-panel="iron-fr-economics-m-card-cost" x="210.0" y="438" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="middle">Juin 26</text>
+<rect id="iron-fr-economics-m-bar-cost-2" x="269" y="305.426667" width="52" height="102.573333" rx="2" fill="var(--color-amber)"/>
+<text data-panel="iron-fr-economics-m-card-cost" x="295.0" y="293.426667" fill="var(--color-amber)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="middle">21,98</text>
+<text data-panel="iron-fr-economics-m-card-cost" x="295.0" y="438" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="middle">Sept. 26</text>
+<text data-panel="iron-fr-economics-m-card-cost" x="34" y="489" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Trimestres clos à ces dates</text>
+<rect id="iron-fr-economics-m-card-price" x="16" y="531" width="388" height="343" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-economics-m-card-price" x="34" y="561" fill="var(--color-accent)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">PRIX RÉALISÉ</text>
+<text data-panel="iron-fr-economics-m-card-price" x="34" y="590" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">US$ / tonne sèche</text>
+<path d="M 74 773.0 L 81 773.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-economics-m-card-price" x="66" y="779.0" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="end">0</text>
+<path d="M 74 726.333333 L 81 726.333333" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-economics-m-card-price" x="66" y="732.333333" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="end">40</text>
+<path d="M 74 679.666667 L 81 679.666667" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-economics-m-card-price" x="66" y="685.666667" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="end">80</text>
+<path d="M 74 633.0 L 81 633.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-economics-m-card-price" x="66" y="639.0" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="end">120</text>
+<rect id="iron-fr-economics-m-bar-price-0" x="99" y="669.33" width="52" height="103.67" rx="2" fill="var(--color-accent)"/>
+<text data-panel="iron-fr-economics-m-card-price" x="125.0" y="657.33" fill="var(--color-accent)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="middle">88,86</text>
+<text data-panel="iron-fr-economics-m-card-price" x="125.0" y="803" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="middle">Sept. 25</text>
+<rect id="iron-fr-economics-m-bar-price-1" x="184" y="669.341667" width="52" height="103.658333" rx="2" fill="var(--color-accent)"/>
+<text data-panel="iron-fr-economics-m-card-price" x="210.0" y="657.341667" fill="var(--color-accent)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="middle">88,85</text>
+<text data-panel="iron-fr-economics-m-card-price" x="210.0" y="803" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="middle">Juin 26</text>
+<rect id="iron-fr-economics-m-bar-price-2" x="269" y="679.911667" width="52" height="93.088333" rx="2" fill="var(--color-accent)"/>
+<text data-panel="iron-fr-economics-m-card-price" x="295.0" y="667.911667" fill="var(--color-accent)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="middle">79,79</text>
+<text data-panel="iron-fr-economics-m-card-price" x="295.0" y="803" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="middle">Sept. 26</text>
+<text data-panel="iron-fr-economics-m-card-price" x="34" y="854" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Trimestres clos à ces dates</text>
+<rect id="iron-fr-economics-m-card-method" x="16" y="919" width="388" height="210" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-economics-m-card-method" x="32" y="950" fill="var(--color-amber)" font-family="l0g Iron Ore" font-size="20" font-weight="700" text-anchor="start">DIESEL : ≈ +1,40 US$/wmt</text>
+<text data-panel="iron-fr-economics-m-card-method" x="32" y="981" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Effet sur un an déclaré par Fortescue.</text>
+<text data-panel="iron-fr-economics-m-card-method" x="32" y="1006" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Tonnes humides et sèches : bases</text>
+<text data-panel="iron-fr-economics-m-card-method" x="32" y="1031" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">distinctes. C1 : coût d’exploitation.</text>
+<text data-panel="iron-fr-economics-m-card-method" x="32" y="1056" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Une marge exige aussi fret, redevances</text>
+<text data-panel="iron-fr-economics-m-card-method" x="32" y="1081" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">et une base de masse commune.</text>
+<text data-panel="iron-fr-economics-m-card-method" x="32" y="1106" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Fortescue, 22 octobre ; FY26 [1, 4].</text>
+</svg>

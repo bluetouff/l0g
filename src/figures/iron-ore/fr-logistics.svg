@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="iron-fr-logistics-d-title iron-fr-logistics-d-desc" viewBox="0 0 1000 650" style="width:100%;height:auto" class="l0g-iron-ore-svg">
+<title id="iron-fr-logistics-d-title">Du minerai expédié à l’argent encaissé</title><desc id="iron-fr-logistics-d-desc">Chaîne hématite générique : extraction au Pilbara, rail vers Port Hedland, chargement maritime, stock portuaire chinois, sidérurgie. Les stocks peuvent appartenir à Fortescue Trading (Shanghai). Flux physique, transfert de contrôle et paiement sont trois événements distincts. Le contrat fixe le contrôle et les échéances de paiement. Le retour monétaire est schématique, sans délai ni montant ; une attente peut prolonger le financement du stock. Sources [1, 4].</desc>
+<rect id="iron-fr-logistics-d-frame" x="0" y="0" width="1000" height="650" rx="12" fill="var(--color-ink)"/>
+<text data-panel="iron-fr-logistics-d-frame" x="24" y="30" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="start">02 / MINERAI ET POUVOIR</text>
+<text data-panel="iron-fr-logistics-d-frame" x="24" y="72" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="30" font-weight="700" text-anchor="start">Du minerai expédié à l’argent encaissé</text>
+<text data-panel="iron-fr-logistics-d-frame" x="24" y="108" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Vente portuaire · trajet physique, transfert de contrôle et règlement distincts</text>
+<rect id="iron-fr-logistics-d-card-step-0" x="22" y="175" width="176" height="153" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-logistics-d-card-step-0" x="110" y="205" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="middle">Pilbara</text>
+<path d="M 78.5 256.12 L 78.5 246.04 L 88.58 246.04 L 88.58 237.85 L 99.29 237.85 L 99.29 229.66 L 110.0 229.66 L 120.08 238.48 L 129.53 238.48 L 140.24 256.12 L 78.5 256.12" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 77.24 261.79 L 142.76 261.79" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 86.69 260.53 L 92.99 260.53 L 92.99 264.94 L 86.69 264.94 L 86.69 260.53" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 101.81 260.53 L 108.11 260.53 L 108.11 264.94 L 101.81 264.94 L 101.81 260.53" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 116.93 260.53 L 123.23 260.53 L 123.23 264.94 L 116.93 264.94 L 116.93 260.53" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-logistics-d-card-step-0" x="110" y="295" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">Extraction</text>
+<text data-panel="iron-fr-logistics-d-card-step-0" x="110" y="320" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">Préparation</text>
+<path d="M 200 250 L 212 250" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 203.0000 254.9500 L 212 250 L 203.0000 245.0500" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="iron-fr-logistics-d-card-step-1" x="217" y="175" width="176" height="153" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-logistics-d-card-step-1" x="305" y="205" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="middle">Rail et port</text>
+<path d="M 276.02 259.9 L 333.98 259.9" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 282.32 260.53 L 282.32 227.14 L 325.16 227.14 L 311.3 237.85 L 282.32 237.85" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 317.6 229.66 L 317.6 248.56" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 274.76 253.6 L 297.44 253.6 L 297.44 259.27 L 274.76 259.27 L 274.76 253.6" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-logistics-d-card-step-1" x="305" y="295" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">Port Hedland</text>
+<path d="M 395 250 L 407 250" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 398.0000 254.9500 L 407 250 L 398.0000 245.0500" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="iron-fr-logistics-d-card-step-2" x="412" y="175" width="176" height="153" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-logistics-d-card-step-2" x="500" y="205" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="middle">Navire</text>
+<path d="M 466.61 246.04 L 533.39 246.04 L 524.57 260.53 L 476.06 260.53 L 466.61 246.04" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 511.34 244.78 L 511.34 233.44 L 522.68 233.44 L 522.68 244.78" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 473.54 242.89 L 473.54 235.96 L 507.56 235.96 L 507.56 242.89" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 464.72 266.2 L 535.91 266.2" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-logistics-d-card-step-2" x="500" y="295" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">Fret maritime</text>
+<path d="M 590 250 L 602 250" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 593.0000 254.9500 L 602 250 L 593.0000 245.0500" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="iron-fr-logistics-d-card-step-3" x="607" y="175" width="176" height="153" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-logistics-d-card-step-3" x="695" y="205" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="middle">Stock chinois</text>
+<path d="M 662.87 258.64 L 680.51 234.07 L 697.52 258.64 L 662.87 258.64" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 693.74 258.64 L 708.86 239.11 L 726.5 258.64 L 693.74 258.64" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 662.24 263.68 L 729.65 263.68" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 672.32 230.92 L 672.32 220.84 L 725.24 220.84 L 714.53 229.03" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 714.53 223.99 L 714.53 244.15" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-logistics-d-card-step-3" x="695" y="295" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">Enlèvement</text>
+<text data-panel="iron-fr-logistics-d-card-step-3" x="695" y="320" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">du client</text>
+<path d="M 785 250 L 797 250" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 788.0000 254.9500 L 797 250 L 788.0000 245.0500" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="iron-fr-logistics-d-card-step-4" x="802" y="175" width="176" height="153" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-logistics-d-card-step-4" x="890" y="205" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="middle">Sidérurgie</text>
+<path d="M 859.76 262.42 L 859.76 246.04 L 872.36 237.85 L 872.36 246.04 L 884.96 237.85 L 884.96 246.04 L 897.56 237.85 L 897.56 262.42 L 859.76 262.42" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 901.97 262.42 L 901.97 239.11 L 906.38 235.33 L 906.38 223.36 L 912.68 223.36 L 912.68 235.33 L 917.09 239.11 L 917.09 262.42 L 901.97 262.42" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 855.98 266.83 L 923.39 266.83" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-logistics-d-card-step-4" x="890" y="295" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">Préparation</text>
+<text data-panel="iron-fr-logistics-d-card-step-4" x="890" y="320" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">de charge</text>
+<path d="M 890 330 L 890 350 L 110 350 L 110 330" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 114.9500 339.0000 L 110 330 L 105.0500 339.0000" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-logistics-d-frame" x="500" y="382" fill="var(--color-accent)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">Règlement du client selon les conditions convenues</text>
+<path d="M 695 170 L 695 141 L 110 141 L 110 170" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5"/>
+<path d="M 105.0500 161.0000 L 110 170 L 114.9500 161.0000" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-logistics-d-frame" x="500" y="135" fill="var(--color-amber)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">Attente : pression sur l’amont</text>
+<rect id="iron-fr-logistics-d-card-event-0" x="22" y="394" width="304" height="126" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-logistics-d-card-event-0" x="37" y="427" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="start">EXPÉDITION</text>
+<text data-panel="iron-fr-logistics-d-card-event-0" x="37" y="466" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Chargement et départ.</text>
+<text data-panel="iron-fr-logistics-d-card-event-0" x="37" y="496" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Flux physique.</text>
+<rect id="iron-fr-logistics-d-card-event-1" x="348" y="394" width="304" height="126" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-logistics-d-card-event-1" x="363" y="427" fill="var(--color-amber)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="start">CONTRÔLE TRANSFÉRÉ</text>
+<text data-panel="iron-fr-logistics-d-card-event-1" x="363" y="466" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Vente selon le contrat.</text>
+<text data-panel="iron-fr-logistics-d-card-event-1" x="363" y="496" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Ex. : enlèvement au port.</text>
+<rect id="iron-fr-logistics-d-card-event-2" x="674" y="394" width="304" height="126" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-logistics-d-card-event-2" x="689" y="427" fill="var(--color-accent)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="start">PAIEMENT</text>
+<text data-panel="iron-fr-logistics-d-card-event-2" x="689" y="466" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Facture réglée selon</text>
+<text data-panel="iron-fr-logistics-d-card-event-2" x="689" y="496" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">l’échéance convenue.</text>
+<text data-panel="iron-fr-logistics-d-frame" x="24" y="562" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Stocks notamment détenus par Fortescue Trading (Shanghai). Chaîne simplifiée.</text>
+<text data-panel="iron-fr-logistics-d-frame" x="24" y="593" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Ressources engagées avant vente et paiement. Délais sans échelle.</text>
+<text data-panel="iron-fr-logistics-d-frame" x="24" y="624" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Fortescue, FY26, note 23(d)(i), p. 234 imprimée ; rapport du 22/10/2026, p. 3 [1, 4].</text>
+</svg>

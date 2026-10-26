@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="iron-en-logistics-m-title iron-en-logistics-m-desc" viewBox="0 0 420 1190" style="width:100%;height:auto" class="l0g-iron-ore-svg">
+<title id="iron-en-logistics-m-title">From shipped ore to cash received</title><desc id="iron-en-logistics-m-desc">Generic hematite chain: Pilbara mining, rail to Port Hedland, seaborne loading, Chinese port stock and steelmaking. Inventory may be held by Fortescue Trading (Shanghai). Physical shipment, transfer of control and payment are three separate events. Contract terms determine control and payment timing. The cash return is schematic, without quantified timing or amount; waiting can extend inventory financing. Sources [1, 4].</desc>
+<rect id="iron-en-logistics-m-frame" x="0" y="0" width="420" height="1190" rx="12" fill="var(--color-ink)"/>
+<text data-panel="iron-en-logistics-m-frame" x="20" y="30" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">02 / ORE AND BARGAINING</text>
+<text data-panel="iron-en-logistics-m-frame" x="20" y="65" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="start">From shipped ore</text>
+<text data-panel="iron-en-logistics-m-frame" x="20" y="93" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="start">to cash received</text>
+<text data-panel="iron-en-logistics-m-frame" x="24" y="132" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Illustrative portside sale</text>
+<rect id="iron-en-logistics-m-card-step-0" x="70" y="174" width="296" height="83" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<path d="M 89.5 220.28 L 89.5 212.76 L 97.02 212.76 L 97.02 206.65 L 105.01 206.65 L 105.01 200.54 L 113.0 200.54 L 120.52 207.12 L 127.57 207.12 L 135.56 220.28 L 89.5 220.28" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 88.56 224.51 L 137.44 224.51" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 95.61 223.57 L 100.31 223.57 L 100.31 226.86 L 95.61 226.86 L 95.61 223.57" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 106.89 223.57 L 111.59 223.57 L 111.59 226.86 L 106.89 226.86 L 106.89 223.57" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 118.17 223.57 L 122.87 223.57 L 122.87 226.86 L 118.17 226.86 L 118.17 223.57" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-en-logistics-m-card-step-0" x="158" y="205" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="21" font-weight="700" text-anchor="start">Pilbara</text>
+<text data-panel="iron-en-logistics-m-card-step-0" x="158" y="239" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Mining, preparation</text>
+<path d="M 216 259 L 216 277" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 212.1500 270.0000 L 216 277 L 219.8500 270.0000" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="iron-en-logistics-m-card-step-1" x="70" y="282" width="296" height="83" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<path d="M 91.38 331.1 L 134.62 331.1" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 96.08 331.57 L 96.08 306.66 L 128.04 306.66 L 117.7 314.65 L 96.08 314.65" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 122.4 308.54 L 122.4 322.64" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 90.44 326.4 L 107.36 326.4 L 107.36 330.63 L 90.44 330.63 L 90.44 326.4" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-en-logistics-m-card-step-1" x="158" y="313" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="21" font-weight="700" text-anchor="start">Rail and port</text>
+<text data-panel="iron-en-logistics-m-card-step-1" x="158" y="347" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Port Hedland</text>
+<path d="M 216 367 L 216 385" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 212.1500 378.0000 L 216 385 L 219.8500 378.0000" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="iron-en-logistics-m-card-step-2" x="70" y="390" width="296" height="83" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<path d="M 88.09 428.76 L 137.91 428.76 L 131.33 439.57 L 95.14 439.57 L 88.09 428.76" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 121.46 427.82 L 121.46 419.36 L 129.92 419.36 L 129.92 427.82" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 93.26 426.41 L 93.26 421.24 L 118.64 421.24 L 118.64 426.41" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 86.68 443.8 L 139.79 443.8" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-en-logistics-m-card-step-2" x="158" y="421" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="21" font-weight="700" text-anchor="start">Vessel</text>
+<text data-panel="iron-en-logistics-m-card-step-2" x="158" y="455" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Seaborne freight</text>
+<path d="M 216 475 L 216 493" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 212.1500 486.0000 L 216 493 L 219.8500 486.0000" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="iron-en-logistics-m-card-step-3" x="70" y="498" width="296" height="83" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<path d="M 89.03 546.16 L 102.19 527.83 L 114.88 546.16 L 89.03 546.16" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 112.06 546.16 L 123.34 531.59 L 136.5 546.16 L 112.06 546.16" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 88.56 549.92 L 138.85 549.92" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 96.08 525.48 L 96.08 517.96 L 135.56 517.96 L 127.57 524.07" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 127.57 520.31 L 127.57 535.35" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-en-logistics-m-card-step-3" x="158" y="529" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="21" font-weight="700" text-anchor="start">China stock</text>
+<text data-panel="iron-en-logistics-m-card-step-3" x="158" y="563" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Customer collection</text>
+<path d="M 216 583 L 216 601" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 212.1500 594.0000 L 216 601 L 219.8500 594.0000" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="iron-en-logistics-m-card-step-4" x="70" y="606" width="296" height="83" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<path d="M 90.44 656.98 L 90.44 644.76 L 99.84 638.65 L 99.84 644.76 L 109.24 638.65 L 109.24 644.76 L 118.64 638.65 L 118.64 656.98 L 90.44 656.98" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 121.93 656.98 L 121.93 639.59 L 125.22 636.77 L 125.22 627.84 L 129.92 627.84 L 129.92 636.77 L 133.21 639.59 L 133.21 656.98 L 121.93 656.98" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 87.62 660.27 L 137.91 660.27" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-en-logistics-m-card-step-4" x="158" y="637" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="21" font-weight="700" text-anchor="start">Steelmaking</text>
+<text data-panel="iron-en-logistics-m-card-step-4" x="158" y="671" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Burden preparation</text>
+<path d="M 368 648 L 394 648 L 394 214 L 368 214" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 375.0000 210.1500 L 368 214 L 375.0000 217.8500" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 68 540 L 30 540 L 30 214 L 64 214" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5"/>
+<path d="M 57.0000 217.8500 L 64 214 L 57.0000 210.1500" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-en-logistics-m-frame" x="24" y="725" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Mint: physical movement of ore.</text>
+<text data-panel="iron-en-logistics-m-frame" x="24" y="750" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Rose: payment under contract terms.</text>
+<text data-panel="iron-en-logistics-m-frame" x="24" y="775" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Amber: waiting pressures upstream.</text>
+<text data-panel="iron-en-logistics-m-frame" x="24" y="800" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Stock notably held by Fortescue Trading</text>
+<text data-panel="iron-en-logistics-m-frame" x="24" y="825" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">(Shanghai); timing is not to scale.</text>
+<rect id="iron-en-logistics-m-card-event-0" x="16" y="870" width="388" height="68" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-en-logistics-m-card-event-0" x="32" y="895" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">SHIPMENT</text>
+<text data-panel="iron-en-logistics-m-card-event-0" x="32" y="923" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Loading and departure.</text>
+<rect id="iron-en-logistics-m-card-event-1" x="16" y="954" width="388" height="68" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-en-logistics-m-card-event-1" x="32" y="979" fill="var(--color-amber)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">TRANSFER OF CONTROL</text>
+<text data-panel="iron-en-logistics-m-card-event-1" x="32" y="1007" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Sale under agreed contract terms.</text>
+<rect id="iron-en-logistics-m-card-event-2" x="16" y="1038" width="388" height="68" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-en-logistics-m-card-event-2" x="32" y="1063" fill="var(--color-accent)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">PAYMENT</text>
+<text data-panel="iron-en-logistics-m-card-event-2" x="32" y="1091" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Cash received at the agreed due date.</text>
+<text data-panel="iron-en-logistics-m-frame" x="24" y="1140" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Waiting extends inventory financing.</text>
+<text data-panel="iron-en-logistics-m-frame" x="24" y="1165" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Fortescue, FY26 and October 2026 [1, 4].</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="iron-fr-china-d-title iron-fr-china-d-desc" viewBox="0 0 1000 650" style="width:100%;height:auto" class="l0g-iron-ore-svg">
+<title id="iron-fr-china-d-title">Plus de minerai importé, moins d’acier produit</title><desc id="iron-fr-china-d-desc">Chine, janvier–septembre 2026, variations sur un an : importations de minerai de fer 954,97 Mt, +4,1 % ; acier brut 724,77 Mt, −2,9 %. Chaque variation conserve sa propre base comparable annuelle. Échelle commune de −5 à +5 %. Les volumes d’entrée et de sortie ne sont pas soustraits pour déduire les stocks : humidité, transformations, qualités, propriétaires et calendriers diffèrent. La chaîne arrivages, stocks et mélanges, sidérurgie est qualitative. Sources : données GACC reprises par Mysteel, NBS, worldsteel [13, 14, 15].</desc>
+<rect id="iron-fr-china-d-frame" x="0" y="0" width="1000" height="650" rx="12" fill="var(--color-ink)"/>
+<text data-panel="iron-fr-china-d-frame" x="24" y="30" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="start">05 / MINERAI ET POUVOIR</text>
+<text data-panel="iron-fr-china-d-frame" x="24" y="72" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="30" font-weight="700" text-anchor="start">Plus de minerai importé, moins d’acier produit</text>
+<text data-panel="iron-fr-china-d-frame" x="24" y="108" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Chine · janvier–septembre 2026</text>
+<text data-panel="iron-fr-china-d-frame" x="24" y="133" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Variation sur un an (%)</text>
+<rect id="iron-fr-china-d-card-bars" x="22" y="158" width="956" height="233" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-china-d-card-bars" x="42" y="199" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="24" font-weight="700" text-anchor="start">Minerai importé</text>
+<text data-panel="iron-fr-china-d-card-bars" x="42" y="230" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">954,97 Mt</text>
+<rect id="iron-fr-china-d-bar-0" x="600" y="183" width="246" height="28" rx="2" fill="var(--color-signal)"/>
+<text data-panel="iron-fr-china-d-card-bars" x="952" y="206" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="26" font-weight="700" text-anchor="end">+4,1 %</text>
+<text data-panel="iron-fr-china-d-card-bars" x="42" y="285" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="24" font-weight="700" text-anchor="start">Acier brut produit</text>
+<text data-panel="iron-fr-china-d-card-bars" x="42" y="316" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">724,77 Mt</text>
+<rect id="iron-fr-china-d-bar-1" x="426.0" y="269" width="174.0" height="28" rx="2" fill="var(--color-accent)"/>
+<text data-panel="iron-fr-china-d-card-bars" x="952" y="292" fill="var(--color-accent)" font-family="l0g Iron Ore" font-size="26" font-weight="700" text-anchor="end">−2,9 %</text>
+<path d="M 600 174 L 600 321" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 300 333 L 300 341" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-china-d-card-bars" x="300" y="374" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">−5</text>
+<path d="M 450.0 333 L 450.0 341" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-china-d-card-bars" x="450.0" y="374" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">−2,5</text>
+<path d="M 600 333 L 600 341" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-china-d-card-bars" x="600" y="374" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">0</text>
+<path d="M 750.0 333 L 750.0 341" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-china-d-card-bars" x="750.0" y="374" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">2,5</text>
+<path d="M 900 333 L 900 341" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-china-d-card-bars" x="900" y="374" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">5</text>
+<rect id="iron-fr-china-d-card-step-0" x="22" y="427" width="304" height="130" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-china-d-card-step-0" x="37" y="457" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="24" font-weight="700" text-anchor="start">Arrivages</text>
+<path d="M 136.9 495.6 L 211.1 495.6 L 201.3 511.7 L 147.4 511.7 L 136.9 495.6" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 186.6 494.2 L 186.6 481.6 L 199.2 481.6 L 199.2 494.2" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 144.6 492.1 L 144.6 484.4 L 182.4 484.4 L 182.4 492.1" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 134.8 518.0 L 213.9 518.0" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-china-d-card-step-0" x="37" y="543" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Minerai importé</text>
+<path d="M 329 490 L 344 490" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 335.0000 494.9500 L 344 490 L 335.0000 485.0500" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="iron-fr-china-d-card-step-1" x="348" y="427" width="304" height="130" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-china-d-card-step-1" x="363" y="457" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="24" font-weight="700" text-anchor="start">Stocks et mélanges</text>
+<path d="M 464.3 509.6 L 483.9 482.3 L 502.8 509.6 L 464.3 509.6" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 498.6 509.6 L 515.4 487.9 L 535.0 509.6 L 498.6 509.6" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 463.6 515.2 L 538.5 515.2" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 474.8 478.8 L 474.8 467.6 L 533.6 467.6 L 521.7 476.7" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 521.7 471.1 L 521.7 493.5" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-china-d-card-step-1" x="363" y="543" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Qualités et propriétaires</text>
+<path d="M 655 490 L 670 490" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 661.0000 494.9500 L 670 490 L 661.0000 485.0500" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="iron-fr-china-d-card-step-2" x="674" y="427" width="304" height="130" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-china-d-card-step-2" x="689" y="457" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="24" font-weight="700" text-anchor="start">Sidérurgie</text>
+<path d="M 792.4 513.8 L 792.4 495.6 L 806.4 486.5 L 806.4 495.6 L 820.4 486.5 L 820.4 495.6 L 834.4 486.5 L 834.4 513.8 L 792.4 513.8" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 839.3 513.8 L 839.3 487.9 L 844.2 483.7 L 844.2 470.4 L 851.2 470.4 L 851.2 483.7 L 856.1 487.9 L 856.1 513.8 L 839.3 513.8" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 788.2 518.7 L 863.1 518.7" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-china-d-card-step-2" x="689" y="543" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Production d’acier</text>
+<text data-panel="iron-fr-china-d-frame" x="24" y="584" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Chaque taux conserve sa base annuelle. Arrivages et acier : volumes distincts.</text>
+<text data-panel="iron-fr-china-d-frame" x="24" y="612" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">Schéma qualitatif. Une mesure du stockage exige un inventaire séparé.</text>
+<text data-panel="iron-fr-china-d-frame" x="24" y="640" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="start">GACC via Mysteel ; NBS ; worldsteel, octobre 2026 [13, 14, 15].</text>
+</svg>

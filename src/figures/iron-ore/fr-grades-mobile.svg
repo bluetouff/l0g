@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="iron-fr-grades-m-title iron-fr-grades-m-desc" viewBox="0 0 420 1400" style="width:100%;height:auto" class="l0g-iron-ore-svg">
+<title id="iron-fr-grades-m-title">Même fer contenu, masses et recettes différentes</title><desc id="iron-fr-grades-m-desc">Exemples arithmétiques sur matière sèche : 1 tonne de fer contenu demande 1/0,58 = 1,724 tonne de minerai à 58 %, 1/0,61 = 1,639 tonne à 61 % ou 1/0,67 = 1,493 tonne à 67 %. Fer contenu en menthe, fraction non-Fe en ambre, même échelle 0 à 2 tonnes. La fraction non-Fe comprend l’oxygène lié au fer. Mélange théorique : 2 tonnes à 58 % et 1 tonne à 67 % donnent 3 tonnes à 61 % et 1,83 tonne de Fe. Le haut-fourneau nécessite une charge préparée avec coke, granulométrie, tenue, chimie et minéralogie adaptées. Schéma sans échelle. Sources : calculs l0g, recherche et Nippon Steel [11, 12].</desc>
+<rect id="iron-fr-grades-m-frame" x="0" y="0" width="420" height="1400" rx="12" fill="var(--color-ink)"/>
+<text data-panel="iron-fr-grades-m-frame" x="20" y="30" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">04 / MINERAI ET POUVOIR</text>
+<text data-panel="iron-fr-grades-m-frame" x="20" y="65" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="start">Même fer contenu,</text>
+<text data-panel="iron-fr-grades-m-frame" x="20" y="93" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="22" font-weight="700" text-anchor="start">masses et recettes différentes</text>
+<rect id="iron-fr-grades-m-card-mass" x="16" y="125" width="388" height="385" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-grades-m-card-mass" x="34" y="159" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">Pour 1 t de Fe · minerai sec (t)</text>
+<text data-panel="iron-fr-grades-m-card-mass" x="34" y="187" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">Fe : menthe · non-Fe : ambre</text>
+<text data-panel="iron-fr-grades-m-card-mass" x="34" y="255" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">58 % Fe</text>
+<rect id="iron-fr-grades-m-bar-fe-58" x="126" y="237" width="115" height="24" rx="2" fill="var(--color-signal)"/>
+<rect id="iron-fr-grades-m-bar-nonfe-58" x="241" y="237" width="83.275862" height="24" rx="2" fill="var(--color-amber)"/>
+<text data-panel="iron-fr-grades-m-card-mass" x="389" y="256" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="end">1,724</text>
+<text data-panel="iron-fr-grades-m-card-mass" x="34" y="327" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">61 % Fe</text>
+<rect id="iron-fr-grades-m-bar-fe-61" x="126" y="309" width="115" height="24" rx="2" fill="var(--color-signal)"/>
+<rect id="iron-fr-grades-m-bar-nonfe-61" x="241" y="309" width="73.52459" height="24" rx="2" fill="var(--color-amber)"/>
+<text data-panel="iron-fr-grades-m-card-mass" x="389" y="328" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="end">1,639</text>
+<text data-panel="iron-fr-grades-m-card-mass" x="34" y="399" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">67 % Fe</text>
+<rect id="iron-fr-grades-m-bar-fe-67" x="126" y="381" width="115" height="24" rx="2" fill="var(--color-signal)"/>
+<rect id="iron-fr-grades-m-bar-nonfe-67" x="241" y="381" width="56.641791" height="24" rx="2" fill="var(--color-amber)"/>
+<text data-panel="iron-fr-grades-m-card-mass" x="389" y="400" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="end">1,493</text>
+<path d="M 126 451 L 126 457" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-grades-m-card-mass" x="126" y="481" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="middle">0</text>
+<path d="M 183.5 451 L 183.5 457" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-grades-m-card-mass" x="183.5" y="481" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="middle">0,5</text>
+<path d="M 241 451 L 241 457" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-grades-m-card-mass" x="241" y="481" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="middle">1</text>
+<path d="M 298.5 451 L 298.5 457" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-grades-m-card-mass" x="298.5" y="481" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="middle">1,5</text>
+<path d="M 356 451 L 356 457" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-grades-m-card-mass" x="356" y="481" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="middle">2</text>
+<rect id="iron-fr-grades-m-card-blend" x="16" y="534" width="388" height="247" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-grades-m-card-blend" x="34" y="566" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">MÉLANGE THÉORIQUE SEC</text>
+<text data-panel="iron-fr-grades-m-card-blend" x="34" y="606" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="20" font-weight="700" text-anchor="start">2 t à 58 %</text>
+<text data-panel="iron-fr-grades-m-card-blend" x="179" y="606" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="22" font-weight="400" text-anchor="middle">+</text>
+<text data-panel="iron-fr-grades-m-card-blend" x="204" y="606" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="20" font-weight="700" text-anchor="start">1 t à 67 %</text>
+<rect id="iron-fr-grades-m-blend-58" x="34" y="628" width="228.0" height="17" rx="2" fill="var(--color-signal)"/>
+<rect id="iron-fr-grades-m-blend-67" x="262.0" y="628" width="114.0" height="17" rx="2" fill="var(--color-amber)"/>
+<text data-panel="iron-fr-grades-m-card-blend" x="34" y="687" fill="var(--color-paper)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">3 t à 61 % Fe · 1,83 t de Fe contenu</text>
+<text data-panel="iron-fr-grades-m-card-blend" x="34" y="721" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Calculs de composition : 1 / (teneur / 100).</text>
+<text data-panel="iron-fr-grades-m-card-blend" x="34" y="746" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Le non-Fe inclut l’oxygène lié au fer.</text>
+<text data-panel="iron-fr-grades-m-card-blend" x="34" y="771" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Pertes et rendement acier hors calcul.</text>
+<rect id="iron-fr-grades-m-card-furnace" x="16" y="803" width="388" height="489" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="iron-fr-grades-m-card-furnace" x="34" y="836" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="17" font-weight="700" text-anchor="start">HAUT-FOURNEAU</text>
+<text data-panel="iron-fr-grades-m-card-furnace" x="34" y="869" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Forme, tenue et chimie.</text>
+<text data-panel="iron-fr-grades-m-card-furnace" x="34" y="895" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Minerai préparé + coke</text>
+<path d="M 210.0 905 L 210.0 941" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 206.1500 934.0000 L 210.0 941 L 213.8500 934.0000" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 167.0 951 L 253.0 951 L 265.0 1064 L 280.0 1115 L 264.0 1147 L 156.0 1147 L 140.0 1115 L 155.0 1064 L 167.0 951" fill="none" stroke="var(--color-line-strong)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 220.0 1107 L 220.0 968" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 223.8500 975.0000 L 220.0 968 L 216.1500 975.0000" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-grades-m-card-furnace" x="387" y="1051" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="end">Gaz</text>
+<text data-panel="iron-fr-grades-m-card-furnace" x="387" y="1075" fill="var(--color-signal)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="end">montants</text>
+<path d="M 147.0 1112 L 38 1112" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 45.0000 1108.1500 L 38 1112 L 45.0000 1115.8500" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-grades-m-card-furnace" x="34" y="1094" fill="var(--color-amber)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Laitier</text>
+<path d="M 267.0 1139 L 384 1167" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 376.2962 1169.1151 L 384 1167 L 378.0883 1161.6265" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="iron-fr-grades-m-card-furnace" x="386" y="1199" fill="var(--color-accent)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="end">Fonte</text>
+<text data-panel="iron-fr-grades-m-card-furnace" x="34" y="1223" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Fines agglomérées, boulettes</text>
+<text data-panel="iron-fr-grades-m-card-furnace" x="34" y="1249" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">ou morceaux calibrés.</text>
+<text data-panel="iron-fr-grades-m-card-furnace" x="34" y="1275" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Schéma sans échelle.</text>
+<text data-panel="iron-fr-grades-m-frame" x="24" y="1329" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Teneurs choisies, aucun rendement déduit.</text>
+<text data-panel="iron-fr-grades-m-frame" x="24" y="1354" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Calculs l0g ; Webster et al., 2017 ;</text>
+<text data-panel="iron-fr-grades-m-frame" x="24" y="1379" fill="var(--color-muted)" font-family="l0g Iron Ore" font-size="17" font-weight="400" text-anchor="start">Nippon Steel, 2020 [11, 12].</text>
+</svg>

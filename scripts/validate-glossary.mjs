@@ -19,6 +19,42 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Ore mass bases retain their moisture distinction and remain sourced short pages.
+const ironOreArticleFr = '/posts/minerai-fer-prix-attente-fortescue-cmrg/';
+const ironOreArticleEn = '/en/analysis/iron-ore-price-of-waiting-fortescue-cmrg/';
+for (const slug of ['wmt', 'dmt']) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert(!glossaryReferenceCandidateSlugs.includes(slug));
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  for (const [entry, article] of [[fr[0], ironOreArticleFr], [en[0], ironOreArticleEn]]) {
+    assert.equal(entry.guide, article);
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    assert.equal(entry.atlas.sources.length, 2);
+    assert.deepEqual(entry.atlas.related, [slug === 'wmt' ? 'dmt' : 'wmt', 'c1']);
+    assert(!entry.def.includes('—'));
+  }
+  assert.match(fr[0].def, /humidité|humide/);
+  assert.match(en[0].def, /moisture/);
+}
+for (const [terms, article, originalBfrGuide, originalC1Guide] of [
+  [glossaryEntries, ironOreArticleFr, '/posts/cacao-ghana-financement-tresorerie/', '/posts/soufre-crise-golfe-engrais-nickel/'],
+  [glossaryAtlasEn, ironOreArticleEn, '/en/analysis/ghana-cocoa-financing-cash-crisis/', '/en/analysis/sulfur-gulf-crisis-fertilizers-nickel/'],
+]) {
+  for (const slug of ['bfr', 'c1', 'cfr']) {
+    const entry = terms.find(term => term.slug === slug);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  }
+  assert.equal(terms.find(term => term.slug === 'bfr').guide, originalBfrGuide);
+  assert.equal(terms.find(term => term.slug === 'c1').guide, originalC1Guide);
+  assert(terms.find(term => term.slug === 'c1').atlas.sources.some(link => link.href.includes('ivanhoemines.com')));
+  assert(terms.find(term => term.slug === 'cfr').atlas.sources.some(link => link.href.includes('academy.iccwbo.org')));
+  assert.deepEqual(terms.find(term => term.slug === 'c1').atlas.related, ['wmt', 'dmt']);
+}
+
 // Semiconductor terms remain distinct, sourced definitions with reciprocal links.
 const heliumWaferArticleFr = '/posts/helium-geopolitique-sous-les-puces/';
 const heliumWaferArticleEn = '/en/analysis/helium-geopolitics-beneath-the-wafer/';
@@ -839,7 +875,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 327, 'Le corpus anglais ajoute trois notions de fabrication aux 324 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 329, 'Le corpus anglais ajoute les deux bases de masse minière aux 327 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1040,8 +1076,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 717, 'Le corpus ajoute trois notions de fabrication aux 714 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 317, 'Le graphe Atlas ajoute trois notions de fabrication aux 314 nœuds existants');
+assert.equal(glossaryEntries.length, 719, 'Le corpus ajoute les deux bases de masse minière aux 717 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 319, 'Le graphe Atlas ajoute les deux bases de masse minière aux 317 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1463,7 +1499,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 891, 'Le graphe Atlas ajoute six relations de fabrication réciproques aux 885 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 897, 'Le graphe Atlas ajoute six relations de masse minière aux 891 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
