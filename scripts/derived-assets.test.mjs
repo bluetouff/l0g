@@ -60,14 +60,14 @@ test('changed content with an unchanged mtime still invalidates the output', asy
   try {
     // Keep metadata and mutation on the same file, even if its path changes.
     const before = fs.fstatSync(descriptor);
-    fs.writeFileSync(descriptor, 'corrupted');
+    fs.writeSync(descriptor, 'corrupted', 0, 'utf8');
     fs.futimesSync(descriptor, before.atime, before.mtime);
     assert.equal(fs.fstatSync(descriptor).mtimeMs, before.mtimeMs);
+    assert.equal((await runDerivedTask(f.config)).cached, false);
+    assert.equal(fs.readFileSync(descriptor, 'utf8'), 'source v1');
   } finally {
     fs.closeSync(descriptor);
   }
-  assert.equal((await runDerivedTask(f.config)).cached, false);
-  assert.equal(fs.readFileSync(file, 'utf8'), 'source v1');
   fs.rmSync(file);
   assert.equal((await runDerivedTask(f.config)).cached, false);
   assert.equal(f.runs(), 3);
