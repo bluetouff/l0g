@@ -1,0 +1,6 @@
+/* These compositions occur only in analyses, not in the home or shared layout. */
+@import './reserves-ownership-infographics.css';
+@import './reserves-logistics-infographics.css';
+@import './reserves-refining-infographics.css';
+@import './brazil-pressure-infographics.css';
+@import './reserves-allocation-infographics.css';

@@ -495,7 +495,8 @@ test('CSV publication retains six dated observations, unknown SANEF denominator 
 
 test('Scoped CSS switches to keyboard-accessible horizontal panels and bounds their responsive size', () => {
   checkCss(css);
-  assert(postcss.parse(globalCss).nodes.some(node => node.type === 'atrule' && node.name === 'import' && node.params === "'./reserves-logistics-infographics.css'"));
+  assert(postcss.parse(read('src/styles/analysis-infographics.css')).nodes.some(node => node.type === 'atrule' && node.name === 'import' && node.params === "'./reserves-logistics-infographics.css'"));
+  assert(!globalCss.includes('reserves-logistics-infographics.css'), 'Article styles stay out of the home critical CSS');
   assert.throws(() => checkCss(css + '\nbody { color: red; }'));
   assert.throws(() => checkCss(css + '\n@import url(https://example.com/a.css);'));
   assert.throws(() => checkCss(mutate(css, '21.875rem', '60rem')));

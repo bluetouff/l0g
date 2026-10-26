@@ -580,7 +580,8 @@ test('CSV retains the EIA rounding convention, annual SDES bridge and notice/ope
 
 test('Scoped styling gives native keyboard navigation, bounded mobile size and separation from following text', () => {
   checkCss(css);
-  assert(postcss.parse(globalCss).nodes.some(node => node.type === 'atrule' && node.name === 'import' && node.params === "'./reserves-refining-infographics.css'"));
+  assert(postcss.parse(read('src/styles/analysis-infographics.css')).nodes.some(node => node.type === 'atrule' && node.name === 'import' && node.params === "'./reserves-refining-infographics.css'"));
+  assert(!globalCss.includes('reserves-refining-infographics.css'), 'Article styles stay out of the home critical CSS');
   assert.throws(() => checkCss(css + '\nbody { color: red; }'));
   assert.throws(() => checkCss(css + '\n@import url(https://example.com/a.css);'));
   assert.throws(() => checkCss(mutate(css, '21.875rem', '60rem')));

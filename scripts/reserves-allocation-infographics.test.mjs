@@ -406,7 +406,8 @@ test('the separate 2023 sale keeps six recipients, 26 million barrels and a sale
 });
 
 test('mobile galleries preserve complete original bodies, continuous crops, themes and keyboard links',()=>{
- checkCss(css);assert(postcss.parse(globalCss).nodes.some(n=>n.type==='atrule'&&n.name==='import'&&['"./reserves-allocation-infographics.css"',"'./reserves-allocation-infographics.css'"].includes(n.params)),'Global CSS imports this scoped publication stylesheet');
+ checkCss(css);assert(postcss.parse(read('src/styles/analysis-infographics.css')).nodes.some(n=>n.type==='atrule'&&n.name==='import'&&['"./reserves-allocation-infographics.css"',"'./reserves-allocation-infographics.css'"].includes(n.params)),'Analysis CSS imports this scoped publication stylesheet');
+ assert(!globalCss.includes('reserves-allocation-infographics.css'), 'Article styles stay out of the home critical CSS');
  for(const p of parts){
   const articleNodes=elements(fromHtml(p.article,{fragment:true})),articleIds=new Set(articleNodes.filter(n=>n.properties.id).map(n=>n.properties.id));
   assert.equal(articleIds.size,articleNodes.filter(n=>n.properties.id).length,'No IDs duplicated in either article');

@@ -7,11 +7,6 @@
 
 @import '@fontsource-variable/jetbrains-mono';
 @import '@fontsource-variable/inter';
-@import './reserves-ownership-infographics.css';
-@import './reserves-logistics-infographics.css';
-@import './reserves-refining-infographics.css';
-@import './brazil-pressure-infographics.css';
-@import './reserves-allocation-infographics.css';
 @import 'tailwindcss';
 
 @theme {

@@ -440,7 +440,13 @@ test('Four restored figures preserve safe, accessible, bounded and legible wide/
 
 test('Responsive CSS chooses one compact composition with bounded layout and no external or active declarations', () => {
   checkCss(css);
-  assert(postcss.parse(globalCss).nodes.some(node => node.type === 'atrule' && node.name === 'import' && node.params === "'./reserves-ownership-infographics.css'"));
+  const articleCss = readFileSync(new URL('../src/styles/analysis-infographics.css', import.meta.url), 'utf8');
+  assert(postcss.parse(articleCss).nodes.some(node => node.type === 'atrule' && node.name === 'import' && node.params === "'./reserves-ownership-infographics.css'"));
+  assert(!globalCss.includes('reserves-ownership-infographics.css'), 'Article styles stay out of the home critical CSS');
+  for (const route of ['posts', 'en/analysis']) {
+    const page = readFileSync(new URL(`../src/pages/${route}/[...slug].astro`, import.meta.url), 'utf8');
+    assert.match(page, /import ['"](?:\.\.\/)+styles\/analysis-infographics\.css['"];/, 'Both languages load the article styles');
+  }
   rejectsMutation(checkCss, css, '48rem', '88rem');
   rejectsMutation(checkCss, css, '24rem', '60rem');
   rejectsMutation(checkCss, css, '640px', '2400px');
