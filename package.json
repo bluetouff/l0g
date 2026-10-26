@@ -108,18 +108,18 @@
     "test:reader-experience": "node --experimental-strip-types --test scripts/article-tools.test.mjs scripts/article-glossary.test.mjs scripts/reading-library.test.mjs scripts/reading-resume.test.mjs && node scripts/audit-reader-budget.mjs"
   },
   "dependencies": {
-    "@astrojs/mdx": "^8.1.0",
+    "@astrojs/mdx": "^8.1.1",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/inter": "^5.3.0",
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
-    "astro": "^7.4.0",
+    "astro": "^7.4.2",
     "fast-xml-builder": "^1.3.1",
     "fast-xml-parser": "^5.11.2"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@astrojs/markdown-remark": "^7.3.3",
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/markdown-remark": "^7.3.4",
     "@fontsource/jetbrains-mono": "^5.3.0",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.3.3",
@@ -134,7 +134,7 @@
     "sharp": "^0.35.5",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.6.0",
-    "vite": "^8.3.4"
+    "vite": "^8.3.5"
   },
   "overrides": {
     "devalue": "5.9.3",
