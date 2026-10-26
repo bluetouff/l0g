@@ -19,6 +19,8 @@ function fixture(t) {
     run: () => {
       runs++;
       fs.writeFileSync(path.join(root, 'output.txt'), fs.readFileSync(path.join(root, 'sources/article.txt')));
+      // Establish an exactly representable timestamp before the cache records it.
+      fs.utimesSync(path.join(root, 'output.txt'), 1_700_000_000, 1_700_000_000);
     },
   };
   return { root, config, runs: () => runs, manifest: path.join(root, '.cache/derived-assets/fixture.json') };
@@ -54,9 +56,16 @@ test('changed content with an unchanged mtime still invalidates the output', asy
   const f = fixture(t);
   await runDerivedTask(f.config);
   const file = path.join(f.root, 'output.txt');
-  const before = fs.statSync(file);
-  fs.writeFileSync(file, 'corrupted');
-  fs.utimesSync(file, before.atime, before.mtime);
+  const descriptor = fs.openSync(file, fs.constants.O_RDWR | fs.constants.O_NOFOLLOW | fs.constants.O_NONBLOCK);
+  try {
+    // Keep metadata and mutation on the same file, even if its path changes.
+    const before = fs.fstatSync(descriptor);
+    fs.writeFileSync(descriptor, 'corrupted');
+    fs.futimesSync(descriptor, before.atime, before.mtime);
+    assert.equal(fs.fstatSync(descriptor).mtimeMs, before.mtimeMs);
+  } finally {
+    fs.closeSync(descriptor);
+  }
   assert.equal((await runDerivedTask(f.config)).cached, false);
   assert.equal(fs.readFileSync(file, 'utf8'), 'source v1');
   fs.rmSync(file);
