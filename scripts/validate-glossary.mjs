@@ -50,8 +50,8 @@ for (const [terms, article, originalBfrGuide, originalC1Guide] of [
   }
   assert.equal(terms.find(term => term.slug === 'bfr').guide, originalBfrGuide);
   assert.equal(terms.find(term => term.slug === 'c1').guide, originalC1Guide);
-  assert(terms.find(term => term.slug === 'c1').atlas.sources.some(link => link.href.includes('ivanhoemines.com')));
-  assert(terms.find(term => term.slug === 'cfr').atlas.sources.some(link => link.href.includes('academy.iccwbo.org')));
+  assert(terms.find(term => term.slug === 'c1').atlas.sources.some(link => new URL(link.href).origin === 'https://www.ivanhoemines.com'));
+  assert(terms.find(term => term.slug === 'cfr').atlas.sources.some(link => new URL(link.href).origin === 'https://academy.iccwbo.org'));
   assert.deepEqual(terms.find(term => term.slug === 'c1').atlas.related, ['wmt', 'dmt']);
 }
 
