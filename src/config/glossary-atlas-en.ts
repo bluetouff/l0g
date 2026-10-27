@@ -209,6 +209,7 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {"slug": "proposition-de-rectification", "sigle": "Proposed tax adjustment", "nom": "French notice opening an exchange with the taxpayer", "def": "A reasoned notice in which the French tax authority sets out intended changes to a taxpayer’s tax position and their factual and legal grounds. Under the adversarial procedure, the taxpayer can accept the changes or make representations within the prescribed period. Proposed adjustments may then be revised or dropped; their amount is distinct from the tax eventually assessed for collection and the cash received.", "guide": "/en/analysis/cum-cum-02-warnings-timeline/", "sectionTitle": "Banking & balance-sheet management", "accent": "var(--color-topic-blue)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "Cum-cum: the warnings before the scandal", "href": "/en/analysis/cum-cum-02-warnings-timeline/", "kind": "article"}], "sources": [{"label": "French tax authority, contents of a proposed tax adjustment", "href": "https://bofip.impots.gouv.fr/bofip/872-PGP.html/identifiant=BOI-CF-IOR-10-40-20200304", "detail": "Paragraphs 20 and 40: taxpayer response, grounds and proposed amounts.", "kind": "source"}, {"label": "French tax authority, handling taxpayer representations", "href": "https://bofip.impots.gouv.fr/bofip/12989-PGP.html/identifiant=BOI-CF-IOR-10-50-30-20210519", "detail": "Paragraphs 10–50: revision or abandonment of proposed adjustments where representations are justified.", "kind": "source"}], "related": ["retenue-a-la-source", "cjip"]}},
   {
     "slug": "retenue-a-la-source",
     "sigle": "Withholding tax",
@@ -220,6 +221,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "robots": "noindex,follow",
     "atlas": {
       "articles": [
+        {"label": "Cum-cum: the warnings before the scandal", "href": "/en/analysis/cum-cum-02-warnings-timeline/", "kind": "article"},
         {
           "label": "Cum-cum: a dividend tax becomes a trading margin",
           "href": "/en/analysis/cum-cum-01-dividend-mechanism/",
@@ -250,6 +252,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "robots": "noindex,follow",
     "atlas": {
       "articles": [
+        {"label": "Cum-cum: the warnings before the scandal", "href": "/en/analysis/cum-cum-02-warnings-timeline/", "kind": "article"},
         {
           "label": "Cum-cum: a dividend tax becomes a trading margin",
           "href": "/en/analysis/cum-cum-01-dividend-mechanism/",
@@ -312,6 +315,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "robots": "noindex,follow",
     "atlas": {
       "articles": [
+        {"label": "Cum-cum: the warnings before the scandal", "href": "/en/analysis/cum-cum-02-warnings-timeline/", "kind": "article"},
         {
           "label": "Cum-cum: a dividend tax becomes a trading margin",
           "href": "/en/analysis/cum-cum-01-dividend-mechanism/",

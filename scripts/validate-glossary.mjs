@@ -52,6 +52,32 @@ for (const [entry, article] of [[glossaryEntries.find(item => item.slug === 'trs
 assert.equal(glossaryEntries.find(item => item.slug === 'trs').guide, '/posts/barclays-credit-prive-trs-risque/');
 assert.equal(glossaryAtlasEnBySlug.get('trs').guide, '/en/analysis/barclays-private-credit-trs-risk/');
 
+// Tax procedure distinguishes proposed adjustments from collection and preserves prior guides.
+const cumCumTimelineFr = '/posts/cumcum-02-alertes-chronologie/';
+const cumCumTimelineEn = '/en/analysis/cum-cum-02-warnings-timeline/';
+for (const slug of ['proposition-de-rectification', 'retenue-a-la-source', 'pret-de-titres', 'cjip']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en?.atlas, `${slug}: bilingual timeline links required`);
+  for (const [entry, article] of [[fr, cumCumTimelineFr], [en, cumCumTimelineEn]]) {
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  }
+}
+const proposedAdjustmentFr = glossaryEntries.find(entry => entry.slug === 'proposition-de-rectification');
+const proposedAdjustmentEn = glossaryAtlasEnBySlug.get('proposition-de-rectification');
+assert.equal(proposedAdjustmentFr.reference, undefined);
+assert.equal(proposedAdjustmentFr.referenceCandidate, false);
+assert.equal(englishGlossaryRobots(proposedAdjustmentEn), 'noindex,follow');
+assert.equal(proposedAdjustmentFr.guide, cumCumTimelineFr);
+assert.equal(proposedAdjustmentEn.guide, cumCumTimelineEn);
+assert.deepEqual(proposedAdjustmentFr.atlas.sources.map(source => source.href), proposedAdjustmentEn.atlas.sources.map(source => source.href));
+assert.deepEqual(proposedAdjustmentFr.atlas.related, proposedAdjustmentEn.atlas.related);
+for (const entry of [proposedAdjustmentFr, proposedAdjustmentEn]) {
+  assert.equal(entry.atlas.sources.length, 2);
+  assert(entry.atlas.sources.every(source => new URL(source.href).origin === 'https://bofip.impots.gouv.fr'));
+  assert(!entry.def.includes('—'));
+}
+
 // Feeder debt remains a sourced short definition; cash and capital follow distinct contracts.
 const feederArticleFr = '/posts/credit-prive-porte-assureurs-rated-feeders/';
 const feederArticleEn = '/en/analysis/private-credit-route-insurers-rated-feeders/';
@@ -953,7 +979,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 335, 'Le corpus anglais ajoute quatre fiches sur la fiscalité des dividendes aux 331 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 336, 'Le corpus anglais ajoute une fiche de procédure fiscale aux 335 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1154,8 +1180,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 723, 'Le corpus ajoute quatre définitions sur la fiscalité des dividendes aux 719 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 325, 'Le graphe Atlas ajoute quatre fiches sur la fiscalité des dividendes aux 321 nœuds existants');
+assert.equal(glossaryEntries.length, 724, 'Le corpus ajoute une définition de procédure fiscale aux 723 définitions existantes');
+assert.equal(glossaryAtlasEntries.length, 326, 'Le graphe Atlas ajoute une fiche de procédure fiscale aux 325 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1577,7 +1603,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 909, 'Le graphe Atlas ajoute six relations sur la fiscalité des dividendes aux 903 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 911, 'Le graphe Atlas ajoute deux relations de procédure fiscale aux 909 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

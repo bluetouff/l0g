@@ -55,8 +55,5 @@ if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeErr
   .cumcum-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
   @container (max-width: 500px) { .figure-wide { display: none; } .figure-narrow { display: block; } }
   @media print { .cumcum-figure { break-inside: avoid; } .figure-wide { display: block; } .figure-narrow { display: none; } }
-  :global(.cumcum-sources) { font-size: .875rem; line-height: 1.7; }
-  :global(.cumcum-sources li) { margin: .85rem 0; overflow-wrap: anywhere; scroll-margin-top: 6rem; }
-  :global(.cumcum-sources a) { overflow-wrap: anywhere; }
   :global(article:has(.cumcum-figure) .post-title) { hyphens: none; word-break: normal; overflow-wrap: normal; }
 </style>

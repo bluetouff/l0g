@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    {"sigle": "Proposition de rectification", "nom": "Modification d’imposition soumise au contradictoire", "def": "Document motivé par lequel l’administration fiscale expose les modifications d’imposition qu’elle envisage et leurs raisons de fait et de droit. Dans la procédure contradictoire, le contribuable peut les accepter ou présenter ses observations dans le délai prévu. Les propositions peuvent être modifiées ou abandonnées à la suite de cet échange ; leur montant se distingue des sommes finalement mises en recouvrement et encaissées.", "guide": "/posts/cumcum-02-alertes-chronologie/"},
     {
       "sigle": "Retenue à la source",
       "nom": "Impôt collecté lors du paiement du revenu",
@@ -1187,8 +1188,10 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "proposition-de-rectification": {"articles": [{"label": "Cum-cum : les alertes d’avant le scandale", "href": "/posts/cumcum-02-alertes-chronologie/", "kind": "article"}], "sources": [{"label": "DGFiP, contenu de la proposition de rectification", "href": "https://bofip.impots.gouv.fr/bofip/872-PGP.html/identifiant=BOI-CF-IOR-10-40-20200304", "detail": "Paragraphes 20 et 40 : réponse du contribuable, motifs et montants envisagés.", "kind": "source"}, {"label": "DGFiP, suites des observations du contribuable", "href": "https://bofip.impots.gouv.fr/bofip/12989-PGP.html/identifiant=BOI-CF-IOR-10-50-30-20210519", "detail": "Paragraphes 10 à 50 : modification ou abandon des rectifications selon les observations justifiées.", "kind": "source"}], "related": ["retenue-a-la-source", "cjip"]},
   "retenue-a-la-source": {
     "articles": [
+      {"label": "Cum-cum : les alertes d’avant le scandale", "href": "/posts/cumcum-02-alertes-chronologie/", "kind": "article"},
       {
         "label": "Cum-cum : l’impôt sur le dividende devient une marge",
         "href": "/posts/cumcum-01-dividende-mecanisme/",
@@ -1209,6 +1212,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   "pret-de-titres": {
     "articles": [
+      {"label": "Cum-cum : les alertes d’avant le scandale", "href": "/posts/cumcum-02-alertes-chronologie/", "kind": "article"},
       {
         "label": "Cum-cum : l’impôt sur le dividende devient une marge",
         "href": "/posts/cumcum-01-dividende-mecanisme/",
@@ -1251,6 +1255,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   "cjip": {
     "articles": [
+      {"label": "Cum-cum : les alertes d’avant le scandale", "href": "/posts/cumcum-02-alertes-chronologie/", "kind": "article"},
       {
         "label": "Cum-cum : l’impôt sur le dividende devient une marge",
         "href": "/posts/cumcum-01-dividende-mecanisme/",
