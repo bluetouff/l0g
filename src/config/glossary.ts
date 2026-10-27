@@ -1191,6 +1191,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   "proposition-de-rectification": {"articles": [{"label": "Cum-cum : les alertes d’avant le scandale", "href": "/posts/cumcum-02-alertes-chronologie/", "kind": "article"}], "sources": [{"label": "DGFiP, contenu de la proposition de rectification", "href": "https://bofip.impots.gouv.fr/bofip/872-PGP.html/identifiant=BOI-CF-IOR-10-40-20200304", "detail": "Paragraphes 20 et 40 : réponse du contribuable, motifs et montants envisagés.", "kind": "source"}, {"label": "DGFiP, suites des observations du contribuable", "href": "https://bofip.impots.gouv.fr/bofip/12989-PGP.html/identifiant=BOI-CF-IOR-10-50-30-20210519", "detail": "Paragraphes 10 à 50 : modification ou abandon des rectifications selon les observations justifiées.", "kind": "source"}], "related": ["retenue-a-la-source", "cjip"]},
   "retenue-a-la-source": {
     "articles": [
+      {"label": "Cum-cum : la bataille de la doctrine fiscale", "href": "/posts/cumcum-05-bataille-doctrine-fiscale/", "kind": "article"},
       {"label": "Cum-cum et cum-ex : responsabilités devant la justice", "href": "/posts/cumcum-04-responsabilites-justice/", "kind": "article"},
       {"label": "Cum-cum : pertes estimées et impôts récupérés", "href": "/posts/cumcum-03-facture-fiscale/", "kind": "article"},
       {"label": "Cum-cum : les alertes d’avant le scandale", "href": "/posts/cumcum-02-alertes-chronologie/", "kind": "article"},
@@ -1236,6 +1237,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   "beneficiaire-effectif": {
     "articles": [
+      {"label": "Cum-cum : la bataille de la doctrine fiscale", "href": "/posts/cumcum-05-bataille-doctrine-fiscale/", "kind": "article"},
       {
         "label": "Cum-cum : l’impôt sur le dividende devient une marge",
         "href": "/posts/cumcum-01-dividende-mecanisme/",

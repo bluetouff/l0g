@@ -1,0 +1,60 @@
+---
+import { cumCumDoctrineComparison } from '../lib/cumCumDoctrineComparison.mjs';
+interface Props { lang: 'fr' | 'en'; }
+const { lang } = Astro.props;
+const rows = cumCumDoctrineComparison(lang);
+const fr = lang === 'fr';
+const titleId = `doctrine-comparison-title-${lang}`;
+---
+<section class="cumcum05-comparison" id="comparateur" aria-labelledby={titleId}>
+  <header>
+    <p class="comparison-kicker">l0g / {fr ? 'LES TEXTES' : 'THE DOCUMENTS'}</p>
+    <h2 id={titleId}>{fr ? 'Les textes côte à côte' : 'The texts side by side'}</h2>
+    <p class="comparison-intro">{fr ? 'Ouvrez un thème pour comparer les versions datées. Chaque panneau renvoie aux textes d’origine.' : 'Open a topic to compare the dated versions. Each panel links to the original documents.'}</p>
+  </header>
+  {rows.map(row => <details class="comparison-topic" id={`comparaison-${row.id}`}>
+    <summary>
+      <span class="comparison-topic-title">{row.title}</span>
+      <span class="comparison-scope">{row.scope}</span>
+    </summary>
+    <div class:list={['comparison-panels', { 'three-panels': row.panels.length === 3 }]}>
+      {row.panels.map((panel, i) => <div class="comparison-panel" data-panel-number={String(i + 1)}>
+        <p class="comparison-date">{panel.date}</p>
+        <h3>{panel.label}</h3>
+        <p class="comparison-text">{panel.text}</p>
+        <p class="comparison-cites" aria-label={fr ? 'Sources de ce passage' : 'Sources for this passage'}>
+          {panel.sources.map(id => <a href={`#source-${id}`}>[{id}]</a>)}
+        </p>
+      </div>)}
+    </div>
+    <p class="comparison-limit">{row.limit}</p>
+  </details>)}
+  <p class="comparison-method">{fr ? 'Reformulations pour la lecture. Les textes cités, leur date et leur fonction déterminent la portée de chaque comparaison.' : 'Rephrased for readability. The cited texts, their dates and their legal functions determine the scope of each comparison.'}</p>
+</section>
+<style>
+  .cumcum05-comparison { box-sizing: border-box; width: 100%; max-width: 48rem; margin: 2.75rem auto; padding: 1.25rem; border: 1px solid var(--color-line-strong); border-top: 3px solid var(--color-signal); border-radius: .75rem; background: var(--color-surface); color: var(--color-paper); font-family: var(--font-read); container-type: inline-size; }
+  .cumcum05-comparison * { box-sizing: border-box; }
+  .comparison-kicker { margin: 0 0 .6rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .75rem; font-weight: 700; letter-spacing: .045em; }
+  h2 { margin: 0 0 .8rem; font-size: 1.4rem; line-height: 1.35; color: var(--color-paper); }
+  .comparison-intro { margin: 0 0 1.3rem; font-size: .95rem; line-height: 1.65; color: var(--color-muted); }
+  .comparison-topic { margin: 0; border-top: 1px solid var(--color-line-strong); }
+  .comparison-topic:last-of-type { border-bottom: 1px solid var(--color-line-strong); }
+  summary { cursor: pointer; padding: 1rem 0; color: var(--color-paper); font-size: 1rem; line-height: 1.5; }
+  summary::marker { color: var(--color-signal); }
+  .comparison-topic-title { font-weight: 700; }
+  .comparison-scope { display: block; margin-top: .25rem; padding-left: 1rem; color: var(--color-muted); font-size: .8125rem; line-height: 1.55; }
+  summary:focus-visible, a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .comparison-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; margin: .25rem 0 1rem; }
+  .comparison-panels.three-panels { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .comparison-panel { min-width: 0; padding: 1rem; border: 1px solid var(--color-line-strong); border-radius: .5rem; background: var(--color-surface-2); }
+  .comparison-date { margin: 0 0 .6rem; color: var(--color-amber); font-family: var(--font-mono); font-size: .8125rem; font-weight: 700; line-height: 1.6; }
+  h3 { margin: 0 0 .7rem; color: var(--color-paper); font-family: var(--font-read); font-size: 1rem; font-weight: 700; line-height: 1.5; }
+  .comparison-text { margin: 0 0 .75rem; color: var(--color-paper); font-size: .9375rem; line-height: 1.7; }
+  .comparison-cites { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; font-size: .8125rem; line-height: 1.7; }
+  .cumcum05-comparison .comparison-cites a { color: var(--color-signal); font-size: .8125rem; line-height: 1.7; text-underline-offset: .2em; }
+  .comparison-limit { margin: 0 0 1.2rem; padding-left: .8rem; border-left: 2px solid var(--color-accent); color: var(--color-muted); font-size: .875rem; line-height: 1.7; }
+  .comparison-method { margin: 1rem 0 0; color: var(--color-muted); font-size: .8125rem; line-height: 1.7; }
+  @container (max-width: 620px) { .comparison-panels.three-panels { grid-template-columns: minmax(0, 1fr); } }
+  @container (max-width: 480px) { .comparison-panels { grid-template-columns: minmax(0, 1fr); } }
+  @media print { .cumcum05-comparison { break-before: auto; } .comparison-topic { break-inside: avoid; } }
+</style>
