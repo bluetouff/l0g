@@ -124,7 +124,7 @@ const chartDimensions = weeklyChartDimensions(edition);
   .issue-cover { padding: 1.6rem 0 1.8rem; }
   .issue-opening { min-width: 0; }
   .issue-opening .mono-label { color: var(--color-signal); font-size: .64rem; }
-  .issue-opening h1, .issue-opening h2 { max-width: 42rem; margin-top: .65rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 700; line-height: 1.2; letter-spacing: -.035em; text-wrap: balance; }
+  .issue-opening h1, .issue-opening h2 { max-width: 42rem; margin-top: .65rem; color: var(--color-bright); font-family: var(--font-display); font-size: var(--section-title-size); font-weight: 700; line-height: 1.2; letter-spacing: -.035em; text-wrap: balance; }
   .issue-lead { margin-top: 1rem; max-width: 46rem; font-family: var(--font-read); font-size: .98rem; line-height: 1.8; }
   .issue-contents { display: flex; flex-wrap: wrap; gap: .5rem 1.15rem; margin-top: 1.3rem; }
   .issue-contents a { display: inline-flex; align-items: baseline; gap: .4rem; color: var(--color-paper); font-family: var(--font-mono); font-size: .65rem; }
@@ -199,5 +199,5 @@ const chartDimensions = weeklyChartDimensions(edition);
     .with-watchlist { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 2.5rem; }
   }
   @media (max-width: 799px) { .cover-image { margin-top: 1.3rem; max-width: 36rem; } .issue-watch { margin-top: 1.8rem; } }
-  @media (max-width: 500px) { .review-date { margin-left: 0; } .issue-coordinate { font-size: .6rem; gap: .5rem .8rem; } .issue-cover { padding-top: 1rem; } .issue-opening h1, .issue-opening h2 { font-size: 1.6rem; } .issue-lead { font-size: .9rem; } .editor-note { padding: 1rem; } }
+  @media (max-width: 500px) { .review-date { margin-left: 0; } .issue-coordinate { font-size: .6rem; gap: .5rem .8rem; } .issue-cover { padding-top: 1rem; } .issue-opening h1, .issue-opening h2 { font-size: var(--section-title-size); } .issue-lead { font-size: .9rem; } .editor-note { padding: 1rem; } }
 </style>

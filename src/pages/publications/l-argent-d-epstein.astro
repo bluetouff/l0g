@@ -359,8 +359,8 @@ const bookJsonLd = {
     grid-template-columns: minmax(15rem, 0.82fr) minmax(0, 1.18fr);
     align-items: center;
     gap: clamp(2.5rem, 7vw, 6.5rem);
-    min-height: 42rem;
-    padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(4rem, 8vw, 7rem);
+    min-height: auto;
+    padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(2rem, 4vw, 3rem);
     border-bottom: 1px solid var(--color-line);
   }
 
@@ -585,7 +585,7 @@ const bookJsonLd = {
     display: grid;
     grid-template-columns: 4rem minmax(15rem, 0.85fr) minmax(0, 1.15fr);
     gap: clamp(1.5rem, 4vw, 4rem);
-    padding: clamp(4rem, 8vw, 7rem) 0;
+    padding: clamp(2rem, 4vw, 3rem) 0;
     border-bottom: 1px solid var(--color-line);
   }
 
@@ -605,10 +605,10 @@ const bookJsonLd = {
     margin: 0.55rem 0 0;
     color: var(--color-bright);
     font-family: var(--font-read);
-    font-size: clamp(2rem, 4vw, 3.6rem);
+    font-size: var(--section-title-size);
     font-weight: 650;
     letter-spacing: -0.045em;
-    line-height: 1.04;
+    line-height: 1.25;
   }
 
   .reading-copy {
@@ -624,7 +624,7 @@ const bookJsonLd = {
 
   .visuals-section,
   .contents-section {
-    padding: clamp(4rem, 8vw, 7rem) 0;
+    padding: clamp(2rem, 4vw, 3rem) 0;
     border-bottom: 1px solid var(--color-line);
   }
 
@@ -639,10 +639,10 @@ const bookJsonLd = {
     margin: 0.55rem 0 0;
     color: var(--color-bright);
     font-family: var(--font-read);
-    font-size: clamp(2rem, 4vw, 3.6rem);
+    font-size: var(--section-title-size);
     font-weight: 650;
     letter-spacing: -0.045em;
-    line-height: 1.04;
+    line-height: 1.25;
   }
 
   .visuals-heading p:last-child {
@@ -805,7 +805,7 @@ const bookJsonLd = {
   }
 
   .edition-section {
-    padding: clamp(4rem, 8vw, 7rem) 0;
+    padding: clamp(2rem, 4vw, 3rem) 0;
     border-bottom: 1px solid var(--color-line);
   }
 
@@ -823,7 +823,7 @@ const bookJsonLd = {
   }
 
   .edition-panel h2 {
-    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-size: var(--section-title-size);
   }
 
   .edition-panel > div > p:last-child,
@@ -926,7 +926,7 @@ const bookJsonLd = {
 
   .final-download h2 {
     max-width: 20ch;
-    font-size: clamp(1.8rem, 3.5vw, 2.9rem);
+    font-size: var(--section-title-size);
   }
 
   .final-download p:last-child {
@@ -992,6 +992,7 @@ const bookJsonLd = {
   }
 
   @media (max-width: 700px) {
+    .cover-aura { inset-inline: 0; }
     .publication-hero {
       grid-template-columns: 1fr;
       gap: 3rem;

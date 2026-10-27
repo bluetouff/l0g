@@ -259,7 +259,7 @@ const bookJsonLd = {
 
 <style>
   .identity-book { --book-cyan: #62dfd1; --book-blue: #7aa2f7; --book-amber: #e8ad49; --book-pink: #ff5c93; }
-  .book-hero { display: grid; grid-template-columns: minmax(15rem, 25rem) minmax(0, 1fr); gap: clamp(2rem, 7vw, 6rem); align-items: center; padding: clamp(2rem, 6vw, 5rem) 0; }
+  .book-hero { display: grid; grid-template-columns: minmax(15rem, 25rem) minmax(0, 1fr); gap: clamp(2rem, 7vw, 6rem); align-items: center; padding: clamp(2rem, 4vw, 3rem) 0; }
   .cover-stage { position: relative; display: grid; justify-items: center; }
   .cover-glow { position: absolute; inset: 12% 3% 8%; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--book-cyan) 28%, transparent), transparent 68%); filter: blur(35px); opacity: .75; }
   .book-shell { position: relative; width: min(100%, 22rem); padding-left: 1.35rem; transform: perspective(1100px) rotateY(5deg) rotateX(1deg); transform-origin: center; }
@@ -280,12 +280,12 @@ const bookJsonLd = {
   .contents-action { color: var(--color-prose); font-family: var(--font-mono); font-size: .72rem; text-underline-offset: .25em; }
   .proof-line { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.2rem; padding: 0; list-style: none; }
   .proof-line li { border: 1px solid var(--color-line); border-radius: 999px; padding: .28rem .55rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .58rem; letter-spacing: .04em; }
-  .premise-section { display: grid; grid-template-columns: auto minmax(14rem, .8fr) minmax(18rem, 1.25fr); gap: clamp(1rem, 4vw, 3rem); align-items: start; border-block: 1px solid var(--color-line); padding: clamp(2.4rem, 6vw, 4.5rem) 0; }
+  .premise-section { display: grid; grid-template-columns: auto minmax(14rem, .8fr) minmax(18rem, 1.25fr); gap: clamp(1rem, 4vw, 3rem); align-items: start; border-block: 1px solid var(--color-line); padding: clamp(2rem, 4vw, 3rem) 0; }
   .section-index { color: color-mix(in srgb, var(--book-cyan) 50%, var(--color-line)); font-family: var(--font-mono); font-size: .7rem; }
-  .premise-section h2, .section-heading h2, .closing-section h2, .download-section h2 { margin-top: .4rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.2rem); line-height: 1; letter-spacing: -.035em; }
+  .premise-section h2, .section-heading h2, .closing-section h2, .download-section h2 { margin-top: .4rem; color: var(--color-bright); font-family: var(--font-display); font-size: var(--section-title-size); line-height: 1.25; letter-spacing: -.035em; }
   .premise-copy { color: var(--color-prose); font-family: var(--font-read); line-height: 1.75; }
   .premise-copy p + p { margin-top: .85rem; }
-  .architecture-section, .contents-section { padding: clamp(3rem, 7vw, 6rem) 0; }
+  .architecture-section, .contents-section { padding: clamp(2rem, 4vw, 3rem) 0; }
   .section-heading { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.25rem; max-width: 57rem; }
   .section-heading > div > p:last-child { max-width: 48rem; margin-top: .85rem; color: var(--color-prose); font-family: var(--font-read); line-height: 1.7; }
   .visual-essay { display: grid; gap: clamp(1.25rem, 3vw, 2.25rem); margin-top: 2rem; }
@@ -310,14 +310,14 @@ const bookJsonLd = {
   .chapter-copy strong { display: block; color: var(--color-bright); font-family: var(--font-display); font-size: 1.08rem; line-height: 1.2; }
   .chapter-copy small { display: block; margin-top: .4rem; color: var(--color-muted); font-family: var(--font-read); font-size: .78rem; line-height: 1.5; }
   .chapter-arrow { color: var(--book-amber); }
-  .closing-section { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(17rem, .6fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; border-block: 1px solid var(--color-line); padding: clamp(3rem, 7vw, 5.5rem) 0; }
+  .closing-section { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(17rem, .6fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; border-block: 1px solid var(--color-line); padding: clamp(2rem, 4vw, 3rem) 0; }
   .closing-copy > p:not(.mono-label) { max-width: 48rem; margin-top: .9rem; color: var(--color-prose); font-family: var(--font-read); line-height: 1.75; }
   .integrity-panel { min-width: 0; border: 1px solid color-mix(in srgb, var(--book-amber) 50%, var(--color-line)); border-radius: 16px; padding: 1.25rem; background: color-mix(in srgb, var(--book-amber) 5%, var(--color-surface)); }
   .integrity-panel > span { color: var(--book-amber); font-family: var(--font-mono); font-size: .68rem; font-weight: 800; }
   .integrity-panel > strong { display: block; margin-top: .5rem; color: var(--color-bright); font-family: var(--font-display); font-size: 2.1rem; }
   .integrity-panel p { margin-top: 1rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .6rem; }
   .integrity-panel code { display: block; overflow-wrap: anywhere; margin-top: .35rem; color: var(--color-prose); font-family: var(--font-mono); font-size: .56rem; line-height: 1.55; }
-  .download-section { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; align-items: center; padding: clamp(3rem, 7vw, 5.5rem) 0; }
+  .download-section { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; align-items: center; padding: clamp(2rem, 4vw, 3rem) 0; }
   .download-section .mono-label { color: var(--book-amber); }
   .download-section p:last-child { margin-top: .65rem; color: var(--color-prose); font-family: var(--font-read); }
   .download-section > a { border: 1px solid var(--book-amber); border-radius: 11px; padding: 1rem 1.2rem; background: color-mix(in srgb, var(--book-amber) 10%, var(--color-surface)); color: var(--color-bright); font-family: var(--font-mono); font-size: .74rem; font-weight: 800; text-decoration: none; text-transform: uppercase; }

@@ -250,7 +250,7 @@ const bookJsonLd = {
 
 <style>
   .epstein-publication { max-width: 72rem; margin: 0 auto; }
-  .publication-hero { position: relative; display: grid; grid-template-columns: minmax(15rem,.82fr) minmax(0,1.18fr); align-items: center; gap: clamp(2.5rem,7vw,6.5rem); min-height: 42rem; padding: clamp(2rem,4vw,3.5rem) 0 clamp(4rem,8vw,7rem); border-bottom: 1px solid var(--color-line); }
+  .publication-hero { position: relative; display: grid; grid-template-columns: minmax(15rem,.82fr) minmax(0,1.18fr); align-items: center; gap: clamp(2.5rem,7vw,6.5rem); min-height: auto; padding: clamp(2rem,4vw,3.5rem) 0 clamp(2rem,4vw,3rem); border-bottom: 1px solid var(--color-line); }
   .publication-hero::before { position: absolute; top: 0; right: 0; width: min(42rem,70%); height: 1px; background: linear-gradient(90deg,transparent,var(--color-signal)); content: ''; }
   .cover-stage { display: flex; min-width: 0; flex-direction: column; align-items: center; perspective: 1200px; }
   .book-shell { display: grid; grid-template-columns: 1.2rem minmax(0,19rem); width: min(100%,20.2rem); filter: drop-shadow(0 32px 42px rgba(0,0,0,.45)); transform: rotateY(-5deg) rotateZ(-.7deg); }
@@ -271,11 +271,11 @@ const bookJsonLd = {
   .download-action small { margin-top: .15rem; font-weight: 650; opacity: .76; }
   .contents-action { gap: .7rem; border: 1px solid var(--color-line-strong); padding: 0 1.1rem; color: var(--color-paper); font-family: var(--font-mono); font-size: .72rem; }
   .proof-line { display: flex; flex-wrap: wrap; gap: .55rem 1.4rem; margin-top: 1.4rem; padding: 0; color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; letter-spacing: .055em; list-style: none; text-transform: uppercase; }
-  .reading-section { display: grid; grid-template-columns: 4rem minmax(15rem,.85fr) minmax(0,1.15fr); gap: clamp(1.5rem,4vw,4rem); padding: clamp(4rem,8vw,7rem) 0; border-bottom: 1px solid var(--color-line); }
+  .reading-section { display: grid; grid-template-columns: 4rem minmax(15rem,.85fr) minmax(0,1.15fr); gap: clamp(1.5rem,4vw,4rem); padding: clamp(2rem,4vw,3rem) 0; border-bottom: 1px solid var(--color-line); }
   .section-index { color: var(--color-line-strong); font-family: var(--font-mono); font-size: 2.5rem; font-weight: 800; line-height: 1; }
-  h2 { margin: .55rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(2rem,4vw,3.6rem); font-weight: 650; letter-spacing: -.045em; line-height: 1.04; }
+  h2 { margin: .55rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: var(--section-title-size); font-weight: 650; letter-spacing: -.045em; line-height: 1.25; }
   .reading-copy p { margin: 0 0 1.15rem; }
-  .visuals-section, .contents-section { padding: clamp(4rem,8vw,7rem) 0; border-bottom: 1px solid var(--color-line); }
+  .visuals-section, .contents-section { padding: clamp(2rem,4vw,3rem) 0; border-bottom: 1px solid var(--color-line); }
   .section-heading { display: grid; grid-template-columns: 4rem minmax(0,1fr); gap: clamp(1.5rem,4vw,4rem); }
   .section-heading p:last-child { max-width: 48rem; margin-top: 1.25rem; color: var(--color-prose); line-height: 1.75; }
   .visuals-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; max-width: 58rem; margin: 3rem auto 0; }
@@ -293,7 +293,7 @@ const bookJsonLd = {
   .part-card li a { display: grid; grid-template-columns: 2rem minmax(0,1fr) auto; align-items: center; gap: .7rem; border-bottom: 1px solid var(--color-line); padding: .8rem 0; color: var(--color-paper); }
   .part-card li a > span { color: var(--color-signal); font-family: var(--font-mono); font-size: .66rem; }
   .part-card li b { color: var(--color-muted); }
-  .edition-section { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(17rem,.7fr); gap: clamp(2rem,6vw,5rem); padding: clamp(4rem,8vw,7rem) 0; border-bottom: 1px solid var(--color-line); }
+  .edition-section { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(17rem,.7fr); gap: clamp(2rem,6vw,5rem); padding: clamp(2rem,4vw,3rem) 0; border-bottom: 1px solid var(--color-line); }
   .edition-section p { margin-top: 1.25rem; }
   .file-card { margin: 0; border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb,var(--color-surface) 78%,transparent); }
   .file-card > div { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--color-line); padding: .65rem 0; }
@@ -301,13 +301,13 @@ const bookJsonLd = {
   .file-card dd { margin: 0; color: var(--color-paper); font-size: .8rem; text-align: right; }
   .file-card .checksum { display: block; border: 0; }
   .checksum dd { margin-top: .45rem; overflow-wrap: anywhere; color: var(--color-signal); font-family: var(--font-mono); font-size: .58rem; text-align: left; }
-  .about-section { display: grid; grid-template-columns: 10rem minmax(0,1fr); gap: clamp(2rem,6vw,5rem); padding: clamp(4rem,8vw,7rem) 0; }
+  .about-section { display: grid; grid-template-columns: 10rem minmax(0,1fr); gap: clamp(2rem,6vw,5rem); padding: clamp(2rem,4vw,3rem) 0; }
   .about-mark { color: var(--color-signal); font-family: var(--font-mono); font-size: clamp(2.8rem,8vw,5.5rem); font-weight: 800; }
   .about-section p { max-width: 48rem; margin-top: 1.25rem; }
   .about-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.4rem; }
   .about-links a { color: var(--color-signal); font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; }
   .final-download { display: flex; align-items: center; justify-content: space-between; gap: 2rem; border: 1px solid color-mix(in srgb,var(--color-signal) 45%,var(--color-line)); border-radius: 14px; padding: clamp(1.4rem,4vw,2.5rem); background: color-mix(in srgb,var(--color-signal) 6%,var(--color-surface)); }
-  .final-download h2 { font-size: clamp(1.7rem,3.2vw,2.8rem); }
+  .final-download h2 { font-size: var(--section-title-size); }
   .final-download p:last-child { margin-top: .7rem; color: var(--color-muted); }
   .final-download > a { display: flex; min-width: 14rem; flex-direction: column; border-radius: 7px; padding: .9rem 1.1rem; background: var(--color-signal); color: var(--color-ink); font-family: var(--font-mono); font-size: .78rem; font-weight: 800; text-align: center; text-transform: uppercase; }
   .final-download > a span { margin-top: .2rem; font-size: .6rem; opacity: .72; }

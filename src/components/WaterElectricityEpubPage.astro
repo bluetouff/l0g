@@ -364,7 +364,7 @@ const bookJsonLd = {
   .epub-page { max-width: 76rem; margin: 0 auto; }
   .publication-hero {
     position: relative; display: grid; grid-template-columns: minmax(15rem,.78fr) minmax(0,1.22fr); align-items: center; overflow: hidden;
-    gap: clamp(2.5rem,7vw,6.5rem); min-height: 42rem; padding: clamp(2rem,4vw,3.5rem) 0 clamp(4rem,8vw,7rem); border-bottom: 1px solid var(--color-line);
+    gap: clamp(2.5rem,7vw,6.5rem); min-height: auto; padding: clamp(2rem,4vw,3.5rem) 0 clamp(2rem,4vw,3rem); border-bottom: 1px solid var(--color-line);
   }
   .publication-hero::before { position: absolute; top: 0; right: 0; width: min(42rem,70%); height: 1px; background: linear-gradient(90deg,transparent,var(--color-signal)); content: ''; }
   .cover-stage { position: relative; display: flex; flex-direction: column; align-items: center; min-width: 0; perspective: 1200px; }
@@ -390,14 +390,14 @@ const bookJsonLd = {
   .proof-line li { border: 1px solid var(--color-line); border-radius: 999px; padding: .35rem .65rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; }
   .language-link { display: inline-block; margin-top: 1.1rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .7rem; text-decoration: none; }
   .section-index { color: color-mix(in srgb,var(--color-signal) 56%,var(--color-muted)); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .16em; }
-  .reading-section { display: grid; grid-template-columns: 4rem minmax(15rem,.85fr) minmax(0,1.15fr); gap: clamp(1.2rem,4vw,3.5rem); padding: clamp(3.5rem,8vw,6rem) 0; border-bottom: 1px solid var(--color-line); }
-  .reading-heading h2,.section-heading h2,.edition-panel h2,.method-section h2,.final-download h2 { margin: .55rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(1.9rem,4vw,3.35rem); letter-spacing: -.045em; line-height: 1.02; }
+  .reading-section { display: grid; grid-template-columns: 4rem minmax(15rem,.85fr) minmax(0,1.15fr); gap: clamp(1.2rem,4vw,3.5rem); padding: clamp(2rem,4vw,3rem) 0; border-bottom: 1px solid var(--color-line); }
+  .reading-heading h2,.section-heading h2,.edition-panel h2,.method-section h2,.final-download h2 { margin: .55rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: var(--section-title-size); letter-spacing: -.045em; line-height: 1.25; }
   .reading-copy p,.section-heading p:last-child,.edition-panel p,.method-section > div:last-child > p,.final-download p { color: var(--color-prose); font-family: var(--font-read); line-height: 1.72; }
   .reading-copy p:first-child { margin-top: 0; }
   .section-heading { display: grid; grid-template-columns: 4rem minmax(0,1fr); gap: clamp(1.2rem,4vw,3.5rem); align-items: start; }
   .section-heading > div:last-child { max-width: 52rem; }
   .section-heading p:last-child { max-width: 48rem; margin-top: 1rem; }
-  .visuals-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .visuals-section { padding: clamp(2rem,4vw,3rem) 0; border-bottom: 1px solid var(--color-line); }
   .visuals-stack { display: grid; gap: clamp(2.5rem,6vw,4.5rem); margin-top: 2.4rem; }
   .visual-card { margin: 0; overflow: hidden; border: 1px solid color-mix(in srgb,var(--color-signal) 38%,var(--color-line)); border-radius: 16px; background: linear-gradient(145deg,rgba(8,20,29,.96),rgba(5,10,16,.98)); box-shadow: 0 26px 54px rgba(0,0,0,.25); }
   .visual-card-heading { display: grid; grid-template-columns: 5rem minmax(0,1fr); gap: 1rem; align-items: center; padding: 1rem 1.15rem; border-bottom: 1px solid var(--color-line); }
@@ -413,7 +413,7 @@ const bookJsonLd = {
   .visual-zoom { display: block; width: max-content; margin: .75rem 1rem 0 auto; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: .5rem .72rem; background: rgba(3,10,17,.86); color: #fff; font-family: var(--font-mono); font-size: .64rem; }
   .mobile-pan-note { display: none; }
   .visual-card figcaption { padding: .9rem 1.15rem 1rem; color: var(--color-muted); font-family: var(--font-read); font-size: .82rem; line-height: 1.55; }
-  .contents-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .contents-section { padding: clamp(2rem,4vw,3rem) 0; border-bottom: 1px solid var(--color-line); }
   .chapter-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; margin: 2.3rem 0 0; padding: 1px; background: var(--color-line); list-style: none; }
   .chapter-grid li { min-width: 0; background: var(--color-bg); }
   .chapter-grid a { display: grid; grid-template-columns: 2.2rem minmax(0,1fr) auto; gap: .9rem; align-items: start; min-height: 7.3rem; padding: 1.2rem; color: inherit; text-decoration: none; transition: background 160ms ease; }
@@ -423,7 +423,7 @@ const bookJsonLd = {
   .chapter-copy strong { color: var(--color-bright); font-family: var(--font-read); font-size: 1.08rem; line-height: 1.25; }
   .chapter-copy small { color: var(--color-muted); font-size: .75rem; line-height: 1.45; }
   .chapter-arrow { color: var(--color-amber); }
-  .tools-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .tools-section { padding: clamp(2rem,4vw,3rem) 0; border-bottom: 1px solid var(--color-line); }
   .tool-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .75rem; margin: 2.2rem 0 0; padding: 0; list-style: none; }
   .tool-grid li { min-width: 0; }
   .tool-grid a { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: .75rem; align-items: center; min-height: 5.2rem; border: 1px solid var(--color-line); border-radius: 10px; padding: .9rem; background: color-mix(in srgb,var(--color-surface) 84%,#05151b); color: inherit; text-decoration: none; transition: border-color 160ms ease,transform 160ms ease; }
@@ -431,7 +431,7 @@ const bookJsonLd = {
   .tool-grid span { color: var(--color-signal); font-family: var(--font-mono); font-size: .68rem; }
   .tool-grid strong { color: var(--color-bright); font-family: var(--font-read); font-size: .94rem; line-height: 1.3; }
   .tool-grid b { color: var(--color-amber); font-weight: 500; }
-  .edition-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .edition-section { padding: clamp(2rem,4vw,3rem) 0; border-bottom: 1px solid var(--color-line); }
   .edition-panel { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(18rem,.8fr); gap: clamp(2rem,6vw,5rem); align-items: start; border: 1px solid var(--color-line); border-radius: 14px; padding: clamp(1.4rem,4vw,2.6rem); background: color-mix(in srgb,var(--color-surface) 82%,#06151b); }
   .edition-panel p { max-width: 43rem; }
   .file-card { margin: 0; border: 1px solid color-mix(in srgb,var(--color-signal) 38%,var(--color-line)); border-radius: 10px; padding: .45rem 1rem; background: rgba(2,11,16,.45); }
@@ -441,12 +441,12 @@ const bookJsonLd = {
   .file-card dd { margin: 0; color: var(--color-bright); font-family: var(--font-mono); font-size: .7rem; text-align: right; }
   .file-card .checksum { display: grid; }
   .file-card .checksum dd { overflow-wrap: anywhere; color: var(--color-signal); text-align: left; line-height: 1.5; }
-  .method-section { display: grid; grid-template-columns: minmax(10rem,.45fr) minmax(0,1.55fr); gap: clamp(2rem,7vw,6rem); align-items: center; padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .method-section { display: grid; grid-template-columns: minmax(10rem,.45fr) minmax(0,1.55fr); gap: clamp(2rem,7vw,6rem); align-items: center; padding: clamp(2rem,4vw,3rem) 0; border-bottom: 1px solid var(--color-line); }
   .method-mark { overflow: hidden; color: color-mix(in srgb,var(--color-signal) 25%,transparent); font-family: var(--font-display); font-size: clamp(3.5rem,9vw,7.5rem); font-weight: 900; letter-spacing: -.07em; line-height: .8; writing-mode: vertical-rl; }
   .method-links { display: flex; flex-wrap: wrap; gap: .8rem 1.4rem; margin-top: 1.4rem; }
   .method-links a { color: var(--color-signal); font-family: var(--font-mono); font-size: .72rem; }
   .final-download { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 2rem; align-items: center; margin: clamp(3.5rem,8vw,6.5rem) 0 1rem; border: 1px solid color-mix(in srgb,var(--color-amber) 40%,var(--color-line)); border-radius: 14px; padding: clamp(1.5rem,4vw,2.5rem); background: linear-gradient(120deg,color-mix(in srgb,var(--color-amber) 8%,var(--color-surface)),var(--color-surface)); }
-  .final-download h2 { max-width: 18ch; font-size: clamp(1.8rem,3.7vw,3rem); }
+  .final-download h2 { max-width: 18ch; font-size: var(--section-title-size); }
   .final-download > div > p:last-child { margin-bottom: 0; }
   .final-download > a { display: grid; gap: .22rem; min-width: 13.5rem; border-radius: 7px; padding: .9rem 1.15rem; background: var(--color-amber); color: #111008; font-weight: 850; text-decoration: none; }
   .final-download > a span { opacity: .7; font-family: var(--font-mono); font-size: .63rem; }

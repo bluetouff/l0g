@@ -88,7 +88,7 @@ const jsonLd = {
 
 <style>
   .oil-book { max-width: 1120px; margin: 0 auto; min-width: 0; }
-  .book-hero { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; padding: clamp(1.5rem, 4vw, 3.5rem) 0 4rem; }
+  .book-hero { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; padding: clamp(1.5rem, 4vw, 3.5rem) 0 3rem; }
   .cover-stage { display: grid; justify-items: center; min-width: 0; padding: 1rem; background: radial-gradient(ellipse, rgba(245,177,61,.13), transparent 70%); }
   .book-shell { position: relative; width: min(100%, 360px); border: 1px solid #4b4230; border-radius: 2px 7px 7px 2px; box-shadow: 12px 20px 50px #0007; }
   .book-shell img { width: 100%; height: auto; display: block; border-radius: inherit; }
@@ -107,7 +107,7 @@ const jsonLd = {
   .edition-facts li { padding: .4rem .65rem; border: 1px solid var(--color-line); border-radius: 4px; font: .7rem/1.5 var(--font-mono); }
   .edition-note { font: .72rem/1.7 var(--font-mono); color: var(--color-muted); }
   .reading-section { border-top: 1px solid var(--color-line); padding: 3rem 0; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: clamp(1.5rem, 4vw, 4rem); scroll-margin-top: 6rem; }
-  .section-heading h2 { font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.2; letter-spacing: -.025em; margin: .7rem 0 1rem; }
+  .section-heading h2 { font-size: var(--section-title-size); line-height: 1.2; letter-spacing: -.025em; margin: .7rem 0 1rem; }
   .section-heading > p:last-child { color: var(--color-muted); font-size: .9rem; line-height: 1.7; }
   .introduction p, .edition-details p { line-height: 1.85; margin: 0 0 1.2rem; }
   .introduction p:first-child { color: var(--color-bright); font-size: 1.1rem; }

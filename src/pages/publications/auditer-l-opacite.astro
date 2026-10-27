@@ -359,8 +359,8 @@ const bookJsonLd = {
     grid-template-columns: minmax(15rem, 0.82fr) minmax(0, 1.18fr);
     align-items: center;
     gap: clamp(2.5rem, 7vw, 6.5rem);
-    min-height: 42rem;
-    padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(4rem, 8vw, 7rem);
+    min-height: auto;
+    padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(2rem, 4vw, 3rem);
     border-bottom: 1px solid var(--color-line);
   }
   .book-hero::before {
@@ -449,19 +449,19 @@ const bookJsonLd = {
   .proof-line { display: flex; flex-wrap: wrap; gap: 0.55rem 1.4rem; margin: 1.4rem 0 0; padding: 0; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.055em; list-style: none; text-transform: uppercase; }
   .proof-line li { position: relative; }
   .proof-line li:not(:last-child)::after { position: absolute; right: -0.85rem; color: var(--color-accent); content: '·'; }
-  .promise-section { display: grid; grid-template-columns: 4rem minmax(15rem, 0.85fr) minmax(0, 1.15fr); gap: clamp(1.5rem, 4vw, 4rem); padding: clamp(4rem, 8vw, 7rem) 0; border-bottom: 1px solid var(--color-line); }
+  .promise-section { display: grid; grid-template-columns: 4rem minmax(15rem, 0.85fr) minmax(0, 1.15fr); gap: clamp(1.5rem, 4vw, 4rem); padding: clamp(2rem, 4vw, 3rem) 0; border-bottom: 1px solid var(--color-line); }
   .section-index { color: var(--color-line-strong); font-family: var(--font-mono); font-size: 2.5rem; font-weight: 800; line-height: 1; }
   .promise-heading h2,
   .section-heading h2,
   .edition-panel h2,
-  .final-download h2 { margin: 0.55rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 650; letter-spacing: -0.045em; line-height: 1.04; }
+  .final-download h2 { margin: 0.55rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: var(--section-title-size); font-weight: 650; letter-spacing: -0.045em; line-height: 1.25; }
   .promise-copy { color: var(--color-prose); font-family: var(--font-read); font-size: 1rem; line-height: 1.78; }
   .promise-copy p { margin: 0 0 1.2rem; }
   .promise-copy aside { display: grid; gap: 0.25rem; border-left: 3px solid var(--color-accent); padding: 0.8rem 1rem; background: color-mix(in srgb, var(--color-accent) 5%, transparent); }
   .promise-copy aside strong { color: var(--color-accent); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
   .promise-copy aside span { color: var(--color-paper); font-size: 0.86rem; }
   .visuals-section,
-  .contents-section { padding: clamp(4rem, 8vw, 7rem) 0; border-bottom: 1px solid var(--color-line); }
+  .contents-section { padding: clamp(2rem, 4vw, 3rem) 0; border-bottom: 1px solid var(--color-line); }
   .section-heading { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 4rem); }
   .section-heading > div > p:last-child { max-width: 48rem; margin: 1.1rem 0 0; color: var(--color-prose); font-family: var(--font-read); line-height: 1.7; }
   .visual-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 3rem; }
@@ -486,9 +486,9 @@ const bookJsonLd = {
   .part-card li span { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.68rem; }
   .part-card li strong { color: var(--color-paper); font-family: var(--font-read); font-size: 0.88rem; font-weight: 560; line-height: 1.4; }
   .part-card:last-child { grid-column: 1 / -1; }
-  .edition-section { padding: clamp(4rem, 8vw, 7rem) 0; border-bottom: 1px solid var(--color-line); }
+  .edition-section { padding: clamp(2rem, 4vw, 3rem) 0; border-bottom: 1px solid var(--color-line); }
   .edition-panel { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; padding: clamp(1.8rem, 5vw, 4rem); border: 1px solid var(--color-line); border-radius: 12px; background: linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 6%, transparent), transparent 40%), var(--surface-elevated); }
-  .edition-panel h2 { font-size: clamp(2rem, 3.8vw, 3.2rem); }
+  .edition-panel h2 { font-size: var(--section-title-size); }
   .edition-panel > div > p:last-child { margin: 1.4rem 0 0; color: var(--color-prose); font-family: var(--font-read); line-height: 1.78; }
   .file-card { margin: 0; border-top: 1px solid var(--color-line-strong); }
   .file-card > div { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--color-line); }
@@ -498,7 +498,7 @@ const bookJsonLd = {
   .file-card dd { color: var(--color-paper); text-align: right; }
   .file-card .checksum dd { overflow-wrap: anywhere; color: var(--color-signal); font-size: 0.61rem; }
   .final-download { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2rem; margin: clamp(4rem, 8vw, 7rem) 0 2rem; padding: clamp(1.8rem, 4vw, 3rem); border: 1px solid color-mix(in srgb, var(--color-signal) 42%, var(--color-line)); border-radius: 12px; background: radial-gradient(circle at 0 0, color-mix(in srgb, var(--color-signal) 12%, transparent), transparent 42%), radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 45%), var(--surface-elevated); }
-  .final-download h2 { max-width: 22ch; font-size: clamp(1.8rem, 3.5vw, 2.9rem); }
+  .final-download h2 { max-width: 22ch; font-size: var(--section-title-size); }
   .final-download p:last-child { margin: 1rem 0 0; color: var(--color-prose); font-family: var(--font-read); }
   .final-download > a { display: flex; flex-direction: column; min-width: 14rem; padding: 1rem 1.3rem; border-radius: 6px; color: var(--color-ink); background: var(--color-signal); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; transition: transform 160ms ease; }
   .final-download > a:hover { transform: translateY(-2px); }

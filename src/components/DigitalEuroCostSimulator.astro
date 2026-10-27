@@ -773,7 +773,7 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
     margin: 0.35rem 0 0;
     color: var(--color-bright);
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 4.8vw, 2.65rem);
+    font-size: var(--section-title-size);
     line-height: 1.02;
     letter-spacing: -0.035em;
     text-wrap: balance;
@@ -1271,7 +1271,7 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
   }
 
   @media (max-width: 410px) {
-    .de-sim__header h3 { font-size: 1.6rem; }
+    .de-sim__header h3 { font-size: var(--section-title-size); }
     .de-sim__flow { grid-template-columns: minmax(0, 1fr); }
     .de-sim__presets button { flex: 1 1 7rem; }
     .de-sim__unit > div { grid-template-columns: minmax(0, 1fr); }

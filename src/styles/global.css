@@ -34,6 +34,11 @@
 
 :root {
   color-scheme: dark;
+  /* Compact reading hierarchy, shared by French and English templates. */
+  --page-heading-size: clamp(1.6rem, 1.25rem + 1vw, 2.1rem);
+  --page-title-size: var(--page-heading-size);
+  --section-title-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.45rem);
+  --subsection-title-size: clamp(1.05rem, 1rem + 0.2vw, 1.18rem);
   /* tokens sémantiques (valeurs sombres par défaut) */
   --color-prose: #d6d9df;
   --color-nav-idle: #a8adb8;
@@ -300,19 +305,20 @@ a { color: inherit; text-decoration: none; }
 .prose { font-family: var(--font-read); font-size: 1.05rem; line-height: 1.75; color: var(--color-prose); letter-spacing: -0.003em; }
 .prose > * + * { margin-top: 1.15em; }
 
-.prose h2, .prose h3, .prose h4 {
+.prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
   font-family: var(--font-display);
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: var(--color-bright);
   scroll-margin-top: 1.5rem;
-  margin-top: 1.8em;
-  margin-bottom: 0.6em;
+  margin-top: 1.6rem;
+  margin-bottom: 0.55rem;
 }
-.prose h2 { font-size: 1.5rem; padding-left: 0.7em; border-left: 3px solid var(--color-signal); }
-.prose h3 { font-size: 1.22rem; color: var(--color-signal); }
+.prose h2 { font-size: var(--section-title-size); padding-left: 0.7em; border-left: 3px solid var(--color-signal); }
+.prose h3 { font-size: var(--subsection-title-size); color: var(--color-signal); }
 .prose h4 { font-size: 1.05rem; }
+.prose h5, .prose h6 { font-size: 1rem; }
 
 .prose p { color: var(--color-prose); }
 
@@ -321,18 +327,21 @@ a { color: inherit; text-decoration: none; }
   hyphens: auto;
 }
 
-/* One H1 scale across page templates, matching the methodology hero.
-   Keep it above scoped component styles and utility font shorthands. */
-:root { --page-title-size: clamp(2rem, 5vw, 3.25rem); }
+/* A continuous H1 scale also caps local page-title overrides.
+   Keep the shared ceiling above scoped styles and utility font shorthands. */
 main h1 {
-  font-size: var(--page-title-size) !important;
-  line-height: 1.06 !important;
-  letter-spacing: -0.035em !important;
+  font-size: min(var(--page-title-size), var(--page-heading-size)) !important;
+  font-weight: 600;
+  line-height: 1.16 !important;
+  letter-spacing: -0.025em !important;
   overflow-wrap: anywhere;
   text-wrap: balance;
 }
-@media (max-width: 540px) {
-  :root { --page-title-size: clamp(1.85rem, 10vw, 2.5rem); }
+/* Utility headings share the section scale; compact cards and controls keep
+   their own sizes. Scoped editorial components consume the same tokens. */
+main h2:is(.text-2xl, .text-3xl, .text-4xl, .text-5xl) {
+  font-size: var(--section-title-size);
+  line-height: 1.25;
 }
 
 .prose a {
