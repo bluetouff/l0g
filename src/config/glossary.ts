@@ -1191,6 +1191,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   "proposition-de-rectification": {"articles": [{"label": "Cum-cum : les alertes d’avant le scandale", "href": "/posts/cumcum-02-alertes-chronologie/", "kind": "article"}], "sources": [{"label": "DGFiP, contenu de la proposition de rectification", "href": "https://bofip.impots.gouv.fr/bofip/872-PGP.html/identifiant=BOI-CF-IOR-10-40-20200304", "detail": "Paragraphes 20 et 40 : réponse du contribuable, motifs et montants envisagés.", "kind": "source"}, {"label": "DGFiP, suites des observations du contribuable", "href": "https://bofip.impots.gouv.fr/bofip/12989-PGP.html/identifiant=BOI-CF-IOR-10-50-30-20210519", "detail": "Paragraphes 10 à 50 : modification ou abandon des rectifications selon les observations justifiées.", "kind": "source"}], "related": ["retenue-a-la-source", "cjip"]},
   "retenue-a-la-source": {
     "articles": [
+      {"label": "Cum-cum : pertes estimées et impôts récupérés", "href": "/posts/cumcum-03-facture-fiscale/", "kind": "article"},
       {"label": "Cum-cum : les alertes d’avant le scandale", "href": "/posts/cumcum-02-alertes-chronologie/", "kind": "article"},
       {
         "label": "Cum-cum : l’impôt sur le dividende devient une marge",
@@ -1255,6 +1256,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   "cjip": {
     "articles": [
+      {"label": "Cum-cum : pertes estimées et impôts récupérés", "href": "/posts/cumcum-03-facture-fiscale/", "kind": "article"},
       {"label": "Cum-cum : les alertes d’avant le scandale", "href": "/posts/cumcum-02-alertes-chronologie/", "kind": "article"},
       {
         "label": "Cum-cum : l’impôt sur le dividende devient une marge",
@@ -4631,7 +4633,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['spr'],
   },
   "transmission-des-prix": {"intuition": "Répercussion des coûts dans les prix de vente.", "articles": [{"label": "Réserves pétrolières : du marché au prix du plein", "href": "/posts/reserves-petrolieres-transmission-prix-pompe/", "kind": "article"}], "sources": [{"label": "Banque de France, résultats publiés le 14 octobre 2021", "href": "https://www.banque-france.fr/fr/publications-et-statistiques/publications/quelle-transmission-des-prix-du-petrole-aux-prix-des-carburants", "kind": "source"}], "related": ["spr"]},
-  "contrefactuel": {"intuition": "Résultat estimé en l’absence d’une intervention.", "articles": [{"label": "Réserves pétrolières : du marché au prix du plein", "href": "/posts/reserves-petrolieres-transmission-prix-pompe/", "kind": "article"}, {"label": "Dutreil : transmission des fortunes familiales", "href": "/posts/dutreil-transmission-fortunes-familiales/", "kind": "article"}, {"label": "Budget 2027 : les revenus face au scénario de référence", "href": "/posts/budget-2027-repartition-effort-risque/", "kind": "article"}], "sources": [{"label": "Kilian et Zhou, Dallas Fed Working Paper 1916, version du 19 décembre 2019", "href": "https://www.dallasfed.org/research/papers/2019/wp1916", "kind": "source"}], "related": ["spr"]},
+  "contrefactuel": {"intuition": "Résultat estimé en l’absence d’une intervention.", "articles": [{"label": "Réserves pétrolières : du marché au prix du plein", "href": "/posts/reserves-petrolieres-transmission-prix-pompe/", "kind": "article"}, {"label": "Dutreil : transmission des fortunes familiales", "href": "/posts/dutreil-transmission-fortunes-familiales/", "kind": "article"}, {"label": "Budget 2027 : les revenus face au scénario de référence", "href": "/posts/budget-2027-repartition-effort-risque/", "kind": "article"}, {"label": "Cum-cum : pertes estimées et impôts récupérés", "href": "/posts/cumcum-03-facture-fiscale/", "kind": "article"}], "sources": [{"label": "Kilian et Zhou, Dallas Fed Working Paper 1916, version du 19 décembre 2019", "href": "https://www.dallasfed.org/research/papers/2019/wp1916", "kind": "source"}], "related": ["spr"]},
   spr: {
     intuition: "Un stock amortit une interruption quand le pétrole peut être sorti, acheminé et transformé à temps. Une promesse de remboursement organise sa disponibilité future.",
     formula: 'couverture théorique (jours) = volume mobilisable (barils) / manque à couvrir (barils par jour)',

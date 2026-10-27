@@ -1,0 +1,182 @@
+---
+title: "Cum-cum: putting a price on the missing tax"
+seoTitle: "Cum-cum: French tax losses, estimates and recoveries | l0g"
+ogTitle: "Cum-cum: putting a price on the missing tax"
+description: "France’s €33.27bn estimated cum-cum loss and €4.5bn in tax notified: the assumptions, records and payments behind the figures."
+pubDate: "2026-10-27T16:37:32+01:00"
+updatedDate: "2026-10-27T16:37:32+01:00"
+tags: ["Cum-cum", "Tax", "Banks", "Investigation"]
+draft: false
+ogImage: "/illustrations/news/cumcum-facture-fiscale-v1.jpg"
+sourceArticle: "cumcum-03-facture-fiscale"
+sourceUpdatedDate: "2026-10-27T16:37:32+01:00"
+---
+
+import CumCumTaxLossFigure from "../../components/CumCumTaxLossFigure.astro";
+
+**The cum-cum investigation, part 3**
+
+The number fits on a single line: **€33.27 billion for France**. Its origins are easier to find than its frequent repetition might suggest. Open a five-page report dated 14 October 2021 and look for the French entry in the table. The figure covers 2000 through 2020. It comes from a tax-loss model developed at the University of Mannheim with the investigative journalism consortium CORRECTIV. The calculation is publicly described. The individual transactions needed to account for every euro are outside the scope of that table. [S01, pp.2-5](#source-S01)
+
+Five years later, another figure appears in a ministerial response to the French Senate. On 15 October 2026, the government reported **€4.5 billion in additional tax notified** to paying institutions. It also referred to fines paid under judicial settlements, without providing an itemised total of cash receipts. [S04, ministerial response](#source-S04)
+
+The two numbers practically invite a calculation. Subtract one from the other, or divide them, and a recovery rate seems to emerge. The answer would be appealing. It would also combine figures built to answer different questions, with reporting periods that have yet to be reconciled.
+
+The cost of cum-cum is scattered across several bodies of evidence. Researchers estimate the wider revenue shortfall. Tax authorities pursue claims arising from the cases they investigate. Judicial settlements require further payments under a different framework. Following those records helps establish the scale of the problem and identify the information still needed for a national accounting.
+
+## Valuing the tax that should have been withheld
+
+The [mechanism explained in the first instalment](/en/analysis/cum-cum-01-dividend-mechanism/) takes advantage of differences in the tax treatment of shareholders. A non-resident investor temporarily transfers shares to an intermediary whose position allows the dividend to escape [withholding tax](/en/glossary/retenue-a-la-source/). That intermediary may be resident in France or benefit from a different treaty arrangement. [S09, description of the referral](#source-S09)
+
+Estimating the loss requires a [counterfactual](/en/glossary/contrefactuel/): how much tax would have been payable without the arrangement being challenged? Consider a **wholly illustrative example**. A €100 dividend would have incurred €15 of withholding tax. An arrangement keeps those €15 within the private transaction chain. The investor and intermediary may split the benefit between them, but that contractual allocation does not by itself change the initial withholding shortfall.
+
+The example assumes that the €15 was genuinely due. In an actual case, establishing the liability requires identifying the recipient, their residence, the relevant treaty and the rules in force when the dividend was paid. An investor may legitimately qualify for a reduced rate. That lawful entitlement belongs in the counterfactual; otherwise, the calculation attributes to fraud revenue the state was never entitled to collect. ESMA's description of dividend arbitrage illustrates the importance of the counterparties' tax positions. [S08, paragraphs 21-27](#source-S08)
+
+The object being measured also matters. French withholding tax avoided, the participants' gains and the eventual effect on several countries' public finances are different quantities. Moving between them requires information on fees, expenses, tax paid elsewhere and available credits. Without it, the defensible approach is to retain a narrow, intelligible definition: an estimate of withholding-tax revenue forgone in the country under examination.
+
+For the same reason, a tax refund cannot simply be entered as a fraudulent loss. What matters is the entitlement to that refund and the transactions that created it. A payment leaving the public treasury tells us little, on its own, about its legal basis.
+
+## Rebuilding France's €33.27 billion estimate
+
+The model starts with dividends attributed to foreign shareholders: about **€443.60 billion** in its French sample over 2000–2020. It assumes that half were affected by cum-cum and applies a **15%** tax rate. The result is **€33.27 billion**, with the full calculation set out below the figure. [S01, p.3; l0g calculation](#source-S01)
+
+<CumCumTaxLossFigure lang="en" kind="model" number="01" sources="S01" caption="From dividends to estimated tax loss: the last two steps apply the model’s assumptions. The four amounts share one scale. S01, pp.3 and 5; l0g calculations.">
+  <details><summary>Method and scope</summary><p>France, 2000–2020: €625,593.00m in total dividends in the table; €443,604.87m attributed to foreign shareholders; assumed participation 50%; withholding rate 15%. Calculation: 443,604.87 × 0.50 × 0.15 = €33,270.36525m, rounded to €33.27bn. Dividing by 21 calendar years gives an arithmetic average of €1.58bn a year. This allocates the historical cumulative estimate and supplies no separate observation for 2025 or 2026. Published euro amounts, without revaluation. The table provides no annual French series.</p></details>
+</CumCumTaxLossFigure>
+
+The arithmetic is reproducible. The harder questions concern the construction of the dividend base and the choice of parameters. Assuming that half the dividends attributable to foreign shareholders were affected is an assumption about incidence. It determines how much of that base is exposed to the tax loss in the model.
+
+CORRECTIV says the assumption draws on discussions with tax authorities and market participants, alongside plausibility checks. The consortium describes its approach as conservative. That characterisation belongs to the authors: it is an assessment of their assumptions, rather than a statistical guarantee about the direction in which the estimate may be wrong. [S02, Cum-Cum section](#source-S02)
+
+The displayed precision comes from multiplication; the uncertainty lies chiefly in the assumptions. An estimate can be calculated to the nearest euro even when participation remains poorly measured. The **€33.27 billion** figure represents a modelled loss, whose assumptions and inputs require scrutiny.
+
+The model spans **21 calendar years**, from 2000 through 2020. The average shown in the figure’s method helps convey its historical scale. Estimating current losses would require evidence for recent years.
+
+## Where the assumptions carry the weight
+
+The report uses the ownership structure observed in summer 2021 as a proxy across the full period, and does not revise index constituents year by year. Holders whose residence cannot be established are treated as foreign. The underlying commercial data come from Eikon and Bloomberg. [S01, p.5](#source-S01)
+
+The model also assumes that the transactions were feasible in every country and year covered. It does not incorporate period-specific statutory restrictions, relying on CORRECTIV’s reporting to support that assumption. [S01, p.5, assumption 4](#source-S01)
+
+These choices have different implications. A late snapshot of ownership may overstate or understate the foreign share in earlier years. Classifying unidentified residents as foreign may enlarge the assumed base. Holding an index's composition fixed changes which companies represent the past. Quantifying the effects would require the historical series and the files used to construct the model.
+
+We did not obtain those detailed commercial datasets. This review therefore checks the published tables, the arithmetic and the stated methodological limitations. A complete independent replication would require rebuilding dividends, ownership and tax residence at a much finer level.
+
+The banking industry disputes the estimate. At a parliamentary hearing on 8 July 2025, French Banking Federation (FBF) chief executive Maya Atig argued that its assumptions overstated the loss, challenging the foreign-investor share, the 50% participation assumption and the treatment of exempt investors. The federation represents the banks. Resolving these points requires comparable company samples, dates, weights and tax entitlements. [S11, hearing](#source-S11)
+
+There is a serious argument in the authors' favour. Concealed activity rarely generates a comprehensive, ready-made dataset. Waiting for every case to be adjudicated before estimating the scale of the problem would limit measurement to what has already been discovered. Journalism and modelling help reveal a fiscal risk extending beyond the transactions described in public proceedings. That contribution is entirely compatible with close scrutiny of the assumptions.
+
+Restricting the sample to major indices leaves other shares outside the analysis. This can understate the economic universe in which relevant transactions might occur. Conversely, applying a uniform participation assumption can overstate activity in particular segments. Those effects do not automatically cancel out. Their coexistence is enough to prevent a model result from becoming a demonstrated minimum.
+
+Market data can test parts of the account, but have limitations of their own. ESMA's September 2020 report notes that higher trading volumes around dividend dates may reflect ordinary market reactions. Its securities-lending observations provide evidence relevant to dividend arbitrage; they do not independently establish a monetary tax loss. [S08, paragraphs 167-170](#source-S08)
+
+A volume spike can tell investigators where to look. Turning that signal into an amount of tax owed requires identifying holders, contracts, withholding payments and refunds. This evidential chain helps explain why a market-wide estimate and an administrative case file operate at different scales.
+
+## Participation assumptions change the estimate
+
+France's model sensitivity is immediately visible if the dividend base and the 15% rate are held constant. A hypothetical 25% participation rate yields **€16.64 billion**; 50% produces **€33.27 billion**; 75% gives **€49.91 billion**. These are l0g calculations using the published base, not three fresh measurements of historical losses. [S01, p.3; l0g calculations](#source-S01)
+
+<CumCumTaxLossFigure lang="en" kind="sensitivity" number="02" sources="S01" caption="The historical base stays fixed; each cell combines an assumed participation rate and tax rate. No probability is assigned to a cell. S01, p.3; l0g calculations.">
+  <details><summary>Method and scope</summary><p>Foreign-shareholder dividend base: €443,604.87m over 2000–2020. Each result = base × participation × tax rate, displayed in €bn rounded to two decimal places. Participation: 25%, 50%, 75%, 100%; tax rates: 5%, 10%, 15%, 20%. At a 15% tax rate, ten additional participation points add €6.65bn; at 50% participation, one tax-rate point adds €2.22bn. Parameters are illustrative, with no assigned probabilities or confidence interval. Cells are not current estimates of the loss.</p></details>
+</CumCumTaxLossFigure>
+
+Each cell shows how the chosen parameters affect the result. The combinations explore the formula; assigning probabilities to them would require a separate statistical exercise.
+
+The applicable rate depends on the recipient and the rules governing each transaction. Varying the parameter explains the formula; establishing its historical value requires evidence about actual cases.
+
+## Putting Europe's borders back into the total
+
+Mannheim's published benchmark total is **€140.99 billion**. It covers ten countries, including the United States. Adding only the European country rows produces **€136.13 billion for nine countries**. Removing Switzerland as well leaves **€131.30 billion for the eight EU member states covered**. [S01, p.3; l0g aggregation](#source-S01)
+
+<CumCumTaxLossFigure lang="en" kind="scope" number="03" sources="S01" caption="Geographic subtotals calculated from the published country rows. Omitted countries remain outside the sample; Switzerland and the US cover a shorter period. S01, p.3.">
+  <details><summary>Method and scope</summary><p>Sum of the rounded country rows in S01 p.3, in €m: eight covered EU members = 131,296.75; including Switzerland = 136,129.64; including the United States = 140,988.07. Authors’ printed total: 140,988.06. The €0.01m residual, or €10,000, is consistent with presentation rounding. Subtotals are displayed to €0.01bn. Switzerland and the US: 2000–2008; the other eight countries: 2000–2020. The model’s tax rates vary by country; 15% applies to France. These totals cover neither the entire EU nor 2026-value euros.</p></details>
+</CumCumTaxLossFigure>
+
+Those eight countries are Austria, Belgium, France, Germany, Italy, Luxembourg, the Netherlands and Spain. The subtotal reflects their inclusion in this particular model. Other EU members fall outside that sample. Their absence cannot be interpreted as a measured loss of zero.
+
+Time coverage differs too. Switzerland and the United States are included only for 2000-2008, while the other eight country rows extend through 2020. The nine-country European subtotal therefore combines different periods even after its geography has been clarified. We retain the euro amounts as published, without revaluing them into 2026 euros. [S01, table note, p.3](#source-S01)
+
+The difference between €131.30 billion and €136.13 billion measures Switzerland's inclusion in this exercise. It says nothing about a recent change in fraud. Likewise, calling the €140.99 billion figure an EU loss would add two countries outside the Union while concealing the incomplete coverage of its own members.
+
+The **€150 billion** headline belongs to a broader exercise. CORRECTIV's October 2021 publication combines cum-cum with cum-ex and related arrangements involving American Depositary Receipts, or ADRs. The consortium says it covers twelve countries. The shared “CumEx Files” label brings the investigation together; it does not make the underlying mechanisms equivalent. [S02, overview and methodology sections](#source-S02)
+
+An international estimate needs a clear identity: countries, period, mechanism and method. An aggregate can be useful in describing the scale of a cross-border problem. Comparing two national tax systems, or assessing a European reform, requires a much tighter match between the quantities being measured.
+
+## From tax assessments to cash collected
+
+The first detailed administrative snapshot used here comes from the Senate report of **25 October 2022**. It records **€804 million in tax principal** and **€409 million in penalties** notified, alongside **€277 million already recovered**. The first two components add to €1.213 billion. The passage does not split the collected amount between principal and penalties. [S03, IV.A.2](#source-S03)
+
+The recovery figure establishes a concrete outcome of enforcement at that reporting point. It does not establish the share of France's estimated 2000-2020 losses that had been repaired. Calculating that would require identifying the tax years behind the receipts, isolating principal and matching the cases to the estimate's scope.
+
+The October 2026 response provides a more recent reference point: **€4.5 billion notified**. It leaves the exact coverage period, components and corresponding collections unspecified. Its wording on fines establishes a government statement that payments occurred, without a named schedule or itemised amounts. [S04, ministerial response](#source-S04)
+
+<CumCumTaxLossFigure lang="en" kind="evidence" number="04" sources="S03 S04" caption="The 2022 snapshot distinguishes principal, penalties and collections; the 2026 response reports notifications. The tax periods still need to be reconciled. S03; S04.">
+  <details><summary>Method and scope</summary><p>S03, Senate report dated 25 October 2022, IV.A.2: €804m in tax principal plus €409m in penalties, or €1,213m claimed; €277m collected, without a split of collections between components. S04, response dated 15 October 2026: €4.5bn in additional tax notified, without detailed tax periods or matching cash collections. The figure compares published records and calculates no national recovery rate.</p></details>
+</CumCumTaxLossFigure>
+
+Notification makes a claim visible in the enforcement record. Collection is a separate event. To follow the results over time, a reader would also need to know which amounts survived review and litigation, which were reduced or abandoned, and how much was actually paid or subsequently refunded.
+
+The consulted publications do not provide that complete chain for French cum-cum cases. We found no public consolidated total from which to establish a **national net balance as of 27 October 2026**. This gap does not diminish the recoveries that can be documented. It prevents them from being divided by a matching national denominator.
+
+A clearer public record could group anonymised cases by tax year and audit year. Each cohort would show principal, penalties, disputed amounts, collections and refunds. This is a proposal for statistical transparency, with implementation that would need to protect tax confidentiality. It would allow outcomes to be compared on a consistent basis instead of placing successive enforcement announcements side by side.
+
+## Crédit Agricole CIB and HSBC: payments with distinct status
+
+The Crédit Agricole CIB and HSBC Bank plc agreements provide documented examples of the accounting problem. The PNF's **8 September 2025** statement on Crédit Agricole CIB gives a **€88.25 million fine** and an aggregate **€134.43 million** covering tax-related amounts already paid plus the fine due. Subtraction puts the tax component at **€46.18 million**, including **€37.45 million** paid as early as 2021. [S05, single page; l0g calculation](#source-S05)
+
+For HSBC Bank plc, the statement of **8 January 2026** distinguishes a **€267.53 million agreed fine** from **€34.46 million in tax, interest and penalties already paid**, relating to the 2019 financial year covered. The described proceedings concern transactions from 2014 to 2019 involving the Paris branch. [S06, single page](#source-S06)
+
+<CumCumTaxLossFigure lang="en" kind="settlements" number="05" sources="S05 S06 S07" caption="Tax-related payments already made and agreed fines, as reported by prosecutors. A payment obligation and cash received represent different stages. S05; S06; S07.">
+  <details><summary>Method and scope</summary><p>Calculations use the published euro amounts before rounding: CACIB, 134,432,437 − 88,247,869 = €46,184,568 in tax-related amounts already paid, including €37,448,238 paid in 2021. HSBC Bank plc: €34,464,424 in tax-related payments already made and a €267,531,000 agreed fine. Tax-related payments sum to €80,648,992, fines to €355,778,869; the mixed total is €436,427,861. CACIB’s fine comprises €49,026,594 in restitution and €39,221,275 as a punitive component. The categories and dates prevent the mixed total from representing national loss or new receipts in a single year. The bars share one scale; later cash receipts are outside the statements’ coverage.</p></details>
+</CumCumTaxLossFigure>
+
+The two publications report roughly **€80.65 million in tax-related payments already made**. Agreed fines are additional obligations with their own schedules. The figure’s method details the components and mixed total, whose interpretation depends on preserving those payment dates. [S05](#source-S05) [S06; l0g calculations](#source-S06)
+
+The Crédit Agricole CIB agreement distinguishes a restitution component, based on assessed benefits within the prosecutors’ stated scope, from a punitive component. The fine therefore serves a broader purpose than returning tax to the treasury. [S07, paragraphs 45-51](#source-S07)
+
+The agreement provided for instalments, with the last scheduled payment due on **8 July 2026**. That date had passed by our source-review cutoff. We did not obtain an itemised receipt confirming each payment. The October ministerial response refers to fines paid by several institutions, without enabling that particular schedule to be reconstructed. The missing document provides no basis for suggesting a late payment. [S07, paragraphs 57-59](#source-S07) [S04](#source-S04)
+
+Potential overlaps create another constraint. Adding the €80.65 million to the €277 million reported in 2022 would require checking whether earlier payments were already included. Crédit Agricole CIB's 2021 payment makes the risk of double counting tangible. The public material used here does not supply the required reconciliation.
+
+These instruments are [conventions judiciaires d’intérêt public, or CJIPs](/en/glossary/cjip/), the French public-interest judicial settlement procedure. Validation does not amount to a declaration of guilt and does not have the effect of a criminal conviction, as the Crédit Agricole CIB agreement expressly states. The Justice Ministry describes the procedure as an alternative to prosecution. [S07, paragraph 61](#source-S07) [S10](#source-S10)
+
+## The balance still to be established
+
+France has a large historical estimate, substantial notified claims and documented payments. Reconciling their scope remains essential to measuring recovery of the loss. [S01](#source-S01) [S03](#source-S03) [S04](#source-S04) [S05](#source-S05) [S06](#source-S06)
+
+Measuring the budgetary burden that France still bears would require another explicit choice of definition. A balance of lost tax principal subtracts the corresponding principal recovered. A broader fiscal account can include fines and interest actually received, the cost of collection and the time elapsed. Both exercises can be useful, but their outputs require different labels.
+
+A reform can improve future receipts without repairing every past loss. Conversely, a large collection can settle old cases while revealing little about current trading practices. Prevention and the recovery of historical losses require complementary measures of performance.
+
+A coherent public record would let citizens distinguish the tax claimed, the penalty and the money returned to the treasury. Each figure could then mark a verifiable step towards repairing the loss.
+
+---
+
+### Method and scope
+
+This documentary investigation uses public sources reviewed on 27 October 2026. The Mannheim tables were visually checked and their main calculations reproduced. The underlying commercial datasets, individual tax files and complete payment receipts were not obtained. No interviews or direct requests for comment were conducted. Explanations by the authors, the administration and prosecutors are drawn from, and attributed to, their publications.
+
+Modelled amounts and payments retain their respective periods. Sensitivity scenarios are educational, not an updated estimate or a confidence interval. The figure methods provide the formulas, numerical inputs and rounding conventions. The two settlements illustrate different categories of money; this instalment does not purport to provide a comprehensive register of proceedings.
+
+## Earlier instalments
+
+- [Cum-cum: the dividend mechanism and sharing of the tax advantage](/en/analysis/cum-cum-01-dividend-mechanism/).
+- [Warnings and tax challenges before the 2018 scandal](/en/analysis/cum-cum-02-warnings-timeline/).
+
+## Sources
+
+Each notice identifies the passages used, the periods covered and the limits of the material consulted.
+
+<ol className="sources-list">
+<li id="source-S01"><span className="source-meta">S01 · Christoph Spengel, Université de Mannheim · 2021-10-14 · Accessed: 2026-10-27</span><a href="https://www.bwl.uni-mannheim.de/media/Lehrstuehle/bwl/Spengel/Dokumente/Medien/Steuerschaden_Cum-Cum_update.pdf" target="_blank" rel="noopener noreferrer">Estimation of the Tax Revenue Loss Caused by Cum/Cum Transactions, Update 2021</a><details><summary>Passages and scope</summary><p>pp.2–5: method, benchmark table, variants and assumptions.</p><p>Original model commissioned by and developed with CORRECTIV. Underlying commercial data were not obtained. A model estimate rather than an audit of individual cases.</p></details></li>
+<li id="source-S02"><span className="source-meta">S02 · CORRECTIV, Manuel Daubenberger · 2021-10-21 · Accessed: 2026-10-27</span><a href="https://correctiv.org/aktuelles/cumex-files/2021/10/21/steuerausfaelle-in-hoehe-von-150-milliarden-euro-mit-diesen-methoden-wurde-die-schadenssumme-berechnet/" target="_blank" rel="noopener noreferrer">CumEx-Files 2.0: Mit diesen Methoden wurde die Summe des Steuerbetrugs berechnet</a><details><summary>Passages and scope</summary><p>Cum-Cum, Cum-Ex and ADR methodology sections.</p><p>The producer’s explanation of its methods. The €150bn headline combines mechanisms. S01 and S02 are not independent estimates.</p></details></li>
+<li id="source-S03"><span className="source-meta">S03 · Sénat, commission des finances · 2022-10-25 · Accessed: 2026-10-27</span><a href="https://www.senat.fr/rap/r22-072/r22-07215.html" target="_blank" rel="noopener noreferrer">Fraude et évasion fiscales : faire les comptes et intensifier la lutte, rapport n°72</a><details><summary>Passages and scope</summary><p>IV.A.2: €804m principal, €409m penalties and €277m recovered.</p><p>DGFiP figures reported to the Senate. The exact cutoff of the cumulative figures is unspecified in the passage. Page updated 7 April 2023; report published 25 October 2022.</p></details></li>
+<li id="source-S04"><span className="source-meta">S04 · Ministère de l’Action et des Comptes publics / Sénat · 2026-10-15 · Accessed: 2026-10-27</span><a href="https://www.senat.fr/questions/base/2026/qSEQ260207856.html" target="_blank" rel="noopener noreferrer">Réponse à la question écrite n°07856 : Contrôle des arbitrages de dividendes</a><details><summary>Passages and scope</summary><p>Ministerial reply, official Senate record, p.4975.</p><p>Question published 26 February 2026; reply on 15 October; page updated 16 October. Tax years, components and matching cash collections are not itemised. Allegations in the question are not treated as established facts.</p></details></li>
+<li id="source-S05"><span className="source-meta">S05 · Parquet national financier · 2025-09-08 · Accessed: 2026-10-27</span><a href="https://www.justice.gouv.fr/sites/default/files/2025-09/CJIP_CACIB_CP_20250908.pdf" target="_blank" rel="noopener noreferrer">Communiqué relatif à la CJIP Crédit Agricole CIB</a><details><summary>Passages and scope</summary><p>Single-page PNF statement, visually checked.</p><p>€88,247,869 agreed fine; €134,432,437 combines tax payments already made and the fine due. The €46,184,568 tax component is derived by subtraction; €37,448,238 had been paid in 2021.</p></details></li>
+<li id="source-S06"><span className="source-meta">S06 · Parquet national financier · 2026-01-08 · Accessed: 2026-10-27</span><a href="https://www.justice.gouv.fr/sites/default/files/2026-01/CJIP_HSBC_CP_20260108.pdf" target="_blank" rel="noopener noreferrer">Communiqué relatif à la CJIP HSBC Bank plc</a><details><summary>Passages and scope</summary><p>Single-page PNF statement, visually checked.</p><p>€267,531,000 agreed fine and €34,464,424 in principal, interest and penalties already paid for the 2019 year covered. The announcement is not a statement of later receipts.</p></details></li>
+<li id="source-S07"><span className="source-meta">S07 · Parquet national financier et Crédit Agricole CIB · 2025-09-05 · Accessed: 2026-10-27</span><a href="https://www.justice.gouv.fr/sites/default/files/2025-09/CJIP_CACIB_20250905.pdf" target="_blank" rel="noopener noreferrer">Convention judiciaire d’intérêt public Crédit Agricole CIB</a><details><summary>Passages and scope</summary><p>Printed pp.6–8, paragraphs 45–61 (PDF pp.7–9).</p><p>Visually checked: restitution and punitive components, instalment schedule and the absence of a declaration of guilt. A contractual due date is not evidence of an actual receipt.</p></details></li>
+<li id="source-S08"><span className="source-meta">S08 · ESMA · 2020-09-23 · Accessed: 2026-10-27</span><a href="https://www.esma.europa.eu/sites/default/files/library/esma70-155-10272_final_report_on_cum_ex_and_other_multiple_withholding_tax_reclaim_schemes.pdf" target="_blank" rel="noopener noreferrer">Final Report on Cum/Ex, Cum/Cum and withholding tax reclaim schemes, ESMA70-155-10272</a><details><summary>Passages and scope</summary><p>Paragraphs 21–37; paragraphs 167–170 on pp.41–42.</p><p>Targeted text and page images consulted. A market-volume spike is not sufficient evidence of fraud. No time series was reconstructed from the charts.</p></details></li>
+<li id="source-S09"><span className="source-meta">S09 · Conseil d’État · 2025-01-27 · Accessed: 2026-10-27</span><a href="https://www.conseil-etat.fr/avis-consultatifs/derniers-avis-rendus/au-gouvernement/avis-portant-sur-un-projet-de-dispositif-renforce-concernant-l-application-de-la-retenue-a-la-source-aux-operations-d-arbitrage-de-dividende-dites" target="_blank" rel="noopener noreferrer">Avis sur le renforcement du dispositif de retenue à la source concernant les arbitrages de dividendes</a><details><summary>Passages and scope</summary><p>Description of the referral: domestic and external arrangements.</p><p>Opinion on a proposal; used to explain the mechanism, rather than as the final statutory text.</p></details></li>
+<li id="source-S10"><span className="source-meta">S10 · Ministère de la Justice · 2026-09-17 · Accessed: 2026-10-27</span><a href="https://www.justice.gouv.fr/documentation/ressources/conventions-judiciaires-dinteret-public" target="_blank" rel="noopener noreferrer">Conventions judiciaires d’intérêt public : présentation et registre</a><details><summary>Passages and scope</summary><p>General explanation and the CACIB / HSBC entries.</p><p>Page displays an update of 17 September 2026. An orientation source, not evidence that every payment was received. The two selected cases are not an exhaustive register.</p></details></li>
+<li id="source-S11"><span className="source-meta">S11 · French National Assembly, Finance Committee · 2025-07-08 · Accessed: 2026-10-27</span><a href="https://www.assemblee-nationale.fr/dyn/opendata/CRCANR5L17S2025PO59048N138.html" target="_blank" rel="noopener noreferrer">Hearing of Maya Atig and Étienne Barel, French Banking Federation, record no.138</a><details><summary>Passages and scope</summary><p>6.30pm hearing; Maya Atig’s remarks on the €33bn estimate, foreign ownership, 50% participation and exempt investors.</p><p>The banking industry’s position, recorded by Parliament. Its alternative figures and assertion that systemic fraud was absent do not provide independent validation. A share of capital held and a share of dividends attributed are not directly interchangeable without aligning company samples, dates, weights and tax entitlements.</p></details></li>
+</ol>
