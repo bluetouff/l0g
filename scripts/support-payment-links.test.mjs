@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
+import sharp from 'sharp';
+import { getPublicationSocial } from '../src/config/publication-social.mjs';
 import {
   SUPPORT_PAYMENT_LINK_KEYS,
   supportPaymentLinks,
@@ -126,4 +128,33 @@ test('la page active est visible dans la navigation, la recherche et les colonne
     />l0g ne dépose aucun cookie/,
   );
   assert.doesNotMatch(astroConfig, /page !== 'https:\/\/l0g\.fr\/soutenir\/'/);
+});
+
+test('les pages de soutien FR et EN déclarent leurs JPEG dédiés en 1200 × 630', async () => {
+  for (const [route, pageFile, imagePath] of [
+    ['/soutenir/', '../src/pages/soutenir.astro', '/og-soutenir-v1.jpg'],
+    ['/en/support/', '../src/pages/en/support/index.astro', '/og-support-v1.jpg'],
+  ]) {
+    const page = await readFile(new URL(pageFile, import.meta.url), 'utf8');
+    assert.ok(page.includes(`ogImage="${imagePath}"`), `${route}: visuel explicite absent`);
+    assert.equal(getPublicationSocial(route), undefined, `${route}: une surcharge remplace le visuel déclaré`);
+    const bytes = await readFile(new URL(`../public${imagePath}`, import.meta.url));
+    const image = sharp(bytes, { failOn: 'warning' });
+    const metadata = await image.metadata();
+    assert.deepEqual([metadata.format, metadata.width, metadata.height], ['jpeg', 1200, 630], imagePath);
+    assert.ok(bytes.length <= 300_000, `${imagePath}: le JPEG dépasse 300 Ko`);
+    await image.raw().toBuffer();
+  }
+});
+
+test('les layouts partagent le visuel explicite entre Open Graph et Twitter', async () => {
+  for (const file of ['BaseLayout.astro', 'EnglishGuidesLayout.astro']) {
+    const layout = await readFile(new URL(`../src/layouts/${file}`, import.meta.url), 'utf8');
+    assert.match(layout, /publicationSocial\?\.image\s*\?\?\s*ogImage\s*\?\?/u, file);
+    assert.match(layout, /property="og:image" content=\{ogImageUrl\}/u, file);
+    assert.match(layout, /name="twitter:image" content=\{ogImageUrl\}/u, file);
+    assert.match(layout, /property="og:image:width" content="1200"/u, file);
+    assert.match(layout, /property="og:image:height" content="630"/u, file);
+    assert.match(layout, /name="twitter:card" content="summary_large_image"/u, file);
+  }
 });
