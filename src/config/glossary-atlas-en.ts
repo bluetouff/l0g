@@ -221,6 +221,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "robots": "noindex,follow",
     "atlas": {
       "articles": [
+        {"label": "Cum-cum and cum-ex: accountability in court", "href": "/en/analysis/cumcum-04-court-decisions-accountability/", "kind": "article"},
         {"label": "Cum-cum: tax-loss estimates and recoveries", "href": "/en/analysis/cumcum-03-tax-loss-estimates/", "kind": "article"},
         {"label": "Cum-cum: the warnings before the scandal", "href": "/en/analysis/cum-cum-02-warnings-timeline/", "kind": "article"},
         {
@@ -316,6 +317,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "robots": "noindex,follow",
     "atlas": {
       "articles": [
+        {"label": "Cum-cum and cum-ex: accountability in court", "href": "/en/analysis/cumcum-04-court-decisions-accountability/", "kind": "article"},
         {"label": "Cum-cum: tax-loss estimates and recoveries", "href": "/en/analysis/cumcum-03-tax-loss-estimates/", "kind": "article"},
         {"label": "Cum-cum: the warnings before the scandal", "href": "/en/analysis/cum-cum-02-warnings-timeline/", "kind": "article"},
         {
