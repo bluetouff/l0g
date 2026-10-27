@@ -6,6 +6,7 @@ if (root && typeof HTMLDialogElement !== 'undefined' && typeof HTMLDialogElement
   const dialog = root.querySelector<HTMLDialogElement>('dialog')!;
   const opener = root.querySelector<HTMLButtonElement>('[data-library-open]')!;
   const save = root.querySelector<HTMLButtonElement>('[data-library-save]');
+  const saveLabel = save?.querySelector<HTMLElement>('[data-library-save-label]');
   const status = root.querySelector<HTMLElement>('[data-library-status]')!;
   const dialogStatus = root.querySelector<HTMLElement>('[data-library-dialog-status]')!;
   const positionsList = root.querySelector<HTMLUListElement>('[data-library-positions]')!;
@@ -35,7 +36,7 @@ if (root && typeof HTMLDialogElement !== 'undefined' && typeof HTMLDialogElement
     if (!save) return;
     const saved = storage && readSavedArticles(storage).some((item) => item.path === path);
     save.setAttribute('aria-pressed', String(Boolean(saved)));
-    save.textContent = saved ? (en ? 'Saved for later' : 'Dans ma liste') : (en ? 'Save for later' : 'À lire plus tard');
+    if (saveLabel) saveLabel.textContent = saved ? (en ? 'Saved for later' : 'Dans ma liste') : (en ? 'Save for later' : 'À lire plus tard');
   }
 
   function addRow(list: HTMLUListElement, item: { path: string; title?: string; progress?: number }, position: boolean) {

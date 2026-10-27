@@ -1,14 +1,14 @@
 .reading-library[hidden], .reading-library [hidden] { display: none; }
 .reading-library { display: flex; align-items: center; flex-wrap: wrap; gap: .25rem 1rem; margin-block: .75rem; font: .75rem/1.6 var(--font-read); }
 .reading-library button { min-height: 44px; cursor: pointer; color: var(--color-muted); text-align: left; }
-.reading-library > button { display: inline-flex; align-items: center; justify-content: center; padding: .4rem .7rem; border: 1px solid var(--color-line-strong); border-radius: .35rem; background: var(--color-surface); font: 500 .75rem/1.4 var(--font-read); }
+.reading-library > button { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; padding: .4rem .7rem; border: 1px solid var(--color-line-strong); border-radius: .35rem; background: var(--color-surface); font: 500 .75rem/1.4 var(--font-read); }
 .reading-library--header { flex-wrap: nowrap; gap: .45rem; margin: 0; }
-.reading-library--header > [data-library-open] { min-width: 44px; min-height: 44px; gap: .45rem; padding: .4rem .65rem; white-space: nowrap; }
+.reading-library--header > [data-library-open] { min-width: 44px; white-space: nowrap; }
 .reading-library-icon { width: 18px; height: 18px; flex: none; }
 .reading-library button:hover { color: var(--color-signal); text-decoration: underline; text-underline-offset: 3px; }
 .reading-library > button:hover { color: var(--color-paper); border-color: var(--color-signal); text-decoration: none; }
 .reading-library button[aria-pressed="true"] { color: var(--color-signal); }
-.reading-library :is(a, button):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; border-radius: 2px; }
+.reading-library :is(a, button):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
 .reading-library-status { color: var(--color-muted); font-size: .75rem; }
 .reading-library-status:empty { display: none; }
 .reading-library-dialog { margin: auto; padding: clamp(1rem, 4vw, 1.75rem); width: min(42rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); overflow-y: auto; overscroll-behavior: contain; color: var(--color-paper); background: var(--color-surface); border: 1px solid var(--color-line-strong); border-radius: 10px; box-shadow: var(--shadow-elevated); font: .875rem/1.6 var(--font-read); }
