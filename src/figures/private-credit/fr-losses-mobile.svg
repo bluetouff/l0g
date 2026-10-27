@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="credit-fr-losses-m-title credit-fr-losses-m-desc" viewBox="0 0 420 1205" style="width:100%;height:auto" class="l0g-private-credit-svg">
+<title id="credit-fr-losses-m-title">La priorité répartit les pertes</title><desc id="credit-fr-losses-m-desc">Modèle fictif de 100 unités : senior 60, junior 20, capital résiduel 20. Un seul cash final net est réparti après les dettes et frais du fonds maître, selon priorité senior, junior, capital. Les pertes 10, 25 et 50 laissent respectivement 90, 75 et 50 ; paiements 60/20/10, 60/15/0 et 50/0/0. Junior touché au-delà de 20 de perte totale, senior au-delà de 40. Détenir tous les rangs conserve la perte totale. Hors intérêts, temps, fiscalité, change et frais du feeder ; aucune probabilité ni notation. Paramètres distincts de Partners Group. Calculs l0g ; concept Fitch [4].</desc>
+<rect id="credit-fr-losses-m-frame" x="0" y="0" width="420" height="1205" rx="10" fill="var(--color-ink)"/>
+<text data-panel="credit-fr-losses-m-frame" x="20" y="30" fill="var(--color-signal)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="start">02 / CRÉDIT PRIVÉ ET ASSUREURS</text>
+<text data-panel="credit-fr-losses-m-frame" x="20" y="65" fill="var(--color-paper)" font-family="l0g Private Credit" font-size="22" font-weight="700" text-anchor="start">La priorité répartit les pertes</text>
+<text data-panel="credit-fr-losses-m-frame" x="24" y="112" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Modèle fictif · 100 unités</text>
+<text data-panel="credit-fr-losses-m-frame" x="24" y="137" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Senior 60 · junior 20 · capital 20</text>
+<rect id="credit-fr-losses-m-card-scenario-0" x="16" y="165" width="388" height="174" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="credit-fr-losses-m-card-scenario-0" x="32" y="195" fill="var(--color-paper)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="start">DÉPART</text>
+<text data-panel="credit-fr-losses-m-card-scenario-0" x="32" y="224" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Cash final net : 100</text>
+<rect id="credit-fr-losses-m-bar-0-0" x="50.0" y="270" width="192.0" height="25" rx="0" fill="var(--color-signal)"/>
+<text data-panel="credit-fr-losses-m-card-scenario-0" x="146.0" y="260" fill="var(--color-signal)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="middle">60</text>
+<rect id="credit-fr-losses-m-bar-0-1" x="242.0" y="270" width="64.0" height="25" rx="0" fill="var(--color-amber)"/>
+<text data-panel="credit-fr-losses-m-card-scenario-0" x="274.0" y="260" fill="var(--color-amber)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="middle">20</text>
+<rect id="credit-fr-losses-m-bar-0-2" x="306.0" y="270" width="64.0" height="25" rx="0" fill="var(--color-accent)"/>
+<text data-panel="credit-fr-losses-m-card-scenario-0" x="338.0" y="260" fill="var(--color-accent)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="middle">20</text>
+<text data-panel="credit-fr-losses-m-card-scenario-0" x="32" y="324" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Financement initial.</text>
+<rect id="credit-fr-losses-m-card-scenario-1" x="16" y="355" width="388" height="174" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="credit-fr-losses-m-card-scenario-1" x="32" y="385" fill="var(--color-accent)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="start">PERTE TOTALE : 10</text>
+<text data-panel="credit-fr-losses-m-card-scenario-1" x="32" y="414" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Cash final net : 90</text>
+<rect id="credit-fr-losses-m-bar-1-0" x="50.0" y="460" width="192.0" height="25" rx="0" fill="var(--color-signal)"/>
+<text data-panel="credit-fr-losses-m-card-scenario-1" x="146.0" y="450" fill="var(--color-signal)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="middle">60</text>
+<rect id="credit-fr-losses-m-bar-1-1" x="242.0" y="460" width="64.0" height="25" rx="0" fill="var(--color-amber)"/>
+<text data-panel="credit-fr-losses-m-card-scenario-1" x="274.0" y="450" fill="var(--color-amber)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="middle">20</text>
+<rect id="credit-fr-losses-m-bar-1-2" x="306.0" y="460" width="32.0" height="25" rx="0" fill="var(--color-accent)"/>
+<text data-panel="credit-fr-losses-m-card-scenario-1" x="322.0" y="450" fill="var(--color-accent)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="middle">10</text>
+<rect id="credit-fr-losses-m-bar-loss-1" x="338.0" y="460" width="32.0" height="25" rx="0" fill="var(--color-surface-2)"/>
+<path d="M 338.0 460 L 370 460" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-fr-losses-m-card-scenario-1" x="32" y="514" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Capital : perte de 10 sur 20.</text>
+<rect id="credit-fr-losses-m-card-scenario-2" x="16" y="545" width="388" height="174" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="credit-fr-losses-m-card-scenario-2" x="32" y="575" fill="var(--color-accent)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="start">PERTE TOTALE : 25</text>
+<text data-panel="credit-fr-losses-m-card-scenario-2" x="32" y="604" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Cash final net : 75</text>
+<rect id="credit-fr-losses-m-bar-2-0" x="50.0" y="650" width="192.0" height="25" rx="0" fill="var(--color-signal)"/>
+<text data-panel="credit-fr-losses-m-card-scenario-2" x="146.0" y="640" fill="var(--color-signal)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="middle">60</text>
+<rect id="credit-fr-losses-m-bar-2-1" x="242.0" y="650" width="48.0" height="25" rx="0" fill="var(--color-amber)"/>
+<text data-panel="credit-fr-losses-m-card-scenario-2" x="266.0" y="640" fill="var(--color-amber)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="middle">15</text>
+<rect id="credit-fr-losses-m-bar-loss-2" x="290.0" y="650" width="80.0" height="25" rx="0" fill="var(--color-surface-2)"/>
+<path d="M 290.0 650 L 370 650" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-fr-losses-m-card-scenario-2" x="32" y="704" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Junior : perte de 5 sur 20.</text>
+<rect id="credit-fr-losses-m-card-scenario-3" x="16" y="735" width="388" height="174" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="credit-fr-losses-m-card-scenario-3" x="32" y="765" fill="var(--color-accent)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="start">PERTE TOTALE : 50</text>
+<text data-panel="credit-fr-losses-m-card-scenario-3" x="32" y="794" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Cash final net : 50</text>
+<rect id="credit-fr-losses-m-bar-3-0" x="50.0" y="840" width="160.0" height="25" rx="0" fill="var(--color-signal)"/>
+<text data-panel="credit-fr-losses-m-card-scenario-3" x="130.0" y="830" fill="var(--color-signal)" font-family="l0g Private Credit" font-size="17" font-weight="700" text-anchor="middle">50</text>
+<rect id="credit-fr-losses-m-bar-loss-3" x="210.0" y="840" width="160.0" height="25" rx="0" fill="var(--color-surface-2)"/>
+<path d="M 210.0 840 L 370 840" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-fr-losses-m-card-scenario-3" x="32" y="894" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Senior : perte de 10 sur 60.</text>
+<path d="M 50.0 1000 L 50.0 1006" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-fr-losses-m-frame" x="50.0" y="1032" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="middle">0</text>
+<path d="M 114.0 1000 L 114.0 1006" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-fr-losses-m-frame" x="114.0" y="1032" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="middle">20</text>
+<path d="M 178.0 1000 L 178.0 1006" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-fr-losses-m-frame" x="178.0" y="1032" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="middle">40</text>
+<path d="M 242.0 1000 L 242.0 1006" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-fr-losses-m-frame" x="242.0" y="1032" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="middle">60</text>
+<path d="M 306.0 1000 L 306.0 1006" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-fr-losses-m-frame" x="306.0" y="1032" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="middle">80</text>
+<path d="M 370.0 1000 L 370.0 1006" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-fr-losses-m-frame" x="370.0" y="1032" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="middle">100</text>
+<text data-panel="credit-fr-losses-m-frame" x="24" y="1050" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Junior touché au-delà de 20 de pertes ;</text>
+<text data-panel="credit-fr-losses-m-frame" x="24" y="1076" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">senior au-delà de 40. Même échelle à zéro.</text>
+<text data-panel="credit-fr-losses-m-frame" x="24" y="1102" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Tous les rangs : 60 + 15 + 0 = 75 sur 100.</text>
+<text data-panel="credit-fr-losses-m-frame" x="24" y="1128" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Perte totale : 25, quel que soit le découpage.</text>
+<text data-panel="credit-fr-losses-m-frame" x="24" y="1154" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Cash final net ; hors intérêts, temps et frais.</text>
+<text data-panel="credit-fr-losses-m-frame" x="24" y="1180" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="17" font-weight="400" text-anchor="start">Calcul fictif distinct de Partners Group [4].</text>
+</svg>

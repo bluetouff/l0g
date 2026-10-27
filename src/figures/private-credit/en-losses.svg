@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="credit-en-losses-d-title credit-en-losses-d-desc" viewBox="0 0 1000 650" style="width:100%;height:auto" class="l0g-private-credit-svg">
+<title id="credit-en-losses-d-title">Priority allocates losses</title><desc id="credit-en-losses-d-desc">Fictional 100-unit model: senior 60, junior 20, residual equity 20. One final net cash amount is allocated after master-fund debt and expenses, in senior, junior, equity order. Losses of 10, 25 and 50 leave 90, 75 and 50, paid 60/20/10, 60/15/0 and 50/0/0. Junior losses start above 20 total loss; senior above 40. Holding all ranks preserves total loss. Excludes interest, time, tax, FX and feeder expenses; no probability or rating. Parameters do not represent Partners Group. l0g calculations; Fitch concept [4].</desc>
+<rect id="credit-en-losses-d-frame" x="0" y="0" width="1000" height="650" rx="10" fill="var(--color-ink)"/>
+<text data-panel="credit-en-losses-d-frame" x="24" y="30" fill="var(--color-signal)" font-family="l0g Private Credit" font-size="22" font-weight="700" text-anchor="start">02 / PRIVATE CREDIT AND INSURERS</text>
+<text data-panel="credit-en-losses-d-frame" x="24" y="72" fill="var(--color-paper)" font-family="l0g Private Credit" font-size="30" font-weight="700" text-anchor="start">Priority allocates losses</text>
+<text data-panel="credit-en-losses-d-frame" x="24" y="108" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="start">Fictional model · 100 units</text>
+<text data-panel="credit-en-losses-d-frame" x="24" y="138" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="start">Senior 60 · junior 20 · equity 20</text>
+<text data-panel="credit-en-losses-d-frame" x="35" y="204" fill="var(--color-paper)" font-family="l0g Private Credit" font-size="25" font-weight="700" text-anchor="start">Initial</text>
+<text data-panel="credit-en-losses-d-frame" x="35" y="234" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="start">Net cash: 100</text>
+<rect id="credit-en-losses-d-bar-0-0" x="270.0" y="207" width="396.0" height="27" rx="0" fill="var(--color-signal)"/>
+<text data-panel="credit-en-losses-d-frame" x="468.0" y="197" fill="var(--color-signal)" font-family="l0g Private Credit" font-size="22" font-weight="700" text-anchor="middle">60</text>
+<rect id="credit-en-losses-d-bar-0-1" x="666.0" y="207" width="132.0" height="27" rx="0" fill="var(--color-amber)"/>
+<text data-panel="credit-en-losses-d-frame" x="732.0" y="197" fill="var(--color-amber)" font-family="l0g Private Credit" font-size="22" font-weight="700" text-anchor="middle">20</text>
+<rect id="credit-en-losses-d-bar-0-2" x="798.0" y="207" width="132.0" height="27" rx="0" fill="var(--color-accent)"/>
+<text data-panel="credit-en-losses-d-frame" x="864.0" y="197" fill="var(--color-accent)" font-family="l0g Private Credit" font-size="22" font-weight="700" text-anchor="middle">20</text>
+<text data-panel="credit-en-losses-d-frame" x="35" y="288" fill="var(--color-accent)" font-family="l0g Private Credit" font-size="25" font-weight="700" text-anchor="start">Loss 10</text>
+<text data-panel="credit-en-losses-d-frame" x="35" y="318" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="start">Net cash: 90</text>
+<rect id="credit-en-losses-d-bar-1-0" x="270.0" y="291" width="396.0" height="27" rx="0" fill="var(--color-signal)"/>
+<text data-panel="credit-en-losses-d-frame" x="468.0" y="281" fill="var(--color-signal)" font-family="l0g Private Credit" font-size="22" font-weight="700" text-anchor="middle">60</text>
+<rect id="credit-en-losses-d-bar-1-1" x="666.0" y="291" width="132.0" height="27" rx="0" fill="var(--color-amber)"/>
+<text data-panel="credit-en-losses-d-frame" x="732.0" y="281" fill="var(--color-amber)" font-family="l0g Private Credit" font-size="22" font-weight="700" text-anchor="middle">20</text>
+<rect id="credit-en-losses-d-bar-1-2" x="798.0" y="291" width="66.0" height="27" rx="0" fill="var(--color-accent)"/>
+<text data-panel="credit-en-losses-d-frame" x="831.0" y="281" fill="var(--color-accent)" font-family="l0g Private Credit" font-size="22" font-weight="700" text-anchor="middle">10</text>
+<rect id="credit-en-losses-d-bar-loss-1" x="864.0" y="291" width="66.0" height="27" rx="0" fill="var(--color-surface-2)"/>
+<path d="M 864.0 291 L 930 291" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-en-losses-d-frame" x="35" y="372" fill="var(--color-accent)" font-family="l0g Private Credit" font-size="25" font-weight="700" text-anchor="start">Loss 25</text>
+<text data-panel="credit-en-losses-d-frame" x="35" y="402" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="start">Net cash: 75</text>
+<rect id="credit-en-losses-d-bar-2-0" x="270.0" y="375" width="396.0" height="27" rx="0" fill="var(--color-signal)"/>
+<text data-panel="credit-en-losses-d-frame" x="468.0" y="365" fill="var(--color-signal)" font-family="l0g Private Credit" font-size="22" font-weight="700" text-anchor="middle">60</text>
+<rect id="credit-en-losses-d-bar-2-1" x="666.0" y="375" width="99.0" height="27" rx="0" fill="var(--color-amber)"/>
+<text data-panel="credit-en-losses-d-frame" x="715.5" y="365" fill="var(--color-amber)" font-family="l0g Private Credit" font-size="22" font-weight="700" text-anchor="middle">15</text>
+<rect id="credit-en-losses-d-bar-loss-2" x="765.0" y="375" width="165.0" height="27" rx="0" fill="var(--color-surface-2)"/>
+<path d="M 765.0 375 L 930 375" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-en-losses-d-frame" x="35" y="456" fill="var(--color-accent)" font-family="l0g Private Credit" font-size="25" font-weight="700" text-anchor="start">Loss 50</text>
+<text data-panel="credit-en-losses-d-frame" x="35" y="486" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="start">Net cash: 50</text>
+<rect id="credit-en-losses-d-bar-3-0" x="270.0" y="459" width="330.0" height="27" rx="0" fill="var(--color-signal)"/>
+<text data-panel="credit-en-losses-d-frame" x="435.0" y="449" fill="var(--color-signal)" font-family="l0g Private Credit" font-size="22" font-weight="700" text-anchor="middle">50</text>
+<rect id="credit-en-losses-d-bar-loss-3" x="600.0" y="459" width="330.0" height="27" rx="0" fill="var(--color-surface-2)"/>
+<path d="M 600.0 459 L 930 459" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 270.0 510 L 270.0 516" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-en-losses-d-frame" x="270.0" y="542" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="middle">0</text>
+<path d="M 402.0 510 L 402.0 516" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-en-losses-d-frame" x="402.0" y="542" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="middle">20</text>
+<path d="M 534.0 510 L 534.0 516" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-en-losses-d-frame" x="534.0" y="542" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="middle">40</text>
+<path d="M 666.0 510 L 666.0 516" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-en-losses-d-frame" x="666.0" y="542" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="middle">60</text>
+<path d="M 798.0 510 L 798.0 516" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-en-losses-d-frame" x="798.0" y="542" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="middle">80</text>
+<path d="M 930.0 510 L 930.0 516" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="credit-en-losses-d-frame" x="930.0" y="542" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="middle">100</text>
+<text data-panel="credit-en-losses-d-frame" x="24" y="562" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="start">Junior absorbs losses above 20 total units; senior above 40.</text>
+<text data-panel="credit-en-losses-d-frame" x="24" y="587" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="start">All ranks held together: 60 + 15 + 0 = 75 out of 100; total loss is 25.</text>
+<text data-panel="credit-en-losses-d-frame" x="24" y="612" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="start">Senior: mint · junior: amber · equity: rose · lost: grey. Zero-based scale.</text>
+<text data-panel="credit-en-losses-d-frame" x="24" y="637" fill="var(--color-muted)" font-family="l0g Private Credit" font-size="22" font-weight="400" text-anchor="start">Final net cash. Fictional, distinct from Partners Group. l0g calculation; Fitch [4].</text>
+</svg>

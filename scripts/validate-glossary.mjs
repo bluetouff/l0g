@@ -19,6 +19,50 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Feeder debt remains a sourced short definition; cash and capital follow distinct contracts.
+const feederArticleFr = '/posts/credit-prive-porte-assureurs-rated-feeders/';
+const feederArticleEn = '/en/analysis/private-credit-route-insurers-rated-feeders/';
+for (const slug of ['rated-feeder-note', 'rehaussement-de-credit', 'rbc', 'pik', 'nav']) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined);
+  // Keep the historical feeder candidate without admitting it as an indexed reference.
+  assert.equal(fr[0].referenceCandidate, slug === 'rated-feeder-note');
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  for (const [entry, article] of [[fr[0], feederArticleFr], [en[0], feederArticleEn]]) {
+    assert(entry.atlas.articles.some(link => link.href === article));
+    assert(!entry.def.includes('—'));
+  }
+}
+for (const slug of ['rated-feeder-note', 'rehaussement-de-credit']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert.equal(fr.guide, feederArticleFr); assert.equal(en.guide, feederArticleEn);
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  for (const entry of [fr, en]) {
+    assert.equal(entry.atlas.sources.length, 3);
+    for (const source of entry.atlas.sources) {
+      const url = new URL(source.href);
+      assert.equal(url.protocol, 'https:');
+      assert(['https://assets.fitchratings.com', 'https://content.naic.org', 'https://www.investor.gov'].some(origin => url.origin === origin));
+    }
+    for (const related of entry.atlas.related) {
+      assert(glossaryEntries.some(candidate => candidate.slug === related));
+      assert(glossaryAtlasEnBySlug.has(related));
+    }
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'rated-feeder-note').def, /qualification comptable.*désignation de crédit.*règles applicables/);
+assert.match(glossaryAtlasEnBySlug.get('rated-feeder-note').def, /accounting classification.*credit designation.*applicable rules/);
+assert.match(glossaryEntries.find(entry => entry.slug === 'rehaussement-de-credit').def, /absorbent des pertes.*portée dépend.*conditions contractuelles/);
+assert.match(glossaryAtlasEnBySlug.get('rehaussement-de-credit').def, /absorb losses.*effect depends.*contractual terms/);
+assert.equal(glossaryEntries.find(entry => entry.slug === 'rbc').guide, '/guides/lire-la-solidite-d-un-assureur-vie/');
+assert.equal(glossaryAtlasEnBySlug.get('rbc').guide, '/en/guides/read-life-insurer-health/');
+assert.equal(glossaryEntries.find(entry => entry.slug === 'pik').guide, '/posts/credit-prive-logiciels-ia-revenus-dette/');
+assert.equal(glossaryAtlasEnBySlug.get('pik').guide, '/en/analysis/private-credit-software-ai-cash-flows-debt/');
+
 // Ore mass bases retain their moisture distinction and remain sourced short pages.
 const ironOreArticleFr = '/posts/minerai-fer-prix-attente-fortescue-cmrg/';
 const ironOreArticleEn = '/en/analysis/iron-ore-price-of-waiting-fortescue-cmrg/';
@@ -875,7 +919,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 329, 'Le corpus anglais ajoute les deux bases de masse minière aux 327 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 331, 'Le corpus anglais ajoute les deux fiches de structure de crédit aux 329 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1077,7 +1121,7 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
 assert.equal(glossaryEntries.length, 719, 'Le corpus ajoute les deux bases de masse minière aux 717 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 319, 'Le graphe Atlas ajoute les deux bases de masse minière aux 317 nœuds existants');
+assert.equal(glossaryAtlasEntries.length, 321, 'Le graphe Atlas ajoute les deux fiches de structure de crédit aux 319 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1499,7 +1543,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 897, 'Le graphe Atlas ajoute six relations de masse minière aux 891 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 903, 'Le graphe Atlas ajoute six relations de structure de crédit aux 897 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
