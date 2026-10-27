@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cumcum-fr-allocation-d-title cumcum-fr-allocation-d-desc" viewBox="0 0 1000 650" style="width:100%;height:auto" class="l0g-cumcum-svg">
+<title id="cumcum-fr-allocation-d-title">100 € changent de répartition</title><desc id="cumcum-fr-allocation-d-desc">Simulation : retenue 15 %, restitution 90 %. Référence : investisseur 85, fisc 15. Montage : investisseur 90, intermédiaire 10, retenue 0. Gain investisseur 5 et rétention intermédiaire 10 égalent la retenue 15.</desc>
+<rect id="cumcum-fr-allocation-d-frame" x="0" y="0" width="1000" height="650" rx="8" fill="var(--color-ink)"/>
+<text data-panel="cumcum-fr-allocation-d-frame" x="24" y="30" fill="var(--color-signal)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">l0g / CUM-CUM / 02</text>
+<text data-panel="cumcum-fr-allocation-d-frame" x="24" y="74" fill="var(--color-paper)" font-family="l0g CumCum" font-size="30" font-weight="700" text-anchor="start">100 € changent de répartition</text>
+<text data-panel="cumcum-fr-allocation-d-frame" x="24" y="112" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="start">Modèle : retenue 15 % ; restitution 90 %.</text>
+<text data-panel="cumcum-fr-allocation-d-frame" x="24" y="175" fill="var(--color-paper)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">PERCEPTION DIRECTE</text>
+<text data-panel="cumcum-fr-allocation-d-frame" x="976" y="175" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="end">100 € bruts</text>
+<rect id="cumcum-fr-allocation-d-card-bar-0-0" x="24.0" y="200" width="809.2" height="58" rx="8" fill="var(--color-signal)"/>
+<text data-panel="cumcum-fr-allocation-d-card-bar-0-0" x="38.0" y="237.0" fill="var(--color-ink)" font-family="l0g CumCum" font-size="26" font-weight="700" text-anchor="start">85 € à l’investisseur</text>
+<rect id="cumcum-fr-allocation-d-card-bar-0-1" x="833.2" y="200" width="142.8" height="58" rx="8" fill="var(--color-accent)"/>
+<text data-panel="cumcum-fr-allocation-d-card-bar-0-1" x="904.6" y="237.0" fill="var(--color-ink)" font-family="l0g CumCum" font-size="24" font-weight="700" text-anchor="middle">15 €</text>
+<text data-panel="cumcum-fr-allocation-d-frame" x="976" y="292" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="end">Retenue</text>
+<text data-panel="cumcum-fr-allocation-d-frame" x="24" y="330" fill="var(--color-paper)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">AVEC INTERPOSITION</text>
+<text data-panel="cumcum-fr-allocation-d-frame" x="976" y="330" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="end">100 € bruts</text>
+<rect id="cumcum-fr-allocation-d-card-bar-1-0" x="24.0" y="355" width="856.8" height="58" rx="8" fill="var(--color-signal)"/>
+<text data-panel="cumcum-fr-allocation-d-card-bar-1-0" x="38.0" y="392.0" fill="var(--color-ink)" font-family="l0g CumCum" font-size="26" font-weight="700" text-anchor="start">90 € à l’investisseur</text>
+<rect id="cumcum-fr-allocation-d-card-bar-1-1" x="880.8" y="355" width="95.2" height="58" rx="8" fill="var(--color-amber)"/>
+<text data-panel="cumcum-fr-allocation-d-card-bar-1-1" x="928.4" y="392.0" fill="var(--color-ink)" font-family="l0g CumCum" font-size="24" font-weight="700" text-anchor="middle">10 €</text>
+<text data-panel="cumcum-fr-allocation-d-frame" x="24" y="447" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="start">Retenue dans le modèle : 0 €</text>
+<text data-panel="cumcum-fr-allocation-d-frame" x="976" y="447" fill="var(--color-amber)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="end">Intermédiaire, avant frais</text>
+<rect id="cumcum-fr-allocation-d-card-equation" x="24" y="475" width="952" height="96" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="cumcum-fr-allocation-d-card-equation" x="45" y="507" fill="var(--color-signal)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">GAIN INVESTISSEUR</text>
+<text data-panel="cumcum-fr-allocation-d-card-equation" x="45" y="550" fill="var(--color-signal)" font-family="l0g CumCum" font-size="32" font-weight="700" text-anchor="start">5 €</text>
+<text data-panel="cumcum-fr-allocation-d-card-equation" x="401" y="507" fill="var(--color-amber)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">AVANT FRAIS</text>
+<text data-panel="cumcum-fr-allocation-d-card-equation" x="401" y="550" fill="var(--color-amber)" font-family="l0g CumCum" font-size="32" font-weight="700" text-anchor="start">10 €</text>
+<text data-panel="cumcum-fr-allocation-d-card-equation" x="735" y="507" fill="var(--color-accent)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">RETENUE ÉVITÉE</text>
+<text data-panel="cumcum-fr-allocation-d-card-equation" x="735" y="550" fill="var(--color-accent)" font-family="l0g CumCum" font-size="32" font-weight="700" text-anchor="start">15 €</text>
+<text data-panel="cumcum-fr-allocation-d-card-equation" x="335" y="547" fill="var(--color-paper)" font-family="l0g CumCum" font-size="32" font-weight="700" text-anchor="start">+</text>
+<text data-panel="cumcum-fr-allocation-d-card-equation" x="674" y="547" fill="var(--color-paper)" font-family="l0g CumCum" font-size="32" font-weight="700" text-anchor="start">=</text>
+<text data-panel="cumcum-fr-allocation-d-frame" x="24" y="607" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="start">Modèle l0g, hors frais, autres impôts et redressements. Aucun taux moyen observé.</text>
+<text data-panel="cumcum-fr-allocation-d-frame" x="24" y="636" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="start">Les exemples 90 % et 85 % viennent de la CJIP CACIB, 05.09.2025, §34 [S1].</text>
+</svg>

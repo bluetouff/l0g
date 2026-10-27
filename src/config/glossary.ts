@@ -31,6 +31,30 @@ const rawGlossarySections: GlossarySourceSection[] = [
   accent: 'var(--color-topic-blue)',
   entries: [
     {
+      "sigle": "Retenue à la source",
+      "nom": "Impôt collecté lors du paiement du revenu",
+      "def": "Impôt prélevé lors du paiement d’un revenu et reversé au fisc par l’intervenant chargé de sa collecte. Pour un dividende transfrontalier, son application et son taux dépendent notamment du bénéficiaire, du droit interne et de la convention fiscale applicable. Un traité peut prévoir une réduction ou une exonération sous conditions.",
+      "guide": "/posts/cumcum-01-dividende-mecanisme/"
+    },
+    {
+      "sigle": "Prêt de titres",
+      "nom": "Transfert temporaire de titres avec restitution convenue",
+      "def": "Opération dans laquelle un prêteur transfère temporairement des actions ou obligations à un emprunteur, qui s’engage à lui restituer des titres équivalents. L’emprunteur fournit généralement un collatéral et paie une rémunération. Le prêt peut servir à une livraison, à la tenue de marché ou à une couverture ; les garanties et les paiements liés aux revenus dépendent du contrat.",
+      "guide": "/posts/cumcum-01-dividende-mecanisme/"
+    },
+    {
+      "sigle": "Bénéficiaire effectif",
+      "nom": "Qualité fiscale liée à la jouissance du revenu",
+      "def": "Dans le contexte fiscal des dividendes, personne qui a le droit d’utiliser le revenu et d’en jouir, sans obligation juridique ou contractuelle de le retransmettre. Cette qualité s’apprécie à partir des engagements et de la situation effective, selon les conditions de la convention fiscale concernée. La détention juridique du titre et l’exposition à sa performance constituent des questions distinctes.",
+      "guide": "/posts/cumcum-01-dividende-mecanisme/"
+    },
+    {
+      "sigle": "CJIP",
+      "nom": "Convention judiciaire d’intérêt public",
+      "def": "Convention conclue entre le procureur et une personne morale dans les cas prévus par le droit français, puis soumise à validation judiciaire. Elle peut prévoir une amende d’intérêt public et d’autres obligations. Sa validation n’emporte pas déclaration de culpabilité et ne vaut pas condamnation ; l’exécution des obligations prévues éteint l’action publique pour les faits couverts.",
+      "guide": "/posts/cumcum-01-dividende-mecanisme/"
+    },
+    {
       sigle: 'Provision comptable', nom: 'Passif au montant ou à l’échéance incertain',
       def: 'Au sens d’IAS 37, passif dont le montant ou l’échéance est incertain. Sa comptabilisation suppose une obligation actuelle issue d’un événement passé, une sortie probable de ressources et une estimation fiable du montant. La charge et le paiement peuvent intervenir à des dates différentes. Les indemnités de cessation d’emploi relèvent d’IAS 19.',
       guide: '/posts/barclays-ia-preuves-suppressions-postes/',
@@ -1163,6 +1187,88 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "retenue-a-la-source": {
+    "articles": [
+      {
+        "label": "Cum-cum : l’impôt sur le dividende devient une marge",
+        "href": "/posts/cumcum-01-dividende-mecanisme/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Conseil d’État, avis du 27 janvier 2025",
+        "href": "https://www.conseil-etat.fr/avis-consultatifs/derniers-avis-rendus/au-gouvernement/avis-portant-sur-un-projet-de-dispositif-renforce-concernant-l-application-de-la-retenue-a-la-source-aux-operations-d-arbitrage-de-dividende-dites",
+        "detail": "Point 1 et présentation : retenue sur les dividendes transfrontaliers ; avis sur un projet, distinct du texte ensuite adopté.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "beneficiaire-effectif"
+    ]
+  },
+  "pret-de-titres": {
+    "articles": [
+      {
+        "label": "Cum-cum : l’impôt sur le dividende devient une marge",
+        "href": "/posts/cumcum-01-dividende-mecanisme/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "BCE, prêt de titres, 8 décembre 2016",
+        "href": "https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/securities_lending.en.html",
+        "detail": "Transfert temporaire, garanties, rémunération et usages de marché. Son ancien délai de règlement n’est pas repris.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "trs",
+      "beneficiaire-effectif"
+    ]
+  },
+  "beneficiaire-effectif": {
+    "articles": [
+      {
+        "label": "Cum-cum : l’impôt sur le dividende devient une marge",
+        "href": "/posts/cumcum-01-dividende-mecanisme/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "DGFiP, bénéficiaire effectif et dividendes, 16 mars 2026",
+        "href": "https://bofip.impots.gouv.fr/bofip/14878-PGP.html/identifiant=BOI-INT-DG-20-20-20-30-20260316",
+        "detail": "Paragraphe 30 : droit d’utiliser le revenu et d’en jouir, obligations de retransmission et conditions de la convention fiscale.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "retenue-a-la-source",
+      "trs"
+    ]
+  },
+  "cjip": {
+    "articles": [
+      {
+        "label": "Cum-cum : l’impôt sur le dividende devient une marge",
+        "href": "/posts/cumcum-01-dividende-mecanisme/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "PNF, convention Crédit Agricole CIB du 5 septembre 2025",
+        "href": "https://www.justice.gouv.fr/sites/default/files/2025-09/CJIP_CACIB_20250905.pdf",
+        "detail": "Paragraphes 57 à 61 : obligations, exécution et absence d’effets d’une condamnation.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "retenue-a-la-source"
+    ]
+  },
   "rehaussement-de-credit": {"articles": [{"label": "Crédit privé : la porte des assureurs", "href": "/posts/credit-prive-porte-assureurs-rated-feeders/", "detail": "Rangs des créances, flux disponibles et traitement prudentiel des rated feeders.", "kind": "article"}], "sources": [{"label": "Fitch, Feeder Fund Debt Rating Criteria, 24 septembre 2025", "href": "https://assets.fitchratings.com/downloadFile?reportType=report&sfReport=false&slug=fund-asset-managers/feeder-fund-debt-rating-criteria-24-09-2025", "detail": "Pages 5 à 7 : rehaussement, liquidité, dette du fonds maître et allocation des flux. Méthodologie générale.", "kind": "source"}, {"label": "NAIC, SSAP 26, version applicable en janvier 2025", "href": "https://content.naic.org/sites/default/files/inline-files/SSAP%20No.pdf", "detail": "Paragraphes 6 et 10 : relation de créancier, participations sous-jacentes et protection substantielle contre les pertes.", "kind": "source"}, {"label": "SEC / Investor.gov, ABCs of Credit Ratings, 12 octobre 2017", "href": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated-8", "detail": "Champ du risque de crédit et distinction avec prix de marché et liquidité.", "kind": "source"}], "related": ["rated-feeder-note", "clo", "rbc"], "guides": [{"label": "Lire les CLO et les prêts à effet de levier", "href": "/guides/lire-les-clo-et-prets-a-effet-de-levier/", "kind": "guide"}]},
   "rated-feeder-note": {"articles": [{"label": "Crédit privé : la porte des assureurs", "href": "/posts/credit-prive-porte-assureurs-rated-feeders/", "detail": "Rangs des créances, flux disponibles et traitement prudentiel des rated feeders.", "kind": "article"}], "sources": [{"label": "Fitch, Feeder Fund Debt Rating Criteria, 24 septembre 2025", "href": "https://assets.fitchratings.com/downloadFile?reportType=report&sfReport=false&slug=fund-asset-managers/feeder-fund-debt-rating-criteria-24-09-2025", "detail": "Pages 5 à 7 : rehaussement, liquidité, dette du fonds maître et allocation des flux. Méthodologie générale.", "kind": "source"}, {"label": "NAIC, SSAP 26, version applicable en janvier 2025", "href": "https://content.naic.org/sites/default/files/inline-files/SSAP%20No.pdf", "detail": "Paragraphes 6 et 10 : relation de créancier, participations sous-jacentes et protection substantielle contre les pertes.", "kind": "source"}, {"label": "SEC / Investor.gov, ABCs of Credit Ratings, 12 octobre 2017", "href": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated-8", "detail": "Champ du risque de crédit et distinction avec prix de marché et liquidité.", "kind": "source"}], "related": ["rehaussement-de-credit", "rbc", "nav"]},
   "wmt": {"articles": [{"label": "Minerai de fer : le prix de l’attente", "href": "/posts/minerai-fer-prix-attente-fortescue-cmrg/", "kind": "article"}], "sources": [{"label": "OCDE, projet de consultation sur les produits minéraux, 2017", "href": "https://documents.worldbank.org/curated/en/775571485262636835/pdf/112221-WP-PUBLIC-ABSTRACT-SENT-23-1-2017-10-50-11-OECDmineralproductstradedinintermediateformsdiscussi.pdf", "detail": "PDF p. 40 / imprimée 36, encadré sur les prix : bases humide et sèche. Projet de consultation hébergé par la Banque mondiale.", "kind": "source"}, {"label": "Fortescue, rapport annuel FY26", "href": "https://edge.sitecorecloud.io/fortescue17114-fortescueeb60-productionbbdb-8be5/media/project/fortescueportal/shared/documents/regulatory/asx-announcements/fy26-annual-report_-app4e_updated.pdf", "detail": "PDF p. 42 / imprimée 39 : coût livré en $/wmt et $/dmt ; glossaire, PDF p. 280 et 282, dmt et wmt.", "kind": "source"}], "related": ["dmt", "c1"]},
@@ -1307,7 +1413,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   trs: {
     intuition: 'Transférer la performance d’un prêt ajoute une promesse de paiement dont il faut apprécier la solidité.',
-    articles: [{ label: 'Barclays : crédit privé et risque des TRS', href: '/posts/barclays-credit-prive-trs-risque/', kind: 'article' }],
+    articles: [{ label: 'Barclays : crédit privé et risque des TRS', href: '/posts/barclays-credit-prive-trs-risque/', kind: 'article' }, {"label": "Cum-cum : l’impôt sur le dividende devient une marge", "href": "/posts/cumcum-01-dividende-mecanisme/", "kind": "article"}],
     guides: [{ label: 'Lire les swaps de taux', href: '/guides/lire-les-swaps-de-taux/', detail: 'Repères sur les dérivés, la compensation et les marges ; les flux d’un TRS portent sur le rendement total.', kind: 'guide' }],
     sources: [
       { label: 'ESMA, SFTR : définition du TRS', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-3-definitions', detail: 'Article 3, point 18 : revenus, variations de prix et pertes de crédit. Définition européenne du produit.', kind: 'source' },

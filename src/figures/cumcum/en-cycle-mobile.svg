@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cumcum-en-cycle-m-title cumcum-en-cycle-m-desc" viewBox="0 0 420 950" style="width:100%;height:auto" class="l0g-cumcum-svg">
+<title id="cumcum-en-cycle-m-title">The shares change hands</title><desc id="cumcum-en-cycle-m-desc">Temporary transfer before the ex-date, dividend entitlement at the intermediary, payment, and unwind. Economic exposure may be retained by contract. Conceptual diagram, not an actual trade or calendar.</desc>
+<rect id="cumcum-en-cycle-m-frame" x="0" y="0" width="420" height="950" rx="8" fill="var(--color-ink)"/>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="30" fill="var(--color-signal)" font-family="l0g CumCum" font-size="17" font-weight="700" text-anchor="start">l0g / CUM-CUM / 01</text>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="66" fill="var(--color-paper)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">The shares change hands</text>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="106" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">One sequence, distinct dates</text>
+<rect id="cumcum-en-cycle-m-card-step-0" x="80" y="138" width="320" height="124" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="169" fill="var(--color-amber)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">01</text>
+<text data-panel="cumcum-en-cycle-m-card-step-0" x="96" y="166" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="700" text-anchor="start">BEFORE</text>
+<text data-panel="cumcum-en-cycle-m-card-step-0" x="96" y="198" fill="var(--color-signal)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">Investor</text>
+<text data-panel="cumcum-en-cycle-m-card-step-0" x="96" y="225" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Temporary transfer</text>
+<text data-panel="cumcum-en-cycle-m-card-step-0" x="96" y="248" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">of the shares</text>
+<path d="M 42 189 L 42 271" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 38.1500 264.0000 L 42 271 L 45.8500 264.0000" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="cumcum-en-cycle-m-card-step-1" x="80" y="276" width="320" height="124" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="307" fill="var(--color-amber)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">02</text>
+<text data-panel="cumcum-en-cycle-m-card-step-1" x="96" y="304" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="700" text-anchor="start">EX-DATE</text>
+<text data-panel="cumcum-en-cycle-m-card-step-1" x="96" y="336" fill="var(--color-amber)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">Intermediary</text>
+<text data-panel="cumcum-en-cycle-m-card-step-1" x="96" y="363" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">The dividend right</text>
+<text data-panel="cumcum-en-cycle-m-card-step-1" x="96" y="386" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">detaches from the share</text>
+<path d="M 42 327 L 42 409" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 38.1500 402.0000 L 42 409 L 45.8500 402.0000" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="cumcum-en-cycle-m-card-step-2" x="80" y="414" width="320" height="124" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="445" fill="var(--color-amber)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">03</text>
+<text data-panel="cumcum-en-cycle-m-card-step-2" x="96" y="442" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="700" text-anchor="start">PAYMENT</text>
+<text data-panel="cumcum-en-cycle-m-card-step-2" x="96" y="474" fill="var(--color-amber)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">Intermediary</text>
+<text data-panel="cumcum-en-cycle-m-card-step-2" x="96" y="501" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">The gross dividend</text>
+<text data-panel="cumcum-en-cycle-m-card-step-2" x="96" y="524" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">is received</text>
+<path d="M 42 465 L 42 547" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 38.1500 540.0000 L 42 547 L 45.8500 540.0000" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="cumcum-en-cycle-m-card-step-3" x="80" y="552" width="320" height="124" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="583" fill="var(--color-amber)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">04</text>
+<text data-panel="cumcum-en-cycle-m-card-step-3" x="96" y="580" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="700" text-anchor="start">UNWIND</text>
+<text data-panel="cumcum-en-cycle-m-card-step-3" x="96" y="612" fill="var(--color-signal)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">Investor</text>
+<text data-panel="cumcum-en-cycle-m-card-step-3" x="96" y="639" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Shares returned;</text>
+<text data-panel="cumcum-en-cycle-m-card-step-3" x="96" y="662" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">contractual settlements</text>
+<rect id="cumcum-en-cycle-m-card-contract" x="20" y="704" width="380" height="70" rx="8" fill="var(--color-surface-2)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="cumcum-en-cycle-m-card-contract" x="36" y="733" fill="var(--color-accent)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Economic exposure can be</text>
+<text data-panel="cumcum-en-cycle-m-card-contract" x="36" y="757" fill="var(--color-accent)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">maintained through a contract.</text>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="814" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="700" text-anchor="start">INCOME ROUTE</text>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="845" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Company → intermediary → investor</text>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="872" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Income follows the contractual terms.</text>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="897" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Educational drawing, no time scale.</text>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="918" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Collateral and custody chain omitted.</text>
+<text data-panel="cumcum-en-cycle-m-frame" x="20" y="939" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">CACIB CJIP; CE; SEC [S1, S3, S5].</text>
+</svg>

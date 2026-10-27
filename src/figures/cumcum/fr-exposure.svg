@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cumcum-fr-exposure-d-title cumcum-fr-exposure-d-desc" viewBox="0 0 1000 650" style="width:100%;height:auto" class="l0g-cumcum-svg">
+<title id="cumcum-fr-exposure-d-title">Le titre et sa performance se séparent</title><desc id="cumcum-fr-exposure-d-desc">Schéma de contrat : l’intermédiaire détient le titre et reçoit le dividende, un contrat transmet la variation du prix et une composante liée au dividende à l’investisseur. La composante de financement et les pertes éventuelles créent des flux inverses. La qualification fiscale dépend des engagements et du droit applicable.</desc>
+<rect id="cumcum-fr-exposure-d-frame" x="0" y="0" width="1000" height="650" rx="8" fill="var(--color-ink)"/>
+<text data-panel="cumcum-fr-exposure-d-frame" x="24" y="30" fill="var(--color-signal)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">l0g / CUM-CUM / 03</text>
+<text data-panel="cumcum-fr-exposure-d-frame" x="24" y="74" fill="var(--color-paper)" font-family="l0g CumCum" font-size="30" font-weight="700" text-anchor="start">Le titre et sa performance se séparent</text>
+<text data-panel="cumcum-fr-exposure-d-frame" x="24" y="112" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="start">Un contrat transmet une exposition économique</text>
+<rect id="cumcum-fr-exposure-d-card-property" x="24" y="145" width="952" height="150" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="cumcum-fr-exposure-d-card-property" x="44" y="179" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">CIRCUIT DE PROPRIÉTÉ ET DU DIVIDENDE</text>
+<text data-panel="cumcum-fr-exposure-d-card-property" x="44" y="234" fill="var(--color-paper)" font-family="l0g CumCum" font-size="26" font-weight="700" text-anchor="start">Société émettrice</text>
+<text data-panel="cumcum-fr-exposure-d-card-property" x="750" y="234" fill="var(--color-amber)" font-family="l0g CumCum" font-size="26" font-weight="700" text-anchor="start">Intermédiaire</text>
+<text data-panel="cumcum-fr-exposure-d-card-property" x="750" y="271" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="start">Détenteur du titre</text>
+<path d="M 316 225 L 720 225" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 713.0000 228.8500 L 720 225 L 713.0000 221.1500" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="cumcum-fr-exposure-d-card-property" x="518" y="210" fill="var(--color-amber)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="middle">Dividende</text>
+<path d="M 853 299 L 853 319" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 849.1500 312.0000 L 853 319 L 856.8500 312.0000" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="cumcum-fr-exposure-d-card-contract" x="24" y="326" width="952" height="188" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="cumcum-fr-exposure-d-card-contract" x="44" y="359" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">CIRCUIT CONTRACTUEL</text>
+<text data-panel="cumcum-fr-exposure-d-card-contract" x="44" y="413" fill="var(--color-signal)" font-family="l0g CumCum" font-size="26" font-weight="700" text-anchor="start">Investisseur</text>
+<text data-panel="cumcum-fr-exposure-d-card-contract" x="44" y="449" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="start">Exposition reçue</text>
+<text data-panel="cumcum-fr-exposure-d-card-contract" x="756" y="413" fill="var(--color-amber)" font-family="l0g CumCum" font-size="25" font-weight="700" text-anchor="start">Intermédiaire</text>
+<text data-panel="cumcum-fr-exposure-d-card-contract" x="520" y="388" fill="var(--color-signal)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="middle">Variation du prix + composante dividende</text>
+<path d="M 728 405 L 310 405" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 317.0000 401.1500 L 310 405 L 317.0000 408.8500" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 310 461 L 728 461" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5"/>
+<path d="M 721.0000 464.8500 L 728 461 L 721.0000 457.1500" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="cumcum-fr-exposure-d-card-contract" x="520" y="497" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="middle">Financement / pertes selon contrat</text>
+<text data-panel="cumcum-fr-exposure-d-frame" x="24" y="560" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="start">Exposition économique et bénéficiaire effectif : analyses distinctes.</text>
+<text data-panel="cumcum-fr-exposure-d-frame" x="24" y="594" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="start">Le droit d’utiliser le revenu et l’obligation de reversement comptent.</text>
+<text data-panel="cumcum-fr-exposure-d-frame" x="24" y="628" fill="var(--color-muted)" font-family="l0g CumCum" font-size="22" font-weight="400" text-anchor="start">Contrat simplifié ; garanties omises. CJIP §23 ; CE ; BOFiP §30 [S1, S3, S8].</text>
+</svg>

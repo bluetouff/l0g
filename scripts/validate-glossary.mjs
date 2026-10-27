@@ -19,6 +19,39 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Tax terms retain their legal scope and stay short, sourced definitions.
+const cumCumArticleFr = '/posts/cumcum-01-dividende-mecanisme/';
+const cumCumArticleEn = '/en/analysis/cum-cum-01-dividend-mechanism/';
+for (const slug of ['retenue-a-la-source', 'pret-de-titres', 'beneficiaire-effectif', 'cjip']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: sourced bilingual definitions required`);
+  assert.equal(fr.reference, undefined);
+  assert.equal(fr.referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.equal(fr.guide, cumCumArticleFr);
+  assert.equal(en.guide, cumCumArticleEn);
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  for (const [entry, article] of [[fr, cumCumArticleFr], [en, cumCumArticleEn]]) {
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert(entry.atlas.sources.every(source => ['https://www.justice.gouv.fr', 'https://www.conseil-etat.fr', 'https://www.ecb.europa.eu', 'https://bofip.impots.gouv.fr'].includes(new URL(source.href).origin)));
+    assert(!entry.def.includes('—'));
+  }
+  for (const neighbor of fr.atlas.related) {
+    assert(glossaryEntries.some(entry => entry.slug === neighbor));
+    assert(glossaryAtlasEnBySlug.has(neighbor));
+  }
+}
+for (const [entry, article] of [[glossaryEntries.find(item => item.slug === 'trs'), cumCumArticleFr], [glossaryAtlasEnBySlug.get('trs'), cumCumArticleEn]]) {
+  assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  assert.equal(entry.atlas.sources.length, 2);
+  assert.deepEqual(entry.atlas.related, ['risque-de-contrepartie', 'ensemble-de-compensation', 'notionnel']);
+}
+assert.equal(glossaryEntries.find(item => item.slug === 'trs').guide, '/posts/barclays-credit-prive-trs-risque/');
+assert.equal(glossaryAtlasEnBySlug.get('trs').guide, '/en/analysis/barclays-private-credit-trs-risk/');
+
 // Feeder debt remains a sourced short definition; cash and capital follow distinct contracts.
 const feederArticleFr = '/posts/credit-prive-porte-assureurs-rated-feeders/';
 const feederArticleEn = '/en/analysis/private-credit-route-insurers-rated-feeders/';
@@ -411,7 +444,8 @@ for (const [slug, sourceUrls] of [
   assert.deepEqual(fr.atlas.related, en.atlas.related);
   for (const [entry, article, terms] of [[fr, '/posts/barclays-credit-prive-trs-risque/', glossaryEntries], [en, '/en/analysis/barclays-private-credit-trs-risk/', glossaryAtlasEn]]) {
     assert.equal(entry.guide, article);
-    assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    const articles = slug === 'trs' ? [article, entry === fr ? cumCumArticleFr : cumCumArticleEn] : [article];
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), articles);
     assert.doesNotMatch(entry.def, /[—]/u);
     for (const source of entry.atlas.sources) {
       const url = new URL(source.href);
@@ -919,7 +953,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 331, 'Le corpus anglais ajoute les deux fiches de structure de crédit aux 329 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 335, 'Le corpus anglais ajoute quatre fiches sur la fiscalité des dividendes aux 331 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1120,8 +1154,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 719, 'Le corpus ajoute les deux bases de masse minière aux 717 définitions uniques');
-assert.equal(glossaryAtlasEntries.length, 321, 'Le graphe Atlas ajoute les deux fiches de structure de crédit aux 319 nœuds existants');
+assert.equal(glossaryEntries.length, 723, 'Le corpus ajoute quatre définitions sur la fiscalité des dividendes aux 719 définitions uniques');
+assert.equal(glossaryAtlasEntries.length, 325, 'Le graphe Atlas ajoute quatre fiches sur la fiscalité des dividendes aux 321 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1543,7 +1577,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 903, 'Le graphe Atlas ajoute six relations de structure de crédit aux 897 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 909, 'Le graphe Atlas ajoute six relations sur la fiscalité des dividendes aux 903 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

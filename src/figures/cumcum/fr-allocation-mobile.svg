@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cumcum-fr-allocation-m-title cumcum-fr-allocation-m-desc" viewBox="0 0 420 930" style="width:100%;height:auto" class="l0g-cumcum-svg">
+<title id="cumcum-fr-allocation-m-title">100 € changent de répartition</title><desc id="cumcum-fr-allocation-m-desc">Simulation : retenue 15 %, restitution 90 %. Référence : investisseur 85, fisc 15. Montage : investisseur 90, intermédiaire 10, retenue 0. Gain investisseur 5 et rétention intermédiaire 10 égalent la retenue 15.</desc>
+<rect id="cumcum-fr-allocation-m-frame" x="0" y="0" width="420" height="930" rx="8" fill="var(--color-ink)"/>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="30" fill="var(--color-signal)" font-family="l0g CumCum" font-size="17" font-weight="700" text-anchor="start">l0g / CUM-CUM / 02</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="66" fill="var(--color-paper)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">100 € changent</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="94" fill="var(--color-paper)" font-family="l0g CumCum" font-size="22" font-weight="700" text-anchor="start">de répartition</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="137" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Modèle : retenue 15 % ; restitution 90 %.</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="191" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="700" text-anchor="start">PERCEPTION DIRECTE</text>
+<rect id="cumcum-fr-allocation-m-card-bar-0-0" x="20.0" y="216" width="323.0" height="51" rx="8" fill="var(--color-signal)"/>
+<text data-panel="cumcum-fr-allocation-m-card-bar-0-0" x="34.0" y="249.5" fill="var(--color-ink)" font-family="l0g CumCum" font-size="23" font-weight="700" text-anchor="start">85 €</text>
+<rect id="cumcum-fr-allocation-m-card-bar-0-1" x="343.0" y="216" width="57.0" height="51" rx="8" fill="var(--color-accent)"/>
+<text data-panel="cumcum-fr-allocation-m-card-bar-0-1" x="371.5" y="249.5" fill="var(--color-ink)" font-family="l0g CumCum" font-size="20" font-weight="700" text-anchor="middle">15</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="301" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Investisseur : 85 €</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="329" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Retenue française : 15 €</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="416" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="700" text-anchor="start">AVEC INTERPOSITION</text>
+<rect id="cumcum-fr-allocation-m-card-bar-1-0" x="20.0" y="441" width="342.0" height="51" rx="8" fill="var(--color-signal)"/>
+<text data-panel="cumcum-fr-allocation-m-card-bar-1-0" x="34.0" y="474.5" fill="var(--color-ink)" font-family="l0g CumCum" font-size="23" font-weight="700" text-anchor="start">90 €</text>
+<rect id="cumcum-fr-allocation-m-card-bar-1-1" x="362.0" y="441" width="38.0" height="51" rx="8" fill="var(--color-amber)"/>
+<text data-panel="cumcum-fr-allocation-m-card-bar-1-1" x="381.0" y="474.5" fill="var(--color-ink)" font-family="l0g CumCum" font-size="20" font-weight="700" text-anchor="middle">10</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="526" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Investisseur : 90 €</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="554" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Intermédiaire : 10 € bruts</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="582" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Retenue modélisée : 0 €</text>
+<rect id="cumcum-fr-allocation-m-card-equation" x="20" y="634" width="380" height="154" rx="8" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="cumcum-fr-allocation-m-card-equation" x="36" y="665" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="700" text-anchor="start">L’ÉCART DE RETENUE SE PARTAGE</text>
+<text data-panel="cumcum-fr-allocation-m-card-equation" x="36" y="713" fill="var(--color-paper)" font-family="l0g CumCum" font-size="31" font-weight="700" text-anchor="start">5 + 10 = 15 €</text>
+<text data-panel="cumcum-fr-allocation-m-card-equation" x="36" y="747" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Gain investisseur + montant conservé</text>
+<text data-panel="cumcum-fr-allocation-m-card-equation" x="36" y="771" fill="var(--color-paper)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">par l’intermédiaire = retenue évitée</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="833" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Les 10 € précèdent frais et autres impôts.</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="858" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">Modèle l0g : mécanisme historique,</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="883" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">hors redressements ; aucune moyenne.</text>
+<text data-panel="cumcum-fr-allocation-m-frame" x="20" y="908" fill="var(--color-muted)" font-family="l0g CumCum" font-size="17" font-weight="400" text-anchor="start">CJIP CACIB, 05.09.2025, §34 [S1].</text>
+</svg>

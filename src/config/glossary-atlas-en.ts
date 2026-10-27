@@ -209,6 +209,128 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+    "slug": "retenue-a-la-source",
+    "sigle": "Withholding tax",
+    "nom": "Tax collected when income is paid",
+    "def": "Tax deducted when income is paid and remitted to the tax authority by the party responsible for collection. For a cross-border dividend, its application and rate depend on the recipient, domestic law and the relevant tax treaty. A treaty may provide a reduced rate or an exemption subject to its conditions.",
+    "guide": "/en/analysis/cum-cum-01-dividend-mechanism/",
+    "sectionTitle": "Banking & balance-sheet management",
+    "accent": "var(--color-topic-blue)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "articles": [
+        {
+          "label": "Cum-cum: a dividend tax becomes a trading margin",
+          "href": "/en/analysis/cum-cum-01-dividend-mechanism/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Conseil d’État, opinion of 27 January 2025",
+          "href": "https://www.conseil-etat.fr/avis-consultatifs/derniers-avis-rendus/au-gouvernement/avis-portant-sur-un-projet-de-dispositif-renforce-concernant-l-application-de-la-retenue-a-la-source-aux-operations-d-arbitrage-de-dividende-dites",
+          "detail": "Paragraph 1 and introduction: withholding on cross-border dividends; an opinion on a proposal, distinct from the subsequent enacted legislation.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "beneficiaire-effectif"
+      ]
+    }
+  },
+  {
+    "slug": "pret-de-titres",
+    "sigle": "Securities lending",
+    "nom": "Temporary transfer of securities under a return agreement",
+    "def": "An arrangement in which a lender temporarily transfers shares or bonds to a borrower, who undertakes to return equivalent securities. The borrower generally provides collateral and pays a fee. Lending can support settlement, market making or hedging; collateral and income-related payments depend on the contract.",
+    "guide": "/en/analysis/cum-cum-01-dividend-mechanism/",
+    "sectionTitle": "Banking & balance-sheet management",
+    "accent": "var(--color-topic-blue)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "articles": [
+        {
+          "label": "Cum-cum: a dividend tax becomes a trading margin",
+          "href": "/en/analysis/cum-cum-01-dividend-mechanism/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "ECB, securities lending, 8 December 2016",
+          "href": "https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/securities_lending.en.html",
+          "detail": "Temporary transfer, collateral, fees and market uses. The page’s historical settlement timing is outside this definition.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "trs",
+        "beneficiaire-effectif"
+      ]
+    }
+  },
+  {
+    "slug": "beneficiaire-effectif",
+    "sigle": "Beneficial owner",
+    "nom": "Tax status tied to the use and enjoyment of income",
+    "def": "In the tax treatment of dividends, a person entitled to use and enjoy the income without a legal or contractual obligation to pass it on. That status depends on the obligations, actual circumstances and conditions of the relevant tax treaty. Legal ownership of the security and exposure to its performance require separate analysis.",
+    "guide": "/en/analysis/cum-cum-01-dividend-mechanism/",
+    "sectionTitle": "Banking & balance-sheet management",
+    "accent": "var(--color-topic-blue)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "articles": [
+        {
+          "label": "Cum-cum: a dividend tax becomes a trading margin",
+          "href": "/en/analysis/cum-cum-01-dividend-mechanism/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "French tax authority, beneficial ownership and dividends, 16 March 2026",
+          "href": "https://bofip.impots.gouv.fr/bofip/14878-PGP.html/identifiant=BOI-INT-DG-20-20-20-30-20260316",
+          "detail": "Paragraph 30: right to use and enjoy income, pass-through obligations and the applicable tax treaty’s conditions.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "retenue-a-la-source",
+        "trs"
+      ]
+    }
+  },
+  {
+    "slug": "cjip",
+    "sigle": "CJIP",
+    "nom": "French judicial public-interest agreement",
+    "def": "A French criminal-procedure settlement agreed by a prosecutor and a legal person in the cases allowed by law, then submitted for judicial approval. It may require a public-interest fine and other obligations. Approval is distinct from a declaration of guilt or a conviction; fulfilling the agreed obligations extinguishes the prosecution for the covered conduct.",
+    "guide": "/en/analysis/cum-cum-01-dividend-mechanism/",
+    "sectionTitle": "Banking & balance-sheet management",
+    "accent": "var(--color-topic-blue)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "articles": [
+        {
+          "label": "Cum-cum: a dividend tax becomes a trading margin",
+          "href": "/en/analysis/cum-cum-01-dividend-mechanism/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "PNF, Crédit Agricole CIB agreement, 5 September 2025",
+          "href": "https://www.justice.gouv.fr/sites/default/files/2025-09/CJIP_CACIB_20250905.pdf",
+          "detail": "Paragraphs 57–61: obligations, performance and procedural status distinct from a conviction.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "retenue-a-la-source"
+      ]
+    }
+  },
   {"slug": "rehaussement-de-credit", "sigle": "Credit enhancement", "nom": "Contractual protection for a debt claim", "def": "Protection for a debt claim through resources or commitments that absorb losses before its holder: subordination, overcollateralisation, a reserve or a guarantee, depending on the structure. Its effect depends on the amount available, payment priority and contractual terms. The security’s rating also takes the portfolio and the wider structure into account.", "guide": "/en/analysis/private-credit-route-insurers-rated-feeders/", "sectionTitle": "Private credit & markets", "accent": "var(--color-accent)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "Private credit: a new route to insurers", "href": "/en/analysis/private-credit-route-insurers-rated-feeders/", "detail": "Debt seniority, available cash flows and prudential treatment of rated feeders.", "kind": "article"}], "sources": [{"label": "Fitch, Feeder Fund Debt Rating Criteria, 24 September 2025", "href": "https://assets.fitchratings.com/downloadFile?reportType=report&sfReport=false&slug=fund-asset-managers/feeder-fund-debt-rating-criteria-24-09-2025", "detail": "Pages 5–7: credit enhancement, liquidity, master-fund debt and cash-flow allocation. General methodology.", "kind": "source"}, {"label": "NAIC, SSAP 26, version effective January 2025", "href": "https://content.naic.org/sites/default/files/inline-files/SSAP%20No.pdf", "detail": "Paragraphs 6 and 10: creditor relationship, underlying equity interests and substantive loss protection.", "kind": "source"}, {"label": "SEC / Investor.gov, ABCs of Credit Ratings, 12 October 2017", "href": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated-8", "detail": "Credit-risk scope and distinction from market price and liquidity.", "kind": "source"}], "related": ["rated-feeder-note", "clo", "rbc"], "guides": [{"label": "Reading CLOs and leveraged loans", "href": "/en/guides/read-clos-and-leveraged-loans/", "kind": "guide"}]}},
   {"slug": "rated-feeder-note", "sigle": "Rated feeder note", "nom": "Rated debt issued by a feeder fund", "def": "Rated debt issued by a feeder vehicle investing in a fund. In a master-fund structure, repayment relies on distributions received after the master fund meets its own obligations. Seniority sets payment priority within the feeder. For a US insurer, capital treatment depends on accounting classification, credit designation and the applicable rules.", "guide": "/en/analysis/private-credit-route-insurers-rated-feeders/", "sectionTitle": "Private credit & markets", "accent": "var(--color-accent)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "Private credit: a new route to insurers", "href": "/en/analysis/private-credit-route-insurers-rated-feeders/", "detail": "Debt seniority, available cash flows and prudential treatment of rated feeders.", "kind": "article"}], "sources": [{"label": "Fitch, Feeder Fund Debt Rating Criteria, 24 September 2025", "href": "https://assets.fitchratings.com/downloadFile?reportType=report&sfReport=false&slug=fund-asset-managers/feeder-fund-debt-rating-criteria-24-09-2025", "detail": "Pages 5–7: credit enhancement, liquidity, master-fund debt and cash-flow allocation. General methodology.", "kind": "source"}, {"label": "NAIC, SSAP 26, version effective January 2025", "href": "https://content.naic.org/sites/default/files/inline-files/SSAP%20No.pdf", "detail": "Paragraphs 6 and 10: creditor relationship, underlying equity interests and substantive loss protection.", "kind": "source"}, {"label": "SEC / Investor.gov, ABCs of Credit Ratings, 12 October 2017", "href": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated-8", "detail": "Credit-risk scope and distinction from market price and liquidity.", "kind": "source"}], "related": ["rehaussement-de-credit", "rbc", "nav"]}},
   {"slug": "wmt", "sigle": "WMT", "nom": "Wet metric tonne", "def": "A unit for the mass of ore including its moisture. Converting wet tonnes to dry tonnes requires the product’s moisture content. Comparing a cost per wet tonne with a price per dry tonne therefore requires a consistent mass basis and a check of the costs included.", "guide": "/en/analysis/iron-ore-price-of-waiting-fortescue-cmrg/", "sectionTitle": "Industry and commodities", "accent": "var(--color-amber)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "Iron ore: the price of waiting", "href": "/en/analysis/iron-ore-price-of-waiting-fortescue-cmrg/", "kind": "article"}], "sources": [{"label": "OECD, mineral product pricing discussion draft, 2017", "href": "https://documents.worldbank.org/curated/en/775571485262636835/pdf/112221-WP-PUBLIC-ABSTRACT-SENT-23-1-2017-10-50-11-OECDmineralproductstradedinintermediateformsdiscussi.pdf", "detail": "PDF p. 40 / printed p. 36, price box: wet and dry mass bases. Consultation draft hosted by the World Bank.", "kind": "source"}, {"label": "Fortescue, FY26 Annual Report", "href": "https://edge.sitecorecloud.io/fortescue17114-fortescueeb60-productionbbdb-8be5/media/project/fortescueportal/shared/documents/regulatory/asx-announcements/fy26-annual-report_-app4e_updated.pdf", "detail": "PDF p. 42 / printed p. 39: delivered cost in $/wmt and $/dmt; glossary on PDF pp. 280 and 282 defines dmt and wmt.", "kind": "source"}], "related": ["dmt", "c1"]}},
@@ -407,7 +529,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'A derivative that passes the total economic performance of a reference asset, including income, price movements and credit losses, to another party in return for a financing payment under the agreed terms. Economic exposure can move while legal ownership stays with the original holder. Protection depends on the promised payments being made.',
     atlas: {
       intuition: 'Passing on a loan’s return introduces another payment promise whose reliability needs to be assessed.',
-      articles: [{ label: 'Barclays: private credit and TRS risk', href: '/en/analysis/barclays-private-credit-trs-risk/', kind: 'article' }],
+      articles: [{ label: 'Barclays: private credit and TRS risk', href: '/en/analysis/barclays-private-credit-trs-risk/', kind: 'article' }, {"label": "Cum-cum: a dividend tax becomes a trading margin", "href": "/en/analysis/cum-cum-01-dividend-mechanism/", "kind": "article"}],
       guides: [{ label: 'Reading interest rate swaps', href: '/en/guides/read-interest-rate-swaps/', detail: 'Background on derivatives, clearing and margin; TRS cash flows cover the total return.', kind: 'guide' }],
       sources: [
         { label: 'ESMA, SFTR: TRS definition', href: 'https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/sftr/article-3-definitions', detail: 'Article 3(18): income, price movements and credit losses. The EU product definition.', kind: 'source' },
