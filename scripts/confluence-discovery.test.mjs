@@ -5,17 +5,27 @@ import test from 'node:test';
 const root = new URL('../', import.meta.url);
 
 test('la confluence 13FLOW reste accessible sans connaître son URL', async () => {
-  const [riskBand, dashboards, sidebarConfig, confluence, navigation] = await Promise.all([
-    readFile(new URL('src/components/RiskBand.astro', root), 'utf8'),
+  const [entry, home, dashboards, sidebarConfig, confluence, navigation] = await Promise.all([
+    readFile(new URL('src/components/ConfluenceEntry.astro', root), 'utf8'),
+    readFile(new URL('src/pages/[...page].astro', root), 'utf8'),
     readFile(new URL('src/pages/dashboards.astro', root), 'utf8'),
     readFile(new URL('src/config/sidebar.ts', root), 'utf8'),
     readFile(new URL('src/pages/confluence.astro', root), 'utf8'),
     readFile(new URL('src/components/SiteNavigation.astro', root), 'utf8'),
   ]);
 
-  assert.match(riskBand, /class="confluence-entry card"/);
-  assert.match(riskBand, /href="\/confluence\/"[\s\S]*Voir toutes les confluences/);
-  assert.match(riskBand, /href="\/methodologie\/13flow\/"/);
+  assert.match(entry, /<aside[^>]+class="confluence-entry card"[^>]+data-pagefind-ignore/);
+  assert.match(entry, /<h2 id="confluence-entry-title">Confluence 13F × Form 4<\/h2>/);
+  assert.match(entry, /href="\/confluence\/"[\s\S]*Voir toutes les confluences/);
+  assert.match(entry, /href="\/methodologie\/13flow\/"/);
+  assert.ok(home.includes("import ConfluenceEntry from '../components/ConfluenceEntry.astro'"),
+    'La page d’accueil doit importer sa carte Confluence autonome');
+  const feedIndex = home.indexOf('id="dernieres-analyses"');
+  const paginationIndex = home.indexOf('<AnalysisPagination');
+  const confluenceIndex = home.indexOf('<ConfluenceEntry');
+  assert.ok(feedIndex >= 0 && paginationIndex > feedIndex && confluenceIndex > paginationIndex,
+    'La carte Confluence doit suivre les analyses et leur pagination');
+  assert.equal((home.match(/<ConfluenceEntry\b/gu) ?? []).length, 1);
 
   assert.match(sidebarConfig, /l0gEntry:\s*\{[\s\S]*href: '\/confluence\/'/);
   assert.match(sidebarConfig, /label: 'Voir les confluences'/);
@@ -25,6 +35,12 @@ test('la confluence 13FLOW reste accessible sans connaître son URL', async () =
   assert.match(navigation, /\{ href: '\/confluence\/', label: 'Signaux croisés'/);
   assert.doesNotMatch(confluence, /<section data-pagefind-ignore>/);
   assert.match(confluence, /<div[^>]+data-pagefind-ignore>/);
+});
+
+test('les tuiles et leur note de méthode restent réunies dans RiskBand', async () => {
+  const riskBand = await readFile(new URL('src/components/RiskBand.astro', root), 'utf8');
+  assert.doesNotMatch(riskBand, /confluence-entry|\/confluence\//);
+  assert.match(riskBand, /<section[^>]+data-pagefind-ignore>[\s\S]*class="risk-tile card[\s\S]*<p class="risk-caveat">[\s\S]*Scores 0-100[\s\S]*<\/section>/);
 });
 
 

@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import type { GetStaticPathsOptions } from 'astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AnalysisPagination from '../components/AnalysisPagination.astro';
+import ConfluenceEntry from '../components/ConfluenceEntry.astro';
 import HomeSidebar from '../components/HomeSidebar.astro';
 import ReadingLibrary from '../components/ReadingLibrary.astro';
 import PostCard from '../components/PostCard.astro';
@@ -63,10 +64,26 @@ const hero = isFirst && homeFeaturedPost ? {
 const feed = isFirst && hero ? items.filter((item) => item.post.id !== hero.post.id) : items;
 const pageHref = (n: number) => (n <= 1 ? '/' : `/${n}/`);
 const needCards = [
-  { title: 'Financement de l’IA', href: '/dossiers/financement-ia/' },
-  { title: 'Suivre un risque', href: '/radar/' },
-  { title: 'Vérifier un chiffre', href: '/preuves/' },
-  { title: 'Crédit privé et assurance', href: '/dossiers/credit-prive-assurance/' },
+  {
+    title: 'Financement de l’IA', href: '/dossiers/financement-ia/',
+    description: 'Capitaux, infrastructures et bilans.', label: 'Dossier', tone: 'signal',
+    icon: 'M9 3v3m6-3v3M9 18v3m6-3v3M3 9h3m-3 6h3m12-6h3m-3 6h3M8 6h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm2 4h4v4h-4Z',
+  },
+  {
+    title: 'Suivre un risque', href: '/radar/',
+    description: 'Indicateurs, sources et signaux croisés.', label: 'Radar', tone: 'accent',
+    icon: 'M21 12a9 9 0 1 1-9-9m5 9a5 5 0 1 1-5-5m0 5 8-8M12 12h.01',
+  },
+  {
+    title: 'Vérifier un chiffre', href: '/preuves/',
+    description: 'Remonter aux données et à la méthode.', label: 'Preuves', tone: 'amber',
+    icon: 'M13 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10Zm0 0v7h7M8 15l3 3 5-5',
+  },
+  {
+    title: 'Crédit privé et assurance', href: '/dossiers/credit-prive-assurance/',
+    description: 'Prêts, assureurs et chaînes de risque.', label: 'Dossier', tone: 'signal',
+    icon: 'M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6ZM8 11h8m-8 4h5',
+  },
 ];
 ---
 
@@ -133,22 +150,9 @@ const needCards = [
     </section>
   )}
 
-  {isFirst && (
-    <section class="home-needs rise" aria-labelledby="home-needs-title">
-      <SectionSignature index="03" eyebrow="choisir une entrée" title="Que cherchez-vous ?" id="home-needs-title" />
-      <nav class="need-grid" aria-label="Choisir une entrée dans l0g">
-        {needCards.map((card) => (
-          <a href={card.href} class="need-card">
-            {card.title}<span aria-hidden="true">↗</span>
-          </a>
-        ))}
-      </nav>
-    </section>
-  )}
-
   <section class="pb-4 latest-feed" id="dernieres-analyses">
     {isFirst
-      ? <SectionSignature index="04" eyebrow="chronologie" title="Les dernières analyses" />
+      ? <SectionSignature index="03" eyebrow="chronologie" title="Les dernières analyses" />
       : <div class="section-heading feed-heading" style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:0.75rem 1rem;margin-bottom:0.9rem">
           <div>
             <p class="mono-label" style="color: var(--color-signal)">// archives</p>
@@ -183,6 +187,32 @@ const needCards = [
     previousLabel="Précédent"
     nextLabel="Suivant"
   />
+
+  {isFirst && (
+    <div class="home-discovery">
+      <ConfluenceEntry />
+      <section class="home-needs rise" aria-labelledby="home-needs-title">
+        <SectionSignature index="04" eyebrow="choisir une entrée" title="Que cherchez-vous ?" id="home-needs-title" />
+        <nav class="need-grid" aria-label="Choisir une entrée dans l0g">
+          {needCards.map((card) => (
+            <a href={card.href} class={`need-card need-card--${card.tone}`}>
+              <span class="need-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                  <path d={card.icon} />
+                </svg>
+              </span>
+              <span class="need-copy">
+                <small>{card.label}</small>
+                <strong>{card.title}</strong>
+                <span class="need-description">{card.description}</span>
+              </span>
+              <span class="need-arrow" aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </nav>
+      </section>
+    </div>
+  )}
 
 </BaseLayout>
 
@@ -259,23 +289,78 @@ const needCards = [
   .home-needs,
   .home-featured,
   .latest-feed { margin-top: 3.4rem; }
-  .need-grid { display: grid; grid-template-columns: 1fr; gap: 0.7rem; }
+  .home-discovery { margin-top: 3.4rem; }
+  .need-grid { display: grid; grid-template-columns: 1fr; gap: 0.85rem; }
   .need-card {
-    display: flex;
+    --need-color: var(--color-signal);
+    display: grid;
+    grid-template-columns: 2.65rem minmax(0, 1fr) 1.65rem;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    min-height: 3.5rem;
-    padding: 0.85rem 1rem;
-    border: 1px solid var(--color-line);
-    border-radius: 5px;
-    background: var(--surface-elevated);
+    gap: 0.8rem;
+    min-height: 8.5rem;
+    padding: 1.15rem;
+    border: 1px solid transparent;
+    border-radius: 16px 4px 16px 16px;
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--need-color) 6%, var(--surface-elevated)), var(--surface-elevated) 80%) padding-box,
+      linear-gradient(135deg, color-mix(in srgb, var(--need-color) 40%, var(--color-line)), var(--color-line) 70%) border-box;
+    box-shadow: inset 0 1px 0 var(--edge-highlight);
     color: var(--color-bright);
-    font-size: 0.9rem;
-    line-height: 1.45;
+    text-decoration: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
   }
-  .need-card span { color: var(--color-signal); }
-  .need-card:hover { border-color: var(--color-signal); }
+  .need-card--accent { --need-color: var(--color-accent); }
+  .need-card--amber { --need-color: var(--color-amber); }
+  .need-icon {
+    display: grid;
+    place-items: center;
+    width: 2.65rem;
+    height: 2.65rem;
+    border: 1px solid color-mix(in srgb, var(--need-color) 25%, var(--color-line));
+    border-radius: 12px 4px 12px 12px;
+    background: color-mix(in srgb, var(--need-color) 8%, transparent);
+    color: var(--need-color);
+  }
+  .need-icon svg { display: block; width: 1.5rem; height: 1.5rem; }
+  .need-copy { min-width: 0; }
+  .need-copy small {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--need-color);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 650;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .need-copy strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .need-description {
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--color-muted);
+    font-size: 0.73rem;
+    line-height: 1.6;
+  }
+  .need-arrow {
+    display: grid;
+    place-items: center;
+    width: 1.65rem;
+    height: 1.65rem;
+    border: 1px solid color-mix(in srgb, var(--need-color) 28%, var(--color-line));
+    border-radius: 50%;
+    color: var(--need-color);
+    font-size: 0.8rem;
+  }
+  .need-card:hover {
+    border-color: var(--need-color);
+    box-shadow: inset 0 1px 0 var(--edge-highlight), var(--shadow-elevated);
+  }
   .need-card:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
   .home-featured .hero-title { hyphens: none; }
   .home-risk {
@@ -285,7 +370,7 @@ const needCards = [
     padding: 1.15rem 0 1.2rem;
   }
   .home-risk .rise { margin-top: 0; margin-bottom: 0; }
-  @media (min-width: 560px) {
+  @media (min-width: 640px) {
     .need-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 520px) {
@@ -294,5 +379,6 @@ const needCards = [
   }
   @media (prefers-reduced-motion: reduce) {
     .home-action:hover { transform: none; }
+    .need-card { transition: none; }
   }
 </style>
