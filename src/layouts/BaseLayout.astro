@@ -148,15 +148,18 @@ const siteJsonLd = {
             </span>
           </a>
 
-          <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Basculer le thème clair ou sombre" title="Thème clair / sombre" aria-pressed="false">
-            <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="4" />
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-            </svg>
-            <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          </button>
+          <div class="header-tools">
+            <slot name="header-tools" />
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Basculer le thème clair ou sombre" title="Thème clair / sombre" aria-pressed="false">
+              <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+              </svg>
+              <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            </button>
+          </div>
 
           <div class="header-signal" aria-hidden="true" role="presentation">
             <svg viewBox="0 0 480 46" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -293,8 +296,13 @@ const siteJsonLd = {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      .theme-toggle {
+      .header-tools {
         grid-area: theme;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .theme-toggle {
         display: inline-flex;
         width: 2.15rem;
         height: 2.15rem;
@@ -336,6 +344,8 @@ const siteJsonLd = {
         .header-signal { display: none; }
         .brand { max-width: calc(100vw - 5.5rem); gap: 0.55rem; }
         .brand-tag { max-width: calc(100vw - 9rem); font-size: 0.66rem; letter-spacing: 0.015em; }
+        .header-top:has(:global(.reading-library--header)) .brand-tag,
+        .header-top:has(:global(.reading-library--header)) .brand-sep { display: none; }
       }
       @media (max-width: 360px) {
         .brand-sep,

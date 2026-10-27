@@ -94,6 +94,7 @@ const needCards = [
   ogImageAlt={isFirst ? 'l0g : les angles morts de la finance, économie, marchés et risques sur un dégradé turquoise, rose et ambre' : undefined}
 >
   {isFirst && <HomeSidebar slot="sidebar" />}
+  {isFirst && <ReadingLibrary slot="header-tools" lang="fr" variant="header" />}
 
   {isFirst && (
     <section class="home-intro">
@@ -112,7 +113,6 @@ const needCards = [
         <a href="/atlas/" class="home-action primary">Explorer les atlas</a>
         <a href="#dernieres-analyses" class="home-action">Lire les dernières analyses</a>
       </div>
-      <div class="mt-4" data-pagefind-ignore><ReadingLibrary lang="fr" /></div>
     </section>
   )}
 

@@ -1,14 +1,22 @@
 ---
 import styles from '../styles/reading-library.css?url&no-inline';
-interface Props { lang?: 'fr' | 'en'; articleTitle?: string; articlePath?: string; }
-const { lang = 'fr', articleTitle, articlePath = Astro.url.pathname } = Astro.props;
+interface Props { lang?: 'fr' | 'en'; articleTitle?: string; articlePath?: string; variant?: 'inline' | 'header'; }
+const { lang = 'fr', articleTitle, articlePath = Astro.url.pathname, variant = 'inline' } = Astro.props;
 const en = lang === 'en';
+const readingListLabel = en ? 'My reading list' : 'Mes lectures';
 ---
 
-<div class="reading-library" data-reading-library data-lang={en ? 'en' : undefined} data-styles={styles}
+<div class:list={['reading-library', { 'reading-library--header': variant === 'header' }]} data-reading-library data-lang={en ? 'en' : undefined} data-styles={styles}
   data-article-title={articleTitle} data-article-path={articleTitle ? articlePath : undefined} data-pagefind-ignore hidden>
   {articleTitle && <button type="button" data-library-save aria-pressed="false">{en ? 'Save for later' : 'À lire plus tard'}</button>}
-  <button type="button" data-library-open aria-haspopup="dialog">{en ? 'My reading list' : 'Mes lectures'}</button>
+  <button type="button" data-library-open aria-haspopup="dialog" title={variant === 'header' ? readingListLabel : undefined}>
+    {variant === 'header' ? <>
+      <svg class="reading-library-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M6 3.75h12v16.5L12 16l-6 4.25V3.75Z" />
+      </svg>
+      <span class="reading-library-label">{readingListLabel}</span>
+    </> : readingListLabel}
+  </button>
   <span class="reading-library-status" data-library-status role="status"></span>
   <dialog class="reading-library-dialog" aria-label={en ? 'My reading list' : 'Mes lectures'}>
     <header>
