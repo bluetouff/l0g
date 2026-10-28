@@ -34,6 +34,8 @@ function inspectNode(node, route, file) {
     for (const pattern of bannedPatterns) {
       // This exact financial term names the lender's recourse perimeter, not a rhetorical contrast.
       if (route === '/glossaire/financement-sans-recours/' && node.tagName === 'h1' && heading === 'Financement sans recours') continue;
+      // This exact share-class term describes voting rights, not a rhetorical contrast.
+      if (route === '/glossaire/action-sans-droit-de-vote/' && node.tagName === 'h1' && heading === 'Action sans droit de vote') continue;
       if (pattern.regex.test(heading)) {
         violations.push({ route, file, tag: node.tagName, heading, rule: pattern.label });
         break;

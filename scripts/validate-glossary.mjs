@@ -19,6 +19,30 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Meta financing definitions keep voting rights, ownership and settlement distinct.
+const metaFinancingFr = '/posts/meta-financement-actions-c-droits-vote/';
+const metaFinancingEn = '/en/analysis/meta-financing-class-c-voting-rights/';
+for (const slug of ['forward-sur-actions', 'dilution-du-capital', 'action-sans-droit-de-vote']) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(en[0].robots, 'noindex,follow');
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.deepEqual(fr[0].atlas.sources.map(link => link.href), en[0].atlas.sources.map(link => link.href));
+  assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  for (const [entry, article] of [[fr[0], metaFinancingFr], [en[0], metaFinancingEn]]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert(entry.atlas.sources.every(link => new URL(link.href).origin === 'https://www.sec.gov'));
+    assert.doesNotMatch(entry.def, /[—]/u);
+  }
+}
+for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === 'capex'), metaFinancingFr], [glossaryAtlasEnBySlug.get('capex'), metaFinancingEn]]) {
+  assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  assert.equal(entry.atlas.articles.length, 4);
+}
+
 // Service continuity and card acquiring retain distinct operational scopes.
 const blackoutArticleFr = '/posts/blackout-heures-autonomie-financement/';
 const blackoutArticleEn = '/en/analysis/blackouts-who-pays-service-continuity/';
@@ -387,7 +411,7 @@ for (const [slug, sources] of [
   assert.notEqual(fr[0].def, en[0].def); assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
   for (const [entry, article, terms] of [[fr[0], '/posts/tsmc-puces-data-centers-risque-electrique/', glossaryEntries], [en[0], '/en/analysis/tsmc-chip-demand-data-center-power-risk/', glossaryAtlasEn]]) {
     const expectedArticles = slug === 'capex'
-      ? [article, terms === glossaryEntries ? '/posts/nebius-citi-credit-364-jours-gpu/' : '/en/analysis/nebius-citi-364-day-gpu-credit/', terms === glossaryEntries ? '/posts/aimants-terres-rares-gm-vac-usine-contrat/' : '/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/']
+      ? [article, terms === glossaryEntries ? '/posts/nebius-citi-credit-364-jours-gpu/' : '/en/analysis/nebius-citi-364-day-gpu-credit/', terms === glossaryEntries ? '/posts/aimants-terres-rares-gm-vac-usine-contrat/' : '/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/', terms === glossaryEntries ? metaFinancingFr : metaFinancingEn]
       : [article, terms === glossaryEntries ? heliumWaferArticleFr : heliumWaferArticleEn];
     assert.equal(entry.guide, article); assert.deepEqual(entry.atlas.articles.map(link => link.href), expectedArticles);
     assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
@@ -1026,7 +1050,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 338, 'Le corpus anglais ajoute deux fiches de continuité et de paiement aux 336 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 341, 'Le corpus anglais ajoute trois définitions de financement et de vote aux 338 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1227,8 +1251,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 726, 'Le corpus ajoute deux définitions de continuité et de paiement aux 724 définitions existantes');
-assert.equal(glossaryAtlasEntries.length, 328, 'Le graphe Atlas ajoute deux fiches de continuité et de paiement aux 326 nœuds existants');
+assert.equal(glossaryEntries.length, 729, 'Le corpus ajoute trois définitions de financement et de vote aux 726 définitions existantes');
+assert.equal(glossaryAtlasEntries.length, 331, 'Le graphe Atlas ajoute trois définitions de financement et de vote aux 328 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1650,7 +1674,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 915, 'Le graphe Atlas ajoute quatre relations de continuité et de paiement aux 911 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 921, 'Le graphe Atlas ajoute six relations de financement et de vote aux 915 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

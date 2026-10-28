@@ -56,3 +56,18 @@ test('the exact non-recourse glossary term is allowed while surrounding contrast
     assert.equal(blocked.status, 1, `${candidateRoute} ${tag}: ${blocked.stderr}`);
   }
 });
+
+test('the exact non-voting share glossary term is allowed while surrounding contrasts remain blocked', async () => {
+  const route = 'glossaire/action-sans-droit-de-vote';
+  const allowed = await inspect('Action sans droit de vote', route);
+  assert.equal(allowed.status, 0, allowed.stderr);
+  for (const [heading, candidateRoute, tag] of [
+    ['Action sans droit de vote, mais avec contrôle', route, 'h1'],
+    ['Action sans droit de vote', 'glossaire/example', 'h1'],
+    ['Action sans droit de vote', route, 'h2'],
+    ['Une action sans droit de vote', route, 'h1'],
+  ]) {
+    const blocked = await inspect(heading, candidateRoute, tag);
+    assert.equal(blocked.status, 1, `${candidateRoute} ${tag}: ${blocked.stderr}`);
+  }
+});

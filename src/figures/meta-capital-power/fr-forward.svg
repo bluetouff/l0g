@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" style="width:100%;height:auto" class="l0g-meta-capital-svg" role="img" aria-labelledby="meta-capital-fr-forward-d-title meta-capital-fr-forward-d-desc"><title id="meta-capital-fr-forward-d-title">Le forward en deux étapes</title><desc id="meta-capital-fr-forward-d-desc">Montage initial attendu le 29 octobre 2026 : les intermédiaires empruntent 40 millions d’actions A et les vendent aux investisseurs au prix de 625 dollars. Meta ne reçoit aucun produit initial prévu. En règlement physique, Meta livre de nouvelles actions contre le prix forward ajusté ; les intermédiaires rendent les titres empruntés. Le prix initial est de 622,91875 dollars par action. Après le dividende C et l’approbation de cotation, les contrats se scindent en branches A et C, avec ajustements.</desc>
+<rect id="meta-capital-fr-forward-d-frame" x="0" y="0" width="1000" height="720" rx="5" fill="var(--color-ink)"></rect>
+<text data-panel="meta-capital-fr-forward-d-frame" x="34" y="36" fill="var(--color-signal)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="start">l0g / META / 02</text>
+<line x1="34" y1="52" x2="966" y2="52" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="meta-capital-fr-forward-d-frame" x="34" y="100" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="31" font-weight="700" text-anchor="start">Le forward en deux étapes</text>
+<text data-panel="meta-capital-fr-forward-d-frame" x="34" y="145" fill="var(--color-muted)" font-family="l0g Meta Capital" font-size="22" font-weight="400" text-anchor="start">Actions existantes, puis règlement futur</text>
+<text data-panel="meta-capital-fr-forward-d-frame" x="34" y="183" fill="var(--color-signal)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="start">1 · Clôture attendue : 29.10.2026</text>
+<rect id="meta-capital-fr-forward-d-card-initial-meta" x="376" y="204" width="248" height="67" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="meta-capital-fr-forward-d-card-initial-meta" x="392" y="248" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="23" font-weight="700" text-anchor="start">Meta · forward</text>
+<text data-panel="meta-capital-fr-forward-d-frame" x="646" y="231" fill="var(--color-accent)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="start">Produit initial Meta : 0 $</text>
+<line x1="500" y1="276" x2="500" y2="301" stroke="var(--color-accent)" stroke-width="2" stroke-dasharray="4 5"></line>
+<path d="M 496.164596 293.97934 L 500 301 L 503.835404 293.97934" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<rect id="meta-capital-fr-forward-d-card-initial-0" x="34" y="313" width="248" height="75" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="meta-capital-fr-forward-d-card-initial-0" x="50" y="345" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="start">Prêteurs</text>
+<text data-panel="meta-capital-fr-forward-d-card-initial-0" x="50" y="373" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="400" text-anchor="start">Titres existants</text>
+<rect id="meta-capital-fr-forward-d-card-initial-1" x="376" y="313" width="248" height="75" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="meta-capital-fr-forward-d-card-initial-1" x="392" y="345" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="start">Intermédiaires</text>
+<text data-panel="meta-capital-fr-forward-d-card-initial-1" x="392" y="373" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="400" text-anchor="start">Morgan · Goldman</text>
+<rect id="meta-capital-fr-forward-d-card-initial-2" x="718" y="313" width="248" height="75" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="meta-capital-fr-forward-d-card-initial-2" x="734" y="345" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="start">Investisseurs</text>
+<text data-panel="meta-capital-fr-forward-d-card-initial-2" x="734" y="373" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="400" text-anchor="start">Paient 625 $ / A</text>
+<line x1="294" y1="351" x2="364" y2="351" stroke="var(--color-signal)" stroke-width="2"></line>
+<path d="M 356.97934 354.835404 L 364 351 L 356.97934 347.164596" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="meta-capital-fr-forward-d-frame" x="329" y="302" fill="var(--color-signal)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="middle">40 M A</text>
+<line x1="636" y1="351" x2="706" y2="351" stroke="var(--color-signal)" stroke-width="2"></line>
+<path d="M 698.97934 354.835404 L 706 351 L 698.97934 347.164596" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="meta-capital-fr-forward-d-frame" x="671" y="302" fill="var(--color-signal)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="middle">40 M A</text>
+<path d="M 856 394 L 856 421 L 500 421 L 500 394" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 503.835404 401.02066 L 500 394 L 496.164596 401.02066" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="meta-capital-fr-forward-d-frame" x="684" y="451" fill="var(--color-amber)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="middle">25 Md$ · 40 M × 625 $</text>
+<text data-panel="meta-capital-fr-forward-d-frame" x="34" y="490" fill="var(--color-signal)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="start">2 · Règlement physique prévu d’ici le 19.11.2027</text>
+<rect id="meta-capital-fr-forward-d-card-settlement-0" x="34" y="529" width="248" height="75" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="meta-capital-fr-forward-d-card-settlement-0" x="50" y="561" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="start">Meta</text>
+<text data-panel="meta-capital-fr-forward-d-card-settlement-0" x="50" y="589" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="400" text-anchor="start">Livre A / C</text>
+<rect id="meta-capital-fr-forward-d-card-settlement-1" x="376" y="529" width="248" height="75" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="meta-capital-fr-forward-d-card-settlement-1" x="392" y="561" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="start">Intermédiaires</text>
+<text data-panel="meta-capital-fr-forward-d-card-settlement-1" x="392" y="589" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="400" text-anchor="start">Prix ajusté</text>
+<rect id="meta-capital-fr-forward-d-card-settlement-2" x="718" y="529" width="248" height="75" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="meta-capital-fr-forward-d-card-settlement-2" x="734" y="561" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="start">Prêteurs</text>
+<text data-panel="meta-capital-fr-forward-d-card-settlement-2" x="734" y="589" fill="var(--color-paper)" font-family="l0g Meta Capital" font-size="22" font-weight="400" text-anchor="start">Titres rendus</text>
+<line x1="294" y1="566" x2="364" y2="566" stroke="var(--color-signal)" stroke-width="2" stroke-dasharray="4 5"></line>
+<path d="M 356.97934 569.835404 L 364 566 L 356.97934 562.164596" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="636" y1="566" x2="706" y2="566" stroke="var(--color-signal)" stroke-width="2" stroke-dasharray="4 5"></line>
+<path d="M 698.97934 569.835404 L 706 566 L 698.97934 562.164596" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 500 610 L 500 632 L 144 632 L 144 610" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"></path>
+<path d="M 147.835404 617.02066 L 144 610 L 140.164596 617.02066" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="meta-capital-fr-forward-d-frame" x="570" y="625" fill="var(--color-amber)" font-family="l0g Meta Capital" font-size="22" font-weight="700" text-anchor="start">Cash à Meta au règlement</text>
+<text data-panel="meta-capital-fr-forward-d-frame" x="34" y="655" fill="var(--color-muted)" font-family="l0g Meta Capital" font-size="22" font-weight="400" text-anchor="start">622,91875 $ initial · ~24,91675 Md$ avant frais et ajustements</text>
+<line x1="34" y1="671" x2="966" y2="671" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="meta-capital-fr-forward-d-frame" x="34" y="700" fill="var(--color-muted)" font-family="l0g Meta Capital" font-size="22" font-weight="400" text-anchor="start">S01 · S02 · S03 / Hors option des placeurs</text>
+</svg>
