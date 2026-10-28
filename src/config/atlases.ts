@@ -7,7 +7,7 @@ export const atlases = [
     image: '/illustrations/news/openai-credit-guarantee-v1.jpg',
     eyebrow: 'Infrastructures · Capital · Garanties',
     description: 'Derrière les centres de données, des investisseurs, des locataires et des garants. Explorez les contrats qui les relient et les conditions de leurs engagements.',
-    actors: 'Nvidia · OpenAI · SB Energy · AIP',
+    actors: 'Nvidia · OpenAI · SB Energy · AIP · Nebius · Citi',
     question: 'Qui finance les infrastructures de l’IA ?',
   },
   {
@@ -18,7 +18,7 @@ export const atlases = [
     image: '/illustrations/news/credit-prive-logiciels-ia-v1.jpg',
     eyebrow: 'Fonds · Assureurs · Banques',
     description: 'Des capitaux des investisseurs aux entreprises financées, suivez le rôle des gérants, des assureurs et des banques dans les circuits du crédit privé.',
-    actors: 'Apollo · Athene · Ares Capital · BNP Paribas',
+    actors: 'Apollo · Athene · Ares Capital · Partners Group',
     question: 'Par où passe l’argent avant d’être prêté ?',
   },
   {

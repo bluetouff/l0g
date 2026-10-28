@@ -73,6 +73,13 @@
       "title": "Pagaya : PAID 2026-REV1",
       "url": "https://investor.pagaya.com/news-releases/news-release-details/pagaya-closes-24-month-460-million-revolving-personal-loan",
       "locator": "Communiqué du 22 septembre : taille initiale, déploiement prévu et réinvestissement."
+    },
+    {
+      "id": "pg-rated-feeder-20261022",
+      "title": "Partners Group : deuxième rated feeder de 2026",
+      "url": "https://www.partnersgroup.com/news-and-views/press-releases/corporate-news/detail?news_id=ac75f52a-67b8-427a-8a95-3bf8855bf5fc",
+      "publishedOn": "2026-10-22",
+      "locator": "Puces et quatre premiers paragraphes : levée déclarée, assureurs américains, notes investment grade et junior, participations au capital et stratégie evergreen."
     }
   ],
   "nodes": [
@@ -208,6 +215,27 @@
       "role": "Titrisation renouvelable",
       "column": 3,
       "row": 4
+    },
+    {
+      "id": "pg-insurers",
+      "label": "Assureurs américains · PG",
+      "role": "Souscripteurs non identifiés",
+      "column": 0,
+      "row": 5
+    },
+    {
+      "id": "pg-rated-feeder",
+      "label": "Rated feeder PG · octobre",
+      "role": "Véhicule de dette et de capital",
+      "column": 1,
+      "row": 5
+    },
+    {
+      "id": "pg-evergreen",
+      "label": "Stratégie de prêts PG",
+      "role": "Crédit privé evergreen",
+      "column": 2,
+      "row": 5
     }
   ],
   "relations": [
@@ -563,6 +591,54 @@
           ]
         }
       ]
+    },
+    {
+      "id": "insurers-pg-rated-feeder",
+      "from": "pg-insurers",
+      "to": "pg-rated-feeder",
+      "reading": {
+        "href": "/posts/credit-prive-porte-assureurs-rated-feeders/",
+        "label": "Lire : la porte des assureurs dans le crédit privé"
+      },
+      "observations": [
+        {
+          "publishedOn": "2026-10-22",
+          "recordedOn": "2026-10-28",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Levée déclarée · 510 M$",
+          "claim": "Partners Group annonce la clôture de son deuxième rated feeder de 2026, avec 510 millions de dollars levés auprès d’assureurs américains. Ceux-ci ont souscrit des notes investment grade et junior ; certains ont aussi investi au capital.",
+          "limit": "Déclaration du gérant. Les assureurs, l’émetteur juridique, les contrats et la ventilation des tranches ne sont pas nommés. Les 510 millions ne représentent donc pas uniquement de la dette ni un encours global du marché.",
+          "watch": "Identité du véhicule, contrats, montants par tranche et droits des souscripteurs.",
+          "sources": [
+            "pg-rated-feeder-20261022"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pg-feeder-evergreen",
+      "from": "pg-rated-feeder",
+      "to": "pg-evergreen",
+      "reading": {
+        "href": "/posts/credit-prive-porte-assureurs-rated-feeders/",
+        "label": "Lire : la porte des assureurs dans le crédit privé"
+      },
+      "observations": [
+        {
+          "publishedOn": "2026-10-22",
+          "recordedOn": "2026-10-28",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Accès à la stratégie evergreen",
+          "claim": "Partners Group présente ce feeder comme un accès à sa stratégie evergreen de crédit privé, centrée sur les prêts senior aux entreprises. La stratégie est représentée collectivement ; le communiqué ne fournit pas l’identité juridique du fonds sous-jacent.",
+          "limit": "Le rattachement à la stratégie ne documente pas l’allocation à un prêt précis. Les avantages de capital réglementaire sont revendiqués par le gérant, sans décision publiée pour chaque assureur ou chaque tranche.",
+          "watch": "Fonds effectivement détenu, règles de remboursement et traitement réglementaire propre aux titres.",
+          "sources": [
+            "pg-rated-feeder-20261022"
+          ]
+        }
+      ]
     }
   ],
   "milestones": [
@@ -610,6 +686,11 @@
       "date": "2026-10-12",
       "label": "Pagaya · prêts automobiles titrisés",
       "change": "RPM 2026-5 ajoute une émission automobile ; aucun circuit entre les deux titrisations n’est déduit."
+    },
+    {
+      "date": "2026-10-22",
+      "label": "Partners Group · assureurs et feeder",
+      "change": "Le communiqué ajoute un véhicule de 510 M$ et son accès à la stratégie evergreen. Notes de dette et capital sont distingués, sans attribuer les caractéristiques du véhicule de janvier à celui d’octobre."
     }
   ]
 }

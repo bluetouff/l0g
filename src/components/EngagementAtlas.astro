@@ -45,7 +45,7 @@ const dateLabel = (date: string) => formatAtlasDate(date, language);
         <p><span data-atlas-count>{initial.nodes.length} {ui.actors} · {atlasRelationCount(initial.relations.length, language)}</span></p>
       </div>
       <nav class="atlas-dates" data-atlas-controls hidden aria-label={ui.chooseDate}>
-        {dataset.milestones.map((milestone, index) => <button type="button" data-atlas-date={milestone.date} aria-pressed={milestone.date === latest.date ? 'true' : 'false'}><span class="date-number">0{index + 1}</span><time datetime={milestone.date}>{dateLabel(milestone.date)}</time><span>{milestone.label}</span></button>)}
+        {dataset.milestones.map((milestone, index) => <button type="button" data-atlas-date={milestone.date} aria-pressed={milestone.date === latest.date ? 'true' : 'false'}><span class="date-number">{String(index + 1).padStart(2, '0')}</span><time datetime={milestone.date}>{dateLabel(milestone.date)}</time><span>{milestone.label}</span></button>)}
       </nav>
       <p class="atlas-change" data-atlas-change aria-live="polite">{latest.change}</p>
       <div class="atlas-map" data-atlas-map>

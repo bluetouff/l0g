@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "2f2f5326d2dd59400606ee6f6c3e0a3e70698be7790347378b35de77ccecd725",
+  "sourceSha256": "d56b63979520df6f94ebc340a7fd502229b6302838f9163ca835a7f0ee8a511c",
   "title": "Oil financing atlas",
   "sources": {
     "sienna-judgment-2023": {
@@ -49,6 +49,14 @@
     "volare-stabilisation-20261005": {
       "title": "Volare: stabilisation and over-allotment",
       "locator": "October 5 release: share lending, issuance option and stabilisation period."
+    },
+    "volare-stabilisation-20261023": {
+      "title": "Volare: stabilisation update published on 23 October",
+      "locator": "Release: report covering 13–22 October and stabilisation period from 5 October to 3 November."
+    },
+    "volare-stabilisation-report-20261023": {
+      "title": "Volare: stabilisation transaction report",
+      "locator": "PDF p. 1: dates, agent and transaction quantities; individual purchases follow. Market prices are not reproduced in this atlas."
     }
   },
   "nodes": {
@@ -467,6 +475,12 @@
           "claim": "Volare announces 300,000 shares issued through partial exercise of the option granted to the stabilisation manager.",
           "limit": "This is the same exercise described in the placement record, not a second capital inflow to add. No net cash receipt is quantified.",
           "watch": "End of stabilisation on November 3 and share redelivery."
+        },
+        "2026-10-23": {
+          "label": "Stabilisation documented through 22 October",
+          "claim": "Volare publishes a stabilisation report covering 13–22 October. Its table lists purchases on 15, 16, 20, 21 and 22 October; Clarksons remains the stabilisation agent. The announced stabilisation period runs from 5 October to 3 November 2026.",
+          "limit": "These secondary-market purchases are not new capital raised for Volare. The release reports no further option exercise or additional net proceeds. The 300,000 shares announced on 13 October remain a separate event from the reported purchases.",
+          "watch": "Final stabilisation report, return of borrowed shares and any further option exercise."
         }
       }
     }
@@ -503,6 +517,10 @@
     "2026-10-13": {
       "label": "Volare · share issuance option partly exercised",
       "change": "Stabilization remains in progress; the additional issue does not establish final ownership."
+    },
+    "2026-10-23": {
+      "label": "Volare · stabilisation update",
+      "change": "The report documents stabilisation purchases through 22 October. Secondary-market transactions remain separate from the 300,000-share issuance announced on 13 October; no new capital raising is inferred from these purchases."
     }
   }
 }

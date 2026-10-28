@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "7f7a9a318a30d16fadd8a93b5ad4cb060b5aad5bcaf627457729fa561270bed0",
+  "sourceSha256": "48fd8666df4f54e26a38bb165ee8a0268ede1512829dc7b75aab44f76e9c46cc",
   "title": "Private credit atlas",
   "sources": {
     "apollo-bnp-2024": {
@@ -41,6 +41,10 @@
     "pagaya-rev1-20260922": {
       "title": "Pagaya: PAID 2026-REV1",
       "locator": "September 22 release: initial size, projected deployment and reinvestment."
+    },
+    "pg-rated-feeder-20261022": {
+      "title": "Partners Group: second rated feeder of 2026",
+      "locator": "Bullet points and first four paragraphs: reported capital raised, US insurers, investment grade and junior notes, equity subscriptions and evergreen strategy."
     }
   },
   "nodes": {
@@ -119,6 +123,18 @@
     "paid-2026-rev1": {
       "label": "Pagaya · PAID REV1",
       "role": "Revolving securitization"
+    },
+    "pg-insurers": {
+      "label": "US insurers · PG",
+      "role": "Unnamed subscribers"
+    },
+    "pg-rated-feeder": {
+      "label": "PG rated feeder · October",
+      "role": "Debt and equity vehicle"
+    },
+    "pg-evergreen": {
+      "label": "PG private loans strategy",
+      "role": "Evergreen private credit"
     }
   },
   "relations": {
@@ -297,6 +313,34 @@
           "watch": "Settlement, subscriptions and actual reinvestment."
         }
       }
+    },
+    "insurers-pg-rated-feeder": {
+      "reading": {
+        "href": "/en/analysis/private-credit-route-insurers-rated-feeders/",
+        "label": "Read: insurers’ route into private credit"
+      },
+      "observations": {
+        "2026-10-22": {
+          "label": "Reported capital raised · $510m",
+          "claim": "Partners Group reports closing its second rated feeder of 2026, raising $510 million from US insurers. They subscribed to investment grade and junior notes; some also invested in equity.",
+          "limit": "This is the manager’s disclosure. Insurers, legal issuer, contracts and tranche allocations are not identified. The $510 million therefore represents neither debt alone nor the market’s total outstanding exposure.",
+          "watch": "Vehicle identity, contracts, amounts by tranche and subscribers’ rights."
+        }
+      }
+    },
+    "pg-feeder-evergreen": {
+      "reading": {
+        "href": "/en/analysis/private-credit-route-insurers-rated-feeders/",
+        "label": "Read: insurers’ route into private credit"
+      },
+      "observations": {
+        "2026-10-22": {
+          "label": "Access to the evergreen strategy",
+          "claim": "Partners Group presents the feeder as access to its evergreen private credit strategy, which focuses on senior corporate lending. The strategy is shown collectively; the release does not give the underlying fund’s legal identity.",
+          "limit": "Access to a strategy does not establish investment in any particular loan. Regulatory capital benefits are the manager’s claims, without a published determination for each insurer or tranche.",
+          "watch": "The fund actually held, redemption terms and regulatory treatment specific to the securities."
+        }
+      }
     }
   },
   "milestones": {
@@ -335,6 +379,10 @@
     "2026-09-22": {
       "label": "Pagaya · PAID REV1",
       "change": "A revolving structure separates initial funding from expected deployment."
+    },
+    "2026-10-22": {
+      "label": "Partners Group · insurers and feeder",
+      "change": "The release adds a $510m vehicle and its access to the evergreen strategy. Debt notes and equity are distinguished, without applying January’s vehicle terms to the October financing."
     }
   }
 }

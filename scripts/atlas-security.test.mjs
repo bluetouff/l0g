@@ -8,6 +8,22 @@ import { spawnSync } from 'node:child_process';
 import { readAtlasJson, MAX_ATLAS_BYTES } from './read-atlas-json.mjs';
 import { atlasSourceUrl } from '../src/lib/engagement-atlas.ts';
 
+test('Partners Group permits only its canonical release path and a single UUID selector', () => {
+  const path = 'https://www.partnersgroup.com/news-and-views/press-releases/corporate-news/detail';
+  const query = '?news_id=ac75f52a-67b8-427a-8a95-3bf8855bf5fc';
+  assert.equal(atlasSourceUrl(path + query), path + query);
+  for (const value of [
+    path, path + '?news_id=not-a-uuid', path + query + '&next=https://evil.example',
+    path + query + '&news_id=ac75f52a-67b8-427a-8a95-3bf8855bf5fc',
+    path + query + '#fragment', path.replace('/detail', '/admin') + query,
+    path.replace('https://', 'http://') + query,
+    path.replace('https://', 'https://user:pass@') + query,
+    path.replace('.com/', '.com.evil.example/') + query,
+    path.replace('.com/', '.com@evil.example/') + query,
+    path + query.replace('news_id=', 'news_id=%61'),
+  ]) assert.throws(() => atlasSourceUrl(value), value);
+});
+
 test('atlas source links retain exact HTTPS origin and path validation at use', () => {
   const sec = 'https://www.sec.gov/Archives/edgar/data/1/2/a.htm';
   assert.equal(atlasSourceUrl('HTTPS://WWW.SEC.GOV:443/Archives/edgar/data/1/2/a.htm'), sec);

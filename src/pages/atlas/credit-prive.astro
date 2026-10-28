@@ -11,11 +11,12 @@ const latestDate = dataset.milestones.at(-1)!.date;
   <EngagementAtlas
     dataset={dataset}
     subject="crédit privé"
-    intro="Qui apporte les capitaux, qui gère les fonds et qui emprunte ? Explorez les prêts aux entreprises autour d’Ares Capital et le crédit adossé à des actifs autour d’Apollo, d’Athene et d’ATLAS SP, jusqu’aux titrisations de prêts personnels et automobiles de Pagaya."
+    intro="Qui apporte les capitaux, qui gère les fonds et qui emprunte ? Explorez les prêts aux entreprises autour d’Ares Capital et le crédit adossé à des actifs autour d’Apollo, d’Athene et d’ATLAS SP, jusqu’aux titrisations de Pagaya et aux feeders de Partners Group destinés aux assureurs."
     boundary="La carte couvre une sélection de relations publiées, principalement aux États-Unis. Un même acteur peut intervenir dans plusieurs circuits : cela n’établit pas qu’une banque finance un prêt précis, ni qu’elle garantit les autres participants. ATLAS SP désigne ici une société, distincte des atlas l0g."
-    selectedRelation="investors-rpm-securitization"
+    selectedRelation="insurers-pg-rated-feeder"
     hubs={['arcc', 'atlas-sp', 'athene']}
     entryPoints={[
+      { label: 'Comment les assureurs investissent-ils via un feeder ?', relation: 'insurers-pg-rated-feeder', date: '2026-10-22' },
       { label: 'Comment Pagaya titrise-t-elle les prêts automobiles ?', relation: 'investors-rpm-securitization', date: latestDate },
       { label: 'Quelle émission porte les prêts personnels ?', relation: 'investors-paid-securitization', date: '2026-10-05' },
       { label: 'Comment fonctionne la structure renouvelable ?', relation: 'investors-paid-rev1', date: '2026-09-22' },
@@ -26,6 +27,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
       { label: 'Quelle entreprise reçoit un prêt ?', relation: 'arcc-hyland', date: latestDate },
     ]}
     outlinks={[
+      { href: '/posts/credit-prive-porte-assureurs-rated-feeders/', label: 'Les assureurs et les rated feeders' },
       { href: '/posts/atlas-entrepot-credit-risque-apollo-athene/', label: 'Comprendre les entrepôts de crédit' },
       { href: '/posts/credit-prive-clo-warehouse-banques/', label: 'Le rôle des banques dans le crédit privé' },
       { href: '/posts/credit-prive-logiciels-ia-revenus-dette/', label: 'Crédit privé et entreprises de logiciels' },
@@ -33,7 +35,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
     ]}
   >
     <section slot="overview" class="credit-overview" aria-labelledby="credit-circuits-title">
-      <p class="credit-review"><strong>Revue ciblée du <time datetime="2026-10-21">21 octobre 2026</time>.</strong> Les publications du 17 au 21 octobre ont été recherchées dans les registres SEC d’<a href="https://data.sec.gov/submissions/CIK0001287750.json">ARCC</a>, d’<a href="https://data.sec.gov/submissions/CIK0001858681.json">Apollo</a> et d’<a href="https://data.sec.gov/submissions/CIK0001527469.json">Athene</a>, ainsi que dans les index officiels de <a href="https://investor.pagaya.com/news-events/news-releases">Pagaya</a> et d’<a href="https://www.atlas-sp.com/">ATLAS SP</a>. Les pièces examinées ne documentent aucun nouveau contrat de financement ni règlement supplémentaire pour les relations déjà présentes sur cette carte. Le <a href="https://www.sec.gov/Archives/edgar/data/1858681/000095014226002794/eh260845009_8k.htm">8-K d’Apollo du 20 octobre</a> concerne une nomination au conseil ; l’<a href="https://ir.athene.com/news-events/press-releases/detail/215/athene-announces-third-quarter-2026-fixed-income-investor-call">annonce d’Athene du 19 octobre</a> prépare un appel investisseurs. Le <a href="https://www.sec.gov/Archives/edgar/data/1287750/000110465926113276/tm2626243d1_4017g.htm">dépôt ARCC du 2 octobre</a>, relu pour ce passage, porte sur une assurance contre les malversations. Les observations conservent leurs dates de revue et les inventaires leur période au 30 juin 2026. VFN signifie <em>Variable Funding Note</em>, un financement renouvelable par titres. Les circuits Pagaya restent distincts et aucun tirage VFN n’est déduit des titrisations.</p>
+      <p class="credit-review"><strong>Ajouts vérifiés le <time datetime="2026-10-28">28 octobre 2026</time>.</strong> Le <a href="https://www.partnersgroup.com/news-and-views/press-releases/corporate-news/detail?news_id=ac75f52a-67b8-427a-8a95-3bf8855bf5fc">communiqué de Partners Group du 22 octobre</a> ajoute un feeder de 510 millions de dollars souscrit par des assureurs américains. Notes investment grade, notes junior et capital restent distingués. Le gérant ne publie ni les contrats, ni la ventilation des tranches, ni l’identité juridique du fonds sous-jacent. Le circuit de janvier n’est pas confondu avec celui d’octobre. Les autres observations et inventaires gardent leurs dates antérieures ; aucune actualisation générale des portefeuilles ARCC ou Athene n’est revendiquée.</p>
       <details>
       <summary id="credit-circuits-title">Comprendre les rôles dans le circuit du crédit privé</summary>
       <p>Dans les circuits présentés, ARCC prête aux entreprises tandis qu’ATLAS SP finance des portefeuilles de créances, dont des prêts personnels. Les banques restent présentes dans le financement des intermédiaires.</p>

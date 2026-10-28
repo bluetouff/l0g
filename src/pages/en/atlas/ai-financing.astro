@@ -12,11 +12,12 @@ const dataset = englishAtlasDatasets['ai-financing'];
     language="en"
     dataset={dataset}
     subject="AI financing"
-    intro="Nvidia, OpenAI, SB Energy and AIP: who finances AI infrastructure, who guarantees what, and on which terms? Explore the documented relationships as successive publications change what can be established."
+    intro="Nvidia, OpenAI, SB Energy, AIP and Nebius: who finances AI infrastructure, who guarantees what, and on which terms? Explore the documented relationships as successive publications change what can be established."
     boundary="The 21 September prospectus separates prepayment received through Energy Global, LP from a still-conditional share purchase. It renames SE Global Holdings, Inc. as SB Energy, Inc.; the node retains the contractual name for historical views. These transactions remain separate from the campus guarantees. This corpus establishes no financing from AIP to that campus."
-    selectedRelation="nvidia-energy-global-prepayment"
+    selectedRelation="citi-nebius-facility"
     hubs={['nvidia', 'aip']}
     entryPoints={[
+      { label: 'How does Citi finance Nebius’s GPUs?', relation: 'citi-nebius-facility', date: '2026-10-22' },
       { label: 'What has Nvidia already paid?', relation: 'nvidia-energy-global-prepayment', date: '2026-09-21' },
       { label: 'What did AIP, MGX and GIP acquire?', relation: 'consortium-aligned-acquisition', date: '2026-07-21' },
       { label: 'How does Aligned use securitization?', relation: 'investors-aligned-abs', date: '2026-07-28' },
@@ -24,16 +25,16 @@ const dataset = englishAtlasDatasets['ai-financing'];
       { label: 'How has Nvidia’s role changed?', relation: 'nvidia-aip', date: '2025-03-19' },
     ]}
     outlinks={[
+      { href: '/en/analysis/nebius-citi-364-day-gpu-credit/', label: 'Nebius’s 364-day credit facility' },
       { href: '/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/', label: 'Read the investigation' },
       { href: '/api/v1/en/atlases/ai-financing.json', label: 'Reuse the relationships and sources · English JSON' },
       { href: '/en/methodology/', label: 'Read the methodology behind l0g’s indicators' },
     ]}
   >
     <section slot="overview" class="atlas-overview" aria-labelledby="ai-review-title">
-      <h2 id="ai-review-title">Evidence reviewed on <time datetime="2026-10-21">21 October 2026</time></h2>
-      <p>The <a href="https://aligneddc.com/press-release/aligned-data-centers-completes-1-18-billion-securitization-financing/">28 July Aligned release</a>, added in this review, reports completion of a $1.183 billion asset-backed securities (ABS) issuance. This debt remains separate from the growth capital committed at the acquisition; intended uses of proceeds do not establish actual spending.</p>
-      <p>The <a href="https://data.sec.gov/submissions/CIK0002133037.json">SB Energy SEC register</a> checked on 21 October still lists the <a href="https://www.sec.gov/Archives/edgar/data/2133037/000162828026062846/sbenergy-sx1a2.htm">21 September prospectus</a> as its latest filing. No new filing listed in that register confirms settlement of Nvidia’s additional share purchase or completion of the IPO.</p>
-      <p>This targeted check does not renew the review of every contract or cover every AI financing arrangement. Earlier observations and their review dates remain in the corpus. The absence of a new filing alone does not establish that a transaction has not occurred.</p>
+      <h2 id="ai-review-title">Additions verified on <time datetime="2026-10-28">28 October 2026</time></h2>
+      <p><a href="https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_6k.htm">Nebius’s 22 October Form 6-K</a> adds a $3.5 billion secured facility with Citi. Its three co-borrowers are grouped together; contractual principal does not establish full drawdown. The loan matures on 16 October 2027.</p>
+      <p>This bank financing remains separate from Nvidia–SB Energy guarantees, prepayment and Aligned’s transactions. Those records retain their earlier observations and review dates. The addition is not a fresh review of every contract.</p>
     </section>
   </EngagementAtlas>
   <EnglishRelatedReading id="ai-financing" collection="atlas" />

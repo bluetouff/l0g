@@ -33,12 +33,17 @@ const allowedOrigins = new Set([
   'https://newsweb.oslobors.no',
   'https://investor.pagaya.com',
   'https://www.volareshipping.com', 'https://mb.cision.com',
+  'https://www.partnersgroup.com',
 ]);
 /** Canonical source URL shared by corpus validation and the browser link sink. */
 export function atlasSourceUrl(value: string): string {
   text(value, 1500);
   const url = new URL(value);
-  if (url.protocol !== 'https:' || !allowedOrigins.has(url.origin) || url.username || url.password || url.search || url.hash) throw new Error('Atlas : origine ou URL source refusée');
+  const partnersRelease = url.origin === 'https://www.partnersgroup.com'
+    && url.pathname === '/news-and-views/press-releases/corporate-news/detail'
+    && /^\?news_id=[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/.test(url.search);
+  if (url.protocol !== 'https:' || !allowedOrigins.has(url.origin) || url.username || url.password || (url.search && !partnersRelease) || url.hash) throw new Error('Atlas : origine ou URL source refusée');
+  if (url.origin === 'https://www.partnersgroup.com' && !partnersRelease) throw new Error('Atlas : communiqué Partners Group refusé');
   if (url.origin === 'https://www.sec.gov' && !/^\/Archives\/edgar\/data\/\d+\/\d+\/[a-zA-Z0-9._-]+\.htm$/.test(url.pathname)) throw new Error('Atlas : chemin SEC refusé');
   if (url.origin === 'https://newsweb.oslobors.no' && !/^\/message\/\d+$/.test(url.pathname)) throw new Error('Atlas : chemin NewsWeb refusé');
   if (url.origin === 'https://investor.pagaya.com' && !/^\/news-releases\/news-release-details\/[a-z0-9-]+$/.test(url.pathname) && !/^\/static-files\/[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/.test(url.pathname)) throw new Error('Atlas : chemin Pagaya refusé');
@@ -92,7 +97,7 @@ export function assertAtlasDataset(value: unknown, allowProposals = false): asse
   for (const node of value.nodes) {
     object(node); text(node.label, 45); text(node.role, 70);
     keys(node, ['id', 'label', 'role', 'column', 'row']);
-    requireValue(Number.isInteger(node.column) && Number(node.column) >= 0 && Number(node.column) <= 3 && Number.isInteger(node.row) && Number(node.row) >= 0 && Number(node.row) <= 4, 'position invalide');
+    requireValue(Number.isInteger(node.column) && Number(node.column) >= 0 && Number(node.column) <= 3 && Number.isInteger(node.row) && Number(node.row) >= 0 && Number(node.row) <= 5, 'position invalide');
     const position = `${node.column}:${node.row}`; requireValue(!positions.has(position), 'positions superposées'); positions.add(position);
   }
   const observationDates = new Set<string>();

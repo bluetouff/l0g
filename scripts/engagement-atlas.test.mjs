@@ -20,6 +20,7 @@ test('collection fragments and untrusted redirect targets cannot change the dest
 const source = JSON.parse(readFileSync(new URL('../src/data/engagement-atlas.json', import.meta.url), 'utf8'));
 const credit = JSON.parse(readFileSync(new URL('../src/data/private-credit-atlas.json', import.meta.url), 'utf8'));
 const oil = JSON.parse(readFileSync(new URL('../src/data/oil-financing-atlas.json', import.meta.url), 'utf8'));
+const documentaryRelation = ({ changed, ...relation }) => relation;
 
 test('FR and EN Atlas entry links have an archived relation and a valid dated interactive view', () => {
   const pages = [
@@ -315,7 +316,7 @@ test('proposals reject executable, impersonated or credential-bearing sources an
 test('shared links select only known dates and relations and cannot enable an anachronistic scenario', () => {
   assert.deepEqual(atlasSelection(source, '#date=2024-09-17&relation=nvidia-sb-guarantee&scenario=default'), { date: '2024-09-17', relation: 'nvidia-aip', scenario: false });
   assert.deepEqual(atlasSelection(source, '#date=2026-08-17&relation=openai-sb-lease&scenario=default'), { date: '2026-08-17', relation: 'openai-sb-lease', scenario: true });
-  assert.equal(atlasSelection(source, '#date=2027-01-01&relation=%3Cscript%3E').date, '2026-09-21');
+  assert.equal(atlasSelection(source, '#date=2027-01-01&relation=%3Cscript%3E').date, '2026-10-22');
   assert.equal(atlasSelection(source, '#date=2026-08-26&relation=blackrock-aip&scenario=default').scenario, false);
   assert.equal(isAtlasDate('2026-02-30'), false);
   assert.equal(isAtlasDate('2024-02-29'), true);
@@ -438,4 +439,69 @@ test('October oil disclosures preserve the conditional placement and separate Tr
   assert.equal(financing.observation.amount, undefined);
   assert.equal(oil.relations.some(item => ['ocbc', 'usd-cnh-facilities'].includes(item.from) && item.to.startsWith('volare')), false);
   assert.equal(atlasSelection(oil, '#date=2026-10-01&relation=investors-volare&scenario=default').scenario, false);
+});
+
+test('Nebius appears at publication as one facility to grouped co-borrowers without implying drawdowns', () => {
+  assert.equal(atlasAt(source, '2026-10-21').relations.some(item => item.id === 'citi-nebius-facility'), false);
+  const view = atlasAt(source, '2026-10-22');
+  const loan = view.relations.find(item => item.id === 'citi-nebius-facility');
+  assert.deepEqual([loan.from, loan.to], ['citi-nebius', 'nebius-borrowers']);
+  assert.equal(view.relations.filter(item => item.to === 'nebius-borrowers').length, 1);
+  assert.equal(loan.observation.recordedOn, '2026-10-28');
+  assert.equal(loan.observation.kind, 'contract');
+  assert.equal(loan.observation.amount, undefined, 'A loan principal must not enter the conditional guarantee-cap field');
+  assert.match(loan.observation.claim, /3,5 milliards.*17 octobre/);
+  assert.match(loan.observation.claim, /16 octobre 2027/);
+  assert.match(loan.observation.limit, /ne prouve pas un tirage intégral/);
+  assert.deepEqual(loan.observation.sources, ['nebius-citi-20261022']);
+  assert.equal(loan.reading.href, '/posts/nebius-citi-credit-364-jours-gpu/');
+  assert.equal(atlasSelection(source, '#date=2026-10-22&relation=citi-nebius-facility&scenario=default').scenario, false);
+});
+
+test('Partners Group keeps insurer subscriptions and strategy access separate from the older funding chains', () => {
+  const before = atlasAt(credit, '2026-10-21');
+  assert.equal(before.nodes.some(item => item.id.startsWith('pg-')), false);
+  const view = atlasAt(credit, '2026-10-22');
+  const funding = view.relations.find(item => item.id === 'insurers-pg-rated-feeder');
+  const access = view.relations.find(item => item.id === 'pg-feeder-evergreen');
+  assert.deepEqual([funding.from, funding.to, access.from, access.to], ['pg-insurers', 'pg-rated-feeder', 'pg-rated-feeder', 'pg-evergreen']);
+  for (const relation of [funding, access]) {
+    assert.equal(relation.observation.recordedOn, '2026-10-28');
+    assert.equal(relation.observation.amount, undefined);
+    assert.deepEqual(relation.observation.sources, ['pg-rated-feeder-20261022']);
+  }
+  assert.match(funding.observation.claim, /510 millions/);
+  assert.match(funding.observation.claim, /certains ont aussi investi au capital/);
+  assert.match(funding.observation.limit, /ventilation des tranches/);
+  assert.match(access.observation.limit, /pas l’allocation à un prêt précis/);
+  for (const old of before.relations) assert.deepEqual(documentaryRelation(view.relations.find(item => item.id === old.id)), documentaryRelation(old));
+  assert.equal(view.relations.some(item => ['bnp', 'athene', 'atlas-sp'].includes(item.from) && item.to.startsWith('pg-')), false);
+});
+
+test('Volare’s later stabilisation purchases cannot replace or duplicate the earlier share issuance', () => {
+  const before = atlasAt(oil, '2026-10-22');
+  const view = atlasAt(oil, '2026-10-23');
+  const previous = before.relations.find(item => item.id === 'volare-clarksons-option');
+  const updated = view.relations.find(item => item.id === previous.id);
+  assert.equal(previous.observation.publishedOn, '2026-10-13');
+  assert.equal(updated.observation.publishedOn, '2026-10-23');
+  assert.equal(updated.observation.recordedOn, '2026-10-28');
+  assert.match(updated.observation.limit, /ne sont pas une nouvelle levée/);
+  assert.match(updated.observation.limit, /300 000 actions.*événement distinct/);
+  assert.equal(updated.observation.amount, undefined);
+  assert.equal(view.sources.find(item => item.id === 'volare-stabilisation-report-20261023').publishedOn, '2026-10-23');
+  for (const old of before.relations.filter(item => item.id !== previous.id)) assert.deepEqual(documentaryRelation(view.relations.find(item => item.id === old.id)), documentaryRelation(old));
+});
+
+test('the additional private-credit row remains bounded and cannot overlap another actor', () => {
+  assertAtlasDataset(credit);
+  assert.equal(Math.max(...credit.nodes.map(item => item.row)), 5);
+  for (const row of [-1, 6, 1000, 5.5]) {
+    const changed = structuredClone(credit);
+    changed.nodes.find(item => item.id === 'pg-insurers').row = row;
+    assert.throws(() => assertAtlasDataset(changed), /position invalide/);
+  }
+  const overlap = structuredClone(credit);
+  overlap.nodes.find(item => item.id === 'pg-evergreen').column = 1;
+  assert.throws(() => assertAtlasDataset(overlap), /positions superposées/);
 });

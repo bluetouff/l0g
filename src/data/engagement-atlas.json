@@ -59,6 +59,13 @@
       "url": "https://aligneddc.com/press-release/aligned-data-centers-completes-1-18-billion-securitization-financing/",
       "publishedOn": "2026-07-28",
       "locator": "Communiqué du 28 juillet 2026, ouverture et paragraphes sur les classes A-2-I et B, leur date de remboursement prévue et les emplois du produit net."
+    },
+    {
+      "id": "nebius-citi-20261022",
+      "title": "Nebius : 6-K sur le crédit garanti de Citi",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_6k.htm",
+      "publishedOn": "2026-10-22",
+      "locator": "Section Credit Facility : contrat du 17 octobre, trois emprunteurs, principal, échéance, marge, sûretés et covenant de liquidité."
     }
   ],
   "nodes": [
@@ -105,6 +112,20 @@
       "role": "Souscripteurs institutionnels non nommés",
       "column": 3,
       "row": 1
+    },
+    {
+      "id": "citi-nebius",
+      "label": "Citibank, N.A.",
+      "role": "Prêteur et arrangeur · Nebius",
+      "column": 0,
+      "row": 4
+    },
+    {
+      "id": "nebius-borrowers",
+      "label": "Emprunteurs Nebius",
+      "role": "Group N.V. · Inc. · B.V.",
+      "column": 1,
+      "row": 4
     }
   ],
   "relations": [
@@ -296,6 +317,30 @@
           ]
         }
       ]
+    },
+    {
+      "id": "citi-nebius-facility",
+      "from": "citi-nebius",
+      "to": "nebius-borrowers",
+      "reading": {
+        "href": "/posts/nebius-citi-credit-364-jours-gpu/",
+        "label": "Lire : le crédit de 364 jours de Nebius"
+      },
+      "observations": [
+        {
+          "publishedOn": "2026-10-22",
+          "recordedOn": "2026-10-28",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Crédit garanti · 3,5 Md$",
+          "claim": "Le 6-K de Nebius décrit un crédit à terme senior garanti de 3,5 milliards de dollars signé le 17 octobre avec Citibank, N.A., prêteur et arrangeur. Nebius Group N.V., Nebius Inc. et Nebius B.V. sont coemprunteurs ; le financement vise les capacités GPU et les besoins généraux du groupe. L’échéance est le 16 octobre 2027.",
+          "limit": "Le principal contractuel ne prouve pas un tirage intégral. Les trois emprunteurs sont regroupés sur ce nœud, sans leur attribuer trois financements distincts. Les sûretés couvrent la quasi-totalité de leurs actifs, sous exceptions ; le seuil du covenant de liquidité n’est pas publié.",
+          "watch": "Tirages, refinancement avant échéance et documentation détaillée des sûretés.",
+          "sources": [
+            "nebius-citi-20261022"
+          ]
+        }
+      ]
     }
   ],
   "milestones": [
@@ -338,6 +383,11 @@
       "date": "2026-09-21",
       "label": "Préfinancement et engagement distinct",
       "change": "Le prospectus distingue le préfinancement de Nvidia, reçu puis apporté à la société en août, d’un achat d’actions encore conditionnel. Le même argent n’est pas compté deux fois."
+    },
+    {
+      "date": "2026-10-22",
+      "label": "Nebius · crédit bancaire garanti",
+      "change": "Le 6-K ajoute le prêt Citi aux trois coemprunteurs Nebius. Le principal contractuel reste distinct des sommes effectivement tirées ; aucun lien de financement avec les autres circuits de la carte n’est déduit."
     }
   ]
 }

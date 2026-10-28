@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "39afbf69e062b6775f8e5eca19e9aded4c1da5aefb352160e4aefc2058fcfd41",
+  "sourceSha256": "793a33ba888cc44645083fbb70d44b717f6843c57333d8c8ef367eeca660cf9b",
   "title": "AI financing atlas",
   "sources": {
     "aip-2024": {
@@ -33,6 +33,10 @@
     "aligned-abs-20260728": {
       "title": "Aligned: asset-backed securities issuance reported as completed",
       "locator": "28 July 2026 press release, opening and paragraphs on Classes A-2-I and B, their anticipated repayment date and intended use of net proceeds."
+    },
+    "nebius-citi-20261022": {
+      "title": "Nebius: Form 6-K on Citi’s secured facility",
+      "locator": "Credit Facility section: 17 October agreement, three borrowers, principal, maturity, margin, collateral and liquidity covenant."
     }
   },
   "nodes": {
@@ -91,6 +95,14 @@
     "aligned-abs-investors": {
       "label": "Aligned ABS investors",
       "role": "Unnamed institutional subscribers"
+    },
+    "citi-nebius": {
+      "label": "Citibank, N.A.",
+      "role": "Lender and arranger · Nebius"
+    },
+    "nebius-borrowers": {
+      "label": "Nebius borrowers",
+      "role": "Group N.V. · Inc. · B.V."
     }
   },
   "relations": {
@@ -283,6 +295,20 @@
           "watch": "Note documentation, identity of the issuer and holders, and actual use of net proceeds."
         }
       }
+    },
+    "citi-nebius-facility": {
+      "reading": {
+        "href": "/en/analysis/nebius-citi-364-day-gpu-credit/",
+        "label": "Read: Nebius’s 364-day credit facility"
+      },
+      "observations": {
+        "2026-10-22": {
+          "label": "Secured facility · $3.5bn",
+          "claim": "Nebius’s 6-K describes a $3.5 billion senior secured term facility signed on 17 October with Citibank, N.A., as lender and arranger. Nebius Group N.V., Nebius Inc. and Nebius B.V. are co-borrowers. The financing supports GPU capacity and general corporate purposes, with maturity on 16 October 2027.",
+          "limit": "Contractual principal does not establish full drawdown. The node groups three borrowers without counting three separate financings. Collateral covers substantially all their assets, subject to exceptions; the minimum liquidity covenant’s threshold is not disclosed.",
+          "watch": "Drawdowns, refinancing before maturity and detailed collateral documentation."
+        }
+      }
     }
   },
   "milestones": {
@@ -317,6 +343,10 @@
     "2026-09-21": {
       "label": "Prepayment and separate commitment",
       "change": "The prospectus separates Nvidia's prepayment, received and contributed to the company in August, from a share purchase that remains conditional. The same money is not counted twice."
+    },
+    "2026-10-22": {
+      "label": "Nebius · secured bank facility",
+      "change": "The 6-K adds Citi’s loan to three Nebius co-borrowers. Contractual principal remains distinct from actual drawdowns; no financing link to the map’s other structures is inferred."
     }
   }
 }

@@ -31,6 +31,14 @@ Chaque traduction porte `sourceSha256`, le SHA-256 du `JSON.stringify` du corpus
 
 ## Trois dates distinctes
 
+### Enrichissement revu le 28 octobre 2026
+
+- IA : le 6-K de Nebius du 22 octobre ajoute le crédit à terme senior garanti de Citi. Un seul lien regroupe les trois coemprunteurs ; le principal de 3,5 milliards de dollars ne devient pas un tirage attesté. L’échéance est le 16 octobre 2027. Aucun financement avec les autres circuits de la carte n’est inféré.
+- Crédit privé : le communiqué de Partners Group du 22 octobre ajoute les souscriptions des assureurs au feeder et son accès à la stratégie evergreen. Les 510 millions de dollars annoncés comprennent des notes et du capital ; les contrats, tranches et noms juridiques non publiés restent inconnus. Le véhicule de janvier demeure distinct.
+- Pétrole : le communiqué et le rapport Volare du 23 octobre documentent les achats de stabilisation jusqu’au 22 octobre. Ils ne constituent pas une nouvelle levée de fonds et ne sont pas additionnés aux 300 000 actions émises par exercice de l’option le 13 octobre. La période de stabilisation annoncée se termine le 3 novembre.
+
+Les nouveaux états portent `recordedOn: "2026-10-28"`. Les observations antérieures restent inchangées. Les traductions anglaises des ajouts sont relues avant renouvellement des empreintes. Les trois nouveaux acteurs et structures du crédit privé utilisent une sixième ligne, toujours bornée et sans chevauchement. Le communiqué de Partners Group exige une exception d’URL étroite : origine exacte, chemin de communiqué exact et unique paramètre `news_id` au format UUID. Les autres paramètres et fragments restent refusés. Aucun nouveau modèle monétaire ni aucune récurrence de veille n’est introduit.
+
 ### Enrichissement revu le 21 octobre 2026
 
 - IA : le communiqué Aligned du 28 juillet ajoute une émission ABS de 1,183 milliard de dollars déclarée finalisée, adossée à quatre campus. Les souscripteurs et l'émetteur juridique des titres ne sont pas nommés. La date de remboursement prévue à cinq ans ne devient pas une maturité finale vérifiée ; les emplois du produit net restent prospectifs. Cette dette est distincte du capital de croissance engagé lors de l'acquisition. Le registre SEC de SB Energy conserve le S-1/A du 21 septembre comme dernier dépôt ; cette vérification ciblée ne confirme aucun règlement supplémentaire de Nvidia ni introduction achevée.

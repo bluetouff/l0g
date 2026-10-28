@@ -87,6 +87,20 @@
       "title": "Volare : stabilisation et surallocation",
       "url": "https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-and-over-allotment-notice/",
       "locator": "Communiqué du 5 octobre : prêt d’actions, option d’émission et période de stabilisation."
+    },
+    {
+      "id": "volare-stabilisation-20261023",
+      "title": "Volare : suivi de stabilisation publié le 23 octobre",
+      "url": "https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice-1/",
+      "publishedOn": "2026-10-23",
+      "locator": "Communiqué : rapport couvrant le 13 au 22 octobre et période de stabilisation du 5 octobre au 3 novembre."
+    },
+    {
+      "id": "volare-stabilisation-report-20261023",
+      "title": "Volare : rapport des opérations de stabilisation",
+      "url": "https://mb.cision.com/Public/24324/4414225/96db6173df9d2909.pdf",
+      "publishedOn": "2026-10-23",
+      "locator": "Page PDF 1 : calendrier, agent et quantités des transactions ; détail des achats dans les pages suivantes. Les prix de marché ne sont pas repris dans cet atlas."
     }
   ],
   "nodes": [
@@ -858,6 +872,20 @@
             "volare-stabilisation-20261013",
             "volare-stabilisation-20261005"
           ]
+        },
+        {
+          "publishedOn": "2026-10-23",
+          "recordedOn": "2026-10-28",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Stabilisation documentée jusqu’au 22 octobre",
+          "claim": "Volare publie un rapport de stabilisation couvrant le 13 au 22 octobre. Son tableau recense des achats les 15, 16, 20, 21 et 22 octobre ; Clarksons reste l’agent de stabilisation. La période annoncée court du 5 octobre au 3 novembre 2026.",
+          "limit": "Ces achats de marché secondaire ne sont pas une nouvelle levée de capitaux pour Volare. Le communiqué ne publie pas de nouvel exercice de l’option ni de produit net supplémentaire. Les 300 000 actions annoncées le 13 octobre restent un événement distinct des achats recensés.",
+          "watch": "Rapport final de stabilisation, restitution des titres prêtés et éventuel exercice supplémentaire de l’option.",
+          "sources": [
+            "volare-stabilisation-20261023",
+            "volare-stabilisation-report-20261023"
+          ]
         }
       ]
     }
@@ -902,6 +930,11 @@
       "date": "2026-10-13",
       "label": "Volare · option d’émission partiellement exercée",
       "change": "La stabilisation reste en cours ; l’émission supplémentaire ne permet pas de déduire l’actionnariat définitif."
+    },
+    {
+      "date": "2026-10-23",
+      "label": "Volare · suivi de stabilisation",
+      "change": "Le rapport couvre les achats de stabilisation jusqu’au 22 octobre. Les opérations de marché secondaire restent distinctes de l’émission de 300 000 actions annoncée le 13 ; aucune nouvelle levée n’est déduite de ces achats."
     }
   ]
 }
