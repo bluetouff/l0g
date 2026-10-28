@@ -19,6 +19,30 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// AI governance distinguishes a company purpose, special control rights and public ownership.
+const aiGovernanceFr = '/posts/gouvernance-ia-anthropic-etat-nationalisation/';
+const aiGovernanceEn = '/en/analysis/ai-governance-anthropic-state-ownership/';
+for (const [slug, sources] of [["pbc", ["https://delcode.delaware.gov/title8/c001/sc15/index.html"]], ["golden-share", ["https://www.ussteel.com/documents/40705/17349221/Q1%2B2026%2BCondensed%2BConsolidated%2BFinancial%2BStatements%2BvPosting.pdf/f60026fb-7682-7f9b-5c9d-af201ece1735?t=1778673519786", "https://www.nipponsteel.com/en/newsroom/news/2025/pdf/20250614_100.pdf"]], ["fonds-souverain", ["https://ifswf.org/sites/default/files/santiagoprinciples_0_0.pdf"]]]) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(en[0].robots, 'noindex,follow');
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  for (const [entry, article] of [[fr[0], aiGovernanceFr], [en[0], aiGovernanceEn]]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
+    assert.doesNotMatch(entry.def, /[—]/u);
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'pbc').def, /but lucratif.*équilibrer.*actionnaires.*matériellement affectées/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'golden-share').def, /décisions définies.*participation économique.*matières énumérées/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'fonds-souverain').def, /administrations publiques.*macroéconomiques.*objectifs financiers/u);
+assert.doesNotMatch(glossaryEntries.find(entry => entry.slug === 'fonds-souverain').def, /[0-9]|Anthropic|OpenAI/u);
+assert.match(glossaryAtlasEnBySlug.get('fonds-souverain').def, /owned by general government.*macroeconomic purposes/u);
+
 // Meta financing definitions keep voting rights, ownership and settlement distinct.
 const metaFinancingFr = '/posts/meta-financement-actions-c-droits-vote/';
 const metaFinancingEn = '/en/analysis/meta-financing-class-c-voting-rights/';
@@ -1050,7 +1074,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 341, 'Le corpus anglais ajoute trois définitions de financement et de vote aux 338 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 344, 'Le corpus anglais ajoute trois fiches de gouvernance et de propriété publique aux 341 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1251,8 +1275,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 729, 'Le corpus ajoute trois définitions de financement et de vote aux 726 définitions existantes');
-assert.equal(glossaryAtlasEntries.length, 331, 'Le graphe Atlas ajoute trois définitions de financement et de vote aux 328 nœuds existants');
+assert.equal(glossaryEntries.length, 731, 'Le corpus ajoute deux définitions de gouvernance aux 729 définitions existantes');
+assert.equal(glossaryAtlasEntries.length, 334, 'Le graphe Atlas ajoute trois fiches de gouvernance et de propriété publique aux 331 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1674,7 +1698,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 921, 'Le graphe Atlas ajoute six relations de financement et de vote aux 915 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 927, 'Le graphe Atlas ajoute six relations de gouvernance et de propriété publique aux 921 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" style="width:100%;height:auto" class="l0g-ai-governance-svg" role="img" aria-labelledby="ai-governance-en-state-d-title ai-governance-en-state-d-desc"><title id="ai-governance-en-state-d-title">One state, several interests to govern</title><desc id="ai-governance-en-state-d-desc">Analytical diagram. A laboratory can face the state as customer, owner and regulator. Services and contracts, financial returns, then safety evidence and requirements follow separate paths. Separate mandates, traceable decisions and independent review are proposed safeguards.</desc>
+<rect id="ai-governance-en-state-d-frame" x="0" y="0" width="1000" height="720" rx="5" fill="var(--color-ink)"></rect>
+<text data-panel="ai-governance-en-state-d-frame" x="34" y="36" fill="var(--color-signal)" font-family="l0g AI Governance" font-size="22" font-weight="700" text-anchor="start">l0g / AI / 07</text>
+<line x1="34" y1="52" x2="966" y2="52" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="ai-governance-en-state-d-frame" x="34" y="100" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="31" font-weight="700" text-anchor="start">One state, several interests to govern</text>
+<text data-panel="ai-governance-en-state-d-frame" x="34" y="145" fill="var(--color-muted)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="start">Analytical view · possible mechanisms and proposed safeguards</text>
+<rect id="ai-governance-en-state-d-card-role-0" x="34" y="190" width="270" height="105" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="ai-governance-en-state-d-card-role-0" x="50" y="228" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="22" font-weight="700" text-anchor="start">State as customer</text>
+<text data-panel="ai-governance-en-state-d-card-role-0" x="50" y="272" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="start">Operational need</text>
+<path d="M 316 230 L 730 230 L 730 320 L 742 320" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 734.97934 323.835404 L 742 320 L 734.97934 316.164596" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 742 350 L 705 350 L 705 275 L 316 275" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 323.02066 271.164596 L 316 275 L 323.02066 278.835404" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="ai-governance-en-state-d-frame" x="510" y="215" fill="var(--color-signal)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="middle">Purchases and contracts</text>
+<text data-panel="ai-governance-en-state-d-frame" x="510" y="305" fill="var(--color-muted)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="middle">Services delivered</text>
+<rect id="ai-governance-en-state-d-card-role-1" x="34" y="340" width="270" height="105" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="ai-governance-en-state-d-card-role-1" x="50" y="378" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="22" font-weight="700" text-anchor="start">State as owner</text>
+<text data-panel="ai-governance-en-state-d-card-role-1" x="50" y="422" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="start">Return on the asset</text>
+<path d="M 316 380 L 730 380 L 730 390 L 742 390" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 734.97934 393.835404 L 742 390 L 734.97934 386.164596" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 742 420 L 705 420 L 705 425 L 316 425" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 323.02066 421.164596 L 316 425 L 323.02066 428.835404" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="ai-governance-en-state-d-frame" x="510" y="365" fill="var(--color-amber)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="middle">Capital and rights</text>
+<text data-panel="ai-governance-en-state-d-frame" x="510" y="455" fill="var(--color-muted)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="middle">Financial returns</text>
+<rect id="ai-governance-en-state-d-card-role-2" x="34" y="490" width="270" height="105" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="ai-governance-en-state-d-card-role-2" x="50" y="528" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="22" font-weight="700" text-anchor="start">State as regulator</text>
+<text data-panel="ai-governance-en-state-d-card-role-2" x="50" y="572" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="start">Safety and rights</text>
+<path d="M 316 530 L 730 530 L 730 460 L 742 460" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 734.97934 463.835404 L 742 460 L 734.97934 456.164596" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 742 490 L 705 490 L 705 575 L 316 575" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 323.02066 571.164596 L 316 575 L 323.02066 578.835404" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="ai-governance-en-state-d-frame" x="510" y="515" fill="var(--color-signal)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="middle">Rules and requirements</text>
+<text data-panel="ai-governance-en-state-d-frame" x="510" y="605" fill="var(--color-muted)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="middle">Evidence and incidents</text>
+<rect id="ai-governance-en-state-d-card-lab" x="754" y="285" width="212" height="235" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="ai-governance-en-state-d-card-lab" x="770" y="356" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="24" font-weight="700" text-anchor="start">SAME</text>
+<text data-panel="ai-governance-en-state-d-card-lab" x="770" y="383" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="24" font-weight="700" text-anchor="start">LABORATORY</text>
+<text data-panel="ai-governance-en-state-d-card-lab" x="770" y="450" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="start">Objectives can</text>
+<text data-panel="ai-governance-en-state-d-card-lab" x="770" y="477" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="start">come into</text>
+<text data-panel="ai-governance-en-state-d-card-lab" x="770" y="504" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="start">tension.</text>
+<text data-panel="ai-governance-en-state-d-frame" x="34" y="650" fill="var(--color-paper)" font-family="l0g AI Governance" font-size="22" font-weight="700" text-anchor="start">Proposed safeguards: separate mandates, traceability, impartial review.</text>
+<line x1="34" y1="671" x2="966" y2="671" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="ai-governance-en-state-d-frame" x="34" y="700" fill="var(--color-muted)" font-family="l0g AI Governance" font-size="22" font-weight="400" text-anchor="start">P16 · P17 / l0g analysis</text>
+</svg>
