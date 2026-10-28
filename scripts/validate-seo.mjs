@@ -61,7 +61,7 @@ for (const experiment of titleExperiments.experiments) {
   assert.equal(entry.data.seoTitle, experiment.seo_title, `Title gelé modifié avant décision: ${experiment.id}`);
 }
 for (const page of titleExperiments.measurement_followup.pages) {
-  const approvedCorrection = page.decision === 'corriger_troncature_metadata';
+  const approvedCorrection = ['corriger_troncature_metadata', 'corriger_titre_seo'].includes(page.decision);
   if (page.decision !== 'maintenir_en_attente_de_mesure' && !approvedCorrection) continue;
   let currentTitle;
   if (page.route === '/en/start/') {

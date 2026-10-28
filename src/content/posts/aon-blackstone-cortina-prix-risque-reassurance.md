@@ -1,7 +1,7 @@
 ---
 title: "Aon et Blackstone : qui fixe le prix du risque ?"
-seoTitle: "Aon et Blackstone : les risques du projet Cortina | l0g"
-description: "Le projet Cortina veut apporter du capital à la réassurance. Qui choisira les risques, contrôlera les prix et restera après les pertes ?"
+seoTitle: "Cortina : Aon, Blackstone et le prix de la réassurance | l0g"
+description: "Analyse du projet Cortina d’Aon et Blackstone : sélection des risques, remises de réassurance et maintien de la capacité après les pertes."
 pubDate: "2026-09-29T09:54:31+02:00"
 tags: ["Assurance", "Réassurance", "Aon", "Blackstone", "Lloyd’s", "Risque"]
 draft: false
@@ -98,6 +98,8 @@ Le précédent réglementaire appelle une lecture complète. Dans son enquête p
 Une commission plus importante peut payer un travail supplémentaire utile. Elle devient un problème si elle oriente le choix contre l’intérêt du client ou si celui-ci ne peut pas comparer les solutions. Pour juger, il faudrait rapprocher les garanties, le coût total, les rémunérations et les alternatives réellement présentées. Le montant de la prime, pris seul, ne suffit pas davantage que celui de la commission.
 
 La question porte aussi sur le partage des conséquences. Un gestionnaire de capital peut absorber une perte de souscription là où un prestataire a déjà encaissé une partie de ses honoraires. Des commissions liées au résultat, des clauses de restitution ou des engagements de capital peuvent réduire ce décalage. Leurs paramètres définitifs ne figurent pas dans les documents publics examinés pour Cortina. Le partage précis des gains, des pertes et des possibilités de restitution reste à documenter.
+
+Notre [suivi sur la rémunération des chefs de file](/posts/cortina-aon-blackstone-remuneration-souscription/) examine le financement de cette expertise dans les placements partagés.
 
 ## Le capital arrive dans un marché où les prix baissent déjà
 

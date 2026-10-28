@@ -2,7 +2,7 @@
 title: "Cortina : qui paie l’expertise des réassureurs ?"
 seoTitle: "Cortina, Aon et Blackstone : rémunérer la souscription | l0g"
 ogTitle: "Cortina : la bataille pour rémunérer l’expertise"
-description: "TransRe critique Cortina ; Aon défend la rémunération des chefs de file. Enquête sur le travail de souscription, le capital suiveur et les conditions encore inconnues."
+description: "Enquête sur le projet Cortina d’Aon et Blackstone : rémunération de l’expertise des chefs de file et responsabilité des réassureurs suiveurs."
 pubDate: "2026-10-10T12:00:00+02:00"
 tags: ["Réassurance", "Aon", "Blackstone", "Lloyd’s", "Cortina", "Souscription"]
 draft: false

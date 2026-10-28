@@ -2,7 +2,7 @@
 title: "Cortina: who pays for reinsurance underwriting expertise?"
 seoTitle: "Cortina, Aon and Blackstone: underwriting fees | l0g"
 ogTitle: "Cortina: the fight over underwriting expertise"
-description: "TransRe challenges Cortina while Aon recognises the case for paying lead underwriters. Follow the work, capital and fees behind shared reinsurance placements."
+description: "An investigation into lead underwriter compensation and follow capital in the debate over Aon and Blackstone’s proposed Cortina reinsurance capacity."
 pubDate: "2026-10-10T12:00:00+02:00"
 tags: ["Reinsurance", "Aon", "Blackstone", "Lloyd’s", "Cortina", "Underwriting"]
 draft: false

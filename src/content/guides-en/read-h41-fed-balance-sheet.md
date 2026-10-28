@@ -1,6 +1,6 @@
 ---
 title: "How to Read H.4.1: the Fed Balance Sheet, Line by Line"
-seoTitle: "Fed H.4.1: what bank reserves really show | l0g"
+seoTitle: "Fed H.4.1 guide: reserves, TGA and reverse repos | l0g"
 description: "Read the Fed's H.4.1 tables: weekly averages, Wednesday balances, bank reserves, the TGA and reverse repos, with a worked source check."
 pubDate: 2026-07-08T16:30:00+02:00
 updatedDate: 2026-10-08T20:00:00+02:00

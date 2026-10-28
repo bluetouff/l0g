@@ -1,7 +1,7 @@
 ---
 title: "Aon and Blackstone: who sets the price of risk?"
-seoTitle: "Aon and Blackstone: Cortina and reinsurance risk | l0g"
-description: "Cortina would bring new capital to reinsurance. Who would select the risks, challenge prices and keep providing cover after losses?"
+seoTitle: "Cortina: Aon, Blackstone and reinsurance pricing | l0g"
+description: "Analysis of Aon and Blackstone’s Cortina proposal: risk selection, reinsurance discounts and the durability of capacity after losses."
 pubDate: "2026-09-29T09:54:31+02:00"
 tags: ["Insurance", "Reinsurance", "Aon", "Blackstone", "Lloyd’s", "Risk"]
 draft: false
@@ -105,6 +105,8 @@ Timing matters too. An investor may ultimately bear an underwriting loss after s
 
 There is no need to infer misconduct to ask for this information. It is part of understanding the service being bought and the incentives attached to it.
 
+Our [follow-up on lead underwriter compensation](/en/analysis/cortina-aon-blackstone-underwriting-expertise-fees/) examines how shared placements finance that expertise.
+
 ## The new money would enter a market already cutting prices
 
 On 3 September, Lloyd’s reported that market rates had fallen **6.7% in the first half of 2026**. Its chief executive warned that price adequacy was eroding, while saying the market’s assessment remained above the level needed for its underwriting profitability objective. This is Lloyd’s assessment of its own market and its [combined-ratio](/en/glossary/ratio-combine/) objective, which compares claims and expenses with premiums. <a href="#source-13">[13]</a>
@@ -127,7 +129,7 @@ The economic attraction can extend beyond underwriting profit. Between collectin
 
 The identity of the capital provider also needs care. Funds **managed** by Blackstone are not necessarily money from Blackstone’s own balance sheet. Identifying the funds, their investors and their commitments is necessary to establish who bears losses. An asset manager’s name is not a blanket parent-company guarantee.
 
-## What remains after a bad year
+## Reinsurance capacity after a bad year
 
 The duration of the arrangement matters most when claims turn out worse than expected. An investor can remain committed to the insurance sector while ceasing to support new business in a particular class. A vehicle can continue paying old claims without offering cover for the following year. Meeting existing liabilities and supplying future capacity are separate promises. [France’s Cat Nat scheme and public guarantee](/en/analysis/when-climate-turns-state-into-reinsurer/) address this issue within a different institutional framework.
 
