@@ -18,6 +18,9 @@ test('French sidebars retain support and Watch without the PA Check card', async
     read('../src/pages/posts/[...slug].astro'),
   ]);
   assert.match(home, /<SupportCard \/>[\s\S]*<WatchCard \/>[\s\S]*<WeeklyCta variant="home" \/>/);
-  assert.match(article, /<SupportCard compact \/>[\s\S]*<WatchCard compact \/>/);
+  assert.match(article, /<ArticleNavigator[\s\S]*<ArticleServices \/>/);
+  const services = await read('../src/components/ArticleServices.astro');
+  assert.match(services, /en \? '\/en\/support\/' : '\/soutenir\/'/);
+  assert.match(services, /https:\/\/watch\.l0g\.fr\//);
   for (const source of [home, article]) assert.doesNotMatch(source, /PaCheckCard|pa-card/);
 });

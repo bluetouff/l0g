@@ -145,7 +145,12 @@ test("la home EN présente la dernière publication ou promotion et conserve les
   assert.equal(noPosts.featuredInvestigation, null);
   assert.deepEqual(noPosts.selectedInvestigations, []);
   assert.throws(() => select([], curated), /Missing selected English investigation/, "une sélection cassée reste bloquante");
-  assert.match(text, /<PublicationDates pubDate=\{featuredInvestigation\.data\.pubDate\} updatedDate=\{featuredInvestigation\.data\.updatedDate\} lang="en"/);
+  const featuredCard = text.match(/<PostHero\b[\s\S]*?\/>/)?.[0];
+  assert.ok(featuredCard, "carte de la une anglaise absente");
+  assert.match(featuredCard, /pubDate=\{featuredInvestigation\.data\.pubDate\}/);
+  assert.match(featuredCard, /updatedDate=\{featuredInvestigation\.data\.updatedDate\}/);
+  assert.match(featuredCard, /lang="en"/);
+  assert.match(source("src/components/PostHero.astro"), /<PublicationDates pubDate=\{pubDate\} updatedDate=\{updatedDate\} lang=\{lang\}/);
 });
 
 test("l’analyse moteurs conserve son instant de publication exact en FR et EN", () => {

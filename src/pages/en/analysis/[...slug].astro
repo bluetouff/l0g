@@ -13,8 +13,8 @@ import ArticleTools from '../../../components/ArticleTools.astro';
 import { articleGlossaryTerms } from '../../../lib/article-glossary.ts';
 import '../../../styles/article-print.css';
 import '../../../styles/analysis-infographics.css';
-import SupportCard from '../../../components/SupportCard.astro';
-import WatchCard from '../../../components/WatchCard.astro';
+import ArticleNavigator from '../../../components/ArticleNavigator.astro';
+import ArticleServices from '../../../components/ArticleServices.astro';
 import DebtEpubCard from '../../../components/DebtEpubCard.astro';
 import CyberRecoveryEpubCard from '../../../components/CyberRecoveryEpubCard.astro';
 import InsurancePromiseEpubCard from '../../../components/InsurancePromiseEpubCard.astro';
@@ -42,7 +42,7 @@ const hasCyberRecoveryEpub = cyberRecoveryEditions.en.chapters.some(chapter => c
 const hasInsurancePromiseEpub = insurancePromiseEditions.en.chapters.some(chapter => chapter.slug === post.id);
 const hasCumCumEpub = cumcumEditions.en.chapters.some(chapter => chapter.slug === post.id);
 const sourcePost = (await getCollection('posts')).find((entry) => entry.id === post.data.sourceArticle);
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' });
 const updated = post.data.updatedDate ?? post.data.pubDate;
@@ -151,7 +151,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
       <p class="post-lede mt-5">{post.data.description}</p>
 
       <div class="post-meta mono-label mt-6">
-        <a href="/about/" rel="author" class="link-term">By Olivier Laurelli / bluetouff</a>
+        <a href="/about/" rel="author" class="link-term post-author">By Olivier Laurelli / bluetouff</a>
+        <a class="article-language" href={frUrl} hreflang="fr" data-pagefind-ignore><span>FR</span> French original <span aria-hidden="true">↗</span></a>
         <span class="sep" aria-hidden="true">·</span>
         <time datetime={isoPub} data-pagefind-meta="date">published {publishedLabel}</time>
         {post.data.updatedDate && (
@@ -162,17 +163,27 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
         )}
         <span class="sep" aria-hidden="true">·</span>
         <span>{rt} min read</span>
-        {post.data.tags.length > 0 && <span class="sep" aria-hidden="true">·</span>}
-        <span class="post-tags">
-          {post.data.tags.map((tag) => <span class="text-signal">#{tag}</span>)}
-        </span>
       </div>
 
-      <div class="en-trust" data-pagefind-ignore>
-        <span>dated revision: {updatedLabel}</span>
-        <a href={frUrl}>French original</a>
-        <a href="/sites-reference/">primary sources</a>
-        <a href="/rgpd/">no tracker</a>
+      <div class="article-secondary">
+        <details class="article-context">
+          <summary data-pagefind-ignore><span>Sources and reading context</span><span class="article-context-toggle" aria-hidden="true">+</span></summary>
+          <div class="article-context-body">
+            {post.data.tags.length > 0 && <p class="en-context-topics"><span>Topics</span><span class="post-tags">{post.data.tags.map((tag) => <span class="text-signal">#{tag}</span>)}</span></p>}
+            <div class="en-trust" data-pagefind-ignore>
+              <span>dated revision: {updatedLabel}</span>
+              <a href="/sites-reference/">primary sources</a>
+              <a href="/rgpd/">no tracker</a>
+            </div>
+            {belongsToAsiaPath && (
+              <a class="context-path" href="/en/asia/">
+                <span>// reading path</span>
+                <strong>Asia in the global financial system</strong>
+                <em>Follow the rates, currencies, credit and capital flows around this analysis.</em>
+              </a>
+            )}
+          </div>
+        </details>
       </div>
 
       {translationIsStale && (
@@ -181,16 +192,9 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
         </p>
       )}
 
-      {belongsToAsiaPath && (
-        <a class="context-path" href="/en/asia/">
-          <span>// reading path</span>
-          <strong>Asia in the global financial system</strong>
-          <em>Follow the rates, currencies, credit and capital flows around this analysis.</em>
-        </a>
-      )}
-
-      <div class="post-rule" aria-hidden="true"></div>
     </header>
+
+    <ArticleNavigator headings={headings} lang="en" variant="inline" />
 
     <div class="article-reading-actions" data-pagefind-ignore>
       <ReadingLibrary lang="en" articleTitle={post.data.title} />
@@ -245,9 +249,9 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     <a href="/en/analysis/" class="mono-label link-term mt-6 inline-block">$ cd ../analysis</a>
   </article>
 
-  <aside class="en-article-sidebar" aria-label="Support l0g and discover Watch" data-pagefind-ignore>
-    <SupportCard lang="en" compact />
-    <WatchCard lang="en" compact />
+  <aside class="en-article-sidebar" aria-label="Reading navigation and services" data-pagefind-ignore>
+    <ArticleNavigator headings={headings} lang="en" />
+    <ArticleServices lang="en" />
   </aside>
   </div>
 
@@ -288,13 +292,32 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     align-items: start;
   }
   .en-article-shell > article { width: 100%; min-width: 0; }
+  .post-head { margin-bottom: .75rem; }
+  .post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .65rem; margin-top: .9rem; font-size: .66rem; line-height: 1.5; letter-spacing: .04em; }
+  .post-meta > .sep { display: none; }
   .en-article-sidebar {
     display: grid;
     min-width: 0;
-    gap: 0.85rem;
+    gap: 1.1rem;
   }
+  .article-secondary { margin-top: .25rem; }
+  .article-language { display: inline-flex; align-items: center; gap: .35rem; min-height: 24px; padding-left: .65rem; border-left: 1px solid var(--color-line); color: var(--color-signal); font: 500 .72rem/1.4 var(--font-read); letter-spacing: normal; text-transform: none; white-space: nowrap; }
+  .article-language > :first-child { font: 600 .63rem/1 var(--font-mono); letter-spacing: .06em; }
+  .article-language > :last-child { color: var(--color-muted); }
+  .article-language:hover { text-decoration: underline; text-underline-offset: .2em; }
+  .article-language:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; border-radius: var(--radius-control); }
+  .article-context { min-width: 0; border-block: 1px solid var(--color-line); }
+  .article-context > summary { display: flex; align-items: center; justify-content: space-between; gap: .65rem; min-height: 44px; padding: .6rem 0; list-style: none; cursor: pointer; color: var(--color-paper); font: 500 .75rem/1.4 var(--font-read); }
+  .article-context > summary::-webkit-details-marker { display: none; }
+  .article-context-toggle { flex: none; color: var(--color-signal); font: 400 1rem/1 var(--font-mono); }
+  .article-context[open] .article-context-toggle { transform: rotate(45deg); }
+  .article-context > summary:hover { color: var(--color-signal); }
+  .article-secondary :is(a, summary):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; border-radius: var(--radius-control); }
+  .article-context-body { padding: .2rem 0 .8rem; }
+  .en-context-topics { display: grid; gap: .4rem; margin: .25rem 0 .75rem; font: .72rem/1.5 var(--font-read); }
+  .en-context-topics > :first-child { color: var(--color-muted); font: 500 .64rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: .06em; }
   .en-trust {
-    margin-top: 1.1rem;
+    margin-top: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 0.55rem;
@@ -306,11 +329,11 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   .post-meta,
   .post-tags { min-width: 0; }
   @media (max-width: 620px) {
-    .post-head { margin-bottom: 1.5rem; }
-    .post-meta { display: flex; flex-wrap: wrap; gap: .35rem .6rem; font-size: .62rem; line-height: 1.6; }
-    .post-meta > a { flex-basis: 100%; }
-    .post-meta > a + .sep { display: none; }
-    .en-trust { gap: .35rem; margin-top: .75rem; font-size: .6rem; }
+    :global(.post-head .article-primary-image) { margin: 1rem 0; }
+    .post-lede { margin-top: 1rem; font-size: 1rem; line-height: 1.6; }
+    .post-meta { gap: .3rem .6rem; margin-top: .75rem; font-size: .62rem; line-height: 1.6; }
+    .en-trust { gap: .35rem; font-size: .6rem; }
+    .article-secondary { margin-top: 0; }
   }
   .post-tags {
     display: inline-flex;
@@ -402,12 +425,12 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   .citation-en p {
     overflow-wrap: anywhere;
   }
-  @media (min-width: 960px) {
+  @media (min-width: 1024px) {
     .en-article-shell {
       grid-template-columns: minmax(0, 42rem) 290px;
       justify-content: space-between;
       gap: 3rem;
     }
-    .en-article-sidebar { position: sticky; top: 2rem; }
+    .en-article-sidebar { position: sticky; top: 2rem; max-height: calc(100dvh - 4rem); overflow-y: auto; scrollbar-width: thin; padding: .25rem .45rem .25rem .25rem; }
   }
 </style>

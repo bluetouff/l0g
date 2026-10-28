@@ -50,20 +50,14 @@ const copy = lang === 'en'
     position: relative;
     display: block;
     overflow: hidden;
-    border: 1px solid transparent;
-    border-radius: 16px 4px 16px 16px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-panel);
     padding: 1rem;
     color: var(--color-paper);
-    background:
-      linear-gradient(var(--surface-elevated), var(--surface-elevated)) padding-box,
-      linear-gradient(135deg,
-        color-mix(in srgb, var(--color-signal) 68%, transparent),
-        color-mix(in srgb, var(--color-accent) 52%, var(--color-line)) 55%,
-        color-mix(in srgb, var(--color-amber) 58%, transparent)
-      ) border-box;
+    background: var(--surface-elevated);
     box-shadow:
       inset 0 1px 0 var(--edge-highlight),
-      0 18px 45px color-mix(in srgb, #000 18%, transparent);
+      var(--shadow-card);
     text-decoration: none;
     isolation: isolate;
   }
@@ -73,10 +67,9 @@ const copy = lang === 'en'
     inset: 0;
     z-index: -2;
     background:
-      radial-gradient(circle at 12% 4%, color-mix(in srgb, var(--color-signal) 16%, transparent), transparent 9rem),
-      radial-gradient(circle at 92% 100%, color-mix(in srgb, var(--color-accent) 13%, transparent), transparent 10rem),
-      repeating-linear-gradient(90deg, color-mix(in srgb, var(--color-line) 18%, transparent) 0 1px, transparent 1px 36px);
-    opacity: 0.9;
+      radial-gradient(circle at 12% 4%, color-mix(in srgb, var(--color-signal) 6%, transparent), transparent 9rem),
+      radial-gradient(circle at 92% 100%, color-mix(in srgb, var(--color-accent) 4%, transparent), transparent 10rem);
+    opacity: 0.65;
   }
   .watch-card::after {
     content: '';
@@ -89,8 +82,7 @@ const copy = lang === 'en'
     border: 1px solid color-mix(in srgb, var(--color-signal) 24%, transparent);
     border-radius: 50%;
     box-shadow:
-      0 0 0 1.35rem color-mix(in srgb, var(--color-accent) 4%, transparent),
-      0 0 0 2.7rem color-mix(in srgb, var(--color-signal) 3%, transparent);
+      0 0 0 1.35rem color-mix(in srgb, var(--color-accent) 2%, transparent);
   }
   .watch-card-top {
     display: flex;
@@ -170,7 +162,7 @@ const copy = lang === 'en'
     margin-bottom: 0.46rem;
     color: var(--color-amber);
     font-family: var(--font-mono);
-    font-size: 0.56rem;
+    font-size: 0.6rem;
     font-weight: 680;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -188,6 +180,7 @@ const copy = lang === 'en'
     max-width: 16rem;
     margin-top: 0.52rem;
     color: var(--color-muted);
+    font-family: var(--font-read);
     font-size: 0.73rem;
     line-height: 1.5;
   }
@@ -212,9 +205,8 @@ const copy = lang === 'en'
   }
   .watch-card:hover,
   .watch-card:focus-visible {
-    background:
-      linear-gradient(color-mix(in srgb, var(--color-signal) 4%, var(--surface-elevated)), color-mix(in srgb, var(--color-signal) 4%, var(--surface-elevated))) padding-box,
-      linear-gradient(135deg, var(--color-signal), var(--color-accent) 58%, var(--color-amber)) border-box;
+    border-color: color-mix(in srgb, var(--color-signal) 48%, var(--color-line));
+    background: color-mix(in srgb, var(--color-signal) 3%, var(--surface-elevated));
   }
   .watch-card:hover > strong,
   .watch-card:focus-visible > strong { color: var(--color-signal); }

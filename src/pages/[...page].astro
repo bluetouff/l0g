@@ -135,6 +135,7 @@ const needCards = [
         url={`/posts/${hero.post.id}/`}
         title={hero.post.data.title}
         description={hero.post.data.description}
+        imageSrc={hero.post.data.ogImage ?? `/og/${hero.post.id}.png`}
         pubDate={hero.post.data.pubDate}
         updatedDate={hero.post.data.updatedDate}
         readingTime={hero.rt}

@@ -39,7 +39,10 @@ test('small light-theme accent text keeps strong contrast on every shared surfac
     'color-topic-blue',
     'color-elevated',
   ].map(lightToken);
-  const backgrounds = ['#ffffff', '#e7e9ee', '#eef0f4'];
+  const backgrounds = [...new Set([
+    ...['color-ink', 'color-surface', 'color-surface-2'].map(lightToken),
+    '#ffffff', '#e7e9ee', '#eef0f4',
+  ])];
 
   for (const foreground of foregrounds) {
     for (const background of backgrounds) {
@@ -47,6 +50,11 @@ test('small light-theme accent text keeps strong contrast on every shared surfac
         contrast(foreground, background) >= 5.5,
         `${foreground} must reach 5.5:1 on ${background}`,
       );
+    }
+  }
+  for (const foreground of ['color-paper', 'color-bright', 'color-muted', 'color-prose'].map(lightToken)) {
+    for (const background of backgrounds) {
+      assert.ok(contrast(foreground, background) >= 4.5, `${foreground} text must reach 4.5:1 on ${background}`);
     }
   }
 });

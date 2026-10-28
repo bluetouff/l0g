@@ -5,8 +5,7 @@ import '../../styles/reserves-pump-infographics.css';
 import '../../styles/paramount-warner-infographics.css';
 import '../../styles/danfoss-figures.css';
 import ArticleNavigator from '../../components/ArticleNavigator.astro';
-import SupportCard from '../../components/SupportCard.astro';
-import WatchCard from '../../components/WatchCard.astro';
+import ArticleServices from '../../components/ArticleServices.astro';
 import WeeklyCta from '../../components/WeeklyCta.astro';
 import ArticleQuickTake from '../../components/ArticleQuickTake.astro';
 import ArticleEvidence from '../../components/ArticleEvidence.astro';
@@ -39,6 +38,7 @@ import { buildArticleEvidence, type ClaimEvidence } from '../../lib/article-evid
 import { glossarySearchText, textContainsGlossaryToken } from '../../lib/glossary-matching.mjs';
 import { readingTime } from '../../lib/reading-time.ts';
 import { formatDateFr } from '../../lib/freshness.ts';
+import { keepFrenchPunctuation } from '../../lib/typography.ts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -312,13 +312,12 @@ const quickUncertainty = post.data.quickTake?.uncertainty
   alternateLinks={alternateLinks}
 >
   <div slot="sidebar" class="article-sidebar">
-    <SupportCard compact />
-    <WatchCard compact />
     <ArticleNavigator
       headings={articleHeadings}
       terms={articleTerms}
       topics={relatedTopics}
     />
+    <ArticleServices />
   </div>
 
   <script type="application/ld+json" is:inline set:html={safeArticleJsonLd} />
@@ -328,14 +327,14 @@ const quickUncertainty = post.data.quickTake?.uncertainty
       <ol class="flex flex-wrap gap-2">
         <li><a href="/" class="text-signal underline underline-offset-4">Journal</a></li>
         <li aria-hidden="true">/</li>
-        <li aria-current="page" class="min-w-0">{post.data.title}</li>
+        <li aria-current="page" class="min-w-0">{keepFrenchPunctuation(post.data.title)}</li>
       </ol>
     </nav>
     <header class="post-head mb-10">
       <p class="mono-label glow post-kicker">// analyse</p>
 
       <h1 class="post-title mt-3 font-display text-[clamp(1.9rem,4.5vw,3rem)] leading-tight tracking-wider glow">
-        {post.data.title}
+        {keepFrenchPunctuation(post.data.title)}
       </h1>
 
       <ReadingResume body={post.body} />
@@ -381,23 +380,9 @@ const quickUncertainty = post.data.quickTake?.uncertainty
         </div>
       </dl>
 
-      {post.data.tags.length > 0 && (
-        <nav class="post-topics" aria-label="Sujets de l’analyse">
-          <span class="post-topics-label">// sujets</span>
-          <span class="post-tags">
-            {post.data.tags.map((tag) => {
-              const slug = topicForTag(tag);
-              return slug
-                ? <a href={`/sujet/${slug}/`} class="post-tag">#{tag}</a>
-                : <span class="post-tag">#{tag}</span>;
-            })}
-          </span>
-        </nav>
-      )}
-
-      <div class="article-tools" data-pagefind-ignore>
+      <div class="article-secondary">
         {englishUrl && (
-          <a href={englishUrl} class="translation-card" hreflang="en">
+          <a href={englishUrl} class="translation-card" hreflang="en" data-pagefind-ignore>
             <span class="translation-badge" aria-hidden="true">EN</span>
             <span class="translation-copy">
               <strong>Version anglaise</strong>
@@ -407,43 +392,51 @@ const quickUncertainty = post.data.quickTake?.uncertainty
           </a>
         )}
 
-        <details class="article-tool">
-          <summary>
-            <span class="article-tool-copy">
-              <strong>Garanties de lecture</strong>
-              <span>Datée, sourcée, sans tracker</span>
-            </span>
-            <span class="article-tool-toggle" aria-hidden="true">+</span>
+        <details class="article-context">
+          <summary data-pagefind-ignore>
+            <span>Sujets et garanties de lecture</span>
+            <small>Profondeur {proofDepth.score} · {proofBadges.length} niveaux détectés</small>
+            <span class="article-context-toggle" aria-hidden="true">+</span>
           </summary>
-          <div class="article-tool-body">
-            <TrustBar items={trustItems} variant="compact" />
-          </div>
-        </details>
-
-        <details class="article-tool">
-          <summary>
-            <span class="article-tool-copy">
-              <strong>Niveaux de preuve</strong>
-              <span>Profondeur {proofDepth.score} : {proofDepth.label.toLocaleLowerCase('fr-FR')} · {proofBadges.length} niveaux détectés</span>
-            </span>
-            <span class="article-tool-toggle" aria-hidden="true">+</span>
-          </summary>
-          <div class="article-tool-body">
-            <div class="proof-strip" aria-label="Niveaux de preuve détectés">
-              <span class="proof-depth" title={proofDepth.detail}>
-                <span aria-hidden="true">{proofDepth.score}</span>
-                {proofDepth.label}
-              </span>
-              {proofBadges.length > 0 && (
-                <>
-                {proofBadges.map((badge) => (
-                  <span class={`proof-pill proof-${badge.tone}`} title={badge.detail}>
-                    <span aria-hidden="true"></span>
-                    {badge.label}
-                  </span>
-                ))}
-                </>
-              )}
+          <div class="article-context-body">
+            {post.data.tags.length > 0 && (
+              <nav class="post-topics" aria-label="Sujets de l’analyse">
+                <span class="post-topics-label">// sujets</span>
+                <span class="post-tags">
+                  {post.data.tags.map((tag) => {
+                    const slug = topicForTag(tag);
+                    return slug
+                      ? <a href={`/sujet/${slug}/`} class="post-tag">#{tag}</a>
+                      : <span class="post-tag">#{tag}</span>;
+                  })}
+                </span>
+              </nav>
+            )}
+            <div class="article-tools" data-pagefind-ignore>
+              <section class="article-tool" aria-label="Garanties de lecture">
+                <h2>Garanties de lecture</h2>
+                <div class="article-tool-body">
+                  <TrustBar items={trustItems} variant="compact" />
+                </div>
+              </section>
+              <section class="article-tool" aria-label="Niveaux de preuve">
+                <h2>Niveaux de preuve</h2>
+                <div class="article-tool-body">
+                  <p class="article-proof-summary">Profondeur {proofDepth.score} : {proofDepth.label.toLocaleLowerCase('fr-FR')} · {proofBadges.length} niveaux détectés</p>
+                  <div class="proof-strip" aria-label="Niveaux de preuve détectés">
+                    <span class="proof-depth" title={proofDepth.detail}>
+                      <span aria-hidden="true">{proofDepth.score}</span>
+                      {proofDepth.label}
+                    </span>
+                    {proofBadges.map((badge) => (
+                      <span class={`proof-pill proof-${badge.tone}`} title={badge.detail}>
+                        <span aria-hidden="true"></span>
+                        {badge.label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
         </details>
@@ -575,7 +568,11 @@ const quickUncertainty = post.data.quickTake?.uncertainty
   <style>
     .article-sidebar {
       display: grid;
-      gap: 1.35rem;
+      gap: 1.1rem;
+      max-height: calc(100dvh - 4rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      padding: .25rem .45rem .25rem .25rem;
     }
 
     /* En-tête d'article */
@@ -667,121 +664,37 @@ const quickUncertainty = post.data.quickTake?.uncertainty
       font-size: var(--section-title-size);
       letter-spacing: 0.015em;
     }
-    .article-tools {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.65rem;
-      margin-top: 1.1rem;
-    }
+    .article-secondary { display: grid; gap: .35rem; margin-top: .85rem; }
     .translation-card {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 0.85rem;
-      min-height: 4rem;
-      border: 1px solid color-mix(in srgb, var(--color-signal) 55%, var(--color-line));
-      border-radius: 12px;
-      padding: 0.7rem 0.85rem;
-      background:
-        linear-gradient(100deg, color-mix(in srgb, var(--color-signal) 12%, transparent), transparent 70%),
-        color-mix(in srgb, var(--color-surface) 55%, transparent);
-      color: var(--color-bright);
+      display: inline-flex; align-items: center; justify-self: start; gap: .5rem;
+      min-height: 44px; color: var(--color-signal); font: 500 .75rem/1.4 var(--font-read);
       text-decoration: none;
-      transition: border-color 0.18s, background 0.18s, transform 0.18s;
     }
-    .translation-card:hover {
-      border-color: var(--color-signal);
-      background:
-        linear-gradient(100deg, color-mix(in srgb, var(--color-signal) 18%, transparent), transparent 76%),
-        color-mix(in srgb, var(--color-surface) 68%, transparent);
-      transform: translateY(-1px);
+    .translation-badge { font: 600 .63rem/1 var(--font-mono); letter-spacing: .06em; }
+    .translation-copy strong { font-weight: 500; }
+    .translation-copy > span { display: none; }
+    .translation-arrow { color: var(--color-muted); }
+    .translation-card:hover { text-decoration: underline; text-underline-offset: .2em; }
+    .article-context { min-width: 0; border-block: 1px solid var(--color-line); }
+    .article-context > summary {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .2rem .65rem;
+      align-items: center; min-height: 44px; padding: .6rem 0; cursor: pointer;
+      list-style: none; color: var(--color-paper); font: 500 .75rem/1.4 var(--font-read);
     }
-    .translation-badge {
-      display: grid;
-      place-items: center;
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 8px;
-      background: var(--color-signal);
-      color: var(--color-void);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
-    .translation-copy {
-      display: grid;
-      gap: 0.2rem;
-      min-width: 0;
-    }
-    .translation-copy strong,
-    .article-tool-copy strong {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .translation-copy > span,
-    .article-tool-copy > span {
-      color: var(--color-muted);
-      font-size: 0.78rem;
-      line-height: 1.35;
-    }
-    .translation-arrow {
-      color: var(--color-signal);
-      font-family: var(--font-mono);
-      font-size: 1.25rem;
-      transition: transform 0.18s;
-    }
-    .translation-card:hover .translation-arrow { transform: translateX(3px); }
-    .article-tool {
-      min-width: 0;
-      border: 1px solid var(--color-line);
-      border-radius: 10px;
-      background: color-mix(in srgb, var(--color-surface) 36%, transparent);
-    }
-    .article-tool summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      min-height: 3.6rem;
-      padding: 0.7rem 0.8rem;
-      color: var(--color-bright);
-      cursor: pointer;
-      list-style: none;
-    }
-    .article-tool summary::-webkit-details-marker { display: none; }
-    .article-tool summary:hover { color: var(--color-signal); }
-    .article-tool-copy {
-      display: grid;
-      gap: 0.18rem;
-      min-width: 0;
-    }
-    .article-tool-toggle {
-      display: grid;
-      flex: 0 0 auto;
-      place-items: center;
-      width: 1.55rem;
-      height: 1.55rem;
-      border: 1px solid var(--color-line);
-      border-radius: 50%;
-      color: var(--color-signal);
-      font-family: var(--font-mono);
-      transition: transform 0.18s, border-color 0.18s;
-    }
-    .article-tool[open] .article-tool-toggle {
-      border-color: color-mix(in srgb, var(--color-signal) 55%, transparent);
-      transform: rotate(45deg);
-    }
-    .article-tool-body {
-      border-top: 1px solid var(--color-line);
-      padding: 0.8rem;
-    }
-    :global(.article-tool-body .trust-bar) {
-      margin-top: 0;
-    }
+    .article-context > summary::-webkit-details-marker { display: none; }
+    .article-context > summary small { color: var(--color-muted); font: 400 .65rem/1.4 var(--font-read); }
+    .article-context-toggle { grid-column: 2; grid-row: 1 / 3; color: var(--color-signal); font: 400 1rem/1 var(--font-mono); }
+    .article-context[open] .article-context-toggle { transform: rotate(45deg); }
+    .article-context > summary:hover { color: var(--color-signal); }
+    .article-secondary :is(a, summary):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; border-radius: var(--radius-control); }
+    .article-context-body { padding: .2rem 0 .8rem; }
+    .article-context-body .post-topics { margin-top: 0; }
+    .article-tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; margin-top: .9rem; }
+    .article-tool { min-width: 0; }
+    .article-tool h2 { margin-bottom: .5rem; color: var(--color-muted); font: 600 .64rem/1.4 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+    .article-tool-body { min-width: 0; }
+    .article-proof-summary { margin: 0 0 .55rem; color: var(--color-muted); font: .72rem/1.5 var(--font-read); }
+    :global(.article-tool-body .trust-bar) { margin-top: 0; }
     .proof-strip {
       display: flex;
       flex-wrap: wrap;
@@ -837,37 +750,31 @@ const quickUncertainty = post.data.quickTake?.uncertainty
       box-shadow: 0 0 9px color-mix(in srgb, var(--proof-color) 45%, transparent);
     }
     .proof-strong { --proof-color: var(--color-signal); }
-    .proof-data { --proof-color: #7aa2f7; }
+    .proof-data { --proof-color: var(--color-topic-blue); }
     .proof-secondary { --proof-color: var(--color-muted); }
     .proof-scenario { --proof-color: var(--color-amber); }
     .proof-context { --proof-color: var(--color-accent); }
 
     @media (max-width: 620px) {
+      .post-breadcrumb { margin-bottom: .8rem; }
       .post-breadcrumb li + li { display: none; }
       .post-breadcrumb a::before { content: '← '; }
-      .post-head { margin-bottom: 1.5rem; }
+      .post-head { margin-bottom: 1rem; }
+      :global(.post-head .article-primary-image) { margin: 1rem 0; }
+      :global(.post-head .quick-take) { margin-block: .9rem; }
+      :global(.post-head .quick-head) { padding: .65rem .75rem; }
+      :global(.post-head .quick-take dl > div) { padding: .65rem .75rem; gap: .3rem; }
       .post-meta,
-      .post-meta.has-update {
-        display: flex;
-        flex-wrap: wrap;
-        gap: .55rem 1rem;
-        padding-block: .75rem;
-      }
+      .post-meta.has-update { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin-top: 1rem; padding-block: .75rem; }
       .post-meta > div { display: flex; align-items: baseline; gap: .35rem; padding: 0; border: 0; }
       .post-meta > div:first-child { flex-basis: 100%; }
       .post-meta dd { margin: 0; font-size: .68rem; }
-      .post-topics {
-        grid-template-columns: auto minmax(0, 1fr);
-        gap: 0.45rem;
-      }
-      .post-topics-label { padding-top: .3rem; }
-      .article-tools { gap: .5rem; margin-top: .9rem; }
-      .translation-card { min-height: 2.75rem; padding: .5rem .65rem; gap: .5rem; }
-      .translation-copy > span, .article-tool-copy > span { display: none; }
-      .article-tool > summary { min-height: 2.75rem; padding: .6rem; }
-      .article-tool[open] { grid-column: 1 / -1; }
-      .post-rule { margin-top: 1rem; }
-      .analysis-start { margin-bottom: 1rem; }
+      .article-secondary { margin-top: .35rem; gap: 0; }
+      .post-topics { grid-template-columns: 1fr; gap: .4rem; }
+      .post-topics-label { padding-top: 0; }
+      .article-tools { grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
+      .post-rule { margin-top: .75rem; }
+      .analysis-start { margin-bottom: .75rem; }
     }
 
     .revision-box {

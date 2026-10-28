@@ -44,13 +44,12 @@ const copy = lang === 'en'
     display: block;
     overflow: hidden;
     isolation: isolate;
-    border: 1px solid transparent;
-    border-radius: 16px 4px 16px 16px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-panel);
     padding: 1.15rem;
     background:
-      linear-gradient(145deg, color-mix(in srgb, var(--color-signal) 6%, var(--surface-elevated)), var(--surface-elevated) 65%) padding-box,
-      linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 48%, var(--color-line)), var(--color-line) 55%, color-mix(in srgb, var(--color-amber) 45%, var(--color-line))) border-box;
-    box-shadow: inset 0 1px 0 var(--edge-highlight), var(--shadow-elevated);
+      linear-gradient(145deg, color-mix(in srgb, var(--color-signal) 3%, var(--surface-elevated)), var(--surface-elevated) 65%);
+    box-shadow: inset 0 1px 0 var(--edge-highlight), var(--shadow-card);
     text-decoration: none;
     transition: border-color 160ms ease;
   }
@@ -60,8 +59,7 @@ const copy = lang === 'en'
     inset: 0;
     z-index: -1;
     background:
-      radial-gradient(circle at 100% 0, color-mix(in srgb, var(--color-amber) 8%, transparent), transparent 11rem),
-      repeating-linear-gradient(135deg, color-mix(in srgb, var(--color-line) 14%, transparent) 0 1px, transparent 1px 5px);
+      radial-gradient(circle at 100% 0, color-mix(in srgb, var(--color-amber) 3%, transparent), transparent 11rem);
   }
   .support-card-top,
   .support-card-cta {
@@ -72,7 +70,7 @@ const copy = lang === 'en'
   }
   .support-mark {
     color: var(--color-amber);
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     line-height: 1;
   }
   .support-card small {
@@ -95,6 +93,7 @@ const copy = lang === 'en'
   .support-note {
     display: block;
     color: var(--color-muted);
+    font-family: var(--font-read);
     font-size: 0.73rem;
     line-height: 1.65;
   }
@@ -113,7 +112,7 @@ const copy = lang === 'en'
   }
   .support-note {
     margin-top: 0.55rem;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
   }
   .support-card-cta i {
     font-style: normal;

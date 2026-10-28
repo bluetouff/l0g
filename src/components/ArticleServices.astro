@@ -1,0 +1,26 @@
+---
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+const en = lang === 'en';
+---
+
+<nav class="article-services" aria-label={en ? 'Support and monitoring' : 'Soutien et veille'} data-pagefind-ignore>
+  <p>{en ? 'Around l0g' : 'Autour de l0g'}</p>
+  <a href={en ? '/en/support/' : '/soutenir/'}>
+    <span>{en ? 'Support independent analysis' : 'Soutenir l’analyse indépendante'}</span>
+    <span aria-hidden="true">↗</span>
+  </a>
+  <a href={en ? 'https://watch.l0g.fr/en/' : 'https://watch.l0g.fr/'} target="_blank" rel="noopener noreferrer" aria-label={en ? 'Follow with l0g Watch, opens in a new tab' : 'Suivre avec l0g Watch, nouvel onglet'}>
+    <span>{en ? 'Follow with l0g Watch' : 'Suivre avec l0g Watch'}</span>
+    <span aria-hidden="true">↗</span>
+  </a>
+</nav>
+
+<style>
+  .article-services { display: grid; gap: .15rem; padding-top: .85rem; border-top: 1px solid var(--color-line); }
+  .article-services p { margin: 0 0 .2rem; color: var(--color-muted); font: 500 .64rem/1.4 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; }
+  .article-services a { display: flex; align-items: center; justify-content: space-between; gap: .75rem; min-height: 44px; color: var(--color-muted); font: 500 .76rem/1.4 var(--font-read); text-decoration: none; }
+  .article-services a > :last-child { flex: none; color: var(--color-signal); }
+  .article-services a:hover { color: var(--color-bright); }
+  .article-services a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; border-radius: var(--radius-control); }
+</style>

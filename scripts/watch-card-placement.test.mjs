@@ -17,7 +17,7 @@ test('Watch card is passive, bilingual and links to the matching Watch edition',
   assert.doesNotMatch(component, /<(?:script|iframe|img)\b/i);
 });
 
-test('Watch card is present on French and English homes and articles', async () => {
+test('Watch stays reachable on French and English homes and articles', async () => {
   const [homeFr, articleFr, homeEn, articleEn] = await Promise.all([
     read('../src/components/HomeSidebar.astro'),
     read('../src/pages/posts/[...slug].astro'),
@@ -26,7 +26,11 @@ test('Watch card is present on French and English homes and articles', async () 
   ]);
 
   assert.match(homeFr, /<WatchCard \/>/);
-  assert.match(articleFr, /<SupportCard compact \/>[\s\S]*<WatchCard compact \/>/);
+  assert.match(articleFr, /<ArticleNavigator[\s\S]*<ArticleServices \/>/);
   assert.match(homeEn, /class="en-hero-rail"[\s\S]*<WatchCard lang="en" \/>/);
-  assert.match(articleEn, /class="en-article-sidebar"[\s\S]*<WatchCard lang="en" compact \/>/);
+  assert.match(articleEn, /class="en-article-sidebar"[\s\S]*<ArticleServices lang="en" \/>/);
+  const services = await read('../src/components/ArticleServices.astro');
+  assert.match(services, /en \? 'https:\/\/watch\.l0g\.fr\/en\/' : 'https:\/\/watch\.l0g\.fr\/'/);
+  assert.match(services, /target="_blank" rel="noopener noreferrer"/);
+  assert.doesNotMatch(services, /<(?:script|iframe|img)\b/i);
 });

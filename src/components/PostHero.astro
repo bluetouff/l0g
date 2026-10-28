@@ -1,7 +1,7 @@
 ---
 import FreshnessBadge from './FreshnessBadge.astro';
 import PublicationDates from './PublicationDates.astro';
-import L0gGlyph from './L0gGlyph.astro';
+import { keepFrenchPunctuation } from '../lib/typography.ts';
 
 interface Props {
   url: string;
@@ -13,136 +13,108 @@ interface Props {
   readingTime?: number;
   accent?: string;
   accentLabel?: string;
+  imageSrc?: string;
+  lang?: 'fr' | 'en';
+  headingLevel?: 'h2' | 'h3';
 }
 const {
-  url, title, description, pubDate, updatedDate,
+  url, title, description, pubDate, updatedDate, imageSrc,
   readingTime, accent = 'var(--color-signal)', accentLabel,
+  lang = 'fr', headingLevel = 'h2',
 } = Astro.props;
 const refDate = updatedDate ?? pubDate;
+const en = lang === 'en';
+const Heading = headingLevel;
+const headline = en ? title : keepFrenchPunctuation(title);
+const summary = en ? description : keepFrenchPunctuation(description);
 ---
 
-<a href={url} class="post-hero group mb-8 block" style={`--a:${accent}`}>
+<a href={url} class="post-hero" style={`--a:${accent}`}>
   <article class="post-hero-inner">
     <div class="hero-top">
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <span class="hero-mark mono-label">// à la une</span>
-        {accentLabel && <span class="topic-chip">{accentLabel}</span>}
-      </div>
-      <L0gGlyph name="read" size="lg" />
+      <span class="hero-mark">{en ? 'Featured investigation' : 'À la une'}</span>
+      {accentLabel && <span class="topic-chip">{accentLabel}</span>}
     </div>
 
-    <h2 class="hero-title mt-4 font-display tracking-wider">{title}</h2>
+    <Heading class="hero-title">{headline}</Heading>
 
-    <p class="hero-desc mt-4 max-w-2xl">{description}</p>
+    <div class:list={['hero-summary', { 'has-image': Boolean(imageSrc) }]}>
+      {imageSrc && <img class="hero-image" src={imageSrc} alt="" width="1200" height="630" loading="lazy" decoding="async" />}
+      <p class="hero-desc">{summary}</p>
+    </div>
 
-    <div class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1">
-      <span class="hero-date"><PublicationDates pubDate={pubDate} updatedDate={updatedDate} month="long" /></span>
-      {readingTime && <span class="mono-label text-muted">· {readingTime} min</span>}
-      <FreshnessBadge date={refDate} compact />
-      <span class="hero-cta mono-label">lire l'analyse <span class="hero-arrow">&rsaquo;</span></span>
+    <div class="hero-meta">
+      <span class="hero-date"><PublicationDates pubDate={pubDate} updatedDate={updatedDate} lang={lang} month={en ? 'short' : 'long'} /></span>
+      {readingTime && <span class="hero-reading-time">{readingTime} min</span>}
+      {!en && <FreshnessBadge date={refDate} compact />}
+      <span class="hero-cta">{en ? 'Read the investigation' : 'Lire l’analyse'} <span class="hero-arrow" aria-hidden="true">&rsaquo;</span></span>
     </div>
   </article>
 </a>
 
 <style>
-  .post-hero { --a: var(--color-signal); }
+  .post-hero { display: block; color: inherit; text-decoration: none; }
   .post-hero-inner {
-    position: relative;
-    overflow: hidden;
-    padding: 1.75rem 1.75rem 1.75rem 2rem;
+    min-width: 0;
+    padding: clamp(1rem, 2vw, 1.3rem);
     border: 1px solid var(--color-line);
-    border-radius: 18px 5px 18px 18px;
-    background:
-      radial-gradient(120% 130% at 0% 0%, color-mix(in srgb, var(--a) 9%, transparent), transparent 55%),
-      var(--surface-elevated);
-    box-shadow:
-      inset 0 1px 0 var(--edge-highlight),
-      0 24px 70px color-mix(in srgb, #000 18%, transparent);
-    transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+    border-radius: var(--radius-panel);
+    background: var(--surface-elevated);
+    box-shadow: var(--shadow-card);
+    transition: border-color .18s;
   }
-  .post-hero-inner::before {
-    content: '';
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 3px;
-    background: var(--a);
-    opacity: 0.5;
-    transition: opacity 0.18s;
-  }
-  .post-hero-inner::after {
-    content: '';
-    position: absolute;
-    top: -1px;
-    right: -1px;
-    width: 1rem;
-    height: 1rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--a) 45%, var(--color-line));
-    border-left: 1px solid color-mix(in srgb, var(--a) 45%, var(--color-line));
-    background: var(--color-ink);
-  }
-  .post-hero:hover .post-hero-inner {
-    border-color: color-mix(in srgb, var(--a) 45%, var(--color-line));
-    transform: translateY(-2px);
-    box-shadow:
-      inset 0 1px 0 var(--edge-highlight),
-      0 30px 78px color-mix(in srgb, #000 25%, transparent);
-  }
-  .post-hero:hover .post-hero-inner::before { opacity: 1; }
-
-  @media (min-width: 640px) {
-    .post-hero-inner { padding: 2.25rem 2.5rem 2.25rem 2.75rem; }
-  }
-
+  .post-hero:hover .post-hero-inner { border-color: color-mix(in srgb, var(--a) 55%, var(--color-line)); }
+  .post-hero:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; border-radius: var(--radius-panel); }
+  .hero-top { display: flex; align-items: center; flex-wrap: wrap; gap: .35rem .8rem; }
+  .hero-mark, .topic-chip { font: 600 .62rem/1.5 var(--font-mono); letter-spacing: .065em; text-transform: uppercase; }
   .hero-mark { color: var(--a); }
-  .hero-top {
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .topic-chip {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--a);
-    padding: 0.12rem 0.5rem;
-    border: 1px solid color-mix(in srgb, var(--a) 35%, transparent);
-    background: color-mix(in srgb, var(--a) 12%, transparent);
-    border-radius: 999px;
-  }
-
+  .topic-chip { border-left: 1px solid var(--color-line); padding-left: .8rem; color: var(--color-muted); }
   .hero-title {
+    margin: .65rem 0 0;
+    color: var(--color-bright);
+    font-family: var(--font-display);
     font-size: var(--section-title-size);
     font-weight: 600;
-    line-height: 1.25;
+    line-height: 1.3;
+    letter-spacing: -.025em;
     overflow-wrap: normal;
     word-break: normal;
     hyphens: none;
-    color: var(--color-bright);
-    transition: color 0.18s;
+    transition: color .18s;
   }
   .post-hero:hover .hero-title { color: var(--a); }
-
+  .hero-summary { display: grid; align-items: center; gap: .75rem; margin-top: .85rem; }
+  .hero-summary.has-image { grid-template-columns: 5.25rem minmax(0, 1fr); }
+  .hero-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 40 / 21;
+    object-fit: cover;
+    border: 1px solid var(--color-line);
+    border-radius: calc(var(--radius-panel) / 2);
+  }
   .hero-desc {
+    min-width: 0;
+    margin: 0;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    font-family: var(--font-read);
-    font-size: 1.05rem;
-    line-height: 1.55;
     color: var(--color-paper);
+    font: .91rem/1.6 var(--font-read);
   }
-
-  .hero-date { color: var(--a); }
-  .hero-cta { color: var(--a); margin-left: auto; display: inline-flex; align-items: center; gap: 0.35rem; }
-  .hero-arrow { transition: transform 0.18s; }
-  .post-hero:hover .hero-arrow { transform: translateX(3px); }
-
+  .hero-meta { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem .85rem; margin-top: .95rem; border-top: 1px solid var(--color-line); padding-top: .7rem; }
+  .hero-date, .hero-reading-time, .hero-cta { font: 500 .65rem/1.6 var(--font-mono); }
+  .hero-date { color: var(--color-muted); }
+  .hero-reading-time { color: var(--color-muted); }
+  .hero-cta { display: inline-flex; align-items: center; gap: .4rem; margin-left: auto; color: var(--a); }
+  .hero-arrow { font-size: 1rem; line-height: 1; }
+  @media (min-width: 640px) {
+    .hero-summary.has-image { grid-template-columns: min(35%, 13.75rem) minmax(0, 1fr); gap: 1.15rem; }
+    .hero-desc { -webkit-line-clamp: 3; font-size: .95rem; }
+  }
   @media (prefers-reduced-motion: reduce) {
-    .post-hero:hover .post-hero-inner { transform: none; }
-    .hero-arrow { transition: none; }
+    .post-hero-inner, .hero-title { transition: none; }
   }
 </style>

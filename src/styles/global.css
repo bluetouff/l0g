@@ -39,6 +39,9 @@
   --page-title-size: var(--page-heading-size);
   --section-title-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.45rem);
   --subsection-title-size: clamp(1.05rem, 1rem + 0.2vw, 1.18rem);
+  --radius-panel: 14px;
+  --radius-control: 10px;
+  --shadow-card: 0 5px 18px rgba(0, 0, 0, 0.10);
   /* tokens sémantiques (valeurs sombres par défaut) */
   --color-prose: #d6d9df;
   --color-nav-idle: #a8adb8;
@@ -60,16 +63,16 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --color-ink: #e7e9ee;          /* fond adouci (moins d'éblouissement) */
-  --color-surface: #ffffff;      /* carte / surface — ressort sur le fond gris */
-  --color-surface-2: #eef0f4;
+  --color-ink: #f3f2ee;          /* papier neutre */
+  --color-surface: #fffefa;
+  --color-surface-2: #ecebe6;
   --color-line: rgba(12, 13, 16, 0.14);
   --color-line-strong: rgba(12, 13, 16, 0.26);
   --color-paper: #1b1d23;        /* texte principal */
   --color-bright: #0c0d10;
   --color-muted: #4d5461;        /* labels atténués (un cran plus foncé) */
 
-  /* Accents renforcés : >= 5.5:1 sur le fond gris clair, même en petit mono. */
+  /* Accents renforcés pour les légendes et les petits labels. */
   --color-signal: #0b5f58;
   --color-accent: #a50f4d;
   --color-amber: #92400e;
@@ -81,11 +84,12 @@
   --color-nav-idle: #4d5461;
   --card-fill: rgba(12, 13, 16, 0.015);
   --card-fill-hover: rgba(12, 13, 16, 0.04);
-  --body-glow: rgba(15, 118, 110, 0.05);
-  --surface-elevated: rgba(255, 255, 255, 0.94);
+  --body-glow: rgba(15, 118, 110, 0.025);
+  --surface-elevated: rgba(255, 254, 250, 0.96);
   --surface-inset: rgba(12, 13, 16, 0.018);
   --edge-highlight: rgba(255, 255, 255, 0.8);
-  --shadow-elevated: 0 22px 60px rgba(24, 31, 40, 0.12);
+  --shadow-card: 0 2px 8px rgba(24, 28, 32, 0.045);
+  --shadow-elevated: 0 12px 28px rgba(24, 28, 32, 0.10);
 }
 
 * { box-sizing: border-box; }
@@ -323,8 +327,8 @@ a { color: inherit; text-decoration: none; }
 .prose p { color: var(--color-prose); }
 
 .post-title, .hero-title {
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  overflow-wrap: break-word;
+  hyphens: none;
 }
 
 /* A continuous H1 scale also caps local page-title overrides.
@@ -334,7 +338,9 @@ main h1 {
   font-weight: 600;
   line-height: 1.16 !important;
   letter-spacing: -0.025em !important;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
   text-wrap: balance;
 }
 /* Utility headings share the section scale; compact cards and controls keep

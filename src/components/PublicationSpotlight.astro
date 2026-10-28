@@ -1,6 +1,7 @@
 ---
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { keepFrenchPunctuation } from '../lib/typography';
 import { slowdownEditions } from '../config/ai-slowdown-publication.mjs';
 import { reservesEditions } from '../config/reserves-publication.mjs';
 import { microsoftEditions } from '../config/microsoft-publication.mjs';
@@ -23,6 +24,7 @@ interface Props {
 const { headingLevel = 'h2', lang = 'fr', publication = 'epstein', showAllPublicationsLink = false } = Astro.props;
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
+const displayText = (text: string) => isEnglish ? text : keepFrenchPunctuation(text);
 const isCumCum = publication === 'cumcum';
 const cumcum = cumcumEditions[lang];
 const isInsurancePromise = publication === 'insurance-promise';
@@ -342,9 +344,9 @@ const copy = isCumCum ? {
       <p class="mono-label">{copy.meta}</p>
       <span>EPUB 3 · {isEnglish ? 'Free' : 'Gratuit'}</span>
     </div>
-    <Heading><a class="publication-title-link" href={publicationUrl}>{copy.titleLead}{' '}<em>{copy.titleAccent}</em></a></Heading>
-    <p class="publication-deck">{copy.deck}</p>
-    <p class="publication-description">{copy.description}</p>
+    <Heading><a class="publication-title-link" href={publicationUrl}>{displayText(copy.titleLead)}{' '}<em>{displayText(copy.titleAccent)}</em></a></Heading>
+    <p class="publication-deck">{displayText(copy.deck)}</p>
+    <p class="publication-description">{displayText(copy.description)}</p>
 
     <ul class="publication-facts" aria-label={copy.factsLabel}>
       {copy.facts.map((fact) => <li><strong>{fact.value}</strong><span>{fact.label}</span></li>)}
@@ -376,11 +378,11 @@ const copy = isCumCum ? {
     gap: clamp(1.1rem, 3vw, 2rem);
     overflow: hidden;
     border: 1px solid transparent;
-    border-radius: 20px 5px 20px 20px;
+    border-radius: var(--radius-panel);
     padding: clamp(1rem, 2.5vw, 1.65rem);
     background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
       linear-gradient(135deg, color-mix(in srgb, var(--publication-card-accent) 40%, var(--color-line)), var(--color-line) 45%, color-mix(in srgb, var(--color-amber) 25%, var(--color-line))) border-box;
-    box-shadow: inset 0 1px 0 var(--edge-highlight), 0 16px 40px color-mix(in srgb, var(--color-ink) 12%, transparent);
+    box-shadow: var(--shadow-card);
   }
   .publication-spotlight::before {
     content: '';
@@ -455,8 +457,8 @@ const copy = isCumCum ? {
     margin-top: 0.65rem;
     color: var(--color-bright);
     font-family: var(--font-display);
-    font-size: clamp(1.65rem, 3.1vw, 2.35rem);
-    line-height: 1.08;
+    font-size: var(--section-title-size);
+    line-height: 1.25;
     letter-spacing: -0.035em;
     text-wrap: balance;
   }
@@ -518,7 +520,7 @@ const copy = isCumCum ? {
     align-items: center;
     justify-content: center;
     gap: 0.55rem;
-    border-radius: 10px 3px 10px 10px;
+    border-radius: var(--radius-control);
     padding: 0.7rem 0.9rem;
     font-family: var(--font-mono);
     font-size: 0.66rem;
@@ -551,7 +553,7 @@ const copy = isCumCum ? {
     .publication-cover::after { inset: .6rem; }
     .publication-copy { display: contents; }
     .publication-meta { grid-column: 2; align-self: end; gap: .5rem; }
-    .publication-copy h2, .publication-copy h3 { grid-column: 2; margin: 0; font-size: clamp(1.15rem, 5vw, 1.8rem); }
+    .publication-copy h2, .publication-copy h3 { grid-column: 2; margin: 0; font-size: var(--section-title-size); }
     .publication-deck, .publication-description, .publication-facts, .publication-actions { grid-column: 1 / -1; }
     .publication-deck, .publication-description { margin-top: 0; }
     .publication-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: .3rem; }
@@ -566,7 +568,6 @@ const copy = isCumCum ? {
   }
   @media (max-width: 360px) {
     .publication-spotlight { grid-template-columns: 5.5rem minmax(0, 1fr); column-gap: .75rem; }
-    .publication-copy h2, .publication-copy h3 { font-size: 1.1rem; }
     .publication-meta > .mono-label { font-size: .57rem; }
   }
   @media (prefers-reduced-motion: reduce) {
