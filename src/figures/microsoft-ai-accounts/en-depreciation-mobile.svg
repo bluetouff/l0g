@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 680" style="width:100%;height:auto" class="l0g-microsoft-ai-accounts-svg" role="img" aria-labelledby="ms-accounts-en-depreciation-m-title ms-accounts-en-depreciation-m-desc"><title id="ms-accounts-en-depreciation-m-title">Useful life allocates annual expense</title><desc id="ms-accounts-en-depreciation-m-desc">Ex ante simulation of a new asset costing 120 units, paid immediately, with zero residual value. Four-year straight-line depreciation gives a charge of 30 per year for four years, then zero. Six years gives 20 per year for six years. In both cases initial cash and total expense are 120. The model explains an accounting policy; it does not reproduce Microsoft’s prospective estimate change for its existing asset base.</desc>
+<rect id="ms-accounts-en-depreciation-m-frame" x="0" y="0" width="420" height="680" rx="5" fill="var(--color-ink)"></rect>
+<text data-panel="ms-accounts-en-depreciation-m-frame" x="24" y="32" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="start">l0g / MICROSOFT / 05</text>
+<line x1="24" y1="47" x2="396" y2="47" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="ms-accounts-en-depreciation-m-frame" x="24" y="84" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="25" font-weight="700" text-anchor="start">Useful life allocates</text>
+<text data-panel="ms-accounts-en-depreciation-m-frame" x="24" y="117.75" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="25" font-weight="700" text-anchor="start">annual expense</text>
+<text data-panel="ms-accounts-en-depreciation-m-frame" x="24" y="142" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="start">Fictional new asset · cost 120 · residual 0</text>
+<rect id="ms-accounts-en-depreciation-m-depreciation-chart" x="24" y="175" width="372" height="470" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="40" y="211" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="start">4 years: 30/year · teal</text>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="40" y="245" fill="var(--color-accent)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="start">6 years: 20/year · rose</text>
+<line x1="63" y1="535" x2="378" y2="535" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="50" y="541" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="end">0</text>
+<line x1="63" y1="465" x2="378" y2="465" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="50" y="471" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="end">10</text>
+<line x1="63" y1="395" x2="378" y2="395" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="50" y="401" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="end">20</text>
+<line x1="63" y1="325" x2="378" y2="325" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="50" y="331" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="end">30</text>
+<rect x="69" y="325" width="15" height="210" rx="0" fill="var(--color-signal)"></rect>
+<rect x="89" y="395" width="15" height="140" rx="0" fill="var(--color-accent)"></rect>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="86.5" y="571" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="18" font-weight="400" text-anchor="middle">1</text>
+<rect x="120" y="325" width="15" height="210" rx="0" fill="var(--color-signal)"></rect>
+<rect x="140" y="395" width="15" height="140" rx="0" fill="var(--color-accent)"></rect>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="137.5" y="571" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="18" font-weight="400" text-anchor="middle">2</text>
+<rect x="171" y="325" width="15" height="210" rx="0" fill="var(--color-signal)"></rect>
+<rect x="191" y="395" width="15" height="140" rx="0" fill="var(--color-accent)"></rect>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="188.5" y="571" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="18" font-weight="400" text-anchor="middle">3</text>
+<rect x="222" y="325" width="15" height="210" rx="0" fill="var(--color-signal)"></rect>
+<rect x="242" y="395" width="15" height="140" rx="0" fill="var(--color-accent)"></rect>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="239.5" y="571" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="18" font-weight="400" text-anchor="middle">4</text>
+<rect x="273" y="535" width="15" height="0" rx="0" fill="var(--color-signal)"></rect>
+<rect x="293" y="395" width="15" height="140" rx="0" fill="var(--color-accent)"></rect>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="290.5" y="571" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="18" font-weight="400" text-anchor="middle">5</text>
+<rect x="324" y="535" width="15" height="0" rx="0" fill="var(--color-signal)"></rect>
+<rect x="344" y="395" width="15" height="140" rx="0" fill="var(--color-accent)"></rect>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="341.5" y="571" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="18" font-weight="400" text-anchor="middle">6</text>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="40" y="610" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="start">Years 1–6 · total in each scenario:</text>
+<text data-panel="ms-accounts-en-depreciation-m-depreciation-chart" x="40" y="632.95" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="start">120</text>
+<text data-panel="ms-accounts-en-depreciation-m-frame" x="24" y="670" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="start">Same initial cash payment: 120 units</text>
+</svg>

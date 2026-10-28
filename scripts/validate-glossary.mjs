@@ -64,7 +64,7 @@ for (const slug of ['forward-sur-actions', 'dilution-du-capital', 'action-sans-d
 }
 for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === 'capex'), metaFinancingFr], [glossaryAtlasEnBySlug.get('capex'), metaFinancingEn]]) {
   assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
-  assert.equal(entry.atlas.articles.length, 4);
+  assert.equal(entry.atlas.articles.length, 5);
 }
 
 // Service continuity and card acquiring retain distinct operational scopes.
@@ -435,7 +435,7 @@ for (const [slug, sources] of [
   assert.notEqual(fr[0].def, en[0].def); assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
   for (const [entry, article, terms] of [[fr[0], '/posts/tsmc-puces-data-centers-risque-electrique/', glossaryEntries], [en[0], '/en/analysis/tsmc-chip-demand-data-center-power-risk/', glossaryAtlasEn]]) {
     const expectedArticles = slug === 'capex'
-      ? [article, terms === glossaryEntries ? '/posts/nebius-citi-credit-364-jours-gpu/' : '/en/analysis/nebius-citi-364-day-gpu-credit/', terms === glossaryEntries ? '/posts/aimants-terres-rares-gm-vac-usine-contrat/' : '/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/', terms === glossaryEntries ? metaFinancingFr : metaFinancingEn]
+      ? [terms === glossaryEntries ? '/posts/microsoft-profit-ia-segments-capex-tresorerie/' : '/en/analysis/microsoft-ai-profit-segments-capex-cash-flow/', article, terms === glossaryEntries ? '/posts/nebius-citi-credit-364-jours-gpu/' : '/en/analysis/nebius-citi-364-day-gpu-credit/', terms === glossaryEntries ? '/posts/aimants-terres-rares-gm-vac-usine-contrat/' : '/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/', terms === glossaryEntries ? metaFinancingFr : metaFinancingEn]
       : [article, terms === glossaryEntries ? heliumWaferArticleFr : heliumWaferArticleEn];
     assert.equal(entry.guide, article); assert.deepEqual(entry.atlas.articles.map(link => link.href), expectedArticles);
     assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
@@ -1074,7 +1074,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 344, 'Le corpus anglais ajoute trois fiches de gouvernance et de propriété publique aux 341 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 346, 'Le corpus anglais ajoute deux fiches US GAAP sur les locations aux 344 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1275,8 +1275,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 731, 'Le corpus ajoute deux définitions de gouvernance aux 729 définitions existantes');
-assert.equal(glossaryAtlasEntries.length, 334, 'Le graphe Atlas ajoute trois fiches de gouvernance et de propriété publique aux 331 nœuds existants');
+assert.equal(glossaryEntries.length, 733, 'Le corpus ajoute deux définitions US GAAP sur les locations aux 731 définitions existantes');
+assert.equal(glossaryAtlasEntries.length, 336, 'Le graphe Atlas ajoute deux fiches US GAAP sur les locations aux 334 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1698,7 +1698,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 927, 'Le graphe Atlas ajoute six relations de gouvernance et de propriété publique aux 921 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 933, 'Le graphe Atlas ajoute six relations entre locations US GAAP, CapEx et FCF aux 927 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

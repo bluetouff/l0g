@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 690" style="width:100%;height:auto" class="l0g-microsoft-ai-accounts-svg" role="img" aria-labelledby="ms-accounts-fr-allocation-m-title ms-accounts-fr-allocation-m-desc"><title id="ms-accounts-fr-allocation-m-title">Répartition d’un coût partagé</title><desc id="ms-accounts-fr-allocation-m-desc">Simulation pédagogique. Trois segments ont des marges brutes de 60, 30 et 10 unités, soit 100 au total. Leurs poids relatifs sont 60, 30 et 10 pour cent. Un coût partagé de 12 unités leur attribue alors 7,2, 3,6 et 1,2 unités de charge. La politique FY2026 de Microsoft utilise généralement la marge brute relative pour certains frais partagés, notamment des infrastructures et de la formation IA. Ces valeurs sont fictives.</desc>
+<rect id="ms-accounts-fr-allocation-m-frame" x="0" y="0" width="420" height="690" rx="5" fill="var(--color-ink)"></rect>
+<text data-panel="ms-accounts-fr-allocation-m-frame" x="24" y="32" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="start">l0g / MICROSOFT / 03</text>
+<line x1="24" y1="47" x2="396" y2="47" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="ms-accounts-fr-allocation-m-frame" x="24" y="84" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="25" font-weight="700" text-anchor="start">Répartition d’un coût</text>
+<text data-panel="ms-accounts-fr-allocation-m-frame" x="24" y="117.75" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="25" font-weight="700" text-anchor="start">partagé</text>
+<text data-panel="ms-accounts-fr-allocation-m-frame" x="24" y="142" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="start">Simulation pédagogique · unités fictives</text>
+<rect id="ms-accounts-fr-allocation-m-allocation" x="24" y="175" width="372" height="485" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="28" y="225" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="20" font-weight="700" text-anchor="start">Marge brute : total 100</text>
+<rect x="28" y="252" width="218.4" height="26" rx="0" fill="var(--color-signal)"></rect>
+<rect x="246.4" y="252" width="109.2" height="26" rx="0" fill="var(--color-accent)"></rect>
+<rect x="355.6" y="252" width="36.4" height="26" rx="0" fill="var(--color-amber)"></rect>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="28" y="434" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="20" font-weight="700" text-anchor="start">Coût partagé : total 12</text>
+<rect x="28" y="461" width="218.4" height="26" rx="0" fill="var(--color-signal)"></rect>
+<rect x="246.4" y="461" width="109.2" height="26" rx="0" fill="var(--color-accent)"></rect>
+<rect x="355.6" y="461" width="36.4" height="26" rx="0" fill="var(--color-amber)"></rect>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="88.666667" y="325" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="middle">A · 60 / 100</text>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="88.666667" y="363" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="700" text-anchor="middle">60 %</text>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="88.666667" y="537" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="middle">12 × 60 %</text>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="88.666667" y="579" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="27" font-weight="700" text-anchor="middle">7,2</text>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="210" y="325" fill="var(--color-accent)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="middle">B · 30 / 100</text>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="210" y="363" fill="var(--color-accent)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="700" text-anchor="middle">30 %</text>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="210" y="537" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="middle">12 × 30 %</text>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="210" y="579" fill="var(--color-accent)" font-family="l0g Microsoft Accounts" font-size="27" font-weight="700" text-anchor="middle">3,6</text>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="331.333333" y="325" fill="var(--color-amber)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="middle">C · 10 / 100</text>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="331.333333" y="363" fill="var(--color-amber)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="700" text-anchor="middle">10 %</text>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="331.333333" y="537" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="middle">12 × 10 %</text>
+<text data-panel="ms-accounts-fr-allocation-m-allocation" x="331.333333" y="579" fill="var(--color-amber)" font-family="l0g Microsoft Accounts" font-size="27" font-weight="700" text-anchor="middle">1,2</text>
+<text data-panel="ms-accounts-fr-allocation-m-frame" x="24" y="676" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="start">100 % de la marge → 100 % du coût</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" style="width:100%;height:auto" class="l0g-microsoft-ai-accounts-svg" role="img" aria-labelledby="ms-accounts-en-leases-d-title ms-accounts-en-leases-d-desc"><title id="ms-accounts-en-leases-d-title">Lease classification routes cash flows</title><desc id="ms-accounts-en-leases-d-desc">Announcement on 29 July 2026: the estimated useful life of datacenters and office buildings changes from fifteen to twenty-five years from FY2027. Microsoft expects more future contracts to classify as operating leases, depending on their terms. Finance leases enter the reported CapEx measure; operating leases are excluded. Finance-lease principal payments are financing cash flows, their interest is operating cash flow. Operating-lease payments are operating cash flow. Both families give rise to balance-sheet assets and liabilities.</desc>
+<rect id="ms-accounts-en-leases-d-frame" x="0" y="0" width="1000" height="700" rx="5" fill="var(--color-ink)"></rect>
+<text data-panel="ms-accounts-en-leases-d-frame" x="34" y="36" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="700" text-anchor="start">l0g / MICROSOFT / 06</text>
+<line x1="34" y1="52" x2="966" y2="52" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="ms-accounts-en-leases-d-frame" x="34" y="103" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="31" font-weight="700" text-anchor="start">Lease classification routes cash flows</text>
+<text data-panel="ms-accounts-en-leases-d-frame" x="34" y="145" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="400" text-anchor="start">Buildings · decision on 29 July 2026</text>
+<rect id="ms-accounts-en-leases-d-building-life" x="34" y="175" width="932" height="95" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="ms-accounts-en-leases-d-building-life" x="54" y="207" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="400" text-anchor="start">Estimated useful life · FY2027</text>
+<text data-panel="ms-accounts-en-leases-d-building-life" x="560" y="239" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="35" font-weight="700" text-anchor="start">15 → 25 years</text>
+<text data-panel="ms-accounts-en-leases-d-building-life" x="54" y="247" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="700" text-anchor="start">Datacenters and office buildings</text>
+<rect id="ms-accounts-en-leases-d-lease-0" x="34" y="302" width="440" height="315" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="ms-accounts-en-leases-d-lease-0" x="52" y="337" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="29" font-weight="700" text-anchor="start">Finance lease</text>
+<text data-panel="ms-accounts-en-leases-d-lease-0" x="52" y="374" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="700" text-anchor="start">Communicated CapEx: included</text>
+<text data-panel="ms-accounts-en-leases-d-lease-0" x="52" y="408" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="400" text-anchor="start">Asset and liability on balance sheet</text>
+<text data-panel="ms-accounts-en-leases-d-lease-0" x="52" y="491" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="400" text-anchor="start">Principal</text>
+<line x1="254" y1="483" x2="343" y2="483" stroke="var(--color-signal)" stroke-width="2"></line>
+<path d="M 337 477 L 343 483 L 337 489" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="ms-accounts-en-leases-d-lease-0" x="358" y="491" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="25" font-weight="700" text-anchor="start">CFF</text>
+<text data-panel="ms-accounts-en-leases-d-lease-0" x="52" y="556" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="400" text-anchor="start">Interest</text>
+<line x1="254" y1="548" x2="343" y2="548" stroke="var(--color-signal)" stroke-width="2"></line>
+<path d="M 337 542 L 343 548 L 337 554" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="ms-accounts-en-leases-d-lease-0" x="358" y="556" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="25" font-weight="700" text-anchor="start">CFO</text>
+<rect id="ms-accounts-en-leases-d-lease-1" x="526" y="302" width="440" height="315" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="ms-accounts-en-leases-d-lease-1" x="544" y="337" fill="var(--color-accent)" font-family="l0g Microsoft Accounts" font-size="29" font-weight="700" text-anchor="start">Operating lease</text>
+<text data-panel="ms-accounts-en-leases-d-lease-1" x="544" y="374" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="700" text-anchor="start">Communicated CapEx: excluded</text>
+<text data-panel="ms-accounts-en-leases-d-lease-1" x="544" y="408" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="400" text-anchor="start">Asset and liability on balance sheet</text>
+<text data-panel="ms-accounts-en-leases-d-lease-1" x="544" y="491" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="400" text-anchor="start">Lease payments</text>
+<line x1="746" y1="483" x2="835" y2="483" stroke="var(--color-accent)" stroke-width="2"></line>
+<path d="M 829 477 L 835 483 L 829 489" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="ms-accounts-en-leases-d-lease-1" x="850" y="491" fill="var(--color-accent)" font-family="l0g Microsoft Accounts" font-size="25" font-weight="700" text-anchor="start">CFO</text>
+<text data-panel="ms-accounts-en-leases-d-frame" x="34" y="657" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="400" text-anchor="start">CFO: operations · CFF: financing</text>
+<text data-panel="ms-accounts-en-leases-d-frame" x="34" y="686" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="400" text-anchor="start">Future classification depends on contract</text>
+</svg>

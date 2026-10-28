@@ -2,6 +2,7 @@
 // Keep new SVG suites here: svg-test-suites.test.mjs rejects missing or duplicate coverage.
 export const SVG_TEST_SUITES = Object.freeze({
   source: Object.freeze([
+    'scripts/microsoft-ai-accounts-infographics.test.mjs',
     'scripts/ai-governance-infographics.test.mjs',
     'scripts/meta-capital-infographics.test.mjs',
     'scripts/blackout-infographics.test.mjs',
@@ -183,6 +184,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/yanbu-infographics.test.mjs',
   ]),
   rendered: Object.freeze([
+    'scripts/microsoft-ai-accounts-rendered-infographics.test.mjs',
     'scripts/ai-governance-rendered-infographics.test.mjs',
     'scripts/meta-capital-rendered-infographics.test.mjs',
     'scripts/blackout-rendered-infographics.test.mjs',

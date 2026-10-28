@@ -1,0 +1,63 @@
+---
+// Reviewed passive vector sources are bundled directly in article HTML.
+import { microsoftAiAccountsFigureReferences } from '../lib/microsoftAiAccountsFigures.mjs';
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'migrations' | 'segments' | 'allocation' | 'cash' | 'depreciation' | 'leases' | 'openai';
+  number: string;
+  sources: string;
+  caption: string;
+}
+const { lang, kind, number, sources, caption } = Astro.props;
+const refs = microsoftAiAccountsFigureReferences(lang, kind, number, sources, caption);
+const modules = import.meta.glob('../figures/microsoft-ai-accounts/*.svg', { query: '?raw', import: 'default', eager: true });
+const key = `../figures/microsoft-ai-accounts/${lang}-${kind}`;
+const desktop = modules[`${key}.svg`];
+const mobile = modules[`${key}-mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError(`Missing bilingual responsive SVG: ${key}`);
+
+---
+<figure class="microsoft-ai-accounts-figure" id={`figure-${number}`} data-kind={kind}>
+  <div class="figure-wide" set:html={desktop} />
+  <div class="figure-narrow" set:html={mobile} />
+  <figcaption>
+    <strong>FIG. {number}</strong> {caption}
+    <span class="figure-cites">{refs.map(r => <a href={`#source-${r.toLowerCase()}`}>[{r}]</a>)}</span>
+  </figcaption>
+  <slot />
+</figure>
+<style>
+  @font-face {
+    font-family: 'l0g Microsoft Accounts';
+    src: url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'l0g Microsoft Accounts';
+    src: url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+  .microsoft-ai-accounts-figure { max-width: 48rem; width: 100%; margin: 2.5rem auto; padding-bottom: 1rem; overflow: visible; container-type: inline-size; }
+  .microsoft-ai-accounts-figure :global(svg) { width: 100%; max-width: 100%; height: auto; display: block; letter-spacing: normal; overflow: visible; }
+  .figure-wide { display: block; width: 100%; }
+  .figure-narrow { display: none; width: 100%; max-width: 26rem; margin-inline: auto; }
+  figcaption { color: var(--color-muted); font-size: .9rem; line-height: 1.7; margin: 1rem 0 .65rem; }
+  figcaption strong { margin-right: .6rem; }
+  .figure-cites { display: block; margin: .4rem 0; }
+  .figure-cites a { margin-right: .75rem; }
+  .microsoft-ai-accounts-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .microsoft-ai-accounts-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .microsoft-ai-accounts-figure :global(details p) { margin: .7rem 0; }
+  .microsoft-ai-accounts-figure :global(.table-wrap) { overflow-x: auto; }
+  .microsoft-ai-accounts-figure :global(table) { border-collapse: collapse; width: 100%; font-size: .85rem; }
+  .microsoft-ai-accounts-figure :global(td), .microsoft-ai-accounts-figure :global(th) { padding: .45rem; border-bottom: 1px solid var(--color-line-strong); text-align: right; }
+  .microsoft-ai-accounts-figure :global(th:first-child) { text-align: left; }
+  .microsoft-ai-accounts-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @container (max-width: 500px) { .figure-wide { display: none; } .figure-narrow { display: block; } }
+  @media print { .microsoft-ai-accounts-figure { break-inside: avoid; } .figure-wide { display: block; } .figure-narrow { display: none; } }
+  :global(article:has(.microsoft-ai-accounts-figure) .post-title) { hyphens: none; word-break: normal; overflow-wrap: normal; }
+</style>

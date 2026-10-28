@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 690" style="width:100%;height:auto" class="l0g-microsoft-ai-accounts-svg" role="img" aria-labelledby="ms-accounts-en-allocation-m-title ms-accounts-en-allocation-m-desc"><title id="ms-accounts-en-allocation-m-title">Allocating a shared cost</title><desc id="ms-accounts-en-allocation-m-desc">Teaching simulation. Three segments have gross margins of 60, 30 and 10 units, totalling 100. Their relative weights are 60, 30 and 10 percent. A shared cost of 12 units therefore assigns expenses of 7.2, 3.6 and 1.2 units. Microsoft’s FY2026 policy generally uses relative gross margin for certain shared expenses, including AI infrastructure and training. All example amounts are fictional.</desc>
+<rect id="ms-accounts-en-allocation-m-frame" x="0" y="0" width="420" height="690" rx="5" fill="var(--color-ink)"></rect>
+<text data-panel="ms-accounts-en-allocation-m-frame" x="24" y="32" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="start">l0g / MICROSOFT / 03</text>
+<line x1="24" y1="47" x2="396" y2="47" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="ms-accounts-en-allocation-m-frame" x="24" y="84" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="25" font-weight="700" text-anchor="start">Allocating a shared cost</text>
+<text data-panel="ms-accounts-en-allocation-m-frame" x="24" y="142" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="start">Teaching example · fictional units</text>
+<rect id="ms-accounts-en-allocation-m-allocation" x="24" y="175" width="372" height="485" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="28" y="225" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="20" font-weight="700" text-anchor="start">Gross profit: total 100</text>
+<rect x="28" y="252" width="218.4" height="26" rx="0" fill="var(--color-signal)"></rect>
+<rect x="246.4" y="252" width="109.2" height="26" rx="0" fill="var(--color-accent)"></rect>
+<rect x="355.6" y="252" width="36.4" height="26" rx="0" fill="var(--color-amber)"></rect>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="28" y="434" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="20" font-weight="700" text-anchor="start">Shared cost: total 12</text>
+<rect x="28" y="461" width="218.4" height="26" rx="0" fill="var(--color-signal)"></rect>
+<rect x="246.4" y="461" width="109.2" height="26" rx="0" fill="var(--color-accent)"></rect>
+<rect x="355.6" y="461" width="36.4" height="26" rx="0" fill="var(--color-amber)"></rect>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="88.666667" y="325" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="middle">A · 60 / 100</text>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="88.666667" y="363" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="700" text-anchor="middle">60 %</text>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="88.666667" y="537" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="middle">12 × 60 %</text>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="88.666667" y="579" fill="var(--color-signal)" font-family="l0g Microsoft Accounts" font-size="27" font-weight="700" text-anchor="middle">7.2</text>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="210" y="325" fill="var(--color-accent)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="middle">B · 30 / 100</text>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="210" y="363" fill="var(--color-accent)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="700" text-anchor="middle">30 %</text>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="210" y="537" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="middle">12 × 30 %</text>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="210" y="579" fill="var(--color-accent)" font-family="l0g Microsoft Accounts" font-size="27" font-weight="700" text-anchor="middle">3.6</text>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="331.333333" y="325" fill="var(--color-amber)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="700" text-anchor="middle">C · 10 / 100</text>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="331.333333" y="363" fill="var(--color-amber)" font-family="l0g Microsoft Accounts" font-size="22" font-weight="700" text-anchor="middle">10 %</text>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="331.333333" y="537" fill="var(--color-paper)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="middle">12 × 10 %</text>
+<text data-panel="ms-accounts-en-allocation-m-allocation" x="331.333333" y="579" fill="var(--color-amber)" font-family="l0g Microsoft Accounts" font-size="27" font-weight="700" text-anchor="middle">1.2</text>
+<text data-panel="ms-accounts-en-allocation-m-frame" x="24" y="676" fill="var(--color-muted)" font-family="l0g Microsoft Accounts" font-size="17" font-weight="400" text-anchor="start">100% of gross profit → 100% of cost</text>
+</svg>
