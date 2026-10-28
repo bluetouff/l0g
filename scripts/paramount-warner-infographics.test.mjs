@@ -47,7 +47,7 @@ const nativeRoles = { ink:'--color-ink', surface:'--color-surface', paper:'--col
 for (const role of ['amber','mint','violet','blue','other']) nativeRoles[role+'-fill'] = nativeRoles[role];
 const nativePaints = {
   dark: { ink:'#0c0d10',surface:'#121419',paper:'#e7e9ee',muted:'#8b909b',line:'rgba(255, 255, 255, 0.20)',amber:'#f5b13d',mint:'#5eead4',violet:'#ff4d87',blue:'#7aa2f7',other:'#8b909b','ink-text':'#0c0d10' },
-  light: { ink:'#e7e9ee',surface:'#ffffff',paper:'#1b1d23',muted:'#4d5461',line:'rgba(12, 13, 16, 0.26)',amber:'#92400e',mint:'#0b5f58',violet:'#a50f4d',blue:'#1d4ed8',other:'#4d5461','ink-text':'#e7e9ee' },
+  light: { ink:'#f3f2ee',surface:'#fffefa',paper:'#1b1d23',muted:'#4d5461',line:'rgba(12, 13, 16, 0.26)',amber:'#92400e',mint:'#0b5f58',violet:'#a50f4d',blue:'#1d4ed8',other:'#4d5461','ink-text':'#f3f2ee' },
 };
 for (const palette of Object.values(nativePaints)) for (const role of ['amber','mint','violet','blue','other']) palette[role+'-fill'] = palette[role];
 const dark = Object.values(nativePaints.dark);

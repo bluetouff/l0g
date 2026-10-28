@@ -20,9 +20,9 @@
   --ecb-line-strong: var(--color-line-strong, rgba(255, 255, 255, .20));
 }
 :root[data-theme="light"] .l0g-collateral .ecb-wide > svg {
-  --ecb-ink: var(--color-ink, #e7e9ee);
-  --ecb-surface: var(--color-surface, #ffffff);
-  --ecb-surface-2: var(--color-surface-2, #eef0f4);
+  --ecb-ink: var(--color-ink, #f3f2ee);
+  --ecb-surface: var(--color-surface, #fffefa);
+  --ecb-surface-2: var(--color-surface-2, #ecebe6);
   --ecb-paper: var(--color-paper, #1b1d23);
   --ecb-muted: var(--color-muted, #4d5461);
   --ecb-signal: var(--color-signal, #0b5f58);

@@ -6,7 +6,7 @@
 <marker id="reserves05-fr-3-panel1-light-i" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8" fill="#1b1d23" /></marker>
 <marker id="reserves05-fr-3-panel1-light-s" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8" fill="#4d5461" /></marker>
 </defs>
-<defs><clipPath id="reserves05-fr-3-panel1-light-viewport" clipPathUnits="userSpaceOnUse"><rect x="0" y="0" width="400" height="585" /></clipPath></defs><g clip-path="url(#reserves05-fr-3-panel1-light-viewport)" data-source-composition="complete"><rect x="0" y="0" width="400" height="1170" rx="0" fill="#e7e9ee" />
+<defs><clipPath id="reserves05-fr-3-panel1-light-viewport" clipPathUnits="userSpaceOnUse"><rect x="0" y="0" width="400" height="585" /></clipPath></defs><g clip-path="url(#reserves05-fr-3-panel1-light-viewport)" data-source-composition="complete"><rect x="0" y="0" width="400" height="1170" rx="0" fill="#f3f2ee" />
 <text x="24" y="34" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#1b1d23" text-anchor="start">l0g.</text>
 <text x="376" y="32" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="600" fill="#4d5461" text-anchor="end">RÉSERVES / 05 · 03</text>
 <path d="M24,48 L376,48" fill="none" stroke="rgba(12, 13, 16, 0.26)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
@@ -15,14 +15,14 @@
 <text x="24" y="154" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#4d5461" text-anchor="start">Engagements annoncés · Millions de barils</text>
 <rect x="24" y="175" width="22" height="14" rx="0" fill="#0b5f58" />
 <text x="56" y="188" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#4d5461" text-anchor="start">Principal</text>
-<rect x="201" y="175" width="22" height="14" rx="0" fill="#f4ece7" stroke="#92400e" stroke-width="1.5" />
+<rect x="201" y="175" width="22" height="14" rx="0" fill="#f4ebe2" stroke="#92400e" stroke-width="1.5" />
 <text x="233" y="188" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#4d5461" text-anchor="start">Prime</text>
 <text x="24" y="246" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#1b1d23" text-anchor="start">20 MARS 2026</text>
 <text x="24" y="286" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#0b5f58" text-anchor="start">45,2 attribués</text>
 <rect x="24" y="302" width="227.29142857142858" height="31" rx="0" fill="#0b5f58" data-award-date="2026-03-20" data-metric="awarded" data-value="45.2" data-total-due="55.0" data-premium-share-pct="21.7" />
 <text x="24" y="377" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#1b1d23" text-anchor="start">55,0 à restituer</text>
-<rect x="24" y="397" width="227.29142857142858" height="34" rx="0" fill="#e7efee" stroke="#0b5f58" stroke-width="1.5" stroke-dasharray="6 4" data-award-date="2026-03-20" data-metric="future-principal" data-value="45.2" data-total-due="55.0" data-premium-share-pct="21.7" />
-<rect x="251.29142857142858" y="397" width="49.28" height="34" rx="0" fill="#f4ece7" stroke="#92400e" stroke-width="1.5" stroke-dasharray="6 4" data-award-date="2026-03-20" data-metric="future-premium" data-value="9.8" data-total-due="55.0" data-premium-share-pct="21.7" />
+<rect x="24" y="397" width="227.29142857142858" height="34" rx="0" fill="#e7eeea" stroke="#0b5f58" stroke-width="1.5" stroke-dasharray="6 4" data-award-date="2026-03-20" data-metric="future-principal" data-value="45.2" data-total-due="55.0" data-premium-share-pct="21.7" />
+<rect x="251.29142857142858" y="397" width="49.28" height="34" rx="0" fill="#f4ebe2" stroke="#92400e" stroke-width="1.5" stroke-dasharray="6 4" data-award-date="2026-03-20" data-metric="future-premium" data-value="9.8" data-total-due="55.0" data-premium-share-pct="21.7" />
 <text x="137.6457142857143" y="420" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#0b5f58" text-anchor="middle">45,2</text>
 <text x="275.93142857142857" y="420" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#92400e" text-anchor="middle">9,8</text>
 <text x="24" y="468" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#92400e" text-anchor="start">21,7 % de prime en volume</text>
@@ -33,8 +33,8 @@
 <text x="24" y="663" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#0b5f58" text-anchor="start">53,3 attribués</text>
 <rect x="24" y="679" width="268.0228571428571" height="31" rx="0" fill="#0b5f58" data-award-date="2026-05-11" data-metric="awarded" data-value="53.3" data-total-due="68.4" data-premium-share-pct="28.3" />
 <text x="24" y="754" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#1b1d23" text-anchor="start">68,4 à restituer</text>
-<rect x="24" y="774" width="268.0228571428571" height="34" rx="0" fill="#e7efee" stroke="#0b5f58" stroke-width="1.5" stroke-dasharray="6 4" data-award-date="2026-05-11" data-metric="future-principal" data-value="53.3" data-total-due="68.4" data-premium-share-pct="28.3" />
-<rect x="292.0228571428571" y="774" width="75.93142857142857" height="34" rx="0" fill="#f4ece7" stroke="#92400e" stroke-width="1.5" stroke-dasharray="6 4" data-award-date="2026-05-11" data-metric="future-premium" data-value="15.1" data-total-due="68.4" data-premium-share-pct="28.3" />
+<rect x="24" y="774" width="268.0228571428571" height="34" rx="0" fill="#e7eeea" stroke="#0b5f58" stroke-width="1.5" stroke-dasharray="6 4" data-award-date="2026-05-11" data-metric="future-principal" data-value="53.3" data-total-due="68.4" data-premium-share-pct="28.3" />
+<rect x="292.0228571428571" y="774" width="75.93142857142857" height="34" rx="0" fill="#f4ebe2" stroke="#92400e" stroke-width="1.5" stroke-dasharray="6 4" data-award-date="2026-05-11" data-metric="future-premium" data-value="15.1" data-total-due="68.4" data-premium-share-pct="28.3" />
 <text x="158.01142857142855" y="797" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#0b5f58" text-anchor="middle">53,3</text>
 <text x="329.9885714285714" y="797" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#92400e" text-anchor="middle">15,1</text>
 <text x="24" y="845" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#92400e" text-anchor="start">28,3 % de prime en volume</text>
