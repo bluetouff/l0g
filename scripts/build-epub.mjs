@@ -6,10 +6,16 @@ import { debtEditions } from '../src/config/debt-publication.mjs';
 import { cyberRecoveryEditions } from '../src/config/cyber-recovery-publication.mjs';
 
 import { insurancePromiseEditions } from '../src/config/insurance-promise-publication.mjs';
+import { cumcumEditions } from '../src/config/cumcum-publication.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
+  ...Object.values(cumcumEditions).map(book => ({
+    source: join(ROOT, 'src/epub', book.directory),
+    output: join(ROOT, 'public', book.epub),
+    fixedTime: new Date(book.modified),
+  })),
   ...Object.values(insurancePromiseEditions).map(book => ({
     source: join(ROOT, 'src/epub', book.directory),
     output: join(ROOT, 'public', book.epub),

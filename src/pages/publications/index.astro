@@ -12,8 +12,8 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
     { hreflang: 'en', href: 'https://l0g.fr/en/publications/' },
     { hreflang: 'x-default', href: 'https://l0g.fr/publications/' },
   ]}
-  ogImage="/publications/l-argent-des-promesses-og-v1.jpg"
-  ogImageAlt="L’argent des promesses : quand les fonds rachètent les assureurs. La nouvelle enquête l0g en EPUB gratuit"
+  ogImage="/publications/cumcum-la-bataille-de-l-impot-og-v1.jpg"
+  ogImageAlt="Cum-cum : la bataille de l’impôt. Six analyses l0g, leurs sources et vingt-six infographies, en EPUB gratuit."
 >
   <div class="publication-intro">
     <PageHero
@@ -24,9 +24,9 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
       glyph="read"
       accent="var(--color-amber)"
       stats={[
-        { value: 16, label: 'éditions disponibles' },
-        { value: 114, label: 'chapitres et enquêtes' },
-        { value: 16, label: 'EPUB gratuits' },
+        { value: 17, label: 'éditions disponibles' },
+        { value: 120, label: 'chapitres et enquêtes' },
+        { value: 17, label: 'EPUB gratuits' },
       ]}
     >
       <Fragment slot="title">
@@ -39,6 +39,7 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
     <p class="mono-label">// catalogue</p>
     <h2 id="publication-list-title">Éditions disponibles</h2>
     <div class="publication-grid">
+      <PublicationSpotlight publication="cumcum" />
       <PublicationSpotlight publication="insurance-promise" />
       <PublicationSpotlight publication="cyber-recovery" />
       <PublicationSpotlight publication="debt-chain" />

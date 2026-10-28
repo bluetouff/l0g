@@ -158,16 +158,17 @@ test('publication checks reject complete-field URL substitutions, missing downlo
   }
 });
 
-test('both catalogues retain the debt book after the insurer and cyber-recovery editions with one dark download per language', () => {
+test('both catalogues retain the debt book after the cum-cum, insurer and cyber-recovery editions with one dark download per language', () => {
   for (const book of Object.values(debtEditions)) {
     const route = book.lang === 'fr' ? 'publications' : 'en/publications';
     const html = readFileSync(join(ROOT, 'dist', route, 'index.html'), 'utf8');
     const cards = nodes(parse(html)).filter(node => node.tagName === 'article' && hasClass(node, 'publication-spotlight'));
-    assert.equal(cards.length, book.lang === 'fr' ? 16 : 13);
-    assert(hasClass(cards[0], 'publication-spotlight--insurance-promise'));
-    assert(hasClass(cards[1], 'publication-spotlight--cyber-recovery'));
-    assert(hasClass(cards[2], 'publication-spotlight--debt'));
-    const debtCard = cards[2];
+    assert.equal(cards.length, book.lang === 'fr' ? 17 : 14);
+    assert(hasClass(cards[0], 'publication-spotlight--cumcum'));
+    assert(hasClass(cards[1], 'publication-spotlight--insurance-promise'));
+    assert(hasClass(cards[2], 'publication-spotlight--cyber-recovery'));
+    assert(hasClass(cards[3], 'publication-spotlight--debt'));
+    const debtCard = cards[3];
     const first = nodes(debtCard);
     assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));
     const downloads = first.filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined);
@@ -188,7 +189,7 @@ test('both catalogues retain the debt book after the insurer and cyber-recovery 
       }, 0);
       const totalDownloads = cards.reduce((total, card) => total + nodes(card).filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined).length, 0);
       assert.deepEqual(values, [cards.length, totalChapters, totalDownloads]);
-      assert.deepEqual(values, [16, 114, 16]);
+      assert.deepEqual(values, [17, 120, 17]);
     }
   }
 });

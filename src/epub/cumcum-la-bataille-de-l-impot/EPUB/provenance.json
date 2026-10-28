@@ -1,0 +1,696 @@
+{
+  "schemaVersion": 1,
+  "edition": "urn:uuid:e297a3d5-2c7d-507c-8214-df873c01941e",
+  "lang": "fr",
+  "date": "2026-10-28",
+  "modified": "2026-10-28T09:00:00Z",
+  "sourceArticles": [
+    {
+      "lang": "fr",
+      "chapter": 1,
+      "file": "src/content/posts/cumcum-01-dividende-mecanisme.mdx",
+      "canonical": "https://l0g.fr/posts/cumcum-01-dividende-mecanisme/",
+      "sha256": "474a584bf580e0e96680d2bfd1fcc1718f6b61d754d08653d2df6c832dc585a3",
+      "published": "2026-10-27T10:20:00+01:00",
+      "updated": "2026-10-27T10:20:00+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 2,
+      "file": "src/content/posts/cumcum-02-alertes-chronologie.mdx",
+      "canonical": "https://l0g.fr/posts/cumcum-02-alertes-chronologie/",
+      "sha256": "85f7eb80dd0fb87f6057b25a53dfe309afeae420de4e118b1d4ddf222cca4f08",
+      "published": "2026-10-27T11:45:00+01:00",
+      "updated": "2026-10-27T11:45:00+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 3,
+      "file": "src/content/posts/cumcum-03-facture-fiscale.mdx",
+      "canonical": "https://l0g.fr/posts/cumcum-03-facture-fiscale/",
+      "sha256": "5de5e473043901f676d0fb5cef90350cb0853a3fd73b3b3523c26e58cc25a379",
+      "published": "2026-10-27T16:37:32+01:00",
+      "updated": "2026-10-27T16:37:32+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 4,
+      "file": "src/content/posts/cumcum-04-responsabilites-justice.mdx",
+      "canonical": "https://l0g.fr/posts/cumcum-04-responsabilites-justice/",
+      "sha256": "475029e4258fc95d0a73c2665508d0b3faf96537fa43c12e457aa2773685b4d6",
+      "published": "2026-10-27T18:13:26+01:00",
+      "updated": "2026-10-27T18:13:26+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 5,
+      "file": "src/content/posts/cumcum-05-bataille-doctrine-fiscale.mdx",
+      "canonical": "https://l0g.fr/posts/cumcum-05-bataille-doctrine-fiscale/",
+      "sha256": "70d1c721dbdab3d3cab210fd52b6c59b41788f041ec2c53cd226ca669cd6373c",
+      "published": "2026-10-27T21:59:01+01:00",
+      "updated": "2026-10-27T21:59:01+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 6,
+      "file": "src/content/posts/cumcum-06-mesurer-le-recul-de-la-fraude.mdx",
+      "canonical": "https://l0g.fr/posts/cumcum-06-mesurer-le-recul-de-la-fraude/",
+      "sha256": "ea5d749da0c20e156680722bcad7a9ceeae54311657bb305c738353f10b0f840",
+      "published": "2026-10-28T08:35:42+01:00",
+      "updated": "2026-10-28T08:35:42+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 1,
+      "file": "src/content/posts-en/cum-cum-01-dividend-mechanism.mdx",
+      "canonical": "https://l0g.fr/en/analysis/cum-cum-01-dividend-mechanism/",
+      "sha256": "5d96576771aaaf544a71dfd750a8c014aab747aa12166d207eb286fb4c5dcfcd",
+      "published": "2026-10-27T10:20:00+01:00",
+      "updated": "2026-10-27T10:20:00+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 2,
+      "file": "src/content/posts-en/cum-cum-02-warnings-timeline.mdx",
+      "canonical": "https://l0g.fr/en/analysis/cum-cum-02-warnings-timeline/",
+      "sha256": "072657dcdd1964bd6497e56568d2992154c2442934aacb2465d4d2a95ce0d9d5",
+      "published": "2026-10-27T11:45:00+01:00",
+      "updated": "2026-10-27T11:45:00+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 3,
+      "file": "src/content/posts-en/cumcum-03-tax-loss-estimates.mdx",
+      "canonical": "https://l0g.fr/en/analysis/cumcum-03-tax-loss-estimates/",
+      "sha256": "ebf2fe32900b6f033c57dd5e9e9f80d4ab0ea113cfb9800643a112e97f83c96d",
+      "published": "2026-10-27T16:37:32+01:00",
+      "updated": "2026-10-27T16:37:32+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 4,
+      "file": "src/content/posts-en/cumcum-04-court-decisions-accountability.mdx",
+      "canonical": "https://l0g.fr/en/analysis/cumcum-04-court-decisions-accountability/",
+      "sha256": "282cc8e66f0a55b006fe220bff3dfc083c48660a62b477de7bca3475a90d0b00",
+      "published": "2026-10-27T18:13:26+01:00",
+      "updated": "2026-10-27T18:13:26+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 5,
+      "file": "src/content/posts-en/cumcum-05-tax-guidance-battle.mdx",
+      "canonical": "https://l0g.fr/en/analysis/cumcum-05-tax-guidance-battle/",
+      "sha256": "a2943e60ab77f4945f102f931d94f3d5721274ff4063248626a17a768d3c5803",
+      "published": "2026-10-27T21:59:01+01:00",
+      "updated": "2026-10-27T21:59:01+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 6,
+      "file": "src/content/posts-en/cumcum-06-measuring-reform-results.mdx",
+      "canonical": "https://l0g.fr/en/analysis/cumcum-06-measuring-reform-results/",
+      "sha256": "e804233272633b0ad7e1f61893868150be2127ee6c566549b68850f8f2f03401",
+      "published": "2026-10-28T08:35:42+01:00",
+      "updated": "2026-10-28T08:35:42+01:00"
+    }
+  ],
+  "figures": [
+    {
+      "chapter": 1,
+      "figure": 1,
+      "kind": "cycle",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum/fr-cycle.svg",
+      "sourceSha256": "2bcf3d3521a295b39352259638e8d75a54ba51be95159ea13957f47fc26971f7",
+      "epubFile": "EPUB/media/file0.svg",
+      "epubSha256": "11a08cd3ad9870948ec85a0255b29c8c4943f5cd3f269734dc0fe1d8915828ed"
+    },
+    {
+      "chapter": 1,
+      "figure": 1,
+      "kind": "cycle",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum/fr-cycle-mobile.svg",
+      "sourceSha256": "057ed89dfc7bafaac664934566502bbb6047b7465879359bd7aac9fe27c06222",
+      "epubFile": "EPUB/media/file1.svg",
+      "epubSha256": "744979f3ee92752e7072eac3e35f770d035d2c64af31a66e7b1ad6d6c50a6daa"
+    },
+    {
+      "chapter": 1,
+      "figure": 2,
+      "kind": "allocation",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum/fr-allocation.svg",
+      "sourceSha256": "6694a2fae7022858d9df862a2ef64828645324bf6f0f98a9583d3a00bf306f97",
+      "epubFile": "EPUB/media/file2.svg",
+      "epubSha256": "5ff4f2b30647dbf76dc5f48a5255ffde499de8839a0df962b56c2e25aa941a36"
+    },
+    {
+      "chapter": 1,
+      "figure": 2,
+      "kind": "allocation",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum/fr-allocation-mobile.svg",
+      "sourceSha256": "e532cfdc17eef3169f1f1882edd467bcbea80bbe6faa116882f8c1945d7cb9bd",
+      "epubFile": "EPUB/media/file3.svg",
+      "epubSha256": "967d5df131df1b4858f35e0ada08e0654b08c77b9c1fa30928f3728e05aa338f"
+    },
+    {
+      "chapter": 1,
+      "figure": 3,
+      "kind": "exposure",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum/fr-exposure.svg",
+      "sourceSha256": "4427375340542edaa32d0bdfcf86b4b1b232d3e6b81dec818e75e2e13ad76e8d",
+      "epubFile": "EPUB/media/file4.svg",
+      "epubSha256": "f9700e20661a3c4360f21f0405d1090ac132a083c618efd3f0dcbc374847a1f4"
+    },
+    {
+      "chapter": 1,
+      "figure": 3,
+      "kind": "exposure",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum/fr-exposure-mobile.svg",
+      "sourceSha256": "903c6f576dbc60012ee0a32d96167d2b0a9550cc07cd85e49116a17fd74fb56a",
+      "epubFile": "EPUB/media/file5.svg",
+      "epubSha256": "96659e6fcb449382e6ad7d68136c34fb404b6c6fc74ee623ccf6c9160f156a24"
+    },
+    {
+      "chapter": 1,
+      "figure": 4,
+      "kind": "comparison",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum/fr-comparison.svg",
+      "sourceSha256": "0cc05e3183c8a58f5b5dc7462d882c81159b9b4e4d258a471b4ec4dbec4f1ab3",
+      "epubFile": "EPUB/media/file6.svg",
+      "epubSha256": "f6e18a07091d0b0dc2053576dd6893b6a3d4c898a3a93cbf01c2b37b6a83eaf5"
+    },
+    {
+      "chapter": 1,
+      "figure": 4,
+      "kind": "comparison",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum/fr-comparison-mobile.svg",
+      "sourceSha256": "27c5606212254298944f7fa71ec1d93bd4a026d3e617266c0204c0c993a3b8ca",
+      "epubFile": "EPUB/media/file7.svg",
+      "epubSha256": "48a1353c0fad96912c4155a2c7bb517267530b186ab9e4be5864fec311cfb336"
+    },
+    {
+      "chapter": 2,
+      "figure": 1,
+      "kind": "alerts",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum02/fr-alerts.svg",
+      "sourceSha256": "695ac56d7422c6198c98f1ac878c9c6c7b186b5f3c8296b92b4c8c569c178d29",
+      "epubFile": "EPUB/media/file8.svg",
+      "epubSha256": "e77b518844d15c8c858a47f8977cd6067a3342514250ede13604013e009648e4"
+    },
+    {
+      "chapter": 2,
+      "figure": 1,
+      "kind": "alerts",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum02/fr-alerts-mobile.svg",
+      "sourceSha256": "3a536d21ba7180606d8ea623d03181ab051061caa186656e7d8d0d26762e8230",
+      "epubFile": "EPUB/media/file9.svg",
+      "epubSha256": "e4114201f4281bee2f718eb30fd449a350120e08ef0fa3b924a3956f8df7f025"
+    },
+    {
+      "chapter": 2,
+      "figure": 2,
+      "kind": "evidence",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum02/fr-evidence.svg",
+      "sourceSha256": "3a3a15af3a1d4c0da36f534cfeee989843d45970044ef2f16e096a9a33bcc08d",
+      "epubFile": "EPUB/media/file10.svg",
+      "epubSha256": "c9613fbf09b5c8d9cd78635742fc4d9fcb6edbb4b3221f322acb832ca721b8fe"
+    },
+    {
+      "chapter": 2,
+      "figure": 2,
+      "kind": "evidence",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum02/fr-evidence-mobile.svg",
+      "sourceSha256": "165c75e1a1d13f623e01a7781b7edcfae9d36380e8ab76d2f8312954abe25303",
+      "epubFile": "EPUB/media/file11.svg",
+      "epubSha256": "86f29d03eeac5f95775bb20a0d1236b256610c2c8371761abb7519db4673546d"
+    },
+    {
+      "chapter": 2,
+      "figure": 3,
+      "kind": "intervals",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum02/fr-intervals.svg",
+      "sourceSha256": "bb75a951239a75e77299e067d68964dcdef9708d0f46f965c29344f19ccb0ff4",
+      "epubFile": "EPUB/media/file12.svg",
+      "epubSha256": "e939f4cc324bdb8c7711655900a9bcbff0b5ae199d7ba678957a0929d98f745e"
+    },
+    {
+      "chapter": 2,
+      "figure": 3,
+      "kind": "intervals",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum02/fr-intervals-mobile.svg",
+      "sourceSha256": "8b07bd5638838ba1112111ffdfcfdac9016d2356a3419ed6418c06a93943d083",
+      "epubFile": "EPUB/media/file13.svg",
+      "epubSha256": "405d44b0217ef5637b420a7d9953944af433c6884642306b9c2261f4b2655c67"
+    },
+    {
+      "chapter": 2,
+      "figure": 4,
+      "kind": "tracks",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum02/fr-tracks.svg",
+      "sourceSha256": "7bbd3713ed86e1488c812803becfdec4ee2cd43dbed3e143ed9ceeca4d3b84a8",
+      "epubFile": "EPUB/media/file14.svg",
+      "epubSha256": "238aea8342fc2db47f0c564bfbc7a99ecbb3bfc1b3e81416d567628ae84e82d0"
+    },
+    {
+      "chapter": 2,
+      "figure": 4,
+      "kind": "tracks",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum02/fr-tracks-mobile.svg",
+      "sourceSha256": "b1b238f60c7710312ef215e3dabcae2851b8357c949b0b7d66327e8fc1f67bba",
+      "epubFile": "EPUB/media/file15.svg",
+      "epubSha256": "b8b6a8d3ede4c22a7e191f3787097e2a6734355c272e0c088c8f915c06efd7ed"
+    },
+    {
+      "chapter": 3,
+      "figure": 1,
+      "kind": "model",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum03/fr-model.svg",
+      "sourceSha256": "29783d49a41b9c6f95171e6168bf4c830b873c9807012bea264dfc411c0cdfd3",
+      "epubFile": "EPUB/media/file16.svg",
+      "epubSha256": "9c7c8a19314627a5d13c60c039694102eb7b41e88f640eed8d09a3868d455498"
+    },
+    {
+      "chapter": 3,
+      "figure": 1,
+      "kind": "model",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum03/fr-model-mobile.svg",
+      "sourceSha256": "1fc0b223f8656b59c2ec97ad4f6a2fa98e645a647df1bdc4023c394043875dc0",
+      "epubFile": "EPUB/media/file17.svg",
+      "epubSha256": "170542fd100c7299a90cff5e31e5067ac71a804b5fde9dbd88082f1aa7e25048"
+    },
+    {
+      "chapter": 3,
+      "figure": 2,
+      "kind": "sensitivity",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum03/fr-sensitivity.svg",
+      "sourceSha256": "2fbed9c1ccedb2b7d979dbcf4a39fd66602ef753d8da60e0cf16263140dcc13c",
+      "epubFile": "EPUB/media/file18.svg",
+      "epubSha256": "1cd22fb4f4e7c67a3a9a8cf2f03437591761aff1e2f83b43b0a7b15e4b38048d"
+    },
+    {
+      "chapter": 3,
+      "figure": 2,
+      "kind": "sensitivity",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum03/fr-sensitivity-mobile.svg",
+      "sourceSha256": "c1c10ef9feabd7e872139daf09fbfe33c115ff0d804f0865403b0f70657836cf",
+      "epubFile": "EPUB/media/file19.svg",
+      "epubSha256": "2bd53c42b89012df1b6a97826a1fa015d6e8ec105cd212052c0abaa494ef9990"
+    },
+    {
+      "chapter": 3,
+      "figure": 3,
+      "kind": "scope",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum03/fr-scope.svg",
+      "sourceSha256": "510356a580c0fbaefb4b5f52016b7dc139708bf1acaef2b51f8431d1c3b49fdd",
+      "epubFile": "EPUB/media/file20.svg",
+      "epubSha256": "30f07fc080deb19397b71712547434fa2cc00ee18b5cc11f8495ccec8ac85b39"
+    },
+    {
+      "chapter": 3,
+      "figure": 3,
+      "kind": "scope",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum03/fr-scope-mobile.svg",
+      "sourceSha256": "998371e90837efceda3147e7284a8145b920066c25908b4775905422fed49f01",
+      "epubFile": "EPUB/media/file21.svg",
+      "epubSha256": "dd9a4097210ab333b5d01c92ab1573f517e8c0a2ba7489d2c4325250c9deac9c"
+    },
+    {
+      "chapter": 3,
+      "figure": 4,
+      "kind": "evidence",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum03/fr-evidence.svg",
+      "sourceSha256": "4e5d193e9358ee36b0b128afcf589455a067bb6f3880c754490b94ca202ac791",
+      "epubFile": "EPUB/media/file22.svg",
+      "epubSha256": "1148e76141995d75a948d5efdfd828a4a568a3780a757d6e964d6456f1263404"
+    },
+    {
+      "chapter": 3,
+      "figure": 4,
+      "kind": "evidence",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum03/fr-evidence-mobile.svg",
+      "sourceSha256": "96c2a416820b54f6921fa002345920d33d27a40291a652383b5e990139da3b22",
+      "epubFile": "EPUB/media/file23.svg",
+      "epubSha256": "37311ed314d75431bf0614dcff80aab07e3d9622ec4a2e791588b087c052dce4"
+    },
+    {
+      "chapter": 3,
+      "figure": 5,
+      "kind": "settlements",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum03/fr-settlements.svg",
+      "sourceSha256": "fd7680511f3352c66b0e0567ea7818a613fa80a3baeacf43c433aa4dd155325b",
+      "epubFile": "EPUB/media/file24.svg",
+      "epubSha256": "60a50b3852d7fc2570fb318aeec8cf42d88d35fab2bc743ad84d863bf484155d"
+    },
+    {
+      "chapter": 3,
+      "figure": 5,
+      "kind": "settlements",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum03/fr-settlements-mobile.svg",
+      "sourceSha256": "b20730009f26b2d85761c3bae9d083892d390175e335a26ee73eff549e5a343e",
+      "epubFile": "EPUB/media/file25.svg",
+      "epubSha256": "e6da7c15d01197c90328cbb842db71e7bbdcf6312a24ba9dd55f1dd25fefd430"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "entities",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum04/fr-entities.svg",
+      "sourceSha256": "2fb7d1d2c255d91833f6c065fdb63b1ba83623da67891f95c48563e084d7dc1a",
+      "epubFile": "EPUB/media/file26.svg",
+      "epubSha256": "47f1ff293aca762e6df0eed1ee300da8f23cf7b69dd3ead4f166bbc7ff1b1c07"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "entities",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum04/fr-entities-mobile.svg",
+      "sourceSha256": "3e0bbb80adec5ad34cce512ac59450fecd3ee4ba05da3b0f0f97069092ecffe9",
+      "epubFile": "EPUB/media/file27.svg",
+      "epubSha256": "0d59f04a75b6588cd42dd03fb2fe6abd87c79b2ff152e0f0cd1bf3230beb97ef"
+    },
+    {
+      "chapter": 4,
+      "figure": 2,
+      "kind": "procedure",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum04/fr-procedure.svg",
+      "sourceSha256": "98be87fd130befdbcd1c5825817579dde3241aa54625723ce2f5fbadf24d0f2f",
+      "epubFile": "EPUB/media/file28.svg",
+      "epubSha256": "7f07f61076ade3f47501565dd1b0d6229e7674f07f2c86f4be33857f721679a7"
+    },
+    {
+      "chapter": 4,
+      "figure": 2,
+      "kind": "procedure",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum04/fr-procedure-mobile.svg",
+      "sourceSha256": "1777ab4d8b01333c9a9fd49c899a3de2176c0df650299529ff29204593253ad1",
+      "epubFile": "EPUB/media/file29.svg",
+      "epubSha256": "0e5716a7ee030ae6c0bc44b7f2baf2ddf572c54928ed7a13a3ce8bc4c60da609"
+    },
+    {
+      "chapter": 4,
+      "figure": 3,
+      "kind": "outcomes",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum04/fr-outcomes.svg",
+      "sourceSha256": "fbcfec140902398c940b7b1acca5a7e4b4f9238376c62e615a00006f9848a13e",
+      "epubFile": "EPUB/media/file30.svg",
+      "epubSha256": "d9aa84a0ea1b425c01f1bf77f6b1939aab6e0c3aaab64e07ba2e5661a72a198d"
+    },
+    {
+      "chapter": 4,
+      "figure": 3,
+      "kind": "outcomes",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum04/fr-outcomes-mobile.svg",
+      "sourceSha256": "a29ac930db506284336b1d2c46753cb4aa64bb5414f247fb8329efc69299fe9e",
+      "epubFile": "EPUB/media/file31.svg",
+      "epubSha256": "24a5bc410c8280a306c28791be216f4e370f5ee92c82f5a45ca25d4b64f71627"
+    },
+    {
+      "chapter": 4,
+      "figure": 4,
+      "kind": "mako",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum04/fr-mako.svg",
+      "sourceSha256": "e285f1904c8d8673a1e50d131b26d08d5e1f2e6824d7a30eefa296b14134bbd5",
+      "epubFile": "EPUB/media/file32.svg",
+      "epubSha256": "f4887fda9857f3b4ef30bc3e6593d985d76c953408528bfb360fe593b0615db2"
+    },
+    {
+      "chapter": 4,
+      "figure": 4,
+      "kind": "mako",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum04/fr-mako-mobile.svg",
+      "sourceSha256": "73ba43c50dfa72c9195ecb592d08b265c493e414c8796edcf4de48ccc3d1e79e",
+      "epubFile": "EPUB/media/file33.svg",
+      "epubSha256": "a5d2e57e3a79ca451c251a7b2e6b59a7a01ad4d88adaf6003e2bd05e9114a09f"
+    },
+    {
+      "chapter": 5,
+      "figure": 1,
+      "kind": "qualification",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum05/fr-qualification.svg",
+      "sourceSha256": "5fda47de8ba02d75f8418e046626f904a480518586830853dc5fb6660d883781",
+      "epubFile": "EPUB/media/file34.svg",
+      "epubSha256": "2a7a85f00e57186aab89318a31ae704a972590068fba06e4bf06bc44b82b506b"
+    },
+    {
+      "chapter": 5,
+      "figure": 1,
+      "kind": "qualification",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum05/fr-qualification-mobile.svg",
+      "sourceSha256": "3636e752b2ffe8bf44f92ef8408d1809450e9e631616cc7f580c00fce6592c77",
+      "epubFile": "EPUB/media/file35.svg",
+      "epubSha256": "5c2b427cabe7d69a150112fcebef63e72b2bd65ff6dda2f8805c7c612892d72b"
+    },
+    {
+      "chapter": 5,
+      "figure": 2,
+      "kind": "market",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum05/fr-market.svg",
+      "sourceSha256": "956696d7367b27696d808e3734dd484e286414be63e9c14aba7433bd7e5f9b5e",
+      "epubFile": "EPUB/media/file36.svg",
+      "epubSha256": "fa2dad030d7ca8008b530a30502624d50fbd77b513e55f37c019f69b2a33e0bd"
+    },
+    {
+      "chapter": 5,
+      "figure": 2,
+      "kind": "market",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum05/fr-market-mobile.svg",
+      "sourceSha256": "b4873faf66b1d575546cc0872ef970990bfa794d3afff0028f032fabd9de5583",
+      "epubFile": "EPUB/media/file37.svg",
+      "epubSha256": "c8dcd0124c3a48df7d87ae1e838871a1c8934980ae794d10603891c3a9a8c3be"
+    },
+    {
+      "chapter": 5,
+      "figure": 3,
+      "kind": "window",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum05/fr-window.svg",
+      "sourceSha256": "980c62fc3157f5785336eb0bf784fa462a0e43778233e74dfc7af2f11ce5bd85",
+      "epubFile": "EPUB/media/file38.svg",
+      "epubSha256": "384192aaf0f397c19b55005e9b7c929c5ee81ad0591b722ef660782ba9e4df2f"
+    },
+    {
+      "chapter": 5,
+      "figure": 3,
+      "kind": "window",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum05/fr-window-mobile.svg",
+      "sourceSha256": "bb8b74e80fb8addc6fc62b65c8f7106616e9ce02af7c9fe35f514433b3882344",
+      "epubFile": "EPUB/media/file39.svg",
+      "epubSha256": "49a5a271bca1af572806fd98522a204f3d4473e500dedf3ea7b3da6cf8d35196"
+    },
+    {
+      "chapter": 5,
+      "figure": 4,
+      "kind": "guarantee",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum05/fr-guarantee.svg",
+      "sourceSha256": "b9a3965e7202b36a263b32262ec2794561f08507ac645ac8f30551b8b123aa44",
+      "epubFile": "EPUB/media/file40.svg",
+      "epubSha256": "c7ae183b98b51e46f03b8f6f4a242531163206182e4f72ad415c45d4f828982f"
+    },
+    {
+      "chapter": 5,
+      "figure": 4,
+      "kind": "guarantee",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum05/fr-guarantee-mobile.svg",
+      "sourceSha256": "aa2d95f74b3a3b8ca0d55af3e0c4180792b167469b364fb62d41f014be5aa4d7",
+      "epubFile": "EPUB/media/file41.svg",
+      "epubSha256": "2907ce12ef80d8c3fff531d1da9bfcd2ceedeb449bc02a482a4a995d59d27a5b"
+    },
+    {
+      "chapter": 6,
+      "figure": 1,
+      "kind": "cash",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum06/fr-cash.svg",
+      "sourceSha256": "ae936f926b2542cce50ab8d664303fdb6e70d931b421d2006d31b8b38fdc7472",
+      "epubFile": "EPUB/media/file42.svg",
+      "epubSha256": "12a1294db9f241e442131ff3da0062f60da3bf053f097b5dde8d13e7abbace22"
+    },
+    {
+      "chapter": 6,
+      "figure": 1,
+      "kind": "cash",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum06/fr-cash-mobile.svg",
+      "sourceSha256": "ec2a6ceb3e4b740de94944a21674a365dff65ed0e2163dd3ab47b45af8b4ccf9",
+      "epubFile": "EPUB/media/file43.svg",
+      "epubSha256": "6af79357f3fa50c9196d75d3cd56eda25e494ef3fd6acd7c139cc02338dd6b3f"
+    },
+    {
+      "chapter": 6,
+      "figure": 2,
+      "kind": "chain",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum06/fr-chain.svg",
+      "sourceSha256": "75657e3d25837644581fa54446e17248b38b9697a2839368c191793398eb7d0e",
+      "epubFile": "EPUB/media/file44.svg",
+      "epubSha256": "d86209f672da1186e29d9996531f97916f4dd5cd59680b70d02c219ca02c4005"
+    },
+    {
+      "chapter": 6,
+      "figure": 2,
+      "kind": "chain",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum06/fr-chain-mobile.svg",
+      "sourceSha256": "732365a06e77b722d783b07b7c0c847133f6136b0f0f58eb2d84417792555dac",
+      "epubFile": "EPUB/media/file45.svg",
+      "epubSha256": "7fae36dfd10908db38d61c4beccd82b7fde06f948b7109c4d309fb9ec3c914aa"
+    },
+    {
+      "chapter": 6,
+      "figure": 3,
+      "kind": "clock",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum06/fr-clock.svg",
+      "sourceSha256": "646228043859265e8777c28803389bd2ed9e7ff1305943826aef418832af6a4a",
+      "epubFile": "EPUB/media/file46.svg",
+      "epubSha256": "8cdbaae0078f33c7d65b42fc21acd48b42d95975c6036a832fbd075e36e7c19a"
+    },
+    {
+      "chapter": 6,
+      "figure": 3,
+      "kind": "clock",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum06/fr-clock-mobile.svg",
+      "sourceSha256": "33bdaf3238661b96de0a057f37d1008c30ed07d2129e70a8cbfa9fc02c22c724",
+      "epubFile": "EPUB/media/file47.svg",
+      "epubSha256": "0dd3d7b55c19089493aee7cfcd88947f6ec68af822273c47d983a11fe418a7a7"
+    },
+    {
+      "chapter": 6,
+      "figure": 4,
+      "kind": "yield",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum06/fr-yield.svg",
+      "sourceSha256": "1d3ffeccf7302890db4718142043deba896bdafa71706a34cad8d19ea30d88b2",
+      "epubFile": "EPUB/media/file48.svg",
+      "epubSha256": "b4383ade57f704e53130c8851e0a23f3eb6167557a67d800fc3a15afaa0ffc1d"
+    },
+    {
+      "chapter": 6,
+      "figure": 4,
+      "kind": "yield",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum06/fr-yield-mobile.svg",
+      "sourceSha256": "b0fa01b38cb1ed9525a9a9739a4e8617b96d80c316cd220a495510d28266123a",
+      "epubFile": "EPUB/media/file49.svg",
+      "epubSha256": "bf91bce6607a25cbcccfb585abc0e5054855d64b1bc14e7afcd763b431372a45"
+    },
+    {
+      "chapter": 6,
+      "figure": 5,
+      "kind": "horizon",
+      "mobile": false,
+      "sourceFile": "src/figures/cumcum06/fr-horizon.svg",
+      "sourceSha256": "4c9d3e170fe4020ddf0c4d87c68d2467cb3c6ddbd07466413a94312bab7c4691",
+      "epubFile": "EPUB/media/file50.svg",
+      "epubSha256": "766c04848db37a3eba0f570885315aab8677ad83a8d158678b0c8d811eb87f3f"
+    },
+    {
+      "chapter": 6,
+      "figure": 5,
+      "kind": "horizon",
+      "mobile": true,
+      "sourceFile": "src/figures/cumcum06/fr-horizon-mobile.svg",
+      "sourceSha256": "00b65569ffe0cb693ee32011e4c8d0f317ea051edcc57e5c8bcfbe831cdf23aa",
+      "epubFile": "EPUB/media/file51.svg",
+      "epubSha256": "e6ebed18a037bab722ec241716555208a90265255841105f974f73e9e3940a29"
+    }
+  ],
+  "fonts": [
+    {
+      "file": "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+      "license": "LICENSE-inter.txt"
+    },
+    {
+      "file": "node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2",
+      "sha256": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e",
+      "license": "LICENSE-jetbrains-mono.txt"
+    },
+    {
+      "file": "public/fonts/cumcum/dejavu-sans-400.ttf",
+      "sha256": "6bf874b9f58cf33fb887ab5dd7617992964dd250f760f2e8bf2a745dfd5aa670",
+      "license": "LICENSE-cumcum.txt"
+    },
+    {
+      "file": "public/fonts/cumcum/dejavu-sans-700.ttf",
+      "sha256": "b3639383141ff6777e13dcc549aee0eeb3b777bc539be234624ccecb85914736",
+      "license": "LICENSE-cumcum.txt"
+    },
+    {
+      "file": "public/fonts/cumcum04/dejavu-sans-400.ttf",
+      "sha256": "0930c4e7c396fd20b0d1147418dd1c940a3f173dd7cf8b0871c0335c3cf86c30",
+      "license": "LICENSE-cumcum04.txt"
+    },
+    {
+      "file": "public/fonts/cumcum04/dejavu-sans-700.ttf",
+      "sha256": "9c44522fc21d9c74a48a047159647fa056cfb22521725b73d44bd2911ac9862b",
+      "license": "LICENSE-cumcum04.txt"
+    },
+    {
+      "file": "public/fonts/cumcum05/dejavu-sans-400.ttf",
+      "sha256": "f403d2013ddee860c94e18f74999e8e158f78e5be7e52aa8af0420fbe20eda69",
+      "license": "LICENSE-cumcum05.txt"
+    },
+    {
+      "file": "public/fonts/cumcum05/dejavu-sans-700.ttf",
+      "sha256": "9244f4245c52db103877ffc07a7802389a8e690ea0d6163207a34a5fad6ac2b8",
+      "license": "LICENSE-cumcum05.txt"
+    },
+    {
+      "file": "public/fonts/cumcum06/dejavu-sans-400.ttf",
+      "sha256": "d8b237543d0c05c8b963e4a9f9ee2c173474831ac24c550f0ee693518fe701fc",
+      "license": "LICENSE-cumcum06.txt"
+    },
+    {
+      "file": "public/fonts/cumcum06/dejavu-sans-700.ttf",
+      "sha256": "4b9c5bdac0e4dc4ad9546f15a7fc404f457b075db131a23ad275082a4be2beee",
+      "license": "LICENSE-cumcum06.txt"
+    }
+  ],
+  "cover": {
+    "file": "public/publications/cumcum-la-bataille-de-l-impot-cover.jpg",
+    "sha256": "0cf954e44760d9485365bf1ade139a4c5d6465b0962be55f261080b35dcefe1d"
+  },
+  "transformation": "Complete source bodies, notices and figure geometry. Disclosure content expanded for offline reading; interactive components converted to labelled static explanations. Semantic dark paints resolved and original local vector fonts embedded."
+}

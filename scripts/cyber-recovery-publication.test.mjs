@@ -225,15 +225,16 @@ test('publication checks reject complete-field URL substitutions, missing downlo
   }
 });
 
-test('both catalogues retain the cyber-recovery book after the insurer edition with one dark download per language', () => {
+test('both catalogues retain the cyber-recovery book after the cum-cum and insurer editions with one dark download per language', () => {
   for (const book of Object.values(cyberRecoveryEditions)) {
     const route = book.lang === 'fr' ? 'publications' : 'en/publications';
     const html = readFileSync(join(ROOT, 'dist', route, 'index.html'), 'utf8');
     const cards = nodes(parse(html)).filter(node => node.tagName === 'article' && hasClass(node, 'publication-spotlight'));
-    assert.equal(cards.length, book.lang === 'fr' ? 16 : 13);
-    assert(hasClass(cards[0], 'publication-spotlight--insurance-promise'));
-    assert(hasClass(cards[1], 'publication-spotlight--cyber-recovery'));
-    const cyberCard = cards[1];
+    assert.equal(cards.length, book.lang === 'fr' ? 17 : 14);
+    assert(hasClass(cards[0], 'publication-spotlight--cumcum'));
+    assert(hasClass(cards[1], 'publication-spotlight--insurance-promise'));
+    assert(hasClass(cards[2], 'publication-spotlight--cyber-recovery'));
+    const cyberCard = cards[2];
     const first = nodes(cyberCard);
     assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));
     const downloads = first.filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined);
@@ -249,7 +250,7 @@ test('both catalogues retain the cyber-recovery book after the insurer edition w
       const facts = nodes(card).find(node => node.tagName === 'ul' && hasClass(node, 'publication-facts'));
       return total + Number(plain(nodes(facts).find(node => node.tagName === 'strong')));
     }, 0);
-    assert.equal(chapterTotal, book.lang === 'fr' ? 114 : 87);
+    assert.equal(chapterTotal, book.lang === 'fr' ? 120 : 93);
     if (book.lang === 'fr') {
       const stats = nodes(parse(html)).find(node => node.tagName === 'dl' && hasClass(node, 'page-hero-stats'));
       assert(stats);
@@ -261,7 +262,7 @@ test('both catalogues retain the cyber-recovery book after the insurer edition w
       }, 0);
       const totalDownloads = cards.reduce((total, card) => total + nodes(card).filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined).length, 0);
       assert.deepEqual(values, [cards.length, totalChapters, totalDownloads]);
-      assert.deepEqual(values, [16, 114, 16]);
+      assert.deepEqual(values, [17, 120, 17]);
     }
   }
 });

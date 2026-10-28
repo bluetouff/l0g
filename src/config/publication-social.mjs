@@ -1,5 +1,7 @@
 // Dedicated landscape cards. Portrait covers remain the book and catalogue artwork.
 const entries = [
+  ['cumcum', 'fr', 'cumcum-la-bataille-de-l-impot', ['Cum-cum', 'La bataille', 'de l’impôt'], ['Six enquêtes documentées', 'sur l’arbitrage de dividendes'], 'Illustration conceptuelle de titres, de dividendes et de retenue fiscale'],
+  ['cumcum', 'en', 'cumcum-the-tax-battle', ['Cum-cum', 'The Tax Battle'], ['Six documented investigations', 'into dividend arbitrage'], 'Conceptual artwork of securities, dividends and tax withholding'],
   ['insurance-promise', 'fr', 'l-argent-des-promesses', ['L’argent des', 'promesses'], ['Quand les fonds rachètent', 'les assureurs'], 'Illustration conceptuelle des engagements des assureurs et des ressources qui les soutiennent'],
   ['insurance-promise', 'en', 'the-money-behind-the-promise', ['The money behind', 'the promise'], ['When asset managers', 'buy insurers'], 'Conceptual artwork of insurers’ obligations and the resources supporting them'],
   ['cyber-recovery', 'fr', 'apres-la-cyberattaque', ['Après la', 'cyberattaque'], ['Qui finance la reprise ?'], 'Illustration conceptuelle d’un mécanisme industriel réparé et du financement de la reprise'],
