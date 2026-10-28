@@ -221,6 +221,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "robots": "noindex,follow",
     "atlas": {
       "articles": [
+        {"label": "Cum-cum: measuring the reform’s results", "href": "/en/analysis/cumcum-06-measuring-reform-results/", "kind": "article"},
         {"label": "Cum-cum: the battle over tax guidance", "href": "/en/analysis/cumcum-05-tax-guidance-battle/", "kind": "article"},
         {"label": "Cum-cum and cum-ex: accountability in court", "href": "/en/analysis/cumcum-04-court-decisions-accountability/", "kind": "article"},
         {"label": "Cum-cum: tax-loss estimates and recoveries", "href": "/en/analysis/cumcum-03-tax-loss-estimates/", "kind": "article"},
@@ -287,6 +288,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "robots": "noindex,follow",
     "atlas": {
       "articles": [
+        {"label": "Cum-cum: measuring the reform’s results", "href": "/en/analysis/cumcum-06-measuring-reform-results/", "kind": "article"},
         {"label": "Cum-cum: the battle over tax guidance", "href": "/en/analysis/cumcum-05-tax-guidance-battle/", "kind": "article"},
         {
           "label": "Cum-cum: a dividend tax becomes a trading margin",

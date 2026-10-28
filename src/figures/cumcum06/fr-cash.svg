@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cumcum06-fr-cash-d-title cumcum06-fr-cash-d-desc" viewBox="0 0 1000 720" style="width:100%;height:auto" class="l0g-cumcum06-svg">
+<title id="cumcum06-fr-cash-d-title">Du prélèvement à la recette définitive</title><desc id="cumcum06-fr-cash-d-desc">Exemple fictif / dividende 100 / retenue supposée 25</desc>
+<rect id="cumcum06-fr-cash-d-frame" x="0" y="0" width="1000.000000000" height="720" rx="8" fill="var(--color-ink)"/>
+<text data-panel="cumcum06-fr-cash-d-frame" x="24" y="30" fill="var(--color-signal)" font-family="l0g CumCum06" font-size="22" font-weight="700" text-anchor="start">l0g / CUM-CUM 06 / 01</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="24" y="80" fill="var(--color-paper)" font-family="l0g CumCum06" font-size="30" font-weight="700" text-anchor="start">Du prélèvement à la recette définitive</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="24" y="110" fill="var(--color-muted)" font-family="l0g CumCum06" font-size="22" font-weight="400" text-anchor="start">Exemple fictif / dividende 100 / retenue supposée 25</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="24" y="170" fill="var(--color-muted)" font-family="l0g CumCum06" font-size="22" font-weight="700" text-anchor="start">01</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="24" y="208" fill="var(--color-paper)" font-family="l0g CumCum06" font-size="25" font-weight="700" text-anchor="start">Dividende brut</text>
+<rect id="cumcum06-fr-cash-d-bar-gross" x="310" y="195" width="666.000000000" height="24" rx="0" fill="var(--color-signal)"/>
+<text data-panel="cumcum06-fr-cash-d-frame" x="976" y="167" fill="var(--color-signal)" font-family="l0g CumCum06" font-size="30" font-weight="700" text-anchor="end">100</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="24" y="315" fill="var(--color-muted)" font-family="l0g CumCum06" font-size="22" font-weight="700" text-anchor="start">02</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="24" y="353" fill="var(--color-paper)" font-family="l0g CumCum06" font-size="25" font-weight="700" text-anchor="start">Au paiement</text>
+<rect id="cumcum06-fr-cash-d-bar-investor" x="310" y="340" width="499.500000000" height="24" rx="0" fill="var(--color-signal)"/>
+<rect id="cumcum06-fr-cash-d-bar-tax" x="809.5" y="340" width="166.500000000" height="24" rx="0" fill="var(--color-accent)"/>
+<text data-panel="cumcum06-fr-cash-d-frame" x="310" y="410" fill="var(--color-signal)" font-family="l0g CumCum06" font-size="24" font-weight="700" text-anchor="start">75 / investisseur</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="976" y="410" fill="var(--color-accent)" font-family="l0g CumCum06" font-size="24" font-weight="700" text-anchor="end">25 / fisc</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="24" y="500" fill="var(--color-muted)" font-family="l0g CumCum06" font-size="22" font-weight="700" text-anchor="start">03</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="24" y="538" fill="var(--color-paper)" font-family="l0g CumCum06" font-size="25" font-weight="700" text-anchor="start">Après examen</text>
+<rect id="cumcum06-fr-cash-d-bar-investor-final" x="310" y="525" width="499.500000000" height="24" rx="0" fill="var(--color-signal)"/>
+<rect id="cumcum06-fr-cash-d-bar-refund" x="809.5" y="525" width="166.500000000" height="24" rx="0" fill="var(--color-amber)"/>
+<text data-panel="cumcum06-fr-cash-d-frame" x="310" y="595" fill="var(--color-signal)" font-family="l0g CumCum06" font-size="25" font-weight="700" text-anchor="start">Investisseur : 100</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="976" y="595" fill="var(--color-amber)" font-family="l0g CumCum06" font-size="25" font-weight="700" text-anchor="end">Impôt définitif : 0</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="310" y="466" fill="var(--color-amber)" font-family="l0g CumCum06" font-size="22" font-weight="700" text-anchor="start">Exonération complète établie → restitution de 25</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="24" y="662" fill="var(--color-signal)" font-family="l0g CumCum06" font-size="22" font-weight="700" text-anchor="start">S01 / mécanisme légal</text>
+<text data-panel="cumcum06-fr-cash-d-frame" x="24" y="694" fill="var(--color-muted)" font-family="l0g CumCum06" font-size="22" font-weight="400" text-anchor="start">Montants fictifs / largeurs proportionnelles / restitution supposée complète.</text>
+</svg>
