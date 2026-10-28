@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 1180" style="width:100%;height:auto" class="l0g-blackout-svg" role="img" aria-labelledby="blackout-en-offline-m-title blackout-en-offline-m-desc"><title id="blackout-en-offline-m-title">Pay offline, process after reconnection</title><desc id="blackout-en-offline-m-desc">l0g  /  MECHANISMS &amp; EVIDENCE FIG. 05 Two stages of an offline card payment Sweden · mechanism described by the Riksbank · expansion announced on 1 July 2026 OPERATING CONDITIONS Open shop, available goods, powered terminal, eligible card and known PIN. During the data outage Physical card + PIN The customer inserts the chip and enters their PIN. The card communicates locally with the terminal. Local checks Eligibility settings and payment limits are checked locally. The account balance is unknown to the terminal at this point. Goods handed over The sale can take place. The transaction stays in the terminal for later processing. Risk within a framework For qualifying transactions, the agreement places risk with the issuer, subject to the specified limits and conditions. INFERENCE The wait may require funding Payment delayed beyond the usual schedule may create a funding need, depending on the contract. When connectivity returns Transaction submission Funds after processing Terminal and merchant Sends the stored transactions. Receives funds in the merchant account. Acquirer Receives and processes transactions. Pays the merchant. Card issuer Processes the submitted transactions. Debits the customer account and pays the acquirer. Three distinct parameters Design in the 3 October 2025 memorandum Per purchase A limit bounds each offline-authorised transaction. Card total A separate cap covers multiple purchases; online authorisation resets it. Storage The terminal must be able to retain up to seven days of transactions. Power for the terminal and an operational shop remain separate requirements. Sources: S07 · S08 · S22 | 28 Oct 2026</desc>
+<rect id="blackout-en-offline-m-frame" x="0" y="0" width="420" height="1180" rx="5" fill="var(--color-ink)"></rect>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="32" fill="var(--color-signal)" font-family="l0g Blackout" font-size="17" font-weight="700" text-anchor="start">l0g / 05</text>
+<line x1="24" y1="47" x2="396" y2="47" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="78" fill="var(--color-paper)" font-family="l0g Blackout" font-size="23" font-weight="700" text-anchor="start">Pay offline, process after</text>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="107" fill="var(--color-paper)" font-family="l0g Blackout" font-size="23" font-weight="700" text-anchor="start">reconnection</text>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="144" fill="var(--color-muted)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Sweden · physical card and PIN · powered</text>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="165.08" fill="var(--color-muted)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">terminal</text>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="206" fill="var(--color-signal)" font-family="l0g Blackout" font-size="18" font-weight="700" text-anchor="start">DURING THE OUTAGE</text>
+<rect id="blackout-en-offline-m-card-offline-0" x="54" y="228" width="312" height="88" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<rect x="70" y="246" width="34" height="24" rx="3" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"></rect>
+<rect x="76" y="252" width="8" height="9" rx="1" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"></rect>
+<line x1="91" y1="255" x2="98" y2="255" stroke="var(--color-signal)" stroke-width="2"></line>
+<text data-panel="blackout-en-offline-m-card-offline-0" x="117" y="259" fill="var(--color-paper)" font-family="l0g Blackout" font-size="19" font-weight="700" text-anchor="start">Card + PIN</text>
+<text data-panel="blackout-en-offline-m-card-offline-0" x="70" y="294" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Customer chip and code</text>
+<line x1="210" y1="321" x2="210" y2="331" stroke="var(--color-signal)" stroke-width="2"></line>
+<path d="M 206.164596 323.97934 L 210 331 L 213.835404 323.97934" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<rect id="blackout-en-offline-m-card-offline-1" x="54" y="337" width="312" height="88" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="blackout-en-offline-m-card-offline-1" x="70" y="368" fill="var(--color-paper)" font-family="l0g Blackout" font-size="19" font-weight="700" text-anchor="start">Local checks</text>
+<text data-panel="blackout-en-offline-m-card-offline-1" x="70" y="403" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Eligibility and limits</text>
+<line x1="210" y1="430" x2="210" y2="440" stroke="var(--color-signal)" stroke-width="2"></line>
+<path d="M 206.164596 432.97934 L 210 440 L 213.835404 432.97934" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<rect id="blackout-en-offline-m-card-offline-2" x="54" y="446" width="312" height="88" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<path d="M 70 468 L 87 460 L 104 468 L 104 487 L 87 495 L 70 487 Z" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 70 468 L 87 476 L 104 468" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 87 476 L 87 495" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="blackout-en-offline-m-card-offline-2" x="117" y="477" fill="var(--color-paper)" font-family="l0g Blackout" font-size="19" font-weight="700" text-anchor="start">Goods received</text>
+<text data-panel="blackout-en-offline-m-card-offline-2" x="70" y="512" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Transaction stored</text>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="575" fill="var(--color-amber)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Issuer risk within the agreement’s limits.</text>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="644" fill="var(--color-signal)" font-family="l0g Blackout" font-size="18" font-weight="700" text-anchor="start">AFTER RECONNECTION</text>
+<rect id="blackout-en-offline-m-card-return-0" x="54" y="669" width="312" height="87" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="blackout-en-offline-m-card-return-0" x="70" y="700" fill="var(--color-paper)" font-family="l0g Blackout" font-size="19" font-weight="700" text-anchor="start">Merchant</text>
+<text data-panel="blackout-en-offline-m-card-return-0" x="70" y="734" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Sends via the terminal</text>
+<line x1="171" y1="761" x2="171" y2="772" stroke="var(--color-signal)" stroke-width="2"></line>
+<path d="M 167.164596 764.97934 L 171 772 L 174.835404 764.97934" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="249" y1="772" x2="249" y2="761" stroke="var(--color-amber)" stroke-width="2"></line>
+<path d="M 252.835404 768.02066 L 249 761 L 245.164596 768.02066" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<rect id="blackout-en-offline-m-card-return-1" x="54" y="777" width="312" height="87" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="blackout-en-offline-m-card-return-1" x="70" y="808" fill="var(--color-paper)" font-family="l0g Blackout" font-size="19" font-weight="700" text-anchor="start">Acquirer</text>
+<text data-panel="blackout-en-offline-m-card-return-1" x="70" y="842" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Processes transactions</text>
+<line x1="171" y1="869" x2="171" y2="880" stroke="var(--color-signal)" stroke-width="2"></line>
+<path d="M 167.164596 872.97934 L 171 880 L 174.835404 872.97934" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="249" y1="880" x2="249" y2="869" stroke="var(--color-amber)" stroke-width="2"></line>
+<path d="M 252.835404 876.02066 L 249 869 L 245.164596 876.02066" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<rect id="blackout-en-offline-m-card-return-2" x="54" y="885" width="312" height="87" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<text data-panel="blackout-en-offline-m-card-return-2" x="70" y="916" fill="var(--color-paper)" font-family="l0g Blackout" font-size="19" font-weight="700" text-anchor="start">Issuing bank</text>
+<text data-panel="blackout-en-offline-m-card-return-2" x="70" y="950" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Debits the customer</text>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="1014" fill="var(--color-amber)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Transactions → bank; funds → merchant</text>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="1060" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="700" text-anchor="start">Per-purchase limit · card total ·</text>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="1084" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="700" text-anchor="start">storage up to 7 days</text>
+<line x1="24" y1="1131" x2="396" y2="1131" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="blackout-en-offline-m-frame" x="24" y="1160" fill="var(--color-muted)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">S07 · S08 · S22  /  Riksbank · 2025–2026</text>
+</svg>

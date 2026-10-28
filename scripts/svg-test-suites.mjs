@@ -2,6 +2,7 @@
 // Keep new SVG suites here: svg-test-suites.test.mjs rejects missing or duplicate coverage.
 export const SVG_TEST_SUITES = Object.freeze({
   source: Object.freeze([
+    'scripts/blackout-infographics.test.mjs',
     'scripts/cumcum06-infographics.test.mjs',
     'scripts/cumcum05-infographics.test.mjs',
     'scripts/cumcum04-infographics.test.mjs',
@@ -180,6 +181,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/yanbu-infographics.test.mjs',
   ]),
   rendered: Object.freeze([
+    'scripts/blackout-rendered-infographics.test.mjs',
     'scripts/cumcum06-rendered-infographics.test.mjs',
     'scripts/cumcum05-rendered-infographics.test.mjs',
     'scripts/cumcum04-rendered-infographics.test.mjs',

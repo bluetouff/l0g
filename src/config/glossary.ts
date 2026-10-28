@@ -901,6 +901,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "Continuité de service", "nom": "Maintien ou rétablissement d’une fonction utile", "def": "Capacité à maintenir ou rétablir une fonction utile pendant et après une perturbation, dans le périmètre prévu. Elle repose sur les personnes, les équipements, les procédures et les dépendances envers les partenaires. Son évaluation suit le service rendu aux utilisateurs, au-delà du fonctionnement de chaque composant pris séparément.", "guide": "/posts/blackout-heures-autonomie-financement/"},
+      {"sigle": "Acquéreur de paiements", "nom": "Prestataire de paiement du commerçant", "def": "Prestataire qui traite les opérations par carte pour le commerçant et intervient dans le versement des fonds. Dans le circuit hors ligne décrit par la Riksbank, il reçoit les transactions conservées par le terminal à la reconnexion, paie le commerçant et est réglé par l’émetteur de la carte. Le calendrier de versement dépend des conditions applicables.", "guide": "/posts/blackout-heures-autonomie-financement/"},
       { sigle: 'ZKP', nom: 'Preuve à divulgation nulle de connaissance', def: 'Méthode cryptographique permettant de démontrer la validité d’un énoncé sans révéler l’information secrète utilisée pour l’établir, au-delà de l’énoncé lui-même. Sa portée dépend de l’énoncé vérifié et du protocole. Elle ne certifie pas automatiquement la fiabilité d’une mesure biométrique ou le droit d’autoriser un paiement.', guide: '/posts/world-id-finance-preuve-humanite/' },
       { sigle: 'Calcul multipartite', nom: 'Secure multiparty computation (MPC)', def: 'Famille de protocoles permettant à plusieurs parties de calculer ensemble un résultat à partir de données privées sans se communiquer leurs données d’entrée complètes. La confidentialité dépend du modèle de sécurité, notamment des participants compromis admis. La répartition des calculs ne prouve pas, à elle seule, l’indépendance des opérateurs.', guide: '/posts/world-id-finance-preuve-humanite/' },
       {"sigle": "RTO", "nom": "Objectif de temps de reprise", "def": "Durée maximale d’indisponibilité retenue pour une ressource informatique avant un effet jugé inacceptable sur les autres ressources ou sur l’activité. Cet objectif de préparation doit normalement laisser, dans la durée tolérable pour le processus métier, le temps nécessaire au retraitement des données. Un délai obtenu lors d’un essai dépend de son scénario et de son périmètre.", "guide": "/posts/apres-cyberattaque-08-prix-reprise/"},
@@ -945,7 +947,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-27';
+export const glossaryUpdatedIso = '2026-10-28';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1188,6 +1190,8 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "continuite-de-service": {"intuition": "Des composants disponibles deviennent utiles lorsque l’utilisateur peut encore accomplir l’opération.", "articles": [{"label": "Black-out : qui finance les heures d’autonomie ?", "href": "/posts/blackout-heures-autonomie-financement/", "detail": "Paiements, électricité et télécommunications dans la continuité d’un achat.", "kind": "article"}], "sources": [{"label": "NIST, continuité des processus pendant une perturbation", "href": "https://csrc.nist.gov/glossary/term/business_continuity_plan", "detail": "Définition du plan de continuité issue de NIST SP 800-34 Rev. 1.", "kind": "source"}, {"label": "Arcep, résilience des réseaux, mai 2025", "href": "https://www.arcep.fr/uploads/tx_gspublication/reseaux-du-futur_note-synthese_resilience-des-reseaux_mai2025.pdf", "detail": "Pages 5–6 et 20–22 : organisation, rétablissement et dépendances entre acteurs.", "kind": "source"}], "related": ["disponibilite-de-service", "rto", "acquereur-de-paiements"]},
+  "acquereur-de-paiements": {"intuition": "Le bien peut être remis au client avant que les fonds arrivent au commerçant.", "articles": [{"label": "Black-out : qui finance les heures d’autonomie ?", "href": "/posts/blackout-heures-autonomie-financement/", "detail": "Autorisation locale, conservation des transactions et versement des fonds après reconnexion.", "kind": "article"}], "sources": [{"label": "Riksbank, fonctionnement d’un paiement hors ligne", "href": "https://www.riksbank.se/en-gb/payments--cash/payment-preparedness/offline-payments/", "detail": "Étapes 1 à 4 : acquéreur, émetteur et traitement après reconnexion ; page mise à jour le 6 juillet 2026.", "kind": "source"}], "related": ["continuite-de-service"]},
   "proposition-de-rectification": {"articles": [{"label": "Cum-cum : les alertes d’avant le scandale", "href": "/posts/cumcum-02-alertes-chronologie/", "kind": "article"}], "sources": [{"label": "DGFiP, contenu de la proposition de rectification", "href": "https://bofip.impots.gouv.fr/bofip/872-PGP.html/identifiant=BOI-CF-IOR-10-40-20200304", "detail": "Paragraphes 20 et 40 : réponse du contribuable, motifs et montants envisagés.", "kind": "source"}, {"label": "DGFiP, suites des observations du contribuable", "href": "https://bofip.impots.gouv.fr/bofip/12989-PGP.html/identifiant=BOI-CF-IOR-10-50-30-20210519", "detail": "Paragraphes 10 à 50 : modification ou abandon des rectifications selon les observations justifiées.", "kind": "source"}], "related": ["retenue-a-la-source", "cjip"]},
   "retenue-a-la-source": {
     "articles": [
@@ -2645,7 +2649,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
         "href": "/posts/starshield-ukraine-controle-connexion/",
         "kind": "article"
       },
-      {"label": "BNC : panne des notifications de faillite", "href": "/posts/bnc-faillites-americaines-notifications-risque/", "kind": "article"}
+      {"label": "BNC : panne des notifications de faillite", "href": "/posts/bnc-faillites-americaines-notifications-risque/", "kind": "article"},
+      {"label": "Black-out : financer un service utilisable", "href": "/posts/blackout-heures-autonomie-financement/", "detail": "La disponibilité des composants et la continuité d’un achat.", "kind": "article"}
     ],
     "sources": [
       {

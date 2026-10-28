@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" style="width:100%;height:auto" class="l0g-blackout-svg" role="img" aria-labelledby="blackout-fr-rte-d-title blackout-fr-rte-d-desc"><title id="blackout-fr-rte-d-title">RTE : préparer la réalimentation du réseau</title><desc id="blackout-fr-rte-d-desc">l0g  /  MÉCANISMES &amp; PREUVES FIG. 04 RTE : financer le retour du courant Deux fonctions de secours, deux échéances. Télécoms des sites essentiels ≈ 150 M€ Cible 2028 Pilotage Postes Renforcer les liaisons pour conduire le réseau et coordonner la réalimentation. Secours électriques 130 M€ Cible 2029 Groupes Batteries Maintenir les fonctions des postes nécessaires à la reprise du service électrique. Échéances annoncées dans le SDDR 2025 2025 2028 2029 Annonce Télécommunications Secours électriques Programmation annoncée en 2025 ; exécution à documenter. Fonctions : pilotage et réalimentation du réseau. S06 · RTE, SDDR 2025, p. 39</desc>
+<rect id="blackout-fr-rte-d-frame" x="0" y="0" width="1000" height="650" rx="5" fill="var(--color-ink)"></rect>
+<text data-panel="blackout-fr-rte-d-frame" x="34" y="36" fill="var(--color-signal)" font-family="l0g Blackout" font-size="22" font-weight="700" text-anchor="start">l0g / 04</text>
+<line x1="34" y1="52" x2="966" y2="52" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="blackout-fr-rte-d-frame" x="34" y="100" fill="var(--color-paper)" font-family="l0g Blackout" font-size="31" font-weight="700" text-anchor="start">RTE : préparer la réalimentation du réseau</text>
+<text data-panel="blackout-fr-rte-d-frame" x="34" y="143" fill="var(--color-muted)" font-family="l0g Blackout" font-size="22" font-weight="400" text-anchor="start">Programmation SDDR 2025 · conduite et réalimentation</text>
+<rect id="blackout-fr-rte-d-card-0" x="34" y="180" width="432" height="255" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<path d="M 71 206 L 58 235" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 71 206 L 84 235" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 63 223 L 79 223" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 60 231 L 82 231" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="71" y1="201" x2="71" y2="210" stroke="var(--color-signal)" stroke-width="2"></line>
+<text data-panel="blackout-fr-rte-d-card-0" x="109" y="228" fill="var(--color-paper)" font-family="l0g Blackout" font-size="25" font-weight="700" text-anchor="start">Télécoms des sites</text>
+<text data-panel="blackout-fr-rte-d-card-0" x="109" y="258" fill="var(--color-paper)" font-family="l0g Blackout" font-size="25" font-weight="700" text-anchor="start">essentiels</text>
+<text data-panel="blackout-fr-rte-d-card-0" x="54" y="307" fill="var(--color-signal)" font-family="l0g Blackout" font-size="43" font-weight="700" text-anchor="start">env. 150 M€</text>
+<text data-panel="blackout-fr-rte-d-card-0" x="54" y="350" fill="var(--color-paper)" font-family="l0g Blackout" font-size="27" font-weight="700" text-anchor="start">Cible 2028</text>
+<text data-panel="blackout-fr-rte-d-card-0" x="54" y="391" fill="var(--color-paper)" font-family="l0g Blackout" font-size="22" font-weight="400" text-anchor="start">Liaisons de pilotage du réseau</text>
+<rect id="blackout-fr-rte-d-card-1" x="534" y="180" width="432" height="255" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<path d="M 574 201 L 559 220 L 571 220 L 567 236 L 584 214 L 573 214 Z" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="blackout-fr-rte-d-card-1" x="609" y="228" fill="var(--color-paper)" font-family="l0g Blackout" font-size="25" font-weight="700" text-anchor="start">Secours électriques</text>
+<text data-panel="blackout-fr-rte-d-card-1" x="554" y="307" fill="var(--color-amber)" font-family="l0g Blackout" font-size="43" font-weight="700" text-anchor="start">130 M€</text>
+<text data-panel="blackout-fr-rte-d-card-1" x="554" y="350" fill="var(--color-paper)" font-family="l0g Blackout" font-size="27" font-weight="700" text-anchor="start">Cible 2029</text>
+<text data-panel="blackout-fr-rte-d-card-1" x="554" y="391" fill="var(--color-paper)" font-family="l0g Blackout" font-size="22" font-weight="400" text-anchor="start">Groupes et batteries des postes</text>
+<line x1="90" y1="500" x2="910" y2="500" stroke="var(--color-line-strong)" stroke-width="3"></line>
+<line x1="90" y1="491" x2="90" y2="509" stroke="var(--color-muted)" stroke-width="4"></line>
+<text data-panel="blackout-fr-rte-d-frame" x="90" y="479" fill="var(--color-muted)" font-family="l0g Blackout" font-size="24" font-weight="700" text-anchor="middle">2025</text>
+<text data-panel="blackout-fr-rte-d-frame" x="34" y="546" fill="var(--color-paper)" font-family="l0g Blackout" font-size="22" font-weight="400" text-anchor="start">Annonce</text>
+<line x1="620" y1="491" x2="620" y2="509" stroke="var(--color-signal)" stroke-width="4"></line>
+<text data-panel="blackout-fr-rte-d-frame" x="620" y="479" fill="var(--color-signal)" font-family="l0g Blackout" font-size="24" font-weight="700" text-anchor="middle">2028</text>
+<text data-panel="blackout-fr-rte-d-frame" x="620" y="546" fill="var(--color-paper)" font-family="l0g Blackout" font-size="22" font-weight="400" text-anchor="middle">Télécommunications</text>
+<line x1="910" y1="491" x2="910" y2="509" stroke="var(--color-amber)" stroke-width="4"></line>
+<text data-panel="blackout-fr-rte-d-frame" x="910" y="479" fill="var(--color-amber)" font-family="l0g Blackout" font-size="24" font-weight="700" text-anchor="middle">2029</text>
+<text data-panel="blackout-fr-rte-d-frame" x="966" y="546" fill="var(--color-paper)" font-family="l0g Blackout" font-size="22" font-weight="400" text-anchor="end">Secours électriques</text>
+<text data-panel="blackout-fr-rte-d-frame" x="34" y="592" fill="var(--color-muted)" font-family="l0g Blackout" font-size="22" font-weight="400" text-anchor="start">Montants programmés ; exécution au 28.10.2026 à documenter.</text>
+<line x1="34" y1="601" x2="966" y2="601" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="blackout-fr-rte-d-frame" x="34" y="630" fill="var(--color-muted)" font-family="l0g Blackout" font-size="22" font-weight="400" text-anchor="start">S06  /  RTE · SDDR 2025 · p. 39</text>
+</svg>

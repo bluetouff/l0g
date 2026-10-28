@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 1100" style="width:100%;height:auto" class="l0g-blackout-svg" role="img" aria-labelledby="blackout-en-restoration-m-title blackout-en-restoration-m-desc"><title id="blackout-en-restoration-m-title">Power and telecoms recover together</title><desc id="blackout-en-restoration-m-desc">l0g  /  MECHANISMS &amp; EVIDENCE FIG. 03 Restoration works through a loop Power, telecommunications and field operations depend on each other. Power grid Electricity supply and system operation Telecommunications Links, information and coordination powers support grid operation coordinate Field teams Interventions on both networks’ installations repair and restore Access and logistics Roads, replenishment, permissions and safety enable the intervention WHERE COORDINATION MATTERS Agree which sites come back first A site serving several links can help other services recover. Its priority within the telecom network must be understood by the operator restoring its power. Source: S05 · Arcep, May 2025 · l0g qualitative diagram</desc>
+<rect id="blackout-en-restoration-m-frame" x="0" y="0" width="420" height="1100" rx="5" fill="var(--color-ink)"></rect>
+<text data-panel="blackout-en-restoration-m-frame" x="24" y="32" fill="var(--color-signal)" font-family="l0g Blackout" font-size="17" font-weight="700" text-anchor="start">l0g / 03</text>
+<line x1="24" y1="47" x2="396" y2="47" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="blackout-en-restoration-m-frame" x="24" y="78" fill="var(--color-paper)" font-family="l0g Blackout" font-size="23" font-weight="700" text-anchor="start">Power and telecoms recover</text>
+<text data-panel="blackout-en-restoration-m-frame" x="24" y="107" fill="var(--color-paper)" font-family="l0g Blackout" font-size="23" font-weight="700" text-anchor="start">together</text>
+<text data-panel="blackout-en-restoration-m-frame" x="24" y="148" fill="var(--color-muted)" font-family="l0g Blackout" font-size="18" font-weight="400" text-anchor="start">Reciprocal dependencies</text>
+<rect id="blackout-en-restoration-m-card-power" x="70" y="180" width="280" height="112" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<path d="M 106 194 L 91 213 L 103 213 L 99 229 L 116 207 L 105 207 Z" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="blackout-en-restoration-m-card-power" x="133" y="211" fill="var(--color-paper)" font-family="l0g Blackout" font-size="19" font-weight="700" text-anchor="start">Power grid</text>
+<text data-panel="blackout-en-restoration-m-card-power" x="86" y="257" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Supply and system</text>
+<text data-panel="blackout-en-restoration-m-card-power" x="86" y="279" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">operation</text>
+<rect id="blackout-en-restoration-m-card-telecom" x="70" y="410" width="280" height="112" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<path d="M 103 429 L 90 458" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 103 429 L 116 458" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 95 446 L 111 446" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 92 454 L 114 454" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="103" y1="424" x2="103" y2="433" stroke="var(--color-amber)" stroke-width="2"></line>
+<text data-panel="blackout-en-restoration-m-card-telecom" x="133" y="441" fill="var(--color-paper)" font-family="l0g Blackout" font-size="19" font-weight="700" text-anchor="start">Telecoms</text>
+<text data-panel="blackout-en-restoration-m-card-telecom" x="86" y="487" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Links and coordination</text>
+<rect id="blackout-en-restoration-m-card-teams" x="70" y="650" width="280" height="112" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<rect x="90" y="678" width="26" height="18" rx="2" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"></rect>
+<path d="M 95 678 L 95 669 L 111 669 L 111 678" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="99" y1="687" x2="107" y2="687" stroke="var(--color-signal)" stroke-width="2"></line>
+<text data-panel="blackout-en-restoration-m-card-teams" x="133" y="681" fill="var(--color-paper)" font-family="l0g Blackout" font-size="19" font-weight="700" text-anchor="start">Field teams</text>
+<text data-panel="blackout-en-restoration-m-card-teams" x="86" y="727" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Repairing both networks</text>
+<rect id="blackout-en-restoration-m-card-access" x="70" y="875" width="280" height="112" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"></rect>
+<path d="M 95 889 L 86 923" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M 111 889 L 120 923" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="103" y1="893" x2="103" y2="919" stroke="var(--color-amber)" stroke-width="2" stroke-dasharray="5 4"></line>
+<text data-panel="blackout-en-restoration-m-card-access" x="133" y="906" fill="var(--color-paper)" font-family="l0g Blackout" font-size="19" font-weight="700" text-anchor="start">Access &amp; logistics</text>
+<text data-panel="blackout-en-restoration-m-card-access" x="86" y="952" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">Roads, fuel and safety</text>
+<path d="M 69 230 L 30 230 L 30 465 L 60 465" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="30" y1="465" x2="60" y2="465" stroke="var(--color-signal)" stroke-width="2"></line>
+<path d="M 52.97934 468.835404 L 60 465 L 52.97934 461.164596" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="blackout-en-restoration-m-frame" x="55" y="331" fill="var(--color-signal)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">powers</text>
+<path d="M 351 465 L 390 465 L 390 230 L 360 230" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="390" y1="230" x2="360" y2="230" stroke="var(--color-amber)" stroke-width="2"></line>
+<path d="M 367.02066 226.164596 L 360 230 L 367.02066 233.835404" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="blackout-en-restoration-m-frame" x="250" y="331" fill="var(--color-amber)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">supports</text>
+<text data-panel="blackout-en-restoration-m-frame" x="250" y="354" fill="var(--color-amber)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">operation</text>
+<line x1="210" y1="532" x2="210" y2="639" stroke="var(--color-amber)" stroke-width="2"></line>
+<path d="M 206.164596 631.97934 L 210 639 L 213.835404 631.97934" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="blackout-en-restoration-m-frame" x="24" y="586" fill="var(--color-amber)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">coordinates</text>
+<path d="M 351 705 L 405 705 L 405 391 L 210 391 L 210 304" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="210" y1="391" x2="210" y2="304" stroke="var(--color-signal)" stroke-width="2"></line>
+<path d="M 213.835404 311.02066 L 210 304 L 206.164596 311.02066" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="blackout-en-restoration-m-frame" x="235" y="575" fill="var(--color-signal)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">repairs both</text>
+<text data-panel="blackout-en-restoration-m-frame" x="235" y="598" fill="var(--color-signal)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">networks</text>
+<path d="M 351 690 L 375 690 L 375 545 L 330 545 L 330 532" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5"></path>
+<line x1="330" y1="545" x2="330" y2="532" stroke="var(--color-signal)" stroke-width="2" stroke-dasharray="6 5"></line>
+<path d="M 333.835404 539.02066 L 330 532 L 326.164596 539.02066" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line x1="210" y1="865" x2="210" y2="775" stroke="var(--color-amber)" stroke-width="2"></line>
+<path d="M 213.835404 782.02066 L 210 775 L 206.164596 782.02066" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<text data-panel="blackout-en-restoration-m-frame" x="24" y="826" fill="var(--color-amber)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">enables field</text>
+<text data-panel="blackout-en-restoration-m-frame" x="24" y="849" fill="var(--color-amber)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">work</text>
+<text data-panel="blackout-en-restoration-m-frame" x="24" y="1030" fill="var(--color-paper)" font-family="l0g Blackout" font-size="17" font-weight="700" text-anchor="start">Shared priorities to coordinate.</text>
+<line x1="24" y1="1051" x2="396" y2="1051" stroke="var(--color-line-strong)" stroke-width="1.5"></line>
+<text data-panel="blackout-en-restoration-m-frame" x="24" y="1080" fill="var(--color-muted)" font-family="l0g Blackout" font-size="17" font-weight="400" text-anchor="start">S05  /  Arcep · mai / May 2025</text>
+</svg>

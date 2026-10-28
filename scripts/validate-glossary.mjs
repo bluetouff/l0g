@@ -19,6 +19,53 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Service continuity and card acquiring retain distinct operational scopes.
+const blackoutArticleFr = '/posts/blackout-heures-autonomie-financement/';
+const blackoutArticleEn = '/en/analysis/blackouts-who-pays-service-continuity/';
+for (const [slug, sources, related] of [
+  ['continuite-de-service', [
+    'https://csrc.nist.gov/glossary/term/business_continuity_plan',
+    'https://www.arcep.fr/uploads/tx_gspublication/reseaux-du-futur_note-synthese_resilience-des-reseaux_mai2025.pdf',
+  ], ['disponibilite-de-service', 'rto', 'acquereur-de-paiements']],
+  ['acquereur-de-paiements', [
+    'https://www.riksbank.se/en-gb/payments--cash/payment-preparedness/offline-payments/',
+  ], ['continuite-de-service']],
+]) {
+  const frMatches = glossaryEntries.filter(entry => entry.slug === slug);
+  const enMatches = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(frMatches.length, 1); assert.equal(enMatches.length, 1);
+  const fr = frMatches[0], en = enMatches[0];
+  assert(fr.atlas && en.atlas);
+  assert.equal(fr.sectionTitle, 'Économie numérique & données');
+  assert.equal(en.sectionTitle, 'Digital economy & data');
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.notEqual(fr.def, en.def);
+  for (const [entry, article] of [[fr, blackoutArticleFr], [en, blackoutArticleEn]]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert.deepEqual(entry.atlas.sources.map(link => link.href), sources);
+    assert.deepEqual(entry.atlas.related, related);
+    assert.doesNotMatch(entry.def, /[—]/u);
+  }
+  for (const peer of related) {
+    assert(glossaryEntries.some(entry => entry.slug === peer));
+    assert(glossaryAtlasEnBySlug.has(peer));
+  }
+}
+for (const [entry, article] of [
+  [glossaryEntries.find(term => term.slug === 'disponibilite-de-service'), blackoutArticleFr],
+  [glossaryAtlasEnBySlug.get('disponibilite-de-service'), blackoutArticleEn],
+]) {
+  assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  assert.equal(entry.atlas.articles.length, 3);
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'continuite-de-service').def, /fonction utile.*personnes.*équipements.*procédures.*partenaires.*utilisateurs/u);
+assert.match(glossaryAtlasEnBySlug.get('continuite-de-service').def, /useful function.*people.*equipment.*procedures.*partners.*users/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'acquereur-de-paiements').def, /reconnexion.*commerçant.*émetteur/u);
+assert.match(glossaryAtlasEnBySlug.get('acquereur-de-paiements').def, /reconnection.*merchant.*issuer/u);
+
 // Tax terms retain their legal scope and stay short, sourced definitions.
 const cumCumArticleFr = '/posts/cumcum-01-dividende-mecanisme/';
 const cumCumArticleEn = '/en/analysis/cum-cum-01-dividend-mechanism/';
@@ -979,7 +1026,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 336, 'Le corpus anglais ajoute une fiche de procédure fiscale aux 335 fiches existantes');
+assert.equal(glossaryAtlasEnBySlug.size, 338, 'Le corpus anglais ajoute deux fiches de continuité et de paiement aux 336 fiches existantes');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1180,8 +1227,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 724, 'Le corpus ajoute une définition de procédure fiscale aux 723 définitions existantes');
-assert.equal(glossaryAtlasEntries.length, 326, 'Le graphe Atlas ajoute une fiche de procédure fiscale aux 325 nœuds existants');
+assert.equal(glossaryEntries.length, 726, 'Le corpus ajoute deux définitions de continuité et de paiement aux 724 définitions existantes');
+assert.equal(glossaryAtlasEntries.length, 328, 'Le graphe Atlas ajoute deux fiches de continuité et de paiement aux 326 nœuds existants');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1603,7 +1650,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 911, 'Le graphe Atlas ajoute deux relations de procédure fiscale aux 909 relations existantes');
+assert.equal(glossaryAtlasEdgeCount, 915, 'Le graphe Atlas ajoute quatre relations de continuité et de paiement aux 911 relations existantes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
