@@ -85,11 +85,8 @@ for (const invariant of [
     fail(`Installateur Node.js MCP incomplet : ${invariant}`);
   }
 }
-if (!honoVersions.length || honoVersions.some((version) => {
-  const [major, minor, patch] = version.split('.').map(Number);
-  return major === 2 && minor === 0 && patch <= 9;
-})) {
-  fail(`@hono/node-server vulnérable ou absent dans le lockfile MCP (${honoVersions.join(', ') || 'absent'})`);
+if (!honoVersions.length || honoVersions.some((version) => !atLeast(version, '2.1.3'))) {
+  fail(`@hono/node-server vulnérable ou absent dans le lockfile MCP, minimum 2.1.3 pour GHSA-rmxm-3fg6-px4f (${honoVersions.join(', ') || 'absent'})`);
 }
 if (mcpPackage.overrides?.['@hono/node-server'] !== honoVersions[0]) {
   fail(`override @hono/node-server non aligné sur le lockfile MCP (${mcpPackage.overrides?.['@hono/node-server'] || 'absent'} / ${honoVersions[0] || 'absent'})`);

@@ -14,7 +14,7 @@ const sanitize = (body) => optimize(
 ).data;
 
 test('security floors cover vulnerable parsers and network dependencies in both trees', () => {
-  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 3], 'fast-uri': [3, 1, 9], undici: [8, 10, 2], 'ip-address': [10, 7, 4], 'http-cache-semantics': [4, 3, 0], 'source-map-js': [1, 2, 2], 'proxy-addr': [2, 0, 8], sharp: [0, 35, 5], '@modelcontextprotocol/sdk': [1, 31, 0] };
+  const minimums = { 'js-yaml': [4, 3, 2], svgo: [4, 1, 0], hono: [4, 13, 5], 'smol-toml': [1, 7, 1], devalue: [5, 9, 3], 'fast-uri': [3, 1, 9], undici: [8, 10, 2], 'ip-address': [10, 7, 4], 'http-cache-semantics': [4, 3, 0], 'source-map-js': [1, 2, 2], 'proxy-addr': [2, 0, 8], sharp: [0, 35, 5], '@modelcontextprotocol/sdk': [1, 31, 0], '@hono/node-server': [2, 1, 3] };
   const seen = new Set();
   for (const path of ['../package-lock.json', '../mcp-server/package-lock.json']) {
     const lock = JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));

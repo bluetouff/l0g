@@ -1,8 +1,11 @@
 import assert from 'node:assert/strict';
-import { resolve } from 'node:path';
+import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
 import test from 'node:test';
 import { Hono } from 'hono';
 import { serveStatic } from 'hono/serve-static';
+import { serveStatic as serveNodeStatic } from '@hono/node-server/serve-static';
 import { ssgParams, toSSG } from 'hono/ssg';
 import { parseBody } from 'hono/utils/body';
 import { getQueryParam, getQueryParams } from 'hono/utils/url';
@@ -32,6 +35,56 @@ test('static serving cannot decode a path past prefix authorization', async () =
     assert.equal(await response.text(), 'Public fixture');
   }
   assert.deepEqual(reads, ['static/hello world.txt', 'static/炎.txt']);
+});
+
+test('Node static adapter rejects second-decoding bypasses before resolving fixture files', async () => {
+  // GHSA-rmxm-3fg6-px4f: tiny fake files and direct app.request calls, without TCP.
+  const root = mkdtempSync(join(tmpdir(), 'l0g-node-static-'));
+  const secret = 'Private test fixture only';
+  const resolved = [], found = [];
+  try {
+    mkdirSync(join(root, 'static', 'admin'), { recursive: true });
+    for (const [name, value] of [
+      ['admin/secret.txt', secret], ['hello world.txt', 'Public space fixture'],
+      ['炎.txt', 'Public Unicode fixture'], ['100%.txt', 'Public percent fixture'],
+    ]) writeFileSync(join(root, 'static', name), value);
+    const app = new Hono();
+    app.use('/static/admin/*', c => c.text('Unauthorized', 401));
+    app.use('/static/*', serveNodeStatic({
+      root,
+      rewriteRequestPath: path => { resolved.push(path); return path; },
+      onFound: path => { found.push(path); },
+    }));
+    for (const path of ['/static/admin/secret.txt', '/static/%61dmin/secret.txt']) {
+      const response = await app.request(path);
+      assert.equal(response.status, 401);
+      assert.equal(await response.text(), 'Unauthorized');
+    }
+    for (const path of ['/static/%%36%31dmin/secret.txt', '/static/%2Fadmin/secret.txt', '/static/100%25.txt']) {
+      const response = await app.request(path);
+      assert.equal(response.status, 404);
+      assert.notEqual(await response.text(), secret);
+    }
+    assert.deepEqual(resolved, []);
+    assert.deepEqual(found, []);
+    for (const [path, value] of [['/static/hello%20world.txt', 'Public space fixture'], ['/static/%E7%82%8E.txt', 'Public Unicode fixture']]) {
+      const response = await app.request(path);
+      assert.equal(response.status, 200);
+      assert.equal(await response.text(), value);
+    }
+    assert.deepEqual(resolved, ['/static/hello world.txt', '/static/炎.txt']);
+    assert.deepEqual(found, [join(root, 'static', 'hello world.txt'), join(root, 'static', '炎.txt')]);
+    // Explicit opt-in remains supported for an entirely public fixture directory.
+    mkdirSync(join(root, 'public', 'static'), { recursive: true });
+    writeFileSync(join(root, 'public', 'static', '100%.txt'), 'Public percent fixture');
+    const publicApp = new Hono();
+    publicApp.use('/static/*', serveNodeStatic({ root: join(root, 'public'), allowPercentInPath: true }));
+    const percent = await publicApp.request('/static/100%25.txt');
+    assert.equal(percent.status, 200);
+    assert.equal(await percent.text(), 'Public percent fixture');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 async function renderStatic(slug) {
