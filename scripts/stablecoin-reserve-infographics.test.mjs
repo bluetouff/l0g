@@ -1,0 +1,46 @@
+import assert from 'node:assert/strict';
+import {readFileSync,readdirSync} from 'node:fs';
+import{createHash}from'node:crypto';
+import test from 'node:test';
+import {STABLECOIN_RESERVE_KINDS,STABLECOIN_RESERVE_SOURCES,stablecoinReserveFigureReferences} from '../src/lib/stablecoinReserveFigures.mjs';
+import{stablecoinReserveScenes,inspectStablecoinReserveSvg,assertStablecoinReserveGeometry,tag,attrs,content}from'./stablecoin-reserve-svg-assertions.mjs';
+import{assertFontLicenseReferences}from'./font-license-assertions.mjs';
+const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
+const close=(a,b)=>assert.ok(Math.abs(Number(a)-b)<.000002,`${a} != ${b}`);
+const all=s=>inspectStablecoinReserveSvg(s.svg).all, labels=s=>all(s).filter(n=>tag(n)==='text').map(content).join(' '),metric=(s,k)=>{const found=all(s).filter(n=>attrs(n)['data-metric']===k);assert.equal(found.length,1);return attrs(found[0]);};
+test('28 passive scenes preserve geometry, glyphs, semantic themes and compact dimensions',()=>{
+ const scenes=stablecoinReserveScenes();assert.equal(scenes.length,28);assert.equal(readdirSync(new URL('../src/figures/stablecoin-reserves/',import.meta.url)).length,28);
+ for(const s of scenes){assertStablecoinReserveGeometry(s.svg);const n=all(s);assert.equal(attrs(n.find(n=>tag(n)==='rect')).fill,'var(--color-ink)');for(const t of n.filter(n=>tag(n)==='text')){assert.notEqual(attrs(t).fill,'var(--color-ink)');assert.ok(Number(attrs(t)['font-size'])*(s.mobile?280/420:501/1000)>=11);}assert.doesNotMatch(s.svg,/—|horlog|clock|<foreignObject|#[0-9a-f]{3,8}\b/iu);assert.doesNotMatch(content(n.find(n=>tag(n)==='title')),/\bce (?:que|qui|qu[’'])|\bwhat\b/iu);}
+});
+test('reserve balance and fictional annual income keep principal and income separate',()=>{
+ for(const s of stablecoinReserveScenes().filter(s=>s.kind==='reserve')){const text=labels(s),lines=all(s).filter(n=>tag(n)==='line'&&attrs(n)['stroke-width']===(s.mobile?'10':'12'));assert.equal(lines.length,2);close(Number(attrs(lines[0]).x2)-Number(attrs(lines[0]).x1),s.mobile?364:390);close(Number(attrs(lines[1]).x2)-Number(attrs(lines[1]).x1),s.mobile?364:390);assert.match(text,/1[ ,]000/);assert.match(text,/40/);assert.match(text,/4\s*%/);assert.match(text,/12/);assert.match(content(all(s).find(n=>tag(n)==='desc')),s.lang==='fr'?/fictif/:/Fictional/);close(1000*.04,40);}
+});
+test('independent company bars retain the common750million scale and every accounting amount',()=>{
+ const values={'circle-reserve':667.733,'circle-other-revenue':33.582,'circle-distribution':410.414,'circle-other-costs':2.056,'circle-rldc':288.845,'coinbase-revenue':292.147,'coinbase-rewards':119.108,'coinbase-subtotal':173.039};
+ for(const s of stablecoinReserveScenes().filter(s=>s.kind==='accounts')){for(const[k,v]of Object.entries(values)){const a=metric(s,k);close(a['data-value'],v);close(a.width,(s.mobile?364:400)*v/750);}assert.match(labels(s),/324[.,]6/);for(const v of Object.values(values))assert.ok(labels(s).includes(String(v).replace('.',s.lang==='fr'?',':'.')),`${s.lang} ${s.mobile}: ${v}`);assert.equal(all(s).filter(n=>tag(n)==='path').length,0,'No invented reconciliation arrow between companies');}close(667.733+33.582,701.315);close(701.315-410.414-2.056,288.845);close(292.147-119.108,173.039);
+});
+test('circulation uses zero80000scale while the distinct sensitivity retains signed deltas',()=>{
+ for(const s of stablecoinReserveScenes().filter(s=>s.kind==='rates')){for(const[yr,v]of[[2025,61039],[2026,76524]]){const a=metric(s,'circulation-'+yr);close(a['data-value'],v);close(a.width,(s.mobile?364:400)*v/80000);}for(const[k,v]of[['sensitivity-income',-737],['sensitivity-costs',-360],['sensitivity-subtotal',-377]]){const a=metric(s,k);close(a['data-value'],v);close(a.width,(s.mobile?242:285)*Math.abs(v)/800);}const text=labels(s);assert.match(text,/4[.,]1\s*%/);assert.match(text,/3[.,]5\s*%/);assert.match(text,/634[.,]274/);assert.match(text,/667[.,]733/);assert.match(text,/66/);assert.match(text,/12/);}close(-737-(-360),-377);
+});
+test('rule keeps four publication dates, removed presumption and a conditional intermediary role',()=>{
+ for(const s of stablecoinReserveScenes().filter(s=>s.kind==='rule')){const t=labels(s);for(const date of(s.lang==='fr'?['02.03.2026','21 / 23.10.2026','18.01.2027']:['2 Mar 2026','21 / 23 Oct 2026','18 Jan 2027']))assert.ok(t.includes(date));assert.match(t,s.lang==='fr'?/Présomption proposée supprimée/:/Proposed presumption removed/);assert.match(t,/AGENT\s*\?/);assert.match(content(all(s).find(n=>tag(n)==='desc')),s.lang==='fr'?/sans statuer/:/not a ruling/);assert.ok(all(s).some(n=>tag(n)==='path'));}
+});
+test('deposit diagram uses three sequential1000dollar snapshots and nonbank secondary seller',()=>{
+ for(const s of stablecoinReserveScenes().filter(s=>s.kind==='deposits')){const t=labels(s);assert.equal((t.match(/1[ ,]000/g)||[]).length,s.mobile?4:5);for(const bank of['A','B','C'])assert.match(t,new RegExp('banque '+bank+'|bank '+bank));assert.match(t,s.lang==='fr'?/non bancaire/:/Nonbank/);assert.match(t,s.lang==='fr'?/secondaire/:/Secondary/);assert.match(content(all(s).find(n=>tag(n)==='desc')),s.lang==='fr'?/fictif/:/fictional/);const lanes=all(s).filter(n=>tag(n)==='line'&&attrs(n)['stroke-width']===(s.mobile?'10':'12'));assert.equal(lanes.length,3);for(const lane of lanes)close(Number(attrs(lane).x2)-Number(attrs(lane).x1),s.mobile?364:270);}
+});
+test('redemption ends the statutory deadline at initiation and retains discretionary stress treatment',()=>{
+ for(const s of stablecoinReserveScenes().filter(s=>s.kind==='redemption')){const t=labels(s);assert.match(t,s.lang==='fr'?/2 jours.*ouvrés max/:/2 business.*days max/);assert.match(t,s.lang==='fr'?/traité.*initié/:/processed.*initiated/);assert.match(t,s.lang==='fr'?/crédit chez l’émetteur/:/credit.*issuer/);assert.match(t,/> 10\s*%/);assert.match(t,/24 h/);assert.match(t,s.lang==='fr'?/décision/:/discretionary|decision/);assert.match(content(all(s).find(n=>tag(n)==='desc')),s.lang==='fr'?/banque externe/:/external bank/);assert.doesNotMatch(t,/7 jours|7 days/);}
+});
+test('legal payer matrix keeps separateUSandEUdates and qualified distributor treatment',()=>{
+ for(const s of stablecoinReserveScenes().filter(s=>s.kind==='jurisdictions')){const t=labels(s);assert.match(t,/18\.01\.2027|18 Jan 2027/);assert.match(t,/30\.06\.2024|30 Jun 2024/);assert.match(t,/40.*50/);assert.match(t,s.lang==='fr'?/Contrats.*faits/:/Contracts.*facts/);const markers=all(s).filter(n=>tag(n)==='circle');assert.equal(markers.length,4);assert.equal(markers.filter(n=>attrs(n).fill==='var(--color-accent)').length,3);assert.equal(markers.filter(n=>attrs(n).fill==='var(--color-amber)').length,1);}
+});
+test('closed figure contract rejects sequence drift, foreign languages and injected source strings',()=>{
+ for(const lang of['fr','en'])for(let i=0;i<7;i++)assert.deepEqual(stablecoinReserveFigureReferences(lang,STABLECOIN_RESERVE_KINDS[i],String(i+1).padStart(2,'0'),STABLECOIN_RESERVE_SOURCES[i],'Caption'),STABLECOIN_RESERVE_SOURCES[i].split(' '));for(const lang of[null,undefined,{},new String('fr'),'__proto__'])assert.throws(()=>stablecoinReserveFigureReferences(lang,'reserve','01','P02 L01','Caption'));for(const refs of['','L01','P02 L01 L01','P02 L01 F01','P02\" onload=\"x'])assert.throws(()=>stablecoinReserveFigureReferences('fr','reserve','01',refs,'Caption'));for(const[k,n]of[['reserve','02'],['__proto__','01'],['jurisdictions','8']])assert.throws(()=>stablecoinReserveFigureReferences('fr',k,n,'P02 L01','Caption'));
+});
+test('geometry and safety checks reject active markup, clipping, absent owners and malformed paths',()=>{
+ const scene=stablecoinReserveScenes().find(s=>s.lang==='fr'&&s.kind==='accounts'&&!s.mobile).svg;for(const change of[s=>s.replace('</svg>','<script>x</script></svg>'),s=>s.replace('<svg ','<svg onload="x" '),s=>s.replace('</svg>','<image href="https://example.com/a"/></svg>'),s=>s.replace('l0g Stablecoin Reserves','Arial'),s=>s.replace('>CIRCLE<','>Un très long libellé de revenu qui dépasse le panneau<'),s=>s.replace('data-panel="sc-reserve-fr-accounts-d-frame"','data-panel="missing"')])assert.throws(()=>assertStablecoinReserveGeometry(change(scene)));
+ const flow=stablecoinReserveScenes().find(s=>s.kind==='reserve').svg;assert.throws(()=>inspectStablecoinReserveSvg(flow.replace('d="M ','d="M NaN ')));
+});
+test('component retains licensed local fonts, native disclosure slots and nonclipping responsive padding',()=>{
+ const c=read('src/components/StablecoinReserveFigure.astro');for(const w of[400,700]){const p='public/fonts/stablecoins/dejavu-sans-'+w+'.ttf';assert.ok(c.includes(p.replace('public','')));assert.equal(createHash('sha256').update(readFileSync(new URL('../'+p,import.meta.url))).digest('hex'),w===400?'98f2d74db16bb5f41f74adf6d899aeec92861682cccc58bfdbe4d9d7d0a5ae11':'21a0350a4ac2a9f22b6a7a8dcaf6abb08c8b546d06499301f1fcf10996fd0df5');}assertFontLicenseReferences(read('public/fonts/stablecoins/LICENSE.txt'),'dejavu');assert.match(c,/max-width:\s*48rem/u);assert.match(c,/@container\s*\(max-width:\s*500px\)/u);assert.match(c,/padding-bottom:\s*1rem/u);assert.match(c,/<slot \/>/);assert.doesNotMatch(c,/overflow\s*:\s*(?:hidden|clip)|client:|<script|fetch\(/iu);
+});
