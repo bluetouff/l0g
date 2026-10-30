@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="learning-juniors-en-employment-d-title learning-juniors-en-employment-d-desc" viewBox="0 0 1000 680" style="width:100%;height:auto" class="l0g-learning-juniors-svg">
+<title id="learning-juniors-en-employment-d-title">Employment by age and exposure</title>
+<desc id="learning-juniors-en-employment-d-desc">In the US Stanford–ADP sample, September 2026 indices differ more by exposure among workers aged 22–25. Every series equals 100 in November 2022. Eight observations extracted from canaries_age_by_exposure.csv, vintage 16 October 2026; dashboard dated 21 October. Only the two displayed dates are compared, with no monthly interpolation. Q1 and Q5 contain the least and most exposed occupations, ranked with equal weight per occupation. Workers are not distributed equally across quintiles. Firms have five years of ADP history; workers are matched to occupation codes. This is not a representative sample of the entire US market. Age differs from experience; exposure differs from adoption. These indices do not estimate a causal AI effect or update the August paper’s 19% figure.</desc>
+<rect id="learning-juniors-en-employment-d-frame" x="0" y="0" width="1000" height="680" fill="var(--color-ink)"/>
+<text data-panel="learning-juniors-en-employment-d-frame" x="40" y="40" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="start">l0g / LEARNING</text>
+<text data-panel="learning-juniors-en-employment-d-frame" x="960" y="40" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="end">02 / 05</text>
+<text data-panel="learning-juniors-en-employment-d-frame" x="40" y="93" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="34" font-weight="700" text-anchor="start">Employment by age and exposure</text>
+<text data-panel="learning-juniors-en-employment-d-frame" x="40" y="137" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">United States · indices, November 2022 = 100</text>
+<rect id="learning-juniors-en-employment-d-card-age-0" x="40" y="175" width="920" height="200" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-en-employment-d-card-age-0" x="60" y="210" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="27" font-weight="700" text-anchor="start">22–25 years</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-0" x="60" y="277" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">Least exposed · Q1</text>
+<line x1="635.0" y1="270" x2="746.3" y2="270" stroke="var(--color-signal)" stroke-width="3"/>
+<circle cx="635.0" cy="270" r="5" fill="var(--color-paper)"/>
+<circle data-metric="employment-0-0" data-value="108.4" cx="746.3" cy="270" r="6" fill="var(--color-signal)"/>
+<text data-panel="learning-juniors-en-employment-d-card-age-0" x="746.3" y="249" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="25" font-weight="700" text-anchor="middle">108.40</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-0" x="60" y="333" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">Most exposed · Q5</text>
+<line x1="635.0" y1="326" x2="471.495" y2="326" stroke="var(--color-accent)" stroke-width="3"/>
+<circle cx="635.0" cy="326" r="5" fill="var(--color-paper)"/>
+<circle data-metric="employment-0-1" data-value="87.66" cx="471.495" cy="326" r="6" fill="var(--color-accent)"/>
+<text data-panel="learning-juniors-en-employment-d-card-age-0" x="471.495" y="305" fill="var(--color-accent)" font-family="l0g Learning Juniors" font-size="25" font-weight="700" text-anchor="middle">87.66</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-0" x="370.0" y="365" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">80</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-0" x="502.5" y="365" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">90</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-0" x="635.0" y="365" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">100</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-0" x="767.5" y="365" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">110</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-0" x="900.0" y="365" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">120</text>
+<rect id="learning-juniors-en-employment-d-card-age-1" x="40" y="390" width="920" height="200" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-en-employment-d-card-age-1" x="60" y="425" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="27" font-weight="700" text-anchor="start">35–40 years</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-1" x="60" y="492" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">Least exposed · Q1</text>
+<line x1="635.0" y1="485" x2="824.475" y2="485" stroke="var(--color-signal)" stroke-width="3"/>
+<circle cx="635.0" cy="485" r="5" fill="var(--color-paper)"/>
+<circle data-metric="employment-1-0" data-value="114.3" cx="824.475" cy="485" r="6" fill="var(--color-signal)"/>
+<text data-panel="learning-juniors-en-employment-d-card-age-1" x="824.475" y="464" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="25" font-weight="700" text-anchor="middle">114.30</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-1" x="60" y="548" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">Most exposed · Q5</text>
+<line x1="635.0" y1="541" x2="754.25" y2="541" stroke="var(--color-accent)" stroke-width="3"/>
+<circle cx="635.0" cy="541" r="5" fill="var(--color-paper)"/>
+<circle data-metric="employment-1-1" data-value="109" cx="754.25" cy="541" r="6" fill="var(--color-accent)"/>
+<text data-panel="learning-juniors-en-employment-d-card-age-1" x="754.25" y="520" fill="var(--color-accent)" font-family="l0g Learning Juniors" font-size="25" font-weight="700" text-anchor="middle">109.00</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-1" x="370.0" y="580" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">80</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-1" x="502.5" y="580" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">90</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-1" x="635.0" y="580" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">100</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-1" x="767.5" y="580" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">110</text>
+<text data-panel="learning-juniors-en-employment-d-card-age-1" x="900.0" y="580" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">120</text>
+<text data-panel="learning-juniors-en-employment-d-frame" x="40" y="620" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">Neutral point: November 2022 · coloured point: September 2026.</text>
+<text data-panel="learning-juniors-en-employment-d-frame" x="40" y="653" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">R03</text>
+</svg>

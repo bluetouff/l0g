@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="learning-juniors-fr-learning-m-title learning-juniors-fr-learning-m-desc" viewBox="0 0 420 1000" style="width:100%;height:auto" class="l0g-learning-juniors-svg">
+<title id="learning-juniors-fr-learning-m-title">L’exercice aidé, puis l’examen seul</title>
+<desc id="learning-juniors-fr-learning-m-desc">Expérience en mathématiques au lycée, Turquie : effets ajustés par rapport au groupe témoin. Les gains de l’exercice assisté et le résultat à l’examen mesurent deux performances distinctes. Bastani et collègues, PNAS 2025, tableau 1. Coefficients sur l’échelle 0–1 multipliés par 100. Entraînement : Base +13,7, Tutor +36,1 ; examen : Base −5,4, Tutor −0,4. Traits = ±1 erreur standard publiée, regroupée par classe : 3,1 ; 3,2 ; 2,2 ; 1,3 points. Ces traits ne sont pas des intervalles de confiance à 95 %. Seuils publiés : p&lt;0,01 pour les deux entraînements ; p&lt;0,05 pour Base à l’examen ; Tutor non significatif à 5 %. Même axe −10 à +45 dans les deux panneaux. 2 848 observations élève-séance, et non personnes. Tutor reçoit des indications pédagogiques préparées par les enseignants. Les épreuves sont distinctes ; aucune rétention professionnelle de longue durée n’est mesurée.</desc>
+<rect id="learning-juniors-fr-learning-m-frame" x="0" y="0" width="420" height="1000" fill="var(--color-ink)"/>
+<text data-panel="learning-juniors-fr-learning-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="17" font-weight="700" text-anchor="start">l0g / APPRENDRE</text>
+<text data-panel="learning-juniors-fr-learning-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="end">03 / 05</text>
+<text data-panel="learning-juniors-fr-learning-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="25" font-weight="700" text-anchor="start">De l’exercice à l’examen</text>
+<text data-panel="learning-juniors-fr-learning-m-frame" x="28" y="132" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Turquie · effets ajustés par rapport</text>
+<text data-panel="learning-juniors-fr-learning-m-frame" x="28" y="156" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">au témoin, points sur 100</text>
+<rect id="learning-juniors-fr-learning-m-card-assessment-0" x="28" y="190" width="364" height="320" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-0" x="44" y="226" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="23" font-weight="700" text-anchor="start">Entraînement aidé</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-0" x="44" y="272" fill="var(--color-accent)" font-family="l0g Learning Juniors" font-size="18" font-weight="700" text-anchor="start">GPT Base</text>
+<line x1="149.09091" y1="311" x2="149.09091" y2="329" stroke="var(--color-line-strong)" stroke-width="1"/>
+<line x1="201.12727" y1="320" x2="231.56364" y2="320" stroke="var(--color-accent)" stroke-width="3"/>
+<line x1="201.12727" y1="313" x2="201.12727" y2="327" stroke="var(--color-accent)" stroke-width="2"/>
+<line x1="231.56364" y1="313" x2="231.56364" y2="327" stroke="var(--color-accent)" stroke-width="2"/>
+<circle data-metric="effect-0-0" data-value="13.7" cx="216.34545" cy="320" r="6" fill="var(--color-accent)"/>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-0" x="216.34545" y="299" fill="var(--color-accent)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="middle">+13,7</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-0" x="44" y="377" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="18" font-weight="700" text-anchor="start">GPT Tutor</text>
+<line x1="149.09091" y1="416" x2="149.09091" y2="434" stroke="var(--color-line-strong)" stroke-width="1"/>
+<line x1="310.6" y1="425" x2="342.01818" y2="425" stroke="var(--color-signal)" stroke-width="3"/>
+<line x1="310.6" y1="418" x2="310.6" y2="432" stroke="var(--color-signal)" stroke-width="2"/>
+<line x1="342.01818" y1="418" x2="342.01818" y2="432" stroke="var(--color-signal)" stroke-width="2"/>
+<circle data-metric="effect-0-1" data-value="36.1" cx="326.30909" cy="425" r="6" fill="var(--color-signal)"/>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-0" x="326.30909" y="404" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="middle">+36,1</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-0" x="100.0" y="480" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">−10</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-0" x="149.09091" y="480" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">0</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-0" x="198.18182" y="480" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">10</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-0" x="247.27273" y="480" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">20</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-0" x="296.36364" y="480" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">30</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-0" x="345.45455" y="480" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">40</text>
+<rect id="learning-juniors-fr-learning-m-card-assessment-1" x="28" y="535" width="364" height="320" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-1" x="44" y="571" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="23" font-weight="700" text-anchor="start">Examen sans aide</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-1" x="44" y="617" fill="var(--color-accent)" font-family="l0g Learning Juniors" font-size="18" font-weight="700" text-anchor="start">GPT Base</text>
+<line x1="149.09091" y1="656" x2="149.09091" y2="674" stroke="var(--color-line-strong)" stroke-width="1"/>
+<line x1="111.78182" y1="665" x2="133.38182" y2="665" stroke="var(--color-accent)" stroke-width="3"/>
+<line x1="111.78182" y1="658" x2="111.78182" y2="672" stroke="var(--color-accent)" stroke-width="2"/>
+<line x1="133.38182" y1="658" x2="133.38182" y2="672" stroke="var(--color-accent)" stroke-width="2"/>
+<circle data-metric="effect-1-0" data-value="-5.4" cx="122.58182" cy="665" r="6" fill="var(--color-accent)"/>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-1" x="122.58182" y="644" fill="var(--color-accent)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="middle">−5,4</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-1" x="44" y="722" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="18" font-weight="700" text-anchor="start">GPT Tutor</text>
+<line x1="149.09091" y1="761" x2="149.09091" y2="779" stroke="var(--color-line-strong)" stroke-width="1"/>
+<line x1="140.74545" y1="770" x2="153.50909" y2="770" stroke="var(--color-signal)" stroke-width="3"/>
+<line x1="140.74545" y1="763" x2="140.74545" y2="777" stroke="var(--color-signal)" stroke-width="2"/>
+<line x1="153.50909" y1="763" x2="153.50909" y2="777" stroke="var(--color-signal)" stroke-width="2"/>
+<circle data-metric="effect-1-1" data-value="-0.4" cx="147.12727" cy="770" r="6" fill="var(--color-signal)"/>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-1" x="147.12727" y="749" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="middle">−0,4</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-1" x="100.0" y="825" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">−10</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-1" x="149.09091" y="825" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">0</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-1" x="198.18182" y="825" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">10</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-1" x="247.27273" y="825" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">20</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-1" x="296.36364" y="825" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">30</text>
+<text data-panel="learning-juniors-fr-learning-m-card-assessment-1" x="345.45455" y="825" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">40</text>
+<text data-panel="learning-juniors-fr-learning-m-frame" x="28" y="900" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Traits : +/−1 erreur standard.</text>
+<text data-panel="learning-juniors-fr-learning-m-frame" x="28" y="925" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Effet Tutor à l’examen incertain</text>
+<text data-panel="learning-juniors-fr-learning-m-frame" x="28" y="950" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">au seuil de 5 %.</text>
+<text data-panel="learning-juniors-fr-learning-m-frame" x="28" y="973" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">R11</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="learning-juniors-fr-diagnosis-d-title learning-juniors-fr-diagnosis-d-desc" viewBox="0 0 1000 680" style="width:100%;height:auto" class="l0g-learning-juniors-svg">
+<title id="learning-juniors-fr-diagnosis-d-title">Trois observations orientent le diagnostic</title>
+<desc id="learning-juniors-fr-diagnosis-d-desc">Exercice fictif : deux postes échouent sur B, tandis que A réussit sur D. Le problème commun à B ou à son chemin d’accès devient une piste à examiner. Cas pédagogique original, sans incident réel ni procédure opérationnelle. Les observations choisies orientent une hypothèse sans identifier la cause avec certitude. La réussite sur D ne prouve pas que chaque composant de A fonctionne, ni qu’il existe une seule panne. Le retour avec un tuteur et le cas de transfert sont des modalités proposées, inspirées du RNCP40799 et de l’AFEST. Aucun script ou accès à un système n’est nécessaire.</desc>
+<rect id="learning-juniors-fr-diagnosis-d-frame" x="0" y="0" width="1000" height="680" fill="var(--color-ink)"/>
+<text data-panel="learning-juniors-fr-diagnosis-d-frame" x="40" y="40" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="start">l0g / APPRENDRE</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-frame" x="960" y="40" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="end">04 / 05</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-frame" x="40" y="93" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="34" font-weight="700" text-anchor="start">Trois observations orientent le diagnostic</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-frame" x="40" y="137" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">Cas pédagogique fictif · postes A/C et imprimantes B/D</text>
+<rect id="learning-juniors-fr-diagnosis-d-card-pc-0" x="60" y="220" width="150" height="68" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-pc-0" x="135.0" y="245" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">POSTE</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-pc-0" x="135.0" y="277" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="26" font-weight="700" text-anchor="middle">A</text>
+<rect id="learning-juniors-fr-diagnosis-d-card-printer-0" x="490" y="220" width="150" height="68" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-printer-0" x="565.0" y="245" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">IMPR.</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-printer-0" x="565.0" y="277" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="26" font-weight="700" text-anchor="middle">B</text>
+<line x1="220" y1="258" x2="480" y2="258" stroke="var(--color-accent)" stroke-width="3"/>
+<path d="M 471 252 L 480 258 L 471 264" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="learning-juniors-fr-diagnosis-d-frame" x="350.0" y="240" fill="var(--color-accent)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="middle">Échec</text>
+<rect id="learning-juniors-fr-diagnosis-d-card-pc-1" x="60" y="345" width="150" height="68" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-pc-1" x="135.0" y="370" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">POSTE</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-pc-1" x="135.0" y="402" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="26" font-weight="700" text-anchor="middle">C</text>
+<rect id="learning-juniors-fr-diagnosis-d-card-printer-1" x="490" y="345" width="150" height="68" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-printer-1" x="565.0" y="370" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">IMPR.</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-printer-1" x="565.0" y="402" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="26" font-weight="700" text-anchor="middle">B</text>
+<line x1="220" y1="383" x2="480" y2="383" stroke="var(--color-accent)" stroke-width="3"/>
+<path d="M 471 377 L 480 383 L 471 389" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="learning-juniors-fr-diagnosis-d-frame" x="350.0" y="365" fill="var(--color-accent)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="middle">Échec</text>
+<rect id="learning-juniors-fr-diagnosis-d-card-pc-2" x="60" y="470" width="150" height="68" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-pc-2" x="135.0" y="495" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">POSTE</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-pc-2" x="135.0" y="527" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="26" font-weight="700" text-anchor="middle">A</text>
+<rect id="learning-juniors-fr-diagnosis-d-card-printer-2" x="490" y="470" width="150" height="68" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-printer-2" x="565.0" y="495" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="middle">IMPR.</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-printer-2" x="565.0" y="527" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="26" font-weight="700" text-anchor="middle">D</text>
+<line x1="220" y1="508" x2="480" y2="508" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 471 502 L 480 508 L 471 514" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="learning-juniors-fr-diagnosis-d-frame" x="350.0" y="490" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="middle">Réussite</text>
+<rect id="learning-juniors-fr-diagnosis-d-card-reflection" x="710" y="220" width="250" height="318" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-reflection" x="726" y="255" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="25" font-weight="700" text-anchor="start">Retour</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-reflection" x="726" y="287" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="25" font-weight="700" text-anchor="start">avec le tuteur</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-reflection" x="726" y="351" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">Quel indice ?</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-reflection" x="726" y="412" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">Quel autre test ?</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-card-reflection" x="726" y="473" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">Quand transmettre ?</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-frame" x="60" y="595" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">Piste : B ou son chemin d’accès. Plusieurs causes restent possibles.</text>
+<text data-panel="learning-juniors-fr-diagnosis-d-frame" x="40" y="653" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="22" font-weight="400" text-anchor="start">R01 · R02</text>
+</svg>

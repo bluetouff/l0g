@@ -20,6 +20,39 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
 
+// Learning assessments, occupational exposure and uncertainty keep distinct scopes.
+const learningJuniorsFr = '/posts/ia-apprentissage-juniors/';
+const learningJuniorsEn = '/en/analysis/learning-work-with-ai/';
+const learningJuniorsSources = {"afest": ["https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038022325"], "exposition-professionnelle-ia": ["https://www.ilo.org/publications/workers%E2%80%99-exposure-ai-what-indicators-tell-us-%E2%80%93-and-what-they-don%E2%80%99t"], "evaluation-sans-assistance": ["https://arxiv.org/abs/2601.20245v2", "https://doi.org/10.1073/pnas.2422633122"], "erreur-standard": ["https://doi.org/10.1073/pnas.2422633122"]};
+for (const [slug, expectedSources] of Object.entries(learningJuniorsSources)) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  for (const [entry, article] of [[fr[0], learningJuniorsFr], [en[0], learningJuniorsEn]]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), expectedSources);
+    assert(!entry.def.includes('—'));
+  }
+  for (const neighbor of fr[0].atlas.related) {
+    assert(Object.hasOwn(learningJuniorsSources, neighbor));
+    assert(glossaryEntries.some(entry => entry.slug === neighbor));
+    assert(glossaryAtlasEnBySlug.has(neighbor));
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'afest').def, /phases réflexives distinctes de l’exécution/u);
+assert.match(glossaryAtlasEnBySlug.get('afest').def, /reflection separate from task execution/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'exposition-professionnelle-ia').def, /adoption effective.*effets sur l’emploi/u);
+assert.match(glossaryAtlasEnBySlug.get('exposition-professionnelle-ia').def, /Actual adoption.*employment outcomes/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'evaluation-sans-assistance').def, /quiz immédiat.*maintien dans le temps.*tâches éloignées/u);
+assert.match(glossaryAtlasEnBySlug.get('evaluation-sans-assistance').def, /immediate quiz.*longer-term retention.*different tasks/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'erreur-standard').def, /même unité.*regroupées par classe.*dispersion.*intervalle de confiance à 95 %/u);
+assert.match(glossaryAtlasEnBySlug.get('erreur-standard').def, /same units.*clustered by classroom.*individual scores.*95% confidence interval/u);
+
 // Customs units, threshold valuation and VAT collection remain separate short entries.
 const smallParcelsFr = '/posts/petits-colis-frais/';
 const smallParcelsEn = '/en/analysis/small-parcels-fees/';
@@ -1161,7 +1194,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 359, 'Le corpus ajoute trois notions douanières bilingues');
+assert.equal(glossaryAtlasEnBySlug.size, 363, 'Le corpus ajoute quatre notions bilingues sur l’apprentissage et les preuves');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1362,8 +1395,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 746, 'Le corpus ajoute trois notions douanières sourcées');
-assert.equal(glossaryAtlasEntries.length, 349, 'Les trois notions douanières disposent de sources et de liens');
+assert.equal(glossaryEntries.length, 750, 'Le corpus ajoute quatre notions courtes et sourcées sur l’apprentissage');
+assert.equal(glossaryAtlasEntries.length, 353, 'Les quatre notions sur l’apprentissage disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1785,7 +1818,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 968, 'Le corpus ajoute huit relations douanières, de TVA et d’incidence fiscale');
+assert.equal(glossaryAtlasEdgeCount, 972, 'Le corpus ajoute quatre relations entre formation, évaluation et incertitude');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

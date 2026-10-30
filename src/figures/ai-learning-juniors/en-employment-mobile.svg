@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="learning-juniors-en-employment-m-title learning-juniors-en-employment-m-desc" viewBox="0 0 420 900" style="width:100%;height:auto" class="l0g-learning-juniors-svg">
+<title id="learning-juniors-en-employment-m-title">Employment by age and exposure</title>
+<desc id="learning-juniors-en-employment-m-desc">In the US Stanford–ADP sample, September 2026 indices differ more by exposure among workers aged 22–25. Every series equals 100 in November 2022. Eight observations extracted from canaries_age_by_exposure.csv, vintage 16 October 2026; dashboard dated 21 October. Only the two displayed dates are compared, with no monthly interpolation. Q1 and Q5 contain the least and most exposed occupations, ranked with equal weight per occupation. Workers are not distributed equally across quintiles. Firms have five years of ADP history; workers are matched to occupation codes. This is not a representative sample of the entire US market. Age differs from experience; exposure differs from adoption. These indices do not estimate a causal AI effect or update the August paper’s 19% figure.</desc>
+<rect id="learning-juniors-en-employment-m-frame" x="0" y="0" width="420" height="900" fill="var(--color-ink)"/>
+<text data-panel="learning-juniors-en-employment-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="17" font-weight="700" text-anchor="start">l0g / LEARNING</text>
+<text data-panel="learning-juniors-en-employment-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="end">02 / 05</text>
+<text data-panel="learning-juniors-en-employment-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="25" font-weight="700" text-anchor="start">Age and exposure</text>
+<text data-panel="learning-juniors-en-employment-m-frame" x="28" y="132" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">United States · indices, November</text>
+<text data-panel="learning-juniors-en-employment-m-frame" x="28" y="156" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">2022 = 100</text>
+<rect id="learning-juniors-en-employment-m-card-age-0" x="28" y="190" width="364" height="285" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-en-employment-m-card-age-0" x="44" y="225" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="24" font-weight="700" text-anchor="start">22–25 years</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-0" x="44" y="269" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Least exposed · Q1</text>
+<line x1="220.0" y1="320" x2="283" y2="320" stroke="var(--color-signal)" stroke-width="3"/>
+<circle cx="220.0" cy="320" r="5" fill="var(--color-paper)"/>
+<circle data-metric="employment-0-0" data-value="108.4" cx="283" cy="320" r="6" fill="var(--color-signal)"/>
+<text data-panel="learning-juniors-en-employment-m-card-age-0" x="283" y="299" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="middle">108.40</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-0" x="44" y="369" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Most exposed · Q5</text>
+<line x1="220.0" y1="420" x2="127.45" y2="420" stroke="var(--color-accent)" stroke-width="3"/>
+<circle cx="220.0" cy="420" r="5" fill="var(--color-paper)"/>
+<circle data-metric="employment-0-1" data-value="87.66" cx="127.45" cy="420" r="6" fill="var(--color-accent)"/>
+<text data-panel="learning-juniors-en-employment-m-card-age-0" x="127.45" y="399" fill="var(--color-accent)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="middle">87.66</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-0" x="70.0" y="455" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">80</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-0" x="145.0" y="455" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">90</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-0" x="220.0" y="455" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">100</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-0" x="295.0" y="455" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">110</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-0" x="370.0" y="455" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">120</text>
+<rect id="learning-juniors-en-employment-m-card-age-1" x="28" y="500" width="364" height="285" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-en-employment-m-card-age-1" x="44" y="535" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="24" font-weight="700" text-anchor="start">35–40 years</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-1" x="44" y="579" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Least exposed · Q1</text>
+<line x1="220.0" y1="630" x2="327.25" y2="630" stroke="var(--color-signal)" stroke-width="3"/>
+<circle cx="220.0" cy="630" r="5" fill="var(--color-paper)"/>
+<circle data-metric="employment-1-0" data-value="114.3" cx="327.25" cy="630" r="6" fill="var(--color-signal)"/>
+<text data-panel="learning-juniors-en-employment-m-card-age-1" x="327.25" y="609" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="middle">114.30</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-1" x="44" y="679" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Most exposed · Q5</text>
+<line x1="220.0" y1="730" x2="287.5" y2="730" stroke="var(--color-accent)" stroke-width="3"/>
+<circle cx="220.0" cy="730" r="5" fill="var(--color-paper)"/>
+<circle data-metric="employment-1-1" data-value="109" cx="287.5" cy="730" r="6" fill="var(--color-accent)"/>
+<text data-panel="learning-juniors-en-employment-m-card-age-1" x="287.5" y="709" fill="var(--color-accent)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="middle">109.00</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-1" x="70.0" y="765" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">80</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-1" x="145.0" y="765" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">90</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-1" x="220.0" y="765" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">100</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-1" x="295.0" y="765" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">110</text>
+<text data-panel="learning-juniors-en-employment-m-card-age-1" x="370.0" y="765" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">120</text>
+<text data-panel="learning-juniors-en-employment-m-frame" x="28" y="824" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Neutral point: November 2022.</text>
+<text data-panel="learning-juniors-en-employment-m-frame" x="28" y="848" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Coloured point: September 2026.</text>
+<text data-panel="learning-juniors-en-employment-m-frame" x="28" y="873" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">R03</text>
+</svg>

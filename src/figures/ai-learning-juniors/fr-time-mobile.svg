@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="learning-juniors-fr-time-m-title learning-juniors-fr-time-m-desc" viewBox="0 0 420 900" style="width:100%;height:auto" class="l0g-learning-juniors-svg">
+<title id="learning-juniors-fr-time-m-title">Donner une destination au temps gagné</title>
+<desc id="learning-juniors-fr-time-m-desc">Avec ces hypothèses, le gain net est de 11 h 40. En réserver la moitié ouvre 5 h 50 pour apprendre ; le temps propre du tuteur se budgète en plus. Modèle illustratif : 100 cas/mois, 30 min/cas avant assistance, 10 min économisées et 3 min de vérification ajoutées par cas. Référence 3 000 min ; opérations assistées 2 300 min ; gain net 700 min. Répartition à 50 % : 350 min de formation et 350 min disponibles pour d’autres usages. Onze séances de 30 min utilisent 330 min, avec 20 min restantes. Les largeurs de la barre répartissent les 3 000 min. Volume et qualité supposés constants ; temps propre du tuteur exclu. Les valeurs sont choisies, sans mesure d’effet de l’IA, de compétence ou d’emploi.</desc>
+<rect id="learning-juniors-fr-time-m-frame" x="0" y="0" width="420" height="900" fill="var(--color-ink)"/>
+<text data-panel="learning-juniors-fr-time-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="17" font-weight="700" text-anchor="start">l0g / APPRENDRE</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="end">05 / 05</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="25" font-weight="700" text-anchor="start">Du temps pour apprendre</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="28" y="132" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Hypothèses fictives · 100 cas × 30</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="28" y="156" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">minutes = 50 heures</text>
+<rect id="learning-juniors-fr-time-m-card-calculation-0" x="28" y="205" width="170" height="115" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-time-m-card-calculation-0" x="44" y="235" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="19" font-weight="700" text-anchor="start">Gain brut</text>
+<text data-panel="learning-juniors-fr-time-m-card-calculation-0" x="44" y="286" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="29" font-weight="700" text-anchor="start">16 h 40</text>
+<rect id="learning-juniors-fr-time-m-card-calculation-1" x="222" y="205" width="170" height="115" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-time-m-card-calculation-1" x="238" y="235" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="19" font-weight="700" text-anchor="start">Vérification</text>
+<text data-panel="learning-juniors-fr-time-m-card-calculation-1" x="238" y="286" fill="var(--color-accent)" font-family="l0g Learning Juniors" font-size="29" font-weight="700" text-anchor="start">5 h</text>
+<rect id="learning-juniors-fr-time-m-card-calculation-2" x="28" y="355" width="364" height="100" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-time-m-card-calculation-2" x="44" y="388" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="20" font-weight="700" text-anchor="start">Gain net</text>
+<text data-panel="learning-juniors-fr-time-m-card-calculation-2" x="376" y="430" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="34" font-weight="700" text-anchor="end">11 h 40</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="28" y="501" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="22" font-weight="700" text-anchor="start">Répartition des 50 h</text>
+<rect data-metric="operations" data-value="2300" x="28" y="528" width="279.06667" height="48" fill="var(--color-muted)"/>
+<rect data-metric="learning" data-value="350" x="307.06667" y="528" width="42.46667" height="48" fill="var(--color-signal)"/>
+<rect data-metric="other" data-value="350" x="349.53333" y="528" width="42.46667" height="48" fill="var(--color-amber)"/>
+<text data-panel="learning-juniors-fr-time-m-frame" x="28.0" y="609" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">0</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="100.8" y="609" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">10</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="173.6" y="609" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">20</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="246.4" y="609" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">30</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="319.2" y="609" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">40</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="392.0" y="609" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="middle">50</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="28" y="655" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="18" font-weight="700" text-anchor="start">Opérations assistées</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="392" y="655" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="23" font-weight="700" text-anchor="end">38 h 20</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="28" y="706" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="18" font-weight="700" text-anchor="start">Formation</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="392" y="706" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="23" font-weight="700" text-anchor="end">5 h 50</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="28" y="757" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="18" font-weight="700" text-anchor="start">Autres usages</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="392" y="757" fill="var(--color-amber)" font-family="l0g Learning Juniors" font-size="23" font-weight="700" text-anchor="end">5 h 50</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="28" y="831" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">5 h 50 = 11 séances de 30 min + 20 min</text>
+<text data-panel="learning-juniors-fr-time-m-frame" x="28" y="873" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Calcul l0g · hypothèses fictives</text>
+</svg>

@@ -1,0 +1,173 @@
+---
+title: "If AI does the beginners’ work, how will they learn the job?"
+seoTitle: "AI and junior workers: learning the job | l0g"
+ogTitle: "AI and junior workers: learning the job"
+description: "AI can speed up a task while changing how people learn. Employment studies, teaching experiments and ways to support beginners, with their limits."
+pubDate: "2026-10-30T16:07:49+01:00"
+tags: ["Artificial intelligence", "Work", "Learning", "Employment", "Junior workers", "United States", "France"]
+draft: false
+ogImage: "/illustrations/news/ai-learning-juniors-v1.jpg"
+sourceArticle: "ia-apprentissage-juniors"
+sourceUpdatedDate: "2026-10-30T16:07:49+01:00"
+---
+
+import ApprentissageJuniorsFigure from "../../components/ApprentissageJuniorsFigure.astro";
+import LearningTimeCalculator from "../../components/LearningTimeCalculator.astro";
+
+Early work serves two purposes: it gets something done, and it helps people learn how to handle the next task. AI can send those purposes in different directions. As the first tasks of a career change hands, the challenge is to preserve a route towards independent judgment.
+
+Imagine a fictional IT support exercise. A printer refuses documents sent from a workstation. An assistant suggests a procedure; moments later, a page emerges. The ticket can be closed. For the person learning the job, a question remains: what have they understood about the fault? Could they recognise a similar problem, explain their choice or spot a dangerous recommendation?
+
+The same intervention could have two endings. In one, the successful result closes the story. In the other, a colleague asks which clue guided the diagnosis, what alternative explanation remained possible, and which test would have changed their mind. In our example, the service delivered is identical. The opportunity to learn has been organised differently.
+
+That is the thread of this documentary investigation: what happens to opportunities to practise? The sources address three distinct questions (getting a first job, performing with assistance and retaining a skill), with results that vary across settings. The risk of an inadequately prepared next generation deserves examination. Its future scale remains an open question.
+
+## One task, two outcomes
+
+An IT support technician’s work provides a concrete starting point. The French occupational standard brings together listening to users, diagnosis, testing, resolution, escalation of complex incidents and maintenance of shared knowledge. The expected work includes reasoning and explanation alongside restoring a service. [R01](#source-r01)
+
+To understand the mechanism, distinguish the **output delivered** from the **experience gained**. A reply sent, an incident resolved or a document written is immediately visible. Experience shows up in the ability to handle the next case: recognising a situation, choosing a check, understanding a failure and knowing when to ask for help.
+
+This distinction suggests a question about how work is organised. When an assistant takes over the search, the choice of response and its wording, a learner may encounter fewer of the decisions that give the exercise its value. When assistance supplies an explanation as the learner compares possible causes, it may enrich that stage. The same tool can occupy different places in a learning process.
+
+<ApprentissageJuniorsFigure lang="en" kind="loop" number={1} caption={"The delivered service completes the intervention. Reviewing the reasoning prepares the next case. This loop depicts a proposed learning arrangement."} sources={["R01", "R02"]} method={"Original diagram informed by RNCP40799 competencies and the French AFEST framework. Arrows denote work and reflection steps, with no measured duration or effect. Assistance can enter at several stages. This particular proposed arrangement has not been experimentally evaluated."} />
+
+The intended lesson matters, too. Repeatedly copying a standard answer may have little educational value. Understanding the circumstances in which that answer becomes inappropriate may have a great deal. Training design should therefore identify the skill being developed before deciding which steps to delegate.
+
+“Beginner” also needs a precise meaning. Age, tenure at a company and experience of an occupation describe different things. Someone changing careers may enter IT support after twenty years of working life. An experienced developer may be learning a new library. These distinctions affect how we should read the studies that follow.
+
+## Is the first job becoming harder to get?
+
+The Stanford–ADP dashboard provides a recent US signal. In its 21 October 2026 release, September employment among 22–25-year-olds stands at an index of **87.66** in the occupations most [exposed to AI](/en/glossary/exposition-professionnelle-ia/), against **108.40** in the least exposed, with November 2022 set to 100. For 35–40-year-olds, the corresponding indices are **109.00** and **114.30**. These observations cover a sample of employers followed over time; age is the statistical grouping used here. [R03](#source-r03)
+
+<ApprentissageJuniorsFigure lang="en" kind="employment" number={2} caption={"In the US Stanford–ADP sample, September 2026 indices differ more by exposure among workers aged 22–25. Every series equals 100 in November 2022."} sources={["R03"]} method={"Eight observations extracted from canaries_age_by_exposure.csv, vintage 16 October 2026; dashboard dated 21 October. Only the two displayed dates are compared, with no monthly interpolation. Q1 and Q5 contain the least and most exposed occupations, ranked with equal weight per occupation. Workers are not distributed equally across quintiles. Firms have five years of ADP history; workers are matched to occupation codes. This is not a representative sample of the entire US market. Age differs from experience; exposure differs from adoption. These indices do not estimate a causal AI effect or update the August paper’s 19% figure."} />
+
+The contrast draws attention to entry into working life. Several filters shape its interpretation. Employers need five years of ADP history, and workers need a usable occupational code. Firms entering or leaving the sample are excluded from this tracking. The exposure measure classifies tasks that AI could affect; it leaves open whether each employer actually uses the technology. [R03](#source-r03) [R14](#source-r14)
+
+The Stanford paper revised in August, with data through June 2026, points particularly to slower hiring. Its findings depend on the method, however. Accounting for education narrows the gaps, some differences emerge before the rise of generative AI, and the revision appendix records how sensitive the estimates are to data processing choices. These qualifications constrain causal attribution. [R04](#source-r04)
+
+The widely repeated **19%** figure belongs to that August version. It describes a relative gap against the trajectory of a less exposed group. It is neither the share of young workers laid off nor the result shown in our September chart. Earlier versions partly relied on different estimates; joining their headline figures into a line would create a misleading impression of continuity. [R05](#source-r05)
+
+Statistical caution has a practical implication. A young person may face a real obstacle to entering a profession while several causes overlap: economic conditions, hiring decisions and changes in the tasks themselves. Identifying AI’s contribution would require linking adoption to hiring and to the work actually assigned, then following comparable situations.
+
+Yale’s Budget Lab offers a counterpoint. Its 14 October update, using September national US data, finds no clear general break in the labour market. The tracker also notes a relative increase in unemployment among exposed workers, with volatile estimates. Its groupings and methods differ. Broad stability can coexist with difficulties concentrated in particular occupations or age groups. [R06](#source-r06)
+
+One company illustrates what such an inquiry might examine. In an internal study published on 16 October 2026, Anthropic reports a declining junior share of its technical hiring while technical headcount grows. The company itself sells AI assistants. Its data and interviews describe its own organisation: evidence of a hiring practice whose relevance beyond that setting remains limited. [R07](#source-r07)
+
+## Performing with help, then working alone
+
+Learning can be examined from another vantage point: what can a person do once the assistance is withdrawn?
+
+In Shen and Tamkin’s experiment, 52 participants learn the Python library Trio, with or without access to GPT-4o, then take a [quiz without AI](/en/glossary/evaluation-sans-assistance/). The assisted group scores lower; the time saving remains statistically uncertain. Most participants already have several years of programming experience. They are new to Trio. This preprint from the Anthropic research programme measures immediate learning on a limited set of tasks. [R09](#source-r09)
+
+Percentages in the blog post and the paper differ. This analysis therefore reports the direction of the result, with versions and locators detailed in the references. [R09](#source-r09) [R10](#source-r10)
+
+A school experiment offers another comparison. Bastani and colleagues study high school students in Turkey: practice with a standard GPT assistant or a tutor prepared with teachers’ input, followed by an unaided exam. The standard assistant improves assisted practice, but the exam score falls by 5.4 points out of 100 relative to the control group. With the tutor, the exam difference is small and statistically uncertain. [R11](#source-r11)
+
+The chart’s whiskers extend one [standard error](/en/glossary/erreur-standard/) on either side of each estimate. They describe statistical uncertainty in the effect, accounting for the grouping of students within classes. [R11](#source-r11)
+
+<ApprentissageJuniorsFigure lang="en" kind="learning" number={3} caption={"A high-school mathematics experiment in Türkiye: adjusted effects relative to the control group. Assisted-practice gains and exam outcomes measure different performances."} sources={["R11"]} method={"Bastani and colleagues, PNAS 2025, Table 1. Coefficients on the 0–1 scale multiplied by 100. Practice: Base +13.7, Tutor +36.1; exam: Base −5.4, Tutor −0.4. Whiskers show ±1 published standard error, clustered by classroom: 3.1, 3.2, 2.2 and 1.3 points. These are not 95% confidence intervals. Published thresholds: p<0.01 for both practice estimates; p<0.05 for Base in the exam; Tutor not significant at 5%. Both panels use the same −10 to +45 axis. There are 2,848 student-session observations, not people. Tutor receives teacher-prepared guidance. The assessments differ; long-term professional retention is not measured."} />
+
+The useful lesson lies in the outcome being measured. Work produced with a tool tells us about the performance of the person and tool together. A new exercise with assistance reduced or removed examines what the person has acquired. A later assessment would investigate a further outcome: how long that learning lasts.
+
+Directly translating a mathematics test into a career outcome would overreach. The comparison helps formulate a question for the workplace: how much of the reasoning does a learner still practise, and when do we check that it has been understood? Each occupation will need assessment situations appropriate to its work.
+
+## An assistant can also pass on expertise
+
+Customer support provides a counterpoint in a real workplace. In the study published in the *Quarterly Journal of Economics* in 2025, covering **5,172 agents**, the gradual rollout of an assistant is associated with **15% more issues resolved per hour** on average. Less experienced agents benefit more. During some outages, conversations remain shorter among agents previously exposed to the tool: suggestive evidence of learning, limited to that measure. [R08](#source-r08)
+
+The finding opens an interesting possibility: making useful practices available during an intervention that a beginner might otherwise take longer to discover. The question becomes how a suggestion received turns into reasoning the person can use independently. Advice can solve an immediate problem and provide something to understand. Its effect also depends on the activity around it.
+
+Kestin and colleagues’ experiment supplies another counterpoint. Across two physics lessons at Harvard, a teacher-designed tutoring system produces better results on tests taken shortly after learning than the class used for comparison. The system combines several features, including a structured progression and self-paced work. This narrow setting encourages examination of instructional design while leaving durable independence across occupations untested. [R12](#source-r12)
+
+These studies provide no universal ranking of AI uses. They point to things worth examining: the content of the help, opportunities for reflection, existing knowledge and assessment conditions. A useful workplace trial could compare different learning pathways for the same kind of task, then examine quality, errors, requests for help and success on a new case.
+
+## Making diagnosis something a learner can explain
+
+Return to our fictional printer. This time, the situation is documented before anyone searches for a solution. Workstation A fails to print on printer B. Workstation C also fails on B. Workstation A succeeds on another printer, D. Together, these observations make a problem involving B or the shared route to B more plausible. They guide the investigation while leaving several possible causes.
+
+The beginner can now explain why a particular check is worth making. An automated suggestion becomes a hypothesis to examine. A colleague can discuss the choice of test. The ticket records an approach, including its uncertainties and the limits of the technician’s role.
+
+<ApprentissageJuniorsFigure lang="en" kind="diagnosis" number={4} caption={"Fictional exercise: two computers fail on B while A succeeds on D. A problem shared by B or its access path becomes a hypothesis to investigate."} sources={["R01", "R02"]} method={"Original teaching case, with no real incident or operational procedure. The chosen observations guide a hypothesis without proving a cause. Success on D does not prove that every component of A works or that only one fault exists. Mentor review and a transfer case are proposed activities informed by RNCP40799 and AFEST. No script or system access is required."} />
+
+This pathway is l0g’s educational proposal, informed by the occupational standard. In practice, a learner could be asked to state a hypothesis, choose an observation that might contradict it, then explain how the result changes the diagnosis. A related case could reveal what they can reuse. The effectiveness of this particular arrangement remains to be evaluated. [R01](#source-r01)
+
+France already has a framework that separates performing work from reflecting on it: [AFEST](/en/glossary/afest/), a form of workplace-based training. The Labour Code provides for analysis of the activity, a designated trainer, reflective phases separate from execution, and assessments. This framework can inform the organisation of learning with AI. It predates these tools and establishes no particular effectiveness for our proposal. [R02](#source-r02)
+
+For a colleague coaching the learner, the value lies in making reasoning observable. An intervention that succeeds by chance and one that has been understood can produce the same printed page. Asking why a result changes the diagnosis begins to distinguish them. Recognising when to pass a case to someone with greater expertise is also part of working independently.
+
+The exercise uses prepared cases, fictional information and the usual permissions for the job. An assistant may help formulate explanations; access rights and operational decisions remain within the organisation’s arrangements. Training benefits from a setting where an error can be examined without exposing a real customer or production system.
+
+## Time saved needs a purpose
+
+These choices concern very different employers. In France, Insee measures organised AI use in 2025 at **18% of businesses within its scope**: those with at least ten people employed, in predominantly market sectors excluding agriculture, finance and insurance, across France excluding Mayotte. This precisely bounded indicator describes reported adoption. It leaves junior employees’ learning pathways unmeasured. [R13](#source-r13)
+
+In an OECD survey of small and medium-sized enterprises in seven countries, conducted in late 2024, most AI users report unchanged overall staffing needs. France is outside the sample. The responses describe needs, without counting jobs or identifying beginners separately. The finding is a reminder that organisations can follow different paths. [R15](#source-r15)
+
+The decision can be stated simply: **what should an hour saved be used for?** It could accommodate more requests, reduce workloads, improve a response or fund a guided review of completed work. Timing a task does not determine which purpose the saving serves.
+
+Consider an example with values chosen for explanation. A team handles 100 cases a month at 30 minutes each: 50 hours. Suppose assistance saves 10 minutes per case and requires 3 extra minutes of checking. Assisted work then takes 38 hours and 20 minutes. The net saving is 11 hours and 40 minutes.
+
+<ApprentissageJuniorsFigure lang="en" kind="time" number={5} caption={"Under these assumptions, net time saved is 11 h 40. Reserving half provides 5 h 50 for learning; the mentor’s own time needs a separate budget."} sources={[]} method={"Illustrative model: 100 cases/month, 30 min/case before assistance, 10 min saved and 3 min added for checking per case. Baseline 3,000 min; assisted operations 2,300 min; net saving 700 min. A 50% allocation gives 350 min for learning and 350 min for other uses. Eleven 30-minute sessions take 330 min, leaving 20 min. Bar widths allocate all 3,000 min. Volume and quality are held constant; the mentor’s additional time is excluded. Inputs are chosen assumptions, not measurements of AI, skill or employment effects."} />
+
+<LearningTimeCalculator lang="en" />
+
+Reserving half of that saving for training would provide 5 hours and 50 minutes: eleven 30-minute sessions, with 20 minutes remaining. The other half stays available for the team’s other purposes. The human tutor’s own time needs a separate budget. These numbers describe a possible allocation, assuming the volume and quality of work remain constant.
+
+The accompanying tool lets readers change the assumptions. It also shows what happens when checking takes more time than assistance saves: additional work appears, and the saving available for training falls to zero. The calculation allocates minutes. Progress in skills needs to be observed separately.
+
+## Preparing the next generation, visibly
+
+An organisation can track throughput while losing sight of how experience develops. It can also make that development visible. We propose three questions for a local trial. Do people get opportunities to diagnose? Can they explain and check their decisions? Can they handle a new case with assistance adjusted to their level?
+
+For recruitment, monitoring should distinguish applications, hires, departures and the content of initial assignments. For training, it should link learning to specific situations, with enough time to examine whether it lasts. Those measures would help assess the pathway people are offered beyond the number of tools distributed.
+
+A future shortage of experts remains a hypothesis. It would become more plausible if opportunities to enter an occupation shrank persistently and new training pathways transmitted essential skills less effectively. Another outcome is also possible: well-integrated assistance could widen the range of situations learners can tackle and support guided learning.
+
+The question returns to the printer at the beginning. Once the page appears, does someone still take the time to understand what happened? Part of the next generation’s preparation will take shape in the space reserved for diagnosis, reflection and the next attempt.
+
+---
+
+**Method.** Documentary investigation with a cutoff of 30 October 2026, Paris time. Each study retains its own country, population, period and protocol. The support and time-allocation examples were constructed for explanation. The investigation includes no original interviews or longitudinal observation of companies. The source notes below detail the versions, data used and qualifications.
+
+## Further reading
+
+[The Barclays investigation](/en/analysis/barclays-ai-job-cuts-productivity-evidence/) separates announcements, financial statements and claims about automation’s employment effects. [AI, wages and the power to walk away](/en/analysis/ai-wages-power-walk-away/) examines another side of work: skills, pay and the alternatives available to employees.
+
+## Sources and references
+
+Sources consulted on 30 October 2026. Empirical findings, company reports and constructed examples retain their original scope.
+
+<ol class="sources-list">
+
+<li id="source-r01"><span class="source-meta">R01 · Ministère chargé de l’emploi ; France compétences · Published : 2025-06-19</span><a href="https://www.francecompetences.fr/recherche/rncp/40799">TP, Technicien informatique de proximité, RNCP40799 et référentiel TP-00476 millésime 09</a><p>Documents diagnosis, testing, resolution, escalation and shared knowledge.</p><details><summary>Passages and scope</summary><p>Training routes from 1 September 2025 to 1 September 2030; framework validated on 11 June 2025.</p><p>REAC pp.17 and 21–22/40; assessment framework pp.6 and 13/26.</p><p>Certification standard; it does not evaluate our proposed teaching exercise.</p><p><a href="https://www.francecompetences.fr/wp-json/api/v1/activity/export/28185/590702">Document or data used</a></p></details></li>
+
+<li id="source-r02"><span class="source-meta">R02 · République française, Légifrance</span><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038022325">Code du travail, Article D6313-3-2</a><p>Distinguishes activity analysis, a designated trainer, reflection and assessment.</p><details><summary>Passages and scope</summary><p>Version effective since 1 January 2019, consulted on 30 October 2026.</p><p>The four components of work-based training under the AFEST framework.</p><p>A framework predating generative AI; it does not validate our proposal.</p></details></li>
+
+<li id="source-r03"><span class="source-meta">R03 · Stanford Digital Economy Lab ; données ADP · Updated : 2026-10-21</span><a href="https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/">Canaries Dashboard</a><p>Supplies the eight employment indices plotted in the figure.</p><details><summary>Passages and scope</summary><p>Observations October 2021–September 2026; vintage 16 October 2026; November 2022=100.</p><p>Archive: canaries_age_by_exposure.csv; ages 22–25 and 35–40, Q1 and Q5, November 2022 and September 2026.</p><p>Selected US panel; age and exposure measure neither junior status nor actual adoption.</p><p><a href="https://storage.googleapis.com/aviary-del-public/release_memos/latest/downloads/canaries_age_by_exposure_results.zip">Document or data used</a></p></details></li>
+
+<li id="source-r04"><span class="source-meta">R04 · Erik Brynjolfsson, Bharat Chandar et Ruyu Chen · Updated : 2026-08-12</span><a href="https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/">Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence</a><p>Analyses hiring flows and sensitivity of the observed employment gaps.</p><details><summary>Passages and scope</summary><p>Revision announced on 12 August 2026; cover dated August 2026; data through June 2026.</p><p>§1.1; Fact 4 p.16; Table 1 p.13; §§4–5; Appendices K–L p.140.</p><p>Descriptive findings depend on controls and data processing; causality is not identified.</p><p><a href="https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf">Document or data used</a></p></details></li>
+
+<li id="source-r05"><span class="source-meta">R05 · Erik Brynjolfsson, Bharat Chandar et Ruyu Chen, Stanford Digital Economy Lab · Published : 2026-08-12</span><a href="https://digitaleconomy.stanford.edu/news/canariesaug26/">No Widespread Displacement, but the AI Employment Gap for Young Workers Has Widened to 19%</a><p>Defines the 19% descriptive shortfall relative to a comparison trajectory.</p><details><summary>Passages and scope</summary><p>Data through June 2026; discussion of earlier results and versions.</p><p>Six main facts; What is new in this revision; notes 1–3.</p><p>It is neither a layoff rate nor the September index plotted here.</p></details></li>
+
+<li id="source-r06"><span class="source-meta">R06 · The Budget Lab at Yale · Updated : 2026-10-14</span><a href="https://budgetlab.yale.edu/research/tracking-impact-ai-labor-market">Tracking the Impact of AI on the Labor Market</a><p>Provides a national counterpoint without a clearly established broad disruption.</p><details><summary>Passages and scope</summary><p>Update of 14 October 2026 incorporating September 2026 CPS microdata.</p><p>Current summary and the tracker’s Current update tab.</p><p>Different aggregates, groups and methods cannot rule out effects within a narrow age group.</p></details></li>
+
+<li id="source-r07"><span class="source-meta">R07 · Nathan Wilmers, Regina Catipon, Maxim Massenkoff et Peter McCrory, Anthropic · Published : 2026-10-16</span><a href="https://www.anthropic.com/research/employment-at-anthropic">How employment is changing at Anthropic</a><p>Describes a lower junior share of technical hiring at a growing company.</p><details><summary>Passages and scope</summary><p>Recent internal data, including comparisons since early 2025; published on 16 October 2026.</p><p>Labor demand at the frontier; junior-role definition; internal data and 17 interviews.</p><p>An AI vendor’s internal case study; proportions establish neither generality nor causality.</p></details></li>
+
+<li id="source-r08"><span class="source-meta">R08 · Erik Brynjolfsson, Danielle Li et Lindsey R. Raymond · Published : 2025-02-04</span><a href="https://doi.org/10.1093/qje/qjae044">Generative AI at Work</a><p>Documents 15% more resolutions per hour and evidence of learning during outages.</p><details><summary>Passages and scope</summary><p>QJE 140(2), 889–942; rollout mainly autumn 2020–winter 2021; 5,172 agents.</p><p>§§III.C, IV.A–C; Table II column 3; §VI.B and Figure VII.</p><p>Staggered rollout; unaided evidence concerns duration, not the full range of expertise.</p></details></li>
+
+<li id="source-r09"><span class="source-meta">R09 · Judy Hanwen Shen et Alex Tamkin · Published : 2026-01-28 · Updated : 2026-02-01</span><a href="https://arxiv.org/abs/2601.20245v2">How AI Impacts Skill Formation</a><p>Compares immediate learning of Trio with and without GPT-4o.</p><details><summary>Passages and scope</summary><p>arXiv 2601.20245v2, revised 1 February 2026; two tasks then an immediate quiz, 52 analysed participants.</p><p>PDF pp.6–10, Table 1 and Figure 6; pp.12–14 and 24.</p><p>Anthropic-linked preprint; experienced developers, a small experiment and numerical discrepancies with the blog.</p><p><a href="https://arxiv.org/pdf/2601.20245v2">Document or data used</a></p></details></li>
+
+<li id="source-r10"><span class="source-meta">R10 · Anthropic · Published : 2026-01-29</span><a href="https://www.anthropic.com/research/AI-assistance-coding-skills">How AI assistance impacts the formation of coding skills</a><p>Enables comparison of the communicated Trio results with the paper.</p><details><summary>Passages and scope</summary><p>Presentation of the Trio experiment published on 29 January 2026.</p><p>Results and the description of observed interaction patterns.</p><p>Displayed averages do not fully reconcile with the paper; no reconstructed chart is used.</p></details></li>
+
+<li id="source-r11"><span class="source-meta">R11 · Hamsa Bastani, Osbert Bastani, Alp Sungu, Haosen Ge, Özge Kabakcı et Rei Mariman · Published : 2025-06-25</span><a href="https://doi.org/10.1073/pnas.2422633122">Generative AI without guardrails can harm learning: Evidence from high school mathematics</a><p>Compares assisted practice and unassisted exams for GPT Base and GPT Tutor.</p><details><summary>Passages and scope</summary><p>PNAS 122(26), e2422633122; Turkish high school, academic year 2023–2024; four sessions.</p><p>Experimental Design; Main Results; Table 1 columns 1–2 and notes.</p><p>Immediate school outcomes; adjusted coefficients, standard errors and student-session observations do not establish employment effects.</p></details></li>
+
+<li id="source-r12"><span class="source-meta">R12 · Greg Kestin, Kelly Miller, Anna Klales, Timothy Milbourne et Gregorio Ponti · Published : 2025-06-03</span><a href="https://doi.org/10.1038/s41598-025-97652-6">AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting</a><p>Studies teacher-designed AI tutoring and tests taken shortly after learning.</p><details><summary>Passages and scope</summary><p>Scientific Reports 15, 17458; introductory Harvard physics, autumn 2023; two lessons.</p><p>Results; Study population; Study design; Designing successful student–AI interactions.</p><p>A bundled intervention in a narrow setting; durable retention and individual components are not isolated.</p></details></li>
+
+<li id="source-r13"><span class="source-meta">R13 · Clément Lefebvre, Insee · Published : 2026-07-21</span><a href="https://www.insee.fr/fr/statistiques/9025878">Les technologies de l’information et de la communication dans les entreprises en 2025, Insee Première n°2120</a><p>Reports organised AI use in 18% of businesses within the survey’s scope.</p><details><summary>Passages and scope</summary><p>ICT survey in Q1 2025; France excluding Mayotte, covered market-sector businesses with at least ten persons employed.</p><p>Figure 1; Sources, Methods and Definitions; four-page PDF.</p><p>Neither employee usage nor junior employment; the questionnaire changed in 2025.</p><p><a href="https://www.insee.fr/fr/statistiques/fichier/version-html/9025878/IP2120.pdf">Document or data used</a></p></details></li>
+
+<li id="source-r14"><span class="source-meta">R14 · Rossana Merola, Ekkehard Ernst, Daniel Samaan, Maria del Rio-Chanona et Ole Teutloff, OIT · Published : 2026-04-17</span><a href="https://www.ilo.org/publications/workers%E2%80%99-exposure-ai-what-indicators-tell-us-%E2%80%93-and-what-they-don%E2%80%99t">Workers’ exposure to AI: What indicators tell us – and what they don’t</a><p>Distinguishes task exposure, adoption, organisation and employment consequences.</p><details><summary>Passages and scope</summary><p>Synthesis published on 17 April 2026; exact revision date of the “updated” PDF not established.</p><p>Key points; indicator approaches and limitations in the PDF.</p><p>A methodological framework; it measures neither jobs lost nor skills gained.</p><p><a href="https://www.ilo.org/sites/default/files/2026-05/Research%20Brief_Workers%20exposure%20to%20AI_updated.pdf">Document or data used</a></p></details></li>
+
+<li id="source-r15"><span class="source-meta">R15 · OCDE ; Marguerita Lane et Carla Ruggiu · Published : 2025-11-05</span><a href="https://www.oecd.org/en/publications/generative-ai-and-the-sme-workforce_2d08b99d-en.html">Generative AI and the SME Workforce: New Survey Evidence</a><p>Reports mostly unchanged overall staffing needs among SMEs using generative AI.</p><details><summary>Passages and scope</summary><p>5,232 SMEs surveyed from 14 October to 6 December 2024 across seven countries; France was not included.</p><p>Introduction pp.8–10; Figures 3.5–3.7 pp.34–36 printed; licence on PDF page 4.</p><p>Firm-weighted reports provide neither net job counts nor separate evidence on juniors.</p><p><a href="https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/11/generative-ai-and-the-sme-workforce_83bafdfb/2d08b99d-en.pdf">Document or data used</a></p></details></li>
+
+</ol>

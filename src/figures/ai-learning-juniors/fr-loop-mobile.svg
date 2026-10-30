@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="learning-juniors-fr-loop-m-title learning-juniors-fr-loop-m-desc" viewBox="0 0 420 1000" style="width:100%;height:auto" class="l0g-learning-juniors-svg">
+<title id="learning-juniors-fr-loop-m-title">De la tâche à l’expérience</title>
+<desc id="learning-juniors-fr-loop-m-desc">Le service rendu termine l’intervention. Le retour sur le raisonnement prépare le prochain cas. Cette boucle représente une organisation pédagogique proposée. Schéma original inspiré des compétences du RNCP40799 et de la structure de l’AFEST. Les flèches représentent des passages de travail et de réflexion, sans durée ni effet mesuré. L’assistance peut intervenir à plusieurs étapes. Le parcours précis proposé ici n’a pas fait l’objet d’une évaluation expérimentale.</desc>
+<rect id="learning-juniors-fr-loop-m-frame" x="0" y="0" width="420" height="1000" fill="var(--color-ink)"/>
+<text data-panel="learning-juniors-fr-loop-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="17" font-weight="700" text-anchor="start">l0g / APPRENDRE</text>
+<text data-panel="learning-juniors-fr-loop-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="end">01 / 05</text>
+<text data-panel="learning-juniors-fr-loop-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="25" font-weight="700" text-anchor="start">Une tâche, deux résultats</text>
+<text data-panel="learning-juniors-fr-loop-m-frame" x="28" y="132" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Parcours pédagogique proposé ·</text>
+<text data-panel="learning-juniors-fr-loop-m-frame" x="28" y="156" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">passages sans durée mesurée</text>
+<rect id="learning-juniors-fr-loop-m-card-stage-0" x="80" y="190" width="310" height="82" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-loop-m-card-stage-0" x="96" y="219" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="24" font-weight="700" text-anchor="start">1  Observer</text>
+<text data-panel="learning-juniors-fr-loop-m-card-stage-0" x="96" y="243" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Recueillir les indices</text>
+<line x1="235" y1="275" x2="235" y2="289" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 229 280 L 235 289 L 241 280" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="learning-juniors-fr-loop-m-card-stage-1" x="80" y="292" width="310" height="82" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-loop-m-card-stage-1" x="96" y="321" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="24" font-weight="700" text-anchor="start">2  Proposer</text>
+<text data-panel="learning-juniors-fr-loop-m-card-stage-1" x="96" y="345" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Choisir une hypothèse</text>
+<line x1="235" y1="377" x2="235" y2="391" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 229 382 L 235 391 L 241 382" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="learning-juniors-fr-loop-m-card-stage-2" x="80" y="394" width="310" height="82" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-loop-m-card-stage-2" x="96" y="423" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="24" font-weight="700" text-anchor="start">3  Tester</text>
+<text data-panel="learning-juniors-fr-loop-m-card-stage-2" x="96" y="447" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Comparer au résultat</text>
+<text data-panel="learning-juniors-fr-loop-m-card-stage-2" x="96" y="468" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">attendu</text>
+<line x1="235" y1="479" x2="235" y2="493" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 229 484 L 235 493 L 241 484" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="learning-juniors-fr-loop-m-card-stage-3" x="80" y="496" width="310" height="82" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-loop-m-card-stage-3" x="96" y="525" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="24" font-weight="700" text-anchor="start">4  Agir</text>
+<text data-panel="learning-juniors-fr-loop-m-card-stage-3" x="96" y="549" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Résoudre ou transmettre</text>
+<path d="M 235 578 L 235 597 L 115 597" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="115" y1="597" x2="115" y2="616" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 109 607 L 115 616 L 121 607" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 235 597 L 307 597" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="307" y1="597" x2="307" y2="616" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 301 607 L 307 616 L 313 607" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="learning-juniors-fr-loop-m-card-service" x="28" y="620" width="174" height="105" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-loop-m-card-service" x="44" y="650" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="21" font-weight="700" text-anchor="start">Service</text>
+<text data-panel="learning-juniors-fr-loop-m-card-service" x="44" y="677" fill="var(--color-paper)" font-family="l0g Learning Juniors" font-size="21" font-weight="700" text-anchor="start">rendu</text>
+<rect id="learning-juniors-fr-loop-m-card-review" x="222" y="620" width="174" height="133" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-loop-m-card-review" x="238" y="650" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="21" font-weight="700" text-anchor="start">Retour</text>
+<text data-panel="learning-juniors-fr-loop-m-card-review" x="238" y="677" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="21" font-weight="700" text-anchor="start">accompagné</text>
+<text data-panel="learning-juniors-fr-loop-m-card-review" x="238" y="711" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Intention et</text>
+<text data-panel="learning-juniors-fr-loop-m-card-review" x="238" y="733" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">résultat</text>
+<line x1="307" y1="756" x2="307" y2="783" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 301 774 L 307 783 L 313 774" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="learning-juniors-fr-loop-m-card-experience" x="222" y="790" width="174" height="112" fill="var(--color-surface)"/>
+<text data-panel="learning-juniors-fr-loop-m-card-experience" x="238" y="820" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="21" font-weight="700" text-anchor="start">Expérience</text>
+<text data-panel="learning-juniors-fr-loop-m-card-experience" x="238" y="847" fill="var(--color-signal)" font-family="l0g Learning Juniors" font-size="21" font-weight="700" text-anchor="start">construite</text>
+<text data-panel="learning-juniors-fr-loop-m-card-experience" x="238" y="879" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Choix expliqué</text>
+<path d="M 220 845 L 15 845 L 15 231 L 63 231" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="63" y1="231" x2="76" y2="231" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 67 225 L 76 231 L 67 237" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="learning-juniors-fr-loop-m-frame" x="28" y="929" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">Un nouveau cas remet le raisonnement</text>
+<text data-panel="learning-juniors-fr-loop-m-frame" x="28" y="952" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">à l’épreuve.</text>
+<text data-panel="learning-juniors-fr-loop-m-frame" x="28" y="973" fill="var(--color-muted)" font-family="l0g Learning Juniors" font-size="17" font-weight="400" text-anchor="start">R01 · R02</text>
+</svg>
