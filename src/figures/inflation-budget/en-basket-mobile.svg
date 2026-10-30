@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="inflation-budget-en-basket-m-title inflation-budget-en-basket-m-desc" viewBox="0 0 420 1000" style="width:100%;height:auto" class="l0g-inflation-budget-svg">
+<title id="inflation-budget-en-basket-m-title">A small share can carry a large change</title>
+<desc id="inflation-budget-en-basket-m-desc">In this five-group calculation, a 7.64% energy weight and a 22.17% price increase produce a contribution of 1.69 percentage points over nine months. December 2025 to September 2026, definitive base-2025 indices and national 2026 weights. l0g calculation: contribution = weight/10,000 × (September index/December index − 1) ×100, in percentage points. The five contributions total 3.1217607% before rounding. The published all-items index gives 3.1215608% over the same period; rounding and aggregation explain this very small difference. Contributions are displayed to three decimals, the energy formula and total to two. Chart segments start at zero; manufactured goods contribute slightly negatively. This teaching calculation is neither an official contribution series nor an annual rate.</desc>
+<rect id="inflation-budget-en-basket-m-frame" x="0" y="0" width="420" height="1000" fill="var(--color-ink)"/>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="17" font-weight="700" text-anchor="start">l0g / BUDGET</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="end">02 / 05</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">Price and share</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="132" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">December 2025 to September 2026 ·</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="156" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">contribution points</text>
+<rect id="inflation-budget-en-basket-m-card-formula" x="28" y="185" width="364" height="112" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-en-basket-m-card-formula" x="44" y="216" fill="var(--color-amber)" font-family="l0g Inflation Budget" font-size="22" font-weight="700" text-anchor="start">Energy</text>
+<text data-panel="inflation-budget-en-basket-m-card-formula" x="44" y="257" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="700" text-anchor="start">7.64% × 22.17%</text>
+<text data-panel="inflation-budget-en-basket-m-card-formula" x="376" y="286" fill="var(--color-amber)" font-family="l0g Inflation Budget" font-size="22" font-weight="700" text-anchor="end">1.69 pp</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="338" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="18" font-weight="700" text-anchor="start">Food</text>
+<line x1="103.09524" y1="352" x2="103.09524" y2="378" stroke="var(--color-line-strong)" stroke-width="1"/>
+<line x1="103.09524" y1="365" x2="130.98931" y2="365" stroke="var(--color-signal)" stroke-width="4"/>
+<circle data-metric="contribution-food" data-value="0.21301" cx="130.98931" cy="365" r="5" fill="var(--color-signal)"/>
+<text data-panel="inflation-budget-en-basket-m-frame" x="392" y="338" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="19" font-weight="700" text-anchor="end">+0.213</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="434" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="18" font-weight="700" text-anchor="start">Tobacco</text>
+<line x1="103.09524" y1="448" x2="103.09524" y2="474" stroke="var(--color-line-strong)" stroke-width="1"/>
+<line x1="103.09524" y1="461" x2="110.15159" y2="461" stroke="var(--color-accent)" stroke-width="4"/>
+<circle data-metric="contribution-tobacco" data-value="0.05388" cx="110.15159" cy="461" r="5" fill="var(--color-accent)"/>
+<text data-panel="inflation-budget-en-basket-m-frame" x="392" y="434" fill="var(--color-accent)" font-family="l0g Inflation Budget" font-size="19" font-weight="700" text-anchor="end">+0.054</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="530" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="18" font-weight="700" text-anchor="start">Manufactured goods</text>
+<line x1="103.09524" y1="544" x2="103.09524" y2="570" stroke="var(--color-line-strong)" stroke-width="1"/>
+<line x1="103.09524" y1="557" x2="101.52979" y2="557" stroke="var(--color-muted)" stroke-width="4"/>
+<circle data-metric="contribution-manufactured" data-value="-0.01195" cx="101.52979" cy="557" r="5" fill="var(--color-muted)"/>
+<text data-panel="inflation-budget-en-basket-m-frame" x="392" y="530" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="19" font-weight="700" text-anchor="end">−0.012</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="626" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="18" font-weight="700" text-anchor="start">Energy</text>
+<line x1="103.09524" y1="640" x2="103.09524" y2="666" stroke="var(--color-line-strong)" stroke-width="1"/>
+<line x1="103.09524" y1="653" x2="324.90324" y2="653" stroke="var(--color-amber)" stroke-width="4"/>
+<circle data-metric="contribution-energy" data-value="1.69381" cx="324.90324" cy="653" r="5" fill="var(--color-amber)"/>
+<text data-panel="inflation-budget-en-basket-m-frame" x="392" y="626" fill="var(--color-amber)" font-family="l0g Inflation Budget" font-size="19" font-weight="700" text-anchor="end">+1.694</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="722" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="18" font-weight="700" text-anchor="start">Services</text>
+<line x1="103.09524" y1="736" x2="103.09524" y2="762" stroke="var(--color-line-strong)" stroke-width="1"/>
+<line x1="103.09524" y1="749" x2="256.70425" y2="749" stroke="var(--color-paper)" stroke-width="4"/>
+<circle data-metric="contribution-services" data-value="1.17301" cx="256.70425" cy="749" r="5" fill="var(--color-paper)"/>
+<text data-panel="inflation-budget-en-basket-m-frame" x="392" y="722" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="19" font-weight="700" text-anchor="end">+1.173</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="103.09524" y="805" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="middle">0</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="234.04762" y="805" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="middle">1</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="365.0" y="805" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="middle">2</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="849" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="start">Calculated total over nine months</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="392" y="896" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="33" font-weight="700" text-anchor="end">+3.12%</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="938" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Percentage points</text>
+<text data-panel="inflation-budget-en-basket-m-frame" x="28" y="973" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">R03 · R04 · R05 · R06 · R11</text>
+</svg>

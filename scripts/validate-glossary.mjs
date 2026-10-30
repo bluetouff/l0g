@@ -20,6 +20,36 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
 
+// Household budgets preserve periods, expenditure weights and housing conventions.
+const inflationBudgetFr = '/posts/inflation-budget/';
+const inflationBudgetEn = '/en/analysis/why-your-budget-tells-a-different-inflation-story/';
+const inflationBudgetSources = {"glissement-annuel": ["https://www.insee.fr/fr/statistiques/documentation/IPC_Note_methodologique_en_bref_2026.pdf", "https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/what_is_inflation.en.html"], "ponderation-de-consommation": ["https://www.insee.fr/fr/statistiques/documentation/IPC_Note_methodologique_en_bref_2026.pdf", "https://www.insee.fr/fr/statistiques/2418131"], "taux-d-effort-en-logement": ["https://www.insee.fr/fr/statistiques/9053584"], "depenses-pre-engagees": ["https://www.insee.fr/fr/metadonnees/definition/c1358"]};
+for (const [slug, expectedSources] of Object.entries(inflationBudgetSources)) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  for (const [entry, article] of [[fr[0], inflationBudgetFr], [en[0], inflationBudgetEn]]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), expectedSources);
+    assert(!entry.def.includes('—'));
+  }
+  for (const neighbor of fr[0].atlas.related) {
+    assert(Object.hasOwn(inflationBudgetSources, neighbor));
+    assert(glossaryEntries.some(entry => entry.slug === neighbor));
+    assert(glossaryAtlasEnBySlug.has(neighbor));
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'glissement-annuel').def, /douze mois.*neuf mois/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'ponderation-de-consommation').def, /actualisées chaque année.*chaînés annuellement/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'taux-d-effort-en-logement').def, /sommes.*impôts directs.*capital remboursé/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'depenses-pre-engagees').def, /contrats.*court terme.*hors assurance-vie.*loyers imputés/u);
+assert.match(glossaryAtlasEnBySlug.get('depenses-pre-engagees').def, /excluding life insurance.*imputed rents/u);
+
 // Learning assessments, occupational exposure and uncertainty keep distinct scopes.
 const learningJuniorsFr = '/posts/ia-apprentissage-juniors/';
 const learningJuniorsEn = '/en/analysis/learning-work-with-ai/';
@@ -1194,7 +1224,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 363, 'Le corpus ajoute quatre notions bilingues sur l’apprentissage et les preuves');
+assert.equal(glossaryAtlasEnBySlug.size, 367, 'Le corpus ajoute quatre notions bilingues sur les prix et les budgets');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1395,8 +1425,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 750, 'Le corpus ajoute quatre notions courtes et sourcées sur l’apprentissage');
-assert.equal(glossaryAtlasEntries.length, 353, 'Les quatre notions sur l’apprentissage disposent de sources et de liens');
+assert.equal(glossaryEntries.length, 754, 'Le corpus ajoute quatre notions courtes sur les prix et les budgets');
+assert.equal(glossaryAtlasEntries.length, 357, 'Les quatre notions sur les budgets disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1818,7 +1848,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 972, 'Le corpus ajoute quatre relations entre formation, évaluation et incertitude');
+assert.equal(glossaryAtlasEdgeCount, 976, 'Le corpus ajoute quatre relations entre prix et contraintes budgétaires');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

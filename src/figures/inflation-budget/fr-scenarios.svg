@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="inflation-budget-fr-scenarios-d-title inflation-budget-fr-scenarios-d-desc" viewBox="0 0 1000 680" style="width:100%;height:auto" class="l0g-inflation-budget-svg">
+<title id="inflation-budget-fr-scenarios-d-title">Trois paniers, le même point de départ</title>
+<desc id="inflation-budget-fr-scenarios-d-desc">Trois répartitions choisies de 2 000 € en décembre 2025 sont revalorisées avec les mêmes indices de septembre 2026. Les parts modifient le résultat du calcul. Modèle à cinq groupes, décrit dans les hypothèses de l’outil. Montants initiaux alimentation/tabac/manufacturés/énergie/services : repère 2026 = 297/33,60/477,60/152,80/1 039 € ; énergie 20 % = 300/0/400/400/900 € ; alimentation 30 % = 600/0/400/160/840 €. Coût de chaque poste = montant initial × indice septembre/indice décembre, arrondi au centime avant sommation. Coûts totaux : 2 062,44 ; 2 113,10 ; 2 062,85 €. Les barres de composition totalisent chacune 100 % ; les barres de supplément partagent l’échelle 0–120 €. Les proportions nationales servent de repère conventionnel, les deux autres répartitions sont fictives ; aucun profil démographique observé n’est représenté. Neuf mois, sans annualisation, prévision ou mesure exacte d’inflation individuelle.</desc>
+<rect id="inflation-budget-fr-scenarios-d-frame" x="0" y="0" width="1000" height="680" fill="var(--color-ink)"/>
+<text data-panel="inflation-budget-fr-scenarios-d-frame" x="40" y="40" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="22" font-weight="700" text-anchor="start">l0g / BUDGET</text>
+<text data-panel="inflation-budget-fr-scenarios-d-frame" x="960" y="40" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="end">05 / 05</text>
+<text data-panel="inflation-budget-fr-scenarios-d-frame" x="40" y="93" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="34" font-weight="700" text-anchor="start">Trois paniers, le même point de départ</text>
+<text data-panel="inflation-budget-fr-scenarios-d-frame" x="40" y="137" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Hypothèses choisies · décembre 2025 à septembre 2026</text>
+<rect id="inflation-budget-fr-scenarios-d-card-scenario-0" x="40" y="175" width="920" height="130" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-0" x="56" y="205" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">Repère national 2026</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-0" x="944" y="205" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="end">Total 2062,44 €</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-0" x="510" y="238" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="24" font-weight="700" text-anchor="start">+62,44 €</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-0" x="940" y="238" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="24" font-weight="700" text-anchor="end">+3,12 %</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-0" x="60" y="238" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Composition</text>
+<rect data-metric="scenario-0-food" data-value="29700" x="60" y="258" width="55.6875" height="18" fill="var(--color-signal)"/>
+<rect data-metric="scenario-0-tobacco" data-value="3360" x="115.6875" y="258" width="6.3" height="18" fill="var(--color-accent)"/>
+<rect data-metric="scenario-0-manufactured" data-value="47760" x="121.9875" y="258" width="89.55" height="18" fill="var(--color-muted)"/>
+<rect data-metric="scenario-0-energy" data-value="15280" x="211.5375" y="258" width="28.65" height="18" fill="var(--color-amber)"/>
+<rect data-metric="scenario-0-services" data-value="103900" x="240.1875" y="258" width="194.8125" height="18" fill="var(--color-paper)"/>
+<rect data-metric="extra-0" data-value="62.44" x="510" y="258" width="145.69333" height="18" fill="var(--color-signal)"/>
+<rect id="inflation-budget-fr-scenarios-d-card-scenario-1" x="40" y="320" width="920" height="130" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-1" x="56" y="350" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">Énergie à 20 %</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-1" x="944" y="350" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="end">Total 2113,10 €</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-1" x="510" y="383" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="24" font-weight="700" text-anchor="start">+113,10 €</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-1" x="940" y="383" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="24" font-weight="700" text-anchor="end">+5,66 %</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-1" x="60" y="383" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Composition</text>
+<rect data-metric="scenario-1-food" data-value="30000" x="60" y="403" width="56.25" height="18" fill="var(--color-signal)"/>
+<rect data-metric="scenario-1-manufactured" data-value="40000" x="116.25" y="403" width="75.0" height="18" fill="var(--color-muted)"/>
+<rect data-metric="scenario-1-energy" data-value="40000" x="191.25" y="403" width="75.0" height="18" fill="var(--color-amber)"/>
+<rect data-metric="scenario-1-services" data-value="90000" x="266.25" y="403" width="168.75" height="18" fill="var(--color-paper)"/>
+<rect data-metric="extra-1" data-value="113.1" x="510" y="403" width="263.9" height="18" fill="var(--color-signal)"/>
+<rect id="inflation-budget-fr-scenarios-d-card-scenario-2" x="40" y="465" width="920" height="130" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-2" x="56" y="495" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">Alimentation à 30 %</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-2" x="944" y="495" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="end">Total 2062,85 €</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-2" x="510" y="528" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="24" font-weight="700" text-anchor="start">+62,85 €</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-2" x="940" y="528" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="24" font-weight="700" text-anchor="end">+3,14 %</text>
+<text data-panel="inflation-budget-fr-scenarios-d-card-scenario-2" x="60" y="528" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Composition</text>
+<rect data-metric="scenario-2-food" data-value="60000" x="60" y="548" width="112.5" height="18" fill="var(--color-signal)"/>
+<rect data-metric="scenario-2-manufactured" data-value="40000" x="172.5" y="548" width="75.0" height="18" fill="var(--color-muted)"/>
+<rect data-metric="scenario-2-energy" data-value="16000" x="247.5" y="548" width="30.0" height="18" fill="var(--color-amber)"/>
+<rect data-metric="scenario-2-services" data-value="84000" x="277.5" y="548" width="157.5" height="18" fill="var(--color-paper)"/>
+<rect data-metric="extra-2" data-value="62.85" x="510" y="548" width="146.65" height="18" fill="var(--color-signal)"/>
+<line x1="40" y1="614" x2="56" y2="614" stroke="var(--color-signal)" stroke-width="6"/>
+<text data-panel="inflation-budget-fr-scenarios-d-frame" x="63" y="620" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Alim.</text>
+<line x1="228" y1="614" x2="244" y2="614" stroke="var(--color-accent)" stroke-width="6"/>
+<text data-panel="inflation-budget-fr-scenarios-d-frame" x="251" y="620" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Tabac</text>
+<line x1="416" y1="614" x2="432" y2="614" stroke="var(--color-muted)" stroke-width="6"/>
+<text data-panel="inflation-budget-fr-scenarios-d-frame" x="439" y="620" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Biens</text>
+<line x1="604" y1="614" x2="620" y2="614" stroke="var(--color-amber)" stroke-width="6"/>
+<text data-panel="inflation-budget-fr-scenarios-d-frame" x="627" y="620" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Énergie</text>
+<line x1="792" y1="614" x2="808" y2="614" stroke="var(--color-paper)" stroke-width="6"/>
+<text data-panel="inflation-budget-fr-scenarios-d-frame" x="815" y="620" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Services</text>
+<text data-panel="inflation-budget-fr-scenarios-d-frame" x="40" y="653" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">R04 · R06</text>
+</svg>

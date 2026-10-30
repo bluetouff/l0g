@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="inflation-budget-fr-choices-d-title inflation-budget-fr-choices-d-desc" viewBox="0 0 1000 680" style="width:100%;height:auto" class="l0g-inflation-budget-svg">
+<title id="inflation-budget-fr-choices-d-title">Le ticket baisse quand l’achat change</title>
+<desc id="inflation-budget-fr-choices-d-desc">Exemple construit : les prix de A et de B augmentent. Passer d’une unité de B à une unité de A fait pourtant baisser la dépense de 2 € à 1,40 €. Valeurs entièrement choisies pour l’explication, sans observation de produit ou de ménage. Référence A : 1 € puis 1,40 €, soit +40 %. Référence B : 2 € puis 2,50 €, soit +25 %. Achat choisi : une unité de B à la première date, une unité de A à la seconde ; variation de dépense = 1,40/2 −1 = −30 %. Les produits sont différents et aucune équivalence de qualité ou d’utilité n’est supposée. Le schéma explique la distinction entre prix comparable et dépense observée, éclairée par la documentation méthodologique R10.</desc>
+<rect id="inflation-budget-fr-choices-d-frame" x="0" y="0" width="1000" height="680" fill="var(--color-ink)"/>
+<text data-panel="inflation-budget-fr-choices-d-frame" x="40" y="40" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="22" font-weight="700" text-anchor="start">l0g / BUDGET</text>
+<text data-panel="inflation-budget-fr-choices-d-frame" x="960" y="40" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="end">04 / 05</text>
+<text data-panel="inflation-budget-fr-choices-d-frame" x="40" y="93" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="34" font-weight="700" text-anchor="start">Le ticket baisse quand l’achat change</text>
+<text data-panel="inflation-budget-fr-choices-d-frame" x="40" y="137" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Exemple fictif · un même produit est suivi sur chaque ligne</text>
+<rect id="inflation-budget-fr-choices-d-card-product-A-0" x="40" y="180" width="220" height="130" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-choices-d-card-product-A-0" x="56" y="211" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="28" font-weight="700" text-anchor="start">A</text>
+<text data-panel="inflation-budget-fr-choices-d-card-product-A-0" x="56" y="264" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="36" font-weight="700" text-anchor="start">1 €</text>
+<text data-panel="inflation-budget-fr-choices-d-card-product-A-0" x="56" y="298" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Au départ</text>
+<rect id="inflation-budget-fr-choices-d-card-product-A-1" x="740" y="180" width="220" height="130" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-choices-d-card-product-A-1" x="756" y="211" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="28" font-weight="700" text-anchor="start">A</text>
+<text data-panel="inflation-budget-fr-choices-d-card-product-A-1" x="756" y="264" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="36" font-weight="700" text-anchor="start">1,40 €</text>
+<text data-panel="inflation-budget-fr-choices-d-card-product-A-1" x="756" y="298" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Ensuite</text>
+<line x1="270" y1="260" x2="730" y2="260" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 721 254 L 730 260 L 721 266" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="inflation-budget-fr-choices-d-frame" x="500.0" y="225" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="28" font-weight="700" text-anchor="middle">+40 %</text>
+<rect id="inflation-budget-fr-choices-d-card-product-B-0" x="40" y="325" width="220" height="130" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-choices-d-card-product-B-0" x="56" y="356" fill="var(--color-amber)" font-family="l0g Inflation Budget" font-size="28" font-weight="700" text-anchor="start">B</text>
+<text data-panel="inflation-budget-fr-choices-d-card-product-B-0" x="56" y="409" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="36" font-weight="700" text-anchor="start">2 €</text>
+<text data-panel="inflation-budget-fr-choices-d-card-product-B-0" x="56" y="443" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Au départ</text>
+<rect id="inflation-budget-fr-choices-d-card-product-B-1" x="740" y="325" width="220" height="130" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-choices-d-card-product-B-1" x="756" y="356" fill="var(--color-amber)" font-family="l0g Inflation Budget" font-size="28" font-weight="700" text-anchor="start">B</text>
+<text data-panel="inflation-budget-fr-choices-d-card-product-B-1" x="756" y="409" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="36" font-weight="700" text-anchor="start">2,50 €</text>
+<text data-panel="inflation-budget-fr-choices-d-card-product-B-1" x="756" y="443" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">Ensuite</text>
+<line x1="270" y1="405" x2="730" y2="405" stroke="var(--color-amber)" stroke-width="3"/>
+<path d="M 721 399 L 730 405 L 721 411" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="inflation-budget-fr-choices-d-frame" x="500.0" y="370" fill="var(--color-amber)" font-family="l0g Inflation Budget" font-size="28" font-weight="700" text-anchor="middle">+25 %</text>
+<text data-panel="inflation-budget-fr-choices-d-frame" x="40" y="493" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">L’achat choisi change</text>
+<rect id="inflation-budget-fr-choices-d-card-purchase-0" x="40" y="515" width="290" height="105" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-choices-d-card-purchase-0" x="56" y="548" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="700" text-anchor="start">Une unité de B</text>
+<text data-panel="inflation-budget-fr-choices-d-card-purchase-0" x="56" y="598" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="32" font-weight="700" text-anchor="start">2 €</text>
+<rect id="inflation-budget-fr-choices-d-card-purchase-1" x="670" y="515" width="290" height="105" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-choices-d-card-purchase-1" x="686" y="548" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="700" text-anchor="start">Une unité de A</text>
+<text data-panel="inflation-budget-fr-choices-d-card-purchase-1" x="686" y="598" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="32" font-weight="700" text-anchor="start">1,40 €</text>
+<line x1="340" y1="585" x2="660" y2="585" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 651 579 L 660 585 L 651 591" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="inflation-budget-fr-choices-d-frame" x="500" y="551" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="29" font-weight="700" text-anchor="middle">−30 %</text>
+<text data-panel="inflation-budget-fr-choices-d-frame" x="40" y="653" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="22" font-weight="400" text-anchor="start">R10</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="inflation-budget-fr-housing-m-title inflation-budget-fr-housing-m-desc" viewBox="0 0 420 1000" style="width:100%;height:auto" class="l0g-inflation-budget-svg">
+<title id="inflation-budget-fr-housing-m-title">Le logement occupe une part différente</title>
+<desc id="inflation-budget-fr-housing-m-desc">Début 2024, les dépenses nettes de logement représentent 25,4 € pour 100 € de revenus du groupe des locataires privés, contre 7,4 € pour les propriétaires sans emprunt d’acquisition restant. Insee Première n°2128, publié le 23 septembre 2026, figure 1, enquête Logement 2023–2024. Taux d’effort net = somme des dépenses de résidence principale moins aides au logement, divisée par somme des revenus, ×100. Il s’agit de ratios de sommes par groupe, distincts d’une moyenne de ratios individuels. Revenus avant impôts directs et hors aides au logement. Dépenses incluant notamment capital et intérêts remboursés chez les accédants, taxe foncière, charges, eau et énergie. Champ : résidences principales, France hors Mayotte, ménages en logement ordinaire, hors personne de référence étudiante et revenus négatifs. Axe 0–100 ; les barres représentent la fraction du dénominateur statistique, dont le reste inclut encore impôts et autres usages. Cette mesure de logement diffère du périmètre de consommation de l’IPC.</desc>
+<rect id="inflation-budget-fr-housing-m-frame" x="0" y="0" width="420" height="1000" fill="var(--color-ink)"/>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="17" font-weight="700" text-anchor="start">l0g / BUDGET</text>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="end">03 / 05</text>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">Le poids du logement</text>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="28" y="132" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Début 2024 · dépenses nettes pour 100</text>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="28" y="156" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">€ de revenus du groupe</text>
+<rect id="inflation-budget-fr-housing-m-card-housing-0" x="28" y="185" width="364" height="145" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-housing-m-card-housing-0" x="44" y="216" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="start">Locataires du privé</text>
+<text data-panel="inflation-budget-fr-housing-m-card-housing-0" x="376" y="285" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="27" font-weight="700" text-anchor="end">25,4 €</text>
+<rect x="44" y="303" width="332" height="13" fill="var(--color-line-strong)"/>
+<rect data-metric="housing-0" data-value="25.4" x="44" y="303" width="84.328" height="13" fill="var(--color-signal)"/>
+<rect id="inflation-budget-fr-housing-m-card-housing-1" x="28" y="350" width="364" height="145" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-housing-m-card-housing-1" x="44" y="381" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="start">Locataires du social</text>
+<text data-panel="inflation-budget-fr-housing-m-card-housing-1" x="376" y="450" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="27" font-weight="700" text-anchor="end">24,0 €</text>
+<rect x="44" y="468" width="332" height="13" fill="var(--color-line-strong)"/>
+<rect data-metric="housing-1" data-value="24" x="44" y="468" width="79.68" height="13" fill="var(--color-signal)"/>
+<rect id="inflation-budget-fr-housing-m-card-housing-2" x="28" y="515" width="364" height="145" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-housing-m-card-housing-2" x="44" y="546" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="start">Propriétaires accédants</text>
+<text data-panel="inflation-budget-fr-housing-m-card-housing-2" x="376" y="615" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="27" font-weight="700" text-anchor="end">23,3 €</text>
+<rect x="44" y="633" width="332" height="13" fill="var(--color-line-strong)"/>
+<rect data-metric="housing-2" data-value="23.3" x="44" y="633" width="77.356" height="13" fill="var(--color-signal)"/>
+<rect id="inflation-budget-fr-housing-m-card-housing-3" x="28" y="680" width="364" height="145" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-fr-housing-m-card-housing-3" x="44" y="711" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="start">Propriétaires</text>
+<text data-panel="inflation-budget-fr-housing-m-card-housing-3" x="44" y="739" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="start">sans emprunt restant</text>
+<text data-panel="inflation-budget-fr-housing-m-card-housing-3" x="376" y="780" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="27" font-weight="700" text-anchor="end">7,4 €</text>
+<rect x="44" y="798" width="332" height="13" fill="var(--color-line-strong)"/>
+<rect data-metric="housing-3" data-value="7.4" x="44" y="798" width="24.568" height="13" fill="var(--color-signal)"/>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="44.0" y="868" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="middle">0</text>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="127.0" y="868" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="middle">25</text>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="210.0" y="868" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="middle">50</text>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="293.0" y="868" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="middle">75</text>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="376.0" y="868" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="middle">100</text>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="28" y="915" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Ratios des sommes par groupe.</text>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="28" y="942" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Revenus avant impôts directs.</text>
+<text data-panel="inflation-budget-fr-housing-m-frame" x="28" y="973" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">R07</text>
+</svg>

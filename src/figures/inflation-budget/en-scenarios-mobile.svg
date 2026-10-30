@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="inflation-budget-en-scenarios-m-title inflation-budget-en-scenarios-m-desc" viewBox="0 0 420 1000" style="width:100%;height:auto" class="l0g-inflation-budget-svg">
+<title id="inflation-budget-en-scenarios-m-title">Three baskets, the same starting point</title>
+<desc id="inflation-budget-en-scenarios-m-desc">Three chosen allocations of €2,000 in December 2025 are revalued using the same September 2026 indices. Changing the shares changes the calculated outcome. Five-group model documented in the tool’s stated assumptions. Initial food/tobacco/manufactured/energy/services amounts: 2026 benchmark = €297/33.60/477.60/152.80/1,039; energy at 20% = €300/0/400/400/900; food at 30% = €600/0/400/160/840. Each comparative category cost equals its starting amount times the September/December index ratio, rounded to cents before summing. Total costs: €2,062.44, €2,113.10 and €2,062.85. Composition bars each total 100%; additional-cost bars share a €0–120 scale. National proportions provide a conventional benchmark; the other allocations are fictional, with no observed demographic profile represented. Nine months, with no annualisation, forecast or precise individual inflation measurement.</desc>
+<rect id="inflation-budget-en-scenarios-m-frame" x="0" y="0" width="420" height="1000" fill="var(--color-ink)"/>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="17" font-weight="700" text-anchor="start">l0g / BUDGET</text>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="end">05 / 05</text>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">Three baskets of €2,000</text>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="28" y="132" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Chosen allocations · December 2025 to</text>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="28" y="156" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">September 2026</text>
+<rect id="inflation-budget-en-scenarios-m-card-scenario-0" x="28" y="185" width="364" height="180" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-0" x="44" y="215" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="21" font-weight="700" text-anchor="start">National benchmark 2026</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-0" x="376" y="253" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="700" text-anchor="end">Total €2062.44</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-0" x="44" y="253" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="21" font-weight="700" text-anchor="start">+€62.44</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-0" x="44" y="278" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Initial shares</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-0" x="376" y="278" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="17" font-weight="700" text-anchor="end">Change: +3.12%</text>
+<rect data-metric="scenario-0-food" data-value="29700" x="44" y="286" width="49.302" height="14" fill="var(--color-signal)"/>
+<rect data-metric="scenario-0-tobacco" data-value="3360" x="93.302" y="286" width="5.5776" height="14" fill="var(--color-accent)"/>
+<rect data-metric="scenario-0-manufactured" data-value="47760" x="98.8796" y="286" width="79.2816" height="14" fill="var(--color-muted)"/>
+<rect data-metric="scenario-0-energy" data-value="15280" x="178.1612" y="286" width="25.3648" height="14" fill="var(--color-amber)"/>
+<rect data-metric="scenario-0-services" data-value="103900" x="203.526" y="286" width="172.474" height="14" fill="var(--color-paper)"/>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-0" x="44" y="326" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Extra cost · scale €0–120</text>
+<rect data-metric="extra-0" data-value="62.44" x="44" y="337" width="172.75067" height="14" fill="var(--color-signal)"/>
+<rect id="inflation-budget-en-scenarios-m-card-scenario-1" x="28" y="390" width="364" height="180" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-1" x="44" y="420" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="21" font-weight="700" text-anchor="start">Energy at 20%</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-1" x="376" y="458" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="700" text-anchor="end">Total €2113.10</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-1" x="44" y="458" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="21" font-weight="700" text-anchor="start">+€113.10</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-1" x="44" y="483" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Initial shares</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-1" x="376" y="483" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="17" font-weight="700" text-anchor="end">Change: +5.66%</text>
+<rect data-metric="scenario-1-food" data-value="30000" x="44" y="491" width="49.8" height="14" fill="var(--color-signal)"/>
+<rect data-metric="scenario-1-manufactured" data-value="40000" x="93.8" y="491" width="66.4" height="14" fill="var(--color-muted)"/>
+<rect data-metric="scenario-1-energy" data-value="40000" x="160.2" y="491" width="66.4" height="14" fill="var(--color-amber)"/>
+<rect data-metric="scenario-1-services" data-value="90000" x="226.6" y="491" width="149.4" height="14" fill="var(--color-paper)"/>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-1" x="44" y="531" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Extra cost · scale €0–120</text>
+<rect data-metric="extra-1" data-value="113.1" x="44" y="542" width="312.91" height="14" fill="var(--color-signal)"/>
+<rect id="inflation-budget-en-scenarios-m-card-scenario-2" x="28" y="595" width="364" height="180" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-2" x="44" y="625" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="21" font-weight="700" text-anchor="start">Food at 30%</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-2" x="376" y="663" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="700" text-anchor="end">Total €2062.85</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-2" x="44" y="663" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="21" font-weight="700" text-anchor="start">+€62.85</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-2" x="44" y="688" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Initial shares</text>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-2" x="376" y="688" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="17" font-weight="700" text-anchor="end">Change: +3.14%</text>
+<rect data-metric="scenario-2-food" data-value="60000" x="44" y="696" width="99.6" height="14" fill="var(--color-signal)"/>
+<rect data-metric="scenario-2-manufactured" data-value="40000" x="143.6" y="696" width="66.4" height="14" fill="var(--color-muted)"/>
+<rect data-metric="scenario-2-energy" data-value="16000" x="210.0" y="696" width="26.56" height="14" fill="var(--color-amber)"/>
+<rect data-metric="scenario-2-services" data-value="84000" x="236.56" y="696" width="139.44" height="14" fill="var(--color-paper)"/>
+<text data-panel="inflation-budget-en-scenarios-m-card-scenario-2" x="44" y="736" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Extra cost · scale €0–120</text>
+<rect data-metric="extra-2" data-value="62.85" x="44" y="747" width="173.885" height="14" fill="var(--color-signal)"/>
+<line x1="28" y1="845" x2="44" y2="845" stroke="var(--color-signal)" stroke-width="6"/>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="51" y="851" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Food</text>
+<line x1="155" y1="845" x2="171" y2="845" stroke="var(--color-accent)" stroke-width="6"/>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="178" y="851" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Tobacco</text>
+<line x1="280" y1="845" x2="296" y2="845" stroke="var(--color-muted)" stroke-width="6"/>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="303" y="851" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Goods</text>
+<line x1="28" y1="885" x2="44" y2="885" stroke="var(--color-amber)" stroke-width="6"/>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="51" y="891" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Energy</text>
+<line x1="220" y1="885" x2="236" y2="885" stroke="var(--color-paper)" stroke-width="6"/>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="243" y="891" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Services</text>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="28" y="938" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Each composition totals 100%.</text>
+<text data-panel="inflation-budget-en-scenarios-m-frame" x="28" y="973" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">R04 · R06</text>
+</svg>

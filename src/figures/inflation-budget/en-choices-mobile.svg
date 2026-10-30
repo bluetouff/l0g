@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="inflation-budget-en-choices-m-title inflation-budget-en-choices-m-desc" viewBox="0 0 420 900" style="width:100%;height:auto" class="l0g-inflation-budget-svg">
+<title id="inflation-budget-en-choices-m-title">The bill falls when the purchase changes</title>
+<desc id="inflation-budget-en-choices-m-desc">Constructed example: prices of both A and B rise. Switching from one unit of B to one unit of A still reduces expenditure from €2 to €1.40. All values are chosen for explanation, with no observed product or household. Item A: €1 then €1.40, a 40% increase. Item B: €2 then €2.50, a 25% increase. Chosen purchase: one unit of B at the first date and one unit of A at the second; expenditure change = 1.40/2 −1 = −30%. The products differ; no equivalence of quality or utility is assumed. The diagram explains the distinction between comparable prices and observed expenditure, informed by methodological source R10.</desc>
+<rect id="inflation-budget-en-choices-m-frame" x="0" y="0" width="420" height="900" fill="var(--color-ink)"/>
+<text data-panel="inflation-budget-en-choices-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="17" font-weight="700" text-anchor="start">l0g / BUDGET</text>
+<text data-panel="inflation-budget-en-choices-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="end">04 / 05</text>
+<text data-panel="inflation-budget-en-choices-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">Switching the purchase</text>
+<text data-panel="inflation-budget-en-choices-m-frame" x="28" y="132" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Fictional example · each row follows</text>
+<text data-panel="inflation-budget-en-choices-m-frame" x="28" y="156" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">the same product</text>
+<rect id="inflation-budget-en-choices-m-card-product-A-0" x="28" y="185" width="140" height="135" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-en-choices-m-card-product-A-0" x="44" y="216" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">A</text>
+<text data-panel="inflation-budget-en-choices-m-card-product-A-0" x="44" y="269" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="27" font-weight="700" text-anchor="start">€1</text>
+<text data-panel="inflation-budget-en-choices-m-card-product-A-0" x="44" y="301" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Initially</text>
+<rect id="inflation-budget-en-choices-m-card-product-A-1" x="252" y="185" width="140" height="135" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-en-choices-m-card-product-A-1" x="268" y="216" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">A</text>
+<text data-panel="inflation-budget-en-choices-m-card-product-A-1" x="268" y="269" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="27" font-weight="700" text-anchor="start">€1.40</text>
+<text data-panel="inflation-budget-en-choices-m-card-product-A-1" x="268" y="301" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Later</text>
+<line x1="178" y1="265" x2="242" y2="265" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 233 259 L 242 265 L 233 271" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="inflation-budget-en-choices-m-frame" x="210.0" y="230" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="middle">+40%</text>
+<rect id="inflation-budget-en-choices-m-card-product-B-0" x="28" y="345" width="140" height="135" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-en-choices-m-card-product-B-0" x="44" y="376" fill="var(--color-amber)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">B</text>
+<text data-panel="inflation-budget-en-choices-m-card-product-B-0" x="44" y="429" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="27" font-weight="700" text-anchor="start">€2</text>
+<text data-panel="inflation-budget-en-choices-m-card-product-B-0" x="44" y="461" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Initially</text>
+<rect id="inflation-budget-en-choices-m-card-product-B-1" x="252" y="345" width="140" height="135" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-en-choices-m-card-product-B-1" x="268" y="376" fill="var(--color-amber)" font-family="l0g Inflation Budget" font-size="25" font-weight="700" text-anchor="start">B</text>
+<text data-panel="inflation-budget-en-choices-m-card-product-B-1" x="268" y="429" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="27" font-weight="700" text-anchor="start">€2.50</text>
+<text data-panel="inflation-budget-en-choices-m-card-product-B-1" x="268" y="461" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Later</text>
+<line x1="178" y1="425" x2="242" y2="425" stroke="var(--color-amber)" stroke-width="3"/>
+<path d="M 233 419 L 242 425 L 233 431" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="inflation-budget-en-choices-m-frame" x="210.0" y="390" fill="var(--color-amber)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="middle">+25%</text>
+<text data-panel="inflation-budget-en-choices-m-frame" x="28" y="520" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="22" font-weight="700" text-anchor="start">The chosen purchase changes</text>
+<rect id="inflation-budget-en-choices-m-card-purchase-0" x="28" y="575" width="154" height="160" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-en-choices-m-card-purchase-0" x="44" y="608" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="start">One unit</text>
+<text data-panel="inflation-budget-en-choices-m-card-purchase-0" x="44" y="636" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="start">of B</text>
+<text data-panel="inflation-budget-en-choices-m-card-purchase-0" x="44" y="700" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="29" font-weight="700" text-anchor="start">€2</text>
+<rect id="inflation-budget-en-choices-m-card-purchase-1" x="238" y="575" width="154" height="160" fill="var(--color-surface)"/>
+<text data-panel="inflation-budget-en-choices-m-card-purchase-1" x="254" y="608" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="start">One unit</text>
+<text data-panel="inflation-budget-en-choices-m-card-purchase-1" x="254" y="636" fill="var(--color-paper)" font-family="l0g Inflation Budget" font-size="20" font-weight="700" text-anchor="start">of A</text>
+<text data-panel="inflation-budget-en-choices-m-card-purchase-1" x="254" y="700" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="29" font-weight="700" text-anchor="start">€1.40</text>
+<line x1="188" y1="700" x2="232" y2="700" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 223 694 L 232 700 L 223 706" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="inflation-budget-en-choices-m-frame" x="210" y="553" fill="var(--color-signal)" font-family="l0g Inflation Budget" font-size="23" font-weight="700" text-anchor="middle">−30%</text>
+<text data-panel="inflation-budget-en-choices-m-frame" x="28" y="807" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Lower spending, different products.</text>
+<text data-panel="inflation-budget-en-choices-m-frame" x="28" y="832" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">Fictional inputs.</text>
+<text data-panel="inflation-budget-en-choices-m-frame" x="28" y="873" fill="var(--color-muted)" font-family="l0g Inflation Budget" font-size="17" font-weight="400" text-anchor="start">R10</text>
+</svg>
