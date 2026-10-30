@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="small-parcels-en-lines-m-title small-parcels-en-lines-m-desc" viewBox="0 0 420 820" style="width:100%;height:auto" class="l0g-small-parcels-svg">
+<title id="small-parcels-en-lines-m-title">Objects and customs lines</title>
+<desc id="small-parcels-en-lines-m-desc">Four objects may share one customs line; two objects may require two. Each line liable for both measures carries €3 of duty and a €2 fee. Two teaching examples in the eligible flat-duty route, with consignment intrinsic value ≤ €150, from 1 November 2026. A: four identical T-shirts assumed to be correctly declared on one line. B: a T-shirt and a toy assumed to occupy two liable lines. Classification, description and origin where required determine the lines. H7: HS6; H6: CN8; H1: TARIC10. Drawings assign no tariff codes. Amounts precede VAT and private fees; no artificial grouping is assumed.</desc>
+<rect id="small-parcels-en-lines-m-frame" x="0" y="0" width="420" height="820" fill="var(--color-ink)"/>
+<text data-panel="small-parcels-en-lines-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="17" font-weight="700" text-anchor="start">l0g / PARCELS</text>
+<text data-panel="small-parcels-en-lines-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="end">02 / 05</text>
+<text data-panel="small-parcels-en-lines-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="25" font-weight="700" text-anchor="start">Count the customs lines</text>
+<text data-panel="small-parcels-en-lines-m-frame" x="28" y="117" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">Teaching examples · eligible route up</text>
+<text data-panel="small-parcels-en-lines-m-frame" x="28" y="141" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">to €150</text>
+<rect id="small-parcels-en-lines-m-band-0" x="28" y="175" width="364" height="190" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-en-lines-m-band-0" x="44" y="209" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="22" font-weight="700" text-anchor="start">4 identical T-shirts</text>
+<path d="M 48 241.76 L 57.0 236 L 62.04 239.6 L 69.96 239.6 L 75.0 236 L 84 241.76 L 79.32 248.96 L 75.0 246.08 L 75.0 272 L 57.0 272 L 57.0 246.08 L 52.68 248.96 L 48 241.76" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 103 241.76 L 112.0 236 L 117.04 239.6 L 124.96 239.6 L 130.0 236 L 139 241.76 L 134.32 248.96 L 130.0 246.08 L 130.0 272 L 112.0 272 L 112.0 246.08 L 107.68 248.96 L 103 241.76" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 158 241.76 L 167.0 236 L 172.04 239.6 L 179.96 239.6 L 185.0 236 L 194 241.76 L 189.32 248.96 L 185.0 246.08 L 185.0 272 L 167.0 272 L 167.0 246.08 L 162.68 248.96 L 158 241.76" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 213 241.76 L 222.0 236 L 227.04 239.6 L 234.96 239.6 L 240.0 236 L 249 241.76 L 244.32 248.96 L 240.0 246.08 L 240.0 272 L 222.0 272 L 222.0 246.08 L 217.68 248.96 L 213 241.76" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="260" y1="264" x2="281" y2="264" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 272 258 L 281 264 L 272 270" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect data-metric="lines-0" data-value="1" id="small-parcels-en-lines-m-card-declaration-0" x="285" y="230" width="91" height="78" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-en-lines-m-card-declaration-0" x="298" y="259" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="18" font-weight="400" text-anchor="start">01</text>
+<line x1="332" y1="254" x2="363" y2="254" stroke="var(--color-paper)" stroke-width="2"/>
+<text data-panel="small-parcels-en-lines-m-band-0" x="44" y="344" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">1 line</text>
+<text data-panel="small-parcels-en-lines-m-band-0" x="376" y="344" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="30" font-weight="700" text-anchor="end">5 €</text>
+<rect id="small-parcels-en-lines-m-band-1" x="28" y="400" width="364" height="190" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-en-lines-m-band-1" x="44" y="434" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="22" font-weight="700" text-anchor="start">1 T-shirt + 1 toy</text>
+<path d="M 65 467.2 L 76.25 460 L 82.55 464.5 L 92.45 464.5 L 98.75 460 L 110 467.2 L 104.15 476.2 L 98.75 472.6 L 98.75 505 L 76.25 505 L 76.25 472.6 L 70.85 476.2 L 65 467.2" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 155 468.0 L 184.25 459 L 200 468.0 L 200 497.25 L 170.75 504 L 155 495.0 L 155 468.0 L 170.75 477.0 L 200 468.0" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="170.75" y1="477.0" x2="170.75" y2="504" stroke="var(--color-amber)" stroke-width="2"/>
+<line x1="260" y1="489" x2="281" y2="489" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 272 483 L 281 489 L 272 495" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect data-metric="lines-1" data-value="2" id="small-parcels-en-lines-m-card-declaration-1" x="285" y="455" width="91" height="78" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-en-lines-m-card-declaration-1" x="298" y="484" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="18" font-weight="400" text-anchor="start">01</text>
+<line x1="332" y1="479" x2="363" y2="479" stroke="var(--color-paper)" stroke-width="2"/>
+<text data-panel="small-parcels-en-lines-m-card-declaration-1" x="298" y="511" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="18" font-weight="400" text-anchor="start">02</text>
+<line x1="332" y1="506" x2="363" y2="506" stroke="var(--color-paper)" stroke-width="2"/>
+<text data-panel="small-parcels-en-lines-m-band-1" x="44" y="569" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">2 lines</text>
+<text data-panel="small-parcels-en-lines-m-band-1" x="376" y="569" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="30" font-weight="700" text-anchor="end">10 €</text>
+<text data-panel="small-parcels-en-lines-m-frame" x="28" y="660" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="19" font-weight="400" text-anchor="start">Each assumed liable line:</text>
+<text data-panel="small-parcels-en-lines-m-frame" x="28" y="692" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="19" font-weight="400" text-anchor="start">€3 duty + €2 handling fee.</text>
+<text data-panel="small-parcels-en-lines-m-frame" x="28" y="724" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="19" font-weight="400" text-anchor="start">Before VAT and private fees.</text>
+<text data-panel="small-parcels-en-lines-m-frame" x="28" y="793" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">R01 · R02 · R06 · R07</text>
+</svg>

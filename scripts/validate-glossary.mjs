@@ -19,6 +19,31 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+
+// Customs units, threshold valuation and VAT collection remain separate short entries.
+const smallParcelsFr = '/posts/petits-colis-frais/';
+const smallParcelsEn = '/en/analysis/small-parcels-fees/';
+for (const slug of ['ioss', 'article-douanier', 'valeur-intrinseque']) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  assert.deepEqual(fr[0].atlas.sources.map(source => source.href), en[0].atlas.sources.map(source => source.href));
+  for (const [entry, article] of [[fr[0], smallParcelsFr], [en[0], smallParcelsEn]]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  }
+  for (const neighbor of fr[0].atlas.related) {
+    assert(glossaryEntries.some(entry => entry.slug === neighbor));
+    assert(glossaryAtlasEnBySlug.has(neighbor));
+  }
+}
+for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === 'incidence-fiscale'), smallParcelsFr], [glossaryAtlasEnBySlug.get('incidence-fiscale'), smallParcelsEn]]) {
+  assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+}
+
 // PC memory keeps working memory, storage and average selling prices distinct.
 const pcMemoryFr = '/posts/ia-memoire-prix-ordinateurs/';
 const pcMemoryEn = '/en/analysis/ai-memory-pc-prices/';
@@ -1136,7 +1161,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 356, 'Le corpus ajoute DRAM et ASP, avec dix relations de mémoire et de prix');
+assert.equal(glossaryAtlasEnBySlug.size, 359, 'Le corpus ajoute trois notions douanières bilingues');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1337,8 +1362,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 743, 'Le corpus ajoute DRAM et ASP, avec dix relations de mémoire et de prix');
-assert.equal(glossaryAtlasEntries.length, 346, 'Le corpus ajoute DRAM et ASP, avec dix relations de mémoire et de prix');
+assert.equal(glossaryEntries.length, 746, 'Le corpus ajoute trois notions douanières sourcées');
+assert.equal(glossaryAtlasEntries.length, 349, 'Les trois notions douanières disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1760,7 +1785,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 960, 'Le corpus ajoute DRAM et ASP, avec dix relations de mémoire et de prix');
+assert.equal(glossaryAtlasEdgeCount, 968, 'Le corpus ajoute huit relations douanières, de TVA et d’incidence fiscale');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="small-parcels-fr-logistics-d-title small-parcels-fr-logistics-d-desc" viewBox="0 0 1000 680" style="width:100%;height:auto" class="l0g-small-parcels-svg">
+<title id="small-parcels-fr-logistics-d-title">La vente précède ou suit l’importation</title>
+<desc id="small-parcels-fr-logistics-d-desc">Un achat conclu avant l’importation et une vente depuis un stock déjà dédouané suivent deux séquences différentes. Le passage par un entrepôt européen se lit avec cette chronologie. Schéma qualitatif simplifié. En haut, la vente au consommateur précède l’importation : un hub ou un entrepôt intermédiaire ne change pas automatiquement son caractère de vente à distance importée. En bas, des marchandises sont importées en gros et mises en libre pratique avant la vente au consommateur : le régime ordinaire d’importation et les coûts du stock s’appliquent. Les droits ordinaires dépendent du produit, de son origine et du régime ; la TVA suit ses règles propres. Les flèches ne mesurent aucun volume. La figure ne suggère aucune garantie d’exonération ni classement automatique.</desc>
+<rect id="small-parcels-fr-logistics-d-frame" x="0" y="0" width="1000" height="680" fill="var(--color-ink)"/>
+<text data-panel="small-parcels-fr-logistics-d-frame" x="40" y="40" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="22" font-weight="700" text-anchor="start">l0g / COLIS</text>
+<text data-panel="small-parcels-fr-logistics-d-frame" x="960" y="40" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="end">04 / 05</text>
+<text data-panel="small-parcels-fr-logistics-d-frame" x="40" y="93" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="34" font-weight="700" text-anchor="start">La vente précède ou suit l’importation</text>
+<text data-panel="small-parcels-fr-logistics-d-frame" x="40" y="137" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">Deux séquences · flèches qualitatives</text>
+<text data-panel="small-parcels-fr-logistics-d-frame" x="40" y="179" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="23" font-weight="700" text-anchor="start">COMMANDE AVANT IMPORTATION</text>
+<rect id="small-parcels-fr-logistics-d-card-0-0" x="40" y="205" width="270" height="140" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-fr-logistics-d-card-0-0" x="58" y="247" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="23" font-weight="400" text-anchor="start">1</text>
+<text data-panel="small-parcels-fr-logistics-d-card-0-0" x="58" y="286" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="23" font-weight="700" text-anchor="start">Commande client</text>
+<text data-panel="small-parcels-fr-logistics-d-card-0-0" x="58" y="320" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">Bien hors de l’UE</text>
+<line x1="318" y1="275" x2="357" y2="275" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 348 269 L 357 275 L 348 281" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="small-parcels-fr-logistics-d-card-0-1" x="365" y="205" width="270" height="140" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-fr-logistics-d-card-0-1" x="383" y="247" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="23" font-weight="400" text-anchor="start">2</text>
+<text data-panel="small-parcels-fr-logistics-d-card-0-1" x="383" y="286" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="23" font-weight="700" text-anchor="start">Importation</text>
+<text data-panel="small-parcels-fr-logistics-d-card-0-1" x="383" y="320" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">Vente déjà conclue</text>
+<line x1="643" y1="275" x2="682" y2="275" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 673 269 L 682 275 L 673 281" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="small-parcels-fr-logistics-d-card-0-2" x="690" y="205" width="270" height="140" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-fr-logistics-d-card-0-2" x="708" y="247" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="23" font-weight="400" text-anchor="start">3</text>
+<text data-panel="small-parcels-fr-logistics-d-card-0-2" x="708" y="286" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="23" font-weight="700" text-anchor="start">Hub et livraison</text>
+<text data-panel="small-parcels-fr-logistics-d-card-0-2" x="708" y="320" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">Vente antérieure</text>
+<text data-panel="small-parcels-fr-logistics-d-frame" x="40" y="394" fill="var(--color-amber)" font-family="l0g Small Parcels" font-size="23" font-weight="700" text-anchor="start">IMPORTATION AVANT LA VENTE</text>
+<rect id="small-parcels-fr-logistics-d-card-1-0" x="40" y="420" width="270" height="140" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-fr-logistics-d-card-1-0" x="58" y="462" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="23" font-weight="400" text-anchor="start">1</text>
+<text data-panel="small-parcels-fr-logistics-d-card-1-0" x="58" y="501" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="23" font-weight="700" text-anchor="start">Import en gros</text>
+<text data-panel="small-parcels-fr-logistics-d-card-1-0" x="58" y="535" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">Mise en libre pratique</text>
+<line x1="318" y1="490" x2="357" y2="490" stroke="var(--color-amber)" stroke-width="3"/>
+<path d="M 348 484 L 357 490 L 348 496" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="small-parcels-fr-logistics-d-card-1-1" x="365" y="420" width="270" height="140" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-fr-logistics-d-card-1-1" x="383" y="462" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="23" font-weight="400" text-anchor="start">2</text>
+<text data-panel="small-parcels-fr-logistics-d-card-1-1" x="383" y="501" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="23" font-weight="700" text-anchor="start">Stock dédouané</text>
+<text data-panel="small-parcels-fr-logistics-d-card-1-1" x="383" y="535" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">Bien déjà dans l’UE</text>
+<line x1="643" y1="490" x2="682" y2="490" stroke="var(--color-amber)" stroke-width="3"/>
+<path d="M 673 484 L 682 490 L 673 496" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="small-parcels-fr-logistics-d-card-1-2" x="690" y="420" width="270" height="140" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-fr-logistics-d-card-1-2" x="708" y="462" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="23" font-weight="400" text-anchor="start">3</text>
+<text data-panel="small-parcels-fr-logistics-d-card-1-2" x="708" y="501" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="23" font-weight="700" text-anchor="start">Commande client</text>
+<text data-panel="small-parcels-fr-logistics-d-card-1-2" x="708" y="535" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">Vente depuis le stock</text>
+<text data-panel="small-parcels-fr-logistics-d-frame" x="40" y="607" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">La séquence de vente détermine le circuit ; l’adresse seule ne suffit pas.</text>
+<text data-panel="small-parcels-fr-logistics-d-frame" x="40" y="653" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">R05 · R06 · R07</text>
+</svg>

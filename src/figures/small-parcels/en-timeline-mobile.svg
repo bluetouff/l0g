@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="small-parcels-en-timeline-m-title small-parcels-en-timeline-m-desc" viewBox="0 0 420 820" style="width:100%;height:auto" class="l0g-small-parcels-svg">
+<title id="small-parcels-en-timeline-m-title">Three dates, two EU charges</title>
+<desc id="small-parcels-en-timeline-m-desc">France’s March tax ends in July. For eligible imports, the €3 EU duty is joined by a €2 handling fee on 1 November 2026. Schematic chronology; spacing does not encode duration. Decree 2026-589 records the French tax’s repeal effective 1 July. The €3 EU flat duty covers eligible imported distance sales in consignments with intrinsic value ≤ €150. The €2 EU handling fee covers imported distance sales without that ceiling. The illustrated €5 applies to a line liable for both charges, before VAT effects and private fees. Evidence cut-off: 30 October 2026. The November fee is adopted but has yet to apply.</desc>
+<rect id="small-parcels-en-timeline-m-frame" x="0" y="0" width="420" height="820" fill="var(--color-ink)"/>
+<text data-panel="small-parcels-en-timeline-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="17" font-weight="700" text-anchor="start">l0g / PARCELS</text>
+<text data-panel="small-parcels-en-timeline-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="end">01 / 05</text>
+<text data-panel="small-parcels-en-timeline-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="25" font-weight="700" text-anchor="start">The fee calendar</text>
+<text data-panel="small-parcels-en-timeline-m-frame" x="28" y="117" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">2026 · amounts per liable line</text>
+<rect id="small-parcels-en-timeline-m-card-0" x="28" y="170" width="364" height="125" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-en-timeline-m-card-0" x="44" y="199" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="700" text-anchor="start">1 MARCH 2026</text>
+<text data-panel="small-parcels-en-timeline-m-card-0" x="44" y="230" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="21" font-weight="700" text-anchor="start">French tax</text>
+<text data-panel="small-parcels-en-timeline-m-card-0" x="376" y="232" fill="var(--color-accent)" font-family="l0g Small Parcels" font-size="31" font-weight="700" text-anchor="end">2 €</text>
+<text data-panel="small-parcels-en-timeline-m-card-0" x="44" y="264" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">Repealed from 1 July</text>
+<line x1="210" y1="298" x2="210" y2="309" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 204 300 L 210 309 L 216 300" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="small-parcels-en-timeline-m-card-1" x="28" y="315" width="364" height="125" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-en-timeline-m-card-1" x="44" y="344" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="700" text-anchor="start">1 JULY 2026</text>
+<text data-panel="small-parcels-en-timeline-m-card-1" x="44" y="375" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="21" font-weight="700" text-anchor="start">EU flat duty</text>
+<text data-panel="small-parcels-en-timeline-m-card-1" x="376" y="377" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="31" font-weight="700" text-anchor="end">3 €</text>
+<text data-panel="small-parcels-en-timeline-m-card-1" x="44" y="409" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">Eligible route up to €150</text>
+<line x1="210" y1="443" x2="210" y2="454" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 204 445 L 210 454 L 216 445" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="small-parcels-en-timeline-m-card-2" x="28" y="460" width="364" height="125" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-en-timeline-m-card-2" x="44" y="489" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="700" text-anchor="start">1 NOVEMBER 2026</text>
+<text data-panel="small-parcels-en-timeline-m-card-2" x="44" y="520" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="21" font-weight="700" text-anchor="start">EU handling fee</text>
+<text data-panel="small-parcels-en-timeline-m-card-2" x="376" y="522" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="31" font-weight="700" text-anchor="end">2 €</text>
+<text data-panel="small-parcels-en-timeline-m-card-2" x="44" y="554" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">Imported distance sales</text>
+<text data-panel="small-parcels-en-timeline-m-card-2" x="44" y="577" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">No value ceiling</text>
+<rect id="small-parcels-en-timeline-m-card-sum" x="28" y="625" width="364" height="135" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-en-timeline-m-card-sum" x="44" y="656" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="700" text-anchor="start">FROM 1 NOVEMBER 2026</text>
+<text data-panel="small-parcels-en-timeline-m-card-sum" x="210" y="699" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="30" font-weight="700" text-anchor="middle">3 € + 2 € = 5 €</text>
+<text data-panel="small-parcels-en-timeline-m-card-sum" x="210" y="734" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="middle">Per line liable for both charges</text>
+<text data-panel="small-parcels-en-timeline-m-frame" x="28" y="793" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">R01 · R03 · R09 · R10</text>
+</svg>

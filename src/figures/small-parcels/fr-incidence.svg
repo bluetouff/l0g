@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="small-parcels-fr-incidence-d-title small-parcels-fr-incidence-d-desc" viewBox="0 0 1000 680" style="width:100%;height:auto" class="l0g-small-parcels-svg">
+<title id="small-parcels-fr-incidence-d-title">Répartir les quatre euros de frais</title>
+<desc id="small-parcels-fr-incidence-d-desc">Scénario choisi : deux lignes, 4 € de nouveaux frais, moitié répercutée. Avec une TVA supposée de 20 % collectée à la vente, le panier passe de 24 € à 26,40 € TTC. Simulation de transmission du seul supplément de novembre : F = 2 € × n, n = 2 lignes supposées admissibles. Prix initial HT = 20 €, transmission t = 50 %, TVA supposée = 20 %. Prix final TTC = (20 + F × t) × 1,20 = 26,40 €. Part client HT = 2 €, part absorbée = 2 €, TVA supplémentaire = 0,40 €. La barre partage F hors TVA ; la TVA est dessinée séparément. Les droits antérieurs de 3 € et les autres coûts sont supposés intégrés au prix initial et constants. Illustration avec TVA collectée à la vente lorsque la refacturation entre dans sa base. Aucune admissibilité IOSS, valeur intrinsèque ou classification n’est déterminée ; les autres régimes de TVA à l’importation ne sont pas simulés. Aucun taux de transmission observé n’est avancé.</desc>
+<rect id="small-parcels-fr-incidence-d-frame" x="0" y="0" width="1000" height="680" fill="var(--color-ink)"/>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="40" y="40" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="22" font-weight="700" text-anchor="start">l0g / COLIS</text>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="960" y="40" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="end">05 / 05</text>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="40" y="93" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="34" font-weight="700" text-anchor="start">Répartir les quatre euros de frais</text>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="40" y="137" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">Exemple fictif · prix initial 20 € HT · TVA 20 %</text>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="40" y="195" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="27" font-weight="700" text-anchor="start">4 € de frais à partager</text>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="960" y="195" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="end">2 lignes · 50 % répercutés</text>
+<rect data-metric="passed" data-value="2" x="100" y="245" width="400" height="50" fill="var(--color-signal)"/>
+<rect data-metric="absorbed" data-value="2" x="500" y="245" width="400" height="50" fill="var(--color-amber)"/>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="100" y="343" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="26" font-weight="700" text-anchor="start">2 € · client HT</text>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="900" y="343" fill="var(--color-amber)" font-family="l0g Small Parcels" font-size="26" font-weight="700" text-anchor="end">2 € · absorbés</text>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="500" y="414" fill="var(--color-accent)" font-family="l0g Small Parcels" font-size="26" font-weight="700" text-anchor="middle">TVA : 2 € × 20 % = 0,40 €</text>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="170" y="513" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="32" font-weight="700" text-anchor="middle">24 € TTC</text>
+<line x1="320" y1="500" x2="635" y2="500" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 626 494 L 635 500 L 626 506" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="810" y="513" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="35" font-weight="700" text-anchor="middle">26,40 € TTC</text>
+<rect id="small-parcels-fr-incidence-d-card-0" x="40" y="565" width="290" height="61" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-fr-incidence-d-card-0" x="57" y="604" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">0 %</text>
+<text data-panel="small-parcels-fr-incidence-d-card-0" x="310" y="604" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="25" font-weight="700" text-anchor="end">24,00 €</text>
+<rect id="small-parcels-fr-incidence-d-card-1" x="355" y="565" width="290" height="61" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-fr-incidence-d-card-1" x="372" y="604" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">50 %</text>
+<text data-panel="small-parcels-fr-incidence-d-card-1" x="625" y="604" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="25" font-weight="700" text-anchor="end">26,40 €</text>
+<rect id="small-parcels-fr-incidence-d-card-2" x="670" y="565" width="290" height="61" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-fr-incidence-d-card-2" x="687" y="604" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">100 %</text>
+<text data-panel="small-parcels-fr-incidence-d-card-2" x="940" y="604" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="25" font-weight="700" text-anchor="end">28,80 €</text>
+<text data-panel="small-parcels-fr-incidence-d-frame" x="40" y="653" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="22" font-weight="400" text-anchor="start">R01 · R08</text>
+</svg>

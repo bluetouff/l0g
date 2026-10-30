@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="small-parcels-en-incidence-m-title small-parcels-en-incidence-m-desc" viewBox="0 0 420 820" style="width:100%;height:auto" class="l0g-small-parcels-svg">
+<title id="small-parcels-en-incidence-m-title">Sharing four euros of new fees</title>
+<desc id="small-parcels-en-incidence-m-desc">Chosen scenario: two lines, €4 of new fees, half passed on. With assumed 20% VAT collected at the sale, the basket rises from €24 to €26.40 including VAT. Simulation of the November increment only: F = €2 × n, with n = 2 assumed eligible lines. Initial price before VAT = €20; pass-through t = 50%; assumed VAT = 20%. Final price including VAT = (20 + F × t) × 1.20 = €26.40. Buyer’s addition before VAT = €2; absorbed cost = €2; extra VAT = €0.40. The bar splits F before VAT; VAT is shown separately. Earlier €3 duties and other costs are assumed to be included in the initial price and held constant. This illustrates VAT collected at sale when the passed-on fee enters the taxable amount. No IOSS eligibility, intrinsic value or classification is determined; other import-VAT regimes are not modelled. No observed pass-through rate is claimed.</desc>
+<rect id="small-parcels-en-incidence-m-frame" x="0" y="0" width="420" height="820" fill="var(--color-ink)"/>
+<text data-panel="small-parcels-en-incidence-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="17" font-weight="700" text-anchor="start">l0g / PARCELS</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="end">05 / 05</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="25" font-weight="700" text-anchor="start">Sharing the new fee</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="28" y="117" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">Fictional example · initial price €20</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="28" y="141" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">before VAT · VAT 20%</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="28" y="195" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="23" font-weight="700" text-anchor="start">€4 OF NEW FEES</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="28" y="222" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">2 lines · 50% passed on</text>
+<rect data-metric="passed" data-value="2" x="28" y="231" width="182" height="44" fill="var(--color-signal)"/>
+<rect data-metric="absorbed" data-value="2" x="210" y="231" width="182" height="44" fill="var(--color-amber)"/>
+<text data-panel="small-parcels-en-incidence-m-frame" x="28" y="319" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="29" font-weight="700" text-anchor="start">2 €</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="392" y="319" fill="var(--color-amber)" font-family="l0g Small Parcels" font-size="29" font-weight="700" text-anchor="end">2 €</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="28" y="352" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">Buyer before VAT</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="392" y="352" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="end">Absorbed</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="210" y="416" fill="var(--color-accent)" font-family="l0g Small Parcels" font-size="23" font-weight="700" text-anchor="middle">VAT: €2 × 20% = €0.40</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="210" y="494" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="29" font-weight="700" text-anchor="middle">€24 incl. VAT</text>
+<line x1="210" y1="517" x2="210" y2="549" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 204 540 L 210 549 L 216 540" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="small-parcels-en-incidence-m-frame" x="210" y="601" fill="var(--color-signal)" font-family="l0g Small Parcels" font-size="33" font-weight="700" text-anchor="middle">€26.40 incl. VAT</text>
+<rect id="small-parcels-en-incidence-m-card-0" x="28" y="639" width="364" height="40" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-en-incidence-m-card-0" x="44" y="666" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="18" font-weight="400" text-anchor="start">0 %</text>
+<text data-panel="small-parcels-en-incidence-m-card-0" x="376" y="666" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="20" font-weight="700" text-anchor="end">24.00 €</text>
+<rect id="small-parcels-en-incidence-m-card-1" x="28" y="687" width="364" height="40" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-en-incidence-m-card-1" x="44" y="714" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="18" font-weight="400" text-anchor="start">50 %</text>
+<text data-panel="small-parcels-en-incidence-m-card-1" x="376" y="714" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="20" font-weight="700" text-anchor="end">26.40 €</text>
+<rect id="small-parcels-en-incidence-m-card-2" x="28" y="735" width="364" height="40" fill="var(--color-surface)"/>
+<text data-panel="small-parcels-en-incidence-m-card-2" x="44" y="762" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="18" font-weight="400" text-anchor="start">100 %</text>
+<text data-panel="small-parcels-en-incidence-m-card-2" x="376" y="762" fill="var(--color-paper)" font-family="l0g Small Parcels" font-size="20" font-weight="700" text-anchor="end">28.80 €</text>
+<text data-panel="small-parcels-en-incidence-m-frame" x="28" y="793" fill="var(--color-muted)" font-family="l0g Small Parcels" font-size="17" font-weight="400" text-anchor="start">R01 · R08</text>
+</svg>

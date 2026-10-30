@@ -2,6 +2,7 @@
 // Keep new SVG suites here: svg-test-suites.test.mjs rejects missing or duplicate coverage.
 export const SVG_TEST_SUITES = Object.freeze({
   source: Object.freeze([
+    'scripts/small-parcels-infographics.test.mjs',
     'scripts/pc-ai-memory-infographics.test.mjs',
     'scripts/transition-first-loss-infographics.test.mjs',
     'scripts/stablecoin-reserve-infographics.test.mjs',
@@ -188,6 +189,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/yanbu-infographics.test.mjs',
   ]),
   rendered: Object.freeze([
+    'scripts/small-parcels-rendered-infographics.test.mjs',
     'scripts/pc-ai-memory-rendered-infographics.test.mjs',
     'scripts/transition-first-loss-rendered-infographics.test.mjs',
     'scripts/stablecoin-reserve-rendered-infographics.test.mjs',

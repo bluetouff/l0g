@@ -1,0 +1,46 @@
+---
+import { smallParcelsFigureReferences } from '../lib/petits-colis-figures.mjs';
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'timeline' | 'lines' | 'volumes' | 'logistics' | 'incidence';
+  number: number;
+  caption: string;
+  sources: string[];
+  method?: string;
+}
+const { lang, kind, number, caption, sources, method = '' } = Astro.props;
+const refs = smallParcelsFigureReferences(lang, kind, number, sources, caption, method);
+const modules = import.meta.glob('../figures/small-parcels/*.svg', { query: '?raw', import: 'default', eager: true });
+const key = `../figures/small-parcels/${lang}-${kind}`;
+const desktop = modules[`${key}.svg`], mobile = modules[`${key}-mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing reviewed responsive small-parcel figure');
+const labels = lang === 'fr' ? { method: 'Méthode et périmètre', fiction: 'Exemple fictif : calcul de l0g.' } : { method: 'Method and scope', fiction: 'Fictional example: l0g calculation.' };
+---
+<figure class="petits-colis-figure" id={`figure-${number}`} data-kind={kind}>
+  <div class="figure-wide" set:html={desktop} />
+  <div class="figure-narrow" set:html={mobile} />
+  <figcaption><strong>FIG. {String(number).padStart(2, '0')}</strong> {caption}
+    <span class="figure-cites">{refs.length ? refs.map(ref => <a href={`#source-${ref.toLowerCase()}`}>[{ref}]</a>) : labels.fiction}</span>
+  </figcaption>
+  <details><summary>{labels.method}</summary><p>{method}</p></details>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Small Parcels'; src: url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'l0g Small Parcels'; src: url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype'); font-style: normal; font-weight: 700; font-display: swap; }
+  .petits-colis-figure { max-width: 48rem; width: 100%; margin: 2.5rem auto; padding-bottom: 1rem; overflow: visible; container-type: inline-size; }
+  .petits-colis-figure :global(svg) { width: 100%; max-width: 100%; height: auto; display: block; letter-spacing: normal; overflow: visible; }
+  .figure-wide { display: block; width: 100%; }
+  .figure-narrow { display: none; width: 100%; max-width: 26rem; margin-inline: auto; }
+  figcaption { color: var(--color-muted); font-size: .9rem; line-height: 1.7; margin: 1rem 0 .65rem; }
+  figcaption strong { margin-right: .6rem; }
+  .figure-cites { display: block; margin: .4rem 0; }
+  .figure-cites a { margin-right: .75rem; }
+  .petits-colis-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .petits-colis-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .petits-colis-figure :global(details p) { margin: .7rem 0; }
+  .petits-colis-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @container (max-width: 500px) { .figure-wide { display: none; } .figure-narrow { display: block; } }
+  @media print { .petits-colis-figure { break-inside: avoid; } .figure-wide { display: block; } .figure-narrow { display: none; } }
+  :global(article:has(.petits-colis-figure) .post-title) { hyphens: none; word-break: normal; overflow-wrap: normal; }
+</style>
