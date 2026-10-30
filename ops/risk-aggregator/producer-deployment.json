@@ -72,23 +72,23 @@
     },
     "yen": {
       "repository": "https://github.com/bluetouff/carry-yen-monitor",
-      "revision": "0418198f1d116a67e84e7e6d7e19c666e314c284",
+      "revision": "262f84446c1b6b486813e30334b6af7d7e403f27",
       "files": [
         {
           "path": "/opt/yct/build_snapshot.py",
-          "sha256": "2ed8daaf6dcb6e4f28eafee4e06f18034b6faa8a40993157d2aabae80b0858da"
+          "sha256": "0b93eb514b1a1a8416f300d7751edbad500070a9a485a4db7c345ea674ad2c6a"
         },
         {
           "path": "/opt/yct/yct_quality.py",
-          "sha256": "3b7e0c776c0d11f3da4bc735cf58b9cf174bc9bcf1bde8c0dbbb07ec3f3c1e9b"
+          "sha256": "cbae07c1ffe29e278cb8020e35304fab3dcbd27776e5c629f2ccfc6be9c3df48"
         },
         {
           "path": "/opt/yct/verify_snapshot.py",
-          "sha256": "69055d2ee67bc638eb6a147ea27dfb62a885da6f931c512c3af2acf5a7cc932b"
+          "sha256": "f4a40c873333086fd1b80cb6df58e08facef206db165af940b8f26dfbdf343ad"
         },
         {
           "path": "/opt/yct/boj-policy.json",
-          "sha256": "f983418e1ca4cbe8ba19d5b159b220cde565c09c783251a242cd05eae3402d4e"
+          "sha256": "611ea27a083100735aa03a2da2c36ac6484c3ef28599fac14ff8ff9c94b70ea3"
         },
         {
           "path": "/opt/yct/source-calendars.json",
