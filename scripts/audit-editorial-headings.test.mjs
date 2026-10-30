@@ -71,3 +71,20 @@ test('the exact non-voting share glossary term is allowed while surrounding cont
     assert.equal(blocked.status, 1, `${candidateRoute} ${tag}: ${blocked.stderr}`);
   }
 });
+
+test('the exact unaided-assessment glossary term is allowed only as its own H1', async () => {
+  const route = 'glossaire/evaluation-sans-assistance';
+  const allowed = await inspect('Évaluation sans assistance', route);
+  assert.equal(allowed.status, 0, allowed.stderr);
+  for (const [heading, candidateRoute, tag] of [
+    ['Évaluation sans assistance, mais avec méthode', route, 'h1'],
+    ['Évaluation sans assistance', 'glossaire/example', 'h1'],
+    ['Évaluation sans assistance', `${route}-example`, 'h1'],
+    ['Évaluation sans assistance', route, 'h2'],
+    ['Évaluation sans assistance', route, 'h3'],
+    ['Une évaluation sans assistance', route, 'h1'],
+  ]) {
+    const blocked = await inspect(heading, candidateRoute, tag);
+    assert.equal(blocked.status, 1, `${candidateRoute} ${tag}: ${blocked.stderr}`);
+  }
+});
