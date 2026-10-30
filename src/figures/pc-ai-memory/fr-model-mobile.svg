@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pc-ai-fr-model-m-title pc-ai-fr-model-m-desc" viewBox="0 0 420 820" style="width:100%;height:auto" class="l0g-pc-ai-memory-svg">
+<title id="pc-ai-fr-model-m-title">Suivre les 150 euros de surcoût</title>
+<desc id="pc-ai-fr-model-m-desc">Exemple fictif. Scénario fictif : un coût de 150 € double ; 60 % du surcoût passent au client. Le prix hors taxes de 1 000 € devient 1 090 €. Calcul pédagogique, avec hypothèses choisies pour l’illustration : prix initial P₀ = 1 000 €, coût exposé C₀ = 150 €, hausse g = 100 %, transmission t = 60 %. Tous les montants sont hors taxes ; change, taux de taxe et autres coûts restent fixes. Supplément = C₀ × g × t = 90 € ; surcoût absorbé = 60 €. Le partage graphique est proportionnel aux 60/40 du scénario. Aucun paramètre ne représente une moyenne du marché ni une prévision.</desc>
+<rect id="pc-ai-fr-model-m-frame" x="0" y="0" width="420" height="820" fill="var(--color-ink)"/>
+<text data-panel="pc-ai-fr-model-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g PC AI Memory" font-size="17" font-weight="700" text-anchor="start">l0g / MÉMOIRE</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="end">05 / 05</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="25" font-weight="700" text-anchor="start">Le partage du surcoût</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="28" y="117" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Scénario fictif · hors taxes · autres</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="28" y="141" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">coûts fixes</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="28" y="183" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="22" font-weight="700" text-anchor="start">Coût exposé</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="28" y="210" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="22" font-weight="700" text-anchor="start">150 €</text>
+<rect data-metric="exposed-0" data-value="150" x="28" y="226" width="182.0" height="30" fill="var(--color-muted)"/>
+<text data-panel="pc-ai-fr-model-m-frame" x="28" y="295" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="22" font-weight="700" text-anchor="start">300 €</text>
+<rect data-metric="exposed-1" data-value="300" x="28" y="311" width="364.0" height="30" fill="var(--color-signal)"/>
+<text data-panel="pc-ai-fr-model-m-frame" x="28" y="390" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="24" font-weight="700" text-anchor="start">Surcoût : 150 €</text>
+<rect data-metric="passed" data-value="90" x="28" y="421" width="218.4" height="45" fill="var(--color-signal)"/>
+<rect data-metric="absorbed" data-value="60" x="246.4" y="421" width="145.6" height="45" fill="var(--color-amber)"/>
+<text data-panel="pc-ai-fr-model-m-frame" x="28" y="507" fill="var(--color-signal)" font-family="l0g PC AI Memory" font-size="19" font-weight="700" text-anchor="start">Client : 90 €</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="392" y="507" fill="var(--color-amber)" font-family="l0g PC AI Memory" font-size="19" font-weight="700" text-anchor="end">Absorbé : 60 €</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="28" y="540" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="18" font-weight="400" text-anchor="start">60 %</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="392" y="540" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="18" font-weight="400" text-anchor="end">40 %</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="210" y="611" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="31" font-weight="700" text-anchor="middle">1 000 €</text>
+<line x1="210" y1="630" x2="210" y2="660" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 204 651 L 210 660 L 216 651" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="pc-ai-fr-model-m-frame" x="210" y="706" fill="var(--color-signal)" font-family="l0g PC AI Memory" font-size="34" font-weight="700" text-anchor="middle">1 090 €</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="210" y="746" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="18" font-weight="400" text-anchor="middle">Prix hors taxes</text>
+<text data-panel="pc-ai-fr-model-m-frame" x="28" y="793" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Calcul l0g · hypothèses fictives</text>
+</svg>

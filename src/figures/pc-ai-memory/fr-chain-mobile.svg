@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pc-ai-fr-chain-m-title pc-ai-fr-chain-m-desc" viewBox="0 0 420 820" style="width:100%;height:auto" class="l0g-pc-ai-memory-svg">
+<title id="pc-ai-fr-chain-m-title">Du silicium à l’étiquette</title>
+<desc id="pc-ai-fr-chain-m-desc">Deux filières industrielles, puis des contrats, des stocks et des choix commerciaux. Chaque étape peut modifier la transmission du coût. Schéma d’analyse construit à partir des documents des fournisseurs et des fabricants de PC. DRAM et NAND restent deux filières distinctes. Les flèches décrivent des relations qualitatives et leur largeur ne mesure aucun volume. Les branches prix, configuration et marge représentent des réponses possibles, dont la combinaison varie selon l’entreprise. Certains engagements sécurisent des quantités tout en laissant des prix à négocier. Les variations de change, de fiscalité et de concurrence sont des facteurs supplémentaires.</desc>
+<rect id="pc-ai-fr-chain-m-frame" x="0" y="0" width="420" height="820" fill="var(--color-ink)"/>
+<text data-panel="pc-ai-fr-chain-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g PC AI Memory" font-size="17" font-weight="700" text-anchor="start">l0g / MÉMOIRE</text>
+<text data-panel="pc-ai-fr-chain-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="end">03 / 05</text>
+<text data-panel="pc-ai-fr-chain-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="25" font-weight="700" text-anchor="start">Du silicium au prix</text>
+<text data-panel="pc-ai-fr-chain-m-frame" x="28" y="117" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Relations qualitatives · contrats,</text>
+<text data-panel="pc-ai-fr-chain-m-frame" x="28" y="141" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">stocks et arbitrages</text>
+<rect id="pc-ai-fr-chain-m-card-DRAM" x="28" y="165" width="174" height="130" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-fr-chain-m-card-DRAM" x="41" y="199" fill="var(--color-signal)" font-family="l0g PC AI Memory" font-size="23" font-weight="700" text-anchor="start">DRAM</text>
+<text data-panel="pc-ai-fr-chain-m-card-DRAM" x="41" y="239" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">PC et serveurs</text>
+<text data-panel="pc-ai-fr-chain-m-card-DRAM" x="41" y="265" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">HBM pour l’IA</text>
+<rect id="pc-ai-fr-chain-m-card-NAND" x="218" y="165" width="174" height="130" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-fr-chain-m-card-NAND" x="231" y="199" fill="var(--color-amber)" font-family="l0g PC AI Memory" font-size="23" font-weight="700" text-anchor="start">NAND</text>
+<text data-panel="pc-ai-fr-chain-m-card-NAND" x="231" y="239" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">SSD de PC</text>
+<text data-panel="pc-ai-fr-chain-m-card-NAND" x="231" y="265" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">SSD de serveurs</text>
+<path d="M 115 295 L 115 320 L 210 320" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 305 295 L 305 320 L 210 320" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="210" y1="320" x2="210" y2="347" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 204 338 L 210 347 L 216 338" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="pc-ai-fr-chain-m-card-contracts" x="54" y="350" width="312" height="145" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-fr-chain-m-card-contracts" x="74" y="389" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="21" font-weight="700" text-anchor="start">Contrats et stocks</text>
+<text data-panel="pc-ai-fr-chain-m-card-contracts" x="74" y="431" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Volumes et prix négociés</text>
+<text data-panel="pc-ai-fr-chain-m-card-contracts" x="74" y="460" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Stocks et délais</text>
+<path d="M 210 495 L 210 523 L 405 523 L 405 721" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="pc-ai-fr-chain-m-card-0" x="28" y="550" width="364" height="54" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-fr-chain-m-card-0" x="42" y="584" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="18" font-weight="700" text-anchor="start">Prix</text>
+<text data-panel="pc-ai-fr-chain-m-card-0" x="380" y="584" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="end">Tarifs, remises</text>
+<line x1="405" y1="577" x2="394" y2="577" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 403 571 L 394 577 L 403 583" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="pc-ai-fr-chain-m-card-1" x="28" y="620" width="364" height="54" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-fr-chain-m-card-1" x="42" y="654" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="18" font-weight="700" text-anchor="start">Configuration</text>
+<text data-panel="pc-ai-fr-chain-m-card-1" x="380" y="654" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="end">Mémoire, stockage</text>
+<line x1="405" y1="647" x2="394" y2="647" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 403 641 L 394 647 L 403 653" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="pc-ai-fr-chain-m-card-2" x="28" y="690" width="364" height="54" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-fr-chain-m-card-2" x="42" y="724" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="18" font-weight="700" text-anchor="start">Marge</text>
+<text data-panel="pc-ai-fr-chain-m-card-2" x="380" y="724" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="end">Coût absorbé</text>
+<line x1="405" y1="717" x2="394" y2="717" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 403 711 L 394 717 L 403 723" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="pc-ai-fr-chain-m-frame" x="28" y="763" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Flèches qualitatives, sans volumes</text>
+<text data-panel="pc-ai-fr-chain-m-frame" x="28" y="793" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">R05 · R06 · R09 · R10 · R11 · R12</text>
+</svg>

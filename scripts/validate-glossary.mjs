@@ -19,6 +19,31 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// PC memory keeps working memory, storage and average selling prices distinct.
+const pcMemoryFr = '/posts/ia-memoire-prix-ordinateurs/';
+const pcMemoryEn = '/en/analysis/ai-memory-pc-prices/';
+for (const slug of ['dram', 'asp']) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  assert.deepEqual(fr[0].atlas.sources.map(source => source.href), en[0].atlas.sources.map(source => source.href));
+  for (const [entry, article] of [[fr[0], pcMemoryFr], [en[0], pcMemoryEn]]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  }
+}
+assert.match(glossaryEntries.find(entry => entry.slug === 'dram').def, /volatile.*rafraîchissement.*NAND/u);
+assert.match(glossaryEntries.find(entry => entry.slug === 'asp').def, /composition des ventes.*qualité comparable/u);
+for (const slug of ['hbm', 'nand', 'ssd', 'wafer']) {
+  for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === slug), pcMemoryFr], [glossaryAtlasEnBySlug.get(slug), pcMemoryEn]]) {
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert.equal(entry.atlas.related.filter(link => link === 'dram').length, 1);
+  }
+}
+
 // Blended finance keeps first-loss size, concessionality and financial additionality distinct.
 const transitionFirstLossFr = '/posts/transition-energetique-premiere-perte-finance-mixte/';
 const transitionFirstLossEn = '/en/analysis/energy-transition-first-loss-blended-finance/';
@@ -305,9 +330,9 @@ for (const [slug, sources, related] of [["wafer", ["https://news.samsung.com/glo
   assert.notEqual(fr[0].def, en[0].def);
   for (const [entry, article, terms] of [[fr[0], heliumWaferArticleFr, glossaryEntries], [en[0], heliumWaferArticleEn, glossaryAtlasEn]]) {
     assert.equal(entry.guide, article);
-    assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), slug === 'wafer' ? [article.startsWith('/en/') ? pcMemoryEn : pcMemoryFr, article] : [article]);
     assert.deepEqual(entry.atlas.sources.map(link => link.href), sources);
-    assert.deepEqual(entry.atlas.related, related);
+    assert.deepEqual(entry.atlas.related, slug === 'wafer' ? ['dram', ...related] : related);
     for (const peer of related) assert(terms.find(term => term.slug === peer).atlas.related.includes(slug));
     assert(!entry.def.includes('—'));
   }
@@ -1111,7 +1136,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 354, 'Le corpus ajoute quatre notions de financement mixte et dix relations');
+assert.equal(glossaryAtlasEnBySlug.size, 356, 'Le corpus ajoute DRAM et ASP, avec dix relations de mémoire et de prix');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1312,8 +1337,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 741, 'Le corpus ajoute quatre notions de financement mixte et dix relations');
-assert.equal(glossaryAtlasEntries.length, 344, 'Le corpus ajoute quatre notions de financement mixte et dix relations');
+assert.equal(glossaryEntries.length, 743, 'Le corpus ajoute DRAM et ASP, avec dix relations de mémoire et de prix');
+assert.equal(glossaryAtlasEntries.length, 346, 'Le corpus ajoute DRAM et ASP, avec dix relations de mémoire et de prix');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1735,7 +1760,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 950, 'Le corpus ajoute quatre notions de financement mixte et dix relations');
+assert.equal(glossaryAtlasEdgeCount, 960, 'Le corpus ajoute DRAM et ASP, avec dix relations de mémoire et de prix');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

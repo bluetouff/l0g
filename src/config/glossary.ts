@@ -272,6 +272,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Paradoxe de Solow', nom: 'Solow paradox', def: "Constat de Robert Solow en 1987, « on voit l'âge informatique partout sauf dans les statistiques de productivité » : le décalage entre des gains technologiques visibles au niveau des tâches et un effet longtemps introuvable dans la productivité agrégée. Réapparu avec l'IA générative." },
       { sigle: 'GPU', nom: 'Graphics Processing Unit', def: "Processeur capable d’exécuter de nombreux calculs en parallèle, utilisé notamment pour le rendu graphique et l’intelligence artificielle. Dans un service de calcul, ses performances dépendent aussi de la mémoire, des interconnexions et du logiciel ; sa capacité technique ne suffit pas à mesurer les recettes qu’il peut générer." },
       { sigle: 'EUV', nom: 'Extreme ultraviolet lithography', def: "Lithographie à ultraviolets extrêmes, utilisée pour imprimer les couches les plus complexes des puces avancées avec une lumière de 13,5 nm. Goulet industriel majeur car elle combine optique, vide, métrologie, logiciels et chaîne de fournisseurs spécialisée." },
+      {"sigle": "DRAM", "nom": "Dynamic Random Access Memory", "def": "Famille de mémoire vive volatile qui conserve temporairement les données de travail d’un système et exige un rafraîchissement périodique de ses cellules. Elle perd ces données lorsque l’alimentation est coupée. Les mémoires DDR et HBM appartiennent à cette famille ; la mémoire flash NAND conserve les données sans alimentation et remplit une fonction de stockage.", "guide": "/posts/ia-memoire-prix-ordinateurs/"},
+      {"sigle": "ASP", "nom": "Average Selling Price, prix de vente moyen", "def": "Indicateur commercial rapportant les revenus d’un ensemble de produits aux unités correspondantes vendues, sur une même période et dans un même périmètre. Sa variation peut combiner les changements de tarifs, de devises et de composition des ventes. Une moyenne plus élevée peut donc provenir d’une plus grande part de modèles chers ; elle se distingue d’un indice de prix à qualité comparable.", "guide": "/posts/ia-memoire-prix-ordinateurs/"},
       { sigle: 'Fonderie', nom: 'Fabrication de circuits intégrés pour des clients', def: 'Entreprise qui fabrique pour ses clients les circuits intégrés qu’ils ont conçus. Elle produit les puces sur des plaques de silicium, les wafers, avec les procédés et les capacités de ses usines.', guide: '/posts/tsmc-puces-data-centers-risque-electrique/' },
       {"sigle": "NAND", "nom": "Mémoire flash NAND", "def": "Famille de mémoire flash qui conserve les données sans alimentation électrique. Elle sert notamment au stockage dans les SSD. Dans la NAND tridimensionnelle, les cellules sont disposées sur plusieurs couches ; la mémoire de stockage et la mémoire de travail HBM remplissent des fonctions différentes.", "guide": "/posts/sk-hynix-dalian-usine-americaine-financement/"},
       {"sigle": "SSD", "nom": "Solid-state drive", "def": "Support de stockage électronique associant une mémoire non volatile, généralement NAND, à un contrôleur et à un micrologiciel pour gérer les données et les échanges avec le système. Les puces NAND sont des composants du SSD ; le produit fini comprend aussi ces fonctions de contrôle.", "guide": "/posts/sk-hynix-dalian-usine-americaine-financement/"},
@@ -1206,6 +1208,8 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "dram": {"articles": [{"label": "L’IA s’invite dans le prix des ordinateurs", "href": "/posts/ia-memoire-prix-ordinateurs/", "detail": "Mémoire, arbitrages de capacité et transmission des coûts aux prix des ordinateurs.", "kind": "article"}], "sources": [{"label": "Samsung Semiconductor, fonction de la DRAM", "href": "https://semiconductor.samsung.com/dram/", "detail": "Mémoire de travail, rafraîchissement périodique, volatilité et familles DDR/HBM.", "kind": "source"}], "related": ["hbm", "nand", "ssd", "wafer", "asp"]},
+  "asp": {"articles": [{"label": "L’IA s’invite dans le prix des ordinateurs", "href": "/posts/ia-memoire-prix-ordinateurs/", "detail": "Mémoire, arbitrages de capacité et transmission des coûts aux prix des ordinateurs.", "kind": "article"}], "sources": [{"label": "HP Inc., 10-Q, trimestre clos le 31 juillet 2026", "href": "https://www.sec.gov/Archives/edgar/data/47217/000004721726000051/hpq-20260731.htm", "detail": "Personal Systems, p45 : prix moyens, volumes et rôles distincts des tarifs, du change et de la gamme.", "kind": "source"}], "related": ["dram"]},
   "financement-mixte": {"articles": [{"label": "Transition énergétique : qui absorbe la première perte ?", "href": "/posts/transition-energetique-premiere-perte-finance-mixte/", "detail": "Ordre des pertes, garanties, valeur du soutien public et additionnalité.", "kind": "article"}], "sources": [{"label": "AIE–Convergence, financement mixte en Asie du Sud-Est", "href": "https://www.iea.org/reports/developing-blended-finance-pathways-for-renewable-energy-in-southeast-asia", "kind": "source"}, {"label": "OCDE, guide du financement mixte 2025", "href": "https://www.oecd.org/en/publications/oecd-dac-blended-finance-guidance-2025_e4a13d2c-en.html", "kind": "source"}], "related": ["premiere-perte", "concessionnalite", "additionnalite-financiere"]},
   "premiere-perte": {"articles": [{"label": "Transition énergétique : qui absorbe la première perte ?", "href": "/posts/transition-energetique-premiere-perte-finance-mixte/", "detail": "Ordre des pertes, garanties, valeur du soutien public et additionnalité.", "kind": "article"}], "sources": [{"label": "AIE–Convergence, financement mixte en Asie du Sud-Est", "href": "https://www.iea.org/reports/developing-blended-finance-pathways-for-renewable-energy-in-southeast-asia", "kind": "source"}], "related": ["financement-mixte", "concessionnalite"]},
   "concessionnalite": {"articles": [{"label": "Transition énergétique : qui absorbe la première perte ?", "href": "/posts/transition-energetique-premiere-perte-finance-mixte/", "detail": "Ordre des pertes, garanties, valeur du soutien public et additionnalité.", "kind": "article"}], "sources": [{"label": "IFC, définition et calcul de la concessionnalité", "href": "https://www.ifc.org/en/what-we-do/sector-expertise/blended-finance/how-blended-finance-works", "kind": "source"}, {"label": "OCDE, guide du financement mixte 2025", "href": "https://www.oecd.org/en/publications/oecd-dac-blended-finance-guidance-2025_e4a13d2c-en.html", "kind": "source"}], "related": ["financement-mixte", "premiere-perte", "additionnalite-financiere"]},
@@ -1323,7 +1327,9 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   "rated-feeder-note": {"articles": [{"label": "Crédit privé : la porte des assureurs", "href": "/posts/credit-prive-porte-assureurs-rated-feeders/", "detail": "Rangs des créances, flux disponibles et traitement prudentiel des rated feeders.", "kind": "article"}], "sources": [{"label": "Fitch, Feeder Fund Debt Rating Criteria, 24 septembre 2025", "href": "https://assets.fitchratings.com/downloadFile?reportType=report&sfReport=false&slug=fund-asset-managers/feeder-fund-debt-rating-criteria-24-09-2025", "detail": "Pages 5 à 7 : rehaussement, liquidité, dette du fonds maître et allocation des flux. Méthodologie générale.", "kind": "source"}, {"label": "NAIC, SSAP 26, version applicable en janvier 2025", "href": "https://content.naic.org/sites/default/files/inline-files/SSAP%20No.pdf", "detail": "Paragraphes 6 et 10 : relation de créancier, participations sous-jacentes et protection substantielle contre les pertes.", "kind": "source"}, {"label": "SEC / Investor.gov, ABCs of Credit Ratings, 12 octobre 2017", "href": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated-8", "detail": "Champ du risque de crédit et distinction avec prix de marché et liquidité.", "kind": "source"}], "related": ["rehaussement-de-credit", "rbc", "nav"]},
   "wmt": {"articles": [{"label": "Minerai de fer : le prix de l’attente", "href": "/posts/minerai-fer-prix-attente-fortescue-cmrg/", "kind": "article"}], "sources": [{"label": "OCDE, projet de consultation sur les produits minéraux, 2017", "href": "https://documents.worldbank.org/curated/en/775571485262636835/pdf/112221-WP-PUBLIC-ABSTRACT-SENT-23-1-2017-10-50-11-OECDmineralproductstradedinintermediateformsdiscussi.pdf", "detail": "PDF p. 40 / imprimée 36, encadré sur les prix : bases humide et sèche. Projet de consultation hébergé par la Banque mondiale.", "kind": "source"}, {"label": "Fortescue, rapport annuel FY26", "href": "https://edge.sitecorecloud.io/fortescue17114-fortescueeb60-productionbbdb-8be5/media/project/fortescueportal/shared/documents/regulatory/asx-announcements/fy26-annual-report_-app4e_updated.pdf", "detail": "PDF p. 42 / imprimée 39 : coût livré en $/wmt et $/dmt ; glossaire, PDF p. 280 et 282, dmt et wmt.", "kind": "source"}], "related": ["dmt", "c1"]},
   "dmt": {"articles": [{"label": "Minerai de fer : le prix de l’attente", "href": "/posts/minerai-fer-prix-attente-fortescue-cmrg/", "kind": "article"}], "sources": [{"label": "OCDE, projet de consultation sur les produits minéraux, 2017", "href": "https://documents.worldbank.org/curated/en/775571485262636835/pdf/112221-WP-PUBLIC-ABSTRACT-SENT-23-1-2017-10-50-11-OECDmineralproductstradedinintermediateformsdiscussi.pdf", "detail": "PDF p. 40 / imprimée 36, encadré sur les prix : bases humide et sèche. Projet de consultation hébergé par la Banque mondiale.", "kind": "source"}, {"label": "Fortescue, rapport annuel FY26", "href": "https://edge.sitecorecloud.io/fortescue17114-fortescueeb60-productionbbdb-8be5/media/project/fortescueportal/shared/documents/regulatory/asx-announcements/fy26-annual-report_-app4e_updated.pdf", "detail": "PDF p. 42 / imprimée 39 : coût livré en $/wmt et $/dmt ; glossaire, PDF p. 280 et 282, dmt et wmt.", "kind": "source"}], "related": ["wmt", "c1"]},
-  "wafer": {"articles": [{"label": "Hélium : la géopolitique sous les puces", "href": "/posts/helium-geopolitique-sous-les-puces/", "kind": "article"}], "sources": [{"label": "Samsung, fabrication d’une plaquette, 22 avril 2015", "href": "https://news.samsung.com/global/eight-major-steps-to-semiconductor-fabrication-part-1-creating-the-wafer", "detail": "Lingot, découpe et circuits individuels sur la plaquette.", "kind": "source"}], "related": ["esc", "conductivite-thermique"]},
+  "wafer": {"articles": [
+      {"label": "L’IA s’invite dans le prix des ordinateurs", "href": "/posts/ia-memoire-prix-ordinateurs/", "detail": "Mémoire, arbitrages de capacité et transmission des coûts aux prix des ordinateurs.", "kind": "article"},{"label": "Hélium : la géopolitique sous les puces", "href": "/posts/helium-geopolitique-sous-les-puces/", "kind": "article"}], "sources": [{"label": "Samsung, fabrication d’une plaquette, 22 avril 2015", "href": "https://news.samsung.com/global/eight-major-steps-to-semiconductor-fabrication-part-1-creating-the-wafer", "detail": "Lingot, découpe et circuits individuels sur la plaquette.", "kind": "source"}], "related": [
+      "dram","esc", "conductivite-thermique"]},
   "esc": {"articles": [{"label": "Hélium : la géopolitique sous les puces", "href": "/posts/helium-geopolitique-sous-les-puces/", "kind": "article"}], "sources": [{"label": "Parizi et al., Qorvo / CS MANTECH, mai 2022", "href": "https://csmantech.org/wp-content/acfrcwduploads/field_5e8cddf5ddd10/post_6573/15.3_Characterization_of_Electrostatic_Chuck.pdf", "detail": "Page imprimée 265 : maintien électrostatique, gaz arrière et courbure de plaquette.", "kind": "source"}], "related": ["wafer", "conductivite-thermique"]},
   "conductivite-thermique": {"articles": [{"label": "Hélium : la géopolitique sous les puces", "href": "/posts/helium-geopolitique-sous-les-puces/", "kind": "article"}], "sources": [{"label": "NIST SRD 81, définitions des grandeurs", "href": "https://srdata.nist.gov/insulation/Home/DataFieldDef?Length=4", "detail": "Définition de la conductivité thermique et unité SI.", "kind": "source"}, {"label": "Huber / NIST, conductivité des gaz, 2024", "href": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=957066", "detail": "Pages PDF 1 et 2 : conditions de pression, température et limite des gaz dilués.", "kind": "source"}], "related": ["wafer", "esc"]},
   ces: {
@@ -1601,6 +1607,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   "nand": {
     "articles": [
+      {"label": "L’IA s’invite dans le prix des ordinateurs", "href": "/posts/ia-memoire-prix-ordinateurs/", "detail": "Mémoire, arbitrages de capacité et transmission des coûts aux prix des ordinateurs.", "kind": "article"},
       {
         "label": "SK hynix : Dalian et le financement d’une usine américaine",
         "href": "/posts/sk-hynix-dalian-usine-americaine-financement/",
@@ -1616,6 +1623,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       }
     ],
     "related": [
+      "dram",
       "ssd",
       "hbm",
       "packaging-avance"
@@ -1623,6 +1631,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   "ssd": {
     "articles": [
+      {"label": "L’IA s’invite dans le prix des ordinateurs", "href": "/posts/ia-memoire-prix-ordinateurs/", "detail": "Mémoire, arbitrages de capacité et transmission des coûts aux prix des ordinateurs.", "kind": "article"},
       {
         "label": "SK hynix : Dalian et le financement d’une usine américaine",
         "href": "/posts/sk-hynix-dalian-usine-americaine-financement/",
@@ -1638,6 +1647,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       }
     ],
     "related": [
+      "dram",
       "nand",
       "hbm",
       "packaging-avance"
@@ -1645,6 +1655,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   "hbm": {
     "articles": [
+      {"label": "L’IA s’invite dans le prix des ordinateurs", "href": "/posts/ia-memoire-prix-ordinateurs/", "detail": "Mémoire, arbitrages de capacité et transmission des coûts aux prix des ordinateurs.", "kind": "article"},
       {
         "label": "SK hynix : Dalian et le financement d’une usine américaine",
         "href": "/posts/sk-hynix-dalian-usine-americaine-financement/",
@@ -1660,6 +1671,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       }
     ],
     "related": [
+      "dram",
       "nand",
       "ssd",
       "packaging-avance"

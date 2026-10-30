@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pc-ai-en-wafers-m-title pc-ai-en-wafers-m-desc" viewBox="0 0 420 820" style="width:100%;height:auto" class="l0g-pc-ai-memory-svg">
+<title id="pc-ai-en-wafers-m-title">Equal bits, more silicon</title>
+<desc id="pc-ai-en-wafers-m-desc">Micron estimates that HBM3E uses roughly three times the wafer supply of DDR5 for the same number of bits on the same technology node. Source: Micron prepared remarks, 26 June 2024, p. 6. Each drawn disc represents one relative unit of wafer resources; three discs express the approximate 3:1 ratio. Product drawings are schematic and imply no number of modules produced per wafer. This is the manufacturer's estimate for HBM3E versus DDR5. It does not apply to NAND, selling prices or power consumption.</desc>
+<rect id="pc-ai-en-wafers-m-frame" x="0" y="0" width="420" height="820" fill="var(--color-ink)"/>
+<text data-panel="pc-ai-en-wafers-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g PC AI Memory" font-size="17" font-weight="700" text-anchor="start">l0g / MEMORY</text>
+<text data-panel="pc-ai-en-wafers-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="end">02 / 05</text>
+<text data-panel="pc-ai-en-wafers-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="25" font-weight="700" text-anchor="start">Competing for silicon</text>
+<text data-panel="pc-ai-en-wafers-m-frame" x="28" y="117" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">HBM3E / DDR5 · Micron estimate · 2024</text>
+<rect id="pc-ai-en-wafers-m-card-ddr" x="28" y="160" width="364" height="210" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-en-wafers-m-card-ddr" x="44" y="194" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="23" font-weight="700" text-anchor="start">DDR5</text>
+<text data-panel="pc-ai-en-wafers-m-card-ddr" x="376" y="194" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="18" font-weight="400" text-anchor="end">1 unit</text>
+<circle data-metric="wafer-ddr" data-value="1" cx="210" cy="278" r="42" fill="var(--color-surface-2)"/>
+<circle cx="210" cy="278" r="39" fill="var(--color-ink)"/>
+<line x1="180" y1="258.10025" x2="180" y2="297.89975" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="190.10025" y1="248" x2="229.89975" y2="248" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="192" y1="246.82309" x2="192" y2="309.17691" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="178.82309" y1="260" x2="241.17691" y2="260" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="204" y1="242.50352" x2="204" y2="313.49648" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="174.50352" y1="272" x2="245.49648" y2="272" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="216" y1="242.50352" x2="216" y2="313.49648" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="174.50352" y1="284" x2="245.49648" y2="284" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="228" y1="246.82309" x2="228" y2="309.17691" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="178.82309" y1="296" x2="241.17691" y2="296" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="240" y1="258.10025" x2="240" y2="297.89975" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="190.10025" y1="308" x2="229.89975" y2="308" stroke="var(--color-signal)" stroke-width="1"/>
+<text data-panel="pc-ai-en-wafers-m-card-ddr" x="210" y="354" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="middle">Conventional memory</text>
+<rect id="pc-ai-en-wafers-m-card-hbm" x="28" y="406" width="364" height="260" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-en-wafers-m-card-hbm" x="44" y="440" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="23" font-weight="700" text-anchor="start">HBM3E</text>
+<text data-panel="pc-ai-en-wafers-m-card-hbm" x="376" y="440" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="18" font-weight="400" text-anchor="end">~ 3 units</text>
+<circle data-metric="wafer-hbm-0" data-value="1" cx="97" cy="527" r="42" fill="var(--color-surface-2)"/>
+<circle cx="97" cy="527" r="39" fill="var(--color-ink)"/>
+<line x1="67" y1="507.10025" x2="67" y2="546.89975" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="77.10025" y1="497" x2="116.89975" y2="497" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="79" y1="495.82309" x2="79" y2="558.17691" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="65.82309" y1="509" x2="128.17691" y2="509" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="91" y1="491.50352" x2="91" y2="562.49648" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="61.50352" y1="521" x2="132.49648" y2="521" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="103" y1="491.50352" x2="103" y2="562.49648" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="61.50352" y1="533" x2="132.49648" y2="533" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="115" y1="495.82309" x2="115" y2="558.17691" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="65.82309" y1="545" x2="128.17691" y2="545" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="127" y1="507.10025" x2="127" y2="546.89975" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="77.10025" y1="557" x2="116.89975" y2="557" stroke="var(--color-signal)" stroke-width="1"/>
+<circle data-metric="wafer-hbm-1" data-value="1" cx="210" cy="527" r="42" fill="var(--color-surface-2)"/>
+<circle cx="210" cy="527" r="39" fill="var(--color-ink)"/>
+<line x1="180" y1="507.10025" x2="180" y2="546.89975" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="190.10025" y1="497" x2="229.89975" y2="497" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="192" y1="495.82309" x2="192" y2="558.17691" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="178.82309" y1="509" x2="241.17691" y2="509" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="204" y1="491.50352" x2="204" y2="562.49648" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="174.50352" y1="521" x2="245.49648" y2="521" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="216" y1="491.50352" x2="216" y2="562.49648" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="174.50352" y1="533" x2="245.49648" y2="533" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="228" y1="495.82309" x2="228" y2="558.17691" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="178.82309" y1="545" x2="241.17691" y2="545" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="240" y1="507.10025" x2="240" y2="546.89975" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="190.10025" y1="557" x2="229.89975" y2="557" stroke="var(--color-signal)" stroke-width="1"/>
+<circle data-metric="wafer-hbm-2" data-value="1" cx="323" cy="527" r="42" fill="var(--color-surface-2)"/>
+<circle cx="323" cy="527" r="39" fill="var(--color-ink)"/>
+<line x1="293" y1="507.10025" x2="293" y2="546.89975" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="303.10025" y1="497" x2="342.89975" y2="497" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="305" y1="495.82309" x2="305" y2="558.17691" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="291.82309" y1="509" x2="354.17691" y2="509" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="317" y1="491.50352" x2="317" y2="562.49648" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="287.50352" y1="521" x2="358.49648" y2="521" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="329" y1="491.50352" x2="329" y2="562.49648" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="287.50352" y1="533" x2="358.49648" y2="533" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="341" y1="495.82309" x2="341" y2="558.17691" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="291.82309" y1="545" x2="354.17691" y2="545" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="353" y1="507.10025" x2="353" y2="546.89975" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="303.10025" y1="557" x2="342.89975" y2="557" stroke="var(--color-signal)" stroke-width="1"/>
+<rect x="160" y="596" width="92" height="12" fill="var(--color-amber)"/>
+<rect x="164" y="582" width="92" height="12" fill="var(--color-amber)"/>
+<rect x="168" y="568" width="92" height="12" fill="var(--color-amber)"/>
+<text data-panel="pc-ai-en-wafers-m-card-hbm" x="210" y="646" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="middle">Stacked dies</text>
+<text data-panel="pc-ai-en-wafers-m-frame" x="28" y="710" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="19" font-weight="400" text-anchor="start">Equal bits,</text>
+<text data-panel="pc-ai-en-wafers-m-frame" x="28" y="738" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="19" font-weight="400" text-anchor="start">same technology node.</text>
+<text data-panel="pc-ai-en-wafers-m-frame" x="28" y="765" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Relative wafer resources</text>
+<text data-panel="pc-ai-en-wafers-m-frame" x="28" y="793" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">R04 · R14</text>
+</svg>

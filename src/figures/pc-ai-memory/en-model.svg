@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pc-ai-en-model-d-title pc-ai-en-model-d-desc" viewBox="0 0 1000 680" style="width:100%;height:auto" class="l0g-pc-ai-memory-svg">
+<title id="pc-ai-en-model-d-title">Track the €150 extra cost</title>
+<desc id="pc-ai-en-model-d-desc">Fictional example. Illustrative scenario: a €150 cost doubles; 60% of the increase reaches the buyer. The €1,000 price before tax becomes €1,090. Teaching example with chosen assumptions: initial price P₀ = €1,000, exposed cost C₀ = €150, cost increase g = 100%, pass-through t = 60%. All amounts exclude tax; exchange rates, tax rates and other costs stay fixed. Price addition = C₀ × g × t = €90; absorbed cost = €60. Flow widths reflect the assumed 60/40 split. No parameter represents a market average or forecast.</desc>
+<rect id="pc-ai-en-model-d-frame" x="0" y="0" width="1000" height="680" fill="var(--color-ink)"/>
+<text data-panel="pc-ai-en-model-d-frame" x="40" y="40" fill="var(--color-signal)" font-family="l0g PC AI Memory" font-size="22" font-weight="700" text-anchor="start">l0g / MEMORY</text>
+<text data-panel="pc-ai-en-model-d-frame" x="960" y="40" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="22" font-weight="400" text-anchor="end">05 / 05</text>
+<text data-panel="pc-ai-en-model-d-frame" x="40" y="93" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="34" font-weight="700" text-anchor="start">Track the €150 extra cost</text>
+<text data-panel="pc-ai-en-model-d-frame" x="40" y="137" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="22" font-weight="400" text-anchor="start">Fictional scenario · before tax · other costs fixed</text>
+<rect id="pc-ai-en-model-d-card-cost" x="40" y="180" width="450" height="280" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-en-model-d-card-cost" x="62" y="222" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="26" font-weight="700" text-anchor="start">The exposed cost doubles</text>
+<rect data-metric="exposed-0" data-value="150" x="62" y="278" width="162.5" height="36" fill="var(--color-muted)"/>
+<text data-panel="pc-ai-en-model-d-card-cost" x="236.5" y="305" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="23" font-weight="700" text-anchor="start">150 €</text>
+<rect data-metric="exposed-1" data-value="300" x="62" y="365" width="325.0" height="36" fill="var(--color-signal)"/>
+<text data-panel="pc-ai-en-model-d-card-cost" x="399.0" y="392" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="23" font-weight="700" text-anchor="start">300 €</text>
+<rect id="pc-ai-en-model-d-card-share" x="530" y="180" width="430" height="280" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-en-model-d-card-share" x="554" y="222" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="26" font-weight="700" text-anchor="start">Extra cost: €150</text>
+<rect data-metric="passed" data-value="90" x="554" y="278" width="225.6" height="45" fill="var(--color-signal)"/>
+<rect data-metric="absorbed" data-value="60" x="779.6" y="278" width="150.4" height="45" fill="var(--color-amber)"/>
+<text data-panel="pc-ai-en-model-d-card-share" x="554" y="372" fill="var(--color-signal)" font-family="l0g PC AI Memory" font-size="23" font-weight="700" text-anchor="start">€90 · customer</text>
+<text data-panel="pc-ai-en-model-d-card-share" x="554" y="418" fill="var(--color-amber)" font-family="l0g PC AI Memory" font-size="23" font-weight="700" text-anchor="start">€60 · absorbed</text>
+<text data-panel="pc-ai-en-model-d-frame" x="170" y="553" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="38" font-weight="700" text-anchor="middle">1 000 €</text>
+<line x1="335" y1="540" x2="650" y2="540" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 641 534 L 650 540 L 641 546" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="pc-ai-en-model-d-frame" x="795" y="553" fill="var(--color-signal)" font-family="l0g PC AI Memory" font-size="42" font-weight="700" text-anchor="middle">1 090 €</text>
+<text data-panel="pc-ai-en-model-d-frame" x="490" y="513" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="22" font-weight="400" text-anchor="middle">60% passed on</text>
+<text data-panel="pc-ai-en-model-d-frame" x="40" y="613" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="22" font-weight="400" text-anchor="start">All amounts are before tax; inputs are fictional.</text>
+<text data-panel="pc-ai-en-model-d-frame" x="40" y="653" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="22" font-weight="400" text-anchor="start">l0g calculation · fictional inputs</text>
+</svg>

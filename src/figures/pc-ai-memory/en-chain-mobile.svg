@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pc-ai-en-chain-m-title pc-ai-en-chain-m-desc" viewBox="0 0 420 820" style="width:100%;height:auto" class="l0g-pc-ai-memory-svg">
+<title id="pc-ai-en-chain-m-title">From silicon to the price tag</title>
+<desc id="pc-ai-en-chain-m-desc">Two manufacturing chains, followed by contracts, inventories and commercial choices. Every stage can change how a cost reaches the buyer. Analytical diagram based on supplier and PC-maker disclosures. DRAM and NAND remain distinct manufacturing chains. Arrows show qualitative relationships; their width does not encode volumes. Pricing, specification and margin are possible responses whose combination varies by business. Some supply agreements secure quantities while leaving prices open to negotiation. Currency, taxes and competition add further influences.</desc>
+<rect id="pc-ai-en-chain-m-frame" x="0" y="0" width="420" height="820" fill="var(--color-ink)"/>
+<text data-panel="pc-ai-en-chain-m-frame" x="28" y="34" fill="var(--color-signal)" font-family="l0g PC AI Memory" font-size="17" font-weight="700" text-anchor="start">l0g / MEMORY</text>
+<text data-panel="pc-ai-en-chain-m-frame" x="392" y="34" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="end">03 / 05</text>
+<text data-panel="pc-ai-en-chain-m-frame" x="28" y="81" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="25" font-weight="700" text-anchor="start">From silicon to price</text>
+<text data-panel="pc-ai-en-chain-m-frame" x="28" y="117" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Qualitative links · contracts,</text>
+<text data-panel="pc-ai-en-chain-m-frame" x="28" y="141" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">inventory and choices</text>
+<rect id="pc-ai-en-chain-m-card-DRAM" x="28" y="165" width="174" height="130" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-en-chain-m-card-DRAM" x="41" y="199" fill="var(--color-signal)" font-family="l0g PC AI Memory" font-size="23" font-weight="700" text-anchor="start">DRAM</text>
+<text data-panel="pc-ai-en-chain-m-card-DRAM" x="41" y="239" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">PCs and servers</text>
+<text data-panel="pc-ai-en-chain-m-card-DRAM" x="41" y="265" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">HBM for AI</text>
+<rect id="pc-ai-en-chain-m-card-NAND" x="218" y="165" width="174" height="130" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-en-chain-m-card-NAND" x="231" y="199" fill="var(--color-amber)" font-family="l0g PC AI Memory" font-size="23" font-weight="700" text-anchor="start">NAND</text>
+<text data-panel="pc-ai-en-chain-m-card-NAND" x="231" y="239" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">PC SSDs</text>
+<text data-panel="pc-ai-en-chain-m-card-NAND" x="231" y="265" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Server SSDs</text>
+<path d="M 115 295 L 115 320 L 210 320" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 305 295 L 305 320 L 210 320" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="210" y1="320" x2="210" y2="347" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 204 338 L 210 347 L 216 338" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="pc-ai-en-chain-m-card-contracts" x="54" y="350" width="312" height="145" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-en-chain-m-card-contracts" x="74" y="389" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="21" font-weight="700" text-anchor="start">Contracts / inventory</text>
+<text data-panel="pc-ai-en-chain-m-card-contracts" x="74" y="431" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Negotiated volumes and prices</text>
+<text data-panel="pc-ai-en-chain-m-card-contracts" x="74" y="460" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Inventory and delays</text>
+<path d="M 210 495 L 210 523 L 405 523 L 405 721" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="pc-ai-en-chain-m-card-0" x="28" y="550" width="364" height="54" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-en-chain-m-card-0" x="42" y="584" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="18" font-weight="700" text-anchor="start">Price</text>
+<text data-panel="pc-ai-en-chain-m-card-0" x="380" y="584" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="end">Prices, discounts</text>
+<line x1="405" y1="577" x2="394" y2="577" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 403 571 L 394 577 L 403 583" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="pc-ai-en-chain-m-card-1" x="28" y="620" width="364" height="54" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-en-chain-m-card-1" x="42" y="654" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="18" font-weight="700" text-anchor="start">Configuration</text>
+<text data-panel="pc-ai-en-chain-m-card-1" x="380" y="654" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="end">Memory, storage</text>
+<line x1="405" y1="647" x2="394" y2="647" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 403 641 L 394 647 L 403 653" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="pc-ai-en-chain-m-card-2" x="28" y="690" width="364" height="54" fill="var(--color-surface)"/>
+<text data-panel="pc-ai-en-chain-m-card-2" x="42" y="724" fill="var(--color-paper)" font-family="l0g PC AI Memory" font-size="18" font-weight="700" text-anchor="start">Margin</text>
+<text data-panel="pc-ai-en-chain-m-card-2" x="380" y="724" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="end">Cost absorbed</text>
+<line x1="405" y1="717" x2="394" y2="717" stroke="var(--color-signal)" stroke-width="3"/>
+<path d="M 403 711 L 394 717 L 403 723" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="pc-ai-en-chain-m-frame" x="28" y="763" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">Qualitative arrows, not volumes</text>
+<text data-panel="pc-ai-en-chain-m-frame" x="28" y="793" fill="var(--color-muted)" font-family="l0g PC AI Memory" font-size="17" font-weight="400" text-anchor="start">R05 · R06 · R09 · R10 · R11 · R12</text>
+</svg>
