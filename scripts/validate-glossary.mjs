@@ -20,6 +20,29 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
 
+// Network delivery and routing identity remain short, sourced bilingual definitions.
+const gigaTaxArticles = ['/posts/taxe-giga-internet-ps/', '/en/analysis/france-gigabyte-tax-internet/'];
+for (const [slug, sources] of [
+  ['cdn', ['https://www.rfc-editor.org/rfc/rfc6707.html']],
+  ['asn', ['https://www.iana.org/assignments/as-numbers', 'https://www.rfc-editor.org/rfc/rfc1930.html']],
+]) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  for (const [entry, article] of [[fr[0], gigaTaxArticles[0]], [en[0], gigaTaxArticles[1]]]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
+  }
+}
+for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === 'incidence-fiscale'), gigaTaxArticles[0]], [glossaryAtlasEnBySlug.get('incidence-fiscale'), gigaTaxArticles[1]]]) {
+  assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+}
+
 // Household budgets preserve periods, expenditure weights and housing conventions.
 const inflationBudgetFr = '/posts/inflation-budget/';
 const inflationBudgetEn = '/en/analysis/why-your-budget-tells-a-different-inflation-story/';
@@ -1224,7 +1247,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 369, 'Le corpus ajoute deux notions bilingues sur les données du véhicule');
+assert.equal(glossaryAtlasEnBySlug.size, 371, 'Le corpus ajoute les réseaux de diffusion et les systèmes autonomes en anglais');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1425,8 +1448,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 756, 'Le corpus ajoute deux notions courtes sur les données du véhicule');
-assert.equal(glossaryAtlasEntries.length, 359, 'Les deux notions sur les données du véhicule disposent de sources et de liens');
+assert.equal(glossaryEntries.length, 758, 'Le corpus ajoute deux notions courtes sur la distribution des données internet');
+assert.equal(glossaryAtlasEntries.length, 361, 'Les notions CDN et ASN disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1848,7 +1871,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 980, 'Le corpus ajoute quatre relations entre données du véhicule et vie privée');
+assert.equal(glossaryAtlasEdgeCount, 982, 'Le corpus relie les réseaux de diffusion aux systèmes autonomes');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

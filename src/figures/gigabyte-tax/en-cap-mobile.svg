@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 800" role="img" aria-labelledby="giga-en-cap-m-title giga-en-cap-m-desc" style="width:100%;height:auto" class="l0g-giga-tax-svg">
+<title id="giga-en-cap-m-title">The cap switches off the marginal tax signal</title><desc id="giga-en-cap-m-desc">Conditional illustration: hypothetical French annual revenue of 1 million euros, held constant; the 15% cap is selected for this example, giving 150,000 euros. Gross tax is 0.055 euro per gigabyte. The cap is reached at 2,727,272.727 gigabytes; beyond it, an extra gigabyte leaves the bill unchanged. The text also mentions 2% of total revenue using the word “or”: this figure does not determine how the legal alternatives interact.</desc>
+<rect id="giga-en-cap-m-frame" x="0" y="0" width="420" height="800" rx="0" fill="var(--color-ink)"/>
+<rect id="giga-en-cap-m-header" x="16" y="16" width="388" height="136" rx="10" fill="var(--color-ink)"/>
+<text data-panel="giga-en-cap-m-header" x="28" y="46" font-family="l0g Giga Tax" font-size="18" font-weight="700" fill="var(--color-signal)" text-anchor="start">THE CAP AND ITS EFFECTS</text>
+<text data-panel="giga-en-cap-m-header" x="28" y="82" font-family="l0g Giga Tax" font-size="26" font-weight="700" fill="var(--color-paper)" text-anchor="start">The cap switches off</text>
+<text data-panel="giga-en-cap-m-header" x="28" y="115" font-family="l0g Giga Tax" font-size="26" font-weight="700" fill="var(--color-paper)" text-anchor="start">the marginal tax signal</text>
+<rect id="giga-en-cap-m-body" x="16" y="172" width="388" height="464" rx="10" fill="var(--color-ink)"/>
+<text data-panel="giga-en-cap-m-body" x="28" y="202" font-family="l0g Giga Tax" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Annual tax (€)</text>
+<text data-panel="giga-en-cap-m-body" x="70" y="244" font-family="l0g Giga Tax" font-size="20" font-weight="700" fill="var(--color-signal)" text-anchor="start">Cap: €150,000</text>
+<path data-connector="axis-y" d="M80 276 L80 540" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="axis-x" d="M80 540 L380 540" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="giga-en-cap-m-body" x="67" y="547.0" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="end">0</text>
+<text data-panel="giga-en-cap-m-body" x="67" y="427.0" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="end">100k</text>
+<path data-connector="grid-100" d="M80 420.0 L380 420.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<text data-panel="giga-en-cap-m-body" x="67" y="307.0" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="end">200k</text>
+<path data-connector="grid-200" d="M80 300.0 L380 300.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<path data-connector="gross-tax" data-metric="gross-tax" data-value="0.055" d="M80 540 L365 276" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<path data-connector="capped-tax" data-metric="cap-eur" data-value="150000" d="M80 540 L274.318181818182 360 L365 360" fill="none" stroke="var(--color-signal)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="cap-threshold" d="M274.318181818182 368 L274.318181818182 540" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<text data-panel="giga-en-cap-m-body" x="338" y="397" font-family="l0g Giga Tax" font-size="18" font-weight="700" fill="var(--color-signal)" text-anchor="middle">Flat bill</text>
+<text data-panel="giga-en-cap-m-body" x="80" y="580" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="middle">0</text>
+<text data-panel="giga-en-cap-m-body" x="222.5" y="580" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="middle">2</text>
+<text data-panel="giga-en-cap-m-body" x="365" y="580" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="middle">4</text>
+<text data-panel="giga-en-cap-m-body" x="274.318181818182" y="580" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-signal)" text-anchor="middle">2.73</text>
+<text data-panel="giga-en-cap-m-body" x="220" y="617" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Million GB / year</text>
+<rect id="giga-en-cap-m-footer" x="16" y="650" width="388" height="136" rx="10" fill="var(--color-ink)"/>
+<path data-connector="legend-cap" d="M30 679 L65 679" fill="none" stroke="var(--color-signal)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="giga-en-cap-m-footer" x="78" y="686" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-signal)" text-anchor="start">Capped tax</text>
+<path data-connector="legend-gross" d="M30 711 L65 711" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<text data-panel="giga-en-cap-m-footer" x="78" y="718" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-amber)" text-anchor="start">Gross tax: €0.055/GB</text>
+<text data-panel="giga-en-cap-m-footer" x="28" y="751" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">Assumption: €1m French revenue,</text>
+<text data-panel="giga-en-cap-m-footer" x="28" y="778" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">15% cap, revenue held constant.</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="giga-fr-flow-d-title giga-fr-flow-d-desc" style="width:100%;height:auto" class="l0g-giga-tax-svg">
+<title id="giga-fr-flow-d-title">La taxe suit un autre circuit que les données</title><desc id="giga-fr-flow-d-desc">Mécanisme proposé par I-1358 : l’émetteur livre des données, le fournisseur d’accès mesure des volumes agrégés et les transmet à l’administration fiscale ; l’émetteur verse la taxe. Les pointillés représentent des ajustements économiques possibles, dont la répartition dépend du marché. Les flèches ne représentent aucun montant.</desc>
+<rect id="giga-fr-flow-d-frame" x="0" y="0" width="1000" height="680" rx="0" fill="var(--color-ink)"/>
+<rect id="giga-fr-flow-d-header" x="16" y="16" width="968" height="104" rx="10" fill="var(--color-ink)"/>
+<text data-panel="giga-fr-flow-d-header" x="40" y="48" font-family="l0g Giga Tax" font-size="24" font-weight="700" fill="var(--color-signal)" text-anchor="start">LE CIRCUIT PROPOSÉ</text>
+<text data-panel="giga-fr-flow-d-header" x="40" y="94" font-family="l0g Giga Tax" font-size="32" font-weight="700" fill="var(--color-paper)" text-anchor="start">Qui verse, qui mesure, qui peut payer au final</text>
+<rect id="giga-fr-flow-d-body" x="16" y="132" width="968" height="438" rx="10" fill="var(--color-ink)"/>
+<rect id="giga-fr-flow-d-card-issuer" x="40" y="190" width="250" height="96" rx="10" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="giga-fr-flow-d-card-issuer" x="165" y="226" font-family="l0g Giga Tax" font-size="26" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Émetteur</text>
+<text data-panel="giga-fr-flow-d-card-issuer" x="165" y="261" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Fournit le contenu</text>
+<rect id="giga-fr-flow-d-card-access" x="375" y="190" width="250" height="96" rx="10" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="giga-fr-flow-d-card-access" x="500" y="226" font-family="l0g Giga Tax" font-size="26" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Accès internet</text>
+<text data-panel="giga-fr-flow-d-card-access" x="500" y="261" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Mesure les volumes</text>
+<rect id="giga-fr-flow-d-card-reader" x="710" y="190" width="250" height="96" rx="10" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="giga-fr-flow-d-card-reader" x="835" y="226" font-family="l0g Giga Tax" font-size="26" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Abonné</text>
+<text data-panel="giga-fr-flow-d-card-reader" x="835" y="261" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Reçoit les données</text>
+<text data-panel="giga-fr-flow-d-body" x="500" y="166" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-signal)" text-anchor="middle">Flux de données</text>
+<path data-connector="data-to-access" d="M295 238 L367 238" fill="none" stroke="var(--color-signal)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="data-to-access-arrow" d="M358 229 L367 238 L358 247" fill="none" stroke="var(--color-signal)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="data-to-subscriber" d="M630 238 L702 238" fill="none" stroke="var(--color-signal)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="data-to-subscriber-arrow" d="M693 229 L702 238 L693 247" fill="none" stroke="var(--color-signal)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="giga-fr-flow-d-card-state" x="390" y="390" width="220" height="90" rx="10" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="2"/>
+<text data-panel="giga-fr-flow-d-card-state" x="500" y="425" font-family="l0g Giga Tax" font-size="28" font-weight="700" fill="var(--color-paper)" text-anchor="middle">État</text>
+<text data-panel="giga-fr-flow-d-card-state" x="500" y="460" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Trésor public</text>
+<path data-connector="measured-volumes" d="M500 291 L500 382" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="measured-volumes-arrow" d="M491 373 L500 382 L509 373" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="giga-fr-flow-d-body" x="526" y="335" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-signal)" text-anchor="start">Volume agrégé</text>
+<path data-connector="tax-payment" d="M165 292 L165 435 L382 435" fill="none" stroke="var(--color-amber)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="tax-payment-arrow" d="M373 426 L382 435 L373 444" fill="none" stroke="var(--color-amber)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="giga-fr-flow-d-body" x="190" y="353" font-family="l0g Giga Tax" font-size="24" font-weight="700" fill="var(--color-amber)" text-anchor="start">Verse la taxe</text>
+<path data-connector="possible-incidence" d="M95 292 L95 546 L835 546 L835 292" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<path data-connector="possible-incidence-arrow" d="M826 301 L835 292 L844 301" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="giga-fr-flow-d-body" x="500" y="524" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-accent)" text-anchor="middle">Prix, publicité, services : ajustements possibles</text>
+<rect id="giga-fr-flow-d-footer" x="16" y="594" width="968" height="70" rx="10" fill="var(--color-ink)"/>
+<text data-panel="giga-fr-flow-d-footer" x="40" y="621" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="start">Traits pleins : obligations du texte adopté en première lecture</text>
+<text data-panel="giga-fr-flow-d-footer" x="40" y="652" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="start">Pointillés : effets possibles, selon les marchés</text>
+</svg>

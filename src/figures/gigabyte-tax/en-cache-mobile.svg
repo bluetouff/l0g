@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 800" role="img" aria-labelledby="giga-en-cache-m-title giga-en-cache-m-desc" style="width:100%;height:auto" class="l0g-giga-tax-svg">
+<title id="giga-en-cache-m-title">Caching saves transport; the tax counts the output</title><desc id="giga-en-cache-m-desc">Normalised volumes for internal CDNs at end-2025. Arcep reports an average ratio of traffic served to users over cache-fill traffic of 11 to 1, ranging from 8 to 23 by operator. Bands show a volume ratio, not individual requests. I-1358 counts the sum of flows leaving the CDN.</desc>
+<rect id="giga-en-cache-m-frame" x="0" y="0" width="420" height="800" rx="0" fill="var(--color-ink)"/>
+<rect id="giga-en-cache-m-header" x="16" y="16" width="388" height="136" rx="10" fill="var(--color-ink)"/>
+<text data-panel="giga-en-cache-m-header" x="28" y="46" font-family="l0g Giga Tax" font-size="18" font-weight="700" fill="var(--color-signal)" text-anchor="start">THE LOCAL CACHE</text>
+<text data-panel="giga-en-cache-m-header" x="28" y="82" font-family="l0g Giga Tax" font-size="26" font-weight="700" fill="var(--color-paper)" text-anchor="start">Less upstream transport,</text>
+<text data-panel="giga-en-cache-m-header" x="28" y="115" font-family="l0g Giga Tax" font-size="26" font-weight="700" fill="var(--color-paper)" text-anchor="start">the same bytes delivered</text>
+<rect id="giga-en-cache-m-body" x="16" y="160" width="388" height="550" rx="10" fill="var(--color-ink)"/>
+<rect id="giga-en-cache-m-card-origin" x="40" y="160" width="160" height="90" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="giga-en-cache-m-card-origin" x="120" y="194" font-family="l0g Giga Tax" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Origin</text>
+<text data-panel="giga-en-cache-m-card-origin" x="120" y="225" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Server</text>
+<rect id="giga-en-cache-m-card-cache" x="40" y="360" width="160" height="90" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="giga-en-cache-m-card-cache" x="120" y="394" font-family="l0g Giga Tax" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Local cache</text>
+<text data-panel="giga-en-cache-m-card-cache" x="120" y="425" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Internal CDN</text>
+<rect id="giga-en-cache-m-card-subscriber" x="40" y="610" width="160" height="90" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="giga-en-cache-m-card-subscriber" x="120" y="644" font-family="l0g Giga Tax" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Subscribers</text>
+<text data-panel="giga-en-cache-m-card-subscriber" x="120" y="675" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Delivery</text>
+<path data-connector="cache-input-band" data-metric="cache-input" data-value="1" d="M117 260 L123 260 L123 337 L129 337 L120 352 L111 337 L117 337 Z" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="cache-output-band" data-metric="cache-output" data-value="11" d="M87 460 L153 460 L153 580 L165 580 L120 601 L75 580 L87 580 Z" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="giga-en-cache-m-body" x="245" y="299" font-family="l0g Giga Tax" font-size="42" font-weight="700" fill="var(--color-signal)" text-anchor="start">1</text>
+<text data-panel="giga-en-cache-m-body" x="230" y="330" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">into the cache</text>
+<text data-panel="giga-en-cache-m-body" x="245" y="511" font-family="l0g Giga Tax" font-size="42" font-weight="700" fill="var(--color-signal)" text-anchor="start">11</text>
+<text data-panel="giga-en-cache-m-body" x="230" y="544" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">to subscribers</text>
+<path data-connector="tax-bracket" d="M220 570 L220 591 L382 591 L382 570" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="giga-en-cache-m-body" x="220" y="634" font-family="l0g Giga Tax" font-size="20" font-weight="700" fill="var(--color-accent)" text-anchor="start">Target volume</text>
+<text data-panel="giga-en-cache-m-body" x="220" y="664" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-accent)" text-anchor="start">CDN output</text>
+<rect id="giga-en-cache-m-footer" x="16" y="720" width="388" height="80" rx="10" fill="var(--color-ink)"/>
+<text data-panel="giga-en-cache-m-footer" x="28" y="741" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">Normalised volumes · end-2025</text>
+<text data-panel="giga-en-cache-m-footer" x="28" y="765" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">Arcep: 11/1 on average</text>
+<text data-panel="giga-en-cache-m-footer" x="28" y="788" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">Operator range: 8/1 to 23/1</text>
+</svg>

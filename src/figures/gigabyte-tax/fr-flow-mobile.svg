@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 800" role="img" aria-labelledby="giga-fr-flow-m-title giga-fr-flow-m-desc" style="width:100%;height:auto" class="l0g-giga-tax-svg">
+<title id="giga-fr-flow-m-title">La taxe suit un autre circuit que les données</title><desc id="giga-fr-flow-m-desc">Mécanisme proposé par I-1358 : l’émetteur livre des données, le fournisseur d’accès mesure des volumes agrégés et les transmet à l’administration fiscale ; l’émetteur verse la taxe. Les pointillés représentent des ajustements économiques possibles, dont la répartition dépend du marché. Les flèches ne représentent aucun montant.</desc>
+<rect id="giga-fr-flow-m-frame" x="0" y="0" width="420" height="800" rx="0" fill="var(--color-ink)"/>
+<rect id="giga-fr-flow-m-header" x="16" y="16" width="388" height="136" rx="10" fill="var(--color-ink)"/>
+<text data-panel="giga-fr-flow-m-header" x="28" y="46" font-family="l0g Giga Tax" font-size="18" font-weight="700" fill="var(--color-signal)" text-anchor="start">LE CIRCUIT PROPOSÉ</text>
+<text data-panel="giga-fr-flow-m-header" x="28" y="82" font-family="l0g Giga Tax" font-size="26" font-weight="700" fill="var(--color-paper)" text-anchor="start">Qui verse, qui mesure,</text>
+<text data-panel="giga-fr-flow-m-header" x="28" y="115" font-family="l0g Giga Tax" font-size="26" font-weight="700" fill="var(--color-paper)" text-anchor="start">qui peut payer au final</text>
+<rect id="giga-fr-flow-m-body" x="16" y="160" width="388" height="488" rx="10" fill="var(--color-ink)"/>
+<rect id="giga-fr-flow-m-card-issuer" x="40" y="180" width="145" height="88" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="giga-fr-flow-m-card-issuer" x="112.5" y="214" font-family="l0g Giga Tax" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Émetteur</text>
+<text data-panel="giga-fr-flow-m-card-issuer" x="112.5" y="246" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Contenu</text>
+<rect id="giga-fr-flow-m-card-reader" x="235" y="180" width="145" height="88" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="giga-fr-flow-m-card-reader" x="307.5" y="214" font-family="l0g Giga Tax" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Abonné</text>
+<text data-panel="giga-fr-flow-m-card-reader" x="307.5" y="246" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Données</text>
+<rect id="giga-fr-flow-m-card-access" x="130" y="330" width="160" height="88" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="giga-fr-flow-m-card-access" x="210" y="364" font-family="l0g Giga Tax" font-size="20" font-weight="700" fill="var(--color-paper)" text-anchor="middle">Opérateur</text>
+<text data-panel="giga-fr-flow-m-card-access" x="210" y="396" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Mesure</text>
+<path data-connector="data-to-access" d="M112 274 L112 374 L124 374" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="data-to-access-arrow" d="M117 367 L124 374 L117 381" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="data-to-subscriber" d="M296 374 L307 374 L307 274" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="data-to-subscriber-arrow" d="M300 281 L307 274 L314 281" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="giga-fr-flow-m-card-state" x="140" y="495" width="140" height="88" rx="8" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="2"/>
+<text data-panel="giga-fr-flow-m-card-state" x="210" y="530" font-family="l0g Giga Tax" font-size="22" font-weight="700" fill="var(--color-paper)" text-anchor="middle">État</text>
+<text data-panel="giga-fr-flow-m-card-state" x="210" y="561" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Impôt</text>
+<path data-connector="measured-volumes" d="M210 424 L210 489" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="measured-volumes-arrow" d="M203 482 L210 489 L217 482" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="giga-fr-flow-m-body" x="230" y="459" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-signal)" text-anchor="start">Mesures</text>
+<path data-connector="tax-payment" d="M65 274 L65 540 L134 540" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="tax-payment-arrow" d="M127 533 L134 540 L127 547" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="giga-fr-flow-m-body" x="75" y="518" font-family="l0g Giga Tax" font-size="18" font-weight="700" fill="var(--color-amber)" text-anchor="start">Taxe</text>
+<path data-connector="possible-incidence" d="M34 224 L24 224 L24 626 L395 626 L395 224 L386 224" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<path data-connector="possible-incidence-arrow" d="M393 217 L386 224 L393 231" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="giga-fr-flow-m-body" x="210" y="609" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-accent)" text-anchor="middle">Prix, publicité, services</text>
+<rect id="giga-fr-flow-m-footer" x="16" y="676" width="388" height="110" rx="10" fill="var(--color-ink)"/>
+<text data-panel="giga-fr-flow-m-footer" x="28" y="702" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">Turquoise : données et mesures</text>
+<text data-panel="giga-fr-flow-m-footer" x="28" y="735" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">Ambre : versement fiscal</text>
+<text data-panel="giga-fr-flow-m-footer" x="28" y="768" font-family="l0g Giga Tax" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">Pointillés : effets possibles</text>
+</svg>

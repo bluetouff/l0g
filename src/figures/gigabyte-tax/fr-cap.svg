@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="giga-fr-cap-d-title giga-fr-cap-d-desc" style="width:100%;height:auto" class="l0g-giga-tax-svg">
+<title id="giga-fr-cap-d-title">Le plafond coupe le signal fiscal</title><desc id="giga-fr-cap-d-desc">Illustration conditionnelle : chiffre d’affaires français fictif de 1 million d’euros par an, constant ; plafond de 15 % choisi pour cet exemple, soit 150 000 euros. Taxe brute à 0,055 euro par gigaoctet. Le plafond est atteint à 2 727 272,727 gigaoctets ; au-delà, un gigaoctet supplémentaire laisse le montant inchangé. Le texte mentionne aussi 2 % du chiffre d’affaires total avec le mot « ou » : cette figure ne tranche pas l’articulation juridique.</desc>
+<rect id="giga-fr-cap-d-frame" x="0" y="0" width="1000" height="680" rx="0" fill="var(--color-ink)"/>
+<rect id="giga-fr-cap-d-header" x="16" y="16" width="968" height="104" rx="10" fill="var(--color-ink)"/>
+<text data-panel="giga-fr-cap-d-header" x="40" y="48" font-family="l0g Giga Tax" font-size="24" font-weight="700" fill="var(--color-signal)" text-anchor="start">LE PLAFOND ET SES EFFETS</text>
+<text data-panel="giga-fr-cap-d-header" x="40" y="94" font-family="l0g Giga Tax" font-size="32" font-weight="700" fill="var(--color-paper)" text-anchor="start">Le plafond coupe le signal fiscal</text>
+<rect id="giga-fr-cap-d-body" x="16" y="138" width="968" height="452" rx="10" fill="var(--color-ink)"/>
+<text data-panel="giga-fr-cap-d-body" x="40" y="168" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="start">Taxe annuelle (€)</text>
+<path data-connector="axis-y" d="M120 199 L120 480" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="axis-x" d="M120 480 L865 480" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="giga-fr-cap-d-body" x="102" y="489.0" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="end">0</text>
+<text data-panel="giga-fr-cap-d-body" x="102" y="364.0" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="end">100 k</text>
+<path data-connector="grid-100" d="M120 355.0 L865 355.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<text data-panel="giga-fr-cap-d-body" x="102" y="239.0" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="end">200 k</text>
+<path data-connector="grid-200" d="M120 230.0 L865 230.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<path data-connector="gross-tax" data-metric="gross-tax" data-value="0.055" d="M120 480 L840 205" fill="none" stroke="var(--color-amber)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<path data-connector="capped-tax" data-metric="cap-eur" data-value="150000" d="M120 480 L610.909090909091 292.5 L840 292.5" fill="none" stroke="var(--color-signal)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="cap-threshold" d="M610.909090909091 301 L610.909090909091 480" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<text data-panel="giga-fr-cap-d-body" x="150" y="263" font-family="l0g Giga Tax" font-size="26" font-weight="700" fill="var(--color-signal)" text-anchor="start">Plafond illustré : 150 000 €</text>
+<text data-panel="giga-fr-cap-d-body" x="740" y="379" font-family="l0g Giga Tax" font-size="26" font-weight="700" fill="var(--color-signal)" text-anchor="middle">Taxe stable</text>
+<text data-panel="giga-fr-cap-d-body" x="740" y="415" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Revenu constant</text>
+<text data-panel="giga-fr-cap-d-body" x="120" y="518" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="middle">0</text>
+<text data-panel="giga-fr-cap-d-body" x="480" y="518" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="middle">2</text>
+<text data-panel="giga-fr-cap-d-body" x="840" y="518" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="middle">4</text>
+<text data-panel="giga-fr-cap-d-body" x="610.909090909091" y="518" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-signal)" text-anchor="middle">2,73</text>
+<text data-panel="giga-fr-cap-d-body" x="500" y="555" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Volume annuel (millions de Go)</text>
+<rect id="giga-fr-cap-d-footer" x="16" y="600" width="968" height="68" rx="10" fill="var(--color-ink)"/>
+<text data-panel="giga-fr-cap-d-footer" x="40" y="626" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="start">Hypothèse : 1 M€ de CA France, plafond de 15 %, revenu constant</text>
+<text data-panel="giga-fr-cap-d-footer" x="40" y="658" font-family="l0g Giga Tax" font-size="24" font-weight="400" fill="var(--color-muted)" text-anchor="start">Ambre : calcul brut à 0,055 €/Go · Turquoise : montant plafonné</text>
+</svg>
