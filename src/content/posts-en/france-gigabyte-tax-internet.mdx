@@ -4,11 +4,12 @@ seoTitle: "France’s gigabyte tax: a fiscal blunder in the making | l0g"
 ogTitle: "France’s gigabyte tax: a fiscal blunder in the making"
 description: "France’s Socialists propose €0.055 per gigabyte. The bill, its revenue caps, VideoLAN and network economics expose a badly targeted Internet tax."
 pubDate: "2026-10-31T12:14:56+01:00"
+updatedDate: "2026-10-31T12:48:42+01:00"
 tags: ["Taxation", "Internet", "France", "Gigabyte tax", "Competition", "Investigation"]
 draft: false
 ogImage: "/illustrations/news/gigabyte-tax-v2.jpg"
 sourceArticle: "taxe-giga-internet-ps"
-sourceUpdatedDate: "2026-10-31T12:14:56+01:00"
+sourceUpdatedDate: "2026-10-31T12:48:42+01:00"
 ---
 
 import GigaTaxFigure from "../../components/GigaTaxFigure.astro";
@@ -68,6 +69,18 @@ Infrastructure costs introduce another mismatch. A connection has a maximum capa
 <GigaTaxFigure lang="en" kind="cache" number={2} caption={"Internal caches serve an average of eleven traffic units for each unit received to fill them. The proposed tax counts outgoing CDN traffic."} sources={["S01", "S04"]} method={"Arcep barometer published on 16 July 2026, end-2025 data: mean output-to-fill ratio of 11, ranging from 8 to 23 across operators. Normalised volumes, with no monetary unit or request count. The diagram illustrates local reuse, not measured energy savings or a tax liability. The amendment counts the sum of outgoing CDN flows."} />
 
 The amendment expressly counts **outgoing CDN traffic**. For the same final volume, moving content closer to users could save transport while leaving the gigabyte tax base unchanged. The fiscal incentive primarily rewards reducing delivered volume; it gives much less recognition to better distribution architecture. That matters when network efficiency forms part of the justification.
+
+## OVHcloud’s scenario puts gross tax at €70 million
+
+OVHcloud’s chief executive puts numbers on the exposure of a French provider. On 31 October, chairman and CEO Octave Klaba reported **average traffic of 324 Gbit/s** to French Internet access providers. That figure provides an input for a volume scenario. It remains management’s own figure: the underlying measurements, observation period and precise scope of the flows require documentation. [S27](#source-s27), [S28](#source-s28)
+
+Extending that average over **365 days**, and assuming every corresponding flow is taxable, produces roughly **1.28 billion GB** and **€70.25 million in gross tax**. The calculation uses decimal gigabytes and eight bits per byte: 324 ÷ 8 × 365 × 24 × 3,600 × 0.055. Klaba’s €70 million order of magnitude is therefore reproducible under those assumptions. An actual liability would then require measuring the relevant period’s taxable traffic and applying the caps. [S27](#source-s27), [S01](#source-s01)
+
+Published accounts provide another benchmark. For the year ended **31 August 2026**, OVHcloud reported **€1,145.1 million in worldwide revenue**, including **€550.6 million in France**. Two per cent of the first amount is **€22.902 million**; fifteen per cent of the second is **€82.59 million**, above the gross-tax scenario. These calculations help explain Klaba’s **€23–70 million range** under different readings of the caps. They remain benchmarks drawn from a past financial year: the accounts allocate sales according to the entity managing the customer relationship, while the future tax’s territorial base and assessment period need their own rules. [S28](#source-s28)
+
+Klaba says OVHcloud would pass the charge to customers. That is a commercial intention expressed by an affected business, with the final amount and terms still open. It gives the political problem a concrete form: a levy sold as a charge on foreign giants could also reach a French provider and the businesses buying its services. A revenue cap limits the amount collected; the ability to absorb that amount remains a separate question. [S27](#source-s27)
+
+He also fears that foreign competitors would escape payment in practice. The amendment, however, provides a collection mechanism for suppliers without a French entity. The issue to examine is the effectiveness and cost of cross-border enforcement. Treating foreign non-payment as settled would turn a competition concern into an observed outcome. The legislature owes that concern a documented response. [S27](#source-s27), [S01](#source-s01)
 
 ## Environmental policy deserves a better gauge
 
@@ -201,4 +214,6 @@ Sources accessed on 31 October 2026. Interested-party statements are identified 
 
 <li id="source-s25"><span className="source-meta">S25 · Mounir Laggoune · X · 2026-10-31 · Accessed : 2026-10-31</span><a href="https://x.com/moonlaggoune/status/2116435178666983495">Facture Google Ads publiée sur X / Google Ads invoice posted on X</a><p>Screenshot: €7,566.63 advertising, €151.33 French regulatory fees, total €7,717.96.</p><details><summary>Passages and scope</summary><p>Author-published document read directly; not independently authenticated. April, with no year visible. The surcharge corresponds to 2%, rounded to the nearest cent.</p><p><a href="https://x.com/moonlaggoune/status/2116443796732776731">Supporting document</a></p></details></li>
 <li id="source-s26"><span className="source-meta">S26 · Légifrance · version consultée / version accessed 2026-10-31 · Accessed : 2026-10-31</span><a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000048626079/">Code des impositions sur les biens et services : taxe sur certains services numériques</a><p>Articles L.453-70, L.453-72 and L.453-77: statutory 3% rate, advertising consideration and liable business.</p><details><summary>Passages and scope</summary><p>The statutory rate and tax base are distinct from the commercial surcharge on a Google Ads invoice.</p></details></li>
+<li id="source-s27"><span className="source-meta">S27 · Octave Klaba · X · 2026-10-31 · Accessed : 2026-10-31</span><a href="https://x.com/olesovhcom/status/2116452969793151347">OVHcloud response and scenario</a><p>Reported 500 Gbit/s at the 95th percentile and 324 Gbit/s average; €70 million gross estimate and €23–70 million range under readings of the caps.</p><details><summary>Passages and scope</summary><p>Interested-party statement read directly. Traffic lacks independent measurements; 365-day annualisation assumes taxable flows. Pass-through is an intention; competitors escaping payment is a concern. Transit and hyperscaler prices are omitted because their scope was not verified.</p></details></li>
+<li id="source-s28"><span className="source-meta">S28 · OVHcloud · Release dated 20 October 2026 · Year ended 31 August 2026 · Accessed : 2026-10-31</span><a href="https://corporate.ovhcloud.com/en/newsroom/news/financial-results-fy26/">FY2026 financial results</a><p>Release, pages 1 and 5: €1,145.1 million group revenue and €550.6 million in France. Consolidated accounts, note 4.3, printed page 16: allocation by commercial entity.</p><details><summary>Passages and scope</summary><p>Year ended 31 August 2026. Company-reported benchmarks, distinct from a future tax period and scope. Also confirms Octave Klaba’s chairman and CEO role.</p><p><a href="https://corporate.ovhcloud.com/sites/default/files/2026-10/ovh_cp_english_vdef.pdf">Supporting document</a></p><p><a href="https://corporate.ovhcloud.com/sites/default/files/2026-10/ovhcloud_2026_extract_cc_en_mel_26_10_23.pdf">Supporting document</a></p></details></li>
 </ol>
