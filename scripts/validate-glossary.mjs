@@ -1224,7 +1224,7 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 367, 'Le corpus ajoute quatre notions bilingues sur les prix et les budgets');
+assert.equal(glossaryAtlasEnBySlug.size, 369, 'Le corpus ajoute deux notions bilingues sur les données du véhicule');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1425,8 +1425,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 754, 'Le corpus ajoute quatre notions courtes sur les prix et les budgets');
-assert.equal(glossaryAtlasEntries.length, 357, 'Les quatre notions sur les budgets disposent de sources et de liens');
+assert.equal(glossaryEntries.length, 756, 'Le corpus ajoute deux notions courtes sur les données du véhicule');
+assert.equal(glossaryAtlasEntries.length, 359, 'Les deux notions sur les données du véhicule disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1848,7 +1848,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 976, 'Le corpus ajoute quatre relations entre prix et contraintes budgétaires');
+assert.equal(glossaryAtlasEdgeCount, 980, 'Le corpus ajoute quatre relations entre données du véhicule et vie privée');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

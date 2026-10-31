@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="connected-car-en-flow-d-title connected-car-en-flow-d-desc" viewBox="0 0 1000 640" style="width:100%;height:auto" class="l0g-connected-car-svg">
+<title id="connected-car-en-flow-d-title">Driving data moves towards an insurance market</title><desc id="connected-car-en-flow-d-desc">A qualitative diagram of the historical flows described in the US cases. Vehicle data is collected through OnStar and Smart Driver and then passed to Verisk and LexisNexis. A dashed branch identifies the insurance market targeted by the resulting products. No volume, premium change or direct transfer to every insurer is represented.</desc>
+<rect x="0" y="0" width="1000" height="640" fill="var(--color-ink)"/>
+<rect id="connected-car-en-flow-d-header" x="16" y="12" width="968" height="118" rx="8" fill="var(--color-ink)"/>
+<text data-panel="connected-car-en-flow-d-header" x="32" y="40" font-family="l0g Connected Car" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start">l0g / CAR DATA</text>
+<text data-panel="connected-car-en-flow-d-header" x="968" y="40" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="end">01 / 03</text>
+<text data-panel="connected-car-en-flow-d-header" x="32" y="82" font-family="l0g Connected Car" font-size="32" font-weight="700" fill="var(--color-paper)" text-anchor="start">Driving data moves towards an insurance market</text>
+<text data-panel="connected-car-en-flow-d-header" x="32" y="118" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">United States · the circuit described in the GM / OnStar cases</text>
+<rect id="connected-car-en-flow-d-card-0" x="24" y="162" width="280" height="170" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="connected-car-en-flow-d-card-0" x="44" y="202" font-family="l0g Connected Car" font-size="25" font-weight="700" fill="var(--color-paper)" text-anchor="start">Vehicle</text>
+<text data-panel="connected-car-en-flow-d-card-0" x="44" y="239" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Braking and speed</text>
+<text data-panel="connected-car-en-flow-d-card-0" x="44" y="276" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Location</text>
+<path data-connector="flow-0" d="M306 248 L354 248" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow-0-arrow" d="M345 241 L354 248 L345 255" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="connected-car-en-flow-d-card-1" x="360" y="162" width="280" height="170" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="connected-car-en-flow-d-card-1" x="380" y="202" font-family="l0g Connected Car" font-size="25" font-weight="700" fill="var(--color-paper)" text-anchor="start">GM / OnStar</text>
+<text data-panel="connected-car-en-flow-d-card-1" x="380" y="239" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Smart Driver</text>
+<text data-panel="connected-car-en-flow-d-card-1" x="380" y="276" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Collection and sharing</text>
+<path data-connector="flow-1" d="M642 248 L690 248" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow-1-arrow" d="M681 241 L690 248 L681 255" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="connected-car-en-flow-d-card-2" x="696" y="162" width="280" height="170" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="connected-car-en-flow-d-card-2" x="716" y="202" font-family="l0g Connected Car" font-size="25" font-weight="700" fill="var(--color-paper)" text-anchor="start">Data brokers</text>
+<text data-panel="connected-car-en-flow-d-card-2" x="716" y="239" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Verisk / LexisNexis</text>
+<text data-panel="connected-car-en-flow-d-card-2" x="716" y="276" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Separate data scopes</text>
+<rect id="connected-car-en-flow-d-card-3" x="360" y="408" width="280" height="116" rx="8" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="2"/>
+<text data-panel="connected-car-en-flow-d-card-3" x="380" y="449" font-family="l0g Connected Car" font-size="25" font-weight="700" fill="var(--color-paper)" text-anchor="start">Car insurance</text>
+<text data-panel="connected-car-en-flow-d-card-3" x="380" y="485" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Target market</text>
+<path data-connector="flow-2" d="M836 334 L836 370 L500 370 L500 402" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<path data-connector="flow-2-arrow" d="M493 393 L500 402 L507 393" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="connected-car-en-flow-d-footer" x="16" y="550" width="968" height="78" rx="8" fill="var(--color-ink)"/>
+<text data-panel="connected-car-en-flow-d-footer" x="32" y="578" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Historical sales described for 2020–2024. Qualitative diagram.</text>
+<text data-panel="connected-car-en-flow-d-footer" x="32" y="608" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Solid line: described transfer · dashed line: target market.</text>
+</svg>

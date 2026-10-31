@@ -926,6 +926,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "Télématique", "nom": "Collecte et échange à distance de données du véhicule", "def": "Collecte et échange à distance d’informations issues d’un véhicule, au moyen d’équipements embarqués et de services de communication. Les boîtiers ajoutés et les dispositifs intégrés par un constructeur peuvent répondre à des usages différents, comme la gestion de flotte, la maintenance ou la localisation. Le service et sa configuration déterminent les données transmises et leurs destinataires.", "guide": "/posts/voiture-donnees-assurance/"},
+      {"sigle": "Données de localisation", "nom": "Informations situant un objet ou une personne", "def": "Informations permettant de situer un objet ou une personne avec un certain degré de précision. La géolocalisation en est une forme qui utilise des coordonnées pour placer cette position sur une carte. Les données d’un véhicule sont personnelles lorsqu’elles se rapportent à une personne identifiée ou identifiable ; cette qualification dépend du contexte.", "guide": "/posts/voiture-donnees-assurance/"},
       {"sigle": "AFEST", "nom": "Action de formation en situation de travail", "def": "Parcours de formation organisé à partir du travail réel. Le Code du travail prévoit une analyse de l’activité à des fins pédagogiques, un formateur désigné, des phases réflexives distinctes de l’exécution et des évaluations des acquis. Ce cadre français peut accueillir différentes pratiques de formation ; son existence laisse à évaluer l’efficacité d’un dispositif précis avec une IA.", "guide": "/posts/ia-apprentissage-juniors/"},
       {"sigle": "Exposition professionnelle IA", "nom": "Tâches d’un métier potentiellement concernées par l’intelligence artificielle", "def": "Indicateur évaluant la part ou la nature des tâches d’un métier susceptibles d’être réalisées ou transformées par des systèmes d’intelligence artificielle. Son calcul dépend des tâches, des capacités et des jugements retenus. L’adoption effective, la rentabilité de l’automatisation et les effets sur l’emploi exigent des observations supplémentaires.", "guide": "/posts/ia-apprentissage-juniors/"},
       {"sigle": "Évaluation sans assistance", "nom": "Observer les acquis lorsque l’outil est retiré", "def": "Épreuve réalisée sans l’outil utilisé pendant l’apprentissage, afin d’observer les réponses que la personne produit de manière autonome. Sa portée dépend des tâches et du délai avant le test. Un quiz immédiat renseigne les acquis dans cette situation ; leur maintien dans le temps et leur mobilisation sur des tâches éloignées demandent des évaluations distinctes.", "guide": "/posts/ia-apprentissage-juniors/"},
@@ -976,7 +978,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-30';
+export const glossaryUpdatedIso = '2026-10-31';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -3716,6 +3718,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     sources: [{ label: 'Banque d’Angleterre : adossement des billets et seigneuriage', href: 'https://www.bankofengland.co.uk/bank-insights/2026/the-promise-to-pay-what-backs-banknotes', kind: 'source' }],
     related: ['repo', 'duration'],
   },
+  "telematique": {"articles": [{"label": "Voiture connectée : données de conduite et assurance", "href": "/posts/voiture-donnees-assurance/", "kind": "article"}], "sources": [{"label": "CNIL, recommandation sur les données de localisation des véhicules connectés", "href": "https://www.cnil.fr/sites/default/files/2026-06/recommandation_utilisation_de_donnees_de_localisation.pdf", "detail": "Pages 4–5 et 57–59 : sources des données, boîtiers et agrégateurs.", "kind": "source"}], "related": ["donnees-de-localisation", "profilage"]},
+  "donnees-de-localisation": {"articles": [{"label": "Voiture connectée : données de conduite et assurance", "href": "/posts/voiture-donnees-assurance/", "kind": "article"}], "sources": [{"label": "CNIL, recommandation sur les données de localisation des véhicules connectés", "href": "https://www.cnil.fr/sites/default/files/2026-06/recommandation_utilisation_de_donnees_de_localisation.pdf", "detail": "Pages 4–5 et 8–9 : localisation, géolocalisation et caractère personnel.", "kind": "source"}], "related": ["telematique", "pseudonymisation"]},
   'liste-repoussoir': {
     articles: [{ label: 'Données personnelles : ce qui reste après la fin du contrat', href: '/posts/commerce-traces-donnees-apres-fin-contrat/', kind: 'article' }],
     sources: [{ label: 'CNIL, respecter les oppositions avec une liste repoussoir', href: 'https://www.cnil.fr/fr/comment-utiliser-une-liste-repoussoir-pour-respecter-lopposition-la-prospection-commerciale', kind: 'source' }],

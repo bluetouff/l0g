@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="connected-car-fr-contracts-m-title connected-car-fr-contracts-m-desc" viewBox="0 0 420 900" style="width:100%;height:auto" class="l0g-connected-car-svg">
+<title id="connected-car-fr-contracts-m-title">Deux contrats, deux périmètres de données</title><desc id="connected-car-fr-contracts-m-desc">Bifurcation des données vendues selon les paragraphes 14 et 15 de la plainte californienne. Le contrat de Verisk couvrait l’identité et la conduite en excluant le GPS précis ; ce périmètre contractuel ne constitue pas un audit technique des livraisons. LexisNexis recevait aussi des coordonnées GPS précises ; celles-ci n’étaient pas utilisées pour ses notes de conduite. Ces éléments sont attribués à la plainte. Aucun assureur particulier ni variation de prime individuelle n’est inféré.</desc>
+<rect x="0" y="0" width="420" height="900" fill="var(--color-ink)"/>
+<rect id="connected-car-fr-contracts-m-header" x="16" y="12" width="388" height="132" rx="8" fill="var(--color-ink)"/>
+<text data-panel="connected-car-fr-contracts-m-header" x="28" y="38" font-family="l0g Connected Car" font-size="18" font-weight="700" fill="var(--color-signal)" text-anchor="start">l0g / DONNÉES AUTO</text>
+<text data-panel="connected-car-fr-contracts-m-header" x="392" y="38" font-family="l0g Connected Car" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="end">02 / 03</text>
+<text data-panel="connected-car-fr-contracts-m-header" x="28" y="79" font-family="l0g Connected Car" font-size="24" font-weight="700" fill="var(--color-paper)" text-anchor="start">Deux contrats,</text>
+<text data-panel="connected-car-fr-contracts-m-header" x="28" y="110" font-family="l0g Connected Car" font-size="24" font-weight="700" fill="var(--color-paper)" text-anchor="start">deux périmètres</text>
+<rect id="connected-car-fr-contracts-m-origin" x="88" y="168" width="244" height="64" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="connected-car-fr-contracts-m-origin" x="210" y="209" font-family="l0g Connected Car" font-size="24" font-weight="700" fill="var(--color-paper)" text-anchor="middle">GM / OnStar</text>
+<path data-connector="to-verisk" d="M126 234 L126 258 L210 258 L210 286" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="to-verisk-arrow" d="M203 277 L210 286 L217 277" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="to-lexis" d="M294 234 L398 234 L398 527 L382 527" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="to-lexis-arrow" d="M391 520 L382 527 L391 534" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="connected-car-fr-contracts-m-card-0" x="40" y="292" width="340" height="190" rx="8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2"/>
+<text data-panel="connected-car-fr-contracts-m-card-0" x="60" y="331" font-family="l0g Connected Car" font-size="25" font-weight="700" fill="var(--color-paper)" text-anchor="start">Contrat Verisk</text>
+<text data-panel="connected-car-fr-contracts-m-card-0" x="60" y="366" font-family="l0g Connected Car" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Identité et conduite</text>
+<text data-panel="connected-car-fr-contracts-m-card-0" x="60" y="401" font-family="l0g Connected Car" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">GPS précis exclu</text>
+<rect id="connected-car-fr-contracts-m-card-1" x="40" y="524" width="340" height="190" rx="8" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="2"/>
+<text data-panel="connected-car-fr-contracts-m-card-1" x="60" y="563" font-family="l0g Connected Car" font-size="25" font-weight="700" fill="var(--color-paper)" text-anchor="start">LexisNexis</text>
+<text data-panel="connected-car-fr-contracts-m-card-1" x="60" y="598" font-family="l0g Connected Car" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Identité, conduite et GPS</text>
+<text data-panel="connected-car-fr-contracts-m-card-1" x="60" y="633" font-family="l0g Connected Car" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">Note de conduite :</text>
+<text data-panel="connected-car-fr-contracts-m-card-1" x="60" y="668" font-family="l0g Connected Car" font-size="20" font-weight="400" fill="var(--color-muted)" text-anchor="start">GPS précis non utilisé</text>
+<rect id="connected-car-fr-contracts-m-footer" x="16" y="810" width="388" height="78" rx="8" fill="var(--color-ink)"/>
+<text data-panel="connected-car-fr-contracts-m-footer" x="28" y="831" font-family="l0g Connected Car" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">Donnée reçue ≠ donnée utilisée</text>
+<text data-panel="connected-car-fr-contracts-m-footer" x="28" y="855" font-family="l0g Connected Car" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">GPS chez LexisNexis :</text>
+<text data-panel="connected-car-fr-contracts-m-footer" x="28" y="879" font-family="l0g Connected Car" font-size="18" font-weight="400" fill="var(--color-muted)" text-anchor="start">réception et notation distinctes</text>
+</svg>

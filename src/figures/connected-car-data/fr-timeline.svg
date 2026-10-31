@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="connected-car-fr-timeline-d-title connected-car-fr-timeline-d-desc" viewBox="0 0 1000 640" style="width:100%;height:auto" class="l0g-connected-car-svg">
+<title id="connected-car-fr-timeline-d-title">Du partage aux accords annoncés</title><desc id="connected-car-fr-timeline-d-desc">Chronologie ordinale : fin du partage effective le 20 mars 2024 selon GM, projet d’accord de la FTC le 16 janvier 2025, publication de l’ordonnance finale le 14 janvier 2026, accord californien annoncé le 8 mai 2026 et accord multistate de 220 millions de dollars annoncé le 29 octobre 2026. Le dernier point, 30 novembre 2026, est la date d’entrée en vigueur prévue dans l’accord et reste future au 31 octobre. Les distances ne sont pas proportionnelles au temps et les montants des différents dossiers ne sont pas additionnés.</desc>
+<rect x="0" y="0" width="1000" height="640" fill="var(--color-ink)"/>
+<rect id="connected-car-fr-timeline-d-header" x="16" y="12" width="968" height="118" rx="8" fill="var(--color-ink)"/>
+<text data-panel="connected-car-fr-timeline-d-header" x="32" y="40" font-family="l0g Connected Car" font-size="22" font-weight="700" fill="var(--color-signal)" text-anchor="start">l0g / DONNÉES AUTO</text>
+<text data-panel="connected-car-fr-timeline-d-header" x="968" y="40" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="end">03 / 03</text>
+<text data-panel="connected-car-fr-timeline-d-header" x="32" y="82" font-family="l0g Connected Car" font-size="32" font-weight="700" fill="var(--color-paper)" text-anchor="start">Du partage aux accords annoncés</text>
+<text data-panel="connected-car-fr-timeline-d-header" x="32" y="118" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">États-Unis · fin du partage, annonces et date prévue</text>
+<path data-connector="timeline-past" d="M64 320 L760 320" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="timeline-planned" d="M760 320 L934 320" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<rect id="connected-car-fr-timeline-d-event-0" x="24" y="152" width="280" height="126" rx="8" fill="var(--color-surface)"/>
+<path data-connector="tick-0" d="M64 308 L64 294 L164 294 L164 280" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle data-event="0" data-status="reported" cx="64" cy="320" r="9" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="3"/>
+<text data-panel="connected-car-fr-timeline-d-event-0" x="164" y="184" font-family="l0g Connected Car" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="middle">20 mars 2024</text>
+<text data-panel="connected-car-fr-timeline-d-event-0" x="164" y="219" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Fin du partage</text>
+<text data-panel="connected-car-fr-timeline-d-event-0" x="164" y="254" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">selon GM</text>
+<rect id="connected-car-fr-timeline-d-event-1" x="24" y="370" width="280" height="126" rx="8" fill="var(--color-surface)"/>
+<path data-connector="tick-1" d="M238 332 L238 350 L164 350 L164 368" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle data-event="1" data-status="announced" cx="238" cy="320" r="9" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="3"/>
+<text data-panel="connected-car-fr-timeline-d-event-1" x="164" y="402" font-family="l0g Connected Car" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="middle">16 janvier 2025</text>
+<text data-panel="connected-car-fr-timeline-d-event-1" x="164" y="437" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">FTC : projet d’accord</text>
+<text data-panel="connected-car-fr-timeline-d-event-1" x="164" y="472" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">et accusations</text>
+<rect id="connected-car-fr-timeline-d-event-2" x="360" y="152" width="280" height="126" rx="8" fill="var(--color-surface)"/>
+<path data-connector="tick-2" d="M412 308 L412 294 L500 294 L500 280" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle data-event="2" data-status="announced" cx="412" cy="320" r="9" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="3"/>
+<text data-panel="connected-car-fr-timeline-d-event-2" x="500" y="184" font-family="l0g Connected Car" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="middle">14 janvier 2026</text>
+<text data-panel="connected-car-fr-timeline-d-event-2" x="500" y="219" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Ordonnance finale</text>
+<text data-panel="connected-car-fr-timeline-d-event-2" x="500" y="254" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">annoncée par la FTC</text>
+<rect id="connected-car-fr-timeline-d-event-3" x="360" y="370" width="280" height="126" rx="8" fill="var(--color-surface)"/>
+<path data-connector="tick-3" d="M586 332 L586 350 L500 350 L500 368" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle data-event="3" data-status="announced" cx="586" cy="320" r="9" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="3"/>
+<text data-panel="connected-car-fr-timeline-d-event-3" x="500" y="402" font-family="l0g Connected Car" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="middle">8 mai 2026</text>
+<text data-panel="connected-car-fr-timeline-d-event-3" x="500" y="437" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Accord californien</text>
+<text data-panel="connected-car-fr-timeline-d-event-3" x="500" y="472" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">annoncé</text>
+<rect id="connected-car-fr-timeline-d-event-4" x="696" y="152" width="280" height="126" rx="8" fill="var(--color-surface)"/>
+<path data-connector="tick-4" d="M760 308 L760 294 L836 294 L836 280" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle data-event="4" data-status="announced" cx="760" cy="320" r="9" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="3"/>
+<text data-panel="connected-car-fr-timeline-d-event-4" x="836" y="184" font-family="l0g Connected Car" font-size="23" font-weight="700" fill="var(--color-paper)" text-anchor="middle">29 octobre 2026</text>
+<text data-panel="connected-car-fr-timeline-d-event-4" x="836" y="219" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Accord multistate</text>
+<text data-panel="connected-car-fr-timeline-d-event-4" x="836" y="254" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">de 220 M$ annoncé</text>
+<rect id="connected-car-fr-timeline-d-event-5" x="696" y="370" width="280" height="126" rx="8" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="2"/>
+<path data-connector="tick-5" d="M934 332 L934 350 L836 350 L836 368" fill="none" stroke="var(--color-amber)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle data-event="5" data-status="planned" cx="934" cy="320" r="9" fill="var(--color-ink)" stroke="var(--color-amber)" stroke-width="3"/>
+<text data-panel="connected-car-fr-timeline-d-event-5" x="836" y="402" font-family="l0g Connected Car" font-size="23" font-weight="700" fill="var(--color-amber)" text-anchor="middle">30 novembre 2026</text>
+<text data-panel="connected-car-fr-timeline-d-event-5" x="836" y="437" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Entrée en vigueur</text>
+<text data-panel="connected-car-fr-timeline-d-event-5" x="836" y="472" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="middle">prévue par l’accord</text>
+<rect id="connected-car-fr-timeline-d-footer" x="16" y="550" width="968" height="78" rx="8" fill="var(--color-ink)"/>
+<text data-panel="connected-car-fr-timeline-d-footer" x="32" y="578" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Dernier point : date prévue, postérieure au 31 octobre 2026.</text>
+<text data-panel="connected-car-fr-timeline-d-footer" x="32" y="608" font-family="l0g Connected Car" font-size="22" font-weight="400" fill="var(--color-muted)" text-anchor="start">Espacement ordinal : les distances ne représentent pas les durées.</text>
+</svg>
