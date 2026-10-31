@@ -4117,7 +4117,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     robots: 'noindex,follow',
     atlas: {
       formula: 'DSCR = cash available for debt service / debt service over the same period',
-      articles: [{ label: 'Crux AI: chips as collateral', href: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/', kind: 'article' }, { label: 'When credit starts sorting AI', href: '/en/analysis/when-credit-starts-sorting-ai/', kind: 'article' }, {"label": "GPU-backed debt: pricing the fourth year", "href": "/en/analysis/gpu-backed-debt-fourth-year/", "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.", "kind": "article"}],
+      articles: [{ label: 'Crux AI: chips as collateral', href: '/en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral/', kind: 'article' }, { label: 'When credit starts sorting AI', href: '/en/analysis/when-credit-starts-sorting-ai/', kind: 'article' }, {"label": "GPU-backed debt: pricing the fourth year", "href": "/en/analysis/gpu-backed-debt-fourth-year/", "detail": "Contracts, renewal cash flows and hypothetical loan scenarios.", "kind": "article"}, { label: 'AI compute prices and GPU debt repayment', href: '/en/analysis/ai-compute-price-collapse-gpu-debt/', detail: 'Posted prices, contracted revenues and a debt-service simulator.', kind: 'article' }],
       sources: [{ label: 'EBRD, PPP project appraisal guidelines (hosted by the World Bank)', href: 'https://ppp.worldbank.org/sites/default/files/2024-07/VOLUME2-web.pdf', kind: 'source' }],
       related: ['step-in-rights', 'gpu', 'ddtl'],
     },

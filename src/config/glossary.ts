@@ -3770,7 +3770,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   dscr: {
     formula: 'DSCR = trésorerie disponible pour la dette / service de la dette sur la même période',
-    articles: [{ label: 'Crux AI : les puces en garantie', href: '/posts/crux-ai-google-blackstone-banques-puces-collateral/', kind: 'article' }, { label: 'Quand le crédit commence à trier l’IA', href: '/posts/quand-le-credit-commence-a-trier-l-ia/', kind: 'article' }, {"label": "GPU à crédit : le prix de la quatrième année", "href": "/posts/gpu-credit-prix-quatrieme-annee/", "detail": "Contrats, recettes au renouvellement et scénarios pédagogiques de dette.", "kind": "article"}],
+    articles: [{ label: 'Crux AI : les puces en garantie', href: '/posts/crux-ai-google-blackstone-banques-puces-collateral/', kind: 'article' }, { label: 'Quand le crédit commence à trier l’IA', href: '/posts/quand-le-credit-commence-a-trier-l-ia/', kind: 'article' }, {"label": "GPU à crédit : le prix de la quatrième année", "href": "/posts/gpu-credit-prix-quatrieme-annee/", "detail": "Contrats, recettes au renouvellement et scénarios pédagogiques de dette.", "kind": "article"}, { label: 'Prix du calcul IA et remboursement des GPU', href: '/posts/prix-calcul-ia-gpu-dette/', detail: 'Prix affichés, revenus contractuels et simulateur de couverture de dette.', kind: 'article' }],
     sources: [{ label: 'BERD, guide d’évaluation des PPP (hébergé par la Banque mondiale)', href: 'https://ppp.worldbank.org/sites/default/files/2024-07/VOLUME2-web.pdf', kind: 'source' }],
     related: ['step-in-rights', 'ltv', 'gpu', 'ddtl'],
   },
