@@ -1,0 +1,155 @@
+---
+title: "Broadcom, Anthropic et Blackstone : qui porte le risque des 63 milliards ?"
+seoTitle: "Broadcom–Anthropic : financement, garanties et risque des 63 milliards | l0g"
+description: "Broadcom, Anthropic et Blackstone : les garanties, loyers et notes convertibles du financement de 63 milliards de dollars, avec un simulateur local."
+ogTitle: "Broadcom, Anthropic et Blackstone : qui porte le risque des 63 milliards ?"
+pubDate: "2026-11-01T23:28:19+01:00"
+updatedDate: "2026-11-01T23:28:19+01:00"
+tags: ["Broadcom", "Anthropic", "Blackstone", "IA", "Crédit", "Risque"]
+draft: false
+ogImage: "/illustrations/news/broadcom-anthropic-backstop-v1.jpg"
+quickTake: {"fact": "L’opération annoncée atteint 63 milliards de dollars. Broadcom décrit un soutien conditionnel pouvant atteindre environ 43 milliards au déploiement.", "importance": "Le fournisseur conserve une exposition au paiement des loyers et à la valeur des équipements qu’il aide à financer.", "uncertainty": "Les contrats partiellement occultés et la documentation incomplète du montage limitent le calcul des pertes par financeur."}
+---
+
+import BroadcomFigure from "../../components/BroadcomFigure.astro";
+import BroadcomGuaranteeCalculator from "../../components/BroadcomGuaranteeCalculator.astro";
+
+Le financement annoncé pour Anthropic transforme Broadcom en bien davantage qu’un fournisseur de puces. Des investisseurs avancent l’argent, une société dédiée porte les équipements et le concepteur de semi-conducteurs conserve une partie du risque si son client cesse de payer. Les documents publics permettent de suivre cette circulation. Ils révèlent aussi un mécanisme séparé : certains loyers peuvent être réglés par émission de dette convertible, sans versement de cash à Anthropic.
+
+Le 26 octobre 2026, Bank of America, Blackstone, Citi et Morgan Stanley annoncent une opération de 63 milliards de dollars, avec des livraisons attendues à partir de 2027. Le lendemain, un dépôt de Broadcom précise un engagement conditionnel pouvant atteindre environ 43 milliards de dollars une fois les équipements déployés. Entre ces deux montants se trouve la question économique centrale : quelle partie du risque accompagne les machines chez les financeurs, et quelle partie reste chez leur fournisseur ? [1](#source-1), [2](#source-2)
+
+La réponse passe par trois documents différents. Le financement d’octobre organise l’achat des équipements. Un soutien de valeur résiduelle protège une partie de cette opération en cas de défaut. Un accord signé en mars autorise, sous conditions, jusqu’à 42 milliards de dollars de notes convertibles pour acquitter des loyers. Additionner ces montants donnerait un chiffre spectaculaire, dépourvu de sens comptable. Ils décrivent des engagements qui se croisent, avec des déclencheurs et des calendriers distincts. [1](#source-1), [2](#source-2), [3](#source-3)
+
+## Le fournisseur reste dans le circuit
+
+Le véhicule annoncé en octobre est une société créée pour l’opération, ou [*SPV*](/glossaire/spv/). Il reçoit des financements destinés à acheter des accélérateurs d’IA et des équipements réseau, puis à les louer à Anthropic. Les loyers deviennent une source de remboursement des capitaux mobilisés. Cette organisation permet de financer aujourd’hui une capacité dont l’utilisateur tirera des recettes au fil de son exploitation. [1](#source-1)
+
+Les banques n’occupent pas toutes les places du montage. Bank of America, Citi et Morgan Stanley organisent la dette bénéficiant des sûretés de premier rang. Blackstone est présenté comme l’unique fournisseur de la portion engagée du financement de second rang. Le rang détermine notamment la priorité sur les garanties communes, sous réserve des contrats entre créanciers. Le rendement et la perte finale de chacun demandent aussi de connaître les autres clauses et les récupérations. [1](#source-1)
+
+Le communiqué n’indique pas quelle part chaque banque conservera après distribution, ni quels fonds supporteront finalement les engagements associés à Blackstone. Confondre le nom d’un arrangeur avec celui de tous les détenteurs finaux ferait disparaître une partie du trajet du risque. La dépêche Reuters recoupe l’annonce. Les conventions détaillées du financement restent nécessaires pour reconstituer les positions finales. [1](#source-1), [10](#source-10)
+
+Broadcom fournit un [soutien à la valeur résiduelle](/glossaire/vrg/) au véhicule. Cette expression désigne ici une protection contre une insuffisance de valeur des équipements dans un scénario de défaut du locataire. Le constructeur facilite ainsi le financement d’une demande qui utilise sa technologie, tout en gardant une exposition à la capacité de paiement du client et au devenir des machines. [1](#source-1), [2](#source-2)
+
+<BroadcomFigure id="01" lang="fr" />
+
+La société dédiée sépare des actifs, des contrats et des financements. Le risque économique conservé dépend des droits et obligations de chaque partenaire. Pour connaître le traitement comptable exact, il faudrait également examiner le contrôle du véhicule, les droits de chacun et les engagements conservés. L’annonce publique permet donc de comprendre l’architecture, en laissant ouverte l’analyse de consolidation.
+
+## Les 43 milliards dépendent de deux événements
+
+Le formulaire 8-K de Broadcom porte sur un événement du 26 octobre et a été déposé le 27. Il décrit la formule de soutien : en cas de défaut sur les loyers, l’exposition potentielle correspond à l’écart entre **72,5 % des montants restant dus sur les baux** et la valeur obtenue lors de la vente des équipements concernés. Le maximum potentiel annoncé, non actualisé, est d’environ 43 milliards de dollars au déploiement. [2](#source-2)
+
+Pour comprendre la branche « défaut puis cession » du dispositif, on peut écrire : `G = max(0 ; 0,725 × L − V)`. `L` désigne le solde contractuel pertinent et `V` le produit de vente retenu. `G` représente le soutien calculé dans cet exemple simplifié. Les recours alternatifs, les frais éventuels et les modalités d’exécution de la documentation complète restent hors du modèle.
+
+Prenons un solde fictif de 100 unités. Si la vente rapporte 60, la formule donne 12,5 unités de soutien. Avec une récupération de 30, elle en donne 42,5. À 90, elle ne produit aucun versement dans cette branche. Ces unités servent à expliquer la formule ; elles ne représentent ni le financement de 63 milliards, ni une estimation de perte sur le portefeuille réel. [2](#source-2) ; calcul l0g
+
+<BroadcomFigure id="02" lang="fr" />
+
+Le défaut et la valeur de cession jouent donc ensemble. Une baisse du prix de revente, alors que les loyers continuent d’être payés, n’active pas à elle seule le mécanisme décrit. Inversement, des machines encore utiles peuvent limiter l’appel au soutien après un défaut. Broadcom mentionne aussi la reprise du bail, une revente au vendeur à prix fixé sous certaines conditions, ou une vente organisée des équipements. [2](#source-2)
+
+Le dénominateur mérite toute l’attention du lecteur. Multiplier 63 milliards par 72,5 % produirait 45,675 milliards. Ce calcul utilise le montant de l’opération à la place du solde des baux défini dans le dépôt. Il ne reconstitue donc pas la garantie. De même, la différence de 27,5 points jusqu’à 100 % ne mesure pas automatiquement la perte de Blackstone : les sûretés, les recours, les créances et leur ordre d’exécution doivent être rapprochés.
+
+L’exposition évolue également dans le temps. Elle augmente avec les livraisons et diminue avec les paiements du locataire, selon Broadcom. Le groupe illustre cette dynamique dans un support aux investisseurs, en précisant que son calendrier est indicatif. Nous n’avons transformé aucune barre de cette illustration en encours trimestriel observé. Les 43 milliards sont un maximum potentiel futur, distinct d’une dette immédiatement exigible ou d’une perte attendue. [2](#source-2), [9](#source-9)
+
+## Un loyer peut commencer avant le calcul
+
+L’enquête ne s’arrête pas au communiqué. Le prospectus d’Anthropic contient un bail-cadre signé le 31 mars 2026 entre Broadcom et AI Infrastructure OpCo II, une filiale d’Anthropic. Google y figure comme vendeur du matériel TPU8i que Broadcom prévoit d’acheter pour le louer. Anthropic est identifié comme garant. Ces accélérateurs spécialisés et leur environnement technique demandent une analyse plus précise que l’image d’un stock de GPU interchangeables. [4](#source-4), [5](#source-5), [11](#source-11)
+
+Il faut conserver la frontière documentaire : ce bail de mars éclaire les équipements et leurs paiements ; il ne constitue pas à lui seul l’ensemble des conventions du véhicule annoncé en octobre. Une partie des informations commerciales est occultée, notamment des prix, quantités, dates et délais.
+
+Le contrat prévoit normalement cinq ans par ensemble de machines, avec vingt fractions trimestrielles égales du prix de base, auxquelles s’ajoutent des intérêts. Le taux du bail renvoie à une lettre de tarification distincte. Il ne doit pas être remplacé par le taux de 9 % de la facilité convertible, qui concerne un autre instrument. [4](#source-4), §§2.01 et 4.01
+
+Le point de départ est particulièrement important. L’installation déclarée prête à fonctionner déclenche généralement le bail. Mais la définition de sa date de début prévoit aussi certains cas de retard du site ou de défaut d’assistance à l’installation, dans lesquels les obligations peuvent commencer plus tôt. Les délais précis de ces exceptions sont occultés. Le prospectus confirme la possibilité d’un démarrage des loyers avant la disponibilité opérationnelle dans certaines circonstances. [4](#source-4), définition Lease Start Date ; [5](#source-5)
+
+Un tel décalage a une conséquence très concrète. Le calendrier financier peut avancer pendant que celui de l’exploitation attend encore un bâtiment, une installation ou une validation. Le locataire doit alors mobiliser d’autres ressources pour payer une capacité qui ne produit pas encore les recettes espérées. L’ampleur de cette tension dépend des dates effectives, des exceptions et des recours ; les documents consultés ne permettent pas de la chiffrer pour chaque site.
+
+<BroadcomFigure id="03" lang="fr" />
+
+## Les 42 milliards qui se règlent par compensation
+
+L’autre contrat de mars, le *Note Purchase Agreement*, permet à Anthropic d’émettre des notes convertibles acceptées par Broadcom sous conditions. Une note est une reconnaissance de dette ; sa conversion éventuelle permet de la transformer en actions suivant les règles du contrat. L’engagement maximal de principal atteint 42 milliards de dollars. [3](#source-3)
+
+Les sections 2.1(a) et 2.1(c) apportent une précision décisive : les montants sont affectés par [compensation](/glossaire/reglement-par-compensation/), sans être versés en cash à Anthropic. L’émission règle d’abord, dans le circuit contractuel, une obligation de services entre Anthropic et sa filiale, puis le loyer dû par cette dernière. Le fournisseur accepte ainsi une créance convertible en contrepartie du règlement d’une échéance éligible. [3](#source-3)
+
+La possibilité est encadrée. Le contrat exclut le premier paiement trimestriel de chaque ensemble de machines et les émissions antérieures à sa mise en service. Il impose aussi des conditions d’accès. Le prospectus mentionne notamment des exigences de revenus, de liquidité et d’exécution des baux ; certains seuils sont occultés dans l’accord publié. Broadcom indiquait qu’aucune note ne lui avait été émise au 2 août 2026. Cette observation passée ne renseigne pas l’encours au 1er novembre. [3](#source-3), [5](#source-5), [6](#source-6)
+
+La combinaison des deux contrats fait apparaître un intervalle à surveiller : certains loyers peuvent débuter avant la mise en service, alors que l’accord convertible exclut précisément les notes antérieures à cette étape. Les deux calendriers ne se recouvrent donc pas parfaitement. Cela décrit une possibilité contractuelle de besoin de trésorerie, sans établir qu’un site se trouve actuellement dans cette situation.
+
+<BroadcomFigure id="04" lang="fr" />
+
+Le passage du bail initial au véhicule financé en octobre ajoute une question : comment un règlement par note s’articule-t-il avec les besoins de cash des financeurs ? Les accords autorisent des cessions et certains modes de règlement convenus séparément, mais la collecte n’a pas permis de reconstituer toute la chaîne finale. Nous ne supposons donc pas que les banques encaissent automatiquement une note Anthropic à la place du service de leur propre dette. [3](#source-3), [4](#source-4) ; limite documentaire
+
+Le financement fournisseur est utile lorsque la montée en charge précède les recettes. Il reporte cependant une partie de l’effort sur la valeur future de la créance ou des actions reçues. Pour juger sa solidité, il faut suivre séparément le chiffre d’affaires commercial, les encaissements externes et les échéances financées de cette manière.
+
+## Le temps augmente la dette convertible
+
+Les notes émises avant une période de manquement définie au contrat portent un taux annuel de 9 %. Celles émises pendant certaines périodes de manquement portent 13 %. Le texte distingue les cohortes d’émission : il n’autorise pas à affirmer que toutes les notes existantes passent automatiquement de 9 à 13 % au premier incident. Les intérêts courent sur le nombre réel de jours, avec une base de 365 jours, puis sont [capitalisés chaque trimestre](/glossaire/pik/) : ils sont ajoutés au principal. [3](#source-3), §2.1(h) et modèle de note en annexe A
+
+L’effet se voit sur une approximation pédagogique à vingt trimestres égaux. Une note fictive de 100 unités, conservée cinq ans sans conversion ni remboursement, atteint environ **156,1 unités à 9 %** avec capitalisation trimestrielle. Au taux constant de 13 %, une note émise dans le régime correspondant atteint environ **189,6 unités**. Les formules sont `100 × (1 + 0,09 / 4)^20` et `100 × (1 + 0,13 / 4)^20`. Ces calculs isolent un intérêt composé à périodes égales ; le calcul contractuel exact dépend des jours et des dates de chaque note. [3](#source-3) ; calcul l0g
+
+<BroadcomFigure id="05" lang="fr" />
+
+Les intérêts capitalisés ne consomment pas le plafond contractuel de principal disponible. L’encours dû sur les notes peut ainsi dépasser le principal effectivement tiré. Les échéances réelles dépendent en outre des tranches : le contrat les rattache au début de la période de tirage et prévoit des durées différentes. L’exemple sur cinq ans isole l’intérêt composé ; il ne reproduit pas le calendrier de toute la facilité. [3](#source-3), §§2.1(h) et (i)
+
+Une conversion peut réduire le besoin de remboursement en cash tout en diluant les actionnaires. Pour Broadcom, elle remplace alors une créance par une exposition au capital. La solidité du mécanisme dépend toujours de la valeur créée par le client et des conditions de conversion. Changer la forme du financement modifie les droits et le calendrier ; la viabilité de l’activité reste déterminante.
+
+## Revendre un rack suppose de conserver son usage
+
+La valeur récupérable mérite une enquête industrielle autant que financière. Le contrat de mars distingue la propriété des équipements des droits sur les logiciels. Il encadre leur déplacement, la sous-location et l’accès aux sites. Il prévoit aussi des accords avec les propriétaires et financeurs immobiliers afin de préserver les droits sur le matériel. Ces clauses montrent les conditions à vérifier pour maintenir ou transférer l’usage d’un ensemble de calcul. [4](#source-4), §§5.02, 8.08 et 9.03–9.05
+
+Un acheteur potentiel doit pouvoir exploiter les équipements : disposer d’un lieu adapté, des services nécessaires et des droits pertinents. Une valeur comptable ou un prix d’achat initial ne suffit donc pas à déterminer le produit d’une vente après défaut. Cette valeur dépend aussi de la demande au moment de la cession, des frais de remise en service et du temps disponible pour trouver un repreneur.
+
+L’argument favorable est sérieux. Le fournisseur connaît sa technologie et ses clients ; il peut être mieux placé qu’un prêteur généraliste pour organiser une réutilisation. Broadcom cite précisément cette faculté parmi ses recours. Une génération plus récente de puces ne rend pas instantanément tout équipement antérieur sans utilité. En revanche, aucune série publique de transactions comparables n’a été trouvée dans cette collecte pour attribuer une valeur de revente indépendante aux ensembles concernés. [2](#source-2) ; analyse l0g
+
+Le risque le plus délicat apparaît lorsqu’un même choc touche plusieurs protections. Une baisse de rentabilité des services d’IA pourrait affaiblir les loyers d’Anthropic, réduire les offres de reprise des machines et peser sur les nouvelles ventes de Broadcom. Il s’agit d’un scénario de risques corrélés, pas d’une causalité déjà observée dans cette opération. La garantie dépend alors d’une entreprise qui pourrait elle-même subir le choc auquel elle apporte sa protection.
+
+<BroadcomFigure id="06" lang="fr" />
+
+## Des ressources à rapprocher des échéances
+
+Le meilleur contre-argument à une lecture alarmiste est financier. Anthropic déclarait 112,4 milliards de dollars de trésorerie et équivalents, auxquels s’ajoutaient 19,3 milliards de placements à court terme, au 30 juin 2026. Broadcom publiait 13,665 milliards de free cash-flow pour son trimestre clos le 2 août, selon sa définition non-GAAP : 14,197 milliards de flux opérationnels moins 532 millions d’investissements. Ce sont des ressources et une génération de cash substantielles. [5](#source-5), [8](#source-8)
+
+Ces données portent toutefois sur des dates antérieures au nouveau montage. Elles couvrent l’ensemble des activités et engagements des groupes. Leur comparaison avec une garantie maximale future ne produit ni un ratio de couverture contractuel ni une probabilité de défaut. Une réserve disponible aujourd’hui et des paiements étalés dans le temps doivent être rapprochés échéance par échéance pour tester un scénario de financement.
+
+L’opération d’octobre vient également après une première transaction de 35 milliards annoncée en juin avec Apollo et Blackstone. Le 10-Q de Broadcom décrivait pour cet arrangement un taux de soutien de 85 % et un maximum potentiel d’environ 29 milliards. Ces paramètres ne doivent pas être importés dans le nouveau mécanisme à 72,5 %. Additionner les enveloppes annoncées ne donne pas davantage l’encours tiré ou la perte maximale simultanée des deux opérations. [6](#source-6), [7](#source-7)
+
+Enfin, les 161,2 milliards de loyers hors intérêts décrits par Anthropic concernent un périmètre plus large de baux d’équipements avec Broadcom. Ce total inclut des obligations dont des financements organisent le paiement. L’ajouter aux 63 milliards de l’opération, puis aux 42 milliards de notes et aux 43 milliards de soutien, compterait plusieurs représentations d’une même chaîne économique. [5](#source-5)
+
+## Le vrai test commence avec les livraisons
+
+Les pièces consultées montrent un financement capable de mobiliser des capitaux extérieurs tout en conservant des liens étroits entre fournisseur, locataire et garanties. Broadcom juge peu probable l’activation du nouveau soutien, en invoquant la trajectoire de rentabilité attendue du client et la valeur durable des actifs. Cette appréciation appartient à l’entreprise ; les documents publics ne fournissent pas les éléments permettant de la convertir en probabilité indépendante. [2](#source-2)
+
+L’analyse devra désormais suivre les équipements effectivement livrés, les dates de début des loyers, les notes réellement émises et la réduction du solde garanti. La qualité des paiements comptera autant que leur ponctualité : recettes de clients, levées de capitaux et compensation financée n’ont pas les mêmes implications pour la durée de vie du montage.
+
+Pour déterminer la perte de chaque financeur, il manque encore une vue complète des conventions d’octobre, de la distribution finale des créances et des conditions de réalisation des sûretés. Les clauses occultées limitent aussi l’évaluation des retards et de l’accès à la facilité convertible. Ces pièces manquantes fixent la frontière de l’enquête.
+
+Le résultat documentaire est déjà net : la vente d’une capacité de calcul peut laisser au fournisseur un risque de paiement, un risque de valeur des équipements et une créance convertible sur l’utilisateur. Les 63 milliards financent une expansion industrielle. Sa robustesse se vérifiera dans la conversion de cette capacité en revenus encaissés et dans la capacité des protections à fonctionner ensemble lorsque les conditions deviennent moins favorables.
+
+<BroadcomGuaranteeCalculator lang="fr" />
+
+## Méthode et limites
+
+Enquête arrêtée au 1er novembre 2026, fondée sur des documents publics et un recoupement de presse. Montants en dollars américains nominaux ; les plafonds annoncés sont distingués des tirages et des pertes. Les contrats de mars ont été déposés avec le S-1 du 26 octobre ; leurs clauses utiles ont été lues dans une version partiellement occultée. Ils ne sont pas présentés comme la documentation complète du véhicule d’octobre. Aucun entretien, audit juridique, contrat confidentiel ou relevé bancaire n’a été obtenu.
+
+Les graphiques de garantie et d’intérêts utilisent des unités pédagogiques et des hypothèses explicites. Le graphique d’intérêts emploie vingt trimestres égaux, tandis que le contrat applique un calcul sur les jours réels, base 365, avec capitalisation trimestrielle. Ils n’estiment ni un prix de marché, ni une probabilité de défaut, ni une perte attendue. Le modèle de soutien isole le cas d’un défaut suivi d’une cession ; il exclut les autres recours et la cascade détaillée entre créanciers. Le simulateur fonctionne hors ligne et ne recueille aucune donnée.
+
+
+## Prolonger l’enquête
+
+Le partage des risques rejoint notre enquête sur [Google, Blackstone et les puces prises en garantie chez Crux AI](/posts/crux-ai-google-blackstone-banques-puces-collateral/). Les [intérêts reportés dans le financement de l’IA](/posts/ia-pik-interets-reportes-prix-attente/) éclairent l’accumulation des créances. Chez [Oracle, les paiements reçus avant livraison](/posts/oracle-qui-finance-le-chantier-des-225-milliards/) montrent une autre façon de financer le déploiement des capacités.
+
+## Sources
+
+<ol className="sources-list">
+
+<li id="source-1"><span className="source-meta">[1] · Broadcom et partenaires · 2026-10-26 · Consulté le 1er novembre 2026</span><a href="https://investors.broadcom.com/news-releases/news-release-details/bank-america-blackstone-citi-and-morgan-stanley-announce">Financement de 63 milliards : annonce des partenaires</a><p>Montant, véhicule, première et seconde sûretés, livraisons attendues en 2027. Engagement annoncé ; tirages non établis.</p><details><summary>Passages et périmètre</summary><p>Événement ou période : 2026-10-26. Annonce, plafond, encours et scénario conservent leur périmètre propre.</p></details></li>
+<li id="source-2"><span className="source-meta">[2] · Broadcom · 2026-10-27 · Consulté le 1er novembre 2026</span><a href="https://www.sec.gov/Archives/edgar/data/1730168/000119312526434271/d148323d8k.htm">Broadcom, 8-K : soutien de valeur résiduelle</a><p>Item 2.03 : défaut de loyer, 72,5 % du solde restant dû, récupération à la cession et autres recours. Environ 43 Md$ de maximum potentiel non actualisé au déploiement.</p><details><summary>Passages et périmètre</summary><p>Événement ou période : 2026-10-26. Annonce, plafond, encours et scénario conservent leur périmètre propre.</p></details></li>
+<li id="source-3"><span className="source-meta">[3] · Anthropic / Broadcom · 2026-10-26 · Consulté le 1er novembre 2026</span><a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/exhibit44-sx1.htm">Anthropic–Broadcom : Note Purchase Agreement, pièce 4.4</a><p>Définitions et §§2.1(a)–(i),2.2 : plafond 42 Md$, compensation, restrictions, cohortes d’émission et échéances. Intérêts sur jours réels/base 365 et capitalisation trimestrielle. Certaines clauses sont occultées.</p><details><summary>Passages et périmètre</summary><p>Événement ou période : 2026-03-31. Annonce, plafond, encours et scénario conservent leur périmètre propre. Contrat du 31 mars 2026, déposé le 26 octobre ; documentation finale du véhicule d’octobre encore incomplète.</p></details></li>
+<li id="source-4"><span className="source-meta">[4] · Anthropic / Broadcom · 2026-10-26 · Consulté le 1er novembre 2026</span><a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/exhibit1011-sx1.htm">Broadcom–AI Infrastructure OpCo II : bail-cadre, pièce 10.11</a><p>Préambule, définitions Lease Start Date/RFS, §§2.01, 3.01, 4.01, 4.02, 5.02, 8.08, 9.03–9.05. Contrat sous-jacent de mars ; documentation finale du SPV d’octobre non reconstituée.</p><details><summary>Passages et périmètre</summary><p>Événement ou période : 2026-03-31. Annonce, plafond, encours et scénario conservent leur périmètre propre. Contrat du 31 mars 2026, déposé le 26 octobre ; documentation finale du véhicule d’octobre encore incomplète.</p></details></li>
+<li id="source-5"><span className="source-meta">[5] · Anthropic · 2026-10-26 · Consulté le 1er novembre 2026</span><a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">Anthropic, prospectus préliminaire S-1</a><p>Liquidity and Capital Resources ; Broadcom Note Purchase Agreement ; Infrastructure Equipment Lease Arrangements ; risques. Informations financières au 30 juin, engagements de dates distinctes.</p><details><summary>Passages et périmètre</summary><p>Événement ou période : 2026-06-30. Annonce, plafond, encours et scénario conservent leur périmètre propre.</p></details></li>
+<li id="source-6"><span className="source-meta">[6] · Broadcom · Date de publication non établie · Consulté le 1er novembre 2026</span><a href="https://www.sec.gov/Archives/edgar/data/1730168/000173016826000080/avgo-20260802.htm">Broadcom, 10-Q au 2 août 2026</a><p>Soutien antérieur : 85 %, maximum potentiel 29 Md$ ; aucune note émise à Broadcom au 2 août. Date de dépôt non relevée dans cette collecte.</p><details><summary>Passages et périmètre</summary><p>Événement ou période : 2026-08-02. Annonce, plafond, encours et scénario conservent leur périmètre propre.</p></details></li>
+<li id="source-7"><span className="source-meta">[7] · Broadcom et partenaires · 2026-06-09 · Consulté le 1er novembre 2026</span><a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-apollo-and-blackstone-establish-landmark-strategic">Broadcom, Apollo et Blackstone : première plateforme AI XPV</a><p>Transaction initiale de 35 Md$. Distincte de l’annonce d’octobre ; pas de total d’encours obtenu par addition.</p><details><summary>Passages et périmètre</summary><p>Événement ou période : 2026-06-09. Annonce, plafond, encours et scénario conservent leur périmètre propre.</p></details></li>
+<li id="source-8"><span className="source-meta">[8] · Broadcom · 2026-09-02 · Consulté le 1er novembre 2026</span><a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial">Broadcom, résultats du T3 fiscal 2026</a><p>Trimestre : flux opérationnels 14,197 Md$, capex 0,532 Md$, FCF non-GAAP 13,665 Md$. Pas d’annualisation.</p><details><summary>Passages et périmètre</summary><p>Événement ou période : 2026-08-02. Annonce, plafond, encours et scénario conservent leur périmètre propre.</p></details></li>
+<li id="source-9"><span className="source-meta">[9] · Broadcom · Date de publication non établie · Consulté le 1er novembre 2026</span><a href="https://investors.broadcom.com/static-files/f4bda79d-cc66-4748-919b-40d08c658f2d">Broadcom : schéma du financement et du backstop</a><p>Support corporate, page 2 : montage et calendrier de déploiement/paiement illustratif consultés. Aucun encours trimestriel numérisé à partir de ce dessin.</p><details><summary>Passages et périmètre</summary><p>Événement ou période : 2026-10-26. Annonce, plafond, encours et scénario conservent leur périmètre propre.</p></details></li>
+<li id="source-10"><span className="source-meta">[10] · Reuters · 2026-10-26 · Consulté le 1er novembre 2026</span><a href="https://www.reuters.com/legal/transactional/wall-street-banks-blackstone-line-up-63-billion-finance-broadcom-chips-anthropic-2026-10-26/">Reuters : les banques et Blackstone financent les puces d’Anthropic</a><p>Dépêche Reuters consultée dans sa reprise intégrale sur AOL. Les montants rapportés de dette senior servent au contexte et sont exclus de toute cascade de pertes calculée.</p><details><summary>Passages et périmètre</summary><p>Événement ou période : 2026-10-26. Annonce, plafond, encours et scénario conservent leur périmètre propre. <a href="https://www.aol.com/articles/wall-street-banks-blackstone-line-203159000.html">Lire la reprise Reuters sur AOL</a>.</p></details></li>
+<li id="source-11"><span className="source-meta">[11] · Google Cloud · 2026-04-06 · Consulté le 1er novembre 2026</span><a href="https://www.googlecloudpresscorner.com/2026-04-06-Anthropic-Expands-Use-of-Google-Cloud-and-TPUs">Google Cloud : extension du partenariat Anthropic–Broadcom</a><p>Contexte technologique des TPU et capacité annoncée pour 2027 ; aucune mesure indépendante de performance.</p><details><summary>Passages et périmètre</summary><p>Événement ou période : 2026-04-06. Annonce, plafond, encours et scénario conservent leur périmètre propre.</p></details></li>
+</ol>

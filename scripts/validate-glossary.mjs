@@ -19,6 +19,18 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Contractual set-off and dedicated vehicles remain short, sourced definitions.
+for (const slug of ['spv', 'reglement-par-compensation', 'pik', 'vrg']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr && en);
+  assert.equal(fr.reference, undefined); assert.equal(fr.referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  for (const [entry, article] of [[fr, '/posts/broadcom-anthropic-blackstone-risque-63-milliards/'], [en, '/en/analysis/broadcom-anthropic-blackstone-63-billion-risk/']]) {
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  }
+}
+
 // ASML definitions preserve short-entry indexation and the underlying accounting scope.
 for (const slug of ['parc-installe', 'profit-brut', 'euv']) {
   const fr = glossaryEntries.filter(entry => entry.slug === slug);
@@ -1280,7 +1292,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 375, 'Le corpus conserve les termes précédents et ajoute le financement hybride');
+assert.equal(glossaryAtlasEnBySlug.size, 377, 'Le corpus conserve les termes précédents et ajoute le financement hybride');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1481,8 +1493,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 761, 'Le corpus conserve ses notions et ajoute le financement hybride');
-assert.equal(glossaryAtlasEntries.length, 365, 'Les notions CDN et ASN disposent de sources et de liens');
+assert.equal(glossaryEntries.length, 762, 'Le corpus conserve ses notions et ajoute le financement hybride');
+assert.equal(glossaryAtlasEntries.length, 367, 'Les notions CDN et ASN disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
