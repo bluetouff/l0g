@@ -1251,7 +1251,22 @@ for (const [slug, sources, related] of [
     assert(!entry.def.includes('—'));
   }
 }
-assert.equal(glossaryAtlasEnBySlug.size, 371, 'Le corpus ajoute les réseaux de diffusion et les systèmes autonomes en anglais');
+// Hybrid financing keeps security terms, equity classification and cash-flow scope separate.
+for (const [entries, article] of [
+  [glossaryEntries, '/posts/stellantis-facture-redressement-tresorerie-2027/'],
+  [glossaryAtlasEn, '/en/analysis/stellantis-price-of-turnaround-cash-flow-2027/'],
+]) {
+  const matches = entries.filter(entry => entry.slug === 'obligation-hybride');
+  assert.equal(matches.length, 1);
+  const entry = matches[0];
+  assert.equal(entry.guide, article);
+  assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  assert.equal(entry.atlas.sources.length, 2);
+  assert(entry.atlas.sources.every(source => new URL(source.href).hostname === 'www.stellantis.com'));
+  assert.equal(entry.reference, undefined);
+}
+assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
+assert.equal(glossaryAtlasEnBySlug.size, 372, 'Le corpus conserve les termes précédents et ajoute le financement hybride');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1452,8 +1467,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 758, 'Le corpus ajoute deux notions courtes sur la distribution des données internet');
-assert.equal(glossaryAtlasEntries.length, 361, 'Les notions CDN et ASN disposent de sources et de liens');
+assert.equal(glossaryEntries.length, 759, 'Le corpus conserve ses notions et ajoute le financement hybride');
+assert.equal(glossaryAtlasEntries.length, 362, 'Les notions CDN et ASN disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],

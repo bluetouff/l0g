@@ -1422,7 +1422,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     robots: 'noindex,follow',
     atlas: {
       intuition: 'Restarting production can absorb cash before the corresponding sales bring receipts.',
-      articles: [
+      articles: [{"label": "Stellantis: the price of the turnaround", "href": "/en/analysis/stellantis-price-of-turnaround-cash-flow-2027/", "detail": "Industrial cash, supplier timing and hybrid financing.", "kind": "article"},
         {"label": "Iron ore: the price of waiting", "href": "/en/analysis/iron-ore-price-of-waiting-fortescue-cmrg/", "detail": "Funding ore held in inventory between extraction, sale and customer receipts.", "kind": "article"},
         { label: 'JPMorgan and the cost of industrial power', href: '/en/analysis/jpmorgan-industrial-power-investment/', detail: 'Funding production before receipts and carrying delayed deliveries.', kind: 'article' },
         { label: 'JLR: when the factory stops', href: '/en/analysis/after-cyberattack-1-jlr-factories-cash-flow/', detail: 'Inventory, trade payables and funding needs during the recovery.', kind: 'article' },
@@ -1442,7 +1442,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     robots: 'noindex,follow',
     atlas: {
       intuition: 'Profit and cash follow different calculations and timetables.',
-      articles: [{"label": "Oracle: customer prepayments and the funding timetable", "href": "/en/analysis/oracle-who-funds-the-225-billion-buildout/", "detail": "Collected prepayments, investment and contractual payment dates through 2030.", "kind": "article"}, {"label": "Microsoft: AI reporting, capex and cash flow", "href": "/en/analysis/microsoft-ai-profit-segments-capex-cash-flow/", "detail": "Leases, cash investment and accounting measures with their boundaries made explicit.", "kind": "article"}, { label: 'JLR: when the factory stops', href: '/en/analysis/after-cyberattack-1-jlr-factories-cash-flow/', detail: 'The manufacturer’s definition, investment and operating working capital movements.', kind: 'article' }],
+      articles: [{"label": "Stellantis: the price of the turnaround", "href": "/en/analysis/stellantis-price-of-turnaround-cash-flow-2027/", "detail": "Industrial cash, supplier timing and hybrid financing.", "kind": "article"}, {"label": "Oracle: customer prepayments and the funding timetable", "href": "/en/analysis/oracle-who-funds-the-225-billion-buildout/", "detail": "Collected prepayments, investment and contractual payment dates through 2030.", "kind": "article"}, {"label": "Microsoft: AI reporting, capex and cash flow", "href": "/en/analysis/microsoft-ai-profit-segments-capex-cash-flow/", "detail": "Leases, cash investment and accounting measures with their boundaries made explicit.", "kind": "article"}, { label: 'JLR: when the factory stops', href: '/en/analysis/after-cyberattack-1-jlr-factories-cash-flow/', detail: 'The manufacturer’s definition, investment and operating working capital movements.', kind: 'article' }],
       sources: [{ label: 'SEC, Non-GAAP Financial Measures, question 102.07', href: 'https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/non-gaap-financial-measures', detail: 'Common free cash flow calculation, lack of a uniform definition and reconciliation to the accounts.', kind: 'source' }],
       related: ['bfr'],
     },
@@ -4624,15 +4624,16 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       related: ['arrieres-de-paiement', 'scf'],
     },
   },
+  {"slug": "obligation-hybride", "sigle": "Hybrid bond", "nom": "Financing with debt-like and equity-like terms", "def": "A security whose terms combine debt-like and equity-like features, including payment priority, maturity and the ability to defer coupons. Balance-sheet classification depends on the contract and accounting rules. Issuing it provides financing; its cost and investor rights require separate assessment. Stellantis’s 2026 perpetual instruments are classified as equity, with proceeds in financing cash flow.", "guide": "/en/analysis/stellantis-price-of-turnaround-cash-flow-2027/", "sectionTitle": "Private credit & markets", "accent": "var(--color-accent)", "robots": "noindex,follow", "atlas": {"intuition": "Equity classification and financing cost answer different questions.", "articles": [{"label": "Stellantis: the price of the turnaround", "href": "/en/analysis/stellantis-price-of-turnaround-cash-flow-2027/", "detail": "Industrial cash, supplier timing and hybrid financing.", "kind": "article"}], "sources": [{"label": "Stellantis, H1 2026 interim report, page 80", "href": "https://www.stellantis.com/content/dam/stellantis-corporate/investors/financial-reports/Stellantis-NV-20260630-Interim-Report.pdf", "detail": "Perpetual instrument terms and IAS 32 classification.", "kind": "source"}, {"label": "Stellantis, 11 March 2026 hybrid offering", "href": "https://www.stellantis.com/en/news/press-releases/2026/march/stellantis-announces-pricing-of-hybrid-bonds-offering", "detail": "Amounts, currencies, coupons, first call and reset dates.", "kind": "source"}]}},
   {
-    slug: 'run-rate', sigle: 'Run rate', nom: 'Annualized revenue pace', ...privateCreditSection,
-    def: 'An extrapolation of revenue from a recent period to one year. Multiplying one month’s revenue by twelve gives an annualized pace, assuming it persists. The result depends on scope, discounts and the measurement period; it measures neither revenue already earned during the year nor future purchases guaranteed by contract.',
+    slug: 'run-rate', sigle: 'Run rate', nom: 'Annualised revenue or savings pace', ...privateCreditSection,
+    def: 'An extrapolation of revenue from a recent period to one year. Multiplying one month’s revenue by twelve gives an annualized pace, assuming it persists. The result depends on scope, discounts and the measurement period; it measures neither revenue already earned during the year nor future purchases guaranteed by contract. For cost savings, run rate means the full-year effect of implemented measures, separately from savings actually recognised during the reporting year.',
     guide: '/en/analysis/anthropic-ipo-compute-valuation-macro-risk/',
     atlas: {
       intuition: 'Projecting a recent pace helps describe a growing business when the measurement period and scope are explicit.',
       formula: 'Example: annual run rate = monthly revenue × 12, assuming the pace persists',
-      articles: [{ label: 'Anthropic: revenue and compute commitments', href: '/en/analysis/anthropic-ipo-compute-valuation-macro-risk/', kind: 'article' }],
-      sources: [{ label: 'Anthropic, Series H, May 28, 2026', href: 'https://www.anthropic.com/news/series-h', detail: 'Company announcement illustrating its use of run-rate revenue.', kind: 'source' }],
+      articles: [{"label": "Stellantis: the price of the turnaround", "href": "/en/analysis/stellantis-price-of-turnaround-cash-flow-2027/", "detail": "Industrial cash, supplier timing and hybrid financing.", "kind": "article"}, { label: 'Anthropic: revenue and compute commitments', href: '/en/analysis/anthropic-ipo-compute-valuation-macro-risk/', kind: 'article' }],
+      sources: [{"label": "Stellantis, 28 October 2026 results call", "href": "https://www.stellantis.com/content/dam/stellantis-corporate/investors/events-and-presentations/other-documents/Stellantis-Q3-2026-Financial-Results-Call-Transcript.pdf", "detail": "Pages 3 and 9: annualised savings and the implementation schedule.", "kind": "source"}, { label: 'Anthropic, Series H, May 28, 2026', href: 'https://www.anthropic.com/news/series-h', detail: 'Company announcement illustrating its use of run-rate revenue.', kind: 'source' }],
     },
   },
   {
