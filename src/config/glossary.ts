@@ -1473,7 +1473,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['capex', 'packaging-avance'],
   },
   capex: {
-    articles: [{"label": "Microsoft : périmètres, CapEx et trésorerie de l’IA", "href": "/posts/microsoft-profit-ia-segments-capex-tresorerie/", "detail": "Locations, investissements payés et indicateurs comptables sur des périmètres explicités.", "kind": "article"}, { label: 'TSMC suit la demande de puces jusqu’au réseau électrique', href: '/posts/tsmc-puces-data-centers-risque-electrique/', kind: 'article' }, { label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Investissements effectivement payés et financement de la construction.', kind: 'article' }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}, {"label": "Meta : financer la croissance et conserver le vote", "href": "/posts/meta-financement-actions-c-droits-vote/", "kind": "article"}],
+    articles: [{"label": "Oracle : avances clients et calendrier du financement", "href": "/posts/oracle-qui-finance-le-chantier-des-225-milliards/", "detail": "Avances encaissées, investissements et échéances contractuelles jusqu’en 2030.", "kind": "article"}, {"label": "Microsoft : périmètres, CapEx et trésorerie de l’IA", "href": "/posts/microsoft-profit-ia-segments-capex-tresorerie/", "detail": "Locations, investissements payés et indicateurs comptables sur des périmètres explicités.", "kind": "article"}, { label: 'TSMC suit la demande de puces jusqu’au réseau électrique', href: '/posts/tsmc-puces-data-centers-risque-electrique/', kind: 'article' }, { label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Investissements effectivement payés et financement de la construction.', kind: 'article' }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}, {"label": "Meta : financer la croissance et conserver le vote", "href": "/posts/meta-financement-actions-c-droits-vote/", "kind": "article"}],
     sources: [
       { label: 'SEC, guide de lecture des états financiers', href: 'https://www.sec.gov/about/reports-publications/investorpubsbegfinstmtguide', detail: 'Tableau des flux de trésorerie : acquisitions d’immobilisations et dépenses d’investissement payées.', kind: 'source' },
       { label: 'Microsoft, résultats du quatrième trimestre de l’exercice 2026', href: 'https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4', detail: 'Présentation du 29 juillet : distinction entre capex, locations-financement et trésorerie payée pour les immobilisations ; perspectives d’investissement.', kind: 'source' },
@@ -2081,7 +2081,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   fcf: {
     intuition: 'Le résultat et la trésorerie suivent des calculs et des calendriers différents.',
-    articles: [{"label": "Microsoft : périmètres, CapEx et trésorerie de l’IA", "href": "/posts/microsoft-profit-ia-segments-capex-tresorerie/", "detail": "Locations, investissements payés et indicateurs comptables sur des périmètres explicités.", "kind": "article"}, { label: 'JLR : le jour où l’usine s’arrête', href: '/posts/apres-cyberattaque-1-jlr-usines-tresorerie/', detail: 'Définition du constructeur, investissements et mouvements du cycle d’exploitation.', kind: 'article' }],
+    articles: [{"label": "Oracle : avances clients et calendrier du financement", "href": "/posts/oracle-qui-finance-le-chantier-des-225-milliards/", "detail": "Avances encaissées, investissements et échéances contractuelles jusqu’en 2030.", "kind": "article"}, {"label": "Microsoft : périmètres, CapEx et trésorerie de l’IA", "href": "/posts/microsoft-profit-ia-segments-capex-tresorerie/", "detail": "Locations, investissements payés et indicateurs comptables sur des périmètres explicités.", "kind": "article"}, { label: 'JLR : le jour où l’usine s’arrête', href: '/posts/apres-cyberattaque-1-jlr-usines-tresorerie/', detail: 'Définition du constructeur, investissements et mouvements du cycle d’exploitation.', kind: 'article' }],
     sources: [{ label: 'SEC, Non-GAAP Financial Measures, question 102.07', href: 'https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/non-gaap-financial-measures', detail: 'Calcul courant du free cash flow, absence de définition uniforme et rapprochement avec les comptes.', kind: 'source' }],
     related: ['bfr'],
   },
@@ -3564,7 +3564,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   rpo: {
     "intuition": "Le contrat engage une prestation future ; l’encaissement et la reconnaissance du revenu suivent leur propre calendrier.",
-    "articles": [
+    "articles": [{"label": "Oracle : avances clients et calendrier du financement", "href": "/posts/oracle-qui-finance-le-chantier-des-225-milliards/", "detail": "Avances encaissées, investissements et échéances contractuelles jusqu’en 2030.", "kind": "article"},
       {
         "label": "Quand le crédit commence à trier l’IA",
         "href": "/posts/quand-le-credit-commence-a-trier-l-ia/",

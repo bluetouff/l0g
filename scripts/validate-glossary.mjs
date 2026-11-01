@@ -237,7 +237,11 @@ for (const slug of ['forward-sur-actions', 'dilution-du-capital', 'action-sans-d
 }
 for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === 'capex'), metaFinancingFr], [glossaryAtlasEnBySlug.get('capex'), metaFinancingEn]]) {
   assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
-  assert.equal(entry.atlas.articles.length, 5);
+  assert.equal(entry.atlas.articles.length, 6);
+  const oracleArticle = article.startsWith('/en/')
+    ? '/en/analysis/oracle-who-funds-the-225-billion-buildout/'
+    : '/posts/oracle-qui-finance-le-chantier-des-225-milliards/';
+  assert.equal(entry.atlas.articles.filter(link => link.href === oracleArticle).length, 1);
 }
 
 // Service continuity and card acquiring retain distinct operational scopes.
@@ -608,7 +612,7 @@ for (const [slug, sources] of [
   assert.notEqual(fr[0].def, en[0].def); assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
   for (const [entry, article, terms] of [[fr[0], '/posts/tsmc-puces-data-centers-risque-electrique/', glossaryEntries], [en[0], '/en/analysis/tsmc-chip-demand-data-center-power-risk/', glossaryAtlasEn]]) {
     const expectedArticles = slug === 'capex'
-      ? [terms === glossaryEntries ? '/posts/microsoft-profit-ia-segments-capex-tresorerie/' : '/en/analysis/microsoft-ai-profit-segments-capex-cash-flow/', article, terms === glossaryEntries ? '/posts/nebius-citi-credit-364-jours-gpu/' : '/en/analysis/nebius-citi-364-day-gpu-credit/', terms === glossaryEntries ? '/posts/aimants-terres-rares-gm-vac-usine-contrat/' : '/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/', terms === glossaryEntries ? metaFinancingFr : metaFinancingEn]
+      ? [terms === glossaryEntries ? '/posts/oracle-qui-finance-le-chantier-des-225-milliards/' : '/en/analysis/oracle-who-funds-the-225-billion-buildout/', terms === glossaryEntries ? '/posts/microsoft-profit-ia-segments-capex-tresorerie/' : '/en/analysis/microsoft-ai-profit-segments-capex-cash-flow/', article, terms === glossaryEntries ? '/posts/nebius-citi-credit-364-jours-gpu/' : '/en/analysis/nebius-citi-364-day-gpu-credit/', terms === glossaryEntries ? '/posts/aimants-terres-rares-gm-vac-usine-contrat/' : '/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/', terms === glossaryEntries ? metaFinancingFr : metaFinancingEn]
       : [article, terms === glossaryEntries ? heliumWaferArticleFr : heliumWaferArticleEn];
     assert.equal(entry.guide, article); assert.deepEqual(entry.atlas.articles.map(link => link.href), expectedArticles);
     assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
