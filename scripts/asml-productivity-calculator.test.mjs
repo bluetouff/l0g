@@ -3,6 +3,20 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { ASML_PRODUCTIVITY_FIELDS as FIELDS, ASML_PRODUCTIVITY_DEFAULTS as DEFAULTS, ASML_PRODUCTIVITY_LIMITS as LIMITS, ASML_PRODUCTIVITY_RESULTS as RESULTS, parseAsmlProductivityValue, calculateAsmlProductivity, formatAsmlProductivity, asmlProductivityDisplay, asmlProductivityPlot } from '../src/lib/asmlProductivityModel.mjs';
 import { asmlProductivityCopy, asmlProductivityNotes, bindAsmlProductivityCalculators } from '../src/lib/asmlProductivityUi.mjs';
+const ASML_TECHNICAL_SOURCE = 'https://www.sec.gov/Archives/edgar/data/937966/000119312521287742/d133133dex997.htm';
+function assertCanonicalAsmlSourceField(component) {
+  assert.equal(typeof component, 'string');
+  assert.doesNotMatch(component, /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/u);
+  const normalized = component.replace(/\r\n/gu, '\n');
+  assert.doesNotMatch(normalized, /\r/u);
+  const definitions = normalized.split('\n').filter(line => /^\s*const\s+source\s*=/u.test(line));
+  assert.equal(definitions.length, 1, 'Exactly one source definition');
+  const expected = `const source = '${ASML_TECHNICAL_SOURCE}';`;
+  assert.equal(definitions[0], expected, 'Complete canonical source field');
+  const value = definitions[0].slice("const source = '".length, -2);
+  assert.equal(value, ASML_TECHNICAL_SOURCE, 'Exact complete canonical URL');
+  assert.equal(new URL(value).href, ASML_TECHNICAL_SOURCE, 'Canonical parsed URL');
+}
 const scenario = values => calculateAsmlProductivity({ ...DEFAULTS, ...values });
 const close = (actual, expected, tolerance = 1e-10) => assert.ok(Math.abs(actual - expected) <= Math.max(1, Math.abs(expected)) * tolerance, `${actual} != ${expected}`);
 test('historical vendor parameters and illustrative common utilization remain separate', () => {
@@ -117,8 +131,39 @@ test('multiple calculators stay isolated and unsupported or incomplete markup st
 test('component retains SSR, keyboard, source, responsive graph and passive security contracts', () => {
   const component = fs.readFileSync(new URL('../src/components/AsmlProductivityCalculator.astro', import.meta.url), 'utf8'), ui = fs.readFileSync(new URL('../src/lib/asmlProductivityUi.mjs', import.meta.url), 'utf8'), model = fs.readFileSync(new URL('../src/lib/asmlProductivityModel.mjs', import.meta.url), 'utf8');
   for (const pattern of [/<fieldset disabled>/, /asmlProductivityDisplay\(initial/, /asmlProductivityPlot\(initial/, /<noscript>/, /id = `asml-productivity-\$\{lang\}`/, /aria-describedby=/, /role="status"/, /type="button" data-asml-full-use/, /var\(--color-signal\)/, /data-asml-plot=\{mode\}/, /viewBox=/, /width:100%;height:auto;/]) assert.match(component, pattern);
-  assert.match(component, /https:\/\/www\.sec\.gov\/Archives\/edgar\/data\/937966\/000119312521287742\/d133133dex997\.htm/);
+  assertCanonicalAsmlSourceField(component);
   assert.doesNotMatch(component, /<script\s+is:inline|onclick=|oninput=|#[\da-f]{3,8}\b|foreignObject/iu);
   assert.doesNotMatch(ui, /innerHTML|outerHTML|insertAdjacentHTML|fetch\(|XMLHttpRequest|WebSocket|sendBeacon|localStorage|sessionStorage|document\.cookie|eval\(|new Function/);
   assert.doesNotMatch(model, /parseFloat|fetch\(/);
+});
+
+test('technical source assertion requires a unique complete canonical field under LF and CRLF', () => {
+  const component = fs.readFileSync(new URL('../src/components/AsmlProductivityCalculator.astro', import.meta.url), 'utf8');
+  const original = `const source = '${ASML_TECHNICAL_SOURCE}';`;
+  assert.equal(component.split(original).length, 2);
+  assertCanonicalAsmlSourceField(component);
+  assertCanonicalAsmlSourceField(component.replace(/\r?\n/gu, '\r\n'));
+  const badUrls = [
+    ASML_TECHNICAL_SOURCE.replace('https:', 'http:'),
+    ASML_TECHNICAL_SOURCE.replace('www.sec.gov', 'www.sec.gov.evil.invalid'),
+    ASML_TECHNICAL_SOURCE.replace('www.sec.gov', 'www.sec.gov@evil.invalid'),
+    ASML_TECHNICAL_SOURCE.replace('www.sec.gov', 'evil.invalid@www.sec.gov'),
+    ASML_TECHNICAL_SOURCE.replace('www.sec.gov', 'www.sec.gov:443'),
+    ASML_TECHNICAL_SOURCE + '?source=' + ASML_TECHNICAL_SOURCE,
+    ASML_TECHNICAL_SOURCE + '#canonical',
+    ASML_TECHNICAL_SOURCE.replace('/Archives/', '/unexpected/Archives/'),
+    'https://evil.invalid/?target=' + ASML_TECHNICAL_SOURCE,
+    'https://evil.invalid/' + ASML_TECHNICAL_SOURCE,
+    'https://evil.invalid/#' + ASML_TECHNICAL_SOURCE,
+    ASML_TECHNICAL_SOURCE.replace('.gov/', '.gov/\t'),
+    ASML_TECHNICAL_SOURCE + '\u0000',
+    ASML_TECHNICAL_SOURCE + '\r',
+    ASML_TECHNICAL_SOURCE + '\n',
+    ASML_TECHNICAL_SOURCE + '\r\n',
+    ASML_TECHNICAL_SOURCE + ' ',
+    ASML_TECHNICAL_SOURCE + '/suffix',
+    ASML_TECHNICAL_SOURCE + 'x'.repeat(100000),
+  ];
+  for (const value of badUrls) assert.throws(() => assertCanonicalAsmlSourceField(component.replace(original, `const source = '${value}';`)), assert.AssertionError);
+  for (const replacement of ['', original + '\n' + original, original + '\n  ' + original, original + '\nconst source="' + ASML_TECHNICAL_SOURCE + '";', original + ' trailing', `const source = '${ASML_TECHNICAL_SOURCE}' + '';`]) assert.throws(() => assertCanonicalAsmlSourceField(component.replace(original, replacement)), assert.AssertionError);
 });
