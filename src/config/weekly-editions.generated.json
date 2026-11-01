@@ -4512,5 +4512,446 @@
       "windowStart": "2026-10-18T08:30:00+02:00",
       "windowEnd": "2026-10-25T08:30:00+01:00"
     }
+  },
+  {
+    "issue": 14,
+    "slug": "2026-11-01",
+    "publishedAt": "2026-11-01T08:30:00+01:00",
+    "title": "L’Hebdo du 1 novembre. L’IA à crédit : le prix des intérêts reportés",
+    "description": "Édition automatisée du 1 novembre : 27 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "L’IA à crédit : le prix des intérêts reportés",
+      "href": "/posts/ia-pik-interets-reportes-prix-attente/",
+      "update": "Applied Digital, Macquarie et Blue Owl : intérêts PIK, dividendes reportés, droits prioritaires et refinancement des infrastructures IA, avec simulateur local."
+    },
+    "lead": "Applied Digital a constaté 60,1 millions de dollars de dividendes préférentiels PIK au trimestre clos en août 2026. Son prêt DevCo avait été remboursé en mai.",
+    "number": {
+      "value": "27",
+      "label": "analyses publiées du 25 octobre à 08 h 30 au 1 novembre à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "Reporter la rémunération conserve du cash immédiat et augmente les droits futurs à honorer. Les garanties et rangs contractuels déterminent les recours.",
+    "test": "Aucune part sectorielle fiable de PIK propre à l’IA n’est établie ici. Les scénarios du simulateur sont fictifs.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "27 analyses publiées en sept jours",
+      "subtitle": "du 25 octobre à 08 h 30 au 1 novembre à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-11-01",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "LA SEMAINE EN CHIFFRES",
+      "points": [
+        {
+          "label": "dim 25/10",
+          "shortLabel": "dim 25/10",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-10-25",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 26/10",
+          "shortLabel": "lun 26/10",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-10-26",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 27/10",
+          "shortLabel": "mar 27/10",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-10-27",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 28/10",
+          "shortLabel": "mer 28/10",
+          "value": 5,
+          "valueLabel": "5",
+          "nature": "analyses publiées",
+          "scope": "2026-10-28",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 29/10",
+          "shortLabel": "jeu 29/10",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-10-29",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 30/10",
+          "shortLabel": "ven 30/10",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-10-30",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 31/10",
+          "shortLabel": "sam 31/10",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-10-31",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 01/11",
+          "shortLabel": "dim 01/11",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-11-01",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Applied Digital a constaté 60,1 millions de dollars de dividendes préférentiels PIK au trimestre clos en août 2026. Son prêt DevCo avait été remboursé en mai.",
+    "linkedin": "27 analyses publiées sur l0g du 25 octobre à 08 h 30 au 1 novembre à 08 h 30.\n\nFocus structuré : L’IA à crédit : le prix des intérêts reportés.\n\nApplied Digital a constaté 60,1 millions de dollars de dividendes préférentiels PIK au trimestre clos en août 2026. Son prêt DevCo avait été remboursé en mai.\n\nPourquoi le lire : Reporter la rémunération conserve du cash immédiat et augmente les droits futurs à honorer. Les garanties et rangs contractuels déterminent les recours.\n\nLimite à garder : Aucune part sectorielle fiable de PIK propre à l’IA n’est établie ici. Les scénarios du simulateur sont fictifs.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-11-01/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 1 novembre compte 27 analyses publiées. Focus : L’IA à crédit : le prix des intérêts reportés.",
+      "2/5 Applied Digital a constaté 60,1 millions de dollars de dividendes préférentiels PIK au trimestre clos en août 2026. Son prêt DevCo avait été remboursé en mai.",
+      "3/5 Pourquoi le lire : Reporter la rémunération conserve du cash immédiat et augmente les droits futurs à honorer. Les garanties et rangs contractuels déterminent les recours.",
+      "4/5 Limite : Aucune part sectorielle fiable de PIK propre à l’IA n’est établie ici. Les scénarios du simulateur sont fictifs.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-11-01/"
+    ],
+    "sources": [
+      {
+        "label": "L’IA à crédit : le prix des intérêts reportés",
+        "href": "/posts/ia-pik-interets-reportes-prix-attente/",
+        "role": "Analyse publiée le 31 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Si le prix du calcul IA décroche, qui rembourse les GPU ?",
+        "href": "/posts/prix-calcul-ia-gpu-dette/",
+        "role": "Analyse publiée le 31 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Taxe au giga : le grand contresens fiscal du PS",
+        "href": "/posts/taxe-giga-internet-ps/",
+        "role": "Analyse publiée le 31 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "GM, OnStar et le commerce des données de conduite",
+        "href": "/posts/voiture-donnees-assurance/",
+        "role": "Analyse publiée le 31 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Pourquoi votre budget raconte une autre inflation",
+        "href": "/posts/inflation-budget/",
+        "role": "Analyse publiée le 30 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Si l’IA fait le travail des débutants, où apprendre le métier ?",
+        "href": "/posts/ia-apprentissage-juniors/",
+        "role": "Analyse publiée le 30 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Petits colis : qui absorbera les nouveaux frais ?",
+        "href": "/posts/petits-colis-frais/",
+        "role": "Analyse publiée le 30 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’IA s’invite dans le prix des ordinateurs",
+        "href": "/posts/ia-memoire-prix-ordinateurs/",
+        "role": "Analyse publiée le 30 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Transition énergétique : qui absorbe la première perte ?",
+        "href": "/posts/transition-energetique-premiere-perte-finance-mixte/",
+        "role": "Analyse publiée le 29 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Stablecoins : qui encaisse le rendement ?",
+        "href": "/posts/stablecoins-remuneration-reserves-occ-circle-coinbase/",
+        "role": "Analyse publiée le 29 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Tempo : comment se fabrique un jour rouge",
+        "href": "/posts/tempo-jours-rouges-algorithme-facture/",
+        "role": "Analyse publiée le 29 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Microsoft : où se trouve le profit de l’IA ?",
+        "href": "/posts/microsoft-profit-ia-segments-capex-tresorerie/",
+        "role": "Analyse publiée le 28 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Qui gouvernera l’IA ? Le capital, la mission et l’État",
+        "href": "/posts/gouvernance-ia-anthropic-etat-nationalisation/",
+        "role": "Analyse publiée le 28 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Meta : l’argent, les actions et le pouvoir",
+        "href": "/posts/meta-financement-actions-c-droits-vote/",
+        "role": "Analyse publiée le 28 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Black-out : qui finance les heures d’autonomie ?",
+        "href": "/posts/blackout-heures-autonomie-financement/",
+        "role": "Analyse publiée le 28 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cum‑cum : mesurer les réformes après les remboursements",
+        "href": "/posts/cumcum-06-mesurer-le-recul-de-la-fraude/",
+        "role": "Analyse publiée le 28 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cum‑cum : les 98 jours du paragraphe fiscal contesté",
+        "href": "/posts/cumcum-05-bataille-doctrine-fiscale/",
+        "role": "Analyse publiée le 27 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cum-cum et cum-ex : les responsabilités devant la justice",
+        "href": "/posts/cumcum-04-responsabilites-justice/",
+        "role": "Analyse publiée le 27 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cum-cum : à la recherche de la facture fiscale",
+        "href": "/posts/cumcum-03-facture-fiscale/",
+        "role": "Analyse publiée le 27 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cum-cum : les alertes d’avant le scandale de 2018",
+        "href": "/posts/cumcum-02-alertes-chronologie/",
+        "role": "Analyse publiée le 27 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Cum-cum : comment l’impôt sur le dividende devient une marge",
+        "href": "/posts/cumcum-01-dividende-mecanisme/",
+        "role": "Analyse publiée le 27 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Crédit privé : la porte des assureurs",
+        "href": "/posts/credit-prive-porte-assureurs-rated-feeders/",
+        "role": "Analyse publiée le 27 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Minerai de fer : le prix de l’attente",
+        "href": "/posts/minerai-fer-prix-attente-fortescue-cmrg/",
+        "role": "Analyse publiée le 26 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Hélium : la géopolitique sous les puces",
+        "href": "/posts/helium-geopolitique-sous-les-puces/",
+        "role": "Analyse publiée le 26 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "BCE : les ménages face à une facture plus lourde",
+        "href": "/posts/bce-menages-facture-plus-lourde/",
+        "role": "Analyse publiée le 26 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Barclays : l’IA face aux 5 000 suppressions de postes",
+        "href": "/posts/barclays-ia-preuves-suppressions-postes/",
+        "role": "Analyse publiée le 25 octobre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette française : qui contrôle les agences de notation ?",
+        "href": "/posts/france-moodys-budget-2027-prix-dette/",
+        "role": "Analyse publiée le 25 octobre 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "L’IA à crédit : le prix des intérêts reportés",
+        "href": "/posts/ia-pik-interets-reportes-prix-attente/",
+        "publishedAt": "2026-10-31T16:53:15.000Z"
+      },
+      {
+        "title": "Si le prix du calcul IA décroche, qui rembourse les GPU ?",
+        "href": "/posts/prix-calcul-ia-gpu-dette/",
+        "publishedAt": "2026-10-31T14:29:51.000Z"
+      },
+      {
+        "title": "Taxe au giga : le grand contresens fiscal du PS",
+        "href": "/posts/taxe-giga-internet-ps/",
+        "publishedAt": "2026-10-31T11:14:56.000Z"
+      },
+      {
+        "title": "GM, OnStar et le commerce des données de conduite",
+        "href": "/posts/voiture-donnees-assurance/",
+        "publishedAt": "2026-10-31T09:45:43.000Z"
+      },
+      {
+        "title": "Pourquoi votre budget raconte une autre inflation",
+        "href": "/posts/inflation-budget/",
+        "publishedAt": "2026-10-30T18:09:25.000Z"
+      },
+      {
+        "title": "Si l’IA fait le travail des débutants, où apprendre le métier ?",
+        "href": "/posts/ia-apprentissage-juniors/",
+        "publishedAt": "2026-10-30T15:07:49.000Z"
+      },
+      {
+        "title": "Petits colis : qui absorbera les nouveaux frais ?",
+        "href": "/posts/petits-colis-frais/",
+        "publishedAt": "2026-10-30T13:26:24.000Z"
+      },
+      {
+        "title": "L’IA s’invite dans le prix des ordinateurs",
+        "href": "/posts/ia-memoire-prix-ordinateurs/",
+        "publishedAt": "2026-10-30T12:18:26.000Z"
+      },
+      {
+        "title": "Transition énergétique : qui absorbe la première perte ?",
+        "href": "/posts/transition-energetique-premiere-perte-finance-mixte/",
+        "publishedAt": "2026-10-29T16:12:09.000Z"
+      },
+      {
+        "title": "Stablecoins : qui encaisse le rendement ?",
+        "href": "/posts/stablecoins-remuneration-reserves-occ-circle-coinbase/",
+        "publishedAt": "2026-10-29T11:41:02.000Z"
+      },
+      {
+        "title": "Tempo : comment se fabrique un jour rouge",
+        "href": "/posts/tempo-jours-rouges-algorithme-facture/",
+        "publishedAt": "2026-10-29T09:04:18.000Z"
+      },
+      {
+        "title": "Microsoft : où se trouve le profit de l’IA ?",
+        "href": "/posts/microsoft-profit-ia-segments-capex-tresorerie/",
+        "publishedAt": "2026-10-28T21:45:01.000Z"
+      },
+      {
+        "title": "Qui gouvernera l’IA ? Le capital, la mission et l’État",
+        "href": "/posts/gouvernance-ia-anthropic-etat-nationalisation/",
+        "publishedAt": "2026-10-28T18:41:26.000Z"
+      },
+      {
+        "title": "Meta : l’argent, les actions et le pouvoir",
+        "href": "/posts/meta-financement-actions-c-droits-vote/",
+        "publishedAt": "2026-10-28T17:30:28.000Z"
+      },
+      {
+        "title": "Black-out : qui finance les heures d’autonomie ?",
+        "href": "/posts/blackout-heures-autonomie-financement/",
+        "publishedAt": "2026-10-28T16:08:09.000Z"
+      },
+      {
+        "title": "Cum‑cum : mesurer les réformes après les remboursements",
+        "href": "/posts/cumcum-06-mesurer-le-recul-de-la-fraude/",
+        "publishedAt": "2026-10-28T07:35:42.000Z"
+      },
+      {
+        "title": "Cum‑cum : les 98 jours du paragraphe fiscal contesté",
+        "href": "/posts/cumcum-05-bataille-doctrine-fiscale/",
+        "publishedAt": "2026-10-27T20:59:01.000Z"
+      },
+      {
+        "title": "Cum-cum et cum-ex : les responsabilités devant la justice",
+        "href": "/posts/cumcum-04-responsabilites-justice/",
+        "publishedAt": "2026-10-27T17:13:26.000Z"
+      },
+      {
+        "title": "Cum-cum : à la recherche de la facture fiscale",
+        "href": "/posts/cumcum-03-facture-fiscale/",
+        "publishedAt": "2026-10-27T15:37:32.000Z"
+      },
+      {
+        "title": "Cum-cum : les alertes d’avant le scandale de 2018",
+        "href": "/posts/cumcum-02-alertes-chronologie/",
+        "publishedAt": "2026-10-27T10:45:00.000Z"
+      },
+      {
+        "title": "Cum-cum : comment l’impôt sur le dividende devient une marge",
+        "href": "/posts/cumcum-01-dividende-mecanisme/",
+        "publishedAt": "2026-10-27T09:20:00.000Z"
+      },
+      {
+        "title": "Crédit privé : la porte des assureurs",
+        "href": "/posts/credit-prive-porte-assureurs-rated-feeders/",
+        "publishedAt": "2026-10-27T07:45:00.000Z"
+      },
+      {
+        "title": "Minerai de fer : le prix de l’attente",
+        "href": "/posts/minerai-fer-prix-attente-fortescue-cmrg/",
+        "publishedAt": "2026-10-26T20:44:16.000Z"
+      },
+      {
+        "title": "Hélium : la géopolitique sous les puces",
+        "href": "/posts/helium-geopolitique-sous-les-puces/",
+        "publishedAt": "2026-10-26T18:09:03.000Z"
+      },
+      {
+        "title": "BCE : les ménages face à une facture plus lourde",
+        "href": "/posts/bce-menages-facture-plus-lourde/",
+        "publishedAt": "2026-10-26T10:40:50.000Z"
+      },
+      {
+        "title": "Barclays : l’IA face aux 5 000 suppressions de postes",
+        "href": "/posts/barclays-ia-preuves-suppressions-postes/",
+        "publishedAt": "2026-10-25T15:12:03.000Z"
+      },
+      {
+        "title": "Dette française : qui contrôle les agences de notation ?",
+        "href": "/posts/france-moodys-budget-2027-prix-dette/",
+        "publishedAt": "2026-10-25T07:36:13.000Z"
+      }
+    ],
+    "briefs": [
+      {
+        "title": "L’IA à crédit : le prix des intérêts reportés",
+        "href": "/posts/ia-pik-interets-reportes-prix-attente/",
+        "topic": "crédit privé",
+        "fact": "Applied Digital a constaté 60,1 millions de dollars de dividendes préférentiels PIK au trimestre clos en août 2026. Son prêt DevCo avait été remboursé en mai.",
+        "importance": "Reporter la rémunération conserve du cash immédiat et augmente les droits futurs à honorer. Les garanties et rangs contractuels déterminent les recours.",
+        "uncertainty": "Aucune part sectorielle fiable de PIK propre à l’IA n’est établie ici. Les scénarios du simulateur sont fictifs."
+      },
+      {
+        "title": "Taxe au giga : le grand contresens fiscal du PS",
+        "href": "/posts/taxe-giga-internet-ps/",
+        "topic": "analyse",
+        "fact": "Le 30 octobre 2026, les députés ont adopté un amendement socialiste au budget 2027 prévoyant 0,055 euro par gigaoctet envoyé par les fournisseurs de contenus, avec un plafonnement lié au chiffre d’affaires.",
+        "importance": "Le volume transporté renseigne mal sur le bénéfice, la valeur créée et le coût du réseau. La charge pourrait circuler vers les abonnés, les annonceurs ou les clients des intermédiaires.",
+        "uncertainty": "La mesure poursuit son parcours parlementaire. Le rendement de 10 milliards annoncé par ses auteurs, l’articulation des plafonds et les effets sur les prix restent à établir."
+      },
+      {
+        "title": "Pourquoi votre budget raconte une autre inflation",
+        "href": "/posts/inflation-budget/",
+        "topic": "macro",
+        "fact": "En octobre 2026, l’Insee estime provisoirement l’inflation à 3,4 % sur un an. Entre la moyenne de 2015 et le premier semestre 2026, l’alimentation a augmenté d’environ 35 %, contre 23 % pour l’ensemble des prix.",
+        "importance": "La place du logement, les trajets nécessaires et la composition des courses changent la pression sur un budget. Le montant restant dépend aussi des revenus et des aides.",
+        "uncertainty": "Le calculateur illustre une pondération sur neuf mois. Il utilise des hypothèses de dépenses, des agrégats moyens et un champ distinct d’un budget complet."
+      },
+      {
+        "title": "Stablecoins : qui encaisse le rendement ?",
+        "href": "/posts/stablecoins-remuneration-reserves-occ-circle-coinbase/",
+        "topic": "crypto",
+        "fact": "La règle américaine publiée le 23 octobre conserve l’interdiction du rendement payé par l’émetteur et retire une présomption visant certains circuits indirects. Son entrée en vigueur est fixée au 18 janvier 2027.",
+        "importance": "Les comptes de Circle et Coinbase montrent comment les revenus des réserves financent la distribution et les récompenses, sur des périmètres comptables distincts.",
+        "uncertainty": "Les comptes cités portent sur le T2 2026. Les programmes dépendent des contrats et du pays ; les scénarios du calculateur restent fictifs."
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-11-01T13:41:33.844Z",
+      "windowStart": "2026-10-25T08:30:00+01:00",
+      "windowEnd": "2026-11-01T08:30:00+01:00"
+    }
   }
 ]
