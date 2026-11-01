@@ -4,12 +4,16 @@ description: "Un même bon du Trésor peut garantir plusieurs prêts à la fois.
 pubDate: 2026-06-27T11:00:00+02:00
 updatedDate: 2026-06-27T11:00:00+02:00
 tags: ["macro", "marchés", "liquidité", "banques centrales"]
+quickTake:
+  fact: "La réhypothécation consiste à réutiliser un titre reçu en garantie pour garantir une autre obligation. Elle relie plusieurs opérations de financement autour d’un même titre d’origine."
+  importance: "Cette circulation facilite le financement, mais crée des dépendances entre contreparties. Le défaut d’un intermédiaire peut immobiliser ou rendre contestées les garanties attendues par les suivants."
+  uncertainty: "Les statistiques ne permettent pas de reconstituer intégralement les chaînes de réutilisation. Un stock de titres pris isolément renseigne mal sur le nombre d’engagements qu’il garantit."
 draft: false
 ---
 
 *Au terme de cette série sur la plomberie du dollar, il reste à exposer le mécanisme qui se cache sous tous les autres. Le [repo](/posts/repo-collateral-fabrique-liquidite/), le [basis trade](/posts/basis-trade-treasuries-levier/), le [shadow banking](/posts/shadow-banking-intermediation-non-bancaire/), les [eurodollars](/posts/eurodollars-dollar-offshore-dette-cachee/) et le [cross-currency basis](/posts/cross-currency-basis-prix-cache-dollar/) reposent tous sur une même idée : un titre donné en garantie ne dort pas, il repart aussitôt garantir un autre prêt. Cette réutilisation, la réhypothécation, transforme un stock fini de bons du Trésor en un volume de financement bien plus grand. Le collatéral est l'huile du moteur financier, et sa circulation est la clé de voûte de tout l'édifice.*
 
-La réhypothécation désigne le droit, pour celui qui reçoit un titre en garantie, de le redonner lui-même en garantie d'un autre engagement. Un hedge fund remet un bon du Trésor à son courtier pour emprunter, le courtier réutilise ce même bon pour se financer auprès d'un fonds monétaire, qui peut à son tour le mobiliser ailleurs. Le titre n'a pas bougé de propriétaire économique, mais il garantit désormais plusieurs créances superposées. C'est ainsi que se forment des chaînes de collatéral, à travers les opérations de financement sur titres que sont le repo et le prêt-emprunt de titres.
+La [réhypothécation](https://www.federalreserve.gov/econres/notes/feds-notes/ins-and-outs-of-collateral-re-use-20181221.html) désigne le droit, pour celui qui reçoit un titre en garantie, de le redonner lui-même en garantie d'un autre engagement. Un hedge fund remet un bon du Trésor à son courtier pour emprunter, le courtier réutilise ce même bon pour se financer auprès d'un fonds monétaire, qui peut à son tour le mobiliser ailleurs. Le titre n'a pas bougé de propriétaire économique, mais il garantit désormais plusieurs créances superposées. C'est ainsi que se forment des chaînes de collatéral, à travers les opérations de financement sur titres que sont le repo et le prêt-emprunt de titres.
 
 ## La vélocité du collatéral
 

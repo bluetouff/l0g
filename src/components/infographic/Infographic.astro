@@ -23,3 +23,9 @@ function renderCaption(text: string): string {
   <slot />
   {caption && <figcaption set:html={renderCaption(caption)} />}
 </figure>
+
+<style>
+  .infographic { font-family: var(--font-read); }
+  .infographic figcaption { line-height: 1.7; }
+  .infographic figcaption :global(strong) { font-weight: 500; }
+</style>

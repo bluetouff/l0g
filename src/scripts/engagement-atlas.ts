@@ -1,3 +1,4 @@
+import { followAtlasProofLink } from '../lib/atlas-proof-navigation.ts';
 import { atlasUi, atlasRelationCount } from '../config/atlas-ui.ts';
 import { assertAtlasDataset, atlasAt, atlasSelection, atlasSourceUrl, formatAtlasDate, type AtlasDataset } from '../lib/engagement-atlas.ts';
 
@@ -113,6 +114,14 @@ function initAtlas(root: HTMLElement) {
     if (focusedRelation) relationList.querySelector<HTMLAnchorElement>(`[data-atlas-relation="${focusedRelation}"]`)?.focus({ preventScroll: true });
     put('[data-atlas-filter]', focusNode ? `${ui.relatedTo} ${nodeLabel(focusNode)}` : ui.allRelations);
     find('[data-atlas-reset]').hidden = !focusNode;
+    put('[data-circuit-from]', nodeLabel(selected.from));
+    put('[data-circuit-to]', nodeLabel(selected.to));
+    put('[data-circuit-from-role]', dataset.nodes.find(item => item.id === selected.from)!.role);
+    put('[data-circuit-to-role]', dataset.nodes.find(item => item.id === selected.to)!.role);
+    put('[data-circuit-kind]', kindLabels[selected.observation.kind]);
+    put('[data-circuit-label]', selected.observation.label);
+    put('[data-circuit-date]', dateLabel(selected.observation.publishedOn));
+    find('[data-circuit-date]').setAttribute('datetime', selected.observation.publishedOn);
     put('[data-proof-kind]', kindLabels[selected.observation.kind]);
     put('[data-proof-title]', `${nodeLabel(selected.from)} → ${nodeLabel(selected.to)}`);
     put('[data-proof-date]', `${ui.published} ${dateLabel(selected.observation.publishedOn)} · ${ui.reviewed} ${dateLabel(selected.observation.recordedOn)}`);
@@ -163,6 +172,8 @@ function initAtlas(root: HTMLElement) {
     } else if (target.dataset.atlasRelation) {
       event.preventDefault(); state.relation = target.dataset.atlasRelation; state.scenario = false; render();
       if (matchMedia('(max-width:760px)').matches) find('[data-atlas-proof]').scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth' });
+    } else if (target.hasAttribute('data-atlas-proof-link')) {
+      followAtlasProofLink(event, find('[data-atlas-proof]'), find<HTMLElement>('[data-proof-title]'), matchMedia('(prefers-reduced-motion:reduce)').matches);
     } else if (target.hasAttribute('data-atlas-reset')) { focusNode = ''; render();
     } else if (target.hasAttribute('data-scenario-toggle')) { state.scenario = !state.scenario; render();
     } else if (target.dataset.atlasEntry) {

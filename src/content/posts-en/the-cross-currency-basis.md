@@ -5,13 +5,17 @@ description: "FX swaps can price dollars above covered interest parity. Learn wh
 pubDate: 2026-07-13T15:14:00+02:00
 updatedDate: 2026-07-13T15:14:00+02:00
 tags: ["macro", "central banks", "liquidity", "markets"]
+quickTake:
+  fact: "The cross-currency basis measures a deviation from covered interest parity: obtaining dollars through an FX swap can cost more than borrowing them directly."
+  importance: "Hedging demand and the cost of banks’ balance sheets can sustain the gap. The FX market therefore transmits the funding constraints faced by intermediaries."
+  uncertainty: "Several forces can affect the gap at once, including hedging demand and balance-sheet constraints. A change in the basis cannot identify a single cause on its own."
 draft: false
 sourceArticle: "cross-currency-basis-prix-cache-dollar"
 sourceUpdatedDate: 2026-06-24
 ---
 *There is in international finance a rule so solid it is compared to a physical law: covered interest parity. It says that borrowing dollars directly or manufacturing them through another currency should cost the same, otherwise a riskless arbitrage would erase the gap. Since 2008, this law no longer holds. Manufacturing dollars via an FX swap costs a premium, sometimes a few basis points, sometimes much more under stress. This premium has a name, the cross-currency basis, and it has become the most reliable thermometer of strains in dollar funding. A sequel to our piece on [eurodollars](/en/analysis/eurodollars-the-offshore-dollar/), here is the mechanics of this gap and its reach.*
 
-Covered interest parity, or CIP, rests on a simple idea. An investor holding a dollar can invest it for a year at the dollar rate. Or they can convert it into euros spot, invest those euros at the euro rate, and lock in today the reconversion rate into dollars a year out through a forward contract. In theory, both paths must return exactly the same. If they did not, anyone could borrow via the cheaper path, lend via the other, and pocket a riskless margin. This arbitrage should bring the gap to zero instantly.
+[Covered interest parity](https://www.bis.org/publications/qr-201609/covered-interest-parity-lost-understanding-cross-currency-basis), or CIP, rests on a simple idea. An investor holding a dollar can invest it for a year at the dollar rate. Or they can convert it into euros spot, invest those euros at the euro rate, and lock in today the reconversion rate into dollars a year out through a forward contract. In theory, both paths must return exactly the same. If they did not, anyone could borrow via the cheaper path, lend via the other, and pocket a riskless margin. This arbitrage should bring the gap to zero instantly.
 
 ## The law that no longer holds
 
@@ -39,7 +43,7 @@ Before 2008, that was the case, and the basis hovered around zero for the major 
 
 ## Why arbitrage no longer closes the gap
 
-If a riskless margin exists, why do banks not erase it? Because the arbitrage is no longer either riskless or free. The work of the BIS and the Fed converges on two causes. First, balance-sheet constraints: since 2008, the leverage ratio and risk-weighted capital requirements make the mere act of expanding a balance sheet to capture the gap costly. The arbitrageur must tie up capital, and demands to be paid for it. Second, the imbalance in hedging demand: Japanese insurers and European pension funds structurally need dollars they obtain through swaps, which pushes the gap one way, with no symmetric counterparty to fill it.
+If a riskless margin exists, why do banks not erase it? Because the arbitrage is no longer either riskless or free. The [work of the BIS](https://www.bis.org/publications/qr-201609/covered-interest-parity-lost-understanding-cross-currency-basis) and the Fed converges on two causes. First, balance-sheet constraints: since 2008, the leverage ratio and risk-weighted capital requirements make the mere act of expanding a balance sheet to capture the gap costly. The arbitrageur must tie up capital, and demands to be paid for it. Second, the imbalance in hedging demand: Japanese insurers and European pension funds structurally need dollars they obtain through swaps, which pushes the gap one way, with no symmetric counterparty to fill it.
 
 These two forces explain why the basis widens especially on balance-sheet dates. At quarter- and year-ends, banks cut their market-making to lighten their balance sheet, liquidity grows scarce, and the gap widens brutally on small demand shocks. It is the same balance-sheet-constraint mechanism described for [repo](/en/analysis/repo-the-liquidity-factory/), applied this time to the FX market.
 

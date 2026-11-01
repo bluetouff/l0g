@@ -1,3 +1,5 @@
+import { embeddedAnalysisTools } from './embedded-analysis-tools.ts';
+
 export interface AnalysisToolLocale {
   title: string;
   eyebrow: string;
@@ -10,16 +12,19 @@ export interface AnalysisToolLocale {
 
 export interface AnalysisTool {
   id: string;
-  version: string;
+  version?: string;
   status: 'active' | 'beta';
   category: 'economics' | 'markets' | 'macro' | 'crypto';
   updatedAt: string;
-  modelHref: string;
+  modelHref?: string;
+  placement?: 'article';
+  embeddedComponent?: string;
   fr: AnalysisToolLocale;
   en: AnalysisToolLocale;
 }
 
 export const analysisTools: AnalysisTool[] = [
+  ...embeddedAnalysisTools,
   {
     id: 'eudi-request-audit',
     version: '1.0.0',

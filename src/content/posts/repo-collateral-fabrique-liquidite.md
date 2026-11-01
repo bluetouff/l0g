@@ -4,12 +4,16 @@ description: "Le marché repo transforme du collatéral en cash au jour le jour,
 pubDate: 2026-06-23T11:00:00+02:00
 updatedDate: 2026-06-23T11:00:00+02:00
 tags: ["macro", "banques centrales", "liquidité", "marchés"]
+quickTake:
+  fact: "Le repo permet d’obtenir des liquidités contre un titre cédé avec un engagement de rachat. Les dealers relient les prêteurs de cash aux emprunteurs qui apportent ces garanties."
+  importance: "La capacité de bilan des intermédiaires conditionne le financement des positions sur obligations. Une tension sur ce marché peut renchérir ce financement et fragiliser les positions à effet de levier."
+  uncertainty: "Un taux repo tendu peut refléter une mauvaise répartition des réserves, des contraintes de bilan ou une demande accrue de financement. Le niveau global des réserves ne suffit pas à départager ces mécanismes."
 draft: false
 ---
 
 *Sous la surface des marchés, des milliers de milliards de dollars changent de main chaque jour contre du collatéral, pour quelques heures. C'est le marché repo, la plomberie qui finance les Treasuries, les dealers et les positions à effet de levier. Quand elle fonctionne, personne n'en parle. Quand elle se grippe, comme en septembre 2019, les taux courts décrochent en quelques heures et la banque centrale doit injecter du cash en urgence. Fin 2025, après la fin du resserrement quantitatif, les premiers tremblements sont réapparus. Décryptage d'un mécanisme où la liquidité ne tombe pas du ciel : elle se fabrique sur le bilan des intermédiaires, contre du collatéral.*
 
-Une opération de pension livrée, ou repo, est une vente assortie d'un rachat. Un emprunteur cède un titre, le plus souvent une obligation du Trésor américain, et reçoit du cash, avec l'engagement de racheter le titre le lendemain à un prix légèrement supérieur. La différence est un taux d'intérêt. Le prêt est donc garanti par le titre, le collatéral, ce qui rend le repo bien plus sûr qu'un prêt en blanc. Le taux de référence du segment garanti est le [SOFR](/glossaire/#sofr), publié chaque jour par la Réserve fédérale de New York. Le point essentiel tient en une idée : dans le repo, le cash et le collatéral sont les deux faces d'une même pièce, et la liquidité naît de leur circulation.
+Une opération de pension livrée, ou [repo](https://www.newyorkfed.org/markets/domestic-market-operations/monetary-policy-implementation/repo-reverse-repo-agreements), est une vente assortie d'un rachat. Un emprunteur cède un titre, le plus souvent une obligation du Trésor américain, et reçoit du cash, avec l'engagement de racheter le titre le lendemain à un prix légèrement supérieur. La différence est un taux d'intérêt. Le prêt est donc garanti par le titre, le collatéral, ce qui rend le repo bien plus sûr qu'un prêt en blanc. Le taux de référence du segment garanti est le [SOFR](/glossaire/#sofr), publié chaque jour par la Réserve fédérale de New York. Le point essentiel tient en une idée : dans le repo, le cash et le collatéral sont les deux faces d'une même pièce, et la liquidité naît de leur circulation.
 
 ## Comment le repo fabrique de la liquidité
 
@@ -59,7 +63,7 @@ La Fed n'agit pas sur le repo en fixant un prix, mais en bornant un couloir. La 
 
 ## Où ça casse
 
-Les points de rupture sont connus, et ils tiennent moins au manque de cash qu'à sa distribution et aux contraintes de bilan. Aux fins de trimestre et aux dates de reporting, les dealers réduisent leur intermédiation pour alléger leur bilan, et les taux garantis peuvent grimper au-dessus du couloir. Une hausse soudaine du TGA, quand le Trésor reconstitue sa trésorerie, aspire des réserves hors du système. Une émission lourde de Treasuries gonfle le collatéral à financer. Et quand les réserves deviennent rares, la moindre de ces secousses se transmet aux taux.
+Les points de rupture sont [documentés par les travaux de la New York Fed](https://libertystreeteconomics.newyorkfed.org/2021/09/what-quantity-of-reserves-is-sufficient/), et ils tiennent moins au manque de cash qu'à sa distribution et aux contraintes de bilan. Aux fins de trimestre et aux dates de reporting, les dealers réduisent leur intermédiation pour alléger leur bilan, et les taux garantis peuvent grimper au-dessus du couloir. Une hausse soudaine du TGA, quand le Trésor reconstitue sa trésorerie, aspire des réserves hors du système. Une émission lourde de Treasuries gonfle le collatéral à financer. Et quand les réserves deviennent rares, la moindre de ces secousses se transmet aux taux.
 
 La leçon de référence reste septembre 2019. Les réserves étaient tombées à environ **1 400 milliards** de dollars, et un télescopage entre paiements d'impôts et règlement d'adjudications a fait bondir les taux repo bien au-dessus de la cible, jusqu'à des transactions à deux chiffres, forçant la Fed à injecter jusqu'à **100 milliards** de dollars par jour. La conclusion des régulateurs : dans un monde de planchers réglementaires de liquidité, des réserves dites abondantes peuvent se révéler illusoires si elles sont mal réparties.
 

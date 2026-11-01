@@ -81,6 +81,11 @@ const postsEn = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     ogImage: z.string().optional(),
+    quickTake: z.object({
+      fact: z.string(),
+      importance: z.string(),
+      uncertainty: z.string(),
+    }).optional(),
     // Slug de l'article français source, ex: financement-circulaire-ia.
     sourceArticle: z.string(),
     // Date de révision de l'article français au moment de la traduction.

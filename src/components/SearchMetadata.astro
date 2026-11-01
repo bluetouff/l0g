@@ -1,0 +1,20 @@
+---
+import { searchContentType, searchDateMetadata, searchTopicLabels } from '../lib/search-metadata.ts';
+
+interface Props {
+  path: string;
+  date?: Date | string;
+  tags?: string[];
+}
+const { path, date, tags = [] } = Astro.props;
+const kind = searchContentType(path);
+const dated = searchDateMetadata(date);
+const topics = searchTopicLabels(tags, path.startsWith('/en/') ? 'en' : 'fr');
+---
+
+<meta name="l0g:search-type" data-pagefind-filter="type[content]" data-pagefind-meta="kind[content]" content={kind} />
+{topics.map((topic) => <meta name="l0g:search-topic" data-pagefind-filter="topic[content]" content={topic} />)}
+{dated && <>
+  <meta name="l0g:search-date" data-pagefind-meta="published[content]" data-pagefind-sort="date[content]" content={dated.iso} />
+  <meta name="l0g:search-year" data-pagefind-filter="year[content]" content={dated.year} />
+</>}

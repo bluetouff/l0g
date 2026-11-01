@@ -4,12 +4,16 @@ description: "Un seul arbitrage relie le marché repo, les futures et la stabili
 pubDate: 2026-06-23T15:00:00+02:00
 updatedDate: 2026-06-23T15:00:00+02:00
 tags: ["macro", "marchés", "banques centrales", "régulation"]
+quickTake:
+  fact: "Le basis trade associe l’achat d’une obligation du Trésor américain, la vente d’un contrat à terme et un financement repo pour exploiter un écart entre les deux prix."
+  importance: "Le levier permet de financer des positions importantes pour exploiter un petit écart de prix, mais accroît le besoin de liquidités lorsque les marges ou les garanties exigées augmentent. Des ventes forcées peuvent alors amplifier la tension sur le marché obligataire."
+  uncertainty: "L’arbitrage n’est pas déclaré comme une position distincte. Les positions à terme et les volumes de repo servent d’indices pour en estimer la taille, sans permettre un décompte exact."
 draft: false
 ---
 
 *Il existe un arbitrage qui, à lui seul, relie le marché repo, les contrats à terme sur Treasuries et la stabilité du marché de la dette américaine. On l'appelle le basis trade. En temps normal, il rapproche les prix du comptant et des futures, et fournit de la liquidité à un marché de **29 000 milliards** de dollars. En cas de stress, le même mécanisme se retourne : son levier élevé force des débouclages, qui amplifient la chute. Il a contribué à la débâcle des Treasuries de mars 2020, et sa taille n'a cessé de croître depuis. Suite directe de notre [article sur le repo et le collatéral](/posts/repo-collateral-fabrique-liquidite/), voici l'anatomie d'un trade que les régulateurs surveillent comme le lait sur le feu.*
 
-Le basis trade est un arbitrage sur la base, soit l'écart de prix entre une obligation du Trésor au comptant et le contrat à terme correspondant. Le futures cote en général un peu cher par rapport au comptant, parce que des gérants d'actifs achètent massivement des futures pour s'exposer à la duration sans détenir les titres. Un fonds capte cet écart en montant trois jambes simultanées : il achète l'obligation au comptant, vend le contrat à terme, et finance l'achat en [repo](/glossaire/#repo) en mettant l'obligation en garantie. À l'échéance, la base converge vers zéro et l'écart est encaissé.
+Le [basis trade](https://www.federalreserve.gov/econres/notes/feds-notes/quantifying-treasury-cash-futures-basis-trades-20240308.html) est un arbitrage sur la base, soit l'écart de prix entre une obligation du Trésor au comptant et le contrat à terme correspondant. Le futures cote en général un peu cher par rapport au comptant, parce que des gérants d'actifs achètent massivement des futures pour s'exposer à la duration sans détenir les titres. Un fonds capte cet écart en montant trois jambes simultanées : il achète l'obligation au comptant, vend le contrat à terme, et finance l'achat en [repo](/glossaire/#repo) en mettant l'obligation en garantie. À l'échéance, la base converge vers zéro et l'écart est encaissé.
 
 ## La mécanique, et le levier
 

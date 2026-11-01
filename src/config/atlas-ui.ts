@@ -4,6 +4,7 @@ export const atlasUi = {
   fr: {
     kinds: { announcement: 'Annonce des parties', contract: 'Relation déclarée', limitation: 'Limites documentées' },
     kicker: '// carte interactive · acteurs et contrats', titlePrefix: 'Atlas du',
+    circuit: 'La relation en un regard', circuitFrom: 'Départ', circuitTo: 'Arrivée', circuitProof: 'Lire la preuve et ses limites',
     network: 'Le réseau documenté', actors: 'acteurs et structures', relations: 'relations',
     chooseDate: 'Choisir une date de publication', announcement: 'Annonce', contract: 'Relation déclarée', selected: 'Relation sélectionnée',
     legend: 'Traits sans échelle financière ; nature du lien dans la fiche',
@@ -21,6 +22,7 @@ export const atlasUi = {
   en: {
     kinds: { announcement: 'Announcement by the parties', contract: 'Reported relationship', limitation: 'Documented limits' },
     kicker: '// interactive map · actors and contracts', titlePrefix: 'Atlas of',
+    circuit: 'The relationship at a glance', circuitFrom: 'From', circuitTo: 'To', circuitProof: 'Read the evidence and limitations',
     network: 'The documented network', actors: 'actors and entities', relations: 'relationships',
     chooseDate: 'Choose a publication date', announcement: 'Announcement', contract: 'Reported relationship', selected: 'Selected relationship',
     legend: 'Lines do not show financial scale; select a relationship for its meaning',

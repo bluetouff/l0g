@@ -48,6 +48,15 @@ const dateLabel = (date: string) => formatAtlasDate(date, language);
         {dataset.milestones.map((milestone, index) => <button type="button" data-atlas-date={milestone.date} aria-pressed={milestone.date === latest.date ? 'true' : 'false'}><span class="date-number">{String(index + 1).padStart(2, '0')}</span><time datetime={milestone.date}>{dateLabel(milestone.date)}</time><span>{milestone.label}</span></button>)}
       </nav>
       <p class="atlas-change" data-atlas-change aria-live="polite">{latest.change}</p>
+      <section class="atlas-circuit" data-atlas-circuit aria-labelledby="atlas-circuit-title">
+        <h3 id="atlas-circuit-title">{ui.circuit}</h3>
+        <ol>
+          <li class="circuit-actor"><small>{ui.circuitFrom}</small><span data-circuit-from-role>{node(selected.from).role}</span><strong data-circuit-from>{node(selected.from).label}</strong></li>
+          <li class="circuit-relation"><small data-circuit-kind>{kinds[selected.observation.kind]}</small><p data-circuit-label>{selected.observation.label}</p><p class="circuit-date">{ui.published} <time data-circuit-date datetime={selected.observation.publishedOn}>{dateLabel(selected.observation.publishedOn)}</time></p></li>
+          <li class="circuit-actor"><small>{ui.circuitTo}</small><span data-circuit-to-role>{node(selected.to).role}</span><strong data-circuit-to>{node(selected.to).label}</strong></li>
+        </ol>
+        <a href="#atlas-inspector-title" data-atlas-proof-link>{ui.circuitProof} <span aria-hidden="true">↓</span></a>
+      </section>
       <div class="atlas-map" data-atlas-map>
         <svg class="atlas-lines" data-atlas-lines aria-hidden="true" viewBox="0 0 1000 600" style="width:100%;height:auto"><defs><marker id="atlas-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" fill="context-stroke" /></marker></defs><g data-atlas-paths /></svg>
         {dataset.nodes.map(item => <a href="#atlas-relations" data-atlas-node={item.id} class:list={['atlas-node', { 'atlas-hub': hubs.includes(item.id) }]} style={`--atlas-col:${item.column + 1};--atlas-row:${item.row + 1}`} hidden={!initial.nodes.some(visible => visible.id === item.id)}><span class="node-role">{item.role}</span><strong data-node-label>{item.label}</strong><span class="node-count" data-node-count>{atlasRelationCount(initial.relations.filter(relation => relation.from === item.id || relation.to === item.id).length, language)}</span></a>)}
@@ -66,7 +75,7 @@ const dateLabel = (date: string) => formatAtlasDate(date, language);
       </div>
       <article class="atlas-proof" data-atlas-proof>
         <p class="mono-label" data-proof-kind>{kinds[selected.observation.kind]}</p>
-        <h2 id="atlas-inspector-title" data-proof-title aria-live="polite">{node(selected.from).label} → {node(selected.to).label}</h2>
+        <h2 id="atlas-inspector-title" tabindex="-1" data-proof-title aria-live="polite">{node(selected.from).label} → {node(selected.to).label}</h2>
         <p class="proof-date" data-proof-date>{ui.published} {dateLabel(selected.observation.publishedOn)} · {ui.reviewed} {dateLabel(selected.observation.recordedOn)}</p>
         <p class="proof-claim" data-proof-claim>{selected.observation.claim}</p>
         <p class="proof-amount" data-proof-amount>{selected.observation.amount?.label}</p>
@@ -121,6 +130,19 @@ const dateLabel = (date: string) => formatAtlasDate(date, language);
   .atlas-dates button[aria-pressed="true"] { background:color-mix(in srgb,var(--color-signal) 7%,transparent); border-color:var(--color-signal); }
   .atlas-dates button[aria-pressed="true"] .date-number { color:var(--color-signal); }
   .atlas-change { margin:1rem 1.4rem 0; max-width:65rem; min-height:3rem; font-family:var(--font-read); line-height:1.6; font-size:.85rem; }
+  .atlas-circuit { display:none; }
+  .atlas-circuit h3 { margin:0 0 1.2rem; font:500 .82rem/1.5 var(--font-read); color:var(--color-muted); }
+  .atlas-circuit ol { list-style:none; padding:0; margin:0; }
+  .atlas-circuit li { position:relative; margin:0 0 0 .3rem; padding:0 0 1.25rem 1.55rem; border-left:1px solid var(--color-line-strong); }
+  .atlas-circuit li:last-child { border-left-color:transparent; padding-bottom:.3rem; }
+  .atlas-circuit li::before { content:""; position:absolute; left:-4px; top:.35rem; width:7px; height:7px; border:1px solid var(--color-signal); border-radius:50%; background:var(--color-surface); }
+  .atlas-circuit .circuit-relation::before { width:5px; height:5px; left:-3px; border-color:var(--color-muted); }
+  .atlas-circuit small { display:block; color:var(--color-signal); font:450 .68rem/1.6 var(--font-read); }
+  .circuit-actor span { display:block; margin:.15rem 0; color:var(--color-muted); font:400 .74rem/1.6 var(--font-read); overflow-wrap:anywhere; }
+  .circuit-actor strong { display:block; color:var(--color-bright); font:500 1.05rem/1.4 var(--font-read); overflow-wrap:anywhere; }
+  .circuit-relation p { margin:.25rem 0 0; color:var(--color-paper); font:400 .86rem/1.65 var(--font-read); overflow-wrap:anywhere; }
+  .circuit-relation .circuit-date { color:var(--color-muted); font-size:.7rem; }
+  .atlas-circuit>a { display:inline-flex; align-items:center; gap:.7rem; min-height:44px; margin:.65rem 0 0 1.85rem; font:450 .8rem/1.5 var(--font-read); color:var(--color-signal); text-decoration:underline; text-underline-offset:4px; }
   .atlas-map { position:relative; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); grid-template-rows:repeat(4,minmax(78px,auto)); column-gap:clamp(1.5rem,5vw,5.5rem); row-gap:1.4rem; padding:2rem 2.4rem; background:radial-gradient(ellipse at 55% 48%,color-mix(in srgb,var(--color-signal) 7%,transparent),transparent 64%); }
   .atlas-lines { position:absolute; inset:0; height:100%!important; pointer-events:none; }
   .atlas-node { position:relative; grid-column:var(--atlas-col); grid-row:var(--atlas-row); z-index:1; display:flex; flex-direction:column; justify-content:center; gap:.45rem; min-width:0; padding:.85rem .7rem; background:var(--color-surface-2); border:1px solid var(--color-line); border-radius:7px; transition:background .18s,border-color .18s; }
@@ -178,6 +200,6 @@ const dateLabel = (date: string) => formatAtlasDate(date, language);
   .atlas-outlinks { display:flex; gap:1rem 2rem; flex-wrap:wrap; }
   [hidden] { display:none!important; }
   a:focus-visible,button:focus-visible,summary:focus-visible,[data-atlas-relation-list] :global(a:focus-visible) { outline:2px solid var(--color-signal); outline-offset:4px; }
-  @media(max-width:760px) { .atlas-map { grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:none; gap:.7rem; padding:1rem; }.atlas-node { grid-column:auto; grid-row:auto; min-height:88px; }.atlas-node strong { font-size:1rem; }.node-role,.node-count { font-size:.72rem; }.atlas-lines { display:none; }.atlas-inspection { grid-template-columns:minmax(0,1fr); }.atlas-dates { grid-template-columns:repeat(2,minmax(0,1fr)); padding:1rem 1rem 0; }.atlas-change { margin:1rem; }.atlas-toolbar { padding:1rem; }.atlas-entry { flex-direction:column; }.atlas-entry a { text-align:left; }.atlas-proof { order:-1; } }
+  @media(max-width:760px) { .atlas-circuit { display:block; margin:1.1rem 1rem; padding:1.1rem 0 .3rem; border-top:1px solid var(--color-line); border-bottom:1px solid var(--color-line); }.atlas-map { grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:none; gap:.7rem; padding:1rem; }.atlas-node { grid-column:auto; grid-row:auto; min-height:88px; }.atlas-node strong { font-size:1rem; }.node-role,.node-count { font-size:.72rem; }.atlas-lines { display:none; }.atlas-inspection { grid-template-columns:minmax(0,1fr); }.atlas-dates { grid-template-columns:repeat(2,minmax(0,1fr)); padding:1rem 1rem 0; }.atlas-change { margin:1rem; }.atlas-toolbar { padding:1rem; }.atlas-entry { flex-direction:column; }.atlas-entry a { text-align:left; }.atlas-proof { order:-1; } }
   @media(prefers-reduced-motion:reduce) { .atlas-node { transition:none; } }
 </style>

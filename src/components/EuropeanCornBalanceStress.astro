@@ -33,7 +33,7 @@ const outputs = ['unresolvedGap', 'availableImports', 'domesticUse', 'endingStoc
 const nf = new Intl.NumberFormat(fr ? 'fr-FR' : 'en-US', { maximumFractionDigits: 2 });
 ---
 <section class="corn-tool" data-corn-tool data-lang={lang}>
-  <header><span class="corn-eyebrow">{c.eyebrow}</span><h3>{c.title}</h3><p>{c.intro}</p></header>
+  <header><span class="corn-eyebrow">{c.eyebrow}</span><h3 id={`corn-balance-${lang}-title`}>{c.title}</h3><p>{c.intro}</p></header>
   <div class="corn-layout">
     <form data-corn-form>
       <fieldset disabled data-corn-fields>

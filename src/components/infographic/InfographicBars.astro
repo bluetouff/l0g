@@ -27,11 +27,11 @@ interface Props {
 }
 
 const TONES: Record<Tone, string> = {
-  signal: '#5eead4',
-  amber: '#f5b13d',
-  accent: '#ff4d87',
-  blue: '#7aa2f7',
-  muted: '#8b909b',
+  signal: 'var(--color-signal)',
+  amber: 'var(--color-amber)',
+  accent: 'var(--color-accent)',
+  blue: 'var(--color-topic-blue)',
+  muted: 'var(--color-muted)',
 };
 
 const { title, subtitle, items, max, fontScale = 1, note, notes = [], source, caption, compact = false } = Astro.props;
@@ -90,36 +90,36 @@ const H = y + 12;
     role="img"
     aria-label={title}
     xmlns="http://www.w3.org/2000/svg"
-    style={`width:100%;max-width:${compact ? `${W}px` : '100%'};height:auto;font-family:ui-monospace,monospace;display:block${compact ? ';margin-inline:auto' : ''}`}
+    style={`width:100%;max-width:${compact ? `${W}px` : '100%'};height:auto;font-family:var(--font-read);display:block${compact ? ';margin-inline:auto' : ''}`}
   >
-    <rect width={W} height={H} fill="#0c0d10"></rect>
-    <text x={compact ? 16 : 32} y="38" fill="#f5f6f8" font-size={17 * textScale} font-weight="700">{title}</text>
-    {subtitle && <text x={compact ? 16 : 32} y="59" fill="#8b909b" font-size={12 * textScale}>{subtitle}</text>}
+    <rect width={W} height={H} fill="var(--color-ink)"></rect>
+    <text x={compact ? 16 : 32} y="38" fill="var(--color-bright)" font-size={17 * textScale} font-weight="400">{title}</text>
+    {subtitle && <text x={compact ? 16 : 32} y="59" fill="var(--color-muted)" font-size={12 * textScale}>{subtitle}</text>}
 
     {rows.map((r) => (
       <>
-        <text x={x0} y={r.labelY} fill="#d6d9df" font-size={12 * textScale}>{r.label}</text>
-        <rect x={x0} y={r.barTop} width={barW} height={trackH} fill="#2a2c33"></rect>
+        <text x={x0} y={r.labelY} fill="var(--color-prose)" font-size={12 * textScale}>{r.label}</text>
+        <rect x={x0} y={r.barTop} width={barW} height={trackH} fill="var(--color-surface-2)"></rect>
         <rect x={x0} y={r.barTop} width={r.w} height={trackH} fill={r.color} opacity="0.9"></rect>
         {r.valueLabel && (r.inside ? (
-          <text x={x0 + r.w - 12} y={r.barTop + 18} fill="#0c0d10" font-size={12 * textScale} font-weight="700" text-anchor="end">{r.valueLabel}</text>
+          <text x={x0 + r.w - 12} y={r.barTop + 18} fill="var(--color-ink)" font-size={12 * textScale} font-weight="400" text-anchor="end">{r.valueLabel}</text>
         ) : (
-          <text x={x0 + r.w + 10} y={r.barTop + 18} fill={r.color} font-size={12 * textScale} font-weight="700">{r.valueLabel}</text>
+          <text x={x0 + r.w + 10} y={r.barTop + 18} fill={r.color} font-size={12 * textScale} font-weight="400">{r.valueLabel}</text>
         ))}
       </>
     ))}
 
     {dividerY !== null && (
-      <line x1={x0} y1={dividerY} x2={W - x0} y2={dividerY} stroke="#2a2c33" stroke-width="1"></line>
+      <line x1={x0} y1={dividerY} x2={W - x0} y2={dividerY} stroke="var(--color-line)" stroke-width="0.75"></line>
     )}
     {noteY !== null && (
-      <text x={x0} y={noteY} fill="#ff4d87" font-size={13 * textScale} font-weight="700">{note}</text>
+      <text x={x0} y={noteY} fill="var(--color-accent)" font-size={13 * textScale} font-weight="400">{note}</text>
     )}
     {noteLines.map((n) => (
-      <text x={x0} y={n.lineY} fill="#d6d9df" font-size={12 * textScale}>{n.t}</text>
+      <text x={x0} y={n.lineY} fill="var(--color-prose)" font-size={12 * textScale}>{n.t}</text>
     ))}
     {sourceY !== null && (
-      <text x={x0} y={sourceY} fill="#8b909b" font-size={11 * textScale}>{source}</text>
+      <text x={x0} y={sourceY} fill="var(--color-muted)" font-size={11 * textScale}>{source}</text>
     )}
   </svg>
 </Infographic>

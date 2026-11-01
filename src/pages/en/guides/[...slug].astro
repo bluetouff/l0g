@@ -94,6 +94,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   ogImage={ogImage}
   canonical={url}
   alternateLinks={alternateLinks}
+  searchDate={updated}
+  searchTags={guide.data.tags}
 >
   <script type="application/ld+json" is:inline set:html={safeLd} />
 

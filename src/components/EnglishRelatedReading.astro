@@ -3,11 +3,18 @@ import { getCollection } from 'astro:content';
 import { financingReadingPaths } from '../config/english-reading-paths.ts';
 import { englishEditorialLinks } from '../config/english-editorial-links.ts';
 import { englishDossiers } from '../config/english-edition.ts';
+import { editorialReadingSuggestions } from '../config/editorial-reading-links.ts';
 
 interface Props { id: string; collection: 'postsEn' | 'guidesEn' | 'atlas' }
 const { id, collection } = Astro.props;
 const route = `/en/${collection === 'postsEn' ? 'analysis' : collection === 'guidesEn' ? 'guides' : 'atlas'}/${id}/`;
-const suggestions = englishEditorialLinks.filter((link) => link.from === route);
+const curatedSuggestions = collection === 'postsEn'
+  ? editorialReadingSuggestions(id, 'en').map((link) => ({ to: link.href, note: link.note, purpose: link.purpose }))
+  : [];
+const existingSuggestions = englishEditorialLinks.filter((link) => link.from === route).map((link) => ({ ...link, purpose: undefined }));
+const suggestions = [...new Map<string, { to: string; note: string; purpose?: string }>(
+  [...existingSuggestions, ...curatedSuggestions].map((link) => [link.to, link]),
+).values()];
 const path = financingReadingPaths.find((candidate) =>
   collection === 'atlas' ? candidate.id === id :
     (collection === 'postsEn' ? candidate.analysisIds : candidate.guideIds).includes(id));
@@ -48,7 +55,7 @@ const additionalResources = suggestedResources.filter((link) => !neighbourHrefs.
         const note = suggestions.find((link) => link.to === `/en/analysis/${entry.id}/`)?.note;
         return <li><a href={`/en/analysis/${entry.id}/`}>{entry.data.title}</a>{note && <p>{note}</p>}</li>;
       })}
-      {additionalResources.map((link) => <li><a href={link.to}>{link.title}</a><p>{link.note}</p></li>)}
+      {additionalResources.map((link) => <li>{link.purpose && <span class="reading-purpose">{link.purpose}</span>}<a href={link.to}>{link.title}</a><p>{link.note}</p></li>)}
     </ul>
   </nav>
 )}
@@ -58,5 +65,7 @@ const additionalResources = suggestedResources.filter((link) => !neighbourHrefs.
   h2 { color: var(--color-bright); font-family: var(--font-display); font-size: 1.25rem; line-height: 1.4; }
   p { color: var(--color-muted); line-height: 1.65; margin-top: .65rem; }
   ul { display: grid; gap: .65rem; list-style: none; margin-top: 1rem; padding: 0; }
+  .reading-purpose { display: block; margin-bottom: .3rem; color: var(--color-muted); font-family: var(--font-read); font-size: .75rem; letter-spacing: .025em; }
   a { color: var(--color-signal); line-height: 1.5; text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere; }
+  a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
 </style>

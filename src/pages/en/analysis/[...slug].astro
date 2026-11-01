@@ -7,6 +7,7 @@ import '../../../styles/danfoss-figures.css';
 import AiEditorialDisclosure from '../../../components/AiEditorialDisclosure.astro';
 import EnglishRelatedReading from '../../../components/EnglishRelatedReading.astro';
 import ArticleHeroImage from '../../../components/ArticleHeroImage.astro';
+import ArticleQuickTake from '../../../components/ArticleQuickTake.astro';
 import ReadingResume from '../../../components/ReadingResume.astro';
 import ReadingLibrary from '../../../components/ReadingLibrary.astro';
 import ArticleTools from '../../../components/ArticleTools.astro';
@@ -129,6 +130,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   ogImage={ogImage}
   canonical={url}
   alternateLinks={alternateLinks}
+  searchDate={post.data.pubDate}
+  searchTags={post.data.tags}
 >
   <script type="application/ld+json" is:inline set:html={safeLd} />
 
@@ -148,7 +151,14 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
         alt={`Illustration for the analysis: ${post.data.title}`}
       />
 
-      <p class="post-lede mt-5">{post.data.description}</p>
+      <ArticleQuickTake
+        fact={post.data.quickTake?.fact ?? post.data.description}
+        importance={post.data.quickTake?.importance}
+        uncertainty={post.data.quickTake?.uncertainty}
+        readingTime={rt}
+        lang="en"
+        mode={post.data.quickTake ? 'summary' : 'presentation'}
+      />
 
       <div class="post-meta mono-label mt-6">
         <a href="/about/" rel="author" class="link-term post-author">By Olivier Laurelli / bluetouff</a>

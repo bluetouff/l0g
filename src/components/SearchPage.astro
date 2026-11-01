@@ -1,0 +1,55 @@
+---
+interface Props { lang?: 'fr' | 'en' }
+const { lang = 'fr' } = Astro.props;
+const en = lang === 'en';
+const suggestions = en ? ['private credit', 'inflation', 'stablecoins', 'carry trade'] : ['crédit privé', 'inflation', 'stablecoins', 'carry trade'];
+---
+
+<section class="search-page" data-pagefind-ignore>
+  <header class="search-intro">
+    <p class="mono-label">// {en ? 'explore the publication' : 'explorer le journal'}</p>
+    <h1>{en ? 'Find your next reading' : 'Retrouver une analyse'}</h1>
+    <p>{en ? 'Search investigations, guides, definitions and tools. Refine by subject or publication year.' : 'Cherchez parmi les enquêtes, les guides, les définitions et les outils. Affinez par sujet ou par année.'}</p>
+    <nav class="search-editions" aria-label={en ? 'Search language' : 'Langue de recherche'}>
+      <a href="/recherche/" lang="fr" hreflang="fr" aria-current={!en ? 'page' : undefined}>Français</a>
+      <a href="/en/search/" lang="en" hreflang="en" aria-current={en ? 'page' : undefined}>English</a>
+    </nav>
+  </header>
+  <div class="pf-search pf-page" data-search-lang={lang}></div>
+  <div class="search-suggestions">
+    <span>{en ? 'Try' : 'Suggestions'}</span>
+    {suggestions.map((query) => <button type="button" data-search-query={query}>{query}</button>)}
+  </div>
+  <p class="search-privacy">{en ? 'Search runs in your browser, without tracking.' : 'La recherche fonctionne dans votre navigateur, sans suivi.'}</p>
+  <noscript><p>{en ? 'Enable JavaScript to search locally, or browse the ' : 'Activez JavaScript pour rechercher localement, ou parcourez les '}<a href={en ? '/en/analysis/' : '/sujets/'} class="link-term">{en ? 'analysis archive' : 'sujets suivis'}</a>.</p></noscript>
+</section>
+
+<style is:global>
+  .search-page { max-width: 58rem; margin-inline: auto; }
+  .search-intro { margin-bottom: 2rem; }
+  .search-intro .mono-label { color: var(--color-signal); }
+  .search-intro h1 { margin: .85rem 0; color: var(--color-bright); font: 450 clamp(1.8rem, 4vw, 2.7rem)/1.2 var(--font-read); letter-spacing: -.035em; }
+  .search-intro > p:last-of-type { max-width: 42rem; color: var(--color-muted); font: 400 1rem/1.7 var(--font-read); }
+  .search-editions { display: flex; gap: 1.25rem; margin-top: 1rem; font: 400 .8rem/1.5 var(--font-read); }
+  .search-editions a { padding-bottom: .25rem; border-bottom: 1px solid transparent; color: var(--color-muted); }
+  .search-editions a[aria-current] { color: var(--color-signal); border-color: currentColor; }
+  .search-page .search-filters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.1rem 0; }
+  .search-page .search-filter { min-width: 0; color: var(--color-muted); font: 400 .75rem/1.5 var(--font-read); }
+  .search-page .search-filter select { display: block; width: 100%; min-width: 0; min-height: 2.75rem; margin-top: .4rem; border: 1px solid var(--color-line-strong); border-radius: 4px; padding: .55rem .5rem; background: var(--color-surface); color: var(--color-paper); font: 400 .84rem/1.4 var(--font-read); }
+  .search-page :is(input, select, button, a):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  .search-page .search-date-note { margin: -.3rem 0 1rem; color: var(--color-muted); font: 400 .78rem/1.5 var(--font-read); }
+  .search-page .pagefind-ui__result-tags { display: flex; gap: .8rem; margin-bottom: .45rem; color: var(--color-muted); font: 400 .72rem/1.5 var(--font-read); }
+  .search-page .pagefind-ui__result-tags > span:first-child { color: var(--color-signal); }
+  .search-page .pagefind-ui__result-title { font-family: var(--font-read); font-weight: 450; }
+  .search-page .pf-page { max-width: none; }
+  .search-page .pf-page .pagefind-ui__result { border: 0; border-top: 1px solid var(--color-line); border-radius: 0; padding: 1.3rem 0 !important; }
+  .search-page .pagefind-ui__result-link { font-weight: 450; }
+  .search-page .search-reset { border: 0; border-bottom: 1px solid var(--color-line); padding: .3rem 0; background: transparent; color: var(--color-muted); font: 400 .78rem/1.5 var(--font-read); cursor: pointer; }
+  .search-page [hidden] { display: none !important; }
+  .search-page .pagefind-ui__result-excerpt { font-family: var(--font-read); }
+  .search-suggestions { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem .65rem; margin-top: 1.25rem; color: var(--color-muted); font: 400 .78rem/1.5 var(--font-read); }
+  .search-suggestions button { min-height: 2.4rem; border: 0; border-bottom: 1px solid var(--color-line); padding: .4rem .2rem; background: transparent; color: var(--color-paper); font: inherit; cursor: pointer; }
+  .search-suggestions button:hover { border-color: var(--color-signal); }
+  .search-privacy { margin-top: 1rem; color: var(--color-muted); font: 400 .75rem/1.5 var(--font-read); }
+  @media (max-width: 640px) { .search-page .search-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

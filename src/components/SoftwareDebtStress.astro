@@ -43,7 +43,7 @@ const t = fr ? {
 };
 ---
 <section class="sds" data-software-debt data-lang={lang} data-positive={t.positive} data-balanced={t.balanced} data-risk={t.risk} data-invalid={t.invalid}>
-  <p class="sds-eyebrow">{t.eyebrow}</p><h3>{t.title}</h3><p class="sds-intro">{t.intro}</p>
+  <p class="sds-eyebrow">{t.eyebrow}</p><h3 id={`software-debt-${lang}-title`}>{t.title}</h3><p class="sds-intro">{t.intro}</p>
   <fieldset disabled data-fields><legend>{t.parameters}</legend>
     <div class="sds-presets">{presets.map((key, i) => <button type="button" data-preset={key} aria-pressed={key === 'baseline'}>{t.presets[i]}</button>)}</div>
     <div class="sds-controls">{keys.map((key, i) => <label for={`sds-${lang}-${key}`}>

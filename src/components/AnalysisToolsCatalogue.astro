@@ -1,0 +1,64 @@
+---
+import AnalysisToolCard from './AnalysisToolCard.astro';
+import { analysisTools } from '../config/analysis-tools.ts';
+interface Props { language?: 'fr' | 'en'; }
+const { language = 'fr' } = Astro.props;
+const fr = language === 'fr';
+const groups = [
+  { id: 'economics', title: fr ? 'Économie et coûts' : 'Economics and costs', description: fr ? 'Factures, consommation, échanges et services.' : 'Bills, spending, trade and services.' },
+  { id: 'markets', title: fr ? 'Financement et marchés' : 'Financing and markets', description: fr ? 'Trésorerie, dette, garanties et risques.' : 'Cash flow, debt, collateral and risk.' },
+  { id: 'macro', title: fr ? 'Macroéconomie' : 'Macroeconomics', description: fr ? 'Inflation, taux et finances publiques.' : 'Inflation, yields and public finances.' },
+  { id: 'crypto', title: 'Crypto', description: fr ? 'Réserves et revenus des dollars numériques.' : 'Digital-dollar reserves and income.' },
+].map(group => ({ ...group, tools: analysisTools.filter(tool => tool.category === group.id) }));
+---
+
+<section class="tools-intro" data-pagefind-ignore>
+  <div>
+    <p class="mono-label">{fr ? '// le laboratoire l0g' : '// the l0g laboratory'}</p>
+    <h1>{fr ? 'Explorer les outils d’analyse' : 'Explore the analysis tools'}</h1>
+    <p class="tools-intro-copy">{fr ? 'Partir d’une question, modifier une hypothèse, examiner le résultat. Chaque outil prolonge une enquête et donne accès à ses sources et à ses limites.' : 'Start with a question, change an assumption and inspect the result. Every tool extends an investigation and links back to its sources and limitations.'}</p>
+  </div>
+  <p class="tools-count"><span>{analysisTools.length}</span>{fr ? 'outils à explorer' : 'tools to explore'}<small>{fr ? 'Calculs dans votre navigateur' : 'Calculations in your browser'}</small></p>
+</section>
+
+<nav class="tools-categories" aria-label={fr ? 'Choisir un sujet' : 'Choose a subject'}>
+  {groups.filter(group => group.tools.length).map(group => <a href={`#tools-${group.id}`}>{group.title}<span>{group.tools.length}</span></a>)}
+</nav>
+
+<div data-pagefind-body>
+  {groups.filter(group => group.tools.length).map(group => (
+    <section class="tools-section" id={`tools-${group.id}`} aria-labelledby={`tools-title-${group.id}`}>
+      <header class="tools-section-head"><h2 id={`tools-title-${group.id}`}>{group.title}</h2><p>{group.description}</p></header>
+      <div class="tools-grid">{group.tools.map((tool, index) => <AnalysisToolCard tool={tool} lang={language} index={index} />)}</div>
+    </section>
+  ))}
+</div>
+
+<aside class="tools-contract" data-pagefind-ignore>
+  <h2>{fr ? 'Lire un résultat avec ses hypothèses' : 'Read each result with its assumptions'}</h2>
+  <p>{fr ? 'Les données observées restent distinctes des paramètres illustratifs. Un scénario décrit un résultat conditionnel ; sa portée dépend des unités, des formules et du périmètre exposés dans l’outil. Retrouvez l’enquête associée pour replacer le calcul dans son contexte.' : 'Observed data remain distinct from illustrative inputs. A scenario describes a conditional outcome; its scope depends on the units, formulas and boundaries stated in the tool. Return to the related investigation to place the calculation in context.'}</p>
+</aside>
+
+<style>
+  .tools-intro { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:end; gap:2rem; padding:1rem 0 2rem; border-bottom:1px solid var(--color-line); }
+  .tools-intro .mono-label { color:var(--color-signal); }
+  .tools-intro h1 { max-width:24ch; margin:1rem 0; color:var(--color-bright); font:500 clamp(1.8rem,4vw,2.8rem)/1.18 var(--font-read); letter-spacing:-.035em; }
+  .tools-intro-copy { max-width:58ch; margin:0; color:var(--color-prose); font:400 1rem/1.8 var(--font-read); }
+  .tools-count { margin:0; padding:0 0 .2rem 2rem; border-left:1px solid var(--color-line); color:var(--color-paper); font:400 .82rem/1.6 var(--font-read); }
+  .tools-count>span { display:block; margin-bottom:.3rem; font:400 2.5rem/1.1 var(--font-read); font-variant-numeric:tabular-nums; color:var(--color-signal); }
+  .tools-count small { display:block; color:var(--color-muted); font-size:.7rem; }
+  .tools-categories { display:flex; flex-wrap:wrap; gap:.4rem 1.4rem; padding:1rem 0; }
+  .tools-categories a { display:inline-flex; align-items:center; gap:.55rem; min-height:44px; color:var(--color-paper); font:450 .82rem/1.5 var(--font-read); text-decoration:underline; text-decoration-color:var(--color-line-strong); text-underline-offset:5px; }
+  .tools-categories a:hover { color:var(--color-signal); text-decoration-color:currentColor; }
+  .tools-categories span { color:var(--color-muted); font:400 .7rem/1 var(--font-mono); }
+  .tools-section { margin-top:2rem; scroll-margin-top:1.5rem; }
+  .tools-section-head { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:.4rem 1.5rem; margin-bottom:1rem; }
+  .tools-section-head h2 { margin:0; color:var(--color-bright); font:500 1.3rem/1.4 var(--font-read); letter-spacing:-.02em; }
+  .tools-section-head p { margin:0; color:var(--color-muted); font:400 .8rem/1.6 var(--font-read); }
+  .tools-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 1.5rem; }
+  .tools-contract { margin-top:3rem; padding:1.5rem 0; border-top:1px solid var(--color-line); }
+  .tools-contract h2 { color:var(--color-bright); font:500 1.1rem/1.5 var(--font-read); }
+  .tools-contract p { max-width:80ch; margin:.7rem 0 0; color:var(--color-muted); font:400 .87rem/1.8 var(--font-read); }
+  a:focus-visible { outline:2px solid var(--color-signal); outline-offset:5px; }
+  @media(max-width:680px) { .tools-intro { grid-template-columns:1fr; gap:1.3rem; }.tools-count { border-left:0; padding:0; }.tools-count>span { display:inline; margin-right:.5rem; font-size:1.6rem; }.tools-count small { margin-top:.3rem; }.tools-grid { grid-template-columns:1fr; }.tools-categories { gap:.25rem 1rem; }.tools-section { margin-top:1.5rem; } }
+</style>

@@ -1,12 +1,16 @@
 ---
-import type { ArticleEvidence } from '../lib/article-evidence.ts';
+import type { ArticleEvidence, EvidenceLink } from '../lib/article-evidence.ts';
 import { primarySourceUrl } from '../config/primary-sources.ts';
+import { articleEvidenceDocumentLabels, articleEvidenceLinkLabel } from '../lib/article-evidence-presentation.ts';
 
 interface Props {
   evidence: ArticleEvidence;
+  sourceBody?: string;
 }
 
-const { evidence } = Astro.props;
+const { evidence, sourceBody = '' } = Astro.props;
+const documentLabels = articleEvidenceDocumentLabels(sourceBody);
+const linkLabel = (link: EvidenceLink) => articleEvidenceLinkLabel(link, documentLabels);
 const primaryShown = evidence.primary.slice(0, 6);
 const secondaryShown = evidence.secondary.slice(0, 8);
 const dataShown = evidence.internalData.slice(0, 6);
@@ -14,6 +18,14 @@ const contextShown = evidence.context.slice(0, 10);
 const claimsShown = evidence.claims.slice(0, 3);
 const badges = evidence.badges;
 const depth = evidence.depth;
+const reviewedCount = evidence.claims.filter((claim) => claim.reviewStatus === 'reviewed').length;
+const automatedCount = evidence.claims.length - reviewedCount;
+const directDocuments = [...new Map(
+  [
+    ...evidence.primary.flatMap((item) => item.links.map((link) => ({ ...link, sourceName: item.source.shortName }))),
+    ...evidence.secondary.map((link) => ({ ...link, sourceName: link.host ?? 'Source externe' })),
+  ].map((link) => [link.href, link]),
+).values()].slice(0, 3);
 const depthMode = depth.automated ? 'Profondeur automatique' : 'Profondeur relue';
 const claimTone: Record<string, string> = {
   fait: 'claim-fact',
@@ -26,21 +38,33 @@ const claimTone: Record<string, string> = {
 <aside class="evidence-box" aria-labelledby="evidence-title" data-pagefind-ignore>
   <div class="evidence-head">
     <div>
-      <p id="evidence-title" class="mono-label">// preuves utilisées</p>
+      <h2 id="evidence-title">Sources et vérification</h2>
       <p class="evidence-note">
-        Backfill automatique des passages référencés : chaque ligne relie une affirmation
-        à une ou plusieurs sources cliquables, datées quand détectable.
+        Retrouvez les documents cités et les passages auxquels ils sont associés.
+        Le repérage automatique d’un lien ne valide pas une affirmation.
       </p>
     </div>
     <div class="evidence-counts" aria-label="Résumé de traçabilité">
-      <span>{evidence.stats.primarySources} primaires</span>
-      <span>{evidence.stats.externalLinks} externes</span>
-      <span>{evidence.stats.internalLinks} internes</span>
-      <span>{evidence.stats.claimRelations} relations</span>
+      <span>{reviewedCount} relation{reviewedCount > 1 ? 's' : ''} relue{reviewedCount > 1 ? 's' : ''} dans le registre éditorial</span>
+      <span>{automatedCount} passage{automatedCount > 1 ? 's' : ''} repéré{automatedCount > 1 ? 's' : ''} automatiquement</span>
     </div>
   </div>
 
-  <div class="evidence-badges" aria-label="Niveaux de preuve détectés">
+  {directDocuments.length > 0 ? <ul class="evidence-documents" aria-label="Quelques documents cités">
+    {directDocuments.map((link) => <li>
+      <a href={link.href} target="_blank" rel="noopener">
+        <span>{linkLabel(link)}</span><small>{link.sourceName}</small>
+      </a>
+    </li>)}
+  </ul> : <p class="evidence-empty">Aucun document externe repéré automatiquement. Les références présentes dans le texte restent à consulter.</p>}
+
+  <details class="evidence-details">
+    <summary class="evidence-toggle">
+      Examiner les passages et les références repérées
+      <span class="evidence-toggle-hint">{evidence.stats.claimRelations} passage{evidence.stats.claimRelations > 1 ? 's' : ''}</span>
+    </summary>
+
+    <div class="evidence-badges" aria-label="Niveaux de preuve détectés">
     <span class="depth-badge" title={depth.detail}>
       <span aria-hidden="true">{depth.score}</span>
       profondeur : {depth.label}
@@ -55,13 +79,7 @@ const claimTone: Record<string, string> = {
       ))}
       </>
     )}
-  </div>
-
-  <details class="evidence-details">
-    <summary class="evidence-toggle">
-      Afficher le détail des preuves
-      <span class="evidence-toggle-hint">{evidence.stats.claimRelations} affirmations sourcées</span>
-    </summary>
+    </div>
 
     <p class="depth-note">
       {depthMode} : {depth.detail}. Les niveaux “preuve directe” et “reproduction”
@@ -69,7 +87,7 @@ const claimTone: Record<string, string> = {
     </p>
 
     <section class="claim-section">
-      <h2 class="evidence-h">Affirmations sourcées</h2>
+      <h3 class="evidence-h">Passages et sources associées</h3>
       {claimsShown.length > 0 ? (
         <ol class="claim-list">
           {claimsShown.map((claim) => (
@@ -84,14 +102,14 @@ const claimTone: Record<string, string> = {
               <p class="claim-review-note">
                 {claim.reviewStatus === 'reviewed'
                   ? claim.reviewNote ?? 'Relation relue dans le registre éditorial.'
-                  : 'Non relue : type et relation source-affirmation produits par heuristique lexicale.'}
+                  : 'Association non relue : le type du passage et son lien avec la source sont repérés par heuristique lexicale, puis restent à vérifier dans le document cité.'}
               </p>
               <p>{claim.claim}</p>
               <div class="claim-refs">
                 {claim.references.map((ref) => (
                   <a href={ref.href} target={ref.href.startsWith('http') ? '_blank' : undefined} rel={ref.href.startsWith('http') ? 'noopener' : undefined}>
                     <span>{ref.kind ?? ref.host ?? 'référence'}</span>
-                    <strong>{ref.label}</strong>
+                    <strong>{linkLabel(ref)}</strong>
                     {ref.sourcePublicationDateIso || ref.dateIso ? (
                       <time datetime={ref.sourcePublicationDateIso ?? ref.dateIso}>{ref.sourcePublicationDateLabel ?? ref.dateLabel}</time>
                     ) : (
@@ -110,7 +128,7 @@ const claimTone: Record<string, string> = {
 
     <div class="evidence-grid">
       <section class="evidence-panel">
-        <h2 class="evidence-h">Sources primaires</h2>
+        <h3 class="evidence-h">Sources primaires</h3>
         {primaryShown.length > 0 ? (
           <ul class="evidence-list">
             {primaryShown.map((item) => (
@@ -121,7 +139,7 @@ const claimTone: Record<string, string> = {
                   <span class="primary-links">
                     {item.links.map((link) => (
                       <a href={link.href} target="_blank" rel="noopener">
-                        <span>{link.label}</span>
+                        <span>{linkLabel(link)}</span>
                         {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
                       </a>
                     ))}
@@ -136,13 +154,13 @@ const claimTone: Record<string, string> = {
       </section>
 
       <section class="evidence-panel">
-        <h2 class="evidence-h">Sources secondaires</h2>
+        <h3 class="evidence-h">Sources secondaires</h3>
         {secondaryShown.length > 0 ? (
           <ul class="evidence-list">
             {secondaryShown.map((link) => (
               <li>
                 <a href={link.href} target="_blank" rel="noopener">{link.host ?? link.label}</a>
-                <span>{link.label}</span>
+                <span>{linkLabel(link)}</span>
                 {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
               </li>
             ))}
@@ -153,12 +171,12 @@ const claimTone: Record<string, string> = {
       </section>
 
       <section class="evidence-panel">
-        <h2 class="evidence-h">Données internes</h2>
+        <h3 class="evidence-h">Données internes</h3>
         {dataShown.length > 0 ? (
           <ul class="evidence-list">
             {dataShown.map((link) => (
               <li>
-                <a href={link.href}>{link.label}</a>
+                <a href={link.href}>{linkLabel(link)}</a>
                 <span>{link.kind}</span>
                 {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
               </li>
@@ -170,12 +188,12 @@ const claimTone: Record<string, string> = {
       </section>
 
       <section class="evidence-panel">
-        <h2 class="evidence-h">Contexte l0g</h2>
+        <h3 class="evidence-h">Contexte l0g</h3>
         {contextShown.length > 0 ? (
           <ul class="evidence-list">
             {contextShown.map((link) => (
               <li>
-                <a href={link.href}>{link.label}</a>
+                <a href={link.href}>{linkLabel(link)}</a>
                 <span>{link.kind}</span>
                 {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
               </li>
@@ -206,9 +224,7 @@ const claimTone: Record<string, string> = {
       align-items: start;
     }
   }
-  .evidence-head .mono-label {
-    color: var(--color-signal);
-  }
+  .evidence-head h2 { color: var(--color-bright); font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; line-height: 1.4; }
   .evidence-note {
     margin-top: 0.45rem;
     color: var(--color-muted);
@@ -218,7 +234,7 @@ const claimTone: Record<string, string> = {
   .evidence-counts {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.4rem 1rem;
   }
   @media (min-width: 720px) {
     .evidence-counts {
@@ -227,16 +243,16 @@ const claimTone: Record<string, string> = {
     }
   }
   .evidence-counts span {
-    border: 1px solid color-mix(in srgb, var(--color-signal) 34%, transparent);
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--color-signal) 7%, transparent);
-    color: var(--color-signal);
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.08em;
-    padding: 0.28rem 0.55rem;
-    text-transform: uppercase;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: 0.75rem;
+    line-height: 1.5;
   }
+  .evidence-documents { display: grid; gap: .6rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+  .evidence-documents a { display: grid; gap: .15rem; border-left: 1px solid var(--color-line); padding: .3rem 0 .3rem .8rem; color: var(--color-signal); font-size: .88rem; line-height: 1.5; overflow-wrap: anywhere; }
+  .evidence-documents a:hover span { text-decoration: underline; text-underline-offset: .2em; }
+  .evidence-documents small { color: var(--color-muted); font-size: .75rem; }
+  .evidence-box :is(a, summary):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
   .evidence-badges {
     display: flex;
     flex-wrap: wrap;
@@ -285,15 +301,13 @@ const claimTone: Record<string, string> = {
     gap: 0.6rem;
     cursor: pointer;
     list-style: none;
-    border: 1px solid color-mix(in srgb, var(--color-signal) 34%, transparent);
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--color-signal) 7%, transparent);
+    border-top: 1px solid var(--color-line);
     color: var(--color-signal);
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.5rem 0.85rem;
+    font-family: var(--font-read);
+    font-size: 0.84rem;
+    line-height: 1.5;
+    min-height: 44px;
+    padding: 0.65rem 0;
     transition: background 0.16s, border-color 0.16s;
   }
   .evidence-toggle::-webkit-details-marker {

@@ -5,13 +5,17 @@ description: "The repo market funds Treasuries and leverage with overnight secur
 pubDate: 2026-07-13T14:56:00+02:00
 updatedDate: 2026-07-13T14:56:00+02:00
 tags: ["macro", "central banks", "liquidity", "markets"]
+quickTake:
+  fact: "A repo exchanges a security for cash with an agreement to repurchase it. Dealers connect cash lenders with borrowers supplying the collateral."
+  importance: "Intermediaries’ balance-sheet capacity shapes the funding available for bond positions. Strains in repo can raise funding costs and put leveraged positions under pressure."
+  uncertainty: "Repo-rate pressure can reflect unevenly distributed reserves, balance-sheet constraints or greater funding demand. The total stock of reserves cannot distinguish these mechanisms on its own."
 draft: false
 sourceArticle: "repo-collateral-fabrique-liquidite"
 sourceUpdatedDate: 2026-06-23
 ---
 *Beneath the surface of markets, trillions of dollars change hands every day against collateral, for a few hours. This is the [repo](/en/glossary/repo/) market, the plumbing that funds Treasuries, dealers and leveraged positions. When it works, no one talks about it. When it seizes up, as in September 2019, short rates break loose within hours and the central bank must inject cash on an emergency basis. In late 2025, after the end of quantitative tightening, the first tremors reappeared. A read of a mechanism where liquidity does not fall from the sky: it is manufactured on the balance sheet of intermediaries, against collateral.*
 
-A repurchase agreement, or repo, is a sale coupled with a repurchase. A borrower hands over a security, most often a US Treasury bond, and receives cash, with a commitment to buy the security back the next day at a slightly higher price. The difference is an interest rate. The loan is therefore secured by the security, the collateral, which makes repo far safer than an unsecured loan. The benchmark rate for the secured segment is SOFR, published each day by the New York Federal Reserve. The essential point holds in one idea: in repo, cash and collateral are two faces of the same coin, and liquidity is born from their circulation.
+A repurchase agreement, or [repo](https://www.newyorkfed.org/markets/domestic-market-operations/monetary-policy-implementation/repo-reverse-repo-agreements), is a sale coupled with a repurchase. A borrower hands over a security, most often a US Treasury bond, and receives cash, with a commitment to buy the security back the next day at a slightly higher price. The difference is an interest rate. The loan is therefore secured by the security, the collateral, which makes repo far safer than an unsecured loan. The benchmark rate for the secured segment is SOFR, published each day by the New York Federal Reserve. The essential point holds in one idea: in repo, cash and collateral are two faces of the same coin, and liquidity is born from their circulation.
 
 ## How repo manufactures liquidity
 
@@ -57,7 +61,7 @@ The Fed does not act on repo by setting a price, but by bracketing a corridor. T
 
 ## Where it breaks
 
-The breaking points are known, and they owe less to a lack of cash than to its distribution and to balance-sheet constraints. At quarter-ends and reporting dates, dealers cut their intermediation to lighten their balance sheet, and secured rates can climb above the corridor. A sudden rise in the TGA, when the Treasury rebuilds its cash, drains reserves out of the system. A heavy Treasury issuance swells the collateral to be financed. And when reserves become scarce, the slightest of these tremors transmits to rates.
+The breaking points are [documented by New York Fed research](https://libertystreeteconomics.newyorkfed.org/2021/09/what-quantity-of-reserves-is-sufficient/), and they owe less to a lack of cash than to its distribution and to balance-sheet constraints. At quarter-ends and reporting dates, dealers cut their intermediation to lighten their balance sheet, and secured rates can climb above the corridor. A sudden rise in the TGA, when the Treasury rebuilds its cash, drains reserves out of the system. A heavy Treasury issuance swells the collateral to be financed. And when reserves become scarce, the slightest of these tremors transmits to rates.
 
 The reference lesson remains September 2019. Reserves had fallen to about $1.4 trillion, and a collision between tax payments and auction settlements sent repo rates jumping well above target, up to double-digit transactions, forcing the Fed to inject up to $100 billion a day. The regulators' conclusion: in a world of regulatory liquidity floors, so-called abundant reserves can prove illusory if they are poorly distributed.
 

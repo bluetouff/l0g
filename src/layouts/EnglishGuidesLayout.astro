@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import CspMeta from '../components/CspMeta.astro';
+import SearchMetadata from '../components/SearchMetadata.astro';
+import pagefindInitUrl from '../scripts/pagefind-init.js?url';
 import EnglishNavigation from '../components/EnglishNavigation.astro';
 import EnglishFooter from '../components/EnglishFooter.astro';
 import { authorEntity, organizationEntity, websiteEntity } from '../config/entities.ts';
@@ -24,6 +26,8 @@ interface Props {
   canonical?: string;
   alternateLinks?: AlternateLink[];
   compactNavigation?: boolean;
+  searchDate?: Date | string;
+  searchTags?: string[];
 }
 
 const {
@@ -39,6 +43,8 @@ const {
   canonical = new URL(Astro.url.pathname, Astro.site).toString(),
   alternateLinks = [],
   compactNavigation = false,
+  searchDate,
+  searchTags = [],
 } = Astro.props;
 
 const publicationSocial = getPublicationSocial(Astro.url.pathname);
@@ -93,6 +99,7 @@ const siteJsonLd = {
     <meta name="description" content={metaDescription} />
     <meta name="robots" content={buildRobotsMetadata(robots)} />
     <link rel="canonical" href={canonical} />
+    <SearchMetadata path={Astro.url.pathname} date={searchDate} tags={searchTags} />
     {alternateLinks.map((link) => (
       <link rel="alternate" hreflang={link.hreflang} href={link.href} />
     ))}
@@ -128,6 +135,7 @@ const siteJsonLd = {
       <main id="main-content" tabindex="-1" class="min-w-0 py-8">
         <slot />
       </main>
+      {Astro.url.pathname.startsWith('/en/search') && <script src={pagefindInitUrl} defer is:inline></script>}
     </div>
 
     <EnglishFooter path={Astro.url.pathname} year={year} />

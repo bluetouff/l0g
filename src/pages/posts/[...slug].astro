@@ -294,12 +294,8 @@ const articleHeadings = [
   ...headings,
 ];
 const quickFact = post.data.quickTake?.fact ?? post.data.description;
-const quickImportance = post.data.quickTake?.importance
-  ?? (relatedTopics[0]
-    ? `L’analyse replace ce signal dans le dossier « ${relatedTopics[0].label} » et remonte aux mécanismes et aux sources qui permettent de le vérifier.`
-    : 'L’analyse relie le signal observé à ses mécanismes, à ses sources et à ses limites de lecture.');
-const quickUncertainty = post.data.quickTake?.uncertainty
-  ?? `Les faits et les chiffres sont datés du ${dateLabel.toLocaleLowerCase('fr-FR')}. Les scénarios et les zones non documentées restent explicitement séparés des faits établis.`;
+const quickImportance = post.data.quickTake?.importance;
+const quickUncertainty = post.data.quickTake?.uncertainty;
 ---
 
 <BaseLayout
@@ -310,6 +306,8 @@ const quickUncertainty = post.data.quickTake?.uncertainty
   ogType="article"
   ogImage={ogImage}
   alternateLinks={alternateLinks}
+  searchDate={post.data.pubDate}
+  searchTags={post.data.tags}
 >
   <div slot="sidebar" class="article-sidebar">
     <ArticleNavigator
@@ -349,6 +347,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty
         importance={quickImportance}
         uncertainty={quickUncertainty}
         readingTime={rt}
+        mode={post.data.quickTake ? 'summary' : 'presentation'}
       />
 
       <dl class:list={['post-meta', 'mt-6', post.data.updatedDate && 'has-update']}>
@@ -501,7 +500,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty
       <em>Cet article ne constitue en aucun cas un conseil en investissement.</em>
     </p>
 
-    <ArticleEvidence evidence={evidence} />
+    <ArticleEvidence evidence={evidence} sourceBody={post.body ?? ''} />
 
     <AiEditorialDisclosure lang="fr" />
 

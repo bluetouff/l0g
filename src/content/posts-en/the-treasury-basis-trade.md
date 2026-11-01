@@ -5,13 +5,17 @@ description: "The Treasury basis trade uses about 20x leverage across futures an
 pubDate: 2026-07-13T15:30:00+02:00
 updatedDate: 2026-07-13T15:30:00+02:00
 tags: ["macro", "markets", "central banks", "regulation"]
+quickTake:
+  fact: "The basis trade combines a cash Treasury purchase, a short futures position and repo funding to capture a gap between the two prices."
+  importance: "Leverage funds large positions to capture a small price gap, but increases cash needs when margins or collateral requirements rise. Forced sales can then amplify stress in the bond market."
+  uncertainty: "The strategy is not reported as a separate position. Futures holdings and repo volumes provide proxies for its size, rather than an exact count."
 draft: false
 sourceArticle: "basis-trade-treasuries-levier"
 sourceUpdatedDate: 2026-06-23
 ---
 *There is an arbitrage that, on its own, links the [repo](/en/glossary/repo/) market, Treasury futures and the stability of the US debt market. It is called the [basis trade](/en/glossary/basis-trade/). In normal times, it brings cash and futures prices together, and supplies liquidity to a $29 trillion market. Under stress, the same mechanism reverses: its high leverage forces unwinds, which amplify the fall. It contributed to the Treasury debacle of March 2020, and its size has kept growing since. A direct sequel to our [piece on repo and collateral](/en/analysis/repo-the-liquidity-factory/), here is the anatomy of a trade regulators watch like a hawk.*
 
-The basis trade is an arbitrage on the basis, the price gap between a cash Treasury bond and the corresponding futures contract. Futures generally trade a little rich to cash, because asset managers buy futures massively to get [duration](/en/glossary/duration/) exposure without holding the securities. A fund captures this gap by putting on three simultaneous legs: it buys the bond in cash, sells the futures contract, and finances the purchase in repo by pledging the bond as collateral. At expiry, the basis converges to zero and the gap is pocketed.
+The [basis trade](https://www.federalreserve.gov/econres/notes/feds-notes/quantifying-treasury-cash-futures-basis-trades-20240308.html) is an arbitrage on the basis, the price gap between a cash Treasury bond and the corresponding futures contract. Futures generally trade a little rich to cash, because asset managers buy futures massively to get [duration](/en/glossary/duration/) exposure without holding the securities. A fund captures this gap by putting on three simultaneous legs: it buys the bond in cash, sells the futures contract, and finances the purchase in repo by pledging the bond as collateral. At expiry, the basis converges to zero and the gap is pocketed.
 
 ## The mechanics, and the leverage
 
@@ -41,7 +45,7 @@ The captured gap is tiny, on the order of a few basis points. For the trade to b
 <figcaption>The trade combines a long cash position, a short futures position, and repo funding backed by the bond. The leverage comes from low-haircut repo and reduced futures margin. Sources: CFTC (MRAC, December 2024), Treasury Borrowing Advisory Committee, OFR.</figcaption>
 </figure>
 
-## What it really does
+## The trade’s role in Treasury liquidity
 
 This trade is not just speculation. It exists because asset managers have a structural demand for long futures, to manage the duration of their portfolios, and someone must take the other side. Leveraged hedge funds fill this role, and by hedging through the basis trade, they link cash and futures prices and provide liquidity, including on older, less-traded issues. In short, the Treasury market has come to depend on heavily indebted actors to run smoothly. It is the same logic as in repo: liquidity is manufactured on constrained balance sheets.
 
@@ -86,7 +90,7 @@ The fragility is known and documented. When volatility rises, two things happen 
 <figcaption>A volatility shock raises margins and haircuts, triggers margin calls, forces the unwind, and makes volatility rise again: a self-reinforcing loop. Sources: BIS (Schrimpf, Shin, Sushko, 2020), OFR, FEDS Notes.</figcaption>
 </figure>
 
-## What mandatory clearing will change
+## Mandatory clearing and funding costs
 
 Regulators have not stood by. Fed governor Lisa Cook again described, on **20 November 2025**, hedge funds' Treasury positions as a systemic vulnerability, liable to make the market more vulnerable to stress. But the main lever is elsewhere: mandatory central clearing. The SEC rule, adopted in late 2023 then pushed back a year, now requires clearing of cash Treasury transactions by **31 December 2026**, and of repo by **30 June 2027**. The scope of clearing houses has been widened, with the approval of CME in December 2025 and ICE in early 2026, and a new FICC service to limit double margining.
 

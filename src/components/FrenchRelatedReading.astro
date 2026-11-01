@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { financingReadingPaths } from '../config/english-reading-paths.ts';
 import { englishEditorialLinks } from '../config/english-editorial-links.ts';
 import { frenchDossiers } from '../config/french-dossiers.ts';
+import { editorialReadingSuggestions } from '../config/editorial-reading-links.ts';
 
 interface Props { id: string; collection: 'posts' | 'guides' | 'atlas' }
 const { id, collection } = Astro.props;
@@ -69,7 +70,7 @@ const editorialNotes: Record<string, string> = {
   'read-life-insurer-health/when-credit-warehouse-does-not-clear-atlas-apollo-athene': 'Suivre les actifs de l’assureur, ses placements affiliés et les financements temporaires dans la chaîne Apollo/Athene.',
   'when-credit-warehouse-does-not-clear-atlas-apollo-athene/read-life-insurer-health': 'Examiner le capital de l’assureur, les actifs affiliés et la réassurance en conservant le périmètre propre au financement de l’entrepôt de crédit.',
 };
-const suggestions = englishRoute ? englishEditorialLinks
+const dossierSuggestions = englishRoute ? englishEditorialLinks
   .filter((link) => link.from === englishRoute && (path || selectedEnglishRoutes.has(link.to)))
   .map((link) => {
     const target = link.to.match(/^\/en\/(analysis|guides)\/([^/]+)\/$/);
@@ -77,8 +78,16 @@ const suggestions = englishRoute ? englishEditorialLinks
     const entry = target[1] === 'analysis' ? frenchPost(target[2]) : frenchGuide(target[2]);
     const note = editorialNotes[`${englishId}/${target[2]}`];
     if (!note) throw new Error(`Missing French editorial context: ${link.from} ${link.to}`);
-    return { href: `/${target[1] === 'analysis' ? 'posts' : 'guides'}/${entry.id}/`, title: entry.data.title, note };
+    return { href: `/${target[1] === 'analysis' ? 'posts' : 'guides'}/${entry.id}/`, title: entry.data.title, note, purpose: undefined };
   }) : [];
+const curatedSuggestions = collection === 'posts' ? editorialReadingSuggestions(id, 'fr').map((link) => {
+  const entry = posts.find((candidate) => candidate.id === link.id);
+  if (!entry) throw new Error(`Missing editorial reading suggestion: ${link.href}`);
+  return { ...link, title: entry.data.title };
+}) : [];
+const suggestions = [...new Map<string, { href: string; title: string; note: string; purpose?: string }>(
+  [...dossierSuggestions, ...curatedSuggestions].map((link) => [link.href, link]),
+).values()];
 const neighbours = path?.analyses.filter((entry) => collection !== 'posts' || entry.id !== id).slice(0, 3) ?? [];
 const neighbourHrefs = new Set(neighbours.map((entry) => `/posts/${entry.id}/`));
 const additionalResources = suggestions.filter((link) => !neighbourHrefs.has(link.href));
@@ -97,7 +106,7 @@ const readingGuides = collection === 'atlas' ? path?.guides ?? [] : [];
         const note = suggestions.find((link) => link.href === `/posts/${entry.id}/`)?.note;
         return <li><a href={`/posts/${entry.id}/`}>{entry.data.title}</a>{note && <p>{note}</p>}</li>;
       })}
-      {additionalResources.map((link) => <li><a href={link.href}>{link.title}</a><p>{link.note}</p></li>)}
+      {additionalResources.map((link) => <li>{link.purpose && <span class="reading-purpose">{link.purpose}</span>}<a href={link.href}>{link.title}</a><p>{link.note}</p></li>)}
     </ul>
   </nav>
 )}
@@ -107,6 +116,7 @@ const readingGuides = collection === 'atlas' ? path?.guides ?? [] : [];
   h2 { color: var(--color-bright); font-family: var(--font-display); font-size: 1.25rem; line-height: 1.4; }
   p { color: var(--color-muted); line-height: 1.65; margin-top: .65rem; }
   ul { display: grid; gap: .65rem; list-style: none; margin-top: 1rem; padding: 0; }
+  .reading-purpose { display: block; margin-bottom: .3rem; color: var(--color-muted); font-family: var(--font-read); font-size: .75rem; letter-spacing: .025em; }
   a { color: var(--color-signal); line-height: 1.5; text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere; }
   a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
 </style>

@@ -5,13 +5,17 @@ description: "A Treasury can support several loans as collateral is reused acros
 pubDate: 2026-07-13T14:52:00+02:00
 updatedDate: 2026-07-13T14:52:00+02:00
 tags: ["macro", "markets", "liquidity", "central banks"]
+quickTake:
+  fact: "Rehypothecation means reusing a security received as collateral to secure another obligation. It connects several funding transactions to the same original security."
+  importance: "Reuse supports funding but creates dependencies between counterparties. An intermediary’s failure can freeze or call into question the collateral others expect to receive."
+  uncertainty: "Available statistics do not reconstruct the entire chain of reuse. A stock of securities viewed in isolation reveals little about the number of obligations it supports."
 draft: false
 sourceArticle: "collateral-rehypothecation-cle-de-voute"
 sourceUpdatedDate: 2026-06-27
 ---
 *At the close of this series on the plumbing of the dollar, one mechanism remains to be exposed, the one hiding beneath all the others. [Repo](/en/analysis/repo-the-liquidity-factory/), the [basis trade](/en/glossary/basis-trade/), [shadow banking](/en/analysis/shadow-banking-nonbank-intermediation/), [eurodollars](/en/analysis/eurodollars-the-offshore-dollar/) and the [cross-currency basis](/en/analysis/the-cross-currency-basis/) all rest on one idea: a security pledged as collateral does not sleep, it immediately goes off to back another loan. This reuse, rehypothecation, turns a finite stock of Treasury bonds into a far larger volume of funding. Collateral is the oil of the financial engine, and its circulation is the keystone of the whole edifice.*
 
-Rehypothecation is the right, for whoever receives a security as collateral, to pledge it themselves as collateral for another obligation. A hedge fund hands a Treasury bond to its broker to borrow, the broker reuses that same bond to fund itself with a money market fund, which can in turn mobilise it elsewhere. The security has not changed economic owner, but it now backs several superimposed claims. This is how collateral chains form, through the securities-financing transactions that are [repo](/en/glossary/repo/) and securities lending.
+[Rehypothecation](https://www.federalreserve.gov/econres/notes/feds-notes/ins-and-outs-of-collateral-re-use-20181221.html) is the right, for whoever receives a security as collateral, to pledge it themselves as collateral for another obligation. A hedge fund hands a Treasury bond to its broker to borrow, the broker reuses that same bond to fund itself with a money market fund, which can in turn mobilise it elsewhere. The security has not changed economic owner, but it now backs several superimposed claims. This is how collateral chains form, through the securities-financing transactions that are [repo](/en/glossary/repo/) and securities lending.
 
 ## Collateral velocity
 

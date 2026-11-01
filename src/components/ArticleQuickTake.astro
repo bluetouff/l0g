@@ -1,18 +1,22 @@
 ---
-import L0gGlyph, { type GlyphName } from './L0gGlyph.astro';
+import L0gGlyph from './L0gGlyph.astro';
 
 interface Props {
   fact: string;
-  importance: string;
-  uncertainty: string;
+  importance?: string;
+  uncertainty?: string;
   readingTime: number;
+  lang?: 'fr' | 'en';
+  mode?: 'summary' | 'presentation';
 }
 
-const { fact, importance, uncertainty, readingTime } = Astro.props;
-const rows: Array<{ index: string; label: string; value: string; glyph: GlyphName }> = [
-  { index: '01', label: 'Le fait', value: fact, glyph: 'source' },
-  { index: '02', label: 'Pourquoi cela compte', value: importance, glyph: 'impact' },
-  { index: '03', label: 'Points encore incertains', value: uncertainty, glyph: 'uncertainty' },
+const { fact, importance, uncertainty, readingTime, lang = 'fr', mode = 'summary' } = Astro.props;
+const en = lang === 'en';
+const hasSummary = mode === 'summary' && Boolean(importance?.trim() && uncertainty?.trim());
+const rows: Array<{ label: string; value: string }> = [
+  { label: en ? 'The finding' : 'Le fait', value: fact },
+  { label: en ? 'Why it matters' : 'Pourquoi cela compte', value: importance ?? '' },
+  { label: en ? 'Remaining uncertainty' : 'Points encore incertains', value: uncertainty ?? '' },
 ];
 ---
 
@@ -20,22 +24,22 @@ const rows: Array<{ index: string; label: string; value: string; glyph: GlyphNam
   <div class="quick-head">
     <div>
       <L0gGlyph name="read" size="sm" />
-      <p id="quick-take-title">// en 30 secondes</p>
+      <p id="quick-take-title">// {hasSummary ? (en ? 'in 30 seconds' : 'en 30 secondes') : (en ? 'overview' : 'présentation')}</p>
     </div>
-    <span>avant les {readingTime} min d’analyse</span>
+    <span>{en ? `${readingTime} min read` : `${readingTime} min d’analyse`}</span>
   </div>
-  <dl>
+  {hasSummary ? <dl>
     {rows.map((row) => (
       <div>
         <dt>
-          <span class="quick-index" aria-hidden="true">{row.index}</span>
-          <L0gGlyph name={row.glyph} size="sm" />
           <span>{row.label}</span>
         </dt>
         <dd>{row.value}</dd>
       </div>
     ))}
-  </dl>
+  </dl> : <div class="quick-presentation">
+    <p>{fact}</p>
+  </div>}
 </aside>
 
 <style>
@@ -62,7 +66,7 @@ const rows: Array<{ index: string; label: string; value: string; glyph: GlyphNam
     color: var(--color-signal);
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
@@ -83,16 +87,11 @@ const rows: Array<{ index: string; label: string; value: string; glyph: GlyphNam
   }
   .quick-take dl > div + div { border-top: 1px solid var(--color-line); }
   .quick-take dt {
-    display: grid;
-    grid-template-columns: 1.4rem auto 1fr;
-    align-items: center;
-    gap: 0.55rem;
-    color: var(--color-bright);
-    font-family: var(--font-mono);
-    font-size: 0.67rem;
-    font-weight: 600;
-    letter-spacing: 0.065em;
-    text-transform: uppercase;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.55;
   }
   .quick-take dd {
     margin: 0;
@@ -101,12 +100,8 @@ const rows: Array<{ index: string; label: string; value: string; glyph: GlyphNam
     font-size: 0.9rem;
     line-height: 1.55;
   }
-  .quick-index {
-    color: color-mix(in srgb, var(--color-signal) 60%, var(--color-muted));
-    font-family: var(--font-mono);
-    font-size: 0.59rem;
-    letter-spacing: 0.08em;
-  }
+  .quick-presentation { padding: 1rem; }
+  .quick-presentation p { color: var(--color-paper); font-family: var(--font-read); font-size: .95rem; line-height: 1.65; }
   @media (max-width: 560px) {
     .quick-take dl > div {
       grid-template-columns: 1fr;

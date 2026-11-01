@@ -4,12 +4,16 @@ description: "La parité couverte des taux est considérée comme la loi la plus
 pubDate: 2026-06-24T14:00:00+02:00
 updatedDate: 2026-06-24T14:00:00+02:00
 tags: ["macro", "banques centrales", "liquidité", "marchés"]
+quickTake:
+  fact: "Le cross-currency basis mesure un écart par rapport à la parité couverte des taux : le financement en dollar obtenu par swap de change peut coûter davantage qu’un emprunt direct."
+  importance: "La demande de couverture et le coût du bilan des banques peuvent entretenir cet écart. Le marché des changes transmet ainsi les contraintes de financement des intermédiaires."
+  uncertainty: "L’écart peut refléter plusieurs forces simultanées, dont la demande de couverture et les contraintes de bilan. Son évolution ne permet pas, à elle seule, d’isoler une cause unique."
 draft: false
 ---
 
 *Il existe en finance internationale une règle si solide qu'on la compare à une loi physique : la parité couverte des taux. Elle dit qu'emprunter des dollars directement ou les fabriquer en passant par une autre devise devrait revenir au même, sinon un arbitrage sans risque effacerait l'écart. Depuis 2008, cette loi ne tient plus. Fabriquer des dollars via un swap de change coûte une prime, parfois quelques points de base, parfois beaucoup plus en cas de stress. Cette prime porte un nom, le cross-currency basis, et elle est devenue le thermomètre le plus fiable des tensions sur le financement en dollar. Suite de notre article sur les [eurodollars](/posts/eurodollars-dollar-offshore-dette-cachee/), voici la mécanique de cet écart et sa portée.*
 
-La parité couverte des taux, ou CIP, repose sur une idée simple. Un investisseur qui détient un dollar peut le placer à un an au taux dollar. Ou bien il peut le convertir en euros au comptant, placer ces euros au taux euro, et fixer dès aujourd'hui le taux de reconversion en dollars à un an par un contrat à terme. En théorie, les deux chemins doivent rapporter exactement la même chose. Si ce n'était pas le cas, n'importe qui pourrait emprunter par le chemin le moins cher, prêter par l'autre, et empocher une marge sans risque. Cet arbitrage devrait ramener l'écart à zéro instantanément.
+La [parité couverte des taux](https://www.bis.org/publications/qr-201609/covered-interest-parity-lost-understanding-cross-currency-basis), ou CIP, repose sur une idée simple. Un investisseur qui détient un dollar peut le placer à un an au taux dollar. Ou bien il peut le convertir en euros au comptant, placer ces euros au taux euro, et fixer dès aujourd'hui le taux de reconversion en dollars à un an par un contrat à terme. En théorie, les deux chemins doivent rapporter exactement la même chose. Si ce n'était pas le cas, n'importe qui pourrait emprunter par le chemin le moins cher, prêter par l'autre, et empocher une marge sans risque. Cet arbitrage devrait ramener l'écart à zéro instantanément.
 
 ## La loi qui ne tient plus
 
@@ -37,7 +41,7 @@ Avant 2008, c'était le cas, et le basis tournait autour de zéro pour les grand
 
 ## Pourquoi l'arbitrage ne referme plus l'écart
 
-Si une marge sans risque existe, pourquoi les banques ne l'effacent-elles pas ? Parce que l'arbitrage n'est plus ni sans risque ni gratuit. Le travaux de la BIS et de la Fed convergent sur deux causes. D'abord les contraintes de bilan : depuis 2008, le ratio de levier et les exigences de fonds propres pondérées par le risque rendent coûteux le simple fait d'agrandir un bilan pour capter l'écart. L'arbitragiste doit immobiliser du capital, et il exige d'être payé pour cela. Ensuite le déséquilibre de la demande de couverture : les assureurs japonais et les caisses de retraite européennes ont structurellement besoin de dollars qu'ils obtiennent par swaps, ce qui pousse l'écart d'un seul côté, sans contrepartie symétrique pour le combler.
+Si une marge sans risque existe, pourquoi les banques ne l'effacent-elles pas ? Parce que l'arbitrage n'est plus ni sans risque ni gratuit. Les [travaux de la BIS](https://www.bis.org/publications/qr-201609/covered-interest-parity-lost-understanding-cross-currency-basis) et de la Fed convergent sur deux causes. D'abord les contraintes de bilan : depuis 2008, le ratio de levier et les exigences de fonds propres pondérées par le risque rendent coûteux le simple fait d'agrandir un bilan pour capter l'écart. L'arbitragiste doit immobiliser du capital, et il exige d'être payé pour cela. Ensuite le déséquilibre de la demande de couverture : les assureurs japonais et les caisses de retraite européennes ont structurellement besoin de dollars qu'ils obtiennent par swaps, ce qui pousse l'écart d'un seul côté, sans contrepartie symétrique pour le combler.
 
 Ces deux forces expliquent pourquoi le basis se creuse surtout aux dates de bilan. Aux fins de trimestre et d'année, les banques réduisent leur activité de tenue de marché pour alléger leur bilan, la liquidité se raréfie, et l'écart s'élargit brutalement sur de faibles chocs de demande. C'est le même mécanisme de contrainte de bilan que celui décrit pour le [repo](/posts/repo-collateral-fabrique-liquidite/), appliqué cette fois au marché des changes.
 

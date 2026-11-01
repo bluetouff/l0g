@@ -6,12 +6,50 @@ import { asiaDollarStages, asiaReadingPaths, financingReadingPaths, isAsiaAnalys
 import { load } from 'js-yaml';
 import { englishEditorialLinks } from '../src/config/english-editorial-links.ts';
 import { frenchDossiers } from '../src/config/french-dossiers.ts';
+import { editorialReadingDocuments, editorialReadingLinks, editorialReadingSuggestions } from '../src/config/editorial-reading-links.ts';
 
 const ROOT = process.cwd();
 
 function contentEntryExists(collection, id) {
   return ['md', 'mdx'].some((extension) => existsSync(join(ROOT, 'src', 'content', collection, `${id}.${extension}`)));
 }
+
+test('bilingual editorial continuations resolve to published source-linked articles', () => {
+  for (const document of Object.values(editorialReadingDocuments)) {
+    const records = {};
+    for (const [lang, collection] of [['fr', 'posts'], ['en', 'posts-en']]) {
+      const file = ['md', 'mdx'].map((extension) => join(ROOT, 'src/content', collection, `${document[lang]}.${extension}`)).find(existsSync);
+      assert.ok(file, `missing continuation article: ${lang}/${document[lang]}`);
+      records[lang] = load(readFileSync(file, 'utf8').split('---')[1]);
+      assert.notEqual(records[lang].draft, true, `unpublished continuation article: ${file}`);
+    }
+    assert.equal(records.en.sourceArticle, document.fr, `mismatched bilingual continuation: ${document.en}`);
+  }
+  const pairs = new Set();
+  for (const link of editorialReadingLinks) {
+    assert.notEqual(link.from, link.to, `self-link: ${link.from}`);
+    const pair = `${link.from}/${link.to}`;
+    assert.ok(!pairs.has(pair), `duplicate continuation: ${pair}`);
+    pairs.add(pair);
+    for (const lang of ['fr', 'en']) assert.ok(link.note[lang].trim(), `missing reading context: ${pair}/${lang}`);
+  }
+});
+
+test('editorial continuations preserve language and keep unknown articles empty', () => {
+  for (const [lang, prefix] of [['fr', '/posts/'], ['en', '/en/analysis/']]) {
+    assert.deepEqual(editorialReadingSuggestions('not-a-published-article', lang), []);
+    for (const document of Object.values(editorialReadingDocuments)) {
+      const suggestions = editorialReadingSuggestions(document[lang], lang);
+      assert.ok(suggestions.length <= 2, `too many continuations: ${document[lang]}`);
+      for (const link of suggestions) {
+        assert.equal(link.href, `${prefix}${link.id}/`);
+        assert.ok(link.note.trim());
+        assert.ok(link.purpose.trim());
+        assert.notEqual(link.id, document[lang]);
+      }
+    }
+  }
+});
 
 test('editorial reading suggestions lead to published resources and explain the connection', () => {
   const pairs = new Set();

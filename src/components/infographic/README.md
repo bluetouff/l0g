@@ -1,8 +1,33 @@
 # Infographies l0g
 
 Composants réutilisables pour les infographies d'article, à la charte du site.
-Ils remplacent le SVG écrit à la main : palette, padding sous le graphe et gras
-des légendes sont gérés une fois pour toutes.
+Ils fournissent une base commune pour la palette, les légendes et l'espace sous
+le graphe. La composition reste adaptée au mécanisme ou à la comparaison.
+
+## Direction graphique
+
+Une infographie doit rendre une information plus facile à comprendre. Choisir
+le graphique selon la question, puis retirer les éléments qui ne servent pas
+sa lecture : cadres imbriqués, pictogrammes décoratifs et répétitions de texte.
+
+- Utiliser la sans de lecture Inter disponible dans la charte pour les nouveaux
+  composants. Une famille existante avec des métriques vérifiées peut être
+  conservée pour les figures d'archive.
+- Préférer les graisses 400 et 500. Le gras ne constitue pas une hiérarchie à
+  lui seul : la position, l'espace et la taille doivent guider le regard.
+- Réserver l'accent à l'information principale. Employer les autres couleurs
+  seulement lorsqu'elles distinguent une donnée ou une catégorie utile.
+- Dessiner des traits fins mais suffisamment contrastés. Alléger les aplats
+  et conserver des marges généreuses autour des libellés.
+- Prévoir une composition mobile, sans simplement réduire un grand dessin.
+  Conserver unités, dates, sources, limites et proportions des données.
+- Examiner les rendus dans l'article complet, en thèmes clair et sombre et à
+  largeur mobile. La validation XML et les tests géométriques les complètent.
+
+Les figures `prices`, `risk` et `maturities` de `src/figures/compute-price/`
+illustrent trois compositions : comparaison ouverte, circuit sans cadres
+imbriqués et échéancier à barres fines. Leurs variantes FR/EN conservent les
+mêmes chiffres et références documentaires.
 
 ## Usage (fichiers `.mdx` uniquement)
 
@@ -43,4 +68,4 @@ import InfographicBars from '../../components/infographic/InfographicBars.astro'
 ## Tons disponibles
 
 `signal` (teal), `blue`, `amber`, `accent` (rose), `muted` (gris). Fond, lignes
-et textes suivent automatiquement la charte (`#0c0d10`, `#2a2c33`, etc.).
+et textes utilisent les variables de la charte et suivent le thème choisi.

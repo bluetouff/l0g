@@ -117,11 +117,11 @@ for (const file of htmlFiles) {
   assert(/<meta name="description" content="[^"]+">/.test(html), `${name}: meta description absente`);
   assert(/<link rel="canonical" href="https:\/\/l0g\.fr\/[^"]*">/.test(html), `${name}: canonical absente ou invalide`);
   assert((html.match(/<h1(?:\s|>)/g) || []).length === 1, `${name}: exactement un h1 attendu`);
-  if (html.includes('/_astro/pagefind-init.')) {
-    assert(name === 'recherche/index.html', `${name}: Pagefind chargé hors de la page de recherche`);
+  const elements = scanHtmlElements(html);
+  if (elements.some((element) => element.name === 'script' && /^\/_astro\/pagefind-init\..+\.js$/.test(element.attributes.get('src') ?? ''))) {
+    assert(['recherche/index.html', 'en/search/index.html'].includes(name), `${name}: Pagefind chargé hors des pages de recherche`);
   }
 
-  const elements = scanHtmlElements(html);
   const cover = publicationCovers.get(name);
   const heroStart = articleHeroImageStart(html, name);
   let priorityCovers = 0;
@@ -316,7 +316,7 @@ assert(webMcpRuntimeFiles.length === 1, `runtime WebMCP conditionnel introuvable
 for (const file of webMcpRuntimeFiles) {
   assert(!homeText.includes(`/_astro/${relative(join(root, '_astro'), file)}`), 'runtime WebMCP encore chargé directement par la home');
 }
-assert(!homeText.includes('/_astro/pagefind-init.'), 'Pagefind ne doit pas être chargé sur la home');
+assert(!/<script\b[^>]*src="\/_astro\/pagefind-init\.[^"]+\.js"/.test(homeText), 'Pagefind ne doit pas être chargé sur la home');
 assert(!homeText.includes('/risk.js'), 'le script risque non versionné est encore chargé sur la home');
 assert(
   /<script src="\/_astro\/risk\.[^"]+\.js" defer><\/script>/.test(homeText),
@@ -339,7 +339,8 @@ const featuredPosition = homeText.indexOf('id="featured-title"');
 const riskPosition = homeText.indexOf('class="home-risk"');
 const needsPosition = homeText.indexOf('id="home-needs-title"');
 assert(featuredPosition > 0 && featuredPosition < riskPosition, 'home: analyse vedette absente ou placée après les signaux');
-assert(riskPosition < needsPosition, 'home: signaux absents ou placés après les cartes d’orientation');
+const feedPosition = homeText.indexOf('id="dernieres-analyses"');
+assert(featuredPosition < needsPosition && needsPosition < riskPosition && riskPosition < feedPosition, 'home: ordre analyse, dossiers, signaux, journal incorrect');
 for (const key of ['us', 'eu', 'yen', 'energie', 'debt']) {
   const tile = homeText.match(new RegExp(`<article[^>]*data-risk="${key}"[^>]*>([\\s\\S]*?)</article>`))?.[1] ?? '';
   assert(Boolean(tile), `home: carte risque ${key} absente`);
@@ -372,8 +373,8 @@ assert(!search.includes('/pagefind-init.js'), 'initialiseur Pagefind non version
 assert(!search.includes('/pagefind/pagefind-ui.js'), 'UI Pagefind à sinks DOM encore chargée sur /recherche/');
 assert(/<meta name="robots" content="noindex,follow">/.test(search), '/recherche/ doit être noindex,follow');
 assert(search.includes('aria-keyshortcuts="/ Meta+K Control+K"'), '/recherche/: raccourcis clavier non documentés');
-const searchPageScriptHref = search.match(/src="(\/_astro\/recherche\.astro[^"]+\.js)"/)?.[1];
-assert(Boolean(searchPageScriptHref), '/recherche/: script de page versionné absent');
+const searchPageScriptHref = search.match(/src="(\/_astro\/pagefind-init\.[^"]+\.js)"/)?.[1];
+assert(Boolean(searchPageScriptHref), '/recherche/: initialiseur versionné absent');
 if (searchPageScriptHref) {
   const searchPageScript = await readFile(new URL(`.${searchPageScriptHref}`, rootUrl), 'utf8');
   assert(searchPageScript.includes('focus') && searchPageScript.includes('.focus()'), '/recherche/: focus demandé par raccourci non pris en charge');
@@ -385,7 +386,7 @@ assert(notFound.includes('action="/recherche/"'), '/404.html: moteur de recherch
 for (const href of ['/', '/sujets/', '/guides/']) {
   assert(notFound.includes(`href="${href}"`), `/404.html: lien de sortie absent ${href}`);
 }
-assert(!notFound.includes('/_astro/pagefind-init.'), '/404.html ne doit pas charger Pagefind');
+assert(!/<script\b[^>]*src="\/_astro\/pagefind-init\.[^"]+\.js"/.test(notFound), '/404.html ne doit pas charger Pagefind');
 
 const indexablePages = [...pages.values()].filter((page) => !page.robots.includes('noindex'));
 const titles = new Map();

@@ -36,6 +36,7 @@ const groups = [
       { href: '/en/guides/', label: 'Reference guides', description: 'Read the data behind the story' },
       { href: '/en/tools/', label: 'Analysis tools', description: 'Test assumptions and scenarios' },
       { href: '/en/glossary/', label: 'Glossary', description: 'Financial terms, explained' },
+      { href: '/en/search/', label: 'Search', description: 'Find an analysis, guide or definition' },
     ],
   },
   {
@@ -68,6 +69,7 @@ const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile
       <span class="en-brand-caption"><span>Independent analysis</span><span>English edition</span></span>
     </a>
     <div class="en-utilities">
+      <a class="en-search" href="/en/search/" aria-current={isActive('/en/search/') ? 'page' : undefined}>Search</a>
       {!compact && <a class="en-start" href="/en/start/">Start here <span aria-hidden="true">↗</span></a>}
       <a href="/en/support/" class="en-support" aria-current={isActive('/en/support/') ? 'page' : undefined}>Support l0g <span aria-hidden="true">↗</span></a>
       <div class="en-language" aria-label="Edition"><span lang="en">EN</span><a href="/" lang="fr" hreflang="fr" aria-label="Lire l0g en français">FR</a></div>
@@ -141,6 +143,8 @@ const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile
 
 <style>
   .english-header { position: relative; z-index: 20; }
+  .en-search { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-muted); font: 400 .75rem/1.4 var(--font-read); }
+  .en-search:hover, .en-search[aria-current] { color: var(--color-signal); }
   .en-skip { position: absolute; top: 0; left: 0; z-index: 30; padding: .75rem 1rem; background: var(--color-surface); color: var(--color-signal); transform: translateY(-200%); }
   .en-skip:focus { transform: none; }
   .english-header :is(a, button, summary):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 5px; border-radius: 2px; }
@@ -234,7 +238,7 @@ const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile
     .en-wordmark { font-size: 2.1rem; }
     .en-brand { gap: .8rem; }
     .en-brand-caption { display: none; }
-    .en-utilities { gap: .55rem; }
+    .en-utilities { min-width: 0; flex-wrap: wrap; justify-content: flex-end; gap: .2rem .55rem; }
     .en-utilities .en-support { gap: .5rem; padding: .35rem .65rem; font-size: .67rem; }
     .en-support > span { width: 18px; height: 18px; }
     .en-language { padding-left: 0; border: 0; gap: .5rem; }
