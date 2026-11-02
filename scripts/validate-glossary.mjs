@@ -19,6 +19,21 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Content retrieval, paid use and payment signalling keep distinct short-entry scopes.
+for (const [slug, source] of Object.entries({"crawl": "https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/", "usage-facturable": "https://blog.cloudflare.com/pay-per-use/", "http-402": "https://www.rfc-editor.org/rfc/rfc9110.html#name-402-payment-required"})) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+  for (const [entry, article] of [[fr[0], "/posts/cloudflare-contenus-ia-compteur-paiement/"], [en[0], "/en/analysis/cloudflare-ai-content-payments-usage-count/"]]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert.deepEqual(entry.atlas.sources.map(link => link.href), [source]);
+  }
+}
+
 // Contractual set-off and dedicated vehicles remain short, sourced definitions.
 for (const slug of ['spv', 'reglement-par-compensation', 'pik', 'vrg']) {
   const fr = glossaryEntries.find(entry => entry.slug === slug);
@@ -1292,7 +1307,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 377, 'Le corpus conserve les termes précédents et ajoute le financement hybride');
+assert.equal(glossaryAtlasEnBySlug.size, 380, 'Le corpus conserve ses termes et ajoute les trois notions de contenus et usages');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1493,8 +1508,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 762, 'Le corpus conserve ses notions et ajoute le financement hybride');
-assert.equal(glossaryAtlasEntries.length, 367, 'Les notions CDN et ASN disposent de sources et de liens');
+assert.equal(glossaryEntries.length, 765, 'Le corpus conserve ses notions et ajoute les trois notions de contenus et usages');
+assert.equal(glossaryAtlasEntries.length, 370, 'Les notions de contenus et usages disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1916,7 +1931,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 982, 'Le corpus relie les réseaux de diffusion aux systèmes autonomes');
+assert.equal(glossaryAtlasEdgeCount, 988, 'Le corpus relie aussi les trois notions de contenus et usages');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

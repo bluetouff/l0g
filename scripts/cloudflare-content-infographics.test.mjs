@@ -1,0 +1,39 @@
+import assert from 'node:assert/strict';
+import {readFileSync,readdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import test from 'node:test';
+import {CLOUDFLARE_CONTENT_FIGURE_IDS,CLOUDFLARE_CONTENT_FIGURE_SOURCES,cloudflareContentFigureMeta} from '../src/lib/cloudflare-content-figures.mjs';
+import {cloudflareContentScenes,inspectCloudflareContentSvg,assertCloudflareContentGeometry,tag,attrs,content,labelBox} from './cloudflare-content-svg-assertions.mjs';
+import {assertFontLicenseReferences} from './font-license-assertions.mjs';
+const scenes=cloudflareContentScenes(),all=s=>inspectCloudflareContentSvg(s.svg).all,text=s=>all(s).map(content).join(' '),metric=(s,name)=>all(s).filter(n=>attrs(n)['data-metric']===name),connector=(s,name)=>all(s).filter(n=>attrs(n)['data-connector']===name),read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
+test('24 passive Cloudflare scenes retain native labels, theme colours and internal-panel geometry',()=>{
+ assert.equal(scenes.length,24);assert.equal(readdirSync(new URL('../src/figures/cloudflare-content/',import.meta.url)).length,24);const ids=[];
+ for(const s of scenes){assertCloudflareContentGeometry(s.svg);assert.doesNotMatch(s.svg,/<script|foreignObject|—|horloges|clocks|#[a-f\d]{3,8}\b/iu);for(const n of all(s)){if(attrs(n).id)ids.push(attrs(n).id);if(tag(n)==='text'){assert.ok(Number(attrs(n)['font-size'])*(s.mobile?280/420:501/1000)>=12);assert.ok(labelBox(n).advance>0)}if(tag(n)==='title')assert.doesNotMatch(content(n),/\bce (?:que|qui|qu[’'])|\bwhat\b|, pas |, not /iu)}}assert.equal(ids.length,new Set(ids).size);
+});
+test('Pew chart preserves distinct click denominators and proportional15versus8bars',()=>{
+ for(const s of scenes.filter(s=>s.kind==='01')){const bars=metric(s,'traditional-click-rate');assert.deepEqual(bars.map(n=>Number(attrs(n)['data-value'])),[15,8]);assert.ok(Math.abs(Number(attrs(bars[0]).width)/Number(attrs(bars[1]).width)-15/8)<1e-6);const m=cloudflareContentFigureMeta(s.lang,s.kind).method;for(const n of['900','2025','15','8','1'])assert.ok(m.includes(n));assert.match(m,s.lang==='fr'?/parmi les visites avec résumé/:/among visits with a summary/);assert.match(m,s.lang==='fr'?/causale/:/causal/);}
+});
+test('the three products retain distinct access, use and service events rather than a universal payment rule',()=>{
+ for(const s of scenes.filter(s=>s.kind==='02')){const t=text(s);for(const name of['Pay Per Crawl','Pay Per Use','Monetization Gateway'])assert.ok(t.includes(name));assert.equal(metric(s,'billing-stage').length,9);assert.equal(metric(s,'billing-stage').filter(n=>attrs(n)['data-value']==='1').length,3);for(let i=0;i<3;i++)for(let j=0;j<2;j++)assert.equal(connector(s,`product-${i}-${j}`).length,1);const m=cloudflareContentFigureMeta(s.lang,s.kind).method;for(const name of['2025','2026','x402','USDC','Base'])assert.ok(m.includes(name));}
+});
+test('copy-versus-use comparison draws exactly100and1events per service and billing basis',()=>{
+ for(const s of scenes.filter(s=>s.kind==='03')){assert.deepEqual([metric(s,'service-0-0-event').length,metric(s,'service-0-1-event').length,metric(s,'service-1-0-event').length,metric(s,'service-1-1-event').length],[100,1,1,100]);for(const name of['SERVICE A','SERVICE B','100 u.','1 u.'])assert.ok(text(s).includes(name));const m=cloudflareContentFigureMeta(s.lang,s.kind).method;assert.match(m,s.lang==='fr'?/fictif/:/hypothetical/);assert.match(m,s.lang==='fr'?/hors frais/:/excluding fees/);}
+});
+test('reporting diagram keeps the buyer boundary, identified access, mapping and conditional settlement separate',()=>{
+ for(const s of scenes.filter(s=>s.kind==='04')){for(const name of['access','buyer-0','buyer-1','report','billing','payment'])assert.equal(connector(s,name).length,1);const b=all(s).find(n=>tag(n)==='rect'&&attrs(n).id?.endsWith('-card-buyer'));assert.equal(attrs(b).stroke,'var(--color-amber)');assert.equal(attrs(b)['stroke-dasharray'],'6 6');const m=cloudflareContentFigureMeta(s.lang,s.kind).method;assert.match(m,s.lang==='fr'?/exhaustivité/:/all relevant uses/);assert.match(m,s.lang==='fr'?/aucun taux de sous-déclaration/:/no underreporting rate/);}
+});
+test('hypothetical monthly funnel preserves coverage, prices, deductions and costs without invented provider fees',()=>{
+ assert.equal(1000000*.2*.002,400);assert.equal(400*(1-.1)-100,260);
+ for(const s of scenes.filter(s=>s.kind==='05')){for(const[name,value]of[['potential-uses',1000000],['billable-uses',200000],['gross',400],['after-deductions',360],['net',260]]){assert.equal(metric(s,name).length,1);assert.equal(Number(attrs(metric(s,name)[0])['data-value']),value);}const m=cloudflareContentFigureMeta(s.lang,s.kind).method;assert.match(m,s.lang==='fr'?/hypothèse pédagogique distincte des frais réels/:/teaching assumption distinct from Cloudflare’s actual fees/);}
+});
+test('equal-contribution curve retains the correct hyperbola and two threshold points',()=>{
+ for(const s of scenes.filter(s=>s.kind==='06')){const curve=connector(s,'equal-contribution');assert.equal(curve.length,1);const coords=attrs(curve[0]).d.match(/[+-]?(?:\d+(?:\.\d*)?|\.\d+)/gu).map(Number);assert.equal(coords.length,192);const x=s.mobile?68:100,y=s.mobile?280:220,w=s.mobile?308:800,h=s.mobile?360:260;for(let i=0;i<=95;i++){const a=.05+i*.01,q=1000*600/(1000000*.9*a);assert.ok(Math.abs(coords[2*i]-(x+w*(a-.05)/.95))<.00006);assert.ok(Math.abs(coords[2*i+1]-(y+h-q/15*h))<.00006);}assert.equal(Number(attrs(metric(s,'threshold-20')[0])['data-value']),3.3333);assert.equal(Number(attrs(metric(s,'threshold-third')[0])['data-value']),2);const m=cloudflareContentFigureMeta(s.lang,s.kind).method;assert.match(m,s.lang==='fr'?/volume/:/Volumes/);assert.match(m,s.lang==='fr'?/élasticité/:/elasticity/);}
+});
+test('closed SVG parser and geometry reject active markup, hidden labels, swapped fonts and malformed paths',()=>{
+ const raw=scenes[0].svg;
+ for(const mutate of[s=>s.replace('</svg>','<script>x</script></svg>'),s=>s.replace('<svg ','<svg onload="x" '),s=>s.replace('</svg>','<image href="https://example.invalid/a"/></svg>'),s=>s.replace('l0g Cloudflare Content','Arial'),s=>s.replace(/data-panel="[^"]+"/u,'data-panel="absent"'),s=>s.replace('x="28" y="42"','x="990" y="42"')]){const changed=mutate(raw);assert.notEqual(changed,raw);assert.throws(()=>assertCloudflareContentGeometry(changed));}
+ const flow=scenes.find(s=>s.kind==='02').svg;assert.throws(()=>assertCloudflareContentGeometry(flow.replace(/d="M/u,'d="M'+'9'.repeat(200))));for(const lang of[null,{},new String('fr'),'__proto__'])assert.throws(()=>cloudflareContentFigureMeta(lang,'01'));for(const id of['../01','01" onload="x','07',{},null])assert.throws(()=>cloudflareContentFigureMeta('fr',id));
+});
+test('component keeps licensed local fonts, closed imports and compact responsive wrappers',()=>{
+ const c=read('src/components/CloudflareContentFigure.astro');for(const w of[400,700]){const p='public/fonts/stablecoins/dejavu-sans-'+w+'.ttf';assert.ok(c.includes(p.replace('public','')));assert.equal(createHash('sha256').update(readFileSync(new URL('../'+p,import.meta.url))).digest('hex'),w===400?'98f2d74db16bb5f41f74adf6d899aeec92861682cccc58bfdbe4d9d7d0a5ae11':'21a0350a4ac2a9f22b6a7a8dcaf6abb08c8b546d06499301f1fcf10996fd0df5');}assertFontLicenseReferences(read('public/fonts/stablecoins/LICENSE.txt'),'dejavu');assert.match(c,/@container\s*\(max-width:\s*500px\)/u);assert.match(c,/padding-bottom:\s*1rem/u);assert.match(c,/max-width:\s*310px/u);assert.ok(1080*310/420<800);assert.match(c,/import\.meta\.glob/);assert.match(c,/#source-\$\{ref\}/u);assert.doesNotMatch(c,/overflow\s*:\s*(?:hidden|clip)|client:|<script|fetch\(|foreignObject/iu);for(const lang of['fr','en'])for(const[i,id]of CLOUDFLARE_CONTENT_FIGURE_IDS.entries())assert.deepEqual(cloudflareContentFigureMeta(lang,id).sources,CLOUDFLARE_CONTENT_FIGURE_SOURCES[i]);
+});

@@ -1,0 +1,173 @@
+---
+title: "Cloudflare: who counts the content uses AI companies pay for?"
+seoTitle: "Cloudflare AI content payments: usage counts and publisher income | l0g"
+description: "Cloudflare wants AI companies to pay for content use. An investigation into buyer reports, verification, publisher choices and the economics of net revenue."
+tags: ["Cloudflare", "AI", "Publishers", "Digital economy"]
+quickTake: {"fact": "The Pay Per Use beta pays for uses reported by AI buyers under offers publishers accept.", "importance": "Revenue depends on the price, covered uses and reliable records.", "uncertainty": "Public documents describe the mechanism while leaving limited visibility into net earnings and independent verification."}
+pubDate: "2026-11-02T12:04:25+01:00"
+updatedDate: "2026-11-02T12:04:25+01:00"
+draft: false
+ogImage: "/illustrations/news/cloudflare-content-meter-v1.jpg"
+ogTitle: "Cloudflare: who counts the content uses AI companies pay for?"
+sourceArticle: "cloudflare-contenus-ia-compteur-paiement"
+sourceUpdatedDate: "2026-11-02T12:04:25+01:00"
+---
+
+import CloudflareContentFigure from "../../components/CloudflareContentFigure.astro";
+import CloudflareRevenueCalculator from "../../components/CloudflareRevenueCalculator.astro";
+
+An article can help an AI answer a question without bringing a reader to the website that published it. Cloudflare, a web infrastructure provider, wants a payment to follow the content into that other product. Its **Pay Per Use** beta, announced on 30 September 2026, sets up a commercial relationship: an AI company defines a use it will pay for and offers a price; a publisher accepts; reported uses become the basis for billing. [1](#source-1)
+
+That gives publishers another way to sell their work. It also moves a crucial question downstream: **who can check how often the content was actually used?** In the system Cloudflare describes, the buyer supplies the events. Cloudflare checks whether they map to an enrolled publisher. Validating those records is different from establishing that every eligible use has been reported. The public announcement describes the former without setting out a universal, independent audit of the latter. [1](#source-1)
+
+As of 2 November 2026, the documents reviewed for this investigation establish how the products are intended to work and the terms publicly described. They do not provide a verified aggregate of Pay Per Use payouts, median publisher earnings or a universal fee schedule. Understanding the conditions for a viable market comes before assigning it a financial return. [1](#source-1), [2](#source-2)
+
+## When the answer replaces the visit
+
+The traditional search bargain involved traffic moving in both directions. A search engine crawled a publisher’s pages and sent readers back. Answers delivered inside the search interface can change that exchange. The publisher’s economics then depend on the visits it retains, their value and any revenue it can earn somewhere else.
+
+Pew Research Center provides a useful historical reference. Its study covered browsing by 900 US adults in March 2025. A click on a traditional search result followed 8% of search visits with an AI summary, compared with 15% without one. Links inside the summary received a click in 1% of visits featuring a summary. That last measure concerns a separate group of links. [10](#source-10)
+
+<CloudflareContentFigure id="01" lang="en" />
+
+The results illustrate the vulnerability of referral traffic. They do not establish a causal revenue loss. Queries with summaries can differ from queries without them, and the search results were collected on 7–17 April, after the browsing period. Applying the difference directly to a particular publisher’s revenue would create an unsupported estimate. [10](#source-10)
+
+Charging for downstream use addresses a real economic possibility: a source may improve an AI product even when it receives no visit. How much of that value the buyer will share, and which event makes a payment due, are still commercial questions.
+
+## Three products with different billing events
+
+Cloudflare’s products operate at different points in this chain. **Pay Per Crawl** charges for successful access to content. Launched in private beta on 1 July 2025, it is still described as a closed beta in the documentation reviewed. An identified crawler can receive an [HTTP 402](/en/glossary/http-402/) response indicating that payment is required; a successful paid retrieval becomes billable. [3](#source-3), [4](#source-4), [18](#source-18), [20](#source-20)
+
+A publisher can set a default price and use dynamic pricing by URL or content. The documented minimum is **$0.001 per crawl**. That floor belongs to Pay Per Crawl. It says nothing about the average price buyers accept or the price of Pay Per Use events. Security blocking rules continue to take precedence over charging rules. [4](#source-4), [5](#source-5), [6](#source-6)
+
+The 402 status is a signal rather than a complete payment system. The HTTP specification reserves it for future use; the surrounding protocol and commercial agreement supply the terms and settlement mechanism. For Pay Per Crawl, Cloudflare acts as merchant of record and describes monthly payouts through a dedicated Stripe Connect account, subject to applicable settlement conditions. [4](#source-4), [7](#source-7), [8](#source-8)
+
+**Pay Per Use** prices an event further downstream: a [billable use](/en/glossary/usage-facturable/) covered by a buyer’s program. **Monetization Gateway**, also announced in beta on 30 September 2026, targets interfaces through which software exchanges requests and responses (APIs), tools and data for which the request itself is the consumption. Its launch describes x402 payments in USDC on Base, with Coinbase as facilitator. The initial closed beta is for eligible US-based participants. Those arrangements should not be assumed to apply to Pay Per Use or to a publisher based in France. [1](#source-1), [16](#source-16)
+
+<CloudflareContentFigure id="02" lang="en" />
+
+The right charging point depends on the product. An API request can deliver the service immediately. A web page might be fetched, stored in an index, left unused or drawn on repeatedly. Requests and uses can therefore move in quite different directions.
+
+## One copy, a hundred uses
+
+Consider a deliberately normalized example. One service retrieves a page a hundred times but uses it only once in a covered experience. Another retrieves it once and uses it a hundred times. At a fictional price of one monetary unit per event, access-based and use-based billing produce opposite invoices. [l0g calculation]
+
+<CloudflareContentFigure id="03" lang="en" />
+
+These are invented counts, not observed traffic. They show why server requests and uses inside an answer measure different things. Refresh frequency, caching policy and the product’s design all affect the relationship between them.
+
+Charging for every crawl makes the buyer pay for material it evaluates and rejects. Charging for use lets the buyer wait until content contributes to its product. Cloudflare argues that this can attract more buyers. Publishers, in turn, become exposed to the contractual definition of use and the way it is measured. [1](#source-1)
+
+A source appearing in a results list, a passage reproduced in an answer and information influencing a recommendation are distinct events. A high price attached to a rare event may yield less than a small price attached to a broad one. Comparing offers requires understanding the denominator as well as the headline rate.
+
+## The buyer keeps the underlying records
+
+Under the Pay Per Use beta, an AI company submits events containing the time of use, the source URL and an identifier. Cloudflare aggregates those reports, bills the buyer and schedules monthly publisher payments. Cloudflare says the program terms require complete reporting. [1](#source-1)
+
+Verifying a crawler’s identity helps a publisher decide who can enter. A URL connects a reported use with an enrolled site. Neither, by itself, describes everything that happens later inside the buyer’s systems. Content can move through an index, a cache (a stored copy for reuse) and an answer generator. Establishing the completeness of reported uses would require additional verification; the reviewed public documents leave that question open. [1](#source-1), [18](#source-18) ; analysis
+
+On 16 October 2026, Cloudflare described internal monitoring of Verified bots’ behavior, including compliance with `robots.txt` preferences and responses to HTTP 429 rate-limit signals. Public trust scores and customer-selected thresholds are presented as future steps. These observations of access behavior leave a separate question: the completeness of Pay Per Use reporting inside the buyer’s systems. [21](#source-21)
+
+<CloudflareContentFigure id="04" lang="en" />
+
+A rigorous comparison of programs would examine their billing definitions, treatment of repeated uses, log retention and dispute procedures. Publishers could seek sample-based checks or independent assurance. These are proposed evaluation criteria, not features confirmed as universally available in the beta.
+
+Verification also has privacy implications. Checking a source’s contribution does not automatically require handing a user’s entire conversation to the publisher. Cloudflare says it is working on additional context, such as topics or keywords, without exchanging personal data. The actual protections need to be assessed against the terms of the particular program. [1](#source-1)
+
+Estimated earnings, invoiced amounts and cash received should remain separately visible. Validated events are one stage of the process; adjustments, potential disputes, fees and payment timing can change the eventual cash contribution. An effective dashboard should support that reconciliation rather than make an event total look like a bank balance.
+
+## A crawler can walk away
+
+Stack Overflow offers a particularly useful counterexample. In an interview published on 19 February 2026, engineer Josh Zhang said some crawlers stopped making requests after the site began returning 402 responses instead of the 403 refusals they had previously received. [9](#source-9)
+
+This is a commercial partner’s account, recorded in a conversation with Cloudflare. It is neither a representative market study nor a financial assessment of the program. But it highlights a basic buyer option: declining to purchase access. A control can successfully reduce unwanted consumption without generating a sale. [9](#source-9) ; analysis
+
+In July 2026, Cloudflare described experiments with Ceramic.ai and You.com involving content appearing in search results and access to premium sources. These examples document commercial approaches being tested. They do not establish the number of paying buyers in the September beta, settled volumes or individual publisher earnings. [2](#source-2), [11](#source-11)
+
+Fresh, specific and hard-to-replace information should have greater bargaining value. This is an economic hypothesis: a buyer weighs the price against the cost of finding another source, the risk of a weaker answer or the option of abandoning the request. Original local reporting and a generic rewrite of a press release present different substitution problems. Public evidence reviewed here does not quantify that difference.
+
+## From a quoted price to newsroom revenue
+
+A small model makes the economics inspectable without pretending to forecast them. Imagine **one hypothetical month** with one million potential downstream uses. Just 20% ultimately fall within participating programs and become covered, billable, reported and validated events. At an assumed **$0.002 per event**, gross revenue is $400.
+
+Assume aggregate deductions of 10% and $100 in additional monthly costs. The resulting contribution is **$260**. The deduction rate is an invented model input, not a published Cloudflare commission. The use price is also hypothetical and separate from the Pay Per Crawl minimum. [l0g calculation]
+
+<CloudflareContentFigure id="05" lang="en" />
+
+Now define a comparison explicitly: 50,000 fewer human visits, each contributing an average of $10 net per thousand visits, would put $500 at stake. Neither the visits nor their value are derived from Pew or from l0g’s traffic. They provide a comparison in the same currency and over the same fictional month.
+
+To produce $500 after the model’s deductions and additional costs, the use price would need to be about **$0.00333 per billable event**, with coverage unchanged. At the initial $0.002 price, one third of potential uses would need to become billable. The accompanying data and calculator expose each assumption. [l0g calculation]
+
+<CloudflareContentFigure id="06" lang="en" />
+
+<CloudflareRevenueCalculator lang="en" />
+
+The 20% share combines several filters. Other uses might belong to buyers outside the program or fall outside the contractual definition. It is not an estimate of reporting accuracy or fraud. Higher prices may also reduce demand. The calculator holds volume constant to isolate a sensitivity; it does not estimate buyers’ response.
+
+Scale matters at the publisher level. Shared infrastructure can make small payments viable when separately negotiated contracts would consume them in administrative costs. Yet an attractive rate on a few thousand events cannot fund expensive reporting. Covered volume, monitoring costs and the durability of the commercial relationship determine the outcome.
+
+## Separating generative answers from conventional search
+
+Bargaining power also depends on alternatives to joining a paid program. Here the picture changed in 2026. Google says that on **31 August** it completed a worldwide rollout of a Search Console control allowing publishers to exclude their content and links from AI Overviews, AI Mode and relevant generative features in Discover. Its documentation says the choice is not a ranking or inclusion signal for other parts of Search. [13](#source-13), [19](#source-19)
+
+Opting out also removes impressions and visits from those AI features. Training is controlled separately. The setting broadens publishers’ choices without guaranteeing stable traffic or replacement revenue. Describing the choice as accepting all AI uses or disappearing from conventional search would now be outdated. [13](#source-13)
+
+Cloudflare announced separate controls for search, training and agents on 15 September, alongside an *Accountable* designation based on requirements already met or commitments with specified timelines. The deployed functionality matters as much as the label. On 30 October, Google also announced plans to support a shared AI-training signal emerging from AIPREF standards work, targeting 2027. That remains a prospective commitment. [12](#source-12), [14](#source-14)
+
+Preferences, access security and billing operate at separate layers. The `robots.txt` standard explicitly states that it is not a substitute for valid security controls. A preference must be read by its recipient; access enforcement acts on incoming requests; licensing defines authorized and payable uses. Keeping those layers separate avoids attributing to a technical setting the power to resolve every copyright question. [15](#source-15) ; analysis
+
+## Cloudflare’s new position between publishers and AI products
+
+The strongest case for the system is coordination. A small publisher cannot easily negotiate and maintain an integration with every prospective buyer. Shared infrastructure brings identity, enrollment, reporting and settlement together. Lower coordination costs could make previously uneconomic transactions possible. That is a credible proposition to test. [1](#source-1) ; analysis
+
+It also gives Cloudflare another potential role between the producer and distributor of information. Buyer admission, offer presentation, billing definitions and the information returned to publishers all shape negotiation. A useful intermediary can become a dependency. This is an analysis of incentives, not a legal finding of dominance or abuse.
+
+Other companies are pursuing related models. On 3 February 2026 Microsoft introduced its **Publisher Content Marketplace**, then a pilot involving content licensing, publisher-defined usage terms and reporting, with experiments in Copilot. Public descriptions allow a comparison of the architectures. They do not establish which offers a publisher the best return without concrete prices, fees and volumes. [17](#source-17)
+
+In the September Pay Per Use beta description, buyers propose the usage definition and price. Cloudflare describes counteroffers and finer pricing by content and use as future ambitions. The distinction matters: being able to decline an offer and being able to change its terms provide different kinds of leverage. [1](#source-1)
+
+## The evidence that would establish a market
+
+A useful assessment would follow cohorts of publishers for several months: active paying buyers, usage definitions, gross receipts, deductions, cash received and continued participation. The distribution of payouts matters too. A large aggregate can coexist with negligible earnings for most publishers.
+
+The next task is to connect the use count to its controls: identifiers, deduplication rules, reporting delays, corrections and dispute rights. That would allow an assessment of the records’ reliability. None of the documents reviewed here establishes a representative financial return for the Pay Per Use market. Missing public data leave an open question; they do not demonstrate that no payments exist. [1](#source-1), [2](#source-2), [11](#source-11)
+
+Cloudflare has documented infrastructure and a way to organize an exchange. Its value depends on buyers’ willingness to pay, the scope of paid uses and confidence in reporting. For a publisher, the final test is tangible: how much verifiable net contribution does the relationship provide toward producing the next piece of original information?
+
+## Method and limitations
+
+This document-based investigation is current to **2 November 2026**. Product and control descriptions come from their suppliers and are attributed accordingly. Stack Overflow provides a partner’s account. Pew’s observational evidence concerns 2025. No interviews, commercial account access or production tests were undertaken.
+
+The scenarios use nominal US dollars over one fictional month. Every input is hypothetical. No traffic statistic has been converted into a revenue estimate for l0g or any other publisher. The model excludes demand elasticity, tax and settlement timing. The evidence file distinguishes publication, update and consultation dates for evolving documentation; full original URLs appear below.
+
+**Terms.** A [*crawl*](/en/glossary/crawl/) is an automated retrieval. A [*paid use*](/en/glossary/usage-facturable/) is an event defined by a commercial program. An *API* lets software exchange requests and responses. The model’s *net contribution* deducts assumed aggregate charges and additional costs before tax; it is not a company’s reported accounting profit.
+
+## Further reading
+
+Our investigation into [AI agent payments](/en/analysis/how-an-ai-agent-pays-the-bill/) follows settlement rails and spending authority. The [intention economy](/en/analysis/the-intention-economy/) places these models in the changing advertising business. [Access to Google search data](/en/analysis/google-search-data-access-cost-privacy/) provides a comparison with another data market, its conditions and its costs.
+
+## Sources
+
+<ol className="sources-list">
+<li id="source-1"><span className="source-meta">[1] · Cloudflare · 2026-09-30 · Accessed 2 November 2026</span><a href="https://blog.cloudflare.com/pay-per-use/">Pay Per Use: when AI uses your work, you should get paid</a><p>Buyer-defined paid uses and prices; publisher acceptance; self-reported events; domain matching, billing and monthly payouts, according to Cloudflare.</p><details><summary>Passages and scope</summary><p>Event or period: Beta announced on 30 September 2026. This announcement does not establish a universal independent completeness audit, aggregate settled payouts or a general fee schedule.</p></details></li>
+<li id="source-2"><span className="source-meta">[2] · Cloudflare · 2026-07-01 · Accessed 2 November 2026</span><a href="https://www.cloudflare.com/press/press-releases/2026/cloudflare-allows-the-agentic-internet-to-flourish-with-a-simple-philosophy-your-content-your-rules/">Your Content, Your Rules</a><p>Cloudflare describes Pay Per Use experiments with Ceramic.ai and You.com.</p><details><summary>Passages and scope</summary><p>Event or period: July 2026 announcement and experiments. Announced partnerships and commercial mechanisms do not establish cash received by individual publishers.</p></details></li>
+<li id="source-3"><span className="source-meta">[3] · Cloudflare · 2025-07-01 · Accessed 2 November 2026</span><a href="https://developers.cloudflare.com/changelog/post/2025-07-01-pay-per-crawl/">Introducing Pay Per Crawl (private beta)</a><p>Original Pay Per Crawl launch: access-based charging and Stripe payment management.</p><details><summary>Passages and scope</summary><p>Event or period: Private-beta launch on 1 July 2025. This is the historical launch announcement, not evidence of current general availability.</p></details></li>
+<li id="source-4"><span className="source-meta">[4] · Cloudflare · 2026-07-28 · Accessed 2 November 2026</span><a href="https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/">What is Pay Per Crawl?</a><p>Closed beta; HTTP 200 access or 402 payment signal; Cloudflare as merchant of record; security-block rules override charging.</p><details><summary>Passages and scope</summary><p>Event or period: Documentation updated 28 July 2026. Documentation reviewed without activating or testing a commercial account.</p></details></li>
+<li id="source-5"><span className="source-meta">[5] · Cloudflare · 2026-07-28 · Accessed 2 November 2026</span><a href="https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/set-a-pay-per-crawl-price/">Set a pay per crawl price</a><p>Default retrieval pricing, optional dynamic prices and a minimum of $0.001 per crawl.</p><details><summary>Passages and scope</summary><p>Event or period: Documentation updated 28 July 2026. The minimum belongs to Pay Per Crawl; it is neither a market average nor a Pay Per Use rate.</p></details></li>
+<li id="source-6"><span className="source-meta">[6] · Cloudflare · 2026-07-28 · Accessed 2 November 2026</span><a href="https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/">Advanced configuration</a><p>URI exclusions and per-content dynamic prices supplied by the origin or a Worker through crawler-price.</p><details><summary>Passages and scope</summary><p>Event or period: Documentation updated 28 July 2026. A claim that one immutable price must cover every page would ignore this newer configuration documentation.</p></details></li>
+<li id="source-7"><span className="source-meta">[7] · Cloudflare · 2026-04-23 · Accessed 2 November 2026</span><a href="https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/">Manage payouts</a><p>Dedicated Cloudflare Stripe Connect account; recorded charges are aggregated and reconciled; monthly payouts subject to settlement conditions.</p><details><summary>Passages and scope</summary><p>Event or period: Documentation updated 23 April 2026. No universal settlement-period or minimum-payout amount is established here; these Pay Per Crawl arrangements cannot automatically be transferred to Pay Per Use.</p></details></li>
+<li id="source-8"><span className="source-meta">[8] · IETF · 2022-06 · Accessed 2 November 2026</span><a href="https://www.rfc-editor.org/rfc/rfc9110.html#name-402-payment-required">RFC 9110, HTTP Semantics, §15.5.3</a><p>RFC 9110 section 15.5.3 reserves status 402 for future use.</p><details><summary>Passages and scope</summary><p>Event or period: HTTP specification, June 2022. The status code by itself does not define a complete universal payment system.</p></details></li>
+<li id="source-9"><span className="source-meta">[9] · Stack Overflow · 2026-02-19 · Accessed 2 November 2026</span><a href="https://stackoverflow.blog/2026/02/19/stack-overflow-cloudflare-pay-per-crawl/">Why Stack Overflow and Cloudflare launched a pay-per-crawl model</a><p>Josh Zhang reports that some bots stopped sending requests after responses changed from 403 to 402.</p><details><summary>Passages and scope</summary><p>Event or period: Partner interview published 19 February 2026. A commercial partner’s account, not a representative study or a verified revenue statement.</p></details></li>
+<li id="source-10"><span className="source-meta">[10] · Pew Research Center · 2025-07-22 · Accessed 2 November 2026</span><a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/">Google users are less likely to click on links when an AI summary appears</a><p>Study of 900 US adults and 68,879 unique Google searches: traditional-result clicks on 8% of visits with AI summaries versus 15% without; summary-source clicks on 1% of summary visits.</p><details><summary>Passages and scope</summary><p>Event or period: Browsing 1–31 March 2025; search results collected 7–17 April 2025. Observational comparison with different query mixes and later-collected results; these data alone do not identify a causal revenue loss.</p></details></li>
+<li id="source-11"><span className="source-meta">[11] · Cloudflare · 2026-07-01 · Accessed 2 November 2026</span><a href="https://blog.cloudflare.com/making-ai-search-smarter/">Making AI search smarter</a><p>Ceramic.ai: payments linked to appearances in search results; You.com: premium sources requested on demand; Cloudflare calls these experiments.</p><details><summary>Passages and scope</summary><p>Event or period: July 2026 experiments. The examples do not establish settled payment volumes or individual publisher returns.</p></details></li>
+<li id="source-12"><span className="source-meta">[12] · Cloudflare · 2026-09-15 · Accessed 2 November 2026</span><a href="https://www.cloudflare.net/news/news-details/2026/Cloudflare-Helps-End-the-Search-or-AI-Training-Tradeoff/default.aspx">Cloudflare Helps End the Search-or-AI-Training Tradeoff</a><p>Separate controls for search, training and agents; Accountable designation allows requirements already met or dated commitments.</p><details><summary>Passages and scope</summary><p>Event or period: Controls announced 15 September 2026. Commitments to deploy must remain distinct from controls available everywhere now.</p></details></li>
+<li id="source-13"><span className="source-meta">[13] · Google · Date not established · Accessed 2 November 2026</span><a href="https://support.google.com/webmasters/answer/16908024?hl=en">Search generative AI control</a><p>Google describes exclusion from generative Search features without making that choice a ranking or inclusion signal for other Search surfaces; model-training controls are separate.</p><details><summary>Passages and scope</summary><p>Event or period: Worldwide rollout noted as of 31 August 2026. Exclusion also removes links, impressions and traffic from the covered AI features; supplier documentation was reviewed without testing the setting.</p></details></li>
+<li id="source-14"><span className="source-meta">[14] · Google · 2026-10-30 · Accessed 2 November 2026</span><a href="https://developers.google.com/search/blog/2026/10/ai-training-control">Supporting a shared AI training control for websites</a><p>Planned shared training preference in robots.txt, drawing on IETF AIPREF work.</p><details><summary>Passages and scope</summary><p>Event or period: Announcement 30 October 2026; support targeted for 2027. A prospective training-control commitment, not a payment mechanism or a fully deployed standard.</p></details></li>
+<li id="source-15"><span className="source-meta">[15] · IETF · 2022-09 · Accessed 2 November 2026</span><a href="https://www.rfc-editor.org/rfc/rfc9309.html#name-security-considerations">RFC 9309, Robots Exclusion Protocol, §3</a><p>RFC 9309 section 3 states that robots.txt is not a substitute for valid content security measures.</p><details><summary>Passages and scope</summary><p>Event or period: Robots Exclusion Protocol specification, September 2022. The technical standard does not settle copyright rights or legal obligations of AI providers.</p></details></li>
+<li id="source-16"><span className="source-meta">[16] · Cloudflare · 2026-09-30 · Accessed 2 November 2026</span><a href="https://blog.cloudflare.com/monetization-gateway-beta/">Monetization Gateway beta: charge AI agents for consumption with HTTP 402</a><p>Request-based x402 payments; USDC settlement on Base through Coinbase’s facilitator; initial beta for eligible US-based sellers and buyers.</p><details><summary>Passages and scope</summary><p>Event or period: Closed beta announced 30 September 2026. A separate product from Pay Per Use; launch eligibility does not establish availability to French publishers.</p></details></li>
+<li id="source-17"><span className="source-meta">[17] · Microsoft · 2026-02-03 · Accessed 2 November 2026</span><a href="https://www.about.ads.microsoft.com/en/blog/post/february-2026/building-toward-a-sustainable-content-economy-for-the-agentic-web">Building Toward a Sustainable Content Economy for the Agentic Web</a><p>Microsoft describes licensing, publisher-defined usage terms, reporting and experiments in Copilot.</p><details><summary>Passages and scope</summary><p>Event or period: Publisher Content Marketplace pilot announced 3 February 2026. An interested party’s description; these public details do not establish comparative financial returns.</p></details></li>
+<li id="source-18"><span className="source-meta">[18] · Cloudflare · 2026-07-01 · Accessed 2 November 2026</span><a href="https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/verify-ai-crawler/">Verify your AI crawler</a><p>Crawler onboarding and authentication through Web Bot Auth and verified-bot policies, with price information in the HTTP response.</p><details><summary>Passages and scope</summary><p>Event or period: Documentation updated 1 July 2026. Verified identity does not measure all subsequent uses inside a buyer’s systems.</p></details></li>
+<li id="source-19"><span className="source-meta">[19] · Google · 2026-06-03 · Accessed 2 November 2026</span><a href="https://blog.google/products-and-platforms/products/search/new-controls-website-owners/">New opportunities, control and insights for website owners</a><p>Google’s initial announcement of independent controls for generative Search features.</p><details><summary>Passages and scope</summary><p>Event or period: Initial trial announced 3 June 2026; source 13 establishes later worldwide rollout. The initial test announcement alone cannot establish deployment status on 2 November.</p></details></li>
+<li id="source-20"><span className="source-meta">[20] · Cloudflare · 2026-04-23 · Accessed 2 November 2026</span><a href="https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/faq/">Pay Per Crawl FAQ</a><p>Repeated billable retrievals can be charged again; unsuccessful responses are not billed.</p><details><summary>Passages and scope</summary><p>Event or period: Documentation updated 23 April 2026. Use the newer July documentation for per-content dynamic pricing; the older FAQ describes a price common to charged crawlers, not an immutable price for all content.</p></details></li>
+<li id="source-21"><span className="source-meta">[21] · Cloudflare · 2026-10-16 · Accessed 2 November 2026</span><a href="https://blog.cloudflare.com/verified-bots-accountability/">Continuous accountability for Verified bots</a><p>Cloudflare describes internal monitoring of repeated behavior by Verified bots, including compliance with robots.txt preferences and responses to direct signals such as HTTP 429. Public trust scores and customer-selected thresholds are described as future steps.</p><details><summary>Passages and scope</summary><p>Event or period: Internal behavioral monitoring announced 16 October 2026; public scores and customer controls described as future steps. Supplier-described observations of access requests and compliance with site preferences; this post does not establish a complete audit of Pay Per Use events inside buyers’ systems. No independent product test or audit was performed here.</p></details></li>
+</ol>

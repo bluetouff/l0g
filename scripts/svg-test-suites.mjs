@@ -3,6 +3,7 @@
 export const SVG_TEST_SUITES = Object.freeze({
   source: Object.freeze([
     'scripts/broadcom-anthropic-infographics.test.mjs',
+    'scripts/cloudflare-content-infographics.test.mjs',
     'scripts/asml-installed-base-infographics.test.mjs',
     'scripts/stellantis-turnaround-infographics.test.mjs',
     'scripts/oracle-financing-infographics.test.mjs',
@@ -200,6 +201,7 @@ export const SVG_TEST_SUITES = Object.freeze({
   ]),
   rendered: Object.freeze([
     'scripts/broadcom-anthropic-rendered-infographics.test.mjs',
+    'scripts/cloudflare-content-rendered-infographics.test.mjs',
     'scripts/asml-installed-base-rendered-infographics.test.mjs',
     'scripts/stellantis-turnaround-rendered-infographics.test.mjs',
     'scripts/oracle-financing-rendered-infographics.test.mjs',
