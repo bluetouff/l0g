@@ -299,7 +299,7 @@ jobs:
             /scripts/stage-ci-release.mjs
             /scripts/black-box-archive.mjs
             /scripts/black-box-contract.mjs
-            /deploy/prepare-static-transport.sh
+            /scripts/publish-static-assets.mjs
 
       - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
         with:
@@ -344,15 +344,15 @@ jobs:
       - name: Stage the offline attestation bundle
         run: cp "${{ steps.attest_static.outputs.bundle-path }}" release/l0g-site.tar.gz.sigstore.jsonl
 
-      - name: Prepare Git transport without recompression
+      - name: Publish verified static Release assets and prepare metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          # `built` est uniquement un transport de release. Le serveur n'active
-          # jamais un arbre statique Git non attesté, seulement l'archive vérifiée.
-          bash deploy/prepare-static-transport.sh release publish
+          # Only metadata is pushed to Git; the attested archive uses Releases.
+          node scripts/publish-static-assets.mjs release publish
           cd publish
           git init -q
-          # The payload is already gzip-compressed. Recompressing 90 MiB parts
-          # and searching binary deltas cannot improve this orphan transport.
+          # Only small release metadata enters this orphan Git transport.
           git config core.compression 0
           git config pack.compression 0
           git config pack.window 0

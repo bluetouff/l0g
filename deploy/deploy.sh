@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Pull-based, fail-closed deployment of the attested static release in `built`.
+# Pull-based, fail-closed deployment. Git carries metadata; Releases carry bytes.
 set -euo pipefail
 umask 0077
 
@@ -19,6 +19,7 @@ COORDINATES_NAME="source.env"
 PARTS_NAME="${ARCHIVE_NAME}.parts.sha256"
 PART_BYTES=94371840
 MAX_PARTS=16
+TRANSPORT_NAME=transport.env
 
 for command in cmp git tar gzip sha256sum flock wc cat "$GH_BIN"; do
   command -v "$command" >/dev/null 2>&1 || {
@@ -140,7 +141,31 @@ PARTS_MANIFEST="${CHECKOUT}/${PARTS_NAME}"
 shopt -s nullglob
 PART_FILES=("${CHECKOUT}/${ARCHIVE_NAME}".part-*)
 shopt -u nullglob
-if [ -e "$PARTS_MANIFEST" ] || [ -L "$PARTS_MANIFEST" ]; then
+if [ -e "${CHECKOUT}/${TRANSPORT_NAME}" ] || [ -L "${CHECKOUT}/${TRANSPORT_NAME}" ]; then
+  marker="${CHECKOUT}/${TRANSPORT_NAME}"
+  if [ ! -f "$marker" ] || [ -L "$marker" ] || \
+     [ "$(wc -c <"$marker")" -gt 128 ] || \
+     ! cmp -s "$marker" <(printf 'L0G_STATIC_TRANSPORT=github-release-v1\n') || \
+     [ -e "$ARCHIVE" ] || [ -L "$ARCHIVE" ] || \
+     [ -e "$PARTS_MANIFEST" ] || [ -L "$PARTS_MANIFEST" ] || [ "${#PART_FILES[@]}" -ne 0 ]; then
+    echo "Transport GitHub Release ambigu ou marqueur invalide" >&2; exit 1
+  fi
+  command -v curl >/dev/null 2>&1 || { echo 'curl requis pour le transport GitHub Release' >&2; exit 1; }
+  # No URL is accepted from Git. Every component comes from already validated
+  # coordinates; the repository is local operator configuration.
+  [[ "$REPOSITORY" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]] || exit 1
+  RELEASE_TAG="static-${SOURCE_SHA}-${RUN_ID}-${RUN_ATTEMPT}"
+  ARCHIVE="${TMP}/${ARCHIVE_NAME}"
+  curl --proto '=https' --proto-redir '=https' --tlsv1.2 \
+    --fail --silent --show-error --location --retry 3 \
+    --connect-timeout 10 --max-time 300 --max-filesize "$((PART_BYTES * MAX_PARTS))" \
+    "https://github.com/${REPOSITORY}/releases/download/${RELEASE_TAG}/${ARCHIVE_NAME}" \
+    --output "$ARCHIVE"
+  if [ ! -f "$ARCHIVE" ] || [ -L "$ARCHIVE" ] || \
+     [ "$(wc -c <"$ARCHIVE")" -le 0 ] || [ "$(wc -c <"$ARCHIVE")" -gt "$((PART_BYTES * MAX_PARTS))" ]; then
+    echo 'Archive téléchargée vide, trop grande ou non régulière' >&2; exit 1
+  fi
+elif [ -e "$PARTS_MANIFEST" ] || [ -L "$PARTS_MANIFEST" ]; then
   if [ -e "$ARCHIVE" ] || [ -L "$ARCHIVE" ] || \
      [ ! -f "$PARTS_MANIFEST" ] || [ -L "$PARTS_MANIFEST" ] || \
      [ "$(wc -c <"$PARTS_MANIFEST")" -gt 4096 ]; then

@@ -62,10 +62,11 @@ requireCondition(rootPackage.scripts?.['weekly:update']?.includes('generate-week
 
 const build = workflows.get('build.yml') || '';
 requireCondition(
-  build.includes('bash deploy/prepare-static-transport.sh release publish')
+  build.includes('node scripts/publish-static-assets.mjs release publish')
+    && !build.includes('bash deploy/prepare-static-transport.sh release publish')
     && build.includes('release/l0g-site.tar.gz')
     && build.includes('release/l0g-site.tar.gz.sigstore.jsonl'),
-  'le transport doit fragmenter la release sans remplacer l’attestation de l’archive entière',
+  'le transport doit publier les assets hors Git sans remplacer l’attestation de l’archive entière',
 );
 requireCondition(build.includes('branches: [main]'), 'le build doit rester lié à main');
 requireCondition(build.includes('pull_request:'), 'le vrai build doit valider les pull requests avant fusion');
@@ -101,7 +102,7 @@ const validatePr = job('validate-pr-build');
 requireCondition(
   publicationJob.includes('sparse-checkout-cone-mode: false')
     && ['scripts/stage-ci-release.mjs', 'scripts/black-box-archive.mjs',
-      'scripts/black-box-contract.mjs', 'deploy/prepare-static-transport.sh']
+      'scripts/black-box-contract.mjs', 'scripts/publish-static-assets.mjs']
       .every(file => publicationJob.includes(`/${file}`)),
   'le publisher doit charger uniquement les scripts nécessaires à la vérification et au transport',
 );

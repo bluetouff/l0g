@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import test from 'node:test';
 import { stageRelease, restoreRelease } from './stage-ci-release.mjs';
 import { load, JSON_SCHEMA } from 'js-yaml';
@@ -69,6 +70,9 @@ test('the sparse publisher contains the complete verifier dependency closure', (
   }
   assert.equal(fs.existsSync(path.join(minimal, 'src')), false);
   assert.equal(fs.existsSync(path.join(minimal, 'public')), false);
+  execFileSync(process.execPath, ['--input-type=module', '-e',
+    `const m = await import(${JSON.stringify(pathToFileURL(path.join(minimal, 'scripts/publish-static-assets.mjs')).href)}); if (typeof m.publishStaticAssets !== 'function') process.exit(1);`],
+    { cwd: minimal, stdio: ['ignore', 'pipe', 'pipe'] });
   execFileSync(process.execPath, [path.join(minimal, 'scripts/stage-ci-release.mjs'),
     'restore', '--input', f.output, '--archive', f.archive,
     '--release', f.restore.release, '--dist', f.restore.dist], {

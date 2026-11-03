@@ -168,6 +168,8 @@ publish_artifact() {
   local embed_coordinates="${3:-true}"
   local transport="${4:-legacy}"
   local site="${TMP}/site"
+  rm -f -- "${BUILT}/transport.env"
+  if [ "$preserve_bundle" != true ]; then rm -f -- "${BUILT}/l0g-site.tar.gz.sigstore.jsonl"; fi
   rm -f -- "${BUILT}/l0g-site.tar.gz".part-* "${BUILT}/l0g-site.tar.gz.parts.sha256"
   rm -rf -- "$site"
   mkdir -p "$site"
@@ -196,6 +198,12 @@ publish_artifact() {
     split -b 200 -d -a 3 "${BUILT}/l0g-site.tar.gz" "${BUILT}/l0g-site.tar.gz.part-"
     (cd "$BUILT" && sha256sum l0g-site.tar.gz.part-* >l0g-site.tar.gz.parts.sha256)
     rm -- "${BUILT}/l0g-site.tar.gz"
+  fi
+  if [ "$transport" = release ]; then
+    mkdir -p "${TMP}/release-assets"
+    cp "${BUILT}/l0g-site.tar.gz" "${TMP}/release-assets/l0g-site.tar.gz"
+    rm -- "${BUILT}/l0g-site.tar.gz"
+    printf 'L0G_STATIC_TRANSPORT=github-release-v1\n' >"${BUILT}/transport.env"
   fi
   git -C "$BUILT" add -A
   git -C "$BUILT" commit -q -m "build ${SOURCE_SHA}"
@@ -233,7 +241,9 @@ done
 [ "$workflow" = bluetouff/l0g/.github/workflows/build.yml ]
 [ "$source_ref" = refs/heads/main ]
 [ "$(sed -n 's/^source=//p' "$bundle")" = "$source_digest" ]
-[ "$(sed -n 's/^digest=//p' "$bundle")" = "$(sha256sum "$archive" | awk '{print $1}')" ]
+[ "$(sed -n 's/^digest=//p' "$bundle")" = "$(sha256sum "$archive" | awk '{print $1}')" ] || {
+  echo 'signature fixture invalid' >&2; exit 1;
+}
 SH
 chmod 0755 "$FAKE_GH"
 
@@ -337,5 +347,72 @@ L0G_DEPLOY_GH_BIN="$FAKE_GH" \
 PATH="${TMP}/bin:${PATH}" \
   bash "${ROOT}/deploy/deploy.sh"
 [ "$(cat "${BASE}/current/index.html")" = stable-legacy-again ]
-node --test "${ROOT}/scripts/static-transport.test.mjs"
-printf '{"ok":true,"legacyActivation":true,"chunkActivation":true,"invalidTransportsRefused":15,"rollbackCompatibility":true}\n'
+# A public asset download uses a derived GitHub URL and the same signature gate.
+cat >"${TMP}/bin/curl" <<'SH'
+#!/usr/bin/env bash
+set -euo pipefail
+url=""; output=""; proto=""; redir=""; bounded=false
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --proto) proto="$2"; shift 2 ;;
+    --proto-redir) redir="$2"; shift 2 ;;
+    --tlsv1.2|--fail|--silent|--show-error|--location) shift ;;
+    --retry|--connect-timeout|--max-time) shift 2 ;;
+    --max-filesize) [ "$2" = 1509949440 ]; bounded=true; shift 2 ;;
+    --output) output="$2"; shift 2 ;;
+    https://*) url="$1"; shift ;;
+    *) exit 90 ;;
+  esac
+done
+[ "$proto" = '=https' ] && [ "$redir" = '=https' ] && [ "$bounded" = true ]
+[ "$url" = "https://github.com/bluetouff/l0g/releases/download/static-${L0G_TEST_SOURCE_SHA}-1-1/l0g-site.tar.gz" ]
+printf '%s\n' "$url" >>"${L0G_TEST_ASSET_DIR}/requests"
+case "${L0G_TEST_DOWNLOAD_MODE:-normal}" in
+  missing) exit 22 ;;
+  empty) : >"$output" ;;
+  oversized) dd if=/dev/zero of="$output" bs=1 count=0 seek=1509949441 2>/dev/null ;;
+  *) cp "${L0G_TEST_ASSET_DIR}/l0g-site.tar.gz" "$output" ;;
+esac
+if [ "${L0G_TEST_DOWNLOAD_MODE:-normal}" = corrupt ]; then printf 'changed' >>"$output"; fi
+SH
+chmod 0755 "${TMP}/bin/curl"
+export L0G_TEST_SOURCE_SHA="$SOURCE_SHA"
+export L0G_TEST_ASSET_DIR="${TMP}/release-assets"
+publish_artifact stable-release false true release
+L0G_DEPLOY_REPO="file://${REMOTE}" L0G_DEPLOY_BASE="$BASE" L0G_DEPLOY_GH_BIN="$FAKE_GH" \
+  PATH="${TMP}/bin:${PATH}" bash "${ROOT}/deploy/deploy.sh"
+[ "$(cat "${BASE}/current/index.html")" = stable-release ]
+RELEASE_BUILT="$(cat "${BASE}/.last_built_sha")"
+RELEASE_CURRENT="$(readlink "${BASE}/current")"
+# No binary archive or archive chunks are transported through Git.
+[ "$(git -C "$BUILT" ls-tree --name-only HEAD | wc -l | tr -d ' ')" = 4 ]
+
+for failure in missing corrupt empty oversized marker marker-extra marker-url ambiguous parts-manifest bundle-symlink invalid-signature; do
+  publish_artifact "refused-release-${failure}" false true release
+  export L0G_TEST_DOWNLOAD_MODE=normal
+  case "$failure" in
+    missing|corrupt|empty|oversized) export L0G_TEST_DOWNLOAD_MODE="$failure" ;;
+    marker) printf 'L0G_STATIC_TRANSPORT=unverified\n' >"${BUILT}/transport.env" ;;
+    marker-extra) printf '\n' >>"${BUILT}/transport.env" ;;
+    marker-url) printf 'https://evil.example/archive\n' >"${BUILT}/transport.env" ;;
+    ambiguous) printf 'ambiguous' >"${BUILT}/l0g-site.tar.gz" ;;
+    parts-manifest) : >"${BUILT}/l0g-site.tar.gz.parts.sha256" ;;
+    bundle-symlink) rm -- "${BUILT}/l0g-site.tar.gz.sigstore.jsonl"; ln -s source.env "${BUILT}/l0g-site.tar.gz.sigstore.jsonl" ;;
+    invalid-signature) printf 'digest=invalid\nsource=%s\n' "$SOURCE_SHA" >"${BUILT}/l0g-site.tar.gz.sigstore.jsonl" ;;
+  esac
+  git -C "$BUILT" add -A
+  if ! git -C "$BUILT" diff --cached --quiet; then git -C "$BUILT" commit -qm "invalid release ${failure}"; fi
+  git -C "$BUILT" push -q origin built
+  if L0G_DEPLOY_REPO="file://${REMOTE}" L0G_DEPLOY_BASE="$BASE" L0G_DEPLOY_GH_BIN="$FAKE_GH" \
+    PATH="${TMP}/bin:${PATH}" bash "${ROOT}/deploy/deploy.sh" >"${TMP}/release-negative.log" 2>&1; then
+    echo "Activation indue du transport release: ${failure}" >&2; exit 1
+  fi
+  [ "$(readlink "${BASE}/current")" = "$RELEASE_CURRENT" ]
+  [ "$(cat "${BASE}/current/index.html")" = stable-release ]
+  [ "$(cat "${BASE}/.last_built_sha")" = "$RELEASE_BUILT" ]
+  if [ "$failure" = invalid-signature ]; then grep -Fq 'signature fixture invalid' "${TMP}/release-negative.log"; fi
+done
+unset L0G_TEST_DOWNLOAD_MODE
+node --test "${ROOT}/scripts/static-transport.test.mjs" "${ROOT}/scripts/publish-static-assets.test.mjs"
+
+printf '{"ok":true,"legacyActivation":true,"chunkActivation":true,"releaseActivation":true,"invalidTransportsRefused":26,"rollbackCompatibility":true}\n'
