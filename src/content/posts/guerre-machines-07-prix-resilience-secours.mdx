@@ -1,0 +1,266 @@
+---
+title: "Résilience industrielle : le secours a un débit"
+seoTitle: "Résilience industrielle : financer un secours utilisable | l0g"
+description: "De Norsk Hydro aux plans multi-sites, une enquête sur les capacités de secours, le coût de leur entretien et les preuves nécessaires avant d’investir."
+tags: ["Enquête", "Cybersécurité", "Industrie", "Résilience", "Continuité", "Investissement"]
+quickTake: {"fact": "L’agence française de cybersécurité (ANSSI) recommande de fixer avec la direction l’ordre de remise en service lorsque plusieurs sites industriels sont touchés.", "importance": "La valeur d’un dispositif de secours dépend des fonctions préservées, des équipes mobilisables et du temps nécessaire au rétablissement.", "uncertainty": "Les sources publiques ne permettent pas d’estimer un prix universel ou la fréquence future des sinistres. Le cas chiffré est entièrement fictif."}
+pubDate: "2026-11-04T00:00:57+01:00"
+updatedDate: "2026-11-04T00:00:57+01:00"
+draft: false
+ogImage: "/illustrations/news/machine-resilience-07-v1.jpg"
+---
+
+import MachineResilienceFigure from '../../components/MachineResilienceFigure.astro';
+
+<p><strong>La guerre contre les machines ordinaires · Volet 7/7</strong></p>
+
+<p class="standfirst">La valeur d’une sauvegarde, d’une machine de rechange ou d’une astreinte dépend des personnes capables de les utiliser. Pour conclure la série, une enquête sur le débit du secours, ses dépendances et la manière de financer une capacité réellement disponible.</p>
+
+Le 26 mars 2019, une semaine après la cyberattaque qui a frappé le producteur d’aluminium Norsk Hydro, le même communiqué décrit deux réalités industrielles. Pour trois unités de l’activité Extruded Solutions, le groupe annonce un taux de production agrégé de 70–80 %, sans détailler sa base de calcul. La quatrième, Building Systems, reste presque à l’arrêt. Ailleurs, la production fonctionne normalement, parfois avec davantage de travail manuel. Le secours possède déjà une géographie, des compétences et des limites. [1](#source-01)
+
+Dès le 19 mars, Hydro avait annoncé l’isolement de ses installations et le recours à des procédures manuelles lorsque cela était possible. Le groupe signalait aussi des arrêts liés à l’impossibilité d’accéder aux systèmes de production. La différence entre les ateliers rappelle une question souvent noyée dans le vocabulaire de la résilience : quelle fonction reste effectivement disponible lorsque l’environnement informatique habituel disparaît ? [2](#source-02)
+
+Ce dernier volet déplace donc le regard vers les moyens de tenir. Après les commandes, les accès, les preuves, les pertes et les règles, il reste à examiner le prix d’une capacité de secours utilisable. Les sources éclairent son organisation. Un cas chiffré, entièrement fictif, permet ensuite de montrer comment la capacité des équipes modifie le coût d’un arrêt. Les valeurs choisies servent à rendre le calcul contrôlable ; elles ne constituent ni des prix de marché ni une prévision d’attaque.
+
+<MachineResilienceFigure lang="fr" kind="hydro" />
+
+## Commencer par la fonction à préserver
+
+Dans son bilan rétrospectif, mis à jour le 15 mai 2024, Hydro estime le coût total de l’attaque à environ **800 millions de couronnes norvégiennes**. L’entreprise décrit des procédures de remplacement exigeantes en travail. Ce montant reste une estimation de victime, à son échelle et pour cet événement. Il renseigne sur l’ampleur du choc, tandis que la contribution respective de l’architecture, des équipes et du fonctionnement manuel aux pertes évitées demeure inconnue. [3](#source-03)
+
+Il serait tentant de transformer ce récit en plaidoyer pour le retour au papier. Le travail intéressant consiste plutôt à préciser les conditions qui rendent un fonctionnement temporaire possible. Dans un entrepôt frigorifique, par exemple, l’étude devra relier le maintien des températures, la surveillance, les décisions sur les lots et les personnes disponibles. Cet exemple décrit une démarche d’analyse, sans reconstituer une installation attaquée ni proposer de température admissible.
+
+Le National Cyber Security Centre (NCSC), l’agence britannique de cybersécurité, donne à cette cible le nom de [*minimum viable operations*](/glossaire/mvo/) : le niveau d’activité permettant de fonctionner en sécurité, de respecter ses obligations et de conserver la confiance de ses partenaires. Cette définition oblige à raisonner en service rendu. Un système peut redevenir accessible alors que les opérations qu’il soutient restent trop fragiles pour reprendre. [4](#source-04)
+
+Pour un exploitant, la première dépense utile peut ainsi financer un travail de description : quelle fonction doit tenir, pendant combien de temps, avec quelles ressources, et dans quelles conditions son interruption devient-elle nécessaire ? Les réponses donnent une destination au budget. Elles permettent de choisir entre une protection supplémentaire, une autonomie locale ou une préparation plus rapide du rétablissement.
+
+Cette démarche s’inscrit dans le guide industriel du NIST, l’Institut américain des normes et de la technologie, qui demande de définir les objectifs de reprise avant les moyens et envisage un stock de pièces lorsque ces objectifs le justifient. Nous utilisons ici sa version finale de septembre 2023. La fiche officielle signale, depuis le 21 septembre 2026, une révision 4 encore soumise à commentaires jusqu’au 30 novembre : son statut de projet est distinct. [5](#source-05) [6](#source-06)
+
+## Deux équipements peuvent partager la même faiblesse
+
+La [redondance](/glossaire/redondance/) consiste à disposer d’une autre ressource capable de reprendre une fonction. Une panne matérielle isolée et une compromission d’un accès commun mettent cette organisation à l’épreuve de façons différentes. Le NIST relève expressément que la redondance des systèmes de supervision peut rester insuffisante face à une attaque malveillante. [5](#source-05)
+
+Prenons une architecture hypothétique : deux équipements de commande sont administrés par le même compte, depuis le même environnement. La duplication laisse subsister cette dépendance. Pour évaluer le secours, il faut examiner ce qui arriverait aux deux équipements lors de la perte ou de la compromission de cet environnement, puis identifier les fonctions qui survivraient. Le schéma ci-dessous explicite cette question ; il ne décrit aucun produit ni aucune victime.
+
+La séparation des dépendances a elle-même un coût. Des accès distincts réclament une gestion, des configurations doivent rester cohérentes et les équipes doivent connaître les voies de reprise. La diversité technique peut aussi rendre la maintenance plus difficile. Le bon arbitrage porte sur les causes communes que l’on souhaite maîtriser, avec une vérification de la charge supplémentaire créée.
+
+Les recommandations publiées par le NCSC le 1er octobre 2026 relient précisément la limitation d’une compromission au cloisonnement du réseau, à la protection des sauvegardes et à la maîtrise des accès d’administration. Ces dispositions donnent des mécanismes de réduction du dommage ; leur efficacité pour une installation donnée exige des preuves locales. [7](#source-07)
+
+<MachineResilienceFigure lang="fr" kind="dependencies" />
+
+L’isolement ajoute une autre épreuve. Une installation peut dépendre d’un service distant pour une fonction dont l’interruption aurait des conséquences physiques. Le NCSC demande donc un plan d’isolement lié à la [continuité de service](/glossaire/continuite-de-service/), testé et conçu pour les situations multi-sites, en intégrant les fournisseurs. [8](#source-08)
+
+L’investissement peut alors acheter une possibilité de choix : suspendre un accès compromis tout en conservant les fonctions jugées nécessaires, ou organiser un arrêt maîtrisé. Le dossier d’investissement peut préciser les moyens nécessaires à ce choix et les conditions pour l’exercer. Son intérêt dépend de l’étendue du dommage qu’elle permet de contenir et des conditions de fonctionnement qu’elle préserve, plutôt que du seul nombre d’équipements installés.
+
+## Le secours a un débit
+
+La recommandation R76 du guide de l’ANSSI, l’agence française de cybersécurité, publié en novembre 2025 demande de définir avec la direction un ordre de reconstruction des systèmes industriels. Elle précise que plusieurs sites peuvent être touchés simultanément et que leur criticité peut différer. Cette recommandation de classe C1 fait apparaître la contrainte au cœur du problème : les besoins de reprise peuvent arriver ensemble, alors que les moyens disponibles se répartissent. [9](#source-09)
+
+Pour rendre cette contrainte visible, considérons **six sites fictifs**, chacun privé de la même fonction. Les conditions de sécurité nécessaires à l’intervention sont supposées satisfaites. Deux équipes deviennent disponibles deux heures après le début de l’interruption. Chaque travail de rétablissement, validation comprise, dure quatre heures. Les pièces et configurations sont prêtes, les sites ont une priorité identique et le modèle suppose des déplacements nuls entre interventions. Ces hypothèses simplifient volontairement la situation.
+
+Avec deux équipes, deux sites reviennent à la sixième heure, deux autres à la dixième et les derniers à la quatorzième. Additionner ces durées donne **60 heures-sites d’indisponibilité** : une heure pendant laquelle la fonction manque sur un site vaut une heure-site. Cette unité mesure le cumul des interruptions. La durée écoulée jusqu’au dernier rétablissement est, elle, de quatorze heures.
+
+Une troisième équipe, disponible au même moment et aussi efficace, rétablit trois sites à la sixième heure, puis trois à la dixième. Le cumul tombe à **48 heures-sites**. Le gain atteint douze heures-sites ; le premier rétablissement reste à six heures, tandis que le dernier avance de quatorze à dix heures. L’ajout d’une équipe agit ici sur l’attente des sites, avec un effet différent selon leur place dans la file.
+
+<MachineResilienceFigure lang="fr" kind="capacity" />
+
+Ce calcul fait apparaître une question contractuelle très concrète. Une entreprise qui paie une astreinte doit comprendre quelles ressources seraient mobilisables en cas de demandes simultanées. Le nombre de clients du prestataire, ses engagements prioritaires et la disponibilité des compétences deviennent des pièces à examiner. Le NCSC invite à associer les fournisseurs au plan de continuité et à envisager la disparition soudaine de leurs services. [10](#source-10)
+
+Le modèle devient moins favorable dès qu’un prérequis manque. Une investigation commune peut bloquer toutes les équipes ; une seule personne peut être habilitée à valider les reprises ; une pièce ou un environnement de confiance peut manquer. La capacité de travail utile se situe alors à l’endroit de cette contrainte. Financer une équipe supplémentaire mérite d’être comparé au financement du prérequis qui l’empêcherait d’agir.
+
+Pour une organisation réelle, il faudrait remplacer chaque durée par une mesure ou une hypothèse documentée, distinguer les sites et éprouver les scénarios d’indisponibilité du prestataire. Une priorité liée à la sécurité des personnes ou à un service essentiel prime sur l’ordre commode retenu dans notre exemple.
+
+## Le prix du temps gagné
+
+Poursuivons exclusivement ce **cas fictif**. Supposons qu’un dispositif donnant accès à la troisième équipe coûte 30 000 € à établir, puis 6 000 € par an à maintenir. Sur cinq ans, le budget supplémentaire atteint **60 000 €**. Ces montants sont des entrées pédagogiques, sans lien avec un devis ou une convention collective. Ils représentent un dispositif supposé disponible, dont le financement réel resterait à instruire.
+
+Pour cet exercice, chaque heure-site d’arrêt entraîne une perte définitive de marge contributive de 2 500 €. Il s’agit du revenu qui aurait contribué à couvrir les charges maintenues et le résultat après déduction des coûts variables évités. La vente reportée puis récupérée demanderait un autre calcul. Les douze heures-sites gagnées préservent alors **30 000 € par incident du type décrit**.
+
+Deux événements identiques sur cinq ans compensent arithmétiquement les 60 000 € du dispositif. Ce **seuil d’équilibre conditionnel** décrit deux événements comparables ; leur fréquence future reste à estimer séparément. Les dommages matériels, les indemnisations, la fiscalité et les effets sur d’autres entreprises restent hors du modèle. Les montants sont constants, sans inflation ni actualisation ; la valeur résiduelle est supposée nulle. Les dépenses engagées pendant l’incident sont supposées identiques dans les deux organisations, donc sans effet sur la différence calculée.
+
+<MachineResilienceFigure lang="fr" kind="threshold" />
+
+La sensibilité est immédiate. Avec 1 000 € de marge perdue par heure-site, un incident représente 12 000 € de gain et le seuil passe à cinq événements sur la période. À 5 000 €, il suffit d’un événement dans le modèle. Ce sont trois hypothèses de valeur économique, sans intervalle de confiance ni estimation sectorielle. Elles montrent pourquoi un même équipement de secours peut avoir une valeur très différente selon la fonction qu’il soutient.
+
+La direction peut utiliser ce seuil pour demander les éléments qui manquent : valeur de la production réellement irrécupérable, capacité contractuellement disponible, temps de mobilisation éprouvé, durée pendant laquelle les hypothèses resteront valables. Toute probabilité utilisée ensuite devrait avoir sa propre origine, ses limites et sa sensibilité. Un chiffre rond ajouté pour compléter un tableur donnerait une apparence de rendement à une connaissance encore absente.
+
+L’arbitrage financier intervient à l’intérieur d’un ensemble d’options compatibles avec la sécurité et les obligations applicables. Certaines dépenses répondent à une exigence de protection ou de continuité dont l’intérêt dépasse le résultat de l’entreprise. Le modèle sert à comparer des ressources ; les conditions de fonctionnement sûr restent à établir par les responsables compétents.
+
+## Entretenir une capacité qui attend
+
+Le financement initial est la partie la plus facile à montrer. Une pièce de remplacement occupe une place dans un stock ; son utilité future dépendra aussi de sa compatibilité, de sa configuration et de la possibilité de la mettre en service. Dans le guide NIST, les éléments nécessaires à une sauvegarde exploitable comprennent notamment les supports d’installation, les licences et les configurations. Les conditions de conservation des équipements de secours font également partie de la reprise. [5](#source-05)
+
+Cette continuité documentaire réclame un responsable. À chaque évolution du système, il faut savoir quelles preuves et quels moyens de secours deviennent à revoir. Une réservation de capacité humaine demande, de son côté, de conserver la compétence et l’accès aux informations utiles. L’ANSSI traite explicitement le transfert des compétences lors des départs ou changements de poste. [9](#source-09)
+
+Le coût récurrent peut ainsi financer une disponibilité qui reste discrète pendant les périodes normales : temps de formation, vérification d’un stock, préparation des exercices ou revue d’un engagement de fournisseur. L’évaluer suppose de relier chaque dépense à la capacité qu’elle entretient. Une liste d’achats ne permettrait pas de suivre cette évolution.
+
+Le NCSC recommande de conserver les informations nécessaires à la reprise dans un emplacement sûr, distinct des systèmes principaux, et de documenter les dépendances de l’infrastructure. Il invite à préciser les missions de réponse à incident et de reconstruction, qui peuvent relever de prestations différentes. [11](#source-11)
+
+Ces recommandations donnent une manière de relire une facture. L’entreprise achète-t-elle une expertise disponible, un travail de reconstruction, une réserve de pièces ou la preuve qu’un ensemble fonctionne ? Plusieurs prestations peuvent être nécessaires, mais leurs résultats attendus diffèrent. La réception devrait permettre de retrouver la fonction financée et les conditions dans lesquelles elle a été éprouvée.
+
+## Une répétition utile produit une preuve limitée et datée
+
+Le NCSC distingue l’exercice sur table, qui examine les rôles et les décisions, de l’essai technique, qui confronte la restauration à ses difficultés pratiques. Les deux éclairent des dimensions complémentaires. Une réunion peut faire apparaître une autorité manquante ; un essai peut montrer qu’une étape dure plus longtemps que prévu. [10](#source-10)
+
+Pour une installation industrielle, cette vérification exige un périmètre autorisé, une analyse préalable des risques et des conditions d’arrêt de l’exercice. Cette analyse propose un travail documentaire : préparer les questions avec l’exploitant, les automaticiens et les responsables de la sécurité dans le circuit professionnel habilité, avec ses procédures de sûreté et de continuité.
+
+Une preuve utile précise la version testée, la fonction restaurée, les personnes et moyens effectivement présents, le temps observé et les limites rencontrées. Elle indique aussi les conditions simplificatrices de l’essai : pièces déjà sur place, environnement de test prêt ou fournisseur averti. Ces détails permettent d’évaluer ce que le résultat autorise à attendre d’une crise différente.
+
+<MachineResilienceFigure lang="fr" kind="evidence" />
+
+L’entraînement humain mérite sa propre place. Les recommandations du NCSC consacrées aux personnes prévoient des exercices et des modes de communication de remplacement lorsque les outils habituels deviennent indisponibles. [12](#source-12) La question du budget devient alors très précise : le temps nécessaire à cette préparation est-il réservé, et quelles équipes en ont réellement bénéficié ?
+
+Le meilleur contre-argument à une course aux moyens supplémentaires tient à leur complexité. Un dispositif de secours mal connu peut allonger la décision ; une modification de sécurité peut perturber le procédé ; une seconde organisation exige sa propre maintenance. L’ANSSI demande que les mesures de cybersécurité préservent le fonctionnement des modes dégradés. Le NCSC souligne, de son côté, que les décisions de confinement peuvent elles-mêmes provoquer une interruption. [9](#source-09) [13](#source-13)
+
+L’essai doit donc accepter un résultat décevant. Si une intervention supplémentaire améliore peu la fonction prioritaire, le budget peut être réorienté vers le délai, la compétence ou la dépendance qui compte davantage. Cette boucle d’apprentissage donne une valeur au test même lorsque la solution initialement envisagée perd son intérêt.
+
+## Financer la capacité, puis vérifier qu’elle existe encore
+
+À l’échelle d’une filière, la même question se pose pour les spécialistes, les pièces et les services communs. Une capacité mutualisée peut réduire le coût de préparation de chaque entreprise ; son dimensionnement doit être confronté à des demandes simultanées. Cette conclusion découle du mécanisme décrit, sans prétendre mesurer un déficit national de techniciens ou de matériel.
+
+Un acheteur peut demander comment la priorité sera décidée, quelles ressources sont réservées et quelle solution reste disponible si un fournisseur devient lui-même indisponible. Un financeur peut demander quelle amélioration a été observée et à quelles conditions. Un exploitant peut documenter le niveau d’activité qu’il sait tenir, puis la durée pendant laquelle les équipes peuvent le soutenir. Ces questions rapprochent le contrat de la fonction physique à protéger.
+
+Les sept volets de cette série examinent comment une commande atteint un équipement et comment l’installation dépend ensuite de ses équipes, de ses prestataires et de ses règles d’exploitation. Un incident y laisse des traces et des pertes. Le budget de résilience engage une capacité précise, dans un environnement précis. Sa qualité se juge au service conservé et au rétablissement démontré, avec une date de vérification et les ressources qui permettront de recommencer.
+
+<a id="modele-01"></a>
+
+### Le cas chiffré, en clair
+
+Modèle pédagogique l0g : six fonctions de site indisponibles dès l’heure zéro ; équipes mobilisées à l’heure 2 ; quatre heures par intervention complète ; travaux indépendants, équipes équivalentes, ressources matérielles prêtes, déplacements nuls. Deux équipes donnent des fins à 6, 6, 10, 10, 14 et 14 heures ; trois équipes donnent 6, 6, 6, 10, 10 et 10 heures. Sommes : 60 et 48 heures-sites. Coût supplémentaire sur cinq ans : 30 000 + 5 × 6 000 = 60 000 €. Gain par événement : 12 × 2 500 = 30 000 €. Seuil : 60 000 ÷ 30 000 = 2 événements comparables. La fréquence des attaques reste inconnue ; le seuil conserve cette incertitude.
+
+## Périmètre de l’enquête
+
+Enquête documentaire vérifiée le 3 novembre 2026. Le cas Hydro conserve les périmètres et dates des déclarations de l’entreprise de 2019 et de son bilan mis à jour en 2024. La contribution des mesures aux pertes évitées reste inconnue. Les recommandations des agences gardent leur statut et leur contexte. Le modèle, ses durées et chaque montant sont entièrement fictifs ; ses hypothèses et calculs sont exposés ci-dessus. La collecte reste hors des installations, contrats privés et audits de site.
+
+## Prolonger l’enquête
+
+- [Volet 1: les congélateurs devenus une cible](/posts/guerre-machines-01-congelateurs-cible/).
+- [Volet 2: qui commande réellement les machines ?](/posts/guerre-machines-02-qui-commande/).
+- [Volet 3: télémaintenance et accès des prestataires](/posts/guerre-machines-03-telemaintenance-prestataires/).
+- [Volet 4: sabotage industriel et attribution](/posts/guerre-machines-04-sabotage-attribution/).
+- [Volet 5: stocks perdus, assurance et trésorerie](/posts/guerre-machines-05-stocks-assurance-tresorerie/).
+- [Volet 6: règles européennes, assistance et parc installé](/posts/guerre-machines-06-europe-parc-installe-nis2-cra/).
+
+## Sources
+
+Documents vérifiés le 3 novembre 2026. Les notices précisent les passages, les dates et la portée de chaque source.
+
+<ol className="sources-list">
+<li id="source-01">
+<span className="source-meta">[1] · Norsk Hydro · 26 mars 2019 · Consulté le 3 novembre 2026</span>
+<a href="https://www.hydro.com/en/global/media/news/2019/update-on-cyber-attack-march-26/">Cyberattaque contre Hydro : point du 26 mars 2019</a>
+<p>Production annoncée de 70–80 % pour Extrusion Europe, Extrusion North America et Precision Tubing ; Building Systems presque à l’arrêt. État des autres activités et recours au manuel.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>État opérationnel : les trois unités d’Extruded Solutions ; production normale des autres activités, parfois avec davantage de travail manuel. Déclaration de l’entreprise. La base détaillée de capacité et les tonnages par site ne sont pas publiés. Le taux exclut Building Systems ; aucun pourcentage de ce dernier n’est calculé. Texte intégral de la page officielle lu directement le 3 novembre 2026.</p>
+</details>
+</li>
+<li id="source-02">
+<span className="source-meta">[2] · Norsk Hydro · 19 mars 2019 · Consulté le 3 novembre 2026</span>
+<a href="https://www.hydro.com/en/global/media/news/2019/update-hydro-subject-to-cyber-attack/">Cyberattaque contre Hydro : point du 19 mars 2019</a>
+<p>Isolement déclaré des installations et passage au manuel lorsque possible ; difficultés de connexion aux systèmes de production.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Déclaration d’ouverture et état opérationnel, notamment Extruded Solutions et Rolled Products. État déclaré le jour de l’attaque. Aucune architecture interne ou preuve causale du rendement d’une mesure n’est fournie. Texte intégral de la page officielle lu directement le 3 novembre 2026.</p>
+</details>
+</li>
+<li id="source-03">
+<span className="source-meta">[3] · Norsk Hydro · Mise à jour : 15 mai 2024 ; incident de mars 2019 · Consulté le 3 novembre 2026</span>
+<a href="https://www.hydro.com/en/global/media/on-the-agenda/cyber-attack/">Cyberattaque contre Hydro : bilan rétrospectif</a>
+<p>Estimation rétrospective d’environ 800 millions de couronnes norvégiennes et procédures manuelles intensives en travail.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Rubrique de synthèse de l’attaque : estimation du coût et date de mise à jour affichée. Estimation de l’entreprise, sans chiffrage des pertes évitées ni budget de prévention comparable. Aucun calcul net d’assurance ni conversion en euros. Texte intégral de la page officielle lu directement le 3 novembre 2026.</p>
+</details>
+</li>
+<li id="source-04">
+<span className="source-meta">[4] · NCSC, Royaume-Uni · Publié le 28 juillet 2026 ; revu le 1er octobre 2026 · Consulté le 3 novembre 2026</span>
+<a href="https://www.ncsc.gov.uk/collection/disruptive-cyber-attacks/recovering/2-recovery-ongoing-investigations">Reprise après une cyberattaque très perturbatrice : rétablissement et investigations</a>
+<p>Niveau minimum viable d’activité, organisation de la reprise et solutions temporaires à examiner et réévaluer.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>§2.1, définition du MVO ; §2.2.4, solutions de remplacement, vérification de sécurité, réconciliation des données et date de revue. Recommandations britanniques générales. Le service minimal dépend de l’organisation ; aucun débit universel ni taux de pertes évitées n’est établi. Copie HTML officielle complète reçue en HTTP 200 ; passages cités lus directement, avec les dates affichées.</p>
+</details>
+</li>
+<li id="source-05">
+<span className="source-meta">[5] · National Institute of Standards and Technology (NIST) · Publication finale de septembre 2023 · Consulté le 3 novembre 2026</span>
+<a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf">Guide de sécurité des technologies opérationnelles, NIST SP 800-82 révision 3</a>
+<p>Redondance et causes communes, sauvegardes exploitables, objectifs de reprise, moyens de reconstitution et disponibilité des pièces. Les objectifs de reprise peuvent justifier un stock lorsque les autres moyens sont insuffisants. La sûreté des personnes et de l’environnement précède le redémarrage.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Page 12 ; §6.2.4.3, pp.112–113 ; §6.2.4.5, pp.114–115 ; annexe F, CP-9 et CP-10, pp.250–251 ; SR-5(1), p.297. Pages PDF correspondantes : 29, 129–132, 267–268 et 314. Guide de recommandations, applicable volontairement aux organisations non gouvernementales. Une duplication ne démontre aucune indépendance face à une attaque. Les moyens, essais et états de reprise exigent une adaptation au procédé ; aucune durée universelle, recette de manipulation ou économie évitée n’est établie. La révision 4 reste un projet distinct. PDF officiel téléchargé (316 pages), texte des passages cités lu. Page imprimée 114 rendue et inspectée ; version et statut recoupés avec la fiche NIST actuelle.</p>
+</details>
+</li>
+<li id="source-06">
+<span className="source-meta">[6] · NIST, Computer Security Resource Center · Fiche de la publication finale de septembre 2023 ; note de planification du 21 septembre 2026 · Consulté le 3 novembre 2026</span>
+<a href="https://csrc.nist.gov/pubs/sp/800/82/r3/final">Statut officiel du guide NIST SP 800-82 révision 3</a>
+<p>La fiche distingue la révision 3 finale du projet initial de révision 4, publié le 21 septembre 2026 et ouvert aux commentaires jusqu’au 30 novembre 2026.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Date Published, Planning Note (09/21/2026) et Document History ; lien vers la fiche « Rev.4, Initial Public Draft », dont les dates ont aussi été lues. Cette source établit le statut documentaire au jour du contrôle. Le projet de révision 4 ne devient ni une version finale ni une obligation juridique par sa publication. Aucun commentaire ou changement futur n’est présumé. Fiche officielle lue directement, ainsi que la fiche du projet initial de révision 4.</p>
+</details>
+</li>
+<li id="source-07">
+<span className="source-meta">[7] · NCSC, Royaume-Uni · Publié et revu le 1er octobre 2026 · Consulté le 3 novembre 2026</span>
+<a href="https://www.ncsc.gov.uk/collection/disruptive-cyber-attacks/reducing/3-limiting-compromise-impact">Limiter l’impact d’une compromission réussie</a>
+<p>Cloisonnement, protection des sauvegardes et maîtrise des privilèges pour limiter les déplacements et dommages d’un attaquant.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>§§3.1–3.4, particulièrement le cloisonnement (§3.2) et les sauvegardes et accès d’administration (§3.4). Mécanismes recommandés, dont l’efficacité doit être vérifiée dans le contexte réel. Aucun pourcentage de réduction du risque n’est attribué. Copie HTML officielle complète reçue en HTTP 200 ; passages cités lus directement, avec les dates affichées.</p>
+</details>
+</li>
+<li id="source-08">
+<span className="source-meta">[8] · NCSC, Royaume-Uni · Publication affichée le 14 janvier 2026 ; revue affichée le 18 mars 2024 ; version 1.0 · Consulté le 3 novembre 2026</span>
+<a href="https://www.ncsc.gov.uk/collection/operational-technology/secure-connectivity/principle-8">Connectivité des systèmes industriels : principe 8, préparer un plan d’isolement</a>
+<p>Plan d’isolement lié à la continuité, essais, fonctions indépendantes lorsque possible, fournisseurs et scénarios multi-sites.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Introduction, dépendances et flux critiques multi-sites ; trois stratégies d’isolement. Recommandations à adapter aux conséquences physiques et aux engagements applicables. Les dates affichées sont incohérentes dans leur ordre ; aucune correction ou nouvelle chronologie n’en est déduite. Copie HTML officielle complète reçue en HTTP 200 ; passages cités lus directement, avec les dates affichées.</p>
+</details>
+</li>
+<li id="source-09">
+<span className="source-meta">[9] · ANSSI, République française · Version 2.0 du 27 novembre 2025, ANSSI-PA-108 · Consulté le 3 novembre 2026</span>
+<a href="https://messervices.cyber.gouv.fr/documents-guides/Guide_Systemes_industriels__Mesures_detaillees_v2.pdf">La cybersécurité des systèmes industriels : mesures détaillées, version 2.0</a>
+<p>Sauvegardes et essais de restauration, compétences, plans de continuité, priorités de reconstruction multi-sites et préservation des modes dégradés. R8–R11, R15, R73–R74, R76–R77 portent le niveau C1 ; R75 et R82 portent C2.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Avertissement, p.1 ; conventions et grille C1–C4, p.6 ; R8–R11, p.30 ; R15, p.32 ; R73–R75, p.49 ; R76–R77, p.50 ; R82, p.51. Sauf disposition réglementaire contraire, recommandations sans caractère normatif, à adapter et valider avant mise en œuvre. C1 concerne les classes 1 à 4 ; C2 les classes 2 à 4. La fréquence annuelle de R75/R82 ne constitue pas une obligation générale pour toute installation. La criticité et la sécurité des biens et personnes priment sur l’ordre fictif de l’article. PDF officiel actuel téléchargé (124 pages), passages cités extraits et lus. Pages imprimées 49–50 rendues et inspectées, confirmant les libellés et niveaux C1/C2.</p>
+</details>
+</li>
+<li id="source-10">
+<span className="source-meta">[10] · NCSC, Royaume-Uni · Publié et revu le 1er octobre 2026 · Consulté le 3 novembre 2026</span>
+<a href="https://www.ncsc.gov.uk/collection/disruptive-cyber-attacks/preparing/1-prepare-business-continuity">Préparer la continuité de l’activité</a>
+<p>Services prioritaires, dépendances des partenaires, indisponibilité soudaine d’un fournisseur et exercices de continuité.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>§§1.1–1.4 : services et dépendances ; partenaires et fournisseurs ; reconstruction ; distinction entre exercice sur table et essai technique. Recommandations générales, sans durée garantie de reprise ni garantie de disponibilité d’un fournisseur. Les exercices sur table et les essais techniques répondent à des objectifs différents. Copie HTML officielle complète reçue en HTTP 200 ; passages cités lus directement, avec les dates affichées.</p>
+</details>
+</li>
+<li id="source-11">
+<span className="source-meta">[11] · NCSC, Royaume-Uni · Publié et revu le 1er octobre 2026 · Consulté le 3 novembre 2026</span>
+<a href="https://www.ncsc.gov.uk/collection/disruptive-cyber-attacks/preparing/3-prepare-technical-recovery">Préparer les moyens techniques du rétablissement</a>
+<p>Documents accessibles hors des systèmes principaux, sauvegardes et restaurations testées, dépendances et périmètres des prestataires de réponse et de reconstruction.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>§§3.1–3.4 ; §3.6 pour l’OT ; §3.7 pour les compétences et responsabilités des prestataires. Le guide demande de préciser les missions : un prestataire de réponse à incident peut avoir un périmètre différent de la reconstruction. Il n’impose pas deux équipes distinctes et ne prouve aucune capacité contractuelle de victime. Copie HTML officielle complète reçue en HTTP 200 ; passages cités lus directement, avec les dates affichées.</p>
+</details>
+</li>
+<li id="source-12">
+<span className="source-meta">[12] · NCSC, Royaume-Uni · Publié et revu le 1er octobre 2026 · Consulté le 3 novembre 2026</span>
+<a href="https://www.ncsc.gov.uk/collection/disruptive-cyber-attacks/preparing/2-prepare-your-people">Préparer les personnes à une crise cyber majeure</a>
+<p>Exercices impliquant les équipes techniques et métiers, communication de remplacement, délégation des décisions et capacité humaine.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>§§2.1–2.3 ; §§2.4–2.6 pour l’endurance, les compétences et l’appui extérieur. Recommandations de préparation humaine ; aucun effectif, délai mobilisable ou gain d’efficacité universel n’est chiffré. Copie HTML officielle complète reçue en HTTP 200 ; passages cités lus directement, avec les dates affichées.</p>
+</details>
+</li>
+<li id="source-13">
+<span className="source-meta">[13] · NCSC, Royaume-Uni · Publié et revu le 1er octobre 2026 · Consulté le 3 novembre 2026</span>
+<a href="https://www.ncsc.gov.uk/collection/disruptive-cyber-attacks/preparing/4-prepare-critical-decisions">Préparer les décisions critiques</a>
+<p>Autorité de décision, principes établis à l’avance et arbitrage sur les conséquences d’un confinement préventif.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Introduction et §4.1, décision de confinement et interruption que cette action peut elle-même provoquer. Recommandation générale, soumise au contexte, aux obligations et à l’appétence au risque. Aucun ordre de coupure ni seuil de sûreté applicable à une installation n’est fourni. Copie HTML officielle complète reçue en HTTP 200 ; passages cités lus directement, avec les dates affichées.</p>
+</details>
+</li>
+</ol>
