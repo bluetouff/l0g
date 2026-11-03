@@ -1,0 +1,38 @@
+---
+import { machines06FigureMeta } from '../lib/machines06-figures.mjs';
+interface Props { kind: 'stock' | 'scope' | 'transition' | 'support' | 'deployment'; lang: 'fr' | 'en'; }
+const { kind, lang } = Astro.props;
+const { caption, method, sources, number } = machines06FigureMeta(lang, kind);
+const modules = import.meta.glob('../figures/machine-rules-06/*.svg', { query: '?raw', import: 'default', eager: true });
+const key = `../figures/machine-rules-06/${kind}.${lang}`;
+const desktop = modules[`${key}.desktop.svg`], mobile = modules[`${key}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing reviewed machines06 figure');
+---
+<figure class="machine-rules-figure" id={`figure-${number}`} data-kind={kind}>
+  <div class="figure-wide" set:html={desktop} />
+  <div class="figure-narrow" set:html={mobile} />
+  <figcaption><strong>FIG. {number}</strong> {caption}
+    <span class="figure-cites">{sources.map((ref: string, index: number) => <Fragment>{index > 0 ? ', ' : ''}<a href={`#source-${ref}`}>[{Number(ref)}]</a></Fragment>)}</span>
+  </figcaption>
+  <details><summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary><p>{method}</p></details>
+  <slot />
+</figure>
+<style>
+  @font-face { font-family: 'l0g Machine Rules'; src: url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'l0g Machine Rules'; src: url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype'); font-style: normal; font-weight: 700; font-display: swap; }
+  .machine-rules-figure { max-width: 48rem; width: 100%; margin: 2.5rem auto; padding-bottom: 1rem; overflow: visible; container-type: inline-size; }
+  .machine-rules-figure :global(svg) { width: 100%; max-width: 100%; height: auto; display: block; letter-spacing: normal; overflow: visible; }
+  .figure-wide { display: block; width: 100%; }
+  .figure-narrow { display: none; width: 100%; max-width: 310px; margin-inline: auto; }
+  figcaption { color: var(--color-muted); font-size: .9rem; line-height: 1.7; margin: 1rem 0 .65rem; }
+  figcaption strong { margin-right: .6rem; }
+  .figure-cites { display: block; margin: .4rem 0; }
+  .figure-cites a { margin-right: .75rem; }
+  .machine-rules-figure :global(details) { font-size: .875rem; line-height: 1.7; }
+  .machine-rules-figure :global(summary) { cursor: pointer; padding: .35rem 0; }
+  .machine-rules-figure :global(details p) { margin: .7rem 0; }
+  .machine-rules-figure :global(summary:focus-visible) { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  @container (max-width: 500px) { .figure-wide { display: none; } .figure-narrow { display: block; } }
+  @media print { .machine-rules-figure { break-inside: avoid; } .figure-wide { display: block; } .figure-narrow { display: none; } }
+  :global(article:has(.machine-rules-figure) .post-title) { hyphens: none; word-break: normal; overflow-wrap: normal; }
+</style>

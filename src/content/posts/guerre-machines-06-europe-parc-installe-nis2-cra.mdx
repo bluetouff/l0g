@@ -1,0 +1,216 @@
+---
+title: "Machines connectées : l’Europe face au parc installé"
+seoTitle: "NIS2, CRA : qui sécurise les machines déjà installées ? | l0g"
+description: "Produits anciens, assistance, correctifs et contrôles : enquête sur les règles européennes des machines connectées et le chantier français de NIS2."
+tags: ["Enquête", "Cybersécurité", "Industrie", "NIS2", "Cyber Resilience Act"]
+quickTake: {"fact": "Selon la FAQ non contraignante des services de la Commission, des unités déjà mises sur le marché peuvent encore être vendues après la fin de leur assistance.", "importance": "La date d’assistance, la disponibilité des correctifs et le travail de déploiement doivent être reliés dans le dossier d’achat et d’exploitation.", "uncertainty": "La transposition française est encore annoncée en cours par l’ANSSI ; la collecte ne mesure aucun coût de site ni effet causal sur les incidents."}
+pubDate: "2026-11-03T22:23:31+01:00"
+updatedDate: "2026-11-03T22:23:31+01:00"
+draft: false
+ogImage: "/illustrations/news/machine-rules-06-v1.jpg"
+---
+
+import MachineRulesFigure from '../../components/MachineRulesFigure.astro';
+
+<p><strong>La guerre contre les machines ordinaires · Volet 6/7</strong></p>
+
+<p class="standfirst">Une machine peut attendre chez son distributeur pendant que son assistance expire. En suivant la date de mise sur le marché, les mises à jour et leur déploiement, les textes européens révèlent le travail qui reste à organiser dans les installations.</p>
+
+Dans une foire aux questions rédigée par les services de la Commission européenne sur le [Cyber Resilience Act](/glossaire/cra/) (CRA), règlement sur la cybersécurité des produits numériques, un exemple décrit un fabricant qui met des appareils sur le marché en janvier 2028, avec une assistance de cinq ans. Janvier 2033 arrive ; le distributeur possède encore une partie du stock. Il peut continuer à vendre ces unités après l’expiration de leur assistance. Cette illustration administrative, non contraignante, porte sur un cas futur. Elle expose la lecture des services de la Commission, sans décrire de vente observée. Elle suffit pourtant à déplacer le regard : un appareil encore emballé peut avoir déjà consommé toute la durée pendant laquelle son fabricant devait traiter ses vulnérabilités. [1](#source-01)
+
+La règle distingue la **mise sur le marché**, première mise à disposition d’une unité dans l’Union, des ventes qui suivent. Le CRA prévoit par ailleurs que la fin d’assistance, avec au moins le mois et l’année, soit clairement accessible lors de l’achat. La question utile pour un acheteur devient donc très précise : jusqu’à quelle date le fournisseur s’engage-t-il à traiter les failles de cette référence, et que restera-t-il de cet engagement le jour de l’installation ? Les dispositions générales correspondantes s’appliqueront à partir du 11 décembre 2027. [2](#source-02)
+
+Après les [accès de télémaintenance](/posts/guerre-machines-03-telemaintenance-prestataires/) et [les marchandises perdues](/posts/guerre-machines-05-stocks-assurance-tresorerie/), ce sixième volet examine la réponse réglementaire européenne. Deux textes organisent une partie du travail : le CRA encadre les produits numériques concernés et leurs fabricants ; la [directive NIS2](/glossaire/nis2/) vise la gestion du risque chez les organisations qui entrent dans son périmètre. Leur rencontre se joue dans les installations, avec des machines d’âges différents, des contrats de maintenance et une production à préserver. [2](#source-02) [4](#source-04)
+
+<MachineRulesFigure lang="fr" kind="stock" />
+
+## Le froid circule à travers plusieurs périmètres juridiques
+
+Une chaîne alimentaire permet de comprendre la distinction. Le fabricant vend un contrôleur connecté ; un intégrateur l’incorpore à une installation ; un industriel l’utilise pour transformer des denrées ; un grossiste et un magasin emploient d’autres équipements pour conserver les produits. Le dessin est générique. Les textes examinent, à chaque étape, tantôt un produit et sa mise à disposition, tantôt une personne morale, ses activités et sa taille. Une même entreprise peut relever des deux approches. [2](#source-02) [4](#source-04)
+
+Le CRA concerne, sous les conditions et exclusions de son champ, les produits comportant des éléments numériques dont l’utilisation prévue ou raisonnablement prévisible implique une connexion logique ou physique à un appareil ou à un réseau. Une liaison industrielle interne peut donc compter. L’exposition directe sur Internet reste une question de risque, tandis que l’appartenance au champ du règlement obéit à cette définition plus large. La qualification du contrôleur, de son logiciel et d’un ensemble intégré demande ensuite d’identifier les produits effectivement fournis. [2](#source-02)
+
+Pour NIS2, la rubrique alimentaire de l’annexe II vise les entreprises engagées dans la distribution en gros, la production industrielle ou la transformation industrielle. La FAQ française précise que ces activités sont des critères non cumulatifs. Les critères de taille et les autres règles de qualification s’ajoutent à cette première lecture. Un magasin de détail équipé de congélateurs ne devient donc pas, pour cette seule raison, une entité NIS2 au titre de cette rubrique. Il faut regarder ses activités réelles, la personne morale concernée, ses liens d’entreprise et les éventuelles autres voies d’assujettissement. [4](#source-04) [6](#source-06)
+
+Cette frontière a une conséquence économique : une entreprise directement visée peut demander des preuves à un fournisseur qui relève d’un autre régime. L’article 21 de NIS2 inclut la sécurité des relations avec les fournisseurs directs et prestataires. Une exigence peut ainsi descendre dans le contrat, avec un responsable, une prestation et un coût à convenir. Cela ne transforme pas automatiquement chaque frigoriste en prestataire de services informatiques gérés : cette catégorie possède sa propre définition, fondée sur le service fourni. [4](#source-04)
+
+La distinction entre entité essentielle et entité importante mérite la même précision. Dans le cadre européen, une grande entreprise relevant uniquement d’une activité de l’annexe II n’accède pas à la première catégorie du seul fait de sa taille. D’autres critères, notamment certaines identifications nationales, peuvent changer son classement. Ces mots déterminent des modalités de contrôle ; leur emploi exige davantage que le nom d’une enseigne ou le nombre de ses magasins. [4](#source-04)
+
+<MachineRulesFigure lang="fr" kind="scope" />
+
+## Signalements dès 2026, exigences générales en 2027
+
+Depuis le **11 septembre 2026**, les fabricants concernés doivent notifier les vulnérabilités activement exploitées et les incidents graves affectant la sécurité de leurs produits, dans les conditions de l’article 14 du CRA. Les obligations générales de conception, de traitement des vulnérabilités et d’assistance arrivent le **11 décembre 2027**. Une troisième échéance, le 11 juin 2026, concernait le chapitre sur les organismes d’évaluation de la conformité. Ces dates désignent des obligations différentes. [2](#source-02) [3](#source-03)
+
+Le mécanisme d’alerte a son utilité immédiate : une information acquise par le fabricant doit rejoindre les destinataires prévus, même lorsque la réparation complète prendra davantage de temps. l0g a déjà consacré une enquête au [circuit européen de ces notifications](/posts/cyber-resilience-act-circuit-alerte/). Pour le parc installé, le point décisif est ailleurs : l’article 69 étend l’obligation de notification aux produits concernés mis sur le marché avant décembre 2027, tout en leur accordant un régime transitoire pour les autres exigences. [2](#source-02) [3](#source-03)
+
+Un produit ancien entre dans ces exigences lorsqu’il subit, à partir du 11 décembre 2027, une **modification substantielle** au sens du règlement. La qualification repose sur l’effet du changement sur la conformité aux exigences essentielles ou sur l’utilisation prévue. Le considérant 39 distingue les mises à jour de sécurité qui réduisent le risque sans modifier cette utilisation. Une intervention de maintenance doit donc être décrite avant de recevoir une étiquette juridique. [2](#source-02)
+
+La responsabilité suit elle aussi des conditions précises. Les articles 21 et 22 traitent des importateurs, distributeurs et autres personnes qui prennent la qualité de fabricant. Pour cette dernière catégorie, l’article 22 vise une modification substantielle accompagnée d’une mise à disposition du produit sur le marché. Déduire de tout changement effectué sur site que le technicien devient fabricant effacerait une partie du texte. L’enjeu pratique consiste à qualifier le changement et la circulation commerciale du produit, avec les personnes habilitées. [2](#source-02)
+
+Le calendrier français de NIS2 suit une autre logique. Au **3 novembre 2026**, la page de l’ANSSI, l’agence française de cybersécurité, consultée indique que la transposition est en cours et invite les futures entités à préparer leur sécurité en attendant l’ensemble des textes. Le 27 octobre, le ministre Roland Lescure confirmait à l’Assemblée le retrait du projet de l’ordre du jour de début octobre et souhaitait sa reprise. La date limite européenne de transposition était le 17 octobre 2024. Cette échéance passée et les obligations françaises effectivement entrées en application doivent être examinées séparément. Dans cet article, les prescriptions de NIS2 sont présentées comme le cadre européen à transposer, et les documents préparatoires français conservent leur statut. [4](#source-04) [5](#source-05) [10](#source-10)
+
+Le signalement du fabricant et celui de l’exploitant répondent aussi à des critères différents. L’article 23 de NIS2 concerne les incidents ayant un impact important sur la fourniture des services de l’entité. Un même événement peut ainsi appeler plusieurs qualifications et circuits d’information. Le contrat de maintenance gagne à préciser qui transmet les éléments utiles à chacun, tout en conservant la responsabilité propre de chaque acteur. [2](#source-02) [4](#source-04)
+
+<MachineRulesFigure lang="fr" kind="transition" />
+
+## L’assistance devient une caractéristique du produit
+
+Le texte européen fait de la [durée d’assistance](/glossaire/periode-d-assistance/) un choix à justifier. L’article 13 impose de prendre en compte l’usage attendu, les attentes raisonnables des utilisateurs, la nature du produit et d’autres facteurs, selon une logique de proportionnalité. Le plancher est de cinq ans, sauf lorsque l’usage attendu est plus court. Les équipements destinés à fonctionner longtemps appellent donc un examen de durée qui dépasse le seul affichage de ce minimum. La documentation technique doit conserver les éléments utilisés pour le déterminer. [2](#source-02)
+
+Pour l’acheteur, cette information peut entrer dans la comparaison des offres. Deux contrôleurs au même prix, avec des fonctions semblables, peuvent présenter des horizons de maintenance différents. Une assistance arrivant plus tôt à son terme avance la date à laquelle il faudra réévaluer l’exposition, rechercher une solution de remplacement ou organiser des protections adaptées. C’est une conséquence économique de la durée contractuelle et réglementaire, dont le montant dépend du site ; cette collecte ne permet pas de la chiffrer.
+
+Un second délai apparaît à l’article 13, paragraphe 9. Chaque mise à jour de sécurité diffusée pendant l’assistance doit rester disponible au moins **dix ans après son émission**, ou pendant le reste de l’assistance si cette période est plus longue. Le fabricant doit donc conserver l’accès à une correction déjà produite au-delà, parfois, de la période où il traite les nouvelles vulnérabilités du produit. [2](#source-02)
+
+Prenons une illustration distincte de celle de la FAQ : l’assistance d’un produit va de janvier 2028 à janvier 2036 ; un correctif paraît en janvier 2035. La règle impose que ce correctif reste accessible au moins jusqu’en janvier 2045. Toutes ces dates sont fictives. Elles montrent comment le délai fonctionne : consulter encore un fichier en 2040 renseigne sur sa disponibilité, tandis que la prise en charge d’une nouvelle faille dépend de l’assistance et des engagements applicables. [2](#source-02)
+
+Cette distinction intéresse directement les achats de pièces de remplacement et les rénovations. La référence commerciale seule raconte peu de choses sur la durée restante. Le dossier d’achat gagne à relier l’unité ou le lot livré, sa première mise sur le marché, sa date de fin d’assistance et les versions compatibles avec l’installation. Ce rapprochement documentaire est notre proposition d’analyse ; sa mise en œuvre doit respecter les procédures et la confidentialité de chaque entreprise.
+
+<MachineRulesFigure lang="fr" kind="support" />
+
+## Le correctif doit encore traverser l’usine
+
+Le CRA organise une amélioration en amont. L’évaluation des risques doit nourrir la conception et la maintenance ; les exigences couvrent notamment la configuration sécurisée, la maîtrise des accès et l’intégrité des informations utiles au fonctionnement. Le fabricant doit aussi gérer les vulnérabilités des composants qu’il intègre. À partir de l’application des dispositions correspondantes, le produit arrive ainsi avec un ensemble d’engagements documentés que l’acheteur peut examiner. [2](#source-02)
+
+Le marquage CE se situe dans cette chaîne de conformité. L’article 32 prévoit plusieurs voies d’évaluation, dont le contrôle interne pour les produits qui peuvent y recourir. Il serait donc excessif d’y lire la preuve d’un audit indépendant systématique de chaque appareil. Les procédures dépendent de la catégorie et des conditions prévues. Un « produit important » au sens du CRA et une « entité importante » au sens de NIS2 appartiennent d’ailleurs à deux classements distincts. [2](#source-02) [4](#source-04)
+
+L’étape suivante se déroule chez l’exploitant. Mettre à jour un contrôleur peut mobiliser la vérification de compatibilité, la préparation d’un retour à la version précédente et la réservation d’une fenêtre d’intervention. Ces opérations doivent préserver les fonctions physiques attendues. Le ReCyF, référentiel proposé par l’ANSSI pour préparer NIS2, les rend visibles : sa version 2.5, mise à disposition le **17 mars 2026**, cite les environnements de test, la préparation du déploiement et les mécanismes de retour arrière. [7](#source-07) [8](#source-08)
+
+Le statut du document compte. Au stade consulté, il s’agit d’un **document de travail** proposant des moyens de conformité. Certaines lignes concernent les entités essentielles et importantes ; d’autres visent seulement les essentielles. Présenter l’ensemble comme une liste de prescriptions françaises déjà opposables conduirait à perdre ces deux nuances. Il fournit néanmoins une lecture utile du travail que suppose un correctif industriel. [7](#source-07) [8](#source-08)
+
+Le même référentiel envisage les contraintes techniques ou opérationnelles qui empêchent d’installer une correction. Il propose alors des mesures d’atténuation adaptées, par exemple sur l’isolement d’une ressource ou le contrôle de ses accès. Ces choix demandent une étude du procédé : couper une liaison peut aussi supprimer une alarme ou une fonction de maintenance nécessaire. La mesure retenue doit être éprouvée par les équipes habilitées dans le cadre de continuité de l’exploitation. L’article ne prescrit aucune manipulation d’installation. [7](#source-07)
+
+Une façon raisonnable de documenter ce compromis consiste à garder la trace de la contrainte, du risque réduit, des fonctions préservées et de la prochaine réévaluation. Une échéance de migration peut compléter ce dossier lorsque le maintien d’une version ancienne engage durablement l’entreprise. Il s’agit ici d’une méthode proposée, éclairée par la gestion du risque de NIS2 et le ReCyF, sans inventer un délai légal uniforme. [4](#source-04) [7](#source-07)
+
+<MachineRulesFigure lang="fr" kind="deployment" />
+
+## La gratuité du fichier laisse du travail à financer
+
+L’annexe I du CRA prévoit en principe la diffusion gratuite et sans retard des mises à jour de sécurité, avec une exception lorsqu’un fabricant et un utilisateur professionnel ont explicitement convenu d’autres conditions pour un produit sur mesure. Cette règle porte sur la fourniture de la mise à jour. Le temps nécessaire à son intégration dans une installation appelle un budget et une répartition des tâches. [2](#source-02)
+
+Cette séparation aide à lire les devis. Le fabricant peut produire la correction ; l’intégrateur prépare sa compatibilité avec l’ensemble ; l’exploitant organise l’intervention et vérifie le service rendu. La répartition exacte relève des engagements applicables, et plusieurs rôles peuvent être réunis dans la même entreprise. Le dossier public ne contient aucun contrat ni facture permettant de chiffrer ce travail sur un site frigorifique attaqué. Il permet en revanche d’identifier ce qu’un devis devrait décrire : périmètre couvert, livrable, hypothèses d’arrêt, validation et conditions de reprise.
+
+L’enquête de l’Agence de l’Union européenne pour la cybersécurité, l’ENISA, situe les budgets de grandes organisations. Dans *NIS Investments 2025*, publié le 8 décembre 2025, l’ENISA présente pour **2024 une médiane de 9 %** du ratio entre dépenses de cybersécurité et dépenses informatiques. L’enquête réunit 1 080 professionnels de secteurs hautement critiques ; 83 % des organisations de l’échantillon sont grandes. Le terrain, mené de mai à août 2025, privilégie les grandes organisations. Cette médiane porte sur les ratios des répondants ; la transposer à un magasin ou lui attribuer un effet causal de NIS2 dépasserait la portée de l’enquête. [9](#source-09)
+
+Le coût marginal d’une mise en conformité dépend en effet de l’existant. Une entreprise qui sait déjà inventorier ses équipements, recevoir les avis, tester ses corrections et conserver les décisions dispose d’une partie des moyens utiles. Une autre doit construire ce fonctionnement. Le même achat logiciel peut donc recouvrir des situations très différentes. Cette analyse décrit les postes de travail induits par les exigences ; elle ne mesure aucun effet causal de la réglementation sur les budgets.
+
+L’article 21 de NIS2 demande d’ailleurs des mesures appropriées et proportionnées, en tenant compte du coût de leur mise en œuvre, de l’exposition et de la gravité des conséquences. La direction doit approuver et superviser la gestion du risque. L’arbitrage entre renouvellement, protections complémentaires et maintien temporaire devient ainsi une décision d’exploitation documentée, au-delà de la seule livraison d’un logiciel. [4](#source-04)
+
+## Du dossier de conformité au contrôle réel
+
+Les pouvoirs de surveillance prévus par NIS2 donnent à cette documentation une destination concrète. Pour les entités essentielles, l’article 32 prévoit notamment des inspections et des audits réguliers ou ciblés. Pour les entités importantes, l’article 33 organise un contrôle *ex post* lorsque l’autorité reçoit des éléments laissant penser à un manquement. Cette expression concerne le mode de surveillance : une attaque préalable n’est pas nécessaire pour qu’un indice de non-conformité soit examiné. Les modalités nationales restent à lire dans les textes applicables. [4](#source-04)
+
+Le contrôle produit du CRA suit une autre voie. Les autorités de surveillance du marché peuvent demander des corrections et, selon les conditions du dossier, restreindre la mise à disposition, imposer un retrait ou un rappel. L’évaluation du produit et l’examen de son exploitation se complètent donc sans se substituer l’un à l’autre. Un fabricant peut apporter une correction documentée ; l’exploitant doit encore savoir sur quelles unités elle est installée et quelles contraintes subsistent. [2](#source-02) [4](#source-04)
+
+Le meilleur argument en faveur du dispositif tient à cette continuité : faire apparaître la sécurité avant l’achat, organiser le traitement des vulnérabilités dans la durée et donner aux autorités des preuves à demander. Sa portée sur le parc existant dépendra toutefois des trajectoires de renouvellement, de la qualité des contrats et des moyens réellement consacrés aux contrôles. Les sources réunies établissent les mécanismes prévus ; elles ne permettent pas de mesurer aujourd’hui les dommages qu’ils éviteront.
+
+Pour une installation, la première avancée est déjà vérifiable : retrouver une date d’assistance, un interlocuteur capable de corriger, une procédure de déploiement et une décision explicite pour les équipements qui restent en dehors de ce circuit. La réglementation modifie les engagements attendus. Le travail industriel consiste à les faire tenir ensemble pendant que les machines continuent de tourner.
+
+## Périmètre de l’enquête
+
+Enquête documentaire vérifiée le 3 novembre 2026. Les cas datés de 2028 à 2045 sont des illustrations explicites. La FAQ des services de la Commission et le ReCyF gardent leur statut non contraignant. L’état français est attribué aux documents administratifs et parlementaires consultés ; le recoupement du Journal officiel reste partiel. Les contrats privés, audits de site et coûts individuels restent hors du corpus.
+
+## Prolonger l’enquête
+
+- [Volet 1: les congélateurs devenus une cible](/posts/guerre-machines-01-congelateurs-cible/).
+- [Volet 2: qui commande réellement les machines ?](/posts/guerre-machines-02-qui-commande/).
+- [Volet 3: télémaintenance et accès des prestataires](/posts/guerre-machines-03-telemaintenance-prestataires/).
+- [Volet 4: sabotage industriel et attribution](/posts/guerre-machines-04-sabotage-attribution/).
+- [Volet 5: stocks perdus, assurance et trésorerie](/posts/guerre-machines-05-stocks-assurance-tresorerie/).
+
+## Sources
+
+Documents vérifiés le 3 novembre 2026. Les notices précisent les passages, le statut et les limites des sources.
+
+<ol className="sources-list">
+<li id="source-01">
+<span className="source-meta">[1] · Services de la Commission européenne · Version 1.4 du 4 septembre 2026 · Consulté le 3 novembre 2026</span>
+<a href="https://ec.europa.eu/newsroom/dae/redirection/document/123307">FAQ sur la mise en œuvre du règlement sur la cyberrésilience, version 1.4</a>
+<p>Lecture administrative de la période d’assistance et du stock restant : l’exemple concerne des unités mises sur le marché en janvier 2028, suivies jusqu’en janvier 2033, puis revendues après cette échéance. De nouvelles unités mises sur le marché demandent leur propre période.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Avertissement introductif et tableau de versions, p.1 ; §4.5.1–4.5.3, pp.48–51, notamment l’exemple de revente p.51 ; transition §1.4, p.10. Document vivant préparé par les services, sans position officielle ni interprétation juridiquement contraignante de la Commission. Le cas est fictif. Cinq ans constitue son hypothèse, sans fixer une durée appropriée pour tout équipement industriel. Markdown officiel téléchargé et lu ; PDF original officiel de 66 pages également téléchargé et extrait. Pages 50–51 rendues et inspectées, avec recoupement de l’exemple et de ses réserves.</p>
+</details>
+</li>
+<li id="source-02">
+<span className="source-meta">[2] · Parlement européen et Conseil de l’Union européenne · Adopté le 23 octobre 2024 ; publié au Journal officiel le 20 novembre 2024 ; rectificatifs examinés · Consulté le 3 novembre 2026</span>
+<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX%3A32024R2847">Règlement (UE) 2024/2847 sur la cyberrésilience</a>
+<p>Champ et définitions, assistance justifiée, disponibilité des mises à jour, notification, modification substantielle, évaluation de conformité, surveillance et transition. Article 14 applicable depuis le 11 septembre 2026 ; chapitre IV depuis le 11 juin 2026 ; application générale le 11 décembre 2027.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Articles 2–3,7,13(8),(9),(12),(19),14,21–22,32,52–56,69–71 ; annexe I ; considérants 39 et 60. PDF original anglais : pp.9–10,15,28–32,35–40,44–45,49–50,57–60,66–69. Rectificatif du 2 juillet 2025 : art 69(3) français. Une unité déjà mise sur le marché se distingue d’une nouvelle unité du même modèle. La modification et la mise à disposition sont deux conditions de l’article 22 pour les autres personnes. La durée de cinq ans comporte des conditions ; l’accès au correctif reste distinct du traitement de nouvelles failles et de son déploiement. Aucun cas individuel n’est tranché. Passages cités du PDF anglais officiel lus via EUR-Lex. HTML direct bloqué par un contrôle 202 ; aucune lecture HTML bilingue intégrale revendiquée. Consolidation française et rectificatif du 2 juillet 2025 recoupés dans le texte officiel indexé : « avant le 11 décembre 2027 ». Rectificatif du 17 octobre 2025 et modification sectorielle 2025/327 à effet au 26 mars 2027 vérifiés pour leur portée.</p>
+</details>
+</li>
+<li id="source-03">
+<span className="source-meta">[3] · Commission européenne, direction générale des réseaux de communication, du contenu et des technologies · Page mise à jour le 11 septembre 2026 · Consulté le 3 novembre 2026</span>
+<a href="https://digital-strategy.ec.europa.eu/en/policies/cra-reporting">Règlement sur la cyberrésilience : obligations de notification</a>
+<p>Début des obligations des fabricants le 11 septembre 2026, vulnérabilités activement exploitées et incidents graves affectant la sécurité des produits concernés, information des destinataires et plateforme unique.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Ouverture ; rubriques sur les règles principales, les destinataires et la plateforme ; distinction avec les intendants de logiciels ouverts, soumis à l’article 24(3) à partir du 11 décembre 2027. Page explicative : le règlement conserve l’autorité normative. Les déclencheurs de notification demandent leurs conditions propres. Une notification ne démontre ni correction complète ni installation d’une mise à jour sur un site. Page HTML officielle lue ; date de dernière mise à jour explicitement affichée et vérifiée.</p>
+</details>
+</li>
+<li id="source-04">
+<span className="source-meta">[4] · Union européenne / EUR-Lex · 14 décembre 2022 ; publication le 27 décembre 2022 ; rectificatif du 22 décembre 2023 · Consulté le 3 novembre 2026</span>
+<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:02022L2555-20221227">Directive (UE) 2022/2555, NIS2</a>
+<p>Champ, catégories d’entités, gouvernance, fournisseurs, proportionnalité, notification et supervision.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Articles 2–3, 6(39), 20–21, 23, 31–34 et 41 ; annexe II, points 4–5. Consolidation documentaire 02022L2555-20221227 ; les mesures françaises applicables demandent une vérification nationale distincte. PDF officiel lu via l’outil web pour les passages cités ; récupération HTTPS locale bloquée par une vérification JavaScript.</p>
+</details>
+</li>
+<li id="source-05">
+<span className="source-meta">[5] · ANSSI · Page non datée · Consulté le 3 novembre 2026</span>
+<a href="https://messervices.cyber.gouv.fr/nis2">NIS 2, MesServicesCyber</a>
+<p>État annoncé de la préparation française : transposition en cours, pré-enregistrement et version de travail du ReCyF.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Introduction, gestion des risques cyber et présentation du ReCyF. Information administrative vivante ; ses seuils simplifiés ne remplacent pas les articles 2–3 ni les textes nationaux applicables. Page officielle lue directement le 3 novembre 2026 ; copie HTML reçue en HTTP 200.</p>
+</details>
+</li>
+<li id="source-06">
+<span className="source-meta">[6] · ANSSI / MonEspaceNIS2 · Mise à jour du 13 mars 2025 · Consulté le 3 novembre 2026</span>
+<a href="https://aide.monespacenis2.cyber.gouv.fr/fr/article/quelles-sont-les-entites-concernees-par-le-secteur-production-transformation-et-distribution-des-denrees-alimentaires-de-la-directive-13q2urw/">FAQ NIS2, production, transformation et distribution des denrées alimentaires</a>
+<p>Distribution en gros, production industrielle ou transformation industrielle : activités non cumulatives, avec les autres critères d’assujettissement.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Réponse sur l’annexe II.4 et avertissement juridique final. La FAQ déclare être dépourvue de force juridique ; elle annonce une définition nationale par décret et conserve les conditions de taille. Texte de la page officielle lu dans la copie HTML reçue en HTTP 200.</p>
+</details>
+</li>
+<li id="source-07">
+<span className="source-meta">[7] · ANSSI · Version du 17 mars 2026 ; mise à disposition annoncée le 17 mars 2026 · Consulté le 3 novembre 2026</span>
+<a href="https://messervices.cyber.gouv.fr/documents-ressources/20260317_NIS_V2_ReCyF_v2.5.pdf">ReCyF, Référentiel Cyber France, version 2.5</a>
+<p>Contrats de prestataires, préparation et déploiement des correctifs, retour arrière et atténuation des contraintes techniques ou opérationnelles.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Pages imprimées 1, 3, 11 et 14 ; objectif 3 et moyens 5.B.4–5.B.9. Document de travail. Les moyens proposés, leur statut et leur distinction entre entités importantes et essentielles doivent rester explicites. PDF officiel téléchargé par deux liens ANSSI identiques ; pages 1, 3, 11 et 14 extraites, rendues et inspectées.</p>
+</details>
+</li>
+<li id="source-08">
+<span className="source-meta">[8] · ANSSI · Page non datée · Consulté le 3 novembre 2026</span>
+<a href="https://cyber.gouv.fr/reglementation/cybersecurite-systemes-dinformation/directives-nis-nis2-et-dispositif-saiv/directive-nis-2/">La directive NIS 2</a>
+<p>Mise à disposition du ReCyF depuis le 17 mars 2026 et statut préparatoire, par défaut non obligatoire, des moyens de conformité proposés.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Paragraphes consacrés au ReCyF et au projet de loi Résilience. Cette présentation administrative ne démontre pas, à elle seule, l’intégralité du droit national en vigueur. Texte officiel lu directement via l’outil web ; le téléchargement local renvoie une page de vérification technique.</p>
+</details>
+</li>
+<li id="source-09">
+<span className="source-meta">[9] · ENISA · 8 décembre 2025 · Consulté le 3 novembre 2026</span>
+<a href="https://www.enisa.europa.eu/sites/default/files/2026-02/NIS%20Investments%202025%20-%20Main%20report.pdf">NIS Investments 2025, rapport principal</a>
+<p>Pour 2024, médiane du ratio dépenses cyber/informatiques de 9 %. Enquête menée de mai à août 2025 auprès de 1 080 professionnels ; 83 % de grandes organisations.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Figure 3, page 10 ; profils et méthode, pages 34–35 et 37. Échantillon volontaire stratifié des secteurs hautement critiques de l’annexe I, privilégiant les grandes organisations, sans pondération par taille des marchés ; aucun coût causal de NIS2 ou devis de magasin établi. PDF actuel lié depuis le catalogue ENISA téléchargé ; pages 10, 34, 35 et 37 extraites, rendues et inspectées.</p>
+</details>
+</li>
+<li id="source-10">
+<span className="source-meta">[10] · Assemblée nationale · 27 octobre 2026 · Consulté le 3 novembre 2026</span>
+<a href="https://www.assemblee-nationale.fr/dyn/17/comptes-rendus/seance/session-ordinaire-de-2026-2027/premiere-seance-du-mardi-27-octobre-2026">Première séance du mardi 27 octobre 2026, Faille PHP et directive NIS 2</a>
+<p>Réponse du ministre Roland Lescure confirmant le retrait du projet de loi de l’ordre du jour de début octobre et le souhait d’un examen à venir.</p>
+<details>
+<summary>Passages et périmètre</summary>
+<p>Échange avec Patricia Lemoine, particulièrement la réponse ministérielle sur le calendrier NIS2. Déclaration datée sur la procédure, sans garantie de calendrier futur ni démonstration exhaustive des textes français applicables. Texte officiel de l’échange lu directement ; copie HTML téléchargée en HTTP 200.</p>
+</details>
+</li>
+</ol>

@@ -1,0 +1,218 @@
+---
+title: "Europe’s cyber rules meet the factory floor"
+seoTitle: "NIS2 and CRA: Europe’s rules for installed equipment | l0g"
+description: "Legacy products, support periods, security updates and oversight: how European cyber rules reach installed equipment, alongside France’s NIS2 preparations."
+tags: ["Investigation", "Cybersecurity", "Industry", "NIS2", "Cyber Resilience Act"]
+quickTake: {"fact": "The non-binding Commission-services FAQ says units already placed on the market may still be sold after their support expires.", "importance": "Support expiry, update availability and deployment work need to be connected in procurement and operating records.", "uncertainty": "ANSSI still describes French transposition as ongoing; this research measures no site cost or causal effect on incidents."}
+pubDate: "2026-11-03T22:23:31+01:00"
+updatedDate: "2026-11-03T22:23:31+01:00"
+draft: false
+ogImage: "/illustrations/news/machine-rules-06-v1.jpg"
+sourceArticle: "guerre-machines-06-europe-parc-installe-nis2-cra"
+sourceUpdatedDate: "2026-11-03T22:23:31+01:00"
+---
+
+import MachineRulesFigure from '../../components/MachineRulesFigure.astro';
+
+<p><strong>The war on ordinary machines · Part 6 of 7</strong></p>
+
+<p class="standfirst">A device can sit in a distributor’s warehouse while its support period expires. Following market placement, updates and deployment reveals the work that European rules still leave to suppliers and operators on the factory floor.</p>
+
+A [Cyber Resilience Act](/en/glossary/cra/) (CRA) FAQ prepared by European Commission services contains a revealing example. A manufacturer places devices on the market in January 2028 with five years of support. January 2033 arrives, and a distributor still holds some of the stock. The distributor may continue selling those units after their support period ends. The non-binding FAQ presents a hypothetical case under the future regime; it records the services’ interpretation rather than an observed sale. Its implication is nevertheless striking: a device can remain sealed in its packaging while using up the entire period during which its manufacturer was required to handle its vulnerabilities. [1](#source-01)
+
+The distinction is between **placing a product on the market**, its first supply on the EU market, and the sales that follow. The CRA also requires the support end date, including at least the month and year, to be clearly accessible at purchase. For a buyer, the useful question is therefore specific: until when will the supplier handle security flaws in this product, and how much of that commitment will remain when the device is installed? These general provisions apply from 11 December 2027. [2](#source-02)
+
+Following our examination of [remote-maintenance access](/en/analysis/ordinary-machines-03-remote-maintenance-contractors/) and [spoiled stock](/en/analysis/ordinary-machines-05-stock-loss-insurance-cash/), this sixth part looks at the European regulatory response. Two instruments organise much of the work. The CRA regulates covered digital products and their manufacturers; the [NIS2 Directive](/en/glossary/nis2/) addresses risk management at organisations within its scope. They meet on the factory floor, where equipment of different ages operates under maintenance contracts and production has to continue. [2](#source-02) [4](#source-04)
+
+<MachineRulesFigure lang="en" kind="stock" />
+
+## A cold chain crosses several legal boundaries
+
+Consider a generic food supply chain. A manufacturer sells a connected controller. An integrator incorporates it into an installation. A food processor uses the installation, while a wholesaler and a retailer operate other equipment to keep goods cold. At each stage, the legislation examines a different object: sometimes a product and its supply to the market, sometimes a legal entity, its activities and its size. The same company can fall within both frameworks. This diagram describes a general relationship, not the architecture of an attacked business. [2](#source-02) [4](#source-04)
+
+Subject to its scope conditions and exclusions, the CRA covers products with digital elements whose intended or reasonably foreseeable use involves a logical or physical connection to a device or network. An internal industrial connection can therefore matter. Direct internet exposure is a risk question; the regulation’s scope uses a broader definition. Classifying the controller, its software and an integrated assembly then requires identifying the products actually supplied. [2](#source-02)
+
+Under NIS2, the food entry in Annex II covers businesses engaged in wholesale distribution, industrial production or industrial processing. French guidance explains that those activities are non-cumulative scope categories. Size criteria and the other qualification rules still have to be considered. A retail store does not become a NIS2 entity under that entry simply because it owns freezers. Its actual activities, legal structure, enterprise links and any other grounds for inclusion require assessment. [4](#source-04) [6](#source-06)
+
+This boundary has an economic consequence. An organisation directly covered by NIS2 may need evidence from a supplier governed by a different set of rules. Article 21 includes the security of relationships with direct suppliers and service providers. Requirements can consequently enter a contract, where the work, responsibility and price have to be agreed. A refrigeration contractor does not automatically become a managed IT service provider merely because it maintains equipment remotely: that category has a specific definition based on the service provided. [4](#source-04)
+
+The distinction between an essential entity and an important entity also deserves care. Under the European framework, a large business whose sole relevant activity falls in Annex II does not become essential on size alone. Other criteria, including certain national identifications, can change the result. These labels affect how supervision operates. A brand name or a count of stores is insufficient to settle the classification. [4](#source-04)
+
+<MachineRulesFigure lang="en" kind="scope" />
+
+## November 2026 sits between different deadlines
+
+Since **11 September 2026**, covered manufacturers have been required to report actively exploited vulnerabilities and severe incidents affecting product security, under the conditions in CRA article 14. The general design, vulnerability-handling and support requirements apply from **11 December 2027**. An earlier milestone, 11 June 2026, concerned the chapter on conformity assessment bodies. Each date activates a different set of provisions. [2](#source-02) [3](#source-03)
+
+Reporting has an immediate purpose: information reaching a manufacturer must reach the designated recipients, even when complete remediation will take longer. l0g has already examined [the European reporting system](/en/analysis/cyber-resilience-act-vulnerability-reporting/) in a separate investigation. For installed equipment, the important detail is the transitional provision. Article 69 extends the reporting duty to covered products placed on the market before December 2027 while giving those products a different treatment for the remaining requirements. [2](#source-02) [3](#source-03)
+
+A legacy product becomes subject to those requirements when, from 11 December 2027, it undergoes a **substantial modification** as defined by the regulation. The test concerns the change’s effect on compliance with essential requirements or on the product’s intended purpose. Recital 39 distinguishes security updates that reduce risk without changing that purpose. A maintenance intervention needs to be described before its legal classification can be decided. [2](#source-02)
+
+Responsibility is conditional too. Articles 21 and 22 address importers, distributors and other persons who assume manufacturer obligations. For the last group, article 22 refers to a substantial modification followed by making the product available on the market. Treating every on-site adjustment as an automatic transfer of manufacturer status would omit part of the test. In practice, both the change and the commercial supply of the product need to be assessed by the appropriate specialists. [2](#source-02)
+
+France’s NIS2 timetable follows a different process. As reviewed on **3 November 2026**, the public page of ANSSI, France’s cybersecurity agency, says transposition is ongoing and invites future regulated entities to prepare while the full set of national measures is pending. On 27 October, minister Roland Lescure told the National Assembly that the bill had been removed from the early-October agenda and called for its consideration to resume. The EU transposition deadline was 17 October 2024. That elapsed deadline must be distinguished from French obligations that have actually entered into application. This article presents NIS2 as the European framework for national implementation and preserves the draft status of French preparatory material. [4](#source-04) [5](#source-05) [10](#source-10)
+
+Manufacturer and operator reporting also use different triggers. NIS2 article 23 concerns incidents with a significant impact on the provision of the entity’s services. A single event can therefore require several assessments and information flows. A maintenance contract can identify who supplies the evidence each party needs while preserving their respective responsibilities. [2](#source-02) [4](#source-04)
+
+<MachineRulesFigure lang="en" kind="transition" />
+
+## Support becomes part of the product specification
+
+The CRA turns the [support period](/en/glossary/periode-d-assistance/) into a decision that manufacturers must substantiate. Article 13 requires consideration of expected use, reasonable user expectations, the nature of the product and other factors, with proportionality. The minimum is five years unless expected use is shorter. Equipment intended for lengthy service therefore needs a support assessment that goes beyond simply displaying that minimum. The technical documentation must retain the information used to determine the period. [2](#source-02)
+
+For buyers, this information can become part of comparing bids. Two controllers with similar functions and the same purchase price may have different maintenance horizons. An earlier support expiry brings forward the point at which exposure must be reassessed, replacement considered or additional protections arranged. This is an economic consequence of the support commitment. Its value depends on the installation; the evidence gathered here does not provide a site-specific estimate.
+
+Article 13(9) sets an additional availability requirement. Every security update issued during the support period must remain available for at least **ten years after release**, or for the remainder of support where that is longer. A manufacturer may therefore have to preserve access to an existing fix beyond the period during which it must handle newly discovered vulnerabilities in the product. [2](#source-02)
+
+Consider a separate l0g illustration. Support runs from January 2028 to January 2036, and a security update is released in January 2035. That update must remain available at least until January 2045. All the dates in this example are hypothetical. Access to the file in 2040 would establish its continued availability; the response to a newly discovered flaw would depend on support and the commitments then applicable. The arithmetic illustrates the rule without assigning an actual support promise to any manufacturer. [2](#source-02)
+
+The distinction matters when buying replacement parts or refurbishing an installation. A commercial model name reveals little about the support remaining on the unit supplied. A useful procurement record would connect the unit or batch, its first placement on the market, the support expiry and the versions compatible with the installation. That documentary approach is our proposal, to be used within the organisation’s own procedures and confidentiality rules.
+
+<MachineRulesFigure lang="en" kind="support" />
+
+## An update still has to make it through the plant
+
+The CRA improves the upstream part of the process. Risk assessment is meant to inform design and maintenance. Requirements address secure configuration, access control and the integrity of information needed for operation, among other matters. Manufacturers must also manage vulnerabilities in the components they integrate. Once the relevant provisions apply, the product should therefore arrive with documented commitments for the buyer to examine. [2](#source-02)
+
+CE marking belongs to that conformity process. Article 32 provides several assessment routes, including internal control for products eligible to use it. The mark consequently cannot be read as evidence that every device has received an independent assessment. The applicable route depends on the product category and the conditions in the regulation. An “important product” under the CRA and an “important entity” under NIS2 are also separate classifications. [2](#source-02) [4](#source-04)
+
+The next stage takes place at the operator’s site. Updating a controller may require compatibility checks, preparation of a rollback and a suitable maintenance window. The physical functions of the installation have to be preserved throughout. ANSSI’s proposed French cybersecurity reference framework, ReCyF, makes that work visible. Version 2.5 was made available on **17 March 2026**. It refers to test environments, deployment preparation and rollback mechanisms. [7](#source-07) [8](#source-08)
+
+The document’s status matters. In the material reviewed, ReCyF remains a **working draft** proposing compliance measures. Some provisions concern both essential and important entities; others apply only to essential entities. Presenting every line as an enforceable French obligation would lose both qualifications. The draft is nevertheless a useful account of the work required to get an industrial security update into service. [7](#source-07) [8](#source-08)
+
+ReCyF also considers technical or operational constraints that prevent patching. It then proposes suitable mitigation, including measures concerning isolation or access controls. Those choices require an understanding of the process: disconnecting a link may also remove an alarm or a necessary maintenance function. Authorised teams must assess any proposed measure within their continuity arrangements. Nothing in this article instructs a reader to manipulate an installation. [7](#source-07)
+
+A practical way to document the trade-off would record the constraint, the risk reduced, the functions preserved and the next review. A migration milestone could accompany the record where continued use of an old version creates a lasting commitment. This is an analytical recommendation informed by NIS2 risk management and the ReCyF draft, not a claim that the law provides one uniform migration deadline. [4](#source-04) [7](#source-07)
+
+<MachineRulesFigure lang="en" kind="deployment" />
+
+## A free update still leaves work to fund
+
+CRA Annex I generally requires security updates to be supplied free and without delay. It allows an exception where a manufacturer and a business user expressly agree different terms for a tailor-made product. That rule addresses supplying the update. Integrating it into an installation still requires work, a budget and an allocation of responsibilities. [2](#source-02)
+
+This distinction helps when reading quotations. The manufacturer may develop the fix; the integrator prepares it for the wider installation; the operator schedules the intervention and checks the resulting service. The exact division follows the applicable commitments, and a single company may perform several roles. The public material gathered here contains no contract or invoice that would establish the cost at an attacked refrigeration site. It does identify what a useful quotation should explain: scope, deliverable, downtime assumptions, acceptance and recovery conditions.
+
+A survey by the European Union Agency for Cybersecurity, ENISA, provides context for organisational spending. In *NIS Investments 2025*, published on 8 December 2025, ENISA reports a **9% median cybersecurity-to-IT spending ratio for 2024**. The study covers 1,080 professionals in sectors of high criticality; large organisations make up 83% of the sample. Fieldwork ran from May to August 2025, with sampling favouring large organisations. The median describes respondents’ ratios; applying it to a retailer or attributing a causal NIS2 effect would exceed the survey’s scope. [9](#source-09)
+
+The incremental work depends on the starting point. An organisation that already inventories equipment, receives advisories, tests updates and retains decisions has some of the necessary capability. Another has to build the process. The same software purchase can consequently sit within very different operational arrangements. This analysis identifies work associated with the requirements; it does not estimate a causal regulatory effect on spending.
+
+NIS2 article 21 itself calls for appropriate and proportionate measures, taking account of implementation cost, exposure and the severity of possible consequences. Management bodies are to approve and oversee risk management. Choosing between replacement, additional protections and temporary continued operation thus becomes a documented operating decision extending beyond delivery of a software file. [4](#source-04)
+
+## Compliance records need a route into supervision
+
+NIS2’s supervisory powers give this documentation a concrete purpose. For essential entities, article 32 provides for inspections and regular or targeted audits. For important entities, article 33 provides *ex post* supervision when an authority receives evidence or information suggesting noncompliance. The term describes the supervisory approach. An attack does not have to occur before an indication of noncompliance can be examined. National implementation still determines the locally applicable arrangements. [4](#source-04)
+
+CRA product oversight follows a different route. Market surveillance authorities can require corrective action and, under the relevant conditions, restrict availability, require withdrawal or order a recall. Product assessment and scrutiny of its operation are complementary. A manufacturer may provide a documented fix; the operator still needs to establish which units received it and what constraints remain. [2](#source-02) [4](#source-04)
+
+The strongest case for the framework lies in that continuity: security information before purchase, vulnerability handling over time, and evidence that authorities are empowered to request. Its effect on installed equipment will also depend on replacement cycles, contract quality and the resources devoted to supervision. The sources establish the intended mechanisms. They do not yet measure the damage those mechanisms will prevent.
+
+For an individual installation, an early improvement is already testable: establish the support expiry, the party able to provide fixes, a deployment process and an explicit decision for equipment that remains outside that process. Regulation changes the commitments expected of suppliers and operators. Industrial work has to make those commitments hold together while the machines continue running.
+
+## Research scope
+
+Documentary research checked on 3 November 2026. The cases dated 2028–2045 are explicit illustrations. Commission-services guidance and the ReCyF retain their non-binding status. French implementation status is attributed to the administrative and parliamentary documents reviewed; the Official Journal cross-check remains partial. Private contracts, site audits and individual costs remain outside the corpus.
+
+## Further reading
+
+- [Part 1: supermarket freezers become a target](/en/analysis/ordinary-machines-01-freezers-target/).
+- [Part 2: who actually controls the machines?](/en/analysis/ordinary-machines-02-who-controls/).
+- [Part 3: remote maintenance and contractor access](/en/analysis/ordinary-machines-03-remote-maintenance-contractors/).
+- [Part 4: industrial sabotage and attribution](/en/analysis/ordinary-machines-04-sabotage-attribution/).
+- [Part 5: stock loss, insurance and cash](/en/analysis/ordinary-machines-05-stock-loss-insurance-cash/).
+
+## Sources
+
+Documents checked on 3 November 2026. Each notice identifies the relevant passages, status and limitations.
+
+<ol className="sources-list">
+<li id="source-01">
+<span className="source-meta">[1] · European Commission services · Version 1.4, 4 September 2026 · Checked on 3 November 2026</span>
+<a href="https://ec.europa.eu/newsroom/dae/redirection/document/123307">Cyber Resilience Act implementation FAQs, version 1.4</a>
+<p>Administrative explanation of support and remaining stock: units placed in January 2028 have support until January 2033 and may subsequently be resold. Newly placed units require their own support period.</p>
+<details>
+<summary>Passages and scope</summary>
+<p>Opening disclaimer and version table, p.1; §§4.5.1–4.5.3, pp.48–51, especially the resale example on p.51; transition §1.4, p.10. Living Commission-services document; it neither states an official Commission position nor gives a binding legal interpretation. Its example is hypothetical. The assumed five years does not establish suitable support for every industrial product. Official Markdown downloaded and read; the original official 66-page PDF was also downloaded and extracted. Pages 50–51 were rendered, inspected and cross-checked against the example and qualifications.</p>
+</details>
+</li>
+<li id="source-02">
+<span className="source-meta">[2] · European Parliament and Council of the European Union · Adopted 23 October 2024; published 20 November 2024; relevant corrigenda checked · Checked on 3 November 2026</span>
+<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX%3A32024R2847">Regulation (EU) 2024/2847, Cyber Resilience Act</a>
+<p>Scope and definitions, justified support, update availability, reporting, substantial modification, conformity assessment, oversight and transition. Article 14 applies from 11 September 2026; Chapter IV from 11 June 2026; general application from 11 December 2027.</p>
+<details>
+<summary>Passages and scope</summary>
+<p>Articles 2–3,7,13(8),(9),(12),(19),14,21–22,32,52–56,69–71; Annex I; recitals 39 and 60. Original English PDF: pp.9–10,15,28–32,35–40,44–45,49–50,57–60,66–69. 2 July 2025 corrigendum: French article 69(3). Previously placed units differ from new units of the same model. For other persons under article 22, substantial modification and making the product available are separate conditions. Five-year support is qualified; access to an existing fix is distinct from new vulnerability handling and deployment. No individual legal classification is decided. Cited provisions of the official English PDF read through EUR-Lex. Direct HTML returned a 202 challenge; no full bilingual HTML reading is claimed. Official indexed French consolidation and 2 July 2025 corrigendum cross-checked the wording “before 11 December 2027”. The 17 October 2025 corrigendum and sectoral 2025/327 amendment effective 26 March 2027 were checked for relevance.</p>
+</details>
+</li>
+<li id="source-03">
+<span className="source-meta">[3] · European Commission, Directorate-General for Communications Networks, Content and Technology · Page last updated 11 September 2026 · Checked on 3 November 2026</span>
+<a href="https://digital-strategy.ec.europa.eu/en/policies/cra-reporting">Cyber Resilience Act: reporting obligations</a>
+<p>Manufacturer reporting from 11 September 2026 for actively exploited vulnerabilities and severe incidents affecting covered product security, designated recipients and the single reporting platform.</p>
+<details>
+<summary>Passages and scope</summary>
+<p>Opening paragraph; main-rules, recipients and platform sections; separate statement that open-source software stewards’ article 24(3) duties apply from 11 December 2027. Explanatory page; the regulation governs. Reporting triggers retain their specific conditions. A notification establishes neither complete remediation nor installation of an update at an individual site. Official HTML page read; its explicitly displayed last-update date was checked.</p>
+</details>
+</li>
+<li id="source-04">
+<span className="source-meta">[4] · European Union / EUR-Lex · 14 December 2022; published 27 December 2022; corrigendum 22 December 2023 · Checked on 3 November 2026</span>
+<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:02022L2555-20221227">Directive (EU) 2022/2555, NIS2</a>
+<p>Entity scope and categories, governance, suppliers, proportionality, reporting and supervision.</p>
+<details>
+<summary>Passages and scope</summary>
+<p>Articles 2–3, 6(39), 20–21, 23, 31–34 and 41; Annex II, points 4–5. Documentary consolidation 02022L2555-20221227; applicable French measures require a separate national-law check. Official PDF read through the web tool for the cited provisions; local HTTPS retrieval met a JavaScript challenge.</p>
+</details>
+</li>
+<li id="source-05">
+<span className="source-meta">[5] · ANSSI · Undated page · Checked on 3 November 2026</span>
+<a href="https://messervices.cyber.gouv.fr/nis2">NIS 2, MesServicesCyber</a>
+<p>Stated status of French preparations: ongoing transposition, pre-registration and the ReCyF working draft.</p>
+<details>
+<summary>Passages and scope</summary>
+<p>Introduction, cyber-risk management and ReCyF overview. Live administrative guidance; simplified thresholds replace neither articles 2–3 nor applicable national legislation. Official page read directly on 3 November 2026; HTML copy received with HTTP 200.</p>
+</details>
+</li>
+<li id="source-06">
+<span className="source-meta">[6] · ANSSI / MonEspaceNIS2 · Updated 13 March 2025 · Checked on 3 November 2026</span>
+<a href="https://aide.monespacenis2.cyber.gouv.fr/fr/article/quelles-sont-les-entites-concernees-par-le-secteur-production-transformation-et-distribution-des-denrees-alimentaires-de-la-directive-13q2urw/">NIS2 FAQ, food production, processing and distribution</a>
+<p>Wholesale distribution, industrial production or industrial processing are non-cumulative activities, alongside the other scope tests.</p>
+<details>
+<summary>Passages and scope</summary>
+<p>Answer concerning Annex II.4 and closing legal disclaimer. The FAQ expressly has no legal force; national definitions are to be set by decree and size conditions still apply. Official page text read from the HTML copy received with HTTP 200.</p>
+</details>
+</li>
+<li id="source-07">
+<span className="source-meta">[7] · ANSSI · Version dated 17 March 2026; publicly available from 17 March 2026 according to ANSSI · Checked on 3 November 2026</span>
+<a href="https://messervices.cyber.gouv.fr/documents-ressources/20260317_NIS_V2_ReCyF_v2.5.pdf">ReCyF, French Cyber Reference Framework, version 2.5</a>
+<p>Contractor agreements, patch preparation and deployment, rollback, and mitigation of technical or operational constraints.</p>
+<details>
+<summary>Passages and scope</summary>
+<p>Printed pages 1, 3, 11 and 14; objective 3 and measures 5.B.4–5.B.9. Working draft. The status of proposed measures and the distinction between important and essential entities remain material. Official PDF downloaded from two ANSSI links with identical bytes; pages 1, 3, 11 and 14 extracted, rendered and inspected.</p>
+</details>
+</li>
+<li id="source-08">
+<span className="source-meta">[8] · ANSSI · Undated page · Checked on 3 November 2026</span>
+<a href="https://cyber.gouv.fr/reglementation/cybersecurite-systemes-dinformation/directives-nis-nis2-et-dispositif-saiv/directive-nis-2/">The NIS 2 Directive</a>
+<p>ReCyF availability from 17 March 2026 and its preparatory, generally non-mandatory compliance approach.</p>
+<details>
+<summary>Passages and scope</summary>
+<p>ReCyF and Resilience Bill paragraphs. This administrative overview alone cannot establish the entire body of national law in force. Official text read directly through the web tool; local retrieval returned a technical verification page.</p>
+</details>
+</li>
+<li id="source-09">
+<span className="source-meta">[9] · ENISA · 8 December 2025 · Checked on 3 November 2026</span>
+<a href="https://www.enisa.europa.eu/sites/default/files/2026-02/NIS%20Investments%202025%20-%20Main%20report.pdf">NIS Investments 2025, main report</a>
+<p>For 2024, the median cybersecurity-to-IT spending ratio is 9%. Fieldwork ran from May to August 2025 with 1,080 professionals; 83% represented large organisations.</p>
+<details>
+<summary>Passages and scope</summary>
+<p>Figure 3, page 10; profiles and methodology, pages 34–35 and 37. Voluntary stratified Annex I high-criticality sample, prioritising large organisations, without market-size weighting; neither a causal NIS2 cost nor a retailer quotation is established. Current PDF linked from the ENISA catalogue downloaded; pages 10, 34, 35 and 37 extracted, rendered and inspected.</p>
+</details>
+</li>
+<li id="source-10">
+<span className="source-meta">[10] · French National Assembly · 27 October 2026 · Checked on 3 November 2026</span>
+<a href="https://www.assemblee-nationale.fr/dyn/17/comptes-rendus/seance/session-ordinaire-de-2026-2027/premiere-seance-du-mardi-27-octobre-2026">First sitting of Tuesday 27 October 2026, PHP vulnerability and the NIS2 Directive</a>
+<p>Minister Roland Lescure confirms the bill’s removal from the early-October agenda and expresses the wish for a later examination.</p>
+<details>
+<summary>Passages and scope</summary>
+<p>Exchange with Patricia Lemoine, especially the ministerial response on NIS2 scheduling. A dated statement about proceedings, without a guaranteed future timetable or an exhaustive account of applicable French legislation. Official exchange read directly; HTML copy downloaded with HTTP 200.</p>
+</details>
+</li>
+</ol>
