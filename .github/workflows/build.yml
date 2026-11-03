@@ -292,6 +292,14 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: false
+          # Publishing consumes the checked artifact, not the article corpus,
+          # illustrations or EPUB sources. Keep only the verifier closure.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/stage-ci-release.mjs
+            /scripts/black-box-archive.mjs
+            /scripts/black-box-contract.mjs
+            /deploy/prepare-static-transport.sh
 
       - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
         with:

@@ -48,6 +48,8 @@ test('the current workflow and package contracts satisfy the CI policy', async (
 });
 
 const workflowRegressions = [
+  ['publisher missing a verifier dependency', 'publish',
+    (job) => replace(job, '            /scripts/black-box-contract.mjs\n', ''), /publisher doit charger/],
   ['a full binary history checkout', 'build',
     (job) => replace(job, 'fetch-depth: 1', 'fetch-depth: 0'), /checkout peu profond/],
   ['recompressing already compressed release parts', 'publish',

@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { stageRelease, restoreRelease } from './stage-ci-release.mjs';
+import { load, JSON_SCHEMA } from 'js-yaml';
 
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 const stable = value => value === null || typeof value !== 'object' ? JSON.stringify(value)
@@ -54,6 +55,28 @@ function prepareRestore(t) {
   fs.unlinkSync(f.framePath);
   return f;
 }
+
+test('the sparse publisher contains the complete verifier dependency closure', (t) => {
+  const f = prepareRestore(t);
+  const workflow = load(fs.readFileSync(new URL('../.github/workflows/build.yml', import.meta.url), 'utf8'), { schema: JSON_SCHEMA });
+  const checkout = workflow.jobs.publish.steps.find(step => step.with?.['sparse-checkout']);
+  assert.equal(checkout.with['sparse-checkout-cone-mode'], false);
+  const minimal = path.join(f.root, 'minimal-publisher');
+  for (const pattern of checkout.with['sparse-checkout'].trim().split('\n')) {
+    const file = pattern.trim().replace(/^\//, '');
+    assert.match(file, /^(?:scripts|deploy)\/[a-z-]+\.(?:mjs|sh)$/);
+    write(path.join(minimal, file), fs.readFileSync(new URL(`../${file}`, import.meta.url)));
+  }
+  assert.equal(fs.existsSync(path.join(minimal, 'src')), false);
+  assert.equal(fs.existsSync(path.join(minimal, 'public')), false);
+  execFileSync(process.execPath, [path.join(minimal, 'scripts/stage-ci-release.mjs'),
+    'restore', '--input', f.output, '--archive', f.archive,
+    '--release', f.restore.release, '--dist', f.restore.dist], {
+    cwd: minimal, env: { ...process.env, ...env }, stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  assert.deepEqual(fs.readFileSync(path.join(f.restore.release, 'l0g-site.tar.gz')),
+    fs.readFileSync(path.join(f.release, 'l0g-site.tar.gz')));
+});
 
 test('stage and restore preserve every byte without extracting the tar', (t) => {
   const f = fixture(t);

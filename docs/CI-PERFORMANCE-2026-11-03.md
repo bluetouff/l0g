@@ -15,6 +15,7 @@ Le transport préparé contenait 247 896 284 octets, répartis en trois morceaux
 ## Corrections
 
 - Les checkouts de validation PR et de compilation récupèrent seulement le commit nécessaire, avec `fetch-depth: 1`. Les références courantes de `main` et l’archive Black Box restent explicitement vérifiées.
+- Le checkout du publisher se limite aux quatre scripts de vérification et de transport, sans récupérer les articles, les images ni les sources EPUB. Un test de restauration exécute le vérificateur à partir de cette sélection exacte.
 - Le dépôt Git temporaire de publication désactive la recompression et la recherche de deltas des morceaux gzip. Cela ne change aucun octet de la release, des checksums ni de l’attestation.
 - La préparation Git et son push deviennent deux étapes distinctes ; `--progress` rend visible la progression du transfert.
 - La politique CI refuse le retour aux checkouts complets et à la recompression du transport. Un test pousse les fichiers dans un dépôt Git local et relit leurs octets, puis vérifie le dépôt avec `git fsck --strict`.
@@ -22,3 +23,7 @@ Le transport préparé contenait 247 896 284 octets, répartis en trois morceaux
 Les suites SVG, la vérification des dépendances, les contrôles de déploiement, l’attestation et la sérialisation de la transaction `built` + Black Box restent obligatoires. Une publication main ne doit pas être annulée entre ses deux pushes.
 
 Le gain de bout en bout doit être mesuré sur un nouveau workflow. Un benchmark de compression local ne mesure ni la bande passante GitHub ni le délai de mise à disposition d’un runner.
+
+## Première vérification
+
+Sur le [run 41708250170](https://github.com/bluetouff/l0g/actions/runs/41708250170), le checkout du build passe de 3 min 11 à 41 secondes. La préparation du transport Git dure deux secondes. Le push réseau doit être mesuré séparément : désactiver la recompression ne garantit pas une bande passante supérieure. Ce run précède la réduction du checkout du publisher aux seuls scripts nécessaires.

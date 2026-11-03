@@ -99,6 +99,13 @@ requireCondition(
 );
 const validatePr = job('validate-pr-build');
 requireCondition(
+  publicationJob.includes('sparse-checkout-cone-mode: false')
+    && ['scripts/stage-ci-release.mjs', 'scripts/black-box-archive.mjs',
+      'scripts/black-box-contract.mjs', 'deploy/prepare-static-transport.sh']
+      .every(file => publicationJob.includes(`/${file}`)),
+  'le publisher doit charger uniquement les scripts nécessaires à la vérification et au transport',
+);
+requireCondition(
   !/fetch-depth:\s*0/.test(build)
     && [buildJob, validatePr].every((body) => /fetch-depth:\s*1/.test(body)),
   'les builds doivent utiliser un checkout peu profond sans aspirer les historiques binaires',
