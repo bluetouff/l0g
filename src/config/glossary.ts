@@ -930,6 +930,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "Consigne de température", "nom": "Valeur cible d’un système de régulation", "def": "Valeur visée par un système de régulation. Elle constitue une instruction pour le fonctionnement de l’équipement, distincte d’une température effectivement mesurée dans l’air ou dans un produit. Pour comprendre un incident, la cible, les mesures, leurs positions et leurs horaires doivent être identifiés séparément.", "guide": "/posts/guerre-machines-01-congelateurs-cible/"},
+      {"sigle": "Chaîne du froid", "nom": "Continuité des conditions de conservation par le froid", "def": "Maintien des conditions de température adaptées aux denrées au fil de leur prise en charge, notamment pendant le transport, le stockage et la vente. Les exigences dépendent des produits, des opérations et des textes applicables. Une température d’air ou une moyenne enregistrée doit être rapprochée des données pertinentes sur les produits et leur historique.", "guide": "/posts/guerre-machines-01-congelateurs-cible/"},
+
       {"sigle": "Crawl", "nom": "Récupération automatisée de contenu", "def": "Accès automatisé par lequel un robot récupère une ressource web pour la traiter ou la conserver. L’accès au serveur et les utilisations ultérieures d’une copie correspondent à des événements différents. Dans Pay Per Crawl, la récupération payante réussie constitue l’événement facturé selon les conditions du service.", "guide": "/posts/cloudflare-contenus-ia-compteur-paiement/"},
       {"sigle": "Usage facturable", "nom": "Événement couvert par une offre commerciale acceptée", "def": "Utilisation qui remplit les conditions définies dans une offre ou une licence et déclenche une facturation. Dans la bêta Pay Per Use décrite par Cloudflare, l’acheteur propose la définition de l’usage et le prix ; l’éditeur choisit de participer. L’acheteur déclare les événements qui servent ensuite au règlement. Le périmètre retenu et l’exhaustivité des déclarations influencent le revenu.", "guide": "/posts/cloudflare-contenus-ia-compteur-paiement/"},
       {"sigle": "HTTP 402", "nom": "Code de réponse Payment Required", "def": "Code de réponse HTTP réservé pour un usage futur par la RFC 9110. Des services peuvent l’employer pour signaler une demande de paiement et associer leur propre protocole de règlement. Le code, la licence d’utilisation et le transfert des fonds remplissent des fonctions distinctes.", "guide": "/posts/cloudflare-contenus-ia-compteur-paiement/"},
@@ -1231,6 +1234,9 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "consigne-de-temperature": {"articles": [{"label": "Les congélateurs devenus une cible", "href": "/posts/guerre-machines-01-congelateurs-cible/", "kind": "article"}], "sources": [{"label": "Danfoss, Refrigeration controllers", "href": "https://www.danfoss.com/en-gb/service-and-support/case-stories/dcs/refrigeration-controllers/", "kind": "source"}], "related": ["chaine-du-froid"]},
+  "chaine-du-froid": {"articles": [{"label": "Les congélateurs devenus une cible", "href": "/posts/guerre-machines-01-congelateurs-cible/", "kind": "article"}], "sources": [{"label": "Union européenne, règlement 852/2004, article 1 et annexe II, chapitre IX", "href": "https://eur-lex.europa.eu/eli/reg/2004/852/oj?locale=fr", "kind": "source"}], "related": ["consigne-de-temperature"]},
+
   "crawl": {"articles": [{"label": "Cloudflare : qui tient le compteur des usages IA ?", "href": "/posts/cloudflare-contenus-ia-compteur-paiement/", "kind": "article"}], "sources": [{"label": "Cloudflare, Pay Per Crawl", "href": "https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/", "kind": "source"}], "related": ["usage-facturable", "http-402"]},
   "usage-facturable": {"articles": [{"label": "Cloudflare : qui tient le compteur des usages IA ?", "href": "/posts/cloudflare-contenus-ia-compteur-paiement/", "kind": "article"}], "sources": [{"label": "Cloudflare, Pay Per Use", "href": "https://blog.cloudflare.com/pay-per-use/", "kind": "source"}], "related": ["crawl", "http-402"]},
   "http-402": {"articles": [{"label": "Cloudflare : qui tient le compteur des usages IA ?", "href": "/posts/cloudflare-contenus-ia-compteur-paiement/", "kind": "article"}], "sources": [{"label": "IETF, RFC 9110, §15.5.3", "href": "https://www.rfc-editor.org/rfc/rfc9110.html#name-402-payment-required", "kind": "source"}], "related": ["crawl", "usage-facturable"]},
@@ -2719,7 +2725,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   ot: {
     intuition: 'Une intervention informatique peut modifier le fonctionnement d’un équipement physique.',
-    articles: [{ label: 'Éolien et solaire : accès cyber et responsabilités', href: '/posts/eolien-solaire-acces-cyber-responsabilites/', kind: 'article' }],
+    articles: [{ label: 'Éolien et solaire : accès cyber et responsabilités', href: '/posts/eolien-solaire-acces-cyber-responsabilites/', kind: 'article' }, {"label": "Les congélateurs devenus une cible", "href": "/posts/guerre-machines-01-congelateurs-cible/", "kind": "article"}],
     sources: [{ label: 'NIST SP 800-82r3, septembre 2023', href: 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf', detail: 'Section 2, page 8 : périmètre des technologies opérationnelles.', kind: 'source' }],
     related: ['scada'],
   },

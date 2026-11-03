@@ -19,6 +19,24 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Cold-chain targets and observations retain their distinct scope and short-entry policy.
+for (const [slug, source] of Object.entries({"consigne-de-temperature": "https://www.danfoss.com/en-gb/service-and-support/case-stories/dcs/refrigeration-controllers/", "chaine-du-froid": "https://eur-lex.europa.eu/eli/reg/2004/852/oj?locale=fr"})) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  for (const [entry, article] of [[fr[0], "/posts/guerre-machines-01-congelateurs-cible/"], [en[0], "/en/analysis/ordinary-machines-01-freezers-target/"]]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert.deepEqual(entry.atlas.sources.map(link => link.href), [source]);
+  }
+}
+for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === 'ot'), "/posts/guerre-machines-01-congelateurs-cible/"], [glossaryAtlasEnBySlug.get('ot'), "/en/analysis/ordinary-machines-01-freezers-target/"]]) {
+  assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  assert(entry.guide.includes('wind-solar') || entry.guide.includes('eolien-solaire'));
+}
+
 // Content retrieval, paid use and payment signalling keep distinct short-entry scopes.
 for (const [slug, source] of Object.entries({"crawl": "https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/", "usage-facturable": "https://blog.cloudflare.com/pay-per-use/", "http-402": "https://www.rfc-editor.org/rfc/rfc9110.html#name-402-payment-required"})) {
   const fr = glossaryEntries.filter(entry => entry.slug === slug);
@@ -1307,7 +1325,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 380, 'Le corpus conserve ses termes et ajoute les trois notions de contenus et usages');
+assert.equal(glossaryAtlasEnBySlug.size, 382, 'Le corpus conserve ses termes et ajoute les trois notions de contenus et usages');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1508,8 +1526,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 765, 'Le corpus conserve ses notions et ajoute les trois notions de contenus et usages');
-assert.equal(glossaryAtlasEntries.length, 370, 'Les notions de contenus et usages disposent de sources et de liens');
+assert.equal(glossaryEntries.length, 767, 'Le corpus conserve ses notions et ajoute les trois notions de contenus et usages');
+assert.equal(glossaryAtlasEntries.length, 372, 'Les notions de contenus et usages disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1770,7 +1788,9 @@ for (const [slug, related] of [['ot', ['scada']], ['scada', ['ot']]]) {
   assert.equal(en.sectionTitle, 'Digital economy & data');
   for (const entry of [fr, en]) {
     assert.deepEqual(entry.atlas.sources.map(source => source.href), ['https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf']);
-    assert.deepEqual(entry.atlas.articles.map(article => article.href), [entry.guide]);
+    const expectedArticles = [entry.guide];
+    if (slug === 'ot') expectedArticles.push(entry.guide.startsWith('/en/') ? '/en/analysis/ordinary-machines-01-freezers-target/' : '/posts/guerre-machines-01-congelateurs-cible/');
+    assert.deepEqual(entry.atlas.articles.map(article => article.href), expectedArticles);
     assert.deepEqual(entry.atlas.related, related);
     for (const neighbor of entry.atlas.related) {
       assert(glossaryEntries.some(candidate => candidate.slug === neighbor));
@@ -1931,7 +1951,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 988, 'Le corpus relie aussi les trois notions de contenus et usages');
+assert.equal(glossaryAtlasEdgeCount, 990, 'Le corpus relie aussi les trois notions de contenus et usages');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
