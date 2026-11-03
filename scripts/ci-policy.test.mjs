@@ -48,6 +48,12 @@ test('the current workflow and package contracts satisfy the CI policy', async (
 });
 
 const workflowRegressions = [
+  ['a full binary history checkout', 'build',
+    (job) => replace(job, 'fetch-depth: 1', 'fetch-depth: 0'), /checkout peu profond/],
+  ['recompressing already compressed release parts', 'publish',
+    (job) => replace(job, 'git config core.compression 0', 'git config core.compression 6'), /transport gzip/],
+  ['delta search over compressed release parts', 'publish',
+    (job) => replace(job, 'git config pack.window 0', 'git config pack.window 10'), /transport gzip/],
   ['publication without SVG dependency', 'publish',
     (job) => replace(job, 'needs: [build, svg-source]', 'needs: [build]'), /publication doit attendre tous les tests/],
   ['build with publication permissions', 'build',

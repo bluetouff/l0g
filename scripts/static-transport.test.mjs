@@ -1,11 +1,43 @@
 import assert from 'node:assert/strict';
-import { createHash } from 'node:crypto';
+import { createHash, randomBytes } from 'node:crypto';
+import { gzipSync } from 'node:zlib';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { mkdtempSync, writeFileSync, readFileSync, openSync, closeSync, ftruncateSync, statSync, readdirSync, rmSync, symlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
+
+test('uncompressed Git packing preserves the already compressed, signed transport bytes', () => {
+  const root = mkdtempSync(join(tmpdir(), 'l0g-packed-transport-'));
+  const repository = join(root, 'publisher');
+  const remote = join(root, 'remote.git');
+  const git = (args, cwd = repository) => execFileSync('git', args, { cwd, maxBuffer: 4 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'] });
+  try {
+    git(['init', '--bare', remote], root);
+    git(['init', repository], root);
+    const workflow = readFileSync(new URL('../.github/workflows/build.yml', import.meta.url), 'utf8');
+    const settings = [...workflow.matchAll(/^\s+git config (core\.compression|pack\.compression|pack\.window|pack\.depth) (\d+)$/gm)];
+    assert.equal(settings.length, 4);
+    for (const [, key, value] of settings) git(['config', key, value]);
+    const archive = gzipSync(randomBytes(1024 * 1024));
+    const files = {
+      'l0g-site.tar.gz.part-000': archive,
+      'l0g-site.tar.gz.sha256': Buffer.from(`${digest(archive)}  l0g-site.tar.gz\n`),
+      'l0g-site.tar.gz.sigstore.jsonl': Buffer.from('unchanged-attestation-fixture\n'),
+      'source.env': Buffer.from('immutable-source-fixture\n'),
+    };
+    for (const [name, bytes] of Object.entries(files)) writeFileSync(join(repository, name), bytes);
+    git(['add', '-A']);
+    git(['-c', 'user.name=Transport test', '-c', 'user.email=transport@example.invalid',
+      '-c', 'core.hooksPath=/dev/null', '-c', 'commit.gpgsign=false', 'commit', '-m', 'transport fixture']);
+    git(['push', '--progress', remote, 'HEAD:refs/heads/built']);
+    for (const [name, bytes] of Object.entries(files)) {
+      assert.deepEqual(git(['--git-dir', remote, 'show', `built:${name}`], root), bytes);
+    }
+    git(['--git-dir', remote, 'fsck', '--strict'], root);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 
 const script = fileURLToPath(new URL('../deploy/prepare-static-transport.sh', import.meta.url));
 const digest = (value) => createHash('sha256').update(value).digest('hex');

@@ -99,6 +99,17 @@ requireCondition(
 );
 const validatePr = job('validate-pr-build');
 requireCondition(
+  !/fetch-depth:\s*0/.test(build)
+    && [buildJob, validatePr].every((body) => /fetch-depth:\s*1/.test(body)),
+  'les builds doivent utiliser un checkout peu profond sans aspirer les historiques binaires',
+);
+requireCondition(
+  ['core.compression', 'pack.compression', 'pack.window', 'pack.depth']
+    .every((key) => publicationJob.includes(`git config ${key} 0`))
+    && publicationJob.includes('git push --progress -f'),
+  'le transport gzip doit éviter recompression et recherche de deltas et rendre sa progression visible',
+);
+requireCondition(
   validatePr.includes("if: github.event_name == 'pull_request'") && validatePr.includes('contents: read') && /^    timeout-minutes: 15$/m.test(validatePr),
   'la validation PR doit être bornée à 15 minutes et en lecture seule',
 );

@@ -72,7 +72,9 @@ jobs:
     steps:
       - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
         with:
-          fetch-depth: 0
+          # Only the checked commit is consumed; never fetch the binary built
+          # transport's history along with all branches and tags.
+          fetch-depth: 1
           persist-credentials: false
 
       - name: Checkout append-only Black Box archive
@@ -146,7 +148,7 @@ jobs:
       # Renovate conserve le SHA et le commentaire de version à jour.
       - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
@@ -334,21 +336,31 @@ jobs:
       - name: Stage the offline attestation bundle
         run: cp "${{ steps.attest_static.outputs.bundle-path }}" release/l0g-site.tar.gz.sigstore.jsonl
 
-      - name: Publish to `built` branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Prepare Git transport without recompression
         run: |
           # `built` est uniquement un transport de release. Le serveur n'active
           # jamais un arbre statique Git non attesté, seulement l'archive vérifiée.
           bash deploy/prepare-static-transport.sh release publish
           cd publish
           git init -q
+          # The payload is already gzip-compressed. Recompressing 90 MiB parts
+          # and searching binary deltas cannot improve this orphan transport.
+          git config core.compression 0
+          git config pack.compression 0
+          git config pack.window 0
+          git config pack.depth 0
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -q -m "build ${GITHUB_SHA}"
           git branch -M built
-          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" built
+
+      - name: Publish to `built` branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd publish
+          git push --progress -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" built
 
       - name: Publish append-only Black Box archive
         env:
