@@ -2725,13 +2725,13 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   ot: {
     intuition: 'Une intervention informatique peut modifier le fonctionnement d’un équipement physique.',
-    articles: [{ label: 'Éolien et solaire : accès cyber et responsabilités', href: '/posts/eolien-solaire-acces-cyber-responsabilites/', kind: 'article' }, {"label": "Les congélateurs devenus une cible", "href": "/posts/guerre-machines-01-congelateurs-cible/", "kind": "article"}],
+    articles: [{ label: 'Éolien et solaire : accès cyber et responsabilités', href: '/posts/eolien-solaire-acces-cyber-responsabilites/', kind: 'article' }, {"label": "Les congélateurs devenus une cible", "href": "/posts/guerre-machines-01-congelateurs-cible/", "kind": "article"}, {"label": "Qui commande réellement les machines ?", "href": "/posts/guerre-machines-02-qui-commande/", "kind": "article"}],
     sources: [{ label: 'NIST SP 800-82r3, septembre 2023', href: 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf', detail: 'Section 2, page 8 : périmètre des technologies opérationnelles.', kind: 'source' }],
     related: ['scada'],
   },
   scada: {
     intuition: 'La supervision rapproche les mesures du terrain et les fonctions de contrôle disponibles.',
-    articles: [{ label: 'Éolien et solaire : accès cyber et responsabilités', href: '/posts/eolien-solaire-acces-cyber-responsabilites/', kind: 'article' }],
+    articles: [{ label: 'Éolien et solaire : accès cyber et responsabilités', href: '/posts/eolien-solaire-acces-cyber-responsabilites/', kind: 'article' }, {"label": "Qui commande réellement les machines ?", "href": "/posts/guerre-machines-02-qui-commande/", "kind": "article"}],
     sources: [{ label: 'NIST SP 800-82r3, septembre 2023', href: 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf', detail: 'Section 2.3.2, page 12 : acquisition de données, supervision et contrôle.', kind: 'source' }],
     related: ['ot'],
   },

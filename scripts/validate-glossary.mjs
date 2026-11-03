@@ -1790,6 +1790,7 @@ for (const [slug, related] of [['ot', ['scada']], ['scada', ['ot']]]) {
     assert.deepEqual(entry.atlas.sources.map(source => source.href), ['https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf']);
     const expectedArticles = [entry.guide];
     if (slug === 'ot') expectedArticles.push(entry.guide.startsWith('/en/') ? '/en/analysis/ordinary-machines-01-freezers-target/' : '/posts/guerre-machines-01-congelateurs-cible/');
+    expectedArticles.push(entry.guide.startsWith('/en/') ? '/en/analysis/ordinary-machines-02-who-controls/' : '/posts/guerre-machines-02-qui-commande/');
     assert.deepEqual(entry.atlas.articles.map(article => article.href), expectedArticles);
     assert.deepEqual(entry.atlas.related, related);
     for (const neighbor of entry.atlas.related) {
