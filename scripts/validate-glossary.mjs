@@ -19,6 +19,15 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Remote maintenance is a sourced short entry; existing guides and definitions stay intact.
+for (const entry of [glossaryEntries.find(x => x.slug === 'telemaintenance'), glossaryAtlasEnBySlug.get('telemaintenance')]) {
+  assert(entry && entry.atlas);
+  assert.deepEqual(entry.atlas.sources.map(x => x.href), ["https://messervices.cyber.gouv.fr/documents-guides/Guide_Systemes_industriels__Mesures_detaillees_v2.pdf"]);
+  assert.deepEqual(entry.atlas.related, ['ot', 'reversibilite']);
+}
+assert.equal(glossaryEntries.find(x => x.slug === 'telemaintenance').referenceCandidate, false);
+assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('telemaintenance')), 'noindex,follow');
+
 // Cold-chain targets and observations retain their distinct scope and short-entry policy.
 for (const [slug, source] of Object.entries({"consigne-de-temperature": "https://www.danfoss.com/en-gb/service-and-support/case-stories/dcs/refrigeration-controllers/", "chaine-du-froid": "https://eur-lex.europa.eu/eli/reg/2004/852/oj?locale=fr"})) {
   const fr = glossaryEntries.filter(entry => entry.slug === slug);
@@ -1325,7 +1334,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 382, 'Le corpus conserve ses termes et ajoute les trois notions de contenus et usages');
+assert.equal(glossaryAtlasEnBySlug.size, 383, 'Le corpus conserve ses termes et ajoute les trois notions de contenus et usages');
 
 // Cryptographic and uniqueness claims do not confer civil identity or payment authority.
 for (const slug of ['preuve-d-humanite', 'zkp', 'calcul-multipartite']) {
@@ -1526,8 +1535,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 767, 'Le corpus conserve ses notions et ajoute les trois notions de contenus et usages');
-assert.equal(glossaryAtlasEntries.length, 372, 'Les notions de contenus et usages disposent de sources et de liens');
+assert.equal(glossaryEntries.length, 768, 'Le corpus conserve ses notions et ajoute les trois notions de contenus et usages');
+assert.equal(glossaryAtlasEntries.length, 373, 'Les notions de contenus et usages disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -1791,6 +1800,7 @@ for (const [slug, related] of [['ot', ['scada']], ['scada', ['ot']]]) {
     const expectedArticles = [entry.guide];
     if (slug === 'ot') expectedArticles.push(entry.guide.startsWith('/en/') ? '/en/analysis/ordinary-machines-01-freezers-target/' : '/posts/guerre-machines-01-congelateurs-cible/');
     expectedArticles.push(entry.guide.startsWith('/en/') ? '/en/analysis/ordinary-machines-02-who-controls/' : '/posts/guerre-machines-02-qui-commande/');
+    if (slug === 'ot') expectedArticles.push(entry.guide.startsWith('/en/') ? '/en/analysis/ordinary-machines-03-remote-maintenance-contractors/' : '/posts/guerre-machines-03-telemaintenance-prestataires/');
     assert.deepEqual(entry.atlas.articles.map(article => article.href), expectedArticles);
     assert.deepEqual(entry.atlas.related, related);
     for (const neighbor of entry.atlas.related) {
@@ -1952,7 +1962,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 990, 'Le corpus relie aussi les trois notions de contenus et usages');
+assert.equal(glossaryAtlasEdgeCount, 992, 'Le corpus relie aussi les trois notions de contenus et usages');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

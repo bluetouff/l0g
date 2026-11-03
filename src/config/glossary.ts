@@ -930,6 +930,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "Télémaintenance", "nom": "Maintenance d’un système à distance", "def": "Intervention de maintenance effectuée à distance, pouvant modifier des paramètres ou des programmes. Son périmètre dépend des équipements joignables, des opérations autorisées et de la durée des droits. L’observation seule relève du télédiagnostic ; l’exploitation à distance est une autre fonction.", "guide": "/posts/guerre-machines-03-telemaintenance-prestataires/"},
       {"sigle": "Consigne de température", "nom": "Valeur cible d’un système de régulation", "def": "Valeur visée par un système de régulation. Elle constitue une instruction pour le fonctionnement de l’équipement, distincte d’une température effectivement mesurée dans l’air ou dans un produit. Pour comprendre un incident, la cible, les mesures, leurs positions et leurs horaires doivent être identifiés séparément.", "guide": "/posts/guerre-machines-01-congelateurs-cible/"},
       {"sigle": "Chaîne du froid", "nom": "Continuité des conditions de conservation par le froid", "def": "Maintien des conditions de température adaptées aux denrées au fil de leur prise en charge, notamment pendant le transport, le stockage et la vente. Les exigences dépendent des produits, des opérations et des textes applicables. Une température d’air ou une moyenne enregistrée doit être rapprochée des données pertinentes sur les produits et leur historique.", "guide": "/posts/guerre-machines-01-congelateurs-cible/"},
 
@@ -1234,6 +1235,7 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "telemaintenance": {"articles": [{"label": "Télémaintenance : accès des prestataires", "href": "/posts/guerre-machines-03-telemaintenance-prestataires/", "kind": "article"}], "sources": [{"label": "ANSSI, mesures détaillées v2, 27 novembre 2025", "href": "https://messervices.cyber.gouv.fr/documents-guides/Guide_Systemes_industriels__Mesures_detaillees_v2.pdf", "detail": "Section 4.2.5.1, pages imprimées 73–74 : diagnostic, maintenance et exploitation à distance.", "kind": "source"}], "related": ["ot", "reversibilite"]},
   "consigne-de-temperature": {"articles": [{"label": "Les congélateurs devenus une cible", "href": "/posts/guerre-machines-01-congelateurs-cible/", "kind": "article"}], "sources": [{"label": "Danfoss, Refrigeration controllers", "href": "https://www.danfoss.com/en-gb/service-and-support/case-stories/dcs/refrigeration-controllers/", "kind": "source"}], "related": ["chaine-du-froid"]},
   "chaine-du-froid": {"articles": [{"label": "Les congélateurs devenus une cible", "href": "/posts/guerre-machines-01-congelateurs-cible/", "kind": "article"}], "sources": [{"label": "Union européenne, règlement 852/2004, article 1 et annexe II, chapitre IX", "href": "https://eur-lex.europa.eu/eli/reg/2004/852/oj?locale=fr", "kind": "source"}], "related": ["consigne-de-temperature"]},
 
@@ -2725,7 +2727,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   ot: {
     intuition: 'Une intervention informatique peut modifier le fonctionnement d’un équipement physique.',
-    articles: [{ label: 'Éolien et solaire : accès cyber et responsabilités', href: '/posts/eolien-solaire-acces-cyber-responsabilites/', kind: 'article' }, {"label": "Les congélateurs devenus une cible", "href": "/posts/guerre-machines-01-congelateurs-cible/", "kind": "article"}, {"label": "Qui commande réellement les machines ?", "href": "/posts/guerre-machines-02-qui-commande/", "kind": "article"}],
+    articles: [{ label: 'Éolien et solaire : accès cyber et responsabilités', href: '/posts/eolien-solaire-acces-cyber-responsabilites/', kind: 'article' }, {"label": "Les congélateurs devenus une cible", "href": "/posts/guerre-machines-01-congelateurs-cible/", "kind": "article"}, {"label": "Qui commande réellement les machines ?", "href": "/posts/guerre-machines-02-qui-commande/", "kind": "article"}, {"label": "Télémaintenance : accès des prestataires", "href": "/posts/guerre-machines-03-telemaintenance-prestataires/", "kind": "article"}],
     sources: [{ label: 'NIST SP 800-82r3, septembre 2023', href: 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf', detail: 'Section 2, page 8 : périmètre des technologies opérationnelles.', kind: 'source' }],
     related: ['scada'],
   },
@@ -2767,7 +2769,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   reversibilite: {
     intuition: 'Préparer une sortie suppose de financer les personnes et les opérations qui permettront de reprendre le service.',
-    articles: [{ label: 'Quitter Microsoft, 1/7', href: '/posts/quitter-microsoft-1-etat-dependances/', detail: 'Retours documentés du Schleswig-Holstein et du CNRS.' }],
+    articles: [{ label: 'Quitter Microsoft, 1/7', href: '/posts/quitter-microsoft-1-etat-dependances/', detail: 'Retours documentés du Schleswig-Holstein et du CNRS.' }, {"label": "Télémaintenance : accès des prestataires", "href": "/posts/guerre-machines-03-telemaintenance-prestataires/", "kind": "article"}],
     sources: [{ label: 'Circulaire cloud au centre, 31 mai 2023', href: 'https://www.legifrance.gouv.fr/circulaire/id/45446', detail: 'R4 et R10 : moyens de réversibilité et adhérences techniques ou fonctionnelles.' }],
     related: ['portabilite', 'interoperabilite'],
   },
