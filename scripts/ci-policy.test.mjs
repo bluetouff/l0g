@@ -48,6 +48,11 @@ test('the current workflow and package contracts satisfy the CI policy', async (
 });
 
 const workflowRegressions = [
+  ['binary release payload returning to Git', 'publish',
+    (job) => replace(job, 'node scripts/publish-static-assets.mjs release publish',
+      'bash deploy/prepare-static-transport.sh release publish'), /assets hors Git/],
+  ['publisher missing the Release asset publisher', 'publish',
+    (job) => replace(job, '            /scripts/publish-static-assets.mjs\n', ''), /publisher doit charger/],
   ['publisher missing a verifier dependency', 'publish',
     (job) => replace(job, '            /scripts/black-box-contract.mjs\n', ''), /publisher doit charger/],
   ['a full binary history checkout', 'build',
