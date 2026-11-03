@@ -1,0 +1,150 @@
+---
+title: "Industrial sabotage: following the evidence"
+seoTitle: "Industrial sabotage: evidence, motives and attribution | l0g"
+description: "From compromised refrigeration to court records: reconstructing physical effects, testing claims and distinguishing operators, groups and sponsors."
+ogTitle: "Industrial sabotage: following the evidence"
+pubDate: "2026-11-03T17:46:18+01:00"
+updatedDate: "2026-11-03T17:46:18+01:00"
+tags: ["Investigation","Cybersecurity","Industry","Sabotage","Attribution"]
+draft: false
+quickTake: {"fact":"France’s refrigeration-controller alert confirms compromises without naming an attacker. Documented precedents have different evidentiary statuses: conviction, allegations and intelligence assessment.","importance":"Damage, malicious action and sponsorship are separate questions. Operational recovery can proceed while attribution remains open.","uncertainty":"For the 2026 refrigeration incidents, victim-level logs and corroborated links identifying operators remain to be obtained."}
+sourceArticle: "guerre-machines-04-sabotage-attribution"
+sourceUpdatedDate: "2026-11-03T17:46:18+01:00"
+ogImage: "/illustrations/news/sabotage-attribution-04-v1.jpg"
+---
+
+import SabotageAttributionFigure from '../../components/SabotageAttributionFigure.astro';
+
+<p><strong>The war on ordinary machines · Part 4 of 7</strong></p>
+
+<p class="standfirst">A disrupted machine leaves records; a claimed attack generates a story. Connecting the two means establishing the physical effect, identifying the action behind it and deciding how far the evidence reaches. European refrigeration incidents and American and Danish cases also reveal differences between official descriptions of the same groups.</p>
+
+In an article published on 3 November 2026, Estonian public broadcaster ERR reports a statement from the Information System Authority, RIA: the motives behind the attack on Selver’s refrigeration equipment remain unknown. The statement concerns the incident on Monday, 2 November. Investigators can identify an intrusion while the intention behind it remains unresolved. [1](#source-01)
+
+France’s CERT-FR alert, first published on 12 October and updated on 16 October, confirms compromises affecting several families of refrigeration controllers. Its purpose is to identify a threat and support protective action. Attacker identification remains open in the version reviewed. [2](#source-02)
+
+This fourth instalment begins with the distance between visible damage and knowledge of its origin. Earlier parts followed a command to the machine and examined access entrusted to maintenance contractors. The task now runs in reverse: start with abnormal operation, identify the action behind it and establish responsibility, potentially including a sponsor. Each connection requires different evidence.
+
+Sabotage makes those distinctions especially important. Goods can lose their value without being stolen. A service can be disrupted without a publicly disclosed ransom demand. These are possible mechanisms of destruction, not findings about the motives in a particular case. In the material reviewed as of 3 November, we found no public evidence connecting the autumn refrigeration incidents to a named perpetrator.
+
+## Start with the machine
+
+Before looking for an attacker’s signature, establish what changed. An interface displays a setpoint, the value a system is asked to maintain. Equipment executes commands. Sensors measure particular conditions. Reconstructing actual operation means connecting these records while preserving the distinction between a requested value, a logged value and an independent physical observation.
+
+The guide to [operational technology](/en/glossary/ot/) security from the US National Institute of Standards and Technology (NIST) reflects that requirement. Operational technology means systems that monitor or control a physical process. Incident analysis needs knowledge of that process and must distinguish cyber from non-cyber causes. An authorised user’s mistake, an equipment failure and a hostile intervention may require different lines of investigation. This article uses the final third revision, published in September 2023. [4](#source-04)
+
+For this investigation, the distinction leads to three questions. What command or change was recorded? What effect reached the physical process? What consequence did that effect have for operations? In commercial refrigeration, a changed setting, a temperature excursion and a decision to withdraw goods occupy different points in that chain. Connecting those stages at an individual site requires its incident records, which remain outside this documentary collection.
+
+<SabotageAttributionFigure lang="en" kind="effects" />
+
+The account given to the French Senate on 21 October 2026 by ANSSI, France’s national cybersecurity agency, shows why reconstructing the sequence matters. In the passage reviewed, director-general Vincent Strubel distinguishes previously published vulnerabilities from the explanation then supported in the cases examined: directly exposed equipment and weak passwords. That assessment describes the agency’s evidence and scope at the time. Extending it to the November incidents would require additional findings. [3](#source-03)
+
+The distinction changes the evidence investigators need. Where inadequate access protection explains an intrusion, the mere existence of a known software flaw contributes little to identifying the route actually used. A useful investigation establishes the path taken rather than selecting the most striking vulnerability from the product’s history.
+
+## A few minutes can reverse the story
+
+The relevant records seldom sit in one place. A contractor may hold the connection log, a controller may record a setting change and a separate system may retain a measurement. The UK’s National Cyber Security Centre recommends bringing together the sources needed for incident response and highlights [timestamping](/en/glossary/horodatage/). NIST likewise treats time synchronisation as important for event correlation. [5](#source-05) [4](#source-04)
+
+Consider an entirely synthetic example. An access log shows 02:03, a setting change shows 02:01 and an independent measurement shows 02:04. Reading the entries literally places the change before the connection. But the first system’s clock is five minutes fast, an offset assumed to have been independently established. The other two systems are assumed to be synchronised to UTC in this example. Subtracting the known offset places the connection at 01:58 UTC. The apparent sequence reverses.
+
+<SabotageAttributionFigure lang="en" kind="clocks" />
+
+The correction leaves crucial questions unanswered. Did that session perform the change? Was the action authorised? Who was using the account? The calculation restores a coherent chronology; establishing causation still requires a connection between the events. Original timestamps and the basis for normalising them need to remain available so another analyst can check the reasoning.
+
+Maintenance context matters too. NCSC guidance on industrial connectivity calls for coordination between maintenance work and monitoring. Unusual activity may relate to an approved intervention. The case record should then reconcile the agreed assignment with what actually happened. [6](#source-06)
+
+Similarly, the absence of a log entry is informative only in relation to what the system could record and retain. Treating silence as proof that an event never happened first requires an understanding of that coverage. This is an analytical consequence of the NCSC’s approach to correlating evidence. [5](#source-05)
+
+## Intentional harm can have different origins
+
+An American case shows how close an attacker’s history can lie to ordinary operations. In May 2024, the US Department of Justice announced the sentencing of Rambler Gallo, a former employee of the contractor operating Discovery Bay’s water and wastewater treatment facility. After leaving his job, he used retained remote access to uninstall monitoring software. He had pleaded guilty. The release first describes a wastewater contract, then a facility treating both water and wastewater. It reports interrupted monitoring software and a threat to system safety. [7](#source-07)
+
+This is a firm documentary reference point: the judicial status goes beyond an attacker’s claim or an initial charge. It also shows that harm to infrastructure may originate in a previous working relationship. Assigning a specific psychological motive, such as revenge, would require evidence beyond the material used here.
+
+A different pattern appears in the joint advisory published by American agencies and international partners on 9 December 2025. It describes pro-Russia groups reaching exposed industrial systems, seeking publicity and sometimes understanding little about the underlying process. It identifies exaggerated or false claims alongside incidents with real physical effects. [8](#source-08)
+
+Motive, capability and damage can therefore move independently. In an opportunistic scenario, an available access route explains the target choice. In a political-pressure scenario, the sector or timing may carry more weight. A previous relationship with the site may direct attention towards access retained after departure. These are hypotheses to test against evidence and context. None is assigned here to the 2026 refrigeration attacks.
+
+Interests can also overlap. An operator pursuing public recognition may receive money. An intermediary may serve different customers. The investigation must specify what each finding concerns: who obtained access, who acted, who selected the target and who funded the operation. Answering one question does not automatically settle the others.
+
+## A claim comes from an interested party
+
+A remote-control video has immediate persuasive power. It shows a screen and seems to bring the viewer close to the action. Its evidentiary value nevertheless depends on what can be authenticated. Location, date, provenance and the connection to actual plant operation each need examination. Proof of limited access may leave the scale of the claimed damage uncertain.
+
+The December 2025 joint advisory makes that caution concrete by describing both consequential incidents and misleading publicity. A hostile post can be retained as a claim by its publisher and then compared with independent observations. Presenting it directly as a record of physical damage removes that intermediate test. [8](#source-08)
+
+Publicity and operational harm consequently require separate assessments. The reach of a claim describes its circulation. Service availability, staff observations and recovery records help establish operational impact. We have no measurement that would convert the former into an estimate of the latter in the incidents examined here.
+
+## Three official documents draw different group boundaries
+
+The historical record contains a discrepancy worth examining closely. On 9 December 2025, the US Department of Justice introduced Cyber Army of Russia Reborn, CARR, with Z-Pentest as another name for the group. The announced charges describe CARR as founded, funded and directed by Russian military intelligence (GRU). The release also attributes a November 2024 attack on a Los Angeles meat-processing facility to CARR, alleging spoiled meat and an ammonia leak. These remain allegations in our account. [9](#source-09)
+
+The joint technical advisory published that same day gives a more differentiated history. It describes Z-Pentest forming in September 2024 through figures from CARR and NoName who were dissatisfied with the support received. The passage describes the new activity as separate from GRU involvement. [8](#source-08)
+
+Nine days later, Danish military intelligence attributed a 2024 attack on a domestic water utility to Russia. Its assessment named Z-Pentest and links to the Russian state. The public note states the conclusion without disclosing the underlying evidence needed for a reader to reproduce the attribution. [10](#source-10)
+
+<SabotageAttributionFigure lang="en" kind="labels" />
+
+The documents have different functions and do not cover precisely the same question. An alias in a charging announcement, a split in a technical intelligence history and an assessed state connection in a national case describe different relationships. Their wording raises an unresolved scope question in the material gathered here. It warrants clarification from the institutions rather than an invented, unified organisational chart.
+
+Two limits follow. The American case shows that food-supply damage can feature in allegations of sabotage. The similarity of the sector offers a comparison to investigate; any connection to Europe in 2026 still requires evidence. We also did not independently confirm the later judicial outcome of the charges announced in December 2025. They retain the status of the original announcement here. Previously announced trial dates are not treated as a current procedural calendar.
+
+## Linking an operation to a state is another evidentiary step
+
+The framework from CERT-EU, the EU institutions’ cybersecurity service, revised in April 2026, provides a useful distinction. [Technical attribution](/en/glossary/attribution-cyber/) connects observations and activities. Political attribution belongs to a different level of responsibility. The framework also states that a geographic link to a country does not by itself imply that its state directed the operation. [11](#source-11)
+
+Analysts can identify a coherent activity cluster without knowing the operators’ legal identities. Identifying an individual may still leave their instructions unexplained. Financial support and an order concerning a particular operation are different propositions again. The language used to report findings needs to preserve those distinctions even when a geopolitical interpretation seems persuasive.
+
+<SabotageAttributionFigure lang="en" kind="attribution" />
+
+The Congressional Research Service describes attribution as a process of corroborating technical data with other intelligence while considering competing explanations. That approach guards against circular reasoning: selecting only material consistent with an initial hypothesis and then treating the collection as though the alternatives had all been tested. [12](#source-12)
+
+The independence of the evidence also matters. Ten articles repeating one press release create ten publications, but only one documentary origin for the claim in question. A judicial account, a technical record and an operational observation may offer different perspectives. They still need to be checked for circular sourcing. Each finding should therefore retain its documentary origin and evidentiary status.
+
+FIRST, an international forum of incident-response teams, further distinguishes confidence in an analysis from the likelihood assigned to a hypothesis. Careful reporting should explain the quality, consistency and gaps in the underlying material. The corpus supports a reasoned account of uncertainty here. Assigning a percentage would require an additional method and supporting data. [13](#source-13)
+
+## Recovery can move ahead while identity remains unresolved
+
+For an operator, the distinction has an immediate practical consequence. The security diagnosis, restoration of the installation and disposition of affected goods have their own requirements. In our economic reconstruction, equipment behaving as expected, stock deemed usable and normal business operations are separate states that need separate documentation. The available sources support neither a standard recovery duration nor an estimate of an individual victim’s bill.
+
+NIST warns that industrial containment measures can affect the physical process. NCSC guidance calls for isolation planning that takes account of dependencies and continuity. Evidence preservation therefore needs coordination with operational and safety responsibilities, without delaying urgent action necessary to protect people. [4](#source-04) [14](#source-14)
+
+<SabotageAttributionFigure lang="en" kind="recovery" />
+
+That coordination has economic value even when the sponsor remains unknown. It helps explain why a function was stopped, which checks govern its return and what remains uncertain. It also makes additional work visible: local checks, reconciliation of records, configuration validation and restoration of service. Quantifying that work requires scoped maintenance and recovery records.
+
+Public communication can progress with the same precision. An organisation may report a disruption, later confirm malicious action and identify an actor only when the evidence supports doing so. An explicit revision adds information. The continuity of the original story deserves no priority over a new, reliable piece of evidence.
+
+This investigation ends at a clear boundary. Compromises of refrigeration controllers are documented; a public connection to a named perpetrator remains unestablished in the reviewed material. The precedents show different routes to industrial harm and different standards of evidence concerning responsibility. Moving between them requires an individual technical reconstruction, corroborated identification and, for a sponsor, a documented connection to the conduct of the operation. The machine may be repaired before that final question is settled. The investigation should keep it open.
+
+
+## Scope of the investigation
+
+This documentary investigation was checked on 3 November 2026. The refrigeration incidents remain separate from the American and Danish precedents. Officially reported facts, judicial allegations and intelligence assessments retain their respective statuses. Individual victim logs remain outside the collection. The timestamp example is entirely synthetic, on one unspecified day, illustrating an offset correction and its limits.
+
+## Continue reading
+
+- [Part 1: supermarket freezers become a target](/en/analysis/ordinary-machines-01-freezers-target/), on the documented incidents and physical mechanism.
+- [Part 2: who actually controls the machines?](/en/analysis/ordinary-machines-02-who-controls/), on settings, permissions and local functions.
+- [Part 3: remote maintenance and contractor access](/en/analysis/ordinary-machines-03-remote-maintenance-contractors/), on network reach and withdrawing permissions.
+
+## Sources
+
+Documents checked on 3 November 2026. The references identify the versions reviewed and the scope of the examples.
+
+<ol className="sources-list">
+<li id="source-01"><span className="source-meta">[1] · ERR, interview with Mai Kraft (RIA) · 3 November 2026 · Checked on 3 November 2026</span><a href="https://news.err.ee/1610184286/state-it-authority-spokesperson-motives-for-selver-fridge-hack-not-yet-known">RIA: motives for the Selver fridge attack remain unknown</a><p>ERR reports RIA’s cybersecurity-centre head on the still-unknown motives following the 2 November incident.</p><details><summary>Passages and scope</summary><p>Interview: motives; Selver background. An authority’s statement reported by the public broadcaster. Uncertainty about motive is distinct from identifying an attacker; no victim forensic case file was obtained. Original HTML downloaded over HTTPS and read; publication metadata confirms the date.</p></details></li>
+<li id="source-02"><span className="source-meta">[2] · ANSSI / CERT-FR · 12 October 2026; revised 16 October 2026 · Checked on 3 November 2026</span><a href="https://www.cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">Incident targeting remote refrigeration controllers</a><p>Compromises affecting several refrigeration-controller families; the scope of a protective technical alert.</p><details><summary>Passages and scope</summary><p>Summary; affected systems; document history. The alert names no attacker and does not individually reconstruct every incident. Relevant passages read on the original official page.</p></details></li>
+<li id="source-03"><span className="source-meta">[3] · French Senate / ANSSI director-general · Hearing on 21 October 2026 · Checked on 3 November 2026</span><a href="https://www.senat.fr/compte-rendu-commissions/20261019/etran.html">Vincent Strubel’s hearing before the Foreign Affairs, Defence and Armed Forces Committee</a><p>Strubel distinguishes previously published vulnerabilities from exposure and password weaknesses then identified in the cases examined.</p><details><summary>Passages and scope</summary><p>Vincent Strubel’s response concerning refrigeration equipment. A dated assessment within the agency’s scope at the hearing. Extending it to November incidents would require additional evidence. Official HTML transcript downloaded and read; hearing date confirmed.</p></details></li>
+<li id="source-04"><span className="source-meta">[4] · NIST · 28 September 2023; final revision 3 · Checked on 3 November 2026</span><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf">SP 800-82 Revision 3: Guide to Operational Technology Security</a><p>Time synchronisation for event correlation; cyber and non-cyber incident analysis; operational effects of containment.</p><details><summary>Passages and scope</summary><p>Section 6.2.12, printed page 125; sections 6.4.3–6.4.4, page 136. Diagrams and timestamps are explanatory constructions. The identified revision 4 is an initial draft, distinct from the final version used. Official PDF read; printed pages 125 and 136 rendered and inspected. Status checked on CSRC.</p></details></li>
+<li id="source-05"><span className="source-meta">[5] · NCSC, United Kingdom · Displayed review: 19 September 2019; version 1.0 · Checked on 3 November 2026</span><a href="https://www.ncsc.gov.uk/collection/incident-management/technical-response-capabilities">Incident management: technical response capabilities</a><p>Log sources, time synchronisation, retention and testing the availability of investigative evidence.</p><details><summary>Passages and scope</summary><p>Evidence and log availability; Log management and evidence capture; Log testing; Analysis. General guidance. Log coverage and availability require verification for the installation concerned. Relevant passages read on the original official page.</p></details></li>
+<li id="source-06"><span className="source-meta">[6] · NCSC and partner agencies · 14 January 2026; version 1.0 · Checked on 3 November 2026</span><a href="https://www.ncsc.gov.uk/collection/operational-technology/secure-connectivity/principle-7">Secure connectivity for OT, principle 7: log and monitor connectivity</a><p>Coordinating maintenance with monitoring and verifying that performed actions are legitimate.</p><details><summary>Passages and scope</summary><p>Principle 7; Unauthorised activity. Planned work provides context; an approved ticket alone does not establish that every action conformed to it. Relevant passages read on the original official page.</p></details></li>
+<li id="source-07"><span className="source-meta">[7] · US Department of Justice, Northern District of California · 13 May 2024 · Checked on 3 November 2026</span><a href="https://www.justice.gov/usao-ndca/pr/tracy-resident-sentenced-serve-home-confinement-and-probation-computer-attack">Discovery Bay: former contractor employee sentenced after a computer attack</a><p>Announcement of a former operating-contractor employee’s guilty plea and sentence; retained remote access was used after departure and monitoring software was taken offline.</p><details><summary>Passages and scope</summary><p>Sentence summary; wastewater operating-contractor description; plea-agreement account and action after departure. Official release, without review of the complete judicial file. The retained material describes a safety threat, not established contamination or injury. No psychological motive is inferred. Complete official HTML read on 3 November 2026.</p></details></li>
+<li id="source-08"><span className="source-meta">[8] · FBI, CISA, NSA and international partners, including Australia’s ACSC · 9 December 2025 · Checked on 3 November 2026</span><a href="https://www.cyber.gov.au/sites/default/files/2025-12/pro-russia-hacktivists-conduct-attacks.pdf">AA25-343A: pro-Russia groups’ opportunistic attacks on critical infrastructure</a><p>Assessment of group histories, publicity seeking, misleading claims and actual operational harm.</p><details><summary>Passages and scope</summary><p>Pages 5–6: CARR and Z-Pentest’s September 2024 formation; page 7: capabilities and claims; pages 8–9: scope and impact. The coauthors’ assessment applies to this advisory’s scope. Its account of Z-Pentest forming separately from GRU involvement establishes neither universal group independence nor responsibility for the 2026 refrigeration incidents. Official PDF version accessed on the ACSC coauthor’s site; relevant passages on pages 5–9 read as text. Local download and rendered-page inspection were not confirmed.</p></details></li>
+<li id="source-09"><span className="source-meta">[9] · US Department of Justice, Office of Public Affairs · 9 December 2025; displayed update 22 July 2026 · Checked on 3 November 2026</span><a href="https://www.justice.gov/opa/pr/justice-department-announces-actions-combat-two-russian-state-sponsored-cyber-criminal">DOJ announces charges concerning two hacking groups it describes as Russian-backed</a><p>Charging account concerning CARR, naming Z-Pentest as an alias, alleged GRU direction and a November 2024 Los Angeles meat-plant attack.</p><details><summary>Passages and scope</summary><p>Procedural introduction; Cyber Army of Russia Reborn section; closing presumption-of-innocence notice. Charging allegations are distinct from a judgment. Bounded official follow-up through 3 November 2026 confirmed no later outcome of these charges; initially announced trial dates are not a current schedule. No connection to Europe’s 2026 refrigeration incidents is inferred. Complete official HTML read on 3 November 2026; follow-up searched DOJ, FBI and CDCA domains, including a July 2026 court calendar that records no verdict.</p></details></li>
+<li id="source-10"><span className="source-meta">[10] · Danish Defence Intelligence Service, DDIS / FE · 18 December 2025, printed on the note · Checked on 3 November 2026</span><a href="https://www.fe-ddis.dk/globalassets/fe/dokumenter/2025/-russia-responsible-for-cyber-attacks-.pdf">DDIS assesses Russian responsibility for destructive and disruptive cyberattacks against Denmark</a><p>Assessment attributing a 2024 Danish water-utility attack to Z-Pentest and assessing links between the group and the Russian state.</p><details><summary>Passages and scope</summary><p>One-page English note; opening assessment and Z-Pentest paragraph. Public Danish intelligence assessment; the note does not disclose underlying evidence enabling independent reproduction. The Danish case remains distinct from the 2026 refrigeration incidents. Original PDF downloaded over HTTPS and read; the rendered single page was inspected.</p></details></li>
+<li id="source-11"><span className="source-meta">[11] · CERT-EU · 13 February 2026; revised 8 April 2026 · Checked on 3 November 2026</span><a href="https://cert.europa.eu/publications/threat-intelligence/cyber-threat-intelligence-framework/">Cyber Threat Intelligence Framework</a><p>Technical and political attribution, geographic links, confidence and uncertainty.</p><details><summary>Passages and scope</summary><p>Chapters 10 and 11; revision history, version 2. A reported geographic association does not establish state direction of an operation. No attribution score is calculated here. Relevant passages read on the original official page.</p></details></li>
+<li id="source-12"><span className="source-meta">[12] · Congressional Research Service · 8 January 2025; version 8 · Checked on 3 November 2026</span><a href="https://www.congress.gov/crs-product/R46974">R46974: Cybersecurity: Selected Cyberattacks, 2012–2024</a><p>Corroboration of technical data and other intelligence; competing hypotheses and the status of attribution sources.</p><details><summary>Passages and scope</summary><p>Attribution section. A methodological and historical synthesis; November 2026 incidents fall outside its scope. Official HTML text read through the web tool; a direct HTTPS request returned 403.</p></details></li>
+<li id="source-13"><span className="source-meta">[13] · FIRST, CTI Special Interest Group · No displayed publication date · Checked on 3 November 2026</span><a href="https://www.first.org/global/sigs/cti/curriculum/cti-reporting">Communicating Uncertainties in CTI Reporting</a><p>Distinguishing analytical confidence based on evidence quality from expressions of likelihood.</p><details><summary>Passages and scope</summary><p>FIRST WEP Standard; FIRST LCA Standard; Consider How To Communicate The Uncertainty. The language categories are not converted into a numerical probability derived from this corpus. Relevant passages read on the original official page.</p></details></li>
+<li id="source-14"><span className="source-meta">[14] · NCSC and partner agencies · 14 January 2026; version 1.0 · Checked on 3 November 2026</span><a href="https://www.ncsc.gov.uk/collection/operational-technology/secure-connectivity/principle-8">Secure connectivity for OT, principle 8: establish an isolation plan</a><p>Planning isolation alongside dependencies, continuity and operational fallback.</p><details><summary>Passages and scope</summary><p>Principle 8; business effects and third-party arrangements. A framework for competent site-specific validation. No instructions to disconnect a live installation are provided here. Relevant passages read on the original official page.</p></details></li>
+</ol>
