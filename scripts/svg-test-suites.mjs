@@ -2,6 +2,7 @@
 // Keep new SVG suites here: svg-test-suites.test.mjs rejects missing or duplicate coverage.
 export const SVG_TEST_SUITES = Object.freeze({
   source: Object.freeze([
+    'scripts/us-lng-winter-infographics.test.mjs',
     'scripts/midterms-infographics.test.mjs',
     'scripts/broadcom-anthropic-infographics.test.mjs',
     'scripts/cloudflare-content-infographics.test.mjs',

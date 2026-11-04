@@ -1,0 +1,155 @@
+---
+import stocks_fr_desktop from '../figures/us-lng-winter-2026/stocks.fr.desktop.svg?raw';
+import stocks_fr_mobile from '../figures/us-lng-winter-2026/stocks.fr.mobile.svg?raw';
+import stocks_en_desktop from '../figures/us-lng-winter-2026/stocks.en.desktop.svg?raw';
+import stocks_en_mobile from '../figures/us-lng-winter-2026/stocks.en.mobile.svg?raw';
+import supply_fr_desktop from '../figures/us-lng-winter-2026/supply.fr.desktop.svg?raw';
+import supply_fr_mobile from '../figures/us-lng-winter-2026/supply.fr.mobile.svg?raw';
+import supply_en_desktop from '../figures/us-lng-winter-2026/supply.en.desktop.svg?raw';
+import supply_en_mobile from '../figures/us-lng-winter-2026/supply.en.mobile.svg?raw';
+import exports_fr_desktop from '../figures/us-lng-winter-2026/exports.fr.desktop.svg?raw';
+import exports_fr_mobile from '../figures/us-lng-winter-2026/exports.fr.mobile.svg?raw';
+import exports_en_desktop from '../figures/us-lng-winter-2026/exports.en.desktop.svg?raw';
+import exports_en_mobile from '../figures/us-lng-winter-2026/exports.en.mobile.svg?raw';
+import arbitrage_fr_desktop from '../figures/us-lng-winter-2026/arbitrage.fr.desktop.svg?raw';
+import arbitrage_fr_mobile from '../figures/us-lng-winter-2026/arbitrage.fr.mobile.svg?raw';
+import arbitrage_en_desktop from '../figures/us-lng-winter-2026/arbitrage.en.desktop.svg?raw';
+import arbitrage_en_mobile from '../figures/us-lng-winter-2026/arbitrage.en.mobile.svg?raw';
+import origins_fr_desktop from '../figures/us-lng-winter-2026/origins.fr.desktop.svg?raw';
+import origins_fr_mobile from '../figures/us-lng-winter-2026/origins.fr.mobile.svg?raw';
+import origins_en_desktop from '../figures/us-lng-winter-2026/origins.en.desktop.svg?raw';
+import origins_en_mobile from '../figures/us-lng-winter-2026/origins.en.mobile.svg?raw';
+import thresholds_fr_desktop from '../figures/us-lng-winter-2026/thresholds.fr.desktop.svg?raw';
+import thresholds_fr_mobile from '../figures/us-lng-winter-2026/thresholds.fr.mobile.svg?raw';
+import thresholds_en_desktop from '../figures/us-lng-winter-2026/thresholds.en.desktop.svg?raw';
+import thresholds_en_mobile from '../figures/us-lng-winter-2026/thresholds.en.mobile.svg?raw';
+interface Props {lang?: 'fr' | 'en'; kind: 'stocks' | 'supply' | 'exports' | 'arbitrage' | 'origins' | 'thresholds'}
+const {lang = 'fr', kind} = Astro.props;
+const captions = {
+  "stocks": {
+    "fr": {
+      "title": "Les réserves et leur répartition",
+      "description": "Remplissage des capacités utiles et énergie stockée, selon le relevé GIE affiché le 4 novembre 2026.",
+      "method": "Les six barres partagent la même échelle de 0 à 100 %. Le total UE est pondéré par les capacités. Les TWh mesurent la quantité d’énergie stockée, indépendamment du taux de remplissage. La comparaison des taux entre pays ne mesure ni leurs jours d’autonomie ni leurs débits de soutirage. Le relevé affiché est daté ; les révisions du tableau dynamique restent possibles."
+    },
+    "en": {
+      "title": "Storage levels and their distribution",
+      "description": "Working-capacity fill levels and stored energy, from the GIE reading displayed on 4 November 2026.",
+      "method": "All six bars use a common 0-100% scale. The EU aggregate is capacity-weighted. TWh is a separate measure of stored energy. Comparing country fill levels does not measure their days of supply or withdrawal rates. This is a dated reading of a dynamic dashboard that may be revised."
+    },
+    "sources": [
+      "01"
+    ],
+    "number": "01"
+  },
+  "supply": {
+    "fr": {
+      "title": "Le choc mondial après compensation",
+      "description": "Variation annuelle des chargements de GNL entre mars et octobre 2026, en milliards de mètres cubes.",
+      "method": "L’AIE indique plus de 60 milliards de m³ perdus au Qatar et aux Émirats, plus de 40 milliards ajoutés ailleurs, et environ 20 milliards perdus au total mondial. Les barres de 60 et 40 représentent les bornes publiées ; elles ne donnent pas les valeurs exactes. La perte mondiale est une estimation distincte publiée par l’AIE ; lire les trois mesures séparément. La comparaison porte sur les mêmes huit mois de 2025."
+    },
+    "en": {
+      "title": "The global shock after offsets",
+      "description": "Year-on-year change in LNG loadings from March to October 2026, in billion cubic metres.",
+      "method": "The IEA reports losses above 60 bcm in Qatar and the UAE, gains above 40 bcm elsewhere and an approximately 20 bcm global net loss. The 60 and 40 bars represent published bounds, not exact values. The global net loss is a separate IEA estimate; read the three measures independently. The comparison uses the same eight months of 2025."
+    },
+    "sources": [
+      "02"
+    ],
+    "number": "02"
+  },
+  "exports": {
+    "fr": {
+      "title": "Une hausse américaine encore attendue",
+      "description": "Exportations de gaz naturel sous forme de GNL, moyennes annuelles en milliards de pieds cubes par jour.",
+      "method": "EIA, Short-Term Energy Outlook du 6 octobre 2026, prévisions arrêtées au 1er octobre : 2025 réalisé, 2026 et 2027 prévus. Les trois barres partagent un axe commençant à zéro. Les contours pointillés distinguent les prévisions. La moyenne du premier semestre 2026, 17,4, décrite dans le texte, est une période différente."
+    },
+    "en": {
+      "title": "Further US export growth is forecast",
+      "description": "Natural gas exported as LNG, annual averages in billion cubic feet per day.",
+      "method": "EIA Short-Term Energy Outlook dated 6 October 2026, forecasts completed 1 October: 2025 actual, 2026 and 2027 forecasts. All three bars use the same zero-based axis. Dashed outlines identify forecasts. The 17.4 first-half 2026 average discussed in the article covers a different period."
+    },
+    "sources": [
+      "06",
+      "07"
+    ],
+    "number": "03"
+  },
+  "arbitrage": {
+    "fr": {
+      "title": "Le choix du port dépend du revenu de livraison",
+      "description": "Une cargaison américaine flexible peut alimenter l’Europe ou l’Asie. Le vendeur compare le revenu après transport et les contraintes de son contrat.",
+      "method": "Schéma conceptuel sans distances proportionnelles. L’AIE relève un TTF européen proche de 20 dollars par million de BTU et un prix spot asiatique du GNL de 21,5 dollars, moyennes mars-octobre 2026. Ce sont des références de marchés distincts. Le fret, les autres frais et les contrats individuels restent inconnus : les deux prix ne suffisent pas à calculer une marge commerciale."
+    },
+    "en": {
+      "title": "Delivery revenue helps determine the destination",
+      "description": "A flexible US cargo can reach Europe or Asia. The seller compares revenue after transport alongside its contractual obligations.",
+      "method": "Conceptual diagram with no distance scale. The IEA reports European TTF close to $20 per million BTU and Asian spot LNG at $21.5, March-October 2026 averages. These are different market benchmarks. Freight, other costs and individual contracts remain unknown, so the two prices cannot establish a trading margin."
+    },
+    "sources": [
+      "02",
+      "08"
+    ],
+    "number": "04"
+  },
+  "origins": {
+    "fr": {
+      "title": "Le poids américain dans la facture d’importation",
+      "description": "Répartition en valeur des importations de GNL de l’UE au deuxième trimestre 2026, selon Eurostat.",
+      "method": "Les parts mesurent la valeur importée, vérifiée dans le classeur Eurostat, et non les volumes physiques. États-Unis 63,2 %, Russie 17,3 %, Algérie 8,1 % ; autres pays 11,4 % = 100 − 63,2 − 17,3 − 8,1. La barre totalise 100 %. La part annuelle 2025 de 58 % en volume rapportée par l’ACER répond à une autre mesure et une autre période."
+    },
+    "en": {
+      "title": "The US share of the EU LNG import bill",
+      "description": "Shares by value of EU LNG imports in the second quarter of 2026, according to Eurostat.",
+      "method": "These shares measure import value, verified in Eurostat’s workbook, rather than physical volume. US 63.2%, Russia 17.3%, Algeria 8.1%; other countries 11.4% = 100 − 63.2 − 17.3 − 8.1. The stacked bar totals 100%. ACER’s annual 2025 US share of 58% by volume covers a different measure and period."
+    },
+    "sources": [
+      "10"
+    ],
+    "number": "05"
+  },
+  "thresholds": {
+    "fr": {
+      "title": "L’observation, le débit et le scénario",
+      "description": "Trois repères de nature différente, présentés séparément sur une échelle de remplissage commune.",
+      "method": "GIE : 74,33 % de remplissage UE dans le relevé affiché le 4 novembre 2026. AIE : sous environ 30 %, les débits de soutirage tendent à baisser ; la relation dépend des stockages. Le niveau inférieur à 10 % fin mars 2027 appartient au scénario conditionnel de froid et de perturbations prolongées d’Ormuz. Les barres de 30 et 10 marquent les limites de ces zones, sans trajectoire mensuelle ni probabilité calculée."
+    },
+    "en": {
+      "title": "Observed stocks, withdrawal rates and a scenario",
+      "description": "Three different benchmarks shown separately on a common storage-fill scale.",
+      "method": "GIE: EU storage at 74.33% in the reading displayed on 4 November 2026. IEA: withdrawal rates tend to decline below about 30%, with the relationship varying by storage site. The below-10% end-March 2027 outcome belongs to the conditional cold-weather and prolonged Hormuz-disruption scenario. The 30 and 10 bars mark boundaries, with no monthly trajectory or calculated probability."
+    },
+    "sources": [
+      "01",
+      "02"
+    ],
+    "number": "06"
+  }
+} as const;
+const art = {
+fr:{stocks:{desktop:stocks_fr_desktop,mobile:stocks_fr_mobile},supply:{desktop:supply_fr_desktop,mobile:supply_fr_mobile},exports:{desktop:exports_fr_desktop,mobile:exports_fr_mobile},arbitrage:{desktop:arbitrage_fr_desktop,mobile:arbitrage_fr_mobile},origins:{desktop:origins_fr_desktop,mobile:origins_fr_mobile},thresholds:{desktop:thresholds_fr_desktop,mobile:thresholds_fr_mobile}},
+en:{stocks:{desktop:stocks_en_desktop,mobile:stocks_en_mobile},supply:{desktop:supply_en_desktop,mobile:supply_en_mobile},exports:{desktop:exports_en_desktop,mobile:exports_en_mobile},arbitrage:{desktop:arbitrage_en_desktop,mobile:arbitrage_en_mobile},origins:{desktop:origins_en_desktop,mobile:origins_en_mobile},thresholds:{desktop:thresholds_en_desktop,mobile:thresholds_en_mobile}},
+} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new Error('Unknown USLNGWinterFigure variant');
+const entry = captions[kind]; const f = entry[lang]; const svg = art[lang][kind];
+---
+<figure class="us-lng-winter-figure" id={`figure-${entry.number}`}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption><span class="fig-num">FIGURE {entry.number}</span><strong>{f.title}</strong>{f.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${Number(id)}`}>[{Number(id)}]</a>)}</figcaption>
+  <details><summary>{lang === 'fr' ? 'Méthode et limites' : 'Method and limitations'}</summary><p>{f.method}</p></details>
+</figure>
+<style>
+@font-face {font-family:'l0g US LNG Winter';src:url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+@font-face {font-family:'l0g US LNG Winter';src:url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+.us-lng-winter-figure{width:100%;max-width:800px;margin:2.5rem auto;padding-bottom:1rem;color:inherit;container-type:inline-size;overflow:visible}
+.desktop-art,.mobile-art{line-height:0;width:100%}.mobile-art{display:none;max-width:340px;margin-inline:auto}
+.us-lng-winter-figure :global(svg){display:block;width:100%;max-width:100%;height:auto;letter-spacing:normal;overflow:visible}
+.us-lng-winter-figure figcaption{font-family:var(--font-read);font-size:.9rem;line-height:1.7;color:var(--color-muted);padding:1rem 0 .5rem}
+.us-lng-winter-figure figcaption strong{display:block;font-size:1rem;margin:.4rem 0;color:var(--color-paper)}
+.fig-num{letter-spacing:.06em;font-size:.8rem;color:var(--color-signal);font-weight:700}
+.us-lng-winter-figure a{margin-right:.45rem}.us-lng-winter-figure details{font-family:var(--font-read);font-size:.875rem;line-height:1.7;margin-top:.5rem}
+.us-lng-winter-figure summary{cursor:pointer;padding:.35rem 0}.us-lng-winter-figure summary:focus-visible{outline:2px solid var(--color-signal);outline-offset:4px}.us-lng-winter-figure p{margin-top:.7rem}
+@container(max-width:500px){.desktop-art{display:none}.mobile-art{display:block}}
+@media print{.desktop-art{display:block}.mobile-art{display:none}.us-lng-winter-figure{break-inside:avoid}}
+</style>

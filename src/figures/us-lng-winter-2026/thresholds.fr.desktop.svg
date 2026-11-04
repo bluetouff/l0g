@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="ul26-thresholds-fr-d-title ul26-thresholds-fr-d-desc" style="width:100%;height:auto" class="l0g-us-lng-winter-svg"><title id="ul26-thresholds-fr-d-title">Trois repères distincts pour les réserves</title><desc id="ul26-thresholds-fr-d-desc">Observation UE : remplissage de 74,33 % dans le relevé affiché le 4 novembre 2026. Sous environ 30 % de remplissage, les débits de soutirage tendent à diminuer. Le scénario AIE combinant froid et perturbations prolongées à Ormuz pourrait aboutir à un remplissage inférieur à 10 % fin mars 2027. Trois repères distincts.</desc>
+<rect x="0" y="0" width="1000" height="680" rx="12" fill="var(--color-ink)" stroke="none" stroke-width="1" id="ul26-thresholds-fr-d-frame"/>
+<text data-panel="ul26-thresholds-fr-d-frame" x="32" y="39" font-family="l0g US LNG Winter" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">06 / GAZ · HIVER 2026</text>
+<text data-panel="ul26-thresholds-fr-d-frame" x="32" y="89" font-family="l0g US LNG Winter" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-paper)">Trois repères pour les réserves</text>
+<text data-panel="ul26-thresholds-fr-d-frame" x="32" y="145" font-family="l0g US LNG Winter" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Capacité utile · échelle 0-100 %</text>
+<text data-panel="ul26-thresholds-fr-d-frame" x="32" y="210" font-family="l0g US LNG Winter" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-paper)">OBSERVATION</text>
+<text data-panel="ul26-thresholds-fr-d-frame" x="950" y="210" font-family="l0g US LNG Winter" font-size="34" font-weight="700" text-anchor="end" fill="var(--color-signal)">74,33 %</text>
+<rect x="400" y="237" width="550" height="27" rx="0" fill="var(--color-surface-2)" stroke="none" stroke-width="1"/>
+<rect x="400" y="237" width="408.815" height="27" rx="0" fill="var(--color-signal)" stroke="none" stroke-width="1" data-metric="storage-benchmark" data-value="74.33"/>
+<text data-panel="ul26-thresholds-fr-d-frame" x="32" y="293" font-family="l0g US LNG Winter" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">UE · 4 novembre 2026</text>
+<text data-panel="ul26-thresholds-fr-d-frame" x="32" y="350" font-family="l0g US LNG Winter" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-paper)">DÉBIT DE SOUTIRAGE</text>
+<text data-panel="ul26-thresholds-fr-d-frame" x="950" y="350" font-family="l0g US LNG Winter" font-size="34" font-weight="700" text-anchor="end" fill="var(--color-amber)">&lt; 30 %</text>
+<rect x="400" y="377" width="550" height="27" rx="0" fill="var(--color-surface-2)" stroke="none" stroke-width="1"/>
+<rect x="400" y="377" width="165" height="27" rx="0" fill="var(--color-amber)" stroke="none" stroke-width="1" data-metric="storage-benchmark" data-value="30"/>
+<text data-panel="ul26-thresholds-fr-d-frame" x="32" y="433" font-family="l0g US LNG Winter" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Le débit disponible tend à diminuer.</text>
+<text data-panel="ul26-thresholds-fr-d-frame" x="32" y="490" font-family="l0g US LNG Winter" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-paper)">SCÉNARIO DE STRESS</text>
+<text data-panel="ul26-thresholds-fr-d-frame" x="950" y="490" font-family="l0g US LNG Winter" font-size="34" font-weight="700" text-anchor="end" fill="var(--color-accent)">&lt; 10 %</text>
+<rect x="400" y="517" width="550" height="27" rx="0" fill="var(--color-surface-2)" stroke="none" stroke-width="1"/>
+<rect x="400" y="517" width="55" height="27" rx="0" fill="var(--color-accent)" stroke="none" stroke-width="1" data-metric="storage-benchmark" data-value="10"/>
+<text data-panel="ul26-thresholds-fr-d-frame" x="32" y="573" font-family="l0g US LNG Winter" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Froid + Ormuz prolongé · fin mars 2027</text>
+<path d="M22 618 L978 618" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="ul26-thresholds-fr-d-frame" x="22" y="652" font-family="l0g US LNG Winter" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">GIE / AIE</text>
+<text data-panel="ul26-thresholds-fr-d-frame" x="976" y="652" font-family="l0g US LNG Winter" font-size="24" font-weight="700" text-anchor="end" fill="var(--color-signal)">l0g.fr</text>
+</svg>

@@ -767,6 +767,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Énergie & géopolitique',
     accent: 'var(--color-amber)',
     entries: [
+      {"sigle": "FOB", "nom": "Free on board : livraison de GNL au terminal d’exportation", "def": "Dans les contrats de GNL décrits par Cheniere, livraison où l’acheteur prend la cargaison au terminal d’exportation du vendeur. Le transport après ce point relève des arrangements de l’acheteur. Le prix, les obligations en cas d’annulation et la liberté de destination doivent être examinés dans les clauses du contrat.", "guide": "/posts/gaz-americain-hiver-europe-2026/"},
       {"sigle": "Effacement électrique", "nom": "Réduction de consommation pendant une période donnée", "def": "Réduction de la consommation électrique pendant une période donnée, évaluée par rapport à une consommation de référence qui aurait eu lieu sans l’action. Un usage peut être décalé vers une autre période ou abandonné. Une offre tarifaire à effacement incite le client à adapter ses usages ; les volumes effectivement effacés demandent une méthode de mesure distincte du seul calendrier des prix.", "guide": "/posts/tempo-jours-rouges-algorithme-facture/"},
       {"sigle": "Consommation résiduelle", "nom": "Demande électrique après déduction de productions définies", "def": "Consommation électrique restant à couvrir après déduction des productions retenues dans une méthode donnée. Dans la méthode RTE des jours PP du 30 septembre 2026, le critère est la pointe horaire prévue de la consommation française hors effacement, diminuée des productions éolienne et photovoltaïque prévues. Ce résidu mesure un besoin à couvrir ; la sécurité d’approvisionnement dépend aussi des moyens disponibles.", "guide": "/posts/tempo-jours-rouges-algorithme-facture/"},
       { sigle: 'Distillats', nom: 'Catégorie EIA « distillate fuel oil »', def: 'Catégorie de produits pétroliers issue de la distillation qui réunit, dans les statistiques de l’EIA, des carburants diesel et des fiouls, notamment de chauffage. Son périmètre dépasse le seul gazole routier. Une comparaison de stocks doit conserver la même catégorie de produits.', guide: '/posts/petrole-flux-gazole-stocks-tresorerie/' },
@@ -2421,6 +2422,26 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     articles: [{ label: 'Le commerce mondial au rythme des commandes d’IA', href: '/posts/commerce-mondial-rythme-commandes-ia/', kind: 'article' }],
     sources: [{ label: 'Rees et Rungcharoenkitkul, BIS Bulletin 48, 11 novembre 2021', href: 'https://www.bis.org/publications/bulletin-48-bottlenecks-causes-and-macroeconomic-implications.pdf', detail: 'Page imprimée 3 : anticipation de pénuries et stocks de précaution à plusieurs étapes. Mécanisme discuté par les auteurs, sans coefficient transposé à l’IA.', kind: 'source' }],
     related: ['tiva'],
+  },
+  fob: {
+    "articles": [
+      {
+        "label": "Gaz américain : les contrats derrière les cargaisons",
+        "href": "/posts/gaz-americain-hiver-europe-2026/",
+        "kind": "article"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Cheniere Energy, Form 10-K pour 2025",
+        "href": "https://lngir.cheniere.com/sec-filings/all-sec-filings/content/0000003570-26-000005/lng-20251231.htm",
+        "detail": "Definitions, FOB ; Note 12, Revenues : livraison au terminal d’exportation, formules de prix et frais fixes. Déclarations de l’entreprise sur ses propres contrats de GNL.",
+        "kind": "source"
+      }
+    ],
+    "related": [
+      "ttf"
+    ]
   },
   'capacite-de-soutirage': {
     articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }],

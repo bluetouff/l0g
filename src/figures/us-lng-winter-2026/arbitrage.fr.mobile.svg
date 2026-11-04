@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 900" role="img" aria-labelledby="ul26-arbitrage-fr-m-title ul26-arbitrage-fr-m-desc" style="width:100%;height:auto" class="l0g-us-lng-winter-svg"><title id="ul26-arbitrage-fr-m-title">Un méthanier, deux destinations</title><desc id="ul26-arbitrage-fr-m-desc">Cargaison américaine flexible : choix entre Europe et Asie selon le revenu après transport et livraison. Prix moyens régionaux de mars à octobre 2026 : TTF proche de 20 dollars et GNL asiatique à 21,5 dollars par million de BTU.</desc>
+<rect x="0" y="0" width="420" height="900" rx="12" fill="var(--color-ink)" stroke="none" stroke-width="1" id="ul26-arbitrage-fr-m-frame"/>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="22" y="36" font-family="l0g US LNG Winter" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-signal)">04 / GAZ · HIVER 2026</text>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="22" y="78" font-family="l0g US LNG Winter" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">Un méthanier,</text>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="22" y="114" font-family="l0g US LNG Winter" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">deux destinations</text>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="210" y="172" font-family="l0g US LNG Winter" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Cargaison américaine flexible</text>
+<path data-connector="cargo-hull" d="M100 230 L320 230 L288 271 L132 271 Z" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="127" y="202" width="34" height="25" rx="0" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1"/>
+<rect x="169" y="202" width="34" height="25" rx="0" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1"/>
+<rect x="211" y="202" width="34" height="25" rx="0" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1"/>
+<rect x="253" y="202" width="34" height="25" rx="0" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1"/>
+<path data-connector="route" d="M210 286 L210 308 L110 308 L110 336" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M104 328 L110 336 L116 328" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="route" d="M210 286 L210 308 L310 308 L310 336" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M304 328 L310 336 L316 328" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="20" y="355" width="180" height="177" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" id="ul26-arbitrage-fr-m-card-0"/>
+<text data-panel="ul26-arbitrage-fr-m-card-0" x="34" y="389" font-family="l0g US LNG Winter" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-signal)">EUROPE / TTF</text>
+<text data-panel="ul26-arbitrage-fr-m-card-0" x="34" y="443" font-family="l0g US LNG Winter" font-size="35" font-weight="700" text-anchor="start" fill="var(--color-paper)">~ 20</text>
+<text data-panel="ul26-arbitrage-fr-m-card-0" x="34" y="478" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">$/million BTU</text>
+<text data-panel="ul26-arbitrage-fr-m-card-0" x="34" y="510" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Gaz de gros</text>
+<rect x="220" y="355" width="180" height="177" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1" id="ul26-arbitrage-fr-m-card-1"/>
+<text data-panel="ul26-arbitrage-fr-m-card-1" x="234" y="389" font-family="l0g US LNG Winter" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-amber)">ASIE / GNL</text>
+<text data-panel="ul26-arbitrage-fr-m-card-1" x="234" y="443" font-family="l0g US LNG Winter" font-size="35" font-weight="700" text-anchor="start" fill="var(--color-paper)">21,5</text>
+<text data-panel="ul26-arbitrage-fr-m-card-1" x="234" y="478" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">$/million BTU</text>
+<text data-panel="ul26-arbitrage-fr-m-card-1" x="234" y="510" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">GNL livré</text>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="22" y="592" font-family="l0g US LNG Winter" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">Revenu net de livraison</text>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="22" y="626" font-family="l0g US LNG Winter" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">=</text>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="22" y="660" font-family="l0g US LNG Winter" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">prix à destination</text>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="22" y="694" font-family="l0g US LNG Winter" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">− fret − autres coûts</text>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="22" y="762" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Moyennes mars-octobre 2026</text>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="22" y="795" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Coûts du trajet non chiffrés</text>
+<path d="M22 838 L398 838" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="22" y="872" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">AIE · 03.11.2026</text>
+<text data-panel="ul26-arbitrage-fr-m-frame" x="396" y="872" font-family="l0g US LNG Winter" font-size="19" font-weight="700" text-anchor="end" fill="var(--color-signal)">l0g.fr</text>
+</svg>

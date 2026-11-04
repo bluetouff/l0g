@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 960" role="img" aria-labelledby="ul26-thresholds-fr-m-title ul26-thresholds-fr-m-desc" style="width:100%;height:auto" class="l0g-us-lng-winter-svg"><title id="ul26-thresholds-fr-m-title">Trois repères distincts pour les réserves</title><desc id="ul26-thresholds-fr-m-desc">Observation UE : remplissage de 74,33 % dans le relevé affiché le 4 novembre 2026. Sous environ 30 % de remplissage, les débits de soutirage tendent à diminuer. Le scénario AIE combinant froid et perturbations prolongées à Ormuz pourrait aboutir à un remplissage inférieur à 10 % fin mars 2027. Trois repères distincts.</desc>
+<rect x="0" y="0" width="420" height="960" rx="12" fill="var(--color-ink)" stroke="none" stroke-width="1" id="ul26-thresholds-fr-m-frame"/>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="36" font-family="l0g US LNG Winter" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-signal)">06 / GAZ · HIVER 2026</text>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="78" font-family="l0g US LNG Winter" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">Trois repères</text>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="114" font-family="l0g US LNG Winter" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">pour les réserves</text>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="160" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Capacité utile · échelle 0-100 %</text>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="211" font-family="l0g US LNG Winter" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-paper)">OBSERVATION</text>
+<text data-panel="ul26-thresholds-fr-m-frame" x="398" y="211" font-family="l0g US LNG Winter" font-size="26" font-weight="700" text-anchor="end" fill="var(--color-signal)">74,33 %</text>
+<rect x="22" y="238" width="376" height="22" rx="0" fill="var(--color-surface-2)" stroke="none" stroke-width="1"/>
+<rect x="22" y="238" width="279.4808" height="22" rx="0" fill="var(--color-signal)" stroke="none" stroke-width="1" data-metric="storage-benchmark" data-value="74.33"/>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="300" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">UE · 4 novembre 2026</text>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="425" font-family="l0g US LNG Winter" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-paper)">DÉBIT DE SOUTIRAGE</text>
+<text data-panel="ul26-thresholds-fr-m-frame" x="398" y="425" font-family="l0g US LNG Winter" font-size="26" font-weight="700" text-anchor="end" fill="var(--color-amber)">&lt; 30 %</text>
+<rect x="22" y="452" width="376" height="22" rx="0" fill="var(--color-surface-2)" stroke="none" stroke-width="1"/>
+<rect x="22" y="452" width="112.8" height="22" rx="0" fill="var(--color-amber)" stroke="none" stroke-width="1" data-metric="storage-benchmark" data-value="30"/>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="514" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Le débit disponible tend à diminuer.</text>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="639" font-family="l0g US LNG Winter" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-paper)">SCÉNARIO DE STRESS</text>
+<text data-panel="ul26-thresholds-fr-m-frame" x="398" y="639" font-family="l0g US LNG Winter" font-size="26" font-weight="700" text-anchor="end" fill="var(--color-accent)">&lt; 10 %</text>
+<rect x="22" y="666" width="376" height="22" rx="0" fill="var(--color-surface-2)" stroke="none" stroke-width="1"/>
+<rect x="22" y="666" width="37.6" height="22" rx="0" fill="var(--color-accent)" stroke="none" stroke-width="1" data-metric="storage-benchmark" data-value="10"/>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="728" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Fin mars 2027 : froid et perturbations</text>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="756" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">prolongées à Ormuz, selon l’AIE.</text>
+<path d="M22 898 L398 898" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="ul26-thresholds-fr-m-frame" x="22" y="932" font-family="l0g US LNG Winter" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">GIE / AIE</text>
+<text data-panel="ul26-thresholds-fr-m-frame" x="396" y="932" font-family="l0g US LNG Winter" font-size="19" font-weight="700" text-anchor="end" fill="var(--color-signal)">l0g.fr</text>
+</svg>

@@ -1910,6 +1910,36 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    "slug": "fob",
+    "sigle": "FOB",
+    "nom": "Free on board: LNG delivery at the export terminal",
+    "def": "In the LNG contracts described by Cheniere, delivery means the buyer takes the cargo at the seller's export terminal. Onward shipping falls within the buyer's commercial arrangements. Pricing, cancellation obligations and destination flexibility must be assessed from the contract's individual terms.",
+    "guide": "/en/analysis/us-lng-europe-winter-2026/",
+    "sectionTitle": "Energy & geopolitics",
+    "accent": "var(--color-amber)",
+    "robots": "noindex,follow",
+    "atlas": {
+      "articles": [
+        {
+          "label": "US LNG contracts and Europe's winter",
+          "href": "/en/analysis/us-lng-europe-winter-2026/",
+          "kind": "article"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Cheniere Energy, 2025 Form 10-K",
+          "href": "https://lngir.cheniere.com/sec-filings/all-sec-filings/content/0000003570-26-000005/lng-20251231.htm",
+          "detail": "Definitions, FOB; Note 12, Revenues: delivery at the export terminal, pricing formulas and fixed fees. Company disclosures about its own LNG contracts.",
+          "kind": "source"
+        }
+      ],
+      "related": [
+        "ttf"
+      ]
+    }
+  },
+  {
     slug: 'capacite-de-soutirage', sigle: 'Withdrawal capacity', nom: 'Gas storage deliverability',
     def: 'The amount of gas a storage facility can withdraw per unit of time, usually a day. It depends on inventory, pressure, compression and surface equipment. Available flow generally declines as gas is withdrawn. Stored energy and withdrawal capacity measure different characteristics.',
     guide: '/en/analysis/european-gas-bridging-gap-between-cargoes/', ...energySection, robots: 'noindex,follow',
