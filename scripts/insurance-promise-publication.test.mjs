@@ -1,3 +1,4 @@
+import { renderedPublicationCards } from './publication-catalog-test-utils.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -237,7 +238,7 @@ test('both catalogues retain the insurer book after the machines and cum-cum edi
   for (const book of Object.values(insurancePromiseEditions)) {
     const route = book.lang === 'fr' ? 'publications' : 'en/publications';
     const html = readFileSync(join(ROOT, 'dist', route, 'index.html'), 'utf8');
-    const cards = nodes(parse(html)).filter(node => node.tagName === 'article' && hasClass(node, 'publication-spotlight'));
+    const cards = renderedPublicationCards(ROOT, book.lang);
     assert.equal(cards.length, book.lang === 'fr' ? 18 : 15);
     assert(hasClass(cards[0], 'publication-spotlight--ordinary-machines'));
     assert(hasClass(cards[1], 'publication-spotlight--cumcum'));
