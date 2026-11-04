@@ -2,19 +2,26 @@
 import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import PublicationSpotlight from '../../../components/PublicationSpotlight.astro';
 import { SITE_URL } from '../../../config/entities.ts';
+import AnalysisPagination from '../../../components/AnalysisPagination.astro';
+import { publicationPage, publicationPageHref } from '../../../config/publication-catalog.mjs';
 
-const pageUrl = `${SITE_URL}/en/publications/`;
+interface Props { currentPage?: number }
+const page = publicationPage('en', Astro.props.currentPage ?? 1);
+const isFirst = page.currentPage === 1;
+const pageUrl = `${SITE_URL}${publicationPageHref('en', page.currentPage)}`;
 ---
 
 <EnglishLayout
-  title="English publications"
-  description="Free English l0g publications that preserve source links, reading order, limitations and correction paths."
+  title={isFirst ? 'English publications' : `English publications, page ${page.currentPage}`}
+  description={isFirst
+    ? 'Free English l0g publications that preserve source links, reading order, limitations and correction paths.'
+    : `English l0g publications, page ${page.currentPage} of ${page.totalPages}. Free EPUB investigations with sources, reading order and limitations.`}
   canonical={pageUrl}
-  alternateLinks={[
+  alternateLinks={isFirst ? [
     { hreflang: 'en', href: pageUrl },
     { hreflang: 'fr', href: `${SITE_URL}/publications/` },
     { hreflang: 'x-default', href: `${SITE_URL}/publications/` },
-  ]}
+  ] : []}
   ogImage="/publications/the-war-on-everyday-machines-og-v1.jpg"
   ogImageAlt="The War on Everyday Machines. Seven l0g analyses, their sources and thirty-three infographics, in a free EPUB."
 >
@@ -30,21 +37,16 @@ const pageUrl = `${SITE_URL}/en/publications/`;
   <section class="publication-list" aria-labelledby="publication-list-title">
     <p class="mono-label">// available now</p>
     <h2 id="publication-list-title">English editions</h2>
-    <PublicationSpotlight lang="en" publication="ordinary-machines" />
-    <PublicationSpotlight lang="en" publication="cumcum" />
-    <PublicationSpotlight lang="en" publication="insurance-promise" />
-    <PublicationSpotlight lang="en" publication="cyber-recovery" />
-    <PublicationSpotlight lang="en" publication="debt-chain" />
-    <PublicationSpotlight lang="en" publication="microsoft" />
-    <PublicationSpotlight lang="en" publication="reserves" />
-      <PublicationSpotlight lang="en" publication="ai-slowdown" />
-    <PublicationSpotlight lang="en" publication="ia-recouvrement" />
-    <PublicationSpotlight lang="en" publication="scpi" />
-    <PublicationSpotlight lang="en" publication="oil-trading" />
-    <PublicationSpotlight lang="en" publication="e-invoicing" />
-    <PublicationSpotlight lang="en" publication="water-electricity" />
-    <PublicationSpotlight lang="en" publication="digital-euro" />
-    <PublicationSpotlight lang="en" />
+    <p class="publication-range">Publications {page.start} to {page.end} of {page.total} · Page {page.currentPage} of {page.totalPages}</p>
+    {page.items.map((item) => <PublicationSpotlight lang="en" publication={item.id} />)}
+    <AnalysisPagination
+      currentPage={page.currentPage}
+      totalPages={page.totalPages}
+      pageHref={(number) => publicationPageHref('en', number)}
+      ariaLabel="Publications pagination"
+      previousLabel="Previous"
+      nextLabel="Next"
+    />
   </section>
 </EnglishLayout>
 
@@ -58,4 +60,5 @@ const pageUrl = `${SITE_URL}/en/publications/`;
   .publication-list > .mono-label { color: var(--color-amber); }
   .publication-list > h2 { margin: .35rem 0 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: var(--section-title-size); line-height: 1.25; }
   .publication-list :global(.publication-spotlight + .publication-spotlight) { margin-top: 1.25rem; }
+  .publication-range { margin: -0.25rem 0 1.5rem; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.7; }
 </style>

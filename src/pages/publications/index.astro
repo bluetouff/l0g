@@ -2,16 +2,24 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
+import AnalysisPagination from '../../components/AnalysisPagination.astro';
+import { publicationPage, publicationPageHref } from '../../config/publication-catalog.mjs';
+
+interface Props { currentPage?: number }
+const page = publicationPage('fr', Astro.props.currentPage ?? 1);
+const isFirst = page.currentPage === 1;
 ---
 
 <BaseLayout
-  title="Publications numériques"
-  description="Les essais et enquêtes l0g réunis en éditions numériques gratuites, structurées et vérifiables."
-  alternateLinks={[
+  title={isFirst ? 'Publications numériques' : `Publications numériques, page ${page.currentPage}`}
+  description={isFirst
+    ? 'Les essais et enquêtes l0g réunis en éditions numériques gratuites, structurées et vérifiables.'
+    : `Catalogue des publications numériques l0g, page ${page.currentPage} sur ${page.totalPages}. Essais et enquêtes gratuits en EPUB, avec leurs sources et références.`}
+  alternateLinks={isFirst ? [
     { hreflang: 'fr', href: 'https://l0g.fr/publications/' },
     { hreflang: 'en', href: 'https://l0g.fr/en/publications/' },
     { hreflang: 'x-default', href: 'https://l0g.fr/publications/' },
-  ]}
+  ] : []}
   ogImage="/publications/la-guerre-des-machines-ordinaires-og-v1.jpg"
   ogImageAlt="La guerre des machines ordinaires. Sept analyses l0g, leurs sources et trente-trois infographies, en EPUB gratuit."
 >
@@ -24,9 +32,9 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
       glyph="read"
       accent="var(--color-amber)"
       stats={[
-        { value: 18, label: 'éditions disponibles' },
+        { value: page.total, label: 'éditions disponibles' },
         { value: 127, label: 'chapitres et enquêtes' },
-        { value: 18, label: 'EPUB gratuits' },
+        { value: page.total, label: 'EPUB gratuits' },
       ]}
     >
       <Fragment slot="title">
@@ -38,26 +46,18 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
   <section class="publication-list" aria-labelledby="publication-list-title">
     <p class="mono-label">// catalogue</p>
     <h2 id="publication-list-title">Éditions disponibles</h2>
+    <p class="publication-range">Publications {page.start} à {page.end} sur {page.total} · Page {page.currentPage} sur {page.totalPages}</p>
     <div class="publication-grid">
-      <PublicationSpotlight publication="ordinary-machines" />
-      <PublicationSpotlight publication="cumcum" />
-      <PublicationSpotlight publication="insurance-promise" />
-      <PublicationSpotlight publication="cyber-recovery" />
-      <PublicationSpotlight publication="debt-chain" />
-      <PublicationSpotlight publication="microsoft" />
-      <PublicationSpotlight publication="reserves" />
-      <PublicationSpotlight publication="ai-slowdown" />
-      <PublicationSpotlight publication="ia-recouvrement" />
-      <PublicationSpotlight publication="commerce-traces" />
-      <PublicationSpotlight publication="scpi" />
-      <PublicationSpotlight publication="oil-trading" />
-      <PublicationSpotlight publication="digital-identity" />
-      <PublicationSpotlight publication="e-invoicing" />
-      <PublicationSpotlight publication="water-electricity" />
-      <PublicationSpotlight publication="digital-euro" />
-      <PublicationSpotlight />
-      <PublicationSpotlight publication="auditer-opacite" />
+      {page.items.map((item) => <PublicationSpotlight publication={item.id} />)}
     </div>
+    <AnalysisPagination
+      currentPage={page.currentPage}
+      totalPages={page.totalPages}
+      pageHref={(number) => publicationPageHref('fr', number)}
+      ariaLabel="Pagination des publications"
+      previousLabel="Précédent"
+      nextLabel="Suivant"
+    />
   </section>
 </BaseLayout>
 
@@ -74,4 +74,5 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
     line-height: 1.25;
   }
   .publication-grid { display: grid; gap: 1.25rem; }
+  .publication-range { margin: -0.25rem 0 1.5rem; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.7; }
 </style>

@@ -1,0 +1,16 @@
+---
+import Publications from '../index.astro';
+import { publicationPage } from '../../../config/publication-catalog.mjs';
+
+export function getStaticPaths() {
+  const { totalPages } = publicationPage('fr');
+  return Array.from({ length: totalPages - 1 }, (_, index) => ({
+    params: { page: String(index + 2) },
+    props: { currentPage: index + 2 },
+  }));
+}
+
+const { currentPage } = Astro.props;
+---
+
+<Publications currentPage={currentPage} />

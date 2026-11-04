@@ -1,3 +1,4 @@
+import { publicationEntries } from '../src/config/publication-catalog.mjs';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
@@ -94,8 +95,6 @@ for (const edition of editions) {
 test('bilingual pages, cover files and catalog expose the exact editions', () => {
   const component = readFileSync(join(ROOT, 'src/components/EInvoicingEpubPage.astro'), 'utf8');
   const spotlight = readFileSync(join(ROOT, 'src/components/PublicationSpotlight.astro'), 'utf8');
-  const frIndex = readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8');
-  const enIndex = readFileSync(join(ROOT, 'src/pages/en/publications/index.astro'), 'utf8');
   const enHome = readFileSync(join(ROOT, 'src/pages/en/index.astro'), 'utf8');
   assert.match(readFileSync(editions[0].page, 'utf8'), /EInvoicingEpubPage lang="fr"/u);
   assert.match(readFileSync(editions[1].page, 'utf8'), /EInvoicingEpubPage lang="en"/u);
@@ -108,8 +107,8 @@ test('bilingual pages, cover files and catalog expose the exact editions', () =>
   assert.equal((component.match(/\/outils\//gu) ?? []).length >= 4, true);
   assert.equal((component.match(/\/en\/tools\//gu) ?? []).length >= 4, true);
   assert.match(spotlight, /publication === 'e-invoicing'/u);
-  assert.match(frIndex, /PublicationSpotlight publication="e-invoicing"/u);
-  assert.match(enIndex, /PublicationSpotlight lang="en" publication="e-invoicing"/u);
+  assert.ok(publicationEntries('fr').some((entry) => entry.id === 'e-invoicing'));
+  assert.ok(publicationEntries('en').some((entry) => entry.id === 'e-invoicing'));
   assert.match(enHome, /<LatestEnglishEpub \/>/u);
   assert.match(spotlight, /href=\{isEnglish \? '\/en\/publications\/' : '\/publications\/'\}/u);
   assert.match(spotlight, /isEnglish \? 'All publications' : 'Toutes les publications'/u);

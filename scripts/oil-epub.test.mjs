@@ -1,3 +1,4 @@
+import { publicationEntries } from '../src/config/publication-catalog.mjs';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
@@ -153,7 +154,7 @@ test(`${lang}: oil cover, responsive variants, social card and publication page 
   assert.match(page, /serializeInlineScriptData\(jsonLd\)/u);
   assert.match(page, /seoTitle=/u); assert.match(page, /ogTitle=/u);
   const index = readFileSync(join(ROOT, lang === 'fr' ? 'src/pages/publications/index.astro' : 'src/pages/en/publications/index.astro'), 'utf8');
-  assert.match(index, /publication="oil-trading"/u);
+  assert.ok(publicationEntries(lang).some((entry) => entry.id === 'oil-trading'));
   const catalogueImage = index.match(/ogImage="([^"]+)"/u)?.[1];
   assert.ok(catalogueImage?.startsWith('/publications/'));
   assert.ok(existsSync(join(ROOT, 'public', catalogueImage)));

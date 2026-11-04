@@ -1,3 +1,4 @@
+import { publicationEntries } from '../src/config/publication-catalog.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { execFileSync } from 'node:child_process';
@@ -131,9 +132,9 @@ test(`${book.lang}: dedicated cover, panorama and responsive assets meet publica
   const page = readFileSync(join(ROOT, book.lang === 'en' ? 'src/pages/en/publications/ai-debt-collection.astro' : 'src/pages/publications/ia-recouvrement.astro'), 'utf8');
   assert.match(page, /'@type': 'Book'/u); assert.match(page, /serializeInlineScriptData\(jsonLd\)/u);
   assert.match(page, /createHash\('sha256'\)/u); assert.match(page, /ogImage=\{book.social\}/u);
-  const catalogue = readFileSync(join(ROOT, book.lang === 'en' ? 'src/pages/en/publications/index.astro' : 'src/pages/publications/index.astro'), 'utf8');
-  assert(catalogue.indexOf('publication="ia-recouvrement"') < catalogue.indexOf(book.lang === 'en' ? 'publication="scpi"' : 'publication="commerce-traces"'));
-  assert(catalogue.includes('publication="ia-recouvrement"'), 'The older edition stays in the catalogue after a new release');
+  const ids = publicationEntries(book.lang).map((entry) => entry.id);
+  const next = book.lang === 'en' ? 'scpi' : 'commerce-traces';
+  assert.deepEqual(ids.filter((id) => ['ia-recouvrement', next].includes(id)), ['ia-recouvrement', next]);
   for (const lang of ['fr', 'en', 'x-default']) assert(page.includes(`hreflang: '${lang}'`));
   assert(page.includes(book.lang === 'en' ? 'translationOfWork:' : 'workTranslation:'));
   assert(page.includes(book.lang === 'en' ? 'Lire en français' : 'Read in English'));

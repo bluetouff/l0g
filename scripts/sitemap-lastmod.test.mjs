@@ -5,6 +5,17 @@ import test from 'node:test';
 import { asiaHubContentSources, parseSitemapContentEntry, referenceEditorialLastmod, sitemapLastmod } from '../src/config/sitemap-lastmod.mjs';
 import { treasuryBuybackReferenceFr, treasuryBuybackReferenceEn } from '../src/config/treasury-buyback-reference.ts';
 
+for (const base of ['/publications/', '/en/publications/']) {
+  test(`${base} gives paginated catalogue routes a source-backed lastmod`, () => {
+    const first = new Date(sitemapLastmod(`https://l0g.fr${base}`)).getTime();
+    for (const number of [2, 3]) {
+      const value = sitemapLastmod(`https://l0g.fr${base}page/${number}/`);
+      assert.match(value, /^\d{4}-\d{2}-\d{2}T/u);
+      assert.ok(new Date(value).getTime() >= first);
+    }
+  });
+}
+
 const cases = [
   {
     url: 'https://l0g.fr/posts/13flow/',

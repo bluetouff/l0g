@@ -1,3 +1,4 @@
+import { publicationEntries } from '../src/config/publication-catalog.mjs';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
@@ -94,7 +95,6 @@ test('cover, publication page and catalog expose the exact digital identity edit
   const cover = await sharp(COVER).metadata();
   const page = readFileSync(PAGE, 'utf8');
   const spotlight = readFileSync(join(ROOT, 'src/components/PublicationSpotlight.astro'), 'utf8');
-  const catalog = readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8');
   assert.equal(cover.format, 'jpeg');
   assert.equal(cover.width, 1024);
   assert.equal(cover.height, 1638);
@@ -106,12 +106,11 @@ test('cover, publication page and catalog expose the exact digital identity edit
   assert.match(page, /decoding="async"/u);
   assert.match(page, /23 infographies/u);
   assert.match(spotlight, /publication === 'digital-identity'/u);
-  assert.match(catalog, /PublicationSpotlight publication="digital-identity"/u);
+  assert.ok(publicationEntries('fr').some((entry) => entry.id === 'digital-identity'));
 });
 
 test('the dedicated page exposes five optimized editorial images', async () => {
   const page = readFileSync(PAGE, 'utf8');
-  const catalog = readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8');
   const images = [
     { file: 'identite-telephone-chaine.webp', format: 'webp', width: 1200, height: 675 },
     { file: 'identite-telephone-contrats.webp', format: 'webp', width: 1200, height: 675 },
@@ -133,5 +132,5 @@ test('the dedicated page exposes five optimized editorial images', async () => {
   for (const file of images.slice(0, 4).map((image) => image.file)) assert.match(page, new RegExp(file, 'u'));
   assert.match(page, /Ces illustrations éditoriales sont conceptuelles/u);
   assert.match(page, /identite-telephone-og\.jpg/u);
-  assert.match(catalog, /publication="digital-identity"/u, 'the identity edition remains discoverable when a newer book becomes the catalog cover');
+  assert.ok(publicationEntries('fr').some((entry) => entry.id === 'digital-identity'), 'the identity edition remains discoverable when a newer book becomes the catalog cover');
 });

@@ -14,11 +14,12 @@ import { scpiEditions } from '../config/scpi-publication.mjs';
 import { recouvrementBookEn } from '../config/ia-recouvrement-publication-en.mjs';
 import { recouvrementBook } from '../config/ia-recouvrement-publication.mjs';
 import { commerceTracesBook } from '../config/commerce-traces-publication.mjs';
+import { publicationCatalog } from '../config/publication-catalog.mjs';
 
 interface Props {
   headingLevel?: 'h2' | 'h3';
   lang?: 'fr' | 'en';
-  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity' | 'e-invoicing' | 'digital-identity' | 'oil-trading' | 'scpi' | 'commerce-traces' | 'ia-recouvrement' | 'ai-slowdown' | 'reserves' | 'microsoft' | 'debt-chain' | 'cyber-recovery' | 'insurance-promise' | 'cumcum' | 'ordinary-machines';
+  publication?: (typeof publicationCatalog)[number]['id'];
   showAllPublicationsLink?: boolean;
 }
 

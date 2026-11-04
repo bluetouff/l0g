@@ -1,3 +1,4 @@
+import { publicationEntries } from '../src/config/publication-catalog.mjs';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
@@ -86,8 +87,6 @@ for (const edition of editions) {
 test('les pages bilingues, les couvertures et le catalogue exposent les éditions exactes', () => {
   const component = readFileSync(join(ROOT, 'src/components/WaterElectricityEpubPage.astro'), 'utf8');
   const spotlight = readFileSync(join(ROOT, 'src/components/PublicationSpotlight.astro'), 'utf8');
-  const frIndex = readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8');
-  const enIndex = readFileSync(join(ROOT, 'src/pages/en/publications/index.astro'), 'utf8');
   assert.match(readFileSync(editions[0].page, 'utf8'), /WaterElectricityEpubPage lang="fr"/u);
   assert.match(readFileSync(editions[1].page, 'utf8'), /WaterElectricityEpubPage lang="en"/u);
   assert.match(component, /eau-electricite-europe-l0g\.epub/u);
@@ -100,8 +99,8 @@ test('les pages bilingues, les couvertures et le catalogue exposent les édition
   assert.equal((component.match(/\/outils\//gu) ?? []).length >= 7, true);
   assert.equal((component.match(/\/en\/tools\//gu) ?? []).length >= 7, true);
   assert.match(spotlight, /publication === 'water-electricity'/u);
-  assert.match(frIndex, /PublicationSpotlight publication="water-electricity"/u);
-  assert.match(enIndex, /PublicationSpotlight lang="en" publication="water-electricity"/u);
+  assert.ok(publicationEntries('fr').some((entry) => entry.id === 'water-electricity'));
+  assert.ok(publicationEntries('en').some((entry) => entry.id === 'water-electricity'));
   for (const file of ['eau-electricite-cover.png', 'water-electricity-cover.png']) {
     const image = readFileSync(join(ROOT, 'public/publications', file));
     assert.equal(image.subarray(1, 4).toString('ascii'), 'PNG');

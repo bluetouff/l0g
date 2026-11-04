@@ -374,11 +374,12 @@ test('la page Auditer l’Opacité expose le fichier, la couverture, deux cartes
   assert.deepEqual(jpegDimensions(cover), { width: 1600, height: 2560 });
 });
 
-test('le catalogue et la home gardent leurs cartes lisibles sur mobile', () => {
-  const index = readFileSync(PUBLICATIONS_INDEX, 'utf8');
+test('le catalogue et la home gardent leurs cartes lisibles sur mobile', async () => {
+  const { publicationEntries } = await import('../src/config/publication-catalog.mjs');
+  const ids = publicationEntries('fr').map((entry) => entry.id);
   const spotlight = readFileSync(PUBLICATION_SPOTLIGHT, 'utf8');
 
-  assert.ok(index.lastIndexOf('<PublicationSpotlight />') < index.indexOf('publication="auditer-opacite"'));
+  assert.deepEqual(ids.filter((id) => ['epstein', 'auditer-opacite'].includes(id)), ['epstein', 'auditer-opacite']);
   assert.match(spotlight, /meta: '\/\/ essai · édition l0g · mai 2026'/u);
   assert.match(spotlight, /@media \(max-width: 680px\)[\s\S]*?grid-template-columns: 1fr/u);
   assert.match(spotlight, /@media \(max-width: 680px\)[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/u);

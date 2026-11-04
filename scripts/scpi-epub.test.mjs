@@ -1,3 +1,4 @@
+import { publicationEntries } from '../src/config/publication-catalog.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { execFileSync } from 'node:child_process';
@@ -145,8 +146,7 @@ for (const [lang, book] of Object.entries(scpiEditions)) {
     assert.match(page, /serializeInlineScriptData\(jsonLd\)/u);
     assert.match(page, /seoTitle=/u); assert.match(page, /ogTitle=/u);
     assert.match(page, /hreflang: 'fr'/u); assert.match(page, /hreflang: 'en'/u);
-    const catalogue = readFileSync(join(ROOT, 'src/pages', lang === 'fr' ? 'publications/index.astro' : 'en/publications/index.astro'), 'utf8');
-    assert.match(catalogue, /publication="scpi"/u);
+    assert.ok(publicationEntries(lang).some((entry) => entry.id === 'scpi'));
     assert.match(page, /ogImage=\{book.social\}/u);
   });
 }

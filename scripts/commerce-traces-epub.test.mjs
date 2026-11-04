@@ -1,3 +1,4 @@
+import { publicationEntries } from '../src/config/publication-catalog.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { execFileSync } from 'node:child_process';
@@ -119,8 +120,8 @@ test('dedicated cover, panorama and responsive assets meet publication budgets',
   const page = readFileSync(join(ROOT, 'src/pages/publications/le-commerce-de-nos-traces.astro'), 'utf8');
   assert.match(page, /'@type': 'Book'/u); assert.match(page, /serializeInlineScriptData\(jsonLd\)/u);
   assert.match(page, /createHash\('sha256'\)/u); assert.match(page, /ogImage=\{book.social\}/u);
-  const catalogue = readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8');
-  assert(catalogue.indexOf('publication="commerce-traces"') < catalogue.indexOf('publication="scpi"'));
+  const ids = publicationEntries('fr').map((entry) => entry.id);
+  assert.deepEqual(ids.filter((id) => ['commerce-traces', 'scpi'].includes(id)), ['commerce-traces', 'scpi']);
   const spotlight = readFileSync(join(ROOT, 'src/components/PublicationSpotlight.astro'), 'utf8');
   assert(spotlight.includes('commerceTracesBook.cover'));
 });

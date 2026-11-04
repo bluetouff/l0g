@@ -188,6 +188,12 @@ export function sitemapLastmod(pageUrl) {
   if (pathname === '/' || /^\/\d+\/$/.test(pathname)) {
     paths.add('src/pages/[...page].astro');
     posts.forEach((path) => paths.add(path));
+  } else if (/^\/(?:en\/)?publications\/(?:page\/[1-9]\d*\/)?$/.test(pathname)) {
+    const directory = pathname.startsWith('/en/') ? 'src/pages/en/publications' : 'src/pages/publications';
+    paths.add(`${directory}/index.astro`);
+    paths.add('src/config/publication-catalog.mjs');
+    paths.add('src/components/PublicationSpotlight.astro');
+    if (pathname.includes('/page/')) paths.add(`${directory}/page/[page].astro`);
   } else if (pathname === '/atlas/' || pathname === '/en/atlas/') {
     paths.add('src/config/atlases.ts');
     paths.add('src/components/AtlasCollection.astro');
