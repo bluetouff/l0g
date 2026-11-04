@@ -17,6 +17,8 @@ import CyberRecoveryEpubCard from '../../components/CyberRecoveryEpubCard.astro'
 import InsurancePromiseEpubCard from '../../components/InsurancePromiseEpubCard.astro';
 import { insurancePromiseEditions } from '../../config/insurance-promise-publication.mjs';
 import CumCumEpubCard from '../../components/CumCumEpubCard.astro';
+import OrdinaryMachinesEpubCard from '../../components/OrdinaryMachinesEpubCard.astro';
+import { ordinaryMachinesEditions } from '../../config/ordinary-machines-publication.mjs';
 import { cumcumEditions } from '../../config/cumcum-publication.mjs';
 import { cyberRecoveryEditions } from '../../config/cyber-recovery-publication.mjs';
 import { debtEditions } from '../../config/debt-publication.mjs';
@@ -63,6 +65,7 @@ const hasDebtEpub = debtEditions.fr.chapters.some(chapter => chapter.slug === po
 const hasCyberRecoveryEpub = cyberRecoveryEditions.fr.chapters.some(chapter => chapter.slug === post.id);
 const hasInsurancePromiseEpub = insurancePromiseEditions.fr.chapters.some(chapter => chapter.slug === post.id);
 const hasCumCumEpub = cumcumEditions.fr.chapters.some(chapter => chapter.slug === post.id);
+const hasOrdinaryMachinesEpub = ordinaryMachinesEditions.fr.chapters.some(chapter => chapter.slug === post.id);
 const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
 const { Content, headings } = await render(post);
 
@@ -465,6 +468,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty;
     {hasCyberRecoveryEpub && <CyberRecoveryEpubCard lang="fr" />}
     {hasInsurancePromiseEpub && <InsurancePromiseEpubCard lang="fr" />}
     {hasCumCumEpub && <CumCumEpubCard lang="fr" />}
+    {hasOrdinaryMachinesEpub && <OrdinaryMachinesEpubCard lang="fr" />}
 
     <FrenchRelatedReading id={post.id} collection="posts" />
 

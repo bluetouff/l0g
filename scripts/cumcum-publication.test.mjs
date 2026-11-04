@@ -133,15 +133,16 @@ test('page contract rejects complete URL substitutions, altered hashes and missi
   }
 });
 
-test('both catalogues expose the new book first while retaining the older publications and truthful totals', () => {
+test('both catalogues retain the cum-cum edition after the machines book with truthful totals', () => {
   for (const book of Object.values(cumcumEditions)) {
     const route = book.lang === 'fr' ? 'publications' : 'en/publications';
     const all = nodes(parse(readFileSync(join(ROOT, 'dist', route, 'index.html'), 'utf8')));
     const cards = all.filter(node => node.tagName === 'article' && hasClass(node, 'publication-spotlight'));
-    assert.equal(cards.length, book.lang === 'fr' ? 17 : 14);
-    assert(hasClass(cards[0], 'publication-spotlight--cumcum'));
-    assert(hasClass(cards[1], 'publication-spotlight--insurance-promise'));
-    const first = nodes(cards[0]);
+    assert.equal(cards.length, book.lang === 'fr' ? 18 : 15);
+    assert(hasClass(cards[0], 'publication-spotlight--ordinary-machines'));
+    assert(hasClass(cards[1], 'publication-spotlight--cumcum'));
+    assert(hasClass(cards[2], 'publication-spotlight--insurance-promise'));
+    const first = nodes(cards[1]);
     const downloads = first.filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined);
     assert.equal(downloads.length, 1);assert.equal(attr(downloads[0], 'href'), book.epub);
     assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));
@@ -150,14 +151,14 @@ test('both catalogues expose the new book first while retaining the older public
     const facts = nodes(first.find(node => node.tagName === 'ul' && hasClass(node, 'publication-facts'))).filter(node => node.tagName === 'strong');
     assert.equal(plain(facts[0]), '6');assert.equal(plain(facts[1]), '26');
     const totalChapters = cards.reduce((sum, card) => sum + Number(plain(nodes(nodes(card).find(node => node.tagName === 'ul' && hasClass(node, 'publication-facts'))).find(node => node.tagName === 'strong'))), 0);
-    assert.equal(totalChapters, book.lang === 'fr' ? 120 : 93);
+    assert.equal(totalChapters, book.lang === 'fr' ? 127 : 100);
     const totalDownloads = cards.reduce((sum, card) => sum + nodes(card).filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined).length, 0);
     assert.equal(totalDownloads, cards.length);
     if (book.lang === 'fr') {
       const heroStats = nodes(sole(all, node => node.tagName === 'dl' && hasClass(node, 'page-hero-stats'), 'catalogue statistics')).filter(node => node.tagName === 'dd').map(node => Number(plain(node)));
       assert.deepEqual(heroStats, [cards.length, totalChapters, totalDownloads]);
     }
-    assert.equal(meta(all, 'property', 'og:image'), `${SITE}${book.social}`);
+    assert.equal(meta(all, 'property', 'og:image'), `${SITE}${book.lang === 'fr' ? '/publications/la-guerre-des-machines-ordinaires-og-v1.jpg' : '/publications/the-war-on-everyday-machines-og-v1.jpg'}`);
   }
 });
 

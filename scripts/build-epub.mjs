@@ -7,10 +7,16 @@ import { cyberRecoveryEditions } from '../src/config/cyber-recovery-publication.
 
 import { insurancePromiseEditions } from '../src/config/insurance-promise-publication.mjs';
 import { cumcumEditions } from '../src/config/cumcum-publication.mjs';
+import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
+  ...Object.values(ordinaryMachinesEditions).map(book => ({
+    source: join(ROOT, 'src/epub', book.directory),
+    output: join(ROOT, 'public', book.epub),
+    fixedTime: new Date(book.modified),
+  })),
   ...Object.values(cumcumEditions).map(book => ({
     source: join(ROOT, 'src/epub', book.directory),
     output: join(ROOT, 'public', book.epub),

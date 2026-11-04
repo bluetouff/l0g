@@ -13,6 +13,8 @@ const failures = [];
 const metadataOverFormerCutoffs = [];
 const pages = new Map();
 const publicationCovers = new Map([
+  ['publications/la-guerre-des-machines-ordinaires/index.html', 'la-guerre-des-machines-ordinaires'],
+  ['en/publications/the-war-on-everyday-machines/index.html', 'the-war-on-everyday-machines'],
   ['publications/cumcum-la-bataille-de-l-impot/index.html', 'cumcum-la-bataille-de-l-impot'],
   ['en/publications/cumcum-the-tax-battle/index.html', 'cumcum-the-tax-battle'],
   ['publications/l-argent-des-promesses/index.html', 'l-argent-des-promesses'],

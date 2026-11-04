@@ -1,0 +1,824 @@
+{
+  "schemaVersion": 1,
+  "edition": "urn:uuid:cd0ee77b-a438-5ec1-ad53-89cf3d8db508",
+  "lang": "fr",
+  "date": "2026-11-04",
+  "modified": "2026-11-04T06:28:25Z",
+  "sourceArticles": [
+    {
+      "lang": "fr",
+      "chapter": 1,
+      "file": "src/content/posts/guerre-machines-01-congelateurs-cible.mdx",
+      "canonical": "https://l0g.fr/posts/guerre-machines-01-congelateurs-cible/",
+      "sha256": "95aa808d15d78e5e93bd5e4f2b9f3d0abec82f7990d9173881f9c6bc1a93c307",
+      "published": "2026-11-03T10:17:11+01:00",
+      "updated": "2026-11-03T10:17:11+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 2,
+      "file": "src/content/posts/guerre-machines-02-qui-commande.mdx",
+      "canonical": "https://l0g.fr/posts/guerre-machines-02-qui-commande/",
+      "sha256": "1b5cea3d7933efe73decd94e3eca04c830e53ec87b6ea7f65a3a19a6723aa805",
+      "published": "2026-11-03T11:47:13+01:00",
+      "updated": "2026-11-03T11:47:13+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 3,
+      "file": "src/content/posts/guerre-machines-03-telemaintenance-prestataires.mdx",
+      "canonical": "https://l0g.fr/posts/guerre-machines-03-telemaintenance-prestataires/",
+      "sha256": "787f54127974eb65ad8fedecf65ef7109dbff83e234cda67b8028b9176e3343d",
+      "published": "2026-11-03T15:37:07+01:00",
+      "updated": "2026-11-03T15:37:07+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 4,
+      "file": "src/content/posts/guerre-machines-04-sabotage-attribution.mdx",
+      "canonical": "https://l0g.fr/posts/guerre-machines-04-sabotage-attribution/",
+      "sha256": "a1243b11da63baca39e5600831f48e02daf2103fba759567d605cd828db0f8ed",
+      "published": "2026-11-03T17:46:18+01:00",
+      "updated": "2026-11-03T17:46:18+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 5,
+      "file": "src/content/posts/guerre-machines-05-stocks-assurance-tresorerie.mdx",
+      "canonical": "https://l0g.fr/posts/guerre-machines-05-stocks-assurance-tresorerie/",
+      "sha256": "a4b0f72144cf8c98a797a8aafdacda6c8106a5d6ef9144f99f663deafbcde919",
+      "published": "2026-11-03T19:27:57+01:00",
+      "updated": "2026-11-03T19:27:57+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 6,
+      "file": "src/content/posts/guerre-machines-06-europe-parc-installe-nis2-cra.mdx",
+      "canonical": "https://l0g.fr/posts/guerre-machines-06-europe-parc-installe-nis2-cra/",
+      "sha256": "643c8c8248fe2c18ee3a124d48fcc2db1b5631eea5a8b01218c745601d44c8cb",
+      "published": "2026-11-03T22:23:31+01:00",
+      "updated": "2026-11-03T22:23:31+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 7,
+      "file": "src/content/posts/guerre-machines-07-prix-resilience-secours.mdx",
+      "canonical": "https://l0g.fr/posts/guerre-machines-07-prix-resilience-secours/",
+      "sha256": "5f88f65a44f85a077dfb68042713c261d4b2bdb0c604e35b325a81e371556d64",
+      "published": "2026-11-04T00:00:57+01:00",
+      "updated": "2026-11-04T00:00:57+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 1,
+      "file": "src/content/posts-en/ordinary-machines-01-freezers-target.mdx",
+      "canonical": "https://l0g.fr/en/analysis/ordinary-machines-01-freezers-target/",
+      "sha256": "f9609d1db6895c3621b96ff47d7fc8cbb6ee8bd30eda8057b2dfe9a4d7a07c42",
+      "published": "2026-11-03T10:17:11+01:00",
+      "updated": "2026-11-03T10:17:11+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 2,
+      "file": "src/content/posts-en/ordinary-machines-02-who-controls.mdx",
+      "canonical": "https://l0g.fr/en/analysis/ordinary-machines-02-who-controls/",
+      "sha256": "876fbf74ac18c24c1ea38348ad9dd536e2c6bda24636fea9e9a826c3327a0df5",
+      "published": "2026-11-03T11:47:13+01:00",
+      "updated": "2026-11-03T11:47:13+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 3,
+      "file": "src/content/posts-en/ordinary-machines-03-remote-maintenance-contractors.mdx",
+      "canonical": "https://l0g.fr/en/analysis/ordinary-machines-03-remote-maintenance-contractors/",
+      "sha256": "a35af7d41abad5c121ddead3b8a286c087c9d4e8a5891b674aac2008282facd0",
+      "published": "2026-11-03T15:37:07+01:00",
+      "updated": "2026-11-03T15:37:07+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 4,
+      "file": "src/content/posts-en/ordinary-machines-04-sabotage-attribution.mdx",
+      "canonical": "https://l0g.fr/en/analysis/ordinary-machines-04-sabotage-attribution/",
+      "sha256": "327466957949e8f0e7f1ebd1e1f0552f2894d7a4b293a6847fdfa8e22feb4cfd",
+      "published": "2026-11-03T17:46:18+01:00",
+      "updated": "2026-11-03T17:46:18+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 5,
+      "file": "src/content/posts-en/ordinary-machines-05-stock-loss-insurance-cash.mdx",
+      "canonical": "https://l0g.fr/en/analysis/ordinary-machines-05-stock-loss-insurance-cash/",
+      "sha256": "e07781d44dacffe5252a961fe0b7559f413aa72a45854c90677d635fcba09857",
+      "published": "2026-11-03T19:27:57+01:00",
+      "updated": "2026-11-03T19:27:57+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 6,
+      "file": "src/content/posts-en/ordinary-machines-06-europe-installed-equipment-nis2-cra.mdx",
+      "canonical": "https://l0g.fr/en/analysis/ordinary-machines-06-europe-installed-equipment-nis2-cra/",
+      "sha256": "4f45bf99705506cbafd6f470a0c8b41f84a9703aa3fb32c231411b7436c30144",
+      "published": "2026-11-03T22:23:31+01:00",
+      "updated": "2026-11-03T22:23:31+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 7,
+      "file": "src/content/posts-en/ordinary-machines-07-economics-recovery-capacity.mdx",
+      "canonical": "https://l0g.fr/en/analysis/ordinary-machines-07-economics-recovery-capacity/",
+      "sha256": "0223756fc7f1b36b2b7d1f7e2c6d1d770c9667dc374462371eae5d75f800d179",
+      "published": "2026-11-04T00:00:57+01:00",
+      "updated": "2026-11-04T00:00:57+01:00"
+    }
+  ],
+  "figures": [
+    {
+      "chapter": 1,
+      "figure": 1,
+      "kind": "timeline",
+      "mobile": false,
+      "sourceFile": "src/figures/cold-chain-01/timeline.fr.desktop.svg",
+      "sourceSha256": "2c49f22e8918772c72ecdaf93cc5a53dc52a75fac6b132728031deef9ac7db52",
+      "epubFile": "EPUB/media/file0.svg",
+      "epubSha256": "5ef65b404a5dfcbe5b85f98770aa3dbe45bf4bbc9ddf04f81c80311d58504aec"
+    },
+    {
+      "chapter": 1,
+      "figure": 1,
+      "kind": "timeline",
+      "mobile": true,
+      "sourceFile": "src/figures/cold-chain-01/timeline.fr.mobile.svg",
+      "sourceSha256": "723541f45984b1619d548fa35c15b41bfc4d6e93081a3f040dcc902bdd135114",
+      "epubFile": "EPUB/media/file1.svg",
+      "epubSha256": "69a454e768128ef03d78385e86d3824be0979d49d5f1d9d906e1cea909390719"
+    },
+    {
+      "chapter": 1,
+      "figure": 2,
+      "kind": "control",
+      "mobile": false,
+      "sourceFile": "src/figures/cold-chain-01/control.fr.desktop.svg",
+      "sourceSha256": "f94ac39656ceabb20242c3a9e257d126b42040838fe5aaa94ac53e1d9f0da88b",
+      "epubFile": "EPUB/media/file2.svg",
+      "epubSha256": "cf3b71559e0a4cbd05a97d7133ae202e88670745dac54d87bfce56c63bbc777c"
+    },
+    {
+      "chapter": 1,
+      "figure": 2,
+      "kind": "control",
+      "mobile": true,
+      "sourceFile": "src/figures/cold-chain-01/control.fr.mobile.svg",
+      "sourceSha256": "a62d016c766f4fc2a33cdc4a2a1b1d453c7ba2be1a55ae67c538f270880707ba",
+      "epubFile": "EPUB/media/file3.svg",
+      "epubSha256": "875f0b8bf7722c74bc78950a4ce313579865ce83f397ccc7c4fb1dae07f8be30"
+    },
+    {
+      "chapter": 1,
+      "figure": 3,
+      "kind": "temperature",
+      "mobile": false,
+      "sourceFile": "src/figures/cold-chain-01/temperature.fr.desktop.svg",
+      "sourceSha256": "93fcbc948052c37424650b4f3c0ca8b3cac491b600e50e214d55166ab0e1d4c6",
+      "epubFile": "EPUB/media/file4.svg",
+      "epubSha256": "0204df4c4a6c083fc68238e7075b4300755d4271f9972ef986d08f6e0f895693"
+    },
+    {
+      "chapter": 1,
+      "figure": 3,
+      "kind": "temperature",
+      "mobile": true,
+      "sourceFile": "src/figures/cold-chain-01/temperature.fr.mobile.svg",
+      "sourceSha256": "d6e4a7c841adf263b80a38df4fbaa6ce482cf4bfa19a57b8418199220efa3e3b",
+      "epubFile": "EPUB/media/file5.svg",
+      "epubSha256": "2188766273aad223827aea4db06cf3a3f13c3486c84353a4dd44f24aecb0f623"
+    },
+    {
+      "chapter": 1,
+      "figure": 4,
+      "kind": "logging",
+      "mobile": false,
+      "sourceFile": "src/figures/cold-chain-01/logging.fr.desktop.svg",
+      "sourceSha256": "49e6e12254890aa367de384d9046fcbad7b224370530ba9ebba2542953960be4",
+      "epubFile": "EPUB/media/file6.svg",
+      "epubSha256": "c943fa41dfd5f3ec35578f7e1a3d5d26d69ad504c9b83c0c3066d365b153f75b"
+    },
+    {
+      "chapter": 1,
+      "figure": 4,
+      "kind": "logging",
+      "mobile": true,
+      "sourceFile": "src/figures/cold-chain-01/logging.fr.mobile.svg",
+      "sourceSha256": "e2f6b0f0d697c7e1e241fb5836b8426e96019a9075a345187d34fc8151d8969e",
+      "epubFile": "EPUB/media/file7.svg",
+      "epubSha256": "4faa17cc87d9b1f4406b7b8445dae3cbe8720d5d4728d882ede8eb73c23d727c"
+    },
+    {
+      "chapter": 2,
+      "figure": 1,
+      "kind": "loop",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-authority-02/loop.fr.desktop.svg",
+      "sourceSha256": "e3a7ba2bb415f9c0bdd3ee3b1937a19f046d767642683aa0dc7aa9c18e558854",
+      "epubFile": "EPUB/media/file8.svg",
+      "epubSha256": "adf6dc6d4a22082708cfe1c56c333d2c7016d311e7e28429053804e4e81475d5"
+    },
+    {
+      "chapter": 2,
+      "figure": 1,
+      "kind": "loop",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-authority-02/loop.fr.mobile.svg",
+      "sourceSha256": "77b7a4d1a9e3f518c1dce22546e45ce7172f3a79e537045628d9704ad099a6ba",
+      "epubFile": "EPUB/media/file9.svg",
+      "epubSha256": "8a78d6c17908d01e4ac6a63e8db4192af1f4b4199023bfdaede500a9f27070b0"
+    },
+    {
+      "chapter": 2,
+      "figure": 2,
+      "kind": "copies",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-authority-02/copies.fr.desktop.svg",
+      "sourceSha256": "523add53457e0b2ea7aff9d45541cf96013f3bd2243fd69b96979a02b687e97f",
+      "epubFile": "EPUB/media/file10.svg",
+      "epubSha256": "794c55da8c7281c5d78b03814c7a4ee678a08ad5ce375b09e847b112e4adb03c"
+    },
+    {
+      "chapter": 2,
+      "figure": 2,
+      "kind": "copies",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-authority-02/copies.fr.mobile.svg",
+      "sourceSha256": "5cc140e73f5c2f694309c239f758550b72e1ad66d2994a0ddc21c114f65445dd",
+      "epubFile": "EPUB/media/file11.svg",
+      "epubSha256": "9e608841fd74e261e40ff6885f6b00e54cade01c3ae2ba401954abab0ca9c5f4"
+    },
+    {
+      "chapter": 2,
+      "figure": 3,
+      "kind": "failures",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-authority-02/failures.fr.desktop.svg",
+      "sourceSha256": "d57cc795d85a28c625dc886222cca49a0e66b579bf236689c43df478f1cd7400",
+      "epubFile": "EPUB/media/file12.svg",
+      "epubSha256": "62bd3495cc030cb4ce3a31244ba49ed0b906396876ef95c16bec7b82afcdeff4"
+    },
+    {
+      "chapter": 2,
+      "figure": 3,
+      "kind": "failures",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-authority-02/failures.fr.mobile.svg",
+      "sourceSha256": "b847fe288a7602b799b81e679229b29fce4fc3dacde5ebcb2d88d576d1bb9efa",
+      "epubFile": "EPUB/media/file13.svg",
+      "epubSha256": "ea6eed75f907c46c3bb8fd469941787673c7439c3806ae3f56dd192444310288"
+    },
+    {
+      "chapter": 2,
+      "figure": 4,
+      "kind": "boundaries",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-authority-02/boundaries.fr.desktop.svg",
+      "sourceSha256": "df987aed5eef79504ab898d9c8b21b0f1db556e7e935ba39389948820da7acd2",
+      "epubFile": "EPUB/media/file14.svg",
+      "epubSha256": "3499b48f83d5e3c39a42e84604e94ce59b2436e5cca10b3879db3d6551dc08a1"
+    },
+    {
+      "chapter": 2,
+      "figure": 4,
+      "kind": "boundaries",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-authority-02/boundaries.fr.mobile.svg",
+      "sourceSha256": "2692cc16e1539584f391925d5815a75c9a2c972ce9162d7ee98605dc17b8e053",
+      "epubFile": "EPUB/media/file15.svg",
+      "epubSha256": "2a2b9c1c295d397fd57e4d611e15486fd9c4bee2cc1e2344e2f3fe64b18bcc3e"
+    },
+    {
+      "chapter": 3,
+      "figure": 1,
+      "kind": "scope",
+      "mobile": false,
+      "sourceFile": "src/figures/remote-maintenance-03/scope.fr.desktop.svg",
+      "sourceSha256": "12318e1a0c38f517f2fe7cf12195eb13deb34f4fc11e6b35bcd403f5cd4cd8f2",
+      "epubFile": "EPUB/media/file16.svg",
+      "epubSha256": "adeeed5e2e35ef494c10f71526379870e0f38c44cfeb1b885275e4766f916593"
+    },
+    {
+      "chapter": 3,
+      "figure": 1,
+      "kind": "scope",
+      "mobile": true,
+      "sourceFile": "src/figures/remote-maintenance-03/scope.fr.mobile.svg",
+      "sourceSha256": "d829428389cb9f33c34e055aeb25558657cff90133e2f3c5402c982b86056ea0",
+      "epubFile": "EPUB/media/file17.svg",
+      "epubSha256": "5c6f7bd80b19ccd96204fa398e1ce4f409ce23745ad16ffa25cb3ec3b14dd67d"
+    },
+    {
+      "chapter": 3,
+      "figure": 2,
+      "kind": "tunnels",
+      "mobile": false,
+      "sourceFile": "src/figures/remote-maintenance-03/tunnels.fr.desktop.svg",
+      "sourceSha256": "cee6b6267f1f162fe578006e5ed6c25a821ada31c7c71dcde202c0391c0658b8",
+      "epubFile": "EPUB/media/file18.svg",
+      "epubSha256": "04f638974f57e90eb44648c99362a4803b6463e279e9351ca2f38ff14b7d83b1"
+    },
+    {
+      "chapter": 3,
+      "figure": 2,
+      "kind": "tunnels",
+      "mobile": true,
+      "sourceFile": "src/figures/remote-maintenance-03/tunnels.fr.mobile.svg",
+      "sourceSha256": "33a0bee2885d126209f09acf65ce8ca60a086d671e373cb76977d23f89a4e7fe",
+      "epubFile": "EPUB/media/file19.svg",
+      "epubSha256": "6afc4269131edd47dd47b175ef9dabe59d1d4847b1e408f7f65e87fe1b88f9c6"
+    },
+    {
+      "chapter": 3,
+      "figure": 3,
+      "kind": "authority",
+      "mobile": false,
+      "sourceFile": "src/figures/remote-maintenance-03/authority.fr.desktop.svg",
+      "sourceSha256": "8936dc4e6f4cdbde71d0980a5379273379a7371d51480ad9452742bf027966a2",
+      "epubFile": "EPUB/media/file20.svg",
+      "epubSha256": "4791d065d72ee755642ba7d7481e5862a0ab08cfaf9a42a3adb8f050b9873c9d"
+    },
+    {
+      "chapter": 3,
+      "figure": 3,
+      "kind": "authority",
+      "mobile": true,
+      "sourceFile": "src/figures/remote-maintenance-03/authority.fr.mobile.svg",
+      "sourceSha256": "f7d16ca370b437d95515f6dda407e9b54bd28d6301c609a7923e5affa81da8de",
+      "epubFile": "EPUB/media/file21.svg",
+      "epubSha256": "febca3040d97456502121fafc5b6b8b8d71e666c9a3552c39beaa5535c203513"
+    },
+    {
+      "chapter": 3,
+      "figure": 4,
+      "kind": "lifecycle",
+      "mobile": false,
+      "sourceFile": "src/figures/remote-maintenance-03/lifecycle.fr.desktop.svg",
+      "sourceSha256": "ae0c4d3a7e18d4e824625fb1f9ec97099090c499961b5eb39f99d6bf7ca60bfe",
+      "epubFile": "EPUB/media/file22.svg",
+      "epubSha256": "39253ee16525ccf7c55024fec63d6d89d116167a4e90a70dc0558857d6215dff"
+    },
+    {
+      "chapter": 3,
+      "figure": 4,
+      "kind": "lifecycle",
+      "mobile": true,
+      "sourceFile": "src/figures/remote-maintenance-03/lifecycle.fr.mobile.svg",
+      "sourceSha256": "cea2858b07e534415af11002d5759dca228c1366df8a066b4ef321c3076c5bd1",
+      "epubFile": "EPUB/media/file23.svg",
+      "epubSha256": "fb4b6059791a7f9a01307aeeac5eafdb4de9a8466bfefb4d8a071ec6cbd3819f"
+    },
+    {
+      "chapter": 3,
+      "figure": 5,
+      "kind": "isolation",
+      "mobile": false,
+      "sourceFile": "src/figures/remote-maintenance-03/isolation.fr.desktop.svg",
+      "sourceSha256": "43feebae15c82f7be8051afc62d4657929acfb42cadcce624761ffdf93b109bf",
+      "epubFile": "EPUB/media/file24.svg",
+      "epubSha256": "7b2f9216189057e0b83c30d1924242efc083e9b15140c192477f65e2b10eb78e"
+    },
+    {
+      "chapter": 3,
+      "figure": 5,
+      "kind": "isolation",
+      "mobile": true,
+      "sourceFile": "src/figures/remote-maintenance-03/isolation.fr.mobile.svg",
+      "sourceSha256": "4b35ffda252586d2251cdd828dfaedea00c64e6856fc804c3a6cb91cc45bea35",
+      "epubFile": "EPUB/media/file25.svg",
+      "epubSha256": "85ecf0ff91f303ad40f8d8d794b17dd1c2397dc472c39a41852cd880c7e9a3be"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "effects",
+      "mobile": false,
+      "sourceFile": "src/figures/sabotage-attribution-04/effects.fr.desktop.svg",
+      "sourceSha256": "c532628023c76622891c1fa992a217e6caa5c2a881aa528dbedbe8eaad1cf230",
+      "epubFile": "EPUB/media/file26.svg",
+      "epubSha256": "182589b95a76e7df54dd4bbba0c031ce179a1cd7dc794ebe4d1c6cf23bd6ae66"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "effects",
+      "mobile": true,
+      "sourceFile": "src/figures/sabotage-attribution-04/effects.fr.mobile.svg",
+      "sourceSha256": "6419215905c611da6ddc3edd87ccd6d52db0c14e54c8feb01edda40b552bd4bd",
+      "epubFile": "EPUB/media/file27.svg",
+      "epubSha256": "dd01695ccdf49562264735ff78e213cd85507d191b4eb736d03c9c0a05fa5fbc"
+    },
+    {
+      "chapter": 4,
+      "figure": 2,
+      "kind": "clocks",
+      "mobile": false,
+      "sourceFile": "src/figures/sabotage-attribution-04/clocks.fr.desktop.svg",
+      "sourceSha256": "052d6d16d796d458187c37f30b31cc56b3aab750d4328ea63898fca2c2c4137e",
+      "epubFile": "EPUB/media/file28.svg",
+      "epubSha256": "8625cb7e534fac57794156ae455312d55b5f9af18bc63b90944828510b5dd00f"
+    },
+    {
+      "chapter": 4,
+      "figure": 2,
+      "kind": "clocks",
+      "mobile": true,
+      "sourceFile": "src/figures/sabotage-attribution-04/clocks.fr.mobile.svg",
+      "sourceSha256": "74f60cab22225f4a0b2da6558ccbf558c523d2ae153b6dfc724a06e8e70221dc",
+      "epubFile": "EPUB/media/file29.svg",
+      "epubSha256": "dceee89223682befcbef179bc53ae3a2fdef323781179554e4a86025eb2d8fc4"
+    },
+    {
+      "chapter": 4,
+      "figure": 3,
+      "kind": "labels",
+      "mobile": false,
+      "sourceFile": "src/figures/sabotage-attribution-04/labels.fr.desktop.svg",
+      "sourceSha256": "3124798d2d93c5bcb7ad4bd665f3019c36d5755240e14fc4996fae0d680794ce",
+      "epubFile": "EPUB/media/file30.svg",
+      "epubSha256": "90cbebd8f78b017a6a588f2ca5428e679f18c2305c9440217cdd768c395c49dc"
+    },
+    {
+      "chapter": 4,
+      "figure": 3,
+      "kind": "labels",
+      "mobile": true,
+      "sourceFile": "src/figures/sabotage-attribution-04/labels.fr.mobile.svg",
+      "sourceSha256": "1fb0255d04a2c3271c0e5627d8225024ecfee674a879debdafba266a04881d3b",
+      "epubFile": "EPUB/media/file31.svg",
+      "epubSha256": "84af34361fdb1029bda8405305376213008349d3131c3ca3faac6f277a57e515"
+    },
+    {
+      "chapter": 4,
+      "figure": 4,
+      "kind": "attribution",
+      "mobile": false,
+      "sourceFile": "src/figures/sabotage-attribution-04/attribution.fr.desktop.svg",
+      "sourceSha256": "295f0a257ca460330e2f00494c1811a3228336c7922e1602eabd140550bbc0a0",
+      "epubFile": "EPUB/media/file32.svg",
+      "epubSha256": "88af72aa97ba20ffff2ccad44c07c8c678c9e32f151118bfc86ea83d2a35f6fc"
+    },
+    {
+      "chapter": 4,
+      "figure": 4,
+      "kind": "attribution",
+      "mobile": true,
+      "sourceFile": "src/figures/sabotage-attribution-04/attribution.fr.mobile.svg",
+      "sourceSha256": "5d5d60794829927828ec71c1dfbe9fdc5cdd1842c2bbf03055257953674c401e",
+      "epubFile": "EPUB/media/file33.svg",
+      "epubSha256": "4d29e01d8bad4f8a17ee0a2f6e25b6d946879a93cf8ae3ffa7f0983883b92a85"
+    },
+    {
+      "chapter": 4,
+      "figure": 5,
+      "kind": "recovery",
+      "mobile": false,
+      "sourceFile": "src/figures/sabotage-attribution-04/recovery.fr.desktop.svg",
+      "sourceSha256": "58a8fba62de51fc27e0158e993a13e470ddf0d29305db6da1793f251e1eb68b2",
+      "epubFile": "EPUB/media/file34.svg",
+      "epubSha256": "86912085a2ed6308ea4f86f9a93f2733d89c6e0414bc7ad24d055ed024e7002c"
+    },
+    {
+      "chapter": 4,
+      "figure": 5,
+      "kind": "recovery",
+      "mobile": true,
+      "sourceFile": "src/figures/sabotage-attribution-04/recovery.fr.mobile.svg",
+      "sourceSha256": "c71866ea17f60fa84ead70d303f85c40509196ef8d28b01cda8084871513112a",
+      "epubFile": "EPUB/media/file35.svg",
+      "epubSha256": "a1dbbbee73d6bd3dcc3b01cd77cb929d0385141f4154726b0b506532d8e28c49"
+    },
+    {
+      "chapter": 5,
+      "figure": 1,
+      "kind": "lot",
+      "mobile": false,
+      "sourceFile": "src/figures/cold-loss-05/lot.fr.desktop.svg",
+      "sourceSha256": "b5e06fcde3999019e7a1a92b50f7de4342f0d855134d47150373908763345156",
+      "epubFile": "EPUB/media/file36.svg",
+      "epubSha256": "178b8cfb1b76301a6e240f9bacf279c83f261c742b6b94158516beebca5a62cf"
+    },
+    {
+      "chapter": 5,
+      "figure": 1,
+      "kind": "lot",
+      "mobile": true,
+      "sourceFile": "src/figures/cold-loss-05/lot.fr.mobile.svg",
+      "sourceSha256": "6f92b79990fde56bb411b624d2d93b80ee9237406ce9d3ea6f6dd3da7e93c292",
+      "epubFile": "EPUB/media/file37.svg",
+      "epubSha256": "3516a04b057b44d0014fdd068da4ffe56f754eb2615bec7d25bb67c02a3fa3a0"
+    },
+    {
+      "chapter": 5,
+      "figure": 2,
+      "kind": "money",
+      "mobile": false,
+      "sourceFile": "src/figures/cold-loss-05/money.fr.desktop.svg",
+      "sourceSha256": "d7f52b18fe8c6988782a297184a521bb06adbe588db476e50b7019c7c967bcd9",
+      "epubFile": "EPUB/media/file38.svg",
+      "epubSha256": "0a5a3fa0e8bdfdcdb885bcc22832e9e2588b33249ebf1869ebb042eb4f4834fa"
+    },
+    {
+      "chapter": 5,
+      "figure": 2,
+      "kind": "money",
+      "mobile": true,
+      "sourceFile": "src/figures/cold-loss-05/money.fr.mobile.svg",
+      "sourceSha256": "4731ce630c00c4f5f0823f25441867614a870d7f7fb3010cab394cb8dbc7ea59",
+      "epubFile": "EPUB/media/file39.svg",
+      "epubSha256": "c5044d7b6478e8f711945d2bea7b855e00ccd311dd5fc687e22b3c553267fbbf"
+    },
+    {
+      "chapter": 5,
+      "figure": 3,
+      "kind": "coverage",
+      "mobile": false,
+      "sourceFile": "src/figures/cold-loss-05/coverage.fr.desktop.svg",
+      "sourceSha256": "486a57f66af44b271d10e2f81be310c9e6d9f5b1f68665ec269c851b9f0800a2",
+      "epubFile": "EPUB/media/file40.svg",
+      "epubSha256": "92f7906f3dee92aade74aa0ace7742139cca04339e99c653c54c2157b421fbeb"
+    },
+    {
+      "chapter": 5,
+      "figure": 3,
+      "kind": "coverage",
+      "mobile": true,
+      "sourceFile": "src/figures/cold-loss-05/coverage.fr.mobile.svg",
+      "sourceSha256": "72cd97abe30502cfdad42b3b6d633505ae77bb300a8b6949e698e96ca4028daf",
+      "epubFile": "EPUB/media/file41.svg",
+      "epubSha256": "7a49a1acf0e1418c9b6f4302d06490b3cecb48cba48fe0ee72fe23a2e8e0787f"
+    },
+    {
+      "chapter": 5,
+      "figure": 4,
+      "kind": "clocks",
+      "mobile": false,
+      "sourceFile": "src/figures/cold-loss-05/clocks.fr.desktop.svg",
+      "sourceSha256": "2158ac7d24fbed6684c26e5a0384aada6b88bcb443a8d2fb4f731fb6ebcb3fa6",
+      "epubFile": "EPUB/media/file42.svg",
+      "epubSha256": "82bbef568d97e0d931824b0fbde548fe57ec77a91cc286b0d1d10d0e6ffdbfb0"
+    },
+    {
+      "chapter": 5,
+      "figure": 4,
+      "kind": "clocks",
+      "mobile": true,
+      "sourceFile": "src/figures/cold-loss-05/clocks.fr.mobile.svg",
+      "sourceSha256": "55a121447ec643edd342dea4568f9027e6dccda3d0fa5cc87c92e2d138d578d1",
+      "epubFile": "EPUB/media/file43.svg",
+      "epubSha256": "12157e5d9ee8b8716da42a1f2788423e50ce08c92d988f5e6d60f1b1ba5429c4"
+    },
+    {
+      "chapter": 5,
+      "figure": 5,
+      "kind": "recovery",
+      "mobile": false,
+      "sourceFile": "src/figures/cold-loss-05/recovery.fr.desktop.svg",
+      "sourceSha256": "e09289bb09874892d3cf0499c1df4b9e0e909fd0cddf4df71e2b9877d7ee1bdf",
+      "epubFile": "EPUB/media/file44.svg",
+      "epubSha256": "6d050ed3c4dc9225651a4ac8cb2f6d9392d9863d5bf4066efe20d6516f99be98"
+    },
+    {
+      "chapter": 5,
+      "figure": 5,
+      "kind": "recovery",
+      "mobile": true,
+      "sourceFile": "src/figures/cold-loss-05/recovery.fr.mobile.svg",
+      "sourceSha256": "c16673628380b06086fdbba780e317b9c165279b9d2b21dd82de509f5f5257b8",
+      "epubFile": "EPUB/media/file45.svg",
+      "epubSha256": "122361a4033c994428fd6ec6638b2409e0227412b16260caaff41318b8804556"
+    },
+    {
+      "chapter": 6,
+      "figure": 1,
+      "kind": "stock",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-rules-06/stock.fr.desktop.svg",
+      "sourceSha256": "a476b153e846b1dfb6b5af46f4a09a15b8264c7c362ac3f165bbf7891afd3e96",
+      "epubFile": "EPUB/media/file46.svg",
+      "epubSha256": "b7c27306a73022ded8ef13689cfb8223d62b97c8a29605bfab6d30c7d4734acf"
+    },
+    {
+      "chapter": 6,
+      "figure": 1,
+      "kind": "stock",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-rules-06/stock.fr.mobile.svg",
+      "sourceSha256": "f83f55e4a7715e4c8c9d98d95e3916283127cf553b44a00cc0b1eefcb4eafeb5",
+      "epubFile": "EPUB/media/file47.svg",
+      "epubSha256": "a905b37b2b5cac5a6a7d6cd9a7bd61b5566bebd5c26c10e8cc98ff068a545386"
+    },
+    {
+      "chapter": 6,
+      "figure": 2,
+      "kind": "scope",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-rules-06/scope.fr.desktop.svg",
+      "sourceSha256": "40fe2d9decc19d74231a153c7a3a592459241f5f6b6d736e6175740455d902ec",
+      "epubFile": "EPUB/media/file48.svg",
+      "epubSha256": "82912b43773fe54ab590fc8eeb95583288f6129c7105ace973cfc2a5c9ae713b"
+    },
+    {
+      "chapter": 6,
+      "figure": 2,
+      "kind": "scope",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-rules-06/scope.fr.mobile.svg",
+      "sourceSha256": "9c6637f05fe675f0e88cd6789ca5b6cd9bb4024303dcdc865c39776c32a2da1d",
+      "epubFile": "EPUB/media/file49.svg",
+      "epubSha256": "c0268b4023414af779120481bce1decedce1eb5a9ef0e405cfdc39b4a2753fb6"
+    },
+    {
+      "chapter": 6,
+      "figure": 3,
+      "kind": "transition",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-rules-06/transition.fr.desktop.svg",
+      "sourceSha256": "4382b38fe4d65507c0138489fd19b106afc0249b6f3522557b74d06df5635608",
+      "epubFile": "EPUB/media/file50.svg",
+      "epubSha256": "d9e2ddb312e26a9fc9a5461f65b481f22653d792f425a36bd23aeeeef72cc017"
+    },
+    {
+      "chapter": 6,
+      "figure": 3,
+      "kind": "transition",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-rules-06/transition.fr.mobile.svg",
+      "sourceSha256": "47c8d1c4c17bd0f05afc69c87a9378dd72bc873d5da2de6553533ddfb4b580c6",
+      "epubFile": "EPUB/media/file51.svg",
+      "epubSha256": "4c245ad377c9e66e8f265c86bca4111a4a561870f014517e79d1b8ab623c5322"
+    },
+    {
+      "chapter": 6,
+      "figure": 4,
+      "kind": "support",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-rules-06/support.fr.desktop.svg",
+      "sourceSha256": "b0184b04e5b7d2646581f1f235368d098cda425a5098bee914926e489f55d3f1",
+      "epubFile": "EPUB/media/file52.svg",
+      "epubSha256": "803d292966bcb78fcfc1237d3d7dc868603f2eb2600deda39cf6209e8cda711d"
+    },
+    {
+      "chapter": 6,
+      "figure": 4,
+      "kind": "support",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-rules-06/support.fr.mobile.svg",
+      "sourceSha256": "3d5911aa64ddfc8ea310d861c31729e02abeecfaaee4d9ffd940a6a6f15ca859",
+      "epubFile": "EPUB/media/file53.svg",
+      "epubSha256": "6c45cbb3466c44670ebf9024779d9746933bdf83647dbb9f0161dcfba0f90ec0"
+    },
+    {
+      "chapter": 6,
+      "figure": 5,
+      "kind": "deployment",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-rules-06/deployment.fr.desktop.svg",
+      "sourceSha256": "98c5d533fa67eca734b3b1d6e1efaa7464921c497512356396e279d0e9ec5f0f",
+      "epubFile": "EPUB/media/file54.svg",
+      "epubSha256": "71b008fb7c713d9847704ce50e151c1472f388390c5020ed629a4e100635c67f"
+    },
+    {
+      "chapter": 6,
+      "figure": 5,
+      "kind": "deployment",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-rules-06/deployment.fr.mobile.svg",
+      "sourceSha256": "0be2f32e9892bcea4a00eb2f05006507dd2772c2993aaed0f238ccf05eb9aee3",
+      "epubFile": "EPUB/media/file55.svg",
+      "epubSha256": "4af30c21da518064716d3aa6ed2be15d1c5cc8db94a7a0430f4e2699b5bb4cd2"
+    },
+    {
+      "chapter": 7,
+      "figure": 1,
+      "kind": "hydro",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-resilience-07/hydro.fr.desktop.svg",
+      "sourceSha256": "690f3afeb5d9b05144d2b210caf949a92d8a0f9c96f905acf8b1571bf4e7c11e",
+      "epubFile": "EPUB/media/file56.svg",
+      "epubSha256": "a508f0fc0b31d2517d6ca7fb2e4b3096631eaa9c57396ff6c371bd28233285db"
+    },
+    {
+      "chapter": 7,
+      "figure": 1,
+      "kind": "hydro",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-resilience-07/hydro.fr.mobile.svg",
+      "sourceSha256": "b5060602cfec439fab69a755f9b6d820d0b5a96f9edc5f9e84bbbba7b501d942",
+      "epubFile": "EPUB/media/file57.svg",
+      "epubSha256": "90e77d2492bdf2efc4be2bc3a6e28c96bf39432b79734dad2b2aa3f8fd9a738c"
+    },
+    {
+      "chapter": 7,
+      "figure": 2,
+      "kind": "dependencies",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-resilience-07/dependencies.fr.desktop.svg",
+      "sourceSha256": "57f6e93d49fd27d9b1d46a04b647ebacb21803f2860627d3b712d2aede33f96b",
+      "epubFile": "EPUB/media/file58.svg",
+      "epubSha256": "be032d71a6bca5f5fbbd489f21fa0744a33e2248dbcc3307bdfd308275262eec"
+    },
+    {
+      "chapter": 7,
+      "figure": 2,
+      "kind": "dependencies",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-resilience-07/dependencies.fr.mobile.svg",
+      "sourceSha256": "9b4b9bc369c5e15423eb6e992411aea176a65a887077dd3a441a55c8689eba3a",
+      "epubFile": "EPUB/media/file59.svg",
+      "epubSha256": "cb216028cd40e14ea77e52bb9689b516c0da01d58cf8a5f0327f344d2b1df43e"
+    },
+    {
+      "chapter": 7,
+      "figure": 3,
+      "kind": "capacity",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-resilience-07/capacity.fr.desktop.svg",
+      "sourceSha256": "424bbad3d587a45ba30da3a7bbe6df5789224c6f2e0dce0de3a45318069d204e",
+      "epubFile": "EPUB/media/file60.svg",
+      "epubSha256": "2c2d90eb36b3a2d815fb56d47f7c52cc56835b26f0cf86b93d48cbe739a3b4ea"
+    },
+    {
+      "chapter": 7,
+      "figure": 3,
+      "kind": "capacity",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-resilience-07/capacity.fr.mobile.svg",
+      "sourceSha256": "598c9ef4c3eda0ff6c090689896b103fe9a9df02c57cc79e5551533ec25a0818",
+      "epubFile": "EPUB/media/file61.svg",
+      "epubSha256": "57aac6147f865d13e269dbd249f7b5920fa438fc6498de7536376d8ae6046789"
+    },
+    {
+      "chapter": 7,
+      "figure": 4,
+      "kind": "threshold",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-resilience-07/threshold.fr.desktop.svg",
+      "sourceSha256": "491c61634df7979b22ba993c1e5a2ef8226535f91a4b6809cf63520bf7c54fea",
+      "epubFile": "EPUB/media/file62.svg",
+      "epubSha256": "0dc6db1b5d56d945973024a3fdce7cf5e637b5c513480e98fda7222c92cc653e"
+    },
+    {
+      "chapter": 7,
+      "figure": 4,
+      "kind": "threshold",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-resilience-07/threshold.fr.mobile.svg",
+      "sourceSha256": "6a72bac5eb2544f604c1e137c7b945028e56d8508f753c5d057ff28ac63500f7",
+      "epubFile": "EPUB/media/file63.svg",
+      "epubSha256": "7c172b801d29f855271af1cdd88573f6b9f65bcaba6d8be702b671cdad0e1f17"
+    },
+    {
+      "chapter": 7,
+      "figure": 5,
+      "kind": "evidence",
+      "mobile": false,
+      "sourceFile": "src/figures/machine-resilience-07/evidence.fr.desktop.svg",
+      "sourceSha256": "a3eacae807b40053b2b1cd3b8cca946d24a969114677d148dbc478d627f6d477",
+      "epubFile": "EPUB/media/file64.svg",
+      "epubSha256": "9d08726712c13c09de6db290eb72b3b5b4f94b2be14b3d3fbd693a351fa8c5a5"
+    },
+    {
+      "chapter": 7,
+      "figure": 5,
+      "kind": "evidence",
+      "mobile": true,
+      "sourceFile": "src/figures/machine-resilience-07/evidence.fr.mobile.svg",
+      "sourceSha256": "fefc0427beac9bdc6dc842a75294000c7cc59563fc2c625fb4d7d797fd9907dd",
+      "epubFile": "EPUB/media/file65.svg",
+      "epubSha256": "291c0705056fa4302814b343844e6887516989c3118b72c64f54d8a9d6937a8d"
+    }
+  ],
+  "fonts": [
+    {
+      "file": "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+      "license": "LICENSE-inter.txt"
+    },
+    {
+      "file": "node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2",
+      "sha256": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e",
+      "license": "LICENSE-jetbrains-mono.txt"
+    },
+    {
+      "file": "public/fonts/stablecoins/dejavu-sans-400.ttf",
+      "sha256": "98f2d74db16bb5f41f74adf6d899aeec92861682cccc58bfdbe4d9d7d0a5ae11",
+      "license": "LICENSE-stablecoins.txt"
+    },
+    {
+      "file": "public/fonts/stablecoins/dejavu-sans-700.ttf",
+      "sha256": "21a0350a4ac2a9f22b6a7a8dcaf6abb08c8b546d06499301f1fcf10996fd0df5",
+      "license": "LICENSE-stablecoins.txt"
+    }
+  ],
+  "cover": {
+    "file": "public/publications/la-guerre-des-machines-ordinaires-cover.jpg",
+    "sha256": "72114d25afcf2168b9db58f4a15eab2e6860bac2fa91d0c3fd47184e6c89bd42"
+  },
+  "transformation": "Complete source bodies, notices, captions, methods and figure geometry. Disclosure content expanded for offline reading. Semantic dark paints resolved and original local vector fonts embedded. No JavaScript or external media resources."
+}

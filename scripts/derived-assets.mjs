@@ -9,6 +9,7 @@ import { englishPageSocialCards } from '../src/config/english-page-social.mjs';
 import { cyberRecoveryEditions } from '../src/config/cyber-recovery-publication.mjs';
 import { insurancePromiseEditions } from '../src/config/insurance-promise-publication.mjs';
 import { cumcumEditions } from '../src/config/cumcum-publication.mjs';
+import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
 import { runDerivedTask } from './derived-assets-cache.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
@@ -19,14 +20,14 @@ const coverOutputs = covers.flatMap((name) => [
   `public/publications/${name}-cover.jpg`, `public/publications/${name}-cover-social.jpg`,
 ]);
 const artworkOutputs = [
-  ...Object.values(cyberRecoveryEditions), ...Object.values(insurancePromiseEditions), ...Object.values(cumcumEditions),
+  ...Object.values(cyberRecoveryEditions), ...Object.values(insurancePromiseEditions), ...Object.values(cumcumEditions), ...Object.values(ordinaryMachinesEditions),
 ].map((book) => `src/epub-assets/${book.directory}-cover.png`);
-for (const prefix of ['cyber-recovery', 'insurance-promise', 'cumcum']) {
+for (const prefix of ['cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines']) {
   artworkOutputs.push(`public/publications/${prefix}-publication-panorama.jpg`);
   for (const width of [640, 960, 1600]) artworkOutputs.push(`public/publications/${prefix}-publication-panorama-${width}.webp`);
   artworkOutputs.push(`public/publications/og/art/${prefix}-v1.jpg`);
 }
-for (const book of Object.values(cumcumEditions)) {
+for (const book of [...Object.values(cumcumEditions), ...Object.values(ordinaryMachinesEditions)]) {
   artworkOutputs.push(publicPath(book.cover));
   for (const width of [320, 640, 960]) artworkOutputs.push(publicPath(book.cover.replace('.jpg', `-${width}.webp`)));
 }
@@ -49,7 +50,7 @@ export const derivedTasks = {
   },
   artwork: {
     script: 'build:artwork:generate',
-    inputs: [...commonInputs, ...fonts, 'src/config', ...['cyber-recovery', 'insurance-promise', 'cumcum'].flatMap((name) => [`src/epub-assets/${name}-cover-art.png`, `src/epub-assets/${name}-panorama.png`])],
+    inputs: [...commonInputs, ...fonts, 'src/config', ...['cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines'].flatMap((name) => [`src/epub-assets/${name}-cover-art.png`, `src/epub-assets/${name}-panorama.png`])],
     outputs: artworkOutputs,
   },
   og: {
