@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="mt26-treasury-fr-d-title mt26-treasury-fr-d-desc" style="width:100%;height:auto" class="l0g-midterms-svg"><title id="mt26-treasury-fr-d-title">Des besoins publiés avant le scrutin</title><desc id="mt26-treasury-fr-d-desc">Emprunts négociables nets auprès du secteur privé. Deux trimestres prévus et des hypothèses d’encaisse distinctes. Milliards de dollars.</desc>
+<rect id="mt26-treasury-fr-d-frame" x="0" y="0" width="1000" height="680" rx="12" fill="var(--color-ink)" stroke="none" stroke-width="1"/>
+<text data-panel="mt26-treasury-fr-d-frame" x="32" y="39" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">03 / MIDTERMS 2026</text>
+<text data-panel="mt26-treasury-fr-d-frame" x="32" y="85" font-family="l0g Midterms" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-paper)">Le Trésor avant le vote</text>
+<path data-connector="footer-rule" d="M32 615 L968 615" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-treasury-fr-d-frame" x="32" y="640" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources [12]</text>
+<text data-panel="mt26-treasury-fr-d-frame" x="968" y="640" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="end" fill="var(--color-signal)">l0g.fr</text>
+<text data-panel="mt26-treasury-fr-d-frame" x="32" y="144" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">EMPRUNT NET PRÉVU · Md$</text>
+<text data-panel="mt26-treasury-fr-d-frame" x="32" y="223" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Oct.–déc. 2026</text>
+<rect x="270" y="198" width="339.9" height="54" fill="var(--color-signal)" data-metric="borrowing" data-value="618"/>
+<text data-panel="mt26-treasury-fr-d-frame" x="597.9" y="235" font-family="l0g Midterms" font-size="30" font-weight="700" text-anchor="end" fill="var(--color-ink)">618</text>
+<rect id="mt26-treasury-fr-d-cash-0" x="745" y="177" width="223" height="121" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-treasury-fr-d-cash-0" x="761" y="209" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">ENCAISSE</text>
+<text data-panel="mt26-treasury-fr-d-cash-0" x="761" y="253" font-family="l0g Midterms" font-size="33" font-weight="700" text-anchor="start" fill="var(--color-paper)">850</text>
+<text data-panel="mt26-treasury-fr-d-cash-0" x="761" y="284" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Fin de trimestre</text>
+<text data-panel="mt26-treasury-fr-d-frame" x="32" y="397" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Janv.–mars 2027</text>
+<rect x="270" y="372" width="440" height="54" fill="var(--color-amber)" data-metric="borrowing" data-value="800"/>
+<text data-panel="mt26-treasury-fr-d-frame" x="698" y="409" font-family="l0g Midterms" font-size="30" font-weight="700" text-anchor="end" fill="var(--color-ink)">800</text>
+<rect id="mt26-treasury-fr-d-cash-1" x="745" y="351" width="223" height="121" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-treasury-fr-d-cash-1" x="761" y="383" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">ENCAISSE</text>
+<text data-panel="mt26-treasury-fr-d-cash-1" x="761" y="427" font-family="l0g Midterms" font-size="33" font-weight="700" text-anchor="start" fill="var(--color-paper)">1 000</text>
+<text data-panel="mt26-treasury-fr-d-cash-1" x="761" y="458" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Fin de trimestre</text>
+<path data-connector="axis" d="M270 512 L710 512" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="tick-0" d="M270 512 L270 520" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-treasury-fr-d-frame" x="270" y="552" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">0</text>
+<path data-connector="tick-200" d="M380 512 L380 520" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-treasury-fr-d-frame" x="380" y="552" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">200</text>
+<path data-connector="tick-400" d="M490 512 L490 520" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-treasury-fr-d-frame" x="490" y="552" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">400</text>
+<path data-connector="tick-600" d="M600 512 L600 520" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-treasury-fr-d-frame" x="600" y="552" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">600</text>
+<path data-connector="tick-800" d="M710 512 L710 520" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-treasury-fr-d-frame" x="710" y="552" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">800</text>
+<text data-panel="mt26-treasury-fr-d-frame" x="32" y="594" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Prévisions du 2 novembre 2026 ; stocks d’encaisse séparés.</text>
+</svg>

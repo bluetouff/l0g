@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 960" role="img" aria-labelledby="mt26-regulation-en-m-title mt26-regulation-en-m-desc" style="width:100%;height:auto" class="l0g-midterms-svg"><title id="mt26-regulation-en-m-title">Each rule has its own timetable</title><desc id="mt26-regulation-en-m-desc">Adoption, legal effectiveness and operational implementation are separate. A bill’s status requires a separate check.</desc>
+<rect id="mt26-regulation-en-m-frame" x="0" y="0" width="420" height="960" rx="10" fill="var(--color-ink)" stroke="none" stroke-width="1"/>
+<text data-panel="mt26-regulation-en-m-frame" x="22" y="33" font-family="l0g Midterms" font-size="18" font-weight="700" text-anchor="start" fill="var(--color-signal)">04 / US MIDTERMS 2026</text>
+<text data-panel="mt26-regulation-en-m-frame" x="22" y="72" font-family="l0g Midterms" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-paper)">Rules already in motion</text>
+<path data-connector="footer-rule" d="M22 882 L398 882" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-regulation-en-m-frame" x="22" y="907" font-family="l0g Midterms" font-size="18" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources [16] · [17] · [20] · [21]</text>
+<text data-panel="mt26-regulation-en-m-frame" x="22" y="143" font-family="l0g Midterms" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-signal)">BANKS</text>
+<rect id="mt26-regulation-en-m-bank-0" x="22" y="163" width="376" height="96" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-regulation-en-m-bank-0" x="38" y="193" font-family="l0g Midterms" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-signal)">30 SEPT. 2026</text>
+<text data-panel="mt26-regulation-en-m-bank-0" x="38" y="229" font-family="l0g Midterms" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-paper)">Final rule</text>
+<path data-connector="bank-step-0" d="M210 263 L210 280" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="bank-step-0-head" d="M204 274 L210 280 L216 274" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="mt26-regulation-en-m-bank-1" x="22" y="287" width="376" height="96" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-regulation-en-m-bank-1" x="38" y="317" font-family="l0g Midterms" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-signal)">1 DEC. 2026</text>
+<text data-panel="mt26-regulation-en-m-bank-1" x="38" y="353" font-family="l0g Midterms" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-paper)">Legal effect</text>
+<path data-connector="bank-step-1" d="M210 387 L210 404" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="bank-step-1-head" d="M204 398 L210 404 L216 398" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="mt26-regulation-en-m-bank-2" x="22" y="411" width="376" height="96" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-regulation-en-m-bank-2" x="38" y="441" font-family="l0g Midterms" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-signal)">2028</text>
+<text data-panel="mt26-regulation-en-m-bank-2" x="38" y="477" font-family="l0g Midterms" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-paper)">Two-test averaging</text>
+<text data-panel="mt26-regulation-en-m-frame" x="22" y="563" font-family="l0g Midterms" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-amber)">GENIUS / OCC</text>
+<rect id="mt26-regulation-en-m-occ-0" x="22" y="585" width="376" height="86" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-regulation-en-m-occ-0" x="38" y="613" font-family="l0g Midterms" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-amber)">21 OCT. 2026</text>
+<text data-panel="mt26-regulation-en-m-occ-0" x="38" y="647" font-family="l0g Midterms" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-paper)">OCC final rule</text>
+<path data-connector="occ-step" d="M210 675 L210 690" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="occ-step-head" d="M204 684 L210 690 L216 684" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="mt26-regulation-en-m-occ-1" x="22" y="697" width="376" height="86" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-regulation-en-m-occ-1" x="38" y="725" font-family="l0g Midterms" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-amber)">18 JAN. 2027</text>
+<text data-panel="mt26-regulation-en-m-occ-1" x="38" y="759" font-family="l0g Midterms" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-paper)">Announced effect</text>
+<rect id="mt26-regulation-en-m-clarity" x="22" y="810" width="376" height="82" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-regulation-en-m-clarity" x="38" y="839" font-family="l0g Midterms" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-accent)">CLARITY / H.R. 3633</text>
+<text data-panel="mt26-regulation-en-m-clarity" x="38" y="872" font-family="l0g Midterms" font-size="18" font-weight="400" text-anchor="start" fill="var(--color-paper)">After 15 September: verify status</text>
+</svg>

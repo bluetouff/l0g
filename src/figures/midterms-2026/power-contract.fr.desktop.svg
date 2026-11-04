@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="mt26-power-contract-fr-d-title mt26-power-contract-fr-d-desc" style="width:100%;height:auto" class="l0g-midterms-svg"><title id="mt26-power-contract-fr-d-title">Un engagement avant le courant</title><desc id="mt26-power-contract-fr-d-desc">Les travaux de raccordement et la fourniture d’électricité engagent deux contrats distincts.</desc>
+<rect id="mt26-power-contract-fr-d-frame" x="0" y="0" width="1000" height="680" rx="12" fill="var(--color-ink)" stroke="none" stroke-width="1"/>
+<text data-panel="mt26-power-contract-fr-d-frame" x="32" y="39" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">05 / MIDTERMS 2026</text>
+<text data-panel="mt26-power-contract-fr-d-frame" x="32" y="85" font-family="l0g Midterms" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-paper)">Le contrat précède le courant</text>
+<path data-connector="footer-rule" d="M32 615 L968 615" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-power-contract-fr-d-frame" x="32" y="640" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources [1] · [27]</text>
+<text data-panel="mt26-power-contract-fr-d-frame" x="968" y="640" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="end" fill="var(--color-signal)">l0g.fr</text>
+<rect id="mt26-power-contract-fr-d-works" x="32" y="149" width="408" height="145" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<rect id="mt26-power-contract-fr-d-supply" x="560" y="149" width="408" height="145" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-power-contract-fr-d-works" x="50" y="185" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">TRAVAUX / LOA</text>
+<text data-panel="mt26-power-contract-fr-d-works" x="50" y="229" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">Le client engage les coûts de</text>
+<text data-panel="mt26-power-contract-fr-d-works" x="50" y="264" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">raccordement.</text>
+<text data-panel="mt26-power-contract-fr-d-supply" x="580" y="185" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">FOURNITURE / ESA</text>
+<text data-panel="mt26-power-contract-fr-d-supply" x="580" y="229" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">Le service débute à la mise</text>
+<text data-panel="mt26-power-contract-fr-d-supply" x="580" y="264" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">sous tension.</text>
+<path data-connector="energization" d="M451 219 L548 219" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="energization-head" d="M540 211 L548 219 L540 227" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-power-contract-fr-d-frame" x="500" y="145" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Électricité</text>
+<path data-connector="customer-trigger" d="M220 302 L220 347" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="mt26-power-contract-fr-d-trigger" x="32" y="354" width="936" height="142" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-power-contract-fr-d-trigger" x="50" y="390" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-amber)">SI LE CLIENT ANNULE OU REPORTE DE PLUS DE 12 MOIS</text>
+<text data-panel="mt26-power-contract-fr-d-trigger" x="50" y="459" font-family="l0g Midterms" font-size="46" font-weight="700" text-anchor="start" fill="var(--color-amber)">100 %</text>
+<text data-panel="mt26-power-contract-fr-d-trigger" x="235" y="430" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">des coûts d’aménagement, avant la mise sous tension</text>
+<text data-panel="mt26-power-contract-fr-d-trigger" x="235" y="465" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">cible, selon le descriptif AEP.</text>
+<text data-panel="mt26-power-contract-fr-d-frame" x="32" y="552" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Causes, exceptions et contrat signé à examiner.</text>
+</svg>

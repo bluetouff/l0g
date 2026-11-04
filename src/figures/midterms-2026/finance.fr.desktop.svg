@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="mt26-finance-fr-d-title mt26-finance-fr-d-desc" style="width:100%;height:auto" class="l0g-midterms-svg"><title id="mt26-finance-fr-d-title">L’argent reçu laisse une obligation</title><desc id="mt26-finance-fr-d-desc">Deux mécanismes indépendants : une avance finance des prestations futures ; une garantie conditionnelle peut faire revenir le risque au garant.</desc>
+<rect id="mt26-finance-fr-d-frame" x="0" y="0" width="1000" height="680" rx="12" fill="var(--color-ink)" stroke="none" stroke-width="1"/>
+<text data-panel="mt26-finance-fr-d-frame" x="32" y="39" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">06 / MIDTERMS 2026</text>
+<text data-panel="mt26-finance-fr-d-frame" x="32" y="85" font-family="l0g Midterms" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-paper)">L’argent engage son destinataire</text>
+<path data-connector="footer-rule" d="M32 615 L968 615" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-finance-fr-d-frame" x="32" y="640" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources [29] · [30]</text>
+<text data-panel="mt26-finance-fr-d-frame" x="968" y="640" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="end" fill="var(--color-signal)">l0g.fr</text>
+<rect id="mt26-finance-fr-d-company-0" x="32" y="140" width="452" height="440" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-finance-fr-d-company-0" x="50" y="178" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">ORACLE</text>
+<text data-panel="mt26-finance-fr-d-company-0" x="50" y="230" font-family="l0g Midterms" font-size="38" font-weight="700" text-anchor="start" fill="var(--color-signal)">11,363 Md$</text>
+<text data-panel="mt26-finance-fr-d-company-0" x="50" y="269" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Avances avec financement,</text>
+<text data-panel="mt26-finance-fr-d-company-0" x="50" y="304" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">trimestre clos le 31 août 2026</text>
+<text data-panel="mt26-finance-fr-d-company-0" x="50" y="392" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">Client : avance de fonds</text>
+<path data-connector="company-flow-0-0" d="M67 405 L67 430" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="company-flow-0-0-head" d="M59 422 L67 430 L75 422" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-finance-fr-d-company-0" x="50" y="462" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">Oracle : service futur</text>
+<path data-connector="company-flow-0-1" d="M67 475 L67 500" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="company-flow-0-1-head" d="M59 492 L67 500 L75 492" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-finance-fr-d-company-0" x="50" y="532" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Droits fixés par le contrat</text>
+<rect id="mt26-finance-fr-d-company-1" x="516" y="140" width="452" height="440" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-finance-fr-d-company-1" x="534" y="178" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-amber)">META</text>
+<text data-panel="mt26-finance-fr-d-company-1" x="534" y="230" font-family="l0g Midterms" font-size="38" font-weight="700" text-anchor="start" fill="var(--color-amber)">41,493 Md$</text>
+<text data-panel="mt26-finance-fr-d-company-1" x="534" y="269" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Maximum de garantie au 30</text>
+<text data-panel="mt26-finance-fr-d-company-1" x="534" y="304" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">septembre 2026</text>
+<text data-panel="mt26-finance-fr-d-company-1" x="534" y="392" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">Événement prévu au contrat</text>
+<path data-connector="company-flow-1-0" d="M551 405 L551 430" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="company-flow-1-0-head" d="M543 422 L551 430 L559 422" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-finance-fr-d-company-1" x="534" y="462" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">Valeur sous le seuil garanti</text>
+<path data-connector="company-flow-1-1" d="M551 475 L551 500" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="company-flow-1-1-head" d="M543 492 L551 500 L559 492" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-finance-fr-d-company-1" x="534" y="532" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Obligation conditionnelle</text>
+<text data-panel="mt26-finance-fr-d-frame" x="32" y="601" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Meta : paiement jugé non probable.</text>
+</svg>

@@ -839,6 +839,16 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Régulation & institutions US',
     accent: 'var(--color-topic-blue)',
     entries: [
+      {
+        sigle: 'Crédits budgétaires américains', nom: 'Appropriations fédérales',
+        def: 'Autorité accordée par la loi à une administration fédérale pour engager des obligations et effectuer des paiements du Trésor dans un but déterminé. Les crédits fixent un périmètre et une période de disponibilité. Le contrat crée ensuite un engagement juridique ; le versement constitue une étape distincte. Une loi de financement provisoire peut prolonger temporairement cette autorité.',
+        guide: '/posts/midterms-pouvoirs-milliards-engages/',
+      },
+      {
+        sigle: 'Réconciliation budgétaire', nom: 'Procédure législative accélérée au Congrès américain',
+        def: 'Procédure permettant d’examiner certaines mesures de recettes, de dépenses ou de dette prévues par une résolution budgétaire du Congrès. Le débat est limité au Sénat, ce qui facilite le passage au vote final. Des règles encadrent les dispositions admissibles, notamment leur portée budgétaire. Le texte adopté reste soumis à la signature présidentielle et au pouvoir de veto.',
+        guide: '/posts/midterms-pouvoirs-milliards-engages/',
+      },
       {"sigle": "PBC", "nom": "Public benefit corporation du Delaware", "def": "Société à but lucratif dont les statuts identifient un bénéfice public à promouvoir. Ses administrateurs doivent équilibrer les intérêts financiers des actionnaires, ceux des personnes matériellement affectées et ce bénéfice public. Les conditions de recours découlent du droit du Delaware. La propriété et le contrôle dépendent des titres, des statuts et des accords de gouvernance.", "guide": "/posts/gouvernance-ia-anthropic-etat-nationalisation/"},
       {"sigle": "Golden share", "nom": "Action à droits spéciaux", "def": "Action conférant à son détenteur des pouvoirs particuliers sur des décisions définies par les statuts ou un accord. Ces droits peuvent donner à un État une capacité de nomination ou de consentement distincte de sa participation économique. Chez U. S. Steel, la Golden Share est une action non économique dont les pouvoirs portent sur des matières énumérées dans l’accord de sécurité nationale.", "guide": "/posts/gouvernance-ia-anthropic-etat-nationalisation/"},
 
@@ -1000,7 +1010,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-10-31';
+export const glossaryUpdatedIso = '2026-11-04';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1243,6 +1253,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'credits-budgetaires-americains': {
+    articles: [{ label: 'Midterms : pouvoirs publics et milliards engagés', href: '/posts/midterms-pouvoirs-milliards-engages/', kind: 'article' }],
+    sources: [{ label: 'Congressional Budget Office, Common Budgetary Terms Explained', href: 'https://www.cbo.gov/publication/57660', detail: 'Décembre 2021 : autorité budgétaire, engagements, paiements et lois de financement provisoire.', kind: 'source' }],
+    related: ['reconciliation-budgetaire'],
+  },
+  'reconciliation-budgetaire': {
+    articles: [{ label: 'Midterms : pouvoirs publics et milliards engagés', href: '/posts/midterms-pouvoirs-milliards-engages/', kind: 'article' }],
+    sources: [{ label: 'Congressional Research Service, The Reconciliation Process: Frequently Asked Questions', href: 'https://www.congress.gov/crs-product/R48444', detail: 'Version du 6 mars 2025 : champ, limites du débat au Sénat et exemples de veto.', kind: 'source' }],
+    related: ['credits-budgetaires-americains'],
+  },
   "redondance": {"articles": [{"label": "Résilience industrielle : financer le secours", "href": "/posts/guerre-machines-07-prix-resilience-secours/", "kind": "article"}], "sources": [{"label": "National Institute of Standards and Technology (NIST), Guide de sécurité des technologies opérationnelles, NIST SP 800-82 révision 3", "href": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf", "detail": "Page imprimée 12 : redondance et limites face à une attaque malveillante.", "kind": "source"}], "related": ["ot", "continuite-de-service"]},
 
   "nis2": {"articles": [{"label": "Machines connectées : règles européennes et assistance", "href": "/posts/guerre-machines-06-europe-parc-installe-nis2-cra/", "kind": "article"}], "sources": [{"label": "Directive (UE) 2022/2555", "href": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj", "detail": "Articles 2–3, 20–23 et annexes I–II : champ, gestion du risque et signalement.", "kind": "source"}], "related": ["cra", "ot"]},

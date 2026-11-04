@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="mt26-calendar-en-d-title mt26-calendar-en-d-desc" style="width:100%;height:auto" class="l0g-midterms-svg"><title id="mt26-calendar-en-d-title">The vote and the decisions ahead</title><desc id="mt26-calendar-en-d-desc">Five distinct milestones: the political transition overlaps grid proceedings, government funding and regulatory implementation.</desc>
+<rect id="mt26-calendar-en-d-frame" x="0" y="0" width="1000" height="680" rx="12" fill="var(--color-ink)" stroke="none" stroke-width="1"/>
+<text data-panel="mt26-calendar-en-d-frame" x="32" y="39" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">01 / US MIDTERMS 2026</text>
+<text data-panel="mt26-calendar-en-d-frame" x="32" y="85" font-family="l0g Midterms" font-size="34" font-weight="700" text-anchor="start" fill="var(--color-paper)">Power changes in January</text>
+<path data-connector="footer-rule" d="M32 615 L968 615" fill="none" stroke="var(--color-line-strong)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-calendar-en-d-frame" x="32" y="640" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources [2] · [4] · [9] · [20] · [26]</text>
+<text data-panel="mt26-calendar-en-d-frame" x="968" y="640" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="end" fill="var(--color-signal)">l0g.fr</text>
+<rect id="mt26-calendar-en-d-old" x="32" y="135" width="552" height="60" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<rect id="mt26-calendar-en-d-new" x="604" y="135" width="364" height="60" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text data-panel="mt26-calendar-en-d-old" x="50" y="174" font-family="l0g Midterms" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-amber)">OUTGOING CONGRESS</text>
+<text data-panel="mt26-calendar-en-d-new" x="625" y="174" font-family="l0g Midterms" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-signal)">NEW MEMBERS</text>
+<path data-connector="timeline" d="M55 245 L945 245" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="mt26-calendar-en-d-milestone-0" x="32" y="290" width="176" height="267" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<circle cx="52" cy="245" r="7" fill="var(--color-ink)" stroke="var(--color-amber)" stroke-width="3"/>
+<path data-connector="event-0" d="M52 254 L52 282" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-calendar-en-d-milestone-0" x="44" y="328" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-amber)">3 NOV.</text>
+<text data-panel="mt26-calendar-en-d-milestone-0" x="44" y="363" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-amber)">2026</text>
+<text data-panel="mt26-calendar-en-d-milestone-0" x="44" y="397" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Election</text>
+<text data-panel="mt26-calendar-en-d-milestone-0" x="44" y="465" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Called</text>
+<text data-panel="mt26-calendar-en-d-milestone-0" x="44" y="500" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">results</text>
+<rect id="mt26-calendar-en-d-milestone-1" x="222" y="290" width="176" height="267" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<circle cx="242" cy="245" r="7" fill="var(--color-ink)" stroke="var(--color-amber)" stroke-width="3"/>
+<path data-connector="event-1" d="M242 254 L242 282" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-calendar-en-d-milestone-1" x="234" y="328" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-amber)">16 / 20</text>
+<text data-panel="mt26-calendar-en-d-milestone-1" x="234" y="363" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-amber)">NOV.</text>
+<text data-panel="mt26-calendar-en-d-milestone-1" x="234" y="397" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Power</text>
+<text data-panel="mt26-calendar-en-d-milestone-1" x="234" y="432" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">grids</text>
+<text data-panel="mt26-calendar-en-d-milestone-1" x="234" y="465" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">FERC filings;</text>
+<text data-panel="mt26-calendar-en-d-milestone-1" x="234" y="500" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">SPP on 20th</text>
+<rect id="mt26-calendar-en-d-milestone-2" x="412" y="290" width="176" height="267" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<circle cx="432" cy="245" r="7" fill="var(--color-ink)" stroke="var(--color-amber)" stroke-width="3"/>
+<path data-connector="event-2" d="M432 254 L432 282" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-calendar-en-d-milestone-2" x="424" y="328" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-amber)">11 DEC.</text>
+<text data-panel="mt26-calendar-en-d-milestone-2" x="424" y="363" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-amber)">2026</text>
+<text data-panel="mt26-calendar-en-d-milestone-2" x="424" y="397" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Interim</text>
+<text data-panel="mt26-calendar-en-d-milestone-2" x="424" y="432" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">funding</text>
+<text data-panel="mt26-calendar-en-d-milestone-2" x="424" y="465" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">General</text>
+<text data-panel="mt26-calendar-en-d-milestone-2" x="424" y="500" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">deadline</text>
+<rect id="mt26-calendar-en-d-milestone-3" x="602" y="290" width="176" height="267" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<circle cx="622" cy="245" r="7" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="3"/>
+<path data-connector="event-3" d="M622 254 L622 282" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-calendar-en-d-milestone-3" x="614" y="328" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">3 JAN.</text>
+<text data-panel="mt26-calendar-en-d-milestone-3" x="614" y="363" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">2027</text>
+<text data-panel="mt26-calendar-en-d-milestone-3" x="614" y="397" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">New terms</text>
+<text data-panel="mt26-calendar-en-d-milestone-3" x="614" y="465" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Taking</text>
+<text data-panel="mt26-calendar-en-d-milestone-3" x="614" y="500" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">office</text>
+<rect id="mt26-calendar-en-d-milestone-4" x="792" y="290" width="176" height="267" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<circle cx="812" cy="245" r="7" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="3"/>
+<path data-connector="event-4" d="M812 254 L812 282" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="mt26-calendar-en-d-milestone-4" x="804" y="328" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">18 JAN.</text>
+<text data-panel="mt26-calendar-en-d-milestone-4" x="804" y="363" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">2027</text>
+<text data-panel="mt26-calendar-en-d-milestone-4" x="804" y="397" font-family="l0g Midterms" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Stablecoins</text>
+<text data-panel="mt26-calendar-en-d-milestone-4" x="804" y="465" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Announced</text>
+<text data-panel="mt26-calendar-en-d-milestone-4" x="804" y="500" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">OCC effect</text>
+<text data-panel="mt26-calendar-en-d-frame" x="32" y="581" font-family="l0g Midterms" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Documented milestones; schematic spacing.</text>
+</svg>

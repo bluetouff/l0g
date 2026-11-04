@@ -209,6 +209,30 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+    slug: 'credits-budgetaires-americains', sigle: 'US appropriations', nom: 'Federal spending authority',
+    def: 'Legal authority for a federal agency to incur obligations and make Treasury payments for specified purposes. An appropriation defines the scope and period of funding availability. A contract creates a legal commitment; the subsequent payment is a separate stage. A continuing resolution can provide temporary funding authority.',
+    guide: '/en/analysis/us-midterms-authority-financial-commitments/',
+    ...usRegulationSection,
+    robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'US midterms: public powers and financial commitments', href: '/en/analysis/us-midterms-authority-financial-commitments/', kind: 'article' }],
+      sources: [{ label: 'Congressional Budget Office, Common Budgetary Terms Explained', href: 'https://www.cbo.gov/publication/57660', detail: 'December 2021: budget authority, obligations, outlays and continuing resolutions.', kind: 'source' }],
+      related: ['reconciliation-budgetaire'],
+    },
+  },
+  {
+    slug: 'reconciliation-budgetaire', sigle: 'Budget reconciliation', nom: 'Expedited US congressional budget procedure',
+    def: 'A legislative process for certain revenue, spending or debt measures directed by a congressional budget resolution. Senate debate is limited, easing the route to a final vote. Rules constrain the provisions that may be included, particularly their budgetary scope. The resulting legislation remains subject to presidential signature and veto.',
+    guide: '/en/analysis/us-midterms-authority-financial-commitments/',
+    ...usRegulationSection,
+    robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'US midterms: public powers and financial commitments', href: '/en/analysis/us-midterms-authority-financial-commitments/', kind: 'article' }],
+      sources: [{ label: 'Congressional Research Service, The Reconciliation Process: Frequently Asked Questions', href: 'https://www.congress.gov/crs-product/R48444', detail: 'March 6, 2025 version: scope, Senate debate limits and examples of presidential vetoes.', kind: 'source' }],
+      related: ['credits-budgetaires-americains'],
+    },
+  },
   {"slug": "redondance", "sigle": "Redundancy", "nom": "Additional resources that can take over a function", "def": "An arrangement in which an additional resource can take over a function following a failure. Duplicated equipment may retain shared dependencies, such as the same administration environment. Assessing the fallback therefore requires examining the disruption scenario, the functions preserved and the process conditions.", "guide": "/en/analysis/ordinary-machines-07-economics-recovery-capacity/", "sectionTitle": "Digital economy & data", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "Industrial resilience: funding recovery capacity", "href": "/en/analysis/ordinary-machines-07-economics-recovery-capacity/", "kind": "article"}], "sources": [{"label": "National Institute of Standards and Technology (NIST), Guide to Operational Technology Security, NIST SP 800-82 Revision 3", "href": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf", "detail": "Printed page 12: redundancy and its limits against malicious attacks.", "kind": "source"}], "related": ["ot", "continuite-de-service"]}},
 
   {"slug": "nis2", "sigle": "NIS2", "nom": "EU directive on organisational cybersecurity", "def": "Directive (EU) 2022/2555 establishing cybersecurity risk-management and incident-reporting requirements for entities within its scope. Classification depends on sector, activities, size and specific statutory rules. National implementation must be checked in each member state; a customer’s contractual security requirement has a separate scope.", "guide": "/en/analysis/ordinary-machines-06-europe-installed-equipment-nis2-cra/", "sectionTitle": "Digital economy & data", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "European cyber rules and installed equipment", "href": "/en/analysis/ordinary-machines-06-europe-installed-equipment-nis2-cra/", "kind": "article"}], "sources": [{"label": "Directive (EU) 2022/2555", "href": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj", "detail": "Articles 2–3, 20–23 and Annexes I–II: scope, risk management and reporting.", "kind": "source"}], "related": ["cra", "ot"]}},
