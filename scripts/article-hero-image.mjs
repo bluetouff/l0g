@@ -11,16 +11,17 @@ function firstElement(root, matches) {
   return null;
 }
 
-// Only the first image in the article's own header may bypass lazy loading.
+// Only the first image in the publication’s own header may bypass lazy loading.
 // A marker elsewhere in the document does not make an image a priority hero.
 export function articleHeroImageStart(html, route) {
-  if (!/^(?:posts|en\/analysis)\/[^/]+\/index\.html$/.test(route)) return null;
+  const weekly = /^hebdo(?:\/[^/]+)?\/index\.html$/.test(route);
+  if (!weekly && !/^(?:posts|en\/analysis)\/[^/]+\/index\.html$/.test(route)) return null;
   const article = firstElement(fromHtml(html), (node) =>
     node.tagName === 'article' && Object.hasOwn(node.properties, 'dataPagefindBody'));
   const header = article?.children.find((node) => node.type === 'element'
-    && node.tagName === 'header' && node.properties.className?.includes('post-head'));
+    && node.tagName === 'header' && node.properties.className?.includes(weekly ? 'issue-head' : 'post-head'));
   const image = firstElement(header, (node) => node.tagName === 'img');
-  return image && Object.hasOwn(image.properties, 'dataArticleImage')
+  return image && Object.hasOwn(image.properties, weekly ? 'dataWeeklyCover' : 'dataArticleImage')
     ? image.position?.start.offset ?? null
     : null;
 }

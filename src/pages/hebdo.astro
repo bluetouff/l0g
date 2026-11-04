@@ -1,12 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
+import '../styles/weekly-magazine.css';
+import WeeklyMasthead from '../components/WeeklyMasthead.astro';
+import { weeklyIllustrations, weeklyCoverImage, weeklyCoverTitle, weeklyDate } from '../lib/weekly-presentation.ts';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WeeklyIssue from '../components/WeeklyIssue.astro';
-import { WEEKLY_SCHEDULE, latestWeeklyEdition, weeklyEditions } from '../config/weekly-editions.ts';
+import { latestWeeklyEdition, weeklyEditions } from '../config/weekly-editions.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
 
 const edition = latestWeeklyEdition();
+const illustrations = weeklyIllustrations(await getCollection('posts'));
 const archiveYears = new Map<string, typeof weeklyEditions>();
-for (const item of [...weeklyEditions].sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))) {
+for (const item of weeklyEditions.filter((item) => item.slug !== edition.slug).sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))) {
   const year = item.publishedAt.slice(0, 4);
   archiveYears.set(year, [...(archiveYears.get(year) ?? []), item]);
 }
@@ -21,64 +26,30 @@ const jsonLd = {
 
 <BaseLayout title="L’hebdo l0g : la revue de la semaine" description="Une lecture des dossiers de la semaine, leurs mécanismes, leurs limites et les prochaines vérifications. Sources, analyses et archives en accès libre." sidebar={false}>
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
-  <div class="weekly-page">
-    <header class="weekly-masthead">
-      <div class="weekly-brand"><p class="mono-label">// prendre du recul</p><h1>L’hebdo <span>l0g</span></h1></div>
-      <p class="weekly-promise">Les dossiers de la semaine.<br /><span>Leur portée, leurs limites, la suite à suivre.</span></p>
-      <nav aria-label="Suivre l’Hebdo"><a href="/hebdo/rss.xml" type="application/rss+xml">Flux RSS <span aria-hidden="true">↗</span></a><a href="#archives">Les éditions précédentes <span aria-hidden="true">↓</span></a></nav>
-    </header>
-    <div class="weekly-rhythm"><p>{WEEKLY_SCHEDULE.weekday} · 08 h 30, heure de Paris</p><span>Accès libre · sources ouvertes</span></div>
-
-    <WeeklyIssue edition={edition} />
+  <div class="weekly-magazine weekly-page">
+    <WeeklyMasthead home />
+    <WeeklyIssue edition={edition} illustrations={illustrations} />
     <p class="edition-permalink"><a href={`/hebdo/${edition.slug}/`}>Le lien permanent de cette édition <span aria-hidden="true">↗</span></a></p>
 
     <section class="watch-boundary" aria-labelledby="watch-title">
-      <div><p class="mono-label">// prolonger la lecture</p><h2 id="watch-title">L’Hebdo explique. Watch surveille.</h2><p>Retrouvez les nouveaux éléments et gardez votre historique de veille dans l0g Watch.</p></div>
+      <div><p class="magazine-eyebrow">Après la lecture</p><h2 id="watch-title">L’Hebdo explique. Watch surveille.</h2><p>Retrouvez les nouveaux éléments et gardez votre historique de veille dans l0g Watch.</p></div>
       <a href="https://watch.l0g.fr/" target="_blank" rel="noopener noreferrer">Découvrir Watch <span aria-hidden="true">↗</span></a>
     </section>
 
     <section class="weekly-archive" id="archives" aria-labelledby="archive-title">
-      <div class="archive-head"><div><p class="mono-label">// la collection</p><h2 id="archive-title">Les éditions précédentes</h2></div><a href="/hebdo/rss.xml" type="application/rss+xml">Suivre par RSS ↗</a></div>
+      <div class="archive-head"><div><p class="magazine-eyebrow">La bibliothèque de l’Hebdo</p><h2 id="archive-title">Les éditions précédentes</h2></div><p>Un autre dimanche, un autre regard.</p></div>
       {[...archiveYears].map(([year, editions]) => <section class="archive-year" aria-labelledby={`archive-${year}`}>
         <h3 id={`archive-${year}`}>{year}<span>{editions.length} éditions</span></h3>
-        <ol>{editions.map((item) => <li><span>{String(item.issue).padStart(2, '0')}</span><a href={`/hebdo/${item.slug}/`}>{item.title}</a><time datetime={item.publishedAt}>{new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium', timeZone: 'Europe/Paris' }).format(new Date(item.publishedAt))}</time></li>)}</ol>
+        <ol class="archive-grid">{editions.map((item) => <li>
+          <a class="archive-card" href={`/hebdo/${item.slug}/`}>
+            <div class="archive-art">
+              {weeklyCoverImage(item, illustrations) ? <img src={weeklyCoverImage(item, illustrations)} alt="" width="1200" height="630" loading="lazy" decoding="async" /> : <span class="archive-monogram" aria-hidden="true">l0g</span>}
+              <span class="archive-number">N° {String(item.issue).padStart(2, '0')}</span>
+            </div>
+            <div class="archive-caption"><time datetime={item.publishedAt}>{weeklyDate(item.publishedAt, true)}</time><h4>{weeklyCoverTitle(item)}</h4><span class="archive-open">Ouvrir le numéro <span aria-hidden="true">↗</span></span></div>
+          </a>
+        </li>)}</ol>
       </section>)}
     </section>
   </div>
-  <style>
-    .weekly-page { max-width: 72rem; margin: 0 auto; }
-    .weekly-masthead { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding: .3rem 0 1.15rem; }
-    .weekly-brand .mono-label { font-size: .6rem; color: var(--color-muted); }
-    .weekly-brand h1 { margin-top: .35rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.35rem, 2.5vw, 1.8rem); font-weight: 700; line-height: 1.2; letter-spacing: -.04em; }
-    .weekly-brand h1 span { color: var(--color-signal); }
-    .weekly-promise { color: var(--color-paper); font-family: var(--font-read); font-size: .85rem; line-height: 1.7; }
-    .weekly-promise span { color: var(--color-muted); }
-    .weekly-masthead nav { display: grid; gap: .5rem; font-family: var(--font-mono); font-size: .63rem; color: var(--color-muted); }
-    .weekly-masthead nav a:first-child { color: var(--color-signal); }
-    .weekly-rhythm { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; border-top: 2px solid var(--color-signal); padding: .65rem 0 0; color: var(--color-muted); font-family: var(--font-mono); font-size: .6rem; }
-    .weekly-rhythm p::first-letter { text-transform: uppercase; }
-    .edition-permalink { margin-top: 1rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .63rem; }
-    .edition-permalink a:hover { color: var(--color-signal); }
-    .watch-boundary { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem 2rem; margin-top: 2.5rem; border-top: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); padding: 1.2rem 0; }
-    .watch-boundary .mono-label { color: var(--color-accent); font-size: .58rem; }
-    .watch-boundary h2 { margin-top: .4rem; color: var(--color-bright); font-family: var(--font-display); font-size: .9rem; }
-    .watch-boundary p:not(.mono-label) { margin-top: .4rem; color: var(--color-muted); font-family: var(--font-read); font-size: .8rem; line-height: 1.6; }
-    .watch-boundary > a { padding: .5rem .7rem; border: 1px solid var(--color-line-strong); border-radius: 3px; color: var(--color-accent); font-size: .65rem; }
-    .weekly-archive { margin-top: 3rem; scroll-margin-top: 1.5rem; }
-    .archive-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; }
-    .archive-head .mono-label { color: var(--color-signal); font-size: .6rem; }
-    .archive-head h2 { margin-top: .5rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.2rem; }
-    .archive-head > a { color: var(--color-signal); font-size: .63rem; }
-    .archive-year { margin-top: 1.4rem; }
-    .archive-year h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: .9rem; }
-    .archive-year h3 span { color: var(--color-muted); font-size: .6rem; font-weight: 400; }
-    .archive-year ol { margin-top: .6rem; border-top: 1px solid var(--color-line); }
-    .archive-year li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 1rem; align-items: baseline; border-bottom: 1px solid var(--color-line); padding: .9rem 0; }
-    .archive-year li > span { color: var(--color-signal); font-family: var(--font-mono); font-size: .65rem; }
-    .archive-year a { color: var(--color-paper); font-family: var(--font-read); font-size: .85rem; line-height: 1.55; }
-    .archive-year a:hover { color: var(--color-signal); }
-    .archive-year time { color: var(--color-muted); font-family: var(--font-mono); font-size: .6rem; }
-    .weekly-page a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
-    @media (max-width: 600px) { .weekly-masthead { align-items: start; } .weekly-promise { width: 100%; order: 1; font-size: .8rem; } .weekly-masthead nav { font-size: .58rem; } .weekly-rhythm { font-size: .56rem; } .archive-year li { grid-template-columns: auto minmax(0, 1fr); gap: .3rem .7rem; } .archive-year time { grid-column: 2; } }
-  </style>
 </BaseLayout>

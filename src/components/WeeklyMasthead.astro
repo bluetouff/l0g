@@ -1,0 +1,17 @@
+---
+import { WEEKLY_SCHEDULE } from '../config/weekly-editions.ts';
+
+interface Props { home?: boolean; }
+const { home = false } = Astro.props;
+---
+<header class="magazine-masthead">
+  <div class="magazine-kicker"><span>La revue de la semaine</span><span>Macro · Finance · Pouvoirs</span></div>
+  <div class="magazine-brand-row">
+    {home ? <h1 class="magazine-brand">L’Hebdo<span>.</span></h1> : <a class="magazine-brand" href="/hebdo/" aria-label="L’Hebdo l0g, toutes les éditions">L’Hebdo<span>.</span></a>}
+    <p>Prendre le temps.<br /><em>Lire les mécanismes.</em></p>
+  </div>
+  <nav class="magazine-toolbar" aria-label="Suivre l’Hebdo">
+    <p>Par l0g <span aria-hidden="true">/</span> Chaque {WEEKLY_SCHEDULE.weekday}, {WEEKLY_SCHEDULE.time.replace(':', ' h ')} · Paris</p>
+    <div><a href="/hebdo/#archives">La collection <span aria-hidden="true">↓</span></a><a href="/hebdo/rss.xml" type="application/rss+xml">S’abonner au flux <span aria-hidden="true">↗</span></a></div>
+  </nav>
+</header>

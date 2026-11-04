@@ -218,3 +218,18 @@ test("article hero priority is restricted to the first image in an article heade
     assert.equal(articleHeroImageStart(html, "posts/analysis/index.html"), null);
   }
 });
+
+
+test("weekly cover priority is confined to the first image in its issue header", () => {
+  const cover = '<img data-weekly-cover src="/cover.jpg" loading="eager" fetchpriority="high">';
+  const html = `<article data-pagefind-body><header class="issue-head"><figure>${cover}</figure></header><img src="/reading.jpg" loading="lazy"></article>`;
+  for (const route of ['hebdo/index.html', 'hebdo/2026-11-01/index.html']) {
+    assert.equal(articleHeroImageStart(html, route), html.indexOf(cover));
+    for (const invalid of [
+      `<article data-pagefind-body><header class="issue-head"></header>${cover}</article>`,
+      `<article data-pagefind-body><header class="issue-head"><img src="/first.jpg">${cover}</header></article>`,
+      `<header class="issue-head">${cover}</header><article data-pagefind-body></article>`,
+    ]) assert.equal(articleHeroImageStart(invalid, route), null);
+  }
+  for (const route of ['index.html', 'posts/test/index.html', 'hebdo/page/2/index.html']) assert.equal(articleHeroImageStart(html, route), null);
+});

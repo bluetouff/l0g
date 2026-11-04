@@ -1,21 +1,21 @@
 ---
-import type { WeeklyEdition, WeeklyReading } from '../config/weekly-editions.ts';
+import type { WeeklyEdition } from '../config/weekly-editions.ts';
 import { buildWeeklyCitationText, buildWeeklyLinkedInText, buildWeeklyThreadText, weeklyChartDimensions } from '../lib/weekly-package.ts';
 import { readingTime } from '../lib/reading-time.ts';
+import { weeklyReadings, weeklyCoverTitle, weeklyCoverImage, weeklyDate } from '../lib/weekly-presentation.ts';
 
-interface Props { edition: WeeklyEdition; headingLevel?: 'h1' | 'h2'; }
-const { edition, headingLevel = 'h2' } = Astro.props;
+interface Props { edition: WeeklyEdition; headingLevel?: 'h1' | 'h2'; illustrations?: Map<string, string>; }
+const { edition, headingLevel = 'h2', illustrations = new Map<string, string>() } = Astro.props;
 const Heading = headingLevel;
 const SectionHeading = headingLevel === 'h1' ? 'h2' : 'h3';
 const ReadingHeading = headingLevel === 'h1' ? 'h3' : 'h4';
 const root = `/hebdo/${edition.slug}`;
 const editorial = edition.editorial;
-const readings: WeeklyReading[] = editorial?.readings ?? (edition.briefs?.length ? edition.briefs : [{
-  title: edition.analysis.title, href: edition.analysis.href, topic: 'Le dossier',
-  fact: edition.lead, importance: edition.mechanism, uncertainty: edition.test,
-}]);
-const dateLabel = (value: string) => new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' }).format(new Date(value));
-const shortDate = (value: string) => new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'short', timeZone: 'Europe/Paris' }).format(new Date(value));
+const readings = weeklyReadings(edition);
+const title = weeklyCoverTitle(edition);
+const cover = weeklyCoverImage(edition, illustrations);
+const dateLabel = weeklyDate;
+const shortDate = (value: string) => weeklyDate(value, true);
 const minutes = readingTime([
   ...(editorial?.opening ?? []),
   ...readings.flatMap((item) => [item.title, item.fact, item.importance, item.uncertainty]),
@@ -32,23 +32,25 @@ const chartDimensions = weeklyChartDimensions(edition);
     <div class="issue-coordinate">
       <span class="issue-number">N° {String(edition.issue).padStart(2, '0')}</span>
       <time datetime={edition.publishedAt}>{dateLabel(edition.publishedAt)}</time>
-      <span>Lecture · environ {minutes} min</span>
+      <span>Environ {minutes} min de lecture</span>
       {editorial && <span class="review-date">Revue le <time datetime={editorial.reviewedAt}>{shortDate(editorial.reviewedAt)}</time></span>}
     </div>
-    <div class:list={['issue-cover', { 'has-cover': !!editorial }]}>
+    <div class:list={['issue-cover', { 'has-cover': !!cover }]}>
       <div class="issue-opening">
-        <p class="mono-label">{editorial ? '// le fil de la semaine' : '// la revue des analyses'}</p>
-        <Heading>{edition.title}</Heading>
+        <p class="magazine-eyebrow">À la une <span aria-hidden="true">/</span> {readings[0].topic}</p>
+        <Heading>{title}</Heading>
         <p class="issue-lead">{editorial?.opening[0] ?? edition.analysis.update}</p>
-        <nav class="issue-contents" aria-label="Sommaire de cette édition">
-          {readings.map((item, index) => <a href={`#lecture-${edition.issue}-${index + 1}`}><span>0{index + 1}</span>{item.topic}<b aria-hidden="true">↗</b></a>)}
-        </nav>
+        <a class="cover-read" href={`#lecture-${edition.issue}-1`}>Entrer dans l’édition <span aria-hidden="true">↘</span></a>
       </div>
-      {editorial && <figure class="cover-image">
-        <img src={editorial.cover.src} alt={editorial.cover.alt} width="1200" height="630" loading="lazy" decoding="async" />
-        <figcaption>Le dossier d’ouverture <span aria-hidden="true">↙</span> <a href={readings[0].href}>{readings[0].topic}</a></figcaption>
-      </figure>}
+      {cover ? <figure class="cover-image">
+        <img data-weekly-cover src={cover} alt={editorial?.cover.alt ?? `Illustration du dossier : ${readings[0].title}`} width="1200" height="630" loading="eager" fetchpriority="high" decoding="async" />
+        <figcaption><span>En couverture</span><a href={readings[0].href}>{readings[0].topic} <span aria-hidden="true">↗</span></a></figcaption>
+      </figure> : <div class="cover-typography" aria-hidden="true"><span>l0g</span><span>{String(edition.issue).padStart(2, '0')}</span><span>La revue de la semaine</span></div>}
     </div>
+    <nav class="issue-contents" aria-label="Sommaire de cette édition">
+      <p>Dans ce numéro</p>
+      {readings.map((item, index) => <a href={`#lecture-${edition.issue}-${index + 1}`}><span>{String(index + 1).padStart(2, '0')}</span><span>{item.topic}</span><b aria-hidden="true">↓</b></a>)}
+    </nav>
   </header>
 
   {editorial && <section class="editor-note" aria-labelledby={`note-${edition.issue}`}>
@@ -59,14 +61,19 @@ const chartDimensions = weeklyChartDimensions(edition);
   <div class:list={['issue-body', { 'with-watchlist': !!editorial }]}>
     <section class="issue-readings" aria-labelledby={`readings-${edition.issue}`}>
       <div class="section-line"><SectionHeading id={`readings-${edition.issue}`}>{editorial ? 'Les dossiers à retenir' : 'À lire cette semaine'}</SectionHeading><span>{String(readings.length).padStart(2, '0')} lecture{readings.length > 1 ? 's' : ''}</span></div>
-      {readings.map((item, index) => <article class="reading-note" id={`lecture-${edition.issue}-${index + 1}`}>
-        <div class="reading-meta"><span>0{index + 1}</span><p>{item.topic}</p></div>
-        <ReadingHeading><a href={item.href}>{item.title}<span aria-hidden="true"> ↗</span></a></ReadingHeading>
-        <p class="reading-fact">{item.fact}</p>
-        <p class="reading-importance">{item.importance}</p>
-        <p class="reading-limit"><strong>La limite.</strong> {item.uncertainty}</p>
-        <footer><a class="reading-link" href={item.href}>Lire l’analyse <span aria-hidden="true">→</span></a>{item.source && <a class="reading-source" href={item.source.href}>{item.source.label} <span aria-hidden="true">↗</span></a>}</footer>
+      <div class="reading-grid">
+      {readings.map((item, index) => <article class:list={['reading-note', { 'reading-feature': index === 0 }]} id={`lecture-${edition.issue}-${index + 1}`}>
+        {illustrations.get(item.href) && <a class="reading-image" href={item.href} aria-label={`Lire : ${item.title}`} tabindex="-1" aria-hidden="true"><img src={illustrations.get(item.href)} alt="" width="1200" height="630" loading="lazy" decoding="async" /></a>}
+        <div class="reading-copy">
+          <div class="reading-meta"><span>{String(index + 1).padStart(2, '0')}</span><p>{item.topic}</p></div>
+          <ReadingHeading><a href={item.href}>{item.title}</a></ReadingHeading>
+          <p class="reading-fact">{item.fact}</p>
+          <p class="reading-importance">{item.importance}</p>
+          <p class="reading-limit"><strong>La limite</strong>{item.uncertainty}</p>
+          <footer><a class="reading-link" href={item.href}>Lire l’analyse <span aria-hidden="true">↗</span></a>{item.source && <a class="reading-source" href={item.source.href}>{item.source.label} <span aria-hidden="true">↗</span></a>}</footer>
+        </div>
       </article>)}
+      </div>
     </section>
     {editorial && <aside class="issue-watch" aria-labelledby={`watch-${edition.issue}`}>
       <p class="mono-label">// garder le fil</p>
@@ -114,90 +121,3 @@ const chartDimensions = weeklyChartDimensions(edition);
     });
   });
 </script>
-
-<style>
-  .weekly-issue { margin-top: 1.5rem; color: var(--color-prose); }
-  .issue-head { border-top: 1px solid var(--color-line-strong); }
-  .issue-coordinate { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; padding: .9rem 0; color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; }
-  .issue-number { color: var(--color-signal); font-weight: 700; }
-  .review-date { margin-left: auto; }
-  .issue-cover { padding: 1.6rem 0 1.8rem; }
-  .issue-opening { min-width: 0; }
-  .issue-opening .mono-label { color: var(--color-signal); font-size: .64rem; }
-  .issue-opening h1, .issue-opening h2 { max-width: 42rem; margin-top: .65rem; color: var(--color-bright); font-family: var(--font-display); font-size: var(--section-title-size); font-weight: 700; line-height: 1.2; letter-spacing: -.035em; text-wrap: balance; }
-  .issue-lead { margin-top: 1rem; max-width: 46rem; font-family: var(--font-read); font-size: .98rem; line-height: 1.8; }
-  .issue-contents { display: flex; flex-wrap: wrap; gap: .5rem 1.15rem; margin-top: 1.3rem; }
-  .issue-contents a { display: inline-flex; align-items: baseline; gap: .4rem; color: var(--color-paper); font-family: var(--font-mono); font-size: .65rem; }
-  .issue-contents a span { color: var(--color-signal); font-size: .58rem; }
-  .issue-contents b { color: var(--color-muted); font-weight: 400; }
-  .cover-image { min-width: 0; align-self: stretch; margin: 0; }
-  .cover-image img { display: block; width: 100%; height: auto; aspect-ratio: 1.8; object-fit: cover; border-radius: 4px; border: 1px solid var(--color-line); }
-  .cover-image figcaption { display: flex; align-items: center; gap: .45rem; margin-top: .55rem; font-family: var(--font-mono); font-size: .6rem; color: var(--color-muted); }
-  .cover-image figcaption a { color: var(--color-signal); }
-  .editor-note { display: grid; gap: .8rem; padding: 1.2rem 1.4rem; border-left: 2px solid var(--color-signal); background: linear-gradient(105deg, color-mix(in srgb, var(--color-signal) 5%, transparent), transparent 85%), var(--surface-inset); }
-  .editor-note :is(h2, h3) { color: var(--color-signal); font-family: var(--font-mono); font-size: .7rem; }
-  .editor-note p { max-width: 52rem; font-family: var(--font-read); font-size: .88rem; line-height: 1.75; }
-  .issue-body { margin-top: 2.3rem; }
-  .section-line { display: flex; flex-wrap: wrap; gap: .5rem; align-items: baseline; justify-content: space-between; padding-bottom: .9rem; border-bottom: 1px solid var(--color-line-strong); }
-  .section-line :is(h2, h3) { color: var(--color-bright); font-family: var(--font-display); font-size: 1.1rem; font-weight: 650; }
-  .section-line > span { color: var(--color-muted); font-family: var(--font-mono); font-size: .6rem; }
-  .reading-note { padding: 1.6rem 0; border-bottom: 1px solid var(--color-line); scroll-margin-top: 1.5rem; }
-  .reading-meta { display: flex; align-items: center; gap: .7rem; font-family: var(--font-mono); font-size: .65rem; }
-  .reading-meta > span { color: var(--color-signal); }
-  .reading-meta > p { color: var(--color-muted); }
-  .reading-note :is(h3, h4) { max-width: 42rem; margin-top: .65rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.1rem, 1.8vw, 1.35rem); font-weight: 650; line-height: 1.4; text-wrap: balance; }
-  .reading-note :is(h3, h4) span { color: var(--color-signal); font-size: .9rem; white-space: nowrap; }
-  .reading-fact, .reading-importance { margin-top: .8rem; font-family: var(--font-read); font-size: .93rem; line-height: 1.8; }
-  .reading-fact { color: var(--color-paper); }
-  .reading-importance { color: var(--color-prose); }
-  .reading-limit { margin-top: 1rem; padding: .75rem .9rem; border-left: 2px solid color-mix(in srgb, var(--color-amber) 65%, var(--color-line)); background: var(--surface-inset); font-family: var(--font-read); font-size: .8rem; line-height: 1.7; color: var(--color-muted); }
-  .reading-limit strong { color: var(--color-amber); font-weight: 600; }
-  .reading-note footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .65rem 1rem; margin-top: 1rem; font-family: var(--font-mono); font-size: .63rem; }
-  .reading-link { color: var(--color-signal); }
-  .reading-source { max-width: 26rem; color: var(--color-muted); font-size: .66rem; line-height: 1.6; }
-  .issue-watch { align-self: start; padding: 1.2rem; border: 1px solid var(--color-line); border-top: 2px solid var(--color-amber); border-radius: 3px; background: var(--surface-elevated); }
-  .issue-watch > .mono-label { color: var(--color-amber); font-size: .6rem; }
-  .issue-watch > :is(h2, h3) { margin-top: .65rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.05rem; line-height: 1.4; }
-  .watch-intro { margin-top: .65rem; font-family: var(--font-read); font-size: .78rem; line-height: 1.7; color: var(--color-muted); }
-  .issue-watch ol { list-style: none; }
-  .issue-watch li { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--color-line); }
-  .issue-watch li :is(h3, h4) { color: var(--color-paper); font-size: .72rem; line-height: 1.6; }
-  .issue-watch :is(h3, h4) span { color: var(--color-amber); }
-  .issue-watch li p { margin-top: .55rem; font-family: var(--font-read); font-size: .78rem; line-height: 1.75; color: var(--color-muted); }
-  .watch-more { display: inline-block; margin-top: 1.25rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .62rem; }
-  .issue-takeaway { margin: 2rem 0; padding: 1.2rem 1.4rem; border: 1px solid var(--color-line); border-radius: 3px; background: linear-gradient(110deg, color-mix(in srgb, var(--color-signal) 7%, transparent), transparent 65%); }
-  .issue-takeaway .mono-label { color: var(--color-signal); font-size: .6rem; }
-  .issue-takeaway > p:last-child { max-width: 50rem; margin-top: .6rem; font-family: var(--font-read); font-size: 1rem; line-height: 1.7; color: var(--color-paper); }
-  .issue-documentation, .issue-formats { margin-top: 1rem; border: 1px solid var(--color-line); border-radius: 3px; }
-  .issue-documentation > summary, .issue-formats > summary { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem; padding: 1rem 1.15rem; cursor: pointer; color: var(--color-paper); font-family: var(--font-mono); font-size: .72rem; }
-  summary small { color: var(--color-muted); font-size: .6rem; }
-  summary small > span { display: inline-block; margin-left: .7rem; color: var(--color-signal); }
-  details[open] > summary { border-bottom: 1px solid var(--color-line); }
-  details[open] > summary small > span { transform: rotate(45deg); }
-  .documentation-body, .formats-body { padding: 1.15rem; }
-  .documentation-body > p, .formats-body > p { max-width: 48rem; font-family: var(--font-read); font-size: .8rem; line-height: 1.7; color: var(--color-muted); }
-  .coverage-list { margin: 1rem 0 0 1.2rem; }
-  .coverage-list li { margin-top: .7rem; font-size: .73rem; line-height: 1.6; }
-  .coverage-list li::marker { color: var(--color-signal); }
-  .coverage-list a { color: var(--color-paper); }
-  .coverage-list span { display: block; font-size: .65rem; color: var(--color-muted); }
-  .issue-chart { max-width: 46rem; margin: 1.5rem 0; }
-  .issue-chart img { width: 100%; height: auto; border: 1px solid var(--color-line); border-radius: 3px; }
-  .issue-chart figcaption { margin-top: .7rem; color: var(--color-muted); font-size: .68rem; line-height: 1.7; }
-  .issue-chart a, .formats-body a { color: var(--color-signal); }
-  .method-limits { padding-left: 1rem; color: var(--color-muted); font-size: .7rem; line-height: 1.8; }
-  .format-item { margin-top: .8rem; border-top: 1px solid var(--color-line); padding-top: .8rem; }
-  .format-item summary { cursor: pointer; color: var(--color-paper); font-size: .73rem; }
-  .format-item pre { max-height: 24rem; margin-top: 1rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .7rem; line-height: 1.7; color: var(--color-muted); }
-  .format-item > div { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: .8rem; font-size: .65rem; }
-  .format-item button { padding: .45rem .7rem; color: var(--color-signal); border: 1px solid var(--color-line-strong); border-radius: 3px; cursor: pointer; }
-  .weekly-issue a:hover { color: var(--color-signal); }
-  .weekly-issue a:focus-visible, .weekly-issue summary:focus-visible, .weekly-issue button:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
-  @media (min-width: 800px) {
-    .has-cover { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 2rem; align-items: center; }
-    .editor-note { grid-template-columns: 8rem minmax(0, 1fr); }
-    .with-watchlist { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 2.5rem; }
-  }
-  @media (max-width: 799px) { .cover-image { margin-top: 1.3rem; max-width: 36rem; } .issue-watch { margin-top: 1.8rem; } }
-  @media (max-width: 500px) { .review-date { margin-left: 0; } .issue-coordinate { font-size: .6rem; gap: .5rem .8rem; } .issue-cover { padding-top: 1rem; } .issue-opening h1, .issue-opening h2 { font-size: var(--section-title-size); } .issue-lead { font-size: .9rem; } .editor-note { padding: 1rem; } }
-</style>

@@ -8,6 +8,7 @@ import {
   weeklyEditions,
   weeklySitemapLastmods,
 } from '../src/config/weekly-editions.ts';
+import { weeklyReadings, weeklyCoverTitle, weeklyCoverImage, weeklyIllustrations, isWeeklyIllustration, weeklyDate } from '../src/lib/weekly-presentation.ts';
 import { createAutomatedWeeklyEdition } from '../src/lib/weekly-generation.ts';
 import {
   WEEKLY_AUTOMATION,
@@ -270,7 +271,9 @@ test('les CTA, les archives et les formats journalistes couvrent toutes les surf
     assert.match(press, new RegExp(extension.replace('.', '\\.')));
   }
   assert.match(press, /édition web/);
-  assert.match(archive, /\/hebdo\/rss\.xml/);
+  assert.match(archive, /<WeeklyMasthead home/);
+  const masthead = await source('src/components/WeeklyMasthead.astro');
+  assert.match(masthead, /\/hebdo\/rss\.xml/);
   assert.match(issue, /rel="prev"/);
   assert.match(issue, /rel="next"/);
   assert.match(feed, /weeklyEditions/);
@@ -326,4 +329,37 @@ test('les composants et éditions de l’Hebdo respectent l’interdiction du ti
     'src/pages/hebdo/[slug].astro',
   ];
   for (const path of paths) assert.doesNotMatch(await source(path), /\u2014/, path);
+});
+
+
+test('la maquette retrouve les illustrations du corpus sans images externes ni cartes textuelles', () => {
+  const posts = [
+    { id: 'illustrated', data: { ogImage: '/illustrations/news/cover-v1.jpg' } },
+    { id: 'text-card', data: { ogImage: '/og/title.png' } },
+    { id: 'remote', data: { ogImage: 'https://example.com/image.jpg' } },
+    { id: 'draft', data: { draft: true, ogImage: '/illustrations/news/cover-v1.jpg' } },
+    { id: 'missing', data: {} },
+  ];
+  const images = weeklyIllustrations(posts);
+  assert.deepEqual([...images], [['/posts/illustrated/', '/illustrations/news/cover-v1.jpg']]);
+  for (const invalid of [undefined, null, '/illustrations/../private.jpg', '//example.com/illustrations/x.jpg', '/illustrations/a.svg', '/illustrations/x.jpg?x=1', 'javascript:alert(1)']) assert.equal(isWeeklyIllustration(invalid), false);
+  const edition = { ...latestWeeklyEdition(), editorial: undefined, briefs: undefined, analysis: { ...latestWeeklyEdition().analysis, href: '/posts/illustrated/' } };
+  assert.equal(weeklyReadings(edition).length, 1);
+  assert.equal(weeklyReadings(edition)[0].fact, edition.lead);
+  assert.equal(weeklyCoverImage(edition, images), '/illustrations/news/cover-v1.jpg');
+  assert.equal(weeklyCoverImage(edition, new Map()), undefined);
+  assert.equal(weeklyDate('2026-10-31T23:30:00Z'), '1er novembre 2026');
+  for (const issue of weeklyEditions) assert.doesNotMatch(weeklyCoverTitle(issue), /\bce\s+qu(?:e|i|[’'](?:on|il))\b/i);
+});
+
+test('les anciennes et futures éditions conservent les faits, les mécanismes et les limites dans la maquette', () => {
+  for (const edition of weeklyEditions) {
+    assert.deepEqual(weeklyReadings(edition), edition.editorial?.readings ?? edition.briefs ?? [{
+      title: edition.analysis.title, href: edition.analysis.href, topic: 'Le dossier',
+      fact: edition.lead, importance: edition.mechanism, uncertainty: edition.test,
+    }]);
+  }
+  const reviewed = weeklyEditions.find((edition) => edition.editorial);
+  assert.equal(weeklyCoverTitle(reviewed), reviewed.editorial.title);
+  assert.equal(weeklyCoverImage(reviewed, new Map()), reviewed.editorial.cover.src);
 });
