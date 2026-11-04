@@ -6,7 +6,8 @@ l’archive complète attestée ; le serveur ne compile pas le site.
 
 ## Graphe de validation
 
-- `svg-source` exécute les tests géométriques et métier qui lisent les sources.
+- `svg-source` répartit les tests géométriques et métier qui lisent les sources
+  entre quatre jobs obligatoires (`1/4`, `2/4`, `3/4`, `4/4`).
 - `build` prépare les médias, contrôle les sources, effectue un seul build Astro,
   contrôle les pages produites et teste le serveur MCP contre ces pages.
 - `publish` attend la réussite de **build et svg-source**. Il vérifie le checksum,
@@ -43,7 +44,11 @@ complète. Les tests qui lisent `dist/` sont exécutés après Astro avec
 Pour ajouter une suite SVG, la déclarer dans `scripts/svg-test-suites.mjs` dans
 le groupe approprié. Ne pas importer un autre fichier `.test.mjs` depuis une
 suite. Le test de couverture refuse les oublis, doublons et suites de rendu
-placées parmi les tests source. La concurrence Node est bornée à trois workers.
+placées parmi les tests source. La concurrence Node est bornée à trois workers
+par runner. La CI transmet la liste complète à chaque job et Node 22 la répartit
+avec `--test-shard`. Un test exécute un témoin pour chaque chemin du manifeste
+afin de vérifier que les quatre partitions couvrent exactement toute la liste.
+Une partition en échec bloque la livraison ; les autres poursuivent leurs tests.
 
 `npm run test:ci-policy` vérifie ces contrats, les cas d’échec du prépass et du
 transfert, ainsi que les protections du workflow. Les nouvelles suites de tests
@@ -79,7 +84,9 @@ du 8 octobre 2026 UTC a consommé **15 min 34 s** de job, hors attente du runner
 
 Comparer les durées GitHub sur le même type de runner, en distinguant cache froid,
 cache chaud et attente de démarrage. Les mesures locales ne sont pas une prévision
-contractuelle du temps GitHub. Les EPUB restent entièrement reconstruits.
+contractuelle du temps GitHub. Le [cache de publication](incremental-publication.md)
+permet désormais de réutiliser les pages et groupes EPUB dont les entrées restent
+identiques, avec contrôle d'intégrité avant restauration.
 
 Le transfert entre jobs conserve l’identifiant immuable de l’artefact et la
 tentative d’origine du build. Relancer uniquement un publisher en échec réutilise

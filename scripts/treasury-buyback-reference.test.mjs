@@ -145,13 +145,16 @@ function treasurySourceFingerprint(source) {
 // Static labels, figures and source URLs also live outside the dictionaries.
 // Review both editorial dates before updating this dated baseline. A justified
 // same-day revision may retain the date; CSS-only changes need no date review.
+// Infrastructure review 2026-11-04: route cache keys only. Both templates from
+// Astro.props onward and all Treasury dictionaries/components remain unchanged;
+// the historical editorial dates therefore remain 2026-10-23.
 const treasurySourceReview = {
   dates: { fr: '2026-10-23', en: '2026-10-23' },
   files: {
     'src/components/TreasuryBuybackMechanism.astro': '80be748b80b5e9f7d05919d711595dd4598774ac05a89ca86b408d0d1c11f7ec',
     'src/components/OperationalGlossaryReference.astro': '5a8cc0a09958af1d6a21009ea4dc098f60440f92b59ff4ad576f2da428007900',
-    'src/pages/glossaire/[slug].astro': 'da8d36c0c1ec01c2be4214b34ea8be167c62084e347c2b2558bfb1de14b85c68',
-    'src/pages/en/glossary/[slug].astro': 'be58f5446a29f70a37ae1eedac141134422183c055af7e15e35fdfc44893710b',
+    'src/pages/glossaire/[slug].astro': 'b39f02d4cd80050e2994e24e0ac3abf1a9c2bcdd33226d0e2244b669c736f2b5',
+    'src/pages/en/glossary/[slug].astro': 'e1b535e22756fd1e6ac21d610c74c50a96bd9cb341d37257af516b7bb9551bd6',
   },
 };
 

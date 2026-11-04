@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { createEditorialCacheKeys } from '../../lib/editorial-cache-context.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AiEditorialDisclosure from '../../components/AiEditorialDisclosure.astro';
 import CitationBox from '../../components/CitationBox.astro';
@@ -12,9 +13,11 @@ import { readingTime } from '../../lib/reading-time.ts';
 
 export async function getStaticPaths() {
   const guides = await getCollection('guides', ({ data }) => !data.draft);
+  const cacheKey = await createEditorialCacheKeys();
   return guides.map((guide) => ({
     params: { slug: guide.id },
     props: { guide },
+    cacheKey: cacheKey('guides', guide),
   }));
 }
 

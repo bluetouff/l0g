@@ -69,10 +69,42 @@ const workflowRegressions = [
     (job) => replace(job, 'needs: [validate-pr-build, svg-source]', 'needs: [validate-pr-build]'), /check PR historique/],
   ['PR gate ignoring a failed SVG result', 'validate-pr',
     (job) => replace(job, ' && test "$SVG_RESULT" = success', ''), /check PR historique/],
+  ['a missing SVG shard', 'svg-source',
+    (job) => replace(job, "['1/4', '2/4', '3/4', '4/4']", "['1/4', '2/4', '3/4']"), /quatre partitions SVG/],
+  ['a duplicated SVG shard', 'svg-source',
+    (job) => replace(job, "['1/4', '2/4', '3/4', '4/4']", "['1/4', '2/4', '3/4', '3/4']"), /quatre partitions SVG/],
+  ['an excluded SVG shard', 'svg-source',
+    (job) => replace(job, "        shard: ['1/4', '2/4', '3/4', '4/4']\n", "        shard: ['1/4', '2/4', '3/4', '4/4']\n        exclude:\n          - shard: '4/4'\n"), /quatre partitions SVG/],
+  ['SVG fail-fast dropping unfinished partitions', 'svg-source',
+    (job) => replace(job, 'fail-fast: false', 'fail-fast: true'), /quatre partitions SVG/],
+  ['an optional SVG shard job', 'svg-source',
+    (job) => replace(job, '    strategy:\n', '    continue-on-error: true\n    strategy:\n'), /quatre partitions SVG/],
+  ['a conditionally skipped SVG shard job', 'svg-source',
+    (job) => replace(job, '    strategy:\n', "    if: matrix.shard != '4/4'\n    strategy:\n"), /quatre partitions SVG/],
+  ['the shard index replaced with one fixed partition', 'svg-source',
+    (job) => replace(job, 'SVG_SHARD: ${{ matrix.shard }}', "SVG_SHARD: '1/4'"), /quatre partitions SVG/],
+  ['a source suite failure ignored by the shell', 'svg-source',
+    (job) => replace(job, 'npm run test:inline-svg:source -- --shard "$SVG_SHARD"', 'npm run test:inline-svg:source -- --shard "$SVG_SHARD" || true'), /quatre partitions SVG/],
   ['a second Astro invocation in the workflow', 'build',
     (job) => replace(job, '    steps:\n', '    steps:\n      - run: npx astro build\n'), /rendu Astro unique/],
   ['a PR job writing the OG cache', 'validate-pr-build',
     (job) => replace(job, 'actions/cache/restore@', 'actions/cache/save@'), /écritures PR/],
+  ['restoring the whole Astro cache including executable metadata', 'build',
+    (job) => replace(job, '            .cache/astro-incremental/incremental-build.json\n', '            .cache/astro-incremental\n'), /cache éditorial limité/],
+  ['restoring live public snapshots as cache', 'validate-pr-build',
+    (job) => replace(job, '            .cache/derived-assets\n', '            public\n'), /cache éditorial limité/],
+  ['restoring an unversioned shared cache key', 'build',
+    (job) => replace(job, '-editorial-v1-', '-editorial-'), /cache éditorial limité/],
+  ['saving editorial cache outside canonical main', 'build',
+    (job) => replace(job, "if: github.repository == 'bluetouff/l0g' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'", "if: github.ref == 'refs/heads/main'"), /cache éditorial doit être sauvé/],
+  ['saving editorial cache after a failed build', 'build',
+    (job) => replace(job, "if: github.repository == 'bluetouff/l0g'", "if: always() && github.repository == 'bluetouff/l0g'"), /cache éditorial doit être sauvé/],
+  ['saving editorial cache without integrity receipt', 'build',
+    (job) => {
+      const marker = job.indexOf('      - name: Save verified editorial build cache');
+      assert.ok(marker > 0);
+      return job.slice(0, marker) + replace(job.slice(marker), '            .cache/astro-incremental/l0g-integrity.json\n', '');
+    }, /cache éditorial doit être sauvé/],
 ];
 
 for (const [name, jobName, mutate, reason] of workflowRegressions) {
@@ -91,6 +123,9 @@ const packageRegressions = [
   ['CI build dropping rendered SVG validation', 'build:ci', ' && npm run test:inline-svg:rendered', '', /mêmes contrôles complets/],
   ['all builds dropping secret scanning', 'build:verify', ' && npm run test:secrets', '', /analyser les secrets/],
   ['a second Astro invocation in the CI script', 'build:ci', 'astro build', 'astro build && astro build', /rendu Astro unique/],
+  ['skipping native cache preflight', 'build:ci', 'node scripts/incremental-cache.mjs prepare && ', '', /mêmes contrôles complets/],
+  ['sealing before output validation', 'build:ci', 'npm run build:verify && node scripts/incremental-cache.mjs seal', 'node scripts/incremental-cache.mjs seal && npm run build:verify', /mêmes contrôles complets/],
+  ['dropping cache integrity tests', 'build:prepare', 'npm run test:incremental-cache && ', '', /tester le repli sûr/],
 ];
 
 for (const [name, script, before, after, reason] of packageRegressions) {

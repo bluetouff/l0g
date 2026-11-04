@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { createEditorialCacheKeys } from '../../../lib/editorial-cache-context.ts';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import '../../../styles/reserves-pump-infographics.css';
 import '../../../styles/paramount-warner-infographics.css';
@@ -33,9 +34,11 @@ import { isTranslationStale } from '../../../lib/agent-surface.ts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('postsEn', ({ data }) => !data.draft);
+  const cacheKey = await createEditorialCacheKeys();
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
+    cacheKey: cacheKey('postsEn', post),
   }));
 }
 

@@ -1,5 +1,6 @@
 ---
 import { formatDateFr, formatDateFrIsoDate } from '../lib/freshness.ts';
+import { buildDate } from '../lib/build-clock.mjs';
 
 type CitationDate = Date | string;
 
@@ -22,7 +23,7 @@ const formatCitationDate = (value: CitationDate) => locale === 'en'
   : (typeof value === 'string' ? formatDateFrIsoDate(value) : formatDateFr(value));
 const year = typeof date === 'string' ? date.slice(0, 4) : date?.getFullYear();
 const datePart = date ? `, ${updated ? labels.reviewed : labels.published} ${formatCitationDate(date)}` : '';
-const accessed = formatCitationDate(new Date());
+const accessed = formatCitationDate(buildDate());
 const citation = `l0g.fr, « ${title} » (${kind}${datePart}), ${url}`;
 const md = `[${title}](${url}), l0g.fr${date ? `, ${formatCitationDate(date)}` : ''}.`;
 const bibKey = `l0g-${title

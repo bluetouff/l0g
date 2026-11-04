@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { buildDate } from '../lib/build-clock.mjs';
 import CspMeta from '../components/CspMeta.astro';
 import SearchMetadata from '../components/SearchMetadata.astro';
 import pagefindInitUrl from '../scripts/pagefind-init.js?url';
@@ -55,7 +56,7 @@ const fullTitle = seo.fullTitle;
 const socialTitle = (ogTitle ?? '').trim() || fullTitle;
 const metaDescription = seo.description;
 const socialImageAlt = publicationSocial?.alt ?? ogImageAlt ?? (ogImage ? `${socialTitle}: l0g.fr social card` : pageSocial.alt);
-const year = new Date().getFullYear();
+const year = buildDate().getFullYear();
 
 const siteJsonLd = {
   '@context': 'https://schema.org',

@@ -11,6 +11,7 @@ import { insurancePromiseEditions } from '../src/config/insurance-promise-public
 import { cumcumEditions } from '../src/config/cumcum-publication.mjs';
 import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
 import { runDerivedTask } from './derived-assets-cache.mjs';
+import { epubDerivedTasks } from './epub-derived-catalog.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const publicPath = (name) => `public${name}`;
@@ -97,6 +98,23 @@ export async function generateDerivedAssets(name) {
     zipOptions: name === 'epub' ? process.env.ZIPOPT ?? null : null,
   };
   if (name === 'epub') identity.zip = execute('zip', ['-v'], { stdio: 'pipe', encoding: 'utf8' }).stdout;
+  if (name === 'epub') {
+    const results = [];
+    for (const group of epubDerivedTasks(ROOT)) {
+      results.push(await runDerivedTask({
+        root: ROOT, ...group,
+        identity: { ...identity, generators: group.generators, books: group.books },
+        cache: !task.overrides?.some((key) => process.env[key] !== undefined),
+        run: () => {
+          for (const generator of group.generators) execute(process.execPath, [generator]);
+          execute(process.execPath, ['scripts/build-epub.mjs', ...group.books]);
+        },
+      }));
+    }
+    const reused = results.filter(result => result.cached).length;
+    console.log(`[derived] epub: ${reused}/${results.length} groups reused; ${results.length - reused} regenerated`);
+    return results;
+  }
   await runDerivedTask({
     root: ROOT, name, inputs: task.inputs, outputs: task.outputs, stableInputs: task.stableInputs, identity,
     // Keep existing one-off generator overrides effective, without trusting a

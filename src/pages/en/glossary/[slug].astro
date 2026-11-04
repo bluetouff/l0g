@@ -4,11 +4,16 @@ import CitationBox from '../../../components/CitationBox.astro';
 import OperationalGlossaryReference from '../../../components/OperationalGlossaryReference.astro';
 import { glossaryReferenceEnBySlug } from '../../../config/treasury-buyback-reference.ts';
 import { glossaryAtlasEn, glossaryAtlasEnBySlug, englishGlossaryRobots } from '../../../config/glossary-atlas-en.ts';
+import { glossaryCacheKey } from '../../../lib/editorial-build-cache.mjs';
 
 export function getStaticPaths() {
   return glossaryAtlasEn.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
+    cacheKey: glossaryCacheKey(entry, {
+      reference: glossaryReferenceEnBySlug[entry.slug] ?? null,
+      related: (entry.atlas.related ?? []).map(slug => glossaryAtlasEnBySlug.get(slug) ?? null),
+    }),
   }));
 }
 

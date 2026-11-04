@@ -5,11 +5,22 @@ import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import OperationalGlossaryReference from '../../components/OperationalGlossaryReference.astro';
 import { glossaryEntries, glossaryEntryBySlug, glossaryUpdatedIso } from '../../config/glossary.ts';
 import { glossaryAtlasEnBySlug } from '../../config/glossary-atlas-en.ts';
+import { glossaryCacheKey } from '../../lib/editorial-build-cache.mjs';
+import { dateFromIsoDate } from '../../lib/freshness.ts';
 
 export function getStaticPaths() {
   return glossaryEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
+    cacheKey: glossaryCacheKey(entry, {
+      glossaryUpdatedIso,
+      english: glossaryAtlasEnBySlug.has(entry.slug),
+      // Template imports also invalidate changes to the glossary. Explicit
+      // relation values keep this data contract correct if entries move later.
+      related: glossaryEntries.filter(candidate => candidate.sectionSlug === entry.sectionSlug),
+      explicitRelated: [...(entry.reference?.relatedSlugs ?? []), ...(entry.atlas?.related ?? [])]
+        .map(slug => glossaryEntryBySlug.get(slug) ?? null),
+    }, dateFromIsoDate(entry.reference?.updatedIso ?? glossaryUpdatedIso)),
   }));
 }
 

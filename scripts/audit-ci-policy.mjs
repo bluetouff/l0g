@@ -134,6 +134,15 @@ requireCondition(
     && !sourceJob.includes('needs:') && !buildJob.includes('needs:'),
   'les suites SVG source et le build doivent rester indépendants et en parallèle',
 );
+const sourceStrategy = sourceJob.match(/^    strategy:\n((?: {6,}[^\n]*\n)+)/mu)?.[1];
+const sourceScript = sourceJob.match(/^        run: \|\n((?: {10}[^\n]*\n)+)/mu)?.[1];
+requireCondition(
+  sourceStrategy === "      fail-fast: false\n      matrix:\n        shard: ['1/4', '2/4', '3/4', '4/4']\n"
+    && sourceScript === '          node --test scripts/svg-test-suites.test.mjs\n          npm run test:inline-svg:source -- --shard "$SVG_SHARD"\n'
+    && /^          SVG_SHARD: \$\{\{ matrix\.shard \}\}$/mu.test(sourceJob)
+    && !/^\s*(?:if|continue-on-error):/mu.test(sourceJob),
+  'les quatre partitions SVG fixes doivent toutes être exécutées et obligatoires',
+);
 requireCondition(
   publicationJob.includes('needs: [build, svg-source]')
     && !publicationJob.includes('always()') && !publicationJob.includes('continue-on-error')
@@ -163,13 +172,43 @@ requireCondition(
   'le build doit préparer sa frame une seule fois avant le rendu Astro unique',
 );
 requireCondition(
-  rootPackage.scripts?.build === 'npm run build:prepare && astro build && npm run test:inline-svg && npm run build:verify'
-    && rootPackage.scripts?.['build:ci'] === 'npm run prebuild && npm run build:prepare && astro build && npm run test:inline-svg:rendered && npm run build:verify'
+  rootPackage.scripts?.build === 'npm run build:prepare && node scripts/incremental-cache.mjs prepare && astro build && npm run test:inline-svg && npm run build:verify && node scripts/incremental-cache.mjs seal'
+    && rootPackage.scripts?.['build:ci'] === 'npm run prebuild && npm run build:prepare && node scripts/incremental-cache.mjs prepare && astro build && npm run test:inline-svg:rendered && npm run build:verify && node scripts/incremental-cache.mjs seal'
     && rootPackage.scripts?.['test:inline-svg'] === 'node scripts/run-svg-tests.mjs'
     && rootPackage.scripts?.['test:inline-svg:source'] === 'node scripts/run-svg-tests.mjs --group source'
     && rootPackage.scripts?.['test:inline-svg:rendered'] === 'node scripts/run-svg-tests.mjs --group rendered',
   'les pipelines locaux et CI doivent conserver les mêmes contrôles complets',
 );
+requireCondition(
+  rootPackage.scripts?.['test:incremental-cache'] === 'node --test scripts/incremental-cache.test.mjs'
+    && rootPackage.scripts?.['build:prepare']?.includes('npm run test:incremental-cache'),
+  'le build doit tester le repli sûr et l’intégrité du cache incrémental',
+);
+
+const cachePaths = [
+  '.cache/astro-incremental/incremental-build.json', '.cache/astro-incremental/l0g-integrity.json',
+  '.cache/astro-incremental/dist', '.cache/derived-assets',
+];
+const steps = (body) => body.split(/\n(?=      - )/u);
+const cacheStep = (body) => steps(body).filter((step) => /^        id: publication_cache$/mu.test(step));
+const pathsIn = (step) => step.match(/^          path: \|\n((?:            [^\n]+\n)+)/mu)?.[1]
+  .trim().split('\n').map((line) => line.trim()) ?? [];
+for (const [name, body] of [['build', buildJob], ['validate-pr-build', validatePr]]) {
+  const restored = cacheStep(body);
+  requireCondition(restored.length === 1 && restored[0].includes('actions/cache/restore@')
+    && JSON.stringify(pathsIn(restored[0])) === JSON.stringify(cachePaths)
+    && restored[0].includes("-editorial-v1-${{ hashFiles('package-lock.json') }}-${{ github.sha }}")
+    && restored[0].includes("-editorial-v1-${{ hashFiles('package-lock.json') }}-"),
+  `${name}: cache éditorial limité aux manifests et payloads privés vérifiables`);
+}
+const saved = steps(buildJob).filter((step) => step.includes('name: Save verified editorial build cache on canonical main only'));
+requireCondition(saved.length === 1 && saved[0].includes('actions/cache/save@')
+  && saved[0].includes("if: github.repository == 'bluetouff/l0g' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.publication_cache.outputs.cache-hit != 'true'")
+  && saved[0].includes('key: ${{ steps.publication_cache.outputs.cache-primary-key }}')
+  && JSON.stringify(pathsIn(saved[0])) === JSON.stringify(cachePaths)
+  && buildJob.indexOf(saved[0]) > buildJob.indexOf('name: Transfer release to gated publisher')
+  && !saved[0].includes('always()') && !saved[0].includes('continue-on-error'),
+  'le cache éditorial doit être sauvé après validation, seulement sur main canonique');
 requireCondition(
   !/path: public\/?(?:\s|$)/m.test(build)
     && buildJob.includes("if: github.ref == 'refs/heads/main' && steps.og_cache.outputs.cache-hit != 'true'")

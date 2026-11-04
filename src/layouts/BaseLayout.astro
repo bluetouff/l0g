@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { buildDate } from '../lib/build-clock.mjs';
 import Sidebar from '../components/Sidebar.astro';
 import SiteNavigation from '../components/SiteNavigation.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -65,7 +66,7 @@ const metaDescription = seo.description;
 const socialImageAlt = publicationSocial?.alt ?? ogImageAlt ?? (lang === 'en'
   ? (ogImage ? `${socialTitle}: l0g.fr social card` : pageSocial.alt)
   : `${socialTitle} - carte sociale l0g.fr`);
-const year = new Date().getFullYear();
+const year = buildDate().getFullYear();
 const path = Astro.url.pathname;
 const hasContextSidebar = Astro.slots.has('sidebar');
 

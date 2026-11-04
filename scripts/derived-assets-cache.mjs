@@ -124,8 +124,121 @@ function writeManifest(root, name, record) {
   }
 }
 
-/** A manifest contains hashes only. Existing generated files are the only asset copy. */
-export async function runDerivedTask({ root, name, inputs, outputs, stableInputs = inputs, identity, run, cache = true, log = console.log }) {
+const MAX_SNAPSHOT_FILES = 16_000;
+const MAX_SNAPSHOT_BYTES = 512 * 1024 * 1024;
+const MAX_SNAPSHOT_ENTRIES = 32_000;
+const MAX_SNAPSHOT_DEPTH = 32;
+
+// Payloads remain under the optional private cache. Restore never extracts an
+// archive or accepts destination paths from cache metadata.
+function snapshotInventory(root, outputs) {
+  const files = [];
+  let bytes = 0, entries = 0;
+  const visit = (name, depth = 0) => {
+    if (++entries > MAX_SNAPSHOT_ENTRIES || depth > MAX_SNAPSHOT_DEPTH) throw new Error('Derived snapshot exceeds tree budget');
+    const file = localPath(root, name);
+    const stat = fs.lstatSync(file);
+    if (stat.isDirectory()) {
+      // Iterate with a bound before allocating a directory-sized list.
+      const directory = fs.opendirSync(file);
+      try {
+        let child;
+        while ((child = directory.readSync())) visit(`${name}/${child.name}`, depth + 1);
+      } finally { directory.closeSync(); }
+    } else if (stat.isFile() && stat.nlink === 1) {
+      bytes += stat.size;
+      files.push(name);
+      if (bytes > MAX_SNAPSHOT_BYTES || files.length > MAX_SNAPSHOT_FILES) throw new Error('Derived snapshot exceeds budget');
+    } else throw new Error('Derived snapshot requires ordinary files without links');
+  };
+  for (const name of outputs) {
+    if (typeof name !== 'string') throw new Error('Snapshot outputs require explicit paths');
+    visit(name);
+  }
+  return files;
+}
+
+function copySnapshotFiles(sourceRoot, destinationRoot, files, publicOutput = false) {
+  for (const name of files) {
+    const source = localPath(sourceRoot, name);
+    const destination = localPath(destinationRoot, name);
+    fs.mkdirSync(path.dirname(destination), { recursive: true, mode: publicOutput ? 0o755 : 0o700 });
+    const input = fs.openSync(source, fs.constants.O_RDONLY | fs.constants.O_NOFOLLOW | fs.constants.O_NONBLOCK);
+    let output;
+    try {
+      const before = fs.fstatSync(input);
+      if (!before.isFile() || before.nlink !== 1 || before.size > MAX_SNAPSHOT_BYTES) throw new Error('Unsafe snapshot source');
+      output = fs.openSync(destination, fs.constants.O_WRONLY | fs.constants.O_CREAT | fs.constants.O_EXCL | fs.constants.O_NOFOLLOW, publicOutput ? 0o644 : 0o600);
+      const buffer = Buffer.alloc(64 * 1024);
+      let total = 0, count;
+      while ((count = fs.readSync(input, buffer)) > 0) {
+        total += count;
+        if (total > before.size) throw new Error('Snapshot source changed during copying');
+        let written = 0;
+        while (written < count) written += fs.writeSync(output, buffer, written, count - written);
+      }
+      const after = fs.fstatSync(input);
+      if (total !== before.size || before.size !== after.size || before.mtimeMs !== after.mtimeMs || before.ctimeMs !== after.ctimeMs) throw new Error('Snapshot source changed during copying');
+    } finally {
+      if (output !== undefined) fs.closeSync(output);
+      fs.closeSync(input);
+    }
+  }
+}
+
+function snapshotDirectory(root, name) {
+  if (!manifestPath(root, name)) return null;
+  try {
+    const directory = localPath(root, '.cache/derived-assets/snapshots');
+    fs.mkdirSync(directory, { recursive: true, mode: 0o700 });
+    return localPath(root, `.cache/derived-assets/snapshots/${name}`);
+  } catch { return null; }
+}
+
+function saveSnapshot(root, name, outputs, expected) {
+  const destination = snapshotDirectory(root, name);
+  if (!destination) return;
+  const temporary = `${destination}.${randomUUID()}.tmp`;
+  try {
+    fs.mkdirSync(temporary, { mode: 0o700 });
+    copySnapshotFiles(root, temporary, snapshotInventory(root, outputs));
+    if (fingerprintPaths(temporary, outputs).hash !== expected) throw new Error('Snapshot does not match validated outputs');
+    // A cache path may be malformed, but must never redirect a cleanup outside
+    // its private namespace. localPath rejects all ancestor symlinks.
+    localPath(root, path.relative(root, destination));
+    fs.rmSync(destination, { recursive: true, force: true });
+    fs.renameSync(temporary, destination);
+  } catch {
+    // Failure to save an optional payload does not invalidate generated files.
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+}
+
+function restoreSnapshot(root, name, outputs, expected, sourceUnchanged) {
+  const source = snapshotDirectory(root, name);
+  if (!source || !fs.existsSync(source)) return false;
+  const temporary = `${source}.${randomUUID()}.restore`;
+  try {
+    const files = snapshotInventory(source, outputs);
+    if (fingerprintPaths(source, outputs).hash !== expected) return false;
+    fs.mkdirSync(temporary, { mode: 0o700 });
+    copySnapshotFiles(source, temporary, files, true);
+    if (fingerprintPaths(temporary, outputs).hash !== expected || !sourceUnchanged()) return false;
+    // Validate the complete destination set before touching any output.
+    fingerprintPaths(root, outputs);
+    for (const name of outputs) {
+      const destination = localPath(root, name);
+      fs.mkdirSync(path.dirname(destination), { recursive: true });
+      fs.rmSync(destination, { recursive: true, force: true });
+      fs.renameSync(localPath(temporary, name), destination);
+    }
+    if (!sourceUnchanged()) throw new Error('Source changed during snapshot restoration');
+    return fingerprintPaths(root, outputs).hash === expected;
+  } catch { return false; }
+  finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+}
+
+/** Hash-only manifests optionally reference bounded, verified private snapshots. */
+export async function runDerivedTask({ root, name, inputs, outputs, stableInputs = inputs, identity, run, cache = true, snapshot = false, log = console.log }) {
   if (!/^[a-z][a-z0-9-]{0,40}$/.test(name)) throw new Error('Invalid derived asset group');
   root = fs.realpathSync(root);
   const inputIdentity = () => digest(JSON.stringify({ version: VERSION, identity, inputs, outputs, stableInputs, contents: fingerprintPaths(root, inputs) }));
@@ -133,9 +246,13 @@ export async function runDerivedTask({ root, name, inputs, outputs, stableInputs
   // Also inspect outputs on a miss, before a generator could follow a hostile link.
   const before = fingerprintPaths(root, outputs);
   const record = cache ? readManifest(manifestPath(root, name)) : null;
-  if (record?.input === input && record.output === before.hash && before.files > 0 && before.missing === 0) {
+  if (record?.input === input && record.output === before.hash && before.files > 0 && before.missing === 0 && inputIdentity() === input) {
     log(`[derived] ${name}: unchanged, reused existing files`);
     return { cached: true };
+  }
+  if (snapshot && record?.input === input && restoreSnapshot(root, name, outputs, record.output, () => inputIdentity() === input)) {
+    log(`[derived] ${name}: unchanged, restored verified snapshot`);
+    return { cached: true, restored: true };
   }
   log(`[derived] ${name}: generating`);
   const stableBefore = fingerprintPaths(root, stableInputs).hash;
@@ -147,6 +264,10 @@ export async function runDerivedTask({ root, name, inputs, outputs, stableInputs
   // Check last: an edit during either final hashing pass must not associate
   // fresh source fingerprints with a render made from the previous source.
   if (fingerprintPaths(root, stableInputs).hash !== stableBefore) throw new Error(`Source changed during ${name} generation; rerun to obtain consistent outputs`);
-  if (cache) writeManifest(root, name, { version: VERSION, input: finalInput, output: after.hash });
+  if (cache) {
+    if (snapshot) saveSnapshot(root, name, outputs, after.hash);
+    if (fingerprintPaths(root, stableInputs).hash !== stableBefore) throw new Error(`Source changed during ${name} snapshot; rerun to obtain consistent outputs`);
+    writeManifest(root, name, { version: VERSION, input: finalInput, output: after.hash });
+  }
   return { cached: false };
 }

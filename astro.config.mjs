@@ -22,6 +22,10 @@ const weeklyLastmods = weeklySitemapLastmods('https://l0g.fr');
 // https://astro.build/config
 export default defineConfig({
   site: 'https://l0g.fr',
+  // Native Astro incremental rendering. Unkeyed pages and endpoints still run
+  // on every build; a missing/invalid cache safely produces a full render.
+  cacheDir: './.cache/astro-incremental',
+  experimental: { incrementalBuild: true },
 
   markdown: {
     shikiConfig: {

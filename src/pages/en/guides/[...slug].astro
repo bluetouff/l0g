@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { createEditorialCacheKeys } from '../../../lib/editorial-cache-context.ts';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import AiEditorialDisclosure from '../../../components/AiEditorialDisclosure.astro';
 import EnglishRelatedReading from '../../../components/EnglishRelatedReading.astro';
@@ -10,9 +11,11 @@ import { isTranslationStale } from '../../../lib/agent-surface.ts';
 
 export async function getStaticPaths() {
   const guides = await getCollection('guidesEn', ({ data }) => !data.draft);
+  const cacheKey = await createEditorialCacheKeys();
   return guides.map((guide) => ({
     params: { slug: guide.id },
     props: { guide },
+    cacheKey: cacheKey('guidesEn', guide),
   }));
 }
 

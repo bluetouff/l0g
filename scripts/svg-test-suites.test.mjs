@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { dirname, resolve } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { SVG_TEST_SUITES, svgTestFiles } from './svg-test-suites.mjs';
-import { parseSvgTestArguments, svgTestArguments } from './run-svg-tests.mjs';
+import { parseSvgTestArguments, svgTestArguments, SVG_SOURCE_SHARDS } from './run-svg-tests.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -81,9 +82,9 @@ test('suites reading generated pages cannot enter the source-only job', () => {
 });
 
 test('group selection cannot silently omit tests or accept extra CLI arguments', () => {
-  assert.equal(parseSvgTestArguments([]), 'all');
+  assert.deepEqual(parseSvgTestArguments([]), { group: 'all', shard: undefined });
   for (const group of ['all', 'source', 'rendered']) {
-    assert.equal(parseSvgTestArguments(['--group', group]), group);
+    assert.deepEqual(parseSvgTestArguments(['--group', group]), { group, shard: undefined });
     assert.deepEqual(svgTestArguments(group, 4).slice(3), svgTestFiles(group));
   }
   for (const args of [
@@ -92,6 +93,54 @@ test('group selection cannot silently omit tests or accept extra CLI arguments',
     ['--group', 'source', 'scripts/unreviewed.test.mjs'],
   ]) assert.throws(() => parseSvgTestArguments(args));
   assert.throws(() => svgTestFiles('__proto__'));
+});
+
+test('only the four complete source shards are accepted without filtering the file list', () => {
+  assert.deepEqual(SVG_SOURCE_SHARDS, ['1/4', '2/4', '3/4', '4/4']);
+  for (const shard of SVG_SOURCE_SHARDS) {
+    assert.deepEqual(parseSvgTestArguments(['--group', 'source', '--shard', shard]), { group: 'source', shard });
+    const args = svgTestArguments('source', 4, shard);
+    assert.equal(args[3], `--test-shard=${shard}`);
+    assert.deepEqual(args.slice(4), svgTestFiles('source'));
+    for (const group of ['all', 'rendered']) {
+      assert.throws(() => parseSvgTestArguments(['--group', group, '--shard', shard]));
+      assert.throws(() => svgTestArguments(group, 4, shard));
+    }
+  }
+  for (const shard of ['', '0/4', '5/4', '1/3', '1/04', '01/4', '1/4 ', '--test-only', null, 1]) {
+    assert.throws(() => parseSvgTestArguments(['--group', 'source', '--shard', shard]));
+    assert.throws(() => svgTestArguments('source', 4, shard));
+  }
+  for (const args of [
+    ['--shard', '1/4'], ['--group', 'source', '--shard'],
+    ['--group', 'source', '--shard=1/4'], ['--group', 'source', '--shard', '1/4', '--test-only'],
+  ]) assert.throws(() => parseSvgTestArguments(args));
+});
+
+test('native Node sharding executes each manifest path exactly once across all four jobs', (t) => {
+  const temporary = mkdtempSync(resolve(tmpdir(), 'l0g-svg-shards-'));
+  t.after(() => rmSync(temporary, { recursive: true, force: true }));
+  mkdirSync(resolve(temporary, 'scripts'));
+  const files = svgTestFiles('source');
+  // Use lightweight marker modules at every real manifest path, so this checks
+  // Node's actual partitioning without running expensive SVG rendering twice.
+  for (const file of files) {
+    writeFileSync(resolve(temporary, file), `import { appendFileSync } from 'node:fs';\nappendFileSync(new URL('../executed.txt', import.meta.url), ${JSON.stringify(`${file}\n`)});\n`);
+  }
+  const environment = { ...process.env };
+  delete environment.NODE_TEST_CONTEXT;
+  const observed = [];
+  for (const shard of SVG_SOURCE_SHARDS) {
+    const result = spawnSync(process.execPath, svgTestArguments('source', 4, shard), {
+      cwd: temporary, encoding: 'utf8', env: environment, timeout: 60_000,
+    });
+    assert.equal(result.status, 0, `${shard}: ${result.stderr}\n${result.stdout}`);
+    const executed = readFileSync(resolve(temporary, 'executed.txt'), 'utf8').trim().split('\n');
+    assert.ok(executed.length >= Math.floor(files.length / 4) && executed.length <= Math.ceil(files.length / 4));
+    observed.push(...executed);
+    rmSync(resolve(temporary, 'executed.txt'));
+  }
+  assert.deepEqual(observed.sort(), [...files].sort(), 'Every source suite must run exactly once across the matrix');
 });
 
 test('Node test concurrency stays bounded on small and large machines', () => {
