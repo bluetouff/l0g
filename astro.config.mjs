@@ -39,6 +39,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap({
     filter: (page) => page !== 'https://l0g.fr/recherche/'
       && page !== 'https://l0g.fr/en/search/'
+      && page !== 'https://l0g.fr/cgv/'
       && !excludedEnglishGlossaryUrls.has(page)
       && (
         page === 'https://l0g.fr/glossaire/'

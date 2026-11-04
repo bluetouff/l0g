@@ -255,6 +255,7 @@ export async function auditBuiltSite(distPath) {
 function intendedNoindex(route, page, site, canonicalPath) {
   if (!page?.noindex) return false;
   if (route === '/recherche/' || route === '/404.html') return true;
+  if (route === '/cgv/') return Boolean(canonicalPath && page.canonical === route && !site.sitemap.has(route));
   if (route.startsWith('/en/glossary/')) {
     if (!canonicalPath || page.canonical !== route) return false;
     const entry = glossaryAtlasEnBySlug.get(route.slice('/en/glossary/'.length, -1));
