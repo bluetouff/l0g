@@ -4,6 +4,7 @@ import ts from 'typescript';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkMdx from 'remark-mdx';
+import { parse as parseAstro } from '@astrojs/compiler-rs';
 
 const extensions = ['.mjs', '.js', '.ts', '.tsx', '.jsx', '.astro', '.json'];
 const markdown = unified().use(remarkParse).use(remarkMdx);
@@ -95,14 +96,37 @@ export function epubDependencyClosure(root, entries) {
         walk(tree);
       }
     } else if (name.endsWith('.astro')) {
-      const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/u);
-      if (source.startsWith('---') && !frontmatter) throw new Error(`Unsupported Astro frontmatter in ${name}`);
-      if (frontmatter) scan(name, frontmatter[1]);
-      for (const script of source.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gu)) {
-        const src = script[1].match(/\bsrc=["']([^"']+)["']/u);
-        if (src) resolve(name, src[1]);
-        scan(name, script[2]);
-      }
+      const parsed = parseAstro(source);
+      if (parsed.ast.type !== 'AstroRoot' || parsed.diagnostics.some(diagnostic => diagnostic.severity === 'error')) throw new Error(`Invalid Astro dependency: ${name}`);
+      const fragment = (start, end) => {
+        if (!Number.isInteger(start) || !Number.isInteger(end) || start < 0 || end < start || end > source.length) throw new Error(`Invalid Astro source range: ${name}`);
+        return source.slice(start, end);
+      };
+      const frontmatter = parsed.ast.frontmatter?.program;
+      if (frontmatter) scan(name, fragment(frontmatter.start, frontmatter.end));
+      const walk = node => {
+        if (!node || typeof node !== 'object') return;
+        if (node.type === 'JSXElement' && node.openingElement.name.type === 'JSXIdentifier' && node.openingElement.name.name.toLowerCase() === 'script') {
+          const opening = node.openingElement;
+          for (const attribute of opening.attributes) {
+            if (attribute.type === 'JSXSpreadAttribute') throw new Error(`Dynamic script attributes in ${name}`);
+            if (attribute.name?.type !== 'JSXIdentifier' || attribute.name.name.toLowerCase() !== 'src') continue;
+            const value = attribute.value?.type === 'JSXExpressionContainer' ? attribute.value.expression : attribute.value;
+            if (value?.type !== 'Literal' || typeof value.value !== 'string') throw new Error(`Dynamic script source in ${name}`);
+            resolve(name, value.value);
+          }
+          if (!opening.selfClosing) {
+            if (!node.closingElement) throw new Error(`Unclosed script in ${name}`);
+            scan(name, fragment(opening.end, node.closingElement.start));
+          }
+          return;
+        }
+        for (const value of Object.values(node)) {
+          if (Array.isArray(value)) value.forEach(walk);
+          else if (value && typeof value === 'object') walk(value);
+        }
+      };
+      parsed.ast.body.forEach(walk);
     } else scan(name, source);
   };
   for (const entry of entries) visit(entry);

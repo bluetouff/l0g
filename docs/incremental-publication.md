@@ -99,5 +99,5 @@ Après retrait des deux articles de test, les 1 797 pages admissibles initiales
 sont de nouveau identiques à leur référence. Les routes supprimées ont disparu
 des pages collectives, du sitemap et de l'index de recherche. La chaîne de
 contrôles existante, y compris Pagefind et les suites SVG sur le rendu, a été
-exécutée. Le dernier essai EPUB réutilise les 19 groupes en 7,90 secondes, sans
+exécutée. Le dernier essai EPUB réutilise les 19 groupes en 6,54 secondes, sans
 relancer de générateur.

@@ -209,6 +209,37 @@ test('unresolved, dynamic and unsafe imports cannot silently omit dependencies',
  assert.throws(()=>epubDependencyClosure(f.root,[entry]),/Unsafe/);
 });
 
+test('Astro dependency parsing handles script case, quoted delimiters, frontmatter and comments',t=>{
+ const f=fixture(t);
+ const modules=['front','lower','upper','mixed','external','expression','unquoted','child'];
+ for(const name of modules)fs.writeFileSync(path.join(f.root,`${name}.mjs`),name==='external'?"export {value} from './child.mjs';":"export const value=1;");
+ fs.writeFileSync(path.join(f.root,'Figure.astro'),`---
+// é 🤖 keep offsets correct after non-ASCII source
+import {value} from './front.mjs';
+const ignored = '<script src="./string-only.mjs"></script>';
+---
+<!-- <SCRIPT SRC="./comment-only.mjs">import './also-commented.mjs';</SCRIPT> -->
+<p>Une figure élaborée 🤖</p>
+<script data-note=">">import './lower.mjs';</script>
+<SCRIPT DATA-NOTE=">" SRC = "./external.mjs">import './upper.mjs';</SCRIPT>
+<section><sCrIpT title='a > b'>import './mixed.mjs';</sCrIpT></section>
+<script src={'./expression.mjs'} />
+<script src=./unquoted.mjs></script>
+`);
+ assert.deepEqual(epubDependencyClosure(f.root,['Figure.astro']),['Figure.astro',...modules.map(name=>`${name}.mjs`)].sort());
+ const before=fingerprintPaths(f.root,epubDependencyClosure(f.root,['Figure.astro'])).hash;
+ fs.writeFileSync(path.join(f.root,'upper.mjs'),'export const value=2;');
+ assert.notEqual(fingerprintPaths(f.root,epubDependencyClosure(f.root,['Figure.astro'])).hash,before);
+});
+
+test('Astro parsing fails closed on dynamic script sources, attribute spreads and malformed markup',t=>{
+ const f=fixture(t),entry='Figure.astro';
+ for(const source of ['<SCRIPT SRC={moduleName}></SCRIPT>','<script {...attributes}></script>','<script src></script>',"<script src='./missing.mjs'></script>",'<script>','---\nconst = ;\n---\n<p />']){
+  fs.writeFileSync(path.join(f.root,entry),source);
+  assert.throws(()=>epubDependencyClosure(f.root,[entry]));
+ }
+});
+
 test('legacy chapter discovery parses data without executing source and rejects dynamic filenames',t=>{
  const f=fixture(t);const script='legacy.mjs';
  fs.writeFileSync(path.join(f.root,script),`throw new Error('never execute');const articles=[{file:'one.md'},{file:'two.mdx'}];`);
