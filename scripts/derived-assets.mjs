@@ -55,7 +55,7 @@ export const derivedTasks = {
   },
   og: {
     script: 'og:generate',
-    inputs: [...commonInputs, ...fonts, 'src/config', 'src/content', 'public/publications/og/art'],
+    inputs: [...commonInputs, ...fonts, 'src/config', 'src/content', 'public/publications/og/art', 'src/lib/weekly-social.ts', 'src/lib/weekly-presentation.ts', 'public/illustrations'],
     outputs: ogOutputs,
     overrides: ['OUT', 'TITLE', 'SUBTITLE', 'EYEBROW', 'COMMAND', 'CHIPS', 'ACCENT', 'POSTS_DIR', 'OG_LANG', 'OUT_DIR'],
   },

@@ -7,9 +7,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import WeeklyIssue from '../components/WeeklyIssue.astro';
 import { latestWeeklyEdition, weeklyEditions } from '../config/weekly-editions.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
+import { weeklySocialCard } from '../lib/weekly-social.ts';
 
 const edition = latestWeeklyEdition();
 const illustrations = weeklyIllustrations(await getCollection('posts'));
+const social = weeklySocialCard(edition, weeklyCoverImage(edition, illustrations));
 const archiveYears = new Map<string, typeof weeklyEditions>();
 for (const item of weeklyEditions.filter((item) => item.slug !== edition.slug).sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))) {
   const year = item.publishedAt.slice(0, 4);
@@ -24,7 +26,7 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout title="L’hebdo l0g : la revue de la semaine" description="Une lecture des dossiers de la semaine, leurs mécanismes, leurs limites et les prochaines vérifications. Sources, analyses et archives en accès libre." sidebar={false}>
+<BaseLayout title="L’hebdo l0g : la revue de la semaine" description="Une lecture des dossiers de la semaine, leurs mécanismes, leurs limites et les prochaines vérifications. Sources, analyses et archives en accès libre." ogImage={social.image} ogImageAlt={social.alt} sidebar={false}>
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
   <div class="weekly-magazine weekly-page">
     <WeeklyMasthead home />

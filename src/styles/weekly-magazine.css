@@ -11,6 +11,9 @@
   --mag-ink: #173f36;
   --mag-cream: #f3f0e7;
   --mag-leaf: #c4ddbe;
+  --mag-cover: linear-gradient(125deg, #1b302c 0%, #13231f 55%, #101a19 100%);
+  --mag-cover-text: #e2e7df;
+  --mag-cover-muted: #a5b8ae;
   max-width: 72rem;
   margin: 0 auto;
   font-family: var(--font-read);
@@ -35,15 +38,15 @@
 .weekly-magazine .issue-coordinate { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.2rem; margin-bottom: .9rem; color: var(--color-muted); font-size: .65rem; }
 .weekly-magazine .issue-number { color: var(--color-signal); letter-spacing: .08em; }
 .weekly-magazine .review-date { margin-left: auto; }
-.weekly-magazine .issue-cover { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); background: var(--mag-cream); color: var(--mag-ink); }
+.weekly-magazine .issue-cover { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); background: var(--mag-cover); color: var(--mag-cover-text); }
 .weekly-magazine .issue-opening { display: flex; flex-direction: column; align-items: start; padding: clamp(1.3rem, 3vw, 2.5rem); min-width: 0; }
-.weekly-magazine .issue-opening .magazine-eyebrow { color: #426257; }
+.weekly-magazine .issue-opening .magazine-eyebrow { color: var(--mag-cover-muted); }
 .weekly-magazine .issue-opening .magazine-eyebrow span { margin: 0 .5rem; }
 .weekly-magazine .issue-opening :is(h1, h2) { --page-heading-size: clamp(2.2rem, 3.8vw, 3.4rem); --page-title-size: var(--page-heading-size); margin: 1rem 0 0; font-family: var(--mag-serif); font-size: clamp(2.2rem, 3.8vw, 3.4rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.02; text-wrap: balance; overflow-wrap: anywhere; }
-.weekly-magazine .issue-lead { margin: 1.2rem 0 1.5rem; color: #3f574d; font-size: .85rem; line-height: 1.75; }
-.weekly-magazine .cover-read { display: inline-flex; align-items: center; gap: 1.5rem; margin-top: auto; padding: .6rem 0; border-bottom: 1px solid #173f3670; font-size: .72rem; }
-.weekly-magazine .issue-opening a:hover { color: #0b5f58; }
-.weekly-magazine .issue-opening a:focus-visible { outline-color: var(--mag-ink); }
+.weekly-magazine .issue-lead { margin: 1.2rem 0 1.5rem; color: var(--mag-cover-muted); font-size: .85rem; line-height: 1.75; }
+.weekly-magazine .cover-read { display: inline-flex; align-items: center; gap: 1.5rem; margin-top: auto; padding: .6rem 0; border-bottom: 1px solid #91b3a34d; color: #c2d7ca; font-size: .72rem; }
+.weekly-magazine .issue-opening a:hover { color: #e2e7df; }
+.weekly-magazine .issue-opening a:focus-visible { outline-color: #a5c9b8; }
 .weekly-magazine .cover-read span { font-size: 1.3rem; }
 .weekly-magazine .cover-image { display: flex; flex-direction: column; min-width: 0; margin: 0; background: #101b19; }
 .weekly-magazine .cover-image img { width: 100%; height: 100%; min-height: 20rem; flex: 1; aspect-ratio: 1.12; object-fit: cover; }
@@ -141,7 +144,7 @@
 .weekly-magazine .archive-art { position: relative; overflow: hidden; background: var(--mag-ink); }
 .weekly-magazine .archive-art img { display: block; width: 100%; height: auto; aspect-ratio: 1.8; object-fit: cover; transition: transform .35s ease; }
 .weekly-magazine .archive-card:hover img { transform: scale(1.035); }
-.weekly-magazine .archive-number { position: absolute; bottom: 0; left: 0; padding: .4rem .8rem; color: var(--mag-ink); background: var(--mag-cream); font-size: .65rem; letter-spacing: .08em; }
+.weekly-magazine .archive-number { position: absolute; bottom: 0; left: 0; padding: .4rem .8rem; color: #c2d7ca; background: #17312b; font-size: .65rem; letter-spacing: .08em; }
 .weekly-magazine .archive-monogram { display: grid; place-items: center; aspect-ratio: 1.8; color: var(--mag-leaf); font-family: var(--mag-serif); font-size: 4rem; }
 .weekly-magazine .archive-caption { padding: 1.2rem; }
 .weekly-magazine .archive-caption time { color: var(--color-muted); font-size: .6rem; }

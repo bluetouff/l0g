@@ -63,7 +63,7 @@ const chartDimensions = weeklyChartDimensions(edition);
       <div class="section-line"><SectionHeading id={`readings-${edition.issue}`}>{editorial ? 'Les dossiers à retenir' : 'À lire cette semaine'}</SectionHeading><span>{String(readings.length).padStart(2, '0')} lecture{readings.length > 1 ? 's' : ''}</span></div>
       <div class="reading-grid">
       {readings.map((item, index) => <article class:list={['reading-note', { 'reading-feature': index === 0 }]} id={`lecture-${edition.issue}-${index + 1}`}>
-        {illustrations.get(item.href) && <a class="reading-image" href={item.href} aria-label={`Lire : ${item.title}`} tabindex="-1" aria-hidden="true"><img src={illustrations.get(item.href)} alt="" width="1200" height="630" loading="lazy" decoding="async" /></a>}
+        {(illustrations.get(item.href) ?? (index === 0 ? cover : undefined)) && <a class="reading-image" href={item.href} aria-label={`Lire : ${item.title}`} tabindex="-1" aria-hidden="true"><img src={illustrations.get(item.href) ?? (index === 0 ? cover : undefined)} alt="" width="1200" height="630" loading="lazy" decoding="async" /></a>}
         <div class="reading-copy">
           <div class="reading-meta"><span>{String(index + 1).padStart(2, '0')}</span><p>{item.topic}</p></div>
           <ReadingHeading><a href={item.href}>{item.title}</a></ReadingHeading>

@@ -1,5 +1,11 @@
 import type { WeeklyEdition, WeeklyReading } from '../config/weekly-editions.ts';
 
+const archiveCovers = new Map([
+  ['2026-08-02-atlas-athene', '/illustrations/hebdo/atlas-warehouse-v1.jpg'],
+  ['2026-08-09', '/illustrations/hebdo/softbank-liquidity-v1.jpg'],
+  ['2026-08-16', '/illustrations/hebdo/digital-euro-control-v1.jpg'],
+]);
+
 type IllustrationPost = { id: string; data: { draft?: boolean; ogImage?: string } };
 
 // Use the publication's own illustration. Text-only social cards and remote
@@ -30,7 +36,7 @@ export function weeklyCoverTitle(edition: WeeklyEdition) {
 
 export function weeklyCoverImage(edition: WeeklyEdition, illustrations: Map<string, string>) {
   if (isWeeklyIllustration(edition.editorial?.cover.src)) return edition.editorial.cover.src;
-  return illustrations.get(weeklyReadings(edition)[0].href);
+  return illustrations.get(weeklyReadings(edition)[0].href) ?? archiveCovers.get(edition.slug);
 }
 
 export function weeklyDate(value: string, short = false) {

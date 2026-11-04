@@ -2,10 +2,11 @@
 import { getCollection } from 'astro:content';
 import '../../styles/weekly-magazine.css';
 import WeeklyMasthead from '../../components/WeeklyMasthead.astro';
-import { weeklyIllustrations, weeklyCoverTitle } from '../../lib/weekly-presentation.ts';
+import { weeklyIllustrations, weeklyCoverTitle, weeklyCoverImage } from '../../lib/weekly-presentation.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WeeklyIssue from '../../components/WeeklyIssue.astro';
 import { weeklyEditions } from '../../config/weekly-editions.ts';
+import { weeklySocialCard } from '../../lib/weekly-social.ts';
 
 export async function getStaticPaths() {
   const illustrations = weeklyIllustrations(await getCollection('posts'));
@@ -22,9 +23,10 @@ export async function getStaticPaths() {
 }
 
 const { edition, older, newer, illustrations } = Astro.props;
+const social = weeklySocialCard(edition, weeklyCoverImage(edition, illustrations));
 ---
 
-<BaseLayout title={`${edition.title} · L’hebdo`} description={edition.description} sidebar={false}>
+<BaseLayout title={`${edition.title} · L’hebdo`} description={edition.description} ogImage={social.image} ogImageAlt={social.alt} sidebar={false}>
   <div class="weekly-magazine issue-page">
     <WeeklyMasthead />
     <a class="back" href="/hebdo/">← La collection</a>
