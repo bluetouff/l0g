@@ -19,7 +19,6 @@ ogTitle: "Airfares and AI agents: the signals behind the price"
 
 import AirfareAgentsFigure from "../../components/AirfareAgentsFigure.astro";
 import AirfareBotLab from "../../components/AirfareBotLab.astro";
-import AirfareBotVideo from "../../components/AirfareBotVideo.astro";
 
 A traveller needs a return flight, a checked bag and an arrival before dinner. Their AI agent tries different departure times, moves the trip by a day, checks a nearby airport and repeats the exercise across several distributors. At the end of the search there is still one person, one trip and, perhaps, one booking. In the systems processing those requests, the activity may look much larger.
 
@@ -27,7 +26,7 @@ This is a hypothetical scene. The economic problem is already worth examining: *
 
 Several channels need to be separated. Shopping requests consume computing resources and can inform demand forecasts. More requests from the same traveller can change the meaning of those signals. **The causal effect of AI agents on fares remains to be measured** in the public sources reviewed through **5 November 2026**. The mechanisms below distinguish computing costs, possible forecasting errors and better comparison for the customer.
 
-The [small simulator](#airfare-bot-lab-en) shows how the price changes when bots hold and release seats. A short video demonstrates the clicks.
+The [interactive simulator](#airfare-bot-lab-en) follows one traveller and an assistant making a hundred searches. A fictional seller mistakes those searches for additional customers, then recognises their common origin.
 
 ## Pricing a seat against tomorrow’s passenger
 
@@ -67,6 +66,10 @@ The scenario keeps purchases fixed and changes only search intensity. It exposes
 
 The fare outcome depends on processing. A model placing substantial weight on raw volume could overestimate demand. Another might read weaker conversion as a lack of appeal. A recalibrated system could group repetitions and identify meaningful alternatives more accurately. The direction can therefore change with the data and decision rules.
 
+The scenario below illustrates a possible error: counting every search from the same traveller as another customer. The numbers, fares and decision rule are entirely fictional. They do not reproduce any airline’s pricing system.
+
+<AirfareBotLab lang="en" />
+
 The software-security foundation OWASP calls intentional automated manipulation of metrics *skewing*. That threat supplies a technical comparison. Unintentional noise from a legitimate shopping assistant remains a separate analytical hypothesis in this investigation. <sup className="source-ref"><a href="#source-07" aria-label="Source 7">7</a></sup>
 
 ## The first bill is for computing
@@ -90,12 +93,6 @@ Who pays this expense depends on contracts and competition. An airline could abs
 A price request generally does not reserve a seat. Other actions go further, creating a temporary booking or holding availability. When holds accumulate without purchases, they can deprive other customers of inventory that would otherwise be for sale. OWASP’s *denial of inventory* category explicitly includes flight seats. <sup className="source-ref"><a href="#source-10" aria-label="Source 10">10</a></sup>
 
 A hold first affects availability: a customer may lose access to an offer, buy a more expensive alternative or abandon the purchase. Following this channel requires records of temporary reservations, quantities, duration and release. Price searches and actions that hold seats therefore need separate observation.
-
-The game below isolates temporary holds using fictional seats and fares. Searching leaves seats available; holding them can remove access to the cheapest fare.
-
-<AirfareBotLab lang="en" />
-
-<AirfareBotVideo lang="en" />
 
 Agents could also strengthen the passenger’s position. Consider an assistant that finds an acceptable connection, checks baggage charges and discovers an airline its user would otherwise have missed. By genuinely expanding the alternatives, it may make some price differences harder to sustain. This is a material countervailing economic mechanism, whose size remains to be measured.
 

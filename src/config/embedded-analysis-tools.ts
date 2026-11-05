@@ -11,19 +11,19 @@ export const embeddedAnalysisTools: AnalysisTool[] = [
     "placement": "article",
     "embeddedComponent": "AirfareBotLab",
     "fr": {
-      "title": "Les bots et le prix du billet",
+      "title": "Un voyageur, 100 recherches",
       "eyebrow": "économie et coûts",
-      "question": "Pourquoi le prix monte-t-il quand des bots bloquent les places les moins chères ?",
-      "description": "Trois boutons pour chercher, bloquer puis libérer des places, avec un prix qui change sous les yeux. Exemple entièrement fictif.",
+      "question": "Le vendeur reconnaît-il un seul voyageur derrière cent recherches ?",
+      "description": "Un assistant multiplie les recherches pour une seule personne. Le scénario fictif montre un vendeur qui les confond avec de nouveaux clients, puis reconnaît le bot.",
       "href": "/posts/billets-avion-agents-ia-signal-demande/#airfare-bot-lab-fr",
       "articleHref": "/posts/billets-avion-agents-ia-signal-demande/",
       "articleLabel": "Lire l’analyse et ses sources"
     },
     "en": {
-      "title": "Bots and ticket prices",
+      "title": "One traveller, 100 searches",
       "eyebrow": "economics and costs",
-      "question": "Why does the price rise when bots hold the cheapest seats?",
-      "description": "Three buttons to search, hold and release seats, with a visible price change. An entirely fictional example.",
+      "question": "Can the seller recognise one traveller behind a hundred searches?",
+      "description": "An assistant runs many searches for one person. This fictional scenario shows a seller mistaking those searches for additional customers, then recognising the bot.",
       "href": "/en/analysis/airfares-ai-agents-demand-signals/#airfare-bot-lab-en",
       "articleHref": "/en/analysis/airfares-ai-agents-demand-signals/",
       "articleLabel": "Read the analysis and sources"

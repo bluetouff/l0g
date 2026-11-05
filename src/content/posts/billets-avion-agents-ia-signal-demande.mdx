@@ -17,7 +17,6 @@ ogTitle: "Billets d’avion : les agents IA peuvent-ils fausser les prix ?"
 
 import AirfareAgentsFigure from "../../components/AirfareAgentsFigure.astro";
 import AirfareBotLab from "../../components/AirfareBotLab.astro";
-import AirfareBotVideo from "../../components/AirfareBotVideo.astro";
 
 Un voyageur cherche un aller-retour, avec un bagage et une arrivée avant le dîner. Son agent d’intelligence artificielle explore d’autres horaires, décale le départ, essaie un aéroport voisin, recommence chez plusieurs distributeurs. Au bout de cette exploration, il reste une personne, un déplacement et, peut-être, une réservation. Dans les journaux informatiques, l’activité peut avoir pris une tout autre ampleur.
 
@@ -25,7 +24,7 @@ Cette scène est hypothétique. Le problème économique qu’elle soulève mér
 
 Le risque se situe à plusieurs endroits. Les recherches mobilisent de la puissance informatique et peuvent fournir des informations aux prévisionnistes. Leur multiplication par un même voyageur change la lecture de ces signaux. **L’effet causal des agents sur les tarifs reste à mesurer** dans les sources publiques examinées au **5 novembre 2026**. Les mécanismes qui suivent permettent de distinguer la facture technique, les erreurs possibles de prévision et les gains de comparaison pour le client.
 
-Le [petit simulateur](#airfare-bot-lab-fr) permet de voir le prix bouger quand des bots bloquent puis libèrent des places. Une courte vidéo montre les clics à effectuer.
+Le [simulateur interactif](#airfare-bot-lab-fr) suit un voyageur et les cent recherches de son assistant. Un vendeur fictif les confond avec de nouveaux clients, puis reconnaît leur origine commune.
 
 ## Le passager futur entre dans le prix du siège
 
@@ -65,6 +64,10 @@ Le scénario garde les achats identiques et modifie seulement l’intensité des
 
 Le résultat tarifaire dépend du traitement appliqué. Un modèle donnant beaucoup de poids au volume brut pourrait surestimer la demande. Un autre pourrait lire la chute des conversions comme un manque d’attractivité. Un système recalibré pourrait regrouper les répétitions et mieux identifier les alternatives pertinentes. L’effet peut donc changer de sens selon les données et les règles du modèle.
 
+Le scénario ci-dessous illustre une erreur possible : compter chaque recherche d’un même voyageur comme un nouveau client. Les nombres, les tarifs et la règle de décision sont entièrement fictifs. Ils ne reproduisent le fonctionnement d’aucune compagnie aérienne.
+
+<AirfareBotLab lang="fr" />
+
 La fondation de sécurité informatique OWASP nomme *skewing* la manipulation automatisée et intentionnelle de métriques. Cette menace constitue un point de comparaison technique. Le bruit involontaire d’un assistant qui cherche pour son utilisateur relève ici d’une hypothèse analytique distincte. <sup className="source-ref"><a href="#source-07" aria-label="Source 7">7</a></sup>
 
 ## La première facture concerne le calcul
@@ -88,12 +91,6 @@ La répartition de cette dépense reste une question contractuelle et concurrent
 Une requête de prix ne réserve généralement aucune place. Certaines actions vont plus loin : elles créent une réservation temporaire ou retiennent une disponibilité. Lorsque de telles retenues sont accumulées sans achat, elles peuvent priver les autres clients d’un inventaire réellement vendable. L’OWASP décrit cette menace de *denial of inventory*, en citant notamment les sièges d’avion. <sup className="source-ref"><a href="#source-10" aria-label="Source 10">10</a></sup>
 
 La retenue agit d’abord sur la disponibilité : un client peut perdre l’accès à une offre, choisir une option plus chère ou renoncer. Documenter ce canal demande de suivre les réservations temporaires, leurs quantités, leur durée et leur libération. Les recherches de prix et les actes qui retiennent des sièges doivent donc être observés séparément.
-
-Le jeu ci-dessous isole les retenues temporaires, avec des places et des tarifs inventés. Chercher un prix laisse les places disponibles ; les bloquer peut faire disparaître le tarif le moins cher.
-
-<AirfareBotLab lang="fr" />
-
-<AirfareBotVideo lang="fr" />
 
 À l’autre bout du raisonnement, les agents peuvent exercer une pression favorable au consommateur. Prenons un assistant qui trouve une correspondance acceptable, compare les bagages et découvre une compagnie que l’utilisateur n’aurait pas consultée. S’il élargit véritablement les choix, il rend certains écarts de prix plus difficiles à maintenir. C’est un contre-mécanisme économique sérieux, dont l’ampleur reste à mesurer.
 

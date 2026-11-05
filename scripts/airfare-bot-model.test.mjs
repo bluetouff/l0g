@@ -3,128 +3,123 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import {
   AIRFARE_DEFAULTS as defaults,
-  AIRFARE_SEATS as seats,
-  applyAirfareAction as apply,
   calculateAirfareScenario as calculate,
+  nextAirfareStage as next,
 } from '../src/lib/airfare-bot-model.ts';
 
-test('the fictional inventory starts with twelve seats and four at each price', () => {
-  assert.equal(seats.length, 12);
-  assert.deepEqual(seats.map(seat => seat.number), Array.from({ length: 12 }, (_, index) => index + 1));
-  for (const price of [180, 240, 300]) assert.equal(seats.filter(seat => seat.price === price).length, 4);
+test('the fictional scenario starts with one traveler, one request and no purchase', () => {
+  assert.deepEqual(defaults, { stage: 0 });
   assert.deepEqual(calculate(defaults), {
-    heldSeats: 0, availableSeats: 12, price: 180, remainingAtPrice: 4, extraPrice: 0,
+    stage: 0,
+    travelers: 1,
+    purchases: 0,
+    requests: 1,
+    recognized: false,
+    lowFareOpen: true,
+    price: 180,
+    extraPrice: 0,
   });
 });
 
-test('searching never changes availability or the accessible price', () => {
-  for (let heldSeats = 0; heldSeats <= 12; heldSeats++) {
-    const input = Object.freeze({ heldSeats });
-    let searched = input;
-    for (let repeat = 0; repeat < 100; repeat++) searched = apply(searched, 'search');
-    assert.deepEqual(calculate(searched), calculate(input));
-  }
+test('bot amplification increases requests without creating travelers or purchases', () => {
+  const initial = calculate(defaults);
+  const amplified = calculate(next(defaults));
+  assert.equal(amplified.requests, initial.requests * 100);
+  assert.equal(amplified.travelers, initial.travelers);
+  assert.equal(amplified.purchases, initial.purchases);
+  assert.equal(amplified.recognized, false);
+  assert.equal(amplified.lowFareOpen, false);
+  assert.equal(amplified.price, 240);
+  assert.equal(amplified.price - initial.price, 60);
+  assert.equal(amplified.extraPrice, 60);
 });
 
-test('successive holds consume the cheapest seats first and make each fare change visible', () => {
+test('recognizing repeated bot requests restores the low fare while keeping all requests', () => {
+  const amplified = calculate({ stage: 1 });
+  const recognized = calculate(next({ stage: 1 }));
+  assert.equal(recognized.requests, amplified.requests);
+  assert.equal(recognized.requests, 100);
+  assert.equal(recognized.travelers, 1);
+  assert.equal(recognized.purchases, 0);
+  assert.equal(recognized.recognized, true);
+  assert.equal(recognized.lowFareOpen, true);
+  assert.equal(recognized.price, calculate(defaults).price);
+  assert.equal(recognized.extraPrice, 0);
+});
+
+test('the three stages form a repeatable cycle with no accumulated demand or purchases', () => {
   let state = defaults;
-  const prices = [calculate(state).price];
-  const remaining = [calculate(state).remainingAtPrice];
-  for (let repeat = 0; repeat < 6; repeat++) {
-    state = apply(state, 'hold');
-    prices.push(calculate(state).price);
-    remaining.push(calculate(state).remainingAtPrice);
-  }
-  assert.deepEqual(prices, [180, 180, 240, 240, 300, 300, null]);
-  assert.deepEqual(remaining, [4, 2, 4, 2, 4, 2, 0]);
-  assert.deepEqual(state, { heldSeats: 12 });
-  assert.deepEqual(apply(state, 'hold'), state);
-});
-
-test('boundary counts select the next available fare and never invent a sold-out price', () => {
-  for (const [heldSeats, price, availableSeats, remainingAtPrice] of [
-    [3, 180, 9, 1], [4, 240, 8, 4], [7, 240, 5, 1],
-    [8, 300, 4, 4], [11, 300, 1, 1], [12, null, 0, 0],
-  ]) {
-    const result = calculate({ heldSeats });
-    assert.equal(result.price, price);
-    assert.equal(result.availableSeats, availableSeats);
-    assert.equal(result.remainingAtPrice, remainingAtPrice);
-    assert.equal(result.extraPrice, price === null ? null : price - 180);
-  }
-  assert.deepEqual(apply({ heldSeats: 11 }, 'hold'), { heldSeats: 12 });
-});
-
-test('releasing every temporary hold restores the initial inventory and price', () => {
-  for (let heldSeats = 0; heldSeats <= 12; heldSeats++) {
-    const released = apply({ heldSeats }, 'release');
-    assert.deepEqual(released, defaults);
-    assert.deepEqual(calculate(released), calculate(defaults));
-  }
-});
-
-test('all valid inventories conserve the twelve seats and produce bounded finite counts', () => {
-  for (let heldSeats = 0; heldSeats <= 12; heldSeats++) {
-    const result = calculate({ heldSeats });
-    assert.equal(result.heldSeats + result.availableSeats, 12);
-    assert.ok(result.remainingAtPrice >= 0 && result.remainingAtPrice <= 4);
-    assert.ok(result.remainingAtPrice <= result.availableSeats);
-    for (const value of Object.values(result)) if (value !== null) assert.ok(Number.isSafeInteger(value));
-    assert.ok([180, 240, 300, null].includes(result.price));
-    for (const action of ['search', 'hold', 'release']) {
-      const next = apply({ heldSeats }, action);
-      assert.doesNotThrow(() => calculate(next));
+  for (let repeat = 0; repeat < 5; repeat++) {
+    for (const stage of [0, 1, 2]) {
+      assert.equal(state.stage, stage);
+      const result = calculate(state);
+      assert.equal(result.stage, stage);
+      assert.equal(result.travelers, 1);
+      assert.equal(result.purchases, 0);
+      assert.equal(result.extraPrice, result.price - 180);
+      state = next(state);
     }
+    assert.deepEqual(state, defaults);
   }
 });
 
-test('malformed states fail rather than being coerced, clamped or replaced', () => {
-  const invalid = [undefined, null, [], 0, '0', true, new Date(), {},
-    ...['', '0', false, null, undefined, NaN, Infinity, -Infinity, -1, 13, 0.5, 1n, Number.MAX_SAFE_INTEGER]
-      .map(heldSeats => ({ heldSeats })),
-    { heldSeats: 0, extra: 1 },
+test('malformed states fail without coercion, clamping or replacement defaults', () => {
+  const invalid = [
+    undefined, null, [], 0, '0', true, new Date(), {}, new Number(0),
+    ...['', '0', '1', false, null, undefined, NaN, Infinity, -Infinity, -1, 3, 0.5, 1n,
+      Number.MAX_SAFE_INTEGER, {}, []].map(stage => ({ stage })),
+    { stage: 0, extra: 1 },
   ];
   for (const input of invalid) {
     assert.throws(() => calculate(input), RangeError);
-    for (const action of ['search', 'hold', 'release']) assert.throws(() => apply(input, action), RangeError);
+    assert.throws(() => next(input), RangeError);
   }
+  let converted = false;
+  const coercible = { stage: { valueOf() { converted = true; return 0; } } };
+  assert.throws(() => calculate(coercible), RangeError);
+  assert.throws(() => next(coercible), RangeError);
+  assert.equal(converted, false);
 });
 
-test('actions use an explicit allowlist with no executable or implicit input', () => {
-  for (const action of [undefined, null, [], {}, true, 0, 'HOLD', 'hold ', '', '__proto__', 'constructor', '<script>']) {
-    assert.throws(() => apply(defaults, action), RangeError);
-  }
-});
-
-test('prototype pollution fields, inherited states, symbols and getters are rejected', () => {
+test('inherited states, prototype fields, hidden extras, symbols and accessors are rejected', () => {
   const invalid = [
-    JSON.parse('{"heldSeats":0,"__proto__":{"polluted":true}}'),
-    { heldSeats: 0, constructor: {} }, { heldSeats: 0, prototype: {} },
-    { heldSeats: 0, [Symbol('input')]: 0 }, Object.create({ heldSeats: 0 }),
+    JSON.parse('{"stage":0,"__proto__":{"polluted":true}}'),
+    { stage: 0, constructor: {} }, { stage: 0, prototype: {} },
+    { stage: 0, [Symbol('input')]: 0 }, Object.create({ stage: 0 }),
     Object.assign(Object.create({ inherited: true }), defaults),
+    Object.defineProperty({ stage: 0 }, 'hidden', { value: true }),
   ];
-  for (const input of invalid) assert.throws(() => calculate(input), RangeError);
+  for (const input of invalid) {
+    assert.throws(() => calculate(input), RangeError);
+    assert.throws(() => next(input), RangeError);
+  }
   let accessed = false;
   const accessor = {};
-  Object.defineProperty(accessor, 'heldSeats', { get() { accessed = true; return 0; } });
+  Object.defineProperty(accessor, 'stage', { get() { accessed = true; return 0; } });
   assert.throws(() => calculate(accessor), RangeError);
-  assert.throws(() => apply(accessor, 'search'), RangeError);
+  assert.throws(() => next(accessor), RangeError);
   assert.equal(accessed, false);
   assert.equal({}.polluted, undefined);
-  assert.deepEqual(calculate(Object.assign(Object.create(null), defaults)), calculate(defaults));
+  const plain = Object.assign(Object.create(null), defaults);
+  assert.deepEqual(calculate(plain), calculate(defaults));
+  assert.deepEqual(next(plain), next(defaults));
 });
 
-test('the inventory, defaults and caller state stay immutable', () => {
-  assert.ok(Object.isFrozen(seats));
-  assert.ok(seats.every(Object.isFrozen));
+test('defaults and caller state remain unchanged and transitions return independent objects', () => {
   assert.ok(Object.isFrozen(defaults));
-  const input = Object.freeze({ heldSeats: 4 });
-  for (const action of ['search', 'hold', 'release']) {
-    const result = apply(input, action);
+  for (const stage of [0, 1, 2]) {
+    const input = Object.freeze({ stage });
+    const result = next(input);
     assert.notEqual(result, input);
-    calculate(result);
-    assert.deepEqual(input, { heldSeats: 4 });
+    assert.notEqual(result, next(input));
+    assert.doesNotThrow(() => calculate(result));
+    assert.deepEqual(input, { stage });
+    const scenario = calculate(input);
+    scenario.price = 999;
+    assert.notEqual(calculate(input).price, 999);
+    assert.deepEqual(input, { stage });
   }
+  assert.deepEqual(defaults, { stage: 0 });
 });
 
 test('the local tool has no executable HTML insertion, outbound requests or persistent state', () => {
@@ -135,13 +130,4 @@ test('the local tool has no executable HTML insertion, outbound requests or pers
   assert.doesNotMatch(source, /\b(?:fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|localStorage|sessionStorage|indexedDB|postMessage)\b|document\.cookie|new\s+(?:Worker|Image)\b/u);
   assert.doesNotMatch(component, /\son(?:click|load|error|input|change|submit)\s*=|<script[^>]+src=["']https?:/iu);
   assert.doesNotMatch(client, /(?:import|from)\s*\(?\s*['"]https?:/u);
-  assert.match(component, /<script>\s*import ['"]\.\.\/lib\/airfare-bot-client['"];?\s*<\/script>/u);
-  assert.match(client, /\.textContent\s*=/u);
-});
-
-test('the initial view remains useful when interactive controls cannot be enabled', () => {
-  const component = readFileSync(new URL('../src/components/AirfareBotLab.astro', import.meta.url), 'utf8');
-  assert.match(component, /<fieldset\b[^>]*\bdisabled(?:\s|>|=)/u);
-  assert.match(component, /<noscript>/u);
-  assert.match(component, /data-airfare-lab/u);
 });

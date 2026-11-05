@@ -1,33 +1,24 @@
-export type AirfareAction = 'search' | 'hold' | 'release';
-export type AirfarePrice = 180 | 240 | 300;
+export type AirfareStage = 0 | 1 | 2;
 
 export interface AirfareState {
-  heldSeats: number;
-}
-
-export interface AirfareSeat {
-  number: number;
-  price: AirfarePrice;
+  stage: AirfareStage;
 }
 
 export interface AirfareScenario {
-  heldSeats: number;
-  availableSeats: number;
-  price: AirfarePrice | null;
-  remainingAtPrice: number;
-  extraPrice: number | null;
+  stage: AirfareStage;
+  travelers: 1;
+  purchases: 0;
+  requests: 1 | 100;
+  recognized: boolean;
+  lowFareOpen: boolean;
+  price: 180 | 240;
+  extraPrice: 0 | 60;
 }
 
-// Entirely fictional teaching inventory. These prices and allocations are not
-// airline data. A search never holds a seat; a hold uses the cheapest seats first.
-export const AIRFARE_SEATS: readonly Readonly<AirfareSeat>[] = Object.freeze(
-  Array.from({ length: 12 }, (_, index) => Object.freeze({
-    number: index + 1,
-    price: (index < 4 ? 180 : index < 8 ? 240 : 300) as AirfarePrice,
-  })),
-);
-
-export const AIRFARE_DEFAULTS: Readonly<AirfareState> = Object.freeze({ heldSeats: 0 });
+// Fictional teaching scenario: an intentionally naive seller mistakes repeated
+// requests for demand. Neither these prices nor this rule describe an airline.
+// The scenario models no real inventory, purchases or measured price effect.
+export const AIRFARE_DEFAULTS: Readonly<AirfareState> = Object.freeze({ stage: 0 });
 
 function validate(input: unknown): AirfareState {
   if (input === null || typeof input !== 'object' || Array.isArray(input)) {
@@ -38,39 +29,36 @@ function validate(input: unknown): AirfareState {
     throw new RangeError('Invalid airfare state');
   }
   const keys = Reflect.ownKeys(input);
-  if (keys.length !== 1 || keys[0] !== 'heldSeats') {
+  if (keys.length !== 1 || keys[0] !== 'stage') {
     throw new RangeError('Invalid airfare state fields');
   }
   // Read only an own data property. Accessors and implicit conversions are not inputs.
-  const descriptor = Object.getOwnPropertyDescriptor(input, 'heldSeats');
+  const descriptor = Object.getOwnPropertyDescriptor(input, 'stage');
   if (!descriptor || !Object.hasOwn(descriptor, 'value')) {
     throw new RangeError('Invalid airfare state fields');
   }
-  const heldSeats = descriptor.value;
-  if (typeof heldSeats !== 'number' || !Number.isSafeInteger(heldSeats)
-    || heldSeats < 0 || heldSeats > AIRFARE_SEATS.length) {
-    throw new RangeError('Invalid held-seat count');
+  const stage: unknown = descriptor.value;
+  if (stage !== 0 && stage !== 1 && stage !== 2) {
+    throw new RangeError('Invalid airfare stage');
   }
-  return { heldSeats };
+  return { stage };
 }
 
 export function calculateAirfareScenario(input: unknown): AirfareScenario {
-  const { heldSeats } = validate(input);
-  const available = AIRFARE_SEATS.slice(heldSeats);
-  const price = available[0]?.price ?? null;
+  const { stage } = validate(input);
   return {
-    heldSeats,
-    availableSeats: available.length,
-    price,
-    remainingAtPrice: price === null ? 0 : available.filter(seat => seat.price === price).length,
-    extraPrice: price === null ? null : price - AIRFARE_SEATS[0].price,
+    stage,
+    travelers: 1,
+    purchases: 0,
+    requests: stage === 0 ? 1 : 100,
+    recognized: stage === 2,
+    lowFareOpen: stage !== 1,
+    price: stage === 1 ? 240 : 180,
+    extraPrice: stage === 1 ? 60 : 0,
   };
 }
 
-export function applyAirfareAction(input: unknown, action: unknown): AirfareState {
-  const { heldSeats } = validate(input);
-  if (action === 'search') return { heldSeats };
-  if (action === 'hold') return { heldSeats: Math.min(AIRFARE_SEATS.length, heldSeats + 2) };
-  if (action === 'release') return { heldSeats: 0 };
-  throw new RangeError('Invalid airfare action');
+export function nextAirfareStage(input: unknown): AirfareState {
+  const { stage } = validate(input);
+  return { stage: ((stage + 1) % 3) as AirfareStage };
 }
