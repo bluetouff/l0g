@@ -1,4 +1,8 @@
 ---
+import ArticleReadingDock from '../../../components/ArticleReadingDock.astro';
+import { buildArticleEvidence } from '../../../lib/article-evidence.ts';
+import ArticleSourceFiles from '../../../components/ArticleSourceFiles.astro';
+import { discoveryTool } from '../../../lib/reading-discovery.ts';
 import { getCollection, render } from 'astro:content';
 import { createEditorialCacheKeys } from '../../../lib/editorial-cache-context.ts';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
@@ -58,6 +62,7 @@ const updatedLabel = fmt(updated);
 const isoPub = post.data.pubDate.toISOString();
 const isoUpd = updated.toISOString();
 const rt = readingTime(post.body);
+const evidence = buildArticleEvidence(post.body ?? '', { published:post.data.pubDate, updated:post.data.updatedDate });
 const ogImage = post.data.ogImage ?? `/og/en/${post.id}.png`;
 
 const url = new URL(`/en/analysis/${post.id}/`, Astro.site).toString();
@@ -149,6 +154,9 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
       <h1 class="post-title mt-3 font-display text-[clamp(1.9rem,4.5vw,3rem)] leading-tight tracking-wider glow">
         {post.data.title}
       </h1>
+
+      <ArticleSourceFiles evidence={evidence} body={post.body ?? ''} lang="en" />
+      {discoveryTool(`/en/analysis/${post.id}/`, 'en') && <a class="article-tool-shortcut" href={discoveryTool(`/en/analysis/${post.id}/`, 'en')}>{'Test the assumptions'} <span aria-hidden="true">↗</span></a>}
 
       <ReadingResume body={post.body} lang="en" />
 
@@ -265,6 +273,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     <hr class="hairline mt-12" />
     <a href="/en/analysis/" class="mono-label link-term mt-6 inline-block">$ cd ../analysis</a>
   </article>
+  <ArticleReadingDock headings={headings} lang="en" />
 
   <aside class="en-article-sidebar" aria-label="Reading navigation and services" data-pagefind-ignore>
     <ArticleNavigator headings={headings} lang="en" />
@@ -450,4 +459,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     }
     .en-article-sidebar { position: sticky; top: 2rem; max-height: calc(100dvh - 4rem); overflow-y: auto; scrollbar-width: thin; padding: .25rem .45rem .25rem .25rem; }
   }
+</style>
+
+<style>
+.article-tool-shortcut{display:inline-flex;align-items:center;gap:1rem;margin:.1rem 0 1rem;padding:.65rem 1rem;border:1px solid var(--color-line-strong);border-radius:8px;color:var(--color-signal);font:400 .8rem var(--font-read)}.article-tool-shortcut:focus-visible{outline:2px solid var(--color-signal);outline-offset:4px}
 </style>

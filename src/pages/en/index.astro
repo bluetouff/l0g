@@ -5,6 +5,7 @@ import WatchCard from '../../components/WatchCard.astro';
 import LatestEnglishEpub from '../../components/LatestEnglishEpub.astro';
 import EnglishDossierLinks from '../../components/EnglishDossierLinks.astro';
 import ReadingLibrary from '../../components/ReadingLibrary.astro';
+import ReadingContinue from '../../components/ReadingContinue.astro';
 import PostHero from '../../components/PostHero.astro';
 import { selectHomeFeaturedPost } from '../../lib/content-order.mjs';
 import { selectedEnglishInvestigations } from '../../config/english-edition.ts';
@@ -98,6 +99,7 @@ const jsonLd = {
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
 
+  <ReadingContinue lang="en" />
   <section class="en-home-hero rise" data-pagefind-body>
     <div class="en-hero-copy">
       <p class="mono-label glow" style="color: var(--color-signal)">$ open /en</p>

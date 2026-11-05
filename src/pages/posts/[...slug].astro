@@ -1,4 +1,7 @@
 ---
+import ArticleReadingDock from '../../components/ArticleReadingDock.astro';
+import ArticleSourceFiles from '../../components/ArticleSourceFiles.astro';
+import { discoveryTool } from '../../lib/reading-discovery.ts';
 import { getCollection, render } from 'astro:content';
 import { createEditorialCacheKeys } from '../../lib/editorial-cache-context.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -341,6 +344,9 @@ const quickUncertainty = post.data.quickTake?.uncertainty;
         {keepFrenchPunctuation(post.data.title)}
       </h1>
 
+      <ArticleSourceFiles evidence={evidence} body={post.body ?? ''} lang="fr" />
+      {discoveryTool(`/posts/${post.id}/`, 'fr') && <a class="article-tool-shortcut" href={discoveryTool(`/posts/${post.id}/`, 'fr')}>{'Tester les hypothèses'} <span aria-hidden="true">↗</span></a>}
+
       <ReadingResume body={post.body} />
 
       <ArticleHeroImage
@@ -547,6 +553,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty;
     <hr class="hairline mt-12" />
     <a href="/" class="mono-label link-term mt-6 inline-block">$ cd ..</a>
   </article>
+  <ArticleReadingDock headings={articleHeadings} lang="fr" />
 
   <script>
     // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
@@ -854,3 +861,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty;
 <script>
   import '../../scripts/article-print.ts';
 </script>
+
+<style>
+.article-tool-shortcut{display:inline-flex;align-items:center;gap:1rem;margin:.1rem 0 1rem;padding:.65rem 1rem;border:1px solid var(--color-line-strong);border-radius:8px;color:var(--color-signal);font:400 .8rem var(--font-read)}.article-tool-shortcut:focus-visible{outline:2px solid var(--color-signal);outline-offset:4px}
+</style>

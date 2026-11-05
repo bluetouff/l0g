@@ -107,7 +107,7 @@
     "build:cover-variants:generate": "node scripts/generate-publication-cover-variants.mjs",
     "build:artwork:generate": "node scripts/generate-cyber-recovery-artwork.mjs && node scripts/generate-insurance-promise-artwork.mjs && node scripts/generate-cumcum-artwork.mjs && node scripts/generate-ordinary-machines-artwork.mjs",
     "test:derived-assets": "node --test scripts/derived-assets.test.mjs scripts/epub-derived.test.mjs",
-    "test:reader-experience": "node --experimental-strip-types --test scripts/article-tools.test.mjs scripts/article-glossary.test.mjs scripts/article-evidence-presentation.test.mjs scripts/reading-library.test.mjs scripts/reading-resume.test.mjs && node scripts/audit-reader-budget.mjs",
+    "test:reader-experience": "node --experimental-strip-types --test scripts/article-tools.test.mjs scripts/article-glossary.test.mjs scripts/article-evidence-presentation.test.mjs scripts/reading-library.test.mjs scripts/reading-resume.test.mjs scripts/reading-discovery.test.mjs && node scripts/audit-reader-budget.mjs",
     "test:search": "node --experimental-strip-types --test scripts/search-experience.test.mjs",
     "test:tools-catalogue": "node --experimental-strip-types --test scripts/analysis-tools-catalogue.test.mjs",
     "test:cumcum-reform-lab": "node --test scripts/cumcum06-reform-lab.test.mjs",

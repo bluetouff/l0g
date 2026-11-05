@@ -1,0 +1,15 @@
+---
+interface Props { headings: Array<{depth:number;slug:string;text:string}>; lang?: 'fr'|'en'; }
+const {headings,lang='fr'}=Astro.props;
+const en=lang==='en';const contents=headings.filter(h=>h.depth===2);
+---
+<nav class="article-reading-dock" data-reading-dock aria-label={en?'Reading shortcuts':'Raccourcis de lecture'} data-pagefind-ignore hidden>
+  {contents.length>0 && <details><summary>{en?'Contents':'Sommaire'} <span aria-hidden="true">⌃</span></summary><ol aria-label={en?'Analysis contents':'Sommaire de l’analyse'}>{contents.map(h=><li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol></details>}
+  <button type="button" data-dock-figures hidden>{en?'Figures':'Graphiques'}</button>
+  <a href="#article-source-files">{en?'Sources':'Sources'}</a>
+</nav>
+<style>
+.article-reading-dock{display:none}@media(max-width:760px){.article-reading-dock:not([hidden]){position:fixed;z-index:42;bottom:max(.65rem,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(28rem,calc(100% - 1.3rem));display:flex;justify-content:space-around;gap:.25rem;padding:.35rem;border:1px solid var(--color-line-strong);border-radius:12px;background:var(--color-surface);box-shadow:var(--shadow-elevated);font:400 .76rem var(--font-read)}.article-reading-dock :is(summary,button,a){display:block;min-height:2.7rem;padding:.75rem .5rem;color:var(--color-paper);cursor:pointer}.article-reading-dock summary{list-style:none}.article-reading-dock summary::-webkit-details-marker{display:none}.article-reading-dock summary span{color:var(--color-signal);margin-left:.3rem}.article-reading-dock details>ol{position:absolute;bottom:calc(100% + .5rem);left:0;right:0;max-height:55dvh;overflow:auto;padding:.5rem;list-style:none;border:1px solid var(--color-line-strong);border-radius:12px;background:var(--color-surface);box-shadow:var(--shadow-elevated)}.article-reading-dock li+li{border-top:1px solid var(--color-line)}.article-reading-dock :is(a,summary,button):focus-visible{outline:2px solid var(--color-signal);outline-offset:2px}:global(body:has(dialog[open])) .article-reading-dock{display:none}.article-reading-dock [hidden]{display:none!important}}
+@media print{.article-reading-dock{display:none!important}}
+</style>
+<script>import '../scripts/article-reading-dock.ts';</script>

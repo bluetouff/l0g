@@ -7,6 +7,10 @@ import ConfluenceEntry from '../components/ConfluenceEntry.astro';
 import HomeSidebar from '../components/HomeSidebar.astro';
 import ReadingLibrary from '../components/ReadingLibrary.astro';
 import PostCard from '../components/PostCard.astro';
+import DiscoveryCard from '../components/DiscoveryCard.astro';
+import ReadingDiscovery from '../components/ReadingDiscovery.astro';
+import ReadingContinue from '../components/ReadingContinue.astro';
+import { buildDiscoveryCatalog } from '../lib/reading-discovery.ts';
 import { selectHomeFeaturedPost, sortPostsByPublicationDate } from '../lib/content-order.mjs';
 import PostHero from '../components/PostHero.astro';
 import RiskBand from '../components/RiskBand.astro';
@@ -62,6 +66,8 @@ const hero = isFirst && homeFeaturedPost ? {
   rt: readingTime(homeFeaturedPost.body),
 } : null;
 const feed = isFirst && hero ? items.filter((item) => item.post.id !== hero.post.id) : items;
+const discoveryEntries = buildDiscoveryCatalog(feed.map(it => it.post));
+const discoveryByPath = new Map(discoveryEntries.map(entry => [entry.path, entry]));
 const pageHref = (n: number) => (n <= 1 ? '/' : `/${n}/`);
 const needCards = [
   {
@@ -141,6 +147,8 @@ const needCards = [
     </header>
   )}
 
+  {isFirst && <ReadingContinue />}
+
   {hero && (
     <section class="home-featured" aria-labelledby="featured-title">
       <p class="home-section-label" id="featured-title">L’analyse à retenir</p>
@@ -193,7 +201,9 @@ const needCards = [
           <p class="mono-label" style="color:var(--color-muted)">{page.total} entrées</p>
         </div>
     }
-    {
+    {isFirst ? <ReadingDiscovery entries={discoveryEntries}>
+      {feed.map(it => <DiscoveryCard entry={discoveryByPath.get(`/posts/${it.post.id}/`)!} index={it.absIndex} />)}
+    </ReadingDiscovery> : (
       feed.map((it: (typeof items)[number]) => (
         <PostCard
           url={`/posts/${it.post.id}/`}
@@ -208,9 +218,11 @@ const needCards = [
           accentLabel={it.accentLabel}
         />
       ))
-    }
+    )}
+
   </section>
 
+  <div data-discovery-pagination>
   <AnalysisPagination
     currentPage={page.currentPage}
     totalPages={page.lastPage}
@@ -219,6 +231,7 @@ const needCards = [
     previousLabel="Précédent"
     nextLabel="Suivant"
   />
+  </div>
 
   {isFirst && (
     <div class="home-discovery">

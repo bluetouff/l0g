@@ -1,0 +1,11 @@
+---
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+---
+<aside class="reading-continue" data-reading-continue data-lang={lang} data-pagefind-ignore hidden>
+  <span>{lang === 'fr' ? 'Reprendre ma lecture' : 'Continue reading'}</span>
+  <a data-continue-link><span data-continue-title></span><small data-continue-progress></small></a>
+  <button type="button" data-continue-dismiss aria-label={lang === 'fr' ? 'Masquer cette reprise de lecture' : 'Dismiss this reading reminder'}>×</button>
+</aside>
+
+<script>import '../scripts/reading-continue.ts';</script>

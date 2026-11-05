@@ -1,0 +1,24 @@
+---
+import { topics } from '../config/topics.ts';
+import DiscoveryCard from './DiscoveryCard.astro';
+import type { DiscoveryEntry } from '../lib/reading-discovery-model.ts';
+interface Props { entries: DiscoveryEntry[]; }
+const { entries } = Astro.props;
+---
+<div class="reading-discovery" data-reading-discovery>
+  <form class="discovery-filters" data-discovery-filters hidden aria-label="Filtrer toutes les analyses">
+    <label>Sujet<select name="topic"><option value="">Tous les sujets</option>{topics.map(t => <option value={t.slug}>{t.label}</option>)}</select></label>
+    <label>Temps de lecture<select name="duration"><option value="">Toutes les durées</option><option value="short">5 min ou moins</option><option value="medium">6 à 15 min</option><option value="long">Plus de 15 min</option></select></label>
+    <label class="discovery-check"><input type="checkbox" name="tool" /> Avec simulateur</label>
+    <button type="reset">Réinitialiser</button>
+  </form>
+  <div class="discovery-visit" data-visit-panel hidden>
+    <div><span class="discovery-eyebrow">Depuis votre dernier passage</span><p data-visit-copy></p></div>
+    <button type="button" data-visit-filter hidden>Voir les nouveautés</button><button type="button" data-visit-mark>Actualiser mon repère</button>
+  </div>
+  <p class="discovery-status" data-discovery-status role="status" aria-live="polite"></p>
+  <div data-discovery-results><slot /></div>
+  <button class="discovery-more" type="button" data-discovery-more hidden>Afficher la suite</button>
+  <template data-discovery-template>{entries[0] && <DiscoveryCard entry={entries[0]} template />}</template>
+</div>
+<script>import '../scripts/reading-discovery.ts';</script>

@@ -1,0 +1,27 @@
+---
+import { selectSourceFiles } from '../lib/source-files.ts';
+import type { ArticleEvidence } from '../lib/article-evidence.ts';
+import { articleEvidenceDocumentLabels, articleEvidenceLinkLabel } from '../lib/article-evidence-presentation.ts';
+interface Props { evidence: ArticleEvidence; body: string; lang?: 'fr'|'en'; }
+const { evidence,body,lang='fr' }=Astro.props;const en=lang==='en';
+const labels=articleEvidenceDocumentLabels(body);
+const { rows, fallback } = selectSourceFiles(evidence);
+---
+<section class="article-source-files" id="article-source-files" aria-labelledby="source-files-title" data-pagefind-ignore>
+  <details>
+    <summary><span><small>{en?'Open the documents':'Ouvrir les documents'}</small><span id="source-files-title">{en?'The source documents':'Les pièces du dossier'}</span></span><span aria-hidden="true">+</span></summary>
+    <div class="source-files-body">
+      <p>{en?'The documents cited in the analysis and, where identified, their associated passages. An automatically detected association is not a verified claim.':'Les documents cités dans l’analyse et, lorsqu’ils sont repérés, les passages associés. Un rapprochement automatique ne vaut pas validation d’une affirmation.'}</p>
+      {rows.length ? <ol>{rows.map(({claim,ref})=><li>
+        <a href={ref.href} target="_blank" rel="noopener noreferrer">{articleEvidenceLinkLabel(ref,labels)} <span aria-hidden="true">↗</span></a>
+        <small>{ref.sourcePublicationDateLabel ?? ref.dateLabel ?? (en?'Source date not identified':'Date du document non identifiée')} · {claim.reviewStatus==='reviewed'?(en?'Association reviewed':'Relation relue'):(en?'Automatically detected association, not reviewed':'Association automatique, non relue')}</small>
+        <blockquote>{claim.claim}</blockquote>
+        {claim.evidenceLocator && <p>{en?'Document location':'Repère dans le document'} : {claim.evidenceLocator.value}</p>}
+      </li>)}</ol> : fallback.length ? <ul>{fallback.map(ref=><li><a href={ref.href} target="_blank" rel="noopener noreferrer">{articleEvidenceLinkLabel(ref,labels)} ↗</a><small>{ref.sourcePublicationDateLabel ?? ref.dateLabel ?? (en?'Source date not identified':'Date du document non identifiée')}</small></li>)}</ul> : <p>{en?'Consult the references in the article below. No document has been identified for this shortcut.':'Consultez les références dans le texte ci-dessous. Aucun document n’a été identifié pour cet accès rapide.'}</p>}
+      {!en && <a href="#evidence-title">Toutes les sources et leur méthode de repérage ↓</a>}
+    </div>
+  </details>
+</section>
+<style>
+.article-source-files{scroll-margin-top:1rem;margin:1.25rem 0;font-family:var(--font-read);border:1px solid var(--color-line);border-radius:10px;background:linear-gradient(120deg,color-mix(in srgb,var(--color-signal) 4%,transparent),transparent 65%)}summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary>span:first-child>span{display:block;margin-top:.2rem;color:var(--color-paper);font-size:.94rem}summary small{color:var(--color-signal);font-size:.66rem;letter-spacing:.04em}summary>span:last-child{color:var(--color-signal)}details[open] summary>span:last-child{transform:rotate(45deg)}.source-files-body{border-top:1px solid var(--color-line);padding:1rem}.source-files-body>p{color:var(--color-muted);font-size:.76rem;line-height:1.7}.source-files-body :is(ol,ul){padding:0;list-style:none;margin:.8rem 0}.source-files-body li{padding:1rem 0;overflow-wrap:anywhere}.source-files-body li+li{border-top:1px solid var(--color-line)}.source-files-body a{color:var(--color-signal);font-size:.8rem}.source-files-body small{display:block;margin-top:.4rem;color:var(--color-muted);font-size:.69rem;line-height:1.6}.source-files-body blockquote{margin:.8rem 0 0;padding-left:.85rem;border-left:1px solid var(--color-line-strong);color:var(--color-paper);font-size:.82rem;line-height:1.75}.source-files-body li p{font-size:.72rem;color:var(--color-muted);margin-top:.5rem}:is(a,summary):focus-visible{outline:2px solid var(--color-signal);outline-offset:4px}
+</style>
