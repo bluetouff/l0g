@@ -49,7 +49,7 @@ test('compiled FR/EN bibliographies contain exactly one complete canonical link 
 test('source-field validation rejects domain, path, encoding, protocol, duplicate and missing-link substitutions',()=>{
   const html=pages[0].html,original=urls[0],url=new URL(original);
   const invalid=[original+'#hidden',original+'?alias=1',original+'/',original.replace('https:','http:'),original.replace(url.hostname,url.hostname+'.example.org'),original.replace('https://','https://user@'),original.replace('https://','https://example.org/'),original.replace('/monetarypolicy/','/%6Donetarypolicy/'),'javascript:alert(1)',' '+original];
-  for(const value of invalid){const altered=html.replace(`href="${original}"`,`href="${value}"`);assert.notEqual(altered,html);assert.throws(()=>sources(altered));}
+  for(const value of invalid){const altered=html.replace(`class="source-url" href="${original}"`,`class="source-url" href="${value}"`);assert.notEqual(altered,html);assert.throws(()=>sources(altered));}
   const link=`<a class="source-url" href="${original}" rel="noopener noreferrer">${original}</a>`;
   assert.ok(html.includes(link));assert.throws(()=>sources(html.replace(link,link+link)));assert.throws(()=>sources(html.replace(link,'')));
 });

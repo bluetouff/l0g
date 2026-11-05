@@ -411,7 +411,8 @@ test('compiled source checks reject substituted URLs, labels, native fields and 
     for (const value of [url + '#hidden', url + (url.includes('?') ? '&' : '?') + 'alias=1', url + '/', url.replace('https:', 'http:'),
       url.replace(host, `${host}.example.org`), url.replace('https://', 'https://user@'), url.replace('https://', 'https://example.org/'),
       'javascript:alert(1)', 'data:text/html,untrusted', ' ' + url]) {
-      const tree = parse(pages[0].html), link = nodes(tree).find(n => n.tagName === 'a' && attr(n, 'href') === url); assert.ok(link);
+      // Target the bibliography when the source shortcut repeats the URL before the article.
+      const tree = parse(pages[0].html), link = nodes(tree).filter(n => n.tagName === 'li' && /^source-\d+$/.test(attr(n, 'id') ?? '')).flatMap(nodes).find(n => n.tagName === 'a' && attr(n, 'href') === url); assert.ok(link);
       changeAttribute(link, 'href', value); assert.throws(() => sourceFields(tree, 'fr'));
     }
   }
