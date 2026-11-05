@@ -4,6 +4,7 @@ seoTitle: "Yanbu: France, the Houthis and the oil route | l0g"
 description: "France has announced military protection for Yanbu. The routes to Europe, exposure to fuel supplies, Houthi threats and conditional economic scenarios."
 pubDate: 2026-09-25T20:44:00+02:00
 updatedDate: 2026-09-25T22:02:00+02:00
+revisionNote: "Added French customs volumes for January to July 2026 and Saudi oil exports from JODI, with their scope limitations."
 tags: ["oil", "Yanbu", "Saudi Arabia", "France", "Red Sea", "geopolitics", "fuel"]
 sourceArticle: "yanbu-france-houthis-route-petrole"
 sourceUpdatedDate: 2026-09-25T22:02:00+02:00

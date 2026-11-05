@@ -1,0 +1,11 @@
+---
+interface Props { lang?: 'fr'|'en'; }
+const {lang='fr'}=Astro.props;
+---
+<aside class="publication-progress" data-publication-progress data-lang={lang} data-pagefind-ignore hidden>
+  <div><small>{lang==='en'?'Your reading path':'Votre parcours'}</small><p data-chapter-count></p><a data-chapter-next></a></div>
+  <details><summary>{lang==='en'?'Chapters':'Les chapitres'}</summary><ol data-chapter-list></ol></details>
+  <p class="publication-progress-note">{lang==='en'?'Read status is marked by you and stored in this browser.':'Les chapitres lus sont marqués par vous et conservés dans ce navigateur.'}</p>
+  <p role="status" data-reader-status></p>
+</aside>
+<script>import '../scripts/reader-workspace.ts';</script>

@@ -1,0 +1,24 @@
+---
+import PublicationSpotlight from './PublicationSpotlight.astro';
+import { publicationEntries, PUBLICATIONS_PER_PAGE } from '../config/publication-catalog.mjs';
+import { publicationTopics, publicationTopicKeys } from '../config/publication-topics.ts';
+interface Props { lang?:'fr'|'en'; currentPage:number; }
+const {lang='fr',currentPage}=Astro.props;const en=lang==='en';const entries=publicationEntries(lang);
+for(const entry of entries)if(!publicationTopicKeys[entry.id])throw new Error(`Missing publication subject: ${entry.id}`);
+---
+<div class="publication-library" data-publication-library data-lang={lang} data-current-page={currentPage} data-page-size={PUBLICATIONS_PER_PAGE}>
+  <div class="publication-view-controls" data-publication-controls hidden>
+    <div role="group" aria-label={en?'Catalogue view':'Vue du catalogue'}>
+      <button type="button" data-publication-view="covers" aria-pressed="false">{en?'Covers':'Couvertures'}</button>
+      <button type="button" data-publication-view="details" aria-pressed="false">{en?'Details':'Détails'}</button>
+    </div>
+    <label>{en?'Subject':'Thème'}<select data-publication-topic><option value="">{en?'All subjects':'Tous les thèmes'}</option>{Object.entries(publicationTopics).map(([key,value])=><option value={key}>{value[lang]}</option>)}</select></label>
+    <button type="button" data-publication-reset>{en?'Reset':'Réinitialiser'}</button>
+  </div>
+  <p class="publication-view-status" data-publication-status role="status" aria-live="polite"></p>
+  <div data-publication-fallback><slot /></div>
+  <div class="publication-view-results" data-publication-results hidden></div>
+  {entries.map(entry=><template data-publication-template data-publication-id={entry.id} data-topics={publicationTopicKeys[entry.id].join(' ')}><div class="publication-view-entry"><PublicationSpotlight publication={entry.id} lang={lang} headingLevel="h3" /></div></template>)}
+  <button class="publication-view-more" type="button" data-publication-more hidden>{en?'Show more editions':'Afficher les éditions suivantes'}</button>
+</div>
+<script>import '../scripts/publication-library.ts';</script>

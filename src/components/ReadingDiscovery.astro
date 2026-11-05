@@ -10,6 +10,7 @@ const { entries } = Astro.props;
     <label>Sujet<select name="topic"><option value="">Tous les sujets</option>{topics.map(t => <option value={t.slug}>{t.label}</option>)}</select></label>
     <label>Temps de lecture<select name="duration"><option value="">Toutes les durées</option><option value="short">5 min ou moins</option><option value="medium">6 à 15 min</option><option value="long">Plus de 15 min</option></select></label>
     <label class="discovery-check"><input type="checkbox" name="tool" /> Avec simulateur</label>
+    <label class="discovery-check"><input type="checkbox" name="unread" /> Masquer les articles lus</label>
     <button type="reset">Réinitialiser</button>
   </form>
   <div class="discovery-visit" data-visit-panel hidden>

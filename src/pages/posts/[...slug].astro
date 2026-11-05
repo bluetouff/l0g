@@ -31,6 +31,8 @@ import FrenchRelatedReading from '../../components/FrenchRelatedReading.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import ArticleHeroImage from '../../components/ArticleHeroImage.astro';
 import ReadingResume from '../../components/ReadingResume.astro';
+import ArticleRevisionNote from '../../components/ArticleRevisionNote.astro';
+import ReaderActions from '../../components/ReaderActions.astro';
 import ReadingLibrary from '../../components/ReadingLibrary.astro';
 import ArticleTools from '../../components/ArticleTools.astro';
 import { articleGlossaryTerms } from '../../lib/article-glossary.ts';
@@ -390,6 +392,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty;
           <dd><FreshnessBadge date={refDate} compact /></dd>
         </div>
       </dl>
+      <ArticleRevisionNote note={post.data.revisionNote} date={post.data.updatedDate} lang="fr" />
 
       <div class="article-secondary">
         {englishUrl && (
@@ -466,6 +469,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty;
 
     <div class="article-reading-actions" data-pagefind-ignore>
       <ReadingLibrary lang="fr" articleTitle={post.data.title} />
+      <ReaderActions path={Astro.url.pathname} title={post.data.title} />
       <ArticleTools lang="fr" title={post.data.title} terms={articleGlossaryTerms(post.body ?? '')} />
     </div>
     <div class="prose" data-reading-body>

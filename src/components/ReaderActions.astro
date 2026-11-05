@@ -1,0 +1,12 @@
+---
+interface Props { path: string; title: string; lang?: 'fr'|'en'; }
+const { path,title,lang='fr' }=Astro.props;
+const en=lang==='en';
+---
+<div class="reader-actions" data-reader-actions data-reader-path={path} data-reader-title={title} data-lang={lang} data-pagefind-ignore hidden>
+  <button type="button" data-focus-toggle aria-pressed="false">{en?'Focus reading':'Lecture immersive'}</button>
+  <button type="button" data-reader-toggle aria-pressed="false"><span data-reader-label>{en?'Mark as read':'Marquer comme lu'}</span></button>
+  <span role="status" data-reader-status></span>
+</div>
+<button type="button" class="reader-focus-exit" data-focus-exit data-pagefind-ignore hidden>{en?'Exit focus reading':'Quitter la lecture immersive'} <span aria-hidden="true">×</span></button>
+<script>import '../scripts/reader-workspace.ts';</script>

@@ -14,6 +14,8 @@ const posts = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
+    // Explicit description of the dated editorial revision; never inferred from a timestamp.
+    revisionNote: z.string().trim().min(1).max(320).optional(),
     // Mise à la une explicite, sans modifier la chronologie de publication.
     homeFeaturedDate: z.coerce.date().optional(),
     tags: z.array(z.string()).default([]),
@@ -76,6 +78,8 @@ const postsEn = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
+    // Explicit description of the dated editorial revision; never inferred from a timestamp.
+    revisionNote: z.string().trim().min(1).max(320).optional(),
     // Explicit homepage promotion, separate from publication and maintenance.
     homeFeaturedDate: z.coerce.date().optional(),
     tags: z.array(z.string()).default([]),

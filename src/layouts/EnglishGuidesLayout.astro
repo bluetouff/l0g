@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import PublicationProgress from '../components/PublicationProgress.astro';
+import QuickSearch from '../components/QuickSearch.astro';
 import { buildDate } from '../lib/build-clock.mjs';
 import CspMeta from '../components/CspMeta.astro';
 import SearchMetadata from '../components/SearchMetadata.astro';
@@ -134,12 +136,14 @@ const siteJsonLd = {
       <EnglishNavigation path={Astro.url.pathname} compact={compactNavigation} />
 
       <main id="main-content" tabindex="-1" class="min-w-0 py-8">
+        {/^\/en\/publications\/[a-z0-9-]+\/$/.test(Astro.url.pathname) && <PublicationProgress lang="en" />}
         <slot />
       </main>
       {Astro.url.pathname.startsWith('/en/search') && <script src={pagefindInitUrl} defer is:inline></script>}
     </div>
 
     <EnglishFooter path={Astro.url.pathname} year={year} />
+    <QuickSearch />
   </body>
 </html>
 

@@ -14,6 +14,8 @@ import EnglishRelatedReading from '../../../components/EnglishRelatedReading.ast
 import ArticleHeroImage from '../../../components/ArticleHeroImage.astro';
 import ArticleQuickTake from '../../../components/ArticleQuickTake.astro';
 import ReadingResume from '../../../components/ReadingResume.astro';
+import ArticleRevisionNote from '../../../components/ArticleRevisionNote.astro';
+import ReaderActions from '../../../components/ReaderActions.astro';
 import ReadingLibrary from '../../../components/ReadingLibrary.astro';
 import ArticleTools from '../../../components/ArticleTools.astro';
 import { articleGlossaryTerms } from '../../../lib/article-glossary.ts';
@@ -188,6 +190,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
         <span class="sep" aria-hidden="true">·</span>
         <span>{rt} min read</span>
       </div>
+      <ArticleRevisionNote note={post.data.revisionNote} date={post.data.updatedDate} lang="en" />
 
       <div class="article-secondary">
         <details class="article-context">
@@ -222,6 +225,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
 
     <div class="article-reading-actions" data-pagefind-ignore>
       <ReadingLibrary lang="en" articleTitle={post.data.title} />
+      <ReaderActions path={Astro.url.pathname} title={post.data.title} lang="en" />
       <ArticleTools lang="en" title={post.data.title} terms={articleGlossaryTerms(post.body ?? '')} />
     </div>
     <div class="prose" data-reading-body>
@@ -275,7 +279,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   </article>
   <ArticleReadingDock headings={headings} lang="en" />
 
-  <aside class="en-article-sidebar" aria-label="Reading navigation and services" data-pagefind-ignore>
+  <aside data-site-aside class="en-article-sidebar" aria-label="Reading navigation and services" data-pagefind-ignore>
     <ArticleNavigator headings={headings} lang="en" />
     <ArticleServices lang="en" />
   </aside>

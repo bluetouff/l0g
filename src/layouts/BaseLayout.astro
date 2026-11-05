@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import { buildDate } from '../lib/build-clock.mjs';
+import PublicationProgress from '../components/PublicationProgress.astro';
+import QuickSearch from '../components/QuickSearch.astro';
 import Sidebar from '../components/Sidebar.astro';
 import SiteNavigation from '../components/SiteNavigation.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -142,7 +144,7 @@ const siteJsonLd = {
   <body>
     <div class="topbar" aria-hidden="true"></div>
     <div class="mx-auto max-w-6xl px-5 py-6 sm:py-8">
-      <header>
+      <header data-site-chrome>
         <div class="header-top">
           <a href="/" class="brand" aria-label="l0g, Lire les mécanismes avant qu’ils deviennent l’événement">
             <span class="brand-mark">
@@ -204,11 +206,12 @@ const siteJsonLd = {
       </header>
 
       {sidebar ? (
-        <div class="py-8 lg:grid lg:grid-cols-[minmax(0,1fr)_290px] lg:gap-12">
+        <div data-reading-layout class="py-8 lg:grid lg:grid-cols-[minmax(0,1fr)_290px] lg:gap-12">
           <main class="min-w-0">
+            {/^\/(?:en\/)?publications\/[a-z0-9-]+\/$/.test(path) && <PublicationProgress lang={lang} />}
             <slot />
           </main>
-          <aside class="hidden lg:block" aria-label={hasContextSidebar ? 'Navigation contextuelle' : 'À découvrir'}>
+          <aside data-site-aside class="hidden lg:block" aria-label={hasContextSidebar ? 'Navigation contextuelle' : 'À découvrir'}>
             <div class="sticky top-8">
               {hasContextSidebar ? <slot name="sidebar" /> : <Sidebar path={path} />}
             </div>
@@ -216,6 +219,7 @@ const siteJsonLd = {
         </div>
       ) : (
         <main class="min-w-0 py-8">
+          {/^\/(?:en\/)?publications\/[a-z0-9-]+\/$/.test(path) && <PublicationProgress lang={lang} />}
           <slot />
         </main>
       )}
@@ -363,5 +367,6 @@ const siteJsonLd = {
       }
     </style>
     <WebMCPTools />
+    <QuickSearch />
   </body>
 </html>

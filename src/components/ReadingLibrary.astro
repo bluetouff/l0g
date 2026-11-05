@@ -28,17 +28,25 @@ const readingListLabel = en ? 'My reading list' : 'Mes lectures';
       <button type="button" data-library-close autofocus>{en ? 'Close' : 'Fermer'}</button>
     </header>
     <p>{en
-      ? 'In this browser · positions: 30 days.'
-      : 'Dans ce navigateur · positions : 30 jours.'}</p>
+      ? 'In this browser · positions: 30 days. Up to 100 read articles and 30 figures.'
+      : 'Dans ce navigateur · positions : 30 jours. Jusqu’à 100 analyses lues et 30 graphiques.'}</p>
     <p class="reading-library-status" data-library-dialog-status role="status"></p>
     <h3 data-library-positions-heading hidden>{en ? 'Continue reading' : 'En cours'}</h3>
     <ul data-library-positions></ul>
     <h3>{en ? 'Saved for later' : 'À lire'}</h3>
     <ul data-library-saved></ul>
     <p data-library-saved-empty>{en ? 'Empty list.' : 'Liste vide.'}</p>
+    <h3>{en ? 'Read articles' : 'Articles lus'}</h3>
+    <ul data-library-completed></ul>
+    <p data-library-completed-empty>{en ? 'No article marked as read.' : 'Aucun article marqué comme lu.'}</p>
+    <h3>{en ? 'My figures' : 'Mes graphiques'}</h3>
+    <ul data-library-figures></ul>
+    <p data-library-figures-empty>{en ? 'No saved figure.' : 'Aucun graphique enregistré.'}</p>
   </dialog>
 </div>
 
 <script>
   import '../scripts/reading-library.ts';
 </script>
+
+<script>import '../scripts/reader-workspace.ts';</script>

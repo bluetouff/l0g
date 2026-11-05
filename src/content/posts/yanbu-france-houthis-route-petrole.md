@@ -4,6 +4,7 @@ seoTitle: "Yanbu : France, Houthis et route du pétrole | l0g"
 description: "La France annonce une protection militaire de Yanbu. Routes vers l’Europe, exposition aux carburants, menaces houthies et scénarios économiques."
 pubDate: 2026-09-25T20:44:00+02:00
 updatedDate: 2026-09-25T22:02:00+02:00
+revisionNote: "Ajout des volumes douaniers français de janvier à juillet 2026 et des exportations saoudiennes JODI, avec leurs limites de périmètre."
 tags: ["pétrole", "Yanbu", "Arabie saoudite", "France", "mer Rouge", "géopolitique", "carburants"]
 draft: false
 ogImage: "/illustrations/news/yanbu-routes-petrole-v1.jpg"

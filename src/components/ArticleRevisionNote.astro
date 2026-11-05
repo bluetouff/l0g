@@ -1,0 +1,9 @@
+---
+interface Props { note?: string; date?: Date; lang?: 'fr' | 'en'; }
+const { note, date, lang = 'fr' } = Astro.props;
+---
+{note && date && <p class="article-revision-note" data-pagefind-ignore><span>{lang === 'fr' ? 'Dans cette révision' : 'In this revision'}</span> {note}</p>}
+<style>
+  .article-revision-note{margin-top:1rem;padding-left:.85rem;border-left:1px solid var(--color-signal);max-width:65ch;color:var(--color-muted);font:400 .8rem/1.7 var(--font-read);overflow-wrap:anywhere}
+  .article-revision-note span{display:block;color:var(--color-paper);font-size:.72rem;letter-spacing:.035em;margin-bottom:.2rem}
+</style>

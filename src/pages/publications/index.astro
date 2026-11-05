@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import PublicationLibrary from '../../components/PublicationLibrary.astro';
 import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
 import AnalysisPagination from '../../components/AnalysisPagination.astro';
 import { publicationPage, publicationPageHref } from '../../config/publication-catalog.mjs';
@@ -47,9 +48,12 @@ const isFirst = page.currentPage === 1;
     <p class="mono-label">// catalogue</p>
     <h2 id="publication-list-title">Éditions disponibles</h2>
     <p class="publication-range">Publications {page.start} à {page.end} sur {page.total} · Page {page.currentPage} sur {page.totalPages}</p>
+    <PublicationLibrary currentPage={page.currentPage} lang="fr">
     <div class="publication-grid">
       {page.items.map((item) => <PublicationSpotlight publication={item.id} />)}
     </div>
+    </PublicationLibrary>
+    <div data-publication-pagination>
     <AnalysisPagination
       currentPage={page.currentPage}
       totalPages={page.totalPages}
@@ -58,6 +62,7 @@ const isFirst = page.currentPage === 1;
       previousLabel="Précédent"
       nextLabel="Suivant"
     />
+    </div>
   </section>
 </BaseLayout>
 

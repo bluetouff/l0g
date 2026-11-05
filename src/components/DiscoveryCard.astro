@@ -6,11 +6,13 @@ const { entry, index, template = false } = Astro.props;
 ---
 <article class="discovery-card" data-discovery-card data-path={entry.path} data-title={entry.title} data-published={entry.published} data-updated={entry.updated}>
   <PostCard url={entry.path} title={entry.title} description={entry.description} pubDate={new Date(entry.published)} updatedDate={entry.updated ? new Date(entry.updated) : undefined} readingTime={entry.minutes} accentLabel={entry.topicLabel} index={index ?? 1} />
+  {(entry.revisionNote || template) && <p class="discovery-revision" data-card-revision hidden={!entry.revisionNote}>Révision : {entry.revisionNote}</p>}
   <div class="discovery-actions" data-pagefind-ignore hidden>
     <button type="button" data-card-save aria-pressed="false" aria-label={`Garder pour plus tard : ${entry.title}`} hidden>
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4Z" /></svg><span data-save-label>À lire plus tard</span>
     </button>
     {(entry.tool || template) && <a data-card-tool href={entry.tool} hidden={!entry.tool}>Tester les hypothèses <span aria-hidden="true">↗</span></a>}
+    <button type="button" data-reader-toggle aria-pressed="false"><span data-reader-label>Marquer comme lu</span></button>
     <span class="discovery-new" data-card-new hidden></span>
   </div>
   {(entry.summary || template) && <details class="discovery-preview" data-card-preview data-pagefind-ignore hidden>

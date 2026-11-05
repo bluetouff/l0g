@@ -1,5 +1,6 @@
 ---
 import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import PublicationLibrary from '../../../components/PublicationLibrary.astro';
 import PublicationSpotlight from '../../../components/PublicationSpotlight.astro';
 import { SITE_URL } from '../../../config/entities.ts';
 import AnalysisPagination from '../../../components/AnalysisPagination.astro';
@@ -38,7 +39,10 @@ const pageUrl = `${SITE_URL}${publicationPageHref('en', page.currentPage)}`;
     <p class="mono-label">// available now</p>
     <h2 id="publication-list-title">English editions</h2>
     <p class="publication-range">Publications {page.start} to {page.end} of {page.total} · Page {page.currentPage} of {page.totalPages}</p>
+    <PublicationLibrary currentPage={page.currentPage} lang="en">
     {page.items.map((item) => <PublicationSpotlight lang="en" publication={item.id} />)}
+    </PublicationLibrary>
+    <div data-publication-pagination>
     <AnalysisPagination
       currentPage={page.currentPage}
       totalPages={page.totalPages}
@@ -47,6 +51,7 @@ const pageUrl = `${SITE_URL}${publicationPageHref('en', page.currentPage)}`;
       previousLabel="Previous"
       nextLabel="Next"
     />
+    </div>
   </section>
 </EnglishLayout>
 

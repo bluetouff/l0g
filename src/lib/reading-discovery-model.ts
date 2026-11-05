@@ -1,6 +1,6 @@
 import { isReadingPath } from './reading-position.ts';
 export interface DiscoveryEntry {
-  path: string; title: string; description: string; published: string; updated?: string;
+  path: string; title: string; description: string; published: string; updated?: string; revisionNote?: string;
   minutes: number; topics: string[]; topicLabel: string; tool?: string;
   summary?: { fact: string; importance: string; uncertainty: string };
 }
@@ -13,6 +13,7 @@ export function validDiscoveryEntry(value: unknown): value is DiscoveryEntry {
   const text = (s: unknown, max: number) => typeof s === 'string' && s.length > 0 && s.length <= max;
   const date = (s: unknown) => typeof s === 'string' && /^\d{4}-\d{2}-\d{2}T/.test(s) && Number.isFinite(Date.parse(s));
   return isReadingPath(v.path) && text(v.title, 500) && text(v.description, 2000) && date(v.published)
+    && (v.revisionNote === undefined || (date(v.updated) && text(v.revisionNote, 320)))
     && (v.updated === undefined || date(v.updated)) && Number.isInteger(v.minutes) && v.minutes > 0 && v.minutes < 1000
     && Array.isArray(v.topics) && v.topics.length <= 30 && v.topics.every(s => text(s, 100)) && text(v.topicLabel, 150)
     && (v.tool === undefined || validToolPath(v.tool)) && (v.summary === undefined || (v.summary !== null && typeof v.summary === 'object'

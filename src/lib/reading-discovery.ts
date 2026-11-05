@@ -2,7 +2,7 @@ import { analysisTools } from '../config/analysis-tools.ts';
 import { topics, postMatchesTopic, topicLabelForTags } from '../config/topics.ts';
 import { readingTime } from './reading-time.ts';
 import { validDiscoveryEntry, type DiscoveryEntry } from './reading-discovery-model.ts';
-interface Entry { id: string; body?: string; data: { title: string; description: string; pubDate: Date; updatedDate?: Date; tags?: string[]; draft?: boolean; quickTake?: { fact: string; importance: string; uncertainty: string } }; }
+interface Entry { id: string; body?: string; data: { title: string; description: string; pubDate: Date; updatedDate?: Date; revisionNote?: string; tags?: string[]; draft?: boolean; quickTake?: { fact: string; importance: string; uncertainty: string } }; }
 export function discoveryTool(path: string, lang: 'fr' | 'en' = 'fr') {
   return analysisTools.find(t => t[lang].articleHref === path)?.[lang].href;
 }
@@ -11,6 +11,7 @@ export function buildDiscoveryCatalog(posts: Entry[], lang: 'fr' | 'en' = 'fr'):
     const path = `${lang === 'fr' ? '/posts/' : '/en/analysis/'}${p.id}/`;
     const entry: DiscoveryEntry = { path, title: p.data.title, description: p.data.description,
       published: p.data.pubDate.toISOString(), ...(p.data.updatedDate ? { updated: p.data.updatedDate.toISOString() } : {}),
+      ...(p.data.updatedDate && p.data.revisionNote ? { revisionNote: p.data.revisionNote } : {}),
       minutes: readingTime(p.body), topics: topics.filter(t => postMatchesTopic(p.data.tags ?? [], t)).map(t => t.slug),
       topicLabel: topicLabelForTags(p.data.tags ?? []) ?? (lang === 'fr' ? 'analyse' : 'analysis'), ...(p.data.quickTake ? { summary: p.data.quickTake } : {}),
       ...(discoveryTool(path, lang) ? { tool: discoveryTool(path, lang) } : {}) };

@@ -1,3 +1,4 @@
+import { readWorkspace, WORKSPACE_EVENT, WORKSPACE_KEY } from '../lib/reader-workspace.ts';
 import { LIBRARY_STORAGE_KEY, readSavedArticles, writeSavedArticle } from '../lib/reading-library.ts';
 import { isReadingPath, readingTitle } from '../lib/reading-position.ts';
 import { filterDiscovery, validDiscoveryEntry, visitTime, VISIT_STORAGE_KEY, type DiscoveryEntry } from '../lib/reading-discovery-model.ts';
@@ -28,6 +29,7 @@ function initialize(root: HTMLElement) {
     } catch (e) { catalog = undefined; throw e; }
   })();
   function updateSaved() {
+    document.dispatchEvent(new CustomEvent('l0g:discovery-updated'));
     let paths: Set<string> | undefined;
     try { paths = new Set(readSavedArticles(localStorage).map(e=>e.path)); } catch { /* storage unavailable */ }
     for (const card of results.querySelectorAll<HTMLElement>('[data-discovery-card]')) {
@@ -62,6 +64,7 @@ function initialize(root: HTMLElement) {
     const details = document.createElement('span'); details.textContent = `${entry.minutes} min · ${entry.topicLabel}`; meta.append(details);
     const preview = card.querySelector<HTMLElement>('[data-card-preview]')!; preview.hidden = !entry.summary;
     if (entry.summary) fillPreview(preview,entry.summary);
+    const revision = card.querySelector<HTMLElement>('[data-card-revision]')!; revision.hidden = !entry.revisionNote; revision.textContent = entry.revisionNote ? `Révision : ${entry.revisionNote}` : '';
     const tool = card.querySelector<HTMLAnchorElement>('[data-card-tool]')!; tool.hidden = !entry.tool;
     if (entry.tool) tool.href = entry.tool; else tool.removeAttribute('href');
     card.querySelector('[data-card-save]')!.setAttribute('aria-label',`Garder pour plus tard : ${entry.title}`);
@@ -70,19 +73,27 @@ function initialize(root: HTMLElement) {
   async function render() {
     const id = ++request;
     const data = new FormData(form);
+    const hideRead = data.has('unread');
     const filter = { topic: String(data.get('topic') ?? ''), duration: String(data.get('duration') ?? ''), tool: data.has('tool'), since };
-    if (!filter.topic && !filter.duration && !filter.tool && since === undefined) {
+    if (!filter.topic && !filter.duration && !filter.tool && !hideRead && since === undefined) {
       results.replaceChildren(...initial); more.hidden = true; if (pagination) pagination.hidden = false;
       status.textContent = ''; results.removeAttribute('aria-busy'); updateSaved(); return;
     }
     results.setAttribute('aria-busy','true'); status.textContent = 'Recherche dans toutes les archives…';
     try {
       const entries = await load(); if (id !== request) return;
-      const selected = filterDiscovery(entries,filter);
+      const completed = new Set<string>();
+      let storageWarning = '';
+      if (hideRead) { try { localStorage.getItem(WORKSPACE_KEY); for (const item of readWorkspace(localStorage).completed) completed.add(item.path); } catch { storageWarning = ' Le suivi local est indisponible : aucun article masqué.'; } }
+      const selected = filterDiscovery(entries,filter).filter(item=>!hideRead||!completed.has(item.path));
+      const active = document.activeElement instanceof HTMLElement && document.activeElement.matches('[data-reader-toggle]') ? document.activeElement.closest('[data-discovery-card]') : null;
+      const activeIndex = active ? Array.from(results.children).indexOf(active) : -1;
       results.replaceChildren(...selected.slice(0,visible).map(cardFor)); more.hidden = selected.length <= visible;
       if (pagination) pagination.hidden = true;
       status.textContent = selected.length ? `${selected.length} analyse${selected.length>1?'s':''} · ${Math.min(visible,selected.length)} affichée${Math.min(visible,selected.length)>1?'s':''} · toutes les archives` : 'Aucune analyse ne correspond. Essayez une autre sélection.';
+      status.textContent += storageWarning;
       updateSaved();
+      if (activeIndex >= 0) (results.children[Math.min(activeIndex,results.children.length-1)]?.querySelector<HTMLElement>('[data-reader-toggle]') ?? form.querySelector<HTMLElement>('[name=unread]'))?.focus({preventScroll:true});
     } catch { if (id === request) { status.textContent = 'Le catalogue est indisponible. Les dernières analyses restent accessibles ; vous pouvez réessayer.'; results.replaceChildren(...initial); if (pagination) pagination.hidden = false; more.hidden = true; updateSaved(); } }
     finally { if (id === request) results.removeAttribute('aria-busy'); }
   }
@@ -98,7 +109,7 @@ function initialize(root: HTMLElement) {
   form.hidden = false;
   form.addEventListener('submit',e=>e.preventDefault());
   form.addEventListener('change',()=>{visible=20;void render();});
-  form.addEventListener('reset',event=>{event.preventDefault();for(const select of form.querySelectorAll('select'))select.value='';form.querySelector<HTMLInputElement>('input[name=tool]')!.checked=false;since=undefined;visible=20;void render();});
+  form.addEventListener('reset',event=>{event.preventDefault();for(const select of form.querySelectorAll('select'))select.value='';for(const checkbox of form.querySelectorAll<HTMLInputElement>('input[type=checkbox]')) checkbox.checked=false;since=undefined;visible=20;void render();});
   more.addEventListener('click',()=>{visible+=20;void render();});
   root.addEventListener('click', e=> {
     const button = e.target instanceof Element ? e.target.closest<HTMLButtonElement>('[data-card-save]') : null;
@@ -113,7 +124,9 @@ function initialize(root: HTMLElement) {
     } catch { status.textContent = 'Le stockage du navigateur est indisponible. Votre liste n’a pas été modifiée.'; }
   });
   document.addEventListener('close',updateSaved,true);
-  window.addEventListener('storage',e=>{if (!e.key || e.key===LIBRARY_STORAGE_KEY) updateSaved();});
+  window.addEventListener('storage',e=>{if (!e.key || e.key===LIBRARY_STORAGE_KEY) updateSaved();if (!e.key || e.key===WORKSPACE_KEY) refreshRead();});
+  function refreshRead() { if (form.querySelector<HTMLInputElement>('[name=unread]')?.checked) void render(); else updateSaved(); }
+  window.addEventListener(WORKSPACE_EVENT,refreshRead);
   async function visitSummary() {
     visitFilter.hidden = true;
     if (marker === undefined) { visitCopy.textContent = 'Votre repère commence ici, sur cet appareil. Aucun compte ni suivi distant.'; return; }

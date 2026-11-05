@@ -61,7 +61,7 @@ const exploreActive = !primary.some((item) => isActive(item.href))
 const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile && isActive(item.href));
 ---
 
-<header class:list={['english-header', { 'is-compact': compact }]} data-english-header>
+<header data-site-chrome class:list={['english-header', { 'is-compact': compact }]} data-english-header>
   <a href="#main-content" class="en-skip">Skip to content</a>
   <div class="en-masthead">
     <a href="/en/" class="en-brand" aria-label="l0g English home">
