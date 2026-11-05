@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="tb-history-en-d-title tb-history-en-d-desc" style="width:100%;height:auto" class="l0g-treasury-basis-svg">
+<title id="tb-history-en-d-title">Two episodes, different strategies</title><desc id="tb-history-en-d-desc">Qualitative comparison: basis-trade unwinds in March 2020; estimated swap-spread position reductions of 60 and 40 billion dollars in April and May 2025.</desc>
+<rect id="tb-history-en-d-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="1000" height="680" rx="16" fill="var(--color-ink)"/>
+<text data-panel="tb-history-en-d-frame" x="32" y="42" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / TREASURY MARKET</text>
+<text data-panel="tb-history-en-d-frame" x="32" y="94" font-family="l0g Treasury Basis" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-paper)">Two episodes, different strategies</text>
+<text data-panel="tb-history-en-d-frame" x="32" y="131" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-amber)">Episodes and mechanisms</text>
+<rect id="tb-history-en-d-2020" stroke="var(--color-line-strong)" stroke-width="1" x="32" y="185" width="448" height="352" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-history-en-d-2020" x="56" y="233" font-family="l0g Treasury Basis" font-size="29" font-weight="700" text-anchor="start" fill="var(--color-signal)">MARCH 2020</text>
+<text data-panel="tb-history-en-d-2020" x="56" y="294" font-family="l0g Treasury Basis" font-size="29" font-weight="700" text-anchor="start" fill="var(--color-signal)">Basis trade</text>
+<text data-panel="tb-history-en-d-2020" x="56" y="355" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-signal)">Documented unwinds</text>
+<text data-panel="tb-history-en-d-2020" x="56" y="416" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-signal)">Bond sales</text>
+<text data-panel="tb-history-en-d-2020" x="56" y="477" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">and futures purchases</text>
+<rect id="tb-history-en-d-2025" stroke="var(--color-line-strong)" stroke-width="1" x="520" y="185" width="448" height="352" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-history-en-d-2025" x="544" y="233" font-family="l0g Treasury Basis" font-size="29" font-weight="700" text-anchor="start" fill="var(--color-amber)">APRIL–MAY 2025</text>
+<text data-panel="tb-history-en-d-2025" x="544" y="294" font-family="l0g Treasury Basis" font-size="29" font-weight="700" text-anchor="start" fill="var(--color-amber)">Swap spread</text>
+<text data-panel="tb-history-en-d-2025" data-metric="swap-reduction" data-value="-60" x="544" y="355" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-amber)">−$60bn in April</text>
+<text data-panel="tb-history-en-d-2025" data-metric="swap-reduction" data-value="-40" x="544" y="416" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-amber)">−$40bn in May</text>
+<text data-panel="tb-history-en-d-2025" x="544" y="477" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Basis relatively stable</text>
+<text data-panel="tb-history-en-d-frame" x="32" y="593" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Position reductions differ from net bond sales.</text>
+<path data-connector="footer" d="M22 627 H978" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="tb-history-en-d-frame" x="22" y="660" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Fed [01, 03, 07, 08] · episodes</text>
+</svg>

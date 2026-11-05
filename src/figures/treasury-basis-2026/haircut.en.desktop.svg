@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="tb-haircut-en-d-title tb-haircut-en-d-desc" style="width:100%;height:auto" class="l0g-treasury-basis-svg">
+<title id="tb-haircut-en-d-title">A larger haircut requires more cash</title><desc id="tb-haircut-en-d-desc">Hypothetical scenario: a 100 million dollar bond unchanged in price, a haircut from 1 to 3%, and repo financing from 99 to 97 million, requiring 2 million of additional cash. The calculation excludes futures margin and price changes.</desc>
+<rect id="tb-haircut-en-d-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="1000" height="680" rx="16" fill="var(--color-ink)"/>
+<text data-panel="tb-haircut-en-d-frame" x="32" y="42" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / TREASURY MARKET</text>
+<text data-panel="tb-haircut-en-d-frame" x="32" y="94" font-family="l0g Treasury Basis" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-paper)">A larger haircut requires more cash</text>
+<text data-panel="tb-haircut-en-d-frame" x="32" y="131" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-amber)">Hypothetical scenario · bond unchanged</text>
+<rect id="tb-haircut-en-d-case-0" stroke="var(--color-line-strong)" stroke-width="1" x="32" y="180" width="448" height="320" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-haircut-en-d-case-0" x="56" y="226" font-family="l0g Treasury Basis" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)">INITIAL</text>
+<text data-panel="tb-haircut-en-d-case-0" x="56" y="292" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Bond</text>
+<text data-panel="tb-haircut-en-d-case-0" data-metric="bond-value" data-value="100" x="456" y="292" font-family="l0g Treasury Basis" font-size="32" font-weight="700" text-anchor="end" fill="var(--color-signal)">$100m</text>
+<text data-panel="tb-haircut-en-d-case-0" x="56" y="371" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Repo loan</text>
+<text data-panel="tb-haircut-en-d-case-0" data-metric="repo-loan" data-value="99" x="456" y="371" font-family="l0g Treasury Basis" font-size="32" font-weight="700" text-anchor="end" fill="var(--color-signal)">$99m</text>
+<text data-panel="tb-haircut-en-d-case-0" x="56" y="450" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Cash · haircut 1%</text>
+<text data-panel="tb-haircut-en-d-case-0" data-metric="cash-equity" data-value="1" x="456" y="450" font-family="l0g Treasury Basis" font-size="32" font-weight="700" text-anchor="end" fill="var(--color-signal)">$1m</text>
+<rect id="tb-haircut-en-d-case-1" stroke="var(--color-line-strong)" stroke-width="1" x="520" y="180" width="448" height="320" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-haircut-en-d-case-1" x="544" y="226" font-family="l0g Treasury Basis" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-amber)">AFTER SHOCK</text>
+<text data-panel="tb-haircut-en-d-case-1" x="544" y="292" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Bond</text>
+<text data-panel="tb-haircut-en-d-case-1" data-metric="bond-value" data-value="100" x="944" y="292" font-family="l0g Treasury Basis" font-size="32" font-weight="700" text-anchor="end" fill="var(--color-amber)">$100m</text>
+<text data-panel="tb-haircut-en-d-case-1" x="544" y="371" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Repo loan</text>
+<text data-panel="tb-haircut-en-d-case-1" data-metric="repo-loan" data-value="97" x="944" y="371" font-family="l0g Treasury Basis" font-size="32" font-weight="700" text-anchor="end" fill="var(--color-amber)">$97m</text>
+<text data-panel="tb-haircut-en-d-case-1" x="544" y="450" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Cash · haircut 3%</text>
+<text data-panel="tb-haircut-en-d-case-1" data-metric="cash-equity" data-value="3" x="944" y="450" font-family="l0g Treasury Basis" font-size="32" font-weight="700" text-anchor="end" fill="var(--color-amber)">$3m</text>
+<rect id="tb-haircut-en-d-extra" x="32" y="531" width="936" height="74" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="tb-haircut-en-d-extra" data-metric="extra-cash" data-value="2" x="56" y="579" font-family="l0g Treasury Basis" font-size="32" font-weight="700" text-anchor="start" fill="var(--color-amber)">+ $2m of additional cash needed</text>
+<path data-connector="footer" d="M22 627 H978" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="tb-haircut-en-d-frame" x="22" y="660" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">l0g calculation · assumptions · [01, 07]</text>
+</svg>

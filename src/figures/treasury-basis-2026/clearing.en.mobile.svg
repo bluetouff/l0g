@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 800" role="img" aria-labelledby="tb-clearing-en-m-title tb-clearing-en-m-desc" style="width:100%;height:auto" class="l0g-treasury-basis-svg">
+<title id="tb-clearing-en-m-title">Clearing coverage under different scopes</title><desc id="tb-clearing-en-m-desc">For the same average daily dollar amounts of Treasury repo outstanding from 1 January to 30 August 2025, OFR observes 45% cleared and simulates 77% under a modelled rule scope. The scenario holds behaviour fixed and remains distinct from exemptions added in October 2026.</desc>
+<rect id="tb-clearing-en-m-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="420" height="800" rx="16" fill="var(--color-ink)"/>
+<text data-panel="tb-clearing-en-m-frame" x="22" y="38" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / TREASURY MARKET</text>
+<text data-panel="tb-clearing-en-m-frame" x="22" y="82" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">Clearing coverage</text>
+<text data-panel="tb-clearing-en-m-frame" x="22" y="116" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">under different scopes</text>
+<text data-panel="tb-clearing-en-m-frame" x="22" y="148" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-amber)">Average outstanding · Jan–Aug 2025</text>
+<rect id="tb-clearing-en-m-case-0" stroke="var(--color-line-strong)" stroke-width="1" x="22" y="177" width="376" height="126" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-clearing-en-m-case-0" x="42" y="210" font-family="l0g Treasury Basis" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-signal)">OBSERVED</text>
+<text data-panel="tb-clearing-en-m-case-0" x="42" y="253" font-family="l0g Treasury Basis" font-size="37" font-weight="700" text-anchor="start" fill="var(--color-signal)">45%</text>
+<rect x="42" y="273" width="336" height="12" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="cleared-share" data-value="45" x="42" y="273" width="151.2" height="12" rx="0" fill="var(--color-signal)"/>
+<rect id="tb-clearing-en-m-case-1" stroke="var(--color-line-strong)" stroke-width="1" x="22" y="329" width="376" height="126" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-clearing-en-m-case-1" x="42" y="362" font-family="l0g Treasury Basis" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-amber)">SIMULATION</text>
+<text data-panel="tb-clearing-en-m-case-1" x="42" y="405" font-family="l0g Treasury Basis" font-size="37" font-weight="700" text-anchor="start" fill="var(--color-amber)">77%</text>
+<rect x="42" y="425" width="336" height="12" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="cleared-share" data-value="77" x="42" y="425" width="258.72" height="12" rx="0" fill="var(--color-amber)"/>
+<text data-panel="tb-clearing-en-m-frame" x="22" y="519" font-family="l0g Treasury Basis" font-size="21" font-weight="700" text-anchor="start" fill="var(--color-paper)">2025 positions held fixed</text>
+<text data-panel="tb-clearing-en-m-frame" x="22" y="552" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Modelled rule scope</text>
+<rect id="tb-clearing-en-m-dates" x="22" y="591" width="376" height="121" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="tb-clearing-en-m-dates" x="42" y="625" font-family="l0g Treasury Basis" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-signal)">31 Dec 2026 · eligible cash</text>
+<text data-panel="tb-clearing-en-m-dates" x="42" y="662" font-family="l0g Treasury Basis" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-amber)">30 June 2027 · eligible repo</text>
+<text data-panel="tb-clearing-en-m-dates" x="42" y="694" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Exemptions added in Oct. 2026</text>
+<path data-connector="footer" d="M22 747 H398" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="tb-clearing-en-m-frame" x="22" y="780" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">OFR [10] · SEC [09, 15]</text>
+</svg>

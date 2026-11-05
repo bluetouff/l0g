@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="tb-exposures-en-d-title tb-exposures-en-d-desc" style="width:100%;height:auto" class="l0g-treasury-basis-svg">
+<title id="tb-exposures-en-d-title">Decomposing the long exposures</title><desc id="tb-exposures-en-d-desc">Seven mutually exclusive categories of estimated long exposure in September 2025, in billion dollars. Bars share a scale from 0 to 900 billion. Rounded amounts total 2,395 billion, or about 2,400 billion.</desc>
+<rect id="tb-exposures-en-d-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="1000" height="680" rx="16" fill="var(--color-ink)"/>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="42" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / TREASURY MARKET</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="94" font-family="l0g Treasury Basis" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-paper)">Decomposing the long exposures</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="131" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-amber)">Estimates · September 2025</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="166" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">$bn · total: about 2,400</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="201" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Shared scale: $0–900bn</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="242" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Cash–futures basis</text>
+<rect x="520" y="219" width="335" height="22" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="830" x="520" y="219" width="308.94444444" height="22" rx="0" fill="var(--color-signal)"/>
+<text data-panel="tb-exposures-en-d-frame" x="968" y="242" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-signal)">830</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="295" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Swap spread</text>
+<rect x="520" y="272" width="335" height="22" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="305" x="520" y="272" width="113.52777778" height="22" rx="0" fill="var(--color-accent)"/>
+<text data-panel="tb-exposures-en-d-frame" x="968" y="295" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-accent)">305</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="348" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Maturity matched</text>
+<rect x="520" y="325" width="335" height="22" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="395" x="520" y="325" width="147.02777778" height="22" rx="0" fill="var(--color-paper)"/>
+<text data-panel="tb-exposures-en-d-frame" x="968" y="348" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-paper)">395</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="401" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Steepener-like</text>
+<rect x="520" y="378" width="335" height="22" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="375" x="520" y="378" width="139.58333333" height="22" rx="0" fill="var(--color-amber)"/>
+<text data-panel="tb-exposures-en-d-frame" x="968" y="401" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-amber)">375</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="454" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Treasury liquidity buffer</text>
+<rect x="520" y="431" width="335" height="22" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="245" x="520" y="431" width="91.19444444" height="22" rx="0" fill="var(--color-muted)"/>
+<text data-panel="tb-exposures-en-d-frame" x="968" y="454" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-muted)">245</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="507" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Flattener-like</text>
+<rect x="520" y="484" width="335" height="22" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="175" x="520" y="484" width="65.13888889" height="22" rx="0" fill="var(--color-accent)"/>
+<text data-panel="tb-exposures-en-d-frame" x="968" y="507" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-accent)">175</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="560" font-family="l0g Treasury Basis" font-size="25" font-weight="400" text-anchor="start" fill="var(--color-paper)">Other long-only</text>
+<rect x="520" y="537" width="335" height="22" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="70" x="520" y="537" width="26.05555556" height="22" rx="0" fill="var(--color-muted)"/>
+<text data-panel="tb-exposures-en-d-frame" x="968" y="560" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="end" fill="var(--color-muted)">70</text>
+<text data-panel="tb-exposures-en-d-frame" x="32" y="601" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Rounded values sum to $2,395bn</text>
+<path data-connector="footer" d="M22 627 H978" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="tb-exposures-en-d-frame" x="22" y="660" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Fed [01] · exclusive categories</text>
+</svg>

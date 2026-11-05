@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 800" role="img" aria-labelledby="tb-haircut-fr-m-title tb-haircut-fr-m-desc" style="width:100%;height:auto" class="l0g-treasury-basis-svg">
+<title id="tb-haircut-fr-m-title">Une décote accrue exige du cash</title><desc id="tb-haircut-fr-m-desc">Scénario hypothétique : obligation de 100 millions de dollars à prix inchangé, décote de 1 à 3 %, financement repo de 99 à 97 millions, nécessitant 2 millions de cash supplémentaire. Le calcul exclut la marge sur futures et les variations de prix.</desc>
+<rect id="tb-haircut-fr-m-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="420" height="800" rx="16" fill="var(--color-ink)"/>
+<text data-panel="tb-haircut-fr-m-frame" x="22" y="38" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / MARCHÉ DES TREASURIES</text>
+<text data-panel="tb-haircut-fr-m-frame" x="22" y="82" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">Une décote accrue</text>
+<text data-panel="tb-haircut-fr-m-frame" x="22" y="116" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">exige du cash</text>
+<text data-panel="tb-haircut-fr-m-frame" x="22" y="148" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-amber)">Scénario hypothétique · titre inchangé</text>
+<rect id="tb-haircut-fr-m-case-0" stroke="var(--color-line-strong)" stroke-width="1" x="22" y="172" width="180" height="355" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-haircut-fr-m-case-0" x="38" y="207" font-family="l0g Treasury Basis" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-signal)">DÉPART</text>
+<text data-panel="tb-haircut-fr-m-case-0" data-metric="bond-value" data-value="100" x="38" y="263" font-family="l0g Treasury Basis" font-size="29" font-weight="700" text-anchor="start" fill="var(--color-signal)">100 M$</text>
+<text data-panel="tb-haircut-fr-m-case-0" x="38" y="295" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Titre</text>
+<text data-panel="tb-haircut-fr-m-case-0" data-metric="repo-loan" data-value="99" x="38" y="352" font-family="l0g Treasury Basis" font-size="29" font-weight="700" text-anchor="start" fill="var(--color-signal)">99 M$</text>
+<text data-panel="tb-haircut-fr-m-case-0" x="38" y="384" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Prêt repo</text>
+<text data-panel="tb-haircut-fr-m-case-0" data-metric="cash-equity" data-value="1" x="38" y="441" font-family="l0g Treasury Basis" font-size="29" font-weight="700" text-anchor="start" fill="var(--color-signal)">1 M$</text>
+<text data-panel="tb-haircut-fr-m-case-0" x="38" y="473" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Décote 1 %</text>
+<rect id="tb-haircut-fr-m-case-1" stroke="var(--color-line-strong)" stroke-width="1" x="218" y="172" width="180" height="355" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-haircut-fr-m-case-1" x="234" y="207" font-family="l0g Treasury Basis" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-amber)">APRÈS CHOC</text>
+<text data-panel="tb-haircut-fr-m-case-1" data-metric="bond-value" data-value="100" x="234" y="263" font-family="l0g Treasury Basis" font-size="29" font-weight="700" text-anchor="start" fill="var(--color-amber)">100 M$</text>
+<text data-panel="tb-haircut-fr-m-case-1" x="234" y="295" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Titre</text>
+<text data-panel="tb-haircut-fr-m-case-1" data-metric="repo-loan" data-value="97" x="234" y="352" font-family="l0g Treasury Basis" font-size="29" font-weight="700" text-anchor="start" fill="var(--color-amber)">97 M$</text>
+<text data-panel="tb-haircut-fr-m-case-1" x="234" y="384" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Prêt repo</text>
+<text data-panel="tb-haircut-fr-m-case-1" data-metric="cash-equity" data-value="3" x="234" y="441" font-family="l0g Treasury Basis" font-size="29" font-weight="700" text-anchor="start" fill="var(--color-amber)">3 M$</text>
+<text data-panel="tb-haircut-fr-m-case-1" x="234" y="473" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Décote 3 %</text>
+<rect id="tb-haircut-fr-m-extra" x="22" y="565" width="376" height="143" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="tb-haircut-fr-m-extra" data-metric="extra-cash" data-value="2" x="42" y="614" font-family="l0g Treasury Basis" font-size="40" font-weight="700" text-anchor="start" fill="var(--color-amber)">+ 2 M$</text>
+<text data-panel="tb-haircut-fr-m-extra" x="42" y="657" font-family="l0g Treasury Basis" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-paper)">Liquidité supplémentaire</text>
+<text data-panel="tb-haircut-fr-m-extra" x="42" y="690" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Hors marge sur futures et prix</text>
+<path data-connector="footer" d="M22 747 H398" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="tb-haircut-fr-m-frame" x="22" y="780" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Calcul l0g · hypothèses · [01, 07]</text>
+</svg>

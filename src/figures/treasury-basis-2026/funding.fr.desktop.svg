@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="tb-funding-fr-d-title tb-funding-fr-d-desc" style="width:100%;height:auto" class="l0g-treasury-basis-svg">
+<title id="tb-funding-fr-d-title">Positions, crédit et prix du cash</title><desc id="tb-funding-fr-d-desc">Positions longues d’environ 0,6 à 2,4 mille milliards de dollars entre 2014 et fin 2025 ; repo net de 1,8 mille milliards fin 2025. Association modélisée historique avec un écart de 10 à 20 points de base de spread repo, sans causalité isolée.</desc>
+<rect id="tb-funding-fr-d-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="1000" height="680" rx="16" fill="var(--color-ink)"/>
+<text data-panel="tb-funding-fr-d-frame" x="32" y="42" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / MARCHÉ DES TREASURIES</text>
+<text data-panel="tb-funding-fr-d-frame" x="32" y="94" font-family="l0g Treasury Basis" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-paper)">Positions, crédit et prix du cash</text>
+<text data-panel="tb-funding-fr-d-frame" x="32" y="131" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-amber)">Périodes et unités distinctes</text>
+<rect id="tb-funding-fr-d-long" stroke="var(--color-line-strong)" stroke-width="1" x="32" y="180" width="535" height="357" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-funding-fr-d-long" x="56" y="224" font-family="l0g Treasury Basis" font-size="27" font-weight="700" text-anchor="start" fill="var(--color-signal)">Positions longues · T$</text>
+<text data-panel="tb-funding-fr-d-long" x="56" y="295" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">2014</text>
+<text data-panel="tb-funding-fr-d-long" x="543" y="295" font-family="l0g Treasury Basis" font-size="34" font-weight="700" text-anchor="end" fill="var(--color-signal)">0,6</text>
+<rect x="56" y="319" width="487" height="26" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-trend" data-value="0.6" x="56" y="319" width="121.75" height="26" rx="0" fill="var(--color-signal)"/>
+<text data-panel="tb-funding-fr-d-long" x="56" y="425" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">Fin 2025</text>
+<text data-panel="tb-funding-fr-d-long" x="543" y="425" font-family="l0g Treasury Basis" font-size="34" font-weight="700" text-anchor="end" fill="var(--color-signal)">2,4</text>
+<rect x="56" y="449" width="487" height="26" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-trend" data-value="2.4" x="56" y="449" width="487.0" height="26" rx="0" fill="var(--color-signal)"/>
+<rect id="tb-funding-fr-d-net" stroke="var(--color-line-strong)" stroke-width="1" x="600" y="180" width="368" height="165" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-funding-fr-d-net" x="624" y="225" font-family="l0g Treasury Basis" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-amber)">Repo net · fin 2025</text>
+<text data-panel="tb-funding-fr-d-net" data-metric="net-repo" data-value="1.8" x="624" y="290" font-family="l0g Treasury Basis" font-size="45" font-weight="700" text-anchor="start" fill="var(--color-amber)">1,8 T$</text>
+<rect id="tb-funding-fr-d-spread" x="600" y="377" width="368" height="160" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="tb-funding-fr-d-spread" data-metric="associated-spread" data-value="10" x="624" y="428" font-family="l0g Treasury Basis" font-size="38" font-weight="700" text-anchor="start" fill="var(--color-signal)">10–20</text>
+<text data-panel="tb-funding-fr-d-spread" x="624" y="474" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">Points de base associés</text>
+<text data-panel="tb-funding-fr-d-spread" x="624" y="510" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">sur la décennie</text>
+<text data-panel="tb-funding-fr-d-frame" x="32" y="596" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">L’association de modèle laisse la causalité ouverte.</text>
+<path data-connector="footer" d="M22 627 H978" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="tb-funding-fr-d-frame" x="22" y="660" font-family="l0g Treasury Basis" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Fed [06] · T$ = 1 000 Md$</text>
+</svg>

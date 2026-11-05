@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 800" role="img" aria-labelledby="tb-mechanism-en-m-title tb-mechanism-en-m-desc" style="width:100%;height:auto" class="l0g-treasury-basis-svg">
+<title id="tb-mechanism-en-m-title">The funding circuit behind the trade</title><desc id="tb-mechanism-en-m-desc">Conceptual circuit: an asset manager buying futures, a hedge fund buying bonds and selling futures, a repo dealer and money market funds. The basis trade is estimated at 830 billion dollars in September 2025.</desc>
+<rect id="tb-mechanism-en-m-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="420" height="800" rx="16" fill="var(--color-ink)"/>
+<text data-panel="tb-mechanism-en-m-frame" x="22" y="38" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / TREASURY MARKET</text>
+<text data-panel="tb-mechanism-en-m-frame" x="22" y="82" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">The funding circuit</text>
+<text data-panel="tb-mechanism-en-m-frame" x="22" y="116" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">behind the trade</text>
+<text data-panel="tb-mechanism-en-m-frame" x="22" y="148" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-amber)">Conceptual circuit · September 2025</text>
+<rect id="tb-mechanism-en-m-investor" stroke="var(--color-line-strong)" stroke-width="1" x="22" y="164" width="376" height="100" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-mechanism-en-m-investor" x="42" y="196" font-family="l0g Treasury Basis" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)">Asset manager</text>
+<text data-panel="tb-mechanism-en-m-investor" x="42" y="225" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Buys futures</text>
+<rect id="tb-mechanism-en-m-fund" stroke="var(--color-line-strong)" stroke-width="1" x="22" y="305" width="376" height="135" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-mechanism-en-m-fund" x="42" y="337" font-family="l0g Treasury Basis" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-signal)">Hedge fund</text>
+<text data-panel="tb-mechanism-en-m-fund" x="42" y="366" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Buys the bond</text>
+<text data-panel="tb-mechanism-en-m-fund" x="42" y="395" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Sells futures</text>
+<text data-panel="tb-mechanism-en-m-fund" data-metric="basis-estimate" data-value="830" x="42" y="424" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">$830bn estimated · Sept. 2025</text>
+<rect id="tb-mechanism-en-m-dealer" stroke="var(--color-line-strong)" stroke-width="1" x="22" y="480" width="376" height="111" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-mechanism-en-m-dealer" x="42" y="512" font-family="l0g Treasury Basis" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-amber)">Dealer / repo</text>
+<text data-panel="tb-mechanism-en-m-dealer" x="42" y="541" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Lends cash against bonds</text>
+<rect id="tb-mechanism-en-m-mmf" stroke="var(--color-line-strong)" stroke-width="1" x="22" y="632" width="376" height="92" rx="12" fill="var(--color-surface)"/>
+<text data-panel="tb-mechanism-en-m-mmf" x="42" y="664" font-family="l0g Treasury Basis" font-size="22" font-weight="700" text-anchor="start" fill="var(--color-amber)">Money market funds</text>
+<text data-panel="tb-mechanism-en-m-mmf" x="42" y="693" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Provide cash</text>
+<path data-connector="flow" d="M210 273 L210 295" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M204 288 L210 295 L216 288" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M210 473 L210 450" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M204 457 L210 450 L216 457" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M210 625 L210 601" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M204 608 L210 601 L216 608" fill="none" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="footer" d="M22 747 H398" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="tb-mechanism-en-m-frame" x="22" y="780" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Fed [01, 03] · simplified circuit</text>
+</svg>

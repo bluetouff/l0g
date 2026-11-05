@@ -1,0 +1,157 @@
+---
+import mechanism_fr_desktop from '../figures/treasury-basis-2026/mechanism.fr.desktop.svg?raw';
+import mechanism_fr_mobile from '../figures/treasury-basis-2026/mechanism.fr.mobile.svg?raw';
+import mechanism_en_desktop from '../figures/treasury-basis-2026/mechanism.en.desktop.svg?raw';
+import mechanism_en_mobile from '../figures/treasury-basis-2026/mechanism.en.mobile.svg?raw';
+import exposures_fr_desktop from '../figures/treasury-basis-2026/exposures.fr.desktop.svg?raw';
+import exposures_fr_mobile from '../figures/treasury-basis-2026/exposures.fr.mobile.svg?raw';
+import exposures_en_desktop from '../figures/treasury-basis-2026/exposures.en.desktop.svg?raw';
+import exposures_en_mobile from '../figures/treasury-basis-2026/exposures.en.mobile.svg?raw';
+import funding_fr_desktop from '../figures/treasury-basis-2026/funding.fr.desktop.svg?raw';
+import funding_fr_mobile from '../figures/treasury-basis-2026/funding.fr.mobile.svg?raw';
+import funding_en_desktop from '../figures/treasury-basis-2026/funding.en.desktop.svg?raw';
+import funding_en_mobile from '../figures/treasury-basis-2026/funding.en.mobile.svg?raw';
+import history_fr_desktop from '../figures/treasury-basis-2026/history.fr.desktop.svg?raw';
+import history_fr_mobile from '../figures/treasury-basis-2026/history.fr.mobile.svg?raw';
+import history_en_desktop from '../figures/treasury-basis-2026/history.en.desktop.svg?raw';
+import history_en_mobile from '../figures/treasury-basis-2026/history.en.mobile.svg?raw';
+import haircut_fr_desktop from '../figures/treasury-basis-2026/haircut.fr.desktop.svg?raw';
+import haircut_fr_mobile from '../figures/treasury-basis-2026/haircut.fr.mobile.svg?raw';
+import haircut_en_desktop from '../figures/treasury-basis-2026/haircut.en.desktop.svg?raw';
+import haircut_en_mobile from '../figures/treasury-basis-2026/haircut.en.mobile.svg?raw';
+import clearing_fr_desktop from '../figures/treasury-basis-2026/clearing.fr.desktop.svg?raw';
+import clearing_fr_mobile from '../figures/treasury-basis-2026/clearing.fr.mobile.svg?raw';
+import clearing_en_desktop from '../figures/treasury-basis-2026/clearing.en.desktop.svg?raw';
+import clearing_en_mobile from '../figures/treasury-basis-2026/clearing.en.mobile.svg?raw';
+interface Props {lang?: 'fr' | 'en'; kind: 'mechanism' | 'exposures' | 'funding' | 'history' | 'haircut' | 'clearing'}
+const {lang='fr',kind}=Astro.props;
+const captions={
+  "mechanism": {
+    "number": "01",
+    "sources": [
+      "01",
+      "03"
+    ],
+    "fr": {
+      "title": "Le financement relie le titre et le contrat à terme",
+      "description": "Circuit conceptuel du cash–futures basis trade.",
+      "method": "Le gestionnaire achète des futures ; le hedge fund les vend et détient des obligations cash financées par repo. Le dealer mobilise notamment les liquidités des fonds monétaires. Les flèches décrivent les relations et le refinancement, sans attribuer de volumes à chaque liaison. Les 830 milliards de dollars sont une estimation de positions en septembre 2025, publiée par la Fed en juin 2026."
+    },
+    "en": {
+      "title": "Funding connects the bond and futures",
+      "description": "Conceptual cash–futures basis-trade circuit.",
+      "method": "The asset manager buys futures; the hedge fund sells them and holds cash bonds financed by repo. Dealers draw on sources including money market funds. Arrows describe relationships and refinancing rather than measured amounts on each link. The 830 billion dollar estimate refers to positions in September 2025, published by the Fed in June 2026."
+    }
+  },
+  "exposures": {
+    "number": "02",
+    "sources": [
+      "01"
+    ],
+    "fr": {
+      "title": "Sept familles d’expositions longues",
+      "description": "Grands hedge funds, septembre 2025, milliards de dollars.",
+      "method": "Les sept catégories exclusives de la décomposition Fed sont présentées sur une échelle commune de 0 à 900 milliards. Leurs montants arrondis totalisent 2395 milliards, proches des 2400 milliards annoncés. Ces expositions ne décrivent ni des pertes ni un cumul annuel de transactions. La réserve de liquidité correspond à des titres Treasury non grevés, retenus dans les positions longues, et non à un solde d’espèces."
+    },
+    "en": {
+      "title": "Seven categories of long exposure",
+      "description": "Large hedge funds, September 2025, billion dollars.",
+      "method": "Seven mutually exclusive categories in the Fed decomposition share a 0 to 900 billion dollar scale. Rounded amounts sum to 2395 billion, close to the stated 2400 billion. These are exposures rather than losses or annual transaction volumes. The liquidity buffer consists of unencumbered Treasury securities counted within long positions, rather than a cash-currency balance."
+    }
+  },
+  "funding": {
+    "number": "03",
+    "sources": [
+      "06"
+    ],
+    "fr": {
+      "title": "Le crédit accompagne l’essor des positions",
+      "description": "Expositions longues, repo net et association historique de spreads.",
+      "method": "Les positions longues passent approximativement de 0,6 à 2,4 mille milliards de dollars entre 2014 et fin 2025. Le repo net de 1,8 mille milliards fin 2025 mesure les emprunts moins les prêts repo. Le rapprochement avec 10 à 20 points de base de spreads sur la décennie est une association économétrique présentée par la Fed de Dallas. Les dénominateurs et périodes restent séparés et la causalité isolée demeure ouverte."
+    },
+    "en": {
+      "title": "Funding alongside growing positions",
+      "description": "Long exposure, net repo and a historical spread association.",
+      "method": "Long positions rise approximately from 0.6 to 2.4 trillion dollars between 2014 and end 2025. Net repo of 1.8 trillion at end 2025 measures borrowing less repo lending. The 10 to 20 basis point spread relationship over the decade is an econometric association reported by the Dallas Fed. Denominators and periods remain separate, and isolated causality is unresolved."
+    }
+  },
+  "history": {
+    "number": "04",
+    "sources": [
+      "01",
+      "03",
+      "07",
+      "08"
+    ],
+    "fr": {
+      "title": "Identifier la stratégie qui se réduit",
+      "description": "Comparaison de mars 2020 et avril–mai 2025.",
+      "method": "Le panneau 2020 décrit qualitativement des débouclages de basis trade pendant la recherche généralisée de cash. Il ne trace aucune série inventée. Les baisses de 60 puis 40 milliards en 2025 sont des réductions estimées de positions swap spread. Elles restent distinctes de volumes de ventes nettes forcées. Les indicateurs de basis cash–futures sont décrits comme relativement stables dans cet épisode."
+    },
+    "en": {
+      "title": "Identify the strategy being reduced",
+      "description": "Comparing March 2020 with April–May 2025.",
+      "method": "The 2020 panel qualitatively describes basis-trade unwinds amid a broad dash for cash; it contains no invented series. The 60 and 40 billion reductions in 2025 are estimated swap-spread position changes, distinct from measured forced net bond sales. Cash–futures basis indicators are described as relatively stable during that episode."
+    }
+  },
+  "haircut": {
+    "number": "05",
+    "sources": [
+      "01",
+      "07"
+    ],
+    "fr": {
+      "title": "La décote transforme le besoin de liquidité",
+      "description": "Scénario pédagogique, en millions de dollars.",
+      "method": "L’apport affiché finance uniquement la jambe obligataire. Pour un titre de 100 millions à valeur inchangée, une décote repo de 1 % autorise 99 millions de prêt et demande 1 million d’apport. À 3 %, le prêt tombe à 97 millions et l’apport atteint 3 millions, soit 2 millions supplémentaires. Le scénario exclut les marges sur futures, les variations de prix, les coûts et les réserves du gérant. Les entrées sont hypothétiques."
+    },
+    "en": {
+      "title": "Haircuts change liquidity needs",
+      "description": "Teaching scenario, in million dollars.",
+      "method": "The displayed cash contribution finances only the bond leg. For a 100 million bond unchanged in value, a 1% repo haircut permits a 99 million loan and requires 1 million of cash. At 3%, the loan falls to 97 million and the cash contribution rises to 3 million, requiring 2 million extra. Futures margin, price changes, costs and the manager’s reserves are excluded. Inputs are hypothetical."
+    }
+  },
+  "clearing": {
+    "number": "06",
+    "sources": [
+      "09",
+      "10",
+      "15",
+      "16"
+    ],
+    "fr": {
+      "title": "Un scénario de compensation à périmètre daté",
+      "description": "Montants moyens quotidiens de repos Treasury en encours, janvier–août 2025.",
+      "method": "Les 45 % observés et 77 % simulés sont des parts du montant moyen quotidien de repos Treasury en encours du 1er janvier au 30 août 2025. La figure OFR ne nette pas les repos de sens opposés. Le scénario maintient transactions et comportement constants sous un périmètre de règle modélisé. Le résultat est un contrefactuel, sans promesse sur la part effective après réforme. La SEC a ajouté des exemptions le 30 octobre 2026 et un aménagement opérationnel le 4 novembre. Les échéances des transactions éligibles restent le 31 décembre 2026 pour le cash et le 30 juin 2027 pour le repo."
+    },
+    "en": {
+      "title": "A clearing scenario under a dated scope",
+      "description": "Average daily dollar amounts of Treasury repo outstanding, January–August 2025.",
+      "method": "The observed 45% and simulated 77% are shares of the average dollar amount of Treasury repo outstanding from 1 January to 30 August 2025. The OFR figure does not net opposing repos. The scenario holds transactions and behaviour fixed under a modelled rule scope. This is a counterfactual rather than a promise about the eventual cleared share. SEC added exemptions on 30 October 2026 and operational relief on 4 November. Eligible-transaction deadlines remain 31 December 2026 for cash and 30 June 2027 for repo."
+    }
+  }
+} as const;
+const art={fr:{mechanism:{desktop:mechanism_fr_desktop,mobile:mechanism_fr_mobile},exposures:{desktop:exposures_fr_desktop,mobile:exposures_fr_mobile},funding:{desktop:funding_fr_desktop,mobile:funding_fr_mobile},history:{desktop:history_fr_desktop,mobile:history_fr_mobile},haircut:{desktop:haircut_fr_desktop,mobile:haircut_fr_mobile},clearing:{desktop:clearing_fr_desktop,mobile:clearing_fr_mobile}},en:{mechanism:{desktop:mechanism_en_desktop,mobile:mechanism_en_mobile},exposures:{desktop:exposures_en_desktop,mobile:exposures_en_mobile},funding:{desktop:funding_en_desktop,mobile:funding_en_mobile},history:{desktop:history_en_desktop,mobile:history_en_mobile},haircut:{desktop:haircut_en_desktop,mobile:haircut_en_mobile},clearing:{desktop:clearing_en_desktop,mobile:clearing_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions,kind)) throw new Error('Unknown TreasuryBasisFigure variant');
+const entry=captions[kind], f=entry[lang], svg=art[lang][kind];
+---
+<figure class="treasury-basis-figure" id={`figure-${entry.number}`}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption><span class="fig-num">FIGURE {entry.number}</span><strong>{f.title}</strong>{f.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${Number(id)}`}>[{Number(id)}]</a>)}</figcaption>
+  <details><summary>{lang === 'fr' ? 'Méthode et limites' : 'Method and limitations'}</summary><p>{f.method}</p></details>
+</figure>
+<style>
+@font-face{font-family:'l0g Treasury Basis';src:url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'l0g Treasury Basis';src:url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+.treasury-basis-figure{width:100%;max-width:800px;margin:2.5rem auto;padding-bottom:1rem;color:inherit;container-type:inline-size;overflow:visible}
+.desktop-art,.mobile-art{line-height:0;width:100%}.mobile-art{display:none;max-width:340px;margin-inline:auto}
+.treasury-basis-figure :global(svg){display:block;width:100%;max-width:100%;height:auto;letter-spacing:normal;overflow:visible}
+.treasury-basis-figure figcaption{font-family:var(--font-read);font-size:.9rem;line-height:1.7;color:var(--color-muted);padding:1rem 0 .5rem}
+.treasury-basis-figure figcaption strong{display:block;font-size:1rem;margin:.4rem 0;color:var(--color-paper)}
+.fig-num{letter-spacing:.06em;font-size:.8rem;color:var(--color-signal);font-weight:700}
+.treasury-basis-figure a{margin-right:.45rem}.treasury-basis-figure details{font-family:var(--font-read);font-size:.875rem;line-height:1.7;margin-top:.5rem}
+.treasury-basis-figure summary{cursor:pointer;padding:.35rem 0}.treasury-basis-figure summary:focus-visible{outline:2px solid var(--color-signal);outline-offset:4px}.treasury-basis-figure p{margin-top:.7rem}
+@container(max-width:500px){.desktop-art{display:none}.mobile-art{display:block}}
+@media print{.desktop-art{display:block}.mobile-art{display:none}.treasury-basis-figure{break-inside:avoid}}
+</style>

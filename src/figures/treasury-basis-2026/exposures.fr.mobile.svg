@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 800" role="img" aria-labelledby="tb-exposures-fr-m-title tb-exposures-fr-m-desc" style="width:100%;height:auto" class="l0g-treasury-basis-svg">
+<title id="tb-exposures-fr-m-title">Les positions longues décomposées</title><desc id="tb-exposures-fr-m-desc">Sept catégories exclusives d’expositions longues estimées en septembre 2025, en milliards de dollars. Les barres partagent une échelle de 0 à 900 milliards. Les montants arrondis totalisent 2 395 milliards, soit environ 2 400 milliards.</desc>
+<rect id="tb-exposures-fr-m-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="420" height="800" rx="16" fill="var(--color-ink)"/>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="38" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / MARCHÉ DES TREASURIES</text>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="82" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">Les positions longues</text>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="116" font-family="l0g Treasury Basis" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">décomposées</text>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="148" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-amber)">Estimations · septembre 2025</text>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="182" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Md$ · total : environ 2 400</text>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="211" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Échelle commune : 0 à 900 Md$</text>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="247" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Basis cash–futures</text>
+<text data-panel="tb-exposures-fr-m-frame" x="398" y="247" font-family="l0g Treasury Basis" font-size="21" font-weight="700" text-anchor="end" fill="var(--color-signal)">830</text>
+<rect x="22" y="259" width="376" height="9" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="830" x="22" y="259" width="346.75555556" height="9" rx="0" fill="var(--color-signal)"/>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="312" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Swap spread</text>
+<text data-panel="tb-exposures-fr-m-frame" x="398" y="312" font-family="l0g Treasury Basis" font-size="21" font-weight="700" text-anchor="end" fill="var(--color-accent)">305</text>
+<rect x="22" y="324" width="376" height="9" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="305" x="22" y="324" width="127.42222222" height="9" rx="0" fill="var(--color-accent)"/>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="377" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Maturités appariées</text>
+<text data-panel="tb-exposures-fr-m-frame" x="398" y="377" font-family="l0g Treasury Basis" font-size="21" font-weight="700" text-anchor="end" fill="var(--color-paper)">395</text>
+<rect x="22" y="389" width="376" height="9" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="395" x="22" y="389" width="165.02222222" height="9" rx="0" fill="var(--color-paper)"/>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="442" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Pentification de courbe</text>
+<text data-panel="tb-exposures-fr-m-frame" x="398" y="442" font-family="l0g Treasury Basis" font-size="21" font-weight="700" text-anchor="end" fill="var(--color-amber)">375</text>
+<rect x="22" y="454" width="376" height="9" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="375" x="22" y="454" width="156.66666667" height="9" rx="0" fill="var(--color-amber)"/>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="507" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Titres non grevés</text>
+<text data-panel="tb-exposures-fr-m-frame" x="398" y="507" font-family="l0g Treasury Basis" font-size="21" font-weight="700" text-anchor="end" fill="var(--color-muted)">245</text>
+<rect x="22" y="519" width="376" height="9" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="245" x="22" y="519" width="102.35555556" height="9" rx="0" fill="var(--color-muted)"/>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="572" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Aplatissement</text>
+<text data-panel="tb-exposures-fr-m-frame" x="398" y="572" font-family="l0g Treasury Basis" font-size="21" font-weight="700" text-anchor="end" fill="var(--color-accent)">175</text>
+<rect x="22" y="584" width="376" height="9" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="175" x="22" y="584" width="73.11111111" height="9" rx="0" fill="var(--color-accent)"/>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="637" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Autres usages longs</text>
+<text data-panel="tb-exposures-fr-m-frame" x="398" y="637" font-family="l0g Treasury Basis" font-size="21" font-weight="700" text-anchor="end" fill="var(--color-muted)">70</text>
+<rect x="22" y="649" width="376" height="9" rx="0" fill="var(--color-surface-2)"/>
+<rect data-metric="long-category" data-value="70" x="22" y="649" width="29.24444444" height="9" rx="0" fill="var(--color-muted)"/>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="704" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Somme des arrondis : 2 395 Md$</text>
+<path data-connector="footer" d="M22 747 H398" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="tb-exposures-fr-m-frame" x="22" y="780" font-family="l0g Treasury Basis" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Fed [01] · catégories exclusives</text>
+</svg>
