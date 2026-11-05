@@ -1380,7 +1380,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 394, 'Le corpus conserve ses termes et ajoute FRR pour le financement européen');
+assert.equal(glossaryAtlasEnBySlug.size, 396, 'Le corpus conserve ses termes et ajoute deux notions sur les minerais critiques');
 for (const slug of ['credits-budgetaires-americains', 'reconciliation-budgetaire']) {
   assert.ok(glossaryAtlasEnBySlug.has(slug), `Missing English budget definition: ${slug}`);
 }
@@ -1584,8 +1584,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 779, 'Le corpus conserve ses notions et ajoute FRR pour le financement européen');
-assert.equal(glossaryAtlasEntries.length, 384, 'FRR dispose de sources et de liens vers le financement européen');
+assert.equal(glossaryEntries.length, 781, 'Le corpus conserve ses notions et ajoute deux notions sur les minerais critiques');
+assert.equal(glossaryAtlasEntries.length, 386, 'Les deux notions sur les minerais critiques disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2012,7 +2012,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 1009, 'Les trois relations FRR complètent le graphe existant');
+assert.equal(glossaryAtlasEdgeCount, 1011, 'Les deux notions minières ajoutent leurs relations réciproques au graphe existant');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
@@ -2324,4 +2324,28 @@ console.log(JSON.stringify({
   assert.equal(fr.atlas.sources[0].href, en.atlas.sources[0].href);
   assert.equal(en.atlas.sources[0].href, 'https://reforms-investments.ec.europa.eu/publications-0/recovery-and-resilience-facility-annual-report-2026_en');
   assert.deepEqual(fr.atlas.related, en.atlas.related);
+}
+
+// Mineral definitions retain product-specific methods and a dated policy scope.
+for (const slug of ['minerais-critiques', 'dependance-nette-aux-importations']) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug);
+  const en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en, `${slug}: sourced bilingual definitions required`);
+  assert.equal(fr.guide, '/posts/mines-americaines-minerais-critiques-propriete-etrangere/');
+  assert.equal(en.guide, '/en/analysis/who-controls-americas-critical-mineral-mines/');
+  assert.equal(fr.reference, undefined);
+  assert.equal(fr.referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert.equal(fr.atlas.sources.length, 1);
+  assert.ok(new URL(fr.atlas.sources[0].href).hostname.endsWith('.usgs.gov'));
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  if (slug === 'minerais-critiques') {
+    assert.match(fr.def, /novembre 2025.*60/);
+    assert.match(en.def, /November 2025.*60/);
+  } else {
+    assert.match(fr.def, /ajustements de stocks retenus pour le produit et la période/);
+    assert.match(en.def, /stock adjustments specified for the product and period/);
+    assert.doesNotMatch(fr.def, /stocks publics et industriels/);
+  }
 }

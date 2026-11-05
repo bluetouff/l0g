@@ -1,0 +1,151 @@
+---
+import scope_fr_desktop from '../figures/critical-minerals-2026/scope.fr.desktop.svg?raw';
+import scope_fr_mobile from '../figures/critical-minerals-2026/scope.fr.mobile.svg?raw';
+import scope_en_desktop from '../figures/critical-minerals-2026/scope.en.desktop.svg?raw';
+import scope_en_mobile from '../figures/critical-minerals-2026/scope.en.mobile.svg?raw';
+import ownership_fr_desktop from '../figures/critical-minerals-2026/ownership.fr.desktop.svg?raw';
+import ownership_fr_mobile from '../figures/critical-minerals-2026/ownership.fr.mobile.svg?raw';
+import ownership_en_desktop from '../figures/critical-minerals-2026/ownership.en.desktop.svg?raw';
+import ownership_en_mobile from '../figures/critical-minerals-2026/ownership.en.mobile.svg?raw';
+import stakes_fr_desktop from '../figures/critical-minerals-2026/stakes.fr.desktop.svg?raw';
+import stakes_fr_mobile from '../figures/critical-minerals-2026/stakes.fr.mobile.svg?raw';
+import stakes_en_desktop from '../figures/critical-minerals-2026/stakes.en.desktop.svg?raw';
+import stakes_en_mobile from '../figures/critical-minerals-2026/stakes.en.mobile.svg?raw';
+import kghm_fr_desktop from '../figures/critical-minerals-2026/kghm.fr.desktop.svg?raw';
+import kghm_fr_mobile from '../figures/critical-minerals-2026/kghm.fr.mobile.svg?raw';
+import kghm_en_desktop from '../figures/critical-minerals-2026/kghm.en.desktop.svg?raw';
+import kghm_en_mobile from '../figures/critical-minerals-2026/kghm.en.mobile.svg?raw';
+import exports_fr_desktop from '../figures/critical-minerals-2026/exports.fr.desktop.svg?raw';
+import exports_fr_mobile from '../figures/critical-minerals-2026/exports.fr.mobile.svg?raw';
+import exports_en_desktop from '../figures/critical-minerals-2026/exports.en.desktop.svg?raw';
+import exports_en_mobile from '../figures/critical-minerals-2026/exports.en.mobile.svg?raw';
+import refining_fr_desktop from '../figures/critical-minerals-2026/refining.fr.desktop.svg?raw';
+import refining_fr_mobile from '../figures/critical-minerals-2026/refining.fr.mobile.svg?raw';
+import refining_en_desktop from '../figures/critical-minerals-2026/refining.en.desktop.svg?raw';
+import refining_en_mobile from '../figures/critical-minerals-2026/refining.en.mobile.svg?raw';
+interface Props {lang?: 'fr' | 'en'; kind: 'scope' | 'ownership' | 'stakes' | 'kghm' | 'exports' | 'refining'}
+const {lang='fr',kind}=Astro.props;
+const captions = {
+  "scope": {
+    "number": "01",
+    "sources": [
+      "01"
+    ],
+    "fr": {
+      "title": "Des plans miniers aux entreprises",
+      "description": "Le GAO change d’unité en passant des projets aux personnes morales.",
+      "method": "632 plans de roche dure approuvés en février 2026, dont 66 concernant principalement un minerai critique. Les 59 plans sur terres du BLM renvoient à 43 titulaires ou exploitants distincts. Les barres 632/66 sont proportionnelles ; les étapes suivantes décrivent des périmètres successifs. Une même entreprise peut apparaître dans plusieurs plans."
+    },
+    "en": {
+      "title": "From mining plans to companies",
+      "description": "The GAO changes units when it moves from projects to legal entities.",
+      "method": "632 approved hardrock plans as of February 2026, including 66 whose primary commodity was a critical mineral. The 59 plans on BLM land map to 43 distinct claimants or operators. The 632/66 bar is proportional; subsequent steps describe successive scopes. A company may appear in several plans."
+    }
+  },
+  "ownership": {
+    "number": "02",
+    "sources": [
+      "01"
+    ],
+    "fr": {
+      "title": "Au moins quatorze filiales de groupes étrangers",
+      "description": "Les 43 entités du périmètre étudié, représentées une à une.",
+      "method": "Chaque disque représente une entreprise : 14 filiales de groupes étrangers repérées, 18 autres structures résolues et 11 cas non résolus. Les recherches de propriété ont été menées durant l’audit, terminé en octobre 2026. Le ratio calculé 14/32 = 43,75 % concerne les cas résolus ; les volumes produits et les réserves n’interviennent pas dans ce calcul. Les 18 autres cas peuvent comporter des investisseurs étrangers minoritaires."
+    },
+    "en": {
+      "title": "At least fourteen subsidiaries of foreign groups",
+      "description": "The 43 entities in the study’s scope, represented individually.",
+      "method": "Each dot represents a company: 14 identified subsidiaries of foreign groups, 18 other resolved structures and 11 unresolved cases. Ownership research was conducted during the audit, completed in October 2026. The calculated ratio 14/32 = 43.75% describes resolved cases; it carries no production or reserves weighting. The other 18 cases may include minority foreign investors."
+    }
+  },
+  "stakes": {
+    "number": "03",
+    "sources": [
+      "01"
+    ],
+    "fr": {
+      "title": "Deux participations chinoises minoritaires",
+      "description": "La part du capital et les droits de décision exigent des informations distinctes.",
+      "method": "Le GAO décrit au moins 11 % du capital d’une maison mère britannique détenu par une entreprise publique chinoise, et environ 12 % d’une maison mère canadienne détenu par une entreprise chinoise. Les arcs représentent ces parts, avec respectivement un seuil inférieur et un ordre de grandeur. Le rapport anonymise les groupes et laisse leurs droits contractuels détaillés inconnus."
+    },
+    "en": {
+      "title": "Two minority Chinese investments",
+      "description": "Equity ownership and decision rights require different evidence.",
+      "method": "The GAO describes a Chinese state-owned company holding at least 11% of a UK parent and a Chinese company holding about 12% of a Canadian parent. The arcs depict those stakes: a lower bound and an approximate figure, respectively. The report anonymises the groups and leaves their detailed contractual rights undisclosed."
+    }
+  },
+  "kghm": {
+    "number": "04",
+    "sources": [
+      "08",
+      "09",
+      "14"
+    ],
+    "fr": {
+      "title": "Robinson, du Nevada au groupe KGHM",
+      "description": "Actionnariat du groupe et chaîne de filiales simplifiée.",
+      "method": "Le Trésor polonais détient 31,79 % du capital de KGHM au relevé de février 2026. Les comptes 2025 le qualifient d’entité contrôlante ultime au sens comptable. Les flèches regroupent plusieurs filiales détenues à 100 % : Future 1, KGHM International, Robinson Holdings (USA), puis Robinson Nevada Mining. Robinson produit 49 300 tonnes de cuivre payable en 2025. Cette étude de cas indépendante reste distincte des exemples anonymisés du GAO."
+    },
+    "en": {
+      "title": "Robinson, from Nevada to the KGHM group",
+      "description": "Group ownership and a simplified subsidiary chain.",
+      "method": "Poland’s State Treasury holds 31.79% of KGHM equity in the February 2026 snapshot. The 2025 accounts identify it as the ultimate controlling entity for accounting purposes. Arrows combine several wholly owned subsidiaries: Future 1, KGHM International, Robinson Holdings (USA), then Robinson Nevada Mining. Robinson produced 49,300 tonnes of payable copper in 2025. This independent case study remains separate from the GAO’s anonymised examples."
+    }
+  },
+  "exports": {
+    "number": "05",
+    "sources": [
+      "01"
+    ],
+    "fr": {
+      "title": "Les débouchés étrangers du minerai américain",
+      "description": "Destinations des exportations américaines sélectionnées par le GAO.",
+      "method": "Les parts par pays portent sur les volumes cumulés de 2019 à 2025. La catégorie autres, à 29 %, est le solde calculé des cinq parts arrondies ; le GAO décrit environ 28 %. Les seuils de 2 milliards de kilogrammes et 11 milliards de dollars concernent uniquement 2025, hors déchets et rebuts. Les données douanières agrégées n’identifient pas la mine fédérale d’origine."
+    },
+    "en": {
+      "title": "Foreign destinations for American minerals",
+      "description": "Destinations for the US mineral exports selected by the GAO.",
+      "method": "Country shares measure cumulative export volumes in 2019-2025. Other destinations, at 29%, are the calculated residual of five rounded shares; the GAO describes about 28%. The thresholds of 2 billion kilograms and $11 billion concern 2025 alone, excluding waste and scrap. Aggregate customs data do not identify the federal-land mine of origin."
+    }
+  },
+  "refining": {
+    "number": "06",
+    "sources": [
+      "03"
+    ],
+    "fr": {
+      "title": "La transformation conditionne l’autonomie",
+      "description": "Dépendance nette américaine aux importations en 2025, tous pays fournisseurs.",
+      "method": "USGS, Mineral Commodity Summaries 2026, figure 2. Chaque barre mesure la part de la consommation apparente couverte par des importations nettes, de 0 à 100 %. Les produits diffèrent : gallium, graphite naturel, composés et métaux de terres rares, cuivre raffiné. La frise décrit les étapes industrielles ; les taux portent sur les catégories de produits de l’USGS et mesurent une dépendance envers l’ensemble des fournisseurs."
+    },
+    "en": {
+      "title": "Processing determines industrial autonomy",
+      "description": "US net import reliance in 2025, across all supplier countries.",
+      "method": "USGS, Mineral Commodity Summaries 2026, figure 2. Each bar measures the share of apparent consumption covered by net imports, from 0 to 100%. Product scopes differ: gallium, natural graphite, rare-earth compounds and metals, and refined copper. The sequence depicts industrial stages; the rates use the USGS product categories and measure reliance on all suppliers."
+    }
+  }
+} as const;
+const art = {"fr":{"scope":{"desktop":scope_fr_desktop,"mobile":scope_fr_mobile},"ownership":{"desktop":ownership_fr_desktop,"mobile":ownership_fr_mobile},"stakes":{"desktop":stakes_fr_desktop,"mobile":stakes_fr_mobile},"kghm":{"desktop":kghm_fr_desktop,"mobile":kghm_fr_mobile},"exports":{"desktop":exports_fr_desktop,"mobile":exports_fr_mobile},"refining":{"desktop":refining_fr_desktop,"mobile":refining_fr_mobile}},"en":{"scope":{"desktop":scope_en_desktop,"mobile":scope_en_mobile},"ownership":{"desktop":ownership_en_desktop,"mobile":ownership_en_mobile},"stakes":{"desktop":stakes_en_desktop,"mobile":stakes_en_mobile},"kghm":{"desktop":kghm_en_desktop,"mobile":kghm_en_mobile},"exports":{"desktop":exports_en_desktop,"mobile":exports_en_mobile},"refining":{"desktop":refining_en_desktop,"mobile":refining_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions,kind)) throw new Error('Unknown CriticalMineralsFigure variant');
+const entry=captions[kind], f=entry[lang], svg=art[lang][kind];
+---
+<figure class="critical-minerals-figure" id={`figure-${entry.number}`}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption><span class="fig-num">FIGURE {entry.number}</span><strong>{f.title}</strong>{f.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${Number(id)}`}>[{Number(id)}]</a>)}</figcaption>
+  <details><summary>{lang === 'fr' ? 'Méthode et limites' : 'Method and limitations'}</summary><p>{f.method}</p></details>
+</figure>
+<style>
+@font-face{font-family:'l0g Critical Minerals';src:url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'l0g Critical Minerals';src:url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+.critical-minerals-figure{width:100%;max-width:800px;margin:2.5rem auto;padding-bottom:1rem;color:inherit;container-type:inline-size;overflow:visible}
+.desktop-art,.mobile-art{line-height:0;width:100%}.mobile-art{display:none;max-width:340px;margin-inline:auto}
+.critical-minerals-figure :global(svg){display:block;width:100%;max-width:100%;height:auto;letter-spacing:normal;overflow:visible}
+.critical-minerals-figure figcaption{font-family:var(--font-read);font-size:.9rem;line-height:1.7;color:var(--color-muted);padding:1rem 0 .5rem}
+.critical-minerals-figure figcaption strong{display:block;font-size:1rem;margin:.4rem 0;color:var(--color-paper)}
+.fig-num{letter-spacing:.06em;font-size:.8rem;color:var(--color-signal);font-weight:700}
+.critical-minerals-figure a{margin-right:.45rem}.critical-minerals-figure details{font-family:var(--font-read);font-size:.875rem;line-height:1.7;margin-top:.5rem}
+.critical-minerals-figure summary{cursor:pointer;padding:.35rem 0}.critical-minerals-figure summary:focus-visible{outline:2px solid var(--color-signal);outline-offset:4px}.critical-minerals-figure p{margin-top:.7rem}
+@container(max-width:500px){.desktop-art{display:none}.mobile-art{display:block}}
+@media print{.desktop-art{display:block}.mobile-art{display:none}.critical-minerals-figure{break-inside:avoid}}
+</style>

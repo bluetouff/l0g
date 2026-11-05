@@ -772,6 +772,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Énergie & géopolitique',
     accent: 'var(--color-amber)',
     entries: [
+      {"sigle": "Minerais critiques", "nom": "Ressources essentielles exposées à un risque d’approvisionnement", "def": "Minerais désignés par une autorité publique en raison de leur importance économique ou stratégique et de la vulnérabilité de leurs approvisionnements. Le périmètre dépend de la juridiction et de la date de la liste. La liste américaine de novembre 2025 comprend 60 minerais, dont le cuivre. Le statut de minerai critique renseigne une politique de sécurité d’approvisionnement, avec des périmètres de produits et des étapes industrielles à préciser.", "guide": "/posts/mines-americaines-minerais-critiques-propriete-etrangere/"},
+      {"sigle": "Dépendance nette aux importations", "nom": "Solde des importations rapporté à la consommation apparente", "def": "Indicateur USGS qui rapporte les importations diminuées des exportations, avec les ajustements de stocks retenus pour le produit et la période, à la consommation apparente ou estimée d’un produit minéral. Il faut conserver le produit, la période et la méthode statistique. Une dépendance nette de 100 % décrit l’équilibre national pour cette catégorie ; la répartition entre pays fournisseurs se mesure séparément.", "guide": "/posts/mines-americaines-minerais-critiques-propriete-etrangere/"},
       {"sigle": "FOB", "nom": "Free on board : livraison de GNL au terminal d’exportation", "def": "Dans les contrats de GNL décrits par Cheniere, livraison où l’acheteur prend la cargaison au terminal d’exportation du vendeur. Le transport après ce point relève des arrangements de l’acheteur. Le prix, les obligations en cas d’annulation et la liberté de destination doivent être examinés dans les clauses du contrat.", "guide": "/posts/gaz-americain-hiver-europe-2026/"},
       {"sigle": "Effacement électrique", "nom": "Réduction de consommation pendant une période donnée", "def": "Réduction de la consommation électrique pendant une période donnée, évaluée par rapport à une consommation de référence qui aurait eu lieu sans l’action. Un usage peut être décalé vers une autre période ou abandonné. Une offre tarifaire à effacement incite le client à adapter ses usages ; les volumes effectivement effacés demandent une méthode de mesure distincte du seul calendrier des prix.", "guide": "/posts/tempo-jours-rouges-algorithme-facture/"},
       {"sigle": "Consommation résiduelle", "nom": "Demande électrique après déduction de productions définies", "def": "Consommation électrique restant à couvrir après déduction des productions retenues dans une méthode donnée. Dans la méthode RTE des jours PP du 30 septembre 2026, le critère est la pointe horaire prévue de la consommation française hors effacement, diminuée des productions éolienne et photovoltaïque prévues. Ce résidu mesure un besoin à couvrir ; la sécurité d’approvisionnement dépend aussi des moyens disponibles.", "guide": "/posts/tempo-jours-rouges-algorithme-facture/"},
@@ -1016,7 +1018,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-11-04';
+export const glossaryUpdatedIso = '2026-11-05';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1259,6 +1261,8 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "minerais-critiques": {"articles": [{"label": "Minerais critiques : les propriétaires des mines américaines", "href": "/posts/mines-americaines-minerais-critiques-propriete-etrangere/", "kind": "article"}], "sources": [{"label": "USGS, liste des minerais critiques 2025", "href": "https://www.usgs.gov/news/science-snippet/interior-department-releases-final-2025-list-critical-minerals", "kind": "source"}], "related": ["dependance-nette-aux-importations"]},
+  "dependance-nette-aux-importations": {"articles": [{"label": "Minerais critiques : les propriétaires des mines américaines", "href": "/posts/mines-americaines-minerais-critiques-propriete-etrangere/", "kind": "article"}], "sources": [{"label": "USGS, Mineral Commodity Summaries 2026", "href": "https://pubs.usgs.gov/publication/mcs2026", "kind": "source"}], "related": ["minerais-critiques"]},
   frr: {
     intuition: 'La réalisation d’un jalon ouvre la voie à une évaluation, puis à un versement conditionnel.',
     articles: [{ label: 'Souveraineté numérique européenne : le relais financier', href: '/posts/souverainete-numerique-europe-financement-2026/', detail: 'Fin des financements de relance et continuité des infrastructures numériques.', kind: 'article' }],
