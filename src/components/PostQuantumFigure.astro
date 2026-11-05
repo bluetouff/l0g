@@ -1,0 +1,125 @@
+---
+import audit_fr_desktop from '../figures/post-quantique-2026/audit.fr.desktop.svg?raw';
+import audit_fr_mobile from '../figures/post-quantique-2026/audit.fr.mobile.svg?raw';
+import audit_en_desktop from '../figures/post-quantique-2026/audit.en.desktop.svg?raw';
+import audit_en_mobile from '../figures/post-quantique-2026/audit.en.mobile.svg?raw';
+import mechanism_fr_desktop from '../figures/post-quantique-2026/mechanism.fr.desktop.svg?raw';
+import mechanism_fr_mobile from '../figures/post-quantique-2026/mechanism.fr.mobile.svg?raw';
+import mechanism_en_desktop from '../figures/post-quantique-2026/mechanism.en.desktop.svg?raw';
+import mechanism_en_mobile from '../figures/post-quantique-2026/mechanism.en.mobile.svg?raw';
+import retention_fr_desktop from '../figures/post-quantique-2026/retention.fr.desktop.svg?raw';
+import retention_fr_mobile from '../figures/post-quantique-2026/retention.fr.mobile.svg?raw';
+import retention_en_desktop from '../figures/post-quantique-2026/retention.en.desktop.svg?raw';
+import retention_en_mobile from '../figures/post-quantique-2026/retention.en.mobile.svg?raw';
+import bytes_fr_desktop from '../figures/post-quantique-2026/bytes.fr.desktop.svg?raw';
+import bytes_fr_mobile from '../figures/post-quantique-2026/bytes.fr.mobile.svg?raw';
+import bytes_en_desktop from '../figures/post-quantique-2026/bytes.en.desktop.svg?raw';
+import bytes_en_mobile from '../figures/post-quantique-2026/bytes.en.mobile.svg?raw';
+
+interface Props { lang?: 'fr' | 'en'; kind: 'audit' | 'mechanism' | 'retention' | 'bytes' }
+const { lang = 'fr', kind } = Astro.props;
+const captions = {
+  "audit": {
+    "number": "01",
+    "sources": [
+      "01"
+    ],
+    "fr": {
+      "title": "Trois pratiques de préparation, sur les mêmes 24 agences",
+      "description": "Audit GAO mené de février 2024 à septembre 2025.",
+      "method": "Un symbole représente une agence, réévaluée indépendamment pour chacun des trois critères. Inventaire : 1 complet, 21 partiels, 1 minimal et 1 non traité. Financement : 21 partiels et 3 non traités. Tests : 1 partiel et 23 non traités. Aucune agence n’est classée « substantiellement traité » sur ces lignes. Le graphique décrit la préparation documentée pendant l’audit, hors systèmes de sécurité nationale ; il ne mesure pas la proportion de systèmes protégés en novembre 2026."
+    },
+    "en": {
+      "title": "Three readiness practices across the same 24 agencies",
+      "description": "GAO audit conducted from February 2024 to September 2025.",
+      "method": "One symbol represents one agency, assessed independently for each practice. Inventory: 1 full, 21 partial, 1 minimal and 1 not addressed. Funding: 21 partial and 3 not addressed. Testing: 1 partial and 23 not addressed. No agency falls in the substantially addressed category on these rows. This is documented readiness during the audit, excluding national security systems; it does not measure the share of protected systems in November 2026."
+    }
+  },
+  "mechanism": {
+    "number": "02",
+    "sources": [
+      "05",
+      "06",
+      "07",
+      "08",
+      "18"
+    ],
+    "fr": {
+      "title": "Établir un secret et vérifier une signature",
+      "description": "Deux fonctions distinctes dans une architecture de sécurité.",
+      "method": "Dans le schéma KEM, le destinataire rend disponible sa clé publique. L’émetteur produit un message d’encapsulation et un secret ; le destinataire retrouve ce secret avec sa clé privée. Le secret partagé sert ensuite à dériver les clés du chiffrement symétrique. Pour une signature, le producteur signe avec sa clé privée et le vérificateur utilise la clé publique correspondante. La vérification d’origine et d’intégrité s’inscrit dans une politique de confiance. Ce dessin fonctionnel simplifie les échanges et ne représente ni une connexion TLS complète ni une configuration opérationnelle."
+    },
+    "en": {
+      "title": "Establish a secret and verify a signature",
+      "description": "Two distinct functions within a security architecture.",
+      "method": "In the KEM model, the recipient makes its public key available. The sender creates an encapsulation message and a secret; the recipient recovers that secret using its private key. The shared secret is then used to derive symmetric-encryption keys. For signatures, the producer signs with its private key and the verifier uses the corresponding public key. Origin and integrity checks operate within a trust policy. This functional drawing simplifies the exchanges; it is neither a complete TLS connection nor an operational configuration."
+    }
+  },
+  "retention": {
+    "number": "03",
+    "sources": [
+      "09"
+    ],
+    "fr": {
+      "title": "Une copie conserve la protection de son époque",
+      "description": "Scénario pédagogique entièrement hypothétique.",
+      "method": "L’exemple choisit un échange enregistré en 2026, une migration du service en 2030, une capacité de déchiffrement supposée en 2038 et un besoin de confidentialité jusqu’en 2041. La même échelle temporelle sert à toutes les lignes, horizontale sur ordinateur et verticale sur mobile. La copie conserve sa protection initiale après la migration du service. Son exploitation dépend encore d’une protection vulnérable, d’une copie pertinente et exploitable et d’une capacité de calcul suffisante. Aucune de ces années ne prédit l’arrivée d’un ordinateur quantique pertinent."
+    },
+    "en": {
+      "title": "A copy retains the protection used when it was recorded",
+      "description": "An entirely hypothetical teaching scenario.",
+      "method": "The example chooses a recording in 2026, service migration in 2030, an assumed decryption capability in 2038 and confidentiality required until 2041. All rows use the same time scale, horizontal on desktop and vertical on mobile. The copy retains its original protection after service migration. Exploitation still requires vulnerable protection, a relevant and usable copy, and sufficient computing capability. None of these dates forecasts the arrival of a cryptographically relevant quantum computer."
+    }
+  },
+  "bytes": {
+    "number": "04",
+    "sources": [
+      "05",
+      "06"
+    ],
+    "fr": {
+      "title": "Des tailles normalisées, selon la fonction et les paramètres",
+      "description": "Clés publiques, messages d’encapsulation et signatures, en octets. Échelles et niveaux de sécurité distincts.",
+      "method": "FIPS 203, table 3 : ML-KEM-512, 768 et 1024 utilisent des clés publiques de 800, 1184 et 1568 octets, et des messages d’encapsulation de 768, 1088 et 1568 octets. Le secret partagé mesure 32 octets pour ces trois paramètres. FIPS 204, table 2 : ML-DSA-44, 65 et 87 utilisent des clés publiques de 1312, 1952 et 2592 octets et des signatures de 2420, 3309 et 4627 octets. Chaque panneau possède sa propre échelle à origine zéro, jusqu’à 1600 ou 5000 octets. Les paramètres correspondent à différents niveaux de sécurité. Ces objets isolés ne représentent ni le volume total d’une connexion, ni un benchmark de débit ou de latence."
+    },
+    "en": {
+      "title": "Standardised sizes depend on function and parameters",
+      "description": "Public keys, encapsulation messages and signatures, in bytes. Separate scales and different security levels.",
+      "method": "FIPS 203, table 3: ML-KEM-512, 768 and 1024 have public keys of 800, 1184 and 1568 bytes, and encapsulation messages of 768, 1088 and 1568 bytes. All three use a 32-byte shared secret. FIPS 204, table 2: ML-DSA-44, 65 and 87 have public keys of 1312, 1952 and 2592 bytes and signatures of 2420, 3309 and 4627 bytes. Each panel has a separate zero-based scale, extending to 1600 or 5000 bytes. The parameters have different security levels. These individual objects represent neither a complete connection’s data volume nor a throughput or latency benchmark."
+    }
+  }
+} as const;
+const art = {fr:{audit:{desktop:audit_fr_desktop,mobile:audit_fr_mobile},mechanism:{desktop:mechanism_fr_desktop,mobile:mechanism_fr_mobile},retention:{desktop:retention_fr_desktop,mobile:retention_fr_mobile},bytes:{desktop:bytes_fr_desktop,mobile:bytes_fr_mobile}},en:{audit:{desktop:audit_en_desktop,mobile:audit_en_mobile},mechanism:{desktop:mechanism_en_desktop,mobile:mechanism_en_mobile},retention:{desktop:retention_en_desktop,mobile:retention_en_mobile},bytes:{desktop:bytes_en_desktop,mobile:bytes_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new TypeError('Unknown PostQuantumFigure variant');
+const entry = captions[kind], text = entry[lang], svg = art[lang][kind];
+---
+<figure class="post-quantum-figure" id={`figure-${entry.number}`} data-kind={kind}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption>
+    <span class="figure-number">FIGURE {entry.number}</span>
+    <strong>{text.title}</strong>
+    {text.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${Number(id)}`}>[{Number(id)}]</a>)}
+  </figcaption>
+  <details>
+    <summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary>
+    <p>{text.method}</p>
+  </details>
+</figure>
+<style>
+  @font-face { font-family: 'l0g Post Quantum'; src: url('/fonts/predictstreet/liberation-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  .post-quantum-figure { width: 100%; max-width: 800px; margin: 2.8rem auto; padding-bottom: 1rem; container-type: inline-size; overflow: visible; }
+  .desktop-art, .mobile-art { width: 100%; line-height: 0; }
+  .mobile-art { display: none; max-width: 340px; margin-inline: auto; }
+  .post-quantum-figure :global(svg) { display: block; width: 100%; max-width: 100%; height: auto; letter-spacing: normal; overflow: visible; }
+  .post-quantum-figure figcaption { padding: .85rem 0 .45rem; font-family: var(--font-read); font-size: .9rem; line-height: 1.7; color: var(--color-muted); }
+  .post-quantum-figure figcaption strong { display: block; margin: .25rem 0; font-size: 1rem; font-weight: 400; color: var(--color-paper); }
+  .figure-number { font-size: .75rem; letter-spacing: .12em; color: var(--color-signal); }
+  .post-quantum-figure a { margin-right: .45rem; }
+  .post-quantum-figure details { margin-top: .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.7; }
+  .post-quantum-figure summary { cursor: pointer; padding: .35rem 0; }
+  .post-quantum-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .post-quantum-figure p { margin-top: .7rem; }
+  @container (max-width: 500px) { .desktop-art { display: none; } .mobile-art { display: block; } }
+  @media print { .desktop-art { display: block; } .mobile-art { display: none; } .post-quantum-figure { break-inside: avoid; } }
+</style>

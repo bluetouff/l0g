@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="pqc-mechanism-fr-d-title pqc-mechanism-fr-d-desc" style="width:100%;height:auto" class="l0g-post-quantum-svg">
+<title id="pqc-mechanism-fr-d-title">Partager un secret et authentifier un logiciel</title><desc id="pqc-mechanism-fr-d-desc">Schéma fonctionnel simplifié : établissement d’un secret et signatures numériques.</desc>
+<rect x="0" y="0" width="1000" height="700" rx="0" fill="var(--color-ink)" id="pqc-mechanism-fr-d-frame"/>
+<rect x="20" y="15" width="960" height="125" rx="0" fill="none" stroke="none" stroke-width="1" id="pqc-mechanism-fr-d-header"/>
+<rect x="18" y="125" width="964" height="497" rx="0" fill="none" stroke="none" stroke-width="1" id="pqc-mechanism-fr-d-body"/>
+<rect x="20" y="628" width="960" height="60" rx="0" fill="none" stroke="none" stroke-width="1" id="pqc-mechanism-fr-d-footer"/>
+<text x="24" y="42" fill="var(--color-signal)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-mechanism-fr-d-header">l0g / POST-QUANTIQUE</text>
+<text x="32" y="96" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="35" font-weight="400" text-anchor="start" data-panel="pqc-mechanism-fr-d-header">Partager un secret et authentifier un logiciel</text>
+<path d="M24 623 L976 623" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="24" y="654" fill="var(--color-muted)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-mechanism-fr-d-footer">NIST [05–08] · IETF [18] · fonctions distinctes de sécurité</text>
+<text x="40" y="159" fill="var(--color-signal)" font-family="l0g Post Quantum" font-size="25" font-weight="400" text-anchor="start" data-panel="pqc-mechanism-fr-d-body">01 / Établir un secret partagé</text>
+<path d="M142.6 256.75 L207.4 256.75 L207.4 295.9 L142.6 295.9 L142.6 256.75" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="laptop"/>
+<path d="M134.5 304.0 L215.5 304.0 L207.4 295.9 L142.6 295.9 L134.5 304.0" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="laptop"/>
+<path d="M803.0 249.5 L847.0 249.5 L847.0 304.5 L803.0 304.5 L803.0 249.5" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M803.0 268.2 L847.0 268.2" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M803.0 286.9 L847.0 286.9" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M811.8 258.3 L817.3 258.3" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M811.8 277.0 L817.3 277.0" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M811.8 295.7 L817.3 295.7" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<text x="175" y="337" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="26" font-weight="400" text-anchor="middle" data-panel="pqc-mechanism-fr-d-body">Émetteur</text>
+<text x="825" y="337" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="26" font-weight="400" text-anchor="middle" data-panel="pqc-mechanism-fr-d-body">Destinataire</text>
+<path d="M800 230 L800 201 L200 201 L200 230" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M196 222 L200 230 L204 222" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="500" y="186" fill="var(--color-signal)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="middle" data-panel="pqc-mechanism-fr-d-body">Clé publique du destinataire</text>
+<path d="M240 278 L760 278" fill="none" stroke="var(--color-amber)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M752 274 L760 278 L752 282" fill="none" stroke="var(--color-amber)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="500" y="261" fill="var(--color-amber)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="middle" data-panel="pqc-mechanism-fr-d-body">Message d’encapsulation</text>
+<text x="175" y="375" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="middle" data-panel="pqc-mechanism-fr-d-body">Encapsule → secret K</text>
+<text x="825" y="375" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="middle" data-panel="pqc-mechanism-fr-d-body">Décapsule → secret K</text>
+<path d="M175 394 L175 411 L451 411" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M443 407 L451 411 L443 415" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M825 394 L825 411 L549 411" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M557 407 L549 411 L557 415" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M487.25 409.3 L487.25 428.0 L512.75 428.0 L512.75 409.3 L487.25 409.3" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="lock"/>
+<path d="M492.35 409.3 L492.35 399.95 L495.75 394.85 L504.25 394.85 L507.65 399.95 L507.65 409.3" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="lock"/>
+<path d="M500.0 416.95 L500.0 421.2" fill="none" stroke="var(--color-signal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="lock"/>
+<text x="500" y="462" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="middle" data-panel="pqc-mechanism-fr-d-body">K sert à dériver les clés du chiffrement des contenus</text>
+<path d="M40 488 L960 488" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="40" y="528" fill="var(--color-amber)" font-family="l0g Post Quantum" font-size="25" font-weight="400" text-anchor="start" data-panel="pqc-mechanism-fr-d-body">02 / Vérifier une signature de logiciel</text>
+<path d="M161.5 560.0 L168.7 560.0 L177.7 560.0 L177.7 566.3 L184.0 566.3 L184.0 560.0 L191.2 560.0" fill="none" stroke="var(--color-amber)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="key"/>
+<path d="M161.5 553.7 L155.2 553.7 L150.7 558.2 L150.7 564.5 L155.2 569.0 L161.5 569.0 L166.0 564.5 L166.0 558.2 L161.5 553.7" fill="none" stroke="var(--color-amber)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="key"/>
+<path d="M478.4 549.2 L500.0 537.5 L521.6 549.2 L521.6 573.5 L500.0 585.2 L478.4 573.5 L478.4 549.2" fill="none" stroke="var(--color-amber)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="package"/>
+<path d="M478.4 549.2 L500.0 560.9 L521.6 549.2" fill="none" stroke="var(--color-amber)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="package"/>
+<path d="M500.0 560.9 L500.0 585.2" fill="none" stroke="var(--color-amber)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="package"/>
+<path d="M489.2 542.9 L510.8 555.5" fill="none" stroke="var(--color-amber)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="package"/>
+<path d="M805.2 542.0 L825.0 534.8 L844.8 542.0 L844.8 563.6 L837.6 576.2 L825.0 586.1 L812.4 576.2 L805.2 563.6 L805.2 542.0" fill="none" stroke="var(--color-amber)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="shield"/>
+<path d="M816.0 560.0 L823.2 567.2 L836.7 552.8" fill="none" stroke="var(--color-amber)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-icon="shield"/>
+<path d="M215 560 L450 560" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M442 556 L450 560 L442 564" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M550 560 L780 560" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M772 556 L780 560 L772 564" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="175" y="610" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="middle" data-panel="pqc-mechanism-fr-d-body">Clé privée : signer</text>
+<text x="500" y="610" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="middle" data-panel="pqc-mechanism-fr-d-body">Logiciel + signature</text>
+<text x="825" y="610" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="middle" data-panel="pqc-mechanism-fr-d-body">Clé publique : vérifier</text>
+</svg>

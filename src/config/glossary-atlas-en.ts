@@ -2606,12 +2606,24 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'cryptographie-postquantique', sigle: 'Post-quantum cryptography', nom: 'Cryptography designed to resist known quantum attacks',
     ...cryptoSection, robots: 'noindex,follow',
     guide: '/en/analysis/bitcoin-quantum-cost-changing-keys/',
-    def: 'Cryptographic constructions run on classical computers and designed to resist known quantum attacks. Signatures authorise and authenticate messages; key encapsulation mechanisms establish shared secrets. Integration into Bitcoin requires protocol rules and migration of existing outputs.',
+    def: 'Cryptographic constructions run on classical computers and designed to resist known quantum attacks. Signatures help verify the origin and integrity of messages; key encapsulation mechanisms establish shared secrets. Deployment concerns the protocols, software and equipment using those mechanisms. Bitcoin is one migration case, involving protocol rules and existing outputs.',
     atlas: {
-      intuition: 'A standardised primitive still needs a protocol, compatible wallets and a migration path.',
-      articles: [{ label: 'Bitcoin’s quantum migration: the cost of changing keys', href: '/en/analysis/bitcoin-quantum-cost-changing-keys/', kind: 'article' }],
+      intuition: 'A standardised primitive becomes part of a protocol, compatible equipment and a migration path.',
+      articles: [{ label: 'Bitcoin’s quantum migration: the cost of changing keys', href: '/en/analysis/bitcoin-quantum-cost-changing-keys/', kind: 'article' }, { label: 'Quantum threat: Washington’s race to change its digital locks', href: '/en/analysis/america-digital-secrets-post-quantum-migration/', detail: 'Retained data, signatures, suppliers and migration of federal systems.', kind: 'article' }],
       sources: [{ label: 'NIST FIPS 204', href: 'https://csrc.nist.gov/pubs/fips/204/final', kind: 'source' }, { label: 'NIST FIPS 203', href: 'https://csrc.nist.gov/pubs/fips/203/final', kind: 'source' }],
-      related: ['poids-de-transaction', 'btc'],
+      related: ['poids-de-transaction', 'btc', 'agilite-cryptographique'],
+    },
+  },
+  {
+    slug: 'agilite-cryptographique', sigle: 'Cryptographic agility', nom: 'The ability to change cryptographic mechanisms',
+    sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    guide: '/en/analysis/america-digital-secrets-post-quantum-migration/',
+    def: 'The ability to replace or adapt cryptographic algorithms across protocols, software, hardware, firmware and infrastructure while preserving security and ongoing services. Putting it into practice requires accounting for dependencies between components and how they can be updated.',
+    atlas: {
+      intuition: 'Changing an algorithm may also require changes to the protocol, software and equipment that use it.',
+      articles: [{ label: 'Quantum threat: Washington’s race to change its digital locks', href: '/en/analysis/america-digital-secrets-post-quantum-migration/', detail: 'Inventories, deliverable versions and dependencies in post-quantum migration.', kind: 'article' }],
+      sources: [{ label: 'NIST CSWP 39upd1, cryptographic agility', href: 'https://csrc.nist.gov/pubs/cswp/39/upd1/considerations-for-achieving-crypto-agility/final', detail: 'June 29, 2026 update: definition and adaptation of mechanisms across software, hardware, protocols and infrastructure.', kind: 'source' }],
+      related: ['cryptographie-postquantique'],
     },
   },
   {

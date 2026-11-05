@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="pqc-bytes-en-d-title pqc-bytes-en-d-desc" style="width:100%;height:auto" class="l0g-post-quantum-svg">
+<title id="pqc-bytes-en-d-title">Cryptographic objects have different sizes</title><desc id="pqc-bytes-en-d-desc">Standard object sizes in bytes, 2024. Separate scales and different security levels.</desc>
+<rect x="0" y="0" width="1000" height="680" rx="0" fill="var(--color-ink)" id="pqc-bytes-en-d-frame"/>
+<rect x="20" y="15" width="960" height="125" rx="0" fill="none" stroke="none" stroke-width="1" id="pqc-bytes-en-d-header"/>
+<rect x="18" y="125" width="964" height="477" rx="0" fill="none" stroke="none" stroke-width="1" id="pqc-bytes-en-d-body"/>
+<rect x="20" y="608" width="960" height="60" rx="0" fill="none" stroke="none" stroke-width="1" id="pqc-bytes-en-d-footer"/>
+<text x="24" y="42" fill="var(--color-signal)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-header">l0g / POST-QUANTUM</text>
+<text x="32" y="96" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="35" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-header">Cryptographic objects have different sizes</text>
+<path d="M24 603 L976 603" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="24" y="634" fill="var(--color-muted)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-footer">NIST [05–06] · FIPS 203, table 3 · FIPS 204, table 2 · bytes</text>
+<text x="40" y="182" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="30" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">ML-KEM</text>
+<text x="462" y="182" fill="var(--color-muted)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">0–1 600 bytes</text>
+<circle cx="44" cy="214" r="4" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="55" y="221" fill="var(--color-signal)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">Public key</text>
+<circle cx="258" cy="214" r="4" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<text x="269" y="221" fill="var(--color-amber)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">KEM message</text>
+<text x="40" y="255" fill="var(--color-muted)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">Param.</text>
+<text x="40" y="312" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="26" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">512</text>
+<rect x="163" y="299" width="105.0" height="10" rx="2" fill="var(--color-signal)" data-metric="kem-public-key" data-param="512" data-value="800" data-scale="1600"/>
+<text x="462" y="310" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">800</text>
+<rect x="163" y="329" width="100.8" height="10" rx="2" fill="var(--color-amber)" data-metric="kem-ciphertext" data-param="512" data-value="768" data-scale="1600"/>
+<text x="462" y="340" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">768</text>
+<text x="40" y="416" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="26" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">768</text>
+<rect x="163" y="403" width="155.4" height="10" rx="2" fill="var(--color-signal)" data-metric="kem-public-key" data-param="768" data-value="1184" data-scale="1600"/>
+<text x="462" y="414" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">1 184</text>
+<rect x="163" y="433" width="142.8" height="10" rx="2" fill="var(--color-amber)" data-metric="kem-ciphertext" data-param="768" data-value="1088" data-scale="1600"/>
+<text x="462" y="444" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">1 088</text>
+<text x="40" y="520" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="26" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">1024</text>
+<rect x="163" y="507" width="205.8" height="10" rx="2" fill="var(--color-signal)" data-metric="kem-public-key" data-param="1024" data-value="1568" data-scale="1600"/>
+<text x="462" y="518" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">1 568</text>
+<rect x="163" y="537" width="205.8" height="10" rx="2" fill="var(--color-amber)" data-metric="kem-ciphertext" data-param="1024" data-value="1568" data-scale="1600"/>
+<text x="462" y="548" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">1 568</text>
+<path d="M163 264 L373 264" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="163" y="255" fill="var(--color-muted)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">0</text>
+<text x="373" y="255" fill="var(--color-muted)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">1 600</text>
+<text x="540" y="182" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="30" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">ML-DSA</text>
+<text x="962" y="182" fill="var(--color-muted)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">0–5 000 bytes</text>
+<circle cx="544" cy="214" r="4" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="555" y="221" fill="var(--color-signal)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">Public key</text>
+<circle cx="758" cy="214" r="4" fill="var(--color-accent)" stroke="var(--color-accent)" stroke-width="1.5"/>
+<text x="769" y="221" fill="var(--color-accent)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">Signature</text>
+<text x="540" y="255" fill="var(--color-muted)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">Param.</text>
+<text x="540" y="312" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="26" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">44</text>
+<rect x="663" y="299" width="55.104" height="10" rx="2" fill="var(--color-signal)" data-metric="dsa-public-key" data-param="44" data-value="1312" data-scale="5000"/>
+<text x="962" y="310" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">1 312</text>
+<rect x="663" y="329" width="101.64" height="10" rx="2" fill="var(--color-accent)" data-metric="dsa-signature" data-param="44" data-value="2420" data-scale="5000"/>
+<text x="962" y="340" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">2 420</text>
+<text x="540" y="416" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="26" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">65</text>
+<rect x="663" y="403" width="81.984" height="10" rx="2" fill="var(--color-signal)" data-metric="dsa-public-key" data-param="65" data-value="1952" data-scale="5000"/>
+<text x="962" y="414" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">1 952</text>
+<rect x="663" y="433" width="138.978" height="10" rx="2" fill="var(--color-accent)" data-metric="dsa-signature" data-param="65" data-value="3309" data-scale="5000"/>
+<text x="962" y="444" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">3 309</text>
+<text x="540" y="520" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="26" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">87</text>
+<rect x="663" y="507" width="108.864" height="10" rx="2" fill="var(--color-signal)" data-metric="dsa-public-key" data-param="87" data-value="2592" data-scale="5000"/>
+<text x="962" y="518" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">2 592</text>
+<rect x="663" y="537" width="194.334" height="10" rx="2" fill="var(--color-accent)" data-metric="dsa-signature" data-param="87" data-value="4627" data-scale="5000"/>
+<text x="962" y="548" fill="var(--color-paper)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">4 627</text>
+<path d="M663 264 L873 264" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="663" y="255" fill="var(--color-muted)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body">0</text>
+<text x="873" y="255" fill="var(--color-muted)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="end" data-panel="pqc-bytes-en-d-body">5 000</text>
+<path d="M512 145 L512 555" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="40" y="577" fill="var(--color-muted)" font-family="l0g Post Quantum" font-size="24" font-weight="400" text-anchor="start" data-panel="pqc-bytes-en-d-body" data-metric="kem-shared-secret" data-value="32">ML-KEM: a 32-byte shared secret</text>
+</svg>

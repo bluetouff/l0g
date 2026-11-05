@@ -1380,7 +1380,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 397, 'Le corpus conserve ses termes et ajoute le ratio look-to-book');
+assert.equal(glossaryAtlasEnBySlug.size, 398, 'Le corpus conserve ses termes et ajoute l’agilité cryptographique');
 for (const slug of ['credits-budgetaires-americains', 'reconciliation-budgetaire']) {
   assert.ok(glossaryAtlasEnBySlug.has(slug), `Missing English budget definition: ${slug}`);
 }
@@ -1584,8 +1584,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 782, 'Le corpus conserve ses notions et ajoute le ratio look-to-book');
-assert.equal(glossaryAtlasEntries.length, 387, 'Les notions minières et le ratio look-to-book disposent de sources et de liens');
+assert.equal(glossaryEntries.length, 783, 'Le corpus conserve ses notions et ajoute l’agilité cryptographique');
+assert.equal(glossaryAtlasEntries.length, 388, 'L’agilité cryptographique dispose de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2012,7 +2012,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 1012, 'Les notions minières et le look-to-book complètent le graphe existant');
+assert.equal(glossaryAtlasEdgeCount, 1014, 'L’agilité cryptographique et les liens réciproques complètent le graphe existant');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
