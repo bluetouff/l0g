@@ -11,19 +11,19 @@ export const embeddedAnalysisTools: AnalysisTool[] = [
     "placement": "article",
     "embeddedComponent": "AirfareBotLab",
     "fr": {
-      "title": "Les bots, le signal et le billet",
+      "title": "Les bots et le prix du billet",
       "eyebrow": "économie et coûts",
-      "question": "Comment les requêtes et les retenues de places peuvent-elles modifier une offre ?",
-      "description": "Animer les recherches, filtrer les répétitions et suivre les disponibilités dans des scénarios tarifaires entièrement fictifs.",
+      "question": "Pourquoi le prix monte-t-il quand des bots bloquent les places les moins chères ?",
+      "description": "Trois boutons pour chercher, bloquer puis libérer des places, avec un prix qui change sous les yeux. Exemple entièrement fictif.",
       "href": "/posts/billets-avion-agents-ia-signal-demande/#airfare-bot-lab-fr",
       "articleHref": "/posts/billets-avion-agents-ia-signal-demande/",
       "articleLabel": "Lire l’analyse et ses sources"
     },
     "en": {
-      "title": "Bots, signals and the fare",
+      "title": "Bots and ticket prices",
       "eyebrow": "economics and costs",
-      "question": "How can search requests and temporary inventory holds change an offer?",
-      "description": "Animate searches, filter repeated requests and track availability in entirely fictional pricing scenarios.",
+      "question": "Why does the price rise when bots hold the cheapest seats?",
+      "description": "Three buttons to search, hold and release seats, with a visible price change. An entirely fictional example.",
       "href": "/en/analysis/airfares-ai-agents-demand-signals/#airfare-bot-lab-en",
       "articleHref": "/en/analysis/airfares-ai-agents-demand-signals/",
       "articleLabel": "Read the analysis and sources"

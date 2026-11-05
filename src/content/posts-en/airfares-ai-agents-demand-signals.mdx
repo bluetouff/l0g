@@ -19,6 +19,7 @@ ogTitle: "Airfares and AI agents: the signals behind the price"
 
 import AirfareAgentsFigure from "../../components/AirfareAgentsFigure.astro";
 import AirfareBotLab from "../../components/AirfareBotLab.astro";
+import AirfareBotVideo from "../../components/AirfareBotVideo.astro";
 
 A traveller needs a return flight, a checked bag and an arrival before dinner. Their AI agent tries different departure times, moves the trip by a day, checks a nearby airport and repeats the exercise across several distributors. At the end of the search there is still one person, one trip and, perhaps, one booking. In the systems processing those requests, the activity may look much larger.
 
@@ -26,7 +27,7 @@ This is a hypothetical scene. The economic problem is already worth examining: *
 
 Several channels need to be separated. Shopping requests consume computing resources and can inform demand forecasts. More requests from the same traveller can change the meaning of those signals. **The causal effect of AI agents on fares remains to be measured** in the public sources reviewed through **5 November 2026**. The mechanisms below distinguish computing costs, possible forecasting errors and better comparison for the customer.
 
-The [interactive simulator](#airfare-bot-lab-en) lets you adjust search activity, filtering and temporary inventory holds.
+The [small simulator](#airfare-bot-lab-en) shows how the price changes when bots hold and release seats. A short video demonstrates the clicks.
 
 ## Pricing a seat against tomorrow’s passenger
 
@@ -68,12 +69,6 @@ The fare outcome depends on processing. A model placing substantial weight on ra
 
 The software-security foundation OWASP calls intentional automated manipulation of metrics *skewing*. That threat supplies a technical comparison. Unintentional noise from a legitimate shopping assistant remains a separate analytical hypothesis in this investigation. <sup className="source-ref"><a href="#source-07" aria-label="Source 7">7</a></sup>
 
-## Explore requests and the offer decision
-
-This laboratory makes the mechanisms adjustable: purchases stay fixed as search requests multiply. The relationship between request volume and the probability of a later sale is a teaching convention, with no airline calibration. The inventory scenario adds an action beyond searching, then shows availability returning when holds expire. The Air Europa reference comes from an official fare page consulted through an indexed copy; it is not a guaranteed live quote.
-
-<AirfareBotLab lang="en" />
-
 ## The first bill is for computing
 
 On **7 October 2025**, the International Air Transport Association, **IATA**, described pressure on systems and costs from rising searches per booking. Its public introduction to a white paper mentions **14 airlines, 11 IT providers and eight sellers** contributing to the work. This is an industry assessment. Any [look-to-book ratio](/en/glossary/look-to-book/) needs explicit search and booking units. <sup className="source-ref"><a href="#source-08" aria-label="Source 8">8</a></sup>
@@ -95,6 +90,12 @@ Who pays this expense depends on contracts and competition. An airline could abs
 A price request generally does not reserve a seat. Other actions go further, creating a temporary booking or holding availability. When holds accumulate without purchases, they can deprive other customers of inventory that would otherwise be for sale. OWASP’s *denial of inventory* category explicitly includes flight seats. <sup className="source-ref"><a href="#source-10" aria-label="Source 10">10</a></sup>
 
 A hold first affects availability: a customer may lose access to an offer, buy a more expensive alternative or abandon the purchase. Following this channel requires records of temporary reservations, quantities, duration and release. Price searches and actions that hold seats therefore need separate observation.
+
+The game below isolates temporary holds using fictional seats and fares. Searching leaves seats available; holding them can remove access to the cheapest fare.
+
+<AirfareBotLab lang="en" />
+
+<AirfareBotVideo lang="en" />
 
 Agents could also strengthen the passenger’s position. Consider an assistant that finds an acceptable connection, checks baggage charges and discovers an airline its user would otherwise have missed. By genuinely expanding the alternatives, it may make some price differences harder to sustain. This is a material countervailing economic mechanism, whose size remains to be measured.
 
