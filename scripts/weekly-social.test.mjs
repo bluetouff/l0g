@@ -112,8 +112,8 @@ test('l’OG de la dernière édition est déterministe, en 1200×630 et assez l
   assert.equal(metadata.width, 1200);
   assert.equal(metadata.height, 630);
   assert.ok(first.length < 700_000, `carte trop lourde : ${first.length} octets`);
-  // A quiet dark green field replaces the light panel; the magazine serif
-  // and masthead distinguish it from the terminal-style analysis cards.
+  // The charcoal field remains subdued; its masthead, issue and date
+  // distinguish the weekly collection from analysis cards.
   const { data, info } = await sharp(first).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const offset = (20 * info.width + 20) * info.channels;
   assert.ok(data[offset] < 70 && data[offset + 1] < 70 && data[offset + 2] < 70);

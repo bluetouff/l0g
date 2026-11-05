@@ -1,48 +1,44 @@
-import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
-import { OG, h } from './og-kit.mjs';
+import { OG, h, fonts } from './og-kit.mjs';
 import { readWeeklyIllustration } from '../src/lib/weekly-social.ts';
 
-export const weeklyFonts = [
-  { name: 'Instrument Serif', data: readFileSync(new URL('../public/fonts/hebdo/InstrumentSerif-Regular.ttf', import.meta.url)), weight: 400, style: 'normal' },
-  { name: 'Weekly Sans', data: readFileSync(new URL('../public/fonts/usdc-borders/liberation-sans-400.ttf', import.meta.url)), weight: 400, style: 'normal' },
-];
-const paper = '#e2e7df';
-const muted = '#a5b8ae';
+export const weeklyFonts = fonts.filter(({ weight }) => weight === 400);
+const paper = '#e7e9ee';
+const muted = '#a8adb8';
 
 function titleFontSize(title) {
-  return title.length <= 62 ? 54 : title.length <= 90 ? 49 : title.length <= 140 ? 42 : title.length <= 220 ? 36 : 28;
+  return title.length <= 62 ? 40 : title.length <= 90 ? 36 : title.length <= 140 ? 32 : 28;
 }
 
 export function weeklyCoverCard(card, artwork, titleSize = titleFontSize(card.title)) {
   return h('div', {
     position: 'relative', display: 'flex', width: OG.width, height: OG.height,
-    backgroundColor: '#13231f', backgroundImage: 'linear-gradient(125deg, #1b302c 0%, #13231f 55%, #101a19 100%)',
-    color: paper, fontFamily: 'Weekly Sans', fontWeight: 400,
+    backgroundColor: '#101217', backgroundImage: 'radial-gradient(ellipse at 0% 0%, rgba(94, 234, 212, .10), transparent 65%), radial-gradient(ellipse at 100% 100%, rgba(255, 77, 135, .09), transparent 65%)',
+    color: paper, fontFamily: 'JetBrains Mono', fontWeight: 400,
   },
   artwork ? { type: 'img', props: { src: artwork, width: 540, height: 630, style: { position: 'absolute', left: 660, top: 0 } } }
-    : h('div', { position: 'absolute', left: 660, top: 0, width: 540, height: 630, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Instrument Serif', fontSize: 250, color: '#8eac9a' }, card.issueLabel.slice(3)),
+    : h('div', { position: 'absolute', left: 660, top: 0, width: 540, height: 630, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'JetBrains Mono', fontSize: 250, color: '#a9bdc7' }, card.issueLabel.slice(3)),
   h('div', { position: 'absolute', display: 'flex', alignItems: 'center', left: 52, top: 38, height: 28 },
     h('div', { fontSize: 25, letterSpacing: '-1px', marginRight: 18 }, 'l0g'),
-    h('div', { height: 16, width: 1, backgroundColor: '#91b3a34d', marginRight: 18 }),
+    h('div', { height: 16, width: 1, backgroundColor: '#a8becf4d', marginRight: 18 }),
     h('div', { fontSize: 13, letterSpacing: '2px', color: muted }, 'LA REVUE DE LA SEMAINE'),
   ),
-  h('div', { position: 'absolute', display: 'flex', left: 48, top: 82, width: 550, fontFamily: 'Instrument Serif', fontSize: 124, lineHeight: 1, letterSpacing: '-3px' },
-    h('span', {}, 'L’Hebdo'), h('span', { color: '#a5c9b8' }, '.'),
+  h('div', { position: 'absolute', display: 'flex', left: 48, top: 82, width: 550, fontFamily: 'JetBrains Mono', fontSize: 96, lineHeight: 1, letterSpacing: '-3px' },
+    h('span', {}, 'L’Hebdo'), h('span', { color: '#5eead4' }, '.'),
   ),
   h('div', { position: 'absolute', display: 'flex', alignItems: 'center', left: 53, top: 225, height: 24, fontSize: 17, color: muted },
     h('div', { letterSpacing: '1px' }, card.issueLabel),
-    h('div', { height: 1, width: 24, backgroundColor: '#91b3a34d', marginLeft: 16, marginRight: 16 }),
+    h('div', { height: 1, width: 24, backgroundColor: '#a8becf4d', marginLeft: 16, marginRight: 16 }),
     h('div', { letterSpacing: '.3px' }, card.dateLabel),
   ),
-  h('div', { position: 'absolute', left: 53, top: 272, width: 548, height: 1, backgroundColor: '#91b3a34d' }),
-  h('div', { position: 'absolute', display: 'flex', left: 52, top: 303, width: 550, fontFamily: 'Instrument Serif', fontSize: titleSize, lineHeight: 1.07, letterSpacing: '-.3px', overflowWrap: 'anywhere' }, card.title),
+  h('div', { position: 'absolute', left: 53, top: 272, width: 548, height: 1, backgroundColor: '#a8becf4d' }),
+  h('div', { position: 'absolute', display: 'flex', left: 52, top: 303, width: 550, fontFamily: 'JetBrains Mono', fontSize: titleSize, lineHeight: 1.2, letterSpacing: '-.3px', overflowWrap: 'anywhere' }, card.title),
   h('div', { position: 'absolute', display: 'flex', left: 53, top: 578, fontSize: 16, color: muted }, 'l0g.fr / hebdo'),
   h('div', { position: 'absolute', display: 'flex', left: 302, top: 580, fontSize: 12, letterSpacing: '1.6px', color: muted }, 'CHAQUE DIMANCHE'),
-  h('div', { position: 'absolute', left: 660, top: 592, width: 540, height: 38, display: 'flex', alignItems: 'center', paddingLeft: 24, color: '#c2d7ca', backgroundColor: '#17312b', fontSize: 12, letterSpacing: '1.6px' }, 'MACRO · FINANCE · POUVOIRS'),
+  h('div', { position: 'absolute', left: 660, top: 592, width: 540, height: 38, display: 'flex', alignItems: 'center', paddingLeft: 24, color: '#c9d6e1', backgroundColor: '#171a20', fontSize: 12, letterSpacing: '1.6px' }, 'MACRO · FINANCE · POUVOIRS'),
   );
 }
 

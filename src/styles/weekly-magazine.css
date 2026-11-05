@@ -1,31 +1,23 @@
-@font-face {
-  font-family: 'Instrument Serif';
-  src: url('/fonts/hebdo/InstrumentSerif-Regular.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
 .weekly-magazine {
-  --mag-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-  --mag-ink: #173f36;
-  --mag-cream: #f3f0e7;
-  --mag-leaf: #c4ddbe;
-  --mag-cover: linear-gradient(125deg, #1b302c 0%, #13231f 55%, #101a19 100%);
-  --mag-cover-text: #e2e7df;
-  --mag-cover-muted: #a5b8ae;
+  --mag-title: var(--font-display);
+  --mag-ink: #121419;
+  --mag-leaf: #a9bdc7;
+  --mag-cover: radial-gradient(ellipse at 0% 0%, rgba(94, 234, 212, .10), transparent 65%), radial-gradient(ellipse at 100% 100%, rgba(255, 77, 135, .09), transparent 65%), #101217;
+  --mag-cover-text: #e7e9ee;
+  --mag-cover-muted: #a8adb8;
   max-width: 72rem;
   margin: 0 auto;
   font-family: var(--font-read);
 }
 .weekly-magazine :is(a, summary, button):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 5px; }
+.weekly-magazine :is(h1, h2, h3, h4, .issue-navigation strong) { overflow-wrap: anywhere; }
 .weekly-magazine a { transition: color .18s ease; }
 .weekly-magazine a:hover { color: var(--color-signal); }
 .weekly-magazine .magazine-eyebrow { font-family: var(--font-read); font-size: .65rem; line-height: 1.6; letter-spacing: .14em; text-transform: uppercase; }
 .weekly-magazine .magazine-masthead { padding-top: .75rem; }
 .weekly-magazine .magazine-kicker { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; color: var(--color-muted); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
 .weekly-magazine .magazine-brand-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .6rem 0 1rem; }
-.weekly-magazine .magazine-brand { --page-heading-size: clamp(4rem, 10vw, 8rem); --page-title-size: var(--page-heading-size); display: block; margin: 0; color: var(--color-paper); font-family: var(--mag-serif); font-size: clamp(4rem, 10vw, 8rem); font-weight: 400; letter-spacing: -.055em; line-height: 1; }
+.weekly-magazine .magazine-brand { --page-heading-size: clamp(2.8rem, 7.5vw, 5.5rem); --page-title-size: var(--page-heading-size); display: block; margin: 0; color: var(--color-paper); font-family: var(--mag-title); font-size: clamp(2.8rem, 7.5vw, 5.5rem); font-weight: 400; letter-spacing: -.065em; line-height: 1.15; }
 .weekly-magazine .magazine-brand span { color: var(--color-signal); }
 .weekly-magazine .magazine-brand-row > p { color: var(--color-paper); font-size: .8rem; line-height: 1.8; }
 .weekly-magazine .magazine-brand-row em { font-style: normal; color: var(--color-muted); }
@@ -38,37 +30,37 @@
 .weekly-magazine .issue-coordinate { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.2rem; margin-bottom: .9rem; color: var(--color-muted); font-size: .65rem; }
 .weekly-magazine .issue-number { color: var(--color-signal); letter-spacing: .08em; }
 .weekly-magazine .review-date { margin-left: auto; }
-.weekly-magazine .issue-cover { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); background: var(--mag-cover); color: var(--mag-cover-text); }
+.weekly-magazine .issue-cover { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); background: var(--mag-cover); color: var(--mag-cover-text); border: 1px solid rgba(180, 196, 214, .18); border-radius: var(--radius-panel); overflow: hidden; }
 .weekly-magazine .issue-opening { display: flex; flex-direction: column; align-items: start; padding: clamp(1.3rem, 3vw, 2.5rem); min-width: 0; }
 .weekly-magazine .issue-opening .magazine-eyebrow { color: var(--mag-cover-muted); }
 .weekly-magazine .issue-opening .magazine-eyebrow span { margin: 0 .5rem; }
-.weekly-magazine .issue-opening :is(h1, h2) { --page-heading-size: clamp(2.2rem, 3.8vw, 3.4rem); --page-title-size: var(--page-heading-size); margin: 1rem 0 0; font-family: var(--mag-serif); font-size: clamp(2.2rem, 3.8vw, 3.4rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.02; text-wrap: balance; overflow-wrap: anywhere; }
+.weekly-magazine .issue-opening :is(h1, h2) { --page-heading-size: clamp(1.6rem, 2.5vw, 2.3rem); --page-title-size: var(--page-heading-size); margin: 1rem 0 0; font-family: var(--mag-title); font-size: clamp(1.6rem, 2.5vw, 2.3rem); font-weight: 400; letter-spacing: -.035em; line-height: 1.25; text-wrap: balance; overflow-wrap: anywhere; }
 .weekly-magazine .issue-lead { margin: 1.2rem 0 1.5rem; color: var(--mag-cover-muted); font-size: .85rem; line-height: 1.75; }
-.weekly-magazine .cover-read { display: inline-flex; align-items: center; gap: 1.5rem; margin-top: auto; padding: .6rem 0; border-bottom: 1px solid #91b3a34d; color: #c2d7ca; font-size: .72rem; }
-.weekly-magazine .issue-opening a:hover { color: #e2e7df; }
-.weekly-magazine .issue-opening a:focus-visible { outline-color: #a5c9b8; }
+.weekly-magazine .cover-read { display: inline-flex; align-items: center; gap: 1.5rem; margin-top: auto; padding: .6rem 0; border-bottom: 1px solid rgba(168, 190, 207, .3); color: #c9d6e1; font-size: .72rem; }
+.weekly-magazine .issue-opening a:hover { color: #e7e9ee; }
+.weekly-magazine .issue-opening a:focus-visible { outline-color: #5eead4; }
 .weekly-magazine .cover-read span { font-size: 1.3rem; }
-.weekly-magazine .cover-image { display: flex; flex-direction: column; min-width: 0; margin: 0; background: #101b19; }
+.weekly-magazine .cover-image { display: flex; flex-direction: column; min-width: 0; margin: 0; background: #101217; }
 .weekly-magazine .cover-image img { width: 100%; height: 100%; min-height: 20rem; flex: 1; aspect-ratio: 1.12; object-fit: cover; }
-.weekly-magazine .cover-image figcaption { display: flex; justify-content: space-between; gap: 1rem; padding: .75rem 1rem; background: var(--mag-ink); color: #f3f0e7; font-size: .6rem; }
-.weekly-magazine .cover-image figcaption > span { color: #c4ddbe; }
-.weekly-magazine .cover-image a:hover { color: #c4ddbe; }
+.weekly-magazine .cover-image figcaption { display: flex; justify-content: space-between; gap: 1rem; padding: .75rem 1rem; background: var(--mag-ink); color: #e7e9ee; font-size: .6rem; }
+.weekly-magazine .cover-image figcaption > span { color: #a8adb8; }
+.weekly-magazine .cover-image a:hover { color: #a8adb8; }
 .weekly-magazine .cover-typography { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 2rem; color: var(--mag-leaf); background: var(--mag-ink); }
 .weekly-magazine .cover-typography span:first-child { font-family: var(--font-mono); font-size: 1rem; }
-.weekly-magazine .cover-typography span:nth-child(2) { font-family: var(--mag-serif); font-size: clamp(6rem, 20vw, 14rem); line-height: 1; }
+.weekly-magazine .cover-typography span:nth-child(2) { font-family: var(--mag-title); font-size: clamp(6rem, 20vw, 14rem); line-height: 1; }
 .weekly-magazine .cover-typography span:last-child { font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
 .weekly-magazine .issue-contents { display: grid; grid-template-columns: auto repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--color-line-strong); padding: 1.3rem 0; gap: 1.2rem; }
-.weekly-magazine .issue-contents > p { align-self: center; color: var(--color-muted); font-family: var(--mag-serif); font-size: 1.05rem; }
+.weekly-magazine .issue-contents > p { align-self: center; color: var(--color-muted); font-family: var(--mag-title); font-size: 1.05rem; }
 .weekly-magazine .issue-contents a { display: flex; align-items: center; gap: .65rem; border-left: 1px solid var(--color-line); padding-left: 1.2rem; font-size: .7rem; line-height: 1.5; }
-.weekly-magazine .issue-contents a > span:first-child { color: var(--color-signal); font-family: var(--mag-serif); font-size: 1.6rem; }
+.weekly-magazine .issue-contents a > span:first-child { color: var(--color-signal); font-family: var(--mag-title); font-size: 1.6rem; }
 .weekly-magazine .issue-contents b { margin-left: auto; color: var(--color-muted); font-weight: 400; }
 .weekly-magazine .editor-note { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 2rem; margin: 2.5rem 0; border-bottom: 1px solid var(--color-line); padding: 0 0 2rem; }
-.weekly-magazine .editor-note :is(h2, h3) { font-family: var(--mag-serif); font-size: 1.5rem; font-weight: 400; color: var(--color-signal); }
+.weekly-magazine .editor-note :is(h2, h3) { font-family: var(--mag-title); font-size: 1.5rem; font-weight: 400; color: var(--color-signal); }
 .weekly-magazine .editor-note p { max-width: 44rem; font-size: .9rem; line-height: 1.85; }
 .weekly-magazine .editor-note p + p { margin-top: 1rem; }
 .weekly-magazine .issue-body { margin-top: 3rem; }
 .weekly-magazine .section-line { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-line-strong); }
-.weekly-magazine .section-line :is(h2, h3) { color: var(--color-paper); font-family: var(--mag-serif); font-size: clamp(1.75rem, 3vw, 2.3rem); font-weight: 400; letter-spacing: -.02em; }
+.weekly-magazine .section-line :is(h2, h3) { color: var(--color-paper); font-family: var(--mag-title); font-size: clamp(1.75rem, 3vw, 2.3rem); font-weight: 400; letter-spacing: -.02em; }
 .weekly-magazine .section-line > span { color: var(--color-muted); font-size: .6rem; white-space: nowrap; }
 .weekly-magazine .reading-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.25rem 1.75rem; margin-top: 1.75rem; }
 .weekly-magazine .reading-note { min-width: 0; scroll-margin-top: 1.5rem; }
@@ -77,8 +69,8 @@
 .weekly-magazine .reading-image:hover img { transform: scale(1.025); }
 .weekly-magazine .reading-copy { padding-top: 1rem; }
 .weekly-magazine .reading-meta { display: flex; align-items: baseline; gap: .65rem; color: var(--color-muted); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; }
-.weekly-magazine .reading-meta > span { font-family: var(--mag-serif); font-size: 1.5rem; line-height: 1; color: var(--color-signal); }
-.weekly-magazine .reading-note :is(h3, h4) { margin: .65rem 0 0; color: var(--color-paper); font-family: var(--mag-serif); font-size: 1.8rem; font-weight: 400; line-height: 1.08; letter-spacing: -.01em; text-wrap: balance; }
+.weekly-magazine .reading-meta > span { font-family: var(--mag-title); font-size: 1.5rem; line-height: 1; color: var(--color-signal); }
+.weekly-magazine .reading-note :is(h3, h4) { margin: .65rem 0 0; color: var(--color-paper); font-family: var(--mag-title); font-size: 1.2rem; font-weight: 400; line-height: 1.4; letter-spacing: -.01em; text-wrap: balance; }
 .weekly-magazine .reading-fact, .weekly-magazine .reading-importance { margin-top: .85rem; font-size: .9rem; line-height: 1.8; }
 .weekly-magazine .reading-fact { color: var(--color-paper); }
 .weekly-magazine .reading-limit { margin-top: 1rem; border-top: 1px solid var(--color-line); padding-top: .75rem; color: var(--color-muted); font-size: .73rem; line-height: 1.75; }
@@ -89,20 +81,20 @@
 .weekly-magazine .reading-source { color: var(--color-muted); font-size: .6rem; line-height: 1.6; }
 .weekly-magazine .reading-feature { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; border-bottom: 1px solid var(--color-line); padding-bottom: 2rem; }
 .weekly-magazine .reading-feature .reading-copy { padding-top: 0; }
-.weekly-magazine .reading-feature :is(h3, h4) { font-size: clamp(2rem, 3vw, 2.6rem); }
+.weekly-magazine .reading-feature :is(h3, h4) { font-size: clamp(1.4rem, 2.2vw, 1.9rem); }
 .weekly-magazine .reading-feature:not(:has(.reading-image)) { display: block; max-width: 44rem; }
 .weekly-magazine .issue-watch { margin-top: 2.5rem; border-top: 1px solid var(--color-line-strong); padding-top: 1.5rem; }
 .weekly-magazine .issue-watch > .mono-label { color: var(--color-amber); font-size: .6rem; }
-.weekly-magazine .issue-watch > :is(h2, h3) { margin-top: .5rem; font-family: var(--mag-serif); font-size: 2rem; font-weight: 400; }
+.weekly-magazine .issue-watch > :is(h2, h3) { margin-top: .5rem; font-family: var(--mag-title); font-size: 2rem; font-weight: 400; }
 .weekly-magazine .watch-intro { margin-top: .5rem; color: var(--color-muted); font-size: .8rem; }
 .weekly-magazine .issue-watch ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin: 1.5rem 0; padding: 0; list-style: none; }
 .weekly-magazine .issue-watch li { border-top: 1px solid var(--color-line); padding-top: 1rem; }
-.weekly-magazine .issue-watch li :is(h3, h4) { font-family: var(--mag-serif); font-size: 1.45rem; line-height: 1.2; font-weight: 400; }
+.weekly-magazine .issue-watch li :is(h3, h4) { font-family: var(--mag-title); font-size: 1.45rem; line-height: 1.2; font-weight: 400; }
 .weekly-magazine .issue-watch li p { margin-top: .65rem; font-size: .8rem; line-height: 1.8; color: var(--color-muted); }
 .weekly-magazine .watch-more { color: var(--color-signal); font-size: .65rem; }
 .weekly-magazine .issue-takeaway { margin: 3rem 0; padding: 2rem 0; border-top: 1px solid var(--color-line-strong); border-bottom: 1px solid var(--color-line-strong); }
 .weekly-magazine .issue-takeaway .mono-label { color: var(--color-signal); font-size: .6rem; }
-.weekly-magazine .issue-takeaway > p:last-child { max-width: 48rem; margin-top: .75rem; font-family: var(--mag-serif); font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.2; color: var(--color-paper); }
+.weekly-magazine .issue-takeaway > p:last-child { max-width: 48rem; margin-top: .75rem; font-family: var(--mag-title); font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.2; color: var(--color-paper); }
 .weekly-magazine .issue-documentation, .weekly-magazine .issue-formats { margin-top: 1rem; border-top: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); }
 .weekly-magazine :is(.issue-documentation, .issue-formats) > summary { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .65rem; padding: 1rem 0; cursor: pointer; color: var(--color-paper); font-size: .75rem; }
 .weekly-magazine summary small { color: var(--color-muted); font-size: .6rem; }
@@ -127,13 +119,13 @@
 .weekly-magazine .edition-permalink { margin-top: 1rem; color: var(--color-muted); font-size: .65rem; }
 .weekly-magazine .watch-boundary { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; margin-top: 3rem; border-left: 2px solid var(--color-signal); padding: 1rem 1.5rem; background: var(--surface-inset); }
 .weekly-magazine .watch-boundary .magazine-eyebrow { color: var(--color-signal); }
-.weekly-magazine .watch-boundary h2 { margin-top: .35rem; font-family: var(--mag-serif); font-size: 1.7rem; font-weight: 400; }
+.weekly-magazine .watch-boundary h2 { margin-top: .35rem; font-family: var(--mag-title); font-size: 1.7rem; font-weight: 400; }
 .weekly-magazine .watch-boundary p:not(.magazine-eyebrow) { max-width: 36rem; margin-top: .5rem; color: var(--color-muted); font-size: .8rem; line-height: 1.7; }
 .weekly-magazine .watch-boundary > a { color: var(--color-signal); font-size: .7rem; }
 .weekly-magazine .weekly-archive { margin-top: 4rem; scroll-margin-top: 1.5rem; }
 .weekly-magazine .archive-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; }
 .weekly-magazine .archive-head .magazine-eyebrow { color: var(--color-signal); }
-.weekly-magazine .archive-head h2 { margin-top: .5rem; font-family: var(--mag-serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; letter-spacing: -.02em; }
+.weekly-magazine .archive-head h2 { margin-top: .5rem; font-family: var(--mag-title); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; letter-spacing: -.02em; }
 .weekly-magazine .archive-head > p { color: var(--color-muted); font-size: .75rem; }
 .weekly-magazine .archive-year { margin-top: 2rem; }
 .weekly-magazine .archive-year h3 { display: flex; align-items: baseline; justify-content: space-between; border-top: 1px solid var(--color-line-strong); padding-top: .75rem; gap: 1rem; font-size: 1rem; font-weight: 400; }
@@ -144,11 +136,11 @@
 .weekly-magazine .archive-art { position: relative; overflow: hidden; background: var(--mag-ink); }
 .weekly-magazine .archive-art img { display: block; width: 100%; height: auto; aspect-ratio: 1.8; object-fit: cover; transition: transform .35s ease; }
 .weekly-magazine .archive-card:hover img { transform: scale(1.035); }
-.weekly-magazine .archive-number { position: absolute; bottom: 0; left: 0; padding: .4rem .8rem; color: #c2d7ca; background: #17312b; font-size: .65rem; letter-spacing: .08em; }
-.weekly-magazine .archive-monogram { display: grid; place-items: center; aspect-ratio: 1.8; color: var(--mag-leaf); font-family: var(--mag-serif); font-size: 4rem; }
+.weekly-magazine .archive-number { position: absolute; bottom: 0; left: 0; padding: .4rem .8rem; color: #c9d6e1; background: #171a20; font-size: .65rem; letter-spacing: .08em; }
+.weekly-magazine .archive-monogram { display: grid; place-items: center; aspect-ratio: 1.8; color: var(--mag-leaf); font-family: var(--mag-title); font-size: 4rem; }
 .weekly-magazine .archive-caption { padding: 1.2rem; }
 .weekly-magazine .archive-caption time { color: var(--color-muted); font-size: .6rem; }
-.weekly-magazine .archive-caption h4 { margin-top: .6rem; color: var(--color-paper); font-family: var(--mag-serif); font-size: 1.6rem; line-height: 1.12; font-weight: 400; }
+.weekly-magazine .archive-caption h4 { margin-top: .6rem; color: var(--color-paper); font-family: var(--mag-title); font-size: 1.1rem; line-height: 1.45; font-weight: 400; }
 .weekly-magazine .archive-open { display: inline-block; margin-top: 1rem; color: var(--color-signal); font-size: .65rem; }
 .weekly-magazine .archive-open span { margin-left: .5rem; }
 .weekly-magazine .back { display: inline-block; margin-top: 1.5rem; color: var(--color-signal); font-size: .65rem; }
@@ -156,7 +148,7 @@
 .weekly-magazine .issue-navigation > a:not(.all) { display: grid; align-content: start; gap: .65rem; }
 .weekly-magazine .issue-navigation > a:last-child { text-align: right; }
 .weekly-magazine .issue-navigation span { color: var(--color-muted); font-size: .6rem; text-transform: uppercase; letter-spacing: .1em; }
-.weekly-magazine .issue-navigation strong { color: var(--color-paper); font-family: var(--mag-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; }
+.weekly-magazine .issue-navigation strong { color: var(--color-paper); font-family: var(--mag-title); font-size: 1.1rem; font-weight: 400; line-height: 1.5; }
 .weekly-magazine .issue-navigation .all { align-self: center; color: var(--color-signal); font-size: .65rem; }
 
 @media (max-width: 850px) {
@@ -181,7 +173,7 @@
   .weekly-magazine .cover-image img { min-height: 0; height: auto; aspect-ratio: 1.8; }
   .weekly-magazine .cover-image figcaption { padding: .5rem .8rem; font-size: .55rem; }
   .weekly-magazine .issue-opening { padding: 1.5rem; }
-  .weekly-magazine .issue-opening :is(h1, h2) { --page-heading-size: clamp(2rem, 8.5vw, 3rem); font-size: var(--page-heading-size); }
+  .weekly-magazine .issue-opening :is(h1, h2) { --page-heading-size: clamp(1.45rem, 6vw, 1.9rem); font-size: var(--page-heading-size); }
   .weekly-magazine .issue-lead { font-size: .8rem; }
   .weekly-magazine .issue-contents { padding: 1rem 0; }
   .weekly-magazine .issue-contents a { font-size: .65rem; }
@@ -190,13 +182,13 @@
   .weekly-magazine .reading-grid { grid-template-columns: 1fr; }
   .weekly-magazine .reading-feature { grid-template-columns: 1fr; gap: 1rem; }
   .weekly-magazine .reading-note { padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-line); }
-  .weekly-magazine .reading-note :is(h3, h4) { font-size: 2rem; }
+  .weekly-magazine .reading-note :is(h3, h4) { font-size: 1.35rem; }
   .weekly-magazine .reading-fact, .weekly-magazine .reading-importance { font-size: .88rem; }
   .weekly-magazine .reading-limit { font-size: .78rem; }
   .weekly-magazine .section-line { gap: .65rem; }
   .weekly-magazine .archive-grid { gap: 1.5rem .85rem; }
   .weekly-magazine .archive-caption { padding: .85rem; }
-  .weekly-magazine .archive-caption h4 { font-size: 1.4rem; }
+  .weekly-magazine .archive-caption h4 { font-size: 1.05rem; }
   .weekly-magazine .archive-open { font-size: .6rem; }
   .weekly-magazine .issue-navigation { grid-template-columns: 1fr; }
   .weekly-magazine .issue-navigation > a:last-child { text-align: left; }

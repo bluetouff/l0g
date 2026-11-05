@@ -6,7 +6,7 @@ import type { WeeklyEdition } from '../config/weekly-editions.ts';
 
 // Bump when the artwork or card composition changes so social crawlers receive
 // a new URL, including for an edition they have already cached.
-export const WEEKLY_SOCIAL_VERSION = 'magazine-night-v2';
+export const WEEKLY_SOCIAL_VERSION = 'magazine-tech-v3';
 
 const dateFormatter = new Intl.DateTimeFormat('fr-FR', {
   day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris',
