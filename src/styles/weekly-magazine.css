@@ -17,8 +17,12 @@
 .weekly-magazine .magazine-masthead { padding-top: .75rem; }
 .weekly-magazine .magazine-kicker { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; color: var(--color-muted); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
 .weekly-magazine .magazine-brand-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .6rem 0 1rem; }
-.weekly-magazine .magazine-brand { --page-heading-size: clamp(2.8rem, 7.5vw, 5.5rem); --page-title-size: var(--page-heading-size); display: block; margin: 0; color: var(--color-paper); font-family: var(--mag-title); font-size: clamp(2.8rem, 7.5vw, 5.5rem); font-weight: 400; letter-spacing: -.065em; line-height: 1.15; }
-.weekly-magazine .magazine-brand span { color: var(--color-signal); }
+.weekly-magazine .magazine-brand { --page-heading-size: clamp(1.8rem, 4vw, 3rem); --page-title-size: var(--page-heading-size); display: block; margin: 0; color: var(--color-paper); font-family: var(--mag-title); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 400; letter-spacing: -.065em; line-height: 1.15; }
+.weekly-magazine .magazine-brand-lockup { display: flex; align-items: center; gap: .7rem; min-width: 0; }
+.weekly-magazine .magazine-brand-icon { width: 1.15rem; height: auto; flex: 0 0 1.15rem; color: var(--color-signal); }
+.weekly-magazine .magazine-icon-accent { stroke: var(--color-accent); }
+.weekly-magazine .magazine-apostrophe { color: var(--color-accent); }
+.weekly-magazine .magazine-stop { color: var(--color-signal); }
 .weekly-magazine .magazine-brand-row > p { color: var(--color-paper); font-size: .8rem; line-height: 1.8; }
 .weekly-magazine .magazine-brand-row em { font-style: normal; color: var(--color-muted); }
 .weekly-magazine .magazine-toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .65rem 1rem; border-top: 1px solid var(--color-line-strong); border-bottom: 1px solid var(--color-line-strong); padding: .7rem 0; color: var(--color-muted); font-size: .63rem; }

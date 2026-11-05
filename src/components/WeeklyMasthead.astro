@@ -7,7 +7,14 @@ const { home = false } = Astro.props;
 <header class="magazine-masthead">
   <div class="magazine-kicker"><span>La revue de la semaine</span><span>Macro · Finance · Pouvoirs</span></div>
   <div class="magazine-brand-row">
-    {home ? <h1 class="magazine-brand">L’Hebdo<span>.</span></h1> : <a class="magazine-brand" href="/hebdo/" aria-label="L’Hebdo l0g, toutes les éditions">L’Hebdo<span>.</span></a>}
+    <div class="magazine-brand-lockup">
+      <svg class="magazine-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <rect x="4" y="3" width="16" height="18" rx="2" />
+        <path d="M8 7h8M12 11h4m-4 3h4M8 18h8" />
+        <path class="magazine-icon-accent" d="M8 11v3" />
+      </svg>
+      {home ? <h1 class="magazine-brand">L<span class="magazine-apostrophe">’</span>Hebdo<span class="magazine-stop">.</span></h1> : <a class="magazine-brand" href="/hebdo/" aria-label="L’Hebdo l0g, toutes les éditions">L<span class="magazine-apostrophe">’</span>Hebdo<span class="magazine-stop">.</span></a>}
+    </div>
     <p>Prendre le temps.<br /><em>Lire les mécanismes.</em></p>
   </div>
   <nav class="magazine-toolbar" aria-label="Suivre l’Hebdo">
