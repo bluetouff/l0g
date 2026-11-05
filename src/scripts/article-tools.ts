@@ -150,7 +150,7 @@ if (root && body) {
   if (supportsDialog) {
     const figures = new Set<Element>();
     for (const svg of body.querySelectorAll<SVGSVGElement>('svg[viewBox]')) {
-      if (svg.closest('svg svg') || svg.getAttribute('aria-hidden') === 'true' || svg.viewBox.baseVal.width < 200) continue;
+      if (svg.closest('svg svg, [data-interactive-figure]') || svg.getAttribute('aria-hidden') === 'true' || svg.viewBox.baseVal.width < 200) continue;
       const figure = svg.closest('figure') || svg;
       if (figures.has(figure)) continue;
       figures.add(figure);

@@ -18,12 +18,15 @@ ogTitle: "Airfares and AI agents: the signals behind the price"
 ---
 
 import AirfareAgentsFigure from "../../components/AirfareAgentsFigure.astro";
+import AirfareBotLab from "../../components/AirfareBotLab.astro";
 
 A traveller needs a return flight, a checked bag and an arrival before dinner. Their AI agent tries different departure times, moves the trip by a day, checks a nearby airport and repeats the exercise across several distributors. At the end of the search there is still one person, one trip and, perhaps, one booking. In the systems processing those requests, the activity may look much larger.
 
 This is a hypothetical scene. The economic problem is already worth examining: **flight-search data are used to inform some commercial decisions and demand forecasts.** When the way people search changes, the meaning of the data can change too. An airline that misreads that shift could protect too many seats for future customers who never arrive. A distributor could face a much larger computing bill for each ticket it sells.
 
 Several channels need to be separated. Shopping requests consume computing resources and can inform demand forecasts. More requests from the same traveller can change the meaning of those signals. **The causal effect of AI agents on fares remains to be measured** in the public sources reviewed through **5 November 2026**. The mechanisms below distinguish computing costs, possible forecasting errors and better comparison for the customer.
+
+The [interactive simulator](#airfare-bot-lab-en) lets you adjust search activity, filtering and temporary inventory holds.
 
 ## Pricing a seat against tomorrow’s passenger
 
@@ -64,6 +67,12 @@ The scenario keeps purchases fixed and changes only search intensity. It exposes
 The fare outcome depends on processing. A model placing substantial weight on raw volume could overestimate demand. Another might read weaker conversion as a lack of appeal. A recalibrated system could group repetitions and identify meaningful alternatives more accurately. The direction can therefore change with the data and decision rules.
 
 The software-security foundation OWASP calls intentional automated manipulation of metrics *skewing*. That threat supplies a technical comparison. Unintentional noise from a legitimate shopping assistant remains a separate analytical hypothesis in this investigation. <sup className="source-ref"><a href="#source-07" aria-label="Source 7">7</a></sup>
+
+## Explore requests and the offer decision
+
+This laboratory makes the mechanisms adjustable: purchases stay fixed as search requests multiply. The relationship between request volume and the probability of a later sale is a teaching convention, with no airline calibration. The inventory scenario adds an action beyond searching, then shows availability returning when holds expire. The Air Europa reference comes from an official fare page consulted through an indexed copy; it is not a guaranteed live quote.
+
+<AirfareBotLab lang="en" />
 
 ## The first bill is for computing
 

@@ -4,6 +4,32 @@ import type { AnalysisTool } from './analysis-tools.ts';
 // component anchors and keeps their scenario assumptions in the source article.
 export const embeddedAnalysisTools: AnalysisTool[] = [
   {
+    "id": "airfare-bots-article",
+    "status": "active",
+    "category": "economics",
+    "updatedAt": "2026-11-05",
+    "placement": "article",
+    "embeddedComponent": "AirfareBotLab",
+    "fr": {
+      "title": "Les bots, le signal et le billet",
+      "eyebrow": "économie et coûts",
+      "question": "Comment les requêtes et les retenues de places peuvent-elles modifier une offre ?",
+      "description": "Animer les recherches, filtrer les répétitions et suivre les disponibilités dans des scénarios tarifaires entièrement fictifs.",
+      "href": "/posts/billets-avion-agents-ia-signal-demande/#airfare-bot-lab-fr",
+      "articleHref": "/posts/billets-avion-agents-ia-signal-demande/",
+      "articleLabel": "Lire l’analyse et ses sources"
+    },
+    "en": {
+      "title": "Bots, signals and the fare",
+      "eyebrow": "economics and costs",
+      "question": "How can search requests and temporary inventory holds change an offer?",
+      "description": "Animate searches, filter repeated requests and track availability in entirely fictional pricing scenarios.",
+      "href": "/en/analysis/airfares-ai-agents-demand-signals/#airfare-bot-lab-en",
+      "articleHref": "/en/analysis/airfares-ai-agents-demand-signals/",
+      "articleLabel": "Read the analysis and sources"
+    }
+  },
+  {
     "id": "asmlproductivity-article",
     "status": "active",
     "category": "markets",

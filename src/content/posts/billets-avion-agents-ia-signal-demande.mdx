@@ -16,12 +16,15 @@ ogTitle: "Billets d’avion : les agents IA peuvent-ils fausser les prix ?"
 ---
 
 import AirfareAgentsFigure from "../../components/AirfareAgentsFigure.astro";
+import AirfareBotLab from "../../components/AirfareBotLab.astro";
 
 Un voyageur cherche un aller-retour, avec un bagage et une arrivée avant le dîner. Son agent d’intelligence artificielle explore d’autres horaires, décale le départ, essaie un aéroport voisin, recommence chez plusieurs distributeurs. Au bout de cette exploration, il reste une personne, un déplacement et, peut-être, une réservation. Dans les journaux informatiques, l’activité peut avoir pris une tout autre ampleur.
 
 Cette scène est hypothétique. Le problème économique qu’elle soulève mérite pourtant d’être pris au sérieux : **les recherches de vols servent déjà à éclairer certaines décisions commerciales et prévisions de demande.** Quand la manière de chercher change, la signification du signal peut changer avec elle. Une compagnie qui interpréterait mal cette transformation pourrait conserver trop de sièges pour une clientèle future surestimée. Un intermédiaire pourrait, de son côté, supporter beaucoup plus de calcul pour chaque billet vendu.
 
 Le risque se situe à plusieurs endroits. Les recherches mobilisent de la puissance informatique et peuvent fournir des informations aux prévisionnistes. Leur multiplication par un même voyageur change la lecture de ces signaux. **L’effet causal des agents sur les tarifs reste à mesurer** dans les sources publiques examinées au **5 novembre 2026**. Les mécanismes qui suivent permettent de distinguer la facture technique, les erreurs possibles de prévision et les gains de comparaison pour le client.
+
+Le [simulateur interactif](#airfare-bot-lab-fr) permet de faire varier les requêtes, le filtrage et les retenues de places.
 
 ## Le passager futur entre dans le prix du siège
 
@@ -62,6 +65,12 @@ Le scénario garde les achats identiques et modifie seulement l’intensité des
 Le résultat tarifaire dépend du traitement appliqué. Un modèle donnant beaucoup de poids au volume brut pourrait surestimer la demande. Un autre pourrait lire la chute des conversions comme un manque d’attractivité. Un système recalibré pourrait regrouper les répétitions et mieux identifier les alternatives pertinentes. L’effet peut donc changer de sens selon les données et les règles du modèle.
 
 La fondation de sécurité informatique OWASP nomme *skewing* la manipulation automatisée et intentionnelle de métriques. Cette menace constitue un point de comparaison technique. Le bruit involontaire d’un assistant qui cherche pour son utilisateur relève ici d’une hypothèse analytique distincte. <sup className="source-ref"><a href="#source-07" aria-label="Source 7">7</a></sup>
+
+## Explorer les requêtes et la décision tarifaire
+
+Ce laboratoire rend les mécanismes manipulables : les achats restent fixes pendant que les recherches se multiplient. Le passage du volume de requêtes à une probabilité de vente est une convention pédagogique, sans calibration sur une compagnie. Le scénario de retenues ajoute un acte distinct de la consultation, puis montre la libération des disponibilités. Le repère Air Europa provient d’une page tarifaire officielle consultée via une copie indexée ; il ne constitue pas une cotation garantie du jour.
+
+<AirfareBotLab lang="fr" />
 
 ## La première facture concerne le calcul
 

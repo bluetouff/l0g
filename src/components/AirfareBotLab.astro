@@ -1,0 +1,162 @@
+---
+import { AIRFARE_DEFAULTS, calculateAirfareScenario, airfareTimeline } from '../lib/airfare-bot-model';
+interface Props { lang?: 'fr' | 'en' }
+const { lang = 'fr' } = Astro.props;
+const fr = lang === 'fr';
+const id = `airfare-bot-lab-${lang}`;
+const initial = calculateAirfareScenario(AIRFARE_DEFAULTS);
+const nf = new Intl.NumberFormat(fr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 2 });
+const money = (v: number) => `${nf.format(v)} €`;
+const path = airfareTimeline(AIRFARE_DEFAULTS).map((r) => `${56 + r.step / 60 * 560},${r.price === 180 ? 142 : 42}`).join(' ');
+const c = fr ? {
+  eye: 'l0g / laboratoire visuel', title: 'Les bots, le signal et le billet',
+  intro: 'Suivez les requêtes jusqu’à la décision d’offre. Comparez un signal brut, un signal filtré et une retenue de places.',
+  caution: 'Simulation fictive · aucun trafic envoyé aux compagnies',
+  modes: ['Consultation seule', 'Signal brut', 'Signal filtré', 'Places retenues'],
+  controls: 'Choisir le mécanisme', requests: 'Requêtes par intention de voyage', filter: 'Répétitions écartées du signal', holds: 'Places temporairement retenues', sensitivity: 'Sensibilité supposée de la prévision',
+  playback: 'Rejouer le scénario', reset: 'Réinitialiser', step: 'Étape', sequence: 'Séquence illustrative, sans durée réelle',
+  people: 'La demande réelle', peopleNote: 'Même cohorte pendant toute la séquence', intentions: 'intentions de voyage', bookings: 'réservations déjà réalisées',
+  agents: 'Les recherches', raw: 'requêtes brutes', bots: 'Répétitions des agents', base: 'Recherches de départ',
+  estimator: 'Le signal transmis', counted: 'requêtes après filtrage', discarded: 'écartées',
+  reference: 'Sans le mécanisme', offer: 'Offre accessible simulée', delta: 'Écart avec le témoin', decision: 'Offre à 180 € fermée',
+  forecast: 'Prévision et décision d’offre', prob: 'Probabilité supposée d’une vente future à 300 €', gate: 'Seuil de décision : 60 %', expected: 'Recette future espérée', offerNow: 'Offre immédiate : 180 €',
+  inventory: 'L’inventaire devient indisponible', remaining: 'places encore accessibles', cheap: 'au tarif de 180 €', held: 'retenues sans achat',
+  cheapLegend: '8 unités à 180 €', regularLegend: '16 unités à 300 €', heldLegend: 'Retenue temporaire', expiry: 'Les retenues expirent à l’étape 50. Les 24 unités sont un inventaire fictif distinct des réservations de la cohorte.',
+  chart: 'La trajectoire de l’offre accessible', chartY: 'Offre (€)', chartX: 'Étape du scénario', baseline: 'Témoin sans mécanisme', simulated: 'Scénario sélectionné',
+  conversion: 'Réservations / requêtes', stable: 'Réservations / intentions : 10 %',
+  method: 'Hypothèses, calculs et limites',
+  methodA: 'La cohorte fictive comprend 1 000 intentions de voyage et 100 réservations déjà réalisées. Les recherches passent de 10 à la valeur choisie par intention ; aucun achat supplémentaire n’est créé par les bots. Les particules indiquent la circulation des requêtes, sans représenter une requête chacune.',
+  methodB: 'Dans le scénario de signal, la probabilité supposée vaut 40 % + 40 points × (requêtes par intention − 10) / 990 × (1 − filtre / 100) × sensibilité / 100. Cette relation est arbitraire : aucun coefficient n’est estimé sur une compagnie. À partir de la probabilité, la recette espérée est 300 € × probabilité. L’offre à 180 € ferme seulement si cette recette dépasse 180 € ; à égalité, elle reste ouverte. Le modèle suppose ensuite une offre à 300 € encore accessible.',
+  methodC: 'Le scénario d’inventaire utilise séparément 24 unités, dont 8 à 180 € et 16 à 300 €. Les retenues consomment d’abord les unités à 180 €, puis expirent à l’étape 50. Cette allocation simplifiée ne décrit ni les classes tarifaires imbriquées ni la gestion d’un vol réel. La séquence n’a pas d’unité de temps et ne prédit aucun prix. Un autre modèle de demande pourrait réagir dans un autre sens.',
+  sources: 'Mécanismes documentés dans l’article :', sourceForecast: 'prévision et valeur du siège', sourceData: 'recherches et prévisions (déclaration PROS)', sourceHolds: 'retenues d’inventaire (OWASP)',
+  nojs: 'JavaScript est désactivé : le scénario initial reste visible ; les commandes nécessitent JavaScript.',
+  realEye: 'Un acteur réel / repère distinct du modèle', realTitle: 'Air Europa · Paris-Orly → New York-JFK', realFare: 'À partir de 552 €', realDates: '6–17 novembre 2026 · aller-retour · 1 adulte · économique',
+  realNote: 'Repère publié, consulté le 5 novembre 2026 via une copie indexée ; prix non confirmé en direct. Air Europa indique des recherches des dernières 48 heures, taxes et suppléments inclus, sous réserve de disponibilité. Bagages et services optionnels peuvent coûter plus cher.',
+  realLimit: 'La simulation ci-dessus utilise 180 € et 300 € fictifs. Elle ne reproduit pas l’algorithme d’Air Europa et n’applique aucune variation à son tarif publié.', realLink: 'Voir la page tarifaire officielle',
+} : {
+  eye: 'l0g / visual laboratory', title: 'Bots, signals and the fare',
+  intro: 'Follow requests through to the offer decision. Compare raw signals, filtered signals and temporary inventory holds.',
+  caution: 'Fictional simulation · no traffic sent to airlines',
+  modes: ['Search only', 'Raw signal', 'Filtered signal', 'Inventory holds'],
+  controls: 'Choose the mechanism', requests: 'Requests per travel intention', filter: 'Repeated requests excluded from the signal', holds: 'Seats temporarily held', sensitivity: 'Assumed forecast sensitivity',
+  playback: 'Replay scenario', reset: 'Reset', step: 'Step', sequence: 'Illustrative sequence, no real-time duration',
+  people: 'Actual demand', peopleNote: 'The same cohort throughout the sequence', intentions: 'travel intentions', bookings: 'previously completed bookings',
+  agents: 'Search activity', raw: 'raw requests', bots: 'Repeated agent requests', base: 'Baseline searches',
+  estimator: 'The incoming signal', counted: 'requests after filtering', discarded: 'excluded',
+  reference: 'Without the mechanism', offer: 'Simulated accessible offer', delta: 'Difference from the control', decision: '€180 offer closed',
+  forecast: 'Forecast and offer decision', prob: 'Assumed probability of a future €300 sale', gate: 'Decision threshold: 60%', expected: 'Expected future revenue', offerNow: 'Immediate offer: €180',
+  inventory: 'Inventory becomes unavailable', remaining: 'units still accessible', cheap: 'at the €180 fare', held: 'held without purchase',
+  cheapLegend: '8 units at €180', regularLegend: '16 units at €300', heldLegend: 'Temporary hold', expiry: 'Holds expire at step 50. These 24 units are fictional inventory, separate from the cohort’s completed bookings.',
+  chart: 'The accessible offer over the sequence', chartY: 'Offer (€)', chartX: 'Scenario step', baseline: 'Control without mechanism', simulated: 'Selected scenario',
+  conversion: 'Bookings / requests', stable: 'Bookings / intentions: 10%',
+  method: 'Assumptions, calculations and limits',
+  methodA: 'The fictional cohort comprises 1,000 travel intentions and 100 previously completed bookings. Requests rise from 10 per intention to the selected value; bots make no additional purchases. Particles illustrate the request flow, rather than representing individual requests.',
+  methodB: 'In the signal scenario, assumed probability equals 40% + 40 percentage points × (requests per intention − 10) / 990 × (1 − filter / 100) × sensitivity / 100. This relationship is arbitrary, with no airline-calibrated coefficient. Expected revenue equals €300 × probability. The €180 offer closes only when expected revenue exceeds €180; it stays open at equality. The model then assumes a €300 offer remains accessible.',
+  methodC: 'The inventory scenario separately uses 24 units: 8 at €180 and 16 at €300. Holds consume the €180 units first and expire at step 50. This simplified allocation describes neither nested booking classes nor a real flight’s inventory management. The sequence has no time unit and predicts no fare. Another demand model could respond in a different direction.',
+  sources: 'Mechanisms documented in the article:', sourceForecast: 'forecasting and seat value', sourceData: 'searches and forecasts (PROS claim)', sourceHolds: 'inventory holds (OWASP)',
+  nojs: 'JavaScript is disabled: the initial scenario remains visible; interactive controls require JavaScript.',
+  realEye: 'A real provider / a separate reference', realTitle: 'Air Europa · Paris-Orly → New York-JFK', realFare: 'From €552', realDates: '6–17 November 2026 · return · 1 adult · economy',
+  realNote: 'Published reference consulted on 5 November 2026 through an indexed copy; not confirmed live. Air Europa describes fares from searches during the preceding 48 hours, including taxes and surcharges, subject to availability. Baggage and optional services may cost extra.',
+  realLimit: 'The simulation above uses fictional €180 and €300 offers. It does not reproduce Air Europa’s algorithm or apply changes to its published fare.', realLink: 'View the official fare page',
+};
+---
+<section class="airfare-lab" id={id} data-airfare-lab data-lang={lang} data-active-mode="signal" data-playing="false" aria-labelledby={`${id}-title`}>
+  <header class="airfare-lab__head">
+    <p class="airfare-lab__eye">{c.eye}</p>
+    <h2 id={`${id}-title`}>{c.title}</h2>
+    <p>{c.intro}</p>
+    <span class="airfare-lab__caution">{c.caution}</span>
+  </header>
+  <fieldset data-controls disabled class="airfare-lab__controls">
+    <legend class="airfare-lab__sr">{c.controls}</legend>
+    <div class="airfare-lab__modes" role="group" aria-label={c.controls}>
+      {['observe', 'signal', 'filtered', 'inventory'].map((mode, i) => <button type="button" data-mode={mode} aria-pressed={mode === 'signal' ? 'true' : 'false'}><span class="airfare-lab__mode-num">0{i + 1}</span>{c.modes[i]}</button>)}
+    </div>
+    <div class="airfare-lab__sliders">
+      <label for={`${id}-requests`}><span>{c.requests}<output data-value="requestsPerIntention">800</output></span><input id={`${id}-requests`} data-field="requestsPerIntention" type="range" min="10" max="1000" step="10" value={AIRFARE_DEFAULTS.requestsPerIntention} /><small>10 → 1 000</small></label>
+      <label for={`${id}-filter`} data-signal-controls><span>{c.filter}<output data-value="filterPct">0 %</output></span><input id={`${id}-filter`} data-field="filterPct" type="range" min="0" max="100" step="1" value="0" /><small>0 → 100 %</small></label>
+      <label for={`${id}-holds`} data-hold-controls hidden><span>{c.holds}<output data-value="heldSeats">8</output></span><input id={`${id}-holds`} data-field="heldSeats" type="range" min="0" max="12" step="1" value="8" /><small>0 → 12</small></label>
+    </div>
+    <details class="airfare-lab__sensitivity" data-signal-controls><summary>{c.sensitivity}</summary><label for={`${id}-sensitivity`}><span>{c.sensitivity}<output data-value="sensitivityPct">100 %</output></span><input id={`${id}-sensitivity`} data-field="sensitivityPct" type="range" min="0" max="100" step="1" value="100" /></label></details>
+    <div class="airfare-lab__transport"><button type="button" data-play class="airfare-lab__play">▷ {c.playback}</button><label for={`${id}-step`}><span>{c.step} <output data-value="step">60</output> / 60</span><input id={`${id}-step`} data-field="step" type="range" min="0" max="60" step="1" value="60" /></label><button type="button" data-reset>{c.reset}</button></div>
+    <p class="airfare-lab__sequence">{c.sequence}</p>
+  </fieldset>
+  <p data-error class="airfare-lab__error" role="alert" hidden></p>
+  <div data-result>
+    <div class="airfare-lab__cohort"><span><b>1 000</b> {c.intentions}</span><span><b>100</b> {c.bookings}</span><small>{c.peopleNote}</small></div>
+    <div class="airfare-lab__flow">
+      <div class="airfare-lab__flow-node">
+        <p class="airfare-lab__label">01 / {c.agents}</p><output class="airfare-lab__count" data-value="rawRequests">800 000</output><span>{c.raw}</span>
+        <div class="airfare-lab__traffic" aria-hidden="true"><div class="airfare-lab__lane airfare-lab__lane--base">{Array.from({length:4}, (_, i) => <i style={`--delay:-${i * 0.8}s`} />)}</div><div class="airfare-lab__lane airfare-lab__lane--bots">{Array.from({length:12}, (_, i) => <i style={`--delay:-${i * 0.28}s`} />)}</div></div>
+        <div class="airfare-lab__traffic-key"><span class="airfare-lab__key-base">{c.base}</span><span class="airfare-lab__key-bots">{c.bots}</span></div>
+      </div>
+      <div class="airfare-lab__flow-node airfare-lab__filter">
+        <p class="airfare-lab__label">02 / {c.estimator}</p><output class="airfare-lab__count" data-value="signalRequests">800 000</output><span>{c.counted}</span>
+        <div class="airfare-lab__filter-visual" aria-hidden="true"><div data-filter-bar style="width:0%"></div><span>↓</span></div>
+        <p class="airfare-lab__discard"><output data-value="filteredRequests">0</output> {c.discarded}</p>
+      </div>
+      <div class="airfare-lab__flow-node airfare-lab__ticket">
+        <p class="airfare-lab__label">03 / {c.offer}</p><output class="airfare-lab__fare" data-value="price">300 €</output><p data-value="decision" class="airfare-lab__decision">{c.decision}</p>
+        <div class="airfare-lab__comparison"><span>{c.reference}<b>180 €</b></span><span>{c.delta}<b data-value="extraPrice">+120 €</b></span></div>
+      </div>
+    </div>
+    <div data-forecast class="airfare-lab__forecast">
+      <h3>{c.forecast}</h3>
+      <div class="airfare-lab__prob-heading"><span>{c.prob}</span><output data-value="probability">{nf.format(initial.probability * 100)} %</output></div>
+      <div class="airfare-lab__prob-track" aria-hidden="true"><span data-probability-bar style={`width:${initial.probability * 100}%`}></span><i></i></div>
+      <div class="airfare-lab__prob-scale"><span>0 %</span><span>{c.gate}</span><span>100 %</span></div>
+      <div class="airfare-lab__expectation"><span>{c.expected} <output data-value="expectedFutureRevenue">{money(initial.expectedFutureRevenue)}</output></span><span>{c.offerNow}</span></div>
+    </div>
+    <div data-inventory class="airfare-lab__inventory" hidden>
+      <h3>{c.inventory}</h3>
+      <div class="airfare-lab__inventory-body"><div class="airfare-lab__plane" aria-hidden="true"><div class="airfare-lab__seats">{Array.from({length:24}, (_, i) => <span data-seat data-state={i < 8 ? 'cheap' : 'free'}></span>)}</div></div><dl><div><dt>{c.remaining}</dt><dd data-value="availableSeats">24</dd></div><div><dt>{c.cheap}</dt><dd data-value="cheapAvailable">8</dd></div><div><dt>{c.held}</dt><dd data-value="heldNow">0</dd></div></dl></div>
+      <div class="airfare-lab__seat-legend"><span class="airfare-lab__key-base">{c.cheapLegend}</span><span class="airfare-lab__key-standard">{c.regularLegend}</span><span class="airfare-lab__key-bots">× {c.heldLegend}</span></div>
+      <p class="airfare-lab__note">{c.expiry}</p>
+    </div>
+    <div class="airfare-lab__chart" data-interactive-figure>
+      <h3>{c.chart}</h3>
+      <svg data-price-chart viewBox="0 0 640 220" style="width:100%;height:auto" role="img" aria-labelledby={`${id}-chart-title ${id}-chart-desc`}>
+        <title id={`${id}-chart-title`}>{c.chart}</title><desc id={`${id}-chart-desc`} data-chart-summary>{fr ? 'Scénario fictif : l’offre accessible passe de 180 à 300 euros. Le témoin reste à 180 euros.' : 'Fictional scenario: the accessible offer rises from €180 to €300. The control stays at €180.'}</desc>
+        <text x="8" y="16" class="airfare-lab__axis">{c.chartY}</text>
+        <line x1="56" y1="42" x2="616" y2="42" class="airfare-lab__grid" /><line x1="56" y1="142" x2="616" y2="142" class="airfare-lab__baseline" />
+        <text x="44" y="46" text-anchor="end">300</text><text x="44" y="146" text-anchor="end">180</text>
+        <path data-price-area d={`M56,142 L${path.replaceAll(' ', ' L')} L616,142 Z`} class="airfare-lab__area" />
+        <polyline data-price-line points={path} class="airfare-lab__price-line" />
+        <line data-cursor x1="616" y1="25" x2="616" y2="155" class="airfare-lab__cursor" /><circle data-price-marker cx="616" cy="42" r="4" class="airfare-lab__marker" />
+        {[0,20,40,60].map(t => <text data-chart-tick={t} x={56+t/60*560} y="176" text-anchor="middle">{t}</text>)}<text data-chart-x-axis x="336" y="207" text-anchor="middle" class="airfare-lab__axis">{c.chartX}</text>
+      </svg>
+      <div class="airfare-lab__chart-key"><span class="airfare-lab__key-bots">{c.simulated}</span><span class="airfare-lab__key-base">{c.baseline}</span></div>
+    </div>
+    <div class="airfare-lab__ratios"><span>{c.conversion}<output data-value="queryConversionPct">{nf.format(initial.queryConversionPct)} %</output></span><span>{c.stable}</span></div>
+  </div>
+  <p class="airfare-lab__sr" data-status role="status" aria-live="polite" aria-atomic="true"></p>
+  <noscript><p class="airfare-lab__note">{c.nojs}</p></noscript>
+  <details class="airfare-lab__method"><summary>{c.method}</summary><p>{c.methodA}</p><p>{c.methodB}</p><p>{c.methodC}</p><p>{c.sources} <a href="#source-02">{c.sourceForecast}</a> · <a href="#source-04">{c.sourceData}</a> · <a href="#source-10">{c.sourceHolds}</a>.</p></details>
+  <aside class="airfare-lab__real" aria-labelledby={`${id}-real-title`}><p class="airfare-lab__eye">{c.realEye}</p><div class="airfare-lab__real-heading"><h3 id={`${id}-real-title`}>{c.realTitle}</h3><span>{c.realFare}</span></div><p>{c.realDates}</p><p>{c.realNote}</p><p>{c.realLimit}</p><a href="https://www.aireuropa.com/fr-fr/offres-de-vols-de-paris-vers-new-york" target="_blank" rel="noopener noreferrer">{c.realLink} ↗</a></aside>
+  <p class="airfare-lab__note"><a href={fr ? '/outils/' : '/en/tools/'}>{fr ? 'Explorer les autres outils l0g' : 'Explore more l0g tools'} →</a></p>
+</section>
+<script>import '../lib/airfare-bot-client';</script>
+<style>
+  .airfare-lab{width:100%;margin:2.5rem auto 3rem;padding:clamp(1rem,3vw,1.8rem);border:1px solid var(--color-line-strong);border-radius:var(--radius-panel);background:var(--color-surface);color:var(--color-paper);font-family:var(--font-read);font-size:.9rem;font-weight:400;line-height:1.6;container-type:inline-size}
+  .airfare-lab *{box-sizing:border-box}.airfare-lab [hidden]{display:none!important}
+  .airfare-lab p{margin:0;color:inherit}.airfare-lab h2,.airfare-lab h3{font-family:var(--font-read);font-weight:450;letter-spacing:-.025em;line-height:1.3;border:0;padding:0;color:var(--color-paper)}.airfare-lab h2{font-size:clamp(1.4rem,3vw,1.85rem);margin:.5rem 0 .8rem}.airfare-lab h3{font-size:1.05rem;margin:0 0 1rem}.airfare-lab b{font-weight:500}
+  .airfare-lab .airfare-lab__eye{font-family:var(--font-mono);font-size:.68rem;font-weight:400;text-transform:uppercase;letter-spacing:.1em;color:var(--color-signal)}
+  .airfare-lab__head>p:not(.airfare-lab__eye){max-width:42rem;color:var(--color-muted);font-size:.95rem}.airfare-lab__caution{display:block;margin-top:1rem;color:var(--color-amber);font-size:.75rem}
+  .airfare-lab__controls{border:0;padding:0;margin:1.6rem 0 0;min-width:0}.airfare-lab__modes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem}.airfare-lab button{font:400 .8rem/1.4 var(--font-read);min-height:44px;border:1px solid var(--color-line-strong);border-radius:6px;padding:.65rem .75rem;background:transparent;color:var(--color-paper);cursor:pointer;transition:border-color .15s,background .15s}.airfare-lab button:hover{background:var(--surface-inset);border-color:var(--color-muted)}.airfare-lab button[aria-pressed=true]{border-color:var(--color-signal);background:color-mix(in srgb,var(--color-signal) 5%,transparent)}.airfare-lab button:disabled{opacity:.6;cursor:default}.airfare-lab__mode-num{display:block;font:400 .65rem/1.5 var(--font-mono);color:var(--color-muted);margin-bottom:.3rem}.airfare-lab button[aria-pressed=true] .airfare-lab__mode-num{color:var(--color-signal)}
+  .airfare-lab :focus-visible{outline:2px solid var(--color-signal);outline-offset:4px}.airfare-lab__sliders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin-top:1.35rem}.airfare-lab label{display:block;min-width:0;font-size:.8rem}.airfare-lab label>span{display:flex;justify-content:space-between;align-items:baseline;gap:.75rem}.airfare-lab label output{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--color-signal)}.airfare-lab input[type=range]{display:block;width:100%;accent-color:var(--color-signal);height:30px;margin:.4rem 0 0;cursor:pointer}.airfare-lab label small{font-size:.7rem;color:var(--color-muted)}
+  .airfare-lab__sensitivity{margin-top:.6rem}.airfare-lab summary{font-size:.8rem;color:var(--color-muted);cursor:pointer;min-height:36px;padding:.4rem 0}.airfare-lab__sensitivity label{max-width:26rem;padding:.5rem 0}.airfare-lab__transport{display:flex;align-items:center;gap:1rem;margin-top:1.1rem}.airfare-lab__transport label{flex:1}.airfare-lab .airfare-lab__play{background:var(--color-paper);color:var(--color-ink);border-color:var(--color-paper)}.airfare-lab .airfare-lab__sequence{font-size:.7rem;color:var(--color-muted);margin-top:.5rem}
+  .airfare-lab__cohort{display:flex;align-items:baseline;gap:.5rem 1.5rem;flex-wrap:wrap;padding:1.4rem 0 1rem;margin-top:1rem;border-top:1px solid var(--color-line)}.airfare-lab__cohort b{font-variant-numeric:tabular-nums}.airfare-lab__cohort small{font-size:.73rem;color:var(--color-muted);flex-basis:100%}
+  .airfare-lab__flow{display:grid;grid-template-columns:1fr 1fr 1.15fr;border-block:1px solid var(--color-line)}.airfare-lab__flow-node{min-width:0;padding:1.3rem .85rem 1.2rem 0}.airfare-lab__flow-node+.airfare-lab__flow-node{border-left:1px solid var(--color-line);padding-left:.85rem}.airfare-lab .airfare-lab__label{font-size:.67rem;color:var(--color-muted);margin-bottom:.8rem;letter-spacing:.02em}.airfare-lab__count{display:block;font-weight:400;font-size:clamp(1.2rem,2.7cqi,1.6rem);letter-spacing:-.04em;font-variant-numeric:tabular-nums}.airfare-lab__flow-node>span{font-size:.73rem;color:var(--color-muted)}
+  .airfare-lab__traffic{margin:1rem 0 .5rem;overflow:hidden}.airfare-lab__lane{position:relative;height:20px;border-bottom:1px solid var(--color-line);margin-bottom:8px}.airfare-lab__lane i{position:absolute;left:12%;bottom:-3px;width:5px;height:5px;border-radius:50%;background:var(--color-signal);animation:airfare-flow 3.3s linear infinite;animation-delay:var(--delay);animation-play-state:paused}.airfare-lab__lane--bots i{background:var(--color-accent);width:4px;height:4px;bottom:-2px;animation-duration:3.4s}.airfare-lab[data-playing=true] .airfare-lab__lane i{animation-play-state:running}.airfare-lab__traffic-key{display:flex;flex-direction:column;gap:.25rem;font-size:.65rem;color:var(--color-muted)}
+  .airfare-lab__key-base::before,.airfare-lab__key-bots::before,.airfare-lab__key-standard::before{content:'';display:inline-block;width:.45rem;height:.45rem;border-radius:2px;margin-right:.4rem;vertical-align:.03em;background:var(--color-signal)}.airfare-lab__key-bots::before{background:var(--color-accent)}.airfare-lab__key-standard::before{background:var(--color-topic-blue)}
+  .airfare-lab__filter-visual{height:48px;position:relative;margin-top:.85rem;background:repeating-linear-gradient(90deg,transparent,transparent 10px,var(--color-line) 10px,var(--color-line) 11px);border-block:1px solid var(--color-line)}.airfare-lab__filter-visual>div{height:100%;background:color-mix(in srgb,var(--color-signal) 16%,transparent);transition:width .2s}.airfare-lab__filter-visual>span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-muted)}.airfare-lab .airfare-lab__discard{font-size:.73rem;color:var(--color-muted);margin-top:.6rem;font-variant-numeric:tabular-nums}
+  .airfare-lab__fare{display:block;font-size:clamp(2.2rem,6cqi,3.3rem);font-weight:350;letter-spacing:-.065em;line-height:1.1;color:var(--color-accent);font-variant-numeric:tabular-nums}.airfare-lab .airfare-lab__decision{font-size:.72rem;margin:.6rem 0 1rem;min-height:2.4em}.airfare-lab__comparison{display:flex;gap:1rem}.airfare-lab__comparison span{font-size:.65rem;color:var(--color-muted)}.airfare-lab__comparison b{display:block;color:var(--color-paper);font-size:.95rem;font-weight:400;font-variant-numeric:tabular-nums}
+  .airfare-lab__forecast,.airfare-lab__inventory{padding:1.35rem 0;border-bottom:1px solid var(--color-line)}.airfare-lab__prob-heading{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;font-size:.8rem}.airfare-lab__prob-heading output{font-size:1.2rem;font-weight:400;white-space:nowrap}.airfare-lab__prob-track{position:relative;height:8px;margin:1rem 0;background:var(--color-surface-2);border-radius:4px}.airfare-lab__prob-track span{display:block;height:100%;background:var(--color-accent);border-radius:4px;transition:width .2s}.airfare-lab__prob-track i{position:absolute;left:60%;height:20px;top:-6px;border-left:1px solid var(--color-paper)}.airfare-lab__prob-scale{display:flex;justify-content:space-between;font-size:.68rem;color:var(--color-muted)}.airfare-lab__expectation{display:flex;justify-content:space-between;gap:1rem;margin-top:1rem;font-size:.78rem}.airfare-lab__expectation output{color:var(--color-accent);margin-left:.35rem;font-variant-numeric:tabular-nums}
+  .airfare-lab__inventory-body{display:flex;gap:2rem;align-items:center}.airfare-lab__plane{border:1px solid var(--color-line-strong);border-radius:45% 45% 12% 12% / 20% 20% 8% 8%;padding:2rem 1.2rem 1.1rem;width:180px;flex-shrink:0}.airfare-lab__seats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.airfare-lab__seats span{height:17px;border-radius:3px 3px 1px 1px;background:color-mix(in srgb,var(--color-topic-blue) 65%,var(--color-surface));position:relative}.airfare-lab__seats span:nth-child(4n+2){margin-right:5px}.airfare-lab__seats span:nth-child(4n+3){margin-left:5px}.airfare-lab__seats [data-state=cheap]{background:var(--color-signal)}.airfare-lab__seats [data-state=held]{background:color-mix(in srgb,var(--color-accent) 15%,var(--color-surface));color:var(--color-accent)}.airfare-lab__seats [data-state=held]::after{content:'×';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;line-height:1;font-size:1rem}.airfare-lab dl{margin:0;flex:1}.airfare-lab dl>div{display:flex;flex-direction:row-reverse;justify-content:flex-end;align-items:baseline;gap:.75rem;margin:.3rem 0}.airfare-lab dt{font-size:.75rem;color:var(--color-muted)}.airfare-lab dd{font-size:1.4rem;font-weight:350;margin:0;min-width:2ch;font-variant-numeric:tabular-nums}.airfare-lab__seat-legend{display:flex;gap:.5rem 1rem;flex-wrap:wrap;margin:1rem 0;font-size:.7rem;color:var(--color-muted)}.airfare-lab .airfare-lab__note{font-size:.75rem;color:var(--color-muted);margin:.6rem 0 0}
+  .airfare-lab__chart{padding-top:1.35rem}.airfare-lab__chart svg{display:block;overflow:visible}.airfare-lab__chart text{font:400 12px var(--font-read);fill:var(--color-muted)}.airfare-lab__grid{stroke:var(--color-line);stroke-width:1}.airfare-lab__baseline{stroke:var(--color-signal);stroke-width:2;stroke-dasharray:5 5}.airfare-lab__price-line{stroke:var(--color-accent);fill:none;stroke-width:2;stroke-linejoin:round;vector-effect:non-scaling-stroke}.airfare-lab__area{fill:color-mix(in srgb,var(--color-accent) 8%,transparent)}.airfare-lab__cursor{stroke:var(--color-muted);stroke-width:1;stroke-dasharray:2 4}.airfare-lab__marker{fill:var(--color-accent);stroke:var(--color-surface);stroke-width:2}.airfare-lab__chart-key{display:flex;gap:.5rem 1.4rem;flex-wrap:wrap;font-size:.7rem;color:var(--color-muted);margin-top:.6rem}.airfare-lab__ratios{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--color-line);margin-top:1rem;padding:1rem 0;font-size:.73rem;color:var(--color-muted)}.airfare-lab__ratios output{font-variant-numeric:tabular-nums;color:var(--color-paper);margin-left:.6rem}
+  .airfare-lab__method{border-top:1px solid var(--color-line);padding-top:.5rem}.airfare-lab__method p{font-size:.8rem;line-height:1.7;margin:.8rem 0;color:var(--color-muted)}.airfare-lab__real{border-top:1px solid var(--color-line-strong);margin-top:1.3rem;padding-top:1.2rem}.airfare-lab__real-heading{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-top:.6rem}.airfare-lab__real-heading h3{margin:0;font-size:.95rem}.airfare-lab__real-heading>span{font-size:1.2rem;font-weight:350;white-space:nowrap;letter-spacing:-.035em}.airfare-lab__real p:not(.airfare-lab__eye){font-size:.76rem;color:var(--color-muted);margin:.7rem 0}.airfare-lab__real>a{font-size:.78rem}.airfare-lab .airfare-lab__error{color:var(--color-accent);margin:1rem 0}.airfare-lab__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  @keyframes airfare-flow{from{left:0}to{left:100%}}
+  @container(max-width:520px){.airfare-lab__modes{grid-template-columns:repeat(2,minmax(0,1fr))}.airfare-lab__mode-num{display:inline;margin-right:.5rem}.airfare-lab__sliders{grid-template-columns:1fr;gap:.8rem}.airfare-lab__transport{flex-wrap:wrap;gap:.6rem}.airfare-lab__transport label{flex-basis:100%;order:3}.airfare-lab__transport button{flex:1}.airfare-lab__flow{grid-template-columns:repeat(2,minmax(0,1fr))}.airfare-lab__flow-node{padding:.95rem .65rem .95rem 0}.airfare-lab__flow-node+.airfare-lab__flow-node{padding-left:.65rem}.airfare-lab .airfare-lab__ticket{grid-column:1/-1;border-left:0;border-top:1px solid var(--color-line);padding:1rem 0;display:grid;grid-template-columns:1fr 1fr;column-gap:1rem}.airfare-lab__ticket>.airfare-lab__label{grid-column:1/-1}.airfare-lab__fare{font-size:2.8rem}.airfare-lab .airfare-lab__decision{margin:0;align-self:center;min-height:0}.airfare-lab__comparison{grid-column:1/-1;justify-content:space-between;margin-top:.7rem}.airfare-lab__count{font-size:1.35rem}.airfare-lab__real-heading{flex-direction:column;gap:.5rem}.airfare-lab__expectation{flex-direction:column;gap:.35rem}.airfare-lab__prob-heading>span{max-width:75%}.airfare-lab__inventory-body{gap:1rem}.airfare-lab__plane{width:130px;padding:1.4rem .6rem .8rem}.airfare-lab__seats{gap:5px}.airfare-lab__inventory-body dl>div{gap:.5rem}.airfare-lab dt{font-size:.7rem}.airfare-lab dd{font-size:1.2rem}}
+  @media(prefers-reduced-motion:reduce){.airfare-lab *{animation:none!important;transition:none!important}}
+  @media print{.airfare-lab__controls{display:none}.airfare-lab{break-inside:avoid}.airfare-lab__method{display:block}}
+</style>
