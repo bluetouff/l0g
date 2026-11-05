@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { syncBuiltinESMExports } from 'node:module';
 import sharp from 'sharp';
 import { mkdtemp, mkdir, writeFile, symlink, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -176,6 +178,125 @@ test('la lecture d’illustration exclut les URL distantes, les traversées et l
   assert.throws(() => readWeeklyIllustration('/illustrations/missing.jpg', publicRoot), /ENOENT/);
   assert.throws(() => readWeeklyIllustration('/illustrations/fake.jpg', publicRoot), /format raster invalide/);
   assert.throws(() => readWeeklyIllustration('/illustrations/large.jpg', publicRoot), /hors budget/);
+});
+
+async function illustrationFixture(t) {
+  const directory = await mkdtemp(join(tmpdir(), 'weekly-og-race-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const root = join(directory, 'public');
+  await mkdir(join(root, 'illustrations'), { recursive: true });
+  const file = join(root, 'illustrations', 'image.jpg');
+  const bytes = Buffer.from([0xff, 0xd8, 0xff, 1]);
+  await writeFile(file, bytes);
+  return { directory, root, file, bytes, src: '/illustrations/image.jpg' };
+}
+
+function mockIllustrationFs(t, method, implementation) {
+  const mock = t.mock.method(fs, method, implementation);
+  syncBuiltinESMExports();
+  t.after(() => { mock.mock.restore(); syncBuiltinESMExports(); });
+}
+
+test('un remplacement après contrôle ne fournit jamais les octets du fichier substitué', async (t) => {
+  const f = await illustrationFixture(t);
+  let replaced = false;
+  // Exercise the old pathname check as well as the descriptor-based check.
+  for (const method of ['statSync', 'fstatSync']) {
+    const original = fs[method];
+    mockIllustrationFs(t, method, (...args) => {
+      const stat = original(...args);
+      if (!replaced) {
+        replaced = true;
+        fs.renameSync(f.file, join(f.directory, 'opened.jpg'));
+        fs.writeFileSync(f.file, Buffer.from([0xff, 0xd8, 0xff, 2, 3]));
+      }
+      return stat;
+    });
+  }
+  try {
+    assert.deepEqual(readWeeklyIllustration(f.src, f.root), f.bytes);
+  } catch (error) {
+    if (error.code === 'ERR_ASSERTION') throw error;
+    assert.match(error.message, /modifiée pendant/);
+  }
+  assert.equal(replaced, true);
+});
+
+test('une croissance après contrôle reste bornée et une troncature est refusée', async (t) => {
+  for (const size of [8_000_001, 3]) {
+    await t.test(String(size), async (t) => {
+      const f = await illustrationFixture(t);
+      let changed = false;
+      let bytesRead = 0;
+      for (const method of ['statSync', 'fstatSync']) {
+        const original = fs[method];
+        mockIllustrationFs(t, method, (...args) => {
+          const stat = original(...args);
+          if (!changed) {
+            changed = true;
+            fs.truncateSync(f.file, size);
+          }
+          return stat;
+        });
+      }
+      const read = fs.readSync;
+      mockIllustrationFs(t, 'readSync', (...args) => { const count = read(...args); bytesRead += count; return count; });
+      assert.throws(() => readWeeklyIllustration(f.src, f.root), /modifiée pendant/);
+      assert.equal(changed, true);
+      assert.ok(bytesRead <= f.bytes.length + 1, `lecture non bornée : ${bytesRead}`);
+    });
+  }
+});
+
+test('un lien symbolique introduit après résolution est refusé avant lecture', async (t) => {
+  const f = await illustrationFixture(t);
+  const outside = join(f.directory, 'outside.jpg');
+  await writeFile(outside, f.bytes);
+  const open = fs.openSync;
+  mockIllustrationFs(t, 'openSync', (file, ...args) => {
+    fs.unlinkSync(file);
+    fs.symlinkSync(outside, file);
+    return open(file, ...args);
+  });
+  assert.throws(() => readWeeklyIllustration(f.src, f.root), { code: 'ELOOP' });
+});
+
+test('les lectures partielles conservent les octets et le descripteur est toujours fermé', async (t) => {
+  const f = await illustrationFixture(t);
+  const read = fs.readSync;
+  const close = fs.closeSync;
+  let closed = 0;
+  let fail = false;
+  mockIllustrationFs(t, 'readSync', (fd, buffer, offset, length, position) => {
+    if (fail) throw new Error('read failure fixture');
+    return read(fd, buffer, offset, Math.min(length, 2), position);
+  });
+  mockIllustrationFs(t, 'closeSync', (fd) => { closed++; return close(fd); });
+  assert.deepEqual(readWeeklyIllustration(f.src, f.root), f.bytes);
+  assert.equal(closed, 1);
+  fail = true;
+  assert.throws(() => readWeeklyIllustration(f.src, f.root), /read failure fixture/);
+  assert.equal(closed, 2);
+  fail = false;
+  await writeFile(f.file, '<svg/>');
+  assert.throws(() => readWeeklyIllustration(f.src, f.root), /format raster invalide/);
+  assert.equal(closed, 3);
+});
+
+test('les formats raster, les liens internes et la taille maximale restent acceptés', async (t) => {
+  const f = await illustrationFixture(t);
+  for (const bytes of [f.bytes, Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), Buffer.from('RIFF0000WEBP')]) {
+    await writeFile(f.file, bytes);
+    assert.deepEqual(readWeeklyIllustration(f.src, f.root), bytes);
+  }
+  const maximum = Buffer.alloc(8_000_000);
+  f.bytes.copy(maximum);
+  await writeFile(f.file, maximum);
+  assert.deepEqual(readWeeklyIllustration(f.src, f.root), maximum);
+  await symlink(f.file, join(f.root, 'illustrations', 'alias.jpg'));
+  assert.deepEqual(readWeeklyIllustration('/illustrations/alias.jpg', f.root), maximum);
+  await mkdir(join(f.root, 'illustrations', 'directory.jpg'));
+  assert.throws(() => readWeeklyIllustration('/illustrations/directory.jpg', f.root), /hors budget/);
 });
 
 

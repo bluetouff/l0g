@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { readFileSync, realpathSync, statSync } from 'node:fs';
+import { closeSync, constants, fstatSync, openSync, readSync, realpathSync } from 'node:fs';
 import { resolve, sep } from 'node:path';
 import { isWeeklyIllustration, weeklyCoverTitle } from './weekly-presentation.ts';
 import type { WeeklyEdition } from '../config/weekly-editions.ts';
@@ -17,14 +17,32 @@ export function readWeeklyIllustration(src: string, publicDirectory = resolve('p
   const root = realpathSync(publicDirectory);
   const path = realpathSync(resolve(root, `.${src}`));
   if (!path.startsWith(`${root}${sep}`)) throw new Error('Hebdo OG : illustration hors du dossier public.');
-  const stat = statSync(path);
-  if (!stat.isFile() || stat.size === 0 || stat.size > 8_000_000) throw new Error('Hebdo OG : illustration hors budget.');
-  const bytes = readFileSync(path);
-  const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
-  const png = bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
-  const webp = bytes.subarray(0, 4).toString() === 'RIFF' && bytes.subarray(8, 12).toString() === 'WEBP';
-  if (!jpeg && !png && !webp) throw new TypeError('Hebdo OG : format raster invalide.');
-  return bytes;
+  const descriptor = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
+  try {
+    const before = fstatSync(descriptor);
+    if (!before.isFile() || before.size === 0 || before.size > 8_000_000) throw new Error('Hebdo OG : illustration hors budget.');
+    // Check and consume the same file, with one extra byte to detect growth.
+    const buffer = Buffer.alloc(before.size + 1);
+    let length = 0;
+    while (length < buffer.length) {
+      const count = readSync(descriptor, buffer, length, buffer.length - length, null);
+      if (count === 0) break;
+      length += count;
+    }
+    const after = fstatSync(descriptor);
+    if (length !== before.size || after.size !== before.size
+      || after.mtimeMs !== before.mtimeMs || after.ctimeMs !== before.ctimeMs) {
+      throw new Error('Hebdo OG : illustration modifiée pendant la lecture.');
+    }
+    const bytes = buffer.subarray(0, length);
+    const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+    const png = bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+    const webp = bytes.subarray(0, 4).toString() === 'RIFF' && bytes.subarray(8, 12).toString() === 'WEBP';
+    if (!jpeg && !png && !webp) throw new TypeError('Hebdo OG : format raster invalide.');
+    return bytes;
+  } finally {
+    closeSync(descriptor);
+  }
 }
 
 export function weeklySocialCard(edition: WeeklyEdition, illustration?: string) {
