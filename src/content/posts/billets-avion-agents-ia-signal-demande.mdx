@@ -1,0 +1,165 @@
+---
+title: 'Billets d’avion : les agents IA peuvent-ils fausser les prix ?'
+seoTitle: "Billets d’avion et agents IA : les risques sur les prix | l0g"
+description: Les recherches automatisées peuvent alourdir les coûts et brouiller les prévisions. Enquête sur les
+  mécanismes, les garde-fous et les preuves manquantes.
+tags: ["Aérien", "Intelligence artificielle", "Prix", "Concurrence", "Risques"]
+quickTake:
+  fact: "L’éditeur PROS décrit des outils intégrant les recherches et les réservations aux prévisions de demande."
+  importance: "Un agent peut multiplier les requêtes pour un seul voyageur, accroître le travail informatique et modifier la portée des indicateurs."
+  uncertainty: "L’effet causal des agents sur le prix des billets reste à mesurer. Les exemples chiffrés sont pédagogiques et les fonctionnalités des fournisseurs sont des déclarations commerciales."
+pubDate: "2026-11-05T15:20:00+01:00"
+updatedDate: "2026-11-05T15:20:00+01:00"
+draft: false
+ogImage: "/illustrations/news/airfares-ai-agents-demand-v1.jpg"
+ogTitle: "Billets d’avion : les agents IA peuvent-ils fausser les prix ?"
+---
+
+import AirfareAgentsFigure from "../../components/AirfareAgentsFigure.astro";
+
+Un voyageur cherche un aller-retour, avec un bagage et une arrivée avant le dîner. Son agent d’intelligence artificielle explore d’autres horaires, décale le départ, essaie un aéroport voisin, recommence chez plusieurs distributeurs. Au bout de cette exploration, il reste une personne, un déplacement et, peut-être, une réservation. Dans les journaux informatiques, l’activité peut avoir pris une tout autre ampleur.
+
+Cette scène est hypothétique. Le problème économique qu’elle soulève mérite pourtant d’être pris au sérieux : **les recherches de vols servent déjà à éclairer certaines décisions commerciales et prévisions de demande.** Quand la manière de chercher change, la signification du signal peut changer avec elle. Une compagnie qui interpréterait mal cette transformation pourrait conserver trop de sièges pour une clientèle future surestimée. Un intermédiaire pourrait, de son côté, supporter beaucoup plus de calcul pour chaque billet vendu.
+
+Le risque se situe à plusieurs endroits. Les recherches mobilisent de la puissance informatique et peuvent fournir des informations aux prévisionnistes. Leur multiplication par un même voyageur change la lecture de ces signaux. **L’effet causal des agents sur les tarifs reste à mesurer** dans les sources publiques examinées au **5 novembre 2026**. Les mécanismes qui suivent permettent de distinguer la facture technique, les erreurs possibles de prévision et les gains de comparaison pour le client.
+
+## Le passager futur entre dans le prix du siège
+
+Les machines comparent des tarifs depuis bien avant les assistants conversationnels. La Direction générale de l’aviation civile (DGAC) décrit ainsi un robot qui relève automatiquement des prix auprès de Travelport ou, avec leur accord, directement chez certaines compagnies. L’automatisation peut donc servir un travail de mesure parfaitement légitime. <sup className="source-ref"><a href="#source-01" aria-label="Source 1">1</a></sup>
+
+Pour comprendre ce qu’elle peut perturber, il faut d’abord entrer dans le calcul du vendeur. Une place qui part vide perd sa valeur commerciale au départ. Mais la vendre trop tôt à bas prix peut empêcher de l’attribuer à quelqu’un qui aurait payé davantage. Le *revenue management*, ou gestion des recettes, organise cet arbitrage. Dans une présentation publiée en mars 2026 et actualisée en avril, Amadeus rappelle que ce choix entre réservation immédiate et demande future demeure le fondement économique des systèmes modernes. <sup className="source-ref"><a href="#source-02" aria-label="Source 2">2</a></sup>
+
+Prenons un cas volontairement dépouillé. Il reste une place. Un client propose aujourd’hui 180 euros. Plus tard, un autre pourrait payer 300 euros. Avec une probabilité de 40 % de réaliser cette vente future, attendre rapporte en moyenne 120 euros. Accepter 180 euros est préférable. Si le modèle estime cette probabilité à 80 %, la recette future espérée atteint 240 euros : il devient rationnel, dans ce petit modèle, de conserver la place.
+
+Tous ces montants et probabilités sont des **hypothèses pédagogiques**, sans lien mesuré avec un volume de bots. L’exemple suppose une seule vente future possible, une place invendue sans valeur résiduelle et un vendeur neutre au risque. Il ignore notamment les correspondances, les annulations et les coûts différenciés. Son intérêt tient à la transmission : une erreur sur la demande attendue peut modifier une décision d’offre sans qu’un siège supplémentaire ait été vendu.
+
+<AirfareAgentsFigure lang="fr" kind="decision" />
+
+Dans les systèmes à classes tarifaires, cette décision peut prendre la forme d’une fermeture de l’accès à une offre bon marché. Une classe tarifaire désigne ici des conditions de vente et un niveau de prix, pas nécessairement une cabine distincte. La tarification continue permet d’autres ajustements, sans se limiter aux mêmes paliers prédéfinis. Les architectures diffèrent, mais elles doivent toutes estimer la valeur de la capacité qu’elles conservent. <sup className="source-ref"><a href="#source-02" aria-label="Source 2">2</a></sup>
+
+Les travaux de Kevin R. Williams sur les marchés aériens distinguent les ajustements liés aux chocs de demande de ceux associés à l’évolution de la disposition des voyageurs à payer. Cette recherche sur la [tarification algorithmique](/glossaire/tarification-algorithmique/) fournit le cadre économique : plusieurs forces peuvent faire bouger un tarif entre deux consultations. <sup className="source-ref"><a href="#source-03" aria-label="Source 3">3</a></sup>
+
+Entre deux rafraîchissements d’une page, des clients peuvent réserver, une disponibilité changer ou une autre offre apparaître. Pour isoler l’effet d’une recherche, il faudrait comparer la situation du même vol au même instant avec et sans cette requête supplémentaire. Cette comparaison contrefactuelle est le cœur du problème de mesure.
+
+## Les recherches ont déjà une place dans la fabrique des prévisions
+
+Dans une démonstration du **18 septembre 2025**, l’éditeur PROS présente des agents utilisant les données de recherche et de réservation pour ajuster les prévisions, avec une intégration aux outils de gestion des recettes et de tarification. C’est une fonctionnalité revendiquée par le fournisseur ; sa robustesse dans chaque déploiement demanderait un audit. <sup className="source-ref"><a href="#source-04" aria-label="Source 4">4</a></sup>
+
+La documentation de **FareNet**, chez PROS, rapproche recherches, conversions et remplissage afin d’éclairer les ajustements tarifaires. Elle porte sur les données des moteurs de réservation concernés. Le parcours suivi par un agent détermine les requêtes qui atteignent effectivement ce point de collecte. <sup className="source-ref"><a href="#source-05" aria-label="Source 5">5</a></sup>
+
+Cette distinction est essentielle. Selon le parcours, une demande de l’agent peut s’arrêter dans un cache, parvenir à un distributeur ou provoquer plusieurs appels en aval. Une réponse peut contenir de nombreuses offres. **Le nombre d’options examinées, le nombre de requêtes techniques et le nombre de voyageurs ne sont pas interchangeables.** Même le mot « recherche » peut désigner des événements différents selon celui qui les compte.
+
+Une étude de Hortaçsu, Natan, Parsley, Schwieg et Williams donne un exemple concret du lien entre recherche et mesure de demande. Dans leur application au transport aérien, les auteurs utilisent les consommateurs qui commencent une recherche sur le site d’une compagnie pour mesurer leurs arrivées, à partir des traces de navigation. **La section 5.1 de l’article publié en 2023 décrit ce choix de mesure.** Elle éclaire l’intérêt de ces signaux pour l’estimation ; son objet reste distinct de la perturbation par des agents IA. <sup className="source-ref"><a href="#source-06" aria-label="Source 6">6</a></sup>
+
+On comprend pourquoi des recherches peuvent intéresser un prévisionniste : elles apportent un signal avant l’achat. Encore faut-il savoir ce qu’elles représentent. Une personne peut hésiter entre plusieurs jours ; un agent peut examiner systématiquement tous ces jours. Si l’outil traite chaque possibilité comme une intention indépendante, il transforme un ensemble d’alternatives en demande supplémentaire.
+
+<AirfareAgentsFigure lang="fr" kind="conversion" />
+
+Imaginons une cohorte fixe de 1 000 intentions de voyage, dont 100 aboutissent à une réservation pendant la période observée. Avec dix requêtes par intention, on compte 10 000 requêtes et une réservation pour cent requêtes. Avec mille requêtes par intention, on obtient un million de requêtes et une réservation pour dix mille requêtes. La conversion calculée sur les requêtes tombe de 1 % à 0,01 %. La conversion des intentions reste de 10 %.
+
+Le scénario garde les achats identiques et modifie seulement l’intensité des recherches. Il rend visible un défaut possible de mesure : le dénominateur évolue avec la manière d’explorer les offres. La même difficulté touche la date, la destination et le prix : un assistant peut tester des options que son utilisateur achètera rarement.
+
+Le résultat tarifaire dépend du traitement appliqué. Un modèle donnant beaucoup de poids au volume brut pourrait surestimer la demande. Un autre pourrait lire la chute des conversions comme un manque d’attractivité. Un système recalibré pourrait regrouper les répétitions et mieux identifier les alternatives pertinentes. L’effet peut donc changer de sens selon les données et les règles du modèle.
+
+La fondation de sécurité informatique OWASP nomme *skewing* la manipulation automatisée et intentionnelle de métriques. Cette menace constitue un point de comparaison technique. Le bruit involontaire d’un assistant qui cherche pour son utilisateur relève ici d’une hypothèse analytique distincte. <sup className="source-ref"><a href="#source-07" aria-label="Source 7">7</a></sup>
+
+## La première facture concerne le calcul
+
+L’association internationale du transport aérien, **IATA**, décrit dès le **7 octobre 2025** les tensions que la hausse du nombre de recherches par réservation exerce sur les systèmes et les coûts. Sa présentation publique d’un livre blanc mentionne **14 compagnies, 11 fournisseurs informatiques et huit vendeurs** associés au travail. Ce diagnostic représente le point de vue de l’industrie. Le ratio [look-to-book](/glossaire/look-to-book/) doit toujours préciser les recherches et les réservations qu’il compte. <sup className="source-ref"><a href="#source-08" aria-label="Source 8">8</a></sup>
+
+Le mécanisme est simple : quand le nombre d’explorations augmente plus vite que les ventes, le travail nécessaire pour obtenir une commande peut augmenter. Mais la dépense dépend aussi de la complexité de chaque réponse, de la mutualisation et de la part servie sans recalcul complet. Une recherche large peut coûter davantage qu’une vérification ciblée ; deux appels comptabilisés de la même façon peuvent mobiliser des ressources très différentes.
+
+D’où l’intérêt du cache : conserver temporairement une réponse pour éviter de refaire tout le travail. Le 5 février 2026, Sabre a annoncé une solution qui arbitre entre interrogation en direct et résultats mis en cache. Son communiqué présente aussi cette architecture comme une manière de réduire l’exposition des agences aux contraintes de volume et à des pénalités de compagnies. Il s’agit d’une description commerciale, sans barème public permettant de calculer un coût universel par recherche. <sup className="source-ref"><a href="#source-09" aria-label="Source 9">9</a></sup>
+
+<AirfareAgentsFigure lang="fr" kind="pipeline" />
+
+Pour un agent, une exploration large pourrait ainsi commencer avec des informations indicatives, puis n’interroger en direct que les finalistes. Le gain dépend de la capacité à partager les résultats, de leur durée de validité et de la volatilité des offres. La vérification finale reste un moment distinct : un prix conservé en mémoire ne garantit pas qu’une place sera encore disponible aux mêmes conditions lors de l’achat.
+
+Ce compromis soulève une question de distribution. Un petit intermédiaire peut avoir besoin d’accéder souvent aux données pour offrir une bonne comparaison. Si son accès est coûteux ou étroit, il risque de montrer moins d’options ou des résultats moins frais. Un acteur capable de mutualiser beaucoup de recherches peut disposer d’un avantage. C’est une conséquence économique possible des règles d’accès, à documenter contrat par contrat, plutôt qu’une preuve d’éviction déjà établie.
+
+La répartition de cette dépense reste une question contractuelle et concurrentielle. Une compagnie peut l’absorber, la facturer au distributeur, réduire le recalcul grâce au cache ou limiter certains usages. La part qui atteint éventuellement le voyageur dépend de ces choix et des possibilités de concurrence.
+
+## Le siège bloqué et le client mieux informé
+
+Une requête de prix ne réserve généralement aucune place. Certaines actions vont plus loin : elles créent une réservation temporaire ou retiennent une disponibilité. Lorsque de telles retenues sont accumulées sans achat, elles peuvent priver les autres clients d’un inventaire réellement vendable. L’OWASP décrit cette menace de *denial of inventory*, en citant notamment les sièges d’avion. <sup className="source-ref"><a href="#source-10" aria-label="Source 10">10</a></sup>
+
+La retenue agit d’abord sur la disponibilité : un client peut perdre l’accès à une offre, choisir une option plus chère ou renoncer. Documenter ce canal demande de suivre les réservations temporaires, leurs quantités, leur durée et leur libération. Les recherches de prix et les actes qui retiennent des sièges doivent donc être observés séparément.
+
+À l’autre bout du raisonnement, les agents peuvent exercer une pression favorable au consommateur. Prenons un assistant qui trouve une correspondance acceptable, compare les bagages et découvre une compagnie que l’utilisateur n’aurait pas consultée. S’il élargit véritablement les choix, il rend certains écarts de prix plus difficiles à maintenir. C’est un contre-mécanisme économique sérieux, dont l’ampleur reste à mesurer.
+
+<AirfareAgentsFigure lang="fr" kind="channels" />
+
+Cette promesse dépend des offres visibles et de l’objectif de l’agent. Le prix de base peut perdre son avantage une fois les bagages ajoutés. Une couverture partielle du marché limite les choix. Une commission ou une mise en avant commerciale peut aussi orienter le classement. Ces paramètres déterminent la qualité réelle de la comparaison.
+
+Autre scénario à tester : des assistants suivant des règles proches achètent au même moment lorsqu’un seuil de prix est atteint. Des réservations réelles se concentreraient alors dans le temps. La compagnie aurait une demande plus corrélée à gérer. Cette possibilité reste une hypothèse de travail pour un environnement contrôlé.
+
+La fréquence de révision peut amplifier ou amortir ces interactions. Un modèle lent, supervisé et adossé aux ventes réagit autrement qu’un outil ajusté très vite à des signaux récents. Évaluer une boucle instable suppose de suivre cette cadence, la transmission aux prix et les réactions des acheteurs.
+
+## Le dossier des prix personnalisés pose une autre question
+
+La hausse d’un prix commun à tous les clients et l’adaptation d’un prix à une personne sont deux phénomènes distincts. Le premier peut résulter de la disponibilité ou de la demande anticipée. Le second suppose de tenir compte de caractéristiques individuelles ou de groupes pour déterminer l’offre tarifaire. L’usage de l’IA, à lui seul, ne permet pas de choisir entre ces explications.
+
+Le précédent français est précis et ancien. Dans son bilan du **25 janvier 2016**, la CNIL, autorité française de protection des données, explique que les contrôles menés avec la répression des fraudes ont observé des variations de prix, sans établir de modulation par adresse IP sur les sites examinés. La période et le périmètre de cette enquête bornent la conclusion. <sup className="source-ref"><a href="#source-11" aria-label="Source 11">11</a></sup>
+
+Le **28 octobre 2026**, la Federal Trade Commission, l’autorité américaine de concurrence et de protection des consommateurs, a demandé des informations à **neuf entreprises**, dont **Delta, United et JetBlue**, sur l’usage des données personnelles pour les prix et, dans d’autres secteurs, les rémunérations. Cette étude relève de la section 6(b) : le lancement établit une demande d’information, avec un statut distinct d’un constat d’infraction. Le délai annoncé de **45 jours** commence à la réception des ordres. <sup className="source-ref"><a href="#source-12" aria-label="Source 12">12</a></sup>
+
+L’ordre type rendu public donne de la matière à l’enquête : il demande notamment les données utilisées, les systèmes de prix, les cas où l’entreprise modifie ou écarte les résultats proposés et les évaluations des outils. Ces documents permettraient de confronter les déclarations des entreprises à leurs procédures et tests. <sup className="source-ref"><a href="#source-12" aria-label="Source 12">12</a></sup>
+
+Delta avait exposé sa position dans une lettre du **31 juillet 2025**, publiée le **7 août**. La compagnie y décrit des données agrégées par liaison et vol, ainsi que la supervision des analystes. Elle affirme transmettre à Fetcherr des informations dépourvues de données personnelles. Cette déclaration d’entreprise fournit le contradictoire, avec sa date et son statut. <sup className="source-ref"><a href="#source-13" aria-label="Source 13">13</a></sup>
+
+Même un système uniquement agrégé pourrait, en principe, mal interpréter des recherches automatisées. À l’inverse, un système parfaitement capable de filtrer les répétitions pourrait soulever une question de personnalisation s’il utilisait d’autres informations individuelles. Les deux investigations requièrent donc des preuves différentes.
+
+L’agent du voyageur ouvre une frontière supplémentaire. Un plafond de dépense, une urgence familiale ou une date impossible à décaler l’aident à choisir. Transmis au vendeur, ces renseignements pourraient aussi révéler la marge de manœuvre du client. **Le flux de ces contraintes privées mérite donc un audit**, sans attribution ici à un service identifié.
+
+<AirfareAgentsFigure lang="fr" kind="privacy" />
+
+Une architecture protectrice peut conserver les contraintes privées du côté de l’utilisateur, transmettre les seules informations nécessaires à la recherche et faire confirmer séparément l’achat. Elle doit aussi préciser qui rémunère l’intermédiaire et comment les résultats sont classés. Le mandat du logiciel est aussi important que sa capacité à comparer : un assistant efficace pour maximiser une commission ne poursuivrait pas le même objectif qu’un assistant chargé de minimiser le coût total d’un voyage.
+
+## Pour mesurer l’effet, il faut suivre la décision jusqu’au bout
+
+Le premier travail consiste à remettre des unités sur chaque compteur. Qu’appelle-t-on une requête ? À quel étage est-elle comptée ? Une réponse contient-elle une offre ou des centaines ? Le dénominateur est-il une réservation, une commande, un billet émis ou un passager ? Une même intention apparaît-elle dans plusieurs sessions ? Sans ces réponses, comparer deux ratios de recherches par achat peut donner une précision trompeuse.
+
+Il faut ensuite séparer les parcours. Une exploration servie en cache, une interrogation directe et une retenue de siège doivent laisser des traces différentes. Cette séparation n’exige pas nécessairement de transmettre partout l’identité civile du voyageur. Un regroupement temporaire des requêtes, limité à un objectif et à une durée, pourrait être étudié ; sa mise en œuvre devrait être évaluée pour ses risques de suivi et ses possibilités d’erreur. L’attribution d’une intention reste une estimation, pas une vérité acquise.
+
+L’enquête doit ensuite suivre le signal jusque dans la décision : indicateur reçu par le modèle, prévision révisée, recommandation, puis tarif appliqué. Annulations, capacité disponible, concurrents et interventions humaines peuvent modifier le résultat. Les traces doivent permettre de repérer l’étape sensible comme les filtres qui absorbent le bruit.
+
+Une expérimentation convaincante commencerait dans une copie isolée du système, avec des scénarios explicites et des données autorisées. On ferait varier la répétition des recherches en conservant les intentions et achats sous-jacents, puis on examinerait l’écart de prévision et de décision. Les résultats ne seraient généralisables qu’aux configurations testées. Pour une observation réelle, l’accord d’un partenaire et un protocole tenant compte des interactions entre vols seraient nécessaires.
+
+Des devis presque simultanés, à prestations égales et sur plusieurs canaux, éclairent les écarts d’accès, de fraîcheur et de prix total. L’effet causal des recherches exige un protocole supplémentaire. Notre collecte est documentaire ; elle s’est tenue à distance des réservations de test et de toute génération de trafic sur les systèmes des compagnies.
+
+Le test décisif consiste à augmenter les recherches d’un agent en gardant fixes les intentions de voyage et les achats, puis à observer l’estimation du nombre d’acheteurs et les décisions qui suivent. Un filtre efficace peut maîtriser une partie du risque statistique. La facture technique, elle, dépend encore du volume servi et de son traitement.
+
+Pour le voyageur, la promesse mérite d’être jugée sur un résultat concret : **accéder aux bonnes offres, préserver ses informations et payer le coût total attendu**. La capacité à multiplier les recherches ne dit rien, à elle seule, de la qualité de ce service. Les agents peuvent élargir les choix et déplacer le pouvoir de négociation ; les règles d’accès et les contrats décideront aussi à qui profite cette nouvelle façon d’acheter.
+
+
+## Prolonger la lecture
+
+Les [algorithmes de prix et la concurrence](/posts/prix-automatiques-concurrence-algorithmes/) posent une autre question : la réaction des vendeurs aux décisions de leurs concurrents. Notre enquête sur [les données des voitures et l’assurance](/posts/voiture-donnees-assurance/) suit la circulation d’informations personnelles jusqu’à leur usage commercial.
+
+## Méthode et limites
+
+Enquête documentaire arrêtée au **5 novembre 2026**. Les sources comprennent des autorités publiques, des travaux académiques originaux, des documentations de fournisseurs et une déclaration de compagnie datée de 2025. Les fonctionnalités commerciales sont attribuées à leurs éditeurs. La collecte a porté sur les documents publics, sans entretien, journaux internes, réservation de test ni génération de trafic.
+
+Les deux scénarios chiffrés sont hypothétiques : la vente future vaut 300 × 40 % = 120 euros ou 300 × 80 % = 240 euros ; l’indifférence se situe à 180/300 = 60 %. Pour la cohorte, 100 réservations divisées par 10 000 ou 1 000 000 de requêtes donnent respectivement 1 % et 0,01 %, tandis que 100/1 000 intentions reste égal à 10 %. Ces calculs isolent des mécanismes, avec des entrées entièrement pédagogiques.
+
+L’article intégral de demande a été consulté pour sa méthode de mesure des arrivées. Pour l’étude de Williams sur la tarification dynamique, la notice et le résumé institutionnels suffisent au point qualitatif utilisé. La présentation publique IATA a été consultée, avec un accès distinct du livre blanc intégral. L’ordre type FTC est accessible ; les réponses des entreprises et les effets réels des agents restent à documenter. Le visuel d’ouverture est une illustration conceptuelle.
+
+**Licence éditoriale : CC BY 4.0.**
+
+## Sources et références
+
+<ol className="sources-list">
+<li id="source-01"><span className="source-meta">S01 · DGAC / ministère chargé des Transports · 2022-04-21 · Consulté le : 5 novembre 2026</span><a href="https://www.ecologie.gouv.fr/politiques-publiques/indice-prix-du-transport-aerien-passagers" target="_blank" rel="noopener noreferrer">Indice des prix du transport aérien de passagers</a><details><summary>Passages et périmètre</summary><p>Méthodologie, questions 10 et 11. Publication initiale le 21 avril 2022, page mise à jour le 15 octobre 2026. Collecte automatisée via Travelport ou accès direct autorisé. La méthode documente une observation de prix.</p></details></li>
+<li id="source-02"><span className="source-meta">S02 · Amadeus / Thomas Fiig · 2026-03-26 · Consulté le : 5 novembre 2026</span><a href="https://amadeus.com/en/blog/articles/impact-artificial-intelligence-airline-revenue-management" target="_blank" rel="noopener noreferrer">Impact of Artificial Intelligence on Airline Revenue Management</a><details><summary>Passages et périmètre</summary><p>Publication du 26 mars 2026, mise à jour le 29 avril. Arbitrage entre vente immédiate et demande future. Présentation d’un fournisseur, avec son statut commercial.</p></details></li>
+<li id="source-03"><span className="source-meta">S03 · Kevin R. Williams / Yale / Econometrica · 2022 · Consulté le : 5 novembre 2026</span><a href="https://economics.yale.edu/welfare-effects-dynamic-pricing-evidence-airline-markets" target="_blank" rel="noopener noreferrer">The Welfare Effects of Dynamic Pricing: Evidence from Airline Markets</a><details><summary>Passages et périmètre</summary><p>Notice et résumé institutionnels de l’article de 2022. Chocs de demande et évolution de la disposition à payer. Aucune estimation numérique de bien-être reprise.</p></details></li>
+<li id="source-04"><span className="source-meta">S04 · PROS · 2025-09-18 · Consulté le : 5 novembre 2026</span><a href="https://pros.com/learn/videos/smarter-market-moves-revenue-management-agents-for-airlines/" target="_blank" rel="noopener noreferrer">Smarter Market Moves with PROS Revenue Management Agents for Airlines</a><details><summary>Passages et périmètre</summary><p>Démonstration du 18 septembre 2025. Recherche et réservation dans les prévisions ; fonctionnalité revendiquée par PROS, déploiements non audités ici.</p></details></li>
+<li id="source-05"><span className="source-meta">S05 · PROS · Date non affichée · Consulté le : 5 novembre 2026</span><a href="https://pros.com/products/offer-marketing/farenet/dashboards/" target="_blank" rel="noopener noreferrer">FareNet Reporting Suite</a><details><summary>Passages et périmètre</summary><p>Documentation produit sans date affichée. Recherches, conversion et remplissage sur les moteurs de réservation concernés. Périmètre fournisseur.</p></details></li>
+<li id="source-06"><span className="source-meta">S06 · Hortaçsu, Natan, Parsley, Schwieg, Williams / Quantitative Economics · 2023-11-17 · Consulté le : 5 novembre 2026</span><a href="https://onlinelibrary.wiley.com/doi/full/10.3982/QE2147" target="_blank" rel="noopener noreferrer">Demand Estimation with Infrequent Purchases and Small Market Sizes</a><details><summary>Passages et périmètre</summary><p>Article intégral consulté, section 5.1 : utilisation du clickstream et des consommateurs commençant une recherche pour mesurer les arrivées dans l’application aérienne. Recherche publiée en 2023, distincte de l’effet des agents IA.</p></details></li>
+<li id="source-07"><span className="source-meta">S07 · OWASP Foundation · Date non affichée · Consulté le : 5 novembre 2026</span><a href="https://owasp.org/www-project-automated-threats-to-web-applications/assets/oats/EN/OAT-016_Skewing.html" target="_blank" rel="noopener noreferrer">OAT-016 Skewing</a><details><summary>Passages et périmètre</summary><p>Taxonomie OAT-016 : manipulation automatisée intentionnelle de métriques. L’effet involontaire d’agents légitimes relève de l’analyse conditionnelle du présent article.</p></details></li>
+<li id="source-08"><span className="source-meta">S08 · IATA · 2025-10-07 · Consulté le : 5 novembre 2026</span><a href="https://www.iata.org/en/publications/newsletters/airline-retailing-hub/look-to-book-white-paper/" target="_blank" rel="noopener noreferrer">Look-to-Book: managing search volumes while creating customer-centric Offers</a><details><summary>Passages et périmètre</summary><p>Présentation publique du 7 octobre 2025. Participation de 14 compagnies, 11 fournisseurs informatiques et huit vendeurs. Le livre blanc intégral reste hors du corpus consulté ; point de vue de l’industrie.</p></details></li>
+<li id="source-09"><span className="source-meta">S09 · Sabre · 2026-02-05 · Consulté le : 5 novembre 2026</span><a href="https://investors.sabre.com/news-releases/news-release-details/sabre-solves-look-book-constraints-cache-powered-intelligent" target="_blank" rel="noopener noreferrer">Cache-powered Intelligent Shopping : annonce produit</a><details><summary>Passages et périmètre</summary><p>Communiqué du 5 février 2026 sur Cache-powered Intelligent Shopping. Architecture cache/direct et contraintes de recherche. Les performances publicitaires restent des déclarations commerciales.</p></details></li>
+<li id="source-10"><span className="source-meta">S10 · OWASP Foundation · Date non affichée · Consulté le : 5 novembre 2026</span><a href="https://owasp.org/www-project-automated-threats-to-web-applications/assets/oats/EN/OAT-021_Denial_of_Inventory.html" target="_blank" rel="noopener noreferrer">OAT-021 Denial of Inventory</a><details><summary>Passages et périmètre</summary><p>Taxonomie OAT-021. Accumulation de retenues sur un inventaire sans achat, dont sièges d’avion. Ce mécanisme exige un acte de retenue distinct d’une simple recherche de prix.</p></details></li>
+<li id="source-11"><span className="source-meta">S11 · CNIL / DGCCRF · 2016-01-25 · Consulté le : 5 novembre 2026</span><a href="https://www.cnil.fr/fr/ip-tracking-conclusions-de-lenquete-conjointe-menee-par-la-cnil-et-la-dgccrf-0" target="_blank" rel="noopener noreferrer">IP Tracking : conclusions de l’enquête conjointe</a><details><summary>Passages et périmètre</summary><p>Bilan historique publié le 25 janvier 2016. Contrôles CNIL/DGCCRF et variations observées, avec la limite du périmètre inspecté et de la période.</p></details></li>
+<li id="source-12"><span className="source-meta">S12 · Federal Trade Commission · 2026-10-28 · Consulté le : 5 novembre 2026</span><a href="https://www.ftc.gov/news-events/news/press-releases/2026/10/ftc-launches-personalized-pricing-compensation-inquiry" target="_blank" rel="noopener noreferrer">FTC Launches Personalized Pricing and Compensation Inquiry</a><a href="https://www.ftc.gov/system/files/ftc_gov/pdf/PP6b-Special-Order-Shell.pdf" target="_blank" rel="noopener noreferrer">Ordre type officiel de la FTC</a><details><summary>Passages et périmètre</summary><p>Communiqué du 28 octobre 2026 et ordre type officiel consulté. Neuf destinataires ; réponse sous 45 jours à compter de la réception. Étude fondée sur la section 6(b). Ordre : données, modèles, modification ou écartement des résultats et évaluations, notamment spécifications 7-10 et 18-23.</p></details></li>
+<li id="source-13"><span className="source-meta">S13 · Delta Air Lines / Peter Carter · 2025-08-07 · Consulté le : 5 novembre 2026</span><a href="https://news.delta.com/delta-responds-misinformation-around-ai-pricing" target="_blank" rel="noopener noreferrer">Delta responds to misinformation around AI pricing</a><details><summary>Passages et périmètre</summary><p>Lettre du 31 juillet 2025, publiée le 7 août. Données agrégées et supervision déclarées par Delta ; position intéressée.</p></details></li>
+</ol>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 800" role="img" aria-labelledby="af-conversion-fr-m-title af-conversion-fr-m-desc" style="width:100%;height:auto" class="l0g-airfare-agents-svg">
+<title id="af-conversion-fr-m-title">Un voyageur, plusieurs compteurs</title><desc id="af-conversion-fr-m-desc">Une même cohorte synthétique de1000intentions et100réservations. Dix ou mille requêtes par intention changent le taux de conversion calculé par requête.</desc>
+<rect id="af-conversion-fr-m-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="420" height="800" rx="16" fill="var(--color-ink)"/>
+<text data-panel="af-conversion-fr-m-frame" x="22" y="38" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / VOLS ET AGENTS IA</text>
+<text data-panel="af-conversion-fr-m-frame" x="22" y="82" font-family="l0g Airfare Agents" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">Un voyageur,</text>
+<text data-panel="af-conversion-fr-m-frame" x="22" y="116" font-family="l0g Airfare Agents" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">plusieurs compteurs</text>
+<text data-panel="af-conversion-fr-m-frame" x="22" y="148" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-amber)">Cohorte synthétique</text>
+<rect id="af-conversion-fr-m-cohort" x="22" y="163" width="376" height="93" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="af-conversion-fr-m-cohort" data-metric="intentions" data-value="1000" x="42" y="200" font-family="l0g Airfare Agents" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-paper)">1 000 intentions</text>
+<text data-panel="af-conversion-fr-m-cohort" data-metric="bookings" data-value="100" x="42" y="235" font-family="l0g Airfare Agents" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-signal)">100 réservations</text>
+<rect id="af-conversion-fr-m-case-0" stroke="var(--color-line-strong)" stroke-width="1" x="22" y="287" width="180" height="307" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-conversion-fr-m-case-0" x="40" y="322" font-family="l0g Airfare Agents" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-signal)">Exploration</text>
+<text data-panel="af-conversion-fr-m-case-0" x="40" y="350" font-family="l0g Airfare Agents" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-signal)">limitée</text>
+<text data-panel="af-conversion-fr-m-case-0" data-metric="requests-per-intention" data-value="10" x="40" y="395" font-family="l0g Airfare Agents" font-size="32" font-weight="700" text-anchor="start" fill="var(--color-paper)">10</text>
+<text data-panel="af-conversion-fr-m-case-0" x="40" y="426" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">requêtes / projet</text>
+<text data-panel="af-conversion-fr-m-case-0" data-metric="total-requests" data-value="10000" x="40" y="477" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">10 000</text>
+<text data-panel="af-conversion-fr-m-case-0" x="40" y="508" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">requêtes</text>
+<text data-panel="af-conversion-fr-m-case-0" data-metric="request-conversion" data-value="1" x="40" y="557" font-family="l0g Airfare Agents" font-size="30" font-weight="700" text-anchor="start" fill="var(--color-signal)">1 %</text>
+<rect id="af-conversion-fr-m-case-1" stroke="var(--color-line-strong)" stroke-width="1" x="218" y="287" width="180" height="307" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-conversion-fr-m-case-1" x="236" y="322" font-family="l0g Airfare Agents" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-amber)">Exploration</text>
+<text data-panel="af-conversion-fr-m-case-1" x="236" y="350" font-family="l0g Airfare Agents" font-size="19" font-weight="700" text-anchor="start" fill="var(--color-amber)">intensive</text>
+<text data-panel="af-conversion-fr-m-case-1" data-metric="requests-per-intention" data-value="1000" x="236" y="395" font-family="l0g Airfare Agents" font-size="32" font-weight="700" text-anchor="start" fill="var(--color-paper)">1 000</text>
+<text data-panel="af-conversion-fr-m-case-1" x="236" y="426" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">requêtes / projet</text>
+<text data-panel="af-conversion-fr-m-case-1" data-metric="total-requests" data-value="1000000" x="236" y="477" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">1 000 000</text>
+<text data-panel="af-conversion-fr-m-case-1" x="236" y="508" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">requêtes</text>
+<text data-panel="af-conversion-fr-m-case-1" data-metric="request-conversion" data-value="0.01" x="236" y="557" font-family="l0g Airfare Agents" font-size="30" font-weight="700" text-anchor="start" fill="var(--color-amber)">0,01 %</text>
+<rect id="af-conversion-fr-m-intent-conversion" x="22" y="625" width="376" height="82" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="af-conversion-fr-m-intent-conversion" data-metric="intention-conversion" data-value="10" x="42" y="660" font-family="l0g Airfare Agents" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-signal)">100 / 1 000 = 10 %</text>
+<text data-panel="af-conversion-fr-m-intent-conversion" x="42" y="692" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Réservations / intentions</text>
+<text data-panel="af-conversion-fr-m-frame" x="22" y="738" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Même période et point de mesure</text>
+<path data-connector="footer" d="M22 747 H398" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="af-conversion-fr-m-frame" x="22" y="780" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Calcul l0g · données hypothétiques</text>
+</svg>

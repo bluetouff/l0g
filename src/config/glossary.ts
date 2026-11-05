@@ -950,6 +950,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "Look-to-book", "nom": "Recherches par réservation", "def": "Rapport entre le nombre de recherches ou de demandes d’offres et le nombre de réservations, sur une même période et un même périmètre. Son interprétation exige de préciser le point de collecte, la définition d’une recherche, le traitement du cache et l’événement compté comme réservation. Un ratio accru peut refléter davantage d’exploration par voyageur ; la conversion par intention de voyage suit un dénominateur distinct.", "guide": "/posts/billets-avion-agents-ia-signal-demande/"},
       {"sigle": "Attribution cyber", "nom": "Relier une activité cyber à des responsables", "def": "Analyse cherchant à relier une activité cyber à des opérations apparentées, un groupe ou un responsable. Le regroupement technique d’activités, l’identification de personnes et la décision d’attribution politique répondent à des questions distinctes. Une conclusion précise ses éléments, ses incertitudes et son statut.", "guide": "/posts/guerre-machines-04-sabotage-attribution/"},
       {"sigle": "Horodatage", "nom": "Associer une date et une heure à un événement", "def": "Enregistrement d’une date et d’une heure associées à un événement. Comparer plusieurs systèmes demande de connaître le référentiel temporel, les décalages de leurs horloges et la précision des mesures. Les horaires originaux et la justification des corrections doivent rester disponibles.", "guide": "/posts/guerre-machines-04-sabotage-attribution/"},
 
@@ -1261,6 +1262,7 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "look-to-book": {"articles": [{"label": "Billets d’avion et recherches des agents IA", "href": "/posts/billets-avion-agents-ia-signal-demande/", "kind": "article"}], "sources": [{"label": "IATA, Look-to-Book, 7 octobre 2025", "href": "https://www.iata.org/en/publications/newsletters/airline-retailing-hub/look-to-book-white-paper/", "kind": "source"}], "related": ["tarification-algorithmique"]},
   "minerais-critiques": {"articles": [{"label": "Minerais critiques : les propriétaires des mines américaines", "href": "/posts/mines-americaines-minerais-critiques-propriete-etrangere/", "kind": "article"}], "sources": [{"label": "USGS, liste des minerais critiques 2025", "href": "https://www.usgs.gov/news/science-snippet/interior-department-releases-final-2025-list-critical-minerals", "kind": "source"}], "related": ["dependance-nette-aux-importations"]},
   "dependance-nette-aux-importations": {"articles": [{"label": "Minerais critiques : les propriétaires des mines américaines", "href": "/posts/mines-americaines-minerais-critiques-propriete-etrangere/", "kind": "article"}], "sources": [{"label": "USGS, Mineral Commodity Summaries 2026", "href": "https://pubs.usgs.gov/publication/mcs2026", "kind": "source"}], "related": ["minerais-critiques"]},
   frr: {
@@ -3859,7 +3861,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     sources: [{ label: 'AMF-ACPR, note explicative sur les produits structurés, juin 2026', href: 'https://acpr.banque-france.fr/system/files/2026-06/20260622_Note_ACPR-AMF_Produits%20structur%C3%A9s.pdf', kind: 'source' }],
   },
   'tarification-algorithmique': {
-    articles: [{ label: 'Prix automatiques et concurrence', href: '/posts/prix-automatiques-concurrence-algorithmes/', kind: 'article' }],
+    articles: [{ label: 'Prix automatiques et concurrence', href: '/posts/prix-automatiques-concurrence-algorithmes/', kind: 'article' }, {"label": "Billets d’avion et agents IA", "href": "/posts/billets-avion-agents-ia-signal-demande/", "kind": "article"}],
     sources: [{ label: 'Autorité de la concurrence et Bundeskartellamt, Algorithms and Competition', href: 'https://www.autoritedelaconcurrence.fr/sites/default/files/Algorithms_and_Competition_Working-Paper.pdf', kind: 'source' }],
   },
   'marche-predictif': {"articles": [{"label": "Polymarket et le droit financier européen", "href": "/posts/polymarket-europe-paris-produits-financiers/", "kind": "article"}, {"label": "FIFA et Predictstreet : volumes et risque", "href": "/posts/fifa-predictstreet-volume-wash-trading/", "kind": "article"}], "sources": [{"label": "ESMA, contrats événementiels et options binaires, 3 juillet 2026", "href": "https://www.esma.europa.eu/sites/default/files/2026-07/ESMA35-243228190-8148_Public_Statement_on_the_application_of_the_national_product_intervention_measures_on_binary_options_to_event_contracts.pdf", "kind": "source"}]},

@@ -1,0 +1,134 @@
+---
+import decision_fr_desktop from '../figures/airfare-agents-2026/decision.fr.desktop.svg?raw';
+import decision_fr_mobile from '../figures/airfare-agents-2026/decision.fr.mobile.svg?raw';
+import decision_en_desktop from '../figures/airfare-agents-2026/decision.en.desktop.svg?raw';
+import decision_en_mobile from '../figures/airfare-agents-2026/decision.en.mobile.svg?raw';
+import conversion_fr_desktop from '../figures/airfare-agents-2026/conversion.fr.desktop.svg?raw';
+import conversion_fr_mobile from '../figures/airfare-agents-2026/conversion.fr.mobile.svg?raw';
+import conversion_en_desktop from '../figures/airfare-agents-2026/conversion.en.desktop.svg?raw';
+import conversion_en_mobile from '../figures/airfare-agents-2026/conversion.en.mobile.svg?raw';
+import pipeline_fr_desktop from '../figures/airfare-agents-2026/pipeline.fr.desktop.svg?raw';
+import pipeline_fr_mobile from '../figures/airfare-agents-2026/pipeline.fr.mobile.svg?raw';
+import pipeline_en_desktop from '../figures/airfare-agents-2026/pipeline.en.desktop.svg?raw';
+import pipeline_en_mobile from '../figures/airfare-agents-2026/pipeline.en.mobile.svg?raw';
+import channels_fr_desktop from '../figures/airfare-agents-2026/channels.fr.desktop.svg?raw';
+import channels_fr_mobile from '../figures/airfare-agents-2026/channels.fr.mobile.svg?raw';
+import channels_en_desktop from '../figures/airfare-agents-2026/channels.en.desktop.svg?raw';
+import channels_en_mobile from '../figures/airfare-agents-2026/channels.en.mobile.svg?raw';
+import privacy_fr_desktop from '../figures/airfare-agents-2026/privacy.fr.desktop.svg?raw';
+import privacy_fr_mobile from '../figures/airfare-agents-2026/privacy.fr.mobile.svg?raw';
+import privacy_en_desktop from '../figures/airfare-agents-2026/privacy.en.desktop.svg?raw';
+import privacy_en_mobile from '../figures/airfare-agents-2026/privacy.en.mobile.svg?raw';
+interface Props {lang?: 'fr' | 'en'; kind: 'decision' | 'conversion' | 'pipeline' | 'channels' | 'privacy'}
+const {lang='fr',kind}=Astro.props;
+const captions={
+  "decision": {
+    "number": "01",
+    "sources": [
+      "02",
+      "03"
+    ],
+    "fr": {
+      "title": "La valeur attendue de la dernière place",
+      "description": "Un exemple pédagogique, entièrement hypothétique.",
+      "method": "Offre immédiate de 180 euros, vente future possible de 300 euros. À 40 %, la recette future espérée vaut 120 euros ; à 80 %,240 euros. Le seuil calculé est 180/300=60 %. Une seule vente future possible, une place invendue de valeur résiduelle nulle, vendeur neutre au risque. Les probabilités sont supposées, sans relation estimée avec un volume de requêtes."
+    },
+    "en": {
+      "title": "The expected value of the final seat",
+      "description": "An entirely hypothetical teaching example.",
+      "method": "An immediate 180 euro offer and a possible 300 euro future sale. At 40%, expected future revenue is 120 euros; at 80%,240 euros. The calculated threshold is 180/300=60%. One possible future sale, zero residual value for an unsold seat and a risk-neutral seller. Probabilities are assumed, with no estimated relationship to request volumes."
+    }
+  },
+  "conversion": {
+    "number": "02",
+    "sources": [],
+    "fr": {
+      "title": "La conversion dépend de son dénominateur",
+      "description": "Une cohorte synthétique identique, deux intensités de recherche.",
+      "method": "1000 intentions de voyage et 100 réservations, sur une même période et au même point de mesure. Dix requêtes par intention donnent 10000 requêtes ; mille en donnent unmillion. La conversion par requête passe de 1 % à 0,01 %, tandis que les réservations par intention restent à 10 %. Calcul l 0 g, sans statistique observée du secteur."
+    },
+    "en": {
+      "title": "Conversion depends on its denominator",
+      "description": "The same synthetic cohort under two search intensities.",
+      "method": "1000 travel intentions and 100 bookings over the same period and at the same measurement point. Ten requests per intention yield 10000 requests;1000 yield one million. Conversion per request changes from 1% to 0.01%, while bookings per intention remain at 10%. l 0 g calculation, not an observed industry statistic."
+    }
+  },
+  "pipeline": {
+    "number": "03",
+    "sources": [
+      "08",
+      "09"
+    ],
+    "fr": {
+      "title": "Séparer l’exploration de l’engagement",
+      "description": "Une architecture possible proposée par l0g.",
+      "method": "Le cache mutualise des réponses temporaires. L’agent sélectionne ensuite les finalistes, revérifie le prix et la disponibilité en direct, puis demande une autorisation distincte pour acheter. Les étapes sont conceptuelles et reprennent le compromis cache/direct discuté par IATA et Sabre. Le gain dépend de la réutilisation et de la fraîcheur ; un résultat en cache ne garantit ni prix ni disponibilité au moment de l’achat."
+    },
+    "en": {
+      "title": "Separate exploration from commitment",
+      "description": "A possible architecture proposed by l0g.",
+      "method": "A cache shares temporary responses. The agent then shortlists candidates, rechecks price and availability live and requests separate approval to buy. The stages are conceptual, drawing on the cache/live trade-off discussed by IATA and Sabre. Benefit depends on reuse and freshness; cached results guarantee neither price nor availability when buying."
+    }
+  },
+  "channels": {
+    "number": "04",
+    "sources": [
+      "04",
+      "05",
+      "08",
+      "09",
+      "10"
+    ],
+    "fr": {
+      "title": "Les transmissions possibles vers le billet",
+      "description": "Quatre chemins distincts, avec des niveaux de documentation différents.",
+      "method": "Le canal de coût informatique est décrit par les fournisseurs et l’organisation professionnelle. Une prévision biaisée peut modifier une offre selon les modèles et leurs corrections. La retenue d’inventaire est une menace générique décrite par OWASP, sans fréquence aérienne mesurée ici. La meilleure comparaison peut renforcer la concurrence. Les flèches exposent ces transmissions conditionnelles, sans effet net observé ni amplitude tarifaire chiffrée."
+    },
+    "en": {
+      "title": "Possible routes to the ticket",
+      "description": "Four distinct mechanisms with different evidence levels.",
+      "method": "Suppliers and the trade body describe the computing-cost channel. A biased forecast may change an offer depending on models and corrections. Inventory holding is a generic OWASP threat, without a measured airline frequency here. Better comparison may strengthen competition. Arrows illustrate conditional mechanisms, with no observed net effect or quantified fare impact."
+    }
+  },
+  "privacy": {
+    "number": "05",
+    "sources": [
+      "12",
+      "13"
+    ],
+    "fr": {
+      "title": "Protéger les contraintes et encadrer l’achat",
+      "description": "Une proposition de conception, à distinguer des pratiques observées.",
+      "method": "L’agent conserve budget, urgence et flexibilité dans l’espace privé de décision. Il transmet les données nécessaires à la recherche, reçoit une offre puis obtient un accord explicite pour une action engageante. Mandat et rémunération doivent être clairs. Les données reçues restent du contenu à analyser. Le schéma ne décrit l’implémentation d’aucun fournisseur et n’attribue à aucune entreprise une divulgation de budget ou une tarification fondée sur celui-ci."
+    },
+    "en": {
+      "title": "Protect constraints and control purchasing",
+      "description": "A design proposal, separate from observed practices.",
+      "method": "The agent keeps budget, urgency and flexibility within its private decision space. It sends the information necessary for searching, receives offers and obtains explicit approval for a binding action. Mandate and remuneration should be clear. Returned data remain content to examine. The figure does not describe a supplier implementation or attribute budget disclosure or budget-based pricing to any company."
+    }
+  }
+} as const;
+const art={fr:{decision:{desktop:decision_fr_desktop,mobile:decision_fr_mobile},conversion:{desktop:conversion_fr_desktop,mobile:conversion_fr_mobile},pipeline:{desktop:pipeline_fr_desktop,mobile:pipeline_fr_mobile},channels:{desktop:channels_fr_desktop,mobile:channels_fr_mobile},privacy:{desktop:privacy_fr_desktop,mobile:privacy_fr_mobile}},en:{decision:{desktop:decision_en_desktop,mobile:decision_en_mobile},conversion:{desktop:conversion_en_desktop,mobile:conversion_en_mobile},pipeline:{desktop:pipeline_en_desktop,mobile:pipeline_en_mobile},channels:{desktop:channels_en_desktop,mobile:channels_en_mobile},privacy:{desktop:privacy_en_desktop,mobile:privacy_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions,kind)) throw new Error('Unknown AirfareAgentsFigure variant');
+const entry=captions[kind], f=entry[lang], svg=art[lang][kind];
+---
+<figure class="airfare-agents-figure" id={`figure-${entry.number}`}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption><span class="fig-num">FIGURE {entry.number}</span><strong>{f.title}</strong>{f.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${Number(id)}`}>[{Number(id)}]</a>)}</figcaption>
+  <details><summary>{lang === 'fr' ? 'Méthode et limites' : 'Method and limitations'}</summary><p>{f.method}</p></details>
+</figure>
+<style>
+@font-face{font-family:'l0g Airfare Agents';src:url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'l0g Airfare Agents';src:url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+.airfare-agents-figure{width:100%;max-width:800px;margin:2.5rem auto;padding-bottom:1rem;color:inherit;container-type:inline-size;overflow:visible}
+.desktop-art,.mobile-art{line-height:0;width:100%}.mobile-art{display:none;max-width:340px;margin-inline:auto}
+.airfare-agents-figure :global(svg){display:block;width:100%;max-width:100%;height:auto;letter-spacing:normal;overflow:visible}
+.airfare-agents-figure figcaption{font-family:var(--font-read);font-size:.9rem;line-height:1.7;color:var(--color-muted);padding:1rem 0 .5rem}
+.airfare-agents-figure figcaption strong{display:block;font-size:1rem;margin:.4rem 0;color:var(--color-paper)}
+.fig-num{letter-spacing:.06em;font-size:.8rem;color:var(--color-signal);font-weight:700}
+.airfare-agents-figure a{margin-right:.45rem}.airfare-agents-figure details{font-family:var(--font-read);font-size:.875rem;line-height:1.7;margin-top:.5rem}
+.airfare-agents-figure summary{cursor:pointer;padding:.35rem 0}.airfare-agents-figure summary:focus-visible{outline:2px solid var(--color-signal);outline-offset:4px}.airfare-agents-figure p{margin-top:.7rem}
+@container(max-width:500px){.desktop-art{display:none}.mobile-art{display:block}}
+@media print{.desktop-art{display:block}.mobile-art{display:none}.airfare-agents-figure{break-inside:avoid}}
+</style>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-labelledby="af-channels-fr-d-title af-channels-fr-d-desc" style="width:100%;height:auto" class="l0g-airfare-agents-svg">
+<title id="af-channels-fr-d-title">Quatre chemins vers le billet</title><desc id="af-channels-fr-d-desc">Quatre transmissions distinctes : coût informatique, signal de demande biaisé, retenues de sièges et meilleure comparaison. Les niveaux de preuve diffèrent.</desc>
+<rect id="af-channels-fr-d-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="1000" height="680" rx="16" fill="var(--color-ink)"/>
+<text data-panel="af-channels-fr-d-frame" x="32" y="42" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / VOLS ET AGENTS IA</text>
+<text data-panel="af-channels-fr-d-frame" x="32" y="94" font-family="l0g Airfare Agents" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-paper)">Quatre chemins vers le billet</text>
+<text data-panel="af-channels-fr-d-frame" x="32" y="131" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-amber)">Mécanismes et niveaux de preuve</text>
+<rect id="af-channels-fr-d-from-0" stroke="var(--color-line-strong)" stroke-width="1" x="32" y="168" width="235" height="87" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-channels-fr-d-from-0" x="50" y="220" font-family="l0g Airfare Agents" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-signal)">Consultations</text>
+<rect id="af-channels-fr-d-via-0" stroke="var(--color-line-strong)" stroke-width="1" x="318" y="168" width="396" height="87" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-channels-fr-d-via-0" x="336" y="202" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Travail informatique</text>
+<text data-panel="af-channels-fr-d-via-0" x="336" y="237" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Canal documenté [08, 09]</text>
+<rect id="af-channels-fr-d-impact-0" x="765" y="168" width="203" height="87" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="af-channels-fr-d-impact-0" x="783" y="219" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Prix à établir</text>
+<path data-connector="flow" d="M272 212 L313 212" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M306 206 L313 212 L306 218" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M719 212 L760 212" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M753 206 L760 212 L753 218" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="af-channels-fr-d-from-1" stroke="var(--color-line-strong)" stroke-width="1" x="32" y="276" width="235" height="87" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-channels-fr-d-from-1" x="50" y="328" font-family="l0g Airfare Agents" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-amber)">Signal biaisé</text>
+<rect id="af-channels-fr-d-via-1" stroke="var(--color-line-strong)" stroke-width="1" x="318" y="276" width="396" height="87" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-channels-fr-d-via-1" x="336" y="310" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Prévisions / offres ajustées</text>
+<text data-panel="af-channels-fr-d-via-1" x="336" y="345" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Hypothèse l0g [04, 05]</text>
+<rect id="af-channels-fr-d-impact-1" x="765" y="276" width="203" height="87" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="af-channels-fr-d-impact-1" x="783" y="310" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Hausse</text>
+<text data-panel="af-channels-fr-d-impact-1" x="783" y="341" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">ou baisse</text>
+<path data-connector="flow" d="M272 320 L313 320" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M306 314 L313 320 L306 326" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M719 320 L760 320" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M753 314 L760 320 L753 326" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="af-channels-fr-d-from-2" stroke="var(--color-line-strong)" stroke-width="1" x="32" y="384" width="235" height="87" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-channels-fr-d-from-2" x="50" y="436" font-family="l0g Airfare Agents" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-accent)">Retenues</text>
+<rect id="af-channels-fr-d-via-2" stroke="var(--color-line-strong)" stroke-width="1" x="318" y="384" width="396" height="87" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-channels-fr-d-via-2" x="336" y="418" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Sièges indisponibles</text>
+<text data-panel="af-channels-fr-d-via-2" x="336" y="453" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Menace générique [10]</text>
+<rect id="af-channels-fr-d-impact-2" x="765" y="384" width="203" height="87" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="af-channels-fr-d-impact-2" x="783" y="435" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Disponibilité</text>
+<path data-connector="flow" d="M272 428 L313 428" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M306 422 L313 428 L306 434" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M719 428 L760 428" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M753 422 L760 428 L753 434" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="af-channels-fr-d-from-3" stroke="var(--color-line-strong)" stroke-width="1" x="32" y="492" width="235" height="87" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-channels-fr-d-from-3" x="50" y="544" font-family="l0g Airfare Agents" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-signal)">Comparaison</text>
+<rect id="af-channels-fr-d-via-3" stroke="var(--color-line-strong)" stroke-width="1" x="318" y="492" width="396" height="87" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-channels-fr-d-via-3" x="336" y="526" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Alternatives mieux vues</text>
+<text data-panel="af-channels-fr-d-via-3" x="336" y="561" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Contre-mécanisme proposé</text>
+<rect id="af-channels-fr-d-impact-3" x="765" y="492" width="203" height="87" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="af-channels-fr-d-impact-3" x="783" y="526" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">Baisse</text>
+<text data-panel="af-channels-fr-d-impact-3" x="783" y="557" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-paper)">possible</text>
+<path data-connector="flow" d="M272 536 L313 536" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M306 530 L313 536 L306 542" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M719 536 L760 536" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M753 530 L760 536 L753 542" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="footer" d="M22 627 H978" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="af-channels-fr-d-frame" x="22" y="660" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">l0g · aucun effet net chiffré</text>
+</svg>

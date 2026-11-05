@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" role="img" aria-labelledby="af-pipeline-fr-d-title af-pipeline-fr-d-desc" style="width:100%;height:auto" class="l0g-airfare-agents-svg">
+<title id="af-pipeline-fr-d-title">Explorer puis revérifier l’offre</title><desc id="af-pipeline-fr-d-desc">Architecture proposée par l0g : explorer, mutualiser un cache, sélectionner, vérifier en direct, puis acheter avec une validation distincte.</desc>
+<rect id="af-pipeline-fr-d-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="1000" height="650" rx="16" fill="var(--color-ink)"/>
+<text data-panel="af-pipeline-fr-d-frame" x="32" y="42" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / VOLS ET AGENTS IA</text>
+<text data-panel="af-pipeline-fr-d-frame" x="32" y="94" font-family="l0g Airfare Agents" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-paper)">Explorer puis revérifier l’offre</text>
+<text data-panel="af-pipeline-fr-d-frame" x="32" y="131" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-amber)">Architecture proposée</text>
+<rect id="af-pipeline-fr-d-step-0" stroke="var(--color-line-strong)" stroke-width="1" x="32" y="170" width="270" height="144" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-pipeline-fr-d-step-0" x="52" y="206" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">01</text>
+<text data-panel="af-pipeline-fr-d-step-0" x="52" y="246" font-family="l0g Airfare Agents" font-size="27" font-weight="700" text-anchor="start" fill="var(--color-paper)">Explorer</text>
+<text data-panel="af-pipeline-fr-d-step-0" x="52" y="286" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Dates</text>
+<rect id="af-pipeline-fr-d-step-1" stroke="var(--color-line-strong)" stroke-width="1" x="365" y="170" width="270" height="144" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-pipeline-fr-d-step-1" x="385" y="206" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">02</text>
+<text data-panel="af-pipeline-fr-d-step-1" x="385" y="246" font-family="l0g Airfare Agents" font-size="27" font-weight="700" text-anchor="start" fill="var(--color-paper)">Mutualiser</text>
+<text data-panel="af-pipeline-fr-d-step-1" x="385" y="286" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Cache temporaire</text>
+<rect id="af-pipeline-fr-d-step-2" stroke="var(--color-line-strong)" stroke-width="1" x="698" y="170" width="270" height="144" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-pipeline-fr-d-step-2" x="718" y="206" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">03</text>
+<text data-panel="af-pipeline-fr-d-step-2" x="718" y="246" font-family="l0g Airfare Agents" font-size="27" font-weight="700" text-anchor="start" fill="var(--color-paper)">Sélectionner</text>
+<text data-panel="af-pipeline-fr-d-step-2" x="718" y="286" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Offres finalistes</text>
+<rect id="af-pipeline-fr-d-step-3" stroke="var(--color-line-strong)" stroke-width="1" x="698" y="370" width="270" height="144" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-pipeline-fr-d-step-3" x="718" y="406" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">04</text>
+<text data-panel="af-pipeline-fr-d-step-3" x="718" y="446" font-family="l0g Airfare Agents" font-size="27" font-weight="700" text-anchor="start" fill="var(--color-paper)">Revérifier</text>
+<text data-panel="af-pipeline-fr-d-step-3" x="718" y="486" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Prix, disponibilité</text>
+<rect id="af-pipeline-fr-d-step-4" stroke="var(--color-line-strong)" stroke-width="1" x="365" y="370" width="270" height="144" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-pipeline-fr-d-step-4" x="385" y="406" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">05</text>
+<text data-panel="af-pipeline-fr-d-step-4" x="385" y="446" font-family="l0g Airfare Agents" font-size="27" font-weight="700" text-anchor="start" fill="var(--color-paper)">Confirmer</text>
+<text data-panel="af-pipeline-fr-d-step-4" x="385" y="486" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Achat distinct</text>
+<path data-connector="flow" d="M306 242 L360 242" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M353 236 L360 242 L353 248" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M639 242 L693 242" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M686 236 L693 242 L686 248" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M833 319 L833 365" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M827 358 L833 365 L839 358" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M693 442 L639 442" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M646 436 L639 442 L646 448" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="af-pipeline-fr-d-cache-effect" x="32" y="370" width="270" height="144" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="af-pipeline-fr-d-cache-effect" x="52" y="412" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">Effet attendu</text>
+<text data-panel="af-pipeline-fr-d-cache-effect" x="52" y="453" font-family="l0g Airfare Agents" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-paper)">Moins de calcul</text>
+<text data-panel="af-pipeline-fr-d-cache-effect" x="52" y="487" font-family="l0g Airfare Agents" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-paper)">répété</text>
+<text data-panel="af-pipeline-fr-d-frame" x="32" y="564" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Réutilisation et durée de validité déterminent le gain.</text>
+<path data-connector="footer" d="M22 597 H978" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="af-pipeline-fr-d-frame" x="22" y="630" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Proposition l0g · IATA [08], Sabre [09]</text>
+</svg>

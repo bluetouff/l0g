@@ -1,0 +1,167 @@
+---
+title: 'Airfares: can AI agents distort the signals behind the price?'
+seoTitle: "AI travel agents and airfares: demand, costs and privacy | l0g"
+description: Automated flight shopping can raise computing costs and complicate demand forecasts. The mechanisms,
+  safeguards and missing evidence behind the debate.
+tags: ["Aviation", "Artificial intelligence", "Pricing", "Competition", "Risk"]
+quickTake:
+  fact: "Software vendor PROS describes tools incorporating search and booking data into demand forecasts."
+  importance: "An agent can generate more requests for one traveller, increase computing work and change how indicators should be interpreted."
+  uncertainty: "The causal effect on airfares remains to be measured. Numerical examples are illustrative, and supplier capabilities are commercial claims."
+pubDate: "2026-11-05T15:20:00+01:00"
+updatedDate: "2026-11-05T15:20:00+01:00"
+draft: false
+sourceArticle: billets-avion-agents-ia-signal-demande
+sourceUpdatedDate: "2026-11-05T15:20:00+01:00"
+ogImage: "/illustrations/news/airfares-ai-agents-demand-v1.jpg"
+ogTitle: "Airfares and AI agents: the signals behind the price"
+---
+
+import AirfareAgentsFigure from "../../components/AirfareAgentsFigure.astro";
+
+A traveller needs a return flight, a checked bag and an arrival before dinner. Their AI agent tries different departure times, moves the trip by a day, checks a nearby airport and repeats the exercise across several distributors. At the end of the search there is still one person, one trip and, perhaps, one booking. In the systems processing those requests, the activity may look much larger.
+
+This is a hypothetical scene. The economic problem is already worth examining: **flight-search data are used to inform some commercial decisions and demand forecasts.** When the way people search changes, the meaning of the data can change too. An airline that misreads that shift could protect too many seats for future customers who never arrive. A distributor could face a much larger computing bill for each ticket it sells.
+
+Several channels need to be separated. Shopping requests consume computing resources and can inform demand forecasts. More requests from the same traveller can change the meaning of those signals. **The causal effect of AI agents on fares remains to be measured** in the public sources reviewed through **5 November 2026**. The mechanisms below distinguish computing costs, possible forecasting errors and better comparison for the customer.
+
+## Pricing a seat against tomorrow’s passenger
+
+Machines were comparing fares long before conversational assistants. France’s civil aviation authority, the DGAC, describes an automated price-collection system that obtains fares through Travelport or, with permission, directly from certain airlines. Automated shopping can serve an entirely legitimate measurement purpose. <sup className="source-ref"><a href="#source-01" aria-label="Source 1">1</a></sup>
+
+To understand what agents might disrupt, start with the seller’s calculation. An empty seat loses its commercial value when the aircraft departs. Selling it cheaply today, however, may prevent the airline from selling it to someone willing to pay more tomorrow. Revenue management organises that trade-off. In an article published in March 2026 and updated in April, Amadeus describes the choice between accepting a booking now and preserving capacity for future demand as the enduring economic foundation of these systems. <sup className="source-ref"><a href="#source-02" aria-label="Source 2">2</a></sup>
+
+Consider a deliberately stripped-down example. One seat remains. A customer will pay €180 today. Another might pay €300 later. With a 40% probability of making that later sale, waiting produces expected revenue of €120. Taking €180 now is preferable. If the model instead estimates an 80% probability of the later sale, expected revenue rises to €240. Within this simple model, protecting the seat becomes rational.
+
+The amounts and probabilities are **illustrative assumptions**, with no measured relationship to bot traffic. The example allows only one potential future sale, assumes an unsold seat has no residual value and uses a risk-neutral seller. Connections, cancellations and differences in cost are left out. Its purpose is to expose the transmission mechanism: an error in expected demand can change an availability decision even when no additional seat has been sold.
+
+<AirfareAgentsFigure lang="en" kind="decision" />
+
+In a system using booking classes, the decision may close access to a cheaper offer. A booking class here denotes selling conditions and a fare level, not necessarily a separate cabin. Continuous pricing allows other adjustments without sticking to the same predetermined fare steps. Architectures differ, but the underlying question remains the value of capacity retained for later. <sup className="source-ref"><a href="#source-02" aria-label="Source 2">2</a></sup>
+
+Kevin R. Williams’s research on airline markets distinguishes responses to demand shocks from adjustments associated with changes in travellers’ willingness to pay over time. This research on [algorithmic pricing](/en/glossary/tarification-algorithmique/) provides the economic setting: several forces can move a fare between two searches. <sup className="source-ref"><a href="#source-03" aria-label="Source 3">3</a></sup>
+
+Between page refreshes, customers may book, availability may change or a different offer may appear. Isolating a search effect would require comparing the same flight at the same instant with and without the additional request. That counterfactual is central to identifying a causal effect.
+
+## Search activity already enters the forecasting process
+
+A demonstration by software vendor **PROS** dated **18 September 2025** describes agents using search and booking data to adjust forecasts, integrated with revenue management and pricing tools. This is a supplier’s claimed functionality; robustness in individual deployments would require an audit. <sup className="source-ref"><a href="#source-04" aria-label="Source 4">4</a></sup>
+
+**FareNet** documentation from PROS combines searches, conversions and load factors to inform fare adjustments. It concerns data collected in the relevant booking engines. The path an agent follows determines which requests actually reach that collection point. <sup className="source-ref"><a href="#source-05" aria-label="Source 5">5</a></sup>
+
+That distinction matters. Depending on the route through the system, an agent’s request might end at a cache, reach a distributor or trigger several downstream calls. A single response can contain many offers. **Fare options, technical requests and travellers are different units.** Even “a search” can mean different events to different organisations.
+
+Research by Hortaçsu, Natan, Parsley, Schwieg and Williams gives a concrete example of searches informing demand measurement. In their airline application, the authors measure consumer arrivals from people initiating a search on an airline website, using clickstream records. **Section 5.1 of the paper published in 2023 describes this measurement choice.** It explains the value of shopping signals for estimation; the study concerns a different question from disruption by AI agents. <sup className="source-ref"><a href="#source-06" aria-label="Source 6">6</a></sup>
+
+The attraction for a forecaster is understandable: searches provide information before a purchase takes place. The challenge is interpreting that information. A person may be choosing among several departure dates. An agent may inspect every one of those dates systematically. Treating each alternative as an independent purchase intention would turn a choice set into additional demand.
+
+<AirfareAgentsFigure lang="en" kind="conversion" />
+
+Imagine a fixed cohort of 1,000 travel intentions, of which 100 become bookings within the observation period. At ten requests per intention, there are 10,000 requests and one booking per hundred requests. At a thousand requests per intention, there are one million requests and one booking per ten thousand. Request-based conversion falls from 1% to 0.01%. Conversion per intention remains 10%.
+
+The scenario keeps purchases fixed and changes only search intensity. It exposes a possible measurement failure: the denominator evolves with the way offers are explored. Dates, destinations and prices raise similar issues. An assistant can systematically test options its user will rarely buy.
+
+The fare outcome depends on processing. A model placing substantial weight on raw volume could overestimate demand. Another might read weaker conversion as a lack of appeal. A recalibrated system could group repetitions and identify meaningful alternatives more accurately. The direction can therefore change with the data and decision rules.
+
+The software-security foundation OWASP calls intentional automated manipulation of metrics *skewing*. That threat supplies a technical comparison. Unintentional noise from a legitimate shopping assistant remains a separate analytical hypothesis in this investigation. <sup className="source-ref"><a href="#source-07" aria-label="Source 7">7</a></sup>
+
+## The first bill is for computing
+
+On **7 October 2025**, the International Air Transport Association, **IATA**, described pressure on systems and costs from rising searches per booking. Its public introduction to a white paper mentions **14 airlines, 11 IT providers and eight sellers** contributing to the work. This is an industry assessment. Any [look-to-book ratio](/en/glossary/look-to-book/) needs explicit search and booking units. <sup className="source-ref"><a href="#source-08" aria-label="Source 8">8</a></sup>
+
+The mechanism is straightforward. When exploration grows faster than sales, the work associated with each completed order can increase. The expense also depends on the complexity of the answer, the extent of shared processing and how often a response can be delivered without a complete recalculation. A broad search and a targeted verification need not impose the same cost, even if each counts as one request.
+
+Caching addresses that problem by keeping a result temporarily so that the work need not be repeated. On 5 February 2026, Sabre announced a product that chooses between live airline polling and cached results. Its release also presents the architecture as a way for agencies to manage traffic constraints and exposure to airline penalties. This is a commercial description, without a public tariff schedule from which a universal cost per search could be derived. <sup className="source-ref"><a href="#source-09" aria-label="Source 9">9</a></sup>
+
+<AirfareAgentsFigure lang="en" kind="pipeline" />
+
+An agent could begin a broad exploration with indicative information and reserve live checks for a shortlist. The savings would depend on how widely responses can be reused, how long they remain useful and how quickly offers change. Final verification is a separate step: a remembered price does not guarantee that the same seat will remain available on the same terms when the user buys.
+
+The trade-off raises a distribution question. A smaller intermediary may need frequent access to supply a useful comparison. Expensive or restricted access could leave it showing fewer options or less current information. A larger service able to pool searches may have an advantage. That is a possible economic consequence of access conditions, to be investigated contract by contract, rather than evidence that exclusion has already occurred.
+
+Who pays this expense depends on contracts and competition. An airline could absorb it, charge a distributor, use caching to reduce repeated computation or restrict some uses. The share eventually reaching travellers depends on those choices and competitive alternatives.
+
+## Holding a seat and finding a better alternative
+
+A price request generally does not reserve a seat. Other actions go further, creating a temporary booking or holding availability. When holds accumulate without purchases, they can deprive other customers of inventory that would otherwise be for sale. OWASP’s *denial of inventory* category explicitly includes flight seats. <sup className="source-ref"><a href="#source-10" aria-label="Source 10">10</a></sup>
+
+A hold first affects availability: a customer may lose access to an offer, buy a more expensive alternative or abandon the purchase. Following this channel requires records of temporary reservations, quantities, duration and release. Price searches and actions that hold seats therefore need separate observation.
+
+Agents could also strengthen the passenger’s position. Consider an assistant that finds an acceptable connection, checks baggage charges and discovers an airline its user would otherwise have missed. By genuinely expanding the alternatives, it may make some price differences harder to sustain. This is a material countervailing economic mechanism, whose size remains to be measured.
+
+<AirfareAgentsFigure lang="en" kind="channels" />
+
+The benefit depends on visible offers and the assistant’s objective. A low base fare can lose its advantage after baggage charges. Partial market coverage limits alternatives. Commissions or paid placement can also influence rankings. These features determine the quality of comparison.
+
+Another scenario for controlled testing is assistants following similar rules and buying together when a fare crosses a shared threshold. Real bookings would then cluster in time, leaving the airline with more correlated demand to manage. This remains a working hypothesis.
+
+Revision frequency can amplify or dampen such interactions. A slow model, supervised by analysts and anchored in sales, behaves differently from a tool updated rapidly from recent signals. Assessing an unstable loop requires following that timing, its transmission to fares and buyers’ responses.
+
+## Personalised pricing requires a different investigation
+
+A price increase offered to everyone and a price tailored to a particular person are distinct phenomena. The former may reflect availability or anticipated demand. The latter involves using individual or group characteristics to determine the pricing offer. The presence of AI does not, by itself, establish which mechanism is operating.
+
+The French precedent is specific and historical. In its **25 January 2016** account, France’s data-protection authority CNIL reported that joint inspections with consumer-protection authority DGCCRF observed price variations without establishing IP-address-based modulation on the sites examined. The period and scope bound that finding. <sup className="source-ref"><a href="#source-11" aria-label="Source 11">11</a></sup>
+
+On **28 October 2026**, the US Federal Trade Commission ordered **nine companies**, including **Delta, United and JetBlue**, to provide information about personal data in pricing and, in other sectors, compensation. The Section 6(b) exercise is a study; its launch establishes an information demand, a different status from a finding of wrongdoing. The **45-day** response period starts when the orders are received. <sup className="source-ref"><a href="#source-12" aria-label="Source 12">12</a></sup>
+
+The published model order makes the inquiry concrete. It asks about data inputs, pricing systems, conditions for modifying or overriding their outputs and evaluations of the tools. Those records could allow company statements to be tested against procedures and assessment results. <sup className="source-ref"><a href="#source-12" aria-label="Source 12">12</a></sup>
+
+Delta set out its position in a **31 July 2025** letter published on **7 August**. It described route- and flight-level aggregate data and analyst supervision. It said personal information was excluded from the data shared with Fetcherr. This supplies the company’s account, with its date and evidentiary status. <sup className="source-ref"><a href="#source-13" aria-label="Source 13">13</a></sup>
+
+Even an entirely aggregate system could, in principle, misinterpret automated searches. Conversely, a system that filters repetition perfectly could raise a personalisation question if it uses other individual information. The two investigations require different evidence.
+
+The passenger’s assistant creates another boundary. A spending limit, family emergency or fixed departure date helps it choose. Passing those constraints to a seller could also reveal the customer’s bargaining position. **The flow of private constraints therefore warrants an audit**, without attributing that transmission here to an identified service.
+
+<AirfareAgentsFigure lang="en" kind="privacy" />
+
+A protective design can keep private constraints on the user’s side, disclose only the information required for the search and require separate confirmation before purchase. It should also explain who pays the intermediary and how results are ranked. The software’s mandate matters as much as its search capability: an assistant effective at maximising commission would be pursuing a different objective from one instructed to minimise the total cost of a trip.
+
+## To measure the effect, follow the decision all the way through
+
+The first task is to give every counter a precise unit. What constitutes a request? At which layer is it counted? Does one response contain one offer or hundreds? Is the denominator a reservation, an order, an issued ticket or a passenger? Can the same travel intention appear in several sessions? Without answers, two apparently precise search-to-purchase ratios may not be comparable.
+
+The paths through the system must then be separated. A cached exploration, a live request and a seat hold should leave distinguishable traces. That need not require distributing the traveller’s civil identity throughout the supply chain. Temporary grouping of requests, limited in purpose and duration, could be examined. Its tracking risks and attribution errors would need assessment. A travel intention inferred from a collection of events remains an estimate.
+
+The inquiry must follow the signal through the decision: the input reaching the model, revised forecast, recommendation and fare applied. Cancellations, available capacity, competitors and human interventions can change the result. Records should identify both a vulnerable stage and filters that absorb noise.
+
+A persuasive experiment would begin in an isolated copy of the system, using authorised data and explicit scenarios. Researchers could vary repeated searches while holding underlying intentions and purchases constant, then examine forecast and decision differences. Findings would apply to the configurations tested. An observation of real operations would require a consenting partner and a design that accounts for interactions across flights.
+
+Nearly simultaneous quotes, matched for services across channels, can illuminate differences in access, freshness and total price. A causal search effect needs an additional protocol. This documentary review involved no test bookings or traffic generation against airline systems.
+
+The decisive test would increase an agent’s searches while holding travel intentions and purchases fixed, then observe the estimated number of buyers and resulting decisions. Effective filtering could contain part of the statistical risk. Computing costs would still depend on the volume served and its processing.
+
+For travellers, the promise should be judged by a concrete outcome: **access to suitable offers, protection of private information and the expected total cost**. Request volume alone says little about service quality. Agents could broaden choices and shift bargaining power; access rules and contracts will also determine who benefits from this way of buying.
+
+
+## Further reading
+
+[Pricing algorithms and competition](/en/analysis/pricing-algorithms-competition/) raise another issue: sellers reacting to rivals’ decisions. Our investigation into [connected-car data and insurance](/en/analysis/connected-car-data-insurance/) follows personal information through to commercial use.
+
+## Method and limitations
+
+Documentary review closed on **5 November 2026**. Sources include public authorities, original academic work, supplier documentation and a dated airline statement from 2025. Commercial capabilities are attributed to their providers. The review used public documents, with no interviews, internal logs, test bookings or traffic generation.
+
+Both numerical scenarios are hypothetical. The possible future sale gives €300 × 40% = €120 or €300 × 80% = €240; indifference occurs at 180/300 = 60%. For the cohort, 100 bookings divided by 10,000 or 1,000,000 requests yield 1% and 0.01%, while 100/1,000 intentions stays at 10%. These calculations isolate mechanisms using entirely illustrative inputs.
+
+The full demand-estimation paper was consulted for its arrival-measurement method. Williams’s dynamic-pricing study is used for a qualitative point supported by its institutional notice and abstract. The IATA public introduction was reviewed separately from the full white paper, which remains outside the corpus. The FTC model order is accessible; company responses and actual AI-agent effects remain to be documented. The opening artwork is conceptual.
+
+**Editorial licence: CC BY 4.0.**
+
+## Sources and references
+
+<ol className="sources-list">
+<li id="source-01"><span className="source-meta">S01 · DGAC / ministère chargé des Transports · 2022-04-21 · Accessed: 5 November 2026</span><a href="https://www.ecologie.gouv.fr/politiques-publiques/indice-prix-du-transport-aerien-passagers" target="_blank" rel="noopener noreferrer">Indice des prix du transport aérien de passagers</a><details><summary>Passages and scope</summary><p>Methodology, questions 10 and 11. First published 21 April 2022, updated 15 October 2026. Automated collection through Travelport or authorised direct access. This describes price observation.</p></details></li>
+<li id="source-02"><span className="source-meta">S02 · Amadeus / Thomas Fiig · 2026-03-26 · Accessed: 5 November 2026</span><a href="https://amadeus.com/en/blog/articles/impact-artificial-intelligence-airline-revenue-management" target="_blank" rel="noopener noreferrer">Impact of Artificial Intelligence on Airline Revenue Management</a><details><summary>Passages and scope</summary><p>Published 26 March 2026, updated 29 April. The trade-off between a booking now and future demand. A supplier’s account, identified as such.</p></details></li>
+<li id="source-03"><span className="source-meta">S03 · Kevin R. Williams / Yale / Econometrica · 2022 · Accessed: 5 November 2026</span><a href="https://economics.yale.edu/welfare-effects-dynamic-pricing-evidence-airline-markets" target="_blank" rel="noopener noreferrer">The Welfare Effects of Dynamic Pricing: Evidence from Airline Markets</a><details><summary>Passages and scope</summary><p>Institutional notice and abstract of the 2022 article. Demand shocks and changes in willingness to pay. No numerical welfare estimate is reproduced.</p></details></li>
+<li id="source-04"><span className="source-meta">S04 · PROS · 2025-09-18 · Accessed: 5 November 2026</span><a href="https://pros.com/learn/videos/smarter-market-moves-revenue-management-agents-for-airlines/" target="_blank" rel="noopener noreferrer">Smarter Market Moves with PROS Revenue Management Agents for Airlines</a><details><summary>Passages and scope</summary><p>Demonstration dated 18 September 2025. Search and booking data in forecasts; PROS’s claimed functionality, with no deployment audit here.</p></details></li>
+<li id="source-05"><span className="source-meta">S05 · PROS · Undated · Accessed: 5 November 2026</span><a href="https://pros.com/products/offer-marketing/farenet/dashboards/" target="_blank" rel="noopener noreferrer">FareNet Reporting Suite</a><details><summary>Passages and scope</summary><p>Undated product documentation. Searches, conversion and load factors in the relevant booking engines. Supplier-defined scope.</p></details></li>
+<li id="source-06"><span className="source-meta">S06 · Hortaçsu, Natan, Parsley, Schwieg, Williams / Quantitative Economics · 2023-11-17 · Accessed: 5 November 2026</span><a href="https://onlinelibrary.wiley.com/doi/full/10.3982/QE2147" target="_blank" rel="noopener noreferrer">Demand Estimation with Infrequent Purchases and Small Market Sizes</a><details><summary>Passages and scope</summary><p>Full paper consulted, section 5.1: clickstream records and consumers initiating a search provide the arrival measure in the airline application. Published research from 2023, addressing a different question from AI-agent effects.</p></details></li>
+<li id="source-07"><span className="source-meta">S07 · OWASP Foundation · Undated · Accessed: 5 November 2026</span><a href="https://owasp.org/www-project-automated-threats-to-web-applications/assets/oats/EN/OAT-016_Skewing.html" target="_blank" rel="noopener noreferrer">OAT-016 Skewing</a><details><summary>Passages and scope</summary><p>OAT-016 taxonomy: intentional automated manipulation of metrics. Unintentional noise from legitimate assistants is a conditional hypothesis in this article.</p></details></li>
+<li id="source-08"><span className="source-meta">S08 · IATA · 2025-10-07 · Accessed: 5 November 2026</span><a href="https://www.iata.org/en/publications/newsletters/airline-retailing-hub/look-to-book-white-paper/" target="_blank" rel="noopener noreferrer">Look-to-Book: managing search volumes while creating customer-centric Offers</a><details><summary>Passages and scope</summary><p>Public introduction dated 7 October 2025. Participants: 14 airlines, 11 IT providers and eight sellers. The full white paper remains outside the reviewed corpus; an industry perspective.</p></details></li>
+<li id="source-09"><span className="source-meta">S09 · Sabre · 2026-02-05 · Accessed: 5 November 2026</span><a href="https://investors.sabre.com/news-releases/news-release-details/sabre-solves-look-book-constraints-cache-powered-intelligent" target="_blank" rel="noopener noreferrer">Cache-powered Intelligent Shopping : annonce produit</a><details><summary>Passages and scope</summary><p>Release dated 5 February 2026 on Cache-powered Intelligent Shopping. Cached/live architecture and search constraints. Advertised performance remains a commercial claim.</p></details></li>
+<li id="source-10"><span className="source-meta">S10 · OWASP Foundation · Undated · Accessed: 5 November 2026</span><a href="https://owasp.org/www-project-automated-threats-to-web-applications/assets/oats/EN/OAT-021_Denial_of_Inventory.html" target="_blank" rel="noopener noreferrer">OAT-021 Denial of Inventory</a><details><summary>Passages and scope</summary><p>OAT-021 taxonomy. Accumulating holds without purchases, including flight seats. This requires an inventory-holding action distinct from a price query.</p></details></li>
+<li id="source-11"><span className="source-meta">S11 · CNIL / DGCCRF · 2016-01-25 · Accessed: 5 November 2026</span><a href="https://www.cnil.fr/fr/ip-tracking-conclusions-de-lenquete-conjointe-menee-par-la-cnil-et-la-dgccrf-0" target="_blank" rel="noopener noreferrer">IP Tracking : conclusions de l’enquête conjointe</a><details><summary>Passages and scope</summary><p>Historical account dated 25 January 2016. CNIL/DGCCRF inspections and observed price variations, limited to the inspected sites and period.</p></details></li>
+<li id="source-12"><span className="source-meta">S12 · Federal Trade Commission · 2026-10-28 · Accessed: 5 November 2026</span><a href="https://www.ftc.gov/news-events/news/press-releases/2026/10/ftc-launches-personalized-pricing-compensation-inquiry" target="_blank" rel="noopener noreferrer">FTC Launches Personalized Pricing and Compensation Inquiry</a><a href="https://www.ftc.gov/system/files/ftc_gov/pdf/PP6b-Special-Order-Shell.pdf" target="_blank" rel="noopener noreferrer">FTC official model order</a><details><summary>Passages and scope</summary><p>Release dated 28 October 2026 and official model order consulted. Nine recipients, with 45 days from receipt to respond. Section 6(b) study. The order requests data, models, modifications or overrides and assessments, including specifications 7-10 and 18-23.</p></details></li>
+<li id="source-13"><span className="source-meta">S13 · Delta Air Lines / Peter Carter · 2025-08-07 · Accessed: 5 November 2026</span><a href="https://news.delta.com/delta-responds-misinformation-around-ai-pricing" target="_blank" rel="noopener noreferrer">Delta responds to misinformation around AI pricing</a><details><summary>Passages and scope</summary><p>Letter dated 31 July 2025, published 7 August. Delta’s account of aggregate data and analyst oversight; an interested-party statement.</p></details></li>
+</ol>

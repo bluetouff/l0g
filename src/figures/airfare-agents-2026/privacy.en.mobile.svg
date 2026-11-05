@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 800" role="img" aria-labelledby="af-privacy-en-m-title af-privacy-en-m-desc" style="width:100%;height:auto" class="l0g-airfare-agents-svg">
+<title id="af-privacy-en-m-title">The budget stays with the traveller</title><desc id="af-privacy-en-m-desc">Proposed protective design: sensitive constraints remain with the traveller, suppliers receive minimal queries, returned offers are data, and buying needs explicit approval.</desc>
+<rect id="af-privacy-en-m-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="420" height="800" rx="16" fill="var(--color-ink)"/>
+<text data-panel="af-privacy-en-m-frame" x="22" y="38" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / AIRFARES &amp; AI AGENTS</text>
+<text data-panel="af-privacy-en-m-frame" x="22" y="82" font-family="l0g Airfare Agents" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">The budget stays</text>
+<text data-panel="af-privacy-en-m-frame" x="22" y="116" font-family="l0g Airfare Agents" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-paper)">with the traveller</text>
+<text data-panel="af-privacy-en-m-frame" x="22" y="148" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-amber)">Proposed protective design</text>
+<rect id="af-privacy-en-m-private" stroke="var(--color-line-strong)" stroke-width="1" x="22" y="164" width="376" height="163" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-privacy-en-m-private" x="40" y="199" font-family="l0g Airfare Agents" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-signal)">PRIVATE SPACE</text>
+<text data-panel="af-privacy-en-m-private" x="40" y="237" font-family="l0g Airfare Agents" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-paper)">Budget, urgency, flexibility</text>
+<text data-panel="af-privacy-en-m-private" x="40" y="273" font-family="l0g Airfare Agents" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-paper)">Comparison agent</text>
+<text data-panel="af-privacy-en-m-private" x="40" y="309" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Clear mandate, local ranking</text>
+<path data-connector="flow" d="M54 333 L54 366" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="flow" d="M48 359 L54 366 L60 359" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="af-privacy-en-m-frame" x="82" y="355" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">Minimal useful data sent</text>
+<rect id="af-privacy-en-m-supplier" stroke="var(--color-line-strong)" stroke-width="1" x="22" y="377" width="376" height="163" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-privacy-en-m-supplier" x="40" y="412" font-family="l0g Airfare Agents" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-amber)">SUPPLIER SIDE</text>
+<text data-panel="af-privacy-en-m-supplier" x="40" y="449" font-family="l0g Airfare Agents" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-paper)">Route, dates, passengers</text>
+<text data-panel="af-privacy-en-m-supplier" x="40" y="485" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Offer: total price and terms</text>
+<text data-panel="af-privacy-en-m-supplier" x="40" y="521" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Availability to recheck</text>
+<rect id="af-privacy-en-m-approval" x="22" y="576" width="376" height="91" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="af-privacy-en-m-approval" x="40" y="612" font-family="l0g Airfare Agents" font-size="20" font-weight="700" text-anchor="start" fill="var(--color-signal)">BUYING: EXPLICIT APPROVAL</text>
+<text data-panel="af-privacy-en-m-approval" x="40" y="646" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Chosen trip, price and terms</text>
+<text data-panel="af-privacy-en-m-frame" x="22" y="716" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Returned offer: data to examine</text>
+<path data-connector="footer" d="M22 747 H398" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="af-privacy-en-m-frame" x="22" y="780" font-family="l0g Airfare Agents" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">l0g design · context [12, 13]</text>
+</svg>

@@ -1380,7 +1380,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 396, 'Le corpus conserve ses termes et ajoute deux notions sur les minerais critiques');
+assert.equal(glossaryAtlasEnBySlug.size, 397, 'Le corpus conserve ses termes et ajoute le ratio look-to-book');
 for (const slug of ['credits-budgetaires-americains', 'reconciliation-budgetaire']) {
   assert.ok(glossaryAtlasEnBySlug.has(slug), `Missing English budget definition: ${slug}`);
 }
@@ -1584,8 +1584,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 781, 'Le corpus conserve ses notions et ajoute deux notions sur les minerais critiques');
-assert.equal(glossaryAtlasEntries.length, 386, 'Les deux notions sur les minerais critiques disposent de sources et de liens');
+assert.equal(glossaryEntries.length, 782, 'Le corpus conserve ses notions et ajoute le ratio look-to-book');
+assert.equal(glossaryAtlasEntries.length, 387, 'Les notions minières et le ratio look-to-book disposent de sources et de liens');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2012,7 +2012,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 1011, 'Les deux notions minières ajoutent leurs relations réciproques au graphe existant');
+assert.equal(glossaryAtlasEdgeCount, 1012, 'Les notions minières et le look-to-book complètent le graphe existant');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
@@ -2117,13 +2117,13 @@ for (const [slug, source] of [
     assert.deepEqual(entry.atlas.articles.map((item) => item.href), [href]);
   }
 }
-for (const [entry, href] of [
-  [glossaryEntries.find((item) => item.slug === 'tarification-algorithmique'), '/posts/prix-automatiques-concurrence-algorithmes/'],
-  [glossaryAtlasEnBySlug.get('tarification-algorithmique'), '/en/analysis/pricing-algorithms-competition/'],
+for (const [entry, href, airfareHref] of [
+  [glossaryEntries.find((item) => item.slug === 'tarification-algorithmique'), '/posts/prix-automatiques-concurrence-algorithmes/', '/posts/billets-avion-agents-ia-signal-demande/'],
+  [glossaryAtlasEnBySlug.get('tarification-algorithmique'), '/en/analysis/pricing-algorithms-competition/', '/en/analysis/airfares-ai-agents-demand-signals/'],
 ]) {
   assert(entry);
   assert.equal(entry.guide, href);
-  assert.deepEqual(entry.atlas.articles.map((item) => item.href), [href]);
+  assert.deepEqual(entry.atlas.articles.map((item) => item.href), [href, airfareHref]);
   assert.deepEqual(entry.atlas.sources.map((item) => item.href), ['https://www.autoritedelaconcurrence.fr/sites/default/files/Algorithms_and_Competition_Working-Paper.pdf']);
 }
 for (const [slug, source] of [
@@ -2348,4 +2348,22 @@ for (const slug of ['minerais-critiques', 'dependance-nette-aux-importations']) 
     assert.match(en.def, /stock adjustments specified for the product and period/);
     assert.doesNotMatch(fr.def, /stocks publics et industriels/);
   }
+}
+
+// A search-to-book ratio retains explicit units rather than counting travellers.
+{
+  const fr = glossaryEntries.find(entry => entry.slug === 'look-to-book');
+  const en = glossaryAtlasEnBySlug.get('look-to-book');
+  assert(fr?.atlas && en, 'Look-to-book requires sourced bilingual definitions');
+  assert.equal(fr.reference, undefined);
+  assert.equal(fr.referenceCandidate, false);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.equal(fr.guide, '/posts/billets-avion-agents-ia-signal-demande/');
+  assert.equal(en.guide, '/en/analysis/airfares-ai-agents-demand-signals/');
+  assert.deepEqual(fr.atlas.related, ['tarification-algorithmique']);
+  assert.deepEqual(en.atlas.related, fr.atlas.related);
+  assert.deepEqual(fr.atlas.sources.map(x => x.href), en.atlas.sources.map(x => x.href));
+  assert.equal(new URL(fr.atlas.sources[0].href).hostname, 'www.iata.org');
+  assert.match(fr.def, /point de collecte/);
+  assert.match(en.def, /collection point/);
 }

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" role="img" aria-labelledby="af-decision-en-d-title af-decision-en-d-desc" style="width:100%;height:auto" class="l0g-airfare-agents-svg">
+<title id="af-decision-en-d-title">The value of the final seat</title><desc id="af-decision-en-d-desc">Entirely hypothetical example. A180euro offer now is compared with a possible300euro future sale, weighted by an assumed40or80percent probability.</desc>
+<rect id="af-decision-en-d-frame" stroke="var(--color-line-strong)" stroke-width="1" x="0" y="0" width="1000" height="650" rx="16" fill="var(--color-ink)"/>
+<text data-panel="af-decision-en-d-frame" x="32" y="42" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / AIRFARES &amp; AI AGENTS</text>
+<text data-panel="af-decision-en-d-frame" x="32" y="94" font-family="l0g Airfare Agents" font-size="36" font-weight="700" text-anchor="start" fill="var(--color-paper)">The value of the final seat</text>
+<text data-panel="af-decision-en-d-frame" x="32" y="131" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-amber)">Hypothetical example</text>
+<rect id="af-decision-en-d-now" stroke="var(--color-line-strong)" stroke-width="1" x="32" y="167" width="236" height="324" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-decision-en-d-now" x="52" y="206" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">NOW</text>
+<path data-connector="seat" d="M58 239 V294 H124 V320" fill="none" stroke="var(--color-signal)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="seat" d="M58 294 V320" fill="none" stroke="var(--color-signal)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="seat" d="M58 268 H112" fill="none" stroke="var(--color-signal)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="af-decision-en-d-now" data-metric="immediate-offer" data-value="180" x="52" y="388" font-family="l0g Airfare Agents" font-size="46" font-weight="700" text-anchor="start" fill="var(--color-signal)">180 €</text>
+<text data-panel="af-decision-en-d-now" x="52" y="438" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">Offer now</text>
+<rect id="af-decision-en-d-scenario-0" stroke="var(--color-line-strong)" stroke-width="1" x="298" y="167" width="320" height="324" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-decision-en-d-scenario-0" x="320" y="206" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-signal)">SCENARIO A</text>
+<text data-panel="af-decision-en-d-scenario-0" data-metric="future-probability" data-value="40" x="320" y="266" font-family="l0g Airfare Agents" font-size="32" font-weight="400" text-anchor="start" fill="var(--color-paper)">40 % × 300 €</text>
+<text data-panel="af-decision-en-d-scenario-0" x="320" y="316" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Expected revenue</text>
+<text data-panel="af-decision-en-d-scenario-0" data-metric="expected-revenue" data-value="120" x="320" y="367" font-family="l0g Airfare Agents" font-size="40" font-weight="700" text-anchor="start" fill="var(--color-signal)">120 €</text>
+<text data-panel="af-decision-en-d-scenario-0" x="320" y="441" font-family="l0g Airfare Agents" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-signal)">Sell now</text>
+<rect id="af-decision-en-d-scenario-1" stroke="var(--color-line-strong)" stroke-width="1" x="648" y="167" width="320" height="324" rx="12" fill="var(--color-surface)"/>
+<text data-panel="af-decision-en-d-scenario-1" x="670" y="206" font-family="l0g Airfare Agents" font-size="24" font-weight="700" text-anchor="start" fill="var(--color-amber)">SCENARIO B</text>
+<text data-panel="af-decision-en-d-scenario-1" data-metric="future-probability" data-value="80" x="670" y="266" font-family="l0g Airfare Agents" font-size="32" font-weight="400" text-anchor="start" fill="var(--color-paper)">80 % × 300 €</text>
+<text data-panel="af-decision-en-d-scenario-1" x="670" y="316" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Expected revenue</text>
+<text data-panel="af-decision-en-d-scenario-1" data-metric="expected-revenue" data-value="240" x="670" y="367" font-family="l0g Airfare Agents" font-size="40" font-weight="700" text-anchor="start" fill="var(--color-amber)">240 €</text>
+<text data-panel="af-decision-en-d-scenario-1" x="670" y="441" font-family="l0g Airfare Agents" font-size="25" font-weight="700" text-anchor="start" fill="var(--color-amber)">Keep the seat</text>
+<rect id="af-decision-en-d-threshold" x="32" y="522" width="936" height="64" rx="12" fill="var(--color-surface-2)"/>
+<text data-panel="af-decision-en-d-threshold" data-metric="threshold" data-value="60" x="52" y="564" font-family="l0g Airfare Agents" font-size="28" font-weight="700" text-anchor="start" fill="var(--color-signal)">THRESHOLD: 180 / 300 = 60%</text>
+<path data-connector="footer" d="M22 597 H978" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="af-decision-en-d-frame" x="22" y="630" font-family="l0g Airfare Agents" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">l0g calculation · assumptions · [02, 03]</text>
+</svg>
