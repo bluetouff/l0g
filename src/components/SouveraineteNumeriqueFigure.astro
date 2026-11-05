@@ -1,0 +1,157 @@
+---
+import commitments_fr_desktop from '../figures/souverainete-numerique-2026/commitments.fr.desktop.svg?raw';
+import commitments_fr_mobile from '../figures/souverainete-numerique-2026/commitments.fr.mobile.svg?raw';
+import commitments_en_desktop from '../figures/souverainete-numerique-2026/commitments.en.desktop.svg?raw';
+import commitments_en_mobile from '../figures/souverainete-numerique-2026/commitments.en.mobile.svg?raw';
+import timeline_fr_desktop from '../figures/souverainete-numerique-2026/timeline.fr.desktop.svg?raw';
+import timeline_fr_mobile from '../figures/souverainete-numerique-2026/timeline.fr.mobile.svg?raw';
+import timeline_en_desktop from '../figures/souverainete-numerique-2026/timeline.en.desktop.svg?raw';
+import timeline_en_mobile from '../figures/souverainete-numerique-2026/timeline.en.mobile.svg?raw';
+import chips_fr_desktop from '../figures/souverainete-numerique-2026/chips.fr.desktop.svg?raw';
+import chips_fr_mobile from '../figures/souverainete-numerique-2026/chips.fr.mobile.svg?raw';
+import chips_en_desktop from '../figures/souverainete-numerique-2026/chips.en.desktop.svg?raw';
+import chips_en_mobile from '../figures/souverainete-numerique-2026/chips.en.mobile.svg?raw';
+import adoption_fr_desktop from '../figures/souverainete-numerique-2026/adoption.fr.desktop.svg?raw';
+import adoption_fr_mobile from '../figures/souverainete-numerique-2026/adoption.fr.mobile.svg?raw';
+import adoption_en_desktop from '../figures/souverainete-numerique-2026/adoption.en.desktop.svg?raw';
+import adoption_en_mobile from '../figures/souverainete-numerique-2026/adoption.en.mobile.svg?raw';
+import giga_fr_desktop from '../figures/souverainete-numerique-2026/giga.fr.desktop.svg?raw';
+import giga_fr_mobile from '../figures/souverainete-numerique-2026/giga.fr.mobile.svg?raw';
+import giga_en_desktop from '../figures/souverainete-numerique-2026/giga.en.desktop.svg?raw';
+import giga_en_mobile from '../figures/souverainete-numerique-2026/giga.en.mobile.svg?raw';
+import system_fr_desktop from '../figures/souverainete-numerique-2026/system.fr.desktop.svg?raw';
+import system_fr_mobile from '../figures/souverainete-numerique-2026/system.fr.mobile.svg?raw';
+import system_en_desktop from '../figures/souverainete-numerique-2026/system.en.desktop.svg?raw';
+import system_en_mobile from '../figures/souverainete-numerique-2026/system.en.mobile.svg?raw';
+interface Props {lang?: 'fr' | 'en'; kind: 'commitments' | 'timeline' | 'chips' | 'adoption' | 'giga' | 'system'}
+const {lang='fr',kind}=Astro.props;
+const captions = {
+  "commitments": {
+    "fr": {
+      "title": "La durée des financements publics",
+      "description": "Montants de mesures programmées dans les feuilles de route nationales de la Décennie numérique 2026.",
+      "method": "La barre partage 289,3 milliards d’euros entre 205,9 milliards de budgets publics et un solde arithmétique de 83,4 milliards. Elle représente des mesures déclarées. La Commission donne un ordre de grandeur verbal pour les financements publics attendus en extinction fin 2026 ; le schéma conserve cette formulation."
+    },
+    "en": {
+      "title": "The public-funding handover",
+      "description": "Planned measures reported in national Digital Decade roadmaps, 2026.",
+      "method": "The bar splits €289.3 billion into €205.9 billion of public budgets and a calculated remainder of €83.4 billion. These are reported planned measures. The Commission uses a verbal estimate for public funding expected to phase out by end-2026; the figure preserves that wording."
+    },
+    "sources": [
+      "01"
+    ],
+    "number": "01"
+  },
+  "timeline": {
+    "fr": {
+      "title": "Trois calendriers à raccorder",
+      "description": "Les échéances de la relance, la poursuite des programmes existants et le prochain budget proposé.",
+      "method": "FRR : réalisations au 31 août 2026, demandes finales au 30 septembre, derniers paiements au 31 décembre. Les programmes du budget 2021-2027 continuent en 2027. Le cadre 2028-2034 demeure une proposition. Les étapes indiquent une succession institutionnelle ; les espacements du schéma restent conceptuels."
+    },
+    "en": {
+      "title": "Connecting three funding calendars",
+      "description": "Recovery-facility deadlines, continuing programmes and the proposed next budget.",
+      "method": "RRF: milestones by 31 August 2026, final requests by 30 September, final payments by 31 December. Programmes under the 2021-2027 budget continue in 2027. The 2028-2034 framework remains a proposal. Spacing illustrates an institutional sequence rather than a measured funding path."
+    },
+    "sources": [
+      "02",
+      "10",
+      "11"
+    ],
+    "number": "02"
+  },
+  "chips": {
+    "fr": {
+      "title": "Puces : la trajectoire et la cible",
+      "description": "Part de l’UE dans la chaîne de valeur mondiale des semi-conducteurs, en pourcentage.",
+      "method": "Les quatre barres utilisent un axe commun de 0 à 20 %. 2019 et 2022 sont des observations historiques. La projection de 11,7 % pour 2030 provient de la Commission en juillet 2024 et est reprise par l’audit de la Cour des comptes européenne de 2025. Les 20 % constituent la cible politique de l’Union."
+    },
+    "en": {
+      "title": "Chips: the projected path and the target",
+      "description": "EU share of the global semiconductor value chain, in percent.",
+      "method": "All four bars share a 0-20% scale. The 2019 and 2022 figures are historical observations. The 11.7% projection for 2030 comes from the Commission in July 2024 and is reproduced in the European Court of Auditors’ 2025 audit. The 20% figure is the EU policy target."
+    },
+    "sources": [
+      "03",
+      "04"
+    ],
+    "number": "03"
+  },
+  "adoption": {
+    "fr": {
+      "title": "Des usages en pleine diffusion",
+      "description": "Cloud payant et intelligence artificielle dans les entreprises de l’Union en 2025.",
+      "method": "Eurostat : entreprises de dix personnes ou plus dans les secteurs couverts. PME : 10 à 249 personnes ; grandes entreprises : 250 ou plus. Chaque barre utilise une échelle de 0 à 100 %. Cloud payant et adoption de l’IA sont deux indicateurs distincts. Les taux décrivent des usages ; l’origine et le contrôle des prestataires exigent d’autres données."
+    },
+    "en": {
+      "title": "Digital services are spreading",
+      "description": "Paid cloud and artificial-intelligence use among EU enterprises in 2025.",
+      "method": "Eurostat: enterprises with at least ten people in the covered sectors. SMEs have 10-249 people; large enterprises have 250 or more. Every bar uses a 0-100% scale. Paid-cloud use and AI adoption are separate indicators. These rates describe use; supplier origin and control require other evidence."
+    },
+    "sources": [
+      "05",
+      "06",
+      "14"
+    ],
+    "number": "04"
+  },
+  "giga": {
+    "fr": {
+      "title": "La commande publique comme point d’appui",
+      "description": "Plafond public annoncé et objectif d’investissement privé pour les gigafactories d’IA.",
+      "method": "La Commission annonce jusqu’à 10 milliards d’euros de fonds européens et nationaux afin de mobiliser au moins 20 milliards d’investissements privés. L’appel EuroHPC décrit un achat de temps de calcul. Les flèches représentent l’architecture contractuelle visée, conditionnée par la sélection et les contrats. Elles distinguent les deux leviers et la capacité à construire, livrer et exploiter."
+    },
+    "en": {
+      "title": "Public procurement as an anchor customer",
+      "description": "Announced public ceiling and private-investment goal for AI gigafactories.",
+      "method": "The Commission announces up to €10 billion of EU and national funding to mobilise at least €20 billion of private investment. The EuroHPC call describes purchases of computing time. Arrows depict the intended contractual structure, conditional on selection and contracts. They distinguish the two levers from the capacity to build, deliver and operate."
+    },
+    "sources": [
+      "07",
+      "15"
+    ],
+    "number": "05"
+  },
+  "system": {
+    "fr": {
+      "title": "Financer, produire et garder la maîtrise",
+      "description": "Une chaîne économique et un retour des besoins de financement par les coûts récurrents.",
+      "method": "Modèle analytique l0g fondé sur les mécanismes des documents cités. Les étapes relient financement, capacité matérielle, clientèle et maîtrise opérationnelle. La boucle rend visibles les besoins de renouvellement, d’énergie et d’équipes. Les flèches sont conceptuelles et n’attribuent ni probabilités ni montants."
+    },
+    "en": {
+      "title": "Finance, production and operational control",
+      "description": "An economic chain with recurring costs feeding back into financing needs.",
+      "method": "l0g analytical model grounded in mechanisms described by the cited documents. The stages link funding, physical capacity, customers and operational control. The loop highlights renewal, energy and staffing needs. Arrows are conceptual and carry neither probabilities nor amounts."
+    },
+    "sources": [
+      "01",
+      "03",
+      "09"
+    ],
+    "number": "06"
+  }
+} as const;
+const art = {fr:{commitments:{desktop:commitments_fr_desktop,mobile:commitments_fr_mobile},timeline:{desktop:timeline_fr_desktop,mobile:timeline_fr_mobile},chips:{desktop:chips_fr_desktop,mobile:chips_fr_mobile},adoption:{desktop:adoption_fr_desktop,mobile:adoption_fr_mobile},giga:{desktop:giga_fr_desktop,mobile:giga_fr_mobile},system:{desktop:system_fr_desktop,mobile:system_fr_mobile}},en:{commitments:{desktop:commitments_en_desktop,mobile:commitments_en_mobile},timeline:{desktop:timeline_en_desktop,mobile:timeline_en_mobile},chips:{desktop:chips_en_desktop,mobile:chips_en_mobile},adoption:{desktop:adoption_en_desktop,mobile:adoption_en_mobile},giga:{desktop:giga_en_desktop,mobile:giga_en_mobile},system:{desktop:system_en_desktop,mobile:system_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions,kind)) throw new Error('Unknown SouveraineteNumeriqueFigure variant');
+const entry=captions[kind], f=entry[lang], svg=art[lang][kind];
+---
+<figure class="souverainete-figure" id={`figure-${entry.number}`}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption><span class="fig-num">FIGURE {entry.number}</span><strong>{f.title}</strong>{f.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${Number(id)}`}>[{Number(id)}]</a>)}</figcaption>
+  <details><summary>{lang === 'fr' ? 'Méthode et limites' : 'Method and limitations'}</summary><p>{f.method}</p></details>
+</figure>
+<style>
+@font-face{font-family:'l0g Souverainete';src:url('/fonts/stablecoins/dejavu-sans-400.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'l0g Souverainete';src:url('/fonts/stablecoins/dejavu-sans-700.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+.souverainete-figure{width:100%;max-width:800px;margin:2.5rem auto;padding-bottom:1rem;color:inherit;container-type:inline-size;overflow:visible}
+.desktop-art,.mobile-art{line-height:0;width:100%}.mobile-art{display:none;max-width:340px;margin-inline:auto}
+.souverainete-figure :global(svg){display:block;width:100%;max-width:100%;height:auto;letter-spacing:normal;overflow:visible}
+.souverainete-figure figcaption{font-family:var(--font-read);font-size:.9rem;line-height:1.7;color:var(--color-muted);padding:1rem 0 .5rem}
+.souverainete-figure figcaption strong{display:block;font-size:1rem;margin:.4rem 0;color:var(--color-paper)}
+.fig-num{letter-spacing:.06em;font-size:.8rem;color:var(--color-signal);font-weight:700}
+.souverainete-figure a{margin-right:.45rem}.souverainete-figure details{font-family:var(--font-read);font-size:.875rem;line-height:1.7;margin-top:.5rem}
+.souverainete-figure summary{cursor:pointer;padding:.35rem 0}.souverainete-figure summary:focus-visible{outline:2px solid var(--color-signal);outline-offset:4px}.souverainete-figure p{margin-top:.7rem}
+@container(max-width:500px){.desktop-art{display:none}.mobile-art{display:block}}
+@media print{.desktop-art{display:block}.mobile-art{display:none}.souverainete-figure{break-inside:avoid}}
+</style>

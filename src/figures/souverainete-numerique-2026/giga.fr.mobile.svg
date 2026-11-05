@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 900" style="width:100%;height:auto" class="l0g-souverainete-svg" role="img" aria-labelledby="sov-giga-fr-mobile-title sov-giga-fr-mobile-desc"><title id="sov-giga-fr-mobile-title">La commande publique comme point d’appui</title><desc id="sov-giga-fr-mobile-desc">Plafond public et objectif privé conditionnels pour les gigafactories d’IA.</desc>
+<rect id="sov-giga-fr-mobile-frame" x="0" y="0" width="420" height="900" rx="12" fill="var(--color-ink)" stroke="none" stroke-width="1.4"/>
+<text data-panel="sov-giga-fr-mobile-frame" x="22" y="35" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / SOUVERAINETÉ</text>
+<text data-panel="sov-giga-fr-mobile-frame" x="22" y="76" font-family="l0g Souverainete" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-paper)">La commande publique</text>
+<text data-panel="sov-giga-fr-mobile-frame" x="22" y="110.84" font-family="l0g Souverainete" font-size="26" font-weight="700" text-anchor="start" fill="var(--color-paper)">comme point d’appui</text>
+<text data-panel="sov-giga-fr-mobile-frame" x="22" y="143.84" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Plafond public et objectif privé</text>
+<text data-panel="sov-giga-fr-mobile-frame" x="22" y="168.63" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">annoncés.</text>
+<rect id="sov-giga-fr-mobile-public" x="40" y="178" width="340" height="140" rx="12" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.4"/>
+<text data-panel="sov-giga-fr-mobile-public" x="60" y="214" font-family="l0g Souverainete" font-size="27" font-weight="700" text-anchor="start" fill="var(--color-signal)">JUSQU’À 10 Md€</text>
+<text data-panel="sov-giga-fr-mobile-public" x="60" y="252" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Fonds publics : achat de temps</text>
+<text data-panel="sov-giga-fr-mobile-public" x="60" y="276.79" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">de calcul.</text>
+<rect id="sov-giga-fr-mobile-private" x="40" y="385" width="340" height="140" rx="12" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1.4"/>
+<text data-panel="sov-giga-fr-mobile-private" x="60" y="421" font-family="l0g Souverainete" font-size="27" font-weight="700" text-anchor="start" fill="var(--color-amber)">20 Md€ MINIMUM</text>
+<text data-panel="sov-giga-fr-mobile-private" x="60" y="459" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Investissements privés à</text>
+<text data-panel="sov-giga-fr-mobile-private" x="60" y="483.79" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">mobiliser.</text>
+<rect id="sov-giga-fr-mobile-operator" x="40" y="612" width="340" height="139" rx="12" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.4"/>
+<text data-panel="sov-giga-fr-mobile-operator" x="60" y="651" font-family="l0g Souverainete" font-size="21" font-weight="700" text-anchor="start" fill="var(--color-paper)">APRÈS SÉLECTION</text>
+<text data-panel="sov-giga-fr-mobile-operator" x="60" y="686" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Opérateur chargé de construire,</text>
+<text data-panel="sov-giga-fr-mobile-operator" x="60" y="710.79" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">livrer et exploiter.</text>
+<path data-connector="public-procurement" d="M40 248 L18 248 L18 678 L28 678" fill="none" stroke="var(--color-signal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path data-connector="public-procurement" d="M21 681.5 L28 678 L21 674.5" fill="none" stroke="var(--color-signal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-connector="private-investment" d="M380 455 L402 455 L402 678 L392 678" fill="none" stroke="var(--color-amber)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path data-connector="private-investment" d="M399 674.5 L392 678 L399 681.5" fill="none" stroke="var(--color-amber)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="sov-giga-fr-mobile-frame" x="40" y="567" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sélection et contrats conditionnent</text>
+<text data-panel="sov-giga-fr-mobile-frame" x="40" y="591.79" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">les engagements.</text>
+<path d="M22 814 L398 814" fill="none" stroke="var(--color-line-strong)" stroke-width="1.7"/>
+<text data-panel="sov-giga-fr-mobile-frame" x="22" y="841" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Commission [7], appel EuroHPC [15].</text>
+<text data-panel="sov-giga-fr-mobile-frame" x="22" y="865.79" font-family="l0g Souverainete" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Montants conditionnels.</text>
+</svg>

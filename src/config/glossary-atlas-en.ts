@@ -210,6 +210,19 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'frr', sigle: 'RRF', nom: 'Recovery and Resilience Facility',
+    def: 'A temporary NextGenerationEU instrument providing Member States with grants and loans for agreed reforms and investments over 2021-2026. Following any pre-financing, regular payments depend on satisfactory fulfilment of milestones and targets in national recovery and resilience plans. The 2026 deadlines are 31 August for completing milestones and targets, 30 September for final payment requests and 31 December for Commission payments.',
+    guide: '/en/analysis/europe-digital-sovereignty-funding-cliff-2026/',
+    ...macroSection,
+    robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Completing a milestone leads to an assessment and a conditional disbursement.',
+      articles: [{ label: 'European digital sovereignty: the funding handover', href: '/en/analysis/europe-digital-sovereignty-funding-cliff-2026/', detail: 'Recovery funding expiry and the continuity of digital infrastructure.', kind: 'article' }],
+      sources: [{ label: 'European Commission, 2026 RRF annual report', href: 'https://reforms-investments.ec.europa.eu/publications-0/recovery-and-resilience-facility-annual-report-2026_en', detail: '7 October 2026 report: reforms, milestones, payment requests and the three closure deadlines.', kind: 'source' }],
+      related: ['capex', 'financement-mixte', 'additionnalite-financiere'],
+    },
+  },
+  {
     slug: 'credits-budgetaires-americains', sigle: 'US appropriations', nom: 'Federal spending authority',
     def: 'Legal authority for a federal agency to incur obligations and make Treasury payments for specified purposes. An appropriation defines the scope and period of funding availability. A contract creates a legal commitment; the subsequent payment is a separate stage. A continuing resolution can provide temporary funding authority.',
     guide: '/en/analysis/us-midterms-authority-financial-commitments/',

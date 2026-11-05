@@ -335,6 +335,11 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'ESTR', nom: '€STR, euro short-term rate', def: "Taux au jour le jour de référence de la zone euro, publié par la BCE à partir des transactions réelles du marché monétaire. Pendant européen du SOFR américain, il se colle à la facilité de dépôt tant que la liquidité excédentaire reste abondante.", guide: 'lire-le-bilan-bce-target2' },
       { sigle: 'Effets de second tour', nom: 'Second-round effects', def: "Contagion d'un choc de prix initial, typiquement l'énergie, aux salaires et aux prix intérieurs, transformant une poussée temporaire en inflation durable. Prévenir ces effets est l'argument classique des banques centrales pour resserrer face à un choc d'offre importé : celui de Trichet en 2011 comme celui de la BCE en 2026." },
       { sigle: 'SMP', nom: 'Securities Markets Programme', def: "Programme d'achats de dette souveraine lancé par la BCE en 2010 et réactivé en urgence à l'été 2011 face à l'envolée des spreads italien et espagnol. Ancêtre de l'OMT puis du TPI : stérilisé, discrétionnaire et sans conditionnalité claire, il a montré les limites d'un filet improvisé." },
+      {
+        sigle: 'FRR', nom: 'Facilité pour la reprise et la résilience',
+        def: 'Instrument temporaire de NextGenerationEU qui finance des réformes et investissements des États membres par des subventions et des prêts sur 2021-2026. Après un éventuel préfinancement, les paiements ordinaires dépendent de la réalisation satisfaisante des jalons et cibles convenus dans les plans nationaux. En 2026, les échéances sont le 31 août pour les jalons et cibles, le 30 septembre pour les dernières demandes de paiement et le 31 décembre pour les paiements de la Commission.',
+        guide: '/posts/souverainete-numerique-europe-financement-2026/',
+      },
       { sigle: 'NGEU', nom: 'NextGenerationEU', def: "Plan de relance post-pandémie financé par un emprunt commun de l'UE pouvant atteindre 806,9 milliards d'euros en prix courants. Premier saut d'échelle de la dette commune européenne, remboursable de 2028 à 2058 par le budget de l'Union, sans apparaître dans la dette d'aucun État membre.", guide: 'lire-la-dette-souveraine-europeenne' },
       { sigle: 'SAFE', nom: 'Security Action for Europe', def: "Instrument européen de 150 milliards d'euros de prêts défense adopté en mai 2025 : la Commission emprunte sur les marchés et re-prête aux États pour des achats d'armement conjoints. Premiers engagements début 2026, la Pologne en tête des allocations." },
       { sigle: 'SIU', nom: 'Savings and Investments Union', def: "Union de l'épargne et de l'investissement, stratégie présentée par la Commission le 19 mars 2025. Successeur rebaptisé de l'union des marchés de capitaux (UMC, 2015-2025), elle vise à orienter les quelque 10 000 milliards d'euros de dépôts des ménages vers le financement de la défense, de la transition et des entreprises, via titrisation, comptes d'épargne-investissement, réforme des retraites et supervision plus intégrée." },
@@ -1254,6 +1259,12 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  frr: {
+    intuition: 'La réalisation d’un jalon ouvre la voie à une évaluation, puis à un versement conditionnel.',
+    articles: [{ label: 'Souveraineté numérique européenne : le relais financier', href: '/posts/souverainete-numerique-europe-financement-2026/', detail: 'Fin des financements de relance et continuité des infrastructures numériques.', kind: 'article' }],
+    sources: [{ label: 'Commission européenne, rapport annuel FRR 2026', href: 'https://reforms-investments.ec.europa.eu/publications-0/recovery-and-resilience-facility-annual-report-2026_en', detail: 'Rapport du 7 octobre 2026 : réformes, jalons, demandes de paiement et trois échéances de clôture.', kind: 'source' }],
+    related: ['capex', 'financement-mixte', 'additionnalite-financiere'],
+  },
   'credits-budgetaires-americains': {
     articles: [{ label: 'Midterms : pouvoirs publics et milliards engagés', href: '/posts/midterms-pouvoirs-milliards-engages/', kind: 'article' }],
     sources: [{ label: 'Congressional Budget Office, Common Budgetary Terms Explained', href: 'https://www.cbo.gov/publication/57660', detail: 'Décembre 2021 : autorité budgétaire, engagements, paiements et lois de financement provisoire.', kind: 'source' }],
