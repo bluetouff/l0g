@@ -40,7 +40,7 @@ test('la confluence 13FLOW reste accessible sans connaître son URL', async () =
 test('les tuiles et leur note de méthode restent réunies dans RiskBand', async () => {
   const riskBand = await readFile(new URL('src/components/RiskBand.astro', root), 'utf8');
   assert.doesNotMatch(riskBand, /confluence-entry|\/confluence\//);
-  assert.match(riskBand, /<section[^>]+data-pagefind-ignore>[\s\S]*class="risk-tile card[\s\S]*<p class="risk-caveat">[\s\S]*Scores 0-100[\s\S]*<\/section>/);
+  assert.match(riskBand, /<div[^>]+data-home-observatory[^>]+data-pagefind-ignore>[\s\S]*class="risk-tile"[\s\S]*<p class="risk-caveat">[\s\S]*scores 0-100[\s\S]*se lisent séparément[\s\S]*<\/div>/);
 });
 
 

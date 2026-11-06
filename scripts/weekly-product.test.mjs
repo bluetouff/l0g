@@ -263,10 +263,7 @@ test('les CTA, les archives et les formats journalistes couvrent toutes les surf
   ]);
 
   for (const page of [article, now]) assert.match(page, /WeeklyCta/);
-  const homeSidebar = await source('src/components/HomeSidebar.astro');
-  assert.match(home, /<HomeSidebar slot="sidebar"/);
-  assert.doesNotMatch(home, /WeeklyCta/);
-  assert.match(homeSidebar, /<WeeklyCta variant="home"/);
+  assert.match(home, /<aside class="home-services"[\s\S]*href="\/hebdo\/"[\s\S]*<strong>L’Hebdo<\/strong>[\s\S]*<\/aside>/);
   for (const extension of ['graphique.svg', 'donnees.csv', 'citation.txt', 'linkedin.txt', 'thread-x.txt']) {
     assert.match(press, new RegExp(extension.replace('.', '\\.')));
   }

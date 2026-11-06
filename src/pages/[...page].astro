@@ -4,7 +4,7 @@ import type { GetStaticPathsOptions } from 'astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AnalysisPagination from '../components/AnalysisPagination.astro';
 import ConfluenceEntry from '../components/ConfluenceEntry.astro';
-import HomeSidebar from '../components/HomeSidebar.astro';
+import PublicationDates from '../components/PublicationDates.astro';
 import ReadingLibrary from '../components/ReadingLibrary.astro';
 import PostCard from '../components/PostCard.astro';
 import DiscoveryCard from '../components/DiscoveryCard.astro';
@@ -12,9 +12,9 @@ import ReadingDiscovery from '../components/ReadingDiscovery.astro';
 import ReadingContinue from '../components/ReadingContinue.astro';
 import { buildDiscoveryCatalog } from '../lib/reading-discovery.ts';
 import { selectHomeFeaturedPost, sortPostsByPublicationDate } from '../lib/content-order.mjs';
-import PostHero from '../components/PostHero.astro';
+import { keepFrenchPunctuation } from '../lib/typography.ts';
+import '../styles/home.css';
 import RiskBand from '../components/RiskBand.astro';
-import SectionSignature from '../components/SectionSignature.astro';
 import { readingTime } from '../lib/reading-time.ts';
 import { accentForTags, topicLabelForTags } from '../config/topics.ts';
 
@@ -94,46 +94,25 @@ const needCards = [
   description={pageDescription}
   ogImage={isFirst ? '/og-home.png' : '/og-default.png'}
   ogImageAlt={isFirst ? 'l0g : les angles morts de la finance, économie, marchés et risques sur un dégradé turquoise, rose et ambre' : undefined}
+  sidebar={!isFirst}
+  home={isFirst}
 >
-  {isFirst && <HomeSidebar slot="sidebar" />}
   {isFirst && <ReadingLibrary slot="header-tools" lang="fr" variant="header" />}
-
+  <div class:list={{ 'home-page': isFirst }}>
   {isFirst && (
     <section class="home-intro">
-      <div class="home-kicker">
-        <p class="mono-label">// économie · marchés · risques</p>
-        <span aria-hidden="true"><i></i><b></b></span>
+      <div>
+        <p class="home-kicker"><span class="home-cut" aria-hidden="true"></span>Économie · marchés · risques</p>
+        <h1><span class="home-title-gradient">Les angles morts</span> de la finance.</h1>
       </div>
-      <h1 class="mt-3 font-display">
-        l<span style="color: var(--color-signal)">0</span>g : <span class="home-title-gradient">les angles morts de la finance</span>
-      </h1>
-      <p class="home-promise">
-        l0g décrypte les changements de l’économie et des marchés,
-        avec les chiffres, les sources et leurs limites.
-      </p>
-      <div class="home-actions">
-        <a href="/atlas/" class="home-action primary">
-          <svg class="home-action-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="m6 13.75 1-5.5m2-1.5 6.75 1.5m1.5 2-1.25 5.5m-2 1.5L7.5 16m.25-1.75 8-4.5" />
-            <circle cx="7.5" cy="6.5" r="1.75" />
-            <circle cx="17.5" cy="8.5" r="1.75" />
-            <circle cx="15.5" cy="17.5" r="1.75" />
-            <circle cx="5.5" cy="15.5" r="1.75" />
-          </svg>
-          <span class="home-action-label">Explorer les atlas</span>
-          <svg class="home-action-arrow" width="28" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M3 8h10M8 3l5 5-5 5" />
-          </svg>
-        </a>
-        <a href="#dernieres-analyses" class="home-action">
-          <span class="home-action-label">Lire les dernières analyses</span>
-          <svg class="home-action-arrow" width="28" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M8 3v10m-5-5 5 5 5-5" />
-          </svg>
-        </a>
+      <div class="home-intro-copy">
+        <p>Des enquêtes indépendantes et des données traçables pour lire les mécanismes de l’économie.</p>
+        <a href="/atlas/" class="home-action primary">Explorer les atlas <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   )}
+
+  {isFirst && <RiskBand summary />}
 
   {!isFirst && (
     <header class="rise border-b border-dashed border-line pb-8">
@@ -149,26 +128,24 @@ const needCards = [
 
   {isFirst && <ReadingContinue />}
 
-  {hero && (
+  {isFirst && <div class="home-lead">{hero && (
     <section class="home-featured" aria-labelledby="featured-title">
-      <p class="home-section-label" id="featured-title">L’analyse à retenir</p>
-      <PostHero
-        url={`/posts/${hero.post.id}/`}
-        title={hero.post.data.title}
-        description={hero.post.data.description}
-        imageSrc={hero.post.data.ogImage ?? `/og/${hero.post.id}.png`}
-        pubDate={hero.post.data.pubDate}
-        updatedDate={hero.post.data.updatedDate}
-        readingTime={hero.rt}
-        accent={hero.accent}
-        accentLabel={hero.accentLabel}
-      />
+      <p class="home-section-label"><span>01</span><i class="home-cut" aria-hidden="true"></i>À la une <span class="home-featured-date"><PublicationDates pubDate={hero.post.data.pubDate} updatedDate={hero.post.data.updatedDate} month="short" /> · {hero.rt} min</span></p>
+      <a class="home-featured-link" href={`/posts/${hero.post.id}/`}>
+        <figure class="home-cover">
+          <img src={hero.post.data.ogImage ?? `/og/${hero.post.id}.png`} width="1200" height="630" alt="" loading="eager" fetchpriority="high" decoding="async" data-home-hero />
+          <figcaption>{hero.accentLabel}</figcaption>
+        </figure>
+        <h2 id="featured-title">{keepFrenchPunctuation(hero.post.data.title)}</h2>
+      </a>
+      <p class="home-featured-description">{keepFrenchPunctuation(hero.post.data.description)}</p>
+      <a class="home-featured-cta" href={`/posts/${hero.post.id}/`}>Lire l’enquête <span aria-hidden="true">↗</span></a>
     </section>
-  )}
+  )}<section class="home-risk" aria-label="L’observatoire"><RiskBand /></section></div>}
 
   {isFirst && (
     <section class="home-needs" aria-labelledby="home-needs-title">
-      <h2 class="home-section-label" id="home-needs-title">Dossiers et repères</h2>
+      <h2 id="home-needs-title">Suivre les mécanismes</h2>
       <nav class="need-grid" aria-label="Choisir une entrée dans l0g">
         {needCards.map((card) => (
           <a href={card.href} class="need-card">
@@ -184,15 +161,9 @@ const needCards = [
     </section>
   )}
 
-  {isFirst && (
-    <section class="home-risk" aria-label="Les signaux de risque">
-      <RiskBand />
-    </section>
-  )}
-
   <section class="pb-4 latest-feed" id="dernieres-analyses">
     {isFirst
-      ? <SectionSignature index="03" eyebrow="chronologie" title="Les dernières analyses" />
+      ? <header class="home-feed-heading"><p class="home-section-label"><span>03</span><i class="home-cut" aria-hidden="true"></i>Chronologie</p><h2>Le fil des enquêtes</h2></header>
       : <div class="section-heading feed-heading" style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:0.75rem 1rem;margin-bottom:0.9rem">
           <div>
             <p class="mono-label" style="color: var(--color-signal)">// archives</p>
@@ -238,196 +209,11 @@ const needCards = [
       <ConfluenceEntry />
     </div>
   )}
-
+  {isFirst && <aside class="home-services" aria-label="À découvrir sur l0g">
+    <a class="home-support" href="/soutenir/"><span aria-hidden="true">♥︎</span><span><strong>Faire vivre l’analyse indépendante.</strong><small>Je soutiens l0g ↗</small></span></a>
+    <a href="https://watch.l0g.fr/" target="_blank" rel="noopener noreferrer"><strong>l0g Watch</strong><small>La mémoire privée de votre veille. ↗</small></a>
+    <a href="/hebdo/"><strong>L’Hebdo</strong><small>La revue de la semaine ↗</small></a>
+    <nav aria-label="Raccourcis l0g"><a href="/maintenant/">Maintenant</a><a href="/demarrer/">Découvrir l0g</a><a href="/sujets/">Sujets suivis</a></nav>
+  </aside>}
+  </div>
 </BaseLayout>
-
-<style is:global>
-  .home-intro { padding: 1.1rem 0 0.4rem; }
-  .home-kicker {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .home-kicker > p { color: var(--color-signal); }
-  .home-kicker > span {
-    display: grid;
-    grid-template-columns: minmax(2.5rem, 7rem) auto;
-    align-items: center;
-    gap: 0.35rem;
-    flex: 1;
-    max-width: 8rem;
-  }
-  .home-kicker i {
-    height: 1px;
-    background: linear-gradient(90deg, var(--color-signal), color-mix(in srgb, var(--color-signal) 12%, transparent));
-  }
-  .home-kicker b {
-    width: 0.42rem;
-    height: 0.42rem;
-    border: 1px solid var(--color-signal);
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-signal) 6%, transparent);
-  }
-  .home-intro h1 { font-weight: 450; line-height: 1.3; letter-spacing: -0.035em; }
-  .home-title-gradient {
-    color: var(--color-bright);
-    background: linear-gradient(90deg, var(--color-signal), var(--color-accent) 48%, var(--color-amber));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .home-promise {
-    max-width: 40rem;
-    margin-top: 1.2rem;
-    border-left: 1px solid var(--color-signal);
-    padding-left: 1rem;
-    color: var(--color-paper);
-    font-family: var(--font-read);
-    font-size: clamp(1.08rem, 2.1vw, 1.28rem);
-    line-height: 1.65;
-  }
-  .home-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem 1.4rem; margin-top: 1.35rem; }
-  .home-action {
-    display: inline-flex;
-    min-width: 0;
-    min-height: 3rem;
-    align-items: center;
-    gap: 0.75rem;
-    border-bottom: 1px solid var(--color-line-strong);
-    padding: 0.65rem 0.15rem;
-    color: var(--color-paper);
-    font-family: var(--font-read);
-    font-size: 0.84rem;
-    font-weight: 550;
-    line-height: 1.45;
-    letter-spacing: -0.01em;
-    text-decoration: none;
-    transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
-  }
-  .home-action.primary {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    border: 1px solid #9de0d0;
-    border-radius: 9px;
-    padding: 0.65rem 0.95rem;
-    background:
-      linear-gradient(115deg, #c8ede3, #87d7c5);
-    box-shadow: inset 0 1px 0 #ffffff80, 0 2px 4px #0000000d;
-    color: #102c28;
-    font-weight: 650;
-  }
-  .home-action.primary::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    background: linear-gradient(120deg, transparent 58%, #ffffff24 58%, #ffffff08 78%, transparent 78%);
-    pointer-events: none;
-  }
-  .home-action-icon { flex-shrink: 0; }
-  .home-action-label { flex: 1; min-width: 0; overflow-wrap: anywhere; }
-  .home-action-arrow {
-    flex-shrink: 0;
-    width: 1.7rem;
-    height: 1.7rem;
-    margin-left: 0.1rem;
-    border: 1px solid var(--color-line-strong);
-    border-radius: 50%;
-    padding: 0.32rem;
-    transition: transform 0.18s;
-  }
-  .home-action.primary .home-action-arrow {
-    width: 1rem;
-    height: 1rem;
-    margin-left: 0.35rem;
-    border: 0;
-    padding: 0;
-  }
-  .home-action:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
-  @media (hover: hover) {
-    .home-action:hover { border-color: var(--color-signal); }
-    .home-action:hover .home-action-arrow { transform: translateY(2px); }
-    .home-action.primary:hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 #ffffff80, 0 6px 18px #5eead418; }
-    .home-action.primary:hover .home-action-arrow { transform: translateX(2px); }
-  }
-  .home-featured,
-  .latest-feed { margin-top: 2.4rem; }
-  .home-discovery { margin-top: 2.4rem; }
-  .home-section-label { margin: 0 0 1rem; color: var(--color-muted); font: 450 .7rem/1.5 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
-  .home-featured .post-hero-inner { border: 0; border-top: 1px solid var(--color-line-strong); border-radius: 0; padding: 1.25rem 0 0; background: transparent; box-shadow: none; }
-  .home-featured .hero-mark { display: none; }
-  .home-featured .topic-chip { border: 0; padding: 0; font-weight: 450; }
-  .home-featured .hero-title { font-family: var(--font-read); font-size: clamp(1.5rem, 2.6vw, 1.95rem); font-weight: 500; line-height: 1.3; }
-  .home-featured .hero-desc { -webkit-line-clamp: unset; }
-  .home-needs { margin-top: 2.1rem; padding: 1.2rem 0 .5rem; border-top: 1px solid var(--color-line); }
-  .need-grid { display: grid; grid-template-columns: 1fr; column-gap: 2rem; }
-  .need-card {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 1rem;
-    min-height: 5rem;
-    padding: .85rem 0;
-    border-bottom: 1px solid var(--color-line);
-    color: var(--color-bright);
-    text-decoration: none;
-    transition: border-color 160ms ease;
-  }
-  .need-copy { min-width: 0; }
-  .need-copy small {
-    display: block;
-    margin-bottom: 0.35rem;
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    font-weight: 400;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-  }
-  .need-copy strong {
-    display: block;
-    font-family: var(--font-read);
-    font-size: 0.95rem;
-    font-weight: 450;
-    line-height: 1.4;
-  }
-  .need-description {
-    display: block;
-    margin-top: 0.3rem;
-    color: var(--color-muted);
-    font-family: var(--font-read);
-    font-size: 0.73rem;
-    line-height: 1.6;
-  }
-  .need-arrow {
-    color: var(--color-signal);
-    font: 400 1rem/1 var(--font-read);
-  }
-  .need-card:hover {
-    border-color: var(--color-signal);
-  }
-  .need-card:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
-  .home-featured .hero-title { hyphens: none; }
-  .home-risk {
-    margin-top: 1.65rem;
-    border-top: 1px solid var(--color-line);
-    border-bottom: 1px solid var(--color-line);
-    padding: 1.15rem 0 1.2rem;
-  }
-  .home-risk .rise { margin-top: 0; margin-bottom: 0; }
-  @media (min-width: 640px) {
-    .need-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  @media (max-width: 520px) {
-    .home-actions { display: grid; grid-template-columns: 1fr; }
-    .home-action { width: 100%; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .home-action, .home-action-arrow { transition: none; }
-    .home-action.primary:hover,
-    .home-action:hover .home-action-arrow,
-    .home-action.primary:hover .home-action-arrow { transform: none; }
-    .need-card { transition: none; }
-  }
-</style>
