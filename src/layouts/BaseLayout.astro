@@ -32,7 +32,6 @@ interface Props {
   ogImage?: string;
   ogImageAlt?: string;
   sidebar?: boolean;
-  home?: boolean;
   lang?: 'fr' | 'en';
   ogLocale?: 'fr_FR' | 'en_US';
   alternateLinks?: AlternateLink[];
@@ -51,7 +50,6 @@ const {
   ogImage,
   ogImageAlt,
   sidebar = true,
-  home = false,
   lang = 'fr',
   ogLocale = lang === 'en' ? 'en_US' : 'fr_FR',
   alternateLinks = [],
@@ -143,7 +141,7 @@ const siteJsonLd = {
     <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(siteJsonLd)} />
   </head>
 
-  <body class:list={{ 'home-layout': home }}>
+  <body>
     <div class="topbar" aria-hidden="true"></div>
     <div class="mx-auto max-w-6xl px-5 py-6 sm:py-8">
       <header data-site-chrome>
@@ -154,14 +152,12 @@ const siteJsonLd = {
             </span>
             <span class="brand-sep" aria-hidden="true"></span>
             <span class="brand-tag" aria-hidden="true">
-              <span class="brand-tag-line brand-tag-line-signal">{home ? 'Publication indépendante' : 'Lire les mécanismes'}</span>
-              <span class="brand-tag-line brand-tag-line-paper">{home ? 'Enquêtes + data' : 'avant qu’ils deviennent l’événement'}</span>
+              <span class="brand-tag-line brand-tag-line-signal">Lire les mécanismes</span>
+              <span class="brand-tag-line brand-tag-line-paper">avant qu’ils deviennent l’événement</span>
             </span>
           </a>
 
           <div class="header-tools">
-            {home && <a class="home-header-support" href="/soutenir/" aria-label="Soutenir l0g"><span aria-hidden="true">♥︎</span><span>Soutenir l0g</span></a>}
-            {home && <a class="home-header-language" href="/en/" lang="en" aria-label="English edition">EN</a>}
             <slot name="header-tools" />
             <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Basculer le thème clair ou sombre" title="Thème clair / sombre" aria-pressed="false">
               <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -174,7 +170,7 @@ const siteJsonLd = {
             </button>
           </div>
 
-          {!home && <div class="header-signal" aria-hidden="true" role="presentation">
+          <div class="header-signal" aria-hidden="true" role="presentation">
             <svg viewBox="0 0 480 46" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="hs-stroke" x1="0" y1="0" x2="480" y2="0" gradientUnits="userSpaceOnUse">
@@ -203,10 +199,10 @@ const siteJsonLd = {
               <circle class="hs-glow" cx="474" cy="21" r="10" fill="url(#hs-glow)"/>
               <circle cx="474" cy="21" r="2.4" fill="#f5b13d"/>
             </svg>
-          </div>}
+          </div>
         </div>
 
-        <SiteNavigation path={path} home={home} />
+        <SiteNavigation path={path} />
       </header>
 
       {sidebar ? (

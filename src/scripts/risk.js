@@ -18,14 +18,13 @@
   }
 
   function formatDate(value, withTime) {
-    if (typeof value !== 'string' || !value) return null;
+    if (!value) return null;
     try {
       var date = new Date(value);
       if (isNaN(date.getTime())) return null;
       return date.toLocaleString('fr-FR', {
         day: '2-digit',
         month: '2-digit',
-        year: 'numeric',
         timeZone: 'Europe/Paris',
         ...(withTime ? { hour: '2-digit', minute: '2-digit' } : {}),
       });
@@ -76,10 +75,8 @@
   }
 
   function isUnavailable(item) {
-    var scale = item && item.scale != null ? item.scale : 100;
-    return Boolean(!item || (
-      !Number.isFinite(item.value) || !Number.isFinite(scale) || scale <= 0
-      || item.value < 0 || item.value > scale || debtExpired(item)
+    return Boolean(item && (
+      debtExpired(item)
       || item.sourceStatus === 'fallback'
       || item.fallbackLayer === 'aggregator'
       || item.timelinessStatus === 'stale'
@@ -92,74 +89,35 @@
   }
 
   var lastRendered = null;
-  var keys = ['us', 'eu', 'yen', 'energie', 'debt'];
-
-  function renderSignal(it) {
-    if (!it || keys.indexOf(it.key) === -1) return;
-    var tile = document.querySelector('[data-risk="' + it.key + '"]');
-    if (!tile) return;
-    var color = Object.prototype.hasOwnProperty.call(TONE, it.tone) ? TONE[it.tone] : 'var(--color-muted)';
-    var valEl = tile.querySelector('[data-value]');
-    var lvlEl = tile.querySelector('[data-level]');
-    var fillEl = tile.querySelector('[data-fill]');
-    var statusEl = tile.querySelector('[data-status]');
-    var degraded = isDegraded(it);
-    var unavailable = isUnavailable(it);
-    tile.dataset.degraded = degraded ? 'true' : 'false';
-    tile.dataset.unavailable = unavailable ? 'true' : 'false';
-    if (it.key === 'debt') {
-      if (typeof it.methodologyVersion === 'string') tile.dataset.methodologyVersion = it.methodologyVersion;
-      if (Object.prototype.hasOwnProperty.call(it, 'validUntil')) tile.dataset.validUntil = typeof it.validUntil === 'string' ? it.validUntil : '';
-    }
-    if (valEl) {
-      valEl.textContent = !unavailable && it.value != null ? it.value : '—';
-      valEl.style.color = unavailable ? 'var(--color-muted)' : color;
-    }
-    if (lvlEl) {
-      lvlEl.textContent = unavailable ? 'INDISPONIBLE' : it.level || '';
-      lvlEl.style.color = unavailable ? 'var(--color-muted)' : color;
-    }
-    if (fillEl) {
-      fillEl.style.width = (unavailable ? 0 : clampPct(it.value, it.scale)) + '%';
-      fillEl.style.background = unavailable ? 'var(--color-muted)' : color;
-    }
-    if (statusEl) statusEl.textContent = statusText(it);
-    var scale = Number.isFinite(it.scale) && it.scale > 0 ? it.scale : 100;
-    [['[data-scale]', '/' + scale], ['[data-axis-mid]', scale / 2], ['[data-axis-max]', scale]].forEach(function (field) {
-      var node = tile.querySelector(field[0]);
-      if (node) node.textContent = String(field[1]);
-    });
-    var meter = tile.querySelector('[data-meter]');
-    if (meter) {
-      meter.setAttribute('role', unavailable ? 'img' : 'meter');
-      meter.setAttribute('aria-label', unavailable ? 'Signal indisponible' : 'Score normalisé du modèle');
-      for (var name of ['aria-valuenow', 'aria-valuemin', 'aria-valuemax']) meter.removeAttribute(name);
-      if (!unavailable) {
-        meter.setAttribute('aria-valuenow', String(it.value));
-        meter.setAttribute('aria-valuemin', '0');
-        meter.setAttribute('aria-valuemax', String(it.scale == null ? 100 : it.scale));
-      }
-    }
-    [['[data-source-date]', it.sourcePublishedAt || it.sourceUpdatedAt, true], ['[data-observed-date]', it.observedAt, it.observationTimePrecision === 'date-time']].forEach(function (field) {
-      var node = tile.querySelector(field[0]);
-      if (!node) return;
-      var text = formatDate(field[1], field[2]);
-      node.textContent = text || 'Non datée';
-      if (text) node.setAttribute('datetime', field[1]); else node.removeAttribute('datetime');
-    });
-    if (typeof document.querySelectorAll === 'function') {
-      document.querySelectorAll('[data-risk-mini="' + it.key + '"]').forEach(function (mini) {
-        var value = mini.querySelector('[data-mini-value]');
-        if (value) value.textContent = unavailable ? '—' : it.value;
-        if (mini.tagName === 'A') mini.setAttribute('aria-label', mini.dataset.label + ' : ' + (unavailable ? 'indisponible' : it.value));
-      });
-    }
-  }
 
   function render(data) {
     if (!data || !Array.isArray(data.indices)) return;
     lastRendered = data;
-    data.indices.forEach(renderSignal);
+    data.indices.forEach(function (it) {
+      var tile = document.querySelector('[data-risk="' + it.key + '"]');
+      if (!tile) return;
+      var color = TONE[it.tone] || 'var(--color-muted)';
+      var valEl = tile.querySelector('[data-value]');
+      var lvlEl = tile.querySelector('[data-level]');
+      var fillEl = tile.querySelector('[data-fill]');
+      var statusEl = tile.querySelector('[data-status]');
+      var degraded = isDegraded(it);
+      var unavailable = isUnavailable(it);
+      tile.dataset.degraded = degraded ? 'true' : 'false';
+      if (valEl) {
+        valEl.textContent = !unavailable && it.value != null ? it.value : '—';
+        valEl.style.color = unavailable ? 'var(--color-muted)' : color;
+      }
+      if (lvlEl) {
+        lvlEl.textContent = unavailable ? 'INDISPONIBLE' : it.level || '';
+        lvlEl.style.color = unavailable ? 'var(--color-muted)' : color;
+      }
+      if (fillEl) {
+        fillEl.style.width = (unavailable ? 0 : clampPct(it.value, it.scale)) + '%';
+        fillEl.style.background = unavailable ? 'var(--color-muted)' : color;
+      }
+      if (statusEl) statusEl.textContent = statusText(it);
+    });
     var upd = document.getElementById('risk-updated');
     if (upd) {
       try {
@@ -183,28 +141,7 @@
           : '';
       } catch (e) {}
     }
-    if (typeof document.querySelectorAll === 'function') document.querySelectorAll('[data-risk-summary-date]').forEach(function (node) {
-      node.textContent = 'assemblage ' + (formatDate(data.aggregateGeneratedAt || data.updated || data.generated, true) || 'non daté');
-    });
   }
-
-  // A page can outlive its build snapshot. Hide expired SSR debt before polling.
-  function expireDebtFromMarkup() {
-    var initialDebt = document.querySelector('[data-risk="debt"]');
-    if (!initialDebt || !debtExpired({ key: 'debt', methodologyVersion: initialDebt.dataset.methodologyVersion, validUntil: initialDebt.dataset.validUntil })) return;
-    var sourceTime = initialDebt.querySelector('[data-source-date]');
-    var observedTime = initialDebt.querySelector('[data-observed-date]');
-    renderSignal({ key: 'debt', value: null, methodologyVersion: '2.0', validUntil: initialDebt.dataset.validUntil,
-      sourcePublishedAt: sourceTime && sourceTime.getAttribute('datetime'), observedAt: observedTime && observedTime.getAttribute('datetime') });
-  }
-  expireDebtFromMarkup();
-  document.addEventListener('click', function (event) {
-    var link = event.target instanceof Element ? event.target.closest('[data-risk-select]') : null;
-    if (!link || keys.indexOf(link.dataset.riskSelect) === -1) return;
-    var choice = document.getElementById('risk-choice-' + link.dataset.riskSelect);
-    if (!choice) return;
-    event.preventDefault(); choice.checked = true; choice.focus();
-  });
 
   function hasSignal(data, key) {
     if (!data || !Array.isArray(data.indices)) return false;
@@ -277,15 +214,11 @@
     if (!document.hidden) refresh();
   }, 15 * 60 * 1000);
   window.setInterval(function () {
-    if (!document.hidden) {
-      if (lastRendered) render(lastRendered);
-      expireDebtFromMarkup();
-    }
+    if (!document.hidden && lastRendered) render(lastRendered);
   }, 60 * 1000);
   document.addEventListener('visibilitychange', function () {
     if (!document.hidden) {
       if (lastRendered) render(lastRendered);
-      expireDebtFromMarkup();
       refresh();
     }
   });

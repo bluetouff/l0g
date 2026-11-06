@@ -220,18 +220,6 @@ test("article hero priority is restricted to the first image in an article heade
 });
 
 
-test("home priority is confined to the featured investigation's first image", () => {
-  const hero = '<img data-home-hero src="/hero.jpg" loading="eager" fetchpriority="high">';
-  const html = `<main><section class="home-featured"><figure>${hero}</figure></section><img src="/other.jpg" loading="lazy"></main>`;
-  assert.equal(articleHeroImageStart(html, 'index.html'), html.indexOf(hero));
-  for (const invalid of [
-    `<main>${hero}<section class="home-featured"></section></main>`,
-    `<main><section class="home-featured"><img src="/first.jpg">${hero}</section></main>`,
-    `<section class="home-featured">${hero}</section><main></main>`,
-  ]) assert.equal(articleHeroImageStart(invalid, 'index.html'), null);
-  assert.equal(articleHeroImageStart(html, '2/index.html'), null);
-});
-
 test("weekly cover priority is confined to the first image in its issue header", () => {
   const cover = '<img data-weekly-cover src="/cover.jpg" loading="eager" fetchpriority="high">';
   const html = `<article data-pagefind-body><header class="issue-head"><figure>${cover}</figure></header><img src="/reading.jpg" loading="lazy"></article>`;

@@ -2,10 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import riskScriptUrl from '../scripts/risk.js?url';
-import { isRiskSignalUnavailable, riskSignalMeta } from '../config/risk-signals.ts';
-
-interface Props { summary?: boolean; }
-const { summary = false } = Astro.props;
+import { isRiskSignalUnavailable } from '../config/risk-signals.ts';
 
 /**
  * Tableau de bord consolidé de signaux : valeurs reprises des dashboards.
@@ -31,8 +28,6 @@ type RiskSignal = {
   sourcePublishedAt?: string | null;
   lastSuccessAt?: string | null;
   retrievedAt?: string | null;
-  observedAt?: string | null;
-  observationTimePrecision?: string | null;
   warnings?: string[];
   componentDates?: { brent?: string; wti?: string } | null;
 };
@@ -61,8 +56,7 @@ function readJson<T>(relativePath: string, fallback: T): T {
 
 const snapshot = readJson<RiskSnapshot>('public/risk.json', {});
 const debtSnapshot = readJson<DebtSnapshot>('public/debt-latest.json', {});
-const signals = new Map((Array.isArray(snapshot.indices) ? snapshot.indices : [])
-  .filter((signal) => signal && typeof signal.key === 'string').map((signal) => [signal.key, signal]));
+const signals = new Map((snapshot.indices ?? []).map((signal) => [signal.key, signal]));
 if (!signals.has('debt') && debtSnapshot.signal?.key === 'debt') {
   signals.set('debt', debtSnapshot.signal);
 }
@@ -82,13 +76,12 @@ function clampPct(value?: number | null, scale?: number | null) {
 }
 
 function formatDate(value?: string | null, withTime = false) {
-  if (typeof value !== 'string' || !value) return null;
+  if (!value) return null;
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return null;
   return date.toLocaleString('fr-FR', {
     day: '2-digit',
     month: '2-digit',
-    year: 'numeric',
     timeZone: 'Europe/Paris',
     ...(withTime ? { hour: '2-digit', minute: '2-digit' } : {}),
   });
@@ -137,25 +130,19 @@ function isDegraded(signal?: RiskSignal) {
 }
 
 const items = [
-  { key: 'us', short: 'US', label: 'US Macro', title: 'Stress macroéconomique US', href: 'https://us.l0g.fr' },
-  { key: 'eu', short: 'EU', label: 'EU Macro', title: 'Conjoncture de la zone euro', href: 'https://euro.l0g.fr' },
-  { key: 'yen', short: 'YEN', label: 'Yen Carry', title: 'Fragilité du portage en yen', href: 'https://yct.l0g.fr' },
-  { key: 'energie', short: 'NRJ', label: 'Énergie', title: 'Tensions sur l’énergie', href: 'https://energie.l0g.fr' },
-  { key: 'debt', short: 'DETTE', label: 'Dette US', title: 'Stress de la dette américaine', href: 'https://debt.l0g.fr' },
+  { key: 'us', label: 'US Macro', href: 'https://us.l0g.fr' },
+  { key: 'eu', label: 'EU Macro', href: 'https://euro.l0g.fr' },
+  { key: 'yen', label: 'Yen Carry', href: 'https://yct.l0g.fr' },
+  { key: 'energie', label: 'Énergie', href: 'https://energie.l0g.fr' },
+  { key: 'debt', label: 'Dette US', href: 'https://debt.l0g.fr' },
 ].map((item) => {
   const signal = signals.get(item.key);
-  const nativeScale = signal?.scale ?? 100;
-  const scale = Number.isFinite(nativeScale) && nativeScale > 0 ? nativeScale : 100;
-  const unavailable = !signal || typeof signal.value !== 'number' || !Number.isFinite(signal.value)
-    || !Number.isFinite(nativeScale) || nativeScale <= 0 || signal.value < 0 || signal.value > nativeScale
-    || isRiskSignalUnavailable(signal);
+  const unavailable = isRiskSignalUnavailable(signal);
   return {
     ...item,
     signal,
     unavailable,
-    scale,
-    meta: riskSignalMeta[item.key],
-    color: unavailable ? 'var(--color-muted)' : Object.hasOwn(TONE, signal?.tone ?? '') ? TONE[signal!.tone!] : 'var(--color-muted)',
+    color: unavailable ? 'var(--color-muted)' : TONE[signal?.tone ?? ''] || 'var(--color-muted)',
   };
 });
 
@@ -182,45 +169,193 @@ const aggregateStatus = aggregateDate
   : '';
 ---
 
-{summary ? <nav class="home-risk-overview" aria-label="Aperçu des cinq instruments">
-  <div>{items.map(it => <a href={`/maintenant/#signal-${it.key}`} data-risk-select={it.key} data-risk-mini={it.key} data-label={it.label} aria-label={`${it.label} : ${it.unavailable ? 'indisponible' : it.signal?.value}`}>
-    <span>{it.short}</span><span data-mini-value>{it.unavailable ? '—' : it.signal?.value}</span>
-  </a>)}</div>
-  <p>5 modèles distincts · <span data-risk-summary-date>assemblage {aggregateDate || 'non daté'}</span></p>
-</nav> : <div class="risk-observatory" data-home-observatory data-pagefind-ignore>
-  <h2 class="home-section-label"><span>02</span><i class="home-cut" aria-hidden="true"></i>L’observatoire</h2>
-  <div class="risk-panel">
-    <p class="risk-snapshot"><span>SNAPSHOT</span><span id="risk-updated">{aggregateStatus.trim() || 'Assemblage non daté'}</span></p>
-    <fieldset class="risk-selectors"><legend class="sr-only">Choisir un instrument</legend>
-      {items.map(it => <label class="risk-selector" data-risk-mini={it.key} data-label={it.label}>
-        <input type="radio" name="home-risk" id={`risk-choice-${it.key}`} value={it.key} checked={it.key === 'debt'} aria-controls={`risk-reading-${it.key}`} />
-        <span><span aria-hidden="true">{it.short}</span><span class="sr-only">{it.label}</span><span data-mini-value>{it.unavailable ? '—' : it.signal?.value}</span></span>
-      </label>)}
-    </fieldset>
-    <div class="risk-readings">
-      {items.map(it => <article class="risk-tile" id={`risk-reading-${it.key}`} data-risk={it.key} data-unavailable={String(it.unavailable)} data-degraded={String(isDegraded(it.signal))} data-methodology-version={it.signal?.methodologyVersion} data-valid-until={it.signal?.validUntil}>
-        <a href={it.href} class="risk-tile-main risk-dashboard-link" target="_blank" rel="noopener noreferrer" aria-label={`Ouvrir l’app ${it.label}`}>
-          <h3 class="risk-title">{it.title}</h3>
-          <div class="risk-reading"><span class="risk-value" data-value style={`color:${it.color}`}>{it.unavailable ? '—' : it.signal?.value}</span><span class="risk-scale" data-scale>/{it.scale}</span><span class="risk-level" data-level style={`color:${it.color}`}>{it.unavailable ? 'INDISPONIBLE' : it.signal?.level ?? ''}</span></div>
-          <div class="risk-track" data-meter role={it.unavailable ? 'img' : 'meter'} aria-label={`${it.label} : ${it.unavailable ? 'signal indisponible' : 'score normalisé'}`} aria-valuemin={it.unavailable ? undefined : 0} aria-valuemax={it.unavailable ? undefined : it.scale} aria-valuenow={it.unavailable ? undefined : it.signal?.value}>
-            <span class="risk-fill" data-fill style={`width:${it.unavailable ? 0 : clampPct(it.signal?.value, it.scale)}%;background:${it.color}`}></span>
-          </div>
-          <div class="risk-axis" aria-hidden="true"><span>0</span><span data-axis-mid>{it.scale / 2}</span><span data-axis-max>{it.scale}</span></div>
-          <p class="risk-caption">Score normalisé du modèle</p>
-        </a>
-        <dl class="risk-dates"><dt>Source publiée</dt><dd><time data-source-date datetime={it.signal?.sourcePublishedAt || it.signal?.sourceUpdatedAt || undefined}>{formatDate(it.signal?.sourcePublishedAt || it.signal?.sourceUpdatedAt, true) || 'Non datée'}</time></dd><dt>Observation la plus récente</dt><dd><time data-observed-date datetime={it.signal?.observedAt || undefined}>{formatDate(it.signal?.observedAt, it.signal?.observationTimePrecision === 'date-time') || 'Non datée'}</time></dd></dl>
-        <p class="risk-status" data-status>{it.signal ? statusText(it.signal) : 'source indisponible au build'}</p>
-        <details class="risk-proof"><summary>Source et méthode <span aria-hidden="true">+</span></summary><div>
-          <a href={it.href} target="_blank" rel="noopener noreferrer">Source : {it.meta.label} ↗</a>
-          <a href={new URL(it.meta.methodology).pathname}>Lire la méthode ↗</a>
-          <a href={`/series/${it.meta.identity.slug}/`}>Historique et exports ↗</a>
-          <a class="risk-proof-link" href={`/maintenant/#signal-${it.key}`}>Vérifier ce chiffre ↗</a>
-        </div></details>
-        <a class="risk-app-cta" href={it.href} target="_blank" rel="noopener noreferrer">Ouvrir l’instrument <span aria-hidden="true">↗</span></a>
-      </article>)}
-    </div>
+<section class="rise my-8" data-pagefind-ignore>
+  <div class="risk-band-head">
+    <h2 class="mono-label glow"><span>02</span>// signaux de risque</h2>
+    <nav aria-label="Accès aux signaux de risque">
+      <a class="mono-label risk-history-link" href="/maintenant/">lecture complète</a>
+      <a class="mono-label risk-history-link" href="/series/">historique & provenance</a>
+    </nav>
   </div>
-  <p class="risk-caveat">Chaque instrument possède son modèle, ses seuils et son horizon. Les scores 0-100 se lisent séparément. Les dates, la couverture et les éventuels replis sont signalés.</p>
-  <nav class="risk-links" aria-label="Accès aux données"><a href="/maintenant/">Lecture complète ↗</a><a href="/series/">Historique et provenance ↗</a></nav>
-  <script src={riskScriptUrl} defer is:inline></script>
-</div>}
+
+  <div class="grid grid-cols-2 gap-3 lg:grid-cols-5">
+    {
+      items.map((it) => (
+        <article
+          class="risk-tile card group block p-4"
+          data-risk={it.key}
+          data-degraded={isDegraded(it.signal) ? 'true' : 'false'}
+        >
+          <a
+            href={it.href}
+            class="risk-tile-main risk-dashboard-link"
+            target="_blank"
+            rel="noopener"
+            aria-label={`Ouvrir l’app ${it.label}`}
+          >
+            <div class="flex items-center justify-between">
+              <span class="mono-label">{it.label}</span>
+              <span class="risk-arrow text-muted transition-transform group-hover:translate-x-0.5">↗</span>
+            </div>
+            <div class="risk-reading mt-3 flex items-baseline gap-2">
+              <span
+                class="risk-value font-display leading-none glow"
+                data-value
+                style={`color:${it.color}`}
+              >
+                {!it.unavailable ? it.signal?.value ?? '—' : '—'}
+              </span>
+              <span
+                class="risk-level mono-label"
+                data-level
+                style={`color:${it.color}`}
+              >
+                {it.unavailable ? 'INDISPONIBLE' : it.signal?.level ?? ''}
+              </span>
+            </div>
+            <div class="risk-track mt-3">
+              <div
+                class="risk-fill"
+                data-fill
+                style={`width:${it.unavailable ? 0 : clampPct(it.signal?.value, it.signal?.scale)}%;background:${it.color}`}
+              ></div>
+            </div>
+            <div class="risk-status" data-status>
+              {it.signal ? statusText(it.signal) : 'source indisponible au build'}
+            </div>
+            <span class="risk-app-cta">
+              Ouvrir l’app <span aria-hidden="true">↗</span>
+            </span>
+          </a>
+          <a class="risk-proof-link" href={`/maintenant/#signal-${it.key}`}>
+            <span aria-hidden="true">i</span> Vérifier ce chiffre
+          </a>
+        </article>
+      ))
+    }
+  </div>
+  <p class="risk-caveat">
+    Scores 0-100 normalisés par instrument : ils ne mesurent ni le même phénomène,
+    ni le même horizon. À lire comme un tableau de bord consolidé de signaux, pas comme un
+    indice unique de risque systémique. Collecte best effort : chaque carte date sa source et
+    signale tout repli. <span id="risk-updated">{aggregateStatus}</span>
+  </p>
+</section>
+
+<script src={riskScriptUrl} defer is:inline></script>
+
+<style>
+  .risk-band-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.55rem 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .risk-band-head h2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--color-bright);
+  }
+  .risk-band-head h2 span {
+    color: var(--color-signal);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+  }
+  .risk-band-head nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.9rem;
+  }
+  .risk-track {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-line-strong);
+    overflow: hidden;
+  }
+  .risk-tile-main { display: block; }
+  .risk-app-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.7rem;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 650;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+  .risk-tile-main:hover .risk-app-cta { color: var(--color-signal); }
+  .risk-proof-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    margin-top: 0.58rem;
+    border-top: 1px solid var(--color-line);
+    padding-top: 0.58rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    font-weight: 650;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+  .risk-proof-link span {
+    display: inline-grid;
+    width: 0.95rem;
+    height: 0.95rem;
+    place-items: center;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-size: 0.54rem;
+  }
+  .risk-proof-link:hover { color: var(--color-signal); }
+  .risk-dashboard-link {
+    border-radius: 8px;
+    outline-offset: 4px;
+  }
+  .risk-dashboard-link:focus-visible { outline: 2px solid var(--color-signal); }
+  .risk-fill {
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: var(--color-muted);
+    transition: width 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .risk-reading {
+    min-height: 2.3rem;
+  }
+  .risk-value {
+    color: var(--color-muted);
+    font-size: 2rem;
+  }
+  .risk-level {
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+  .risk-caveat {
+    margin-top: 0.75rem;
+    max-width: 48rem;
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+  .risk-status {
+    min-height: 1.9rem;
+    margin-top: 0.55rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    line-height: 1.45;
+  }
+  .risk-history-link {
+    color: var(--color-signal);
+    text-decoration: none;
+  }
+  .risk-tile[data-degraded='true'] {
+    border-color: color-mix(in srgb, var(--color-amber) 50%, var(--color-line));
+  }
+</style>

@@ -342,7 +342,7 @@ const riskPosition = homeText.indexOf('class="home-risk"');
 const needsPosition = homeText.indexOf('id="home-needs-title"');
 assert(featuredPosition > 0 && featuredPosition < riskPosition, 'home: analyse vedette absente ou placée après les signaux');
 const feedPosition = homeText.indexOf('id="dernieres-analyses"');
-assert(featuredPosition < riskPosition && riskPosition < needsPosition && needsPosition < feedPosition, 'home: ordre analyse, observatoire, dossiers, journal incorrect');
+assert(featuredPosition < needsPosition && needsPosition < riskPosition && riskPosition < feedPosition, 'home: ordre analyse, dossiers, signaux, journal incorrect');
 for (const key of ['us', 'eu', 'yen', 'energie', 'debt']) {
   const tile = homeText.match(new RegExp(`<article[^>]*data-risk="${key}"[^>]*>([\\s\\S]*?)</article>`))?.[1] ?? '';
   assert(Boolean(tile), `home: carte risque ${key} absente`);

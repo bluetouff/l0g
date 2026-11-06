@@ -19,14 +19,13 @@ test('Watch card is passive, bilingual and links to the matching Watch edition',
 
 test('Watch stays reachable on French and English homes and articles', async () => {
   const [homeFr, articleFr, homeEn, articleEn] = await Promise.all([
-    read('../src/pages/[...page].astro'),
+    read('../src/components/HomeSidebar.astro'),
     read('../src/pages/posts/[...slug].astro'),
     read('../src/pages/en/index.astro'),
     read('../src/pages/en/analysis/[...slug].astro'),
   ]);
 
-  assert.match(homeFr, /href="https:\/\/watch\.l0g\.fr\/" target="_blank" rel="noopener noreferrer"/);
-  assert.match(homeFr, /<strong>l0g Watch<\/strong>/);
+  assert.match(homeFr, /<WatchCard \/>/);
   assert.match(articleFr, /<ArticleNavigator[\s\S]*<ArticleServices \/>/);
   assert.match(homeEn, /class="en-hero-rail"[\s\S]*<WatchCard lang="en" \/>/);
   assert.match(articleEn, /class="en-article-sidebar"[\s\S]*<ArticleServices lang="en" \/>/);

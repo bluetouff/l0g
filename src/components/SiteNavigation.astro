@@ -5,10 +5,9 @@ import NavigationItemText from './NavigationItemText.astro';
 
 interface Props {
   path: string;
-  home?: boolean;
 }
 
-const { path, home = false } = Astro.props;
+const { path } = Astro.props;
 const norm = (value: string) => (value.length > 1 ? value.replace(/\/$/, '') : value);
 const currentPath = norm(path);
 
@@ -27,13 +26,6 @@ const primary: Array<NavItem & { glyph: NavigationIconName }> = [
   { href: '/radar/', label: 'Observer', glyph: 'observe', matches: ['/radar', '/atlas', '/dashboards', '/confluence', '/risk-diff', '/series'] },
   { href: '/methodologie/', label: 'Vérifier', glyph: 'verify', matches: ['/methodologie', '/sources', '/preuves', '/backtests', '/protocole-editorial'] },
   { href: '/soutenir/', label: 'Soutenir', glyph: 'support', matches: ['/soutenir'] },
-];
-const homePrimary: Array<NavItem & { glyph: NavigationIconName }> = [
-  { href: '/', label: 'Enquêtes', glyph: 'read', exact: true },
-  { href: '/atlas/', label: 'Data & atlas', glyph: 'observe' },
-  { href: '/outils/', label: 'Outils', glyph: 'understand' },
-  { href: '/hebdo/', label: 'L’Hebdo', glyph: 'read' },
-  { href: '/publications/', label: 'Publications', glyph: 'read' },
 ];
 
 const groups: Array<{ label: string; glyph: NavigationIconName; items: NavItem[] }> = [
@@ -119,9 +111,9 @@ function isActive(item: NavItem): boolean {
 <div class="site-navigation">
   <NavigationSymbols />
   <nav class="desktop-nav" aria-label="Navigation principale">
-    {(home ? homePrimary : primary).map((item) => (
+    {primary.map((item) => (
       <a href={item.href} class="nav-tab nav-primary" aria-current={isActive(item) ? 'page' : undefined}>
-        {!home && <NavigationIcon name={item.glyph} />}
+        <NavigationIcon name={item.glyph} />
         <span>{item.label}</span>
       </a>
     ))}
@@ -137,7 +129,7 @@ function isActive(item: NavItem): boolean {
     <details class="nav-explorer">
       <summary>
         <span class="menu-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <span>{home ? 'Explorer' : 'Menu'}</span>
+        <span>Menu</span>
         <b aria-hidden="true">⌄</b>
       </summary>
       <div class="nav-panel">
@@ -173,18 +165,17 @@ function isActive(item: NavItem): boolean {
   </nav>
 
   <nav class="mobile-nav" aria-label="Navigation mobile">
-    {home && <><a class="home-mobile-shortcut" href="/">Enquêtes</a><a class="home-mobile-shortcut" href="/atlas/">Data</a><a class="home-mobile-shortcut home-mobile-tools" href="/outils/">Outils</a></>}
     <a href="/recherche/" class="mobile-search" aria-label="Rechercher sur l0g" aria-keyshortcuts="/ Meta+K Control+K">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="11" cy="11" r="6"></circle>
         <path d="m16 16 4 4"></path>
       </svg>
-      {home ? <span class="sr-only">Rechercher</span> : 'Rechercher'}
+      Rechercher
     </a>
     <details class="mobile-menu">
       <summary>
         <span class="menu-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <span>{home ? 'Explorer' : 'Menu'}</span>
+        <span>Menu</span>
         <b aria-hidden="true">⌄</b>
       </summary>
       <div class="mobile-panel">
