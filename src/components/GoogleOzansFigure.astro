@@ -1,0 +1,103 @@
+---
+import capacity_fr_desktop from '../figures/google-ozans-2026/capacity.fr.desktop.svg?raw';
+import capacity_fr_mobile from '../figures/google-ozans-2026/capacity.fr.mobile.svg?raw';
+import capacity_en_desktop from '../figures/google-ozans-2026/capacity.en.desktop.svg?raw';
+import capacity_en_mobile from '../figures/google-ozans-2026/capacity.en.mobile.svg?raw';
+import financing_fr_desktop from '../figures/google-ozans-2026/financing.fr.desktop.svg?raw';
+import financing_fr_mobile from '../figures/google-ozans-2026/financing.fr.mobile.svg?raw';
+import financing_en_desktop from '../figures/google-ozans-2026/financing.en.desktop.svg?raw';
+import financing_en_mobile from '../figures/google-ozans-2026/financing.en.mobile.svg?raw';
+import cooling_fr_desktop from '../figures/google-ozans-2026/cooling.fr.desktop.svg?raw';
+import cooling_fr_mobile from '../figures/google-ozans-2026/cooling.fr.mobile.svg?raw';
+import cooling_en_desktop from '../figures/google-ozans-2026/cooling.en.desktop.svg?raw';
+import cooling_en_mobile from '../figures/google-ozans-2026/cooling.en.mobile.svg?raw';
+interface Props { lang?: 'fr' | 'en'; kind: 'capacity' | 'financing' | 'cooling' }
+const { lang = 'fr', kind } = Astro.props;
+const captions = {
+  "capacity": {
+    "number": "01",
+    "sources": [
+      "01",
+      "09"
+    ],
+    "fr": {
+      "title": "Deux raccordements, une montée en puissance conditionnelle",
+      "description": "Puissances maximales de raccordement du projet, en mégawatts.",
+      "method": "Les barres utilisent une échelle commune en MW. Le raccordement à 225 kV apporte 120 MW et reste en service lorsque la branche à 400 kV ajoute 300 MW, puis atteint 1 200 MW : les totaux sont 120, 420 et 1 320 MW. Le passage de 300 à 1 200 MW remplace la capacité précédente de la même branche. Le renforcement Éguzon–Marmagne conditionne ce dernier palier, 2032 au plus tôt. Les dates sont indicatives et les autorisations restent à obtenir. Cette puissance maximale contractualisée décrit un plafond ; elle ne mesure pas la consommation annuelle. Les doubles liaisons sont symboliques."
+    },
+    "en": {
+      "title": "Two connections and a conditional increase in capacity",
+      "description": "Maximum project connection capacity, in megawatts.",
+      "method": "The bars share a common MW scale. The 225 kV connection supplies 120 MW and remains available when the 400 kV branch adds 300 MW and subsequently reaches 1,200 MW: the totals are 120, 420 and 1,320 MW. The increase from 300 to 1,200 MW replaces the earlier capacity on the same branch. The Éguzon–Marmagne reinforcement is required for that last stage, 2032 at the earliest. Dates are indicative and approvals remain pending. Maximum contracted capacity is a ceiling, distinct from annual electricity consumption. The double links are symbolic."
+    }
+  },
+  "financing": {
+    "number": "02",
+    "sources": [
+      "01",
+      "05",
+      "06",
+      "20"
+    ],
+    "fr": {
+      "title": "Le financement dépend de la catégorie d’ouvrage",
+      "description": "Répartition annoncée des coûts admissibles selon les catégories d’ouvrages.",
+      "method": "Le dossier prévoit 70 % à la charge de Google et 30 % pour RTE sur les postes publics et les premières liaisons. Le ruban partage une même catégorie de coûts selon ces proportions. Les secondes liaisons de redondance et leurs raccordements dans les postes, ainsi que le poste privé à 400 kV du campus, sont intégralement financés par Google. Les réseaux couvrent les coûts admis par leurs tarifs ; le schéma ne calcule aucun effet net sur les factures. Les enveloppes provisoires de 25 et 100 millions d’euros ne ventilent pas ces catégories : appliquer 30 % à leur somme étendrait la prise en charge tarifaire à des ouvrages financés à 100 % par Google."
+    },
+    "en": {
+      "title": "Funding depends on the asset category",
+      "description": "The stated split of eligible costs by asset category.",
+      "method": "The project allocates 70% of public substation and first-link costs to Google and 30% to RTE. The ribbon divides that same cost category in those proportions. Google fully funds the second, redundant links and their substation connections, as well as the campus’s private 400 kV substation. Network tariffs recover costs accepted by the regulator; this diagram calculates no net effect on bills. The provisional €25 million and €100 million envelopes do not break down those categories: applying 30% to their sum would extend tariff funding to assets fully paid for by Google."
+    }
+  },
+  "cooling": {
+    "number": "03",
+    "sources": [
+      "01"
+    ],
+    "fr": {
+      "title": "Une boucle d’eau transporte la chaleur vers l’air",
+      "description": "Refroidissement sec prévu et usages sanitaires distincts, pour un bâtiment.",
+      "method": "Ce schéma fonctionnel simplifie la conception annoncée : les serveurs produisent de la chaleur ; une boucle d’eau fermée la transporte vers un groupe froid à condensation par air. La chaleur rejoint l’air extérieur. Aucun rendement, aucune température et aucun débit de refroidissement ne sont supposés. Le dossier indique environ 1 000 m³ pour le remplissage initial d’un bâtiment, puis des appoints ponctuels sans total annuel publié. Les usages sanitaires et leur rejet estimé sont chacun d’environ 10,4 m³ par jour en moyenne. Le volume initial et les flux journaliers restent séparés. Le dessin ne déduit ni consommation nette dans le bassin ni total pour les futurs bâtiments."
+    },
+    "en": {
+      "title": "A water loop carries heat into the air",
+      "description": "Planned dry cooling and separate sanitary flows, for one building.",
+      "method": "This functional schematic simplifies the proposed design: servers produce heat; a closed water loop carries it to an air-cooled unit, which releases heat into the outside air. No efficiency, temperature or cooling-flow value is assumed. The project gives about 1,000 m³ for the initial fill of one building, followed by occasional top-ups without a published annual total. Sanitary supply and estimated sanitary discharge are each about 10.4 m³ per day on average. The initial volume and daily flows remain separate. No net catchment consumption or total for future buildings is derived."
+    }
+  }
+} as const;
+const art = {fr:{capacity:{desktop:capacity_fr_desktop,mobile:capacity_fr_mobile},financing:{desktop:financing_fr_desktop,mobile:financing_fr_mobile},cooling:{desktop:cooling_fr_desktop,mobile:cooling_fr_mobile}},en:{capacity:{desktop:capacity_en_desktop,mobile:capacity_en_mobile},financing:{desktop:financing_en_desktop,mobile:financing_en_mobile},cooling:{desktop:cooling_en_desktop,mobile:cooling_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new TypeError('Unknown GoogleOzansFigure variant');
+const entry = captions[kind], text = entry[lang], svg = art[lang][kind];
+---
+<figure class="google-ozans-figure" id={`figure-${entry.number}`} data-kind={kind}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption>
+    <span class="figure-number">FIGURE {entry.number}</span>
+    <strong>{text.title}</strong>
+    {text.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${Number(id)}`}>[{Number(id)}]</a>)}
+  </figcaption>
+  <details>
+    <summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary>
+    <p>{text.method}</p>
+  </details>
+</figure>
+<style>
+  @font-face { font-family: 'l0g Google Ozans'; src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  .google-ozans-figure { width: 100%; max-width: 800px; margin: 2.8rem auto; padding-bottom: 1rem; container-type: inline-size; overflow: visible; }
+  .desktop-art, .mobile-art { width: 100%; line-height: 0; }
+  .mobile-art { display: none; max-width: 340px; margin-inline: auto; }
+  .google-ozans-figure :global(svg) { display: block; width: 100%; max-width: 100%; height: auto; letter-spacing: normal; overflow: visible; }
+  .google-ozans-figure figcaption { padding: .85rem 0 .45rem; font-family: var(--font-read); font-size: .9rem; line-height: 1.7; color: var(--color-muted); }
+  .google-ozans-figure figcaption strong { display: block; margin: .25rem 0; font-size: 1rem; font-weight: 400; color: var(--color-paper); }
+  .figure-number { font-size: .75rem; letter-spacing: .12em; color: var(--color-signal); }
+  .google-ozans-figure a { margin-right: .45rem; }
+  .google-ozans-figure details { margin-top: .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.7; }
+  .google-ozans-figure summary { cursor: pointer; padding: .35rem 0; }
+  .google-ozans-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .google-ozans-figure p { margin-top: .7rem; }
+  @container (max-width: 500px) { .desktop-art { display: none; } .mobile-art { display: block; } }
+  @media print { .desktop-art { display: block; } .mobile-art { display: none; } .google-ozans-figure { break-inside: avoid; } }
+</style>

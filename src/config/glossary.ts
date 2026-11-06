@@ -777,6 +777,11 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Énergie & géopolitique',
     accent: 'var(--color-amber)',
     entries: [
+      {
+        sigle: 'Réfaction tarifaire', nom: 'Part du raccordement couverte par les tarifs du réseau',
+        def: 'Mécanisme par lequel une part des coûts de raccordement éligibles est couverte par les tarifs du réseau ; le demandeur finance le solde par sa contribution. Pour les installations de consommation raccordées en haute tension HTB, l’arrêté du 30 novembre 2017 fixe ce taux à 30 %. Le calcul porte sur les ouvrages concernés, avec un périmètre à distinguer d’une enveloppe globale de projet et de son effet net sur les factures.',
+        guide: '/posts/google-ozans-qui-finance-les-infrastructures/',
+      },
       {"sigle": "Minerais critiques", "nom": "Ressources essentielles exposées à un risque d’approvisionnement", "def": "Minerais désignés par une autorité publique en raison de leur importance économique ou stratégique et de la vulnérabilité de leurs approvisionnements. Le périmètre dépend de la juridiction et de la date de la liste. La liste américaine de novembre 2025 comprend 60 minerais, dont le cuivre. Le statut de minerai critique renseigne une politique de sécurité d’approvisionnement, avec des périmètres de produits et des étapes industrielles à préciser.", "guide": "/posts/mines-americaines-minerais-critiques-propriete-etrangere/"},
       {"sigle": "Dépendance nette aux importations", "nom": "Solde des importations rapporté à la consommation apparente", "def": "Indicateur USGS qui rapporte les importations diminuées des exportations, avec les ajustements de stocks retenus pour le produit et la période, à la consommation apparente ou estimée d’un produit minéral. Il faut conserver le produit, la période et la méthode statistique. Une dépendance nette de 100 % décrit l’équilibre national pour cette catégorie ; la répartition entre pays fournisseurs se mesure séparément.", "guide": "/posts/mines-americaines-minerais-critiques-propriete-etrangere/"},
       {"sigle": "FOB", "nom": "Free on board : livraison de GNL au terminal d’exportation", "def": "Dans les contrats de GNL décrits par Cheniere, livraison où l’acheteur prend la cargaison au terminal d’exportation du vendeur. Le transport après ce point relève des arrangements de l’acheteur. Le prix, les obligations en cas d’annulation et la liberté de destination doivent être examinés dans les clauses du contrat.", "guide": "/posts/gaz-americain-hiver-europe-2026/"},
@@ -1268,6 +1273,13 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'refaction-tarifaire': {
+    articles: [{ label: 'Google à Ozans : le financement des infrastructures', href: '/posts/google-ozans-qui-finance-les-infrastructures/', detail: 'Les ouvrages de raccordement partagés à 70/30, les liaisons de secours et le périmètre du financement collectif.', kind: 'article' }],
+    sources: [
+      { label: 'Arrêté du 30 novembre 2017, article 1', href: 'https://www.legifrance.gouv.fr/loda/id/JORFTEXT000036128734', detail: 'Taux de réfaction de 30 % pour le raccordement des installations de consommation aux réseaux publics en haute tension HTB ; version en vigueur consultée le 6 novembre 2026.', kind: 'source' },
+      { label: 'CRE, raccordement et accès au réseau', href: 'https://www.cre.fr/electricite/reseaux-delectricite/raccordement-et-acces-au-reseau.html', detail: 'Conditions financières : couverture tarifaire partielle du raccordement, contribution du demandeur et financement des renforcements.', kind: 'source' },
+    ],
+  },
   'rappel-de-virement': {
     articles: [{ label: 'Arkéa : bloquer, tracer et récupérer les fonds', href: '/posts/arkea-bloquer-tracer-recuperer/', detail: 'Les étapes bancaires et judiciaires du retour des fonds après une fraude.', kind: 'article' }],
     sources: [

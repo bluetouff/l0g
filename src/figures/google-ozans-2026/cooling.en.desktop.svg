@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="ozans-cooling-en-d-title ozans-cooling-en-d-desc" style="width:100%;height:auto" class="l0g-ozans-svg">
+<title id="ozans-cooling-en-d-title">A water loop carries heat into the air</title><desc id="ozans-cooling-en-d-desc">Simplified planned dry cooling. Initial fill would use 1,000 cubic metres per building, followed by unquantified occasional top-ups. Sanitary supply and estimated discharge of 10.4 cubic metres per day are separate from the loop.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-ink)"/>
+<rect x="18" y="8" width="964" height="135" fill="none" id="ozans-cooling-en-d-header"/>
+<text x="24" y="39" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="ozans-cooling-en-d-header">l0g / OZANS</text>
+<text x="24" y="94" font-family="l0g Google Ozans" font-size="34" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-cooling-en-d-header">Water circulates, heat moves into the air</text>
+<rect x="65" y="218" width="86" height="116" fill="none" stroke="var(--color-signal)" stroke-width="1.6"/>
+<path d="M73 247.0 L143 247.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M73 276.0 L143 276.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M73 305.0 L143 305.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<circle cx="141" cy="226.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="141" cy="255.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="141" cy="284.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="141" cy="313.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<path d="M170 257 L279 257" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="heat-flow" data-from="servers" data-to="exchanger"/>
+<path d="M271.000 253.000 L279 257 L271.000 261.000" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="300" y="215" width="70" height="120" fill="none" stroke="var(--color-muted)" stroke-width="1.6"/>
+<path d="M308 239.0 L362 239.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<path d="M308 263.0 L362 263.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<path d="M308 287.0 L362 287.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<path d="M308 311.0 L362 311.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<path d="M370 240 L730 240" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-metric="water-flow" data-from="exchanger" data-to="cooler"/>
+<path d="M520 240 L590 240" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M582.000 236.000 L590 240 L582.000 244.000" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M730 320 L370 320" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-metric="water-flow" data-from="cooler" data-to="exchanger"/>
+<path d="M590 320 L520 320" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M528.000 324.000 L520 320 L528.000 316.000" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="730" y="215" width="205" height="120" fill="none" stroke="var(--color-muted)" stroke-width="1.6"/>
+<circle cx="832" cy="275" r="36" fill="var(--color-ink)" stroke="var(--color-muted)" stroke-width="1.6"/>
+<circle cx="832" cy="275" r="4" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<path d="M838 277 L863 281 L842 304 L834 281" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="fan"/>
+<path d="M826 277 L801 281 L822 304 L830 281" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="fan"/>
+<path d="M826 273 L801 269 L822 246 L830 269" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="fan"/>
+<path d="M838 273 L863 269 L842 246 L834 269" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="fan"/>
+<path d="M790 202 L790 170" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="heat-flow" data-from="cooler" data-to="air"/>
+<path d="M786.000 178.000 L790 170 L794.000 178.000" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M832 202 L832 170" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="heat-flow" data-from="cooler" data-to="air"/>
+<path d="M828.000 178.000 L832 170 L836.000 178.000" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M874 202 L874 170" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="heat-flow" data-from="cooler" data-to="air"/>
+<path d="M870.000 178.000 L874 170 L878.000 178.000" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="380" y="162" width="340" height="52" fill="none" id="ozans-cooling-en-d-loop-labels"/>
+<text x="550" y="196" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-accent)" data-panel="ozans-cooling-en-d-loop-labels">Warmer water</text>
+<rect x="380" y="345" width="340" height="42" fill="none" id="ozans-cooling-en-d-return-label"/>
+<text x="550" y="374" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-signal)" data-panel="ozans-cooling-en-d-return-label">Cooled water</text>
+<rect x="728" y="121" width="218" height="43" fill="none" id="ozans-cooling-en-d-air"/>
+<text x="835" y="152" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-amber)" data-panel="ozans-cooling-en-d-air">Outside air</text>
+<rect x="18" y="389" width="964" height="44" fill="none" id="ozans-cooling-en-d-actors"/>
+<text x="107" y="420" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-cooling-en-d-actors">Servers</text>
+<text x="335" y="420" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-cooling-en-d-actors">Heat exchanger</text>
+<text x="832" y="420" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-cooling-en-d-actors">Cooling unit</text>
+<rect x="18" y="444" width="964" height="44" fill="none" id="ozans-cooling-en-d-fill"/>
+<text x="24" y="475" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-cooling-en-d-fill" data-metric="initial-fill" data-value="1000" data-unit="m3">1,000 m³ initial fill · occasional top-ups unquantified</text>
+<path d="M24 505 L976 505" fill="none" stroke="var(--color-line-strong)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="512" width="964" height="43" fill="none" id="ozans-cooling-en-d-sanitary-head"/>
+<text x="24" y="543" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-cooling-en-d-sanitary-head">Separate sanitary supply · estimates for one building</text>
+<path d="M180 577 L450 577" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-metric="sanitary-flow" data-from="supply" data-to="sanitary"/>
+<path d="M442.000 573.000 L450 577 L442.000 581.000" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M550 577 L820 577" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-metric="sanitary-flow" data-from="sanitary" data-to="sewer"/>
+<path d="M812.000 573.000 L820 577 L812.000 581.000" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="587" width="964" height="40" fill="none" id="ozans-cooling-en-d-sanitary-label"/>
+<text x="175" y="615" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-cooling-en-d-sanitary-label" data-metric="sanitary-input" data-value="10.4" data-unit="m3/day">10.4 m³/day in</text>
+<text x="500" y="615" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-cooling-en-d-sanitary-label">Sanitary use</text>
+<text x="825" y="615" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-cooling-en-d-sanitary-label" data-metric="sanitary-discharge" data-value="10.4" data-unit="m3/day">~10.4 m³/day out</text>
+<path d="M24 630 L976 630" fill="none" stroke="var(--color-line-strong)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="636" width="964" height="60" fill="none" id="ozans-cooling-en-d-footer"/>
+<text x="24" y="666" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-cooling-en-d-footer">Google/RTE design proposal · Source [01], pp.70–73 · Functional schematic</text>
+</svg>

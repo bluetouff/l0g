@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="ozans-capacity-en-d-title ozans-capacity-en-d-desc" style="width:100%;height:auto" class="l0g-ozans-svg">
+<title id="ozans-capacity-en-d-title">Two connections and a conditional increase in capacity</title><desc id="ozans-capacity-en-d-desc">Maximum project connection capacity in MW. The 120 MW first connection remains alongside the 400 kV branch, initially at 300 MW and later at 1,200 MW after reinforcement. These are forecasts; annual consumption is a separate measure.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-ink)"/>
+<rect x="18" y="8" width="964" height="135" fill="none" id="ozans-capacity-en-d-header"/>
+<text x="24" y="39" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="ozans-capacity-en-d-header">l0g / OZANS</text>
+<text x="24" y="94" font-family="l0g Google Ozans" font-size="34" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-capacity-en-d-header">Two connections, a staged expansion</text>
+<path d="M56 218 L67 178 L73 178 L84 218" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M52 191 L88 191" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M48 203 L92 203" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M60 213 L78 194" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M80 213 L62 194" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M110 200 L760 200" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M110 210 L760 210" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M770 205 L830 205" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M822.000 201.000 L830 205 L822.000 209.000" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="850" y="175" width="80" height="60" fill="none" stroke="var(--color-signal)" stroke-width="1.6"/>
+<path d="M858 190.0 L922 190.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M858 205.0 L922 205.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M858 220.0 L922 220.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<circle cx="920" cy="183.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="920" cy="198.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="920" cy="213.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="920" cy="228.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<rect x="170" y="146" width="610" height="42" fill="none" id="ozans-capacity-en-d-circuit225"/>
+<text x="180" y="176" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-amber)" data-panel="ozans-capacity-en-d-circuit225">225 kV</text>
+<text x="540" y="176" font-family="l0g Google Ozans" font-size="28" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-capacity-en-d-circuit225">120 MW</text>
+<path d="M56 338 L67 298 L73 298 L84 338" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M52 311 L88 311" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M48 323 L92 323" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M60 333 L78 314" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M80 333 L62 314" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M110 320 L760 320" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M110 330 L760 330" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M770 325 L830 325" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M822.000 321.000 L830 325 L822.000 329.000" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="850" y="295" width="80" height="60" fill="none" stroke="var(--color-signal)" stroke-width="1.6"/>
+<path d="M858 310.0 L922 310.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M858 325.0 L922 325.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M858 340.0 L922 340.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<circle cx="920" cy="303.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="920" cy="318.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="920" cy="333.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="920" cy="348.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<rect x="170" y="266" width="610" height="42" fill="none" id="ozans-capacity-en-d-circuit400"/>
+<text x="180" y="296" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-amber)" data-panel="ozans-capacity-en-d-circuit400">400 kV</text>
+<text x="540" y="296" font-family="l0g Google Ozans" font-size="28" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-capacity-en-d-circuit400">300 → 1,200 MW</text>
+<rect x="18" y="361" width="964" height="41" fill="none" id="ozans-capacity-en-d-key"/>
+<text x="24" y="390" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-capacity-en-d-key">Total capacity by stage · a common scale in MW</text>
+<text x="740" y="390" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="ozans-capacity-en-d-key">225 kV</text>
+<text x="890" y="390" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-amber)" data-panel="ozans-capacity-en-d-key">400 kV</text>
+<rect x="18" y="414" width="964" height="54" fill="none" id="ozans-capacity-en-d-row0"/>
+<text x="24" y="445" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-capacity-en-d-row0">Around 2030</text>
+<rect x="320" y="424" width="47.27272727272727" height="22" fill="var(--color-signal)" data-metric="connection-capacity" data-value="120" data-stage="0" data-kv="225"/>
+<text x="974" y="445" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-paper)" data-panel="ozans-capacity-en-d-row0" data-metric="stage-total" data-value="120" data-stage="0">120 MW</text>
+<rect x="18" y="472" width="964" height="54" fill="none" id="ozans-capacity-en-d-row1"/>
+<text x="24" y="503" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-capacity-en-d-row1">Early 2031</text>
+<rect x="320" y="482" width="47.27272727272727" height="22" fill="var(--color-signal)" data-metric="connection-capacity" data-value="120" data-stage="1" data-kv="225"/>
+<rect x="367.27272727272725" y="482" width="118.18181818181819" height="22" fill="var(--color-amber)" data-metric="connection-capacity" data-value="300" data-stage="1" data-kv="400"/>
+<text x="974" y="503" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-paper)" data-panel="ozans-capacity-en-d-row1" data-metric="stage-total" data-value="420" data-stage="1">420 MW</text>
+<rect x="18" y="530" width="964" height="54" fill="none" id="ozans-capacity-en-d-row2"/>
+<text x="24" y="561" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-capacity-en-d-row2">Eventually*</text>
+<rect x="320" y="540" width="47.27272727272727" height="22" fill="var(--color-signal)" data-metric="connection-capacity" data-value="120" data-stage="2" data-kv="225"/>
+<rect x="367.27272727272725" y="540" width="472.72727272727275" height="22" fill="var(--color-amber)" data-metric="connection-capacity" data-value="1200" data-stage="2" data-kv="400"/>
+<text x="974" y="561" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-paper)" data-panel="ozans-capacity-en-d-row2" data-metric="stage-total" data-value="1320" data-stage="2">1,320 MW</text>
+<rect x="18" y="585" width="964" height="43" fill="none" id="ozans-capacity-en-d-condition"/>
+<text x="24" y="616" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-capacity-en-d-condition">* After Éguzon–Marmagne, 2032 at the earliest. Indicative dates.</text>
+<path d="M24 630 L976 630" fill="none" stroke="var(--color-line-strong)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="636" width="964" height="60" fill="none" id="ozans-capacity-en-d-footer"/>
+<text x="24" y="666" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-capacity-en-d-footer">Google/RTE project · Sources [01,09] · Maximum connection capacity</text>
+</svg>

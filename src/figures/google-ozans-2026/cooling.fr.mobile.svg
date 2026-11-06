@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="ozans-cooling-fr-m-title ozans-cooling-fr-m-desc" style="width:100%;height:auto" class="l0g-ozans-svg">
+<title id="ozans-cooling-fr-m-title">Une boucle d’eau transporte la chaleur vers l’air</title><desc id="ozans-cooling-fr-m-desc">Schéma simplifié du refroidissement sec projeté. Un remplissage initial de 1 000 mètres cubes par bâtiment est prévu, avec des appoints ponctuels non quantifiés. Les usages sanitaires et leur rejet estimé de 10,4 mètres cubes par jour constituent un autre circuit.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-ink)"/>
+<rect x="18" y="8" width="384" height="135" fill="none" id="ozans-cooling-fr-m-header"/>
+<text x="24" y="37" font-family="l0g Google Ozans" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="ozans-cooling-fr-m-header">l0g / OZANS</text>
+<text x="24" y="82" font-family="l0g Google Ozans" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-cooling-fr-m-header">L’eau circule,</text>
+<text x="24" y="119" font-family="l0g Google Ozans" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-cooling-fr-m-header">la chaleur rejoint l’air</text>
+<rect x="38" y="184" width="59" height="82" fill="none" stroke="var(--color-signal)" stroke-width="1.6"/>
+<path d="M46 204.5 L89 204.5" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M46 225.0 L89 225.0" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M46 245.5 L89 245.5" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<circle cx="87" cy="192.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="87" cy="212.5" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="87" cy="233.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="87" cy="253.5" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<path d="M110 225 L256 225" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="heat-flow" data-from="servers" data-to="exchanger"/>
+<path d="M248.000 221.000 L256 225 L248.000 229.000" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="281" y="184" width="59" height="82" fill="none" stroke="var(--color-muted)" stroke-width="1.6"/>
+<path d="M289 200.4 L332 200.4" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<path d="M289 216.8 L332 216.8" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<path d="M289 233.2 L332 233.2" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<path d="M289 249.6 L332 249.6" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<rect x="18" y="277" width="384" height="40" fill="none" id="ozans-cooling-fr-m-top-actors"/>
+<text x="68" y="307" font-family="l0g Google Ozans" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-cooling-fr-m-top-actors">Serveurs</text>
+<text x="310" y="307" font-family="l0g Google Ozans" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-cooling-fr-m-top-actors">Échangeur</text>
+<path d="M338 245 L380 245 L380 441 L310 441" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-metric="water-flow" data-from="exchanger" data-to="cooler"/>
+<path d="M380 345 L380 381" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M384.000 373.000 L380 381 L376.000 373.000" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M210 441 L159 441 L159 245 L281 245" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-metric="water-flow" data-from="cooler" data-to="exchanger"/>
+<path d="M159 381 L159 345" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M155.000 353.000 L159 345 L163.000 353.000" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="210" y="403" width="100" height="77" fill="none" stroke="var(--color-muted)" stroke-width="1.6"/>
+<circle cx="260" cy="442" r="24" fill="var(--color-ink)" stroke="var(--color-muted)" stroke-width="1.6"/>
+<circle cx="260" cy="442" r="4" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<path d="M266 444 L279 448 L270 459 L262 448" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="fan"/>
+<path d="M254 444 L241 448 L250 459 L258 448" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="fan"/>
+<path d="M254 440 L241 436 L250 425 L258 436" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="fan"/>
+<path d="M266 440 L279 436 L270 425 L262 436" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="fan"/>
+<path d="M260 392 L260 348" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="heat-flow" data-from="cooler" data-to="air"/>
+<path d="M256.000 356.000 L260 348 L264.000 356.000" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="325" width="126" height="66" fill="none" id="ozans-cooling-fr-m-loop-note"/>
+<text x="24" y="352" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="ozans-cooling-fr-m-loop-note">Eau</text>
+<text x="24" y="380" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="ozans-cooling-fr-m-loop-note">refroidie</text>
+<rect x="204" y="314" width="145" height="34" fill="none" id="ozans-cooling-fr-m-air"/>
+<text x="276" y="339" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-amber)" data-panel="ozans-cooling-fr-m-air">Air extérieur</text>
+<rect x="176" y="491" width="224" height="34" fill="none" id="ozans-cooling-fr-m-warm-note"/>
+<text x="290" y="517" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-accent)" data-panel="ozans-cooling-fr-m-warm-note">Eau réchauffée</text>
+<rect x="18" y="540" width="384" height="76" fill="none" id="ozans-cooling-fr-m-fill"/>
+<text x="24" y="568" font-family="l0g Google Ozans" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-cooling-fr-m-fill" data-metric="initial-fill" data-value="1000" data-unit="m3">1 000 m³ : remplissage initial</text>
+<text x="24" y="605" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-cooling-fr-m-fill">Appoints ponctuels non quantifiés</text>
+<path d="M24 635 L396 635" fill="none" stroke="var(--color-line-strong)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="645" width="384" height="41" fill="none" id="ozans-cooling-fr-m-sanitary-head"/>
+<text x="24" y="675" font-family="l0g Google Ozans" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-cooling-fr-m-sanitary-head">Circuit sanitaire distinct</text>
+<path d="M35 720 L185 720" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-metric="sanitary-flow" data-from="supply" data-to="sanitary"/>
+<path d="M177.000 716.000 L185 720 L177.000 724.000" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M235 720 L385 720" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-metric="sanitary-flow" data-from="sanitary" data-to="sewer"/>
+<path d="M377.000 716.000 L385 720 L377.000 724.000" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="735" width="384" height="87" fill="none" id="ozans-cooling-fr-m-sanitary-label"/>
+<text x="24" y="763" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-cooling-fr-m-sanitary-label" data-metric="sanitary-input" data-value="10.4" data-unit="m3/day">Entrée : 10,4 m³/j en moyenne</text>
+<text x="24" y="794" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-cooling-fr-m-sanitary-label" data-metric="sanitary-discharge" data-value="10.4" data-unit="m3/day">Rejet estimé : ~10,4 m³/j</text>
+<path d="M24 830 L396 830" fill="none" stroke="var(--color-line-strong)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="836" width="384" height="80" fill="none" id="ozans-cooling-fr-m-footer"/>
+<text x="24" y="866" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-cooling-fr-m-footer">Projet Google/RTE · Source [01], p.70–73</text>
+<text x="24" y="893" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-cooling-fr-m-footer">Estimations pour un bâtiment</text>
+</svg>

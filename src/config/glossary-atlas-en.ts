@@ -210,6 +210,19 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'refaction-tarifaire', sigle: 'Network connection cost allowance', nom: 'Eligible connection costs recovered through network tariffs',
+    def: 'A mechanism under which network tariffs cover part of eligible connection costs, with the applicant paying the remaining contribution. For consumption facilities connected at the French high-voltage HTB level, the order of 30 November 2017 sets the allowance at 30%. The calculation requires the relevant asset scope, distinct from a whole-project budget and from the net effect on customers’ bills.',
+    guide: '/en/analysis/google-ozans-who-pays-for-the-infrastructure/',
+    ...energySection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Google at Ozans: financing the infrastructure', href: '/en/analysis/google-ozans-who-pays-for-the-infrastructure/', detail: 'Connection assets shared 70/30, backup links and the scope of collective funding.', kind: 'article' }],
+      sources: [
+        { label: 'Order of 30 November 2017, Article 1', href: 'https://www.legifrance.gouv.fr/loda/id/JORFTEXT000036128734', detail: 'A 30% allowance for connecting consumption facilities to public high-voltage HTB networks; current version checked on 6 November 2026.', kind: 'source' },
+        { label: 'CRE, connection and access to the network', href: 'https://www.cre.fr/electricite/reseaux-delectricite/raccordement-et-acces-au-reseau.html', detail: 'Financial terms: partial tariff funding of connections, the applicant’s contribution and tariff funding of reinforcement.', kind: 'source' },
+      ],
+    },
+  },
+  {
     slug: 'rappel-de-virement', sigle: 'Credit transfer recall', nom: 'Request to return an executed credit transfer',
     def: 'A request by the payer’s payment service provider seeking the return of an executed credit transfer. For transfers within the Single Euro Payments Area (SEPA), recovery depends on available funds, applicable law and, in some cases, the beneficiary’s authorisation.',
     guide: '/en/analysis/arkea-freeze-trace-recover/',

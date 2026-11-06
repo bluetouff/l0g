@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="ozans-financing-fr-m-title ozans-financing-fr-m-desc" style="width:100%;height:auto" class="l0g-ozans-svg">
+<title id="ozans-financing-fr-m-title">Le financement suit les catégories d’ouvrages</title><desc id="ozans-financing-fr-m-desc">Google financerait 70 % des postes publics et premières liaisons, RTE 30 %. Les secondes liaisons et le poste privé seraient intégralement financés par Google. Le détail publié laisse le montant global de RTE indéterminé.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-ink)"/>
+<rect x="18" y="8" width="384" height="135" fill="none" id="ozans-financing-fr-m-header"/>
+<text x="24" y="37" font-family="l0g Google Ozans" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="ozans-financing-fr-m-header">l0g / OZANS</text>
+<text x="24" y="82" font-family="l0g Google Ozans" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-financing-fr-m-header">Le financement suit</text>
+<text x="24" y="119" font-family="l0g Google Ozans" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-financing-fr-m-header">les ouvrages</text>
+<rect x="18" y="157" width="384" height="44" fill="none" id="ozans-financing-fr-m-payers"/>
+<text x="80" y="187" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-signal)" data-panel="ozans-financing-fr-m-payers">Google</text>
+<text x="340" y="187" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-amber)" data-panel="ozans-financing-fr-m-payers">RTE</text>
+<path d="M80 211 L80 255" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="funding-flow" data-from="google" data-to="eligible"/>
+<path d="M84.000 247.000 L80 255 L76.000 247.000" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M340 207 L390 207" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M390 207 L390 255" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="funding-flow" data-from="rte" data-to="eligible"/>
+<path d="M394.000 247.000 L390 255 L386.000 247.000" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="80" y="222" width="320" height="37" fill="none" id="ozans-financing-fr-m-shares"/>
+<text x="160" y="249" font-family="l0g Google Ozans" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-signal)" data-panel="ozans-financing-fr-m-shares">70 %</text>
+<text x="337" y="249" font-family="l0g Google Ozans" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-amber)" data-panel="ozans-financing-fr-m-shares">30 %</text>
+<rect x="24" y="275" width="260" height="18" fill="var(--color-signal)" data-metric="funding-share" data-value="70" data-payer="google" data-category="eligible"/>
+<rect x="284" y="275" width="111.42857142857143" height="18" fill="var(--color-amber)" data-metric="funding-share" data-value="30" data-payer="rte" data-category="eligible"/>
+<rect x="18" y="308" width="384" height="144" fill="none" id="ozans-financing-fr-m-eligible"/>
+<text x="210" y="340" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-financing-fr-m-eligible">Postes publics</text>
+<text x="210" y="372" font-family="l0g Google Ozans" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="ozans-financing-fr-m-eligible">et premières liaisons</text>
+<text x="210" y="416" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="ozans-financing-fr-m-eligible">Part RTE financée</text>
+<text x="210" y="444" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="ozans-financing-fr-m-eligible">par les tarifs du réseau</text>
+<path d="M24 480 L396 480" fill="none" stroke="var(--color-line-strong)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.8 549.0 L52.6 517 L57.4 517 L66.2 549.0" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M40.6 527.4 L69.4 527.4" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M37.4 537.0 L72.6 537.0" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M47.0 545.0 L61.4 529.8" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M63.0 545.0 L48.6 529.8" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="tower"/>
+<path d="M85 529 L140 529" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M85 541 L140 541" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="156" y="500" width="244" height="90" fill="none" id="ozans-financing-fr-m-backup"/>
+<text x="170" y="533" font-family="l0g Google Ozans" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-financing-fr-m-backup">Liaisons de secours</text>
+<text x="170" y="572" font-family="l0g Google Ozans" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="ozans-financing-fr-m-backup" data-metric="funding-share" data-value="100" data-payer="google" data-category="backup">Google 100 %</text>
+<rect x="38" y="641" width="44" height="53" fill="none" stroke="var(--color-muted)" stroke-width="1.6"/>
+<path d="M46 651.6 L74 651.6" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<path d="M46 662.2 L74 662.2" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<path d="M46 672.8 L74 672.8" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<path d="M46 683.4 L74 683.4" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="exchanger"/>
+<path d="M82 668 L105 668" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="109" y="641" width="39" height="53" fill="none" stroke="var(--color-signal)" stroke-width="1.6"/>
+<path d="M117 654.25 L140 654.25" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M117 667.5 L140 667.5" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<path d="M117 680.75 L140 680.75" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="server"/>
+<circle cx="138" cy="649.0" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="138" cy="662.25" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="138" cy="675.5" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<circle cx="138" cy="688.75" r="1.2" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6"/>
+<rect x="156" y="625" width="244" height="90" fill="none" id="ozans-financing-fr-m-private"/>
+<text x="170" y="658" font-family="l0g Google Ozans" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="ozans-financing-fr-m-private">Poste privé</text>
+<text x="170" y="697" font-family="l0g Google Ozans" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="ozans-financing-fr-m-private" data-metric="funding-share" data-value="100" data-payer="google" data-category="private">Google 100 %</text>
+<rect x="18" y="751" width="384" height="73" fill="none" id="ozans-financing-fr-m-limit"/>
+<text x="24" y="780" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-financing-fr-m-limit">Montant total de RTE :</text>
+<text x="24" y="809" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-financing-fr-m-limit">ventilation publiée insuffisante.</text>
+<path d="M24 830 L396 830" fill="none" stroke="var(--color-line-strong)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="836" width="384" height="80" fill="none" id="ozans-financing-fr-m-footer"/>
+<text x="24" y="866" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-financing-fr-m-footer">Projet Google/RTE et cadre tarifaire</text>
+<text x="24" y="893" font-family="l0g Google Ozans" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="ozans-financing-fr-m-footer">Sources [01,05,06,20]</text>
+</svg>
