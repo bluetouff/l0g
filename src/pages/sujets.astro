@@ -5,7 +5,7 @@ import L0gGlyph, { type GlyphName } from '../components/L0gGlyph.astro';
 import PageHero from '../components/PageHero.astro';
 import { topics, postMatchesTopic } from '../config/topics.ts';
 
-const posts = await getCollection('posts', ({ data }) => !data.draft);
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 const accentVar: Record<string, string> = {
   teal: 'var(--color-signal)',
   blue: 'var(--color-topic-blue)',
@@ -14,7 +14,14 @@ const accentVar: Record<string, string> = {
 };
 
 const cards = topics
-  .map((t) => ({ ...t, n: posts.filter((p) => postMatchesTopic(p.data.tags, t)).length }))
+  .map((t) => {
+    const matched = posts.filter((p) => postMatchesTopic(p.data.tags, t));
+    const readingLinks = [
+      ...t.entryPoints,
+      ...matched.slice(1).map(post => ({ kind: 'analyse', label: post.data.title, href: `/posts/${post.id}/` })),
+    ].slice(0, 3);
+    return { ...t, n: matched.length, latest: matched[0], readingLinks };
+  })
   .sort((a, b) => b.n - a.n);
 
 const topicGlyphs: Record<string, GlyphName> = {
@@ -37,10 +44,9 @@ const topicGlyphs: Record<string, GlyphName> = {
   <PageHero
     index="01"
     kicker="sujets suivis"
-    title="Les dossiers"
-    highlight="qui structurent le flux."
-    description="Chaque dossier fixe une question centrale, distingue guide, définition, méthodologie et analyse datée, puis organise les contenus qui s’y rattachent."
-    secondary="Choisissez le mécanisme que vous voulez comprendre. Le nombre d’analyses indique la profondeur du dossier, pas son importance."
+    title="Dossiers économiques"
+    highlight="et financiers."
+    description="Une analyse récente pour entrer dans le sujet, puis des guides, des définitions et des méthodes pour suivre le mécanisme."
     glyph="understand"
     stats={[
       { value: cards.length, label: 'dossiers actifs' },
@@ -49,145 +55,47 @@ const topicGlyphs: Record<string, GlyphName> = {
     ]}
   />
 
-  <section class="topic-grid" data-pagefind-ignore aria-label="Dossiers thématiques">
-    {
-      cards.map((t, index) => (
-        <a
-          href={`/sujet/${t.slug}/`}
-          class="topic-card instrument-plate group"
-          style={`--a:${accentVar[t.accent]};--plate-accent:${accentVar[t.accent]}`}
-        >
-          <div class="topic-card-top">
-            <span class="topic-index">{String(index + 1).padStart(2, '0')}</span>
-            <span class="topic-count">{t.n} analyse{t.n > 1 ? 's' : ''}</span>
-          </div>
-          <div class="topic-symbol">
-            <L0gGlyph name={topicGlyphs[t.slug] ?? 'understand'} />
-            <span aria-hidden="true"></span>
-          </div>
-          <h2>{t.label}</h2>
-          <p class="topic-blurb">{t.blurb}</p>
-          <div class="topic-question">
-            <span>question de fond</span>
-            <p>{t.question}</p>
-          </div>
-          <span class="topic-open">Ouvrir le dossier <b aria-hidden="true">↗</b></span>
-        </a>
-      ))
-    }
+  <section class="topic-grid" id="dossiers" data-pagefind-ignore aria-label="Dossiers thématiques">
+    {cards.map((t) => (
+      <article class="topic-card" style={`--a:${accentVar[t.accent]}`}>
+        <header><L0gGlyph name={topicGlyphs[t.slug] ?? 'understand'} /><h2><a href={`/sujet/${t.slug}/`}>{t.label}</a></h2><span>{t.n} analyse{t.n > 1 ? 's' : ''}</span></header>
+        <p class="topic-blurb">{t.blurb}</p>
+        {t.latest && <a class="topic-feature" href={`/posts/${t.latest.id}/`}>
+          <img src={t.latest.data.ogImage ?? `/og/${t.latest.id}.png`} alt="" width="1200" height="630" loading="lazy" decoding="async" />
+          <div><span class="topic-label">Analyse récente · <time datetime={t.latest.data.pubDate.toISOString()}>{t.latest.data.pubDate.toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric',timeZone:'Europe/Paris'})}</time></span><h3>{t.latest.data.title}</h3><span class="topic-arrow" aria-hidden="true">↗</span></div>
+        </a>}
+        <nav class="topic-path" aria-label={`Repères pour ${t.label}`}><p>Repères et lectures</p><ol>{t.readingLinks.map(entry => <li><a href={entry.href}><span>{entry.kind}</span>{entry.label}<span aria-hidden="true">↗</span></a></li>)}</ol></nav>
+        <a class="topic-open" href={`/sujet/${t.slug}/`}>Tout le dossier <span aria-hidden="true">→</span></a>
+      </article>
+    ))}
   </section>
 
   <style>
-    .topic-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1.25rem;
-    }
-    .topic-card {
-      --a: var(--color-signal);
-      display: flex;
-      min-height: 25rem;
-      flex-direction: column;
-      padding: 1.15rem;
-      background:
-        radial-gradient(85% 100% at 0 0, color-mix(in srgb, var(--a) 8%, transparent), transparent 62%),
-        var(--card-fill);
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
-    }
-    .topic-card:hover {
-      border-color: color-mix(in srgb, var(--a) 55%, transparent);
-      background:
-        radial-gradient(85% 100% at 0 0, color-mix(in srgb, var(--a) 12%, transparent), transparent 65%),
-        var(--card-fill-hover);
-      transform: translateY(-2px);
-    }
-    .topic-card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      color: var(--color-muted);
-      font-family: var(--font-mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    .topic-index { color: var(--a); font-weight: 700; }
-    .topic-symbol {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin-top: 1.15rem;
-    }
-    .topic-symbol :global(.l0g-glyph) { --glyph-color: var(--a); }
-    .topic-symbol > span {
-      width: 3.5rem;
-      height: 1px;
-      background: linear-gradient(90deg, color-mix(in srgb, var(--a) 65%, transparent), transparent);
-    }
-    .topic-card h2 {
-      max-width: 19ch;
-      margin-top: 1rem;
-      color: var(--color-bright);
-      font-family: var(--font-display);
-      font-size: 1.08rem;
-      line-height: 1.32;
-      text-wrap: balance;
-      transition: color 0.18s;
-    }
-    .topic-card:hover h2 { color: var(--a); }
-    .topic-blurb {
-      margin-top: 0.55rem;
-      color: var(--color-muted);
-      font-family: var(--font-read);
-      font-size: 0.79rem;
-      line-height: 1.58;
-    }
-    .topic-question {
-      margin-top: auto;
-      border-top: 1px solid var(--color-line);
-      padding-top: 0.8rem;
-    }
-    .topic-question > span {
-      color: var(--a);
-      font-family: var(--font-mono);
-      font-size: 0.56rem;
-      font-weight: 650;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    .topic-question p {
-      display: -webkit-box;
-      overflow: hidden;
-      margin-top: 0.3rem;
-      color: var(--color-paper);
-      font-family: var(--font-read);
-      font-size: 0.72rem;
-      line-height: 1.48;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-    }
-    .topic-open {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 0.85rem;
-      color: var(--color-muted);
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      font-weight: 650;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-    }
-    .topic-open b { color: var(--a); font-weight: 400; }
-    @media (max-width: 700px) {
-      .topic-grid { grid-template-columns: 1fr; }
-      .topic-card { min-height: auto; }
-      .topic-question { margin-top: 1.2rem; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .topic-card:hover { transform: none; }
-    }
+    .topic-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-top:1.5rem;scroll-margin-top:2rem; }
+    .topic-card { min-width:0;display:flex;flex-direction:column;border:1px solid var(--color-line);border-radius:14px;padding:1.1rem;background:radial-gradient(100% 65% at 0 0,color-mix(in srgb,var(--a) 4%,transparent),transparent),var(--color-surface); }
+    .topic-card header { display:flex;align-items:center;gap:.65rem;flex-wrap:wrap; }
+    .topic-card header :global(.l0g-glyph) { width:1.5rem;height:1.5rem;--glyph-color:var(--a); }
+    h2 { margin:0;color:var(--color-bright);font:450 1rem/1.4 var(--font-mono); }
+    h2 a:hover { color:var(--a); }
+    header>span { color:var(--color-muted);font:400 .68rem/1.6 var(--font-read);margin-left:auto; }
+    .topic-blurb { color:var(--color-muted);font:400 .83rem/1.65 var(--font-read);margin:.65rem 0 1rem; }
+    .topic-feature { display:block;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--color-line);background:var(--color-ink); }
+    .topic-feature img { display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover; }
+    .topic-feature>div { padding:.9rem 2rem .9rem .9rem;position:relative; }
+    .topic-label { color:var(--color-muted);font:400 .65rem/1.6 var(--font-read); }
+    h3 { margin:.35rem 0 0;color:var(--color-paper);font:450 .95rem/1.5 var(--font-read); }
+    .topic-feature:hover h3 { color:var(--a); }
+    .topic-arrow { position:absolute;right:.85rem;bottom:1rem;color:var(--a); }
+    .topic-path { margin:1rem 0; }
+    .topic-path>p { color:var(--color-muted);font:400 .68rem/1.5 var(--font-mono);margin:0 0 .4rem; }
+    ol { margin:0;padding:0;list-style:none; }
+    li+li { border-top:1px solid var(--color-line); }
+    li a { display:grid;grid-template-columns:5.2rem minmax(0,1fr) auto;gap:.5rem;align-items:baseline;min-height:44px;padding:.65rem 0;color:var(--color-paper);font:400 .78rem/1.5 var(--font-read); }
+    li a>span:first-child { color:var(--a);font-size:.62rem; }
+    li a>span:last-child { color:var(--color-muted); }
+    li a:hover { color:var(--a); }
+    .topic-open { margin-top:auto;padding-top:.7rem;border-top:1px solid var(--color-line);min-height:44px;display:flex;align-items:center;justify-content:space-between;color:var(--a);font:400 .78rem/1.5 var(--font-read); }
+    a:focus-visible { outline:2px solid var(--a);outline-offset:4px; }
+    @media(max-width:740px) { .topic-grid { grid-template-columns:1fr; }.topic-card { padding:.9rem; } }
   </style>
 </BaseLayout>

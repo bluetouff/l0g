@@ -1,4 +1,6 @@
 ---
+import PageHero from '../../../components/PageHero.astro';
+import AuthorSignature from '../../../components/AuthorSignature.astro';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import { ORGANIZATION_ID, WEBSITE_ID } from '../../../config/entities.ts';
 import { serializeInlineScriptData } from '../../../lib/security.ts';
@@ -33,10 +35,8 @@ const principles = [
 >
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(aboutPageJsonLd)} />
   <article class="rise about-page" data-pagefind-body>
-    <p class="mono-label glow" style="color: var(--color-signal)">// about</p>
-    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-tight tracking-wider glow">
-      l0g, an independent economic <span style="color: var(--color-accent)">news publication</span>
-    </h1>
+    <PageHero index="07" kicker="about" title="Independent economic" highlight="reporting." glyph="read" description="Investigations, analysis and public tools for understanding economic and financial mechanisms." />
+    <AuthorSignature lang="en" />
     <p class="lede">
       l0g.fr is an independent economic news outlet, online journal and digital newsroom published by Olivier Laurelli,
       also known as Bluetouff, in Chartres, France. The newsroom covers macroeconomics, markets, credit, digital assets,
@@ -49,7 +49,7 @@ const principles = [
       <a class="link-term" href="/en/publications/">Read the investigations as books</a>
     </nav>
 
-    <section>
+    <section id="newsroom">
       <h2>Publication and newsroom</h2>
       <p>
         l0g is edited and published by Olivier Laurelli as a sole proprietor. He serves as publication director, journalist,
@@ -106,11 +106,11 @@ const principles = [
 </EnglishGuidesLayout>
 
 <style>
-  .about-page { max-width: 56rem; }
+  .about-page { font-family:var(--font-read); max-width: 56rem; }
   .reading-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; margin-top: 1.5rem; line-height: 1.6; }
   .lede { margin-top: 1.25rem; color: var(--color-paper); font-size: clamp(1.05rem, 2vw, 1.22rem); line-height: 1.75; border-left: 2px solid var(--color-signal); padding-left: 1rem; }
   .about-page section { margin-top: 2.4rem; }
-  .about-page h2 { color: var(--color-bright); font-size: 1.35rem; font-weight: 700; }
+  .about-page h2 { color: var(--color-bright); font-size: 1.35rem; font-weight: 450; }
   .about-page p { margin-top: 0.85rem; color: var(--color-muted); line-height: 1.75; }
   .principles { display: grid; gap: 1rem; }
   @media (min-width: 760px) { .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

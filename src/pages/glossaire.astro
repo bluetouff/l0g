@@ -4,10 +4,8 @@ import PageHero from '../components/PageHero.astro';
 import GlossaryIndexEntry from '../components/GlossaryIndexEntry.astro';
 
 import {
-  glossaryAtlasEdgeCount,
   glossaryAtlasEntries,
   glossaryEntryBySlug,
-  glossaryReferenceCandidates,
   glossaryReferenceEntries,
   glossaryUpdatedIso,
   glossarySections as sections,
@@ -74,20 +72,46 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
   <PageHero
     index="03"
     kicker="atlas du glossaire"
-    title="Décoder les mots."
-    highlight="Relier les mécanismes."
-    description="Le glossaire sépare les définitions de repérage des fiches de référence : mécanisme, chiffre daté, source primaire, limite explicite et prolongements l0g."
-    secondary="Soixante-dix notions rares sont sélectionnées. Elles ne deviennent indexables qu’après validation éditoriale complète ; le graphe documentaire reste consultable indépendamment."
+    title="Glossaire économique"
+    highlight="et financier."
+    description="Des définitions courtes pour s’orienter, des fiches documentées pour approfondir les mécanismes."
     glyph="retrieve"
     accent="var(--color-topic-blue)"
     stats={[
       { value: total, label: 'entrées' },
-      { value: glossaryReferenceCandidates.length, label: 'candidates rares' },
       { value: glossaryReferenceEntries.length, label: 'fiches de référence' },
-      { value: glossaryAtlasEdgeCount, label: 'relations conceptuelles' },
     ]}
   />
 
+
+  <div class="gloss-tools" data-pagefind-ignore>
+    <div class="gloss-search">
+      <span class="gloss-prompt" aria-hidden="true">/</span>
+      <input
+        id="gloss-filter"
+        type="search"
+        inputmode="search"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="filtrer : sigle, terme, définition…"
+        aria-label="Filtrer le glossaire"
+      />
+      <kbd class="gloss-kbd" aria-hidden="true">/</kbd>
+    </div>
+    <nav class="gloss-chips" aria-label="Sections du glossaire">
+      {
+        sections.map((s) => (
+          <a class="gloss-chip" href={`#sec-${s.slug}`} data-chip={s.slug} style={`--c:${s.accent}`}>
+            {s.titre}<span class="gloss-chip-n">{s.entries.length}</span>
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+
+  <details class="gloss-explore" id="gloss-explore">
+    <summary>Fiches documentées et concepts reliés <span aria-hidden="true">↗</span></summary>
+    <p class="explore-note">Les fiches de référence ont fait l’objet d’une validation éditoriale. Les notions candidates et leurs relations restent consultables dans le graphe.</p>
   {glossaryReferenceEntries.length > 0 && (
     <nav class="atlas-panel reference-panel mt-8" aria-labelledby="reference-list-title">
       <div class="atlas-panel-head">
@@ -143,31 +167,8 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
     </section>
   )}
 
-  <div class="gloss-tools" data-pagefind-ignore>
-    <div class="gloss-search">
-      <span class="gloss-prompt" aria-hidden="true">/</span>
-      <input
-        id="gloss-filter"
-        type="search"
-        inputmode="search"
-        autocomplete="off"
-        spellcheck="false"
-        placeholder="filtrer : sigle, terme, définition…"
-        aria-label="Filtrer le glossaire"
-      />
-      <kbd class="gloss-kbd" aria-hidden="true">/</kbd>
-    </div>
-    <nav class="gloss-chips" aria-label="Sections du glossaire">
-      {
-        sections.map((s) => (
-          <a class="gloss-chip" href={`#sec-${s.slug}`} data-chip={s.slug} style={`--c:${s.accent}`}>
-            {s.titre}<span class="gloss-chip-n">{s.entries.length}</span>
-          </a>
-        ))
-      }
-    </nav>
-  </div>
-
+  </details>
+  <div class="gloss-heading"><h2 id="definitions">Toutes les définitions</h2><p id="gloss-count" role="status" aria-live="polite">{total} entrées</p></div>
   <div id="gloss-root">
     {
       sections.map((s) => (
@@ -216,7 +217,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
     #gloss-filter {
       flex: 1; min-width: 0;
       background: transparent; border: 0; outline: none;
-      color: var(--color-paper); font-family: var(--font-mono); font-size: 0.95rem;
+      color: var(--color-paper); font-family: var(--font-read); font-size: 0.95rem;
     }
     #gloss-filter::placeholder { color: var(--color-muted); }
     .gloss-kbd {
@@ -271,7 +272,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
     }
     .glossary-index :global(.gentry .sigle) {
       color: var(--glossary-accent);
-      font-family: var(--font-display); font-weight: 600; font-size: 0.92rem; letter-spacing: 0.02em;
+      font-family: var(--font-display); font-weight: 450; font-size: 0.88rem; letter-spacing: 0.02em;
       border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
       border-radius: 6px; padding: 1px 8px;
       transition: border-color 0.18s, background 0.18s;
@@ -328,7 +329,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
       border-radius: 8px;
       display: grid;
       grid-template-rows: auto 1fr auto auto;
-      min-height: 18rem;
+      min-height: 0;
       padding: 0.85rem;
     }
     .atlas-node-title {
@@ -343,7 +344,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
       color: var(--node);
       font-family: var(--font-display);
       font-size: 1rem;
-      font-weight: 700;
+      font-weight: 450;
       letter-spacing: 0;
     }
     .atlas-node-title small {
@@ -434,6 +435,22 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
         min-height: auto;
       }
     }
+
+    .gloss-heading { display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin:1.5rem 0 .5rem; }
+    .gloss-heading h2 { color:var(--color-paper); font:450 1rem/1.5 var(--font-display); }
+    .gloss-heading p { color:var(--color-muted); font:400 .75rem var(--font-read); }
+    .gloss-explore { margin-top:1rem; border-block:1px solid var(--color-line); font-family:var(--font-read); }
+    .gloss-explore > summary { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.85rem 0; min-height:44px; color:var(--color-muted); cursor:pointer; font-size:.82rem; }
+    .gloss-explore > summary span { color:var(--color-signal); }.gloss-explore summary:focus-visible { outline:2px solid var(--color-signal); outline-offset:3px; }
+    .explore-note { max-width:65ch; color:var(--color-muted); font:400 .8rem/1.7 var(--font-read); margin:.5rem 0 1rem; }
+    .atlas-node p,.atlas-node-title small { font-family:var(--font-read); }
+    .gloss-chips { flex-wrap:nowrap; overflow-x:auto; padding-bottom:.35rem; scrollbar-width:thin; }
+    .gloss-chip { flex:none; min-height:36px; font:400 .75rem var(--font-read); letter-spacing:0; text-transform:none; }
+    .glossary-index :global(.gentry) { border-width:0 0 1px; border-radius:0; }
+    .glossary-index :global(.gentry-link) { min-height:44px; padding:.75rem .3rem; }
+    .glossary-index :global(.gentry .sigle) { border:0; padding:0; font-weight:450; }
+    .glossary-index :global(.gentry .nom) { font-family:var(--font-read); font-size:.84rem; line-height:1.55; }
+    .glossary-index :global(.gentry[hidden]), .gloss-sec[hidden] { display:none!important; }
   </style>
 
   <script>
@@ -474,8 +491,11 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
           total += shown;
         });
         if (empty) empty.hidden = total !== 0;
+        const count = document.getElementById('gloss-count'); if (count) count.textContent = `${total} entrée${total > 1 ? 's' : ''}`;
       }
+      input.maxLength = 160;
       input.addEventListener('input', apply);
+      apply();
 
       document.addEventListener('keydown', (e) => {
         const tag = (document.activeElement && document.activeElement.tagName) || '';

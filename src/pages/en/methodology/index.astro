@@ -1,4 +1,6 @@
 ---
+import PageHero from '../../../components/PageHero.astro';
+import SignalPath from '../../../components/SignalPath.astro';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import { editorialProtocolRelease } from '../../../config/editorial.ts';
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -18,16 +20,9 @@ const blocks = [
   alternateLinks={[{ hreflang: 'en', href: `${site}/en/methodology/` }, { hreflang: 'fr', href: `${site}/methodologie/` }, { hreflang: 'x-default', href: `${site}/methodologie/` }]}
 >
   <article class="method-page rise" data-pagefind-body>
-    <p class="mono-label glow" style="color: var(--color-signal)">// methodology</p>
-    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-tight tracking-wider glow">
-      Risk indicator methodology
-    </h1>
-    <p class="lede">
-      l0g treats risk as a set of observable pressures, not as a prophecy. The method is simple: use primary sources,
-      keep dates explicit, expose uncertainty, separate signal families and look for confluence before drawing conclusions.
-    </p>
-
-    <section class="method-grid">
+    <PageHero index="05" kicker="methodology" title="Risk indicators," highlight="documented methods." glyph="verify" description="Sources, formulas, dates and limits remain available for inspection and reproduction." />
+    <SignalPath lang="en" />
+    <section class="method-grid" id="principles">
       {blocks.map(([title, text]) => (
         <div>
           <h2>{title}</h2>
@@ -36,7 +31,7 @@ const blocks = [
       ))}
     </section>
 
-    <section>
+    <section id="reading-limits">
       <h2>How dashboards should be read</h2>
       <p>
         Dashboards normalize heterogeneous signals so they can be compared visually. That normalization is a reading aid, not a unified physical measure.
@@ -69,12 +64,12 @@ const blocks = [
 </EnglishGuidesLayout>
 
 <style>
-  .method-page { max-width: 58rem; }
+  .method-page { max-width:58rem;font-family:var(--font-read); }.method-page h2 { font-family:var(--font-display);font-size:1rem; }
   .lede { margin-top: 1.25rem; color: var(--color-paper); font-size: clamp(1.05rem, 2vw, 1.22rem); line-height: 1.75; border-left: 2px solid var(--color-signal); padding-left: 1rem; }
   .method-grid { display: grid; gap: 1rem; margin-top: 2.4rem; }
   @media (min-width: 760px) { .method-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .method-grid div { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 62%, transparent); }
   .method-page section { margin-top: 2.5rem; }
-  .method-page h2 { color: var(--color-bright); font-size: 1.18rem; font-weight: 700; }
+  .method-page h2 { color: var(--color-bright); font-size: 1.18rem; font-weight: 450; }
   .method-page p { margin-top: 0.8rem; color: var(--color-muted); line-height: 1.75; }
 </style>

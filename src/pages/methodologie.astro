@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SignalPath from '../components/SignalPath.astro';
 import PageHero from '../components/PageHero.astro';
 import TrustBar from '../components/TrustBar.astro';
 import { editorialProtocol, editorialProtocolRelease } from '../config/editorial.ts';
@@ -37,19 +38,18 @@ const trustItems = [
     index="05"
     kicker="méthodologie"
     title="Calcul des indicateurs"
-    description="l0g ne se contente pas d’auditer l’opacité des marchés : le projet évite aussi de devenir lui-même une boîte noire."
-    secondary="Formules, seuils, normalisations, sources et observations point-in-time sont documentés pour comprendre ce qu’un signal mesure, et ce qu’il ne mesure pas."
+    description="Les sources, formules et limites des instruments sont publiées pour permettre leur examen et leur reproduction."
     glyph="verify"
     accent="var(--color-accent)"
     stats={[
       { value: methodologyPages.length, label: 'fiches d’instrument' },
-      { value: '0–100', label: 'échelle de lecture' },
       { value: updated, label: 'dernière révision' },
     ]}
   >
-    <TrustBar items={trustItems} />
-    <span class="methodo-meta">Dernière mise à jour : {updated}</span>
+    <details class="methodo-trust"><summary>Protocole et repères de vérification</summary><TrustBar items={trustItems} /></details>
   </PageHero>
+
+  <SignalPath />
 
   <section class="mt-10 protocol-note" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// cadre normatif</p>
@@ -641,5 +641,9 @@ valeur bandeau = arrondi(score.current_stress depuis latest.json)</code></pre>
       color: var(--color-muted); font-size: 0.88rem; line-height: 1.6;
       border-top: 1px solid var(--color-line); padding-top: 1.2rem;
     }
+    .m-p,.idx-d,.history-card em,.precision-note p,.scale-note p,.scale-note li,.protocol-note p { font-family:var(--font-read);font-weight:400; }
+    .tool-t { font-family:var(--font-read);font-weight:450; }.idx-h { font-weight:450; }.history-card strong { font-weight:450; }
+    .methodo-trust { margin-top:.7rem;font:400 .76rem var(--font-read);color:var(--color-muted); }.methodo-trust summary { cursor:pointer;padding:.6rem 0;min-height:44px; }
+    .methodo-trust summary:focus-visible { outline:2px solid var(--color-signal);outline-offset:3px; }
   </style>
 </BaseLayout>

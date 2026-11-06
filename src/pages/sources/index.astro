@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import TrustBar from '../../components/TrustBar.astro';
+import PageHero from '../../components/PageHero.astro';
+import CollectionFilter from '../../components/CollectionFilter.astro';
 import {
   primaryInstitutions,
   primarySourcesUpdated,
@@ -29,12 +30,7 @@ const jsonLd = {
 };
 const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
-const trustItems = [
-  { label: 'institutions vérifiables', note: `${primaryInstitutions.length}` },
-  { label: 'bibliothèque complète', href: '/sites-reference/' },
-  { label: 'méthodes liées', href: '/methodologie/' },
-  { label: 'mis à jour', note: primarySourcesUpdated },
-];
+
 ---
 
 <BaseLayout
@@ -50,106 +46,44 @@ const trustItems = [
   <script type="application/ld+json" is:inline set:html={safeJsonLd} />
 
   <article class="sources-page rise" data-pagefind-body>
-    <section class="sources-hero">
-      <p class="mono-label glow">// sources primaires</p>
-      <h1 class="sources-title font-display glow">Les institutions qui ancrent la preuve.</h1>
-      <p class="sources-lede">
-        Cette section documente les sources primaires que l0g utilise vraiment :
-        ce qu'elles publient, ce qu'elles permettent de vérifier, leurs cadences,
-        et leurs limites. Une source primaire n'est pas magique ; elle est seulement
-        le meilleur endroit pour commencer à contredire un récit.
-      </p>
-      <TrustBar items={trustItems} />
-    </section>
+    <PageHero index="04" kicker="sources primaires" title="Revenir aux documents" highlight="d’origine."
+      description="Institutions, jeux de données et documents utilisés dans les enquêtes. Retrouvez leur cadence, leur périmètre et leurs limites."
+      glyph="source" stats={[{value:primaryInstitutions.length,label:'institutions documentées'},{value:primarySourcesUpdated,label:'révision du répertoire'}]} />
+    <section class="sources-section" id="institutions" data-filter-collection>
+      <CollectionFilter label="Trouver une institution ou un document" placeholder="SEC, inflation, pétrole, sanctions…" />
+      <h2 class="sources-heading">Les institutions de référence</h2>
 
-    <section class="sources-section">
-      <p class="mono-label glow">// institutions</p>
       <div class="institution-grid">
         {primaryInstitutions.map((source) => (
-          <a class="institution-card" href={primarySourceUrl(source.slug)} style={`--accent:${source.accent}`}>
-            <span class="institution-k">{source.shortName}</span>
-            <strong>{source.name}</strong>
-            <span>{source.category}</span>
+          <article class="institution-card" data-filter-card data-filter-text={[source.shortName,source.name,source.category,source.description,...source.readFor,...source.datasets.map(item=>item.name)].join(' ')} style={`--accent:${source.accent}`}>
+            <header><span class="institution-k">{source.shortName}</span><span class="institution-count">{source.datasets.length} document{source.datasets.length>1?'s':''}</span></header>
+            <h3><a href={primarySourceUrl(source.slug)}>{source.name}</a></h3>
+            <p class="institution-category">{source.category}</p>
             <p>{source.description}</p>
-          </a>
+            <dl class="institution-data"><div><dt>À consulter</dt><dd>{source.datasets[0]?.name}</dd></div><div><dt>Cadence</dt><dd>{source.datasets[0]?.cadence}</dd></div></dl>
+            <details><summary>Usage et limites</summary><p>{source.readFor[0]}</p><ul>{source.limits.map(limit=><li>{limit}</li>)}</ul></details>
+            <a class="institution-open" href={primarySourceUrl(source.slug)}>Documents et méthode de lecture <span aria-hidden="true">↗</span></a>
+          </article>
         ))}
       </div>
     </section>
   </article>
 
   <style>
-    .sources-page { max-width: 64rem; }
-    .sources-hero {
-      padding-bottom: 2.2rem;
-      border-bottom: 1px solid var(--color-line);
-    }
-    .sources-title {
-      margin-top: 1rem;
-      max-width: 48rem;
-      font-size: clamp(2rem, 4.5vw, 3rem);
-      line-height: 1.14;
-      letter-spacing: 0.02em;
-      color: var(--color-bright);
-    }
-    .sources-lede {
-      margin-top: 1.15rem;
-      max-width: 48rem;
-      border-left: 2px solid var(--color-signal);
-      padding-left: 1rem;
-      font-family: var(--font-read);
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
-      line-height: 1.66;
-      color: var(--color-paper);
-    }
-    .sources-section { margin-top: 3rem; }
-    .institution-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.8rem;
-      margin-top: 1rem;
-    }
-    @media (min-width: 760px) {
-      .institution-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    .institution-card {
-      --accent: var(--color-signal);
-      display: grid;
-      gap: 0.45rem;
-      min-height: 13rem;
-      border: 1px solid var(--color-line);
-      border-radius: 8px;
-      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
-      padding: 1rem;
-      text-decoration: none;
-      transition: border-color 0.18s, background 0.18s, transform 0.18s;
-    }
-    .institution-card:hover {
-      border-color: color-mix(in srgb, var(--accent) 48%, transparent);
-      background: color-mix(in srgb, var(--accent) 6%, transparent);
-      transform: translateY(-1px);
-    }
-    .institution-k,
-    .institution-card span:not(.institution-k) {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .institution-k { color: var(--accent); }
-    .institution-card strong {
-      color: var(--color-bright);
-      font-family: var(--font-display);
-      font-size: 1.08rem;
-      line-height: 1.35;
-    }
-    .institution-card span:not(.institution-k) {
-      color: var(--color-muted);
-    }
-    .institution-card p {
-      margin: 0.3rem 0 0;
-      color: var(--color-muted);
-      font-size: 0.92rem;
-      line-height: 1.55;
-    }
+    .sources-page { max-width:none; }.sources-section { margin-top:1.5rem; }
+    .sources-heading { font:450 1.1rem/1.5 var(--font-display);color:var(--color-paper); }
+    .institution-grid { grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem; }
+    .institution-card { --accent:var(--color-signal);display:flex;flex-direction:column;border:1px solid var(--color-line);min-height:0;gap:.65rem;padding:1.2rem;border-radius:12px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 3%,transparent),transparent 60%),var(--color-surface);font-family:var(--font-read); }
+    .institution-card header { display:flex;justify-content:space-between;align-items:center;gap:.75rem; }
+    .institution-k { display:grid;align-items:center;min-height:2rem;letter-spacing:.02em;font-weight:400; }
+    .institution-count { color:var(--color-muted);font-size:.65rem; }
+    .institution-card h3 { margin:0;font:450 1.02rem/1.4 var(--font-read); }.institution-card p { color:var(--color-muted);font:400 .85rem/1.7 var(--font-read);margin:0; }.institution-card h3 a { color:var(--color-paper); }.institution-category { font-size:.68rem!important;color:var(--accent)!important; }
+    .institution-data { display:grid;gap:.65rem;padding-block:.75rem;border-block:1px solid var(--color-line); }
+    .institution-data dt { color:var(--color-muted);font-size:.65rem; }.institution-data dd { color:var(--color-paper);font-size:.77rem;line-height:1.6;margin-top:.2rem; }
+    .institution-card details { color:var(--color-muted);font-size:.76rem;line-height:1.65; }.institution-card summary { min-height:44px;cursor:pointer;padding:.6rem 0; }.institution-card li { margin:.45rem 0; }
+    .institution-open { display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-top:auto;min-height:44px;color:var(--color-signal);font-size:.75rem; }
+    .institution-card :is(a,summary):focus-visible { outline:2px solid var(--color-signal);outline-offset:4px; }
+    @media(max-width:1050px) { .institution-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:600px) { .institution-grid { grid-template-columns:1fr; } }
   </style>
 </BaseLayout>

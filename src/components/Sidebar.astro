@@ -1,6 +1,5 @@
 ---
 import L0gGlyph, { type GlyphName } from './L0gGlyph.astro';
-import SearchForm from './SearchForm.astro';
 
 interface Props {
   path?: string;
@@ -86,146 +85,38 @@ const contextKey =
         : 'read';
 
 const context = contexts[contextKey];
+const pageSections: Record<string, SidebarLink[]> = {
+  '/glossaire/': [{href:'#definitions',label:'Les définitions',detail:'Chercher un mot'}, {href:'#reference-list-title',label:'Fiches de référence',detail:'Mécanismes documentés'}, {href:'#atlas-title',label:'Concepts reliés',detail:'Explorer les relations'}],
+  '/sujets/': [{href:'#dossiers',label:'Tous les dossiers',detail:'Choisir un sujet'}],
+  '/methodologie/': [{href:'#chaine-du-signal',label:'Du document au signal',detail:'Comprendre les étapes'}, {href:'#fiches-instrument',label:'Les instruments',detail:'Formules et limites'}, {href:'#historique-backtests',label:'Historique et backtests',detail:'Lire les observations'}],
+  '/about/': [{href:'#bluetouff',label:'L’auteur',detail:'Olivier Laurelli / bluetouff'}, {href:'#identite-editoriale',label:'Identité éditoriale',detail:'Publication et indépendance'}, {href:'#philosophie',label:'Principes',detail:'La ligne du journal'}],
+};
+const inPage = pageSections[path] ?? [];
+const associated = context.links.filter(link => link.href !== path).slice(0, 2);
 ---
 
 <div class="context-sidebar">
-  <section>
-    <h2>// recherche</h2>
-    <SearchForm compact />
-  </section>
-
-  <section
-    class="context-card instrument-plate"
-    style={`--context-accent:${context.accent};--plate-accent:${context.accent}`}
-  >
-    <div class="context-head">
-      <p>{context.eyebrow}</p>
-      <L0gGlyph name={context.glyph} />
-    </div>
-    <h2>{context.title}</h2>
-    <p class="context-copy">{context.description}</p>
-  </section>
-
+  {inPage.length > 0 && <nav class="context-links in-page" aria-label="Dans cette page">
+    <h2>Dans cette page</h2>
+    {inPage.map(link => <a href={link.href}><strong>{link.label}</strong><small>{link.detail}</small></a>)}
+  </nav>}
   <nav class="context-links" aria-label="Accès associés">
-    <h2>// poursuivre</h2>
-    {context.links.map((link, index) => (
-      <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>
-        <span>{String(index + 1).padStart(2, '0')}</span>
-        <strong>{link.label}</strong>
-        <small>{link.detail}</small>
-        <b aria-hidden="true">↗</b>
-      </a>
-    ))}
+    <div class="context-head"><L0gGlyph name={context.glyph} size="sm" /><h2>Pour poursuivre</h2></div>
+    {associated.map(link => <a href={link.href}><strong>{link.label}</strong><small>{link.detail}</small><span aria-hidden="true">↗</span></a>)}
   </nav>
-
-  <p class="context-note">
-    Sources citées · limites visibles<br />
-    aucun cookie · aucun tracker
-  </p>
+  <p class="context-note">Sources citées · limites visibles<br />aucun cookie · aucun tracker</p>
 </div>
-
 <style>
-  .context-sidebar { display: grid; gap: 1.45rem; }
-  .context-sidebar > section > h2,
-  .context-links > h2 {
-    margin-bottom: 0.7rem;
-    color: var(--color-signal);
-    font-family: var(--font-mono);
-    font-size: 0.67rem;
-    font-weight: 650;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  .context-card {
-    --context-accent: var(--color-signal);
-    padding: 1rem;
-    background:
-      radial-gradient(100% 120% at 0 0, color-mix(in srgb, var(--context-accent) 9%, transparent), transparent 70%),
-      var(--surface-elevated);
-  }
-  .context-head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 0.75rem;
-  }
-  .context-head :global(.l0g-glyph) { --glyph-color: var(--context-accent); }
-  .context-head p {
-    color: var(--context-accent);
-    font-family: var(--font-mono);
-    font-size: 0.61rem;
-    font-weight: 650;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-  }
-  .context-card > h2 {
-    max-width: 14ch;
-    margin-top: 0.85rem;
-    color: var(--color-bright);
-    font-family: var(--font-display);
-    font-size: 1.22rem;
-    line-height: 1.2;
-  }
-  .context-copy {
-    margin-top: 0.6rem;
-    color: var(--color-muted);
-    font-family: var(--font-read);
-    font-size: 0.79rem;
-    line-height: 1.58;
-  }
-  .context-links { display: grid; gap: 0.35rem; }
-  .context-links > h2 { margin-bottom: 0.25rem; }
-  .context-links a {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1.65rem minmax(0, 1fr) auto;
-    grid-template-rows: auto auto;
-    gap: 0.08rem 0.55rem;
-    border-bottom: 1px solid var(--color-line);
-    padding: 0.65rem 0.1rem;
-  }
-  .context-links a > span {
-    grid-row: 1 / 3;
-    padding-top: 0.12rem;
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.06em;
-  }
-  .context-links strong {
-    color: var(--color-paper);
-    font-size: 0.83rem;
-    line-height: 1.3;
-  }
-  .context-links small {
-    color: var(--color-muted);
-    font-size: 0.67rem;
-    line-height: 1.4;
-  }
-  .context-links b {
-    grid-column: 3;
-    grid-row: 1 / 3;
-    align-self: center;
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 400;
-    transition: color 0.16s, transform 0.16s;
-  }
-  .context-links a:hover strong,
-  .context-links a[aria-current='page'] strong { color: var(--color-signal); }
-  .context-links a:hover b { color: var(--color-signal); transform: translate(2px, -2px); }
-  .context-note {
-    border-left: 1px solid var(--color-line);
-    padding-left: 0.7rem;
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.59rem;
-    line-height: 1.65;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .context-links a:hover b { transform: none; }
-  }
+  .context-sidebar { display:grid; gap:1.65rem; padding-left:1rem; border-left:1px solid var(--color-line); }
+  .context-head { display:flex; align-items:center; gap:.55rem; margin-bottom:.5rem; }
+  .context-head :global(.l0g-glyph) { --glyph-size:1.6rem; }
+  .context-links h2 { color:var(--color-muted); font:400 .65rem/1.5 var(--font-mono); letter-spacing:.06em; text-transform:uppercase; }
+  .in-page h2 { margin-bottom:.5rem; color:var(--color-signal); }
+  .context-links a { position:relative; display:grid; gap:.2rem; padding:.7rem 1rem .7rem 0; min-height:44px; border-bottom:1px solid var(--color-line); }
+  .context-links strong { color:var(--color-paper); font:450 .83rem/1.5 var(--font-read); }
+  .context-links small { color:var(--color-muted); font:400 .73rem/1.6 var(--font-read); }
+  .context-links a > span { position:absolute; right:0; top:.75rem; color:var(--color-signal); font-size:.75rem; }
+  .context-links a:hover strong { color:var(--color-signal); }
+  .context-links a:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+  .context-note { color:var(--color-muted); font:400 .65rem/1.7 var(--font-read); }
 </style>

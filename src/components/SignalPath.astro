@@ -1,0 +1,33 @@
+---
+import L0gGlyph from './L0gGlyph.astro';
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+const en=lang==='en';
+const stages = [
+  {glyph:'source' as const,title:en?'Original source':'Document d’origine',description:en?'A dataset, filing or dated release.':'Une série, un dépôt ou une publication datée.',href:en?'/en/sources/':'/sources/',detail:en?'Read the sources':'Consulter les sources'},
+  {glyph:'observe' as const,title:en?'Instrument calculation':'Calcul par instrument',description:en?'Inputs, units and transformations follow the documented method.':'Entrées, unités et transformations suivent la méthode documentée.',href:en?'#principles':'#fiches-instrument',detail:en?'Examine the method':'Examiner la méthode'},
+  {glyph:'verify' as const,title:en?'Published observation':'Observation publiée',description:en?'A value travels with its source date, coverage and limitations.':'La valeur reste accompagnée de sa date source, de sa couverture et de ses limites.',href:en?'/en/black-box/':'#historique-backtests',detail:en?'Inspect the archive':'Examiner l’historique'},
+];
+---
+<figure class="signal-path" id="chaine-du-signal" aria-labelledby="signal-path-title">
+  <figcaption><span>{en?'The evidence path':'La chaîne de lecture'}</span><h2 id="signal-path-title">{en?'From document to signal':'Du document au signal'}</h2></figcaption>
+  <ol>{stages.map((stage,index)=><li><div class="path-node"><span class="path-number">{String(index+1).padStart(2,'0')}</span><L0gGlyph name={stage.glyph} size="sm" /></div><h3>{stage.title}</h3><p>{stage.description}</p><a href={stage.href}>{stage.detail}<span aria-hidden="true">↗</span></a></li>)}</ol>
+  <div class="path-quality"><span class="quality-mark" aria-hidden="true"></span><p>{en?'Reading controls: provenance, freshness and coverage. Each score keeps its own meaning and scale.':'Contrôles de lecture : provenance, fraîcheur et couverture. Chaque score conserve son sens et son échelle propres.'}</p><a href={en?'#reading-limits':'#bandeau-signaux-risque'}>{en?'Read the limits':'Lire les limites'} <span aria-hidden="true">↗</span></a></div>
+</figure>
+<style>
+  .signal-path { margin:2rem 0;font-family:var(--font-read);scroll-margin-top:2rem; }
+  figcaption > span { color:var(--color-signal);font:400 .65rem/1.6 var(--font-mono);letter-spacing:.08em;text-transform:uppercase; }
+  h2 { margin-top:.4rem;color:var(--color-paper);font:450 1.2rem/1.5 var(--font-display); }
+  ol { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;list-style:none;padding:0;margin:1.4rem 0 0; }
+  li { position:relative;min-width:0;border-top:1px solid var(--color-line-strong);padding-top:.9rem; }
+  li:not(:last-child)::after { content:'→';position:absolute;top:-.75rem;right:-1.3rem;background:var(--color-ink);color:var(--color-signal);padding-inline:.25rem;font-size:.9rem; }
+  .path-node { display:flex;align-items:center;justify-content:space-between;gap:1rem; }.path-number { color:var(--color-signal);font:400 .7rem var(--font-mono); }
+  h3 { margin:.7rem 0 .4rem;color:var(--color-paper);font:450 .9rem/1.5 var(--font-read); }
+  li p { color:var(--color-muted);font:400 .8rem/1.7 var(--font-read); }
+  li a { display:flex;justify-content:space-between;gap:.5rem;min-height:44px;margin-top:.55rem;color:var(--color-signal);font:400 .73rem/1.6 var(--font-read);align-items:center; }
+  .path-quality { display:flex;align-items:center;flex-wrap:wrap;gap:.6rem 1rem;margin-top:1.2rem;padding:.9rem 1rem;border:1px solid var(--color-line);border-radius:10px;background:linear-gradient(110deg,color-mix(in srgb,var(--color-signal) 3%,transparent),color-mix(in srgb,var(--color-accent) 3%,transparent)); }
+  .quality-mark { width:.4rem;height:.4rem;flex:none;border:1px solid var(--color-accent);transform:rotate(45deg); }
+  .path-quality p { flex:1 1 18rem;color:var(--color-muted);font:400 .75rem/1.65 var(--font-read); }.path-quality a { color:var(--color-signal);font-size:.73rem;min-height:44px;display:inline-flex;align-items:center;gap:.5rem; }
+  a:focus-visible { outline:2px solid var(--color-signal);outline-offset:4px; }
+  @media(max-width:600px) { ol { grid-template-columns:1fr;gap:.8rem; }li { padding-left:1.1rem;border-top:0;border-left:1px solid var(--color-line-strong);padding-top:0; }li:not(:last-child)::after { content:'↓';left:-.4rem;right:auto;top:auto;bottom:-.65rem;padding:0; }.path-node { justify-content:start; }.path-node :global(.l0g-glyph) { display:none; } }
+</style>

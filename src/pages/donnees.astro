@@ -3,7 +3,10 @@ import { getCollection } from 'astro:content';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import FreshnessBadge from '../components/FreshnessBadge.astro';
+import PageHero from '../components/PageHero.astro';
+import CollectionFilter from '../components/CollectionFilter.astro';
+import { datasetTitles, riskRecordPreview } from '../config/data-library.ts';
+import { buildDate } from '../lib/build-clock.mjs';
 import TrustBar from '../components/TrustBar.astro';
 import { glossaryEntries } from '../config/glossary.ts';
 import { methodologyPages } from '../config/methodology.ts';
@@ -62,7 +65,7 @@ const datasets = [
     label: 'black-box.json',
     href: '/api/v1/black-box.json',
     format: 'JSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'frames point-in-time',
     role: 'Boîte noire publique : frames datées, hashes, sources, modèles, fraîcheur, articles, méthodes et signaux déclenchés.',
   },
@@ -70,7 +73,7 @@ const datasets = [
     label: 'risk-diff.json',
     href: '/api/v1/risk-diff.json',
     format: 'JSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: '1 / 7 / 30 jours',
     role: 'Diff du risque : signaux qui montent ou baissent, sources fraîches ou stale, claims, modèles, articles et confiance.',
   },
@@ -79,7 +82,7 @@ const datasets = [
     href: '/api/v1/risk.json',
     format: 'JSON',
     updated: risk.updated ? new Date(risk.updated) : null,
-    count: `${risk.indices?.length ?? 0} indices`,
+    count: risk.updated && Array.isArray(risk.indices) ? `${risk.indices.length} indices` : 'Indisponible',
     role: 'État courant des signaux US Macro, EU Macro, Yen Carry et Énergie, normalisés par instrument.',
   },
   {
@@ -87,7 +90,7 @@ const datasets = [
     href: '/api/v1/debt-risk.json',
     format: 'JSON',
     updated: debtRisk.generated ? new Date(debtRisk.generated) : null,
-    count: '1 signal',
+    count: debtRisk.generated ? '1 signal' : 'Indisponible',
     role: 'Snapshot canonique Dette US calculé par Debt Risk Radar, avec score courant hors CBO, couverture, provenance, buckets, sources et top signaux.',
   },
   {
@@ -95,7 +98,7 @@ const datasets = [
     href: '/confluence.json',
     format: 'JSON',
     updated: confluence.updated ? new Date(confluence.updated) : null,
-    count: `${confluence.items?.length ?? 0} lignes`,
+    count: confluence.updated && Array.isArray(confluence.items) ? `${confluence.items.length} lignes` : 'Indisponible',
     role: 'Synthèse publique de confluence 13FLOW exposée sur le site.',
   },
   {
@@ -103,14 +106,14 @@ const datasets = [
     href: '/risk-events.json',
     format: 'JSON',
     updated: events.updated ? new Date(events.updated) : null,
-    count: `${events.events?.length ?? 0} événements`,
+    count: events.updated && Array.isArray(events.events) ? `${events.events.length} événements` : 'Indisponible',
     role: 'Journal des derniers changements de niveau des indices de risque.',
   },
   {
     label: 'history.ndjson',
     href: '/api/v1/history.ndjson',
     format: 'NDJSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'chaque assemblage',
     role: 'Journal opérationnel brut append-only serveur, sans attestation CI individuelle.',
   },
@@ -118,7 +121,7 @@ const datasets = [
     label: 'signals/history.json',
     href: '/api/v1/signals/history.json',
     format: 'JSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'observations + alertes',
     role: 'Historique canonique fusionné avec niveau de preuve par observation.',
   },
@@ -126,7 +129,7 @@ const datasets = [
     label: 'signals/history.ndjson',
     href: '/api/v1/signals/history.ndjson',
     format: 'NDJSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'ligne à ligne',
     role: 'Flux historique des signaux : meta, observations backtestables et franchissements de seuil.',
   },
@@ -134,7 +137,7 @@ const datasets = [
     label: 'signals/history.csv',
     href: '/api/v1/signals/history.csv',
     format: 'CSV',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'table plate',
     role: 'Observations de signaux prêtes pour pandas, R, DuckDB ou tableur.',
   },
@@ -142,7 +145,7 @@ const datasets = [
     label: 'catalog.json',
     href: '/api/v1/catalog.json',
     format: 'JSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: `${posts.length + postsEn.length + guides.length + guidesEn.length + glossaryEntries.length} objets`,
     role: 'Catalogue machine bilingue : analyses, guides, sujets, méthodologies et glossaire.',
   },
@@ -150,7 +153,7 @@ const datasets = [
     label: 'search-index.json',
     href: '/api/v1/search-index.json',
     format: 'JSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: `${posts.length + postsEn.length + guides.length + guidesEn.length + glossaryEntries.length + methodologyPages.length} documents + sources`,
     role: 'Index bilingue canonique partagé par Agent Surface, MCP et WebMCP.',
   },
@@ -158,7 +161,7 @@ const datasets = [
     label: 'claims.json',
     href: '/api/v1/claims.json',
     format: 'JSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: `${posts.length} articles`,
     role: 'Graphe affirmation-source : faits, estimations, inférences et scénarios avec références datées quand détectable.',
   },
@@ -166,7 +169,7 @@ const datasets = [
     label: 'evidence-graph.json',
     href: '/api/v1/evidence-graph.json',
     format: 'JSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'nodes + edges',
     role: 'Graphe articles, claims, références, hôtes, sources primaires et datasets.',
   },
@@ -174,7 +177,7 @@ const datasets = [
     label: 'catalog.ndjson',
     href: '/api/v1/catalog.ndjson',
     format: 'NDJSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'ligne à ligne',
     role: 'Catalogue complet en flux ligne à ligne pour ingestion RAG et pipelines agents.',
   },
@@ -182,7 +185,7 @@ const datasets = [
     label: 'claims.ndjson',
     href: '/api/v1/claims.ndjson',
     format: 'NDJSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'ligne à ligne',
     role: 'Claims typées en flux ligne à ligne, avec références embarquées.',
   },
@@ -190,7 +193,7 @@ const datasets = [
     label: 'evidence-graph.ndjson',
     href: '/api/v1/evidence-graph.ndjson',
     format: 'NDJSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'nodes + edges',
     role: 'Evidence graph en flux ligne à ligne : nœuds puis arêtes.',
   },
@@ -198,7 +201,7 @@ const datasets = [
     label: 'sources.json',
     href: '/api/v1/sources.json',
     format: 'JSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'sources + hôtes',
     role: 'Registre des sources primaires et des hôtes effectivement cités par les claims.',
   },
@@ -206,7 +209,7 @@ const datasets = [
     label: 'freshness.json',
     href: '/api/v1/freshness.json',
     format: 'JSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'fraîcheur',
     role: 'Derniers contenus, compteurs de corpus, endpoints disponibles et politique de fraîcheur.',
   },
@@ -214,7 +217,7 @@ const datasets = [
     label: 'integrity.json',
     href: '/api/v1/integrity.json',
     format: 'JSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'hashes',
     role: 'Empreintes SHA-256 canoniques des surfaces Agent Surface pour vérifier les snapshots.',
   },
@@ -222,7 +225,7 @@ const datasets = [
     label: 'changes.json',
     href: '/api/v1/changes.json',
     format: 'JSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'changefeed',
     role: 'Flux machine des publications, révisions et politiques, avec version courante, hash et statut de diff.',
   },
@@ -230,11 +233,15 @@ const datasets = [
     label: 'changes.ndjson',
     href: '/api/v1/changes.ndjson',
     format: 'NDJSON',
-    updated: new Date(),
+    updated: buildDate(),
     count: 'ligne à ligne',
     role: 'Changefeed machine en flux ligne à ligne, avec métadonnées de version pour watchers.',
   },
 ];
+
+for (const dataset of datasets) if (!datasetTitles[dataset.label]) throw new Error(`Missing dataset name: ${dataset.label}`);
+const producerDated = new Set(['risk.json','debt-risk.json','confluence.json','risk-events.json']);
+const preview = riskRecordPreview(risk.indices);
 
 const files = [
   fileMeta('public/risk.json'),
@@ -287,37 +294,35 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   <script type="application/ld+json" is:inline set:html={safeJsonLd} />
 
   <article class="data-page rise" data-pagefind-body>
-    <section class="data-hero">
-      <p class="mono-label glow">// données</p>
-      <h1 class="data-title font-display glow">Ce que l0g publie, et ce que ça vaut.</h1>
-      <p class="data-lede">
-        Cette page inventorie les jeux de données exposés par l0g.fr : fichiers statiques,
-        endpoints générés, corpus pour agents, licence et limites de fraîcheur. L’objectif :
-        rendre les données citables, réutilisables et contestables.
-      </p>
+    <PageHero index="08" kicker="données ouvertes" title="Des données publiques," highlight="à explorer et à citer."
+      description="Signaux, historique, publications et références. Chaque fichier conserve son format, sa provenance et ses limites d’utilisation."
+      glyph="source" stats={[{value:datasets.length,label:'fichiers documentés'},{value:'JSON · CSV · NDJSON',label:'formats ouverts'}]}>
       <TrustBar items={trustItems} />
-    </section>
+    </PageHero>
 
-    <section class="data-section">
+    <section class="data-section" id="jeux-de-donnees" data-filter-collection>
+      <CollectionFilter label="Trouver un jeu de données" placeholder="Historique, dette, sources, CSV…" />
+      <h2 class="data-section-title">Les jeux de données</h2>
+
       <p class="mono-label glow">// inventaire</p>
       <div class="dataset-grid">
         {datasets.map((dataset) => (
-          <a class="dataset-card" href={dataset.href}>
-            <span class="dataset-top">
-              <strong>{dataset.label}</strong>
-              <span>{dataset.format}</span>
-            </span>
-            <span class="dataset-role">{dataset.role}</span>
-            <span class="dataset-meta">
-              <em>{dataset.count}</em>
-              {dataset.updated && <FreshnessBadge date={dataset.updated} compact />}
-            </span>
-          </a>
+          <article class="dataset-card" data-filter-card data-filter-text={[datasetTitles[dataset.label],dataset.label,dataset.format,dataset.role].join(' ')}>
+            <span class="dataset-top"><span class="dataset-format">{dataset.format}</span><span>{dataset.count}</span></span>
+            <h3><a href={dataset.href}>{datasetTitles[dataset.label]}</a></h3>
+            <p class="dataset-role">{dataset.role}</p>
+            <details class="dataset-detail"><summary>Contenu et datation</summary>
+              <dl><div><dt>Fichier</dt><dd><code>{dataset.label}</code></dd></div><div><dt>{producerDated.has(dataset.label)?'Date déclarée par le producteur':'Assemblage du catalogue'}</dt><dd>{dataset.updated?<time datetime={dataset.updated.toISOString()}>{fr(dataset.updated)}</time>:'Horodatage indisponible'}</dd></div></dl>
+              {!producerDated.has(dataset.label)&&<p>La date d’assemblage décrit ce catalogue. Les dates d’observation et de publication restent celles des enregistrements.</p>}
+              {dataset.label==='risk.json'&&(preview?<><p>Extrait du fichier publié dans cet assemblage. Les valeurs conservent leur échelle et leur date source.</p><pre><code>{preview}</code></pre></>:<p>Aucun extrait disponible dans cet assemblage.</p>)}
+            </details>
+            <a class="dataset-open" href={dataset.href}>Ouvrir le fichier <span aria-hidden="true">↗</span></a>
+          </article>
         ))}
       </div>
     </section>
 
-    <section class="data-section split">
+    <section class="data-section split" id="fichiers-et-corpus">
       <div>
         <p class="mono-label glow">// fichiers publiés</p>
         <div class="file-list">
@@ -344,7 +349,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     </section>
 
     <section class="data-section">
-      <p class="mono-label glow">// accès machine</p>
+      <h2 class="data-section-title" id="acces-machine">API et accès machine</h2>
       <div class="access-grid">
         <a href="/ressources-journalistes/" class="access-link"><span>PRESS</span><strong>graphiques et données à citer</strong></a>
         <a href="/series/" class="access-link"><span>DATASET</span><strong>séries nommées et versionnées</strong></a>
@@ -386,7 +391,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
     <section class="data-section split">
       <div class="note-block">
-        <p class="mono-label glow">// licence</p>
+        <h2 class="data-section-title" id="licence">Licence et réutilisation</h2>
         <p>
           Les contenus et données publiques de l0g sont réutilisables sous CC BY 4.0 avec
           attribution à <strong>l0g.fr</strong>. Les sources externes conservent leurs propres
@@ -583,5 +588,22 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         grid-column: 2;
       }
     }
+    .data-page { max-width:none; font-family:var(--font-read); }.data-section { margin-top:2rem; }
+    .data-section-title { margin-bottom:1rem;color:var(--color-paper);font:450 1.08rem/1.5 var(--font-display); }
+    .dataset-grid { grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem; }
+    .dataset-card { display:flex;flex-direction:column;gap:.7rem;min-width:0;padding:1.15rem;border-radius:12px;background:linear-gradient(135deg,color-mix(in srgb,var(--color-signal) 3%,transparent),transparent),var(--color-surface); }
+    .dataset-top { align-items:center;font:400 .65rem/1.5 var(--font-read);color:var(--color-muted);gap:.6rem; }
+    .dataset-format { color:var(--color-signal);font-family:var(--font-mono);letter-spacing:.04em; }
+    .dataset-card h3 { color:var(--color-paper);font:450 1rem/1.5 var(--font-read); }
+    .dataset-role { margin:0;font:400 .84rem/1.75 var(--font-read); }
+    .dataset-detail { color:var(--color-muted);font:400 .75rem/1.7 var(--font-read);border-top:1px solid var(--color-line); }
+    .dataset-detail summary { min-height:44px;padding:.6rem 0;cursor:pointer; }
+    .dataset-detail dl { display:grid;gap:.6rem; }.dataset-detail dt { font-size:.66rem; }.dataset-detail dd { color:var(--color-paper);overflow-wrap:anywhere; }
+    .dataset-detail p { margin-top:.7rem; }.dataset-detail pre { overflow:auto;max-height:20rem;padding:.7rem;margin-top:.7rem;border:1px solid var(--color-line);border-radius:8px;font-size:.65rem; }
+    .dataset-open { display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:44px;margin-top:auto;color:var(--color-signal);font:400 .76rem var(--font-read); }
+    .dataset-card :is(a,summary):focus-visible { outline:2px solid var(--color-signal);outline-offset:4px; }
+    .access-link strong { font-weight:450;font-family:var(--font-read); }.corpus-box strong { font-weight:450; }
+    @media(max-width:1050px) { .dataset-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:640px) { .dataset-grid { grid-template-columns:1fr; }.file-row { overflow-wrap:anywhere; }.access-grid { grid-template-columns:1fr; } }
   </style>
 </BaseLayout>

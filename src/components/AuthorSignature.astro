@@ -1,0 +1,19 @@
+---
+interface Props { lang?: 'fr' | 'en'; }
+const {lang='fr'}=Astro.props;
+---
+<a class="author-signature" href={lang==='en'?'#newsroom':'#bluetouff'}>
+  <span class="author-monogram" aria-hidden="true">ol<span>_</span></span>
+  <span><small>{lang==='en'?'Published by':'Édité par'}</small><strong>Olivier Laurelli <em>/ bluetouff</em></strong><span class="author-role">{lang==='en'?'Journalist, author and independent analyst':'Journaliste, auteur et analyste indépendant'}</span></span>
+  <span class="author-arrow" aria-hidden="true">↗</span>
+</a>
+<style>
+  .author-signature { display:flex;align-items:center;gap:1rem;margin:1.4rem 0 1.6rem;padding:1rem 0;border-block:1px solid var(--color-line); }
+  .author-monogram { flex:none;display:flex;align-items:center;justify-content:center;width:3.5rem;height:3.5rem;border:1px solid var(--color-line-strong);border-radius:12px;background:linear-gradient(135deg,color-mix(in srgb,var(--color-signal) 6%,transparent),color-mix(in srgb,var(--color-accent) 4%,transparent));color:var(--color-paper);font:400 1.05rem var(--font-display);text-align:center; }
+  .author-monogram span { color:var(--color-accent);display:inline; }
+  small { display:block;color:var(--color-muted);font:400 .65rem/1.6 var(--font-read); }
+  strong { display:block;margin:.2rem 0;color:var(--color-paper);font:450 .95rem/1.6 var(--font-read); }em { color:var(--color-signal);font-style:normal;font-weight:400; }
+  .author-role { display:block;color:var(--color-muted);font:400 .75rem/1.6 var(--font-read); }.author-arrow { margin-left:auto;color:var(--color-accent);font-size:.85rem; }
+  .author-signature:focus-visible { outline:2px solid var(--color-signal);outline-offset:4px; }
+  @media(max-width:480px) { .author-signature { gap:.75rem; }strong em { display:block; }.author-monogram { width:3rem;height:3rem; } }
+</style>

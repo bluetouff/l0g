@@ -1,4 +1,6 @@
 ---
+import PageHero from '../../../components/PageHero.astro';
+import CollectionFilter from '../../../components/CollectionFilter.astro';
 import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import { glossaryAtlasEn } from '../../../config/glossary-atlas-en.ts';
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -65,33 +67,28 @@ const terms = [
     { hreflang: 'x-default', href: `${SITE}/glossaire/` },
   ]}
 >
-  <article class="gloss-page rise" data-pagefind-body>
-    <p class="mono-label glow" style="color: var(--color-signal)">// core glossary</p>
-    <h1 class="gloss-title font-display glow">The minimum vocabulary for reading l0g.</h1>
-    <p class="gloss-lede">
-      The French atlas is being translated fiche by fiche. Below, first, the full English fiches already available, then a compact glossary for the
-      concepts used most often in the English guides, API/MCP documentation and risk surfaces.
-    </p>
-
-    <h2 class="gloss-section mono-label">// atlas fiches in English</h2>
+  <article class="gloss-page rise" data-pagefind-body data-filter-collection>
+    <PageHero index="04" kicker="glossary" title="Economic terms," highlight="clear definitions." description="Find a definition, open a documented reference or return to the related investigation." glyph="understand" stats={[{value:terms.length,label:'core definitions'},{value:glossaryAtlasEn.length,label:'documented references'}]} />
+    <CollectionFilter lang="en" label="Find a definition" placeholder="Inflation, repo, Treasury…" />
+    <section data-filter-group><h2 class="gloss-section mono-label">// atlas fiches in English</h2>
     <div class="term-grid">
       {glossaryAtlasEn.map((entry) => (
-        <article class="term-card" id={entry.slug}>
+        <article class="term-card" data-filter-card id={entry.slug}>
           <a href={`/en/glossary/${entry.slug}/`}>{entry.sigle}</a>
           <p>{entry.def}</p>
         </article>
       ))}
-    </div>
+    </div></section>
 
-    <h2 class="gloss-section mono-label">// core vocabulary</h2>
+    <section data-filter-group><h2 class="gloss-section mono-label">// core vocabulary</h2>
     <div class="term-grid">
       {terms.map(([sigle, def, href]) => (
-        <article class="term-card" id={String(sigle).toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+        <article class="term-card" data-filter-card id={String(sigle).toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
           <a href={href}>{sigle}</a>
           <p>{def}</p>
         </article>
       ))}
-    </div>
+    </div></section>
   </article>
 </EnglishLayout>
 
@@ -101,7 +98,8 @@ const terms = [
   .gloss-section { margin-top: 2.4rem; color: var(--color-signal); }
   .term-grid { display: grid; gap: .8rem; margin-top: 1rem; }
   .term-card { border: 1px solid var(--color-line); border-radius: 10px; padding: .9rem; background: color-mix(in srgb, var(--color-surface) 64%, transparent); }
-  .term-card a { color: var(--color-signal); font-family: var(--font-mono); font-weight: 700; text-decoration: none; }
+  .term-card a { color: var(--color-signal); font-family: var(--font-mono); font-weight: 450; text-decoration: none; }
   .term-card p { margin-top: .4rem; color: var(--color-muted); line-height: 1.55; }
   @media (min-width: 760px) { .term-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .term-card p { font:400 .9rem/1.75 var(--font-read); }.term-card a { font-weight:450; }.term-card { border-radius:10px; }
 </style>

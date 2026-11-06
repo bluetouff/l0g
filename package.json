@@ -109,7 +109,7 @@
     "test:derived-assets": "node --test scripts/derived-assets.test.mjs scripts/epub-derived.test.mjs",
     "test:reader-experience": "node --experimental-strip-types --test scripts/article-tools.test.mjs scripts/article-glossary.test.mjs scripts/article-evidence-presentation.test.mjs scripts/reading-library.test.mjs scripts/reading-resume.test.mjs scripts/reading-discovery.test.mjs scripts/reader-workspace.test.mjs && node scripts/audit-reader-budget.mjs && node scripts/audit-reader-workspace-budget.mjs",
     "test:search": "node --experimental-strip-types --test scripts/search-experience.test.mjs",
-    "test:tools-catalogue": "node --experimental-strip-types --test scripts/analysis-tools-catalogue.test.mjs",
+    "test:tools-catalogue": "node --experimental-strip-types --test scripts/analysis-tools-catalogue.test.mjs scripts/collection-discovery.test.mjs",
     "test:cumcum-reform-lab": "node --test scripts/cumcum06-reform-lab.test.mjs",
     "test:tempo-bill-calculator": "node --test scripts/tempo-bill-calculator.test.mjs",
     "test:stablecoin-revenue-calculator": "node --test scripts/stablecoin-revenue-calculator.test.mjs",

@@ -1,4 +1,6 @@
 ---
+import PageHero from '../../../components/PageHero.astro';
+import CollectionFilter from '../../../components/CollectionFilter.astro';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const groups = [
@@ -15,24 +17,19 @@ const groups = [
   alternateLinks={[{ hreflang: 'en', href: `${site}/en/sources/` }, { hreflang: 'fr', href: `${site}/sources/` }, { hreflang: 'x-default', href: `${site}/sources/` }]}
 >
   <article class="source-page rise" data-pagefind-body>
-    <p class="mono-label glow" style="color: var(--color-signal)">// sources</p>
-    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-tight tracking-wider glow">
-      Primary sources <span style="color: var(--color-accent)">first</span>
-    </h1>
-    <p class="lede">
-      l0g gives priority to official datasets, filings, central banks, regulators and primary documents. Aggregators and press coverage are useful,
-      but they are not a substitute for the underlying source when a claim depends on a number, a rule or a filing.
-    </p>
-
+    <PageHero index="04" kicker="sources" title="Original documents," highlight="clear boundaries." glyph="source" description="Official datasets, filings, central banks and regulators: the starting points for sourced analysis." />
+    <section data-filter-collection>
+      <CollectionFilter label="Find a source" placeholder="SEC, inflation, energy…" lang="en" />
     <section class="source-grid">
       {groups.map(([title, items]) => (
-        <div>
+        <div data-filter-card>
           <h2>{title}</h2>
           <ul>
             {(items as string[]).map((item) => <li>{item}</li>)}
           </ul>
         </div>
       ))}
+    </section>
     </section>
 
     <section>
@@ -54,12 +51,12 @@ const groups = [
 </EnglishGuidesLayout>
 
 <style>
-  .source-page { max-width: 62rem; }
+  .source-page { max-width:62rem;font-family:var(--font-read); }.source-grid div{border-radius:12px;}.source-page h2{font-family:var(--font-display);font-size:1rem;}.source-page ul{padding-left:1rem;list-style:disc;}
   .lede { margin-top: 1.25rem; color: var(--color-paper); font-size: clamp(1.05rem, 2vw, 1.22rem); line-height: 1.75; border-left: 2px solid var(--color-signal); padding-left: 1rem; }
   .source-grid { display: grid; gap: 1rem; margin-top: 2.4rem; }
   @media (min-width: 820px) { .source-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .source-grid div { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 62%, transparent); }
-  .source-page h2 { color: var(--color-bright); font-size: 1.18rem; font-weight: 700; }
+  .source-page h2 { color: var(--color-bright); font-size: 1.18rem; font-weight: 450; }
   .source-page ul { margin-top: 0.8rem; display: grid; gap: 0.45rem; color: var(--color-muted); line-height: 1.55; }
   .source-page section { margin-top: 2.4rem; }
   .source-page p { margin-top: 0.8rem; color: var(--color-muted); line-height: 1.75; }

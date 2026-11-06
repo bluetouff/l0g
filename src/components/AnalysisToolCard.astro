@@ -1,16 +1,23 @@
 ---
+import { toolPreviews } from '../config/tool-previews.ts';
 import type { AnalysisTool } from '../config/analysis-tools.ts';
 interface Props { tool: AnalysisTool; lang?: 'fr' | 'en'; index?: number; featured?: boolean; }
 const { tool, lang = 'fr' } = Astro.props;
 const copy = tool[lang];
 const isFr = lang === 'fr';
+const preview = toolPreviews[tool.id]?.[lang];
 ---
 
-<article class="analysis-tool-card" data-tool={tool.id}>
+<article class="analysis-tool-card" data-tool={tool.id} data-filter-card>
   <p class="analysis-tool-kind">{copy.eyebrow}<span>{tool.placement === 'article' ? (isFr ? 'Dans l’analyse' : 'Inside the analysis') : (isFr ? 'Outil autonome' : 'Standalone tool')}</span></p>
   <h3>{copy.title}</h3>
   <p class="analysis-tool-question">{copy.question}</p>
   <p class="analysis-tool-description">{copy.description}</p>
+  {preview && <div class="tool-preview" aria-label={isFr ? 'Aperçu du parcours dans l’outil' : 'Preview of the tool workflow'}>
+    <div class="preview-inputs"><span class="preview-label">{isFr ? 'À explorer' : 'Explore'}</span><span>{preview[0]}</span><span>{preview[1]}</span></div>
+    <span class="preview-connector" aria-hidden="true">→</span>
+    <div class="preview-output"><span class="preview-label">{isFr ? 'À lire' : 'Read'}</span><span>{preview[2]}</span></div>
+  </div>}
   <footer>
     <a class="analysis-tool-open" href={copy.href}>{isFr ? 'Explorer l’outil' : 'Explore the tool'}<span aria-hidden="true">↗</span></a>
     <a class="analysis-tool-article" href={copy.articleHref}>{isFr ? 'L’enquête et ses sources' : 'The investigation and sources'}<span aria-hidden="true">→</span></a>
@@ -30,4 +37,11 @@ const isFr = lang === 'fr';
   .analysis-tool-article { color:var(--color-muted); text-decoration-color:var(--color-line-strong); }
   footer a:hover { color:var(--color-bright); text-decoration-color:currentColor; }
   footer a:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+  .tool-preview { display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,.9fr);gap:.7rem;align-items:center;border:1px solid var(--color-line);border-radius:10px;padding:.8rem;margin:0 0 1rem;background:linear-gradient(120deg,color-mix(in srgb,var(--color-signal) 3%,transparent),transparent 60%,color-mix(in srgb,var(--color-accent) 3%,transparent));font:400 .73rem/1.6 var(--font-read); }
+  .preview-inputs,.preview-output { display:grid;gap:.35rem; }
+  .preview-inputs>span:not(.preview-label) { border-bottom:1px solid var(--color-line);padding-bottom:.25rem;color:var(--color-paper); }
+  .preview-label { color:var(--color-muted);font:400 .6rem/1.5 var(--font-mono);text-transform:uppercase;letter-spacing:.05em; }
+  .preview-output>span:last-child { color:var(--color-signal); }
+  .preview-connector { color:var(--color-accent);font-size:1rem; }
+  @media(max-width:360px) { .tool-preview { gap:.5rem;padding:.65rem; } }
 </style>
