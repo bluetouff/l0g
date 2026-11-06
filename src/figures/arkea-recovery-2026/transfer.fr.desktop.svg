@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" role="img" aria-labelledby="arkea-transfer-fr-d-title arkea-transfer-fr-d-desc" style="width:100%;height:auto" class="l0g-arkea-svg">
+<title id="arkea-transfer-fr-d-title">Le virement change d’interlocuteur</title><desc id="arkea-transfer-fr-d-desc">Circuit générique : un arrêt peut intervenir avant exécution ; après crédit, le rappel demande un retour conditionnel. Le solde disponible, le droit et la coopération déterminent la suite. Le circuit utilisé chez Arkéa reste à établir.</desc>
+<rect x="0" y="0" width="1000" height="650" fill="var(--color-ink)"/>
+<rect x="18" y="10" width="964" height="125" fill="none" id="arkea-transfer-fr-d-header"/>
+<text x="24" y="42" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="arkea-transfer-fr-d-header">l0g / RÉCUPÉRATION</text>
+<text x="24" y="92" font-family="l0g Arkea Recovery" font-size="34" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-transfer-fr-d-header">Le virement change d’interlocuteur</text>
+<path d="M109 268 L135 252 L161 268 L109 268" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M114 271 L114 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M128 271 L128 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M142 271 L142 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M156 271 L156 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M108 302 L162 302" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M474 268 L500 252 L526 268 L474 268" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M479 271 L479 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M493 271 L493 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M507 271 L507 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M521 271 L521 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M473 302 L527 302" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M839 268 L865 252 L891 268 L839 268" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M844 271 L844 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M858 271 L858 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M872 271 L872 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M886 271 L886 298" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M838 302 L892 302" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M185 270 L455 270" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="payment" data-from="0" data-to="1"/>
+<path d="M448 266 L455 270 L448 274" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M545 270 L820 270" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="payment" data-from="1" data-to="2"/>
+<path d="M813 266 L820 270 L813 274" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="280" cy="270" r="8" fill="var(--color-ink)" stroke="var(--color-amber)" stroke-width="1.6"/>
+<path d="M280 225 L280 257" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="145" y="145" width="270" height="75" fill="none" id="arkea-transfer-fr-d-stop"/>
+<text x="280" y="174" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-amber)" data-panel="arkea-transfer-fr-d-stop">Arrêt possible</text>
+<text x="280" y="207" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="arkea-transfer-fr-d-stop">avant exécution</text>
+<rect x="310" y="215" width="170" height="40" fill="none" id="arkea-transfer-fr-d-execute"/>
+<text x="395" y="244" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="arkea-transfer-fr-d-execute">Exécution</text>
+<rect x="540" y="215" width="285" height="40" fill="none" id="arkea-transfer-fr-d-onward"/>
+<text x="682" y="244" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="arkea-transfer-fr-d-onward">Si les fonds repartent</text>
+<rect x="25.0" y="313" width="220" height="75" fill="none" id="arkea-transfer-fr-d-actor135"/>
+<text x="135" y="340" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="arkea-transfer-fr-d-actor135">Banque source</text>
+<text x="135" y="370" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="arkea-transfer-fr-d-actor135">Compte source</text>
+<rect x="340.0" y="313" width="320" height="75" fill="none" id="arkea-transfer-fr-d-actor500"/>
+<text x="500" y="340" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="arkea-transfer-fr-d-actor500">Banque destinataire</text>
+<text x="500" y="370" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="arkea-transfer-fr-d-actor500">Compte crédité</text>
+<rect x="745.0" y="313" width="240" height="75" fill="none" id="arkea-transfer-fr-d-actor865"/>
+<text x="865" y="340" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="arkea-transfer-fr-d-actor865">Acteur suivant</text>
+<text x="865" y="370" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="arkea-transfer-fr-d-actor865">Nouvelle intervention</text>
+<path d="M135 390 L135 430 L500 430 L500 390" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6" data-metric="recall" data-from="0" data-to="1"/>
+<path d="M496 397 L500 390 L504 397" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="190" y="383" width="255" height="40" fill="none" id="arkea-transfer-fr-d-recall"/>
+<text x="318" y="413" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-amber)" data-panel="arkea-transfer-fr-d-recall">Demande de rappel</text>
+<path d="M500 452 L500 510 L135 510 L135 452" fill="none" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6" data-metric="return" data-from="1" data-to="0"/>
+<path d="M131 459 L135 452 L139 459" fill="none" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="170" y="459" width="295" height="42" fill="none" id="arkea-transfer-fr-d-return"/>
+<text x="318" y="490" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-accent)" data-panel="arkea-transfer-fr-d-return">Retour sous conditions</text>
+<rect x="20" y="544" width="960" height="42" fill="none" id="arkea-transfer-fr-d-terms"/>
+<text x="32" y="574" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-transfer-fr-d-terms">Solde disponible, cadre juridique et coopération.</text>
+<path d="M24 602 L976 602" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="610" width="964" height="37" fill="none" id="arkea-transfer-fr-d-footer"/>
+<text x="24" y="637" font-family="l0g Arkea Recovery" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-transfer-fr-d-footer">Schéma général · Sources [04–05,15] · Circuit Arkéa non établi</text>
+</svg>

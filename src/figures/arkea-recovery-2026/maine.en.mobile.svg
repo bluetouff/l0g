@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="arkea-maine-en-m-title arkea-maine-en-m-desc" style="width:100%;height:auto" class="l0g-arkea-svg">
+<title id="arkea-maine-en-m-title">Maine: from seizure to announced return</title><desc id="arkea-maine-en-m-desc">A proportional timeline of an individual court case. Seizure of 470773 USDT on March 6, 2024; civil complaint January 17, 2025; forfeiture June 25, 2025; DOJ announcement of approximately470735 dollars to be returned March 13, 2026. The737days run from seizure to announcement; final-credit date is undocumented. Distinct units and amounts are preserved, with no explanation of their difference or inferred average recovery time.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-ink)"/>
+<rect x="18" y="10" width="384" height="130" fill="none" id="arkea-maine-en-m-header"/>
+<text x="24" y="34" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="arkea-maine-en-m-header">l0g / RECOVERY</text>
+<text x="24" y="75" font-family="l0g Arkea Recovery" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-en-m-header">Maine: seizure to</text>
+<text x="24" y="106" font-family="l0g Arkea Recovery" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-en-m-header">announced return</text>
+<rect x="20" y="139" width="380" height="107" fill="none" id="arkea-maine-en-m-amounts"/>
+<text x="24" y="168" font-family="l0g Arkea Recovery" font-size="23" font-weight="400" text-anchor="start" fill="var(--color-amber)" data-panel="arkea-maine-en-m-amounts" data-metric="seized-usdt" data-value="470773">470,773 USDT seized</text>
+<text x="24" y="201" font-family="l0g Arkea Recovery" font-size="23" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="arkea-maine-en-m-amounts" data-metric="announced-usd" data-value="470735">about 470,735 USD announced</text>
+<text x="24" y="236" font-family="l0g Arkea Recovery" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-en-m-amounts">737 days to the announcement</text>
+<path d="M54 302 L54 732" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-metric="calendar-axis" data-from="0" data-to="737" data-value="737"/>
+<circle cx="54" cy="302.0" r="7" fill="var(--color-ink)" stroke="var(--color-amber)" stroke-width="1.6" data-metric="event" data-value="0" data-date="2024-03-06"/>
+<path d="M67 302.0 L88 302.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="99" y="276.0" width="302" height="104" fill="none" id="arkea-maine-en-m-event0"/>
+<text x="108" y="309.0" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-en-m-event0">March 6, 2024</text>
+<text x="108" y="336.0" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-en-m-event0">Seizure</text>
+<circle cx="54" cy="486.9525101763908" r="7" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6" data-metric="event" data-value="317" data-date="2025-01-17"/>
+<path d="M67 486.9525101763908 L88 486.9525101763908" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="99" y="460.9525101763908" width="302" height="104" fill="none" id="arkea-maine-en-m-event1"/>
+<text x="108" y="493.9525101763908" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-en-m-event1">January 17, 2025</text>
+<text x="108" y="520.9525101763908" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-en-m-event1">Civil forfeiture</text>
+<text x="108" y="547.9525101763908" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-en-m-event1">complaint</text>
+<circle cx="54" cy="579.7204884667572" r="7" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6" data-metric="event" data-value="476" data-date="2025-06-25"/>
+<path d="M67 579.7204884667572 L88 579.7204884667572" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="99" y="553.7204884667572" width="302" height="104" fill="none" id="arkea-maine-en-m-event2"/>
+<text x="108" y="586.7204884667572" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-en-m-event2">June 25, 2025</text>
+<text x="108" y="613.7204884667572" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-en-m-event2">Forfeiture</text>
+<circle cx="54" cy="732.0" r="7" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6" data-metric="event" data-value="737" data-date="2026-03-13"/>
+<path d="M67 732.0 L88 732.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="99" y="706.0" width="302" height="104" fill="none" id="arkea-maine-en-m-event3"/>
+<text x="108" y="739.0" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-en-m-event3">March 13, 2026</text>
+<text x="108" y="766.0" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-en-m-event3">Return announced</text>
+<path d="M24 811 L396 811" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="819" width="384" height="96" fill="none" id="arkea-maine-en-m-scope"/>
+<text x="24" y="846" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-en-m-scope">Final credit: date not documented.</text>
+<text x="24" y="877" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-en-m-scope">Individual case · Sources [13–14]</text>
+<text x="24" y="907" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-en-m-scope">No average time inferred.</text>
+</svg>

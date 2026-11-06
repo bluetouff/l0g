@@ -1,0 +1,107 @@
+---
+import transfer_fr_desktop from '../figures/arkea-recovery-2026/transfer.fr.desktop.svg?raw';
+import transfer_fr_mobile from '../figures/arkea-recovery-2026/transfer.fr.mobile.svg?raw';
+import transfer_en_desktop from '../figures/arkea-recovery-2026/transfer.en.desktop.svg?raw';
+import transfer_en_mobile from '../figures/arkea-recovery-2026/transfer.en.mobile.svg?raw';
+import control_fr_desktop from '../figures/arkea-recovery-2026/control.fr.desktop.svg?raw';
+import control_fr_mobile from '../figures/arkea-recovery-2026/control.fr.mobile.svg?raw';
+import control_en_desktop from '../figures/arkea-recovery-2026/control.en.desktop.svg?raw';
+import control_en_mobile from '../figures/arkea-recovery-2026/control.en.mobile.svg?raw';
+import maine_fr_desktop from '../figures/arkea-recovery-2026/maine.fr.desktop.svg?raw';
+import maine_fr_mobile from '../figures/arkea-recovery-2026/maine.fr.mobile.svg?raw';
+import maine_en_desktop from '../figures/arkea-recovery-2026/maine.en.desktop.svg?raw';
+import maine_en_mobile from '../figures/arkea-recovery-2026/maine.en.mobile.svg?raw';
+interface Props { lang?: 'fr' | 'en'; kind: 'transfer' | 'control' | 'maine' }
+const { lang = 'fr', kind } = Astro.props;
+const captions = {
+  "transfer": {
+    "number": "01",
+    "sources": [
+      "04",
+      "05",
+      "15",
+      "20"
+    ],
+    "fr": {
+      "title": "Le point d’intervention change avec le paiement",
+      "description": "Circuit général, distinct de la reconstitution du dossier Arkéa.",
+      "method": "Avant exécution, un ordre encore interceptable peut rencontrer un arrêt. Après crédit, le rappel demande une coopération et un retour sous conditions ; les fonds peuvent déjà avoir rejoint un autre acteur. Les flèches distinguent le mouvement d’argent, la demande de rappel et le retour éventuel. L’issue dépend notamment du solde disponible, du droit et des acteurs habilités. Swift fournit une messagerie et des fonctions d’arrêt ou de rappel ; il ne tient ni les fonds ni les comptes de ses clients. Aucun rail de paiement n’est attribué ici à Arkéa."
+    },
+    "en": {
+      "title": "The intervention point changes as the payment moves",
+      "description": "A generic circuit, separate from reconstruction of the Arkéa case.",
+      "method": "Before execution, an order that can still be intercepted may encounter a stop. After credit, a recall seeks cooperation and a conditional return; funds may already have moved to another institution. The arrows distinguish the money transfer, the recall request and the potential return. The outcome depends on available funds, law and actors with authority to act. Swift provides messaging and stop-and-recall functions; it does not hold its customers’ funds or accounts. This figure attributes no payment rail to Arkéa."
+    }
+  },
+  "control": {
+    "number": "02",
+    "sources": [
+      "08",
+      "09",
+      "10",
+      "11",
+      "17"
+    ],
+    "fr": {
+      "title": "Garde, jeton et signature donnent des leviers différents",
+      "description": "Deux exemples génériques portant sur un USDC natif soumis aux contrôles de Circle.",
+      "method": "Chez une plateforme de garde, le dépositaire contrôle le compte et les moyens de signature ; Circle peut appliquer les restrictions prévues pour son jeton suivant son code, sa politique et le droit applicable. En garde autonome, le détenteur possède les moyens de signature, tandis que les restrictions du jeton demeurent applicables. Ces pouvoirs peuvent agir sur les mêmes actifs. Le levier d’émetteur illustré concerne l’USDC, pas Bitcoin : agir sur ce dernier passe notamment par les moyens de signature ou un dépositaire. L’origine des clés obtenues par le FBI dans le cas DarkSide n’est pas documentée par le communiqué cité. Ce dessin général ne révèle aucun circuit, gel ou moyen de signature propre à Arkéa ; une restitution reste soumise aux droits et à la décision applicables."
+    },
+    "en": {
+      "title": "Custody, token restrictions and signing provide different levers",
+      "description": "Two generic examples involving native USDC subject to Circle’s controls.",
+      "method": "At a custodial platform, the custodian controls the account and signing means; Circle may apply its token restrictions under the implementation, its policy and applicable law. In self-custody, the holder controls signing means while token restrictions still apply. These powers can act on the same assets. The issuer lever illustrated concerns USDC rather than Bitcoin: action on Bitcoin can involve signing means or a custodian. The cited DarkSide announcement does not document how the FBI obtained the key. This generic model identifies no Arkéa-specific route, freeze or signing means; return still depends on established rights and the relevant authority."
+    }
+  },
+  "maine": {
+    "number": "03",
+    "sources": [
+      "13",
+      "14"
+    ],
+    "fr": {
+      "title": "737 jours entre une saisie et une annonce de retour",
+      "description": "Dossier du Maine : du 6 mars 2024 au 13 mars 2026.",
+      "method": "L’axe représente les jours calendaires écoulés depuis la saisie du 6 mars 2024 : 0, 317, 476 et 737 jours pour les quatre jalons. La plainte civile en confiscation est déposée le 17 janvier 2025 ; le tribunal ordonne la confiscation le 25 juin 2025 ; le DOJ annonce un retour aux victimes le 13 mars 2026. La saisie porte sur 470 773 USDT et l’annonce sur environ 470 735 dollars pour deux victimes. Les unités et les montants restent distincts. Les pièces citées ne donnent ni la date du crédit effectif, ni une explication utilisable de l’écart. Ce cas individuel ne fournit aucun délai moyen de récupération."
+    },
+    "en": {
+      "title": "737 days from a seizure to an announced return",
+      "description": "Maine case: March 6, 2024 to March 13, 2026.",
+      "method": "The axis represents calendar days elapsed since the March 6, 2024 seizure: 0, 317, 476 and 737 days for the four milestones. The civil forfeiture complaint was filed January 17, 2025; the court ordered forfeiture June 25, 2025; the DOJ announced a return to victims March 13, 2026. The seizure concerned 470,773 USDT and the announcement approximately 470,735 dollars for two victims. The units and amounts remain distinct. The cited records supply neither a final-credit date nor a usable explanation of the difference. This single case provides no average recovery time."
+    }
+  }
+} as const;
+const art = {fr:{transfer:{desktop:transfer_fr_desktop,mobile:transfer_fr_mobile},control:{desktop:control_fr_desktop,mobile:control_fr_mobile},maine:{desktop:maine_fr_desktop,mobile:maine_fr_mobile}},en:{transfer:{desktop:transfer_en_desktop,mobile:transfer_en_mobile},control:{desktop:control_en_desktop,mobile:control_en_mobile},maine:{desktop:maine_en_desktop,mobile:maine_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new TypeError('Unknown ArkeaRecoveryFigure variant');
+const entry = captions[kind], text = entry[lang], svg = art[lang][kind];
+---
+<figure class="arkea-recovery-figure" id={`figure-${entry.number}`} data-kind={kind}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption>
+    <span class="figure-number">FIGURE {entry.number}</span>
+    <strong>{text.title}</strong>
+    {text.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${Number(id)}`}>[{Number(id)}]</a>)}
+  </figcaption>
+  <details>
+    <summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary>
+    <p>{text.method}</p>
+  </details>
+</figure>
+<style>
+  @font-face { font-family: 'l0g Arkea Recovery'; src: url('/fonts/predictstreet/liberation-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  .arkea-recovery-figure { width: 100%; max-width: 800px; margin: 2.8rem auto; padding-bottom: 1rem; container-type: inline-size; overflow: visible; }
+  .desktop-art, .mobile-art { width: 100%; line-height: 0; }
+  .mobile-art { display: none; max-width: 340px; margin-inline: auto; }
+  .arkea-recovery-figure :global(svg) { display: block; width: 100%; max-width: 100%; height: auto; letter-spacing: normal; overflow: visible; }
+  .arkea-recovery-figure figcaption { padding: .85rem 0 .45rem; font-family: var(--font-read); font-size: .9rem; line-height: 1.7; color: var(--color-muted); }
+  .arkea-recovery-figure figcaption strong { display: block; margin: .25rem 0; font-size: 1rem; font-weight: 400; color: var(--color-paper); }
+  .figure-number { font-size: .75rem; letter-spacing: .12em; color: var(--color-signal); }
+  .arkea-recovery-figure a { margin-right: .45rem; }
+  .arkea-recovery-figure details { margin-top: .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.7; }
+  .arkea-recovery-figure summary { cursor: pointer; padding: .35rem 0; }
+  .arkea-recovery-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .arkea-recovery-figure p { margin-top: .7rem; }
+  @container (max-width: 500px) { .desktop-art { display: none; } .mobile-art { display: block; } }
+  @media print { .desktop-art { display: block; } .mobile-art { display: none; } .arkea-recovery-figure { break-inside: avoid; } }
+</style>

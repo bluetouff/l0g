@@ -30,6 +30,11 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    {
+      sigle: 'Rappel de virement', nom: 'Demande de retour d’un virement exécuté',
+      def: 'Demande du prestataire de services de paiement du payeur visant le retour d’un virement déjà exécuté. Pour les virements de l’espace unique de paiement en euros (SEPA), la restitution dépend notamment des fonds disponibles, du droit applicable et, selon le cas, de l’autorisation du bénéficiaire.',
+      guide: '/posts/arkea-bloquer-tracer-recuperer/',
+    },
     {"sigle": "Règlement par compensation", "nom": "Extinction d’obligations selon un mécanisme convenu", "def": "Mode de règlement par imputation d’obligations selon les conditions du contrat, avec un transfert d’espèces réduit ou remplacé. Dans l’accord Anthropic–Broadcom de mars 2026, une note convertible peut servir à régler des obligations de services puis des loyers éligibles. L’extinction d’une échéance s’accompagne alors d’une nouvelle créance sur l’émetteur de la note.", "guide": "/posts/broadcom-anthropic-blackstone-risque-63-milliards/"},
     {"sigle": "Parc installé", "nom": "Équipements déjà livrés et en service", "def": "Ensemble d’équipements déjà déployés chez les clients. Son activité commerciale peut associer maintenance, pièces, assistance et mises à niveau. Les revenus dépendent des contrats, de l’utilisation et du calendrier des interventions. Le nombre de machines et leur longévité renseignent sur une base potentielle de services, dont chaque prestation suit ses propres conditions.", "guide": "/posts/asml-seconde-vie-financiere-machines-puces/"},
     {"sigle": "Profit brut", "nom": "Revenus après coût des ventes", "def": "Différence entre le chiffre d’affaires et les coûts classés en coût des ventes. La marge brute rapporte ce montant au chiffre d’affaires. Les frais de recherche, de vente, d’administration, de financement et l’impôt doivent encore être pris en compte pour les résultats correspondants. La comparaison exige un référentiel comptable, une période et un périmètre identiques.", "guide": "/posts/asml-seconde-vie-financiere-machines-puces/"},
@@ -1263,6 +1268,13 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'rappel-de-virement': {
+    articles: [{ label: 'Arkéa : bloquer, tracer et récupérer les fonds', href: '/posts/arkea-bloquer-tracer-recuperer/', detail: 'Les étapes bancaires et judiciaires du retour des fonds après une fraude.', kind: 'article' }],
+    sources: [
+      { label: 'European Payments Council, SCT 2025 v1.2', href: 'https://www.europeanpaymentscouncil.eu/sites/default/files/kb/file/2026-09/EPC125-05%202025%20SCT%20Rulebook%20version%201.2.pdf', detail: 'Version effective au 30 septembre 2026, §4.3.2.3 : rappel pour fraude sous 13 mois suivant l’exécution ; réponse positive ou négative sous 15 jours ouvrables bancaires au sens du schéma après réception. La restitution reste conditionnelle.', kind: 'source' },
+      { label: 'European Payments Council, SCT Inst 2025 v1.2', href: 'https://www.europeanpaymentscouncil.eu/sites/default/files/kb/file/2026-09/EPC004-16%202025%20SCT%20Instant%20Rulebook%20v1.2.pdf', detail: 'Version effective au 30 septembre 2026, §4.3.2.2 : mêmes délais pour le rappel pour fraude et la réponse. Le délai de réponse concerne le traitement de la demande, avec une issue positive ou négative.', kind: 'source' },
+    ],
+  },
   "look-to-book": {"articles": [{"label": "Billets d’avion et recherches des agents IA", "href": "/posts/billets-avion-agents-ia-signal-demande/", "kind": "article"}], "sources": [{"label": "IATA, Look-to-Book, 7 octobre 2025", "href": "https://www.iata.org/en/publications/newsletters/airline-retailing-hub/look-to-book-white-paper/", "kind": "source"}], "related": ["tarification-algorithmique"]},
   "minerais-critiques": {"articles": [{"label": "Minerais critiques : les propriétaires des mines américaines", "href": "/posts/mines-americaines-minerais-critiques-propriete-etrangere/", "kind": "article"}], "sources": [{"label": "USGS, liste des minerais critiques 2025", "href": "https://www.usgs.gov/news/science-snippet/interior-department-releases-final-2025-list-critical-minerals", "kind": "source"}], "related": ["dependance-nette-aux-importations"]},
   "dependance-nette-aux-importations": {"articles": [{"label": "Minerais critiques : les propriétaires des mines américaines", "href": "/posts/mines-americaines-minerais-critiques-propriete-etrangere/", "kind": "article"}], "sources": [{"label": "USGS, Mineral Commodity Summaries 2026", "href": "https://pubs.usgs.gov/publication/mcs2026", "kind": "source"}], "related": ["minerais-critiques"]},

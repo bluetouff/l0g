@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="arkea-control-fr-m-title arkea-control-fr-m-desc" style="width:100%;height:auto" class="l0g-arkea-svg">
+<title id="arkea-control-fr-m-title">Les leviers se superposent sur un même jeton</title><desc id="arkea-control-fr-m-desc">Exemples génériques portant sur un USDC natif doté des contrôles décrits par Circle. Chez un dépositaire, celui-ci contrôle le compte et les moyens de signature ; l’émetteur conserve ses contrôles sur le jeton. En garde autonome, le détenteur possède les moyens de signature, avec les restrictions du jeton toujours applicables. Bitcoin relève d’autres leviers : clés ou dépositaire. Aucune opération du cas Arkéa n’est représentée.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-ink)"/>
+<rect x="18" y="10" width="384" height="130" fill="none" id="arkea-control-fr-m-header"/>
+<text x="24" y="34" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="arkea-control-fr-m-header">l0g / RÉCUPÉRATION</text>
+<text x="24" y="75" font-family="l0g Arkea Recovery" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-control-fr-m-header">Des pouvoirs sur</text>
+<text x="24" y="106" font-family="l0g Arkea Recovery" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-control-fr-m-header">le même jeton</text>
+<rect x="20" y="143" width="380" height="42" fill="none" id="arkea-control-fr-m-custody-title"/>
+<text x="210" y="173" font-family="l0g Arkea Recovery" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="arkea-control-fr-m-custody-title">USDC chez une plateforme</text>
+<path d="M85.0 208.4 L119.0 208.4 L119.0 235.6 L85.0 235.6 L85.0 208.4" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="platform"/>
+<path d="M85.0 216.56 L119.0 216.56" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="platform"/>
+<path d="M90.44 212.48 L91.8 212.48" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="platform"/>
+<path d="M95.88 212.48 L97.24 212.48" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="platform"/>
+<path d="M93.84 223.36 L110.16 223.36" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="platform"/>
+<path d="M93.84 228.8 L105.4 228.8" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="platform"/>
+<path d="M318.0 205.0 L335.0 215.2 L335.0 232.88 L318.0 242.4 L301.0 232.88 L301.0 215.2 L318.0 205.0" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="issuer"/>
+<path d="M301.0 215.2 L318.0 225.4 L335.0 215.2" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="issuer"/>
+<path d="M318.0 225.4 L318.0 242.4" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="issuer"/>
+<rect x="20" y="252" width="380" height="71" fill="none" id="arkea-control-fr-m-custody-actors"/>
+<text x="102" y="276" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="arkea-control-fr-m-custody-actors">Plateforme</text>
+<text x="102" y="306" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="arkea-control-fr-m-custody-actors">Garde et clés</text>
+<text x="318" y="276" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-amber)" data-panel="arkea-control-fr-m-custody-actors">Émetteur</text>
+<text x="318" y="306" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="arkea-control-fr-m-custody-actors">Blocage du jeton</text>
+<path d="M102 323 L102 379 L159 379" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="signing" data-mode="custody"/>
+<path d="M152 375 L159 379 L152 383" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M318 323 L318 379 L261 379" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="issuer-control" data-mode="custody"/>
+<path d="M268 375 L261 379 L268 383" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="210" cy="379" r="43" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6" data-metric="token" data-mode="custody"/>
+<rect x="170" y="355" width="80" height="48" fill="none" id="arkea-control-fr-m-custody-token"/>
+<text x="210" y="387" font-family="l0g Arkea Recovery" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="arkea-control-fr-m-custody-token">USDC</text>
+<path d="M24 428 L396 428" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="20" y="447" width="380" height="42" fill="none" id="arkea-control-fr-m-self-title"/>
+<text x="210" y="477" font-family="l0g Arkea Recovery" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="arkea-control-fr-m-self-title">USDC en garde autonome</text>
+<path d="M87.04 521.24 L90.44 516.48 L97.24 516.48 L102.0 521.24 L102.0 528.04 L97.24 532.8 L90.44 532.8 L87.04 528.04 L87.04 521.24" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="key"/>
+<path d="M102.0 524.64 L119.68 524.64 L119.68 530.08 L114.24 530.08 L114.24 524.64" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="key"/>
+<path d="M107.44 524.64 L107.44 530.08" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="key"/>
+<path d="M318.0 509.0 L335.0 519.2 L335.0 536.88 L318.0 546.4 L301.0 536.88 L301.0 519.2 L318.0 509.0" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="issuer"/>
+<path d="M301.0 519.2 L318.0 529.4 L335.0 519.2" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="issuer"/>
+<path d="M318.0 529.4 L318.0 546.4" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-icon="issuer"/>
+<rect x="20" y="556" width="380" height="71" fill="none" id="arkea-control-fr-m-self-actors"/>
+<text x="102" y="580" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="arkea-control-fr-m-self-actors">Détenteur</text>
+<text x="102" y="610" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="arkea-control-fr-m-self-actors">Clés de signature</text>
+<text x="318" y="580" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-amber)" data-panel="arkea-control-fr-m-self-actors">Émetteur</text>
+<text x="318" y="610" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-panel="arkea-control-fr-m-self-actors">Blocage du jeton</text>
+<path d="M102 627 L102 683 L159 683" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="signing" data-mode="self"/>
+<path d="M152 679 L159 683 L152 687" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M318 627 L318 683 L261 683" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="issuer-control" data-mode="self"/>
+<path d="M268 679 L261 683 L268 687" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="210" cy="683" r="43" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6" data-metric="token" data-mode="self"/>
+<rect x="170" y="659" width="80" height="48" fill="none" id="arkea-control-fr-m-self-token"/>
+<text x="210" y="691" font-family="l0g Arkea Recovery" font-size="22" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-panel="arkea-control-fr-m-self-token">USDC</text>
+<rect x="20" y="747" width="380" height="76" fill="none" id="arkea-control-fr-m-bitcoin"/>
+<text x="24" y="777" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-control-fr-m-bitcoin">Bitcoin : clés ou dépositaire.</text>
+<text x="24" y="807" font-family="l0g Arkea Recovery" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-control-fr-m-bitcoin">Circle agit sur ses jetons.</text>
+<path d="M24 843 L396 843" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="853" width="384" height="62" fill="none" id="arkea-control-fr-m-footer"/>
+<text x="24" y="880" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-control-fr-m-footer">Schéma général · Sources [08–11,17]</text>
+<text x="24" y="906" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-control-fr-m-footer">Circuit Arkéa non établi</text>
+</svg>

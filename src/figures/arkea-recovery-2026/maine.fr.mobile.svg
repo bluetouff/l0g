@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="arkea-maine-fr-m-title arkea-maine-fr-m-desc" style="width:100%;height:auto" class="l0g-arkea-svg">
+<title id="arkea-maine-fr-m-title">Maine : de la saisie au retour annoncé</title><desc id="arkea-maine-fr-m-desc">Chronologie proportionnelle d’un dossier judiciaire individuel. Saisie de 470773 USDT le 6 mars 2024 ; plainte civile le 17 janvier 2025 ; confiscation le 25 juin 2025 ; annonce par le DOJ du retour d’environ 470735 dollars le 13 mars 2026. Écart de 737 jours entre saisie et annonce, sans date documentée de crédit final. Montants et unités différents conservés ; aucune explication de leur différence ni délai moyen n’est déduit.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-ink)"/>
+<rect x="18" y="10" width="384" height="130" fill="none" id="arkea-maine-fr-m-header"/>
+<text x="24" y="34" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="arkea-maine-fr-m-header">l0g / RÉCUPÉRATION</text>
+<text x="24" y="75" font-family="l0g Arkea Recovery" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-fr-m-header">Maine : de la saisie</text>
+<text x="24" y="106" font-family="l0g Arkea Recovery" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-fr-m-header">au retour annoncé</text>
+<rect x="20" y="139" width="380" height="107" fill="none" id="arkea-maine-fr-m-amounts"/>
+<text x="24" y="168" font-family="l0g Arkea Recovery" font-size="23" font-weight="400" text-anchor="start" fill="var(--color-amber)" data-panel="arkea-maine-fr-m-amounts" data-metric="seized-usdt" data-value="470773">470 773 USDT saisis</text>
+<text x="24" y="201" font-family="l0g Arkea Recovery" font-size="23" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-panel="arkea-maine-fr-m-amounts" data-metric="announced-usd" data-value="470735">env. 470 735 USD annoncés</text>
+<text x="24" y="236" font-family="l0g Arkea Recovery" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-fr-m-amounts">737 jours jusqu’à l’annonce</text>
+<path d="M54 302 L54 732" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-metric="calendar-axis" data-from="0" data-to="737" data-value="737"/>
+<circle cx="54" cy="302.0" r="7" fill="var(--color-ink)" stroke="var(--color-amber)" stroke-width="1.6" data-metric="event" data-value="0" data-date="2024-03-06"/>
+<path d="M67 302.0 L88 302.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="99" y="276.0" width="302" height="104" fill="none" id="arkea-maine-fr-m-event0"/>
+<text x="108" y="309.0" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-fr-m-event0">6 mars 2024</text>
+<text x="108" y="336.0" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-fr-m-event0">Saisie</text>
+<circle cx="54" cy="486.9525101763908" r="7" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6" data-metric="event" data-value="317" data-date="2025-01-17"/>
+<path d="M67 486.9525101763908 L88 486.9525101763908" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="99" y="460.9525101763908" width="302" height="104" fill="none" id="arkea-maine-fr-m-event1"/>
+<text x="108" y="493.9525101763908" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-fr-m-event1">17 janvier 2025</text>
+<text x="108" y="520.9525101763908" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-fr-m-event1">Action civile</text>
+<text x="108" y="547.9525101763908" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-fr-m-event1">en confiscation</text>
+<circle cx="54" cy="579.7204884667572" r="7" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6" data-metric="event" data-value="476" data-date="2025-06-25"/>
+<path d="M67 579.7204884667572 L88 579.7204884667572" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="99" y="553.7204884667572" width="302" height="104" fill="none" id="arkea-maine-fr-m-event2"/>
+<text x="108" y="586.7204884667572" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-fr-m-event2">25 juin 2025</text>
+<text x="108" y="613.7204884667572" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-fr-m-event2">Confiscation</text>
+<circle cx="54" cy="732.0" r="7" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.6" data-metric="event" data-value="737" data-date="2026-03-13"/>
+<path d="M67 732.0 L88 732.0" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="99" y="706.0" width="302" height="104" fill="none" id="arkea-maine-fr-m-event3"/>
+<text x="108" y="739.0" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-panel="arkea-maine-fr-m-event3">13 mars 2026</text>
+<text x="108" y="766.0" font-family="l0g Arkea Recovery" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-fr-m-event3">Retour annoncé</text>
+<path d="M24 811 L396 811" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="819" width="384" height="96" fill="none" id="arkea-maine-fr-m-scope"/>
+<text x="24" y="846" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-fr-m-scope">Crédit effectif : date non documentée.</text>
+<text x="24" y="877" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-fr-m-scope">Cas individuel · Sources [13–14]</text>
+<text x="24" y="907" font-family="l0g Arkea Recovery" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)" data-panel="arkea-maine-fr-m-scope">Aucun délai moyen déduit.</text>
+</svg>
