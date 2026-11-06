@@ -118,12 +118,13 @@ if(actions||progress)void loadReadingStyles(styles).then(()=>{
   actions.hidden=false;
   const exit=document.querySelector<HTMLButtonElement>('[data-focus-exit]')!;document.body.append(exit);
   const toggle=actions.querySelector<HTMLButtonElement>('[data-focus-toggle]')!;
+  const focusLabel=toggle.querySelector<HTMLElement>('[data-focus-label]')!;
   function setFocus(active:boolean,persist=false) {
     const body=document.querySelector('[data-reading-body]');
     const anchor=persist?Array.from(body?.children??[]).find(node=>{const box=node.getBoundingClientRect();return box.top<=100&&box.bottom>100;}):undefined;
     const top=anchor?.getBoundingClientRect().top;
     document.documentElement.toggleAttribute('data-reading-focus',active);exit.hidden=!active;toggle.setAttribute('aria-pressed',String(active));
-    toggle.textContent=active?tr('Quitter la lecture immersive','Exit focus reading'):tr('Lecture immersive','Focus reading');
+    focusLabel.textContent=active?tr('Quitter la lecture immersive','Exit focus reading'):tr('Lecture immersive','Focus reading');
     if(anchor&&top!==undefined)requestAnimationFrame(()=>scrollBy(0,anchor.getBoundingClientRect().top-top));
     if(persist)try{localStorage.setItem('l0g-reading-focus-v1',active?'1':'0');}catch{announce(toggle,tr('Mode appliqué pour cette page ; préférence non enregistrée.','Mode applied for this page; preference could not be saved.'));}
   }
