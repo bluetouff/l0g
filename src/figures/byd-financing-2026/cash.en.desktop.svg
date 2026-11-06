@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="byd-cash-en-d-title byd-cash-en-d-desc" style="width:100%;height:auto" class="l0g-byd-svg">
+<title id="byd-cash-en-d-title">BYD cash: nine months of flows</title>
+<desc id="byd-cash-en-d-desc">Consolidated group, all businesses and countries. January to September 2026. Cash and cash equivalents from the cash-flow statement. Exact CNY waterfall, labels rounded to three decimals in billions.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-ink)"/>
+<rect x="18" y="16" width="964" height="140" fill="none" id="byd-cash-en-d-header"/>
+<text data-panel="byd-cash-en-d-header" x="24" y="42" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / BYD</text>
+<text data-panel="byd-cash-en-d-header" x="24" y="88" font-family="l0g BYD Financing" font-size="32" font-weight="400" text-anchor="start" fill="var(--color-paper)">BYD cash: nine months of flows</text>
+<text data-panel="byd-cash-en-d-header" x="24" y="132" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">January–September 2026 · Consolidated group · CNY bn</text>
+<rect x="18" y="147" width="964" height="42" fill="none" id="byd-cash-en-d-legend"/>
+<rect x="24" y="162" width="20" height="8" fill="var(--color-paper)"/>
+<text data-panel="byd-cash-en-d-legend" x="58" y="175" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Balances</text>
+<rect x="272" y="162" width="20" height="8" fill="var(--color-signal)"/>
+<text data-panel="byd-cash-en-d-legend" x="306" y="175" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Operating</text>
+<rect x="570" y="162" width="20" height="8" fill="var(--color-accent)"/>
+<text data-panel="byd-cash-en-d-legend" x="604" y="175" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Other net flows</text>
+<rect x="10" y="194" width="60" height="326" fill="none" id="byd-cash-en-d-axis"/>
+<path d="M80 500 L972 500" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="byd-cash-en-d-axis" x="62" y="507" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-muted)">0</text>
+<path d="M80 395 L972 395" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="byd-cash-en-d-axis" x="62" y="402" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-muted)">50</text>
+<path d="M80 290 L972 290" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text data-panel="byd-cash-en-d-axis" x="62" y="297" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-muted)">100</text>
+<rect x="80" y="356.3700863" width="92" height="143.6299137" fill="var(--color-paper)" data-metric="cash-flow" data-step="opening" data-value="68395197000" data-start="0" data-end="68395197000" data-unit="CNY"/>
+<rect x="56" y="188" width="140" height="312" fill="none" id="byd-cash-en-d-value0"/>
+<text data-panel="byd-cash-en-d-value0" x="126" y="338.3700863" font-family="l0g BYD Financing" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-paper)">68.395</text>
+<rect x="53" y="518" width="146" height="83" fill="none" id="byd-cash-en-d-name0"/>
+<text data-panel="byd-cash-en-d-name0" x="126" y="553" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Opening</text>
+<text data-panel="byd-cash-en-d-name0" x="126" y="588" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">01.01.2026</text>
+<rect x="238" y="241.9839851" width="92" height="114.3861012" fill="var(--color-signal)" data-metric="cash-flow" data-step="operating" data-value="54469572000" data-start="68395197000" data-end="122864769000" data-unit="CNY"/>
+<rect x="214" y="188" width="140" height="312" fill="none" id="byd-cash-en-d-value1"/>
+<text data-panel="byd-cash-en-d-value1" x="284" y="223.9839851" font-family="l0g BYD Financing" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-signal)">+54.470</text>
+<rect x="211" y="518" width="146" height="83" fill="none" id="byd-cash-en-d-name1"/>
+<text data-panel="byd-cash-en-d-name1" x="284" y="553" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Operating</text>
+<rect x="396" y="241.9839851" width="92" height="144.6005169" fill="var(--color-accent)" data-metric="cash-flow" data-step="investing" data-value="-68857389000" data-start="122864769000" data-end="54007380000" data-unit="CNY"/>
+<rect x="372" y="188" width="140" height="312" fill="none" id="byd-cash-en-d-value2"/>
+<text data-panel="byd-cash-en-d-value2" x="442" y="223.9839851" font-family="l0g BYD Financing" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-accent)">−68.857</text>
+<rect x="369" y="518" width="146" height="83" fill="none" id="byd-cash-en-d-name2"/>
+<text data-panel="byd-cash-en-d-name2" x="442" y="553" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Investing</text>
+<rect x="554" y="386.584502" width="92" height="48.4713054" fill="var(--color-accent)" data-metric="cash-flow" data-step="financing" data-value="-23081574000" data-start="54007380000" data-end="30925806000" data-unit="CNY"/>
+<rect x="530" y="188" width="140" height="312" fill="none" id="byd-cash-en-d-value3"/>
+<text data-panel="byd-cash-en-d-value3" x="600" y="368.584502" font-family="l0g BYD Financing" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-accent)">−23.082</text>
+<rect x="527" y="518" width="146" height="83" fill="none" id="byd-cash-en-d-name3"/>
+<text data-panel="byd-cash-en-d-name3" x="600" y="553" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Financing</text>
+<rect x="712" y="435.0558074" width="92" height="2.4029733" fill="var(--color-accent)" data-metric="cash-flow" data-step="fx" data-value="-1144273000" data-start="30925806000" data-end="29781533000" data-unit="CNY"/>
+<rect x="688" y="188" width="140" height="312" fill="none" id="byd-cash-en-d-value4"/>
+<text data-panel="byd-cash-en-d-value4" x="758" y="417.0558074" font-family="l0g BYD Financing" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-accent)">−1.144</text>
+<rect x="685" y="518" width="146" height="83" fill="none" id="byd-cash-en-d-name4"/>
+<text data-panel="byd-cash-en-d-name4" x="758" y="553" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">FX effect</text>
+<rect x="870" y="437.4587807" width="92" height="62.5412193" fill="var(--color-paper)" data-metric="cash-flow" data-step="closing" data-value="29781533000" data-start="0" data-end="29781533000" data-unit="CNY"/>
+<rect x="846" y="188" width="140" height="312" fill="none" id="byd-cash-en-d-value5"/>
+<text data-panel="byd-cash-en-d-value5" x="916" y="419.4587807" font-family="l0g BYD Financing" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-paper)">29.782</text>
+<rect x="843" y="518" width="146" height="83" fill="none" id="byd-cash-en-d-name5"/>
+<text data-panel="byd-cash-en-d-name5" x="916" y="553" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Closing</text>
+<text data-panel="byd-cash-en-d-name5" x="916" y="588" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">30.09.2026</text>
+<path d="M24 618 L976 618" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="629" width="964" height="71" fill="none" id="byd-cash-en-d-footer"/>
+<text data-panel="byd-cash-en-d-footer" x="24" y="655" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Cash and cash equivalents · Source [01], pp. 18–20</text>
+<text data-panel="byd-cash-en-d-footer" x="24" y="688" font-family="l0g BYD Financing" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Unaudited interim figures · All businesses and countries</text>
+</svg>

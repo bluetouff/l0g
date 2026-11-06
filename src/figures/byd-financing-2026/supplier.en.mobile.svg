@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="byd-supplier-en-m-title byd-supplier-en-m-desc" style="width:100%;height:auto" class="l0g-byd-svg">
+<title id="byd-supplier-en-m-title">One receivable, several routes to cash</title>
+<desc id="byd-supplier-en-m-desc">One supplier’s disclosed case,001380.SZ: goods delivered to BYD, a DiChain receivable, holding to maturity, transfer if accepted or financing under contract. Outstanding 31 March 2026: CNY 183256200. No overdue unpaid receivable reported.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-ink)"/>
+<rect x="18" y="16" width="384" height="165" fill="none" id="byd-supplier-en-m-header"/>
+<text data-panel="byd-supplier-en-m-header" x="24" y="42" font-family="l0g BYD Financing" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-signal)">l0g / BYD</text>
+<text data-panel="byd-supplier-en-m-header" x="24" y="84" font-family="l0g BYD Financing" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)">A receivable</text>
+<text data-panel="byd-supplier-en-m-header" x="24" y="116" font-family="l0g BYD Financing" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)">before cash</text>
+<text data-panel="byd-supplier-en-m-header" x="24" y="160" font-family="l0g BYD Financing" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Supplier 001380.SZ · Q1 2026</text>
+<path d="M42 255 L42 233 L54 241 L54 233 L66 241 L66 221 L74 221 L74 255 L42 255" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="factory"/>
+<path d="M49 247 L53 247" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M59 247 L63 247" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M316 255 L316 233 L328 241 L328 233 L340 241 L340 221 L348 221 L348 255 L316 255" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="factory"/>
+<path d="M323 247 L327 247" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M333 247 L337 247" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="122" y="180" width="166" height="42" fill="none" id="byd-supplier-en-m-physical"/>
+<text data-panel="byd-supplier-en-m-physical" x="210" y="211" font-family="l0g BYD Financing" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Parts</text>
+<path d="M111 232 L286 232" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="goods-flow" data-from="supplier" data-to="byd"/>
+<path d="M279 228 L286 232 L279 236" fill="none" stroke="var(--color-amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M286 264 L111 264" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="claim-flow" data-from="byd" data-to="supplier"/>
+<path d="M118 260 L111 264 L118 268" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="257" width="130" height="40" fill="none" id="byd-supplier-en-m-party-left"/>
+<text data-panel="byd-supplier-en-m-party-left" x="24" y="286" font-family="l0g BYD Financing" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Supplier</text>
+<rect x="287" y="257" width="113" height="40" fill="none" id="byd-supplier-en-m-party-right"/>
+<text data-panel="byd-supplier-en-m-party-right" x="394" y="286" font-family="l0g BYD Financing" font-size="20" font-weight="400" text-anchor="end" fill="var(--color-paper)">BYD</text>
+<rect x="144" y="280" width="132" height="42" fill="none" id="byd-supplier-en-m-claim-name"/>
+<text data-panel="byd-supplier-en-m-claim-name" x="210" y="309" font-family="l0g BYD Financing" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-signal)">DiChain</text>
+<path d="M60 310 L60 371 L190 371" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M190 344 L219 344 L230 355 L230 392 L190 392 L190 344 L219 344 L219 355 L230 355" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="document"/>
+<path d="M198 366 L219 366" fill="none" stroke="var(--color-signal)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M198 375 L219 375" fill="none" stroke="var(--color-signal)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M198 384 L219 384" fill="none" stroke="var(--color-signal)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="244" y="333" width="156" height="82" fill="none" id="byd-supplier-en-m-claim-meaning"/>
+<text data-panel="byd-supplier-en-m-claim-meaning" x="250" y="364" font-family="l0g BYD Financing" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Receivable</text>
+<text data-panel="byd-supplier-en-m-claim-meaning" x="250" y="396" font-family="l0g BYD Financing" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">at maturity</text>
+<path d="M210 398 L210 422 L42 422 L42 688" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42 470 L100 470" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="claim-option" data-from="holder" data-to="maturity" data-mode="hold"/>
+<path d="M93 466 L100 470 L93 474" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M112 453.6 L148 453.6 L148 484.2 L112 484.2 L112 453.6 L112 462.6 L148 462.6" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="calendar"/>
+<path d="M120.1 450 L120.1 458.1" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M138.1 450 L138.1 458.1" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M121 470.7 L121 475.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M130 470.7 L130 475.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M139 470.7 L139 475.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="174" y="442" width="226" height="73" fill="none" id="byd-supplier-en-m-option0"/>
+<text data-panel="byd-supplier-en-m-option0" x="180" y="470" font-family="l0g BYD Financing" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">Hold</text>
+<text data-panel="byd-supplier-en-m-option0" x="180" y="501" font-family="l0g BYD Financing" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Cash at maturity</text>
+<path d="M42 570 L100 570" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="claim-option" data-from="holder" data-to="partner" data-mode="transfer"/>
+<path d="M93 566 L100 570 L93 574" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M112 550 L133.6 550 L133.6 578.8 L112 578.8 L112 550" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="transfer"/>
+<path d="M125.5 561.7 L147.1 561.7 L147.1 590.5 L125.5 590.5 L125.5 582.4" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="174" y="542" width="226" height="73" fill="none" id="byd-supplier-en-m-option1"/>
+<text data-panel="byd-supplier-en-m-option1" x="180" y="570" font-family="l0g BYD Financing" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">Transfer</text>
+<text data-panel="byd-supplier-en-m-option1" x="180" y="601" font-family="l0g BYD Financing" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">If a partner accepts</text>
+<path d="M42 670 L100 670" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-metric="claim-option" data-from="holder" data-to="financier" data-mode="finance"/>
+<path d="M93 666 L100 670 L93 674" fill="none" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M112 660.8 L131.8 650 L151.6 660.8 L112 660.8" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="bank"/>
+<path d="M117.4 666.2 L117.4 687.8" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M126.4 666.2 L126.4 687.8" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M137.2 666.2 L137.2 687.8" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M146.2 666.2 L146.2 687.8" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M112 692.3 L151.6 692.3" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="174" y="642" width="226" height="73" fill="none" id="byd-supplier-en-m-option2"/>
+<text data-panel="byd-supplier-en-m-option2" x="180" y="670" font-family="l0g BYD Financing" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">Finance</text>
+<text data-panel="byd-supplier-en-m-option2" x="180" y="701" font-family="l0g BYD Financing" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Earlier cash</text>
+<path d="M24 750 L394 750" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="760" width="388" height="140" fill="none" id="byd-supplier-en-m-footer"/>
+<text data-panel="byd-supplier-en-m-footer" x="24" y="789" font-family="l0g BYD Financing" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-metric="supplier-outstanding" data-value="183256200" data-unit="CNY" data-date="2026-03-31">CNY 183.256 million outstanding</text>
+<text data-panel="byd-supplier-en-m-footer" x="24" y="819" font-family="l0g BYD Financing" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">at 31 March 2026</text>
+<text data-panel="byd-supplier-en-m-footer" x="24" y="851" font-family="l0g BYD Financing" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">No overdue unpaid sum reported</text>
+<text data-panel="byd-supplier-en-m-footer" x="24" y="883" font-family="l0g BYD Financing" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Case 001380.SZ · Source [04]</text>
+</svg>

@@ -1,0 +1,102 @@
+---
+import cash_fr_desktop from '../figures/byd-financing-2026/cash.fr.desktop.svg?raw';
+import cash_fr_mobile from '../figures/byd-financing-2026/cash.fr.mobile.svg?raw';
+import cash_en_desktop from '../figures/byd-financing-2026/cash.en.desktop.svg?raw';
+import cash_en_mobile from '../figures/byd-financing-2026/cash.en.mobile.svg?raw';
+import supplier_fr_desktop from '../figures/byd-financing-2026/supplier.fr.desktop.svg?raw';
+import supplier_fr_mobile from '../figures/byd-financing-2026/supplier.fr.mobile.svg?raw';
+import supplier_en_desktop from '../figures/byd-financing-2026/supplier.en.desktop.svg?raw';
+import supplier_en_mobile from '../figures/byd-financing-2026/supplier.en.mobile.svg?raw';
+import lease_fr_desktop from '../figures/byd-financing-2026/lease.fr.desktop.svg?raw';
+import lease_fr_mobile from '../figures/byd-financing-2026/lease.fr.mobile.svg?raw';
+import lease_en_desktop from '../figures/byd-financing-2026/lease.en.desktop.svg?raw';
+import lease_en_mobile from '../figures/byd-financing-2026/lease.en.mobile.svg?raw';
+interface Props { lang?: 'fr' | 'en'; kind: 'cash' | 'supplier' | 'lease' }
+const { lang = 'fr', kind } = Astro.props;
+const captions = {
+  "cash": {
+    "number": "01",
+    "sources": [
+      "01"
+    ],
+    "fr": {
+      "title": "Les flux qui déplacent la trésorerie de BYD",
+      "description": "Janvier–septembre 2026, groupe consolidé, milliards de yuans nominaux.",
+      "method": "La cascade utilise les montants entiers du tableau des flux : ouverture 68 395 197 000 CNY, exploitation +54 469 572 000, investissement net −68 857 389 000, financement net −23 081 574 000, effet du change −1 144 273 000 et clôture 29 781 533 000. Les positions et les dimensions sont proportionnelles ; les étiquettes visibles sont arrondies à trois décimales en milliards. Le périmètre couvre toutes les activités et tous les pays du groupe, sous normes chinoises ASBE, dans des comptes intermédiaires non audités. Cette catégorie comptable de trésorerie et d’équivalents reste distincte des autres actifs financiers et ne mesure pas toute la capacité de financement. Le flux opérationnel comprend déjà les encaissements et paiements du cycle : les variations des dettes fournisseurs ne doivent pas lui être ajoutées comme de nouvelles ressources."
+    },
+    "en": {
+      "title": "The flows moving BYD’s cash balance",
+      "description": "January–September 2026, consolidated group, nominal CNY billions.",
+      "method": "The waterfall uses whole-CNY cash-flow statement amounts: opening 68,395,197,000; operating +54,469,572,000; net investing −68,857,389,000; net financing −23,081,574,000; foreign-exchange effect −1,144,273,000; closing 29,781,533,000. Positions and dimensions are proportional; visible labels are rounded to three decimals in billions. The scope covers every business and geography in the group, under PRC Accounting Standards for Business Enterprises, in unaudited interim statements. This accounting definition of cash and cash equivalents is separate from other financial assets and does not measure total funding capacity. Operating cash flow already includes receipts and payments in the business cycle: changes in supplier obligations cannot be added again as new cash resources."
+    }
+  },
+  "supplier": {
+    "number": "02",
+    "sources": [
+      "04"
+    ],
+    "fr": {
+      "title": "Une créance à terme peut attendre, circuler ou être financée",
+      "description": "Cas déclaré du fournisseur de ressorts coté 001380.SZ, premier trimestre 2026.",
+      "method": "Le fournisseur décrit DiChain comme un certificat électronique de créance. Le dessin distingue la livraison des pièces, la remise d’un droit à paiement et les voies possibles vers la trésorerie : attendre l’échéance, transmettre la créance à un partenaire qui l’accepte, ou la financer sous contrat. Ces branches sont des possibilités, sans partage de volumes supposé. L’encours déclaré au 31 mars 2026 est de 183 256 200 CNY, soit 183,256 millions arrondis sur le visuel. Il s’agit d’un stock à une date donnée, distinct des 133,74 millions reçus pendant le trimestre. Le fournisseur déclare l’absence de créances BYD/DiChain échues impayées dans son périmètre. Ce cas individuel précède les mesures réglementaires de septembre. Aucun taux, délai moyen jusqu’au cash ni encours de l’ensemble des fournisseurs n’est déduit."
+    },
+    "en": {
+      "title": "A term receivable can be held, transferred or financed",
+      "description": "The disclosed case of spring supplier 001380.SZ, first quarter of 2026.",
+      "method": "The supplier describes DiChain as an electronic receivables certificate. The diagram separates delivery of parts, receipt of a right to payment and possible routes to cash: hold to maturity, transfer to a partner willing to accept it, or finance it under contract. These are alternatives, without an assumed allocation of volumes. Outstanding receivables reported at 31 March 2026 were CNY183,256,200, displayed as a rounded CNY183.256 million. That is a stock at one date, separate from the CNY133.74 million received during the quarter. The supplier reported no overdue unpaid BYD/DiChain receivables in its disclosed scope. This individual case predates the September regulatory measures. No rate, average time to usable cash or total across BYD’s suppliers is inferred."
+    }
+  },
+  "lease": {
+    "number": "03",
+    "sources": [
+      "12",
+      "13",
+      "17",
+      "18"
+    ],
+    "fr": {
+      "title": "L’offre à 219 euros comporte une première échéance plus élevée",
+      "description": "DOLPHIN SURF Boost, commandes de novembre 2026, location longue durée de 49 mois et 40 000 km au total.",
+      "method": "Les 49 rangs d’échéances représentent le calendrier annoncé, sans inventer de dates de prélèvement. Les barres partagent une échelle en euros : premier loyer de 1 865 €, dont 365 € de prime de certificats d’économies d’énergie (CEE) si le client est éligible, puis 48 loyers de 219 €. La part du client éligible au premier loyer est de 1 500 € ; ses loyers annoncés totalisent 1 500 + 48 × 219 = 12 012 € TTC. Avant affectation de la prime, le total est de 12 377 €. La prime est avancée par le concessionnaire selon l’offre. La restitution relève du contrat, à distinguer du rang d’une mensualité. Les montants excluent notamment assurances et prestations facultatives, dépenses d’usage et éventuels frais contractuels de restitution. La mention de CGL pour l’acceptation ne permet pas de reconstituer le bailleur, les prix professionnels ou les accords de reprise ; aucune valeur résiduelle ni taux d’intérêt n’est calculé."
+    },
+    "en": {
+      "title": "The €219 offer starts with a larger first payment",
+      "description": "DOLPHIN SURF Boost, November 2026 orders, a 49-month long-term rental with a total 40,000 km allowance.",
+      "method": "The 49 payment ranks represent the advertised schedule, without invented debit dates. Every bar shares a euro scale: a €1,865 first rental, including a conditional €365 energy-savings certificate incentive if the customer qualifies, followed by 48 rentals of €219. The eligible customer pays €1,500 initially; advertised customer rentals total €1,500 + 48 × €219 = €12,012 including VAT. Before allocation of the incentive, the total is €12,377. The offer says the dealer advances the incentive. Vehicle return follows the contract, separately from the rank of a monthly payment. Amounts exclude insurance and optional services, running costs and any contractual return charges. Naming CGL for application acceptance does not reconstruct the lessor, professional acquisition price or buyback arrangements; no residual value or interest rate is calculated."
+    }
+  }
+} as const;
+const art = {fr:{cash:{desktop:cash_fr_desktop,mobile:cash_fr_mobile},supplier:{desktop:supplier_fr_desktop,mobile:supplier_fr_mobile},lease:{desktop:lease_fr_desktop,mobile:lease_fr_mobile}},en:{cash:{desktop:cash_en_desktop,mobile:cash_en_mobile},supplier:{desktop:supplier_en_desktop,mobile:supplier_en_mobile},lease:{desktop:lease_en_desktop,mobile:lease_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new TypeError('Unknown BydFinancingFigure variant');
+const entry = captions[kind], text = entry[lang], svg = art[lang][kind];
+---
+<figure class="byd-financing-figure" id={`figure-${entry.number}`} data-kind={kind}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption>
+    <span class="figure-number">FIGURE {entry.number}</span>
+    <strong>{text.title}</strong>
+    {text.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${Number(id)}`}>[{Number(id)}]</a>)}
+  </figcaption>
+  <details>
+    <summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary>
+    <p>{text.method}</p>
+  </details>
+</figure>
+<style>
+  @font-face { font-family: 'l0g BYD Financing'; src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  .byd-financing-figure { width: 100%; max-width: 800px; margin: 2.8rem auto; padding-bottom: 1rem; container-type: inline-size; overflow: visible; }
+  .desktop-art, .mobile-art { width: 100%; line-height: 0; }
+  .mobile-art { display: none; max-width: 340px; margin-inline: auto; }
+  .byd-financing-figure :global(svg) { display: block; width: 100%; max-width: 100%; height: auto; letter-spacing: normal; overflow: visible; }
+  .byd-financing-figure figcaption { padding: .85rem 0 .45rem; font-family: var(--font-read); font-size: .9rem; line-height: 1.7; color: var(--color-muted); }
+  .byd-financing-figure figcaption strong { display: block; margin: .25rem 0; font-size: 1rem; font-weight: 400; color: var(--color-paper); }
+  .figure-number { font-size: .75rem; letter-spacing: .12em; color: var(--color-signal); }
+  .byd-financing-figure a { margin-right: .45rem; }
+  .byd-financing-figure details { margin-top: .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.7; }
+  .byd-financing-figure summary { cursor: pointer; padding: .35rem 0; }
+  .byd-financing-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .byd-financing-figure p { margin-top: .7rem; }
+  @container (max-width: 500px) { .desktop-art { display: none; } .mobile-art { display: block; } }
+  @media print { .desktop-art { display: block; } .mobile-art { display: none; } .byd-financing-figure { break-inside: avoid; } }
+</style>

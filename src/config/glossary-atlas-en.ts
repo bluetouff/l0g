@@ -210,6 +210,16 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'floor-plan', sigle: 'Floor plan', nom: 'Vehicle inventory financing',
+    def: 'Financing used by a motor-trade business to carry its inventory of new or used vehicles. CGI Finance describes a product with charges on the portion of funding used. Amounts, duration, security and repayment depend on the contract; use within a particular dealer network requires evidence from that network’s agreements.',
+    guide: '/en/analysis/byd-financing-china-france-car/',
+    sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'BYD: financing a car from China to the French customer', href: '/en/analysis/byd-financing-china-france-car/', detail: 'Inventory, supplier receivables and leasing, with their separate mechanisms and scopes.', kind: 'article' }],
+      sources: [{ label: 'CGI Finance, vehicle inventory financing', href: 'https://www.cgifinance.fr/auto/perennite-priorite-besoins-exploitation/', detail: 'Official product description of new/used vehicle floor-plan financing and charges on the portion used; separate from proof of use throughout BYD’s network.', kind: 'source' }],
+    },
+  },
+  {
     slug: 'refaction-tarifaire', sigle: 'Network connection cost allowance', nom: 'Eligible connection costs recovered through network tariffs',
     def: 'A mechanism under which network tariffs cover part of eligible connection costs, with the applicant paying the remaining contribution. For consumption facilities connected at the French high-voltage HTB level, the order of 30 November 2017 sets the allowance at 30%. The calculation requires the relevant asset scope, distinct from a whole-project budget and from the net effect on customers’ bills.',
     guide: '/en/analysis/google-ozans-who-pays-for-the-infrastructure/',
