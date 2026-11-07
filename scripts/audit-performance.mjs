@@ -13,6 +13,8 @@ const failures = [];
 const metadataOverFormerCutoffs = [];
 const pages = new Map();
 const publicationCovers = new Map([
+  ['publications/le-cout-d-une-porte-derobee/index.html', 'le-cout-d-une-porte-derobee'],
+  ['en/publications/the-cost-of-a-backdoor/index.html', 'the-cost-of-a-backdoor'],
   ['publications/la-guerre-des-machines-ordinaires/index.html', 'la-guerre-des-machines-ordinaires'],
   ['en/publications/the-war-on-everyday-machines/index.html', 'the-war-on-everyday-machines'],
   ['publications/cumcum-la-bataille-de-l-impot/index.html', 'cumcum-la-bataille-de-l-impot'],
