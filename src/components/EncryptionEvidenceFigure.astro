@@ -1,0 +1,102 @@
+---
+import signal_fr_desktop from '../figures/encryption-evidence-2026/signal.fr.desktop.svg?raw';
+import signal_fr_mobile from '../figures/encryption-evidence-2026/signal.fr.mobile.svg?raw';
+import signal_en_desktop from '../figures/encryption-evidence-2026/signal.en.desktop.svg?raw';
+import signal_en_mobile from '../figures/encryption-evidence-2026/signal.en.mobile.svg?raw';
+import orders_fr_desktop from '../figures/encryption-evidence-2026/orders.fr.desktop.svg?raw';
+import orders_fr_mobile from '../figures/encryption-evidence-2026/orders.fr.mobile.svg?raw';
+import orders_en_desktop from '../figures/encryption-evidence-2026/orders.en.desktop.svg?raw';
+import orders_en_mobile from '../figures/encryption-evidence-2026/orders.en.mobile.svg?raw';
+import vulnerability_fr_desktop from '../figures/encryption-evidence-2026/vulnerability.fr.desktop.svg?raw';
+import vulnerability_fr_mobile from '../figures/encryption-evidence-2026/vulnerability.fr.mobile.svg?raw';
+import vulnerability_en_desktop from '../figures/encryption-evidence-2026/vulnerability.en.desktop.svg?raw';
+import vulnerability_en_mobile from '../figures/encryption-evidence-2026/vulnerability.en.mobile.svg?raw';
+interface Props { lang?: 'fr' | 'en'; kind: 'signal' | 'orders' | 'vulnerability' }
+const { lang = 'fr', kind } = Astro.props;
+const captions = {
+  "signal": {
+    "number": "01",
+    "sources": [
+      "W02"
+    ],
+    "fr": {
+      "title": "Une demande judiciaire rencontre les données réellement conservées",
+      "description": "Pour quatre numéros visés, Signal rapporte trois recherches sans compte correspondant et une réponse limitée à deux types de métadonnées. Les identifiants personnels sont remplacés par A à D.",
+      "method": "Cas documenté : demande du 5 octobre 2026, réponse du 6 octobre, récit du fournisseur publié le 3 novembre. Le récit Signal et les pièces judiciaires expurgées confirment ce périmètre : quatre numéros, et non quatre personnes établies ; trois sans compte correspondant ; pour le compte retrouvé, date et heure de création, puis date du dernier contact sans son heure. Le dessin reprend uniquement leur nature, sans valeurs personnelles. Un résultat sans compte correspondant porte sur cette recherche. L’issue de l’enquête reste inconnue."
+    },
+    "en": {
+      "title": "A court request meets the data actually retained",
+      "description": "For four queried numbers, Signal reports three searches without a matching account and one response limited to two types of metadata. Personal identifiers are replaced by A to D.",
+      "method": "Documented case: request dated 5 October 2026, response dated 6 October, provider account published on 3 November. Signal’s account and the redacted court documents establish this scope: four numbers, rather than four established individuals; three without a matching account; for the matching account, creation date and time, then the date of last contact without its time. The diagram identifies only their nature, without personal values. A search without a matching account describes that particular lookup. The investigation’s outcome remains unknown."
+    }
+  },
+  "orders": {
+    "number": "02",
+    "sources": [
+      "W13",
+      "W14"
+    ],
+    "fr": {
+      "title": "La notification et l’urgence changent le parcours de la demande",
+      "description": "Les branches de l’article 10 séparent la production ordinaire, la procédure avec notification et l’urgence légale. Le contrôle d’usage de 96 heures suit un déclencheur distinct.",
+      "method": "Schéma juridique qualitatif du règlement (UE) 2023/1543, applicable généralement depuis le 18 août 2026, et de la directive 2023/1544. EPOC désigne le certificat de l’injonction européenne de production. Les délais de dix jours ou huit heures commencent à sa réception. Si la notification est requise, les données sont conservées rapidement puis transmises à l’expiration des dix jours si aucun motif de refus n’a été invoqué, ou plus tôt après confirmation expresse de l’autorité d’exécution qu’elle n’en invoquera aucun. En urgence légale, transmission sous huit heures. Lorsque cette urgence exige notification, l’autorité dispose de 96 heures à compter de la réception de la notification pour s’opposer à l’utilisation ou poser des conditions. Les flèches expriment la procédure, sans échelle de temps commune ni performance observée. Conditions, refus et recours s’appliquent ; le texte ne crée aucune obligation de déchiffrer."
+    },
+    "en": {
+      "title": "Notification and emergency status change the request’s route",
+      "description": "Article 10 branches distinguish ordinary production, the notified procedure and a statutory emergency. The 96-hour review of use has a separate trigger.",
+      "method": "Qualitative legal diagram of Regulation (EU) 2023/1543, generally applicable from 18 August 2026, and Directive 2023/1544. EPOC is the European Production Order Certificate. Ten-day and eight-hour deadlines run from its receipt. Where notification is required, data are promptly preserved and transmitted when ten days expire if no refusal ground has been invoked, or earlier after the enforcing authority expressly confirms that it will invoke none. A statutory emergency requires transmission within eight hours. Where that emergency requires notification, the authority has 96 hours from receipt of the notification to oppose use or impose conditions. Arrows show procedure, without a shared time scale or observed performance. Conditions, refusal grounds and remedies apply; the legislation creates no obligation to decrypt."
+    }
+  },
+  "vulnerability": {
+    "number": "03",
+    "sources": [
+      "W07",
+      "W19",
+      "W20"
+    ],
+    "fr": {
+      "title": "Conserver une faille peut prolonger l’exposition des utilisateurs",
+      "description": "Le même défaut peut offrir un accès d’enquête et maintenir des tiers exposés jusqu’à la diffusion effective d’une protection. Les branches illustrent des choix conditionnels et un réexamen possible.",
+      "method": "Modèle pédagogique qualitatif, sans probabilité ni durée estimées. Le maintien temporaire d’une diffusion restreinte peut préserver un usage d’enquête ; avertir le fournisseur peut conduire à préparer puis déployer un correctif, selon les droits, versions et protections. Les retours entre étapes restent possibles. Bellovin, Blaze, Clark et Landau proposent en 2014 une notification rapide par défaut, avec des exceptions discutées, même au prix d’une durée utile plus courte pour l’accès. Le VEP américain publié en 2017 prévoit un arbitrage et un réexamen des décisions de rétention au moins annuel ; cette source historique ne décrit pas les décisions secrètes de 2026. Les règles chinoises de 2021 imposent aux fournisseurs de produits réseau un signalement au MIIT sous deux jours. Ce délai porte sur le signalement ; le déploiement d’un correctif suit son propre parcours. Le fournisseur du produit relève d’une exception à la restriction de communication étrangère de failles non publiques. Les deux cadres juridiques demeurent distincts."
+    },
+    "en": {
+      "title": "Retaining a flaw can prolong other users’ exposure",
+      "description": "The same flaw may enable investigative access and leave others exposed until protection is actually deployed. Branches illustrate conditional choices and possible reconsideration.",
+      "method": "Qualitative explanatory model, without estimated probability or duration. Temporarily restricted disclosure may preserve investigative use; notifying the vendor may lead to preparing and deploying a patch, depending on permissions, versions and safeguards. Stages may be revisited. Bellovin, Blaze, Clark and Landau propose rapid notification by default in 2014, with exceptions discussed, even at the cost of shorter useful investigative access. The US VEP published in 2017 sets out assessment and review of retention decisions at least annually; this historical source does not describe secret decisions in 2026. China’s 2021 rules require network-product providers to report to MIIT within two days. This deadline concerns reporting; patch deployment has its own path. The product vendor falls within an exception to the restriction on communicating non-public vulnerabilities abroad. The two legal frameworks remain distinct."
+    }
+  }
+} as const;
+const art = {fr:{signal:{desktop:signal_fr_desktop,mobile:signal_fr_mobile},orders:{desktop:orders_fr_desktop,mobile:orders_fr_mobile},vulnerability:{desktop:vulnerability_fr_desktop,mobile:vulnerability_fr_mobile}},en:{signal:{desktop:signal_en_desktop,mobile:signal_en_mobile},orders:{desktop:orders_en_desktop,mobile:orders_en_mobile},vulnerability:{desktop:vulnerability_en_desktop,mobile:vulnerability_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new TypeError('Unknown EncryptionEvidenceFigure variant');
+const entry = captions[kind], text = entry[lang], svg = art[lang][kind];
+---
+<figure class="encryption-evidence-figure" id={`figure-${entry.number}`} data-kind={kind}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption>
+    <span class="figure-number">FIGURE {entry.number}</span>
+    <strong>{text.title}</strong>
+    {text.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${id}`}>[{id}]</a>)}
+  </figcaption>
+  <details>
+    <summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary>
+    <p>{text.method}</p>
+  </details>
+</figure>
+<style>
+  @font-face { font-family: 'l0g Encryption Evidence'; src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  .encryption-evidence-figure { width: 100%; max-width: 800px; margin: 2.8rem auto; padding-bottom: 1rem; container-type: inline-size; overflow: visible; }
+  .desktop-art, .mobile-art { width: 100%; line-height: 0; }
+  .mobile-art { display: none; max-width: 340px; margin-inline: auto; }
+  .encryption-evidence-figure :global(svg) { display: block; width: 100%; max-width: 100%; height: auto; letter-spacing: normal; overflow: visible; }
+  .encryption-evidence-figure figcaption { padding: .85rem 0 .45rem; font-family: var(--font-read); font-size: .9rem; line-height: 1.7; color: var(--color-muted); }
+  .encryption-evidence-figure figcaption strong { display: block; margin: .25rem 0; font-size: 1rem; font-weight: 400; color: var(--color-paper); }
+  .figure-number { font-size: .75rem; letter-spacing: .12em; color: var(--color-signal); }
+  .encryption-evidence-figure a { margin-right: .45rem; }
+  .encryption-evidence-figure details { margin-top: .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.7; }
+  .encryption-evidence-figure summary { cursor: pointer; padding: .35rem 0; }
+  .encryption-evidence-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .encryption-evidence-figure p { margin-top: .7rem; }
+  @container (max-width: 500px) { .desktop-art { display: none; } .mobile-art { display: block; } }
+  @media print { .desktop-art { display: block; } .mobile-art { display: none; } .encryption-evidence-figure { break-inside: avoid; } }
+</style>

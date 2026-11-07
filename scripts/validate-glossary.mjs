@@ -1380,7 +1380,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 411, 'Le corpus conserve ses termes et ajoute la confidentialité persistante et la récupération');
+assert.equal(glossaryAtlasEnBySlug.size, 413, 'Le corpus conserve ses termes et ajoute le certificat européen et la chaîne de preuve');
 for (const slug of ['credits-budgetaires-americains', 'reconciliation-budgetaire']) {
   assert.ok(glossaryAtlasEnBySlug.has(slug), `Missing English budget definition: ${slug}`);
 }
@@ -1584,8 +1584,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 796, 'Le corpus conserve ses notions et ajoute la confidentialité persistante et la récupération');
-assert.equal(glossaryAtlasEntries.length, 401, 'Les deux nouvelles notions disposent de sources et d’un lien vers l’analyse');
+assert.equal(glossaryEntries.length, 798, 'Le corpus conserve ses notions et ajoute le certificat européen et la chaîne de preuve');
+assert.equal(glossaryAtlasEntries.length, 403, 'Les deux nouvelles notions disposent de sources et d’un lien vers l’analyse');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2012,7 +2012,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 1030, 'Les quatre liens des nouvelles définitions complètent le graphe existant');
+assert.equal(glossaryAtlasEdgeCount, 1034, 'Les quatre liens des nouvelles définitions complètent le graphe existant');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
@@ -2447,6 +2447,30 @@ for (const [slug, sources] of Object.entries(encryptionDamageSources)) {
     assert.equal(entry.guide, article);
     assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
     assert.deepEqual(entry.atlas.sources.map(link => link.href), sources);
+  }
+  assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
+}
+
+// Production certificates and custody records remain sourced short definitions.
+const evidenceRouteSources = {
+  epoc: ['https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32023R1543', 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R1543'],
+  'chaine-de-conservation-de-la-preuve': ['https://www.europol.europa.eu/cms/sites/default/files/documents/Digital-forensics-gap-analysis.pdf', 'https://www.europol.europa.eu/cms/sites/default/files/documents/Digital-forensics-gap-analysis.pdf'],
+};
+for (const [slug, sources] of Object.entries(evidenceRouteSources)) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  for (const [entry, article, source] of [
+    [fr[0], '/posts/chiffrement-autres-chemins-enquete-preuve/', sources[0]],
+    [en[0], '/en/analysis/encryption-alternative-investigation-evidence/', sources[1]],
+  ]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert.deepEqual(entry.atlas.sources.map(link => link.href), [source]);
+    assert.equal(entry.atlas.related.length, 2);
   }
   assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
 }

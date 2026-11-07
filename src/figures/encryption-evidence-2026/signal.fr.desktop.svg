@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="evidence-signal-fr-d-title evidence-signal-fr-d-desc" class="l0g-evidence-svg" style="width:100%;height:auto">
+<title id="evidence-signal-fr-d-title">La demande rencontre les métadonnées conservées</title><desc id="evidence-signal-fr-d-desc">Un cas décrit par Signal et ses pièces judiciaires expurgées : quatre numéros visés, trois sans compte correspondant et un compte pour lequel sont communiquées la date et l’heure de création ainsi que la date de dernier contact, sans son heure. Les lettres A à D sont illustratives et remplacent les identifiants personnels.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-surface)"/>
+<rect x="16" y="11.76" width="968" height="44.2" fill="none" id="evidence-signal-fr-d-label1"/>
+<text data-panel="evidence-signal-fr-d-label1" x="24" y="44" font-family="l0g Encryption Evidence" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">SIGNAL · UNE DEMANDE</text>
+<rect x="16" y="52.24" width="968" height="40.8" fill="none" id="evidence-signal-fr-d-label2"/>
+<text data-panel="evidence-signal-fr-d-label2" x="24" y="82" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Quatre numéros, selon le fournisseur</text>
+<rect x="88.1" y="168.3" width="23.8" height="43.4" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="request" data-role="number-A" data-date="2026-10-05"/>
+<path d="M95.1 173.9 L104.9 173.9 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M96.5 206.1 L103.5 206.1" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="168.24" width="968" height="40.8" fill="none" id="evidence-signal-fr-d-label3"/>
+<text data-panel="evidence-signal-fr-d-label3" x="45" y="198" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">A</text>
+<path d="M125 190 L230 190" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="88.1" y="268.3" width="23.8" height="43.4" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="request" data-role="number-B" data-date="2026-10-05"/>
+<path d="M95.1 273.9 L104.9 273.9 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M96.5 306.1 L103.5 306.1" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="268.24" width="968" height="40.8" fill="none" id="evidence-signal-fr-d-label4"/>
+<text data-panel="evidence-signal-fr-d-label4" x="45" y="298" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">B</text>
+<path d="M125 290 L230 290" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="88.1" y="368.3" width="23.8" height="43.4" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="request" data-role="number-C" data-date="2026-10-05"/>
+<path d="M95.1 373.9 L104.9 373.9 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M96.5 406.1 L103.5 406.1" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="368.24" width="968" height="40.8" fill="none" id="evidence-signal-fr-d-label5"/>
+<text data-panel="evidence-signal-fr-d-label5" x="45" y="398" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">C</text>
+<path d="M125 390 L230 390" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="88.1" y="468.3" width="23.8" height="43.4" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="request" data-role="number-D" data-date="2026-10-05"/>
+<path d="M95.1 473.9 L104.9 473.9 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M96.5 506.1 L103.5 506.1" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="468.24" width="968" height="40.8" fill="none" id="evidence-signal-fr-d-label6"/>
+<text data-panel="evidence-signal-fr-d-label6" x="45" y="498" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-paper)">D</text>
+<path d="M125 490 L230 490" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M230 190 L230 490" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M230 330 L295 330" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="request-route" data-from="query" data-to="lookup"/>
+<path d="M288 326 L295 330 L288 334" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="326" cy="326" r="18" fill="none" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M339 339 L355 355" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="385.24" width="984" height="40.8" fill="none" id="evidence-signal-fr-d-label7"/>
+<text data-panel="evidence-signal-fr-d-label7" x="330" y="415" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Rechercher</text>
+<rect x="8" y="425.24" width="984" height="40.8" fill="none" id="evidence-signal-fr-d-label8"/>
+<text data-panel="evidence-signal-fr-d-label8" x="330" y="455" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">les comptes</text>
+<path d="M366 330 L490 330 L490 210 L575 210" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="result-route" data-from="lookup" data-to="absent"/>
+<path d="M568 206 L575 210 L568 214" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M366 330 L490 330 L490 410 L680 410" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="result-route" data-from="lookup" data-to="present"/>
+<path d="M673 406 L680 410 L673 414" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="120.24" width="984" height="40.8" fill="none" id="evidence-signal-fr-d-label9"/>
+<text data-panel="evidence-signal-fr-d-label9" x="720" y="150" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">3 numéros sans compte</text>
+<circle cx="620" cy="210" r="16" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="result" data-result="absent"/>
+<circle cx="720" cy="210" r="16" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="result" data-result="absent"/>
+<circle cx="820" cy="210" r="16" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="result" data-result="absent"/>
+<rect x="8" y="245.24" width="984" height="40.8" fill="none" id="evidence-signal-fr-d-label10"/>
+<text data-panel="evidence-signal-fr-d-label10" x="720" y="275" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Selon le récit du fournisseur</text>
+<rect x="8" y="319" width="984" height="42.5" fill="none" id="evidence-signal-fr-d-label11"/>
+<text data-panel="evidence-signal-fr-d-label11" x="720" y="350" font-family="l0g Encryption Evidence" font-size="25" font-weight="400" text-anchor="middle" fill="var(--color-signal)">1 compte retrouvé</text>
+<path d="M700.45 383.65 L729.35 383.65 L739.55 393.85 L739.55 436.35 L700.45 436.35 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="result" data-result="present" data-date="2026-10-06"/>
+<path d="M729.35 383.65 L729.35 393.85 L739.55 393.85 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M708.95 403.2 L731.05 403.2 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M708.95 412.55 L731.05 412.55 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M708.95 421.9 L722.55 421.9" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M720 445 L720 480 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M600 480 L850 480" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M600 480 L600 500" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M596 493 L600 500 L604 493" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="580.8" y="512.4" width="38.4" height="35.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="field" data-role="creation" data-resolution="date-time"/>
+<path d="M580.8 522.8 L619.2 522.8 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M589.6 507.6 L589.6 517.2 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M610.4 507.6 L610.4 517.2 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M590.4 532.4 L609.6 532.4" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M850 480 L850 500" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M846 493 L850 500 L854 493" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="830.8" y="512.4" width="38.4" height="35.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="field" data-role="last-contact" data-resolution="date-only"/>
+<path d="M830.8 522.8 L869.2 522.8 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M839.6 507.6 L839.6 517.2 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M860.4 507.6 L860.4 517.2 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M840.4 532.4 L859.6 532.4" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="545.24" width="984" height="40.8" fill="none" id="evidence-signal-fr-d-label12"/>
+<text data-panel="evidence-signal-fr-d-label12" x="100" y="575" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">4 numéros</text>
+<rect x="8" y="585.24" width="984" height="40.8" fill="none" id="evidence-signal-fr-d-label13"/>
+<text data-panel="evidence-signal-fr-d-label13" x="100" y="615" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">visés</text>
+<rect x="8" y="555.24" width="984" height="40.8" fill="none" id="evidence-signal-fr-d-label14"/>
+<text data-panel="evidence-signal-fr-d-label14" x="600" y="585" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Création</text>
+<rect x="8" y="595.24" width="984" height="40.8" fill="none" id="evidence-signal-fr-d-label15"/>
+<text data-panel="evidence-signal-fr-d-label15" x="600" y="625" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">date et heure</text>
+<rect x="8" y="555.24" width="984" height="40.8" fill="none" id="evidence-signal-fr-d-label16"/>
+<text data-panel="evidence-signal-fr-d-label16" x="850" y="585" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Dernier contact</text>
+<rect x="8" y="595.24" width="984" height="40.8" fill="none" id="evidence-signal-fr-d-label17"/>
+<text data-panel="evidence-signal-fr-d-label17" x="850" y="625" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">date seule</text>
+<rect x="16" y="645.24" width="968" height="40.8" fill="none" id="evidence-signal-fr-d-label18"/>
+<text data-panel="evidence-signal-fr-d-label18" x="24" y="675" font-family="l0g Encryption Evidence" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Signal · récit du 3 novembre 2026. Demande : 5 octobre ; réponse : 6 octobre.</text>
+</svg>
