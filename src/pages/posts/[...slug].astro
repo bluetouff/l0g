@@ -11,6 +11,7 @@ import '../../styles/paramount-warner-infographics.css';
 import '../../styles/danfoss-figures.css';
 import ArticleNavigator from '../../components/ArticleNavigator.astro';
 import ArticleServices from '../../components/ArticleServices.astro';
+import SupportCard from '../../components/SupportCard.astro';
 import WeeklyCta from '../../components/WeeklyCta.astro';
 import ArticleQuickTake from '../../components/ArticleQuickTake.astro';
 import ArticleEvidence from '../../components/ArticleEvidence.astro';
@@ -324,6 +325,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty;
   searchTags={post.data.tags}
 >
   <div slot="sidebar" class="article-sidebar">
+    <SupportCard />
     <ArticleNavigator
       headings={articleHeadings}
       terms={articleTerms}

@@ -24,6 +24,7 @@ import '../../../styles/article-print.css';
 import '../../../styles/analysis-infographics.css';
 import ArticleNavigator from '../../../components/ArticleNavigator.astro';
 import ArticleServices from '../../../components/ArticleServices.astro';
+import SupportCard from '../../../components/SupportCard.astro';
 import DebtEpubCard from '../../../components/DebtEpubCard.astro';
 import CyberRecoveryEpubCard from '../../../components/CyberRecoveryEpubCard.astro';
 import InsurancePromiseEpubCard from '../../../components/InsurancePromiseEpubCard.astro';
@@ -283,6 +284,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   <ArticleReadingDock headings={headings} lang="en" />
 
   <aside data-site-aside class="en-article-sidebar" aria-label="Reading navigation and services" data-pagefind-ignore>
+    <SupportCard lang="en" />
     <ArticleNavigator headings={headings} lang="en" />
     <ArticleServices lang="en" />
   </aside>

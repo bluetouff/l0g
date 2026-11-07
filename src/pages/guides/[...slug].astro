@@ -3,6 +3,8 @@ import { getCollection, render } from 'astro:content';
 import { guideSocialCard } from '../../lib/guide-social.mjs';
 import { createEditorialCacheKeys } from '../../lib/editorial-cache-context.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import SupportCard from '../../components/SupportCard.astro';
 import AiEditorialDisclosure from '../../components/AiEditorialDisclosure.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
@@ -115,6 +117,11 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   searchDate={updated}
   searchTags={guide.data.tags}
 >
+  <div slot="sidebar" class="guide-sidebar">
+    <SupportCard />
+    <Sidebar path={Astro.url.pathname} />
+  </div>
+
   <script type="application/ld+json" is:inline set:html={safeLd} />
 
   <div class="read-progress" aria-hidden="true"><span></span></div>
@@ -251,6 +258,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   </script>
 
   <style>
+    .guide-sidebar { display: grid; gap: 1.1rem; }
     .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60; pointer-events: none; background: transparent; }
     .read-progress > span {
       display: block; height: 100%; width: 100%;

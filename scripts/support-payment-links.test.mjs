@@ -111,7 +111,7 @@ test('la page active est visible dans la navigation, la recherche et les colonne
   const articleServices = await readFile(new URL('../src/components/ArticleServices.astro', import.meta.url), 'utf8');
   assert.match(articleServices, /en \? '\/en\/support\/' : '\/soutenir\/'/);
   assert.match(articleServices, /en \? 'https:\/\/watch\.l0g\.fr\/en\/' : 'https:\/\/watch\.l0g\.fr\/'/);
-  assert.match(englishGuidePage, /<SupportCard lang="en" compact \/>/);
+  assert.match(englishGuidePage, /<SupportCard lang="en" \/>/);
   assert.match(englishGuidePage, /grid-template-columns: minmax\(0, 42rem\) 290px/);
   const englishNavigation = await readFile(new URL('../src/components/EnglishNavigation.astro', import.meta.url), 'utf8');
   assert.match(englishLayout, /<EnglishNavigation path=\{Astro.url.pathname\} compact=\{compactNavigation\}/);
