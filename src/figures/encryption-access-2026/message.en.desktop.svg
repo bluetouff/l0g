@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="enc-message-en-d-title enc-message-en-d-desc" class="l0g-encryption-svg" style="width:100%;height:auto">
+<title id="enc-message-en-d-title">The message is readable at the endpoints</title><desc id="enc-message-en-d-desc">Simplified end-to-end encryption: readable content at endpoints, encrypted relay, other access routes depend on actually available data and means.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-surface)"/>
+<rect x="16" y="15.76" width="968" height="44.2" fill="none" id="enc-message-en-d-label1"/>
+<text data-panel="enc-message-en-d-label1" x="24" y="48" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">END-TO-END ENCRYPTION</text>
+<path d="M85 164 L135 164 L135 252 L85 252 Z " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M103 240 L117 240" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M105.2 204 L105.2 198.6 L107.6 193.8 L112.4 193.8 L114.8 198.6 L114.8 204 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M102.8 204 L117.2 204 L117.2 214.8 L102.8 214.8 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M865 164 L915 164 L915 252 L865 252 Z " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M883 240 L897 240" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M885.2 204 L885.2 198.6 L887.6 193.8 L892.4 193.8 L894.8 198.6 L894.8 204 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M882.8 204 L897.2 204 L897.2 214.8 L882.8 214.8 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="446" y="174" width="108" height="68" fill="none" stroke="var(--color-muted)" stroke-width="1.2"/>
+<path d="M465 195 L535 195 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M465 220 L535 220" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M160 208 L414 208" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M406 203 L414 208 L406 213" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M586 208 L840 208" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M832 203 L840 208 L832 213" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="121.76" width="984" height="44.2" fill="none" id="enc-message-en-d-label2"/>
+<text data-panel="enc-message-en-d-label2" x="287" y="154" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Encrypted</text>
+<rect x="8" y="121.76" width="984" height="44.2" fill="none" id="enc-message-en-d-label3"/>
+<text data-panel="enc-message-en-d-label3" x="713" y="154" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Encrypted</text>
+<rect x="8" y="265.76" width="984" height="44.2" fill="none" id="enc-message-en-d-label4"/>
+<text data-panel="enc-message-en-d-label4" x="110" y="298" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Device A</text>
+<rect x="8" y="310.24" width="984" height="40.8" fill="none" id="enc-message-en-d-label5"/>
+<text data-panel="enc-message-en-d-label5" x="110" y="340" font-family="l0g Encryption Access" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Readable content</text>
+<rect x="8" y="265.76" width="984" height="44.2" fill="none" id="enc-message-en-d-label6"/>
+<text data-panel="enc-message-en-d-label6" x="500" y="298" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Relay</text>
+<rect x="8" y="310.24" width="984" height="40.8" fill="none" id="enc-message-en-d-label7"/>
+<text data-panel="enc-message-en-d-label7" x="500" y="340" font-family="l0g Encryption Access" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Possible metadata</text>
+<rect x="8" y="265.76" width="984" height="44.2" fill="none" id="enc-message-en-d-label8"/>
+<text data-panel="enc-message-en-d-label8" x="890" y="298" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Device B</text>
+<rect x="8" y="310.24" width="984" height="40.8" fill="none" id="enc-message-en-d-label9"/>
+<text data-panel="enc-message-en-d-label9" x="890" y="340" font-family="l0g Encryption Access" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Readable content</text>
+<path d="M24 390 L976 390" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="407.76" width="968" height="44.2" fill="none" id="enc-message-en-d-label10"/>
+<text data-panel="enc-message-en-d-label10" x="24" y="440" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-amber)">ACCESS DEPENDS ON THE ROUTE</text>
+<rect x="16" y="457.76" width="968" height="44.2" fill="none" id="enc-message-en-d-label11"/>
+<text data-panel="enc-message-en-d-label11" x="24" y="490" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)">Data actually held by the relay</text>
+<rect x="16" y="501.76" width="968" height="44.2" fill="none" id="enc-message-en-d-label12"/>
+<text data-panel="enc-message-en-d-label12" x="24" y="534" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)">Capture on an endpoint</text>
+<rect x="16" y="545.76" width="968" height="44.2" fill="none" id="enc-message-en-d-label13"/>
+<text data-panel="enc-message-en-d-label13" x="24" y="578" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)">An existing decryption key, if actually held</text>
+<rect x="16" y="626.24" width="968" height="40.8" fill="none" id="enc-message-en-d-label14"/>
+<text data-panel="enc-message-en-d-label14" x="24" y="656" font-family="l0g Encryption Access" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Each architecture needs its own review.</text>
+</svg>

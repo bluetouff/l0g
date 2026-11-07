@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="enc-message-fr-m-title enc-message-fr-m-desc" class="l0g-encryption-svg" style="width:100%;height:auto">
+<title id="enc-message-fr-m-title">Le message se lit aux extrémités</title><desc id="enc-message-fr-m-desc">Modèle simplifié de chiffrement de bout en bout : contenu aux extrémités, relais chiffré, autres voies d’accès selon les données et les moyens effectivement disponibles.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-surface)"/>
+<rect x="16" y="24.44" width="388" height="32.3" fill="none" id="enc-message-fr-m-label1"/>
+<text data-panel="enc-message-fr-m-label1" x="24" y="48" font-family="l0g Encryption Access" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">CHIFFREMENT DE BOUT EN BOUT</text>
+<path d="M29 110 L79 110 L79 198 L29 198 Z " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M47 186 L61 186" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="111.2" width="388" height="34" fill="none" id="enc-message-fr-m-label2"/>
+<text data-panel="enc-message-fr-m-label2" x="112" y="136" font-family="l0g Encryption Access" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Terminal A</text>
+<rect x="16" y="145.2" width="388" height="34" fill="none" id="enc-message-fr-m-label3"/>
+<text data-panel="enc-message-fr-m-label3" x="112" y="170" font-family="l0g Encryption Access" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">Contenu lisible</text>
+<path d="M49.2 150 L49.2 144.6 L51.6 139.8 L56.4 139.8 L58.8 144.6 L58.8 150 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M46.8 150 L61.2 150 L61.2 160.8 L46.8 160.8 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M54 210 L54 276" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49 268 L54 276 L59 268" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="225.2" width="388" height="34" fill="none" id="enc-message-fr-m-label4"/>
+<text data-panel="enc-message-fr-m-label4" x="90" y="250" font-family="l0g Encryption Access" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-signal)">Message chiffré</text>
+<rect x="24" y="298" width="60" height="68" fill="none" stroke="var(--color-muted)" stroke-width="1.2"/>
+<path d="M38 320 L70 320 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M38 341 L70 341" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="297.2" width="388" height="34" fill="none" id="enc-message-fr-m-label5"/>
+<text data-panel="enc-message-fr-m-label5" x="112" y="322" font-family="l0g Encryption Access" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Relais</text>
+<rect x="16" y="332.44" width="388" height="32.3" fill="none" id="enc-message-fr-m-label6"/>
+<text data-panel="enc-message-fr-m-label6" x="112" y="356" font-family="l0g Encryption Access" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Métadonnées possibles</text>
+<path d="M54 388 L54 454" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49 446 L54 454 L59 446" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="403.2" width="388" height="34" fill="none" id="enc-message-fr-m-label7"/>
+<text data-panel="enc-message-fr-m-label7" x="90" y="428" font-family="l0g Encryption Access" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-signal)">Message chiffré</text>
+<path d="M29 476 L79 476 L79 564 L29 564 Z " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M47 552 L61 552" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49.2 516 L49.2 510.6 L51.6 505.8 L56.4 505.8 L58.8 510.6 L58.8 516 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M46.8 516 L61.2 516 L61.2 526.8 L46.8 526.8 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="479.2" width="388" height="34" fill="none" id="enc-message-fr-m-label8"/>
+<text data-panel="enc-message-fr-m-label8" x="112" y="504" font-family="l0g Encryption Access" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-paper)">Terminal B</text>
+<rect x="16" y="513.2" width="388" height="34" fill="none" id="enc-message-fr-m-label9"/>
+<text data-panel="enc-message-fr-m-label9" x="112" y="538" font-family="l0g Encryption Access" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">Contenu lisible</text>
+<path d="M24 598 L396 598" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="620.44" width="388" height="32.3" fill="none" id="enc-message-fr-m-label10"/>
+<text data-panel="enc-message-fr-m-label10" x="24" y="644" font-family="l0g Encryption Access" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-amber)">ACCÈS : LE MOYEN COMPTE</text>
+<rect x="16" y="666.44" width="388" height="32.3" fill="none" id="enc-message-fr-m-label11"/>
+<text data-panel="enc-message-fr-m-label11" x="24" y="690" font-family="l0g Encryption Access" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Données détenues par le relais</text>
+<rect x="16" y="712.44" width="388" height="32.3" fill="none" id="enc-message-fr-m-label12"/>
+<text data-panel="enc-message-fr-m-label12" x="24" y="736" font-family="l0g Encryption Access" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Captation sur un terminal</text>
+<rect x="16" y="758.44" width="388" height="32.3" fill="none" id="enc-message-fr-m-label13"/>
+<text data-panel="enc-message-fr-m-label13" x="24" y="782" font-family="l0g Encryption Access" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-paper)">Clé déjà disponible, selon le cas</text>
+<rect x="16" y="840.44" width="388" height="32.3" fill="none" id="enc-message-fr-m-label14"/>
+<text data-panel="enc-message-fr-m-label14" x="24" y="864" font-family="l0g Encryption Access" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Chaque architecture demande son examen.</text>
+</svg>

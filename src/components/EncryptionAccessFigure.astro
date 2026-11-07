@@ -1,0 +1,117 @@
+---
+import parliament_fr_desktop from '../figures/encryption-access-2026/parliament.fr.desktop.svg?raw';
+import parliament_fr_mobile from '../figures/encryption-access-2026/parliament.fr.mobile.svg?raw';
+import parliament_en_desktop from '../figures/encryption-access-2026/parliament.en.desktop.svg?raw';
+import parliament_en_mobile from '../figures/encryption-access-2026/parliament.en.mobile.svg?raw';
+import message_fr_desktop from '../figures/encryption-access-2026/message.fr.desktop.svg?raw';
+import message_fr_mobile from '../figures/encryption-access-2026/message.fr.mobile.svg?raw';
+import message_en_desktop from '../figures/encryption-access-2026/message.en.desktop.svg?raw';
+import message_en_mobile from '../figures/encryption-access-2026/message.en.mobile.svg?raw';
+import risk_fr_desktop from '../figures/encryption-access-2026/risk.fr.desktop.svg?raw';
+import risk_fr_mobile from '../figures/encryption-access-2026/risk.fr.mobile.svg?raw';
+import risk_en_desktop from '../figures/encryption-access-2026/risk.en.desktop.svg?raw';
+import risk_en_mobile from '../figures/encryption-access-2026/risk.en.mobile.svg?raw';
+interface Props { lang?: 'fr' | 'en'; kind: 'parliament' | 'message' | 'risk' }
+const { lang = 'fr', kind } = Astro.props;
+const captions = {
+  "parliament": {
+    "number": "01",
+    "sources": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S08"
+    ],
+    "fr": {
+      "title": "Une protection dans la navette parlementaire",
+      "description": "Vote du Sénat : 181 pour, 134 contre, soit 315 suffrages exprimés et 334 votants. Chronologie de la protection jusqu’au 7 novembre 2026 ; séances des 9 et 10 novembre encore programmées.",
+      "method": "La barre répartit proportionnellement les 334 votants du scrutin sénatorial du 12 mars 2025 : 181 pour, 134 contre et 19 abstentions. Les suffrages exprimés sont les 315 pour ou contre. La chronologie rapproche des étapes procédurales distinctes ; les espacements sont schématiques. L’avis de la commission au titre de l’article 88 précède la décision en séance. Les séances annoncées des 9 et 10 novembre restent programmées au 7 novembre 2026."
+    },
+    "en": {
+      "title": "A safeguard moving through Parliament",
+      "description": "Senate vote: 181 for and 134 against, making 315 votes for or against out of 334 voters. The timeline runs to 7 November 2026; sittings on 9 and 10 November are still scheduled.",
+      "method": "The bar proportionally divides the 334 voters in the Senate division of 12 March 2025: 181 for, 134 against and 19 abstentions. Votes for or against total 315. The timeline brings together separate procedural stages; spacing is schematic. The committee’s opinion under procedural Article 88 precedes a floor decision. As at 7 November 2026, sittings on 9 and 10 November remain scheduled."
+    }
+  },
+  "message": {
+    "number": "03",
+    "sources": [
+      "S10",
+      "S11",
+      "S12",
+      "S16",
+      "S19",
+      "S21",
+      "S27"
+    ],
+    "fr": {
+      "title": "Le message se lit aux extrémités",
+      "description": "Le contenu est lisible sur les terminaux A et B ; il traverse le relais sous forme chiffrée. Trois situations sont distinguées : métadonnées disponibles, captation sur un terminal et remise d’un moyen de déchiffrement déjà disponible.",
+      "method": "Modèle fonctionnel simplifié du chiffrement de bout en bout. Les clés du contenu restent aux extrémités dans le modèle montré. Copies, sauvegardes, appareils liés et authentification demandent leur propre examen. Une clé déjà disponible relève d’une situation différente du modèle de bout en bout montré. Une architecture modifiée pour créer un accès supplémentaire demanderait sa propre évaluation. Les trois voies du bas sont des situations alternatives ; elles restent soumises à leurs conditions juridiques et techniques."
+    },
+    "en": {
+      "title": "The message is readable at the endpoints",
+      "description": "Content is readable on devices A and B and encrypted while passing through the relay. Three situations are distinguished: available metadata, endpoint capture and disclosure of decryption information already available.",
+      "method": "A simplified functional model of end-to-end encryption. Content keys remain at the endpoints in the model shown. Copies, backups, linked devices and authentication require separate assessment. A key already available to a holder belongs to a different situation from the end-to-end model shown. Modifying an architecture to create additional access would require its own assessment. The three access routes below are alternatives, subject to their own legal and technical conditions."
+    }
+  },
+  "risk": {
+    "number": "04",
+    "sources": [
+      "S16",
+      "S17",
+      "S21",
+      "S22",
+      "S23",
+      "S24"
+    ],
+    "fr": {
+      "title": "Une cible juridique, un périmètre technique",
+      "description": "Modèle d’une capacité supplémentaire partagée par plusieurs comptes. L’autorisation vise une cible ; le périmètre d’une compromission dépend de l’architecture.",
+      "method": "Modèle conceptuel d’une capacité supplémentaire dépendant d’un composant partagé. Les quatre symboles de comptes servent uniquement la lecture : ils ne mesurent ni des victimes, ni le nombre de comptes exposés, ni une fréquence d’attaque. Une autorisation vise une cible, tandis que la portée d’une éventuelle compromission dépend de l’architecture et des contrôles. Le dessin n’attribue aucune architecture au projet français. La captation sur un terminal peut elle aussi dépendre d’une faiblesse présente sur plusieurs appareils."
+    },
+    "en": {
+      "title": "A legal target and a technical reach",
+      "description": "A model of an additional capability shared by several accounts. The authorisation concerns one target; the reach of a compromise depends on the architecture.",
+      "method": "Conceptual model of an additional access capability relying on a shared component. The four account symbols aid explanation only: they measure neither victims, exposed accounts nor attack frequency. Authorisation targets one account, while the reach of a possible compromise depends on architecture and controls. No design is attributed to the French bill. Endpoint capture can also rely on a weakness present on multiple devices."
+    }
+  }
+} as const;
+const art = {fr:{parliament:{desktop:parliament_fr_desktop,mobile:parliament_fr_mobile},message:{desktop:message_fr_desktop,mobile:message_fr_mobile},risk:{desktop:risk_fr_desktop,mobile:risk_fr_mobile}},en:{parliament:{desktop:parliament_en_desktop,mobile:parliament_en_mobile},message:{desktop:message_en_desktop,mobile:message_en_mobile},risk:{desktop:risk_en_desktop,mobile:risk_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new TypeError('Unknown EncryptionAccessFigure variant');
+const entry = captions[kind], text = entry[lang], svg = art[lang][kind];
+---
+<figure class="encryption-access-figure" id={`figure-${entry.number}`} data-kind={kind}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption>
+    <span class="figure-number">FIGURE {entry.number}</span>
+    <strong>{text.title}</strong>
+    {text.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${id}`}>[{id}]</a>)}
+  </figcaption>
+  <details>
+    <summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary>
+    <p>{text.method}</p>
+  </details>
+</figure>
+<style>
+  @font-face { font-family: 'l0g Encryption Access'; src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  .encryption-access-figure { width: 100%; max-width: 800px; margin: 2.8rem auto; padding-bottom: 1rem; container-type: inline-size; overflow: visible; }
+  .desktop-art, .mobile-art { width: 100%; line-height: 0; }
+  .mobile-art { display: none; max-width: 340px; margin-inline: auto; }
+  .encryption-access-figure :global(svg) { display: block; width: 100%; max-width: 100%; height: auto; letter-spacing: normal; overflow: visible; }
+  .encryption-access-figure figcaption { padding: .85rem 0 .45rem; font-family: var(--font-read); font-size: .9rem; line-height: 1.7; color: var(--color-muted); }
+  .encryption-access-figure figcaption strong { display: block; margin: .25rem 0; font-size: 1rem; font-weight: 400; color: var(--color-paper); }
+  .figure-number { font-size: .75rem; letter-spacing: .12em; color: var(--color-signal); }
+  .encryption-access-figure a { margin-right: .45rem; }
+  .encryption-access-figure details { margin-top: .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.7; }
+  .encryption-access-figure summary { cursor: pointer; padding: .35rem 0; }
+  .encryption-access-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .encryption-access-figure p { margin-top: .7rem; }
+  @container (max-width: 500px) { .desktop-art { display: none; } .mobile-art { display: block; } }
+  @media print { .desktop-art { display: block; } .mobile-art { display: none; } .encryption-access-figure { break-inside: avoid; } }
+</style>

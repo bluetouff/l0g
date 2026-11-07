@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="enc-risk-en-d-title enc-risk-en-d-desc" class="l0g-encryption-svg" style="width:100%;height:auto">
+<title id="enc-risk-en-d-title">A targeted authorisation and a shared capability</title><desc id="enc-risk-en-d-desc">Conceptual example: authorisation targets one account while an additional access mechanism can depend on a shared component. Other accounts shown are not victims or an estimated quantity.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-surface)"/>
+<rect x="16" y="15.76" width="968" height="44.2" fill="none" id="enc-risk-en-d-label1"/>
+<text data-panel="enc-risk-en-d-label1" x="24" y="48" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">CONCEPTUAL MODEL</text>
+<rect x="16" y="77.28" width="968" height="47.6" fill="none" id="enc-risk-en-d-label2"/>
+<text data-panel="enc-risk-en-d-label2" x="24" y="112" font-family="l0g Encryption Access" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-paper)">Authorisation: one target</text>
+<path d="M24 132 L976 132" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M166.4 264 L166.4 248.7 L173.2 235.1 L186.8 235.1 L193.6 248.7 L193.6 264 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M159.6 264 L200.4 264 L200.4 294.6 L159.6 294.6 Z" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="330.24" width="984" height="40.8" fill="none" id="enc-risk-en-d-label3"/>
+<text data-panel="enc-risk-en-d-label3" x="180" y="360" font-family="l0g Encryption Access" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Shared component</text>
+<path d="M236 278 L500 278 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 7" data-metric="shared-dependency"/>
+<path d="M500 170 L500 418 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 7" data-metric="shared-dependency"/>
+<path d="M500 228 L620 228 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 7" data-metric="shared-dependency"/>
+<path d="M500 418 L620 418 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 7" data-metric="shared-dependency"/>
+<path d="M500 170 L900 170 L900 198 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 7" data-metric="shared-dependency"/>
+<path d="M500 370 L900 370 L900 388" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 7" data-metric="shared-dependency"/>
+<path d="M620 228 L630 228" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 7" data-metric="account-dependency" data-to="target"/>
+<circle cx="660" cy="214" r="12" fill="none" stroke="var(--color-accent)" stroke-width="1.5"/>
+<path d="M635 252 L648 233 L672 233 L685 252" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="268.24" width="984" height="40.8" fill="none" id="enc-risk-en-d-label4"/>
+<text data-panel="enc-risk-en-d-label4" x="660" y="298" font-family="l0g Encryption Access" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-accent)">Target</text>
+<path d="M900 198 L900 200" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 7" data-metric="account-dependency" data-to="other"/>
+<circle cx="900" cy="214" r="12" fill="none" stroke="var(--color-muted)" stroke-width="1.5"/>
+<path d="M875 252 L888 233 L912 233 L925 252" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="268.24" width="984" height="40.8" fill="none" id="enc-risk-en-d-label5"/>
+<text data-panel="enc-risk-en-d-label5" x="900" y="298" font-family="l0g Encryption Access" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Other</text>
+<path d="M620 418 L630 418" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 7" data-metric="account-dependency" data-to="other"/>
+<circle cx="660" cy="404" r="12" fill="none" stroke="var(--color-muted)" stroke-width="1.5"/>
+<path d="M635 442 L648 423 L672 423 L685 442" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="458.24" width="984" height="40.8" fill="none" id="enc-risk-en-d-label6"/>
+<text data-panel="enc-risk-en-d-label6" x="660" y="488" font-family="l0g Encryption Access" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Other</text>
+<path d="M900 388 L900 390" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 7" data-metric="account-dependency" data-to="other"/>
+<circle cx="900" cy="404" r="12" fill="none" stroke="var(--color-muted)" stroke-width="1.5"/>
+<path d="M875 442 L888 423 L912 423 L925 442" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="458.24" width="984" height="40.8" fill="none" id="enc-risk-en-d-label7"/>
+<text data-panel="enc-risk-en-d-label7" x="900" y="488" font-family="l0g Encryption Access" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Other</text>
+<rect x="16" y="523.76" width="968" height="44.2" fill="none" id="enc-risk-en-d-label8"/>
+<text data-panel="enc-risk-en-d-label8" x="24" y="556" font-family="l0g Encryption Access" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)">If compromised, the reach depends on the system.</text>
+<rect x="16" y="586.24" width="968" height="40.8" fill="none" id="enc-risk-en-d-label9"/>
+<text data-panel="enc-risk-en-d-label9" x="24" y="616" font-family="l0g Encryption Access" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Illustrative accounts; no estimated victim count.</text>
+<rect x="16" y="626.24" width="968" height="40.8" fill="none" id="enc-risk-en-d-label10"/>
+<text data-panel="enc-risk-en-d-label10" x="24" y="656" font-family="l0g Encryption Access" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">The French design remains unspecified.</text>
+</svg>

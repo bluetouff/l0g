@@ -1380,7 +1380,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 401, 'Le corpus conserve ses termes et ajoute le financement de stocks automobiles');
+assert.equal(glossaryAtlasEnBySlug.size, 403, 'Le corpus conserve ses termes et ajoute les protections du chiffrement');
 for (const slug of ['credits-budgetaires-americains', 'reconciliation-budgetaire']) {
   assert.ok(glossaryAtlasEnBySlug.has(slug), `Missing English budget definition: ${slug}`);
 }
@@ -1584,8 +1584,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 786, 'Le corpus conserve ses notions et ajoute le financement de stocks automobiles');
-assert.equal(glossaryAtlasEntries.length, 391, 'Le financement de stocks automobiles dispose de sources et d’un lien vers l’analyse');
+assert.equal(glossaryEntries.length, 788, 'Le corpus conserve ses notions et ajoute les protections du chiffrement');
+assert.equal(glossaryAtlasEntries.length, 393, 'Les notions du chiffrement disposent de sources et d’un lien vers l’analyse');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2366,4 +2366,21 @@ for (const slug of ['minerais-critiques', 'dependance-nette-aux-importations']) 
   assert.equal(new URL(fr.atlas.sources[0].href).hostname, 'www.iata.org');
   assert.match(fr.def, /point de collecte/);
   assert.match(en.def, /collection point/);
+}
+
+
+// Encryption definitions retain a short, sourced scope without index promotion.
+const encryptionSources = {"chiffrement-de-bout-en-bout": ["https://www.cnil.fr/fr/lacces-des-autorites-publiques-aux-donnees-chiffrees", "https://www.govinfo.gov/content/pkg/GOVPUB-HS2-PURL-gpo250552/pdf/GOVPUB-HS2-PURL-gpo250552.pdf"], "porte-derobee": ["https://www.cnil.fr/fr/lacces-des-autorites-publiques-aux-donnees-chiffrees", "https://www.rfc-editor.org/rfc/rfc2804"]};
+for (const [slug, sources] of Object.entries(encryptionSources)) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  for (const [entry, article] of [[fr[0], '/posts/chiffrement-portes-derobees-gouvernement/'], [en[0], '/en/analysis/france-encryption-backdoor-safeguard/']]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
+  }
 }
