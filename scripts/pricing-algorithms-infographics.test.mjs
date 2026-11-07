@@ -1,3 +1,4 @@
+import { assertArticleSocial } from './article-social-test-utils.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -81,9 +82,6 @@ test('built FR/EN articles expose three inline figures and the dedicated social 
       assert.equal(elements(figure).filter((node) => node.tagName === 'svg').length, 1);
       assert.equal(elements(figure).filter((node) => node.tagName === 'figcaption').length, 1);
     }
-    for (const property of ['og:image', 'twitter:image']) {
-      assert.equal(nodes.find((node) => node.tagName === 'meta' && (node.properties.property === property || node.properties.name === property))?.properties.content,
-        'https://l0g.fr/illustrations/news/pricing-algorithms-competition-v1.jpg');
-    }
+    assertArticleSocial(nodes, route, 'https://l0g.fr/illustrations/news/pricing-algorithms-competition-v1.jpg');
   }
 });

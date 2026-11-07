@@ -1,3 +1,4 @@
+import { assertArticleSocial } from './article-social-test-utils.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -99,9 +100,6 @@ test('published buyer investigation retains exact sources, reciprocal links and 
     assert(nodes.some(n => n.tagName === 'a' && n.properties.href === previous[lang]));
     const prior = fromHtml(readFileSync(new URL(`../dist${previous[lang]}index.html`, import.meta.url), 'utf8'));
     assert(elements(prior).some(n => n.tagName === 'a' && n.properties.href === `/${route}/`));
-    for (const property of ['og:image', 'twitter:image']) {
-      assert.equal(nodes.find(n => n.tagName === 'meta' && (n.properties.property === property || n.properties.name === property))?.properties.content,
-        'https://l0g.fr/illustrations/news/commerce-traces-04-v1.jpg');
-    }
+    assertArticleSocial(nodes, route, 'https://l0g.fr/illustrations/news/commerce-traces-04-v1.jpg');
   }
 });

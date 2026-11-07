@@ -1,3 +1,4 @@
+import { assertArticleSocial } from './article-social-test-utils.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -89,10 +90,7 @@ test('published exit investigation has bilingual navigation, complete source anc
     assert(nodes.some(node => node.tagName === 'a' && node.properties.href === previous[lang]));
     const prior = fromHtml(readFileSync(new URL(`../dist${previous[lang]}index.html`, import.meta.url), 'utf8'));
     assert(elements(prior).some(node => node.tagName === 'a' && node.properties.href === `/${route}/`));
-    for (const property of ['og:image', 'twitter:image']) {
-      assert.equal(nodes.find(node => node.tagName === 'meta' && (node.properties.property === property || node.properties.name === property))?.properties.content,
-        'https://l0g.fr/illustrations/news/commerce-traces-05-v1.jpg');
-    }
+    assertArticleSocial(nodes, route, 'https://l0g.fr/illustrations/news/commerce-traces-05-v1.jpg');
     assert.doesNotMatch(text, /ten tests|dix tests|l0g ran a wholly local program|l0g a exécuté un petit programme/);
   }
 });

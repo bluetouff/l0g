@@ -4,6 +4,7 @@ import { buildArticleEvidence } from '../../../lib/article-evidence.ts';
 import ArticleSourceFiles from '../../../components/ArticleSourceFiles.astro';
 import { discoveryTool } from '../../../lib/reading-discovery.ts';
 import { getCollection, render } from 'astro:content';
+import { articleSocialCard } from '../../../lib/article-social.mjs';
 import { createEditorialCacheKeys } from '../../../lib/editorial-cache-context.ts';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import '../../../styles/reserves-pump-infographics.css';
@@ -66,6 +67,7 @@ const isoUpd = updated.toISOString();
 const rt = readingTime(post.body);
 const evidence = buildArticleEvidence(post.body ?? '', { published:post.data.pubDate, updated:post.data.updatedDate });
 const ogImage = post.data.ogImage ?? `/og/en/${post.id}.png`;
+const socialCard = articleSocialCard(post, 'en');
 
 const url = new URL(`/en/analysis/${post.id}/`, Astro.site).toString();
 const articleId = `${url}#article`;
@@ -109,7 +111,7 @@ const ld = {
       '@id': articleId,
       headline: post.data.title,
       description: post.data.description,
-      image: primaryImage,
+      image: socialCard ? [primaryImage, { '@type': 'ImageObject', url: new URL(socialCard.image, Astro.site).toString(), width: 1200, height: 630, caption: socialCard.alt }] : primaryImage,
       thumbnailUrl: imageUrl,
       url,
       datePublished: isoPub,
@@ -140,7 +142,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   ogTitle={post.data.ogTitle}
   description={post.data.description}
   ogType="article"
-  ogImage={ogImage}
+  ogImage={socialCard?.image ?? ogImage}
+  ogImageAlt={socialCard?.alt}
   canonical={url}
   alternateLinks={alternateLinks}
   searchDate={post.data.pubDate}

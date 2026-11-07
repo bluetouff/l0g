@@ -264,7 +264,7 @@ for (const file of htmlFiles) {
         ? new URL(decodeHtml(visibleImage.attributes.get('src')), canonical).toString()
         : '';
       assert(Boolean(visibleImage), `${name}: image principale absente du HTML`);
-      assert(articleImageUrl === ogImage, `${name}: NewsArticle.image diffère de og:image`);
+      assert((Array.isArray(article?.image) ? article.image : [article?.image]).some(image => structuredImageUrl(image) === ogImage), `${name}: og:image absent des images NewsArticle`);
       assert(articleImageUrl === visibleImageUrl, `${name}: image HTML diffère de NewsArticle.image`);
     } else {
       assert(article?.author?.['@type'] === 'NewsMediaOrganization', `${name}: author du guide doit être une NewsMediaOrganization`);

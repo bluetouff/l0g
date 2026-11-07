@@ -168,6 +168,21 @@ draft: false        # true = non publié
 
 L'URL est dérivée du nom de fichier : `mon-article.md` → `/posts/mon-article/`.
 
+Pour une analyse illustrée, `ogImage` continue de désigner l'illustration sans
+texte affichée dans l'article. Les images raster de `/illustrations/news/`
+reçoivent automatiquement une carte sociale FR/EN dédiée : illustration, titre
+`ogTitle` (ou `title`), extrait de `description` et date de publication à Paris.
+Les cartes sont des JPEG 1200 × 630, générés pendant `npm run og`, avec une URL
+empreintée par contenu et un cache privé dans `L0G_OG_CACHE_DIR` en CI. Le serveur
+public sert des fichiers statiques. Les OG personnalisés hors de ce répertoire,
+les articles sans illustration et les cartes de l'Hebdo conservent leur gabarit.
+
+`npm run test:og` vérifie la composition, les chemins et le cache. Le build
+contrôle aussi les métadonnées, les images structurées et la conservation des
+illustrations originales avec `node scripts/audit-article-social.mjs`.
+Incrémenter `ARTICLE_SOCIAL_VERSION` lors d'un changement de composition ou de
+police, afin de renouveler les URL déjà connues des robots sociaux.
+
 ## Ajouter une infographie
 
 Les visuels publiés doivent être locaux : SVG inline dans un fichier `.mdx`,

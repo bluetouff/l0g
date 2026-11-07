@@ -1,3 +1,4 @@
+import { assertArticleSocial } from './article-social-test-utils.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -96,10 +97,7 @@ test('published finale links the whole series, cites its sources and uses direct
     }
     const prior = fromHtml(readFileSync(new URL(`../dist${previous[lang]}index.html`, import.meta.url), 'utf8'));
     assert(elements(prior).some(node => node.tagName === 'a' && node.properties.href === `/${route}/`));
-    for (const property of ['og:image', 'twitter:image']) {
-      assert.equal(nodes.find(node => node.tagName === 'meta' && (node.properties.property === property || node.properties.name === property))?.properties.content,
-        'https://l0g.fr/illustrations/news/commerce-traces-06-v1.jpg');
-    }
+    assertArticleSocial(nodes, route, 'https://l0g.fr/illustrations/news/commerce-traces-06-v1.jpg');
     for (const heading of nodes.filter(node => ['h1','h2','h3'].includes(node.tagName))) {
       assert.doesNotMatch(toText(heading), /\bce\s+qu(?:e\b|i\b|['’])|\bwhat (?:enforcement|the documents|rules)\b/iu);
     }

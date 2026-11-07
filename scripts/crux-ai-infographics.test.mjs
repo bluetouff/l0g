@@ -1,3 +1,4 @@
+import { assertArticleSocial } from './article-social-test-utils.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -74,7 +75,7 @@ test('every cash-flow graphic preserves the fictional scope and independently ca
   }
 });
 
-test('both built articles contain three inline figures and the same dedicated social image', () => {
+test('both built articles contain three inline figures and their native sharing cards and original illustration', () => {
   for (const route of ['posts/crux-ai-google-blackstone-banques-puces-collateral', 'en/analysis/crux-ai-google-blackstone-bank-risk-chip-collateral']) {
     const html = readFileSync(new URL(`../dist/${route}/index.html`, import.meta.url), 'utf8');
     const nodes = elements(fromHtml(html));
@@ -86,9 +87,6 @@ test('both built articles contain three inline figures and the same dedicated so
       assert.equal(children.filter((node) => node.tagName === 'figcaption').length, 1);
       assert.equal(children.filter((node) => node.tagName === 'img').length, 0);
     }
-    const image = 'https://l0g.fr/illustrations/news/crux-ai-credit-infrastructure-v1.jpg';
-    for (const property of ['og:image', 'twitter:image']) {
-      assert.equal(nodes.find((node) => node.tagName === 'meta' && (node.properties.property === property || node.properties.name === property))?.properties.content, image);
-    }
+    assertArticleSocial(nodes, route, 'https://l0g.fr/illustrations/news/crux-ai-credit-infrastructure-v1.jpg');
   }
 });

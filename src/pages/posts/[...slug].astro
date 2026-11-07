@@ -3,6 +3,7 @@ import ArticleReadingDock from '../../components/ArticleReadingDock.astro';
 import ArticleSourceFiles from '../../components/ArticleSourceFiles.astro';
 import { discoveryTool } from '../../lib/reading-discovery.ts';
 import { getCollection, render } from 'astro:content';
+import { articleSocialCard } from '../../lib/article-social.mjs';
 import { createEditorialCacheKeys } from '../../lib/editorial-cache-context.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/reserves-pump-infographics.css';
@@ -75,6 +76,7 @@ const hasInsurancePromiseEpub = insurancePromiseEditions.fr.chapters.some(chapte
 const hasCumCumEpub = cumcumEditions.fr.chapters.some(chapter => chapter.slug === post.id);
 const hasOrdinaryMachinesEpub = ordinaryMachinesEditions.fr.chapters.some(chapter => chapter.slug === post.id);
 const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
+const socialCard = articleSocialCard(post, 'fr');
 const { Content, headings } = await render(post);
 
 const dateLabel = formatDateFr(post.data.pubDate);
@@ -209,7 +211,7 @@ const articleJsonLd = {
       headline: post.data.title,
       description: post.data.description,
       url: shareUrl,
-      image: primaryImage,
+      image: socialCard ? [primaryImage, { '@type': 'ImageObject', url: new URL(socialCard.image, Astro.site).toString(), width: 1200, height: 630, caption: socialCard.alt }] : primaryImage,
       thumbnailUrl: imageUrl,
       datePublished: post.data.pubDate.toISOString(),
       dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
@@ -315,7 +317,8 @@ const quickUncertainty = post.data.quickTake?.uncertainty;
   ogTitle={post.data.ogTitle}
   description={post.data.description}
   ogType="article"
-  ogImage={ogImage}
+  ogImage={socialCard?.image ?? ogImage}
+  ogImageAlt={socialCard?.alt}
   alternateLinks={alternateLinks}
   searchDate={post.data.pubDate}
   searchTags={post.data.tags}

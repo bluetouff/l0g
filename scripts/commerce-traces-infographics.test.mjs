@@ -1,3 +1,4 @@
+import { assertArticleSocial } from './article-social-test-utils.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -96,9 +97,6 @@ test('published FR/EN pages preserve sources, series scope and dedicated social 
     assert.deepEqual(new Set(links), sourceUrls);
     for (let n = 1; n <= 20; n++) assert.equal(nodes.filter((node) => node.properties.id === `source-${n}`).length, 1);
     assert(toText(tree).includes(lang ? 'Part one of a six-part investigation' : 'Premier volet d’une enquête en six parties'));
-    for (const property of ['og:image', 'twitter:image']) {
-      assert.equal(nodes.find((node) => node.tagName === 'meta' && (node.properties.property === property || node.properties.name === property))?.properties.content,
-        'https://l0g.fr/illustrations/news/commerce-traces-01-v1.jpg');
-    }
+    assertArticleSocial(nodes, route, 'https://l0g.fr/illustrations/news/commerce-traces-01-v1.jpg');
   }
 });
