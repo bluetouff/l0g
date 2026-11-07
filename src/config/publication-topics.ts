@@ -10,6 +10,7 @@ export const publicationTopics = {
 type Topic = keyof typeof publicationTopics;
 /** Editorial subjects of the existing editions, without inferred financial links. */
 export const publicationTopicKeys: Record<string, Topic[]> = {
+  'encryption-backdoor':['technology'],
   'ordinary-machines':['technology'],cumcum:['tax'], 'insurance-promise':['finance'],
   'cyber-recovery':['technology'], 'debt-chain':['finance'], microsoft:['technology'],
   reserves:['energy'], 'ai-slowdown':['ai'], 'ia-recouvrement':['ai','technology'],
