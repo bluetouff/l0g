@@ -1,0 +1,105 @@
+---
+import paths_fr_desktop from '../figures/encryption-damage-2026/paths.fr.desktop.svg?raw';
+import paths_fr_mobile from '../figures/encryption-damage-2026/paths.fr.mobile.svg?raw';
+import paths_en_desktop from '../figures/encryption-damage-2026/paths.en.desktop.svg?raw';
+import paths_en_mobile from '../figures/encryption-damage-2026/paths.en.mobile.svg?raw';
+import exposure_fr_desktop from '../figures/encryption-damage-2026/exposure.fr.desktop.svg?raw';
+import exposure_fr_mobile from '../figures/encryption-damage-2026/exposure.fr.mobile.svg?raw';
+import exposure_en_desktop from '../figures/encryption-damage-2026/exposure.en.desktop.svg?raw';
+import exposure_en_mobile from '../figures/encryption-damage-2026/exposure.en.mobile.svg?raw';
+import recovery_fr_desktop from '../figures/encryption-damage-2026/recovery.fr.desktop.svg?raw';
+import recovery_fr_mobile from '../figures/encryption-damage-2026/recovery.fr.mobile.svg?raw';
+import recovery_en_desktop from '../figures/encryption-damage-2026/recovery.en.desktop.svg?raw';
+import recovery_en_mobile from '../figures/encryption-damage-2026/recovery.en.mobile.svg?raw';
+interface Props { lang?: 'fr' | 'en'; kind: 'paths' | 'exposure' | 'recovery' }
+const { lang = 'fr', kind } = Astro.props;
+const captions = {
+  "paths": {
+    "number": "01",
+    "sources": [
+      "V02",
+      "V03",
+      "V04",
+      "V17"
+    ],
+    "fr": {
+      "title": "L’entrée dans le réseau précède l’usage des fonctions atteintes",
+      "description": "La reconstitution du cas grec et les publications télécoms distinguent l’accès initial, la capacité atteinte et la collecte. Les deux lignes représentent des ensembles documentaires séparés.",
+      "method": "Schéma qualitatif. Grèce, 2004–2005 : l’enquête publiée en 2007 décrit du code non autorisé mobilisant une fonction d’interception présente dans les commutateurs ; l’entrée initiale reste indéterminée dans cette reconstitution. Les pointillés marquent cette limite. Les pièces télécoms publiées en février 2025, septembre 2025 et octobre 2026 rapportent plusieurs intrusions, avec des accès valides, des failles et des relations de confiance. Elles documentent l’usage ultérieur de fonctions réseau pour collecter du trafic. Le diagramme ne fusionne ni les affaires ni les attributions et n’établit aucun point d’entrée cryptographique commun. La téléphonie grecque historique et une messagerie moderne chiffrée de bout en bout ont des architectures distinctes."
+    },
+    "en": {
+      "title": "Network entry precedes use of the capabilities reached",
+      "description": "The Greek reconstruction and telecom publications distinguish initial access, the capability reached and collection. The two paths represent separate sets of evidence.",
+      "method": "Qualitative diagram. Greece, 2004–2005: the investigation published in 2007 describes unauthorised code using an interception function present in the switches; the initial entry remains unresolved in that reconstruction. Dotted lines mark this limit. Telecom publications from February 2025, September 2025 and October 2026 report several intrusions involving valid access, vulnerabilities and trust relationships. They document subsequent use of network functions to collect traffic. The diagram combines neither cases nor attributions and establishes no common cryptographic entry route. Historical Greek telephony and modern end-to-end encrypted messaging have different architectures."
+    }
+  },
+  "exposure": {
+    "number": "02",
+    "sources": [
+      "V19"
+    ],
+    "fr": {
+      "title": "L’étendue des droits conditionne le périmètre potentiellement accessible",
+      "description": "Un contrôle partagé compromis peut ouvrir plusieurs ensembles illustratifs. Des contrôles réellement indépendants peuvent limiter cette exposition, selon les droits et les autres chemins d’accès.",
+      "method": "Comparaison conceptuelle inspirée du NIST SP 800-57, partie 1, révision 5, mai 2020, §5.5.2. Les lettres A à D identifient des ensembles de données illustratifs, sans quantité réelle. Le rose marque un contrôle supposé compromis et le périmètre potentiellement accessible dans ce modèle. L’indépendance exige des comptes, permissions, chemins d’administration et mécanismes de récupération effectivement séparés. Les contrôles gris ne constituent pas une garantie observée. Le dessin ne mesure ni probabilité de compromission ni perte annuelle attendue. Les protections de chaque architecture pourraient aussi modifier la probabilité d’entrée, qui exige une évaluation séparée."
+    },
+    "en": {
+      "title": "The breadth of permissions shapes the potentially accessible perimeter",
+      "description": "A compromised shared control may open several illustrative datasets. Genuinely independent controls may limit that exposure, depending on permissions and other access paths.",
+      "method": "Conceptual comparison informed by NIST SP 800-57 Part 1, revision 5, May 2020, section 5.5.2. Letters A to D identify illustrative datasets, without real quantities. Rose marks a control assumed to be compromised and the potentially accessible perimeter in this model. Independence requires genuinely separate accounts, permissions, administration paths and recovery mechanisms. Gray controls are not an observed guarantee. The drawing measures neither compromise probability nor expected annual loss. Each architecture’s safeguards could also change entry probability, which requires separate assessment."
+    }
+  },
+  "recovery": {
+    "number": "03",
+    "sources": [
+      "V12",
+      "V15",
+      "V18",
+      "V19"
+    ],
+    "fr": {
+      "title": "La reprise du service et le devenir des copies suivent des parcours distincts",
+      "description": "La réponse à incident mène du confinement à une remise en état puis à une reprise vérifiée. Une branche conditionnelle suit une copie lisible déjà emportée, qui peut rester hors de l’environnement restauré.",
+      "method": "Modèle pédagogique original, sans durée ni coût estimés. La séquence simplifie les fonctions de réponse à incident ; des retours entre étapes sont possibles. Le communiqué Orange du 28 juillet 2025 décrit des perturbations liées à l’isolement après une détection le 25 juillet. À ce stade, il ne relève aucun élément indiquant une exfiltration. La branche rose est un scénario général de copie lisible déjà détenue à l’extérieur, distinct de cet incident. Elle n’attribue à Orange ni une porte dérobée ni un lien avec Salt Typhoon. Révoquer ou remplacer un accès protège selon l’architecture ; une copie de texte déjà obtenue conserve son propre sort. Sources de doctrine : NIST, avril 2025, et ANSSI, janvier 2026."
+    },
+    "en": {
+      "title": "Service recovery and the fate of copies follow distinct paths",
+      "description": "Incident response leads through containment and rebuilding to verified resumption. A conditional branch follows an already stolen readable copy that may remain outside the restored environment.",
+      "method": "An original explanatory model, without estimated duration or cost. The sequence simplifies incident-response functions; stages can be revisited. Orange’s statement of 28 July 2025 describes isolation-related disruption after detection on 25 July. At that stage, it reports no evidence indicating exfiltration. The rose branch is a general scenario involving a readable copy already held outside, separate from that incident. It attributes neither a backdoor nor a Salt Typhoon link to Orange. Revoking or replacing access protects according to the architecture; a plaintext copy already obtained has a separate fate. Guidance sources: NIST, April 2025, and ANSSI, January 2026."
+    }
+  }
+} as const;
+const art = {fr:{paths:{desktop:paths_fr_desktop,mobile:paths_fr_mobile},exposure:{desktop:exposure_fr_desktop,mobile:exposure_fr_mobile},recovery:{desktop:recovery_fr_desktop,mobile:recovery_fr_mobile}},en:{paths:{desktop:paths_en_desktop,mobile:paths_en_mobile},exposure:{desktop:exposure_en_desktop,mobile:exposure_en_mobile},recovery:{desktop:recovery_en_desktop,mobile:recovery_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new TypeError('Unknown EncryptionDamageFigure variant');
+const entry = captions[kind], text = entry[lang], svg = art[lang][kind];
+---
+<figure class="encryption-damage-figure" id={`figure-${entry.number}`} data-kind={kind}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption>
+    <span class="figure-number">FIGURE {entry.number}</span>
+    <strong>{text.title}</strong>
+    {text.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${id}`}>[{id}]</a>)}
+  </figcaption>
+  <details>
+    <summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary>
+    <p>{text.method}</p>
+  </details>
+</figure>
+<style>
+  @font-face { font-family: 'l0g Encryption Damage'; src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  .encryption-damage-figure { width: 100%; max-width: 800px; margin: 2.8rem auto; padding-bottom: 1rem; container-type: inline-size; overflow: visible; }
+  .desktop-art, .mobile-art { width: 100%; line-height: 0; }
+  .mobile-art { display: none; max-width: 340px; margin-inline: auto; }
+  .encryption-damage-figure :global(svg) { display: block; width: 100%; max-width: 100%; height: auto; letter-spacing: normal; overflow: visible; }
+  .encryption-damage-figure figcaption { padding: .85rem 0 .45rem; font-family: var(--font-read); font-size: .9rem; line-height: 1.7; color: var(--color-muted); }
+  .encryption-damage-figure figcaption strong { display: block; margin: .25rem 0; font-size: 1rem; font-weight: 400; color: var(--color-paper); }
+  .figure-number { font-size: .75rem; letter-spacing: .12em; color: var(--color-signal); }
+  .encryption-damage-figure a { margin-right: .45rem; }
+  .encryption-damage-figure details { margin-top: .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.7; }
+  .encryption-damage-figure summary { cursor: pointer; padding: .35rem 0; }
+  .encryption-damage-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .encryption-damage-figure p { margin-top: .7rem; }
+  @container (max-width: 500px) { .desktop-art { display: none; } .mobile-art { display: block; } }
+  @media print { .desktop-art { display: block; } .mobile-art { display: none; } .encryption-damage-figure { break-inside: avoid; } }
+</style>

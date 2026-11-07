@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="damage-paths-fr-m-title damage-paths-fr-m-desc" class="l0g-damage-svg" style="width:100%;height:auto">
+<title id="damage-paths-fr-m-title">De l’entrée dans le réseau aux fonctions détournées</title><desc id="damage-paths-fr-m-desc">Deux ensembles distincts : en Grèce en 2004–2005, une entrée non reconstituée précède le détournement d’une fonction d’interception. Les publications télécoms de 2025–2026 décrivent des accès aux équipements, puis des fonctions réseau utilisées pour collecter du trafic. Les cas et leurs acteurs demeurent distincts.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-surface)"/>
+<rect x="16" y="17.96" width="388" height="35.7" fill="none" id="damage-paths-fr-m-label1"/>
+<text data-panel="damage-paths-fr-m-label1" x="24" y="44" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-signal)">ENTRÉE, CAPACITÉ, COLLECTE</text>
+<rect x="16" y="58.44" width="388" height="32.3" fill="none" id="damage-paths-fr-m-label2"/>
+<text data-panel="damage-paths-fr-m-label2" x="24" y="82" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Deux ensembles documentaires distincts</text>
+<rect x="8" y="115.2" width="404" height="34" fill="none" id="damage-paths-fr-m-label3"/>
+<text data-panel="damage-paths-fr-m-label3" x="105" y="140" font-family="l0g Encryption Damage" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-muted)">GRÈCE</text>
+<rect x="8" y="151.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label4"/>
+<text data-panel="damage-paths-fr-m-label4" x="105" y="175" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-muted)">2004–2005</text>
+<path d="M80.5 228.9 L129.5 228.9 L129.5 257.6 L80.5 257.6 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-case="greece" data-role="entry"/>
+<path d="M74.9 262.5 L135.1 262.5 L129.5 257.6 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M74.9 262.5 L80.5 257.6" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="83.4" y="437.4" width="43.2" height="35.2" fill="none" stroke="var(--color-amber)" stroke-width="1.5" data-metric="stage" data-case="greece" data-role="capability"/>
+<path d="M90.6 448.6 L119.4 448.6 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M90.6 461.4 L119.4 461.4" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="98.6" cy="448.6" r="2.4" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<circle cx="111.4" cy="461.4" r="2.4" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<path d="M87.75 666.75 L113.25 666.75 L122.25 675.75 L122.25 713.25 L87.75 713.25 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-case="greece" data-role="collection"/>
+<path d="M113.25 666.75 L113.25 675.75 L122.25 675.75 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M95.25 684.0 L114.75 684.0 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M95.25 692.25 L114.75 692.25 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M95.25 700.5 L107.25 700.5" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M105 350 L105 425" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6" data-metric="entry-route" data-case="greece" data-from="entry" data-to="capability" data-evidence="unknown"/>
+<path d="M101 418 L105 425 L109 418" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M105 565 L105 655" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="collection-route" data-case="greece" data-from="capability" data-to="collection" data-evidence="reported"/>
+<path d="M101 648 L105 655 L109 648" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="115.2" width="404" height="34" fill="none" id="damage-paths-fr-m-label5"/>
+<text data-panel="damage-paths-fr-m-label5" x="315" y="140" font-family="l0g Encryption Damage" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-muted)">TÉLÉCOMS</text>
+<rect x="8" y="151.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label6"/>
+<text data-panel="damage-paths-fr-m-label6" x="315" y="175" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-muted)">2025–2026</text>
+<path d="M290.5 228.9 L339.5 228.9 L339.5 257.6 L290.5 257.6 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-case="telecom" data-role="entry"/>
+<path d="M284.9 262.5 L345.1 262.5 L339.5 257.6 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M284.9 262.5 L290.5 257.6" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="293.4" y="437.4" width="43.2" height="35.2" fill="none" stroke="var(--color-amber)" stroke-width="1.5" data-metric="stage" data-case="telecom" data-role="capability"/>
+<path d="M300.6 448.6 L329.4 448.6 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M300.6 461.4 L329.4 461.4" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="308.6" cy="448.6" r="2.4" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<circle cx="321.4" cy="461.4" r="2.4" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<path d="M297.75 666.75 L323.25 666.75 L332.25 675.75 L332.25 713.25 L297.75 713.25 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-case="telecom" data-role="collection"/>
+<path d="M323.25 666.75 L323.25 675.75 L332.25 675.75 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M305.25 684.0 L324.75 684.0 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M305.25 692.25 L324.75 692.25 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M305.25 700.5 L317.25 700.5" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M315 350 L315 425" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="entry-route" data-case="telecom" data-from="entry" data-to="capability" data-evidence="reported"/>
+<path d="M311 418 L315 425 L319 418" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M315 565 L315 655" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="collection-route" data-case="telecom" data-from="capability" data-to="collection" data-evidence="reported"/>
+<path d="M311 648 L315 655 L319 648" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="276.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label7"/>
+<text data-panel="damage-paths-fr-m-label7" x="105" y="300" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Entrée</text>
+<rect x="8" y="306.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label8"/>
+<text data-panel="damage-paths-fr-m-label8" x="105" y="330" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">indéterminée</text>
+<rect x="8" y="276.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label9"/>
+<text data-panel="damage-paths-fr-m-label9" x="315" y="300" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Accès</text>
+<rect x="8" y="306.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label10"/>
+<text data-panel="damage-paths-fr-m-label10" x="315" y="330" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">aux équipements</text>
+<rect x="8" y="486.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label11"/>
+<text data-panel="damage-paths-fr-m-label11" x="105" y="510" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Fonction</text>
+<rect x="8" y="516.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label12"/>
+<text data-panel="damage-paths-fr-m-label12" x="105" y="540" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">d’interception</text>
+<rect x="8" y="486.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label13"/>
+<text data-panel="damage-paths-fr-m-label13" x="315" y="510" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Fonctions</text>
+<rect x="8" y="516.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label14"/>
+<text data-panel="damage-paths-fr-m-label14" x="315" y="540" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">réseau</text>
+<rect x="8" y="726.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label15"/>
+<text data-panel="damage-paths-fr-m-label15" x="105" y="750" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Communications</text>
+<rect x="8" y="756.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label16"/>
+<text data-panel="damage-paths-fr-m-label16" x="105" y="780" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">copiées</text>
+<rect x="8" y="726.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label17"/>
+<text data-panel="damage-paths-fr-m-label17" x="315" y="750" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Trafic</text>
+<rect x="8" y="756.44" width="404" height="32.3" fill="none" id="damage-paths-fr-m-label18"/>
+<text data-panel="damage-paths-fr-m-label18" x="315" y="780" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">collecté</text>
+<rect x="16" y="816.44" width="388" height="32.3" fill="none" id="damage-paths-fr-m-label19"/>
+<text data-panel="damage-paths-fr-m-label19" x="24" y="840" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Sources : 2007 et 2025–2026.</text>
+<rect x="16" y="861.44" width="388" height="32.3" fill="none" id="damage-paths-fr-m-label20"/>
+<text data-panel="damage-paths-fr-m-label20" x="24" y="885" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Entrée et fonction : deux étapes.</text>
+</svg>

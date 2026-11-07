@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="damage-exposure-en-m-title damage-exposure-en-m-desc" class="l0g-damage-svg" style="width:100%;height:auto">
+<title id="damage-exposure-en-m-title">Permissions define the exposure perimeter</title><desc id="damage-exposure-en-m-desc">A compromised shared capability may expose several illustrative datasets. Effective separation of controls can limit the accessible perimeter. Independent permissions, administration and recovery are assumptions. No compromise probability or loss amount is estimated.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-surface)"/>
+<rect x="16" y="19.2" width="388" height="34" fill="none" id="damage-exposure-en-m-label1"/>
+<text data-panel="damage-exposure-en-m-label1" x="24" y="44" font-family="l0g Encryption Damage" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-signal)">PERMISSIONS AND EXPOSURE</text>
+<rect x="16" y="58.44" width="388" height="32.3" fill="none" id="damage-exposure-en-m-label2"/>
+<text data-panel="damage-exposure-en-m-label2" x="24" y="82" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">A comparison under assumptions</text>
+<rect x="16" y="113.96" width="388" height="35.7" fill="none" id="damage-exposure-en-m-label3"/>
+<text data-panel="damage-exposure-en-m-label3" x="24" y="140" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-accent)">Compromised shared control</text>
+<rect x="187.05" y="186.3" width="45.9" height="37.4" fill="none" stroke="var(--color-accent)" stroke-width="1.5" data-metric="control" data-architecture="shared" data-role="shared-control" data-state="compromised"/>
+<path d="M194.7 198.2 L225.3 198.2 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M194.7 211.8 L225.3 211.8" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="203.2" cy="198.2" r="2.55" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1.5"/>
+<circle cx="216.8" cy="211.8" r="2.55" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1.5"/>
+<path d="M210 230 L210 280 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M65 280 L350 280" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M46.1 321.7 L83.9 321.7 L83.9 352.5 L46.1 352.5 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dataset" data-architecture="shared" data-set="A" data-state="potentially-accessible"/>
+<path d="M43.3 321.7 L43.3 315.4 L86.7 315.4 L86.7 321.7 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M59.4 331.5 L70.6 331.5" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M65 280 L65 310" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="scope-link" data-architecture="shared" data-from="shared-control" data-to="set-A"/>
+<path d="M61 303 L65 310 L69 303" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="368.96" width="404" height="35.7" fill="none" id="damage-exposure-en-m-label4"/>
+<text data-panel="damage-exposure-en-m-label4" x="65" y="395" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="middle" fill="var(--color-paper)">A</text>
+<path d="M141.1 321.7 L178.9 321.7 L178.9 352.5 L141.1 352.5 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dataset" data-architecture="shared" data-set="B" data-state="potentially-accessible"/>
+<path d="M138.3 321.7 L138.3 315.4 L181.7 315.4 L181.7 321.7 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M154.4 331.5 L165.6 331.5" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M160 280 L160 310" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="scope-link" data-architecture="shared" data-from="shared-control" data-to="set-B"/>
+<path d="M156 303 L160 310 L164 303" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="368.96" width="404" height="35.7" fill="none" id="damage-exposure-en-m-label5"/>
+<text data-panel="damage-exposure-en-m-label5" x="160" y="395" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="middle" fill="var(--color-paper)">B</text>
+<path d="M236.1 321.7 L273.9 321.7 L273.9 352.5 L236.1 352.5 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dataset" data-architecture="shared" data-set="C" data-state="potentially-accessible"/>
+<path d="M233.3 321.7 L233.3 315.4 L276.7 315.4 L276.7 321.7 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M249.4 331.5 L260.6 331.5" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M255 280 L255 310" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="scope-link" data-architecture="shared" data-from="shared-control" data-to="set-C"/>
+<path d="M251 303 L255 310 L259 303" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="368.96" width="404" height="35.7" fill="none" id="damage-exposure-en-m-label6"/>
+<text data-panel="damage-exposure-en-m-label6" x="255" y="395" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="middle" fill="var(--color-paper)">C</text>
+<path d="M331.1 321.7 L368.9 321.7 L368.9 352.5 L331.1 352.5 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dataset" data-architecture="shared" data-set="D" data-state="potentially-accessible"/>
+<path d="M328.3 321.7 L328.3 315.4 L371.7 315.4 L371.7 321.7 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M344.4 331.5 L355.6 331.5" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M350 280 L350 310" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="scope-link" data-architecture="shared" data-from="shared-control" data-to="set-D"/>
+<path d="M346 303 L350 310 L354 303" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="368.96" width="404" height="35.7" fill="none" id="damage-exposure-en-m-label7"/>
+<text data-panel="damage-exposure-en-m-label7" x="350" y="395" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="middle" fill="var(--color-paper)">D</text>
+<rect x="16" y="448.96" width="388" height="35.7" fill="none" id="damage-exposure-en-m-label8"/>
+<text data-panel="damage-exposure-en-m-label8" x="24" y="475" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-muted)">Separate controls</text>
+<rect x="46.1" y="534.6" width="37.8" height="30.8" fill="none" stroke="var(--color-accent)" stroke-width="1.5" data-metric="control" data-architecture="separate" data-role="control-A" data-state="compromised"/>
+<path d="M52.4 544.4 L77.6 544.4 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.4 555.6 L77.6 555.6" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="59.4" cy="544.4" r="2.1" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1.5"/>
+<circle cx="70.6" cy="555.6" r="2.1" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1.5"/>
+<path d="M46.1 671.7 L83.9 671.7 L83.9 702.5 L46.1 702.5 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dataset" data-architecture="separate" data-set="A" data-state="potentially-accessible"/>
+<path d="M43.3 671.7 L43.3 665.4 L86.7 665.4 L86.7 671.7 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M59.4 681.5 L70.6 681.5" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M65 570 L65 660" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="scope-link" data-architecture="separate" data-from="control-A" data-to="set-A"/>
+<path d="M61 653 L65 660 L69 653" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="718.96" width="404" height="35.7" fill="none" id="damage-exposure-en-m-label9"/>
+<text data-panel="damage-exposure-en-m-label9" x="65" y="745" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="middle" fill="var(--color-paper)">A</text>
+<rect x="141.1" y="534.6" width="37.8" height="30.8" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="control" data-architecture="separate" data-role="control-B" data-state="independent-assumed"/>
+<path d="M147.4 544.4 L172.6 544.4 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M147.4 555.6 L172.6 555.6" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="154.4" cy="544.4" r="2.1" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1.5"/>
+<circle cx="165.6" cy="555.6" r="2.1" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1.5"/>
+<path d="M141.1 671.7 L178.9 671.7 L178.9 702.5 L141.1 702.5 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dataset" data-architecture="separate" data-set="B" data-state="independent-assumed"/>
+<path d="M138.3 671.7 L138.3 665.4 L181.7 665.4 L181.7 671.7 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M154.4 681.5 L165.6 681.5" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M160 570 L160 660" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="scope-link" data-architecture="separate" data-from="control-B" data-to="set-B"/>
+<path d="M156 653 L160 660 L164 653" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="718.96" width="404" height="35.7" fill="none" id="damage-exposure-en-m-label10"/>
+<text data-panel="damage-exposure-en-m-label10" x="160" y="745" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="middle" fill="var(--color-paper)">B</text>
+<rect x="236.1" y="534.6" width="37.8" height="30.8" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="control" data-architecture="separate" data-role="control-C" data-state="independent-assumed"/>
+<path d="M242.4 544.4 L267.6 544.4 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M242.4 555.6 L267.6 555.6" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="249.4" cy="544.4" r="2.1" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1.5"/>
+<circle cx="260.6" cy="555.6" r="2.1" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1.5"/>
+<path d="M236.1 671.7 L273.9 671.7 L273.9 702.5 L236.1 702.5 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dataset" data-architecture="separate" data-set="C" data-state="independent-assumed"/>
+<path d="M233.3 671.7 L233.3 665.4 L276.7 665.4 L276.7 671.7 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M249.4 681.5 L260.6 681.5" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M255 570 L255 660" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="scope-link" data-architecture="separate" data-from="control-C" data-to="set-C"/>
+<path d="M251 653 L255 660 L259 653" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="718.96" width="404" height="35.7" fill="none" id="damage-exposure-en-m-label11"/>
+<text data-panel="damage-exposure-en-m-label11" x="255" y="745" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="middle" fill="var(--color-paper)">C</text>
+<rect x="331.1" y="534.6" width="37.8" height="30.8" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="control" data-architecture="separate" data-role="control-D" data-state="independent-assumed"/>
+<path d="M337.4 544.4 L362.6 544.4 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M337.4 555.6 L362.6 555.6" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="344.4" cy="544.4" r="2.1" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1.5"/>
+<circle cx="355.6" cy="555.6" r="2.1" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1.5"/>
+<path d="M331.1 671.7 L368.9 671.7 L368.9 702.5 L331.1 702.5 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dataset" data-architecture="separate" data-set="D" data-state="independent-assumed"/>
+<path d="M328.3 671.7 L328.3 665.4 L371.7 665.4 L371.7 671.7 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M344.4 681.5 L355.6 681.5" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M350 570 L350 660" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="scope-link" data-architecture="separate" data-from="control-D" data-to="set-D"/>
+<path d="M346 653 L350 660 L354 653" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="718.96" width="404" height="35.7" fill="none" id="damage-exposure-en-m-label12"/>
+<text data-panel="damage-exposure-en-m-label12" x="350" y="745" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="middle" fill="var(--color-paper)">D</text>
+<rect x="16" y="791.44" width="388" height="32.3" fill="none" id="damage-exposure-en-m-label13"/>
+<text data-panel="damage-exposure-en-m-label13" x="24" y="815" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-accent)">Rose: possible exposure.</text>
+<rect x="16" y="831.44" width="388" height="32.3" fill="none" id="damage-exposure-en-m-label14"/>
+<text data-panel="damage-exposure-en-m-label14" x="24" y="855" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Independence is assumed; verify it.</text>
+<rect x="16" y="866.44" width="388" height="32.3" fill="none" id="damage-exposure-en-m-label15"/>
+<text data-panel="damage-exposure-en-m-label15" x="24" y="890" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">NIST, May 2020. Qualitative model.</text>
+</svg>

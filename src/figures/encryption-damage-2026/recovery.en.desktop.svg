@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="damage-recovery-en-d-title damage-recovery-en-d-desc" class="l0g-damage-svg" style="width:100%;height:auto">
+<title id="damage-recovery-en-d-title">Service recovery and the fate of copies</title><desc id="damage-recovery-en-d-desc">A general sequence leads from detection to containment, rebuilding and verified resumption. A separate branch assumes a readable copy has already been taken and may remain outside. Orange’s July 2025 statement illustrates isolation-related disruption; the hypothetical copy is separate from that incident.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-surface)"/>
+<rect x="16" y="11.76" width="968" height="44.2" fill="none" id="damage-recovery-en-d-label1"/>
+<text data-panel="damage-recovery-en-d-label1" x="24" y="44" font-family="l0g Encryption Damage" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">RESTORING A SERVICE</text>
+<rect x="16" y="52.24" width="968" height="40.8" fill="none" id="damage-recovery-en-d-label2"/>
+<text data-panel="damage-recovery-en-d-label2" x="24" y="82" font-family="l0g Encryption Damage" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">A readable copy may already be outside</text>
+<path d="M121.6 160.2 L148.8 160.2 L158.4 169.8 L158.4 209.8 L121.6 209.8 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="copy" data-role="plaintext-copy" data-mode="conditional"/>
+<path d="M148.8 160.2 L148.8 169.8 L158.4 169.8 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M129.6 178.6 L150.4 178.6 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M129.6 187.4 L150.4 187.4 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M129.6 196.2 L142.4 196.2" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M851.6 160.2 L878.8 160.2 L888.4 169.8 L888.4 209.8 L851.6 209.8 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="copy" data-role="external-copy" data-mode="conditional"/>
+<path d="M878.8 160.2 L878.8 169.8 L888.4 169.8 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M859.6 178.6 L880.4 178.6 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M859.6 187.4 L880.4 187.4 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M859.6 196.2 L872.4 196.2" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M172 185 L838 185" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6" data-metric="copy-persistence" data-from="plaintext-copy" data-to="external-copy" data-mode="conditional"/>
+<path d="M831 181 L838 185 L831 189" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="105.24" width="984" height="40.8" fill="none" id="damage-recovery-en-d-label3"/>
+<text data-panel="damage-recovery-en-d-label3" x="500" y="135" font-family="l0g Encryption Damage" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-accent)">Conditional branch: a copy already taken</text>
+<rect x="8" y="220.24" width="984" height="40.8" fill="none" id="damage-recovery-en-d-label4"/>
+<text data-panel="damage-recovery-en-d-label4" x="140" y="250" font-family="l0g Encryption Damage" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Readable copy</text>
+<rect x="8" y="220.24" width="984" height="40.8" fill="none" id="damage-recovery-en-d-label5"/>
+<text data-panel="damage-recovery-en-d-label5" x="870" y="250" font-family="l0g Encryption Damage" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Copy retained</text>
+<path d="M78.5 354.3 L141.5 354.3 L141.5 391.2 L78.5 391.2 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="detection"/>
+<path d="M71.3 397.5 L148.7 397.5 L141.5 391.2 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M71.3 397.5 L78.5 391.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="325.7" y="355.2" width="48.6" height="39.6" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="containment"/>
+<path d="M333.8 367.8 L366.2 367.8 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M333.8 382.2 L366.2 382.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="342.8" cy="367.8" r="2.7" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="357.2" cy="382.2" r="2.7" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M585.7 357.9 L634.3 357.9 L634.3 397.5 L585.7 397.5 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="rebuilding"/>
+<path d="M582.1 357.9 L582.1 349.8 L637.9 349.8 L637.9 357.9 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M602.8 370.5 L617.2 370.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="870" cy="375" r="22.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="resumption"/>
+<path d="M859.2 375 L867.3 383.1 L881.7 364.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M155 375 L310 375" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="recovery-route" data-from="detection" data-to="containment"/>
+<path d="M303 371 L310 375 L303 379" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M390 375 L570 375" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="recovery-route" data-from="containment" data-to="rebuilding"/>
+<path d="M563 371 L570 375 L563 379" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M650 375 L830 375" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="recovery-route" data-from="rebuilding" data-to="resumption"/>
+<path d="M823 371 L830 375 L823 379" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="409" width="984" height="42.5" fill="none" id="damage-recovery-en-d-label6"/>
+<text data-panel="damage-recovery-en-d-label6" x="110" y="440" font-family="l0g Encryption Damage" font-size="25" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Detect</text>
+<rect x="8" y="455.24" width="984" height="40.8" fill="none" id="damage-recovery-en-d-label7"/>
+<text data-panel="damage-recovery-en-d-label7" x="110" y="485" font-family="l0g Encryption Damage" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Analyse</text>
+<rect x="8" y="409" width="984" height="42.5" fill="none" id="damage-recovery-en-d-label8"/>
+<text data-panel="damage-recovery-en-d-label8" x="350" y="440" font-family="l0g Encryption Damage" font-size="25" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Contain</text>
+<rect x="8" y="455.24" width="984" height="40.8" fill="none" id="damage-recovery-en-d-label9"/>
+<text data-panel="damage-recovery-en-d-label9" x="350" y="485" font-family="l0g Encryption Damage" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Isolate access</text>
+<rect x="8" y="409" width="984" height="42.5" fill="none" id="damage-recovery-en-d-label10"/>
+<text data-panel="damage-recovery-en-d-label10" x="610" y="440" font-family="l0g Encryption Damage" font-size="25" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Rebuild</text>
+<rect x="8" y="455.24" width="984" height="40.8" fill="none" id="damage-recovery-en-d-label11"/>
+<text data-panel="damage-recovery-en-d-label11" x="610" y="485" font-family="l0g Encryption Damage" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Eradicate, verify</text>
+<rect x="8" y="409" width="984" height="42.5" fill="none" id="damage-recovery-en-d-label12"/>
+<text data-panel="damage-recovery-en-d-label12" x="870" y="440" font-family="l0g Encryption Damage" font-size="25" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Resume</text>
+<rect x="8" y="455.24" width="984" height="40.8" fill="none" id="damage-recovery-en-d-label13"/>
+<text data-panel="damage-recovery-en-d-label13" x="870" y="485" font-family="l0g Encryption Damage" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Verified service</text>
+<rect x="16" y="545.24" width="968" height="40.8" fill="none" id="damage-recovery-en-d-label14"/>
+<text data-panel="damage-recovery-en-d-label14" x="24" y="575" font-family="l0g Encryption Damage" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Verified resumption may leave an already stolen readable copy outside.</text>
+<rect x="16" y="595.24" width="968" height="40.8" fill="none" id="damage-recovery-en-d-label15"/>
+<text data-panel="damage-recovery-en-d-label15" x="24" y="625" font-family="l0g Encryption Damage" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Orange, July 2025: isolation-related disruptions.</text>
+<rect x="16" y="645.24" width="968" height="40.8" fill="none" id="damage-recovery-en-d-label16"/>
+<text data-panel="damage-recovery-en-d-label16" x="24" y="675" font-family="l0g Encryption Damage" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">The copy branch remains a scenario separate from that incident.</text>
+</svg>

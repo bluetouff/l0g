@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="damage-recovery-fr-m-title damage-recovery-fr-m-desc" class="l0g-damage-svg" style="width:100%;height:auto">
+<title id="damage-recovery-fr-m-title">La reprise du service et le devenir des copies</title><desc id="damage-recovery-fr-m-desc">Un parcours général conduit de la détection au confinement, à la remise en état et à une reprise vérifiée. Une branche distincte suppose qu’une copie lisible a déjà été emportée et peut rester à l’extérieur. Le communiqué Orange de juillet 2025 illustre les perturbations liées à l’isolement ; la copie hypothétique lui reste distincte.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-surface)"/>
+<rect x="16" y="17.96" width="388" height="35.7" fill="none" id="damage-recovery-fr-m-label1"/>
+<text data-panel="damage-recovery-fr-m-label1" x="24" y="44" font-family="l0g Encryption Damage" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-signal)">RÉTABLIR LE SERVICE</text>
+<rect x="16" y="58.44" width="388" height="32.3" fill="none" id="damage-recovery-fr-m-label2"/>
+<text data-panel="damage-recovery-fr-m-label2" x="24" y="82" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Une copie peut déjà être à l’extérieur</text>
+<path d="M40.5 193.9 L89.5 193.9 L89.5 222.6 L40.5 222.6 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="detection"/>
+<path d="M34.900000000000006 227.5 L95.1 227.5 L89.5 222.6 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34.900000000000006 227.5 L40.5 222.6" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="46.1" y="334.6" width="37.8" height="30.8" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="containment"/>
+<path d="M52.4 344.4 L77.6 344.4 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.4 355.6 L77.6 355.6" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="59.4" cy="344.4" r="2.1" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="70.6" cy="355.6" r="2.1" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M46.1 476.7 L83.9 476.7 L83.9 507.5 L46.1 507.5 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="rebuilding"/>
+<path d="M43.3 476.7 L43.3 470.4 L86.7 470.4 L86.7 476.7 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M59.4 486.5 L70.6 486.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="65" cy="630" r="17.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="resumption"/>
+<path d="M56.6 630 L62.9 636.3 L74.1 621.6" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M65 238 L65 321" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="recovery-route" data-from="detection" data-to="containment"/>
+<path d="M61 314 L65 321 L69 314" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M65 378 L65 460" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="recovery-route" data-from="containment" data-to="rebuilding"/>
+<path d="M61 453 L65 460 L69 453" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M65 520 L65 600" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="recovery-route" data-from="rebuilding" data-to="resumption"/>
+<path d="M61 593 L65 600 L69 593" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="190.2" width="404" height="34" fill="none" id="damage-recovery-fr-m-label3"/>
+<text data-panel="damage-recovery-fr-m-label3" x="170" y="215" font-family="l0g Encryption Damage" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Détecter</text>
+<rect x="8" y="330.2" width="404" height="34" fill="none" id="damage-recovery-fr-m-label4"/>
+<text data-panel="damage-recovery-fr-m-label4" x="170" y="355" font-family="l0g Encryption Damage" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Contenir</text>
+<rect x="8" y="470.2" width="404" height="34" fill="none" id="damage-recovery-fr-m-label5"/>
+<text data-panel="damage-recovery-fr-m-label5" x="170" y="495" font-family="l0g Encryption Damage" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Réparer</text>
+<rect x="8" y="610.2" width="404" height="34" fill="none" id="damage-recovery-fr-m-label6"/>
+<text data-panel="damage-recovery-fr-m-label6" x="170" y="635" font-family="l0g Encryption Damage" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Reprendre</text>
+<path d="M313.9 193.3 L337.7 193.3 L346.1 201.7 L346.1 236.7 L313.9 236.7 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="copy" data-role="plaintext-copy" data-mode="conditional"/>
+<path d="M337.7 193.3 L337.7 201.7 L346.1 201.7 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M320.9 209.4 L339.1 209.4 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M320.9 217.1 L339.1 217.1 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M320.9 224.8 L332.1 224.8" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M313.9 638.3 L337.7 638.3 L346.1 646.7 L346.1 681.7 L313.9 681.7 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="copy" data-role="external-copy" data-mode="conditional"/>
+<path d="M337.7 638.3 L337.7 646.7 L346.1 646.7 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M320.9 654.4 L339.1 654.4 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M320.9 662.1 L339.1 662.1 " fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M320.9 669.8 L332.1 669.8" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M351 215 L395 215 L395 660 L351 660" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6" data-metric="copy-persistence" data-from="plaintext-copy" data-to="external-copy" data-mode="conditional"/>
+<path d="M358 656 L351 660 L358 664" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="111.44" width="404" height="32.3" fill="none" id="damage-recovery-fr-m-label7"/>
+<text data-panel="damage-recovery-fr-m-label7" x="330" y="135" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-accent)">Copie</text>
+<rect x="8" y="141.44" width="404" height="32.3" fill="none" id="damage-recovery-fr-m-label8"/>
+<text data-panel="damage-recovery-fr-m-label8" x="330" y="165" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-accent)">lisible</text>
+<rect x="8" y="396.44" width="404" height="32.3" fill="none" id="damage-recovery-fr-m-label9"/>
+<text data-panel="damage-recovery-fr-m-label9" x="330" y="420" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-accent)">Si déjà</text>
+<rect x="8" y="426.44" width="404" height="32.3" fill="none" id="damage-recovery-fr-m-label10"/>
+<text data-panel="damage-recovery-fr-m-label10" x="330" y="450" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-accent)">emportée</text>
+<rect x="8" y="696.44" width="404" height="32.3" fill="none" id="damage-recovery-fr-m-label11"/>
+<text data-panel="damage-recovery-fr-m-label11" x="330" y="720" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-accent)">Copie</text>
+<rect x="8" y="726.44" width="404" height="32.3" fill="none" id="damage-recovery-fr-m-label12"/>
+<text data-panel="damage-recovery-fr-m-label12" x="330" y="750" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-accent)">conservée</text>
+<rect x="16" y="791.44" width="388" height="32.3" fill="none" id="damage-recovery-fr-m-label13"/>
+<text data-panel="damage-recovery-fr-m-label13" x="24" y="815" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Orange : isolement et perturbations.</text>
+<rect x="16" y="828.44" width="388" height="32.3" fill="none" id="damage-recovery-fr-m-label14"/>
+<text data-panel="damage-recovery-fr-m-label14" x="24" y="852" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Juillet 2025. Copie : scénario distinct.</text>
+<rect x="16" y="866.44" width="388" height="32.3" fill="none" id="damage-recovery-fr-m-label15"/>
+<text data-panel="damage-recovery-fr-m-label15" x="24" y="890" font-family="l0g Encryption Damage" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Modèle qualitatif, durées non mesurées.</text>
+</svg>
