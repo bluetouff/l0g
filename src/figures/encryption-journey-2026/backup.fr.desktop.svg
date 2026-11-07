@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="journey-backup-fr-d-title journey-backup-fr-d-desc" class="l0g-journey-svg" style="width:100%;height:auto">
+<title id="journey-backup-fr-d-title">La copie d’une clé change la récupération</title><desc id="journey-backup-fr-d-desc">Cas Apple : Messages dans iCloud et Sauvegarde iCloud activés. Une copie de la clé Messages se trouve dans la sauvegarde. Le détenteur du moyen d’ouverture diffère entre protection standard et avancée.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-surface)"/>
+<rect x="16" y="11.76" width="968" height="44.2" fill="none" id="journey-backup-fr-d-label1"/>
+<text data-panel="journey-backup-fr-d-label1" x="24" y="44" font-family="l0g Encryption Journey" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">APPLE · CONFIGURATION DÉCRITE</text>
+<rect x="16" y="51.24" width="968" height="40.8" fill="none" id="journey-backup-fr-d-label2"/>
+<text data-panel="journey-backup-fr-d-label2" x="24" y="81" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Messages iCloud + Sauvegarde iCloud</text>
+<rect x="16" y="105.28" width="968" height="47.6" fill="none" id="journey-backup-fr-d-label3"/>
+<text data-panel="journey-backup-fr-d-label3" x="24" y="140" font-family="l0g Encryption Journey" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-amber)">Protection standard</text>
+<rect x="8" y="165.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label4"/>
+<text data-panel="journey-backup-fr-d-label4" x="140" y="195" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Apple</text>
+<circle cx="122" cy="250" r="12" fill="none" stroke="var(--color-amber)" stroke-width="1.5" data-metric="backup-key" data-to="provider" data-mode="standard"/>
+<path d="M134.0 250 L168.8 250 L168.8 260.8 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M154.4 250 L154.4 258.4" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="321" y="216" width="78" height="68" fill="none" stroke="var(--color-amber)" stroke-width="1.5"/>
+<circle cx="351.5" cy="250" r="7" fill="none" stroke="var(--color-amber)" stroke-width="1.5" data-metric="message-key-copy" data-mode="standard"/>
+<path d="M358.5 250 L378.8 250 L378.8 256.3 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M370.4 250 L370.4 254.9" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M175 250 L315 250" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="opens-backup" data-from="backup-key" data-to="backup" data-mode="standard"/>
+<path d="M308 246 L315 250 L308 254" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="285.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label5"/>
+<text data-panel="journey-backup-fr-d-label5" x="140" y="315" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Clé de</text>
+<rect x="8" y="320.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label6"/>
+<text data-panel="journey-backup-fr-d-label6" x="140" y="350" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">sauvegarde</text>
+<rect x="8" y="285.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label7"/>
+<text data-panel="journey-backup-fr-d-label7" x="360" y="315" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Copie de clé Messages</text>
+<rect x="8" y="320.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label8"/>
+<text data-panel="journey-backup-fr-d-label8" x="360" y="350" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">dans la sauvegarde</text>
+<path d="M111 442 L169 442 L169 491 L111 491 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M107 442 L107 433 L173 433 L173 442 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M131 457 L149 457" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M400 250 L490 250 L490 465 L180 465" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="opens-messages" data-from="message-key-copy" data-to="messages" data-mode="standard"/>
+<path d="M187 461 L180 465 L187 469" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="500.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label9"/>
+<text data-panel="journey-backup-fr-d-label9" x="140" y="530" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Messages iCloud</text>
+<rect x="16" y="105.28" width="968" height="47.6" fill="none" id="journey-backup-fr-d-label10"/>
+<text data-panel="journey-backup-fr-d-label10" x="524" y="140" font-family="l0g Encryption Journey" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-signal)">Protection avancée</text>
+<rect x="8" y="165.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label11"/>
+<text data-panel="journey-backup-fr-d-label11" x="640" y="195" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Appareils de confiance</text>
+<circle cx="622" cy="250" r="12" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="backup-key" data-to="trusted-devices" data-mode="advanced"/>
+<path d="M634.0 250 L668.8 250 L668.8 260.8 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M654.4 250 L654.4 258.4" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="821" y="216" width="78" height="68" fill="none" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="851.5" cy="250" r="7" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="message-key-copy" data-mode="advanced"/>
+<path d="M858.5 250 L878.8 250 L878.8 256.3 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M870.4 250 L870.4 254.9" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M675 250 L815 250" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="opens-backup" data-from="backup-key" data-to="backup" data-mode="advanced"/>
+<path d="M808 246 L815 250 L808 254" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="285.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label12"/>
+<text data-panel="journey-backup-fr-d-label12" x="640" y="315" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Clé de</text>
+<rect x="8" y="320.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label13"/>
+<text data-panel="journey-backup-fr-d-label13" x="640" y="350" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">sauvegarde</text>
+<rect x="8" y="285.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label14"/>
+<text data-panel="journey-backup-fr-d-label14" x="860" y="315" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Copie de clé Messages</text>
+<rect x="8" y="320.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label15"/>
+<text data-panel="journey-backup-fr-d-label15" x="860" y="350" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">dans la sauvegarde</text>
+<path d="M611 442 L669 442 L669 491 L611 491 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M607 442 L607 433 L673 433 L673 442 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M631 457 L649 457" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M900 250 L990 250 L990 465 L680 465" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="opens-messages" data-from="message-key-copy" data-to="messages" data-mode="advanced"/>
+<path d="M687 461 L680 465 L687 469" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="500.24" width="984" height="40.8" fill="none" id="journey-backup-fr-d-label16"/>
+<text data-panel="journey-backup-fr-d-label16" x="640" y="530" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Messages iCloud</text>
+<path d="M500 122 L500 558" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="567.76" width="968" height="44.2" fill="none" id="journey-backup-fr-d-label17"/>
+<text data-panel="journey-backup-fr-d-label17" x="24" y="600" font-family="l0g Encryption Journey" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-muted)">Le détenteur des moyens de lecture change.</text>
+<rect x="16" y="620.24" width="968" height="40.8" fill="none" id="journey-backup-fr-d-label18"/>
+<text data-panel="journey-backup-fr-d-label18" x="24" y="650" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Mode avancé : pays et comptes éligibles ; règles propres aux métadonnées.</text>
+</svg>

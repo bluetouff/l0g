@@ -1,0 +1,107 @@
+---
+import layers_fr_desktop from '../figures/encryption-journey-2026/layers.fr.desktop.svg?raw';
+import layers_fr_mobile from '../figures/encryption-journey-2026/layers.fr.mobile.svg?raw';
+import layers_en_desktop from '../figures/encryption-journey-2026/layers.en.desktop.svg?raw';
+import layers_en_mobile from '../figures/encryption-journey-2026/layers.en.mobile.svg?raw';
+import readers_fr_desktop from '../figures/encryption-journey-2026/readers.fr.desktop.svg?raw';
+import readers_fr_mobile from '../figures/encryption-journey-2026/readers.fr.mobile.svg?raw';
+import readers_en_desktop from '../figures/encryption-journey-2026/readers.en.desktop.svg?raw';
+import readers_en_mobile from '../figures/encryption-journey-2026/readers.en.mobile.svg?raw';
+import backup_fr_desktop from '../figures/encryption-journey-2026/backup.fr.desktop.svg?raw';
+import backup_fr_mobile from '../figures/encryption-journey-2026/backup.fr.mobile.svg?raw';
+import backup_en_desktop from '../figures/encryption-journey-2026/backup.en.desktop.svg?raw';
+import backup_en_mobile from '../figures/encryption-journey-2026/backup.en.mobile.svg?raw';
+interface Props { lang?: 'fr' | 'en'; kind: 'layers' | 'readers' | 'backup' }
+const { lang = 'fr', kind } = Astro.props;
+const captions = {
+  "layers": {
+    "number": "01",
+    "sources": [
+      "T04",
+      "T05",
+      "T08"
+    ],
+    "fr": {
+      "title": "Où le contenu devient lisible",
+      "description": "Deux trajets comparés : des connexions TLS terminées au service, puis une couche de bout en bout superposée au transport. Le relais possède du contenu lisible uniquement dans le premier modèle.",
+      "method": "Modèles fonctionnels simplifiés, sans échelle quantitative. Le premier suppose un contenu remis au service sans couche applicative de bout en bout. Le second conserve TLS pour les connexions et ajoute une protection du contenu entre appareils autorisés. Les flèches décrivent des fonctions, distinctes d’une trace de paquets réelle. Les clés, l’identité des interlocuteurs, la sécurité des appareils, les copies et les métadonnées exigent leur propre examen. RFC 9846 décrit TLS 1.3 ; RFC 9750 décrit une architecture de messagerie, sans représenter tous les produits."
+    },
+    "en": {
+      "title": "Where content becomes readable",
+      "description": "Two paths compared: TLS connections terminating at the service, followed by an end-to-end layer over the transport. The relay handles readable content only in the first model.",
+      "method": "Simplified functional models, without a quantitative scale. The first assumes content delivered to the service without application-layer end-to-end encryption. The second retains TLS connections and adds content protection between authorised devices. Arrows describe functions rather than an actual packet trace. Keys, participant identity, device security, copies and metadata need separate assessment. RFC 9846 describes TLS 1.3; RFC 9750 describes a messaging architecture rather than every product."
+    }
+  },
+  "readers": {
+    "number": "02",
+    "sources": [
+      "T01",
+      "T02",
+      "T05",
+      "T07",
+      "T24"
+    ],
+    "fr": {
+      "title": "Un appareil lié peut devenir un lecteur",
+      "description": "Les appareils associés à un même compte reçoivent des messages selon les fonctions du service. Le transfert éventuel d’un historique suit une voie distincte de la livraison des messages futurs.",
+      "method": "Schéma fonctionnel des appareils liés, sans reproduction d’un leurre ou d’une procédure d’attaque. Les symboles d’appareils servent la lecture et ne mesurent aucun nombre de victimes ou d’appareils généralement autorisés. Un nouvel appareil devient un destinataire après son association ; l’étendue des messages accessibles dépend du service et des réglages. La flèche d’historique est conditionnelle à une fonction disponible et au choix effectué. Les alertes de mars 2026 décrivent des abus de fonctions légitimes, sans démontrer une rupture du chiffrement. Une identité cryptographique vérifiée reste distincte d’une habilitation professionnelle."
+    },
+    "en": {
+      "title": "A linked device can become a reader",
+      "description": "Devices linked to one account receive messages according to the service’s functions. An optional history transfer follows a route distinct from delivery of future messages.",
+      "method": "A functional model of linked devices, without reproducing a lure or attack procedure. Device symbols aid explanation and measure neither victims nor a typical permitted-device count. A new device becomes a recipient after linking; its access depends on the service and settings. The history arrow is conditional on an available function and the choice made. March 2026 alerts describe abuse of legitimate functions rather than evidence of broken encryption. Verified cryptographic identity remains separate from professional authorisation."
+    }
+  },
+  "backup": {
+    "number": "03",
+    "sources": [
+      "T11",
+      "T12",
+      "T13"
+    ],
+    "fr": {
+      "title": "La copie d’une clé change la récupération",
+      "description": "Cas Apple avec Messages dans iCloud et Sauvegarde iCloud activés. La sauvegarde contient une copie de la clé Messages. La protection standard et la Protection avancée des données répartissent différemment les moyens de lecture.",
+      "method": "Configuration précise décrite par Apple, documentation consultée le 7 novembre 2026. Le dessin isole deux rôles de clés : ouvrir la sauvegarde, puis utiliser la copie de clé Messages qu’elle contient ; il simplifie la hiérarchie cryptographique complète. Sous protection standard, Apple conserve les clés de sauvegarde dans ses centres de données. Avec la Protection avancée des données, les moyens de déchiffrement sont sous le contrôle des appareils de confiance. La disponibilité de cette protection dépend du pays et de l’éligibilité du compte ; les comptes Apple gérés et les comptes enfants sont exclus. Au Royaume-Uni, les utilisateurs qui ne l’ont pas déjà activée ne peuvent plus l’activer selon la notice consultée. Certaines métadonnées et les autres catégories iCloud suivent des règles propres. Description du fournisseur, distincte d’un audit indépendant de son infrastructure."
+    },
+    "en": {
+      "title": "A copied key changes the recovery path",
+      "description": "Apple’s case with Messages in iCloud and iCloud Backup enabled. The backup contains a copy of the Messages key. Standard protection and Advanced Data Protection allocate the means of reading differently.",
+      "method": "The specific configuration described by Apple, with documentation checked on 7 November 2026. The drawing isolates two key roles: opening the backup and then using the copy of the Messages key inside it; it simplifies the complete cryptographic hierarchy. Under standard protection, Apple holds backup keys in its data centres. With Advanced Data Protection, decryption is controlled by trusted devices. Availability depends on country and account eligibility; managed Apple accounts and child accounts are excluded. In the UK, users who have not already enabled it can no longer enable it according to the reviewed notice. Some metadata and other iCloud categories have separate rules. This is the provider’s description, separate from an independent infrastructure audit."
+    }
+  }
+} as const;
+const art = {fr:{layers:{desktop:layers_fr_desktop,mobile:layers_fr_mobile},readers:{desktop:readers_fr_desktop,mobile:readers_fr_mobile},backup:{desktop:backup_fr_desktop,mobile:backup_fr_mobile}},en:{layers:{desktop:layers_en_desktop,mobile:layers_en_mobile},readers:{desktop:readers_en_desktop,mobile:readers_en_mobile},backup:{desktop:backup_en_desktop,mobile:backup_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new TypeError('Unknown EncryptionJourneyFigure variant');
+const entry = captions[kind], text = entry[lang], svg = art[lang][kind];
+---
+<figure class="encryption-journey-figure" id={`figure-${entry.number}`} data-kind={kind}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption>
+    <span class="figure-number">FIGURE {entry.number}</span>
+    <strong>{text.title}</strong>
+    {text.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${id}`}>[{id}]</a>)}
+  </figcaption>
+  <details>
+    <summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary>
+    <p>{text.method}</p>
+  </details>
+</figure>
+<style>
+  @font-face { font-family: 'l0g Encryption Journey'; src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  .encryption-journey-figure { width: 100%; max-width: 800px; margin: 2.8rem auto; padding-bottom: 1rem; container-type: inline-size; overflow: visible; }
+  .desktop-art, .mobile-art { width: 100%; line-height: 0; }
+  .mobile-art { display: none; max-width: 340px; margin-inline: auto; }
+  .encryption-journey-figure :global(svg) { display: block; width: 100%; max-width: 100%; height: auto; letter-spacing: normal; overflow: visible; }
+  .encryption-journey-figure figcaption { padding: .85rem 0 .45rem; font-family: var(--font-read); font-size: .9rem; line-height: 1.7; color: var(--color-muted); }
+  .encryption-journey-figure figcaption strong { display: block; margin: .25rem 0; font-size: 1rem; font-weight: 400; color: var(--color-paper); }
+  .figure-number { font-size: .75rem; letter-spacing: .12em; color: var(--color-signal); }
+  .encryption-journey-figure a { margin-right: .45rem; }
+  .encryption-journey-figure details { margin-top: .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.7; }
+  .encryption-journey-figure summary { cursor: pointer; padding: .35rem 0; }
+  .encryption-journey-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .encryption-journey-figure p { margin-top: .7rem; }
+  @container (max-width: 500px) { .desktop-art { display: none; } .mobile-art { display: block; } }
+  @media print { .desktop-art { display: block; } .mobile-art { display: none; } .encryption-journey-figure { break-inside: avoid; } }
+</style>

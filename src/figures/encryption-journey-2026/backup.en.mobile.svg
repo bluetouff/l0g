@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="journey-backup-en-m-title journey-backup-en-m-desc" class="l0g-journey-svg" style="width:100%;height:auto">
+<title id="journey-backup-en-m-title">A copied key changes the recovery path</title><desc id="journey-backup-en-m-desc">Apple case with Messages in iCloud and iCloud Backup enabled. A copy of the Messages key is inside the backup. The holder of the means of opening it differs between standard and advanced protection.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-surface)"/>
+<rect x="16" y="20.44" width="388" height="32.3" fill="none" id="journey-backup-en-m-label1"/>
+<text data-panel="journey-backup-en-m-label1" x="24" y="44" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">APPLE · BACKUP MODEL</text>
+<rect x="16" y="57.44" width="388" height="32.3" fill="none" id="journey-backup-en-m-label2"/>
+<text data-panel="journey-backup-en-m-label2" x="24" y="81" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Messages in iCloud + iCloud Backup</text>
+<rect x="16" y="107.72" width="388" height="37.4" fill="none" id="journey-backup-en-m-label3"/>
+<text data-panel="journey-backup-en-m-label3" x="24" y="135" font-family="l0g Encryption Journey" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-amber)">Standard protection</text>
+<rect x="16" y="151.44" width="388" height="32.3" fill="none" id="journey-backup-en-m-label4"/>
+<text data-panel="journey-backup-en-m-label4" x="24" y="175" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Key held by: Apple</text>
+<circle cx="52" cy="255" r="8" fill="none" stroke="var(--color-amber)" stroke-width="1.5" data-metric="backup-key" data-to="provider" data-mode="standard"/>
+<path d="M60.0 255 L83.2 255 L83.2 262.2 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M73.6 255 L73.6 260.6" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="178.8" y="227.8" width="62.4" height="54.4" fill="none" stroke="var(--color-amber)" stroke-width="1.5"/>
+<circle cx="203.2" cy="255" r="5.6" fill="none" stroke="var(--color-amber)" stroke-width="1.5" data-metric="message-key-copy" data-mode="standard"/>
+<path d="M208.79999999999998 255 L225.04 255 L225.04 260.04 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M218.32 255 L218.32 258.92" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M333.7 238.9 L374.3 238.9 L374.3 273.2 L333.7 273.2 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M330.9 238.9 L330.9 232.6 L377.1 232.6 L377.1 238.9 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M347.7 249.4 L360.3 249.4" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M92 255 L176 255" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="opens-backup" data-from="backup-key" data-to="backup" data-mode="standard"/>
+<path d="M169 251 L176 255 L169 259" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M244 255 L329 255" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="opens-messages" data-from="message-key-copy" data-to="messages" data-mode="standard"/>
+<path d="M322 251 L329 255 L322 259" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="290.06" width="404" height="31.45" fill="none" id="journey-backup-en-m-label5"/>
+<text data-panel="journey-backup-en-m-label5" x="64" y="313" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Backup key</text>
+<rect x="8" y="290.06" width="404" height="31.45" fill="none" id="journey-backup-en-m-label6"/>
+<text data-panel="journey-backup-en-m-label6" x="210" y="313" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Copied key</text>
+<rect x="8" y="320.06" width="404" height="31.45" fill="none" id="journey-backup-en-m-label7"/>
+<text data-panel="journey-backup-en-m-label7" x="210" y="343" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Messages</text>
+<rect x="8" y="290.06" width="404" height="31.45" fill="none" id="journey-backup-en-m-label8"/>
+<text data-panel="journey-backup-en-m-label8" x="354" y="313" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Messages</text>
+<rect x="16" y="447.72" width="388" height="37.4" fill="none" id="journey-backup-en-m-label9"/>
+<text data-panel="journey-backup-en-m-label9" x="24" y="475" font-family="l0g Encryption Journey" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-signal)">Advanced protection</text>
+<rect x="16" y="491.44" width="388" height="32.3" fill="none" id="journey-backup-en-m-label10"/>
+<text data-panel="journey-backup-en-m-label10" x="24" y="515" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Key held by: trusted devices</text>
+<circle cx="52" cy="595" r="8" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="backup-key" data-to="trusted-devices" data-mode="advanced"/>
+<path d="M60.0 595 L83.2 595 L83.2 602.2 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M73.6 595 L73.6 600.6" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="178.8" y="567.8" width="62.4" height="54.4" fill="none" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="203.2" cy="595" r="5.6" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="message-key-copy" data-mode="advanced"/>
+<path d="M208.79999999999998 595 L225.04 595 L225.04 600.04 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M218.32 595 L218.32 598.92" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M333.7 578.9 L374.3 578.9 L374.3 613.2 L333.7 613.2 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M330.9 578.9 L330.9 572.6 L377.1 572.6 L377.1 578.9 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M347.7 589.4 L360.3 589.4" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M92 595 L176 595" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="opens-backup" data-from="backup-key" data-to="backup" data-mode="advanced"/>
+<path d="M169 591 L176 595 L169 599" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M244 595 L329 595" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="opens-messages" data-from="message-key-copy" data-to="messages" data-mode="advanced"/>
+<path d="M322 591 L329 595 L322 599" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="630.06" width="404" height="31.45" fill="none" id="journey-backup-en-m-label11"/>
+<text data-panel="journey-backup-en-m-label11" x="64" y="653" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Backup key</text>
+<rect x="8" y="630.06" width="404" height="31.45" fill="none" id="journey-backup-en-m-label12"/>
+<text data-panel="journey-backup-en-m-label12" x="210" y="653" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Copied key</text>
+<rect x="8" y="660.06" width="404" height="31.45" fill="none" id="journey-backup-en-m-label13"/>
+<text data-panel="journey-backup-en-m-label13" x="210" y="683" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Messages</text>
+<rect x="8" y="630.06" width="404" height="31.45" fill="none" id="journey-backup-en-m-label14"/>
+<text data-panel="journey-backup-en-m-label14" x="354" y="653" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Messages</text>
+<rect x="16" y="756.06" width="388" height="31.45" fill="none" id="journey-backup-en-m-label15"/>
+<text data-panel="journey-backup-en-m-label15" x="24" y="779" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Control of decryption changes.</text>
+<rect x="16" y="821.44" width="388" height="32.3" fill="none" id="journey-backup-en-m-label16"/>
+<text data-panel="journey-backup-en-m-label16" x="24" y="845" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Metadata has separate rules.</text>
+<rect x="16" y="855.44" width="388" height="32.3" fill="none" id="journey-backup-en-m-label17"/>
+<text data-panel="journey-backup-en-m-label17" x="24" y="879" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Advanced mode: eligible country/account.</text>
+</svg>

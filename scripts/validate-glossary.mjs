@@ -1380,7 +1380,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 403, 'Le corpus conserve ses termes et ajoute les protections du chiffrement');
+assert.equal(glossaryAtlasEnBySlug.size, 405, 'Le corpus conserve ses termes et ajoute la confidentialité persistante et la récupération');
 for (const slug of ['credits-budgetaires-americains', 'reconciliation-budgetaire']) {
   assert.ok(glossaryAtlasEnBySlug.has(slug), `Missing English budget definition: ${slug}`);
 }
@@ -1584,8 +1584,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 788, 'Le corpus conserve ses notions et ajoute les protections du chiffrement');
-assert.equal(glossaryAtlasEntries.length, 393, 'Les notions du chiffrement disposent de sources et d’un lien vers l’analyse');
+assert.equal(glossaryEntries.length, 790, 'Le corpus conserve ses notions et ajoute la confidentialité persistante et la récupération');
+assert.equal(glossaryAtlasEntries.length, 395, 'Les deux nouvelles notions disposent de sources et d’un lien vers l’analyse');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2012,7 +2012,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 1014, 'L’agilité cryptographique et les liens réciproques complètent le graphe existant');
+assert.equal(glossaryAtlasEdgeCount, 1018, 'Les quatre liens des nouvelles définitions complètent le graphe existant');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
@@ -2379,6 +2379,22 @@ for (const [slug, sources] of Object.entries(encryptionSources)) {
   assert.equal(glossaryReferenceBySlug[slug], undefined);
   assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
   for (const [entry, article] of [[fr[0], '/posts/chiffrement-portes-derobees-gouvernement/'], [en[0], '/en/analysis/france-encryption-backdoor-safeguard/']]) {
+    assert.equal(entry.guide, article);
+    assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+    assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);
+  }
+}
+
+// Forward secrecy and recovery remain short definitions with explicit architecture limits.
+const encryptionJourneySources = {"confidentialite-persistante": ["https://datatracker.ietf.org/doc/html/rfc9846", "https://signal.org/docs/specifications/doubleratchet/"], "cle-de-recuperation": ["https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final", "https://support.signal.org/hc/en-us/articles/9708267671322-Signal-Secure-Backups"]};
+for (const [slug, sources] of Object.entries(encryptionJourneySources)) {
+  const fr = glossaryEntries.filter(entry => entry.slug === slug);
+  const en = glossaryAtlasEn.filter(entry => entry.slug === slug);
+  assert.equal(fr.length, 1); assert.equal(en.length, 1);
+  assert.equal(fr[0].reference, undefined); assert.equal(fr[0].referenceCandidate, false);
+  assert.equal(glossaryReferenceBySlug[slug], undefined);
+  assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
+  for (const [entry, article] of [[fr[0], '/posts/chiffrement-messages-appareils-sauvegardes/'], [en[0], '/en/analysis/encryption-messages-devices-backups/']]) {
     assert.equal(entry.guide, article);
     assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
     assert.deepEqual(entry.atlas.sources.map(source => source.href), sources);

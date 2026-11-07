@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="journey-layers-en-m-title journey-layers-en-m-desc" class="l0g-journey-svg" style="width:100%;height:auto">
+<title id="journey-layers-en-m-title">Transport and content have separate boundaries</title><desc id="journey-layers-en-m-desc">Two models: TLS terminates at the service; an end-to-end layer keeps content encrypted at the relay. The layers can be combined.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-surface)"/>
+<rect x="16" y="19.2" width="388" height="34" fill="none" id="journey-layers-en-m-label1"/>
+<text data-panel="journey-layers-en-m-label1" x="24" y="44" font-family="l0g Encryption Journey" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-signal)">TWO LAYERS OF PROTECTION</text>
+<rect x="16" y="58.44" width="388" height="32.3" fill="none" id="journey-layers-en-m-label2"/>
+<text data-panel="journey-layers-en-m-label2" x="24" y="82" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Conceptual content paths</text>
+<rect x="16" y="111.2" width="388" height="34" fill="none" id="journey-layers-en-m-label3"/>
+<text data-panel="journey-layers-en-m-label3" x="24" y="136" font-family="l0g Encryption Journey" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-amber)">TLS transport</text>
+<path d="M49.7 199.0 L78.3 199.0 L78.3 251.0 L49.7 251.0 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M59.45 243.85 L68.55 243.85" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="186.6" y="208.75" width="46.8" height="32.5" fill="none" stroke="var(--color-muted)" stroke-width="1.5"/>
+<path d="M195.7 219.8 L224.3 219.8 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M195.7 230.2 L224.3 230.2" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M339.7 199.0 L368.3 199.0 L368.3 251.0 L339.7 251.0 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M349.45 243.85 L358.55 243.85" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M92 225 L180 225" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="transport-route" data-from="device-a" data-to="service" data-mode="tls"/>
+<path d="M173 221 L180 225 L173 229" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="164.44" width="404" height="32.3" fill="none" id="journey-layers-en-m-label4"/>
+<text data-panel="journey-layers-en-m-label4" x="136" y="188" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-amber)">TLS</text>
+<path d="M240 225 L326 225" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="transport-route" data-from="service" data-to="device-b" data-mode="tls"/>
+<path d="M319 221 L326 225 L319 229" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="164.44" width="404" height="32.3" fill="none" id="journey-layers-en-m-label5"/>
+<text data-panel="journey-layers-en-m-label5" x="283" y="188" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-amber)">TLS</text>
+<rect x="8" y="270.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label6"/>
+<text data-panel="journey-layers-en-m-label6" x="64" y="293" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Device A</text>
+<rect x="8" y="301.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label7"/>
+<text data-panel="journey-layers-en-m-label7" x="64" y="324" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-metric="content-state" data-to="device-a" data-mode="readable">Readable</text>
+<rect x="8" y="270.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label8"/>
+<text data-panel="journey-layers-en-m-label8" x="210" y="293" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Service</text>
+<rect x="8" y="301.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label9"/>
+<text data-panel="journey-layers-en-m-label9" x="210" y="324" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-accent)" data-metric="content-state" data-to="service" data-mode="readable">Readable</text>
+<rect x="8" y="270.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label10"/>
+<text data-panel="journey-layers-en-m-label10" x="354" y="293" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Device B</text>
+<rect x="8" y="301.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label11"/>
+<text data-panel="journey-layers-en-m-label11" x="354" y="324" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-metric="content-state" data-to="device-b" data-mode="readable">Readable</text>
+<rect x="16" y="431.44" width="388" height="32.3" fill="none" id="journey-layers-en-m-label12"/>
+<text data-panel="journey-layers-en-m-label12" x="24" y="455" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">TLS transport + end-to-end</text>
+<path d="M49.7 539.0 L78.3 539.0 L78.3 591.0 L49.7 591.0 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M59.45 583.85 L68.55 583.85" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="186.6" y="548.75" width="46.8" height="32.5" fill="none" stroke="var(--color-muted)" stroke-width="1.5"/>
+<path d="M195.7 559.8 L224.3 559.8 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M195.7 570.2 L224.3 570.2" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M339.7 539.0 L368.3 539.0 L368.3 591.0 L339.7 591.0 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M349.45 583.85 L358.55 583.85" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M92 565 L180 565" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="transport-route" data-from="device-a" data-to="service" data-mode="tls"/>
+<path d="M173 561 L180 565 L173 569" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="504.44" width="404" height="32.3" fill="none" id="journey-layers-en-m-label13"/>
+<text data-panel="journey-layers-en-m-label13" x="136" y="528" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-amber)">TLS</text>
+<path d="M240 565 L326 565" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="transport-route" data-from="service" data-to="device-b" data-mode="tls"/>
+<path d="M319 561 L326 565 L319 569" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="504.44" width="404" height="32.3" fill="none" id="journey-layers-en-m-label14"/>
+<text data-panel="journey-layers-en-m-label14" x="283" y="528" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-amber)">TLS</text>
+<circle cx="57.25" cy="560" r="4.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M61.75 560 L74.8 560 L74.8 564.05 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M69.4 560 L69.4 563.15" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="347.25" cy="560" r="4.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M351.75 560 L364.8 560 L364.8 564.05 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M359.4 560 L359.4 563.15" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M78.3 545 L78.3 494 L339.7 494 L339.7 545" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="content-route" data-from="device-a" data-to="device-b" data-mode="end-to-end"/>
+<path d="M335.7 538 L339.7 545 L343.7 538" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="610.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label15"/>
+<text data-panel="journey-layers-en-m-label15" x="64" y="633" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Device A</text>
+<rect x="8" y="641.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label16"/>
+<text data-panel="journey-layers-en-m-label16" x="64" y="664" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-metric="content-state" data-to="device-a" data-mode="readable">Readable</text>
+<rect x="8" y="610.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label17"/>
+<text data-panel="journey-layers-en-m-label17" x="210" y="633" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Service</text>
+<rect x="8" y="641.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label18"/>
+<text data-panel="journey-layers-en-m-label18" x="210" y="664" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-signal)" data-metric="content-state" data-to="service" data-mode="encrypted">Encrypted</text>
+<rect x="8" y="610.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label19"/>
+<text data-panel="journey-layers-en-m-label19" x="354" y="633" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Device B</text>
+<rect x="8" y="641.06" width="404" height="31.45" fill="none" id="journey-layers-en-m-label20"/>
+<text data-panel="journey-layers-en-m-label20" x="354" y="664" font-family="l0g Encryption Journey" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)" data-metric="content-state" data-to="device-b" data-mode="readable">Readable</text>
+<rect x="16" y="746.44" width="388" height="32.3" fill="none" id="journey-layers-en-m-label21"/>
+<text data-panel="journey-layers-en-m-label21" x="24" y="770" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">The second path protects content</text>
+<rect x="16" y="778.44" width="388" height="32.3" fill="none" id="journey-layers-en-m-label22"/>
+<text data-panel="journey-layers-en-m-label22" x="24" y="802" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">between authorised devices.</text>
+<rect x="16" y="840.44" width="388" height="32.3" fill="none" id="journey-layers-en-m-label23"/>
+<text data-panel="journey-layers-en-m-label23" x="24" y="864" font-family="l0g Encryption Journey" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Metadata depends on the service.</text>
+</svg>

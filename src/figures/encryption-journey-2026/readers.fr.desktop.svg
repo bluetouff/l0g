@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="journey-readers-fr-d-title journey-readers-fr-d-desc" class="l0g-journey-svg" style="width:100%;height:auto">
+<title id="journey-readers-fr-d-title">Un appareil lié peut devenir un lecteur</title><desc id="journey-readers-fr-d-desc">Un même compte dessert plusieurs appareils autorisés. Les messages futurs et un transfert éventuel de l’historique suivent des voies distinctes.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-surface)"/>
+<rect x="16" y="13.76" width="968" height="44.2" fill="none" id="journey-readers-fr-d-label1"/>
+<text data-panel="journey-readers-fr-d-label1" x="24" y="46" font-family="l0g Encryption Journey" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">UN COMPTE, PLUSIEURS APPAREILS</text>
+<rect x="16" y="54.24" width="968" height="40.8" fill="none" id="journey-readers-fr-d-label2"/>
+<text data-panel="journey-readers-fr-d-label2" x="24" y="84" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Modèle fonctionnel des appareils liés</text>
+<path d="M128 180 L172 180 L172 260 L128 260 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="authorised-reader" data-to="existing-phone"/>
+<path d="M143 249 L157 249" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M438 192 L522 192 L522 241 L438 241 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="authorised-reader" data-to="existing-computer"/>
+<path d="M428 249 L532 249 L522 241 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M428 249 L438 241" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M768 192 L852 192 L852 241 L768 241 Z" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="authorised-reader" data-to="new-device"/>
+<path d="M758 249 L862 249 L852 241 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M758 249 L768 241" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="265.76" width="984" height="44.2" fill="none" id="journey-readers-fr-d-label3"/>
+<text data-panel="journey-readers-fr-d-label3" x="150" y="298" font-family="l0g Encryption Journey" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Mobile</text>
+<rect x="8" y="265.76" width="984" height="44.2" fill="none" id="journey-readers-fr-d-label4"/>
+<text data-panel="journey-readers-fr-d-label4" x="480" y="298" font-family="l0g Encryption Journey" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Ordinateur</text>
+<rect x="8" y="265.76" width="984" height="44.2" fill="none" id="journey-readers-fr-d-label5"/>
+<text data-panel="journey-readers-fr-d-label5" x="810" y="298" font-family="l0g Encryption Journey" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Nouvel appareil</text>
+<rect x="8" y="304.24" width="984" height="40.8" fill="none" id="journey-readers-fr-d-label6"/>
+<text data-panel="journey-readers-fr-d-label6" x="810" y="334" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">après association</text>
+<path d="M336 497 L404 497 L404 543 L336 543 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M336 497 L370 523 L404 497" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M370 485 L370 390" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M366 397 L370 390 L374 397" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M370 390 L80 390 L80 220 L126 220" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="future-delivery" data-from="future-messages" data-to="existing-phone"/>
+<path d="M119 216 L126 220 L119 224" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M370 390 L570 390 L570 220 L525 220" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="future-delivery" data-from="future-messages" data-to="existing-computer"/>
+<path d="M532 216 L525 220 L532 224" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M570 390 L710 390 L710 220 L765 220" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="future-delivery" data-from="future-messages" data-to="new-device"/>
+<path d="M758 216 L765 220 L758 224" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="562.76" width="984" height="44.2" fill="none" id="journey-readers-fr-d-label7"/>
+<text data-panel="journey-readers-fr-d-label7" x="370" y="595" font-family="l0g Encryption Journey" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Messages futurs</text>
+<path d="M771 497 L829 497 L829 546 L771 546 Z" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M767 497 L767 488 L833 488 L833 497 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M791 512 L809 512" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M833 520 L962 520 L962 220 L855 220" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" data-metric="history-transfer" data-from="archive" data-to="new-device" data-mode="conditional"/>
+<path d="M862 216 L855 220 L862 224" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="565.24" width="984" height="40.8" fill="none" id="journey-readers-fr-d-label8"/>
+<text data-panel="journey-readers-fr-d-label8" x="800" y="595" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Historique transféré</text>
+<rect x="8" y="600.24" width="984" height="40.8" fill="none" id="journey-readers-fr-d-label9"/>
+<text data-panel="journey-readers-fr-d-label9" x="800" y="630" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">selon le service et le choix</text>
+<rect x="16" y="648.24" width="968" height="40.8" fill="none" id="journey-readers-fr-d-label10"/>
+<text data-panel="journey-readers-fr-d-label10" x="24" y="678" font-family="l0g Encryption Journey" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Appareils illustratifs ; droits et fonctions à vérifier pour chaque service.</text>
+</svg>
