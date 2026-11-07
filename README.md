@@ -183,6 +183,16 @@ illustrations originales avec `node scripts/audit-article-social.mjs`.
 Incrémenter `ARTICLE_SOCIAL_VERSION` lors d'un changement de composition ou de
 police, afin de renouveler les URL déjà connues des robots sociaux.
 
+Les guides FR/EN disposent d'une identité distincte de manuel de référence :
+fond anthracite, livre ouvert, accents cyan et ambre, titre et extrait réel de
+`description`. La date est celle de `updatedDate` ou, à défaut, de `pubDate`.
+Un `ogImage` personnalisé conserve la priorité. Ces JPEG 1200 × 630 sont générés
+par `scripts/generate-guide-social.mjs` pendant `npm run og`, sous
+`/og/guides/fr/` et `/og/guides/en/`, avec URL empreintée et le même cache JPEG
+validé. Incrémenter `GUIDE_SOCIAL_VERSION` lors d'un changement visuel ou de
+police. `scripts/audit-guide-social.mjs` contrôle chaque guide construit, ses
+métadonnées natives, son image structurée et la conservation du texte visible.
+
 ## Ajouter une infographie
 
 Les visuels publiés doivent être locaux : SVG inline dans un fichier `.mdx`,

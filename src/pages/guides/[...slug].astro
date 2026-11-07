@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { guideSocialCard } from '../../lib/guide-social.mjs';
 import { createEditorialCacheKeys } from '../../lib/editorial-cache-context.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AiEditorialDisclosure from '../../components/AiEditorialDisclosure.astro';
@@ -23,6 +24,7 @@ export async function getStaticPaths() {
 
 const { guide } = Astro.props;
 const ogImage = guide.data.ogImage ?? `/og/${guide.id}.png`;
+const socialCard = guideSocialCard(guide, 'fr');
 const { Content } = await render(guide);
 
 const fmt = (d: Date) =>
@@ -35,7 +37,7 @@ const rt = readingTime(guide.body);
 
 const url = new URL(`/guides/${guide.id}/`, Astro.site).toString();
 const articleId = `${url}#article`;
-const imageUrl = new URL(ogImage, Astro.site).toString();
+const imageUrl = new URL(socialCard?.image ?? ogImage, Astro.site).toString();
 const englishGuides = await getCollection('guidesEn', ({ data }) => !data.draft);
 const englishGuide = englishGuides.find((entry) => entry.data.sourceGuide === guide.id);
 const englishUrl = englishGuide ? new URL(`/en/guides/${englishGuide.id}/`, Astro.site).toString() : null;
@@ -104,9 +106,11 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
 
 <BaseLayout
   title={guide.data.title}
+  ogTitle={socialCard?.title}
   description={guide.data.description}
   ogType="article"
-  ogImage={ogImage}
+  ogImage={socialCard?.image ?? ogImage}
+  ogImageAlt={socialCard?.alt}
   alternateLinks={alternateLinks}
   searchDate={updated}
   searchTags={guide.data.tags}

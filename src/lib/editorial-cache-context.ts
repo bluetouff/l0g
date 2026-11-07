@@ -1,4 +1,5 @@
 import { getCollection } from 'astro:content';
+import { guideSocialCacheKey } from './guide-social.mjs';
 import { articleSocialCacheKey } from './article-social.mjs';
 import { financingReadingPaths } from '../config/english-reading-paths.ts';
 import { frenchDossiers } from '../config/french-dossiers.ts';
@@ -21,6 +22,6 @@ export async function createEditorialCacheKeys() {
     const key = editorialCacheKey(collection, entry, collections, config);
     return collection === 'posts' || collection === 'postsEn'
       ? articleSocialCacheKey(key, entry, collection === 'posts' ? 'fr' : 'en')
-      : key;
+      : guideSocialCacheKey(key, entry, collection === 'guides' ? 'fr' : 'en');
   };
 }

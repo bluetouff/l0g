@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { guideSocialCard } from '../../../lib/guide-social.mjs';
 import { createEditorialCacheKeys } from '../../../lib/editorial-cache-context.ts';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import AiEditorialDisclosure from '../../../components/AiEditorialDisclosure.astro';
@@ -30,10 +31,11 @@ const isoPub = guide.data.pubDate.toISOString();
 const isoUpd = updated.toISOString();
 const rt = readingTime(guide.body);
 const ogImage = guide.data.ogImage ?? `/og/en/${guide.id}.png`;
+const socialCard = guideSocialCard(guide, 'en');
 
 const url = new URL(`/en/guides/${guide.id}/`, Astro.site).toString();
 const articleId = `${url}#article`;
-const imageUrl = new URL(ogImage, Astro.site).toString();
+const imageUrl = new URL(socialCard?.image ?? ogImage, Astro.site).toString();
 const frUrl = sourceGuide ? new URL(`/guides/${sourceGuide.id}/`, Astro.site).toString() : new URL('/guides/', Astro.site).toString();
 const sourceUpdated = sourceGuide ? (sourceGuide.data.updatedDate ?? sourceGuide.data.pubDate) : guide.data.sourceUpdatedDate;
 const translationIsStale = sourceGuide && isTranslationStale(sourceUpdated, guide.data.sourceUpdatedDate);
@@ -91,10 +93,11 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
 <EnglishGuidesLayout
   title={guide.data.title}
   seoTitle={guide.data.seoTitle}
-  ogTitle={guide.data.ogTitle}
+  ogTitle={socialCard?.title ?? guide.data.ogTitle}
   description={guide.data.description}
   ogType="article"
-  ogImage={ogImage}
+  ogImage={socialCard?.image ?? ogImage}
+  ogImageAlt={socialCard?.alt}
   canonical={url}
   alternateLinks={alternateLinks}
   searchDate={updated}
