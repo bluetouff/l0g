@@ -138,7 +138,7 @@ test('the production catalogue accounts for every raw generator and every source
  const pkg=JSON.parse(fs.readFileSync(path.join(ROOT,'package.json'),'utf8'));
  const raw=[...pkg.scripts['build:epub:generate'].matchAll(/node (scripts\/[^ &]+\.mjs)/gu)].map(match=>match[1]).filter(file=>file!=='scripts/build-epub.mjs');
  assert.deepEqual(groups.flatMap(group=>group.generators).sort(),raw.sort());
- assert.equal(groups.length,19);
+ assert.equal(groups.length,20);
  assert.ok(groups.every(group=>group.snapshot&&group.books.length&&group.outputs.length));
  assert.ok(groups.every(group=>!group.inputs.includes('src/content')));
  assert.ok(groups.every(group=>!['scripts','src/components','src/lib','src/config','src/figures'].some(directory=>group.inputs.includes(directory))));
@@ -149,6 +149,8 @@ test('the production catalogue accounts for every raw generator and every source
  assert.deepEqual(groups.filter(group=>group.inputs.includes('src/figures/cumcum')).map(group=>group.name),['epub-cumcum']);
  assert.deepEqual(groups.filter(group=>group.inputs.includes('src/components/CumCumFigure.astro')).map(group=>group.name),['epub-cumcum']);
  assert.deepEqual(groups.filter(group=>group.inputs.includes('src/figures/cold-chain-01')).map(group=>group.name),['epub-machines']);
+ assert.deepEqual(groups.filter(group=>group.inputs.includes('src/content/posts/chiffrement-charge-preuve-acces-messages.mdx')).map(group=>group.name),['epub-encryption-backdoor']);
+ assert.deepEqual(groups.filter(group=>group.inputs.includes('src/components/EncryptionProofFigure.astro')).map(group=>group.name),['epub-encryption-backdoor']);
  assert.equal(groups.some(group=>group.inputs.includes('src/components/USLNGWinterFigure.astro')),false);
  for(const group of groups){
   for(const file of group.inputs.filter(file=>file.startsWith('src/content/')))assert.ok(fs.statSync(path.join(ROOT,file)).isFile());
@@ -162,7 +164,7 @@ test('the production catalogue accounts for every raw generator and every source
 test('an independent article font preserves book reuse; a book font invalidates it',async t=>{
  const groups=epubDerivedTasks(ROOT);
  const fonts=[...new Set(groups.flatMap(group=>group.inputs.filter(file=>file.startsWith('public/fonts/'))))];
- assert.equal(fonts.length,17);
+ assert.equal(fonts.length,19);
  for(const file of fonts)assert.ok(fs.statSync(path.join(ROOT,file)).isFile());
  const f=fixture(t),config={...f.config,inputs:['chapters/one.md',...fonts]};
  await runDerivedTask(config);
