@@ -1380,7 +1380,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 413, 'Le corpus conserve ses termes et ajoute le certificat européen et la chaîne de preuve');
+assert.equal(glossaryAtlasEnBySlug.size, 414, 'Le corpus conserve ses termes et ajoute le périmètre de validation');
 for (const slug of ['credits-budgetaires-americains', 'reconciliation-budgetaire']) {
   assert.ok(glossaryAtlasEnBySlug.has(slug), `Missing English budget definition: ${slug}`);
 }
@@ -1584,8 +1584,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 798, 'Le corpus conserve ses notions et ajoute le certificat européen et la chaîne de preuve');
-assert.equal(glossaryAtlasEntries.length, 403, 'Les deux nouvelles notions disposent de sources et d’un lien vers l’analyse');
+assert.equal(glossaryEntries.length, 799, 'Le corpus conserve ses notions et ajoute le périmètre de validation');
+assert.equal(glossaryAtlasEntries.length, 404, 'La nouvelle notion dispose d’une source et d’un lien vers l’analyse');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2012,7 +2012,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 1034, 'Les quatre liens des nouvelles définitions complètent le graphe existant');
+assert.equal(glossaryAtlasEdgeCount, 1036, 'Les deux liens du périmètre de validation complètent le graphe existant');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
@@ -2474,3 +2474,21 @@ for (const [slug, sources] of Object.entries(evidenceRouteSources)) {
   }
   assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
 }
+
+// Validation scope stays tied to the module and its documented conditions.
+const validationScopeSource = 'https://csrc.nist.gov/Projects/cryptographic-module-validation-program/FAQs';
+for (const [entry, article] of [
+  [glossaryEntries.find(item => item.slug === 'perimetre-de-validation'), '/posts/chiffrement-charge-preuve-acces-messages/'],
+  [glossaryAtlasEnBySlug.get('perimetre-de-validation'), '/en/analysis/encryption-burden-proof-message-access/'],
+]) {
+  assert(entry);
+  assert.equal(entry.guide, article);
+  assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  assert.deepEqual(entry.atlas.sources.map(link => link.href), [validationScopeSource]);
+  assert.deepEqual(entry.atlas.related, ['secnumcloud', 'chiffrement-de-bout-en-bout']);
+}
+const validationScopeFr = glossaryEntries.find(item => item.slug === 'perimetre-de-validation');
+assert.equal(validationScopeFr.reference, undefined);
+assert.equal(validationScopeFr.referenceCandidate, false);
+assert.equal(glossaryReferenceBySlug['perimetre-de-validation'], undefined);
+assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('perimetre-de-validation')), 'noindex,follow');

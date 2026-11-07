@@ -1,0 +1,104 @@
+---
+import estimate_fr_desktop from '../figures/encryption-proof-2026/estimate.fr.desktop.svg?raw';
+import estimate_fr_mobile from '../figures/encryption-proof-2026/estimate.fr.mobile.svg?raw';
+import estimate_en_desktop from '../figures/encryption-proof-2026/estimate.en.desktop.svg?raw';
+import estimate_en_mobile from '../figures/encryption-proof-2026/estimate.en.mobile.svg?raw';
+import trust_fr_desktop from '../figures/encryption-proof-2026/trust.fr.desktop.svg?raw';
+import trust_fr_mobile from '../figures/encryption-proof-2026/trust.fr.mobile.svg?raw';
+import trust_en_desktop from '../figures/encryption-proof-2026/trust.en.desktop.svg?raw';
+import trust_en_mobile from '../figures/encryption-proof-2026/trust.en.mobile.svg?raw';
+import review_fr_desktop from '../figures/encryption-proof-2026/review.fr.desktop.svg?raw';
+import review_fr_mobile from '../figures/encryption-proof-2026/review.fr.mobile.svg?raw';
+import review_en_desktop from '../figures/encryption-proof-2026/review.en.desktop.svg?raw';
+import review_en_mobile from '../figures/encryption-proof-2026/review.en.mobile.svg?raw';
+const captions = {
+  "estimate": {
+    "number": "01",
+    "sources": [
+      "X19"
+    ],
+    "fr": {
+      "title": "Des réponses au questionnaire à l’estimation des bénéfices d’AES",
+      "description": "Les estimations directes et celles issues d’un modèle sont réunies avant l’extrapolation sectorielle. Les 250,6 milliards de dollars restent une estimation liée à ces conventions.",
+      "method": "Leech, Ferris et Scott, NIST GCR 18-017, septembre 2018. Programme étudié : 1996–2017 ; bénéfices élémentaires : 1998–2017. Enquête du 26 février au 9 avril 2018 : 74 répondants fournissent des éléments d’estimation directe, 95 autres sont estimés par modèle, soit 169. L’extrapolation s’appuie sur la part d’emploi représentée, dans les secteurs comptant au moins dix répondants. Bénéfices bruts estimés de 250,6 milliards USD constants de 2017, cumulés à 2017 au taux réel annuel de 7 %. Les flèches décrivent les étapes, sans proportionnalité de largeur ou de surface. L’annexe E reconnaît une incertitude initiale non quantifiable, avec des résultats potentiellement beaucoup plus faibles ou plus élevés. Le résultat concerne le programme AES ; il ne mesure ni tout le chiffrement, ni une perte imputable à une porte dérobée."
+    },
+    "en": {
+      "title": "From survey inputs to estimated AES benefits",
+      "description": "Direct estimates and modelled results are combined before sector extrapolation. The $250.6 billion estimate remains tied to those assumptions.",
+      "method": "Leech, Ferris and Scott, NIST GCR 18-017, September 2018. Program evaluated: 1996–2017; underlying benefits: 1998–2017. Survey from 26 February to 9 April 2018: 74 respondents supplied inputs for direct estimates, with 95 more estimated through a model, totalling 169. Sector extrapolation uses the employment share represented, retaining sectors with at least ten respondents. Estimated gross benefits are $250.6 billion in constant 2017 dollars, accumulated to 2017 at a 7% annual real rate. Arrows describe calculation stages, without proportional widths or areas. Appendix E recognizes unquantifiable initial uncertainty; results could be much lower or higher. The estimate covers the AES program, rather than all encryption or a loss attributable to a backdoor."
+    }
+  },
+  "trust": {
+    "number": "02",
+    "sources": [
+      "X07"
+    ],
+    "fr": {
+      "title": "L’inquiétude varie selon l’acteur envisagé",
+      "description": "France et UE27 : part des personnes inquiètes d’un accès à leurs échanges privés à leur insu ou sans leur permission. Chaque paire reprend la même question et la même échelle.",
+      "method": "FRA, publication du 11 mai 2026, Eurobaromètre 104.2 ; terrain du 6 au 30 novembre 2025. Pourcentages pondérés de personnes de 15 ans et plus, non-utilisateurs compris, donnant une note de 5 à 7 sur une échelle d’inquiétude de 1 à 7. L’échantillon UE27 compte 26 453 répondants ; ce total ne désigne pas l’échantillon français. France puis UE : personnes ayant une activité criminelle 64/62 %, gouvernements étrangers 49/49 %, entreprises 50/47 %, renseignement national 37/42 %, gouvernement national 41/42 %, forces de l’ordre 33/37 %. L’axe commun va de 0 à 100 %. La France appartient à l’agrégat européen ; les réponses se recouvrent et ne s’additionnent pas. Comparaisons descriptives, sans intervalles de confiance fournis pour ces écarts. La question ne mesure ni le soutien à une obligation judiciaire définie ni un consentement à payer."
+    },
+    "en": {
+      "title": "Concern varies by the actor considered",
+      "description": "France and EU27: the share concerned about access to private exchanges without their knowledge or permission. Each pair uses the same question and scale.",
+      "method": "FRA publication of 11 May 2026, Eurobarometer 104.2; fieldwork from 6 to 30 November 2025. Weighted percentages of people aged 15 and over, including non-users, giving concern scores of 5–7 on a 1–7 scale. The EU27 sample contains 26,453 respondents; that total does not describe the French sample. France then EU: people involved in criminal activity 64/62%, foreign governments 49/49%, businesses 50/47%, national intelligence 37/42%, national government 41/42%, law enforcement 33/37%. The common axis runs from 0 to 100%. France is included in the EU aggregate; responses overlap and cannot be added. Comparisons are descriptive, with no supplied confidence intervals for these gaps. The question measures neither support for a specific judicial obligation nor willingness to pay."
+    }
+  },
+  "review": {
+    "number": "03",
+    "sources": [
+      "X04",
+      "X08",
+      "X12"
+    ],
+    "fr": {
+      "title": "Les observations doivent pouvoir modifier la décision",
+      "description": "La proposition l0g relie la définition d’une capacité à son évaluation, à des moyens de contrôle, puis aux résultats observés. Le réexamen peut conduire à corriger, suspendre ou retirer un dispositif.",
+      "method": "Cadre de décision proposé par l0g, inspiré du chapitre 7 des National Academies de 2018, de la déclaration 5/2024 du CEPD et des dispositions de suivi du règlement (UE) 2023/1543. Les branches sont des possibilités à préparer ; elles ne représentent ni une procédure légale universelle en vigueur ni une architecture technique validée. Le règlement européen fournit un exemple distinct de statistiques et d’évaluation de la production de données, avec une échéance au 18 août 2029 ; il n’instaure pas d’obligation de déchiffrement. Le schéma ne reprend aucune fréquence, probabilité ni durée mesurée. Le périmètre technique, les garanties et les conditions d’un déploiement demandent leur propre examen."
+    },
+    "en": {
+      "title": "Observations should be able to change the decision",
+      "description": "The l0g proposal connects definition and evaluation of a capability with oversight resources and observed results. Review may lead to correcting, suspending or withdrawing a measure.",
+      "method": "Decision framework proposed by l0g, drawing on chapter 7 of the 2018 National Academies report, EDPB Statement 5/2024 and monitoring provisions in Regulation (EU) 2023/1543. Branches show options to prepare; they depict neither a universal legal procedure already in force nor a validated technical architecture. The European regulation supplies a separate example of statistics and evaluation for data production, with an evaluation deadline of 18 August 2029; it creates no decryption obligation. The diagram contains no measured frequency, probability or duration. Technical scope, safeguards and deployment conditions require their own assessment."
+    }
+  }
+} as const;
+const art = {
+  fr: { estimate: { desktop: estimate_fr_desktop, mobile: estimate_fr_mobile }, trust: { desktop: trust_fr_desktop, mobile: trust_fr_mobile }, review: { desktop: review_fr_desktop, mobile: review_fr_mobile } },
+  en: { estimate: { desktop: estimate_en_desktop, mobile: estimate_en_mobile }, trust: { desktop: trust_en_desktop, mobile: trust_en_mobile }, review: { desktop: review_en_desktop, mobile: review_en_mobile } }
+} as const;
+interface Props { lang?: 'fr' | 'en'; kind: 'estimate' | 'trust' | 'review' }
+const { lang = 'fr', kind } = Astro.props;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new TypeError('Unknown EncryptionProofFigure variant');
+const entry = captions[kind], text = entry[lang], svg = art[lang][kind];
+---
+<figure class="encryption-proof-figure" id={`figure-${entry.number}`} data-kind={kind}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption>
+    <span class="figure-number">FIGURE {entry.number}</span>
+    <strong>{text.title}</strong>
+    {text.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${id}`}>[{id}]</a>)}
+  </figcaption>
+  <details>
+    <summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary>
+    <p>{text.method}</p>
+  </details>
+</figure>
+<style>
+  @font-face { font-family: 'l0g Encryption Proof'; src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  .encryption-proof-figure { width: 100%; max-width: 800px; margin: 2.8rem auto; padding-bottom: 1rem; container-type: inline-size; overflow: visible; }
+  .desktop-art, .mobile-art { width: 100%; line-height: 0; }
+  .mobile-art { display: none; max-width: 340px; margin-inline: auto; }
+  .encryption-proof-figure :global(svg) { display: block; width: 100%; max-width: 100%; height: auto; letter-spacing: normal; overflow: visible; }
+  .encryption-proof-figure figcaption { padding: .85rem 0 .45rem; font-family: var(--font-read); font-size: .9rem; line-height: 1.7; color: var(--color-muted); }
+  .encryption-proof-figure figcaption strong { display: block; margin: .25rem 0; font-size: 1rem; font-weight: 400; color: var(--color-paper); }
+  .figure-number { font-size: .75rem; letter-spacing: .12em; color: var(--color-signal); }
+  .encryption-proof-figure a { margin-right: .45rem; }
+  .encryption-proof-figure details { margin-top: .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.7; }
+  .encryption-proof-figure summary { cursor: pointer; padding: .35rem 0; }
+  .encryption-proof-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .encryption-proof-figure p { margin-top: .7rem; }
+  @container (max-width: 500px) { .desktop-art { display: none; } .mobile-art { display: block; } }
+  @media print { .desktop-art { display: block; } .mobile-art { display: none; } .encryption-proof-figure { break-inside: avoid; } }
+</style>

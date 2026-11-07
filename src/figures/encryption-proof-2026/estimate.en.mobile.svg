@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="proof-estimate-en-m-title proof-estimate-en-m-desc" class="l0g-proof-svg" style="width:100%;height:auto">
+<title id="proof-estimate-en-m-title">Building the AES estimate</title><desc id="proof-estimate-en-m-desc">2018 NIST-commissioned study: data from 74 respondents, modelling for 95 more, totalling 169; sector extrapolation by employment share, sectors with at least ten respondents. Result: estimated gross benefits of $250.6 billion in constant 2017 dollars, accumulated to 2017 at a 7% annual real rate. Program evaluated: 1996–2017; underlying benefits: 1998–2017. Initial uncertainty cannot be quantified.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-surface)"/>
+<rect x="16" y="17.96" width="388" height="35.7" fill="none" id="proof-estimate-en-m-label1"/>
+<text data-panel="proof-estimate-en-m-label1" x="24" y="44" font-family="l0g Encryption Proof" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-signal)">AES PROGRAM · ESTIMATE</text>
+<rect x="16" y="58.44" width="388" height="32.3" fill="none" id="proof-estimate-en-m-label2"/>
+<text data-panel="proof-estimate-en-m-label2" x="24" y="82" font-family="l0g Encryption Proof" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">NIST GCR 18-017 · September 2018</text>
+<path d="M95.05 129.85 L117.15 129.85 L124.95 137.65 L124.95 170.15 L95.05 170.15 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="input" data-value="74" data-role="direct"/>
+<path d="M117.15 129.85 L117.15 137.65 L124.95 137.65 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M101.55 144.8 L118.45 144.8 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M101.55 151.95 L118.45 151.95 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M101.55 159.1 L111.95 159.1" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="292" y="131.25" width="36" height="37.5" fill="none" stroke="var(--color-amber)" stroke-width="1.5" data-metric="input" data-value="95" data-role="modelled"/>
+<path d="M299.5 140.25 L320.5 140.25 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M299.5 150 L307.0 150 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M313.0 150 L320.5 150 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M299.5 159.0 L307.0 159.0 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M313.0 159.0 L320.5 159.0" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="172.84" width="404" height="57.8" fill="none" id="proof-estimate-en-m-label3"/>
+<text data-panel="proof-estimate-en-m-label3" x="110" y="215" font-family="l0g Encryption Proof" font-size="34" font-weight="400" text-anchor="middle" fill="var(--color-signal)">74</text>
+<rect x="8" y="231.44" width="404" height="32.3" fill="none" id="proof-estimate-en-m-label4"/>
+<text data-panel="proof-estimate-en-m-label4" x="110" y="255" font-family="l0g Encryption Proof" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Direct inputs</text>
+<rect x="8" y="172.84" width="404" height="57.8" fill="none" id="proof-estimate-en-m-label5"/>
+<text data-panel="proof-estimate-en-m-label5" x="310" y="215" font-family="l0g Encryption Proof" font-size="34" font-weight="400" text-anchor="middle" fill="var(--color-amber)">95</text>
+<rect x="8" y="231.44" width="404" height="32.3" fill="none" id="proof-estimate-en-m-label6"/>
+<text data-panel="proof-estimate-en-m-label6" x="310" y="255" font-family="l0g Encryption Proof" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Modelled</text>
+<path d="M110 278 L110 315 L310 315 L310 278" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M210 315 L210 345" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="calculation" data-from="inputs" data-to="combined"/>
+<path d="M206 338 L210 345 L214 338" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="347.84" width="404" height="57.8" fill="none" id="proof-estimate-en-m-label7"/>
+<text data-panel="proof-estimate-en-m-label7" x="210" y="390" font-family="l0g Encryption Proof" font-size="34" font-weight="400" text-anchor="middle" fill="var(--color-paper)" data-metric="combined" data-value="169">169</text>
+<rect x="8" y="400.2" width="404" height="34" fill="none" id="proof-estimate-en-m-label8"/>
+<text data-panel="proof-estimate-en-m-label8" x="210" y="425" font-family="l0g Encryption Proof" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">respondents</text>
+<path d="M210 448 L210 480" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="calculation" data-from="combined" data-to="sectors"/>
+<path d="M206 473 L210 480 L214 473" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="188.4" cy="504.7" r="4.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="210" cy="504.7" r="4.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="231.6" cy="504.7" r="4.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="188.4" cy="535.3" r="4.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="210" cy="535.3" r="4.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="231.6" cy="535.3" r="4.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M188.4 510.1 L188.4 529.9 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M210 510.1 L210 529.9 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M231.6 510.1 L231.6 529.9" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="551.44" width="404" height="32.3" fill="none" id="proof-estimate-en-m-label9"/>
+<text data-panel="proof-estimate-en-m-label9" x="210" y="575" font-family="l0g Encryption Proof" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Sector extrapolation</text>
+<rect x="8" y="586.44" width="404" height="32.3" fill="none" id="proof-estimate-en-m-label10"/>
+<text data-panel="proof-estimate-en-m-label10" x="210" y="610" font-family="l0g Encryption Proof" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">by employment represented</text>
+<rect x="8" y="621.44" width="404" height="32.3" fill="none" id="proof-estimate-en-m-label11"/>
+<text data-panel="proof-estimate-en-m-label11" x="210" y="645" font-family="l0g Encryption Proof" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">≥ 10 respondents per sector</text>
+<path d="M210 665 L210 695" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="calculation" data-from="sectors" data-to="benefit"/>
+<path d="M206 688 L210 695 L214 688" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="697.88" width="404" height="64.6" fill="none" id="proof-estimate-en-m-label12"/>
+<text data-panel="proof-estimate-en-m-label12" x="210" y="745" font-family="l0g Encryption Proof" font-size="38" font-weight="400" text-anchor="middle" fill="var(--color-signal)" data-metric="benefit" data-value="250.6" data-unit="billion-USD-2017" data-period="1998-2017">250.6</text>
+<rect x="8" y="760.2" width="404" height="34" fill="none" id="proof-estimate-en-m-label13"/>
+<text data-panel="proof-estimate-en-m-label13" x="210" y="785" font-family="l0g Encryption Proof" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">billion constant 2017 USD</text>
+<rect x="8" y="796.44" width="404" height="32.3" fill="none" id="proof-estimate-en-m-label14"/>
+<text data-panel="proof-estimate-en-m-label14" x="210" y="820" font-family="l0g Encryption Proof" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Accumulated to 2017 · 7% real/year</text>
+<rect x="8" y="831.44" width="404" height="32.3" fill="none" id="proof-estimate-en-m-label15"/>
+<text data-panel="proof-estimate-en-m-label15" x="210" y="855" font-family="l0g Encryption Proof" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Estimated gross benefits</text>
+<rect x="16" y="882.06" width="388" height="31.45" fill="none" id="proof-estimate-en-m-label16"/>
+<text data-panel="proof-estimate-en-m-label16" x="24" y="905" font-family="l0g Encryption Proof" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Initial uncertainty cannot be quantified.</text>
+</svg>

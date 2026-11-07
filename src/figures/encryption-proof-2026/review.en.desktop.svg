@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="proof-review-en-d-title proof-review-en-d-desc" class="l0g-proof-svg" style="width:100%;height:auto">
+<title id="proof-review-en-d-title">Monitoring and reconsidering a measure</title><desc id="proof-review-en-d-desc">l0g editorial proposal: define a capability, compare gains and risks, set conditions and resources, observe outcomes, failures, incidents and costs, then reconsider the decision. Observations may lead to correcting, suspending or withdrawing the measure, or revisiting the initial assumptions. Decision model with no duration, frequency, probability or universal legal procedure.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-surface)"/>
+<rect x="16" y="11.76" width="968" height="44.2" fill="none" id="proof-review-en-d-label1"/>
+<text data-panel="proof-review-en-d-label1" x="24" y="44" font-family="l0g Encryption Proof" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">A DECISION OPEN TO REVIEW</text>
+<rect x="16" y="52.24" width="968" height="40.8" fill="none" id="proof-review-en-d-label2"/>
+<text data-panel="proof-review-en-d-label2" x="24" y="82" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">l0g proposal · evaluation principles</text>
+<path d="M138.15 200.55 L170.45 200.55 L181.85 211.95 L181.85 259.45 L138.15 259.45 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="define"/>
+<path d="M170.45 200.55 L170.45 211.95 L181.85 211.95 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M147.65 222.4 L172.35 222.4 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M147.65 232.85 L172.35 232.85 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M147.65 243.3 L162.85 243.3" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="465.6" cy="225.6" r="19.8" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="evaluate"/>
+<path d="M479.9 239.9 L497.5 257.5" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="790" cy="230" r="23.75" fill="none" stroke="var(--color-amber)" stroke-width="1.5" data-metric="stage" data-role="decide"/>
+<path d="M778.6 230 L787.15 238.55 L802.35 218.6" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M200 230 L425 230" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="route" data-from="define" data-to="evaluate"/>
+<path d="M418 226 L425 230 L418 234" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M520 230 L745 230" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="route" data-from="evaluate" data-to="decide"/>
+<path d="M738 226 L745 230 L738 234" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="270.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label3"/>
+<text data-panel="proof-review-en-d-label3" x="160" y="300" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Define</text>
+<rect x="8" y="310.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label4"/>
+<text data-panel="proof-review-en-d-label4" x="160" y="340" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">the capability</text>
+<rect x="8" y="270.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label5"/>
+<text data-panel="proof-review-en-d-label5" x="470" y="300" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Compare gains</text>
+<rect x="8" y="310.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label6"/>
+<text data-panel="proof-review-en-d-label6" x="470" y="340" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">and risks</text>
+<rect x="8" y="270.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label7"/>
+<text data-panel="proof-review-en-d-label7" x="790" y="300" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Set conditions</text>
+<rect x="8" y="310.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label8"/>
+<text data-panel="proof-review-en-d-label8" x="790" y="340" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">and resources</text>
+<path d="M768.15 490.55 L800.45 490.55 L811.85 501.95 L811.85 549.45 L768.15 549.45 Z" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="observe"/>
+<path d="M800.45 490.55 L800.45 501.95 L811.85 501.95 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M777.65 512.4 L802.35 512.4 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M777.65 522.85 L802.35 522.85 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M777.65 533.3 L792.85 533.3" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="444.35" y="499.1" width="51.3" height="41.8" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="review"/>
+<path d="M452.9 512.4 L487.1 512.4 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M452.9 527.6 L487.1 527.6" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="462.4" cy="512.4" r="2.85" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="477.6" cy="527.6" r="2.85" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M830 230 L950 230 L950 520 L835 520" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="route" data-from="decide" data-to="observe"/>
+<path d="M842 516 L835 520 L842 524" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M745 520 L515 520" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="route" data-from="observe" data-to="review"/>
+<path d="M522 516 L515 520 L522 524" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="565.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label9"/>
+<text data-panel="proof-review-en-d-label9" x="790" y="595" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Observe outcomes</text>
+<rect x="8" y="605.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label10"/>
+<text data-panel="proof-review-en-d-label10" x="790" y="635" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">failures · incidents · costs</text>
+<rect x="8" y="565.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label11"/>
+<text data-panel="proof-review-en-d-label11" x="470" y="595" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Reconsider</text>
+<rect x="8" y="605.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label12"/>
+<text data-panel="proof-review-en-d-label12" x="470" y="635" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">the decision</text>
+<path d="M430 520 L350 520 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M350 450 L350 605" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M350 450 L285 450" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="option" data-from="review" data-to="correct"/>
+<path d="M292 446 L285 450 L292 454" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M350 525 L285 525" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="option" data-from="review" data-to="suspend"/>
+<path d="M292 521 L285 525 L292 529" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M350 605 L285 605" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="option" data-from="review" data-to="withdraw"/>
+<path d="M292 601 L285 605 L292 609" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="238.8" y="436.8" width="32.4" height="26.4" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="correct"/>
+<path d="M244.2 445.2 L265.8 445.2 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M244.2 454.8 L265.8 454.8" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250.2" cy="445.2" r="1.8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="259.8" cy="454.8" r="1.8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M249.4 513.8 L249.4 536.2 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="suspend"/>
+<path d="M260.6 513.8 L260.6 536.2" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M245.9 591.0 L264.1 591.0 L264.1 619.0 L245.9 619.0 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="withdraw"/>
+<path d="M236.8 605 L258.5 605" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M251.5 601 L258.5 605 L251.5 609" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="428.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label13"/>
+<text data-panel="proof-review-en-d-label13" x="135" y="458" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Correct</text>
+<rect x="8" y="503.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label14"/>
+<text data-panel="proof-review-en-d-label14" x="135" y="533" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Suspend</text>
+<rect x="8" y="583.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label15"/>
+<text data-panel="proof-review-en-d-label15" x="135" y="613" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Withdraw</text>
+<path d="M505 500 L600 500 L600 400 L55 400 L55 150 L160 150 L160 190" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6" data-metric="feedback" data-from="review" data-to="define"/>
+<path d="M156 183 L160 190 L164 183" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="355.24" width="984" height="40.8" fill="none" id="proof-review-en-d-label16"/>
+<text data-panel="proof-review-en-d-label16" x="350" y="385" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Revisit assumptions</text>
+<rect x="16" y="655.24" width="968" height="40.8" fill="none" id="proof-review-en-d-label17"/>
+<text data-panel="proof-review-en-d-label17" x="24" y="685" font-family="l0g Encryption Proof" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">l0g decision model · scope and timetable require definition.</text>
+</svg>
