@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="borders-migration-en-d-title borders-migration-en-d-desc" class="l0g-borders-svg" style="width:100%;height:auto">
+<title id="borders-migration-en-d-title">The dependencies in a service migration</title><desc id="borders-migration-en-d-desc">Export leads to adaptation, then validation of integrity and permissions before cutover. Environments may coexist. Closing the former service depends on validation and applicable rules. No cost or time is measured.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-surface)"/>
+<rect x="16" y="11.76" width="968" height="44.2" fill="none" id="borders-migration-en-d-label1"/>
+<text data-panel="borders-migration-en-d-label1" x="24" y="44" font-family="l0g Encryption Borders" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">RESUMING A SERVICE</text>
+<rect x="16" y="52.24" width="968" height="40.8" fill="none" id="borders-migration-en-d-label2"/>
+<text data-panel="borders-migration-en-d-label2" x="24" y="82" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Dependencies in a migration project</text>
+<path d="M103 311 L157 311 L157 355 L103 355 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="export"/>
+<path d="M99 311 L99 302 L161 302 L161 311 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M122 325 L138 325" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="353" y="308" width="54" height="44" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="adapt"/>
+<path d="M362 322 L398 322 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M362 338 L398 338" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="372" cy="322" r="3" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="388" cy="338" r="3" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="630" cy="330" r="25" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="validate"/>
+<path d="M618 330 L627 339 L643 318" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="853" y="308" width="54" height="44" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="cutover"/>
+<path d="M862 322 L898 322 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M862 338 L898 338" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="872" cy="322" r="3" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="888" cy="338" r="3" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M168 330 L342 330" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dependency" data-from="export" data-to="adapt"/>
+<path d="M335 326 L342 330 L335 334" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M418 330 L592 330" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dependency" data-from="adapt" data-to="validate"/>
+<path d="M585 326 L592 330 L585 334" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M668 330 L842 330" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dependency" data-from="validate" data-to="cutover"/>
+<path d="M835 326 L842 330 L835 334" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="369.76" width="984" height="44.2" fill="none" id="borders-migration-en-d-label3"/>
+<text data-panel="borders-migration-en-d-label3" x="130" y="402" font-family="l0g Encryption Borders" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Export</text>
+<rect x="8" y="412.24" width="984" height="40.8" fill="none" id="borders-migration-en-d-label4"/>
+<text data-panel="borders-migration-en-d-label4" x="130" y="442" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Formats, data</text>
+<rect x="8" y="369.76" width="984" height="44.2" fill="none" id="borders-migration-en-d-label5"/>
+<text data-panel="borders-migration-en-d-label5" x="380" y="402" font-family="l0g Encryption Borders" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Adapt</text>
+<rect x="8" y="412.24" width="984" height="40.8" fill="none" id="borders-migration-en-d-label6"/>
+<text data-panel="borders-migration-en-d-label6" x="380" y="442" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Connections, uses</text>
+<rect x="8" y="369.76" width="984" height="44.2" fill="none" id="borders-migration-en-d-label7"/>
+<text data-panel="borders-migration-en-d-label7" x="630" y="402" font-family="l0g Encryption Borders" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Validate</text>
+<rect x="8" y="412.24" width="984" height="40.8" fill="none" id="borders-migration-en-d-label8"/>
+<text data-panel="borders-migration-en-d-label8" x="630" y="442" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Integrity, permissions</text>
+<rect x="8" y="369.76" width="984" height="44.2" fill="none" id="borders-migration-en-d-label9"/>
+<text data-panel="borders-migration-en-d-label9" x="880" y="402" font-family="l0g Encryption Borders" font-size="26" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Cut over</text>
+<rect x="8" y="412.24" width="984" height="40.8" fill="none" id="borders-migration-en-d-label10"/>
+<text data-panel="borders-migration-en-d-label10" x="880" y="442" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Usable service</text>
+<path d="M853 161 L907 161 L907 205 L853 205 Z" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="retirement"/>
+<path d="M849 161 L849 152 L911 152 L911 161 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M872 175 L888 175" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M916 330 L976 330 L976 180 L918 180" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6" data-metric="retire" data-from="cutover" data-to="retirement" data-mode="conditional"/>
+<path d="M925 176 L918 180 L925 184" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="95.24" width="984" height="40.8" fill="none" id="borders-migration-en-d-label11"/>
+<text data-panel="borders-migration-en-d-label11" x="880" y="125" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Former service</text>
+<rect x="8" y="210.24" width="984" height="40.8" fill="none" id="borders-migration-en-d-label12"/>
+<text data-panel="borders-migration-en-d-label12" x="840" y="240" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-muted)">Closure after verification</text>
+<path d="M130 530 L880 530" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6" data-metric="coexistence" data-mode="optional"/>
+<path d="M130 523 L130 537 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M880 523 L880 537" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="475.24" width="984" height="40.8" fill="none" id="borders-migration-en-d-label13"/>
+<text data-panel="borders-migration-en-d-label13" x="500" y="505" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Possible coexistence of environments</text>
+<rect x="16" y="585.24" width="968" height="40.8" fill="none" id="borders-migration-en-d-label14"/>
+<text data-panel="borders-migration-en-d-label14" x="24" y="615" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Some charges are regulated; the project also uses labour and resources.</text>
+<rect x="16" y="642.24" width="968" height="40.8" fill="none" id="borders-migration-en-d-label15"/>
+<text data-panel="borders-migration-en-d-label15" x="24" y="672" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Qualitative path; durations unmeasured. Obligations and extra support differ.</text>
+</svg>

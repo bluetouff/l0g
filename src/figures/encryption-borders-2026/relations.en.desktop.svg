@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="borders-relations-en-d-title borders-relations-en-d-desc" class="l0g-borders-svg" style="width:100%;height:auto">
+<title id="borders-relations-en-d-title">The relationships within a cloud offer</title><desc id="borders-relations-en-d-desc">A client contracts with an entity and sends data to a service. Physical storage, administration permissions and key control have distinct actors in this hypothetical model. It depicts neither an actual provider nor universal permission to read content.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-surface)"/>
+<rect x="16" y="11.76" width="968" height="44.2" fill="none" id="borders-relations-en-d-label1"/>
+<text data-panel="borders-relations-en-d-label1" x="24" y="44" font-family="l0g Encryption Borders" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">ONE CLOUD, FOUR RELATIONSHIPS</text>
+<rect x="16" y="52.24" width="968" height="40.8" fill="none" id="borders-relations-en-d-label2"/>
+<text data-panel="borders-relations-en-d-label2" x="24" y="82" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">A model for assessing an offer</text>
+<path d="M65 327 L135 327 L135 368 L65 368 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="actor" data-role="client"/>
+<path d="M57 375 L143 375 L135 368 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M57 375 L65 368" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M477 119 L511 119 L523 131 L523 181 L477 181 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="actor" data-role="contractor"/>
+<path d="M511 119 L511 131 L523 131 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M487 142 L513 142 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M487 153 L513 153 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M487 164 L503 164" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="473" y="328" width="54" height="44" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="actor" data-role="service"/>
+<path d="M482 342 L518 342 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M482 358 L518 358" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="492" cy="342" r="3" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="508" cy="358" r="3" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M853 331 L907 331 L907 375 L853 375 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="actor" data-role="storage"/>
+<path d="M849 331 L849 322 L911 322 L911 331 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M872 345 L888 345" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="473" y="538" width="54" height="44" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="actor" data-role="administrator"/>
+<path d="M482 552 L518 552 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M482 568 L518 568" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="492" cy="552" r="3" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1.5"/>
+<circle cx="508" cy="568" r="3" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1.5"/>
+<circle cx="864" cy="560" r="11" fill="none" stroke="var(--color-amber)" stroke-width="1.5" data-metric="actor" data-role="key-holder"/>
+<path d="M875 560 L907 560 L907 570 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M893 560 L893 567" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M100 322 L100 150 L470 150" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="contract" data-from="client" data-to="contractor"/>
+<path d="M463 146 L470 150 L463 154" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M146 350 L465 350" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="data" data-from="client" data-to="service"/>
+<path d="M458 346 L465 350 L458 354" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M535 350 L843 350" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="data" data-from="service" data-to="storage"/>
+<path d="M836 346 L843 350 L836 354" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M500 531 L500 380" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="administration" data-from="administrator" data-to="service"/>
+<path d="M496 387 L500 380 L504 387" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M880 531 L880 386" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="keys" data-from="key-holder" data-to="storage"/>
+<path d="M876 393 L880 386 L884 393" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="390.24" width="984" height="40.8" fill="none" id="borders-relations-en-d-label3"/>
+<text data-panel="borders-relations-en-d-label3" x="100" y="420" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Client</text>
+<rect x="8" y="185.24" width="984" height="40.8" fill="none" id="borders-relations-en-d-label4"/>
+<text data-panel="borders-relations-en-d-label4" x="500" y="215" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Contracting entity</text>
+<rect x="8" y="390.24" width="984" height="40.8" fill="none" id="borders-relations-en-d-label5"/>
+<text data-panel="borders-relations-en-d-label5" x="580" y="420" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Service</text>
+<rect x="8" y="390.24" width="984" height="40.8" fill="none" id="borders-relations-en-d-label6"/>
+<text data-panel="borders-relations-en-d-label6" x="790" y="420" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Storage</text>
+<rect x="8" y="595.24" width="984" height="40.8" fill="none" id="borders-relations-en-d-label7"/>
+<text data-panel="borders-relations-en-d-label7" x="500" y="625" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Administration</text>
+<rect x="8" y="595.24" width="984" height="40.8" fill="none" id="borders-relations-en-d-label8"/>
+<text data-panel="borders-relations-en-d-label8" x="880" y="625" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Key control</text>
+<rect x="8" y="95.24" width="984" height="40.8" fill="none" id="borders-relations-en-d-label9"/>
+<text data-panel="borders-relations-en-d-label9" x="270" y="125" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Contract</text>
+<rect x="8" y="290.24" width="984" height="40.8" fill="none" id="borders-relations-en-d-label10"/>
+<text data-panel="borders-relations-en-d-label10" x="280" y="320" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Data</text>
+<rect x="8" y="455.24" width="984" height="40.8" fill="none" id="borders-relations-en-d-label11"/>
+<text data-panel="borders-relations-en-d-label11" x="480" y="485" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-accent)">Permissions</text>
+<rect x="8" y="455.24" width="984" height="40.8" fill="none" id="borders-relations-en-d-label12"/>
+<text data-panel="borders-relations-en-d-label12" x="858" y="485" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-amber)">Keys</text>
+<rect x="16" y="642.24" width="968" height="40.8" fill="none" id="borders-relations-en-d-label13"/>
+<text data-panel="borders-relations-en-d-label13" x="24" y="672" font-family="l0g Encryption Borders" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Locations, entities and permissions need separate review. Hypothetical model.</text>
+</svg>

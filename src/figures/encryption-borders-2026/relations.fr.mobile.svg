@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="borders-relations-fr-m-title borders-relations-fr-m-desc" class="l0g-borders-svg" style="width:100%;height:auto">
+<title id="borders-relations-fr-m-title">Les relations qui composent une offre cloud</title><desc id="borders-relations-fr-m-desc">Le client signe avec une entité et transmet des données à un service. Le stockage physique, les droits d’administration et le contrôle des clés ont des acteurs distincts dans ce modèle hypothétique. Aucun fournisseur réel ni droit de lecture universel n’est représenté.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-surface)"/>
+<rect x="16" y="19.2" width="388" height="34" fill="none" id="borders-relations-fr-m-label1"/>
+<text data-panel="borders-relations-fr-m-label1" x="24" y="44" font-family="l0g Encryption Borders" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-signal)">UN CLOUD, QUATRE RELATIONS</text>
+<rect x="16" y="58.44" width="388" height="32.3" fill="none" id="borders-relations-fr-m-label2"/>
+<text data-panel="borders-relations-fr-m-label2" x="24" y="82" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Modèle de qualification d’une offre</text>
+<path d="M35.5 183.9 L84.5 183.9 L84.5 212.6 L35.5 212.6 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="actor" data-role="client"/>
+<path d="M29.900000000000002 217.5 L90.1 217.5 L84.5 212.6 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M29.900000000000002 217.5 L35.5 212.6" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M283.9 118.3 L307.7 118.3 L316.1 126.7 L316.1 161.7 L283.9 161.7 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="actor" data-role="contractor"/>
+<path d="M307.7 118.3 L307.7 126.7 L316.1 126.7 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M290.9 134.4 L309.1 134.4 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M290.9 142.1 L309.1 142.1 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M290.9 149.8 L302.1 149.8" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="188.4" y="392.4" width="43.2" height="35.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="actor" data-role="service"/>
+<path d="M195.6 403.6 L224.4 403.6 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M195.6 416.4 L224.4 416.4" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="203.6" cy="403.6" r="2.4" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="216.4" cy="416.4" r="2.4" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M328.4 394.8 L371.6 394.8 L371.6 430.0 L328.4 430.0 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="actor" data-role="storage"/>
+<path d="M325.2 394.8 L325.2 387.6 L374.8 387.6 L374.8 394.8 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M343.6 406.0 L356.4 406.0" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="41.1" y="674.6" width="37.8" height="30.8" fill="none" stroke="var(--color-muted)" stroke-width="1.5" data-metric="actor" data-role="administrator"/>
+<path d="M47.4 684.4 L72.6 684.4 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M47.4 695.6 L72.6 695.6" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="54.4" cy="684.4" r="2.1" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1.5"/>
+<circle cx="65.6" cy="695.6" r="2.1" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1.5"/>
+<circle cx="317.2" cy="690" r="8.8" fill="none" stroke="var(--color-amber)" stroke-width="1.5" data-metric="actor" data-role="key-holder"/>
+<path d="M326.0 690 L351.6 690 L351.6 698.0 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M340.4 690 L340.4 695.6" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60 175 L60 140 L279 140" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="contract" data-from="client" data-to="contractor"/>
+<path d="M272 136 L279 140 L272 144" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M93 200 L210 200 L210 389" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="data" data-from="client" data-to="service"/>
+<path d="M206 382 L210 389 L214 382" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M235 410 L322 410" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="data" data-from="service" data-to="storage"/>
+<path d="M315 406 L322 410 L315 414" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60 671 L60 565 L145 565 L145 410 L184 410" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="administration" data-from="administrator" data-to="service"/>
+<path d="M177 406 L184 410 L177 414" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M355 690 L398 690 L398 410 L379 410" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="keys" data-from="key-holder" data-to="storage"/>
+<path d="M386 406 L379 410 L386 414" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="241.44" width="404" height="32.3" fill="none" id="borders-relations-fr-m-label3"/>
+<text data-panel="borders-relations-fr-m-label3" x="60" y="265" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Client</text>
+<rect x="8" y="171.44" width="404" height="32.3" fill="none" id="borders-relations-fr-m-label4"/>
+<text data-panel="borders-relations-fr-m-label4" x="300" y="195" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Entité</text>
+<rect x="8" y="201.44" width="404" height="32.3" fill="none" id="borders-relations-fr-m-label5"/>
+<text data-panel="borders-relations-fr-m-label5" x="300" y="225" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">contractante</text>
+<rect x="8" y="496.44" width="404" height="32.3" fill="none" id="borders-relations-fr-m-label6"/>
+<text data-panel="borders-relations-fr-m-label6" x="210" y="520" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Service</text>
+<rect x="8" y="441.44" width="404" height="32.3" fill="none" id="borders-relations-fr-m-label7"/>
+<text data-panel="borders-relations-fr-m-label7" x="350" y="465" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Données</text>
+<rect x="8" y="471.44" width="404" height="32.3" fill="none" id="borders-relations-fr-m-label8"/>
+<text data-panel="borders-relations-fr-m-label8" x="350" y="495" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">stockées</text>
+<rect x="8" y="721.44" width="404" height="32.3" fill="none" id="borders-relations-fr-m-label9"/>
+<text data-panel="borders-relations-fr-m-label9" x="60" y="745" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Admin.</text>
+<rect x="8" y="731.44" width="404" height="32.3" fill="none" id="borders-relations-fr-m-label10"/>
+<text data-panel="borders-relations-fr-m-label10" x="330" y="755" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Clés</text>
+<rect x="8" y="94.44" width="404" height="32.3" fill="none" id="borders-relations-fr-m-label11"/>
+<text data-panel="borders-relations-fr-m-label11" x="185" y="118" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Contrat</text>
+<rect x="16" y="261.44" width="388" height="32.3" fill="none" id="borders-relations-fr-m-label12"/>
+<text data-panel="borders-relations-fr-m-label12" x="236" y="285" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">Fichiers</text>
+<rect x="16" y="793.44" width="388" height="32.3" fill="none" id="borders-relations-fr-m-label13"/>
+<text data-panel="borders-relations-fr-m-label13" x="24" y="817" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">L’administration et la lecture du contenu</text>
+<rect x="16" y="825.44" width="388" height="32.3" fill="none" id="borders-relations-fr-m-label14"/>
+<text data-panel="borders-relations-fr-m-label14" x="24" y="849" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">dépendent des droits et des clés.</text>
+<rect x="16" y="864.44" width="388" height="32.3" fill="none" id="borders-relations-fr-m-label15"/>
+<text data-panel="borders-relations-fr-m-label15" x="24" y="888" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Modèle illustratif, acteurs hypothétiques.</text>
+</svg>

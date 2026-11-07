@@ -1,0 +1,105 @@
+---
+import categories_fr_desktop from '../figures/encryption-borders-2026/categories.fr.desktop.svg?raw';
+import categories_fr_mobile from '../figures/encryption-borders-2026/categories.fr.mobile.svg?raw';
+import categories_en_desktop from '../figures/encryption-borders-2026/categories.en.desktop.svg?raw';
+import categories_en_mobile from '../figures/encryption-borders-2026/categories.en.mobile.svg?raw';
+import relations_fr_desktop from '../figures/encryption-borders-2026/relations.fr.desktop.svg?raw';
+import relations_fr_mobile from '../figures/encryption-borders-2026/relations.fr.mobile.svg?raw';
+import relations_en_desktop from '../figures/encryption-borders-2026/relations.en.desktop.svg?raw';
+import relations_en_mobile from '../figures/encryption-borders-2026/relations.en.mobile.svg?raw';
+import migration_fr_desktop from '../figures/encryption-borders-2026/migration.fr.desktop.svg?raw';
+import migration_fr_mobile from '../figures/encryption-borders-2026/migration.fr.mobile.svg?raw';
+import migration_en_desktop from '../figures/encryption-borders-2026/migration.en.desktop.svg?raw';
+import migration_en_mobile from '../figures/encryption-borders-2026/migration.en.mobile.svg?raw';
+interface Props { lang?: 'fr' | 'en'; kind: 'categories' | 'relations' | 'migration' }
+const { lang = 'fr', kind } = Astro.props;
+const captions = {
+  "categories": {
+    "number": "01",
+    "sources": [
+      "Q01",
+      "Q02"
+    ],
+    "fr": {
+      "title": "Les catégories de la notice britannique conservent des protections distinctes",
+      "description": "La notice Apple UK distingue quinze catégories chiffrées de bout en bout par défaut et dix catégories supplémentaires concernées par l’indisponibilité de la nouvelle activation d’ADP. Le trajet des clés illustre la protection standard de ces dix catégories.",
+      "method": "Notice britannique de septembre 2025, consultée le 7 novembre 2026. Un symbole représente une catégorie de cette notice, indépendamment de son volume ou du nombre d’utilisateurs. Ces nombres ne constituent pas un inventaire exhaustif des services ajoutés depuis. Les dix catégories conservent le chiffrement en transit et au repos, avec les clés correspondantes chez Apple en protection standard. Les quinze catégories par défaut gardent les protections décrites par Apple, avec leurs exceptions : lorsque Messages dans iCloud et Sauvegarde iCloud sont activés, une copie de la clé Messages entre dans la sauvegarde ; en protection standard, Apple détient les clés de cette sauvegarde. Partages et métadonnées nécessitent aussi un examen distinct. Le statut effectif de tous les anciens comptes ADP demeure inconnu."
+    },
+    "en": {
+      "title": "The UK notice distinguishes categories with different protections",
+      "description": "Apple’s UK notice distinguishes fifteen default end-to-end encrypted categories and ten additional categories affected by the inability to newly enable ADP. The key path illustrates standard protection of those ten categories.",
+      "method": "UK notice dated September 2025, consulted on 7 November 2026. One mark represents one category in that notice, regardless of data volume or user count. These counts are not an exhaustive inventory of services introduced since. The ten categories retain encryption in transit and at rest, with the corresponding keys held by Apple under standard protection. The fifteen default categories retain Apple’s stated protections and exceptions: when Messages in iCloud and iCloud Backup are enabled, a copy of the Messages key enters the backup; under standard protection, Apple holds that backup’s keys. Sharing and metadata also require separate review. The actual status of all pre-existing ADP accounts remains unknown."
+    }
+  },
+  "relations": {
+    "number": "02",
+    "sources": [
+      "Q09",
+      "Q10",
+      "Q16",
+      "Q17"
+    ],
+    "fr": {
+      "title": "Le contrat, le stockage, l’administration et les clés ont leurs relations propres",
+      "description": "Le client signe avec une entité et transmet des données au service. Les droits d’administration et le contrôle des clés déterminent ensuite des capacités distinctes dans l’architecture considérée.",
+      "method": "Modèle fonctionnel original, hypothétique, sans implantation ni architecture attribuée à un fournisseur réel. Les tracés distinguent relation contractuelle, circulation des données, administration et clés. Les acteurs représentés peuvent être réunis ou séparés dans une offre réelle ; chaque relation doit être documentée. L’accès administratif et la lecture du contenu dépendent des permissions et des mécanismes cryptographiques. La présence d’une clé dans le modèle ne lui confère aucune portée universelle. Les lieux de stockage et la qualification d’une offre appellent leurs propres vérifications."
+    },
+    "en": {
+      "title": "Contracts, storage, administration and keys follow distinct relationships",
+      "description": "A client contracts with an entity and sends data to the service. Administration permissions and control of keys determine separate capabilities within the architecture being assessed.",
+      "method": "An original hypothetical functional model, without attributing any location or architecture to an actual provider. Routes distinguish contracts, data movement, administration and keys. Real offers may combine or separate the actors shown; each relationship needs documentation. Administrative access and reading content depend on permissions and cryptographic mechanisms. Showing a key in this model gives it no universal reach. Storage location and qualification of a particular offer require their own checks."
+    }
+  },
+  "migration": {
+    "number": "03",
+    "sources": [
+      "Q18",
+      "Q19",
+      "Q20"
+    ],
+    "fr": {
+      "title": "La reprise d’activité dépend d’un parcours de validation",
+      "description": "Exporter les données ouvre un travail d’adaptation, de vérification de l’intégrité et des droits, puis de bascule. Les environnements peuvent coexister avant la clôture de l’ancien service, selon le projet et les règles applicables.",
+      "method": "Parcours pédagogique original inspiré du Data Act, des clauses types DAJ et des lignes directrices de l’Arcep du 2 juillet 2026. Les flèches montrent des dépendances, sans échelle de durée ni part de budget. La coexistence et la clôture sont conditionnelles ; les obligations de conservation et de suppression doivent être examinées. L’encadrement de certains frais de changement et de transfert se distingue du travail interne du client et des prestations supplémentaires réellement convenues. Aucun coût total ou délai moyen de migration n’est estimé."
+    },
+    "en": {
+      "title": "Resuming operations depends on a validation path",
+      "description": "Exporting data starts a process of adaptation, integrity and permission checks, then cutover. Environments may coexist before closure of the former service, depending on the project and applicable rules.",
+      "method": "An original teaching model informed by the Data Act, DAJ model clauses and Arcep’s guidelines of 2 July 2026. Arrows show dependencies, without a time scale or budget shares. Coexistence and closure are conditional; retention and deletion duties require review. Rules on some switching and transfer charges are distinct from the customer’s internal work and genuinely agreed additional services. No total migration cost or average duration is estimated."
+    }
+  }
+} as const;
+const art = {fr:{categories:{desktop:categories_fr_desktop,mobile:categories_fr_mobile},relations:{desktop:relations_fr_desktop,mobile:relations_fr_mobile},migration:{desktop:migration_fr_desktop,mobile:migration_fr_mobile}},en:{categories:{desktop:categories_en_desktop,mobile:categories_en_mobile},relations:{desktop:relations_en_desktop,mobile:relations_en_mobile},migration:{desktop:migration_en_desktop,mobile:migration_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new TypeError('Unknown EncryptionBordersFigure variant');
+const entry = captions[kind], text = entry[lang], svg = art[lang][kind];
+---
+<figure class="encryption-borders-figure" id={`figure-${entry.number}`} data-kind={kind}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption>
+    <span class="figure-number">FIGURE {entry.number}</span>
+    <strong>{text.title}</strong>
+    {text.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${id}`}>[{id}]</a>)}
+  </figcaption>
+  <details>
+    <summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary>
+    <p>{text.method}</p>
+  </details>
+</figure>
+<style>
+  @font-face { font-family: 'l0g Encryption Borders'; src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  .encryption-borders-figure { width: 100%; max-width: 800px; margin: 2.8rem auto; padding-bottom: 1rem; container-type: inline-size; overflow: visible; }
+  .desktop-art, .mobile-art { width: 100%; line-height: 0; }
+  .mobile-art { display: none; max-width: 340px; margin-inline: auto; }
+  .encryption-borders-figure :global(svg) { display: block; width: 100%; max-width: 100%; height: auto; letter-spacing: normal; overflow: visible; }
+  .encryption-borders-figure figcaption { padding: .85rem 0 .45rem; font-family: var(--font-read); font-size: .9rem; line-height: 1.7; color: var(--color-muted); }
+  .encryption-borders-figure figcaption strong { display: block; margin: .25rem 0; font-size: 1rem; font-weight: 400; color: var(--color-paper); }
+  .figure-number { font-size: .75rem; letter-spacing: .12em; color: var(--color-signal); }
+  .encryption-borders-figure a { margin-right: .45rem; }
+  .encryption-borders-figure details { margin-top: .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.7; }
+  .encryption-borders-figure summary { cursor: pointer; padding: .35rem 0; }
+  .encryption-borders-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .encryption-borders-figure p { margin-top: .7rem; }
+  @container (max-width: 500px) { .desktop-art { display: none; } .mobile-art { display: block; } }
+  @media print { .desktop-art { display: block; } .mobile-art { display: none; } .encryption-borders-figure { break-inside: avoid; } }
+</style>

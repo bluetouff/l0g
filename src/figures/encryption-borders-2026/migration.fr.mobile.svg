@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="borders-migration-fr-m-title borders-migration-fr-m-desc" class="l0g-borders-svg" style="width:100%;height:auto">
+<title id="borders-migration-fr-m-title">Les dépendances d’une migration de service</title><desc id="borders-migration-fr-m-desc">Un export conduit à une adaptation, puis à une validation de l’intégrité et des droits avant la bascule. Les environnements peuvent coexister. La clôture de l’ancien service dépend de la validation et des règles applicables. Aucun coût ni délai n’est mesuré.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-surface)"/>
+<rect x="16" y="17.96" width="388" height="35.7" fill="none" id="borders-migration-fr-m-label1"/>
+<text data-panel="borders-migration-fr-m-label1" x="24" y="44" font-family="l0g Encryption Borders" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-signal)">REPRENDRE UN SERVICE</text>
+<rect x="16" y="58.44" width="388" height="32.3" fill="none" id="borders-migration-fr-m-label2"/>
+<text data-panel="borders-migration-fr-m-label2" x="24" y="82" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Dépendances d’un projet de migration</text>
+<path d="M38.4 154.8 L81.6 154.8 L81.6 190.0 L38.4 190.0 Z" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="export"/>
+<path d="M35.2 154.8 L35.2 147.6 L84.8 147.6 L84.8 154.8 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53.6 166.0 L66.4 166.0" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="308.4" y="302.4" width="43.2" height="35.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="adapt"/>
+<path d="M315.6 313.6 L344.4 313.6 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M315.6 326.4 L344.4 326.4" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="323.6" cy="313.6" r="2.4" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="336.4" cy="326.4" r="2.4" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="60" cy="470" r="20" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="validate"/>
+<path d="M50.4 470 L57.6 477.2 L70.4 460.4" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="308.4" y="602.4" width="43.2" height="35.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" data-metric="stage" data-role="cutover"/>
+<path d="M315.6 613.6 L344.4 613.6 " fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M315.6 626.4 L344.4 626.4" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="323.6" cy="613.6" r="2.4" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="336.4" cy="626.4" r="2.4" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M38.4 774.8 L81.6 774.8 L81.6 810.0 L38.4 810.0 Z" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="stage" data-role="retirement"/>
+<path d="M35.2 774.8 L35.2 767.6 L84.8 767.6 L84.8 774.8 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53.6 786.0 L66.4 786.0" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M88 170 L330 170 L330 297" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dependency" data-from="export" data-to="adapt"/>
+<path d="M326 290 L330 297 L334 290" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M303 320 L60 320 L60 446" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dependency" data-from="adapt" data-to="validate"/>
+<path d="M56 439 L60 446 L64 439" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M84 470 L330 470 L330 597" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="dependency" data-from="validate" data-to="cutover"/>
+<path d="M326 590 L330 597 L334 590" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M303 620 L60 620 L60 762" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6" data-metric="retire" data-from="cutover" data-to="retirement" data-mode="conditional"/>
+<path d="M56 755 L60 762 L64 755" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="200.2" width="404" height="34" fill="none" id="borders-migration-fr-m-label3"/>
+<text data-panel="borders-migration-fr-m-label3" x="60" y="225" font-family="l0g Encryption Borders" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Exporter</text>
+<rect x="8" y="350.2" width="404" height="34" fill="none" id="borders-migration-fr-m-label4"/>
+<text data-panel="borders-migration-fr-m-label4" x="330" y="375" font-family="l0g Encryption Borders" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Adapter</text>
+<rect x="8" y="500.2" width="404" height="34" fill="none" id="borders-migration-fr-m-label5"/>
+<text data-panel="borders-migration-fr-m-label5" x="60" y="525" font-family="l0g Encryption Borders" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Valider</text>
+<rect x="8" y="650.2" width="404" height="34" fill="none" id="borders-migration-fr-m-label6"/>
+<text data-panel="borders-migration-fr-m-label6" x="330" y="675" font-family="l0g Encryption Borders" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Basculer</text>
+<path d="M398 170 L398 620" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6" data-metric="coexistence" data-mode="optional"/>
+<path d="M391 170 L405 170 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M391 620 L405 620" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M340 728 L398 728 L398 620" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="711.44" width="404" height="32.3" fill="none" id="borders-migration-fr-m-label7"/>
+<text data-panel="borders-migration-fr-m-label7" x="220" y="735" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Coexistence possible</text>
+<rect x="8" y="741.44" width="404" height="32.3" fill="none" id="borders-migration-fr-m-label8"/>
+<text data-panel="borders-migration-fr-m-label8" x="220" y="765" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-muted)">selon le projet</text>
+<rect x="16" y="786.44" width="388" height="32.3" fill="none" id="borders-migration-fr-m-label9"/>
+<text data-panel="borders-migration-fr-m-label9" x="115" y="810" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-amber)">Ancien environnement</text>
+<rect x="16" y="821.44" width="388" height="32.3" fill="none" id="borders-migration-fr-m-label10"/>
+<text data-panel="borders-migration-fr-m-label10" x="115" y="845" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">clôture selon les règles</text>
+<rect x="16" y="864.44" width="388" height="32.3" fill="none" id="borders-migration-fr-m-label11"/>
+<text data-panel="borders-migration-fr-m-label11" x="24" y="888" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Parcours qualitatif ; durées non mesurées.</text>
+</svg>

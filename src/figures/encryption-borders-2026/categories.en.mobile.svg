@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="borders-categories-en-m-title borders-categories-en-m-desc" class="l0g-borders-svg" style="width:100%;height:auto">
+<title id="borders-categories-en-m-title">The categories in Apple’s UK iCloud notice</title><desc id="borders-categories-en-m-desc">Apple’s UK notice distinguishes fifteen default end-to-end encrypted categories that remain protected and ten additional categories for which newly enabling ADP is unavailable. One mark represents one category. The key path illustrates standard protection of those ten categories only.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-surface)"/>
+<rect x="16" y="17.96" width="388" height="35.7" fill="none" id="borders-categories-en-m-label1"/>
+<text data-panel="borders-categories-en-m-label1" x="24" y="44" font-family="l0g Encryption Borders" font-size="21" font-weight="400" text-anchor="start" fill="var(--color-signal)">ICLOUD · UNITED KINGDOM</text>
+<rect x="16" y="57.2" width="388" height="34" fill="none" id="borders-categories-en-m-label2"/>
+<text data-panel="borders-categories-en-m-label2" x="24" y="82" font-family="l0g Encryption Borders" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">New ADP activation</text>
+<rect x="16" y="110.28" width="388" height="47.6" fill="none" id="borders-categories-en-m-label3"/>
+<text data-panel="borders-categories-en-m-label3" x="24" y="145" font-family="l0g Encryption Borders" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-signal)">15 categories</text>
+<rect x="16" y="155.2" width="388" height="34" fill="none" id="borders-categories-en-m-label4"/>
+<text data-panel="borders-categories-en-m-label4" x="24" y="180" font-family="l0g Encryption Borders" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">End-to-end protection remains</text>
+<circle cx="52" cy="220" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="120" cy="220" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="188" cy="220" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="256" cy="220" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="324" cy="220" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="52" cy="250" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="120" cy="250" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="188" cy="250" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="256" cy="250" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="324" cy="250" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="52" cy="280" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="120" cy="280" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="188" cy="280" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="256" cy="280" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<circle cx="324" cy="280" r="6" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1.5" data-metric="category-mark" data-group="default" data-value="1" data-unit="category"/>
+<rect x="16" y="330.28" width="388" height="47.6" fill="none" id="borders-categories-en-m-label5"/>
+<text data-panel="borders-categories-en-m-label5" x="24" y="365" font-family="l0g Encryption Borders" font-size="28" font-weight="400" text-anchor="start" fill="var(--color-amber)">10 categories</text>
+<rect x="16" y="375.2" width="388" height="34" fill="none" id="borders-categories-en-m-label6"/>
+<text data-panel="borders-categories-en-m-label6" x="24" y="400" font-family="l0g Encryption Borders" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-muted)">ADP extension unavailable</text>
+<circle cx="52" cy="450" r="6" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.5" data-metric="category-mark" data-group="additional" data-value="1" data-unit="category"/>
+<circle cx="120" cy="450" r="6" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.5" data-metric="category-mark" data-group="additional" data-value="1" data-unit="category"/>
+<circle cx="188" cy="450" r="6" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.5" data-metric="category-mark" data-group="additional" data-value="1" data-unit="category"/>
+<circle cx="256" cy="450" r="6" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.5" data-metric="category-mark" data-group="additional" data-value="1" data-unit="category"/>
+<circle cx="324" cy="450" r="6" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.5" data-metric="category-mark" data-group="additional" data-value="1" data-unit="category"/>
+<circle cx="52" cy="480" r="6" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.5" data-metric="category-mark" data-group="additional" data-value="1" data-unit="category"/>
+<circle cx="120" cy="480" r="6" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.5" data-metric="category-mark" data-group="additional" data-value="1" data-unit="category"/>
+<circle cx="188" cy="480" r="6" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.5" data-metric="category-mark" data-group="additional" data-value="1" data-unit="category"/>
+<circle cx="256" cy="480" r="6" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.5" data-metric="category-mark" data-group="additional" data-value="1" data-unit="category"/>
+<circle cx="324" cy="480" r="6" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.5" data-metric="category-mark" data-group="additional" data-value="1" data-unit="category"/>
+<rect x="16" y="526.44" width="388" height="32.3" fill="none" id="borders-categories-en-m-label7"/>
+<text data-panel="borders-categories-en-m-label7" x="24" y="550" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-amber)">Those ten: standard protection</text>
+<circle cx="55.6" cy="640" r="9.9" fill="none" stroke="var(--color-amber)" stroke-width="1.5" data-metric="key-control" data-holder="provider"/>
+<path d="M65.5 640 L94.3 640 L94.3 649.0 " fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M81.7 640 L81.7 646.3" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M305.7 622.9 L354.3 622.9 L354.3 662.5 L305.7 662.5 Z" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M302.1 622.9 L302.1 614.8 L357.9 614.8 L357.9 622.9 " fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M322.8 635.5 L337.2 635.5" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M99 640 L297 640" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="key-route" data-from="provider" data-to="additional-data"/>
+<path d="M290 636 L297 640 L290 644" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="676.44" width="404" height="32.3" fill="none" id="borders-categories-en-m-label8"/>
+<text data-panel="borders-categories-en-m-label8" x="70" y="700" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Apple keys</text>
+<rect x="8" y="676.44" width="404" height="32.3" fill="none" id="borders-categories-en-m-label9"/>
+<text data-panel="borders-categories-en-m-label9" x="330" y="700" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Encrypted</text>
+<rect x="8" y="708.44" width="404" height="32.3" fill="none" id="borders-categories-en-m-label10"/>
+<text data-panel="borders-categories-en-m-label10" x="330" y="732" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="middle" fill="var(--color-paper)">data</text>
+<rect x="16" y="771.44" width="388" height="32.3" fill="none" id="borders-categories-en-m-label11"/>
+<text data-panel="borders-categories-en-m-label11" x="24" y="795" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">One mark = one category.</text>
+<rect x="16" y="811.44" width="388" height="32.3" fill="none" id="borders-categories-en-m-label12"/>
+<text data-panel="borders-categories-en-m-label12" x="24" y="835" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Apple UK notice, September 2025.</text>
+<rect x="16" y="856.44" width="388" height="32.3" fill="none" id="borders-categories-en-m-label13"/>
+<text data-panel="borders-categories-en-m-label13" x="24" y="880" font-family="l0g Encryption Borders" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Copies and sharing have separate rules.</text>
+</svg>
