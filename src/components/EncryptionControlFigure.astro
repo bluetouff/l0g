@@ -1,0 +1,103 @@
+---
+import wiretaps_fr_desktop from '../figures/encryption-control-2026/wiretaps.fr.desktop.svg?raw';
+import wiretaps_fr_mobile from '../figures/encryption-control-2026/wiretaps.fr.mobile.svg?raw';
+import wiretaps_en_desktop from '../figures/encryption-control-2026/wiretaps.en.desktop.svg?raw';
+import wiretaps_en_mobile from '../figures/encryption-control-2026/wiretaps.en.mobile.svg?raw';
+import control_fr_desktop from '../figures/encryption-control-2026/control.fr.desktop.svg?raw';
+import control_fr_mobile from '../figures/encryption-control-2026/control.fr.mobile.svg?raw';
+import control_en_desktop from '../figures/encryption-control-2026/control.en.desktop.svg?raw';
+import control_en_mobile from '../figures/encryption-control-2026/control.en.mobile.svg?raw';
+import lifetimes_fr_desktop from '../figures/encryption-control-2026/lifetimes.fr.desktop.svg?raw';
+import lifetimes_fr_mobile from '../figures/encryption-control-2026/lifetimes.fr.mobile.svg?raw';
+import lifetimes_en_desktop from '../figures/encryption-control-2026/lifetimes.en.desktop.svg?raw';
+import lifetimes_en_mobile from '../figures/encryption-control-2026/lifetimes.en.mobile.svg?raw';
+interface Props { lang?: 'fr' | 'en'; kind: 'wiretaps' | 'control' | 'lifetimes' }
+const { lang = 'fr', kind } = Astro.props;
+const captions = {
+  "wiretaps": {
+    "number": "01",
+    "sources": [
+      "R01",
+      "R02",
+      "R25"
+    ],
+    "fr": {
+      "title": "Les difficultés déclarées gardent leur périmètre",
+      "description": "Interceptions avec chiffrement recensées aux États-Unis en 2025, comparées sur une même échelle. Le rose représente les échecs déclarés d’obtention du clair ; le gris correspond aux autres cas, calculés par différence.",
+      "method": "Rapport publié le 30 juin 2026. Unité : une interception déclarée avec chiffrement rencontré, avec des informations portant également sur l’enquête. Calculs : 296 − 269 = 27 au niveau fédéral ; 229 − 217 = 12 au niveau des États. Ces compléments ne constituent pas un décompte établi des déchiffrements réussis. Le guide non fédéral prévoit que certaines réponses absentes sur l’accès au clair soient imputées à « non » ; le nombre de ces imputations dans les données 2025 demeure inconnu. Cette règle documentée pour les États est distincte des modalités fédérales. Les 249 autorisations fédérales et 80 des États sans rapport correspondant du parquet restent hors des barres. Les interceptions FISA sont exclues. Les valeurs ne mesurent ni messages, ni personnes, ni enquêtes entièrement paralysées."
+    },
+    "en": {
+      "title": "Reported difficulties retain their reporting limits",
+      "description": "US wiretaps that encountered encryption in 2025, shown on one common scale. Rose represents reported failures to obtain plaintext; gray shows the other cases, calculated by subtraction.",
+      "method": "Report published on 30 June 2026. Unit: one reported wiretap that encountered encryption, with information also covering its investigation. Calculations: 296 − 269 = 27 federally; 229 − 217 = 12 at state level. These remainders do not establish a count of successful decryptions. Non-federal reporting guidance defaults some missing answers about access to plaintext to “No”; the number of such defaults in the 2025 data remains unknown. This documented state-reporting rule is separate from federal reporting arrangements. The 249 federal and 80 state authorisations without a corresponding prosecutor report remain outside the bars. FISA interceptions are excluded. The figures measure neither messages nor people nor investigations wholly defeated by encryption."
+    }
+  },
+  "control": {
+    "number": "02",
+    "sources": [
+      "R04",
+      "R20",
+      "R23"
+    ],
+    "fr": {
+      "title": "La commande, les données et les traces suivent leurs circuits",
+      "description": "La demande délimite une opération. Sa vérification et son activation commandent une chaîne de recueil, de préparation et de livraison. Des traces d’exécution alimentent une revue distincte.",
+      "method": "Modèle fonctionnel original, qualitatif, sans reproduction d’une infrastructure réelle. Les flèches ambrées représentent une commande ; les flèches turquoise, le trajet des données ; les pointillés, des traces soumises au contrôle. La séparation des fonctions aide à distinguer la décision d’accès de son exécution et de son examen. Les acteurs habilités, les procédures et les pouvoirs exacts dépendent du droit applicable. Les standards ETSI et NIST décrivent des fonctions techniques ; l’autorisation découle du cadre juridique. La présence d’un circuit de remise sécurisé laisse entière la question de la capacité initiale à obtenir du contenu en clair."
+    },
+    "en": {
+      "title": "Instructions, data and records follow separate paths",
+      "description": "A request defines an operation. Checking and activation direct a chain of collection, preparation and delivery. Execution records feed a separate review.",
+      "method": "An original, qualitative functional model rather than a reproduction of an actual infrastructure. Amber arrows show instructions; turquoise arrows show data; dotted lines show records available for review. Separating functions distinguishes the access decision from execution and scrutiny. Eligible actors, procedures and exact powers depend on applicable law. ETSI and NIST standards describe technical functions; legal authority comes from the governing framework. A secure delivery circuit leaves the initial capability to obtain plaintext as a separate question."
+    }
+  },
+  "lifetimes": {
+    "number": "03",
+    "sources": [
+      "R20"
+    ],
+    "fr": {
+      "title": "La fin d’une mesure et le sort des copies sont distincts",
+      "description": "Une capacité technique peut être conçue avant une mesure et entretenue après son terme. Les communications déjà capturées suivent ensuite les règles de livraison, de conservation et de suppression applicables.",
+      "method": "Frises qualitatives sans échelle de temps. Les positions des points et les longueurs des lignes sont illustratives ; elles ne mesurent aucune durée ni proportion. Le maintien d’une capacité au-delà d’une mesure est une possibilité du modèle, sans affirmation sur un opérateur donné. Dans le cycle ETSI cité, l’état inactif interrompt la production des informations interceptées, avec une exception permettant la remise de communications déjà capturées. Les règles juridiques de conservation et de suppression exigent un examen distinct."
+    },
+    "en": {
+      "title": "An operation ending and the fate of copies are distinct",
+      "description": "A technical capability may be designed before an operation and maintained after its end. Already captured communications then follow the applicable delivery, retention and deletion rules.",
+      "method": "Qualitative timelines without a time scale. Point positions and line lengths are illustrative; they measure neither durations nor proportions. Maintaining a capability beyond an operation is a possibility in this model, without a claim about any particular operator. In the cited ETSI lifecycle, the inactive state stops production of intercepted information, with an exception allowing delivery of already captured communications. Legal retention and deletion rules require separate assessment."
+    }
+  }
+} as const;
+const art = {fr:{wiretaps:{desktop:wiretaps_fr_desktop,mobile:wiretaps_fr_mobile},control:{desktop:control_fr_desktop,mobile:control_fr_mobile},lifetimes:{desktop:lifetimes_fr_desktop,mobile:lifetimes_fr_mobile}},en:{wiretaps:{desktop:wiretaps_en_desktop,mobile:wiretaps_en_mobile},control:{desktop:control_en_desktop,mobile:control_en_mobile},lifetimes:{desktop:lifetimes_en_desktop,mobile:lifetimes_en_mobile}}} as const;
+if ((lang !== 'fr' && lang !== 'en') || !Object.prototype.hasOwnProperty.call(captions, kind)) throw new TypeError('Unknown EncryptionControlFigure variant');
+const entry = captions[kind], text = entry[lang], svg = art[lang][kind];
+---
+<figure class="encryption-control-figure" id={`figure-${entry.number}`} data-kind={kind}>
+  <div class="desktop-art"><Fragment set:html={svg.desktop} /></div>
+  <div class="mobile-art"><Fragment set:html={svg.mobile} /></div>
+  <figcaption>
+    <span class="figure-number">FIGURE {entry.number}</span>
+    <strong>{text.title}</strong>
+    {text.description} {entry.sources.map(id => <a href={`#source-${id}`} aria-label={`Source ${id}`}>[{id}]</a>)}
+  </figcaption>
+  <details>
+    <summary>{lang === 'fr' ? 'Méthode et périmètre' : 'Method and scope'}</summary>
+    <p>{text.method}</p>
+  </details>
+</figure>
+<style>
+  @font-face { font-family: 'l0g Encryption Control'; src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+  .encryption-control-figure { width: 100%; max-width: 800px; margin: 2.8rem auto; padding-bottom: 1rem; container-type: inline-size; overflow: visible; }
+  .desktop-art, .mobile-art { width: 100%; line-height: 0; }
+  .mobile-art { display: none; max-width: 340px; margin-inline: auto; }
+  .encryption-control-figure :global(svg) { display: block; width: 100%; max-width: 100%; height: auto; letter-spacing: normal; overflow: visible; }
+  .encryption-control-figure figcaption { padding: .85rem 0 .45rem; font-family: var(--font-read); font-size: .9rem; line-height: 1.7; color: var(--color-muted); }
+  .encryption-control-figure figcaption strong { display: block; margin: .25rem 0; font-size: 1rem; font-weight: 400; color: var(--color-paper); }
+  .figure-number { font-size: .75rem; letter-spacing: .12em; color: var(--color-signal); }
+  .encryption-control-figure a { margin-right: .45rem; }
+  .encryption-control-figure details { margin-top: .35rem; font-family: var(--font-read); font-size: .875rem; line-height: 1.7; }
+  .encryption-control-figure summary { cursor: pointer; padding: .35rem 0; }
+  .encryption-control-figure summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+  .encryption-control-figure p { margin-top: .7rem; }
+  @container (max-width: 500px) { .desktop-art { display: none; } .mobile-art { display: block; } }
+  @media print { .desktop-art { display: block; } .mobile-art { display: none; } .encryption-control-figure { break-inside: avoid; } }
+</style>

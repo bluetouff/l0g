@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="control-wiretaps-fr-d-title control-wiretaps-fr-d-desc" class="l0g-control-svg" style="width:100%;height:auto">
+<title id="control-wiretaps-fr-d-title">Des interceptions confrontées au chiffrement</title><desc id="control-wiretaps-fr-d-desc">Deux groupes comparés sur la même échelle. Les compléments gris sont des autres cas, sans conclusion de déchiffrement réussi.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-surface)"/>
+<rect x="8" y="11.76" width="984" height="44.2" fill="none" id="control-wiretaps-fr-d-label1"/>
+<text data-panel="control-wiretaps-fr-d-label1" x="24" y="44" font-family="l0g Encryption Control" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">ÉTATS-UNIS · 2025</text>
+<rect x="8" y="52.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label2"/>
+<text data-panel="control-wiretaps-fr-d-label2" x="24" y="82" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Interceptions déclarées avec chiffrement</text>
+<rect x="8" y="122.76" width="984" height="44.2" fill="none" id="control-wiretaps-fr-d-label3"/>
+<text data-panel="control-wiretaps-fr-d-label3" x="24" y="155" font-family="l0g Encryption Control" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)">Fédéral</text>
+<rect x="8" y="125.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label4"/>
+<text data-panel="control-wiretaps-fr-d-label4" x="900" y="155" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-muted)">296 avec chiffrement</text>
+<rect x="100" y="185" width="717.333333" height="30" fill="var(--color-accent)" data-metric="reported-failure" data-value="269" data-group="federal" data-unit="wiretaps"/>
+<rect x="817.333333" y="185" width="72.0" height="30" fill="var(--color-muted)" data-metric="other-encrypted" data-value="27" data-group="federal" data-unit="wiretaps"/>
+<rect x="8" y="230.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label5"/>
+<text data-panel="control-wiretaps-fr-d-label5" x="100" y="260" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-accent)">269 échecs déclarés d’accès au clair</text>
+<rect x="8" y="230.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label6"/>
+<text data-panel="control-wiretaps-fr-d-label6" x="900" y="260" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-muted)">27 autres cas</text>
+<rect x="8" y="297.76" width="984" height="44.2" fill="none" id="control-wiretaps-fr-d-label7"/>
+<text data-panel="control-wiretaps-fr-d-label7" x="24" y="330" font-family="l0g Encryption Control" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-paper)">États</text>
+<rect x="8" y="300.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label8"/>
+<text data-panel="control-wiretaps-fr-d-label8" x="900" y="330" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-muted)">229 avec chiffrement</text>
+<rect x="100" y="360" width="578.666667" height="30" fill="var(--color-accent)" data-metric="reported-failure" data-value="217" data-group="state" data-unit="wiretaps"/>
+<rect x="678.666667" y="360" width="32.0" height="30" fill="var(--color-muted)" data-metric="other-encrypted" data-value="12" data-group="state" data-unit="wiretaps"/>
+<rect x="8" y="405.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label9"/>
+<text data-panel="control-wiretaps-fr-d-label9" x="100" y="435" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-accent)">217 échecs déclarés d’accès au clair</text>
+<rect x="8" y="405.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label10"/>
+<text data-panel="control-wiretaps-fr-d-label10" x="900" y="435" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-muted)">12 autres cas</text>
+<path d="M100 485 L900 485" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M100.0 478 L100.0 492" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="498.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label11"/>
+<text data-panel="control-wiretaps-fr-d-label11" x="100.0" y="528" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">0</text>
+<path d="M366.666667 478 L366.666667 492" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="498.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label12"/>
+<text data-panel="control-wiretaps-fr-d-label12" x="366.666667" y="528" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">100</text>
+<path d="M633.333333 478 L633.333333 492" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="498.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label13"/>
+<text data-panel="control-wiretaps-fr-d-label13" x="633.333333" y="528" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">200</text>
+<path d="M900.0 478 L900.0 492" fill="none" stroke="var(--color-line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="498.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label14"/>
+<text data-panel="control-wiretaps-fr-d-label14" x="900.0" y="528" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">300</text>
+<rect x="8" y="560.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label15"/>
+<text data-panel="control-wiretaps-fr-d-label15" x="24" y="590" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Gris : complément arithmétique, avec réponses manquantes possibles.</text>
+<rect x="8" y="604.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label16"/>
+<text data-panel="control-wiretaps-fr-d-label16" x="24" y="634" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Unité : une interception déclarée. Même échelle de 0 à 300.</text>
+<rect x="8" y="645.24" width="984" height="40.8" fill="none" id="control-wiretaps-fr-d-label17"/>
+<text data-panel="control-wiretaps-fr-d-label17" x="24" y="675" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Source : tribunaux américains, rapport publié le 30 juin 2026.</text>
+</svg>

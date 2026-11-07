@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="control-lifetimes-en-d-title control-lifetimes-en-d-desc" class="l0g-control-svg" style="width:100%;height:auto">
+<title id="control-lifetimes-en-d-title">Capability, authorisation and copies have distinct lifetimes</title><desc id="control-lifetimes-en-d-desc">Three qualitative timelines. A capability may precede and outlast an authorisation. Captured data follow their own delivery and retention rules.</desc>
+<rect x="0" y="0" width="1000" height="700" fill="var(--color-surface)"/>
+<rect x="8" y="11.76" width="984" height="44.2" fill="none" id="control-lifetimes-en-d-label1"/>
+<text data-panel="control-lifetimes-en-d-label1" x="24" y="44" font-family="l0g Encryption Control" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">THREE DISTINCT LIFETIMES</text>
+<rect x="8" y="52.24" width="984" height="40.8" fill="none" id="control-lifetimes-en-d-label2"/>
+<text data-panel="control-lifetimes-en-d-label2" x="24" y="82" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Qualitative diagram; no time scale</text>
+<rect x="8" y="135.76" width="984" height="44.2" fill="none" id="control-lifetimes-en-d-label3"/>
+<text data-panel="control-lifetimes-en-d-label3" x="24" y="168" font-family="l0g Encryption Control" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-signal)">Technical capability</text>
+<rect x="8" y="138.24" width="984" height="40.8" fill="none" id="control-lifetimes-en-d-label4"/>
+<text data-panel="control-lifetimes-en-d-label4" x="290" y="168" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">Design</text>
+<rect x="8" y="138.24" width="984" height="40.8" fill="none" id="control-lifetimes-en-d-label5"/>
+<text data-panel="control-lifetimes-en-d-label5" x="940" y="168" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-muted)">Maintenance</text>
+<circle cx="290" cy="212" r="4" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M295 212 L910 212" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="lifetime" data-mode="capability"/>
+<path d="M910 212 L970 212" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/>
+<rect x="8" y="295.76" width="984" height="44.2" fill="none" id="control-lifetimes-en-d-label6"/>
+<text data-panel="control-lifetimes-en-d-label6" x="24" y="328" font-family="l0g Encryption Control" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-amber)">Authorised operation</text>
+<rect x="8" y="298.24" width="984" height="40.8" fill="none" id="control-lifetimes-en-d-label7"/>
+<text data-panel="control-lifetimes-en-d-label7" x="440" y="328" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Start</text>
+<rect x="8" y="298.24" width="984" height="40.8" fill="none" id="control-lifetimes-en-d-label8"/>
+<text data-panel="control-lifetimes-en-d-label8" x="720" y="328" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">End</text>
+<path d="M440 372 L720 372" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="lifetime" data-mode="authorisation"/>
+<path d="M440 360 L440 384" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M720 360 L720 384" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="392.24" width="984" height="40.8" fill="none" id="control-lifetimes-en-d-label9"/>
+<text data-panel="control-lifetimes-en-d-label9" x="720" y="422" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Production ends</text>
+<rect x="8" y="467.76" width="984" height="44.2" fill="none" id="control-lifetimes-en-d-label10"/>
+<text data-panel="control-lifetimes-en-d-label10" x="24" y="500" font-family="l0g Encryption Control" font-size="26" font-weight="400" text-anchor="start" fill="var(--color-accent)">Captured copies</text>
+<rect x="8" y="470.24" width="984" height="40.8" fill="none" id="control-lifetimes-en-d-label11"/>
+<text data-panel="control-lifetimes-en-d-label11" x="530" y="500" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Capture</text>
+<circle cx="530" cy="544" r="4" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1.5"/>
+<path d="M535 544 L910 544" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="lifetime" data-mode="copies"/>
+<path d="M910 544 L970 544" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/>
+<rect x="8" y="564.24" width="984" height="40.8" fill="none" id="control-lifetimes-en-d-label12"/>
+<text data-panel="control-lifetimes-en-d-label12" x="940" y="594" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="end" fill="var(--color-muted)">Deliver, retain, delete</text>
+<rect x="8" y="619.24" width="984" height="40.8" fill="none" id="control-lifetimes-en-d-label13"/>
+<text data-panel="control-lifetimes-en-d-label13" x="24" y="649" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">An operation can end before delivery of already captured data.</text>
+<rect x="8" y="656.24" width="984" height="40.8" fill="none" id="control-lifetimes-en-d-label14"/>
+<text data-panel="control-lifetimes-en-d-label14" x="24" y="686" font-family="l0g Encryption Control" font-size="24" font-weight="400" text-anchor="start" fill="var(--color-muted)">ETSI · Illustrative positions, unmeasured durations.</text>
+</svg>

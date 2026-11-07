@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 920" role="img" aria-labelledby="control-control-en-m-title control-control-en-m-desc" class="l0g-control-svg" style="width:100%;height:auto">
+<title id="control-control-en-m-title">One instruction, a data flow, an oversight path</title><desc id="control-control-en-m-desc">Functional model: an authority sets scope, the provider checks and activates, data are delivered, and records feed a separate review.</desc>
+<rect x="0" y="0" width="420" height="920" fill="var(--color-surface)"/>
+<rect x="8" y="19.2" width="404" height="34.0" fill="none" id="control-control-en-m-label1"/>
+<text data-panel="control-control-en-m-label1" x="24" y="44" font-family="l0g Encryption Control" font-size="20" font-weight="400" text-anchor="start" fill="var(--color-signal)">FROM REQUEST TO DELIVERY</text>
+<rect x="8" y="58.44" width="404" height="32.3" fill="none" id="control-control-en-m-label2"/>
+<text data-panel="control-control-en-m-label2" x="24" y="82" font-family="l0g Encryption Control" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-muted)">Functional model; powers depend on law</text>
+<rect x="8" y="104.44" width="404" height="32.3" fill="none" id="control-control-en-m-label3"/>
+<text data-panel="control-control-en-m-label3" x="24" y="128" font-family="l0g Encryption Control" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-amber)">Scoped instruction</text>
+<path d="M47.4 162.5 L64.9 162.5 L72.6 170.2 L72.6 197.5 L47.4 197.5 L47.4 162.5" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="document"/>
+<path d="M64.9 162.5 L64.9 170.2 L72.6 170.2" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="document"/>
+<path d="M53.7 177.2 L66.3 177.2" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="document"/>
+<path d="M53.7 183.5 L66.3 183.5" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="document"/>
+<path d="M53.7 189.8 L62.8 189.8" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="document"/>
+<path d="M194.6 166.0 L194.6 194.0 L225.4 194.0 L225.4 166.0 L194.6 166.0" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="gate"/>
+<path d="M201.6 180.0 L207.9 186.3 L219.1 173.0" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="gate"/>
+<path d="M343.9 167.4 L376.1 167.4 L376.1 192.6 L343.9 192.6 L343.9 167.4" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="switch"/>
+<path d="M350.2 175.1 L369.8 175.1" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="switch"/>
+<path d="M350.2 184.9 L369.8 184.9" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="switch"/>
+<circle cx="355.8" cy="175.1" r="2.1" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<circle cx="364.9" cy="184.9" r="2.1" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1.5"/>
+<path d="M85 180 L185 180" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="command" data-from="authority" data-to="check"/>
+<path d="M179 176.0 L185 180 L179 184.0" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M235 180 L335 180" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="command" data-from="check" data-to="activation"/>
+<path d="M329 176.0 L335 180 L329 184.0" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="215.06" width="404" height="31.45" fill="none" id="control-control-en-m-label4"/>
+<text data-panel="control-control-en-m-label4" x="60" y="238" font-family="l0g Encryption Control" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Authority</text>
+<rect x="8" y="215.06" width="404" height="31.45" fill="none" id="control-control-en-m-label5"/>
+<text data-panel="control-control-en-m-label5" x="210" y="238" font-family="l0g Encryption Control" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Check</text>
+<rect x="8" y="215.06" width="404" height="31.45" fill="none" id="control-control-en-m-label6"/>
+<text data-panel="control-control-en-m-label6" x="360" y="238" font-family="l0g Encryption Control" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Activate</text>
+<path d="M380 180 L405 180 L405 390 L60 390 L60 400" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="activation" data-from="activation" data-to="collection"/>
+<path d="M56.0 394 L60 400 L64.0 394" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="331.44" width="404" height="32.3" fill="none" id="control-control-en-m-label7"/>
+<text data-panel="control-control-en-m-label7" x="24" y="355" font-family="l0g Encryption Control" font-size="19" font-weight="400" text-anchor="start" fill="var(--color-signal)">Collected data</text>
+<circle cx="60" cy="420" r="12.6" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="60" cy="420" r="4.9" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M41.8 420.0 L46.0 420.0" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="sensor"/>
+<path d="M74.0 420.0 L78.2 420.0" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="sensor"/>
+<path d="M60.0 401.8 L60.0 406.0" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="sensor"/>
+<path d="M60.0 434.0 L60.0 438.2" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="sensor"/>
+<path d="M343.9 407.4 L376.1 407.4 L376.1 432.6 L343.9 432.6 L343.9 407.4" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="switch"/>
+<path d="M350.2 415.1 L369.8 415.1" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="switch"/>
+<path d="M350.2 424.9 L369.8 424.9" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="switch"/>
+<circle cx="355.8" cy="415.1" r="2.1" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<circle cx="364.9" cy="424.9" r="2.1" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<path d="M193.9 561.0 L226.1 561.0 L226.1 570.8 L193.9 570.8 L193.9 561.0" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="archive"/>
+<path d="M196.7 570.8 L196.7 591.1 L223.3 591.1 L223.3 570.8" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="archive"/>
+<path d="M205.8 577.1 L214.2 577.1" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="archive"/>
+<path d="M80 420 L335 420" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="data" data-from="collection" data-to="preparation"/>
+<path d="M329 416.0 L335 420 L329 424.0" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M360 442 L310 442 L310 575 L235 575" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-metric="data" data-from="preparation" data-to="recipient"/>
+<path d="M241 571.0 L235 575 L241 579.0" fill="none" stroke="var(--color-signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="452.06" width="404" height="31.45" fill="none" id="control-control-en-m-label8"/>
+<text data-panel="control-control-en-m-label8" x="60" y="475" font-family="l0g Encryption Control" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Collect</text>
+<rect x="8" y="452.06" width="404" height="31.45" fill="none" id="control-control-en-m-label9"/>
+<text data-panel="control-control-en-m-label9" x="360" y="475" font-family="l0g Encryption Control" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Prepare</text>
+<rect x="8" y="608.06" width="404" height="31.45" fill="none" id="control-control-en-m-label10"/>
+<text data-panel="control-control-en-m-label10" x="210" y="631" font-family="l0g Encryption Control" font-size="18.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Deliver</text>
+<path d="M190 180 L150 180 L150 290 L12 290 L12 710" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" data-metric="trace" data-from="check" data-to="review"/>
+<path d="M380 420 L408 420 L408 710 L12 710" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" data-metric="trace" data-from="preparation" data-to="review"/>
+<path d="M190 575 L145 575 L145 710" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" data-metric="trace" data-from="recipient" data-to="review"/>
+<path d="M210 710 L210 750" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/>
+<path d="M194.6 770.3 L216.3 770.3 L216.3 799.0 L194.6 799.0 L194.6 770.3" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="review"/>
+<path d="M200.2 777.3 L210.0 777.3" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="review"/>
+<path d="M200.2 783.6 L210.0 783.6" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="review"/>
+<circle cx="218.4" cy="789.9" r="7.0" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1.5"/>
+<path d="M223.3 794.8 L229.6 801.1" fill="none" stroke="var(--color-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="review"/>
+<rect x="8" y="815.2" width="404" height="34.0" fill="none" id="control-control-en-m-label11"/>
+<text data-panel="control-control-en-m-label11" x="210" y="840" font-family="l0g Encryption Control" font-size="20" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Review of records</text>
+<rect x="8" y="871.06" width="404" height="31.45" fill="none" id="control-control-en-m-label12"/>
+<text data-panel="control-control-en-m-label12" x="24" y="894" font-family="l0g Encryption Control" font-size="18.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Technical roles and legal authority differ</text>
+</svg>
