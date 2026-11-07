@@ -31,7 +31,9 @@ import InsurancePromiseEpubCard from '../../../components/InsurancePromiseEpubCa
 import { insurancePromiseEditions } from '../../../config/insurance-promise-publication.mjs';
 import CumCumEpubCard from '../../../components/CumCumEpubCard.astro';
 import OrdinaryMachinesEpubCard from '../../../components/OrdinaryMachinesEpubCard.astro';
+import EncryptionBackdoorEpubCard from '../../../components/EncryptionBackdoorEpubCard.astro';
 import { ordinaryMachinesEditions } from '../../../config/ordinary-machines-publication.mjs';
+import { encryptionBackdoorEditions } from '../../../config/encryption-backdoor-publication.mjs';
 import { cumcumEditions } from '../../../config/cumcum-publication.mjs';
 import { cyberRecoveryEditions } from '../../../config/cyber-recovery-publication.mjs';
 import { debtEditions } from '../../../config/debt-publication.mjs';
@@ -56,6 +58,7 @@ const hasCyberRecoveryEpub = cyberRecoveryEditions.en.chapters.some(chapter => c
 const hasInsurancePromiseEpub = insurancePromiseEditions.en.chapters.some(chapter => chapter.slug === post.id);
 const hasCumCumEpub = cumcumEditions.en.chapters.some(chapter => chapter.slug === post.id);
 const hasOrdinaryMachinesEpub = ordinaryMachinesEditions.en.chapters.some(chapter => chapter.slug === post.id);
+const hasEncryptionBackdoorEpub = encryptionBackdoorEditions.en.chapters.some(chapter => chapter.slug === post.id);
 const sourcePost = (await getCollection('posts')).find((entry) => entry.id === post.data.sourceArticle);
 const { Content, headings } = await render(post);
 
@@ -241,6 +244,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     {hasInsurancePromiseEpub && <InsurancePromiseEpubCard lang="en" />}
     {hasCumCumEpub && <CumCumEpubCard lang="en" />}
     {hasOrdinaryMachinesEpub && <OrdinaryMachinesEpubCard lang="en" />}
+    {hasEncryptionBackdoorEpub && <EncryptionBackdoorEpubCard lang="en" />}
 
     <EnglishRelatedReading id={post.id} collection="postsEn" />
 

@@ -1,0 +1,196 @@
+import { renderedPublicationCards } from './publication-catalog-test-utils.mjs';
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+import test from 'node:test';
+import { parse } from 'parse5';
+import sharp from 'sharp';
+import postcss from 'postcss';
+import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
+import { getPublicationSocial } from '../src/config/publication-social.mjs';
+import { editorialTitleViolation } from './editorial-title-policy.mjs';
+import { getLatestEnglishEpub } from '../src/lib/latest-english-epub.mjs';
+
+const ROOT = resolve(new URL('..', import.meta.url).pathname);
+const SITE = 'https://l0g.fr';
+const nodes = node => [node, ...(node.childNodes ?? []).flatMap(nodes)];
+const attr = (node, name) => node.attrs?.find(item => item.name === name)?.value;
+const text = node => node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(text).join('');
+const plain = node => text(node).replace(/\s+/gu, ' ').trim();
+const hasClass = (node, name) => (attr(node, 'class') ?? '').split(/\s+/u).includes(name);
+const compiled = book => readFileSync(join(ROOT, 'dist', book.path, 'index.html'), 'utf8');
+const media = book => {
+  const bytes = readFileSync(join(ROOT, 'public', book.epub));
+  return { bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') };
+};
+const sole = (all, predicate, label) => {
+  const found = all.filter(predicate);
+  assert.equal(found.length, 1, label);
+  return found[0];
+};
+const meta = (all, key, value) => attr(sole(all, node => node.tagName === 'meta' && attr(node, key) === value, value), 'content');
+
+function checkPage(html, book) {
+  const all = nodes(parse(html));
+  const article = sole(all, node => node.tagName === 'article' && hasClass(node, 'encryption-backdoor-book'), 'one publication article');
+  const inside = nodes(article);
+  const h1 = sole(inside, node => node.tagName === 'h1', 'one book title');
+  assert.equal(plain(h1), book.title);
+  for (const heading of inside.filter(node => /^h[1-6]$/u.test(node.tagName ?? ''))) {
+    assert.equal(editorialTitleViolation(plain(heading)), null, plain(heading));
+  }
+  assert.equal(attr(sole(all, node => node.tagName === 'link' && attr(node, 'rel') === 'canonical', 'canonical'), 'href'), `${SITE}${book.path}`);
+  assert.equal(attr(all.find(node => node.tagName === 'html'), 'lang'), book.lang);
+  assert.equal(all.filter(node => node.tagName === 'header' && attr(node, 'data-english-header') !== undefined).length, book.lang === 'en' ? 1 : 0);
+  assert.equal(meta(all, 'name', 'robots'), 'index,follow,max-image-preview:large');
+  assert.equal(meta(all, 'name', 'description'), book.description);
+  const alternates = all.filter(node => node.tagName === 'link' && attr(node, 'rel') === 'alternate' && attr(node, 'hreflang'));
+  assert.deepEqual(alternates.map(node => [attr(node, 'hreflang'), attr(node, 'href')]).sort(), [
+    ['fr', `${SITE}${encryptionBackdoorEditions.fr.path}`], ['en', `${SITE}${encryptionBackdoorEditions.en.path}`], ['x-default', `${SITE}${encryptionBackdoorEditions.fr.path}`],
+  ].sort());
+  const social = getPublicationSocial(book.path);
+  assert(social, 'dedicated social artwork must be registered');
+  assert.equal(social.image, book.social);
+  assert.equal(meta(all, 'property', 'og:image'), `${SITE}${book.social}`);
+  assert.equal(meta(all, 'name', 'twitter:image'), `${SITE}${book.social}`);
+  for (const [name, value] of [['og:image:width', '1200'], ['og:image:height', '630'], ['og:image:alt', social.alt]]) assert.equal(meta(all, 'property', name), value);
+  const links = inside.filter(node => node.tagName === 'a');
+  const downloads = links.filter(node => attr(node, 'download') !== undefined);
+  assert.equal(downloads.length, 1, 'one clear EPUB download');
+  assert.equal(attr(downloads[0], 'href'), book.epub);
+  assert.equal(attr(downloads[0], 'id'), 'telecharger');
+  const hero = sole(inside, node => node.tagName === 'section' && hasClass(node, 'book-hero'), 'hero');
+  assert(nodes(hero).includes(downloads[0]), 'the download must be visible in the hero');
+  assert.deepEqual(links.filter(node => attr(node, 'href') && new URL(attr(node, 'href'), SITE).pathname.toLowerCase().endsWith('.epub')), downloads);
+  const chapters = sole(inside, node => node.tagName === 'ol' && hasClass(node, 'chapter-grid'), 'chapter sequence');
+  const chapterLinks = nodes(chapters).filter(node => node.tagName === 'a');
+  assert.deepEqual(chapterLinks.map(node => attr(node, 'href')), book.chapters.map(chapter => chapter.route));
+  assert.equal(chapterLinks.length, 7);
+  for (const [index, link] of chapterLinks.entries()) {
+    assert.equal(plain(sole(nodes(link), node => node.tagName === 'h3', 'chapter title')), book.chapters[index].title.replace(/\s+/gu, ' ').trim());
+    assert(plain(link).includes(book.chapters[index].summary.replace(/\s+/gu, ' ').trim()));
+  }
+  for (const paragraph of [book.readerGuide[0], ...book.introduction.slice(0, 2), ...book.conclusion.slice(0, 2), ...book.method.slice(0, 1)]) assert(plain(article).includes(paragraph.replace(/\s+/gu, ' ').trim()));
+  const glossary = sole(inside, node => node.tagName === 'dl' && hasClass(node, 'glossary-list'), 'glossary');
+  assert.deepEqual(nodes(glossary).filter(node => node.tagName === 'a').map(node => attr(node, 'href')), book.glossary.slice(0, 6).map(entry => entry.path));
+  for (const entry of book.glossary.slice(0, 6)) assert(plain(glossary).includes(entry.definition));
+  for (const source of book.synthesisSources.slice(0, 2)) assert(links.some(node => attr(node, 'href') === source.url), 'opening evidence remains directly accessible');
+  const alternate = encryptionBackdoorEditions[book.lang === 'fr' ? 'en' : 'fr'];
+  assert(links.some(node => attr(node, 'href') === alternate.path && attr(node, 'hreflang') === alternate.lang));
+  assert(links.some(node => attr(node, 'href') === (book.lang === 'fr' ? '/publications/' : '/en/publications/')));
+  const support = sole(inside, node => node.tagName === 'p' && hasClass(node, 'support-note'), 'support note');
+  assert(plain(support).includes('Bitcoin'));
+  assert.equal(attr(sole(nodes(support), node => node.tagName === 'a', 'support link'), 'href'), book.lang === 'fr' ? '/soutenir/' : '/en/support/');
+  const ids = inside.map(node => attr(node, 'id')).filter(Boolean);
+  assert.equal(ids.length, new Set(ids).size, 'unique section targets');
+  for (const link of links.filter(node => attr(node, 'href')?.startsWith('#'))) assert(ids.includes(attr(link, 'href').slice(1)));
+
+  const schemas = all.filter(node => node.tagName === 'script' && attr(node, 'type') === 'application/ld+json').map(node => JSON.parse(text(node)));
+  const schema = sole(schemas, item => item['@type'] === 'Book', 'one Book schema');
+  for (const [key, value] of Object.entries({ '@context': 'https://schema.org', '@id': `${SITE}${book.path}#book`, url: `${SITE}${book.path}`, name: book.title, description: book.description, inLanguage: book.lang, datePublished: book.date, dateModified: book.modified, bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true, image: `${SITE}${book.cover}`, license: 'https://creativecommons.org/licenses/by/4.0/' })) assert.equal(schema[key], value, key);
+  assert.deepEqual(schema.author, { '@id': `${SITE}/about/#bluetouff` });
+  assert.deepEqual(schema.publisher, { '@id': `${SITE}/#org` });
+  assert.deepEqual(schema.hasPart, book.chapters.map(chapter => ({ '@type': 'Article', name: chapter.title, url: `${SITE}${chapter.route}` })));
+  assert.deepEqual(schema[book.lang === 'fr' ? 'workTranslation' : 'translationOfWork'], { '@type': 'Book', '@id': `${SITE}${alternate.path}#book`, inLanguage: alternate.lang });
+  assert.deepEqual(schema.associatedMedia, [{ '@type': 'MediaObject', name: `${book.title} · ${book.lang === 'fr' ? 'EPUB sombre' : 'Dark EPUB'}`, contentUrl: `${SITE}${book.epub}`, encodingFormat: 'application/epub+zip', contentSize: `${media(book).bytes} bytes`, sha256: media(book).sha256 }]);
+  assert.equal(plain(sole(inside, node => node.tagName === 'code', 'visible digest')), media(book).sha256);
+  assert.doesNotMatch(plain(article), /—|(?:2|deux|two)\s+(?:horloges|clocks)/iu);
+  return { all, article };
+}
+
+test('encryption editions preserve the seven-chapter bilingual publication contract', () => {
+  assert.deepEqual(Object.keys(encryptionBackdoorEditions).sort(), ['en', 'fr']);
+  for (const [lang, directory, title] of [['fr', 'le-cout-d-une-porte-derobee', 'Le coût d’une porte dérobée'], ['en', 'the-cost-of-a-backdoor', 'The Cost of a Backdoor']]) {
+    const book = encryptionBackdoorEditions[lang];
+    assert.equal(book.lang, lang);assert.equal(book.theme, 'dark');assert.equal(book.title, title);
+    assert.equal(book.path, `${lang === 'en' ? '/en' : ''}/publications/${directory}/`);
+    assert.equal(book.epub, `/publications/${directory}-l0g.epub`);
+    assert.equal(book.cover, `/publications/${directory}-cover.jpg`);
+    assert.equal(book.social, `/publications/${directory}-og-v1.jpg`);
+    assert.equal(book.panorama, '/publications/encryption-backdoor-publication-panorama.jpg');
+    assert.equal(book.date, '2026-11-08');assert.equal(book.documentationDate, '2026-11-07');
+    assert.equal(book.chapters.length, 7);assert.equal(book.figureCount, 21);assert.equal(book.sourceCount, 160);
+    assert.deepEqual(book.synthesisSources.slice(0, 2).map(source => source.url), ['https://www.nationalacademies.org/read/25010/chapter/9', 'https://www.assemblee-nationale.fr/dyn/17/amendements/1779/AN/358']);
+    assert.deepEqual(book.chapters.map(chapter => chapter.number), [1, 2, 3, 4, 5, 6, 7]);
+    assert.equal(new Set(book.chapters.map(chapter => chapter.route)).size, 7);
+  }
+});
+
+test('both compiled encryption pages preserve native metadata, seven chapters and authentic file integrity', () => {
+  for (const book of Object.values(encryptionBackdoorEditions)) checkPage(compiled(book), book);
+});
+
+test('encryption page contract rejects complete URL substitutions, altered hashes and missing chapter links', () => {
+  const book = encryptionBackdoorEditions.fr, html = compiled(book);
+  for (const replacement of [`${book.epub}?alias=1`, `${book.epub}#hidden`, `${book.epub}/`, `https://example.org${book.epub}`, `//l0g.fr${book.epub}`, `https://l0g.fr.example.org${book.epub}`, `https://user@l0g.fr${book.epub}`, 'javascript:alert(1)']) {
+    const altered = html.replace(`href="${book.epub}"`, `href="${replacement}"`);
+    assert.notEqual(altered, html);assert.throws(() => checkPage(altered, book), replacement);
+  }
+  for (const [before, after] of [[media(book).sha256, '0'.repeat(64)], [`"contentSize":"${media(book).bytes} bytes"`, `"contentSize":"${media(book).bytes + 1} bytes"`], [`href="${book.chapters[5].route}"`, 'href="/posts/other/"']]) {
+    const altered = html.replace(before, after);assert.notEqual(altered, html);assert.throws(() => checkPage(altered, book));
+  }
+  for (const link of [`<a href="${book.epub}" download>Extra download</a>`, `<a href="${book.epub}">Extra file</a>`]) {
+    const altered = html.replace('</article>', `${link}</article>`);assert.notEqual(altered, html);assert.throws(() => checkPage(altered, book));
+  }
+});
+
+test('covers, landscape cards and panorama use distinct real raster assets with accurate dimensions and variants', async () => {
+  for (const book of Object.values(encryptionBackdoorEditions)) {
+    assert.notEqual(book.cover, book.social);assert.notEqual(book.cover, book.panorama);assert.notEqual(book.social, book.panorama);
+    for (const [asset, width, height] of [[book.cover, 1024, 1638], [book.social, 1200, 630], [book.panorama, 1600, 800]]) {
+      const info = await sharp(join(ROOT, 'public', asset)).metadata();assert.equal(info.width, width, asset);assert.equal(info.height, height, asset);
+    }
+    const social = getPublicationSocial(book.path);assert.notDeepEqual(readFileSync(join(ROOT, 'public', book.social)), readFileSync(join(ROOT, 'public', social.art)));
+    const { article } = checkPage(compiled(book), book);
+    for (const image of nodes(article).filter(node => node.tagName === 'img')) {
+      assert(attr(image, 'alt')?.trim());const path = attr(image, 'src');assert(path.startsWith('/'));
+      const info = await sharp(join(ROOT, 'public', path)).metadata();assert.equal(info.width, Number(attr(image, 'width')), path);assert.equal(info.height, Number(attr(image, 'height')), path);
+      for (const item of (attr(image, 'srcset') ?? '').split(',').filter(Boolean)) {
+        const [file, descriptor] = item.trim().split(/\s+/u), width = Number(descriptor.slice(0, -1));
+        assert.equal(descriptor, `${width}w`);assert.equal((await sharp(join(ROOT, 'public', file)).metadata()).width, width, file);
+      }
+    }
+  }
+});
+
+test('publication presentation preserves theme tokens, responsive images and keyboard affordances without local scripting', () => {
+  const component = readFileSync(join(ROOT, 'src/components/EncryptionBackdoorPublication.astro'), 'utf8');
+  assert.doesNotMatch(component, /<script(?! type="application\/ld\+json")|<svg\b|<foreignObject|on(?:click|load)\s*=|\bfetch\s*\(|\blocalStorage\b/u);
+  assert.match(component, /serializeInlineScriptData\(jsonLd\)/u);
+  const css = postcss.parse(component.match(/<style>([\s\S]*?)<\/style>/u)[1]);
+  const declarations = selector => {
+    const found=[];css.walkRules(rule=>{if(rule.selector===selector && rule.parent.type==='root')found.push(rule);});assert.equal(found.length,1,selector);
+    return new Map(found[0].nodes.filter(node=>node.type==='decl').map(node=>[node.prop,node.value]));
+  };
+  assert.equal(declarations('.download-action').get('color'), 'var(--color-bright)');
+  assert.equal(declarations('.book-shell > img').get('width'), '100%');assert.equal(declarations('.book-shell > img').get('height'), 'auto');
+  assert.equal(declarations('.panorama img').get('width'), '100%');assert.equal(declarations('.panorama img').get('height'), 'auto');
+  assert.equal(declarations('a:focus-visible,summary:focus-visible').get('outline'), '2px solid var(--color-signal)');
+  assert.match(component, /@media\(max-width:780px\)/u);assert.match(component, /@media\(prefers-reduced-motion:reduce\)/u);
+});
+
+
+
+test('both catalogues present the encryption edition first while retaining their older editions', () => {
+  for (const book of Object.values(encryptionBackdoorEditions)) {
+    const cards = renderedPublicationCards(ROOT, book.lang);
+    assert.equal(cards.length, book.lang === 'fr' ? 19 : 16);
+    assert(hasClass(cards[0], 'publication-spotlight--encryption-backdoor'));
+    assert(hasClass(cards[1], 'publication-spotlight--ordinary-machines'));
+    const first = nodes(cards[0]);
+    assert.equal(plain(sole(first, node => node.tagName === 'h2', 'catalogue title')), book.title);
+    assert.equal(attr(sole(first, node => node.tagName === 'a' && attr(node, 'download') !== undefined, 'catalogue download'), 'href'), book.epub);
+    assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));
+    assert.equal(attr(sole(first, node => node.tagName === 'img', 'catalogue cover'), 'src'), book.cover);
+  }
+});
+
+test('the English home can discover the new book from its real EPUB publication metadata', async () => {
+  const book = encryptionBackdoorEditions.en;
+  const latest = await getLatestEnglishEpub({ now: new Date('2026-11-08T12:00:00Z') });
+  assert.equal(latest.path, book.path);assert.equal(latest.title, book.title);
+  assert.equal(latest.date, book.date);assert.equal(latest.epub, book.epub);
+  assert.equal(latest.cover, book.cover);assert.equal(latest.width, 1024);assert.equal(latest.height, 1638);
+  assert.equal(latest.bytes, media(book).bytes);
+});

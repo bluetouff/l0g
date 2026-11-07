@@ -1,0 +1,579 @@
+{
+  "schemaVersion": 1,
+  "edition": "urn:uuid:9b65f1a9-8520-56e8-9fdd-70e517a34517",
+  "lang": "en",
+  "date": "2026-11-08",
+  "modified": "2026-11-07T23:40:00Z",
+  "sourceArticles": [
+    {
+      "lang": "fr",
+      "chapter": 1,
+      "file": "src/content/posts/chiffrement-portes-derobees-gouvernement.mdx",
+      "canonical": "https://l0g.fr/posts/chiffrement-portes-derobees-gouvernement/",
+      "sha256": "89ccc89956d596b0fd7adc4717851a18d61e940736395ffba48ba0b30d2db6fa",
+      "published": "2026-11-07T13:50:00+01:00",
+      "updated": "2026-11-07T13:50:00+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 2,
+      "file": "src/content/posts/chiffrement-messages-appareils-sauvegardes.mdx",
+      "canonical": "https://l0g.fr/posts/chiffrement-messages-appareils-sauvegardes/",
+      "sha256": "9923cb76488b322e993baba5d438f85137f2b7fd1e4fa0dcab57ee81b349ad9a",
+      "published": "2026-11-07T14:55:00+01:00",
+      "updated": "2026-11-07T14:55:00+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 3,
+      "file": "src/content/posts/chiffrement-acces-etat-controle-financement.mdx",
+      "canonical": "https://l0g.fr/posts/chiffrement-acces-etat-controle-financement/",
+      "sha256": "5a6809e1d18c6d9a651909c70b9bf5eeb9748d326fb715351eff41a9afe92398",
+      "published": "2026-11-07T16:10:00+01:00",
+      "updated": "2026-11-07T16:10:00+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 4,
+      "file": "src/content/posts/icloud-chiffrement-frontieres-cout-sortie.mdx",
+      "canonical": "https://l0g.fr/posts/icloud-chiffrement-frontieres-cout-sortie/",
+      "sha256": "ee46d4214baf0c3032e71126a4f1c841a5416cf7e8d5af03eaf8a21bf436dc49",
+      "published": "2026-11-07T17:10:00+01:00",
+      "updated": "2026-11-07T17:10:00+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 5,
+      "file": "src/content/posts/chiffrement-acces-detourne-cout-cyberattaque.mdx",
+      "canonical": "https://l0g.fr/posts/chiffrement-acces-detourne-cout-cyberattaque/",
+      "sha256": "1fc8d127e075d54b9ebb9e3547d11297b24330b2d37d04afef8d77db3cedd490",
+      "published": "2026-11-07T18:30:00+01:00",
+      "updated": "2026-11-07T18:30:00+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 6,
+      "file": "src/content/posts/chiffrement-autres-chemins-enquete-preuve.mdx",
+      "canonical": "https://l0g.fr/posts/chiffrement-autres-chemins-enquete-preuve/",
+      "sha256": "27fc62d8a221dc7de069d189d759f3156a33afe83fee85d407809a8a5b65751e",
+      "published": "2026-11-07T19:15:00+01:00",
+      "updated": "2026-11-08T00:35:00+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 7,
+      "file": "src/content/posts/chiffrement-charge-preuve-acces-messages.mdx",
+      "canonical": "https://l0g.fr/posts/chiffrement-charge-preuve-acces-messages/",
+      "sha256": "f8acd8c84434c1ba663290311d2a0e5d470124aa3f4ef321e11b45abeffc20be",
+      "published": "2026-11-07T23:35:00+01:00",
+      "updated": "2026-11-07T23:35:00+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 1,
+      "file": "src/content/posts-en/france-encryption-backdoor-safeguard.mdx",
+      "canonical": "https://l0g.fr/en/analysis/france-encryption-backdoor-safeguard/",
+      "sha256": "a747d72b04deb3a7b80a6986d079fe5629f7427d3d11717718e16fb1d99814f6",
+      "published": "2026-11-07T13:50:00+01:00",
+      "updated": "2026-11-07T13:50:00+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 2,
+      "file": "src/content/posts-en/encryption-messages-devices-backups.mdx",
+      "canonical": "https://l0g.fr/en/analysis/encryption-messages-devices-backups/",
+      "sha256": "4c07db1bf47da74d797ca62c959acaf3d83c333644e5ad9ddf27d7741d4be10e",
+      "published": "2026-11-07T14:55:00+01:00",
+      "updated": "2026-11-07T14:55:00+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 3,
+      "file": "src/content/posts-en/encryption-state-access-control-cost.mdx",
+      "canonical": "https://l0g.fr/en/analysis/encryption-state-access-control-cost/",
+      "sha256": "ef0ade4c2c68a88974b0508378f59bfd3da9b39abae8cc417105ebb07f2a38ca",
+      "published": "2026-11-07T16:10:00+01:00",
+      "updated": "2026-11-07T16:10:00+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 4,
+      "file": "src/content/posts-en/icloud-encryption-borders-switching-costs.mdx",
+      "canonical": "https://l0g.fr/en/analysis/icloud-encryption-borders-switching-costs/",
+      "sha256": "1d82d89581f68df9c62d840dc92a07e902711c4914cc38816d674ae5ddadebc3",
+      "published": "2026-11-07T17:10:00+01:00",
+      "updated": "2026-11-07T17:10:00+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 5,
+      "file": "src/content/posts-en/encryption-hijacked-access-cyberattack-costs.mdx",
+      "canonical": "https://l0g.fr/en/analysis/encryption-hijacked-access-cyberattack-costs/",
+      "sha256": "b407f2c038491307ffd2289520956a27ef93cc0f92c90871eb0ada620d12e1c8",
+      "published": "2026-11-07T18:30:00+01:00",
+      "updated": "2026-11-07T18:30:00+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 6,
+      "file": "src/content/posts-en/encryption-alternative-investigation-evidence.mdx",
+      "canonical": "https://l0g.fr/en/analysis/encryption-alternative-investigation-evidence/",
+      "sha256": "67d769e83ad6417f70c0614901b2926ad55ee76e12a5a8dbedf9cea86f5abcb6",
+      "published": "2026-11-07T19:15:00+01:00",
+      "updated": "2026-11-08T00:35:00+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 7,
+      "file": "src/content/posts-en/encryption-burden-proof-message-access.mdx",
+      "canonical": "https://l0g.fr/en/analysis/encryption-burden-proof-message-access/",
+      "sha256": "c40c80338c2649a98f2175b18c32f90b697db8d1d9e69c1f180a714c92a7b4d8",
+      "published": "2026-11-07T23:35:00+01:00",
+      "updated": "2026-11-07T23:35:00+01:00"
+    }
+  ],
+  "figures": [
+    {
+      "chapter": 1,
+      "figure": 1,
+      "kind": "parliament",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-access-2026/parliament.en.desktop.svg",
+      "sourceSha256": "71c967d997283c8d12ca0d05d81cf0498b644e866704bd2febc843198948d553",
+      "epubFile": "EPUB/media/file0.svg",
+      "epubSha256": "3103aa8ec3b9adea63f993b44e664685a7d61f0fe61c1940c5817e30489c86d8"
+    },
+    {
+      "chapter": 1,
+      "figure": 1,
+      "kind": "parliament",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-access-2026/parliament.en.mobile.svg",
+      "sourceSha256": "7b498d638a8838d91e071458bbcaf13e03b267c2f2b3a9bab323cbb1a0e0166c",
+      "epubFile": "EPUB/media/file1.svg",
+      "epubSha256": "538c6b7e24fe933edabb69b58fe08c6c50b91f26ab865fdec5bc02e0c2a7ebdf"
+    },
+    {
+      "chapter": 1,
+      "figure": 2,
+      "kind": "message",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-access-2026/message.en.desktop.svg",
+      "sourceSha256": "0f80a2ae8b8152d972ce79134ee1a8cea60d1bdcbd59c2496357392c74d37db5",
+      "epubFile": "EPUB/media/file2.svg",
+      "epubSha256": "529595e6d6c7ac393b985a15105e76f35f526fcf0abdcf8b06ac8690b8ec52ff"
+    },
+    {
+      "chapter": 1,
+      "figure": 2,
+      "kind": "message",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-access-2026/message.en.mobile.svg",
+      "sourceSha256": "9d292e889d35e524fe0776e2819f400d296c1408306f3635758fdae2e6968f6b",
+      "epubFile": "EPUB/media/file3.svg",
+      "epubSha256": "3f00afcd8ae7a42d7d2abb6cefcc09d765ad1d001c2f44131f73441ed51c082c"
+    },
+    {
+      "chapter": 1,
+      "figure": 3,
+      "kind": "risk",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-access-2026/risk.en.desktop.svg",
+      "sourceSha256": "a5663f2022894392253da3b7d4c1bc8a87a94673bd088d3a87be957d6c39ea6d",
+      "epubFile": "EPUB/media/file4.svg",
+      "epubSha256": "84c079db777c4d62401dc3436049b8dcbe592d7393309006a7487807dc68ff35"
+    },
+    {
+      "chapter": 1,
+      "figure": 3,
+      "kind": "risk",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-access-2026/risk.en.mobile.svg",
+      "sourceSha256": "c9a4f28a1985cf974b17f3b75d2d469569ebad0165aead9b8621c458e98b4b81",
+      "epubFile": "EPUB/media/file5.svg",
+      "epubSha256": "a1adb6ef3c871087613fea13809246cf89491260b4c27f0b70debf7ee79c30fd"
+    },
+    {
+      "chapter": 2,
+      "figure": 1,
+      "kind": "layers",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-journey-2026/layers.en.desktop.svg",
+      "sourceSha256": "667c1a3b481b3827a64a9778f0239fc44cda2a6575f0dde01bb010a59a652ee6",
+      "epubFile": "EPUB/media/file6.svg",
+      "epubSha256": "0371b8f8a6e4c8a9b0afd97e4eb507905a99a8297b78817a8df8b884daa3241b"
+    },
+    {
+      "chapter": 2,
+      "figure": 1,
+      "kind": "layers",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-journey-2026/layers.en.mobile.svg",
+      "sourceSha256": "769ab744bb3a7bcb1a87072913d76df2db0029fd64843d1a0823af245510a461",
+      "epubFile": "EPUB/media/file7.svg",
+      "epubSha256": "7aaa2640797c837d66ddafc373fabc1ea2762f8b670ae6e5181dfba72a4d65cb"
+    },
+    {
+      "chapter": 2,
+      "figure": 2,
+      "kind": "readers",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-journey-2026/readers.en.desktop.svg",
+      "sourceSha256": "6bf7d1d0af7fa4c808137d6318a17028a89e6d21e1f27e8740ea8eac5d27f6ed",
+      "epubFile": "EPUB/media/file8.svg",
+      "epubSha256": "82af167ffc3c74464e1ce711c47d5825e51510da81975aca3c6ab1dbe14fecb3"
+    },
+    {
+      "chapter": 2,
+      "figure": 2,
+      "kind": "readers",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-journey-2026/readers.en.mobile.svg",
+      "sourceSha256": "b6bfc609065cb1d49d126567f7c6c89b741eb863841f90dc8c56a0c10e2ddc25",
+      "epubFile": "EPUB/media/file9.svg",
+      "epubSha256": "2d0dcff8c39b65526716cd0d1a6117e6db116ebbef5b138d8b188a925839bdb7"
+    },
+    {
+      "chapter": 2,
+      "figure": 3,
+      "kind": "backup",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-journey-2026/backup.en.desktop.svg",
+      "sourceSha256": "6a61e8fee2bd6a75fcb04622d9a624ab711381331c25e61b44fc2631f22d527d",
+      "epubFile": "EPUB/media/file10.svg",
+      "epubSha256": "221f3c9c34a1ba7cffabce06a17c21b6ceee9cd487e65b75539629a17ca3e7f3"
+    },
+    {
+      "chapter": 2,
+      "figure": 3,
+      "kind": "backup",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-journey-2026/backup.en.mobile.svg",
+      "sourceSha256": "0e290bcd326d5f0444b857ae3784589a6c0aeb818a720e20721b94712f04baae",
+      "epubFile": "EPUB/media/file11.svg",
+      "epubSha256": "371e325415cb48291f5c91511134ab2dfd670d2095598ea9789be7e60f48ba0a"
+    },
+    {
+      "chapter": 3,
+      "figure": 1,
+      "kind": "wiretaps",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-control-2026/wiretaps.en.desktop.svg",
+      "sourceSha256": "4e6d5c36030063b6173be4f650b987af92e804f772d41ff20d5fe74f5a2f96fd",
+      "epubFile": "EPUB/media/file12.svg",
+      "epubSha256": "d17a3960641db3e2e3ccfa30d178545f74c027afbfd77b8acf717db0c9b2f63e"
+    },
+    {
+      "chapter": 3,
+      "figure": 1,
+      "kind": "wiretaps",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-control-2026/wiretaps.en.mobile.svg",
+      "sourceSha256": "53dfb27a24dc08233e0462f7c32100c1e360f81e62da33455ff8b71bc8bd6d45",
+      "epubFile": "EPUB/media/file13.svg",
+      "epubSha256": "a2fc861808da968e41d6795d1e57b7e566bcad371f8df98b3784465e7616937d"
+    },
+    {
+      "chapter": 3,
+      "figure": 2,
+      "kind": "control",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-control-2026/control.en.desktop.svg",
+      "sourceSha256": "7124e77cde1d6076041680ee5c57cd843a7131a18f8dfb2664147a49a0831dd9",
+      "epubFile": "EPUB/media/file14.svg",
+      "epubSha256": "2bf4f53bd4d117c0aa37c5e5fb02eaeb8a5793a1ca93d776b18cd908de1ed255"
+    },
+    {
+      "chapter": 3,
+      "figure": 2,
+      "kind": "control",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-control-2026/control.en.mobile.svg",
+      "sourceSha256": "1bae170182f6ea7dfd49dcf041ca25c39ae8401dacd02b531d1417aa8d019946",
+      "epubFile": "EPUB/media/file15.svg",
+      "epubSha256": "72bd9aa6251bf75dcae155a972a9613835e27837d72a21d9341203ab03341d1b"
+    },
+    {
+      "chapter": 3,
+      "figure": 3,
+      "kind": "lifetimes",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-control-2026/lifetimes.en.desktop.svg",
+      "sourceSha256": "2a154ec741e7606aa59581a19b812fb0ce9ea16ec4e2908c85986807124a7697",
+      "epubFile": "EPUB/media/file16.svg",
+      "epubSha256": "18fc1a04d2b1e5633e5f7b00879c89ceb18be67f26202474e3c35c1d9f32aa55"
+    },
+    {
+      "chapter": 3,
+      "figure": 3,
+      "kind": "lifetimes",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-control-2026/lifetimes.en.mobile.svg",
+      "sourceSha256": "47f9bd2f4a9c9a29628e4a3534ba3a12992ab759832155009e4b29528d283bd9",
+      "epubFile": "EPUB/media/file17.svg",
+      "epubSha256": "cfb1cee4c26e8f045578f04d8545e64b32b4b4b7372f83378251f2633d0a1056"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "categories",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-borders-2026/categories.en.desktop.svg",
+      "sourceSha256": "613138935bf477ee9c3579f8386c9d0966c129980e83cb4328bc920e9f29da6e",
+      "epubFile": "EPUB/media/file18.svg",
+      "epubSha256": "ca629b64f77ea9f2c72198de2afa71b1d7d51230876bc82af48657204cc7c3ad"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "categories",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-borders-2026/categories.en.mobile.svg",
+      "sourceSha256": "fa917cfc5392450530b4ae6fa20a234194bb941812b42780a30c1aab05365a5a",
+      "epubFile": "EPUB/media/file19.svg",
+      "epubSha256": "e946b801a77337b7066c3cad0d487f716df723c13720dcd33aa6385d2fa7d62e"
+    },
+    {
+      "chapter": 4,
+      "figure": 2,
+      "kind": "relations",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-borders-2026/relations.en.desktop.svg",
+      "sourceSha256": "2f548b41ba536a9f3635c3f98b6cf5f49a13f0ecb65f6913895fd9e4a060f38a",
+      "epubFile": "EPUB/media/file20.svg",
+      "epubSha256": "4628967ec113397628b6c37fe35ca092185b1b94ce1dfd174491ab55bd519da9"
+    },
+    {
+      "chapter": 4,
+      "figure": 2,
+      "kind": "relations",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-borders-2026/relations.en.mobile.svg",
+      "sourceSha256": "ceb4a39ed62448d2f7b16d06690333f64c5ac0a04eb1b42c039762f0b0e88776",
+      "epubFile": "EPUB/media/file21.svg",
+      "epubSha256": "c8fc7419da55f30b3f35a9e772c1b502f5ba4a59182ee14470c0081c2cd6067e"
+    },
+    {
+      "chapter": 4,
+      "figure": 3,
+      "kind": "migration",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-borders-2026/migration.en.desktop.svg",
+      "sourceSha256": "a0af8d9fc506d8cae06c81359c0c72d0a2a3ebd10569be262c5bae566988872c",
+      "epubFile": "EPUB/media/file22.svg",
+      "epubSha256": "d91c20d91674097cfdfae3eb7ee3e1209fbe762287042ca80030b287357d2e47"
+    },
+    {
+      "chapter": 4,
+      "figure": 3,
+      "kind": "migration",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-borders-2026/migration.en.mobile.svg",
+      "sourceSha256": "00fa3e150e0d2b9ddabafb57a1e3f8cfa006960db4c3acf2efa54adfa9f30350",
+      "epubFile": "EPUB/media/file23.svg",
+      "epubSha256": "862fbd4dfe47808af4d543dc6c7649f5014c99e59afa0ec0783d30499688650a"
+    },
+    {
+      "chapter": 5,
+      "figure": 1,
+      "kind": "paths",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-damage-2026/paths.en.desktop.svg",
+      "sourceSha256": "e62f790295178289b47b0f1f93ab344c870a42c9603c0ec85009c2ce22cead62",
+      "epubFile": "EPUB/media/file24.svg",
+      "epubSha256": "a06bd7cbc5a0499f9e1346cb66ec8d02880fac9602ee177f8ac830ddd03856ee"
+    },
+    {
+      "chapter": 5,
+      "figure": 1,
+      "kind": "paths",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-damage-2026/paths.en.mobile.svg",
+      "sourceSha256": "2ef0725f1abdb888fb77673dd93ea74c7c0ace31aed02d081c15b78efb77a22d",
+      "epubFile": "EPUB/media/file25.svg",
+      "epubSha256": "b081d56a51be97811e9a0e6d4196c726ef46d0f11f391999a5d91b4be25c4706"
+    },
+    {
+      "chapter": 5,
+      "figure": 2,
+      "kind": "exposure",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-damage-2026/exposure.en.desktop.svg",
+      "sourceSha256": "a455006a830e3644ac47de587d47d3f44d9a22e21375609a0781a11cc695deaf",
+      "epubFile": "EPUB/media/file26.svg",
+      "epubSha256": "e1a2fbc7682ebd63a27321aa41c4bfd9962b15630426bc74458209cbd911eb30"
+    },
+    {
+      "chapter": 5,
+      "figure": 2,
+      "kind": "exposure",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-damage-2026/exposure.en.mobile.svg",
+      "sourceSha256": "9e9e6a1df1bc22ad79f5fb0333d8b7c5e0f308a3902c666ea0279d9ad815ea94",
+      "epubFile": "EPUB/media/file27.svg",
+      "epubSha256": "da08fe721353d5fc4baa3ad354b645e216dd340094b511999a90c6fe75567f35"
+    },
+    {
+      "chapter": 5,
+      "figure": 3,
+      "kind": "recovery",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-damage-2026/recovery.en.desktop.svg",
+      "sourceSha256": "dbb9884b9974f0ce7bcd3b23d90c683688c74879dd030d842475982c06836cc7",
+      "epubFile": "EPUB/media/file28.svg",
+      "epubSha256": "47f135abb364450986ed7020cb0c7e387fd23623390c8d20c26d7b70e9513f85"
+    },
+    {
+      "chapter": 5,
+      "figure": 3,
+      "kind": "recovery",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-damage-2026/recovery.en.mobile.svg",
+      "sourceSha256": "c9b079c472181e5174f229959a27b6708000e419c3ed629fce1329a6e6c8d007",
+      "epubFile": "EPUB/media/file29.svg",
+      "epubSha256": "0ad0d5cf700777c3eb86f355fe24f4302610d0b44d8ee5bf4e5dc856491ce5d5"
+    },
+    {
+      "chapter": 6,
+      "figure": 1,
+      "kind": "signal",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-evidence-2026/signal.en.desktop.svg",
+      "sourceSha256": "8b1a314c97d919dc22c2594d1381d22036d630785213b1253b10fb10a20df72f",
+      "epubFile": "EPUB/media/file30.svg",
+      "epubSha256": "d6df336d0b7558ac6fa13ac5f9131868654769459857e0f63e67b116dceb9abb"
+    },
+    {
+      "chapter": 6,
+      "figure": 1,
+      "kind": "signal",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-evidence-2026/signal.en.mobile.svg",
+      "sourceSha256": "a6ef1759c7f4712c6361fe7431c19f759cf8b1512be485451b25a1bc2f66f55c",
+      "epubFile": "EPUB/media/file31.svg",
+      "epubSha256": "bcf899c855a45192189e8c192aa60c314dae3e57b29f937f1531ac84a8933051"
+    },
+    {
+      "chapter": 6,
+      "figure": 2,
+      "kind": "orders",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-evidence-2026/orders.en.desktop.svg",
+      "sourceSha256": "9f97fcf0b64253f6e94780250aecb555e1b6c4ad4a126e17190d7c3e8817ca8e",
+      "epubFile": "EPUB/media/file32.svg",
+      "epubSha256": "e144aab5668e8e79e27639f67f06f83ba84eed8803ae60c88c934c0edb0d6352"
+    },
+    {
+      "chapter": 6,
+      "figure": 2,
+      "kind": "orders",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-evidence-2026/orders.en.mobile.svg",
+      "sourceSha256": "1c87faf3bf0738cf509addae02e59e246164e6f68056d74471e7206250b3645e",
+      "epubFile": "EPUB/media/file33.svg",
+      "epubSha256": "a03d0e7a721e07477d29123724400276824b93b3dc05542ad987847cb2272172"
+    },
+    {
+      "chapter": 6,
+      "figure": 3,
+      "kind": "vulnerability",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-evidence-2026/vulnerability.en.desktop.svg",
+      "sourceSha256": "e868b5b1578bc1b0a81e6dde2f14d6def25fcde12c3b5ee934ca0db19cbcc82b",
+      "epubFile": "EPUB/media/file34.svg",
+      "epubSha256": "3ba6e0d34a91b9feba20c57f8f40716831b9307713518aab5c661de392a05db2"
+    },
+    {
+      "chapter": 6,
+      "figure": 3,
+      "kind": "vulnerability",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-evidence-2026/vulnerability.en.mobile.svg",
+      "sourceSha256": "c5af52ef2ba4eadc9e4cb85e3dd8afef7049b0c0b62ab72a85262bea10fd87ad",
+      "epubFile": "EPUB/media/file35.svg",
+      "epubSha256": "c54c7b0589976d7d5c9132ac871e8f8bb0ff6f9c727b5309baa59effa9c9c3a4"
+    },
+    {
+      "chapter": 7,
+      "figure": 1,
+      "kind": "estimate",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-proof-2026/estimate.en.desktop.svg",
+      "sourceSha256": "c902e2f7dd249c7fa73bd2072f67d831f705cc025a16bd6b0c7302a68a3fbc9d",
+      "epubFile": "EPUB/media/file36.svg",
+      "epubSha256": "19fcf06e3a76b09f3791cd9cd74bb6cb7d22a46eb6d6892b44a60f952de782d2"
+    },
+    {
+      "chapter": 7,
+      "figure": 1,
+      "kind": "estimate",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-proof-2026/estimate.en.mobile.svg",
+      "sourceSha256": "d556d769e3f08a415bf99b408061c3e45a32981526c43e90847d2d600c874ec7",
+      "epubFile": "EPUB/media/file37.svg",
+      "epubSha256": "a0a4e6ddd37513703aa56cc8fcaa227fcea27a07f2eccaf76a5236590f3a5ee3"
+    },
+    {
+      "chapter": 7,
+      "figure": 2,
+      "kind": "trust",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-proof-2026/trust.en.desktop.svg",
+      "sourceSha256": "5a6e034bb7f96ec5a66a88895874ceabb9d8848bb9b6eb22e5005af7d6772ba7",
+      "epubFile": "EPUB/media/file38.svg",
+      "epubSha256": "30ef6200be41e5e33bfe799d3e7edcaafc603572ca750d0ad1457a668aba12f7"
+    },
+    {
+      "chapter": 7,
+      "figure": 2,
+      "kind": "trust",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-proof-2026/trust.en.mobile.svg",
+      "sourceSha256": "9de6d7b0acdb4020c090d241e4f11ccad7c7c097e950c0ce08c98641ea6e715c",
+      "epubFile": "EPUB/media/file39.svg",
+      "epubSha256": "a4230b826f9285b7e18a4fa78f5504cf5c50641716d7ea07adde2ba97793eb84"
+    },
+    {
+      "chapter": 7,
+      "figure": 3,
+      "kind": "review",
+      "mobile": false,
+      "sourceFile": "src/figures/encryption-proof-2026/review.en.desktop.svg",
+      "sourceSha256": "15419c8aa7cca5af584cf7ef3268e9ad0368eb22bb9385d3855f964b4dcc4901",
+      "epubFile": "EPUB/media/file40.svg",
+      "epubSha256": "cb0b7af852958166f51b11d3d7acd045acfebff2519a3bb8dd61dadcfe7c2a04"
+    },
+    {
+      "chapter": 7,
+      "figure": 3,
+      "kind": "review",
+      "mobile": true,
+      "sourceFile": "src/figures/encryption-proof-2026/review.en.mobile.svg",
+      "sourceSha256": "e5bafbfa0dba8ecca35c394fe9349b6a7ab51c21ea5da8825b46c54c7ad11cde",
+      "epubFile": "EPUB/media/file41.svg",
+      "epubSha256": "f38c9ba80d07b042fe5353efc8769078ac775a8b3ea2b4f78ebf79e43378d027"
+    }
+  ],
+  "fonts": [
+    {
+      "file": "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+      "license": "LICENSE-inter.txt"
+    },
+    {
+      "file": "node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2",
+      "sha256": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e",
+      "license": "LICENSE-jetbrains-mono.txt"
+    },
+    {
+      "file": "public/fonts/ukraine-reparations/liberation-sans-400.ttf",
+      "sha256": "76d04c18ea243f426b7de1f3ad208e927008f961dc5945e5aad352d0dfde8ee8",
+      "license": "LICENSE-ukraine-reparations.txt"
+    }
+  ],
+  "cover": {
+    "file": "public/publications/the-cost-of-a-backdoor-cover.jpg",
+    "sha256": "ea065cbf8f1a98a4d938130023280eafcfb871d772972626b46e32e029c68a4f"
+  },
+  "transformation": "Complete source bodies, notices, captions, methods and figure geometry. Disclosure content expanded for offline reading. Semantic dark paints resolved and original local vector fonts embedded. No JavaScript or external media resources."
+}

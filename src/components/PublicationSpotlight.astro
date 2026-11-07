@@ -10,6 +10,7 @@ import { cyberRecoveryEditions } from '../config/cyber-recovery-publication.mjs'
 import { insurancePromiseEditions } from '../config/insurance-promise-publication.mjs';
 import { cumcumEditions } from '../config/cumcum-publication.mjs';
 import { ordinaryMachinesEditions } from '../config/ordinary-machines-publication.mjs';
+import { encryptionBackdoorEditions } from '../config/encryption-backdoor-publication.mjs';
 import { scpiEditions } from '../config/scpi-publication.mjs';
 import { recouvrementBookEn } from '../config/ia-recouvrement-publication-en.mjs';
 import { recouvrementBook } from '../config/ia-recouvrement-publication.mjs';
@@ -27,6 +28,8 @@ const { headingLevel = 'h2', lang = 'fr', publication = 'epstein', showAllPublic
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
 const displayText = (text: string) => isEnglish ? text : keepFrenchPunctuation(text);
+const isEncryptionBackdoor = publication === 'encryption-backdoor';
+const encryptionBackdoor = encryptionBackdoorEditions[lang];
 const isOrdinaryMachines = publication === 'ordinary-machines';
 const ordinaryMachines = ordinaryMachinesEditions[lang];
 const isCumCum = publication === 'cumcum';
@@ -55,7 +58,7 @@ const isDigitalIdentity = !isEnglish && publication === 'digital-identity';
 const isDigitalEuro = publication === 'digital-euro';
 const isWaterElectricity = publication === 'water-electricity';
 const isEInvoicing = publication === 'e-invoicing';
-const publicationUrl = isOrdinaryMachines ? ordinaryMachines.path : isCumCum ? cumcum.path : isInsurancePromise ? insurancePromise.path : isCyberRecovery ? cyberRecovery.path : isDebt ? debt.path : isMicrosoft ? microsoft.path : isReserves ? reserves.path : isSlowdown ? slowdown.path : isRecouvrement ? recouvrement.path : isCommerceTraces ? commerceTracesBook.path : isScpi ? scpi.path : isOil ? isEnglish ? '/en/publications/banking-on-oil/' : '/publications/les-banquiers-du-baril/' : isDigitalIdentity
+const publicationUrl = isEncryptionBackdoor ? encryptionBackdoor.path : isOrdinaryMachines ? ordinaryMachines.path : isCumCum ? cumcum.path : isInsurancePromise ? insurancePromise.path : isCyberRecovery ? cyberRecovery.path : isDebt ? debt.path : isMicrosoft ? microsoft.path : isReserves ? reserves.path : isSlowdown ? slowdown.path : isRecouvrement ? recouvrement.path : isCommerceTraces ? commerceTracesBook.path : isScpi ? scpi.path : isOil ? isEnglish ? '/en/publications/banking-on-oil/' : '/publications/les-banquiers-du-baril/' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone/'
   : isEInvoicing
   ? isEnglish ? '/en/publications/great-e-invoicing-toll/' : '/publications/grand-peage-facture/'
@@ -68,7 +71,7 @@ const publicationUrl = isOrdinaryMachines ? ordinaryMachines.path : isCumCum ? c
   : isEnglish
     ? '/en/publications/epsteins-money/'
     : '/publications/l-argent-d-epstein/';
-const epubFile = isOrdinaryMachines ? ordinaryMachines.epub.split('/').at(-1)! : isCumCum ? cumcum.epub.split('/').at(-1)! : isInsurancePromise ? insurancePromise.epub.split('/').at(-1)! : isCyberRecovery ? cyberRecovery.epub.split('/').at(-1)! : isDebt ? debtDark.epub.split('/').at(-1)! : isMicrosoft ? microsoft.epub.split('/').at(-1)! : isReserves ? reserves.epub.split('/').at(-1)! : isSlowdown ? slowdown.epub.split('/').at(-1)! : isRecouvrement ? recouvrement.epub.split('/').at(-1)! : isCommerceTraces ? commerceTracesBook.epub.split('/').at(-1)! : isScpi ? scpi.epub.split('/').at(-1)! : isOil ? isEnglish ? 'banking-on-oil-l0g.epub' : 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
+const epubFile = isEncryptionBackdoor ? encryptionBackdoor.epub.split('/').at(-1)! : isOrdinaryMachines ? ordinaryMachines.epub.split('/').at(-1)! : isCumCum ? cumcum.epub.split('/').at(-1)! : isInsurancePromise ? insurancePromise.epub.split('/').at(-1)! : isCyberRecovery ? cyberRecovery.epub.split('/').at(-1)! : isDebt ? debtDark.epub.split('/').at(-1)! : isMicrosoft ? microsoft.epub.split('/').at(-1)! : isReserves ? reserves.epub.split('/').at(-1)! : isSlowdown ? slowdown.epub.split('/').at(-1)! : isRecouvrement ? recouvrement.epub.split('/').at(-1)! : isCommerceTraces ? commerceTracesBook.epub.split('/').at(-1)! : isScpi ? scpi.epub.split('/').at(-1)! : isOil ? isEnglish ? 'banking-on-oil-l0g.epub' : 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
   ? 'votre-identite-dans-un-telephone-enquete-l0g.epub'
   : isEInvoicing
   ? isEnglish ? 'great-e-invoicing-toll-investigation-l0g.epub' : 'grand-peage-facture-enquete-l0g.epub'
@@ -82,7 +85,7 @@ const epubFile = isOrdinaryMachines ? ordinaryMachines.epub.split('/').at(-1)! :
     ? 'epsteins-money-l0g.epub'
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
-const coverUrl = isOrdinaryMachines ? ordinaryMachines.cover : isCumCum ? cumcum.cover : isInsurancePromise ? insurancePromise.cover : isCyberRecovery ? cyberRecovery.cover : isDebt ? debt.cover : isMicrosoft ? microsoft.cover : isReserves ? reserves.cover : isSlowdown ? slowdown.cover : isRecouvrement ? recouvrement.cover : isCommerceTraces ? commerceTracesBook.cover : isScpi ? scpi.cover : isOil ? isEnglish ? '/publications/banking-on-oil-cover.jpg' : '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
+const coverUrl = isEncryptionBackdoor ? encryptionBackdoor.cover : isOrdinaryMachines ? ordinaryMachines.cover : isCumCum ? cumcum.cover : isInsurancePromise ? insurancePromise.cover : isCyberRecovery ? cyberRecovery.cover : isDebt ? debt.cover : isMicrosoft ? microsoft.cover : isReserves ? reserves.cover : isSlowdown ? slowdown.cover : isRecouvrement ? recouvrement.cover : isCommerceTraces ? commerceTracesBook.cover : isScpi ? scpi.cover : isOil ? isEnglish ? '/publications/banking-on-oil-cover.jpg' : '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone-cover.jpg'
   : isEInvoicing
   ? isEnglish ? '/publications/great-e-invoicing-toll-cover.png' : '/publications/grand-peage-facture-cover.png'
@@ -98,7 +101,16 @@ const coverUrl = isOrdinaryMachines ? ordinaryMachines.cover : isCumCum ? cumcum
 const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
-const copy = isOrdinaryMachines ? {
+const copy = isEncryptionBackdoor ? {
+  coverLabel: isEnglish ? 'Explore The Cost of a Backdoor' : 'Découvrir Le coût d’une porte dérobée', coverAlt: encryptionBackdoor.title,
+  meta: isEnglish ? '// complete investigation · November 2026' : '// enquête intégrale · novembre 2026',
+  titleLead: isEnglish ? 'The Cost of' : 'Le coût d’une', titleAccent: isEnglish ? 'a Backdoor' : 'porte dérobée',
+  deck: encryptionBackdoor.subtitle,
+  description: isEnglish ? 'Seven complete analyses examine access to encrypted messages, investigative evidence, oversight, cyberattack costs and the limits of economic estimates. With 21 refined infographics, an original introduction and conclusion, full references and an offline glossary.' : 'Sept analyses intégrales examinent les accès aux messages chiffrés, les preuves d’enquête, les contrôles, les dommages des cyberattaques et les limites des estimations économiques. Avec 21 infographies, une introduction et une conclusion originales, les références et un glossaire hors ligne.',
+  factsLabel: isEnglish ? 'Edition contents' : 'Contenu de l’édition',
+  facts: [{ value: String(encryptionBackdoor.chapters.length), label: isEnglish ? 'chapters' : 'chapitres' }, { value: String(encryptionBackdoor.figureCount), label: isEnglish ? 'infographics' : 'infographies' }, { value: formattedSize, label: isEnglish ? 'download' : 'téléchargement' }, { value: 'CC BY 4.0', label: 'licence' }],
+  discover: isEnglish ? 'Explore the book' : 'Découvrir le livre', downloadLabel: isEnglish ? 'Dark EPUB' : 'EPUB sombre', fileName: epubFile,
+} : isOrdinaryMachines ? {
   coverLabel: isEnglish ? 'Explore The War on Everyday Machines' : 'Découvrir La guerre des machines ordinaires', coverAlt: ordinaryMachines.title,
   meta: isEnglish ? '// complete investigation · November 2026' : '// enquête intégrale · novembre 2026',
   titleLead: isEnglish ? 'The War on' : 'La guerre des', titleAccent: isEnglish ? 'Everyday Machines' : 'machines ordinaires',
@@ -338,12 +350,12 @@ const copy = isOrdinaryMachines ? {
     };
 ---
 
-<article class:list={['publication-spotlight', { 'publication-spotlight--ordinary-machines': isOrdinaryMachines, 'publication-spotlight--cumcum': isCumCum, 'publication-spotlight--insurance-promise': isInsurancePromise, 'publication-spotlight--cyber-recovery': isCyberRecovery, 'publication-spotlight--debt': isDebt, 'publication-spotlight--microsoft': isMicrosoft, 'publication-spotlight--recouvrement': isReserves || isRecouvrement || isSlowdown, 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing, 'publication-spotlight--identity': isDigitalIdentity }]}>
+<article class:list={['publication-spotlight', { 'publication-spotlight--encryption-backdoor': isEncryptionBackdoor, 'publication-spotlight--ordinary-machines': isOrdinaryMachines, 'publication-spotlight--cumcum': isCumCum, 'publication-spotlight--insurance-promise': isInsurancePromise, 'publication-spotlight--cyber-recovery': isCyberRecovery, 'publication-spotlight--debt': isDebt, 'publication-spotlight--microsoft': isMicrosoft, 'publication-spotlight--recouvrement': isReserves || isRecouvrement || isSlowdown, 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing, 'publication-spotlight--identity': isDigitalIdentity }]}>
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
-      srcset={isOrdinaryMachines || isCumCum || isInsurancePromise || isCyberRecovery || isDebt || isMicrosoft || isReserves || isSlowdown || isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? [320, 640, 960].map((width) => `${coverUrl.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ") : undefined}
-      sizes={isOrdinaryMachines || isCumCum || isInsurancePromise || isCyberRecovery || isDebt || isMicrosoft || isReserves || isSlowdown || isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? "(max-width: 640px) 140px, 200px" : undefined}
+      srcset={isEncryptionBackdoor || isOrdinaryMachines || isCumCum || isInsurancePromise || isCyberRecovery || isDebt || isMicrosoft || isReserves || isSlowdown || isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? [320, 640, 960].map((width) => `${coverUrl.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ") : undefined}
+      sizes={isEncryptionBackdoor || isOrdinaryMachines || isCumCum || isInsurancePromise || isCyberRecovery || isDebt || isMicrosoft || isReserves || isSlowdown || isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? "(max-width: 640px) 140px, 200px" : undefined}
       width="1024"
       height="1638"
       alt={copy.coverAlt}
@@ -368,7 +380,7 @@ const copy = isOrdinaryMachines ? {
     <div class="publication-actions">
       <a class="publication-primary" href={epubUrl} download={copy.fileName} aria-label={`${isEnglish ? 'Download the EPUB' : 'Télécharger l’EPUB'} : ${copy.titleLead} ${copy.titleAccent}`}>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v4h14v-4" /></svg>
-        <span><strong>{isEnglish ? 'Download the EPUB' : 'Télécharger l’EPUB'}</strong><small>{isEnglish ? 'Free' : 'Gratuit'} · {isOrdinaryMachines || isCumCum || isInsurancePromise || isCyberRecovery || isDebt ? copy.downloadLabel : 'EPUB 3'} · {formattedSize}</small></span>
+        <span><strong>{isEnglish ? 'Download the EPUB' : 'Télécharger l’EPUB'}</strong><small>{isEnglish ? 'Free' : 'Gratuit'} · {isEncryptionBackdoor || isOrdinaryMachines || isCumCum || isInsurancePromise || isCyberRecovery || isDebt ? copy.downloadLabel : 'EPUB 3'} · {formattedSize}</small></span>
       </a>
       <a class="publication-secondary" href={publicationUrl}>{copy.discover} <span aria-hidden="true">↗</span></a>
       {showAllPublicationsLink && (
@@ -413,6 +425,7 @@ const copy = isOrdinaryMachines ? {
   .publication-spotlight--water { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--invoice { --publication-card-accent: var(--color-accent); }
   .publication-spotlight--identity { --publication-card-accent: var(--color-signal); }
+  .publication-spotlight--encryption-backdoor { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--ordinary-machines { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--insurance-promise { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--cyber-recovery { --publication-card-accent: var(--color-signal); }

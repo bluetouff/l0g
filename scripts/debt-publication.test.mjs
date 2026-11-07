@@ -164,13 +164,14 @@ test('both catalogues retain the debt book after the machines, cum-cum, insurer 
     const route = book.lang === 'fr' ? 'publications' : 'en/publications';
     const html = readFileSync(join(ROOT, 'dist', route, 'index.html'), 'utf8');
     const cards = renderedPublicationCards(ROOT, book.lang);
-    assert.equal(cards.length, book.lang === 'fr' ? 18 : 15);
-    assert(hasClass(cards[0], 'publication-spotlight--ordinary-machines'));
-    assert(hasClass(cards[1], 'publication-spotlight--cumcum'));
-    assert(hasClass(cards[2], 'publication-spotlight--insurance-promise'));
-    assert(hasClass(cards[3], 'publication-spotlight--cyber-recovery'));
-    assert(hasClass(cards[4], 'publication-spotlight--debt'));
-    const debtCard = cards[4];
+    assert.equal(cards.length, book.lang === 'fr' ? 19 : 16);
+    assert(hasClass(cards[0], 'publication-spotlight--encryption-backdoor'));
+    assert(hasClass(cards[1], 'publication-spotlight--ordinary-machines'));
+    assert(hasClass(cards[2], 'publication-spotlight--cumcum'));
+    assert(hasClass(cards[3], 'publication-spotlight--insurance-promise'));
+    assert(hasClass(cards[4], 'publication-spotlight--cyber-recovery'));
+    assert(hasClass(cards[5], 'publication-spotlight--debt'));
+    const debtCard = cards[5];
     const first = nodes(debtCard);
     assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));
     const downloads = first.filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined);
@@ -191,7 +192,7 @@ test('both catalogues retain the debt book after the machines, cum-cum, insurer 
       }, 0);
       const totalDownloads = cards.reduce((total, card) => total + nodes(card).filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined).length, 0);
       assert.deepEqual(values, [cards.length, totalChapters, totalDownloads]);
-      assert.deepEqual(values, [18, 127, 18]);
+      assert.deepEqual(values, [19, 134, 19]);
     }
   }
 });

@@ -10,6 +10,7 @@ import { cyberRecoveryEditions } from '../src/config/cyber-recovery-publication.
 import { insurancePromiseEditions } from '../src/config/insurance-promise-publication.mjs';
 import { cumcumEditions } from '../src/config/cumcum-publication.mjs';
 import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
+import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
 import { runDerivedTask } from './derived-assets-cache.mjs';
 import { epubDerivedTasks } from './epub-derived-catalog.mjs';
 
@@ -21,14 +22,14 @@ const coverOutputs = covers.flatMap((name) => [
   `public/publications/${name}-cover.jpg`, `public/publications/${name}-cover-social.jpg`,
 ]);
 const artworkOutputs = [
-  ...Object.values(cyberRecoveryEditions), ...Object.values(insurancePromiseEditions), ...Object.values(cumcumEditions), ...Object.values(ordinaryMachinesEditions),
+  ...Object.values(cyberRecoveryEditions), ...Object.values(insurancePromiseEditions), ...Object.values(cumcumEditions), ...Object.values(ordinaryMachinesEditions), ...Object.values(encryptionBackdoorEditions),
 ].map((book) => `src/epub-assets/${book.directory}-cover.png`);
-for (const prefix of ['cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines']) {
+for (const prefix of ['cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines', 'encryption-backdoor']) {
   artworkOutputs.push(`public/publications/${prefix}-publication-panorama.jpg`);
   for (const width of [640, 960, 1600]) artworkOutputs.push(`public/publications/${prefix}-publication-panorama-${width}.webp`);
   artworkOutputs.push(`public/publications/og/art/${prefix}-v1.jpg`);
 }
-for (const book of [...Object.values(cumcumEditions), ...Object.values(ordinaryMachinesEditions)]) {
+for (const book of [...Object.values(cumcumEditions), ...Object.values(ordinaryMachinesEditions), ...Object.values(encryptionBackdoorEditions)]) {
   artworkOutputs.push(publicPath(book.cover));
   for (const width of [320, 640, 960]) artworkOutputs.push(publicPath(book.cover.replace('.jpg', `-${width}.webp`)));
 }
@@ -51,7 +52,7 @@ export const derivedTasks = {
   },
   artwork: {
     script: 'build:artwork:generate',
-    inputs: [...commonInputs, ...fonts, 'src/config', ...['cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines'].flatMap((name) => [`src/epub-assets/${name}-cover-art.png`, `src/epub-assets/${name}-panorama.png`])],
+    inputs: [...commonInputs, ...fonts, 'src/config', ...['cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines', 'encryption-backdoor'].flatMap((name) => [`src/epub-assets/${name}-cover-art.png`, `src/epub-assets/${name}-panorama.png`])],
     outputs: artworkOutputs,
   },
   og: {

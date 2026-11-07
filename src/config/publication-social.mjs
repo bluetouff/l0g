@@ -1,5 +1,7 @@
 // Dedicated landscape cards. Portrait covers remain the book and catalogue artwork.
 const entries = [
+  ['encryption-backdoor', 'fr', 'le-cout-d-une-porte-derobee', ['Le coût d’une', 'porte dérobée'], ['Messages privés, enquêtes', 'et pouvoir d’État'], 'Illustration conceptuelle d’un message protégé, d’un accès latéral et des risques pour d’autres utilisateurs'],
+  ['encryption-backdoor', 'en', 'the-cost-of-a-backdoor', ['The Cost of', 'a Backdoor'], ['Private messages, investigations', 'and state power'], 'Conceptual artwork of a protected message, a side access route and possible risks for other users'],
   ['ordinary-machines', 'fr', 'la-guerre-des-machines-ordinaires', ['La guerre des', 'machines', 'ordinaires'], ['Commandes à distance, stocks perdus', 'et reprise industrielle'], 'Illustration conceptuelle des commandes d’une installation frigorifique et de leurs effets physiques'],
   ['ordinary-machines', 'en', 'the-war-on-everyday-machines', ['The War on', 'Everyday', 'Machines'], ['Remote control, lost stock', 'and industrial recovery'], 'Conceptual artwork of refrigeration controls and their physical effects'],
   ['cumcum', 'fr', 'cumcum-la-bataille-de-l-impot', ['Cum-cum', 'La bataille', 'de l’impôt'], ['Six enquêtes documentées', 'sur l’arbitrage de dividendes'], 'Illustration conceptuelle de titres, de dividendes et de retenue fiscale'],

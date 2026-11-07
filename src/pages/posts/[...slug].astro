@@ -24,7 +24,9 @@ import InsurancePromiseEpubCard from '../../components/InsurancePromiseEpubCard.
 import { insurancePromiseEditions } from '../../config/insurance-promise-publication.mjs';
 import CumCumEpubCard from '../../components/CumCumEpubCard.astro';
 import OrdinaryMachinesEpubCard from '../../components/OrdinaryMachinesEpubCard.astro';
+import EncryptionBackdoorEpubCard from '../../components/EncryptionBackdoorEpubCard.astro';
 import { ordinaryMachinesEditions } from '../../config/ordinary-machines-publication.mjs';
+import { encryptionBackdoorEditions } from '../../config/encryption-backdoor-publication.mjs';
 import { cumcumEditions } from '../../config/cumcum-publication.mjs';
 import { cyberRecoveryEditions } from '../../config/cyber-recovery-publication.mjs';
 import { debtEditions } from '../../config/debt-publication.mjs';
@@ -76,6 +78,7 @@ const hasCyberRecoveryEpub = cyberRecoveryEditions.fr.chapters.some(chapter => c
 const hasInsurancePromiseEpub = insurancePromiseEditions.fr.chapters.some(chapter => chapter.slug === post.id);
 const hasCumCumEpub = cumcumEditions.fr.chapters.some(chapter => chapter.slug === post.id);
 const hasOrdinaryMachinesEpub = ordinaryMachinesEditions.fr.chapters.some(chapter => chapter.slug === post.id);
+const hasEncryptionBackdoorEpub = encryptionBackdoorEditions.fr.chapters.some(chapter => chapter.slug === post.id);
 const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
 const socialCard = articleSocialCard(post, 'fr');
 const { Content, headings } = await render(post);
@@ -487,6 +490,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty;
     {hasInsurancePromiseEpub && <InsurancePromiseEpubCard lang="fr" />}
     {hasCumCumEpub && <CumCumEpubCard lang="fr" />}
     {hasOrdinaryMachinesEpub && <OrdinaryMachinesEpubCard lang="fr" />}
+    {hasEncryptionBackdoorEpub && <EncryptionBackdoorEpubCard lang="fr" />}
 
     <FrenchRelatedReading id={post.id} collection="posts" />
 

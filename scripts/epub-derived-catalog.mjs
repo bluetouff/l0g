@@ -16,6 +16,7 @@ import { cyberRecoveryEditions } from '../src/config/cyber-recovery-publication.
 import { insurancePromiseEditions } from '../src/config/insurance-promise-publication.mjs';
 import { cumcumEditions } from '../src/config/cumcum-publication.mjs';
 import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
+import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
 
 const unique = values => [...new Set(values)].sort();
 const publication = name => `public/publications/${name}`;
@@ -77,6 +78,7 @@ export function literalChapterFiles(root, script, collection, fields) {
 // Only the local font files read by the book renderers. Article-specific font
 // families added elsewhere under public/fonts do not affect existing books.
 const bookFontInputs = [
+  'public/fonts/ukraine-reparations/liberation-sans-400.ttf', 'public/fonts/ukraine-reparations/LICENSE.txt',
   'public/fonts/jlr/LICENSE-inter.txt', 'public/fonts/jlr/LICENSE-jetbrains-mono.txt',
   ...['stablecoins', 'cumcum', 'cumcum04', 'cumcum05', 'cumcum06'].flatMap(directory =>
     ['dejavu-sans-400.ttf', 'dejavu-sans-700.ttf', 'LICENSE.txt'].map(file => `public/fonts/${directory}/${file}`)),
@@ -169,6 +171,7 @@ export function epubDerivedTasks(root) {
   modern('insurance','scripts/generate-insurance-epub.mjs',insurancePromiseEditions);
   modern('cumcum','scripts/generate-cumcum-epub.mjs',cumcumEditions,{coverInput:true});
   modern('machines','scripts/generate-ordinary-machines-epub.mjs',ordinaryMachinesEditions,{coverInput:true});
+  modern('encryption-backdoor','scripts/generate-encryption-backdoor-epub.mjs',encryptionBackdoorEditions,{coverInput:true});
   const owners = new Set();
   for (const group of groups) for (const output of group.outputs) {
     if (owners.has(output)) throw new Error(`EPUB output has multiple owners: ${output}`);

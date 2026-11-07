@@ -3,6 +3,7 @@ export const PUBLICATIONS_PER_PAGE = 6;
 // Preserve the catalogue's editorial order. English editions use the same order
 // while omitting books that are available only in French.
 export const publicationCatalog = /** @type {const} */ ([
+  { id: 'encryption-backdoor', english: true },
   { id: 'ordinary-machines', english: true },
   { id: 'cumcum', english: true },
   { id: 'insurance-promise', english: true },

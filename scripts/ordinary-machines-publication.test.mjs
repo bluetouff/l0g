@@ -9,6 +9,7 @@ import sharp from 'sharp';
 import postcss from 'postcss';
 import { parseFrontmatter } from '@astrojs/markdown-remark';
 import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
+import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
 import { getPublicationSocial } from '../src/config/publication-social.mjs';
 import { editorialTitleViolation } from './editorial-title-policy.mjs';
 import { getLatestEnglishEpub } from '../src/lib/latest-english-epub.mjs';
@@ -135,16 +136,17 @@ test('page contract rejects complete URL substitutions, altered hashes and missi
   }
 });
 
-test('both catalogues expose the machines book first and retain all older editions with truthful totals', () => {
+test('both catalogues retain the machines book after the new edition with truthful totals', () => {
   for (const book of Object.values(ordinaryMachinesEditions)) {
     const route = book.lang === 'fr' ? 'publications' : 'en/publications';
     const all = nodes(parse(readFileSync(join(ROOT, 'dist', route, 'index.html'), 'utf8')));
     const cards = renderedPublicationCards(ROOT, book.lang);
-    assert.equal(cards.length, book.lang === 'fr' ? 18 : 15);
-    assert(hasClass(cards[0], 'publication-spotlight--ordinary-machines'));
-    assert(hasClass(cards[1], 'publication-spotlight--cumcum'));
-    assert(hasClass(cards[2], 'publication-spotlight--insurance-promise'));
-    const first = nodes(cards[0]);
+    assert.equal(cards.length, book.lang === 'fr' ? 19 : 16);
+    assert(hasClass(cards[0], 'publication-spotlight--encryption-backdoor'));
+    assert(hasClass(cards[1], 'publication-spotlight--ordinary-machines'));
+    assert(hasClass(cards[2], 'publication-spotlight--cumcum'));
+    assert(hasClass(cards[3], 'publication-spotlight--insurance-promise'));
+    const first = nodes(cards[1]);
     const downloads = first.filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined);
     assert.equal(downloads.length, 1);assert.equal(attr(downloads[0], 'href'), book.epub);
     assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));
@@ -153,14 +155,14 @@ test('both catalogues expose the machines book first and retain all older editio
     const facts = nodes(first.find(node => node.tagName === 'ul' && hasClass(node, 'publication-facts'))).filter(node => node.tagName === 'strong');
     assert.equal(plain(facts[0]), '7');assert.equal(plain(facts[1]), '33');
     const totalChapters = cards.reduce((sum, card) => sum + Number(plain(nodes(nodes(card).find(node => node.tagName === 'ul' && hasClass(node, 'publication-facts'))).find(node => node.tagName === 'strong'))), 0);
-    assert.equal(totalChapters, book.lang === 'fr' ? 127 : 100);
+    assert.equal(totalChapters, book.lang === 'fr' ? 134 : 107);
     const totalDownloads = cards.reduce((sum, card) => sum + nodes(card).filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined).length, 0);
     assert.equal(totalDownloads, cards.length);
     if (book.lang === 'fr') {
       const heroStats = nodes(sole(all, node => node.tagName === 'dl' && hasClass(node, 'page-hero-stats'), 'catalogue statistics')).filter(node => node.tagName === 'dd').map(node => Number(plain(node)));
       assert.deepEqual(heroStats, [cards.length, totalChapters, totalDownloads]);
     }
-    assert.equal(meta(all, 'property', 'og:image'), `${SITE}${book.social}`);
+    assert.equal(meta(all, 'property', 'og:image'), `${SITE}${encryptionBackdoorEditions[book.lang].social}`);
   }
 });
 
