@@ -225,8 +225,34 @@ requireCondition(
 );
 
 const codeql = workflows.get('codeql.yml') || '';
+const codeqlBundleEndpoint = 'https://api.github.com/repos/github/codeql-action/releases/assets/692235033';
+const codeqlDownloadSteps = steps(codeql.split(/\r?\n/u).join('\n'))
+  .filter(body => body.split('\n')[0].trimStart() === '- name: Download verified CodeQL bundle');
+const codeqlDownloadLines = codeqlDownloadSteps.length === 1
+  ? codeqlDownloadSteps[0].split('\n').map(line => line.trimStart()) : [];
+const codeqlCurlStarts = codeqlDownloadLines.flatMap((line, index) => line.startsWith('curl ') ? [index] : []);
+// Bind the canonical operand to the existing bounded download command.
+// Preserve YAML indentation and comments outside that command.
+const codeqlBundleCommand = [
+  "curl --proto '=https' --proto-redir '=https' --tlsv1.2 \\",
+  "--fail --silent --show-error --location --retry 3 \\",
+  "--connect-timeout 10 --max-time 300 --max-filesize 559484083 \\",
+  "--header 'Accept: application/octet-stream' \\",
+  "https://api.github.com/repos/github/codeql-action/releases/assets/692235033 \\",
+  "--output \"$bundle\""
+];
+const codeqlBundleLine = codeqlDownloadLines[codeqlCurlStarts[0] + 4];
+const codeqlBundleUrl = codeqlBundleLine === codeqlBundleCommand[4]
+  ? new URL(codeqlBundleLine.slice(0, -2)) : null;
+const canonicalCodeqlBundle = codeqlDownloadSteps.length === 1 && codeqlCurlStarts.length === 1
+  && codeqlBundleCommand.every((line, offset) => codeqlDownloadLines[codeqlCurlStarts[0] + offset] === line)
+  && codeqlBundleUrl?.href === codeqlBundleEndpoint
+  && codeqlBundleUrl.protocol === 'https:' && codeqlBundleUrl.hostname === 'api.github.com'
+  && codeqlBundleUrl.port === '' && codeqlBundleUrl.username === '' && codeqlBundleUrl.password === ''
+  && codeqlBundleUrl.pathname === '/repos/github/codeql-action/releases/assets/692235033'
+  && codeqlBundleUrl.search === '' && codeqlBundleUrl.hash === '';
 requireCondition(
-  /https:\/\/api\.github\.com\/repos\/github\/codeql-action\/releases\/assets\/[1-9][0-9]*\s/.test(codeql)
+  canonicalCodeqlBundle
     && codeql.includes("--header 'Accept: application/octet-stream'")
     && codeql.includes("--proto '=https' --proto-redir '=https' --tlsv1.2")
     && codeql.includes('--fail --silent --show-error --location --retry 3')

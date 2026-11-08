@@ -62,6 +62,71 @@ for (const [name, before, after] of [
   });
 }
 
+const canonicalCodeqlBundleUrl = 'https://api.github.com/repos/github/codeql-action/releases/assets/692235033';
+const canonicalCodeqlBundleLine = '            ' + canonicalCodeqlBundleUrl + ' ' + '\\';
+
+for (const [name, mutate] of [
+  ['LF', source => source],
+  ['CRLF', source => source.replaceAll('\n', '\r\n')],
+  ['a harmless URL comment', source => source + '\n# Reference: https://example.invalid/codeql\n'],
+  ['equivalent YAML indentation', source => source.replace(/^ {10}/gmu, '            ')],
+]) {
+  test(`CI policy accepts the canonical CodeQL bundle URL with ${name}`, async t => {
+    const root = await fixture(t), file = join(root, '.github/workflows/codeql.yml');
+    await writeFile(file, mutate(await readFile(file, 'utf8')));
+    const result = audit(root);
+    assert.equal(result.status, 0, result.stderr);
+  });
+}
+
+for (const [name, replacement] of [
+  ['a suffixed official hostname', canonicalCodeqlBundleUrl.replace('api.github.com', 'api.github.com.evil.invalid')],
+  ['the official hostname used as userinfo', canonicalCodeqlBundleUrl.replace('api.github.com', 'api.github.com@evil.invalid')],
+  ['credentials on the official hostname', canonicalCodeqlBundleUrl.replace('api.github.com', 'user@api.github.com')],
+  ['a trusted URL hidden in a foreign query', `https://evil.invalid/?next=${canonicalCodeqlBundleUrl}`],
+  ['a trusted URL hidden in a foreign fragment', `https://evil.invalid/#${canonicalCodeqlBundleUrl}`],
+  ['a trusted URL hidden in a foreign path', `https://evil.invalid/${canonicalCodeqlBundleUrl}`],
+  ['a query appended to the official URL', `${canonicalCodeqlBundleUrl}?other=1`],
+  ['a fragment appended to the official URL', `${canonicalCodeqlBundleUrl}#other`],
+  ['text prefixed to the official URL', `prefix${canonicalCodeqlBundleUrl}`],
+  ['a shell command before the official URL', `echo ${canonicalCodeqlBundleUrl}`],
+  ['an HTTP official URL', canonicalCodeqlBundleUrl.replace('https:', 'http:')],
+  ['a different asset ID', canonicalCodeqlBundleUrl.replace('692235033', '692235034')],
+  ['an encoded hostname delimiter', canonicalCodeqlBundleUrl.replace('api.github.com', 'api%2egithub.com')],
+  ['a control character within the URL', canonicalCodeqlBundleUrl.replace('api.github.com', 'api.github.com\t')],
+]) {
+  test(`CI policy rejects ${name}`, async t => {
+    const root = await fixture(t), file = join(root, '.github/workflows/codeql.yml');
+    await writeFile(file, replace(await readFile(file, 'utf8'), canonicalCodeqlBundleUrl, replacement));
+    const result = audit(root);
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /bundle CodeQL officiel/);
+  });
+}
+
+for (const [name, replacement] of [
+  ['a missing CodeQL asset operand', ''],
+  ['duplicate CodeQL asset operands', `${canonicalCodeqlBundleLine}\n${canonicalCodeqlBundleLine}`],
+  ['a commented CodeQL asset operand', '          # ' + canonicalCodeqlBundleUrl],
+  ['a foreign operand with a trusted comment decoy', `            https://evil.invalid/bundle \\\n          # ${canonicalCodeqlBundleUrl}`],
+]) {
+  test(`CI policy rejects ${name}`, async t => {
+    const root = await fixture(t), file = join(root, '.github/workflows/codeql.yml');
+    await writeFile(file, replace(await readFile(file, 'utf8'), canonicalCodeqlBundleLine, replacement));
+    const result = audit(root);
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /bundle CodeQL officiel/);
+  });
+}
+
+test('CI policy rejects an extra schemeless HTTPS curl operand', async t => {
+  const root = await fixture(t), file = join(root, '.github/workflows/codeql.yml');
+  await writeFile(file, replace(await readFile(file, 'utf8'), 'curl --proto', 'curl --proto-default https --url evil.invalid --proto'));
+  const result = audit(root);
+  assert.equal(result.status, 1, result.stderr);
+  assert.match(result.stderr, /bundle CodeQL officiel/);
+});
+
 const workflowRegressions = [
   ['binary release payload returning to Git', 'publish',
     (job) => replace(job, 'node scripts/publish-static-assets.mjs release publish',
