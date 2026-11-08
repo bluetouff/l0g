@@ -9,6 +9,7 @@ import { join } from 'node:path';
 import { readWeeklyIllustrations } from './generate-weekly-social.mjs';
 import { weeklyCoverImage } from '../src/lib/weekly-presentation.ts';
 import { weeklyEditions, latestWeeklyEdition } from '../src/config/weekly-editions.ts';
+import { addCalendarDays, weeklyPublishedAt } from '../src/lib/weekly-schedule.ts';
 import { weeklySocialCard, readWeeklyIllustration } from '../src/lib/weekly-social.ts';
 import { OG } from './og-kit.mjs';
 import { renderWeeklySocialSvg, renderWeeklySocialPng } from './weekly-social-card.mjs';
@@ -16,11 +17,12 @@ import { renderWeeklySocialSvg, renderWeeklySocialPng } from './weekly-social-ca
 const illustrations = await readWeeklyIllustrations();
 const cardFor = (edition) => weeklySocialCard(edition, weeklyCoverImage(edition, illustrations));
 const latest = latestWeeklyEdition();
+const futureDate = addCalendarDays(latest.slug, 7);
 const future = {
   ...latest,
-  slug: '2026-11-08',
-  issue: 15,
-  publishedAt: '2026-11-08T08:30:00+01:00',
+  slug: futureDate,
+  issue: latest.issue + 1,
+  publishedAt: weeklyPublishedAt(futureDate),
   editorial: undefined,
   analysis: {
     ...latest.analysis,
@@ -54,8 +56,8 @@ test('les URL restent stables et changent avec le contenu visible', () => {
   const original = weeklySocialCard(future);
   assert.deepEqual(weeklySocialCard(structuredClone(future)), original);
   assert.notEqual(weeklySocialCard({ ...future, analysis: { ...future.analysis, title: 'Une nouvelle lecture des échéances' } }).image, original.image);
-  assert.notEqual(weeklySocialCard({ ...future, issue: 16 }).image, original.image);
-  assert.notEqual(weeklySocialCard({ ...future, publishedAt: '2026-11-15T08:30:00+01:00' }).image, original.image);
+  assert.notEqual(weeklySocialCard({ ...future, issue: future.issue + 1 }).image, original.image);
+  assert.notEqual(weeklySocialCard({ ...future, publishedAt: weeklyPublishedAt(addCalendarDays(futureDate, 7)) }).image, original.image);
   assert.equal(weeklySocialCard({ ...future, description: 'Une modification qui ne change pas la couverture.' }).image, original.image);
 });
 
