@@ -9,7 +9,6 @@ import sharp from 'sharp';
 import postcss from 'postcss';
 import { parseFrontmatter } from '@astrojs/markdown-remark';
 import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
-import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
 import { getPublicationSocial } from '../src/config/publication-social.mjs';
 import { editorialTitleViolation } from './editorial-title-policy.mjs';
 import { getLatestEnglishEpub } from '../src/lib/latest-english-epub.mjs';
@@ -162,7 +161,7 @@ test('both catalogues retain the machines book after the new edition with truthf
       const heroStats = nodes(sole(all, node => node.tagName === 'dl' && hasClass(node, 'page-hero-stats'), 'catalogue statistics')).filter(node => node.tagName === 'dd').map(node => Number(plain(node)));
       assert.deepEqual(heroStats, [cards.length, totalChapters, totalDownloads]);
     }
-    assert.equal(meta(all, 'property', 'og:image'), `${SITE}${encryptionBackdoorEditions[book.lang].social}`);
+    assert.equal(meta(all, 'property', 'og:image'), `${SITE}/og/catalogue/publications-${book.lang}-v1.jpg`);
   }
 });
 

@@ -156,7 +156,7 @@ test(`${lang}: oil cover, responsive variants, social card and publication page 
   const index = readFileSync(join(ROOT, lang === 'fr' ? 'src/pages/publications/index.astro' : 'src/pages/en/publications/index.astro'), 'utf8');
   assert.ok(publicationEntries(lang).some((entry) => entry.id === 'oil-trading'));
   const catalogueImage = index.match(/ogImage="([^"]+)"/u)?.[1];
-  assert.ok(catalogueImage?.startsWith('/publications/'));
+  assert.equal(catalogueImage, `/og/catalogue/publications-${lang}-v1.jpg`);
   assert.ok(existsSync(join(ROOT, 'public', catalogueImage)));
   assert.match(page, /hreflang: 'fr'/u);
   assert.match(page, /hreflang: 'en'/u);

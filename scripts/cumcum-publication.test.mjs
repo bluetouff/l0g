@@ -160,7 +160,7 @@ test('both catalogues retain the cum-cum edition after the machines book with tr
       const heroStats = nodes(sole(all, node => node.tagName === 'dl' && hasClass(node, 'page-hero-stats'), 'catalogue statistics')).filter(node => node.tagName === 'dd').map(node => Number(plain(node)));
       assert.deepEqual(heroStats, [cards.length, totalChapters, totalDownloads]);
     }
-    assert.equal(meta(all, 'property', 'og:image'), `${SITE}${book.lang === 'fr' ? '/publications/le-cout-d-une-porte-derobee-og-v1.jpg' : '/publications/the-cost-of-a-backdoor-og-v1.jpg'}`);
+    assert.equal(meta(all, 'property', 'og:image'), `${SITE}/og/catalogue/publications-${book.lang}-v1.jpg`);
   }
 });
 
