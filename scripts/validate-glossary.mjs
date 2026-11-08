@@ -1380,7 +1380,14 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 414, 'Le corpus conserve ses termes et ajoute le périmètre de validation');
+assert.equal(glossaryAtlasEnBySlug.size, 415, 'Le corpus conserve ses termes et ajoute le prix plancher');
+for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === 'prix-plancher'), '/posts/intel-mp-materials-portefeuille-trump/'], [glossaryAtlasEnBySlug.get('prix-plancher'), '/en/analysis/intel-mp-materials-trump-portfolio/']]) {
+  assert(entry?.atlas, 'Le prix plancher dispose de sa définition et de ses sources');
+  assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
+  assert.equal(entry.atlas.sources[0].href, 'https://www.sec.gov/Archives/edgar/data/1801368/000119312525157310/d43796dex106.htm');
+}
+assert.equal(glossaryEntries.find(entry => entry.slug === 'prix-plancher').referenceCandidate, false);
+assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('prix-plancher')), 'noindex,follow');
 for (const slug of ['credits-budgetaires-americains', 'reconciliation-budgetaire']) {
   assert.ok(glossaryAtlasEnBySlug.has(slug), `Missing English budget definition: ${slug}`);
 }
@@ -1584,8 +1591,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 799, 'Le corpus conserve ses notions et ajoute le périmètre de validation');
-assert.equal(glossaryAtlasEntries.length, 404, 'La nouvelle notion dispose d’une source et d’un lien vers l’analyse');
+assert.equal(glossaryEntries.length, 800, 'Le corpus conserve ses notions et ajoute le prix plancher');
+assert.equal(glossaryAtlasEntries.length, 405, 'Le prix plancher dispose d’une source et d’un lien vers l’analyse');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2012,7 +2019,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 1036, 'Les deux liens du périmètre de validation complètent le graphe existant');
+assert.equal(glossaryAtlasEdgeCount, 1039, 'Les trois voisins du prix plancher complètent le graphe existant');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

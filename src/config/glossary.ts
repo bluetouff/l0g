@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    { sigle: 'Prix plancher', nom: 'Seuil contractuel de protection des revenus', def: 'Seuil de prix servant de référence à un mécanisme de protection. Dans un contrat de garantie de revenus, une référence de prix inférieure au seuil peut ouvrir droit à un complément calculé sur des volumes définis. L’accord fixe les produits, la moyenne retenue, la durée et les conditions du paiement. Cette protection transfère au garant une partie du risque de baisse du prix.', guide: '/posts/intel-mp-materials-portefeuille-trump/' },
     {
       sigle: 'Rappel de virement', nom: 'Demande de retour d’un virement exécuté',
       def: 'Demande du prestataire de services de paiement du payeur visant le retour d’un virement déjà exécuté. Pour les virements de l’espace unique de paiement en euros (SEPA), la restitution dépend notamment des fonds disponibles, du droit applicable et, selon le cas, de l’autorisation du bénéficiaire.',
@@ -1287,6 +1288,13 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'prix-plancher': {
+    intuition: 'Le producteur conserve une protection lorsque la référence contractuelle baisse ; le garant prend en charge l’écart défini par l’accord.',
+    formula: 'Exemple simplifié de complément : max(seuil − référence, 0) × volume éligible',
+    articles: [{ label: 'Intel, MP Materials et les milliards publics des accords Trump', href: '/posts/intel-mp-materials-portefeuille-trump/', kind: 'article' }],
+    sources: [{ label: 'MP Materials / SEC, Price Protection Agreement du 9 juillet 2025', href: 'https://www.sec.gov/Archives/edgar/data/1801368/000119312525157310/d43796dex106.htm', detail: 'Définitions, article II : référence, volumes admissibles, durée et partage des hausses sous condition.', kind: 'source' }],
+    related: ['offtake', 'pik', 'warrant'],
+  },
   "perimetre-de-validation": {"articles": [{"label": "Chiffrement : la charge de la preuve", "href": "/posts/chiffrement-charge-preuve-acces-messages/", "kind": "article"}], "sources": [{"label": "NIST, FAQ du Cryptographic Module Validation Program", "href": "https://csrc.nist.gov/Projects/cryptographic-module-validation-program/FAQs", "detail": "FAQ P-16 à P-18 et SG-8, version mise à jour le 21 août 2026 : module, version, environnement d’exploitation et limites de l’intégration dans un produit.", "kind": "source"}], "related": ["secnumcloud", "chiffrement-de-bout-en-bout"]},
   "epoc": {"articles": [{"label": "Chiffrement : les autres chemins de l’enquête", "href": "/posts/chiffrement-autres-chemins-enquete-preuve/", "kind": "article"}], "sources": [{"label": "Règlement (UE) 2023/1543", "href": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32023R1543", "detail": "Articles 3(8), 9 et 10, considérant 20 : certificat, réception, délais et absence d’obligation de déchiffrement.", "kind": "source"}], "related": ["chaine-de-conservation-de-la-preuve", "chiffrement-de-bout-en-bout"]},
   "chaine-de-conservation-de-la-preuve": {"articles": [{"label": "Chiffrement : les autres chemins de l’enquête", "href": "/posts/chiffrement-autres-chemins-enquete-preuve/", "kind": "article"}], "sources": [{"label": "Europol, Digital forensics: gap analysis", "href": "https://www.europol.europa.eu/cms/sites/default/files/documents/Digital-forensics-gap-analysis.pdf", "detail": "16 octobre 2026, pages physiques 5 et 10 à 11 : définition de la forensique, traçabilité des manipulations et intégrité de la preuve.", "kind": "source"}], "related": ["journal-d-audit", "horodatage"]},
