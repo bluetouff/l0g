@@ -16,6 +16,7 @@ import { main } from './cli.mjs';
 import { schedule } from './schedule.mjs';
 import { organizationEntity, authorEntity, websiteEntity, ORGANIZATION_ID, AUTHOR_ID } from '../../src/config/entities.ts';
 import { serializeInlineScriptData } from '../../src/lib/security.ts';
+import { scanHtmlElements } from '../../src/lib/html-utils.ts';
 
 async function fixture(t) {
   const dir = await mkdtemp(join(await realpath(tmpdir()), 'l0g-visibility-test-'));
@@ -271,13 +272,28 @@ test('private report supports honest empty/stale/demo states, escaped inputs, ex
   const result = buildReport({ batches: [batch], panel: panel(), demo: true });
   assert.match(result.html, /DÉMONSTRATION SYNTHÉTIQUE/); assert.equal(result.html.includes('<script>alert(1)'), false);
   assert.equal(/<(?:script|link|img)\b[^>]*(?:src|href)="https?:/i.test(result.html), false);
-  const controls = [{ dataset: { filter: 'language' }, value: '', addEventListener(_event, fn) { this.change = fn; } }];
-  const rows = [{ dataset: { language: 'fr' } }, { dataset: { language: 'en' } }];
-  const status = {};
-  vm.runInNewContext(result.html.match(/<script>([\s\S]*?)<\/script>/)[1], { document: { querySelectorAll: selector => selector === '[data-filter]' ? controls : rows, getElementById: () => status } });
-  controls[0].value = 'en'; controls[0].change();
-  assert.equal(rows[0].hidden, true); assert.equal(rows[1].hidden, false); assert.match(status.textContent, /^1 /);
+  for (const html of [result.html, result.html.replace('<script>', '<SCRIPT data-test=">">').replace('</script>', '</sCrIpT ignored>')]) {
+    const scripts = scanHtmlElements(html).filter(element => element.name === 'script');
+    assert.equal(scripts.length, 1, 'Only the fixed report filter script may be executable.');
+    const controls = [{ dataset: { filter: 'language' }, value: '', addEventListener(_event, fn) { this.change = fn; } }];
+    const rows = [{ dataset: { language: 'fr' } }, { dataset: { language: 'en' } }];
+    const status = {};
+    vm.runInNewContext(scripts[0].body, { document: { querySelectorAll: selector => selector === '[data-filter]' ? controls : rows, getElementById: () => status } });
+    controls[0].value = 'en'; controls[0].change();
+    assert.equal(rows[0].hidden, true); assert.equal(rows[1].hidden, false); assert.match(status.textContent, /^1 /);
+  }
   assert.match(result.panelCsv, /numerator/);
+});
+
+test('private report escapes script injection variants without changing its executable code', () => {
+  const scriptBodies = html => scanHtmlElements(html).filter(element => element.name === 'script').map(element => element.body);
+  const expected = scriptBodies(buildReport({}).html);
+  assert.equal(expected.length, 1);
+  for (const provider of ['</script><script>alert(1)</script>', '</SCRIPT><SCRIPT>alert(1)</SCRIPT>', '</sCrIpT ignored><sCrIpT data-test=">">alert(1)</sCrIpT ignored>']) {
+    const batch = normalizeObservations(observations(), panel());
+    batch.run.provider = provider;
+    assert.deepEqual(scriptBodies(buildReport({ batches: [batch], panel: panel() }).html), expected);
+  }
 });
 
 test('IndexNow dry run is offline, delta-only, idempotent and gated by proof and deployment', async () => {
