@@ -319,4 +319,9 @@ test('CLI import/report path works offline, repeated imports do not double count
   await main(['import', '--demo', '--source', 'panel', '--file', join(dir, 'observations.json'), '--data-dir', data]);
   await main(['report', '--data-dir', data]);
   assert.equal((await readPrivate(data, 'report.json')).panel.metrics[0].citation_rate.denominator, 1);
+  await writeFile(join(dir, 'empty.log'), '');
+  await main(['import', '--demo', '--source', 'traffic', '--file', join(dir, 'empty.log'), '--data-dir', data]);
+  const traffic = await readPrivate(data, 'traffic.json');
+  assert.match(traffic.evidence.input_sha256, /^[a-f0-9]{64}$/);
+  assert.match(traffic.evidence.coverage, /not a claim of complete/);
 });

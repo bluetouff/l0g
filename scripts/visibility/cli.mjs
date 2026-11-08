@@ -93,6 +93,7 @@ export async function main(args = process.argv.slice(2)) {
         result = { state: incoming.state };
       } else if (source === 'traffic') {
         incoming = privateTraffic(text.split(/\r?\n/).filter(Boolean));
+        incoming.evidence = { source: 'apache_combined_manual_import', input_sha256: digest(text), imported_at: new Date().toISOString(), formula: 'Disjoint date/class/referrer counts; k=5 and complementary suppression within date/class groups.', exclusions: 'Existing human-traffic parser; no raw IP, query, full referrer or log line retained.', coverage: 'Only the supplied log file. period is the retention window, not a claim of complete daily coverage.' };
         await boundedWrite(directory, 'traffic.json', incoming);
         result = { state: incoming.state, cells: incoming.cells.length };
         if (incoming.state === 'error') process.exitCode = 1;
