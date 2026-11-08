@@ -19,6 +19,19 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Advertising definitions remain sourced short entries with bilingual reciprocity.
+for (const slug of ["reserve-souple", "cout-par-clic", "acos", "roas", "incrementalite"]) {
+  const fr = glossaryEntries.find(entry => entry.slug === slug), en = glossaryAtlasEnBySlug.get(slug);
+  assert(fr?.atlas && en?.atlas);
+  assert.equal(fr.referenceCandidate, false); assert.equal(fr.reference, undefined);
+  assert.equal(englishGlossaryRobots(en), 'noindex,follow');
+  assert.deepEqual(fr.atlas.related, en.atlas.related);
+  assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
+  assert.deepEqual(fr.atlas.articles.map(link => link.href), ['/posts/amazon-ads-prix-du-clic/']);
+  assert.deepEqual(en.atlas.articles.map(link => link.href), ['/en/analysis/amazon-ads-price-of-a-click/']);
+}
+
+
 // Redundancy stays a short sourced definition; two existing continuity terms keep their guides.
 for (const slug of ['redondance', 'mvo', 'continuite-de-service']) {
   const fr = glossaryEntries.find(value => value.slug === slug), en = glossaryAtlasEnBySlug.get(slug);
@@ -1380,7 +1393,7 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 415, 'Le corpus conserve ses termes et ajoute le prix plancher');
+assert.equal(glossaryAtlasEnBySlug.size, 420, 'Le corpus conserve ses termes et ajoute cinq définitions publicitaires');
 for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === 'prix-plancher'), '/posts/intel-mp-materials-portefeuille-trump/'], [glossaryAtlasEnBySlug.get('prix-plancher'), '/en/analysis/intel-mp-materials-trump-portfolio/']]) {
   assert(entry?.atlas, 'Le prix plancher dispose de sa définition et de ses sources');
   assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
@@ -1591,8 +1604,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 800, 'Le corpus conserve ses notions et ajoute le prix plancher');
-assert.equal(glossaryAtlasEntries.length, 405, 'Le prix plancher dispose d’une source et d’un lien vers l’analyse');
+assert.equal(glossaryEntries.length, 805, 'Le corpus conserve ses notions et ajoute cinq définitions publicitaires');
+assert.equal(glossaryAtlasEntries.length, 410, 'Les nouvelles notions publicitaires disposent de sources et de liens vers l’analyse');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2019,7 +2032,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 1039, 'Les trois voisins du prix plancher complètent le graphe existant');
+assert.equal(glossaryAtlasEdgeCount, 1051, 'Douze liens relient les nouvelles définitions publicitaires');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

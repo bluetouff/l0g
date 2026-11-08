@@ -1,0 +1,202 @@
+---
+title: 'Amazon Ads: the auction rules behind the FTC lawsuit'
+seoTitle: 'Amazon Ads: click prices, reserves and the FTC case | l0g'
+description: 'The FTC alleges Amazon inflated some advertising prices. Public documents explain reserve pricing, Amazon’s defence and the stakes for sellers.'
+pubDate: '2026-11-08T10:44:21+01:00'
+updatedDate: '2026-11-08T10:44:21+01:00'
+tags: ["Amazon","advertising","auctions","FTC","platforms","digital economy"]
+draft: false
+ogImage: '/illustrations/news/amazon-ads-auction-machine-v1.jpg'
+quickTake:
+  fact: 'The US Federal Trade Commission and 22 states allege Amazon inflated some advertising prices through undisclosed reserves. Amazon disputes their interpretation and defends its relevance-based system.'
+  importance: 'A pricing rule can raise the bill while leaving the winner unchanged. Fictional examples follow the effect through to seller contribution and the value of additional sales.'
+  uncertainty: 'The cited surcharges remain allegations. Public documents leave transaction-level pricing parameters and the effect on retail prices unresolved.'
+sourceArticle: 'amazon-ads-prix-du-clic'
+sourceUpdatedDate: '2026-11-08T10:44:21+01:00'
+---
+
+import AmazonAuctionFigure from "../../components/AmazonAuctionFigure.astro";
+
+A merchant buying advertising on Amazon bids the amount they are willing to pay when a shopper clicks on their product. Amazon selects the ad and calculates the charge under its own pricing rules. Competing bids shape the outcome alongside parameters set by the platform.
+
+On November 5, 2026, the US Federal Trade Commission drew renewed attention to allegations detailed in a less heavily redacted version of its complaint against Amazon. The FTC and 22 states accuse the company of raising certain advertising prices through undisclosed reserves while giving advertisers a misleading account of its auctions. Amazon disputes that interpretation. The company publicly describes its use of reserves and defends their role in pricing more relevant ads. The case remained pending in the sources reviewed as of November 8. <sup className="source-ref"><a href="#source-s01">S01</a></sup> <sup className="source-ref"><a href="#source-s02">S02</a></sup> <sup className="source-ref"><a href="#source-s03">S03</a></sup> <sup className="source-ref"><a href="#source-s05">S05</a></sup>
+
+Understanding the case starts with the mechanics of a click. The ceiling an advertiser accepts can leave considerable room for the system that calculates the bill. That price then meets a more familiar constraint: the margin available on the product being sold.
+
+## One placement, two decisions
+
+Sponsored Products lets advertisers promote individual products and pay when someone clicks, a [cost-per-click](/en/glossary/cout-par-clic/) (CPC) model. The advertiser sets a bid and campaign parameters; Amazon determines which ad appears and how much a click costs. The platform’s transparency guide describes a ranking system that considers both the bid and the customer’s expected interest. A higher bid can therefore lose to an ad judged more relevant. <sup className="source-ref"><a href="#source-s06">S06</a></sup> <sup className="source-ref"><a href="#source-s17">S17</a></sup>
+
+The first decision awards a placement. The second determines the price of a click on the winning ad. The two decisions may use some of the same inputs, but they answer different questions. Ranking determines visibility; pricing divides the economic value of that visibility between the seller and the platform.
+
+Keeping them separate avoids a common shortcut. Knowing that an ad won because of its relevance tells us something about selection. Understanding its bill also requires the payment rule. A system can favor an ad suited to the shopper and charge the merchant the full amount of its effective bid. Both outcomes can occur together.
+
+In a theoretical auction for a single placement using a pure second-price rule, the winner pays the second-highest bid. This benchmark helps explain why some advertisers distinguish what they are willing to pay from what they expect to pay. Real advertising auctions add placements, quality criteria and reserves. Research on *generalized second-price* auctions shows that the properties of the elementary case do not automatically carry over to these more complex markets. <sup className="source-ref"><a href="#source-s14">S14</a></sup>
+
+The public documents examined here allow us to explain these layers. They do not disclose a complete formula for Amazon’s ranking system, with its coefficients, competing bids and reserves for each transaction. The following model uses entirely fictional numbers to isolate a pricing lever described in the documents.
+
+## A reserve that still lets the bid win
+
+A hard reserve sets an entry threshold. A [soft reserve](/en/glossary/reserve-souple/) can influence the price while still allowing a bid below that reserve to win. Amazon distinguishes these functions in its public response: when the winning bid falls below the soft reserve but clears the hard reserve, the ad can receive the placement and pay its own bid. The complaint also describes a price capped at the winning bid. <sup className="source-ref"><a href="#source-s05">S05</a></sup> <sup className="source-ref"><a href="#source-s01">S01, §63</a></sup>
+
+Consider one placement and three equally relevant ads. Their bids, after any adjustments, are $2, $1.20 and $0.80. We set the entry threshold at $0.50. Ad A wins with its $2 bid. Under our pure second-price benchmark, its click costs $1.20, the amount of the second-highest bid.
+
+Now introduce a soft reserve of $1.60. A still wins; our model raises its payment to $1.60. Raise the reserve again, to $2.20: A keeps the placement in this example and pays its own bid, or $2. The competing bids, relevance and winner have stayed the same. Changing the pricing rule alone shifts an additional $0.40, then $0.80 per click to the platform, relative to the $1.20 benchmark. [M01](#methode-m01)
+
+<AmazonAuctionFigure lang="en" kind="auction" number="01" caption="Illustrative model: bids and the winner stay fixed while the reserve changes the payment.">
+
+One placement, equal relevance, already adjusted bids of $2, $1.20 and $0.80. Admission threshold: $0.50. Model price: min(2, max(1.20, reserve)). The function isolates a mechanism through a fictional teaching scenario.
+
+</AmazonAuctionFigure>
+
+The curve illustrates a pricing mechanism. It holds the price at the second-highest bid, raises it with the reserve, then stops it at the winning bid. This function belongs to the l0g model. Its purpose is to isolate an economic relationship; it does not claim to reproduce Amazon’s software or measure a real seller’s bills.
+
+The ceiling therefore deserves close attention. Agreeing to pay up to $2 can be entirely consistent with expecting a price set under particular competitive rules. What that agreement means also depends on the information provided about the calculation. The legal dispute concerns, among other things, how the mechanism was presented and whether the alleged surcharges occurred. The existence of a cap is part of the evidence, but does not by itself settle those questions. <sup className="source-ref"><a href="#source-s01">S01, §§299–314</a></sup>
+
+## Two Decembers in the court record
+
+The complaint makes the issue concrete through historical episodes. According to paragraph 228, a change implemented on December 10, 2021 allegedly produced a 20% increase in the average cost per click on Sponsored Products over the following five days. Some advertisers allegedly experienced increases exceeding 200%. The complaint attributes the change to a relaxation of the limits governing surcharges. That causal claim is the plaintiffs’. <sup className="source-ref"><a href="#source-s01">S01, §228, p. 76</a></sup>
+
+The time window matters: five days after December 10. Recasting the number as an annual increase, or an average for the entire holiday season, would change its meaning. It concerns an episode presented by the FTC using internal documents, for which we do not have the full underlying dataset.
+
+The following year, the complaint says, the teams raised reserves more gradually. A memo cited in paragraphs 249 and 250 attributes more than $87 million in additional worldwide revenue during December 2022 to the operation. The figure is an alleged revenue increase. It has a global scope; it is neither advertising profit nor an amount awarded by a court. <sup className="source-ref"><a href="#source-s01">S01, §§249–250, p. 82</a></sup>
+
+The contrast between the two episodes supports the FTC’s theory: how prices were moved allegedly mattered as much as their level, with a gradual increase intended to provoke less resistance. Testing that interpretation requires putting the cited exchanges in context and reconstructing the auctions concerned. The complaint provides excerpts and an argument. The complete original emails and auction logs are absent from the public material assembled for this analysis.
+
+The publication timeline also needs care. The action began on August 31, 2026. The 181-page version used here is docket document 113, filed on October 28. Figures repeated in the November 5 announcement are already visible in Exhibit A dated September 28, now accessible on the FTC’s website. We have not established exactly when those figures first became publicly available. The October 27 order keeps some passages under seal; it addresses their confidentiality. <sup className="source-ref"><a href="#source-s01">S01</a></sup> <sup className="source-ref"><a href="#source-s04">S04</a></sup> <sup className="source-ref"><a href="#source-s16">S16</a></sup>
+
+These dates explain how recent news can shed light on practices alleged to have occurred years earlier. They also make clear why a November announcement should not be read as a new judgment against Amazon.
+
+## The bid ceiling can move
+
+Even before the price is set, the bid can change. For an advertiser, the number entered in a field is sometimes the starting point for a series of authorized adjustments.
+
+The official Sponsored Products help page, updated on September 28, 2026, provides a particularly clear example. A $1 base bid receives a 50% adjustment for the top of search results, taking it to $1.50. With the dynamic bids (up and down) strategy, it can then reach $3. The maximum illustrated calculation is 1 × 1.50 × 2. <sup className="source-ref"><a href="#source-s07">S07</a></sup>
+
+The final step depends on the opportunity the system identifies. The $3 figure is a possible maximum adjusted bid in this official example. The price is calculated afterward; the illustration does not describe an automatic $3 charge.
+
+Examining a cost therefore requires the base bid, placement adjustments and chosen bidding strategy. Comparing a click price with the initial bid alone can give an incomplete picture of the applicable ceiling. Conversely, finding that the click stayed below the adjusted bid tells us that the limit was respected, without explaining the rule that set the price within it.
+
+This distinction gives the merchant something concrete to work with. The settings specify how much discretion the seller delegates to the system. Their economic value depends on the clicks obtained, and therefore on how often those clicks lead to sales and how much contribution those sales generate.
+
+## Clicks and the seller’s margin
+
+To trace the effect, keep the three prices from our first illustration. Imagine a product sold for $50 before tax. Variable costs excluding advertising (assumed to include the product, commissions, logistics and returns) are $35 per order. That leaves $15 of contribution before advertising. Every parameter is an illustrative assumption. [M02](#methode-m02)
+
+One hundred clicks produce ten attributed orders, an attributed conversion rate of 10%. The corresponding sales are $500; variable costs excluding advertising total $350. The contribution available to pay for acquisition is therefore $150.
+
+At $1.20 per click, the campaign costs $120 and leaves $30 of contribution. At $1.60, it costs $160, leaving a negative balance of $10. At $2, spending reaches $200 and the balance falls to minus $50. Clicks, orders and unit contribution have been held constant to isolate the effect of the advertising price.
+
+Dashboard metrics tell the same story in a different form. [ACoS](/en/glossary/acos/), or *advertising cost of sales*, divides advertising expenditure by attributed sales. In our three cases, it is 24%, 32% and 40%. [ROAS](/en/glossary/roas/), *return on ad spend*, reverses the calculation: attributed sales divided by advertising expenditure. These measures describe revenue and acquisition spending; margin requires a further calculation. <sup className="source-ref"><a href="#source-s08">S08</a></sup> [M02](#methode-m02)
+
+In this example, contribution before advertising is 30% of the selling price. An ACoS of 30% consumes it entirely. The same threshold can be expressed as a $1.50 CPC: a ten-in-a-hundred chance of an order, multiplied by $15 of contribution. The result after advertising remains a contribution measure on attributed sales. Fixed costs, taxes and any future effects are outside the model.
+
+The calculation also tests the strongest economic argument for a more expensive click. Better conversion can offset its price. With the same $15 of unit contribution, a $1.60 CPC requires an attributed conversion rate of approximately 10.67% to break even on this basis, compared with 8% at $1.20. A useful comparison therefore brings together price, traffic quality and margin. A rise in CPC alone cannot establish a campaign’s profitability. [M02](#methode-m02)
+
+## The orders advertising actually adds
+
+A difficulty remains even when every dashboard calculation is correct. An attributed sale is a sale linked to an advertising interaction under a measurement rule. That rule records a customer journey. To determine advertising’s contribution, we also need to estimate what would have happened without it. <sup className="source-ref"><a href="#source-s09">S09</a></sup>
+
+Return to the first scenario: $120 spent, ten attributed orders and $500 in sales. ROAS is approximately 4.17. Now suppose that only six orders are additional, and that the other four would have occurred without the campaign. This 60% share is chosen for the demonstration. It does not come from an Amazon measurement. [M02](#methode-m02)
+
+Attributed contribution after advertising remains $30: ten orders at $15, less $120 in spending. Incremental contribution falls to minus $30: six orders at $15, less the same $120. The same commercial dashboard can therefore accompany very different economic conclusions, depending on how many sales the advertising actually caused.
+
+<AmazonAuctionFigure lang="en" kind="incrementality" number="02" caption="Fictional assumptions: ten attributed orders, of which six are caused by the campaign.">
+
+100 clicks, $120 of spending, $15 of contribution per order before advertising. Attributed contribution is 150 − 120 = $30. With an assumed 60% share of additional orders, incremental contribution is 90 − 120 = −$30. Fixed costs and taxes are excluded.
+
+</AmazonAuctionFigure>
+
+This additional effect is often called [*incrementality*](/en/glossary/incrementalite/). Here it reduces the break-even CPC to $0.90: a 10% attributed conversion rate × a 60% share of additional orders × $15 of contribution. The equation exposes the weakness of a threshold that assumes all attributed sales would disappear if the campaign stopped.
+
+To estimate a causal effect, a properly designed experiment uses random assignment to create comparable groups, with and without the exposure being studied. Research by Gordon, Zettelmeyer, Bhargava and Chapsky shows why observational methods can produce results that differ from experiments in advertising measurement. Their study concerns Facebook. It offers a methodological lesson, not an estimate of the incrementality of Amazon ads. <sup className="source-ref"><a href="#source-s15">S15</a></sup>
+
+Even an experiment requires care. The duration must be defined, delayed purchases considered and contamination between groups checked. Simply stopping a campaign during a weak week mixes the effect of advertising with changes in demand. We deliberately leave these complications outside our model. In a real decision, they can change the result.
+
+Access to this information changes the seller’s economic bargaining position. A merchant with a better understanding of the incremental contribution of its campaigns can decide how much to bid for traffic. The auction operator still has a different view: it sees the allocation of placements and the billing rules. Performance measures alone do not reconstruct that mechanism.
+
+## Amazon’s defense and the right comparison
+
+Amazon argues that its reserves support a more relevant ranking system. In its August 31 response, the company cites an inflation-adjusted average CPC that was stable between 2019 and 2024, and an improvement in conversion rates of more than 24% between 2021 and 2025 for individual Sponsored Products advertisers. These series come from Amazon. They cover different periods, and this investigation found no public independent confirmation of their underlying data. <sup className="source-ref"><a href="#source-s05">S05</a></sup>
+
+On the information provided to customers, Amazon says its console had described the bid as a maximum since 2018. The company characterizes the materials cited against it as outdated or simplified and says they were subsequently corrected. It also argues that advertisers adjust their bids in response to observed results. These arguments bear directly on the allegation of deception. <sup className="source-ref"><a href="#source-s05">S05</a></sup>
+
+The substance of the argument deserves examination. A platform can improve the match between products and shoppers, generate more sales per click and provide a more useful service. A seller may then accept higher spending while retaining more contribution. The preceding model shows exactly how that offset works.
+
+The comparison must still fit the question. To measure the value of better ranking, compare selection rules. To isolate a reserve’s effect on price, hold ranking, traffic quality and competing bids as constant as possible, then change the pricing rule. Changing all these elements at once prevents the result from being attributed to a single mechanism.
+
+A stable average CPC over several years can thus coexist with a price higher than it would have been without certain reserves. It can also conceal different trends across campaigns. Conversely, reconstructing a lower theoretical price does not by itself establish the full alleged harm: advertiser behavior, the information they received and the validity of the comparison scenario must also be considered.
+
+The complaint and Amazon’s response offer two readings of the same market. The task of examining the documents is to preserve the questions their figures actually answer. Combining performance metrics, counterfactual differences and allegations of deception would create a false common measure.
+
+## A $68.6 billion business
+
+The financial scale helps explain the stakes. Amazon’s global *Advertising services* revenue rose from $31.160 billion in 2021 to $68.635 billion in 2025, in current dollars. The published accounts show the same revenue category and an identical 2023 figure in the two reports used to join the series. <sup className="source-ref"><a href="#source-s12">S12, p. 69</a></sup> <sup className="source-ref"><a href="#source-s13">S13, p. 69</a></sup>
+
+The category covers several formats, including sponsored ads, display and video. It extends beyond the search auctions discussed in this article. Revenue growth may reflect more placements, clicks or impressions, or a different mix of formats, as well as changes in price. The series measures the scale of the business; it does not isolate additional revenue attributable to reserves.
+
+<AmazonAuctionFigure lang="en" kind="revenue" number="03" caption="Worldwide revenue in current US dollars. Annual and quarterly series retain separate scales.">
+
+Advertising services covers several ad formats under US GAAP. Annual revenue for 2021–2025; a separate comparison of Q3 2025 and Q3 2026. The shift in Prime Day timing limits the quarterly comparison. These revenues measure the size of the business.
+
+</AmazonAuctionFigure>
+
+Results published on October 29 put advertising revenue at $19.637 billion in the third quarter of 2026, compared with $17.703 billion a year earlier. Amazon reported growth of 11% in current dollars and 12% excluding foreign exchange effects. The calendar complicates the comparison: Prime Day moved to the second quarter in most large countries in 2026, whereas the event fell entirely in the third quarter in 2025. The quantified adjustment provided for group sales is not a published adjustment for Ads. <sup className="source-ref"><a href="#source-s10">S10</a></sup> <sup className="source-ref"><a href="#source-s11">S11</a></sup>
+
+These revenues do not reveal an operating margin for advertising either. Amazon reports operating results for its North America, International and AWS segments. Subtracting the group’s selling and marketing expenses from advertising revenue alone would combine mismatched accounting categories. The accounts let us measure revenue while leaving part of the business’s internal economics undisclosed. <sup className="source-ref"><a href="#source-s11">S11</a></sup>
+
+## The possible effect on shoppers’ prices
+
+The economic chain can extend beyond the seller. If acquiring an additional order becomes more expensive, a merchant can accept lower contribution, cut back some campaigns, change its product range or seek to raise prices. The choice depends on competition, customer responses and other sales channels. These are possible transmission mechanisms whose strength needs to be measured.
+
+The evidence assembled here establishes no rate of pass-through from these reserves to retail prices. Calculating one would require linking identified advertising-cost changes to products and their prices, while separating other changes in costs and demand. Higher advertising costs can squeeze margin without immediately reaching the consumer; better sales can also cushion the pressure.
+
+The issue also matters to merchants outside the United States buying visibility on Amazon. The material assembled here does not, however, allow us to quantify the consequences for those merchants. A figure for advertising auctions in France would not by itself measure the exposure of French businesses: where an ad is shown is distinct from the seller’s nationality. The accounting revenues presented are global. The litigation is a US proceeding.
+
+## The price within the ceiling
+
+Amazon publicly describes the existence of reserves. How they were presented to advertisers, their effects and whether the alleged practices were deceptive remain central to the litigation. The court decisions reviewed concern matters including procedure and confidentiality; they do not decide liability on the merits. <sup className="source-ref"><a href="#source-s03">S03</a></sup> <sup className="source-ref"><a href="#source-s04">S04</a></sup> <sup className="source-ref"><a href="#source-s05">S05</a></sup>
+
+Further progress would depend on the rules actually applied in each period, the versions of the information received by advertisers and data allowing a comparable scenario to be reconstructed. Assessing the value of a click would also require measures of conversion, contribution and incrementality appropriate to the seller concerned.
+
+This investigation rests on a practical distinction. The bid sets an amount the merchant authorizes the system to spend. The auction rules determine how much of that amount is charged. Margin and the sales actually added determine what the expenditure delivers for the seller. Understanding these three steps makes it possible to examine a promise of performance with the right questions, while identifying precisely which questions the litigation must address.
+
+## Further reading
+
+Pricing also depends on the signals entering a system. Our analysis of [AI agents shopping for flights](/en/analysis/airfares-ai-agents-demand-signals/) examines the limits of reading search traffic as demand. In another digital market, [Cloudflare’s content-payment model](/en/analysis/cloudflare-ai-content-payments-usage-count/) shows why the unit being billed matters.
+
+## Method and limitations
+
+**Research cutoff: November 8, 2026, Paris time.** This analysis uses public sources: the complaint and court orders, Amazon Ads documentation, Amazon’s response, SEC filings and original academic research. It includes no interviews, access to an advertiser account or audit of production code. The references below identify the passages used and the limits of each document. The opening image is a conceptual illustration generated with an AI image tool; it represents the economic mechanism examined here.
+
+The December 2021 and December 2022 figures are allegations located in the complaint, with their periods and scope specified. Amazon’s accounts describe reported revenue. The illustrative models are l0g calculations using fictional parameters. The economic scenarios are presented as conditional reasoning. The FTC case page lists the matter as pending; the material reviewed is not an authenticated, exhaustive, real-time PACER docket.
+
+<div id="methode-m01"></div>
+
+**M01: The price of a click: fictional model.** One placement, equal relevance, effective bids of A = $2.00, B = $1.20 and C = $0.80, and an entry threshold of $0.50. The model keeps A as the winner and sets the price at the higher of $1.20 and the soft reserve, capped at $2.00. The reserve scenarios are $0, $1.60 and $2.20. No minimum bid increment is added to the pure second-price benchmark. The model is not a formula for Amazon’s system.
+
+<div id="methode-m02"></div>
+
+**M02: Contribution and incrementality: fictional model.** One hundred clicks, ten attributed orders of one unit each, a pretax price of $50 and variable costs excluding advertising of $35 per order. Contribution after advertising equals orders × $15 minus clicks × CPC. ACoS divides spending by the $500 of attributed sales; ROAS reverses the ratio. In the incrementality illustration, 60% of orders are assumed to be additional: incremental contribution equals six × $15 minus $120. Fixed costs, taxes, changes in traffic quality and future effects are excluded. The parameters and formulas above make each scenario reproducible.
+
+## Sources and documents
+
+<ol className="sources-list">
+<li id="source-s01"><span className="source-meta">S01 · 2026-10-28 · Accessed: 2026-11-08</span><a href="https://www.ftc.gov/system/files/ftc_gov/pdf/Amazon-RedactedComplaint.pdf" target="_blank" rel="noopener noreferrer">FTC and states’ complaint : document 113</a><details><summary>Passages and scope</summary><p>Initial complaint: 31 August 2026; this copy filed 28 October 2026. Allegations include December 2021 and December 2022.</p><p>181 pages. §63 p.21: cap; §228 p.76: five-day CPC movement; §§249–250 p.82: alleged worldwide revenue; §§299–314 pp.98–101: FTC counts. Add 4 for the physical PDF page.</p><p>Plaintiffs’ allegations, including extracts from internal documents; no merits ruling. Some passages remain redacted.</p></details></li>
+<li id="source-s02"><span className="source-meta">S02 · 2026-11-05 · Accessed: 2026-11-08</span><a href="https://www.ftc.gov/news-events/news/press-releases/2026/11/new-details-emerge-amazon-ads-auction-rigging-case" target="_blank" rel="noopener noreferrer">FTC : 5 November statement</a><details><summary>Passages and scope</summary><p>Published 5 November 2026. Historical episodes; distinct from the court filing date.</p><p>News trigger; detailed figures and comparisons are checked against S01.</p><p>Statement by a party to the case.</p></details></li>
+<li id="source-s03"><span className="source-meta">S03 · 2026-11-08 · Accessed: 2026-11-08</span><a href="https://www.ftc.gov/legal-library/browse/cases-proceedings/amazon" target="_blank" rel="noopener noreferrer">FTC : Amazon case page</a><details><summary>Passages and scope</summary><p>Accessed 8 November 2026; timeline entries for 31 August and 5 November 2026.</p><p>Displayed status: Pending. FTC and 22 states. Case 2:26-cv-03097-JHC.</p><p>The Last Updated header says 31 August despite the November entry. This page is not a complete PACER docket.</p></details></li>
+<li id="source-s04"><span className="source-meta">S04 · 2026-10-27 · Accessed: 2026-11-08</span><a href="https://cases.justia.com/federal/district-courts/washington/wawdce/2:2026cv03097/367748/111/0.pdf" target="_blank" rel="noopener noreferrer">Sealing order : document 111</a><details><summary>Passages and scope</summary><p>Order and filing: 27 October 2026.</p><p>The court retains some sealed material and directs a public version using Exhibit A redactions. Court document reproduced by Justia.</p><p>Confidentiality ruling; no finding of advertising liability.</p><p><a href="https://dockets.justia.com/docket/washington/wawdce/2:2026cv03097/367748" target="_blank" rel="noopener noreferrer">Court docket reproduced by Justia, entry111</a></p></details></li>
+<li id="source-s05"><span className="source-meta">S05 · 2026-08-31 · Accessed: 2026-11-08</span><a href="https://www.aboutamazon.com/company-news/amazon-ftc-sponsored-ads-lawsuit-response" target="_blank" rel="noopener noreferrer">Amazon : response to the Sponsored Ads lawsuit</a><details><summary>Passages and scope</summary><p>datePublished and dateModified metadata: 31 August 2026, 19:36:13 UTC.</p><p>Public account of hard and soft reserves; defense of ranking and performance.</p><p>Interested source. No independent confirmation found for internal series. Conflicting date ranges for a claimed 50% bid decline led us to omit that figure.</p></details></li>
+<li id="source-s06"><span className="source-meta">S06 · 2026-11-08 · Accessed: 2026-11-08</span><a href="https://advertising.amazon.com/library/guides/pricing-transparency" target="_blank" rel="noopener noreferrer">Amazon Ads : pricing transparency</a><details><summary>Passages and scope</summary><p>Current page accessed 8 November 2026; publication date not established.</p><p>Selection using bids and expected customer interest; distinctions between products and billing methods.</p><p>Operator documentation; no coefficients or auction logs.</p></details></li>
+<li id="source-s07"><span className="source-meta">S07 · 2026-11-08 · Accessed: 2026-11-08</span><a href="https://advertising.amazon.com/help/GYYZVM7LGSRYGWV5" target="_blank" rel="noopener noreferrer">Amazon Ads Help : Adjust Sponsored Products bids</a><details><summary>Passages and scope</summary><p>lastModified metadata: 28 September 2026, 20:58:26 UTC; accessed 8 November.</p><p>Official example: $1 bid, +50% top-of-search adjustment, $1.50 bid, possible dynamic increase up to $3.</p><p>Possible maximum, conditional on the opportunity; not an automatically billed CPC. Public JSON embedded in HTML was decoded without executing JavaScript.</p></details></li>
+<li id="source-s08"><span className="source-meta">S08 · 2026-11-08 · Accessed: 2026-11-08</span><a href="https://advertising.amazon.com/library/guides/acos-advertising-cost-of-sales" target="_blank" rel="noopener noreferrer">Amazon Ads : ACoS and ROAS definitions</a><details><summary>Passages and scope</summary><p>Current pages accessed 8 November 2026; publication dates not established.</p><p>ACoS = spend / attributed sales; ROAS = attributed sales / spend.</p><p>Contribution and incrementality models are l0g’s M02 calculations.</p><p><a href="https://advertising.amazon.com/library/guides/return-on-ad-spend-roas" target="_blank" rel="noopener noreferrer">Companion document 2</a></p></details></li>
+<li id="source-s09"><span className="source-meta">S09 · 2026-11-08 · Accessed: 2026-11-08</span><a href="https://advertising.amazon.com/help/GX7KDKHMWQYMJ385" target="_blank" rel="noopener noreferrer">Amazon Ads Help : attribution</a><details><summary>Passages and scope</summary><p>lastModified metadata: 20 October 2026, 14:22:24 UTC; accessed 8 November. Initial publication date not established.</p><p>Orders are linked to eligible interactions under product-specific rules.</p><p>Attribution windows differ. The article does not treat an attributed sale as proof of causality.</p></details></li>
+<li id="source-s10"><span className="source-meta">S10 · 2026-10-29 · Accessed: 2026-11-08</span><a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/default.aspx" target="_blank" rel="noopener noreferrer">Amazon : third-quarter 2026 results</a><details><summary>Passages and scope</summary><p>Published 29 October 2026. Quarter from 1 July to 30 September 2026, compared with Q3 2025.</p><p>Supplemental table p.13: Advertising services $19,637m versus $17,703m; +11% nominal, +12% excluding FX. Opening text explains Prime Day timing.</p><p>Worldwide, current dollars, revenue category broader than the auctions examined. The 400bp timing adjustment concerns total company sales.</p><p><a href="https://ir.aboutamazon.com/files/doc_earnings/2026/q3/earnings-result/AMZN-Q3-2026-Earnings-Release.pdf" target="_blank" rel="noopener noreferrer">Companion document 2</a></p></details></li>
+<li id="source-s11"><span className="source-meta">S11 · 2026-10-30 · Accessed: 2026-11-08</span><a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000040/amzn-20260930.htm" target="_blank" rel="noopener noreferrer">Amazon : Form 10-Q for 30 September 2026</a><details><summary>Passages and scope</summary><p>Period ended 30 September 2026; SEC filing date: 30 October. Accepted 29 October at 18:20:46 according to the SEC index.</p><p>Note 8, pp.23–25: segments and advertising revenue; p.33: scope of Sales and marketing expenses.</p><p>Unaudited quarterly US GAAP accounts; no standalone Ads operating income in this filing.</p><p><a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000040/0001018724-26-000040-index.htm" target="_blank" rel="noopener noreferrer">Companion document 2</a></p></details></li>
+<li id="source-s12"><span className="source-meta">S12 · 2026-11-08 · Accessed: 2026-11-08</span><a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm" target="_blank" rel="noopener noreferrer">Amazon : 2025 annual report</a><details><summary>Passages and scope</summary><p>Calendar year 2025. Underlying 10-K filed 6 February 2026; publication date of the annual-report PDF wrapper not established here.</p><p>Printed p.69 / PDF p.80: 2023, 2024, 2025 = $46,906m, $56,214m, $68,635m. Footnote (4): Advertising services scope.</p><p>Worldwide, current USD, annual US GAAP revenue. The format mix evolves; this is not a constant-quality price series.</p><p><a href="https://www.sec.gov/Archives/edgar/data/1018724/000110465926041036/tm263815d4_ars.pdf" target="_blank" rel="noopener noreferrer">Companion document 2</a></p></details></li>
+<li id="source-s13"><span className="source-meta">S13 · 2026-11-08 · Accessed: 2026-11-08</span><a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm" target="_blank" rel="noopener noreferrer">Amazon : 2023 annual report</a><details><summary>Passages and scope</summary><p>Calendar year 2023. Underlying 10-K filed 2 February 2024; publication date of the PDF wrapper not established here.</p><p>Printed p.69 / PDF p.81: 2021, 2022, 2023 = $31,160m, $37,739m, $46,906m. Shared 2023 observation matches S12.</p><p>The reclassification described in this report concerns cash flows; no change to this revenue series was identified.</p><p><a href="https://www.sec.gov/Archives/edgar/data/1018724/000110465924045917/tm246113d4_ars.pdf" target="_blank" rel="noopener noreferrer">Companion document 2</a></p></details></li>
+<li id="source-s14"><span className="source-meta">S14 · 2007-03 · Accessed: 2026-11-08</span><a href="https://www.aeaweb.org/articles?id=10.1257/aer.97.1.242" target="_blank" rel="noopener noreferrer">Edelman, Ostrovsky and Schwarz : generalized second-price auctions</a><details><summary>Passages and scope</summary><p>American Economic Review, March 2007, 97(1), pp.242–259. Accessible author manuscript dated 1 August 2006.</p><p>The strategic properties of GSP differ from VCG and the elementary second-price mechanism.</p><p>Earlier theoretical work; no observation of Amazon’s 2026 software.</p><p><a href="https://web.stanford.edu/~ost/papers/gsp-final.pdf" target="_blank" rel="noopener noreferrer">Companion document 2</a></p></details></li>
+<li id="source-s15"><span className="source-meta">S15 · 2019 · Accessed: 2026-11-08</span><a href="https://pubsonline.informs.org/doi/abs/10.1287/mksc.2018.1135" target="_blank" rel="noopener noreferrer">Gordon et al. : measuring advertising’s causal effect</a><details><summary>Passages and scope</summary><p>Marketing Science, 2019, 38(2), pp.193–225. Authors: Brett R. Gordon, Florian Zettelmeyer, Neha Bhargava, Dan Chapsky.</p><p>A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook. Comparison of observational and experimental measurement.</p><p>Facebook study, used only for methodology. Bhargava and Chapsky are affiliated with Facebook in the paper; no Amazon estimate.</p><p><a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/" target="_blank" rel="noopener noreferrer">Companion document 2</a></p></details></li>
+<li id="source-s16"><span className="source-meta">S16 · 2026-09-28 · Accessed: 2026-11-08</span><a href="https://www.ftc.gov/system/files/ftc_gov/pdf/Amazon-Complaint9.29.2026.pdf" target="_blank" rel="noopener noreferrer">Exhibit A : document 91-1 of 28 September</a><details><summary>Passages and scope</summary><p>Filed 28 September 2026. The URL contains 9.29; the court stamp establishes the filing date.</p><p>182 pages; major figures discussed in November already appear in this now-public copy. Add 5 to the printed page number for the PDF page.</p><p>The first historical date of public availability has not been independently established.</p></details></li>
+<li id="source-s17"><span className="source-meta">S17 · 2026-11-08 · Accessed: 2026-11-08</span><a href="https://advertising.amazon.com/solutions/products/sponsored-products" target="_blank" rel="noopener noreferrer">Amazon Ads : Sponsored Products</a><details><summary>Passages and scope</summary><p>Current page accessed 8 November 2026; publication undated.</p><p>Cost-per-click advertising product for individual products.</p><p>This billing method does not apply to all Amazon Ads formats.</p></details></li>
+</ol>
