@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import SupportCard from '../../components/SupportCard.astro';
 import PageHero from '../../components/PageHero.astro';
 import PublicationLibrary from '../../components/PublicationLibrary.astro';
 import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
@@ -24,6 +26,11 @@ const isFirst = page.currentPage === 1;
   ogImage="/publications/le-cout-d-une-porte-derobee-og-v1.jpg"
   ogImageAlt="Le coût d’une porte dérobée. Sept analyses l0g sur le chiffrement, leurs sources et vingt et une infographies, en EPUB gratuit."
 >
+  <div slot="sidebar" class="publication-sidebar">
+    <SupportCard />
+    <Sidebar path={Astro.url.pathname} />
+  </div>
+
   <div class="publication-intro">
     <PageHero
       index="06"
@@ -67,6 +74,7 @@ const isFirst = page.currentPage === 1;
 </BaseLayout>
 
 <style>
+  .publication-sidebar { display: grid; gap: 1.1rem; }
   .publication-intro { --page-title-size: clamp(1.25rem, 6.5vw, 2.6rem); }
   .publication-wordmark { font-size: 1em; vertical-align: baseline; }
   .publication-list { margin-top: 2.8rem; }
