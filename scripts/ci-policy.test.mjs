@@ -47,6 +47,21 @@ test('the current workflow and package contracts satisfy the CI policy', async (
   assert.match(result.stdout, /CI policy OK:/);
 });
 
+for (const [name, before, after] of [
+  ['a foreign CodeQL bundle repository', 'api.github.com/repos/github/codeql-action/releases/assets/', 'api.github.com/repos/untrusted/tool/releases/assets/'],
+  ['an unchecked CodeQL bundle', 'sha256sum --check --strict', 'true'],
+  ['an unbounded CodeQL download', '--max-time 300', ''],
+  ['CodeQL using another file', 'tools: ${{ runner.temp }}/codeql-bundle-2.27.4.tar.zst', 'tools: ${{ runner.temp }}/unverified.tar.zst'],
+]) {
+  test(`CI policy rejects ${name}`, async t => {
+    const root = await fixture(t), file = join(root, '.github/workflows/codeql.yml');
+    await writeFile(file, replace(await readFile(file, 'utf8'), before, after));
+    const result = audit(root);
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /bundle CodeQL officiel|bundle local vérifié/);
+  });
+}
+
 const workflowRegressions = [
   ['binary release payload returning to Git', 'publish',
     (job) => replace(job, 'node scripts/publish-static-assets.mjs release publish',

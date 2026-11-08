@@ -225,6 +225,20 @@ requireCondition(
 );
 
 const codeql = workflows.get('codeql.yml') || '';
+requireCondition(
+  /https:\/\/api\.github\.com\/repos\/github\/codeql-action\/releases\/assets\/[1-9][0-9]*\s/.test(codeql)
+    && codeql.includes("--header 'Accept: application/octet-stream'")
+    && codeql.includes("--proto '=https' --proto-redir '=https' --tlsv1.2")
+    && codeql.includes('--fail --silent --show-error --location --retry 3')
+    && /--connect-timeout 10 --max-time 300 --max-filesize [1-9][0-9]*/.test(codeql)
+    && /printf '%s  %s\\n' '[a-f0-9]{64}' "\$bundle" \| sha256sum --check --strict/.test(codeql),
+  'le bundle CodeQL officiel doit être téléchargé en HTTPS, borné et vérifié par SHA-256',
+);
+const codeqlBundle = codeql.match(/bundle="\$\{RUNNER_TEMP\}\/([^"/]+\.tar\.zst)"/);
+requireCondition(
+  codeqlBundle && codeql.includes(`tools: \${{ runner.temp }}/${codeqlBundle[1]}`),
+  'CodeQL doit analyser avec le bundle local vérifié',
+);
 requireCondition(codeql.includes('pull_request:'), 'CodeQL doit rester actif sur les pull requests');
 requireCondition(codeql.includes('push:'), 'CodeQL doit rester actif sur les changements de code');
 requireCondition(

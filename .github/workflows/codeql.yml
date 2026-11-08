@@ -58,9 +58,26 @@ jobs:
         with:
           persist-credentials: false
 
+      # Same 2.27.4 bundle recommended by the pinned action. The release API
+      # avoids the download URL returning HTTP 504. Review this lock alongside
+      # the action: version, asset ID and SHA-256 must be updated together.
+      - name: Download verified CodeQL bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          bundle="${RUNNER_TEMP}/codeql-bundle-2.27.4.tar.zst"
+          curl --proto '=https' --proto-redir '=https' --tlsv1.2 \
+            --fail --silent --show-error --location --retry 3 \
+            --connect-timeout 10 --max-time 300 --max-filesize 559484083 \
+            --header 'Accept: application/octet-stream' \
+            https://api.github.com/repos/github/codeql-action/releases/assets/692235033 \
+            --output "$bundle"
+          printf '%s  %s\n' 'da3e952c7fe978a0b6b93e75d9cbabbdf8535667ca0810bd4b2ae37bc840ffee' "$bundle" | sha256sum --check --strict
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@7188fc363630916deb702c7fdcf4e481b751f97a # v4
         with:
+          tools: ${{ runner.temp }}/codeql-bundle-2.27.4.tar.zst
           languages: javascript-typescript
           queries: security-extended
 
