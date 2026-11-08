@@ -41,6 +41,14 @@ locally. Export links point to local evidence files with SHA-256 and JSON keys.
 The report has no access to credentials and executes no imported HTML or code.
 It shows each import separately, never sums page and query projections.
 
+The report reads optional private `deployment-verification.json` and
+`console-connections.json` evidence. A verified deployment needs matching
+expected/remote/served SHAs, one successful completed build and CodeQL run for
+that SHA, and a matching successful live probe. Missing, stale, future-dated or
+inconsistent evidence cannot produce a verified state. The dated deployment
+summary is separate from the collapsed historical action log. A verified Bing
+property, a missing import and an imported empty export are distinct states.
+
 Use `visibility:import -- --demo ... --data-dir /private/separate-demo` for
 synthetic examples. The data mode is fixed by the first import. Mixing real
 and demo imports is refused. Demo reports carry a visible synthetic banner,

@@ -285,6 +285,51 @@ test('private report supports honest empty/stale/demo states, escaped inputs, ex
   assert.match(result.panelCsv, /numerator/);
 });
 
+test('current deployment evidence stays separate from historical failures and rejects inconsistent or stale proof', () => {
+  const now = new Date('2026-11-08T10:00:00Z'), sha = 'a'.repeat(40);
+  const live = { state: 'measured', checked_at: now.toISOString(), served_sha: sha };
+  const deployment = { verified: true, checked_at: now.toISOString(), expected_sha: sha, remote_main_sha: sha, served_sha: sha, public_requests: 20, errors: [], workflows: ['build', 'codeql'].map(name => ({ name, status: 'completed', conclusion: 'success', headSha: sha })) };
+  const good = buildReport({ live, deployment, now, actions: [{ at: '2026-11-01T10:00:00Z', status: 'not_deployed' }] });
+  assert.equal(good.summary.deployment.verified, true);
+  assert.match(good.html, /CI réussie ; déploiement vérifié/);
+  assert.match(good.html, /Afficher le journal historique/);
+  assert.match(good.html, /not_deployed/, 'Historical evidence is retained.');
+  const cases = [
+    { ...deployment, verified: false },
+    { ...deployment, remote_main_sha: 'b'.repeat(40) },
+    { ...deployment, errors: ['probe_failed'] },
+    { ...deployment, public_requests: 0 },
+    { ...deployment, workflows: deployment.workflows.slice(0, 1) },
+    { ...deployment, workflows: deployment.workflows.map(w => ({ ...w, conclusion: 'failure' })) },
+    { ...deployment, workflows: deployment.workflows.map(w => ({ ...w, headSha: 'b'.repeat(40) })) },
+    { ...deployment, workflows: [...deployment.workflows, { ...deployment.workflows[0], conclusion: 'failure' }] },
+    { ...deployment, checked_at: '2026-01-01T00:00:00Z' },
+    { ...deployment, checked_at: '2026-11-09T10:00:00Z' },
+  ];
+  for (const proof of cases) assert.equal(buildReport({ live, deployment: proof, now }).summary.deployment.verified, false);
+  assert.equal(buildReport({ live: { ...live, served_sha: 'b'.repeat(40) }, deployment, now }).summary.deployment.verified, false);
+  assert.equal(buildReport({ live: { ...live, state: 'partial' }, deployment, now }).summary.deployment.verified, false);
+  assert.equal(buildReport({ live: { ...live, checked_at: '2026-01-01T00:00:00Z' }, deployment, now }).summary.deployment.verified, false);
+  const hostile = buildReport({ live, deployment: { ...deployment, expected_sha: '<script>alert(1)</script>', token: 'synthetic-private-sentinel' }, now });
+  assert.equal(hostile.summary.deployment.verified, false);
+  assert.equal(hostile.html.includes('synthetic-private-sentinel'), false);
+  assert.equal(hostile.html.includes('<script>alert(1)</script>'), false);
+});
+
+test('verified Bing access and an empty native export never become invented zero measurements', () => {
+  const empty = normalizeSearchImport('bing-ai', { ...search(), source: 'bing-ai', rows: [], metadata: { ...search().metadata, report: 'ai-performance', complete: false } });
+  const result = buildReport({ imports: [empty], consoles: { bing: { verified: true } }, now: new Date('2026-02-01T01:00:00Z') });
+  assert.equal(result.summary.connections.bing.configured, false);
+  assert.equal(result.summary.connections.bing.console_verified, true);
+  assert.equal(result.summary.connections.bing_ai.configured, true);
+  assert.equal(result.summary.connections.bing_ai.data_state, 'no_data');
+  assert.equal(result.summary.search[0].state, 'no_data');
+  assert.equal(result.summary.search[0].citations, null);
+  assert.match(result.html, /propriété validée ; aucun export importé/);
+  assert.match(result.html, /export importé vide ; aucune donnée/);
+  assert.match(result.html, /<td>aucune donnée<small>Complétude : aucune donnée/);
+});
+
 test('private report escapes script injection variants without changing its executable code', () => {
   const scriptBodies = html => scanHtmlElements(html).filter(element => element.name === 'script').map(element => element.body);
   const expected = scriptBodies(buildReport({}).html);
@@ -329,6 +374,14 @@ test('CLI import/report path works offline, repeated imports do not double count
   await main(['report', '--data-dir', data]);
   assert.match(await readFile(join(data, 'report.html'), 'utf8'), /10 \/ 100/);
   assert.match(await readFile(join(data, 'report.html'), 'utf8'), /DÉMONSTRATION SYNTHÉTIQUE/);
+  const checked = new Date().toISOString(), sha = 'a'.repeat(40);
+  await writePrivate(data, 'live.json', { state: 'measured', served_sha: sha, checked_at: checked });
+  await writePrivate(data, 'deployment-verification.json', { verified: true, checked_at: checked, expected_sha: sha, remote_main_sha: sha, served_sha: sha, public_requests: 20, errors: [], workflows: ['build', 'codeql'].map(name => ({ name, status: 'completed', conclusion: 'success', headSha: sha })) });
+  await writePrivate(data, 'console-connections.json', { bing: { verified: true } });
+  await main(['report', '--data-dir', data]);
+  const verified = await readPrivate(data, 'report.json');
+  assert.equal(verified.deployment.verified, true);
+  assert.equal(verified.connections.bing.console_verified, true);
   await assert.rejects(main(['import', '--source', 'gsc', '--file', join(dir, 'input.json'), '--data-dir', data]), /mixing/);
   assert.equal((await readPrivate(data, 'report.json')).search[0].ctr, 0.1);
   await writeFile(join(dir, 'panel.json'), JSON.stringify(panel()));

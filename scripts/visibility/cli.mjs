@@ -41,7 +41,7 @@ async function report(directory, state) {
     if (!traffic.cells.length) traffic.state = 'no_data';
     await writePrivate(directory, 'traffic.json', traffic);
   }
-  const result = buildReport({ audit: await readPrivate(directory, 'audit.json'), live: await readPrivate(directory, 'live.json'), traffic, panel: await readPrivate(directory, 'panel.json'), coverage: await readPrivate(directory, 'panel-coverage.json'), imports: state.imports, batches: state.batches, actions: state.actions, demo: state.data_mode === 'demo' });
+  const result = buildReport({ audit: await readPrivate(directory, 'audit.json'), live: await readPrivate(directory, 'live.json'), deployment: await readPrivate(directory, 'deployment-verification.json'), consoles: await readPrivate(directory, 'console-connections.json'), traffic, panel: await readPrivate(directory, 'panel.json'), coverage: await readPrivate(directory, 'panel-coverage.json'), imports: state.imports, batches: state.batches, actions: state.actions, demo: state.data_mode === 'demo' });
   await writePrivate(directory, 'report.html', result.html);
   await boundedWrite(directory, 'report.json', result.summary);
   await writePrivate(directory, 'search.csv', result.searchCsv);
