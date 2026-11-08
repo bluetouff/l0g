@@ -139,7 +139,7 @@ const jsonLd = {
   inLanguage: 'fr',
   isAccessibleForFree: true,
   publisher: { '@id': `${site}/#org` },
-  dateModified: buildTime.toISOString(),
+  dateModified: latestCommit?.date,
   mainEntity: {
     '@type': 'ItemList',
     itemListElement: commits.map((commit, index) => ({

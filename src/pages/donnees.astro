@@ -275,7 +275,7 @@ const jsonLd = {
     description: dataset.role,
     encodingFormat: dataset.format,
     url: `${site}${dataset.href}`,
-    dateModified: dataset.updated?.toISOString(),
+    dateModified: producerDated.has(dataset.label) ? dataset.updated?.toISOString() : undefined,
     isAccessibleForFree: true,
     license: 'https://creativecommons.org/licenses/by/4.0/',
     creator: datasetCreatorEntity,
