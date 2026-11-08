@@ -151,6 +151,7 @@ optional `review`. An unreviewed citation defaults to `not_reviewed`.
 Review states: `supports`, `partially_supports`, `does_not_support`,
 `outdated_for_claim`, `not_reviewed`, `source_unavailable`. A completed review
 requires `method` (`human`/`automatic`), `reviewer`, `at`, `reason`, `excerpt`.
+For `source_unavailable`, use `excerpt: null` when no passage is available.
 Only human reviews with available evidence enter the fidelity denominator;
 partials, disagreements and outdated evidence remain in it. Automatic opinions
 do not become human reviews. The report exposes review coverage and all states.

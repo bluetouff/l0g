@@ -57,7 +57,7 @@ export function normalizeCitation(citation, subdomains = []) {
   let review = { status: 'not_reviewed' };
   if (fidelity !== 'not_reviewed') {
     if (!['human', 'automatic'].includes(citation.review.method)) throw new Error('review_method_required');
-    review = { status: fidelity, method: citation.review.method, reviewer: requiredString(citation.review.reviewer, 'reviewer', 150), at: timestamp(citation.review.at), reason: requiredString(citation.review.reason, 'reason', 4000), excerpt: requiredString(citation.review.excerpt, 'excerpt', 4000) };
+    review = { status: fidelity, method: citation.review.method, reviewer: requiredString(citation.review.reviewer, 'reviewer', 150), at: timestamp(citation.review.at), reason: requiredString(citation.review.reason, 'reason', 4000), excerpt: fidelity === 'source_unavailable' && citation.review.excerpt === null ? null : requiredString(citation.review.excerpt, 'excerpt', 4000) };
   }
   return { url: normalized, normalized_url: url.href, scope, kind: citation.kind, claim: citation.claim === undefined ? null : requiredString(citation.claim, 'claim', 4000), review };
 }

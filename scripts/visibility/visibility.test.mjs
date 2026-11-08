@@ -183,6 +183,8 @@ test('automatic fidelity never masquerades as human review', () => {
   review.method = 'human';
   assert.equal(panelMetrics([normalizeObservations(input, panel())])[0].fidelity.denominator, 1);
   assert.throws(() => normalizeCitation({ url: 'https://l0g.fr/', kind: 'final', review: { status: 'supports' } }), /required/);
+  const unavailable = normalizeCitation({ url: 'https://l0g.fr/example/', kind: 'final', review: { ...review, status: 'source_unavailable', reason: 'Synthetic unavailable source.', excerpt: null } });
+  assert.equal(unavailable.review.excerpt, null, 'An unavailable source must not require an invented quotation.');
 });
 
 test('traffic consumes sensitive log fields transiently, suppresses small cohorts and preserves classes', () => {
