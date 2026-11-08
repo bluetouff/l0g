@@ -64,7 +64,7 @@ export async function publicRequest(raw, { hosts = ['l0g.fr'], method = 'GET', b
 
 export async function probeLive(inventory, { maxUrls = 20, rps = 1 } = {}, fetcher = publicRequest) {
   if (!Number.isInteger(maxUrls) || maxUrls < 4 || maxUrls > 100 || !Number.isFinite(rps) || rps < 0.2 || rps > 1) throw new Error('probe_bounds_invalid');
-  const seed = ['/', '/en/', '/about/', '/en/about/', '/guides/', '/en/guides/'];
+  const seed = ['/', '/en/', '/about/', '/en/about/', '/guides/', '/en/guides/', '/status/', '/preuves/', '/donnees/', '/maintenant/'];
   const published = inventory.filter(p => p.sitemap);
   const samples = [...new Set([...seed.filter(path => published.some(p => p.url === SITE + path)), ...published.filter(p => p.type === 'article').slice(0, 2).map(p => new URL(p.url).pathname), ...published.filter(p => p.type === 'article').slice(-2).map(p => new URL(p.url).pathname)])];
   const requests = [
