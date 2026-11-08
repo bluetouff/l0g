@@ -160,7 +160,7 @@ test("short social-card titles keep the existing type size and placement", async
   assert.deepEqual([title.left, title.top, title.width, title.height], [120, 266, 920, 60]);
 });
 
-test("homepage social cards remain compact, distinct and retain their site address", async (t) => {
+test("home and catalogue social cards remain compact, distinct and retain their site address", async (t) => {
   const directory = await mkdtemp(join(tmpdir(), "l0g-og-home-"));
   t.after(() => rm(directory, { recursive: true, force: true }));
   await mkdir(join(directory, "public"));
@@ -200,6 +200,25 @@ test("homepage social cards remain compact, distinct and retain their site addre
     }
   }
   assert.ok(englishAddressPixels >= 100, "the English site address was clipped from its footer area");
+  const catalogueCards = [];
+  for (const language of ['fr', 'en']) {
+    const card = await readFile(join(directory, `public/og/catalogue/publications-${language}-v1.jpg`));
+    const dimensions = await sharp(card).metadata();
+    assert.deepEqual([dimensions.format, dimensions.width, dimensions.height], ['jpeg', OG.width, OG.height]);
+    assert.ok(card.length <= 200_000, `${language}: catalogue sharing image exceeds 200 KB`);
+    assert.notDeepEqual(card, language === 'fr' ? jpeg : english, 'the catalogue needs dedicated artwork');
+    const pixels = await sharp(card).removeAlpha().raw().toBuffer();
+    let addressPixels = 0;
+    for (let y = 540; y < 590; y++) {
+      for (let x = 760; x < 1150; x++) {
+        const offset = (y * OG.width + x) * 3;
+        if (pixels[offset] >= 220 && pixels[offset + 1] >= 220 && pixels[offset + 2] >= 220) addressPixels++;
+      }
+    }
+    assert.ok(addressPixels >= 100, `${language}: catalogue address is missing or clipped`);
+    catalogueCards.push(card);
+  }
+  assert.notDeepEqual(catalogueCards[0], catalogueCards[1], 'both catalogue languages need their own image');
 });
 
 test("article hero images keep descriptive alt text without a redundant visible caption", async () => {

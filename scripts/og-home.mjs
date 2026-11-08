@@ -1,25 +1,42 @@
-// Illustration originale, typographie native et image sociale statique de la home.
+// Images de marque : accueils et catalogues FR/EN, avec une typographie native.
 // Le JPEG versionné évite de réutiliser les anciennes cartes mises en cache.
 import fs from 'node:fs';
 import sharp from 'sharp';
 import { OG, h, renderOgPng } from './og-kit.mjs';
 
-const art = fs.readFileSync(new URL('../public/illustrations/brand/l0g-home-aperture-v1.jpg', import.meta.url));
+const art = {
+  home: fs.readFileSync(new URL('../public/illustrations/brand/l0g-home-aperture-v1.jpg', import.meta.url)),
+  catalogue: fs.readFileSync(new URL('../public/illustrations/brand/l0g-publications-library-v1.jpg', import.meta.url)),
+};
 const titleGradient = `linear-gradient(90deg, ${OG.teal}, ${OG.rose})`;
 const editions = [
   {
-    lang: 'fr', file: 'l0g-finance-v2.jpg',
+    section: 'home', lang: 'fr', file: 'l0g-finance-v2.jpg',
     labels: ['ENQUÊTES', 'DONNÉES', 'OUTILS'],
     title: ['Les angles morts', 'de la finance.'],
     tagline: ['Lire les mécanismes avant', 'qu’ils deviennent l’événement.'],
     footer: 'Sources primaires · analyse indépendante', domain: 'l0g.fr',
   },
   {
-    lang: 'en', file: 'l0g-finance-en-v2.jpg',
+    section: 'home', lang: 'en', file: 'l0g-finance-en-v2.jpg',
     labels: ['INVESTIGATIONS', 'DATA', 'TOOLS'],
     title: ['Finance’s', 'blind spots.'],
     tagline: ['Understand the mechanisms', 'before they make headlines.'],
     footer: 'Primary sources · independent analysis', domain: 'l0g.fr/en',
+  },
+  {
+    section: 'catalogue', lang: 'fr', file: 'publications-fr-v1.jpg',
+    labels: ['COLLECTION', 'SOURCES', 'EPUB'],
+    title: ['Les enquêtes', 'en livres.'],
+    tagline: ['Des éditions numériques,', 'avec leurs sources et références.'],
+    footer: 'Éditions numériques · accès libre', domain: 'l0g.fr/publications',
+  },
+  {
+    section: 'catalogue', lang: 'en', file: 'publications-en-v1.jpg',
+    labels: ['COLLECTION', 'SOURCES', 'EPUB'],
+    title: ['Investigations', 'in EPUB.'],
+    tagline: ['Long-form digital editions,', 'with sources and references.'],
+    footer: 'Digital editions · open access', domain: 'l0g.fr/en/publications',
   },
 ];
 
@@ -29,7 +46,7 @@ const cardFor = (copy) => h('div', {
   fontFamily: 'JetBrains Mono', fontWeight: 400,
 },
   { type: 'img', props: {
-    src: `data:image/jpeg;base64,${art.toString('base64')}`,
+    src: `data:image/jpeg;base64,${art[copy.section].toString('base64')}`,
     width: OG.width, height: OG.height,
     style: { position: 'absolute', left: 0, top: 0 },
   } },
@@ -79,13 +96,14 @@ const cardFor = (copy) => h('div', {
   }, copy.domain),
 );
 
-fs.mkdirSync('public/og/home', { recursive: true });
 for (const edition of editions) {
   const png = await renderOgPng(cardFor(edition));
   // L’ancien PNG reste disponible pour les liens déjà partagés.
-  if (edition.lang === 'fr') fs.writeFileSync('public/og-home.png', png);
+  if (edition.section === 'home' && edition.lang === 'fr') fs.writeFileSync('public/og-home.png', png);
   const jpeg = await sharp(png).jpeg({ quality: 90, chromaSubsampling: '4:4:4', mozjpeg: true }).toBuffer();
-  const output = `public/og/home/${edition.file}`;
+  const directory = `public/og/${edition.section}`;
+  fs.mkdirSync(directory, { recursive: true });
+  const output = `${directory}/${edition.file}`;
   fs.writeFileSync(output, jpeg);
   console.log(`[og-home] ${edition.lang} : 1200 × 630, JPEG ${jpeg.length} octets : ${output}`);
 }
