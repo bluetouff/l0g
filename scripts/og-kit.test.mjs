@@ -160,7 +160,7 @@ test("short social-card titles keep the existing type size and placement", async
   assert.deepEqual([title.left, title.top, title.width, title.height], [120, 266, 920, 60]);
 });
 
-test("homepage social card visibly retains its bottom-right site address", async (t) => {
+test("homepage social cards remain compact, distinct and retain their site address", async (t) => {
   const directory = await mkdtemp(join(tmpdir(), "l0g-og-home-"));
   t.after(() => rm(directory, { recursive: true, force: true }));
   await mkdir(join(directory, "public"));
@@ -173,6 +173,11 @@ test("homepage social card visibly retains its bottom-right site address", async
   const metadata = await sharp(jpeg).metadata();
   assert.deepEqual([metadata.format, metadata.width, metadata.height], ["jpeg", OG.width, OG.height]);
   assert.ok(jpeg.length <= 200_000, "homepage sharing image must remain below 200 KB");
+  const english = await readFile(join(directory, "public/og/home/l0g-finance-en-v2.jpg"));
+  const englishMetadata = await sharp(english).metadata();
+  assert.deepEqual([englishMetadata.format, englishMetadata.width, englishMetadata.height], ["jpeg", OG.width, OG.height]);
+  assert.ok(english.length <= 200_000, "English homepage sharing image must remain below 200 KB");
+  assert.notDeepEqual(english, jpeg, "the English homepage must have its own localized artwork");
   const { data, info } = await sharp(join(directory, "public/og-home.png"))
     .removeAlpha().raw().toBuffer({ resolveWithObject: true });
   assert.equal(info.width, OG.width);
@@ -186,6 +191,15 @@ test("homepage social card visibly retains its bottom-right site address", async
     }
   }
   assert.ok(visibleTextPixels >= 100, "the light site-address text was clipped from its footer area");
+  const englishPixels = await sharp(english).removeAlpha().raw().toBuffer();
+  let englishAddressPixels = 0;
+  for (let y = 540; y < 590; y++) {
+    for (let x = 970; x < 1150; x++) {
+      const offset = (y * OG.width + x) * 3;
+      if (englishPixels[offset] >= 220 && englishPixels[offset + 1] >= 220 && englishPixels[offset + 2] >= 220) englishAddressPixels++;
+    }
+  }
+  assert.ok(englishAddressPixels >= 100, "the English site address was clipped from its footer area");
 });
 
 test("article hero images keep descriptive alt text without a redundant visible caption", async () => {
