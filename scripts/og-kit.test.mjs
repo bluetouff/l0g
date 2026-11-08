@@ -169,6 +169,10 @@ test("homepage social card visibly retains its bottom-right site address", async
     timeout: 15_000,
     env: { ...process.env, L0G_OG_CACHE_DIR: "" },
   });
+  const jpeg = await readFile(join(directory, "public/og/home/l0g-finance-v2.jpg"));
+  const metadata = await sharp(jpeg).metadata();
+  assert.deepEqual([metadata.format, metadata.width, metadata.height], ["jpeg", OG.width, OG.height]);
+  assert.ok(jpeg.length <= 200_000, "homepage sharing image must remain below 200 KB");
   const { data, info } = await sharp(join(directory, "public/og-home.png"))
     .removeAlpha().raw().toBuffer({ resolveWithObject: true });
   assert.equal(info.width, OG.width);
