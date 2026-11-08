@@ -45,7 +45,7 @@ const claimTone: Record<string, string> = {
       </p>
     </div>
     <div class="evidence-counts" aria-label="Résumé de traçabilité">
-      <span>{reviewedCount} relation{reviewedCount > 1 ? 's' : ''} relue{reviewedCount > 1 ? 's' : ''} dans le registre éditorial</span>
+      {reviewedCount > 0 && <span>{reviewedCount} relation{reviewedCount > 1 ? 's' : ''} relue{reviewedCount > 1 ? 's' : ''} dans le registre éditorial</span>}
       <span>{automatedCount} passage{automatedCount > 1 ? 's' : ''} repéré{automatedCount > 1 ? 's' : ''} automatiquement</span>
     </div>
   </div>
