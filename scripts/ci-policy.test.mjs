@@ -128,6 +128,10 @@ test('CI policy rejects an extra schemeless HTTPS curl operand', async t => {
 });
 
 const workflowRegressions = [
+  ['an unbounded PR build', 'validate-pr-build',
+    (job) => replace(job, '    timeout-minutes: 30\n', ''), /validation PR doit être bornée/],
+  ['an oversized static build budget', 'build',
+    (job) => replace(job, 'timeout-minutes: 30', 'timeout-minutes: 360'), /build statique doit rester borné/],
   ['binary release payload returning to Git', 'publish',
     (job) => replace(job, 'node scripts/publish-static-assets.mjs release publish',
       'bash deploy/prepare-static-transport.sh release publish'), /assets hors Git/],
@@ -186,6 +190,14 @@ const workflowRegressions = [
       return job.slice(0, marker) + replace(job.slice(marker), '            .cache/astro-incremental/l0g-integrity.json\n', '');
     }, /cache éditorial doit être sauvé/],
 ];
+
+test('CI policy rejects an unbounded MCP build', async t => {
+  const root = await fixture(t), file = join(root, '.github/workflows/publish-mcp.yml');
+  await writeFile(file, changeJob(await readFile(file, 'utf8'), 'build', job => replace(job, '    timeout-minutes: 30\n', '')));
+  const result = audit(root);
+  assert.equal(result.status, 1, result.stderr);
+  assert.match(result.stderr, /build MCP doit rester borné/);
+});
 
 for (const [name, jobName, mutate, reason] of workflowRegressions) {
   test(`CI policy rejects ${name}`, async (t) => {
