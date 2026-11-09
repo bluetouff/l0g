@@ -75,6 +75,7 @@ const job = (name) => build.match(new RegExp(`^  ${name}:\\n[\\s\\S]*?(?=^  [a-z
 const publicationJob = job('publish');
 const buildJob = job('build');
 const sourceJob = job('svg-source');
+requireCondition(/^    timeout-minutes: 30$/m.test(buildJob), 'le build statique doit rester borné à 30 minutes');
 requireCondition(/^    timeout-minutes: 20$/m.test(publicationJob), 'la publication signée doit rester bornée à 20 minutes');
 requireCondition(
   build.includes("cancel-in-progress: ${{ github.event_name == 'pull_request' }}"),
@@ -118,8 +119,8 @@ requireCondition(
   'le transport gzip doit éviter recompression et recherche de deltas et rendre sa progression visible',
 );
 requireCondition(
-  validatePr.includes("if: github.event_name == 'pull_request'") && validatePr.includes('contents: read') && /^    timeout-minutes: 15$/m.test(validatePr),
-  'la validation PR doit être bornée à 15 minutes et en lecture seule',
+  validatePr.includes("if: github.event_name == 'pull_request'") && validatePr.includes('contents: read') && /^    timeout-minutes: 30$/m.test(validatePr),
+  'la validation PR doit être bornée à 30 minutes et en lecture seule',
 );
 requireCondition(
   validatePr.includes('ref: black-box-archive') && validatePr.includes('persist-credentials: false'),
@@ -293,6 +294,8 @@ requireCondition(
 );
 
 const mcpRelease = workflows.get('publish-mcp.yml') || '';
+const mcpBuild = mcpRelease.match(/^  build:\n[\s\S]*?(?=^  [a-z][a-z-]*:|$(?![\s\S]))/m)?.[0] || '';
+requireCondition(/^    timeout-minutes: 30$/m.test(mcpBuild), 'le build MCP doit rester borné à 30 minutes');
 requireCondition(
   mcpRelease.includes('npm run test:dependencies'),
   'la release MCP doit réauditer ses dépendances avant publication',
