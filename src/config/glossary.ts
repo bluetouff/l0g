@@ -912,7 +912,12 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'SDN List', nom: 'Specially Designated Nationals and Blocked Persons List', def: "Liste de l'OFAC recensant les personnes et entités avec lesquelles tout ressortissant américain a interdiction de traiter, et dont les avoirs sous juridiction américaine sont gelés.", guide: '/guides/ofac-sdn-list/' },
       { sigle: 'Sanctions secondaires', nom: 'Pression américaine sur une personne étrangère', def: "Mesures qui placent une personne ou une banque non américaine devant un choix : cesser certaines opérations avec une cible sanctionnée ou perdre un accès important aux États-Unis, notamment aux comptes correspondants en dollars. Elles ne créent pas une interdiction universelle ; elles utilisent l'accès au marché et au système financier américains comme moyen de contrainte.", guide: '/posts/iran-jusqu-ou-bessent-peut-fermer-le-dollar/' },
       { sigle: 'IEEPA', nom: 'International Emergency Economic Powers Act', def: "Loi américaine de 1977 accordant au président des pouvoirs économiques d’urgence face à certaines menaces d’origine étrangère. Elle sert notamment de base à des sanctions et à des restrictions sur les transactions. Le 20 février 2026, la Cour suprême a jugé qu’elle n’autorise pas le président à imposer des droits de douane. Cette décision porte sur l’IEEPA, pas sur toutes les autres bases légales des tarifs américains." },
-      { sigle: 'Contrôle export', nom: 'Export control', def: "Restriction administrative imposée à l'exportation de biens, logiciels ou technologies sensibles. Dans les semi-conducteurs, il vise notamment les puces de calcul avancé, les équipements de fabrication, les logiciels de conception et certains usages militaires ou de supercalcul." },
+      { sigle: 'Contrôle export', nom: 'Export control', def: "Restriction administrative imposée à l'exportation de biens, logiciels ou technologies sensibles. Dans les semi-conducteurs, il vise notamment les puces de calcul avancé, les équipements de fabrication, les logiciels de conception et certains usages militaires ou de supercalcul.", guide: '/posts/nvidia-trump-alerte-sommet/' },
+      {
+        sigle: 'Utilisateur final', nom: 'End-user dans les règles américaines EAR',
+        def: 'Dans les règles américaines EAR, personne située à l’étranger qui reçoit et utilise finalement les biens, logiciels ou technologies exportés ou réexportés. Elle peut être l’acheteur ou le destinataire final. Le transitaire et les autres intermédiaires remplissent des rôles distincts. Identifier cet utilisateur demande de suivre l’opération au-delà de la seule adresse de livraison.',
+        guide: '/posts/nvidia-trump-alerte-sommet/',
+      },
       { sigle: '13F', nom: 'Formulaire 13F', def: "Déclaration trimestrielle imposée par la SEC aux gérants institutionnels exerçant un pouvoir de décision sur plus de 100 millions de dollars de titres américains éligibles. Liste leurs positions longues, avec jusqu'à 45 jours de retard.", guide: '/guides/analyser-13f-sec/' },
       { sigle: 'Form 4', nom: 'Statement of Changes in Beneficial Ownership', def: "Déclaration SEC des transactions d'initiés (dirigeants, administrateurs, actionnaires à plus de 10 %), à déposer dans les deux jours ouvrés. Donnée directionnelle et bien plus fraîche que le 13F.", guide: '/guides/analyser-form-4-sec/' },
       { sigle: '13D', nom: 'Schedule 13D', def: "Déclaration SEC de franchissement de 5 % du capital avec intention d'influence ou de contrôle. Formulaire long de l'activiste ; sa rubrique 4 expose les projets visant la société.", guide: '/guides/13d-vs-13g-sec/' },
@@ -1054,7 +1059,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-11-08';
+export const glossaryUpdatedIso = '2026-11-09';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1297,6 +1302,25 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'controle-export': {
+    articles: [
+      { label: 'Nvidia, Trump : une alerte au sommet', href: '/posts/nvidia-trump-alerte-sommet/', detail: 'Licences, utilisation à distance et contrôle des destinataires.', kind: 'article' },
+      { label: 'L’IA chinoise à l’épreuve de l’usine', href: '/posts/ia-ralentissement-4-chine-puces-memoire-usines/', kind: 'article' },
+    ],
+    sources: [
+      { label: 'BIS, EAR 730 : périmètre des contrôles', href: 'https://www.bis.gov/regulations/ear/730', detail: 'Biens, logiciels, technologies et exigences liées aux destinations, utilisateurs et usages.', kind: 'source' },
+      { label: 'BIS, prévention du détournement des puces, 13 mai 2025', href: 'https://media.bis.gov/media/documents/ai-counter-diversion-industry-guidance-may-13-2025.pdf', detail: 'Diligences sur les clients, utilisateurs et centres de données.', kind: 'source' },
+    ],
+    related: ['utilisateur-final', 'gpu'],
+  },
+  'utilisateur-final': {
+    articles: [{ label: 'Nvidia, Trump : une alerte au sommet', href: '/posts/nvidia-trump-alerte-sommet/', detail: 'Distinguer livraison du matériel, accès au calcul et usage effectif.', kind: 'article' }],
+    sources: [
+      { label: 'BIS, EAR 772 : définition de l’end-user', href: 'https://www.bis.gov/regulations/ear/772', detail: 'Définitions d’end-user, d’intermediate consignee et d’ultimate consignee.', kind: 'source' },
+      { label: 'BIS, prévention du détournement des puces, 13 mai 2025', href: 'https://media.bis.gov/media/documents/ai-counter-diversion-industry-guidance-may-13-2025.pdf', detail: 'Vérifications de l’utilisateur et des capacités physiques du site.', kind: 'source' },
+    ],
+    related: ['controle-export', 'gpu'],
+  },
   "depot-de-detail": {"articles": [{"label": "Stablecoins et financement des banques", "href": "/posts/stablecoins-depots-circle-tether-banques/", "kind": "article"}], "guides": [{"label": "Lire la solidité d’une banque", "href": "/guides/lire-la-solidite-d-une-banque/", "kind": "guide"}], "sources": [{"label": "Comité de Bâle, LCR : entrées et sorties de trésorerie", "href": "https://www.bis.org/committees/bcbs/basel-framework/standard/lcr/40/inforce/2019-12-15/published/2023-03-30", "detail": "LCR 40.5–40.7 et 40.22–40.24 : particuliers, stabilité et traitement de certaines petites entreprises.", "kind": "source"}, {"label": "BRI, rapport économique annuel 2026, chapitre III", "href": "https://www.bis.org/publications/aer-2026/anchoring-trust-money", "detail": "Scénarios de réserves et Graph 4 : passage de dépôts de détail à des dépôts de gros concentrés.", "kind": "source"}], "related": ["depot-de-gros", "stablecoin"]},
   "depot-de-gros": {"articles": [{"label": "Stablecoins et financement des banques", "href": "/posts/stablecoins-depots-circle-tether-banques/", "kind": "article"}], "guides": [{"label": "Lire la solidité d’une banque", "href": "/guides/lire-la-solidite-d-une-banque/", "kind": "guide"}], "sources": [{"label": "Comité de Bâle, LCR : entrées et sorties de trésorerie", "href": "https://www.bis.org/committees/bcbs/basel-framework/standard/lcr/40/inforce/2019-12-15/published/2023-03-30", "detail": "LCR 40.19, 40.26 et 40.40–40.42 : contreparties, dépôts opérationnels et catégories de financement de gros.", "kind": "source"}, {"label": "BRI, rapport économique annuel 2026, chapitre III", "href": "https://www.bis.org/publications/aer-2026/anchoring-trust-money", "detail": "Scénarios de réserves et Graph 4 : passage de dépôts de détail à des dépôts de gros concentrés.", "kind": "source"}], "related": ["depot-de-detail", "repo"]},
   "rejeu-de-session": {"articles": [{"label": "Navigation web enregistrée : utilité et protection", "href": "/posts/rejeu-session-valeur-visite/", "kind": "article"}], "sources": [{"label": "CNIL, recommandation sur le rejeu de session", "href": "https://www.cnil.fr/sites/default/files/2026-11/rejeu_session_recommandation.pdf", "detail": "Introduction et §3.1 : capture et reconstitution des parcours web et mobiles.", "kind": "source"}, {"label": "rrweb, architecture du rejeu web", "href": "https://rrweb.com/docs/", "detail": "Description de la page et événements structurés utilisés pour reconstruire un parcours.", "kind": "source"}], "related": ["masquage-avant-envoi", "pseudonymisation"]},
