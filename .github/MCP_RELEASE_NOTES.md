@@ -5,11 +5,12 @@ Cette release publie le daemon distant en lecture seule dont la porte d’entré
 et référencé dans le Registry officiel sous le nom
 `io.github.bluetouff/l0g`.
 
-## Correctifs de dépendances 1.24.9
+## Correctifs de dépendances 1.24.10
 
 Cette version met à jour `node-html-parser` de 9.0.5 à 9.0.7. Elle embarque
 également le SDK MCP 1.32.2 et l’adaptateur `@hono/node-server` 2.1.3, intégrés
-au dépôt depuis la release 1.24.8.
+au dépôt depuis la release 1.24.8. Le workflow normalise désormais la date
+du commit en UTC pour les builds déterministes.
 
 Les outils, schémas, permissions et endpoints MCP restent inchangés. La chaîne
 de compilation utilise Node.js 22.23.4 et les lockfiles vérifiés du dépôt.

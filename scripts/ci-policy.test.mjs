@@ -47,6 +47,27 @@ test('the current workflow and package contracts satisfy the CI policy', async (
   assert.match(result.stdout, /CI policy OK:/);
 });
 
+test('MCP release timestamps preserve the commit instant in canonical UTC for the build clock', async () => {
+  const workflow = await readFile(new URL('.github/workflows/publish-mcp.yml', sourceRoot), 'utf8');
+  const command = workflow.match(/echo "L0G_BUILD_TIMESTAMP=\$\((.+)\)" >> "\$GITHUB_ENV"/u)?.[1];
+  assert.ok(command, 'The release must derive its build timestamp from the tagged commit.');
+  const result = spawnSync('bash', ['-c', command], {
+    cwd: sourceRoot, encoding: 'utf8', env: { ...process.env, GITHUB_SHA: 'HEAD', TZ: 'Pacific/Honolulu' },
+  });
+  assert.equal(result.status, 0, result.stderr);
+  const epoch = spawnSync('git', ['show', '-s', '--format=%ct', 'HEAD'], { cwd: sourceRoot, encoding: 'utf8' });
+  assert.equal(epoch.status, 0, epoch.stderr);
+  const expected = new Date(Number(epoch.stdout.trim()) * 1000).toISOString();
+  const timestamp = result.stdout.trim();
+  assert.equal(timestamp, expected.replace('.000Z', 'Z'));
+  const module = new URL('src/lib/build-clock.mjs', sourceRoot).href;
+  const clock = spawnSync(process.execPath, ['--input-type=module', '-e', `import {buildDate} from ${JSON.stringify(module)}; console.log(buildDate().toISOString());`], {
+    encoding: 'utf8', env: { ...process.env, L0G_BUILD_TIMESTAMP: timestamp },
+  });
+  assert.equal(clock.status, 0, clock.stderr);
+  assert.equal(clock.stdout.trim(), expected);
+});
+
 for (const [name, before, after] of [
   ['a foreign CodeQL bundle repository', 'api.github.com/repos/github/codeql-action/releases/assets/', 'api.github.com/repos/untrusted/tool/releases/assets/'],
   ['an unchecked CodeQL bundle', 'sha256sum --check --strict', 'true'],
