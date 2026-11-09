@@ -32,6 +32,20 @@ async function withClient(t, surface = 'compact', overrides = {}) {
   return { client, record, text, dataDir };
 }
 
+test('search caches remain bound to the release directory when a catalog object is reused', async t => {
+  const catalog = { articles: [{ slug: 'test-article', language: 'fr', type: 'article', url: 'https://l0g.fr/posts/test-article/', title: 'Synthetic evidence' }], guides: [] };
+  const first = await withClient(t, 'compact', { catalog, searchIndex: {} });
+  const second = await withClient(t, 'compact', { catalog, searchIndex: {} });
+  for (const [fixture, text] of [[first, 'Atlas'], [second, 'Borealis']]) {
+    await mkdir(join(fixture.dataDir, 'posts/test-article'), { recursive: true });
+    await writeFile(join(fixture.dataDir, 'posts/test-article/index.html'), `<article><h1>${text} fixture</h1><div class="prose">${text} fixture evidence.</div></article>`);
+  }
+  const search = client => client.callTool({ name: 'search_l0g', arguments: { query: 'Borealis', language: 'fr', limit: 2 } });
+  assert.equal((await search(first.client)).structuredContent.results.length, 0);
+  assert.equal((await search(second.client)).structuredContent.results[0].url, 'https://l0g.fr/posts/test-article/');
+  assert.equal((await search(first.client)).structuredContent.results.length, 0);
+});
+
 for (const surface of ['compact', 'full']) {
   const tool = surface === 'compact' ? 'get_document' : 'get_article';
   test(`${tool}: head and sources cursors advance instead of repeating the first page`, async (t) => {

@@ -10,6 +10,9 @@ export function createReleaseCache(resolveDirectory, loadRelease) {
     const directory = await resolveDirectory();
     latestDirectory = directory;
     if (cached?.directory === directory) return cached.data;
+    // The retired corpus must be collectible while its replacement is loaded.
+    // In-flight readers keep their own references until they finish.
+    cached = undefined;
     if (pending.has(directory)) return pending.get(directory);
 
     const request = Promise.resolve().then(() => loadRelease(directory)).then((data) => {

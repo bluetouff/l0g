@@ -4,6 +4,7 @@ import { realpath } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
+import { spawnSync } from 'node:child_process';
 import { createReleaseCache } from './release-cache.mjs';
 
 function deferred() {
@@ -11,6 +12,30 @@ function deferred() {
   const promise = new Promise((yes, no) => { resolve = yes; reject = no; });
   return { promise, resolve, reject };
 }
+
+test('a retired corpus is collectible before its replacement finishes loading', () => {
+  const module = new URL('./release-cache.mjs', import.meta.url).href;
+  const script = `
+    import { createReleaseCache } from ${JSON.stringify(module)};
+    let directory = 'A';
+    const load = createReleaseCache(async () => directory, async () => {
+      global.gc();
+      const rows = new Array(6_000_000).fill(1);
+      global.gc();
+      return { rows };
+    });
+    await load();
+    await new Promise(setImmediate);
+    directory = 'B';
+    await load();
+    console.log('replacement loaded');
+  `;
+  const result = spawnSync(process.execPath, ['--max-old-space-size=64', '--expose-gc', '--input-type=module', '-e', script], {
+    encoding: 'utf8', timeout: 10_000,
+  });
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /replacement loaded/);
+});
 
 test('concurrent cold readers share one complete corpus, including subsequent readers', async () => {
   const gate = deferred();

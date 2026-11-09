@@ -5,15 +5,22 @@ Cette release publie le daemon distant en lecture seule dont la porte d’entré
 et référencé dans le Registry officiel sous le nom
 `io.github.bluetouff/l0g`.
 
-## Correctifs de dépendances 1.24.10
+## Rechargement du corpus 1.24.11
 
-Cette version met à jour `node-html-parser` de 9.0.5 à 9.0.7. Elle embarque
-également le SDK MCP 1.32.2 et l’adaptateur `@hono/node-server` 2.1.3, intégrés
-au dépôt depuis la release 1.24.8. Le workflow normalise désormais la date
-du commit en UTC pour les builds déterministes.
+Cette version libère les références de cache vers un corpus retiré avant de
+charger son remplaçant. L’index de recherche suit désormais la durée de vie de
+son catalogue via une WeakMap, et le nettoyage d’une réponse HTTP retire son
+écouteur après exécution. Les requêtes déjà en cours conservent leurs propres
+références ; un échec de chargement reste une erreur explicite.
 
-Les outils, schémas, permissions et endpoints MCP restent inchangés. La chaîne
-de compilation utilise Node.js 22.23.4 et les lockfiles vérifiés du dépôt.
+La régression mémoire est reproduite sous les limites de production, puis le
+correctif passe les six outils compacts lors des bascules A → B → A du corpus
+réel, avec un heap de 384 Mio et une limite de processus de 768 Mio. Les tests
+couvrent aussi concurrence, rollback, échec de lecture et isolation des index.
+
+Le runtime conserve node-html-parser 9.0.7, le SDK MCP 1.32.2 et
+l’adaptateur @hono/node-server 2.1.3. L’unité versionnée porte le budget mémoire
+préparé pour le corpus actuel.
 
 La publication vérifie les contrats du serveur complet et compact, Agent Bench,
 les dépendances et l’archive Linux extraite avant attestation. L’activation en

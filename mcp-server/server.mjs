@@ -153,10 +153,8 @@ setInterval(() => {
 }, 5 * RATE_WIN).unref();
 
 // --- cache des données du site ---
-let searchIndexCache = {
-  dataDir: null,
-  index: null,
-};
+// Le catalogue et son index normalisé peuvent être libérés ensemble au rechargement.
+const searchIndexCache = new WeakMap();
 async function resolveDataDir() {
   try {
     return await realpath(DATA_DIR);
@@ -355,8 +353,9 @@ async function readSearchDocument(dataDir, candidate) {
   };
 }
 async function buildSearchIndex(dataDir, catalog, sharedSearchIndex) {
-  if (searchIndexCache.index && searchIndexCache.dataDir === dataDir) {
-    return searchIndexCache.index;
+  const cached = searchIndexCache.get(catalog);
+  if (cached?.dataDir === dataDir) {
+    return cached.index;
   }
   const candidates = Array.isArray(sharedSearchIndex?.documents) && sharedSearchIndex.documents.length
     ? sharedSearchIndex.documents.map((item) => ({ ...item, rel: null }))
@@ -408,7 +407,7 @@ async function buildSearchIndex(dataDir, catalog, sharedSearchIndex) {
       });
     }
   }
-  searchIndexCache = { dataDir, index };
+  searchIndexCache.set(catalog, { dataDir, index });
   return index;
 }
 function rankSearchDocument(doc, tokens, queryNorm) {
@@ -3426,7 +3425,7 @@ const httpServer = http.createServer(async (req, res) => {
         sessionIdGenerator: undefined, // stateless
         enableJsonResponse: true, // réponse JSON, pas de SSE
       });
-      res.on('close', () => { transport.close(); server.close(); });
+      res.once('close', () => { transport.close(); server.close(); });
       await server.connect(transport);
       await transport.handleRequest(req, res, body);
     } catch (e) {
