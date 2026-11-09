@@ -187,3 +187,36 @@ curl -fsS http://127.0.0.1:8848/mcp/usage
 
 Le health doit annoncer `usage.enabled: true` et `storageHealthy: true`. Le rapport public ne
 doit contenir ni adresse réseau, ni user-agent, ni identifiant de session ou d'appelant.
+
+## Budget mémoire du daemon
+
+Le heap V8 est borné à 384 Mio, le seuil de pression systemd à 640 Mio et la
+limite totale du processus à 768 Mio. Le corpus public du 9 novembre 2026 a
+passé trois cycles des six outils compacts avec ce heap, dans un processus
+isolé sur le serveur : pic résident de 500 376 Kio, sans swap. La limite
+historique de 256 Mio provoquait un épuisement du heap sur `get_risk_state`.
+
+L'unité versionnée porte ces limites. Pour un serveur déjà installé, le drop-in
+`mcp-server/deploy/30-memory-budget.conf` permet de les appliquer sans remplacer
+l'unité ni le chemin du runtime Node. Vérifier la mémoire disponible et l'absence
+d'un `NODE_OPTIONS` personnalisé avant installation. Sauvegarder un éventuel
+drop-in existant avant de le remplacer.
+
+Depuis un checkout vérifié sur le serveur :
+
+```bash
+sudo install -D -o root -g root -m 0644 \
+  mcp-server/deploy/30-memory-budget.conf \
+  /etc/systemd/system/l0g-mcp.service.d/30-memory-budget.conf
+sudo systemctl daemon-reload
+sudo systemctl restart l0g-mcp.service
+```
+
+Contrôler ensuite les limites effectives avec `systemctl show l0g-mcp.service`,
+puis exécuter `mcp-server/test-compact-client.mjs` avec `COMPACT_URL` pointant sur
+la surface publique. Le contrôle doit inclure `get_risk_state` ; `/healthz` seul
+ne prouve pas que la charge complète tient dans le budget mémoire.
+
+Pour revenir à l'état précédent, restaurer le drop-in sauvegardé, ou supprimer
+uniquement ce drop-in s'il était absent, puis recharger systemd et redémarrer le
+daemon. Le runtime et les releases de rollback restent indépendants de ce réglage.

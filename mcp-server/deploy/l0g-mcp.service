@@ -33,6 +33,7 @@ Environment=MCP_REQUEST_TIMEOUT=15000
 Environment=MCP_KEEP_ALIVE_TIMEOUT=5000
 Environment=MCP_MAX_HEADERS_COUNT=64
 Environment=NODE_ENV=production
+Environment=NODE_OPTIONS=--max-old-space-size=384
 EnvironmentFile=-/opt/l0g-mcp-runtime/current/release.env
 
 # --- Durcissement (le service ne fait que lire des fichiers et ecouter en local) ---
@@ -68,7 +69,8 @@ ReadOnlyPaths=/var/www/html/l0g /opt/l0g-mcp-runtime
 # Limites de ressources
 LimitNOFILE=4096
 LimitCORE=0
-MemoryMax=256M
+MemoryHigh=640M
+MemoryMax=768M
 TasksMax=64
 
 [Install]
