@@ -2949,14 +2949,14 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   portabilite: {
     intuition: 'Le transfert devient utile lorsque le destinataire peut exploiter les données reçues.',
-    articles: [{ label: 'Quitter Microsoft, 1/7', href: '/posts/quitter-microsoft-1-etat-dependances/', detail: 'Contenus, identités, droits et applications dans une migration publique.' }],
-    sources: [{ label: 'Data Act, chapitre VI', href: 'https://eur-lex.europa.eu/eli/reg/2023/2854/oj/fra', detail: 'Changement de fournisseur, export et obligations selon le service.' }],
+    articles: [{"label": "Palantir et le NHS : préparer la sortie", "href": "/posts/palantir-nhs-prix-sortie/", "detail": "Export des données, dépendances applicatives et assistance à la transition.", "kind": "article"}, { label: 'Quitter Microsoft, 1/7', href: '/posts/quitter-microsoft-1-etat-dependances/', detail: 'Contenus, identités, droits et applications dans une migration publique.' }],
+    sources: [{"label": "NHS FDP, annexe 8.5 : Exit Management", "href": "https://www.contractsfinder.service.gov.uk/Notice/Attachment/7676c1d8-95f4-4e40-93df-a34d90b3ca02", "detail": "Plans, préavis, assistance à la transition et règles de facturation.", "kind": "source"}, { label: 'Data Act, chapitre VI', href: 'https://eur-lex.europa.eu/eli/reg/2023/2854/oj/fra', detail: 'Changement de fournisseur, export et obligations selon le service.' }],
     related: ['reversibilite', 'interoperabilite'],
   },
   reversibilite: {
     intuition: 'Préparer une sortie suppose de financer les personnes et les opérations qui permettront de reprendre le service.',
-    articles: [{ label: 'Quitter Microsoft, 1/7', href: '/posts/quitter-microsoft-1-etat-dependances/', detail: 'Retours documentés du Schleswig-Holstein et du CNRS.' }, {"label": "Télémaintenance : accès des prestataires", "href": "/posts/guerre-machines-03-telemaintenance-prestataires/", "kind": "article"}],
-    sources: [{ label: 'Circulaire cloud au centre, 31 mai 2023', href: 'https://www.legifrance.gouv.fr/circulaire/id/45446', detail: 'R4 et R10 : moyens de réversibilité et adhérences techniques ou fonctionnelles.' }],
+    articles: [{"label": "Palantir et le NHS : préparer la sortie", "href": "/posts/palantir-nhs-prix-sortie/", "detail": "Export des données, dépendances applicatives et assistance à la transition.", "kind": "article"}, { label: 'Quitter Microsoft, 1/7', href: '/posts/quitter-microsoft-1-etat-dependances/', detail: 'Retours documentés du Schleswig-Holstein et du CNRS.' }, {"label": "Télémaintenance : accès des prestataires", "href": "/posts/guerre-machines-03-telemaintenance-prestataires/", "kind": "article"}],
+    sources: [{"label": "NHS FDP, annexe 8.5 : Exit Management", "href": "https://www.contractsfinder.service.gov.uk/Notice/Attachment/7676c1d8-95f4-4e40-93df-a34d90b3ca02", "detail": "Plans, préavis, assistance à la transition et règles de facturation.", "kind": "source"}, { label: 'Circulaire cloud au centre, 31 mai 2023', href: 'https://www.legifrance.gouv.fr/circulaire/id/45446', detail: 'R4 et R10 : moyens de réversibilité et adhérences techniques ou fonctionnelles.' }],
     related: ['portabilite', 'interoperabilite'],
   },
   interoperabilite: {

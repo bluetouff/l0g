@@ -2609,8 +2609,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'The ability to transfer data to another environment in a form that can be used there. Its scope depends on the formats, associated information and available interfaces. Copying files and restoring the applications that use them require separate checks.',
     atlas: {
       intuition: 'A transfer becomes useful when the recipient can work with the data it receives.',
-      articles: [{ label: 'Leaving Microsoft, 1/7', href: '/en/analysis/leaving-microsoft-1-government-dependencies/', detail: 'Content, identities, permissions and applications in a public-sector migration.', kind: 'article' }],
-      sources: [{ label: 'Data Act, Chapter VI', href: 'https://eur-lex.europa.eu/eli/reg/2023/2854/oj/fra', detail: 'Provider switching, exports and service-specific obligations.', kind: 'source' }],
+      articles: [{"label": "Palantir and England’s NHS: preparing an exit", "href": "/en/analysis/palantir-nhs-health-data-exit/", "detail": "Data exports, application dependencies and funded transition assistance.", "kind": "article"}, { label: 'Leaving Microsoft, 1/7', href: '/en/analysis/leaving-microsoft-1-government-dependencies/', detail: 'Content, identities, permissions and applications in a public-sector migration.', kind: 'article' }],
+      sources: [{"label": "NHS FDP, Schedule 8.5: Exit Management", "href": "https://www.contractsfinder.service.gov.uk/Notice/Attachment/7676c1d8-95f4-4e40-93df-a34d90b3ca02", "detail": "Plans, notice periods, transition assistance and charging rules.", "kind": "source"}, { label: 'Data Act, Chapter VI', href: 'https://eur-lex.europa.eu/eli/reg/2023/2854/oj/fra', detail: 'Provider switching, exports and service-specific obligations.', kind: 'source' }],
       related: ['reversibilite', 'interoperabilite'],
     },
   },
@@ -2621,8 +2621,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'An organised means of taking a service back in-house or transferring it to another supplier, with the data and other resources needed to keep it working. It requires people, technical capabilities, funding and contractual arrangements, supported by tests suited to the service.',
     atlas: {
       intuition: 'Preparing an exit includes funding the people and operations needed to take over the service.',
-      articles: [{ label: 'Leaving Microsoft, 1/7', href: '/en/analysis/leaving-microsoft-1-government-dependencies/', detail: 'Documented experience from Schleswig-Holstein and the CNRS.', kind: 'article' }, {"label": "Remote maintenance and contractor access", "href": "/en/analysis/ordinary-machines-03-remote-maintenance-contractors/", "kind": "article"}],
-      sources: [{ label: 'French cloud-at-the-centre circular, 31 May 2023', href: 'https://www.legifrance.gouv.fr/circulaire/id/45446', detail: 'R4 and R10: resources for reversibility and technical or functional dependencies.', kind: 'source' }],
+      articles: [{"label": "Palantir and England’s NHS: preparing an exit", "href": "/en/analysis/palantir-nhs-health-data-exit/", "detail": "Data exports, application dependencies and funded transition assistance.", "kind": "article"}, { label: 'Leaving Microsoft, 1/7', href: '/en/analysis/leaving-microsoft-1-government-dependencies/', detail: 'Documented experience from Schleswig-Holstein and the CNRS.', kind: 'article' }, {"label": "Remote maintenance and contractor access", "href": "/en/analysis/ordinary-machines-03-remote-maintenance-contractors/", "kind": "article"}],
+      sources: [{"label": "NHS FDP, Schedule 8.5: Exit Management", "href": "https://www.contractsfinder.service.gov.uk/Notice/Attachment/7676c1d8-95f4-4e40-93df-a34d90b3ca02", "detail": "Plans, notice periods, transition assistance and charging rules.", "kind": "source"}, { label: 'French cloud-at-the-centre circular, 31 May 2023', href: 'https://www.legifrance.gouv.fr/circulaire/id/45446', detail: 'R4 and R10: resources for reversibility and technical or functional dependencies.', kind: 'source' }],
       related: ['portabilite', 'interoperabilite'],
     },
   },
