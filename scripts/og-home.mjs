@@ -41,14 +41,14 @@ const editions = [
     footer: 'Digital editions · open access', domain: 'l0g.fr/en/publications',
   },
   {
-    section: 'guides', lang: 'fr', file: 'guides-fr-v1.jpg',
+    section: 'guides', lang: 'fr', file: 'guides-fr-v2.jpg',
     labels: ['GUIDES', 'MÉTHODE', 'REPÈRES'],
     title: ['La finance,', 'mode d’emploi.'],
     tagline: ['Des repères pour comprendre', 'les mécanismes de la finance.'],
     footer: 'Comprendre · relier · vérifier', domain: 'l0g.fr/guides',
   },
   {
-    section: 'guides', lang: 'en', file: 'guides-en-v1.jpg',
+    section: 'guides', lang: 'en', file: 'guides-en-v2.jpg',
     labels: ['GUIDES', 'METHOD', 'CONTEXT'],
     title: ['Finance,', 'made clear.'],
     tagline: ['Clear explanations for', 'complex financial mechanisms.'],
@@ -93,7 +93,7 @@ const cardFor = (copy) => h('div', {
   h('div', {
     position: 'absolute', left: 64, top: 398, display: 'flex',
     flexDirection: 'column', gap: 5, color: OG.paper,
-    fontSize: 20, lineHeight: 1.45,
+    fontSize: copy.section === 'guides' ? 28 : 20, lineHeight: 1.45,
   },
     h('div', { display: 'flex' }, copy.tagline[0]),
     h('div', { display: 'flex' }, copy.tagline[1]),

@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 
 // Bump when changing the composition or fonts, to renew social-crawler URLs.
-export const GUIDE_SOCIAL_VERSION = 'reference-manual-v1';
+export const GUIDE_SOCIAL_VERSION = 'reference-manual-v2';
 const digest = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const categories = {
   macro: ['Macroéconomie', 'Macroeconomics'],

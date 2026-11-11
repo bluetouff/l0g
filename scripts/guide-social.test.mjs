@@ -22,6 +22,7 @@ test('guides use native copy, an honest excerpt, revision date in Paris and thei
   assert.match(fr.image, /^\/og\/guides\/fr\/read-inflation-[a-f0-9]{16}\.jpg$/u);
   assert.match(en.image, /^\/og\/guides\/en\//u); assert.notEqual(en.image, fr.image);
   assert.equal(fr.label, 'GUIDE DE RÉFÉRENCE'); assert.equal(en.label, 'REFERENCE GUIDE');
+  assert.equal(fr.version, 'reference-manual-v2', 'readability changes must renew existing social-image URLs');
   assert.equal(fr.category, 'Macroéconomie'); assert.equal(en.category, 'Macroeconomics');
   assert.match(fr.dateLabel, /^Révisé le 7 nov\. 2026$/u);
   assert.match(en.dateLabel, /^Revised 7 Nov 2026$/u);
@@ -72,6 +73,8 @@ test('full long titles, regular typography and escaped input remain inside the s
     const svg = await renderGuideSocialSvg(card, { onNodeDetected: node => nodes.push(node) });
     const headline = nodes.find(node => node.textContent === card.title), description = nodes.find(node => node.textContent === card.description);
     assert.ok(headline && description);
+    assert.ok(description.props.style.fontSize >= 28, 'descriptions must remain readable at sharing-preview scale');
+    assert.equal(description.props.style.color, '#e7e9ee');
     assert.ok(description.top - headline.top - headline.height >= 27);
     assert.ok(description.top + description.height <= 546);
     assert.ok(headline.left + headline.width <= 808);

@@ -26,7 +26,7 @@ const manual = `<svg xmlns="http://www.w3.org/2000/svg" width="280" height="340"
 </svg>`;
 const art = { type: 'img', props: { src: `data:image/svg+xml;base64,${Buffer.from(manual).toString('base64')}`, width: 280, height: 340, style: { position: 'absolute', left: 872, top: 164 } } };
 
-function composition(card, titleSize, descriptionTop, excerptSize = 22) {
+function composition(card, titleSize, descriptionTop) {
   return h('div', { position: 'relative', display: 'flex', width: 1200, height: 630, backgroundColor: '#0d1117', backgroundImage: 'radial-gradient(ellipse at 1020px 280px, #17343a 0%, #0d1117 52%)', fontFamily: 'JetBrains Mono', fontWeight: 400, color: OG.paper },
     h('div', { position: 'absolute', left: 0, top: 0, width: 9, height: 630, backgroundColor: '#233c40' }),
     h('div', { position: 'absolute', display: 'flex', alignItems: 'baseline', left: 64, top: 36, fontSize: 40, letterSpacing: '-3px' }, 'l', h('span', { color: OG.teal }, '0'), 'g', h('span', { color: OG.rose, marginLeft: 8 }, '_')),
@@ -35,7 +35,8 @@ function composition(card, titleSize, descriptionTop, excerptSize = 22) {
     h('div', { position: 'absolute', display: 'flex', right: 64, top: 55, fontSize: 14, color: '#b3c0c9', letterSpacing: '.3px' }, card.category),
     h('div', { position: 'absolute', left: 840, top: 156, width: 1, height: 370, backgroundColor: '#5eead41c' }),
     h('div', { position: 'absolute', display: 'flex', left: 60, top: 193, width: 748, fontSize: titleSize, lineHeight: 1.16, letterSpacing: '-1.4px', overflowWrap: 'anywhere' }, card.title),
-    h('div', { position: 'absolute', display: 'flex', left: 64, top: descriptionTop, width: 730, fontSize: excerptSize, lineHeight: 1.5, letterSpacing: '-.1px', color: '#b4bfca', overflowWrap: 'anywhere' }, card.description),
+    h('div', { position: 'absolute', left: 64, top: descriptionTop + 4, width: 2, height: 70, backgroundImage: `linear-gradient(180deg, ${OG.teal}, ${OG.teal}22)` }),
+    h('div', { position: 'absolute', display: 'flex', left: 84, top: descriptionTop, width: 710, fontSize: 28, lineHeight: 1.25, letterSpacing: '-.1px', color: OG.paper, overflowWrap: 'anywhere' }, card.description),
     art,
     h('div', { position: 'absolute', left: 64, top: 576, width: 1072, height: 1, backgroundColor: '#ffffff1a' }),
     h('div', { position: 'absolute', display: 'flex', left: 64, top: 598, fontSize: 13, color: '#9eacb7' }, card.dateLabel),
@@ -49,18 +50,16 @@ export async function renderGuideSocialSvg(card, { onNodeDetected } = {}) {
     await satori(composition(card, size, 440), { width: 1200, height: 630, fonts: regularFonts, onNodeDetected: node => measured.push(node) });
     const title = measured.find(node => node.textContent === card.title);
     if (!title || title.height > 220) continue;
-    for (const excerptSize of [22, 21, 20]) {
-      const nodes = [];
-      const svg = await satori(composition(card, size, 193 + title.height + 28, excerptSize), { width: 1200, height: 630, fonts: regularFonts, onNodeDetected: node => nodes.push(node) });
-      const actualTitle = nodes.find(node => node.textContent === card.title), description = nodes.find(node => node.textContent === card.description);
-      const inside = nodes.every(node => [node.left, node.top, node.width, node.height].every(Number.isFinite)
-        && node.left >= 0 && node.top >= 0 && node.width >= 0 && node.height >= 0
-        && node.left + node.width <= 1200 && node.top + node.height <= 630);
-      if (inside && actualTitle && description && description.top + description.height <= 546
-        && description.top - actualTitle.top - actualTitle.height >= 27) {
-        if (onNodeDetected) nodes.forEach(onNodeDetected);
-        return svg;
-      }
+    const nodes = [];
+    const svg = await satori(composition(card, size, 193 + title.height + 28), { width: 1200, height: 630, fonts: regularFonts, onNodeDetected: node => nodes.push(node) });
+    const actualTitle = nodes.find(node => node.textContent === card.title), description = nodes.find(node => node.textContent === card.description);
+    const inside = nodes.every(node => [node.left, node.top, node.width, node.height].every(Number.isFinite)
+      && node.left >= 0 && node.top >= 0 && node.width >= 0 && node.height >= 0
+      && node.left + node.width <= 1200 && node.top + node.height <= 630);
+    if (inside && actualTitle && description && description.top + description.height <= 546
+      && description.top - actualTitle.top - actualTitle.height >= 27) {
+      if (onNodeDetected) nodes.forEach(onNodeDetected);
+      return svg;
     }
   }
   throw new Error(`Guide OG: composition too long (${card.image}); shorten the social title before publishing.`);

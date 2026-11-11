@@ -204,7 +204,8 @@ test("home and catalogue social cards remain compact, distinct and retain their 
   for (const [section, stem] of [['catalogue', 'publications'], ['guides', 'guides']]) {
     const localizedCards = [];
     for (const language of ['fr', 'en']) {
-      const card = await readFile(join(directory, `public/og/${section}/${stem}-${language}-v1.jpg`));
+      const version = section === 'guides' ? 2 : 1;
+      const card = await readFile(join(directory, `public/og/${section}/${stem}-${language}-v${version}.jpg`));
       const dimensions = await sharp(card).metadata();
       assert.deepEqual([dimensions.format, dimensions.width, dimensions.height], ['jpeg', OG.width, OG.height]);
       assert.ok(card.length <= 200_000, `${section}/${language}: sharing image exceeds 200 KB`);
