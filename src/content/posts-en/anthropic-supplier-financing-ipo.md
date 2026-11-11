@@ -37,75 +37,75 @@ The May fundraising presents the same issue: its announced $65 billion included 
 <figure class="infographic-readable anthropic-suppliers-figure" style="padding-bottom:1rem" tabindex="0" aria-label="Breakdown of the $26 billion placement, identifying $12.5 billion that overlaps with earlier commitments.">
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" style="width:100%;height:auto;display:block" viewBox="0 0 1200 980" role="img" aria-labelledby="anthropic-en-01-title anthropic-en-01-desc" lang="en">
 <title id="anthropic-en-01-title">$26 billion, two measures of funding</title><desc id="anthropic-en-01-desc">Seven investors provide a proposed $26 billion cash placement. Google and AMD account for $12.5 billion of explicitly identified overlap with earlier commitments. Other overlap remains unresolved.</desc>
-<defs><pattern id="anthropic-en-01-hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="#101c29" stroke-width="3" opacity="0.65"/></pattern>
-<marker id="anthropic-en-01-cash" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6bd4c1"/></marker>
-<marker id="anthropic-en-01-physical" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#88b9ec"/></marker>
-<marker id="anthropic-en-01-credit" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#f2bd75"/></marker>
+<defs><pattern id="anthropic-en-01-hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="var(--color-ink,#0c0d10)" stroke-width="3" opacity="0.65"/></pattern>
+<marker id="anthropic-en-01-cash" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-signal,#5eead4)"/></marker>
+<marker id="anthropic-en-01-physical" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-topic-blue,#7aa2f7)"/></marker>
+<marker id="anthropic-en-01-credit" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-amber,#f5b13d)"/></marker>
 </defs>
-<rect width="1200" height="980" fill="#101c29"/>
-<text id="anthropic-en-01-txt_1_en_8" x="52" y="49" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" fill="#6bd4c1" text-anchor="start">l0g</text>
-<text id="anthropic-en-01-txt_1_en_9" x="122" y="47" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start" letter-spacing="1.2">DOCUMENTARY INVESTIGATION  /  11.11.2026</text>
-<text id="anthropic-en-01-txt_1_en_10" x="1148" y="49" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="end">01 / 05</text>
-<text id="anthropic-en-01-txt_1_en_11" x="52" y="112" font-family="DejaVu Sans, sans-serif" font-size="33" font-weight="700" fill="#f1f0e9" text-anchor="start">$26 billion, two measures of funding</text>
-<text id="anthropic-en-01-txt_1_en_12" x="52" y="151" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#b4c3cc" text-anchor="start">Cash expected at closing; earlier commitments must be reconciled.</text>
-<line x1="52" y1="198" x2="1148" y2="198" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-01-txt_1_en_14" x="52" y="237" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#6bd4c1" text-anchor="start" letter-spacing="0.9">PROPOSED SUBSCRIPTIONS · $BN</text>
-<text id="anthropic-en-01-txt_1_en_15" x="887" y="237" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#6bd4c1" text-anchor="start" letter-spacing="0.9">AT CLOSING</text>
-<text id="anthropic-en-01-txt_1_en_16" x="52" y="292" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="#f1f0e9" text-anchor="start">Google</text>
-<rect x="206" y="263" width="530" height="38" rx="4" fill="#203445"/>
-<rect x="206" y="263" width="530.0" height="38" rx="4" fill="#f2bd75"/>
+<rect width="1200" height="980" fill="none"/>
+<text id="anthropic-en-01-txt_1_en_8" x="52" y="49" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start">l0g</text>
+<text id="anthropic-en-01-txt_1_en_9" x="122" y="47" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" letter-spacing="1.2">DOCUMENTARY INVESTIGATION  /  11.11.2026</text>
+<text id="anthropic-en-01-txt_1_en_10" x="1148" y="49" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">01 / 05</text>
+<text id="anthropic-en-01-txt_1_en_11" x="52" y="112" font-family="DejaVu Sans, sans-serif" font-size="33" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">$26 billion, two measures of funding</text>
+<text id="anthropic-en-01-txt_1_en_12" x="52" y="151" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Cash expected at closing; earlier commitments must be reconciled.</text>
+<line x1="52" y1="198" x2="1148" y2="198" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-01-txt_1_en_14" x="52" y="237" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start" letter-spacing="0.9">PROPOSED SUBSCRIPTIONS · $BN</text>
+<text id="anthropic-en-01-txt_1_en_15" x="887" y="237" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start" letter-spacing="0.9">AT CLOSING</text>
+<text id="anthropic-en-01-txt_1_en_16" x="52" y="292" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Google</text>
+<rect x="206" y="263" width="530" height="38" rx="4" fill="var(--color-surface-2,#171a20)"/>
+<rect x="206" y="263" width="530.0" height="38" rx="4" fill="var(--color-amber,#f5b13d)"/>
 <rect x="206" y="263" width="530.0" height="38" rx="4" fill="url(#anthropic-en-01-hatch)"/>
-<text id="anthropic-en-01-txt_1_en_20" x="807" y="292" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="#f1f0e9" text-anchor="end">10.0</text>
-<text id="anthropic-en-01-txt_1_en_21" x="52" y="349" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="#f1f0e9" text-anchor="start">Nvidia</text>
-<rect x="206" y="320" width="530" height="38" rx="4" fill="#203445"/>
-<rect x="206" y="320" width="530.0" height="38" rx="4" fill="#6bd4c1"/>
-<text id="anthropic-en-01-txt_1_en_24" x="807" y="349" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="#f1f0e9" text-anchor="end">10.0</text>
-<text id="anthropic-en-01-txt_1_en_25" x="52" y="406" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="#f1f0e9" text-anchor="start">AMD</text>
-<rect x="206" y="377" width="530" height="38" rx="4" fill="#203445"/>
-<rect x="206" y="377" width="132.5" height="38" rx="4" fill="#f2bd75"/>
+<text id="anthropic-en-01-txt_1_en_20" x="807" y="292" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">10.0</text>
+<text id="anthropic-en-01-txt_1_en_21" x="52" y="349" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Nvidia</text>
+<rect x="206" y="320" width="530" height="38" rx="4" fill="var(--color-surface-2,#171a20)"/>
+<rect x="206" y="320" width="530.0" height="38" rx="4" fill="var(--color-signal,#5eead4)"/>
+<text id="anthropic-en-01-txt_1_en_24" x="807" y="349" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">10.0</text>
+<text id="anthropic-en-01-txt_1_en_25" x="52" y="406" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">AMD</text>
+<rect x="206" y="377" width="530" height="38" rx="4" fill="var(--color-surface-2,#171a20)"/>
+<rect x="206" y="377" width="132.5" height="38" rx="4" fill="var(--color-amber,#f5b13d)"/>
 <rect x="206" y="377" width="132.5" height="38" rx="4" fill="url(#anthropic-en-01-hatch)"/>
-<text id="anthropic-en-01-txt_1_en_29" x="807" y="406" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="#f1f0e9" text-anchor="end">2.5</text>
-<text id="anthropic-en-01-txt_1_en_30" x="52" y="463" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="#f1f0e9" text-anchor="start">Broadcom</text>
-<rect x="206" y="434" width="530" height="38" rx="4" fill="#203445"/>
-<rect x="206" y="434" width="53.0" height="38" rx="4" fill="#6bd4c1"/>
-<text id="anthropic-en-01-txt_1_en_33" x="807" y="463" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="#f1f0e9" text-anchor="end">1.0</text>
-<text id="anthropic-en-01-txt_1_en_34" x="52" y="520" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="#f1f0e9" text-anchor="start">Microsoft</text>
-<rect x="206" y="491" width="530" height="38" rx="4" fill="#203445"/>
-<rect x="206" y="491" width="53.0" height="38" rx="4" fill="#6bd4c1"/>
-<text id="anthropic-en-01-txt_1_en_37" x="807" y="520" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="#f1f0e9" text-anchor="end">1.0</text>
-<text id="anthropic-en-01-txt_1_en_38" x="52" y="577" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="#f1f0e9" text-anchor="start">Micron</text>
-<rect x="206" y="548" width="530" height="38" rx="4" fill="#203445"/>
-<rect x="206" y="548" width="53.0" height="38" rx="4" fill="#6bd4c1"/>
-<text id="anthropic-en-01-txt_1_en_41" x="807" y="577" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="#f1f0e9" text-anchor="end">1.0</text>
-<text id="anthropic-en-01-txt_1_en_42" x="52" y="634" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="#f1f0e9" text-anchor="start">TSMC</text>
-<rect x="206" y="605" width="530" height="38" rx="4" fill="#203445"/>
-<rect x="206" y="605" width="26.5" height="38" rx="4" fill="#6bd4c1"/>
-<text id="anthropic-en-01-txt_1_en_45" x="807" y="634" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="#f1f0e9" text-anchor="end">0.5</text>
-<rect x="858" y="259" width="290" height="379" rx="12" fill="#172635"/>
-<text id="anthropic-en-01-txt_1_en_47" x="883" y="336" font-family="DejaVu Sans, sans-serif" font-size="74" font-weight="700" fill="#6bd4c1" text-anchor="start">26</text>
-<text id="anthropic-en-01-txt_1_en_48" x="1040" y="335" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="400" fill="#6bd4c1" text-anchor="start">$bn</text>
-<text id="anthropic-en-01-txt_1_en_49" x="883" y="377" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">Fixed proposed amount,</text>
-<text id="anthropic-en-01-txt_1_en_50" x="883" y="403" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">subject to the IPO and</text>
-<text id="anthropic-en-01-txt_1_en_51" x="883" y="429" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">other closing</text>
-<text id="anthropic-en-01-txt_1_en_52" x="883" y="455" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">conditions.</text>
-<line x1="883" y1="473" x2="1123" y2="473" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-01-txt_1_en_54" x="883" y="523" font-family="DejaVu Sans, sans-serif" font-size="38" font-weight="700" fill="#f1f0e9" text-anchor="start">76.9%</text>
-<text id="anthropic-en-01-txt_1_en_55" x="883" y="558" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">Google and Nvidia share</text>
-<text id="anthropic-en-01-txt_1_en_56" x="883" y="583" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">of the $26bn placement.</text>
-<rect x="52" y="688" width="537" height="167" rx="12" fill="#302c2c"/>
-<rect x="611" y="688" width="537" height="167" rx="12" fill="#172635"/>
-<text id="anthropic-en-01-txt_1_en_59" x="74" y="721" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#f2bd75" text-anchor="start" letter-spacing="0.9">IDENTIFIED OVERLAP</text>
-<text id="anthropic-en-01-txt_1_en_60" x="74" y="768" font-family="DejaVu Sans, sans-serif" font-size="36" font-weight="700" fill="#f2bd75" text-anchor="start">$12.5bn</text>
-<text id="anthropic-en-01-txt_1_en_61" x="74" y="805" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">Google 10 + AMD 2.5: earlier facilities reduced</text>
-<text id="anthropic-en-01-txt_1_en_62" x="74" y="829" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">by the same amounts.</text>
-<text id="anthropic-en-01-txt_1_en_63" x="633" y="721" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#88b9ec" text-anchor="start" letter-spacing="0.9">RECONCILIATION INCOMPLETE</text>
-<text id="anthropic-en-01-txt_1_en_64" x="633" y="768" font-family="DejaVu Sans, sans-serif" font-size="36" font-weight="700" fill="#88b9ec" text-anchor="start">$13.5bn</text>
-<text id="anthropic-en-01-txt_1_en_65" x="633" y="805" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">This remainder is not proof of wholly additional</text>
-<text id="anthropic-en-01-txt_1_en_66" x="633" y="829" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">funding.</text>
-<line x1="52" y1="888" x2="1148" y2="888" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-01-txt_1_en_68" x="52" y="913" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Sources: S01, S02, S03, S08, S09 ; SEC prospectus and agreements; earlier announcements.</text>
-<text id="anthropic-en-01-txt_1_en_69" x="52" y="935" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Document date: 10 November 2026. Unit: billions of US dollars.</text>
-<text id="anthropic-en-01-txt_1_en_70" x="52" y="957" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Hatching marks documented overlap. This figure does not establish that the placement cash has been received.</text>
+<text id="anthropic-en-01-txt_1_en_29" x="807" y="406" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">2.5</text>
+<text id="anthropic-en-01-txt_1_en_30" x="52" y="463" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Broadcom</text>
+<rect x="206" y="434" width="530" height="38" rx="4" fill="var(--color-surface-2,#171a20)"/>
+<rect x="206" y="434" width="53.0" height="38" rx="4" fill="var(--color-signal,#5eead4)"/>
+<text id="anthropic-en-01-txt_1_en_33" x="807" y="463" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">1.0</text>
+<text id="anthropic-en-01-txt_1_en_34" x="52" y="520" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Microsoft</text>
+<rect x="206" y="491" width="530" height="38" rx="4" fill="var(--color-surface-2,#171a20)"/>
+<rect x="206" y="491" width="53.0" height="38" rx="4" fill="var(--color-signal,#5eead4)"/>
+<text id="anthropic-en-01-txt_1_en_37" x="807" y="520" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">1.0</text>
+<text id="anthropic-en-01-txt_1_en_38" x="52" y="577" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Micron</text>
+<rect x="206" y="548" width="530" height="38" rx="4" fill="var(--color-surface-2,#171a20)"/>
+<rect x="206" y="548" width="53.0" height="38" rx="4" fill="var(--color-signal,#5eead4)"/>
+<text id="anthropic-en-01-txt_1_en_41" x="807" y="577" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">1.0</text>
+<text id="anthropic-en-01-txt_1_en_42" x="52" y="634" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">TSMC</text>
+<rect x="206" y="605" width="530" height="38" rx="4" fill="var(--color-surface-2,#171a20)"/>
+<rect x="206" y="605" width="26.5" height="38" rx="4" fill="var(--color-signal,#5eead4)"/>
+<text id="anthropic-en-01-txt_1_en_45" x="807" y="634" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">0.5</text>
+<rect x="858" y="259" width="290" height="379" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-01-txt_1_en_47" x="883" y="336" font-family="DejaVu Sans, sans-serif" font-size="74" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start">26</text>
+<text id="anthropic-en-01-txt_1_en_48" x="1040" y="335" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">$bn</text>
+<text id="anthropic-en-01-txt_1_en_49" x="883" y="377" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Fixed proposed amount,</text>
+<text id="anthropic-en-01-txt_1_en_50" x="883" y="403" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">subject to the IPO and</text>
+<text id="anthropic-en-01-txt_1_en_51" x="883" y="429" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">other closing</text>
+<text id="anthropic-en-01-txt_1_en_52" x="883" y="455" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">conditions.</text>
+<line x1="883" y1="473" x2="1123" y2="473" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-01-txt_1_en_54" x="883" y="523" font-family="DejaVu Sans, sans-serif" font-size="38" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">76.9%</text>
+<text id="anthropic-en-01-txt_1_en_55" x="883" y="558" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Google and Nvidia share</text>
+<text id="anthropic-en-01-txt_1_en_56" x="883" y="583" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">of the $26bn placement.</text>
+<rect x="52" y="688" width="537" height="167" rx="12" fill="var(--color-surface-2,#171a20)"/>
+<rect x="611" y="688" width="537" height="167" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-01-txt_1_en_59" x="74" y="721" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start" letter-spacing="0.9">IDENTIFIED OVERLAP</text>
+<text id="anthropic-en-01-txt_1_en_60" x="74" y="768" font-family="DejaVu Sans, sans-serif" font-size="36" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start">$12.5bn</text>
+<text id="anthropic-en-01-txt_1_en_61" x="74" y="805" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Google 10 + AMD 2.5: earlier facilities reduced</text>
+<text id="anthropic-en-01-txt_1_en_62" x="74" y="829" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">by the same amounts.</text>
+<text id="anthropic-en-01-txt_1_en_63" x="633" y="721" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-topic-blue,#7aa2f7)" text-anchor="start" letter-spacing="0.9">RECONCILIATION INCOMPLETE</text>
+<text id="anthropic-en-01-txt_1_en_64" x="633" y="768" font-family="DejaVu Sans, sans-serif" font-size="36" font-weight="700" fill="var(--color-topic-blue,#7aa2f7)" text-anchor="start">$13.5bn</text>
+<text id="anthropic-en-01-txt_1_en_65" x="633" y="805" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">This remainder is not proof of wholly additional</text>
+<text id="anthropic-en-01-txt_1_en_66" x="633" y="829" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">funding.</text>
+<line x1="52" y1="888" x2="1148" y2="888" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-01-txt_1_en_68" x="52" y="913" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Sources: S01, S02, S03, S08, S09 ; SEC prospectus and agreements; earlier announcements.</text>
+<text id="anthropic-en-01-txt_1_en_69" x="52" y="935" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Document date: 10 November 2026. Unit: billions of US dollars.</text>
+<text id="anthropic-en-01-txt_1_en_70" x="52" y="957" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Hatching marks documented overlap. This figure does not establish that the placement cash has been received.</text>
 </svg>
 </figure>
 
@@ -126,85 +126,85 @@ The value a supplier adds must therefore be assessed through the service or equi
 <figure class="infographic-readable anthropic-suppliers-figure" style="padding-bottom:1rem" tabindex="0" aria-label="Flows of capital, customer payments, compute spending and equipment, distinguishing financing earmarked for rent.">
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" style="width:100%;height:auto;display:block" viewBox="0 0 1200 1150" role="img" aria-labelledby="anthropic-en-02-title anthropic-en-02-desc" lang="en">
 <title id="anthropic-en-02-title">Follow the funding to the invoice</title><desc id="anthropic-en-02-desc">Capital investors and end customers fund Anthropic. Anthropic pays cloud operators and equipment lessors. Operators and lessors buy hardware. Lenders fund lessors. Hardware supply is distinct from the movement of money.</desc>
-<defs><pattern id="anthropic-en-02-hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="#101c29" stroke-width="3" opacity="0.65"/></pattern>
-<marker id="anthropic-en-02-cash" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6bd4c1"/></marker>
-<marker id="anthropic-en-02-physical" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#88b9ec"/></marker>
-<marker id="anthropic-en-02-credit" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#f2bd75"/></marker>
+<defs><pattern id="anthropic-en-02-hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="var(--color-ink,#0c0d10)" stroke-width="3" opacity="0.65"/></pattern>
+<marker id="anthropic-en-02-cash" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-signal,#5eead4)"/></marker>
+<marker id="anthropic-en-02-physical" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-topic-blue,#7aa2f7)"/></marker>
+<marker id="anthropic-en-02-credit" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-amber,#f5b13d)"/></marker>
 </defs>
-<rect width="1200" height="1150" fill="#101c29"/>
-<text id="anthropic-en-02-txt_2_en_8" x="52" y="49" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" fill="#6bd4c1" text-anchor="start">l0g</text>
-<text id="anthropic-en-02-txt_2_en_9" x="122" y="47" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start" letter-spacing="1.2">DOCUMENTARY INVESTIGATION  /  11.11.2026</text>
-<text id="anthropic-en-02-txt_2_en_10" x="1148" y="49" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="end">02 / 05</text>
-<text id="anthropic-en-02-txt_2_en_11" x="52" y="112" font-family="DejaVu Sans, sans-serif" font-size="33" font-weight="700" fill="#f1f0e9" text-anchor="start">Follow the funding to the invoice</text>
-<text id="anthropic-en-02-txt_2_en_12" x="52" y="151" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#b4c3cc" text-anchor="start">One group can invest, sell and finance. Each arrow has its own timing.</text>
-<line x1="52" y1="198" x2="1148" y2="198" stroke="#344858" stroke-width="1"/>
-<rect x="420" y="225" width="360" height="111" rx="12" fill="#172635"/>
-<text id="anthropic-en-02-txt_2_en_15" x="444" y="252" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#6bd4c1" text-anchor="start" letter-spacing="0.9">END DEMAND</text>
-<text id="anthropic-en-02-txt_2_en_16" x="444" y="283" font-family="DejaVu Sans, sans-serif" font-size="24" font-weight="700" fill="#f1f0e9" text-anchor="start">Claude customers</text>
-<text id="anthropic-en-02-txt_2_en_17" x="444" y="311" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Usage / subscriptions</text>
-<path d="M600 336 L600 395" fill="none" stroke="#6bd4c1" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
-<text id="anthropic-en-02-txt_2_en_19" x="617" y="367" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#6bd4c1" text-anchor="start">Payments</text>
-<path d="M352 460 L450 460" fill="none" stroke="#6bd4c1" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
-<text id="anthropic-en-02-txt_2_en_21" x="364" y="442" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#6bd4c1" text-anchor="start">Equity</text>
-<path d="M750 438 L850 438" fill="none" stroke="#6bd4c1" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
-<text id="anthropic-en-02-txt_2_en_23" x="763" y="403" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="#6bd4c1" text-anchor="start">Cloud</text>
-<text id="anthropic-en-02-txt_2_en_24" x="763" y="421" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="#6bd4c1" text-anchor="start">payments</text>
-<path d="M850 526 L750 526" fill="none" stroke="#88b9ec" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-physical)" stroke-dasharray="6 5"/>
-<text id="anthropic-en-02-txt_2_en_26" x="765" y="552" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="#88b9ec" text-anchor="start">Compute</text>
-<path d="M600 570 L600 740" fill="none" stroke="#6bd4c1" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
-<text id="anthropic-en-02-txt_2_en_28" x="619" y="625" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#6bd4c1" text-anchor="start">Multi-year</text>
-<text id="anthropic-en-02-txt_2_en_29" x="619" y="650" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#6bd4c1" text-anchor="start">lease payments</text>
-<path d="M1000 570 L1000 740" fill="none" stroke="#6bd4c1" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
-<text id="anthropic-en-02-txt_2_en_31" x="1018" y="625" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#6bd4c1" text-anchor="start">Hardware</text>
-<text id="anthropic-en-02-txt_2_en_32" x="1018" y="650" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#6bd4c1" text-anchor="start">purchases</text>
-<path d="M352 808 L450 808" fill="none" stroke="#f2bd75" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-credit)"/>
-<text id="anthropic-en-02-txt_2_en_34" x="365" y="790" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="#f2bd75" text-anchor="start">Debt</text>
-<path d="M750 783 L850 783" fill="none" stroke="#6bd4c1" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
-<text id="anthropic-en-02-txt_2_en_36" x="766" y="767" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="#6bd4c1" text-anchor="start">Purchase</text>
-<path d="M850 865 L750 865" fill="none" stroke="#88b9ec" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-physical)" stroke-dasharray="6 5"/>
-<text id="anthropic-en-02-txt_2_en_38" x="764" y="891" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="#88b9ec" text-anchor="start">Hardware</text>
-<rect x="52" y="395" width="300" height="175" rx="12" fill="#172635"/>
-<text id="anthropic-en-02-txt_2_en_40" x="76" y="424" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#88b9ec" text-anchor="start" letter-spacing="0.9">INDUSTRY INVESTORS</text>
-<text id="anthropic-en-02-txt_2_en_41" x="76" y="459" font-family="DejaVu Sans, sans-serif" font-size="34" font-weight="700" fill="#6bd4c1" text-anchor="start">$26bn</text>
-<text id="anthropic-en-02-txt_2_en_42" x="76" y="491" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Google, Nvidia, AMD,</text>
-<text id="anthropic-en-02-txt_2_en_43" x="76" y="514" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Broadcom, Microsoft,</text>
-<text id="anthropic-en-02-txt_2_en_44" x="76" y="537" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Micron, TSMC</text>
-<rect x="450" y="395" width="300" height="175" rx="12" fill="#1b3a41" stroke="#6bd4c1"/>
-<text id="anthropic-en-02-txt_2_en_46" x="474" y="424" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#6bd4c1" text-anchor="start" letter-spacing="0.9">MODEL DEVELOPER</text>
-<text id="anthropic-en-02-txt_2_en_47" x="474" y="468" font-family="DejaVu Sans, sans-serif" font-size="32" font-weight="700" fill="#f1f0e9" text-anchor="start">Anthropic</text>
-<text id="anthropic-en-02-txt_2_en_48" x="474" y="506" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">Model training, serving</text>
-<text id="anthropic-en-02-txt_2_en_49" x="474" y="531" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">Claude and research</text>
-<rect x="850" y="395" width="298" height="175" rx="12" fill="#172635"/>
-<text id="anthropic-en-02-txt_2_en_51" x="874" y="424" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#88b9ec" text-anchor="start" letter-spacing="0.9">CLOUD OPERATORS</text>
-<text id="anthropic-en-02-txt_2_en_52" x="874" y="463" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" fill="#f1f0e9" text-anchor="start">AWS · Google</text>
-<text id="anthropic-en-02-txt_2_en_53" x="874" y="493" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" fill="#f1f0e9" text-anchor="start">Microsoft · others</text>
-<text id="anthropic-en-02-txt_2_en_54" x="874" y="533.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Reserved capacity</text>
-<rect x="52" y="740" width="300" height="166" rx="12" fill="#172635"/>
-<text id="anthropic-en-02-txt_2_en_56" x="76" y="771" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#f2bd75" text-anchor="start" letter-spacing="0.9">EXTERNAL FINANCING</text>
-<text id="anthropic-en-02-txt_2_en_57" x="76" y="808" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="#f1f0e9" text-anchor="start">Banks / funds</text>
-<text id="anthropic-en-02-txt_2_en_58" x="76" y="844" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Debt seniority and</text>
-<text id="anthropic-en-02-txt_2_en_59" x="76" y="867" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">contractual protections</text>
-<rect x="450" y="740" width="300" height="166" rx="12" fill="#172635"/>
-<text id="anthropic-en-02-txt_2_en_61" x="474" y="771" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#f2bd75" text-anchor="start" letter-spacing="0.9">LESSORS / VEHICLES</text>
-<text id="anthropic-en-02-txt_2_en_62" x="474" y="808" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#f1f0e9" text-anchor="start">Financed equipment</text>
-<text id="anthropic-en-02-txt_2_en_63" x="474" y="844" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Linked creditors,</text>
-<text id="anthropic-en-02-txt_2_en_64" x="474" y="867" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">equipment and leases</text>
-<rect x="850" y="740" width="298" height="166" rx="12" fill="#172635"/>
-<text id="anthropic-en-02-txt_2_en_66" x="874" y="771" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#88b9ec" text-anchor="start" letter-spacing="0.9">HARDWARE SUPPLY CHAIN</text>
-<text id="anthropic-en-02-txt_2_en_67" x="874" y="809" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#f1f0e9" text-anchor="start">Chips and racks</text>
-<text id="anthropic-en-02-txt_2_en_68" x="874" y="850" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Networking, memory and</text>
-<text id="anthropic-en-02-txt_2_en_69" x="874" y="873" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">manufacturing</text>
-<line x1="52" y1="953" x2="1148" y2="953" stroke="#344858" stroke-width="1"/>
-<path d="M52 987 L94 987" fill="none" stroke="#6bd4c1" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
-<text id="anthropic-en-02-txt_2_en_72" x="107" y="992" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Payments / equity</text>
-<path d="M412 987 L454 987" fill="none" stroke="#88b9ec" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-physical)" stroke-dasharray="6 5"/>
-<text id="anthropic-en-02-txt_2_en_74" x="467" y="992" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Compute / hardware</text>
-<path d="M788 987 L830 987" fill="none" stroke="#f2bd75" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-credit)"/>
-<text id="anthropic-en-02-txt_2_en_76" x="843" y="992" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Asset financing</text>
-<line x1="52" y1="1058" x2="1148" y2="1058" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-02-txt_2_en_78" x="52" y="1083" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Sources: S01, S04, S08, S13 ; SEC; Azure/Nvidia partnership; equipment financing.</text>
-<text id="anthropic-en-02-txt_2_en_79" x="52" y="1105" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Proposed placement, conditional on the IPO. Qualitative diagram as of 11 November 2026; arrows are not to scale.</text>
-<text id="anthropic-en-02-txt_2_en_80" x="52" y="1127" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Customers may pay through cloud marketplaces. Earmarked lease financing is detailed in figure 03.</text>
+<rect width="1200" height="1150" fill="none"/>
+<text id="anthropic-en-02-txt_2_en_8" x="52" y="49" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start">l0g</text>
+<text id="anthropic-en-02-txt_2_en_9" x="122" y="47" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" letter-spacing="1.2">DOCUMENTARY INVESTIGATION  /  11.11.2026</text>
+<text id="anthropic-en-02-txt_2_en_10" x="1148" y="49" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">02 / 05</text>
+<text id="anthropic-en-02-txt_2_en_11" x="52" y="112" font-family="DejaVu Sans, sans-serif" font-size="33" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Follow the funding to the invoice</text>
+<text id="anthropic-en-02-txt_2_en_12" x="52" y="151" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">One group can invest, sell and finance. Each arrow has its own timing.</text>
+<line x1="52" y1="198" x2="1148" y2="198" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<rect x="420" y="225" width="360" height="111" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-02-txt_2_en_15" x="444" y="252" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start" letter-spacing="0.9">END DEMAND</text>
+<text id="anthropic-en-02-txt_2_en_16" x="444" y="283" font-family="DejaVu Sans, sans-serif" font-size="24" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Claude customers</text>
+<text id="anthropic-en-02-txt_2_en_17" x="444" y="311" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Usage / subscriptions</text>
+<path d="M600 336 L600 395" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
+<text id="anthropic-en-02-txt_2_en_19" x="617" y="367" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">Payments</text>
+<path d="M352 460 L450 460" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
+<text id="anthropic-en-02-txt_2_en_21" x="364" y="442" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">Equity</text>
+<path d="M750 438 L850 438" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
+<text id="anthropic-en-02-txt_2_en_23" x="763" y="403" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">Cloud</text>
+<text id="anthropic-en-02-txt_2_en_24" x="763" y="421" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">payments</text>
+<path d="M850 526 L750 526" fill="none" stroke="var(--color-topic-blue,#7aa2f7)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-physical)" stroke-dasharray="6 5"/>
+<text id="anthropic-en-02-txt_2_en_26" x="765" y="552" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="var(--color-topic-blue,#7aa2f7)" text-anchor="start">Compute</text>
+<path d="M600 570 L600 740" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
+<text id="anthropic-en-02-txt_2_en_28" x="619" y="625" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">Multi-year</text>
+<text id="anthropic-en-02-txt_2_en_29" x="619" y="650" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">lease payments</text>
+<path d="M1000 570 L1000 740" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
+<text id="anthropic-en-02-txt_2_en_31" x="1018" y="625" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">Hardware</text>
+<text id="anthropic-en-02-txt_2_en_32" x="1018" y="650" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">purchases</text>
+<path d="M352 808 L450 808" fill="none" stroke="var(--color-amber,#f5b13d)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-credit)"/>
+<text id="anthropic-en-02-txt_2_en_34" x="365" y="790" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="var(--color-amber,#f5b13d)" text-anchor="start">Debt</text>
+<path d="M750 783 L850 783" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
+<text id="anthropic-en-02-txt_2_en_36" x="766" y="767" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">Purchase</text>
+<path d="M850 865 L750 865" fill="none" stroke="var(--color-topic-blue,#7aa2f7)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-physical)" stroke-dasharray="6 5"/>
+<text id="anthropic-en-02-txt_2_en_38" x="764" y="891" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" fill="var(--color-topic-blue,#7aa2f7)" text-anchor="start">Hardware</text>
+<rect x="52" y="395" width="300" height="175" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-02-txt_2_en_40" x="76" y="424" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-topic-blue,#7aa2f7)" text-anchor="start" letter-spacing="0.9">INDUSTRY INVESTORS</text>
+<text id="anthropic-en-02-txt_2_en_41" x="76" y="459" font-family="DejaVu Sans, sans-serif" font-size="34" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start">$26bn</text>
+<text id="anthropic-en-02-txt_2_en_42" x="76" y="491" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Google, Nvidia, AMD,</text>
+<text id="anthropic-en-02-txt_2_en_43" x="76" y="514" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Broadcom, Microsoft,</text>
+<text id="anthropic-en-02-txt_2_en_44" x="76" y="537" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Micron, TSMC</text>
+<rect x="450" y="395" width="300" height="175" rx="12" fill="var(--color-surface-2,#171a20)" stroke="var(--color-signal,#5eead4)"/>
+<text id="anthropic-en-02-txt_2_en_46" x="474" y="424" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start" letter-spacing="0.9">MODEL DEVELOPER</text>
+<text id="anthropic-en-02-txt_2_en_47" x="474" y="468" font-family="DejaVu Sans, sans-serif" font-size="32" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Anthropic</text>
+<text id="anthropic-en-02-txt_2_en_48" x="474" y="506" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Model training, serving</text>
+<text id="anthropic-en-02-txt_2_en_49" x="474" y="531" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Claude and research</text>
+<rect x="850" y="395" width="298" height="175" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-02-txt_2_en_51" x="874" y="424" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-topic-blue,#7aa2f7)" text-anchor="start" letter-spacing="0.9">CLOUD OPERATORS</text>
+<text id="anthropic-en-02-txt_2_en_52" x="874" y="463" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">AWS · Google</text>
+<text id="anthropic-en-02-txt_2_en_53" x="874" y="493" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Microsoft · others</text>
+<text id="anthropic-en-02-txt_2_en_54" x="874" y="533.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Reserved capacity</text>
+<rect x="52" y="740" width="300" height="166" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-02-txt_2_en_56" x="76" y="771" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start" letter-spacing="0.9">EXTERNAL FINANCING</text>
+<text id="anthropic-en-02-txt_2_en_57" x="76" y="808" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Banks / funds</text>
+<text id="anthropic-en-02-txt_2_en_58" x="76" y="844" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Debt seniority and</text>
+<text id="anthropic-en-02-txt_2_en_59" x="76" y="867" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">contractual protections</text>
+<rect x="450" y="740" width="300" height="166" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-02-txt_2_en_61" x="474" y="771" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start" letter-spacing="0.9">LESSORS / VEHICLES</text>
+<text id="anthropic-en-02-txt_2_en_62" x="474" y="808" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Financed equipment</text>
+<text id="anthropic-en-02-txt_2_en_63" x="474" y="844" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Linked creditors,</text>
+<text id="anthropic-en-02-txt_2_en_64" x="474" y="867" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">equipment and leases</text>
+<rect x="850" y="740" width="298" height="166" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-02-txt_2_en_66" x="874" y="771" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-topic-blue,#7aa2f7)" text-anchor="start" letter-spacing="0.9">HARDWARE SUPPLY CHAIN</text>
+<text id="anthropic-en-02-txt_2_en_67" x="874" y="809" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Chips and racks</text>
+<text id="anthropic-en-02-txt_2_en_68" x="874" y="850" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Networking, memory and</text>
+<text id="anthropic-en-02-txt_2_en_69" x="874" y="873" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">manufacturing</text>
+<line x1="52" y1="953" x2="1148" y2="953" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<path d="M52 987 L94 987" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-cash)"/>
+<text id="anthropic-en-02-txt_2_en_72" x="107" y="992" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Payments / equity</text>
+<path d="M412 987 L454 987" fill="none" stroke="var(--color-topic-blue,#7aa2f7)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-physical)" stroke-dasharray="6 5"/>
+<text id="anthropic-en-02-txt_2_en_74" x="467" y="992" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Compute / hardware</text>
+<path d="M788 987 L830 987" fill="none" stroke="var(--color-amber,#f5b13d)" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#anthropic-en-02-credit)"/>
+<text id="anthropic-en-02-txt_2_en_76" x="843" y="992" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Asset financing</text>
+<line x1="52" y1="1058" x2="1148" y2="1058" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-02-txt_2_en_78" x="52" y="1083" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Sources: S01, S04, S08, S13 ; SEC; Azure/Nvidia partnership; equipment financing.</text>
+<text id="anthropic-en-02-txt_2_en_79" x="52" y="1105" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Proposed placement, conditional on the IPO. Qualitative diagram as of 11 November 2026; arrows are not to scale.</text>
+<text id="anthropic-en-02-txt_2_en_80" x="52" y="1127" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Customers may pay through cloud marketplaces. Earmarked lease financing is detailed in figure 03.</text>
 </svg>
 </figure>
 
@@ -251,62 +251,62 @@ The start of rent payments and eligibility for financing follow separate conditi
 <figure class="infographic-readable anthropic-suppliers-figure" style="padding-bottom:1rem" tabindex="0" aria-label="How the Broadcom facility works: rent, offset or direct payment, convertible claims and revenue-underperformance provisions.">
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" style="width:100%;height:auto;display:block" viewBox="0 0 1200 1130" role="img" aria-labelledby="anthropic-en-03-title anthropic-en-03-desc" lang="en">
 <title id="anthropic-en-03-title">Broadcom: lease financing comes with conditions</title><desc id="anthropic-en-03-desc">Conditional facility up to $42bn, undrawn at September 30. Set-off if financier and lessor are affiliated; direct cash to an independent lessor otherwise. Normal new notes: 9% capitalized interest, post-IPO conversion at 90% of VWAP. New notes during defined revenue breach: 13% and 85%. Maturity is 57, 60 or 63 months from the draw window start; cash repayment if not converted, and acceleration can occur on default.</desc>
-<defs><pattern id="anthropic-en-03-hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="#101c29" stroke-width="3" opacity="0.65"/></pattern>
-<marker id="anthropic-en-03-cash" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6bd4c1"/></marker>
-<marker id="anthropic-en-03-physical" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#88b9ec"/></marker>
-<marker id="anthropic-en-03-credit" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#f2bd75"/></marker>
+<defs><pattern id="anthropic-en-03-hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="var(--color-ink,#0c0d10)" stroke-width="3" opacity="0.65"/></pattern>
+<marker id="anthropic-en-03-cash" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-signal,#5eead4)"/></marker>
+<marker id="anthropic-en-03-physical" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-topic-blue,#7aa2f7)"/></marker>
+<marker id="anthropic-en-03-credit" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-amber,#f5b13d)"/></marker>
 </defs>
-<rect width="1200" height="1130" fill="#101c29"/>
-<text id="anthropic-en-03-txt_3_en_8" x="52" y="49" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" fill="#6bd4c1" text-anchor="start">l0g</text>
-<text id="anthropic-en-03-txt_3_en_9" x="122" y="47" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start" letter-spacing="1.2">DOCUMENTARY INVESTIGATION  /  11.11.2026</text>
-<text id="anthropic-en-03-txt_3_en_10" x="1148" y="49" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="end">03 / 05</text>
-<text id="anthropic-en-03-txt_3_en_11" x="52" y="112" font-family="DejaVu Sans, sans-serif" font-size="33" font-weight="700" fill="#f1f0e9" text-anchor="start">Broadcom: lease financing comes with conditions</text>
-<text id="anthropic-en-03-txt_3_en_12" x="52" y="151" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#b4c3cc" text-anchor="start">A convertible claim settles eligible lease payments; Anthropic receives no unrestricted cash.</text>
-<line x1="52" y1="198" x2="1148" y2="198" stroke="#344858" stroke-width="1"/>
-<rect x="52" y="229" width="278" height="224" rx="12" fill="#302c2c"/>
-<text id="anthropic-en-03-txt_3_en_15" x="76" y="259" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#f2bd75" text-anchor="start" letter-spacing="0.9">CONDITIONAL CEILING</text>
-<text id="anthropic-en-03-txt_3_en_16" x="76" y="321" font-family="DejaVu Sans, sans-serif" font-size="48" font-weight="700" fill="#f2bd75" text-anchor="start">$42bn</text>
-<text id="anthropic-en-03-txt_3_en_17" x="76" y="361" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">Principal drawn at 30</text>
-<text id="anthropic-en-03-txt_3_en_18" x="76" y="387" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">Sep 2026: zero. Draw</text>
-<text id="anthropic-en-03-txt_3_en_19" x="76" y="413" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">window linked to</text>
-<text id="anthropic-en-03-txt_3_en_20" x="76" y="439" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">service readiness.</text>
-<rect x="354" y="229" width="794" height="224" rx="12" fill="#172635"/>
-<text id="anthropic-en-03-txt_3_en_22" x="378" y="259" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#f2bd75" text-anchor="start" letter-spacing="0.9">TWO ROUTES TO SETTLE THE LEASE</text>
-<text id="anthropic-en-03-txt_3_en_23" x="378" y="298" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" fill="#f2bd75" text-anchor="start">1</text>
-<text id="anthropic-en-03-txt_3_en_24" x="414" y="296" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" fill="#f1f0e9" text-anchor="start">Lessor = financier or affiliate: the lease payment is set off.</text>
-<text id="anthropic-en-03-txt_3_en_25" x="378" y="368" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" fill="#f2bd75" text-anchor="start">2</text>
-<text id="anthropic-en-03-txt_3_en_26" x="414" y="366" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" fill="#f1f0e9" text-anchor="start">Unaffiliated lessor: cash is paid directly to that lessor.</text>
-<line x1="52" y1="477" x2="1148" y2="477" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-03-txt_3_en_28" x="52" y="516" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" fill="#f1f0e9" text-anchor="start">Terms for newly issued notes</text>
-<rect x="52" y="544" width="536" height="223" rx="12" fill="#172635"/>
-<text id="anthropic-en-03-txt_3_en_30" x="76" y="574" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#6bd4c1" text-anchor="start" letter-spacing="0.9">NORMAL REGIME</text>
-<text id="anthropic-en-03-txt_3_en_31" x="76" y="633" font-family="DejaVu Sans, sans-serif" font-size="49" font-weight="700" fill="#6bd4c1" text-anchor="start">9%</text>
-<text id="anthropic-en-03-txt_3_en_32" x="317" y="633" font-family="DejaVu Sans, sans-serif" font-size="49" font-weight="700" fill="#6bd4c1" text-anchor="start">90%</text>
-<text id="anthropic-en-03-txt_3_en_33" x="76" y="665" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Annual interest</text>
-<text id="anthropic-en-03-txt_3_en_34" x="317" y="665" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Of VWAP after IPO</text>
-<text id="anthropic-en-03-txt_3_en_35" x="76" y="710" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#f1f0e9" text-anchor="start">Annual capitalized interest; conversion at the</text>
-<text id="anthropic-en-03-txt_3_en_36" x="76" y="734" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#f1f0e9" text-anchor="start">holder’s option.</text>
-<rect x="612" y="544" width="536" height="223" rx="12" fill="#172635"/>
-<text id="anthropic-en-03-txt_3_en_38" x="636" y="574" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#f2bd75" text-anchor="start" letter-spacing="0.9">DEFINED REVENUE BREACH</text>
-<text id="anthropic-en-03-txt_3_en_39" x="636" y="633" font-family="DejaVu Sans, sans-serif" font-size="49" font-weight="700" fill="#f2bd75" text-anchor="start">13%</text>
-<text id="anthropic-en-03-txt_3_en_40" x="877" y="633" font-family="DejaVu Sans, sans-serif" font-size="49" font-weight="700" fill="#f2bd75" text-anchor="start">85%</text>
-<text id="anthropic-en-03-txt_3_en_41" x="636" y="665" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Annual interest</text>
-<text id="anthropic-en-03-txt_3_en_42" x="877" y="665" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Of VWAP after IPO</text>
-<text id="anthropic-en-03-txt_3_en_43" x="636" y="710" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#f1f0e9" text-anchor="start">These terms apply to notes issued during that</text>
-<text id="anthropic-en-03-txt_3_en_44" x="636" y="734" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#f1f0e9" text-anchor="start">period.</text>
-<rect x="52" y="800" width="1096" height="195" rx="12" fill="#20313f"/>
-<text id="anthropic-en-03-txt_3_en_46" x="76" y="831" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#88b9ec" text-anchor="start" letter-spacing="0.9">MATURITY AND PERFORMANCE DEPENDENCE</text>
-<text id="anthropic-en-03-txt_3_en_47" x="76" y="879" font-family="DejaVu Sans, sans-serif" font-size="39" font-weight="700" fill="#f1f0e9" text-anchor="start">57 / 60 / 63</text>
-<text id="anthropic-en-03-txt_3_en_48" x="352" y="878" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" fill="#b4c3cc" text-anchor="start">months</text>
-<text id="anthropic-en-03-txt_3_en_49" x="76" y="916" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">From the draw window start, depending on the</text>
-<text id="anthropic-en-03-txt_3_en_50" x="76" y="940" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">tranche.</text>
-<text id="anthropic-en-03-txt_3_en_51" x="620" y="867" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">Unconverted balance: cash at maturity. Certain</text>
-<text id="anthropic-en-03-txt_3_en_52" x="620" y="893" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">defaults can accelerate repayment and close the</text>
-<text id="anthropic-en-03-txt_3_en_53" x="620" y="919" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">facility.</text>
-<line x1="52" y1="1038" x2="1148" y2="1038" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-03-txt_3_en_55" x="52" y="1063" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Source: S04 ; Broadcom NPA dated 31 March 2026, amended 26 October; sections 2.1, 2.2 and 6.</text>
-<text id="anthropic-en-03-txt_3_en_56" x="52" y="1085" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">S01, pp.173–176, confirms capacity and terms. VWAP: volume-weighted average share price over 30 trading days.</text>
-<text id="anthropic-en-03-txt_3_en_57" x="52" y="1107" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Revenue thresholds are redacted; no breach forecast. Interest is added to principal each quarter.</text>
+<rect width="1200" height="1130" fill="none"/>
+<text id="anthropic-en-03-txt_3_en_8" x="52" y="49" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start">l0g</text>
+<text id="anthropic-en-03-txt_3_en_9" x="122" y="47" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" letter-spacing="1.2">DOCUMENTARY INVESTIGATION  /  11.11.2026</text>
+<text id="anthropic-en-03-txt_3_en_10" x="1148" y="49" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">03 / 05</text>
+<text id="anthropic-en-03-txt_3_en_11" x="52" y="112" font-family="DejaVu Sans, sans-serif" font-size="33" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Broadcom: lease financing comes with conditions</text>
+<text id="anthropic-en-03-txt_3_en_12" x="52" y="151" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">A convertible claim settles eligible lease payments; Anthropic receives no unrestricted cash.</text>
+<line x1="52" y1="198" x2="1148" y2="198" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<rect x="52" y="229" width="278" height="224" rx="12" fill="var(--color-surface-2,#171a20)"/>
+<text id="anthropic-en-03-txt_3_en_15" x="76" y="259" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start" letter-spacing="0.9">CONDITIONAL CEILING</text>
+<text id="anthropic-en-03-txt_3_en_16" x="76" y="321" font-family="DejaVu Sans, sans-serif" font-size="48" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start">$42bn</text>
+<text id="anthropic-en-03-txt_3_en_17" x="76" y="361" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Principal drawn at 30</text>
+<text id="anthropic-en-03-txt_3_en_18" x="76" y="387" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Sep 2026: zero. Draw</text>
+<text id="anthropic-en-03-txt_3_en_19" x="76" y="413" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">window linked to</text>
+<text id="anthropic-en-03-txt_3_en_20" x="76" y="439" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">service readiness.</text>
+<rect x="354" y="229" width="794" height="224" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-03-txt_3_en_22" x="378" y="259" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start" letter-spacing="0.9">TWO ROUTES TO SETTLE THE LEASE</text>
+<text id="anthropic-en-03-txt_3_en_23" x="378" y="298" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start">1</text>
+<text id="anthropic-en-03-txt_3_en_24" x="414" y="296" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Lessor = financier or affiliate: the lease payment is set off.</text>
+<text id="anthropic-en-03-txt_3_en_25" x="378" y="368" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start">2</text>
+<text id="anthropic-en-03-txt_3_en_26" x="414" y="366" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Unaffiliated lessor: cash is paid directly to that lessor.</text>
+<line x1="52" y1="477" x2="1148" y2="477" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-03-txt_3_en_28" x="52" y="516" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Terms for newly issued notes</text>
+<rect x="52" y="544" width="536" height="223" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-03-txt_3_en_30" x="76" y="574" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start" letter-spacing="0.9">NORMAL REGIME</text>
+<text id="anthropic-en-03-txt_3_en_31" x="76" y="633" font-family="DejaVu Sans, sans-serif" font-size="49" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start">9%</text>
+<text id="anthropic-en-03-txt_3_en_32" x="317" y="633" font-family="DejaVu Sans, sans-serif" font-size="49" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start">90%</text>
+<text id="anthropic-en-03-txt_3_en_33" x="76" y="665" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Annual interest</text>
+<text id="anthropic-en-03-txt_3_en_34" x="317" y="665" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Of VWAP after IPO</text>
+<text id="anthropic-en-03-txt_3_en_35" x="76" y="710" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Annual capitalized interest; conversion at the</text>
+<text id="anthropic-en-03-txt_3_en_36" x="76" y="734" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">holder’s option.</text>
+<rect x="612" y="544" width="536" height="223" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-03-txt_3_en_38" x="636" y="574" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start" letter-spacing="0.9">DEFINED REVENUE BREACH</text>
+<text id="anthropic-en-03-txt_3_en_39" x="636" y="633" font-family="DejaVu Sans, sans-serif" font-size="49" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start">13%</text>
+<text id="anthropic-en-03-txt_3_en_40" x="877" y="633" font-family="DejaVu Sans, sans-serif" font-size="49" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start">85%</text>
+<text id="anthropic-en-03-txt_3_en_41" x="636" y="665" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Annual interest</text>
+<text id="anthropic-en-03-txt_3_en_42" x="877" y="665" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Of VWAP after IPO</text>
+<text id="anthropic-en-03-txt_3_en_43" x="636" y="710" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">These terms apply to notes issued during that</text>
+<text id="anthropic-en-03-txt_3_en_44" x="636" y="734" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">period.</text>
+<rect x="52" y="800" width="1096" height="195" rx="12" fill="var(--color-surface-2,#171a20)"/>
+<text id="anthropic-en-03-txt_3_en_46" x="76" y="831" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-topic-blue,#7aa2f7)" text-anchor="start" letter-spacing="0.9">MATURITY AND PERFORMANCE DEPENDENCE</text>
+<text id="anthropic-en-03-txt_3_en_47" x="76" y="879" font-family="DejaVu Sans, sans-serif" font-size="39" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">57 / 60 / 63</text>
+<text id="anthropic-en-03-txt_3_en_48" x="352" y="878" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">months</text>
+<text id="anthropic-en-03-txt_3_en_49" x="76" y="916" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">From the draw window start, depending on the</text>
+<text id="anthropic-en-03-txt_3_en_50" x="76" y="940" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">tranche.</text>
+<text id="anthropic-en-03-txt_3_en_51" x="620" y="867" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Unconverted balance: cash at maturity. Certain</text>
+<text id="anthropic-en-03-txt_3_en_52" x="620" y="893" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">defaults can accelerate repayment and close the</text>
+<text id="anthropic-en-03-txt_3_en_53" x="620" y="919" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">facility.</text>
+<line x1="52" y1="1038" x2="1148" y2="1038" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-03-txt_3_en_55" x="52" y="1063" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Source: S04 ; Broadcom NPA dated 31 March 2026, amended 26 October; sections 2.1, 2.2 and 6.</text>
+<text id="anthropic-en-03-txt_3_en_56" x="52" y="1085" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">S01, pp.173–176, confirms capacity and terms. VWAP: volume-weighted average share price over 30 trading days.</text>
+<text id="anthropic-en-03-txt_3_en_57" x="52" y="1107" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Revenue thresholds are redacted; no breach forecast. Interest is added to principal each quarter.</text>
 </svg>
 </figure>
 
@@ -333,67 +333,67 @@ Approximately $186.2 billion of the total is associated with conditions or termi
 <figure class="infographic-readable anthropic-suppliers-figure" style="padding-bottom:1rem" tabindex="0" aria-label="Documented breakdown of the $900.9 billion in obligations, payment horizons and the subset subject to conditions before commencement.">
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" style="width:100%;height:auto;display:block" viewBox="0 0 1200 1190" role="img" aria-labelledby="anthropic-en-04-title anthropic-en-04-desc" lang="en">
 <title id="anthropic-en-04-title">$900.9 billion: scope and payment schedules</title><desc id="anthropic-en-04-desc">The $900.9bn total consists of 319.993 fixed table obligations, 17.4 short-term commitments, 451.2 leases not yet commenced, 105.7 subsequent minimum commitments and 6.6 subsequent short-term commitments. 70.7 due over the next 12 months is included in 451.6 before end-2030. 186.2 is a conditional subset. Separate unfixed estimates of 150-175 are excluded.</desc>
-<defs><pattern id="anthropic-en-04-hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="#101c29" stroke-width="3" opacity="0.65"/></pattern>
-<marker id="anthropic-en-04-cash" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6bd4c1"/></marker>
-<marker id="anthropic-en-04-physical" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#88b9ec"/></marker>
-<marker id="anthropic-en-04-credit" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#f2bd75"/></marker>
+<defs><pattern id="anthropic-en-04-hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="var(--color-ink,#0c0d10)" stroke-width="3" opacity="0.65"/></pattern>
+<marker id="anthropic-en-04-cash" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-signal,#5eead4)"/></marker>
+<marker id="anthropic-en-04-physical" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-topic-blue,#7aa2f7)"/></marker>
+<marker id="anthropic-en-04-credit" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-amber,#f5b13d)"/></marker>
 </defs>
-<rect width="1200" height="1190" fill="#101c29"/>
-<text id="anthropic-en-04-txt_4_en_8" x="52" y="49" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" fill="#6bd4c1" text-anchor="start">l0g</text>
-<text id="anthropic-en-04-txt_4_en_9" x="122" y="47" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start" letter-spacing="1.2">DOCUMENTARY INVESTIGATION  /  11.11.2026</text>
-<text id="anthropic-en-04-txt_4_en_10" x="1148" y="49" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="end">04 / 05</text>
-<text id="anthropic-en-04-txt_4_en_11" x="52" y="112" font-family="DejaVu Sans, sans-serif" font-size="33" font-weight="700" fill="#f1f0e9" text-anchor="start">$900.9 billion: scope and payment schedules</text>
-<text id="anthropic-en-04-txt_4_en_12" x="52" y="151" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#b4c3cc" text-anchor="start">Nominal obligations with different dates and conditions: disaggregate before comparing.</text>
-<line x1="52" y1="198" x2="1148" y2="198" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-04-txt_4_en_14" x="52" y="285" font-family="DejaVu Sans, sans-serif" font-size="66" font-weight="700" fill="#6bd4c1" text-anchor="start">900.9</text>
-<text id="anthropic-en-04-txt_4_en_15" x="300" y="285" font-family="DejaVu Sans, sans-serif" font-size="28" font-weight="400" fill="#6bd4c1" text-anchor="start">$bn</text>
-<text id="anthropic-en-04-txt_4_en_16" x="441" y="247" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" fill="#b4c3cc" text-anchor="start">Reported total: obligations at 30 September 2026 plus</text>
-<text id="anthropic-en-04-txt_4_en_17" x="441" y="276" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" fill="#b4c3cc" text-anchor="start">subsequently signed agreements.</text>
-<text id="anthropic-en-04-txt_4_en_18" x="52" y="366" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#f1f0e9" text-anchor="start">Obligations table at 30 Sep</text>
-<rect x="460" y="338" width="570" height="38" rx="3" fill="#203445"/>
-<rect x="460" y="338" width="404.24647606382985" height="38" rx="3" fill="#88b9ec"/>
-<text id="anthropic-en-04-txt_4_en_21" x="1148" y="367" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#f1f0e9" text-anchor="end">319.993</text>
-<text id="anthropic-en-04-txt_4_en_22" x="52" y="434" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#f1f0e9" text-anchor="start">Short-term commitments at 30 Sep</text>
-<rect x="460" y="406" width="570" height="38" rx="3" fill="#203445"/>
-<rect x="460" y="406" width="21.981382978723406" height="38" rx="3" fill="#b5a4de"/>
-<text id="anthropic-en-04-txt_4_en_25" x="1148" y="435" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#f1f0e9" text-anchor="end">17.4</text>
-<text id="anthropic-en-04-txt_4_en_26" x="52" y="502" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#f1f0e9" text-anchor="start">Signed leases not yet commenced</text>
-<rect x="460" y="474" width="570" height="38" rx="3" fill="#203445"/>
-<rect x="460" y="474" width="570.0" height="38" rx="3" fill="#6bd4c1"/>
-<text id="anthropic-en-04-txt_4_en_29" x="1148" y="503" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#f1f0e9" text-anchor="end">451.2</text>
-<text id="anthropic-en-04-txt_4_en_30" x="52" y="570" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#f1f0e9" text-anchor="start">Subsequent minimum commitments</text>
-<rect x="460" y="542" width="570" height="38" rx="3" fill="#203445"/>
-<rect x="460" y="542" width="133.53058510638297" height="38" rx="3" fill="#f2bd75"/>
-<text id="anthropic-en-04-txt_4_en_33" x="1148" y="571" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#f1f0e9" text-anchor="end">105.7</text>
-<text id="anthropic-en-04-txt_4_en_34" x="52" y="638" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#f1f0e9" text-anchor="start">Subsequent short-term commitments</text>
-<rect x="460" y="610" width="570" height="38" rx="3" fill="#203445"/>
-<rect x="460" y="610" width="8.337765957446809" height="38" rx="3" fill="#f1918c"/>
-<text id="anthropic-en-04-txt_4_en_37" x="1148" y="639" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#f1f0e9" text-anchor="end">6.6</text>
-<text id="anthropic-en-04-txt_4_en_38" x="52" y="711" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="start">Sum: $900.893bn → $900.9bn after rounding.</text>
-<rect x="52" y="748" width="674" height="283" rx="12" fill="#172635"/>
-<text id="anthropic-en-04-txt_4_en_40" x="76" y="778" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#6bd4c1" text-anchor="start" letter-spacing="0.9">EXPECTED TIMING, NOT EXTRA CASH FLOWS</text>
-<text id="anthropic-en-04-txt_4_en_41" x="76" y="826" font-family="DejaVu Sans, sans-serif" font-size="37" font-weight="700" fill="#6bd4c1" text-anchor="start">451.6</text>
-<text id="anthropic-en-04-txt_4_en_42" x="404" y="826" font-family="DejaVu Sans, sans-serif" font-size="37" font-weight="700" fill="#88b9ec" text-anchor="start">449.3</text>
-<text id="anthropic-en-04-txt_4_en_43" x="76" y="858" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">Before end-2030</text>
-<text id="anthropic-en-04-txt_4_en_44" x="404" y="858" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">Remainder, mostly 2031–2045</text>
-<rect x="76" y="899" width="626" height="29" rx="0" fill="#88b9ec"/>
-<rect x="76" y="899" width="313.79908979908987" height="29" rx="0" fill="#6bd4c1"/>
+<rect width="1200" height="1190" fill="none"/>
+<text id="anthropic-en-04-txt_4_en_8" x="52" y="49" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start">l0g</text>
+<text id="anthropic-en-04-txt_4_en_9" x="122" y="47" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" letter-spacing="1.2">DOCUMENTARY INVESTIGATION  /  11.11.2026</text>
+<text id="anthropic-en-04-txt_4_en_10" x="1148" y="49" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">04 / 05</text>
+<text id="anthropic-en-04-txt_4_en_11" x="52" y="112" font-family="DejaVu Sans, sans-serif" font-size="33" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">$900.9 billion: scope and payment schedules</text>
+<text id="anthropic-en-04-txt_4_en_12" x="52" y="151" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Nominal obligations with different dates and conditions: disaggregate before comparing.</text>
+<line x1="52" y1="198" x2="1148" y2="198" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-04-txt_4_en_14" x="52" y="285" font-family="DejaVu Sans, sans-serif" font-size="66" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start">900.9</text>
+<text id="anthropic-en-04-txt_4_en_15" x="300" y="285" font-family="DejaVu Sans, sans-serif" font-size="28" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">$bn</text>
+<text id="anthropic-en-04-txt_4_en_16" x="441" y="247" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Reported total: obligations at 30 September 2026 plus</text>
+<text id="anthropic-en-04-txt_4_en_17" x="441" y="276" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">subsequently signed agreements.</text>
+<text id="anthropic-en-04-txt_4_en_18" x="52" y="366" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Obligations table at 30 Sep</text>
+<rect x="460" y="338" width="570" height="38" rx="3" fill="var(--color-surface-2,#171a20)"/>
+<rect x="460" y="338" width="404.24647606382985" height="38" rx="3" fill="var(--color-topic-blue,#7aa2f7)"/>
+<text id="anthropic-en-04-txt_4_en_21" x="1148" y="367" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">319.993</text>
+<text id="anthropic-en-04-txt_4_en_22" x="52" y="434" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Short-term commitments at 30 Sep</text>
+<rect x="460" y="406" width="570" height="38" rx="3" fill="var(--color-surface-2,#171a20)"/>
+<rect x="460" y="406" width="21.981382978723406" height="38" rx="3" fill="var(--color-elevated,#ff8a3d)"/>
+<text id="anthropic-en-04-txt_4_en_25" x="1148" y="435" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">17.4</text>
+<text id="anthropic-en-04-txt_4_en_26" x="52" y="502" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Signed leases not yet commenced</text>
+<rect x="460" y="474" width="570" height="38" rx="3" fill="var(--color-surface-2,#171a20)"/>
+<rect x="460" y="474" width="570.0" height="38" rx="3" fill="var(--color-signal,#5eead4)"/>
+<text id="anthropic-en-04-txt_4_en_29" x="1148" y="503" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">451.2</text>
+<text id="anthropic-en-04-txt_4_en_30" x="52" y="570" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Subsequent minimum commitments</text>
+<rect x="460" y="542" width="570" height="38" rx="3" fill="var(--color-surface-2,#171a20)"/>
+<rect x="460" y="542" width="133.53058510638297" height="38" rx="3" fill="var(--color-amber,#f5b13d)"/>
+<text id="anthropic-en-04-txt_4_en_33" x="1148" y="571" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">105.7</text>
+<text id="anthropic-en-04-txt_4_en_34" x="52" y="638" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Subsequent short-term commitments</text>
+<rect x="460" y="610" width="570" height="38" rx="3" fill="var(--color-surface-2,#171a20)"/>
+<rect x="460" y="610" width="8.337765957446809" height="38" rx="3" fill="var(--color-accent,#ff4d87)"/>
+<text id="anthropic-en-04-txt_4_en_37" x="1148" y="639" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="end">6.6</text>
+<text id="anthropic-en-04-txt_4_en_38" x="52" y="711" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Sum: $900.893bn → $900.9bn after rounding.</text>
+<rect x="52" y="748" width="674" height="283" rx="12" fill="var(--color-surface,#121419)"/>
+<text id="anthropic-en-04-txt_4_en_40" x="76" y="778" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start" letter-spacing="0.9">EXPECTED TIMING, NOT EXTRA CASH FLOWS</text>
+<text id="anthropic-en-04-txt_4_en_41" x="76" y="826" font-family="DejaVu Sans, sans-serif" font-size="37" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start">451.6</text>
+<text id="anthropic-en-04-txt_4_en_42" x="404" y="826" font-family="DejaVu Sans, sans-serif" font-size="37" font-weight="700" fill="var(--color-topic-blue,#7aa2f7)" text-anchor="start">449.3</text>
+<text id="anthropic-en-04-txt_4_en_43" x="76" y="858" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Before end-2030</text>
+<text id="anthropic-en-04-txt_4_en_44" x="404" y="858" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Remainder, mostly 2031–2045</text>
+<rect x="76" y="899" width="626" height="29" rx="0" fill="var(--color-topic-blue,#7aa2f7)"/>
+<rect x="76" y="899" width="313.79908979908987" height="29" rx="0" fill="var(--color-signal,#5eead4)"/>
 <rect x="76" y="899" width="49.12665112665113" height="29" rx="0" fill="url(#anthropic-en-04-hatch)"/>
-<text id="anthropic-en-04-txt_4_en_48" x="76" y="962" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">Includes $70.7bn over the 12 months after 30 Sep 2026,</text>
-<text id="anthropic-en-04-txt_4_en_49" x="76" y="987" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">already inside the $451.6bn.</text>
-<rect x="750" y="748" width="398" height="283" rx="12" fill="#302c2c"/>
-<text id="anthropic-en-04-txt_4_en_51" x="774" y="778" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#f2bd75" text-anchor="start" letter-spacing="0.9">CONDITIONAL SUBSET</text>
-<text id="anthropic-en-04-txt_4_en_52" x="774" y="837" font-family="DejaVu Sans, sans-serif" font-size="36" font-weight="700" fill="#f2bd75" text-anchor="start">$186.2bn</text>
-<text id="anthropic-en-04-txt_4_en_53" x="774" y="876" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">Conditions or termination rights</text>
-<text id="anthropic-en-04-txt_4_en_54" x="774" y="902" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">before commencement, inside the</text>
-<text id="anthropic-en-04-txt_4_en_55" x="774" y="928" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#f1f0e9" text-anchor="start">$900.9bn.</text>
-<text id="anthropic-en-04-txt_4_en_56" x="774" y="967" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">Includes $4.2bn in the next 12</text>
-<text id="anthropic-en-04-txt_4_en_57" x="774" y="991" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="#b4c3cc" text-anchor="start">months.</text>
-<text id="anthropic-en-04-txt_4_en_58" x="52" y="1067" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#f2bd75" text-anchor="start">Separate: $150–175bn estimated for arrangements without fixed dollar commitments.</text>
-<line x1="52" y1="1098" x2="1148" y2="1098" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-04-txt_4_en_60" x="52" y="1123" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Source: S01 ; 10 November 2026 prospectus, pp.178–181; aggregate timing in risk factors.</text>
-<text id="anthropic-en-04-txt_4_en_61" x="52" y="1145" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Unit: undiscounted billions of US dollars; scopes as labeled. The total is not immediately payable.</text>
-<text id="anthropic-en-04-txt_4_en_62" x="52" y="1167" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Contract-specific delivery remedies remain. Subtracting 186.2 does not make every remaining obligation unconditional.</text>
+<text id="anthropic-en-04-txt_4_en_48" x="76" y="962" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Includes $70.7bn over the 12 months after 30 Sep 2026,</text>
+<text id="anthropic-en-04-txt_4_en_49" x="76" y="987" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">already inside the $451.6bn.</text>
+<rect x="750" y="748" width="398" height="283" rx="12" fill="var(--color-surface-2,#171a20)"/>
+<text id="anthropic-en-04-txt_4_en_51" x="774" y="778" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start" letter-spacing="0.9">CONDITIONAL SUBSET</text>
+<text id="anthropic-en-04-txt_4_en_52" x="774" y="837" font-family="DejaVu Sans, sans-serif" font-size="36" font-weight="700" fill="var(--color-amber,#f5b13d)" text-anchor="start">$186.2bn</text>
+<text id="anthropic-en-04-txt_4_en_53" x="774" y="876" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Conditions or termination rights</text>
+<text id="anthropic-en-04-txt_4_en_54" x="774" y="902" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">before commencement, inside the</text>
+<text id="anthropic-en-04-txt_4_en_55" x="774" y="928" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">$900.9bn.</text>
+<text id="anthropic-en-04-txt_4_en_56" x="774" y="967" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Includes $4.2bn in the next 12</text>
+<text id="anthropic-en-04-txt_4_en_57" x="774" y="991" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">months.</text>
+<text id="anthropic-en-04-txt_4_en_58" x="52" y="1067" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-amber,#f5b13d)" text-anchor="start">Separate: $150–175bn estimated for arrangements without fixed dollar commitments.</text>
+<line x1="52" y1="1098" x2="1148" y2="1098" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-04-txt_4_en_60" x="52" y="1123" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Source: S01 ; 10 November 2026 prospectus, pp.178–181; aggregate timing in risk factors.</text>
+<text id="anthropic-en-04-txt_4_en_61" x="52" y="1145" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Unit: undiscounted billions of US dollars; scopes as labeled. The total is not immediately payable.</text>
+<text id="anthropic-en-04-txt_4_en_62" x="52" y="1167" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Contract-specific delivery remedies remain. Subtracting 186.2 does not make every remaining obligation unconditional.</text>
 </svg>
 </figure>
 
@@ -414,71 +414,71 @@ They also illustrate the importance of reading the accounts correctly. The $104.
 <figure class="infographic-readable anthropic-suppliers-figure" style="padding-bottom:1rem" tabindex="0" aria-label="Reconciliation from net loss to operating cash flow, alongside the breakdown of investing cash outflows for the first nine months of 2026.">
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" style="width:100%;height:auto;display:block" viewBox="0 0 1200 1240" role="img" aria-labelledby="anthropic-en-05-title anthropic-en-05-desc" lang="en">
 <title id="anthropic-en-05-title">From accounting loss to operating cash flow</title><desc id="anthropic-en-05-desc">Net loss -104.039bn; add 94.324 fair-value adjustments on notes/derivatives/SAFEs, 10.277 other financial instruments, 5.580 other non-cash adjustments and 0.427 working-capital changes, equals +6.569bn operating cash flow. Investing outflow 36.546 includes 33.418 net purchases of short-term investments and 3.128 other investment payments.</desc>
-<defs><pattern id="anthropic-en-05-hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="#101c29" stroke-width="3" opacity="0.65"/></pattern>
-<marker id="anthropic-en-05-cash" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6bd4c1"/></marker>
-<marker id="anthropic-en-05-physical" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#88b9ec"/></marker>
-<marker id="anthropic-en-05-credit" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#f2bd75"/></marker>
+<defs><pattern id="anthropic-en-05-hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="var(--color-ink,#0c0d10)" stroke-width="3" opacity="0.65"/></pattern>
+<marker id="anthropic-en-05-cash" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-signal,#5eead4)"/></marker>
+<marker id="anthropic-en-05-physical" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-topic-blue,#7aa2f7)"/></marker>
+<marker id="anthropic-en-05-credit" markerWidth="9" markerHeight="9" refX="7.7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--color-amber,#f5b13d)"/></marker>
 </defs>
-<rect width="1200" height="1240" fill="#101c29"/>
-<text id="anthropic-en-05-txt_5_en_8" x="52" y="49" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" fill="#6bd4c1" text-anchor="start">l0g</text>
-<text id="anthropic-en-05-txt_5_en_9" x="122" y="47" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start" letter-spacing="1.2">DOCUMENTARY INVESTIGATION  /  11.11.2026</text>
-<text id="anthropic-en-05-txt_5_en_10" x="1148" y="49" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="#b4c3cc" text-anchor="end">05 / 05</text>
-<text id="anthropic-en-05-txt_5_en_11" x="52" y="112" font-family="DejaVu Sans, sans-serif" font-size="33" font-weight="700" fill="#f1f0e9" text-anchor="start">From accounting loss to operating cash flow</text>
-<text id="anthropic-en-05-txt_5_en_12" x="52" y="151" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#b4c3cc" text-anchor="start">Net loss to operating cash flow: nine months ended 30 September 2026.</text>
-<line x1="52" y1="198" x2="1148" y2="198" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-05-txt_5_en_14" x="52" y="236" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="#6bd4c1" text-anchor="start" letter-spacing="0.9">BILLIONS OF DOLLARS · UNAUDITED INTERIM DATA</text>
-<line x1="52" y1="325.0" x2="1148" y2="325.0" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-05-txt_5_en_16" x="1148" y="318.0" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="end">0</text>
-<line x1="52" y1="413.75" x2="1148" y2="413.75" stroke="#344858" stroke-width="1" stroke-dasharray="3 6"/>
-<text id="anthropic-en-05-txt_5_en_18" x="1148" y="406.75" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="end">-25</text>
-<line x1="52" y1="502.5" x2="1148" y2="502.5" stroke="#344858" stroke-width="1" stroke-dasharray="3 6"/>
-<text id="anthropic-en-05-txt_5_en_20" x="1148" y="495.5" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="end">-50</text>
-<line x1="52" y1="591.25" x2="1148" y2="591.25" stroke="#344858" stroke-width="1" stroke-dasharray="3 6"/>
-<text id="anthropic-en-05-txt_5_en_22" x="1148" y="584.25" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="end">-75</text>
-<line x1="52" y1="680.0" x2="1148" y2="680.0" stroke="#344858" stroke-width="1" stroke-dasharray="3 6"/>
-<text id="anthropic-en-05-txt_5_en_24" x="1148" y="673.0" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="end">-100</text>
-<rect x="77" y="325.0" width="114" height="369.33844999999997" rx="2" fill="#f1918c"/>
-<text id="anthropic-en-05-txt_5_en_26" x="134.0" y="723.33845" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#f1918c" text-anchor="middle">−104.039</text>
-<line x1="191" y1="694.33845" x2="254" y2="694.33845" stroke="#b4c3cc" stroke-width="1" stroke-dasharray="4 4"/>
-<text id="anthropic-en-05-txt_5_en_28" x="63" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">Net</text>
-<text id="anthropic-en-05-txt_5_en_29" x="63" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">loss</text>
-<rect x="254" y="359.48825" width="114" height="334.8502" rx="2" fill="#6bd4c1"/>
-<text id="anthropic-en-05-txt_5_en_31" x="311.0" y="345.48825" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#6bd4c1" text-anchor="middle">+94.324</text>
-<line x1="368" y1="359.48825" x2="431" y2="359.48825" stroke="#b4c3cc" stroke-width="1" stroke-dasharray="4 4"/>
-<text id="anthropic-en-05-txt_5_en_33" x="240" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">Fair value</text>
-<text id="anthropic-en-05-txt_5_en_34" x="240" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">notes/derivatives</text>
-<text id="anthropic-en-05-txt_5_en_35" x="240" y="802" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">&amp; SAFEs</text>
-<rect x="431" y="323.0049" width="114" height="36.48334999999997" rx="2" fill="#6bd4c1"/>
-<text id="anthropic-en-05-txt_5_en_37" x="488.0" y="309.0049" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#6bd4c1" text-anchor="middle">+10.277</text>
-<line x1="545" y1="323.0049" x2="608" y2="323.0049" stroke="#b4c3cc" stroke-width="1" stroke-dasharray="4 4"/>
-<text id="anthropic-en-05-txt_5_en_39" x="417" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">Other financial</text>
-<text id="anthropic-en-05-txt_5_en_40" x="417" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">instruments</text>
-<rect x="608" y="303.1959" width="114" height="19.809000000000026" rx="2" fill="#6bd4c1"/>
-<text id="anthropic-en-05-txt_5_en_42" x="665.0" y="289.1959" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#6bd4c1" text-anchor="middle">+5.580</text>
-<line x1="722" y1="303.1959" x2="785" y2="303.1959" stroke="#b4c3cc" stroke-width="1" stroke-dasharray="4 4"/>
-<text id="anthropic-en-05-txt_5_en_44" x="594" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">Other non-cash</text>
-<text id="anthropic-en-05-txt_5_en_45" x="594" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">adjustments</text>
-<rect x="785" y="301.68005" width="114" height="2" rx="2" fill="#6bd4c1"/>
-<text id="anthropic-en-05-txt_5_en_47" x="842.0" y="287.68005" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#6bd4c1" text-anchor="middle">+0.427</text>
-<line x1="899" y1="301.68005" x2="962" y2="301.68005" stroke="#b4c3cc" stroke-width="1" stroke-dasharray="4 4"/>
-<text id="anthropic-en-05-txt_5_en_49" x="771" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">Working-capital</text>
-<text id="anthropic-en-05-txt_5_en_50" x="771" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">changes</text>
-<rect x="962" y="301.68005" width="114" height="23.319950000000006" rx="2" fill="#88b9ec"/>
-<text id="anthropic-en-05-txt_5_en_52" x="1019.0" y="287.68005" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="#88b9ec" text-anchor="middle">+6.569</text>
-<text id="anthropic-en-05-txt_5_en_53" x="948" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">Operating</text>
-<text id="anthropic-en-05-txt_5_en_54" x="948" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="#f1f0e9" text-anchor="start">cash flow</text>
-<text id="anthropic-en-05-txt_5_en_55" x="52" y="827" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#b4c3cc" text-anchor="start">Fair-value charges are added back to reconcile cash flow. Committed future payments will affect cash</text>
-<text id="anthropic-en-05-txt_5_en_56" x="52" y="854" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#b4c3cc" text-anchor="start">flows in later periods.</text>
-<line x1="52" y1="894" x2="1148" y2="894" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-05-txt_5_en_58" x="52" y="934" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" fill="#f1f0e9" text-anchor="start">Investing outflow: $36.546bn</text>
-<rect x="52" y="957" width="1096" height="42" rx="3" fill="#f2bd75"/>
-<rect x="52" y="957" width="1002.1925244896842" height="42" rx="3" fill="#b5a4de"/>
-<text id="anthropic-en-05-txt_5_en_61" x="72" y="986" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" fill="#101c29" text-anchor="start">33.418: net purchases of short-term investments</text>
-<text id="anthropic-en-05-txt_5_en_62" x="52" y="1040" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="#b4c3cc" text-anchor="start">$3.128bn of other outflows: equipment 0.925; leased-equipment prepayments 1.955; other 0.248.</text>
-<line x1="52" y1="1148" x2="1148" y2="1148" stroke="#344858" stroke-width="1"/>
-<text id="anthropic-en-05-txt_5_en_64" x="52" y="1173" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Source: S01 ; consolidated cash-flow statement, printed page F-13. l0g calculations detailed in the methodology below.</text>
-<text id="anthropic-en-05-txt_5_en_65" x="52" y="1195" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Period: January–September 2026. Working capital groups the five reported changes in operating assets and liabilities.</text>
-<text id="anthropic-en-05-txt_5_en_66" x="52" y="1217" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#b4c3cc" text-anchor="start">Other adjustments: stock compensation 3.255 + depreciation 0.250 + donations 2.086 − other 0.011. No annualization.</text>
+<rect width="1200" height="1240" fill="none"/>
+<text id="anthropic-en-05-txt_5_en_8" x="52" y="49" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start">l0g</text>
+<text id="anthropic-en-05-txt_5_en_9" x="122" y="47" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" letter-spacing="1.2">DOCUMENTARY INVESTIGATION  /  11.11.2026</text>
+<text id="anthropic-en-05-txt_5_en_10" x="1148" y="49" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">05 / 05</text>
+<text id="anthropic-en-05-txt_5_en_11" x="52" y="112" font-family="DejaVu Sans, sans-serif" font-size="33" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">From accounting loss to operating cash flow</text>
+<text id="anthropic-en-05-txt_5_en_12" x="52" y="151" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Net loss to operating cash flow: nine months ended 30 September 2026.</text>
+<line x1="52" y1="198" x2="1148" y2="198" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-05-txt_5_en_14" x="52" y="236" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="start" letter-spacing="0.9">BILLIONS OF DOLLARS · UNAUDITED INTERIM DATA</text>
+<line x1="52" y1="325.0" x2="1148" y2="325.0" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-05-txt_5_en_16" x="1148" y="318.0" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">0</text>
+<line x1="52" y1="413.75" x2="1148" y2="413.75" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" stroke-dasharray="3 6"/>
+<text id="anthropic-en-05-txt_5_en_18" x="1148" y="406.75" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">-25</text>
+<line x1="52" y1="502.5" x2="1148" y2="502.5" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" stroke-dasharray="3 6"/>
+<text id="anthropic-en-05-txt_5_en_20" x="1148" y="495.5" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">-50</text>
+<line x1="52" y1="591.25" x2="1148" y2="591.25" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" stroke-dasharray="3 6"/>
+<text id="anthropic-en-05-txt_5_en_22" x="1148" y="584.25" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">-75</text>
+<line x1="52" y1="680.0" x2="1148" y2="680.0" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" stroke-dasharray="3 6"/>
+<text id="anthropic-en-05-txt_5_en_24" x="1148" y="673.0" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">-100</text>
+<rect x="77" y="325.0" width="114" height="369.33844999999997" rx="2" fill="var(--color-accent,#ff4d87)"/>
+<text id="anthropic-en-05-txt_5_en_26" x="134.0" y="723.33845" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-accent,#ff4d87)" text-anchor="middle">−104.039</text>
+<line x1="191" y1="694.33845" x2="254" y2="694.33845" stroke="var(--color-muted,#8b909b)" stroke-width="1" stroke-dasharray="4 4"/>
+<text id="anthropic-en-05-txt_5_en_28" x="63" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Net</text>
+<text id="anthropic-en-05-txt_5_en_29" x="63" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">loss</text>
+<rect x="254" y="359.48825" width="114" height="334.8502" rx="2" fill="var(--color-signal,#5eead4)"/>
+<text id="anthropic-en-05-txt_5_en_31" x="311.0" y="345.48825" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="middle">+94.324</text>
+<line x1="368" y1="359.48825" x2="431" y2="359.48825" stroke="var(--color-muted,#8b909b)" stroke-width="1" stroke-dasharray="4 4"/>
+<text id="anthropic-en-05-txt_5_en_33" x="240" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Fair value</text>
+<text id="anthropic-en-05-txt_5_en_34" x="240" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">notes/derivatives</text>
+<text id="anthropic-en-05-txt_5_en_35" x="240" y="802" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">&amp; SAFEs</text>
+<rect x="431" y="323.0049" width="114" height="36.48334999999997" rx="2" fill="var(--color-signal,#5eead4)"/>
+<text id="anthropic-en-05-txt_5_en_37" x="488.0" y="309.0049" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="middle">+10.277</text>
+<line x1="545" y1="323.0049" x2="608" y2="323.0049" stroke="var(--color-muted,#8b909b)" stroke-width="1" stroke-dasharray="4 4"/>
+<text id="anthropic-en-05-txt_5_en_39" x="417" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Other financial</text>
+<text id="anthropic-en-05-txt_5_en_40" x="417" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">instruments</text>
+<rect x="608" y="303.1959" width="114" height="19.809000000000026" rx="2" fill="var(--color-signal,#5eead4)"/>
+<text id="anthropic-en-05-txt_5_en_42" x="665.0" y="289.1959" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="middle">+5.580</text>
+<line x1="722" y1="303.1959" x2="785" y2="303.1959" stroke="var(--color-muted,#8b909b)" stroke-width="1" stroke-dasharray="4 4"/>
+<text id="anthropic-en-05-txt_5_en_44" x="594" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Other non-cash</text>
+<text id="anthropic-en-05-txt_5_en_45" x="594" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">adjustments</text>
+<rect x="785" y="301.68005" width="114" height="2" rx="2" fill="var(--color-signal,#5eead4)"/>
+<text id="anthropic-en-05-txt_5_en_47" x="842.0" y="287.68005" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-signal,#5eead4)" text-anchor="middle">+0.427</text>
+<line x1="899" y1="301.68005" x2="962" y2="301.68005" stroke="var(--color-muted,#8b909b)" stroke-width="1" stroke-dasharray="4 4"/>
+<text id="anthropic-en-05-txt_5_en_49" x="771" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Working-capital</text>
+<text id="anthropic-en-05-txt_5_en_50" x="771" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">changes</text>
+<rect x="962" y="301.68005" width="114" height="23.319950000000006" rx="2" fill="var(--color-topic-blue,#7aa2f7)"/>
+<text id="anthropic-en-05-txt_5_en_52" x="1019.0" y="287.68005" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" fill="var(--color-topic-blue,#7aa2f7)" text-anchor="middle">+6.569</text>
+<text id="anthropic-en-05-txt_5_en_53" x="948" y="758" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Operating</text>
+<text id="anthropic-en-05-txt_5_en_54" x="948" y="780" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">cash flow</text>
+<text id="anthropic-en-05-txt_5_en_55" x="52" y="827" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Fair-value charges are added back to reconcile cash flow. Committed future payments will affect cash</text>
+<text id="anthropic-en-05-txt_5_en_56" x="52" y="854" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">flows in later periods.</text>
+<line x1="52" y1="894" x2="1148" y2="894" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-05-txt_5_en_58" x="52" y="934" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Investing outflow: $36.546bn</text>
+<rect x="52" y="957" width="1096" height="42" rx="3" fill="var(--color-amber,#f5b13d)"/>
+<rect x="52" y="957" width="1002.1925244896842" height="42" rx="3" fill="var(--color-elevated,#ff8a3d)"/>
+<text id="anthropic-en-05-txt_5_en_61" x="72" y="986" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" fill="var(--color-ink,#0c0d10)" text-anchor="start">33.418: net purchases of short-term investments</text>
+<text id="anthropic-en-05-txt_5_en_62" x="52" y="1040" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">$3.128bn of other outflows: equipment 0.925; leased-equipment prepayments 1.955; other 0.248.</text>
+<line x1="52" y1="1148" x2="1148" y2="1148" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1"/>
+<text id="anthropic-en-05-txt_5_en_64" x="52" y="1173" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Source: S01 ; consolidated cash-flow statement, printed page F-13. l0g calculations detailed in the methodology below.</text>
+<text id="anthropic-en-05-txt_5_en_65" x="52" y="1195" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Period: January–September 2026. Working capital groups the five reported changes in operating assets and liabilities.</text>
+<text id="anthropic-en-05-txt_5_en_66" x="52" y="1217" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Other adjustments: stock compensation 3.255 + depreciation 0.250 + donations 2.086 − other 0.011. No annualization.</text>
 </svg>
 </figure>
 
@@ -506,98 +506,124 @@ The documents establish that suppliers help finance their customer’s purchasin
 
 ---
 
-### Method and access to documents
+## Method and limitations
 
 This investigation draws on the amended prospectus, agreements filed as exhibits, partners’ financial reports, regulatory decisions and observed payment data. Company announcements are identified as such; the same release published by two partners does not constitute two independent checks. Announced amounts, conditional ceilings, payments and recognised revenue are treated separately. Figures for the period ended 30 September 2026 have not been annualised.
 
 The original documents are linked below, with page and section references beside the relevant claims. The commitment total is reconstructed below figure 4. For figure 5, in billions: −104.039 + 94.324 + 10.277 + 5.580 + 0.427 = 6.569 of operating cash flow; 40.318 − 6.900 = 33.418 of net short-term investment purchases, included in the 36.546 investing outflow. Signed agreements, amendments and forms of agreement remain distinct. No company interviews or access to non-public provisions are claimed.
 
+Redacted revenue thresholds prevent measuring the distance to the Broadcom facility’s triggers. The documents provide neither a complete reconciliation of earlier funding commitments nor a measure of demand independent of supplier capital. Interim accounts are unaudited, and announced capacity does not establish actual availability. [S01](#source-S01) [S04](#source-S04)
+
 ## Related analysis
 
 The [Anthropic IPO analysis](/en/analysis/anthropic-ipo-compute-valuation-macro-risk/) places the funding alongside the industrial cost of compute. The [Broadcom–Blackstone investigation](/en/analysis/broadcom-anthropic-blackstone-63-billion-risk/) examines guarantees and creditor ranking. Our [analysis of deferred interest in AI financing](/en/analysis/ai-pik-financing-cost-of-deferring-interest/) explains the cost of capitalisation. The [compute prices and GPU debt analysis](/en/analysis/ai-compute-price-collapse-gpu-debt/) tests the sensitivity of equipment repayments to revenue.
 
-### Sources and documents
+## Sources and scope
 
-<a id="source-S01"></a>
-**S01 : Anthropic, PBC : S-1/A, Amendment No. 2** · Anthropic / SEC EDGAR · 2026-11-10
-<https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm>
-
-<a id="source-S02"></a>
-**S02 : Google : Class N Common Stock Purchase Agreement** · Anthropic and Google / SEC · 2026-11-10
-<https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/exhibit1015-sx1ax2.htm>
-
-<a id="source-S03"></a>
-**S03 : Form of Class N Common Stock Purchase Agreement** · Anthropic / SEC · 2026-11-10
-<https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/exhibit1016-sx1ax2.htm>
-
-<a id="source-S04"></a>
-**S04 : Broadcom : Amended Note Purchase Agreement** · Anthropic and Broadcom / SEC · 2026-11-02
-<https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/exhibit44-sx1a1.htm>
-
-<a id="source-S06"></a>
-**S06 : Google : Note Purchase Agreement** · Anthropic and Google / SEC · 2026-10-26
-<https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/exhibit45-sx1.htm>
-
-<a id="source-S07"></a>
-**S07 : Amazon : Stock Purchase and Convertible Note Facility Agreement** · Anthropic and AWS / SEC · 2026-10-26
-<https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/exhibit43-sx1.htm>
-
-<a id="source-S08"></a>
-**S08 : Microsoft, NVIDIA, and Anthropic announce strategic partnerships** · Anthropic · 2025-11-18
-<https://www.anthropic.com/news/microsoft-nvidia-anthropic-announce-strategic-partnerships>
-
-<a id="source-S09"></a>
-**S09 : Anthropic raises $30 billion in Series G funding** · Anthropic · 2026-02-12
-<https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation>
-
-<a id="source-S10"></a>
-**S10 : Anthropic raises $65B in Series H funding** · Anthropic · 2026-05-28
-<https://www.anthropic.com/news/series-h>
-
-<a id="source-S11"></a>
-**S11 : Anthropic and Amazon expand collaboration for up to 5 gigawatts** · Anthropic · 2026-04-20
-<https://www.anthropic.com/news/anthropic-amazon-compute>
-
-<a id="source-S12"></a>
-**S12 : Amazon : Form 10-Q, period ended 30 September 2026** · Amazon / SEC · 2026-10-30
-<https://www.sec.gov/Archives/edgar/data/1018724/000101872426000040/amzn-20260930.htm>
-
-<a id="source-S13"></a>
-**S13 : $63 billion financing for equipment to be leased to Anthropic** · Bank of America, Blackstone, Citi, Morgan Stanley / Blackstone · 2026-10-26
-<https://www.blackstone.com/news/press/bank-of-america-blackstone-citi-and-morgan-stanley-announce-landmark-63-billion-financing-structure-to-enable-ai-compute/>
-
-<a id="source-S14"></a>
-**S14 : Broadcom : Form 10-Q, period ended 2 August 2026** · Broadcom / SEC · 2026-09-10
-<https://www.sec.gov/Archives/edgar/data/1730168/000173016826000080/avgo-20260802.htm>
-
-<a id="source-S15"></a>
-**S15 : Partnerships Between Cloud Service Providers and AI Developers** · Federal Trade Commission, Office of Technology staff · 2025-01-17
-<https://www.ftc.gov/system/files/ftc_gov/pdf/p246201_aipartnerships6breport_redacted_0.pdf>
-
-<a id="source-S16"></a>
-**S16 : Alphabet–Anthropic : Decision on relevant merger situation ME/7108/24** · Competition and Markets Authority · 2024-12-24
-<https://assets.publishing.service.gov.uk/media/676959bae6ff7c8a1fde9d33/Full_text_decision__.pdf>
-
-<a id="source-S17"></a>
-**S17 : Amazon–Anthropic : Decision on relevant merger situation ME/7100/24** · Competition and Markets Authority · 2024-10-17
-<https://assets.publishing.service.gov.uk/media/6710ba44e84ae1fd8592f52c/Full_text_decision.pdf>
-
-<a id="source-S18"></a>
-**S18 : October 2026 Ramp AI Index: Cracks in the AI thesis, part 3** · Ramp Economics Lab · 2026-10-14
-<https://ramp.com/data/ai-index-oct-2026>
-
-<a id="source-S19"></a>
-**S19 : Anthropic expands partnership with Google and Broadcom** · Anthropic · 2026-04-06
-<https://www.anthropic.com/news/google-broadcom-partnership-compute>
-
-<a id="source-S21"></a>
-**S21 : Anthropic launches roadshow for proposed initial public offering** · Anthropic · 2026-11-10
-<https://www.anthropic.com/news/roadshow-launch>
-
-<a id="source-S22"></a>
-**S22 : Factbox : Amazon, Google set for big windfall from Anthropic IPO** · Reuters, republished by Euronext · 2026-11-10
-<https://live.euronext.com/en/financial-news/factbox-amazon-google-set-big-windfall-anthropic-ipo>
-
-<a id="source-S23"></a>
-**S23 : Anthropic charter to take effect upon completion of the IPO** · Anthropic / SEC · 2026-10-26
-<https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/exhibit33-sx1.htm>
+<ol class="sources-list" role="list">
+<li id="source-S01">
+<span class="source-meta">S01 · Anthropic / SEC EDGAR · Published: 2026-11-10 · Accessed: 2026-11-11</span>
+<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm" target="_blank" rel="noopener noreferrer">Anthropic, PBC : S-1/A, Amendment No. 2</a>
+<details><summary>Passages and scope</summary><p>Offering p.20; use of proceeds pp.127–128; financing pp.171–177; obligations pp.178–181; placement pp.347–348; financial statements F-13, F-22 and F-27; distribution pp.60–61. Issuer disclosure covering September 30 accounts and subsequent agreements: unaudited interim accounts, preliminary offering and partly redacted exhibits; filing does not imply SEC approval.</p></details>
+</li>
+<li id="source-S02">
+<span class="source-meta">S02 · Anthropic and Google / SEC · Published: 2026-11-10 · Accessed: 2026-11-11</span>
+<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/exhibit1015-sx1ax2.htm" target="_blank" rel="noopener noreferrer">Google : Class N Common Stock Purchase Agreement</a>
+<details><summary>Passages and scope</summary><p>Sections 1.1–1.4, 3.10, 4, 6 and 7.8: Google subscription, wire payment at closing and exercise of the option under the earlier agreement. Section 4.4 is redacted; a rollover applies if the ownership cap is exceeded, which the prospectus does not expect for this subscription.</p></details>
+</li>
+<li id="source-S03">
+<span class="source-meta">S03 · Anthropic / SEC · Published: 2026-11-10 · Accessed: 2026-11-11</span>
+<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/exhibit1016-sx1ax2.htm" target="_blank" rel="noopener noreferrer">Form of Class N Common Stock Purchase Agreement</a>
+<details><summary>Passages and scope</summary><p>Sections 1.2, 2.7, 3.10, 4, 6 and 7.14: payment at the IPO price, closing conditions and resale restrictions. Filed form with investor and amount left blank; individual allocations come from prospectus S01.</p></details>
+</li>
+<li id="source-S04">
+<span class="source-meta">S04 · Anthropic and Broadcom / SEC · Published: 2026-11-02 · Accessed: 2026-11-11</span>
+<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/exhibit44-sx1a1.htm" target="_blank" rel="noopener noreferrer">Broadcom : Amended Note Purchase Agreement</a>
+<details><summary>Passages and scope</summary><p>Definitions, sections 2.1, 2.2, 3.2, 6 and 10.2 and the form of note: rent financing, interest, conversion, maturities and defaults. The October 26 amendment adds payment to an unaffiliated lessor in section 2.1(a), while section 2.1(c) retains its general cash wording; revenue thresholds remain redacted.</p></details>
+</li>
+<li id="source-S06">
+<span class="source-meta">S06 · Anthropic and Google / SEC · Published: 2026-10-26 · Accessed: 2026-11-11</span>
+<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/exhibit45-sx1.htm" target="_blank" rel="noopener noreferrer">Google : Note Purchase Agreement</a>
+<details><summary>Passages and scope</summary><p>Sections 1.2 and 2.1(a), (c), (h), (i), (j): capacity milestones, revenue targets, IPO option and requests through the end of 2030. Partly redacted March agreement; current availability and post-IPO terms must be read with S01.</p></details>
+</li>
+<li id="source-S07">
+<span class="source-meta">S07 · Anthropic and AWS / SEC · Published: 2026-10-26 · Accessed: 2026-11-11</span>
+<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/exhibit43-sx1.htm" target="_blank" rel="noopener noreferrer">Amazon : Stock Purchase and Convertible Note Facility Agreement</a>
+<details><summary>Passages and scope</summary><p>Preamble and article 2, Delivered Capacity Milestones: capacity-linked financing and ownership limits. The original $20 billion facility falls to $15 billion after Series H according to S01 and S12; Amazon is absent from the $26 billion placement.</p></details>
+</li>
+<li id="source-S08">
+<span class="source-meta">S08 · Anthropic · Published: 2025-11-18 · Accessed: 2026-11-11</span>
+<a href="https://www.anthropic.com/news/microsoft-nvidia-anthropic-announce-strategic-partnerships" target="_blank" rel="noopener noreferrer">Microsoft, NVIDIA, and Anthropic announce strategic partnerships</a>
+<details><summary>Passages and scope</summary><p>Paragraphs on Azure, Nvidia architecture and investments announced in November 2025. Partner announcement of future commitments, with no evidence of full payment or additionality to later rounds; updated Azure terms appear in S01.</p></details>
+</li>
+<li id="source-S09">
+<span class="source-meta">S09 · Anthropic · Published: 2026-02-12 · Accessed: 2026-11-11</span>
+<a href="https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation" target="_blank" rel="noopener noreferrer">Anthropic raises $30 billion in Series G funding</a>
+<details><summary>Passages and scope</summary><p>Paragraph stating that Series G includes part of the previously announced Microsoft and Nvidia investments. Issuer announcement without an individual breakdown of the overlap; the 2025 ceilings cannot simply be added to the round.</p></details>
+</li>
+<li id="source-S10">
+<span class="source-meta">S10 · Anthropic · Published: 2026-05-28 · Accessed: 2026-11-11</span>
+<a href="https://www.anthropic.com/news/series-h" target="_blank" rel="noopener noreferrer">Anthropic raises $65B in Series H funding</a>
+<details><summary>Passages and scope</summary><p>Paragraph on $15 billion of earlier commitments included in the $65 billion Series H, including $5 billion from Amazon. Issuer announcement; the $15 billion is part of the total, and this passage does not allocate the remaining $10 billion individually.</p></details>
+</li>
+<li id="source-S11">
+<span class="source-meta">S11 · Anthropic · Published: 2026-04-20 · Accessed: 2026-11-11</span>
+<a href="https://www.anthropic.com/news/anthropic-amazon-compute" target="_blank" rel="noopener noreferrer">Anthropic and Amazon expand collaboration for up to 5 gigawatts</a>
+<details><summary>Passages and scope</summary><p>Infrastructure at scale and Continued investment sections: AWS capacity and associated financing announced in April 2026. Anthropic statement concerning future capacity, without evidence of full delivery; updated commitments appear in S01 and S12.</p></details>
+</li>
+<li id="source-S12">
+<span class="source-meta">S12 · Amazon / SEC · Published: 2026-10-30 · Accessed: 2026-11-11</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000040/amzn-20260930.htm" target="_blank" rel="noopener noreferrer">Amazon : Form 10-Q, period ended 30 September 2026</a>
+<details><summary>Passages and scope</summary><p>Note 2, pp.11–12, and MD&amp;A p.28: Anthropic investments and facility availability at September 30, 2026. Confirmation by an interested counterparty; security conversions and revaluations are not additional cash payments.</p></details>
+</li>
+<li id="source-S13">
+<span class="source-meta">S13 · Bank of America, Blackstone, Citi, Morgan Stanley / Blackstone · Published: 2026-10-26 · Accessed: 2026-11-11</span>
+<a href="https://www.blackstone.com/news/press/bank-of-america-blackstone-citi-and-morgan-stanley-announce-landmark-63-billion-financing-structure-to-enable-ai-compute/" target="_blank" rel="noopener noreferrer">$63 billion financing for equipment to be leased to Anthropic</a>
+<details><summary>Passages and scope</summary><p>Opening paragraphs on the special-purpose vehicle, first- and second-lien financing and residual value support. Participant announcement of deliveries expected from 2027, without disclosure of every loss-allocation clause; asset financing and the related rents may overlap.</p></details>
+</li>
+<li id="source-S14">
+<span class="source-meta">S14 · Broadcom / SEC · Published: 2026-09-10 · Accessed: 2026-11-11</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1730168/000173016826000080/avgo-20260802.htm" target="_blank" rel="noopener noreferrer">Broadcom : Form 10-Q, period ended 2 August 2026</a>
+<details><summary>Passages and scope</summary><p>Commitments and Contingencies and MD&amp;A, Recent Developments p.24: residual guarantee for an earlier June transaction, as of August 2, 2026. Broadcom disclosure; its formula cannot be transferred to the $63 billion transaction announced in October.</p></details>
+</li>
+<li id="source-S15">
+<span class="source-meta">S15 · Federal Trade Commission, Office of Technology staff · Published: 2025-01-17 · Accessed: 2026-11-11</span>
+<a href="https://www.ftc.gov/system/files/ftc_gov/pdf/p246201_aipartnerships6breport_redacted_0.pdf" target="_blank" rel="noopener noreferrer">Partnerships Between Cloud Service Providers and AI Developers</a>
+<details><summary>Passages and scope</summary><p>Printed pp.1–3, 19–21 and 32–34; sections 4.3 and 5.2: circular spending, cloud commitments and switching costs. Staff report covering documents through September 2024 and public information through January 2025, with no finding of illegality or proof of every 2026 contractual term.</p></details>
+</li>
+<li id="source-S16">
+<span class="source-meta">S16 · Competition and Markets Authority · Published: 2024-12-24 · Accessed: 2026-11-11</span>
+<a href="https://assets.publishing.service.gov.uk/media/676959bae6ff7c8a1fde9d33/Full_text_decision__.pdf" target="_blank" rel="noopener noreferrer">Alphabet–Anthropic : Decision on relevant merger situation ME/7108/24</a>
+<details><summary>Passages and scope</summary><p>Paragraphs 24–30: Google rights, compute suppliers and financing sources examined in 2024. Historical decision finding no material influence under the arrangements reviewed, without an automatic conclusion about 2026 agreements.</p></details>
+</li>
+<li id="source-S17">
+<span class="source-meta">S17 · Competition and Markets Authority · Published: 2024-10-17 · Accessed: 2026-11-11</span>
+<a href="https://assets.publishing.service.gov.uk/media/6710ba44e84ae1fd8592f52c/Full_text_decision.pdf" target="_blank" rel="noopener noreferrer">Amazon–Anthropic : Decision on relevant merger situation ME/7100/24</a>
+<details><summary>Passages and scope</summary><p>Paragraphs 20–25: UK jurisdictional thresholds and the Amazon partnership examined in 2024. Closure because the thresholds were not met; the CMA did not determine material influence or approve the economic relationship on its merits.</p></details>
+</li>
+<li id="source-S18">
+<span class="source-meta">S18 · Ramp Economics Lab · Published: 2026-10-14 · Accessed: 2026-11-11</span>
+<a href="https://ramp.com/data/ai-index-oct-2026" target="_blank" rel="noopener noreferrer">October 2026 Ramp AI Index: Cracks in the AI thesis, part 3</a>
+<details><summary>Passages and scope</summary><p>Model adoption section and methodological notes: payments observed in September 2026. Ramp commercial data for its sample; 43.8% measures the presence of a payment, not dollar market share or adoption across all US businesses.</p></details>
+</li>
+<li id="source-S19">
+<span class="source-meta">S19 · Anthropic · Published: 2026-04-06 · Accessed: 2026-11-11</span>
+<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute" target="_blank" rel="noopener noreferrer">Anthropic expands partnership with Google and Broadcom</a>
+<details><summary>Passages and scope</summary><p>Opening paragraph and architecture description: additional TPU capacity expected from 2027. Anthropic announcement of future capacity, without measured utilisation or profitability; successive announcements may overlap.</p></details>
+</li>
+<li id="source-S21">
+<span class="source-meta">S21 · Anthropic · Published: 2026-11-10 · Accessed: 2026-11-11</span>
+<a href="https://www.anthropic.com/news/roadshow-launch" target="_blank" rel="noopener noreferrer">Anthropic launches roadshow for proposed initial public offering</a>
+<details><summary>Passages and scope</summary><p>Offering description and registration status as of 10 November 2026. Issuer announcement for a still-proposed IPO, subject to its closing conditions.</p></details>
+</li>
+<li id="source-S22">
+<span class="source-meta">S22 · Reuters, republished by Euronext · Published: 2026-11-10 · Accessed: 2026-11-11</span>
+<a href="https://live.euronext.com/en/financial-news/factbox-amazon-google-set-big-windfall-anthropic-ipo" target="_blank" rel="noopener noreferrer">Factbox : Amazon, Google set for big windfall from Anthropic IPO</a>
+<details><summary>Passages and scope</summary><p>PRIVATE PLACEMENT AT IPO table: investor allocations and Google and AMD overlaps. Secondary Reuters reporting republished by Euronext, based on the same prospectus; this cross-check is not an independent financial audit.</p></details>
+</li>
+<li id="source-S23">
+<span class="source-meta">S23 · Anthropic / SEC · Published: 2026-10-26 · Accessed: 2026-11-11</span>
+<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/exhibit33-sx1.htm" target="_blank" rel="noopener noreferrer">Anthropic charter to take effect upon completion of the IPO</a>
+<details><summary>Passages and scope</summary><p>Article V and article VII, section 7.1: Class N, F and T rights under the proposed post-IPO charter. Original exhibit EX-3.3 incorporated as EX-3.2 in the amended filing; economic rights, general voting and board elections remain distinct.</p></details>
+</li>
+</ol>
