@@ -18,6 +18,8 @@ const guides = (await getCollection('guidesEn', ({ data }) => !data.draft))
 
 <EnglishGuidesLayout
   title="English guides"
+  ogImage="/og/guides/guides-en-v1.jpg"
+  ogImageAlt="Finance, made clear. The l0g guides, illustrated by a smoked-glass compass with fine amber and cyan markings."
   description="Guides to economics and finance: macro data, banks, liquidity, markets and crypto. Browse by topic or search a concept."
   alternateLinks={[
     { hreflang: 'fr', href: new URL('/guides/', Astro.site).toString() },

@@ -3,7 +3,7 @@ import { closeSync, constants, fstatSync, openSync, readSync, realpathSync } fro
 import { resolve, sep } from 'node:path';
 
 // Bump for every visual/font change: social crawlers must receive a new URL.
-export const ARTICLE_SOCIAL_VERSION = 'photo-title-excerpt-v1';
+export const ARTICLE_SOCIAL_VERSION = 'photo-title-excerpt-v2';
 const illustration = /^\/illustrations\/news\/[a-zA-Z0-9][a-zA-Z0-9._-]*\.(?:jpe?g|png|webp)$/u;
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 

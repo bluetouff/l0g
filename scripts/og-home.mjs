@@ -7,8 +7,10 @@ import { OG, h, renderOgPng } from './og-kit.mjs';
 const art = {
   home: fs.readFileSync(new URL('../public/illustrations/brand/l0g-home-aperture-v1.jpg', import.meta.url)),
   catalogue: fs.readFileSync(new URL('../public/illustrations/brand/l0g-publications-library-v1.jpg', import.meta.url)),
+  guides: fs.readFileSync(new URL('../public/illustrations/brand/l0g-guides-compass-v1.jpg', import.meta.url)),
 };
 const titleGradient = `linear-gradient(90deg, ${OG.teal}, ${OG.rose})`;
+const guideGradient = `linear-gradient(90deg, ${OG.amber}, ${OG.teal})`;
 const editions = [
   {
     section: 'home', lang: 'fr', file: 'l0g-finance-v2.jpg',
@@ -38,6 +40,20 @@ const editions = [
     tagline: ['Long-form digital editions,', 'with sources and references.'],
     footer: 'Digital editions · open access', domain: 'l0g.fr/en/publications',
   },
+  {
+    section: 'guides', lang: 'fr', file: 'guides-fr-v1.jpg',
+    labels: ['GUIDES', 'MÉTHODE', 'REPÈRES'],
+    title: ['La finance,', 'mode d’emploi.'],
+    tagline: ['Des repères pour comprendre', 'les mécanismes de la finance.'],
+    footer: 'Comprendre · relier · vérifier', domain: 'l0g.fr/guides',
+  },
+  {
+    section: 'guides', lang: 'en', file: 'guides-en-v1.jpg',
+    labels: ['GUIDES', 'METHOD', 'CONTEXT'],
+    title: ['Finance,', 'made clear.'],
+    tagline: ['Clear explanations for', 'complex financial mechanisms.'],
+    footer: 'Concepts · mechanisms · sources', domain: 'l0g.fr/en/guides',
+  },
 ];
 
 const cardFor = (copy) => h('div', {
@@ -58,11 +74,11 @@ const cardFor = (copy) => h('div', {
     position: 'absolute', left: 64, top: 172, display: 'flex',
     alignItems: 'center', gap: 15, fontSize: 17, letterSpacing: 1.4,
   },
-    h('span', { color: OG.teal }, copy.labels[0]),
+    h('span', { color: copy.section === 'guides' ? OG.amber : OG.teal }, copy.labels[0]),
     h('span', { color: OG.muted }, '/'),
     h('span', { color: OG.paper }, copy.labels[1]),
     h('span', { color: OG.muted }, '/'),
-    h('span', { color: OG.rose }, copy.labels[2]),
+    h('span', { color: copy.section === 'guides' ? OG.teal : OG.rose }, copy.labels[2]),
   ),
   h('div', {
     position: 'absolute', left: 60, top: 227, display: 'flex',
@@ -71,7 +87,7 @@ const cardFor = (copy) => h('div', {
   },
     h('div', { display: 'flex' }, copy.title[0]),
     h('div', { display: 'flex' }, h('span', {
-      color: 'transparent', backgroundImage: titleGradient, backgroundClip: 'text',
+      color: 'transparent', backgroundImage: copy.section === 'guides' ? guideGradient : titleGradient, backgroundClip: 'text',
     }, copy.title[1])),
   ),
   h('div', {

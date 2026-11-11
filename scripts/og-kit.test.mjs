@@ -200,25 +200,30 @@ test("home and catalogue social cards remain compact, distinct and retain their 
     }
   }
   assert.ok(englishAddressPixels >= 100, "the English site address was clipped from its footer area");
-  const catalogueCards = [];
-  for (const language of ['fr', 'en']) {
-    const card = await readFile(join(directory, `public/og/catalogue/publications-${language}-v1.jpg`));
-    const dimensions = await sharp(card).metadata();
-    assert.deepEqual([dimensions.format, dimensions.width, dimensions.height], ['jpeg', OG.width, OG.height]);
-    assert.ok(card.length <= 200_000, `${language}: catalogue sharing image exceeds 200 KB`);
-    assert.notDeepEqual(card, language === 'fr' ? jpeg : english, 'the catalogue needs dedicated artwork');
-    const pixels = await sharp(card).removeAlpha().raw().toBuffer();
-    let addressPixels = 0;
-    for (let y = 540; y < 590; y++) {
-      for (let x = 760; x < 1150; x++) {
-        const offset = (y * OG.width + x) * 3;
-        if (pixels[offset] >= 220 && pixels[offset + 1] >= 220 && pixels[offset + 2] >= 220) addressPixels++;
+  const sectionCards = [];
+  for (const [section, stem] of [['catalogue', 'publications'], ['guides', 'guides']]) {
+    const localizedCards = [];
+    for (const language of ['fr', 'en']) {
+      const card = await readFile(join(directory, `public/og/${section}/${stem}-${language}-v1.jpg`));
+      const dimensions = await sharp(card).metadata();
+      assert.deepEqual([dimensions.format, dimensions.width, dimensions.height], ['jpeg', OG.width, OG.height]);
+      assert.ok(card.length <= 200_000, `${section}/${language}: sharing image exceeds 200 KB`);
+      assert.notDeepEqual(card, language === 'fr' ? jpeg : english, `${section} needs dedicated artwork`);
+      const pixels = await sharp(card).removeAlpha().raw().toBuffer();
+      let addressPixels = 0;
+      for (let y = 540; y < 590; y++) {
+        for (let x = 760; x < 1150; x++) {
+          const offset = (y * OG.width + x) * 3;
+          if (pixels[offset] >= 220 && pixels[offset + 1] >= 220 && pixels[offset + 2] >= 220) addressPixels++;
+        }
       }
+      assert.ok(addressPixels >= 100, `${section}/${language}: address is missing or clipped`);
+      localizedCards.push(card);
     }
-    assert.ok(addressPixels >= 100, `${language}: catalogue address is missing or clipped`);
-    catalogueCards.push(card);
+    assert.notDeepEqual(localizedCards[0], localizedCards[1], `${section}: both languages need their own image`);
+    sectionCards.push(localizedCards);
   }
-  assert.notDeepEqual(catalogueCards[0], catalogueCards[1], 'both catalogue languages need their own image');
+  for (const language of [0, 1]) assert.notDeepEqual(sectionCards[0][language], sectionCards[1][language], 'guides need a distinct visual identity');
 });
 
 test("article hero images keep descriptive alt text without a redundant visible caption", async () => {

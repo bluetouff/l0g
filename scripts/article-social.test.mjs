@@ -36,6 +36,7 @@ test('native FR/EN metadata is deterministic, dated in Paris and namespaced sepa
   assert.equal(fr.label, 'ENQUÊTE · INFRASTRUCTURES');
   assert.match(en.label, /^INVESTIGATION/);
   assert.equal(fr.artworkHash, hash(photo));
+  assert.equal(fr.version, 'photo-title-excerpt-v2', 'readability changes must invalidate existing social-image URLs');
   assert.match(fr.dateLabel, /2026/);
   const dateObject = entry(); dateObject.data.pubDate = new Date(dateObject.data.pubDate);
   assert.equal(articleSocialCard(dateObject, 'fr', f.options).image, fr.image);
@@ -103,7 +104,9 @@ test('FR/EN layouts keep full titles, regular type and all text inside the safe 
     const svg = await renderArticleSocialSvg(card, { onNodeDetected: node => nodes.push(node) });
     const headline = nodes.find(node => node.textContent === card.title), excerpt = nodes.find(node => node.textContent === card.description);
     assert.ok(headline && excerpt);
-    assert.ok(excerpt.top - headline.top - headline.height >= 24);
+    assert.ok(excerpt.props.style.fontSize >= 28, 'the description must remain readable at sharing-preview scale');
+    assert.equal(excerpt.props.style.color, '#e7e9ee');
+    assert.ok(excerpt.top - headline.top - headline.height >= 28);
     assert.ok(excerpt.top + excerpt.height <= 566);
     assert.ok(nodes.every(node => node.left >= 0 && node.top >= 0 && node.left + node.width <= 1200 && node.top + node.height <= 630));
     assert.doesNotMatch(svg, /<script|<foreignObject|(?:href|src)=["']https?:\/\//u);
@@ -111,7 +114,7 @@ test('FR/EN layouts keep full titles, regular type and all text inside the safe 
   const longDeck = { ...f.card('fr'), description: 'De Saras à Engen, les acquisitions de Vitol changent les choix d’approvisionnement. Enquête sur la propriété des actifs et les conditions de concurrence.' };
   const deckNodes = [];
   await renderArticleSocialSvg(longDeck, { onNodeDetected: node => deckNodes.push(node) });
-  assert.ok(deckNodes.find(node => node.textContent === longDeck.description).height <= 82);
+  assert.ok(deckNodes.find(node => node.textContent === longDeck.description).height <= 105);
   await assert.rejects(renderArticleSocialSvg({ ...f.card('fr'), title: 'A'.repeat(500) }), /too long/);
   const image = await renderArticleSocialJpeg(f.card('fr'), { ...f.options, cacheDirectory: null });
   const meta = await sharp(image).metadata();
