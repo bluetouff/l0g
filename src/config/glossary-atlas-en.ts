@@ -219,6 +219,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/nvidia-trump-warning-at-the-top/', sectionTitle: 'US regulation & institutions', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
     atlas: {
       articles: [
+        { label: 'Nvidia, Trump and Lutnick: national security under influence', href: '/en/analysis/nvidia-trump-lutnick-national-security-influence/', kind: 'article' },
         { label: 'Nvidia, Trump: a warning at the top', href: '/en/analysis/nvidia-trump-warning-at-the-top/', detail: 'Licenses, remote use and scrutiny of recipients.', kind: 'article' },
         { label: 'Chinese AI faces the factory test', href: '/en/analysis/ai-slowdown-4-china-chips-memory-factories/', kind: 'article' },
       ],
@@ -234,7 +235,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     def: 'Under the US Export Administration Regulations, the person abroad who receives and ultimately uses exported or reexported goods, software or technology. The purchaser or ultimate consignee may also be the end user. Freight forwarders and other intermediaries serve distinct roles. Identifying the end user requires following the transaction beyond its delivery address.',
     guide: '/en/analysis/nvidia-trump-warning-at-the-top/', sectionTitle: 'US regulation & institutions', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
     atlas: {
-      articles: [{ label: 'Nvidia, Trump: a warning at the top', href: '/en/analysis/nvidia-trump-warning-at-the-top/', detail: 'Distinguishing hardware delivery, access to computing and actual use.', kind: 'article' }],
+      articles: [{ label: 'Nvidia: delivery, financing and access to computing', href: '/en/analysis/nvidia-trump-lutnick-national-security-influence/', kind: 'article' }, { label: 'Nvidia, Trump: a warning at the top', href: '/en/analysis/nvidia-trump-warning-at-the-top/', detail: 'Distinguishing hardware delivery, access to computing and actual use.', kind: 'article' }],
       sources: [
         { label: 'BIS, EAR 772: end-user definition', href: 'https://www.bis.gov/regulations/ear/772', detail: 'Definitions of end-user, intermediate consignee and ultimate consignee.', kind: 'source' },
         { label: 'BIS, preventing AI chip diversion, May 13, 2025', href: 'https://media.bis.gov/media/documents/ai-counter-diversion-industry-guidance-may-13-2025.pdf', detail: 'Checks on end users and the site’s physical capabilities.', kind: 'source' },

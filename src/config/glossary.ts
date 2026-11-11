@@ -1311,6 +1311,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   "dette-convertible": {"articles": [{"label": "Lutnick, Tether et le prêt familial rapporté", "href": "/posts/lutnick-tether-credit-cession-familiale/", "kind": "article"}], "sources": [{"label": "SEC Investor.gov, Convertible Securities", "href": "https://www.investor.gov/introduction-investing/investing-basics/glossary/convertible-securities", "detail": "Définition et modalités générales de conversion ; les conditions dépendent du titre.", "kind": "source"}], "related": ["trust", "stablecoin"]},
   'controle-export': {
     articles: [
+      { label: 'Nvidia, Trump, Lutnick : la sécurité nationale sous influence', href: '/posts/nvidia-trump-lutnick-securite-nationale-influence/', detail: 'Contrôles H200, accès distant et indépendance des enquêtes.', kind: 'article' },
       { label: 'Nvidia, Trump : une alerte au sommet', href: '/posts/nvidia-trump-alerte-sommet/', detail: 'Licences, utilisation à distance et contrôle des destinataires.', kind: 'article' },
       { label: 'L’IA chinoise à l’épreuve de l’usine', href: '/posts/ia-ralentissement-4-chine-puces-memoire-usines/', kind: 'article' },
     ],
@@ -1321,7 +1322,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['utilisateur-final', 'gpu'],
   },
   'utilisateur-final': {
-    articles: [{ label: 'Nvidia, Trump : une alerte au sommet', href: '/posts/nvidia-trump-alerte-sommet/', detail: 'Distinguer livraison du matériel, accès au calcul et usage effectif.', kind: 'article' }],
+    articles: [{ label: 'Nvidia : livraison, financement et accès au calcul', href: '/posts/nvidia-trump-lutnick-securite-nationale-influence/', kind: 'article' }, { label: 'Nvidia, Trump : une alerte au sommet', href: '/posts/nvidia-trump-alerte-sommet/', detail: 'Distinguer livraison du matériel, accès au calcul et usage effectif.', kind: 'article' }],
     sources: [
       { label: 'BIS, EAR 772 : définition de l’end-user', href: 'https://www.bis.gov/regulations/ear/772', detail: 'Définitions d’end-user, d’intermediate consignee et d’ultimate consignee.', kind: 'source' },
       { label: 'BIS, prévention du détournement des puces, 13 mai 2025', href: 'https://media.bis.gov/media/documents/ai-counter-diversion-industry-guidance-may-13-2025.pdf', detail: 'Vérifications de l’utilisateur et des capacités physiques du site.', kind: 'source' },
