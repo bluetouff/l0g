@@ -1,0 +1,34 @@
+.prose figure.central-bank-figure {
+  margin: 2rem auto 2.6rem;
+  padding-bottom: 1rem;
+  border-block: 1px solid var(--color-line-strong);
+  overflow: visible;
+}
+
+.central-bank-figure .cb-wide { display: block; }
+.central-bank-figure .cb-mobile { display: none; }
+
+.central-bank-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.central-bank-figure svg text {
+  font-family: var(--font-read, Arial, sans-serif);
+  letter-spacing: normal;
+}
+
+.prose .central-bank-figure figcaption {
+  margin: .9rem .1rem 0;
+  color: var(--color-muted);
+  font-size: .875rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 620px) {
+  .prose figure.central-bank-figure { max-width: 25rem; }
+  .central-bank-figure .cb-wide { display: none; }
+  .central-bank-figure .cb-mobile { display: block; }
+}

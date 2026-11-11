@@ -1,108 +1,296 @@
 ---
 title: "Lire le bilan de la BCE et les soldes Target2"
-description: "Guide de référence sur le bilan de l'Eurosystème : comment se lit la situation financière hebdomadaire, où en est le resserrement quantitatif européen, d'où viennent les soldes Target2 et pourquoi ils ne sont pas le renflouement caché que l'on raconte, comment des banques centrales peuvent enchaîner les pertes sans cesser de fonctionner, et le nouveau cadre opérationnel des taux. Avec les chiffres de 2026 en illustration, première hausse de taux depuis 2023 comprise."
-summary: "Le bilan de l'Eurosystème consolide la BCE et les banques centrales nationales de la zone euro : environ 6 300 milliards d'euros fin 2025, en décrue d'environ 500 milliards par an au rythme du resserrement quantitatif. Le lire suppose de comprendre la répartition par clé de capital, la mécanique des soldes Target2 (plus de 1 000 milliards de créance pour la Bundesbank), les pertes comptables des banques centrales et le cadre opérationnel de plancher qui pilote les taux courts."
+description: "Lire le bilan de l’Eurosystème : actifs, réserves bancaires, dépôts publics, QT, réévaluations, soldes TARGET et pertes. Méthode et chiffres officiels au 6 novembre 2026."
+summary: "Le bilan consolidé de l’Eurosystème réunit la BCE et les banques centrales nationales de la zone euro, en éliminant leurs créances et dettes réciproques. Sa lecture rapproche les actifs, les dépôts bancaires et les autres postes du passif, distingue transactions et réévaluations, puis examine séparément les soldes TARGET des bilans nationaux."
 pubDate: 2026-07-19T14:40:00+02:00
-updatedDate: 2026-07-19T14:40:00+02:00
+updatedDate: 2026-11-11T12:00:00+01:00
 tags: ["macro", "banques centrales", "liquidité", "europe"]
 category: fed
 draft: false
 ---
-import InfographicBars from '../../components/infographic/InfographicBars.astro';
 
-*Le bilan de la banque centrale américaine se lit chaque jeudi dans le H.4.1. Son pendant européen existe, publié chaque mardi, et presque personne ne le lit : la situation financière hebdomadaire de l'Eurosystème. La différence tient en un mot, la consolidation : là où la Fed est une seule maison, l'Eurosystème agrège la BCE et vingt banques centrales nationales, reliées entre elles par une tuyauterie interne, Target2, dont les soldes nourrissent depuis quinze ans les lectures les plus fantaisistes. Ce guide décode l'ensemble : le bilan, sa décrue, les soldes qui affolent, les pertes qui inquiètent et le cadre qui pilote les taux. Il prolonge côté euro notre lecture du [bilan de la Fed](/guides/lire-h41-bilan-fed/).*
+Un bilan de banque centrale raconte deux histoires simultanées : les actifs acquis ou prêtés, et la monnaie ou les autres engagements qui leur correspondent. Lire seulement sa taille revient à perdre la moitié du mécanisme. Au cours d’une même semaine, le bilan peut se contracter pendant que les dépôts des banques augmentent. L’Eurosystème en fournit un exemple concret dans sa [situation au 6 novembre 2026, publiée le 10 novembre](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fst261110.en.html).
 
-## Un bilan, vingt banques centrales
+Ce guide apprend à retrouver ces mouvements, à distinguer un remboursement d’une réévaluation, puis à lire les soldes TARGET sans les additionner au mauvais bilan. Les chiffres sont une photographie datée, vérifiée le **11 novembre 2026**. Pour le pendant américain, notre [guide du H.4.1 de la Fed](/guides/lire-h41-bilan-fed/) détaille les tableaux et conventions propres aux États-Unis.
 
-La [BCE](/glossaire/bce/) ne détient qu'une fraction des actifs de la politique monétaire. L'essentiel loge dans les bilans des banques centrales nationales, la Bundesbank, la Banque de France, la Banca d'Italia et leurs homologues, qui exécutent les opérations décidées à Francfort. L'ensemble forme l'[Eurosystème](/glossaire/eurosysteme/), et ses comptes consolidés paraissent chaque semaine. Les achats d'actifs et les risques afférents se répartissent pour l'essentiel selon la [clé de capital](/glossaire/cle-de-capital/), la quote-part de chaque pays dans le capital de la BCE, calculée sur sa population et son PIB : environ 26 % pour l'Allemagne, 20 % pour la France, 17 % pour l'Italie.
+## Choisir le bon périmètre : BCE ou Eurosystème
 
-Les ordres de grandeur d'abord. Fin 2025, le bilan consolidé atteignait [6 293 milliards d'euros](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260226~15dbe4febc.en.html), contre un pic d'environ 8 800 milliards à l'été 2022. À l'actif, deux blocs dominent : les portefeuilles de titres accumulés pendant les années d'assouplissement quantitatif, l'[APP](/glossaire/app/) historique (2 322 milliards fin 2025) et le [PEPP](/glossaire/pepp/) de la pandémie (1 423 milliards), plus un résidu d'opérations de refinancement devenues marginales. Au passif, les billets en circulation (environ [1 612 milliards](https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202604_07~e257cabcc5.en.html)), les réserves obligatoires (172 milliards) et surtout la [liquidité excédentaire](/glossaire/liquidite-excedentaire/), le cash que les banques déposent à la banque centrale au-delà de leurs obligations. La logique est la même que pour la Fed : les réserves des banques ne sont pas un choix des banques, elles sont le résidu comptable de tout le reste.
+La BCE est une institution dont les comptes ne représentent qu’une partie de la politique monétaire de la zone euro. L’[Eurosystème](/glossaire/eurosysteme/) comprend la BCE et les banques centrales nationales des pays ayant adopté l’euro. Il compte **21 banques centrales nationales** depuis l’[entrée de la Bulgarie le 1er janvier 2026](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260101~c830245e42.en.html), auxquelles s’ajoute la BCE.
 
-## Le QT à l'européenne
+Ces institutions exécutent les opérations et détiennent des actifs dans leurs propres livres. Leur bilan consolidé conserve les positions envers les tiers et élimine les créances et dettes réciproques. Les soldes TARGET, internes à l’Eurosystème, disparaissent donc de cette présentation. Pour les examiner, il faut ouvrir les données désagrégées ou les comptes de chaque banque centrale. Le [guide comptable officiel](https://www.ecb.europa.eu/pub/pdf/other/wfs-userguide.en.html) explicite cette différence.
 
-Depuis 2023, l'Eurosystème laisse ses portefeuilles fondre en cessant de réinvestir les titres qui arrivent à échéance, l'APP d'abord, le PEPP depuis 2025. Le rythme est délibérément passif, « mesuré et prévisible » selon la formule que la BCE [répète à chaque décision](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html) : pas de ventes, seulement des tombées. Sur l'année 2026, cela représente environ [500 milliards d'euros rendus au marché](https://cpram.com/fra/en/individual/publications/experts/article/ecb-the-end-of-quantitative-tightening-is-not-on-the-agenda), 330 milliards d'APP et 173 milliards de PEPP, et un bilan attendu autour de 5 800 milliards en fin d'année.
+Cette précaution change immédiatement la lecture des pertes, des portefeuilles et des fonds propres : un chiffre présenté comme celui de « la BCE » peut concerner l’institution de Francfort ou l’ensemble consolidé. On vérifie le titre du document avant de comparer deux montants.
 
-Le contraste avec l'Amérique mérite d'être souligné : la Fed a clos son resserrement quantitatif en décembre 2025 sous la pression des tensions du marché repo, quand la BCE poursuit le sien sans heurt apparent. L'explication tient au coussin : la liquidité excédentaire de la zone euro s'établissait encore à [2 358 milliards d'euros au printemps 2026](https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202604_07~e257cabcc5.en.html), contre un pic de 4 748 milliards fin 2022. Les banques européennes nagent toujours dans le cash : leur recours aux opérations de refinancement classiques plafonne à 24 milliards d'euros en moyenne, une miette à l'échelle du système. La question qui occupera les prochaines années est celle que la Fed vient de trancher à ses dépens : jusqu'où descendre avant que la tuyauterie ne grince ? Notre guide sur la [liquidité nette américaine](/guides/liquidite-tresor-dts-tga-rrp/) détaille ce que ce seuil a d'insaisissable.
+## Lire la date, l’unité et les colonnes
 
-<InfographicBars
-  title="La décrue du bilan de l'Eurosystème"
-  subtitle="Taille du bilan consolidé, en milliards d'euros."
-  max={8800}
-  items={[
-    { label: "Pic (été 2022)", value: 8800, valueLabel: "~8 800", tone: "accent" },
-    { label: "Fin 2024", value: 6400, valueLabel: "6 400", tone: "amber" },
-    { label: "Fin 2025", value: 6293, valueLabel: "6 293", tone: "amber" },
-    { label: "Fin 2026 (trajectoire)", value: 5800, valueLabel: "~5 800", tone: "signal" },
-  ]}
-  note="Décrue par non-réinvestissement des tombées, sans ventes de titres."
-  source="Sources : BCE (comptes annuels 2025, décisions de politique monétaire), CPRAM pour la trajectoire 2026."
-  caption="Trois mille milliards d'euros de moins qu'au pic de 2022, au rythme d'environ 500 milliards par an. Le resserrement européen continue là où celui de la Fed s'est arrêté fin 2025. Sources : BCE, CPRAM."
-/>
+La [situation financière hebdomadaire](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/html/index.en.html) paraît normalement le mardi et décrit la clôture du vendredi précédent. Certaines publications sont décalées, notamment après la fin d’un trimestre ou une fermeture de TARGET. Date de publication et date d’observation ne sont donc pas interchangeables.
 
-## Target2, la tuyauterie qui affole
+Le tableau est exprimé en **millions d’euros** ; le commentaire utilise généralement des milliards. Dans ce guide, les chiffres du tableau sont divisés par **1 000** : 5 913 173 millions deviennent 5 913,173 milliards. Les décimales servent à retrouver la source, sans prétendre que les évaluations comptables sont des prix de cession certains.
 
-Passons au morceau le plus mal compris. [Target2](/glossaire/target2/), devenu T2 dans sa version modernisée, est le système de paiement de gros montant de la zone euro, le [RTGS](/glossaire/rtgs/) où se règlent en monnaie de banque centrale les virements interbancaires transfrontières. Quand une banque italienne paie une banque allemande, la Banca d'Italia voit sa position envers la BCE se dégrader et la Bundesbank voit la sienne s'améliorer. Accumulés dans le temps, ces flux forment les soldes Target2 : au 31 mai 2026, la Bundesbank affichait une créance de [près de 1 066 milliards d'euros](https://www.bundesbank.de/en/tasks/payment-systems/t2/target-balances-920752) sur l'Eurosystème, quand l'Espagne portait une dette d'environ 489 milliards et l'Italie une position débitrice du même ordre de grandeur.
+Le [relevé au 6 novembre](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fst261110.en.html) distingue le stock de clôture et la variation hebdomadaire **due aux transactions**. Après les fins de trimestre, les effets de réévaluation sont présentés séparément. Une variation de stock, une transaction et une plus-value de valorisation répondent à des questions différentes.
 
-Ces chiffres vertigineux ont nourri une littérature entière sur le « renflouement caché » du Sud par l'épargne allemande, popularisée par l'économiste Hans-Werner Sinn au plus fort de la crise de la dette. La lecture mécanique est pourtant plus prosaïque. Un solde Target2 n'est pas un prêt consenti par la Bundesbank : c'est [l'empreinte comptable des flux de paiements](https://www.ecb.europa.eu/ecb/educational/explainers/tell-me-more/html/target2_balances.en.html), qui gonfle quand les capitaux fuient un pays (2011-2012), mais aussi, et c'est le point négligé, quand la banque centrale achète des titres à des contreparties dont les comptes sont domiciliés ailleurs : une large part de la montée des soldes après 2015 reflète la mécanique du QE, pas une fuite des capitaux. Le solde allemand a d'ailleurs culminé à 1 269 milliards en décembre 2022, au pic du bilan, avant de refluer avec le QT.
+## Identifier les actifs et leur fonction
 
-Reste le scénario limite, le seul où ces soldes cessent d'être une écriture comptable : la sortie d'un pays de la zone euro, qui transformerait sa position débitrice en créance réelle sur un État parti, avec un recouvrement pour le moins incertain. C'est le pont entre Target2 et le [risque de redénomination](/glossaire/risque-de-redenomination/) que nous avons décrit dans notre guide sur [la dette souveraine européenne](/guides/lire-la-dette-souveraine-europeenne/) : tant que l'appartenance à l'euro n'est pas mise en doute, les soldes sont un thermomètre de flux ; le jour où elle le serait, ils deviendraient l'une des factures de la rupture.
+L’actif décrit les créances et avoirs de l’Eurosystème. Les principaux postes à ouvrir sont les titres de politique monétaire, les prêts aux banques, l’or et les avoirs en devises. Leurs risques, leurs modes de valorisation et leurs effets sur la liquidité diffèrent.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 340" role="img" aria-label="Soldes Target2 des principales banques centrales de la zone euro en 2026, créance allemande contre dettes espagnole et italienne" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="340" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Target2 : la carte des soldes</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Positions envers l'Eurosystème, en milliards d'euros, printemps 2026.</text>
-  <line x1="360" y1="84" x2="360" y2="268" stroke="#2a2c33" stroke-width="1"/>
-  <text x="360" y="282" fill="#8b909b" font-size="10" text-anchor="middle">0</text>
-  <rect x="360" y="96" width="290" height="34" fill="#5eead4" opacity="0.85"/>
-  <text x="368" y="118" fill="#0c0d10" font-size="12" font-weight="700">Allemagne  +1 066</text>
-  <line x1="705" y1="96" x2="705" y2="130" stroke="#8b909b" stroke-width="1" stroke-dasharray="3 3"/>
-  <text x="700" y="90" fill="#8b909b" font-size="10" text-anchor="end">pic déc. 2022 : +1 269</text>
-  <rect x="227" y="152" width="133" height="34" fill="#ff4d87" opacity="0.85"/>
-  <text x="352" y="174" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="end">Espagne  -489</text>
-  <rect x="238" y="208" width="122" height="34" fill="#f5b13d" opacity="0.85"/>
-  <text x="352" y="230" fill="#0c0d10" font-size="12" font-weight="700" text-anchor="end">Italie  ~-450</text>
-  <text x="32" y="308" fill="#8b909b" font-size="11">Sources : Bundesbank (créance au 31 mai 2026), données BCE compilées. Italie : ordre de grandeur.</text>
-  <text x="32" y="326" fill="#8b909b" font-size="11">Un solde n'est pas un prêt : c'est le cumul comptable des flux de paiements transfrontières.</text>
+| Actif au 6 novembre 2026 | Milliards d’euros | Repère dans la source |
+| --- | ---: | --- |
+| Total du bilan | 5 913,173 | Total de l’actif |
+| Titres de politique monétaire | 3 276,834 | Poste 7.1 |
+| Or et créances en or | 1 286,235 | Poste 1 |
+| Prêts monétaires aux banques de la zone euro | 38,433 | Poste 5 |
+
+Source : [BCE, situation consolidée au 6 novembre 2026](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fst261110.en.html). Les lignes sélectionnées ne constituent pas la totalité de l’actif.
+
+Les **titres de politique monétaire** sont des actifs achetés et détenus. Les **prêts aux banques** correspondent à des opérations de financement contre garanties. Il faut distinguer la créance enregistrée sur une banque des titres qu’elle apporte en collatéral : une garantie reçue ne devient pas automatiquement un achat de portefeuille. Le [guide officiel des postes](https://www.ecb.europa.eu/pub/pdf/other/wfs-userguide.en.html) décrit les opérations principales de refinancement, les prêts à plus long terme et la facilité de prêt marginal.
+
+Une hausse des prêts peut signaler un recours accru aux guichets. Son interprétation demande toutefois de regarder les échéances, les conditions des opérations et les taux de marché. Le bilan agrégé n’identifie pas à lui seul une banque en difficulté.
+
+<figure class="central-bank-figure" style="padding-bottom:1rem">
+<div class="cb-wide">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 603" role="img" lang="fr" aria-labelledby="cb-ecb-consolidation-fr-d-title cb-ecb-consolidation-fr-d-desc" style="width:100%;height:auto;display:block;font-family:var(--font-read, Arial, sans-serif)">
+<title id="cb-ecb-consolidation-fr-d-title">La consolidation élimine les positions internes</title><desc id="cb-ecb-consolidation-fr-d-desc">La BCE et toutes les banques centrales nationales de la zone euro constituent le périmètre de consolidation. Les créances et engagements réciproques, dont les positions TARGET envers la BCE, sont éliminés. Les actifs et engagements envers les agents extérieurs à ce périmètre restent au bilan. Schéma qualitatif ; seules des rubriques sélectionnées sont représentées.</desc>
+<rect x="0" y="0" width="800" height="603" rx="0" fill="var(--color-ink, #0c0d10)"/>
+<line x1="32" y1="12" x2="768" y2="12" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="32" y="37" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="32" dy="0">l0g / PÉRIMÈTRE DU BILAN</tspan></text>
+<text x="768" y="37" fill="var(--color-signal, #5eead4)" font-size="14" font-weight="400" text-anchor="end"><tspan x="768" dy="0">01</tspan></text>
+<text x="32" y="78" fill="var(--color-paper, #e7e9ee)" font-size="29" font-weight="500" text-anchor="start"><tspan x="32" dy="0">La consolidation élimine les positions internes</tspan></text>
+<text x="32" y="111" fill="var(--color-muted, #8b909b)" font-size="16" font-weight="400" text-anchor="start"><tspan x="32" dy="0">Eurosystème · périmètre comptable, sans montant</tspan></text>
+<rect x="32" y="158" width="306" height="284" rx="12" fill="none" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="185" y="187" fill="var(--color-paper, #e7e9ee)" font-size="17" font-weight="400" text-anchor="middle"><tspan x="185" dy="0">BCE + toutes les BCN</tspan></text>
+<path d="M162 217.6 L181.8 205 L201.6 217.6 Z M165.6 222.1 L165.6 243.7 M176.4 222.1 L176.4 243.7 M187.2 222.1 L187.2 243.7 M198.0 222.1 L198.0 243.7 M162 249.1 L201.6 249.1" fill="none" stroke="var(--color-muted, #8b909b)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="182" y="271" fill="var(--color-muted, #8b909b)" font-size="16" font-weight="400" text-anchor="middle"><tspan x="182" dy="0">BCE</tspan></text>
+<path d="M66 346.2 L83.6 335 L101.2 346.2 Z M69.2 350.2 L69.2 369.4 M78.8 350.2 L78.8 369.4 M88.4 350.2 L88.4 369.4 M98.0 350.2 L98.0 369.4 M66 374.2 L101.2 374.2" fill="none" stroke="var(--color-signal, #5eead4)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M266 346.2 L283.6 335 L301.2 346.2 Z M269.2 350.2 L269.2 369.4 M278.8 350.2 L278.8 369.4 M288.4 350.2 L288.4 369.4 M298.0 350.2 L298.0 369.4 M266 374.2 L301.2 374.2" fill="none" stroke="var(--color-amber, #f5b13d)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="85" y="399" fill="var(--color-signal, #5eead4)" font-size="16" font-weight="400" text-anchor="middle"><tspan x="85" dy="0">BCN A</tspan></text>
+<text x="284" y="399" fill="var(--color-amber, #f5b13d)" font-size="16" font-weight="400" text-anchor="middle"><tspan x="284" dy="0">BCN B</tspan></text>
+<line x1="155" y1="276" x2="103" y2="327" stroke="var(--color-accent, #ff4d87)" stroke-width="1.4" stroke-dasharray="4 5"/>
+<line x1="214" y1="276" x2="266" y2="327" stroke="var(--color-accent, #ff4d87)" stroke-width="1.4" stroke-dasharray="4 5"/>
+<text x="104" y="307" fill="var(--color-accent, #ff4d87)" font-size="17" font-weight="400" text-anchor="end"><tspan x="104" dy="0">−x</tspan></text>
+<text x="266" y="307" fill="var(--color-accent, #ff4d87)" font-size="17" font-weight="400" text-anchor="start"><tspan x="266" dy="0">+x</tspan></text>
+<text x="184" y="421" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="middle"><tspan x="184" dy="0">Positions TARGET envers la BCE</tspan></text>
+<line x1="355" y1="304" x2="431" y2="304" stroke="var(--color-muted, #8b909b)" stroke-width="1.5"/><path d="M424.70 307.04 L431 304 L424.70 300.96" fill="none" stroke="var(--color-muted, #8b909b)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M385 288 L401 320 M401 288 L385 320" fill="none" stroke="var(--color-accent, #ff4d87)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="394" y="357" fill="var(--color-accent, #ff4d87)" font-size="14" font-weight="400" text-anchor="middle"><tspan x="394" dy="0">Élimination</tspan><tspan x="394" dy="19">interne</tspan></text>
+<text x="610" y="187" fill="var(--color-paper, #e7e9ee)" font-size="16" font-weight="400" text-anchor="middle"><tspan x="610" dy="0">BILAN CONSOLIDÉ</tspan></text>
+<line x1="460" y1="214" x2="760" y2="214" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<line x1="611" y1="214" x2="611" y2="429" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="476" y="241" fill="var(--color-signal, #5eead4)" font-size="17" font-weight="400" text-anchor="start"><tspan x="476" dy="0">Actif</tspan></text>
+<text x="630" y="241" fill="var(--color-amber, #f5b13d)" font-size="17" font-weight="400" text-anchor="start"><tspan x="630" dy="0">Passif</tspan></text>
+<line x1="463" y1="261" x2="758" y2="261" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<line x1="463" y1="308" x2="758" y2="308" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<line x1="463" y1="355" x2="758" y2="355" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<line x1="463" y1="402" x2="758" y2="402" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="476" y="290" fill="var(--color-paper, #e7e9ee)" font-size="17" font-weight="400" text-anchor="start"><tspan x="476" dy="0">Titres</tspan></text>
+<text x="476" y="337" fill="var(--color-paper, #e7e9ee)" font-size="17" font-weight="400" text-anchor="start"><tspan x="476" dy="0">Prêts</tspan></text>
+<text x="476" y="384" fill="var(--color-paper, #e7e9ee)" font-size="17" font-weight="400" text-anchor="start"><tspan x="476" dy="0">Or, devises</tspan></text>
+<text x="630" y="290" fill="var(--color-paper, #e7e9ee)" font-size="16" font-weight="400" text-anchor="start"><tspan x="630" dy="0">Billets</tspan></text>
+<text x="630" y="337" fill="var(--color-paper, #e7e9ee)" font-size="16" font-weight="400" text-anchor="start"><tspan x="630" dy="0">Réserves</tspan></text>
+<text x="630" y="384" fill="var(--color-paper, #e7e9ee)" font-size="16" font-weight="400" text-anchor="start"><tspan x="630" dy="0">Autres postes</tspan></text>
+<text x="610" y="430" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="middle"><tspan x="610" dy="0">Capital et réévaluations inclus séparément</tspan></text>
+<line x1="32" y1="472" x2="768" y2="472" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="32" y="505" fill="var(--color-paper, #e7e9ee)" font-size="20" font-weight="400" text-anchor="start"><tspan x="32" dy="0">Les positions envers les agents extérieurs au périmètre restent.</tspan></text>
+<text x="32" y="533" fill="var(--color-muted, #8b909b)" font-size="16" font-weight="400" text-anchor="start"><tspan x="32" dy="0">Exemples : titres souverains, billets, dépôts des banques commerciales.</tspan></text>
+<text x="32" y="578" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="32" dy="0">Source : BCE, situation financière hebdomadaire et explication des soldes TARGET.</tspan></text>
 </svg>
-<figcaption>La Bundesbank créancière de plus de 1 000 milliards d'euros, l'Espagne et l'Italie débitrices de plusieurs centaines de milliards chacune : la géographie des soldes reflète les flux de paiements et la mécanique du QE, pas un transfert budgétaire. Le pic allemand coïncide avec le pic du bilan, fin 2022.</figcaption>
+</div>
+<div class="cb-mobile">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 1007" role="img" lang="fr" aria-labelledby="cb-ecb-consolidation-fr-m-title cb-ecb-consolidation-fr-m-desc" style="width:100%;height:auto;display:block;font-family:var(--font-read, Arial, sans-serif)">
+<title id="cb-ecb-consolidation-fr-m-title">La consolidation élimine les positions internes</title><desc id="cb-ecb-consolidation-fr-m-desc">La BCE et toutes les banques centrales nationales de la zone euro constituent le périmètre de consolidation. Les créances et engagements réciproques, dont les positions TARGET envers la BCE, sont éliminés. Les actifs et engagements envers les agents extérieurs à ce périmètre restent au bilan. Schéma qualitatif ; seules des rubriques sélectionnées sont représentées.</desc>
+<rect x="0" y="0" width="400" height="1007" rx="0" fill="var(--color-ink, #0c0d10)"/>
+<line x1="24" y1="12" x2="376" y2="12" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="24" y="37" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="24" dy="0">l0g / PÉRIMÈTRE DU BILAN</tspan></text>
+<text x="376" y="37" fill="var(--color-signal, #5eead4)" font-size="14" font-weight="400" text-anchor="end"><tspan x="376" dy="0">01</tspan></text>
+<text x="24" y="78" fill="var(--color-paper, #e7e9ee)" font-size="24" font-weight="500" text-anchor="start"><tspan x="24" dy="0">Consolider élimine</tspan><tspan x="24" dy="30">les positions internes</tspan></text>
+<text x="24" y="149" fill="var(--color-muted, #8b909b)" font-size="15" font-weight="400" text-anchor="start"><tspan x="24" dy="0">Eurosystème · schéma sans montant</tspan></text>
+<rect x="24" y="190" width="352" height="286" rx="12" fill="none" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="200" y="223" fill="var(--color-paper, #e7e9ee)" font-size="17" font-weight="400" text-anchor="middle"><tspan x="200" dy="0">BCE + toutes les BCN</tspan></text>
+<path d="M179 253.6 L198.8 241 L218.6 253.6 Z M182.6 258.1 L182.6 279.7 M193.4 258.1 L193.4 279.7 M204.2 258.1 L204.2 279.7 M215.0 258.1 L215.0 279.7 M179 285.1 L218.6 285.1" fill="none" stroke="var(--color-muted, #8b909b)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="200" y="307" fill="var(--color-muted, #8b909b)" font-size="16" font-weight="400" text-anchor="middle"><tspan x="200" dy="0">BCE</tspan></text>
+<path d="M65 370.2 L82.6 359 L100.2 370.2 Z M68.2 374.2 L68.2 393.4 M77.8 374.2 L77.8 393.4 M87.4 374.2 L87.4 393.4 M97.0 374.2 L97.0 393.4 M65 398.2 L100.2 398.2" fill="none" stroke="var(--color-signal, #5eead4)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M299 370.2 L316.6 359 L334.2 370.2 Z M302.2 374.2 L302.2 393.4 M311.8 374.2 L311.8 393.4 M321.4 374.2 L321.4 393.4 M331.0 374.2 L331.0 393.4 M299 398.2 L334.2 398.2" fill="none" stroke="var(--color-amber, #f5b13d)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="83" y="423" fill="var(--color-signal, #5eead4)" font-size="16" font-weight="400" text-anchor="middle"><tspan x="83" dy="0">BCN A</tspan></text>
+<text x="317" y="423" fill="var(--color-amber, #f5b13d)" font-size="16" font-weight="400" text-anchor="middle"><tspan x="317" dy="0">BCN B</tspan></text>
+<line x1="167" y1="312" x2="100" y2="352" stroke="var(--color-accent, #ff4d87)" stroke-width="1.4" stroke-dasharray="4 5"/>
+<line x1="233" y1="312" x2="300" y2="352" stroke="var(--color-accent, #ff4d87)" stroke-width="1.4" stroke-dasharray="4 5"/>
+<text x="121" y="338" fill="var(--color-accent, #ff4d87)" font-size="17" font-weight="400" text-anchor="end"><tspan x="121" dy="0">−x</tspan></text>
+<text x="279" y="338" fill="var(--color-accent, #ff4d87)" font-size="17" font-weight="400" text-anchor="start"><tspan x="279" dy="0">+x</tspan></text>
+<text x="200" y="454" fill="var(--color-muted, #8b909b)" font-size="15" font-weight="400" text-anchor="middle"><tspan x="200" dy="0">Positions TARGET envers la BCE</tspan></text>
+<line x1="200" y1="492" x2="200" y2="551" stroke="var(--color-muted, #8b909b)" stroke-width="1.5"/><path d="M196.96 544.70 L200 551 L203.04 544.70" fill="none" stroke="var(--color-muted, #8b909b)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M189 506 L211 529 M211 506 L189 529" fill="none" stroke="var(--color-accent, #ff4d87)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="226" y="517" fill="var(--color-accent, #ff4d87)" font-size="15" font-weight="400" text-anchor="start"><tspan x="226" dy="0">Élimination</tspan><tspan x="226" dy="20">interne</tspan></text>
+<text x="200" y="582" fill="var(--color-paper, #e7e9ee)" font-size="16" font-weight="400" text-anchor="middle"><tspan x="200" dy="0">BILAN CONSOLIDÉ</tspan></text>
+<line x1="24" y1="602" x2="376" y2="602" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<line x1="200" y1="602" x2="200" y2="819" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="40" y="631" fill="var(--color-signal, #5eead4)" font-size="17" font-weight="400" text-anchor="start"><tspan x="40" dy="0">Actif</tspan></text>
+<text x="224" y="631" fill="var(--color-amber, #f5b13d)" font-size="17" font-weight="400" text-anchor="start"><tspan x="224" dy="0">Passif</tspan></text>
+<line x1="24" y1="649" x2="376" y2="649" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<line x1="24" y1="697" x2="376" y2="697" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<line x1="24" y1="745" x2="376" y2="745" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<line x1="24" y1="793" x2="376" y2="793" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="40" y="681" fill="var(--color-paper, #e7e9ee)" font-size="17" font-weight="400" text-anchor="start"><tspan x="40" dy="0">Titres</tspan></text>
+<text x="40" y="729" fill="var(--color-paper, #e7e9ee)" font-size="17" font-weight="400" text-anchor="start"><tspan x="40" dy="0">Prêts</tspan></text>
+<text x="40" y="777" fill="var(--color-paper, #e7e9ee)" font-size="17" font-weight="400" text-anchor="start"><tspan x="40" dy="0">Or, devises</tspan></text>
+<text x="224" y="681" fill="var(--color-paper, #e7e9ee)" font-size="17" font-weight="400" text-anchor="start"><tspan x="224" dy="0">Billets</tspan></text>
+<text x="224" y="729" fill="var(--color-paper, #e7e9ee)" font-size="17" font-weight="400" text-anchor="start"><tspan x="224" dy="0">Réserves</tspan></text>
+<text x="224" y="777" fill="var(--color-paper, #e7e9ee)" font-size="17" font-weight="400" text-anchor="start"><tspan x="224" dy="0">Autres postes</tspan></text>
+<text x="24" y="843" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="24" dy="0">Capital et réévaluations : postes distincts.</tspan></text>
+<text x="24" y="885" fill="var(--color-paper, #e7e9ee)" font-size="18" font-weight="400" text-anchor="start"><tspan x="24" dy="0">Les positions avec l’extérieur</tspan><tspan x="24" dy="26">du périmètre restent au bilan.</tspan></text>
+<text x="24" y="961" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="24" dy="0">Source : BCE, situation hebdomadaire</tspan><tspan x="24" dy="20">et explication des soldes TARGET.</tspan></text>
+</svg>
+</div>
+<figcaption>La consolidation réunit la BCE et toutes les banques centrales nationales de la zone euro. Les positions réciproques à l’intérieur de ce périmètre sont éliminées ; les positions avec les banques commerciales, États et autres agents extérieurs restent. Schéma sans montant, rubriques sélectionnées. Sources : <a href="https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/html/index.en.html">BCE, situation financière hebdomadaire</a> et <a href="https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/target-balances.en.html">explication des soldes TARGET</a>.</figcaption>
 </figure>
 
-## Des banques centrales en perte, et alors ?
+## Retrouver la monnaie et les autres engagements au passif
 
-Autre source récurrente d'affolement : les pertes. La mécanique est simple à poser. Pendant les années de taux nuls, l'Eurosystème a acheté des milliers de milliards de titres à rendement faible, financés par de la monnaie de banque centrale. Quand les taux directeurs sont remontés, la rémunération versée aux banques sur cette liquidité a dépassé le rendement des portefeuilles : la marge d'intérêt est devenue négative. La Bundesbank a ainsi enchaîné [une septième année sans bénéfice, avec une perte de 8,6 milliards d'euros en 2025](https://www.bundesbank.de/en/press/speeches/annual-accounts-for-2025-990898) et un report de pertes cumulé de 27,8 milliards. La Banque de France, déficitaire de 7,7 milliards en 2024, est [revenue à un bénéfice de 8,1 milliards en 2025](https://www.banque-france.fr/en/news/banque-de-france-2025-results), à la faveur d'une plus-value exceptionnelle de 11 milliards tirée de la vente de lingots d'or conservés à New York. La BCE elle-même affiche des [fonds propres comptables négatifs](https://www.piie.com/blogs/realtime-economics/2025/how-much-money-have-central-banks-really-lost) selon les conventions qu'elle applique.
+Les billets et les dépôts bancaires figurent au passif : ce sont des engagements de la banque centrale envers leurs détenteurs. Les banques utilisent leurs comptes en monnaie de banque centrale pour régler leurs paiements. Les dépôts de clientèle, eux, sont des engagements des banques commerciales ; ils ne se confondent pas avec ces comptes.
 
-Faut-il s'en alarmer ? Une banque centrale n'est pas une banque : elle ne peut pas manquer de la monnaie qu'elle émet, et aucune règle prudentielle ne lui impose un ratio de solvabilité. Ses pertes sont un phénomène de trésorerie différée : les provisions constituées pendant les années fastes amortissent le choc, les réserves de réévaluation (l'or de la Bundesbank porte ses fonds propres nets à 363 milliards d'euros) dorment sous le report négatif, et le retour d'une marge positive au fil du QT résorbera le stock. Le vrai enjeu est ailleurs, et il est politique : une banque centrale durablement en perte ne verse plus de dividende à l'État, et devient une cible commode pour qui veut contester son indépendance. La ligne de crête n'est pas comptable, elle est institutionnelle.
+Dans le [relevé au 6 novembre](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fst261110.en.html), les postes utiles sont les suivants :
 
-## Le plancher : taux et cadre opérationnel
+| Passif au 6 novembre 2026 | Milliards d’euros | Repère dans la source |
+| --- | ---: | --- |
+| Billets en circulation | 1 633,819 | Poste 1 |
+| Comptes courants des banques | 370,074 | Poste 2.1 |
+| Facilité de dépôt | 1 897,040 | Poste 2.2 |
+| Dépôts des administrations publiques | 86,440 | Poste 5.1 |
+| Comptes de réévaluation | 1 261,631 | Poste 11 |
+| Capital et réserves | 27,952 | Poste 12 |
 
-Le pilotage des taux courts a changé de nature avec l'abondance de liquidité. Dans le [cadre opérationnel révisé en mars 2024](https://www.ecb.europa.eu/press/key/date/2025/html/ecb.sp250218~cc20f3518c.en.html), le taux de la facilité de dépôt est devenu l'instrument central : c'est lui qui fixe le plancher où se colle le taux au jour le jour, l'[€STR](/glossaire/estr/), tant que la liquidité excédentaire reste massive. L'écart entre le taux des opérations principales de refinancement et la facilité de dépôt a été resserré à 15 points de base, pour que les banques n'hésitent pas à emprunter au guichet quand la liquidité se raréfiera : le système est conçu pour évoluer d'un plancher pur vers un régime piloté par la demande, sans à-coups.
+Les comptes courants et la facilité de dépôt totalisent **2 267,114 milliards d’euros**, par addition des postes 2.1 et 2.2. Le premier poste comprend les avoirs utilisés pour satisfaire les réserves obligatoires ; il n’est pas égal au seul montant de cette obligation. Celle-ci se respecte en moyenne sur une période de constitution, selon les [conventions de la BCE](https://www.ecb.europa.eu/pub/pdf/other/wfs-userguide.en.html).
 
-Les niveaux, à jour de la mi-2026 : le 11 juin, la BCE a relevé ses trois taux de 25 points de base, [la première hausse depuis 2023](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html), portant la facilité de dépôt à 2,25 %, le refinancement principal à 2,40 % et la facilité de prêt marginal à 2,65 %. Le motif : les pressions inflationnistes nées de la guerre au Proche-Orient, avec une inflation attendue à 3,0 % en 2026 avant un retour vers 2,0 % à l'horizon 2028. Ce resserrement en pleine décrue du bilan illustre la doctrine de la séparation : les taux pilotent l'inflation, le bilan suit sa trajectoire propre. Nous avions décrypté le tournant de Sintra dans [notre analyse du forum 2026](/posts/sintra-2026-bce-tokenisation/).
+La [liquidité excédentaire, suivie dans l’analyse de la BCE](https://www.ecb.europa.eu/mopo/liq/html/index.en.html), nécessite encore une autre définition : les comptes courants au-delà des réserves requises, plus la facilité de dépôt, moins le recours à la facilité de prêt marginal. Il faut donc connaître l’exigence de réserves et conserver les mêmes dates ou périodes de moyenne. Présenter tous les dépôts bancaires comme de la liquidité excédentaire gonflerait le résultat.
 
-## Les thermomètres
+## Expliquer une baisse du bilan accompagnée d’une hausse des dépôts bancaires
 
-La surveillance du système tient en une poignée d'indicateurs, tous publics. La **liquidité excédentaire**, publiée dans les situations hebdomadaires et les bulletins de la BCE, dit l'épaisseur du coussin : 2 358 milliards au printemps 2026, en baisse d'environ 100 milliards par trimestre. Le **recours aux opérations de refinancement**, minuscule aujourd'hui, sera le premier signal d'une liquidité qui devient rare : c'est l'équivalent européen du recours à la facilité permanente de la Fed. L'**écart entre l'ESTR et la facilité de dépôt**, aujourd'hui collé à quelques points de base sous le plancher, se resserrera puis basculera au-dessus quand le coussin s'amincira. Les **soldes Target2**, publiés mensuellement par les banques centrales nationales, restent le thermomètre des flux transfrontières. Et la [situation financière hebdomadaire](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fst260630.en.html) de chaque mardi donne la photographie d'ensemble, l'équivalent du H.4.1 américain.
+L’égalité comptable permet de poser la question dans le bon ordre : **actif = dépôts des banques + tous les autres postes du passif**, capital et réévaluations compris. À actif inchangé, un transfert d’un dépôt public vers un compte bancaire modifie la composition du passif. Il ne crée pas nécessairement un nouvel actif de la banque centrale.
 
-## Lire le bilan en pratique
+La semaine close le **6 novembre 2026**, l’actif total recule de **32,237 milliards d’euros** du fait des transactions, tandis que les engagements monétaires envers les banques, poste 2, augmentent de **24,262 milliards**. Dans le même relevé, les dépôts publics diminuent de **43,775 milliards**. D’autres postes évoluent aussi : ces trois chiffres ne suffisent pas à reconstituer toute la semaine. Ils montrent pourquoi le total du bilan ne constitue pas un substitut aux dépôts bancaires. [Source : BCE, colonnes de variation hebdomadaire](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fst261110.en.html).
 
-Trois malentendus organisent l'essentiel des mauvaises lectures du bilan européen, et ce guide donne les moyens de les éviter. Le premier consiste à lire l'Eurosystème comme une banque centrale unique : c'est une fédération de bilans, répartie par clé de capital, et cette architecture explique à la fois les soldes Target2 et la répartition des pertes. Le deuxième transforme les soldes Target2 en créances exigibles : ce sont des cumuls de flux, significatifs comme thermomètre, dangereux seulement dans un scénario de rupture de la zone euro qui relève du risque de redénomination, pas du fonctionnement courant. Le troisième traite les pertes des banques centrales comme des faillites en devenir : la contrainte réelle est politique, pas comptable.
+Le mécanisme s’explique simplement. Quand un État paie depuis son compte à la banque centrale un fournisseur détenant un compte bancaire, le dépôt public baisse et le compte de règlement de la banque bénéficiaire augmente, toutes choses égales par ailleurs. Les impôts ou certaines émissions de dette peuvent produire le mouvement inverse. Le relevé agrégé décrit les soldes ; attribuer chaque mouvement à une opération précise exige des données complémentaires. Notre [guide de la liquidité du Trésor américain](/guides/liquidite-tresor-dts-tga-rrp/) explore une logique comptable comparable, dans un autre cadre institutionnel.
 
-Le fil de 2026 assemble le tout : un bilan en décrue vers 5 800 milliards, un coussin de liquidité encore épais qui permet un QT sans drame, des soldes Target2 qui refluent avec lui, et une hausse de taux de juin qui rappelle que le plancher se pilote indépendamment du bilan. La même infrastructure discrète porte les autres dossiers européens du moment, du [cash russe redéposé en banque centrale](/posts/euroclear-chambre-forte-opaque-avoirs-russes/) au [filet conditionnel tendu sous les dettes souveraines](/guides/lire-la-dette-souveraine-europeenne/). Pour les sigles, le [glossaire](/glossaire/) reprend chaque définition.
+## Séparer QT, remboursements et réévaluations
 
----
+Le resserrement quantitatif, ou **QT**, réduit les portefeuilles constitués pendant les achats d’actifs. Dans sa [décision du 29 octobre 2026](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html), la BCE confirme que les portefeuilles APP et PEPP diminuent parce que les remboursements de principal ne sont plus réinvestis. Cette règle ne fixe pas une baisse identique chaque semaine : les échéances sont irrégulières et d’autres actifs peuvent évoluer en sens inverse.
 
-**Sources principales :**
+Le [commentaire du 10 novembre](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fs261110.en.html) ventile les titres par programme et distingue achats et remboursements. Il précise aussi que des ventes peuvent exceptionnellement apparaître, notamment pour gérer les risques. Une formulation absolue telle que « aucun titre n’est jamais vendu » serait donc excessive.
 
-- [BCE, situation financière hebdomadaire consolidée de l'Eurosystème](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fst260630.en.html) : le bilan hebdomadaire, pendant européen du H.4.1.
-- [BCE, comptes annuels 2025 (26 février 2026)](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260226~15dbe4febc.en.html) : taille du bilan fin 2025, portefeuilles APP et PEPP.
-- [BCE, bulletin économique, conditions de liquidité de février à mai 2026](https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202604_07~e257cabcc5.en.html) : liquidité excédentaire (2 358 milliards), billets, réserves obligatoires, recours au refinancement.
-- [BCE, décision de politique monétaire du 11 juin 2026](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html) : hausse de 25 points de base, taux à 2,25 / 2,40 / 2,65 %, poursuite du non-réinvestissement.
-- [BCE, discours « Striking the right balance » (18 février 2025)](https://www.ecb.europa.eu/press/key/date/2025/html/ecb.sp250218~cc20f3518c.en.html) : cadre opérationnel, rôle du taux de dépôt, spread de 15 points de base.
-- [BCE, explainer « What are TARGET balances? »](https://www.ecb.europa.eu/ecb/educational/explainers/tell-me-more/html/target2_balances.en.html) : mécanique des soldes, lien avec le QE et les flux de capitaux.
-- [Bundesbank, soldes Target](https://www.bundesbank.de/en/tasks/payment-systems/t2/target-balances-920752) : créance allemande de 1 065,7 milliards d'euros au 31 mai 2026, série historique.
-- [Bundesbank, comptes annuels 2025](https://www.bundesbank.de/en/press/speeches/annual-accounts-for-2025-990898) : perte de 8,6 milliards, report cumulé de 27,8 milliards, fonds propres nets de 363 milliards.
-- [Banque de France, résultats 2025](https://www.banque-france.fr/en/news/banque-de-france-2025-results) : bénéfice de 8,1 milliards, plus-value exceptionnelle de 11 milliards sur l'or, fonds propres de 283 milliards.
-- [PIIE, « How much money have central banks really lost? »](https://www.piie.com/blogs/realtime-economics/2025/how-much-money-have-central-banks-really-lost) : comparaison des pertes et conventions comptables, fonds propres négatifs de la BCE.
-- [CPRAM, « The end of Quantitative Tightening is not on the agenda »](https://cpram.com/fra/en/individual/publications/experts/article/ecb-the-end-of-quantitative-tightening-is-not-on-the-agenda) : tombées 2026 (330 milliards d'APP, 173 de PEPP), trajectoire du bilan.
-- [Bruegel, « Finding the right balance (sheet): quantitative tightening in the euro area »](https://www.bruegel.org/news/finding-right-balance-sheet-quantitative-tightening-euro-area) : cadrage du QT européen.
+La valorisation exige une lecture séparée. Selon le [manuel de la situation hebdomadaire](https://www.ecb.europa.eu/pub/pdf/other/wfs-userguide.en.html), les titres de dette du poste 7.1 sont au **coût amorti**, avec test de dépréciation. Leur ligne ne suit pas quotidiennement les prix de marché. L’or et les positions en devises font en revanche l’objet de réévaluations trimestrielles. Une hausse de la valeur de l’or peut accroître à la fois l’actif et les comptes de réévaluation, sans achat d’or ni versement correspondant aux banques.
+
+## Lire TARGET dans les bilans nationaux
+
+TARGET rassemble les infrastructures permettant de régler des paiements et d’autres opérations en monnaie de banque centrale. **T2** a remplacé TARGET2 pour le règlement des paiements de gros montant en mars 2023. Le nom historique reste présent dans de nombreux commentaires et dans l’adresse de ce guide. La [présentation officielle de T2](https://www.ecb.europa.eu/paym/target/t2/html/index.en.html) distingue le service actuel de ses prédécesseurs.
+
+Supposons qu’une banque italienne effectue un paiement à une banque allemande. Toutes choses égales par ailleurs, le compte de règlement de la banque italienne diminue et celui de la banque allemande augmente. La position TARGET de la Banca d’Italia se dégrade ; celle de la Bundesbank s’améliore. En fin de journée, les positions sont ramenées à une créance ou une dette nette de chaque banque centrale envers la BCE. Il faut inclure la position de la BCE pour comprendre l’ensemble. [Source : explication de la BCE sur les soldes TARGET](https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/target-balances.en.html).
+
+<figure class="central-bank-figure" style="padding-bottom:1rem">
+<div class="cb-wide">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 701" role="img" lang="fr" aria-labelledby="cb-ecb-target-fr-d-title cb-ecb-target-fr-d-desc" style="width:100%;height:auto;display:block;font-family:var(--font-read, Arial, sans-serif)">
+<title id="cb-ecb-target-fr-d-title">Un paiement déplace les réserves</title><desc id="cb-ecb-target-fr-d-desc">Paiement transfrontière isolé de x euros d’une banque du pays A à une banque du pays B, sans refinancement compensateur ni autre opération. Les réserves de la première diminuent de x et celles de la seconde augmentent de x. La position TARGET nette de la BCN A envers la BCE se dégrade de x ; celle de la BCN B s’améliore de x. La somme des réserves de l’Eurosystème reste identique.</desc>
+<rect x="0" y="0" width="800" height="701" rx="0" fill="var(--color-ink, #0c0d10)"/>
+<line x1="32" y1="12" x2="768" y2="12" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="32" y="37" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="32" dy="0">l0g / PAIEMENT TRANSFRONTIÈRE</tspan></text>
+<text x="768" y="37" fill="var(--color-signal, #5eead4)" font-size="14" font-weight="400" text-anchor="end"><tspan x="768" dy="0">02</tspan></text>
+<text x="32" y="78" fill="var(--color-paper, #e7e9ee)" font-size="29" font-weight="500" text-anchor="start"><tspan x="32" dy="0">Un paiement déplace les réserves</tspan></text>
+<text x="32" y="111" fill="var(--color-muted, #8b909b)" font-size="16" font-weight="400" text-anchor="start"><tspan x="32" dy="0">T2 · paiement isolé de x euros · aucune autre opération</tspan></text>
+<text x="161" y="166" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="middle"><tspan x="161" dy="0">PAYS A</tspan></text>
+<text x="639" y="166" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="middle"><tspan x="639" dy="0">PAYS B</tspan></text>
+<path d="M137 204.7 L160.1 190 L183.2 204.7 Z M141.2 209.95 L141.2 235.15 M153.8 209.95 L153.8 235.15 M166.4 209.95 L166.4 235.15 M179.0 209.95 L179.0 235.15 M137 241.45 L183.2 241.45" fill="none" stroke="var(--color-signal, #5eead4)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M616 204.7 L639.1 190 L662.2 204.7 Z M620.2 209.95 L620.2 235.15 M632.8 209.95 L632.8 235.15 M645.4 209.95 L645.4 235.15 M658.0 209.95 L658.0 235.15 M616 241.45 L662.2 241.45" fill="none" stroke="var(--color-signal, #5eead4)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="161" y="271" fill="var(--color-paper, #e7e9ee)" font-size="19" font-weight="400" text-anchor="middle"><tspan x="161" dy="0">Banque émettrice</tspan></text>
+<text x="639" y="271" fill="var(--color-paper, #e7e9ee)" font-size="19" font-weight="400" text-anchor="middle"><tspan x="639" dy="0">Banque bénéficiaire</tspan></text>
+<line x1="218" y1="218" x2="580" y2="218" stroke="var(--color-signal, #5eead4)" stroke-width="1.5"/><path d="M573.70 221.04 L580 218 L573.70 214.96" fill="none" stroke="var(--color-signal, #5eead4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="400" y="196" fill="var(--color-signal, #5eead4)" font-size="16" font-weight="400" text-anchor="middle"><tspan x="400" dy="0">règlement en monnaie centrale · x</tspan></text>
+<line x1="161" y1="291" x2="161" y2="336" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<line x1="639" y1="291" x2="639" y2="336" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1.5"/>
+<rect x="32" y="336" width="292" height="125" rx="0" fill="none" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<rect x="476" y="336" width="292" height="125" rx="0" fill="none" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="52" y="366" fill="var(--color-muted, #8b909b)" font-size="16" font-weight="400" text-anchor="start"><tspan x="52" dy="0">BCN A</tspan></text>
+<text x="496" y="366" fill="var(--color-muted, #8b909b)" font-size="16" font-weight="400" text-anchor="start"><tspan x="496" dy="0">BCN B</tspan></text>
+<text x="52" y="403" fill="var(--color-signal, #5eead4)" font-size="18" font-weight="400" text-anchor="start"><tspan x="52" dy="0">Réserves de la banque</tspan></text>
+<text x="496" y="403" fill="var(--color-signal, #5eead4)" font-size="18" font-weight="400" text-anchor="start"><tspan x="496" dy="0">Réserves de la banque</tspan></text>
+<text x="52" y="441" fill="var(--color-signal, #5eead4)" font-size="29" font-weight="500" text-anchor="start"><tspan x="52" dy="0">−x</tspan></text>
+<text x="496" y="441" fill="var(--color-signal, #5eead4)" font-size="29" font-weight="500" text-anchor="start"><tspan x="496" dy="0">+x</tspan></text>
+<path d="M177 478 L177 494 L623 494 L623 478" fill="none" stroke="var(--color-signal, #5eead4)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="400" y="522" fill="var(--color-signal, #5eead4)" font-size="18" font-weight="400" text-anchor="middle"><tspan x="400" dy="0">Total des réserves de l’Eurosystème inchangé</tspan></text>
+<line x1="32" y1="552" x2="768" y2="552" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="32" y="585" fill="var(--color-accent, #ff4d87)" font-size="17" font-weight="400" text-anchor="start"><tspan x="32" dy="0">Position TARGET nette</tspan></text>
+<text x="32" y="610" fill="var(--color-muted, #8b909b)" font-size="15" font-weight="400" text-anchor="start"><tspan x="32" dy="0">de chaque BCN envers la BCE</tspan></text>
+<text x="413" y="586" fill="var(--color-accent, #ff4d87)" font-size="20" font-weight="400" text-anchor="start"><tspan x="413" dy="0">BCN A : −x</tspan></text>
+<text x="622" y="586" fill="var(--color-accent, #ff4d87)" font-size="20" font-weight="400" text-anchor="start"><tspan x="622" dy="0">BCN B : +x</tspan></text>
+<text x="413" y="611" fill="var(--color-muted, #8b909b)" font-size="15" font-weight="400" text-anchor="start"><tspan x="413" dy="0">se dégrade</tspan></text>
+<text x="622" y="611" fill="var(--color-muted, #8b909b)" font-size="15" font-weight="400" text-anchor="start"><tspan x="622" dy="0">s’améliore</tspan></text>
+<text x="32" y="655" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="32" dy="0">Écritures simplifiées · sans refinancement compensateur.</tspan></text>
+<text x="32" y="677" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="32" dy="0">Source : BCE, explication des soldes TARGET.</tspan></text>
+</svg>
+</div>
+<div class="cb-mobile">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 826" role="img" lang="fr" aria-labelledby="cb-ecb-target-fr-m-title cb-ecb-target-fr-m-desc" style="width:100%;height:auto;display:block;font-family:var(--font-read, Arial, sans-serif)">
+<title id="cb-ecb-target-fr-m-title">Un paiement déplace les réserves</title><desc id="cb-ecb-target-fr-m-desc">Paiement transfrontière isolé de x euros d’une banque du pays A à une banque du pays B, sans refinancement compensateur ni autre opération. Les réserves de la première diminuent de x et celles de la seconde augmentent de x. La position TARGET nette de la BCN A envers la BCE se dégrade de x ; celle de la BCN B s’améliore de x. La somme des réserves de l’Eurosystème reste identique.</desc>
+<rect x="0" y="0" width="400" height="826" rx="0" fill="var(--color-ink, #0c0d10)"/>
+<line x1="24" y1="12" x2="376" y2="12" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="24" y="37" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="24" dy="0">l0g / PAIEMENT TRANSFRONTIÈRE</tspan></text>
+<text x="376" y="37" fill="var(--color-signal, #5eead4)" font-size="14" font-weight="400" text-anchor="end"><tspan x="376" dy="0">02</tspan></text>
+<text x="24" y="78" fill="var(--color-paper, #e7e9ee)" font-size="24" font-weight="500" text-anchor="start"><tspan x="24" dy="0">Un paiement déplace</tspan><tspan x="24" dy="30">les réserves</tspan></text>
+<text x="24" y="149" fill="var(--color-muted, #8b909b)" font-size="15" font-weight="400" text-anchor="start"><tspan x="24" dy="0">T2 · paiement isolé de x euros</tspan></text>
+<text x="24" y="205" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="24" dy="0">BANQUE A</tspan></text>
+<text x="376" y="205" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="end"><tspan x="376" dy="0">BANQUE B</tspan></text>
+<path d="M39 238.3 L59.9 225 L80.8 238.3 Z M42.8 243.05 L42.8 265.85 M54.2 243.05 L54.2 265.85 M65.6 243.05 L65.6 265.85 M77.0 243.05 L77.0 265.85 M39 271.55 L80.8 271.55" fill="none" stroke="var(--color-signal, #5eead4)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M319 238.3 L339.9 225 L360.8 238.3 Z M322.8 243.05 L322.8 265.85 M334.2 243.05 L334.2 265.85 M345.6 243.05 L345.6 265.85 M357.0 243.05 L357.0 265.85 M319 271.55 L360.8 271.55" fill="none" stroke="var(--color-signal, #5eead4)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="109" y1="252" x2="290" y2="252" stroke="var(--color-signal, #5eead4)" stroke-width="1.5"/><path d="M283.70 255.04 L290 252 L283.70 248.96" fill="none" stroke="var(--color-signal, #5eead4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="200" y="235" fill="var(--color-signal, #5eead4)" font-size="16" font-weight="400" text-anchor="middle"><tspan x="200" dy="0">x euros</tspan></text>
+<text x="200" y="299" fill="var(--color-paper, #e7e9ee)" font-size="16" font-weight="400" text-anchor="middle"><tspan x="200" dy="0">Règlement en monnaie centrale</tspan></text>
+<line x1="24" y1="322" x2="376" y2="322" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="24" y="357" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="24" dy="0">COMPTES DES BANQUES CENTRALES</tspan></text>
+<line x1="200" y1="377" x2="200" y2="592" stroke="var(--color-line-strong, rgba(255, 255, 255, 0.20))" stroke-width="1"/>
+<text x="24" y="399" fill="var(--color-paper, #e7e9ee)" font-size="18" font-weight="400" text-anchor="start"><tspan x="24" dy="0">BCN A</tspan></text>
+<text x="228" y="399" fill="var(--color-paper, #e7e9ee)" font-size="18" font-weight="400" text-anchor="start"><tspan x="228" dy="0">BCN B</tspan></text>
+<text x="24" y="438" fill="var(--color-signal, #5eead4)" font-size="16" font-weight="400" text-anchor="start"><tspan x="24" dy="0">Réserves de</tspan><tspan x="24" dy="22">la banque A</tspan></text>
+<text x="228" y="438" fill="var(--color-signal, #5eead4)" font-size="16" font-weight="400" text-anchor="start"><tspan x="228" dy="0">Réserves de</tspan><tspan x="228" dy="22">la banque B</tspan></text>
+<text x="24" y="505" fill="var(--color-signal, #5eead4)" font-size="33" font-weight="500" text-anchor="start"><tspan x="24" dy="0">−x</tspan></text>
+<text x="228" y="505" fill="var(--color-signal, #5eead4)" font-size="33" font-weight="500" text-anchor="start"><tspan x="228" dy="0">+x</tspan></text>
+<text x="24" y="547" fill="var(--color-accent, #ff4d87)" font-size="16" font-weight="400" text-anchor="start"><tspan x="24" dy="0">TARGET : −x</tspan><tspan x="24" dy="22">envers la BCE</tspan></text>
+<text x="228" y="547" fill="var(--color-accent, #ff4d87)" font-size="16" font-weight="400" text-anchor="start"><tspan x="228" dy="0">TARGET : +x</tspan><tspan x="228" dy="22">envers la BCE</tspan></text>
+<path d="M24 608 L24 622 L376 622 L376 608" fill="none" stroke="var(--color-signal, #5eead4)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="200" y="657" fill="var(--color-signal, #5eead4)" font-size="18" font-weight="400" text-anchor="middle"><tspan x="200" dy="0">Total des réserves</tspan><tspan x="200" dy="25">de l’Eurosystème inchangé</tspan></text>
+<text x="24" y="720" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="24" dy="0">TARGET : position nette de chaque BCN</tspan><tspan x="24" dy="20">vis-à-vis de la BCE ; variation de x.</tspan></text>
+<text x="24" y="776" fill="var(--color-muted, #8b909b)" font-size="14" font-weight="400" text-anchor="start"><tspan x="24" dy="0">Sans refinancement compensateur</tspan><tspan x="24" dy="20">ni autre opération. Source : BCE.</tspan></text>
+</svg>
+</div>
+<figcaption>Paiement transfrontière isolé de x euros, sans refinancement compensateur ni autre opération. Les réserves se déplacent entre banques et les positions TARGET nettes de leurs banques centrales évoluent en sens opposé. Une position qui baisse peut signifier une créance plus faible ou une dette plus élevée. Les créances et engagements TARGET sont envers la BCE. Source : <a href="https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/target-balances.en.html">BCE, mécanisme des soldes TARGET</a>.</figcaption>
+</figure>
+
+Les soldes cumulent des flux de paiements : achats de biens, placements, prêts interbancaires, mouvements de dépôts et opérations de politique monétaire. La BCE explique notamment que les achats de titres ont gonflé les soldes lorsque les règlements transfrontières déplaçaient les dépôts vers d’autres pays. Un solde important ne permet donc pas, isolément, de conclure à une fuite des capitaux ou à un transfert budgétaire.
+
+Ces créances et dettes existent bien dans les comptes. Elles se compensent lors de la consolidation de l’Eurosystème, sans disparaître des bilans individuels. Leur évolution renseigne sur les circuits de règlement ; pour diagnostiquer une tension, on la rapproche des flux de financement et des conditions de marché. La [BCE précise aussi](https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/target-balances.en.html) que le non-réinvestissement d’un titre domestique ne réduit pas directement les soldes TARGET : les effets peuvent être indirects. La décrue des portefeuilles et celle des soldes ne suivent aucune proportion comptable automatique.
+
+## Distinguer pertes, capital et capacité d’action
+
+Une banque centrale peut détenir des obligations anciennes à taux fixe tout en rémunérant des engagements à des taux qui se révisent rapidement. Une hausse de ses charges plus rapide que celle de ses revenus dégrade sa marge. Les variations de change et les autres charges interviennent également. Le bilan donne les stocks ; le compte de résultat explique les revenus et dépenses sur l’année.
+
+Pour **la BCE seule**, les [comptes de 2025 publiés le 26 février 2026](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260226~15dbe4febc.en.html) indiquent une perte de **1,254 milliard d’euros**. La BCE la reporte pour l’imputer sur des bénéfices futurs et ne distribue pas de résultat au titre de 2025. Ces comptes ne sont ni ceux de la Banque de France ni le résultat consolidé de tout l’Eurosystème.
+
+La capacité d’émettre sa monnaie distingue une banque centrale d’une banque commerciale. Elle ne rend pas ses pertes indifférentes : les distributions aux finances publiques, les ressources financières et l’indépendance institutionnelle comptent. Dans son [explication des pertes](https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/ecb_profits.en.html), la BCE affirme pouvoir fonctionner avec des pertes et rappelle le principe d’une capitalisation suffisante des banques centrales nationales. Le retour aux bénéfices dépend notamment des taux, des revenus et de la composition des actifs ; il n’est pas garanti par le seul passage du temps.
+
+## Relier les quantités aux taux de marché
+
+Le volume des dépôts ne suffit pas à mesurer l’accès de chaque banque au financement. Il faut regarder leur répartition, les garanties mobilisables, les opérations de refinancement et les taux monétaires. Le [cadre annoncé en mars 2024](https://www.ecb.europa.eu/press/pr/date/2024/html/ecb.pr240313~807e240020.en.html) vise à maintenir les taux courts à proximité du taux de dépôt en fournissant notamment des prêts contre collatéral.
+
+Au **29 octobre 2026**, les taux officiels sont de **2,50 %** pour la facilité de dépôt, **2,65 %** pour les opérations principales de refinancement et **2,90 %** pour le prêt marginal. Ce sont les niveaux de la [décision datée](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html), distincts de la photographie du bilan. Le taux de dépôt sert d’ancrage ; le qualifier de plancher infranchissable de toute transaction serait trop fort. Les intervenants, leur accès aux facilités et les frictions de marché peuvent créer des écarts.
+
+## Reproduire une lecture hebdomadaire
+
+1. Ouvrir le tableau et son commentaire ; noter date d’observation, publication, unité et périmètre.
+2. Relever les principaux actifs puis les dépôts bancaires, les billets et les dépôts publics.
+3. Comparer les variations de tous les postes importants, en séparant transactions et réévaluations.
+4. Consulter les remboursements par programme avant de relier une baisse des titres au QT.
+5. Examiner TARGET dans les comptes désagrégés, en conservant la même date et en incluant la BCE.
+6. Croiser les quantités avec les taux et les conditions de refinancement avant de diagnostiquer une pénurie.
+
+Les [situations hebdomadaires](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/html/index.en.html), leur [mode d’emploi](https://www.ecb.europa.eu/pub/pdf/other/wfs-userguide.en.html) et les [données désagrégées](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/dis/html/index.en.html) fournissent les documents de départ. Pour prolonger la lecture, voir le [marché du repo et le SOFR](/guides/lire-le-marche-du-repo-sofr/) et la [dette souveraine européenne](/guides/lire-la-dette-souveraine-europeenne/).
+
+## Sources et révision
+
+Révision du **11 novembre 2026** : photographie chiffrée remplacée par le relevé au 6 novembre, périmètre porté à 21 banques centrales nationales, distinction explicite entre transactions et réévaluations, correction de la lecture des soldes TARGET et qualification des conséquences des pertes. Les anciennes trajectoires de fin 2026 et les soldes nationaux approximatifs ont été retirés.
+
+Les liens au fil du texte renvoient aux documents officiels pertinents. La BCE est la source de ses comptes et de ses décisions ; ses appréciations sur sa capacité d’action lui sont explicitement attribuées. Les valeurs du bilan sont converties de millions en milliards d’euros, sans annualisation ni correction de prix. Les différences d’arrondi du tableau source peuvent empêcher une addition au dernier million près.
