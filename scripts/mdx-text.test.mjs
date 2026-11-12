@@ -20,7 +20,7 @@ test('MDX setup imports disappear while prose, links and line boundaries remain'
     const result = stripMdxImports(markdown);
     assert.doesNotMatch(result, /components\/|styles\//);
     assert.match(result, /La baisse des tarifs/);
-    assert.match(result, /https:\/\/www.bis.org\/publ\/bisbull120.htm/);
+    assert.ok(result.includes('https://www.bis.org/publ/bisbull120.htm'));
     assert.equal(result.split('\n').length, markdown.split('\n').length);
   }
 });
@@ -86,11 +86,22 @@ test('shared search documents retain article prose without component paths', () 
   }
 });
 
-test('both corpus endpoints publish article prose without MDX setup paths', async () => {
+test('both corpus endpoints publish prose and code-like fixture data without MDX setup paths', async () => {
+  const codeLikeText = `'; throw new Error('Fixture data executed'); //\n"; throw new Error("Fixture data executed"); //`;
+  const fixturePosts = posts.map((post) => ({ ...post, body: `${post.body}\n\n${codeLikeText}` }));
   const fixture = {
     name: 'published-content-fixture',
     setup(builder) {
-      builder.onLoad({ filter: /\/agent-content\.ts$/ }, () => ({ contents: `export async function loadAgentContent() { const posts = ${JSON.stringify(posts)}; for (const post of posts) post.data.pubDate = new Date(post.data.pubDate); return { posts, guides: [] }; }`, loader: 'js' }));
+      builder.onResolve({ filter: /^mdx-content-fixture$/ }, () => ({ path: 'posts', namespace: 'mdx-content-fixture' }));
+      builder.onLoad({ filter: /^posts$/, namespace: 'mdx-content-fixture' }, () => ({ contents: JSON.stringify(fixturePosts), loader: 'json' }));
+      builder.onLoad({ filter: /\/agent-content\.ts$/ }, () => ({
+        contents: `import posts from 'mdx-content-fixture';
+export async function loadAgentContent() {
+  for (const post of posts) post.data.pubDate = new Date(post.data.pubDate);
+  return { posts, guides: [] };
+}`,
+        loader: 'js',
+      }));
       builder.onLoad({ filter: /\/agent-surface\.ts$/ }, () => ({ contents: 'export const textResponse = (body, type) => new Response(body, { headers: { "Content-Type": type } });', loader: 'js' }));
     },
   };
@@ -100,6 +111,7 @@ test('both corpus endpoints publish article prose without MDX setup paths', asyn
     const text = await response.text();
     assert.equal(response.status, 200);
     assert.match(text, /La baisse des tarifs de location/);
+    assert.ok(text.includes(codeLikeText));
     assert.doesNotMatch(text, /components\/|styles\/cra-disclosure|import Gpu/);
   }
 });
