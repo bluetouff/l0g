@@ -4274,8 +4274,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   'profondeur-de-marche': {
     intuition: 'Une vente importante peut épuiser le meilleur prix et rencontrer les niveaux suivants.',
-    articles: [{ label: 'Dette publique : le prix de la sortie', href: '/posts/dette-etats-06-prix-sortie/', kind: 'article' }, { label: 'FIFA et Predictstreet : liquidité et prix de sortie', href: '/posts/fifa-predictstreet-volume-wash-trading/', kind: 'article' }],
-    sources: [{ label: 'Fed de New York, liquidité des Treasuries', href: 'https://libertystreeteconomics.newyorkfed.org/2026/04/treasury-market-liquidity-since-april-2025/', detail: 'Profondeur au meilleur prix, fourchette et impact des transactions.', kind: 'source' }],
+    articles: [{ label: 'Dette publique : le prix de la sortie', href: '/posts/dette-etats-06-prix-sortie/', kind: 'article' }, { label: 'FIFA et Predictstreet : liquidité et prix de sortie', href: '/posts/fifa-predictstreet-volume-wash-trading/', kind: 'article' }, { label: 'Anthropic : IPO, indices et formation des prix', href: '/posts/anthropic-ipo-indices-formation-prix/', kind: 'article' }],
+    sources: [{ label: 'Fed de New York, liquidité des Treasuries', href: 'https://libertystreeteconomics.newyorkfed.org/2026/04/treasury-market-liquidity-since-april-2025/', detail: 'Profondeur au meilleur prix, fourchette et impact des transactions.', kind: 'source' }, { label: 'Nasdaq, formation du cours d’ouverture d’une IPO', href: 'https://www.nasdaq.com/newsroom/how-nasdaq-supports-ipo-process', detail: 'Ordres d’achat et de vente, quantités à chaque niveau de prix et préparation de l’ouverture.', kind: 'source' }],
     related: ['bid-to-cover', 'primary-dealer', 'appel-de-marge'],
   },
   'coupon-obligataire': {

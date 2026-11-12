@@ -2295,8 +2295,11 @@ for (const [slug, source] of [
   assert.equal(fr.reference, undefined);
   assert.equal(fr.referenceCandidate, false);
   assert.equal(en.robots, 'noindex,follow');
-  assert.deepEqual(fr.atlas.sources.map(item => item.href), [source]);
-  assert.deepEqual(en.atlas.sources.map(item => item.href), [source]);
+  const expectedSources = slug === 'profondeur-de-marche'
+    ? [source, 'https://www.nasdaq.com/newsroom/how-nasdaq-supports-ipo-process']
+    : [source];
+  assert.deepEqual(fr.atlas.sources.map(item => item.href), expectedSources);
+  assert.deepEqual(en.atlas.sources.map(item => item.href), expectedSources);
   assert.deepEqual(fr.atlas.related, en.atlas.related);
   for (const neighbor of fr.atlas.related) {
     assert(glossaryEntries.some(entry => entry.slug === neighbor));

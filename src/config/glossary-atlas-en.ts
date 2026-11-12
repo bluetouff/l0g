@@ -5019,8 +5019,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/dette-etats-06-prix-sortie/', ...macroSection, robots: 'noindex,follow',
     atlas: {
       intuition: 'A large sale can exhaust the best bid and reach lower price levels.',
-      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }, { label: 'FIFA and Predictstreet: liquidity and exit prices', href: '/en/analysis/fifa-predictstreet-trading-volume-risk/', kind: 'article' }],
-      sources: [{ label: 'New York Fed, Treasury liquidity', href: 'https://libertystreeteconomics.newyorkfed.org/2026/04/treasury-market-liquidity-since-april-2025/', detail: 'Inside-tier depth, spreads and price impact.', kind: 'source' }],
+      articles: [{ label: 'Government debt: the price of getting out', href: '/en/analysis/dette-etats-06-prix-sortie/', kind: 'article' }, { label: 'FIFA and Predictstreet: liquidity and exit prices', href: '/en/analysis/fifa-predictstreet-trading-volume-risk/', kind: 'article' }, { label: 'Anthropic: IPO, index funds and price formation', href: '/en/analysis/anthropic-ipo-index-funds-price-formation/', kind: 'article' }],
+      sources: [{ label: 'New York Fed, Treasury liquidity', href: 'https://libertystreeteconomics.newyorkfed.org/2026/04/treasury-market-liquidity-since-april-2025/', detail: 'Inside-tier depth, spreads and price impact.', kind: 'source' }, { label: 'Nasdaq, IPO opening price formation', href: 'https://www.nasdaq.com/newsroom/how-nasdaq-supports-ipo-process', detail: 'Buy and sell orders, quantities at each price level and preparation for the opening trade.', kind: 'source' }],
       related: ['bid-to-cover', 'primary-dealer', 'appel-de-marge'],
     },
   },
