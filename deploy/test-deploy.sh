@@ -125,6 +125,9 @@ grep -Fq 'probe_status "route inconnue" 404 https://l0g.fr/route-inconnue-probe-
 grep -Fq 'Cette route ne mène plus nulle part.' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
 
+# Vérifie aussi les règles Apache réelles, leurs limites et les en-têtes SEO.
+node --test "${ROOT}/scripts/verify-seo-live.test.mjs"
+
 REMOTE="${TMP}/remote.git"
 SOURCE="${TMP}/source"
 BUILT="${TMP}/built"

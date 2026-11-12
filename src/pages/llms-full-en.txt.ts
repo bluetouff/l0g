@@ -3,12 +3,13 @@ import { editorialProtocolRelease } from '../config/editorial.ts';
 import { loadAgentContent } from '../lib/agent-content.ts';
 import { textResponse } from '../lib/agent-surface.ts';
 import { removeHtmlElementBlocks, stripHtmlTags } from '../lib/html-utils.ts';
+import { stripMdxImports } from '../lib/mdx-text.ts';
 
 const SITE = 'https://l0g.fr';
 const MAX_PER_DOC = 24000;
 
 function toPlain(markdown: string) {
-  return stripHtmlTags(removeHtmlElementBlocks(String(markdown || ''), 'figure'))
+  return stripHtmlTags(removeHtmlElementBlocks(stripMdxImports(markdown), 'figure'))
     .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
     .replace(/^\s*#{1,6}\s*/gm, '')

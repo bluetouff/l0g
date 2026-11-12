@@ -9,23 +9,24 @@ const SITE = 'https://l0g.fr';
 
 export const SEO_LIVE_PROBES = Object.freeze([
   ...Object.entries(legacySurfaceRedirects)
-    .filter(([path]) => path.startsWith('/glossaire/') || path === '/posts')
     .flatMap(([path, target]) => [
-      { path, status: 301, location: `${SITE}${target}` },
-      { path: `${path}/`, status: 301, location: `${SITE}${target}` },
+      { path, status: 301, location: new URL(target, SITE).href },
+      { path: `${path}/`, status: 301, location: new URL(target, SITE).href },
     ]),
   ...[...new Set(Object.entries(legacySurfaceRedirects)
-    .filter(([path]) => path.startsWith('/glossaire/') || path === '/posts')
-    .map(([, target]) => target))].map((path) => ({ path, status: 200, type: /^text\/html\b/i })),
+    .map(([, target]) => target)
+    .filter((target) => target.startsWith('/')))].map((path) => ({ path, status: 200, type: /^text\/html\b/i, noindex: false })),
+  ...['/fonts/jlr/LICENSE-inter.txt', '/fonts/jlr/LICENSE-jetbrains-mono.txt', '/fonts/hebdo/OFL.txt']
+    .map((path) => ({ path, status: 200, type: /^text\/plain\b/i, noindex: true })),
+  ...['/robots.txt', '/llms-full.txt']
+    .map((path) => ({ path, status: 200, type: /^text\/plain\b/i, noindex: false })),
   { path: '/og/le-grand-peage-de-la-facture-1-le-portail-ampute.png', status: 301, location: `${SITE}/illustrations/news/e-invoicing-toll-1-v2.jpg` },
   { path: '/og/le-grand-peage-de-la-facture-3-le-prix-du-gratuit.png', status: 301, location: `${SITE}/illustrations/news/e-invoicing-toll-3-v1.jpg` },
   { path: '/illustrations/news/e-invoicing-toll-1-v2.jpg', status: 200, type: /^image\/jpeg\b/i },
   { path: '/illustrations/news/e-invoicing-toll-3-v1.jpg', status: 200, type: /^image\/jpeg\b/i },
   { path: '/sitemap.xml', status: 301, location: `${SITE}/sitemap-index.xml` },
   { path: '/sitemap-index.xml', status: 200, type: /^application\/xml\b/i },
-  { path: '/contact/', status: 200, type: /^text\/html\b/i },
   { path: '/en/contact/', status: 200, type: /^text\/html\b/i },
-  { path: '/contact-us', status: 301, location: `${SITE}/contact/` },
   { path: '/en/contact-us', status: 301, location: `${SITE}/en/contact/` },
   { path: '/.well-known/mcp', status: 308, location: `${SITE}/.well-known/mcp.json` },
   { path: '/api/mcp/.well-known/mcp', status: 308, location: `${SITE}/.well-known/mcp.json` },
@@ -47,6 +48,12 @@ export function validateSeoObservation(probe, observation) {
   if (probe.type && !probe.type.test(observation.content_type ?? '')) {
     errors.push(`content-type:${observation.content_type ?? '(absent)'}`);
   }
+  if (typeof probe.noindex === 'boolean') {
+    const noindex = /(?:^|[,\s])noindex(?:$|[,\s])/i.test(observation.x_robots_tag ?? '');
+    if (noindex !== probe.noindex) {
+      errors.push(`x-robots-tag:${observation.x_robots_tag ?? '(absent)'} (${probe.noindex ? 'noindex absent' : 'noindex inattendu'})`);
+    }
+  }
   return errors;
 }
 
@@ -62,6 +69,7 @@ async function observe(probe) {
     status: response.status,
     location: response.headers.get('location'),
     content_type: response.headers.get('content-type'),
+    x_robots_tag: response.headers.get('x-robots-tag'),
     server_date: response.headers.get('date'),
   };
 }

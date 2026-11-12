@@ -5,6 +5,7 @@ import {
 import { claimReviewById } from '../config/claim-reviews.ts';
 import { createHash } from 'node:crypto';
 import { stripHtmlTags } from './html-utils.ts';
+import { stripMdxImports } from './mdx-text.ts';
 
 export interface EvidenceLink {
   label: string;
@@ -688,6 +689,7 @@ function buildEvidenceDepth(args: {
 }
 
 export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOptions = {}): ArticleEvidence {
+  markdown = stripMdxImports(markdown);
   const links = extractLinks(markdown).map((link) => {
     const sourceDate = sourcePublicationDateForLink(link);
     return {

@@ -11,6 +11,7 @@ import {
 } from '../config/signal-freshness-contract.mjs';
 import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
+import { stripMdxImports } from './mdx-text.ts';
 import {
   RECENT_ARTICLE_MAX,
   RECENT_ARTICLE_TARGET,
@@ -425,7 +426,7 @@ function absoluteHref(href: string) {
 }
 
 function searchablePlainText(markdown: string) {
-  return String(markdown || '')
+  return stripMdxImports(markdown)
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/<figure[\s\S]*?<\/figure>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')

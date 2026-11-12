@@ -5,6 +5,7 @@ import { editorialChangelog, editorialProtocol, editorialProtocolRelease } from 
 import { textResponse } from '../lib/agent-surface.ts';
 import { loadAgentContent } from '../lib/agent-content.ts';
 import { removeHtmlElementBlocks, stripHtmlTags } from '../lib/html-utils.ts';
+import { stripMdxImports } from '../lib/mdx-text.ts';
 import { AGENT_VERSION, MCP_COMPACT_PUBLIC_PATH, MCP_PUBLIC_PATH } from '../config/agent-contract.mjs';
 
 /**
@@ -31,7 +32,7 @@ function guideUrl(value: string): string {
 }
 
 function toPlain(md: string): string {
-  return stripHtmlTags(removeHtmlElementBlocks(String(md || ''), 'figure'))
+  return stripHtmlTags(removeHtmlElementBlocks(stripMdxImports(md), 'figure'))
     .replace(/!\[[^\]]*\]\([^)]*\)/g, '') // images
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1') // liens -> texte
     .replace(/^\s*#{1,6}\s*/gm, '') // titres
