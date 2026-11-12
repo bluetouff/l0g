@@ -38,9 +38,8 @@ src/content/posts/private-credit-stress.md   →   https://l0g.fr/posts/private-
 
 Choisis l'extension selon le besoin :
 
-- **`.md`** : texte seul (le plus simple).
-- **`.mdx`** : texte + composants Astro locaux. À utiliser pour une infographie
-  inline ou un composant interne (voir section 2).
+- **`.md`** : texte et SVG inline statiques, sans import de composant.
+- **`.mdx`** : texte avec imports de composants Astro locaux (voir section 2).
 
 ### 1.2 Le frontmatter (obligatoire en tête de fichier)
 
@@ -102,6 +101,46 @@ npm run test:editorial-protocol
 Ces tests valident la structure, pas la vérité économique ni la fraîcheur future
 d'une source.
 
+### 1.5 Références au format l0g
+
+Pour un article doté de sources numérotées, reprendre le balisage partagé du site.
+Le renvoi `[S01](#source-S01)` reste près de l'affirmation. La fiche correspondante
+se place dans une liste `<ol class="sources-list" role="list">`, avec :
+
+- un identifiant unique `source-S01` qui correspond exactement au renvoi ;
+- une ligne `<span class="source-meta">` : repère, organisme, date de publication
+  lorsqu'elle est établie et date réelle de consultation ;
+- un lien descriptif vers le document canonique ;
+- un bloc `<details>` dont le résumé est « Passages et périmètre » en français,
+  « Passages and scope » en anglais, contenant le localisateur et les limites
+  utiles à la lecture de la source.
+
+```html
+<ol class="sources-list" role="list">
+<li id="source-S01">
+<span class="source-meta">S01 · SEC · Publication : 2022-10-14 · Consulté le : AAAA-MM-JJ</span>
+<a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-17" target="_blank" rel="noopener noreferrer">Investing in an IPO</a>
+<details><summary>Passages et périmètre</summary><p>Section Offering price : formation du prix de placement. Guide général ; les modalités de l'offre étudiée se vérifient dans son prospectus.</p></details>
+</li>
+</ol>
+```
+
+`AAAA-MM-JJ` est un emplacement à remplacer par la date de consultation.
+Une date de publication inconnue reste indiquée comme non précisée. Distinguer
+la consultation d'une reprise, celle d'un extrait et celle du document complet.
+Les liens ouverts dans un nouvel onglet conservent `rel="noopener noreferrer"`.
+
+La feuille partagée `public/styles/article-sources-v1.css`, chargée par le
+layout des articles, assure la composition et l'échelle typographique. Une
+liste HTML nue, des métadonnées en gras et des notes de périmètre déployées
+dans chaque ligne ne constituent pas le format l0g. Les liens descriptifs
+directs et une bibliographie Markdown restent adaptés aux articles courts
+qui n'emploient pas de catalogue numéroté.
+
+Avant livraison, inspecter les fiches FR/EN au rendu réel, en clair et sombre,
+sur mobile et ordinateur. Vérifier chaque cible de renvoi et ouvrir les détails.
+`npm run publish:check` contrôle les catalogues numérotés des contenus vérifiés.
+
 ---
 
 ## 2. Ajouter une infographie sans appel tiers
@@ -109,7 +148,7 @@ d'une source.
 La règle est simple : le navigateur ne doit contacter aucun domaine tiers au
 chargement. Utilise l'une de ces formes :
 
-- SVG inline dans un fichier `.mdx` ;
+- SVG inline statique dans un fichier `.md` ou `.mdx` ;
 - composant Astro interne sans requête réseau ;
 - fichier SVG, PNG ou WebP placé dans `public/infographies/`.
 
@@ -126,6 +165,38 @@ Chaque visuel doit indiquer sa source, sa date, son unité et, si nécessaire, l
 méthode de calcul. Les scripts externes, iframes, polices distantes et images
 chargées depuis un domaine tiers sont interdits. Le contrôle de sécurité du build
 échoue si une ressource HTTP(S) tierce est chargée automatiquement.
+
+### 2.1 Composition compacte et typographie proportionnée
+
+Exigence permanente, réaffirmée le 12 novembre 2026 : les figures doivent
+expliquer un mécanisme ou des chiffres avec une hauteur contenue et des
+polices proportionnées au dessin. Un grand SVG portrait composé de scènes
+empilées, de gros titres ou de chiffres dominants doit être recomposé.
+
+Évaluer les tailles en pixels **réellement affichés** dans l'article, après
+application du `viewBox`, des transformations et de la largeur CSS. Une valeur
+`font-size` isolée du fichier ne suffit pas pour juger la typographie.
+
+Pour une figure simple affichée autour de 520 à 600 pixels de large, viser
+en première intention des labels de 12 à 14 pixels et un titre ou une valeur
+mise en avant de 16 à 18 pixels. Une composition de 250 à 330 pixels de haut
+convient souvent à ce format. Ces repères orientent le dessin ; ils ne
+remplacent pas le jugement visuel et ne justifient aucune écriture minuscule.
+
+Sur mobile, raccourcir les libellés, déplacer les explications vers la légende
+ou prévoir une composition dédiée. Revoir la disposition avant d'agrandir
+toute la typographie. Les poids réguliers dominent ; le gras reste ponctuel.
+Conserver les traits fins, les couleurs l0g, des marges équilibrées et un
+espacement sous la figure.
+
+Inspecter les versions FR/EN dans la page réelle à largeur mobile et ordinateur,
+en clair et sombre. Contrôler les tailles calculées, la hauteur occupée, le
+contraste et les débordements. Les tests XML, la géométrie et les diagnostics
+de `publish:check` complètent cette inspection esthétique.
+
+Une tolérance ponctuelle sur une ancienne figure ne crée pas de modèle pour
+les suivantes. Préserver les SVG approuvés des autres articles ; corriger
+seulement ceux concernés par la demande.
 
 ---
 

@@ -6,6 +6,8 @@ import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { XMLParser, XMLValidator } from 'fast-xml-parser';
 import { fromHtml } from 'hast-util-from-html';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
 import { editorialSourceDomainTiers } from '../src/config/primary-sources.ts';
 import { contentTitleViolations, editorialTitleViolation } from './editorial-title-policy.mjs';
 
@@ -42,6 +44,7 @@ const CATEGORY_ORDER = [
   'Frontmatter',
   'FR/EN numbers',
   'URLs',
+  'References',
   'Primary sources',
   'SVG',
   'Unsourced nums',
@@ -225,6 +228,121 @@ function auditUrls(record) {
   if (urls.length === 0) warn('Primary sources', `${name}: no external source URL found`);
   else if (tiers.primary.size === 0) {
     warn('Primary sources', `${name}: no recognised primary source among ${unique.size} external URL(s); review attribution and evidence depth`);
+  }
+}
+
+// Ignore examples while retaining offsets for diagnostics in the original body.
+const editorialMarkdownParser = unified().use(remarkParse);
+function maskEditorialExamples(source) {
+  const ranges = [];
+  const visit = (node) => {
+    if (node.type === 'code' || node.type === 'inlineCode') {
+      ranges.push([node.position.start.offset, node.position.end.offset]);
+      return;
+    }
+    for (const child of node.children ?? []) visit(child);
+  };
+  // The Markdown parser distinguishes indented examples from indentation inside
+  // an HTML block. A whitespace-only heuristic would hide real source cards.
+  visit(editorialMarkdownParser.parse(source));
+  let masked = source;
+  for (const [start, end] of ranges.reverse()) {
+    // Deliberately match UTF-16 code units: an astral character needs two spaces
+    // so positions of later references remain those of the original source.
+    masked = masked.slice(0, start) + masked.slice(start, end).replace(/[^\r\n]/g, ' ') + masked.slice(end);
+  }
+  return masked.replace(/<!--[\s\S]*?-->/gu, (value) => value.replace(/[^\r\n]/g, ' '));
+}
+
+function htmlText(node) {
+  return node.type === 'text' ? node.value : (node.children ?? []).map(htmlText).join('');
+}
+
+function htmlDescendants(node, predicate) {
+  return (node.children ?? []).flatMap((child) => [
+    ...(predicate(child) ? [child] : []), ...htmlDescendants(child, predicate),
+  ]);
+}
+
+function analyzeSourceReferences(body) {
+  const source = maskEditorialExamples(body);
+  const tree = fromHtml(source, { fragment: true });
+  const ids = new Map();
+  const citations = [...source.matchAll(/\[[^\]\n]+\]\(\s*<?#(source-[^\s)>]+)>?(?:\s+(?:"[^"\n]*"|'[^'\n]*'|\([^\n)]*\)))?\s*\)/giu)]
+    .map((match) => ({ id: match[1], index: match.index }));
+  const catalogues = [];
+  const errors = [];
+  const visit = (node, list = null) => {
+    if (node.type === 'element') {
+      if (node.tagName === 'ol' || node.tagName === 'ul') list = node;
+      const id = node.properties?.id;
+      if (typeof id === 'string') {
+        ids.set(id, (ids.get(id) ?? 0) + 1);
+        if (/^source-S\d+$/iu.test(id)) catalogues.push({ node, list, id });
+      }
+      const href = node.properties?.href;
+      if (node.tagName === 'a' && typeof href === 'string' && /^#source-/iu.test(href)) {
+        citations.push({ id: href.slice(1), index: node.position?.start.offset ?? 0 });
+      }
+    }
+    for (const child of node.children ?? []) visit(child, list);
+  };
+  visit(tree);
+  for (const [id, count] of ids) {
+    if (/^source-/iu.test(id) && count > 1) errors.push({ index: source.indexOf(id), message: `duplicate source ID: ${id}` });
+  }
+  const missing = new Set();
+  for (const citation of citations) {
+    let id;
+    try { id = decodeURIComponent(citation.id); } catch { id = citation.id; }
+    if (!ids.has(id) && !missing.has(id)) {
+      errors.push({ index: citation.index, message: `bibliographic citation has no target: #${id}` });
+      missing.add(id);
+    }
+  }
+  for (const { node, list, id } of catalogues) {
+    const missingFields = [];
+    if (node.tagName !== 'li' || !list?.properties?.className?.includes('sources-list')
+      || (list.properties.role && list.properties.role !== 'list')) missingFields.push('li in .sources-list with list semantics');
+    const metadata = htmlDescendants(node, (child) => child.tagName === 'span'
+      && child.properties?.className?.includes('source-meta'));
+    if (!metadata.some((child) => htmlText(child).trim())) missingFields.push('span.source-meta');
+    const metadataParts = metadata.flatMap((child) => htmlText(child).split(/[·;]/u));
+    // Require explicit fields, not an invented date: undated/not stated are
+    // legitimate values. Checking the actual dates remains editorial work.
+    const hasPublication = metadataParts.some((part) => /^\s*(?:publication|published(?: on)?|date de publication|mise à jour|updated(?: on)?|millésime|vintage|version(?: du document)?|proposition|proposal|règle finale|final rule|original(?: publication)?|reprise|reprint|release(?: date)?|filed(?: on)?|dépôt|filing|appel|call)\s*:\s*\S/iu.test(part)
+      || /^\s*(?:19|20)\d{2}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12]\d|3[01]))?\s*$/u.test(part)
+      || /^\s*(?:date de publication|publication(?: date)?|published(?: date)?)\s*(?::\s*)?(?:non (?:imprimée|précisée|indiquée|renseignée|datée|affichée)|inconnue?|unknown|not (?:stated|provided|printed)|undated)\s*$/iu.test(part));
+    if (!hasPublication) missingFields.push('publication metadata (date or explicit unknown)');
+    if (!metadataParts.some((part) => /^\s*(?:consult[ée](?:e)?(?: le)?|consultation|consulted(?: on)?|checked(?: on)?|accessed(?: on)?|retrieved(?: on)?)\s*:\s*\S/iu.test(part))) missingFields.push('access metadata (date or explicit unknown)');
+    const scope = htmlDescendants(node, (child) => child.tagName === 'details');
+    if (!scope.some((child) => htmlDescendants(child, (part) => part.tagName === 'summary').some((part) => htmlText(part).trim())
+      && htmlDescendants(child, (part) => part.tagName === 'p').some((part) => htmlText(part).trim()))) missingFields.push('details with summary and scope paragraph');
+    const links = htmlDescendants(node, (child) => child.tagName === 'a' && typeof child.properties?.href === 'string'
+      && /^https?:\/\//iu.test(child.properties.href));
+    const principalLinks = (node.children ?? []).filter((child) => child.tagName === 'a' && typeof child.properties?.href === 'string');
+    const descriptiveLink = principalLinks.some((link) => /^https:\/\//iu.test(link.properties.href)
+      && htmlText(link).trim() && !/^(?:S?\d+|sources?|link|lien|document|ici|here|https?:\/\/\S+)$/iu.test(htmlText(link).trim()));
+    if (!descriptiveLink) missingFields.push('descriptive HTTPS source link');
+    if (missingFields.length) errors.push({ index: node.position?.start.offset ?? 0,
+      message: `${id}: source catalogue needs ${missingFields.join(', ')}` });
+    for (const link of links) {
+      const rel = new Set((Array.isArray(link.properties.rel) ? link.properties.rel : String(link.properties.rel ?? '').split(/\s+/u)).map((value) => value.toLowerCase()));
+      if (String(link.properties.target ?? '').toLowerCase() === '_blank'
+        && (!rel.has('noopener') || !rel.has('noreferrer'))) errors.push({ index: link.position?.start.offset ?? 0,
+        message: `${id}: source link with target="_blank" needs rel="noopener noreferrer"` });
+    }
+  }
+  return errors;
+}
+
+function auditSourceReferences(record, enforce = true) {
+  checked('References');
+  for (const issue of analyzeSourceReferences(record.body)) {
+    const offset = record.source.length - record.body.length;
+    const message = `${displayPath(record.path)}:${lineNumber(record.source, offset + issue.index)} ${issue.message}`;
+    if (enforce) fail('References', message);
+    else warn('References', `${message} (unchanged article in --all; review when editing)`);
   }
 }
 
@@ -458,6 +576,69 @@ function analyzeSvg(svg) {
   return { errors: [...new Set(errors)], warnings: [...new Set(warnings)] };
 }
 
+// These are review scenarios in CSS pixels, not universal size limits. A source
+// estimate cannot resolve stylesheet overrides, hidden variants or actual glyph
+// bounds. Keep this advisory separate from the XML/security/geometry contract.
+function analyzeSvgDisplay(svg, widths = [320, 576]) {
+  const { box } = parseViewBox(svg);
+  if (!box || XMLValidator.validate(svg, { allowBooleanAttributes: true }) !== true) return { projections: [], warnings: [] };
+  const fontHeights = [];
+  let unresolvedTypography = /<style\b[^>]*>[\s\S]*?\bfont(?:-size)?\s*:/iu.test(svg);
+  const definitionTags = new Set(['defs', 'symbol', 'marker', 'clippath', 'mask', 'pattern', 'lineargradient', 'radialgradient']);
+  const visit = (nodes, parentMatrix, parentFont = 16, isRoot = false) => {
+    for (const node of nodes) {
+      const name = Object.keys(node).find((key) => key !== ':@' && !key.startsWith('#') && !key.startsWith('?'));
+      if (!name || definitionTags.has(name.toLowerCase())) continue;
+      const attrs = new Map(Object.entries(node[':@'] ?? {}));
+      const local = transformMatrix(attrs.get('transform'));
+      if (!local) continue;
+      const matrix = isRoot ? parentMatrix : multiplyMatrices(parentMatrix, local);
+      const style = attrs.get('style') ?? '';
+      const declared = style.match(/(?:^|;)\s*font-size\s*:\s*([^;]+)/iu)?.[1]?.trim() ?? attrs.get('font-size');
+      let font = parentFont;
+      if (declared && declared !== 'inherit') {
+        const value = declared.match(/^([+]?(?:\d+(?:\.\d*)?|\.\d+))(px|em|%)?$/iu);
+        if (value) {
+          const relativeSize = value[2]?.toLowerCase() === 'em' || value[2] === '%';
+          font = relativeSize && parentFont === null ? null
+            : Number(value[1]) * (value[2]?.toLowerCase() === 'em' ? parentFont : value[2] === '%' ? parentFont / 100 : 1);
+        }
+        else { unresolvedTypography = true; font = null; }
+      }
+      if (/(?:^|;)\s*font\s*:/iu.test(style)) unresolvedTypography = true;
+      const children = node[name];
+      if (['text', 'tspan'].includes(name.toLowerCase()) && Array.isArray(children)
+        && children.some((child) => String(child['#text'] ?? '').trim()) && Number.isFinite(font)) {
+        const height = font * Math.hypot(matrix[2], matrix[3]);
+        if (Number.isFinite(height)) fontHeights.push(height);
+      }
+      if (Array.isArray(children)) visit(children, matrix, font, false);
+    }
+  };
+  visit(svgGeometryParser.parse(svg), IDENTITY_MATRIX, 16, true);
+  const rounded = (value) => Math.round(value * 10) / 10;
+  const projections = widths.filter((width) => Number.isFinite(width) && width > 0).map((width) => ({
+    width,
+    height: rounded(width * box.height / box.width),
+    minFont: fontHeights.length ? rounded(fontHeights.reduce((minimum, value) => Math.min(minimum, value), Infinity) * width / box.width) : null,
+    maxFont: fontHeights.length ? rounded(fontHeights.reduce((maximum, value) => Math.max(maximum, value), 0) * width / box.width) : null,
+  }));
+  const warnings = [];
+  const display = projections.map((item) => `${item.width}×${item.height}px${item.minFont === null ? '' : `, text em ${item.minFont}–${item.maxFont}px`}`).join('; ')
+    + '; estimates assume this variant is visible and fills the container';
+  if (box.height > box.width) warnings.push(`portrait figure may dominate the reading column; projected at ${display}; inspect composition at actual container width`);
+  // 12px mobile text and 18px desktop emphasis are review checkpoints, never
+  // publication failures: notes, diagrams and intended hierarchy differ.
+  if (projections.some((item) => item.width <= 320 && item.minFont !== null && item.minFont < 12)) {
+    warnings.push(`small text in the narrow display scenario (${display}); verify labels in the rendered mobile figure`);
+  }
+  if (projections.some((item) => item.width >= 576 && item.maxFont !== null && item.maxFont > 18)) {
+    warnings.push(`large typographic emphasis in the desktop display scenario (${display}); review hierarchy and compactness`);
+  }
+  if (unresolvedTypography) warnings.push(`CSS typography cannot be fully projected from SVG attributes (${display}); inspect computed font sizes in the rendered figure`);
+  return { projections, warnings };
+}
+
 function auditSvgs(record) {
   const svgs = extractInlineSvgs(record.source);
   checked('SVG', `${displayPath(record.path)}: ${svgs.length} inline SVG(s)`);
@@ -466,6 +647,7 @@ function auditSvgs(record) {
     const label = `${displayPath(record.path)}:${lineNumber(record.source, svg.index)} SVG ${index + 1}`;
     for (const message of analysis.errors) fail('SVG', `${label}: ${message}`);
     for (const message of analysis.warnings) warn('SVG', `${label}: ${message}`);
+    for (const message of analyzeSvgDisplay(svg.markup).warnings) warn('SVG', `${label}: ${message}`);
   }
 }
 
@@ -516,6 +698,7 @@ async function auditRenderedSvgs(record) {
       const analysis = analyzeSvg(svg.markup);
       for (const message of analysis.errors) fail('SVG', `${label}: ${message}`);
       for (const message of analysis.warnings) warn('SVG', `${label}: ${message}`);
+      for (const message of analyzeSvgDisplay(svg.markup).warnings) warn('SVG', `${label}: ${message}`);
     }
   } catch (error) {
     fail('SVG', `${displayPath(record.path)}: rendered SVG inspection failed (${error.message})`);
@@ -903,6 +1086,78 @@ function runSelfTest() {
   const headingSample = 'Ce qui change dans le paragraphe.\n\n## Ce **que** révèle le budget\n\n<h3>Ce qu’on conserve</h3>\n\n```md\n## Ce que contient cet exemple\n```';
   assert.equal(contentTitleViolations(headingSample, new Map([['seoTitle', 'What the budget reveals']])).length, 3);
   assert.equal(contentTitleViolations('Ce que contient ce paragraphe.\n\n## Un titre précis').length, 0);
+
+  const sourceCard = '<ol class="sources-list" role="list"><li id="source-S01"><span class="source-meta">S01 · SEC · Publication: 2026-11-10 · Accessed: 2026-11-12</span><a href="https://www.sec.gov/example" target="_blank" rel="noopener noreferrer">Issuer preliminary prospectus</a><details><summary>Passages and scope</summary><p>Page 20, proposed offering; registration not yet effective.</p></details></li></ol>';
+  assert.deepEqual(analyzeSourceReferences(`A supported claim. [S01](#source-S01)\n\n${sourceCard}`), []);
+  assert.deepEqual(analyzeSourceReferences(sourceCard.replaceAll('class=', 'className=')), [], 'native MDX className must match HTML class');
+  assert.deepEqual(analyzeSourceReferences(sourceCard.replace(' role="list"', '').replaceAll('class=', 'className=')), [], 'native ol has implicit list semantics');
+  assert.ok(analyzeSourceReferences(sourceCard.replace('role="list"', 'role="presentation"')).some((issue) => issue.message.includes('list semantics')));
+  assert.deepEqual(analyzeSourceReferences(sourceCard.replace('Publication: 2026-11-10 · Accessed: 2026-11-12', 'Publication : date inconnue · Consulté le : 2026-11-12')), []);
+  assert.deepEqual(analyzeSourceReferences(sourceCard.replace('Publication: 2026-11-10 · Accessed: 2026-11-12', 'Published: not stated · Accessed: date unknown')), []);
+  for (const publication of ['Mise à jour : 2026-11-10', 'Millésime : 2026-09-11 ; observations : 2025:T4', 'Date de publication non imprimée', 'Page méthodologique ; date de publication non indiquée', 'Publication non précisée', 'Publication date not stated', 'Proposition : 2026-04-20', 'Règle finale : 2026-08-31']) {
+    assert.deepEqual(analyzeSourceReferences(sourceCard.replace('Publication: 2026-11-10', publication)), [], publication);
+  }
+  for (const publication of ['2025-09-05', '2025-09', 'Original : 2026-10-28 ; reprise : 2026-10-29', 'Original publication: 2026-10-28', 'Reprint: 2026-10-29', 'Release: 2026-11-10', 'Filed: 2026-11-10', 'Appel : 2026-10-27', 'Version du document : 2024-12', 'Dépôt : 2026-11-05', 'Date de publication non affichée']) {
+    assert.deepEqual(analyzeSourceReferences(sourceCard.replace('Publication: 2026-11-10', publication)), [], publication);
+  }
+  assert.ok(analyzeSourceReferences(sourceCard.replace('Publication: 2026-11-10 · ', '')).some((issue) => issue.message.includes('publication metadata')), 'access date alone must not count as publication');
+  for (const label of ['Checked on', 'Consulted', 'Consulted on', 'Accessed on']) {
+    assert.deepEqual(analyzeSourceReferences(sourceCard.replace('Accessed:', `${label}:`)), [], label);
+  }
+  assert.ok(analyzeSourceReferences(sourceCard.replace('Publication: 2026-11-10', 'Publication: ')).some((issue) => issue.message.includes('publication metadata')));
+  assert.ok(analyzeSourceReferences(sourceCard.replace('Accessed: 2026-11-12', 'Accessed: ')).some((issue) => issue.message.includes('access metadata')));
+  assert.deepEqual(analyzeSourceReferences(`<sup class="source-ref"><a href="#source-S01">S01</a></sup>${sourceCard}`), []);
+  assert.ok(analyzeSourceReferences('A claim. [S01](#source-S01)').some((issue) => issue.message.includes('no target')));
+  assert.ok(analyzeSourceReferences('A claim. [S01](<#source-S01> "Source title")').some((issue) => issue.message.includes('no target')));
+  assert.ok(analyzeSourceReferences('<a href="#source-S02">S02</a>').some((issue) => issue.message.includes('no target')));
+  assert.ok(analyzeSourceReferences(`${sourceCard}<span id="source-S01"></span>`).some((issue) => issue.message.includes('duplicate source ID')));
+  assert.ok(analyzeSourceReferences(sourceCard.replace(' class="sources-list" role="list"', '')).some((issue) => issue.message.includes('.sources-list')));
+  assert.ok(analyzeSourceReferences(sourceCard.replace('class="source-meta"', '')).some((issue) => issue.message.includes('source-meta')));
+  assert.ok(analyzeSourceReferences(sourceCard.replace(/<details>[\s\S]*?<\/details>/u, '')).some((issue) => issue.message.includes('scope paragraph')));
+  assert.ok(analyzeSourceReferences(sourceCard.replace('Page 20, proposed offering; registration not yet effective.', '')).some((issue) => issue.message.includes('scope paragraph')));
+  const principalSourceLink = '<a href="https://www.sec.gov/example" target="_blank" rel="noopener noreferrer">Issuer preliminary prospectus</a>';
+  assert.ok(analyzeSourceReferences(sourceCard.replace(principalSourceLink, '').replace('</p>', `${principalSourceLink}</p>`)).some((issue) => issue.message.includes('descriptive HTTPS')));
+  assert.ok(analyzeSourceReferences(sourceCard.replace('Issuer preliminary prospectus', 'S01')).some((issue) => issue.message.includes('descriptive HTTPS')));
+  assert.ok(analyzeSourceReferences(sourceCard.replace('https://www.sec.gov/example', 'http://www.sec.gov/example')).some((issue) => issue.message.includes('descriptive HTTPS')));
+  assert.ok(analyzeSourceReferences(sourceCard.replace('rel="noopener noreferrer"', 'rel="noopener"')).some((issue) => issue.message.includes('rel="noopener noreferrer"')));
+  assert.deepEqual(analyzeSourceReferences(sourceCard.replace(' target="_blank" rel="noopener noreferrer"', '')), []);
+  assert.deepEqual(analyzeSourceReferences('A claim linked to the [issuer prospectus](https://www.sec.gov/example).\n\n## Sources\n\n- [SEC, issuer prospectus](https://www.sec.gov/example)'), []);
+  assert.deepEqual(analyzeSourceReferences('<ol><li>First step</li><li>Second step</li></ol>'), []);
+  assert.deepEqual(analyzeSourceReferences('```md\n[S01](#source-S01)\n<ol><li id="source-S01">Example</li></ol>\n```\n\n`[S02](#source-S02)`\n<!-- [S03](#source-S03) -->'), []);
+  assert.deepEqual(analyzeSourceReferences('~~~md\n[S01](#source-S01)\n~~~'), []);
+  assert.deepEqual(analyzeSourceReferences('    [S01](#source-S01)\n\n\t[S02](#source-S02)'), [], 'indented Markdown code is not a citation');
+  const indentedHtmlCard = sourceCard.replace(/(<li|<span|<a |<details|<\/li|<\/ol)/gu, '\n    $1');
+  assert.deepEqual(analyzeSourceReferences(`A real claim. [S01](#source-S01)\n\n${indentedHtmlCard}`), [], 'HTML source cards retain their indented metadata');
+  assert.ok(analyzeSourceReferences('<p>\n    A real citation: [S01](#source-S01)\n</p>').some((issue) => issue.message.includes('no target')), 'indentation inside an HTML paragraph remains a real citation');
+  assert.ok(analyzeSourceReferences('<section>\n    <p><a href="#source-S01">S01</a></p>\n</section>').some((issue) => issue.message.includes('no target')), 'HTML citations remain checked');
+  const astralCode = '```txt\n😀 [S02](#source-S02)\n```\n\nActual citation. [S01](#source-S01)';
+  assert.equal(maskEditorialExamples(astralCode).length, astralCode.length);
+  assert.equal(analyzeSourceReferences(astralCode).length, 1);
+  assert.equal(analyzeSourceReferences(astralCode)[0].index, astralCode.lastIndexOf('[S01]'), 'code masking preserves UTF-16 offsets after emoji');
+  const astralComment = '<!-- 😀 [S02](#source-S02) -->\n[S01](#source-S01)';
+  assert.equal(maskEditorialExamples(astralComment).length, astralComment.length);
+  assert.equal(analyzeSourceReferences(astralComment)[0].index, astralComment.lastIndexOf('[S01]'));
+  assert.deepEqual(analyzeSourceReferences('[S01](#source-%5301)\n' + sourceCard), []);
+
+  const displaySvg = (width, height, font, content = '') => `<svg viewBox="0 0 ${width} ${height}" style="width:100%;height:auto"><text x="100" y="100" font-size="${font}">Label</text>${content}</svg>`;
+  const display = analyzeSvgDisplay(displaySvg(600, 300, 20));
+  assert.deepEqual(display, analyzeSvgDisplay(displaySvg(6000, 3000, 200)), 'viewBox rescaling must preserve display diagnostics');
+  const transformedFont = '<svg viewBox="0 0 6000 3000" style="width:100%;height:auto"><g transform="scale(10)"><text x="100" y="100" font-size="20">Label</text></g></svg>';
+  assert.deepEqual(display, analyzeSvgDisplay(transformedFont), 'group scaling must be included in projected font size');
+  assert.deepEqual(analyzeSvgDisplay(displaySvg(600, 300, 20), [320, 576]).projections, [
+    { width: 320, height: 160, minFont: 10.7, maxFont: 10.7 },
+    { width: 576, height: 288, minFont: 19.2, maxFont: 19.2 },
+  ]);
+  assert.ok(analyzeSvgDisplay(displaySvg(600, 895, 28)).warnings.some((message) => message.includes('portrait')));
+  assert.ok(analyzeSvgDisplay(displaySvg(600, 744, 30)).warnings.some((message) => message.includes('large typographic')));
+  assert.ok(!analyzeSvgDisplay(displaySvg(576, 576, 18)).warnings.some((message) => /portrait|large typographic/u.test(message)));
+  assert.ok(analyzeSvgDisplay(displaySvg(576, 576, 18.1)).warnings.some((message) => message.includes('large typographic')));
+  assert.ok(!analyzeSvgDisplay(displaySvg(320, 160, 12), [320]).warnings.some((message) => message.includes('small text')));
+  assert.ok(analyzeSvgDisplay(displaySvg(320, 160, 11.9), [320]).warnings.some((message) => message.includes('small text')));
+  const inheritedFont = '<svg viewBox="0 0 600 300"><g style="font-size:20px"><text x="100" y="100" font-size="50%">Label</text></g></svg>';
+  assert.deepEqual(analyzeSvgDisplay(inheritedFont).projections, analyzeSvgDisplay(displaySvg(600, 300, 10)).projections);
+  assert.ok(analyzeSvgDisplay(displaySvg(600, 300, 'clamp(12px, 2vw, 18px)')).warnings.some((message) => message.includes('cannot be fully projected')));
+  assert.deepEqual(analyzeSvgDisplay('<svg viewBox="0 0 0 10"/>').projections, []);
   console.log('publish:check self-test OK');
 }
 
@@ -924,6 +1179,9 @@ async function main() {
   for (const record of records) {
     validateFrontmatter(record);
     auditUrls(record);
+    // Default and explicit checks enforce the selected publication. A broad
+    // --all audit reports legacy formatting without blocking unchanged articles.
+    auditSourceReferences(record, !argumentsList.includes('--all') || repositoryChanges.includes(record.path));
     auditSvgs(record);
     auditEditorialSignals(record);
   }
@@ -931,6 +1189,7 @@ async function main() {
     checked('Frontmatter', 'no modified content file');
     checked('FR/EN numbers', 'no modified bilingual pair');
     checked('URLs', 'no modified content file');
+    checked('References', 'no modified content file');
     checked('Primary sources', 'no modified content file');
     checked('SVG', 'no modified content file');
     checked('Unsourced nums', 'no modified content file');

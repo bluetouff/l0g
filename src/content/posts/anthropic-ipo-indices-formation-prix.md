@@ -24,88 +24,172 @@ Le jour de la cotation, une nouvelle confrontation commence. Des investisseurs s
 
 Les anticipations d’achats indiciels peuvent déjà influencer les intentions exprimées pendant le placement. Leur effet se prolonge ensuite dans les échanges entre investisseurs. C’est la lecture économique proposée ici : une règle connue peut modifier le prix auquel un détenteur accepte de vendre, avant même son application.
 
-<figure class="infographic" style="max-width:38rem;margin:2rem auto 2.5rem;padding-bottom:0.75rem">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 895" role="img" aria-labelledby="anthropic-index-fr-1-title anthropic-index-fr-1-desc" style="width:100%;height:auto" lang="fr">
-<title id="anthropic-index-fr-1-title">Du placement à l’achat indiciel</title>
-<desc id="anthropic-index-fr-1-desc">Trois scènes : l’émission d’actions nouvelles échange du capital contre des titres ; l’ouverture confronte les ordres ; un intermédiaire peut acheter avant l’inclusion puis revendre au fonds indiciel. Les flèches suivent les espèces et les actions, sans représenter une trajectoire de cours.</desc>
-<text x="32" y="38" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="500" fill="var(--color-signal,#5eead4)" text-anchor="start" >l0g</text>
-<text x="568" y="38" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end" >01 / 02</text>
-<text x="32" y="82" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start" >Du placement à l’achat indiciel</text>
-<text x="32" y="117" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" >Des échanges successifs, des acheteurs différents.</text>
-<line x1="32" y1="141" x2="568" y2="141" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" />
-<line x1="48" y1="177" x2="48" y2="642" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1.2" />
-<circle cx="48" cy="177" r="5" stroke="var(--color-signal,#5eead4)" stroke-width="1" fill="var(--color-signal,#5eead4)"/>
-<circle cx="48" cy="362" r="5" stroke="var(--color-signal,#5eead4)" stroke-width="1" fill="var(--color-signal,#5eead4)"/>
-<circle cx="48" cy="636" r="5" stroke="var(--color-signal,#5eead4)" stroke-width="1" fill="var(--color-signal,#5eead4)"/>
-<text x="78" y="184" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start" >Le prix de placement</text>
-<polyline points="108,273 108,238 132,225 156,238 156,273" fill="none" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="102" y1="273" x2="162" y2="273" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.5" />
-<line x1="119" y1="244" x2="119" y2="263" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.3" />
-<line x1="132" y1="244" x2="132" y2="263" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.3" />
-<line x1="145" y1="244" x2="145" y2="263" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.3" />
-<circle cx="470" cy="239" r="9" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.4" fill="none"/>
-<polyline points="450,273 450,262 459,252 481,252 490,262 490,273" fill="none" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="426" y1="236" x2="178" y2="236" stroke="var(--color-accent,#ff4d87)" stroke-width="1.7" />
-<polyline points="184,232 178,236 184,240" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
-<text x="302" y="220" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle" >Capital neuf</text>
-<line x1="178" y1="268" x2="426" y2="268" stroke="var(--color-signal,#5eead4)" stroke-width="1.7" />
-<polyline points="420,264 426,268 420,272" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
-<text x="302" y="294" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="middle" >Actions nouvelles</text>
-<text x="132" y="317" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle" >Entreprise</text>
-<text x="470" y="317" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle" >Souscripteurs</text>
-<text x="78" y="369" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start" >L’ouverture confronte les ordres</text>
-<text x="180" y="414" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="middle" >Achats</text>
-<text x="432" y="414" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle" >Ventes</text>
-<line x1="180" y1="445" x2="250" y2="445" stroke="var(--color-signal,#5eead4)" stroke-width="5" />
-<line x1="350" y1="445" x2="478" y2="445" stroke="var(--color-accent,#ff4d87)" stroke-width="5" />
-<line x1="148" y1="468" x2="250" y2="468" stroke="var(--color-signal,#5eead4)" stroke-width="5" />
-<line x1="350" y1="468" x2="452" y2="468" stroke="var(--color-accent,#ff4d87)" stroke-width="5" />
-<line x1="122" y1="491" x2="250" y2="491" stroke="var(--color-signal,#5eead4)" stroke-width="5" />
-<line x1="350" y1="491" x2="420" y2="491" stroke="var(--color-accent,#ff4d87)" stroke-width="5" />
-<line x1="266" y1="468" x2="290" y2="468" stroke="var(--color-signal,#5eead4)" stroke-width="1.7" />
-<polyline points="284,464 290,468 284,472" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="334" y1="468" x2="310" y2="468" stroke="var(--color-accent,#ff4d87)" stroke-width="1.7" />
-<polyline points="316,464 310,468 316,472" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
-<circle cx="300" cy="468" r="5" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.4" fill="var(--color-paper,#e7e9ee)"/>
-<line x1="300" y1="478" x2="300" y2="518" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" />
-<text x="300" y="545" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle" >Prix d’ouverture</text>
-<text x="300" y="575" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle" >Quantité échangeable au prix retenu</text>
-<text x="78" y="643" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start" >L’achat indiciel se prépare</text>
-<text x="239" y="682" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle" >Avant l’entrée</text>
-<text x="427" y="682" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle" >À l’exécution</text>
-<circle cx="145" cy="728" r="26" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1.2" fill="none"/>
-<polyline points="132,716 154,716 154,742 132,742 132,716" fill="none" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round" />
-<polyline points="138,710 160,710 160,736" fill="none" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="138" y1="724" x2="148" y2="724" stroke="var(--color-signal,#5eead4)" stroke-width="1.5" />
-<line x1="138" y1="732" x2="148" y2="732" stroke="var(--color-signal,#5eead4)" stroke-width="1.5" />
-<circle cx="333" cy="728" r="26" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1.2" fill="none"/>
-<line x1="319" y1="721" x2="347" y2="721" stroke="var(--color-signal,#5eead4)" stroke-width="1.7" />
-<polyline points="341,717 347,721 341,725" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="347" y1="735" x2="319" y2="735" stroke="var(--color-accent,#ff4d87)" stroke-width="1.7" />
-<polyline points="325,731 319,735 325,739" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
-<circle cx="520" cy="728" r="26" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1.2" fill="none"/>
-<line x1="505" y1="742" x2="535" y2="742" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.4" />
-<line x1="509" y1="741" x2="509" y2="728" stroke="var(--color-signal,#5eead4)" stroke-width="3" />
-<line x1="520" y1="741" x2="520" y2="717" stroke="var(--color-signal,#5eead4)" stroke-width="3" />
-<line x1="531" y1="741" x2="531" y2="723" stroke="var(--color-signal,#5eead4)" stroke-width="3" />
-<line x1="181" y1="711" x2="297" y2="711" stroke="var(--color-signal,#5eead4)" stroke-width="1.7" />
-<polyline points="291,707 297,711 291,715" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="297" y1="743" x2="181" y2="743" stroke="var(--color-accent,#ff4d87)" stroke-width="1.7" />
-<polyline points="187,739 181,743 187,747" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="369" y1="711" x2="484" y2="711" stroke="var(--color-signal,#5eead4)" stroke-width="1.7" />
-<polyline points="478,707 484,711 478,715" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="484" y1="743" x2="369" y2="743" stroke="var(--color-accent,#ff4d87)" stroke-width="1.7" />
-<polyline points="375,739 369,743 375,747" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
-<text x="145" y="781" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle" >Détenteur</text>
-<text x="333" y="781" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle" >Intermédiaire</text>
-<text x="520" y="781" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle" >Fonds indiciel</text>
-<text x="300" y="817" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle" >L’intermédiaire peut revendre les titres au fonds.</text>
-<line x1="78" y1="852" x2="112" y2="852" stroke="var(--color-signal,#5eead4)" stroke-width="2" />
-<text x="125" y="858" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start" >Actions</text>
-<line x1="326" y1="852" x2="360" y2="852" stroke="var(--color-accent,#ff4d87)" stroke-width="2" />
-<text x="373" y="858" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start" >Espèces</text>
+<style>
+/* These compact figures use separately composed narrow layouts. */
+.prose figure.anthropic-index-compact {
+  max-width: 36rem;
+  margin: 1.5rem auto 2rem;
+  padding-bottom: .75rem;
+}
+.prose figure.anthropic-index-compact figcaption { font-size: .8125rem; line-height: 1.5; color: var(--color-muted); margin-top: .55rem; }
+.prose figure.anthropic-index-compact > .anthropic-index-mobile { display: none; }
+@media (max-width: 639px) {
+  .prose figure.anthropic-index-compact { max-width: 21.25rem; }
+  .prose figure.anthropic-index-compact > .anthropic-index-desktop { display: none; }
+  .prose figure.anthropic-index-compact > .anthropic-index-mobile { display: block; }
+}
+
+</style>
+
+<figure class="anthropic-index-compact">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 280" role="img" aria-labelledby="anthropic-compact-fr-1-desktop-title anthropic-compact-fr-1-desktop-desc" style="width:100%;height:auto" class="anthropic-index-desktop" lang="fr">
+<title id="anthropic-compact-fr-1-desktop-title">Du placement à l’achat indiciel</title>
+<desc id="anthropic-compact-fr-1-desktop-desc">Schéma conceptuel de trois mécanismes : une émission nouvelle échange des actions contre du capital ; l’ouverture confronte achats et ventes ; un investisseur peut anticiper l’inclusion en achetant des actions pour les revendre à un fonds indiciel. Les traits verts suivent les actions, les traits roses les espèces.</desc>
+<text x="16" y="25" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Du placement à l’achat indiciel</text>
+<text x="16" y="45" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Trois mécanismes, des acheteurs différents</text>
+<line x1="16" y1="57" x2="584" y2="57" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.8" />
+<line x1="200" y1="71" x2="200" y2="237" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.8" />
+<line x1="400" y1="71" x2="400" y2="237" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.8" />
+<text x="16" y="81" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">1  Placement</text>
+<polyline points="35,146 35,124 49,116 63,124 63,146" fill="none" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="31" y1="146" x2="67" y2="146" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.1" />
+<line x1="41" y1="128" x2="41" y2="140" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" />
+<line x1="49" y1="128" x2="49" y2="140" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" />
+<line x1="57" y1="128" x2="57" y2="140" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" />
+<circle cx="155" cy="125" r="5" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" fill="none"/>
+<polyline points="143,146 143,139 149,132 161,132 167,139 167,146" fill="none" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="131" y1="121" x2="75" y2="121" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" />
+<polyline points="79,118.2 75,121 79,123.8" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="75" y1="145" x2="131" y2="145" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" />
+<polyline points="127,142.2 131,145 127,147.8" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<text x="49" y="183" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Entreprise</text>
+<text x="155" y="183" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Souscripteur</text>
+<text x="103" y="219" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Prix négocié</text>
+<text x="216" y="81" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">2  Ouverture</text>
+<text x="260" y="111" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="middle">Achats</text>
+<text x="341" y="111" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle">Ventes</text>
+<line x1="257" y1="127" x2="282" y2="127" stroke="var(--color-signal,#5eead4)" stroke-width="2.8" />
+<line x1="318" y1="127" x2="360" y2="127" stroke="var(--color-accent,#ff4d87)" stroke-width="2.8" />
+<line x1="248" y1="140" x2="282" y2="140" stroke="var(--color-signal,#5eead4)" stroke-width="2.8" />
+<line x1="318" y1="140" x2="352" y2="140" stroke="var(--color-accent,#ff4d87)" stroke-width="2.8" />
+<line x1="240" y1="153" x2="282" y2="153" stroke="var(--color-signal,#5eead4)" stroke-width="2.8" />
+<line x1="318" y1="153" x2="343" y2="153" stroke="var(--color-accent,#ff4d87)" stroke-width="2.8" />
+<line x1="288" y1="140" x2="296" y2="140" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" />
+<polyline points="292,137.2 296,140 292,142.8" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="312" y1="140" x2="304" y2="140" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" />
+<polyline points="308,137.2 304,140 308,142.8" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="300" cy="140" r="2.5" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" fill="var(--color-paper,#e7e9ee)"/>
+<line x1="300" y1="147" x2="300" y2="191" stroke="var(--color-paper,#e7e9ee)" stroke-width="0.9" />
+<text x="300" y="219" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Prix d’ouverture</text>
+<text x="416" y="81" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">3  Inclusion</text>
+<circle cx="430" cy="137" r="12" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" fill="none"/>
+<polyline points="425,131 434,131 434,144 425,144 425,131" fill="none" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="428" y1="135" x2="432" y2="135" stroke="var(--color-signal,#5eead4)" stroke-width="1" />
+<line x1="428" y1="139" x2="432" y2="139" stroke="var(--color-signal,#5eead4)" stroke-width="1" />
+<circle cx="500" cy="137" r="12" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" fill="none"/>
+<line x1="493" y1="133" x2="507" y2="133" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" />
+<polyline points="503,130.2 507,133 503,135.8" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="507" y1="141" x2="493" y2="141" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" />
+<polyline points="497,138.2 493,141 497,143.8" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="570" cy="137" r="12" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" fill="none"/>
+<line x1="563" y1="144" x2="577" y2="144" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" />
+<line x1="565" y1="143" x2="565" y2="136" stroke="var(--color-signal,#5eead4)" stroke-width="1.8" />
+<line x1="570" y1="143" x2="570" y2="130" stroke="var(--color-signal,#5eead4)" stroke-width="1.8" />
+<line x1="575" y1="143" x2="575" y2="133" stroke="var(--color-signal,#5eead4)" stroke-width="1.8" />
+<line x1="445" y1="128" x2="485" y2="128" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" />
+<polyline points="481,125.2 485,128 481,130.8" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="485" y1="147" x2="445" y2="147" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" />
+<polyline points="449,144.2 445,147 449,149.8" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="515" y1="128" x2="555" y2="128" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" />
+<polyline points="551,125.2 555,128 551,130.8" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="555" y1="147" x2="515" y2="147" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" />
+<polyline points="519,144.2 515,147 519,149.8" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<text x="430" y="178" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Détenteur</text>
+<text x="500" y="178" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Acheteur</text>
+<text x="500" y="194" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">anticipé</text>
+<text x="570" y="178" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Fonds</text>
+<text x="570" y="194" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">indiciel</text>
+<text x="500" y="219" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Exécution indicielle</text>
+<line x1="16" y1="238" x2="584" y2="238" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.8" />
+<line x1="16" y1="257" x2="35" y2="257" stroke="var(--color-signal,#5eead4)" stroke-width="1.5" />
+<text x="42" y="261" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">Actions</text>
+<line x1="132" y1="257" x2="151" y2="257" stroke="var(--color-accent,#ff4d87)" stroke-width="1.5" />
+<text x="158" y="261" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start">Espèces</text>
+<text x="584" y="261" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">Schéma conceptuel</text>
 </svg>
-<figcaption>Schéma conceptuel l0g, mécanismes d’une IPO et d’une inclusion indicielle, sans calendrier propre à Anthropic. La première scène représente une émission nouvelle. La dernière illustre un circuit possible d’anticipation ; les fonds disposent de plusieurs modes d’exécution. Sources : <a href="https://www.nasdaq.com/newsroom/how-nasdaq-supports-ipo-process">Nasdaq, 11 juin 2026</a> et <a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-17">SEC, guide des IPO</a>.</figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 350" role="img" aria-labelledby="anthropic-compact-fr-1-mobile-title anthropic-compact-fr-1-mobile-desc" style="width:100%;height:auto" class="anthropic-index-mobile" lang="fr">
+<title id="anthropic-compact-fr-1-mobile-title">Du placement à l’achat indiciel</title>
+<desc id="anthropic-compact-fr-1-mobile-desc">Schéma conceptuel de trois mécanismes : une émission nouvelle échange des actions contre du capital ; l’ouverture confronte achats et ventes ; un investisseur peut anticiper l’inclusion en achetant des actions pour les revendre à un fonds indiciel. Les traits verts suivent les actions, les traits roses les espèces.</desc>
+<text x="16" y="25" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Du placement à l’achat indiciel</text>
+<text x="16" y="45" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Trois mécanismes, des acheteurs différents</text>
+<line x1="16" y1="57" x2="324" y2="57" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.8" />
+<text x="16" y="80" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">1  Placement</text>
+<text x="16" y="102" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Prix négocié</text>
+<polyline points="150,108 150,86 164,78 178,86 178,108" fill="none" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="146" y1="108" x2="182" y2="108" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.1" />
+<line x1="156" y1="90" x2="156" y2="102" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" />
+<line x1="164" y1="90" x2="164" y2="102" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" />
+<line x1="172" y1="90" x2="172" y2="102" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" />
+<circle cx="290" cy="87" r="5" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" fill="none"/>
+<polyline points="278,108 278,101 284,94 296,94 302,101 302,108" fill="none" stroke="var(--color-paper,#e7e9ee)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="264" y1="85" x2="190" y2="85" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" />
+<polyline points="194,82.2 190,85 194,87.8" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="190" y1="106" x2="264" y2="106" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" />
+<polyline points="260,103.2 264,106 260,108.8" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<text x="164" y="126" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Entreprise</text>
+<text x="290" y="126" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Souscripteur</text>
+<line x1="16" y1="141" x2="324" y2="141" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.8" />
+<text x="16" y="163" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">2  Ouverture</text>
+<text x="16" y="185" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Ordres confrontés</text>
+<line x1="181" y1="164" x2="202" y2="164" stroke="var(--color-signal,#5eead4)" stroke-width="2.7" />
+<line x1="248" y1="164" x2="284" y2="164" stroke="var(--color-accent,#ff4d87)" stroke-width="2.7" />
+<line x1="173" y1="177" x2="202" y2="177" stroke="var(--color-signal,#5eead4)" stroke-width="2.7" />
+<line x1="248" y1="177" x2="277" y2="177" stroke="var(--color-accent,#ff4d87)" stroke-width="2.7" />
+<line x1="166" y1="190" x2="202" y2="190" stroke="var(--color-signal,#5eead4)" stroke-width="2.7" />
+<line x1="248" y1="190" x2="269" y2="190" stroke="var(--color-accent,#ff4d87)" stroke-width="2.7" />
+<line x1="208" y1="177" x2="221" y2="177" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" />
+<polyline points="217,174.2 221,177 217,179.8" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="242" y1="177" x2="229" y2="177" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" />
+<polyline points="233,174.2 229,177 233,179.8" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="225" cy="177" r="2.4" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" fill="var(--color-paper,#e7e9ee)"/>
+<line x1="225" y1="184" x2="225" y2="205" stroke="var(--color-paper,#e7e9ee)" stroke-width="0.9" />
+<text x="225" y="222" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Prix d’ouverture</text>
+<line x1="16" y1="234" x2="324" y2="234" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.8" />
+<text x="16" y="256" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">3  Inclusion</text>
+<text x="16" y="278" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Anticipation</text>
+<circle cx="150" cy="266" r="12" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" fill="none"/>
+<polyline points="145,260 154,260 154,273 145,273 145,260" fill="none" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="148" y1="264" x2="152" y2="264" stroke="var(--color-signal,#5eead4)" stroke-width="1" />
+<line x1="148" y1="268" x2="152" y2="268" stroke="var(--color-signal,#5eead4)" stroke-width="1" />
+<circle cx="224" cy="266" r="12" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" fill="none"/>
+<line x1="217" y1="262" x2="231" y2="262" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" />
+<polyline points="227,259.2 231,262 227,264.8" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="231" y1="270" x2="217" y2="270" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" />
+<polyline points="221,267.2 217,270 221,272.8" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="298" cy="266" r="12" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" fill="none"/>
+<line x1="291" y1="273" x2="305" y2="273" stroke="var(--color-paper,#e7e9ee)" stroke-width="1" />
+<line x1="293" y1="272" x2="293" y2="265" stroke="var(--color-signal,#5eead4)" stroke-width="1.8" />
+<line x1="298" y1="272" x2="298" y2="259" stroke="var(--color-signal,#5eead4)" stroke-width="1.8" />
+<line x1="303" y1="272" x2="303" y2="262" stroke="var(--color-signal,#5eead4)" stroke-width="1.8" />
+<line x1="165" y1="257" x2="209" y2="257" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" />
+<polyline points="205,254.2 209,257 205,259.8" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="209" y1="276" x2="165" y2="276" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" />
+<polyline points="169,273.2 165,276 169,278.8" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="239" y1="257" x2="283" y2="257" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" />
+<polyline points="279,254.2 283,257 279,259.8" fill="none" stroke="var(--color-signal,#5eead4)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="283" y1="276" x2="239" y2="276" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" />
+<polyline points="243,273.2 239,276 243,278.8" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+<text x="150" y="301" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Vendeur</text>
+<text x="224" y="301" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Acheteur</text>
+<text x="224" y="316" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">anticipé</text>
+<text x="298" y="301" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="middle">Fonds</text>
+<text x="298" y="316" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">indiciel</text>
+<line x1="16" y1="335" x2="35" y2="335" stroke="var(--color-signal,#5eead4)" stroke-width="1.5" />
+<text x="42" y="339" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">Actions</text>
+<line x1="132" y1="335" x2="151" y2="335" stroke="var(--color-accent,#ff4d87)" stroke-width="1.5" />
+<text x="158" y="339" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start">Espèces</text>
+</svg>
+<figcaption>Schéma conceptuel : émission nouvelle, confrontation des ordres, puis circuit possible d’anticipation. Vert : actions ; rose : espèces. Sources : <a href="https://www.nasdaq.com/newsroom/how-nasdaq-supports-ipo-process">Nasdaq, 11 juin 2026</a> et <a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-17">SEC, guide des IPO</a>.</figcaption>
 </figure>
 
 ## Un acheteur soumis au calendrier de son indice
@@ -136,61 +220,103 @@ Le [flottant](/glossaire/flottant/) désigne les actions considérées comme dis
 
 Le schéma suivant illustre un achat en cotation continue, où un même ordre peut être exécuté à plusieurs prix. Il présente deux carnets fictifs au même instant et le même achat de cent actions. Dans le premier, cent titres sont disponibles à 100 dollars. Dans le second, l’acheteur doit prendre vingt titres à 100, trente à 101 et cinquante à 104. Son coût total atteint 10 230 dollars, soit 102,30 dollars par action. Le dernier prix traité est 104 dollars. Ces montants servent à comprendre l’exécution ; ils ne représentent aucune observation sur Anthropic. [S05](#source-S05)
 
-<figure class="infographic" style="max-width:38rem;margin:2rem auto 2.5rem;padding-bottom:0.75rem">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 744" role="img" aria-labelledby="anthropic-index-fr-2-title anthropic-index-fr-2-desc" style="width:100%;height:auto" lang="fr">
-<title id="anthropic-index-fr-2-title">La profondeur change le prix payé</title>
-<desc id="anthropic-index-fr-2-desc">Exemple fictif en dollars : un carnet profond offre cent actions à 100 dollars. Un carnet peu profond offre vingt actions à 100, trente à 101 et cinquante à 104. Acheter cent actions coûte respectivement 10 000 et 10 230 dollars. Dans le second cas, le prix moyen est 102,30 dollars et le dernier prix 104 dollars. Échelle des prix limitée à 100–104 dollars.</desc>
-<text x="32" y="38" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="500" fill="var(--color-signal,#5eead4)" text-anchor="start" >l0g</text>
-<text x="568" y="38" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end" >02 / 02</text>
-<text x="32" y="82" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start" >La profondeur change le prix payé</text>
-<text x="32" y="117" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" >Exemple fictif · un achat immédiat de 100 actions</text>
-<line x1="32" y1="141" x2="568" y2="141" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" />
-<line x1="38" y1="171" x2="70" y2="171" stroke="var(--color-signal,#5eead4)" stroke-width="3" stroke-dasharray="6 4"/>
-<text x="80" y="177" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start" >Carnet profond</text>
-<polyline points="316,177 326,177 326,167 344,167" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
-<text x="355" y="177" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start" >Peu profond</text>
-<line x1="72" y1="447" x2="548" y2="447" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" />
-<text x="58" y="453" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end" >100</text>
-<line x1="72" y1="392" x2="548" y2="392" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" />
-<text x="58" y="398" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end" >101</text>
-<line x1="72" y1="337" x2="548" y2="337" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" />
-<text x="58" y="343" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end" >102</text>
-<line x1="72" y1="282" x2="548" y2="282" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" />
-<text x="58" y="288" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end" >103</text>
-<line x1="72" y1="227" x2="548" y2="227" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" />
-<text x="58" y="233" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end" >104</text>
-<text x="35" y="211" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" >$ / action</text>
-<line x1="72" y1="227" x2="72" y2="447" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1.2" />
-<line x1="72" y1="447" x2="548" y2="447" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1.2" />
-<line x1="72.0" y1="447" x2="72.0" y2="453" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1.1" />
-<text x="72.0" y="476" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle" >0</text>
-<line x1="167.2" y1="447" x2="167.2" y2="453" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1.1" />
-<text x="167.2" y="476" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle" >20</text>
-<line x1="310.0" y1="447" x2="310.0" y2="453" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1.1" />
-<text x="310.0" y="476" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle" >50</text>
-<line x1="548.0" y1="447" x2="548.0" y2="453" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1.1" />
-<text x="548.0" y="476" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle" >100</text>
-<text x="310" y="506" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle" >Actions achetées, cumul</text>
-<polygon points="167.2,447 167.2,392 310.0,392 310.0,227 548.0,227 548.0,447" fill="var(--color-accent,#ff4d87)" opacity="0.10"/>
-<line x1="72" y1="447" x2="548" y2="447" stroke="var(--color-signal,#5eead4)" stroke-width="3" stroke-dasharray="8 5"/>
-<polyline points="72,447 167.2,447 167.2,392 310.0,392 310.0,227 548,227" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="72" y1="320.50000000000017" x2="548" y2="320.50000000000017" stroke="var(--color-accent,#ff4d87)" stroke-width="1.3" stroke-dasharray="3 5"/>
-<text x="88" y="307.50000000000017" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start" >Moyenne : 102,30 $</text>
-<circle cx="548" cy="227" r="4" stroke="var(--color-accent,#ff4d87)" stroke-width="1.4" fill="var(--color-accent,#ff4d87)"/>
-<text x="548" y="211" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="end" >Dernier prix : 104 $</text>
-<text x="119.6" y="429" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle" >20</text>
-<text x="238.6" y="380" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle" >30</text>
-<text x="429.0" y="257" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle" >50</text>
-<line x1="32" y1="535" x2="568" y2="535" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="1" />
-<text x="32" y="574" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start" >Montant payé pour 100 actions</text>
-<text x="32" y="613" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start" >10 000 $</text>
-<text x="330" y="613" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start" >10 230 $</text>
-<text x="32" y="642" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" >Carnet profond</text>
-<text x="330" y="642" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" >Carnet peu profond</text>
-<text x="32" y="686" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" >20 × 100 + 30 × 101 + 50 × 104 = 10 230 $</text>
-<text x="32" y="718" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start" >Prix : 100 à 104 $ · carnet statique · frais exclus</text>
+<figure class="anthropic-index-compact">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" aria-labelledby="anthropic-compact-fr-2-desktop-title anthropic-compact-fr-2-desktop-desc" style="width:100%;height:auto" class="anthropic-index-desktop" lang="fr">
+<title id="anthropic-compact-fr-2-desktop-title">Même achat, profondeur différente</title>
+<desc id="anthropic-compact-fr-2-desktop-desc">Exemple entièrement fictif, en dollars américains : un carnet profond offre cent actions à 100 dollars ; un carnet peu profond offre vingt actions à 100, trente à 101 et cinquante à 104. Acheter cent actions coûte 10 000 ou 10 230 dollars. Le prix moyen du second carnet est 102,30 dollars, son dernier prix 104. Échelle des prix limitée à 100–104 dollars.</desc>
+<text x="16" y="25" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Même achat, profondeur différente</text>
+<text x="16" y="45" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Exemple fictif · achat de 100 actions · dollars US</text>
+<line x1="16" y1="57" x2="584" y2="57" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.8" />
+<line x1="46" y1="227.0" x2="390" y2="227.0" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.7" />
+<text x="37" y="231.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">100</text>
+<line x1="46" y1="189.5" x2="390" y2="189.5" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.7" />
+<text x="37" y="193.5" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">101</text>
+<line x1="46" y1="152.0" x2="390" y2="152.0" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.7" />
+<text x="37" y="156.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">102</text>
+<line x1="46" y1="114.5" x2="390" y2="114.5" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.7" />
+<text x="37" y="118.5" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">103</text>
+<line x1="46" y1="77.0" x2="390" y2="77.0" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.7" />
+<text x="37" y="81.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">104</text>
+<line x1="46" y1="77" x2="46" y2="227" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<line x1="46" y1="227" x2="390" y2="227" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<line x1="46.0" y1="227" x2="46.0" y2="231" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<text x="46.0" y="246" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">0</text>
+<line x1="114.8" y1="227" x2="114.8" y2="231" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<text x="114.8" y="246" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">20</text>
+<line x1="218.0" y1="227" x2="218.0" y2="231" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<text x="218.0" y="246" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">50</text>
+<line x1="390.0" y1="227" x2="390.0" y2="231" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<text x="390.0" y="246" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">100</text>
+<polygon points="114.8,227.0 114.8,189.5 218.0,189.5 218.0,77.0 390.0,77.0 390.0,227.0" fill="var(--color-accent,#ff4d87)" opacity="0.09"/>
+<line x1="46" y1="227.0" x2="390" y2="227.0" stroke="var(--color-signal,#5eead4)" stroke-width="2.2" stroke-dasharray="6 4"/>
+<polyline points="46,227.0 114.8,227.0 114.8,189.5 218.0,189.5 218.0,77.0 390,77.0" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="46" y1="140.7500000000001" x2="390" y2="140.7500000000001" stroke="var(--color-accent,#ff4d87)" stroke-width="0.9" stroke-dasharray="2 4"/>
+<text x="56" y="132.7500000000001" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start">Moyenne : 102,30 $</text>
+<circle cx="390" cy="77.0" r="2.3" stroke="var(--color-accent,#ff4d87)" stroke-width="1" fill="var(--color-accent,#ff4d87)"/>
+<text x="390" y="67" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="end">Dernier : 104 $</text>
+<text x="80.4" y="218.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle">20</text>
+<text x="166.4" y="180.5" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle">30</text>
+<text x="304.0" y="96.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle">50</text>
+<text x="218" y="267" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">Actions achetées, cumul</text>
+<line x1="420" y1="77" x2="420" y2="264" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.8" />
+<text x="442" y="91" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Coût des 100 actions</text>
+<line x1="442" y1="111" x2="459" y2="111" stroke="var(--color-signal,#5eead4)" stroke-width="1.8" stroke-dasharray="5 3"/>
+<text x="466" y="115" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">Profond</text>
+<text x="442" y="139" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">10 000 $</text>
+<polyline points="442,176 450,176 450,168 460,168" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
+<text x="466" y="177" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start">Peu profond</text>
+<text x="442" y="201" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start">10 230 $</text>
+<text x="442" y="237" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Écart : 230 $</text>
+<text x="16" y="291" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Échelle : 100 à 104 $ · carnet figé · frais exclus</text>
 </svg>
-<figcaption>Construction pédagogique l0g, données entièrement fictives en dollars américains, pour un ordre d’achat exécuté immédiatement en cotation continue. Les nombres 20, 30 et 50 indiquent les quantités disponibles à chaque prix. Le trait pointillé rose repère le prix moyen ; le dernier échange se fait à 104 $. Hypothèses : ordres de vente inchangés pendant l’achat, aucune nouvelle offre, frais exclus. Calcul : 10 230 / 100 = 102,30 $. Mécanisme du carnet : <a href="https://www.nasdaq.com/newsroom/how-nasdaq-supports-ipo-process">Nasdaq</a>.</figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 310" role="img" aria-labelledby="anthropic-compact-fr-2-mobile-title anthropic-compact-fr-2-mobile-desc" style="width:100%;height:auto" class="anthropic-index-mobile" lang="fr">
+<title id="anthropic-compact-fr-2-mobile-title">Même achat, profondeur différente</title>
+<desc id="anthropic-compact-fr-2-mobile-desc">Exemple entièrement fictif, en dollars américains : un carnet profond offre cent actions à 100 dollars ; un carnet peu profond offre vingt actions à 100, trente à 101 et cinquante à 104. Acheter cent actions coûte 10 000 ou 10 230 dollars. Le prix moyen du second carnet est 102,30 dollars, son dernier prix 104. Échelle des prix limitée à 100–104 dollars.</desc>
+<text x="16" y="25" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="var(--color-paper,#e7e9ee)" text-anchor="start">Même achat, profondeur différente</text>
+<text x="16" y="45" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="start">Exemple fictif · achat de 100 actions · dollars US</text>
+<line x1="16" y1="57" x2="324" y2="57" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.8" />
+<line x1="16" y1="70" x2="34" y2="70" stroke="var(--color-signal,#5eead4)" stroke-width="1.8" stroke-dasharray="5 3"/>
+<text x="41" y="74" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">Profond</text>
+<polyline points="172,75 180,75 180,67 190,67" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
+<text x="197" y="74" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start">Peu profond</text>
+<line x1="40" y1="218.0" x2="320" y2="218.0" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.7" />
+<text x="31" y="222.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">100</text>
+<line x1="40" y1="188.0" x2="320" y2="188.0" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.7" />
+<text x="31" y="192.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">101</text>
+<line x1="40" y1="158.0" x2="320" y2="158.0" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.7" />
+<text x="31" y="162.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">102</text>
+<line x1="40" y1="128.0" x2="320" y2="128.0" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.7" />
+<text x="31" y="132.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">103</text>
+<line x1="40" y1="98.0" x2="320" y2="98.0" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.7" />
+<text x="31" y="102.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="end">104</text>
+<line x1="40" y1="98" x2="40" y2="218" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<line x1="40" y1="218" x2="320" y2="218" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<line x1="40.0" y1="218" x2="40.0" y2="222" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<text x="40.0" y="237" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">0</text>
+<line x1="96.0" y1="218" x2="96.0" y2="222" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<text x="96.0" y="237" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">20</text>
+<line x1="180.0" y1="218" x2="180.0" y2="222" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<text x="180.0" y="237" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">50</text>
+<line x1="320.0" y1="218" x2="320.0" y2="222" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.9" />
+<text x="320.0" y="237" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">100</text>
+<polygon points="96.0,218.0 96.0,188.0 180.0,188.0 180.0,98.0 320.0,98.0 320.0,218.0" fill="var(--color-accent,#ff4d87)" opacity="0.09"/>
+<line x1="40" y1="218.0" x2="320" y2="218.0" stroke="var(--color-signal,#5eead4)" stroke-width="2.2" stroke-dasharray="6 4"/>
+<polyline points="40,218.0 96.0,218.0 96.0,188.0 180.0,188.0 180.0,98.0 320,98.0" fill="none" stroke="var(--color-accent,#ff4d87)" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="40" y1="149.00000000000009" x2="320" y2="149.00000000000009" stroke="var(--color-accent,#ff4d87)" stroke-width="0.9" stroke-dasharray="2 4"/>
+<text x="50" y="141.00000000000009" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start">Moyenne : 102,30 $</text>
+<circle cx="320" cy="98.0" r="2.3" stroke="var(--color-accent,#ff4d87)" stroke-width="1" fill="var(--color-accent,#ff4d87)"/>
+<text x="320" y="88" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="end">Dernier : 104 $</text>
+<text x="68.0" y="209.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle">20</text>
+<text x="138.0" y="179.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle">30</text>
+<text x="250.0" y="117.0" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="middle">50</text>
+<text x="180" y="256" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-muted,#8b909b)" text-anchor="middle">Actions cumulées</text>
+<line x1="16" y1="269" x2="324" y2="269" stroke="var(--color-line-strong,rgba(255,255,255,0.20))" stroke-width="0.8" />
+<text x="16" y="291" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">Profond :</text>
+<text x="87" y="291" font-family="Arial, Helvetica, sans-serif" font-size="15.5" font-weight="400" fill="var(--color-signal,#5eead4)" text-anchor="start">10 000 $</text>
+<text x="175" y="291" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start">Peu profond :</text>
+<text x="264" y="291" font-family="Arial, Helvetica, sans-serif" font-size="15.5" font-weight="400" fill="var(--color-accent,#ff4d87)" text-anchor="start">10 230 $</text>
+</svg>
+<figcaption>Exemple fictif en dollars US, achat immédiat de 100 actions. Carnets figés, frais exclus. Carnet peu profond : prix moyen 102,30 $, dernier prix 104 $. Mécanisme : <a href="https://www.nasdaq.com/newsroom/how-nasdaq-supports-ipo-process">Nasdaq</a>.</figcaption>
 </figure>
 
 Les **230 dollars de coût supplémentaire** résultent ici de la répartition fictive des vendeurs dans le carnet : 20 × 100 + 30 × 101 + 50 × 104, contre 100 × 100. Le carnet réel évolue pendant l’exécution : des ordres arrivent, d’autres sont retirés, des intermédiaires proposent des titres. Cette réaction peut absorber une partie de la demande ou accentuer la tension.
@@ -229,20 +355,72 @@ Les besoins de financement et les contrats de calcul demeurent, eux, dans les co
 
 ## Sources et documents
 
-<ol>
-<li id="source-S01"><strong>S01 · Reuters, 12 novembre 2026.</strong> <a href="https://www.reuters.com/business/spacex-anthropic-markets-have-new-playbook-mega-share-debuts-2026-11-12/">From SpaceX to Anthropic, markets have a new playbook for mega-share debuts</a>. <a href="https://radiousa.com/2026/11/11/analysis-from-spacex-to-anthropic-markets-have-a-new-playbook-for-mega-share-debuts/">Reprise intégrale consultée</a>. Estimation Intropic et anticipation des achats. Cette reprise reproduit la même dépêche.</li>
-<li id="source-S02"><strong>S02 · Anthropic, 10 novembre 2026.</strong> <a href="https://www.anthropic.com/news/roadshow-launch">Anthropic launches roadshow for proposed initial public offering</a>. Offre, fourchette indicative et état de l’enregistrement.</li>
-<li id="source-S03"><strong>S03 · Reuters, 11 novembre 2026.</strong> <a href="https://www.investing.com/news/stock-market-news/anthropic-ipo-could-draw-record-retail-buying-vanda-research-says-5019635">Anthropic IPO could draw record retail buying, Vanda Research says</a>. Utilisé pour la date de cotation attendue, le 19 novembre.</li>
-<li id="source-S04"><strong>S04 · SEC, 14 octobre 2022.</strong> <a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-17">Updated Investor Bulletin: Investing in an IPO</a>. Prix de placement, négociation, marché secondaire et destination des produits de cession.</li>
-<li id="source-S05"><strong>S05 · Nasdaq, 11 juin 2026.</strong> <a href="https://www.nasdaq.com/newsroom/how-nasdaq-supports-ipo-process">How Nasdaq Supports the IPO Process</a>. Construction du placement, ordres, profondeur et ouverture ; description par l’opérateur de marché.</li>
-<li id="source-S06"><strong>S06 · SEC, Investor.gov.</strong> <a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-4">Index Funds</a>. Réplication intégrale, échantillonnage et dérivés.</li>
-<li id="source-S07"><strong>S07 · FTSE Russell, 26 mai 2026.</strong> <a href="https://research.ftserussell.com/products/index-notices/home/getmethodology?id=2619701">Russell US Indexes: IPO Fast Entry</a>. Notice officielle, conditions, délai et période de gel. <a href="https://www.lseg.com/en/media-centre/press-releases/ftse-russell/2026/ftse-russell-introduces-ipo-fast-entry-enhancements-for-russell-us-indexes">Communiqué d’adoption</a>.</li>
-<li id="source-S08"><strong>S08 · Nasdaq, méthodologie consultée le 12 novembre 2026.</strong> <a href="https://indexes.nasdaq.com/docs/Methodology_NDX.pdf">Nasdaq-100 Index Methodology</a>, pages 2 à 4 et 8. Classement, faible flottant, procédure accélérée et exception liée au calendrier. Document évolutif.</li>
-<li id="source-S09"><strong>S09 · Nasdaq Trader.</strong> <a href="https://nasdaqtrader.com/Trader.aspx?id=Calendar">Trading Calendar</a>. Fermeture de Thanksgiving et calendrier des séances 2026.</li>
-<li id="source-S10"><strong>S10 · S&P Dow Jones Indices, 4 juin 2026.</strong> <a href="https://press.spglobal.com/2026-06-04-S-P-Dow-Jones-Indices-Consultation-on-Treatment-of-MegaCap-Companies-Results">Consultation on Treatment of MegaCap Companies: Results</a>. Décisions distinctes pour le S&P 500 et les indices larges.</li>
-<li id="source-S11"><strong>S11 · Anthropic / SEC EDGAR, 10 novembre 2026.</strong> <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm">S-1/A, amendement n° 2</a>. Couverture et sections Shares Eligible for Future Sale, pages 319 à 321 et 334 ; Concurrent Private Placement, page 348. Pagination imprimée du prospectus.</li>
-<li id="source-S12"><strong>S12 · Phil Mackintosh, Nasdaq, 9 mai 2024.</strong> <a href="https://www.nasdaq.com/articles/why-dont-index-funds-need-trade">Why Don’t Index Funds Need to Trade?</a>. Variation des poids et positions sous l’effet des prix.</li>
-<li id="source-S13"><strong>S13 · Robin Greenwood et Marco Sammon, avril 2025.</strong> <a href="https://onlinelibrary.wiley.com/doi/10.1111/jofi.13410">The Disappearing Index Effect</a>, Journal of Finance, volume 80, n° 2, pages 657 à 698. <a href="https://www.hbs.edu/ris/Publication%20Files/23-025_563e45c6-df92-4d9c-ae05-608d4d0acab1.pdf">Working paper accessible, révision de novembre 2023</a>. Les versions et leurs fenêtres statistiques diffèrent ; aucun coefficient n’est transposé à Anthropic.</li>
+<ol class="sources-list" role="list">
+<li id="source-S01">
+<span class="source-meta">S01 · Reuters · Publication : 2026-11-12 · Consulté le : 2026-11-12</span>
+<a href="https://www.reuters.com/business/spacex-anthropic-markets-have-new-playbook-mega-share-debuts-2026-11-12/" target="_blank" rel="noopener noreferrer">From SpaceX to Anthropic, markets have a new playbook for mega-share debuts</a>
+<details><summary>Passages et périmètre</summary><p><a href="https://radiousa.com/2026/11/11/analysis-from-spacex-to-anthropic-markets-have-a-new-playbook-for-mega-share-debuts/" target="_blank" rel="noopener noreferrer">Reprise intégrale consultée</a>. Estimation Intropic et anticipation des achats. Cette reprise reproduit la même dépêche.</p></details>
+</li>
+<li id="source-S02">
+<span class="source-meta">S02 · Anthropic · Publication : 2026-11-10 · Consulté le : 2026-11-12</span>
+<a href="https://www.anthropic.com/news/roadshow-launch" target="_blank" rel="noopener noreferrer">Anthropic launches roadshow for proposed initial public offering</a>
+<details><summary>Passages et périmètre</summary><p>Offre, fourchette indicative et état de l’enregistrement.</p></details>
+</li>
+<li id="source-S03">
+<span class="source-meta">S03 · Reuters · Publication : 2026-11-11 · Consulté le : 2026-11-12</span>
+<a href="https://www.investing.com/news/stock-market-news/anthropic-ipo-could-draw-record-retail-buying-vanda-research-says-5019635" target="_blank" rel="noopener noreferrer">Anthropic IPO could draw record retail buying, Vanda Research says</a>
+<details><summary>Passages et périmètre</summary><p>Utilisé pour la date de cotation attendue, le 19 novembre.</p></details>
+</li>
+<li id="source-S04">
+<span class="source-meta">S04 · SEC · Publication : 2022-10-14 · Consulté le : 2026-11-12</span>
+<a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-17" target="_blank" rel="noopener noreferrer">Updated Investor Bulletin: Investing in an IPO</a>
+<details><summary>Passages et périmètre</summary><p>Prix de placement, négociation, marché secondaire et destination des produits de cession.</p></details>
+</li>
+<li id="source-S05">
+<span class="source-meta">S05 · Nasdaq · Publication : 2026-06-11 · Consulté le : 2026-11-12</span>
+<a href="https://www.nasdaq.com/newsroom/how-nasdaq-supports-ipo-process" target="_blank" rel="noopener noreferrer">How Nasdaq Supports the IPO Process</a>
+<details><summary>Passages et périmètre</summary><p>Construction du placement, ordres, profondeur et ouverture ; description par l’opérateur de marché.</p></details>
+</li>
+<li id="source-S06">
+<span class="source-meta">S06 · SEC / Investor.gov · Publication : non précisée · Consulté le : 2026-11-12</span>
+<a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-4" target="_blank" rel="noopener noreferrer">Index Funds</a>
+<details><summary>Passages et périmètre</summary><p>Réplication intégrale, échantillonnage et dérivés.</p></details>
+</li>
+<li id="source-S07">
+<span class="source-meta">S07 · FTSE Russell · Publication : 2026-05-26 · Consulté le : 2026-11-12</span>
+<a href="https://research.ftserussell.com/products/index-notices/home/getmethodology?id=2619701" target="_blank" rel="noopener noreferrer">Russell US Indexes: IPO Fast Entry</a>
+<details><summary>Passages et périmètre</summary><p>Notice officielle, conditions, délai et période de gel. <a href="https://www.lseg.com/en/media-centre/press-releases/ftse-russell/2026/ftse-russell-introduces-ipo-fast-entry-enhancements-for-russell-us-indexes" target="_blank" rel="noopener noreferrer">Communiqué d’adoption</a>.</p></details>
+</li>
+<li id="source-S08">
+<span class="source-meta">S08 · Nasdaq · Publication : non précisée · Consulté le : 2026-11-12</span>
+<a href="https://indexes.nasdaq.com/docs/Methodology_NDX.pdf" target="_blank" rel="noopener noreferrer">Nasdaq-100 Index Methodology</a>
+<details><summary>Passages et périmètre</summary><p>pages 2 à 4 et 8. Classement, faible flottant, procédure accélérée et exception liée au calendrier. Document évolutif.</p></details>
+</li>
+<li id="source-S09">
+<span class="source-meta">S09 · Nasdaq Trader · Publication : non précisée · Consulté le : 2026-11-12</span>
+<a href="https://nasdaqtrader.com/Trader.aspx?id=Calendar" target="_blank" rel="noopener noreferrer">Trading Calendar</a>
+<details><summary>Passages et périmètre</summary><p>Fermeture de Thanksgiving et calendrier des séances 2026.</p></details>
+</li>
+<li id="source-S10">
+<span class="source-meta">S10 · S&amp;P Dow Jones Indices · Publication : 2026-06-04 · Consulté le : 2026-11-12</span>
+<a href="https://press.spglobal.com/2026-06-04-S-P-Dow-Jones-Indices-Consultation-on-Treatment-of-MegaCap-Companies-Results" target="_blank" rel="noopener noreferrer">Consultation on Treatment of MegaCap Companies: Results</a>
+<details><summary>Passages et périmètre</summary><p>Décisions distinctes pour le S&amp;P 500 et les indices larges.</p></details>
+</li>
+<li id="source-S11">
+<span class="source-meta">S11 · Anthropic / SEC EDGAR · Publication : 2026-11-10 · Consulté le : 2026-11-12</span>
+<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm" target="_blank" rel="noopener noreferrer">S-1/A, amendement n° 2</a>
+<details><summary>Passages et périmètre</summary><p>Couverture et sections Shares Eligible for Future Sale, pages 319 à 321 et 334 ; Concurrent Private Placement, page 348. Pagination imprimée du prospectus.</p></details>
+</li>
+<li id="source-S12">
+<span class="source-meta">S12 · Phil Mackintosh / Nasdaq · Publication : 2024-05-09 · Consulté le : 2026-11-12</span>
+<a href="https://www.nasdaq.com/articles/why-dont-index-funds-need-trade" target="_blank" rel="noopener noreferrer">Why Don’t Index Funds Need to Trade?</a>
+<details><summary>Passages et périmètre</summary><p>Variation des poids et positions sous l’effet des prix.</p></details>
+</li>
+<li id="source-S13">
+<span class="source-meta">S13 · Robin Greenwood et Marco Sammon · Publication : 2025-04 · Consulté le : 2026-11-12</span>
+<a href="https://onlinelibrary.wiley.com/doi/10.1111/jofi.13410" target="_blank" rel="noopener noreferrer">The Disappearing Index Effect</a>
+<details><summary>Passages et périmètre</summary><p>Journal of Finance, volume 80, n° 2, pages 657 à 698. <a href="https://www.hbs.edu/ris/Publication%20Files/23-025_563e45c6-df92-4d9c-ae05-608d4d0acab1.pdf" target="_blank" rel="noopener noreferrer">Working paper accessible, révision de novembre 2023</a>. Les versions et leurs fenêtres statistiques diffèrent ; aucun coefficient n’est transposé à Anthropic.</p></details>
+</li>
 </ol>
 
 ## Méthode et limites
