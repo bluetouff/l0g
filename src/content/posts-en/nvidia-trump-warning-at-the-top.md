@@ -475,6 +475,8 @@ Chip policy forms part of a broader shift in relations between Washington and in
 
 The family’s defense-industry interests are examined further in [Trump Jr., drones and US industrial policy](/en/analysis/trump-jr-drones-unusual-machines-draganfly-industrial-policy/).
 
+Continue with [Nvidia’s board, the alleged NDA and AI financing](/en/analysis/nvidia-huang-nda-board-ai-financing/).
+
 ## Sources and method
 
 This documentary investigation draws on official texts, original financial filings, ethics documents and congressional letters, pool reports and attributed journalistic investigations. We conducted no original interviews or site visits, accessed no classified memo and examined no brokerage accounts. Reports repeating the same investigation retain a single evidential origin. Statements from companies and governments establish their positions, with their interests identified.

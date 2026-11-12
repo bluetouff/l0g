@@ -866,6 +866,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Régulation & institutions US',
     accent: 'var(--color-topic-blue)',
     entries: [
+      {"sigle": "NDA", "nom": "Accord de confidentialité", "def": "Contrat ou clause définissant les informations à conserver confidentielles, leurs destinataires et les usages autorisés. Sa portée dépend du texte et du droit applicable. Aux États-Unis, une restriction entravant un signalement direct à la SEC concernant une possible violation boursière peut relever de la règle 21F-17. Les clauses et le contexte doivent être examinés.", "guide": "/posts/nvidia-huang-nda-conseil-financement-ia/"},
       {
         sigle: 'Crédits budgétaires américains', nom: 'Appropriations fédérales',
         def: 'Autorité accordée par la loi à une administration fédérale pour engager des obligations et effectuer des paiements du Trésor dans un but déterminé. Les crédits fixent un périmètre et une période de disponibilité. Le contrat crée ensuite un engagement juridique ; le versement constitue une étape distincte. Une loi de financement provisoire peut prolonger temporairement cette autorité.',
@@ -1064,7 +1065,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-11-11';
+export const glossaryUpdatedIso = '2026-11-12';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1307,6 +1308,7 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "nda": {"articles": [{"label": "Nvidia : le conseil face au risque Huang", "href": "/posts/nvidia-huang-nda-conseil-financement-ia/", "kind": "article"}], "sources": [{"label": "UK Intellectual Property Office, présentation générale des NDA", "href": "https://www.gov.uk/government/publications/non-disclosure-agreements/non-disclosure-agreements", "kind": "source"}, {"label": "SEC, limites aux entraves aux signalements", "href": "https://www.sec.gov/enforcement-litigation/whistleblower-program/whistleblower-protections", "kind": "source"}]},
   "crs": {"articles": [{"label": "Dubai Papers : les intermédiaires de l’opacité", "href": "/posts/dubai-papers-intermediaires-opacite/", "kind": "article"}], "sources": [{"label": "OCDE, CRS consolidé 2025", "href": "https://www.oecd.org/en/publications/consolidated-text-of-the-common-reporting-standard-2025_055664b1-en.html", "detail": "Consolidation non officielle publiée le 2 juin 2025 ; sections I, V, VI, VIII et X. Mise en œuvre selon les règles nationales et les relations d’échange applicables.", "kind": "source"}], "related": ["kyc"]},
   "kyc": {"articles": [{"label": "Dubai Papers : les intermédiaires de l’opacité", "href": "/posts/dubai-papers-intermediaires-opacite/", "kind": "article"}], "sources": [{"label": "Code monétaire et financier, vigilance à l’égard de la clientèle", "href": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072026/LEGISCTA000020179278/", "detail": "Articles L561-4-1, L561-5, L561-5-1, L561-6 et L561-10-2 : identification, relation d’affaires, vigilance continue et examen renforcé, selon les risques.", "kind": "source"}], "related": ["crs"]},
   "trust": {"articles": [{"label": "Lutnick, Tether et le prêt familial rapporté", "href": "/posts/lutnick-tether-credit-cession-familiale/", "kind": "article"}], "sources": [{"label": "IRS, instructions du formulaire 1041", "href": "https://www.irs.gov/instructions/i1041", "detail": "Definitions, Trust : propriété, gestion et protection des actifs pour les bénéficiaires.", "kind": "source"}], "related": ["dette-convertible", "stablecoin"]},

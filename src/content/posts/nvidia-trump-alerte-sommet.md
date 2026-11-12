@@ -474,6 +474,8 @@ La politique des puces s’inscrit dans une transformation plus large des rappor
 
 Le dossier familial de la défense est approfondi dans [Trump Jr., les drones et la politique industrielle américaine](/posts/trump-jr-drones-unusual-machines-draganfly-politique-industrielle/).
 
+Pour la suite : [le conseil de Nvidia face au risque Huang, au NDA allégué et au financement de l’IA](/posts/nvidia-huang-nda-conseil-financement-ia/).
+
 ## Sources et méthode
 
 Cette enquête documentaire repose sur des textes officiels, des dépôts financiers originaux, des documents déontologiques et des lettres parlementaires, des comptes rendus de presse et des enquêtes journalistiques attribuées. Aucun entretien propre, accès à une note classifiée, visite de site ou consultation des comptes de courtage n’a été réalisé. Les reprises d’un même reportage conservent une seule origine. Les déclarations d’une entreprise ou d’un gouvernement sont utilisées pour établir leur position, avec leurs intérêts identifiés.
