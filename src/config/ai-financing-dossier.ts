@@ -23,6 +23,7 @@ export const aiFinancingNvidiaIds = [
   'nvidia-trump-tim-cook-lutnick-state-leverage',
   'nvidia-congress-teter-kessler-export-controls',
   'nvidia-ai-financing-guarantees-asian-investigations',
+  'nvidia-shanghai-server-collateral-lutnick-bessent',
 ];
 
 export const aiFinancingSections: AiFinancingSection[] = [

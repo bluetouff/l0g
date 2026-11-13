@@ -21,11 +21,11 @@ const ui = fr ? {
   lede: 'Les puces se vendent. Les centres de données s’endettent. Entre les deux, des contrats, des garanties et des promesses de revenus engagent toute une chaîne financière. l0g suit l’argent, les actifs et ceux qui prennent le risque.',
   updated: 'Édition du 13 novembre 2026', alternate: 'Read in English',
   analyses: 'analyses dans ce dossier', series: 'volets sur l’affaire Nvidia', relations: 'relations dans l’atlas',
-  latest: 'À la une · Nvidia / VII', leadTitle: 'Nvidia, les garanties derrière les milliards',
-  leadNote: 'Les partenaires financiers demandent davantage de garanties. Les enquêtes asiatiques resserrent l’examen des circuits de serveurs. Au cœur du dossier : la solidité des contrats qui soutiennent le crédit.',
+  latest: 'À la une · Nvidia / VIII', leadTitle: 'Nvidia : des serveurs gagés à Shanghai',
+  leadNote: 'Bessent met Lutnick sous pression, alors que l’enquête Bloomberg relie des serveurs à Shanghai au crédit de l’IA.',
   read: 'Lire l’enquête', explore: 'Explorer les parcours', atlas: 'Ouvrir l’atlas',
   nvidiaTitle: 'L’affaire Nvidia, du pouvoir aux garanties',
-  nvidiaNote: 'Des alertes à Washington aux exigences des prêteurs, sept enquêtes relient gouvernance, contrôle des puces et financement. Retrouvez la progression du dossier dans l’ordre de publication.',
+  nvidiaNote: 'Des alertes à Washington aux exigences des prêteurs, huit enquêtes relient gouvernance, contrôle des puces et financement. Retrouvez la progression du dossier dans l’ordre de publication.',
   nvidiaCurrent: 'Dernier volet',
   paths: 'Cinq parcours pour suivre l’argent',
   pathsNote: 'Entrer par les fournisseurs, les échéances de dette ou le réseau électrique : chaque parcours éclaire une partie du même système.',
@@ -49,11 +49,11 @@ const ui = fr ? {
   lede: 'Chips are sold. Data centres borrow. Contracts, guarantees and future revenue connect them to a much wider financial system. l0g follows the money, the assets and the people taking the risk.',
   updated: '13 November 2026 edition', alternate: 'Version française',
   analyses: 'analyses in this dossier', series: 'Nvidia investigations', relations: 'atlas relationships',
-  latest: 'In focus · Nvidia / VII', leadTitle: 'Nvidia: the guarantees behind AI’s billions',
-  leadNote: 'Financial partners are seeking stronger guarantees as Asian investigations intensify scrutiny of server deals. The reliability of the contracts supporting credit runs through both stories.',
+  latest: 'In focus · Nvidia / VIII', leadTitle: 'Nvidia: Shanghai’s pledged servers',
+  leadNote: 'Servers pledged in Shanghai expose questions for AI lenders, while Bessent points to Commerce and Republicans demand answers from Howard Lutnick.',
   read: 'Read the investigation', explore: 'Choose a reading path', atlas: 'Open the atlas',
   nvidiaTitle: 'Nvidia, from political influence to financial guarantees',
-  nvidiaNote: 'Seven investigations connect Washington’s warnings, corporate oversight, chip controls and lenders’ demands. Follow the reporting in publication order.',
+  nvidiaNote: 'Eight investigations connect Washington’s warnings, corporate oversight, chip controls and lenders’ demands. Follow the reporting in publication order.',
   nvidiaCurrent: 'Latest instalment',
   paths: 'Five ways to follow the money',
   pathsNote: 'Start with suppliers, repayment dates or the electricity grid. Each path opens a different part of the financing system.',
@@ -132,7 +132,7 @@ const jsonLd = {
 
     <section id="nvidia" class="ai-section ai-nvidia" aria-labelledby="nvidia-title">
       <div class="ai-section-heading"><p class="ai-eyebrow">01 / Nvidia</p><h2 id="nvidia-title">{ui.nvidiaTitle}</h2><p>{ui.nvidiaNote}</p></div>
-      <ol class="ai-timeline">{nvidia.map((item, index) => <li class:list={{ 'ai-current': index === nvidia.length - 1 }}><span class="ai-serial" aria-hidden="true">{['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'][index]}</span><div><time datetime={item.date.toISOString()}>{dateLabel(item.date)}</time><h3><a href={item.href}>{item.title}</a></h3></div><span class="ai-timeline-arrow" aria-hidden="true">↗</span></li>)}</ol>
+      <ol class="ai-timeline">{nvidia.map((item, index) => <li class:list={{ 'ai-current': index === nvidia.length - 1 }}><span class="ai-serial" aria-hidden="true">{['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'][index]}</span><div><time datetime={item.date.toISOString()}>{dateLabel(item.date)}</time><h3><a href={item.href}>{item.title}</a></h3></div><span class="ai-timeline-arrow" aria-hidden="true">↗</span></li>)}</ol>
     </section>
 
     <section id="parcours" class="ai-section" aria-labelledby="paths-title">

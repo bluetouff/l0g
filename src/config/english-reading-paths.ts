@@ -163,6 +163,7 @@ export const financingReadingPaths = [
     atlasHref: '/en/atlas/ai-financing/',
     atlasLabel: 'Explore the AI financing atlas',
     analysisIds: [
+      'nvidia-shanghai-server-collateral-lutnick-bessent',
       'nvidia-ai-financing-guarantees-asian-investigations',
       'nvidia-congress-teter-kessler-export-controls',
       'nvidia-trump-tim-cook-lutnick-state-leverage',
