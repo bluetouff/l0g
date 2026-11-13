@@ -9,6 +9,7 @@ export const SVG_TEST_SUITES = Object.freeze({
     'scripts/nvidia-state-leverage-infographics.test.mjs',
     'scripts/kalshi-infographics.test.mjs',
     'scripts/treasury-seven-year-infographics.test.mjs',
+    'scripts/ai-washing-infographics.test.mjs',
     'scripts/nvidia-after-huang-infographics.test.mjs',
     'scripts/nvidia-governance-infographics.test.mjs',
     'scripts/nvidia-influence-infographics.test.mjs',
