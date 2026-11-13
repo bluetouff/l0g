@@ -124,7 +124,7 @@ const jsonLd = {
       <div class="ai-intro"><h1>{ui.title}</h1><p>{ui.lede}</p></div>
       <div class="ai-edition"><time datetime="2026-11-13">{ui.updated}</time><span aria-hidden="true">/</span><a href="#nvidia">Nvidia</a><a href="#parcours">{ui.explore} ↓</a><a href={atlasHref}>{ui.atlas} ↗</a></div>
       <div class="ai-cover">
-        <a class="ai-cover-image" href={lead.href} aria-label={ui.leadTitle}><img src={dossierImage} width="1200" height="630" alt="" fetchpriority="high" /></a>
+        <a class="ai-cover-image" href={lead.href} aria-label={ui.leadTitle}><img src={dossierImage} width="1200" height="630" alt="" loading="lazy" decoding="async" /></a>
         <div class="ai-cover-copy"><p class="ai-eyebrow">{ui.latest}</p><h2><a href={lead.href}>{ui.leadTitle}</a></h2><p>{ui.leadNote}</p><a class="ai-read" href={lead.href}>{ui.read} <span aria-hidden="true">↗</span></a></div>
       </div>
       <dl class="ai-counts"><div><dt>{ui.analyses}</dt><dd>{corpus.length}</dd></div><div><dt>{ui.series}</dt><dd>{nvidia.length}</dd></div><div><dt>{ui.relations}</dt><dd>{snapshot.relations.length}</dd></div></dl>
