@@ -11,7 +11,15 @@ assert.ok(start >= 0 && end > start);
 const art = JSON.parse(component.slice(start + marker.length, end));
 const fontBytes = readFileSync(new URL('../public/fonts/ukraine-reparations/liberation-sans-400.ttf', import.meta.url));
 const font = opentype.parse(fontBytes.buffer.slice(fontBytes.byteOffset, fontBytes.byteOffset + fontBytes.byteLength));
-const decode = s => s.replace(/&amp;/gu, '&').replace(/&lt;/gu, '<').replace(/&gt;/gu, '>').replace(/&quot;/gu, '"').replace(/&#x27;/gu, "'");
+const textEntities = Object.freeze({ '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#x27;': "'" });
+const decode = s => s.replace(/&(?:amp|lt|gt|quot|#x27);/gu, entity => textEntities[entity]);
+test('text entities are decoded once before font measurement', () => {
+  assert.equal(decode('&amp;lt;script&amp;gt;'), '&lt;script&gt;');
+  assert.equal(decode('&amp;#x27;'), '&#x27;');
+  assert.equal(decode('&amp;lt;&lt;'), '&lt;<');
+  assert.equal(decode('R&amp;D &lt;GPU&gt; &quot;cap&quot; &#x27;value&#x27;'), 'R&D <GPU> "cap" \'value\'');
+  assert.equal(decode('GPU · 25 %'), 'GPU · 25 %');
+});
 const attrs = source => Object.fromEntries([...source.matchAll(/([\w:-]+)="([^"]*)"/gu)].map(m => [m[1], m[2]]));
 const overlap = (a,b) => Math.min(a.x2,b.x2)-Math.max(a.x1,b.x1)>1 && Math.min(a.y2,b.y2)-Math.max(a.y1,b.y1)>1;
 const zones = (kind,mobile) => kind === 'financing' ? mobile ? {
