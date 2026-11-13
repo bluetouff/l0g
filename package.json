@@ -66,7 +66,7 @@
     "test:helium-logistics": "node --test scripts/helium-logistics.test.mjs",
     "test:og": "node --test scripts/og-kit.test.mjs scripts/og-render-cache.test.mjs scripts/og-english-content.test.mjs scripts/english-page-social.test.mjs scripts/audit-english-social.test.mjs && node --test scripts/publication-social.test.mjs && node --experimental-strip-types --test scripts/weekly-social.test.mjs && node --test scripts/article-social.test.mjs && node --test scripts/guide-social.test.mjs",
     "test:news-sitemap": "node --experimental-strip-types --test scripts/news-sitemap.test.mjs",
-    "test:english-reading-paths": "node --experimental-strip-types --test scripts/english-reading-paths.test.mjs",
+    "test:english-reading-paths": "node --experimental-strip-types --test scripts/english-reading-paths.test.mjs scripts/ai-financing-dossier.test.mjs",
     "test:inline-svg": "node scripts/run-svg-tests.mjs",
     "test:ai-frontier": "node --test scripts/ai-frontier-infographics.test.mjs",
     "test:sitemap-lastmod": "node --test scripts/sitemap-lastmod.test.mjs",

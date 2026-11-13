@@ -7,24 +7,30 @@ import { atlasAlternateLinks } from '../../../config/atlases';
 const dataset = englishAtlasDatasets['ai-financing'];
 ---
 
-<EnglishGuidesLayout title={dataset.title} seoTitle="AI financing atlas: Nvidia, OpenAI and their contracts | l0g" description="Who funds AI infrastructure, and who guarantees the payments? Explore Nvidia, OpenAI, SB Energy and AIP through dated contracts and primary sources." ogImage="/illustrations/news/openai-credit-guarantee-v1.jpg" alternateLinks={atlasAlternateLinks(dataset.id)}>
+<EnglishGuidesLayout title={dataset.title} seoTitle="AI financing atlas: Nvidia, Anthropic and debt | l0g" description="Follow investments, cloud purchases, guarantees and infrastructure debt through Nvidia, Anthropic, Google, Broadcom and OpenAI’s documented relationships." ogImage="/illustrations/news/ai-financing-dossier-v1.jpg" alternateLinks={atlasAlternateLinks(dataset.id)}>
   <EngagementAtlas
     language="en"
     dataset={dataset}
     subject="AI financing"
-    intro="Nvidia, OpenAI, SB Energy, AIP and Nebius: who finances AI infrastructure, who guarantees what, and on which terms? Explore the documented relationships as successive publications change what can be established."
-    boundary="The 21 September prospectus separates prepayment received through Energy Global, LP from a still-conditional share purchase. It renames SE Global Holdings, Inc. as SB Energy, Inc.; the node retains the contractual name for historical views. These transactions remain separate from the campus guarantees. This corpus establishes no financing from AIP to that campus."
-    selectedRelation="citi-nebius-facility"
-    hubs={['nvidia', 'aip']}
+    intro="A supplier can sell chips, fund its customer and back the value of equipment. Trace these roles across Nvidia, Anthropic, Google and Broadcom, then explore the other circuits around OpenAI, SB Energy, Aligned, Nebius and SpaceX."
+    boundary="Share subscriptions, compute purchases and guarantees are different obligations. Amounts can cover successive stages of the same circuit and cannot be added together. Each relationship retains its publication date and conditions. SB Energy’s prepayment remains separate from the campus guarantees, with no AIP funding inferred."
+    selectedRelation="nvidia-anthropic-equity"
+    hubs={['nvidia', 'anthropic', 'aip']}
     entryPoints={[
-      { label: 'How does Citi finance Nebius’s GPUs?', relation: 'citi-nebius-facility', date: '2026-10-22' },
-      { label: 'What has Nvidia already paid?', relation: 'nvidia-energy-global-prepayment', date: '2026-09-21' },
-      { label: 'What did AIP, MGX and GIP acquire?', relation: 'consortium-aligned-acquisition', date: '2026-07-21' },
-      { label: 'How does Aligned use securitization?', relation: 'investors-aligned-abs', date: '2026-07-28' },
-      { label: 'Who pays if OpenAI stops paying?', relation: 'nvidia-sb-guarantee', date: dataset.milestones.at(-1)!.date, scenario: true },
-      { label: 'How has Nvidia’s role changed?', relation: 'nvidia-aip', date: '2025-03-19' },
+      { label: 'Nvidia’s proposed Anthropic subscription', relation: 'nvidia-anthropic-equity', date: '2026-11-10' },
+      { label: 'Google: equity and cloud purchases', relation: 'google-anthropic-equity', date: '2026-11-10' },
+      { label: 'Broadcom finances rents', relation: 'broadcom-anthropic-rent-facility', date: '2026-11-02' },
+      { label: 'Broadcom backs the equipment lessor', relation: 'broadcom-spv-residual-support', date: '2026-10-26' },
+      { label: 'SpaceX’s GPU finance lease', relation: 'gpu-lessor-spacex', date: '2026-10-26' },
+      { label: 'Citi’s Nebius facility', relation: 'citi-nebius-facility', date: '2026-10-22' },
+      { label: 'OpenAI: explore a hypothetical default', relation: 'nvidia-sb-guarantee', date: dataset.milestones.at(-1)!.date, scenario: true },
+      { label: 'AIP and the Aligned acquisition', relation: 'consortium-aligned-acquisition', date: '2026-07-21' },
     ]}
     outlinks={[
+      { href: '/en/topics/ai-financing/', label: 'All investigations in the AI financing dossier' },
+      { href: '/en/analysis/anthropic-supplier-financing-ipo/', label: 'Anthropic: suppliers financing their customer' },
+      { href: '/en/analysis/nvidia-ai-financing-guarantees-asian-investigations/', label: 'Nvidia: financial guarantees and Asian investigations' },
+      { href: '/en/atlas/private-credit/', label: 'Apollo, Athene and private credit funding chains' },
       { href: '/en/analysis/nebius-citi-364-day-gpu-credit/', label: 'Nebius’s 364-day credit facility' },
       { href: '/en/analysis/nvidia-the-500-billion-that-does-not-exist-yet/', label: 'Read the investigation' },
       { href: '/api/v1/en/atlases/ai-financing.json', label: 'Reuse the relationships and sources · English JSON' },
@@ -32,9 +38,23 @@ const dataset = englishAtlasDatasets['ai-financing'];
     ]}
   >
     <section slot="overview" class="atlas-overview" aria-labelledby="ai-review-title">
-      <h2 id="ai-review-title">Additions verified on <time datetime="2026-10-28">28 October 2026</time></h2>
-      <p><a href="https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_6k.htm">Nebius’s 22 October Form 6-K</a> adds a $3.5 billion secured facility with Citi. Its three co-borrowers are grouped together; contractual principal does not establish full drawdown. The loan matures on 16 October 2027.</p>
-      <p>This bank financing remains separate from Nvidia–SB Energy guarantees, prepayment and Aligned’s transactions. Those records retain their earlier observations and review dates. The addition is not a fresh review of every contract.</p>
+      <p class="ia-review-date">Reviewed <time datetime="2026-11-13">13 November 2026</time></p>
+      <div class="ia-review-grid">
+        <div>
+          <h2 id="ai-review-title">Nvidia’s leadership changes</h2>
+          <p>On <a href="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition">November 12, Nvidia announced Jensen Huang’s immediate resignation</a> as president, chief executive and director. Colette Kress became interim CEO. The board said it expected customer commitments to continue.</p>
+          <p>The map traces corporate obligations through the documents. The transition’s effect on new investments remains to be seen.</p>
+        </div>
+        <div>
+          <h2>Suppliers financing their customer</h2>
+          <p><a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm">Anthropic’s November 10 prospectus</a> adds proposed subscriptions by Nvidia, Google, Microsoft and Broadcom. Cloud purchases have their own relationships: the same partner can have separate obligations.</p>
+          <p><a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/exhibit44-sx1a1.htm">The Broadcom agreement filed on November 2</a> also allows convertible debt to finance eligible rents. That facility’s cap and the equipment financing cover different parts of the chain.</p>
+        </div>
+      </div>
+      <details class="ia-previous"><summary>October 31 additions: SpaceX and other circuits</summary>
+      <p><a href="https://www.sec.gov/Archives/edgar/data/1181412/000110465926118614/tm2628247d1_8k.htm">SpaceX’s October 26 Form 8-K</a> documents a GPU finance lease commitment with an Apollo-managed entity. About $40 billion represents expected principal payments over the leases. Closing remains conditional, with the first leases expected to begin in the first half of 2027.</p>
+      <p><a href="https://www.apollo.com/insights-news/pressreleases/2026/10/spacex-secures--40-billion-in-the-largest-gpu-financing-ever">The release published by Apollo</a> identifies announced financing parties without individual allocations. No AIP or Athene contribution is inferred. Nvidia–SB Energy guarantees, prepayment, Aligned and Citi–Nebius retain their earlier observations. <a href="https://data.sec.gov/submissions/CIK0002133037.json">SB Energy’s SEC register</a>, checked on October 31, shows no filing after the September 21 S-1/A; that check does not confirm a completed IPO.</p>
+      </details>
     </section>
   </EngagementAtlas>
   <EnglishRelatedReading id="ai-financing" collection="atlas" />
@@ -46,4 +66,9 @@ const dataset = englishAtlasDatasets['ai-financing'];
   .atlas-overview p { max-width:90ch; margin:.7rem 0; font-family:var(--font-read); font-size:.85rem; line-height:1.7; }
   .atlas-overview a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; }
   .atlas-overview a:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+  .ia-review-date { color:var(--color-signal); font:400 .72rem/1.5 var(--font-mono) !important; }
+  .ia-review-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.6rem; margin-top:1rem; }
+  .ia-previous { border-top:1px solid var(--color-line); margin-top:1.2rem; padding-top:.7rem; }
+  .ia-previous summary { cursor:pointer; color:var(--color-muted); font:400 .78rem/1.6 var(--font-read); min-height:44px; padding-block:.5rem; }
+  @media (max-width:700px) { .ia-review-grid { grid-template-columns:1fr; gap:1rem; } }
 </style>

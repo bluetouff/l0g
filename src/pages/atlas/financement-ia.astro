@@ -6,23 +6,29 @@ import FrenchRelatedReading from '../../components/FrenchRelatedReading.astro';
 import dataset from '../../data/engagement-atlas.json';
 ---
 
-<BaseLayout title={dataset.title} seoTitle="Atlas du financement de l’IA : Nvidia, OpenAI | l0g" description="Nvidia, OpenAI, SB Energy, AIP et Nebius : explorez les acteurs, les contrats et les garanties du financement de l’intelligence artificielle." ogImage="/illustrations/news/openai-credit-guarantee-v1.jpg" alternateLinks={atlasAlternateLinks(dataset.id)} sidebar={false}>
+<BaseLayout title={dataset.title} seoTitle="Atlas du financement de l’IA : Nvidia, Anthropic et dette | l0g" description="Nvidia, Anthropic, Google, Broadcom et OpenAI : suivez les investissements, les achats cloud, les garanties et la dette des infrastructures d’IA." ogImage="/illustrations/news/ai-financing-dossier-v1.jpg" alternateLinks={atlasAlternateLinks(dataset.id)} sidebar={false}>
   <EngagementAtlas
     dataset={dataset}
     subject="financement de l’IA"
-    intro="Nvidia, OpenAI, SB Energy, AIP et Nebius : qui finance les infrastructures de l’intelligence artificielle, qui garantit quoi et sous quelles conditions ? Explorez les relations documentées et leur évolution au fil des publications."
-    boundary="Le prospectus du 21 septembre distingue le préfinancement reçu via Energy Global, LP de l’achat d’actions encore conditionnel. SE Global Holdings, Inc. y est renommée SB Energy, Inc. ; le nœud conserve son nom contractuel pour les lectures historiques. Ces opérations restent distinctes des garanties du campus. Aucun financement d’AIP vers ce campus n’est établi ici."
-    selectedRelation="citi-nebius-facility"
-    hubs={['nvidia', 'aip']}
+    intro="Un fournisseur peut vendre des puces, financer son client et garantir la valeur des équipements. Suivez ces rôles chez Nvidia, Anthropic, Google et Broadcom, puis explorez les autres circuits : OpenAI, SB Energy, Aligned, Nebius et SpaceX."
+    boundary="Souscriptions en actions, achats de calcul et garanties sont des obligations différentes. Plusieurs montants peuvent couvrir des étapes d’un même circuit et ne s’additionnent pas. Chaque relation conserve sa date de publication et ses conditions. Le préfinancement de SB Energy reste distinct des garanties du campus, sans financement d’AIP déduit."
+    selectedRelation="nvidia-anthropic-equity"
+    hubs={['nvidia', 'anthropic', 'aip']}
     entryPoints={[
-      { label: 'Comment Citi finance-t-il les GPU de Nebius ?', relation: 'citi-nebius-facility', date: '2026-10-22' },
-      { label: 'Quel argent Nvidia a-t-elle déjà versé ?', relation: 'nvidia-energy-global-prepayment', date: '2026-09-21' },
-      { label: 'Qu’a acquis le consortium AIP, MGX et GIP ?', relation: 'consortium-aligned-acquisition', date: '2026-07-21' },
-      { label: 'Comment Aligned se finance-t-elle par titrisation ?', relation: 'investors-aligned-abs', date: '2026-07-28' },
-      { label: 'Qui paie si OpenAI ne paie plus ?', relation: 'nvidia-sb-guarantee', date: dataset.milestones.at(-1)!.date, scenario: true },
-      { label: 'Comment le rôle de Nvidia évolue-t-il ?', relation: 'nvidia-aip', date: '2025-03-19' },
+      { label: 'Nvidia : souscription proposée à Anthropic', relation: 'nvidia-anthropic-equity', date: '2026-11-10' },
+      { label: 'Google : capital et achats cloud', relation: 'google-anthropic-equity', date: '2026-11-10' },
+      { label: 'Broadcom finance les loyers', relation: 'broadcom-anthropic-rent-facility', date: '2026-11-02' },
+      { label: 'Broadcom soutient le bailleur', relation: 'broadcom-spv-residual-support', date: '2026-10-26' },
+      { label: 'SpaceX : le crédit-bail GPU', relation: 'gpu-lessor-spacex', date: '2026-10-26' },
+      { label: 'Citi : le crédit de Nebius', relation: 'citi-nebius-facility', date: '2026-10-22' },
+      { label: 'OpenAI : explorer un défaut hypothétique', relation: 'nvidia-sb-guarantee', date: dataset.milestones.at(-1)!.date, scenario: true },
+      { label: 'AIP et l’acquisition d’Aligned', relation: 'consortium-aligned-acquisition', date: '2026-07-21' },
     ]}
     outlinks={[
+      { href: '/dossiers/financement-ia/', label: 'Toutes les enquêtes du dossier Financement de l’IA' },
+      { href: '/posts/anthropic-financement-fournisseurs-ipo/', label: 'Anthropic : les fournisseurs financent leur client' },
+      { href: '/posts/nvidia-garanties-financement-ia-enquetes-asie/', label: 'Nvidia : garanties financières et enquêtes en Asie' },
+      { href: '/atlas/credit-prive/', label: 'Apollo, Athene et les circuits du crédit privé' },
       { href: '/posts/nebius-citi-credit-364-jours-gpu/', label: 'Le crédit de 364 jours de Nebius' },
       { href: '/posts/nvidia-500-milliards-qui-n-existent-pas-encore/#suivi-septembre-2026', label: 'Lire l’enquête et son suivi' },
       { href: '/api/v1/engagement-atlas.json', label: 'Réutiliser les relations et leurs sources · JSON' },
@@ -30,9 +36,23 @@ import dataset from '../../data/engagement-atlas.json';
     ]}
   >
     <section slot="overview" class="ia-review" aria-labelledby="ia-review-title">
-      <h2 id="ia-review-title">Ajouts vérifiés le <time datetime="2026-10-28">28 octobre 2026</time></h2>
-      <p>Le <a href="https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_6k.htm">6-K de Nebius publié le 22 octobre</a> ajoute un crédit garanti de 3,5 milliards de dollars avec Citi. Les trois coemprunteurs sont regroupés ; le principal contractuel ne prouve pas un tirage intégral. Le prêt arrive à échéance le 16 octobre 2027.</p>
-      <p>Ce circuit bancaire est distinct des garanties Nvidia–SB Energy, du préfinancement et des opérations d’Aligned. Ces dossiers conservent leurs observations et dates de revue antérieures. L’ajout ne constitue pas une actualisation générale de tous les contrats.</p>
+      <p class="ia-review-date">Revue du <time datetime="2026-11-13">13 novembre 2026</time></p>
+      <div class="ia-review-grid">
+        <div>
+          <h2 id="ia-review-title">Nvidia change de direction</h2>
+          <p>Le <a href="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition">12 novembre, Nvidia annonce la démission immédiate de Jensen Huang</a> de ses fonctions de président, directeur général et administrateur. Colette Kress assure la direction par intérim. Le conseil affirme vouloir maintenir les engagements clients.</p>
+          <p>La carte suit les obligations des sociétés à partir de leurs documents. L’effet de cette transition sur les nouveaux investissements reste à observer.</p>
+        </div>
+        <div>
+          <h2>Les fournisseurs financent leur client</h2>
+          <p>Le <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm">prospectus d’Anthropic du 10 novembre</a> ajoute les souscriptions proposées de Nvidia, Google, Microsoft et Broadcom. Les achats cloud figurent sur des relations séparées : même partenaire, obligations différentes.</p>
+          <p>Le <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/exhibit44-sx1a1.htm">contrat Broadcom déposé le 2 novembre</a> permet aussi de financer certains loyers en émettant une dette convertible. Le plafond de cette facilité et le financement du matériel couvrent des objets distincts.</p>
+        </div>
+      </div>
+      <details class="ia-previous"><summary>Ajouts du 31 octobre : SpaceX et les autres circuits</summary>
+      <p>Le <a href="https://www.sec.gov/Archives/edgar/data/1181412/000110465926118614/tm2628247d1_8k.htm">8-K de SpaceX du 26 octobre</a> documente un engagement de crédit-bail GPU avec un véhicule géré par Apollo. Les quelque 40 milliards de dollars désignent le principal attendu sur les locations. La réalisation reste conditionnelle et les premières locations sont prévues au premier semestre 2027.</p>
+      <p>Le <a href="https://www.apollo.com/insights-news/pressreleases/2026/10/spacex-secures--40-billion-in-the-largest-gpu-financing-ever">communiqué publié par Apollo</a> précise les financeurs annoncés, sans donner leurs parts. Aucun apport d’AIP ou d’Athene n’est déduit. Les garanties Nvidia–SB Energy, le préfinancement, Aligned et le prêt Citi–Nebius conservent leurs observations antérieures. Le <a href="https://data.sec.gov/submissions/CIK0002133037.json">registre SEC de SB Energy</a> consulté le 31 octobre ne présente aucun dépôt postérieur au S-1/A du 21 septembre ; ce contrôle ne confirme pas la réalisation de l’introduction.</p>
+      </details>
     </section>
   </EngagementAtlas>
   <FrenchRelatedReading id="ai-financing" collection="atlas" />
@@ -44,4 +64,9 @@ import dataset from '../../data/engagement-atlas.json';
   .ia-review p { max-width:90ch; margin:.7rem 0; font-family:var(--font-read); font-size:.85rem; line-height:1.7; }
   .ia-review a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; }
   .ia-review a:focus-visible { outline:2px solid var(--color-signal); outline-offset:4px; }
+  .ia-review-date { color:var(--color-signal); font:400 .72rem/1.5 var(--font-mono) !important; }
+  .ia-review-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.6rem; margin-top:1rem; }
+  .ia-previous { border-top:1px solid var(--color-line); margin-top:1.2rem; padding-top:.7rem; }
+  .ia-previous summary { cursor:pointer; color:var(--color-muted); font:400 .78rem/1.6 var(--font-read); min-height:44px; padding-block:.5rem; }
+  @media (max-width:700px) { .ia-review-grid { grid-template-columns:1fr; gap:1rem; } }
 </style>

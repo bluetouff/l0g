@@ -1,0 +1,297 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EnglishGuidesLayout from '../layouts/EnglishGuidesLayout.astro';
+import { aiFinancingSections, aiFinancingGuides, aiFinancingNvidiaIds } from '../config/ai-financing-dossier';
+import frenchAtlas from '../data/engagement-atlas.json';
+import englishAtlas from '../data/engagement-atlas.en.json';
+import { atlasAt, assertAtlasDataset } from '../lib/engagement-atlas';
+import { localizeAtlas } from '../lib/atlas-localization';
+import { buildDate } from '../lib/build-clock.mjs';
+import { serializeInlineScriptData } from '../lib/security';
+
+interface Props { language: 'fr' | 'en' }
+const { language } = Astro.props;
+const fr = language === 'fr';
+const Layout = fr ? BaseLayout : EnglishGuidesLayout;
+const ui = fr ? {
+  title: 'Financer la course à l’IA',
+  description: 'Nvidia, Anthropic, OpenAI : enquêtes sur les fournisseurs devenus financeurs, la dette des centres de données et le partage du risque. Explorez le dossier et son atlas.',
+  eyebrow: 'Le grand dossier · Financement de l’IA',
+  lede: 'Les puces se vendent. Les centres de données s’endettent. Entre les deux, des contrats, des garanties et des promesses de revenus engagent toute une chaîne financière. l0g suit l’argent, les actifs et ceux qui prennent le risque.',
+  updated: 'Édition du 13 novembre 2026', alternate: 'Read in English',
+  analyses: 'analyses dans ce dossier', series: 'volets sur l’affaire Nvidia', relations: 'relations dans l’atlas',
+  latest: 'À la une · Nvidia / VII', leadTitle: 'Nvidia, les garanties derrière les milliards',
+  leadNote: 'Les partenaires financiers demandent davantage de garanties. Les enquêtes asiatiques resserrent l’examen des circuits de serveurs. Au cœur du dossier : la solidité des contrats qui soutiennent le crédit.',
+  read: 'Lire l’enquête', explore: 'Explorer les parcours', atlas: 'Ouvrir l’atlas',
+  nvidiaTitle: 'L’affaire Nvidia, du pouvoir aux garanties',
+  nvidiaNote: 'Des alertes à Washington aux exigences des prêteurs, sept enquêtes relient gouvernance, contrôle des puces et financement. Retrouvez la progression du dossier dans l’ordre de publication.',
+  nvidiaCurrent: 'Dernier volet',
+  paths: 'Cinq parcours pour suivre l’argent',
+  pathsNote: 'Entrer par les fournisseurs, les échéances de dette ou le réseau électrique : chaque parcours éclaire une partie du même système.',
+  atlasEyebrow: 'Atlas · Les relations sous la loupe', atlasTitle: 'Contrats et garanties, relation par relation',
+  atlasNote: 'Sélectionnez une relation, remontez à son document d’origine et comparez les étapes de l’opération. L’atlas distingue les annonces, les engagements contractuels et les limites des pièces disponibles.',
+  diagramTitle: 'Campus de l’Ohio : trois engagements distincts',
+  tenant: 'Filiale locataire d’OpenAI', landlord: 'SB Energy · bailleur', supplier: 'Nvidia · garant',
+  rent: 'Baux du campus', guarantee: 'Garantie conditionnelle', indemnity: 'Remboursement / indemnisation',
+  diagramNote: 'Lecture des engagements du campus de l’Ohio, sans représentation de paiements effectués. Sources :',
+  filing: '8-K Nvidia du 17 août 2026', model: 'modèle de garantie du 26 août',
+  inspect: 'Examiner cette garantie dans l’atlas',
+  guides: 'Les outils pour lire les comptes', guidesNote: 'Rapports SEC, trésorerie, dette et notation : les repères qui permettent de revenir aux pièces.',
+  scope: 'Une lecture datée des contrats et des enquêtes',
+  scopeNote: 'Chaque analyse conserve sa date, ses sources et les réponses des parties. Les montants annoncés, les engagements signés et les fonds versés sont distingués dans les enquêtes. Les procédures Nvidia gardent leur statut propre. Les responsabilités et les soupçons encore examinés restent attribués à leurs sources.',
+  related: 'Prolonger vers le crédit privé et l’assurance', relatedHref: '/dossiers/credit-prive-assurance/',
+  nav: 'Parcours du financement de l’IA', all: 'Tout le dossier',
+} : {
+  title: 'Financing the AI race',
+  description: 'Nvidia, Anthropic and OpenAI: investigations into suppliers funding customers, data-centre debt and the distribution of risk. Explore the dossier and its evidence atlas.',
+  eyebrow: 'The dossier · AI financing',
+  lede: 'Chips are sold. Data centres borrow. Contracts, guarantees and future revenue connect them to a much wider financial system. l0g follows the money, the assets and the people taking the risk.',
+  updated: '13 November 2026 edition', alternate: 'Version française',
+  analyses: 'analyses in this dossier', series: 'Nvidia investigations', relations: 'atlas relationships',
+  latest: 'In focus · Nvidia / VII', leadTitle: 'Nvidia: the guarantees behind AI’s billions',
+  leadNote: 'Financial partners are seeking stronger guarantees as Asian investigations intensify scrutiny of server deals. The reliability of the contracts supporting credit runs through both stories.',
+  read: 'Read the investigation', explore: 'Choose a reading path', atlas: 'Open the atlas',
+  nvidiaTitle: 'Nvidia, from political influence to financial guarantees',
+  nvidiaNote: 'Seven investigations connect Washington’s warnings, corporate oversight, chip controls and lenders’ demands. Follow the reporting in publication order.',
+  nvidiaCurrent: 'Latest instalment',
+  paths: 'Five ways to follow the money',
+  pathsNote: 'Start with suppliers, repayment dates or the electricity grid. Each path opens a different part of the financing system.',
+  atlasEyebrow: 'Atlas · Inspect the relationships', atlasTitle: 'Trace each contract to its source',
+  atlasNote: 'Choose a relationship, open its original source and compare the documented stages of the deal. The atlas keeps announcements, contractual commitments and gaps in the evidence visible.',
+  diagramTitle: 'The Ohio campus: three separate commitments',
+  tenant: 'OpenAI tenant subsidiary', landlord: 'SB Energy · landlord', supplier: 'Nvidia · guarantor',
+  rent: 'Campus leases', guarantee: 'Conditional guarantee', indemnity: 'Reimbursement / indemnity',
+  diagramNote: 'The Ohio campus commitments, without implying payments have been made. Sources:',
+  filing: 'Nvidia’s 17 August 2026 Form 8-K', model: '26 August guarantee template',
+  inspect: 'Inspect this guarantee in the atlas',
+  guides: 'Tools for reading the accounts', guidesNote: 'SEC filings, cash flow, debt and ratings: the reference guides for examining the documents.',
+  scope: 'Dated reporting grounded in contracts and evidence',
+  scopeNote: 'Each analysis retains its own date, sources and the parties’ responses. The reporting distinguishes announced amounts, signed commitments and cash paid. Nvidia’s separate proceedings retain their own status. Unresolved allegations and questions of responsibility are attributed to their sources.',
+  related: 'Continue with private credit and insurance', relatedHref: '/en/topics/private-credit-insurance/',
+  nav: 'AI financing reading paths', all: 'The whole dossier',
+};
+const canonicalPath = fr ? '/dossiers/financement-ia/' : '/en/topics/ai-financing/';
+const alternateHref = fr ? '/en/topics/ai-financing/' : '/dossiers/financement-ia/';
+const atlasHref = fr ? '/atlas/financement-ia/' : '/en/atlas/ai-financing/';
+const dossierImage = '/illustrations/news/ai-financing-dossier-v1.jpg';
+assertAtlasDataset(frenchAtlas);
+const dataset = fr ? frenchAtlas : localizeAtlas(frenchAtlas, englishAtlas);
+const snapshot = atlasAt(dataset, dataset.milestones.at(-1)!.date);
+const now = buildDate().getTime();
+const published = ({ data }: { data: { draft?: boolean; pubDate: Date } }) => !data.draft && data.pubDate.getTime() <= now;
+const englishPosts = await getCollection('postsEn', published);
+const frenchPosts = fr ? await getCollection('posts', published) : [];
+const englishGuides = await getCollection('guidesEn', published);
+const frenchGuides = fr ? await getCollection('guides', published) : [];
+function analysis(id: string) {
+  const source = englishPosts.find(post => post.id === id);
+  const entry = fr ? frenchPosts.find(post => post.id === source?.data.sourceArticle) : source;
+  if (!entry) throw new Error(`Missing published ${language} AI dossier analysis: ${id}`);
+  return { id, title: entry.data.title, href: `${fr ? '/posts' : '/en/analysis'}/${entry.id}/`, image: entry.data.ogImage, date: entry.data.pubDate };
+}
+const nvidia = aiFinancingNvidiaIds.map(analysis);
+const lead = nvidia.at(-1)!;
+const sections = aiFinancingSections.map(section => ({ ...section, readings: section.readings.map(item => ({ ...analysis(item.id), label: item.label[language], note: item.note[language] })) }));
+const guides = aiFinancingGuides.map(item => {
+  const source = englishGuides.find(guide => guide.id === item.id);
+  const entry = fr ? frenchGuides.find(guide => guide.id === source?.data.sourceGuide) : source;
+  if (!entry) throw new Error(`Missing published ${language} AI dossier guide: ${item.id}`);
+  return { title: entry.data.title, href: `${fr ? '/guides' : '/en/guides'}/${entry.id}/`, note: item.note[language] };
+});
+const corpus = [...new Map([...nvidia, ...sections.flatMap(section => section.readings)].map(item => [item.id, item])).values()];
+const dateLabel = (date: Date) => new Intl.DateTimeFormat(fr ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'short', timeZone: 'Europe/Paris' }).format(date);
+const source = (id: string) => dataset.sources.find(item => item.id === id)!;
+const resources = [{ title: fr ? 'Atlas du financement de l’IA' : 'AI financing atlas', href: atlasHref }, ...corpus, ...guides];
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage',
+  '@id': `https://l0g.fr${canonicalPath}#collection`, url: `https://l0g.fr${canonicalPath}`,
+  name: ui.title, description: ui.description, inLanguage: language, dateModified: '2026-11-13',
+  isPartOf: { '@id': 'https://l0g.fr/#website' },
+  mainEntity: { '@type': 'ItemList', numberOfItems: resources.length, itemListElement: resources.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.title, url: `https://l0g.fr${item.href}` })) },
+};
+---
+
+<Layout title={ui.title} seoTitle={`${fr ? 'Financement de l’IA : Nvidia, dette et garanties' : 'AI financing: Nvidia, debt and guarantees'} | l0g`} description={ui.description} ogImage={dossierImage} ogImageAlt={ui.leadTitle} alternateLinks={[
+  { hreflang: 'fr', href: 'https://l0g.fr/dossiers/financement-ia/' },
+  { hreflang: 'en', href: 'https://l0g.fr/en/topics/ai-financing/' },
+  { hreflang: 'x-default', href: 'https://l0g.fr/dossiers/financement-ia/' },
+]} {...(fr ? { sidebar: false } : {})}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <article class="ai-dossier" data-pagefind-body>
+    <header class="ai-hero">
+      <div class="ai-context"><p class="ai-eyebrow">{ui.eyebrow}</p><a href={alternateHref} hreflang={fr ? 'en' : 'fr'} lang={fr ? 'en' : 'fr'}>{ui.alternate} ↗</a></div>
+      <div class="ai-intro"><h1>{ui.title}</h1><p>{ui.lede}</p></div>
+      <div class="ai-edition"><time datetime="2026-11-13">{ui.updated}</time><span aria-hidden="true">/</span><a href="#nvidia">Nvidia</a><a href="#parcours">{ui.explore} ↓</a><a href={atlasHref}>{ui.atlas} ↗</a></div>
+      <div class="ai-cover">
+        <a class="ai-cover-image" href={lead.href} aria-label={ui.leadTitle}><img src={dossierImage} width="1200" height="630" alt="" fetchpriority="high" /></a>
+        <div class="ai-cover-copy"><p class="ai-eyebrow">{ui.latest}</p><h2><a href={lead.href}>{ui.leadTitle}</a></h2><p>{ui.leadNote}</p><a class="ai-read" href={lead.href}>{ui.read} <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <dl class="ai-counts"><div><dt>{ui.analyses}</dt><dd>{corpus.length}</dd></div><div><dt>{ui.series}</dt><dd>{nvidia.length}</dd></div><div><dt>{ui.relations}</dt><dd>{snapshot.relations.length}</dd></div></dl>
+    </header>
+
+    <section id="nvidia" class="ai-section ai-nvidia" aria-labelledby="nvidia-title">
+      <div class="ai-section-heading"><p class="ai-eyebrow">01 / Nvidia</p><h2 id="nvidia-title">{ui.nvidiaTitle}</h2><p>{ui.nvidiaNote}</p></div>
+      <ol class="ai-timeline">{nvidia.map((item, index) => <li class:list={{ 'ai-current': index === nvidia.length - 1 }}><span class="ai-serial" aria-hidden="true">{['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'][index]}</span><div><time datetime={item.date.toISOString()}>{dateLabel(item.date)}</time><h3><a href={item.href}>{item.title}</a></h3></div><span class="ai-timeline-arrow" aria-hidden="true">↗</span></li>)}</ol>
+    </section>
+
+    <section id="parcours" class="ai-section" aria-labelledby="paths-title">
+      <div class="ai-section-heading"><p class="ai-eyebrow">02 / {fr ? 'Les circuits du capital' : 'The capital circuits'}</p><h2 id="paths-title">{ui.paths}</h2><p>{ui.pathsNote}</p></div>
+      <nav class="ai-path-nav" aria-label={ui.nav}>{sections.map((section, index) => <a href={`#${section.id}`}><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>{section.title[language]}<span aria-hidden="true">↓</span></a>)}</nav>
+      <div class="ai-paths">{sections.map((section, index) => <section class="ai-path" id={section.id} aria-labelledby={`${section.id}-title`}>
+        <div class="ai-path-opening"><a class="ai-path-image" href={section.readings[0].href} aria-label={section.readings[0].label}><img src={section.image} width="1200" height="630" alt="" loading="lazy" decoding="async" /></a><div><p class="ai-eyebrow">{String(index + 1).padStart(2, '0')} / {section.readings.length} {fr ? 'analyses' : 'analyses'}</p><h3 id={`${section.id}-title`}>{section.title[language]}</h3><p class="ai-path-description">{section.description[language]}</p></div></div>
+        <ol class="ai-reading-list">{section.readings.map(item => <li><h4><a href={item.href}>{item.label}<span aria-hidden="true">↗</span></a></h4><p>{item.note}</p><time datetime={item.date.toISOString()}>{new Intl.DateTimeFormat(fr ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' }).format(item.date)}</time></li>)}</ol>
+      </section>)}</div>
+    </section>
+
+    <section id="atlas" class="ai-section ai-atlas" aria-labelledby="atlas-title">
+      <div class="ai-atlas-copy"><p class="ai-eyebrow">03 / {ui.atlasEyebrow}</p><h2 id="atlas-title">{ui.atlasTitle}</h2><p>{ui.atlasNote}</p><a class="ai-button" href={atlasHref}>{ui.atlas} <span aria-hidden="true">↗</span></a><p class="ai-atlas-meta">{snapshot.nodes.length} {fr ? 'acteurs' : 'actors'} · {snapshot.relations.length} {fr ? 'relations documentées' : 'documented relationships'} · {dataset.milestones.length} {fr ? 'jalons' : 'milestones'}</p></div>
+      <figure class="ai-circuit"><h3>{ui.diagramTitle}</h3>
+        <svg class="ai-circuit-wide" viewBox="0 0 540 280" role="img" aria-labelledby="ai-circuit-title ai-circuit-desc" style="width:100%;height:auto">
+          <title id="ai-circuit-title">{ui.diagramTitle}</title><desc id="ai-circuit-desc">{fr ? 'La filiale d’OpenAI loue le campus à SB Energy. Nvidia garantit une valeur résiduelle sous conditions. OpenAI s’engage à rembourser et indemniser Nvidia.' : 'OpenAI’s subsidiary leases the campus from SB Energy. Nvidia provides a conditional residual value guarantee. OpenAI commits to reimburse and indemnify Nvidia.'}</desc>
+          <defs><marker id="ai-flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" /></marker></defs>
+          <path class="ai-flow ai-flow-rent" d="M 185 65 H 354" marker-end="url(#ai-flow-arrow)" />
+          <path class="ai-flow ai-flow-guarantee" d="M 328 211 H 427 V 88" marker-end="url(#ai-flow-arrow)" />
+          <path class="ai-flow ai-flow-indemnity" d="M 112 88 V 211 H 210" marker-end="url(#ai-flow-arrow)" />
+          <g class="ai-flow-node"><rect x="22" y="30" width="163" height="58" rx="5" /><rect x="355" y="30" width="163" height="58" rx="5" /><rect x="211" y="184" width="117" height="54" rx="5" /></g>
+          <g class="ai-flow-label"><text x="103" y="64" text-anchor="middle">{fr ? 'Filiale d’OpenAI' : 'OpenAI subsidiary'}</text><text x="436" y="64" text-anchor="middle">SB Energy</text><text x="269" y="216" text-anchor="middle">Nvidia</text></g>
+          <g class="ai-flow-caption"><text x="270" y="48" text-anchor="middle">{ui.rent}</text><text x="334" y="265" text-anchor="middle">{ui.guarantee}</text><text x="126" y="130" text-anchor="middle"><tspan x="126">{fr ? 'Remboursement' : 'Reimbursement'}</tspan><tspan x="126" dy="17">{fr ? 'et indemnisation' : 'and indemnity'}</tspan></text></g>
+        </svg>
+        <svg class="ai-circuit-mobile" viewBox="0 0 320 290" role="img" aria-labelledby="ai-circuit-mobile-title ai-circuit-mobile-desc" style="width:100%;height:auto">
+          <title id="ai-circuit-mobile-title">{ui.diagramTitle}</title><desc id="ai-circuit-mobile-desc">{fr ? 'Baux entre la filiale d’OpenAI et SB Energy. Garantie conditionnelle de Nvidia vers SB Energy. Remboursement et indemnisation d’OpenAI vers Nvidia.' : 'Leases connect OpenAI’s subsidiary to SB Energy. Nvidia gives SB Energy a conditional guarantee. OpenAI commits to reimburse and indemnify Nvidia.'}</desc>
+          <defs><marker id="ai-mobile-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" /></marker></defs>
+          <path class="ai-flow ai-flow-rent" d="M 145 60 H 175" marker-end="url(#ai-mobile-arrow)" />
+          <path class="ai-flow ai-flow-guarantee" d="M 230 250 H 250 V 85" marker-end="url(#ai-mobile-arrow)" />
+          <path class="ai-flow ai-flow-indemnity" d="M 77 85 V 250 H 90" marker-end="url(#ai-mobile-arrow)" />
+          <g class="ai-flow-node"><rect x="10" y="35" width="135" height="50" rx="5" /><rect x="175" y="35" width="135" height="50" rx="5" /><rect x="90" y="225" width="140" height="50" rx="5" /></g>
+          <g class="ai-flow-label"><text x="77" y="65" text-anchor="middle">{fr ? 'Filiale d’OpenAI' : 'OpenAI subsidiary'}</text><text x="242" y="65" text-anchor="middle">SB Energy</text><text x="160" y="255" text-anchor="middle">Nvidia</text></g>
+          <g class="ai-flow-backing"><rect x="10" y="123" width="138" height="53" /><rect x="186" y="123" width="128" height="53" /></g>
+          <g class="ai-flow-caption"><text x="160" y="20" text-anchor="middle">{ui.rent}</text><text x="77" y="144" text-anchor="middle"><tspan x="77">{fr ? 'Remboursement' : 'Reimbursement'}</tspan><tspan x="77" dy="18">{fr ? 'et indemnisation' : 'and indemnity'}</tspan></text><text x="250" y="144" text-anchor="middle"><tspan x="250">{fr ? 'Garantie' : 'Conditional'}</tspan><tspan x="250" dy="18">{fr ? 'conditionnelle' : 'guarantee'}</tspan></text></g>
+        </svg>
+        <a class="ai-diagram-link" href={`${atlasHref}#date=${dataset.milestones.at(-1)!.date}&relation=nvidia-sb-guarantee`}>{ui.inspect} ↗</a>
+        <figcaption>{ui.diagramNote} <a href={source('nvda-8k-20260817').url}>{ui.filing}</a>, <a href={source('nvda-ex101-20260826').url}>{ui.model}</a>.</figcaption>
+      </figure>
+    </section>
+
+    <section id="guides" class="ai-section" aria-labelledby="guides-title"><div class="ai-section-heading"><p class="ai-eyebrow">04 / {fr ? 'Les repères' : 'Reference'}</p><h2 id="guides-title">{ui.guides}</h2><p>{ui.guidesNote}</p></div><ul class="ai-guides">{guides.map(item => <li><h3><a href={item.href}>{item.title}<span aria-hidden="true">↗</span></a></h3><p>{item.note}</p></li>)}</ul></section>
+    <footer class="ai-scope"><h2>{ui.scope}</h2><p>{ui.scopeNote}</p><a href={ui.relatedHref}>{ui.related} <span aria-hidden="true">→</span></a></footer>
+  </article>
+</Layout>
+
+<style>
+  .ai-dossier { max-width:74rem; margin-inline:auto; color:var(--color-prose); min-width:0; }
+  .ai-dossier a:focus-visible { outline:2px solid var(--color-signal); outline-offset:5px; border-radius:2px; }
+  .ai-context { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; align-items:center; }
+  .ai-eyebrow,.ai-context>a,.ai-edition,.ai-counts dt,.ai-serial,.ai-timeline time,.ai-reading-list time,.ai-atlas-meta { font-family:var(--font-mono); font-size:.69rem; line-height:1.6; }
+  .ai-eyebrow { color:var(--color-signal); letter-spacing:.055em; }
+  .ai-context>a { color:var(--color-muted); text-decoration:underline; text-underline-offset:4px; }
+  .ai-intro { display:grid; grid-template-columns:1fr 1.05fr; gap:clamp(1.5rem,4vw,4rem); align-items:end; margin:2.2rem 0 1.8rem; }
+  h1 { font:500 clamp(2.2rem,4.9vw,4rem)/1.08 var(--font-display); letter-spacing:-.065em; color:var(--color-bright); max-width:13ch; }
+  .ai-intro>p { font:400 1.02rem/1.8 var(--font-read); max-width:58ch; }
+  .ai-edition { display:flex; gap:.8rem 1.2rem; flex-wrap:wrap; align-items:center; color:var(--color-muted); border-top:1px solid var(--color-line); padding:1rem 0; }
+  .ai-edition a { color:var(--color-signal); min-height:30px; display:inline-flex; align-items:center; }
+  .ai-cover { display:grid; grid-template-columns:1.18fr 1fr; border:1px solid var(--color-line-strong); border-radius:9px; overflow:hidden; background:var(--color-surface); }
+  .ai-cover-image { display:flex; align-items:center; min-width:0; }
+  /* Les images OG gardent leur ratio natif et restent entières, sans zoom. */
+  .ai-cover-image img { display:block; width:100%; height:auto; }
+  .ai-cover-copy { padding:clamp(1.5rem,3.3vw,2.7rem); display:flex; flex-direction:column; justify-content:center; }
+  .ai-cover-copy h2 { font:500 clamp(1.45rem,2.3vw,2.1rem)/1.3 var(--font-display); letter-spacing:-.045em; color:var(--color-bright); margin:1rem 0; }
+  .ai-cover-copy>p:not(.ai-eyebrow) { font:400 .92rem/1.8 var(--font-read); }
+  .ai-read { display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-top:1.6rem; padding-top:1rem; border-top:1px solid var(--color-line); color:var(--color-signal); font:500 .8rem/1.6 var(--font-read); min-height:44px; }
+  .ai-counts { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-bottom:1px solid var(--color-line); }
+  .ai-counts>div { padding:1.4rem 1rem 1.4rem 0; display:flex; flex-direction:column-reverse; gap:.25rem; }
+  .ai-counts>div+div { padding-left:1.5rem; border-left:1px solid var(--color-line); }
+  .ai-counts dt { color:var(--color-muted); }
+  .ai-counts dd { font:400 1.85rem/1.3 var(--font-display); color:var(--color-signal); }
+  .ai-section { margin-top:clamp(3rem,6vw,5rem); scroll-margin-top:2rem; }
+  .ai-section-heading { max-width:49rem; margin-bottom:1.8rem; }
+  .ai-section-heading h2,.ai-atlas h2 { font:500 clamp(1.35rem,2.3vw,1.9rem)/1.35 var(--font-display); color:var(--color-bright); letter-spacing:-.035em; margin:.7rem 0; }
+  .ai-section-heading>p:last-child,.ai-atlas-copy>p:not(.ai-eyebrow):not(.ai-atlas-meta) { font:400 .95rem/1.8 var(--font-read); }
+  .ai-nvidia { display:grid; grid-template-columns:.78fr 1.22fr; gap:clamp(1.5rem,4vw,4rem); }
+  .ai-timeline { list-style:none; padding:0; margin:0; }
+  .ai-timeline li { display:grid; grid-template-columns:2rem 1fr 1rem; gap:.8rem; align-items:start; border-bottom:1px solid var(--color-line); padding:.9rem .3rem .9rem 0; }
+  .ai-timeline li:first-child { padding-top:0; }
+  .ai-serial { color:var(--color-signal); padding-top:2px; }
+  .ai-timeline time { color:var(--color-muted); font-size:.65rem; }
+  .ai-timeline h3 { font:450 .9rem/1.55 var(--font-read); color:var(--color-bright); margin-top:.25rem; }
+  .ai-timeline h3 a { display:block; }
+  .ai-timeline-arrow { font-size:.85rem; color:var(--color-muted); margin-top:1.5rem; }
+  .ai-timeline .ai-current { border-bottom-color:var(--color-signal); }
+  .ai-current h3 { color:var(--color-signal); }
+  .ai-path-nav { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2rem; }
+  .ai-path-nav a { display:inline-flex; align-items:center; gap:.7rem; padding:.65rem .85rem; min-height:44px; border:1px solid var(--color-line-strong); border-radius:4px; font:450 .76rem/1.6 var(--font-read); color:var(--color-bright); }
+  .ai-path-nav a span { font:400 .65rem/1.6 var(--font-mono); color:var(--color-signal); }
+  .ai-path-nav a:hover { border-color:var(--color-signal); background:var(--color-surface); }
+  .ai-paths { display:grid; gap:2rem; }
+  .ai-path { display:grid; grid-template-columns:.85fr 1.15fr; border:1px solid var(--color-line); border-radius:8px; overflow:hidden; background:var(--color-surface); scroll-margin-top:2rem; }
+  .ai-path-opening { border-right:1px solid var(--color-line); min-width:0; }
+  .ai-path-image { display:block; }
+  .ai-path-image img { display:block; width:100%; height:auto; }
+  .ai-path-opening>div { padding:1.5rem; }
+  .ai-path-opening h3 { font:500 1.15rem/1.45 var(--font-display); letter-spacing:-.025em; color:var(--color-bright); margin:.65rem 0; }
+  .ai-path-description { font:400 .88rem/1.8 var(--font-read); }
+  .ai-reading-list { list-style:none; padding:.2rem 1.5rem; margin:0; }
+  .ai-reading-list li { padding:1rem 0; }
+  .ai-reading-list li+li { border-top:1px solid var(--color-line); }
+  .ai-reading-list h4 { font:500 .9rem/1.55 var(--font-read); color:var(--color-bright); }
+  .ai-reading-list h4 a,.ai-guides h3 a { display:flex; align-items:baseline; justify-content:space-between; gap:.8rem; }
+  .ai-reading-list h4 a span,.ai-guides h3 a span { color:var(--color-signal); flex-shrink:0; }
+  .ai-reading-list p { font:400 .81rem/1.75 var(--font-read); margin:.4rem 0; }
+  .ai-reading-list time { color:var(--color-muted); font-size:.61rem; }
+  .ai-atlas { display:grid; grid-template-columns:.85fr 1.15fr; gap:2rem; border-block:1px solid var(--color-line-strong); padding-block:2.2rem; }
+  .ai-atlas-copy { align-self:center; }
+  .ai-button { display:inline-flex; gap:2rem; align-items:center; min-height:44px; padding:.7rem 1rem; border:1px solid var(--color-signal); border-radius:4px; color:var(--color-signal); font:500 .8rem/1.6 var(--font-read); margin-top:1.4rem; }
+  .ai-atlas-meta { color:var(--color-muted); margin-top:.8rem; font-size:.62rem; }
+  .ai-circuit { padding:1.2rem; min-width:0; border:1px solid var(--color-line); border-radius:6px; background:var(--color-surface); }
+  .ai-circuit h3 { font:450 .82rem/1.5 var(--font-read); color:var(--color-bright); }
+  .ai-circuit svg { display:block; margin:.6rem 0 .3rem; }
+  .ai-circuit .ai-circuit-mobile { display:none; }
+  .ai-flow { fill:none; stroke:currentColor; stroke-width:1.4; }
+  .ai-flow-rent { color:var(--color-signal); }
+  .ai-flow-guarantee { color:var(--color-amber); }
+  .ai-flow-indemnity { color:var(--color-muted); stroke-dasharray:4 4; }
+  .ai-flow-node rect { fill:var(--color-surface-2); stroke:var(--color-line-strong); stroke-width:1; }
+  .ai-flow-backing rect { fill:var(--color-surface); }
+  .ai-flow-label { font:450 14px var(--font-read); fill:var(--color-bright); }
+  .ai-flow-caption { font:400 13px var(--font-read); fill:var(--color-prose); }
+  .ai-diagram-link { display:inline-flex; align-items:center; min-height:44px; font:450 .76rem/1.6 var(--font-read); color:var(--color-signal); text-decoration:underline; text-underline-offset:4px; }
+  .ai-circuit figcaption { font:400 .69rem/1.7 var(--font-read); color:var(--color-muted); margin-top:.35rem; }
+  .ai-circuit figcaption a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; }
+  .ai-guides { list-style:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 2rem; padding:0; margin:0; }
+  .ai-guides li { border-top:1px solid var(--color-line-strong); padding:1rem 0; }
+  .ai-guides h3 { color:var(--color-bright); font:500 .88rem/1.6 var(--font-read); }
+  .ai-guides p { font:400 .8rem/1.75 var(--font-read); margin-top:.55rem; }
+  .ai-scope { border-top:1px solid var(--color-line); margin-top:2.5rem; padding-top:1.5rem; }
+  .ai-scope h2 { font:450 .9rem/1.5 var(--font-read); color:var(--color-bright); }
+  .ai-scope p { max-width:95ch; margin:.7rem 0 1rem; font:400 .78rem/1.8 var(--font-read); color:var(--color-muted); }
+  .ai-scope>a { display:inline-flex; align-items:center; gap:1rem; min-height:44px; font:450 .8rem/1.6 var(--font-read); color:var(--color-signal); }
+  @media(min-width:1100px) { .ai-nvidia .ai-section-heading { position:sticky; top:2rem; align-self:start; } }
+  @media(max-width:760px) {
+    .ai-intro { grid-template-columns:1fr; gap:1.3rem; margin-top:1.6rem; }
+    h1 { max-width:15ch; font-size:clamp(2.2rem,8vw,3.3rem); }
+    .ai-intro>p { font-size:.95rem; }
+    .ai-cover { grid-template-columns:1fr; }
+    .ai-cover-copy { padding:1.4rem; }
+    .ai-cover-copy h2 { margin:.75rem 0; }
+    .ai-counts dt { font-size:.59rem; }
+    .ai-counts dd { font-size:1.55rem; }
+    .ai-counts>div { padding-block:1.1rem; }
+    .ai-counts>div+div { padding-left:.7rem; }
+    .ai-nvidia,.ai-path,.ai-atlas { grid-template-columns:1fr; gap:0; }
+    .ai-path-opening { border-right:0; border-bottom:1px solid var(--color-line); }
+    .ai-path-opening>div { padding:1.2rem; }
+    .ai-reading-list { padding:.1rem 1.2rem; }
+    .ai-path-nav { gap:.5rem; }
+    .ai-path-nav a { width:100%; justify-content:space-between; }
+    .ai-path-nav a span:first-child { margin-right:auto; flex:0 0 1rem; }
+    .ai-path-nav a span:last-child { margin-left:auto; }
+    .ai-atlas { gap:1.5rem; }
+    .ai-circuit { padding:1rem; }
+    .ai-guides { grid-template-columns:1fr; gap:0; }
+  }
+  @media(max-width:560px) {
+    .ai-circuit .ai-circuit-wide { display:none; }
+    .ai-circuit .ai-circuit-mobile { display:block; max-width:320px; margin-inline:auto; }
+    .ai-circuit-mobile .ai-flow-label,.ai-circuit-mobile .ai-flow-caption { font-size:15px; }
+  }
+</style>

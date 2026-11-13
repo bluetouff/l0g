@@ -4,7 +4,7 @@ export const frenchDossiers = [
     href: '/dossiers/financement-ia/',
     englishHref: '/en/topics/ai-financing/',
     title: 'Financement de l’IA',
-    description: 'Contrats clients, équipements donnés en garantie et engagements de financement des infrastructures.',
+    description: 'Nvidia, Anthropic, dette, garanties et électricité : les enquêtes sur le financement de l’IA et son atlas des relations documentées.',
   },
   {
     id: 'private-credit',

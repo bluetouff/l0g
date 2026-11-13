@@ -34,7 +34,9 @@ const allowedOrigins = new Set([
   'https://investor.pagaya.com',
   'https://www.volareshipping.com', 'https://mb.cision.com',
   'https://www.partnersgroup.com',
+  'https://www.blackstone.com',
 ]);
+const broadcomFinancingRelease = 'https://www.blackstone.com/news/press/bank-of-america-blackstone-citi-and-morgan-stanley-announce-landmark-63-billion-financing-structure-to-enable-ai-compute/';
 /** Canonical source URL shared by corpus validation and the browser link sink. */
 export function atlasSourceUrl(value: string): string {
   text(value, 1500);
@@ -43,6 +45,7 @@ export function atlasSourceUrl(value: string): string {
     && url.pathname === '/news-and-views/press-releases/corporate-news/detail'
     && /^\?news_id=[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/.test(url.search);
   if (url.protocol !== 'https:' || !allowedOrigins.has(url.origin) || url.username || url.password || (url.search && !partnersRelease) || url.hash) throw new Error('Atlas : origine ou URL source refusée');
+  if (url.origin === 'https://www.blackstone.com' && url.href !== broadcomFinancingRelease) throw new Error('Atlas : communiqué Broadcom refusé');
   if (url.origin === 'https://www.partnersgroup.com' && !partnersRelease) throw new Error('Atlas : communiqué Partners Group refusé');
   if (url.origin === 'https://www.sec.gov' && !/^\/Archives\/edgar\/data\/\d+\/\d+\/[a-zA-Z0-9._-]+\.htm$/.test(url.pathname)) throw new Error('Atlas : chemin SEC refusé');
   if (url.origin === 'https://newsweb.oslobors.no' && !/^\/message\/\d+$/.test(url.pathname)) throw new Error('Atlas : chemin NewsWeb refusé');

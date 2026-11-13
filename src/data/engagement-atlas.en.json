@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "793a33ba888cc44645083fbb70d44b717f6843c57333d8c8ef367eeca660cf9b",
+  "sourceSha256": "7f782687dfac774020e5f00537a6d3286fb1e7e53c9820f4478961bbc28fea8f",
   "title": "AI financing atlas",
   "sources": {
     "aip-2024": {
@@ -37,6 +37,30 @@
     "nebius-citi-20261022": {
       "title": "Nebius: Form 6-K on Citi’s secured facility",
       "locator": "Credit Facility section: 17 October agreement, three borrowers, principal, maturity, margin, collateral and liquidity covenant."
+    },
+    "spacex-lease-20261026": {
+      "title": "SpaceX: GPU finance lease commitment with an Apollo-managed entity",
+      "locator": "Item 8.01: October 24 commitment letter, lessor, deliveries in tranches, expected principal, closing conditions and expected lease commencement."
+    },
+    "apollo-spacex-20261026": {
+      "title": "Apollo: announced financing parties in the SpaceX lease",
+      "locator": "Opening and Transaction Details: Apollo-managed entity, financing leads, structuring agent, fund and account commitments, and closing conditions."
+    },
+    "anthropic-s1a2-20261110": {
+      "title": "Anthropic: November 10 amended prospectus",
+      "locator": "pp.20 and 347–348: conditional subscriptions; p.180: Microsoft and Google commitments. Preliminary offering, not evidence of closing."
+    },
+    "anthropic-google-equity-20261110": {
+      "title": "Anthropic–Google: Class N share purchase agreement",
+      "locator": "Sections 1.1–1.4, 4 and 6: $10bn, payment after the IPO, exercise of the earlier option, conditions and termination."
+    },
+    "anthropic-broadcom-npa-20261102": {
+      "title": "Anthropic–Broadcom: rent financing facility",
+      "locator": "October 26 amendment filed on November 2. Total Commitment definition and Sections 2.1(a), (c), (h), 3.2: cap, use, interest and conditions."
+    },
+    "broadcom-spv-20261026": {
+      "title": "Blackstone and partners: $63bn equipment financing",
+      "locator": "Opening: special purpose vehicle, first- and second-lien financing, Broadcom residual value support, deliveries expected from 2027."
     }
   },
   "nodes": {
@@ -103,6 +127,38 @@
     "nebius-borrowers": {
       "label": "Nebius borrowers",
       "role": "Group N.V. · Inc. · B.V."
+    },
+    "apollo-ai": {
+      "label": "Apollo",
+      "role": "GPU lessor’s asset manager"
+    },
+    "gpu-financiers": {
+      "label": "GPU lease financing parties",
+      "role": "Commitments · allocations undisclosed"
+    },
+    "gpu-lessor": {
+      "label": "Apollo-managed GPU lessor",
+      "role": "Legal entity unnamed"
+    },
+    "spacex": {
+      "label": "SpaceX",
+      "role": "Prospective equipment lessee"
+    },
+    "google-ai": {
+      "label": "Google",
+      "role": "Cloud supplier and investor"
+    },
+    "anthropic": {
+      "label": "Anthropic",
+      "role": "AI lab · compute customer"
+    },
+    "broadcom-ai": {
+      "label": "Broadcom",
+      "role": "Supplier, financier and backstop"
+    },
+    "broadcom-spv": {
+      "label": "Broadcom equipment vehicle",
+      "role": "Debt-financed lessor"
     }
   },
   "relations": {
@@ -309,6 +365,162 @@
           "watch": "Drawdowns, refinancing before maturity and detailed collateral documentation."
         }
       }
+    },
+    "apollo-gpu-lessor": {
+      "observations": {
+        "2026-10-26": {
+          "label": "Management of the prospective lessor",
+          "claim": "The 8-K identifies an Apollo-managed entity as the prospective buyer and lessor of GPUs to SpaceX.",
+          "limit": "The entity’s legal name is undisclosed. Managing the lessor does not establish that Apollo alone finances the equipment.",
+          "watch": "Lessor identity and definitive documentation."
+        }
+      }
+    },
+    "financiers-gpu-lessor": {
+      "observations": {
+        "2026-10-26": {
+          "label": "Announced financing commitments",
+          "claim": "The release names Apollo and Goldman Sachs as financing leads, Goldman Sachs as sole structuring agent, and funds and accounts managed by BlackRock and Goldman Sachs Asset Management and accounts advised by KKR.",
+          "limit": "This node groups commitments without individual allocations or established payments. No financing from AIP or Athene to this lessor is inferred.",
+          "watch": "Financing allocations and fulfilment of commitments."
+        }
+      }
+    },
+    "gpu-lessor-spacex": {
+      "observations": {
+        "2026-10-26": {
+          "label": "Conditional finance lease · about $40bn",
+          "claim": "SpaceX reports a binding October 24 commitment letter for a GPU finance lease. Expected aggregate principal payments are about $40 billion over lease terms of roughly five to five and one-quarter years per tranche.",
+          "limit": "Closing remains conditional and is expected before year-end 2026; leases would begin on delivery in the first half of 2027. Expected principal is neither cash received nor fully deployed financing. The fixed rate remains to be priced.",
+          "watch": "Closing, fixed rate, deliveries and lease commencement."
+        }
+      }
+    },
+    "nvidia-anthropic-equity": {
+      "observations": {
+        "2026-11-10": {
+          "label": "Conditional subscription · $10bn",
+          "claim": "The prospectus provides for Nvidia to buy $10bn of Class N shares after the IPO.",
+          "limit": "Closing and conditions remain outstanding. Reconciliation with earlier announcements is incomplete.",
+          "watch": "Closing, payment and reconciliation of commitments."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/anthropic-supplier-financing-ipo/",
+        "label": "Read the supplier financing investigation"
+      }
+    },
+    "google-anthropic-equity": {
+      "observations": {
+        "2026-11-10": {
+          "label": "Earlier funding option exercised · $10bn",
+          "claim": "Google is to subscribe $10bn after the IPO by exercising an option under the March financing.",
+          "limit": "Payment is conditional. This amount exercises an earlier option and must be reconciled with the existing facility.",
+          "watch": "Payment, closing and reduction of the earlier facility."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/anthropic-supplier-financing-ipo/",
+        "label": "Read the supplier financing investigation"
+      }
+    },
+    "microsoft-anthropic-equity": {
+      "observations": {
+        "2026-11-10": {
+          "label": "Conditional subscription · $1bn",
+          "claim": "The prospectus provides for a $1bn subscription by Microsoft.",
+          "limit": "The placement depends on the IPO and its conditions. Class N shares generally carry no voting rights.",
+          "watch": "Closing and shares issued."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/anthropic-supplier-financing-ipo/",
+        "label": "Read the supplier financing investigation"
+      }
+    },
+    "broadcom-anthropic-equity": {
+      "observations": {
+        "2026-11-10": {
+          "label": "Conditional subscription · $1bn",
+          "claim": "The prospectus provides for a $1bn subscription by Broadcom.",
+          "limit": "The placement depends on the IPO and its conditions. Class N shares generally carry no voting rights.",
+          "watch": "Closing and shares issued."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/anthropic-supplier-financing-ipo/",
+        "label": "Read the supplier financing investigation"
+      }
+    },
+    "anthropic-microsoft-compute": {
+      "observations": {
+        "2026-11-10": {
+          "label": "Compute purchases · November 2026 to June 2033",
+          "claim": "Anthropic reports $47.2bn–$49.2bn of Microsoft purchases over this period.",
+          "limit": "Future commitments, subject to contractual exceptions. These purchases remain distinct from the share subscription.",
+          "watch": "Capacity delivered and payments."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/anthropic-supplier-financing-ipo/",
+        "label": "Read the supplier financing investigation"
+      }
+    },
+    "anthropic-google-compute": {
+      "observations": {
+        "2026-11-10": {
+          "label": "Cloud minimum · April 2026 to July 2033",
+          "claim": "Anthropic reports at least $121.3bn of Google cloud purchases over this period.",
+          "limit": "Issuer-reported contractual amount, with adjustments and exceptions. It is separate from Google’s financing.",
+          "watch": "Payments, available capacity and any adjustments."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/anthropic-supplier-financing-ipo/",
+        "label": "Read the supplier financing investigation"
+      }
+    },
+    "broadcom-anthropic-rent-facility": {
+      "observations": {
+        "2026-11-02": {
+          "label": "Rent facility · up to $42bn",
+          "claim": "Broadcom provides for up to $42bn of convertible notes for eligible rents. Settlement uses set-off or payment to the third-party lessor. Interest is capitalised.",
+          "limit": "This cap is not unrestricted cash for Anthropic. Draws depend on service readiness and revenue conditions, including redacted thresholds.",
+          "watch": "Draws, service readiness, interest and conversion terms."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/anthropic-supplier-financing-ipo/",
+        "label": "Read the supplier financing investigation"
+      }
+    },
+    "broadcom-spv-residual-support": {
+      "observations": {
+        "2026-10-26": {
+          "label": "Residual value support",
+          "claim": "The partners announce Broadcom support for the vehicle equivalent to first-lien financing.",
+          "limit": "The October 26 release does not specify the detailed formula. The $63bn figure describes the whole transaction, not an estimated loss.",
+          "watch": "Commissioning, repayments and changes to Broadcom’s support."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/broadcom-anthropic-blackstone-63-billion-risk/",
+        "label": "Read the Broadcom–Anthropic financing analysis"
+      }
+    },
+    "broadcom-spv-anthropic-lease": {
+      "observations": {
+        "2026-10-26": {
+          "label": "Equipment intended for leasing",
+          "claim": "The vehicle is to buy Broadcom equipment for lease to Anthropic. Bank of America, Citi and Morgan Stanley arrange first-lien financing; Blackstone provides the committed second-lien portion.",
+          "limit": "Announced $63bn transaction, with deliveries expected from 2027. Individual allocations and payments remain undisclosed.",
+          "watch": "Funding completed, deliveries and rents."
+        }
+      },
+      "reading": {
+        "href": "/en/analysis/broadcom-anthropic-blackstone-63-billion-risk/",
+        "label": "Read the Broadcom–Anthropic financing analysis"
+      }
     }
   },
   "milestones": {
@@ -347,6 +559,18 @@
     "2026-10-22": {
       "label": "Nebius · secured bank facility",
       "change": "The 6-K adds Citi’s loan to three Nebius co-borrowers. Contractual principal remains distinct from actual drawdowns; no financing link to the map’s other structures is inferred."
+    },
+    "2026-10-26": {
+      "label": "SpaceX and Broadcom · equipment financing",
+      "change": "The Apollo-managed lessor and announced financing parties enter the map. Expected principal payments remain distinct from cash paid, and closing remains conditional. A separate circuit connects Broadcom’s support, a financing vehicle and equipment intended for Anthropic."
+    },
+    "2026-11-02": {
+      "label": "Broadcom · rent financing",
+      "change": "The amended contract adds a convertible facility earmarked for rents. The $42bn cap, asset financing and share subscriptions retain their separate scopes."
+    },
+    "2026-11-10": {
+      "label": "Anthropic · suppliers and customer",
+      "change": "The prospectus and agreements add proposed subscriptions by Nvidia, Google, Microsoft and Broadcom. Cloud purchases and rent financing reveal the partners’ overlapping roles, without adding commitments to payments."
     }
   }
 }

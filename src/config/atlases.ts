@@ -4,10 +4,10 @@ export const atlases = [
     href: '/atlas/financement-ia/',
     label: 'Financement de l’IA',
     theme: 'ia',
-    image: '/illustrations/news/openai-credit-guarantee-v1.jpg',
+    image: '/illustrations/news/ai-financing-dossier-v1.jpg',
     eyebrow: 'Infrastructures · Capital · Garanties',
-    description: 'Derrière les centres de données, des investisseurs, des locataires et des garants. Explorez les contrats qui les relient et les conditions de leurs engagements.',
-    actors: 'Nvidia · OpenAI · SB Energy · AIP · Nebius · Citi',
+    description: 'De Nvidia à Anthropic, suivez les fournisseurs devenus financeurs, les contrats cloud et les garanties des infrastructures. Chaque relation mène aux pièces qui la documentent.',
+    actors: 'Nvidia · Anthropic · OpenAI · Broadcom · Microsoft · Google',
     question: 'Qui finance les infrastructures de l’IA ?',
   },
   {
@@ -38,7 +38,7 @@ export const englishAtlases = [
   {
     ...atlases[0], href: '/en/atlas/ai-financing/', label: 'AI financing',
     eyebrow: 'Infrastructure · Capital · Guarantees',
-    description: 'Behind data centres sit investors, tenants and guarantors. Explore the contracts connecting them and the conditions attached to their commitments.',
+    description: 'From Nvidia to Anthropic, follow suppliers funding customers, cloud contracts and infrastructure guarantees. Each relationship leads to its documentary sources.',
     question: 'Who finances AI infrastructure?',
   },
   {

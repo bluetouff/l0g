@@ -22,6 +22,50 @@ const credit = JSON.parse(readFileSync(new URL('../src/data/private-credit-atlas
 const oil = JSON.parse(readFileSync(new URL('../src/data/oil-financing-atlas.json', import.meta.url), 'utf8'));
 const documentaryRelation = ({ changed, ...relation }) => relation;
 
+test('Anthropic supplier finance preserves disclosure cutoffs and separate purchase, equity and rent obligations', () => {
+  const before = atlasAt(source, '2026-10-25');
+  assert.equal(before.nodes.some(item => ['anthropic', 'google-ai', 'broadcom-ai', 'broadcom-spv'].includes(item.id)), false);
+  const equipment = atlasAt(source, '2026-10-26');
+  assert.equal(equipment.relations.some(item => item.id === 'broadcom-spv-anthropic-lease'), true);
+  assert.equal(equipment.relations.some(item => item.id === 'broadcom-anthropic-rent-facility'), false);
+  const rents = atlasAt(source, '2026-11-02');
+  const facility = rents.relations.find(item => item.id === 'broadcom-anthropic-rent-facility');
+  assert.equal(facility.observation.amount, undefined);
+  assert.match(facility.observation.limit, /pas du cash libre.*conditions.*seuils sont masqués/);
+  assert.equal(rents.relations.some(item => item.id === 'nvidia-anthropic-equity'), false);
+  assert.equal(rents.sources.some(item => item.id === 'anthropic-s1a2-20261110'), false);
+  const view = atlasAt(source, '2026-11-10');
+  for (const id of ['nvidia-anthropic-equity', 'google-anthropic-equity', 'microsoft-anthropic-equity', 'broadcom-anthropic-equity']) {
+    const item = view.relations.find(relation => relation.id === id);
+    assert.equal(item.to, 'anthropic');
+    assert.equal(item.observation.recordedOn, '2026-11-13');
+    assert.equal(item.observation.amount, undefined);
+    assert.equal(atlasSelection(source, `#date=2026-11-10&relation=${id}&scenario=default`).scenario, false);
+  }
+  for (const [id, supplier] of [['anthropic-google-compute', 'google-ai'], ['anthropic-microsoft-compute', 'microsoft']]) {
+    const item = view.relations.find(relation => relation.id === id);
+    assert.deepEqual([item.from, item.to], ['anthropic', supplier]);
+  }
+  for (const old of before.relations) assert.deepEqual(documentaryRelation(view.relations.find(item => item.id === old.id)), documentaryRelation(old));
+});
+
+test('SpaceX’s lease enters at disclosure as conditional principal, outside the Nvidia guarantee scenario', () => {
+  const before = atlasAt(source, '2026-10-25');
+  for (const id of ['apollo-ai', 'gpu-financiers', 'gpu-lessor', 'spacex']) {
+    assert.equal(before.nodes.some(item => item.id === id), false);
+  }
+  const view = atlasAt(source, '2026-10-26');
+  const lease = view.relations.find(item => item.id === 'gpu-lessor-spacex');
+  assert.deepEqual([lease.from, lease.to], ['gpu-lessor', 'spacex']);
+  assert.equal(lease.observation.recordedOn, '2026-10-31');
+  assert.match(lease.observation.claim, /principal attendu.*40 milliards/);
+  assert.match(lease.observation.limit, /soumise à conditions.*premier semestre 2027/);
+  assert.equal(lease.observation.amount, undefined);
+  assert.equal(atlasSelection(source, '#date=2026-10-26&relation=gpu-lessor-spacex&scenario=default').scenario, false);
+  assert.equal(view.relations.some(item => ['aip', 'nvidia', 'blackrock', 'athene'].includes(item.from) && item.to === 'gpu-lessor'), false);
+  for (const old of before.relations) assert.deepEqual(documentaryRelation(view.relations.find(item => item.id === old.id)), documentaryRelation(old));
+});
+
 test('FR and EN Atlas entry links have an archived relation and a valid dated interactive view', () => {
   const pages = [
     [source, 'atlas/financement-ia', 'en/atlas/ai-financing'],
@@ -316,7 +360,7 @@ test('proposals reject executable, impersonated or credential-bearing sources an
 test('shared links select only known dates and relations and cannot enable an anachronistic scenario', () => {
   assert.deepEqual(atlasSelection(source, '#date=2024-09-17&relation=nvidia-sb-guarantee&scenario=default'), { date: '2024-09-17', relation: 'nvidia-aip', scenario: false });
   assert.deepEqual(atlasSelection(source, '#date=2026-08-17&relation=openai-sb-lease&scenario=default'), { date: '2026-08-17', relation: 'openai-sb-lease', scenario: true });
-  assert.equal(atlasSelection(source, '#date=2027-01-01&relation=%3Cscript%3E').date, '2026-10-22');
+  assert.equal(atlasSelection(source, '#date=2027-01-01&relation=%3Cscript%3E').date, source.milestones.at(-1).date);
   assert.equal(atlasSelection(source, '#date=2026-08-26&relation=blackrock-aip&scenario=default').scenario, false);
   assert.equal(isAtlasDate('2026-02-30'), false);
   assert.equal(isAtlasDate('2024-02-29'), true);

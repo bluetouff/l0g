@@ -69,6 +69,9 @@ const displayText = (text: string) => isEnglish ? text : keepFrenchPunctuation(t
   .atlas-cover:focus-visible { outline:3px solid var(--cover-accent); outline-offset:5px; }
   .atlas-cover:hover { border-color:var(--cover-accent); box-shadow:var(--shadow-card); }
   .atlas-cover:hover .cover-art img { transform:scale(1.035); }
+  .atlas-cover--ia .cover-art { display:flex; align-items:center; background:var(--color-surface); }
+  .atlas-cover--ia .cover-art img { height:auto; min-height:0; object-fit:contain; transition:none; }
+  .atlas-cover--ia:hover .cover-art img { transform:none; }
   .atlas-cover:hover .cover-action>span { transform:translate(2px,-2px); }
   .collection-note { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:2rem; margin-top:2.5rem; padding:1.5rem 0; border-top:1px solid var(--color-line); }
   .collection-note .mono-label { margin:0; font-size:.68rem; line-height:1.8; color:var(--color-signal); }

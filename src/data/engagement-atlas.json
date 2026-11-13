@@ -66,18 +66,114 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_6k.htm",
       "publishedOn": "2026-10-22",
       "locator": "Section Credit Facility : contrat du 17 octobre, trois emprunteurs, principal, échéance, marge, sûretés et covenant de liquidité."
+    },
+    {
+      "id": "spacex-lease-20261026",
+      "title": "SpaceX : engagement de crédit-bail GPU avec un véhicule géré par Apollo",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000110465926118614/tm2628247d1_8k.htm",
+      "publishedOn": "2026-10-26",
+      "locator": "Item 8.01 : lettre du 24 octobre, bailleur, livraisons par tranches, principal attendu, conditions de réalisation et démarrage prévu des locations."
+    },
+    {
+      "id": "apollo-spacex-20261026",
+      "title": "Apollo : financeurs annoncés du crédit-bail SpaceX",
+      "url": "https://www.apollo.com/insights-news/pressreleases/2026/10/spacex-secures--40-billion-in-the-largest-gpu-financing-ever",
+      "publishedOn": "2026-10-26",
+      "locator": "Ouverture et Transaction Details : véhicule géré par Apollo, chefs de file, agent de structuration, engagements des fonds et comptes, conditions de réalisation."
+    },
+    {
+      "id": "anthropic-s1a2-20261110",
+      "title": "Anthropic : prospectus amendé du 10 novembre",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm",
+      "publishedOn": "2026-11-10",
+      "locator": "p.20 et 347–348 : souscriptions conditionnelles ; p.180 : engagements Microsoft et Google. Offre préliminaire, pas preuve de clôture."
+    },
+    {
+      "id": "anthropic-google-equity-20261110",
+      "title": "Anthropic–Google : souscription d’actions de classe N",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/exhibit1015-sx1ax2.htm",
+      "publishedOn": "2026-11-10",
+      "locator": "§§1.1–1.4, 4 et 6 : 10 Md$, paiement après l’IPO, exercice de l’option antérieure, conditions et résiliation."
+    },
+    {
+      "id": "anthropic-broadcom-npa-20261102",
+      "title": "Anthropic–Broadcom : facilité de financement des loyers",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/exhibit44-sx1a1.htm",
+      "publishedOn": "2026-11-02",
+      "locator": "Amendement du 26 octobre déposé le 2 novembre. Définitions Total Commitment et §§2.1(a), (c), (h), 3.2 : plafond, affectation, intérêts et conditions."
+    },
+    {
+      "id": "broadcom-spv-20261026",
+      "title": "Blackstone et partenaires : financement d’équipements de 63 Md$",
+      "url": "https://www.blackstone.com/news/press/bank-of-america-blackstone-citi-and-morgan-stanley-announce-landmark-63-billion-financing-structure-to-enable-ai-compute/",
+      "publishedOn": "2026-10-26",
+      "locator": "Ouverture : véhicule dédié, dette de premier et second rang, soutien de valeur résiduelle de Broadcom, livraisons attendues à partir de 2027."
     }
   ],
   "nodes": [
-    { "id": "blackrock", "label": "BlackRock", "role": "Partenaire fondateur", "column": 0, "row": 0 },
-    { "id": "gip", "label": "GIP", "role": "Partenaire fondateur", "column": 0, "row": 1 },
-    { "id": "microsoft", "label": "Microsoft", "role": "Partenaire fondateur", "column": 0, "row": 2 },
-    { "id": "mgx", "label": "MGX", "role": "Partenaire fondateur", "column": 0, "row": 3 },
-    { "id": "aip", "label": "GAIIP / AIP", "role": "Partenariat d’infrastructure", "column": 1, "row": 1 },
-    { "id": "xai", "label": "xAI", "role": "Partenaire annoncé en 2025", "column": 1, "row": 3 },
-    { "id": "nvidia", "label": "Nvidia", "role": "Technologie et engagements", "column": 2, "row": 1 },
-    { "id": "openai-tenant", "label": "OpenAI · filiale", "role": "Locataire du campus", "column": 3, "row": 0 },
-    { "id": "sb-energy", "label": "SB Energy", "role": "Bailleur du campus", "column": 3, "row": 2 },
+    {
+      "id": "blackrock",
+      "label": "BlackRock",
+      "role": "Partenaire fondateur",
+      "column": 0,
+      "row": 0
+    },
+    {
+      "id": "gip",
+      "label": "GIP",
+      "role": "Partenaire fondateur",
+      "column": 0,
+      "row": 1
+    },
+    {
+      "id": "microsoft",
+      "label": "Microsoft",
+      "role": "Partenaire fondateur",
+      "column": 0,
+      "row": 2
+    },
+    {
+      "id": "mgx",
+      "label": "MGX",
+      "role": "Partenaire fondateur",
+      "column": 0,
+      "row": 3
+    },
+    {
+      "id": "aip",
+      "label": "GAIIP / AIP",
+      "role": "Partenariat d’infrastructure",
+      "column": 1,
+      "row": 1
+    },
+    {
+      "id": "xai",
+      "label": "xAI",
+      "role": "Partenaire annoncé en 2025",
+      "column": 1,
+      "row": 3
+    },
+    {
+      "id": "nvidia",
+      "label": "Nvidia",
+      "role": "Technologie et engagements",
+      "column": 2,
+      "row": 1
+    },
+    {
+      "id": "openai-tenant",
+      "label": "OpenAI · filiale",
+      "role": "Locataire du campus",
+      "column": 3,
+      "row": 0
+    },
+    {
+      "id": "sb-energy",
+      "label": "SB Energy",
+      "role": "Bailleur du campus",
+      "column": 3,
+      "row": 2
+    },
     {
       "id": "aligned-consortium",
       "label": "Consortium Aligned",
@@ -126,24 +222,284 @@
       "role": "Group N.V. · Inc. · B.V.",
       "column": 1,
       "row": 4
+    },
+    {
+      "id": "apollo-ai",
+      "label": "Apollo",
+      "role": "Gérant du bailleur GPU",
+      "column": 0,
+      "row": 5
+    },
+    {
+      "id": "gpu-financiers",
+      "label": "Financeurs du crédit-bail",
+      "role": "Engagements · parts non publiées",
+      "column": 1,
+      "row": 5
+    },
+    {
+      "id": "gpu-lessor",
+      "label": "Bailleur GPU · Apollo",
+      "role": "Véhicule juridique non nommé",
+      "column": 2,
+      "row": 5
+    },
+    {
+      "id": "spacex",
+      "label": "SpaceX",
+      "role": "Locataire prévu du matériel",
+      "column": 3,
+      "row": 5
+    },
+    {
+      "id": "google-ai",
+      "label": "Google",
+      "role": "Fournisseur cloud et investisseur",
+      "column": 1,
+      "row": 0
+    },
+    {
+      "id": "anthropic",
+      "label": "Anthropic",
+      "role": "Laboratoire · client du calcul",
+      "column": 2,
+      "row": 0
+    },
+    {
+      "id": "broadcom-ai",
+      "label": "Broadcom",
+      "role": "Fournisseur, financeur et garant",
+      "column": 2,
+      "row": 4
+    },
+    {
+      "id": "broadcom-spv",
+      "label": "Véhicule équipements · Broadcom",
+      "role": "Bailleur financé par dette",
+      "column": 3,
+      "row": 4
     }
   ],
   "relations": [
-    { "id": "blackrock-aip", "from": "blackrock", "to": "aip", "observations": [{ "publishedOn": "2024-09-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire fondateur", "claim": "BlackRock annonce la création du partenariat avec GIP, Microsoft et MGX.", "limit": "La qualité de partenaire ne chiffre pas son apport individuel.", "watch": "Engagements de capital individualisés et opérations réalisées.", "sources": ["aip-2024"] }] },
-    { "id": "gip-aip", "from": "gip", "to": "aip", "observations": [{ "publishedOn": "2024-09-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire fondateur", "claim": "GIP figure parmi les fondateurs du partenariat annoncé.", "limit": "Cette relation ne mesure ni un apport individuel ni un flux de trésorerie.", "watch": "Ventilation des engagements entre partenaires.", "sources": ["aip-2024"] }] },
-    { "id": "microsoft-aip", "from": "microsoft", "to": "aip", "observations": [{ "publishedOn": "2024-09-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire fondateur", "claim": "Microsoft participe au lancement du partenariat.", "limit": "Le communiqué ne détaille pas de montant individuel pour Microsoft.", "watch": "Engagements définitifs et projets financés.", "sources": ["aip-2024"] }] },
-    { "id": "mgx-aip", "from": "mgx", "to": "aip", "observations": [{ "publishedOn": "2024-09-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire fondateur", "claim": "MGX fait partie des fondateurs annoncés.", "limit": "Aucun apport individuel n’est chiffré ici.", "watch": "Montants effectivement engagés par MGX dans ce partenariat.", "sources": ["aip-2024"] }] },
-    { "id": "nvidia-aip", "from": "nvidia", "to": "aip", "observations": [
-      { "publishedOn": "2024-09-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Soutien technique", "claim": "Nvidia doit apporter son expertise technique au partenariat.", "limit": "Ce rôle ne prouve pas un investissement financier.", "watch": "Évolution du rôle et conditions de participation.", "sources": ["aip-2024"] },
-      { "publishedOn": "2025-03-19", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire et conseil technique", "claim": "BlackRock annonce que Nvidia rejoint AIP et conserve son rôle de conseil technique.", "limit": "Le montant de sa participation n’est pas publié dans ce communiqué.", "watch": "Conditions financières définitives et apports réalisés.", "sources": ["aip-2025"] }
-    ] },
-    { "id": "xai-aip", "from": "xai", "to": "aip", "observations": [{ "publishedOn": "2025-03-19", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "announcement", "label": "Partenaire annoncé", "claim": "BlackRock annonce également l’arrivée de xAI dans AIP.", "limit": "L’annonce ne chiffre pas l’apport individuel de xAI.", "watch": "Montants, conditions et opérations attribuables à xAI.", "sources": ["aip-2025"] }] },
-    { "id": "openai-sb-lease", "from": "openai-tenant", "to": "sb-energy", "observations": [{ "publishedOn": "2026-08-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "contract", "label": "Baux du campus de l’Ohio", "claim": "Nvidia désigne une filiale d’OpenAI comme locataire et SB Energy comme bailleur.", "limit": "Le lien représente les baux prévus, sans attester de loyers déjà versés.", "watch": "Début des baux et mise en service.", "sources": ["nvda-8k-20260817"] }] },
-    { "id": "nvidia-sb-guarantee", "from": "nvidia", "to": "sb-energy", "observations": [
-      { "publishedOn": "2026-08-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "contract", "label": "Garantie de valeur résiduelle", "claim": "Nvidia déclare des garanties plafonnées initialement à 105 milliards de dollars. Après certains défauts, le paiement dépend notamment des récupérations par relocation ou vente ; Nvidia dispose aussi d’options, dont la reprise du bail.", "limit": "Plafond cumulé conditionnel, sans estimation de perte. Les obligations dépendent notamment des conditions de mise à disposition des locaux.", "watch": "Modèle de garantie et conditions de démarrage des baux.", "sources": ["nvda-8k-20260817"], "amount": { "value": "105000000000", "currency": "USD", "kind": "conditional-cap", "label": "105 Md$ · plafond initial cumulé" } },
-      { "publishedOn": "2026-08-26", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "limitation", "label": "Garantie · formule partiellement masquée", "claim": "Le modèle de garantie précise les conditions et options. La formule de la perte couverte, le taux d’actualisation et certains paramètres de limitation restent masqués.", "limit": "Les éléments publics ne permettent pas de chiffrer une perte dans un scénario de défaut. Le plafond initial porte sur plusieurs garanties.", "watch": "Publication des paramètres masqués, amendements et mises en service.", "sources": ["nvda-8k-20260817", "nvda-ex101-20260826"], "amount": { "value": "105000000000", "currency": "USD", "kind": "conditional-cap", "label": "105 Md$ · plafond initial cumulé" } }
-    ] },
-    { "id": "openai-nvidia-indemnity", "from": "openai-tenant", "to": "nvidia", "observations": [{ "publishedOn": "2026-08-17", "recordedOn": "2026-09-16", "review": "reviewed", "kind": "contract", "label": "Remboursement et indemnisation", "claim": "Le 8-K indique qu’OpenAI s’engage à rembourser et indemniser Nvidia pour les sommes versées au bailleur.", "limit": "Un engagement de remboursement ne garantit pas la capacité future à payer.", "watch": "Identité précise des obligés et conditions de recouvrement.", "sources": ["nvda-8k-20260817"] }] },
+    {
+      "id": "blackrock-aip",
+      "from": "blackrock",
+      "to": "aip",
+      "observations": [
+        {
+          "publishedOn": "2024-09-17",
+          "recordedOn": "2026-09-16",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Partenaire fondateur",
+          "claim": "BlackRock annonce la création du partenariat avec GIP, Microsoft et MGX.",
+          "limit": "La qualité de partenaire ne chiffre pas son apport individuel.",
+          "watch": "Engagements de capital individualisés et opérations réalisées.",
+          "sources": [
+            "aip-2024"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gip-aip",
+      "from": "gip",
+      "to": "aip",
+      "observations": [
+        {
+          "publishedOn": "2024-09-17",
+          "recordedOn": "2026-09-16",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Partenaire fondateur",
+          "claim": "GIP figure parmi les fondateurs du partenariat annoncé.",
+          "limit": "Cette relation ne mesure ni un apport individuel ni un flux de trésorerie.",
+          "watch": "Ventilation des engagements entre partenaires.",
+          "sources": [
+            "aip-2024"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "microsoft-aip",
+      "from": "microsoft",
+      "to": "aip",
+      "observations": [
+        {
+          "publishedOn": "2024-09-17",
+          "recordedOn": "2026-09-16",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Partenaire fondateur",
+          "claim": "Microsoft participe au lancement du partenariat.",
+          "limit": "Le communiqué ne détaille pas de montant individuel pour Microsoft.",
+          "watch": "Engagements définitifs et projets financés.",
+          "sources": [
+            "aip-2024"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mgx-aip",
+      "from": "mgx",
+      "to": "aip",
+      "observations": [
+        {
+          "publishedOn": "2024-09-17",
+          "recordedOn": "2026-09-16",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Partenaire fondateur",
+          "claim": "MGX fait partie des fondateurs annoncés.",
+          "limit": "Aucun apport individuel n’est chiffré ici.",
+          "watch": "Montants effectivement engagés par MGX dans ce partenariat.",
+          "sources": [
+            "aip-2024"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nvidia-aip",
+      "from": "nvidia",
+      "to": "aip",
+      "observations": [
+        {
+          "publishedOn": "2024-09-17",
+          "recordedOn": "2026-09-16",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Soutien technique",
+          "claim": "Nvidia doit apporter son expertise technique au partenariat.",
+          "limit": "Ce rôle ne prouve pas un investissement financier.",
+          "watch": "Évolution du rôle et conditions de participation.",
+          "sources": [
+            "aip-2024"
+          ]
+        },
+        {
+          "publishedOn": "2025-03-19",
+          "recordedOn": "2026-09-16",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Partenaire et conseil technique",
+          "claim": "BlackRock annonce que Nvidia rejoint AIP et conserve son rôle de conseil technique.",
+          "limit": "Le montant de sa participation n’est pas publié dans ce communiqué.",
+          "watch": "Conditions financières définitives et apports réalisés.",
+          "sources": [
+            "aip-2025"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xai-aip",
+      "from": "xai",
+      "to": "aip",
+      "observations": [
+        {
+          "publishedOn": "2025-03-19",
+          "recordedOn": "2026-09-16",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Partenaire annoncé",
+          "claim": "BlackRock annonce également l’arrivée de xAI dans AIP.",
+          "limit": "L’annonce ne chiffre pas l’apport individuel de xAI.",
+          "watch": "Montants, conditions et opérations attribuables à xAI.",
+          "sources": [
+            "aip-2025"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "openai-sb-lease",
+      "from": "openai-tenant",
+      "to": "sb-energy",
+      "observations": [
+        {
+          "publishedOn": "2026-08-17",
+          "recordedOn": "2026-09-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Baux du campus de l’Ohio",
+          "claim": "Nvidia désigne une filiale d’OpenAI comme locataire et SB Energy comme bailleur.",
+          "limit": "Le lien représente les baux prévus, sans attester de loyers déjà versés.",
+          "watch": "Début des baux et mise en service.",
+          "sources": [
+            "nvda-8k-20260817"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nvidia-sb-guarantee",
+      "from": "nvidia",
+      "to": "sb-energy",
+      "observations": [
+        {
+          "publishedOn": "2026-08-17",
+          "recordedOn": "2026-09-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Garantie de valeur résiduelle",
+          "claim": "Nvidia déclare des garanties plafonnées initialement à 105 milliards de dollars. Après certains défauts, le paiement dépend notamment des récupérations par relocation ou vente ; Nvidia dispose aussi d’options, dont la reprise du bail.",
+          "limit": "Plafond cumulé conditionnel, sans estimation de perte. Les obligations dépendent notamment des conditions de mise à disposition des locaux.",
+          "watch": "Modèle de garantie et conditions de démarrage des baux.",
+          "sources": [
+            "nvda-8k-20260817"
+          ],
+          "amount": {
+            "value": "105000000000",
+            "currency": "USD",
+            "kind": "conditional-cap",
+            "label": "105 Md$ · plafond initial cumulé"
+          }
+        },
+        {
+          "publishedOn": "2026-08-26",
+          "recordedOn": "2026-09-16",
+          "review": "reviewed",
+          "kind": "limitation",
+          "label": "Garantie · formule partiellement masquée",
+          "claim": "Le modèle de garantie précise les conditions et options. La formule de la perte couverte, le taux d’actualisation et certains paramètres de limitation restent masqués.",
+          "limit": "Les éléments publics ne permettent pas de chiffrer une perte dans un scénario de défaut. Le plafond initial porte sur plusieurs garanties.",
+          "watch": "Publication des paramètres masqués, amendements et mises en service.",
+          "sources": [
+            "nvda-8k-20260817",
+            "nvda-ex101-20260826"
+          ],
+          "amount": {
+            "value": "105000000000",
+            "currency": "USD",
+            "kind": "conditional-cap",
+            "label": "105 Md$ · plafond initial cumulé"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openai-nvidia-indemnity",
+      "from": "openai-tenant",
+      "to": "nvidia",
+      "observations": [
+        {
+          "publishedOn": "2026-08-17",
+          "recordedOn": "2026-09-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Remboursement et indemnisation",
+          "claim": "Le 8-K indique qu’OpenAI s’engage à rembourser et indemniser Nvidia pour les sommes versées au bailleur.",
+          "limit": "Un engagement de remboursement ne garantit pas la capacité future à payer.",
+          "watch": "Identité précise des obligés et conditions de recouvrement.",
+          "sources": [
+            "nvda-8k-20260817"
+          ]
+        }
+      ]
+    },
     {
       "id": "aip-aligned-consortium",
       "from": "aip",
@@ -341,6 +697,282 @@
           ]
         }
       ]
+    },
+    {
+      "id": "apollo-gpu-lessor",
+      "from": "apollo-ai",
+      "to": "gpu-lessor",
+      "observations": [
+        {
+          "publishedOn": "2026-10-26",
+          "recordedOn": "2026-10-31",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Gestion du bailleur prévu",
+          "claim": "Le 8-K identifie un véhicule géré par Apollo comme futur acquéreur et bailleur des GPU à SpaceX.",
+          "limit": "Le nom juridique du véhicule n’est pas publié. Le mandat de gestion ne signifie pas qu’Apollo finance seul le matériel.",
+          "watch": "Identité du bailleur et documentation définitive.",
+          "sources": [
+            "spacex-lease-20261026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financiers-gpu-lessor",
+      "from": "gpu-financiers",
+      "to": "gpu-lessor",
+      "observations": [
+        {
+          "publishedOn": "2026-10-26",
+          "recordedOn": "2026-10-31",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Engagements de financement annoncés",
+          "claim": "Le communiqué nomme Apollo et Goldman Sachs comme chefs de file, Goldman Sachs comme seul agent de structuration, ainsi que des fonds et comptes gérés par BlackRock et Goldman Sachs Asset Management et des comptes conseillés par KKR.",
+          "limit": "Le nœud regroupe ces engagements, sans parts individuelles ni versements établis. Aucun financement d’AIP ou d’Athene vers ce bailleur n’est déduit.",
+          "watch": "Répartition du financement et réalisation des engagements.",
+          "sources": [
+            "apollo-spacex-20261026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gpu-lessor-spacex",
+      "from": "gpu-lessor",
+      "to": "spacex",
+      "observations": [
+        {
+          "publishedOn": "2026-10-26",
+          "recordedOn": "2026-10-31",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Crédit-bail conditionnel · environ 40 Md$",
+          "claim": "SpaceX déclare une lettre d’engagement contraignante du 24 octobre pour un crédit-bail GPU. Le principal attendu totalise environ 40 milliards de dollars sur les locations, prévues pour cinq à cinq ans et trois mois par tranche.",
+          "limit": "La réalisation reste soumise à conditions, attendue avant fin 2026 ; les locations démarreraient aux livraisons au premier semestre 2027. Ce principal attendu n’est ni une trésorerie reçue ni un financement déjà intégralement déployé. Le taux fixe reste à déterminer.",
+          "watch": "Réalisation, taux fixé, livraisons et début des locations.",
+          "sources": [
+            "spacex-lease-20261026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nvidia-anthropic-equity",
+      "from": "nvidia",
+      "to": "anthropic",
+      "observations": [
+        {
+          "publishedOn": "2026-11-10",
+          "recordedOn": "2026-11-13",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Souscription conditionnelle · 10 Md$",
+          "claim": "Le prospectus prévoit 10 milliards de dollars d’actions de classe N pour Nvidia après l’IPO.",
+          "limit": "Clôture et conditions restent à satisfaire. Le rapprochement avec les annonces antérieures demeure incomplet.",
+          "watch": "Clôture, versement et rapprochement des engagements.",
+          "sources": [
+            "anthropic-s1a2-20261110"
+          ]
+        }
+      ],
+      "reading": {
+        "href": "/posts/anthropic-financement-fournisseurs-ipo/",
+        "label": "Lire l’enquête sur les financements fournisseurs"
+      }
+    },
+    {
+      "id": "google-anthropic-equity",
+      "from": "google-ai",
+      "to": "anthropic",
+      "observations": [
+        {
+          "publishedOn": "2026-11-10",
+          "recordedOn": "2026-11-13",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Souscription liée à une option antérieure · 10 Md$",
+          "claim": "Google doit souscrire 10 milliards de dollars après l’IPO, en exerçant une option du financement de mars.",
+          "limit": "Paiement conditionnel. Ce montant reprend une option antérieure et doit être rapproché de l’enveloppe existante.",
+          "watch": "Paiement, clôture et réduction de l’enveloppe antérieure.",
+          "sources": [
+            "anthropic-google-equity-20261110"
+          ]
+        }
+      ],
+      "reading": {
+        "href": "/posts/anthropic-financement-fournisseurs-ipo/",
+        "label": "Lire l’enquête sur les financements fournisseurs"
+      }
+    },
+    {
+      "id": "microsoft-anthropic-equity",
+      "from": "microsoft",
+      "to": "anthropic",
+      "observations": [
+        {
+          "publishedOn": "2026-11-10",
+          "recordedOn": "2026-11-13",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Souscription conditionnelle · 1 Md$",
+          "claim": "Le prospectus prévoit une souscription de 1 milliard de dollars par Microsoft.",
+          "limit": "Placement soumis à l’IPO et à ses conditions. Les titres N sont en principe sans droit de vote.",
+          "watch": "Clôture et titres émis.",
+          "sources": [
+            "anthropic-s1a2-20261110"
+          ]
+        }
+      ],
+      "reading": {
+        "href": "/posts/anthropic-financement-fournisseurs-ipo/",
+        "label": "Lire l’enquête sur les financements fournisseurs"
+      }
+    },
+    {
+      "id": "broadcom-anthropic-equity",
+      "from": "broadcom-ai",
+      "to": "anthropic",
+      "observations": [
+        {
+          "publishedOn": "2026-11-10",
+          "recordedOn": "2026-11-13",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Souscription conditionnelle · 1 Md$",
+          "claim": "Le prospectus prévoit une souscription de 1 milliard de dollars par Broadcom.",
+          "limit": "Placement soumis à l’IPO et à ses conditions. Les titres N sont en principe sans droit de vote.",
+          "watch": "Clôture et titres émis.",
+          "sources": [
+            "anthropic-s1a2-20261110"
+          ]
+        }
+      ],
+      "reading": {
+        "href": "/posts/anthropic-financement-fournisseurs-ipo/",
+        "label": "Lire l’enquête sur les financements fournisseurs"
+      }
+    },
+    {
+      "id": "anthropic-microsoft-compute",
+      "from": "anthropic",
+      "to": "microsoft",
+      "observations": [
+        {
+          "publishedOn": "2026-11-10",
+          "recordedOn": "2026-11-13",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Achats de calcul · novembre 2026 à juin 2033",
+          "claim": "Anthropic déclare 47,2 à 49,2 milliards de dollars d’achats Microsoft sur cette période.",
+          "limit": "Engagements futurs, avec exceptions contractuelles. Ces achats restent distincts de la souscription en actions.",
+          "watch": "Capacités livrées et paiements.",
+          "sources": [
+            "anthropic-s1a2-20261110"
+          ]
+        }
+      ],
+      "reading": {
+        "href": "/posts/anthropic-financement-fournisseurs-ipo/",
+        "label": "Lire l’enquête sur les financements fournisseurs"
+      }
+    },
+    {
+      "id": "anthropic-google-compute",
+      "from": "anthropic",
+      "to": "google-ai",
+      "observations": [
+        {
+          "publishedOn": "2026-11-10",
+          "recordedOn": "2026-11-13",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Minimum cloud · avril 2026 à juillet 2033",
+          "claim": "Anthropic déclare au moins 121,3 milliards de dollars d’achats cloud Google sur cette période.",
+          "limit": "Montant contractuel selon l’émetteur, avec ajustements et exceptions. Il est distinct du financement Google.",
+          "watch": "Paiements, capacité disponible et éventuels ajustements.",
+          "sources": [
+            "anthropic-s1a2-20261110"
+          ]
+        }
+      ],
+      "reading": {
+        "href": "/posts/anthropic-financement-fournisseurs-ipo/",
+        "label": "Lire l’enquête sur les financements fournisseurs"
+      }
+    },
+    {
+      "id": "broadcom-anthropic-rent-facility",
+      "from": "broadcom-ai",
+      "to": "anthropic",
+      "observations": [
+        {
+          "publishedOn": "2026-11-02",
+          "recordedOn": "2026-11-13",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Facilité de loyers · jusqu’à 42 Md$",
+          "claim": "Broadcom prévoit jusqu’à 42 milliards de dollars de billets convertibles affectés aux loyers éligibles. Le règlement passe par compensation ou paiement au bailleur tiers. Les intérêts sont capitalisés.",
+          "limit": "Ce plafond n’est pas du cash libre pour Anthropic. Les tirages dépendent de conditions de mise en service et de revenus, dont certains seuils sont masqués.",
+          "watch": "Tirages, mise en service, intérêts et conditions de conversion.",
+          "sources": [
+            "anthropic-broadcom-npa-20261102"
+          ]
+        }
+      ],
+      "reading": {
+        "href": "/posts/anthropic-financement-fournisseurs-ipo/",
+        "label": "Lire l’enquête sur les financements fournisseurs"
+      }
+    },
+    {
+      "id": "broadcom-spv-residual-support",
+      "from": "broadcom-ai",
+      "to": "broadcom-spv",
+      "observations": [
+        {
+          "publishedOn": "2026-10-26",
+          "recordedOn": "2026-11-13",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Soutien à la valeur résiduelle",
+          "claim": "Les partenaires annoncent un soutien de Broadcom au véhicule, équivalent au financement de premier rang.",
+          "limit": "Le communiqué du 26 octobre ne précise pas la formule détaillée. Les 63 milliards désignent l’opération totale, pas une perte estimée.",
+          "watch": "Mise en service, remboursements et évolution du soutien de Broadcom.",
+          "sources": [
+            "broadcom-spv-20261026"
+          ]
+        }
+      ],
+      "reading": {
+        "href": "/posts/broadcom-anthropic-blackstone-risque-63-milliards/",
+        "label": "Lire le montage Broadcom–Anthropic"
+      }
+    },
+    {
+      "id": "broadcom-spv-anthropic-lease",
+      "from": "broadcom-spv",
+      "to": "anthropic",
+      "observations": [
+        {
+          "publishedOn": "2026-10-26",
+          "recordedOn": "2026-11-13",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Équipements destinés à la location",
+          "claim": "Le véhicule doit acheter les équipements Broadcom pour les louer à Anthropic. Bank of America, Citi et Morgan Stanley arrangent le premier rang ; Blackstone fournit la partie engagée du second rang.",
+          "limit": "Annonce d’une opération de 63 milliards de dollars, livraisons prévues dès 2027. Les parts individuelles et les versements restent inconnus.",
+          "watch": "Financement réalisé, livraisons et loyers.",
+          "sources": [
+            "broadcom-spv-20261026"
+          ]
+        }
+      ],
+      "reading": {
+        "href": "/posts/broadcom-anthropic-blackstone-risque-63-milliards/",
+        "label": "Lire le montage Broadcom–Anthropic"
+      }
     }
   ],
   "milestones": [
@@ -388,6 +1020,21 @@
       "date": "2026-10-22",
       "label": "Nebius · crédit bancaire garanti",
       "change": "Le 6-K ajoute le prêt Citi aux trois coemprunteurs Nebius. Le principal contractuel reste distinct des sommes effectivement tirées ; aucun lien de financement avec les autres circuits de la carte n’est déduit."
+    },
+    {
+      "date": "2026-10-26",
+      "label": "SpaceX et Broadcom · équipements financés",
+      "change": "Le bailleur géré par Apollo et les financeurs annoncés entrent dans la carte. Les remboursements de principal attendus restent distincts d’un versement et la réalisation demeure conditionnelle. Un circuit séparé relie le soutien de Broadcom, un véhicule de financement et les équipements destinés à Anthropic."
+    },
+    {
+      "date": "2026-11-02",
+      "label": "Broadcom · financement des loyers",
+      "change": "Le contrat amendé ajoute une facilité convertible affectée aux loyers. Le plafond de 42 milliards, le financement des actifs et les souscriptions en actions gardent leurs périmètres distincts."
+    },
+    {
+      "date": "2026-11-10",
+      "label": "Anthropic · fournisseurs et client",
+      "change": "Le prospectus et les conventions ajoutent les souscriptions proposées de Nvidia, Google, Microsoft et Broadcom. Les achats cloud et le financement des loyers montrent les rôles croisés des partenaires, sans additionner engagements et versements."
     }
   ]
 }

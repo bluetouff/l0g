@@ -8,6 +8,17 @@ import { spawnSync } from 'node:child_process';
 import { readAtlasJson, MAX_ATLAS_BYTES } from './read-atlas-json.mjs';
 import { atlasSourceUrl } from '../src/lib/engagement-atlas.ts';
 
+test('Blackstone source access is restricted to the reviewed Broadcom financing release', () => {
+  const source = 'https://www.blackstone.com/news/press/bank-of-america-blackstone-citi-and-morgan-stanley-announce-landmark-63-billion-financing-structure-to-enable-ai-compute/';
+  assert.equal(atlasSourceUrl(source), source);
+  for (const value of [
+    'https://www.blackstone.com/', source.replace('/news/press/', '/admin/'),
+    source + '?next=https://evil.example', source + '#fragment', source + 'other',
+    source.replace('.com/', '.com.evil.example/'), source.replace('.com/', '.com@evil.example/'),
+    source.replace('https://', 'http://'), source.replace('https://', 'https://user:pass@'),
+  ]) assert.throws(() => atlasSourceUrl(value), value);
+});
+
 test('Partners Group permits only its canonical release path and a single UUID selector', () => {
   const path = 'https://www.partnersgroup.com/news-and-views/press-releases/corporate-news/detail';
   const query = '?news_id=ac75f52a-67b8-427a-8a95-3bf8855bf5fc';
